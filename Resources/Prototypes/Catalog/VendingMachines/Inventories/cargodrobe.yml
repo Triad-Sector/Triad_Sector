@@ -36,6 +36,7 @@
     ClothingHeadsetAltCargo: 1
     RubberStampQm: 1
     # End Frontier
+    ClothingNeckCollarLogi: 1 # Floofstation - Collar addition
   contrabandInventory:
     ClothingHeadHatCargosoftFlipped: 1 # Frontier
     ClothingNeckCloakHerald: 1 # Frontier

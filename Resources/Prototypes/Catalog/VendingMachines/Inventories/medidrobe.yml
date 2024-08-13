@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - type: vendingMachineInventory
   id: MediDrobeInventory
   startingInventory:
@@ -29,6 +30,7 @@
     ClothingHeadHatSurgcapGreen: 4
     ClothingHeadHatSurgcapBlue: 4
     ClothingHeadHatSurgcapPurple: 4
+    ClothingNeckCollarMed: 1 # Floofstation - Collar addition
 # Paramed:
     ClothingUniformJumpsuitParamedic: 4
     ClothingUniformJumpskirtParamedic: 4
