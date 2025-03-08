@@ -205,6 +205,10 @@
         - id: DoubleEmergencyNitrogenTankFilled
       # - id: EmergencyFunnyOxygenTankFilled # Frontier
       #   weight: 0.5 # Frontier
+      - !type:GroupSelector # DeltaV - Random water vapor tanks spawn too
+        children:
+        - id: WaterVaporTankFilled
+        - id: DoubleEmergencyWaterVaporTankFilled
       - !type:GroupSelector
         weight: 3
         children:
