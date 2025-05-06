@@ -58,10 +58,10 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private   SharedAudioSystem _audio = default!;
     [Dependency] protected SharedCombatModeSystem CombatMode = default!;
     [Dependency] protected SharedInteractionSystem Interaction = default!;
+    [Dependency] private   SharedPhysicsSystem _physics = default!;
     [Dependency] protected SharedPopupSystem PopupSystem = default!;
     [Dependency] protected SharedTransformSystem TransformSystem = default!;
-    [Dependency] private   SharedPhysicsSystem _physics = default!;
-    [Dependency] private   StaminaSystem _stamina = default!;
+    [Dependency] private   SharedStaminaSystem _stamina = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
 
