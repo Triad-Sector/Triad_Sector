@@ -12,6 +12,7 @@ using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Power;
+using Content.Server.Construction; // Triad
 
 namespace Content.Server.Bed
 {
