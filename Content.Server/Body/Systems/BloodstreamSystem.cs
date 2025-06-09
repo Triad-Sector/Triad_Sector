@@ -1,9 +1,9 @@
 using Content.Server.Body.Components;
-using Content.Shared.EntityEffects.Effects;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.Popups;
 using Content.Shared.Alert;
+using Content.Shared.Body.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
@@ -11,6 +11,7 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Drunk;
+using Content.Shared.EntityEffects.Effects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Forensics;
 using Content.Shared.Forensics.Components;
