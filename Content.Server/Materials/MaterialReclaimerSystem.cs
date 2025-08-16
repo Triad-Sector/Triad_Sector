@@ -171,18 +171,22 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
 
         var xform = Transform(uid);
 
-        SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
+        if (component.ReclaimMaterials)
+            SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
 
         if (CanGib(uid, item, component))
         {
-            _adminLogger.Add(LogType.Gib, LogImpact.Extreme, $"{ToPrettyString(item):victim} was gibbed by {ToPrettyString(uid):entity} ");
-            SpawnChemicalsFromComposition(uid, item, completion, false, component, xform);
+            var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
+            _adminLogger.Add(LogType.Gib, logImpact, $"{ToPrettyString(item):victim} was gibbed by {ToPrettyString(uid):entity} ");
+            if (component.ReclaimSolutions)
+                SpawnChemicalsFromComposition(uid, item, completion, false, component, xform);
             _body.GibBody(item, true);
             _appearance.SetData(uid, RecyclerVisuals.Bloody, true);
         }
         else
         {
-            SpawnChemicalsFromComposition(uid, item, completion, true, component, xform);
+            if (component.ReclaimSolutions)
+                SpawnChemicalsFromComposition(uid, item, completion, true, component, xform);
         }
 
         QueueDel(item);
