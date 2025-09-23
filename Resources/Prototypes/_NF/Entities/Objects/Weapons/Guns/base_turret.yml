@@ -4,6 +4,7 @@
   - BaseStructure
   - MobLaserReflect # Preventing laser abuse from players, prototype is in \Resources\Prototypes\_NF\Entities\Mobs\NPCs\mob_hostile_base.yml
   - BasePlasmaBurnEligibleTurret # Triad
+  - BaseClass2AShipContrabandSilent # Triad
   id: BaseWeaponTurretNF
   name: turret
   suffix: Frontier

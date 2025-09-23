@@ -56,12 +56,13 @@
         20
       RangedRange: !type:Single
         20
-        
+
 
 # Energy Turrets - we're using frontier ones because its better
 - type: entity
   id: BaseWeaponTurretEnergyTriad
   name: laser turret
+  suffix: ""
   abstract: true
   parent:
   - BaseTurretSearchBeam

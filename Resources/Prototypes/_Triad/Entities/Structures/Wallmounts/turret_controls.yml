@@ -1,11 +1,9 @@
+# Base turrets
 - type: entity
-  parent: BallisticTurretHeavyBase
-  id: BallisticTurretHeavyAIBase
-  name: heavy remote sentry turret
+  id: TurretAIBase
+  suffix: Remote
   abstract: true
   components:
-  - type: AccessReader
-    access: [["Security"]]
   - type: DeployableTurret
     retractedDamageModifierSetId: Metallic
     deployedDamageModifierSetId: Metallic
@@ -13,14 +11,6 @@
       path: /Audio/_Mono/Effects/Machines/twobeep_high.ogg
     retractionSound:
       path: /Audio/_Mono/Effects/Machines/triple_beep.ogg
-  - type: TurretTargetSettings
-    exemptAccessLevels:
-    - Security
-    - Borg
-    - BasicSilicon
-  - type: ProjectileBatteryAmmoProvider
-    proto: Bullet762x51mmRubber
-    fireCost: 25
   - type: DeviceNetworkRequiresPower
   - type: WiredNetworkConnection
   - type: UserInterface
@@ -36,12 +26,6 @@
     locked: true
     unlockOnClick: false
   - type: LockedWiresPanel
-  - type: BatteryWeaponFireModes
-    fireModes:
-    - proto: Bullet762x51mmRubber
-      fireCost: 25
-    - proto: Bullet762x51mmAntiMaterial
-      fireCost: 40
   - type: DeviceNetwork
     deviceNetId: Wired
     sendBroadcastAttemptEvent: true
@@ -55,31 +39,118 @@
   - type: NpcFactionMember
     factions:
     - AllHostile
+  - type: EmpResistance
+    coefficient: 0.0001
+  - type: ExtensionCableReceiver
+  - type: AnimationPlayer
+  - type: Appearance
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+    - trigger:
+        !type:DamageTrigger
+        damage: 750
+       # TODO: Construction graph
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 10
+            max: 20
 
 - type: entity
-  parent: WeaponEnergyTurretStationControlPanel
+  parent:
+  - TurretAIBase
+  - BallisticTurretHeavyBase
+  id: BallisticTurretHeavyAIBase
+  name: heavy remote sentry turret
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Turrets/heavy_turret.rsi
+    drawdepth: Mobs
+    granularLayersRendering: true
+    layers:
+    - state: syndie_lethal
+      map: [ "base" ]
+    - map: [ "enum.DeployableTurretVisuals.Weapon" ]
+      shader: "unshaded"
+      visible: false
+    - map: [ "enum.DeployableTurretVisuals.Turret" ]
+      sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+      visible: false
+    - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - Security
+    - Borg
+    - BasicSilicon
+  - type: ProjectileBatteryAmmoProvider
+    proto: Bullet762x51mmRubber
+    fireCost: 25
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: Bullet762x51mmRubber
+      fireCost: 25
+    - proto: Bullet762x51mmAntiMaterial
+      fireCost: 40
+
+- type: entity
+  parent:
+  - TurretAIBase
+  - BaseWeaponTurretEnergyNF
+  id: LaserTurretAIBase
+  name: remote laser turret
+  abstract: true
+  components:
+  - type: Gun
+    fireRate: 3
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.125
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 25
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: RedLightLaser
+      fireCost: 25
+    - proto: MediumPulseLaser
+      fireCost: 40
+
+# TDF panels
+- type: entity
+  parent:
+  - BaseTDFTurretSettings
+  - WeaponEnergyTurretStationControlPanel
   id: WeaponEnergyTurretTDFControlPanel
   name: sentry turret control panel
   description: A wall-mounted interface that allows personnel to adjust the operational parameters of linked TDF sentry turrets.
   suffix: TDF
   components:
-  - type: AccessReader
-    access: [["Security"]]
-  - type: TurretTargetSettings
-    exemptAccessLevels:
-    - TdfChiefEnforcer
-    - TdfLieutenant
-    - TdfPatrolTeamLeader
-    - Security
-    - Brig
   - type: DeviceNetwork
     receiveFrequencyId: TurretAITDF
     transmitFrequencyId: TurretControlAITDF
 
 - type: entity
-  parent: BallisticTurretHeavyAIBase
-  id: BallisticTurretHeavyAITDF
-  name: TDF heavy remote sentry turret
+  id: BaseTDFTurretSettings
+  abstract: true
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -93,6 +164,95 @@
   - type: DeviceNetwork
     receiveFrequencyId: TurretControlAITDF
     transmitFrequencyId: TurretAITDF
+
+- type: entity
+  parent:
+  - BaseTDFTurretSettings
+  - BallisticTurretHeavyAIBase
+  id: BallisticTurretHeavyAITDF
+  name: TDF heavy remote sentry turret
+
+- type: entity
+  parent:
+  - BaseTDFTurretSettings
+  - LaserTurretAIBase
+  id: LaserTurretLightAITDF
+  name: TDF light remote laser turret
+  components:
+  - type: Gun
+    fireRate: 7
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Turrets/tdf_light_turret.rsi
+    drawdepth: HighFloorObjects
+    granularLayersRendering: true
+    layers:
+    - state: support
+      renderingStrategy: NoRotation
+      sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+      color: "#727272"
+    - state: base_shadow
+      map: [ "shadow" ]
+    - state: base
+      map: [ "base" ]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+      shader: unshaded
+    - state: stun
+      map: [ "enum.DeployableTurretVisuals.Weapon" ]
+      shader: unshaded
+      visible: false
+    - state: cover_closed
+      map: [ "enum.DeployableTurretVisuals.Turret" ]
+      renderingStrategy: NoRotation
+      sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+      color: "#727272"
+    - state: cover_light_on
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      shader: unshaded
+      renderingStrategy: NoRotation
+      sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+      visible: true
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      renderingStrategy: NoRotation
+      sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+      visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
+  - type: HitscanBatteryAmmoProvider
+    proto: DisablingLightTurretLaser
+    fireCost: 1
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: DisablingLightTurretLaser
+      fireCost: 1
+    - proto: LightTurretLaser
+      fireCost: 2
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryWeaponFireModeVisuals.State:
+        enum.DeployableTurretVisuals.Weapon:
+          DisablingLightTurretLaser: { state: stun }
+          LightTurretLaser: { state: lethal }
+#      enum.DeployableTurretVisuals.Broken:
+#        base:
+#          True: { state: destroyed }
+#          False: { state: base }
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-turret
+            visible: true
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Repairable
+    doAfterDelay: 10
+    allowSelfRepair: false
 
 - type: deviceFrequency
   id: TurretControlAITDF
