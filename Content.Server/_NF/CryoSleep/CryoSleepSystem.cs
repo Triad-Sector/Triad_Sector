@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.EUI;
@@ -20,6 +21,7 @@ using Content.Shared.DragDrop;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -40,6 +42,11 @@ using Content.Server.Ghost;
 using Content.Shared.Roles;
 using Content.Server._NF.Shuttles.Components;
 using Content.Shared._Triad.CryoSleep;
+using Content.Shared.Storage;
+using Content.Shared._NF.Shipyard.Components;
+using Content.Shared.Store.Components;
+using Content.Shared.Access.Components;
+using Content.Shared.PDA;
 
 namespace Content.Server._NF.CryoSleep;
 
@@ -66,6 +73,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     [Dependency] private JobSystem _jobs = default!;
     [Dependency] private StationJobsSystem _stationJobs = default!;
     [Dependency] private StationSystem _station = default!;
+    [Dependency] private InventorySystem _inventory = default!; //For cryosleep warnings
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
     private EntityUid? _storageMap;
@@ -247,10 +255,12 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
         var success = _container.Insert(toInsert.Value, component.BodyContainer);
 
+        var ui = new CryoSleepEui(toInsert.Value, cryopod, this);
         if (success && mindComp?.Session != null)
-        {
-            _euiManager.OpenEui(new CryoSleepEui(toInsert.Value,  cryopod, this), mindComp.Session);
-        }
+            _euiManager.OpenEui(ui, mindComp.Session);
+        var warningMessage = GetWarningMessages(toInsert.Value);
+        if (warningMessage != null)
+            ui.SendMessage(warningMessage);
 
         if (success)
         {
@@ -277,6 +287,127 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
         return success;
     }
+
+    /// <summary>
+    /// Scans the inventory of an entity about to cryo in order to contrusct a warning message of all appropriate items.
+    /// </summary>
+    /// <returns>A warning message to be used with CryoSleepEui</returns>
+    private CryoSleepWarningMessage? GetWarningMessages(EntityUid entity)
+    {
+        if (!TryComp<InventoryComponent>(entity, out var inventoryComp))
+            return null;
+        //Items check
+        SlotDefinition[] slotsToCheck = inventoryComp.Slots;
+        List<WarningItem> warningItemsList = [];
+        //Doing the conversion to WarningItem all at once makes more sense to me
+        List<StorageHelper.FoundItem> unconvertedFoundItem = [];
+        foreach (var slotDefinition in slotsToCheck)
+        {
+            //The ID is manually checked for a shuttle deed later, and since your PDA *technically* has an uplink in it, this has to be skipped manually.
+            if (slotDefinition.Name == "id")
+                continue;
+            //TODO: Check hand slots for important items
+            if (_inventory.TryGetSlotEntity(entity, slotDefinition.Name, out var slotItem))
+            {
+                if (ShouldItemWarnOnCryo(slotItem.Value))
+                    warningItemsList.Add(new WarningItem(slotDefinition.Name, null, slotItem.Value));
+                else if (_entityManager.HasComponent<StorageComponent>(slotItem.Value))
+                    StorageHelper.ScanStorageForCondition(slotItem.Value, ShouldItemWarnOnCryo, ref unconvertedFoundItem);
+            }
+        }
+        //Convert all FoundItem to a WarningItem
+        foreach (var found in unconvertedFoundItem)
+        {
+            warningItemsList.Add(new WarningItem(null, found.Container, found.Item));
+        }
+        //Now, we extract the uplinks and shuttle deeds.
+        WarningItem? uplink = null;
+        WarningItem? backpackShuttleDeed = null;
+        //Listing every point where a shuttle deed was found runs you out of space very fast.
+        var foundMoreShuttles = false;
+        var hasShuttleOnPDA = (TryGetIdCard(entity, out var card)
+                                && HasComp<ShuttleDeedComponent>(card));
+
+        //Find all the shuttles and uplinks and remove them from the list
+        for (var i = warningItemsList.Count - 1; i >= 0 ; i--)
+        {
+            var itemStruct = warningItemsList[i];
+            if (_entityManager.HasComponent<ShuttleDeedComponent>(itemStruct.Item))
+            {
+                if (backpackShuttleDeed.HasValue)
+                    foundMoreShuttles = true;
+                else
+                    backpackShuttleDeed = itemStruct;
+
+                warningItemsList.RemoveAt(i);
+            }
+            else if (HasComp<StoreComponent>(itemStruct.Item) && !uplink.HasValue)
+            {
+                uplink = itemStruct;
+                warningItemsList.RemoveAt(i);
+            }
+        }
+
+        var networkedWarningItems = new List<CryoSleepWarningMessage.NetworkedWarningItem>();
+        warningItemsList.ForEach(item => networkedWarningItems.Add(item.ToNetworked(_entityManager)));
+
+        var nwBackpackShuttleDeed =
+            backpackShuttleDeed?.ToNetworked(_entityManager);
+        var nwUplink = uplink?.ToNetworked(_entityManager);
+        return new CryoSleepWarningMessage(hasShuttleOnPDA,
+            nwBackpackShuttleDeed,
+            foundMoreShuttles,
+            nwUplink,
+            networkedWarningItems);
+    }
+
+    //Get an entity's ID card from their ID slot, even if it is in a PDA
+    private bool TryGetIdCard(EntityUid ent, [NotNullWhen(true)] out EntityUid? idCard)
+    {
+        if (_inventory.TryGetSlotEntity(ent, "id", out var pdaSlotItem))
+        {
+            if (HasComp<IdCardComponent>(pdaSlotItem))
+            {
+                idCard = pdaSlotItem;
+                return true;
+            }
+
+            if (TryComp<PdaComponent>(pdaSlotItem, out var pda)
+                && pda.ContainedId.HasValue)
+            {
+                idCard = pda.ContainedId.Value;
+                return true;
+            }
+        }
+
+        idCard = null;
+        return false;
+    }
+
+    private readonly struct WarningItem(string? slotId, EntityUid? container, EntityUid item)
+    {
+        //Exactly one of these two values should be null
+        public readonly string? SlotId = slotId;
+        public readonly EntityUid? Container = container;
+
+        public readonly EntityUid Item = item;
+
+        public CryoSleepWarningMessage.NetworkedWarningItem ToNetworked(IEntityManager manager)
+        {
+            return new CryoSleepWarningMessage.NetworkedWarningItem(SlotId,
+                manager.GetNetEntity(Container),
+                manager.GetNetEntity(Item));
+        }
+    }
+
+    //Predicate method for GetWarningMessages
+    private bool ShouldItemWarnOnCryo(EntityUid ent)
+    {
+        return _entityManager.HasComponent<ShuttleDeedComponent>(ent)
+               || _entityManager.HasComponent<WarnOnCryoSleepComponent>(ent)
+               || _entityManager.HasComponent<StoreComponent>(ent);
+    }
+
 
     public void CryoStoreBody(EntityUid bodyId, EntityUid cryopod)
     {
