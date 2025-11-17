@@ -8,6 +8,17 @@
     "copyright": "Felinid sprites made by Adrian16199 (Github), Rodentia sprites made by portfiend, Feroxi sprites made by BlitzTheSquishy",
     "states": [
         {
+            "name": "aac0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
             "name": "felinid0",
             "delays": [
                 [
