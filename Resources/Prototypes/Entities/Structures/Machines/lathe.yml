@@ -175,6 +175,7 @@
     - NFServiceStatic # Frontier
     - MonoRestraintsStatic # Mono
     - TriadBureaucracyStatic # Triad
+    - AACTableStatic # DeltaV - AAC Tablets
   - type: EmagLatheRecipes
     emagStaticPacks:
     - StaticAmmoRecipePack
@@ -494,13 +495,16 @@
     - SecurityPracticeStatic
     - StaticAmmoRecipePack
     - SecurityWeaponsStatic
-    dynamicPacks:
-    - SecurityEquipment
-    - SecurityExplosives
-    - DynamicAmmoRecipePack
-    - SecurityWeapons
-    - SecurityDisablers
-    - SMCybernetics
+    - AACTableStatic # DeltaV - AAC Tablets
+    # dynamicPacks:
+    # - SalvageSecurityBoards # Frontier
+    # - SalvageSecurityWeapons # Frontier
+    # - SecurityEquipment # Frontier
+    # - SecurityBoards # Frontier
+    # - SecurityExplosives # Frontier
+    # - SecurityAmmo # Frontier
+    # - SecurityWeapons # Frontier
+    # - SecurityDisablers # Frontier
   - type: MaterialStorage
     whitelist:
       tags:
@@ -586,16 +590,9 @@
     - EmptyMedkitsStatic
     - SurgeryStatic
     - NFMedicalStatic # Frontier
-    dynamicPacks:
-    - Chemistry
-    - SyringeGuns # DeltaV
-    - NFMedical # Frontier
-    # Shitmed Change
-    - SMSurgery
-    - SMCybernetics
-    # Einstein Engines Packs
-    - Translators # Language
-    - TranslatorImplanters # Language
+    - AACTableStatic # DeltaV - AAC Tablets
+    # dynamicPacks: # Frontier
+    # - Chemistry # Frontier
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
