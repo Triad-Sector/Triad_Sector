@@ -844,9 +844,20 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
+        bool emoteEventInvoked = false; // Frontier: track emote event
         if (checkEmote &&
-            !TryEmoteChatInput(source, action))
+            !TryEmoteChatInput(source, action, out emoteEventInvoked)) // Frontier: track emote event
+        {
             return;
+        }
+
+        // Frontier: send custom emotes through custom event
+        if (!emoteEventInvoked)
+        {
+            var ev = new NFEntityEmotedEvent(action);
+            RaiseLocalEvent(source, ev, true);
+        }
+        // End Frontier
 
         SendInVoiceRange(ChatChannel.Emotes, name, action, wrappedMessage, obfuscated: "", obfuscatedWrappedMessage: "", source, range, author);
         if (!hideLog)
