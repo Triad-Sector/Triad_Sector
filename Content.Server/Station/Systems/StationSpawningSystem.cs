@@ -1,4 +1,4 @@
-﻿using Content.Server.Access.Systems;
+using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
 using Content.Server.Mind.Commands;
@@ -301,6 +301,10 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
 
+        JobAlternateTitlePrototype? altTitle = null;
+        if (profile != null && prototype != null && profile.JobAlternateTitles.TryGetValue(prototype.ID, out var altId))
+            _prototypeManager.TryIndex(altId, out altTitle);
+
         if (profile != null)
         {
             // Frontier: allow pseudonyms
@@ -313,7 +317,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             }
             // End Frontier
             if (prototype != null)
-                SetPdaAndIdCardData(entity.Value, name, prototype, station); // Frontier: profile.Name<name
+                SetPdaAndIdCardData(entity.Value, name, prototype, station, altTitle); // Frontier: profile.Name<name
 
             _humanoidSystem.LoadProfile(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, name); // Frontier: profile.Name<name
@@ -346,7 +350,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="characterName">Character name to use for the ID.</param>
     /// <param name="jobPrototype">Job prototype to use for the PDA and ID.</param>
     /// <param name="station">The station this player is being spawned on.</param>
-    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station)
+    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station, JobAlternateTitlePrototype? jobAltTitle = null)
     {
         if (!InventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
             return;
@@ -359,7 +363,10 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             return;
 
         _cardSystem.TryChangeFullName(cardId, characterName, card);
-        _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
+        if (jobAltTitle != null)
+            _cardSystem.TryChangeJobTitle(cardId, jobAltTitle.LocalizedName, card);
+        else
+            _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
 
         if (_prototypeManager.TryIndex(jobPrototype.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(cardId, jobIcon, card);

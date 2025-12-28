@@ -17,10 +17,20 @@
   #   holiday: DoctorDay # Frontier
   #   prototype: WehMedipen # Frontier
   special:
+<<<<<<< HEAD
   - !type:AddComponentSpecial
     components:
     - type: SurgerySpeedModifier
       SpeedModifier: 1.75
+=======
+  - !type:GiveItemOnHolidaySpecial
+    holiday: DoctorDay
+    prototype: WehMedipen
+  alternateTitles:
+  - MedicalDoctorPhysician
+  - MedicalDoctorNurse
+  - MedicalDoctorSurgeon
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: DoctorGear
@@ -30,3 +40,15 @@
     #storage:
     #back:
     #- Stuff
+
+- type: jobAlternateTitle
+  id: MedicalDoctorSurgeon
+  name: job-name-alt-medical-1
+
+- type: jobAlternateTitle
+  id: MedicalDoctorNurse
+  name: job-name-alt-medical-2
+
+- type: jobAlternateTitle
+  id: MedicalDoctorPhysician
+  name: job-name-alt-medical-3

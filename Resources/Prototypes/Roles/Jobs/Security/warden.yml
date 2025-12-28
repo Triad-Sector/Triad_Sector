@@ -11,6 +11,7 @@
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
   canBeAntag: false
+<<<<<<< HEAD
   ## Frontier: commented out stuff below
   # access:
   # - Security
@@ -28,6 +29,24 @@
   setPreference: false # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+=======
+  access:
+  - Security
+  - Brig
+  - Armory
+  - Maintenance
+  - Service
+  - External
+  - Detective
+  - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  alternateTitles:
+  - WardenDispatch
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: WardenGear
@@ -39,4 +58,14 @@
   storage:
     back:
     - Flash
+<<<<<<< HEAD
     - Magazine45_ACPPistolFMJ
+=======
+    - MagazinePistol
+    - SecHypo # Goobstation
+    - autoInjectorCartridgeCaseSoft
+
+- type: jobAlternateTitle
+  id: WardenDispatch
+  name: job-name-alt-warden-1
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))

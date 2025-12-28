@@ -9,9 +9,22 @@
       time: 10800
   startingGear: LibrarianGear
   icon: "JobIconLibrarian"
+<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+=======
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+  - Maintenance
+  - Library
+  alternateTitles:
+  - LibrarianClerk
+  - LibrarianWriter
+  - LibrarianProfessor
+  - LibrarianCurator
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: LibrarianGear
@@ -24,3 +37,19 @@
   storage:
     back:
     - BookRandom
+
+- type: jobAlternateTitle
+  id: LibrarianClerk
+  name: job-name-alt-librarian-1
+
+- type: jobAlternateTitle
+  id: LibrarianWriter
+  name: job-name-alt-librarian-2
+
+- type: jobAlternateTitle
+  id: LibrarianProfessor
+  name: job-name-alt-librarian-3
+
+- type: jobAlternateTitle
+  id: LibrarianCurator
+  name: job-name-alt-librarian-4

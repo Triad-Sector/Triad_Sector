@@ -9,6 +9,7 @@
     time: 10800
   startingGear: ChemistGear
   icon: "JobIconChemist"
+<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
@@ -17,6 +18,16 @@
     components:
     - type: SurgerySpeedModifier
       SpeedModifier: 1.75
+=======
+  supervisors: job-supervisors-cmo
+  access:
+  - Medical
+  - Chemistry
+  - Maintenance
+  alternateTitles:
+  - ChemistPharmacist
+  - ChemistLabTechnician
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: ChemistGear
@@ -29,3 +40,11 @@
     #storage:
     #back:
     #- Stuff
+
+- type: jobAlternateTitle
+  id: ChemistPharmacist
+  name: job-name-alt-chemist-1
+
+- type: jobAlternateTitle
+  id: ChemistLabTechnician
+  name: job-name-alt-chemist-2

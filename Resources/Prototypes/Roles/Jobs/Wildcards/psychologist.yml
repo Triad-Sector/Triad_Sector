@@ -9,9 +9,26 @@
       time: 10800
   startingGear: PsychologistGear
   icon: "JobIconPsychologist"
+<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+=======
+  supervisors: job-supervisors-cmo
+  access:
+  - Medical
+  - Maintenance
+  extendedAccess:
+  - Chemistry
+  special: # imp
+  - !type:AddComponentSpecial
+    components:
+    - type: SupermatterSoother
+  alternateTitles:
+  - PsychologistTherapist
+  - PsychologistGuidanceCounselor
+  - PsychologistPsychatrist
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: PsychologistGear
@@ -22,3 +39,15 @@
   storage:
     back:
     - RubberStampPsychologist
+
+- type: jobAlternateTitle
+  id: PsychologistTherapist
+  name: job-name-alt-psychologist-1
+
+- type: jobAlternateTitle
+  id: PsychologistGuidanceCounselor
+  name: job-name-alt-psychologist-2
+
+- type: jobAlternateTitle
+  id: PsychologistPsychatrist
+  name: job-name-alt-psychologist-3

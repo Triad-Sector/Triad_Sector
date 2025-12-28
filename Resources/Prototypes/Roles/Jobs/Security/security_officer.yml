@@ -11,6 +11,7 @@
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
   canBeAntag: false
+<<<<<<< HEAD
   ## Frontier: commented out stuff below
   # access:
   # - Security
@@ -26,6 +27,26 @@
   setPreference: false # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+=======
+  access:
+  - Security
+  - Brig
+  - Maintenance
+  - Service
+  - External
+  - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
+  # begin Funkystation: give out missing genpop accesses
+  - GenpopEnter
+  - GenpopLeave
+  # end Funkystation
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  alternateTitles:
+  - SecurityOfficerHallMonitor
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: SecurityOfficerGear
@@ -36,4 +57,14 @@
   storage:
     back:
     - Flash
+<<<<<<< HEAD
     - Magazine45_ACPPistolFMJ
+=======
+    - MagazinePistol
+    - SecHypo # Goobstation
+    - CartridgeEmergency
+
+- type: jobAlternateTitle
+  id: SecurityOfficerHallMonitor
+  name: job-name-alt-secoff-1
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))

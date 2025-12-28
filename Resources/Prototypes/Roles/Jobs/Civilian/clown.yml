@@ -27,6 +27,9 @@
       interval: 10
   - !type:AddImplantSpecial
     implants: [ SadTromboneImplant ]
+  alternateTitles:
+  - ClownJester
+  - ClownBouffon
 
 - type: startingGear
   id: ClownGear
@@ -40,3 +43,11 @@
     back:
     - RubberStampClown
     - CrayonRainbow
+
+- type: jobAlternateTitle
+  id: ClownJester
+  name: job-name-alt-clown-1
+
+- type: jobAlternateTitle
+  id: ClownBouffon
+  name: job-name-alt-clown-2

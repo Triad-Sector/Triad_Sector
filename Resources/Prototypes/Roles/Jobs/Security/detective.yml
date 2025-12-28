@@ -11,6 +11,7 @@
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
   canBeAntag: false
+<<<<<<< HEAD
   ## Frontier: commented stuff out below
   # access:
   # - Security
@@ -27,6 +28,25 @@
   setPreference: false # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+=======
+  access:
+  - Security
+  - Brig
+  - Maintenance
+  - Service
+  - Detective
+  - Cryogenics
+  - External
+  # begin Funkystation: give out missing genpop accesses
+  - GenpopEnter
+  - GenpopLeave
+  # end Funkystation
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  alternateTitles:
+  - DetectiveForensicInvestigator
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: DetectiveGear
@@ -40,3 +60,12 @@
     - Flash
     - ForensicPad
     - ForensicScanner
+<<<<<<< HEAD
+=======
+    - SecHypo # Goobstation
+    - CartridgeEmergency
+
+- type: jobAlternateTitle
+  id: DetectiveForensicInvestigator
+  name: job-name-alt-detective-1
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))

@@ -123,4 +123,17 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
 
         }
     }
+
+    public bool TryChangeJobTitle(EntityUid uid, LocId newJobTitleLocId, IdCardComponent? card = null)
+    {
+        if (!Resolve(uid, ref card))
+            return false;
+
+        card.JobTitle = newJobTitleLocId;
+        card.LocalizedJobTitle = Loc.GetString(newJobTitleLocId);
+
+        Dirty(uid, card);
+
+        return true;
+    }
 }

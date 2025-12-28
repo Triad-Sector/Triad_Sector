@@ -52,21 +52,22 @@ namespace Content.Server.Database
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
         // Triad: tamper protection
-        public DbSet<TriadShipyardSigningKey>       TriadShipyardSigningKeys        { get; set; } = default!;
-        public DbSet<TriadShipyardAuditEvent>       TriadShipyardAuditEvents        { get; set; } = default!;
-        public DbSet<TriadShipyardMigrationPermit>  TriadShipyardMigrationPermits   { get; set; } = default!;
+        public DbSet<TriadShipyardSigningKey> TriadShipyardSigningKeys { get; set; } = default!;
+        public DbSet<TriadShipyardAuditEvent> TriadShipyardAuditEvents { get; set; } = default!;
+        public DbSet<TriadShipyardMigrationPermit> TriadShipyardMigrationPermits { get; set; } = default!;
         // End Triad
         // Triad: market data. Shapes and reasoning live in Model.Market.cs.
-        public DbSet<MarketTransaction>         MarketTransaction       { get; set; } = default!;
-        public DbSet<MarketTransactionSplit>    MarketTransactionSplit  { get; set; } = default!;
-        public DbSet<MarketTransactionLine>     MarketTransactionLine   { get; set; } = default!;
-        public DbSet<MarketPriceStat>           MarketPriceStat         { get; set; } = default!;
-        public DbSet<MarketRoundParticipant>    MarketRoundParticipant  { get; set; } = default!;
-        public DbSet<SectorAccountSample>       SectorAccountSample     { get; set; } = default!;
+        public DbSet<MarketTransaction> MarketTransaction { get; set; } = default!;
+        public DbSet<MarketTransactionSplit> MarketTransactionSplit { get; set; } = default!;
+        public DbSet<MarketTransactionLine> MarketTransactionLine { get; set; } = default!;
+        public DbSet<MarketPriceStat> MarketPriceStat { get; set; } = default!;
+        public DbSet<MarketRoundParticipant> MarketRoundParticipant { get; set; } = default!;
+        public DbSet<SectorAccountSample> SectorAccountSample { get; set; } = default!;
         // End Triad
         public DbSet<CompanyMember> CompanyMembers { get; set; } = null!;
         public DbSet<WayfarerSafetyDepositBox> WayfarerSafetyDepositBox { get; set; } = null!;
         public DbSet<WayfarerSafetyDepositBoxItem> WayfarerSafetyDepositBoxItem { get; set; } = null!;
+        public DbSet<DBJobAlternateTitle> DBJobAlternateTitle { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -144,6 +145,16 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<Job>()
                 .HasIndex(j => new { j.ProfileId, j.JobName })
+                .IsUnique();
+
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasOne(e => e.Profile)
+                .WithMany(e => e.AltTitles)
+                .HasForeignKey(e => e.ProfileId)
+                .IsRequired();
+
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasIndex(p => new { p.ProfileId, p.RoleName, p.AlternateTitle })
                 .IsUnique();
 
             modelBuilder.Entity<AssignedUserId>()
@@ -437,6 +448,7 @@ namespace Content.Server.Database
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
 
+        public List<DBJobAlternateTitle> AltTitles { get; } = new();
         public List<ProfileRoleLoadout> Loadouts { get; } = new();
 
         [Column("pref_unavailable")] public DbPreferenceUnavailableMode PreferenceUnavailable { get; set; }
@@ -539,6 +551,17 @@ namespace Content.Server.Database
         public int ProfileId { get; set; }
 
         public string TraitName { get; set; } = null!;
+    }
+
+    public class DBJobAlternateTitle
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string RoleName { get; set; } = string.Empty;
+
+        public string AlternateTitle { get; set; } = string.Empty;
     }
 
     #region Loadouts

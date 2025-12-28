@@ -10,6 +10,7 @@
   startingGear: ServiceWorkerGear
   icon: "JobIconServiceWorker"
   supervisors: job-supervisors-service
+<<<<<<< HEAD
   accessGroups: # Frontier
   - GeneralAccess # Frontier
   # access: # Frontier
@@ -19,6 +20,21 @@
   # - Kitchen # Frontier
   # extendedAccess: # Frontier
   # - Hydroponics # Frontier
+=======
+  access:
+  - Service
+  - Maintenance
+  - Bar
+  - Kitchen
+  extendedAccess:
+  - Hydroponics
+  alternateTitles:
+  - ServiceWorkerWaiter
+  - ServiceWorkerJuniorCook
+  - ServiceWorkerBartenderApprentice
+  - ServiceWorkerCroupier
+  - ServiceWorkerSteward
+>>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: ServiceWorkerGear
@@ -29,3 +45,23 @@
   #storage:
     #back:
     #- Stuff
+
+- type: jobAlternateTitle
+  id: ServiceWorkerWaiter
+  name: job-name-alt-serviceworker-1
+
+- type: jobAlternateTitle
+  id: ServiceWorkerJuniorCook
+  name: job-name-alt-serviceworker-2
+
+- type: jobAlternateTitle
+  id: ServiceWorkerBartenderApprentice
+  name: job-name-alt-serviceworker-3
+
+- type: jobAlternateTitle
+  id: ServiceWorkerCroupier
+  name: job-name-alt-serviceworker-4
+
+- type: jobAlternateTitle
+  id: ServiceWorkerSteward
+  name: job-name-alt-serviceworker-5
