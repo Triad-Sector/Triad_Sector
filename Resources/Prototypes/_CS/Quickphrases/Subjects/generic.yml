@@ -17,3 +17,136 @@
   id: WeinerPhrase
   parent: BaseSubjectPhrase
   text: phrase-weiner
+
+# Phonetic Alphabet
+
+- type: quickPhrase
+  id: BasePhoneticPhrase
+  group: Phonetic
+  styleClass: LogisticsButton
+  abstract: true
+
+- type: quickPhrase
+  id: AlphaPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-alpha
+
+- type: quickPhrase
+  id: BravoPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-bravo
+
+- type: quickPhrase
+  id: CharliePhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-charlie
+
+- type: quickPhrase
+  id: DeltaPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-delta
+
+- type: quickPhrase
+  id: EchoPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-echo
+
+- type: quickPhrase
+  id: FoxtrotPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-foxtrot
+
+- type: quickPhrase
+  id: GolfPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-golf
+
+- type: quickPhrase
+  id: HotelPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-hotel
+
+- type: quickPhrase
+  id: IndiaPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-india
+
+- type: quickPhrase
+  id: JuliettPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-juliett
+
+- type: quickPhrase
+  id: KiloPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-kilo
+
+- type: quickPhrase
+  id: LimaPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-lima
+
+- type: quickPhrase
+  id: MikePhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-mike
+
+- type: quickPhrase
+  id: NovemberPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-november
+
+- type: quickPhrase
+  id: OscarPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-oscar
+
+- type: quickPhrase
+  id: PapaPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-papa
+
+- type: quickPhrase
+  id: QuebecPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-quebec
+
+- type: quickPhrase
+  id: RomeoPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-romeo
+
+- type: quickPhrase
+  id: SierraPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-sierra
+
+- type: quickPhrase
+  id: TangoPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-tango
+
+- type: quickPhrase
+  id: VictorPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-victor
+
+- type: quickPhrase
+  id: WhiskeyPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-whiskey
+
+- type: quickPhrase
+  id: XrayPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-xray
+
+- type: quickPhrase
+  id: YankeePhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-yankee
+
+- type: quickPhrase
+  id: ZuluPhrase
+  parent: [BaseSubjectPhrase, BasePhoneticPhrase]
+  text: phrase-zulu
