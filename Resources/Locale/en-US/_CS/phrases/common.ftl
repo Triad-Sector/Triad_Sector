@@ -2,6 +2,7 @@ phrase-mute = mute
 phrase-talk = talk
 phrase-butt = butt
 phrase-weiner = weiner
+phrase-balls = balls
 
 phrase-alpha = alpha
 phrase-bravo = bravo

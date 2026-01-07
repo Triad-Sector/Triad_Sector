@@ -18,6 +18,11 @@
   parent: BaseSubjectPhrase
   text: phrase-weiner
 
+- type: quickPhrase
+  id: BallsPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-balls
+
 # Phonetic Alphabet
 
 - type: quickPhrase

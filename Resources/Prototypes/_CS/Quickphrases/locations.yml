@@ -64,6 +64,11 @@
   id: LocationNauticalCargoBayPhrase
   text: phrase-location-nautical-cargo-bay
 
+- type: quickPhrase
+  parent: BaseNauticalLocationPhrase
+  id: LocationNauticalDockingToPhrase
+  text: phrase-location-nautical-docking-to
+
 # # Stations
 - type: quickPhrase
   parent: [BaseStationPhrase, BaseLocationPhrase]
