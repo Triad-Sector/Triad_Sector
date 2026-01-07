@@ -989,3 +989,65 @@
   id: SpaceweedPhrase
   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
   text: phrase-spaceweed
+
+# pride phrases
+
+- type: quickPhrase
+  id: BasePridePhrase
+  group: Pride
+  abstract: true
+
+- type: quickPhrase
+  id: LGBTQPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-lgbtq
+
+- type: quickPhrase
+  id: AromanticPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-aromantic
+
+- type: quickPhrase
+  id: AsexualPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-asexual
+
+- type: quickPhrase
+  id: BisexualPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-bisexual
+
+- type: quickPhrase
+  id: GayPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-gay
+
+- type: quickPhrase
+  id: IntersexPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-intersex
+
+- type: quickPhrase
+  id: LesbianPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-lesbian
+
+- type: quickPhrase
+  id: NonbinaryPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-nonbinary
+
+- type: quickPhrase
+  id: PansexualPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-pansexual
+
+- type: quickPhrase
+  id: PolyamoryPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-polyamory
+
+- type: quickPhrase
+  id: TransgenderPhrase
+  parent: [BaseSubjectPhrase, BasePridePhrase]
+  text: phrase-transgender

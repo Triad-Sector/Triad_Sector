@@ -201,3 +201,17 @@ phrase-latex = latex
 phrase-musk = musk
 phrase-skunk = skunk
 phrase-spaceweed = spaceweed
+
+# pride
+
+phrase-lgbtq = lgbtq
+phrase-aromantic = aromantic
+phrase-asexual = asexual
+phrase-bisexual = bisexual
+phrase-gay = gay
+phrase-intersex = intersex
+phrase-lesbian = lesbian
+phrase-nonbinary = nonbinary
+phrase-pansexual = pansexual
+phrase-polyamory = polyamory
+phrase-transgender = transgender
