@@ -9,6 +9,158 @@
   text: phrase-talk
 
 - type: quickPhrase
+  id: FriendPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-friend
+
+- type: quickPhrase
+  id: AllyPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-ally
+
+- type: quickPhrase
+  id: EnemyPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-enemy
+
+- type: quickPhrase
+  id: FoePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-foe
+
+- type: quickPhrase
+  id: BuyPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-buy
+
+- type: quickPhrase
+  id: SellPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-sell
+
+- type: quickPhrase
+  id: TradePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-goodmorn
+
+- type: quickPhrase
+  id: GoodNightPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-goodnight
+
+- type: quickPhrase
+  id: SleepPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-sleep
+
+- type: quickPhrase
+  id: TiredPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-tired
+
+- type: quickPhrase
+  id: BedPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-bed
+
+- type: quickPhrase
+  id: RestPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-rest
+
+- type: quickPhrase
+  id: DonePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-done
+
+- type: quickPhrase
+  id: CompletePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-complete
+
+- type: quickPhrase
+  id: YayPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-yay
+
+- type: quickPhrase
+  id: NowPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-now
+
+- type: quickPhrase
+  id: LaterPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-later
+
+- type: quickPhrase
+  id: ToPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-to
+
+- type: quickPhrase
+  id: ReadyPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-ready
+
+- type: quickPhrase
+  id: MakePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-make
+
+- type: quickPhrase
+  id: findPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-find
+
+- type: quickPhrase
+  id: FoundPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-found
+
+- type: quickPhrase
+  id: DoubtPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-doubt
+
+- type: quickPhrase
+  id: LikePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-like
+
+- type: quickPhrase
+  id: DislikePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-dislike
+
+- type: quickPhrase
+  id: LovePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-love
+
+- type: quickPhrase
+  id: HatePhrase
+  parent: BaseSubjectPhrase
+  text: phrase-hate
+
+- type: quickPhrase
+  id: FirstPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-first
+
+- type: quickPhrase
+  id: LastPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-last
+
+- type: quickPhrase
+  id: FabricatorPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-fabricator
+
+# Lewd Phrases
+
+- type: quickPhrase
   id: ButtPhrase
   parent: BaseSubjectPhrase
   text: phrase-butt
@@ -22,6 +174,11 @@
   id: BallsPhrase
   parent: BaseSubjectPhrase
   text: phrase-balls
+
+- type: quickPhrase
+  id: AssPhrase
+  parent: BaseSubjectPhrase
+  text: phrase-ass
 
 # Phonetic Alphabet
 
@@ -155,3 +312,680 @@
   id: ZuluPhrase
   parent: [BaseSubjectPhrase, BasePhoneticPhrase]
   text: phrase-zulu
+
+# botanical phrases
+
+- type: quickPhrase
+  id: BaseBotanicalPhrase
+  group: Botany
+  styleClass: ServiceButton
+  abstract: true
+
+- type: quickPhrase
+  id: BasePlantPhrase
+  group: Plants
+  styleClass: ServiceButton
+  abstract: true
+
+- type: quickPhrase
+  id: GrowPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-grow
+
+- type: quickPhrase
+  id: GrowingPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-growing
+
+- type: quickPhrase
+  id: MedicinalPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-medicinal
+
+- type: quickPhrase
+  id: ExoticPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-exotic
+
+- type: quickPhrase
+  id: HydroponicPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-hydroponic
+
+- type: quickPhrase
+  id: HydroponicTrayPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-hydroponictray
+
+- type: quickPhrase
+  id: SoilPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-soil
+
+- type: quickPhrase
+  id: MutationPhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-mutation
+
+- type: quickPhrase
+  id: MutatePhrase
+  parent: [BaseSubjectPhrase, BaseBotanicalPhrase]
+  text: phrase-mutate
+
+# Plants (non-mutations)
+
+- type: quickPhrase
+  id: AbrosiaVulgarisPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-vulgaris
+
+- type: quickPhrase
+  id: ApplePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-apple
+
+- type: quickPhrase
+  id: AvocadoPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-avocado
+
+- type: quickPhrase
+  id: BananaPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-banana
+
+- type: quickPhrase
+  id: BerryPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-berry
+
+- type: quickPhrase
+  id: BungoPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-bungo
+
+- type: quickPhrase
+  id: CabbagePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cabbage
+
+- type: quickPhrase
+  id: CannabisPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cannabis
+
+- type: quickPhrase
+  id: CarrotPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-carrot
+
+- type: quickPhrase
+  id: ChanterellePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-chanterelle
+
+- type: quickPhrase
+  id: CherryPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cherry
+
+- type: quickPhrase
+  id: ChiliPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-chili
+
+- type: quickPhrase
+  id: CocoaPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cocoa
+
+- type: quickPhrase
+  id: CoffeePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-coffee
+
+- type: quickPhrase
+  id: CornPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-corn
+
+- type: quickPhrase
+  id: CottonPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cotton
+
+- type: quickPhrase
+  id: CucumberPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-cucumber
+
+- type: quickPhrase
+  id: EggplantPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-eggplant
+
+- type: quickPhrase
+  id: GarlicPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-garlic
+
+- type: quickPhrase
+  id: GatfruitPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-gatfruit
+
+- type: quickPhrase
+  id: GrapePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-grape
+
+- type: quickPhrase
+  id: HumpshroomPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-humpshroom
+
+- type: quickPhrase
+  id: LemonPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-lemon
+
+- type: quickPhrase
+  id: LimePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-lime
+
+- type: quickPhrase
+  id: LingzhiPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-lingzhi
+
+- type: quickPhrase
+  id: NettlePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-nettle
+
+- type: quickPhrase
+  id: OatPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-oat
+
+- type: quickPhrase
+  id: PeaPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-pea
+
+- type: quickPhrase
+  id: PearPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-pear
+
+- type: quickPhrase
+  id: PineapplePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-pineapple
+
+- type: quickPhrase
+  id: PomegranatePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-pomegranate
+
+- type: quickPhrase
+  id: PumpkinPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-pumpkin
+
+- type: quickPhrase
+  id: RedOnionPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-redonion
+
+- type: quickPhrase
+  id: SoyBeanPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-soybean
+
+- type: quickPhrase
+  id: SpacemanTrumpetPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-spaceman
+
+- type: quickPhrase
+  id: SugarcanePhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-sugarcane
+
+- type: quickPhrase
+  id: TeaPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-tea
+
+- type: quickPhrase
+  id: TobaccoPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-tobacco
+
+- type: quickPhrase
+  id: TowerCapPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-towercap
+
+- type: quickPhrase
+  id: WatermelonPhrase
+  parent: [BaseSubjectPhrase, BasePlantPhrase]
+  text: phrase-watermelon
+
+# smell phrases
+
+- type: quickPhrase
+  id: BaseSmellPhrase
+  group: Scents
+  styleClass: ScienceButton
+  abstract: true
+
+- type: quickPhrase
+  id: SmellPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-smell
+
+- type: quickPhrase
+  id: SmellsLikePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-smellslike
+
+- type: quickPhrase
+  id: AcridPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-acrid
+
+- type: quickPhrase
+  id: AlmondPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-almond
+
+- type: quickPhrase
+  id: ApplesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-apples
+
+- type: quickPhrase
+  id: AshwoodPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-ashwood
+
+- type: quickPhrase
+  id: BasilPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-basil
+
+- type: quickPhrase
+  id: BergamotPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-bergamot
+
+- type: quickPhrase
+  id: BlueberryPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-blueberry
+
+- type: quickPhrase
+  id: BurningPlasticPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-burningplastic
+
+- type: quickPhrase
+  id: CardamomPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cardamom
+
+- type: quickPhrase
+  id: CedarwoodPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cedarwood
+
+- type: quickPhrase
+  id: ChamomilePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-chamomile
+
+- type: quickPhrase
+  id: CherriesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cherries
+
+- type: quickPhrase
+  id: CherryBlossomPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cherryblossom
+
+- type: quickPhrase
+  id: CigarettesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cigarettes
+
+- type: quickPhrase
+  id: CinnamonPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cinnamon
+
+- type: quickPhrase
+  id: CitrusPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-citrus
+
+- type: quickPhrase
+  id: ClovesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cloves
+
+- type: quickPhrase
+  id: CookiesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cookies
+
+- type: quickPhrase
+  id: CookingOilPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-cookingoil
+
+- type: quickPhrase
+  id: DarkChocolatePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-darkchocolate
+
+- type: quickPhrase
+  id: DustPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-dust
+
+- type: quickPhrase
+  id: EucalyptusPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-eucalyptus
+
+- type: quickPhrase
+  id: FastFoodPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-fastfood
+
+- type: quickPhrase
+  id: FigPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-fig
+
+- type: quickPhrase
+  id: FrankincensePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-frankincense
+
+- type: quickPhrase
+  id: FreshBreadPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-freshbread
+
+- type: quickPhrase
+  id: GluePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-glue
+
+- type: quickPhrase
+  id: GrapefruitPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-grapefruit
+
+- type: quickPhrase
+  id: GreenteaPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-greentea
+
+- type: quickPhrase
+  id: GunpowderPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-gunpowder
+
+- type: quickPhrase
+  id: HarshChemPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-harshchem
+
+- type: quickPhrase
+  id: HazelnutPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-hazelnut
+
+- type: quickPhrase
+  id: IrisPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-iris
+
+- type: quickPhrase
+  id: JasminePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-jasmine
+
+- type: quickPhrase
+  id: KitchenPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-kitchen
+
+- type: quickPhrase
+  id: LavenderPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-lavender
+
+- type: quickPhrase
+  id: LemonZestPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-lemonzest
+
+- type: quickPhrase
+  id: LinenPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-linen
+
+- type: quickPhrase
+  id: LiquorPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-liquor
+
+- type: quickPhrase
+  id: MilkAndSugarPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-milkandsugar
+
+- type: quickPhrase
+  id: MintPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-mint
+
+- type: quickPhrase
+  id: MotoroilPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-motoroil
+
+- type: quickPhrase
+  id: OilPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-oil
+
+- type: quickPhrase
+  id: OldBooksPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-oldbooks
+
+- type: quickPhrase
+  id: OrangeBlossomsPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-orangeblossoms
+
+- type: quickPhrase
+  id: OrangeCreamsiclePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-orangecreamsicle
+
+- type: quickPhrase
+  id: OzonePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-ozone
+
+- type: quickPhrase
+  id: PaintPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-paint
+
+- type: quickPhrase
+  id: PaintThinnerPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-paintthinner
+
+- type: quickPhrase
+  id: PatchouliPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-patchouli
+
+- type: quickPhrase
+  id: PeachesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-peaches
+
+- type: quickPhrase
+  id: PearsPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-pears
+
+- type: quickPhrase
+  id: PinePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-pine
+
+- type: quickPhrase
+  id: RainPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-rain
+
+- type: quickPhrase
+  id: RosewaterPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-rosewater
+
+- type: quickPhrase
+  id: SandalwoodPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-sandalwood
+
+- type: quickPhrase
+  id: SeasaltPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-seasalt
+
+- type: quickPhrase
+  id: SmokePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-smoke
+
+- type: quickPhrase
+  id: SmokedWoodPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-smokedwood
+
+- type: quickPhrase
+  id: SpicesPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-spices
+
+- type: quickPhrase
+  id: StrawberryPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-strawberry
+
+- type: quickPhrase
+  id: SupergluePhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-superglue
+
+- type: quickPhrase
+  id: SweatPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-sweat
+
+- type: quickPhrase
+  id: VanillaPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-vanilla
+
+- type: quickPhrase
+  id: WarmHoneyPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-warmhoney
+
+- type: quickPhrase
+  id: WeldingFuelPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-weldingfuel
+
+- type: quickPhrase
+  id: WildflowersPhrase
+  parent: [BaseSubjectPhrase, BaseSmellPhrase]
+  text: phrase-wildflowers
+
+# lewd scents
+
+- type: quickPhrase
+  id: BaseSmellLewdPhrase
+  group: Scents (Lewd)
+  styleClass: ScienceButton
+  abstract: true
+
+- type: quickPhrase
+  id: BankCustomersPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-bankcustomers
+
+- type: quickPhrase
+  id: BoysmellPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-boysmell
+
+- type: quickPhrase
+  id: BoystinkPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-boystink
+
+- type: quickPhrase
+  id: GirlsmellPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-girlsmell
+
+- type: quickPhrase
+  id: GirlStinkPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-girlstink
+
+- type: quickPhrase
+  id: HeatPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-heat
+
+- type: quickPhrase
+  id: InHeatPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-inheat
+
+- type: quickPhrase
+  id: LatexPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-latex
+
+- type: quickPhrase
+  id: MuskPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-musk
+
+- type: quickPhrase
+  id: SkunkPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-skunk
+
+- type: quickPhrase
+  id: SpaceweedPhrase
+  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+  text: phrase-spaceweed
