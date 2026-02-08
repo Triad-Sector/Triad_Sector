@@ -20,6 +20,7 @@ accept-cryo-window-prompt-two-deposit-boxes-warning = You have a {$box1} and a {
 accept-cryo-window-prompt-many-deposit-boxes-warning = You have {$count} safety deposit boxes unstored!
 accept-cryo-window-prompt-uplink-warning = You have a {$uplink} in your {$storage} with {$amount} {$currency}!
 accept-cryo-window-prompt-unable-to-scan = Your inventory couldn't be scanned for important items due to an error.
+accept-cryo-window-prompt-hand-slot-name = hand
 
 cryo-wakeup-window-title = Waking up
 cryo-wakeup-window-accept-button = Accept
