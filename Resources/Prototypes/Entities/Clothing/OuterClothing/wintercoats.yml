@@ -172,10 +172,10 @@
   name: chief medical officer's winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatcmo.rsi
+    sprite: _DV/Clothing/OuterClothing/WinterCoats/cmo.rsi # DeltaV - Recolor to match department color
   - type: Item
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatcmo.rsi
+    sprite: _DV/Clothing/OuterClothing/WinterCoats/cmo.rsi # DeltaV - Recolor to match department color
   - type: Armor
     modifiers:
       coefficients:
@@ -325,10 +325,10 @@
   name: medical winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatmed.rsi
+    sprite: _DV/Clothing/OuterClothing/WinterCoats/medical.rsi # DeltaV - Recolor to match department color
   - type: Item
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatmed.rsi
+    sprite: _DV/Clothing/OuterClothing/WinterCoats/medical.rsi # DeltaV - Recolor to match department color
   - type: Armor
     modifiers:
       coefficients:
