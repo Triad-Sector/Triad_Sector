@@ -1,3 +1,4 @@
+using Content.Server._Mono.Company; // Mono
 using Content.Server._NF.Auth;
 // Triad: tamper protection
 using Content.Server._Triad.Shipyard.Admin;
@@ -85,6 +86,7 @@ namespace Content.Server.IoC
             IoCManager.Register<MultiServerKickManager>();
             IoCManager.Register<CVarControlManager>();
             IoCManager.Register<MiniAuthManager>(); //Frontier
+            IoCManager.Register<CompanyManager>(); // Mono
 
             IoCManager.Register<DiscordLink>();
             IoCManager.Register<DiscordChatLink>();
