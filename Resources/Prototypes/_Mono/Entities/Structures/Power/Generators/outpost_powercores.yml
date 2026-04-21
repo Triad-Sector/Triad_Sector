@@ -1,6 +1,6 @@
 - type: entity
   id: MachineOutpostCore
-  parent: BaseGenerator
+  parent: [BaseGenerator,Base0ContrabandSave] #Triad - testing Base0ContrabandSave
   name: B.R0-200k Bluespace Reactor
   description: A modified FTL drive, safely refitted to release large amounts of power consistently.
   suffix: 200kw

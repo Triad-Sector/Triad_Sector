@@ -1,0 +1,34 @@
+# Triad-specific contraband targets.
+
+# Save & Stash related stuff
+- type: entity
+  parent: BaseContrabandNoValue
+  id: Base0ContrabandSave
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class0Save
+
+- type: entity
+  parent: BaseContrabandNoValue
+  id: Base1ContrabandSave
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class1Save
+
+- type: entity
+  parent: BaseContrabandNoValue
+  id: Base2ContrabandSave
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class2Save
+
+- type: entity
+  parent: BaseContrabandNoValue
+  id: Base3ContrabandSave
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class3Save
