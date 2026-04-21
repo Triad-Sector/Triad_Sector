@@ -1,16 +1,16 @@
 #C0, for stuff that will be deleted on ship saving
 - type: contrabandSeverity
-  id: Class0Save
-  examineText: contraband-examine-text-Class0Save
+  id: ClassSave0
+  examineText: contraband-examine-text-ClassSave0
 
 - type: contrabandSeverity
-  id: Class1Save
-  examineText: contraband-examine-text-Class1Save
+  id: ClassSave1
+  examineText: contraband-examine-text-ClassSave1
 
 - type: contrabandSeverity
-  id: Class2Save
-  examineText: contraband-examine-text-Class2Save
+  id: ClassSave2
+  examineText: contraband-examine-text-ClassSave2
 
 - type: contrabandSeverity
-  id: Class3Save
-  examineText: contraband-examine-text-Class3Save
+  id: ClassSave3
+  examineText: contraband-examine-text-ClassSave3

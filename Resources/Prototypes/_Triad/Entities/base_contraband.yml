@@ -2,33 +2,36 @@
 
 # Save & Stash related stuff
 - type: entity
-  parent: BaseContrabandNoValue
-  id: Base0ContrabandSave
+  id: BaseSaveContraband0
   abstract: true
   components:
   - type: Contraband
-    severity: Class0Save
+    hideCarryStatus: true
+    severity: ClassSave0
+    turnInValues:
+      FederationMilitaryCredit: 0
+      Doubloon: 0
 
 - type: entity
-  parent: BaseContrabandNoValue
-  id: Base1ContrabandSave
+  parent: BaseSaveContraband0
+  id: BaseSaveContraband1
   abstract: true
   components:
   - type: Contraband
-    severity: Class1Save
+    severity: ClassSave1
 
 - type: entity
-  parent: BaseContrabandNoValue
-  id: Base2ContrabandSave
+  parent: BaseSaveContraband0
+  id: BaseSaveContraband2
   abstract: true
   components:
   - type: Contraband
-    severity: Class2Save
+    severity: ClassSave2
 
 - type: entity
-  parent: BaseContrabandNoValue
-  id: Base3ContrabandSave
+  parent: BaseSaveContraband0
+  id: BaseSaveContraband3
   abstract: true
   components:
   - type: Contraband
-    severity: Class3Save
+    severity: ClassSave3
