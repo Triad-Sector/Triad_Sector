@@ -1,4 +1,4 @@
 contraband-examine-text-ClassSave0 = [color=blue]This item is considered class 0 entity, and WILL be removed from your ship on storing.[/color]
 contraband-examine-text-ClassSave1 = [color=blue]This item is considered class 0-1 entity contraband, and WILL be removed from your ship on storing.[/color]
-contraband-examine-text-ClassSave2 = [color=blue]This item is considered class 0-2 entity contraband, and WILL be removed from your ship on storing.[/color]
-contraband-examine-text-ClassSave3 = [color=blue]This item is considered class 0-3 entity contraband, and WILL be removed from your ship on storing.[/color]
+contraband-examine-text-ClassSave2 = [color=blue]This item is considered class 0-2 entity contraband, civilian possession is illegal and WILL be removed from your ship.[/color]
+contraband-examine-text-ClassSave3 = [color=blue]This item is considered class 0-3 entity contraband, its possession is illegal and WILL be removed from your ship.[/color]
