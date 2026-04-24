@@ -58,21 +58,12 @@ public static class ShipSaveYamlSanitizer
         "AirAlarm",
     };
 
-    // Components that should be marked as missing after removal so reconstruction follows prototype defaults.
-    private static readonly HashSet<string> ForcedMissingComponents = new(StringComparer.Ordinal)
-    {
-        "StorageFill",
-        "ContainerFill",
-        "EntityTableContainerFill",
-        "SurplusBundle",
-    };
-
     // Prototype IDs that should never be included in ship exports.
     // Add non-ship entities here to drop them entirely.
     private static readonly HashSet<string> FilteredPrototypes = new(StringComparer.OrdinalIgnoreCase)
     {
         // Machines & circuitboards
-        "MachineFlatpacker",
+        // While moving this into a SavingContraband component remove it one by one
         "CommsComputerCircuitboard",
         "ComputerDNAScanner",
         "ComputerExpeditionDiskPrinter",
@@ -225,7 +216,7 @@ public static class ShipSaveYamlSanitizer
 
                         if (!allowFillComponents)
                         {
-                            foreach (var name in ForcedMissingComponents)
+                            foreach (var name in FillComponentTypes)
                             {
                                 if (!proto.Components.ContainsKey(name))
                                     continue;
@@ -355,7 +346,7 @@ public static class ShipSaveYamlSanitizer
                             continue;
                         }
 
-                        if (ForcedMissingComponents.Contains(typeName))
+                        if (FillComponentTypes.Contains(typeName))
                             removedFromPrototype?.Add(typeName);
 
                         continue;

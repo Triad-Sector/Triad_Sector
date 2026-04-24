@@ -666,6 +666,22 @@
           - SecurityUplink
 
 - type: listing
+  id: UplinkSecurityWT550Magazine
+  name:  uplink-security-wt550magazine-name
+  description: uplink-security-wt550magazine-desc
+  productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    FederationMilitaryCredit: 5
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
   id: UplinkSecurityPistolMagazineRubber
   name:  uplink-security-Magazine9x19mmPistolFMJ-rubber-name
   description: uplink-security-Magazine9x19mmPistolFMJ-rubber-desc

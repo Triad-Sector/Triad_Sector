@@ -5,7 +5,7 @@
   suffix: Non-lethal
   components:
   - type: BallisticAmmoProvider # Inherit whitelist, capacity from parent
-    proto: Cartridge762x51mmRubber
+    proto: Cartridge762x54mmRRubber
 
 # Frontier
 - type: entity

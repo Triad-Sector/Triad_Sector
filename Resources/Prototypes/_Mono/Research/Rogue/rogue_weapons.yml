@@ -91,6 +91,10 @@
   - Magazine762x39mmSubsonic
   - AmmoBox762x39mmSubsonic
   - WeaponSubMachineGunMla73Rogue
+  - Magazine635x40mmCaseless
+  - AmmoBox635x40mmCaseless
+  - MagazineAsmgtUniversal635x40mm
+  - AmmoBox635x40mmCaselessBig
   technologyPrerequisites:
   - RogueAdvancedGuns
   position: 21, 7

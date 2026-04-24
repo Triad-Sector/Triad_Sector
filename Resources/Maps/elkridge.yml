@@ -81062,7 +81062,7 @@ entities:
     - type: Transform
       pos: 26.5,-8.5
       parent: 2
-- proto: Magazine45_ACPSubMachineGunFMJ
+- proto: Magazine46x30mmSubMachineGunTopMountedFMJ
   entities:
   - uid: 5644
     components:

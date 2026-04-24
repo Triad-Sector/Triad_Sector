@@ -634,15 +634,15 @@
       - !type:AllSelector
         children:
         - id: WeaponSniperMosin
-        - id: AmmoBox762x51mmFMJ
+        - id: AmmoBox762x54mmRFMJ
       #SVS
       - !type:AllSelector
         children:
         - id: WeaponRifleSVS
-        - id: Magazine762x51mmFMJ
+        - id: Magazine762x54mmRFMJ
       - id: WeaponLaserPistolNF
       - id: WeaponLaserCarbine
-
+      
 #LootSpawner
 - type: entity
   name: Mono Maint Loot Spawner

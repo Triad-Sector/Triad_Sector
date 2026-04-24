@@ -14020,7 +14020,7 @@ entities:
     - type: Transform
       pos: -6.5,17.5
       parent: 1
-- proto: Magazine556x45mmFMJ
+- proto: Magazine68x52mmCaseless
   entities:
   - uid: 1285
     components:

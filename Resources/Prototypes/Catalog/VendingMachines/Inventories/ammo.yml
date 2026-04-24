@@ -1,6 +1,8 @@
 - type: vendingMachineInventory
   id: AmmoVendInventory
   startingInventory:
+    AmmoBox635x40mmCaseless: 6
+    AmmoBox635x40mmCaselessPractice: 3
 
     AmmoBox762x39mmBigFMJ: 6
     AmmoBox762x39mmPractice: 3

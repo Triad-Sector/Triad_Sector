@@ -38,6 +38,8 @@
   - type: ExtensionCableReceiver
   - type: LightningTarget
     priority: 1
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
 
 - type: entity
   id: BaseDataFarm
@@ -63,6 +65,8 @@
         sound:
           collection: MetalBreak
   - type: Anchorable
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: BaseDataFarmResearch

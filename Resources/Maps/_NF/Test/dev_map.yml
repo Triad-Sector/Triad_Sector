@@ -10257,6 +10257,13 @@ entities:
     - type: Transform
       pos: -3.4749937,-0.052083336
       parent: 179
+- proto: WeaponRifleJackdaw
+  entities:
+  - uid: 1575
+    components:
+    - type: Transform
+      pos: -2.5246894,0.13796169
+      parent: 179
 - proto: WeaponRifleNovaliteC1
   entities:
   - uid: 1201

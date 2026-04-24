@@ -1,8 +1,8 @@
 - type: entity
   id: WeaponRifleAK410
-  name: NCI AK-410 (762x51mm)
+  name: NCI AK-410 (7.62x54mmR)
   parent: BaseWeaponRifle
-  description: "Bullpup DMR feeding from 762x51mm magazines, developed to modernize USSP long-range infantry weapons."
+  description: "Bullpup DMR feeding from 762x54mmR magazines, developed to modernize USSP long-range infantry weapons."
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Snipers/ak410.rsi
@@ -39,21 +39,21 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine762x51mmFMJ
+        startingItem: Magazine762x54mmRFMJ
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
         priority: 2
         whitelist:
           tags:
-          - Magazine762x51mmFMJ
+          - Magazine762x54mmRFMJ
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge762x51mmFMJ
+        startingItem: Cartridge762x54mmRFMJ
         priority: 1
         whitelist:
           tags:
-          - Cartridge762x51mmFMJ
+          - Cartridge762x54mmRFMJ
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot

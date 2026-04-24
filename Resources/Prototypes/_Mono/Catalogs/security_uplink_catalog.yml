@@ -157,10 +157,10 @@
 #      - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMagazine762x51mmFMJ
-  name:  uplink-security-762x51mmFMJ-magazine-name
-  description: uplink-security-762x51mmFMJ-magazine-desc
-  productEntity: Magazine762x51mmFMJ
+  id: UplinkSecurityMagazine8x65mm
+  name:  uplink-security-8x65mm-magazine-name
+  description: uplink-security-8x65mm-magazine-desc
+  productEntity: Magazine8x65mmSKR
   cost:
     FederationMilitaryCredit: 5
   categories:
@@ -173,11 +173,41 @@
 
 - type: listing
   id: UplinkSecurityBoxSKR
-  name:  uplink-security-762x51mmFMJ-box-name
-  description: uplink-security-762x51mmFMJ-box-desc
-  productEntity: AmmoBox762x51mmFMJ
+  name:  uplink-security-8x65mm-box-name
+  description: uplink-security-8x65mm-box-desc
+  productEntity: AmmoBox8x65mmSKR
   cost:
     FederationMilitaryCredit: 12
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMagazine68x52mm
+  name:  uplink-security-68x52mm-magazine-name
+  description: uplink-security-68x52mm-magazine-desc
+  productEntity: Magazine68x52mmCaseless
+  cost:
+    FederationMilitaryCredit: 2
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBox68x52mm
+  name:  uplink-security-68x52mm-box-name
+  description: uplink-security-68x52mm-box-desc
+  productEntity: AmmoBox68x52mmCaselessBig
+  cost:
+    FederationMilitaryCredit: 8
   categories:
   - UplinkSecurityAmmo
   conditions:

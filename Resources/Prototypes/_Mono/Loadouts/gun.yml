@@ -161,6 +161,13 @@
     back:
     - WeaponRifleSVS
 
+- type: loadout #Mosin / SVS42 Ammo
+  id: Mercenary762x54mmRAmmoLoadout
+  price: 1000
+  storage:
+    back:
+    - BoxMagazine762x54mmRFMJ
+
 # Shotguns
 
 - type: loadout #Kammerer
@@ -234,6 +241,13 @@
   storage:
     back:
     - WeaponSubMachineGunWt550PMC
+
+- type: loadout #WT550 Ammo
+  id: Mercenary46x30mmTopAmmoLoadout
+  price: 1000
+  storage:
+    back:
+    - BoxMagazine46x30mmSubMachineGunTopMountedFMJ
 
 - type: loadout #C20r
   id: MercenaryC20rLoadout
@@ -328,7 +342,7 @@
   price: 500
   storage:
     back:
-    - BoxMagazine45_ACPSubMachineGunFMJ
+    - BoxMagazine45_ACPFMJ
 
 - type: loadout #Sawn-off
   id: MercenarySawedOffLoadout
@@ -561,11 +575,11 @@
     - WeaponRifleMR3C
 
 - type: loadout #Bandit Ammo
-  id: Faction762x51mmFMJAmmoLoadout
+  id: Faction8x65mmAmmoLoadout
   price: 0
   storage:
     back:
-    - BoxMagazine762x51mmFMJ
+    - BoxMagazine8x65mmFMJ
 
 - type: loadout #AKM
   id: FactionAkmLoadout
@@ -602,6 +616,13 @@
     back:
     - WeaponRifleSVS
 
+- type: loadout #Mosin / SVS42 Ammo
+  id: Faction762x54mmRAmmoLoadout
+  price: 0
+  storage:
+    back:
+    - BoxMagazine762x54mmRFMJ
+
 # SMGs
 
 - type: loadout #Drozd
@@ -631,6 +652,13 @@
   storage:
     back:
     - WeaponSubMachineGunWt550
+
+- type: loadout #WT550 Ammo
+  id: Faction46x30mmTopAmmo
+  price: 0
+  storage:
+    back:
+    - BoxMagazine46x30mmSubMachineGunTopMountedFMJ
 
 - type: loadout #C20r
   id: FactionC20RLoadout

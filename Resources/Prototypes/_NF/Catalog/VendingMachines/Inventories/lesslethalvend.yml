@@ -9,6 +9,7 @@
   # Ammo boxes
     AmmoBox12_gaugeBeanbag: 8
     AmmoBox556x45mmRubber: 8
+    AmmoBox635x40mmCaselessRubber: 10
     AmmoBox762x39mmRubber: 5
     AmmoBox9x19mmRubber: 10
     AmmoBox45_magnumRubber: 10
@@ -33,6 +34,7 @@
   # Ammo boxes
     AmmoBox12_gaugeBeanbag: 4294967295 # Infinite
     AmmoBox556x45mmRubber: 4294967295 # Infinite
+    AmmoBox635x40mmCaselessRubber: 4294967295 # Infinite
     AmmoBox762x39mmRubber: 4294967295 # Infinite
     AmmoBox9x19mmRubber: 4294967295 # Infinite
     AmmoBox45_magnumRubber: 4294967295 # Infinite

@@ -86,6 +86,8 @@
     - Experimental
     - CivilianServices
     - MechaEngineering
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
 
 - type: entity
   id: ResearchAndDevelopmentServerRogues
@@ -112,6 +114,8 @@
     - Experimental
     - CivilianServices
     - MechaEngineering
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
 
 - type: entity
   id: ResearchAndDevelopmentServerUssp
@@ -139,6 +143,8 @@
     - Experimental
     - CivilianServices
     - MechaEngineering
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: ResearchAndDevelopmentServerDebug

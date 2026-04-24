@@ -4,7 +4,7 @@
   id: MagazineAsmgtUniversalEmpty
   name: "ASMGT-compatible ammo box"
   description: |-
-   Universal ASMGT-compatible ammo box capable of accepting 5.56x45mm, 7.62x39mm and 9x19mm cartridges.
+   Universal ASMGT-compatible ammo box capable of accepting 5.56x45mm, 6.35x40mm, 7.62x39mm and 9x19mm cartridges.
   suffix: empty
   components:
   - type: Tag
@@ -19,6 +19,7 @@
         - Cartridge9x19mmFMJ
         - Cartridge556x45mmFMJ
         - Cartridge762x39mmFMJ
+        - Cartridge635x40mmCaseless
     capacity: 50
   - type: ContainerContainer
     containers:
@@ -44,7 +45,7 @@
   components:
   - type: BallisticAmmoProvider
     proto: Cartridge9x19mmFMJ
-
+    
 - type: entity
   parent: MagazineAsmgtUniversalEmpty
   id: MagazineAsmgtUniversal762x39mm
@@ -62,3 +63,12 @@
   components:
   - type: BallisticAmmoProvider
     proto: Cartridge556x45mmFMJ
+
+- type: entity
+  parent: MagazineAsmgtUniversalEmpty
+  id: MagazineAsmgtUniversal635x40mm
+  name: "ASMGT-compatible ammo box (6.35x40mm)"
+  suffix: Loaded
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge635x40mmCaseless

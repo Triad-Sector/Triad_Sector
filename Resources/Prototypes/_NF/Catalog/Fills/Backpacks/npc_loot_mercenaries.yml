@@ -422,9 +422,9 @@
       prob: 0.4
     - id: AmmoBox762x39mmBigFMJ
       prob: 0.2
-    - id: AmmoBox762x51mmFMJ # mono
+    - id: AmmoBox8x65mmSKR # mono
       prob: 0.2
-    - id: Magazine762x51mmFMJ # mono
+    - id: Magazine8x65mmSKR # mono
       prob: 0.2
     sound:
       path: /Audio/Items/jumpsuit_equip.ogg

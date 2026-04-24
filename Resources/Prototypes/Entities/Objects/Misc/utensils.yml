@@ -18,6 +18,7 @@
       path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Shitmed/Medical/Surgery/hemostat1.ogg
+  - type: HLPersistOnShipSave # Triad, utensils will save
 
 - type: entity
   parent: UtensilBase

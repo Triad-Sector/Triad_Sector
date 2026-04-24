@@ -6,7 +6,6 @@ using Content.Server.Construction.Components;
 using Content.Server.Spreader;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Store.Components; // HardLight
 using Content.Server._HL.Shipyard; // HardLight
 using Content.Shared._Common.Consent; // HardLight
 using Content.Shared._HL.Shipyard; // HardLight
@@ -17,16 +16,10 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
-using Content.Shared.Implants.Components; // HardLight
-using Content.Shared.Light.Components; // HardLight
 using Content.Shared.Mind.Components; // HardLight
 using Content.Shared.Shuttles.Save; // For SendShipSaveDataClientMessage
-using Content.Shared.SprayPainter.Components; // HardLight
-using Content.Shared.SprayPainter.Prototypes; // HardLight
-using Content.Shared.Storage.Components;
 using Content.Shared.VendingMachines;
 using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
-using Robust.Server.GameObjects; // HardLight
 using Robust.Server.Player;
 using Robust.Shared.Containers;
 using Robust.Shared.ContentPack;
@@ -39,14 +32,14 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes; // HardLight
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
-using Robust.Shared.Serialization.Markdown.Sequence;
-using Robust.Shared.Serialization.Markdown.Value;
 using Robust.Shared.Utility;
 using YamlDotNet.Core;
 using YamlDotNet.RepresentationModel;
 using Content.Server.Light.Components;
 using Content.Shared._Triad.Shipyard;
 using System.Linq;
+using Content.Shared.Containers;
+using Content.Shared.Doors.Components;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -57,13 +50,6 @@ namespace Content.Server._NF.Shipyard.Systems;
 /// </summary>
 public sealed class ShipyardGridSaveSystem : EntitySystem
 {
-    // HardLight: List of currency prototypes that should be stripped from ship saves.
-    private static readonly HashSet<string> NonPersistentShipSaveCurrencies = new(StringComparer.Ordinal)
-    {
-        "Telecrystal",
-        // "Doubloon",
-    };
-
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -78,10 +64,11 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     private ISawmill _sawmill = default!;
     private MapLoaderSystem _mapLoader = default!;
 
+    private HashSet<Entity<TransformComponent>> _shipSaveEntityList = new();
     private HashSet<Entity<ShipSaveLimitComponent>> _limitedEntitiesList = new();
 
     private EntityQuery<MapGridComponent> _gridQuery;
-    private EntityQuery<SecretStashComponent> _secretStashQuery;
+    private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
     private EntityQuery<HLPersistOnShipSaveComponent> _persistOnSaveQuery;
     private EntityQuery<TransformComponent> _transformQuery;
 
@@ -90,7 +77,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         base.Initialize();
 
         _gridQuery = GetEntityQuery<MapGridComponent>();
-        _secretStashQuery = GetEntityQuery<SecretStashComponent>();
+        _containerManagerQuery = GetEntityQuery<ContainerManagerComponent>();
         _persistOnSaveQuery = GetEntityQuery<HLPersistOnShipSaveComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
 
@@ -238,22 +225,23 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
 
         try
         {
-            // Per user request: before purging / serializing, add SecretStashComponent to any entity contained
-            // directly within a secret stash so that they are also considered preserved.
-            TagStashContents(gridUid);
-
             // Clean up broken device links before serialization
             CleanupBrokenDeviceLinks(gridUid);
 
-            // Purge transient entities (unanchored or inside containers) before serialization.
-            // This mutates the live grid, but only removes objects explicitly deemed non-persistent by design.
-            PurgeTransientEntities(gridUid);
+            // Purge invalid entities
+            PurgeInvalidEntities(gridUid);
+
+            // Triad: remove any edge spreaders, we cannot save these
+            RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
 
             // HardLight: Remove components that fail serialization (e.g., player state) from entities on the grid.
             RemoveSerializationBlockingComponentsOnGrid(gridUid);
 
             // Triad: Removing all EdgeSpreaderComponent
             RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
+
+            // Triad: Remove all SavingContrabandComponent which some are illegal to own or possesion and others are causing problems with ship saving
+            RemoveSavingContrabandComponentComponentsOnGrid(gridUid);
 
             //_sawmill.Info($"Serializing ship grid {gridUid} as '{shipName}' after transient purge using direct serialization");
 
@@ -304,10 +292,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             Logger.GetSawmill("hardlight").Error($"Ship save failed for '{shipName}' on grid {gridUid}: {ex}");
             return false;
         }
-        finally
-        {
-            // No-op: mind containers are intentionally removed during ship save.
-        }
     }
 
     /// <summary>
@@ -335,8 +319,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
 
         foreach (var uid in toRemove)
         {
-            _entityManager.RemoveComponent<MindContainerComponent>(uid);
-            _entityManager.RemoveComponent<ConsentComponent>(uid);
+            RemComp<MindContainerComponent>(uid);
+            RemComp<ConsentComponent>(uid);
         }
     }
 
@@ -358,43 +342,23 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Adds <see cref="SecretStashComponent"/> to any entity currently hidden inside a SecretStash on the target grid.
-    /// This satisfies the explicit requirement to "add secretstashcomponent to anything within the bluespace stash".
-    /// NOTE: This will grant those items stash-like behavior (verbs, extra container). If this becomes undesirable,
-    /// consider introducing a lightweight marker component instead and adjusting purge logic to check it.
-    /// </summary>
-    private void TagStashContents(EntityUid gridUid)
+    private void RemoveSavingContrabandComponentComponentsOnGrid(EntityUid gridUid)
     {
-        try
+        var toRemove = new HashSet<EntityUid>();
+
+        var savingContraband = _entityManager.EntityQueryEnumerator<SavingContrabandComponent, TransformComponent>();
+        while (savingContraband.MoveNext(out var uid, out var _, out var xform))
         {
-            var tagged = 0;
-            var stashQuery = _entityManager.EntityQueryEnumerator<SecretStashComponent, TransformComponent>();
-            while (stashQuery.MoveNext(out var stashEnt, out var stashComp, out var xform))
-            {
-                if (xform.GridUid != gridUid)
-                    continue;
-                var hidden = stashComp.ItemContainer?.ContainedEntity;
-                if (hidden == null)
-                    continue;
-                // If already a stash, skip.
-                if (_secretStashQuery.HasComp(hidden.Value))
-                    continue;
-                // Dynamically add the component. OnInit won't run automatically here for networked comps
-                // when added at runtime; EnsureComp will construct and initialize it.
-                EnsureComp<SecretStashComponent>(hidden.Value);
-                tagged++;
-            }
-            /* if (tagged > 0)
-                _sawmill.Info($"TagStashContents: Added SecretStashComponent to {tagged} hidden item(s) on grid {gridUid}"); */
+            if (xform.GridUid != gridUid)
+                continue;
+            toRemove.Add(uid);
         }
-        catch (Exception e)
+
+        foreach (var uid in toRemove)
         {
-            _sawmill.Warning($"TagStashContents: Exception while tagging stash contents on grid {gridUid}: {e.Message}");
+            Del(uid);
         }
     }
-
-
 
     /// <summary>
     /// Cleans up broken device links where one or both linked entities no longer exist.
@@ -444,147 +408,51 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     }
 
     /// <summary>
-    /// Deletes entities on the grid that should not be persisted with the ship:
-    ///  - Any entity whose Transform is not Anchored ("loose on the floor")
-    ///  - Any entity that is currently inside any container (including nested)
-    ///
-    /// IMPORTANT: Anchored entities are never deleted, even if they appear inside containers due to edge cases.
-    ///            Only unanchored entities are eligible for deletion. Contents of preserved bluespace stashes are also kept.
-    /// Excludes the grid root itself.
+    /// Deletes entities on the grid that should not be persisted with the ship, such as unanchored objects or items not inside of a stash.
     /// </summary>
-    private void PurgeTransientEntities(EntityUid gridUid)
+    private void PurgeInvalidEntities(EntityUid gridUid)
     {
-        try
+        if (!_gridQuery.TryComp(gridUid, out var grid))
+            return;
+
+        var entitesToDelete = new List<EntityUid>();
+        var processed = new HashSet<EntityUid>();
+
+        _shipSaveEntityList.Clear();
+
+        // Get the entities on the grid with the ship save limit comp
+        var gridTransform = _transformQuery.GetComponent(gridUid);
+        var worldAABB = _lookup.GetWorldAABB(gridUid, gridTransform);
+        _lookup.GetEntitiesIntersecting(gridTransform.MapID, worldAABB, _shipSaveEntityList);
+
+        foreach ((var ent, var xform) in _shipSaveEntityList)
         {
-            if (!_gridQuery.TryComp(gridUid, out var grid))
-                return;
-            var looseDeletes = new List<EntityUid>();
-            var containerContentDeletes = new List<EntityUid>();
-            var processed = new HashSet<EntityUid>();
+            if (ent == gridUid)
+                continue;
 
-            // Pre-mark all stash roots and their direct hidden item contents as processed so they are never purged.
-            // (User request was to make stash contents survive; instead of mutating items with SecretStashComponent we just exempt them here.)
-            var stashQuery = _entityManager.EntityQueryEnumerator<SecretStashComponent, TransformComponent>();
-            var preservedStashItemCount = 0;
-            while (stashQuery.MoveNext(out var stashEnt, out var stashComp, out var xform))
+            if (!processed.Add(ent))
+                continue;
+
+            if (IsInvalidEntity(ent))
             {
-                if (xform.GridUid != gridUid)
-                    continue;
-                processed.Add(stashEnt); // stash root
-                var hidden = stashComp.ItemContainer?.ContainedEntity;
-                if (hidden != null && _entityManager.EntityExists(hidden.Value))
-                {
-                    // Mark the hidden item as processed so fallback scans won't queue it for deletion.
-                    processed.Add(hidden.Value);
-                    preservedStashItemCount++;
-                }
+                entitesToDelete.Add(ent);
+                continue;
             }
 
-            /* if (preservedStashItemCount > 0)
-                _sawmill.Info($"PurgeTransientEntities: Preserving {preservedStashItemCount} secret stash item(s) on grid {gridUid}");
-
-            _sawmill.Info($"PurgeTransientEntities: Scanning grid {gridUid} for transient entities (loose + contained)"); */
-
-            // 1. Collect all entities spatially present on the grid (this won't include items inside containers)
-            foreach (var ent in _lookup.GetEntitiesIntersecting(gridUid, grid.LocalAABB))
+            if (_containerManagerQuery.TryComp(ent, out var manager))
             {
-                if (ent == gridUid)
-                    continue;
-                // Preserve any secret stash root or bluespace stash prototype entity itself
-                if (_secretStashQuery.HasComp(ent) || _persistOnSaveQuery.HasComp(ent))
-                    processed.Add(ent); // don't treat stash as loose
-                if (!TryQueueLoose(ent, looseDeletes, processed))
-                    continue;
-            }
-
-            // 2. Traverse container graphs on every anchored entity to collect ALL contained descendants
-            foreach (var ent in _lookup.GetEntitiesIntersecting(gridUid, grid.LocalAABB))
-            {
-                if (ent == gridUid)
-                    continue;
-                if (!TryComp<ContainerManagerComponent>(ent, out var manager))
-                    continue;
-                // If this entity is a stash or bluespace stash, preserve its contents entirely.
-                if (_secretStashQuery.HasComp(ent) || _persistOnSaveQuery.HasComp(ent))
-                    continue;
                 foreach (var container in manager.Containers.Values)
                 {
-                    CollectContainerContentsRecursive(container.ContainedEntities, containerContentDeletes, processed);
-                }
-            }
-
-            // Remove any duplicates between lists (if an entity was both loose + in container due to race, unlikely)
-            if (containerContentDeletes.Count > 0)
-            {
-                var contentSet = new HashSet<EntityUid>(containerContentDeletes);
-                looseDeletes.RemoveAll(e => contentSet.Contains(e));
-            }
-
-            var total = looseDeletes.Count + containerContentDeletes.Count;
-
-            if (total == 0)
-            {
-                // Possibly lookup missed because of AABB mismatch or container-only population. Do a fallback exhaustive scan.
-                var fallbackLoose = new List<EntityUid>();
-                var fallbackContained = new List<EntityUid>();
-                var fallbackProcessed = new HashSet<EntityUid>();
-
-                // Exhaustive: iterate every entity with a Transform and check if its GridUid matches.
-                var xformQuery = _entityManager.EntityQueryEnumerator<TransformComponent>();
-                var inspected = 0;
-                while (xformQuery.MoveNext(out var ent, out var xform))
-                {
-                    inspected++;
-                    if (ent == gridUid)
-                        continue;
-                    if (xform.GridUid != gridUid)
-                        continue;
-                    if (_secretStashQuery.HasComp(ent) || _persistOnSaveQuery.HasComp(ent))
+                    foreach (var containedEntity in container.ContainedEntities)
                     {
-                        fallbackProcessed.Add(ent);
-                        continue; // stash root preserved
-                    }
-                    TryQueueLoose(ent, fallbackLoose, fallbackProcessed);
-                    if (_entityManager.TryGetComponent<ContainerManagerComponent>(ent, out var mgr))
-                    {
-                        if (_secretStashQuery.HasComp(ent) || _persistOnSaveQuery.HasComp(ent))
-                            continue; // don't traverse preserved stash contents
-                        foreach (var container in mgr.Containers.Values)
-                            CollectContainerContentsRecursive(container.ContainedEntities, fallbackContained, fallbackProcessed);
+                        if (processed.Add(containedEntity) && IsInvalidEntity(containedEntity))
+                            entitesToDelete.Add(containedEntity);
                     }
                 }
-
-                // Remove duplicates
-                if (fallbackContained.Count > 0)
-                {
-                    var contentSet2 = new HashSet<EntityUid>(fallbackContained);
-                    fallbackLoose.RemoveAll(e => contentSet2.Contains(e));
-                }
-
-                var fallbackTotal = fallbackLoose.Count + fallbackContained.Count;
-                if (fallbackTotal == 0)
-                {
-                    //_sawmill.Info($"PurgeTransientEntities: No transient entities found on grid {gridUid} after fallback (inspected={inspected}, AABB={grid.LocalAABB})");
-                    return;
-                }
-
-                //_sawmill.Info($"PurgeTransientEntities: Primary scan empty; fallback found {fallbackTotal} (loose={fallbackLoose.Count}, contained={fallbackContained.Count}) on grid {gridUid}");
-                DeleteEntityList(fallbackContained, "contained-fallback");
-                DeleteEntityList(fallbackLoose, "loose-fallback");
-                return;
             }
-
-            //_sawmill.Info($"PurgeTransientEntities: Deleting {total} entities (loose={looseDeletes.Count}, contained={containerContentDeletes.Count}) on grid {gridUid}");
-
-            // Delete contained entities first (so container state is clean before possibly deleting loose objects referencing them)
-            DeleteEntityList(containerContentDeletes, "contained");
-            // Then delete loose ones
-            DeleteEntityList(looseDeletes, "loose");
         }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Exception during PurgeTransientEntities on grid {gridUid}: {ex}");
-        }
+
+        DeleteEntityList(entitesToDelete, "ship save sanitization");
     }
 
     /// <summary>
@@ -597,13 +465,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         // Skip if terminating
         if (_entityManager.GetComponent<MetaDataComponent>(uid).EntityLifeStage >= EntityLifeStage.Terminating)
             return false;
-        // HardLight: Remove uplink currencies
-        if (IsNonPersistentShipSaveCurrency(uid))
-            return true;
-        // HardLight: Remove used disposable implanters
-        if (IsSpentDisposableImplanter(uid))
-            return true;
-        if (_secretStashQuery.HasComp(uid) || _persistOnSaveQuery.HasComp(uid))
+        if (_persistOnSaveQuery.HasComp(uid))
             return false; // preserve stash root outright
         if (_gridQuery.HasComp(uid))
             return false; // never delete grid root or nested grids here
@@ -619,17 +481,15 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         // Preserve solutions
         if (HasComp<ContainedSolutionComponent>(uid) || HasComp<SolutionComponent>(uid))
             return false;
-        var anchored = false;
-        if (_transformQuery.TryComp(uid, out var xform))
-            anchored = xform.Anchored;
-        var inContainer = _containerSystem.IsEntityInContainer(uid);
-        // Per updated requirements: anchored entities must never be deleted under any circumstance.
-        if (anchored)
+        // Delete unanchored entities
+        if (_transformQuery.TryComp(uid, out var xform) && xform.Anchored)
             return false;
+
+        var inContainer = _containerSystem.IsEntityInContainer(uid);
         if (inContainer)
         {
             // If this entity (at any ancestor depth) is ultimately inside a secret stash preserve it.
-            if (IsInsideSecretStash(uid))
+            if (IsInsidePersistentStorage(uid))
                 return false;
         }
 
@@ -637,95 +497,15 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         return true;
     }
 
-    // HardLight start
-    // Checks if the entity is a currency that matches any in the NonPersistentShipSaveCurrencies list.
-    private bool IsNonPersistentShipSaveCurrency(EntityUid uid)
-    {
-        if (!TryComp<CurrencyComponent>(uid, out var currency) || currency.Price.Count == 0)
-            return false;
-
-        foreach (var currencyId in currency.Price.Keys)
-        {
-            if (NonPersistentShipSaveCurrencies.Contains(currencyId))
-                return true;
-        }
-
-        return false;
-    }
-
-    // Checks if the entity is an implanter that is marked as implant-only and has no implant currently slotted.
-    private bool IsSpentDisposableImplanter(EntityUid uid)
-    {
-        if (!TryComp<ImplanterComponent>(uid, out var implanter))
-            return false;
-
-        // Disposable implanters are marked implant-only. Once used, they have no implant in the slot.
-        if (!implanter.ImplantOnly)
-            return false;
-
-        return implanter.ImplanterSlot.ContainerSlot?.ContainedEntity is not { Valid: true };
-    }
-    // HardLight end
-
-    private bool TryQueueLoose(EntityUid ent, List<EntityUid> list, HashSet<EntityUid> processed)
-    {
-        if (!Exists(ent))
-            return false;
-        if (!processed.Add(ent))
-            return false; // already processed
-
-        // Delete any entities invalid for saving
-        if (IsInvalidEntity(ent))
-        {
-            list.Add(ent);
-            return true;
-        }
-
-        return false;
-    }
-
-    private void CollectContainerContentsRecursive(IReadOnlyList<EntityUid> contents, List<EntityUid> aggregate, HashSet<EntityUid> processed)
-    {
-        for (var i = 0; i < contents.Count; i++)
-        {
-            var ent = contents[i];
-            if (!_entityManager.EntityExists(ent))
-                continue;
-            if (!processed.Add(ent))
-                continue;
-            if (!IsInvalidEntity(ent))
-                continue;
-
-            // Preserve wall-mounted fixtures explicitly but still traverse their child containers.
-            var isWallMount = _entityManager.HasComponent<WallMountComponent>(ent);
-            // Preserve anchored entities even if they appear within containers; still traverse their child containers.
-            var isAnchored = false;
-            if (_transformQuery.TryComp(ent, out var xform))
-                isAnchored = xform.Anchored;
-            if (!isAnchored && !isWallMount)
-            {
-                aggregate.Add(ent);
-            }
-            if (_entityManager.TryGetComponent<ContainerManagerComponent>(ent, out var manager))
-            {
-                foreach (var container in manager.Containers.Values)
-                {
-                    CollectContainerContentsRecursive(container.ContainedEntities, aggregate, processed);
-                }
-            }
-        }
-    }
-
     /// <summary>
-    /// Returns true if the given entity is contained (at any depth) within a <see cref="SecretStashComponent"/>.
-    /// Walks up container parents until a non-contained entity is reached or a stash root is found.
+    /// Returns true if the given entity is contained in a storage that is considered persistent, such as a machine or ship stash.
     /// </summary>
-    private bool IsInsideSecretStash(EntityUid ent)
+    private bool IsInsidePersistentStorage(EntityUid ent)
     {
         // Fast path: immediately contained?
         if (!_containerSystem.IsEntityInContainer(ent))
             return false;
-        // Walk up container chain.
+
         EntityUid current = ent;
         var safety = 0;
         while (safety++ < 64 && _containerSystem.TryGetContainingContainer(current, out var container))
@@ -733,15 +513,18 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             var owner = container.Owner;
             if (!Exists(owner))
                 return false;
-            if (_secretStashQuery.HasComp(owner))
-                return true; // Found stash root above.
             // Also treat persistent entities as a preservation root.
             if (_persistOnSaveQuery.HasComp(owner))
                 return true; // Found stash root above.
             if (HasComp<MachineComponent>(owner))
                 return true; // This is so machines keep their upgraded parts.
-            if (HasComp<PoweredLightComponent>(owner)) // HardLight
-                return true; // Keep bulbs inside powered lights so ship loads don't depend on ContainerFill.
+            if (HasComp<AirlockComponent>(owner))
+            {
+                if (!TryComp<ContainerFillComponent>(owner, out var containerFill) || containerFill.Containers.Count == 0)
+                    return true; // To ensure airlocks that aren't prefilled don't have their door electronics deleted
+            }
+            if (TryComp<PoweredLightComponent>(owner, out var light) && light.HasLampOnSpawn == null)
+                return true; // Preserve lights inside tubes if they don't refill on spawn
             current = owner;
         }
         return false;
@@ -784,118 +567,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         var stream = new YamlStream { document };
         stream.Save(new YamlMappingFix(new Emitter(writer)), false);
         return writer.ToString();
-    }
-
-    /// <summary>
-    /// Removes problematic components from a grid before saving.
-    /// This includes session-specific data, vending machines, runtime state, etc.
-    /// Uses a two-phase approach: first delete problematic entities, then clean remaining entities.
-    /// </summary>
-    public void CleanGridForSaving(EntityUid gridUid)
-    {
-        //_sawmill.Info($"Starting grid cleanup for {gridUid}");
-
-        var allEntities = new HashSet<EntityUid>();
-
-        // Get all entities on the grid
-        if (_gridQuery.TryComp(gridUid, out var grid))
-        {
-            var gridBounds = grid.LocalAABB;
-            foreach (var entity in _lookup.GetEntitiesIntersecting(gridUid, gridBounds))
-            {
-                if (entity != gridUid) // Don't include the grid itself
-                    allEntities.Add(entity);
-            }
-        }
-
-        //_sawmill.Info($"Found {allEntities.Count} entities to clean on grid");
-
-        var componentsRemoved = 0;
-
-        // PHASE 1: Do not delete entities to preserve physics counts
-        // We'll clean by removing components instead (e.g., VendingMachineComponent)
-       //_sawmill.Info("Phase 1: Skipping entity deletions to preserve physics components");
-        //_sawmill.Info($"Phase 1 complete: deleted {entitiesRemoved} entities");
-
-        // PHASE 2: Clean components from remaining entities
-        // Re-gather remaining entities to avoid processing deleted ones
-        //_sawmill.Info("Phase 2: Cleaning components from remaining entities");
-
-        var remainingEntities = new HashSet<EntityUid>();
-
-        if (_gridQuery.TryComp(gridUid, out grid))
-        {
-            var gridBounds = grid.LocalAABB;
-            foreach (var entity in _lookup.GetEntitiesIntersecting(gridUid, gridBounds))
-            {
-                if (entity != gridUid) // Don't include the grid itself
-                    remainingEntities.Add(entity);
-            }
-        }
-
-        //_sawmill.Info($"Found {remainingEntities.Count} remaining entities to clean components from");
-
-        foreach (var entity in remainingEntities)
-        {
-            try
-            {
-                // Check if entity still exists before processing
-                if (!_entityManager.EntityExists(entity))
-                    continue;
-
-                // Remove session-specific components that shouldn't be saved
-                if (_entityManager.RemoveComponent<ActorComponent>(entity))
-                    componentsRemoved++;
-                if (_entityManager.RemoveComponent<EyeComponent>(entity))
-                    componentsRemoved++;
-
-                // Remove vending machine behavior but keep the entity to preserve physics
-                if (_entityManager.RemoveComponent<VendingMachineComponent>(entity))
-                    componentsRemoved++;
-
-                // Note: Removed PhysicsComponent deletion that was causing collision issues in loaded ships
-                // PhysicsComponent and FixturesComponent are needed for proper collision detection
-
-                // Reset power components to clean state through the proper system
-                if (_entityManager.TryGetComponent<BatteryComponent>(entity, out var battery))
-                {
-                    // Use the battery system instead of direct access
-                    if (_entitySystemManager.TryGetEntitySystem<BatterySystem>(out var batterySystem))
-                    {
-                        batterySystem.SetCharge(entity, battery.MaxCharge);
-                    }
-                }
-
-                // Remove problematic atmospheric state
-                if (_entityManager.RemoveComponent<AtmosDeviceComponent>(entity))
-                    componentsRemoved++;
-
-				// ChemMaster: Log buffer solution state for debugging
-                if (_entityManager.TryGetComponent<ChemMasterComponent>(entity, out var chemMaster))
-                {
-                    if (_entitySystemManager.TryGetEntitySystem<SharedSolutionContainerSystem>(out var solutionSystem))
-                    {
-                        if (solutionSystem.TryGetSolution(entity, "buffer", out var bufferEntity, out var bufferSolution))
-                        {
-                            Logger.GetSawmill("hardlight").Info($"ChemMaster {entity} buffer before save: {bufferSolution.Volume}u, {bufferSolution.Contents.Count} types");
-                            foreach (var reagent in bufferSolution.Contents)
-                            {
-                                Logger.GetSawmill("hardlight").Info($"  - {reagent.Reagent.Prototype}: {reagent.Quantity}u");
-                            }
-                        }
-                    }
-                }
-
-                // Remove any other problematic components
-                // Note: We're being conservative here - removing things that commonly cause issues
-            }
-            catch (Exception ex)
-            {
-                _sawmill.Warning($"Error cleaning entity {entity}: {ex}");
-            }
-        }
-
-        //_sawmill.Info($"Grid cleanup complete: deleted {entitiesRemoved} entities, removed {componentsRemoved} components from {remainingEntities.Count} remaining entities");
     }
 
     /// <summary>

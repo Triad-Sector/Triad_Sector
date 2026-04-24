@@ -6,7 +6,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-  CHANGELOG_DIR: Resources/Changelog/Monolith.yml # Mono
+  CHANGELOG_DIR: Resources/Changelog/Triad.yml # Triad
   PR_NUMBER: ${{ github.event.number }}
 
 jobs:

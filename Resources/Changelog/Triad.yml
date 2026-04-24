@@ -1,0 +1,37 @@
+Entries:
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed stashes having no collision
+  id: 2143
+  time: '2026-04-21T23:27:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/2
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixes door electronics and lights being deleted on ship save
+    - type: Fix
+      message: Fixed constructed lights spawning filled
+    - type: Fix
+      message: 'Bedsheets, plushies, forks/spoons, and plates now save on ships '
+  id: 2144
+  time: '2026-04-22T00:08:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/3
+- author: Triad-Sector
+  changes:
+    - type: Tweak
+      message: HTNs to make the auto pilot better
+  id: 2145
+  time: '2026-04-23T04:18:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/6
+- author: DDrakov
+  changes:
+    - type: Add
+      message: New component for ship saving contraband
+    - type: Tweak
+      message: Data farms will be deleted upon saving
+    - type: Tweak
+      message: Some items will be removed upon deletion and illegal to possess
+  id: 2146
+  time: '2026-04-23T11:27:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/1

@@ -76,64 +76,11 @@ namespace Content.Server.Light.EntitySystems
 
         private void OnMapInit(EntityUid uid, PoweredLightComponent light, MapInitEvent args)
         {
-            // Ensure the container exists (Idempotent – returns existing if present)
-            light.LightBulbContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, LightBulbContainer);
             // TODO: Use ContainerFill dog
             if (light.HasLampOnSpawn != null)
             {
                 var entity = EntityManager.SpawnEntity(light.HasLampOnSpawn, EntityManager.GetComponent<TransformComponent>(uid).Coordinates);
                 _containerSystem.Insert(entity, light.LightBulbContainer);
-            }
-            else
-            {
-                // Fallback: If the container is empty (e.g., from legacy saves that didn't serialize contained bulbs)
-                // spawn a reasonable default based on the light prototype / bulb type so ships don't load dark.
-                if (light.LightBulbContainer.ContainedEntity == null)
-                {
-                    string? fallbackProto = null;
-
-                    // Prefer a specific bulb if the owning entity prototype implies a variant (LED / Exterior / Sodium / Warm / Dim)
-                    var meta = EntityManager.GetComponentOrNull<MetaDataComponent>(uid);
-                    var protoId = meta?.EntityPrototype?.ID;
-                    if (!string.IsNullOrEmpty(protoId))
-                    {
-                        switch (protoId)
-                        {
-                            // Wall lights (tubes)
-                            case "PoweredlightLED":
-                                fallbackProto = "LedLightTube";
-                                break;
-                            case "PoweredlightExterior":
-                                fallbackProto = "ExteriorLightTube";
-                                break;
-                            case "PoweredlightSodium":
-                                fallbackProto = "SodiumLightTube";
-                                break;
-
-                            // Small lights (bulbs)
-                            case "PoweredLEDSmallLight":
-                                fallbackProto = "LedLightBulb";
-                                break;
-                            case "PoweredWarmSmallLight":
-                                fallbackProto = "WarmLightBulb";
-                                break;
-                            case "PoweredDimSmallLight":
-                                fallbackProto = "DimLightBulb";
-                                break;
-                        }
-                    }
-
-                    // Generic fallback if no specific variant matched
-                    if (fallbackProto == null)
-                    {
-                        fallbackProto = light.BulbType == LightBulbType.Tube ? "LightTube" : "LightBulb";
-                    }
-
-                    // Spawn and insert the fallback bulb/tube
-                    var coords = EntityManager.GetComponent<TransformComponent>(uid).Coordinates;
-                    var bulbEnt = EntityManager.SpawnEntity(fallbackProto, coords);
-                    _containerSystem.Insert(bulbEnt, light.LightBulbContainer);
-                }
             }
             // need this to update visualizers
             UpdateLight(uid, light);

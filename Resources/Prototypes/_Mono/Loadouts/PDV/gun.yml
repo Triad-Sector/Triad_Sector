@@ -31,6 +31,7 @@
   minLimit: 1
   loadouts:
   - Faction9x19SMGAmmoLoadout #C20r
+  # - Faction46x30mmTopAmmo #WT550
   # - Faction556x45mmAmmoLoadout #Lecter
   # - Faction762x39mmAmmoLoadout #AKM
   - FactionRechargerLoadout #Energy

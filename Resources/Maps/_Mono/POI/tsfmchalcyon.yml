@@ -6367,7 +6367,7 @@ entities:
     - type: Transform
       pos: 6.5343175,-3.3750856
       parent: 1
-- proto: AmmoBox45_ACPPractice
+- proto: AmmoBox46x30mmPractice
   entities:
   - uid: 330
     components:
@@ -6381,14 +6381,14 @@ entities:
     - type: Transform
       pos: 6.586427,-3.4063356
       parent: 1
-- proto: AmmoBox9x19mmPractice
+- proto: AmmoBox57x28mmPractice
   entities:
   - uid: 332
     components:
     - type: Transform
       pos: 6.5238957,-3.4688356
       parent: 1
-- proto: AmmoBox45_ACPPractice
+- proto: AmmoBox635x40mmCaselessPractice
   entities:
   - uid: 333
     components:
@@ -6409,7 +6409,7 @@ entities:
     - type: Transform
       pos: 6.4822087,-3.4063356
       parent: 1
-- proto: AmmoBox762x51mmPractice
+- proto: AmmoBox762x54mmRPractice
   entities:
   - uid: 336
     components:
@@ -11606,7 +11606,7 @@ entities:
     - type: Transform
       pos: -6.462846,11.782579
       parent: 1
-- proto: BoxMagazine45_ACPSubMachineGunFMJ
+- proto: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
   entities:
   - uid: 1329
     components:
@@ -45805,7 +45805,7 @@ entities:
     - type: Transform
       pos: 3.5,-33.5
       parent: 1
-- proto: Magazine762x51mmFMJ
+- proto: Magazine8x65mmSKR
   entities:
   - uid: 6956
     components:

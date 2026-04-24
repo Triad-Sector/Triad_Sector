@@ -54,6 +54,7 @@
                 collection: MetalGlassBreak
                 params:
                   volume: -4
+    - type: HLPersistOnShipSave # Triad
 
 - type: entity
   parent: ExtinguisherCabinet

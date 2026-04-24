@@ -71,6 +71,7 @@
     openToolQualityNeeded: Slicing
     closeToolQualityNeeded: Slicing # Should probably be stitching or something if that gets added
     name: secret-stash-plushie
+  - type: HLPersistOnShipSave # Triad, plushies will save
 
 - type: entity
   parent: BasePlushie

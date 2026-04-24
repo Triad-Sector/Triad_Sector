@@ -127,10 +127,10 @@
     id: AKM # Frontier
 
 - type: entity
-  name: TCA M-6 Lecter (5.56x45mm)
+  name: TCA M-6 Lecter (6.8x52mm Caseless)
   parent: BaseWeaponRifle
   id: WeaponRifleLecter
-  description: The result of a project to make a new standard rifle for the branches of the TSF military. Accurate, easy to use, and accepts 5.56x45mm magazines to assist with standardization.
+  description: The result of a project to make a new standard rifle for the branches of the TSF military. Accurate, easy to use, and firing the 6.8x52mm STANAG round. Also accepts 5.56x45mm magazines to assist with standardization.
   components:
   - type: Item # Mono
     size: Huge
@@ -154,20 +154,22 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine556x45mmFMJ # Mono
+        startingItem: Magazine68x52mmCaseless # Mono
         insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg # Mono
         ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg # Mono
         priority: 2
         whitelist:
           tags:
+            - Magazine68x52mmCaseless # Mono
             - Magazine556x45mmFMJ # Mono
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge556x45mmFMJ # Mono
+        startingItem: Cartridge68x52mmCaseless # Mono
         priority: 1
         whitelist:
           tags:
+            - Cartridge68x52mmCaseless # Mono
             - Cartridge556x45mmFMJ # Mono
   - type: ContainerContainer
     containers:

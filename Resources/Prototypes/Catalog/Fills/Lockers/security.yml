@@ -191,7 +191,7 @@
     contents:
     - id: WeaponRifleLecter
       amount: 2
-    - id: Magazine556x45mmFMJ # Mono
+    - id: Magazine68x52mmCaseless # Mono
       amount: 4
 
 - type: entity
@@ -244,7 +244,7 @@
     contents:
     - id: WeaponSubMachineGunWt550
       amount: 2
-    - id: Magazine45_ACPSubMachineGunFMJ
+    - id: Magazine46x30mmSubMachineGunTopMountedFMJ
       amount: 4
 
 - type: entity

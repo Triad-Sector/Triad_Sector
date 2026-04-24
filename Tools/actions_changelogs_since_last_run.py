@@ -22,7 +22,7 @@ GITHUB_API_URL = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 DISCORD_SPLIT_LIMIT = 2000
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
-CHANGELOG_FILE = "Resources/Changelog/Monolith.yml" # Monolith
+CHANGELOG_FILE = "Resources/Changelog/Triad.yml" # Triad
 
 TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
 
@@ -52,18 +52,20 @@ def main():
     send_message_lines(message_lines)
 
 
-def get_most_recent_workflow(
-    sess: requests.Session, github_repository: str, github_run: str
-) -> Any:
+def get_most_recent_workflow(sess, github_repository, github_run):
     workflow_run = get_current_run(sess, github_repository, github_run)
     past_runs = get_past_runs(sess, workflow_run)
+    print(workflow_run)
+    print(past_runs)
+
     for run in past_runs["workflow_runs"]:
-        # First past successful run that isn't our current run.
         if run["id"] == workflow_run["id"]:
             continue
 
-        return run
+        if run.get("head_commit") or run.get("head_sha"):
+            return run
 
+    return None
 
 def get_current_run(
     sess: requests.Session, github_repository: str, github_run: str
@@ -96,14 +98,22 @@ def get_last_changelog() -> str:
     session.headers["X-GitHub-Api-Version"] = "2022-11-28"
 
     most_recent = get_most_recent_workflow(session, github_repository, github_run)
-    last_sha = most_recent["head_commit"]["id"]
-    print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
-    last_changelog_stream = get_last_changelog_by_sha(
-        session, last_sha, github_repository
-    )
+    if most_recent:
+        head_commit = most_recent.get("head_commit")
+        if head_commit and head_commit.get("id"):
+            last_sha = head_commit["id"]
+        else:
+            last_sha = most_recent.get("head_sha")
 
-    return last_changelog_stream
+        if not last_sha:
+            raise RuntimeError(f"Could not determine SHA from workflow run: {most_recent['id']}")
+        print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
+        last_changelog_stream = get_last_changelog_by_sha(
+            session, last_sha, github_repository
+        )
 
+        return last_changelog_stream
+    return False
 
 def get_last_changelog_by_sha(
     sess: requests.Session, sha: str, github_repository: str

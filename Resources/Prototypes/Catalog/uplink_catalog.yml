@@ -485,6 +485,18 @@
   categories:
   - UplinkAmmo
 
+# For the Cobra
+- type: listing
+  id: UplinkMagazine635x40mmCaselessPistol
+  name: uplink-pistol-magazine-caseless-name
+  description: uplink-pistol-magazine-caseless-desc
+  icon: { sprite: /Textures/_Mono/Objects/Weapons/Guns/Ammunition/Magazine/6.35x40mm_caseless/6.35x40mm_caseless_pistol_mag.rsi, state: red-icon }
+  productEntity: Magazine635x40mmCaselessPistol
+  cost:
+    Telecrystal: 5 # Mono
+  categories:
+  - UplinkAmmo
+
 # For the Python
 - type: listing
   id: UplinkSpeedLoader45_magnumAP

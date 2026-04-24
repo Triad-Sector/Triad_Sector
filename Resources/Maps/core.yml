@@ -105310,7 +105310,7 @@ entities:
     - type: Transform
       pos: 12.045464,-40.476917
       parent: 2
-- proto: Magazine45_ACPSubMachineGunFMJ
+- proto: Magazine46x30mmSubMachineGunTopMountedFMJ
   entities:
   - uid: 5077
     components:

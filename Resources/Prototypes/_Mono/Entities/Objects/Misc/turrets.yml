@@ -75,7 +75,7 @@
   name: MK-290 Sentry
   description:
     The MK-290 deployable sentry system designed in the old United Nations of Earth, and serving continued use with the TSF armed forces.
-    Feeds from any 762x39mm magazine, however recent upgrades have allowed it to use 556x45mm to comply with TSF standards.
+    Feeds from any 762x39mm magazine, however recent upgrades have allowed it to use 6.8x52mm caseless and 556x45mm to comply with TSF standard.
   abstract: true
   components:
   - type: Sprite
@@ -132,6 +132,7 @@
           - Magazine762x39mmBox
           - Magazine556x45mmFMJ
           - Magazine556x45mmBox
+          - Magazine68x52mmCaseless
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -168,6 +169,7 @@
           - Magazine762x39mmBox
           - Magazine556x45mmFMJ
           - Magazine556x45mmBox
+          - Magazine68x52mmCaseless
 
 - type: constructionGraph # deconstruction graph
   id: WeaponTurretMk290PackingGraph

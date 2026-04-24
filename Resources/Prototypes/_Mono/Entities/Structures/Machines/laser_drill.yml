@@ -54,6 +54,8 @@
       input:
         !type:CableDeviceNode
         nodeGroupID: HVPower
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: LaserDrill

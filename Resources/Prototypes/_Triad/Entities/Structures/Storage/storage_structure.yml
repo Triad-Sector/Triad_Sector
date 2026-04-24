@@ -1,0 +1,32 @@
+- type: entity
+  parent: BaseStructureDynamic
+  id: BaseStorageStructure
+  abstract: true
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 225
+          mask:
+          - CrateMask
+          layer:
+          - MachineLayer
+  - type: InteractionOutline
+  - type: RequireProjectileTarget
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []    
+  - type: UserInterface
+    interfaces:
+        enum.StorageUiKey.Key:
+          type: StorageBoundUserInterface
+  - type: Storage

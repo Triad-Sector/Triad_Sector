@@ -28,7 +28,7 @@
   minLimit: 1
   loadouts:
   - Faction762x39mmAmmoLoadout #AK502
-  - Faction762x51mmAmmoLoadout #Mosin / SVS42
+  - Faction762x54mmRAmmoLoadout #Mosin / SVS42
   - FactionDp29AmmoLoadout #DP29
   fallbacks:
   - Faction762x39mmAmmoLoadout #AK502
@@ -40,7 +40,7 @@
   loadouts:
   - FactionAk150AmmoLoadout #Ak150
   - Faction762x39mmAmmoLoadout #AK502
-  - Faction762x51mmAmmoLoadout #Mosin / SVS42
+  - Faction762x54mmRAmmoLoadout #Mosin / SVS42
   fallbacks:
   - FactionAk150AmmoLoadout #Ak150
 

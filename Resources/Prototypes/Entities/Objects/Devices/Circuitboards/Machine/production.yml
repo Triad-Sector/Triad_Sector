@@ -1142,6 +1142,8 @@
       MatterBin: 1 # Frontier stackRequirements<requirements
     stackRequirements:
       Steel: 1
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: EmitterCircuitboard

@@ -27,6 +27,8 @@
   - WeaponDEWCalico
   - Magazine700Thz
   - AmmoBox700Thz
+  - AmmoBox68x52mmCaselessBig
+  - AmmoBox57x28mmBigFMJ
   technologyPrerequisites:
   - TsfBasicGuns
   - UniversalMaterialResearchT2

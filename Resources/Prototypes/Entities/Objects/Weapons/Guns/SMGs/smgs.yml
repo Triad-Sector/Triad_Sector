@@ -78,10 +78,10 @@
   # Goobstation edit end
 
 - type: entity
-  name: MA PDW-58 Atreides (9x19mm)
+  name: MA PDW-58 Atreides (5.7x28mm)
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunAtreides
-  description: Midnight Arms Co. Streamlined SMG that's commonly found use among uprisings and criminals. Uses 9x19mm ammo.
+  description: Midnight Arms Co. Streamlined SMG that's commonly found use among uprisings and criminals. Uses 5.7x28mm ammo.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
@@ -105,21 +105,21 @@
     slots:
        gun_magazine:
           name: Magazine
-          startingItem: Magazine9x19mmSubMachineGunFMJ
+          startingItem: Magazine57x28mmSubMachineGunFMJ
           insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
           ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
           priority: 2
           whitelist:
             tags:
-              - Magazine9x19mmSubMachineGunFMJ
+              - Magazine57x28mmSubMachineGunFMJ
           whitelistFailPopup: gun-magazine-whitelist-fail
        gun_chamber:
           name: Chamber
-          startingItem: Cartridge9x19mmFMJ
+          startingItem: Cartridge57x28mmFMJ
           priority: 1
           whitelist:
             tags:
-              - Cartridge9x19mmFMJ
+              - Cartridge57x28mmFMJ
 
 - type: entity
   name: CS C-20r submachine gun (9x19mm)
@@ -231,10 +231,10 @@
 
 
 - type: entity
-  name: UI WT550 (.45 ACP)
+  name: UI WT550 (4.6x30mm)
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunWt550
-  description: An excellent SMG, produced by a Black Market Arms Company known as Ullman Industries. Uses .45 ACP ammo. On the receiver is a label that says 'for authorized use only.'
+  description: An excellent SMG, produced by a Black Market Arms Company known as Ullman Industries. Uses 4.6x30mm ammo. On the receiver is a label that says 'for authorized use only.'
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
@@ -273,21 +273,21 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine45_ACPSubMachineGunFMJ
+        startingItem: Magazine46x30mmSubMachineGunTopMountedFMJ
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - Magazine45_ACPSubMachineGunFMJ
+            - Magazine46x30mmSubMachineGunTopMountedFMJ
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge45_ACPFMJ
+        startingItem: Cartridge46x30mmFMJ
         priority: 1
         whitelist:
           tags:
-            - Cartridge45_ACPFMJ
+            - Cartridge46x30mmFMJ
   - type: MagazineVisuals
     magState: mag
     steps: 6

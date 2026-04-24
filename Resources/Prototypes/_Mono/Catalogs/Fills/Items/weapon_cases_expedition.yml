@@ -30,9 +30,9 @@
     contents:
     - id: WeaponSubMachineGunMla73
       amount: 1
-    - id: Magazine9x19mmSubMachineGunFMJ
+    - id: Magazine635x40mmCaseless
       amount: 2
-    - id: AmmoBox9x19mmFMJ
+    - id: AmmoBox635x40mmCaseless
       amount: 2
 
 - type: entity
@@ -44,9 +44,9 @@
     contents:
     - id: WeaponRifleMR8C
       amount: 1
-    - id: Magazine762x51mmFMJ
+    - id: Magazine8x65mmSKR
       amount: 2
-    - id: AmmoBox762x51mmFMJ
+    - id: AmmoBox8x65mmSKR
       amount: 2
 
 - type: entity

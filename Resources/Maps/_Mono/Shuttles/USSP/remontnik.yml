@@ -961,7 +961,7 @@ entities:
       parent: 45
     - type: Physics
       canCollide: False
-- proto: AmmoBox762x51mmFMJ
+- proto: AmmoBox762x54mmRFMJ
   entities:
   - uid: 48
     components:

@@ -70,7 +70,7 @@
   - type: StorageFill
     contents:
       - id: WeaponSubMachineGunAtreides
-      - id: Magazine9x19mmSubMachineGunFMJ
+      - id: Magazine57x28mmSubMachineGunFMJ
         amount: 3
 #     - id: SMGSuppressor
 # Mono edit end

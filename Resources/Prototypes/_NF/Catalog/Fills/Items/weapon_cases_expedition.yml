@@ -45,9 +45,9 @@
     contents:
     - id: WeaponPistolCobra
       amount: 1
-    - id: Magazine45_ACPPistolFMJ
+    - id: Magazine635x40mmCaselessPistol
       amount: 1
-    - id: AmmoBox45_ACPFMJ
+    - id: AmmoBox635x40mmCaseless
       amount: 1
 
 - type: entity
@@ -266,9 +266,9 @@
     contents:
     - id: WeaponSubMachineGunWt550Expedition
       amount: 1
-    - id: Magazine45_ACPSubMachineGunFMJ
+    - id: Magazine46x30mmSubMachineGunTopMountedFMJ
       amount: 2
-    - id: AmmoBox45_ACPFMJ
+    - id: AmmoBox46x30mmFMJ
       amount: 1
 
 - type: entity
@@ -280,9 +280,9 @@
     contents:
     - id: WeaponSubMachineGunAtreidesExpedition
       amount: 1
-    - id: Magazine9x19mmSubMachineGunFMJ
+    - id: Magazine57x28mmSubMachineGunFMJ
       amount: 2
-    - id: AmmoBox9x19mmFMJ
+    - id: AmmoBox57x28mmFMJ
       amount: 2
 
 - type: entity
@@ -361,7 +361,7 @@
     contents:
     - id: WeaponRifleLecter
       amount: 1
-    - id: Magazine556x45mmFMJ # Mono
+    - id: Magazine68x52mmCaseless # Mono
       amount: 2
 
 - type: entity
@@ -397,7 +397,7 @@
     contents:
     - id: WeaponRifleSVS
       amount: 1
-    - id: Magazine762x51mmFMJ
+    - id: Magazine762x54mmRFMJ
       amount: 2
 
 - type: entity
@@ -410,6 +410,18 @@
     - id: WeaponRifleVulcanExpedition
       amount: 1
     - id: Magazine762x51mmFMJ
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseLongJackdaw
+  suffix: Dungeon, Jackdaw
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleJackdaw
+      amount: 1
+    - id: Magazine635x40mmCaseless
       amount: 2
 
 # Energy
@@ -829,6 +841,37 @@
   - WeaponCaseShortAmmo
   - StorageFillAmmoBoxEmp35
   id: WeaponCaseShortAmmoBoxEmp35
+
+## 635x40mm Caseless
+- type: entity
+  parent:
+  - WeaponCaseShortAmmo
+  - StorageFillAmmoBoxLethal25
+  id: WeaponCaseShortAmmoBoxLethal25
+
+- type: entity
+  parent:
+  - WeaponCaseShortAmmo
+  - StorageFillAmmoBoxBigLethal25
+  id: WeaponCaseShortAmmoBoxBigLethal25
+
+- type: entity
+  parent:
+  - WeaponCaseShortAmmo
+  - StorageFillAmmoBoxRubber25
+  id: WeaponCaseShortAmmoBoxRubber25
+
+- type: entity
+  parent:
+  - WeaponCaseShortAmmo
+  - StorageFillAmmoBoxBigRubber25
+  id: WeaponCaseShortAmmoBoxBigRubber25
+
+- type: entity
+  parent:
+  - WeaponCaseShortAmmo
+  - StorageFillAmmoBoxPractice25
+  id: WeaponCaseShortAmmoBoxPractice25
 
 ## Shotgun
 - type: entity

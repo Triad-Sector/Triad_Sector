@@ -47,11 +47,13 @@
     Magazine45_ACPPistolFMJ: 4294967295 # .45 ACP Pistol
     Magazine9x19mmSubMachineGunFMJ: 4294967295 # 9x19mm C20r
     Magazine45_ACPSubMachineGunFMJ: 4294967295 # .45 ACP Drzozd
+    Magazine46x30mmSubMachineGunTopMountedFMJ: 4294967295 # 46x30mm WT550
     Magazine556x45mmFMJ: 4294967295 # 556x45mm Lecter
     Magazine762x39mmLowCapacityFMJ: 4294967295 # 762x39mm Gestio/AKM
     Magazine762x39mmFMJ: 4294967295 # 762x39mm Gestio/AKM
-    Magazine762x51mmFMJ: 4294967295 # 762x51mm
+    Magazine762x54mmRFMJ: 4294967295 # 762x54mmR SVS
     SpeedLoader762x39mmFMJ: 4294967295 # 762x39mm Gestio/AKM
+    SpeedLoader762x54mmRFMJ: 4294967295 # 762x54mmR SVS
     SpeedLoader45_magnumFMJ: 4294967295 # .45 magnum revolvers
 # Ammo
     AmmoBox556x45mmBigFMJ: 4294967295 # 556x45mm
@@ -114,13 +116,16 @@
     Magazine45_ACPPistolFMJ: 4294967295 # .45 ACP Pistol
     Magazine9x19mmSubMachineGunFMJ: 4294967295 # 9x19mm AK220
     Magazine45_ACPSubMachineGunFMJ: 4294967295 # .45 ACP Keyboard
+    Magazine46x30mmSubMachineGunTopMountedFMJ: 4294967295 # 46x30mm WT550
     Magazine556x45mmFMJ: 4294967295 # 556x45mm Prometheus/Lecter
     MagazineNovaliteC1: 4294967295 #556x45mm Clip Novalite
     Magazine762x39mmLowCapacityFMJ: 4294967295 # 762x39mm Gestio/AKM
     Magazine762x39mmFMJ: 4294967295 # 762x39mm Gestio/AKM
     Magazine762x51mmLowCapacityFMJ: 4294967295 # 762x51mm Vulcan
     Magazine762x51mmFMJ: 4294967295 # 762x51mm Vulcan
+    Magazine762x54mmRFMJ: 4294967295 # 762x54mmR SVS
     SpeedLoader762x39mmFMJ: 4294967295 # 762x39mm revolvers
+    SpeedLoader762x54mmRFMJ: 4294967295 # 762x54mmR SVS
     SpeedLoader45_magnumFMJ: 4294967295 # .45 magnum revolvers
     SpeedLoader556x45mmFMJ: 4294967295 # 556x45mm revolvers
 # Ammo
@@ -130,6 +135,10 @@
     AmmoBox762x39mmBigFMJ: 4294967295 # 762x39mm
     AmmoBox762x51mmFMJ: 4294967295 # 762x51mm
     AmmoBox762x51mmBigFMJ: 4294967295 # 762x51mm
+    AmmoBox762x54mmRFMJ: 4294967295 # 762x54mmR
+    AmmoBox762x54mmRBigFMJ: 4294967295 # 762x54mmR
+    AmmoBox46x30mmFMJ: 4294967295 # 46x30mm
+    AmmoBox46x30mmBigFMJ: 4294967295 # 46x30mm
     AmmoBox9x19mmFMJ: 4294967295 # 9x19mm
     AmmoBox9x19mmBigFMJ: 4294967295 # 9x19mm
     AmmoBox45_ACPFMJ: 4294967295 # .45 ACP

@@ -23,6 +23,8 @@
     deconstructionTarget: null
     graph: Datafarm
     node: research
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: DataFarmCryptoCircuitboard
@@ -49,3 +51,5 @@
     deconstructionTarget: null
     graph: Datafarm
     node: crypto
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text

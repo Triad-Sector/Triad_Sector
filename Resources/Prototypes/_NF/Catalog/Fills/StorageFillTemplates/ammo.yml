@@ -201,6 +201,57 @@
     - id: AmmoBox9x19mmEmp
       amount: 4
 
+# 635x40mm Caseless ammo
+- type: entity # Lethal
+  abstract: true
+  id: StorageFillAmmoBoxLethal25
+  suffix: 635x40mm Caseless, Lethal, x4 boxes
+  components:
+  - type: StorageFill
+    contents:
+    - id: AmmoBox635x40mmCaseless
+      amount: 4
+
+- type: entity # Lethal
+  abstract: true
+  id: StorageFillAmmoBoxBigLethal25
+  suffix: 635x40mm Caseless, Lethal, x4 big boxes
+  components:
+  - type: StorageFill
+    contents:
+    - id: AmmoBox635x40mmCaselessBig
+      amount: 4
+
+- type: entity # Rubber
+  abstract: true
+  id: StorageFillAmmoBoxRubber25
+  suffix: 635x40mm Caseless, Rubber, x4 boxes
+  components:
+  - type: StorageFill
+    contents:
+    - id: AmmoBox9x19mmRubber
+      amount: 4
+
+- type: entity # Rubber
+  abstract: true
+  id: StorageFillAmmoBoxBigRubber25
+  suffix: 635x40mm Caseless, Rubber, x4 big boxes
+  components:
+  - type: StorageFill
+    contents:
+    - id: AmmoBox635x40mmCaselessBigRubber
+      amount: 4
+
+- type: entity # Practice
+  abstract: true
+  id: StorageFillAmmoBoxPractice25
+  suffix: 635x40mm Caseless, Practice, x4 boxes
+  components:
+  - type: StorageFill
+    contents:
+    - id: AmmoBox9x19mmPractice
+      amount: 4
+
 # Shotgun ammo
 - type: entity # Lethal
   abstract: true

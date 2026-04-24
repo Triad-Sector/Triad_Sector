@@ -1,0 +1,132 @@
+- type: entity
+  parent: BaseStorageStructure
+  id: BasePersistentShipStorageStash
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+  - type: HLPersistOnShipSave
+  - type: Storage
+    maxItemSize: Large
+    blacklist:
+      components:
+      - StorageFill
+      - PresetIdCard
+      - IdCard
+      - Access
+      - Store
+      - Cash
+      - Currency
+      - Headset
+
+- type: entity
+  parent: BasePersistentShipStorageStash
+  id: CivilianStorageStash
+  name: civilian storage stash
+  description: Tbd
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/civilian_storage_stash.rsi
+      state: civilian_storage_stash
+    - type: Storage
+      grid:
+      - 0,0,3,7
+      - 5,0,11,7
+    - type: Construction
+      graph: CivilianStorageStashGraph
+      node: CivilianStorageStashNode
+    - type: ShipSaveLimit
+      limitId: CivilianStash
+
+- type: entity
+  parent: CivilianStorageStash
+  id: MilitaryStorageStash
+  name: military storage stash
+  description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/military_storage_stash.rsi
+      state: military_storage_rsi
+    - type: Storage
+      maxItemSize: Ginormous
+    - type: Construction
+      graph: MilitaryStorageStashGraph
+      node: MilitaryStorageStashNode
+    - type: ShipSaveLimit
+      limitId: MilitaryStash
+
+- type: entity
+  parent: BasePersistentShipStorageStash
+  id: MedicalSecureStorage
+  name: medical sanitized stash
+  description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/medical_secure_storage.rsi
+      state: medical_secure_storage
+    - type: Storage
+      grid:
+      - 0,0,2,1
+      - 0,3,2,6
+      - 4,0,9,6
+      maxItemSize: Ginormous
+      whitelist:
+        components:
+          - Pill
+          - Hypospray
+          - MedicalBag
+        tags:
+          - PillCanister
+          - CentrifugeCompatible
+          - Syringe
+          - Ointment
+          - Brutepack
+          - Bloodpack
+          - Gauze
+          - Bottle
+          - GlassBeaker
+          - ChemDispensable
+          - MedicialBluespaceDeskCompatible
+    - type: Construction
+      graph: MedicalSecureStorageGraph
+      node: MedicalSecureStorageNode
+    - type: ShipSaveLimit
+      limitId: MedicalStash
+
+- type: entity
+  parent: BasePersistentShipStorageStash
+  id: BotanicalStorageUnit
+  name: botanical greenhouse stash
+  description: Assorted seeds, plants, and gardening gear stash. Contents are securely preserved across ship operations.
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/botany_storage_unit.rsi
+      state: botany_storage_unit
+    - type: Storage
+      grid:
+      - 0,0,0,0
+      - 0,2,0,2
+      - 2,0,2,0
+      - 2,2,2,2
+      - 4,0,4,0
+      - 4,2,4,2
+      - 0,4,4,6
+      - 6,0,9,6
+      maxItemSize: Ginormous
+      whitelist:
+        components:
+        - Produce
+        - Seed
+        tags:
+        - BotanicalTableCompatible
+        - BotanyShovel
+        - BotanyHatchet
+        - PlantSampleTaker
+        - Hoe
+        - BotanyHoe
+        - PlantAnalyzer
+    - type: Construction
+      graph: BotanicalStorageUnitGraph
+      node: BotanicalStorageUnitNode
+    - type: ShipSaveLimit
+      limitId: HydroponicsStash

@@ -73,6 +73,31 @@
 - type: Tag
   id: Magazine762x51mmBoxBig
 
+#762x54mmR tags
+
+- type: Tag
+  id: Cartridge762x54mmRFMJ
+
+- type: Tag
+  id: Magazine762x54mmRFMJ
+
+- type: Tag
+  id: Magazine762x54mmRBox
+
+#6.8x52mm tags
+
+- type: Tag
+  id: Cartridge68x52mmCaseless
+
+- type: Tag
+  id: Magazine68x52mmCaseless
+
+- type: Tag
+  id: Magazine68x52mmCaselessBoxSmall
+
+- type: Tag
+  id: Magazine68x52mmCaselessBoxBig
+
 #556x45mm tags
 
 - type: Tag
@@ -101,6 +126,26 @@
 - type: Tag
   id: Magazine762x39mmPan
 
+#46x30mm tags
+
+- type: Tag
+  id: Cartridge46x30mmFMJ
+
+- type: Tag
+  id: Magazine46x30mmPistolFMJ
+
+- type: Tag
+  id: Magazine46x30mmPistolHighCapacityFMJ
+
+- type: Tag
+  id: Magazine46x30mmSubMachineGunFMJ
+
+- type: Tag
+  id: Magazine46x30mmSubMachineGunTopMountedFMJ
+
+- type: Tag
+  id: Magazine46x30mmFMJBox
+
 #45 ACP tags
 
 - type: Tag
@@ -114,6 +159,9 @@
 
 - type: Tag
   id: Magazine45_ACPSubMachineGunFMJ
+
+- type: Tag
+  id: Magazine45_ACPSubMachineGunTopMountedFMJ
 
 - type: Tag
   id: Magazine45_ACPFMJBox
@@ -150,10 +198,33 @@
   id: Magazine9x19mmSubMachineGunFMJ
 
 - type: Tag
+  id: Magazine9x19mmSubMachineGunTopMountedFMJ
+
+- type: Tag
   id: Magazine9x19mmFMJBox
 
 - type: Tag
   id: SpeedLoader9x19mmFMJ
+
+#57x28mm tags
+
+- type: Tag
+  id: Cartridge57x28mmFMJ
+
+- type: Tag
+  id: Magazine57x28mmPistolFMJ
+
+- type: Tag
+  id: Magazine57x28mmPistolHighCapacityFMJ
+
+- type: Tag
+  id: Magazine57x28mmSubMachineGunFMJ
+
+- type: Tag
+  id: Magazine57x28mmSubMachineGunTopMountedFMJ
+
+- type: Tag
+  id: Magazine57x28mmFMJBox
 
 # Misc ammo shit
 
@@ -165,6 +236,17 @@
 
 - type: Tag
   id: MagazineDP29
+
+#8x65mm SKR tags
+
+- type: Tag
+  id: Cartridge8x65mmSKR
+
+- type: Tag
+  id: Magazine8x65mmSKR
+
+- type: Tag
+  id: MagazineBox8x65mmSKR
 
 #.55 SAM caliber tags
 
@@ -206,6 +288,16 @@
 
 - type: Tag
   id: Cartridge145x114mm
+
+# 635x40mm tags
+- type: Tag
+  id: Cartridge635x40mmCaseless
+
+- type: Tag
+  id: Magazine635x40mmCaseless
+
+- type: Tag
+  id: Magazine635x40mmCaselessPistol
 
 #40mm tags
 

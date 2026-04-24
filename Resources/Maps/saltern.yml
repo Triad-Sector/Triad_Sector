@@ -49138,7 +49138,7 @@ entities:
     - type: Transform
       pos: -14.250454,20.691399
       parent: 31
-- proto: Magazine45_ACPSubMachineGunFMJ
+- proto: Magazine46x30mmSubMachineGunTopMountedFMJ
   entities:
   - uid: 10123
     components:

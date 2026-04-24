@@ -27,9 +27,9 @@
     contents:
     - id: WeaponSubMachineGunMla73Registered
       amount: 1
-    - id: Magazine45_ACPSubMachineGunFMJ
+    - id: Magazine635x40mmCaseless
       amount: 2
-    - id: AmmoBox45_ACPFMJ
+    - id: AmmoBox635x40mmCaseless
       amount: 2
 
 - type: entity
@@ -179,5 +179,18 @@
     contents:
     - id: WeaponRifleMR3CRegistered
       amount: 1
-    - id: Magazine762x51mmFMJ
+    - id: Magazine8x65mmSKR
       amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseMalandroRegistered
+  suffix: Loadout, Malandro
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunMalandroRegistered
+      amount: 1
+    - id: Magazine46x30mmSubMachineGunFMJ
+      amount: 4
+    

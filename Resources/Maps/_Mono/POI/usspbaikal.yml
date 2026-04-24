@@ -48194,7 +48194,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: Magazine762x51mmFMJ
+- proto: Magazine762x54mmRFMJ
   entities:
   - uid: 6876
     components:

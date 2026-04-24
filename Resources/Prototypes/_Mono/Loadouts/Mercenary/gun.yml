@@ -57,6 +57,8 @@
   - Mercenary762x51mmAmmoLoadout #Vulcan-C / Lee Enfield
   - MercenaryBuckshotAmmoLoadout #Kammerer / Sawn Buckshot
   - MercenarySlugAmmoLoadout #Kammerer / Sawn Slugs
+  # - Mercenary46x30mmTopAmmoLoadout #WT550
+  - Mercenary762x54mmRAmmoLoadout #Mosin / SVS42
   - MercenaryRechargerLoadout #Energy
   fallbacks:
   - Mercenary9x19mmPistolAmmoLoadout #Pollock

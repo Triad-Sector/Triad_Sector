@@ -126,6 +126,12 @@
     # Spawn a bunch of ammo around!
   - id: Magazine556x45mmFMJ
     maxAmount: 15
+  - id: Magazine635x40mmCaseless
+    maxAmount: 15
+  - id: Magazine635x40mmCaselessBig
+    maxAmount: 15
+  - id: Magazine635x40mmCaselessPistol
+    maxAmount: 15
   - id: Magazine762x39mmFMJ
     maxAmount: 15
   - id: Magazine12_gaugeBuckshot

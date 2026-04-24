@@ -70,5 +70,7 @@
     - type: ShipRepairable
       repairTime: 30
       repairCost: 150
+    - type: SavingContraband
+      examineText: ship-saving-contraband-3-text
 # visuals are broken but this thing is going to be unanchorable anyway so who cares
 ## this probably is a problem with my implementation of the enum anchored visual system

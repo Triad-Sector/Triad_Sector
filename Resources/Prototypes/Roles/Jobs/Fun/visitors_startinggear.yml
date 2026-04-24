@@ -135,7 +135,7 @@
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterCoatHoSTrench
     pocket1: WeaponDisabler
-    pocket2: Magazine45_ACPSubMachineGunFMJ
+    pocket2: Magazine46x30mmSubMachineGunTopMountedFMJ
   inhand:
   - WeaponSubMachineGunWt550
 
@@ -153,7 +153,7 @@
     ears: ClothingHeadsetAltSecurity
     eyes: ClothingEyesGlassesSecurity
     pocket1: WeaponDisabler
-    pocket2: Magazine45_ACPSubMachineGunFMJ
+    pocket2: Magazine46x30mmSubMachineGunTopMountedFMJ
   inhand:
   - WeaponSubMachineGunWt550
 

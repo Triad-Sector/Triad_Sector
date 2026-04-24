@@ -97,6 +97,8 @@
     - board_slot
   - type: MaterialStorageMagnetPickup # Frontier
     range: 0.30 # Frontier
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
 #  - type: StaticPrice # Frontier
 #    price: 2000
 

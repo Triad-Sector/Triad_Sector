@@ -25,7 +25,7 @@
     contents:
       - id: WeaponSubMachineGunWt550Expedition
         amount: 2
-      - id: Magazine45_ACPSubMachineGunFMJ
+      - id: Magazine46x30mmSubMachineGunTopMountedFMJ
         amount: 4
 
 - type: entity
@@ -256,6 +256,42 @@
   - CrateAmmoSecureMercenary
   - StorageFillAmmoBoxEmp35
   id: CrateAmmoBoxEmp35
+  categories: [ HideSpawnMenu ]
+
+## 635x40mm Caseless
+- type: entity
+  parent:
+  - CrateAmmoSecureMercenary
+  - StorageFillAmmoBoxLethal25
+  id: CrateAmmoBoxLethal25
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CrateAmmoSecureMercenary
+  - StorageFillAmmoBoxBigLethal25
+  id: CrateAmmoBoxBigLethal25
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CrateAmmoSecureMercenary
+  - StorageFillAmmoBoxRubber25
+  id: CrateAmmoBoxRubber25
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CrateAmmoSecureMercenary
+  - StorageFillAmmoBoxBigRubber25
+  id: CrateAmmoBoxBigRubber25
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CrateAmmoSecureMercenary
+  - StorageFillAmmoBoxPractice25
+  id: CrateAmmoBoxPractice25
   categories: [ HideSpawnMenu ]
 
 ## Shotgun

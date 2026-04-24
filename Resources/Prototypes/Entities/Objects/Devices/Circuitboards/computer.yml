@@ -116,6 +116,8 @@
       - DroneUsable
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopCargoOrders # Frontier
+    - type: SavingContraband
+      examineText: ship-saving-contraband-1-text
 
 - type: entity
   parent: BaseComputerCircuitboard

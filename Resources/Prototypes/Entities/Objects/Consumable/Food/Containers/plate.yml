@@ -57,6 +57,7 @@
     cleanupExempt: true # Mono
   - type: StaticPrice # Frontier
     price: 4.5 # Frontier
+  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   name: broken plate

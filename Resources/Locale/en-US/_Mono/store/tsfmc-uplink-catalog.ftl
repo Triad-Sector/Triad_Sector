@@ -35,16 +35,25 @@ uplink-security-annie-name = Annie
 uplink-security-annie-desc = A 7.62x39mm subsonic weapon, made to shoulder the weight of impossible operations.
 
 uplink-security-mr8c-name = MR-8C BR
-uplink-security-mr8c-desc = A semi-auto rifle firing 7.62x51mm rounds, specially made for MARSOC usage. You're one lucky marine.
+uplink-security-mr8c-desc = A semi-auto rifle firing 8x65mm SKR rounds, specially made for MARSOC usage. You're one lucky marine.
 
 uplink-security-mr8b-name = MR-8B LWMMG
-uplink-security-mr8b-desc = An expensive (relatively) light-weight GPMG branched off from the MR-8C. Compatible with both 7.62x51mm magazines and boxes.
+uplink-security-mr8b-desc = An expensive (relatively) light-weight GPMG branched off from the MR-8C. Compatible with both 8x65mm magazines and boxes.
 
-uplink-security-762x51mmFMJ-magazine-name = 7.62x51mm FMJ Magazine
-uplink-security-762x51mmFMJ-magazine-desc = Compatible with the MR-8B and MR-8C. Contains 25 rounds.
+uplink-security-8x65mm-magazine-name = 8x65mm SKR Magazine
+uplink-security-8x65mm-magazine-desc = Compatible with the MR-8B and MR-8C. Contains 25 rounds.
 
-uplink-security-762x51mmFMJ-box-name = 7.62x51mm FMJ Box
-uplink-security-762x51mmFMJ-box-desc = Used to refill magazines/boxes for the MR-8C and MR-8B. Contains 100 rounds.
+uplink-security-8x65mm-boxmag-name = 8x65mm SKR Box Magazine
+uplink-security-8x65mm-boxmag-desc = Compatible with the MR-8B only. Contains 75 rounds.
+
+uplink-security-8x65mm-box-name = 8x65mm SKR Box
+uplink-security-8x65mm-box-desc = Used to refill magazines/boxes for the MR-8C and MR-8B. Contains 100 rounds.
+
+uplink-security-68x52mm-magazine-name = 6.8x52mm Caseless Magazine
+uplink-security-68x52mm-magazine-desc = Compatible with the Lecter. Contains 30 rounds.
+
+uplink-security-68x52mm-box-name = 6.8x52mm Caseless Box
+uplink-security-68x52mm-box-desc = Used to refill magazines for the Lecter. Contains 200 rounds.
 
 uplink-security-portable-recharger-name = Portable Recharger
 uplink-security-portable-recharger-desc = An experimental portable recharger equipped with an inbuilt microreactor.
@@ -83,7 +92,7 @@ uplink-security-flyssa-voucher-name = TSFMC Flyssa Ship Voucher
 uplink-security-flyssa-voucher-desc = A single use voucher for the Flyssa.
 
 uplink-security-sentry-mk290-name = MK-290 Deployable Sentry System
-uplink-security-sentry-mk290-desc = A multipurpose portable sentry, capable of feeding from 5.56x45mm and 7.62x39mm magazines. Requires a screwdriver to disassemble once placed.
+uplink-security-sentry-mk290-desc = A multipurpose portable sentry, capable of feeding from 5.56x45mm, 6.8x52mm, and 7.62x39mm magazines. Requires a screwdriver to disassemble once placed.
 
 uplink-security-hardsuit-m82b-name = M82b Hardsuit
 uplink-security-hardsuit-m82b-desc = A variant of the M-82c for NBC protection, usually utilized by corpsmen.
