@@ -132,42 +132,44 @@
   - Broadsword
   position: 3, 12
 
-- type: technology
-  id: Flail
-  name: research-technology-flail
-  entityIcon: AFFlail
-  discipline: MechaEngineering
-  tier: 3
-  cost: 50000
-  recipeUnlocks:
-  - FlailHarness
-  - FlailHead
-  - FlailLArm
-  - FlailLLeg
-  - FlailRArm
-  - FlailRLeg
-  - FlailCentralElectronics
-  - FlailPeripheralsElectronics
-  - FlailTargetingElectronics
-  - HeavyMechRPG
-  - HeavyMechCannon
-  - HeavyMechProjector
-  technologyPrerequisites:
-  - Broadsword
-  position: 4, 11
+# Triad : Nuke S4 at the moment
+# - type: technology
+#   id: Flail
+#   name: research-technology-flail
+#   entityIcon: AFFlail
+#   discipline: MechaEngineering
+#   tier: 3
+#   cost: 50000
+#   recipeUnlocks:
+#   - FlailHarness
+#   - FlailHead
+#   - FlailLArm
+#   - FlailLLeg
+#   - FlailRArm
+#   - FlailRLeg
+#   - FlailCentralElectronics
+#   - FlailPeripheralsElectronics
+#   - FlailTargetingElectronics
+#   - HeavyMechRPG
+#   - HeavyMechCannon
+#   - HeavyMechProjector
+#   technologyPrerequisites:
+#   - Broadsword
+#   position: 4, 11
 
-- type: technology
-  id: FlailSubtypes
-  name: research-technology-flail-subtypes
-  entityIcon: AFFlailE
-  discipline: MechaEngineering
-  tier: 3
-  cost: 30000
-  recipeUnlocks:
-  - MaceHarness
-  - SpyglassHarness
-  - EWACMechaFlares
-  - EWACMechaJammer
-  technologyPrerequisites:
-  - Flail
-  position: 4, 12
+# - type: technology
+#   id: FlailSubtypes
+#   name: research-technology-flail-subtypes
+#   entityIcon: AFFlailE
+#   discipline: MechaEngineering
+#   tier: 3
+#   cost: 30000
+#   recipeUnlocks:
+#   - MaceHarness
+#   - SpyglassHarness
+#   - EWACMechaFlares
+#   - EWACMechaJammer
+#   technologyPrerequisites:
+#   - Flail
+#   position: 4, 12
+#  Triadd End

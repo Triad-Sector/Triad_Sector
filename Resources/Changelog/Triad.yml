@@ -35,3 +35,35 @@ Entries:
   id: 2146
   time: '2026-04-23T11:27:50.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/1
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed loaded shield generators spamming the shield dissipate sound
+    - type: Fix
+      message: Maybe fix AME controllers breaking on ship load
+    - type: Fix
+      message: Fixed loaded ships starting with no gravity
+  id: 2147
+  time: '2026-04-24T22:20:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/10
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix stash description
+    - type: Fix
+      message: Fix stash decon steps
+    - type: Remove
+      message: Remove S4 mech from research
+    - type: Remove
+      message: >-
+        Remove USSP R&D and Omni Jug from vend, there's only one USSP R&D and
+        that is in Camelot. Requested by Admins
+    - type: Tweak
+      message: Changes sevas tech to 20 minutes instead of 7.5 minutes
+    - type: Fix
+      message: 'Changelog FTL '
+    - type: Fix
+      message: Fixes gaslock docking cherry-picked from Mono
+  id: 2148
+  time: '2026-04-25T00:12:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/11

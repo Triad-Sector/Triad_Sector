@@ -1,11 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.Chemistry.Components;
 using Content.Server.Construction.Components;
 using Content.Server.Spreader;
-using Content.Server.Power.Components;
-using Content.Server.Power.EntitySystems;
 using Content.Server._HL.Shipyard; // HardLight
 using Content.Shared._Common.Consent; // HardLight
 using Content.Shared._HL.Shipyard; // HardLight
@@ -13,12 +9,10 @@ using Content.Shared._NF.Shipyard.Components;
 using Content.Shared._NF.Shipyard.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Mind.Components; // HardLight
-using Content.Shared.Shuttles.Save; // For SendShipSaveDataClientMessage
-using Content.Shared.VendingMachines;
+using Content.Shared._NF.Shuttles.Save; // For SendShipSaveDataClientMessage
 using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
 using Robust.Server.Player;
 using Robust.Shared.Containers;
@@ -58,12 +52,14 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // HardLight
+    [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
     private ISawmill _sawmill = default!;
     private MapLoaderSystem _mapLoader = default!;
 
+    private HashSet<Entity<SpawnOnShipLoadComponent>> _spawnOnShipLoadEntities = new();
     private HashSet<Entity<TransformComponent>> _shipSaveEntityList = new();
     private HashSet<Entity<ShipSaveLimitComponent>> _limitedEntitiesList = new();
 
@@ -149,6 +145,42 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         foreach (var deedEntity in deedsToRemove)
         {
             RemComp<ShuttleDeedComponent>(deedEntity);
+        }
+    }
+
+    /// <summary>
+    /// Goes through a grid and checks for any entities with a SpawnOnShipLoadComponent.
+    /// </summary>
+    public void CreateSpawnOnShipLoadEntities(EntityUid gridUid)
+    {
+        if (!_gridQuery.HasComp(gridUid))
+            return;
+
+        var toDelete = new HashSet<EntityUid>();
+
+        _spawnOnShipLoadEntities.Clear();
+
+        // Get the entities on the grid with the ship save limit comp
+        var gridTransform = _transformQuery.GetComponent(gridUid);
+        var worldAABB = _lookup.GetWorldAABB(gridUid, gridTransform);
+        _lookup.GetEntitiesIntersecting(gridTransform.MapID, worldAABB, _spawnOnShipLoadEntities);
+
+        foreach ((var ent, var comp) in _spawnOnShipLoadEntities)
+        {
+            if (ent == gridUid)
+                continue;
+
+            var position = _transform.GetMoverCoordinates(ent);
+            var newEntity = Spawn(comp.Spawn, position);
+            _transform.AttachToGridOrMap(newEntity);
+
+            if (comp.DeleteSelfAfterSpawn)
+                toDelete.Add(ent);
+        }
+
+        foreach (var uid in toDelete)
+        {
+            QueueDel(uid);
         }
     }
 

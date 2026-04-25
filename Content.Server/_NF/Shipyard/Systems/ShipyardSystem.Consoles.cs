@@ -52,7 +52,7 @@ using Content.Server.StationEvents.Components;
 using Content.Shared._Mono.Company;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Shuttles.Components;
-using Content.Server.Shuttles.Systems;
+using Content.Shared._NF.Shuttles.Save; // Triad
 using Robust.Shared.Player;
 using Content.Shared._Mono.Ships.Components;
 using Content.Shared._Mono.Shipyard;
@@ -60,7 +60,6 @@ using Content.Shared.Tag;
 using Robust.Shared.Timing;
 using Robust.Shared.Log;
 using Content.Shared._HL.Shipyard;
-using Content.Server.Shuttles.Save;
 
 // Suppress naming style rule for the _NF namespace prefix (project convention)
 #pragma warning disable IDE1006
@@ -90,7 +89,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly ShuttleConsoleLockSystem _shuttleConsoleLock = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSaveSystem = default!; // Triad
 
     private static readonly ProtoId<TagPrototype> CrewedShuttleTag = "CrewedShuttle";
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
@@ -503,7 +501,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         // Ensure the limits for limited entites doesn't exceed while saving
-        if (!_shipyardGridSaveSystem.CheckGridEntityLimits(shuttleUid.Value, out var message))
+        if (!_shipyardGridSave.CheckGridEntityLimits(shuttleUid.Value, out var message))
         {
             ConsolePopup(player, message);
             PlayDenySound(player, uid, component);
@@ -511,14 +509,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         // Attempt to save the ship
-        if (!_shipyardGridSaveSystem.TrySaveShip(shuttleUid.Value, targetId, playerSession))
+        if (!_shipyardGridSave.TrySaveShip(shuttleUid.Value, targetId, playerSession))
         {
             ConsolePopup(player, $"Failed to store ship {deed.ShuttleName}.");
             PlayDenySound(player, uid, component);
             return;
         }
 
-        ConsolePopup(player, $"Storing ship {deed.ShuttleName} at shipyard.. Have a nice day!");
+        ConsolePopup(player, $"Storing ship {deed.ShuttleName} at shipyard. Have a nice day!");
         PlayConfirmSound(player, uid, component);
 
         // Refresh UI with current deed info and player's balance
@@ -854,7 +852,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         {
             try
             {
-                RaiseNetworkEvent(new Content.Shared.Shuttles.Save.DeleteLocalShipFileMessage(args.SourceFilePath!), session);
+                RaiseNetworkEvent(new DeleteLocalShipFileMessage(args.SourceFilePath!), session);
                 Logger.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");
             }
             catch (Exception ex)

@@ -15,21 +15,25 @@
         - material: Cable
           amount: 5
           doAfter: 3
-    
+
   - node: CivilianStorageStashNode
     entity: CivilianStorageStash
     edges:
     - to: start
       steps:
+        - tool: Screwing
+          doAfter: 3
+        - tool: Welding
+          doAfter: 10
         - tool: Prying
-          doAfter: 2
+          doAfter: 5
       completed:
         - !type:SpawnPrototype
           prototype: SheetPlasteel1
-          amount: 1
+          amount: 10
         - !type:SpawnPrototype
-          prototype: SheetSteel1
-          amount: 1
+          prototype: SheetSteel10
+          amount: 2
         - !type:EmptyAllContainers
         - !type:DeleteEntity
 
@@ -53,21 +57,28 @@
         - material: Cable
           amount: 5
           doAfter: 3
-    
+
   - node: MilitaryStorageStashNode
     entity: MilitaryStorageStash
     edges:
     - to: start
       steps:
+        - tool: Screwing
+          doAfter: 3
+        - tool: Welding
+          doAfter: 10
         - tool: Prying
-          doAfter: 2
+          doAfter: 5
       completed:
         - !type:SpawnPrototype
-          prototype: SheetPlasteel1
+          prototype: SheetPlasteel10
           amount: 1
         - !type:SpawnPrototype
-          prototype: SheetSteel1
+          prototype: SheetSteel10
           amount: 1
+        - !type:SpawnPrototype
+          prototype: SheetPlastitanium1
+          amount: 6
         - !type:EmptyAllContainers
         - !type:DeleteEntity
 
@@ -91,21 +102,28 @@
         - material: Cable
           amount: 5
           doAfter: 3
-    
+
   - node: MedicalSecureStorageNode
     entity: MedicalSecureStorage
     edges:
     - to: start
       steps:
+        - tool: Screwing
+          doAfter: 3
+        - tool: Welding
+          doAfter: 10
         - tool: Prying
-          doAfter: 2
+          doAfter: 5
       completed:
         - !type:SpawnPrototype
-          prototype: SheetPlasteel1
+          prototype: SheetPlasteel10
           amount: 1
         - !type:SpawnPrototype
-          prototype: SheetSteel1
+          prototype: SheetSteel10
           amount: 1
+        - !type:SpawnPrototype
+          prototype: IngotSilver1
+          amount: 4
         - !type:EmptyAllContainers
         - !type:DeleteEntity
 
@@ -129,20 +147,24 @@
         - material: Cable
           amount: 5
           doAfter: 3
-    
+
   - node: BotanicalStorageUnitNode
     entity: BotanicalStorageUnit
     edges:
     - to: start
       steps:
+        - tool: Screwing
+          doAfter: 3
+        - tool: Welding
+          doAfter: 10
         - tool: Prying
-          doAfter: 2
+          doAfter: 5
       completed:
         - !type:SpawnPrototype
           prototype: SheetPlasteel1
-          amount: 1
+          amount: 2
         - !type:SpawnPrototype
           prototype: SheetSteel1
-          amount: 1
+          amount: 8
         - !type:EmptyAllContainers
         - !type:DeleteEntity

@@ -1,4 +1,3 @@
-using Content.Shared.Contraband;
 using Content.Shared.Examine;
 
 namespace Content.Shared._Triad.Shipyard;
@@ -10,11 +9,8 @@ public sealed class SavingContrabandSystem : EntitySystem
         SubscribeLocalEvent<SavingContrabandComponent, ExaminedEvent>(OnExamined);
     }
 
-    private void OnExamined(EntityUid uid, SavingContrabandComponent comp, ExaminedEvent args)
+    private void OnExamined(Entity<SavingContrabandComponent> ent, ref ExaminedEvent args)
     {
-        if (!TryComp<ContrabandComponent>(uid, out var contraband))
-            return;
-
-        args.PushMarkup(Loc.GetString(comp.ExamineText));
+        args.PushMarkup(Loc.GetString(ent.Comp.ExamineText));
     }
 }

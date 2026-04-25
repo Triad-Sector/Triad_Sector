@@ -1,4 +1,4 @@
-using Content.Shared.Shuttles.Save;
+using Content.Shared._NF.Shuttles.Save;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Network;
@@ -56,7 +56,7 @@ namespace Content.Client.Shuttles.Save
             SubscribeNetworkEvent<ShipConvertedToSecureFormatMessage>(HandleShipConvertedToSecureFormat);
             SubscribeNetworkEvent<AdminRequestPlayerShipsMessage>(HandleAdminRequestPlayerShips);
             SubscribeNetworkEvent<AdminRequestShipDataMessage>(HandleAdminRequestShipData);
-            SubscribeNetworkEvent<Content.Shared.Shuttles.Save.DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
+            SubscribeNetworkEvent<DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
 
             // Ensure saved_ships directory exists on startup
             EnsureSavedShipsDirectoryExists();
@@ -476,7 +476,7 @@ namespace Content.Client.Shuttles.Save
             }
         }
 
-        private void HandleDeleteLocalShipFile(Content.Shared.Shuttles.Save.DeleteLocalShipFileMessage message)
+        private void HandleDeleteLocalShipFile(DeleteLocalShipFileMessage message)
         {
             try
             {

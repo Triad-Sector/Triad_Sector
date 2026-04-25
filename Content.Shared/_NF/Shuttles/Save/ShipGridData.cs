@@ -1,11 +1,6 @@
-using Robust.Shared.Serialization.Manager.Attributes;
-using Robust.Shared.Maths;
-using Robust.Shared.GameObjects;
 using System.Numerics;
-using System;
-using System.Collections.Generic;
 
-namespace Content.Shared.Shuttles.Save
+namespace Content.Shared._NF.Shuttles.Save
 {
     [Serializable]
     [DataDefinition]

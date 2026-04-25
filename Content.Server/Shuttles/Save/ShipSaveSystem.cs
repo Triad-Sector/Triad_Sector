@@ -1,26 +1,10 @@
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
-using Content.Shared.Shuttles.Save;
-using Content.Shared._NF.Shipyard.Components;
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Robust.Shared.Log;
-using Content.Server._NF.Shipyard.Systems;
+using Content.Shared._NF.Shuttles.Save;
 
 namespace Content.Server.Shuttles.Save
 {
     public sealed class ShipSaveSystem : EntitySystem
     {
-        [Dependency] private readonly IEntityManager _entityManager = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-        [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSaveSystem = default!;
 
         // Static caches for admin ship save interactions
         private static readonly Dictionary<string, Action<string>> PendingAdminRequests = new();

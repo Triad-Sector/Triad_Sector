@@ -87,14 +87,14 @@
   - BroadswordRArm
   - BroadswordRLeg
   - HalberdHarness
-  - FlailHarness
-  - FlailHead
-  - FlailLArm
-  - FlailRArm
-  - FlailLLeg
-  - FlailRLeg
-  - SpyglassHarness
-  - MaceHarness
+  # - FlailHarness
+  # - FlailHead
+  # - FlailLArm
+  # - FlailRArm
+  # - FlailLLeg
+  # - FlailRLeg
+  # - SpyglassHarness
+  # - MaceHarness
   - PowerCageMech
 
 - type: latheRecipePack
@@ -103,9 +103,9 @@
   - BroadswordCentralElectronics
   - BroadswordPeripheralsElectronics
   - BroadswordTargetingElectronics
-  - FlailCentralElectronics
-  - FlailPeripheralsElectronics
-  - FlailTargetingElectronics
+  # - FlailCentralElectronics
+  # - FlailPeripheralsElectronics
+  # - FlailTargetingElectronics
 
 - type: latheRecipePack
   id: SpaceMechaWeapons
@@ -116,11 +116,11 @@
   - MediumMechDMR
   - MediumMechCoilgun
   - MediumMechTOW
-  - HeavyMechRPG
-  - HeavyMechCannon
-  - HeavyMechProjector
-  - EWACMechaJammer
-  - EWACMechaFlares
+  # - HeavyMechRPG
+  # - HeavyMechCannon
+  # - HeavyMechProjector
+  # - EWACMechaJammer
+  # - EWACMechaFlares
 
 - type: latheRecipePack
   id: SpaceMechaIFF

@@ -5,7 +5,6 @@ using Content.Server.Cargo.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Doors.Components;
 using Content.Shared.Station.Components;
-using Content.Shared.Shuttles.Save;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared._NF.Shipyard;
 using Content.Shared.GameTicking;
@@ -34,7 +33,6 @@ using Content.Shared._Mono.Shipyard;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Utility;
 using Robust.Shared.ContentPack;
-using Content.Shared.Shuttles.Save;
 using Content.Shared.Shuttles.Components; // For IFFComponent
 using Content.Shared.Timing;
 using Content.Server.Gravity;
@@ -43,7 +41,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components; // For GravitySystem
 using Robust.Shared.Map.Events; // HardLight
 using YamlDotNet.Core; // HardLight
-using YamlDotNet.RepresentationModel; // HardLight
+using YamlDotNet.RepresentationModel;
+using Content.Shared._Crescent.ShipShields; // HardLight
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -84,6 +83,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly GravitySystem _gravitySystem = default!; // For post-load gravity refresh
     [Dependency] private readonly ShipSerializationSystem _shipSerialization = default!; // HardLight
+    [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSave = default!; // Triad
 
     private EntityQuery<TransformComponent> _transformQuery;
 
@@ -449,14 +449,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         foreach (var entity in gridEntities)
         {
             // Add ship access to doors
-            if (EntityManager.HasComponent<DoorComponent>(entity))
+            if (HasComp<DoorComponent>(entity))
             {
-                EntityManager.EnsureComponent<ShipAccessReaderComponent>(entity);
+                EnsureComp<ShipAccessReaderComponent>(entity);
             }
             // Add ship access to entity storage (lockers, crates, etc.)
-            else if (EntityManager.HasComponent<EntityStorageComponent>(entity))
+            else if (HasComp<EntityStorageComponent>(entity))
             {
-                EntityManager.EnsureComponent<ShipAccessReaderComponent>(entity);
+                EnsureComp<ShipAccessReaderComponent>(entity);
             }
         }
     }
@@ -473,13 +473,22 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (!TryComp<ShuttleComponent>(grid, out var shuttleComponent))
             return false;
 
-        var targetGrid = consoleXform.GridUid.Value;
+        if (TryComp<ShipShieldedComponent>(grid, out var shielded))
+        {
+            TryQueueDel(shielded.Shield);
+            RemComp<ShipShieldedComponent>(grid);
+        }
 
         // Ensure required components for docking and identification
         EnsureComp<PhysicsComponent>(grid);
         EnsureComp<ShuttleComponent>(grid);
         EnsureComp<IFFComponent>(grid);
+
+        // Reset use delays on objects with the component so delays from previous rounds don't carry over
         TryResetUseDelays(grid);
+
+        // Spawn the entities from entities with SpawnOnShipLoadComponent
+        _shipyardGridSave.CreateSpawnOnShipLoadEntities(grid);
 
         // Load-time sanitation: purge any deserialized joints and reset dock joint references
         // to avoid physics processing invalid joint bodies (e.g., Entity 0) from YAML.

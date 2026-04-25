@@ -21,8 +21,8 @@ GITHUB_API_URL = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 # https://discord.com/developers/docs/resources/webhook
 DISCORD_SPLIT_LIMIT = 2000
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
-
-CHANGELOG_FILE = "Resources/Changelog/Triad.yml" # Triad
+# Unhardcode
+CHANGELOG_FILE = os.environ.get("CHANGELOG_DIR")
 
 TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
 

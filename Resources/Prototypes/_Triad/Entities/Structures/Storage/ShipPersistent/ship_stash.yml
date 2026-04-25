@@ -23,7 +23,7 @@
   parent: BasePersistentShipStorageStash
   id: CivilianStorageStash
   name: civilian storage stash
-  description: Tbd
+  description: Miscellaneous everyday supplies and personal items. Preserves stored items across ship deployments.
   components:
     - type: Sprite
       sprite: _Triad/Structure/Storage/ShipStashes/civilian_storage_stash.rsi
@@ -59,7 +59,7 @@
   parent: BasePersistentShipStorageStash
   id: MedicalSecureStorage
   name: medical sanitized stash
-  description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
+  description: Sterile stash of clean medical supplies. Preserves stored items across ship deployments.
   components:
     - type: Sprite
       sprite: _Triad/Structure/Storage/ShipStashes/medical_secure_storage.rsi

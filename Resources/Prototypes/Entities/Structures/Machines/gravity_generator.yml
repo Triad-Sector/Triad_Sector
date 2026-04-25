@@ -85,6 +85,8 @@
   - type: ShipRepairable
     repairTime: 15
     repairCost: 30
+  - type: SpawnOnShipLoad # Triad
+    spawn: GravityGenerator
 
 - type: entity
   id: GravityGeneratorMini
@@ -149,3 +151,5 @@
   - type: ShipRepairable
     repairTime: 8
     repairCost: 20
+  - type: SpawnOnShipLoad # Triad
+    spawn: GravityGeneratorMini

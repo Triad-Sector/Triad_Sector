@@ -9,7 +9,7 @@
     drawRate: 120000
   - type: ItemMiner
     proto: SpawnLootTechDiskPrinter
-    interval: 450
+    interval: 1200 # Triad : Change it into 20 minutes
     minedSound: /Audio/Machines/circuitprinter.ogg
     needApcPower: false
   - type: PowerConsumerMiner
@@ -196,7 +196,7 @@
       color: red
   - type: RandomSpawner
     prototypes:
-    - TechDiskBluespaceBags
+    # - TechDiskBluespaceBags # Triad : Remove regular BoH tech
     - TechDiskTranslationPreFracture
     chance: 0.95
     offset: 0.0
