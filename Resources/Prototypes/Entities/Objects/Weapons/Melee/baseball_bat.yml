@@ -13,17 +13,17 @@
     damage:
       types:
         Blunt: 15
-        Structural: 5
+        Structural: 15 # Triad 15 < 5
     soundHit:
       collection: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
-        Structural: 10
+        Blunt: 10 # Triad 10 < 15
+        Structural: 10 # Triad 10 < 5
   - type: Item
-    size: Normal
+    size: Large # Triad Large < Normal
   - type: Tool
     qualities:
     - Rolling

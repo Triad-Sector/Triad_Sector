@@ -38,7 +38,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 15
+        Piercing: 16 # Triad 16 < 15
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -46,9 +46,11 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 25
+        Piercing: 30 # Triad 30 < 25
   - type: Item
-    size: Ginormous
+    size: Huge # Triad Huge < Ginormous
+    shape:
+    - 0,0,1,5 # Triad Spear size, slightly Longer than sword but thin
   - type: Clothing
     quickEquip: false
     slots:
@@ -76,7 +78,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 5
+        Piercing: 12
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible
@@ -134,7 +136,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 30
+        Piercing: 32 
   - type: Construction
     graph: SpearReinforced
 

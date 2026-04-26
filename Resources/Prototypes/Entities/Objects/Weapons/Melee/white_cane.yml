@@ -21,6 +21,6 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 3
+        Blunt: 5 # Triad 5 < 3, hit em harder ol man
   - type: UseDelay
     delay: 1

@@ -159,7 +159,7 @@
     attackRate: 1.2
     damage:
       types:
-        Slash: 18
+        Slash: 20 # Triad 20 < 18
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
     offset: -0.15,0.0
@@ -167,7 +167,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 26
+        Slash: 28 # Triad 28 < 26
 
 - type: entity
   name: kukri knife

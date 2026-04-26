@@ -335,9 +335,7 @@
         Structural: 100 # Mono increased from 25 to 100, keep in mind a breaching hammer does 300 a hit
   - type: ItemToggleActiveSound
     activeSound:
-      path: /Audio/Weapons/ebladehum.ogg
-      params:
-        volume: 3
+      path: /Audio/Weapons/ebladehum.ogg # Triad removed volume Params: checking if fix audio bug
   - type: ComponentToggler
     components:
     - type: Sharp
