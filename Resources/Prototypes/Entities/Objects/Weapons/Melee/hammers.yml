@@ -8,22 +8,22 @@
     sprite: Objects/Weapons/Melee/sledgehammer.rsi
     state: icon
   - type: MeleeWeapon
-    attackRate: 0.4 #Triad lowered attack rate cause slow
+    attackRate: 0.5 #Triad similarize attack speed with Breaching Hammer
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 20 #Triad 12 < 10, low damage cause it would be too heavy to swing
-        Structural: 20
+        Blunt: 15 #Triad 20 < 10, low damage cause it would be too heavy to swing
+        Structural: 40 #Triad 40 < 10
     soundHit:
       collection: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 28 # Triad increased damage from 10 to 28 so its no longer worse than a combat knife
-        Structural: 80 # Triad increased damage from 10 to 80 so its actually usable as a structural weapon
+        Blunt: 30 # Triad increased damage by 30 from 10 so its closer to breaching hammer
+        Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
-    size: Large
+    size: Huge
 
 - type: entity
   id: Mjollnir

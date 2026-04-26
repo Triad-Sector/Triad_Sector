@@ -1,6 +1,6 @@
 - type: entity
   name: ritual dagger
-  parent: CombatKnife # Change to BaseKnife cause why not - cannot throw
+  parent: BaseKnife # Change to BaseKnife cause why not - cannot throw
   id: RitualDagger
   description: A strange dagger used by sinister groups for rituals and sacrifices.
   components:
@@ -37,12 +37,11 @@
     attackRate: 0.6 # Triad 0.6 < 0.75 
     damage:
       types:
-        Slash: 40 #Triad basically similarize with Claymore, speed & damage
+        Slash: 40 # Triad 40 < 38 basically similarize with Claymore, speed & damage
     soundHit: # Mono nearly forgot, this weapon makes no noise so i gave it the slash sound, i had been planning on adding this but i forgot until i re-opened the file
       collection: MetalThud
   - type: Item
-    size: Huge # Triad Increased from Large to Huge to make damage make more sense
-  - type: Clothing
+    size: Huge # Triad Increased from Large to Huge
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     slots:
     - back
@@ -64,7 +63,7 @@
   - type: MeleeWeapon
     heavyStaminaCost: 15 # Triad Addead Stamcost
     wideAnimationRotation: -135
-    attackRate: 0.3 # Triad 0.3 < 0.75 
+    attackRate: 0.4 # Triad 0.4 < 0.75 
     damage:
       types:
         Blunt: 5 #Triad 5 < 10
@@ -78,7 +77,7 @@
       types:
         Blunt: 5 # Triad 5 < 10, blunt can only do so much, slash go br
         Slash: 30 # Triad 30 < 15, increased damage compensate speed
-        Structural: 60 # Triad 60 < 30, High structural compensate with slower attack rate
+        Structural: 80 # Triad 80 < 30, High structural compensate with slower attack rate
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     quickEquip: false
