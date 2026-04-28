@@ -25,7 +25,7 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types: # Mono start: 0.5dps higher than standard wielded pickaxe with worse trading power
-          Heat: 10 # 8 >> 10
+          Heat: 15 # 8 >> 15 Triad
           Piercing: 10 # 2 >> 10
           Structural: 75 #Mono end: 40 >> 75
     deactivatedSecret: true

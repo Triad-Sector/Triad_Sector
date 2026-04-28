@@ -53,10 +53,10 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 20
-        Radiation: 20
+        Slash: 15 # Triad 15 < 20, Overall reduced damage slightly due to one handed
+        Radiation: 15 # Triad 15 < 20
         Heat: 5
-        Structural: 45
+        Structural: 50 # Triad 50 < 20
   - type: MeleeWeapon
     heavyStaminaCost: 3
     wideAnimationRotation: 135
@@ -64,11 +64,11 @@
     attackRate: .90
     damage:
       types:
-        Slash: 20
-        Radiation: 10
+        Slash: 15 # Triad 15 < 20
+        Radiation: 5 # Triad 5 < 10
         Structural: 40
   - type: Sharp
   - type: DisarmMalus
     malus: 0.6
   - type: Execution
-    doAfterDuration: 3.0
+    doAfterDuration: 4.0 # Triad 4 < 3

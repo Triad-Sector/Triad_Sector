@@ -41,7 +41,7 @@
     soundHit: # Mono nearly forgot, this weapon makes no noise so i gave it the slash sound, i had been planning on adding this but i forgot until i re-opened the file
       collection: MetalThud
   - type: Item
-    size: Huge # Triad Increased from Large to Huge
+    size: Large # Triad Large < Huge
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     slots:
     - back

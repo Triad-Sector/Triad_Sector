@@ -150,14 +150,14 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
   - type: MeleeWeapon
-    attackRate: 0.6 # Triad 0.6 < 0.75 
+    attackRate: 0.6 # Triad 0.6 < 0.75, Slower but higher damage
     damage:
       types:
         Slash: 40 # Mono increased from 38 to 40 to be moderately better for its awful attackrate
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Huge # Triad increased from large to huge to reflect its supreme bigness, hopefully this works
+    size: Large # Triad Large < Huge
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
