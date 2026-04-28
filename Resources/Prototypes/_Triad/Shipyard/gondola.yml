@@ -15,7 +15,7 @@
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_Triad/Shuttles/gondola.yml
-  guidebookPage: ShipyardGondola
+  #guidebookPage: ShipyardGondola
   class:
   - Civilian
   engine:
