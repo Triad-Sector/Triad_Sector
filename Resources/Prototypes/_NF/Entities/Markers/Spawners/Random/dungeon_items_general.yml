@@ -294,7 +294,7 @@
     - SalvageMaterialCrateSpawner
     - CrateFilledSpawner
     # Lewd
-    - CrateLewdFilledSpawner
+    - CrateLewdFilledSpawner # Triad change
     chance: 0.9
     offset: 0.0
     rarePrototypes:
