@@ -84,4 +84,132 @@
       - id: LewdVibeYellow
       - id: DrinkSpaceLube
 
-
+- type: entity
+  parent: CrateLewd
+  id: CrateLewdPartial
+  suffix: Random fill
+  components:
+  - type: StorageFill
+    contents:
+    - id: AvianDildo
+      orGroup: avian
+      prob: 0.3
+    - id: SAvianDildo
+      orGroup: avian
+      prob: 0.3
+    - id: MAvianDildo
+      orGroup: avian
+      prob: 0.3
+    - id: CanineDildo
+      orGroup: canine
+      prob: 0.3
+    - id: SCanineDildo
+      orGroup: canine
+      prob: 0.3
+    - id: MCanineDildo
+      orGroup: canine
+      prob: 0.3
+    - id: CanineDildoRed
+      orGroup: canineRed
+      prob: 0.3
+    - id: SCanineDildoRed
+      orGroup: canineRed
+      prob: 0.3
+    - id: MCanineDildoRed
+      orGroup: canineRed
+      prob: 0.3
+    - id: HorseDildo
+      orGroup: horse
+      prob: 0.3
+    - id: SHorseDildo
+      orGroup: horse
+      prob: 0.3
+    - id: MHorseDildo
+      orGroup: horse
+      prob: 0.3
+    - id: DragonDildo
+      orGroup: dragon
+      prob: 0.3
+    - id: SDragonDildo
+      orGroup: dragon
+      prob: 0.3
+    - id: MDragonDildo
+      orGroup: dragon
+      prob: 0.3
+    - id: fennDildo
+      orGroup: dragonFenn
+      prob: 0.3
+    - id: SfennDildo
+      orGroup: dragonFenn
+      prob: 0.3
+    - id: MfennDildo
+      orGroup: dragonFenn
+      prob: 0.3
+    - id: NormalDildo
+      orGroup: human
+      prob: 0.3
+    - id: SNormalDildo
+      orGroup: human
+      prob: 0.3
+    - id: MNormalDildo
+      orGroup: human
+      prob: 0.3
+    - id: TentacleDildo
+      orGroup: tentacle
+      prob: 0.5
+    - id: STentacleDildo
+      orGroup: tentacle
+      prob: 0.5
+    - id: MTentacleDildo
+      orGroup: tentacle
+      prob: 0.5
+    - id: DoubleDildo
+      orGroup: double-sided
+      prob: 0.3
+    - id: SDoubleDildo
+      orGroup: double-sided
+      prob: 0.3
+    - id: MDoubleDildo
+      orGroup: double-sided
+      prob: 0.3
+    - id: WhipPink
+      orGroup: whip
+      prob: 0.8
+    - id: WhipTeal
+      orGroup: whip
+      prob: 0.8
+    - id: WhipPinkCrotch
+      orGroup: whipCrotch
+      prob: 0.5
+    - id: WhipTealCrotch
+      orGroup: whipCrotch
+      prob: 0.7
+    - id: SpankPinkPaddle
+      orGroup: paddle
+      prob: 0.7
+    - id: SpankTealPaddle
+      orGroup: paddle
+      prob: 0.5
+    - id: LewdFleshlightGreen
+      prob: 0.5
+    - id: LewdFleshlightTeal
+      prob: 0.5
+    - id: LewdFleshlightPink
+      prob: 0.3
+    - id: LewdFleshlightRed
+      prob: 0.3
+    - id: LewdFleshlightYellow
+      prob: 0.3
+    - id: LewdWand
+      prob: 0.8
+    - id: LewdVibeGreen
+      prob: 0.5
+    - id: LewdVibeTeal
+      prob: 0.5
+    - id: LewdVibePink
+      prob: 0.5
+    - id: LewdVibeRed
+      prob: 0.5
+    - id: LewdVibeYellow
+      prob: 0.5
+    - id: DrinkSpaceLube
