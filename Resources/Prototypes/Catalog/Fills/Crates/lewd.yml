@@ -1,0 +1,87 @@
+- type: entity
+  id: CrateLewdToys
+  parent: CrateLewd
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: AvianDildo
+        orGroup: avian
+      - id: SAvianDildo
+        orGroup: avian
+      - id: MAvianDildo
+        orGroup: avian
+      - id: CanineDildo
+        orGroup: canine
+      - id: SCanineDildo
+        orGroup: canine
+      - id: MCanineDildo
+        orGroup: canine
+      - id: CanineDildoRed
+        orGroup: canineRed
+      - id: SCanineDildoRed
+        orGroup: canineRed
+      - id: MCanineDildoRed
+        orGroup: canineRed
+      - id: HorseDildo
+        orGroup: horse
+      - id: SHorseDildo
+        orGroup: horse
+      - id: MHorseDildo
+        orGroup: horse
+      - id: DragonDildo
+        orGroup: dragon
+      - id: SDragonDildo
+        orGroup: dragon
+      - id: MDragonDildo
+        orGroup: dragon
+      - id: fennDildo
+        orGroup: dragonFenn
+      - id: SfennDildo
+        orGroup: dragonFenn
+      - id: MfennDildo
+        orGroup: dragonFenn
+      - id: NormalDildo
+        orGroup: human
+      - id: SNormalDildo
+        orGroup: human
+      - id: MNormalDildo
+        orGroup: human
+      - id: TentacleDildo
+        orGroup: tentacle
+      - id: STentacleDildo
+        orGroup: tentacle
+      - id: MTentacleDildo
+        orGroup: tentacle
+      - id: DoubleDildo
+        orGroup: double-sided
+      - id: SDoubleDildo
+        orGroup: double-sided
+      - id: MDoubleDildo
+        orGroup: double-sided
+      - id: WhipPink
+        orGroup: whip
+      - id: WhipTeal
+        orGroup: whip
+      - id: WhipPinkCrotch
+        orGroup: whipCrotch
+      - id: WhipTealCrotch
+        orGroup: whipCrotch
+      - id: SpankPinkPaddle
+        orGroup: paddle
+      - id: SpankTealPaddle
+        orGroup: paddle
+      - id: LewdFleshlightGreen
+      - id: LewdFleshlightTeal
+      - id: LewdFleshlightPink
+      - id: LewdFleshlightRed
+      - id: LewdFleshlightYellow
+      - id: LewdWand
+      - id: LewdVibeGreen
+      - id: LewdVibeTeal
+      - id: LewdVibePink
+      - id: LewdVibeRed
+      - id: LewdVibeYellow
+      - id: DrinkSpaceLube
+
+
