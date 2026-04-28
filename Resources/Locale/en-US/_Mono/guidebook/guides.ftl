@@ -7,7 +7,6 @@ guide-entry-shipyard-ruby = Ruby
 guide-entry-shipyard-motley-anne = Motley Anne
 guide-entry-shipyard-fenrir = Fenrir
 guide-entry-shipyard-nfr = INSFC NFR Operation Manual
-guide-entry-shipyard-gondola = Gondola
 
 # Gunnery Guides
 guide-entry-gunnery = Ship Gunnery
