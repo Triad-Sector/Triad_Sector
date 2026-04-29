@@ -245,47 +245,47 @@
     state: icon
     scale: 0.3, 0.3
 
-- type: entity
-  parent: BaseDildo
-  id: fennDildo
-  name: fenn dildo
-  description: A large green dildo of a dragon... Woof...
-  components:
-  - type: Sprite
-    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
-    state: icon
-    scale: 0.4, 0.4
-  - type: Item
-    size: Normal
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        scale: 0.5, 0.5
-      right:
-      - state: inhand-right
-        scale: 0.5, 0.5
+#- type: entity
+#  parent: BaseDildo
+#  id: fennDildo
+#  name: fenn dildo
+#  description: A large green dildo of a dragon... Woof...
+#  components:
+#  - type: Sprite
+#    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
+#    state: icon
+#    scale: 0.4, 0.4
+#  - type: Item
+#    size: Normal
+#    inhandVisuals:
+#      left:
+#      - state: inhand-left
+#        scale: 0.5, 0.5
+#      right:
+#      - state: inhand-right
+#        scale: 0.5, 0.5
 
-- type: entity
-  parent: fennDildo
-  id: sfennDildo
-  name: small fenn dildo
-  description: A large green dildo of a dragon... Woof...
-  components:
-  - type: Sprite
-    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
-    state: icon
-    scale: 0.2, 0.2
+#- type: entity
+#  parent: fennDildo
+#  id: sfennDildo
+#  name: small fenn dildo
+#  description: A large green dildo of a dragon... Woof...
+#  components:
+#  - type: Sprite
+#    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
+#    state: icon
+#    scale: 0.2, 0.2
 
-- type: entity
-  parent: fennDildo
-  id: MfennDildo
-  name: medium fenn dildo
-  description: A large green dildo of a dragon... Woof...
-  components:
-  - type: Sprite
-    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
-    state: icon
-    scale: 0.3, 0.3
+#- type: entity
+#  parent: fennDildo
+#  id: MfennDildo
+#  name: medium fenn dildo
+#  description: A large green dildo of a dragon... Woof...
+#  components:
+#  - type: Sprite
+#    sprite: _Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_fenn.rsi
+#    state: icon
+#    scale: 0.3, 0.3
 
 - type: entity
   parent: BaseDildo

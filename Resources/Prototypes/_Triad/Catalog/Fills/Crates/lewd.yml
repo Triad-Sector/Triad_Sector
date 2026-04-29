@@ -35,12 +35,6 @@
         orGroup: dragon
       - id: MDragonDildo
         orGroup: dragon
-      - id: fennDildo
-        orGroup: dragonFenn
-      - id: SfennDildo
-        orGroup: dragonFenn
-      - id: MfennDildo
-        orGroup: dragonFenn
       - id: NormalDildo
         orGroup: human
       - id: SNormalDildo
@@ -135,15 +129,6 @@
       prob: 0.3
     - id: MDragonDildo
       orGroup: dragon
-      prob: 0.3
-    - id: fennDildo
-      orGroup: dragonFenn
-      prob: 0.3
-    - id: SfennDildo
-      orGroup: dragonFenn
-      prob: 0.3
-    - id: MfennDildo
-      orGroup: dragonFenn
       prob: 0.3
     - id: NormalDildo
       orGroup: human

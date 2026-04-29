@@ -11,7 +11,7 @@
   parent: BaseVessel
   name: ERP Gondola
   description:  A luxury boat for a romantic getaway. It comes with a wall-to-wall swimming pool, sauna, a well-stocked bar and other amenities.
-  price: 47000
+  price: 50000
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_Triad/Shuttles/gondola.yml
