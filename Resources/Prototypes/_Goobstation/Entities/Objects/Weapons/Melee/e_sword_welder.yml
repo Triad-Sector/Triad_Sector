@@ -32,6 +32,7 @@
         types:
             Slash: 8
             Heat: 22
+            Structural: 40 # Triad
   - type: ItemToggle
     soundActivate:
       path: /Audio/_Goobstation/Weapons/EswordWelder/on.ogg

@@ -10,6 +10,8 @@
     state: icon
   - type: Item
     size: Huge
+    shape:
+    - 0,0,2,3 # Triad Hammer size, Similar to axes
   - type: MeleeWeapon
     attackRate: 0.5
     range: 1.70

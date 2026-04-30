@@ -1,6 +1,6 @@
 - type: entity
   name: sledgehammer
-  parent: BaseItem
+  parent: SecBreachingHammer
   id: Sledgehammer
   description: The perfect tool for wanton carnage.
   components:
@@ -24,6 +24,8 @@
         Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
     size: Huge
+    shape:
+    - 0,0,2,3 # Triad Hammer size, Similar to axes
 
 - type: entity
   id: Mjollnir

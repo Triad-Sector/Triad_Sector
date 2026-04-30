@@ -13,7 +13,7 @@
     attackRate: 1.2 # Triad 1.2 < 1.5
     damage:
       types:
-        Slash: 28 # Triad increased damage from 15 to 28 since it has reflect and higher attack rate
+        Slash: 27 # Triad changed damage from 15 to 27 while keeping reflect and higher attack rate
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Reflect

@@ -50,7 +50,7 @@
   - type: Item
     size: Huge # Triad Huge < Ginormous
     shape:
-    - 0,0,1,5 # Triad Spear size, slightly Longer than sword but thin
+    - 0,0,1,4 # Triad Spear size, slightly Longer than sword but thin
   - type: Clothing
     quickEquip: false
     slots:
