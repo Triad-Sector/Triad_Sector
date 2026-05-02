@@ -87,6 +87,8 @@
           - GlassBeaker
           - ChemDispensable
           - MedicialBluespaceDeskCompatible
+          - CigPack
+          - Medkit
     - type: Construction
       graph: MedicalSecureStorageGraph
       node: MedicalSecureStorageNode

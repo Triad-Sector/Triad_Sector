@@ -490,7 +490,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         var shuttleUid = deed.ShuttleUid;
-        bool voucherUsed = deed.PurchasedWithVoucher;
+        var voucherUsed = deed.PurchasedWithVoucher;
 
         if (shuttleUid == null)
         {
@@ -510,6 +510,17 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (voucherUsed)
         {
             ConsolePopup(player, $"Failed to store ship due to the usage of voucher.");
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        var mobQuery = GetEntityQuery<MobStateComponent>();
+        var xformQuery = GetEntityQuery<TransformComponent>();
+
+        var foundOrganic = FoundOrganics(shuttleUid.Value, mobQuery, xformQuery);
+        if (foundOrganic != null)
+        {
+            ConsolePopup(player, $"Failed to store ship; {foundOrganic} detected on board.");
             PlayDenySound(player, uid, component);
             return;
         }
@@ -692,6 +703,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 ("ship", name), ("remaining", (cooldown - (now - lastCharge)).ToString("m\':\'ss"))));
         }
 
+        var boughtEv = new ShipBoughtEvent();
+        RaiseLocalEvent(shuttleUid, boughtEv);
+
         // Important: Treat loaded ships like independent shuttles, not part of the console's station.
         // The purchase-from-file path temporarily adds the grid to the console's station for IFF/ownership.
         // That causes station-wide events (alerts, etc.) to target the loaded ship. Remove that membership here.
@@ -854,7 +868,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             );
         }
 
-        var loadEv = new ShipyardShuttleLoadEvent(shuttleUid, player); // AH
+        var loadEv = new ShipyardShuttleLoadEvent(shuttleUid, player);
         RaiseLocalEvent(loadEv);
         RefreshState(uid, balance, true, name, 0, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
 
