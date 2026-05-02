@@ -350,9 +350,9 @@
   - type: Wieldable
     wieldSound: null # esword light sound instead
   - type: MeleeWeapon
-    heavyStaminaCost: 8 # Triad edit
+    heavyStaminaCost: 10 # Triad
     wideAnimationRotation: -135
-    attackRate: 1.2 # Triad, 1.2 < 1.3 is pretty fast
+    attackRate: 1 # Triad, 1 < 1.3 is pretty fast
     angle: 100
     damage:
       types:
