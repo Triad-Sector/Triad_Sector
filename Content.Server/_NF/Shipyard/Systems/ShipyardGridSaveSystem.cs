@@ -439,8 +439,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     {
         if (!Exists(uid))
             return false;
-        if (_entityManager.IsQueuedForDeletion(uid))
-            return false;
         // Skip if terminating
         if (_entityManager.GetComponent<MetaDataComponent>(uid).EntityLifeStage >= EntityLifeStage.Terminating)
             return false;
