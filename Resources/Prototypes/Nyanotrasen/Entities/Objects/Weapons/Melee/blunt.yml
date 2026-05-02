@@ -10,20 +10,25 @@
   - type: Item
     size: Huge
     shape:
-    - 0,0,1,4 # Kanobu specific size, slight longer than Large size
+    - 0,0,1,4 # Triad Glaive & Kanobou Shape
   - type: MeleeWeapon
     attackRate: 0.6
+    wideAnimationRotation: -135 # Triad, hopefully fixes weird sprite swinging
     range: 1.75
     damage:
       types:
-        Blunt: 25 # Triad enough to be on par with Fireaxes
-        Structural: 60 # Triad
-    # bluntStaminaDamageFactor: 1.60 # 25.6 stamina damage #I # Triad, i have no idea how to count so disable for now
+        Blunt: 20 # Triad enough to be on par with Fireaxes
+        Structural: 20 # Triad
+    bluntStaminaDamageFactor: 1.30 # Triad, i have no idea how to count so uh 1.3
+  - type: SpeedModifiedOnWield # Triad
+    walkModifier: 1
+    sprintModifier: 0.9
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15 # Triad
+        Blunt: 20 # Triad
+        Structural: 40 # Triad
   - type: Clothing
     sprite: Nyanotrasen/Objects/Weapons/Melee/kanabou.rsi
     quickEquip: false

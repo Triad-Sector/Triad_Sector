@@ -16,6 +16,9 @@
         Structural: 40 #Triad 40 < 10
     soundHit:
       collection: MetalThud
+  - type: SpeedModifiedOnWield # Mono
+    walkModifier: 1
+    sprintModifier: 0.9
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -23,9 +26,8 @@
         Blunt: 30 # Triad increased damage by 30 from 10 so its closer to breaching hammer
         Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
-    size: Huge
-    shape:
-    - 0,0,2,3 # Triad Hammer size, Similar to axes
+    size: Ginormous
+    - 0,0,3,5 # Triad 
 
 - type: entity
   id: Mjollnir

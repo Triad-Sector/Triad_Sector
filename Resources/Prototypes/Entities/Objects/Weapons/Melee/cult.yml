@@ -24,7 +24,7 @@
 
 - type: entity
   name: eldritch blade
-  parent: BaseSword # Change to BaseSword cause why not
+  parent: BaseSword # Triad Change to BaseSword cause why not
   id: EldritchBlade
   description: A sword humming with unholy energy.
   components:
@@ -33,6 +33,7 @@
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     state: icon
   - type: MeleeWeapon
+    heavyStaminaCost: 15 # Triad
     wideAnimationRotation: -135
     attackRate: 0.6 # Triad 0.6 < 0.75 
     damage:
@@ -49,7 +50,7 @@
 
 - type: entity
   name: unholy halberd
-  parent: FireAxe # Change to FireAxe for references, and execute
+  parent: FireAxe # Triad Change to FireAxe for references, and execute
   id: UnholyHalberd
   description: A poleaxe that seems to be linked to its wielder.
   components:
@@ -61,9 +62,10 @@
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon
   - type: MeleeWeapon
-    heavyStaminaCost: 15 # Triad Addead Stamcost
+    heavyStaminaCost: 20 # Triad Addead Stamcost
     wideAnimationRotation: -135
-    attackRate: 0.4 # Triad 0.4 < 0.75 
+    swingLeft: false
+    attackRate: 0.45 # Triad 0.45 < 0.75 
     damage:
       types:
         Blunt: 5 #Triad 5 < 10
@@ -71,6 +73,9 @@
         Structural: 20 #Triad 20 < 10
     soundHit:
       collection: MetalThud
+  - type: SpeedModifiedOnWield # Triad
+    walkModifier: 1
+    sprintModifier: .9
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

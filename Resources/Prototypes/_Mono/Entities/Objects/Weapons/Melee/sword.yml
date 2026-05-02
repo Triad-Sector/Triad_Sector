@@ -199,13 +199,13 @@
     sprite: _Mono/Objects/Weapons/Melee/ullmansword.rsi
     size: Large
   - type: MeleeWeapon
-    heavyStaminaCost: 1
+    heavyStaminaCost: 10 # Triad 10 < 1
     wideAnimationRotation: -135
-    attackRate: 1.25
+    attackRate: 1.1 # Triad 1.1 < 1.25
     damage:
       types:
         Slash: 30
-        Structural: 75
+        Structural: 40  # Triad 40 < 75
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: ItemToggleMeleeWeapon

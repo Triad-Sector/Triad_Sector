@@ -7,6 +7,7 @@
   - type: Execution
     doAfterDuration: 4.0
   - type: MeleeWeapon
+    heavyStaminaCost: 5 # Triad
     wideAnimationRotation: -135
   - type: Sprite
     state: icon
@@ -33,7 +34,6 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: MeleeWeapon
-    heavyStaminaCost: 2.5 # goob edit
     attackRate: 1.5
     damage:
       types:
@@ -150,6 +150,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
   - type: MeleeWeapon
+    heavyStaminaCost: 15 # Triad
     attackRate: 0.6 # Triad 0.6 < 0.75, Slower but higher damage
     damage:
       types:
@@ -158,12 +159,13 @@
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
     size: Large # Triad Large < Huge
+  - type: DisarmMalus
   - type: Clothing
+    quickEquip: false # Triad disable quickEquip
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
     - back
     - suitStorage
-  - type: DisarmMalus
 
 - type: entity
   name: cutlass

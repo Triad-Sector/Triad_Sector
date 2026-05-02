@@ -36,7 +36,7 @@
     - type: RadiationSource
       enabled: true
   - type: ItemToggleSize
-    activatedSize: Large
+    activatedSize: Huge
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Weapons/eblade1.ogg

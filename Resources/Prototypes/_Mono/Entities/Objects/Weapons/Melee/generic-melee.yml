@@ -30,6 +30,8 @@
   - type: Item
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
     size: Normal
+    shape:
+    - 0,0,1,2 # Triad
   - type: Clothing
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
     slots:
@@ -44,7 +46,7 @@
     - type: Execution
       doAfterDuration: 4.0
   - type: ItemToggleSize
-    activatedSize: Large
+    activatedSize: Huge
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/_Goobstation/Weapons/EswordWelder/eblade1.ogg
@@ -65,7 +67,7 @@
         Heat: 25
         Structural: 150
   - type: MeleeWeapon
-    heavyStaminaCost: 1
+    heavyStaminaCost: 5 # Triad
     wideAnimationRotation: -135
     attackRate: 1
     damage:
