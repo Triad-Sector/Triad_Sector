@@ -46,10 +46,11 @@
   description: Powerful tool used to quickly drill through rocks.
   components:
   - type: Item
+    size: Normal
     storedRotation: -90
   - type: Tag
     tags:
-    - Pickaxe
+    - Pickaxe;
   - type: Sprite
     sprite: Objects/Tools/handdrill.rsi
     state: handdrill

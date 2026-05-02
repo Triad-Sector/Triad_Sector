@@ -35,6 +35,7 @@
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: MeleeWeapon
+    heavyStaminaCost: 8 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
     damage:
       types:

@@ -13,6 +13,7 @@
     types:
     - Knife
   - type: MeleeWeapon
+    heavyStaminaCost: 2 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
     damage:
       types:

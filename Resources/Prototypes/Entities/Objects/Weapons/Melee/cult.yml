@@ -62,7 +62,7 @@
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon
   - type: MeleeWeapon
-    heavyStaminaCost: 20 # Triad Addead Stamcost
+    heavyStaminaCost: 15 # Triad Added Stamcost, max 7 hits before collapse directly
     wideAnimationRotation: -135
     swingLeft: false
     attackRate: 0.45 # Triad 0.45 < 0.75 
@@ -74,8 +74,8 @@
     soundHit:
       collection: MetalThud
   - type: SpeedModifiedOnWield # Triad
-    walkModifier: 1
-    sprintModifier: .9
+    walkModifier: 0.9
+    sprintModifier: 0.7
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

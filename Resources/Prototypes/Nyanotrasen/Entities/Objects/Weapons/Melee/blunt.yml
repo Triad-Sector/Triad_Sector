@@ -12,6 +12,7 @@
     shape:
     - 0,0,1,4 # Triad Glaive & Kanobou Shape
   - type: MeleeWeapon
+    heavyStaminaCost: 15 # Triad
     attackRate: 0.6
     wideAnimationRotation: -135 # Triad, hopefully fixes weird sprite swinging
     range: 1.75
@@ -20,9 +21,11 @@
         Blunt: 20 # Triad enough to be on par with Fireaxes
         Structural: 20 # Triad
     bluntStaminaDamageFactor: 1.30 # Triad, i have no idea how to count so uh 1.3
+    soundHit:
+      collection: MetalThud
   - type: SpeedModifiedOnWield # Triad
-    walkModifier: 1
-    sprintModifier: 0.9
+    walkModifier: 0.9
+    sprintModifier: 0.7
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

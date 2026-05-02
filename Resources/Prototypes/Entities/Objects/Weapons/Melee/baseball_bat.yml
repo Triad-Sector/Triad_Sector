@@ -8,7 +8,7 @@
     sprite: Objects/Weapons/Melee/baseball_bat.rsi
     state: icon
   - type: MeleeWeapon
-    heavyStaminaCost: 15 # goob edit
+    heavyStaminaCost: 8 # Triad edit
     wideAnimationRotation: -135
     damage:
       types:

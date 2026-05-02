@@ -7,7 +7,7 @@
   - type: Execution
     doAfterDuration: 4.0
   - type: MeleeWeapon
-    heavyStaminaCost: 5 # Triad
+    heavyStaminaCost: 8 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
   - type: Sprite
     state: icon

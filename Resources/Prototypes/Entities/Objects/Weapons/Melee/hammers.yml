@@ -17,6 +17,9 @@
     soundHit:
       collection: MetalThud
   - type: SpeedModifiedOnWield # Mono
+    walkModifier: 0.9
+    sprintModifier: 0.7
+  - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
   - type: Wieldable
@@ -27,6 +30,7 @@
         Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
     size: Ginormous
+    shape:
     - 0,0,3,5 # Triad 
 
 - type: entity

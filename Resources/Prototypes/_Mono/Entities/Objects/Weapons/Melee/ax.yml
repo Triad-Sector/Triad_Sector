@@ -58,7 +58,7 @@
         Heat: 5
         Structural: 50 # Triad 50 < 20
   - type: MeleeWeapon
-    heavyStaminaCost: 3
+    heavyStaminaCost: 12
     wideAnimationRotation: 135
     swingLeft: true
     attackRate: .90
