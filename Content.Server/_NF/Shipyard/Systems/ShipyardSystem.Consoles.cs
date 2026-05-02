@@ -53,6 +53,7 @@ using Content.Shared._Mono.Company;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared._NF.Shuttles.Save; // Triad
+using Content.Shared._Triad.Shipyard.Save; // Triad
 using Robust.Shared.Player;
 using Content.Shared._Mono.Ships.Components;
 using Content.Shared._Mono.Shipyard;
@@ -89,6 +90,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly ShuttleConsoleLockSystem _shuttleConsoleLock = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly ShipyardDirectionSystem _shipyardDirection = default!;
 
     private static readonly ProtoId<TagPrototype> CrewedShuttleTag = "CrewedShuttle";
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
@@ -264,12 +266,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         // setting up any stations if we have a matching game map prototype to allow late joins directly onto the vessel
         if (_prototypeManager.TryIndex<GameMapPrototype>(vessel.ID, out var stationProto))
         {
-            // Hardlight.
-            // The shuttle loader will grab the vessel prototype from this component on load.
-            var vesselComp = EnsureComp<HLSavedVesselPrototypeComponent>(shuttleUid);
-            vesselComp.VesselId = vessel.ID;
-            Dirty(shuttleUid, vesselComp);
-
             List<EntityUid> gridUids = new()
             {
                 shuttleUid
@@ -399,7 +395,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         vesselStore.VesselId = vessel.ID;
 
         // Mono
-        _entityManager.System<ShipyardDirectionSystem>().SendShipDirectionMessage(player, shuttleUid);
+        _shipyardDirection.SendShipDirectionMessage(player, shuttleUid);
 
         EnsureComp<TagComponent>(shuttleUid);
         _tagSystem.TryAddTags(shuttleUid, vessel.Tags);
@@ -598,14 +594,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         bool loaded = false;
         try
         {
-            // HardLight start
             if (!string.IsNullOrWhiteSpace(args.YamlData))
             {
                 loaded = TryPurchaseShuttleFromYamlData(uid, args.YamlData, out shuttleUidOut);
             }
 
             if (!loaded && !string.IsNullOrWhiteSpace(args.SourceFilePath))
-            // HardLight end
             {
                 // Normalize to a ResPath under /UserData
                 var norm = args.SourceFilePath!.Replace('\\', '/');
@@ -641,7 +635,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         // Calculate appraisal cost for the loaded ship (charge 60% of appraisal)
         var fullAppraisal = _pricing.AppraiseGrid(shuttleUid, null);
-        var appraisalCost = (int) MathF.Round((float) fullAppraisal * 0.6f);
+        var appraisalCost = (int)MathF.Round((float)fullAppraisal * 0.6f);
 
         // Check if player has a bank account and session to charge them
         if (!_player.TryGetSessionByEntity(player, out var playerSession))
@@ -715,10 +709,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         {
             Logger.Warning($"[ShipLoad(Console)] Failed to remove station membership from {ToPrettyString(shuttleUid)}: {rmEx.Message}");
         }
+
         // For loaded ships, we don't spawn a new station via a GameMap prototype unless we can infer the vessel ID.
-        EntityUid? shuttleStation = null;
-        var vesselComp = EnsureComp<HLSavedVesselPrototypeComponent>(shuttleUid);
+        var vesselComp = EnsureComp<VesselComponent>(shuttleUid);
         var vessel = vesselComp.VesselId;
+
+        EntityUid? shuttleStation = null;
         if (_prototypeManager.TryIndex<GameMapPrototype>(vessel, out var stationProto))
         {
             List<EntityUid> gridUids = new()
@@ -829,7 +825,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         // Ensure cleanup on ship sale
         EnsureComp<LinkedLifecycleGridParentComponent>(shuttleUid);
 
-        var sellValue = 0;
+        _shipyardDirection.SendShipDirectionMessage(player, shuttleUid);
 
         // Send radio messages and update UI
         SendPurchaseMessage(uid, player, name, component.ShipyardChannel, secret: false);
@@ -839,7 +835,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         PlayConfirmSound(player, uid, component);
 
         // Optional: show price/sell in UI; for loaded ships, resale is disabled so set 0
-        int balance = 0;
+        var balance = 0;
         if (TryComp<BankAccountComponent>(player, out var bankAcc2))
             balance = bankAcc2.Balance;
 
@@ -858,22 +854,18 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             );
         }
 
-        RefreshState(uid, balance, true, name, sellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
+        var loadEv = new ShipyardShuttleLoadEvent(shuttleUid, player); // AH
+        RaiseLocalEvent(loadEv);
+        RefreshState(uid, balance, true, name, 0, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
 
-        //_adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} loaded shuttle {ToPrettyString(shuttleUid)} from {(args.SourceFilePath ?? "YAML data")} via {ToPrettyString(uid)}");
+        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} loaded shuttle {ToPrettyString(shuttleUid)} from {(args.SourceFilePath ?? "YAML data")} via {ToPrettyString(uid)}");
 
         // After a successful server-side load, instruct the client to delete their local YAML file.
         if (!string.IsNullOrWhiteSpace(args.SourceFilePath) && _player.TryGetSessionByEntity(player, out var session))
         {
-            try
-            {
-                RaiseNetworkEvent(new DeleteLocalShipFileMessage(args.SourceFilePath!), session);
-                Logger.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");
-            }
-            catch (Exception ex)
-            {
-                Logger.Warning($"Failed to request client-side deletion for '{args.SourceFilePath}': {ex}");
-            }
+            var deleteEv = new DeleteLocalShipFileMessage(args.SourceFilePath!);
+            RaiseNetworkEvent(deleteEv, session);
+            Logger.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");
         }
     }
 
