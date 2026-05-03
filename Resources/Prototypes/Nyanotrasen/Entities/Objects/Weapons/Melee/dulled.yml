@@ -19,6 +19,11 @@
   - type: Item
     size: Normal
     sprite: Objects/Weapons/Melee/katana.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/katana.rsi
+    slots:
+    - back
+    - suitStorage
 
 - type: entity
   name: claymore
@@ -31,7 +36,7 @@
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon
   - type: MeleeWeapon
-    attackRate: 0.75
+    attackRate: 0.6 # Triad
     damage:
       types:
         Blunt: 6
@@ -42,3 +47,4 @@
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
     - back
+    - suitStorage

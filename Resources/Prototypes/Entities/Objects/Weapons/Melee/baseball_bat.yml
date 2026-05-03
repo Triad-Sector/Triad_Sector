@@ -44,6 +44,21 @@
   - type: Tag
     tags:
     - BaseballBat
+# Triad Start - Audio TO DO,find better audios
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wooden_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/other/Cup/drop.ogg
+      params:
+        volume: -2
+  # - type: EmitSoundOnLand
+  #   sound:
+  #     path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+# Triad End - Audio
 
 - type: entity
   name: incomplete baseball bat

@@ -73,6 +73,21 @@
   - type: Construction
     graph: WelderSword
     node: welderSword
+# Trid Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/weldingtool_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/welder_drop
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/welder_drop
+# Trid End - Audio
 
 - type: entity
   name: welder energy sword

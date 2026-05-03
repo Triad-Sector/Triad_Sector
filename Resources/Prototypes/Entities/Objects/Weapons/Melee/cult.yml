@@ -38,8 +38,6 @@
   description: A poleaxe that seems to be linked to its wielder.
   components:
   - type: Tag
-    tags:
-  - type: Sharp
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon
@@ -55,7 +53,7 @@
         Slash: 10
         Structural: 20 #Triad 20 < 10
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -70,4 +68,4 @@
     walkModifier: 0.9
     sprintModifier: 0.7
   - type: Clothing
-    sprite: Objects/Weapons/Melee/cult_halberd.rsi # Missing on back sprite
+    sprite: Objects/Weapons/Melee/cult_halberd.rsi

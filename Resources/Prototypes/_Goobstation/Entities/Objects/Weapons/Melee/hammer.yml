@@ -31,3 +31,13 @@
   - type: Construction
     graph: HammerConstructionGraph
     node: final
+# Triad Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+# Triad End

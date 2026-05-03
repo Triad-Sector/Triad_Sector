@@ -28,7 +28,7 @@
       path: /Audio/Weapons/chainsaw.ogg
       params:
         volume: -3
-  - type: IncreaseDamageOnWield
+  - type: IncreaseDamageOnWield # Triad To Do, chainsaw idle sound while wielded
     damage:
       types:
         Slash: 6
@@ -55,3 +55,20 @@
       path: /Audio/Weapons/chainsawwield.ogg
     endSound:
       path: /Audio/Weapons/chainsaw.ogg
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Weapons/chainsawwield.ogg
+      params:
+        volume: -3
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -2
+# Triad End - Audio

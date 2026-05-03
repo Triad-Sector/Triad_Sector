@@ -7,7 +7,7 @@
   - type: Execution
     doAfterDuration: 4.0
   - type: MeleeWeapon
-    heavyStaminaCost: 8 # Triad, most melee are buffed, so lets add stam management
+    heavyStaminaCost: 8 # Triad
     attackRate: 1 # Triad
     wideAnimationRotation: -135
     damage: # Triad base 32 damage for every all basic sword
@@ -25,16 +25,31 @@
   - type: Tool
     qualities:
     - Slicing
-  - type: DisarmMalus # Triad, added to all, base, since all uses it
-  - type: Clothing # Triad, all base melee can be put in the back, and belt
+  - type: DisarmMalus # Triad
+  - type: Clothing # Triad
     quickEquip: false
-    slots: # Triad, slotable everywhere base, need the sprites tho
+    slots:
     - back
     - suitStorage
-    - Belt
-  - type: EmitSoundOnLand # Triad, added sound on throw
+# Triad Start - Audio Overhaul
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/unsheath.ogg
+      params:
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
 
 - type: entity
   name: captain's sabre
@@ -42,11 +57,6 @@
   id: CaptainSabre
   description: A common sighting among ship captains. Once ceremonial, it now has common use for self-defense.
   components:
-  # Goobstation edit start
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
-  # Goobstation edit start
   - type: Sprite
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: MeleeWeapon

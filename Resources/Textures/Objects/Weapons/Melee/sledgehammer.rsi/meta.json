@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC0-1.0",
-  "copyright": "Made by Github user Psychpsyo for Space Station 14",
+  "copyright": "Made by Github user Psychpsyo for Space Station 14 - Icon rework, Backpack & Suitstorage Sprite by Wuffindy",
   "size": {
       "x": 32,
       "y": 32
@@ -25,6 +25,14 @@
 	  {
       "name": "wielded-inhand-right",
       "directions": 4
+    },
+    {
+        "name": "equipped-BACKPACK",
+        "directions": 4
+    },
+    {
+        "name": "equipped-SUITSTORAGE",
+        "directions": 4
     }
   ]
 }

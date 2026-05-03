@@ -38,6 +38,21 @@
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     storedRotation: -45
   - type: UseDelay
+# Triad Start - Audio
+  # - type: EmitSoundOnPickup
+  #   sound:
+  #     path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+  #     params:
+  #       volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+# Triad End - Audio
 
 - type: entity
   name: mining drill
@@ -148,7 +163,7 @@
         Slash: 10
         Structural: 5 # Triad
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -165,10 +180,28 @@
   - type: DisarmMalus
   - type: Prying
   - type: Clothing # Frontier
+    sprite: Objects/Weapons/Melee/crusher-inhands.rsi # Triad back sprite
     quickEquip: false # Frontier
     slots: # Frontier
     - back # Frontier
     - suitStorage # Frontier
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
 
 - type: entity
   parent: [ BaseKnife, BaseWeaponCrusher]
@@ -239,3 +272,11 @@
     shape: # Triad Glaive & Kanobou Shape
     - 0,0,1,4 
     sprite: Objects/Weapons/Melee/crusher_glaive-inhands.rsi
+# Triad Start
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/crusher_glaive-inhands.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+# Triad End

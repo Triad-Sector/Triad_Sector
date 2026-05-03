@@ -24,7 +24,7 @@
         Slash: 20
         Structural: 20
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg # Triad, change to slice
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -53,10 +53,24 @@
     stealGroup: FireAxe
   - type: IgniteOnMeleeHit
     fireStacks: -4
-  - type: EmitSoundOnLand # Triad, added sound on throw
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
-  # Triad Disabled Axe Shitmed stuff
+      params:
+        volume: -4
+# Triad End - Audio
+# Triad Disabled Axe Shitmed stuff
   # - type: Scalpel # Shitmed
   #   speed: 0.3
   # - type: BoneSaw # Shitmed

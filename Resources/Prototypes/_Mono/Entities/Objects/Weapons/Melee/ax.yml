@@ -53,10 +53,10 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 15 # Triad 15 < 20, Overall reduced damage slightly due to one handed
-        Radiation: 15 # Triad 15 < 20
-        Heat: 5
-        Structural: 50 # Triad 50 < 20
+        Slash: 20
+        Radiation: 12 # Triad 12 < 20
+        Heat: 8 # Triad 8 < 5
+        Structural: 40 # Triad 40 < 20
   - type: MeleeWeapon
     heavyStaminaCost: 12
     wideAnimationRotation: 135
@@ -72,3 +72,20 @@
     malus: 0.6
   - type: Execution
     doAfterDuration: 4.0 # Triad 4 < 3
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
