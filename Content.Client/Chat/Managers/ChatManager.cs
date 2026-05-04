@@ -58,6 +58,16 @@ internal sealed class ChatManager : IChatManager
                 _consoleHost.ExecuteCommand($"me \"{CommandParsing.Escape(str)}\"");
                 break;
 
+            case ChatSelectChannel.Dead:
+                if (_systems.GetEntitySystemOrNull<GhostSystem>() is {IsGhost: true})
+                    goto case ChatSelectChannel.Local;
+
+                if (_adminMgr.HasFlag(AdminFlags.Admin))
+                    _consoleHost.ExecuteCommand($"dsay \"{CommandParsing.Escape(str)}\"");
+                else
+                    _sawmill.Warning("Tried to speak on deadchat without being ghost or admin.");
+                break;
+
             // TODO sepearate radio and say into separate commands.
             case ChatSelectChannel.Radio:
             case ChatSelectChannel.Local:
