@@ -178,12 +178,10 @@
     sound:
       path: /Audio/Items/unsheath.ogg
       params:
-      params:
         volume: -2
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
-      params:
       params:
         volume: -4
   - type: EmitSoundOnLand
@@ -293,12 +291,10 @@
     sound:
       path: /Audio/Items/unsheath.ogg
       params:
-      params:
         volume: -2
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
-      params:
       params:
         volume: -4
   - type: EmitSoundOnLand

@@ -1,0 +1,33 @@
+- type: entity
+  parent: [ClothingBeltSheath]
+  id: SwordSheath
+  name: sword sheath #using blade since you can put any sword
+  description: A bulky leather sheath designed to hold most traditional swords.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/swordsheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/swordsheath.rsi
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,1,2
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sabre
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - Blade
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - Blade
+  - type: Appearance

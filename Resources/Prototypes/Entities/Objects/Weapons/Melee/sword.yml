@@ -20,6 +20,9 @@
     state: icon
   - type: Item
     size: Large
+  - type: Tag
+    tags:
+    - Blade
   - type: Utensil
     types:
       - Knife
@@ -37,12 +40,10 @@
     sound:
       path: /Audio/Items/unsheath.ogg
       params:
-      params:
         volume: -2
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
-      params:
       params:
         volume: -4
   - type: EmitSoundOnLand
@@ -85,6 +86,7 @@
   - type: Tag
     tags:
     - Katana
+    - Blade
   - type: Sprite
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: MeleeWeapon
@@ -137,11 +139,12 @@
     sprite: Objects/Weapons/Melee/machete.rsi
 
 - type: entity
-  name: claymore # Mono TODO: make this a wieldable weapon
+  name: claymore #Triad, Bulky blade, but dont make it wieldable, just slower
   parent: BaseSword
   id: Claymore
   description: An ancient war blade.
   components:
+  - type: Tag
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
   - type: MeleeWeapon
@@ -196,6 +199,7 @@
     - type: Reflect
       reflectProb: .25
       spread: 90
+    - type: Tag
     - type: Item
       size: Ginormous
       sprite: Objects/Weapons/Melee/Throngler-in-hand.rsi

@@ -48,7 +48,7 @@
     ignoreResistances: true # Triad, if a throwing knife can do it, surely a spear can
     damage:
       types:
-        Piercing: 32 # Triad 32 < 25
+        Piercing: 30 # Triad 30 < 25
   - type: Item
     size: Huge # Triad Huge < Ginormous
     shape:
@@ -155,7 +155,7 @@
     ignoreResistances: true # Triad
     damage:
       types:
-        Piercing: 35
+        Piercing: 32 # Triad
   - type: Construction
     graph: SpearReinforced
 
@@ -176,7 +176,7 @@
     ignoreResistances: true # Triad
     damage:
       types:
-        Piercing: 35
+        Piercing: 36 # Triad
   - type: Construction
     graph: SpearPlasma
 
@@ -195,10 +195,11 @@
         Piercing: 15
         Radiation: 8
   - type: DamageOtherOnHit
+    ignoreResistances: true # Triad
     damage:
       types:
-        Piercing: 12
-        Radiation: 9
+        Piercing: 20 # Triad
+        Radiation: 12 # Triad
   - type: Construction
     graph: SpearUranium
 
