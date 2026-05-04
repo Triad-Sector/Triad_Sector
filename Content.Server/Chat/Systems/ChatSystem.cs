@@ -240,6 +240,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
 
         // HardLight start: Corrected SubtleOOC performing IC emotes.
+        // STOP FUCKING US ING COPILOT YOU LAZY FUCKER
+        // IT'S A TOOL
+        // YOU DON'T TELL IT TO FIX YOUR ISSUES 100%
         string? emoteStr = null;
         if (desiredType == InGameICChatType.SubtleOOC)
         {
@@ -303,7 +306,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         {
             if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
             {
-                SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker);
                 return;
             }
         }
@@ -312,19 +315,19 @@ public sealed partial class ChatSystem : SharedChatSystem
         switch (desiredType)
         {
             case InGameICChatType.Speak:
-                SendEntitySpeak(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntitySpeak(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Whisper:
-                SendEntityWhisper(source, message, range, null, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityWhisper(source, message, range, null, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Emote:
-                SendEntityEmote(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityEmote(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Subtle:
-                SendEntitySubtle(source, message, range, nameOverride, language, hideLog, true);
+                SendEntitySubtle(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.SubtleOOC:
-                SendEntitySubtle(source, $"OOC: {message}", range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker: true); // HardLight: Capitalized OOC for consistency with other OOC chats.
+                SendEntitySubtle(source, $"OOC: {message}", range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker);
                 break;
         }
     }
