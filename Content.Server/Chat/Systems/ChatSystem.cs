@@ -366,7 +366,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendLOOC(source, player, message, hideChat);
                 break;
             // Floofstation section
-            case InGameOOCChatType.SubtleOOC:
+            case InGameOOCChatType.SubtleLOOC:
                 SendSubtleLooc(source, player, message, hideChat);
                 break;
             // Floofstation section end
