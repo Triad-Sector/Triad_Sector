@@ -173,6 +173,25 @@
     malus: 0.6
   - type: Execution
     doAfterDuration: 4.0
+# Triad Start - Audio Overhaul
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/unsheath.ogg
+      params:
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
 
 # Ullman Blade
 
@@ -269,6 +288,25 @@
     doAfterDuration: 4.0
   - type: UseDelay
     delay: 1
+# Triad Start - Audio Overhaul
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/unsheath.ogg
+      params:
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
 
 # Vizier's sword
 

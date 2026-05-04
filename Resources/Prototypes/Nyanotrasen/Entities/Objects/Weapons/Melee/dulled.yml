@@ -1,7 +1,32 @@
+#Triad Start
+- type: entity
+  suffix: Dulled
+  parent: BaseItem
+  id: BaseSwordDulled
+  components:
+  - type: Item
+    size: Large
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
+
 - type: entity
   name: katana
   suffix: Dulled
-  parent: BaseItem
+  parent: BaseSwordDulled
   id: KatanaDulled
   description: Ancient craftwork made with not so ancient plasteel. This one has been dulled.
   components:
@@ -17,7 +42,6 @@
         Blunt: 5
         Slash: 1
   - type: Item
-    size: Normal
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: Clothing
     sprite: Objects/Weapons/Melee/katana.rsi
@@ -28,7 +52,7 @@
 - type: entity
   name: claymore
   suffix: Dulled
-  parent: BaseItem
+  parent: BaseSwordDulled
   id: ClaymoreDulled
   description: An ancient war blade. This one has been dulled.
   components:
@@ -36,13 +60,13 @@
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon
   - type: MeleeWeapon
-    attackRate: 0.6 # Triad
+    attackRate: 0.6 # Triad similar to claymore
     damage:
       types:
         Blunt: 6
         Slash: 1
   - type: Item
-    size: Normal
+    sprite: Objects/Weapons/Melee/claymore.rsi  
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:

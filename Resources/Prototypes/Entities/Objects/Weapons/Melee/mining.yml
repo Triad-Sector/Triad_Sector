@@ -39,19 +39,21 @@
     storedRotation: -45
   - type: UseDelay
 # Triad Start - Audio
-  # - type: EmitSoundOnPickup
-  #   sound:
-  #     path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
-  #     params:
-  #       volume: -2
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -6
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/Items/crowbar_drop.ogg
       params:
-        volume: -2
+        volume: -6
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -6
 # Triad End - Audio
 
 - type: entity

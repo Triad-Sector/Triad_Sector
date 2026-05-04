@@ -7,19 +7,11 @@
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Melee/ccsabre.rsi
   - type: MeleeWeapon
-    heavyStaminaCost: 8 # Triad
-    attackRate: 1.4 # Triad
     damage:
       types:
         Slash: 40 # Seem important to keep the message from goob.// Fuck you. # Mono Increased damage from 30 to 40 to maintain its status as cap sabre but better, also makes it something of a viable alternative to an e-sword that loses the armor pen heat damage in exchange for flat slash damage
-    soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
   - type: Reflect
     reflectProb: .2
     spread: 90
   - type: Item
     sprite: _Mono/Objects/Weapons/Melee/ccsabre.rsi
-  - type: Tag
-    tags:
-    - CaptainSabre
-  - type: DisarmMalus
