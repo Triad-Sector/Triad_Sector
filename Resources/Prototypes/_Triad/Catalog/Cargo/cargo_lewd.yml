@@ -1,7 +1,7 @@
 - type: cargoProduct
   id: LewdToyBox
   icon:
-    sprite: Structures/Storage/lewdcrate.rsi
+    sprite: _Floof/Structures/lewdcrate.rsi
     state: crate_icon
   product: CrateLewdToys
   cost: 2500
