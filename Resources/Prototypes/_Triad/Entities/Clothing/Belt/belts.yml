@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingBeltSheath]
+  parent: [ClothingBeltBase, ClothingSlotBase]
   id: SwordSheath
   name: sword sheath #using blade since you can put any sword
   description: A bulky leather sheath designed to hold most traditional swords.
@@ -16,7 +16,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Sabre
+        name: Sword
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb
         insertSound: /Audio/Items/sheath.ogg
@@ -24,10 +24,16 @@
         whitelist:
           tags:
           - Blade
+          - Katana
   - type: ItemMapper
     mapLayers:
-      sheath-sabre:
+      sheath-sword:
         whitelist:
           tags:
           - Blade
+      sheath-katana:
+        whitelist:
+          tags:
+          - Katana
+    sprite: _Triad/Clothing/Belt/swordsheath.rsi
   - type: Appearance

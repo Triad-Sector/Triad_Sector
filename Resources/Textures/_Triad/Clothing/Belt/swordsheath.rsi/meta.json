@@ -16,7 +16,10 @@
         "directions": 4
     },
     {
-        "name": "sheath-sabre"
+        "name": "sheath-sword"
+    },
+    {
+        "name": "sheath-katana"
     },
     {
         "name": "sheath"

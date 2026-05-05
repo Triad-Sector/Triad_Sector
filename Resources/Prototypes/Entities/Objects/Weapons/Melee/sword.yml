@@ -86,7 +86,6 @@
   - type: Tag
     tags:
     - Katana
-    - Blade
   - type: Sprite
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: MeleeWeapon

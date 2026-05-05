@@ -38,6 +38,7 @@
   description: A poleaxe that seems to be linked to its wielder.
   components:
   - type: Tag
+    tags: []
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon
