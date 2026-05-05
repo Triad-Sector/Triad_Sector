@@ -33,6 +33,7 @@
   - type: Tag
     tags:
     - Katana
+    - Blade
   - type: Sprite
     sprite: Objects/Weapons/Melee/katana.rsi
     state: icon
@@ -56,6 +57,8 @@
   id: ClaymoreDulled
   description: An ancient war blade. This one has been dulled.
   components:
+  - type: Tag
+    tags: LongBlade
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon

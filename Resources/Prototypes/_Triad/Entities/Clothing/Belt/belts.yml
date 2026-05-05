@@ -16,7 +16,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Sabre
+        name: Sword
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb
         insertSound: /Audio/Items/sheath.ogg
