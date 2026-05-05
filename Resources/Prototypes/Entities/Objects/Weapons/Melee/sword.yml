@@ -144,6 +144,8 @@
   description: An ancient war blade.
   components:
   - type: Tag
+    tags:
+    - LongBlade
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
   - type: MeleeWeapon
