@@ -12,7 +12,11 @@
         "directions": 4
     },
     {
-        "name": "sheath-sabre-equipped-BELT",
+        "name": "sheath-sword-equipped-BELT",
+        "directions": 4
+    },
+    {
+        "name": "sheath-katana-equipped-BELT",
         "directions": 4
     },
     {

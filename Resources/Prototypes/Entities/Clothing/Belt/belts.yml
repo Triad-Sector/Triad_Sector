@@ -523,8 +523,10 @@
     state: sheath
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
-    #- type: Item # Frontier
-    #size: Ginormous # Frontier
+  - type: Item # Triad
+    size: Large # Triad, Large but has Normal size
+    shape:
+    - 0,0,1,1
   - type: ItemSlots
     slots:
       item:

@@ -1,7 +1,7 @@
 - type: entity
   parent: [ClothingBeltBase, ClothingSlotBase]
   id: SwordSheath
-  name: sword sheath #using blade since you can put any sword
+  name: leather sheath
   description: A bulky leather sheath designed to hold most traditional swords.
   components:
   - type: Sprite
@@ -35,5 +35,4 @@
         whitelist:
           tags:
           - Katana
-    sprite: _Triad/Clothing/Belt/swordsheath.rsi
   - type: Appearance
