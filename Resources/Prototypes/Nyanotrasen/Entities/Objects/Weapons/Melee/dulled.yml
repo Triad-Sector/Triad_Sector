@@ -6,6 +6,17 @@
   components:
   - type: Item
     size: Large
+  - type: MeleeWeapon
+    heavyStaminaCost: 8 # Triad
+    attackRate: 1.1 # Triad
+    wideAnimationRotation: -135
+    soundHit:
+      collection: MetalThud
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
@@ -33,7 +44,6 @@
   - type: Tag
     tags:
     - Katana
-    - Blade
   - type: Sprite
     sprite: Objects/Weapons/Melee/katana.rsi
     state: icon
@@ -46,16 +56,13 @@
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: Clothing
     sprite: Objects/Weapons/Melee/katana.rsi
-    slots:
-    - back
-    - suitStorage
 
 - type: entity
   name: claymore
   suffix: Dulled
   parent: BaseSwordDulled
   id: ClaymoreDulled
-  description: An ancient war blade. This one has been dulled.
+  description: A bulky ancient war blade. This one has been dulled.
   components:
   - type: Tag
     tags: LongBlade
@@ -63,15 +70,13 @@
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon
   - type: MeleeWeapon
+    heavyStaminaCost: 15 # Triad
     attackRate: 0.6 # Triad similar to claymore
     damage:
       types:
-        Blunt: 6
+        Blunt: 7 # Triad 7 < 6
         Slash: 1
   - type: Item
     sprite: Objects/Weapons/Melee/claymore.rsi  
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
-    slots:
-    - back
-    - suitStorage

@@ -9,7 +9,7 @@
     doAfterDuration: 4.0
   - type: MeleeWeapon
     heavyStaminaCost: 8 # Triad
-    attackRate: 1 # Triad
+    attackRate: 1.1 # Triad
     wideAnimationRotation: -135
     damage: # Triad base 32 damage for every all basic sword
       types:
@@ -22,7 +22,7 @@
     size: Large
   - type: Tag
     tags:
-    - Blade
+    - Sword
   - type: Utensil
     types:
       - Knife
@@ -141,7 +141,7 @@
   name: claymore #Triad, Bulky blade, but dont make it wieldable, just slower
   parent: BaseSword
   id: Claymore
-  description: An ancient war blade.
+  description: A bulky ancient war blade.
   components:
   - type: Tag
     tags:
@@ -170,7 +170,7 @@
   components:
   - type: Tag
     tags:
-    - Machete
+    - Cutlass
   - type: Sprite
     sprite: Objects/Weapons/Melee/cutlass.rsi
   - type: MeleeWeapon

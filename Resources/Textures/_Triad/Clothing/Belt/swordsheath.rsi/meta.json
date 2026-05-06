@@ -20,10 +20,24 @@
         "directions": 4
     },
     {
+        "name": "sheath-machete-equipped-BELT",
+        "directions": 4
+    },
+    {
+        "name": "sheath-sabre-equipped-BELT",
+        "directions": 4
+    },
+    {
         "name": "sheath-sword"
     },
     {
         "name": "sheath-katana"
+    },
+    {
+        "name": "sheath-machete"
+    },
+    {
+        "name": "sheath-sabre"
     },
     {
         "name": "sheath"

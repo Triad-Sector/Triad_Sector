@@ -1,4 +1,5 @@
 - type: entity
+  suffix: Axe
   name: fireaxe
   parent: BaseItem
   id: FireAxe
@@ -43,7 +44,7 @@
     - suitStorage
   - type: Tool
     qualities:
-    - Prying
+    # - Prying
     - Axing # DeltaV - The return of fireaxe prying
   - type: ToolTileCompatible
   - type: Prying

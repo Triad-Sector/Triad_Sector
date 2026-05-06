@@ -23,16 +23,28 @@
         ejectSound: /Audio/Items/unsheath.ogg
         whitelist:
           tags:
-          - Blade
+          - Sword
           - Katana
+          - Machete
+          - CaptainSabre
+          - Cutlass
   - type: ItemMapper
     mapLayers:
       sheath-sword:
         whitelist:
           tags:
-          - Blade
+          - Sword
       sheath-katana:
         whitelist:
           tags:
           - Katana
+      sheath-machete:
+        whitelist:
+          tags:
+          - Machete
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainSabre
+          - Cutlass
   - type: Appearance

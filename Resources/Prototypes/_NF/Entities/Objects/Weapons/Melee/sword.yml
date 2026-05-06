@@ -4,6 +4,9 @@
   id: PlasteelArmingSword
   description: An ancient design manufactured with modern materials and machines for a very specific target demographic.
   components:
+  - type: Tag
+    tags:
+    - Sword
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/armingsword.rsi
     state: icon

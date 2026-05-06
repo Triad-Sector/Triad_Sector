@@ -538,12 +538,17 @@
         whitelist:
           tags:
           - CaptainSabre
+          - Sword
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
         whitelist:
           tags:
           - CaptainSabre
+      sheath-sword:
+        whitelist:
+          tags:
+          - Sword
   - type: Appearance
 
 # Belts without visualizers

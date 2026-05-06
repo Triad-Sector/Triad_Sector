@@ -1,7 +1,13 @@
 # PUT YOUR TAGS IN ALPHABETICAL ORDER
 
 - type: Tag
-  id: Blade
+  id: Cutlass
 
 - type: Tag
   id: LongBlade
+
+- type: Tag
+  id: Sword
+
+- type: Tag
+  id: Halberd
