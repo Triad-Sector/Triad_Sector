@@ -1,7 +1,7 @@
 
 - type: entity
   id: MonolithFragmentSmallAppearance
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: mono-monolithic-event-fragment-start-announcement
@@ -9,11 +9,11 @@
       path: /Audio/Announcements/attention.ogg
     warningAnnouncement: mono-monolithic-event-fragment-warning-announcement
     endAnnouncement: mono-monolithic-event-fragment-end-announcement
-    earliestStart: 10
+    earliestStart: 20 #Triad 20 < 10
     weight: 5
     duration: 1350
     maxDuration: 1560
-    reoccurrenceDelay: 15
+    reoccurrenceDelay: 45 #Triad 45 < 15 Too Frequent, increased delay
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
@@ -21,8 +21,8 @@
         - mono-monolithic-event-name-MonolithicFragment
         minCount: 1
         maxCount: 1
-        minimumDistance: 2000
-        maximumDistance: 4000
+        minimumDistance: 3000 #Triad
+        maximumDistance: 7000 #Triad
         addComponents:
         - type: Gravity
           enabled: true

@@ -502,7 +502,6 @@
     repairTime: 4
     repairCost: 8
   - type: SavingContraband
-    examineText: ship-saving-contraband-1-text
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -786,6 +785,10 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: ComputerComms
@@ -884,6 +887,10 @@
     radius: 1.5
     energy: 1.6
     color: "#00FF00"
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
+  # Triad end
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -1091,6 +1098,10 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   id: ComputerCargoBounty

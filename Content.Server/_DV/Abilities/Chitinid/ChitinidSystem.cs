@@ -49,7 +49,6 @@ public sealed partial class ChitinidSystem : EntitySystem
                 chitinid.AmountAbsorbed += -delta.GetTotal().Float();
                 if (chitinid.ChitziteAction != null && chitinid.AmountAbsorbed >= chitinid.MaximumAbsorbed)
                 {
-                    _actions.SetCharges(chitinid.ChitziteAction, 1); // You get the charge back and that's it. Tough.
                     _actions.SetEnabled(chitinid.ChitziteAction, true);
                 }
             }

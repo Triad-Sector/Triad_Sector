@@ -1,6 +1,6 @@
 - type: entity
   id: BluespaceCacheError
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad Changed to Moderate (Previously, still spawned too Frequent, 2 vault side by side + 1 somewhere)
   components:
   - type: StationEvent
     startAnnouncement: station-event-bluespace-cache-start-announcement
@@ -12,7 +12,7 @@
     weight: 5
     duration: 1350
     maxDuration: 1560
-    reoccurrenceDelay: 240 # Mono: From 8 to 4 hours
+    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
     #requiredJobs: Mono - Remove Sheriff/Colonel requirement
     #  Sheriff: 1
   - type: BluespaceErrorRule
@@ -20,8 +20,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-SyndicateWeaponsCache
-        minimumDistance: 1500
-        maximumDistance: 5000 # Mono
+        minimumDistance: 5000 # Triad
+        maximumDistance: 10000 # Triad
         addComponents:
         - type: Gravity
           enabled: true
@@ -42,7 +42,7 @@
 
 - type: entity
   id: BluespaceVaultError
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventLongDelay # Triad changed to long because of how easy it is to breach this one
   components:
   - type: StationEvent
     startAnnouncement: station-event-bluespace-vault-start-announcement
@@ -54,7 +54,7 @@
     weight: 5
     duration: 1020
     maxDuration: 1350
-    reoccurrenceDelay: 240 # Mono: From 8 to 4 hours
+    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
     #requiredJobs: Mono - Remove Sheriff/Colonel requirement
     #  Sheriff: 1
   - type: BluespaceErrorRule
@@ -62,8 +62,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-SecureNTVault
-        minimumDistance: 1500
-        maximumDistance: 5000 # Mono
+        minimumDistance: 5000 # Triad
+        maximumDistance: 10000 # Triad
         addComponents:
         - type: Gravity
           enabled: true
@@ -82,7 +82,7 @@
 
 - type: entity
   id: BluespaceVaultSmallError
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventShortDelay # Triad, didnt change anything, for what t's worth, keep it as is
   components:
   - type: StationEvent
     startAnnouncement: station-event-bluespace-vault-start-announcement
@@ -95,7 +95,7 @@
     weight: 5
     duration: 590
     maxDuration: 780
-    reoccurrenceDelay: 240 # Mono: From 8 to 4 hours
+    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
     #requiredJobs: Mono - Remove Sheriff/Colonel requirement
     #  Sheriff: 1
   - type: BluespaceErrorRule
@@ -103,8 +103,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-SecureNTVault
-        minimumDistance: 1500
-        maximumDistance: 5000 # Mono
+        minimumDistance: 5000 # Triad
+        maximumDistance: 10000 # Triad
         addComponents:
         - type: Gravity
           enabled: true
@@ -123,7 +123,7 @@
 
 - type: entity
   id: BluespaceSyndicateFTLInterception
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventLongDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-bluespace-generic-ftl-start-announcement
@@ -131,19 +131,19 @@
       path: /Audio/Misc/notice1.ogg
     warningAnnouncement: station-event-bluespace-generic-ftl-warning-announcement
     endAnnouncement: station-event-bluespace-generic-ftl-end-announcement
-    earliestStart: 80
+    earliestStart: 120 #Triad chance to show up after 2 hour
     minimumPlayers: 1
     weight: 1
     duration: 1800
     maxDuration: 2400
-    reoccurrenceDelay: 240 # Mono: From 8 to 4 hours
+    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-UnidentifiedVessel
-        minimumDistance: 1500
-        maximumDistance: 2500
+        minimumDistance: 5000 # Triad
+        maximumDistance: 10000 # Triad
         addComponents:
         - type: IFF
           color: "#E10F9B"

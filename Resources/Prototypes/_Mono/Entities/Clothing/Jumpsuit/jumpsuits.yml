@@ -80,6 +80,10 @@
   - type: SuitSensor
     randomMode: false
     mode: SensorVitals
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: ClothingUniformBase

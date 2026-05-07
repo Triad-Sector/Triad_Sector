@@ -42,4 +42,10 @@ public sealed partial class ShuttleDeedComponent : Component
     /// </summary>
     [DataField]
     public EntityUid? DeedHolder;
+
+    /// <summary>
+    /// True if loaded from ship saving system
+    /// </summary>
+    [DataField]
+    public bool LoadedFromSave;
 }

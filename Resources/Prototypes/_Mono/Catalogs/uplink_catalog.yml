@@ -68,15 +68,17 @@
         components:
           - SurplusBundle
 
-- type: listing
-  id: UplinkLetoferolSyringe
-  name: uplink-letoferol-name
-  description: uplink-letoferol-desc
-  productEntity: SyringeLetoferol
-  cost:
-    Telecrystal: 500
-  categories:
-  - UplinkDeception
+# Triad start - Leto begone
+# - type: listing
+#   id: UplinkLetoferolSyringe
+#   name: uplink-letoferol-name
+#   description: uplink-letoferol-desc
+#   productEntity: SyringeLetoferol
+#   cost:
+#     Telecrystal: 500
+#   categories:
+#   - UplinkDeception
+# Triad end
 
 - type: listing
   id: UplinkSyndicateApplicator

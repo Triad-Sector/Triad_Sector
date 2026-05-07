@@ -49,9 +49,11 @@
     spread: 90
   - type: StaticPrice
     price: 0
-  - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-inanimate
-    weight: 0.01 # 100 trade crates = 1 animal
+  # Triad Start - disable target of random sentience event  
+  # - type: SentienceTarget
+  #   flavorKind: station-event-random-sentience-flavor-inanimate
+  #   weight: 0.01 # 100 trade crates = 1 animal
+  # Triad End
   - type: InteractionOutline
   - type: Physics
   - type: Fixtures

@@ -12,8 +12,8 @@
   id: LPBravo
   parent: BasePOI
   name: 'Listening Point Bravo'
-  minimumDistance: 10000
-  maximumDistance: 13000
+  minimumDistance: 12000 # Triad 12000 < 10000
+  maximumDistance: 18000 # Triad 18000 < 13000
   spawnGroup: SyndicateFOB
   gridPath: /Maps/_NF/POI/lpbravo.yml
   hideWarp: true

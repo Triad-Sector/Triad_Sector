@@ -88,6 +88,8 @@
           components:
             - FitsInDispenser
   - type: ItemToggle
+    onUse: false # Triad
+    onActivate: false # Triad, fixes cryopod health analyzer not opening
   - type: HealthAnalyzer
     scanDelay: 0
   - type: UserInterface

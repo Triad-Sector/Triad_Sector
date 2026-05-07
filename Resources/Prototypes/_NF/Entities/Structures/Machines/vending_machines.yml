@@ -156,6 +156,10 @@
       Telecrystal: 25 # Mono
   - type: AccessReader
     access: [["NuclearOperative"], ["SyndicateAgent"]]
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: VendingMachine

@@ -1,0 +1,12 @@
+#- type: guideEntry
+#  id: Shipyard
+#  name: guide-entry-shipyard
+#  text: "/ServerInfo/_NF/Guidebook/Shipyard.xml"
+#  priority: 6
+#  children:
+#  - ShipyardGondola
+
+#- type: guideEntry
+#  id: ShipyardGondola
+#  name: guide-entry-shipyard-gondola
+#  text: "/ServerInfo/_Mono/Guidebook/Shipyard/Gondola.xml"

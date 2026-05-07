@@ -35,3 +35,4 @@ Changelog must have a :cl: symbol, so the bot recognizes the changes and adds th
 - tweak: Changed fun!
 - fix: Fixed fun!
 -->
+:cl:

@@ -11,8 +11,8 @@
   id: Sevastopol
   parent: BasePOI
   name: 'Sevastopol Data Storage Center'
-  minimumDistance: 3500
-  maximumDistance: 7500
+  minimumDistance: 5000 # Triad 5000 < 3500
+  maximumDistance: 10000 # Triad 10000 < 7500 honestly it would be funny if i added one more 0
   spawnGroup: Required
   gridPath: /Maps/_Mono/POI/sevastopol.yml
   addComponents:

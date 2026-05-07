@@ -1,0 +1,19 @@
+- type: entity
+  name: Filled Lewd Crate Spawner
+  id: CrateLewdFilledSpawner
+  suffix: Low Value
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Floof/Structures/lewdcrate.rsi
+      state: icon
+  - type: RandomSpawner
+    prototypes:
+    - CrateLewdPartial
+    chance: 0.7
+    rarePrototypes:
+    - CrateLewdToys
+    rareChance: 0.1
+    offset: 0.0

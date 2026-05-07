@@ -253,8 +253,6 @@ entities:
     - type: Transform
       pos: 5.5,2.5
       parent: 1
-    - type: PaintableAirlock
-      department: Cargo
 - proto: AirlockGlassShuttle
   entities:
   - uid: 5

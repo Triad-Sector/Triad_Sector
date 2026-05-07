@@ -4,7 +4,7 @@ namespace Content.Shared.Chat
     ///     Represents chat channels that the player can filter chat tabs by.
     /// </summary>
     [Flags]
-    public enum ChatChannel : uint // Goobstation - Starlight collective mind port // surely changing the ushort to uint won't break anything :clueless:
+    public enum ChatChannel : uint // Floofstation - expand to uint
     {
         None = 0,
 
@@ -91,20 +91,20 @@ namespace Content.Shared.Chat
         /// </summary>
         Unspecified = 1 << 15,
 
-                /// <summary>
-        ///     Subtle - Floofstation
+        /// <summary>
+        ///     Floofstation - Subtle messages. Added at a greater offset to avoid conflicting with future added channels.
         /// </summary>
-        Subtle = 1 << 16,
+        Subtle = 1u << 31,
 
         /// <summary>
-        ///     Subtle - Floofstation
+        ///     Floofstation - Subtle OOC messages.
         /// </summary>
-        SubtleOOC = 1 << 17,
+        SubtleOOC = 1u << 30,
 
         /// <summary>
         ///     Channels considered to be IC.
         /// </summary>
-        IC = Local | Whisper | Radio | Dead | Emotes | Subtle | Damage | Visual | CollectiveMind | Notifications,
+        IC = Local | Whisper | Radio | Dead | Emotes | Damage | Visual | Subtle | Notifications | CollectiveMind, //Nyano - Summary: Adds telepathic as an 'IC' labelled chat.. // Floof - also add subtle
 
         AdminRelated = Admin | AdminAlert | AdminChat,
     }

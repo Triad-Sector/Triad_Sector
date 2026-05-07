@@ -200,7 +200,7 @@
   table: !type:GroupSelector
     children:
     - id: TechDiskSpeedBoots
-    - id: TechDiskBluespaceBags
+    # - id: TechDiskBluespaceBags // Triad, remove bluespace bag
     - id: TechDiskShields
     - id: TechDiskFtl
     - id: TechDiskTranslationPreFracture

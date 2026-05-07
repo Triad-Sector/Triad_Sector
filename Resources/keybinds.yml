@@ -137,6 +137,13 @@ binds:
 - function: FocusConsoleChatWindow
   type: State
   key: Slash
+# Floofstation section
+- function: FocusSubtle
+  key: Minus
+- function: FocusSubtleOOC
+  mod1: Shift
+  key: LBracket
+# Floofstation section end
 - function: EditorLinePlace
   type: State
   key: MouseLeft

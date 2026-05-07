@@ -92,3 +92,7 @@
   - type: EmitSoundOnLand
     sound:
       collection: RiflesDrop
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end

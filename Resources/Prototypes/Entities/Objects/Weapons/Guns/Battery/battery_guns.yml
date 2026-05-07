@@ -338,6 +338,10 @@
     autoRechargePause: true
     autoRechargePauseTime: 30
   # End Mono
+  # Triad Start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad End
 
 - type: entity
   name: LWC pulse carbine
@@ -387,6 +391,10 @@
     autoRechargePause: true
     autoRechargePauseTime: 30
   # End Mono
+  # Triad Start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad End
 
 - type: entity
   name: NT pulse rifle
@@ -434,8 +442,10 @@
     walkModifier: 0.90
     sprintModifier: 0.85
   # End Mono
-
-  # Mono Addition
+  # Triad Start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad End
 
 - type: entity
   name: Cyborg pulse rifle
@@ -762,9 +772,11 @@
     price: 750
   - type: StealTarget
     stealGroup: WeaponAntiqueLaser
-  - type: SentienceTarget # I hope this is only the captain's gun
-    flavorKind: station-event-random-sentience-flavor-inanimate
-    weight: 0.0002 # 5,000 times less likely than 1 regular animal
+  # Triad Start - disable target of random sentience event
+  # - type: SentienceTarget # I hope this is only the captain's gun
+  #   flavorKind: station-event-random-sentience-flavor-inanimate
+  #   weight: 0.0002 # 5,000 times less likely than 1 regular animal
+  # Triad End
     # not putting a BlockMovement component here cause that's funny.
   - type: PirateBountyItem # Mono
     id: ExperimentalFactionWeapon

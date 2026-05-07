@@ -81,7 +81,7 @@ public sealed partial class AtmosphereSystem
        mixtures[11].AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
        mixtures[11].AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
        mixtures[11].AdjustMoles(Gas.WaterVapor, Atmospherics.NitrogenMolesStandard);
-       mixtures[11].Temperature = 340f; // Sauna
+       mixtures[11].Temperature = 330f; // Sauna / Triad change
 
        foreach (var arg in args)
        {

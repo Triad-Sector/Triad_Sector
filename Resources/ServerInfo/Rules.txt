@@ -73,7 +73,7 @@
 
 [color=#a4885c]2.2[/color] Do not make yourself a major problem, annoyance, or disruption for the crew while not being an antagonist (i.e. self-antagging). *2
 
-[color=#a4885c]2.3[/color]It is strictly forbidden to livestream rounds to others or share recorded gameplay outside of Hardlight without consent of all parties involved.*2
+[color=#a4885c]2.3[/color]It is strictly forbidden to livestream rounds to others or share recorded gameplay outside of Triad Sector without consent of all parties involved.*2
 
 [color=#a4885c]2.4[/color] Ghosting with the sole intent of spying on others personal activities is not permitted. *2
 
@@ -86,7 +86,7 @@
 
 [color=#a4885c]3.3[/color] Do not use any information gained by meta-communication. *1
 
-[color=#a4885c]3.4[/color]discussion about the current round is allowed on the Hardlight Discord server HOWEVER acting on information gained through this method is considered metagaming. *1
+[color=#a4885c]3.4[/color]discussion about the current round is allowed on the Triad Sector Discord server HOWEVER acting on information gained through this method is considered metagaming. *1
 
 [color=#a4885c]3.5[/color] Do not meta-grudge or meta-friend. (Using in or out of character information to give unfair treatment or advantages to others.) *1
 
@@ -209,6 +209,8 @@ Leeway is given to theatrical roles such as the clown, boxer, and mime; these ro
 13.4[/color] Do not use inventories to circumvent stash restrictions. [color=#a4885c] *2
 
 13.5[/color] Ship saving backups are only to be used in the event of ship destruction or loss due to a server crash or other unforseen issue. Loading backups otherwise is only to be done with admin permission. [color=#a4885c] *1
+
+13.5A[/color] You may not load from backup if your ship was destroyed by hostile elements such as Automated defences/offences (Drones, LPB, ect) [color=#a4885c]
 
 13.6[/color] Do not under any circumstances modify a ship save file without admin permission (like with the engine update). [color=#a4885c] *2
 

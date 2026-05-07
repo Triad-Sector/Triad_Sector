@@ -68,6 +68,9 @@
   - type: Physics # Hardlight
     bodyType: Static
     canCollide: false
+  - type: ShipRepairable # Triad: Make sinks SRD repairable
+    repairTime: 4
+    repairCost: 15
 
 - type: entity
   name: sink

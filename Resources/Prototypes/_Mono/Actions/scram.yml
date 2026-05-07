@@ -18,10 +18,11 @@
   name: SCRAM!
   description: Randomly teleports you within a moderate distance.
   components:
+  - type: LimitedCharges
+    maxCharges: 2
+  - type: AutoRecharge
   - type: InstantAction
     useDelay: 60
-    charges: 2
-    renewCharges: true
     itemIconStyle: BigAction
     priority: -20
     icon:

@@ -1,5 +1,5 @@
 - type: speechSounds
-  id: MaleAvali
+  id: MaleAvaliOld
   saySound:
     path: /Audio/_Floof/Voice/Avali/avali_1.ogg
   askSound:
@@ -9,7 +9,7 @@
 
 # Unused but if we get diff supprot for it can add in
 - type: speechSounds
-  id: FemaleAvali
+  id: FemaleAvaliOld
   saySound:
     path: /Audio/_Floof/Voice/Avali/avali_2.ogg
   askSound:

@@ -37,7 +37,7 @@
   components:
   - type: LimitedCharges
     maxCharges: 300
-    charges: 100
+    lastCharges: 100
 
 - type: entity
   id: ShipRepairDeviceEmpty
@@ -45,7 +45,7 @@
   suffix: Empty
   components:
   - type: LimitedCharges
-    charges: 0
+    lastCharges: 0
 
 - type: entity
   id: ShipRepairDeviceRecharging
@@ -55,7 +55,7 @@
   components:
   - type: LimitedCharges
     maxCharges: 300
-    charges: 50
+    lastCharges: 50
   - type: AutoRecharge
     rechargeDuration: 5
 
@@ -84,7 +84,7 @@
     state: prefracture
   - type: LimitedCharges
     maxCharges: 800
-    charges: 50
+    lastCharges: 50
   - type: AutoRecharge
     rechargeDuration: 2
   - type: Tag

@@ -236,6 +236,10 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.FocusChat);
             AddButton(ContentKeyFunctions.FocusLocalChat);
             AddButton(ContentKeyFunctions.FocusEmote);
+            // Floofstation section
+            AddButton(ContentKeyFunctions.FocusSubtle);
+            AddButton(ContentKeyFunctions.FocusSubtleOOC);
+            // Floofstation section end
             AddButton(ContentKeyFunctions.FocusWhisperChat);
             AddButton(ContentKeyFunctions.FocusRadio);
             AddButton(ContentKeyFunctions.FocusLOOC);

@@ -68,6 +68,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: HandheldLight
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: HideLayerClothing
     slots:
     - Hair

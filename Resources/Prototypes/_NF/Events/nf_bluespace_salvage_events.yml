@@ -1,6 +1,6 @@
 - type: entity
   id: BluespaceSalvage
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   name: Colossus Sector Bluespace Monitoring # This name shows up in the radio messages.
   categories: [ HideSpawnMenu ]
   components:
@@ -22,7 +22,7 @@
         minCount: 2
         maxCount: 3
         minimumDistance: 1000
-        maximumDistance: 2000
+        maximumDistance: 5000 #Triad 5000 < 2000
         addComponents:
         - type: IFF
           color: "#AAAAAA"

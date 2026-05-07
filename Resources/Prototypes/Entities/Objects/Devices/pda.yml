@@ -5,6 +5,9 @@
   name: PDA
   description: Personal Data Assistant.
   components:
+  # Triad add start
+  - type: SavingContraband
+  # Triad end
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -145,10 +148,13 @@
   - type: CargoSellBlacklist # Frontier: Liltenhead moment
   - type: PirateBountyItem
     id: Pda
-  - type: ToggleableGhostRole # Frontier: Literally only for the wipe verb and nothing else.
-    wipeVerbText: pda-wipe-device-verb-text # Frontier
-    wipeVerbPopup: pda-wiped-device # Frontier
-    mindRoles: [] # Frontier: no default value here
+  # Triad Start
+  # We don't need this. This also breaks PDA UIs.
+  # - type: ToggleableGhostRole # Frontier: Literally only for the wipe verb and nothing else.
+  #  wipeVerbText: pda-wipe-device-verb-text # Frontier
+  #  wipeVerbPopup: pda-wiped-device # Frontier
+  #  mindRoles: [] # Frontier: no default value here
+  # Triad End
   - type: ShipyardSellCondition # Frontier: Teleport to shipyard console on sale
     preserveOnSale: true
 

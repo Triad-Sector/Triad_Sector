@@ -26,6 +26,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Mono\Research\UI\" />
+    <Folder Include="_Starlight\Achievement\" />
+    <Folder Include="_Starlight\Actions\" />
+    <Folder Include="_Starlight\Audio\" />
   </ItemGroup>
   <PropertyGroup>
     <DisableXamlIL>true</DisableXamlIL>

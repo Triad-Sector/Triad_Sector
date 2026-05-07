@@ -375,6 +375,9 @@
           Empty: { state: empty }
           Occupied: { state: full }
   - type: Intellicard
+  # Triad add start
+  - type: SavingContraband
+  # Triad end
 
 - type: entity
   id: PlayerStationAiPreview

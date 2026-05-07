@@ -9,7 +9,7 @@
     drawRate: 120000
   - type: ItemMiner
     proto: SpawnLootTechDiskPrinter
-    interval: 1200 # Triad : Change it into 20 minutes
+    interval: 450
     minedSound: /Audio/Machines/circuitprinter.ogg
     needApcPower: false
   - type: PowerConsumerMiner

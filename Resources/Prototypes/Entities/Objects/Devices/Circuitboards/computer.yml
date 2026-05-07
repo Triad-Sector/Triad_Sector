@@ -117,7 +117,6 @@
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopCargoOrders # Frontier
     - type: SavingContraband
-      examineText: ship-saving-contraband-1-text
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -344,6 +343,10 @@
       prototype: SyndicateComputerComms
     - type: ComputerTabletopBoard # Frontier
       prototype: SyndicateComputerTabletopComms # Frontier
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
+    # Triad end
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -355,6 +358,10 @@
     state: cpu_wizard
   - type: ComputerBoard
     prototype: WizardComputerComms
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -366,6 +373,10 @@
     state: cpu_centcomm
   - type: ComputerBoard
     prototype: CentcommComputerComms
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
+  # Triad end
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -567,3 +578,7 @@
       state: cpu_rogue
     - type: ComputerBoard
       prototype: RogueComputerComms
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
+    # Triad end

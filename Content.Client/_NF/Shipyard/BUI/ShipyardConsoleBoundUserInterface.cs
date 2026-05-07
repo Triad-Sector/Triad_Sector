@@ -16,6 +16,7 @@ namespace Content.Client._NF.Shipyard.BUI;
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
+    private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
@@ -72,7 +73,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         // Only log if there are ships to avoid spam when no ships are saved
         if (shipCount > 0)
         {
-            Logger.Debug($"InitializeSaveLoadControls: ShipFileManagementSystem has {shipCount} ships");
+            _sawmill.Debug($"InitializeSaveLoadControls: ShipFileManagementSystem has {shipCount} ships");
         }
 
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
@@ -100,7 +101,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         // Load the currently selected ship from the saved ships list
         if (_savedShipsList == null || _selectedShipIndex < 0 || _selectedShipIndex >= _savedShipsList.Count)
         {
-            Logger.Warning("No ship selected for loading");
+            _sawmill.Warning("No ship selected for loading");
             return;
         }
 
@@ -113,18 +114,19 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             var yamlData = await _shipFileManagementSystem.GetShipYamlData(filePath);
             if (yamlData != null)
             {
+                ShipFileManagementSystem.MarkShipPathAsDeletable(filePath); // Triad
                 // Send the load message through the console's BoundUserInterface system
                 SendMessage(new ShipyardConsoleLoadMessage(yamlData, filePath));
-                Logger.Info($"Sent ship load request for '{selectedItem.Text}' via console");
+                _sawmill.Info($"Sent ship load request for '{selectedItem.Text}' via console");
             }
             else
             {
-                Logger.Error($"Failed to load YAML data for ship '{selectedItem.Text}'");
+                _sawmill.Error($"Failed to load YAML data for ship '{selectedItem.Text}'");
             }
         }
         catch (Exception ex)
         {
-            Logger.Error($"Error loading ship '{selectedItem.Text}': {ex.Message}");
+            _sawmill.Error($"Error loading ship '{selectedItem.Text}': {ex.Message}");
         }
     }
 
@@ -140,7 +142,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     {
         // Refresh the ship list when a ship is loaded
         RefreshSavedShipList();
-        Logger.Debug($"Ship '{shipName}' was loaded - refreshed saved ship list");
+        _sawmill.Debug($"Ship '{shipName}' was loaded - refreshed saved ship list");
     }
 
     private void RefreshSavedShipList()
@@ -150,7 +152,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _savedShipsList.Clear();
 
         var savedShipFiles = _shipFileManagementSystem.GetSavedShipFiles();
-        //Logger.Info($"RefreshSavedShipList: Found {savedShipFiles.Count} ships to display");
+        //_sawmill.Info($"RefreshSavedShipList: Found {savedShipFiles.Count} ships to display");
 
         foreach (var filePath in savedShipFiles)
         {
@@ -158,14 +160,14 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             var fileName = ExtractFileNameWithoutExtension(filePath);
             var item = _savedShipsList.AddItem(fileName);
             item.Metadata = filePath;
-            //Logger.Info($"Added ship to UI list: {fileName} (path: {filePath})");
+            //_sawmill.Info($"Added ship to UI list: {fileName} (path: {filePath})");
         }
 
         // Enable/disable load button based on available ships
         if (_loadShipButton != null)
         {
             _loadShipButton.Disabled = savedShipFiles.Count == 0;
-            Logger.Info($"Load button disabled: {_loadShipButton.Disabled}");
+            _sawmill.Info($"Load button disabled: {_loadShipButton.Disabled}");
         }
     }
 

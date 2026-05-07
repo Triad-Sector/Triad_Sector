@@ -20,7 +20,7 @@
 
 - type: entity
   id: MouseMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -32,21 +32,21 @@
   - type: VentCrittersRule
     entries:
     - id: MobMouse
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouse1
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouse2
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouseCancer
-      prob: 0.005 # Mono
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
+      prob: 0.0005 # Triad
+    # specialEntries: # Mono # Triad disable till consent is fixed
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono
 # Events always spawn a critter regardless of Probability https://github.com/space-wizards/space-station-14/issues/28480 I added the Rat King to their own event with a player cap.
 
 - type: entity
   id: KingRatMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -59,11 +59,11 @@
   - type: VentCrittersRule
     entries:
     - id: MobMouse
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouse1
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouse2
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouseCancer
       prob: 0.001
     specialEntries:
@@ -72,7 +72,7 @@
 
 - type: entity
   id: CockroachMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -83,18 +83,18 @@
   - type: VentCrittersRule
     entries:
     - id: MobCockroach
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMothroach
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobRosyMothroach # Frontier
-      prob: 0.005 # Mono
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
+      prob: 0.001 # Triad
+    # specialEntries: # Mono # Triad disable till consent is fixed
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono
 
 - type: entity
   id: SnailMigrationLowPop
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -105,15 +105,15 @@
   - type: VentCrittersRule
     entries:
     - id: MobSnail
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobSnailSpeed
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailMoth
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
 
 - type: entity
   id: SnailMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -126,31 +126,13 @@
   - type: VentCrittersRule
     entries:
     - id: MobSnail
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobSnailSpeed
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailMoth
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailInstantDeath
       prob: 0.00001 #  ~ 1:2000 snails
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
-
-- type: entity
-  id: BorerMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
-    weight: 5 #Triad, reduced weight & Duration so its less prioritized to not spawn too much
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
-    - id: MobMouseCancer
-      prob: 0.005 # Mono
+    # specialEntries: # Mono # Triad disable till consent is fixed
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono

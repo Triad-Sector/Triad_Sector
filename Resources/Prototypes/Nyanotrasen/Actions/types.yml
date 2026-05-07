@@ -14,8 +14,9 @@
   description: action-description-hairball
   categories: [ HideSpawnMenu ] # Frontier
   components:
+  - type: LimitedCharges
+    maxCharges: 1
   - type: InstantAction
-    charges: 1
     icon: { sprite: Nyanotrasen/Objects/Specific/Species/felinid.rsi, state: icon }
     useDelay: 30
     event: !type:HairballActionEvent

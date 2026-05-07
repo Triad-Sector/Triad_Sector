@@ -18,9 +18,11 @@ public sealed partial class ChannelFilterPopup : Popup
         ChatChannel.Subtle,
         ChatChannel.SubtleOOC,
         ChatChannel.Emotes,
+        ChatChannel.Subtle, // Floofstation
         ChatChannel.Radio,
         ChatChannel.CollectiveMind,
         ChatChannel.Notifications,
+        ChatChannel.SubtleOOC, // Floofstation
         ChatChannel.LOOC,
         ChatChannel.OOC,
         ChatChannel.Dead,

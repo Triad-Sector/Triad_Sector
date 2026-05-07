@@ -454,6 +454,7 @@
       - FoodSnack
       - Meat
       - ReptilianFood
+      - AvianFood # Starlight
   - type: Food
   - type: SolutionContainerManager
     solutions:

@@ -43,6 +43,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Chat.Systems;
 
+// Dear contributor. When I was introducing changes to this system only god and I knew what I was doing.
+// Now only god knows. Please don't touch this code ever again. If you do have to, increment this counter as a warning for others:
+// TOTAL_HOURS_WASTED_HERE_EE = 23
+
 // TODO refactor whatever active warzone this class and chatmanager have become
 /// <summary>
 ///     ChatSystem is responsible for in-simulation chat handling, such as whispering, speaking, emoting, etc.
@@ -233,23 +237,13 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var language = languageOverride ?? _language.GetLanguage(source); // Einstein Engines - Language
 
-        bool shouldCapitalize = (desiredType != InGameICChatType.Emote && desiredType != InGameICChatType.Subtle);
+        bool shouldCapitalize = (desiredType is not (InGameICChatType.Emote or InGameICChatType.Subtle)); // Floofstation edit
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
         bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
 
-        // HardLight start: Corrected SubtleOOC performing IC emotes.
-        string? emoteStr = null;
-        if (desiredType == InGameICChatType.SubtleOOC)
-        {
-            message = SanitizeInGameOOCMessage(message);
-        }
-        else
-        {
-            message = SanitizeInGameICMessage(source, message, out emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI);
-        }
-        // HardLight end
+        message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI);
 
         // Was there an emote in the message? If so, send it.
         if (player != null && emoteStr != message && emoteStr != null)
@@ -303,7 +297,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         {
             if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
             {
-                SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker);
                 return;
             }
         }
@@ -312,19 +306,17 @@ public sealed partial class ChatSystem : SharedChatSystem
         switch (desiredType)
         {
             case InGameICChatType.Speak:
-                SendEntitySpeak(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntitySpeak(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Whisper:
-                SendEntityWhisper(source, message, range, null, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityWhisper(source, message, range, null, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Emote:
-                SendEntityEmote(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker: true);
+                SendEntityEmote(source, message, range, nameOverride, language, hideLog, ignoreActionBlocker);
                 break;
+            // Floofstation section
             case InGameICChatType.Subtle:
-                SendEntitySubtle(source, message, range, nameOverride, language, hideLog, true);
-                break;
-            case InGameICChatType.SubtleOOC:
-                SendEntitySubtle(source, $"OOC: {message}", range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker: true); // HardLight: Capitalized OOC for consistency with other OOC chats.
+                SendEntitySubtle(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker);
                 break;
         }
     }
@@ -373,6 +365,11 @@ public sealed partial class ChatSystem : SharedChatSystem
             case InGameOOCChatType.Looc:
                 SendLOOC(source, player, message, hideChat);
                 break;
+            // Floofstation section
+            case InGameOOCChatType.SubtleLOOC:
+                SendSubtleLooc(source, player, message, hideChat);
+                break;
+            // Floofstation section end
         }
     }
 
@@ -821,7 +818,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
-        NetUserId? author = null
+        NetUserId? author = null,
+        bool checkLOS = true // Floofstation - emotes respect LOS by default
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
@@ -1012,6 +1010,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
                 continue;
+
             var entHideChat = entRange == MessageRangeCheckResult.HideChat;
 
             // Einstein Engines - Language begin
@@ -1216,22 +1215,29 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             var observer = ghostHearing.HasComponent(playerEntity);
 
+            // Floofstation edit - check LOS
+            sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance);
+            var inRange = distance <= voiceGetRange;
+            var isVisible = observer || (inRange && _examineSystem.InRangeUnOccluded(source, playerEntity, voiceGetRange));
+            // Floofstation edit end
+
             // even if they are a ghost hearer, in some situations we still need the range
-            if (sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance) && distance < voiceGetRange)
+            if (distance < voiceGetRange)
             {
-                recipients.Add(player, new ICChatRecipientData(distance, observer));
+                recipients.Add(player, new ICChatRecipientData(distance, observer, InLOS: isVisible));
                 continue;
             }
 
             if (observer)
-                recipients.Add(player, new ICChatRecipientData(-1, true));
+                recipients.Add(player, new ICChatRecipientData(-1, true, InLOS: isVisible));
         }
 
         RaiseLocalEvent(new ExpandICChatRecipientsEvent(source, voiceGetRange, recipients));
         return recipients;
     }
 
-    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null)
+    // Floofstation: add inLOS
+    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null, bool InLOS = true)
     {
     }
 
@@ -1334,5 +1340,3 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         Language = language;
     }
 }
-
-// The three chat type enums (InGameICChatType, InGameOOCChatType, and ChatTransmitRange) have been moved to Shared.

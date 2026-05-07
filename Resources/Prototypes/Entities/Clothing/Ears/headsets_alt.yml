@@ -9,6 +9,9 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
+  # Triad add start
+  - type: SavingContraband
+  # Triad end
 
 - type: entity
   parent: ClothingHeadsetAlt

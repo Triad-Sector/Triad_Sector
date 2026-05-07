@@ -22,6 +22,10 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction FocusDeadChat = "FocusDeadChatWindow";
         public static readonly BoundKeyFunction FocusCollectiveMindChat = "FocusCollectiveMindChatWindow"; // Goobstation - Starlight collective mind port
         public static readonly BoundKeyFunction FocusConsoleChat = "FocusConsoleChatWindow";
+        // Floofstation section
+        public static readonly BoundKeyFunction FocusSubtle = "FocusSubtle";
+        public static readonly BoundKeyFunction FocusSubtleOOC = "FocusSubtleOOC";
+        // Floofstation section end
         public static readonly BoundKeyFunction CycleChatChannelForward = "CycleChatChannelForward";
         public static readonly BoundKeyFunction CycleChatChannelBackward = "CycleChatChannelBackward";
         public static readonly BoundKeyFunction EscapeContext = "EscapeContext";

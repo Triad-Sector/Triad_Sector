@@ -279,6 +279,7 @@
     addPrefix: true
     blinkingBehaviourId: blinking
     radiatingBehaviourId: radiating
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: ItemTogglePointLight
   - type: LightBehaviour
     behaviours:

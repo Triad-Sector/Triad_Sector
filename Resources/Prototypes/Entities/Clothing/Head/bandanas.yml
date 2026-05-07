@@ -14,6 +14,8 @@
   - type: IdentityBlocker
     enabled: false
     coverage: MOUTH
+  - type: Clothing
+    equippedPrefix: up
   - type: Sprite # needed for vendor inventory icons
     layers:
     - state: icon
