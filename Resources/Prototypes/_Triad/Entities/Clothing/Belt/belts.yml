@@ -1,14 +1,7 @@
 - type: entity
   parent: [ClothingBeltBase, ClothingSlotBase]
-  id: SwordSheath
-  name: leather sheath
-  description: A bulky leather sheath designed to hold most traditional swords.
+  id: BaseSwordSheath
   components:
-  - type: Sprite
-    sprite: _Triad/Clothing/Belt/swordsheath.rsi
-    state: sheath
-  - type: Clothing
-    sprite: _Triad/Clothing/Belt/swordsheath.rsi
   - type: Item
     size: Large
     shape:
@@ -48,3 +41,27 @@
           - CaptainSabre
           - Cutlass
   - type: Appearance
+
+- type: entity
+  parent: BaseSwordSheath
+  id: LeatherSheath
+  name: leather sheath
+  description: A bulky leather sheath designed to hold most traditional swords.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/leathersheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/leathersheath.rsi
+
+- type: entity
+  parent: BaseSwordSheath
+  id: TacticalSheath
+  name: tactical sheath
+  description: A sleek tactical sheath designed to hold most traditional swords.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/tacticalsheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/tacticalsheath.rsi

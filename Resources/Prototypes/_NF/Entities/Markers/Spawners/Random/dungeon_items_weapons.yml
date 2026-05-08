@@ -212,6 +212,7 @@
     - Claymore
     - Truncheon
     - WeaponCaseShortEnergyDaggerExpedition
+    - WeaponCaseShortEnergyDaggerLoudExpedition
     chance: 1.0
     offset: 0.0
     rarePrototypes:
@@ -306,6 +307,7 @@
     prototypes:
     - Katana
     - CaptainSabre
+    - Kanabou
     - Sledgehammer # Triad, chance for vanilla sledgehammer, weaker version of Sec Breaching Hammer
     - WeaponCaseShortEnergySwordExpedition
     - WeaponCaseShortEnergyCutlassExpedition

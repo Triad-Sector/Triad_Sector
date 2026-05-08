@@ -22,7 +22,7 @@
   name: eldritch blade
   parent: Claymore # Triad Change to Claymore
   id: EldritchBlade
-  description: A sword humming with unholy energy.
+  description: A Large sword humming with unholy energy.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_blade.rsi
@@ -38,8 +38,7 @@
   description: A poleaxe that seems to be linked to its wielder.
   components:
   - type: Tag
-    tags:
-    - Halberd
+    tags: []
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon

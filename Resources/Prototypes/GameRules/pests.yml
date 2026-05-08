@@ -4,10 +4,9 @@
   id: CalmPestEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-    # - id: SnailMigrationLowPop
-    # - id: CockroachMigration
-    # - id: MouseMigration
-      - id: BorerMigration
+    - id: SnailMigrationLowPop
+    - id: CockroachMigration
+    - id: MouseMigration
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -39,9 +38,9 @@
       prob: 0.05 # Mono
     - id: MobMouseCancer
       prob: 0.005 # Mono
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
+    # specialEntries: # Mono
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono
 # Events always spawn a critter regardless of Probability https://github.com/space-wizards/space-station-14/issues/28480 I added the Rat King to their own event with a player cap.
 
 - type: entity
@@ -88,9 +87,9 @@
       prob: 0.005 # Mono
     - id: MobRosyMothroach # Frontier
       prob: 0.005 # Mono
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
+    # specialEntries: # Mono
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono
 
 - type: entity
   id: SnailMigrationLowPop
@@ -133,24 +132,6 @@
       prob: 0.005 # Mono
     - id: MobSnailInstantDeath
       prob: 0.00001 #  ~ 1:2000 snails
-    specialEntries: # Mono
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
-
-- type: entity
-  id: BorerMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
-    weight: 5 #Triad, reduced weight & Duration so its less prioritized to not spawn too much
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobCorticalBorer # Mono
-      prob: 0.001 # Mono
-    - id: MobMouseCancer
-      prob: 0.005 # Mono
+    # specialEntries: # Mono
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono

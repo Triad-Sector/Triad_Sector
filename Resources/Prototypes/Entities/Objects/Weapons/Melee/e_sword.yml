@@ -121,8 +121,8 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
       types:
-        Slash: 48 # Triad 48 < 50
-        Structural: 60 # Triad 60 < 100, Slightly less than holopickaxe
+        Slash: 40 # Triad 40 < 50
+        Structural: 50 # Triad 50 < 100, less than holopickaxe
 
 - type: entity
   name: energy dagger
@@ -149,7 +149,7 @@
       types: # Triad Damages on par with a knife, as a backup
         Slash: 8 # Triad 8 < 10
         Heat: 16 # Triad 16 < 10
-        Structural: 15 # Triad
+        Structural: 20 # Triad
     deactivatedSecret: true
   - type: ItemToggleActiveSound
     activeSound:
@@ -287,8 +287,8 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
       types:
-        Slash: 15
-        Heat: 20
+        Slash: 16
+        Heat: 24
         Structural: 40
     deactivatedSecret: true
   - type: Sprite
@@ -339,7 +339,7 @@
       types:
         Slash: 16 # Triad increased from 10 to 16 to be on-par with normal e-swords
         Heat: 20
-        Structural: 70 # Triad decreased from 100 to 70, slightly less than Holopickaxe, higher than regular e sword
+        Structural: 60 # Triad decreased from 100 to 60, slightly less than Holopickaxe, higher than regular e sword
   - type: ComponentToggler
     components:
     - type: Sharp

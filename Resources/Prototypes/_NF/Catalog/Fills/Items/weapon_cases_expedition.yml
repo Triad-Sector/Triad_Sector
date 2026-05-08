@@ -629,6 +629,16 @@
 
 - type: entity
   parent: WeaponCaseShort
+  id: WeaponCaseShortEnergyDaggerLoudExpedition
+  suffix: Dungeon, Energy Dagger
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyDaggerLoud
+      amount: 1
+
+- type: entity
+  parent: WeaponCaseShort
   id: WeaponCaseShortEnergyCutlassExpedition
   suffix: Dungeon, Energy Cutlass
   components:

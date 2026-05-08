@@ -65,7 +65,8 @@
   description: A bulky ancient war blade. This one has been dulled.
   components:
   - type: Tag
-    tags: LongBlade
+    tags: 
+    - LongBlade
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon
