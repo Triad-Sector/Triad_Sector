@@ -44,7 +44,8 @@ using Content.Server.Construction.Components;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Robust.Shared.Utility;
-using Content.Shared._NF.Kitchen.Components; // Frontier
+using Content.Shared._NF.Kitchen.Components;
+using Content.Shared.Atmos.Components; // Frontier
 
 namespace Content.Server.Kitchen.EntitySystems
 {

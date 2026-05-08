@@ -39,3 +39,7 @@
     autoRechargeRate: 24
   - type: GunSpreadModifier
     spread: 0.8
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end

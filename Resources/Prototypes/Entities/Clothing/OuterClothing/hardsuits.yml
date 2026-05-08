@@ -1200,6 +1200,10 @@
       head: ClothingHeadHelmetHardsuitDeathsquad
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 #CBURN Hardsuit
 - type: entity

@@ -67,3 +67,231 @@ Entries:
   id: 2148
   time: '2026-04-25T00:12:50.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/11
+- author: Triad-Sector
+  changes:
+    - type: Fix
+      message: >-
+        Flatpacks now use the collision of the flatpacked entity, so they can be
+        opened on tables and aren't blocked by ghosts.
+    - type: Tweak
+      message: Changed Sultan's shotgun sell price!
+    - type: Fix
+      message: Fixed a really easy little effort cash flow method!
+    - type: Fix
+      message: >-
+        ASM-220 torpedoes should be less likely to blow themselves or their own
+        launcher up now.
+    - type: Tweak
+      message: Sultan Pulsar no longer uses a static price, instead based off materials
+    - type: Tweak
+      message: >-
+        Autopulser capacity reduced, ADM version maxangle increased to match
+        asakim version
+    - type: Tweak
+      message: Tarantula update again, used the wrong file
+    - type: Tweak
+      message: Rules updated once again
+  id: 2149
+  time: '2026-04-25T06:01:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/12
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: some grid related events may now spawn further away, up 10000 blocks
+    - type: Tweak
+      message: increased delay of most events, especially the ones that is too frequent
+    - type: Tweak
+      message: critter pests should be rarer now
+  id: 2150
+  time: '2026-04-25T12:53:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/7
+- author: Triad-Sector
+  changes:
+    - type: Fix
+      message: EVA helmet lights
+    - type: Fix
+      message: Fixed loadout UI windows having the wrong title.
+    - type: Add
+      message: >-
+        Small (5x5) and normal (7x7) sized nuclear-fission reactors for TSF,
+        PDV, USSP, CC, and Civilians. Currently not mapped anywhere, with
+        corresponding turbines (3x2 and 3x5).
+  id: 2151
+  time: '2026-04-26T01:46:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/14
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Internals and gas canisters are now predicted. There should be no delay
+        when you use the canister UI or enable internals.
+    - type: Tweak
+      message: >-
+        Ported the spray painter rework from Wizden, allowing you to paint way
+        more objects.
+    - type: Fix
+      message: Maybe fix self-recharging weapons breaking on ship load
+  id: 2152
+  time: '2026-04-27T02:47:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/17
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: voucher ship being sellable
+    - type: Fix
+      message: 'change the description of civilian stash '
+  id: 2153
+  time: '2026-04-27T14:10:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/15
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add a name to asteroid, port from Monolith
+    - type: Fix
+      message: Fixes bounty command access, able to remove and adding a new one
+    - type: Tweak
+      message: >-
+        Asteroids made to load ahead of your velocity to prevent them from
+        spawning in front of you when going fast.
+  id: 2154
+  time: '2026-04-27T14:11:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/16
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed some security vulnerabilities regarding shipsaving.
+    - type: Add
+      message: Saving a ship now sends a radio message to shortband.
+    - type: Fix
+      message: >-
+        Fixed the shipyard console not updating the ID card in the console upon
+        saving the ship.
+  id: 2155
+  time: '2026-04-27T23:24:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/19
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        The spraypaint of doors, canisters, lockers, etc now persists upon
+        saving!
+  id: 2156
+  time: '2026-04-29T02:00:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/20
+- author: Wuffindy
+  changes:
+    - type: Remove
+      message: Disabled Polaris and sent them into the nearest black hole
+    - type: Remove
+      message: Banished Cortical Borers to the shadow realm for the time being
+    - type: Tweak
+      message: >-
+        Letoferol should no longer be obtained in game (Synd Crate, Uplink n
+        Polaris)
+    - type: Tweak
+      message: >-
+        some Dungeon POIs are now deeper in the outer ring while Camelot is
+        slightly close
+    - type: Tweak
+      message: adjust some more regarding events
+  id: 2157
+  time: '2026-04-29T02:10:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/18
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed cryopods, handheld mass scanners, and hardsuit mass scanners not
+        being activatable by 'E' (activate in world keybind)
+    - type: Fix
+      message: >-
+        Fixed modsuit helmets not acting as breath masks. You can now connect
+        internals to them.
+  id: 2158
+  time: '2026-04-30T23:00:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/23
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add contraband component and examine to OOC banned items
+  id: 2159
+  time: '2026-05-01T01:06:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/24
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: New examine button for ship saving contraband.
+  id: 2160
+  time: '2026-05-03T01:21:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/26
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Ships can no longer be saved if there are any mobs onboard.
+    - type: Tweak
+      message: >-
+        SRD now works on loaded ships. Any SRD data will be overwritten upon
+        save, so make sure you repair your ship before you save!
+    - type: Tweak
+      message: >-
+        Loading a ship will now give you the relative direction of your ship,
+        like purchasing.
+    - type: Tweak
+      message: Medical stashes can now fit medipen and syringe cases
+  id: 2161
+  time: '2026-05-03T03:32:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/25
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Serkesh from scrapyard
+    - type: Remove
+      message: Flashpoint from exped shipyard
+    - type: Remove
+      message: Remove fun!
+  id: 2162
+  time: '2026-05-05T12:00:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/30
+- author: Erol509
+  changes:
+    - type: Add
+      message: >-
+        Added new race: Avali. They have been ported mainly from Starlight with
+        a couple of fixes from Hardlight. 
+  id: 2163
+  time: '2026-05-05T12:02:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/13
+- author: Erol509
+  changes: []
+  id: 2164
+  time: '2026-05-05T14:10:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/32
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Drains and sinks are now repairable by SRDs.
+  id: 2165
+  time: '2026-05-06T01:42:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/34
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed ghosts being able to see subtle chat
+    - type: Fix
+      message: Gave subtle OOC a pink color
+    - type: Fix
+      message: Fixed being able to chat while crit or dead
+  id: 2166
+  time: '2026-05-06T01:42:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/27
+- author: AlexisMoonlight
+  changes:
+    - type: Add
+      message: Added civilian ship Gondola
+    - type: Add
+      message: Added randomly spawning and buyable lewd toys crate.
+    - type: Add
+      message: Added sauna atmos devices for mapping
+  id: 2167
+  time: '2026-05-06T02:10:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/22

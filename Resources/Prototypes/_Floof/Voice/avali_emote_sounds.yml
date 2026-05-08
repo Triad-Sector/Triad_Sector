@@ -1,22 +1,22 @@
 - type: soundCollection
-  id: AvaliScreams
+  id: AvaliScreamsOld
   files:
     - /Audio/_Floof/Voice/Avali/avali_scream.ogg
 
 - type: soundCollection
-  id: AvaliLaugh
+  id: AvaliLaughOld
   files:
     - /Audio/_Floof/Voice/Avali/avali_laugh.ogg
 
 - type: emoteSounds
-  id: MaleAvaliEmote
+  id: MaleAvaliEmoteOld
   params:
     variation: 0.125
   sounds:
-    Scream:
-      collection: AvaliScreams
-    Laugh:
-      collection: AvaliLaugh
+    #Scream:
+    #  collection: AvaliScreams
+    #Laugh:
+    #  collection: AvaliLaugh
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -60,14 +60,14 @@
 
 
 - type: emoteSounds
-  id: FemaleAvaliEmote
+  id: FemaleAvaliEmoteOld
   params:
     variation: 0.125
   sounds:
-    Scream:
-      collection: AvaliScreams
-    Laugh:
-      collection: AvaliLaugh
+    #Scream:
+    #  collection: AvaliScreams
+    #Laugh:
+    #  collection: AvaliLaugh
     Sneeze:
       collection: FemaleSneezes
     Cough:

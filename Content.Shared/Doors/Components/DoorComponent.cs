@@ -317,7 +317,7 @@ public enum DoorVisuals : byte
     BoltLights,
     EmergencyLights,
     ClosedLights,
-    BaseRSI,
+    // BaseRSI, // Upstream#37341
 }
 
 public enum DoorVisualLayers : byte

@@ -1,7 +1,7 @@
 - type: construction
   id: CivilianStorageStash
   name: Civilian Storage Stash
-  description: A flatpack personal storage unit. Deployed stashes retain their contents between ship saves.
+  description: Miscellaneous everyday supplies and personal items. Preserves stored items across ship deployments.
   graph: CivilianStorageStashGraph
   startNode: start
   targetNode: CivilianStorageStashNode
@@ -35,7 +35,7 @@
 - type: construction
   id: MedicalSecureStorage
   name: Medical Sanitized Stash
-  description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
+  description: Sterile stash of clean medical supplies. Preserves stored items across ship deployments.
   graph: MedicalSecureStorageGraph
   startNode: start
   targetNode: MedicalSecureStorageNode

@@ -146,7 +146,6 @@ public sealed partial class FelinidSystem : EntitySystem
 
         if (component.HairballAction != null)
         {
-            _actionsSystem.SetCharges(component.HairballAction, 1); // You get the charge back and that's it. Tough.
             _actionsSystem.SetEnabled(component.HairballAction, true);
         }
         Del(component.EatActionTarget.Value);

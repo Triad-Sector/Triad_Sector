@@ -71,7 +71,7 @@
   components:
   - type: LimitedCharges
     maxCharges: 100
-    charges: 100
+    lastCharges: 100
   - type: UseDelay
     delay: 0.1
   - type: AutoRecharge

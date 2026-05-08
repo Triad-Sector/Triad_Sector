@@ -47,6 +47,9 @@
       params:
         volume: -5
   # Goobstation edit end
+  # Triad add start
+  - type: SavingContraband
+  # Triad end
 
 #IDs with layers
 
@@ -688,6 +691,7 @@
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: SavingContraband
 
 - type: entity
   parent: IDCardStandard
@@ -762,6 +766,10 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: CBURN
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: IDCardStandard

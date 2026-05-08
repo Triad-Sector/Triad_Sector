@@ -42,3 +42,7 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end

@@ -15,6 +15,10 @@ namespace Content.Client.Input
             common.AddFunction(ContentKeyFunctions.FocusChat);
             common.AddFunction(ContentKeyFunctions.FocusLocalChat);
             common.AddFunction(ContentKeyFunctions.FocusEmote);
+            // Floofstation section
+            common.AddFunction(ContentKeyFunctions.FocusSubtle);
+            common.AddFunction(ContentKeyFunctions.FocusSubtleOOC);
+            // Floofstation section end
             common.AddFunction(ContentKeyFunctions.FocusWhisperChat);
             common.AddFunction(ContentKeyFunctions.FocusRadio);
             common.AddFunction(ContentKeyFunctions.FocusLOOC);

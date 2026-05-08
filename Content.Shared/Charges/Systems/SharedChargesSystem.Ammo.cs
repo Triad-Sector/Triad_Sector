@@ -12,7 +12,6 @@ namespace Content.Shared.Charges.Systems;
 
 public abstract partial class SharedChargesSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
@@ -40,7 +39,7 @@ public abstract partial class SharedChargesSystem : EntitySystem
             || _whitelist.IsWhitelistFail(ent.Comp.Whitelist, target)
         )
             return;
-        var count = Math.Min(charges.MaxCharges - charges.Charges, GetAmmoCharges(ent));
+        var count = Math.Min(charges.MaxCharges - charges.LastCharges, GetAmmoCharges(ent));
         if (count <= 0)
         {
             _popup.PopupClient(Loc.GetString("limited-charges-ammo-component-after-interact-full"), target, user);
@@ -48,7 +47,7 @@ public abstract partial class SharedChargesSystem : EntitySystem
         }
 
         _popup.PopupClient(Loc.GetString("limited-charges-ammo-component-after-interact-refilled"), target, user);
-        AddCharges(target, TakeCharges(ent, count), charges);
+        AddCharges(target, TakeCharges(ent, count));
     }
 
     private void OnAmmoUsingInteract(Entity<LimitedChargesAmmoComponent> ent, ref InteractUsingEvent args)

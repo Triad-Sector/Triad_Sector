@@ -8,14 +8,14 @@
     # - id: BreakerFlip
     # - id: BureaucraticError
     # - id: ClericalError
-    # - id: CockroachMigration #Triad - Disable
+    # - id: CockroachMigration #Triad edit - Disable
     - id: GasLeak
     #- id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     # - id: KudzuGrowth
     # - id: MassHallucinations # Frontier
     # - id: MimicVendorRule
-    # - id: MouseMigration #Triad - Disable
+    # - id: MouseMigration #Triad edit - Disable
     # - id: PowerGridCheck
     - id: RandomSentience
     # - id: SlimesSpawn
@@ -314,15 +314,16 @@
 
 - type: entity
   id: GasLeak
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     endAnnouncement: station-event-gas-leak-nf-end-announcement # Frontier: add nf-
-    weight: 8
+    weight: 5 #Triad: 5 < 8
     earliestStart: 15 # Frontier
+    reoccurrenceDelay: 90 # Triad: 1 hour 30 minute
   - type: GasLeakRule
 
 # - type: entity
@@ -354,19 +355,19 @@
 #  - type: PowerGridCheckRule
 
 - type: entity
-  parent: BaseGameRule
+  parent: BaseStationEventNFModerateDelay # Triad
   id: SolarFlare
   components:
   - type: StationEvent
     weight: 4
-    earliestStart: 15 # Frontier
-    reoccurrenceDelay: 45 # Frontier
+    earliestStart: 30 # Triad 30 < 15
+    reoccurrenceDelay: 60 # Triad 60 < 30
     startAnnouncement: station-event-solar-flare-nf-start-announcement # Frontier: add nf-
     endAnnouncement: station-event-solar-flare-nf-end-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    duration: 120
-    maxDuration: 240
+    duration: 90 #Triad - 90 < 120
+    maxDuration: 180 #Triad - 240 < 180 Due to how frequent it can be, reduced the max duration
   - type: SolarFlareRule
     onlyJamHeadsets: true
     affectedChannels:
@@ -386,7 +387,7 @@
     - Ussp # Mono
     # - UsspCommand # Mono
     extraCount: 6
-    lightBreakChancePerSecond: 0.0003
+    lightBreakChancePerSecond: 0.0001 #Triad - reduce the chance of breaking even more
     doorToggleChancePerSecond: 0 # Mono
 
 - type: entity

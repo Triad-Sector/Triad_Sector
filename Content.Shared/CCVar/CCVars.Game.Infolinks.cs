@@ -20,7 +20,7 @@ public sealed partial class CCVars
     ///     Link to GitHub page to show in the launcher.
     /// </summary>
     public static readonly CVarDef<string> InfoLinksGithub =
-        CVarDef.Create("infolinks.github", "https://github.com/Triad-Sector/Triad-Sector", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("infolinks.github", "https://github.com/Triad-Sector/Triad_Sector", CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Link to website to show in the launcher.

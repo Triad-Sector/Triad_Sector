@@ -21,12 +21,12 @@ public abstract class SharedChatSystem : EntitySystem
     public const char OOCPrefix = '[';
     public const char EmotesPrefix = '@';
     public const char EmotesAltPrefix = '*';
-    public const char SubtlePrefix = '-';
-    public const char SubtleOOCPrefix = '.';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
     public const char CollectiveMindPrefix = '+';
     public const char DefaultChannelKey = 'h';
+    public const char SubtlePrefix = '-'; // Floofstation
+    public const char SubtleOOCPrefix = '{'; // Floofstation
 
     [ValidatePrototypeId<RadioChannelPrototype>]
     public const string CommonChannel = "Common";
@@ -368,15 +368,13 @@ public abstract class SharedChatSystem : EntitySystem
 ///     InGame IC chat is for chat that is specifically ingame (not lobby) but is also in character, i.e. speaking.
 /// </summary>
 // ReSharper disable once InconsistentNaming
-[Serializable, NetSerializable]
 public enum InGameICChatType : byte
 {
     Speak,
     Emote,
-    Subtle, // Floofstation
-    SubtleOOC, // Den
     Whisper,
-    CollectiveMind
+    CollectiveMind, //Nyano - Summary: adds telepathic as a type of message users can receive.
+    Subtle, // Floofstation
 }
 
 /// <summary>
@@ -385,7 +383,8 @@ public enum InGameICChatType : byte
 public enum InGameOOCChatType : byte
 {
     Looc,
-    Dead
+    Dead,
+    SubtleLOOC, // Floofstation - unlike pre-rebase, this is an OOC channel
 }
 
 /// <summary>
@@ -402,6 +401,7 @@ public enum ChatTransmitRange : byte
     /// Ghosts can't hear or see it at all. Regular players can if in-range.
     NoGhosts,
     /// Frontier: Normal, ghosts are still range-limited, and won't spam admins
-    GhostRangeLimitNoAdminCheck,
+    GhostRangeLimitNoAdminCheck
 }
+
 // Einstein Engines - Language end

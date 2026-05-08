@@ -13,6 +13,7 @@
   - type: DoorRemote
   - type: StealTarget
     stealGroup: DoorRemote
+  - type: SavingContraband
 
 - type: entity
   parent: DoorRemoteDefault

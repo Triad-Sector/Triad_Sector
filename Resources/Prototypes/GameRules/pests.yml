@@ -19,7 +19,7 @@
 
 - type: entity
   id: MouseMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -31,21 +31,26 @@
   - type: VentCrittersRule
     entries:
     - id: MobMouse
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouse1
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouse2
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMouseCancer
+<<<<<<< HEAD
       prob: 0.005 # Mono
     # specialEntries: # Mono
+=======
+      prob: 0.0005 # Triad
+    # specialEntries: # Mono # Triad disable till consent is fixed
+>>>>>>> 2ac5f19b94c77dca2f9fd790efb0b624416bf25e
     # - id: MobCorticalBorer # Mono
     #   prob: 0.001 # Mono
 # Events always spawn a critter regardless of Probability https://github.com/space-wizards/space-station-14/issues/28480 I added the Rat King to their own event with a player cap.
 
 - type: entity
   id: KingRatMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -58,11 +63,11 @@
   - type: VentCrittersRule
     entries:
     - id: MobMouse
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouse1
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouse2
-      prob: 0.02
+      prob: 0.002 # Triad
     - id: MobMouseCancer
       prob: 0.001
     specialEntries:
@@ -71,7 +76,7 @@
 
 - type: entity
   id: CockroachMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -82,18 +87,23 @@
   - type: VentCrittersRule
     entries:
     - id: MobCockroach
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobMothroach
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobRosyMothroach # Frontier
+<<<<<<< HEAD
       prob: 0.005 # Mono
     # specialEntries: # Mono
+=======
+      prob: 0.001 # Triad
+    # specialEntries: # Mono # Triad disable till consent is fixed
+>>>>>>> 2ac5f19b94c77dca2f9fd790efb0b624416bf25e
     # - id: MobCorticalBorer # Mono
     #   prob: 0.001 # Mono
 
 - type: entity
   id: SnailMigrationLowPop
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -104,15 +114,15 @@
   - type: VentCrittersRule
     entries:
     - id: MobSnail
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobSnailSpeed
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailMoth
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
 
 - type: entity
   id: SnailMigration
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
@@ -125,13 +135,19 @@
   - type: VentCrittersRule
     entries:
     - id: MobSnail
-      prob: 0.05 # Mono
+      prob: 0.005 # Triad
     - id: MobSnailSpeed
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailMoth
-      prob: 0.005 # Mono
+      prob: 0.001 # Triad
     - id: MobSnailInstantDeath
       prob: 0.00001 #  ~ 1:2000 snails
+<<<<<<< HEAD
     # specialEntries: # Mono
     # - id: MobCorticalBorer # Mono
     #   prob: 0.001 # Mono
+=======
+    # specialEntries: # Mono # Triad disable till consent is fixed
+    # - id: MobCorticalBorer # Mono
+    #   prob: 0.001 # Mono
+>>>>>>> 2ac5f19b94c77dca2f9fd790efb0b624416bf25e

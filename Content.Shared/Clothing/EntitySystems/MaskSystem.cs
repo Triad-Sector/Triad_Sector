@@ -29,13 +29,16 @@ public sealed class MaskSystem : EntitySystem
     private void OnGetActions(EntityUid uid, MaskComponent component, GetItemActionsEvent args)
     {
         if (_inventorySystem.InSlotWithFlags(uid, SlotFlags.MASK))
+        {
             args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
+            Dirty(uid, component);
+        }
     }
 
     private void OnToggleMask(Entity<MaskComponent> ent, ref ToggleMaskEvent args)
     {
         var (uid, mask) = ent;
-        if (mask.ToggleActionEntity == null || !_timing.IsFirstTimePredicted || !mask.IsEnabled)
+        if (mask.ToggleActionEntity == null || !mask.IsToggleable)
             return;
 
         if (!_inventorySystem.TryGetSlotEntity(args.Performer, "mask", out var existing) || !uid.Equals(existing))
@@ -47,39 +50,39 @@ public sealed class MaskSystem : EntitySystem
         var msg = $"action-mask-pull-{dir}-popup-message";
         _popupSystem.PopupClient(Loc.GetString(msg, ("mask", uid)), args.Performer, args.Performer);
 
-        ToggleMaskComponents(uid, mask, args.Performer, mask.EquippedPrefix);
+        ToggleMaskComponents(uid, mask, args.Performer);
     }
 
     // set to untoggled when unequipped, so it isn't left in a 'pulled down' state
     private void OnGotUnequipped(EntityUid uid, MaskComponent mask, GotUnequippedEvent args)
     {
-        if (!mask.IsToggled || !mask.IsEnabled)
+        if (!mask.IsToggled || !mask.IsToggleable)
             return;
 
         mask.IsToggled = false;
-        ToggleMaskComponents(uid, mask, args.Equipee, mask.EquippedPrefix, true);
+        ToggleMaskComponents(uid, mask, args.Equipee);
     }
 
     /// <summary>
     /// Called after setting IsToggled, raises events and dirties.
-    /// <summary>
-    private void ToggleMaskComponents(EntityUid uid, MaskComponent mask, EntityUid wearer, string? equippedPrefix = null, bool isEquip = false)
+    /// </summary>
+    private void ToggleMaskComponents(EntityUid uid, MaskComponent mask, EntityUid wearer)
     {
         Dirty(uid, mask);
         if (mask.ToggleActionEntity is {} action)
             _actionSystem.SetToggled(action, mask.IsToggled);
 
-        var maskEv = new ItemMaskToggledEvent(wearer, equippedPrefix, mask.IsToggled, isEquip);
+        var maskEv = new ItemMaskToggledEvent((uid, mask), wearer);
         RaiseLocalEvent(uid, ref maskEv);
 
-        var wearerEv = new WearerMaskToggledEvent(mask.IsToggled);
+        var wearerEv = new WearerMaskToggledEvent((uid, mask));
         RaiseLocalEvent(wearer, ref wearerEv);
     }
 
     private void OnFolded(Entity<MaskComponent> ent, ref FoldedEvent args)
     {
         if (ent.Comp.DisableOnFolded)
-            ent.Comp.IsEnabled = !args.IsFolded;
+            ent.Comp.IsToggled = !args.IsFolded;
         ent.Comp.IsToggled = args.IsFolded;
 
         ToggleMaskComponents(ent.Owner, ent.Comp, ent.Owner);

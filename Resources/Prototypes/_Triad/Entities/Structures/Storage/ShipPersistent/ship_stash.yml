@@ -16,7 +16,6 @@
       - Access
       - Store
       - Cash
-      - Currency
       - Headset
 
 - type: entity
@@ -87,6 +86,8 @@
           - GlassBeaker
           - ChemDispensable
           - MedicialBluespaceDeskCompatible
+          - CigPack
+          - Medkit
     - type: Construction
       graph: MedicalSecureStorageGraph
       node: MedicalSecureStorageNode

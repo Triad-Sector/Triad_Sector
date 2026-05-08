@@ -1,4 +1,5 @@
 using Content.Server.Shuttles.Components;
+using Content.Shared.NodeContainer;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.NodeContainer.Nodes;
@@ -7,7 +8,6 @@ namespace Content.Server.NodeContainer.Nodes;
 [DataDefinition, Virtual]
 public partial class DockablePipeNode : PipeNode
 {
-
     public override IEnumerable<Node> GetReachableNodes(TransformComponent xform,
         EntityQuery<NodeContainerComponent> nodeQuery,
         EntityQuery<TransformComponent> xformQuery,

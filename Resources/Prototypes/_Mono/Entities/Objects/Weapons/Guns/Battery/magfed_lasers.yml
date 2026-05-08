@@ -143,3 +143,7 @@
       sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
       state: all
   - type: Appearance
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end

@@ -140,7 +140,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
                         continue;
                 }
 
-                var enough = !_charges.HasInsufficientCharges(ent, cost);
+                var enough = _charges.HasCharges(ent.Owner, cost); // Triad, action charges refactor
                 notEnoughCharges |= !enough;
                 if (needsRepair && enough)
                 {
@@ -199,7 +199,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
         if (!TryGetChunk(repairData, args.TargetGridIndices, out var chunk))
             return;
 
-        if (_charges.HasInsufficientCharges(ent, args.Cost))
+        if (!_charges.HasCharges(ent.Owner, args.Cost)) // Triad, action charges refactor
         {
             _popup.PopupEntity(Loc.GetString("ship-repair-tool-insufficient-ammo"), ent, args.User);
             return;
@@ -237,7 +237,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
             TryRepairTileTile((targetGrid, repairData), args.TargetGridIndices);
         }
 
-        _charges.UseCharges(ent, args.Cost);
+        _charges.TryUseCharges(ent.Owner, args.Cost); // Triad, action charges refactor
         args.Handled = true;
     }
 }

@@ -318,6 +318,10 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: syndie_key
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
+    # Triad end
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerSolarControl]
@@ -398,6 +402,10 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: tech_key
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
+    # Triad end
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerCargoBounty]

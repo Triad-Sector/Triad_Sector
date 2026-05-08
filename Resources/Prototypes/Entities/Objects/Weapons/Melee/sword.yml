@@ -71,9 +71,12 @@
   - type: Tag
     tags:
     - CaptainSabre
-  - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-inanimate
-    weight: 0.0002 # 5,000 times less likely than 1 regular animal
+  - type: DisarmMalus
+  # Triad Start - disable target of random sentience event
+  # - type: SentienceTarget
+  #   flavorKind: station-event-random-sentience-flavor-inanimate
+  #   weight: 0.0002 # 5,000 times less likely than 1 regular animal
+  # Triad End
   - type: PirateAccent
     # not putting a BlockMovement component here cause that's funny.
 
@@ -111,7 +114,6 @@
   - type: DashAbility
   - type: LimitedCharges
     maxCharges: 3
-    charges: 3
   - type: AutoRecharge
     rechargeDuration: 20
   - type: Clothing

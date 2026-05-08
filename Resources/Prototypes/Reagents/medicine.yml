@@ -931,7 +931,7 @@
           Burn: -1.5
           Toxin: -1.5
           Airloss: -1.5
-          Brute: -1.5   
+          Brute: -1.5
       - !type:HealthChange # Mono - Added overdose
         conditions:
         - !type:ReagentThreshold
@@ -1439,7 +1439,7 @@
           component: ForcedSleeping
           refresh: false
           type: Add
-        
+
 
 - type: reagent
   id : Aloxadone

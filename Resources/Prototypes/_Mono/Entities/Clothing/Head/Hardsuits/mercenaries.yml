@@ -38,6 +38,8 @@
     interfaces:
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
+  - type: HandheldLight
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: HideLayerClothing
     slots:
     - Hair

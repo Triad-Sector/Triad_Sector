@@ -60,3 +60,6 @@
             - !type:PlaySoundBehavior
               sound:
                 collection: MetalBreak
+    - type: ShipRepairable # Triad: Make drains SRD repairable
+      repairTime: 5
+      repairCost: 20

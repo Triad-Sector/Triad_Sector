@@ -67,6 +67,11 @@ public sealed partial class IdCardConsoleComponent : Component
         //"Hydroponics",
         "Janitor",
         //"Kitchen",
+        "Mail", // Frontier
+        "Medical",
+        "Mercenary", // Frontier
+        //"Quartermaster",
+        //"Research",
         "Lawyer",
         "Mail", // Frontier
         "Maintenance",

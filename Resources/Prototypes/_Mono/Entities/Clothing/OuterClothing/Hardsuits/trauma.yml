@@ -37,6 +37,8 @@
       head: ClothingHeadHelmetHardsuitTrauma
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: HandheldLight
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: StaticPrice
     price: 1400
     vendPrice: 10000
@@ -81,6 +83,8 @@
       head: ClothingHeadHelmetHardsuitTraumaLeader
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: HandheldLight
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: StaticPrice
     price: 4200
     vendPrice: 25000

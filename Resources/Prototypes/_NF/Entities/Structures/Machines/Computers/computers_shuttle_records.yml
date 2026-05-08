@@ -49,3 +49,6 @@
   components:
   - type: ShuttleRecordsConsole
     account: Frontier
+  # Triad add start
+  - type: SavingContraband
+  # Triad end

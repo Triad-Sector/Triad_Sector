@@ -1,0 +1,42 @@
+# Author Info
+# AlexisLuna
+# Discord leximoonlight
+# GitHub https://github.com/AlexisMoonlight
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: gondola
+  parent: BaseVessel
+  name: Gondola
+  description:  A luxury boat for a romantic getaway. It comes with a wall-to-wall swimming pool, sauna, a well-stocked bar and other amenities.
+  price: 55000
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/gondola.yml
+  #guidebookPage: ShipyardGondola
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: gondola
+  mapName: 'gondola'
+  mapPath: /Maps/_Triad/Shuttles/gondola.yml
+  minPlayers: 0
+  stations:
+    gondola:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Gondola CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

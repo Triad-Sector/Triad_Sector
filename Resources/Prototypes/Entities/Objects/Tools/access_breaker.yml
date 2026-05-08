@@ -20,5 +20,4 @@
   components:
   - type: LimitedCharges
     maxCharges: 6
-    charges: 6
   - type: AutoRecharge

@@ -280,6 +280,10 @@
     - type: Storage
       grid:
       - 0,0,7,6
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
+    # Triad end
 
 #Syndicate
 - type: entity

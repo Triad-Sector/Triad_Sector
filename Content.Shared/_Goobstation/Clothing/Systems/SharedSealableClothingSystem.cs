@@ -1,6 +1,9 @@
 using Content.Shared._Goobstation.Clothing.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.DoAfter;
@@ -35,12 +38,13 @@ public abstract class SharedSealableClothingSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedPowerCellSystem _powerCellSystem = default!;
     [Dependency] private readonly ToggleableClothingSystem _toggleableSystem = default!;
+    [Dependency] private readonly SharedInternalsSystem _internals = default!; // Triad, fix internals
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SealableClothingComponent, ClothingPartSealCompleteEvent>(OnPartSealingComplete);
+        // SubscribeLocalEvent<SealableClothingComponent, ClothingPartSealCompleteEvent>(OnPartSealingComplete); Triad
 
         SubscribeLocalEvent<SealableClothingControlComponent, ClothingControlSealCompleteEvent>(OnControlSealingComplete);
         SubscribeLocalEvent<SealableClothingControlComponent, ClothingGotEquippedEvent>(OnControlEquip);
@@ -53,19 +57,21 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         SubscribeLocalEvent<SealableClothingControlComponent, SealClothingEvent>(OnControlSealEvent);
         //SubscribeLocalEvent<SealableClothingControlComponent, StartSealingProcessDoAfterEvent>(OnStartSealingDoAfter);
         SubscribeLocalEvent<SealableClothingControlComponent, ToggleClothingAttemptEvent>(OnToggleClothingAttempt);
+
+        SubscribeLocalEvent<BreathToolComponent, ClothingPartSealCompleteEvent>(OnBreathToolSealingComplete); // Triad, breath tool fix
     }
 
     #region Events
 
     /// <summary>
-    /// Toggles components on part when suit complete sealing process
+    /// Toggles components on part when suit complete sealing process, aswell as connecting internals if there is any
     /// </summary>
     /// <param name="part"></param>
-    /// <param name="args"></param>
-    private void OnPartSealingComplete(Entity<SealableClothingComponent> part, ref ClothingPartSealCompleteEvent args)
-    {
-        _componentTogglerSystem.ToggleComponent(part, args.IsSealed);
-    }
+    /// <param name="args"></param> Triad removal
+    //private void OnPartSealingComplete(Entity<SealableClothingComponent> part, ref ClothingPartSealCompleteEvent args)
+    //{
+    //    _componentTogglerSystem.ToggleComponent(part, args.IsSealed);
+    //}
 
     /// <summary>
     ///     Toggles components on control when suit complete sealing process
@@ -237,8 +243,9 @@ public abstract class SharedSealableClothingSystem : EntitySystem
             _audioSystem.PlayPvs(sealableComponet.SealUpSound, uid);
 
         _appearanceSystem.SetData(part.Value, SealableClothingVisuals.Sealed, sealableComponet.IsSealed);
+        _componentTogglerSystem.ToggleComponent(part.Value, sealableComponet.IsSealed);
 
-        var ev = new ClothingPartSealCompleteEvent(sealableComponet.IsSealed);
+        var ev = new ClothingPartSealCompleteEvent(sealableComponet.IsSealed, control.Comp.WearerEntity);
         RaiseLocalEvent(part.Value, ref ev);
 
         NextSealProcess(control);
@@ -273,6 +280,16 @@ public abstract class SharedSealableClothingSystem : EntitySystem
 
         return;
     }
+
+    // Triad
+    private void OnBreathToolSealingComplete(Entity<BreathToolComponent> tool, ref ClothingPartSealCompleteEvent args)
+    {
+        if (args.User == null || !TryComp<InternalsComponent>(args.User.Value, out var internals))
+            return;
+
+        _internals.ConnectBreathTool((args.User.Value, internals), tool.Owner);
+    }
+    // Triad end
     #endregion
 
     /// <summary>
@@ -369,7 +386,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
             else
                 _audioSystem.PlayEntity(comp.UnsealCompleteSound, comp.WearerEntity!.Value, uid);
 
-            var ev = new ClothingControlSealCompleteEvent(comp.IsCurrentlySealed);
+            var ev = new ClothingControlSealCompleteEvent(comp.IsCurrentlySealed, comp.WearerEntity);
             RaiseLocalEvent(control, ref ev);
 
             _appearanceSystem.SetData(uid, SealableClothingVisuals.Sealed, comp.IsCurrentlySealed);
@@ -451,18 +468,20 @@ public sealed partial class SealClothingEvent : InstantActionEvent
 ///     Raises on control when clothing finishes it's sealing or unsealing process
 /// </summary>
 [ByRefEvent]
-public readonly record struct ClothingControlSealCompleteEvent(bool IsSealed)
+public readonly record struct ClothingControlSealCompleteEvent(bool IsSealed, EntityUid? User)
 {
     public readonly bool IsSealed = IsSealed;
+    public readonly EntityUid? User = User; // Triad
 }
 
 /// <summary>
 ///     Raises on part when clothing finishes it's sealing or unsealing process
 /// </summary>
 [ByRefEvent]
-public readonly record struct ClothingPartSealCompleteEvent(bool IsSealed)
+public readonly record struct ClothingPartSealCompleteEvent(bool IsSealed, EntityUid? User)
 {
     public readonly bool IsSealed = IsSealed;
+    public readonly EntityUid? User = User; // Triad
 }
 
 public sealed partial class ClothingSealAttemptEvent : CancellableEntityEventArgs

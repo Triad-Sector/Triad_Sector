@@ -8,6 +8,10 @@
     sprite: Clothing/Uniforms/Jumpsuit/deathsquad.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/deathsquad.rsi
+  # Triad add start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad end
 
 - type: entity
   parent: ClothingUniformBase
