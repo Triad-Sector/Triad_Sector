@@ -81,12 +81,12 @@
         volume: -2
   - type: EmitSoundOnDrop
     sound:
-      path: /Audio/Items/welder_drop
+      path: /Audio/Items/welder_drop.ogg
       params:
         volume: -2
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/Items/welder_drop
+      path: /Audio/Items/welder_drop.ogg
 # Trid End - Audio
 
 - type: entity

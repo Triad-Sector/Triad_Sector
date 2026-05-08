@@ -67,7 +67,7 @@
     storedRotation: -90
   - type: Tag
     tags:
-    - Pickaxe;
+    - Pickaxe
   - type: Sprite
     sprite: Objects/Tools/handdrill.rsi
     state: handdrill
