@@ -43,26 +43,6 @@
     - popped
     # End Frontier: emote consistency
 
-- type: emote
-  id: ReptilianHiss
-  name: chat-emote-name-reptilian-hiss
-  category: Vocal
-  icon: _Impstation/Interface/Emotes/hiss.png
-  whitelist:
-    tags:
-      - ReptilianEmotes
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-reptilian-hiss"]
-  chatTriggers:
-    # Frontier: emote consistency
-    - hiss
-    - hisses
-    - hissing
-    - hissed
-    # End Frontier: emote consistency
-
 # hand emotes
 - type: emote
   id: Crack

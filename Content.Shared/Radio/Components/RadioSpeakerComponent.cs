@@ -1,29 +1,28 @@
-using Content.Server.Chat.Systems; // Frontier: InGameICChatType
-using Content.Server.Radio.EntitySystems;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Chat;
-using Content.Shared.Radio;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
-namespace Content.Server.Radio.Components;
+namespace Content.Shared.Radio.Components;
 
 /// <summary>
 ///     Listens for radio messages and relays them to local chat.
 /// </summary>
-[RegisterComponent]
-[Access(typeof(RadioDeviceSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[Access(typeof(SharedRadioDeviceSystem))]
 public sealed partial class RadioSpeakerComponent : Component
 {
     /// <summary>
     /// Whether or not interacting with this entity
     /// toggles it on or off.
     /// </summary>
-    [DataField("toggleOnInteract")]
+    [DataField]
     public bool ToggleOnInteract = true;
 
-    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
-    public HashSet<string> Channels = new () { SharedChatSystem.CommonChannel };
+    [DataField]
+    public HashSet<ProtoId<RadioChannelPrototype>> Channels = new() { SharedChatSystem.CommonChannel };
 
-    [DataField("enabled")]
+    [DataField, AutoNetworkedField]
     public bool Enabled;
 
     //Frontier: radio output volume

@@ -15,8 +15,8 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "http://45.8.201.66/"
-FORK_ID = "TriadSector"
+ROBUST_CDN_URL = "https://cdn.triad-sector.com/"
+FORK_ID = "Triad"
 
 def main():
     parser = argparse.ArgumentParser()

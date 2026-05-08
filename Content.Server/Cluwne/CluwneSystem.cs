@@ -11,13 +11,14 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage;
 using Robust.Shared.Prototypes;
 using Content.Server.Emoting.Systems;
+using Content.Server.Clothing.Systems;
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Chat; // Einstein Engines - Languages
 using Content.Shared.Cluwne;
 using Content.Shared.Interaction.Components;
-using Robust.Shared.Audio.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Clumsy;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Cluwne;
 

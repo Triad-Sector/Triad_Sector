@@ -3,15 +3,16 @@
   id: Hiss
   category: Vocal
   name: Hiss
-  icon: Interface/Actions/scream.png
+  icon: _Impstation/Interface/Emotes/hiss.png # Triad - change icon
   available: false
   whitelist:
     components:
     - Vocal
+    - ReptilianEmotes # Triad
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [hisses.]
+  chatMessages: ["chat-emote-msg-reptilian-hiss"] # Triad - localization
   chatTriggers:
     - hiss
     - hisses

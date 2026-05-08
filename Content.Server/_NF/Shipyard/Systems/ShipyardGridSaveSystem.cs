@@ -36,6 +36,7 @@ using Content.Shared.Containers;
 using Content.Shared.Doors.Components;
 using Content.Shared._Mono.ShipRepair.Components;
 using Robust.Shared.Collections;
+using Content.Shared.NodeContainer;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -61,8 +62,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     private ISawmill _sawmill = default!;
     private MapLoaderSystem _mapLoader = default!;
 
-    private HashSet<Entity<SpawnOnShipLoadComponent>> _spawnOnShipLoadEntities = new();
-    private HashSet<Entity<ShipSaveLimitComponent>> _limitedEntitiesList = new();
+    private readonly HashSet<Entity<SpawnOnShipLoadComponent>> _spawnOnShipLoadEntities = new();
+    private readonly HashSet<Entity<ShipSaveLimitComponent>> _limitedEntitiesList = new();
 
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
@@ -502,6 +503,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
                 if (!TryComp<ContainerFillComponent>(owner, out var containerFill) || containerFill.Containers.Count == 0)
                     return true; // To ensure airlocks that aren't prefilled don't have their door electronics deleted
             }
+            if (HasComp<NodeContainerComponent>(owner))
+                return true; // Preserve node contents, like atmos pipes' air
             if (TryComp<PoweredLightComponent>(owner, out var light) && light.HasLampOnSpawn == null)
                 return true; // Preserve lights inside tubes if they don't refill on spawn
             current = owner;

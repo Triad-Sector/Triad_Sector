@@ -27,7 +27,7 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
-    Hisses:
+    Hiss:
       collection: FelionoidHisses
     Purr:
       collection: FelionoidPurrs
@@ -77,7 +77,7 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
-    Hisses:
+    Hiss:
       collection: FelionoidHisses
     Purr:
       collection: FelionoidPurrs

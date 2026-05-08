@@ -30,7 +30,7 @@
       collection: HarpyPurrs
     HarpyRing:
       collection: HarpyRings
-    HarpyHonk:
+    Honk:
       collection: HarpyHonks
       params: # Frontier
         volume: -5 # Frontier
@@ -40,7 +40,7 @@
       collection: HarpyBangs
       params: # Frontier
         volume: -5 # Frontier
-    HarpyBeep:
+    Beep:
       collection: HarpyBeeps
     HarpyRev:
       collection: HarpyRevs
@@ -68,8 +68,6 @@
       collection: VulpkaninHowls
     Awoo:
       collection: VulpkaninHowls
-    #    Honk:
-    #      collection: BikeHorn
     Weh:
       collection: Weh
     Hew:

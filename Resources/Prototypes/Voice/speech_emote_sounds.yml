@@ -96,7 +96,7 @@
       path: /Audio/Voice/Reptilian/reptilian_scream.ogg
     Laugh:
       path: /Audio/Animals/lizard_happy.ogg
-    ReptilianHiss: # Imp
+    Hiss: # Triad
       collection: ReptilianHiss # Imp
     ReptilianSnicker: # Mono
       path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg  # Mono
@@ -126,7 +126,7 @@
       path: /Audio/Voice/Reptilian/reptilian_scream.ogg
     Laugh:
       path: /Audio/Animals/lizard_happy.ogg
-    ReptilianHiss: # Imp
+    Hiss: # Triad
       collection: ReptilianHiss # Imp
     ReptilianSnicker: # Mono
       path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg  # Mono
