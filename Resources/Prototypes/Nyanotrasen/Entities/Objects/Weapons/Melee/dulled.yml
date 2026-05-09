@@ -3,6 +3,7 @@
   suffix: Dulled
   parent: BaseItem
   id: BaseSwordDulled
+  abstract: true
   components:
   - type: Item
     size: Large
