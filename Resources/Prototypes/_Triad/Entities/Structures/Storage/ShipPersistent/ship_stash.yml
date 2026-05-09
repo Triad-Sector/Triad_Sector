@@ -75,6 +75,7 @@
           - Hypospray
           - MedicalBag
         tags:
+          - FitsInMedicalStash
           - PillCanister
           - CentrifugeCompatible
           - Syringe
@@ -85,7 +86,6 @@
           - Bottle
           - GlassBeaker
           - ChemDispensable
-          - MedicialBluespaceDeskCompatible
           - CigPack
           - Medkit
     - type: Construction
@@ -119,7 +119,7 @@
         - Produce
         - Seed
         tags:
-        - BotanicalTableCompatible
+        - FitsInBotanicalStash
         - BotanyShovel
         - BotanyHatchet
         - PlantSampleTaker
