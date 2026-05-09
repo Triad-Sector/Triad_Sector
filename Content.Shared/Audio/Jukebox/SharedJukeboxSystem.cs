@@ -9,14 +9,18 @@ public abstract class SharedJukeboxSystem : EntitySystem
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly IPrototypeManager _protoManager = default!; // wizden#42210
 
-    // wizden#42210
+    // wizden#42210 + Triad: list full jukebox catalog (wizden-style). Frontier jukeboxes may also expose
+    // extra tracks only via inserted music discs (JukeboxContainerComponent); union those when present.
     public IEnumerable<JukeboxPrototype> GetAvailableTracks(Entity<JukeboxComponent> entity)
     {
-        // Frontier: Music Discs
-        if (!TryComp<ContainerManagerComponent>(entity.Owner, out var containers))
-            return [];
+        var availableMusic = new HashSet<JukeboxPrototype>();
 
-        HashSet<JukeboxPrototype> availableMusic = new();
+        foreach (var proto in _protoManager.EnumeratePrototypes<JukeboxPrototype>())
+            availableMusic.Add(proto);
+
+        // Frontier: Music Discs (optional — many jukebox entities have no containers)
+        if (!TryComp<ContainerManagerComponent>(entity.Owner, out var containers))
+            return availableMusic;
 
         foreach (var container in containers.Containers.Values)
         {
@@ -27,13 +31,12 @@ public abstract class SharedJukeboxSystem : EntitySystem
 
                 foreach (var trackID in tracklist.Tracks)
                 {
-                    if (_protoManager.TryIndex<JukeboxPrototype>(trackID, out var track))
+                    if (_protoManager.TryIndex(trackID, out var track))
                         availableMusic.Add(track);
                 }
             }
         }
-        // End Frontier: Music Discs
-        return availableMusic; // Frontier _protoManager.EnumeratePrototypes<JukeboxPrototype>()<availableMusic
+
+        return availableMusic;
     }
-    // End wizden#42210
 }
