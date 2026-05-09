@@ -1,17 +1,20 @@
 - type: jukebox
   id: victory
-  name: Koruu Chan - Victory
+  name: Victory
+  artist: Koruu Chan
   path:
     path: /Audio/_NF/Jukebox/victory.ogg
 
 - type: jukebox
   id: lateraligator
-  name: Silverman Sound Studios - Later Alligator
+  name: Later Alligator
+  artist: Silverman Sound Studios
   path:
     path: /Audio/_NF/Jukebox/lateraligator.ogg
 
 - type: jukebox
   id: frontierarrivals
-  name: Troglodyte71 - Frontier Arrivals
+  name: Frontier Arrivals
+  artist: Troglodyte71
   path:
     path: /Audio/_NF/Jukebox/frontier-arrivals.ogg
