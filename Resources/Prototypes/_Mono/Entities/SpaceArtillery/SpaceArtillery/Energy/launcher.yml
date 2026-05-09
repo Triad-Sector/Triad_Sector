@@ -764,6 +764,8 @@
   - type: ShipRepairable
     repairTime: 25
     repairCost: 100
+  - type: SpawnOnShipLoad # Triad fix apollo
+    spawn: WeaponLaserTurretApollo
 
 # PRE- FRACTURE
 

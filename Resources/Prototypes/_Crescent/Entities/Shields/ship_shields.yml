@@ -5,3 +5,4 @@
   components:
   - type: ShipShield
   - type: ShipShieldVisuals
+  - type: SavingContraband # Triad - Prevent ship shield entities from being saved
