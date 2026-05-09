@@ -20,3 +20,8 @@
   id: TacticalSheath
   parent: TriadSwordSheathRecipe
   result: TacticalSheath
+  completetime: 3
+  materials:
+    Cloth: 800
+    Durathread: 1200
+    Plasteel: 500

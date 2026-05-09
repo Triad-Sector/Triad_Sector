@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprited by Rosef for goobstation https://github.com/Goob-Station/Goob-Station/tree/31e7e0ed3747f95c6d561aee9c4e679a3022ae64/Resources/Textures/_Goobstation/Objects/Weapons/Melee/ccsabre.rsi",
+  "copyright": "Sprited by Rosef for goobstation https://github.com/Goob-Station/Goob-Station/tree/31e7e0ed3747f95c6d561aee9c4e679a3022ae64/Resources/Textures/_Goobstation/Objects/Weapons/Melee/ccsabre.rsi, Backsprite by Wuffindy for Triad",
   "size": {
     "x": 32,
     "y": 32
@@ -16,6 +16,14 @@
     },
     {
       "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    },
+    {
+      "name": "equipped-SUITSTORAGE",
       "directions": 4
     }
   ]

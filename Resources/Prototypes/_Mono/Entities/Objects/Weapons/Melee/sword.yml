@@ -279,6 +279,7 @@
   - type: Tag # WD EDIT
     tags:
     - EnergySword
+    - UIBlade
   - type: Sharp
   - type: DisarmMalus
     malus: 0.6

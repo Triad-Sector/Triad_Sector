@@ -28,6 +28,10 @@
         "directions": 4
     },
     {
+        "name": "sheath-uiblade-equipped-BELT",
+        "directions": 4
+    },
+    {
         "name": "sheath-sword"
     },
     {
@@ -38,6 +42,9 @@
     },
     {
         "name": "sheath-sabre"
+    },
+    {
+        "name": "sheath-uiblade"
     },
     {
         "name": "sheath"

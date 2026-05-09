@@ -181,7 +181,7 @@
       types:
         Blunt: 1
   - type: Item
-    size: Tiny
+    size: Small
     sprite: Objects/Weapons/Melee/e_dagger_loud.rsi
   - type: PointLight
     enabled: false

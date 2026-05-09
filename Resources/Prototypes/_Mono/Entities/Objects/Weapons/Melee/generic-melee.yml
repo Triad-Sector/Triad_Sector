@@ -29,7 +29,7 @@
     color: red
   - type: Item
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
-    size: Normal
+    size: Large
     shape:
     - 0,0,1,2 # Triad
   - type: Clothing
