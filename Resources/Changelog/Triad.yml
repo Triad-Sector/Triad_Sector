@@ -309,3 +309,17 @@ Entries:
   id: 2169
   time: '2026-05-08T11:41:53.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/38
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix ship being invincible
+  id: 2170
+  time: '2026-05-09T09:42:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/39
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix apollo recharge bug
+  id: 2171
+  time: '2026-05-09T12:04:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/41

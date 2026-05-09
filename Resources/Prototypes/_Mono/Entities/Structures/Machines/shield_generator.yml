@@ -293,8 +293,6 @@
     toolWhitelist:
       tags:
       - ADSRepairTool
-  - type: SpawnOnShipLoad # Triad
-    spawn: ShieldGenerator
 
 # Medium-End
 - type: entity
@@ -383,8 +381,6 @@
   - type: ShipRepairable
     repairTime: 25
     repairCost: 200
-  - type: SpawnOnShipLoad # Triad
-    spawn: ShieldGeneratorMedium
 
 # Low-End
 - type: entity
@@ -472,5 +468,3 @@
   - type: ShipRepairable
     repairTime: 20
     repairCost: 125
-  - type: SpawnOnShipLoad # Triad
-    spawn: ShieldGeneratorSmall
