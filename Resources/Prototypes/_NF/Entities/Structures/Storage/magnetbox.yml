@@ -248,3 +248,12 @@
       components:
       - NFTreasure
       - NFCoin
+
+# Map compatibility: YAML maps still use legacy IDs from before nf_migration.yml renames.
+- type: entity
+  id: ConstructionBox
+  parent: NFMagnetBoxConstruction
+
+- type: entity
+  id: PlantBox
+  parent: NFMagnetBoxPlant
