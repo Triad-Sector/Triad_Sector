@@ -63,6 +63,7 @@
     sprite: Objects/Consumable/Drinks/golden_cup.rsi
   - type: StaticPrice
     price: 125
+  - type: NFTreasure # Frontier
 
 - type: entity
   parent: DrinkBaseCup

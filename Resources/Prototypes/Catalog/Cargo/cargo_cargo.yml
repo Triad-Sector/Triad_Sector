@@ -13,8 +13,18 @@
   icon:
     sprite:  /Textures/Structures/Storage/orebox.rsi
     state: orebox
-  product: OreBox
+  product: NFMagnetBoxOre # Frontier: OreBox
   cost: 1000 # Frontier - original price 500
+  category: cargoproduct-category-name-cargo
+  group: market
+
+- type: cargoProduct
+  id: CargoOreBoxFlatpack
+  icon:
+    sprite: /Textures/_NF/Objects/Devices/flatpack.rsi
+    state: engineering_lathe
+  product: OreBoxFlatpack
+  cost: 1000
   category: cargoproduct-category-name-cargo
   group: market
 

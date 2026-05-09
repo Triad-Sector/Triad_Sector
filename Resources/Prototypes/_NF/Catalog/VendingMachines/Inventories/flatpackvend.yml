@@ -34,3 +34,8 @@
     JukeboxFlatpack: 4294967295 # Infinite - Mono
     AtmosDeviceFanDirectionalFlatpack: 4294967295 # Infinite - Mono
     MaterialSiloFlatpack: 4294967295 # Infinite - Mono
+    OreBoxFlatpack: 4294967295 # Infinite - Mono (magnet boxes)
+    MaterialBoxFlatpack: 4294967295 # Infinite - Mono
+    PlantBoxFlatpack: 4294967295 # Infinite - Mono
+    RubbishBoxFlatpack: 4294967295 # Infinite - Mono
+    TreasureBoxFlatpack: 4294967295 # Infinite - Mono

@@ -215,7 +215,7 @@
   description: A flatpack used for constructing an ore box.
   components:
   - type: Flatpack
-    entity: OreBox
+    entity: NFMagnetBoxOre
   - type: StaticPrice
     price: 500
   - type: PhysicalComposition
@@ -230,7 +230,52 @@
   description: A flatpack used for constructing a construction box.
   components:
   - type: Flatpack
-    entity: ConstructionBox
+    entity: NFMagnetBoxConstruction
+  - type: StaticPrice
+    price: 500
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Glass: 30
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: PlantBoxFlatpack
+  name: plant box flatpack
+  description: A flatpack used for constructing a plant box.
+  components:
+  - type: Flatpack
+    entity: NFMagnetBoxPlant
+  - type: StaticPrice
+    price: 500
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Glass: 30
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: RubbishBoxFlatpack
+  name: dumpster flatpack
+  description: A flatpack used for constructing a dumpster.
+  components:
+  - type: Flatpack
+    entity: NFMagnetBoxRubbish
+  - type: StaticPrice
+    price: 500
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Glass: 30
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: TreasureBoxFlatpack
+  name: treasure chest flatpack
+  description: A flatpack used for constructing a treasure chest.
+  components:
+  - type: Flatpack
+    entity: NFMagnetBoxTreasure
   - type: StaticPrice
     price: 500
   - type: PhysicalComposition
