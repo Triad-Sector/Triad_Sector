@@ -72,6 +72,7 @@
   - type: Construction
     graph: GraphNFBedrollFolded
     node: NFBedrollFolded
+  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   parent: NFBedroll
