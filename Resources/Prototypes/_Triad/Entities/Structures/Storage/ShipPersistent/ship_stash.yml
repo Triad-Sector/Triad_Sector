@@ -74,6 +74,7 @@
           - Pill
           - Hypospray
           - MedicalBag
+          - HandLabeler
         tags:
           - FitsInMedicalStash
           - PillCanister
@@ -118,6 +119,7 @@
         components:
         - Produce
         - Seed
+        - HandLabeler
         tags:
         - FitsInBotanicalStash
         - BotanyShovel
