@@ -59,6 +59,8 @@
     - ConstructionBag # Mono
     - MaterialBoxFlatpack # Mono
     - OreBoxFlatpack # Mono
+    - RubbishBoxFlatpack # Mono
+    - TreasureBoxFlatpack # Mono
     - MiningDrill
     - WeaponProtoKineticAccelerator
     - ClothingNeckIFFNeutral

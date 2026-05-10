@@ -37,6 +37,8 @@ using Content.Shared.Doors.Components;
 using Content.Shared._Mono.ShipRepair.Components;
 using Robust.Shared.Collections;
 using Content.Shared.NodeContainer;
+using Content.Server.Station.Systems;
+using Content.Server._NF.ShuttleRecords;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -56,6 +58,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // HardLight
     [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
+    [Dependency] private readonly StationSystem _station = default!; // Triad
+    [Dependency] private readonly ShuttleRecordsSystem _shuttleRecords = default!; // Triad
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
@@ -117,6 +121,10 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // Also remove any other shuttle deeds that reference this shuttle
             RemoveAllShuttleDeeds(grid);
 
+            // Destroy the station on the shuttle
+            if (_station.GetOwningStation(grid) is { Valid: true } shuttleStationUid)
+                _station.DeleteStation(shuttleStationUid);
+
             // Delete the shuttle
             QueueDel(grid);
         }
@@ -124,6 +132,9 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         {
             return false;
         }
+
+        // Update all record UI (skip records, no new records)
+        _shuttleRecords.RefreshStateForAll(true);
 
         return true;
     }
@@ -138,7 +149,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
 
         while (query.MoveNext(out var entityUid, out var deed))
         {
-            if (deed.ShuttleUid != null && _entityManager.EntityExists(deed.ShuttleUid.Value) && deed.ShuttleUid.Value == shuttleUid)
+            if (deed.ShuttleUid != null && Exists(deed.ShuttleUid.Value) && deed.ShuttleUid.Value == shuttleUid)
             {
                 deedsToRemove.Add(entityUid);
             }
