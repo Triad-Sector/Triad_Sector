@@ -16,7 +16,7 @@
     wideAnimationRotation: 45
     damage:
       types:
-        Blunt: 6
+        Blunt: 6 # Triad 6 < 10
   - type: StaminaDamageOnHit
     damage: 10
   - type: Wieldable
@@ -29,7 +29,7 @@
 
 - type: entity
   name: cane blade
-  parent: BaseSword
+  parent: BaseSword # Triad - BaseSword < BaseItem
   id: CaneBlade
   description: A sharp blade with a cane shaped hilt.
   components:

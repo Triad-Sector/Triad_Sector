@@ -540,14 +540,14 @@
         whitelist:
           tags:
           - CaptainSabre
-          - Sword
+          - Sword # Triad
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
         whitelist:
           tags:
           - CaptainSabre
-      sheath-sword:
+      sheath-sword: # Triad
         whitelist:
           tags:
           - Sword

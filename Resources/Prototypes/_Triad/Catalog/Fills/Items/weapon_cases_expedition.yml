@@ -13,3 +13,14 @@
 #    - id: AmmoBox762x51mmFMJ
 #      amount: 2
 #
+
+# Melee
+- type: entity
+  parent: WeaponCaseShort
+  id: WeaponCaseShortEnergyDaggerLoudExpedition
+  suffix: Dungeon, Energy Dagger
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyDaggerLoud
+      amount: 1

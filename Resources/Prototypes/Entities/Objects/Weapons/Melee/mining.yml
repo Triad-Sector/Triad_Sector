@@ -63,7 +63,7 @@
   description: Powerful tool used to quickly drill through rocks.
   components:
   - type: Item
-    size: Normal
+    size: Normal # Triad
     storedRotation: -90
   - type: Tag
     tags:
@@ -250,29 +250,31 @@
     leech:
       groups:
         Brute: -21
+# Triad Start
   - type: MeleeWeapon
-    heavyStaminaCost: 10 # Triad
-    autoAttack: true # Mono
-    attackRate: 1.25 #Triad
+    heavyStaminaCost: 10 
+    autoAttack: true
+    attackRate: 1.25
     wideAnimationRotation: -135
     damage:
       types:
         Blunt: 5
         Slash: 10
-        Structural: 5 # Triad
+        Structural: 5
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
         Slash: 15 # Triad 15 < 5, difference between axe is more slash than blunt
         Structural: 45 # Triad 45 < 30, total of 50
+#Triad End
   - type: Tag
     tags:
     - Pickaxe
   - type: Item
-    size: Huge
-    shape: # Triad Glaive & Kanobou Shape
-    - 0,0,1,4 
+    size: Huge # Triad
+    shape: 
+    - 0,0,1,4 # Triad Glaive & Kanobou Shape
     sprite: Objects/Weapons/Melee/crusher_glaive-inhands.rsi
 # Triad Start
   - type: Clothing

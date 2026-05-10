@@ -15,7 +15,7 @@
   - type: MeleeWeapon
     heavyStaminaCost: 2 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
-    attackRate: 1.5
+    attackRate: 1.5 # Triad
     damage:
       types:
         Slash: 16

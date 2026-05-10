@@ -27,7 +27,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     state: icon
-  - type: MeleeWeapon #Removed a bunch of code since eldritch blade is now the same as claymore
+  - type: MeleeWeapon # Triad, Removed a bunch of code since eldritch blade is now the same as claymore
   - type: Item
     sprite: Objects/Weapons/Melee/cult_blade.rsi
 

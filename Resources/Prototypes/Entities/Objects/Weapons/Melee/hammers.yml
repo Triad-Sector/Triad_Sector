@@ -1,6 +1,6 @@
 - type: entity
   name: sledgehammer
-  parent: SecBreachingHammer
+  parent: SecBreachingHammer # Triad
   id: Sledgehammer
   description: The perfect tool for wanton carnage.
   components:
@@ -25,7 +25,7 @@
         Blunt: 30 # Triad increased damage by 30 from 10 so its closer to breaching hammer
         Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
-    size: Ginormous
+    size: Ginormous # Triad
     shape:
     - 0,0,3,5 # Triad 
   - type: Clothing # Triad added backsprite

@@ -231,7 +231,7 @@
   id: MetalBaseballBat
   parent: BaseBallBat
   name: metal baseball bat
-  description: A very robust and heavy metal baseball bat to kick asses. Has a nice grip.
+  description: A very robust and heavy metal baseball bat to kick asses. Has a nice grip. # Triad
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Melee/Ghetto/metal_bat.rsi

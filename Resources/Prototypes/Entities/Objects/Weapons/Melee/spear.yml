@@ -80,7 +80,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 12
+        Piercing: 12 # Triad 12 < 5
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible

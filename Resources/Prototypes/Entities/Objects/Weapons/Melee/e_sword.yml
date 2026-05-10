@@ -287,9 +287,9 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
       types:
-        Slash: 16
-        Heat: 24
-        Structural: 40
+        Slash: 16 # Triad 16 < 15
+        Heat: 24 # Triad 24 < 20
+        Structural: 40 # Triad 40  <15
     deactivatedSecret: true
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_cutlass.rsi
@@ -324,11 +324,13 @@
       path: /Audio/Weapons/ebladeoff.ogg
       params:
         volume: 3
+# Triad start
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
       params:
         volume: 3
+# Triad end
   - type: ItemToggleMeleeWeapon
     activatedSoundOnSwing:
       path: /Audio/Weapons/eblademiss.ogg

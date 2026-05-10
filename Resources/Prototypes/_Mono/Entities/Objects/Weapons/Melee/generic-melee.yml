@@ -29,7 +29,7 @@
     color: red
   - type: Item
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
-    size: Large
+    size: Large # Triad - Large < Normal
     shape:
     - 0,0,1,2 # Triad
   - type: Clothing
@@ -46,7 +46,7 @@
     - type: Execution
       doAfterDuration: 4.0
   - type: ItemToggleSize
-    activatedSize: Huge
+    activatedSize: Huge #Triad - Huge < Large
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/_Goobstation/Weapons/EswordWelder/eblade1.ogg

@@ -9,13 +9,13 @@
     sprite: Nyanotrasen/Objects/Weapons/Melee/breaching_hammer.rsi
     state: icon
   - type: Item
-    size: Ginormous
+    size: Ginormous # Triad, Ginormous < Huge
     shape:
     - 0,0,4,5 # Triad 
   - type: MeleeWeapon
     heavyStaminaCost: 15 # Triad
     attackRate: 0.5
-    wideAnimationRotation: -135
+    wideAnimationRotation: -135 # Triad
     range: 1.70
     damage:
       types:
