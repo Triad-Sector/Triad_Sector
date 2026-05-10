@@ -323,3 +323,36 @@ Entries:
   id: 2171
   time: '2026-05-09T12:04:03.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/41
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        NF magnet box variants (ore, construction, plant, rubbish, treasure)
+        with a shared RSI and migration for legacy box entities.
+    - type: Add
+      message: >-
+        Treasure magnet storage rules via NFTreasure tagging; flatpack, vending,
+        techfab, and cargo ways to get the boxes.
+  id: 2172
+  time: '2026-05-09T21:55:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/45
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Jukebox UI supports search, queue, repeat/shuffle, and artist lines on
+        tracks.
+  id: 2173
+  time: '2026-05-09T22:28:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/48
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed joining a saved shuttle's crew from the join menu bringing you to
+        a black screen
+    - type: Fix
+      message: Fixed recharging weapons not working on loaded shuttles.
+  id: 2174
+  time: '2026-05-09T23:59:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/42

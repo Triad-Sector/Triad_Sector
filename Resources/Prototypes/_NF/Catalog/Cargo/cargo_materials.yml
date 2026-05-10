@@ -30,7 +30,7 @@
   cost: 5000
   category: cargoproduct-category-name-materials
   group: market
-  
+
 - type: cargoProduct
   id: MaterialWaterTankHighCapacity
   abstract: true
@@ -45,9 +45,59 @@
 - type: cargoProduct
   id: CargoConstructionBox
   icon:
-    sprite:  /Textures/_NF/Structures/Storage/constructionbox.rsi
+    sprite:  /Textures/_NF/Structures/Storage/magnetbox.rsi
     state: constructionbox
-  product: ConstructionBox
+  product: NFMagnetBoxConstruction
+  cost: 1000
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: CargoRubbishBox
+  icon:
+    sprite:  /Textures/_NF/Structures/Storage/magnetbox.rsi
+    state: rubbishbox
+  product: NFMagnetBoxRubbish
+  cost: 1000
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: CargoTreasureBox
+  icon:
+    sprite:  /Textures/_NF/Structures/Storage/magnetbox.rsi
+    state: treasurebox-closed
+  product: NFMagnetBoxTreasure
+  cost: 1000
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: CargoConstructionBoxFlatpack
+  icon:
+    sprite: /Textures/_NF/Objects/Devices/flatpack.rsi
+    state: engineering_lathe
+  product: MaterialBoxFlatpack
+  cost: 1000
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: CargoRubbishBoxFlatpack
+  icon:
+    sprite: /Textures/_NF/Objects/Devices/flatpack.rsi
+    state: engineering_lathe
+  product: RubbishBoxFlatpack
+  cost: 1000
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: CargoTreasureBoxFlatpack
+  icon:
+    sprite: /Textures/_NF/Objects/Devices/flatpack.rsi
+    state: engineering_lathe
+  product: TreasureBoxFlatpack
   cost: 1000
   category: cargoproduct-category-name-materials
   group: market

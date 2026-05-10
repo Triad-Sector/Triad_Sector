@@ -145,6 +145,7 @@
     energy: 1
     castShadows: false
     color: "#eef066"
+  - type: NFTreasure # Frontier
 
 - type: entity
   parent: BikeHorn

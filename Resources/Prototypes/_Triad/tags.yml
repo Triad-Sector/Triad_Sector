@@ -1,5 +1,11 @@
-# PUT YOUR TAGS IN ALPHABETICAL ORDER
+# Stashes
+- type: Tag
+  id: FitsInBotanicalStash
 
+- type: Tag
+  id: FitsInMedicalStash
+  
+# Melee Weapons
 - type: Tag
   id: Cutlass
 

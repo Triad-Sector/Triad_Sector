@@ -149,6 +149,7 @@
           Off: { state: syndicate-pai-off-overlay }
           Searching: { state: syndicate-pai-searching-overlay }
           On: { state: syndicate-pai-on-overlay }
+  - type: NFTreasure # Frontier
 
 - type: entity
   parent: PersonalAI
