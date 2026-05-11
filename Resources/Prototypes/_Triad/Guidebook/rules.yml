@@ -1,0 +1,98 @@
+- type: guideEntry
+  id: TriadRuleset
+  name: guide-entry-frontier-rules
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC0.xml"
+  priority: -2
+  ruleEntry: true
+  children:
+  - TriadRuleC1
+  - TriadRuleC2
+  - TriadRuleC3
+  - TriadRuleC4
+  - TriadRuleC5
+  - TriadRuleC6
+  - TriadRuleC7
+  - TriadRuleC8
+  - TriadRuleC9
+  - TriadRuleC10
+  - TriadRuleC11
+  - TriadRuleC12
+  - TriadRuleC13
+
+- type: guideEntry
+  id: TriadRuleC1
+  name: guide-entry-section1
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC1.xml"
+  priority: 0
+
+- type: guideEntry
+  id: TriadRuleC2
+  name: guide-entry-section2
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC2.xml"
+  priority: 1
+
+- type: guideEntry
+  id: TriadRuleC3
+  name: guide-entry-section3
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC3.xml"
+  priority: 2
+
+- type: guideEntry
+  id: TriadRuleC4
+  name: guide-entry-section4
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC4.xml"
+  priority: 3
+
+- type: guideEntry
+  id: TriadRuleC5
+  name: guide-entry-section5
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC5.xml"
+  priority: 4
+
+- type: guideEntry
+  id: TriadRuleC6
+  name: guide-entry-section6
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC6.xml"
+  priority: 5
+
+- type: guideEntry
+  id: TriadRuleC7
+  name: guide-entry-section7
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC7.xml"
+  priority: 6
+
+- type: guideEntry
+  id: TriadRuleC8
+  name: guide-entry-section8
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC8.xml"
+  priority: 7
+
+- type: guideEntry
+  id: TriadRuleC9
+  name: guide-entry-section9
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC9.xml"
+  priority: 8
+
+- type: guideEntry
+  id: TriadRuleC10
+  name: guide-entry-section10
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC10.xml"
+  priority: 9
+
+- type: guideEntry
+  id: TriadRuleC11
+  name: guide-entry-section11
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC11.xml"
+  priority: 10
+
+- type: guideEntry
+  id: TriadRuleC12
+  name: guide-entry-section12
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC12.xml"
+  priority: 11
+
+- type: guideEntry
+  id: TriadRuleC13
+  name: guide-entry-section13
+  text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC13.xml"
+  priority: 12
