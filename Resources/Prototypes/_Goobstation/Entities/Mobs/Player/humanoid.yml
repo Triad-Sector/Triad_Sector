@@ -164,7 +164,7 @@
 - type: entity # mono
   parent: MobResomi
   id: MobResomiRandom
-  name: Urist McRaptor
+  name: Urist McChicken
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
