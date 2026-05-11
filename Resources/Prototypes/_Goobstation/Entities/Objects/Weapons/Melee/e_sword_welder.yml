@@ -32,6 +32,7 @@
         types:
             Slash: 8
             Heat: 22
+            Structural: 40 # Triad
   - type: ItemToggle
     soundActivate:
       path: /Audio/_Goobstation/Weapons/EswordWelder/on.ogg
@@ -72,6 +73,21 @@
   - type: Construction
     graph: WelderSword
     node: welderSword
+# Trid Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/weldingtool_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+# Trid End - Audio
 
 - type: entity
   name: welder energy sword

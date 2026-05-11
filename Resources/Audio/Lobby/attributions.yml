@@ -34,6 +34,11 @@
   copyright: "Absconditus by ZhayTee. Converted from MP3 to OGG."
   source: "https://bandcamp.zhaytee.net/track/absconditus"
 
+- files: ["singuloose.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Singuloose by Janis Schiedková. Converted from MP3 to OGG."
+  source: "https://soundcloud.com/js_m/singuloose"
+
 - files: ["in_amber_clad.ogg"]
   license: "Custom"
   copyright: "In Amber Clad by Michael Salvatori and Martin O'Donnell. ℗ Microsoft Corporation, utilized under fair use. Converted from MP3 to OGG. "

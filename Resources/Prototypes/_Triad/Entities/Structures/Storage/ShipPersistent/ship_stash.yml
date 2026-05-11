@@ -74,7 +74,9 @@
           - Pill
           - Hypospray
           - MedicalBag
+          - HandLabeler
         tags:
+          - FitsInMedicalStash
           - PillCanister
           - CentrifugeCompatible
           - Syringe
@@ -85,7 +87,6 @@
           - Bottle
           - GlassBeaker
           - ChemDispensable
-          - MedicialBluespaceDeskCompatible
           - CigPack
           - Medkit
     - type: Construction
@@ -118,8 +119,9 @@
         components:
         - Produce
         - Seed
+        - HandLabeler
         tags:
-        - BotanicalTableCompatible
+        - FitsInBotanicalStash
         - BotanyShovel
         - BotanyHatchet
         - PlantSampleTaker

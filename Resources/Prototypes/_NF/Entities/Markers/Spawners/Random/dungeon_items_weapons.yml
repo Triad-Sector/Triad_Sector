@@ -212,6 +212,7 @@
     - Claymore
     - Truncheon
     - WeaponCaseShortEnergyDaggerExpedition
+    - WeaponCaseShortEnergyDaggerLoudExpedition # Triad
     chance: 1.0
     offset: 0.0
     rarePrototypes:
@@ -306,7 +307,8 @@
     prototypes:
     - Katana
     - CaptainSabre
-    - SecBreachingHammer
+    - Kanabou # Triad
+    - Sledgehammer # Triad, chance for vanilla sledgehammer, weaker version of Sec Breaching Hammer
     - WeaponCaseShortEnergySwordExpedition
     - WeaponCaseShortEnergyCutlassExpedition
     chance: 1.0
@@ -393,6 +395,7 @@
       color: red
   - type: RandomSpawner
     prototypes:
+    - SecBreachingHammer # Triad, this one deals 300 structural on wield
     - WeaponCaseShortEnergySwordDoubleExpedition
     chance: 1.0
     offset: 0.0

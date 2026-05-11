@@ -24,16 +24,33 @@
     baseLayer: base
     layerStates:
     - cash
-    - cash_10
+    - cash_25
+    - cash_50
+    - cash_75
     - cash_100
+    - cash_250
     - cash_500
+    - cash_750
     - cash_1000
+    - cash_2500
     - cash_5000 # Frontier: larger denominations
+    - cash_7500
     - cash_10000 # Frontier: larger denominations
     - cash_25000 # Frontier: larger denominations
     - cash_50000 # Frontier: larger denominations
+    - cash_75000
     - cash_100000 # Frontier: larger denominations
     - cash_250000 # Frontier: larger denominations (cash_1000000<cash_250000)
+    - cash_500000
+    - cash_750000
+    - cash_1000000
+    - cash_2500000
+    - cash_5000000
+    - cash_10000000
+    - cash_25000000
+    - cash_50000000
+    - cash_75000000
+    - cash_ultra
     layerFunction: Threshold # Frontier: multicolour cash
   # cherry-pick from space-station#32938 courtesy of Ilya246
   - type: UserInterface
@@ -42,7 +59,7 @@
         type: StackCustomSplitBoundUserInterface
   # end cherry-pick from ss#32938
   - type: StackLayerThreshold # Frontier
-    thresholds: [10, 100, 500, 1000, 5000, 10000, 25000, 50000, 100000, 250000] # Frontier
+    thresholds: [25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000, 250000, 500000, 750000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 75000000, 100000000] # Frontier
   - type: Sprite
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: larger denominations
     state: cash
@@ -86,7 +103,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_10
+    state: cash
   - type: Stack
     count: 10
 
@@ -130,7 +147,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_1000
+    state: cash_2500
   - type: Stack
     count: 2500
 
@@ -141,7 +158,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_5000 # Frontier: cash_1000<cash_5000
+    state: cash_5000
   - type: Stack
     count: 5000
 
@@ -152,7 +169,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_5000 # Frontier: cash_1000<cash_5000
+    state: cash_7500
   - type: Stack
     count: 7500
 
@@ -163,7 +180,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_10000 # Frontier: cash_1000<cash_10000
+    state: cash_10000
   - type: Stack
     count: 10000
 
@@ -174,7 +191,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_10000 # Frontier: cash_1000<cash_10000
+    state: cash_10000
   - type: Stack
     count: 20000
 
@@ -185,7 +202,7 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_25000 # Frontier: cash_1000<cash_25000
+    state: cash_25000
   - type: Stack
     count: 30000
 
@@ -196,6 +213,6 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_250000 # Frontier: cash_1000000<cash_250000
+    state: cash_1000000
   - type: Stack
     count: 1000000

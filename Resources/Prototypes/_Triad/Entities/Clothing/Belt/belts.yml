@@ -1,0 +1,102 @@
+- type: entity
+  parent: ClothingBeltSheath
+  id: LeatherSheath
+  name: leather sheath
+  description: A bulky leather sheath designed to hold most traditional swords.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/leathersheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/leathersheath.rsi
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,1,2
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sword
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - Sword
+          - Katana
+          - Machete
+          - CaptainSabre
+          - Cutlass
+  - type: ItemMapper
+    mapLayers:
+      sheath-sword:
+        whitelist:
+          tags:
+          - Sword
+      sheath-katana:
+        whitelist:
+          tags:
+          - Katana
+      sheath-machete:
+        whitelist:
+          tags:
+          - Machete
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainSabre
+          - Cutlass
+  - type: Appearance
+
+- type: entity
+  parent: LeatherSheath
+  id: TacticalSheath
+  name: tactical sheath
+  description: A sleek tactical sheath designed to fit more types of blade. #if more sword is going to be added, feel free to add more version
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/tacticalsheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/tacticalsheath.rsi
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sword
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - Sword
+          - Katana
+          - Machete
+          - CaptainSabre
+          - Cutlass
+          - UIBlade
+  - type: ItemMapper
+    mapLayers:
+      sheath-sword:
+        whitelist:
+          tags:
+          - Sword
+      sheath-katana:
+        whitelist:
+          tags:
+          - Katana
+      sheath-machete:
+        whitelist:
+          tags:
+          - Machete
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainSabre
+          - Cutlass
+      sheath-uiblade:
+        whitelist:
+          tags:
+          - UIBlade
+  - type: Appearance

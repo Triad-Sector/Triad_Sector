@@ -1,7 +1,47 @@
+#Triad Start
+- type: entity
+  suffix: Dulled
+  parent: BaseItem
+  id: BaseSwordDulled
+  abstract: true
+  components:
+  - type: Item
+    size: Large
+  - type: MeleeWeapon
+    heavyStaminaCost: 8 # Triad
+    attackRate: 1.1 # Triad
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
+
 - type: entity
   name: katana
   suffix: Dulled
-  parent: BaseItem
+  parent: BaseSwordDulled # Triad
   id: KatanaDulled
   description: Ancient craftwork made with not so ancient plasteel. This one has been dulled.
   components:
@@ -17,28 +57,31 @@
         Blunt: 5
         Slash: 1
   - type: Item
-    size: Normal
+    sprite: Objects/Weapons/Melee/katana.rsi 
+  - type: Clothing # Triad added clothing
     sprite: Objects/Weapons/Melee/katana.rsi
 
 - type: entity
   name: claymore
   suffix: Dulled
-  parent: BaseItem
+  parent: BaseSwordDulled # Triad
   id: ClaymoreDulled
-  description: An ancient war blade. This one has been dulled.
+  description: A bulky ancient war blade. This one has been dulled. # Triad, added "Bulky"
   components:
+  - type: Tag # Triad
+    tags: 
+    - LongBlade
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
     state: icon
   - type: MeleeWeapon
-    attackRate: 0.75
+    heavyStaminaCost: 15 # Triad
+    attackRate: 0.6 # Triad similar to claymore
     damage:
       types:
-        Blunt: 6
+        Blunt: 7 # Triad 7 < 6
         Slash: 1
   - type: Item
-    size: Normal
+    sprite: Objects/Weapons/Melee/claymore.rsi  
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
-    slots:
-    - back

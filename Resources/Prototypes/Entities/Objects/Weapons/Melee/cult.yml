@@ -1,21 +1,17 @@
 - type: entity
   name: ritual dagger
-  parent: BaseItem
+  parent: BaseKnife # Change to BaseKnife cause why not - cannot throw
   id: RitualDagger
   description: A strange dagger used by sinister groups for rituals and sacrifices.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_dagger.rsi
     state: icon
   - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 1.5
     damage:
       types:
         Slash: 24
   - type: Item
-    size: Normal
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_dagger.rsi
     slots:
@@ -24,66 +20,53 @@
 
 - type: entity
   name: eldritch blade
-  parent: BaseItem
+  parent: Claymore # Triad Change to Claymore
   id: EldritchBlade
-  description: A sword humming with unholy energy.
+  description: A Large sword humming with unholy energy.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     state: icon
-  - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 0.75
-    damage:
-      types:
-        Slash: 38
-    soundHit: # Mono nearly forgot, this weapon makes no noise so i gave it the slash sound, i had been planning on adding this but i forgot until i re-opened the file
-      collection: MetalThud
+  - type: MeleeWeapon # Triad, Removed a bunch of code since eldritch blade is now the same as claymore
   - type: Item
-    size: Large # Mono Increased from normal to large to make damage make more sense
-  - type: Clothing
     sprite: Objects/Weapons/Melee/cult_blade.rsi
-    slots:
-    - back
-  - type: DisarmMalus
 
 - type: entity
   name: unholy halberd
-  parent: BaseItem
+  parent: FireAxe # Triad Change to FireAxe for references, and execute
   id: UnholyHalberd
   description: A poleaxe that seems to be linked to its wielder.
   components:
   - type: Tag
-    tags:
-    - FireAxe
-  - type: Sharp
+    tags: []
   - type: Sprite
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
     state: icon
   - type: MeleeWeapon
+    angle: 90 # Triad
+    range: 1.8 # Triad
     wideAnimationRotation: -135
-    attackRate: 0.75
+    swingLeft: false
+    attackRate: 0.5 # Triad 0.5 < 0.75 
     damage:
       types:
-        Blunt: 10
+        Blunt: 5 #Triad 5 < 10
         Slash: 10
-        Structural: 5
+        Structural: 20 #Triad 20 < 10
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
-        Slash: 15
-        Structural: 30 # Mono increased from 10 to 30 to be even remotely useable as a structural weapon
-  - type: Item
-    size: Huge # Mono decreased size from Ginormous to Huge to be mildly more usable
+        Blunt: 5 # Triad 5 < 10, blunt can only do so much, slash go br
+        Slash: 30 # Triad 30 < 15, increased damage compensate speed
+        Structural: 80 # Triad 80 < 30, High structural compensate with slower attack rate
+  - type: ClothingSpeedModifier # Triad added movement related on held
+    walkModifier: 1
+    sprintModifier: 0.9
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.9
+    sprintModifier: 0.7
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_halberd.rsi
-    quickEquip: false
-    slots:
-    - back
-  - type: UseDelay
-    delay: 1

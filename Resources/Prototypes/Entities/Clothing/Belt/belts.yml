@@ -525,8 +525,10 @@
     state: sheath
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
-    #- type: Item # Frontier
-    #size: Ginormous # Frontier
+  - type: Item # Triad
+    size: Large # Triad, Large but has Normal size
+    shape:
+    - 0,0,1,1
   - type: ItemSlots
     slots:
       item:
@@ -538,12 +540,17 @@
         whitelist:
           tags:
           - CaptainSabre
+          - Sword # Triad
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
         whitelist:
           tags:
           - CaptainSabre
+      sheath-sword: # Triad
+        whitelist:
+          tags:
+          - Sword
   - type: Appearance
 
 # Belts without visualizers

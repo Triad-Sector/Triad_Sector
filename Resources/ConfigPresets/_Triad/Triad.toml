@@ -45,7 +45,7 @@ min_players_sharing_connection = 2
 
 [server]
 id = "Triad"
-rules_file = "FrontierRuleset"
+rules_file = "TriadRuleset"
 uptime_restart_minutes = 0
 
 [discord]

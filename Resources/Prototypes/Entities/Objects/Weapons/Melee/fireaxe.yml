@@ -1,4 +1,5 @@
 - type: entity
+  suffix: Axe # Triad
   name: fireaxe
   parent: BaseItem
   id: FireAxe
@@ -17,14 +18,14 @@
     heavyStaminaCost: 15 # goob edit
     wideAnimationRotation: 135
     swingLeft: true
-    attackRate: 0.75
+    attackRate: 0.6 # Triad 0.6 < 0.75 
     damage:
       types:
         # axes are kinda like sharp hammers, you know?
         Slash: 20
-        Structural: 10
+        Structural: 20
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg # Triad, change to slice
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -32,7 +33,9 @@
         Slash: 25
         Structural: 40
   - type: Item
-    size: Ginormous
+    size: Huge #Triad Huge < Ginormous
+    shape:
+    - 0,0,2,3 # Triad Axe size, slightly bigger than sword
   - type: Clothing
     sprite: Objects/Weapons/Melee/fireaxe.rsi
     quickEquip: false
@@ -51,13 +54,31 @@
     stealGroup: FireAxe
   - type: IgniteOnMeleeHit
     fireStacks: -4
-  - type: Scalpel # Shitmed
-    speed: 0.3
-  - type: BoneSaw # Shitmed
-    speed: 0.5
-  - type: SurgeryTool # Shitmed
-    startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
+# Triad Disabled Axe Shitmed stuff
+  # - type: Scalpel # Shitmed
+  #   speed: 0.3
+  # - type: BoneSaw # Shitmed
+  #   speed: 0.5
+  # - type: SurgeryTool # Shitmed
+  #   startSound:
+  #     path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
 
 - type: entity
   id: FireAxeFlaming
@@ -66,7 +87,6 @@
   description: Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
   components:
   - type: MeleeWeapon
-    wideAnimationRotation: 90
   - type: IgniteOnMeleeHit
     fireStacks: 1
   - type: Sprite
@@ -74,7 +94,3 @@
     state: icon
   - type: Clothing
     sprite: Objects/Weapons/Melee/fireaxeflaming.rsi
-    quickEquip: false
-    slots:
-    - back
-    - suitStorage

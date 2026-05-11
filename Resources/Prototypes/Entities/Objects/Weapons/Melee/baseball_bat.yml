@@ -8,22 +8,22 @@
     sprite: Objects/Weapons/Melee/baseball_bat.rsi
     state: icon
   - type: MeleeWeapon
-    heavyStaminaCost: 15 # goob edit
+    heavyStaminaCost: 8 # Triad edit
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 15
-        Structural: 5
+        Blunt: 16 # Triad 16 < 15
+        Structural: 12 # Triad 12 < 5
     soundHit:
       collection: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
-        Structural: 10
+        Blunt: 10 # Triad 10 < 15
+        Structural: 12 # Triad 12 < 5
   - type: Item
-    size: Normal
+    size: Large # Triad Large < Normal
   - type: Tool
     qualities:
     - Rolling
@@ -44,6 +44,21 @@
   - type: Tag
     tags:
     - BaseballBat
+# Triad Start - Audio TO DO,find better audios
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wooden_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/other/Cup/drop.ogg
+      params:
+        volume: -2
+  # - type: EmitSoundOnLand
+  #   sound:
+  #     path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+# Triad End - Audio
 
 - type: entity
   name: incomplete baseball bat

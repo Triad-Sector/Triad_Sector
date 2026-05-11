@@ -1,6 +1,6 @@
 - type: entity
   name: sledgehammer
-  parent: BaseItem
+  parent: SecBreachingHammer # Triad
   id: Sledgehammer
   description: The perfect tool for wanton carnage.
   components:
@@ -8,21 +8,28 @@
     sprite: Objects/Weapons/Melee/sledgehammer.rsi
     state: icon
   - type: MeleeWeapon
-    wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 10
-        Structural: 10
-    soundHit:
-      collection: MetalThud
+        Blunt: 15 #Triad 20 < 10, low damage cause it would be too heavy to swing
+        Structural: 40 #Triad 40 < 10
+  - type: SpeedModifiedOnWield # Mono
+    walkModifier: 0.9
+    sprintModifier: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.9
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15 # Mono increased damage from 10 to 15 so its no longer worse than a combat knife
-        Structural: 30 # Mono increased damage from 10 to 30 so its actually usable as a structural weapon
+        Blunt: 30 # Triad increased damage by 30 from 10 so its closer to breaching hammer
+        Structural: 80 # Triad increased damage by 100 from 10 so its actually usable as a structural weapon
   - type: Item
-    size: Large
+    size: Ginormous # Triad
+    shape:
+    - 0,0,3,5 # Triad 
+  - type: Clothing # Triad added backsprite
+    sprite: Objects/Weapons/Melee/sledgehammer.rsi
 
 - type: entity
   id: Mjollnir

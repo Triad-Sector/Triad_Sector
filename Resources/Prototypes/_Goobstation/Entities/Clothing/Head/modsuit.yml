@@ -51,11 +51,11 @@
     - type: IdentityBlocker
     - type: IngestionBlocker
     - type: HideLayerClothing
-      slots:
-      - Hair
-      - Snout
-      - HeadTop
-      - HeadSide
+      layers:
+        Hair: HEAD
+        Snout: HEAD
+        HeadTop: HEAD
+        HeadSide: HEAD
   - type: Battery
     maxCharge: 600 #lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
     startingCharge: 600

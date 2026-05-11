@@ -75,6 +75,9 @@
   - WeaponCaseHeavyAmmo #Mono
   - WeaponCaseShortAmmo
   - WeaponCaseShortExplosives
+## Sheath
+  - LeatherSheath # Triad
+  - TacticalSheath # Triad
 ## Weapons
   - CombatKnife
   - WeaponLaserSvalinn # After the changes made to windows shouldn't be that much of an issue now if it's widely available

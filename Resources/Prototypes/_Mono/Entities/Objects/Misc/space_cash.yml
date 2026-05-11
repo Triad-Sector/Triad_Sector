@@ -16,6 +16,6 @@
   components:
   - type: Icon
     sprite: _NF/Objects/Economy/cash.rsi # Frontier: use Frontier sprite set
-    state: cash_50000
+    state: cash_75000
   - type: Stack
     count: 75000

@@ -29,7 +29,9 @@
     color: red
   - type: Item
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
-    size: Normal
+    size: Large # Triad - Large < Normal
+    shape:
+    - 0,0,1,2 # Triad
   - type: Clothing
     sprite: _Mono/Objects/Weapons/Melee/honormace.rsi
     slots:
@@ -44,7 +46,7 @@
     - type: Execution
       doAfterDuration: 4.0
   - type: ItemToggleSize
-    activatedSize: Large
+    activatedSize: Huge #Triad - Huge < Large
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/_Goobstation/Weapons/EswordWelder/eblade1.ogg
@@ -65,7 +67,7 @@
         Heat: 25
         Structural: 150
   - type: MeleeWeapon
-    heavyStaminaCost: 1
+    heavyStaminaCost: 5 # Triad
     wideAnimationRotation: -135
     attackRate: 1
     damage:
@@ -84,3 +86,20 @@
     - "#FFFFFF85"
     activatedColor: "#FFFFFF85"
     blockHacking: true
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio

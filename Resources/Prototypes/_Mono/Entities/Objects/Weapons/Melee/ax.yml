@@ -36,7 +36,7 @@
     - type: RadiationSource
       enabled: true
   - type: ItemToggleSize
-    activatedSize: Large
+    activatedSize: Huge # Triad Huge < Large
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Weapons/eblade1.ogg
@@ -54,21 +54,38 @@
     activatedDamage:
       types:
         Slash: 20
-        Radiation: 20
-        Heat: 5
-        Structural: 45
+        Radiation: 12 # Triad 12 < 20
+        Heat: 8 # Triad 8 < 5
+        Structural: 40 # Triad 40 < 20
   - type: MeleeWeapon
-    heavyStaminaCost: 3
+    heavyStaminaCost: 12
     wideAnimationRotation: 135
     swingLeft: true
     attackRate: .90
     damage:
       types:
-        Slash: 20
-        Radiation: 10
+        Slash: 15 # Triad 15 < 20
+        Radiation: 5 # Triad 5 < 10
         Structural: 40
   - type: Sharp
   - type: DisarmMalus
     malus: 0.6
   - type: Execution
-    doAfterDuration: 3.0
+    doAfterDuration: 4.0 # Triad 4 < 3
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
