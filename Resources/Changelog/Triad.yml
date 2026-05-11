@@ -356,3 +356,10 @@ Entries:
   id: 2174
   time: '2026-05-09T23:59:23.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/42
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Bedrolls are now saved with ships.
+  id: 2175
+  time: '2026-05-11T00:14:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/56
