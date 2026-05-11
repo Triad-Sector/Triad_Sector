@@ -45,10 +45,9 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: DamageOtherOnHit
-    ignoreResistances: true # Triad, if a throwing knife can do it, surely a spear can
     damage:
       types:
-        Piercing: 30 # Triad 30 < 25
+        Piercing: 32 # Triad 32 < 25
   - type: Item
     size: Huge # Triad Huge < Ginormous
     shape:
@@ -152,10 +151,9 @@
       types:
         Piercing: 18
   - type: DamageOtherOnHit
-    ignoreResistances: true # Triad
     damage:
       types:
-        Piercing: 32 # Triad
+        Piercing: 36 # Triad
   - type: Construction
     graph: SpearReinforced
 
@@ -173,7 +171,6 @@
       types:
         Piercing: 21
   - type: DamageOtherOnHit
-    ignoreResistances: true # Triad
     damage:
       types:
         Piercing: 36 # Triad
@@ -195,11 +192,10 @@
         Piercing: 15
         Radiation: 8
   - type: DamageOtherOnHit
-    ignoreResistances: true # Triad
     damage:
       types:
-        Piercing: 20 # Triad
-        Radiation: 12 # Triad
+        Piercing: 28 # Triad
+        Radiation: 8 # Triad
   - type: Construction
     graph: SpearUranium
 

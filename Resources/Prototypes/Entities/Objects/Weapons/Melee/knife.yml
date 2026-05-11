@@ -342,12 +342,11 @@
     sound: /Audio/Weapons/star_hit.ogg
     offset: -0.15,0.0
   - type: LandAtCursor
-  - type: DamageOtherOnHit
-    ignoreResistances: true
+  - type: DamageOtherOnHit # Triad, remove IgnoreResistances
     damage:
       types:
-        Slash: 10
-        Piercing: 20
+        Slash: 8 # Triad 8 < 10
+        Piercing: 24 # Triad 24 < 20
   - type: Item
     sprite: Objects/Weapons/Melee/throwing_knife.rsi
   - type: ThrowingAngle
