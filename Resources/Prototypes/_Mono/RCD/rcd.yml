@@ -62,3 +62,60 @@
   collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDConstruct2
+
+# Diagonal hull plating (HardLightSector/HardLight#1153)
+- type: rcd
+  id: PlatingNE
+  name: rcd-component-plating-ne
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/ne.png
+  mode: ConstructTile
+  prototype: PlatingCornerNE
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: PlatingNW
+  name: rcd-component-plating-nw
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/nw.png
+  mode: ConstructTile
+  prototype: PlatingCornerNW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: PlatingSE
+  name: rcd-component-plating-se
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/se.png
+  mode: ConstructTile
+  prototype: PlatingCornerSE
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: PlatingSW
+  name: rcd-component-plating-sw
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/sw.png
+  mode: ConstructTile
+  prototype: PlatingCornerSW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1

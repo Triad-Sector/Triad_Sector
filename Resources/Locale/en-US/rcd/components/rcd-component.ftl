@@ -45,3 +45,7 @@ rcd-component-lighting = Lighting
 rcd-component-deconstruct = deconstruct
 rcd-component-floor-steel = steel tile
 rcd-component-plating = hull plate
+rcd-component-plating-ne = NE hull plate
+rcd-component-plating-nw = NW hull plate
+rcd-component-plating-se = SE hull plate
+rcd-component-plating-sw = SW hull plate

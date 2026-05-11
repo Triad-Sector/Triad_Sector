@@ -143,7 +143,7 @@ public class RCDSystem : EntitySystem
 
         var gridUid = _transform.GetGrid(location);
 
-        if (!TryGetMapGridData(location, out var mapGridData))
+        if (!TryGetMapGridData(location, user, out var mapGridData))
         {
             _popup.PopupClient(Loc.GetString("rcd-component-no-valid-grid"), uid, user);
             return;
@@ -217,7 +217,13 @@ public class RCDSystem : EntitySystem
         _transform.SetParent(effect, gridData.GridUid);
         _transform.SetLocalPositionNoLerp(effect, gridData.Position + new Vector2(0.5f, 0.5f));
         // </Mono>
-        var ev = new RCDDoAfterEvent(GetNetCoordinates(mapGridData.Value.Location), component.ConstructionDirection, component.ProtoId, cost, EntityManager.GetNetEntity(effect));
+        var ev = new RCDDoAfterEvent(
+            GetNetCoordinates(mapGridData.Value.Location),
+            GetNetEntity(mapGridData.Value.GridUid),
+            component.ConstructionDirection,
+            component.ProtoId,
+            cost,
+            EntityManager.GetNetEntity(effect));
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: args.Target, used: uid) // Mono - add delay multiplier.
         {
@@ -248,10 +254,7 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        // Ensure the RCD operation is still valid
-        var location = GetCoordinates(args.Event.Location);
-
-        var gridUid = _transform.GetGrid(location);
+        var gridUid = GetEntity(args.Event.TargetGridId);
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
         {
@@ -259,13 +262,12 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!TryGetMapGridData(location, out var mapGridData))
-        {
-            args.Cancel();
-            return;
-        }
+        var location = GetCoordinates(args.Event.Location);
+        var tile = _mapSystem.GetTileRef(gridUid, mapGrid, location);
+        var position = _mapSystem.TileIndicesFor(gridUid, mapGrid, location);
+        var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Event.Target, args.Event.User))
+        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Event.Target, args.Event.User))
             args.Cancel();
     }
 
@@ -279,17 +281,22 @@ public class RCDSystem : EntitySystem
 
         args.Handled = true;
 
-        var location = GetCoordinates(args.Location);
+        var gridUid = GetEntity(args.TargetGridId);
 
-        if (!TryGetMapGridData(location, out var mapGridData))
+        if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
             return;
 
+        var location = GetCoordinates(args.Location);
+        var tile = _mapSystem.GetTileRef(gridUid, mapGrid, location);
+        var position = _mapSystem.TileIndicesFor(gridUid, mapGrid, location);
+        var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
+
         // Ensure the RCD operation is still valid
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User))
+        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Target, args.User))
             return;
 
         // Finalize the operation
-        FinalizeRCDOperation(uid, component, mapGridData.Value, args.Direction, args.Target, args.User);
+        FinalizeRCDOperation(uid, component, mapGridData, args.Direction, args.Target, args.User);
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -583,22 +590,41 @@ public class RCDSystem : EntitySystem
 
     public bool TryGetMapGridData(EntityCoordinates location, [NotNullWhen(true)] out MapGridData? mapGridData)
     {
+        return TryGetMapGridData(location, null, out mapGridData);
+    }
+
+    /// <summary>
+    /// Resolves grid and tile for an RCD click. If <paramref name="user"/> is set and the click is not on a grid
+    /// (e.g. open space off the edge of a shuttle), falls back to the grid the user is standing on so hull plating
+    /// can target vacuum tiles from a valid grid.
+    /// </summary>
+    public bool TryGetMapGridData(EntityCoordinates location, EntityUid? user, [NotNullWhen(true)] out MapGridData? mapGridData)
+    {
         mapGridData = null;
-        var gridUid = _transform.GetGrid(location);
+        var resolvedLocation = location;
+        var gridUid = _transform.GetGrid(resolvedLocation);
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
         {
-            location = location.AlignWithClosestGridTile(1.75f, EntityManager);
-            gridUid = _transform.GetGrid(location);
+            resolvedLocation = location.AlignWithClosestGridTile(1.75f, EntityManager);
+            gridUid = _transform.GetGrid(resolvedLocation);
 
-            // Check if we got a grid ID the second time round
             if (!TryComp(gridUid, out mapGrid))
-                return false;
+            {
+                if (user == null)
+                    return false;
+
+                gridUid = _transform.GetGrid(user.Value);
+                if (!TryComp(gridUid, out mapGrid))
+                    return false;
+
+                resolvedLocation = location;
+            }
         }
 
-        var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
-        var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
-        mapGridData = new MapGridData(gridUid.Value, mapGrid, location, tile, position);
+        var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, resolvedLocation);
+        var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, resolvedLocation);
+        mapGridData = new MapGridData(gridUid.Value, mapGrid, resolvedLocation, tile, position);
 
         return true;
     }
@@ -638,6 +664,9 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
     [DataField(required: true)]
     public NetCoordinates Location { get; private set; } = default!;
 
+    [DataField(required: true)]
+    public NetEntity TargetGridId { get; private set; } = default!;
+
     [DataField]
     public Direction Direction { get; private set; } = default!;
 
@@ -652,9 +681,16 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
 
     private RCDDoAfterEvent() { }
 
-    public RCDDoAfterEvent(NetCoordinates location, Direction direction, ProtoId<RCDPrototype> startingProtoId, int cost, NetEntity? effect = null)
+    public RCDDoAfterEvent(
+        NetCoordinates location,
+        NetEntity targetGridId,
+        Direction direction,
+        ProtoId<RCDPrototype> startingProtoId,
+        int cost,
+        NetEntity? effect = null)
     {
         Location = location;
+        TargetGridId = targetGridId;
         Direction = direction;
         StartingProtoId = startingProtoId;
         Cost = cost;

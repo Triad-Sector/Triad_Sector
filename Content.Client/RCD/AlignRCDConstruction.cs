@@ -97,7 +97,7 @@ public sealed class AlignRCDConstruction : PlacementMode
             return false;
 
         // Retrieve the map grid data for the position
-        if (!_rcdSystem.TryGetMapGridData(position, out var mapGridData))
+        if (!_rcdSystem.TryGetMapGridData(position, player, out var mapGridData))
             return false;
 
         // Determine if the user is hovering over a target
