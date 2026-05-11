@@ -1,0 +1,10 @@
+# Radial menu icons ported from HardLight (PR #1237, commit 4f34fb371954be37c57b9ad20992fa6cfb0b739f).
+- files:
+    - "shuttlewindow.png"
+    - "shuttlewindowdiagonal.png"
+    - "shuttlewalldiag.png"
+    - "reinfwalldiag.png"
+    - "solidwalldiag.png"
+  license: "CC-BY-SA-3.0"
+  copyright: "AutumnalModding for HardLight Station"
+  source: "https://github.com/HardLightSector/HardLight/pull/1237"

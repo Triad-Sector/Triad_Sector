@@ -34,6 +34,11 @@ using System.Numerics;
 
 namespace Content.Shared.RCD.Systems;
 
+/// <summary>
+/// Shared RCD rules, do-after, and placement. Triad fork adds <see cref="GetConstructTileTypeId"/> (direction-mapped
+/// tiles), <see cref="MapGridData"/> / off-grid hull targeting, and the duplicate-entity check aligned with
+/// space-wizards#42556 (<see cref="RCDPrototype"/> <c>AllowMultiDirection</c>). See Resources/Prototypes/_Mono/RCD/README.md.
+/// </summary>
 [Virtual]
 public class RCDSystem : EntitySystem
 {
@@ -452,6 +457,27 @@ public class RCDSystem : EntitySystem
 
         foreach (var ent in _intersectingEntities)
         {
+            // space-wizards/space-station-14#42556 — block spamming the same entity on one tile (e.g. lights);
+            // AllowMultiDirection permits one per cardinal direction (directional windows, diagonals, etc.).
+            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            {
+                var isIdentical = true;
+                if (prototype.AllowMultiDirection)
+                {
+                    var entDirection = Transform(ent).LocalRotation.GetCardinalDir();
+                    if (entDirection != component.ConstructionDirection)
+                        isIdentical = false;
+                }
+
+                if (isIdentical)
+                {
+                    if (popMsgs)
+                        _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-entity"), uid, user);
+
+                    return false;
+                }
+            }
+
             if (isWindow && HasComp<SharedCanBuildWindowOnTopComponent>(ent))
                 continue;
 
@@ -616,6 +642,8 @@ public class RCDSystem : EntitySystem
 
     /// <summary>
     /// Resolves which floor tile id an RCD <see cref="RcdMode.ConstructTile"/> recipe will place for the given direction.
+    /// Fork: used with <see cref="RCDPrototype.ConstructTileByDirection"/>; keep in sync when merging upstream RCD tile
+    /// validation (e.g. baseWhitelist / tile history from space-wizards#42556 family).
     /// </summary>
     public string GetConstructTileTypeId(RCDPrototype prototype, Direction direction)
     {
