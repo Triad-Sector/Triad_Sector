@@ -385,10 +385,7 @@
     - AirlockGlassShuttle
     - SMES
     - Substation
-    - PlatingNE
-    - PlatingNW
-    - PlatingSE
-    - PlatingSW
+    - PlatingDiagonal
     delayMultiplier: 0.65 # Mono
   - type: LimitedCharges
     maxCharges: 125 # mono 30 -> 125

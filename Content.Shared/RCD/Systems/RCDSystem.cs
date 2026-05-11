@@ -118,9 +118,17 @@ public class RCDSystem : EntitySystem
         {
             var name = Loc.GetString(prototype.SetName);
 
-            if (prototype.Prototype != null &&
-                _protoManager.TryIndex(prototype.Prototype, out var proto))
+            if (prototype.Mode == RcdMode.ConstructTile)
+            {
+                var tileId = GetConstructTileTypeId(prototype, component.ConstructionDirection);
+                if (_tileDefMan.TryGetDefinition(tileId, out var tileDef))
+                    name = Loc.GetString(tileDef.Name);
+            }
+            else if (prototype.Prototype != null &&
+                     _protoManager.TryIndex(prototype.Prototype, out var proto))
+            {
                 name = proto.Name;
+            }
 
             msg = Loc.GetString("rcd-component-examine-build-details", ("name", name));
         }
@@ -149,7 +157,8 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User))
+        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
+                tilePlacementDirection: component.ConstructionDirection))
             return;
 
         if (!_net.IsServer)
@@ -267,7 +276,8 @@ public class RCDSystem : EntitySystem
         var position = _mapSystem.TileIndicesFor(gridUid, mapGrid, location);
         var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Event.Target, args.Event.User))
+        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Event.Target, args.Event.User,
+                tilePlacementDirection: args.Event.Direction))
             args.Cancel();
     }
 
@@ -292,7 +302,8 @@ public class RCDSystem : EntitySystem
         var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
 
         // Ensure the RCD operation is still valid
-        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Target, args.User))
+        if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Target, args.User,
+                tilePlacementDirection: args.Direction))
             return;
 
         // Finalize the operation
@@ -327,9 +338,11 @@ public class RCDSystem : EntitySystem
 
     #region Entity construction/deconstruction rule checks
 
-    public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid? target, EntityUid user, bool popMsgs = true)
+    public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid? target, EntityUid user, bool popMsgs = true,
+        Direction? tilePlacementDirection = null)
     {
         var prototype = _protoManager.Index(component.ProtoId);
+        var tileDir = tilePlacementDirection ?? component.ConstructionDirection;
 
         // Check that the RCD has enough ammo to get the job done
         var charges = _sharedCharges.GetCurrentCharges(uid);
@@ -362,7 +375,7 @@ public class RCDSystem : EntitySystem
         // Return whether the operation location is valid
         switch (prototype.Mode)
         {
-            case RcdMode.ConstructTile: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs);
+            case RcdMode.ConstructTile: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs, tileDir);
             case RcdMode.ConstructObject: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs);
             case RcdMode.Deconstruct: return IsDeconstructionStillValid(uid, component, mapGridData, target, user, popMsgs);
         }
@@ -370,7 +383,8 @@ public class RCDSystem : EntitySystem
         return false;
     }
 
-    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true)
+    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
+        Direction? tilePlacementDirection = null)
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
@@ -414,7 +428,8 @@ public class RCDSystem : EntitySystem
             }
 
             // Check rule: Tiles can't be identical
-            if (mapGridData.Tile.Tile.GetContentTileDefinition().ID == prototype.Prototype)
+            var placeTileId = GetConstructTileTypeId(prototype, tilePlacementDirection ?? component.ConstructionDirection);
+            if (mapGridData.Tile.Tile.GetContentTileDefinition().ID == placeTileId)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-tile"), uid, user);
@@ -541,9 +556,15 @@ public class RCDSystem : EntitySystem
         switch (prototype.Mode)
         {
             case RcdMode.ConstructTile:
-                _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, new Tile(_tileDefMan[prototype.Prototype].TileId));
-                _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} {mapGridData.Position} to {prototype.Prototype}");
+            {
+                var tileTypeId = GetConstructTileTypeId(prototype, direction);
+                if (string.IsNullOrEmpty(tileTypeId) || !_tileDefMan.TryGetDefinition(tileTypeId, out var tileDef))
+                    return;
+
+                _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, new Tile(tileDef.TileId));
+                _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} {mapGridData.Position} to {tileTypeId}");
                 break;
+            }
 
             case RcdMode.ConstructObject:
                 var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
@@ -591,6 +612,21 @@ public class RCDSystem : EntitySystem
     public bool TryGetMapGridData(EntityCoordinates location, [NotNullWhen(true)] out MapGridData? mapGridData)
     {
         return TryGetMapGridData(location, null, out mapGridData);
+    }
+
+    /// <summary>
+    /// Resolves which floor tile id an RCD <see cref="RcdMode.ConstructTile"/> recipe will place for the given direction.
+    /// </summary>
+    public string GetConstructTileTypeId(RCDPrototype prototype, Direction direction)
+    {
+        if (prototype.ConstructTileByDirection is { Count: > 0 } map &&
+            map.TryGetValue(direction, out var mapped) &&
+            !string.IsNullOrEmpty(mapped))
+        {
+            return mapped;
+        }
+
+        return prototype.Prototype ?? string.Empty;
     }
 
     /// <summary>

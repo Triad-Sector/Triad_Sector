@@ -1,4 +1,5 @@
 using Content.Shared.Physics;
+using Robust.Shared.Maths;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -43,6 +44,14 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public string? Prototype { get; private set; } = string.Empty;
+
+    /// <summary>
+    /// For <see cref="RcdMode.ConstructTile"/>, optional mapping from player construction direction to a
+    /// <see cref="ContentTileDefinition"/> id. When set, the placed tile is chosen from this map instead of only
+    /// <see cref="Prototype"/> (which remains the fallback if a direction is missing from the map).
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public Dictionary<Direction, string>? ConstructTileByDirection { get; private set; }
 
     /// <summary>
     /// Number of charges consumed when the operation is completed

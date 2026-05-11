@@ -2,6 +2,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
+using Content.Shared.RCD.Systems;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -14,6 +15,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IPlacementManager _placementManager = default!;
+    [Dependency] private readonly RCDSystem _rcdSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
     private Direction _placementDirection = default;
@@ -56,8 +58,12 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             RaiseNetworkEvent(new RCDConstructionGhostRotationEvent(GetNetEntity(heldEntity.Value), _placementDirection));
         }
 
-        // If the placer has not changed, exit
-        if (heldEntity == placerEntity && prototype.Prototype == placerProto)
+        var placementTileId = prototype.Mode == RcdMode.ConstructTile
+            ? _rcdSystem.GetConstructTileTypeId(prototype, _placementManager.Direction)
+            : prototype.Prototype ?? string.Empty;
+
+        // If the placer has not changed, exit (tile ghosts must refresh when direction picks a different tile id)
+        if (heldEntity == placerEntity && placementTileId == placerProto)
             return;
 
         // Create a new placer
@@ -65,7 +71,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             MobUid = heldEntity.Value,
             PlacementOption = _placementMode,
-            EntityType = prototype.Prototype,
+            EntityType = placementTileId,
             Range = (int) Math.Ceiling(SharedInteractionSystem.InteractionRange),
             IsTile = (prototype.Mode == RcdMode.ConstructTile),
             UseEditorContext = false,
