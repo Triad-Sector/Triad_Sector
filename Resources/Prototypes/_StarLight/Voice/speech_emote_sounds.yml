@@ -46,7 +46,7 @@
     Honk:
       collection: BikeHorn
     Whistle:
-      path: /Audio/_Starlight/Voice/Resomi/resomi_whistle.ogg
+      path: /Audio/_Moffstation/Voice/Resomi/resomi_whistle.ogg # Triad, moffstation sounds
     Chirp:
       collection: ResomiChirp
 
@@ -96,7 +96,7 @@
     Honk:
       collection: BikeHorn
     Whistle:
-      path: /Audio/_Starlight/Voice/Resomi/resomi_whistle.ogg
+      path: /Audio/_Moffstation/Voice/Resomi/resomi_whistle.ogg # Triad, moffstation sounds
     Chirp:
       collection: ResomiChirp
 
