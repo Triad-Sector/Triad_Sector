@@ -1,4 +1,5 @@
 using System;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Power.Components
 {
@@ -31,6 +32,6 @@ namespace Content.Server.Power.Components
         /// <summary>
         /// Do not auto recharge if this timestamp has yet to happen, set for the auto recharge pause system.
         /// </summary>
-        [DataField] public TimeSpan NextAutoRecharge = TimeSpan.FromSeconds(0f);
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))] public TimeSpan NextAutoRecharge = TimeSpan.FromSeconds(0f); // Triad - give it TimeOffsetSerializer so that saved maps don't have to worry about the timestamp being in the past when loaded
     }
 }

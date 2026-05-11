@@ -16,7 +16,14 @@
         "directions": 4
     },
     {
+        "name": "sheath-sword-equipped-BELT",
+        "directions": 4
+    },
+    {
         "name": "sheath-sabre"
+    },
+    {
+        "name": "sheath-sword"
     },
     {
         "name": "sheath"

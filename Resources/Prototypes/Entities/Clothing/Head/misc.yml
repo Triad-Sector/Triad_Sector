@@ -170,6 +170,7 @@
     price: 3000
   - type: AddAccentClothing
     accent: MobsterAccent
+  - type: NFTreasure # Frontier
 
 - type: entity
   parent: ClothingHeadBase

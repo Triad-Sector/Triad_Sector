@@ -1,6 +1,6 @@
 - type: construction
   id: CivilianStorageStash
-  name: Civilian Storage Stash
+  name: civilian storage stash
   description: Miscellaneous everyday supplies and personal items. Preserves stored items across ship deployments.
   graph: CivilianStorageStashGraph
   startNode: start
@@ -17,7 +17,7 @@
 
 - type: construction
   id: MilitaryStorageStash
-  name: Military Storage Stash
+  name: military storage stash
   description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
   graph: MilitaryStorageStashGraph
   startNode: start
@@ -34,7 +34,7 @@
 
 - type: construction
   id: MedicalSecureStorage
-  name: Medical Sanitized Stash
+  name: medical sanitized stash
   description: Sterile stash of clean medical supplies. Preserves stored items across ship deployments.
   graph: MedicalSecureStorageGraph
   startNode: start
@@ -51,7 +51,7 @@
 
 - type: construction
   id: BotanicalStorageUnit
-  name: Botanical Greenhouse Stash
+  name: botanical greenhouse stash
   description: Assorted seeds, plants, and gardening gear stash. Contents are securely preserved across ship operations.
   graph: BotanicalStorageUnitGraph
   startNode: start

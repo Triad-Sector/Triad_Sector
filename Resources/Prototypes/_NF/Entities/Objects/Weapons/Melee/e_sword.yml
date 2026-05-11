@@ -25,9 +25,9 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types: # Mono start: 0.5dps higher than standard wielded pickaxe with worse trading power
-          Heat: 10 # 8 >> 10
-          Piercing: 10 # 2 >> 10
-          Structural: 75 #Mono end: 40 >> 75
+          Heat: 24 # Triad 24 < 8
+          Piercing: 12 # Triad 12 < 2
+          Structural: 80 #Mono end: 40 >> 80
     deactivatedSecret: true
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/energy_pickaxe.rsi

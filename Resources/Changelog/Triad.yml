@@ -323,3 +323,91 @@ Entries:
   id: 2171
   time: '2026-05-09T12:04:03.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/41
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        NF magnet box variants (ore, construction, plant, rubbish, treasure)
+        with a shared RSI and migration for legacy box entities.
+    - type: Add
+      message: >-
+        Treasure magnet storage rules via NFTreasure tagging; flatpack, vending,
+        techfab, and cargo ways to get the boxes.
+  id: 2172
+  time: '2026-05-09T21:55:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/45
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Jukebox UI supports search, queue, repeat/shuffle, and artist lines on
+        tracks.
+  id: 2173
+  time: '2026-05-09T22:28:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/48
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed joining a saved shuttle's crew from the join menu bringing you to
+        a black screen
+    - type: Fix
+      message: Fixed recharging weapons not working on loaded shuttles.
+  id: 2174
+  time: '2026-05-09T23:59:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/42
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Bedrolls are now saved with ships.
+  id: 2175
+  time: '2026-05-11T00:14:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/56
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Labelers may now be stored in Botanical and Medical stashes.
+  id: 2176
+  time: '2026-05-11T03:06:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/50
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Added Leather Sheath and Tactical Sheath, Craftable in merc fab
+    - type: Add
+      message: Melee weapons now have distinct sounds on pickup, drop, and throw
+    - type: Add
+      message: >-
+        Energy Saber Dagger & Vanilla Sledgehammer is added into exped melee
+        loot pool
+    - type: Tweak
+      message: Sabre Sheath now accepts Plasteel Arming Sword
+    - type: Tweak
+      message: >-
+        a handful of sprite reworks & cleanup for some melee weapons, including
+        missing backsprites ✨
+    - type: Tweak
+      message: >-
+        A whole lot of weapon damage, speed, stamina & etc changes and
+        rebalancing **for weapons that are obtainable**
+    - type: Fix
+      message: >-
+        certain weapon swing orientation was incorrect, most weapons should
+        swing correctly now
+  id: 2177
+  time: '2026-05-11T08:40:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/36
+- author: VividPups
+  changes:
+    - type: Add
+      message: Added new Sprites for players
+  id: 2178
+  time: '2026-05-11T10:03:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/49
+- author: dainyu940
+  changes:
+    - type: Tweak
+      message: Sprite overhaul for credits
+  id: 2179
+  time: '2026-05-11T12:27:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/40

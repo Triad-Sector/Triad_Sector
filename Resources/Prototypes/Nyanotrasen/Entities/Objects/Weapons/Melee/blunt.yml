@@ -8,24 +8,54 @@
     sprite: Nyanotrasen/Objects/Weapons/Melee/kanabou.rsi
     state: icon
   - type: Item
-    size: Normal
+    size: Huge
+    shape:
+    - 0,0,1,4 # Triad Glaive & Kanobou Shape
   - type: MeleeWeapon
-    attackRate: 0.75
+    heavyStaminaCost: 15 # Triad
+    attackRate: 0.6
+    wideAnimationRotation: -135 # Triad, hopefully fixes weird sprite swinging
     range: 1.75
     damage:
       types:
-        Blunt: 20
-    bluntStaminaDamageFactor: 1.60 # 25.6 stamina damage
+        Blunt: 20 # Triad enough to be on par with Fireaxes
+        Structural: 20 # Triad
+    bluntStaminaDamageFactor: 1.30 # Triad, i have no idea how to count so uh 1.3
+    soundHit:
+      collection: MetalThud
+  - type: SpeedModifiedOnWield # Triad
+    walkModifier: 0.9
+    sprintModifier: 0.7
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 18
+        Blunt: 20 # Triad
+        Structural: 40 # Triad
   - type: Clothing
     sprite: Nyanotrasen/Objects/Weapons/Melee/kanabou.rsi
     quickEquip: false
     slots:
     - back
+    - suitStorage
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand # Triad, added sound on throw
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -2
+      
+# Triad End - Audio
 
 - type: entity
   name: shinai

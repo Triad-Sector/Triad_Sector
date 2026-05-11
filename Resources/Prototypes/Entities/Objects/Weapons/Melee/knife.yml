@@ -13,7 +13,9 @@
     types:
     - Knife
   - type: MeleeWeapon
+    heavyStaminaCost: 2 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
+    attackRate: 1.5 # Triad
     damage:
       types:
         Slash: 16
@@ -117,8 +119,6 @@
     sprite: Objects/Weapons/Melee/combat_knife.rsi
     state: icon
   - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 1.3
     damage:
       types:
         Slash: 22
@@ -159,7 +159,7 @@
     attackRate: 1.2
     damage:
       types:
-        Slash: 18
+        Slash: 20 # Triad 20 < 18
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
     offset: -0.15,0.0
@@ -167,7 +167,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 26
+        Slash: 28 # Triad 28 < 26
 
 - type: entity
   name: kukri knife
@@ -342,12 +342,11 @@
     sound: /Audio/Weapons/star_hit.ogg
     offset: -0.15,0.0
   - type: LandAtCursor
-  - type: DamageOtherOnHit
-    ignoreResistances: true
+  - type: DamageOtherOnHit # Triad, remove IgnoreResistances
     damage:
       types:
-        Slash: 10
-        Piercing: 20
+        Slash: 8 # Triad 8 < 10
+        Piercing: 24 # Triad 24 < 20
   - type: Item
     sprite: Objects/Weapons/Melee/throwing_knife.rsi
   - type: ThrowingAngle

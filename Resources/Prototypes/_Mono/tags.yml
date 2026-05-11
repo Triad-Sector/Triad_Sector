@@ -540,3 +540,8 @@
 
 - type: Tag
   id: BombCollar
+
+# U.I Weapons #Triad added in here since its Mono stuff
+
+- type: Tag
+  id: UIBlade

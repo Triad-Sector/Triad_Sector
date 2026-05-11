@@ -22,9 +22,9 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     private ISawmill _sawmill = default!;
 
     [ValidatePrototypeId<GuideEntryPrototype>]
-    private const string FrontierRuleset = "FrontierRuleset";
+    private const string DefaultRuleset = "DefaultRuleset";
 
-    public ProtoId<GuideEntryPrototype> RulesEntryId = FrontierRuleset;
+    public ProtoId<GuideEntryPrototype> RulesEntryId = DefaultRuleset;
 
     public override void Initialize()
     {
@@ -93,8 +93,8 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     {
         if (!_prototype.TryIndex(RulesEntryId, out var guideEntryPrototype))
         {
-            guideEntryPrototype = _prototype.Index<GuideEntryPrototype>(FrontierRuleset);
-            _sawmill.Error($"Couldn't find the following prototype: {RulesEntryId}. Falling back to {FrontierRuleset}, please check that the server has the rules set up correctly");
+            guideEntryPrototype = _prototype.Index<GuideEntryPrototype>(DefaultRuleset);
+            _sawmill.Error($"Couldn't find the following prototype: {RulesEntryId}. Falling back to {DefaultRuleset}, please check that the server has the rules set up correctly");
             return guideEntryPrototype;
         }
 

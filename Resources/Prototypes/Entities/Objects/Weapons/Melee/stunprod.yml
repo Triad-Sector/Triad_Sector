@@ -52,6 +52,8 @@
   - type: Item
     heldPrefix: off
     size: Normal
+    shape:
+    - 0,0,1,2 # Triad
   - type: Clothing
     sprite: Objects/Weapons/Melee/stunprod.rsi
     quickEquip: false

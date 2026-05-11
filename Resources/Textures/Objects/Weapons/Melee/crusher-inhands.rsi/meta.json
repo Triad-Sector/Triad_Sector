@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "by alzore_ (discord) based on the proto-kinetic crusher",
+  "copyright": "by alzore_ (discord) based on the proto-kinetic crusher, Backpack & Suitstorage Sprite by Wuffindy",
   "size": {
     "x": 64,
     "y": 64
@@ -22,6 +22,14 @@
     {
       "name": "wielded-inhand-right",
       "directions": 4
+    },
+    {
+        "name": "equipped-BACKPACK",
+        "directions": 4
+    },
+    {
+        "name": "equipped-SUITSTORAGE",
+        "directions": 4
     }
   ]
 }

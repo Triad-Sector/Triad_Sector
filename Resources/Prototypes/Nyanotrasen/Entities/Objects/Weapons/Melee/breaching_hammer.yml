@@ -9,15 +9,27 @@
     sprite: Nyanotrasen/Objects/Weapons/Melee/breaching_hammer.rsi
     state: icon
   - type: Item
-    size: Huge
+    size: Ginormous # Triad, Ginormous < Huge
+    shape:
+    - 0,0,4,5 # Triad 
   - type: MeleeWeapon
+    heavyStaminaCost: 15 # Triad
     attackRate: 0.5
+    wideAnimationRotation: -135 # Triad
     range: 1.70
     damage:
       types:
         Blunt: 15
         Structural: 50
-    bluntStaminaDamageFactor: 1.50 # 15 stamina damage
+    bluntStaminaDamageFactor: 1.30 # Triad decrease to 1.3
+    soundHit:
+      collection: MetalThud
+  - type: SpeedModifiedOnWield # Mono
+    walkModifier: 0.9
+    sprintModifier: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.9
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -38,3 +50,20 @@
     - back
     - suitStorage # Frontier - Same as axe
 #mono edit end
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio

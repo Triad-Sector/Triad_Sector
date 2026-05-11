@@ -5,126 +5,93 @@
         "y": 32
     },
     "license": "CC-BY-NC-SA-3.0",
-    "copyright": "Modified by EmoGarbage404 and taken from https://github.com/goonstation/goonstation at commit b951a2c12d967af1295a3e6d33a861e7e1f21299. cash_5000, cash_10000, cash_25000, cash_50000, cash_250000 modified by Whatstone (Discord),  cash_100000 modified by Unkn0wnGh0st333 (Github)",
+    "copyright": "Sprites by nyuvt/655504362424238089(discord)",
     "states": [
         {
             "name": "cash"
         },
         {
-            "name": "cash_10"
+            "name": "cash_25"
+        },
+        {
+            "name": "cash_50"
+        },
+        {
+            "name": "cash_75"
         },
         {
             "name": "cash_100"
         },
         {
+            "name": "cash_250"
+        },
+        {
             "name": "cash_500"
+        },
+        {
+            "name": "cash_750"
         },
         {
             "name": "cash_1000"
         },
         {
+            "name": "cash_2500"
+        },
+        {
             "name": "cash_5000"
         },
         {
-            "name": "cash_10000",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
+            "name": "cash_7500"
         },
         {
-            "name": "cash_25000",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
+            "name": "cash_10000"
         },
         {
-            "name": "cash_50000",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
+            "name": "cash_25000"
         },
         {
-            "name": "cash_100000",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
+            "name": "cash_50000"
         },
         {
-            "name": "cash_250000",
+            "name": "cash_75000"
+        },
+        {
+            "name": "cash_100000"
+        },
+        {
+            "name": "cash_250000"
+        },
+        {
+            "name": "cash_500000"
+        },
+        {
+            "name": "cash_750000"
+        },
+        {
+            "name": "cash_1000000"
+        },
+        {
+            "name": "cash_2500000"
+        },
+        {
+            "name": "cash_5000000"
+        },
+        {
+            "name": "cash_10000000"
+        },
+        {
+            "name": "cash_25000000"
+        },
+        {
+            "name": "cash_50000000"
+        },
+        {
+            "name": "cash_75000000"
+        },
+        {
+            "name": "cash_ultra",
             "delays": [
                 [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
                     0.2,
                     0.2,
                     0.2,

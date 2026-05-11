@@ -231,7 +231,7 @@
   id: MetalBaseballBat
   parent: BaseBallBat
   name: metal baseball bat
-  description: A very robust and heavy metal baseball bat to kick asses. Has a nice wooden handle.
+  description: A very robust and heavy metal baseball bat to kick asses. Has a nice grip. # Triad
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Melee/Ghetto/metal_bat.rsi
@@ -243,14 +243,31 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 7 # 19 weld dmage is the damage that cap saber has
-        Structural: 12
+        Blunt: 10 # Triad 10 < 7
+        Structural: 18 # Triad 18 < 5
   - type: Construction
     graph: MetalBaseballBatGraph
     node: final
   - type: SpeedModifiedOnWield # heavy stuff leh
     walkModifier: 0.85
     sprintModifier: 0.85
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/boots_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
 
 - type: entity
   id: MakeshiftJammer

@@ -1,5 +1,16 @@
+# Stashes
 - type: Tag
   id: FitsInBotanicalStash
 
 - type: Tag
   id: FitsInMedicalStash
+  
+# Melee Weapons
+- type: Tag
+  id: Cutlass
+
+- type: Tag
+  id: LongBlade
+
+- type: Tag
+  id: Sword

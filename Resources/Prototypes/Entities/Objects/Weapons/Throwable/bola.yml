@@ -13,7 +13,10 @@
   - type: EmitSoundOnThrow
     sound: /Audio/Weapons/bolathrow.ogg
   - type: EmitSoundOnLand
-    sound: /Audio/Effects/snap.ogg
+    sound:
+      path: /Audio/Effects/snap.ogg
+      params:
+        volume: -4 # Triad, it was so loud in game
   - type: Construction
     graph: Bola
     node: bola

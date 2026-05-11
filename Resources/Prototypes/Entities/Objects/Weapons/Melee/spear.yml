@@ -35,10 +35,11 @@
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: MeleeWeapon
+    heavyStaminaCost: 8 # Triad, most melee are buffed, so lets add stam management
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 15
+        Piercing: 16 # Triad 16 < 15
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -46,9 +47,11 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 25
+        Piercing: 32 # Triad 32 < 25
   - type: Item
-    size: Ginormous
+    size: Huge # Triad Huge < Ginormous
+    shape:
+    - 0,0,0,5 # Triad Spear size, slightly Longer than sword but thin
   - type: Clothing
     quickEquip: false
     slots:
@@ -76,7 +79,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 5
+        Piercing: 12 # Triad 12 < 5
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible
@@ -116,7 +119,23 @@
     inHandsMaxFillLevels: 1
     equippedFillBaseName: -fill-
     equippedMaxFillLevels: 1
-
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_pickup.ogg
+      params:
+        volume: -6
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+        volume: -6
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+        volume: -2
+# Triad End - Audio
 
 - type: entity
   name: reinforced spear
@@ -134,7 +153,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 30
+        Piercing: 36 # Triad
   - type: Construction
     graph: SpearReinforced
 
@@ -154,7 +173,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 35
+        Piercing: 36 # Triad
   - type: Construction
     graph: SpearPlasma
 
@@ -175,8 +194,8 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 12
-        Radiation: 9
+        Piercing: 28 # Triad
+        Radiation: 8 # Triad
   - type: Construction
     graph: SpearUranium
 

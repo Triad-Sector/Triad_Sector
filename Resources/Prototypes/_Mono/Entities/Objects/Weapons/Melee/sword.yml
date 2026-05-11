@@ -173,6 +173,23 @@
     malus: 0.6
   - type: Execution
     doAfterDuration: 4.0
+# Triad Start - Audio Overhaul
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/unsheath.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
 
 # Ullman Blade
 
@@ -199,13 +216,13 @@
     sprite: _Mono/Objects/Weapons/Melee/ullmansword.rsi
     size: Large
   - type: MeleeWeapon
-    heavyStaminaCost: 1
+    heavyStaminaCost: 10 # Triad 10 < 1
     wideAnimationRotation: -135
-    attackRate: 1.25
+    attackRate: 1.1 # Triad 1.1 < 1.25
     damage:
       types:
         Slash: 30
-        Structural: 75
+        Structural: 40  # Triad 40 < 75
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: ItemToggleMeleeWeapon
@@ -262,6 +279,7 @@
   - type: Tag # WD EDIT
     tags:
     - EnergySword
+    - UIBlade # Triad
   - type: Sharp
   - type: DisarmMalus
     malus: 0.6
@@ -269,6 +287,23 @@
     doAfterDuration: 4.0
   - type: UseDelay
     delay: 1
+# Triad Start - Audio Overhaul
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/unsheath.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/knife_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      params:
+        volume: -4
+# Triad End
 
 # Vizier's sword
 

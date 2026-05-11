@@ -38,6 +38,42 @@
 
 - type: latheRecipe
   parent: BaseToolRecipe
+  id: PlantBoxFlatpack
+  result: PlantBoxFlatpack
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 600
+    Glass: 50
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: RubbishBoxFlatpack
+  result: RubbishBoxFlatpack
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 600
+    Glass: 50
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: TreasureBoxFlatpack
+  result: TreasureBoxFlatpack
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 600
+    Glass: 50
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
   id: CleanerGrenade
   result: CleanerGrenade
   categories:

@@ -116,7 +116,7 @@ public static class ShipSaveYamlSanitizer
         "DnaSequenceInjector",
         "DoorRemote",
         "EmergencyShuttleConsole",
-        "GeneralStationRecordConsole",
+        // "GeneralStationRecordConsole",
         "GeneticAnalyzer",
         "Ghost",
         "GhostRole",
