@@ -8,7 +8,10 @@
       time: 36000 # triad
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 3600 # triad
+      time: 28800 # triad
+    - !type:RoleTimeRequirement
+      role: JobStc
+      time: 18000 # triad
   whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true

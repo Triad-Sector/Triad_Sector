@@ -10,7 +10,7 @@
       time: 27000 # triad
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 1800 # triad
+      time: 9000 # triad 2:30 hour
   canBeAntag: false
   icon: "JobIconStc"
   assignedCompany: Colonial
