@@ -64,6 +64,8 @@
   components:
   - type: Item
     size: Small
+    shape:
+    - 0,0,1,1
     storedRotation: -90
   - type: Tag
     tags:
