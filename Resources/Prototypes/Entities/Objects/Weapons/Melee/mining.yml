@@ -63,7 +63,7 @@
   description: Powerful tool used to quickly drill through rocks.
   components:
   - type: Item
-    size: Normal # Triad
+    size: Small
     storedRotation: -90
   - type: Tag
     tags:
@@ -84,6 +84,23 @@
         Brute: 6
       types:
         Structural: 15
+# Triad Start - Audio
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/Items/change_drill.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/gun_drop.ogg
+      params:
+        volume: -4
+# Triad End - Audio
 
 - type: entity
   name: diamond tipped mining drill

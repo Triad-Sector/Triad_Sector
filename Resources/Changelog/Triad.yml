@@ -411,3 +411,72 @@ Entries:
   id: 2179
   time: '2026-05-11T12:27:12.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/40
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Reverts mining drills to small size, along adding sounds on handling
+  id: 2180
+  time: '2026-05-12T04:36:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/64
+- author: VividPups
+  changes:
+    - type: Add
+      message: Added 93 of Dens Hair markings
+  id: 2181
+  time: '2026-05-12T05:33:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/59
+- author: Monolith
+  changes:
+    - type: Tweak
+      message: >-
+        Resomi are now an odd amount of pixels wide just like every other
+        species.
+    - type: Add
+      message: Added 24 new hairstyles for Resomi.
+    - type: Add
+      message: >-
+        Added 80 Marking options for Resomi. Including head, chest, arm, leg
+        markings, gauze, and a bunch of tail customization options. Check them
+        out!
+    - type: Add
+      message: 'Resomi now have purple organs. '
+    - type: Add
+      message: Resomi have a deathgasp sound now. Kill one to hear to it!
+    - type: Tweak
+      message: Resomi sounds have been tweaked to sound more like birds.
+    - type: Add
+      message: Resomi now have three new emotes! Scree! Squawk! and Call!
+    - type: Fix
+      message: >-
+        Fixed an issue with Resomi damage overlays making Resomi look more
+        beaten up then they actually are.
+  id: 2182
+  time: '2026-05-12T11:18:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/47
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The RCD can place additional hull plating shapes (half, wedge, half-tilt
+        families) using rotation instead of many duplicate menu entries.
+    - type: Add
+      message: >-
+        The RCD can build normal shuttle windows and diagonal shuttle or
+        solid/reinforced walls where recipes were added, with radial icons under
+        fork paths.
+    - type: Fix
+      message: >-
+        RCD no longer allows stacking the same rotatable fixture (e.g. lights)
+        on one tile without differing direction when the recipe disallows it.
+  id: 2183
+  time: '2026-05-12T11:32:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/62
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Collars have been ported from Floof. As of writing, they are
+        inaccessible pending some other changes.
+  id: 2184
+  time: '2026-05-12T11:51:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/61

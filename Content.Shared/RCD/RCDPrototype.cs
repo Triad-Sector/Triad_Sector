@@ -1,4 +1,5 @@
 using Content.Shared.Physics;
+using Robust.Shared.Maths;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -6,7 +7,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared.RCD;
 
 /// <summary>
-/// Contains the parameters for a RCD construction / operation
+/// Parameters for one RCD menu recipe. Triad: see <see cref="ConstructTileByDirection"/> and <see cref="AllowMultiDirection"/>; context in Resources/Prototypes/_Mono/RCD/README.md.
 /// </summary>
 [Prototype("rcd")]
 public sealed partial class RCDPrototype : IPrototype
@@ -43,6 +44,22 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public string? Prototype { get; private set; } = string.Empty;
+
+    /// <summary>
+    /// For <see cref="RcdMode.ConstructTile"/>, optional mapping from player construction direction to a
+    /// <see cref="ContentTileDefinition"/> id. When set, the placed tile is chosen from this map instead of only
+    /// <see cref="Prototype"/> (which remains the fallback if a direction is missing from the map).
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public Dictionary<Direction, string>? ConstructTileByDirection { get; private set; }
+
+    /// <summary>
+    /// If true, allows multiple entities with the same prototype on one tile as long as their cardinal facing
+    /// differs from the new placement (see duplicate-entity check in <see cref="RCDSystem"/>). Upstream:
+    /// space-wizards/space-station-14#42556.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public bool AllowMultiDirection { get; private set; }
 
     /// <summary>
     /// Number of charges consumed when the operation is completed

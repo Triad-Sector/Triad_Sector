@@ -30,7 +30,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump', 'Hiss'] # Triad - Add hiss emote
+    allowedEmotes: ['Thump', 'Hiss', 'Yip'] # Triad - Add hiss and yip emote
   - type: TypingIndicator
     proto: lizard
   - type: Vocal

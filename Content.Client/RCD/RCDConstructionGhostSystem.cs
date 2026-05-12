@@ -1,10 +1,13 @@
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
+using Content.Shared.Maps;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
+using Content.Shared.RCD.Systems;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.RCD;
@@ -14,6 +17,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IPlacementManager _placementManager = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDefs = default!;
+    [Dependency] private readonly RCDSystem _rcdSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
     private Direction _placementDirection = default;
@@ -56,8 +61,21 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             RaiseNetworkEvent(new RCDConstructionGhostRotationEvent(GetNetEntity(heldEntity.Value), _placementDirection));
         }
 
-        // If the placer has not changed, exit
-        if (heldEntity == placerEntity && prototype.Prototype == placerProto)
+        var placementTileId = prototype.Mode == RcdMode.ConstructTile
+            ? _rcdSystem.GetConstructTileTypeId(prototype, _placementManager.Direction)
+            : prototype.Prototype ?? string.Empty;
+
+        var placementTileNumeric = 0;
+        if (prototype.Mode == RcdMode.ConstructTile &&
+            !string.IsNullOrEmpty(placementTileId) &&
+            _tileDefs.TryGetDefinition(placementTileId, out var placeDef))
+        {
+            placementTileNumeric = placeDef.TileId;
+        }
+
+        // If the placer has not changed, exit (tile ghosts must refresh when direction picks a different tile id)
+        if (heldEntity == placerEntity && placementTileId == placerProto &&
+            _placementManager.CurrentPermission?.TileType == placementTileNumeric)
             return;
 
         // Create a new placer
@@ -65,7 +83,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             MobUid = heldEntity.Value,
             PlacementOption = _placementMode,
-            EntityType = prototype.Prototype,
+            EntityType = placementTileId,
+            TileType = placementTileNumeric,
             Range = (int) Math.Ceiling(SharedInteractionSystem.InteractionRange),
             IsTile = (prototype.Mode == RcdMode.ConstructTile),
             UseEditorContext = false,

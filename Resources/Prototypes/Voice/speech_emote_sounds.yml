@@ -98,6 +98,8 @@
       path: /Audio/Animals/lizard_happy.ogg
     Hiss: # Triad
       collection: ReptilianHiss # Imp
+    Yip: # Triad
+      collection: Yip
     ReptilianSnicker: # Mono
       path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg  # Mono
     Honk:
@@ -128,6 +130,8 @@
       path: /Audio/Animals/lizard_happy.ogg
     Hiss: # Triad
       collection: ReptilianHiss # Imp
+    Yip: # Triad
+      collection: Yip
     ReptilianSnicker: # Mono
       path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg  # Mono
     Honk:

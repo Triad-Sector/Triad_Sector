@@ -1,9 +1,4 @@
 - type: soundCollection
-  id: Trill
-  files:
-    - /Audio/_Goobstation/Voice/Resomi/trill.ogg
-
-- type: soundCollection
   id: Warble
   files:
     - /Audio/_Goobstation/Voice/Resomi/warble.ogg

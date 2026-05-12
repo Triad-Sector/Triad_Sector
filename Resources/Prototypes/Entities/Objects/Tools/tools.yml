@@ -385,6 +385,18 @@
     - AirlockGlassShuttle
     - SMES
     - Substation
+    - PlatingDiagonal
+    - PlatingHalf
+    - PlatingWedge
+    - PlatingHalfTiltLower
+    - PlatingHalfTiltLowerAlt
+    - PlatingHalfTiltUpper
+    - PlatingHalfTiltUpperAlt
+    - WindowDirectionalShuttle
+    - WindowShuttle
+    - WallShuttleDiagonal
+    - WallReinforcedDiagonal
+    - WallSolidDiagonal
     delayMultiplier: 0.65 # Mono
   - type: LimitedCharges
     maxCharges: 125 # mono 30 -> 125

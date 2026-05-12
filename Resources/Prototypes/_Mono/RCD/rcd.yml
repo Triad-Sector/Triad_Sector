@@ -1,3 +1,4 @@
+# Triad fork RCD recipes — see README.md in this folder for ports (#888, #1153, #1237), C# touch points, and merge notes.
 # Walls
 - type: rcd
   id: WallReinforced
@@ -62,3 +63,225 @@
   collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDConstruct2
+
+# Diagonal hull plating — one mode, rotate like other RCD objects (HardLightSector/HardLight#1153)
+- type: rcd
+  id: PlatingDiagonal
+  name: rcd-component-plating-diagonal
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/ne.png
+  mode: ConstructTile
+  prototype: PlatingCornerNE
+  rotation: User
+  constructTileByDirection:
+    North: PlatingCornerNE
+    East: PlatingCornerSE
+    South: PlatingCornerSW
+    West: PlatingCornerNW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# HardLightSector/HardLight#1237 — shuttle windows + diagonal walls + extra hull plating shapes
+
+- type: rcd
+  id: WindowDirectionalShuttle
+  category: WindowsAndGrilles
+  sprite: /Textures/_Mono/Interface/Radial/RCD/shuttlewindowdiagonal.png
+  mode: ConstructObject
+  prototype: ShuttleWindowDiagonal
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rules:
+    - IsWindow
+  rotation: User
+  fx: EffectRCDConstruct1
+  allowMultiDirection: true
+
+- type: rcd
+  id: WindowShuttle
+  category: WindowsAndGrilles
+  sprite: /Textures/_Mono/Interface/Radial/RCD/shuttlewindow.png
+  mode: ConstructObject
+  prototype: ShuttleWindow
+  cost: 3
+  delay: 2
+  collisionMask: Impassable
+  rules:
+    - IsWindow
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallShuttleDiagonal
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Interface/Radial/RCD/shuttlewalldiag.png
+  mode: ConstructObject
+  prototype: WallShuttleDiagonal
+  cost: 4
+  delay: 2
+  collisionMask: Impassable
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rotation: User
+  fx: EffectRCDConstruct2
+  allowMultiDirection: true
+
+- type: rcd
+  id: WallReinforcedDiagonal
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Interface/Radial/RCD/reinfwalldiag.png
+  mode: ConstructObject
+  prototype: WallReinforcedDiagonal
+  cost: 4
+  delay: 2
+  collisionMask: Impassable
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rotation: User
+  fx: EffectRCDConstruct2
+  allowMultiDirection: true
+
+- type: rcd
+  id: WallSolidDiagonal
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Interface/Radial/RCD/solidwalldiag.png
+  mode: ConstructObject
+  prototype: WallSolidDiagonal
+  cost: 4
+  delay: 2
+  collisionMask: Impassable
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rotation: User
+  fx: EffectRCDConstruct2
+  allowMultiDirection: true
+
+# Center-strip half plating — N/S vertical strip, E/W horizontal (rotate like diagonal hull)
+- type: rcd
+  id: PlatingHalf
+  name: rcd-component-plating-half
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/half_v.png
+  mode: ConstructTile
+  prototype: PlatingHalfV
+  rotation: User
+  constructTileByDirection:
+    North: PlatingHalfV
+    East: PlatingHalfH
+    South: PlatingHalfV
+    West: PlatingHalfH
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Wedge corners — rotate to pick N/E/S/W wedge tile
+- type: rcd
+  id: PlatingWedge
+  name: rcd-component-plating-wedge
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/wedge_n.png
+  mode: ConstructTile
+  prototype: PlatingWedgeN
+  rotation: User
+  constructTileByDirection:
+    North: PlatingWedgeN
+    East: PlatingWedgeE
+    South: PlatingWedgeS
+    West: PlatingWedgeW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt lower (axis-aligned family) — NES / SEW / SWN / NWE cycle by rotation
+- type: rcd
+  id: PlatingHalfTiltLower
+  name: rcd-component-plating-halftilt-lower
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/halftilt_ne_s_l.png
+  mode: ConstructTile
+  prototype: PlatingHalfTiltNESLower
+  rotation: User
+  constructTileByDirection:
+    North: PlatingHalfTiltNESLower
+    East: PlatingHalfTiltSEWLower
+    South: PlatingHalfTiltSWNLower
+    West: PlatingHalfTiltNWELower
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt lower (diagonal-offset family) — NE-W / SE-N / SW-E / NW-S cycle by rotation
+- type: rcd
+  id: PlatingHalfTiltLowerAlt
+  name: rcd-component-plating-halftilt-lower-alt
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/halftilt_ne_w_l.png
+  mode: ConstructTile
+  prototype: PlatingHalfTiltNEWLower
+  rotation: User
+  constructTileByDirection:
+    North: PlatingHalfTiltNEWLower
+    East: PlatingHalfTiltSENLower
+    South: PlatingHalfTiltSWELower
+    West: PlatingHalfTiltNWSLower
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt upper (axis-aligned family)
+- type: rcd
+  id: PlatingHalfTiltUpper
+  name: rcd-component-plating-halftilt-upper
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/halftilt_ne_s_u.png
+  mode: ConstructTile
+  prototype: PlatingHalfTiltNESUpper
+  rotation: User
+  constructTileByDirection:
+    North: PlatingHalfTiltNESUpper
+    East: PlatingHalfTiltSEWUpper
+    South: PlatingHalfTiltSWNUpper
+    West: PlatingHalfTiltNWEUpper
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt upper (diagonal-offset family)
+- type: rcd
+  id: PlatingHalfTiltUpperAlt
+  name: rcd-component-plating-halftilt-upper-alt
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/plating/script/halftilt_ne_w_u.png
+  mode: ConstructTile
+  prototype: PlatingHalfTiltNEWUpper
+  rotation: User
+  constructTileByDirection:
+    North: PlatingHalfTiltNEWUpper
+    East: PlatingHalfTiltSENUpper
+    South: PlatingHalfTiltSWEUpper
+    West: PlatingHalfTiltNWSUpper
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
