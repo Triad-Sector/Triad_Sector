@@ -26,7 +26,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Robust.Shared.Audio;
 
 // Mono
@@ -83,16 +82,20 @@ public class RCDSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, RCDComponent component, MapInitEvent args)
     {
-        // On init, set the RCD to its first available recipe
-        if (component.AvailablePrototypes.Count > 0)
+        // On init, set the RCD to the first available recipe that actually exists (same enumeration order as before
+        // when the first id is valid). Skip missing ids so a bad entry cannot leave ProtoId invalid (Index would throw
+        // on examine/use).
+        foreach (var protoId in component.AvailablePrototypes)
         {
-            component.ProtoId = component.AvailablePrototypes.ElementAt(0);
-            Dirty(uid, component);
+            if (!_protoManager.HasIndex(protoId))
+                continue;
 
+            component.ProtoId = protoId;
+            Dirty(uid, component);
             return;
         }
 
-        // The RCD has no valid recipes somehow? Get rid of it
+        // No valid recipes (empty set or every id missing)? Remove the item.
         QueueDel(uid);
     }
 
