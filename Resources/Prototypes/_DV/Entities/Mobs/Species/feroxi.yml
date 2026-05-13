@@ -7,10 +7,9 @@
   components:
   - type: HumanoidAppearance
     species: Feroxi
-    hideLayersOnEquip:
+    hideLayersOnEquip: # Triad, hide layers on equip
     - Hair
     - Snout
-    - HeadTop
     - HeadSide
     - Tail
   - type: Hunger
