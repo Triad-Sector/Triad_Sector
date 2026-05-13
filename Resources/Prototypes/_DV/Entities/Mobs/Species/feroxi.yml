@@ -7,6 +7,12 @@
   components:
   - type: HumanoidAppearance
     species: Feroxi
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+    - Tail
   - type: Hunger
   - type: Carriable
   - type: Wagging
