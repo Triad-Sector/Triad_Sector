@@ -88,9 +88,11 @@
   loadouts:
   - NfsdBoxSurvivalNfsdOxygen
   - NfsdBoxSurvivalNfsdNitrogen
+  - ContractorBoxSurvivalTriadWaterVaporExtended # Triad
   fallbacks:
   - NfsdBoxSurvivalNfsdOxygen
   - NfsdBoxSurvivalNfsdNitrogen
+  - ContractorBoxSurvivalTriadWaterVaporExtended # Triad
 
 - type: loadoutGroup
   id: NfsdFace

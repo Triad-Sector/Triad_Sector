@@ -1,0 +1,15 @@
+- type: entity
+  parent: BoxBaseSurvivalMono
+  id: BoxSurvivalTriadWaterVaporExtended
+  suffix: Water Vapor
+  components:
+  - type: StorageFill
+    contents:
+      - id: DoubleEmergencyWaterVaporTankFilled
+      - id: SpaceMedipen
+      - id: EmergencyMedipen
+      - id: Flare
+        amount: 2
+      - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+      - id: CrowbarPocket
+      - id: HandHeldMassScanner

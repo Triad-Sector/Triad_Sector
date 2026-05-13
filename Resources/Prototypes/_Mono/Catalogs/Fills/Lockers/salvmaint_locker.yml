@@ -331,6 +331,8 @@
         - id: DoubleEmergencyOxygenTankFilled
         - id: NitrogenTankFilled
         - id: DoubleEmergencyNitrogenTankFilled
+        - id: WaterVaporTankFilled # Triad
+        - id: DoubleEmergencyWaterVaporTankFilled # Triad
         - id: EmergencyFunnyOxygenTankFilled
           weight: 0.5
       #Mats
@@ -429,6 +431,7 @@
         children:
         - id: BoxSurvivalMonoOxygenExtended
         - id: BoxSurvivalMonoNitrogenExtended
+        - id: BoxSurvivalTriadWaterVaporExtended # Triad
       #Salvagecore bevvy
       - !type:GroupSelector
         children:
@@ -642,7 +645,7 @@
         - id: Magazine762x54mmRFMJ
       - id: WeaponLaserPistolNF
       - id: WeaponLaserCarbine
-      
+
 #LootSpawner
 - type: entity
   name: Mono Maint Loot Spawner
