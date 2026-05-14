@@ -226,13 +226,13 @@
   - type: Storage
     grid:
     - 0,0,10,3
-  # Triad, change item shape
-  - type: Item
-    shape:
-    - 0,0,4,4
-  # Triad end
   - type: ExplosionResistance # Goobstation
     damageCoefficient: 0.1
+  # Triad Start
+  - type: Tag
+    tags:
+    - AdvancedTacticalBackpack
+  # Triad End
 
 - type: entity
   parent: ClothingBackpackERTLeader

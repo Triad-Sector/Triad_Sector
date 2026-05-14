@@ -1,6 +1,7 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._RMC14.Storage;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -68,6 +69,9 @@ public abstract class SharedStorageSystem : EntitySystem
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
     [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
     [Dependency] protected readonly UseDelaySystem UseDelay = default!;
+
+    // RMC14
+    [Dependency] protected readonly RMCStorageSystem RMCStorage = default!;
 
     private EntityQuery<ItemComponent> _itemQuery;
     private EntityQuery<StackComponent> _stackQuery;
@@ -1077,6 +1081,12 @@ public abstract class SharedStorageSystem : EntitySystem
                 reason = "comp-storage-insufficient-capacity";
                 return false;
             }
+        }
+
+        if (!RMCStorage.CanInsert((uid, storageComp), insertEnt, out var popup))
+        {
+            reason = popup;
+            return false;
         }
 
         CheckingCanInsert = true;

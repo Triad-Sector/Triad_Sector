@@ -59,6 +59,13 @@
       node: MilitaryStorageStashNode
     - type: ShipSaveLimit
       limitId: MilitaryStash
+    - type: LimitedStorage
+      limits:
+      - popup: triad-storage-limit-too-many-advanced-backpacks
+        count: 1
+        whitelist:
+          tags:
+          - AdvancedTacticalBackpack
 
 - type: entity
   parent: BasePersistentShipStorageStash
