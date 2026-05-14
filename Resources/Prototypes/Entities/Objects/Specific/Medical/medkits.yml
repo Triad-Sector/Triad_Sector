@@ -17,6 +17,8 @@
         - Pill
         - Hypospray
         - HandLabeler
+        - GasTank
+        - BreathMask
         tags:
         - FitsInMedicalStash
         - PillCanister
