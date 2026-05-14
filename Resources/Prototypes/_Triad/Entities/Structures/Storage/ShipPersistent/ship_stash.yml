@@ -17,6 +17,7 @@
       - Store
       - Cash
       - Headset
+      - SavingContraband
 
 - type: entity
   parent: BasePersistentShipStorageStash

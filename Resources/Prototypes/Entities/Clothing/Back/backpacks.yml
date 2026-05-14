@@ -226,6 +226,9 @@
   - type: Storage
     grid:
     - 0,0,10,3
+  - type: Item # Triad, change item shape
+    shape:
+    - 0,0,7,5 # Triad end
   - type: ExplosionResistance # Goobstation
     damageCoefficient: 0.1
 

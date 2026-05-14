@@ -11,6 +11,27 @@
     maxItemSize: Small
     grid:
     - 0,0,3,1
+    # Triad Start, medkit whitelist
+    whitelist:
+        components:
+        - Pill
+        - Hypospray
+        - MedicalBag
+        - HandLabeler
+        tags:
+        - FitsInMedicalStash
+        - PillCanister
+        - CentrifugeCompatible
+        - Syringe
+        - Ointment
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Bottle
+        - GlassBeaker
+        - ChemDispensable
+        - CigPack
+    # Triad End
   - type: Item
     size: Normal # Frontier: Large<Normal
     shape: # Frontier
