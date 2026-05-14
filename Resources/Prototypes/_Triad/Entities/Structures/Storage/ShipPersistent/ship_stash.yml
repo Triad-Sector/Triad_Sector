@@ -79,7 +79,6 @@
         components:
           - Pill
           - Hypospray
-          - MedicalBag
           - HandLabeler
         tags:
           - FitsInMedicalStash
