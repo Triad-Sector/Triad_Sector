@@ -104,8 +104,6 @@
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-sealed-vox
-      outerClothing-resomi:
-      - state: equipped-OUTERCLOTHING-sealed-resomi
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: Armor
@@ -145,8 +143,6 @@
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-sealed-vox
-      outerClothing-resomi:
-      - state: equipped-OUTERCLOTHING-sealed-resomi
   - type: ExplosionResistance
     damageCoefficient: 0.7 # Mono
   - type: Armor
