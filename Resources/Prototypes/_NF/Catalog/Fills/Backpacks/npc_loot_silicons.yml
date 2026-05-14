@@ -7,6 +7,7 @@
   categories: [ HideSpawnMenu ]
   suffix: NPC Loot
   components:
+  - type: NFTreasure # Triad
   - type: Sprite
     sprite: _NF/Objects/Tools/bundles.rsi
     state: engi-base
