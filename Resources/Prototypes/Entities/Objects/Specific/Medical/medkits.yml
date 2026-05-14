@@ -114,7 +114,7 @@
 - type: entity
   name: combat medical kit
   description: "For the big weapons among us."
-  parent: BaseStorageItem
+  parent: Medkit # Triad, parent change
   id: MedkitCombat
   components:
   - type: Sprite
