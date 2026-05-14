@@ -229,7 +229,7 @@
   # Triad, change item shape
   - type: Item
     shape:
-    - 0,0,7,5 
+    - 0,0,4,4
   # Triad end
   - type: ExplosionResistance # Goobstation
     damageCoefficient: 0.1
