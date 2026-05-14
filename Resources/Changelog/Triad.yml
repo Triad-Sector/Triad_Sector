@@ -526,3 +526,17 @@ Entries:
   id: 2189
   time: '2026-05-13T22:01:17.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/70
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add NFTreasure tag to other kind of loot
+  id: 2190
+  time: '2026-05-14T17:07:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/72
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add radar blip when off grid stash
+  id: 2191
+  time: '2026-05-14T17:07:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/71

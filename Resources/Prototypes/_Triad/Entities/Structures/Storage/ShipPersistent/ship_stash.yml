@@ -18,6 +18,11 @@
       - Cash
       - Headset
       - SavingContraband
+  - type: RadarBlip
+    radarColor: "#e3ffea"
+    scale: 1.5
+    requireNoGrid: true
+    shape: square
 
 - type: entity
   parent: BasePersistentShipStorageStash
