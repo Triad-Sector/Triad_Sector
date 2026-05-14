@@ -1,4 +1,3 @@
-using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
@@ -9,6 +8,9 @@ namespace Content.Shared._Triad.Weapons.Ranged.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class GunToggleableBonusComponent : Component
 {
+    [DataField, AutoNetworkedField]
+    public TimeSpan DoAfterTime = TimeSpan.FromSeconds(0.5);
+
     [DataField, AutoNetworkedField]
     public Angle MinAngle = Angle.FromDegrees(5);
 
