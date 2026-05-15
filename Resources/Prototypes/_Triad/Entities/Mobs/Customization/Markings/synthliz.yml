@@ -2,6 +2,7 @@
   id: synthliz_basic
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_basic
@@ -10,6 +11,7 @@
   id: synthliz_long
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_long
@@ -18,6 +20,7 @@
   id: synthliz_thick
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_thick
@@ -26,6 +29,7 @@
   id: synthliz_thicklong
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_thicklong
@@ -34,6 +38,7 @@
   id: synthliz_under
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_under_primary
@@ -44,6 +49,7 @@
   id: synthliz_over
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_over_primary
@@ -54,6 +60,7 @@
   id: synthliz_tert
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_tert_primary
@@ -64,6 +71,7 @@
   id: synthliz_tertunder
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_tertunder_primary
@@ -76,6 +84,7 @@
   id: synthliz_barless_basic
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_barless_basic
@@ -84,6 +93,7 @@
   id: synthliz_barless_under
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_barless_under_primary
@@ -96,6 +106,7 @@
   id: synthliz_barless_over
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_barless_over_primary
@@ -108,6 +119,7 @@
   id: synthliz_barless_tert
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_barless_tert_primary
@@ -118,6 +130,7 @@
   id: synthliz_barless_tertunder
   bodyPart: Snout
   markingCategory: Snout
+  speciesRestriction: [IPC]
   sprites:
   - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
     state: m_snout_synthliz_barless_tertunder_primary
