@@ -1,0 +1,15 @@
+- type: marking
+  id: synthliz_basic
+  bodyPart: Snout
+  markingCategory: Snout
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
+    state: m_snout_synthliz_basic
+
+- type: marking
+  id: synthliz_long
+  bodyPart: Snout
+  markingCategory: Snout
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Reptilian/synthliz.rsi
+    state: m_snout_synthliz_long

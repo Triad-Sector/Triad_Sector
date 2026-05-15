@@ -1,0 +1,111 @@
+{
+    "version": 1,
+    "license": null,
+    "copyright": null,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "m_snout_synthliz_basic_ADJ",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_under_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_under_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_over_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_over_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_tert_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_tert_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_tertunder_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_tertunder_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_tertunder_ADJ_tertiary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_long_ADJ",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_thick_ADJ",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_thicklong_ADJ",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_basic_ADJ",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_under_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_under_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_under_ADJ_tertiary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_over_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_over_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_over_ADJ_tertiary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_tert_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_tert_ADJ_tertiary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_tertunder_ADJ_primary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_tertunder_ADJ_secondary",
+            "directions": 4
+        },
+        {
+            "name": "m_snout_synthliz_barless_tertunder_ADJ_tertiary",
+            "directions": 4
+        }
+    ]
+}
