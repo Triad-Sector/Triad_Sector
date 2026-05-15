@@ -1,7 +1,7 @@
 {
     "version": 1,
-    "license": null,
-    "copyright": null,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprites are from AGPL-3.0 licensed code, taken from Skyrat SS13 repo at https://github.com/Skyrat-SS13/Skyrat-tg/blob/master/modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_snouts.dmi",
     "size": {
         "x": 32,
         "y": 32
