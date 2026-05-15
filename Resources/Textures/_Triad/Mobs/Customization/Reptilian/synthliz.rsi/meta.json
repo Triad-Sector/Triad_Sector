@@ -8,103 +8,103 @@
     },
     "states": [
         {
-            "name": "m_snout_synthliz_basic_ADJ",
+            "name": "m_snout_synthliz_basic",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_under_ADJ_primary",
+            "name": "m_snout_synthliz_under_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_under_ADJ_secondary",
+            "name": "m_snout_synthliz_under_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_over_ADJ_primary",
+            "name": "m_snout_synthliz_over_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_over_ADJ_secondary",
+            "name": "m_snout_synthliz_over_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_tert_ADJ_primary",
+            "name": "m_snout_synthliz_tert_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_tert_ADJ_secondary",
+            "name": "m_snout_synthliz_tert_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_tertunder_ADJ_primary",
+            "name": "m_snout_synthliz_tertunder_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_tertunder_ADJ_secondary",
+            "name": "m_snout_synthliz_tertunder_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_tertunder_ADJ_tertiary",
+            "name": "m_snout_synthliz_tertunder_tertiary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_long_ADJ",
+            "name": "m_snout_synthliz_long",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_thick_ADJ",
+            "name": "m_snout_synthliz_thick",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_thicklong_ADJ",
+            "name": "m_snout_synthliz_thicklong",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_basic_ADJ",
+            "name": "m_snout_synthliz_barless_basic",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_under_ADJ_primary",
+            "name": "m_snout_synthliz_barless_under_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_under_ADJ_secondary",
+            "name": "m_snout_synthliz_barless_under_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_under_ADJ_tertiary",
+            "name": "m_snout_synthliz_barless_under_tertiary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_over_ADJ_primary",
+            "name": "m_snout_synthliz_barless_over_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_over_ADJ_secondary",
+            "name": "m_snout_synthliz_barless_over_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_over_ADJ_tertiary",
+            "name": "m_snout_synthliz_barless_over_tertiary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_tert_ADJ_primary",
+            "name": "m_snout_synthliz_barless_tert_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_tert_ADJ_tertiary",
+            "name": "m_snout_synthliz_barless_tert_tertiary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_tertunder_ADJ_primary",
+            "name": "m_snout_synthliz_barless_tertunder_primary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_tertunder_ADJ_secondary",
+            "name": "m_snout_synthliz_barless_tertunder_secondary",
             "directions": 4
         },
         {
-            "name": "m_snout_synthliz_barless_tertunder_ADJ_tertiary",
+            "name": "m_snout_synthliz_barless_tertunder_tertiary",
             "directions": 4
         }
     ]
