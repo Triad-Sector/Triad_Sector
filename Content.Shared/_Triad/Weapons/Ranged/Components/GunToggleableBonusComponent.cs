@@ -38,7 +38,7 @@ public sealed partial class GunToggleableBonusComponent : Component
     public float BonusFireRate = 0f;
 
     /// <summary>
-    /// Whether this gun can be shot if it is toggled.
+    /// If true, the gun can only be shot if toggled.
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool RequiresToggle = true;
