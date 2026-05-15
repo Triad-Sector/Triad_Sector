@@ -2,7 +2,7 @@ using Content.Shared.Examine;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._Triad.Shipyard;
+namespace Content.Shared._Triad.Shipyard.Save.Contraband;
 
 public sealed class SavingContrabandSystem : EntitySystem
 {

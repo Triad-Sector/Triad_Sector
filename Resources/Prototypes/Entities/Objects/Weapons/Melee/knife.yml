@@ -73,6 +73,7 @@
     guides:
     - Chef
     - FoodRecipes
+  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   name: butcher's cleaver
@@ -104,6 +105,7 @@
     speed: 0.3
   - type: BoneSaw # Shitmed: Better than tg 25% because its a cleaver its meant to hack off limbs
     speed: 0.5
+  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   name: combat knife

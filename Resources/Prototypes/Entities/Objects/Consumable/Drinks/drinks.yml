@@ -92,6 +92,7 @@
   - type: Tag
     tags:
       - DrinkGlass
+  - type: HLPersistOnShipSave # Triad
 
 # Transformable container - normal glass
 - type: entity
