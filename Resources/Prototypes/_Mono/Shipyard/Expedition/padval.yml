@@ -8,7 +8,7 @@
   id: Padval
   parent: BaseVessel
   name: PB Padval
-  description: The Padval is a factory and store, all in one. This ship is dedicated to producing goods to sell to the colossus sector at large. 
+  description: The Padval is a factory and store, all in one. This ship is dedicated to producing goods to sell to the triad sector at large.
   price: 79000 # i think this price is fair because its only really good for making stuff in techfabs and being a mobile store
   category: Medium
   group: Expedition

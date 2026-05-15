@@ -31,7 +31,7 @@ trait-language-tradeband-desc =
 
 trait-language-freespeak-name = Asher
 trait-language-freespeak-desc =
-    A rarely heard language outside of the colossus sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space.
+    A rarely heard language outside of the triad sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space.
     Usually equated to slurred speach, relying more on tone to have the words mean something.
 
 trait-language-elyran-name = Elyran

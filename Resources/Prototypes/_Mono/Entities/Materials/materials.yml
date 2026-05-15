@@ -145,7 +145,7 @@
   parent: MaterialBase
   id: SheetPlastitanium
   name: plastitanium
-  description: An advanced, high-strength alloy. Even if it's extremely abundant in core sectors, it is hard to find in the Colossus region.
+  description: An advanced, high-strength alloy. Even if it's extremely abundant in core sectors, it is hard to find in the Triad region.
   suffix: 15
   components:
   - type: Sprite

@@ -1,0 +1,11 @@
+- type: guideEntry
+  id: BasicLore
+  name: Lore
+  text: "/ServerInfo/Guidebook/Lore/Primer.xml"
+  children:
+  - Timeline
+
+- type: guideEntry
+  id: Timeline
+  name: Full Timeline
+  text: "/ServerInfo/Guidebook/Lore/Timeline.xml"

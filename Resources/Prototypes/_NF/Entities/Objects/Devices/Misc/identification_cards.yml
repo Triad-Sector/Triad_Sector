@@ -205,8 +205,8 @@
 - type: entity
   parent: CCServiceWorkerIDCard
   id: CCServiceWorkerNFIDCard #Mono
-  name: colossus sector service ID card
-  description: An identification card belonging to a service worker in the Colossus Sector.
+  name: triad sector service ID card
+  description: An identification card belonging to a service worker in the Triad Sector.
   components: 
   - type: PresetIdCard
     job: ServiceWorker
