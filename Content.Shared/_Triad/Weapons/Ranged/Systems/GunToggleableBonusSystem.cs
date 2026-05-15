@@ -77,7 +77,7 @@ public sealed class GunToggleableBonusSystem : EntitySystem
         if (!TryComp<ItemToggleComponent>(ent.Owner, out var toggle))
             return;
 
-        if (!args.CanAccess || !args.CanInteract || !toggle.OnAltUse)
+        if (!args.CanAccess || !args.CanInteract)
             return;
 
         var user = args.User;
