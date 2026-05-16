@@ -675,7 +675,7 @@
 
 - type: entity
   id: Biogenerator
-  parent: BaseLathe
+  parent: BaseLatheLube
   name: biogenerator
   description: Converts plants into biomass, which can be used to construct useful items.
   components:
@@ -782,7 +782,7 @@
     - AdvancedSmelting
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube
   id: Sheetifier
   name: sheet-meister 2000
   description: A very sheety machine.
@@ -812,7 +812,7 @@
     - SheetifierStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube
   id: CutterMachine
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
@@ -861,7 +861,7 @@
 # Shitmed Change Start
 - type: entity
   id: MedicalBiofabricator
-  parent: BaseLathe
+  parent: BaseLatheLube
   name: medical biofabricator
   description: Produces organs and other organic matter that can be surgically grafted onto patients with biomass.
   components:
