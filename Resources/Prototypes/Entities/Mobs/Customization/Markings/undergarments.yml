@@ -1,11 +1,11 @@
 # These options are kept very sparse to not put emphasis on nudity, and to provide a base for players to feel comfortable with.
-# It's unlikely more will be added to upstream for cosmetic reasons. 
+# It's unlikely more will be added to upstream for cosmetic reasons.
 
 - type: marking
   id: UndergarmentBottomBoxers
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
-  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Asakim, Protogen] # Triad - Underwear.
+  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Protogen] # Triad - Underwear.
   coloring:
     default:
       type: null
@@ -18,7 +18,7 @@
   id: UndergarmentBottomBriefs
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
-  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Asakim, Protogen] # Triad - Underwear.
+  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Protogen] # Triad - Underwear.
   coloring:
     default:
       type: null
@@ -31,7 +31,7 @@
   id: UndergarmentBottomSatin
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
-  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Asakim, Protogen] # Triad - Underwear.
+  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Protogen] # Triad - Underwear.
   coloring:
     default:
       type: null
@@ -187,7 +187,7 @@
   id: UndergarmentBottomBoxersReptilian
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Asakim] # Triad - Underwear.
   coloring:
     default:
       type: null
@@ -200,7 +200,7 @@
   id: UndergarmentBottomBriefsReptilian
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Asakim] # Triad - Underwear.
   coloring:
     default:
       type: null
