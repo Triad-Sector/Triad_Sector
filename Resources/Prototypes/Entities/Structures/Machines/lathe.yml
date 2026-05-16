@@ -425,7 +425,7 @@
 
 - type: entity
   id: Biofabricator
-  parent: BaseLatheLube
+  parent: BaseLatheLube # Triad
   name: biocube fabricator
   description: Produces animal cubes using biomass.
   components:
