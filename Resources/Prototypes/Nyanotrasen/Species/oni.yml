@@ -35,6 +35,14 @@
     Snout:
       points: 2
       required: false
+    # Triad changes - Underwear.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # End Triad.
     Chest:
       points: 4 # Frontier 1<4
       required: false

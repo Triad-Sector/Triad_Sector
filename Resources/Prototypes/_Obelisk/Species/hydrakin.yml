@@ -26,6 +26,8 @@
     Head: MobHydrakinHead
     Hair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear.
+    UndergarmentBottom: MobHumanoidAnyMarking # Triad - Underwear.
     Chest: MobHydrakinTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -67,6 +69,14 @@
       points: 1
       required: true
       defaultMarkings: [ HydrakinEarsDefault ]
+    # Triad changes - Underwear.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # End Triad.
     Chest:
       points: 4
       required: false

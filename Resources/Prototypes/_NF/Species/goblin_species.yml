@@ -21,6 +21,8 @@
     Head: MobGoblinHead
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear.
+    UndergarmentBottom: MobHumanoidAnyMarking # Triad - Underwear.
     Chest: MobGoblinTorso
     Eyes: MobGoblinEyes
     LArm: MobGoblinLArm
@@ -50,6 +52,14 @@
       points: 2
       required: false
 #      defaultMarkings: [ GoblinNoseBasic ]
+    # Triad changes - Underwear.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # End Triad.
     Chest:
       points: 1
       required: false
