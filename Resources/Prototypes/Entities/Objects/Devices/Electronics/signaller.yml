@@ -41,6 +41,7 @@
       path: /Audio/_Goobstation/Items/handling/component_drop.ogg
       params:
         volume: -2
+  - type: SavingContraband
   # Goobstation edit end
 
 - type: entity

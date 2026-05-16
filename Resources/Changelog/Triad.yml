@@ -603,3 +603,37 @@ Entries:
   id: 2196
   time: '2026-05-15T16:06:13.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/79
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Remove shield ability to activate on item toggle
+  id: 2197
+  time: '2026-05-15T18:50:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/75
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed lights inside of prebuilt fixtures being replaced on ship load,
+        meaning your custom lights will save correctly.
+  id: 2198
+  time: '2026-05-15T21:52:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/85
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added examine texts for objects that persist upon ship save!
+    - type: Tweak
+      message: Glass cups, kitchen knives/cleavers, and bowls now persist on ship save
+  id: 2199
+  time: '2026-05-15T22:09:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/84
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: 'Fix puddle making your ship unsavable '
+    - type: Tweak
+      message: Remove remote signaler on save
+  id: 2200
+  time: '2026-05-15T22:45:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/82

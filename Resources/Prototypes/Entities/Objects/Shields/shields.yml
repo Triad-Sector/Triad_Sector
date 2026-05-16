@@ -384,6 +384,7 @@
         params:
           variation: 0.250
       # WD EDIT END
+      onActivate: false # Triad
     - type: ItemToggleActiveSound
       activeSound:
         path: /Audio/Weapons/ebladehum.ogg

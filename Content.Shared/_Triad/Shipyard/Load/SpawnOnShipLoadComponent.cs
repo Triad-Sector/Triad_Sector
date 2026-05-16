@@ -1,7 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Triad.Shipyard;
+namespace Content.Shared._Triad.Shipyard.Load;
 
 /// <summary>
 /// Spawns an entity when a ship is loaded from a player's saved ships.

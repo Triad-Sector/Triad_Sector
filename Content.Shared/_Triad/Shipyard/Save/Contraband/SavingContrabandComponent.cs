@@ -1,4 +1,4 @@
-namespace Content.Shared._Triad.Shipyard;
+namespace Content.Shared._Triad.Shipyard.Save.Contraband;
 
 /// <summary>
 /// Entities with this component will not be saved when a ship is saved.

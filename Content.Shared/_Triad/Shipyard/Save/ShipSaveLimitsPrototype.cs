@@ -1,6 +1,6 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Triad.Shipyard;
+namespace Content.Shared._Triad.Shipyard.Save;
 
 /// <summary>
 /// Defines the limits of how many entities with the same limit ID can be saved when saving a ship.
