@@ -12,6 +12,31 @@
   id: Timeline
   name: Full Timeline
   text: "/ServerInfo/Guidebook/Lore/Timeline.xml"
+  children:
+  - CorporateWar
+  - FiftyYearWar
+  - TheGreatTurnover
+  - TheFalseHope
+
+- type: guideEntry
+  id: CorporateWar
+  name: The Corporate War
+  text: "/ServerInfo/Guidebook/Lore/Timeline/CorporateWar.xml"
+
+- type: guideEntry
+  id: FiftyYearWar
+  name: The 50-Year War
+  text: "/ServerInfo/Guidebook/Lore/Timeline/FiftyYearWar.xml"
+
+- type: guideEntry
+  id: TheGreatTurnover
+  name: The Great Turnover
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheGreatTurnover.xml"
+
+- type: guideEntry
+  id: TheFalseHope
+  name: The False Hope
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheFalseHope.xml"
 
 # Factions
 - type: guideEntry
