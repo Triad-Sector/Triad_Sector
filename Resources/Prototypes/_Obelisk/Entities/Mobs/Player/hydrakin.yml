@@ -3,3 +3,9 @@
   name: Urist McHydra
   parent: BaseMobHydrakin
   id: MobHydrakin
+  # Triad changes - Remove default undergarments.
+  components:
+  - type: HumanoidAppearance
+    undergarmentTop: null
+    undergarmentBottom: null
+  # End Triad

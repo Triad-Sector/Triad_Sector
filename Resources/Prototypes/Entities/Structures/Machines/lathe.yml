@@ -425,7 +425,7 @@
 
 - type: entity
   id: Biofabricator
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   name: biocube fabricator
   description: Produces animal cubes using biomass.
   components:
@@ -624,7 +624,7 @@
     id: Techfab
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   id: UniformPrinter
   name: uniform printer
   description: Prints new or replacement uniforms.
@@ -675,7 +675,7 @@
 
 - type: entity
   id: Biogenerator
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   name: biogenerator
   description: Converts plants into biomass, which can be used to construct useful items.
   components:
@@ -727,7 +727,7 @@
     - NFBioGenIngredientsDangerous # Frontier
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad, change this machine into lubable lathe, removes the oresiloclient type
   id: OreProcessor
   name: ore processor
   description: It produces sheets and ingots using ores.
@@ -761,7 +761,6 @@
     - RGlassSmelting
   - type: PlaceableSurface # DeltaV: Allow ore bags to dump into it directly
     isPlaceable: false # but not place on it if you just click it with a random item
-  - type: OreSiloClient #Gives silo access to ore holding
 
 - type: entity
   parent: OreProcessor
@@ -782,7 +781,7 @@
     - AdvancedSmelting
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   id: Sheetifier
   name: sheet-meister 2000
   description: A very sheety machine.
@@ -812,7 +811,7 @@
     - SheetifierStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   id: CutterMachine
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
@@ -861,7 +860,7 @@
 # Shitmed Change Start
 - type: entity
   id: MedicalBiofabricator
-  parent: BaseLathe
+  parent: BaseLatheLube # Triad
   name: medical biofabricator
   description: Produces organs and other organic matter that can be surgically grafted onto patients with biomass.
   components:

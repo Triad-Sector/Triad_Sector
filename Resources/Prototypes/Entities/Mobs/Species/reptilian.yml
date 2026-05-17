@@ -11,6 +11,7 @@
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
+    undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Hunger
   - type: Puller
     needsHands: false
@@ -168,6 +169,7 @@
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
+    undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Inventory
     speciesId: reptilian
     # WWDP-Edit-Start

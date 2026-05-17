@@ -18,6 +18,8 @@
     Head: MobMothHead
     Hair: MobHumanoidAnyMarking # Mono
     Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobMothTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -64,6 +66,12 @@
       required: false
     Head:
       points: 4 # imp 1<4
+      required: false
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
       required: false
     Chest:
       points: 4 # imp 1<4
