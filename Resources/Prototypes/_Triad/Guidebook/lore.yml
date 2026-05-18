@@ -17,6 +17,9 @@
   - FiftyYearWar
   - TheGreatTurnover
   - TheFalseHope
+  - TheFanaticDoctrine
+  - PickingUpThePieces
+  - PresentDay
 
 - type: guideEntry
   id: CorporateWar
@@ -37,6 +40,21 @@
   id: TheFalseHope
   name: The False Hope
   text: "/ServerInfo/Guidebook/Lore/Timeline/TheFalseHope.xml"
+
+- type: guideEntry
+  id: TheFanaticDoctrine
+  name: The Fanatic Doctrine
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheFanaticDoctrine.xml"
+
+- type: guideEntry
+  id: PickingUpThePieces
+  name: Picking Up The Pieces
+  text: "/ServerInfo/Guidebook/Lore/Timeline/PickingUpThePieces.xml"
+
+- type: guideEntry
+  id: PresentDay
+  name: Present Day
+  text: "/ServerInfo/Guidebook/Lore/Timeline/PresentDay.xml"
 
 # Factions
 - type: guideEntry
