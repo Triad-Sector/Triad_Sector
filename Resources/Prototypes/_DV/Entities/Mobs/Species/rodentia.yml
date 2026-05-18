@@ -47,6 +47,8 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ] # Triad - Underwear.
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ] # Triad - Underwear.
       - map: [ "jumpsuit" ]
       - map: [ "balaclava" ]
       - map: [ "enum.HumanoidVisualLayers.LHand" ]
