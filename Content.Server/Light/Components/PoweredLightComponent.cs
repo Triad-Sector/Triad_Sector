@@ -6,13 +6,14 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Content.Server._NF.Shipyard.Systems; // Triad
 
 namespace Content.Server.Light.Components
 {
     /// <summary>
     ///     Component that represents a wall light. It has a light bulb that can be replaced when broken.
     /// </summary>
-    [RegisterComponent, Access(typeof(PoweredLightSystem))]
+    [RegisterComponent, Access(typeof(PoweredLightSystem), typeof(ShipyardGridSaveSystem))] // Triad add ShipyardGridSaveSystem
     public sealed partial class PoweredLightComponent : Component
     {
         [DataField("burnHandSound")]

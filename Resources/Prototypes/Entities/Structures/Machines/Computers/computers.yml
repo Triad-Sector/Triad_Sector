@@ -501,7 +501,6 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
-  - type: SavingContraband
 
 - type: entity
   parent: BaseComputerAiAccess

@@ -17,6 +17,12 @@
       - Store
       - Cash
       - Headset
+      - SavingContraband
+  - type: RadarBlip
+    radarColor: "#e3ffea"
+    scale: 1.5
+    requireNoGrid: true
+    shape: square
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -53,6 +59,13 @@
       node: MilitaryStorageStashNode
     - type: ShipSaveLimit
       limitId: MilitaryStash
+    - type: LimitedStorage
+      limits:
+      - popup: triad-storage-limit-too-many-advanced-backpacks
+        count: 1
+        whitelist:
+          tags:
+          - AdvancedTacticalBackpack
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -73,7 +86,6 @@
         components:
           - Pill
           - Hypospray
-          - MedicalBag
           - HandLabeler
         tags:
           - FitsInMedicalStash

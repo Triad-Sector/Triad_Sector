@@ -18,6 +18,8 @@
     Special: MobAsakimAnyMarking
     Head: MobAsakimHead
     HeadTop: MobAsakimAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear. If an Asakim somehow manages to get underwear, it's earned it.
+    UndergarmentBottom: MobHumanoidAnyMarking # Triad - Underwear.
     Chest: MobAsakimTorso
     Tail: MobHumanoidAnyMarking
     Eyes: MobAsakimEyes
@@ -147,6 +149,14 @@
     HeadSide:
       points: 2 # WWDP-Edit
       required: false
+    # Triad changes - Underwear.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # End Triad.
     Chest:
       points: 3
       required: false

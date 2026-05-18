@@ -17,6 +17,8 @@
     - HandLabeler
     - Signaller
     - ClothingMaskWeldingGas
+    - SprayPainter
+    - SprayPainterAmmo # Upstream#37341
   ## Basic storage
     - ToolboxArtisticNF
     - ToolboxElectricalNF

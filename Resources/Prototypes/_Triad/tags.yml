@@ -4,7 +4,7 @@
 
 - type: Tag
   id: FitsInMedicalStash
-  
+
 # Melee Weapons
 - type: Tag
   id: Cutlass
@@ -14,3 +14,7 @@
 
 - type: Tag
   id: Sword
+
+# Clothing
+- type: Tag
+  id: AdvancedTacticalBackpack

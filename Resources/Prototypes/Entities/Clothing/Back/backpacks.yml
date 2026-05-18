@@ -228,6 +228,11 @@
     - 0,0,10,3
   - type: ExplosionResistance # Goobstation
     damageCoefficient: 0.1
+  # Triad Start
+  - type: Tag
+    tags:
+    - AdvancedTacticalBackpack
+  # Triad End
 
 - type: entity
   parent: ClothingBackpackERTLeader

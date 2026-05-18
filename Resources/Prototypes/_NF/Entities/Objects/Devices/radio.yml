@@ -27,6 +27,7 @@
     heldPrefix: walkietalkie
   - type: Tag  # Mono
     tags:
+    - Radio # Triad
     - HandicommsBounty
   # Nuclear-14-Start
   - type: ActivatableUI

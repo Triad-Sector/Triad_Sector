@@ -18,3 +18,15 @@
   storage:
     back:
     - BoxSurvivalMonoNitrogenExtended
+
+# Triad Start
+- type: loadout
+  id: ContractorBoxSurvivalTriadWaterVaporExtended
+  name: extended-water vapor survival box
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: WaterBreatherNF
+  storage:
+    back:
+    - BoxSurvivalTriadWaterVaporExtended
+# Triad End

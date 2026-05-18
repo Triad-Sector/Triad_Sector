@@ -487,3 +487,205 @@ Entries:
   id: 2185
   time: '2026-05-12T14:26:09.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/63
+- author: Minerva
+  changes:
+    - type: Fix
+      message: The guidebook now properly links to Triad rules.
+  id: 2186
+  time: '2026-05-13T12:50:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/65
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Canisters now save with ships without needing to anchor them.
+  id: 2187
+  time: '2026-05-13T12:50:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/66
+- author: VividPups
+  changes:
+    - type: Add
+      message: >-
+        Added Kitsune markings from Delta-V, available to vulps, humans, and
+        felinids.
+    - type: Add
+      message: >-
+        Added scars and blush markings from Delta-V, Vox-specific scars are
+        available for voxes!
+    - type: Add
+      message: Added new tattoo markings from Delta-V
+  id: 2188
+  time: '2026-05-13T18:44:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/67
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the Feroxi species, a shark-like species of humanoids! They can
+        breathe water vapor. Check out the species guidebook for their other
+        features!
+  id: 2189
+  time: '2026-05-13T22:01:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/70
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add NFTreasure tag to other kind of loot
+  id: 2190
+  time: '2026-05-14T17:07:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/72
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add radar blip when off grid stash
+  id: 2191
+  time: '2026-05-14T17:07:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/71
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed resomi and vox having error on certain modsuits.
+  id: 2192
+  time: '2026-05-14T19:32:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/74
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Medkits can only fit medical items and things like beakers now
+    - type: Fix
+      message: >-
+        Fixed stashes being able to physically fit items marked as save
+        contraband
+    - type: Tweak
+      message: >-
+        Changed the size of the advanced tactical backpack to be bigger. Now a
+        5x5, from a 4x4
+  id: 2193
+  time: '2026-05-14T20:53:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/73
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Change 60% to 30% ship appraisal value for load price.
+  id: 2194
+  time: '2026-05-15T10:58:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/81
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Tactical backpacks are now 4x4 again.
+    - type: Tweak
+      message: You can only fit 1 tactical backpack into a military stash,
+  id: 2195
+  time: '2026-05-15T16:05:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/78
+- author: Monolith
+  changes:
+    - type: Fix
+      message: Fixed reactor explosions being too weak
+    - type: Fix
+      message: Crystallizer GUI can no longer be accessed by Ghosts.
+    - type: Fix
+      message: grammar corrections
+    - type: Add
+      message: Retextured most grenades, and changed flashbang & smoke grenade SFX.
+    - type: Add
+      message: >-
+        Added ambient occlusion to walls so they have shadows around them.
+        Ported from Wizden.
+    - type: Add
+      message: Added AP/HP/RIP for 6.8x52mm finally.
+    - type: Add
+      message: >-
+        Added Lithium & Copper for future industry/economy reworks. Currently
+        serves no purpose until then except for money.
+    - type: Add
+      message: multiple admin tools
+  id: 2196
+  time: '2026-05-15T16:06:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/79
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Remove shield ability to activate on item toggle
+  id: 2197
+  time: '2026-05-15T18:50:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/75
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed lights inside of prebuilt fixtures being replaced on ship load,
+        meaning your custom lights will save correctly.
+  id: 2198
+  time: '2026-05-15T21:52:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/85
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added examine texts for objects that persist upon ship save!
+    - type: Tweak
+      message: Glass cups, kitchen knives/cleavers, and bowls now persist on ship save
+  id: 2199
+  time: '2026-05-15T22:09:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/84
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: 'Fix puddle making your ship unsavable '
+    - type: Tweak
+      message: Remove remote signaler on save
+  id: 2200
+  time: '2026-05-15T22:45:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/82
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: 'Fixed medsec hud recipe '
+  id: 2201
+  time: '2026-05-16T22:19:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/93
+- author: mnva0
+  changes:
+    - type: Add
+      message: >-
+        Top and bottom undergarments can now be found in the Markings tab of the
+        character creator.
+    - type: Add
+      message: >-
+        The Accessibility tab of Options now has a Censor Nudity Toggle, which
+        adds undergarments to all characters on your client. Undergarments
+        selected in the character creator take priority.
+    - type: Remove
+      message: >-
+        The following species were not given undergarments due to sprite body
+        shape reasons: Resomi, Hydrakin. Reptilian legs don't quite fit into
+        bottom undergarments, but they have kept access to those markings.
+  id: 2202
+  time: '2026-05-17T02:46:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/90
+- author: Onezero0
+  changes:
+    - type: Add
+      message: >-
+        Added the LAPC (Large APC) substation, which can turn HV power directly
+        into LV power. They can be built using APC electronics in a machine
+        frame.
+  id: 2203
+  time: '2026-05-17T03:37:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/86
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: >-
+        Biogen, Biocube, Cutter, Med Fab, Sheetmeister & Uniform machines should
+        now be able to be linked the the Material Silo
+  id: 2204
+  time: '2026-05-17T06:22:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/89
+- author: Erol509
+  changes:
+    - type: Add
+      message: Added several new synthetic lizard related markings to IPC
+  id: 2205
+  time: '2026-05-17T06:24:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/80

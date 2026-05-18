@@ -98,7 +98,7 @@ public sealed class HLCCVars
 
     /// <summary>
     ///     Goobstation: Whether or not to allow mech weaponry to be used out of mechs.
-    /// </summary>
-    public static readonly CVarDef<bool> MechGunOutsideMech =
-        CVarDef.Create("mech.gun_outside_mech", false, CVar.SERVERONLY, desc: "If true, allows mech weapons to be used outside of mechs.");
+    /// </summary> Triad, commented this out as monolith already has this cvar.
+    //public static readonly CVarDef<bool> MechGunOutsideMech =
+        //CVarDef.Create("mech.gun_outside_mech", false, CVar.SERVERONLY, desc: "If true, allows mech weapons to be used outside of mechs.");
 }

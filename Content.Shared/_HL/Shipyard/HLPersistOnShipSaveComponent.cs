@@ -1,6 +1,4 @@
-using Content.Shared._NF.Shipyard.Prototypes;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._HL.Shipyard;
 

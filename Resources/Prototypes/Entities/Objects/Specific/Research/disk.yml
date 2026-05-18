@@ -5,6 +5,7 @@
   description: A disk for the R&D server containing 10000 points.
   components:
   # Goobstation edit start
+  - type: NFTreasure # Triad
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/handling/disk_pickup.ogg
