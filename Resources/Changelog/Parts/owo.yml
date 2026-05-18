@@ -1,0 +1,8 @@
+author: Sigmund and TheRealMasterChief117
+changes:
+  - type: Add
+    message: Lore has been added to the server! Check your guidebooks, there is a somewhat small primer alongside the full timeline of the sector.
+  - type: Remove
+    message: Some companies have been disabled due to non-compliance with our current lore.
+  - type: Tweak
+    message: PDAs now display the current in-universe date! It was 2828 all along.
