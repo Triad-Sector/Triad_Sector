@@ -1,15 +1,15 @@
 - type: entity
   parent: ClothingOuterHardsuitSyndie
   id: ClothingOuterHardsuitViperGroupStandard
-  categories: [DoNotMap]
+  categories: [DoNotMap, HideSpawnMenu]
 
 - type: entity
   parent: ClothingOuterHardsuitSyndieMedic
   id: ClothingOuterHardsuitViperGroupMedic
-  categories: [DoNotMap]
+  categories: [DoNotMap, HideSpawnMenu]
 
 - type: entity
   parent: ClothingOuterHardsuitSyndieElite
   id: ClothingOuterHardsuitViperGroupJuggernaut
-  categories: [DoNotMap]
+  categories: [DoNotMap, HideSpawnMenu]
   # Triad, removed viper group
