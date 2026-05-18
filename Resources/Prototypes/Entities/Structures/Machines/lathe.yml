@@ -511,7 +511,7 @@
     - MonoRogueWeaponsDynamicRanged
     - MonoRogueMiscDynamic
     - MonoUSSPMiscDynamic
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic, Triad, removed
     - MonoUSSPWeaponsDynamicRanged
     - UniversalShellAmmo
     - ResearchedExplosives

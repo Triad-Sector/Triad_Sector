@@ -46,7 +46,7 @@
     - MonoUSSPMiscDynamic
     - MonoUSSPWeaponsDynamicRanged
     # Viper Group start
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
