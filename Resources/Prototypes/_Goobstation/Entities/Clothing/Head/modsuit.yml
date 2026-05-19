@@ -106,6 +106,8 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:
@@ -160,7 +162,7 @@
       - state: equipped-HEAD
       head-vox:
       - state: equipped-HEAD-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-vulpkanin
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Modsuits/security.rsi
@@ -173,7 +175,7 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
@@ -231,7 +233,7 @@
       - state: equipped-HEAD-resomi
       head-vox:
       - state: equipped-HEAD-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-vulpkanin
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Modsuits/headofsecurity.rsi
@@ -244,7 +246,7 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
@@ -402,7 +404,7 @@
       - state: equipped-HEAD
       head-vox:
       - state: equipped-HEAD-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-vulpkanin
   - type: SealableClothingVisuals
     spriteLayer: sealed
@@ -411,7 +413,7 @@
       - state: equipped-HEAD-sealed
       head-vox:
       - state: equipped-HEAD-sealed-vox
-      head-vulpkanin: # Mono
+      head-vulpkanin:
       - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
