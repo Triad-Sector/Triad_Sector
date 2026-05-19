@@ -54,6 +54,9 @@
       head-avali: #Starlight
       - state: equipped-head-light-avali
         shader: unshaded
+      head-vulpkanin: # Mono
+      - state: equipped-head-vulpkanin
+      - state: equipped-head-unshaded-vulpkanin
   - type: Clothing
     clothingVisuals:
       head:
@@ -68,6 +71,9 @@
       - state: equipped-head-avali
       - state: equipped-head-unshaded-avali
         shader: unshaded
+      head-vulpkanin: # Mono
+      - state: equipped-head-vulpkanin
+      - state: equipped-head-unshaded-vulpkanin
   - type: PointLight
     color: "#adffe6"
   - type: PressureProtection
@@ -126,6 +132,9 @@
       head-avali: # Starlight
       - state: equipped-head-light-avali
         shader: unshaded
+      head-vulpkanin: # Triad
+      - state: equipped-head-light-vulpkanin
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -143,6 +152,10 @@
       head-avali: # Starlight
       - state: equipped-head-avali
       - state: equipped-head-unshaded-avali
+        shader: unshaded
+      head-vulpkanin: # Mono
+      - state: equipped-head-vulpkanin
+      - state: equipped-head-unshaded-vulpkanin
         shader: unshaded
   - type: PointLight
     radius: 7 #6->7 Mono
