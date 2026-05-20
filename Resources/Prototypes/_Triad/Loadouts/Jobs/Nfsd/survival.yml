@@ -1,0 +1,20 @@
+#T1
+- type: loadout
+  id: NfsdBoxSurvivalNfsdOxygen
+  name: extended-oxygen survival box
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreatherNF
+  storage:
+    back:
+    - BoxSurvivalMonoOxygenExtended
+
+- type: loadout
+  id: NfsdBoxSurvivalNfsdNitrogen
+  name: extended-nitrogen survival box
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreatherNF
+  storage:
+    back:
+    - BoxSurvivalMonoNitrogenExtended

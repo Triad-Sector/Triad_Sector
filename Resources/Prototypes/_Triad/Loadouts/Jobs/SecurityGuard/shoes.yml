@@ -1,0 +1,7 @@
+- type: loadout
+  id: LeatherShoes
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  equipment:
+    shoes: ClothingShoesLeather

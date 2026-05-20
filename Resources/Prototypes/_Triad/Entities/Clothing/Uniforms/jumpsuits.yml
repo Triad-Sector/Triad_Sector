@@ -1,0 +1,36 @@
+# Triad Defense Force
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfJunior
+  name: TDF junior enforcer tactical jumpsuit
+  description: A tactical jumpsuit for junior enforcers in the field. A gold-colored 'C' is emblazoned on the back.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/junior_enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfCombatMedic
+  name: TDF combat medic jumpsuit
+  description: A tactical jumpsuit for TDF medics in the field, sporting a blue cross.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/combat_medic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfEnforcer
+  name: TDF enforcer tactical jumpsuit
+  description: A tactical jumpsuit for enforcers in the field.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfSectionLeader
+  name: TDF section leader tactical jumpsuit
+  description: A tactical jumpsuit for section leaders in the field, sporting a double armband.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/section_leader.rsi

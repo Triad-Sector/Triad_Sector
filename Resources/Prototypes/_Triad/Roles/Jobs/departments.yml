@@ -1,0 +1,13 @@
+- type: department
+  id: Security
+  name: department-TriadDefenseForce
+  description: department-TriadDefenseForce-description
+  color: "#FFD580"
+  weight: 120
+  roles:
+  - ChiefEnforcer
+  - TDFWarden
+  - SectionLeader
+  - Enforcer
+  - CombatMedic
+  - JuniorEnforcer

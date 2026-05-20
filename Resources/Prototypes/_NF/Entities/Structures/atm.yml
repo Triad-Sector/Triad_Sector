@@ -277,13 +277,13 @@
 - type: entity
   parent: BaseStationAdminBankATM
   id: StationAdminBankATMNfsd
-  description: Used to transfer funds to and from TSFMC-FOB's bank account.
-  suffix: TSFMC
+  description: Used to transfer funds to and from TDF bank account. # Triad, changes for TDF
+  suffix: TDF # Triad
   components:
   - type: StationBankATM
-    account: Nfsd
+    account: Tdf # Triad
   - type: CompanyAccessReader
-    requiredCompany: TSF
+    requiredCompany: TDF # Triad
 
 - type: entity
   parent: BaseStationAdminBankATM

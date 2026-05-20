@@ -1,0 +1,23 @@
+- type: loadoutGroup
+  id: TdfMedicGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - NitrileGloves
+  - LatexGloves
+  - MercenaryClothingHandsGlovesTacticalCombatBlack
+  fallbacks:
+  - NitrileGloves
+
+- type: loadoutGroup
+  id: TdfMedicBelt
+  name: loadout-group-contractor-belt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - TdfCombatWebbingMedical
+  - TdfCombatWebbing
+  - TdfCombatWebbingLarge
+  fallbacks:
+  - TdfCombatWebbingMedical
