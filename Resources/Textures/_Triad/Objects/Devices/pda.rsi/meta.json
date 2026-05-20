@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "TDF PDA sprites made by chadosmen (Discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pda-chief-enforcer"
+        },
+        {
+            "name": "pda-junior-enforcer"
+        },
+        {
+            "name": "pda-enforcer"
+        },
+        {
+            "name": "pda-medic"
+        },
+        {
+            "name": "pda-warden"
+        }
+    ]
+}
