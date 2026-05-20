@@ -47,7 +47,7 @@ public sealed partial class IdCardConsoleComponent : Component
     {
         "Armory",
         //"Atmospherics",
-        "Bailiff", // Frontier
+        "TDFWarden", // Triad
         //"Bar",
         "Brig",
         "Detective",
@@ -63,7 +63,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "External",
         "Frontier", // Frontier
         "HeadOfPersonnel",
-        "HeadOfSecurity",
+        "ChiefEnforcer", // Triad
         //"Hydroponics",
         "Janitor",
         //"Kitchen",
@@ -79,7 +79,7 @@ public sealed partial class IdCardConsoleComponent : Component
         //"ResearchDirector",
         //"Salvage",
         "Security",
-        "Sergeant", // Frontier
+        "SectionLeader", // Triad
         "Service",
         "StationTrafficController", // Frontier
         //"USSP", // Mono
