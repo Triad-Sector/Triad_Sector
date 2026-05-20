@@ -3,6 +3,9 @@
 # Groups (subtabs)
 
 # Airlocks
+spray-painter-style-airlockstandard-tdf = TDF
+
+spray-painter-style-airlockglass-tdf = TDF
 
 # Lockers
 

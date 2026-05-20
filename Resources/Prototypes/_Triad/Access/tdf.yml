@@ -1,0 +1,50 @@
+- type: accessLevel
+  id: ChiefEnforcer
+  name: id-card-access-level-chief-enforcer
+
+- type: accessLevel
+  id: SectionLeader
+  name: id-card-access-level-section-leader
+
+- type: accessLevel
+  id: TDFWarden
+  name: id-card-access-level-tdf-warden
+
+- type: accessGroup
+  id: CadetTdfAccess
+  tags:
+  - Maintenance
+  - External
+  - Security
+  - Brig
+
+- type: accessGroup
+  id: GeneralTdfAccess
+  tags:
+  - Maintenance
+  - External
+  - Command
+  - Brig
+  - Security
+  - Mercenary
+  - Captain
+
+- type: accessGroup
+  id: GeneralTdfBrigAccess
+  tags:
+  - Maintenance
+  - External
+  - Brig
+
+- type: accessGroup
+  id: GeneralTdfMedicAccess
+  tags:
+  - Maintenance
+  - External
+  - Command
+  - Brig
+  - Security
+  - Mercenary
+  - Captain
+  - Chemistry
+  - Medical
