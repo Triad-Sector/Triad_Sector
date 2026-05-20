@@ -24,6 +24,8 @@
   canBeAntag: false
   accessGroups:
   - AllAccess
+  ranks:
+    RankChiefEnforcer: []
   special:
   - !type:AddComponentSpecial
     components:
