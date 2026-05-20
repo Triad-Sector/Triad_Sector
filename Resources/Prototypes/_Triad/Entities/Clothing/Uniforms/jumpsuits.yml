@@ -34,3 +34,21 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuit/section_leader.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfChiefEnforcer
+  name: TDF chief enforcer tactical turtleneck
+  description: A tactical turtleneck for the Chief Enforcer of the Triad Defense Force.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/chief_enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  name: chief enforcer's formal suit
+  description: A suit for special occasions.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/chief_enforcer_dress.rsi
