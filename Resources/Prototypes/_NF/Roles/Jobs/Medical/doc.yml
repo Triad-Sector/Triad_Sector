@@ -26,7 +26,7 @@
   - AllAccessSR
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
+    implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
