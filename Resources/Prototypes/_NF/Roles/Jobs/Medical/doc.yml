@@ -24,6 +24,8 @@
   canBeAntag: false
   accessGroups:
   - AllAccessSR
+  ranks: # Triad, ranks
+    RankDoC: []
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
@@ -33,6 +35,7 @@
       - type: NpcFactionMember
         factions:
         - MD # mono faction
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
       - type: SurgerySpeedModifier
         SpeedModifier: 2
   - !type:GiveItemOnHolidaySpecial
