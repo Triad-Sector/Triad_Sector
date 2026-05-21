@@ -19,9 +19,15 @@
   - GeneralTdfAccess
   - AllAccessColonial
   # Triad End
+  ranks: # Triad, ranks
+    RankEnforcer:
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard
+      time: 90000 # 25 hours
+    RankJuniorEnforcer: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
+    implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
