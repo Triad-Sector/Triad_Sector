@@ -1,9 +1,9 @@
 - type: accessLevel
-  id: ChiefEnforcer
+  id: TDFChiefEnforcer
   name: id-card-access-level-chief-enforcer
 
 - type: accessLevel
-  id: SectionLeader
+  id: TDFSectionLeader
   name: id-card-access-level-section-leader
 
 - type: accessLevel

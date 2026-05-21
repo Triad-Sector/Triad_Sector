@@ -141,7 +141,7 @@
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobChiefEnforcer
+  id: JobTDFChiefEnforcer
   groups:
   - TsfmcHead
   - TsfmcNeckCommander
