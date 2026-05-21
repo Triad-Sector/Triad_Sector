@@ -26,8 +26,8 @@
   - Research
   - Service
   - StationTrafficController # Frontier
-  - SectionLeader # Triad
-  - TDFWarden # Triad
+  - TdfSectionLeader # Triad
+  - TdfWarden # Triad
   - Maintenance
   - External
   - Janitor
