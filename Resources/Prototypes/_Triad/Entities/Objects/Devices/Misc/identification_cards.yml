@@ -4,7 +4,7 @@
   name: TDF junior enforcer ID card
   components:
   - type: PresetIdCard
-    job: TDFCadet
+    job: TdfCadet
   - type: Sprite
     sprite: _Triad/Objects/Misc/id_cards.rsi
     layers:
@@ -21,7 +21,7 @@
   name: TDF enforcer ID card
   components:
   - type: PresetIdCard
-    job: TDFEnforcer
+    job: TdfEnforcer
   - type: Sprite
     layers:
     - state: tdf
@@ -33,7 +33,7 @@
   name: TDF medic ID card
   components:
   - type: PresetIdCard
-    job: TDFMedic
+    job: TdfMedic
   - type: Sprite
     layers:
     - state: tdf
@@ -45,7 +45,7 @@
   name: TDF section leader ID card
   components:
   - type: PresetIdCard
-    job: TDFSectionLeader
+    job: TdfSectionLeader
   - type: Sprite
     layers:
     - state: tdf
@@ -57,7 +57,7 @@
   name: TDF warden ID card
   components:
   - type: PresetIdCard
-    job: TDFWarden
+    job: TdfWarden
   - type: Sprite
     layers:
     - state: tdf
@@ -69,7 +69,7 @@
   name: TDF chief enforcer ID card
   components:
   - type: PresetIdCard
-    job: TDFChiefEnforcer
+    job: TdfChiefEnforcer
   - type: Sprite
     layers:
     - state: tdf
