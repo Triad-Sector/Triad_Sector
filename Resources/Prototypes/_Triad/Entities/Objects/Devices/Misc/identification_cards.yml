@@ -1,6 +1,6 @@
 - type: entity
   parent: IDCardStandard
-  id: JuniorEnforcerIdCard
+  id: TdfJuniorEnforcerIdCard
   name: TDF junior enforcer ID card
   components:
   - type: PresetIdCard
@@ -17,7 +17,7 @@
 
 - type: entity
   parent: JuniorEnforcerIdCard
-  id: EnforcerIDCard
+  id: TdfEnforcerIDCard
   name: TDF enforcer ID card
   components:
   - type: PresetIdCard
@@ -43,7 +43,7 @@
 
 - type: entity
   parent: JuniorEnforcerIdCard
-  id: SergeantIDCard
+  id: TdfSectionLeaderIDCard
   name: TDF section leader ID card
   components:
   - type: PresetIdCard
@@ -56,7 +56,7 @@
 
 - type: entity
   parent: JuniorEnforcerIdCard
-  id: BailiffIDCard
+  id: TdfWardenIDCard
   name: TDF warden ID card
   components:
   - type: PresetIdCard
@@ -69,7 +69,7 @@
 
 - type: entity
   parent: JuniorEnforcerIdCard
-  id: ShriffIDCard
+  id: TdfChiefIDCard
   name: TDF chief enforcer ID card
   components:
   - type: PresetIdCard

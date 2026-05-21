@@ -51,7 +51,7 @@
   description: Bummer. You're just a cadet!
   components:
   - type: Pda
-    id: TsfEngiIDCard
+    id: TdfJuniorEnforcerIdCard
     bookSlot:
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -74,7 +74,7 @@
   description: Standard issue PDA for members of the Triad Defense Force.
   components:
   - type: Pda
-    id: TsfEngiIDCard
+    id: TdfEnforcerIDCard
     bookSlot:
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -91,13 +91,21 @@
     state: pda-enforcer
 
 - type: entity
+  parent: TdfPda
+  id: TdfSectionLeaderPda
+  suffix: Section Leader
+  components:
+  - type: Pda
+    id: TdfSectionLeaderIDCard
+
+- type: entity
   parent: BaseTdfPDA
   id: TdfMedicPda
   name: TDF medical PDA
   description: It's like a TDF PDA, but sterile. Cool.
   components:
   - type: Pda
-    id: TsfEngiIDCard
+    id: TdfMedicIDCard
     bookSlot:
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -129,7 +137,7 @@
   description: The OS appears to be jailbroken.
   components:
   - type: Pda
-    id: TsfEngiIDCard
+    id: TdfWardenIDCard
     bookSlot:
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -156,7 +164,7 @@
   description: You're The Enforcer. The Law.
   components:
   - type: Pda
-    id: TsfEngiIDCard
+    id: TdfChiefIDCard
     bookSlot:
       startingItem: HyperlinkBookNfsdSop
       priority: -2
