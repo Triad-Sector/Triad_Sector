@@ -1,5 +1,13 @@
 - type: jobIcon
   parent: JobIcon
+  id: JobIconTdfChiefEnforcer
+  icon:
+    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
+    state: nfsdsheriff
+  jobName: job-name-tdf-chief-enforcer
+
+- type: jobIcon
+  parent: JobIcon
   id: JobIconTdfEnforcer
   icon:
     sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
@@ -12,7 +20,7 @@
   icon:
     sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
     state: tdfmed
-  jobName: job-name-tdf-enforcer
+  jobName: job-name-tdf-medic
 
 - type: jobIcon
   parent: JobIcon
