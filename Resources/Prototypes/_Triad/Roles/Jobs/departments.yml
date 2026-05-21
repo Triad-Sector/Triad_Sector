@@ -5,9 +5,9 @@
   color: "#FFD580"
   weight: 120
   roles:
-  - TDFChiefEnforcer
-  - TDFWarden
-  - TDFSectionLeader
-  - TDFEnforcer
-  - TDFMedic
-  - TDFJuniorEnforcer
+  - TdfChiefEnforcer
+  - TdfWarden
+  - TdfSectionLeader
+  - TdfEnforcer
+  - TdfMedic
+  - TdfCadet

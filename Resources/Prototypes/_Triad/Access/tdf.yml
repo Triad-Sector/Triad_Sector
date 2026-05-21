@@ -3,12 +3,12 @@
   name: id-card-access-level-chief-enforcer
 
 - type: accessLevel
-  id: TdfSectionLeader
-  name: id-card-access-level-section-leader
-
-- type: accessLevel
   id: TdfWarden
   name: id-card-access-level-tdf-warden
+
+- type: accessLevel
+  id: TdfSectionLeader
+  name: id-card-access-level-section-leader
 
 - type: accessGroup
   id: GeneralTdfAccess # No brig access

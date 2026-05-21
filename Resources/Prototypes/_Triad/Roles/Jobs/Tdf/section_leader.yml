@@ -1,49 +1,41 @@
 - type: job
   id: SeniorOfficer
-  name: job-name-senior-officer
-  description: job-description-senior-officer
-  playTimeTracker: JobSeniorOfficer
+  name: job-name-tdf-section-leader
+  description: job-description-section-leader
+  playTimeTracker: JobTdfSectionLeader
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 72000 # 20 hours # mono
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 # 10 hours # mono
-  startingGear: SeniorOfficerGear
-  icon: JobIconSergeant
-  supervisors: job-supervisors-sheriff
+      time: 90000 # 20 hours
+  startingGear: TdfLeaderGear
+  icon: JobIconTdfSectionLeader
+  supervisors: job-supervisors-tdf-enforcer
   weight: 140
   displayWeight: 50
-  assignedCompany: TSF
+  assignedCompany: TDF
   canBeAntag: false
+  accessGroups:
+  - GeneralTdfAccessBrig
   access:
-  - Armory
-  - Sergeant
-  - Bailiff
+  - TdfSectionLeader
   - Medical
   - Chemistry
-  - TsfmcEngineering
-  accessGroups:
-  - GeneralNfsdAccess
+  ranks:
+    RankSeniorEnforcer: []
   special:
   - !type:AddComponentSpecial
     components:
     - type: NpcFactionMember
       factions:
-      - TSFMC
+      - TDF
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
-  - !type:AddLanguageSpecial # Monolith - Languages
-    languagesSpoken:
-    - SolCommon
-    languagesUnderstood:
-    - SolCommon
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
 
 - type: startingGear
-  id: SeniorOfficerGear
+  id: TdfLeaderGear
   equipment:
     pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
   storage:

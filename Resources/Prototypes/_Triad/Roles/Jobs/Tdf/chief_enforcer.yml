@@ -1,19 +1,17 @@
 - type: job
-  id: ChiefEnforcer
+  id: TdfChiefEnforcer
   name: job-name-tdf-chief-enforcer
   description: job-description-tdf-chief-enforcer
-  playTimeTracker: JobTDFChiefEnforcer
+  playTimeTracker: JobTdfChiefEnforcer
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 72000 # 20 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 45000 # 12.5 hours
+      time: 126000 # 35 hours
     - !type:RoleTimeRequirement
-      role: JobTriadWarden
+      role: JobTdfWarden
       time: 18000 # 5 hours
   whitelisted: true
-  startingGear: ChiefEnforcerGear
+  startingGear: TdfChiefEnforcerGear
   alwaysUseSpawner: true
   icon: JobIconTdfEnforcer
   requireAdminNotify: true
@@ -24,6 +22,10 @@
   canBeAntag: false
   accessGroups:
   - AllAccess
+  access:
+  - TdfChiefEnforcer
+  - TdfWarden
+  - TdfSectionLeader
   ranks:
     RankChiefEnforcer: []
   special:
@@ -42,7 +44,7 @@
     prototype: FrontierBirthdayGift
 
 - type: startingGear
-  id: ChiefEnforcerGear
+  id: TdfChiefEnforcerGear
   equipment:
     pocket1: WeaponEnergyGunMultiphase # DeltaV gun
     pocket2: EnergySwordNfsd

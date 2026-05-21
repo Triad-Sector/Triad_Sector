@@ -18,7 +18,13 @@
   paygrade: TDF-3
 
 - type: rank
+  id: RankWarden
+  name: Warden
+  prefix: Warden
+  paygrade: TDF-4
+
+- type: rank
   id: RankChiefEnforcer
   name: Chief Enforcer
   prefix: Chief Enf.
-  paygrade: TDF-4
+  paygrade: TDF-5

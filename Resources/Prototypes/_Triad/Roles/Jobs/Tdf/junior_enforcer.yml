@@ -1,44 +1,40 @@
 - type: job
-  id: Cadet
-  name: job-name-cadet-nf
-  description: job-description-cadet-nf
-  playTimeTracker: JobSecurityCadet
+  id: TdfCadet
+  name: job-name-tdf-cadet
+  description: job-description-tdf-cadet
+  playTimeTracker: JobTdfCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 16200 # triad
+      time: 16200 # 4.5 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 # triad
+      time: 54000 # 15 hours
       inverted: true # Leave slots open for newer, less confident players.
-  startingGear: CadetGear
-  icon: JobIconCadetNF
-  supervisors: job-supervisors-cadet
+  startingGear: TdfCadetGear
+  icon: JobIconTdfCadet
+  supervisors: job-supervisors-tdf-cadet
   weight: 70
   displayWeight: 10
-  assignedCompany: TSF
+  assignedCompany: TDF
   canBeAntag: false
-  setPreference: false # mono
   accessGroups:
-  - CadetNfsdAccess
+  - CadetTdfAccess
+  ranks:
+    RankJuniorEnforcer: []
   special:
   - !type:AddComponentSpecial
     components:
     - type: NpcFactionMember
       factions:
-      - TSFMC
+      - TDF
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
-  - !type:AddLanguageSpecial # Monolith - Languages
-    languagesSpoken:
-    - SolCommon
-    languagesUnderstood:
-    - SolCommon
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
 
 - type: startingGear
-  id: CadetGear
+  id: TdfCadetGear
   equipment:
     pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
     pocket2: BookSecurity

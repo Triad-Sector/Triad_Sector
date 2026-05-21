@@ -1,2 +1,17 @@
 - type: playTimeTracker
-  id: JobTDFChiefEnforcer
+  id: JobTdfChiefEnforcer
+
+- type: playTimeTracker
+  id: JobTdfWarden
+
+- type: playTimeTracker
+  id: JobTdfSectionLeader
+
+- type: playTimeTracker
+  id: JobTdfMedic
+
+- type: playTimeTracker
+  id: JobTdfEnforcer
+
+- type: playTimeTracker
+  id: JobTdfCadet
