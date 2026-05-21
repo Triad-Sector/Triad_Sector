@@ -33,18 +33,6 @@
   - MercenaryClothingShoesBootsCombat
 
 - type: loadoutGroup
-  id: TdfBrigmedicGloves
-  name: loadout-group-contractor-gloves
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - NitrileGloves
-  - LatexGloves
-  - MercenaryClothingHandsGlovesTacticalCombatBlack
-  fallbacks:
-  - NitrileGloves
-
-- type: loadoutGroup
   id: TdfBelt
   name: loadout-group-contractor-belt
   minLimit: 1
@@ -58,13 +46,11 @@
 - type: loadoutGroup
   id: TdfFace
   name: loadout-group-contractor-face
-  minLimit: 1
+  minLimit: 0
   maxLimit: 1
   loadouts:
-  - TdfGaiter
+  - SecurityClothingMaskGasSecurity
   - TdfGasmask
-  fallbacks:
-  - TdfGaiter
 
 - type: loadoutGroup
   id: TdfBalaclava
@@ -80,45 +66,20 @@
   name: loadout-group-contractor-glasses
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
-  - TdfHud
+  - ClothingEyesHudTdf
   fallbacks:
-  - TdfHud
+  - ClothingEyesHudTdf
 
 - type: loadoutGroup
   id: TdfNeck
   name: loadout-group-contractor-neck
-  hidden: true # No point in showing this, it gets auto-selected.
-  minLimit: 1
-  loadouts:
-  - TdfClothingNeckIFFCyan
-
-- type: loadoutGroup
-  id: TdfNeckEngi
-  name: loadout-group-contractor-neck
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - TdfClothingNeckIFFOrange
-  - TdfClothingNeckIFFCyan
-
-- type: loadoutGroup
-  id: TdfNeckMedic
-  name: loadout-group-contractor-neck
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - TdfClothingNeckIFFWhite
-  - TdfClothingNeckIFFCyan
-
-- type: loadoutGroup
-  id: TdfBrigmedicGlasses
-  name: loadout-group-contractor-glasses
-  hidden: true # No point in showing this, it gets auto-selected.
-  minLimit: 1
-  loadouts:
-  - TdfMedSec
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
   fallbacks:
-  - TdfMedSec
+  - ContractorClothingNeckIFFOrange
 
 - type: loadoutGroup
   id: TdfHead

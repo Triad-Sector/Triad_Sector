@@ -57,34 +57,6 @@
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobBrigmedic # Brigmedic
-  groups:
-  - TsfmcHeadMedic
-  - TsfmcNeckMedic
-  - TsfmcJumpsuit
-  - TsfmcBrigmedicGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcBrigmedicGlasses
-  - TsfmcBrigmedicBelt
-  - TsfmcEars
-  - NfsdBoxSurvival
-  - BrigmedicPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
-  - FactionArmorPlates
-  canCustomizeName: true
-
-- type: roleLoadout
   id: JobBailiff # Captain
   groups:
   - TsfmcHead
@@ -141,7 +113,7 @@
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobTDFChiefEnforcer
+  id: JobTdfChiefEnforcer
   groups:
   - TsfmcHead
   - TsfmcNeckCommander
@@ -168,27 +140,29 @@
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobTsfEngineer # Engineer
+  id: JobTdfMedic
   groups:
-  - TsfmcHeadEngi
-  - TsfmcNeckEngi
-  - TsfmcJumpsuitEngi
-  - TsfmcGloves
-  - TsfmcEngiModsuit
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcEngiGlasses
-  - TsfmcUtilBelt
-  - TsfmcEars
+  - TdfHeadMedic
+  - TdfMedicNeck
+  - TdfMedicJumpsuit
+  - TdfMedicGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
+  - TdfBalaclava
+  - TdfMedicGlasses
+  - TdfMedicBelt
+  #- TsfmcEars
   - NfsdBoxSurvival
-  - TsfEngiPDA
+  - TdfMedicPDA
   - ContractorWallet
   - ContractorCartridge
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
   - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
   - FactionArmorPlates
   canCustomizeName: true

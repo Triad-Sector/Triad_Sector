@@ -16,8 +16,48 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - TdfCombatWebbingMedical
-  - TdfCombatWebbing
-  - TdfCombatWebbingLarge
+  - ClothingBeltMilitaryWebbingMedTdfFilledMedic
+  - ClothingBeltTdfFilledMedic
+  - ClothingBeltMilitaryWebbingMedFilledMedic
   fallbacks:
-  - TdfCombatWebbingMedical
+  - ClothingBeltMilitaryWebbingMedTdfFilledMedic
+
+- type: loadoutGroup
+  id: TdfMedicNeck
+  name: loadout-group-contractor-neck
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingNeckIFFRed
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
+  fallbacks:
+  - ContractorClothingNeckIFFRed
+
+- type: loadoutGroup
+  id: TdfMedicGlasses
+  name: loadout-group-contractor-glasses
+  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 1
+  loadouts:
+  - ClothingEyesHudMedSec
+  fallbacks:
+  - ClothingEyesHudMedSec
+
+- type: loadoutGroup
+  id: TdfMedicJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfCombatMedic
+  fallbacks:
+  - ClothingUniformJumpsuitTdfCombatMedic
+
+- type: loadoutGroup
+  id: TdfMedicPDA
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfMedicPda
+  fallbacks:
+  - TdfMedicPda
