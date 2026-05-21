@@ -1,0 +1,37 @@
+- type: entity
+  parent: BaseFactionGearT0
+  id: BaseFactionGearTDFT0
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ Security ]
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT1
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear1
+    turnInValues:
+      Doubloon: 10
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT2
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear2
+    turnInValues:
+      Doubloon: 30
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT3
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear3
+    turnInValues:
+      Doubloon: 45
