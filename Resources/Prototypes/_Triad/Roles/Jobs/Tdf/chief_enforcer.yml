@@ -2,7 +2,7 @@
   id: ChiefEnforcer
   name: job-name-tdf-chief-enforcer
   description: job-description-tdf-chief-enforcer
-  playTimeTracker: JobChiefEnforcer
+  playTimeTracker: JobTDFChiefEnforcer
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 72000 # 20 hours
@@ -15,7 +15,7 @@
   whitelisted: true
   startingGear: ChiefEnforcerGear
   alwaysUseSpawner: true
-  icon: JobIconChiefEnforcer
+  icon: JobIconTdfEnforcer
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   weight: 180

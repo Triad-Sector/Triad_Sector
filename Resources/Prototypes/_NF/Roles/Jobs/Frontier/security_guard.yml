@@ -14,15 +14,11 @@
   weight: 80
   displayWeight: 20 # Second from the bottom
   canBeAntag: false
-  access:
-  - Security
-  - Brig
-  - Maintenance
-  - Service
-  - External
-  - Mercenary
-  - Captain
-  - Frontier
+  # Triad, modify access levels
+  accessGroups:
+  - GeneralTdfAccess
+  - AllAccessColonial
+  # Triad End
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
