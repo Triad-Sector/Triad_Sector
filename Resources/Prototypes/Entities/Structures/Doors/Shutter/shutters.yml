@@ -244,4 +244,4 @@
         layer:
         - HighImpassable
   - type: Transform
-    noRot: true
+    # noRot: true # Triad - removed so shutter frames keep their placement rotation
