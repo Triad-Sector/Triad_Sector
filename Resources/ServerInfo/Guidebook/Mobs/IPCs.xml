@@ -6,7 +6,11 @@
     <GuideEntityEmbed Entity="MobIPCDummy" Caption=""/>
   </Box>
 
-  An IPC (short for Integrated Positronic Chassis) is a type of sentient robot and is considered an [color=yellow]independent individual[/color], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system. [color=red]IPCs are silicon-based beings, so doctors do not have the skills to repair them.[/color]
+  Sentient robots running on a positronic brain.
+
+  An IPC (short for Integrated Positronic Chassis) is considered an [bold]independent individual[/bold], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system.
+
+  [color=red]IPCs are silicon-based beings, so doctors do not have the skills to repair them.[/color]
 
   <Box>
     <GuideEntityEmbed Entity="PositronicBrain" Caption="Positronic Brain"/>

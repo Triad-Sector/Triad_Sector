@@ -6,7 +6,9 @@
     <GuideEntityEmbed Entity="MobMoth" Caption=""/>
   </Box>
 
-  Moth people eat cotton, fabrics and clothing, but virtually none of the food that others would consider "edible". They prefer a somewhat lower temperature range than humans.
+  Winged humanoids who eat cloth and prefer cooler temperatures than humans.
+
+  Their [color=#a4885c]Insect Blood[/color] can't be metabolised from Iron like normal blood.
 
   ## Diet
 
@@ -21,6 +23,5 @@
   ## Drawbacks
 
   - Take [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color].
-  - Insect Blood can't be metabolised from Iron like normal blood.
 
 </Document>

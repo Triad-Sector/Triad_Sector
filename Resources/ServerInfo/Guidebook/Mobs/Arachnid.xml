@@ -6,12 +6,14 @@
     <GuideEntityEmbed Entity="MobArachnid" Caption=""/>
   </Box>
 
-  Eight-legged humanoids with a knack for silk craft. Their Blue Blood is based on Copper rather than Iron.
+  Eight-legged humanoids with a knack for silk craft.
+
+  Their [color=#a4885c]Blue Blood[/color] is based on Copper rather than Iron.
 
   ## Diet
 
   - Can eat raw meat without ill effects.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
   ## Benefits
 
@@ -27,7 +29,7 @@
     <GuideEntityEmbed Entity="WallWeb" Caption=""/>
   </Box>
 
-  - Sericulture: arachnids can produce Websilk at the cost of getting more hungry. Only arachnids can craft bundles of websilk into clothing, shields, and even walls.
+  - [color=#a4885c]Sericulture[/color]: arachnids produce Websilk at the cost of getting more hungry. Only arachnids can craft bundles of websilk into clothing, shields, and even walls.
 
   ## Drawbacks
 

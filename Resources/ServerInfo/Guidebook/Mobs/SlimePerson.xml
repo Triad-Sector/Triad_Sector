@@ -6,7 +6,9 @@
     <GuideEntityEmbed Entity="MobSlimePerson" Caption=""/>
   </Box>
 
-  Translucent humanoids whose nitrogen-based biology makes them strange but resilient. Slime "blood" is technically a source of moderately filling food for other species, though drinking the blood of your coworkers is usually frowned upon.
+  Translucent humanoids whose nitrogen-based biology makes them strange but resilient.
+
+  [color=#a4885c]Slime Blood[/color] is technically a source of moderately filling food for other species, though drinking the blood of your coworkers is usually frowned upon.
 
   ## Atmospherics
 
@@ -26,6 +28,6 @@
 
   - Take significant damage if sprayed or splashed with water, but can (and must) drink it safely to stay hydrated.
   - Take [color=#ffa500]50% more Cold damage, 20% more Slash damage, and 20% more Piercing damage[/color].
-  - Slime blood can't be regenerated from Iron.
+  - Slime Blood can't be regenerated from Iron.
 
 </Document>

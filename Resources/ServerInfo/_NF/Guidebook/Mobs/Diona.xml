@@ -6,18 +6,20 @@
     <GuideEntityEmbed Entity="MobDiona" Caption=""/>
   </Box>
 
-  Plant-based humanoids whose biology runs on tree sap. Sturdy enough to ignore FTL jolts, but they have a complicated relationship with botany chemistry.
+  Plant-based humanoids whose biology runs on tree sap.
+
+  Sturdy enough to ignore FTL jolts, but they have a complicated relationship with botany chemistry.
 
   ## Diet
 
   - Cannot eat anything Iron-based - their "blood" is tree sap.
-  - [color=#ffa500]Weed Killer poisons them[/color]; Robust Harvest heals them, but overuse carries its own risk (see Make Like A Tree And Leave).
+  - [color=#ffa500]Weed Killer poisons them[/color]; [color=yellow]Robust Harvest[/color] heals them, but overuse carries its own risk (see Make Like A Tree And Leave).
 
   ## Benefits
 
   - [color=#1e90ff]Get hungry and thirsty slower[/color] than other species.
   - [color=#1e90ff]Withstand FTL jumps[/color] without being knocked down by the shock.
-  - Cannot be slowed by Kudzu.
+  - Cannot be slowed by [color=yellow]Kudzu[/color].
   - [color=#1e90ff]Immune to step-trigger hazards[/color] (landmines, glass shards, etc.).
   - Take [color=#1e90ff]30% less Blunt damage, 20% less Slash damage, and 10% less Piercing damage[/color].
 
@@ -29,7 +31,7 @@
     <GuideEntityEmbed Entity="FloraTree" Caption=""/>
   </Box>
 
-  Being exposed to too much Robust Harvest will cause a Diona to grow out of control, turning into an immobile tree (dropping all their equipment). Cutting down the tree will "restore" the Diona to their mobile state.
+  Exposure to too much Robust Harvest causes a Diona to grow out of control, turning into an immobile tree (dropping all their equipment). Cutting down the tree restores the Diona to their mobile state.
 
   ### Diona Nymphs
 

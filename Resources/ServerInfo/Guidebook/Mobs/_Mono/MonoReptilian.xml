@@ -6,12 +6,14 @@
     <GuideEntityEmbed Entity="MobReptilian" Caption=""/>
   </Box>
 
-  Cold-blooded humanoids whose physiology demands heat and rewards them when they get it. Their claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
+  Cold-blooded humanoids whose physiology demands heat and rewards them when they get it.
+
+  Their claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
 
   ## Diet
 
   - Can eat raw meat without ill effects.
-  - Will get ill from consuming chocolate or any other food containing theobromine.
+  - Get ill from consuming chocolate or any other food containing [color=#a4885c]Theobromine[/color].
 
   ## Benefits
 
@@ -38,7 +40,7 @@
     <GuideEntityEmbed Entity="Wirecutter" Caption=""/>
   </Box>
 
-  Certain chemicals control claw growth: Phenoxzine boosts growth by 20x, while Meroxzine pauses all claw growth entirely. Both metabolize slowly, allowing long-term use.
+  Certain chemicals control claw growth: [color=yellow]Phenoxzine[/color] boosts growth by 20x, while [color=yellow]Meroxzine[/color] pauses all claw growth entirely. Both metabolize slowly, allowing long-term use.
 
   <GuideReagentEmbed Reagent="Phenoxzine"/>
   <GuideReagentEmbed Reagent="Meroxzine"/>

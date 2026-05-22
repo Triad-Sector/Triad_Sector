@@ -6,18 +6,22 @@
     <GuideEntityEmbed Entity="MobFeroxiDummy" Caption=""/>
   </Box>
 
-  The Feroxi (fer-ox-i) are a race of humanoid shark-like beings. Carnivorous in nature with a strong bite force.
+  Humanoid shark-like beings, carnivorous in nature with a strong bite force.
 
   ## Diet
 
   - [color=#ffa500]Can ONLY eat meat and pills[/color] (their stomach rejects everything else).
-  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
+  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
   ## Benefits
 
   - Use jaws for unarmed attacks dealing Piercing damage, rivaling Oni for bite strength.
   - Cartilaginous skeleton: [color=#1e90ff]resist Blunt-force trauma more easily[/color].
   - Adapted to native cold environments: [color=#1e90ff]resist Cold damage more easily[/color].
+
+  ## Special
+
+  - Water-vapor breathing is planned but [color=#ffa500]not yet implemented[/color] - no WaterVapor reagent exists in the gas system today. Treat any "breathes water vapor" claim from older docs as future design intent.
 
   ## Drawbacks
 
@@ -26,9 +30,5 @@
   - When Thirst falls to "Parched" they begin to suffocate - keep water handy.
   - Saline is too salty: it hydrates them much less than fresh water.
   - Lungs are unremovable - they're integrated with gill structures.
-
-  ## Special
-
-  - Water-vapor breathing is planned but [color=#ffa500]not yet implemented[/color] - no WaterVapor reagent exists in the gas system today. Treat any "breathes water vapor" claim from older docs as future design intent.
 
 </Document>

@@ -6,7 +6,7 @@
     <GuideEntityEmbed Entity="MobChitinid" Caption=""/>
   </Box>
 
-  An industrious hymenoptera species, the Chitinid are strong and diligent. Thanks to evolution, they have grown an acute resistance to radiation, but not without its side effects.
+  An industrious hymenoptera species, strong and diligent, with an acute resistance to radiation that comes with side effects.
 
   ## Diet
 
@@ -15,7 +15,7 @@
   ## Benefits
 
   - Take [color=#1e90ff]80% less Radiation damage, and 10% less Slash, Blunt, and Piercing damage[/color].
-  - Bodies naturally recover from light radiation damage up to a point. Once they accumulate enough radiation they must purge it as a small rock - [color=#ffa500]Chitzite is slightly radioactive[/color].
+  - Bodies naturally recover from light radiation damage up to a point. Once they accumulate enough radiation they must purge it as a small rock - [color=#a4885c]Chitzite[/color] is slightly radioactive.
   - Better at pulling and carrying things than other species.
   - Possess a bio-light.
 
@@ -26,6 +26,6 @@
   - Overactive metabolism: [color=#ffa500]get hungry 33% faster[/color] than humans.
   - Cold doesn't agree with their biology - their movement gets sluggish as it gets colder, and they take [color=#ffa500]30% more Cold damage[/color].
   - Deceptively heavy due to their lifestyle and diet.
-  - Bug Blood: can't be regenerated from Iron.
+  - [color=#a4885c]Bug Blood[/color] can't be regenerated from Iron.
 
 </Document>

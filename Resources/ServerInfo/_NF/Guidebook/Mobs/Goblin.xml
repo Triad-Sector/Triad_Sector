@@ -6,7 +6,7 @@
     <GuideEntityEmbed Entity="MobGoblin" Caption=""/>
   </Box>
 
-  Goblins are a race of humanoid beings. They tend to be small, very loud, and fragile.
+  Small, loud, and fragile humanoids.
 
   ## Diet
 
@@ -16,7 +16,7 @@
 
   - Take [color=#1e90ff]25% less Toxin damage[/color] due to their unusual dietary choices.
   - Take [color=#1e90ff]10% less Blunt damage and 10% less Caustic damage[/color].
-  - Unarmed claws deal [color=red]Slash[/color] damage instead of Blunt.
+  - Unarmed claws deal [color=#1e90ff]Slash damage instead of Blunt[/color].
   - [color=#1e90ff]Take reduced fall and impact damage[/color] - tumbling off ladders or being thrown hurts them less.
   - [color=#1e90ff]Stay closer to full speed when injured[/color] - damage slows them down less than other species.
   - Smaller than humans and can fit in duffelbags.
@@ -26,7 +26,7 @@
   - Can rummage in disposal chutes to dig up trash.
   - Can dive into toilets and mailing units because of their small size.
   - Inherent unique chants.
-  - Innately speak in Goblin Cant.
+  - Innately speak in [color=yellow]Goblin Cant[/color].
 
   ## Drawbacks
 

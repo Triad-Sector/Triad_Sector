@@ -6,9 +6,11 @@
     <GuideEntityEmbed Entity="MobAvali" Caption=""/>
   </Box>
 
-  [color=#ffa500]Warning! This species is not recommended for new players due to major gameplay changes![/color]
+  Ammonia-based intelligent bird/raptor people, often called "Space Raptors".
 
-  Avali are an ammonia-based intelligent bird/raptor species - many refer to them as "Space Raptors". They are carnivores, deal exceedingly well with cold, and are capable of basic flight in no-gravity or low-gravity environments.
+  [color=red]Warning! This species is not recommended for new players due to major gameplay changes.[/color]
+
+  Avali are carnivores, deal exceedingly well with cold, and are capable of basic flight in no-gravity or low-gravity environments.
 
   ## Diet
 
@@ -19,7 +21,7 @@
   - Take [color=#1e90ff]40% less Cold damage[/color] and can stand in temperatures down to about -50°C before taking cold damage.
   - Can fly in zero-G.
   - Slightly faster than other species.
-  - Deal [color=red]6.25 Slashing damage[/color] with claws.
+  - Deal [color=#1e90ff]6.25 Slash damage[/color] with claws.
 
   ## Drawbacks
 

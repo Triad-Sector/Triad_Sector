@@ -6,12 +6,19 @@
     <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
   </Box>
 
-  An avian humanoid species with colorful feathered wings and tails that can mimic almost any sound.
+  Avian humanoids with colorful feathered wings and tails who can mimic almost any sound.
 
   ## Diet
 
   - Can eat raw meat.
-  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
+  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
+
+  ## Atmospherics
+
+  - Quite sensitive to air quality - exposure to low-quality air makes them visibly gasp, and eventually choke.
+  - To recover: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure oxygen tank. Three seconds of pure oxygen fully restores blood oxygen saturation.
+  - A harpy [color=#ffa500]breathes twice as often as humans[/color] (every 3 seconds), so air tanks last half as long.
+  - If exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
 
   ## Benefits
 
@@ -25,13 +32,6 @@
   - Comes with the [color=#1e90ff]Ultraviolet Vision[/color] trait by default. Can be disabled via accessibility options.
   - Cannot wear jumpsuits and automatically start with a jumpskirt instead.
   - While singing, musical notes appear floating around their head.
-
-  ## Atmospherics
-
-  - Quite sensitive to air quality - exposure to low-quality air makes them visibly gasp, and eventually choke.
-  - To recover: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure oxygen tank. Three seconds of pure oxygen fully restores blood oxygen saturation.
-  - A harpy [color=#ffa500]breathes twice as often as humans[/color] (every 3 seconds), so air tanks last half as long.
-  - If exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
 
   ## Drawbacks
 

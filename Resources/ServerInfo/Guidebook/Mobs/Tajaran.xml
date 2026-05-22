@@ -6,7 +6,9 @@
     <GuideEntityEmbed Entity="MobTajaran" Caption=""/>
   </Box>
 
-  Tajara are a species of omnivorous, bipedal humanoids with features strongly resembling Terran felines. Their most distinguishing traits include a layer of fur, large ears atop their heads, and a tail that aids in balance. They hail from the icy moon of [color=yellow]Ahdomai[/color], only relatively recently making their debut on the galactic stage. Originally a clan-centric society, Tajara endured centuries of dictatorial rule. Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
+  Omnivorous bipedal humanoids with strongly feline features.
+
+  Distinguished by a layer of fur, large ears atop their heads, and a tail that aids in balance, the Tajara hail from the icy moon of [color=yellow]Ahdomai[/color], only relatively recently making their debut on the galactic stage. Originally a clan-centric society, Tajara endured centuries of dictatorial rule. Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
 
   ## Diet
 
@@ -24,7 +26,7 @@
   ## Drawbacks
 
   - Due to their small stature, take [color=#ffa500]15% more Brute damage[/color].
-  - Take [color=#ffa500]more Heat damage[/color] as a side-effect of their cold-side fur insulation.
+  - Their cold-side fur insulation means they take [color=#ffa500]more Heat damage[/color] in return.
   - Get hungry [color=#ffa500]roughly 16% faster[/color] than humans.
   - [color=#ffa500]Slightly less stamina[/color] than humans.
 
