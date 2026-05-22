@@ -15,11 +15,16 @@
     - !type:RoleTimeRequirement
       role: JobStc
       time: 18000 # Triad - 5 hours
-  whitelisted: true
+  alternateRequirementSets: # Triad
+    playtimePreSec: # Triad
+    - !type:RoleTimeRequirement # Triad
+      role: JobHeadOfPersonnel
+      time: 126000 # Triad - 35 hours. This is so dedicated overseers pre-TDF can still play their main role.
+  whitelisted: false # Triad
   startingGear: SrGear
   alwaysUseSpawner: true
   assignedCompany: Colonial
-  icon: "JobIconHeadOfSecurity" # Mono
+  icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   weight: 170
