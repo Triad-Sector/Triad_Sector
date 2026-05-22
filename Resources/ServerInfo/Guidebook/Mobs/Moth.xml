@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Moth People
 
@@ -5,11 +6,21 @@
     <GuideEntityEmbed Entity="MobMoth" Caption=""/>
   </Box>
 
-  They can eat cotton, fabrics and clothing, but virtually none of the food that others would consider "edible". They prefer a somewhat lower temperature range than humans.
-  Their Insect Blood can't be metabolised from Iron like normal blood.
+  Moth people eat cotton, fabrics and clothing, but virtually none of the food that others would consider "edible". They prefer a somewhat lower temperature range than humans.
 
-  Their wings give them better acceleration if there is no gravity on the station, but they still can't move without equipment when floating out in space.
+  ## Diet
 
-  They take [color=#1e90ff]30% less Cold damage[/color] but [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color].
+  - Can eat cotton, fabrics and clothing.
+  - Cannot digest most foods other species consider edible.
+
+  ## Benefits
+
+  - Wings provide [color=#1e90ff]better acceleration in zero gravity[/color], though they still need equipment to move in open space.
+  - Take [color=#1e90ff]30% less Cold damage[/color].
+
+  ## Drawbacks
+
+  - Take [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color].
+  - Insect Blood can't be metabolised from Iron like normal blood.
 
 </Document>
