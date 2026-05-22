@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Reptilians
 
@@ -5,57 +6,61 @@
     <GuideEntityEmbed Entity="MobReptilian" Caption=""/>
   </Box>
 
+  Cold-blooded humanoids whose physiology demands heat and rewards them when they get it. Their claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
 
-  ## Food
-  Reptilians are capable of eating raw meat, but will get ill from consuming chocolate or any other food containing theobromine.
+  ## Diet
 
+  - Can eat raw meat without ill effects.
+  - Will get ill from consuming chocolate or any other food containing theobromine.
 
-  ## Physical properties
-  They can drag objects with their tail, keeping both their hands free.
+  ## Benefits
 
-  They receive [color=#FFA500]15%[/color] less damage from slash and [color=#FF0000]5%[/color] less damage from heat, but [color=#FFA500]25%[/color] more damage from blunt.
+  - Can drag objects with their tail, keeping both hands free.
+  - Take [color=#1e90ff]15% less Slash damage and 5% less Heat damage[/color].
+  - Raw melee is far more powerful than human - 8 Slash with 1.5 attack rate.
+  - Sustaining body temperature above [color=#1e90ff]47°C[/color] grants a small regeneration and speed boost.
 
-  Their raw melee is way more powerful than human - 8 slash with 1.5 attack rate
+  ## Special
 
+  ### Claws
 
-  ## Claws
-  Reptilians are equipped with dangerous claws that have different stages.
+  Reptilians are equipped with dangerous claws that grow in stages.
 
-  - Stage 0 - [color=#FFA500]8 slash damage.[/color]
-  - Stage 1 - [color=#FFA500]11 slash damage.[/color] [color=#FFDEAD]Gun spread is increased by 10%, Handheld weapon damage is decreased by 5%[/color]
-  - Stage 2 - [color=#FFA500]13 slash damage, 2 piercing damage.[/color] [color=#FFDEAD]Gun spread is increased by 25%, Handheld weapon damage is decreased by 13%.[/color] Starting from this stage, you are capable of wideswinging with your claws
-  - Stage 3 - [color=#FFA500]15 slash damage, 5 piercing damage.[/color] [color=#FFDEAD]Gun spread is increased by 45%, Handheld weapon damage is decreased by 25%[/color]
-  - Stage 4 - [color=#FFA500]18 slash damage, 12 piercing damage.[/color] [color=#FFDEAD]You are not capable of using all guns but bows anymore, Handheld weapon damage is decreased by 50%.[/color]
+  - Stage 0 - [color=#ffa500]8 Slash damage[/color].
+  - Stage 1 - [color=#ffa500]11 Slash damage[/color]. Gun spread +10%, handheld weapon damage -5%.
+  - Stage 2 - [color=#ffa500]13 Slash damage, 2 Piercing damage[/color]. Gun spread +25%, handheld weapon damage -13%. Wide-swinging unlocked from this stage onward.
+  - Stage 3 - [color=#ffa500]15 Slash damage, 5 Piercing damage[/color]. Gun spread +45%, handheld weapon damage -25%.
+  - Stage 4 - [color=#ffa500]18 Slash damage, 12 Piercing damage[/color]. Cannot use most guns (bows still work), handheld weapon damage -50%.
 
-  ### Cutting Claws
-
-  Using [color=#FFA500]wirecutters[/color], you can cut Reptilian's claws, reducing their stage by 1 and resetting the current growth progress.
+  Using [color=yellow]wirecutters[/color] cuts a Reptilian's claws, reducing their stage by 1 and resetting growth progress.
 
   <Box>
     <GuideEntityEmbed Entity="Wirecutter" Caption=""/>
   </Box>
 
-  ### Chemicals
-
-  Certain chemicals allow greater control over Reptilian claw growth. Phenoxzine boosts claw growth by 20x, while Meroxzine pauses all claw growth entirely. Both metabolize slowly, allowing long term usage to be effective.
+  Certain chemicals control claw growth: Phenoxzine boosts growth by 20x, while Meroxzine pauses all claw growth entirely. Both metabolize slowly, allowing long-term use.
 
   <GuideReagentEmbed Reagent="Phenoxzine"/>
   <GuideReagentEmbed Reagent="Meroxzine"/>
 
-  ## Temperature
+  ### Heating Up
 
-  Due to being cold-blooded, they are not capable of generating enough heat to sustain themselfs in the [color=#4169E1]20C[/color] environment.
-  Temperatures lower than [color=#4169E1]22C[/color] are extremely dangerous for them! They will start getting [color=#FF0000]drowsy and start periodically falling unconscious[/color].
-  However, they receive small regeneration and speed boost if they manage to sustain body temperature higher than [color=#FFA500]47C[/color].
+  - Welders, emergency flares, and campfires can heat up humanoids, including Reptilians.
 
-  ### Heating up
-
-  - Welders, emergency flares and campfires are now capable of heating up humanoids, including Reptilians.
   <Box>
     <GuideEntityEmbed Entity="Welder" Caption=""/>
     <GuideEntityEmbed Entity="Flare" Caption=""/>
     <GuideEntityEmbed Entity="Bonfire" Caption=""/>
   </Box>
-  - Wearing winter clothes or hardsuits will let you to generate enough heat to stay somewhat comfortable.
-  - Reptilians are capable of exchanging heat with other creatures by hugging them. Hugging colder creature, however, will make situation worse.
+
+  - Winter clothes or hardsuits generate enough heat to stay somewhat comfortable.
+  - Can exchange heat with other creatures by hugging. Hugging a colder creature makes things worse.
+
+  ## Drawbacks
+
+  - Take [color=#ffa500]25% more Blunt damage[/color].
+  - Take [color=#ffa500]30% more Cold damage[/color] - their Mono-fork damage modifier set adds an extra Cold weakness on top of the cold-blooded baseline.
+  - Cannot generate enough heat to sustain themselves in a [color=#ffa500]20°C[/color] environment.
+  - Below [color=#ffa500]22°C[/color] they start getting drowsy and periodically falling unconscious.
+
 </Document>
