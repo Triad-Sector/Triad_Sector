@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Slime People
 
@@ -5,21 +6,26 @@
     <GuideEntityEmbed Entity="MobSlimePerson" Caption=""/>
   </Box>
 
-  They breathe nitrogen instead of oxygen, which is abundant in the station air, but harder to find compressed into gas tanks. They take significant damage if they are sprayed or splashed with water, but can
-  (and like other species, need to) drink it safely to stay hydrated.
-  They exhale nitrous oxide and are unaffected by it.
-  Their body can process 6 reagents at the same time instead of just 2.
+  Translucent humanoids whose nitrogen-based biology makes them strange but resilient. Slime "blood" is technically a source of moderately filling food for other species, though drinking the blood of your coworkers is usually frowned upon.
 
-  Slimepeople have an [bold]internal 2x3 storage inventory[/bold] inside of their slime membrane. Anyone can see what's inside and take it out of you without asking,
-  so be careful.
+  ## Atmospherics
 
-  Slimepeople have slight accelerated regeneration compared to other humanoids. They're also capable of hardening their fists, and as such have stronger punches,
-  although they punch a little slower.
+  - Breathe nitrogen instead of oxygen, which is abundant in station air but harder to find compressed into gas tanks.
+  - Exhale nitrous oxide and are unaffected by it.
+  - Body can process [color=#1e90ff]6 reagents at the same time[/color] instead of just 2.
+  - [color=#1e90ff]Suffocate 80% slower[/color], making them by far the species most capable to survive in hard vacuum - for a while.
 
-  Their slime "blood" can not be regenerated from Iron. Slime Blood is technically a source of
-  moderately filling food for other species, although drinking the blood of your coworkers is usually frowned upon.
-  They suffocate 80% slower, but take pressure damage 9% faster. This makes them by far the species most capable to survive in hard vacuum. For a while.
+  ## Benefits
 
-  They take [color=#1e90ff]80% less Cellular damage, 40% less Blunt damage and 20% less Poison damage[/color], but [color=#ffa500]50% more Cold damage, 20% more Slash damage and 20% more Piercing damage[/color].
+  - Have an [color=#1e90ff][bold]internal 2x3 storage inventory[/bold][/color] inside their slime membrane. Anyone can see what's inside and take items out without asking, so be careful.
+  - Slight accelerated regeneration compared to other humanoids.
+  - Can harden their fists for stronger punches, though they punch a little slower.
+  - Take [color=#1e90ff]80% less Cellular damage, 40% less Blunt damage, and 20% less Poison damage[/color].
+
+  ## Drawbacks
+
+  - Take significant damage if sprayed or splashed with water, but can (and must) drink it safely to stay hydrated.
+  - Take [color=#ffa500]50% more Cold damage, 20% more Slash damage, and 20% more Piercing damage[/color].
+  - Slime blood can't be regenerated from Iron.
 
 </Document>
