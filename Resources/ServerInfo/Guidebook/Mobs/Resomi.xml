@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Resomi
 
@@ -5,19 +6,24 @@
     <GuideEntityEmbed Entity="MobResomiDummy" Caption=""/>
   </Box>
 
-  Resomi are a small avian-like species that hail from an icy world.
+  Resomi are a small avian-like species that hail from an icy world. Their wings do not grant complete flight, but they can use them to maneuver better in zero-gravity.
 
-  While their wings do not grant them complete flight, they are able to use them to maneuver better while in zero-gravity.
+  ## Diet
 
-  Like most other non-human species, Resomi are capable of digesting raw meat and other uncooked animal proteins.
+  - Can digest raw meat and other uncooked animal proteins, like most non-human species.
 
-  As a result of the conditions of their home planet and ammonia-based blood, Resomi are considerably more tolerant of the cold, able to withstand temperatures as low as -77°C.
-  Consequently, they find temperatures that most other species find comfortable to be unbearably hot, finding themselves suffering starting at just 30°C.
+  ## Benefits
 
-  Along with their temperature tolerances, they also take less cold damage and more heat damage, similar to Moth People, as well as being more susceptible to blunt damage.
+  - Can fit in duffelbags due to their small size.
+  - Maneuver better in zero-gravity with their wings.
+  - Take [color=#1e90ff]less Cold damage[/color] thanks to their ammonia-based blood.
+  - Tolerate temperatures as low as -77°C without harm.
+  - Unarmed attacks deal Slash damage.
 
-  Due to their small size, they can fit in duffelbags.
+  ## Drawbacks
 
-  Their unarmed attack deals Slash damage.
+  - Take [color=#ffa500]more Heat damage[/color], similar to Moth People.
+  - [color=#ffa500]Slowed by warmth - they start suffering at just 30°C[/color], with deeper slowdown around 37°C before heat damage begins at 47°C.
+  - [color=#ffa500]More susceptible to Blunt damage[/color].
 
 </Document>
