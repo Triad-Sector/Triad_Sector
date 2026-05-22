@@ -21,14 +21,14 @@
   - Can eat mice and rats after picking them up - regenerates the hairball ability and feeds them.
   - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
   - Can walk completely silently while barefoot.
-  - [color=#1e90ff]Take reduced fall and impact damage[/color] (DamageOnHighSpeedImpact softened).
-  - [color=#1e90ff]Less slowed when injured[/color] than other species (SlowOnDamage softened).
+  - [color=#1e90ff]Take reduced fall and impact damage[/color] - they really do land on their feet.
+  - [color=#1e90ff]Stay closer to full speed when injured[/color] - damage slows them down less than other species.
 
   ## Drawbacks
 
   - Take [color=#ffa500]10% more Blunt and Slash damage[/color].
   - Easily shoved, pushed, and carried around by other species due to their small size.
   - Weaker and struggle to carry and pull things - cannot carry an Oni.
-  - [color=#ffa500]Slightly less stamina[/color] than humans (critThreshold 85, decay 2.55).
+  - [color=#ffa500]Slightly less stamina than humans[/color] - they tire faster and take longer to catch their breath.
 
 </Document>

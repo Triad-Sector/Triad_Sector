@@ -17,8 +17,8 @@
   - Take [color=#1e90ff]25% less Toxin damage[/color] due to their unusual dietary choices.
   - Take [color=#1e90ff]10% less Blunt damage and 10% less Caustic damage[/color].
   - Unarmed claws deal [color=red]Slash[/color] damage instead of Blunt.
-  - [color=#1e90ff]Take reduced fall and impact damage[/color] (DamageOnHighSpeedImpact softened).
-  - [color=#1e90ff]Less slowed when injured[/color] than other species (SlowOnDamage softened).
+  - [color=#1e90ff]Take reduced fall and impact damage[/color] - tumbling off ladders or being thrown hurts them less.
+  - [color=#1e90ff]Stay closer to full speed when injured[/color] - damage slows them down less than other species.
   - Smaller than humans and can fit in duffelbags.
 
   ## Special
