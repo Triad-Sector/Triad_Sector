@@ -272,6 +272,7 @@
     - type: Tag
       tags:
         - SecBeltEquip
+        - FitsInMedicalStash
     - type: Sprite
       state: tourniquet
     - type: Item
