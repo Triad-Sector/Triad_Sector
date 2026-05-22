@@ -21,7 +21,7 @@
         Peckish: 150
         Starving: 100
         Dead: 0
-      baseDecayRate: 0.03
+      baseDecayRate: 0.036
     - type: Thirst
     - type: PseudoItem
       storedOffset: 0,17

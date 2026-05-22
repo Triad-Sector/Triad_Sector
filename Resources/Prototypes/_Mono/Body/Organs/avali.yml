@@ -10,8 +10,6 @@
       tags:
       - Meat
       - Pill
-      - Crayon
-      - Paper
       - AvianFood
   - type: SolutionContainerManager
     solutions:
