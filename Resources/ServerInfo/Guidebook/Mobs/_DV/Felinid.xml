@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Felinids
 
@@ -10,23 +11,24 @@
   ## Diet
 
   - Can eat raw meat.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
 
   ## Benefits
 
-  - They are smaller than Humans, making them harder to hit.
+  - [color=#1e90ff]Smaller than humans, making them harder to hit[/color].
   - Can fit in duffelbags.
-  - Have the ability to throw up an hairball to get rid of some of the chemicals from their bloodstream.
-  - Able to eat mice and rats after picking them up. This has the benefit of regenerating the hairball ability and feeding them.
-  - Uses their claws to do Slashing damage and Piercing damage.
-  - Can walk completely silently, but only while barefooted.
-  - Immunity to the OwOnavirus disease.
+  - Can throw up a hairball to purge some chemicals from their bloodstream.
+  - Can eat mice and rats after picking them up - regenerates the hairball ability and feeds them.
+  - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
+  - Can walk completely silently while barefoot.
+  - [color=#1e90ff]Take reduced fall and impact damage[/color] (DamageOnHighSpeedImpact softened).
+  - [color=#1e90ff]Less slowed when injured[/color] than other species (SlowOnDamage softened).
 
   ## Drawbacks
 
-  - Takes 10% more Blunt and Slash damage.
-  - Are easily shoved, pushed and carried around by every other morphotypes due to their small size.
-  - They are weaker and struggle to carry and pull things due to their small size. They are unable to carry an Oni.
-  - They have slightly less stamina than Humans.
+  - Take [color=#ffa500]10% more Blunt and Slash damage[/color].
+  - Easily shoved, pushed, and carried around by other species due to their small size.
+  - Weaker and struggle to carry and pull things - cannot carry an Oni.
+  - [color=#ffa500]Slightly less stamina[/color] than humans (critThreshold 85, decay 2.55).
 
 </Document>
