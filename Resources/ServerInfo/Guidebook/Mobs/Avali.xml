@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Avali
 
@@ -7,16 +8,23 @@
 
   [color=#ffa500]Warning! This species is not recommended for new players due to major gameplay changes![/color]
 
-  Avali are a species of ammonia-based intelligent bird/raptor people and due to this odd combination many refer to them as "Space Raptors" and, as you might expect, are carnivores. Their unique biology allows them to deal exceedingly well with the cold, and is capable of basic flight in no to low gravity environments.
+  Avali are an ammonia-based intelligent bird/raptor species - many refer to them as "Space Raptors". They are carnivores, deal exceedingly well with cold, and are capable of basic flight in no-gravity or low-gravity environments.
 
-  ## Racial Features
+  ## Diet
 
-  - Receive [color=#ffa500]40% more fire damage[/color] and [color=#1e90ff]40% less cold damage[/color].
-  - Can stand in tempatures of up to [color=#1e90ff]-50c before taking cold damage[/color].
-  - Deal [color=red]6.25[/color] slashing damage with claws.
-  - Can fly in Zero-G.
-  - Slightly faster.
-  - 2x Hunger rate, stay fed!
-  - Can only eat meat-related food items (including organs) and pills.
-  - Fall into crit at 90 and dead at 180.
+  - Can only digest meat-related food items (including organs) and pills.
+
+  ## Benefits
+
+  - Take [color=#1e90ff]40% less Cold damage[/color] and can stand in temperatures down to about -50°C before taking cold damage.
+  - Can fly in zero-G.
+  - Slightly faster than other species.
+  - Deal [color=red]6.25 Slashing damage[/color] with claws.
+
+  ## Drawbacks
+
+  - Take [color=#ffa500]40% more Fire damage[/color] and start taking heat damage around 37°C (lower than humans).
+  - [color=#ffa500]Hunger rate is double that of humans[/color] - stay fed.
+  - Fall into crit at 90 damage and dead at 180 (lower thresholds than humans).
+
 </Document>
