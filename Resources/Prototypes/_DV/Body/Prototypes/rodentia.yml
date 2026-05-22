@@ -13,9 +13,9 @@
     torso:
       part: TorsoRodentia
       organs:
-        heart: OrganRatHeart
-        lungs: OrganHumanLungs
-        stomach: OrganRatStomach
+        heart: OrganRatHeart # Triad
+        lungs: OrganRatLungs # Triad
+        stomach: OrganRatStomach # Triad
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
       connections:

@@ -446,9 +446,9 @@
         conditions:
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
-        - !type:OrganType
-          type: Rat
-          shouldHave: false
+        - !type:OrganType # Triad
+          type: Rat # Triad
+          shouldHave: false # Triad
         damage:
           types:
             Poison: 0.4
@@ -457,9 +457,9 @@
         conditions:
           - !type:OrganType
             type: Animal
-          - !type:OrganType
-            type: Rat
-            shouldHave: false
+          - !type:OrganType # Triad
+            type: Rat # Triad
+            shouldHave: false # Triad
 
 - type: reagent
   id: Amatoxin
@@ -593,9 +593,9 @@
           min: 1
         - !type:OrganType
           type: Animal
-        - !type:OrganType
-          type: Rat
-          shouldHave: false
+        - !type:OrganType # Triad
+          type: Rat # Triad
+          shouldHave: false # Triad
         damage:
           types:
             Poison: 0.06

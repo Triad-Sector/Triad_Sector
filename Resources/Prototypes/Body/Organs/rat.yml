@@ -4,23 +4,23 @@
   suffix: "rat"
   components:
   - type: Metabolizer
-    metabolizerTypes: [ Rat, Animal ]
+    metabolizerTypes: [ Rat, Animal ] # Triad
 
-- type: entity
-  id: OrganRatHeart
-  parent: OrganAnimalHeart
-  suffix: "rat"
-  components:
-  - type: Metabolizer
-    maxReagents: 2
-    metabolizerTypes: [ Rat, Animal ]
+- type: entity # Triad
+  id: OrganRatHeart # Triad
+  parent: OrganAnimalHeart # Triad
+  suffix: "rat" # Triad
+  components: # Triad
+  - type: Metabolizer # Triad
+    maxReagents: 2 # Triad
+    metabolizerTypes: [ Rat, Animal ] # Triad
 - type: entity
   id: OrganRatStomach
   parent: OrganAnimalStomach
   suffix: "rat"
   components:
-  - type: Metabolizer
-    metabolizerTypes: [ Rat, Animal ]
+  - type: Metabolizer # Triad
+    metabolizerTypes: [ Rat, Animal ] # Triad
   - type: SolutionContainerManager
     solutions:
       stomach:
