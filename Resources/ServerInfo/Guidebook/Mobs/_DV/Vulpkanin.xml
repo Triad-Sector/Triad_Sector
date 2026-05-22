@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Vulpkanin
 
@@ -10,19 +11,19 @@
   ## Diet
 
   - Can eat raw meat.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
 
   ## Benefits
 
-  - Uses their claws to do some Slashing and Blunt damage.
-  - Their fur makes them able to withstand cold environments without the need of a coat.
+  - Use claws for unarmed attacks, dealing Slashing and Blunt damage.
+  - Fur lets them withstand cold environments without needing a coat.
 
   ## Special
 
-  - Comes with the Deuteranopia trait by default. This can be disabled via accessibility options.
+  - Comes with the [color=#1e90ff]Deuteranopia[/color] trait by default (the DogVision component). Can be disabled via accessibility options.
 
   ## Drawbacks
 
-  - They take 10% more Heat damage.
+  - Take [color=#ffa500]10% more Heat damage[/color].
 
 </Document>
