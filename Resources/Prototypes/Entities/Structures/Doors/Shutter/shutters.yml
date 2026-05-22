@@ -101,6 +101,10 @@
     interactSuccessSound:
       collection: FenceRattle
   - type: BlockWeather
+  # Triad - lets the shutter be interacted with even when a window/grille shares its tile (matches BaseFirelock)
+  - type: WallMount
+    arc: 360
+  # End Triad
   # Mono
   - type: ShipRepairable
     repairTime: 3
@@ -218,6 +222,10 @@
     containers:
     - board
   - type: InteractionOutline
+  # Triad - lets the frame be interacted with (cable step, etc.) even when a window/grille shares its tile
+  - type: WallMount
+    arc: 360
+  # End Triad
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
