@@ -1,32 +1,63 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Avali
+
+  <Box>
+    [color=#999999][italic]"Subject's onboarding requires expanded sections on diet, atmosphere, and gravity. Please plan accordingly. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-AVL
+  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, ammonia-based
+  [color=#a4885c]Status:[/color] ✓ Approved — REQUIRES SUPERVISOR SIGNOFF (extensive accommodations)
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel — NOT recommended for new personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobAvali" Caption=""/>
   </Box>
 
-  Ammonia-based intelligent bird/raptor people, often called "Space Raptors".
+  On file: Ammonia-based intelligent bird/raptor people, often called "Space Raptors".
 
-  [color=red]Warning! This species is not recommended for new players due to major gameplay changes.[/color]
+  [color=red]Warning! This species is not recommended for new personnel due to major operational accommodations.[/color]
 
   Avali are carnivores, deal exceedingly well with cold, and are capable of basic flight in no-gravity or low-gravity environments.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Can only digest meat-related food items (including organs) and pills.
+  ## § 1 · Dietary accommodations
 
-  ## Benefits
+  - [color=#ffa500]Restricted diet:[/color] only meat-related foods (including organs) and pills are digestible. Mess Hall must stock a carnivore-only ration line.
 
-  - Take [color=#1e90ff]40% less Cold damage[/color] and can stand in temperatures down to about -50°C before taking cold damage.
-  - Can fly in zero-G.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 3 · Environmental tolerance
+
+  - Take [color=#1e90ff]40% less Cold damage[/color] and tolerate temperatures down to about -50°C before Cold damage begins.
+  - [color=#ffa500]Heat damage begins around 37°C[/color] — lower than humans. Office desks should be cool.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
+
+  - Can fly in zero-G — cleared for EVA familiarisation rotations.
   - Slightly faster than other species.
   - Deal [color=#1e90ff]6.25 Slash damage[/color] with claws.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]40% more Fire damage[/color] and start taking heat damage around 37°C (lower than humans).
-  - [color=#ffa500]Hunger rate is double that of humans[/color] - stay fed.
-  - Fall into crit at 90 damage and dead at 180 (lower thresholds than humans).
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]40% more Fire damage[/color]. Insurance Tier A near welding stations and the burn chamber.
+  - ⚠ [color=#ffa500]Hunger rate is double that of humans[/color] — extended deployments require supplemental rations.
+  - ⚠ Fall into crit at 90 damage and dead at 180 — lower thresholds than humans. Medbay should escalate triage priority.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Mess Hall // Medbay // Atmospherics // Supervisor // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

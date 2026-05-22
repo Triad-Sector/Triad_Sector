@@ -1,24 +1,47 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Protogens
+
+  <Box>
+    [color=#999999][italic]"Mixed biological / electronic chassis. Treats most normal medicine, but circuit damage is real. Refer to Maintenance Protocol IPC-12c for partial overlap. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-PTG
+  [color=#a4885c]Class:[/color] Cybernetic // Mixed organic/synthetic
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobProtogen" Caption=""/>
   </Box>
 
-  Cybernetic beings built of mixed biological and electronic parts.
+  On file: Cybernetic beings built of mixed biological and electronic parts.
 
-  Though Protogens have a mix of artificial and non-artificial organs, they still operate with a soul and mind, yet there are also program files that drive them, and overheating or overcooling can damage the circuits of the artificial organs. They still need to eat and be healed with normal medicines.
+  Protogens have a mix of artificial and non-artificial organs and operate with a soul and mind, yet there are also program files that drive them. Overheating or overcooling can damage the circuits of artificial organs. They still need to eat and respond to normal medicines.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Can play digital music innately.
-  - [color=#1e90ff]Suffer less damage from lacking air[/color].
-  - Their durable bodies make them take [color=#1e90ff]20% less Blunt damage, and 10% less Piercing/Slash damage[/color].
-  - Unarmed attacks deal Slash damage.
+  ## § 4 · Workplace aptitudes
 
-  ## Drawbacks
+  - Can play digital music innately. Useful for any social rotation.
+  - [color=#1e90ff]Suffer less damage from lacking air[/color] — cleared for short EVA tasks without supervisor signoff.
+  - Durable bodies: take [color=#1e90ff]20% less Blunt damage, and 10% less Piercing/Slash damage[/color].
+  - Unarmed attacks deal [color=#1e90ff]Slash damage[/color].
 
-  - Their hybrid electronic nature makes them take [color=#ffa500]30% more Heat, 30% more Cold, 50% more Shock, and 55% more Radiation damage[/color].
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Hybrid electronic nature: take [color=#ffa500]30% more Heat, 30% more Cold, 50% more Shock, and 55% more Radiation damage[/color]. Insurance Tier A across Engineering, Atmospherics, and any radiation-exposed rotation.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Engineering // Robotics // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

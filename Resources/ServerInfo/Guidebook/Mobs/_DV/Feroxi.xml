@@ -1,34 +1,63 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Feroxi
+
+  <Box>
+    [color=#999999][italic]"Subject's water demand is non-negotiable. A canteen should be considered standard issue. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-FRX
+  [color=#a4885c]Class:[/color] Humanoid // Aquatic-derived, carnivorous
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobFeroxiDummy" Caption=""/>
   </Box>
 
-  Humanoid shark-like beings, carnivorous in nature with a strong bite force.
+  On file: Humanoid shark-like beings, carnivorous in nature with a strong bite force.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#ffa500]Can ONLY eat meat and pills[/color] (their stomach rejects everything else).
+  ## § 1 · Dietary accommodations
+
+  - [color=#ffa500]Restricted diet:[/color] meat and pills only — the stomach rejects everything else.
   - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Use jaws for unarmed attacks dealing Piercing damage, rivaling Oni for bite strength.
-  - Cartilaginous skeleton: [color=#1e90ff]resist Blunt-force trauma more easily[/color].
-  - Adapted to native cold environments: [color=#1e90ff]resist Cold damage more easily[/color].
+  ## § 4 · Workplace aptitudes
 
-  ## Special
+  - Use jaws for unarmed attacks dealing [color=#1e90ff]Piercing damage[/color] — rivals Oni for bite strength.
+  - Cartilaginous skeleton: [color=#1e90ff]resists Blunt-force trauma more easily[/color].
+  - Adapted to native cold environments: [color=#1e90ff]resists Cold damage more easily[/color].
 
-  - Water-vapor breathing is planned but [color=#ffa500]not yet implemented[/color] - no WaterVapor reagent exists in the gas system today. Treat any "breathes water vapor" claim from older docs as future design intent.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Drawbacks
+  ## § 5 · Special protocols
 
-  - Take [color=#ffa500]10% more Slash damage[/color].
-  - [color=#ffa500]Gets thirsty 100% faster[/color] than humans (faster than a Diona).
-  - When Thirst falls to "Parched" they begin to suffocate - keep water handy.
-  - Saline is too salty: it hydrates them much less than fresh water.
-  - Lungs are unremovable - they're integrated with gill structures.
+  ### 5.a · Water-vapor respiration (DEFERRED)
+
+  - [color=#ffa500]Not yet implemented[/color] — no WaterVapor reagent exists in the gas system today. Any "breathes water vapor" claim from older docs is design intent, not current biology.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]10% more Slash damage[/color].
+  - ⚠ [color=#ffa500]Gets thirsty 100% faster[/color] than humans (faster than a Diona).
+  - ⚠ Thirst at "Parched" causes suffocation onset — water must be kept on hand.
+  - ⚠ Saline is too salty: hydrates them much less than fresh water.
+  - ⚠ Lungs are unremovable — integrated with gill structures. Medbay must note before any chest procedure.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Mess Hall // Medbay // Hydroponics // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

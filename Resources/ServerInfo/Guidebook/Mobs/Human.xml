@@ -1,15 +1,36 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Humans
+
+  <Box>
+    [color=#999999][italic]"The control group. We measure every other personnel file against this one. Mostly because we have the most experience filing them." — HR-Lead Janssen[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-HUM
+  [color=#a4885c]Class:[/color] Humanoid // Baseline
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty — Recommended for new personnel
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobHumanDummy" Caption=""/>
   </Box>
 
-  Depending on who you ask, humans are either unremarkable or the universal standard to which everything else is compared. They have no special mechanics or notable attributes.
+  On file: Unremarkable or the universal standard against which everything else is compared, depending on who you ask.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Interact [color=#1e90ff]about 20% faster[/color] compared to other species.
+  ## § 4 · Workplace aptitudes
+
+  - Interact with workplace systems [color=#1e90ff]about 20% faster[/color] than most other species. Useful in any role requiring fast tool use.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

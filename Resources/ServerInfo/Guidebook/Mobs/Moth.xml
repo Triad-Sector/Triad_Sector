@@ -1,27 +1,52 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Moth People
+
+  <Box>
+    [color=#999999][italic]"Please relocate all decorative wall-hangings before subject's first shift. Subject's ration card will include cotton bolts; do not flag as theft. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-MTH
+  [color=#a4885c]Class:[/color] Humanoid // Insectoid, winged
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobMoth" Caption=""/>
   </Box>
 
-  Winged humanoids who eat cloth and prefer cooler temperatures than humans.
+  On file: Winged humanoids who eat cloth and prefer cooler temperatures than humans.
 
   Their [color=#a4885c]Insect Blood[/color] can't be metabolised from Iron like normal blood.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Can eat cotton, fabrics and clothing.
-  - Cannot digest most foods other species consider edible.
+  ## § 1 · Dietary accommodations
 
-  ## Benefits
+  - Can eat cotton, fabrics, and clothing.
+  - Cannot digest most foods other species consider edible. Mess Hall has been advised to stock a textile shelf.
 
-  - Wings provide [color=#1e90ff]better acceleration in zero gravity[/color], though they still need equipment to move in open space.
-  - Take [color=#1e90ff]30% less Cold damage[/color].
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Drawbacks
+  ## § 4 · Workplace aptitudes
 
-  - Take [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color].
+  - Wings provide [color=#1e90ff]better acceleration in zero gravity[/color], though equipment is still required to move in open space.
+  - Take [color=#1e90ff]30% less Cold damage[/color] — cleared for cold-environment rotations.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color]. Insurance Tier A near welding stations and the burn chamber.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Mess Hall // Quartermaster // Atmospherics // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

@@ -1,46 +1,86 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Hydrakin
+
+  <Box>
+    [color=#999999][italic]"Fluffy. Loud. From an iceworld nobody on the recruiting board had heard of. Please note phonetic spelling on intake forms. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-HDK
+  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, uplifted
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty (provisional, Reconstruction Directive 11-c)
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobHydrakin" Caption=""/>
   </Box>
 
-  Avian creatures with an odd appearance and an extreme tolerance for cold.
+  On file: Avian beings with an unusual constitution and an extreme tolerance for cold.
 
-  Fluffy, exceptionally warm, and notoriously noisy, Hydrakin originate from a desolate iceworld far beyond the normal limits of habitable space. Their home planet is locked in perpetual ice storms, dimly lit, and surrounded by liquid oxygen oceans beneath a frezon-heavy atmosphere - once thought entirely lifeless.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  Previously not meeting qualifications for sentience, the species was uplifted by Ullman Industries. Instead of being uplifted for integration or labor, Ullman pursued uplift as a proof-of-concept experiment to demonstrate its technological capability to investors. Once sapience and communication benchmarks were met, the project was declared a success, but the uplifted species itself was considered uneconomical to corporate interests.
+  ## § 0 · Provenance
 
-  Transport disruptions, bluespace storms, and corporate negligence scattered Hydrakin shipments and colonies across the Colossus, leaving many outside Ullman control. Today, the Hydrakin exist as a partially uplifted, displaced species, struggling to adapt to a sector they were never meant to inhabit.
+  Subject species was uplifted by Ullman Industries as a proof-of-concept investor demonstration. Project benchmarks were met; the species was subsequently declared uneconomical and shipments were left to drift. Transport disruptions and bluespace storms scattered shipments and colonies across the Colossus, leaving the majority outside Ullman's direct control.
 
-  ## Diet
+  Current population status: partially uplifted, displaced, adapting.
 
-  - Mostly prefer raw food.
-  - [color=#ffa500]Onions and theobromine-containing food (chocolate, tea, coffee) are highly toxic to them[/color].
+  <Box>
+    [color=#999999][italic]"Provenance section is mandatory for uplifted personnel under the 2826 Sentience Accords. Do not skip even when the file is thin. — J."[/italic][/color]
+  </Box>
 
-  ## Atmospherics
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Breathe all gases [color=#1e90ff]except carbon dioxide and water vapor[/color].
-  - Cannot draw oxygen from CO2 or water vapor (but CO2 doesn't damage them either).
+  ## § 1 · Dietary accommodations
 
-  ## Temperature
+  - Raw food preferred. Mess Hall is aware.
+  - [color=#ffa500]Restricted:[/color] Onions and any [color=#a4885c]Theobromine[/color]-containing food (chocolate, tea, coffee) — highly toxic.
 
-  - Bodies are [color=#ffa500]constantly heating up[/color]. They tolerate heat without insulation, but wearing hardsuits or coats will start [color=#ffa500]heating them up to 67°C[/color].
-  - Leporazine and Peranol have [color=#1e90ff]amplified[/color] cooling effect on their body.
-  - Cryo chemicals can make them [color=#ffa500]fall asleep[/color] if body temperature gets low enough.
-  - Thermal regulation entirely fails in critical condition and when dead.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Benefits
+  ## § 2 · Respiratory protocol
 
-  - Take [color=#1e90ff]10% less Piercing and Blunt damage[/color].
-  - Unarmed attacks deal Slash damage.
-  - Unique gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have mostly [color=#1e90ff]positive[/color] effects, described in the "Chemicals" guidebook entry.
+  - Cleared to breathe: [color=#1e90ff]all gases except Carbon Dioxide and Water Vapor[/color].
+  - Carbon Dioxide is inert — cannot draw Oxygen from it, but no damage either.
+  - Unique gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff]mostly positive[/color] effects. See "Chemicals" guidebook entry for specifics.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]25% more Heat damage and 15% more Slash damage[/color].
-  - Take [color=#ffa500]20% more damage from low-pressure / vacuum[/color] environments.
-  - Cannot wear glasses due to head anatomy.
+  ## § 3 · Environmental tolerance
+
+  - Subject body is [color=#ffa500]continuously self-heating[/color]. Insulating PPE works against them.
+  - Hardsuits and winter coats trap excess heat and will raise body temperature to [color=#ffa500]67°C[/color]. File PPE waiver on intake.
+  - [color=#1e90ff]Amplified[/color] cooling effect from Leporazine and Peranol — useful in Medical.
+  - Cryogenic agents may [color=#ffa500]induce sleep[/color] at sufficient dose.
+  - Thermal self-regulation fails on critical condition or death.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
+
+  - Take [color=#1e90ff]10% less Piercing and Blunt damage[/color]. Cleared for hazardous-environment rotations.
+  - Unarmed claws produce [color=#1e90ff]Slash damage[/color] at industry standard.
+
+  <Box>
+    [color=#999999][italic]"HR note: yes, they are loud. This is a feature, not a defect. We do not file noise complaints against Hydrakin. — J."[/italic][/color]
+  </Box>
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]25% more Heat damage and 15% more Slash damage[/color]. Insurance Tier A near welding stations, plasma fires, and the burn chamber.
+  - ⚠ Take [color=#ffa500]20% more damage from low-pressure / vacuum[/color] environments. EVA rotations require Tier-2 hardsuit signoff.
+  - ⚠ Cannot wear standard eyewear due to head anatomy. Vision-correction waiver issued automatically on intake.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Medbay // Mess Hall // Atmospherics // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

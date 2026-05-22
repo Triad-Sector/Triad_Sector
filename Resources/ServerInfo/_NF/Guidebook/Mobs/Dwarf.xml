@@ -1,12 +1,27 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Dwarves
+
+  <Box>
+    [color=#999999][italic]"Punctual. Stays through end of shift. Quartermaster has expressed strong preference for assigning them to Mining. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-DWF
+  [color=#a4885c]Class:[/color] Humanoid // Stout-derived
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobDwarf" Caption=""/>
   </Box>
 
-  An industrious species, similar to humans but with a knack for ore and a fondness for drink.
+  On file: An industrious species, similar to humans but with a knack for ore and a fondness for drink.
 
   <Box>
     <GuideEntityEmbed Entity="WallRockChromiteDiamond" Caption=""/>
@@ -14,15 +29,21 @@
     <GuideEntityEmbed Entity="WallRockBluespace" Caption=""/>
   </Box>
 
-  A dwarf instinctively knows where the choice ore veins are, and can sense the presence of ore up to 5 meters away.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Benefits
+  ## § 4 · Workplace aptitudes
 
-  - [color=#1e90ff]Tolerate alcohol better than humans, and are healed by it[/color].
-  - Innate ore sense - detect ore veins up to 5 meters away.
+  - [color=#1e90ff]Tolerate alcohol better than humans, and are healed by it[/color]. Mess Hall has been advised that beverage rations may be redirected as field medicine.
+  - Innate ore sense — detect ore veins up to 5 meters away. Mining rotations are an obvious assignment.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#ffa500]Suffocate roughly twice as fast as humans[/color] - they go down quickly without air.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ [color=#ffa500]Suffocate roughly twice as fast as humans[/color] — they go down quickly without air. EVA rotations require an attentive partner and a second tank.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Quartermaster // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

@@ -1,39 +1,61 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Diona
+
+  <Box>
+    [color=#999999][italic]"Vegetative biology, deceptively patient temperament. Hydroponics has standing request to fast-track all Diona applications. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-DNA
+  [color=#a4885c]Class:[/color] Humanoid // Plant-based, sap-circulatory
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobDiona" Caption=""/>
   </Box>
 
-  Plant-based humanoids whose biology runs on tree sap.
+  On file: Plant-based humanoids whose biology runs on tree sap, sturdy enough to ignore FTL jolts, with a complicated relationship with botany chemistry.
 
-  Sturdy enough to ignore FTL jolts, but they have a complicated relationship with botany chemistry.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Diet
+  ## § 1 · Dietary accommodations
 
-  - Cannot eat anything Iron-based - their "blood" is tree sap.
-  - [color=#ffa500]Weed Killer poisons them[/color]; [color=yellow]Robust Harvest[/color] heals them, but overuse carries its own risk (see Make Like A Tree And Leave).
+  - [color=#a4885c]Tree sap[/color] only — cannot eat anything Iron-based. Their "blood" is the sap itself.
+  - [color=#ffa500]Weed Killer is poison[/color]. Issue a Botany-handling waiver.
+  - [color=yellow]Robust Harvest[/color] heals them, but overuse triggers Section 5.a. See below.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#1e90ff]Get hungry and thirsty slower[/color] than other species.
-  - [color=#1e90ff]Withstand FTL jumps[/color] without being knocked down by the shock.
+  ## § 4 · Workplace aptitudes
+
+  - [color=#1e90ff]Get hungry and thirsty slower[/color] than other species — long deployments are well-tolerated.
+  - [color=#1e90ff]Withstand FTL jumps[/color] without being knocked down by the shock. Cleared for shuttle pilot rotations.
   - Cannot be slowed by [color=yellow]Kudzu[/color].
   - [color=#1e90ff]Immune to step-trigger hazards[/color] (landmines, glass shards, etc.).
   - Take [color=#1e90ff]30% less Blunt damage, 20% less Slash damage, and 10% less Piercing damage[/color].
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ### Make Like A Tree And Leave
+  ## § 5 · Special protocols
+
+  ### 5.a · Make Like A Tree And Leave
 
   <Box>
     <GuideEntityEmbed Entity="FloraTree" Caption=""/>
   </Box>
 
-  Exposure to too much Robust Harvest causes a Diona to grow out of control, turning into an immobile tree (dropping all their equipment). Cutting down the tree restores the Diona to their mobile state.
+  Exposure to too much Robust Harvest causes a Diona to grow out of control, turning into an immobile tree (dropping all equipment). Cutting down the tree restores the Diona to mobile state.
 
-  ### Diona Nymphs
+  > [color=#999999][italic]"This counts as a workplace transformation, not an injury. Insurance does not apply. — J."[/italic][/color]
+
+  ### 5.b · Diona Nymphs (post-mortem procedure)
 
   <Box>
     <GuideEntityEmbed Entity="MobDionaNymph" Caption=""/>
@@ -41,13 +63,19 @@
     <GuideEntityEmbed Entity="MobDionaNymph" Caption=""/>
   </Box>
 
-  After death, a Diona can voluntarily destroy their own body, releasing their "internal organs" as three Nymphs, with the player taking control of the Brain Nymph. It can talk but has no hands or inventory, and can't do much.
+  After death, a Diona may voluntarily disassemble their body, releasing three Nymphs. The subject's consciousness continues in the Brain Nymph — capable of speech but lacking hands or inventory.
 
-  After 10 minutes, a Nymph can reform into a whole Diona. This will be a new randomised body with a random name, and there will be little to no evidence beyond their word about who they were before.
+  After 10 minutes, a Nymph may reform into a whole Diona. The reformed body is randomised; the new identity has no formal claim to prior employment records.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Cannot wear shoes.
-  - Take [color=#ffa500]50% more Heat damage, 20% more Shock damage, and easily catch on fire when receiving enough Heat damage from any source[/color].
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Cannot wear shoes — issue alternative PPE for foot protection.
+  - ⚠ Take [color=#ffa500]50% more Heat damage, 20% more Shock damage[/color], and catch on fire easily when receiving Heat damage. Insurance Tier A near welding, the burn chamber, and AME service shifts.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Hydroponics // Medbay // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

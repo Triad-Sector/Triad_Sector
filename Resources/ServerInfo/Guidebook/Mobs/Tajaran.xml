@@ -1,33 +1,62 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Tajaran
+
+  <Box>
+    [color=#999999][italic]"Recent arrival to the sector. Please ensure clan-affiliation field is filled out at intake; subject considers it a courtesy. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-TJR
+  [color=#a4885c]Class:[/color] Humanoid // Feline-derived
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobTajaran" Caption=""/>
   </Box>
 
-  Omnivorous bipedal humanoids with strongly feline features.
+  On file: Omnivorous bipedal humanoids with strongly feline features.
 
-  Distinguished by a layer of fur, large ears atop their heads, and a tail that aids in balance, the Tajara hail from the icy moon of [color=yellow]Ahdomai[/color], only relatively recently making their debut on the galactic stage. Originally a clan-centric society, Tajara endured centuries of dictatorial rule. Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Diet
+  ## § 0 · Provenance
 
-  - Omnivorous - can eat what humans can eat.
+  Distinguished by a layer of fur, large ears atop their heads, and a tail that aids in balance. The Tajara hail from the icy moon of [color=yellow]Ahdomai[/color], a relatively recent arrival on the galactic stage. Originally a clan-centric society, the Tajara endured centuries of dictatorial rule before a civil war fractured their government and returned power to the clans, where it remains today.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#1e90ff]Night Vision[/color] - can see in low-light conditions without aid.
-  - Their layer of fur gives them [color=#1e90ff]resistance to Cold damage[/color].
+  ## § 1 · Dietary accommodations
+
+  - Omnivorous — can eat what humans can eat. Mess Hall requires no special accommodation.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
+
+  - [color=#1e90ff]Night Vision[/color] — can see in low-light conditions without aid.
+  - Their layer of fur grants [color=#1e90ff]resistance to Cold damage[/color]. Cleared for cold-environment rotations.
   - Innate agility: [color=#1e90ff]take reduced damage from impacts or falls[/color].
-  - Soft feet let them [color=#1e90ff]walk shoeless without making noise[/color].
+  - Soft feet let them [color=#1e90ff]walk shoeless without making noise[/color]. Cite Subsection 4.b before assigning to roles requiring audible approach.
   - Can fit in duffel bags due to their small stature.
   - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Due to their small stature, take [color=#ffa500]15% more Brute damage[/color].
-  - Their cold-side fur insulation means they take [color=#ffa500]more Heat damage[/color] in return.
-  - Get hungry [color=#ffa500]roughly 16% faster[/color] than humans.
-  - [color=#ffa500]Slightly less stamina[/color] than humans.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Due to their small stature, take [color=#ffa500]15% more Brute damage[/color].
+  - ⚠ Cold-side fur insulation means they take [color=#ffa500]more Heat damage[/color] in return.
+  - ⚠ Get hungry [color=#ffa500]roughly 16% faster[/color] than humans — long deployments require additional rations.
+  - ⚠ [color=#ffa500]Slightly less stamina[/color] than humans.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Mess Hall // Security // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

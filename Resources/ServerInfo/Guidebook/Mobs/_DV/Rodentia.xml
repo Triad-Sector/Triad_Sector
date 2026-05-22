@@ -1,32 +1,61 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Rodentia
+
+  <Box>
+    [color=#999999][italic]"Resourceful, evasive, sneaky. Custodial duty has been re-routed away from Rodentia personnel due to standing mousetrap issues. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-RDN
+  [color=#a4885c]Class:[/color] Humanoid // Rodent-derived, sub-baseline mass
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobRodentiaDummy" Caption=""/>
   </Box>
 
-  Humanoid rodents - resourceful, evasive, sneaky, but fragile.
+  On file: Humanoid rodents — resourceful, evasive, sneaky, but fragile.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat.
   - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
 
   - Use claws for unarmed attacks, dealing Slashing and Blunt damage.
   - Smaller than humans and can fit in duffelbags.
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Can rummage in disposal chutes to dig up trash.
+  ## § 5 · Special protocols
+
+  ### 5.a · Rummaging &amp; concealment
+
+  - Subject can rummage in disposal chutes to retrieve trash. Recognized as an approved task, not misuse of facilities.
   - Can sneak underneath tables, but not under doors.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]30% more Blunt damage, and 15% more Slash and Piercing damage[/color].
-  - Always trigger mousetraps, even when wearing shoes.
-  - [color=#ffa500]Get hungry 33% faster[/color] than humans.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]30% more Blunt damage, and 15% more Slash and Piercing damage[/color].
+  - ⚠ Always trigger mousetraps, even when wearing shoes. Custodial duty is re-routed.
+  - ⚠ [color=#ffa500]Gets hungry 33% faster[/color] than humans — long deployments require additional rations.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Custodial // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

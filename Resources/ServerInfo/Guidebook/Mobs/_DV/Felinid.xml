@@ -1,34 +1,59 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Felinids
+
+  <Box>
+    [color=#999999][italic]"Will fit in a duffelbag. Has done so during interview. Please consult Security on standing policies. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-FLD
+  [color=#a4885c]Class:[/color] Humanoid // Feline-derived, sub-baseline mass
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobFelinidDummy" Caption=""/>
   </Box>
 
-  Small and mischievous cat-eared people whose size cuts both ways.
+  On file: Small and mischievous cat-eared people whose size cuts both ways.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat.
   - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
 
   - [color=#1e90ff]Smaller than humans, making them harder to hit[/color].
   - Can fit in duffelbags.
   - Can throw up a hairball to purge some chemicals from their bloodstream.
-  - Can eat mice and rats after picking them up - regenerates the hairball ability and feeds them.
+  - Can eat mice and rats after picking them up — regenerates the hairball ability and feeds them.
   - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
   - Can walk completely silently while barefoot.
-  - [color=#1e90ff]Take reduced fall and impact damage[/color] - they really do land on their feet.
-  - [color=#1e90ff]Stay closer to full speed when injured[/color] - damage slows them down less than other species.
+  - [color=#1e90ff]Take reduced fall and impact damage[/color] — they really do land on their feet.
+  - [color=#1e90ff]Stay closer to full speed when injured[/color] — damage slows them down less than other species.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]10% more Blunt and Slash damage[/color].
-  - Easily shoved, pushed, and carried around by other species due to their small size.
-  - Weaker and struggle to carry and pull things - cannot carry an Oni.
-  - [color=#ffa500]Slightly less stamina than humans[/color] - they tire faster and take longer to catch their breath.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]10% more Blunt and Slash damage[/color].
+  - ⚠ Easily shoved, pushed, and carried around by other species due to their small size.
+  - ⚠ Weaker, struggle to carry and pull things — cannot carry an Oni.
+  - ⚠ [color=#ffa500]Slightly less stamina than humans[/color] — they tire faster and take longer to catch their breath.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Security // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

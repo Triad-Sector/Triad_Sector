@@ -1,26 +1,55 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Vox
+
+  <Box>
+    [color=#999999][italic]"Subject has a fatal allergy to oxygen and has applied to work on a space station. Reviewed. Approved with conditions. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-VOX
+  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, nitrogen-respiring
+  [color=#a4885c]Status:[/color] ✓ Approved — REQUIRES SUPERVISOR SIGNOFF (atmospheric hazard)
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel — NOT recommended for new personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobVox" Caption=""/>
   </Box>
 
-  Nitrogen-breathing avians for whom station air is a slow toxin.
+  On file: Nitrogen-breathing avians for whom station air is a slow toxin.
 
-  [color=red]Warning! This species is not recommended for new players due to their fatal allergy to oxygen.[/color]
+  [color=red]Warning! This species is not recommended for new personnel due to a fatal allergy to oxygen.[/color]
 
-  Vox breathe nitrogen, and oxygen is toxic to them. Space stations tend to be full of oxygen, so Vox must use an internal nitrogen supply at almost all times to avoid fatal exposure.
+  Subject breathes Nitrogen; Oxygen is toxic. Station atmospheres are predominantly Oxygen — internal Nitrogen supply must be worn at almost all times to avoid fatal exposure.
 
-  ## Atmospherics
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Breathe nitrogen; oxygen is toxic.
-  - Spawn wearing working nitrogen internals. A spare breathing mask and an emergency nitrogen canister are provided in the survival box.
-  - [color=#1e90ff]Slowly recover from low levels of poison damage[/color] on their own, so long as they are careful not to exceed 20 poison damage. This allows them to endure breathing station air for up to thirty seconds at a time without lasting damage, letting them quickly eat, drink, take oral medication, and so on.
-  - A thirty second oxygen exposure takes about two minutes to recover from. If health does not seem to improve within a minute of oxygen exposure, the Vox should seek medical attention.
+  ## § 2 · Respiratory protocol
 
-  ## Benefits
+  - Cleared to breathe: [color=#1e90ff]Nitrogen[/color]. Oxygen is toxic.
+  - Subject spawns wearing working Nitrogen internals. A spare breathing mask and an emergency Nitrogen canister are provided in the survival box.
+  - [color=#1e90ff]Slowly recover from low levels of poison damage[/color] on their own, so long as they remain below 20 poison damage. Subject can endure breathing station air for up to thirty seconds at a time without lasting damage — long enough to eat, drink, or take oral medication.
+  - Thirty-second oxygen exposure takes about two minutes to recover from. If health does not improve within a minute, route to Medbay immediately.
 
-  - Unarmed attacks deal Slash damage.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
+
+  - Unarmed attacks deal [color=#1e90ff]Slash damage[/color] — useful in any role permitting hand-to-hand.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ [color=red]Fatal allergy to ambient station atmosphere[/color]. Insurance Tier A on every shift. Supervisor must verify internals at start of duty.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Atmospherics // Medbay // Supervisor // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

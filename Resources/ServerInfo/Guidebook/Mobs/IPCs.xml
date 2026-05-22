@@ -1,26 +1,43 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # I.P.C.
+
+  <Box>
+    [color=#999999][italic]"Filed as an independent individual. Subject is NOT a borg, NOT subject to laws of robotics. Onboarding officers please update training materials. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-IPC
+  [color=#a4885c]Class:[/color] Synthetic // Positronic chassis
+  [color=#a4885c]Status:[/color] ✓ Approved — SILICON CHASSIS, see Maintenance Protocol IPC-12c
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel (integrated, non-laws)
 
   <Box>
     <GuideEntityEmbed Entity="MobIPCDummy" Caption=""/>
   </Box>
 
-  Sentient robots running on a positronic brain.
+  On file: Sentient robots running on a positronic brain.
 
-  An IPC (short for Integrated Positronic Chassis) is considered an [bold]independent individual[/bold], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system.
+  An IPC (short for Integrated Positronic Chassis) is considered an [bold]independent individual[/bold], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not follow any predefined directives.
 
-  [color=red]IPCs are silicon-based beings, so doctors do not have the skills to repair them.[/color]
+  [color=red]IPCs are silicon-based — Medbay staff do not have the skills to repair them. Repair procedure is detailed in § 5 below.[/color]
 
   <Box>
     <GuideEntityEmbed Entity="PositronicBrain" Caption="Positronic Brain"/>
   </Box>
 
-  Like borgs, IPCs have a positronic brain as their processing source. However, unlike them, IPCs can't be assembled. "It's cheaper to create a shell that obeys you than one that doesn't! *wink*"
+  Like borgs, IPCs run on a positronic brain. Unlike borgs, IPCs cannot be assembled. "It's cheaper to create a shell that obeys you than one that doesn't! *wink*"
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ### Recharging
+  ## § 5 · Special protocols
+
+  ### 5.a · Recharging
 
   <Box>
     <GuideEntityEmbed Entity="APCBasic" Caption="APC Terminal"/>
@@ -28,44 +45,50 @@
     <GuideEntityEmbed Entity="PowerCellMedium" Caption="Power Cell"/>
   </Box>
 
-  IPCs can be recharged in three different ways:
+  Three approved recharge methods:
 
-  - APC Terminal: press [color=yellow]Alt + left click[/color] on a terminal as many times as needed to fully recharge.
-  - Borg Rechargers: prioritize the ones outside of the Sci area to avoid headaches.
-  - Power Cell: IPCs have an internal power cell that serves as their battery. Open the hatch and swap it manually.
+  - [color=yellow]APC Terminal[/color]: press [color=yellow]Alt + left click[/color] on a terminal as many times as needed.
+  - Borg Rechargers: prioritize the ones outside the Sci area to avoid headaches.
+  - Power Cell: subjects have an internal power cell that serves as their battery. Open the hatch and swap manually.
 
-  ### Integrated Radio
+  ### 5.b · Integrated radio
 
   <Box>
     <GuideEntityEmbed Entity="EncryptionKeyScience" Caption="Encryption key"/>
   </Box>
 
-  IPCs do [bold]not[/bold] use external radios because they already have one built in. They only need an encryption key from a radio. Clicking on an IPC with a [color=yellow]wire cutter[/color] removes their keys. New keys can be found around the station or removed from a sector radio with a [color=yellow]screwdriver[/color].
+  IPCs do [bold]not[/bold] use external radios — one is built in. They only need an encryption key. Clicking on an IPC with a [color=yellow]wire cutter[/color] removes their keys. New keys can be retrieved around the station or pulled from a sector radio with a [color=yellow]screwdriver[/color].
 
-  ### Repairing
+  ### 5.c · Repairing
 
   <Box HorizontalAlignment="Stretch">
     <GuideEntityEmbed Entity="WelderIndustrialAdvanced" Caption="Welder"/>
-    Welders can be used to repair [color=yellow]Brute[/color] damage.
+    Welders repair [color=yellow]Brute[/color] damage.
   </Box>
 
   <Box HorizontalAlignment="Stretch">
     <GuideEntityEmbed Entity="CableApcStack" Caption="Cables (any type)"/>
-    Cables can be used to repair [color=yellow]Burns[/color] and [color=yellow]Radiation[/color].
+    Cables repair [color=yellow]Burns[/color] and [color=yellow]Radiation[/color].
   </Box>
 
   <Box HorizontalAlignment="Stretch">
     <GuideEntityEmbed Entity="SheetGlass" Caption="Glass Sheets (any type)"/>
-    Glass Sheets can be used to repair [color=yellow]Blindness[/color].
+    Glass Sheets repair [color=yellow]Blindness[/color].
   </Box>
 
-  In the event an IPC dies, after being fully repaired, it should be restarted using the [color=yellow]"Restart"[/color] button (located by right-clicking).
+  In the event of subject deactivation, after full repair, restart using the [color=yellow]"Restart"[/color] button (right-click context menu).
 
-  [color=red]NEVER ELECTROCUTE AN IPC with a defibrillator or in any other way while it is dead, as this will cause the battery to discharge energy rays outward![/color]
+  [color=red]NEVER ELECTROCUTE AN IPC with a defibrillator or any other current source while it is deactivated — this causes the battery to discharge energy rays outward.[/color]
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]more Heat damage[/color] - their electronics overheat readily.
-  - Take [color=#ffa500]significantly more Shock damage[/color]. When critically damaged the IPC enters a weakened state with even higher Shock weakness.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]more Heat damage[/color] — electronics overheat readily.
+  - ⚠ Take [color=#ffa500]significantly more Shock damage[/color]. When critically damaged the subject enters a weakened state with even higher Shock weakness.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Engineering // Robotics // Atmospherics // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

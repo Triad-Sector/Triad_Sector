@@ -1,32 +1,51 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Onis
+
+  <Box>
+    [color=#999999][italic]"Strongly preferred for heavy-lifting rotations. Discourage assignment to Security firearm details. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-ONI
+  [color=#a4885c]Class:[/color] Humanoid // Augmented mass and stature
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobOniDummy" Caption=""/>
   </Box>
 
-  Large, horned people that come in a variety of colors.
+  On file: Large, horned people that come in a variety of colors.
 
-  Their accuracy with guns is terrible, but their physical strength brings them a lot of boons both in and out of combat.
+  Accuracy with guns is poor; physical strength brings boons in and out of combat.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Nothing special.
-
-  ## Benefits
+  ## § 4 · Workplace aptitudes
 
   - Take [color=#1e90ff]15% less Blunt, Slash, and Piercing damage[/color].
-  - Deal more damage in melee: [color=#1e90ff]+35% Blunt and Asphyxiation, +20% Slash and Piercing[/color].
-  - Due to their large size, they can easily carry, shove, and pull other species.
-  - [color=#1e90ff]Harder to shove[/color].
+  - Melee output: [color=#1e90ff]+35% Blunt and Asphyxiation, +20% Slash and Piercing[/color].
+  - Easily carry, shove, and pull other personnel — cleared for heavy-lifting rotations.
+  - [color=#1e90ff]Harder to shove[/color] than other species.
   - Slightly more stamina than humans.
   - Pry open doors in [color=#1e90ff]about half the time[/color] of other species.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#ffa500]Terrible accuracy with guns[/color].
-  - Harder to carry and pull.
-  - Bigger than humans, making them easier to hit.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ [color=#ffa500]Poor accuracy with firearms[/color]. Cite Subsection 6.a when redirecting from Security armoury duty.
+  - ⚠ Harder to carry and pull — Medical evacuation requires multiple personnel.
+  - ⚠ Bigger than humans, making them easier to hit.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Cargo // Engineering // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

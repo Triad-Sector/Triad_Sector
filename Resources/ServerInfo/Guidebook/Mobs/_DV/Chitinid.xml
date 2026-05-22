@@ -1,31 +1,56 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Chitinid
+
+  <Box>
+    [color=#999999][italic]"Excellent for radiation duty. Subject will, on occasion, deposit a Chitzite — please file this under maintenance, not custodial. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-CHT
+  [color=#a4885c]Class:[/color] Humanoid // Insectoid, exoskeletal
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobChitinid" Caption=""/>
   </Box>
 
-  An industrious hymenoptera species, strong and diligent, with an acute resistance to radiation that comes with side effects.
+  On file: An industrious hymenoptera species, strong and diligent, with an acute resistance to radiation that comes with side effects.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#1e90ff]80% less Radiation damage, and 10% less Slash, Blunt, and Piercing damage[/color].
-  - Bodies naturally recover from light radiation damage up to a point. Once they accumulate enough radiation they must purge it as a small rock - [color=#a4885c]Chitzite[/color] is slightly radioactive.
-  - Better at pulling and carrying things than other species.
-  - Possess a bio-light.
+  ## § 4 · Workplace aptitudes
 
-  ## Drawbacks
+  - Take [color=#1e90ff]80% less Radiation damage, and 10% less Slash, Blunt, and Piercing damage[/color]. Cleared as primary radiation-response personnel.
+  - Bodies naturally recover from light radiation damage. Excess radiation is purged as a small rock — [color=#a4885c]Chitzite[/color] is slightly radioactive.
+  - Better at pulling and carrying than other species — cleared for heavy logistics.
+  - Possesses a bio-light.
 
-  - Take [color=#ffa500]15% more Shock damage[/color] due to their biology.
-  - Hard shells block normal syringes - require hypos to bypass.
-  - Overactive metabolism: [color=#ffa500]get hungry 33% faster[/color] than humans.
-  - Cold doesn't agree with their biology - their movement gets sluggish as it gets colder, and they take [color=#ffa500]30% more Cold damage[/color].
-  - Deceptively heavy due to their lifestyle and diet.
-  - [color=#a4885c]Bug Blood[/color] can't be regenerated from Iron.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]15% more Shock damage[/color] due to biology.
+  - ⚠ Hard shells block normal syringes — require hypos to bypass. Issue Medbay-handling waiver.
+  - ⚠ Overactive metabolism: [color=#ffa500]gets hungry 33% faster[/color] than humans.
+  - ⚠ Cold doesn't agree with their biology — movement gets sluggish as it gets colder, and they take [color=#ffa500]30% more Cold damage[/color].
+  - ⚠ Deceptively heavy due to lifestyle and diet.
+  - [color=#a4885c]Bug Blood[/color] cannot be regenerated from Iron — Medbay must keep an alternative on hand.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Engineering // Medbay // Cargo // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

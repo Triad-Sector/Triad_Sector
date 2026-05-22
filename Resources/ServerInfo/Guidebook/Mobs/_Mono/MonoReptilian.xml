@@ -1,38 +1,64 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Reptilians
+
+  <Box>
+    [color=#999999][italic]"Strong in melee. Increasingly inconvenient in armoury. Please ensure climate controls are set to 'warm' on shifts that include Reptilian personnel. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-RPT
+  [color=#a4885c]Class:[/color] Humanoid // Reptile-derived, cold-blooded
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobReptilian" Caption=""/>
   </Box>
 
-  Cold-blooded humanoids whose physiology demands heat and rewards them when they get it.
+  On file: Cold-blooded humanoids whose physiology demands heat and rewards them when they get it. Claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
 
-  Their claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ## Diet
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat without ill effects.
   - Get ill from consuming chocolate or any other food containing [color=#a4885c]Theobromine[/color].
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 3 · Environmental tolerance
+
+  - Body temperature drives performance. Sustained warmth above [color=#1e90ff]47°C[/color] grants a small regeneration and speed boost.
+  - Cannot generate enough heat to sustain themselves below [color=#ffa500]20°C[/color] ambient.
+  - Below [color=#ffa500]22°C[/color] they start getting drowsy and periodically falling unconscious. Cite Section 5.b for accepted warming protocols.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
 
   - Can drag objects with their tail, keeping both hands free.
   - Take [color=#1e90ff]15% less Slash damage and 5% less Heat damage[/color].
-  - Raw melee is far more powerful than human - 8 Slash with 1.5 attack rate.
-  - Sustaining body temperature above [color=#1e90ff]47°C[/color] grants a small regeneration and speed boost.
+  - Raw melee is far more powerful than human — 8 Slash with 1.5 attack rate.
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  ### Claws
+  ## § 5 · Special protocols
 
-  Reptilians are equipped with dangerous claws that grow in stages.
+  ### 5.a · Claws
 
-  - Stage 0 - [color=#ffa500]8 Slash damage[/color].
-  - Stage 1 - [color=#ffa500]11 Slash damage[/color]. Gun spread +10%, handheld weapon damage -5%.
-  - Stage 2 - [color=#ffa500]13 Slash damage, 2 Piercing damage[/color]. Gun spread +25%, handheld weapon damage -13%. Wide-swinging unlocked from this stage onward.
-  - Stage 3 - [color=#ffa500]15 Slash damage, 5 Piercing damage[/color]. Gun spread +45%, handheld weapon damage -25%.
-  - Stage 4 - [color=#ffa500]18 Slash damage, 12 Piercing damage[/color]. Cannot use most guns (bows still work), handheld weapon damage -50%.
+  Reptilian claws grow in stages. Each stage increases unarmed damage but degrades firearm and precision-tool use.
+
+  - Stage 0 — [color=#ffa500]8 Slash damage[/color].
+  - Stage 1 — [color=#ffa500]11 Slash damage[/color]. Gun spread +10%, handheld weapon damage -5%.
+  - Stage 2 — [color=#ffa500]13 Slash damage, 2 Piercing damage[/color]. Gun spread +25%, handheld weapon damage -13%. Wide-swinging unlocked from this stage onward.
+  - Stage 3 — [color=#ffa500]15 Slash damage, 5 Piercing damage[/color]. Gun spread +45%, handheld weapon damage -25%.
+  - Stage 4 — [color=#ffa500]18 Slash damage, 12 Piercing damage[/color]. Cannot use most guns (bows still work), handheld weapon damage -50%.
 
   Using [color=yellow]wirecutters[/color] cuts a Reptilian's claws, reducing their stage by 1 and resetting growth progress.
 
@@ -45,7 +71,7 @@
   <GuideReagentEmbed Reagent="Phenoxzine"/>
   <GuideReagentEmbed Reagent="Meroxzine"/>
 
-  ### Heating Up
+  ### 5.b · Approved warming methods
 
   - Welders, emergency flares, and campfires can heat up humanoids, including Reptilians.
 
@@ -56,13 +82,17 @@
   </Box>
 
   - Winter clothes or hardsuits generate enough heat to stay somewhat comfortable.
-  - Can exchange heat with other creatures by hugging. Hugging a colder creature makes things worse.
+  - Can exchange heat with other personnel by hugging. Hugging a colder body makes things worse.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]25% more Blunt damage[/color].
-  - Take [color=#ffa500]30% more Cold damage[/color] - their Mono-fork damage modifier set adds an extra Cold weakness on top of the cold-blooded baseline.
-  - Cannot generate enough heat to sustain themselves in a [color=#ffa500]20°C[/color] environment.
-  - Below [color=#ffa500]22°C[/color] they start getting drowsy and periodically falling unconscious.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]25% more Blunt damage[/color].
+  - ⚠ Take [color=#ffa500]30% more Cold damage[/color] — Mono-fork damage modifier set adds an extra Cold weakness on top of the cold-blooded baseline.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Atmospherics // Security // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

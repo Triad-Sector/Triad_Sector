@@ -1,41 +1,72 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Harpies
+
+  <Box>
+    [color=#999999][italic]"Excellent for ambient social roles. Subject sings on shift; this is a feature, not a defect. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-HRP
+  [color=#a4885c]Class:[/color] Humanoid // Avian-derived
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
   </Box>
 
-  Avian humanoids with colorful feathered wings and tails who can mimic almost any sound.
+  On file: Avian humanoids with colorful feathered wings and tails who can mimic almost any sound.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat.
   - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
-  ## Atmospherics
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Quite sensitive to air quality - exposure to low-quality air makes them visibly gasp, and eventually choke.
-  - To recover: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure oxygen tank. Three seconds of pure oxygen fully restores blood oxygen saturation.
-  - A harpy [color=#ffa500]breathes twice as often as humans[/color] (every 3 seconds), so air tanks last half as long.
-  - If exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
+  ## § 2 · Respiratory protocol
 
-  ## Benefits
+  - Subject is sensitive to air quality — exposure to low-quality air causes visible gasping and eventual choking.
+  - Recovery: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure Oxygen tank. Three seconds of pure Oxygen fully restores blood oxygen saturation.
+  - [color=#ffa500]Breathes twice as often as humans[/color] (every 3 seconds) — air tanks last half as long. Atmospherics has been advised.
+  - Exposure to at least 0.2 moles of combined CO₂ and/or Miasma triggers oxygen-uptake difficulty.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
 
   - Somewhat smaller than humans (though not as small as Felinids).
-  - Use talons for unarmed attacks dealing Piercing damage.
+  - Use talons for unarmed attacks dealing [color=#1e90ff]Piercing damage[/color].
   - Can imitate around 70% of the game's sound library through voice emotes.
-  - Can "Sing" midis by imitating instruments - right click yourself to select an instrument.
+  - Can "Sing" midis by imitating instruments — right click yourself to select an instrument.
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Comes with the [color=#1e90ff]Ultraviolet Vision[/color] trait by default. Can be disabled via accessibility options.
-  - Cannot wear jumpsuits and automatically start with a jumpskirt instead.
-  - While singing, musical notes appear floating around their head.
+  ## § 5 · Special protocols
 
-  ## Drawbacks
+  ### 5.a · Standing accommodations
 
-  - Take [color=#ffa500]10% more Blunt and Slash damage[/color].
-  - Extreme low density - lighter than even Felinids, half the weight of a human.
+  - Filed with the [color=#1e90ff]Ultraviolet Vision[/color] trait by default. Accessibility waiver via Form HR-09c.
+  - Cannot wear jumpsuits — automatically issued a jumpskirt at intake.
+  - Musical notes appear floating around the subject's head while singing. Treat as ambient workplace ornamentation.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]10% more Blunt and Slash damage[/color].
+  - ⚠ Extreme low density — lighter than even Felinids, half the weight of a human. Subject is easily moved by ambient turbulence.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Atmospherics // Service // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

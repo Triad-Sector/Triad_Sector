@@ -1,31 +1,61 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Resomi
+
+  <Box>
+    [color=#999999][italic]"Subject prefers a chilly office. Please coordinate with Atmospherics before assigning desk space. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-RSM
+  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, sub-baseline mass, ammonia-blooded
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobResomiDummy" Caption=""/>
   </Box>
 
-  Small avian-like people from an icy world.
+  On file: Small avian-like people from an icy world.
 
-  Their wings do not grant complete flight, but they can use them to maneuver better in zero-gravity.
+  Wings do not grant complete flight, but assist with maneuvering in zero-gravity.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can digest raw meat and other uncooked animal proteins, like most non-human species.
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 3 · Environmental tolerance
+
+  - Tolerate temperatures as low as -77°C without harm. Cleared for cold-environment rotations.
+  - [color=#ffa500]Slowed by warmth[/color] — discomfort starts at just 30°C, deepens around 37°C, with Heat damage beginning at 47°C. Office desks should be set well below those thresholds.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
 
   - Can fit in duffelbags due to their small size.
   - Maneuver better in zero-gravity with their wings.
-  - Take [color=#1e90ff]less Cold damage[/color] thanks to their ammonia-based blood.
-  - Tolerate temperatures as low as -77°C without harm.
-  - Unarmed attacks deal Slash damage.
+  - Take [color=#1e90ff]less Cold damage[/color] — ammonia-based blood.
+  - Unarmed attacks deal [color=#1e90ff]Slash damage[/color].
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Take [color=#ffa500]more Heat damage[/color], similar to Moth People.
-  - [color=#ffa500]Slowed by warmth - they start suffering at just 30°C[/color], with deeper slowdown around 37°C before heat damage begins at 47°C.
-  - [color=#ffa500]More susceptible to Blunt damage[/color].
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]more Heat damage[/color], similar to Moth People. Insurance Tier B for warm rotations.
+  - ⚠ [color=#ffa500]More susceptible to Blunt damage[/color].
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Atmospherics // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

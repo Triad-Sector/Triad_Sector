@@ -1,26 +1,49 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Arachnids
+
+  <Box>
+    [color=#999999][italic]"Skilled crafters. Quartermaster reports Arachnid-produced Websilk has reduced our textile import budget by a measurable amount. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-ARC
+  [color=#a4885c]Class:[/color] Humanoid // Arachnid-derived, copper-blooded
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobArachnid" Caption=""/>
   </Box>
 
-  Eight-legged humanoids with a knack for silk craft.
+  On file: Eight-legged humanoids with a knack for silk craft.
 
   Their [color=#a4885c]Blue Blood[/color] is based on Copper rather than Iron.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 1 · Dietary accommodations
 
   - Can eat raw meat without ill effects.
   - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
 
-  ## Benefits
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Have two additional Pocket slots in their inventory.
-  - Unarmed attacks deal Piercing damage instead of Blunt.
+  ## § 4 · Workplace aptitudes
 
-  ## Special
+  - [color=#1e90ff]Two additional Pocket slots[/color] in their inventory.
+  - Unarmed attacks deal [color=#1e90ff]Piercing damage instead of Blunt[/color].
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 5 · Special protocols
+
+  ### 5.a · Sericulture
 
   <Box>
     <GuideEntityEmbed Entity="MaterialWebSilk" Caption=""/>
@@ -29,11 +52,18 @@
     <GuideEntityEmbed Entity="WallWeb" Caption=""/>
   </Box>
 
-  - [color=#a4885c]Sericulture[/color]: arachnids produce Websilk at the cost of getting more hungry. Only arachnids can craft bundles of websilk into clothing, shields, and even walls.
+  - [color=#a4885c]Sericulture[/color]: arachnids produce [color=yellow]Websilk[/color] at the cost of getting more hungry.
+  - Only Arachnids can craft Websilk into clothing, shields, and even walls.
 
-  ## Drawbacks
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - [color=#ffa500]Suffocate 50% faster[/color] than other species.
-  - Blue Blood can't be regenerated from Iron - they need Copper-based replenishment instead.
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ [color=#ffa500]Suffocate 50% faster[/color] than other species. EVA rotations require an attentive partner and a second tank.
+  - Blue Blood cannot be regenerated from Iron — Copper-based replenishment must be on hand in Medbay.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Quartermaster // Medbay // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>

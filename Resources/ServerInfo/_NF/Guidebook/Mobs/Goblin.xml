@@ -1,37 +1,66 @@
-<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
+<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
 <Document>
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
+  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
   # Goblins
+
+  <Box>
+    [color=#999999][italic]"Loud. Fragile. Resilient enough to be productive regardless. Mousetrap maintenance has been re-routed away from Goblin personnel by standing order. — HR-Lead Janssen"[/italic][/color]
+  </Box>
+
+  [color=#a4885c]File No.:[/color] SPC-GBL
+  [color=#a4885c]Class:[/color] Humanoid // Sub-baseline mass
+  [color=#a4885c]Status:[/color] ✓ Approved for active duty
+  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
+  [color=#a4885c]Clearance:[/color] General personnel
 
   <Box>
     <GuideEntityEmbed Entity="MobGoblin" Caption=""/>
   </Box>
 
-  Small, loud, and fragile humanoids.
+  On file: Small, loud, and fragile humanoids.
 
-  ## Diet
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Omnivorous - their resilient digestive system also makes them naturally toxin-resistant.
+  ## § 1 · Dietary accommodations
 
-  ## Benefits
+  - Omnivorous — resilient digestive system grants natural toxin resistance.
 
-  - Take [color=#1e90ff]25% less Toxin damage[/color] due to their unusual dietary choices.
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 4 · Workplace aptitudes
+
+  - Take [color=#1e90ff]25% less Toxin damage[/color] due to unusual dietary choices.
   - Take [color=#1e90ff]10% less Blunt damage and 10% less Caustic damage[/color].
   - Unarmed claws deal [color=#1e90ff]Slash damage instead of Blunt[/color].
-  - [color=#1e90ff]Take reduced fall and impact damage[/color] - tumbling off ladders or being thrown hurts them less.
-  - [color=#1e90ff]Stay closer to full speed when injured[/color] - damage slows them down less than other species.
+  - [color=#1e90ff]Reduced fall and impact damage[/color] — tumbling off ladders or being thrown hurts them less.
+  - [color=#1e90ff]Stay closer to full speed when injured[/color] — damage slows them down less than other species.
   - Smaller than humans and can fit in duffelbags.
 
-  ## Special
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
 
-  - Can rummage in disposal chutes to dig up trash.
-  - Can dive into toilets and mailing units because of their small size.
-  - Inherent unique chants.
-  - Innately speak in [color=yellow]Goblin Cant[/color].
+  ## § 5 · Special protocols
 
-  ## Drawbacks
+  ### 5.a · Approved chants &amp; speech accommodations
 
-  - Take [color=#ffa500]10% more Piercing damage[/color] because of their small size.
-  - Always trigger mousetraps, even when wearing shoes.
-  - Don't like being sprayed with water or space cleaner.
+  - Subject can rummage in disposal chutes to retrieve trash. This is recognized as an approved task type, not a misuse of facilities.
+  - Can dive into toilets and mailing units due to their small size. Plumbing has been notified.
+  - Unique chants — supervisors are advised to permit them on shift.
+  - Innately speak in [color=yellow]Goblin Cant[/color]. Translation is the listener's responsibility, not Goblin personnel's.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  ## § 6 · Liabilities &amp; insurance flags
+
+  - ⚠ Take [color=#ffa500]10% more Piercing damage[/color] due to small size.
+  - ⚠ Always trigger mousetraps, even when wearing shoes. Custodial duty has been re-routed.
+  - ⚠ Strong dislike for being sprayed with water or space cleaner. Mark relevant interactions in shift logs.
+
+  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+
+  [color=#999999][italic]Routed: Custodial // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
 
 </Document>
