@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Feroxi
 
@@ -5,26 +6,29 @@
     <GuideEntityEmbed Entity="MobFeroxiDummy" Caption=""/>
   </Box>
 
-  The Feroxi (fer-ox-i) are a race of humanoid shark-like beings. Carnivourous in nature with a strong bite force.
+  The Feroxi (fer-ox-i) are a race of humanoid shark-like beings. Carnivorous in nature with a strong bite force.
 
   ## Diet
 
-  - Can ONLY eat meat.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  - [color=#ffa500]Can ONLY eat meat and pills[/color] (their stomach rejects everything else).
+  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
 
   ## Benefits
 
-  - Uses their jaws to do piercing damage, and harder than other species, rivaling Oni.
-  - Their cartilaginous skeleton allows them to resist blunt force trauma more easily.
-  - Their adaptation to native environments allows them to resist the cold more easily.
-  - Their biology allow them to breathe water vapour.
+  - Use jaws for unarmed attacks dealing Piercing damage, rivaling Oni for bite strength.
+  - Cartilaginous skeleton: [color=#1e90ff]resist Blunt-force trauma more easily[/color].
+  - Adapted to native cold environments: [color=#1e90ff]resist Cold damage more easily[/color].
 
   ## Drawbacks
 
-  - They take 10% more Slash damage.
-  - Gets thirsty 100% faster. That's faster than a Diona!
-  - When thirst falls to "Parched" they begin to suffocate. Have water handy!
-  - Saline is too salty! It hydrates you much less!
-  - Your lungs are unremovable as theyre intergrated with your gills.
+  - Take [color=#ffa500]10% more Slash damage[/color].
+  - [color=#ffa500]Gets thirsty 100% faster[/color] than humans (faster than a Diona).
+  - When Thirst falls to "Parched" they begin to suffocate - keep water handy.
+  - Saline is too salty: it hydrates them much less than fresh water.
+  - Lungs are unremovable - they're integrated with gill structures.
+
+  ## Special
+
+  - Water-vapor breathing is planned but [color=#ffa500]not yet implemented[/color] - no WaterVapor reagent exists in the gas system today. Treat any "breathes water vapor" claim from older docs as future design intent.
 
 </Document>
