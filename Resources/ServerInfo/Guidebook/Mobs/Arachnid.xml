@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Arachnids
 
@@ -5,12 +6,19 @@
     <GuideEntityEmbed Entity="MobArachnid" Caption=""/>
   </Box>
 
-  They have two additional Pocket slots in their inventory. They can eat raw meat without any ill effects, but some foods like chocolate and onion poisons them.
-  They suffocate 50% faster, and their Blue Blood can't be metabolised from Iron, being based on Copper instead.
+  Eight-legged humanoids with a knack for silk craft. Their Blue Blood is based on Copper rather than Iron.
 
-  Their unarmed attacks deal Piercing damage instead of Blunt.
+  ## Diet
 
-  ## Sericulture
+  - Can eat raw meat without ill effects.
+  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+
+  ## Benefits
+
+  - Have two additional Pocket slots in their inventory.
+  - Unarmed attacks deal Piercing damage instead of Blunt.
+
+  ## Special
 
   <Box>
     <GuideEntityEmbed Entity="MaterialWebSilk" Caption=""/>
@@ -19,7 +27,11 @@
     <GuideEntityEmbed Entity="WallWeb" Caption=""/>
   </Box>
 
-  Arachnids can create Websilk at the cost of getting more hungry. They (and only they) can craft bundles of websilk into various items from clothing and shields to entire walls.
+  - Sericulture: arachnids can produce Websilk at the cost of getting more hungry. Only arachnids can craft bundles of websilk into clothing, shields, and even walls.
 
+  ## Drawbacks
+
+  - [color=#ffa500]Suffocate 50% faster[/color] than other species.
+  - Blue Blood can't be regenerated from Iron - they need Copper-based replenishment instead.
 
 </Document>
