@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Onis
 
@@ -8,19 +9,22 @@
   Large, horned people that come in a variety of colors. Their accuracy with guns is terrible, but their physical strength brings them a lot of boons both in and out of combat.
 
   ## Diet
+
   - Nothing special.
 
   ## Benefits
-  - Takes 15% less Blunt, Slash and Piercing damage.
-  - Does more damage in melee; 35% more Blunt and Asphyxiation, 20% more Slash and Piercing.
-  - Due to their big size, they can easily carry, shove and pull any other morphotypes.
-  - They are harder to shove.
-  - Slightly more stamina than Humans.
-  - They have an easier time prying open doors, taking around 50% less time than other species.
+
+  - Take [color=#1e90ff]15% less Blunt, Slash, and Piercing damage[/color].
+  - Deal more damage in melee: [color=#1e90ff]+35% Blunt and Asphyxiation, +20% Slash and Piercing[/color].
+  - Due to their large size, they can easily carry, shove, and pull other species.
+  - [color=#1e90ff]Harder to shove[/color].
+  - Slightly more stamina than humans.
+  - Pry open doors in [color=#1e90ff]about half the time[/color] of other species.
 
   ## Drawbacks
-  - Their accuracy with guns is terrible.
-  - They are harder to carry and pull.
-  - They are bigger than Humans, making them easier to hit.
+
+  - [color=#ffa500]Terrible accuracy with guns[/color].
+  - Harder to carry and pull.
+  - Bigger than humans, making them easier to hit.
 
 </Document>
