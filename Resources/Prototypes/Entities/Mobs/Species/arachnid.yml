@@ -45,6 +45,12 @@
   # Damage (Self)
   - type: Bloodstream
     bloodReagent: CopperBlood
+  # Triad: match guidebook "suffocate 50% faster"
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 1.5
+  # End Triad
   # Damage (Others)
   - type: MeleeWeapon
     animation: WeaponArcBite
