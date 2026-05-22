@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Dwarves
 
@@ -5,7 +6,7 @@
     <GuideEntityEmbed Entity="MobDwarf" Caption=""/>
   </Box>
 
-  An industrious species, dwarves are similar to humans in most respect, but tolerate alcohol better and are healed by it.
+  An industrious species, dwarves are similar to humans in most respects but tolerate alcohol better and are healed by it.
 
   <Box>
     <GuideEntityEmbed Entity="WallRockChromiteDiamond" Caption=""/>
@@ -14,5 +15,14 @@
   </Box>
 
   A dwarf instinctively knows where the choice ore veins are, and can sense the presence of ore up to 5 meters away.
+
+  ## Benefits
+
+  - [color=#1e90ff]Tolerate alcohol better than humans, and are healed by it[/color].
+  - Innate ore sense - detect ore veins up to 5 meters away.
+
+  ## Drawbacks
+
+  - [color=#ffa500]Suffocate roughly twice as fast as humans[/color] (Respirator Asphyxiation 2.0).
 
 </Document>
