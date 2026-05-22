@@ -15,6 +15,12 @@
 
     - node: frame1
       entity: ShuttersFrame
+      # Triad - snap and anchor the frame on creation so the unanchored dynamic body
+      # isn't shoved off impassable tiles (e.g. windows) by physics. Matches the BlastDoor graph.
+      actions:
+        - !type:SnapToGrid {}
+        - !type:SetAnchor {}
+      # End Triad
       edges:
         - to: frame2
           conditions:
