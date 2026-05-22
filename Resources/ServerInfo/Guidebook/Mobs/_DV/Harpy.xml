@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Harpies
 
@@ -5,35 +6,36 @@
     <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
   </Box>
 
-  An avian humanoid species that features colorful feathered wings and tails that can mimic almost any sound.
-
-  They are quite sensitive to the air quality, and when exposed to low quality air, they will begin to visibly gasp, and eventually start choking.
-  When this happens, a Harpy should either move away from sources of bad air, stand on top of a scrubber for a few seconds, or take a few breaths from a pure oxygen tank in order to restore their blood-oxygen levels. Only three seconds of being on pure oxygen is enough to completely restore a Harpy's blood oxygen saturation.
+  An avian humanoid species with colorful feathered wings and tails that can mimic almost any sound.
 
   ## Diet
 
   - Can eat raw meat.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  - [color=#ffa500]Get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic)[/color].
 
   ## Benefits
 
-  - Somewhat smaller than Humans, although not as small as Felinids
-  - Uses their talons to deal Piercing damage
-  - Can imitate around 70% of the game's sound library through a huge list of voice emotes
-  - They can "Sing" midis by imitating instruments. Right click yourself to select an instrument
+  - Somewhat smaller than humans (though not as small as Felinids).
+  - Use talons for unarmed attacks dealing Piercing damage.
+  - Can imitate around 70% of the game's sound library through voice emotes.
+  - Can "Sing" midis by imitating instruments - right click yourself to select an instrument.
 
   ## Special
 
-  - Comes with the Ultraviolet Vision trait by default. This can be disabled via accessibility options.
-  - Cannot wear Jumpsuits, and will automatically start with a Jumpskirt instead.
+  - Comes with the [color=#1e90ff]Ultraviolet Vision[/color] trait by default. Can be disabled via accessibility options.
+  - Cannot wear jumpsuits and automatically start with a jumpskirt instead.
   - While singing, musical notes appear floating around their head.
+
+  ## Atmospherics
+
+  - Quite sensitive to air quality - exposure to low-quality air makes them visibly gasp, and eventually choke.
+  - To recover: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure oxygen tank. Three seconds of pure oxygen fully restores blood oxygen saturation.
+  - A harpy [color=#ffa500]breathes twice as often as humans[/color] (every 3 seconds), so air tanks last half as long.
+  - If exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
 
   ## Drawbacks
 
-  - Takes 10% more Blunt and Slash damage.
-  - Extreme low density, Harpies are lighter than even Felinids, and weigh half as much as a Human.
-  - A Harpy breathes in air twice as often as Humans, inhaling and exhaling every 3 seconds.
-  - - Air tanks last half as long and Harpies are more susceptible than usual to low air quality.
-  - - If a Harpy is exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
+  - Take [color=#ffa500]10% more Blunt and Slash damage[/color].
+  - Extreme low density - lighter than even Felinids, half the weight of a human.
 
 </Document>
