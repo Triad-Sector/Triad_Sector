@@ -1,3 +1,4 @@
+<!-- Triad: formatting unification + mechanical alignment 2026-05-22 -->
 <Document>
   # Tajaran
 
@@ -5,20 +6,26 @@
     <GuideEntityEmbed Entity="MobTajaran" Caption=""/>
   </Box>
 
-  Tajara are a species of omnivorous, bipedal humanoids with features strongly resembling Terran felines.
-  Their most distinguishing traits include a layer of fur, large ears atop their heads, and a tail that aids in balance.
-  They hail from the icy moon of [color=turquoise]Ahdomai[/color], only relatively recently making their debut on the galactic stage.
-  Originally a clan-centric society, Tajara endured centuries of dictatorial rule.
-  Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
+  Tajara are a species of omnivorous, bipedal humanoids with features strongly resembling Terran felines. Their most distinguishing traits include a layer of fur, large ears atop their heads, and a tail that aids in balance. They hail from the icy moon of [color=yellow]Ahdomai[/color], only relatively recently making their debut on the galactic stage. Originally a clan-centric society, Tajara endured centuries of dictatorial rule. Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
 
-  ## Mechanics
+  ## Diet
 
-  Due to their [color=yellow]small stature[/color], Tajara [color=#ec3a3a]take 15% more Brute damage[/color], but they can also [color=#1e90ff]fit into duffel bags[/color].
+  - Omnivorous - can eat what humans can eat.
 
-  Their layer of fur gives them some [color=#1e90ff]resistance to Cold[/color], at the cost of [color=#ec3a3a]taking more Heat damage[/color]
+  ## Benefits
 
-  They use their claws for unarmed attacks, dealing [color=#ec3a3a]Slashing[/color] and [color=#ec3a3a]Piercing[/color] damage.
+  - [color=#1e90ff]Night Vision[/color] - can see in low-light conditions without aid.
+  - Their layer of fur gives them [color=#1e90ff]resistance to Cold damage[/color].
+  - Innate agility: [color=#1e90ff]take reduced damage from impacts or falls[/color].
+  - Soft feet let them [color=#1e90ff]walk shoeless without making noise[/color].
+  - Can fit in duffel bags due to their small stature.
+  - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
 
-  Thanks to their innate agility, they [color=#1e90ff]take reduced damage from impacts or falls[/color], and their soft feet allow them to [color=#1e90ff]walk shoeless without making noise[/color].
+  ## Drawbacks
+
+  - Due to their small stature, take [color=#ffa500]15% more Brute damage[/color].
+  - Take [color=#ffa500]more Heat damage[/color] as a side-effect of their cold-side fur insulation.
+  - Get hungry [color=#ffa500]roughly 16% faster[/color] than humans.
+  - [color=#ffa500]Slightly less stamina[/color] than humans.
 
 </Document>
