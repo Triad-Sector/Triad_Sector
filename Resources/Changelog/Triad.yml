@@ -765,3 +765,14 @@ Entries:
   id: 2213
   time: '2026-05-20T14:43:18.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/69
+- author: Dot5511
+  changes:
+    - type: Tweak
+      message: The shops in the Trade Mall have more in them!
+    - type: Tweak
+      message: Trade mall now has a gathering hub with lathes!
+    - type: Fix
+      message: Button in the Trade Mall's Cryo area now works as intended
+  id: 2214
+  time: '2026-05-21T06:24:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/104
