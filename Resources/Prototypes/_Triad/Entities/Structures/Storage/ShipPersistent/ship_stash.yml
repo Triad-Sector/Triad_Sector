@@ -101,6 +101,7 @@
           - ChemDispensable
           - CigPack
           - Medkit
+          - Tourniquet
     - type: Construction
       graph: MedicalSecureStorageGraph
       node: MedicalSecureStorageNode
