@@ -11,4 +11,8 @@ gas-deposit-drill-system-examined-yield = The extractor reports that [color={$st
         *[other] yield remains, and deep reserves have been reached.
     }
 
+<<<<<<< HEAD
 gas-deposit-extraction-rate = extraction rate
+=======
+gas-deposit-extraction-rate = extraction rate
+>>>>>>> 9b08b50ba27a284f58adbbe4ffe96d6a81e3178b

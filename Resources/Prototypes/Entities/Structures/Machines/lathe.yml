@@ -326,6 +326,8 @@
     - NFScienceBoardsStatic # Frontier
     - NFServiceBoardsStatic # Frontier
     - NFSalvageBoardsStatic # Frontier
+    - GasMiningDrillMachineCircuitboard # Triad
+    - GaslockFrameMachineCircuitboard # Triad
     dynamicPacks:
     - MonoEconomyLatheBoards # Mono
     - EngineeringBoards
