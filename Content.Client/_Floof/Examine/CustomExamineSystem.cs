@@ -1,9 +1,11 @@
 using System.Numerics;
 using Content.Client.Strip;
+using Content.Client.UserInterface.RichText;
 using Content.Shared._Floof.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Robust.Client.Player;
+using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -36,7 +38,7 @@ public sealed class CustomExamineSystem : SharedCustomExamineSystem
         {
             Act = () => OpenUi(target),
             Text = Loc.GetString("custom-examine-verb"),
-            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/edit.svg.png")),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/_DV/Interface/VerbIcons/edit.svg.png")),
             ClientExclusive = true,
             DoContactInteraction = false
         });
@@ -51,7 +53,8 @@ public sealed class CustomExamineSystem : SharedCustomExamineSystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        OpenUi(ev.Target);
+        // Most people seem to dislike this, and it can actually interfere with combat. Still available via the verb menu.
+        // OpenUi(ev.Target);
     }
 
     private void OnStateUpdate(Entity<CustomExamineComponent> ent, ref AfterAutoHandleStateEvent args)

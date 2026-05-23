@@ -43,6 +43,8 @@ public sealed class ModernChemMasterBui(EntityUid owner, Enum uiKey) : BoundUser
                 (uint) _window.BottleDosage.Value, _window.LabelLine));
         _window.BufferSortButton.OnPressed += _ => SendMessage(
             new ChemMasterSortingTypeCycleMessage());
+        _window.BufferSortButtonClassic.OnPressed += _ => SendMessage(
+            new ChemMasterSortingTypeCycleMessage());
         _window.OutputBufferDraw.OnPressed += _ => SendMessage(
             new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.Internal));
         _window.OutputBeakerDraw.OnPressed += _ => SendMessage(

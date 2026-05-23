@@ -15,15 +15,15 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20251024001640_ConsentV2")]
-    partial class ConsentV2
+    [Migration("20250308222529_FloofConsentSystem")]
+    partial class FloofConsentSystem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.1")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -286,7 +286,8 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime>("LastEditedAt")
+                    b.Property<DateTime?>("LastEditedAt")
+                        .IsRequired()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_edited_at");
 
@@ -420,7 +421,8 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime>("LastEditedAt")
+                    b.Property<DateTime?>("LastEditedAt")
+                        .IsRequired()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_edited_at");
 
@@ -636,39 +638,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         });
                 });
 
-            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("consent_freetext_read_receipt_id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ReadAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("read_at");
-
-                    b.Property<int>("ReadConsentSettingsId")
-                        .HasColumnType("integer")
-                        .HasColumnName("read_consent_settings_id");
-
-                    b.Property<Guid>("ReaderUserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("reader_user_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_consent_freetext_read_receipt");
-
-                    b.HasIndex("ReadConsentSettingsId")
-                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
-
-                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
-                        .IsUnique();
-
-                    b.ToTable("consent_freetext_read_receipt", (string)null);
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
                 {
                     b.Property<int>("Id")
@@ -683,14 +652,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("consent_freetext");
 
-                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("consent_freetext_updated_at");
-
-                    b.Property<int?>("ProfileId")
-                        .HasColumnType("integer")
-                        .HasColumnName("profile_id");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
@@ -698,11 +659,7 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.HasKey("Id")
                         .HasName("PK_consent_settings");
 
-                    b.HasIndex("ProfileId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_consent_settings_profile_id");
-
-                    b.HasIndex("UserId", "ProfileId")
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("consent_settings", (string)null);
@@ -976,10 +933,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("hair_name");
 
-                    b.Property<float>("Height")
-                        .HasColumnType("real")
-                        .HasColumnName("height");
-
                     b.Property<JsonDocument>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
@@ -1014,10 +967,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("species");
-
-                    b.Property<float>("Width")
-                        .HasColumnType("real")
-                        .HasColumnName("width");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");
@@ -1091,11 +1040,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnName("profile_role_loadout_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("EntityName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("entity_name");
 
                     b.Property<int>("ProfileId")
                         .HasColumnType("integer")
@@ -1813,28 +1757,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Server");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
-                {
-                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
-                        .WithMany("ReadReceipts")
-                        .HasForeignKey("ReadConsentSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent~");
-
-                    b.Navigation("ReadConsentSettings");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
-                {
-                    b.HasOne("Content.Server.Database.Profile", "Profile")
-                        .WithOne("ConsentSettings")
-                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
-                        .HasConstraintName("FK_consent_settings_profile_profile_id");
-
-                    b.Navigation("Profile");
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
@@ -2174,8 +2096,6 @@ namespace Content.Server.Database.Migrations.Postgres
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
                 {
                     b.Navigation("ConsentToggles");
-
-                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2225,8 +2145,6 @@ namespace Content.Server.Database.Migrations.Postgres
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.Navigation("Antags");
-
-                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 
