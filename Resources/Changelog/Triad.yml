@@ -803,3 +803,25 @@ Entries:
   id: 2217
   time: '2026-05-22T11:51:15.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/91
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: >-
+        (Potentially) fixed a Vending Machine client-side grid reload bug,
+        similar to what the Chem Master had.
+    - type: Fix
+      message: Fixed the ChemMaster Classic-mode sorting.
+    - type: Fix
+      message: Fixed the ChemMaster search bar resetting on a UI update.
+  id: 2218
+  time: '2026-05-23T16:04:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/108
+- author: dijonmustard01
+  changes:
+    - type: Add
+      message: >-
+        Adds "DeviceLinkSink" type to gyroscope entity, along with ports for
+        "On", "Off", and "Toggle"
+  id: 2219
+  time: '2026-05-23T16:23:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/111
