@@ -1,6 +1,13 @@
 # TDF
 - type: entity
-  parent: ClothingHeadset
+  id: BaseTDFHeadset
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+
+- type: entity
+  parent: [ClothingHeadset, BaseTDFHeadset]
   id: ClothingHeadsetTdf
   name: TDF headset
   components:
@@ -8,14 +15,14 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-      - EncryptionKeyNfsd
+      - EncryptionKeyTdf
   - type: Sprite
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: [ClothingHeadsetAlt, BaseTDFHeadset]
   id: ClothingHeadsetAltTdf
   name: TDF over-ear headset
   components:
@@ -23,7 +30,7 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-      - EncryptionKeyNfsd
+      - EncryptionKeyTdf
   - type: Sprite
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
@@ -38,7 +45,7 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-      - EncryptionKeyNfsd
+      - EncryptionKeyTdf
       - EncryptionKeyCommand
 
 - type: entity
@@ -50,5 +57,5 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-      - EncryptionKeyNfsd
+      - EncryptionKeyTdf
       - EncryptionKeyCommand

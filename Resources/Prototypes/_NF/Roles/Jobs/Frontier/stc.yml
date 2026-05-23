@@ -37,5 +37,5 @@
     back:
     - Flash
     - RubberStampStc
-    - EncryptionKeyStationMaster
+    - EncryptionKeyStationMasterSR # Triad
     - PhoneInstrumentHigh

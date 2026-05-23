@@ -19,3 +19,5 @@
       state: hos_label
   - type: PirateBountyItem
     id: EncryptionKeyFaction
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
