@@ -92,11 +92,11 @@
 
 - type: entity
   parent: TdfPda
-  id: TdfSectionLeaderPda
-  suffix: Section Leader
+  id: TdfPatrolTeamLeaderPda
+  suffix: Patrol Team Leader
   components:
   - type: Pda
-    id: TdfSectionLeaderIDCard
+    id: TdfPatrolTeamLeaderIDCard
 
 - type: entity
   parent: BaseTdfPDA

@@ -1,14 +1,14 @@
 - type: job
-  id: TdfSectionLeader
+  id: TdfPatrolTeamLeader
   name: job-name-tdf-section-leader
   description: job-description-section-leader
-  playTimeTracker: JobTdfSectionLeader
+  playTimeTracker: JobTdfPatrolTeamLeader
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
       time: 90000 # 20 hours
   startingGear: TdfLeaderGear
-  icon: JobIconTdfSectionLeader
+  icon: JobIconTdfPatrolTeamLeader
   supervisors: job-supervisors-tdf-enforcer
   weight: 140
   displayWeight: 50
@@ -17,7 +17,7 @@
   accessGroups:
   - GeneralTdfAccessBrig
   access:
-  - TdfSectionLeader
+  - TdfPatrolTeamLeader
   - Medical
   - Chemistry
   ranks:

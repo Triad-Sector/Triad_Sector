@@ -1,5 +1,5 @@
 # TDF
-job-description-tdf-warden = Ensure order at the TDF base, watch over your Section Leaders, and make sure that criminals are fairly and justly sentenced.
+job-description-tdf-warden = Ensure order at the TDF base and make sure that criminals are fairly and justly sentenced.
 job-description-tdf-medic = Fight in the rear of the Chief Enforcer's service, for the lives of your comrades! You are the first and last hope of your team. Hippocrates bless you.
 job-description-tdf-cadet = Enforce the laws of the Triad sector. Listen to your supervisors and feel free to ask them for any help.
 job-description-tdf-enforcer = Stop smugglers, enforce the sector's law, and bring order to chaos in the sector.

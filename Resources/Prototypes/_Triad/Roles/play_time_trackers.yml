@@ -5,7 +5,7 @@
   id: JobTdfWarden
 
 - type: playTimeTracker
-  id: JobTdfSectionLeader
+  id: JobTdfPatrolTeamLeader
 
 - type: playTimeTracker
   id: JobTdfMedic

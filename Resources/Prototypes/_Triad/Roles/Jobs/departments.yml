@@ -7,7 +7,7 @@
   roles:
   - TdfChiefEnforcer
   - TdfWarden
-  - TdfSectionLeader
+  - TdfPatrolTeamLeader
   - TdfEnforcer
   - TdfMedic
   - TdfCadet

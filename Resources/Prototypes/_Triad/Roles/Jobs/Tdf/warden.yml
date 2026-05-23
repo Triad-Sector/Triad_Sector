@@ -8,7 +8,7 @@
       department: Security
       time: 90000 # 25 hours
     - !type:RoleTimeRequirement
-      role: JobTdfSectionLeader
+      role: JobTdfPatrolTeamLeader
       time: 3600 # 1 hour
   startingGear: TdfWardenGear
   icon: JobIconTdfWarden
@@ -24,7 +24,7 @@
   - Medical
   - Chemistry
   - TdfWarden
-  - TdfSectionLeader
+  - TdfPatrolTeamLeader
   ranks:
     RankWarden: []
   special:

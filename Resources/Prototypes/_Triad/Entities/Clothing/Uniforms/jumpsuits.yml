@@ -28,9 +28,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitTdfSectionLeader
-  name: TDF section leader tactical jumpsuit
-  description: A tactical jumpsuit for section leaders in the field, sporting a double armband.
+  id: ClothingUniformJumpsuitTdfPatrolTeamLeader
+  name: TDF patrol team leader tactical jumpsuit
+  description: A tactical jumpsuit for patrol team leaders in the field, sporting a double armband.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuit/section_leader.rsi

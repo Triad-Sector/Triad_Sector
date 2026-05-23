@@ -41,11 +41,11 @@
 
 - type: entity
   parent: TdfJuniorEnforcerIdCard
-  id: TdfSectionLeaderIDCard
-  name: TDF section leader ID card
+  id: TdfPatrolTeamLeaderIDCard
+  name: TDF patrol team leader ID card
   components:
   - type: PresetIdCard
-    job: TdfSectionLeader
+    job: TdfPatrolTeamLeader
   - type: Sprite
     layers:
     - state: tdf
