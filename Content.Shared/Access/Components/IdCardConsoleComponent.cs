@@ -79,7 +79,7 @@ public sealed partial class IdCardConsoleComponent : Component
         //"ResearchDirector",
         //"Salvage",
         "Security",
-        "TdfSectionLeader", // Triad
+        "TdfPatrolTeamLeader", // Triad
         "Service",
         "StationTrafficController", // Frontier
         //"USSP", // Mono
