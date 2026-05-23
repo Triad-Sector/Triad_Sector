@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Content.Server.Database.Migrations.Postgres
+namespace Content.Server.Database.Migrations.Sqlite
 {
     /// <inheritdoc />
     public partial class ConsentV2 : Migration
@@ -16,34 +15,41 @@ namespace Content.Server.Database.Migrations.Postgres
                 name: "IX_consent_settings_user_id",
                 table: "consent_settings");
 
+            migrationBuilder.AddColumn<string>(
+                name: "construction_favorites",
+                table: "preference",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "[]");
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "consent_freetext_updated_at",
                 table: "consent_settings",
-                type: "timestamp with time zone",
+                type: "TEXT",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<int>(
                 name: "profile_id",
                 table: "consent_settings",
-                type: "integer",
+                type: "INTEGER",
                 nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "consent_freetext_read_receipt",
                 columns: table => new
                 {
-                    consent_freetext_read_receipt_id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    read_consent_settings_id = table.Column<int>(type: "integer", nullable: false),
-                    reader_user_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    read_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    consent_freetext_read_receipt_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    read_consent_settings_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    reader_user_id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    read_at = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_consent_freetext_read_receipt", x => x.consent_freetext_read_receipt_id);
                     table.ForeignKey(
-                        name: "FK_consent_freetext_read_receipt_consent_settings_read_consent~",
+                        name: "FK_consent_freetext_read_receipt_consent_settings_read_consent_settings_id",
                         column: x => x.read_consent_settings_id,
                         principalTable: "consent_settings",
                         principalColumn: "consent_settings_id",
@@ -68,7 +74,7 @@ namespace Content.Server.Database.Migrations.Postgres
                 column: "read_consent_settings_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_consent_freetext_read_receipt_reader_user_id_read_consent_s~",
+                name: "IX_consent_freetext_read_receipt_reader_user_id_read_consent_settings_id",
                 table: "consent_freetext_read_receipt",
                 columns: new[] { "reader_user_id", "read_consent_settings_id" },
                 unique: true);
@@ -98,6 +104,10 @@ namespace Content.Server.Database.Migrations.Postgres
             migrationBuilder.DropIndex(
                 name: "IX_consent_settings_user_id_profile_id",
                 table: "consent_settings");
+
+            migrationBuilder.DropColumn(
+                name: "construction_favorites",
+                table: "preference");
 
             migrationBuilder.DropColumn(
                 name: "consent_freetext_updated_at",

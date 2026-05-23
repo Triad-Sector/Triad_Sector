@@ -263,6 +263,11 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void TurnOffOnUnwielded(Entity<ItemToggleComponent> ent, ref ItemUnwieldedEvent args)
     {
+        // Triad: Prevent toggle on wield hardcoding
+        if (!ent.Comp.ToggleOnWielded)
+            return;
+        // Triad end
+
         TryDeactivate((ent, ent.Comp), args.User);
     }
 
@@ -271,6 +276,11 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void TurnOnOnWielded(Entity<ItemToggleComponent> ent, ref ItemWieldedEvent args)
     {
+        // Triad: Prevent toggle on wield hardcoding
+        if (!ent.Comp.ToggleOnWielded)
+            return;
+        // Triad end
+
         TryActivate((ent, ent.Comp), args.User);
     }
 

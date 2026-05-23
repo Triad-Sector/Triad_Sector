@@ -387,6 +387,9 @@ public sealed partial class ModernChemMasterWindow : FancyWindow
             BufferInfoClassic.Children.Add(BuildReagentRow(reagent.color, rowCount, reagent.name, reagent.reagentId, reagent.quantity, true, true, modernMode: false));
             rowCount++;
         }
+
+        if (!string.IsNullOrEmpty(SearchBar.Text))
+            UpdateReagentPrototypes(SearchBar.Text);
     }
 
     private void BuildContainerUI(Control control, ContainerInfo? info, bool addReagentButtons, bool modernMode)

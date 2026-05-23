@@ -63,6 +63,11 @@ namespace Content.Client.VendingMachines
         public void Refresh()
         {
             var system = EntMan.System<VendingMachineSystem>();
+
+            // Triad - Attempt to fix another client-side grid-reload bug.
+            if (!EntMan.HasComponent<VendingMachineComponent>(Owner))
+                return;
+
             _cachedInventory = system.GetAllInventory(Owner);
 
             // Frontier: state, market modifier, balance status

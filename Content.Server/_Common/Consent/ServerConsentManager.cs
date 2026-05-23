@@ -59,8 +59,8 @@ public sealed class ServerConsentManager : IServerConsentManager
         // Log the change
         var session = _playerManager.GetSessionByChannel(message.MsgChannel);
         var togglesPretty = String.Join(", ", message.Consent.Toggles.Select(t => $"[{t.Key}: {t.Value}]"));
-        // _adminLogger.Add(LogType.Consent, LogImpact.Medium,
-        //     $"{session:Player} updated consent setting to: '{message.Consent.Freetext}' with toggles {togglesPretty}");
+        _adminLogger.Add(LogType.Consent, LogImpact.Medium,
+            $"{session:Player} updated consent setting to: '{message.Consent.Freetext}' with toggles {togglesPretty}");
 
         // Persistence
         if (ShouldStoreInDb(message.MsgChannel.AuthType))
