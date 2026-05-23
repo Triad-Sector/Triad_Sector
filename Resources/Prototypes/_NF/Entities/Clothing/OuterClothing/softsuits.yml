@@ -221,7 +221,7 @@
   parent: NFClothingOuterEVASuitBase
   id: ClothingOuterEVASuitSr
   name: overseer EVA suit
-  description: An EVA suit with a built-in helmet issued to Colossus Central's overseer.
+  description: An EVA suit with a built-in helmet issued to the TFA's overseer.
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Suits/eva_color.rsi

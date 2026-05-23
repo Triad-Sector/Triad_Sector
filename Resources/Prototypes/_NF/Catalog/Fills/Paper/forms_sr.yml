@@ -41,7 +41,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#000f89]◥[bold]N[/bold]◣ [bold]Frontier Outpost Command[/bold][/color]
+      [color=#000f89]◥[bold]N[/bold]◣ [bold]TFA Command[/bold][/color]
       [color=#000f89]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Employment Contract[/head]
 
@@ -59,7 +59,7 @@
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Colonel or Colossus Central's overseer).[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Chief Enforcer or Colossus Central's overseer).[/color]
 
 - type: entity
   id: PaperWrittenFrontierEmployeePayHistory
@@ -69,7 +69,7 @@
   components:
   - type: Paper
     content: |2 # If editing this, edit PaperWrittenNfsdPayHistory
-      [color=#000f89]◥[bold]N[/bold]◣ [bold]Frontier Outpost Command[/bold][/color]
+      [color=#000f89]◥[bold]N[/bold]◣ [bold]TFA Command[/bold][/color]
       [color=#000f89]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Employee Pay History[/head]
 

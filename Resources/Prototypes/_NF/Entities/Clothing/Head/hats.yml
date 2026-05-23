@@ -231,7 +231,7 @@
   parent: ClothingHeadHatHopcap
   id: ClothingHeadHatSrCap
   name: overseer's cap
-  description: A cap issued to Colossus Central's overseer. Try not to lose it.
+  description: A cap issued to the TFA's overseer. Try not to lose it. # Triad
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hats/sr_cap.rsi
@@ -243,7 +243,7 @@
   parent: ClothingHeadHatHopcap
   id: ClothingHeadHatSrBeret
   name: overseer's beret
-  description: A breezy beret issued to Colossus Central's overseer. Looks soft.
+  description: A breezy beret issued to the TFA's overseer. Looks soft. # Triad
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hats/sr_beret.rsi
