@@ -51,6 +51,8 @@
   id: EngineeringBoardsStatic
   recipes:
   - SpaceHeaterMachineCircuitBoard
+  - GasMiningDrillMachineCircuitboard
+  - GaslockFrameMachineCircuitboard
 
 ## Dynamic
 
