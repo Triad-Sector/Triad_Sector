@@ -28,7 +28,7 @@
   icon:
     sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
     state: tdfleader
-  jobName: job-name-tdf-section-leader
+  jobName: job-name-tdf-patrol-team-leader
 
 - type: jobIcon
   parent: JobIcon

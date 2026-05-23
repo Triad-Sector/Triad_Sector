@@ -9,7 +9,7 @@
       time: 18000 # 5 hours
   startingGear: TdfEnforcerGear
   icon: JobIconTdfEnforcer
-  supervisors: job-supervisors-tdf-section-leader
+  supervisors: job-supervisors-tdf-patrol-team-leader
   weight: 130
   displayWeight: 40
   assignedCompany: TDF

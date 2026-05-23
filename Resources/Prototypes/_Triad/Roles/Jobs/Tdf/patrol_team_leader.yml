@@ -1,7 +1,7 @@
 - type: job
   id: TdfPatrolTeamLeader
-  name: job-name-tdf-section-leader
-  description: job-description-section-leader
+  name: job-name-tdf-patrol-team-leader
+  description: job-description-patrol-team-leader
   playTimeTracker: JobTdfPatrolTeamLeader
   requirements:
     - !type:DepartmentTimeRequirement
