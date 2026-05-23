@@ -1,0 +1,12 @@
+- type: entity
+  id: BannerTdf
+  parent: BannerBase
+  name: TDF banner
+  description: A banner displaying the shield of the Triad Defense Force. For Triad!
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Decoration/banner.rsi
+    state: tdf-banner
+  - type: Construction
+    graph: TriadBannersGraph
+    node: BannerTDFNode

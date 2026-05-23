@@ -1,0 +1,16 @@
+- type: construction
+  id: BannerTdf
+  name: TDF banner
+  description: A banner displaying the shield of the Triad Defense Force. For Triad!
+  graph: TriadBannersGraph
+  startNode: start
+  targetNode: BannerTDFNode
+  category: construction-category-furniture
+  icon:
+    sprite: _Triad/Structure/Decoration/banner.rsi
+    state: tdf-banner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
