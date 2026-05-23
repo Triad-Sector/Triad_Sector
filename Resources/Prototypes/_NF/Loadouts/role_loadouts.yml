@@ -213,26 +213,23 @@
   - ContractorMag # Mono
   - ContractorArmorPlates # Mono
 
-# Mono edit
+# Triad edit
 - type: roleLoadout
   id: JobStationRepresentative
   groups:
-#  - StationRepHead
-#  - StationRepNeck
-#  - StationRepJumpsuit
+  - StationRepHead
+  - StationRepNeck
+  - StationRepJumpsuit
   - StationRepGloves
   - StationRepBackpack
   - StationRepOuterClothing
 #  - ContractorShoes
 #  - ContractorFace
-#  - ContractorGlasses
+  - ContractorGlasses
 #  - ContractorBelt
-  - MonoSecurityGuardHud
+#  - MonoSecurityGuardHud
   - StationRepEars
   - MonoSecurityGuardShoes
-  - HeadofSecurityHead
-  - HeadofSecurityJumpsuit
-  - HeadofSecurityNeck
   - ColonialLiaisonFirearm # Mono
   - ContractorBoxSurvival
   - StationRepPDA
