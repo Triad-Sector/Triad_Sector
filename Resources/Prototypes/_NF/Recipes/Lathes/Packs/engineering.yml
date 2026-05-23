@@ -5,8 +5,8 @@
   - SmallGyroscopeMachineCircuitboard
   - MiniStationAnchorCircuitboard
   - PortableGeneratorDKJrMachineCircuitboard
-  - GasMiningDrillMachineCircuitboard
-  - GaslockFrameMachineCircuitboard
+#  - GasMiningDrillMachineCircuitboard # Triad
+#  - GaslockFrameMachineCircuitboard # Triad
 
 - type: latheRecipePack
   id: NFEngineering
