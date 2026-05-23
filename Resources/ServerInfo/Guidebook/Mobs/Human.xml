@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“The control group. Every other personnel file in the Bureau is measured against this one — mostly because we have the most experience filing them.”[/italic][/color]
+  [color=#999999][italic]“Sol-derived hominids; one species among many on the roster. Same form as every other dossier in the cabinet. The shared physiology with most of the Bureau staff is incidental. We don't get to play favorites.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,16 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobHuman" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobHumanDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Baseline humanoid against which other species' dossiers are measured.
+  Subject: Sol-derived hominids of plural cultural lineage. Triad humans descend from multiple corporate-era polities (variously: Sol-stock, Biesel-stock, Gilgamesh-stock, GCC-stock); ancestral polity persists as cultural identity, not active citizenship. Physiologically capable across a moderate environmental range; documented species trait is comparative dexterity with station tools and consoles.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#999999][italic]“Yes, I'm one too. That doesn't change the process. The signature line is enough.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
@@ -46,26 +48,27 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - Omnivorous. Cooked meat, plant matter, and synthetic rations all digest normally.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous. Cooked meat, plant matter, and synthetic rations all digest normally.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes [color=#1e90ff][bold]Oxygen[/bold][/color]; suffocates without sufficient supply.
   - Inert [color=#1e90ff][bold]Nitrogen[/bold][/color] tolerated as atmospheric buffer.
-  - Adverse reaction to [color=#ffa500][bold]Plasma, Tritium, Frezon, and other exotic gases[/bold][/color] — induces burns, radiation damage, or chemical asphyxiation depending on substance.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Plasma, Tritium, Frezon, and other exotic gases[/bold][/color] are toxic. Induce burns, radiation damage, or chemical asphyxiation depending on substance.
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Operate tools and consoles [color=#1e90ff][bold]20% faster[/bold][/color] than most other species.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [color=#555555][italic]None on file.[/italic][/color]
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=#555555][italic]None on file.[/italic][/color]
 
@@ -74,7 +77,7 @@
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

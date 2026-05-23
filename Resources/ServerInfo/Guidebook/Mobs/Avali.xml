@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Their packs are work units, not families — at least in payroll terms. The paperwork is faster if you treat both correctly.”[/italic][/color]
+  [color=#999999][italic]“Their packs are work units, not families, at least in payroll terms. The paperwork is faster if you treat both correctly.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobAvali" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobAvaliDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
   Subject: Small ammonia-respiring raptors from the ice moon Avalon. Modern Avali societies retain the canonical pack-of-six structure as a cooperative work unit, though pack composition is now elective rather than birth-assigned. Carnivorous, cold-adapted, capable of basic flight in low-gravity environments.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -40% vulnerable, flammable[/mono]
 
@@ -46,31 +46,33 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [color=#ffa500][bold]Carnivore[/bold][/color]: digests only meat, organs, and pills. Plant matter and synthetic rations are non-nutritive.
-  - Hunger rate is [color=#ffa500][bold]roughly double[/bold][/color] baseline — supplemental rations required on extended deployments.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: stomach accepts any standard ration (meat, organ, plant, synthetic, pharmaceutical). Carnivorous physiology biases toward meat and organ matter.
+  - Hunger rate runs [color=#ffa500][bold]roughly double[/bold][/color] baseline. Supplemental rations required on extended deployments.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#999999][italic]“Ammonia internals come from the same supplier as the Vox masks. Logistics is quietly proud of the bulk-procurement contract. Take advantage of it.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Capable of [color=#1e90ff][bold]basic flight in zero or low gravity[/bold][/color]. Cleared for EVA familiarisation rotations.
   - Move [color=#1e90ff][bold]slightly faster[/bold][/color] than other species.
   - Unarmed attacks deal [color=#1e90ff][bold]6.25 Slash damage[/bold][/color] via claws.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [color=#555555][italic]None on file.[/italic][/color]
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]40% more Fire damage[/bold][/color] than baseline. Insurance Tier A near welding stations and burn chambers.
 
-  [color=red][bold]▲ Warning:[/bold][/color] Crit threshold [color=#ffa500][bold]90 dmg[/bold][/color], death threshold [color=#ffa500][bold]180 dmg[/bold][/color] — lower than baseline. Escalate Medbay triage priority.
+  [color=red][bold]▲ Warning:[/bold][/color] Crit threshold [color=#ffa500][bold]90 dmg[/bold][/color], death threshold [color=#ffa500][bold]180 dmg[/bold][/color], both lower than baseline. Escalate Medbay triage priority.
 
   [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[3 entries on file\][/color]
 
@@ -79,7 +81,7 @@
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

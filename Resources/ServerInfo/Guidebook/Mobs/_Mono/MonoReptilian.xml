@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Strong in melee. Increasingly inconvenient in the armoury. Ensure climate controls are set to 'warm' on shifts that include Reptilian personnel.”[/italic][/color]
+  [color=#999999][italic]“Plural. Tizira, Moghes, station-stock; the dossier records all three. The subject picks the one they identify with.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobReptilian" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobReptilianDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Cold-blooded humanoids of plural cultural lineage — modern Reptilians inherit ancestry variously from Tizira-stock, Moghes-stock, and station-born descendant lines, with subject identifying cultural affiliation at intake or declining to. Physiology demands heat and rewards them when they get it. Claws grow in stages — increasingly dangerous in melee, increasingly clumsy with firearms.
+  Subject: Cold-blooded humanoids of plural cultural lineage. Modern Reptilians inherit ancestry variously from Tizira-stock, Moghes-stock, and station-born descendant lines, with subject identifying cultural affiliation at intake or declining to. Physiology demands heat and rewards them when they get it. Claws grow in stages, increasingly dangerous in melee and increasingly clumsy with firearms.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  resistant + warmth boosts performance[/mono]
 
@@ -46,26 +46,29 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
-  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) — induces poison damage in the bloodstream.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) is toxic. Induces poison damage in the bloodstream.
+
+  [color=#999999][italic]“Onion, coffee, tea, grain, dairy. All on the no-list. The mess hall has been informed. Yes, again.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Take [color=#1e90ff][bold]15% less Slash damage and 5% less Heat damage[/bold][/color] than baseline.
   - Can [color=#1e90ff][bold]drag objects with their tail[/bold][/color], keeping both hands free.
-  - Unarmed melee output is [color=#1e90ff][bold]far above baseline[/bold][/color] — see SPECIAL PROTOCOLS for claw-stage damage progression.
+  - Unarmed melee output is [color=#1e90ff][bold]far above baseline[/bold][/color]. See SPECIAL PROTOCOLS for claw-stage damage progression.
   - Sustained warmth above [color=#1e90ff][bold]47°C[/bold][/color] grants a minor regeneration and speed boost.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  - [color=#ffdd33][bold]Claw growth[/bold][/color] — claws grow through five stages. Each stage increases unarmed damage and degrades firearm and precision-tool use.
+  - [color=#ffdd33][bold]Claw growth[/bold][/color]: claws grow through five stages. Each stage increases unarmed damage and degrades firearm and precision-tool use.
   -- [bold]Stage 0[/bold]: 8 Slash damage.
   -- [bold]Stage 1[/bold]: 11 Slash damage. Firearm spread +10%, handheld weapon damage -5%.
   -- [bold]Stage 2[/bold]: 13 Slash + 2 Piercing. Firearm spread +25%, weapon damage -13%. Wide-swing attack unlocked.
@@ -77,9 +80,9 @@
   <GuideReagentEmbed Reagent="Phenoxzine"/>
   <GuideReagentEmbed Reagent="Meroxzine"/>
 
-  - [color=#ffdd33][bold]Approved warming methods[/bold][/color] — welders, emergency flares, campfires, winter clothes, and hardsuits all generate enough heat to maintain function. Hugging a warmer body exchanges heat positively; hugging a colder body makes things worse.
+  - [color=#ffdd33][bold]Approved warming methods[/bold][/color]: welders, emergency flares, campfires, winter clothes, and hardsuits all generate enough heat to maintain function. Hugging a warmer body exchanges heat positively; hugging a colder body makes things worse.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]25% more Blunt damage[/bold][/color] and [color=#ffa500][bold]30% more Cold damage[/bold][/color] than baseline. Cold-blooded physiology stacks with the standard cold-vulnerability modifier.
 
@@ -90,7 +93,7 @@
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Their grandparents fled an empire — several of them, in sequence. They've earned the calm rotation if they want it.”[/italic][/color]
+  [color=#999999][italic]“Their grandparents fled an empire. Several of them, in sequence. They've earned the calm rotation if they want it.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobResomi" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobResomiDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
   Subject: Diminutive saurian-avian colonists descended from the diaspora populations that left the post-Fall Resomi Empire generations ago. Sub-baseline mass; ammonia-based circulation. Collectivist work-tradition translates well into rotation-team structures.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  vulnerable; slowed above 30°C[/mono]
 
@@ -46,26 +46,28 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] thanks to sub-baseline mass. Useful for stealth and unconventional logistics.
   - Wings assist [color=#1e90ff][bold]zero-gravity maneuvering[/bold][/color] (not full flight).
   - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#999999][italic]“Yes, they fit in a duffel. They are not luggage. Don't joke about it; it stops being funny by the third intake.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [color=#555555][italic]None on file.[/italic][/color]
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]significantly more Heat damage[/bold][/color] than baseline. Insurance Tier B for warm rotations.
 
@@ -76,7 +78,7 @@
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

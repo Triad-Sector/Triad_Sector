@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Filed as an independent individual. Not a borg, not bound by laws of robotics. Onboarding officers, please update your training materials.”[/italic][/color]
+  [color=#999999][italic]“Yes, they're citizens. The Article on Synthetic Personhood was drafted during the war and survived the reformation intact. Don't relitigate it; welcome them aboard.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -20,7 +20,7 @@
 
       [mono][color=#897236]CLASS      [/color]  Synthetic // Positronic[/mono]
 
-      [mono][color=#897236]ORIGIN     [/color]  Manufactured chassis (corporate-era)[/mono]
+      [mono][color=#897236]ORIGIN     [/color]  Positronic chassis[/mono]
 
       [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]None[/bold][/color] — silicon chassis[/mono]
 
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobIPCDummy" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobIPCDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Sentient positronic individuals descended from corporate-era chassis production ([color=#a4885c][bold]Hephaestus, Einstein Engines, Bishop, Zeng-Hu[/bold][/color] — all defunct). Cleared as independent citizens; not laws-bound, not Emag-vulnerable, not Medbay-serviceable. Manufacturer plate is historical paperwork, not an ID number.
+  Subject: Sentient positronic individuals descended from corporate-era chassis production ([color=#a4885c][bold]Hephaestus, Einstein Engines, Bishop, Zeng-Hu[/bold][/color], all defunct). Cleared as independent citizens; not laws-bound, not Emag-vulnerable, not Medbay-serviceable. Manufacturer plate is historical paperwork, not an ID number.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  vulnerable — electronics overheat[/mono]
 
@@ -46,35 +46,37 @@
 
   [mono]  Shock     [color=#cc3333]■[/color][color=#555555]□□□□[/color]  highly vulnerable — amplified when critical[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [color=#a4885c][bold]Non-feeding[/bold][/color]: draws operating power from internal cell, not from food or drink.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: non-feeding. Chassis runs on internal cell; no food or drink intake.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - [color=#a4885c][bold]Non-respiring[/bold][/color]: sealed chassis, immune to atmospheric toxins and asphyxiation.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
-  - [color=#1e90ff][bold]Integrated radio[/bold][/color] — no external headset required; chassis ships with an encryption-key slot. Use a wirecutter to swap keys.
+  - [color=#1e90ff][bold]Integrated radio[/bold][/color]: no external headset required. Chassis ships with an encryption-key slot. Use a wirecutter to swap keys.
   - [color=#1e90ff][bold]Emag-immune[/bold][/color]. The positronic brain follows no predefined directives, so subverting commands cannot be flashed in.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  - [color=#ffdd33][bold]Recharging[/bold][/color] — three approved methods:
+  - [color=#ffdd33][bold]Recharging[/bold][/color]. Three approved methods:
   -- [bold]APC Terminal[/bold]: interface directly to siphon current. Slow but available anywhere with power.
   -- [bold]Borg Recharger[/bold]: prefer chargers outside Science to avoid disruption.
   -- [bold]Power Cell swap[/bold]: open the maintenance hatch with a screwdriver and replace the internal cell directly.
-  - [color=#ffdd33][bold]Repair[/bold][/color] — Engineering, not Medbay:
+  - [color=#ffdd33][bold]Repair[/bold][/color]: Engineering, not Medbay.
   -- [bold]Welder[/bold] mends Brute damage.
   -- [bold]Cable[/bold] (any type) mends Burn and Radiation damage.
   -- [bold]Glass sheets[/bold] (any type) restore Blindness.
   - After full repair, the chassis can be [color=#ffdd33][bold]restarted[/bold][/color] to bring it back online.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#999999][italic]“Trinary Perfection is a religion. Treat it as one. The chapel slot on Deck 4 rotates with the Vox congregation on alternating cycles.”  — J.[/italic][/color]
 
-  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]NEVER electrocute a deactivated IPC[/bold][/color] (defibrillator, exposed wiring, etc.). The internal cell discharges energy outward — equipment damage and personnel injury are likely.
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]NEVER electrocute a deactivated IPC[/bold][/color] (defibrillator, exposed wiring, etc.). The internal cell discharges energy outward. Equipment damage and personnel injury are likely.
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]more Heat damage[/bold][/color] than baseline (electronics overheat). [color=#ffa500][bold]Significantly more Shock damage[/bold][/color]; weakened state at critical further amplifies Shock vulnerability.
 
@@ -85,7 +87,7 @@
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

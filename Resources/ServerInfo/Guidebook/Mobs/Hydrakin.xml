@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Fluffy, loud, from an iceworld you've genuinely never heard of. Phonetic on the intake form — they appreciate the effort.”[/italic][/color]
+  [color=#999999][italic]“Cold-zone rotation, every time. They prefer it, you save on heating, and they'll notice if you got the phonetic right on the intake form. Iceworld biology. Don't read into the name; they're not snakes.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobHydrakin" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobHydrakinDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
   Subject: Avian beings with continuously self-heating bodies and an extreme tolerance for cold.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -25% vulnerable, self-overheats[/mono]
 
@@ -46,30 +46,31 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; prefers raw food, additionally tolerates raw meat.
-  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, prefers raw food and additionally tolerates raw meat.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) are toxic. Both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes [color=#1e90ff][bold]most atmospheric gases[/bold][/color]. Carbon Dioxide is inert (cannot draw Oxygen from it, no damage). Water Vapor is non-respirable.
-  - Exotic gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff][bold]mostly positive effects[/bold][/color] — see Chemicals reference for specifics.
+  - Exotic gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff][bold]mostly positive effects[/bold][/color]. See Chemicals reference for specifics.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color] with [color=#ffa500][bold]20% amplified damage[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Take [color=#1e90ff][bold]10% less Piercing and Blunt damage[/bold][/color]. Cleared for hazardous-environment rotations.
   - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  - Continuously [color=#1e90ff][bold]self-heating[/bold][/color]. Hardsuits and winter coats trap excess heat — body temperature can climb to [color=#ffa500][bold]67°C[/bold][/color]. PPE waiver filed automatically at intake.
+  - Continuously [color=#1e90ff][bold]self-heating[/bold][/color]. Hardsuits and winter coats trap excess heat; body temperature can climb to [color=#ffa500][bold]67°C[/bold][/color]. PPE waiver filed automatically at intake.
   - Cryogenic agents may [color=#1e90ff][bold]induce sleep[/bold][/color] at sufficient dose. Leporazine and Peranol have [color=#1e90ff][bold]amplified[/bold][/color] cooling effect.
   - Thermal self-regulation fails on critical condition or death.
   - Cannot wear standard eyewear due to head anatomy. Vision-correction waiver issued at intake.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]25% more Heat damage[/bold][/color] and [color=#ffa500][bold]15% more Slash damage[/bold][/color] than baseline. Insurance Tier A near welding stations, plasma fires, and burn chambers.
 
@@ -79,14 +80,16 @@
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
-  Subject species descends from a corporate-era uplift program ([color=#a4885c][bold]Ullman Industries[/bold][/color], long defunct), discontinued upon completion of investor demonstration. Ancestral population was scattered across the [color=#a4885c][bold]Colossus[/bold][/color] sector during the corporate collapse; modern Hydrakin present as a stable refugee-descended polity. No surviving proprietary claims — free-agent terms apply by setting default.
+  Subject species descends from a corporate-era uplift program ([color=#a4885c][bold]Ullman Industries[/bold][/color], long defunct), discontinued upon completion of investor demonstration. Ancestral population was scattered across the [color=#a4885c][bold]Triad[/bold][/color] sector during the corporate collapse; modern Hydrakin present as a stable refugee-descended polity. No surviving proprietary claims; free-agent terms apply by setting default.
+
+  [color=#999999][italic]“Ullman has been gone longer than the TDF has existed. Treat the corporate provenance as paperwork history.”  — J.[/italic][/color]
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

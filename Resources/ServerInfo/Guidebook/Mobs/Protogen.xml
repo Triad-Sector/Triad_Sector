@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Mixed biological/electronic chassis. Treats most normal medicine, but circuit damage is real. Refer to Maintenance Protocol IPC-12c for partial overlap.”[/italic][/color]
+  [color=#999999][italic]“Same legal standing as IPC. The Article on Synthetic Personhood covers both; the clarification memo is on the shared drive.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobProtogen" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobProtogenDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
   Subject: Mixed biological-electronic colonists (~40% mechanical, ~60% organic by tissue mass), descended from a pre-corporate-era labor-engineering program of disputed historical attribution. Both Medbay and Engineering involvement may be required for service.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -30% vulnerable, circuit overheat[/mono]
 
@@ -46,25 +46,27 @@
 
   [mono]  Shock     [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -50% vulnerable[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; standard food intake required despite cybernetic frame.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous. Standard food intake required despite cybernetic frame.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen, but [color=#1e90ff][bold]suffers less damage from lacking air[/bold][/color]. Cleared for short EVA tasks without supervisor signoff.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Take [color=#1e90ff][bold]20% less Blunt damage[/bold][/color] and [color=#1e90ff][bold]10% less Piercing/Slash damage[/bold][/color]. Durable chassis.
   - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   - Can play [color=#ffdd33][bold]digital music[/bold][/color] innately. Useful in any social rotation.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#999999][italic]“Visor displays are personal expression, not signaling. Don't read into them. Ask if you want to know what they mean.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]30% more Heat, 30% more Cold, 50% more Shock, and 55% more Radiation damage[/bold][/color]. Insurance Tier A across Engineering, Atmospherics, and any radiation-exposed rotation.
 
@@ -72,14 +74,14 @@
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
-  Subject species originated in a pre-corporate-era engineering program (historical attribution disputed; predecessor entity has no contemporary correspondent). Subject population is descended from the post-uprising free Protogen lineage; original subservience-enforcement structures ([color=#a4885c][bold]cerebral microcrystal arrays[/bold][/color]) have not been functional within historical memory. Full citizenship under [color=#a4885c][bold]TDF Article on Synthetic Personhood[/bold][/color] — no surviving proprietary claims from any predecessor entity.
+  Subject species originated in a pre-corporate-era engineering program (historical attribution disputed; predecessor entity has no contemporary correspondent). Subject population is descended from the post-uprising free Protogen lineage; original subservience-enforcement structures ([color=#a4885c][bold]cerebral microcrystal arrays[/bold][/color]) have not been functional within historical memory. Full citizenship under [color=#a4885c][bold]TDF Article on Synthetic Personhood[/bold][/color]. No surviving proprietary claims from any predecessor entity.
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Excellent for ambient social roles. Subject sings on shift; this is a feature, not a defect.”[/italic][/color]
+  [color=#999999][italic]“If it sounds like a sixty-piece band in the cafeteria, that'll be Harpies. Their mimicry is uncanny; they know it. It is not a discipline issue.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobHarpy" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobHarpyDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
   Subject: Avian humanoids with colorful feathered wings and tails. Can mimic almost any sound.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
@@ -46,41 +46,44 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
-  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) are toxic. Both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen [color=#ffa500][bold]twice as often as baseline[/bold][/color] (every ~3 seconds). Air tanks last roughly half as long.
   - [color=#ffa500][bold]Air-quality sensitive[/bold][/color]: bad air causes visible gasping and eventual choking. 0.2+ moles of combined Carbon Dioxide and Miasma triggers oxygen-uptake difficulty.
   - Recovery: clear bad air, stand on a scrubber, or take three seconds of pure Oxygen for full restoration.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#999999][italic]“Air tanks last half as long for them. Plan the EVA rotation accordingly. Don't make them ask twice.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Unarmed attacks deal [color=#1e90ff][bold]Piercing damage[/bold][/color] via talons.
-  - [color=#1e90ff][bold]Vocal mimicry[/bold][/color] — can reproduce a wide range of station sounds, environmental noises, and voices.
+  - [color=#1e90ff][bold]Vocal mimicry[/bold][/color]: can reproduce a wide range of station sounds, environmental noises, and voices.
   - Can [color=#1e90ff][bold]sing instrumentally[/bold][/color], producing MIDI-equivalent tones across a broad selection of instruments.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   - Filed with the [color=#ffdd33][bold]Ultraviolet Vision[/bold][/color] trait by default. Accessibility waiver via Form HR-09c.
   - [color=#ffdd33][bold]Cannot wear jumpsuits[/bold][/color] due to wing/tail anatomy. Auto-issued a jumpskirt at intake.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Blunt and Slash damage[/bold][/color] than baseline.
 
-  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Extreme low density[/bold][/color] — roughly half baseline mass. Easily moved by ambient turbulence and shoves.
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Extreme low density[/bold][/color], roughly half baseline mass. Easily moved by ambient turbulence and shoves.
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

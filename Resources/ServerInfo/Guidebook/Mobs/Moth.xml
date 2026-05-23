@@ -1,7 +1,7 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobMoth" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobMothDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Winged humanoids who eat cloth and prefer cool environments. Modern Mothkind lives aboard the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color] — a heterogeneous flotilla of ships of every make. Centuries of piracy built the fleet's strength; the population pivoted to engineering and salvage commerce once self-sufficient.
+  Subject: Winged humanoids who eat cloth and prefer cool environments. Modern Mothkind lives aboard the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color], a heterogeneous flotilla of ships of every make. Centuries of piracy built the fleet's strength; the population pivoted to engineering and salvage commerce once self-sufficient.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -15% vulnerable, flammable[/mono]
 
@@ -46,28 +46,27 @@
 
   [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - Can eat [color=#a4885c][bold]cotton, fabrics, and clothing[/bold][/color].
-  - Cannot digest most foods other species consider edible. Mess Hall has been advised to stock a textile shelf.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: specialized. Can eat [color=#a4885c][bold]cotton, fabrics, and clothing[/bold][/color]; most standard rations are non-nutritive. Mess Hall has been advised to stock a textile shelf.
 
   [color=#999999][italic]“Yes, your scarf is in scope. Lock your locker.”  — J.[/italic][/color]
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Wings provide [color=#1e90ff][bold]better acceleration in zero gravity[/bold][/color], though equipment is still required to move in open space.
-  - Take [color=#1e90ff][bold]30% less Cold damage[/bold][/color] — cleared for cold-environment rotations.
+  - Take [color=#1e90ff][bold]30% less Cold damage[/bold][/color]. Cleared for cold-environment rotations.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [color=#555555][italic]None on file.[/italic][/color]
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
   [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]15% more Heat damage, and catch on fire more easily[/bold][/color]. Insurance Tier A near welding stations and the burn chamber.
 
@@ -75,14 +74,14 @@
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
-  Subject species' ancestral homeworld (recorded as [color=#a4885c][bold]Lümla[/bold][/color], tidally locked, bifurcated climate) is [color=#a4885c][bold]canonically lost[/bold][/color] — no contemporary navigational record of its location survives, and historians have been unable to reconstruct how the species lost track of it. Modern Mothkind is fleet-based, organized around the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color]. Historical piracy era is well-documented but commercially superseded; modern Moth populations enter TDF service as free agents.
+  Subject species' ancestral homeworld (recorded as [color=#a4885c][bold]Lümla[/bold][/color], tidally locked, bifurcated climate) is [color=#a4885c][bold]canonically lost[/bold][/color]. No contemporary navigational record of its location survives, and historians have been unable to reconstruct how the species lost track of it. Modern Mothkind is fleet-based, organized around the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color]. Historical piracy era is well-documented but commercially superseded; modern Moth populations enter TDF service as free agents.
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

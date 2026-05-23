@@ -1,14 +1,14 @@
 <!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [color=#999999][italic]“Excellent for radiation duty. Subject will, on occasion, deposit a Chitzite — file under Maintenance, not Custodial.”[/italic][/color]
+  [color=#999999][italic]“Excellent for radiation duty. Subject will, on occasion, deposit a Chitzite. File under Maintenance, not Custodial.”[/italic][/color]
 
   <Box HorizontalAlignment="Right">
     [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
@@ -29,14 +29,14 @@
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobChitinid" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobChitinidDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Industrious exoskeletal hymenoptera. Strong, diligent, and acutely radiation-resistant — primary radiation-response candidates.
+  Subject: Industrious exoskeletal hymenoptera. Strong, diligent, and acutely radiation-resistant. Primary radiation-response candidates.
 
-  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
   [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
@@ -46,40 +46,40 @@
 
   [mono]  Shock     [color=#cc3333]■■[/color][color=#555555]□□□[/color]  -15% vulnerable[/mono]
 
-  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
   - Hunger rate [color=#ffa500][bold]~33% faster[/bold][/color] than baseline due to overactive metabolism.
 
-  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
   - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - Take [color=#1e90ff][bold]80% less Radiation damage[/bold][/color] and [color=#1e90ff][bold]10% less Slash, Blunt, and Piercing damage[/bold][/color]. Cleared as primary radiation-response personnel.
-  - [color=#1e90ff][bold]Superior pulling and carrying strength[/bold][/color] over baseline — cleared for heavy logistics.
+  - [color=#1e90ff][bold]Superior pulling and carrying strength[/bold][/color] over baseline. Cleared for heavy logistics.
   - Possesses an innate [color=#1e90ff][bold]bio-light[/bold][/color] for low-visibility work.
 
-  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  - Excess radiation purges as a small rock — [color=#a4885c][bold]Chitzite[/bold][/color] — that remains slightly radioactive. Treat as hazardous waste, not litter.
+  - Excess radiation purges as a small rock, the [color=#a4885c][bold]Chitzite[/bold][/color], which remains slightly radioactive. Treat as hazardous waste, not litter.
 
-  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
-  [color=red][bold]▲ Warning:[/bold][/color] Exoskeletal shell [color=#ffa500][bold]blocks standard syringes[/bold][/color] — Medbay must use hypos. Handling waiver issued at intake.
+  [color=red][bold]▲ Warning:[/bold][/color] Exoskeletal shell [color=#ffa500][bold]blocks standard syringes[/bold][/color]. Medbay must use hypos. Handling waiver issued at intake.
 
   [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Deceptively heavy[/bold][/color] due to chitin and dietary habits. Affects mobility and carrying capacity calculations.
 
-  - Insect Blood cannot be regenerated from Iron — alternative on hand in Medbay.
+  - Insect Blood cannot be regenerated from Iron. Alternative on hand in Medbay.
 
   <Box HorizontalAlignment="Center">
     [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
   <Box HorizontalAlignment="Center">
-    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>
