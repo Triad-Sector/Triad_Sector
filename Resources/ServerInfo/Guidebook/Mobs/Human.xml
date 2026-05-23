@@ -1,36 +1,80 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Humans
-
-  <Box>
-    [color=#999999][italic]"The control group. We measure every other personnel file against this one. Mostly because we have the most experience filing them." — HR-Lead Janssen[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-HUM
-  [color=#a4885c]Class:[/color] Humanoid // Baseline
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty — Recommended for new personnel
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobHumanDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Unremarkable or the universal standard against which everything else is compared, depending on who you ask.
+  [color=#999999][italic]“The control group. Every other personnel file in the Bureau is measured against this one — mostly because we have the most experience filing them.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## § 4 · Workplace aptitudes
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-HUM[/mono]
 
-  - Interact with workplace systems [color=#1e90ff]about 20% faster[/color] than most other species. Useful in any role requiring fast tool use.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Baseline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]ORIGIN     [/color]  Sol-derived[/mono]
 
-  [color=#999999][italic]Routed: File. Signed, HR-Lead Janssen.[/italic][/color]
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobHuman" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Baseline humanoid against which other species' dossiers are measured.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - Omnivorous. Cooked meat, plant matter, and synthetic rations all digest normally.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes [color=#1e90ff][bold]Oxygen[/bold][/color]; suffocates without sufficient supply.
+  - Inert [color=#1e90ff][bold]Nitrogen[/bold][/color] tolerated as atmospheric buffer.
+  - Adverse reaction to [color=#ffa500][bold]Plasma, Tritium, Frezon, and other exotic gases[/bold][/color] — induces burns, radiation damage, or chemical asphyxiation depending on substance.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Operate tools and consoles [color=#1e90ff][bold]20% faster[/bold][/color] than most other species.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

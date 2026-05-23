@@ -1,98 +1,96 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Reptilians
-
-  <Box>
-    [color=#999999][italic]"Strong in melee. Increasingly inconvenient in armoury. Please ensure climate controls are set to 'warm' on shifts that include Reptilian personnel. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-RPT
-  [color=#a4885c]Class:[/color] Humanoid // Reptile-derived, cold-blooded
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobReptilian" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Cold-blooded humanoids whose physiology demands heat and rewards them when they get it. Claws grow in stages, becoming progressively more dangerous and progressively harder to use firearms or precision tools with.
+  [color=#999999][italic]“Strong in melee. Increasingly inconvenient in the armoury. Ensure climate controls are set to 'warm' on shifts that include Reptilian personnel.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 1 · Dietary accommodations
-
-  - Can eat raw meat without ill effects.
-  - Get ill from consuming chocolate or any other food containing [color=#a4885c]Theobromine[/color].
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 3 · Environmental tolerance
-
-  - Body temperature drives performance. Sustained warmth above [color=#1e90ff]47°C[/color] grants a small regeneration and speed boost.
-  - Cannot generate enough heat to sustain themselves below [color=#ffa500]20°C[/color] ambient.
-  - Below [color=#ffa500]22°C[/color] they start getting drowsy and periodically falling unconscious. Cite Section 5.b for accepted warming protocols.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 4 · Workplace aptitudes
-
-  - Can drag objects with their tail, keeping both hands free.
-  - Take [color=#1e90ff]15% less Slash damage and 5% less Heat damage[/color].
-  - Raw melee is far more powerful than human — 8 Slash with 1.5 attack rate.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 5 · Special protocols
-
-  ### 5.a · Claws
-
-  Reptilian claws grow in stages. Each stage increases unarmed damage but degrades firearm and precision-tool use.
-
-  - Stage 0 — [color=#ffa500]8 Slash damage[/color].
-  - Stage 1 — [color=#ffa500]11 Slash damage[/color]. Gun spread +10%, handheld weapon damage -5%.
-  - Stage 2 — [color=#ffa500]13 Slash damage, 2 Piercing damage[/color]. Gun spread +25%, handheld weapon damage -13%. Wide-swinging unlocked from this stage onward.
-  - Stage 3 — [color=#ffa500]15 Slash damage, 5 Piercing damage[/color]. Gun spread +45%, handheld weapon damage -25%.
-  - Stage 4 — [color=#ffa500]18 Slash damage, 12 Piercing damage[/color]. Cannot use most guns (bows still work), handheld weapon damage -50%.
-
-  Using [color=yellow]wirecutters[/color] cuts a Reptilian's claws, reducing their stage by 1 and resetting growth progress.
-
-  <Box>
-    <GuideEntityEmbed Entity="Wirecutter" Caption=""/>
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
   </Box>
 
-  Certain chemicals control claw growth: [color=yellow]Phenoxzine[/color] boosts growth by 20x, while [color=yellow]Meroxzine[/color] pauses all claw growth entirely. Both metabolize slowly, allowing long-term use.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-RPT[/mono]
+
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Reptilian[/mono]
+
+      [mono][color=#897236]ORIGIN     [/color]  Plural heritage on file[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — cold-blooded[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobReptilian" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Cold-blooded humanoids of plural cultural lineage — modern Reptilians inherit ancestry variously from Tizira-stock, Moghes-stock, and station-born descendant lines, with subject identifying cultural affiliation at intake or declining to. Physiology demands heat and rewards them when they get it. Claws grow in stages — increasingly dangerous in melee, increasingly clumsy with firearms.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  resistant + warmth boosts performance[/mono]
+
+  [mono]  Cold      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -30% vulnerable, sleep onset below 22°C[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) — induces poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]15% less Slash damage and 5% less Heat damage[/bold][/color] than baseline.
+  - Can [color=#1e90ff][bold]drag objects with their tail[/bold][/color], keeping both hands free.
+  - Unarmed melee output is [color=#1e90ff][bold]far above baseline[/bold][/color] — see SPECIAL PROTOCOLS for claw-stage damage progression.
+  - Sustained warmth above [color=#1e90ff][bold]47°C[/bold][/color] grants a minor regeneration and speed boost.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - [color=#ffdd33][bold]Claw growth[/bold][/color] — claws grow through five stages. Each stage increases unarmed damage and degrades firearm and precision-tool use.
+  -- [bold]Stage 0[/bold]: 8 Slash damage.
+  -- [bold]Stage 1[/bold]: 11 Slash damage. Firearm spread +10%, handheld weapon damage -5%.
+  -- [bold]Stage 2[/bold]: 13 Slash + 2 Piercing. Firearm spread +25%, weapon damage -13%. Wide-swing attack unlocked.
+  -- [bold]Stage 3[/bold]: 15 Slash + 5 Piercing. Firearm spread +45%, weapon damage -25%.
+  -- [bold]Stage 4[/bold]: 18 Slash + 12 Piercing. Cannot use most firearms (bows still function). Weapon damage -50%.
+  - Claws can be [color=#ffdd33][bold]trimmed with wirecutters[/bold][/color], reducing the stage by 1 and resetting growth progress.
+  - [color=#a4885c][bold]Phenoxzine[/bold][/color] accelerates claw growth (×20). [color=#a4885c][bold]Meroxzine[/bold][/color] halts growth entirely. Both metabolise slowly.
 
   <GuideReagentEmbed Reagent="Phenoxzine"/>
   <GuideReagentEmbed Reagent="Meroxzine"/>
 
-  ### 5.b · Approved warming methods
+  - [color=#ffdd33][bold]Approved warming methods[/bold][/color] — welders, emergency flares, campfires, winter clothes, and hardsuits all generate enough heat to maintain function. Hugging a warmer body exchanges heat positively; hugging a colder body makes things worse.
 
-  - Welders, emergency flares, and campfires can heat up humanoids, including Reptilians.
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
 
-  <Box>
-    <GuideEntityEmbed Entity="Welder" Caption=""/>
-    <GuideEntityEmbed Entity="Flare" Caption=""/>
-    <GuideEntityEmbed Entity="Bonfire" Caption=""/>
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]25% more Blunt damage[/bold][/color] and [color=#ffa500][bold]30% more Cold damage[/bold][/color] than baseline. Cold-blooded physiology stacks with the standard cold-vulnerability modifier.
+
+  [color=red][bold]▲ Warning:[/bold][/color] Below [color=#ffa500][bold]22°C ambient[/bold][/color] subject grows drowsy and periodically falls unconscious. Below [color=#ffa500][bold]20°C[/bold][/color] cannot generate enough internal heat to function.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  - Winter clothes or hardsuits generate enough heat to stay somewhat comfortable.
-  - Can exchange heat with other personnel by hugging. Hugging a colder body makes things worse.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 6 · Liabilities &amp; insurance flags
-
-  - ⚠ Take [color=#ffa500]25% more Blunt damage[/color].
-  - ⚠ Take [color=#ffa500]30% more Cold damage[/color] — Mono-fork damage modifier set adds an extra Cold weakness on top of the cold-blooded baseline.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  [color=#999999][italic]Routed: Atmospherics // Security // File. Signed, HR-Lead Janssen.[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

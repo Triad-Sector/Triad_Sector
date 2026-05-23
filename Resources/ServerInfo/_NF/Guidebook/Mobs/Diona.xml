@@ -1,81 +1,94 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Diona
-
-  <Box>
-    [color=#999999][italic]"Vegetative biology, deceptively patient temperament. Hydroponics has standing request to fast-track all Diona applications. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-DNA
-  [color=#a4885c]Class:[/color] Humanoid // Plant-based, sap-circulatory
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobDiona" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Plant-based humanoids whose biology runs on tree sap, sturdy enough to ignore FTL jolts, with a complicated relationship with botany chemistry.
+  [color=#999999][italic]“Vegetative biology, deceptively patient temperament. Hydroponics has standing request to fast-track all Diona applications.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## § 1 · Dietary accommodations
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-DNA[/mono]
 
-  - [color=#a4885c]Tree sap[/color] only — cannot eat anything Iron-based. Their "blood" is the sap itself.
-  - [color=#ffa500]Weed Killer is poison[/color]. Issue a Botany-handling waiver.
-  - [color=yellow]Robust Harvest[/color] heals them, but overuse triggers Section 5.a. See below.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Plant[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]ORIGIN     [/color]  Epsilon Ursae Minoris[/mono]
 
-  ## § 4 · Workplace aptitudes
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Tree Sap[/bold][/color] — sap-circulatory[/mono]
 
-  - [color=#1e90ff]Get hungry and thirsty slower[/color] than other species — long deployments are well-tolerated.
-  - [color=#1e90ff]Withstand FTL jumps[/color] without being knocked down by the shock. Cleared for shuttle pilot rotations.
-  - Cannot be slowed by [color=yellow]Kudzu[/color].
-  - [color=#1e90ff]Immune to step-trigger hazards[/color] (landmines, glass shards, etc.).
-  - Take [color=#1e90ff]30% less Blunt damage, 20% less Slash damage, and 10% less Piercing damage[/color].
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobDiona" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  ## § 5 · Special protocols
+  Subject: Plant-gestalt sapients composed of cooperative nymph colonies in humanoid configuration. Photosynthetic-fusion metabolism, radiation-tolerant, pacifist by physiology. Sturdy enough to ignore FTL jolts; complicated relationship with botany chemistry.
 
-  ### 5.a · Make Like A Tree And Leave
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -50% vulnerable, ignites easily[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#cc3333]■■[/color][color=#555555]□□□[/color]  -20% vulnerable[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Inverted diet[/bold][/color]: digests only [color=#a4885c][bold]Tree Sap[/bold][/color] and water. Cannot consume iron-based foods; their "blood" IS the sap.
+  - Adverse reaction to [color=#a4885c][bold]Weed Killer[/bold][/color] — acts as direct poison. Botany-handling waiver issued at intake.
+  - [color=#1e90ff][bold]Robust Harvest heals them[/bold][/color] — but overuse triggers the transformation protocol below.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]30% less Blunt, 20% less Slash, and 10% less Piercing damage[/bold][/color] than baseline.
+  - [color=#1e90ff][bold]Hunger and thirst rates well below baseline[/bold][/color] — long deployments well-tolerated.
+  - [color=#1e90ff][bold]Withstands FTL jumps[/bold][/color] without being knocked down by the shock. Cleared for shuttle pilot rotations.
+  - [color=#1e90ff][bold]Immune to step-trigger hazards[/bold][/color] (landmines, glass shards, etc.). Cannot be slowed by Kudzu.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - [color=#ffdd33][bold]Make Like A Tree And Leave[/bold][/color]: overexposure to Robust Harvest triggers uncontrolled growth, converting the subject into an immobile tree (equipment dropped). Cutting the tree restores mobile state. Filed as workplace transformation, not injury — insurance does not apply.
+  - [color=#ffdd33][bold]Diona Nymphs[/bold][/color] (post-mortem procedure): on death, a Diona may voluntarily disassemble into three Nymphs. The subject's consciousness continues in the Brain Nymph — capable of speech but lacking hands or inventory.
+  - After 10 minutes, a Nymph can reform into a whole Diona. The reformed body is randomised; the new identity has no formal claim to prior employment records.
 
   <Box>
     <GuideEntityEmbed Entity="FloraTree" Caption=""/>
-  </Box>
-
-  Exposure to too much Robust Harvest causes a Diona to grow out of control, turning into an immobile tree (dropping all equipment). Cutting down the tree restores the Diona to mobile state.
-
-  > [color=#999999][italic]"This counts as a workplace transformation, not an injury. Insurance does not apply. — J."[/italic][/color]
-
-  ### 5.b · Diona Nymphs (post-mortem procedure)
-
-  <Box>
     <GuideEntityEmbed Entity="MobDionaNymph" Caption=""/>
     <GuideEntityEmbed Entity="MobDionaNymph" Caption=""/>
     <GuideEntityEmbed Entity="MobDionaNymph" Caption=""/>
   </Box>
 
-  After death, a Diona may voluntarily disassemble their body, releasing three Nymphs. The subject's consciousness continues in the Brain Nymph — capable of speech but lacking hands or inventory.
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
 
-  After 10 minutes, a Nymph may reform into a whole Diona. The reformed body is randomised; the new identity has no formal claim to prior employment records.
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]50% more Heat damage and 20% more Shock damage[/bold][/color] than baseline. [color=#ffa500][bold]Ignites easily on Heat exposure[/bold][/color]. Insurance Tier A near welding stations, burn chambers, and AME service shifts.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Cannot wear shoes[/bold][/color] — issue alternative PPE for foot protection.
 
-  ## § 6 · Liabilities &amp; insurance flags
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  - ⚠ Cannot wear shoes — issue alternative PPE for foot protection.
-  - ⚠ Take [color=#ffa500]50% more Heat damage, 20% more Shock damage[/color], and catch on fire easily when receiving Heat damage. Insurance Tier A near welding, the burn chamber, and AME service shifts.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  [color=#999999][italic]Routed: Hydroponics // Medbay // File. Signed, HR-Lead Janssen.[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

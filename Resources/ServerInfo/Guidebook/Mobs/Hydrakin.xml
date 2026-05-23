@@ -1,86 +1,92 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Hydrakin
-
-  <Box>
-    [color=#999999][italic]"Fluffy. Loud. From an iceworld nobody on the recruiting board had heard of. Please note phonetic spelling on intake forms. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-HDK
-  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, uplifted
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty (provisional, Reconstruction Directive 11-c)
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobHydrakin" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Avian beings with an unusual constitution and an extreme tolerance for cold.
+  [color=#999999][italic]“Fluffy, loud, from an iceworld you've genuinely never heard of. Phonetic on the intake form — they appreciate the effort.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 0 · Provenance
-
-  Subject species was uplifted by Ullman Industries as a proof-of-concept investor demonstration. Project benchmarks were met; the species was subsequently declared uneconomical and shipments were left to drift. Transport disruptions and bluespace storms scattered shipments and colonies across the Colossus, leaving the majority outside Ullman's direct control.
-
-  Current population status: partially uplifted, displaced, adapting.
-
-  <Box>
-    [color=#999999][italic]"Provenance section is mandatory for uplifted personnel under the 2826 Sentience Accords. Do not skip even when the file is thin. — J."[/italic][/color]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
   </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-HDK[/mono]
 
-  ## § 1 · Dietary accommodations
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  - Raw food preferred. Mess Hall is aware.
-  - [color=#ffa500]Restricted:[/color] Onions and any [color=#a4885c]Theobromine[/color]-containing food (chocolate, tea, coffee) — highly toxic.
+      [mono][color=#897236]ORIGIN     [/color]  Ullman uplift, displaced[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — self-heating[/mono]
 
-  ## § 2 · Respiratory protocol
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved, Conditional[/color][/mono]
+    </Box>
 
-  - Cleared to breathe: [color=#1e90ff]all gases except Carbon Dioxide and Water Vapor[/color].
-  - Carbon Dioxide is inert — cannot draw Oxygen from it, but no damage either.
-  - Unique gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff]mostly positive[/color] effects. See "Chemicals" guidebook entry for specifics.
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobHydrakin" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  Subject: Avian beings with continuously self-heating bodies and an extreme tolerance for cold.
 
-  ## § 3 · Environmental tolerance
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  - Subject body is [color=#ffa500]continuously self-heating[/color]. Insulating PPE works against them.
-  - Hardsuits and winter coats trap excess heat and will raise body temperature to [color=#ffa500]67°C[/color]. File PPE waiver on intake.
-  - [color=#1e90ff]Amplified[/color] cooling effect from Leporazine and Peranol — useful in Medical.
-  - Cryogenic agents may [color=#ffa500]induce sleep[/color] at sufficient dose.
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -25% vulnerable, self-overheats[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■■[/color]  iceworld-native, immune below baseline[/mono]
+
+  [mono]  Pressure  [color=#cc3333]■■[/color][color=#555555]□□□[/color]  -20% to vacuum exposure[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [bold]Omnivorous[/bold]; prefers raw food, additionally tolerates raw meat.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes [color=#1e90ff][bold]most atmospheric gases[/bold][/color]. Carbon Dioxide is inert (cannot draw Oxygen from it, no damage). Water Vapor is non-respirable.
+  - Exotic gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff][bold]mostly positive effects[/bold][/color] — see Chemicals reference for specifics.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color] with [color=#ffa500][bold]20% amplified damage[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]10% less Piercing and Blunt damage[/bold][/color]. Cleared for hazardous-environment rotations.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Continuously [color=#1e90ff][bold]self-heating[/bold][/color]. Hardsuits and winter coats trap excess heat — body temperature can climb to [color=#ffa500][bold]67°C[/bold][/color]. PPE waiver filed automatically at intake.
+  - Cryogenic agents may [color=#1e90ff][bold]induce sleep[/bold][/color] at sufficient dose. Leporazine and Peranol have [color=#1e90ff][bold]amplified[/bold][/color] cooling effect.
   - Thermal self-regulation fails on critical condition or death.
+  - Cannot wear standard eyewear due to head anatomy. Vision-correction waiver issued at intake.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
 
-  ## § 4 · Workplace aptitudes
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]25% more Heat damage[/bold][/color] and [color=#ffa500][bold]15% more Slash damage[/bold][/color] than baseline. Insurance Tier A near welding stations, plasma fires, and burn chambers.
 
-  - Take [color=#1e90ff]10% less Piercing and Blunt damage[/color]. Cleared for hazardous-environment rotations.
-  - Unarmed claws produce [color=#1e90ff]Slash damage[/color] at industry standard.
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]20% more vacuum damage[/bold][/color]. EVA rotations require Tier-2 hardsuit signoff.
 
-  <Box>
-    [color=#999999][italic]"HR note: yes, they are loud. This is a feature, not a defect. We do not file noise complaints against Hydrakin. — J."[/italic][/color]
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[2 entries on file\][/color]
+
+  [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  Subject species descends from a corporate-era uplift program ([color=#a4885c][bold]Ullman Industries[/bold][/color], long defunct), discontinued upon completion of investor demonstration. Ancestral population was scattered across the [color=#a4885c][bold]Colossus[/bold][/color] sector during the corporate collapse; modern Hydrakin present as a stable refugee-descended polity. No surviving proprietary claims — free-agent terms apply by setting default.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 6 · Liabilities &amp; insurance flags
-
-  - ⚠ Take [color=#ffa500]25% more Heat damage and 15% more Slash damage[/color]. Insurance Tier A near welding stations, plasma fires, and the burn chamber.
-  - ⚠ Take [color=#ffa500]20% more damage from low-pressure / vacuum[/color] environments. EVA rotations require Tier-2 hardsuit signoff.
-  - ⚠ Cannot wear standard eyewear due to head anatomy. Vision-correction waiver issued automatically on intake.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  [color=#999999][italic]Routed: Medbay // Mess Hall // Atmospherics // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

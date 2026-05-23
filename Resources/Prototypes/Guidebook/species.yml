@@ -4,27 +4,27 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
   - Arachnid
+  - Avali # Starlight
+  - Chitinid # DeltaV
   - Diona # Note: Frontier changes inside
   - Dwarf # Note: Frontier changes inside
-  - Human
-  - Moth
-  - Reptilian # Monolith changes inside
-  - SlimePerson
-  - Vox
-  - Goblin # Frontier
-  - Vulpkanin # DeltaV
-  - Harpy # DeltaV
   - Felinid # DeltaV
-  - Oni # DeltaV
-  - Chitinid # DeltaV
-  - Resomi # Floof
-  - Protogen # Mono
-  - IPC # EE
-  - Rodentia # DeltaV
-  - Tajaran # Goobstation
-  - Hydrakin # Monolith/Obelisk
-  - Avali # Starlight
   - Feroxi # Delta V
+  - Goblin # Frontier
+  - Harpy # DeltaV
+  - Human
+  - Hydrakin # Monolith/Obelisk
+  - IPC # EE
+  - Moth
+  - Oni # DeltaV
+  - Protogen # Mono
+  - Reptilian # Monolith changes inside
+  - Resomi # Floof
+  - Rodentia # DeltaV
+  - SlimePerson
+  - Tajaran # Goobstation
+  - Vox
+  - Vulpkanin # DeltaV
 
 - type: guideEntry
   id: Arachnid

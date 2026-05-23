@@ -1,59 +1,89 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Felinids
-
-  <Box>
-    [color=#999999][italic]"Will fit in a duffelbag. Has done so during interview. Please consult Security on standing policies. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-FLD
-  [color=#a4885c]Class:[/color] Humanoid // Feline-derived, sub-baseline mass
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobFelinidDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Small and mischievous cat-eared people whose size cuts both ways.
+  [color=#999999][italic]“Will fit in a duffelbag. Has done so during interview. Consult Security on standing policies.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## § 1 · Dietary accommodations
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-FLD[/mono]
 
-  - Can eat raw meat.
-  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Feline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]ORIGIN     [/color]  Animalid clade (hereditary)[/mono]
 
-  ## § 4 · Workplace aptitudes
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
 
-  - [color=#1e90ff]Smaller than humans, making them harder to hit[/color].
-  - Can fit in duffelbags.
-  - Can throw up a hairball to purge some chemicals from their bloodstream.
-  - Can eat mice and rats after picking them up — regenerates the hairball ability and feeds them.
-  - Use claws for unarmed attacks, dealing Slashing and Piercing damage.
-  - Can walk completely silently while barefoot.
-  - [color=#1e90ff]Take reduced fall and impact damage[/color] — they really do land on their feet.
-  - [color=#1e90ff]Stay closer to full speed when injured[/color] — damage slows them down less than other species.
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobFelinid" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  ## § 6 · Liabilities &amp; insurance flags
+  Subject: Small, mischievous cat-eared humanoids of the long-stable animalid clade. Several-generation hereditary population; no current transformation involved. Stature cuts both ways in rotation.
 
-  - ⚠ Take [color=#ffa500]10% more Blunt and Slash damage[/color].
-  - ⚠ Easily shoved, pushed, and carried around by other species due to their small size.
-  - ⚠ Weaker, struggle to carry and pull things — cannot carry an Oni.
-  - ⚠ [color=#ffa500]Slightly less stamina than humans[/color] — they tire faster and take longer to catch their breath.
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#999999][italic]Routed: Security // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+  - Can [color=#1e90ff][bold]consume captured mice and rats[/bold][/color] directly — restores hairball ability and provides nutrition.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Smaller than humans[/bold][/color] — harder to hit in combat.
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] due to small stature.
+  - [color=#1e90ff][bold]Walks silently while barefoot[/bold][/color]. Cite Subsection 4.b before assigning to roles requiring audible approach.
+  - [color=#1e90ff][bold]Reduced fall and impact damage[/bold][/color] — lands on feet.
+  - [color=#1e90ff][bold]Maintains near-full speed when injured[/bold][/color] — damage slows them down less than other species.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash and Piercing damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Can [color=#ffdd33][bold]regurgitate a hairball[/bold][/color] to purge select chemicals from the bloodstream. Useful in toxicology emergencies.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Blunt and Slash damage[/bold][/color] than baseline.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Easily shoved, pushed, and carried[/bold][/color] by other species due to small frame. Security implications during conflict.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Reduced carrying capacity[/bold][/color] and [color=#ffa500][bold]lower stamina[/bold][/color]. Cannot pull personnel significantly larger than themselves.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

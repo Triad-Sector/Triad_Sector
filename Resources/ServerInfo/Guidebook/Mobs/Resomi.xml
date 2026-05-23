@@ -1,61 +1,82 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Resomi
-
-  <Box>
-    [color=#999999][italic]"Subject prefers a chilly office. Please coordinate with Atmospherics before assigning desk space. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-RSM
-  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, sub-baseline mass, ammonia-blooded
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobResomiDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Small avian-like people from an icy world.
+  [color=#999999][italic]“Their grandparents fled an empire — several of them, in sequence. They've earned the calm rotation if they want it.”[/italic][/color]
 
-  Wings do not grant complete flight, but assist with maneuvering in zero-gravity.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-RSM[/mono]
 
-  ## § 1 · Dietary accommodations
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  - Can digest raw meat and other uncooked animal proteins, like most non-human species.
+      [mono][color=#897236]ORIGIN     [/color]  Sirisai, diaspora-descended[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Ammonia Blood[/bold][/color] — cryogenic[/mono]
 
-  ## § 3 · Environmental tolerance
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  - Tolerate temperatures as low as -77°C without harm. Cleared for cold-environment rotations.
-  - [color=#ffa500]Slowed by warmth[/color] — discomfort starts at just 30°C, deepens around 37°C, with Heat damage beginning at 47°C. Office desks should be set well below those thresholds.
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobResomi" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  Subject: Diminutive saurian-avian colonists descended from the diaspora populations that left the post-Fall Resomi Empire generations ago. Sub-baseline mass; ammonia-based circulation. Collectivist work-tradition translates well into rotation-team structures.
 
-  ## § 4 · Workplace aptitudes
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  - Can fit in duffelbags due to their small size.
-  - Maneuver better in zero-gravity with their wings.
-  - Take [color=#1e90ff]less Cold damage[/color] — ammonia-based blood.
-  - Unarmed attacks deal [color=#1e90ff]Slash damage[/color].
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  vulnerable; slowed above 30°C[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [mono]  Cold      [color=#1e90ff]■■■■■[/color]  tolerates down to -77°C[/mono]
 
-  ## § 6 · Liabilities &amp; insurance flags
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  - ⚠ Take [color=#ffa500]more Heat damage[/color], similar to Moth People. Insurance Tier B for warm rotations.
-  - ⚠ [color=#ffa500]More susceptible to Blunt damage[/color].
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
 
-  [color=#999999][italic]Routed: Atmospherics // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
+  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] thanks to sub-baseline mass. Useful for stealth and unconventional logistics.
+  - Wings assist [color=#1e90ff][bold]zero-gravity maneuvering[/bold][/color] (not full flight).
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]significantly more Heat damage[/bold][/color] than baseline. Insurance Tier B for warm rotations.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]increased Blunt damage[/bold][/color] susceptibility due to small frame.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

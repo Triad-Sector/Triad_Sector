@@ -1,72 +1,86 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Harpies
-
-  <Box>
-    [color=#999999][italic]"Excellent for ambient social roles. Subject sings on shift; this is a feature, not a defect. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-HRP
-  [color=#a4885c]Class:[/color] Humanoid // Avian-derived
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Avian humanoids with colorful feathered wings and tails who can mimic almost any sound.
+  [color=#999999][italic]“Excellent for ambient social roles. Subject sings on shift; this is a feature, not a defect.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## § 1 · Dietary accommodations
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-HRP[/mono]
 
-  - Can eat raw meat.
-  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]ORIGIN     [/color]  Harpy homeworld[/mono]
 
-  ## § 2 · Respiratory protocol
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
 
-  - Subject is sensitive to air quality — exposure to low-quality air causes visible gasping and eventual choking.
-  - Recovery: move away from bad air, stand on a scrubber for a few seconds, or take a few breaths from a pure Oxygen tank. Three seconds of pure Oxygen fully restores blood oxygen saturation.
-  - [color=#ffa500]Breathes twice as often as humans[/color] (every 3 seconds) — air tanks last half as long. Atmospherics has been advised.
-  - Exposure to at least 0.2 moles of combined CO₂ and/or Miasma triggers oxygen-uptake difficulty.
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobHarpy" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  ## § 4 · Workplace aptitudes
+  Subject: Avian humanoids with colorful feathered wings and tails. Can mimic almost any sound.
 
-  - Somewhat smaller than humans (though not as small as Felinids).
-  - Use talons for unarmed attacks dealing [color=#1e90ff]Piercing damage[/color].
-  - Can imitate around 70% of the game's sound library through voice emotes.
-  - Can "Sing" midis by imitating instruments — right click yourself to select an instrument.
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  ## § 5 · Special protocols
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  ### 5.a · Standing accommodations
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  - Filed with the [color=#1e90ff]Ultraviolet Vision[/color] trait by default. Accessibility waiver via Form HR-09c.
-  - Cannot wear jumpsuits — automatically issued a jumpskirt at intake.
-  - Musical notes appear floating around the subject's head while singing. Treat as ambient workplace ornamentation.
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
 
-  ## § 6 · Liabilities &amp; insurance flags
+  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
 
-  - ⚠ Take [color=#ffa500]10% more Blunt and Slash damage[/color].
-  - ⚠ Extreme low density — lighter than even Felinids, half the weight of a human. Subject is easily moved by ambient turbulence.
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  - Breathes Oxygen [color=#ffa500][bold]twice as often as baseline[/bold][/color] (every ~3 seconds). Air tanks last roughly half as long.
+  - [color=#ffa500][bold]Air-quality sensitive[/bold][/color]: bad air causes visible gasping and eventual choking. 0.2+ moles of combined Carbon Dioxide and Miasma triggers oxygen-uptake difficulty.
+  - Recovery: clear bad air, stand on a scrubber, or take three seconds of pure Oxygen for full restoration.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
-  [color=#999999][italic]Routed: Atmospherics // Service // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Unarmed attacks deal [color=#1e90ff][bold]Piercing damage[/bold][/color] via talons.
+  - [color=#1e90ff][bold]Vocal mimicry[/bold][/color] — can reproduce a wide range of station sounds, environmental noises, and voices.
+  - Can [color=#1e90ff][bold]sing instrumentally[/bold][/color], producing MIDI-equivalent tones across a broad selection of instruments.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Filed with the [color=#ffdd33][bold]Ultraviolet Vision[/bold][/color] trait by default. Accessibility waiver via Form HR-09c.
+  - [color=#ffdd33][bold]Cannot wear jumpsuits[/bold][/color] due to wing/tail anatomy. Auto-issued a jumpskirt at intake.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Blunt and Slash damage[/bold][/color] than baseline.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Extreme low density[/bold][/color] — roughly half baseline mass. Easily moved by ambient turbulence and shoves.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

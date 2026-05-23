@@ -1,63 +1,85 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Avali
-
-  <Box>
-    [color=#999999][italic]"Subject's onboarding requires expanded sections on diet, atmosphere, and gravity. Please plan accordingly. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-AVL
-  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, ammonia-based
-  [color=#a4885c]Status:[/color] ✓ Approved — REQUIRES SUPERVISOR SIGNOFF (extensive accommodations)
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel — NOT recommended for new personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobAvali" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Ammonia-based intelligent bird/raptor people, often called "Space Raptors".
+  [color=#999999][italic]“Their packs are work units, not families — at least in payroll terms. The paperwork is faster if you treat both correctly.”[/italic][/color]
 
-  [color=red]Warning! This species is not recommended for new personnel due to major operational accommodations.[/color]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  Avali are carnivores, deal exceedingly well with cold, and are capable of basic flight in no-gravity or low-gravity environments.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-AVL[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  ## § 1 · Dietary accommodations
+      [mono][color=#897236]ORIGIN     [/color]  Avalon (ice moon)[/mono]
 
-  - [color=#ffa500]Restricted diet:[/color] only meat-related foods (including organs) and pills are digestible. Mess Hall must stock a carnivore-only ration line.
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Ammonia Blood[/bold][/color] — cryogenic[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved, Conditional[/color][/mono]
+    </Box>
 
-  ## § 3 · Environmental tolerance
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobAvali" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  - Take [color=#1e90ff]40% less Cold damage[/color] and tolerate temperatures down to about -50°C before Cold damage begins.
-  - [color=#ffa500]Heat damage begins around 37°C[/color] — lower than humans. Office desks should be cool.
+  Subject: Small ammonia-respiring raptors from the ice moon Avalon. Modern Avali societies retain the canonical pack-of-six structure as a cooperative work unit, though pack composition is now elective rather than birth-assigned. Carnivorous, cold-adapted, capable of basic flight in low-gravity environments.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  ## § 4 · Workplace aptitudes
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -40% vulnerable, flammable[/mono]
 
-  - Can fly in zero-G — cleared for EVA familiarisation rotations.
-  - Slightly faster than other species.
-  - Deal [color=#1e90ff]6.25 Slash damage[/color] with claws.
+  [mono]  Cold      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  +40% resistant (tolerates -50°C)[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  ## § 6 · Liabilities &amp; insurance flags
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  - ⚠ Take [color=#ffa500]40% more Fire damage[/color]. Insurance Tier A near welding stations and the burn chamber.
-  - ⚠ [color=#ffa500]Hunger rate is double that of humans[/color] — extended deployments require supplemental rations.
-  - ⚠ Fall into crit at 90 damage and dead at 180 — lower thresholds than humans. Medbay should escalate triage priority.
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  - [color=#ffa500][bold]Carnivore[/bold][/color]: digests only meat, organs, and pills. Plant matter and synthetic rations are non-nutritive.
+  - Hunger rate is [color=#ffa500][bold]roughly double[/bold][/color] baseline — supplemental rations required on extended deployments.
 
-  [color=#999999][italic]Routed: Mess Hall // Medbay // Atmospherics // Supervisor // File. Signed, HR-Lead Janssen.[/italic][/color]
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Capable of [color=#1e90ff][bold]basic flight in zero or low gravity[/bold][/color]. Cleared for EVA familiarisation rotations.
+  - Move [color=#1e90ff][bold]slightly faster[/bold][/color] than other species.
+  - Unarmed attacks deal [color=#1e90ff][bold]6.25 Slash damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]40% more Fire damage[/bold][/color] than baseline. Insurance Tier A near welding stations and burn chambers.
+
+  [color=red][bold]▲ Warning:[/bold][/color] Crit threshold [color=#ffa500][bold]90 dmg[/bold][/color], death threshold [color=#ffa500][bold]180 dmg[/bold][/color] — lower than baseline. Escalate Medbay triage priority.
+
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[3 entries on file\][/color]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

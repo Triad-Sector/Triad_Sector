@@ -1,66 +1,90 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Goblins
-
-  <Box>
-    [color=#999999][italic]"Loud. Fragile. Resilient enough to be productive regardless. Mousetrap maintenance has been re-routed away from Goblin personnel by standing order. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-GBL
-  [color=#a4885c]Class:[/color] Humanoid // Sub-baseline mass
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobGoblin" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Small, loud, and fragile humanoids.
+  [color=#999999][italic]“Loud. Fragile. Resilient enough to be productive regardless. Mousetrap maintenance has been re-routed away from Goblin personnel by standing order.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## § 1 · Dietary accommodations
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-GBL[/mono]
 
-  - Omnivorous — resilient digestive system grants natural toxin resistance.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Goblin[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]ORIGIN     [/color]  Goblin homeworld[/mono]
 
-  ## § 4 · Workplace aptitudes
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
 
-  - Take [color=#1e90ff]25% less Toxin damage[/color] due to unusual dietary choices.
-  - Take [color=#1e90ff]10% less Blunt damage and 10% less Caustic damage[/color].
-  - Unarmed claws deal [color=#1e90ff]Slash damage instead of Blunt[/color].
-  - [color=#1e90ff]Reduced fall and impact damage[/color] — tumbling off ladders or being thrown hurts them less.
-  - [color=#1e90ff]Stay closer to full speed when injured[/color] — damage slows them down less than other species.
-  - Smaller than humans and can fit in duffelbags.
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobGoblin" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  ## § 5 · Special protocols
+  Subject: Small, loud, and fragile humanoids — resilient digestive system, unusual dietary tolerances.
 
-  ### 5.a · Approved chants &amp; speech accommodations
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  - Subject can rummage in disposal chutes to retrieve trash. This is recognized as an approved task type, not a misuse of facilities.
-  - Can dive into toilets and mailing units due to their small size. Plumbing has been notified.
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [bold]Omnivorous[/bold]; resilient digestive system tolerates substances baseline cannot.
+  - Take [color=#1e90ff][bold]25% less Toxin damage[/bold][/color] due to unusual dietary tolerance.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]10% less Blunt and Caustic damage[/bold][/color] than baseline.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+  - [color=#1e90ff][bold]Reduced fall and impact damage[/bold][/color] — tumbling off ladders or being thrown hurts them less.
+  - [color=#1e90ff][bold]Maintains near-full speed when injured[/bold][/color] — damage slows them down less than baseline.
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] due to small stature.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Can [color=#ffdd33][bold]rummage in disposal chutes[/bold][/color] to retrieve discarded items. Recognised as an approved task, not misuse of facilities.
+  - Can [color=#ffdd33][bold]dive into toilets and mailing units[/bold][/color] due to small stature. Plumbing has been notified.
+  - Innately speaks [color=#a4885c][bold]Goblin Cant[/bold][/color]. Translation is the listener's responsibility, not Goblin personnel's.
   - Unique chants — supervisors are advised to permit them on shift.
-  - Innately speak in [color=yellow]Goblin Cant[/color]. Translation is the listener's responsibility, not Goblin personnel's.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
 
-  ## § 6 · Liabilities &amp; insurance flags
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Piercing damage[/bold][/color] due to small frame.
 
-  - ⚠ Take [color=#ffa500]10% more Piercing damage[/color] due to small size.
-  - ⚠ Always trigger mousetraps, even when wearing shoes. Custodial duty has been re-routed.
-  - ⚠ Strong dislike for being sprayed with water or space cleaner. Mark relevant interactions in shift logs.
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Always triggers mousetraps[/bold][/color], even when wearing shoes. Custodial duty re-routed.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Strong aversion to being sprayed[/bold][/color] with water or space cleaner. Mark relevant interactions in shift logs.
 
-  [color=#999999][italic]Routed: Custodial // Mess Hall // File. Signed, HR-Lead Janssen.[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

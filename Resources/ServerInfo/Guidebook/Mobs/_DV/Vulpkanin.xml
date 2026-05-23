@@ -1,62 +1,80 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Vulpkanin
-
-  <Box>
-    [color=#999999][italic]"Pronounced vulp-ka-nin. Please do not abbreviate to 'vulp' on official correspondence. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-VKN
-  [color=#a4885c]Class:[/color] Humanoid // Canine-derived
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobVulpkaninDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: A race of humanoid canine-like beings. Sociable, durable, and slightly more flammable than Personnel would prefer.
+  [color=#999999][italic]“Their grandparents organized a planetary evacuation. The cover letter, frankly, writes itself. Pronounced vulp-ka-nin — do not abbreviate to 'vulp' on official correspondence.”[/italic][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 1 · Dietary accommodations
-
-  - Can eat raw meat. Mess Hall has been notified.
-  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  ## § 4 · Workplace aptitudes
-
-  - Equipped with claws for unarmed defensive action — deals [color=#1e90ff]Slashing and Blunt damage[/color] at industry standard.
-  - Natural pelt provides [color=#1e90ff]cold tolerance[/color] — subject does not require a coat for routine cold-environment duties.
-
-  <Box>
-    [color=#999999][italic]"HR note: this does NOT exempt them from PPE requirements for hardsuit rotations. Cite Subsection 4.b if pressed. — J."[/italic][/color]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
   </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-VKN[/mono]
 
-  ## § 5 · Special protocols
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Canine[/mono]
 
-  ### 5.a · Standing accommodations
+      [mono][color=#897236]ORIGIN     [/color]  Kelune (Altam diaspora)[/mono]
 
-  - Filed with the [color=#1e90ff]Deuteranopia[/color] trait by default — reds and greens read as similar to a Vulpkanin. Accessibility waiver available via Form HR-09c.
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  ## § 6 · Liabilities &amp; insurance flags
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobVulpkaninDummy" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  - ⚠ Take [color=#ffa500]10% more Heat damage[/color] than baseline. Insurance Tier B applies to Engineering shifts near the burn chamber, the AME, or solar relays.
+  Subject: Canine-derived mammals descended from the population of Altam (Vazzend binary) that evacuated the 2189 stellar disaster via cooperative effort. Modern populations are concentrated on Kelune and Dalstadt; the long-term terraforming of Altam remains a cultural touchstone. Sociable, durable, and slightly more flammable than baseline personnel.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  [color=#999999][italic]Routed: Mess Hall // Quartermaster // File. Signed, HR-Lead Janssen.[/italic][/color]
+  [mono]  Heat      [color=#cc3333]■■[/color][color=#555555]□□□[/color]  -10% vulnerable[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  resistant — natural pelt insulation[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - [bold]Omnivorous[/bold]; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash and Blunt damage[/bold][/color] via claws.
+  - Natural pelt provides [color=#1e90ff][bold]cold-environment tolerance[/bold][/color] — no insulating coat required for routine shifts. PPE still mandated for hardsuit rotations.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Filed with the [color=#ffdd33][bold]Deuteranopia[/bold][/color] trait by default — reds and greens read as similar. Accessibility waiver via Form HR-09c.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Heat damage[/bold][/color] than baseline. Insurance Tier B near welding stations and burn chambers.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

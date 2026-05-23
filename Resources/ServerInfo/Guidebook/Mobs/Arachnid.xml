@@ -1,49 +1,71 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Arachnids
-
-  <Box>
-    [color=#999999][italic]"Skilled crafters. Quartermaster reports Arachnid-produced Websilk has reduced our textile import budget by a measurable amount. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-ARC
-  [color=#a4885c]Class:[/color] Humanoid // Arachnid-derived, copper-blooded
-  [color=#a4885c]Status:[/color] ✓ Approved for active duty
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobArachnid" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Eight-legged humanoids with a knack for silk craft.
+  [color=#999999][italic]“Quartermaster reports Arachnid-produced Websilk has reduced our textile import budget by a measurable amount. Strongly recommend continued staffing.”[/italic][/color]
 
-  Their [color=#a4885c]Blue Blood[/color] is based on Copper rather than Iron.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-ARC[/mono]
 
-  ## § 1 · Dietary accommodations
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Arachnid[/mono]
 
-  - Can eat raw meat without ill effects.
-  - Get poisoned by [color=#a4885c]Theobromine[/color] (Chocolate, Tea, Coffee) and [color=#a4885c]Allicin[/color] (Onion, Garlic).
+      [mono][color=#897236]ORIGIN     [/color]  Arachnid homeworld[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Blue Blood[/bold][/color] — copper-based[/mono]
 
-  ## § 4 · Workplace aptitudes
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  - [color=#1e90ff]Two additional Pocket slots[/color] in their inventory.
-  - Unarmed attacks deal [color=#1e90ff]Piercing damage instead of Blunt[/color].
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobArachnid" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  Subject: Eight-legged humanoids with a knack for silk craft.
 
-  ## § 5 · Special protocols
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  ### 5.a · Sericulture
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  - Omnivorous; additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+  - Adverse reaction to [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) — both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - [color=#ffa500][bold]Suffocates 50% faster[/bold][/color] than baseline once oxygen supply is interrupted. EVA rotations require an attentive partner and a second tank.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Two additional pocket slots[/bold][/color] over baseline.
+  - Unarmed attacks deal [color=#1e90ff][bold]Piercing damage[/bold][/color] in place of Blunt.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - [color=#a4885c][bold]Sericulture[/bold][/color]: produces [color=#a4885c][bold]Websilk[/bold][/color] at the cost of increased hunger.
+  - Only Arachnids can craft Websilk into clothing, shields, and structural walls.
 
   <Box>
     <GuideEntityEmbed Entity="MaterialWebSilk" Caption=""/>
@@ -52,18 +74,16 @@
     <GuideEntityEmbed Entity="WallWeb" Caption=""/>
   </Box>
 
-  - [color=#a4885c]Sericulture[/color]: arachnids produce [color=yellow]Websilk[/color] at the cost of getting more hungry.
-  - Only Arachnids can craft Websilk into clothing, shields, and even walls.
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=red][bold]▲ Warning:[/bold][/color] Blue Blood [color=#ffa500][bold]cannot be regenerated from iron[/bold][/color]. Medbay must keep copper-based replenishment on hand for transfusion or surgical loss events.
 
-  ## § 6 · Liabilities &amp; insurance flags
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  - ⚠ [color=#ffa500]Suffocate 50% faster[/color] than other species. EVA rotations require an attentive partner and a second tank.
-  - Blue Blood cannot be regenerated from Iron — Copper-based replenishment must be on hand in Medbay.
-
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  [color=#999999][italic]Routed: Quartermaster // Medbay // File. Signed, HR-Lead Janssen.[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

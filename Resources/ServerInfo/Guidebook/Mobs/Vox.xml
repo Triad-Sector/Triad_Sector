@@ -1,55 +1,82 @@
-<!-- Triad: TDF HR Personnel Dossier format 2026-05-22 -->
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-  [bold][color=#a4885c]  TDF // HUMAN RESOURCES DIVISION                              Form HR-22b · v3[/color][/bold]
-  [bold][color=#a4885c]  PERSONNEL DOSSIER                                        ✦ FOR INTERNAL USE[/color][/bold]
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
-
-  # Vox
-
-  <Box>
-    [color=#999999][italic]"Subject has a fatal allergy to oxygen and has applied to work on a space station. Reviewed. Approved with conditions. — HR-Lead Janssen"[/italic][/color]
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]                Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER                  FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  [color=#a4885c]File No.:[/color] SPC-VOX
-  [color=#a4885c]Class:[/color] Humanoid // Avian-derived, nitrogen-respiring
-  [color=#a4885c]Status:[/color] ✓ Approved — REQUIRES SUPERVISOR SIGNOFF (atmospheric hazard)
-  [color=#a4885c]Revision:[/color] X828.05.22 · Onboarding Office, Sector 3
-  [color=#a4885c]Clearance:[/color] General personnel — NOT recommended for new personnel
-
-  <Box>
-    <GuideEntityEmbed Entity="MobVox" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  On file: Nitrogen-breathing avians for whom station air is a slow toxin.
+  [color=#999999][italic]“Subject has a fatal allergy to oxygen and has applied to work on a space station. Reviewed. Approved with conditions.”[/italic][/color]
 
-  [color=red]Warning! This species is not recommended for new personnel due to a fatal allergy to oxygen.[/color]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  Subject breathes Nitrogen; Oxygen is toxic. Station atmospheres are predominantly Oxygen — internal Nitrogen supply must be worn at almost all times to avoid fatal exposure.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-VOX[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  ## § 2 · Respiratory protocol
+      [mono][color=#897236]ORIGIN     [/color]  Shoal arkships, diaspora[/mono]
 
-  - Cleared to breathe: [color=#1e90ff]Nitrogen[/color]. Oxygen is toxic.
-  - Subject spawns wearing working Nitrogen internals. A spare breathing mask and an emergency Nitrogen canister are provided in the survival box.
-  - [color=#1e90ff]Slowly recover from low levels of poison damage[/color] on their own, so long as they remain below 20 poison damage. Subject can endure breathing station air for up to thirty seconds at a time without lasting damage — long enough to eat, drink, or take oral medication.
-  - Thirty-second oxygen exposure takes about two minutes to recover from. If health does not improve within a minute, route to Medbay immediately.
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Nitrogen Blood[/bold][/color] — anaerobic[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved, Conditional[/color][/mono]
+    </Box>
 
-  ## § 4 · Workplace aptitudes
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobVox" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  - Unarmed attacks deal [color=#1e90ff]Slash damage[/color] — useful in any role permitting hand-to-hand.
+  Subject: Nitrogen-respiring avian-reptiloids descended from the Shoal — the multi-arkship diaspora civilization of pre-corporate antiquity. Modern populations are settled and integrated; internals discipline is exemplary out of necessity. Religious adherence to the [color=#a4885c][bold]Inviolate[/bold][/color] is widely retained as protected practice.
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-  ## § 6 · Liabilities &amp; insurance flags
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  - ⚠ [color=red]Fatal allergy to ambient station atmosphere[/color]. Insurance Tier A on every shift. Supervisor must verify internals at start of duty.
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [bold][color=#a4885c]________________________________________________________________________________[/color][/bold]
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [color=#999999][italic]Routed: Atmospherics // Medbay // Supervisor // File. Signed, HR-Lead Janssen.[/italic][/color]
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────────[/mono][/color]
+
+  - Breathes [color=#1e90ff][bold]Nitrogen[/bold][/color]. [color=#ffa500][bold]Adverse reaction to Oxygen[/bold][/color] — standard station atmosphere causes accumulating poison damage.
+  - Issued at intake: nitrogen internals, spare mask, and emergency Nitrogen canister in survival box. Internals must remain active on every shift.
+  - Briefly tolerates station air for [color=#1e90ff][bold]up to thirty seconds[/bold][/color] without lasting damage — enough to eat, drink, or take oral medication. Recovery takes about two minutes.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via talons.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+  - Recover from low-grade poison damage [color=#1e90ff][bold]passively[/bold][/color] up to 20 dmg. Above threshold, route to Medbay.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Fatal allergy[/bold][/color] to ambient station atmosphere. Insurance Tier A on every shift. Supervisor must verify internals at start of duty.
+
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[4 entries on file\][/color]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔══════════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                              X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3               FILE COMPLETE ║[/color]\n[color=#897236]╚══════════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>
