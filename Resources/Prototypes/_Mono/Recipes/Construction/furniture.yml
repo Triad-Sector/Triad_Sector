@@ -1,19 +1,20 @@
-- type: construction
-  id: BannerNGC
-  name: TSF banner
-  description: A banner proudly displaying the stars of the Trans-Solar Federation.
-  graph: MonoBannersGraph
-  startNode: start
-  targetNode: BannerTSFNode
-  category: construction-category-furniture
-  icon:
-    sprite: _Mono/Structures/Decoration/banner.rsi
-    state: ngc-banner
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
+#- type: construction
+#  id: BannerNGC
+#  name: TSF banner
+#  description: A banner proudly displaying the stars of the Trans-Solar Federation.
+#  graph: MonoBannersGraph
+#  startNode: start
+#  targetNode: BannerTSFNode
+#  category: construction-category-furniture
+#  icon:
+#    sprite: _Mono/Structures/Decoration/banner.rsi
+#    state: ngc-banner
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+# Triad. Commented this out.
 
 - type: construction
   id: BannerSHM
