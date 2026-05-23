@@ -235,18 +235,15 @@
     price: 300 # Frontier - 2000<300
   - type: PirateBountyItem # Frontier
     id: Gyroscope # Frontier
-<<<<<<< HEAD
   # Mono
   - type: ShipRepairable
     repairTime: 6
     repairCost: 6
-=======
   - type: DeviceLinkSink # Frontier: makes gyroscopes able to recieve signals
     ports:
       - On # Frontier
       - Off # Frontier
       - Toggle # Frontier
->>>>>>> 00b01ae0d3 (make gyroscopes able to recieve signals (#4320))
 
 - type: entity
   id: GyroscopeUnanchored
