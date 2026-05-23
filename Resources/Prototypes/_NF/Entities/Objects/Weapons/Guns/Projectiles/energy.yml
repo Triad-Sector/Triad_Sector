@@ -1,17 +1,18 @@
-- type: entity
-  parent: BulletDisabler
-  id: BulletDisablerStaminaOnly
-  name: disabler bolt
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Projectile
-    impactEffect: BulletImpactEffectDisabler
-    damage:
-      types:
-        Heat: 0
-    soundHit:
-      collection: WeakHit
-    forceSound: true
+# - type: entity
+#  parent: BulletDisabler
+#  id: BulletDisablerStaminaOnly
+#  name: disabler bolt
+# categories: [ HideSpawnMenu ]
+#  components:
+#  - type: Projectile
+#    impactEffect: BulletImpactEffectDisabler
+#    damage:
+#      types:
+#        Heat: 0
+#    soundHit:
+#      collection: WeakHit
+#    forceSound: true
+# Triad. Use BulletDisabler, wizden changed disablers to do no heat damage.
 
 - type: entity
   id: BulletKineticLowPower
