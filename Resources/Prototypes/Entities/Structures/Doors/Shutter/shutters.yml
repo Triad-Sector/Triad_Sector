@@ -237,8 +237,11 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  # Triad - Static (matches BlastDoorFrame): the construction graph anchors the frame on spawn,
+  # which would flip Dynamic -> Static and fail PrototypeSaveTest. Declaring Static here keeps
+  # prototype/runtime in sync and also prevents the unanchored body from being shoved by physics.
   - type: Physics
-    bodyType: Dynamic
+    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
