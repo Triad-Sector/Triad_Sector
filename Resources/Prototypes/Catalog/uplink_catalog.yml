@@ -62,7 +62,7 @@
     Telecrystal: 15 # Mono #4->3 Mono Edit
   productEntity: EnergySword
   cost:
-    Telecrystal: 30 # Mono #8->6 Mono Edit
+    Telecrystal: 40 # Triad #6->8 Triad Edit
   categories:
   - UplinkWeaponry
 
@@ -90,7 +90,7 @@
   discountDownTo:
     Telecrystal: 15 # Mono
   cost:
-    Telecrystal: 30 # Mono
+    Telecrystal: 25 # Triad
   categories:
     - UplinkWeaponry
 
@@ -590,7 +590,7 @@
   discountDownTo:
     Telecrystal: 15 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 30 # Triad
   categories:
   - UplinkChemicals
 
@@ -632,11 +632,11 @@
   name: uplink-combat-medkit-name
   description: uplink-combat-medkit-desc
   productEntity: MedkitCombatFilled
-  discountCategory: usualDiscounts
+  discountCategory: rareDiscounts # Triad, added rare
   discountDownTo:
-    Telecrystal: 10 # Mono
+    Telecrystal: 15 # Triad
   cost:
-    Telecrystal: 25 # Mono
+    Telecrystal: 30 # Triad
   categories:
   - UplinkChemicals
 
@@ -645,11 +645,11 @@
   name: uplink-combat-medipen-name
   description: uplink-combat-medipen-desc
   productEntity: CombatMedipen
-  discountCategory: usualDiscounts
+  discountCategory: rareDiscounts # Triad, added rare
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 25 # Triad
   categories:
   - UplinkChemicals
 
@@ -658,11 +658,11 @@
   name: uplink-stimpack-name
   description: uplink-stimpack-desc
   productEntity: Stimpack
-  discountCategory: usualDiscounts
+  discountCategory: rareDiscounts # Triad, added rare
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 25 # Triad
   categories:
   - UplinkChemicals
 
@@ -673,9 +673,9 @@
   productEntity: StimkitFilled
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 40 # Mono
+    Telecrystal: 80 # Triad
   cost:
-    Telecrystal: 60 # Mono
+    Telecrystal: 100 # Triad, price increased but still cheaper than buying 5 individually
   categories:
   - UplinkChemicals
 
@@ -686,9 +686,9 @@
   productEntity: CigPackSyndicate
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 5 # Mono
+    Telecrystal: 10 # Triad
   cost:
-    Telecrystal: 10 # Mono
+    Telecrystal: 20 # Triad
   categories:
   - UplinkChemicals
 
@@ -697,7 +697,7 @@
   name: uplink-meds-bundle-name
   description: uplink-meds-bundle-desc
   productEntity: ClothingBackpackDuffelSyndicateMedicalBundleFilled
-  discountCategory: rareDiscounts
+  discountCategory: veryRareDiscounts # Triad
   discountDownTo:
     Telecrystal: 80 # Mono
   cost:
@@ -977,9 +977,9 @@
   productEntity: SyndicateJawsOfLife
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 5 # Mono
+    Telecrystal: 25 # Mono
   cost:
-    Telecrystal: 10 # Mono
+    Telecrystal: 35 # Triad, follows the price of nanite applicator as an upgraded special tool
   categories:
   - UplinkDisruption
 
@@ -1544,7 +1544,7 @@
   - UplinkWearables
 
 - type: listing
-  id: UplinkgClothingThievingGloves
+  id: UplinkClothingThievingGloves # Triad fix typo "UplinkgClothing"
   name: uplink-clothing-thieving-gloves-name
   description: uplink-clothing-thieving-gloves-desc
   productEntity: ThievingGloves
@@ -1664,7 +1664,7 @@
   discountDownTo:
     Telecrystal: 60 # Mono
   cost:
-    Telecrystal: 100 # Mono
+    Telecrystal: 125 # Triad
   categories:
   - UplinkWearables
 
