@@ -1,4 +1,5 @@
 using Content.Shared.RCD.Systems;
+using Content.Shared.RPD.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics;
@@ -12,7 +13,7 @@ namespace Content.Shared.RCD.Components;
 /// Charges can be refilled with RCD ammo
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RCDSystem))]
+[Access(typeof(RCDSystem), typeof(RPDSystem))]
 public sealed partial class RCDComponent : Component
 {
     /// <summary>
@@ -33,35 +34,14 @@ public sealed partial class RCDComponent : Component
     [DataField, AutoNetworkedField]
     public ProtoId<RCDPrototype> ProtoId { get; set; } = "Invalid";
 
-    // Triad: RPD port from funky-station (PRs #62/#1244/#1338). IsRpd discriminates the RPD variant;
-    // UseMirrorPrototype toggles spawning the flipped alternate (used for gas filter / mixer).
-    /// <summary>
-    /// Indicates whether this device is an RPD (pipe-construction variant) rather than a standard RCD.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool IsRpd { get; set; } = false;
-
+    // Triad: MirrorPrototype is a general RCD feature (asymmetric recipes); the RPD-specific state lives on
+    // RPDComponent in Content.Shared.RPD. See Resources/Prototypes/_Triad/RPD/ for the RPD subsystem.
     /// <summary>
     /// If true, the next construction uses <see cref="RCDPrototype.MirrorPrototype"/> instead of
     /// <see cref="RCDPrototype.Prototype"/> (where the prototype defines one).
     /// </summary>
     [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public bool UseMirrorPrototype = false;
-
-    /// <summary>
-    /// Selected pipe color for RPD-spawned pipes. Key is the palette slot identifier (e.g. "distro", "waste"),
-    /// Color is the actual hex applied via <c>PipeColorVisualsComponent</c>. "default" leaves pipes unpainted.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public (string Key, Color? Color) PipeColor { get; set; } = ("default", null);
-
-    /// <summary>
-    /// Player eye rotation as of the last RPDEyeRotationEvent. Required because eye rotation isn't networked
-    /// natively and the RPD layer-pick math needs it for the cursor-quadrant → layer mapping. Funky-station's
-    /// own term for this is "horrible workaround"; we agree.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float? LastKnownEyeRotation { get; set; } = null;
     // End Triad
 
     /// <summary>

@@ -4,15 +4,19 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.RCD;
-using Content.Shared.RCD.Components;
+using Content.Shared.RPD;
+using Content.Shared.RPD.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.RCD;
+namespace Content.Client.RPD;
 
-// Triad: RPD port from funky-station (PR #1244). Opens an RPDMenu with the pipe-color palette.
+/// <summary>
+/// Opens an <see cref="RPDMenu"/> populated with the shared <see cref="RPDPalette"/>. Color selection is
+/// forwarded to the server via <see cref="RPDColorChangeMessage"/>.
+/// </summary>
 public sealed class RPDMenuBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly IClyde _displayManager = default!;
@@ -20,23 +24,6 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
     [Dependency] private readonly IEntityManager _entityManager = default!;
 
     private RPDMenu? _menu;
-
-    private static readonly Dictionary<string, Color?> Palette = new()
-    {
-        { "default", null },
-        { "red", Color.FromHex("#FF1212FF") },
-        { "yellow", Color.FromHex("#B3A234FF") },
-        { "brown", Color.FromHex("#947507FF") },
-        { "green", Color.FromHex("#3AB334FF") },
-        { "cyan", Color.FromHex("#03FCD3FF") },
-        { "blue", Color.FromHex("#0335FCFF") },
-        { "white", Color.FromHex("#FFFFFFFF") },
-        { "black", Color.FromHex("#333333FF") },
-        { "waste", Color.FromHex("#990000") },
-        { "distro", Color.FromHex("#0055cc") },
-        { "air", Color.FromHex("#03fcd3") },
-        { "mix", Color.FromHex("#947507") },
-    };
 
     public RPDMenuBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -47,7 +34,7 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        if (!_entityManager.HasComponent<RCDComponent>(Owner))
+        if (!_entityManager.HasComponent<RPDComponent>(Owner))
             return;
 
         _menu = this.CreateWindow<RPDMenu>();
@@ -55,10 +42,11 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
         _menu.ColorSelected += OnColorSelected;
         _menu.SendRCDSystemMessageAction += OnRCDSystemMessage;
 
-        var selectedColor = _entityManager.TryGetComponent<RCDComponent>(Owner, out var comp) && Palette.ContainsKey(comp.PipeColor.Key)
+        var selectedColor = _entityManager.TryGetComponent<RPDComponent>(Owner, out var comp)
+                            && RPDPalette.Colors.ContainsKey(comp.PipeColor.Key)
             ? comp.PipeColor.Key
-            : "default";
-        _menu.Populate(Palette, selectedColor);
+            : RPDPalette.DefaultKey;
+        _menu.Populate(RPDPalette.Colors, selectedColor);
 
         var vpSize = _displayManager.ScreenSize;
         _menu.OpenCenteredAt(_inputManager.MouseScreenPosition.Position / vpSize);
@@ -66,10 +54,10 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
 
     private void OnColorSelected(string colorKey)
     {
-        if (!Palette.TryGetValue(colorKey, out var color))
+        if (!RPDPalette.Colors.TryGetValue(colorKey, out var color))
             return;
 
-        SendMessage(new RCDColorChangeMessage(_entityManager.GetNetEntity(Owner), (colorKey, color)));
+        SendMessage(new RPDColorChangeMessage(_entityManager.GetNetEntity(Owner), (colorKey, color)));
     }
 
     private void OnRCDSystemMessage(ProtoId<RCDPrototype> protoId)

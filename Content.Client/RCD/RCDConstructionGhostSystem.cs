@@ -1,3 +1,4 @@
+using Content.Client.RPD;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Interaction;
@@ -5,6 +6,7 @@ using Content.Shared.Maps;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
+using Content.Shared.RPD.Components;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -137,8 +139,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             return;
 
         // Create a new placer
-        // Triad: RPD pipe-layer-aware placement when holding an RPD on a layer-capable recipe.
-        var placementMode = (rcd.IsRpd && !prototype.NoLayers) ? _rpdPlacementMode : _placementMode;
+        // Triad: RPD pipe-layer-aware placement when the held tool has the RPDComponent and the recipe is layer-capable.
+        var placementMode = (HasComp<RPDComponent>(heldEntity) && !prototype.NoLayers) ? _rpdPlacementMode : _placementMode;
         // End Triad
         var newObjInfo = new PlacementInformation
         {
