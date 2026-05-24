@@ -87,10 +87,6 @@
     sprite: Structures/Doors/Shutters/blastdoor.rsi
     state: assembly
   - type: InteractionOutline
-  # Triad - lets the frame be interacted with (cable step, etc.) even when a window/grille shares its tile
-  - type: WallMount
-    arc: 360
-  # End Triad
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -117,7 +113,7 @@
         layer:
         - HighImpassable
   - type: Transform
-    # noRot: true # Triad - removed so blast door frames keep their placement rotation
+    noRot: true
   - type: Construction
     graph: BlastDoor
     node: frame1
@@ -176,10 +172,6 @@
     sprite: Structures/Doors/Shutters/xeno_blastdoor.rsi
     state: assembly
   - type: InteractionOutline
-  # Triad - lets the frame be interacted with (cable step, etc.) even when a window/grille shares its tile
-  - type: WallMount
-    arc: 360
-  # End Triad
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -206,7 +198,7 @@
         layer:
         - HighImpassable
   - type: Transform
-    # noRot: true # Triad - removed so blast door frames keep their placement rotation
+    noRot: true
   - type: Construction
     graph: BlastDoor
     node: frame1
