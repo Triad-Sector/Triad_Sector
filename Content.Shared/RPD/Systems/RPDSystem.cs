@@ -6,6 +6,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
+using Content.Shared.RCD.Systems;
 using Content.Shared.RPD.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -33,7 +34,11 @@ public sealed class RPDSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RPDComponent, AfterInteractEvent>(OnAfterInteract);
+        // Must run before RCDSystem so CurrentLayer is committed to the component before RCDSystem captures
+        // the click into a DoAfter and (a few ticks later) raises RCDObjectSpawnAttemptEvent. Without this
+        // ordering RCDSystem sets args.Handled first and we bail at the Handled gate, leaving CurrentLayer
+        // at its default (Primary) regardless of cursor position.
+        SubscribeLocalEvent<RPDComponent, AfterInteractEvent>(OnAfterInteract, before: new[] { typeof(RCDSystem) });
         SubscribeLocalEvent<RPDComponent, RCDDeconstructAttemptEvent>(OnDeconstructAttempt);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnAttemptEvent>(OnObjectSpawnAttempt);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnedEvent>(OnObjectSpawned);
@@ -75,8 +80,11 @@ public sealed class RPDSystem : EntitySystem
 
         var tileRef = _mapSystem.GetTileRef(gridUid.Value, grid, location);
         var tileSize = grid.TileSize;
+        // Both terms are in the grid's local frame (tile units); cursor minus tile center yields an offset
+        // in [-tileSize/2, tileSize/2] which is what RPDLayerMath.PickLayer expects. Mirror the client-side
+        // computation in AlignRPDAtmosPipeLayers.AlignPlacementMode so the ghost and the commit agree.
         var tileCenter = new System.Numerics.Vector2(tileRef.X + tileSize / 2f, tileRef.Y + tileSize / 2f);
-        var mouseDiff = location.Position - tileCenter - new System.Numerics.Vector2(0.5f, 0.5f);
+        var mouseDiff = location.Position - tileCenter;
 
         var eye = ent.Comp.LastKnownEyeRotation is { } theta ? new Angle(theta) : Angle.Zero;
         var gridRotation = _transform.GetWorldRotation(gridUid.Value);
