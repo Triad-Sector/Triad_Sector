@@ -174,8 +174,8 @@
         - !type:OrganType
           type: Hydrakin
       - !type:HealthChange
-        conditions:
-        - !type:OrganType # Triad - Hydrakin tolerate inhaled tritium without radiation accumulation.
+        conditions: # Triad - Hydrakin tolerate inhaled tritium without radiation accumulation.
+        - !type:OrganType
           type: Hydrakin
           shouldHave: false
         scaleByQuantity: true
