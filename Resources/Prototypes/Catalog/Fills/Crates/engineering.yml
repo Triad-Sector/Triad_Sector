@@ -195,6 +195,18 @@
     contents:
     - id: RCD
 
+# Triad: RPD port from funky-station — parallels CrateRCD, sold via EngineeringRPD cargo product.
+- type: entity
+  id: CrateRPD
+  parent: CrateEngineeringSecure
+  name: RPD crate
+  description: A crate containing a single rapid piping device.
+  components:
+  - type: StorageFill
+    contents:
+    - id: RPD
+# End Triad
+
 - type: entity
   id: CrateParticleDecelerators
   parent: CrateEngineeringSecure
