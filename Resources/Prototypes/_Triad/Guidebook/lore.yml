@@ -3,7 +3,7 @@
   id: BasicLore
   name: Lore
   text: "/ServerInfo/Guidebook/Lore/Primer.xml"
-  priority: -1
+  priority: -2
   children:
   - Timeline
   - TriadFactions
