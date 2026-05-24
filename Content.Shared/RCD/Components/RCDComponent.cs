@@ -54,6 +54,14 @@ public sealed partial class RCDComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public (string Key, Color? Color) PipeColor { get; set; } = ("default", null);
+
+    /// <summary>
+    /// Player eye rotation as of the last RPDEyeRotationEvent. Required because eye rotation isn't networked
+    /// natively and the RPD layer-pick math needs it for the cursor-quadrant → layer mapping. Funky-station's
+    /// own term for this is "horrible workaround"; we agree.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? LastKnownEyeRotation { get; set; } = null;
     // End Triad
 
     /// <summary>

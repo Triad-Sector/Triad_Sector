@@ -21,6 +21,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     [Dependency] private readonly RCDSystem _rcdSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
+    // Triad: RPD port from funky-station — pipe-layer-aware ghost for RPDs.
+    private readonly string _rpdPlacementMode = typeof(AlignRPDAtmosPipeLayers).Name;
     private Direction _placementDirection = default;
 
     public override void Update(float frameTime)
@@ -79,10 +81,13 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             return;
 
         // Create a new placer
+        // Triad: RPD pipe-layer-aware placement when holding an RPD on a layer-capable recipe.
+        var placementMode = (rcd.IsRpd && !prototype.NoLayers) ? _rpdPlacementMode : _placementMode;
+        // End Triad
         var newObjInfo = new PlacementInformation
         {
             MobUid = heldEntity.Value,
-            PlacementOption = _placementMode,
+            PlacementOption = placementMode,
             EntityType = placementTileId,
             TileType = placementTileNumeric,
             Range = (int) Math.Ceiling(SharedInteractionSystem.InteractionRange),

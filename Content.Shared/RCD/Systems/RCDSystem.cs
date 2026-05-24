@@ -1,5 +1,8 @@
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos; // Triad: RPD pipe layer
+using Content.Shared.Atmos.Components; // Triad: RPD pipe layer
+using Content.Shared.Atmos.EntitySystems; // Triad: RPD pipe layer
 using Content.Shared.Atmos.Piping; // Triad: RPD pipe color
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -60,6 +63,10 @@ public class RCDSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Triad: RPD pipe color
+    [Dependency] private readonly SharedAtmosPipeLayersSystem _pipeLayers = default!; // Triad: RPD pipe layer
+
+    // Triad: RPD layer picked from cursor quadrant; transient state on the server, recomputed each interaction.
+    private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -79,10 +86,31 @@ public class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
-        // Triad: RPD port from funky-station — color picker UI message.
+        // Triad: RPD port from funky-station — color picker UI message + eye-rotation push from clients.
         SubscribeLocalEvent<RCDComponent, RCDColorChangeMessage>(OnColorChange);
+        SubscribeNetworkEvent<RPDEyeRotationEvent>(OnRPDEyeRotationEvent);
         // End Triad
     }
+
+    // Triad: RPD port from funky-station — client streams eye rotation here so the server can reproduce
+    // the quadrant-based layer pick when the player commits a placement.
+    private void OnRPDEyeRotationEvent(RPDEyeRotationEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+            return;
+
+        if (!TryComp<RCDComponent>(uid, out var rcd))
+            return;
+
+        if (rcd.LastKnownEyeRotation != ev.EyeRotation)
+            rcd.LastKnownEyeRotation = ev.EyeRotation;
+    }
+    // End Triad
 
     // Triad: RPD port from funky-station — apply the chosen pipe color to component state.
     private void OnColorChange(Entity<RCDComponent> entity, ref RCDColorChangeMessage args)
@@ -178,6 +206,32 @@ public class RCDSystem : EntitySystem
             _popup.PopupClient(Loc.GetString("rcd-component-no-valid-grid"), uid, user);
             return;
         }
+
+        // Triad: RPD port from funky-station — derive the target pipe layer from where the cursor sits inside the tile.
+        // North/East quadrant → Secondary, South/West quadrant → Tertiary, near-center → Primary. NoLayers prototypes
+        // (vents, scrubbers, alarms) always default to Primary.
+        if (component.IsRpd && !prototype.NoLayers)
+        {
+            var tileRef = _mapSystem.GetTileRef(mapGridData.Value.GridUid, mapGridData.Value.Component, mapGridData.Value.Location);
+            var tileSize = mapGridData.Value.Component.TileSize;
+            var tileCenter = new Vector2(tileRef.X + tileSize / 2f, tileRef.Y + tileSize / 2f);
+            var mouseCoordsDiff = args.ClickLocation.Position - tileCenter - new Vector2(0.5f, 0.5f);
+            const float mouseDeadzoneRadius = 0.25f;
+
+            _currentLayer = AtmosPipeLayer.Primary;
+
+            if (mouseCoordsDiff.Length() > mouseDeadzoneRadius && component.LastKnownEyeRotation.HasValue)
+            {
+                var gridRotation = _transform.GetWorldRotation(mapGridData.Value.GridUid);
+                var angle = new Angle(mouseCoordsDiff);
+                var eyeRotation = new Angle(component.LastKnownEyeRotation.Value);
+                var direction = (angle + eyeRotation + gridRotation + Math.PI / 2).GetCardinalDir();
+                _currentLayer = (direction == Direction.North || direction == Direction.East)
+                    ? AtmosPipeLayer.Secondary
+                    : AtmosPipeLayer.Tertiary;
+            }
+        }
+        // End Triad
 
         if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
                 tilePlacementDirection: component.ConstructionDirection))
@@ -634,6 +688,18 @@ public class RCDSystem : EntitySystem
                 var spawnProto = (component.UseMirrorPrototype && prototype.MirrorPrototype is { } mirror)
                     ? mirror.Id
                     : prototype.Prototype;
+
+                // Triad: swap in the layer-specific prototype for RPD placements (Secondary/Tertiary AtmosPipeLayer
+                // variants); falls through to the primary prototype when no alternative is registered.
+                if (component.IsRpd && !prototype.NoLayers && !string.IsNullOrEmpty(spawnProto) &&
+                    _protoManager.TryIndex<EntityPrototype>(spawnProto, out var entityProto) &&
+                    entityProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, EntityManager.ComponentFactory) &&
+                    _pipeLayers.TryGetAlternativePrototype(atmosPipeLayers, _currentLayer, out var layerProto))
+                {
+                    spawnProto = layerProto.Id;
+                }
+                // End Triad
+
                 var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
 
                 // Triad: apply RPD pipe-color stain when set (skip "default" / null which leaves the prototype's own color).

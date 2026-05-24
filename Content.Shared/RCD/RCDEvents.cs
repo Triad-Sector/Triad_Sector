@@ -52,4 +52,22 @@ public enum RpdUiKey : byte
 {
     Key
 }
+
+/// <summary>
+/// Networks the local player's eye rotation to the server so the RPD can compute pipe-layer placement.
+/// Eye rotation isn't networked by Robust natively; funky-station's note "Not intended as a permanent
+/// solution" still applies here.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class RPDEyeRotationEvent : EntityEventArgs
+{
+    public readonly NetEntity NetEntity;
+    public readonly float? EyeRotation;
+
+    public RPDEyeRotationEvent(NetEntity netEntity, float? eyeRotation)
+    {
+        NetEntity = netEntity;
+        EyeRotation = eyeRotation;
+    }
+}
 // End Triad
