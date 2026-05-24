@@ -8,6 +8,7 @@
     sprite: Floof/Clothing/Neck/collar_blue.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_blue.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -19,7 +20,7 @@
     sprite: Floof/Clothing/Neck/collar_black.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_black.rsi
-
+  - type: Engraveable
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckCollarEpi
@@ -30,6 +31,7 @@
     sprite: Floof/Clothing/Neck/collar_epi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_epi.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -41,6 +43,7 @@
     sprite: Floof/Clothing/Neck/collar_engi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_engi.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -52,6 +55,7 @@
     sprite: Floof/Clothing/Neck/collar_logi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_logi.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -63,6 +67,7 @@
     sprite: Floof/Clothing/Neck/collar_med.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_med.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -74,6 +79,7 @@
     sprite: Floof/Clothing/Neck/collar_sec.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_sec.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -85,6 +91,7 @@
     sprite: Floof/Clothing/Neck/collar_cmd.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_cmd.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -96,6 +103,7 @@
     sprite: Floof/Clothing/Neck/collar_cc.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_cc.rsi
+  - type: Engraveable
 
 - type: entity
   parent: ClothingNeckBase
@@ -107,3 +115,4 @@
     sprite: Floof/Clothing/Neck/collar_syndi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_syndi.rsi
+  - type: Engraveable
