@@ -520,10 +520,13 @@
     slots:
     - Back
     - SuitStorage
+  # Triad: Plastic dropped from funky-station's 200 to 100 to mirror the RCD and pass MaterialArbitrageTest.
+  # With 200 Plastic the upgraded lathe (300 → 185 Plastic input) recycled into 200 Plastic — free 15 plastic
+  # per cycle. Also kept sumPrice(materials) at or below the StaticPrice of 55.
   - type: PhysicalComposition
     materialComposition:
       Steel: 600
-      Plastic: 200
+      Plastic: 100
   - type: StaticPrice
     price: 55
     vendPrice: 5000
