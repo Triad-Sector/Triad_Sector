@@ -33,6 +33,22 @@ public sealed partial class RCDComponent : Component
     [DataField, AutoNetworkedField]
     public ProtoId<RCDPrototype> ProtoId { get; set; } = "Invalid";
 
+    // Triad: RPD port from funky-station (PRs #62/#1244/#1338). IsRpd discriminates the RPD variant;
+    // UseMirrorPrototype toggles spawning the flipped alternate (used for gas filter / mixer).
+    /// <summary>
+    /// Indicates whether this device is an RPD (pipe-construction variant) rather than a standard RCD.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool IsRpd { get; set; } = false;
+
+    /// <summary>
+    /// If true, the next construction uses <see cref="RCDPrototype.MirrorPrototype"/> instead of
+    /// <see cref="RCDPrototype.Prototype"/> (where the prototype defines one).
+    /// </summary>
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
+    public bool UseMirrorPrototype = false;
+    // End Triad
+
     /// <summary>
     /// The direction constructed entities will face upon spawning
     /// </summary>

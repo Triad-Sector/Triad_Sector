@@ -522,6 +522,16 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct a floor tile
         if (target == null)
         {
+            // Triad: RPDs do not deconstruct tiles — they only chew atmos hardware.
+            if (component.IsRpd)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
+
+                return false;
+            }
+            // End Triad
+
             // The tile is empty
             if (mapGridData.Tile.Tile.IsEmpty)
             {
@@ -563,6 +573,16 @@ public class RCDSystem : EntitySystem
 
                 return false;
             }
+
+            // Triad: RPDs use a separate whitelist (RpdDeconstructable) so RCDs and RPDs don't share decon targets.
+            if (component.IsRpd && !deconstructible.RpdDeconstructable)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
+
+                return false;
+            }
+            // End Triad
         }
 
         return true;
@@ -596,7 +616,12 @@ public class RCDSystem : EntitySystem
             }
 
             case RcdMode.ConstructObject:
-                var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // Triad: RPD port from funky-station — pick the mirrored variant when the user has toggled flip (e.g. flipped gas filter).
+                var spawnProto = (component.UseMirrorPrototype && prototype.MirrorPrototype is { } mirror)
+                    ? mirror.Id
+                    : prototype.Prototype;
+                var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // End Triad
 
                 switch (prototype.Rotation)
                 {

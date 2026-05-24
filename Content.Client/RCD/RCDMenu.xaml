@@ -27,6 +27,23 @@
         <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-lighting'}" TargetLayer="Lighting" Visible="False">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RCD/lighting.png"/>
         </ui:RadialMenuTextureButtonWithSector>
+        <!-- Triad: RPD categories ported from funky-station -->
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-piping'}" TargetLayer="Piping" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RPD/fourway.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-atmosphericutility'}" TargetLayer="AtmosphericUtility" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RPD/port.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-pumps'}" TargetLayer="PumpsValves" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RPD/pump_volume.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-vents'}" TargetLayer="Vents" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RPD/vent_passive.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-sensorsmonitors'}" TargetLayer="SensorsMonitors" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/Radial/RPD/alarm.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <!-- End Triad -->
     </ui:RadialContainer>
 
     <!-- Walls and flooring -->
@@ -43,5 +60,13 @@
        
     <!-- Lighting -->
     <ui:RadialContainer Name="Lighting"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+
+    <!-- Triad: RPD layers ported from funky-station -->
+    <ui:RadialContainer Name="Piping"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+    <ui:RadialContainer Name="AtmosphericUtility"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+    <ui:RadialContainer Name="PumpsValves"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+    <ui:RadialContainer Name="Vents"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+    <ui:RadialContainer Name="SensorsMonitors"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+    <!-- End Triad -->
 
 </ui:RadialMenu>
