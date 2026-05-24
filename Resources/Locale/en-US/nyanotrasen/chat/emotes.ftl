@@ -2,10 +2,10 @@
 # (Previously the prototypes had literal English names and chat messages.)
 
 # Names
+# (chat-emote-name-growl and chat-emote-name-purr are defined in
+#  Resources/Locale/en-US/_Starlight/chat/emotes.ftl — do not redefine here.)
 chat-emote-name-meow = Meow
 chat-emote-name-mew = Mew
-chat-emote-name-growl = Growl
-chat-emote-name-purr = Purr
 
 # Messages
 chat-emote-msg-meow = meows.
