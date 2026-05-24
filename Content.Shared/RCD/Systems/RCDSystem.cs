@@ -12,6 +12,7 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
+using Content.Shared.RPD.Components; // Triad
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
@@ -587,8 +588,13 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // The object is not in the whitelist
-            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.Deconstructable)
+            // Triad: RPD tools share this gate; admit a target if either the generic Deconstructable flag is on,
+            // or the tool is an RPD and the target opted into RpdDeconstructable. RPDSystem's earlier
+            // RCDDeconstructAttemptEvent handler has already enforced the RPD-only whitelist semantics.
+            var hasRpd = HasComp<RPDComponent>(uid);
+            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible)
+                || !(deconstructible.Deconstructable || (hasRpd && deconstructible.RpdDeconstructable)))
+            // End Triad
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);

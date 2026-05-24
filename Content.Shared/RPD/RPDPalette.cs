@@ -30,14 +30,8 @@ public static class RPDPalette
     };
 
     /// <summary>
-    /// Returns true when the supplied key is a recognized palette slot AND the supplied color matches the
-    /// canonical value (or both sides agree it's the default null). Used by the server to validate
+    /// Returns true when the supplied key is a recognized palette slot. Used by the server to validate
     /// <c>RPDColorChangeMessage</c> payloads from clients.
     /// </summary>
-    public static bool IsValid(string key, Color? color)
-    {
-        if (!Colors.TryGetValue(key, out var expected))
-            return false;
-        return expected == color;
-    }
+    public static bool IsValid(string key) => Colors.ContainsKey(key);
 }

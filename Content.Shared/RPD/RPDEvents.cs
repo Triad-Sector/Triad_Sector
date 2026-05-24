@@ -21,16 +21,16 @@ public sealed class RPDEyeRotationEvent : EntityEventArgs
 }
 
 /// <summary>
-/// BUI message from the RPD color picker. The selected (key, color) is stored on <c>RPDComponent.PipeColor</c>
-/// and applied to spawned pipes via <c>PipeColorVisuals.Color</c>.
+/// BUI message from the RPD color picker. Carries only the palette key; the server re-derives the
+/// <see cref="Color"/> from <c>RPDPalette.Colors[key]</c> so a misbehaving client can't desync the pair.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class RPDColorChangeMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity NetEntity;
-    public readonly (string Key, Color? Color) PipeColor;
+    public readonly string PipeColor;
 
-    public RPDColorChangeMessage(NetEntity entity, (string Key, Color? Color) pipeColor)
+    public RPDColorChangeMessage(NetEntity entity, string pipeColor)
     {
         NetEntity = entity;
         PipeColor = pipeColor;

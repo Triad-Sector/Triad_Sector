@@ -18,7 +18,9 @@ namespace Content.Shared.RPD.Systems;
 /// <summary>
 /// Adds RPD-specific behavior on top of the generic RCD pipeline. Subscribes to <c>RCDSystem</c>'s extensibility
 /// events to (a) gate deconstruction to RPD-whitelisted atmos hardware only, (b) swap the spawn prototype to the
-/// pipe-layer alternative chosen by cursor quadrant, and (c) stain spawned pipes with the operator's color.
+/// pipe-layer alternative chosen by cursor quadrant, and (c) stain spawned pipes/atmos hardware with the
+/// operator's selected color. The stain is an unconditional <c>PipeColorVisuals.Color</c> appearance write —
+/// entities without a <c>PipeColorVisuals</c> visualizer (air alarms, air sensors) absorb it harmlessly.
 /// </summary>
 public sealed class RPDSystem : EntitySystem
 {
@@ -136,22 +138,28 @@ public sealed class RPDSystem : EntitySystem
     }
 
     /// <summary>
-    /// Applies the chosen pipe-color stain to the spawned entity. <see cref="RPDPalette.DefaultKey"/> leaves the
-    /// prototype's own color.
+    /// Applies the operator's selected pipe-color stain to the freshly spawned entity. The default key skips the
+    /// write entirely; otherwise the appearance data is set unconditionally and the <c>PipeColorVisuals</c>
+    /// visualizer (on every pipe/pump/vent/valve/mixer/heat-exchanger prototype) picks it up. Entities without
+    /// the visualizer (air alarms, air sensors) absorb the appearance bytes harmlessly — cheaper than a per-spawn
+    /// component check.
     /// </summary>
     private void OnObjectSpawned(Entity<RPDComponent> ent, ref RCDObjectSpawnedEvent args)
     {
-        if (ent.Comp.PipeColor.Key != RPDPalette.DefaultKey && ent.Comp.PipeColor.Color is { } pipeColor)
-            _appearance.SetData(args.Spawned, PipeColorVisuals.Color, pipeColor);
+        if (ent.Comp.PipeColor == RPDPalette.DefaultKey)
+            return;
+
+        if (RPDPalette.Colors.TryGetValue(ent.Comp.PipeColor, out var pipeColor) && pipeColor is { } color)
+            _appearance.SetData(args.Spawned, PipeColorVisuals.Color, color);
     }
 
     /// <summary>
     /// Client requests a palette change via the RPD BUI. Validated against <see cref="RPDPalette"/> so a
-    /// misbehaving client can't store off-palette colors.
+    /// misbehaving client can't store off-palette keys.
     /// </summary>
     private void OnColorChange(Entity<RPDComponent> ent, ref RPDColorChangeMessage args)
     {
-        if (!RPDPalette.IsValid(args.PipeColor.Key, args.PipeColor.Color))
+        if (!RPDPalette.IsValid(args.PipeColor))
             return;
 
         ent.Comp.PipeColor = args.PipeColor;

@@ -43,8 +43,8 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
         _menu.SendRCDSystemMessageAction += OnRCDSystemMessage;
 
         var selectedColor = _entityManager.TryGetComponent<RPDComponent>(Owner, out var comp)
-                            && RPDPalette.Colors.ContainsKey(comp.PipeColor.Key)
-            ? comp.PipeColor.Key
+                            && RPDPalette.IsValid(comp.PipeColor)
+            ? comp.PipeColor
             : RPDPalette.DefaultKey;
         _menu.Populate(RPDPalette.Colors, selectedColor);
 
@@ -54,10 +54,10 @@ public sealed class RPDMenuBoundUserInterface : BoundUserInterface
 
     private void OnColorSelected(string colorKey)
     {
-        if (!RPDPalette.Colors.TryGetValue(colorKey, out var color))
+        if (!RPDPalette.IsValid(colorKey))
             return;
 
-        SendMessage(new RPDColorChangeMessage(_entityManager.GetNetEntity(Owner), (colorKey, color)));
+        SendMessage(new RPDColorChangeMessage(_entityManager.GetNetEntity(Owner), colorKey));
     }
 
     private void OnRCDSystemMessage(ProtoId<RCDPrototype> protoId)

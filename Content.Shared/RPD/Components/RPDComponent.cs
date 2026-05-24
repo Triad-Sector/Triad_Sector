@@ -15,12 +15,12 @@ namespace Content.Shared.RPD.Components;
 public sealed partial class RPDComponent : Component
 {
     /// <summary>
-    /// Selected pipe color. <c>Key</c> is a slot identifier from <see cref="RPDPalette.Colors"/>; <c>Color</c> is
-    /// the resolved color applied via <c>PipeColorVisuals.Color</c> on spawn. <see cref="RPDPalette.DefaultKey"/>
-    /// leaves pipes unpainted.
+    /// Selected pipe color slot from <see cref="RPDPalette.Colors"/>. The actual <see cref="Color"/> is derived
+    /// server-side at spawn time via <c>RPDPalette.Colors[PipeColor]</c> — the wire only carries the key so a
+    /// misbehaving client can't desync the (key, color) pair. <see cref="RPDPalette.DefaultKey"/> skips the stain.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public (string Key, Color? Color) PipeColor { get; set; } = (RPDPalette.DefaultKey, null);
+    public string PipeColor { get; set; } = RPDPalette.DefaultKey;
 
     /// <summary>
     /// Player eye rotation as of the last <c>RPDEyeRotationEvent</c>. Server-only ephemeral state — clients send

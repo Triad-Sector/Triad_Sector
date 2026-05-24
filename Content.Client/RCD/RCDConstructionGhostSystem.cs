@@ -1,3 +1,4 @@
+using Content.Client.Construction;
 using Content.Client.RPD;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
@@ -30,19 +31,29 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     // Triad: RPD port from funky-station — pipe-layer-aware ghost for RPDs + mirror-prototype flip toggle.
     private readonly string _rpdPlacementMode = typeof(AlignRPDAtmosPipeLayers).Name;
     private bool _useMirrorPrototype;
+    // Tracks the held RCD/RPD so we can re-sync _useMirrorPrototype to the tool's networked state on swap
+    // (otherwise the local "flip on" state from the previous tool leaks onto a freshly equipped one).
+    private EntityUid? _lastHeldRcd;
     // End Triad
     private Direction _placementDirection = default;
 
     // Triad: RPD port from funky-station — bind R (EditorFlipObject) to toggle the mirrored variant of the
-    // currently selected RCD recipe (e.g. gas filter flipped). Mirror state is mirrored to the server via
+    // currently selected RCD recipe (e.g. gas filter flipped). Mirror state is networked to the server via
     // RCDConstructionGhostFlipEvent so the next placement spawns the right entity.
+    //
+    // BindBefore(ConstructionSystem): ConstructionSystem also binds EditorFlipObject and returns true
+    // unconditionally on KeyDown (see ConstructionSystem.HandleFlip), which would swallow R before this
+    // handler ever ran. Without an ordering declaration the engine resolves to registration order, so R
+    // working with an RPD was previously luck. Each decline path here returns false so non-flippable RCD
+    // recipes still fall through to ConstructionSystem (which no-ops when no construction ghost is active).
     public override void Initialize()
     {
         base.Initialize();
 
         CommandBinds.Builder
-            .Bind(ContentKeyFunctions.EditorFlipObject,
-                new PointerInputCmdHandler(HandleFlip, outsidePrediction: true))
+            .BindBefore(ContentKeyFunctions.EditorFlipObject,
+                new PointerInputCmdHandler(HandleFlip, outsidePrediction: true),
+                typeof(ConstructionSystem))
             .Register<RCDConstructionGhostSystem>();
     }
 
@@ -68,7 +79,10 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         if (prototype.MirrorPrototype is not { } mirror)
             return false;
 
-        _useMirrorPrototype = !rcd.UseMirrorPrototype;
+        // Toggle the local field rather than reading rcd.UseMirrorPrototype: the networked field lags by a
+        // round-trip, so two fast R presses would both read the same pre-roundtrip value and send identical
+        // payloads, leaving the operator stuck on the flipped variant.
+        _useMirrorPrototype = !_useMirrorPrototype;
         RaiseNetworkEvent(new RCDConstructionGhostFlipEvent(GetNetEntity(placerEntity.Value), _useMirrorPrototype));
 
         // Force the next Update() pass to rebuild the placer with the flipped prototype.
@@ -104,8 +118,22 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             if (placerIsRCD)
                 _placementManager.Clear();
 
+            // Triad: drop the cached flip state so we don't leak it onto whatever tool the player picks up next.
+            _lastHeldRcd = null;
+            _useMirrorPrototype = false;
+            // End Triad
             return;
         }
+
+        // Triad: on tool swap, sync the local flip flag to the new tool's networked state. Within a single tool
+        // we keep our own field as the source of truth (see HandleFlip race comment).
+        if (_lastHeldRcd != heldEntity)
+        {
+            _lastHeldRcd = heldEntity;
+            _useMirrorPrototype = rcd.UseMirrorPrototype;
+        }
+        // End Triad
+
         var prototype = _protoManager.Index(rcd.ProtoId);
 
         // Update the direction the RCD prototype based on the placer direction
