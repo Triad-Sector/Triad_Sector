@@ -82,3 +82,14 @@
   loadouts:
   - StationRepClothingNeckCloakSr
   - StationRepClothingNeckMantleSr
+
+- type: loadoutGroup
+  id: StationRepGlasses
+  name: loadout-group-contractor-neck
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingEyesHudCommand
+  - ClothingEyesGlassesCommand
+  fallbacks:
+  - ClothingEyesHudCommand
