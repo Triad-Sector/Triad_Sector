@@ -8,18 +8,41 @@
     },
     "states": [
         {
-            "name": "spray_painter"
+            "name": "spray_painter",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
         },
         {
             "name": "ammo"
         },
         {
             "name": "inhand-left",
-            "directions": 4
+            "directions": 4,
+            "delays": [
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ]
+            ]
         },
         {
             "name": "inhand-right",
-            "directions": 4
+            "directions": 4,
+            "delays": [
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ],
+                [ 0.5, 0.5, 0.5 ]
+            ]
         },
         {
             "name": "ammo-inhand-left",
