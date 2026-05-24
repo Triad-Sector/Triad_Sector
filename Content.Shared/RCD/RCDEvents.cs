@@ -70,4 +70,22 @@ public sealed class RPDEyeRotationEvent : EntityEventArgs
         EyeRotation = eyeRotation;
     }
 }
+
+/// <summary>
+/// Sent from the client when the operator presses the flip key (default R) while holding an RCD/RPD on a
+/// recipe with a defined <c>MirrorPrototype</c>. The server toggles <c>RCDComponent.UseMirrorPrototype</c>
+/// so the next ConstructObject spawns the flipped variant (e.g. gas filter mirrored).
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class RCDConstructionGhostFlipEvent : EntityEventArgs
+{
+    public readonly NetEntity NetEntity;
+    public readonly bool UseMirrorPrototype;
+
+    public RCDConstructionGhostFlipEvent(NetEntity netEntity, bool useMirrorPrototype)
+    {
+        NetEntity = netEntity;
+        UseMirrorPrototype = useMirrorPrototype;
+    }
+}
 // End Triad

@@ -86,11 +86,32 @@ public class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
-        // Triad: RPD port from funky-station — color picker UI message + eye-rotation push from clients.
+        // Triad: RPD port from funky-station — color picker UI message + eye-rotation push + mirror-flip toggle.
         SubscribeLocalEvent<RCDComponent, RCDColorChangeMessage>(OnColorChange);
         SubscribeNetworkEvent<RPDEyeRotationEvent>(OnRPDEyeRotationEvent);
+        SubscribeNetworkEvent<RCDConstructionGhostFlipEvent>(OnRCDConstructionGhostFlipEvent);
         // End Triad
     }
+
+    // Triad: RPD port from funky-station — flip key (R by default) toggles the mirrored prototype variant
+    // for the next placement. Operator must be holding the flipped tool in their active hand.
+    private void OnRCDConstructionGhostFlipEvent(RCDConstructionGhostFlipEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+            return;
+
+        if (!TryComp<RCDComponent>(uid, out var rcd))
+            return;
+
+        rcd.UseMirrorPrototype = ev.UseMirrorPrototype;
+        Dirty(uid, rcd);
+    }
+    // End Triad
 
     // Triad: RPD port from funky-station — client streams eye rotation here so the server can reproduce
     // the quadrant-based layer pick when the player commits a placement.
