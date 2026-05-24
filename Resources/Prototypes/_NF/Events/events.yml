@@ -9,7 +9,7 @@
     # - id: BureaucraticError
     # - id: ClericalError
     # - id: CockroachMigration #Triad edit - Disable
-    - id: GasLeak
+    - id: GasLeak #Triad
     #- id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     # - id: KudzuGrowth
@@ -23,11 +23,11 @@
     # - id: SnakeSpawn
     # - id: SpiderClownSpawn
     # - id: SpiderSpawn
-    - id: VentClog
+    # - id: VentClog #Triad
     - id: BluespaceCargoCrate # Frontier
     - id: BluespaceMcCargoCrate # Frontier
     - id: BluespaceSyndicateCrate # Frontier
-#   - id: BluespaceBrokenMcDelivery # Frontier. Mono edit - Disabled
+    - id: BluespaceBrokenMcDelivery # Frontier. Mono edit - Disabled # Triad enable
     - id: SmugglingFax # Frontier
     # - id: SnailMigration # Mono. Triad edit - Disable
 
