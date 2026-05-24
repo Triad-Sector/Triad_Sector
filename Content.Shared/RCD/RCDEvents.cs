@@ -32,3 +32,24 @@ public enum RcdUiKey : byte
 {
     Key
 }
+
+// Triad: RPD port from funky-station — color picker message + RPD UI key.
+[Serializable, NetSerializable]
+public sealed class RCDColorChangeMessage : BoundUserInterfaceMessage
+{
+    public readonly NetEntity NetEntity;
+    public readonly (string Key, Color? Color) PipeColor;
+
+    public RCDColorChangeMessage(NetEntity entity, (string Key, Color? Color) pipeColor)
+    {
+        NetEntity = entity;
+        PipeColor = pipeColor;
+    }
+}
+
+[Serializable, NetSerializable]
+public enum RpdUiKey : byte
+{
+    Key
+}
+// End Triad

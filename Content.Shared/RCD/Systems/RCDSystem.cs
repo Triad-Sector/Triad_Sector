@@ -1,5 +1,6 @@
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.Piping; // Triad: RPD pipe color
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
@@ -16,6 +17,7 @@ using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -57,6 +59,7 @@ public class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Triad: RPD pipe color
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -76,7 +79,18 @@ public class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
+        // Triad: RPD port from funky-station — color picker UI message.
+        SubscribeLocalEvent<RCDComponent, RCDColorChangeMessage>(OnColorChange);
+        // End Triad
     }
+
+    // Triad: RPD port from funky-station — apply the chosen pipe color to component state.
+    private void OnColorChange(Entity<RCDComponent> entity, ref RCDColorChangeMessage args)
+    {
+        entity.Comp.PipeColor = args.PipeColor;
+        Dirty(entity);
+    }
+    // End Triad
 
     #region Event handling
 
@@ -621,6 +635,10 @@ public class RCDSystem : EntitySystem
                     ? mirror.Id
                     : prototype.Prototype;
                 var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+
+                // Triad: apply RPD pipe-color stain when set (skip "default" / null which leaves the prototype's own color).
+                if (component.PipeColor.Key != "default" && component.PipeColor.Color is { } pipeColor)
+                    _appearance.SetData(ent, PipeColorVisuals.Color, pipeColor);
                 // End Triad
 
                 switch (prototype.Rotation)

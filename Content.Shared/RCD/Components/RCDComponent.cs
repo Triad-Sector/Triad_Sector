@@ -47,6 +47,13 @@ public sealed partial class RCDComponent : Component
     /// </summary>
     [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public bool UseMirrorPrototype = false;
+
+    /// <summary>
+    /// Selected pipe color for RPD-spawned pipes. Key is the palette slot identifier (e.g. "distro", "waste"),
+    /// Color is the actual hex applied via <c>PipeColorVisualsComponent</c>. "default" leaves pipes unpainted.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public (string Key, Color? Color) PipeColor { get; set; } = ("default", null);
     // End Triad
 
     /// <summary>

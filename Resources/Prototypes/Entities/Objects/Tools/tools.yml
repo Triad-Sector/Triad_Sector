@@ -528,11 +528,11 @@
     vendPrice: 5000
   - type: UserInterface
     interfaces:
-      enum.RcdUiKey.Key:
-        type: RCDMenuBoundUserInterface
+      enum.RpdUiKey.Key:
+        type: RPDMenuBoundUserInterface
   - type: ActivatableUI
     inHandsOnly: true
-    key: enum.RcdUiKey.Key
+    key: enum.RpdUiKey.Key
   - type: Tag
     tags:
     - RapidConstructionTool
