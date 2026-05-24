@@ -481,7 +481,6 @@
     shape:
     - 0,0,3,1
   - type: RCD
-    isRpd: true
     availablePrototypes:
     - PipeFourway
     - PipeStraight
@@ -509,16 +508,18 @@
     - Sensor
     - SensorPipe
     - Deconstruct
+  - type: RPD
   - type: LimitedCharges
     maxCharges: 45
   - type: Sprite
     sprite: Objects/Tools/rpd.rsi
+    state: icon
   - type: Clothing
     sprite: Objects/Tools/rpd.rsi
     quickEquip: false
     slots:
-    - back
-    - backStorage
+    - Back
+    - SuitStorage
   - type: PhysicalComposition
     materialComposition:
       Steel: 600

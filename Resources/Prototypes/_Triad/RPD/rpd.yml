@@ -1,4 +1,7 @@
 # Triad: RPD port from funky-station (PR #62 + #1244 + #1338 + #1458 + #1289, see also Monolith PR #3930).
+# Radial icons reference the actual constructed entity's RSI so any sprite swap in the fork's atmos
+# hardware automatically propagates to the picker — funky's pre-rendered Textures/Interface/Radial/RPD/
+# icons removed.
 # Fractional cost (cost: 0.5) was rounded to 1 because RCDPrototype.Cost is int upstream; RPD maxCharges
 # was halved to 45 to preserve effective build count (90 pipe segments per charge after halving).
 # HeatPump and GasTemperatureGate omitted because their prototypes aren't in this fork yet.
@@ -6,7 +9,9 @@
 - type: rcd
   id: PipeFourway
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/fourway.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeFourway
   mode: ConstructObject
   prototype: GasPipeFourway
   cost: 1
@@ -17,7 +22,9 @@
 - type: rcd
   id: PipeStraight
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/straight.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeStraight
   mode: ConstructObject
   prototype: GasPipeStraight
   cost: 1
@@ -28,7 +35,9 @@
 - type: rcd
   id: PipeBend
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/bend.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeBend
   mode: ConstructObject
   prototype: GasPipeBend
   cost: 1
@@ -39,7 +48,9 @@
 - type: rcd
   id: PipeTJunction
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/tjunction.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeTJunction
   mode: ConstructObject
   prototype: GasPipeTJunction
   cost: 1
@@ -51,7 +62,9 @@
 - type: rcd
   id: PipeHalf
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/pipe_half.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeHalf
   mode: ConstructObject
   prototype: GasPipeHalf
   cost: 1
@@ -63,7 +76,10 @@
 - type: rcd
   id: ManifoldGas
   category: Piping
-  sprite: /Textures/Interface/Radial/RPD/manifold.png
+  sprite:
+    # In this fork the manifold sprite lives in its own RSI (Funky/upstream had it under pipe.rsi).
+    sprite: Structures/Piping/Atmospherics/manifold.rsi
+    state: pipeManifold
   mode: ConstructObject
   prototype: GasPipeManifold
   cost: 1
@@ -76,7 +92,9 @@
 - type: rcd
   id: PressurePump
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pump_pressure.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpPressure
   mode: ConstructObject
   prototype: GasPressurePump
   cost: 1
@@ -88,7 +106,9 @@
 - type: rcd
   id: VolumetricPump
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pump_volume.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpVolume
   mode: ConstructObject
   prototype: GasVolumePump
   cost: 1
@@ -100,7 +120,9 @@
 - type: rcd
   id: ManualValve
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pump_manual_valve.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpManualValve
   mode: ConstructObject
   prototype: GasValve
   cost: 1
@@ -112,7 +134,9 @@
 - type: rcd
   id: SignalValve
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pump_signal_valve.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpSignalValve
   mode: ConstructObject
   prototype: SignalControlledValve
   cost: 1
@@ -124,7 +148,9 @@
 - type: rcd
   id: PressureValve
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pneumatic_valve.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pneumaticvalve.rsi
+    state: "off"
   mode: ConstructObject
   prototype: PressureControlledValve
   cost: 1
@@ -136,7 +162,9 @@
 - type: rcd
   id: PressureRegulator
   category: PumpsValves
-  sprite: /Textures/Interface/Radial/RPD/pump_pressure_regulator.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpPressureRegulator
   mode: ConstructObject
   prototype: GasPressureRegulator
   cost: 1
@@ -148,7 +176,9 @@
 - type: rcd
   id: OutletInjector
   category: Vents
-  sprite: /Textures/Interface/Radial/RPD/injector.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/outletinjector.rsi
+    state: injector
   mode: ConstructObject
   prototype: GasOutletInjector
   cost: 1
@@ -160,7 +190,9 @@
 - type: rcd
   id: VentScrubber
   category: Vents
-  sprite: /Textures/Interface/Radial/RPD/scrub_off.png
+  sprite:
+    sprite: _NF/Structures/Piping/Atmospherics/scrubber.rsi
+    state: scrub_off
   mode: ConstructObject
   prototype: GasVentScrubber
   cost: 1
@@ -172,7 +204,9 @@
 - type: rcd
   id: VentGas
   category: Vents
-  sprite: /Textures/Interface/Radial/RPD/vent_off.png
+  sprite:
+    sprite: _NF/Structures/Piping/Atmospherics/vent.rsi
+    state: vent_off
   mode: ConstructObject
   prototype: GasVentPump
   cost: 1
@@ -184,7 +218,9 @@
 - type: rcd
   id: DualPortVent
   category: Vents
-  sprite: /Textures/Interface/Radial/RPD/dual_port.png
+  sprite:
+    sprite: _NF/Structures/Piping/Atmospherics/vent.rsi
+    state: vent_off
   mode: ConstructObject
   prototype: GasDualPortVentPump
   cost: 1
@@ -196,7 +232,9 @@
 - type: rcd
   id: VentPassive
   category: Vents
-  sprite: /Textures/Interface/Radial/RPD/vent_passive.png
+  sprite:
+    sprite: _NF/Structures/Piping/Atmospherics/vent.rsi
+    state: vent_passive
   mode: ConstructObject
   prototype: GasPassiveVent
   cost: 1
@@ -208,7 +246,9 @@
 - type: rcd
   id: Radiator
   category: AtmosphericUtility
-  sprite: /Textures/Interface/Radial/RPD/radiator.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+    state: heStraight
   mode: ConstructObject
   prototype: HeatExchanger
   cost: 1
@@ -220,7 +260,9 @@
 - type: rcd
   id: RadiatorBend
   category: AtmosphericUtility
-  sprite: /Textures/Interface/Radial/RPD/he_bend.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+    state: heBend
   mode: ConstructObject
   prototype: HeatExchangerBend
   cost: 1
@@ -232,7 +274,9 @@
 - type: rcd
   id: MixerGas
   category: AtmosphericUtility
-  sprite: /Textures/Interface/Radial/RPD/gas_mixer.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasmixer.rsi
+    state: gasMixer
   mode: ConstructObject
   prototype: GasMixer
   mirrorPrototype: GasMixerFlipped
@@ -245,7 +289,9 @@
 - type: rcd
   id: FilterGas
   category: AtmosphericUtility
-  sprite: /Textures/Interface/Radial/RPD/gas_filter.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasfilter.rsi
+    state: gasFilterF
   mode: ConstructObject
   prototype: GasFilter
   mirrorPrototype: GasFilterFlipped
@@ -258,7 +304,9 @@
 - type: rcd
   id: CanisterPort
   category: AtmosphericUtility
-  sprite: /Textures/Interface/Radial/RPD/port.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
+    state: gasCanisterPort
   mode: ConstructObject
   prototype: GasPort
   cost: 1
@@ -270,7 +318,9 @@
 - type: rcd
   id: Alarm
   category: SensorsMonitors
-  sprite: /Textures/Interface/Radial/RPD/alarm.png
+  sprite:
+    sprite: Structures/Wallmounts/air_monitors.rsi
+    state: alarm0
   mode: ConstructObject
   prototype: AirAlarm
   cost: 2
@@ -282,7 +332,9 @@
 - type: rcd
   id: Sensor
   category: SensorsMonitors
-  sprite: /Textures/Interface/Radial/RPD/sensor.png
+  sprite:
+    sprite: Structures/Specific/Atmospherics/sensor.rsi
+    state: gsensor1
   mode: ConstructObject
   prototype: AirSensor
   cost: 1
@@ -295,7 +347,9 @@
 - type: rcd
   id: SensorPipe
   category: SensorsMonitors
-  sprite: /Textures/Interface/Radial/RPD/sensorpipe.png
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gas_pipe_sensor.rsi
+    state: base
   mode: ConstructObject
   prototype: GasPipeSensor
   cost: 1
