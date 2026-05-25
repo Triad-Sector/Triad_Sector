@@ -501,7 +501,7 @@
 - type: listing
   id: UplinkSpeedLoader45_magnumAP
   name: uplink-speedloader-45_magnum-name
-  description: uplink-speedloader-magnu-desc
+  description: uplink-speedloader-magnum-desc # Triad fix tyoi
   icon: { sprite: /Textures/_Mono/Objects/Weapons/Guns/Ammunition/SpeedLoaders/45_magnum/45_magnum_speed_loader.rsi, state: icon }
   productEntity: SpeedLoader45_magnumAP
   cost:
@@ -649,7 +649,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 25 # Triad
+    Telecrystal: 20 # Triad
   categories:
   - UplinkChemicals
 
@@ -662,7 +662,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 25 # Triad
+    Telecrystal: 20 # Triad
   categories:
   - UplinkChemicals
 
@@ -673,9 +673,9 @@
   productEntity: StimkitFilled
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 80 # Triad
+    Telecrystal: 60 # Triad
   cost:
-    Telecrystal: 100 # Triad, price increased but still cheaper than buying 5 individually
+    Telecrystal: 80 # Triad, price increased but still cheaper than buying 5 individually
   categories:
   - UplinkChemicals
 
@@ -1526,7 +1526,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 25 # Triad 25 < 20
   categories:
     - UplinkWearables
 
@@ -2130,10 +2130,12 @@
   # - !type:BuyerJobCondition # Frontier: no librarians
   #   whitelist:
   #   - Librarian
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
-      - SurplusBundle
+  # Triad Start disable blacklist from surplus
+  # - !type:BuyerWhitelistCondition
+  #   blacklist:
+  #     components:
+  #     - SurplusBundle
+  # Triad End
 
 - type: listing
   id: UplinkCombatBakery
@@ -2145,7 +2147,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 25 # Triad
   categories:
   - UplinkWeaponry # Frontier: UplinkJob<UplinkWeaponry
   # conditions: # Frontier: no chefs or mimes

@@ -14,21 +14,22 @@
         - CrateTradeContrabandSecure4 # Triad, multiple of the same one for higher chance
         - CrateTradeContrabandSecure3
         - CrateTradeContrabandSecure2
-        - CrateTradeContrabandSecure2
-        - CrateTradeContrabandSecure1
         - CrateTradeContrabandSecure1
         - CrateTradeContrabandSecure1
         - LandMineExplosive
-        # - SpawnMobWeaponTurretLaserSyndicateNF # Triad
-        # - SpawnMobWeaponTurretSyndicate # Triad
-        - Telecrystal5 # Mono
+        - BannerSyndicate
+        - Telecrystal5 # Triad
+        - Telecrystal5 # Triad
       rarePrototypes:
         - CrateTradeContrabandSecure5 # Triad
+        - CrateTradeContrabandSecure5 # Triad
         - Telecrystal25 # Mono
+        - Telecrystal25 # Mono
+        - CrateSyndicateSurplusBundle
+        - CrateNanotrasenLootFilledT1 # Mono
         - SpawnMobWeaponTurretLaserSyndicateNF # Mono
         - SpawnMobWeaponTurretSyndicate # Mono
-        - CrateNanotrasenLootFilledT1 # Mono
-      rareChance: 0.05 # Triad
+      rareChance: 0.025 # Triad
 
 - type: entity
   name: Contraband Crate Spawner
@@ -49,8 +50,6 @@
         - CrateNanotrasenLootFilledT1 # Mono
       rarePrototypes:
 # Begin Mono additions
-        - CrateTradeContrabandSecure5
-        - CrateTradeContrabandSecure4
         - CrateSyndicateSurplusBundle
         - CrateSyndicateSurplusBundle
         - CrateSyndicateSuperSurplusBundle
@@ -58,7 +57,7 @@
         - CrateNanotrasenLootFilledT2
         - CrateNanotrasenLootFilledT2
 # End Mono Additions
-      rareChance: 0.05
+      rareChance: 0.05 # Triad
 
 - type: entity
   name: Syndicate POI Pinpointer
@@ -91,6 +90,6 @@
         - Telecrystal25 # Triad
         - ClothingBackpackDuffelSyndicateHardsuitBundle
         - ClothingBackpackDuffelSyndicateMedicHardsuitBundle
-        # - PinpointerSyndicatePOI # Triad disabled due to how easy LPB can found anyway (unless moved to 20k+)
-      rareChance: 0.025 # Mono
+        - PinpointerSyndicatePOI
+      rareChance: 0.02 # Triad
       offset: 0

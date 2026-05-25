@@ -82,22 +82,25 @@ uplink-shrapnel-grenade-name = Shrapnel Grenade
 uplink-shrapnel-grenade-desc = Launches a spray of sharp fragments dealing great damage against unarmored targets.
 
 # Ammo
+# Triad
 uplink-pistol-magazine-name = Pistol Magazine (9x19mm FMJ)
-uplink-pistol-magazine-desc = Pistol magazine with 10 catridges. Compatible with the Viper.
+uplink-pistol-magazine-desc = Pistol magazine with 19 catridges. Compatible with 9x19mm caliber pistols.
 
+# Triad
 uplink-pistol-magazine-c20r-name = SMG magazine (9x19mm FMJ)
-uplink-pistol-magazine-c20r-desc = Rifle magazine with 30 catridges. Compatible with C-20r.
+uplink-pistol-magazine-c20r-desc = SMG magazine with 30 catridges. Compatible with 9x19mm caliber submachine guns.
 
 uplink-pistol-magazine-caseless-name = Pistol Magazine (6.35x40mm Caseless)
 uplink-pistol-magazine-caseless-desc = Pistol magazine with 10 catridges. Compatible with the Cobra.
 
+# Triad fix typo
 uplink-speedloader-45_magnum-name = Speedloader (.45 magnum AP)
-uplink-speedloader-magnu-desc = Revolver speedloader with 6 armor-piercing catridges, capable of ignoring armor entirely. Compatible with the Python.
+uplink-speedloader-magnum-desc = Revolver speedloader with 6 armor-piercing catridges, capable of ignoring armor entirely. Compatible with the Python.
 
 uplink-mosin-ammo-name = Ammunition box (7.62x39mm FMJ)
 uplink-mosin-ammo-desc = A box of 60 cartridges for the surplus rifle.
 
-uplink-sniper-ammo-name = Ammunition box (.60 14.5x114mm)
+uplink-sniper-ammo-name = Ammunition box (14.5x114mm)
 uplink-sniper-ammo-desc = A box of 10 cartridges for the Hristov sniper rifle.
 
 # Utility
@@ -142,8 +145,9 @@ uplink-reinforcement-radio-cyborg-assault-desc =  A lean, mean killing machine w
 uplink-stealth-box-name = Stealth Box
 uplink-stealth-box-desc = A box outfitted with stealth technology. Sneak around unnoticed, but don't move too fast or you'll be revealed!
 
+# Triad, removed 4 slot count
 uplink-headset-name = Syndicate Over-ear Headset
-uplink-headset-desc = A headset that allows you to communicate with other syndicate operatives. Has 4 slots for encryption keys.
+uplink-headset-desc = A headset that allows you to communicate with other syndicate operatives.
 
 uplink-encryption-key-name = Syndicate Encryption Keys
 uplink-encryption-key-desc = Two encryption keys for access to the secret frequency of our special agents. Give the spare to a friend, but make sure it doesn't fall into enemy hands.
@@ -260,6 +264,7 @@ uplink-super-surplus-bundle-desc = Contains 600 telecrystals worth of completely
 uplink-toolbox-name = Toolbox
 uplink-toolbox-desc = A full compliment of tools for the mechanically inclined traitor. Includes a pair of insulated combat gloves and a syndicate gas mask as well.
 
+# Triad updated advanced version
 uplink-syndicate-jaws-of-life-name = Advanced Jaws Of Life
 uplink-syndicate-jaws-of-life-desc = An advanced prying and cutting tool. Faster than the regular ones.
 
@@ -459,7 +464,7 @@ uplink-cameraBug-name = Camera bug
 uplink-cameraBug-desc = A portable device that allows you to view the station's cameras.
 
 uplink-combat-bakery-name = Combat Bakery Kit
-uplink-combat-bakery-desc = A kit of clandestine baked weapons. Contains a baguette sword, a pair of throwing croissants, and a syndicate microwave board for making more. Once the job is done, eat the evidence.
+uplink-combat-bakery-desc = A kit of clandestine baked weapons. Contains a baguette sword, a throwing croissant, along with syndicate microwave & range board for making more. Once the job is done, eat the evidence.
 
 uplink-business-card-name = Syndicate Business Card
 uplink-business-card-desc = A business card that you can give to someone to demonstrate your involvement in the syndicate or leave at the crime scene in order to make fun of the detective. You can buy no more than three of them.

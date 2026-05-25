@@ -81,7 +81,8 @@
   - type: StorageFill
     contents:
       - id: WeaponCroissant
-        amount: 2
+        amount: 1 # Triad
       - id: WeaponBaguette
       - id: SyndicateMicrowaveMachineCircuitboard
+      - id: SyndicateElectricRangeMachineCircuitboard # Triad
       - id: PaperWrittenCombatBakeryKit
