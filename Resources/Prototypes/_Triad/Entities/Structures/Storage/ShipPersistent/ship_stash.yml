@@ -145,3 +145,25 @@
       node: BotanicalStorageUnitNode
     - type: ShipSaveLimit
       limitId: HydroponicsStash
+
+- type: entity
+  parent: BasePersistentShipStorageStash
+  id: FuelWallStash
+  name: fuel stash
+  description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
+      state: fuel_storage_stash
+    - type: Storage
+      grid:
+      - 0,0,6,4
+      whitelist:
+        tags:
+        - FitsInFuelStash
+      
+    - type: Construction
+      graph: FuelStorageStashGraph
+      node: FuelStorageStashNode
+    - type: ShipSaveLimit
+      limitId: FuelStash
