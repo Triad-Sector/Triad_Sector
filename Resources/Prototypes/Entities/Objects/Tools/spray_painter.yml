@@ -17,6 +17,7 @@
         type: SprayPainterBoundUserInterface
   - type: SprayPainter
     colorPalette:
+      # Triad
       # Virnazush moved existing spray painter colors to here.
       waste: '#990000'
       distro: '#0055cc'
@@ -31,7 +32,7 @@
       white: '#FFFFFFFF'
       black: '#333333FF'
       # Virnazush added more colors to make the spray painter more useful.
-      external: '#9955cc' # Triad
+      external: '#9955cc' 
       oxygen: '#0335FCFF'
       nitrogen: '#ba0000'
       carbon dioxide: '#525252'
@@ -53,7 +54,8 @@
       purple: '#800080'
       dark purple: '#4B0082'
       pink: '#FFC0CB'
-      violet: '#EE82EE' # End Triad
+      violet: '#EE82EE' 
+      # End Triad
   - type: StaticPrice
     price: 20 # Frontier 40<20
   - type: LimitedCharges # Upstream#37341
