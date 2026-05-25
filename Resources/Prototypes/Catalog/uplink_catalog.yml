@@ -501,7 +501,7 @@
 - type: listing
   id: UplinkSpeedLoader45_magnumAP
   name: uplink-speedloader-45_magnum-name
-  description: uplink-speedloader-magnum-desc # Triad fix tyoi
+  description: uplink-speedloader-magnum-desc # Triad fix typo
   icon: { sprite: /Textures/_Mono/Objects/Weapons/Guns/Ammunition/SpeedLoaders/45_magnum/45_magnum_speed_loader.rsi, state: icon }
   productEntity: SpeedLoader45_magnumAP
   cost:
@@ -675,7 +675,7 @@
   discountDownTo:
     Telecrystal: 60 # Triad
   cost:
-    Telecrystal: 80 # Triad, price increased but still cheaper than buying 5 individually
+    Telecrystal: 80 # Triad, 20% discount
   categories:
   - UplinkChemicals
 
@@ -2130,7 +2130,7 @@
   # - !type:BuyerJobCondition # Frontier: no librarians
   #   whitelist:
   #   - Librarian
-  # Triad Start disable blacklist from surplus
+  # Triad Start, disable blacklist from surplus
   # - !type:BuyerWhitelistCondition
   #   blacklist:
   #     components:
