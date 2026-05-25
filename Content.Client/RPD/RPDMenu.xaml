@@ -15,7 +15,10 @@
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BackgroundColor="#46496680" />
                 </PanelContainer.PanelOverride>
-                <BoxContainer Name="ColorList" Orientation="Horizontal" />
+                <BoxContainer Orientation="Vertical">
+                    <BoxContainer Name="GeneralColorList" Orientation="Horizontal" HorizontalAlignment="Center" />
+                    <BoxContainer Name="GasColorList" Orientation="Horizontal" HorizontalAlignment="Center" />
+                </BoxContainer>
             </PanelContainer>
         </BoxContainer>
     </BoxContainer>
