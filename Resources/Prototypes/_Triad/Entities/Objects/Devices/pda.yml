@@ -1,6 +1,6 @@
 - type: entity
   parent: TriadBasePDA
-  abstrct: true
+  abstract: true
   components:
   - type: Sprite
     sprite: _Triad/Objects/Devices/pda.rsi

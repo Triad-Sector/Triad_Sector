@@ -1,11 +1,6 @@
 - type: loadout
   id: ClothingEyesHudMedSec
   equipment:
-    eyes: ClothingEyesHudNfsd
-
-- type: loadout
-  id: ClothingEyesHudMedSec
-  equipment:
     eyes: ClothingEyesHudMedSec
 
 - type: loadout
@@ -30,11 +25,6 @@
   name: medical chest rig (filled, medical)
   equipment:
     belt: ClothingBeltMilitaryWebbingMedFilledMedic
-
-- type: loadout
-  id: ClothingUniformJumpsuitTdfCombatMedic
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitTdfCombatMedic
 
 - type: loadout
   id: ClothingUniformJumpsuitTdfCombatMedic
