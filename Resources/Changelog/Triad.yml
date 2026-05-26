@@ -881,3 +881,39 @@ Entries:
   id: 2225
   time: '2026-05-25T18:03:18.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/129
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Added the Rapid Piping Device (RPD), a specialized engineering tool that
+        builds and removes pipes, atmos hardware, air sensors, and air alarms.
+        Supports per-tile layer selection, color staining, and a flip toggle (R)
+        for asymmetric recipes like the gas filter and mixer. Available from the
+        engineering and CE lockers, the Protolathe (after researching Advanced
+        Tools Technology), and as a rare mail reward.
+    - type: Tweak
+      message: >-
+        The RPD color picker now mirrors the spray painter's atmos palette
+        (pipe-loop labels plus a row of named-gas colors, alphabetized) so the
+        two tools agree on every color.
+  id: 2226
+  time: '2026-05-26T04:19:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/124
+- author: SislenC
+  changes:
+    - type: Tweak
+      message: Bomb suit, bomb helmet, and rad suit save on ship save.
+  id: 2227
+  time: '2026-05-26T04:19:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/126
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Disablers now deal 0 heat damage. As a result of this, pacifists can now
+        use disablers.
+    - type: Tweak
+      message: Practice weapons can now be used by pacifists.
+  id: 2228
+  time: '2026-05-26T04:25:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/113

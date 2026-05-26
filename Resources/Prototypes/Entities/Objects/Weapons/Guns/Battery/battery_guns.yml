@@ -276,6 +276,7 @@
     fireCost: 30 #Mono: 62.5 >> 30
   - type: StaticPrice
     price: 300
+  - type: PacifismAllowedGun
 
 - type: entity
   name: laser rifle
@@ -629,6 +630,7 @@
     tags:
     - Taser
     - Sidearm
+  - type: PacifismAllowedGun
 
 - type: entity
   name: disabler
@@ -657,6 +659,7 @@
     guides:
     - Security
     # - Antagonists # Frontier: removed guidebook entry
+  - type: PacifismAllowedGun
 
 - type: entity
   name: disabler SMG
@@ -695,6 +698,7 @@
   - type: Appearance
   - type: StaticPrice
     price: 260
+  - type: PacifismAllowedGun
 
 - type: entity
   name: taser
@@ -731,6 +735,7 @@
     steps: 5
     zeroVisible: true
   - type: Appearance
+  - type: PacifismAllowedGun
 
 - type: entity
   name: antique laser pistol
