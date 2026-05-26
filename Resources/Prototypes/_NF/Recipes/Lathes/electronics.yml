@@ -142,5 +142,5 @@
   parent: BaseCircuitboardRecipe
   result: PortableGeneratorDKJrMachineCircuitboard
   materials:
-    Steel: 800
-    Glass: 900
+    Steel: 350
+    Glass: 350
