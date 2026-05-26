@@ -872,8 +872,8 @@ namespace Content.Server.GameTicking
                         // Check if adding this line would exceed field value limit
                         if (currentProfitLength + line.Length + 1 > MaxFieldValueLength - 20 && currentProfitLines.Count > 0)
                         {
-                            var bankName = Loc.GetString("adventure-webhook-list-start");
-                            var fieldName = profitFieldCount == 0 ? bankName : bankName + " (continued)";
+                            var bankName = Loc.GetString("adventure-webhook-list-start"); // Triad - bankName
+                            var fieldName = profitFieldCount == 0 ? bankName : bankName + " (continued)"; // Triad - bankName
                             var fieldValue = string.Join("\n", currentProfitLines);
                             var fieldCharacterCount = fieldName.Length + fieldValue.Length;
 
