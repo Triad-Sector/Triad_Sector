@@ -85,9 +85,13 @@
   minLimit: 1
   hidden: true
   loadouts:
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - NfsdClothingHandsGlovesCombatNfsdCream
+  - MercenaryClothingHandsGlovesCombat
   - MercenaryClothingHandsGlovesTacticalCombatBlack
   fallbacks:
-  - MercenaryClothingHandsGlovesTacticalCombatBlack
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - MercenaryClothingHandsGlovesCombat
 
 - type: loadoutGroup
   id: TdfPda
