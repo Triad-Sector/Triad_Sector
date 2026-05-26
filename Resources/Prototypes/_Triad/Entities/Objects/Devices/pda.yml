@@ -1,23 +1,29 @@
 - type: entity
+  parent: BasePDA
   id: TriadBasePDA
   abstract: true
   components:
   - type: Sprite
     sprite: _Triad/Objects/Devices/pda.rsi
     layers:
-    - sprite: _NF/Objects/Devices/pda.rsi
-      map: [ "enum.PdaVisualLayers.Base" ]
+    - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda"
-    - sprite: _NF/Objects/Devices/pda.rsi
-      state: "light_overlay"
+    - state: "light_overlay"
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
-    - sprite: _NF/Objects/Devices/pda.rsi
-      state: "id_overlay"
+    - state: "id_overlay"
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda
+  - type: Icon
+    sprite: _Triad/Objects/Devices/pda.rsi
+    state: pda
 
 - type: entity
   parent: TriadBasePDA
@@ -33,7 +39,6 @@
         - BookSpaceLaw
         - BookNfsdSop
   - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
