@@ -1,15 +1,15 @@
 #T0
 - type: loadout
-  id: StationRepClothingBackpackMessengerSr
+  id: ClothingBackpackMessengerSr
   price: 0
   equipment:
     back: ClothingBackpackMessengerSr
 
 - type: loadout
-  id: StationRepClothingBackpackIan
+  id: ClothingBackpackSatchelLeather
   price: 0
   equipment:
-    back: ClothingBackpackIan
+    back: ClothingBackpackSatchelLeather
 
 - type: loadout
   id: StationRepClothingHeadsetAltCentComCommon

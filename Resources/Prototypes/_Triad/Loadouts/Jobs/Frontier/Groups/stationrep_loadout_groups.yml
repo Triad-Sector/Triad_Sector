@@ -20,10 +20,18 @@
 - type: loadoutGroup
   id: StationRepBackpack
   name: loadout-group-contractor-backpack
+  minLimit: 1
   loadouts:
-  - StationRepClothingModsuitHeadOfSecurityPowerCell
+  - CaptainBackpack
+  - CaptainSatchel
+  - CaptainDuffel
+  - ClothingBackpackMessengerSr
+  - ClothingBackpackSatchelLeather
   subgroups:
+  - CommonBackpack
   - SecurityBackpack
+  fallbacks:
+  - CaptainBackpack
 
 - type: loadoutGroup
   id: StationRepEars
