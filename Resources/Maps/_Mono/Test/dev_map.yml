@@ -7741,14 +7741,14 @@ entities:
     - type: Transform
       pos: -5.5,2.5
       parent: 2
-- proto: SpawnPointBrigmedic
+- proto: SpawnPointTdfMedic
   entities:
   - uid: 1122
     components:
     - type: Transform
       pos: -4.5,2.5
       parent: 2
-- proto: SpawnPointCadet
+- proto: SpawnPointTdfCadet
   entities:
   - uid: 1123
     components:
@@ -7769,7 +7769,7 @@ entities:
     - type: Transform
       pos: -4.5,2.5
       parent: 2
-- proto: SpawnPointDeputy
+- proto: SpawnPointTdfEnforcer
   entities:
   - uid: 1125
     components:
