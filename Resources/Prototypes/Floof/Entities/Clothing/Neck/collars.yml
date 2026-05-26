@@ -1,5 +1,12 @@
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckCollar # triad start
+  abstract: true
+  components:
+  - type: Engraveable
+
+- type: entity
+  parent: ClothingNeckCollar # triad end
   id: ClothingNeckCollarBlue
   name: blue collar
   description: A cute blue collar.
@@ -8,10 +15,9 @@
     sprite: Floof/Clothing/Neck/collar_blue.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_blue.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarBlack
   name: black collar
   description: A cute black collar.
@@ -20,9 +26,8 @@
     sprite: Floof/Clothing/Neck/collar_black.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_black.rsi
-  - type: Engraveable
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarEpi
   name: epistemics collar
   description: A collar showing how loyal you are to science!
@@ -31,10 +36,9 @@
     sprite: Floof/Clothing/Neck/collar_epi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_epi.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarEngi
   name: engineering collar
   description: A collar showing your deft skill utilizing your hands!
@@ -43,10 +47,9 @@
     sprite: Floof/Clothing/Neck/collar_engi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_engi.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarLogi
   name: logistics collar
   description: Who's a good courier?
@@ -55,10 +58,9 @@
     sprite: Floof/Clothing/Neck/collar_logi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_logi.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarMed
   name: medical collar
   description: Put your patients at ease by letting them know you're here to help.
@@ -67,10 +69,9 @@
     sprite: Floof/Clothing/Neck/collar_med.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_med.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarSec
   name: security collar
   description: Be the best guard dog on the station!
@@ -79,10 +80,9 @@
     sprite: Floof/Clothing/Neck/collar_sec.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_sec.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarCmd
   name: Captain's collar
   description: The top dog (or cat) around.
@@ -91,10 +91,9 @@
     sprite: Floof/Clothing/Neck/collar_cmd.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_cmd.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarCC
   name: CentCom collar
   description: All bark with a whole lotta bite.
@@ -103,10 +102,9 @@
     sprite: Floof/Clothing/Neck/collar_cc.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_cc.rsi
-  - type: Engraveable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckCollar # triad
   id: ClothingNeckCollarSyndi
   name: Blood-Red collar
   description: Sometimes you gotta be naughty.
@@ -115,4 +113,3 @@
     sprite: Floof/Clothing/Neck/collar_syndi.rsi
   - type: Clothing
     sprite: Floof/Clothing/Neck/collar_syndi.rsi
-  - type: Engraveable
