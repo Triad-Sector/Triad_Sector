@@ -37,7 +37,7 @@
   discountDownTo:
     Telecrystal: 5 # Mono # 2->1 Mono Edit
   cost:
-    Telecrystal: 10 # Mono # 4->2 Mono Edit
+    Telecrystal: 15 # Triad # 4->3 Triad Edit
   categories:
   - UplinkWeaponry
 
@@ -48,7 +48,7 @@
   description: uplink-rifle-mosin-desc
   productEntity: WeaponSniperMosin
   cost:
-    Telecrystal: 5 # Mono
+    Telecrystal: 10 # Triad 10 < 5
   categories:
   - UplinkWeaponry
 
@@ -90,7 +90,7 @@
   discountDownTo:
     Telecrystal: 15 # Mono
   cost:
-    Telecrystal: 25 # Triad
+    Telecrystal: 20 # Triad
   categories:
     - UplinkWeaponry
 
@@ -116,7 +116,7 @@
   discountDownTo:
     Telecrystal: 15 # Mono
   cost:
-    Telecrystal: 30 # Mono
+    Telecrystal: 40 # Triad
   categories:
   - UplinkWeaponry
   conditions:
@@ -473,18 +473,6 @@
   categories:
   - UplinkAmmo
 
-# For the C20R
-- type: listing
-  id: UplinkMagazine9x19mmSubMachineGunFMJ
-  name: uplink-pistol-magazine-c20r-name
-  description: uplink-pistol-magazine-c20r-desc
-  icon: { sprite: /Textures/_Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_smg_mag.rsi, state: red-icon }
-  productEntity: Magazine9x19mmSubMachineGunFMJ
-  cost:
-    Telecrystal: 10 # Mono
-  categories:
-  - UplinkAmmo
-
 # For the Cobra
 - type: listing
   id: UplinkMagazine635x40mmCaselessPistol
@@ -509,6 +497,18 @@
   categories:
   - UplinkAmmo
 
+# For the C20R
+- type: listing
+  id: UplinkMagazine9x19mmSubMachineGunFMJ
+  name: uplink-pistol-magazine-c20r-name
+  description: uplink-pistol-magazine-c20r-desc
+  icon: { sprite: /Textures/_Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_smg_mag.rsi, state: red-icon }
+  productEntity: Magazine9x19mmSubMachineGunFMJ
+  cost:
+    Telecrystal: 10 # Mono
+  categories:
+  - UplinkAmmo
+
 # For the mosin
 - type: listing
   id: UplinkMosinAmmo
@@ -527,7 +527,7 @@
   description: uplink-sniper-ammo-desc
   productEntity: AmmoBox145x114mm
   cost:
-    Telecrystal: 10 # Mono
+    Telecrystal: 15 # Triad
   categories:
   - UplinkAmmo
 
@@ -601,7 +601,7 @@
   icon: { sprite: /Textures/Structures/Wallmounts/signs.rsi, state: bio }
   productEntity: ClothingBackpackDuffelZombieBundle
   cost:
-    Telecrystal: 40
+    Telecrystal: 50 # Triad
   categories:
   - UplinkChemicals
   conditions:
@@ -1492,7 +1492,7 @@
   discountDownTo:
     Telecrystal: 5 # Mono
   cost:
-    Telecrystal: 10 # Mono
+    Telecrystal: 15 # Mono
   categories:
   - UplinkWearables
 
@@ -1526,7 +1526,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 25 # Triad 25 < 20
+    Telecrystal: 30 # Triad 30 < 20
   categories:
     - UplinkWearables
 
@@ -1552,7 +1552,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 20 # Mono
+    Telecrystal: 25 # Triad
   categories:
   - UplinkWearables
 
@@ -2147,7 +2147,7 @@
   discountDownTo:
     Telecrystal: 10 # Mono
   cost:
-    Telecrystal: 25 # Triad
+    Telecrystal: 30 # Triad
   categories:
   - UplinkWeaponry # Frontier: UplinkJob<UplinkWeaponry
   # conditions: # Frontier: no chefs or mimes
