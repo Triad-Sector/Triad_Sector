@@ -6,6 +6,9 @@
   loadouts:
   - NitrileGloves
   - LatexGloves
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - NfsdClothingHandsGlovesCombatNfsdCream
+  - MercenaryClothingHandsGlovesCombat
   - MercenaryClothingHandsGlovesTacticalCombatBlack
   fallbacks:
   - NitrileGloves
