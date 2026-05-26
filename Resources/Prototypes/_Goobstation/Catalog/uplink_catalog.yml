@@ -16,7 +16,7 @@
       blacklist:
         components:
           - SurplusBundle
-  # Triad Start
+  # Triad Ends
 
 - type: listing
   id: UplinkMauler
