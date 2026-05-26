@@ -1,140 +1,52 @@
-# Nfsd
 - type: roleLoadout
-  id: JobCadet # Unused
+  id: JobTdfCadet
   groups:
-  - TsfmcHead
-  - TsfmcNeck
-  - TsfmcJumpsuit
-  - TsfmcGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcGlasses
-  - TsfmcBelt
-  - TsfmcEars
-  - NfsdBoxSurvival
-  - CadetPDA
-  - ContractorWallet
-  - ContractorCartridge
-#  - ContractorImplanter # Mono - TSF has a skill issue sometimes
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
-  - FactionArmorPlates
-  canCustomizeName: true # pseudonym?
-
-- type: roleLoadout
-  id: JobDeputy # Marine
-  groups:
-  - TsfmcHead
-  - TsfmcNeck
-  - TsfmcJumpsuit
-  - TsfmcGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcGlasses
-  - TsfmcBelt
-  - TsfmcEars
-  - NfsdBoxSurvival
-  - DeputyPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
-  - FactionArmorPlates
-  canCustomizeName: true
-
-- type: roleLoadout
-  id: JobBailiff # Captain
-  groups:
-  - TsfmcHead
-  - TsfmcNeckCaptain
-  - TsfmcJumpsuit
-  - TsfmcGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcGlasses
-  - TsfmcBelt
-  - TsfmcEarsSenior
-  - NfsdBoxSurvival
-  - BailiffPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorEncryptionKey
-  - ContractorFun
-  - SeniorOfficerTrinkets
-  - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
-  - FactionArmorPlates
-  canCustomizeName: true
-
-- type: roleLoadout
-  id: JobSeniorOfficer # Fireteam Leader
-  groups:
-  - TsfmcHead
-  - TsfmcNeck
-  - TsfmcJumpsuit
-  - TsfmcGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
-  - TsfmcBalaclava
-  - TsfmcGlasses
-  - TsfmcBelt
-  - TsfmcEarsSenior
-  - NfsdBoxSurvival
-  - SeniorOfficerPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorEncryptionKey
-  - ContractorFun
-  - SeniorOfficerTrinkets
-  - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
-  - FactionArmorPlates
-  canCustomizeName: true
-
-- type: roleLoadout
-  id: JobTdfChiefEnforcer
-  groups:
-  - TsfmcHead
-  - TsfmcNeckCommander
-  - TsfmcJumpsuit
-  - TsfmcGloves
-  - TsfmcBackpack
-  - TsfmcOuterClothing
-  - TsfmcShoes
-  - TsfmcFace
+  - TdfNeck
+  - TdfCadetJumpsuit
+  - TdfGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
   - TdfBalaclava
-  - TsfmcGlasses
-  - TsfmcBelt
-  - TsfmcEarsCommander
+  - TdfCadetGlasses
+  - TdfBelt
+  - TdfEars
   - NfsdBoxSurvival
-  - SheriffPDA
+  - TdfCadetPda
   - ContractorWallet
   - ContractorCartridge
   - ContractorFun
-  - SeniorOfficerTrinkets
+  - ContractorTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearmColonel
+  - TsfmcFirearm
+  - TsfmcMag
+  - FactionArmorPlates
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobTdfEnforcer
+  groups:
+  - TdfHead
+  - TdfNeck
+  - TdfEnforcerJumpsuit
+  - TdfGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
+  - TdfBalaclava
+  - TdfGlasses
+  - TdfBelt
+  - TdfEars
+  - NfsdBoxSurvival
+  - TdfPda
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
   - TsfmcMag
   - FactionArmorPlates
   canCustomizeName: true
@@ -153,7 +65,7 @@
   - TdfBalaclava
   - TdfMedicGlasses
   - TdfMedicBelt
-  #- TsfmcEars
+  - TdfEars
   - NfsdBoxSurvival
   - TdfMedicPDA
   - ContractorWallet
@@ -161,6 +73,87 @@
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  - FactionArmorPlates
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobTdfPatrolTeamLeader
+  groups:
+  - TdfHead
+  - TdfNeck
+  - TdfPatrolTeamLeaderJumpsuit
+  - TdfGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
+  - TdfBalaclava
+  - TdfGlasses
+  - TdfBelt
+  - TdfEarsSenior
+  - NfsdBoxSurvival
+  - TdfPatrolTeamLeaderPda
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorFun
+  - SeniorOfficerTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  - FactionArmorPlates
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobTdfWarden
+  groups:
+  - TdfHead
+  - TdfNeck
+  - TdfWardenJumpsuit
+  - TdfGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
+  - TdfBalaclava
+  - TdfGlasses
+  - TdfBelt
+  - TdfEarsSenior
+  - NfsdBoxSurvival
+  - TdfWardenPda
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorFun
+  - SeniorOfficerTrinkets
+  - NfsdSpeciesSpecific
+  - TsfmcFirearm
+  - TsfmcMag
+  - FactionArmorPlates
+  canCustomizeName: true
+
+- type: roleLoadout
+  id: JobTdfChiefEnforcer
+  groups:
+  - TdfHead
+  - TdfNeck
+  - TdfChiefEnforcerJumpsuit
+  - TdfGloves
+  - TdfBackpack
+  - TdfOuterClothing
+  - TdfShoes
+  - TdfFace
+  - TdfBalaclava
+  - TdfGlasses
+  - TdfBelt
+  - TdfEarsSenior
+  - NfsdBoxSurvival
+  - TdfChiefEnforcerPda
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorFun
+  - SeniorOfficerTrinkets
   - NfsdSpeciesSpecific
   - TsfmcFirearm
   - TsfmcMag

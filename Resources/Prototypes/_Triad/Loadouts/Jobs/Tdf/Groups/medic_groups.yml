@@ -61,3 +61,12 @@
   - TdfMedicPda
   fallbacks:
   - TdfMedicPda
+
+- type: loadoutGroup
+  id: TdfHeadMedic
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - TdfHelmet
+  - TdfBeret
+  - TdfBeretMedic

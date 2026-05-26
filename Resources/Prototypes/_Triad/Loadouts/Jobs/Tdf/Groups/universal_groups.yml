@@ -10,17 +10,6 @@
   - SecurityGuardBackpack
 
 - type: loadoutGroup
-  id: TdfJumpsuit
-  name: loadout-group-contractor-jumpsuit
-  minLimit: 1
-  loadouts:
-  - TdfClothingJumpsuit
-  - TdfClothingJumpsuitType47D
-  - TdfClothingDressUniform
-  fallbacks:
-  - TdfClothingJumpsuit
-
-- type: loadoutGroup
   id: TdfShoes
   name: loadout-group-contractor-shoes
   minLimit: 1
@@ -38,10 +27,10 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - TdfCombatWebbing
-  - TdfCombatWebbingLarge
+  - ClothingBeltTdfFilled
+  - ClothingBeltMilitaryWebbingTdfFilled
   fallbacks:
-  - TdfCombatWebbing
+  - ClothingBeltTdfFilled
 
 - type: loadoutGroup
   id: TdfFace
@@ -50,7 +39,6 @@
   maxLimit: 1
   loadouts:
   - SecurityClothingMaskGasSecurity
-  - TdfGasmask
 
 - type: loadoutGroup
   id: TdfBalaclava
@@ -64,11 +52,13 @@
 - type: loadoutGroup
   id: TdfGlasses
   name: loadout-group-contractor-glasses
-  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 1
+  maxLimit: 1
   loadouts:
-  - ClothingEyesHudTdf
+  - ClothingEyesGlassesSecurityTdf
+  - ClothingEyesHudSecurityTdf
   fallbacks:
-  - ClothingEyesHudTdf
+  - ClothingEyesGlassesSecurityTdf
 
 - type: loadoutGroup
   id: TdfNeck
@@ -90,35 +80,45 @@
   - TdfBeret
 
 - type: loadoutGroup
-  id: TdfHeadMedic
-  name: loadout-group-contractor-head
-  minLimit: 0
+  id: TdfGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 1
+  hidden: true
   loadouts:
-  - TdfHelmet
-  - TdfBeret
-  - TdfBeretMedic
+  - MercenaryClothingHandsGlovesTacticalCombatBlack
+  fallbacks:
+  - MercenaryClothingHandsGlovesTacticalCombatBlack
 
-# Grunt headsets
+- type: loadoutGroup
+  id: TdfPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfPda
+  fallbacks:
+  - TdfPda
+
+# Normal enforcer headsets
 - type: loadoutGroup
   id: TdfEars
   name: loadout-group-contractor-ears
-  hidden: true # No point in showing this, it gets auto-selected.
   minLimit: 1
   loadouts:
-  - TdfHeadsetGrunt
+  - ClothingHeadsetTdf
+  - ClothingHeadsetAltTdf
   fallbacks:
-  - TdfHeadsetGrunt
+  - ClothingHeadsetTdf
 
-# Senior officer headsets
+# Senior headsets
 - type: loadoutGroup
   id: TdfEarsSenior
   name: loadout-group-contractor-ears
-  hidden: true # No point in showing this, it gets auto-selected.
   minLimit: 1
   loadouts:
-  - TdfHeadsetSenior
+  - ClothingHeadsetAltTdfCommand
+  - ClothingHeadsetTdfCommand
   fallbacks:
-  - TdfHeadsetSenior
+  - ClothingHeadsetAltTdfCommand
 
 # vests
 - type: loadoutGroup

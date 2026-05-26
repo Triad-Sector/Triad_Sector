@@ -1,0 +1,18 @@
+- type: loadoutGroup
+  id: TdfChiefEnforcerJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfChiefEnforcer
+  - ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  fallbacks:
+  - ClothingUniformJumpsuitTdfChiefEnforcer
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfChiefPda
+  fallbacks:
+  - TdfChiefPda

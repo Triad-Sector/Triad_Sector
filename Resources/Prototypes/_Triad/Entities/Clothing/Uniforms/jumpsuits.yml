@@ -37,6 +37,15 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfWarden
+  name: TDF warden tactical jumpsuit
+  description: A tactical jumpsuit for the dude who sits in the brig all the time.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/warden.rsi
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfChiefEnforcer
   name: TDF chief enforcer tactical turtleneck
   description: A tactical turtleneck for the Chief Enforcer of the Triad Defense Force.

@@ -1,0 +1,15 @@
+- type: loadout
+  id: ClothingUniformJumpsuitTdfChiefEnforcer
+  name: chief enforcer's turtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+
+- type: loadout
+  id: TdfChiefPda
+  equipment:
+    id: TdfChiefPda
