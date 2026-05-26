@@ -183,7 +183,7 @@ namespace Content.Shared.Roles
         ///     Triad - list of ranks to use for this job and their requirements.
         /// </summary>
         [DataField]
-        public readonly Dictionary<ProtoId<RankPrototype>, HashSet<JobRequirement>?>? Ranks; // Triad
+        public Dictionary<ProtoId<RankPrototype>, HashSet<JobRequirement>?>? Ranks; // Triad
     }
 
     /// <summary>
