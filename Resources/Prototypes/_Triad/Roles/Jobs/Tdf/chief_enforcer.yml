@@ -54,3 +54,5 @@
     - DoorRemoteNfsd
     - BaseSecurityUplinkRadioSheriff
     - PhoneInstrumentHigh
+    - EncryptionKeyService
+    - EncryptionKeySecurity
