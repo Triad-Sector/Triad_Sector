@@ -19,7 +19,7 @@
         Piercing: 0.9
         Heat: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.05
   - type: GroupExamine
   - type: Tag
     tags:
