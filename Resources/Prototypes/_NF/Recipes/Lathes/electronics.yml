@@ -142,19 +142,5 @@
   parent: BaseCircuitboardRecipe
   result: PortableGeneratorDKJrMachineCircuitboard
   materials:
-<<<<<<< HEAD
-     Steel: 350
-     Glass: 350
-=======
     Steel: 800
     Glass: 900
-
-# Battery
-- type: latheRecipe
-  id: PortableSMESMachineCircuitboard
-  parent: BaseCircuitboardRecipe
-  result: PortableSMESMachineCircuitboard
-  materials:
-    Steel: 800
-    Glass: 900
->>>>>>> c0dc3edfb8 (Portable SMES battery power system. (#3048))
