@@ -1,5 +1,5 @@
 - type: entity
-  parent: TriadBasePDA
+  id: TriadBasePDA
   abstract: true
   components:
   - type: Sprite
@@ -33,6 +33,7 @@
         - BookSpaceLaw
         - BookNfsdSop
   - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
@@ -52,13 +53,6 @@
   components:
   - type: Pda
     id: TdfJuniorEnforcerIdCard
-    bookSlot:
-      startingItem: HyperlinkBookNfsdSop
-      priority: -2
-      whitelist:
-        tags:
-        - BookSpaceLaw
-        - BookNfsdSop
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -75,13 +69,6 @@
   components:
   - type: Pda
     id: TdfEnforcerIDCard
-    bookSlot:
-      startingItem: HyperlinkBookNfsdSop
-      priority: -2
-      whitelist:
-        tags:
-        - BookSpaceLaw
-        - BookNfsdSop
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -106,13 +93,6 @@
   components:
   - type: Pda
     id: TdfMedicIDCard
-    bookSlot:
-      startingItem: HyperlinkBookNfsdSop
-      priority: -2
-      whitelist:
-        tags:
-        - BookSpaceLaw
-        - BookNfsdSop
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge
@@ -138,13 +118,6 @@
   components:
   - type: Pda
     id: TdfWardenIDCard
-    bookSlot:
-      startingItem: HyperlinkBookNfsdSop
-      priority: -2
-      whitelist:
-        tags:
-        - BookSpaceLaw
-        - BookNfsdSop
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

@@ -7,8 +7,3 @@
   id: TdfBeret
   equipment:
     head: ClothingHeadHatBeretCommander
-
-- type: loadout
-  id: TdfBeretMedic
-  equipment:
-    head: ClothingHeadHatBeretBrigmedic
