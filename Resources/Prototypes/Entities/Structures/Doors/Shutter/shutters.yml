@@ -241,7 +241,7 @@
   # which would flip Dynamic -> Static and fail PrototypeSaveTest. Declaring Static here keeps
   # prototype/runtime in sync and also prevents the unanchored body from being shoved by physics.
   - type: Physics
-    bodyType: Static
+    bodyType: Static # Triad - see above comment
   - type: Fixtures
     fixtures:
       fix1:
