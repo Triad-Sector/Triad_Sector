@@ -6,7 +6,6 @@
   loadouts:
   - StationRepClothingUniformJumpsuitSr
   - StationRepClothingUniformJumpskirtSr
-  - StationRepClothingUniformJumpsuitMilitarySr
   fallbacks:
   - StationRepClothingUniformJumpsuitSr
   - StationRepClothingUniformJumpskirtSr
