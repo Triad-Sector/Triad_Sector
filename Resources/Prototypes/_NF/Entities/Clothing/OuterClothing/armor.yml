@@ -24,6 +24,8 @@
   - type: GroupExamine
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.4
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 # Syndicate armored bio suit
 - type: entity
