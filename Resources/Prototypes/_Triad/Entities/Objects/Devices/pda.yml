@@ -16,11 +16,6 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda
   - type: Icon
     sprite: _Triad/Objects/Devices/pda.rsi
     state: pda

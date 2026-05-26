@@ -13,7 +13,7 @@
   whitelisted: true
   startingGear: TdfChiefEnforcerGear
   alwaysUseSpawner: true
-  icon: JobIconTdfEnforcer
+  icon: JobIconTdfChiefEnforcer
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   weight: 180
