@@ -68,7 +68,7 @@
   name: DT-12 Lawbringer
   parent: [BaseWeaponBatterySmall]
   id: WeaponEnergyGunLawbringer
-  description: Sometimes rank is a function of firepower. A versatile energy gun with a myriad of firing modes designed for the Judges. Self-recharges after a 5 second delay.
+  description: Sometimes rank is a function of firepower. A versatile energy gun with a myriad of firing modes designed for only the most important of people. Self-recharges after a 5 second delay.
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/lawbringer.rsi

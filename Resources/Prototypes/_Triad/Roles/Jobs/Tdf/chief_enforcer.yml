@@ -46,7 +46,7 @@
 - type: startingGear
   id: TdfChiefEnforcerGear
   equipment:
-    pocket1: WeaponEnergyGunMultiphase # DeltaV gun
+    pocket1: WeaponEnergyGunLawbringer
     pocket2: EnergySwordNfsd
   storage:
     back:
