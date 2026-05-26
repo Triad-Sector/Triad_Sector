@@ -1,0 +1,42 @@
+- type: latheRecipe
+  id: SuitsAdvancedRecipe
+  abstract: true
+
+- type: latheRecipe
+  id: ClothingOuterSuitRad
+  parent: SuitsAdvancedRecipe
+  completetime: 6
+  categories:
+  - AdvancedSuits
+  result: ClothingOuterSuitRad
+  materials:
+    Steel: 500
+    Durathread: 2000
+    Plastic: 500
+    Plasteel: 500
+    Plasma: 500
+
+- type: latheRecipe
+  id: ClothingHeadHelmetBombSuit
+  parent: SuitsAdvancedRecipe
+  completetime: 5
+  categories:
+  - AdvancedSuits
+  result: ClothingHeadHelmetBombSuit
+  materials:
+    Durathread: 2000
+    Plastic: 1000
+    Plasteel: 1000
+
+- type: latheRecipe
+  id: ClothingOuterSuitBomb
+  parent: SuitsAdvancedRecipe
+  completetime: 3
+  categories:
+  - AdvancedSuits
+  result: ClothingOuterSuitBomb
+  materials:
+    Steel: 250
+    Durathread: 1000
+    Plastic: 250
+    Glass: 500

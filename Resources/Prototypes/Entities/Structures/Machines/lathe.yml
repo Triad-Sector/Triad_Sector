@@ -272,6 +272,7 @@
     - SmartGun # Goobstation
     # Einstein Engines Packs
     - Translators
+    - SuitsAdvancedRecipe #Triad
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - DynamicAmmoRecipePack

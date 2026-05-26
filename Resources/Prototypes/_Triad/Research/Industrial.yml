@@ -1,0 +1,14 @@
+- type: technology
+  id: SuitsAdvanced
+  name: research-technology-Suits-Advanced
+  entityIcon: ClothingOuterSuitBomb
+  discipline: Industrial
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - ClothingOuterSuitRad
+  - ClothingHeadHelmetBombSuit
+  - ClothingOuterSuitBomb
+  technologyPrerequisites:
+  - HardsuitsSpecialized
+  position: 1, 7

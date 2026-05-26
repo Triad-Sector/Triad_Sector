@@ -19,7 +19,7 @@
         Piercing: 0.9
         Heat: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.15
+    damageCoefficient: 0.5
   - type: GroupExamine
   - type: Tag
     tags:
@@ -117,7 +117,7 @@
     modifiers:
       coefficients:
         Heat: 0.90
-        Radiation: 0.01
+        Radiation: 0
   - type: Clothing
     sprite: Clothing/OuterClothing/Suits/rad.rsi
   - type: GroupExamine
