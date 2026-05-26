@@ -23,7 +23,7 @@
 - type: entity
   id: CrateNfsdNonlethal
   parent: CrateNfsdSecure1
-  name: TSFMC nonlethals crate
+  name: TDF nonlethals crate # Triad - name
   description: Disabler weapons. Requires Security access to open.
   components:
   - type: StorageFill
@@ -41,7 +41,7 @@
 - type: entity
   id: CrateNfsdRiot
   parent: CrateNfsdSecure1
-  name: TSFMC swat crate
+  name: TDF swat crate # Triad - name
   description: Contains two sets of riot armor, helmets, shields, and enforcers loaded with beanbags. Extra ammo is included. Requires Armory access to open.
   components:
   - type: StorageFill
@@ -61,7 +61,7 @@
 - type: entity
   id: CrateNfsdSupplies
   parent: CrateNfsdSecure1
-  name: TSFMC supplies crate
+  name: TDF supplies crate # Triad - name
   description: Contains various supplies for the station's Security team. Requires Security access to open.
   components:
   - type: StorageFill
@@ -75,7 +75,7 @@
 - type: entity
   id: CrateNfsdRestraints
   parent: CrateNfsdSecure2
-  name: TSFMC restraints crate
+  name: TDF restraints crate # Triad - name
   description: Contains two boxes each of handcuffs and zipties. Requires Security access to open.
   components:
   - type: StorageFill
@@ -102,7 +102,7 @@
 
 - type: entity
   id: CrateNfsdImplants
-  name: TSFMC implanter crate
+  name: TDF implanter crate # Triad - name
   description: Contains 4 MindShield implants and 4 tracking implant. Requires Security access to open.
   parent: CrateNfsdSecure2
   components:
