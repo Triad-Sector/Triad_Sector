@@ -9,6 +9,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 using System.Numerics;
 
 namespace Content.Client.RCD;
@@ -36,6 +37,53 @@ public sealed partial class RCDMenu : RadialMenu
         _sprites = _entManager.System<SpriteSystem>();
 
         OnChildAdded += AddRCDMenuButtonOnClickActions;
+
+        // Triad: RPD category-button icons are wired here (not XAML) so we can use SpriteSystem.Frame0
+        // to extract a single frame from each entity RSI. XAML's TextureRect.TexturePath loads raw PNGs,
+        // which would render the entire multi-direction sprite sheet for any atmos hardware state.
+        ApplyRPDCategoryIcons();
+    }
+
+    // Triad: TargetLayer -> (RSI path, state) for the 5 RPD category buttons. Sprites mirror the
+    // entities we construct so a fork-side sprite swap propagates to the picker automatically.
+    private static readonly (string Layer, string Rsi, string State)[] RPDCategoryIconSpecs =
+    {
+        ("Piping", "/Textures/Structures/Piping/Atmospherics/pipe.rsi", "pipeFourway"),
+        ("AtmosphericUtility", "/Textures/Structures/Piping/Atmospherics/gascanisterport.rsi", "gasCanisterPort"),
+        ("PumpsValves", "/Textures/Structures/Piping/Atmospherics/pump.rsi", "pumpVolume"),
+        ("Vents", "/Textures/_NF/Structures/Piping/Atmospherics/vent.rsi", "vent_passive"),
+        ("SensorsMonitors", "/Textures/Structures/Wallmounts/air_monitors.rsi", "alarm0"),
+    };
+
+    private void ApplyRPDCategoryIcons()
+    {
+        var main = FindControl<RadialContainer>("Main");
+
+        foreach (var child in main.Children)
+        {
+            if (child is not RadialMenuTextureButton btn)
+                continue;
+
+            (string Layer, string Rsi, string State)? match = null;
+            foreach (var spec in RPDCategoryIconSpecs)
+            {
+                if (spec.Layer == btn.TargetLayer)
+                {
+                    match = spec;
+                    break;
+                }
+            }
+            if (match == null)
+                continue;
+
+            btn.AddChild(new TextureRect
+            {
+                VerticalAlignment = VAlignment.Center,
+                HorizontalAlignment = HAlignment.Center,
+                TextureScale = new Vector2(2f, 2f),
+                Texture = _sprites.Frame0(new SpriteSpecifier.Rsi(new ResPath(match.Value.Rsi), match.Value.State)),
+            });
+        }
     }
 
     public void SetEntity(EntityUid uid)

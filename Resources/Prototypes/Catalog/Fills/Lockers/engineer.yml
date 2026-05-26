@@ -99,6 +99,7 @@
       - id: GasAnalyzer
       - id: MedkitOxygenFilled
       - id: HolofanProjector
+      - id: RPD # Triad: RPD port from funky-station
 #      - id: DoorRemoteFirefight
       - id: ClothingShoesBootsMag # Frontier
       - id: ClothingHandsGlovesColorYellow # Frontier
@@ -123,6 +124,7 @@
       - id: GasAnalyzer
       - id: MedkitOxygenFilled
       - id: HolofanProjector
+      - id: RPD # Triad: RPD port from funky-station
 #      - id: DoorRemoteFirefight
       - id: ClothingHandsGlovesColorYellow # Frontier
       - id: trayScanner # Frontier

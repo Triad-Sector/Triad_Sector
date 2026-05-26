@@ -87,6 +87,7 @@
   - type: Sealable
   - type: StaticPrice
     price: 100 #Mono 1000 >> 100
+  - type: NFForkLiftable
 
 - type: entity
   id: MetalBarrelGrey

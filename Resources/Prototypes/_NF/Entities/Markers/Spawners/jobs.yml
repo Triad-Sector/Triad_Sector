@@ -134,7 +134,7 @@
 - type: entity
   id: SpawnPointStationRepresentative
   parent: SpawnPointHeadOfPersonnel
-  name: overseer
+  name: overseer # Triad - rename
   components:
   - type: SpawnPoint
     job_id: StationRepresentative

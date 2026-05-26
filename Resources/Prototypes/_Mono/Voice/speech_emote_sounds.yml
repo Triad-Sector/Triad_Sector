@@ -2,7 +2,7 @@
   id: UnisexHydrakin
   params:
     variation: 0.125
-    volume: -8
+    # Triad: dropped `volume: -8` so Hydrakin emotes play at default loudness, matching peer species
   sounds:
     Scream:
       collection: HydrakinScream

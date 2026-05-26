@@ -460,6 +460,108 @@
   - type: AutoRecharge
     rechargeDuration: 1
 
+# Triad: RPD port from funky-station (PR #62 + #1244 + #1338). UI/color wiring lands in a follow-up commit.
+- type: entity
+  id: RPD
+  parent: BaseItem
+  name: RPD
+  description: A heavy-duty industrial device used to rapidly lay atmospheric infrastructure. Can be slung around the back of an engineering hardsuit.
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 12
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+  - type: Item
+    size: Huge
+    storedSprite:
+      state: storage
+      sprite: Objects/Tools/rpd_storage_64x.rsi
+    shape:
+    - 0,0,3,1
+  - type: RCD
+    availablePrototypes:
+    - PipeFourway
+    - PipeStraight
+    - PipeBend
+    - PipeTJunction
+    - PipeHalf
+    - ManifoldGas
+    - OutletInjector
+    - ManualValve
+    - VolumetricPump
+    - PressurePump
+    - PressureRegulator
+    - VentScrubber
+    - PressureValve
+    - DualPortVent
+    - VentGas
+    - VentPassive
+    - MixerGas
+    - Radiator
+    - RadiatorBend
+    - SignalValve
+    - CanisterPort
+    - FilterGas
+    - Alarm
+    - Sensor
+    - SensorPipe
+    - Deconstruct
+  - type: RPD
+  - type: LimitedCharges
+    maxCharges: 45
+  - type: Sprite
+    sprite: Objects/Tools/rpd.rsi
+    state: icon
+  - type: Clothing
+    sprite: Objects/Tools/rpd.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - SuitStorage
+  # Triad: Plastic dropped from funky-station's 200 to 100 to mirror the RCD and pass MaterialArbitrageTest.
+  # With 200 Plastic the upgraded lathe (300 → 185 Plastic input) recycled into 200 Plastic — free 15 plastic
+  # per cycle. Also kept sumPrice(materials) at or below the StaticPrice of 55.
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 600
+      Plastic: 100
+  - type: StaticPrice
+    price: 55
+    vendPrice: 5000
+  - type: UserInterface
+    interfaces:
+      enum.RpdUiKey.Key:
+        type: RPDMenuBoundUserInterface
+  - type: ActivatableUI
+    inHandsOnly: true
+    key: enum.RpdUiKey.Key
+  - type: Tag
+    tags:
+    - RapidConstructionTool
+
+- type: entity
+  id: RPDEmpty
+  parent: RPD
+  suffix: Empty
+  components:
+  - type: LimitedCharges
+    lastCharges: -1
+
+- type: entity
+  id: RPDRecharging
+  parent: RPD
+  name: experimental RPD
+  description: A bluespace-enhanced rapid piping device that passively generates its own compressed matter.
+  suffix: AutoRecharge
+  components:
+  - type: LimitedCharges
+    maxCharges: 30
+  - type: AutoRecharge
+    rechargeDuration: 10
+# End Triad
+
 - type: entity
   name: compressed matter
   parent: BaseItem

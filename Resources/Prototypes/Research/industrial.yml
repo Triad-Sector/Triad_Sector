@@ -150,6 +150,28 @@
   - BasicParts
   position: -2, 1
 
+# Triad removal - Cherrypick NF MechCargo. This has been replaced by MechBasic.
+#- type: technology
+#  id: RipleyAPLU
+#  name: research-technology-ripley-aplu
+#  icon:
+#    sprite: Objects/Specific/Mech/mecha.rsi
+#    state: ripley
+#  discipline: Industrial
+#  tier: 1
+#  cost: 7500
+#  recipeUnlocks:
+#  - RipleyHarness
+#  - RipleyLArm
+#  - RipleyRArm
+#  - RipleyLLeg
+#  - RipleyRLeg
+#  - RipleyCentralElectronics
+#  - RipleyPeripheralsElectronics
+#  - MechEquipmentGrabber
+#  - MechEquipmentFork # Frontier
+# End Triad
+
 # Tier 2
 
 - type: technology
@@ -211,10 +233,11 @@
   # Mono edit start
   - RCD
   - RCDAmmo
+  - RPD # Triad: RPD port from funky-station — same research gate as the RCD; reuses RCDAmmo cartridges.
   - ShipRepairDevice
   - ShipRepairDeviceAmmo
   - NFBlueprintRCDAmmo
-  # Mono edit end 
+  # Mono edit end
   technologyPrerequisites:
   - SuperParts
   position: -1, 18

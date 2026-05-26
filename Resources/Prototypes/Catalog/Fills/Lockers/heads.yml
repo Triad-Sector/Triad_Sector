@@ -170,6 +170,7 @@
     #    - id: DoorRemoteEngineering # Frontier
     - id: RCD # Mono
     - id: RCDAmmo # Mono
+    - id: RPD # Triad
     - id: RubberStampCE
     #    - id: ShipyardRCD # Mono
     #    - id: ShipyardRCDAmmo # Mono

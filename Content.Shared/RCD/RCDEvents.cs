@@ -32,3 +32,85 @@ public enum RcdUiKey : byte
 {
     Key
 }
+
+// Triad: mirror-prototype flip toggle (R key). Generic RCD feature — recipes can define a MirrorPrototype
+// for asymmetric variants (gas filter/mixer, possibly future asymmetric airlocks).
+/// <summary>
+/// Sent from the client when the operator presses the flip key (default R) while holding an RCD on a recipe with
+/// a defined <c>MirrorPrototype</c>. The server toggles <c>RCDComponent.UseMirrorPrototype</c> so the next
+/// ConstructObject spawns the flipped variant.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class RCDConstructionGhostFlipEvent : EntityEventArgs
+{
+    public readonly NetEntity NetEntity;
+    public readonly bool UseMirrorPrototype;
+
+    public RCDConstructionGhostFlipEvent(NetEntity netEntity, bool useMirrorPrototype)
+    {
+        NetEntity = netEntity;
+        UseMirrorPrototype = useMirrorPrototype;
+    }
+}
+// End Triad
+
+// Triad: extensibility hooks for sibling systems (e.g. RPDSystem) to participate in RCD deconstruct validation
+// and construct-spawn without RCDSystem knowing about them. By-ref so handlers can short-circuit (decon attempt)
+// or rewrite the spawn proto (e.g. swap to an AtmosPipeLayer alternative).
+/// <summary>
+/// Raised before <c>RCDSystem</c> applies its own deconstruct validation. Setting <c>Cancelled = true</c> blocks
+/// the operation; the handler is responsible for any user-facing popup. <c>Target</c> is null when the operator is
+/// attempting to deconstruct a tile (rather than a structure).
+/// </summary>
+[ByRefEvent]
+public struct RCDDeconstructAttemptEvent
+{
+    public readonly EntityUid? Target;
+    public readonly EntityUid User;
+    public readonly bool ShowPopups;
+    public bool Cancelled;
+
+    public RCDDeconstructAttemptEvent(EntityUid? target, EntityUid user, bool showPopups)
+    {
+        Target = target;
+        User = user;
+        ShowPopups = showPopups;
+        Cancelled = false;
+    }
+}
+
+/// <summary>
+/// Raised by <c>RCDSystem</c> immediately before spawning a <c>ConstructObject</c> recipe. Handlers may mutate
+/// <c>SpawnProto</c> to redirect to an alternate entity (e.g. layer-specific pipe variant). The starting value is
+/// already adjusted for mirror-flip; layer-aware handlers should respect that.
+/// </summary>
+[ByRefEvent]
+public struct RCDObjectSpawnAttemptEvent
+{
+    public readonly RCDPrototype Recipe;
+    public string? SpawnProto;
+
+    public RCDObjectSpawnAttemptEvent(RCDPrototype recipe, string? spawnProto)
+    {
+        Recipe = recipe;
+        SpawnProto = spawnProto;
+    }
+}
+
+/// <summary>
+/// Raised after a <c>ConstructObject</c> spawn completes. Lets sibling systems decorate the spawned entity (e.g.
+/// apply pipe color stain).
+/// </summary>
+[ByRefEvent]
+public struct RCDObjectSpawnedEvent
+{
+    public readonly EntityUid Spawned;
+    public readonly RCDPrototype Recipe;
+
+    public RCDObjectSpawnedEvent(EntityUid spawned, RCDPrototype recipe)
+    {
+        Spawned = spawned;
+        Recipe = recipe;
+    }
+}
+// End Triad
