@@ -5,6 +5,7 @@ using Content.Server._Mono.Ships.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Shuttles.Systems;
 using Content.Shared._Mono.FireControl;
+using Content.Shared._Mono.ShipGuns;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared._Mono.Ships.Components;
@@ -137,8 +138,20 @@ public sealed partial class FireControlSystem : EntitySystem
         if (grid == null)
             return;
 
+        // Set transient locked target consumed synchronously by OnTargetGuidedShot.
+        if (args.LockedTarget.HasValue)
+        {
+            var lockedEnt = GetEntity(args.LockedTarget.Value);
+            _pendingLockedTarget = Exists(lockedEnt) && HasComp<MapGridComponent>(lockedEnt) ? lockedEnt : (EntityUid?)null;
+        }
+        else
+        {
+            _pendingLockedTarget = null;
+        }
+
         // Fire the actual weapons
         FireWeapons((EntityUid)component.ConnectedServer, args.Selected, args.Coordinates, server);
+        _pendingLockedTarget = null; // clear immediately; only valid during the FireWeapons call chain
         if ((component.NextLog == null || component.NextLog < _timing.CurTime) && args.Selected.Any())
         {
             var firePos = _transform.ToMapCoordinates(GetCoordinates(args.Coordinates)).Position;
@@ -274,6 +287,13 @@ public sealed partial class FireControlSystem : EntitySystem
                 var (ammoCount, hasManualReload) = GetWeaponAmmunitionInfo(controllable);
                 controlled.AmmoCount = ammoCount;
                 controlled.HasManualReload = hasManualReload;
+
+                controlled.GunType = TryComp<ShipGunTypeComponent>(controllable, out var gunTypeComp)
+                    ? gunTypeComp.Type : ShipGunType.Other;
+                controlled.ProjectileSpeed = !HasComp<HitscanBatteryAmmoProviderComponent>(controllable)
+                    && TryComp<GunComponent>(controllable, out var gunComp)
+                    ? gunComp.ProjectileSpeedModified
+                    : (float?)null;
 
                 controllables.Add(controlled);
             }

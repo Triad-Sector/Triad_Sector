@@ -17,10 +17,14 @@ public sealed class TargetSeekingSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = null!;
     [Dependency] private readonly RotateToFaceSystem _rotateToFace = null!;
     [Dependency] private readonly PhysicsSystem _physics = null!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!; // Mono
+    [Dependency] private readonly EntityLookupSystem _lookup = null!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private EntityQuery<ProjectileComponent> _projectileQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
+
+    // Reused buffer to avoid per-call allocations in the decoy scan.
+    private readonly HashSet<Entity<MissileDecoyComponent>> _decoyBuffer = new();
 
     public override void Initialize()
     {
@@ -166,6 +170,9 @@ public sealed class TargetSeekingSystem : EntitySystem
                 continue;
             }
 
+            // Decoys (flares) override any locked target when in range/arc
+            TryAcquireDecoy(uid, seekingComp, xform);
+
             // If we have a target, track it using the selected algorithm
             if (seekingComp.CurrentTarget.HasValue && !TerminatingOrDeleted(seekingComp.CurrentTarget))
             {
@@ -204,6 +211,68 @@ public sealed class TargetSeekingSystem : EntitySystem
     }
 
     /// <summary>
+    /// Checks for nearby decoys (flares) and retargets to the closest one in range/arc,
+    /// overriding any currently locked target.
+    /// Throttled to 2 Hz; countermeasure reaction time doesn't require per-tick precision.
+    /// Uses a broadphase spatial query rather than iterating all decoy entities.
+    /// </summary>
+    private void TryAcquireDecoy(EntityUid uid, TargetSeekingComponent component, TransformComponent transform)
+    {
+        if (_gameTiming.CurTime < component.NextDecoyCheck)
+            return;
+        component.NextDecoyCheck = _gameTiming.CurTime + TimeSpan.FromSeconds(0.5);
+
+        // Determine shooter's grid so we don't attract our own defensive flares.
+        EntityUid? shooterGridUid = null;
+        if (_projectileQuery.TryGetComponent(uid, out var proj) &&
+            TryComp(proj.Shooter, out TransformComponent? shooterXform))
+        {
+            shooterGridUid = shooterXform.GridUid;
+        }
+
+        var mapCoords = _transform.ToMapCoordinates(transform.Coordinates);
+        var sourcePos = mapCoords.Position;
+        var currentRotation = _transform.GetWorldRotation(transform);
+        EntityUid? bestDecoy = null;
+        var bestDistSq = float.MaxValue;
+
+        _decoyBuffer.Clear();
+        _lookup.GetEntitiesInRange(mapCoords, component.DetectionRange, _decoyBuffer);
+
+        foreach (var (decoyUid, _) in _decoyBuffer)
+        {
+            // Skip friendly flares (same grid as the shooter).
+            if (shooterGridUid.HasValue && Transform(decoyUid).GridUid == shooterGridUid)
+                continue;
+
+            var toDecoy = _transform.GetWorldPosition(decoyUid) - sourcePos;
+            var distSq = toDecoy.LengthSquared();
+
+            // Skip near-zero distance to avoid degenerate ToWorldAngle() returning Angle.Zero
+            // and winning the scan unconditionally. Exact == 0f can miss due to FP rounding.
+            if (distSq < 1e-6f)
+                continue;
+
+            var angleDiff = Angle.ShortestDistance(currentRotation, toDecoy.ToWorldAngle()).Degrees;
+            if (MathF.Abs((float) angleDiff) > component.ScanArc * 0.5f)
+                continue;
+
+            if (distSq < bestDistSq)
+            {
+                bestDistSq = distSq;
+                bestDecoy = decoyUid;
+            }
+        }
+
+        if (bestDecoy.HasValue && bestDecoy != component.CurrentTarget)
+            SetSeekerTarget((uid, component), bestDecoy, transform);
+        else if (!bestDecoy.HasValue
+                 && component.CurrentTarget.HasValue
+                 && HasComp<MissileDecoyComponent>(component.CurrentTarget.Value))
+            SetSeekerTarget((uid, component), null, transform);
+    }
+
+    /// <summary>
     /// Finds the closest valid target within range and tracking parameters.
     /// </summary>
     public void AcquireTarget(EntityUid uid, TargetSeekingComponent component, TransformComponent transform)
@@ -232,7 +301,7 @@ public sealed class TargetSeekingSystem : EntitySystem
 
             // Check if target is within field of view
             var angleDifference = Angle.ShortestDistance(currentRotation, angleToTarget).Degrees;
-            if (MathF.Abs((float)angleDifference) > component.ScanArc / 2)
+            if (MathF.Abs((float)angleDifference) > component.ScanArc * 0.5f)
             {
                 continue; // Target is outside our field of view
             }
@@ -322,29 +391,51 @@ public sealed class TargetSeekingSystem : EntitySystem
         return CalculateAdvancedTracking(relPos, relVel, accel);
     }
 
+    /// <summary>
+    /// Iteratively solves for the intercept heading using relative kinematics.
+    /// </summary>
+    /// <remarks>
+    /// The computation works in a frame aligned to <paramref name="relVel"/>:
+    /// <list type="bullet">
+    ///   <item><c>projX</c> — component of <paramref name="relPos"/> along <paramref name="relVel"/>
+    ///         (the closing/opening distance).</item>
+    ///   <item><c>projY</c> — lateral offset perpendicular to <paramref name="relVel"/>.</item>
+    /// </list>
+    /// <c>GuessInterceptTime</c> approximates the time for a constant-acceleration body to cover
+    /// distance <c>d</c> starting at relative speed <c>vel</c>:
+    ///   <c>d ≈ vel*t + ½*accel*t²</c> → solved with the quadratic formula each iteration.
+    /// Three Newton-like refinements are enough for the speed/acceleration ranges used here.
+    /// Adapted from: https://github.com/Ilya246/orbitfight/blob/master/src/entities.cpp
+    /// </remarks>
     public Angle CalculateAdvancedTracking(Vector2 relPos, Vector2 relVel, float accel)
     {
+        // GuessInterceptTime divides by accel; a coasting missile (accel == 0) can't home
+        // anyway, so fall back to simple direct aim to avoid NaN propagating into rotation.
+        if (accel <= 0f)
+            return relPos.ToWorldAngle();
+
         const int guidanceIterations = 3;
 
         var vel = relVel.Length();
+        // Build an orthonormal reference frame aligned to relVel.
         var refVec = vel == 0f ? new Vector2(1f, 0f) : relVel / vel;
-        var projX = Vector2.Dot(relPos, refVec);
-        var projY = relPos.Y * refVec.X - relPos.X * refVec.Y;
+        var projX = Vector2.Dot(relPos, refVec);              // axial separation
+        var projY = relPos.Y * refVec.X - relPos.X * refVec.Y; // lateral separation
+
         var itime = GuessInterceptTime(0f, -projX, -vel, projY, accel);
         for (var i = 0; i < guidanceIterations; i++)
             itime = GuessInterceptTime(itime, -projX, -vel, projY, accel);
 
-        var targetRot = (relPos + relVel * itime).ToWorldAngle();
+        return (relPos + relVel * itime).ToWorldAngle();
 
-        return targetRot;
-
-        // the explanation for how this works would take more space than the enclosing method so it's not included here
+        // Estimates intercept time assuming constant acceleration from rest relative to the target.
+        // Uses the kinematic formula d = v₀t + ½at² rearranged for t via the quadratic formula.
         float GuessInterceptTime(float prev, float x0, float vel, float y0, float accel)
         {
             var x = x0 + vel * prev;
             var d = MathF.Sqrt(x * x + y0 * y0);
             var dd = vel * x / d;
-            return (dd + MathF.Sqrt(dd * dd + 2f * accel * (d - dd * prev))) / (accel);
+            return (dd + MathF.Sqrt(dd * dd + 2f * accel * (d - dd * prev))) / accel;
         }
     }
 

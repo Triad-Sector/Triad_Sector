@@ -82,6 +82,12 @@ public sealed partial class TargetSeekingComponent : Component
     /// Whether seeking has been disabled (e.g., after entering an enemy grid).
     /// </summary>
     public bool SeekingDisabled;
+
+    /// <summary>
+    /// Next game-time at which to run the decoy (flare) proximity scan.
+    /// Throttled to 2 Hz; no need for every-tick precision on a countermeasure check.
+    /// </summary>
+    public TimeSpan NextDecoyCheck = TimeSpan.Zero;
 }
 
 /// <summary>

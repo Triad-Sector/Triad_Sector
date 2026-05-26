@@ -88,6 +88,19 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
     // Mono - set if we want this to detect not from itself
     public List<EntityUid>? Detectors = null;
 
+    protected struct CachedGridEntry
+    {
+        public EntityUid GridUid;
+        public Vector2 RawUiPosition;
+        public Vector2 ClampedUiPosition;
+        public bool IsOnScreen;
+        public bool BlipOnly;
+        public string? Label;
+        public Matrix3x2 GridToView;
+        public Box2 LocalAABB;
+    }
+    protected readonly List<CachedGridEntry> CachedGridEntries = new();
+
     #region Mono
     // These 2 handle timing updates
     protected const float RadarUpdateInterval = 0f;
@@ -653,6 +666,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         // Mono edited: Frontier - collect blip location data outside foreach - more changes ahead
         _tempBlipDataList.Clear();
 
+        CachedGridEntries.Clear();
         _visibleGridsSet.Clear();
 
         // Draw other grids... differently
@@ -715,6 +729,45 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
 
             // Mono
             var gridUiPosition = Vector2.Transform(gridBody.LocalCenter, curGridToView) / UIScale;
+
+            {
+                var cxc = Width / 2f;
+                var cyc = Height / 2f;
+                var cxo = gridUiPosition.X - cxc;
+                var cyo = gridUiPosition.Y - cyc;
+                var cdist = MathF.Sqrt(cxo * cxo + cyo * cyo);
+                bool cOnScreen;
+                Vector2 cClamped;
+                if (cdist > 0f)
+                {
+                    // Correct rectangular on-screen test: the point is visible iff both axes are
+                    // within the half-extents of the viewport.  The old formula projected onto the
+                    // unit-circle and compared against a scaled radius, which misclassified points
+                    // in the diagonal ~29 % of the radar as off-screen even when fully visible.
+                    cOnScreen = MathF.Abs(cxo) <= cxc && MathF.Abs(cyo) <= cyc;
+                    // For off-screen points, clamp the arrow to 95 % of the edge in the direction
+                    // of the target (cx/cy are the boundary-direction components used for clamping).
+                    var cx = cxc * cxo / cdist;
+                    var cy = cyc * cyo / cdist;
+                    cClamped = cOnScreen ? gridUiPosition : new Vector2(cx * 0.95f + cxc, cy * 0.95f + cyc);
+                }
+                else
+                {
+                    cOnScreen = true;
+                    cClamped = gridUiPosition;
+                }
+                CachedGridEntries.Add(new CachedGridEntry
+                {
+                    GridUid = gUid,
+                    RawUiPosition = gridUiPosition,
+                    ClampedUiPosition = cClamped,
+                    IsOnScreen = cOnScreen,
+                    BlipOnly = blipOnly,
+                    Label = labelName,
+                    GridToView = curGridToView,
+                    LocalAABB = grid.Comp.LocalAABB,
+                });
+            }
 
             if (shouldDrawIFF)
             {

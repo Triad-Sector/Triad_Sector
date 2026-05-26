@@ -1,6 +1,7 @@
 using Robust.Shared.Serialization;
 using Robust.Shared.Map;
 using Content.Shared.Shuttles.BUIStates;
+using Content.Shared._Mono.ShipGuns;
 
 namespace Content.Shared._Mono.FireControl;
 
@@ -41,10 +42,12 @@ public sealed class FireControlConsoleFireMessage : BoundUserInterfaceMessage
 {
     public List<NetEntity> Selected;
     public NetCoordinates Coordinates;
-    public FireControlConsoleFireMessage(List<NetEntity> selected, NetCoordinates coordinates)
+    public NetEntity? LockedTarget;
+    public FireControlConsoleFireMessage(List<NetEntity> selected, NetCoordinates coordinates, NetEntity? lockedTarget = null)
     {
         Selected = selected;
         Coordinates = coordinates;
+        LockedTarget = lockedTarget;
     }
 }
 
@@ -98,6 +101,16 @@ public struct FireControllableEntry
     /// Whether this weapon has manual reload.
     /// </summary>
     public bool HasManualReload;
+
+    /// <summary>
+    /// Projectile speed in m/s. Null for hitscan (energy) weapons.
+    /// </summary>
+    public float? ProjectileSpeed;
+
+    /// <summary>
+    /// Weapon type for intercept indicator shape selection.
+    /// </summary>
+    public ShipGunType GunType;
 
     public FireControllableEntry(NetEntity entity, NetCoordinates coordinates, string name, int? ammoCount = null, bool hasManualReload = false)
     {

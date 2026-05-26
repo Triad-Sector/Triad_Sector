@@ -80,8 +80,14 @@ public sealed class FireControlConsoleBoundUserInterface : BoundUserInterface
                 selected.Add(button.Key);
         }
 
+        NetEntity? lockedTarget = null;
+        if (_window.Radar is FireControlNavControl navControl
+            && navControl.SelectedTargetGrid.HasValue
+            && EntMan.EntityExists(navControl.SelectedTargetGrid.Value))
+            lockedTarget = EntMan.GetNetEntity(navControl.SelectedTargetGrid.Value);
+
         if (selected.Count > 0)
-            SendMessage(new FireControlConsoleFireMessage(selected, coordinates));
+            SendMessage(new FireControlConsoleFireMessage(selected, coordinates, lockedTarget));
     }
 
     private void SendCursorUpdateMessage(NetCoordinates coordinates)
