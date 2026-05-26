@@ -1,11 +1,5 @@
 #T0
 - type: loadout
-  id: ClothingBackpackMessengerSr
-  price: 0
-  equipment:
-    back: ClothingBackpackMessengerSr
-
-- type: loadout
   id: ClothingBackpackSatchelLeather
   price: 0
   equipment:
