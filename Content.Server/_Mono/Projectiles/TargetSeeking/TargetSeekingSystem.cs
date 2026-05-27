@@ -222,6 +222,9 @@ public sealed class TargetSeekingSystem : EntitySystem
             return;
         component.NextDecoyCheck = _gameTiming.CurTime + TimeSpan.FromSeconds(0.5);
 
+        if (component.DetectionRange <= 0f)
+            return;
+
         // Determine shooter's grid so we don't attract our own defensive flares.
         EntityUid? shooterGridUid = null;
         if (_projectileQuery.TryGetComponent(uid, out var proj) &&
