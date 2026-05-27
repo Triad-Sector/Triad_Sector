@@ -95211,7 +95211,7 @@ entities:
     - type: Transform
       pos: -14.5,-49.5
       parent: 2
-- proto: SyndieHandyFlag
+- proto: SynHandyFlag
   entities:
   - uid: 16078
     components:

@@ -3141,7 +3141,7 @@ entities:
     - type: Transform
       pos: 3.5,2.5
       parent: 1
-- proto: SyndieHandyFlag
+- proto: SynHandyFlag
   entities:
   - uid: 466
     components:

@@ -145694,7 +145694,7 @@ entities:
       allowedDepartments:
       - Security
       severity: Syndicate
-- proto: SyndieHandyFlag
+- proto: SynHandyFlag
   entities:
   - uid: 18682
     components:
