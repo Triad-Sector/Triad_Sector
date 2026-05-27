@@ -65,6 +65,8 @@
     range: 8
     sound:
       path: /Audio/Ambience/Objects/drain.ogg
+  - type: Anchorable # Triad: can move
+  - type: Pullable # Triad: can move
   - type: Physics # Hardlight
     bodyType: Static
     canCollide: false
