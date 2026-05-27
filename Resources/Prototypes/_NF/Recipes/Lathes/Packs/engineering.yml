@@ -15,6 +15,7 @@
 #  - ShipyardRCDAmmo
   - RCD
   - RCDAmmo
+  - RPD # Triad
   - ShipRepairDevice #Mono
   - ShipRepairDeviceAmmo #Mono
   - ConstructionBagOfHolding

@@ -53,7 +53,7 @@ public sealed class ServerConsentManager : IServerConsentManager
         if (message.Consent.Freetext != consentSettings.ConsentFreetext)
         {
             consentSettings.ConsentFreetext = message.Consent.Freetext;
-            consentSettings.ConsentFreetextUpdatedAt = DateTime.Now;
+            consentSettings.ConsentFreetextUpdatedAt = DateTime.UtcNow;
         }
 
         // Log the change

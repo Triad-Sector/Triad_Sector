@@ -1,0 +1,8 @@
+- type: loadout 
+  id: ContractorSprayPainter
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  price: 5000
+  inhand:
+    - SprayPainter 

@@ -23,7 +23,7 @@
       params:
         variation: 0.125
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletDisablerStaminaOnly
+    proto: BulletDisabler # Triad. Changed to BulletDisabler from BulletDisablerStaminaOnly. BulletDisabler deals no damage.
     fireCost: 10
   - type: NpcFactionMember
     factions:

@@ -101,6 +101,10 @@
     interactSuccessSound:
       collection: FenceRattle
   - type: BlockWeather
+  # Triad - lets the shutter be interacted with even when a window/grille shares its tile (matches BaseFirelock)
+  - type: WallMount
+    arc: 360
+  # End Triad
   # Mono
   - type: ShipRepairable
     repairTime: 3
@@ -218,6 +222,10 @@
     containers:
     - board
   - type: InteractionOutline
+  # Triad - lets the frame be interacted with (cable step, etc.) even when a window/grille shares its tile
+  - type: WallMount
+    arc: 360
+  # End Triad
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -229,8 +237,11 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  # Triad - Static (matches BlastDoorFrame): the construction graph anchors the frame on spawn,
+  # which would flip Dynamic -> Static and fail PrototypeSaveTest. Declaring Static here keeps
+  # prototype/runtime in sync and also prevents the unanchored body from being shoved by physics.
   - type: Physics
-    bodyType: Dynamic
+    bodyType: Static # Triad - see above comment
   - type: Fixtures
     fixtures:
       fix1:
@@ -244,4 +255,4 @@
         layer:
         - HighImpassable
   - type: Transform
-    noRot: true
+    # noRot: true # Triad - removed so shutter frames keep their placement rotation

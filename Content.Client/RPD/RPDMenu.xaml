@@ -1,0 +1,25 @@
+<ui:RadialMenu xmlns="https://spacestation14.io"
+               xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+               xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               Name="RPDMenuRoot">
+    <!-- Triad: RPD port from funky-station (PR #1244) — color picker container. -->
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Name="UpperBox" HorizontalExpand="True" VerticalExpand="True" MinSize="30 44" />
+        <BoxContainer Name="MiddleBox" HorizontalExpand="True" >
+            <Control HorizontalExpand="True"  />
+            <Control Name="RCDMenuHolder" />
+            <Control HorizontalExpand="True"  />
+        </BoxContainer>
+        <BoxContainer Name="LowerBox" MinSize="30 44" Orientation="Vertical">
+            <PanelContainer Visible="True">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#46496680" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Vertical">
+                    <BoxContainer Name="GeneralColorList" Orientation="Horizontal" HorizontalAlignment="Center" />
+                    <BoxContainer Name="GasColorList" Orientation="Horizontal" HorizontalAlignment="Center" />
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+    </BoxContainer>
+</ui:RadialMenu>
