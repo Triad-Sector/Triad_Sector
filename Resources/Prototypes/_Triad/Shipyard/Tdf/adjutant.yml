@@ -1,0 +1,37 @@
+#Author: Starch(!)
+
+- type: vessel
+  id: Adjutant
+  parent: BaseVessel
+  name: TDF Adjutant
+  description: One of the ship that can be traced to the first proper warship of the CDF when the sector in full revolt. Now, it serve as a reminder of the struggle and many lives lost to break the shackle of oppressions. 2 TARNYX, 2 90mm Longbow, PDW, and flare system, this ship will make sure those who defile the sanctity of the sector independence will know the struggle of oppressions that the ship bring.
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Corvette
+  engine:
+  - AME
+
+- type: gameMap
+  id: Adjutant
+  mapName: 'Adjutant'
+  mapPath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  minPlayers: 0
+  stations:
+    Adjutant:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Grunder TSF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Deputy: [ 0, 0 ]
+          TsfBorg: [ 0, 0 ]
+
