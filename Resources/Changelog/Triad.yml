@@ -917,3 +917,75 @@ Entries:
   id: 2228
   time: '2026-05-26T04:25:28.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/113
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Tajaran Leopard Tails
+  id: 2229
+  time: '2026-05-26T12:28:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/133
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Business cards have been ported from Frontier. They are available in the
+        MailVend.
+    - type: Add
+      message: >-
+        Emu cargo mechs have been ported from Frontier. They are available from
+        the Trade Mall. Their forks are under basic mech research.
+    - type: Add
+      message: >-
+        Crate racks have been ported from Frontier. You can construct them in
+        the crafting menu. This does not work for hiding your contraband.
+  id: 2230
+  time: '2026-05-26T12:33:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/125
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Lower the volume of cleannade by -6db
+  id: 2231
+  time: '2026-05-26T14:22:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/131
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: Shutters can now be rotated at placement.
+    - type: Fix
+      message: >-
+        Shutter frames anchor on creation, so they no longer drift off-tile
+        mid-build.
+    - type: Tweak
+      message: Shutters can be built on tiles that already hold a window or grille.
+  id: 2232
+  time: '2026-05-26T14:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/116
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: LPB pinpointers can no longer be saved in stash
+  id: 2233
+  time: '2026-05-26T15:04:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/135
+- author: Shy-ivy
+  changes:
+    - type: Add
+      message: Collars can now be engraved, they don't give any tactical advantage
+  id: 2234
+  time: '2026-05-26T15:16:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/120
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Portable gaslocks now persist on ship save.
+  id: 2235
+  time: '2026-05-26T21:10:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/138
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Rollerbeds (folded and unfolded) now persist on ship saving.
+  id: 2236
+  time: '2026-05-26T21:11:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/137

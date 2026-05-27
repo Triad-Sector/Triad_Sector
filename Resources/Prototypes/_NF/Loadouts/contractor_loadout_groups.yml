@@ -770,6 +770,7 @@
   - ContractorHandheldGPSBasic
   - ContractorRadioHandheld
   - ContractorNetworkConfigurator
+  - ContractorSprayPainter # Triad
   - ContractorHandheldHealthAnalyzerUnpowered
   - ContractorAnomalyScanner
   - ContractorBucket
@@ -777,7 +778,6 @@
   - ContractorBinoculars
   - ContractorWeaponProtoKineticAccelerator
   - ContractorPinpointerUniversal
-  - ContractorSprayPainter # Triad
   - ContractorShipyardRCD
   - ContractorHandheldCrewMonitor
   - ContractorHypoMini
