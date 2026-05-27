@@ -65,3 +65,20 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: FuelWallStash
+  name: fuel stash
+  description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
+  graph: FuelStorageStashGraph
+  startNode: start
+  targetNode: FuelStorageStashNode
+  category: construction-category-storage
+  icon:
+    sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
+    state: civilian_storage_stash
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+    - !type:WallmountCondition

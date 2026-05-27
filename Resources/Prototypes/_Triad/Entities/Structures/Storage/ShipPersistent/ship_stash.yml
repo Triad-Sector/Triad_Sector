@@ -161,7 +161,6 @@
       whitelist:
         tags:
         - FitsInFuelStash
-      
     - type: Construction
       graph: FuelStorageStashGraph
       node: FuelStorageStashNode
