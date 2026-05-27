@@ -260,9 +260,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
             break;
         }
     }
-    // Triad: targeting lock code end
 
-    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private void DrawInterceptIndicators(DrawingHandleScreen handle, Matrix3x2 worldToView, MapId mapId)
     {
         if (_selectedTargetGrid == null || _controllables == null)
@@ -323,9 +321,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
             }
         }
     }
-    // Triad: targeting lock code end
 
-    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     /// <summary>
     /// Solves for the world-space aim point that a projectile fired from <paramref name="shooterPos"/>
     /// must target so that it intercepts a moving target.
@@ -415,9 +411,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
         interceptPos = targetPos + relVel * t;
         return true;
     }
-    // Triad: targeting lock code end
 
-    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private static void DrawDiamondIndicator(DrawingHandleScreen handle, Vector2 center, float size, Color color)
     {
         var top = center + new Vector2(0f, -size);
@@ -477,7 +471,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
     }
 
     /// <summary>
-    /// Returns true if the mouse button is currently pressed down.
+    /// Returns true if the mouse button is currently pressed down
     /// </summary>
     public bool IsMouseDown() => _isMouseDown;
 }

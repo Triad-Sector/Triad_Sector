@@ -312,12 +312,10 @@ public sealed class TargetSeekingSystem : EntitySystem
 
             // Check if target is within field of view
             var angleDifference = Angle.ShortestDistance(currentRotation, angleToTarget).Degrees;
-            // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
-            if (MathF.Abs((float)angleDifference) > component.ScanArc * 0.5f)
+            if (MathF.Abs((float)angleDifference) > component.ScanArc * 0.5f) // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
             {
                 continue; // Target is outside our field of view
             }
-            // Triad: targeting lock code end
 
             // Calculate distance to target
             var distance = Vector2.Distance(sourcePos, targetPos);
@@ -421,7 +419,6 @@ public sealed class TargetSeekingSystem : EntitySystem
     /// Three Newton-like refinements are enough for the speed/acceleration ranges used here.
     /// Adapted from: https://github.com/Ilya246/orbitfight/blob/master/src/entities.cpp
     /// </remarks>
-    // Triad: targeting lock code end
     public Angle CalculateAdvancedTracking(Vector2 relPos, Vector2 relVel, float accel)
     {
         // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
@@ -436,14 +433,18 @@ public sealed class TargetSeekingSystem : EntitySystem
         var vel = relVel.Length();
         // Build an orthonormal reference frame aligned to relVel.
         var refVec = vel == 0f ? new Vector2(1f, 0f) : relVel / vel;
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         var projX = Vector2.Dot(relPos, refVec);              // axial separation
         var projY = relPos.Y * refVec.X - relPos.X * refVec.Y; // lateral separation
+        // Triad: targeting lock code end
 
         var itime = GuessInterceptTime(0f, -projX, -vel, projY, accel);
         for (var i = 0; i < guidanceIterations; i++)
             itime = GuessInterceptTime(itime, -projX, -vel, projY, accel);
 
-        return (relPos + relVel * itime).ToWorldAngle();
+        var targetRot = (relPos + relVel * itime).ToWorldAngle();
+
+        return targetRot;
 
         // Estimates intercept time assuming constant acceleration from rest relative to the target.
         // Uses the kinematic formula d = v₀t + ½at² rearranged for t via the quadratic formula.

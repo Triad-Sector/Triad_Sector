@@ -89,7 +89,15 @@ public sealed class FireControlConsoleBoundUserInterface : BoundUserInterface
         // Triad: targeting lock code end
 
         if (selected.Count > 0)
-            SendMessage(new FireControlConsoleFireMessage(selected, coordinates, lockedTarget));
+        {
+            SendMessage(new FireControlConsoleFireMessage(
+                selected,
+                coordinates,
+                // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+                lockedTarget
+                // Triad: targeting lock code end
+            ));
+        }
     }
 
     private void SendCursorUpdateMessage(NetCoordinates coordinates)
