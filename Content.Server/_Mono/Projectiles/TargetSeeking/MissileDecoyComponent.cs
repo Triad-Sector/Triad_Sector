@@ -1,3 +1,4 @@
+// Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
 namespace Content.Server._Mono.Projectiles.TargetSeeking;
 
 /// <summary>
@@ -9,3 +10,4 @@ namespace Content.Server._Mono.Projectiles.TargetSeeking;
 public sealed partial class MissileDecoyComponent : Component
 {
 }
+// Triad: targeting lock code end

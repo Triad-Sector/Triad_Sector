@@ -88,6 +88,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
     // Mono - set if we want this to detect not from itself
     public List<EntityUid>? Detectors = null;
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     protected struct CachedGridEntry
     {
         public EntityUid GridUid;
@@ -100,6 +101,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         public Box2 LocalAABB;
     }
     protected readonly List<CachedGridEntry> CachedGridEntries = new();
+    // Triad: targeting lock code end
 
     #region Mono
     // These 2 handle timing updates
@@ -666,7 +668,9 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         // Mono edited: Frontier - collect blip location data outside foreach - more changes ahead
         _tempBlipDataList.Clear();
 
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         CachedGridEntries.Clear();
+        // Triad: targeting lock code end
         _visibleGridsSet.Clear();
 
         // Draw other grids... differently
@@ -730,6 +734,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
             // Mono
             var gridUiPosition = Vector2.Transform(gridBody.LocalCenter, curGridToView) / UIScale;
 
+            // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
             {
                 var cxc = Width / 2f;
                 var cyc = Height / 2f;
@@ -768,6 +773,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
                     LocalAABB = grid.Comp.LocalAABB,
                 });
             }
+            // Triad: targeting lock code end
 
             if (shouldDrawIFF)
             {

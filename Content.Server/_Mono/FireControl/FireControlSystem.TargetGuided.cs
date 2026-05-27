@@ -13,6 +13,7 @@ namespace Content.Server._Mono.FireControl;
 public sealed partial class FireControlSystem
 {
     [Dependency] private readonly TargetGuidedSystem _targetGuided = null!;
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     [Dependency] private readonly TargetSeekingSystem _seekingSystem = null!;
 
     // Set in OnFire immediately before FireWeapons and cleared immediately after.
@@ -20,6 +21,7 @@ public sealed partial class FireControlSystem
     // Stored here rather than on FireControlConsoleComponent to avoid leaving stale
     // observable state on the component between fire events.
     private EntityUid? _pendingLockedTarget;
+    // Triad: targeting lock code end
 
     /// <summary>
     /// List of active guided missiles that need cursor position updates
@@ -71,8 +73,10 @@ public sealed partial class FireControlSystem
         if (!targetCoords.HasValue || !targetCoords.Value.IsValid(EntityManager))
             return;
 
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         // Locked target was set by OnFire synchronously before FireWeapons was called.
         var lockedTarget = _pendingLockedTarget;
+        // Triad: targeting lock code end
 
         // Find the controlling console for cursor-guided position updates.
         EntityUid? controllingConsole = null;
@@ -96,6 +100,7 @@ public sealed partial class FireControlSystem
 
         foreach (var projectileUid in args.FiredProjectiles)
         {
+            // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
             // If a lock-on target is set and this missile can seek, skip cursor guidance entirely —
             // the seeking system handles steering permanently with no cursor retargeting.
             if (lockedTarget.HasValue && Exists(lockedTarget.Value) && TryComp<TargetSeekingComponent>(projectileUid, out var seekComp))
@@ -105,6 +110,7 @@ public sealed partial class FireControlSystem
                 _seekingSystem.SetSeekerTarget((projectileUid, seekComp), lockedTarget.Value);
                 continue;
             }
+            // Triad: targeting lock code end
 
             if (!TryComp<TargetGuidedComponent>(projectileUid, out var guidedComp))
                 continue;

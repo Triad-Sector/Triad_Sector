@@ -38,11 +38,13 @@ public sealed class FireControlNavControl : ShuttleNavControl
     private float _lastCursorUpdateTime = 0f;
     private const float CursorUpdateInterval = 0.1f; // 10 updates per second
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private EntityUid? _selectedTargetGrid;
     private string? _selectedTargetName;
     private const float TargetSelectRadius = 30f;
     private static readonly Color TargetColor = Color.OrangeRed;
     private readonly Font _boldFont;
+    // Triad: targeting lock code end
 
     public FireControlNavControl() : base(64f, 512f, 512f)
     {
@@ -50,15 +52,19 @@ public sealed class FireControlNavControl : ShuttleNavControl
         _blips = EntManager.System<RadarBlipsSystem>();
         _physics = EntManager.System<SharedPhysicsSystem>();
         _transform = EntManager.System<SharedTransformSystem>();
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         _boldFont = new VectorFont(IoCManager.Resolve<IResourceCache>().GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Bold.ttf"), 12);
+        // Triad: targeting lock code end
     }
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
         if (args.Function == EngineKeyFunctions.UseSecondary)
             return;
         base.KeyBindUp(args);
     }
+    // Triad: targeting lock code end
 
     protected override void MouseMove(GUIMouseMoveEventArgs args)
     {
@@ -67,6 +73,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
             TryUpdateCursorPosition(_lastMousePos);
     }
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     protected override void KeyBindDown(GUIBoundKeyEventArgs args)
     {
         // Prevent right-click from starting a pan drag so the cursor stays as Crosshair
@@ -103,6 +110,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
         _selectedTargetGrid = bestGrid;
         _selectedTargetName = bestName;
     }
+    // Triad: targeting lock code end
 
     protected override void Draw(DrawingHandleScreen handle)
     {
@@ -160,12 +168,15 @@ public sealed class FireControlNavControl : ShuttleNavControl
             }
         }
 
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         if (_selectedTargetGrid != null && _controllables != null)
             DrawInterceptIndicators(handle, worldToView, xform.MapID);
 
         DrawTargetIndicator(handle);
+        // Triad: targeting lock code end
     }
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private void DrawTargetIndicator(DrawingHandleScreen handle)
     {
         if (_selectedTargetGrid == null)
@@ -249,7 +260,9 @@ public sealed class FireControlNavControl : ShuttleNavControl
             break;
         }
     }
+    // Triad: targeting lock code end
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private void DrawInterceptIndicators(DrawingHandleScreen handle, Matrix3x2 worldToView, MapId mapId)
     {
         if (_selectedTargetGrid == null || _controllables == null)
@@ -310,7 +323,9 @@ public sealed class FireControlNavControl : ShuttleNavControl
             }
         }
     }
+    // Triad: targeting lock code end
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     /// <summary>
     /// Solves for the world-space aim point that a projectile fired from <paramref name="shooterPos"/>
     /// must target so that it intercepts a moving target.
@@ -400,7 +415,9 @@ public sealed class FireControlNavControl : ShuttleNavControl
         interceptPos = targetPos + relVel * t;
         return true;
     }
+    // Triad: targeting lock code end
 
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
     private static void DrawDiamondIndicator(DrawingHandleScreen handle, Vector2 center, float size, Color color)
     {
         var top = center + new Vector2(0f, -size);
@@ -434,6 +451,7 @@ public sealed class FireControlNavControl : ShuttleNavControl
     }
 
     public EntityUid? SelectedTargetGrid => _selectedTargetGrid;
+    // Triad: targeting lock code end
 
     public void UpdateControllables(EntityUid console, FireControllableEntry[] controllables)
     {

@@ -138,6 +138,7 @@ public sealed partial class FireControlSystem : EntitySystem
         if (grid == null)
             return;
 
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         // Set transient locked target consumed synchronously by OnTargetGuidedShot.
         if (args.LockedTarget.HasValue)
         {
@@ -148,10 +149,13 @@ public sealed partial class FireControlSystem : EntitySystem
         {
             _pendingLockedTarget = null;
         }
+        // Triad: targeting lock code end
 
         // Fire the actual weapons
         FireWeapons((EntityUid)component.ConnectedServer, args.Selected, args.Coordinates, server);
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
         _pendingLockedTarget = null; // clear immediately; only valid during the FireWeapons call chain
+        // Triad: targeting lock code end
         if ((component.NextLog == null || component.NextLog < _timing.CurTime) && args.Selected.Any())
         {
             var firePos = _transform.ToMapCoordinates(GetCoordinates(args.Coordinates)).Position;
@@ -288,12 +292,14 @@ public sealed partial class FireControlSystem : EntitySystem
                 controlled.AmmoCount = ammoCount;
                 controlled.HasManualReload = hasManualReload;
 
+                // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
                 controlled.GunType = TryComp<ShipGunTypeComponent>(controllable, out var gunTypeComp)
                     ? gunTypeComp.Type : ShipGunType.Other;
                 controlled.ProjectileSpeed = !HasComp<HitscanBatteryAmmoProviderComponent>(controllable)
                     && TryComp<GunComponent>(controllable, out var gunComp)
                     ? gunComp.ProjectileSpeedModified
                     : (float?)null;
+                // Triad: targeting lock code end
 
                 controllables.Add(controlled);
             }
