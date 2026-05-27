@@ -48,6 +48,7 @@
   - type: GuideHelp # Mono
     guides:
     - GridClaimer
+  - type: HLPersistOnShipSave
 
 - type: entity
   id: BannerNanotrasen
