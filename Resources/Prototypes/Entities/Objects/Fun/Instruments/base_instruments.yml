@@ -71,7 +71,6 @@
   - type: StaticPrice
     price: 300
   - type: RequireProjectileTarget
-  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BasePlaceableInstrument

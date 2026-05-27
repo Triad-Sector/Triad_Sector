@@ -779,14 +779,12 @@
   components:
   - type: Sprite
     layers:
-    - state: red
-    - sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
-      state: icon
+    - state: red #Triad removed the icon Sprite line as it was redundant and causing problems.
   - type: RandomSpawner
     prototypes:
     - NTHandyFlag
     - BlankHandyFlag
-    - SyndieHandyFlag
+    - SynHandyFlag #Triad renamed this to make it work with the new Handy Flag YML.
     - LGBTQHandyFlag
     - PirateHandyFlag
     chance: 0.5

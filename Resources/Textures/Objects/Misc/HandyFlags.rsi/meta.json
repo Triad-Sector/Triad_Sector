@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Flags drawn by Saveliy360, jsons consolidated by Virnazush",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "blank"
+    },
+    {
+      "name": "pirate"
+    },
+    {
+      "name": "pride"
+    },
+    {
+      "name": "NT"
+    },
+    {
+      "name": "syn"
+    },
+
+    {
+      "name": "blank-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "pirate-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "pride-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "NT-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "syn-inhand-left",
+      "directions": 4
+    },
+
+    {
+      "name": "blank-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "pirate-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "pride-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "NT-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "syn-inhand-right",
+      "directions": 4
+    }
+  ]
+}
