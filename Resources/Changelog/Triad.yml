@@ -989,3 +989,14 @@ Entries:
   id: 2236
   time: '2026-05-26T21:11:22.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/137
+- author: Psyk117
+  changes:
+    - type: Add
+      message: Added *chitters and *squeaks to the Protogen emote whitelist
+    - type: Fix
+      message: >-
+        Changed the filepaths for the Chitter and Squeak to point to actual
+        noises.
+  id: 2237
+  time: '2026-05-27T19:26:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/60

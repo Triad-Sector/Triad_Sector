@@ -60,7 +60,7 @@
             state: jumpsuit-female
   - type: Carriable # Frontier: Carrying system from nyanotrasen.
   - type: Speech # Frontier
-    allowedEmotes: ['Belch', 'Beep', 'Ping', 'Buzz'] # Frontier + Protogen stuff
+    allowedEmotes: ['Belch', 'Beep', 'Ping', 'Buzz', 'Chitter', 'Squeak'] # Frontier + Protogen stuff #Triad - Added Chitter and Squeak to the allowed emotes
     speechSounds: Pai
   - type: Vocal # Mono
     wilhelm: "/Audio/_EinsteinEngines/Voice/IPC/wilhelm.ogg"
