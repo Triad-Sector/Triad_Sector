@@ -1,74 +1,64 @@
-#Triad Remade this YML to include a parent base handy flag.
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
-  id: BaseHandyFlag
-  abstract: true
-  name: HandyFlags
-  description: "A small handheld flag"
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/HandyFlags.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Misc/HandyFlags.rsi
-    size: Small
-  - type: PhysicalComposition
-    materialComposition:
-      Cloth: 2
-  - type: HLPersistOnShipSave
-
-- type: entity
-  parent: BaseHandyFlag
   id: BlankHandyFlag
   name: blank handheld flag
   description: "Some piece of white cloth wound on a stick."
   components:
   - type: Sprite
-    state: blank
+    sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
+    state: icon
   - type: Item
-    heldPrefix: blank
+    sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
-  parent: BaseHandyFlag
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: NTHandyFlag
   name: Nanotrasen handheld flag
   description: "Glory to TSF-NT!"
   components:
   - type: Sprite
-    state: NT
+    sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
+    state: icon
   - type: Item
-    heldPrefix: NT
+    sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
-  parent: BaseHandyFlag
-  id: SynHandyFlag
-  name: Syndicate handheld flag
+  parent: [BaseItem, RecyclableItemClothSmall]
+  id: SyndieHandyFlag
+  name: syndicate handheld flag
   description: "For truly rebellious patriots. Death to NT!"
   components:
   - type: Sprite
-    state: syn
+    sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
+    state: icon
   - type: Item
-    heldPrefix: syn
+    sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
-  parent: BaseHandyFlag
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: LGBTQHandyFlag
   name: LGBTQ handheld flag
   description: "The be gay do crime handy flag."
   components:
   - type: Sprite
-    state: pride
+    sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
+    state: icon
   - type: Item
-    heldPrefix: pride
+    sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
-  parent: BaseHandyFlag
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: PirateHandyFlag
-  name: Pirate handheld flag
+  name: pirate handheld flag
   description: "Holding it in your hands, show these carp that you're not kidding."
   components:
   - type: Sprite
-    state: pirate
+    sprite: Objects/Misc/Handy_Flags/pirate_handy_flag.rsi
+    state: icon
   - type: Item
-    heldPrefix: pirate
-#Triad End
+    sprite: Objects/Misc/Handy_Flags/pirate_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
