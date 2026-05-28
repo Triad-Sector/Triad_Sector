@@ -1,0 +1,112 @@
+# Triad: Construction graphs for bathroom fixtures (sinks and floor drains).
+# Toilets already have a graph in the base game (Graphs/furniture/toilet.yml).
+
+- type: constructionGraph
+  id: SinkGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: sink
+      completed:
+        - !type:SnapToGrid {}
+      steps:
+        - material: Steel
+          amount: 4
+          doAfter: 2
+    - to: sinkWide
+      completed:
+        - !type:SnapToGrid {}
+      steps:
+        - material: Steel
+          amount: 6
+          doAfter: 2
+    - to: sinkStemless
+      completed:
+        - !type:SnapToGrid {}
+      steps:
+        - material: Steel
+          amount: 3
+          doAfter: 2
+
+  - node: sink
+    entity: Sink
+    edges:
+    - to: start
+      completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 4
+        - !type:EmptyAllContainers {}
+        - !type:DestroyEntity {}
+      conditions:
+        - !type:EntityAnchored
+          anchored: false
+      steps:
+        - tool: Welding
+          doAfter: 2
+
+  - node: sinkWide
+    entity: SinkWide
+    edges:
+    - to: start
+      completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 6
+        - !type:EmptyAllContainers {}
+        - !type:DestroyEntity {}
+      conditions:
+        - !type:EntityAnchored
+          anchored: false
+      steps:
+        - tool: Welding
+          doAfter: 2
+
+  - node: sinkStemless
+    entity: SinkStemlessWater
+    edges:
+    - to: start
+      completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 3
+        - !type:EmptyAllContainers {}
+        - !type:DestroyEntity {}
+      conditions:
+        - !type:EntityAnchored
+          anchored: false
+      steps:
+        - tool: Welding
+          doAfter: 2
+
+- type: constructionGraph
+  id: FloorDrainGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: floorDrain
+      completed:
+        - !type:SnapToGrid {}
+      steps:
+        - material: Steel
+          amount: 2
+          doAfter: 1
+
+  - node: floorDrain
+    entity: FloorDrain
+    edges:
+    - to: start
+      completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        - !type:EmptyAllContainers {}
+        - !type:DestroyEntity {}
+      conditions:
+        - !type:EntityAnchored
+          anchored: false
+      steps:
+        - tool: Welding
+          doAfter: 1

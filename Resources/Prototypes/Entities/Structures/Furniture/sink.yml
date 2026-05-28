@@ -80,6 +80,9 @@
   parent: SinkEmpty
   suffix: Water
   components:
+  - type: Construction
+    graph: SinkGraph
+    node: sink
   - type: SolutionContainerManager
     solutions:
       drainBuffer:
@@ -94,6 +97,9 @@
   id: SinkWide
   parent: Sink
   components:
+    - type: Construction
+      graph: SinkGraph
+      node: sinkWide
     - type: Sprite
       sprite: Structures/Furniture/sink.rsi
       layers:
@@ -127,6 +133,9 @@
   parent: SinkStemless
   suffix: Water
   components:
+  - type: Construction
+    graph: SinkGraph
+    node: sinkStemless
   - type: SolutionContainerManager
     solutions:
       drainBuffer:

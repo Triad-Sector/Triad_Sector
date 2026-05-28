@@ -17,6 +17,9 @@
     - type: Clickable
     - type: Transform
       anchored: true
+    - type: Construction
+      graph: FloorDrainGraph
+      node: floorDrain
     - type: Anchorable # Triad: can move
     - type: Pullable # Triad: can move
     - type: Physics

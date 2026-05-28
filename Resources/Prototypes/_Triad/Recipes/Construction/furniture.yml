@@ -1,0 +1,70 @@
+# Triad: Construction menu entries for bathroom fixtures.
+# Toilet is already registered in the base game (Recipes/Construction/furniture.yml).
+
+- type: construction
+  id: SinkConstruct
+  name: sink
+  description: A stemmed basin with a faucet. Refills with water automatically.
+  graph: SinkGraph
+  startNode: start
+  targetNode: sink
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink_stem
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SinkWideConstruct
+  name: wide sink
+  description: A wider basin with a faucet. Refills with water automatically.
+  graph: SinkGraph
+  startNode: start
+  targetNode: sinkWide
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink_wide
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SinkStemlessConstruct
+  name: stemless sink
+  description: A basin without a raised faucet stem. Refills with water automatically.
+  graph: SinkGraph
+  startNode: start
+  targetNode: sinkStemless
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: FloorDrainConstruct
+  name: floor drain
+  description: Drains puddles and liquid from the surrounding floor area.
+  graph: FloorDrainGraph
+  startNode: start
+  targetNode: floorDrain
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Specific/Janitorial/drain.rsi
+    state: icon
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
