@@ -14,6 +14,7 @@ using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
+using Content.Shared.Players; // DeltaV - OOC muting
 using Content.Shared.Players.RateLimiting;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -290,6 +291,11 @@ internal sealed partial class ChatManager : IChatManager
         {
             return;
         }
+
+        // DeltaV - OOC muting START
+        if (player.ContentData() is { OocMuted: true })
+            return;
+        // DeltaV END
 
         Color? colorOverride = null;
         var wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message", ("playerName",player.Name), ("message", FormattedMessage.EscapeText(message)));
