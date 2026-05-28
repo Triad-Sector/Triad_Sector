@@ -55,7 +55,7 @@
   id: ComputerShipyardSecurity
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: security shipyard console
-  description: Used to enlist into TDF Security Forces
+  description: Used to enlist into TDF Security Forces.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
