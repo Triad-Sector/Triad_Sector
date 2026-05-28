@@ -15,12 +15,7 @@
     - !type:RoleTimeRequirement
       role: JobStc
       time: 18000 # Triad - 5 hours
-  alternateRequirementSets: # Triad
-    playtimePreSec: # Triad
-    - !type:RoleTimeRequirement # Triad
-      role: JobHeadOfPersonnel
-      time: 126000 # Triad - 35 hours. This is so dedicated overseers pre-TDF can still play their main role.
-  whitelisted: false # Triad
+  whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true
   assignedCompany: Colonial
