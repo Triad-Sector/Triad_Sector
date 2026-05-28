@@ -1155,7 +1155,7 @@ entities:
     - type: DeviceNetwork
       address: 1B69-C296
       receiveFrequency: 1280
-- proto: AirlockSecurityGlassLocked
+- proto: AirlockTdfGlassSecurityLocked
   entities:
   - uid: 12
     components:
