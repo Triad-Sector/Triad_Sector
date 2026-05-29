@@ -68,6 +68,7 @@
           - MachineLayer
   - type: UpgradeBattery
     maxChargeMultiplier: 1.5
+  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   parent: PortableSMESEmpty
