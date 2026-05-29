@@ -755,7 +755,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: AccessReader
+  - type: AccessReader # Triad, added CMO/DOC (in case AA removal) & STC access
     access: [["HeadOfPersonnel"], ["HeadOfSecurity"], ["ChiefMedicalOfficer"],["StationTrafficController"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
