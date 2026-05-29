@@ -1000,3 +1000,10 @@ Entries:
   id: 2237
   time: '2026-05-27T19:26:20.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/60
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Cable sprites have been ported from Wizard's Den.
+  id: 2238
+  time: '2026-05-28T10:01:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/136

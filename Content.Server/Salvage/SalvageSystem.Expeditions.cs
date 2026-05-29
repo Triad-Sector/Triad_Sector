@@ -172,9 +172,13 @@ public sealed partial class SalvageSystem
             if (comp.NextOffer > currentTime || comp.Claimed)
                 continue;
 
-            if (!HasComp<FTLComponent>(_station.GetLargestGrid(Comp<StationDataComponent>(uid)))) // Frontier
+            // Frontier: disable cooldown when still in FTL
+            if (!TryComp<StationDataComponent>(uid, out var stationData)
+                || !HasComp<FTLComponent>(_station.GetLargestGrid(stationData)))
+            {
                 comp.Cooldown = false;
-            //comp.NextOffer += TimeSpan.FromSeconds(_cooldown); // Frontier
+            }
+            // End Frontier: disable cooldown when still in FTL
             comp.NextOffer = currentTime + TimeSpan.FromSeconds(_cooldown); // Frontier
             GenerateMissions(comp);
             UpdateConsoles(uid, comp);
