@@ -7,6 +7,13 @@
     sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
     state: brain
 
+# Triad edit start - Add lungs to shadekin
+- type: entity
+  id: OrganShadekinLungs
+  parent: OrganHumanLungs
+  name: lungs
+# Triad edit end
+
 - type: entity
   id: OrganShadekinEyes
   parent: OrganHumanEyes

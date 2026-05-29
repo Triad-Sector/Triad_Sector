@@ -39,7 +39,6 @@
           Slash: 5
     - type: FlashModifier
       modifier: 2
-    - type: BreathingImmunity
     - type: Damageable
       damageContainer: Biological
       damageModifierSet: Shadekin
