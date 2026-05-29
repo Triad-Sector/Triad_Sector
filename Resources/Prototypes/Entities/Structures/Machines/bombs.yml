@@ -18,6 +18,12 @@
     - type: Defusable
     - type: Rotatable
     - type: Explosive
+    # Triad Start
+    - type: TimerStartOnSignal
+    - type: DeviceLinkSink
+      ports:
+        - Timer
+    # Triad End
       explosionType: Default
       totalIntensity: 20.0
       intensitySlope: 5
@@ -27,7 +33,7 @@
     # Unless, of course, you want the 90 seconds regardless. I can't stop you.
     - type: OnUseTimerTrigger
       delay: 180
-      delayOptions: [180, 240, 300, 600, 900]
+      delayOptions: [120, 180, 240, 300, 600, 900] # Triad Added 120
       initialBeepDelay: 0
       beepSound: /Audio/Machines/timer.ogg
     - type: Anchorable
