@@ -17,7 +17,6 @@
   sprites:
     Head: MobReptilianHead
     Hair: MobHumanoidAnyMarking # Triad - Reptilian hair.
-    FacialHair: MobHumanoidAnyMarking # Triad - Reptilian hair.
     Snout: MobHumanoidAnyMarking
     Chest: MobReptilianTorso
     HeadTop: MobHumanoidAnyMarking
@@ -41,7 +40,7 @@
       points: 1 # Triad - Reptilian hair.
       required: false
     FacialHair:
-      points: 1 # Triad - Reptilian hair.
+      points: 0
       required: false
     Tail:
       points: 1
