@@ -176,6 +176,9 @@
   - node: start
     edges:
     - to: FuelStorageStashNode
+      completed:
+        - !type:SetAnchor
+          value: true 
       steps:
         - material: Steel
           amount: 20

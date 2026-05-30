@@ -225,7 +225,7 @@
   - type: Stack
     stackType: FuelPlasma
     count: 25 # mono
-    type: Tag # Triad
+  - type: Tag # Triad
     tags: # Triad
       - FitsInFuelStash # Triad
 
@@ -262,7 +262,7 @@
   - type: Stack
     stackType: FuelUranium
     count: 25 # mono
-    type: Tag # Triad
+  - type: Tag # Triad
     tags: # Triad
       - FitsInFuelStash # Triad
 
@@ -299,7 +299,7 @@
   - type: Stack
     stackType: FuelBananium
     count: 25 # mono
-    type: Tag # Triad
+  - type: Tag # Triad
     tags: # Triad
       - FitsInFuelStash # Triad
 

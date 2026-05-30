@@ -148,16 +148,18 @@
 
 - type: entity
   parent: BasePersistentShipStorageStash
-  id: FuelWallStash
+  id: FuelStorageStash
   name: fuel stash
   description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
   components:
     - type: Sprite
       sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
       state: fuel_storage_stash
+      noRot: false
+      drawdepth: WallMountedItems
     - type: Storage
       grid:
-      - 0,0,6,4
+      - 0,0,7,3
       whitelist:
         tags:
         - FitsInFuelStash
@@ -166,3 +168,7 @@
       node: FuelStorageStashNode
     - type: ShipSaveLimit
       limitId: FuelStash
+    - type: WallMount
+      arc: 360 # unable to get the arc to rotate with build direction - temp fix until someone who knows more can fix it
+    - type: Transform
+      noRot: false
