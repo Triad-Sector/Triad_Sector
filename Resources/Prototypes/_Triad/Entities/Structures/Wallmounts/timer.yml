@@ -4,7 +4,7 @@
   id: AlwaysPoweredSignalTimer
   name: signal timer
   suffix: Always powered
-  description: It's a timer for sending timed signals to things.
+  description: It's a timer for sending timed signals to things. though you probably shouldnt see this
   placement:
     mode: SnapgridCenter
     snap:
@@ -56,7 +56,7 @@
   parent: AlwaysPoweredSignalTimer
   name: screen timer
   suffix: Always powered
-  description: It's a timer for sending timed signals to things, with a built-in screen.
+  description: if you see the timer counting down, you probably should run
   components:
   - type: SignalTimer
     canEditLabel: true
