@@ -1,1 +1,1 @@
-lathe-category-AdvancedSuitsRecipe = Advanced Suits
+lathe-category-advanced-suits-recipe = Advanced Suits

@@ -75,7 +75,7 @@
   - ClothingOuterHardsuitRd
   technologyPrerequisites:
   - HardsuitsSpecialized
-  position: 2, 7
+  position: 2, 7 # Triad
 
 # Tier 3
 

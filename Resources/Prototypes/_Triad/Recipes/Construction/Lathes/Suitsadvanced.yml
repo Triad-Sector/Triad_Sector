@@ -1,10 +1,10 @@
 - type: latheRecipe
-  id: SuitsAdvancedRecipe
   abstract: true
+  id: SuitsAdvancedRecipe
 
 - type: latheRecipe
-  id: ClothingOuterSuitRad
   parent: SuitsAdvancedRecipe
+  id: ClothingOuterSuitRad
   completetime: 6
   categories:
   - AdvancedSuits
@@ -17,8 +17,8 @@
     Plasma: 500
 
 - type: latheRecipe
-  id: ClothingHeadHelmetBombSuit
   parent: SuitsAdvancedRecipe
+  id: ClothingHeadHelmetBombSuit
   completetime: 5
   categories:
   - AdvancedSuits
