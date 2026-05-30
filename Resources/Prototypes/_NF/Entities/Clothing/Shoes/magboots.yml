@@ -47,7 +47,7 @@
   - type: NoSlip
 
 - type: entity
-  parent: [ BaseFactionGearTSFT1, ClothingShoesBootsMagSecurity ]
+  parent: [ BaseFactionGearTDFT1, ClothingShoesBootsMagSecurity ]
   id: ClothingShoesBootsMagNfsd
   name: TSFMC magboots
   components:

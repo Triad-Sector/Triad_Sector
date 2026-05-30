@@ -102,9 +102,9 @@
       price: 130
 
 - type: entity
-  parent: [ BaseFactionGearTSFT1, Holoprojector ]
+  parent: [ BaseFactionGearTDFT1, Holoprojector ]
   id: HoloprojectorFieldTSF
-  name: TSFMC force field projector
+  name: TDF force field projector
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
     - type: HolosignProjector
