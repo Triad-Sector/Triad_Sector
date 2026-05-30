@@ -46,7 +46,6 @@
   storage:
     back:
     - Magazine45_ACPPistolFMJ
-    - BaseSecurityUplinkRadioCaptain
-#    - ShipVoucherNfsdBailiff # Mono
+    - BaseSecurityUplinkRadioWarden
     - RubberStampWarden
-    - RadioHandheldNF # Mono
+    - RadioHandheldNF

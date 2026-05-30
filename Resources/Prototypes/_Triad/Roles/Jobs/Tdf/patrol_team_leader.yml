@@ -41,6 +41,5 @@
   storage:
     back:
     - Magazine45_ACPPistolFMJ
-    - BaseSecurityUplinkRadioOfficer
-#    - ShipVoucherNfsdSergeant # Mono
-    - RadioHandheldNF # Mono
+    - BaseSecurityUplinkRadioPatrolTeamLeader
+    - RadioHandheldNF

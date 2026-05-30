@@ -52,7 +52,7 @@
     back:
     - Multitool
     - DoorRemoteTdf
-    - BaseSecurityUplinkRadioSheriff
+    - BaseSecurityUplinkRadioChiefEnforcer
     - PhoneInstrumentHigh
     - EncryptionKeyService
     - EncryptionKeySecurity

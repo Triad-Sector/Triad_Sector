@@ -8,4 +8,4 @@
   name: TDF
   color: "#FFD580"
   disabled: true
-  #companyUplinkCurrency: FederationMilitaryCredit TODO
+  companyUplinkCurrency: TriadCommerceCredit
