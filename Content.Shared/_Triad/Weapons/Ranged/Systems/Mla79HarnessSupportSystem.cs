@@ -1,3 +1,5 @@
+using Content.Shared._Goobstation.Weapons.SmartGun;
+using Content.Shared._Goobstation.Wizard.Projectiles;
 using Content.Shared._Triad.Weapons.Ranged.Components;
 using Content.Shared._Triad.Weapons.Ranged.Events;
 using Content.Shared.Containers.ItemSlots;
@@ -41,6 +43,7 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
         SubscribeLocalEvent<RequiresMla79HarnessSupportComponent, GotUnequippedEvent>(OnGunUnequippedInventory);
         SubscribeLocalEvent<RequiresMla79HarnessSupportComponent, ItemWieldedEvent>(OnGunWielded);
         SubscribeLocalEvent<RequiresMla79HarnessSupportComponent, ItemUnwieldedEvent>(OnGunUnwielded);
+        SubscribeLocalEvent<RequiresMla79HarnessSupportComponent, AmmoShotEvent>(OnAmmoShot, after: [typeof(SmartGunSystem)]);
 
         SubscribeLocalEvent<Mla79HarnessComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnHarnessRefreshMovementSpeed);
         SubscribeLocalEvent<Mla79HarnessComponent, GotEquippedEvent>(OnHarnessEquipped);
@@ -95,6 +98,23 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
         args.MaxAngle += ent.Comp.MaxAngleBonus;
         args.AngleDecay += ent.Comp.AngleDecayBonus;
         args.AngleIncrease += ent.Comp.AngleIncreaseBonus;
+    }
+
+    private void OnAmmoShot(Entity<RequiresMla79HarnessSupportComponent> ent, ref AmmoShotEvent args)
+    {
+        var user = Transform(ent.Owner).ParentUid;
+        if (HasActiveSupport(ent.Owner, user, ent.Comp))
+            return;
+
+        // Triad: MLA-79 keeps firing without the harness, but loses smartgun homing support.
+        foreach (var projectile in args.FiredProjectiles)
+        {
+            if (!TryComp(projectile, out HomingProjectileComponent? homing))
+                continue;
+
+            homing.Target = null;
+            Dirty(projectile, homing);
+        }
     }
 
     private void OnRefreshMovementSpeed(
