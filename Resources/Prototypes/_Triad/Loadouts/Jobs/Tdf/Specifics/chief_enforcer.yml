@@ -13,3 +13,8 @@
   id: TdfChiefPda
   equipment:
     id: TdfChiefPda
+
+- type: loadout
+  id: ClothingMaskGasSwatTdf
+  equipment:
+    mask: ClothingMaskGasSwatTdf
