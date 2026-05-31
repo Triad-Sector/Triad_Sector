@@ -5,6 +5,10 @@
 - type: Tag
   id: FitsInMedicalStash
 
+# Power Cells
+- type: Tag
+  id: PowerCellAntique
+
 # Melee Weapons
 - type: Tag
   id: Cutlass
@@ -15,6 +19,12 @@
 - type: Tag
   id: Sword
 
+# Ranged Weapons
+- type: Tag
+  id: MachinePistol
+
 # Clothing
 - type: Tag
   id: AdvancedTacticalBackpack
+- type: Tag
+  id: TriadSmartGunHarness
