@@ -60,12 +60,11 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfMedic
-    #   - TdfWarden
-    #   - TdfChiefEnforcer
-
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfMedic
+       - TdfWarden
+       - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityPortableRecharger
@@ -204,40 +203,40 @@
 #        tags:
 #          - SecurityUplink
 
-- type: listing
-  id: UplinkSecurityMediumVoucher
-  name:  uplink-security-medium-voucher-name
-  description: uplink-security-medium-voucher-desc
-  productEntity: ShipVoucherNfsdSergeant
-  cost:
-    TriadCommerceCredit: 25
-  categories:
-  - UplinkSecurityVouchers
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+#- type: listing TODO
+#  id: UplinkSecurityMediumVoucher
+#  name:  uplink-security-medium-voucher-name
+#  description: uplink-security-medium-voucher-desc
+#  productEntity: ShipVoucherNfsdSergeant
+#  cost:
+#    TriadCommerceCredit: 25
+#  categories:
+#  - UplinkSecurityVouchers
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      whitelist:
+#        tags:
+#          - SecurityUplink
     #- !type:BuyerJobCondition
     #  whitelist:
     #   - TdfWarden
     #   - TdfPatrolTeamLeader
     #   - TdfChiefEnforcer
 
-- type: listing
-  id: UplinkSecurityCapitalVoucher
-  name:  uplink-security-capital-voucher-name
-  description: uplink-security-capital-voucher-desc
-  productEntity: ShipVoucherNfsdBailiff
-  cost:
-    TriadCommerceCredit: 125
-  categories:
-  - UplinkSecurityVouchers
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+#- type: listing
+#  id: UplinkSecurityCapitalVoucher
+#  name:  uplink-security-capital-voucher-name
+#  description: uplink-security-capital-voucher-desc
+#  productEntity: ShipVoucherNfsdBailiff
+#  cost:
+#    TriadCommerceCredit: 125
+#  categories:
+#  - UplinkSecurityVouchers
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      whitelist:
+#        tags:
+#          - SecurityUplink
     #- !type:BuyerJobCondition
     #  whitelist:
     #   - TdfWarden
@@ -245,39 +244,39 @@
 
 # Misc
 
-- type: listing
-  id: UplinkSecurityFlyssaVoucher
-  name:  uplink-security-flyssa-voucher-name
-  description: uplink-security-flyssa-voucher-desc
-  productEntity: ShipVoucherFlyssa
-  cost:
-    TriadCommerceCredit: 750
-  categories:
-  - UplinkSecurityVouchers
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfChiefEnforcer
+#- type: listing
+#  id: UplinkSecurityFlyssaVoucher
+#  name:  uplink-security-flyssa-voucher-name
+#  description: uplink-security-flyssa-voucher-desc
+#  productEntity: ShipVoucherFlyssa
+#  cost:
+#    TriadCommerceCredit: 750
+#  categories:
+#  - UplinkSecurityVouchers
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - SecurityUplink
+#    #- !type:BuyerJobCondition
+#    #  whitelist:
+#    #   - TdfWarden
+#    #   - TdfChiefEnforcer
 
-- type: listing
-  id: UplinkSecurityFactionRDServer
-  name:  uplink-faction-server-name
-  description: uplink-faction-server-desc
-  productEntity: RDServerTSFFlatpack
-  cost:
-    TriadCommerceCredit: 100
-  categories:
-  - UplinkSecurityUtility
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
+#- type: listing | TODO
+#  id: UplinkSecurityFactionRDServer
+#  name:  uplink-faction-server-name
+#  description: uplink-faction-server-desc
+#  productEntity: RDServerTSFFlatpack
+#  cost:
+#    TriadCommerceCredit: 100
+#  categories:
+#  - UplinkSecurityUtility
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#   whitelist:
+#      tags:
+#      - SecurityUplink
 
 - type: listing
   id: UplinkSecurityFactionLathe
@@ -308,27 +307,6 @@
 #     whitelist:
 #       tags:
 #       - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityPulseRifle
-  name:  uplink-security-pulserifle-name
-  description: uplink-security-pulserifle-desc
-  productEntity: WeaponPulseRifle
-  icon: { sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 100
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
 
 - type: listing
   id: UplinkClothingOuterHardsuitM82c
@@ -457,22 +435,6 @@
       whitelist:
         tags:
           - SecurityUplink
-
-# - type: listing # Mono - this entire listing
-#   id: UplinkSecurityHFBlade
-#   name:  uplink-security-hfblade-name
-#   description: uplink-security-hfblade-desc
-#   productEntity: WeaponHFKatana
-#   icon: { sprite: _Mono/Objects/Weapons/Melee/hfblade.rsi, state: icon }
-#   cost:
-#     TriadCommerceCredit: 50
-#   categories:
-#     - UplinkSecurityWeapons
-#   conditions:
-#     - !type:StoreWhitelistCondition
-#       whitelist:
-#         tags:
-#           - SecurityUplink
 
 - type: listing
   id: UplinkSecurityVulcan
@@ -683,10 +645,10 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfChiefEnforcer
-    #   - TdfMedic
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfChiefEnforcer
+       - TdfMedic
 
 - type: listing
   id: UplinkSecurityCompactDefibrillator
@@ -702,10 +664,10 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfChiefEnforcer
-    #   - TdfMedic
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfChiefEnforcer
+       - TdfMedic
 
 - type: listing
   id: UplinkSecuritySyringeCaseFilled
@@ -738,21 +700,21 @@
 #        tags:
 #          - SecurityUplink
 
-- type: listing
-  id: UplinkSecurityCyborgModule
-  name:  uplink-security-cyborg-module-name
-  description: uplink-security-cyborg-module-desc
-  productEntity: BorgModuleSecurity
-  icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-weapon-module }
-  cost:
-    TriadCommerceCredit: 50
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+#- type: listing TODO
+#  id: UplinkSecurityCyborgModule
+#  name:  uplink-security-cyborg-module-name
+#  description: uplink-security-cyborg-module-desc
+#  productEntity: BorgModuleSecurity
+#  icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-weapon-module }
+#  cost:
+#    TriadCommerceCredit: 50
+#  categories:
+#    - UplinkSecurityUtility
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      whitelist:
+#        tags:
+#          - SecurityUplink
 
 - type: listing
   id: UplinkSecurityMechPulseRifle
@@ -769,11 +731,11 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfWarden
+       - TdfPatrolTeamLeader
+       - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityEmpRocket
@@ -966,10 +928,10 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfChiefEnforcer
-    #   - TdfMedic
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfChiefEnforcer
+       - TdfMedic
 
 - type: listing
   id: UplinkSecurityAmbuzol
@@ -1002,11 +964,11 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfChiefEnforcer
-    #   - TdfMedic
-    #   - TdfWarden
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfChiefEnforcer
+       - TdfMedic
+       - TdfWarden
 
 - type: listing
   id: UplinkSecurityInspector
@@ -1039,11 +1001,11 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfWarden
+       - TdfPatrolTeamLeader
+       - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityTruncheon
@@ -1092,48 +1054,6 @@
 #      whitelist:
 #        tags:
 #          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityPulsePistol
-  name:  uplink-security-pulsepistol-name
-  description: uplink-security-pulsepistol-desc
-  productEntity: WeaponPulsePistol
-  icon: { sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 60
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
-
-- type: listing
-  id: UplinkSecurityPulseCarbine
-  name:  uplink-security-pulsecarbine-name
-  description: uplink-security-pulsecarbine-desc
-  productEntity: WeaponPulseCarbine
-  icon: { sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 250
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityHammer
@@ -1187,8 +1107,8 @@
   id: UplinkSecuritySwat
   name:  uplink-security-swat-name
   description: uplink-security-swat-desc
-  productEntity: ClothingMaskGasSheriff
-  icon: { sprite: _NF/Clothing/Mask/nfsd_sheriff.rsi, state: icon}
+  productEntity: ClothingMaskGasSwatTdf
+  icon: { sprite: _Triad/Clothing/Mask/tdf_swat_mask.rsi, state: icon}
   cost:
     TriadCommerceCredit: 5 #Mono: From 3 to 1
   categories:
@@ -1198,11 +1118,11 @@
       whitelist:
         tags:
           - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
+    - !type:BuyerJobCondition
+      whitelist:
+       - TdfWarden
+       - TdfPatrolTeamLeader
+       - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecuritySpeedloader

@@ -88,14 +88,16 @@
 - type: entity
   id: NfsdTechFabCircuitboard
   parent: SecurityTechFabCircuitboard
-  name: TSFMC techfab machine board
-  description: A machine printed circuit board for an TSFMC techfab.
+  name: TDF techfab machine board
+  description: A machine printed circuit board for an TDF techfab.
   components:
     - type: Sprite
       sprite: _NF/Objects/Misc/module.rsi
       state: nfsd
     - type: MachineBoard
       prototype: NfsdTechFab
+    - type: SavingContraband # Triad
+      examineText: ship-saving-contraband-2-text
 
 # Thrusters
 - type: entity
