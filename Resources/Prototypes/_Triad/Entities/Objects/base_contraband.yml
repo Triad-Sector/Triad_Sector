@@ -1,3 +1,4 @@
+# TDF
 - type: entity
   parent: BaseFactionGearT0
   id: BaseFactionGearTDFT0
@@ -35,3 +36,36 @@
     severity: FactionGear3
     turnInValues:
       Doubloon: 45
+
+# Solarian Directive | TODO: Turn in values for these
+- type: entity
+  parent: BaseFactionGearT0
+  id: BaseFactionGearSDT0
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ SolarianDirective ]
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT1
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear1
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT2
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear2
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT3
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear3

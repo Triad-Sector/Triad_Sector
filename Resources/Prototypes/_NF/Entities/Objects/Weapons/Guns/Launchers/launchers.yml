@@ -42,7 +42,7 @@
     price: 50
 
 - type: entity
-  name: TSFMC grenade launcher
+  name: TDF grenade launcher # Triad - rename
   parent: WeaponLauncherChinaLake
   id: WeaponLauncherNfsdLake
   description: Able to lob both grenades and darts!
@@ -59,3 +59,5 @@
         - LessLethalGrenade # Mono
   - type: StaticPrice
     price: 50
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text

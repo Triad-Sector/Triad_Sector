@@ -60,17 +60,21 @@
   parent: [ BaseItem, StorePresetSecurityUplink ]
   id: BaseSecurityUplinkRadio
   name: TDF uplink
-  description: Retro looking old radio...
+  description: Tablet-thingie. Turns Triad Commerce Credits into sweet-sweet security gear!
   suffix: Empty
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: Objects/Devices/communication.rsi
+    sprite: _Triad/Objects/Devices/tdf_uplink.rsi
     layers:
-    - state: old-radio
+    - state: icon
+      scale: 0.7, 0.7
+    - state: icon-overlay
+      scale: 0.7, 0.7
+      shader: unshaded
   - type: Item
-    sprite: Objects/Devices/communication.rsi
-    heldPrefix: old-radio
+    sprite: _Triad/Objects/Devices/tdf_uplink.rsi
+    heldPrefix: icon
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:

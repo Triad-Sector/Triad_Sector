@@ -1,8 +1,8 @@
 - type: entity
   name: VFD MR-8C DMR (8x65mm SKR)
-  parent: [BaseWeaponRifle, BaseGunWieldable, BaseFactionGearTSFT2]
+  parent: [BaseWeaponRifle, BaseGunWieldable, BaseFactionGearSDT2]
   id: WeaponRifleMR8C
-  description: The DMR variant of the MR-8 series, firing with incredible accuracy. Chambered in 8x65mm SKR. A label on the side reads "FOR MILITARY USE ONLY".
+  description: The DMR variant of the MR-8 series, firing with incredible accuracy. Chambered in 8x65mm SKR. A label on the side reads "FOR MILITARY USE ONLY". Commonly seen in the hands of Solarian Directive PMCs.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Rifles/mr8c.rsi

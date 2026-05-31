@@ -8,6 +8,8 @@
     colorOptions:
       - "#ffd580" # Triad
     blockHacking: true
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: NFEnergyPickaxe
