@@ -6,11 +6,14 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
 
 /// <summary>
-/// Marks a belt item as a powered support harness for the MLA-79 smartgun.
+/// Marks a belt item as a powered support harness for matching weapons.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class Mla79HarnessComponent : Component
+public sealed partial class WeaponHarnessComponent : Component
 {
+    [DataField]
+    public string SupportKey = "Default";
+
     [DataField]
     public float ActiveChargePerSecond = 5f;
 
@@ -18,16 +21,16 @@ public sealed partial class Mla79HarnessComponent : Component
     public float HalfChargeThreshold = 0.5f;
 
     [DataField]
-    public ProtoId<AlertPrototype> LowPowerAlert = "Mla79HarnessLowPower";
+    public ProtoId<AlertPrototype> LowPowerAlert = "PoweredWeaponHarnessLowPower";
 
     [DataField]
-    public ProtoId<AlertPrototype> DepletedAlert = "Mla79HarnessDepleted";
+    public ProtoId<AlertPrototype> DepletedAlert = "PoweredWeaponHarnessDepleted";
 
     [DataField]
     public SoundSpecifier? LinkSound = new SoundPathSpecifier("/Audio/Machines/chime.ogg");
 
     [DataField]
-    public string LinkPopup = "GUN READY";
+    public string LinkPopup = "WEAPON READY";
 
     [DataField]
     public bool MagneticRetrievalEnabled = true;
@@ -39,10 +42,10 @@ public sealed partial class Mla79HarnessComponent : Component
     public string DisableMagneticRetrievalVerb = "Disable magnetic retrieval";
 
     [DataField]
-    public string MagneticRetrievalEnabledPopup = "MLA-79 magnetic retrieval enabled.";
+    public string MagneticRetrievalEnabledPopup = "Harness magnetic retrieval enabled.";
 
     [DataField]
-    public string MagneticRetrievalDisabledPopup = "MLA-79 magnetic retrieval disabled.";
+    public string MagneticRetrievalDisabledPopup = "Harness magnetic retrieval disabled.";
 
     [DataField]
     public float DrainedWalkModifier = 0.5f;

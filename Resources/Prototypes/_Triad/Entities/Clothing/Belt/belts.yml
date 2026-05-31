@@ -135,17 +135,10 @@
     - type: Storage
       grid:
         - 0,0,5,1
-    - type: Mla79Harness
-      activeChargePerSecond: 5
-      halfChargeThreshold: 0.5
+    - type: WeaponHarness
+      supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower
       depletedAlert: Mla79HarnessDepleted
       linkPopup: GUN READY
-      drainedWalkModifier: 0.5
-      drainedSprintModifier: 0.4
-      linkSound:
-        path: /Audio/Machines/chime.ogg
-      halfChargeSound:
-        path: /Audio/Machines/twobeep.ogg
-      depletedSound:
-        path: /Audio/Machines/Nuke/angry_beep.ogg
+      magneticRetrievalEnabledPopup: MLA-79 magnetic retrieval enabled.
+      magneticRetrievalDisabledPopup: MLA-79 magnetic retrieval disabled.

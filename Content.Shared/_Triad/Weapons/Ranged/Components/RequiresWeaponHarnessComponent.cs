@@ -3,11 +3,14 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
 
 /// <summary>
-/// Marks a gun that receives its full handling only while the user wears a powered MLA-79 harness.
+/// Marks a gun that receives its full handling only while the user wears a matching powered harness.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class RequiresMla79HarnessSupportComponent : Component
+public sealed partial class RequiresWeaponHarnessComponent : Component
 {
+    [DataField, AutoNetworkedField]
+    public string SupportKey = "Default";
+
     [DataField, AutoNetworkedField]
     public Angle MinAngleBonus = Angle.FromDegrees(-5);
 

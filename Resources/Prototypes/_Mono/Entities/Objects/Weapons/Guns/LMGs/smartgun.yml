@@ -5,7 +5,7 @@
   description: A military prototype that saw rare use in front-lines field testing. This is a refined version for standard production.
   components:
   # Triad: Removed GunWieldBonus and SpeedModifiedOnWield so harness support controls the MLA-79 bonuses.
-  # Triad: RequiresMla79HarnessSupport below restores accuracy and movement behavior through the powered harness.
+  # Triad: RequiresWeaponHarness below restores accuracy and movement behavior through the powered harness.
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/SmartGuns/ml79a.rsi
     layers:
@@ -71,7 +71,8 @@
       sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
       state: all
   # Triad: Harness-specific support. Without a powered harness, this weapon keeps base spread and slows the wielder.
-  - type: RequiresMla79HarnessSupport
+  - type: RequiresWeaponHarness
+    supportKey: Mla79Smartgun
     minAngleBonus: -5
     maxAngleBonus: -37
     unsupportedWalkModifier: 0.5
