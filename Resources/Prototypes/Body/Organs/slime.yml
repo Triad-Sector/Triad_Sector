@@ -8,7 +8,7 @@
     sprite: Mobs/Species/Slime/organs.rsi
     state: brain-slime
   - type: Stomach
-     specialDigestible:
+    specialDigestible:
       Frontier: general moth digestion
       tags:
        - ClothMade
