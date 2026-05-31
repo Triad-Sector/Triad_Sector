@@ -51,15 +51,13 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
         if (!_harnessSupport.HasActiveSupport(ent.Owner, args.User, ent.Comp) ||
             !_harnessSupport.TryGetPoweredHarness(args.User, out var harnessUid) ||
             !TryComp<PowerCellDrawComponent>(harnessUid, out var draw))
-        {
             return;
-        }
 
-        if (_powerCell.TryUseCharge(harnessUid, draw.UseRate * args.Ammo.Count, user: args.User))
-        {
-            _harnessSupport.RefreshHeldMla79(args.User);
-            UpdateHarnessAlerts((harnessUid, Comp<Mla79HarnessComponent>(harnessUid)), args.User, true);
-        }
+        if (!_powerCell.TryUseCharge(harnessUid, draw.UseRate * args.Ammo.Count, user: args.User))
+            return;
+
+        _harnessSupport.RefreshHeldMla79(args.User);
+        UpdateHarnessAlerts((harnessUid, Comp<Mla79HarnessComponent>(harnessUid)), args.User, true);
     }
 
     private void OnMla79Dropped(Entity<RequiresMla79HarnessSupportComponent> ent, ref DroppedEvent args)
@@ -68,9 +66,7 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
             !_harnessSupport.TryGetPoweredHarness(args.User, out var harnessUid) ||
             !TryComp<Mla79HarnessComponent>(harnessUid, out var harness) ||
             !harness.MagneticRetrievalEnabled)
-        {
             return;
-        }
 
         var gun = ent.Owner;
         var user = args.User;
@@ -85,12 +81,10 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
             !_harnessSupport.TryGetPoweredHarness(user, out var harnessUid) ||
             !TryComp<Mla79HarnessComponent>(harnessUid, out var harness) ||
             !harness.MagneticRetrievalEnabled ||
-            _inventory.TryGetSlotEntity(user, "suitstorage", out _))
-        {
+            _inventory.TryGetSlotEntity(user, Mla79HarnessSupportSystem.SuitStorageSlot, out _))
             return;
-        }
 
-        if (!_inventory.TryEquip(user, user, gun, "suitstorage", silent: true))
+        if (!_inventory.TryEquip(user, user, gun, Mla79HarnessSupportSystem.SuitStorageSlot, silent: true))
             return;
 
         _harnessSupport.RefreshHeldMla79(user);
@@ -135,25 +129,21 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
         if (_harnessSupport.HasMla79InHandOrSuitStorage(args.User) ||
             !TryGetHarness(args.User, out var harnessUid) ||
             !TryComp<Mla79HarnessComponent>(harnessUid, out var harness))
-        {
             return;
-        }
 
         harness.LinkSoundPlayed = false;
     }
 
     private void OnMla79UnequippedInventory(Mla79HarnessGunUnequippedInventoryEvent args)
     {
-        if (args.Slot == "suitstorage")
+        if (args.Slot == Mla79HarnessSupportSystem.SuitStorageSlot)
             _suppressNextLinkFeedback.Add(args.Gun);
     }
 
     private void OnHarnessEquipped(Mla79HarnessEquippedEvent args)
     {
-        if (args.Slot != "belt")
-            return;
-
-        if (!TryComp<Mla79HarnessComponent>(args.Harness, out var harness))
+        if (args.Slot != Mla79HarnessSupportSystem.BeltSlot ||
+            !TryComp<Mla79HarnessComponent>(args.Harness, out var harness))
             return;
 
         TryLinkHarness(args.User, true, false);
@@ -162,10 +152,8 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
 
     private void OnHarnessUnequipped(Mla79HarnessUnequippedEvent args)
     {
-        if (args.Slot != "belt")
-            return;
-
-        if (!TryComp<Mla79HarnessComponent>(args.Harness, out var harness))
+        if (args.Slot != Mla79HarnessSupportSystem.BeltSlot ||
+            !TryComp<Mla79HarnessComponent>(args.Harness, out var harness))
             return;
 
         ClearHarnessAlerts(args.User, harness);
@@ -222,9 +210,7 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
         if (!_harnessSupport.TryGetPoweredHarness(user, out var harnessUid) ||
             !TryComp<Mla79HarnessComponent>(harnessUid, out var harness) ||
             !_harnessSupport.HasMla79InHandOrSuitStorage(user))
-        {
             return;
-        }
 
         if (!harness.LinkSoundPlayed)
         {
@@ -294,11 +280,9 @@ public sealed class Mla79HarnessPowerDrainSystem : EntitySystem
     {
         harnessUid = default;
 
-        if (!_inventory.TryGetSlotEntity(user, "belt", out var belt) ||
+        if (!_inventory.TryGetSlotEntity(user, Mla79HarnessSupportSystem.BeltSlot, out var belt) ||
             !HasComp<Mla79HarnessComponent>(belt.Value))
-        {
             return false;
-        }
 
         harnessUid = belt.Value;
         return true;

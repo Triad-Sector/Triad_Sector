@@ -18,6 +18,9 @@ namespace Content.Shared._Triad.Weapons.Ranged.Systems;
 
 public sealed class Mla79HarnessSupportSystem : EntitySystem
 {
+    public const string BeltSlot = "belt";
+    public const string SuitStorageSlot = "suitstorage";
+
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;
@@ -50,13 +53,10 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
         EntityUid user,
         RequiresMla79HarnessSupportComponent? support = null)
     {
-        if (!Resolve(gun, ref support, false))
-            return false;
-
-        if (!TryComp(gun, out WieldableComponent? wieldable) || !wieldable.Wielded)
-            return false;
-
-        return TryGetPoweredHarness(user, out _);
+        return Resolve(gun, ref support, false) &&
+               TryComp(gun, out WieldableComponent? wieldable) &&
+               wieldable.Wielded &&
+               TryGetPoweredHarness(user, out _);
     }
 
     public bool TryGetPoweredHarness(
@@ -65,13 +65,9 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
     {
         harnessUid = default;
 
-        if (!_inventory.TryGetSlotEntity(user, "belt", out var belt) ||
-            !HasComp<Mla79HarnessComponent>(belt.Value))
-        {
-            return false;
-        }
-
-        if (!_powerCell.HasActivatableCharge(belt.Value))
+        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
+            !HasComp<Mla79HarnessComponent>(belt.Value) ||
+            !_powerCell.HasActivatableCharge(belt.Value))
             return false;
 
         harnessUid = belt.Value;
@@ -86,7 +82,7 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
                 return true;
         }
 
-        return _inventory.TryGetSlotEntity(user, "suitstorage", out var suitStorage) &&
+        return _inventory.TryGetSlotEntity(user, SuitStorageSlot, out var suitStorage) &&
                HasComp<RequiresMla79HarnessSupportComponent>(suitStorage.Value);
     }
 
@@ -126,7 +122,7 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
     {
         var user = Transform(ent.Owner).ParentUid;
 
-        if (!_inventory.TryGetSlotEntity(user, "suitstorage", out var suitStorage) ||
+        if (!_inventory.TryGetSlotEntity(user, SuitStorageSlot, out var suitStorage) ||
             suitStorage.Value != ent.Owner ||
             TryGetPoweredHarness(user, out _) ||
             TryGetHarnessWithCell(user, out _))
@@ -145,15 +141,11 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
 
         if (!HasMla79InHandOrSuitStorage(user) ||
             TryGetPoweredHarness(user, out _))
-        {
             return;
-        }
 
         if (!TryGetHarnessWithCell(user, out var harnessUid) ||
             harnessUid != ent.Owner)
-        {
             return;
-        }
 
         args.Args.ModifySpeed(ent.Comp.DrainedWalkModifier, ent.Comp.DrainedSprintModifier);
     }
@@ -216,11 +208,11 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
 
         foreach (var held in _hands.EnumerateHeld(user))
         {
-            if (TryComp<GunComponent>(held, out var gun) &&
-                HasComp<RequiresMla79HarnessSupportComponent>(held))
-            {
-                _gun.RefreshModifiers((held, gun), user);
-            }
+            if (!TryComp<GunComponent>(held, out var gun) ||
+                !HasComp<RequiresMla79HarnessSupportComponent>(held))
+                continue;
+
+            _gun.RefreshModifiers((held, gun), user);
         }
     }
 
@@ -236,17 +228,14 @@ public sealed class Mla79HarnessSupportSystem : EntitySystem
     {
         harnessUid = default;
 
-        if (!_inventory.TryGetSlotEntity(user, "belt", out var belt) ||
+        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
             !HasComp<Mla79HarnessComponent>(belt.Value) ||
             !TryComp<PowerCellSlotComponent>(belt.Value, out var slot) ||
             !_itemSlots.TryGetSlot(belt.Value, slot.CellSlotId, out var itemSlot) ||
             itemSlot.Item == null)
-        {
             return false;
-        }
 
         harnessUid = belt.Value;
         return true;
     }
-
 }
