@@ -1,13 +1,6 @@
 - type: loadoutGroup
   id: TdfChiefEnforcerJumpsuit
   name: loadout-group-contractor-jumpsuit
-  loadouts:
-  - ClothingUniformJumpsuitTdfChiefEnforcer
-  - ClothingUniformJumpsuitTdfChiefEnforcerFormal
-
-- type: loadoutGroup
-  id: TdfChiefEnforcerJumpsuit
-  name: loadout-group-contractor-jumpsuit
   minLimit: 1
   loadouts:
   - ClothingUniformJumpsuitTdfChiefEnforcer
