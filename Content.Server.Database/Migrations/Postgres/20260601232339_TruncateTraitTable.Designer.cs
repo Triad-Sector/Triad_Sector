@@ -16,7 +16,7 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20260117145027_TruncateTraitTable")]
+    [Migration("20260601232339_TruncateTraitTable")]
     partial class TruncateTraitTable
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace Content.Server.Database.Migrations.Postgres
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.1")
+                .HasAnnotation("ProductVersion", "10.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -104,10 +104,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("Id")
                         .HasColumnType("integer")
                         .HasColumnName("admin_log_id");
-
-                    b.Property<long>("CurTime")
-                        .HasColumnType("bigint")
-                        .HasColumnName("cur_time");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp with time zone")
@@ -357,6 +353,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("name");
 
+                    b.Property<string>("ShortName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("short_name");
+
                     b.HasKey("Id")
                         .HasName("PK_admin_rank");
 
@@ -584,79 +585,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("blacklist", (string)null);
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("cdprofile_id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<JsonDocument>("CharacterRecords")
-                        .HasColumnType("jsonb")
-                        .HasColumnName("character_records");
-
-                    b.Property<float>("Height")
-                        .HasColumnType("real")
-                        .HasColumnName("height");
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("integer")
-                        .HasColumnName("profile_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_cdprofile");
-
-                    b.HasIndex("ProfileId")
-                        .IsUnique();
-
-                    b.ToTable("cdprofile", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("cd_character_record_entries_id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CDProfileId")
-                        .HasColumnType("integer")
-                        .HasColumnName("cdprofile_id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
-                    b.Property<string>("Involved")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("involved");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("title");
-
-                    b.Property<byte>("Type")
-                        .HasColumnType("smallint")
-                        .HasColumnName("type");
-
-                    b.HasKey("Id")
-                        .HasName("PK_cd_character_record_entries");
-
-                    b.HasIndex("CDProfileId");
-
-                    b.HasIndex("Id")
-                        .HasDatabaseName("IX_cd_character_record_entries_cd_character_record_entries_id");
-
-                    b.ToTable("cd_character_record_entries", (string)null);
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -714,37 +642,108 @@ namespace Content.Server.Database.Migrations.Postgres
                         });
                 });
 
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("dv_seen_tips_id");
+                        .HasColumnName("consent_freetext_read_receipt_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DismissedAt")
+                    b.Property<DateTime>("ReadAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("dismissed_at");
+                        .HasColumnName("read_at");
 
-                    b.Property<Guid>("PlayerUserId")
+                    b.Property<int>("ReadConsentSettingsId")
+                        .HasColumnType("integer")
+                        .HasColumnName("read_consent_settings_id");
+
+                    b.Property<Guid>("ReaderUserId")
                         .HasColumnType("uuid")
-                        .HasColumnName("player_user_id");
-
-                    b.Property<string>("TipProtoId")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("character varying(64)")
-                        .HasColumnName("tip_proto_id");
+                        .HasColumnName("reader_user_id");
 
                     b.HasKey("Id")
-                        .HasName("PK_dv_seen_tips");
+                        .HasName("PK_consent_freetext_read_receipt");
 
-                    b.HasIndex("PlayerUserId", "TipProtoId")
+                    b.HasIndex("ReadConsentSettingsId")
+                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
+
+                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
+                        .IsUnique();
+
+                    b.ToTable("consent_freetext_read_receipt", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("consent_settings_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConsentFreetext")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("consent_freetext");
+
+                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("consent_freetext_updated_at");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_settings");
+
+                    b.HasIndex("ProfileId")
                         .IsUnique()
-                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
+                        .HasDatabaseName("IX_consent_settings_profile_id");
 
-                    b.ToTable("dv_seen_tips", (string)null);
+                    b.HasIndex("UserId", "ProfileId")
+                        .IsUnique();
+
+                    b.ToTable("consent_settings", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("consent_toggle_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ConsentSettingsId")
+                        .HasColumnType("integer")
+                        .HasColumnName("consent_settings_id");
+
+                    b.Property<string>("ToggleProtoId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("toggle_proto_id");
+
+                    b.Property<string>("ToggleProtoState")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("toggle_proto_state");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_toggle");
+
+                    b.HasIndex("ConsentSettingsId", "ToggleProtoId")
+                        .IsUnique();
+
+                    b.ToTable("consent_toggle", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -914,6 +913,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text[]")
                         .HasColumnName("construction_favorites");
 
+                    b.Property<int>("MonoCoins")
+                        .HasColumnType("integer")
+                        .HasColumnName("mono_coins");
+
                     b.Property<int>("SelectedCharacterSlot")
                         .HasColumnType("integer")
                         .HasColumnName("selected_character_slot");
@@ -944,10 +947,19 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
+                    b.Property<int>("BankBalance")
+                        .HasColumnType("integer")
+                        .HasColumnName("bank_balance");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("char_name");
+
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("company");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -984,6 +996,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("hair_name");
 
+                    b.Property<float>("Height")
+                        .HasColumnType("real")
+                        .HasColumnName("height");
+
                     b.Property<JsonDocument>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
@@ -1018,6 +1034,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("species");
+
+                    b.Property<float>("Width")
+                        .HasColumnType("real")
+                        .HasColumnName("width");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");
@@ -1773,30 +1793,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Profile");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.HasOne("Content.Server.Database.Profile", "Profile")
-                        .WithOne("CDProfile")
-                        .HasForeignKey("Content.Server.Database.CDModel+CDProfile", "ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_cdprofile_profile_profile_id");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
-                {
-                    b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
-                        .WithMany("CharacterRecordEntries")
-                        .HasForeignKey("CDProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_cd_character_record_entries_cdprofile_cdprofile_id");
-
-                    b.Navigation("CDProfile");
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -1837,15 +1833,38 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Server");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
-                    b.HasOne("Content.Server.Database.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
+                        .WithMany("ReadReceipts")
+                        .HasForeignKey("ReadConsentSettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
+                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent~");
+
+                    b.Navigation("ReadConsentSettings");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("ConsentSettings")
+                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
+                        .HasConstraintName("FK_consent_settings_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
+                        .WithMany("ConsentToggles")
+                        .HasForeignKey("ConsentSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
+
+                    b.Navigation("ConsentSettings");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>
@@ -2167,14 +2186,16 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Flags");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.Navigation("CharacterRecordEntries");
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Navigation("BanHits");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.Navigation("ConsentToggles");
+
+                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2225,7 +2246,7 @@ namespace Content.Server.Database.Migrations.Postgres
                 {
                     b.Navigation("Antags");
 
-                    b.Navigation("CDProfile");
+                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 

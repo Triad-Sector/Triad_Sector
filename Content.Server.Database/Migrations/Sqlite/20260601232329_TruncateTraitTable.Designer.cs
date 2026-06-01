@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Content.Server.Database.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteServerDbContext))]
-    [Migration("20260117145007_TruncateTraitTable")]
+    [Migration("20260601232329_TruncateTraitTable")]
     partial class TruncateTraitTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -93,10 +93,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("Id")
                         .HasColumnType("INTEGER")
                         .HasColumnName("admin_log_id");
-
-                    b.Property<long>("CurTime")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("cur_time");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT")
@@ -335,6 +331,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("name");
 
+                    b.Property<string>("ShortName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("short_name");
+
                     b.HasKey("Id")
                         .HasName("PK_admin_rank");
 
@@ -552,76 +553,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("blacklist", (string)null);
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("cdprofile_id");
-
-                    b.Property<byte[]>("CharacterRecords")
-                        .HasColumnType("jsonb")
-                        .HasColumnName("character_records");
-
-                    b.Property<float>("Height")
-                        .HasColumnType("REAL")
-                        .HasColumnName("height");
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("profile_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_cdprofile");
-
-                    b.HasIndex("ProfileId")
-                        .IsUnique();
-
-                    b.ToTable("cdprofile", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("cd_character_record_entries_id");
-
-                    b.Property<int>("CDProfileId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("cdprofile_id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("description");
-
-                    b.Property<string>("Involved")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("involved");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("title");
-
-                    b.Property<byte>("Type")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("type");
-
-                    b.HasKey("Id")
-                        .HasName("PK_cd_character_record_entries");
-
-                    b.HasIndex("CDProfileId")
-                        .HasDatabaseName("IX_cd_character_record_entries_cdprofile_id");
-
-                    b.HasIndex("Id")
-                        .HasDatabaseName("IX_cd_character_record_entries_cd_character_record_entries_id");
-
-                    b.ToTable("cd_character_record_entries", (string)null);
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -674,35 +605,102 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("connection_log", (string)null);
                 });
 
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasColumnName("dv_seen_tips_id");
+                        .HasColumnName("consent_freetext_read_receipt_id");
 
-                    b.Property<DateTime>("DismissedAt")
+                    b.Property<DateTime>("ReadAt")
                         .HasColumnType("TEXT")
-                        .HasColumnName("dismissed_at");
+                        .HasColumnName("read_at");
 
-                    b.Property<Guid>("PlayerUserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("player_user_id");
+                    b.Property<int>("ReadConsentSettingsId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("read_consent_settings_id");
 
-                    b.Property<string>("TipProtoId")
-                        .IsRequired()
-                        .HasMaxLength(64)
+                    b.Property<Guid>("ReaderUserId")
                         .HasColumnType("TEXT")
-                        .HasColumnName("tip_proto_id");
+                        .HasColumnName("reader_user_id");
 
                     b.HasKey("Id")
-                        .HasName("PK_dv_seen_tips");
+                        .HasName("PK_consent_freetext_read_receipt");
 
-                    b.HasIndex("PlayerUserId", "TipProtoId")
+                    b.HasIndex("ReadConsentSettingsId")
+                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
+
+                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
+                        .IsUnique();
+
+                    b.ToTable("consent_freetext_read_receipt", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_settings_id");
+
+                    b.Property<string>("ConsentFreetext")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("consent_freetext");
+
+                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("consent_freetext_updated_at");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_settings");
+
+                    b.HasIndex("ProfileId")
                         .IsUnique()
-                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
+                        .HasDatabaseName("IX_consent_settings_profile_id");
 
-                    b.ToTable("dv_seen_tips", (string)null);
+                    b.HasIndex("UserId", "ProfileId")
+                        .IsUnique();
+
+                    b.ToTable("consent_settings", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_toggle_id");
+
+                    b.Property<int>("ConsentSettingsId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_settings_id");
+
+                    b.Property<string>("ToggleProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("toggle_proto_id");
+
+                    b.Property<string>("ToggleProtoState")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("toggle_proto_state");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_toggle");
+
+                    b.HasIndex("ConsentSettingsId", "ToggleProtoId")
+                        .IsUnique();
+
+                    b.ToTable("consent_toggle", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -862,6 +860,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("construction_favorites");
 
+                    b.Property<int>("MonoCoins")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("mono_coins");
+
                     b.Property<int>("SelectedCharacterSlot")
                         .HasColumnType("INTEGER")
                         .HasColumnName("selected_character_slot");
@@ -890,10 +892,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
 
+                    b.Property<int>("BankBalance")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("bank_balance");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("char_name");
+
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("company");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -930,6 +941,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("hair_name");
 
+                    b.Property<float>("Height")
+                        .HasColumnType("REAL")
+                        .HasColumnName("height");
+
                     b.Property<byte[]>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
@@ -964,6 +979,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
+
+                    b.Property<float>("Width")
+                        .HasColumnType("REAL")
+                        .HasColumnName("width");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");
@@ -1691,30 +1710,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Profile");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.HasOne("Content.Server.Database.Profile", "Profile")
-                        .WithOne("CDProfile")
-                        .HasForeignKey("Content.Server.Database.CDModel+CDProfile", "ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_cdprofile_profile_profile_id");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
-                {
-                    b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
-                        .WithMany("CharacterRecordEntries")
-                        .HasForeignKey("CDProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_cd_character_record_entries_cdprofile_cdprofile_id");
-
-                    b.Navigation("CDProfile");
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -1755,15 +1750,38 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Server");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
-                    b.HasOne("Content.Server.Database.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
+                        .WithMany("ReadReceipts")
+                        .HasForeignKey("ReadConsentSettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
+                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent_settings_id");
+
+                    b.Navigation("ReadConsentSettings");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("ConsentSettings")
+                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
+                        .HasConstraintName("FK_consent_settings_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
+                        .WithMany("ConsentToggles")
+                        .HasForeignKey("ConsentSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
+
+                    b.Navigation("ConsentSettings");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>
@@ -2085,14 +2103,16 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Flags");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-                {
-                    b.Navigation("CharacterRecordEntries");
-                });
-
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Navigation("BanHits");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.Navigation("ConsentToggles");
+
+                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2143,7 +2163,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                 {
                     b.Navigation("Antags");
 
-                    b.Navigation("CDProfile");
+                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 

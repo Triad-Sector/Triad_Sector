@@ -10,13 +10,14 @@ namespace Content.Server.Database.Migrations.Postgres
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Real Traits reworks every trait id, so stored selections no longer resolve. Clear them.
             migrationBuilder.Sql("TRUNCATE TABLE trait RESTART IDENTITY;");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            // Not like truncate operations can be reversed
+            // Truncation cannot be reversed.
         }
     }
 }
