@@ -221,6 +221,10 @@
   - !type:IsSpeciesCondition
     species: Arachnid
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits migration dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
