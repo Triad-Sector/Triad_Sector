@@ -23,3 +23,13 @@
   id: ClothingHeadHatBeretTdfChiefEnforcer
   equipment:
     head: ClothingHeadHatBeretTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingOuterCoatTdfChiefEnforcerTrench
+  equipment:
+    outerClothing: ClothingOuterCoatTdfChiefEnforcerTrench
+
+- type: loadout
+  id: ClothingOuterWinterTdfChiefEnforcer
+  equipment:
+    outerClothing: ClothingOuterWinterTdfChiefEnforcer

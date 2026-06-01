@@ -17,3 +17,13 @@
   id: ClothingHeadHatTdfWarden
   equipment:
     head: ClothingHeadHatTdfWarden
+
+- type: loadout
+  id: ClothingOuterCoatTdfWarden
+  equipment:
+    outerClothing: ClothingOuterCoatTdfWarden
+
+- type: loadout
+  id: ClothingOuterCoatTdfWardenAlt
+  equipment:
+    outerClothing: ClothingOuterCoatTdfWardenAlt

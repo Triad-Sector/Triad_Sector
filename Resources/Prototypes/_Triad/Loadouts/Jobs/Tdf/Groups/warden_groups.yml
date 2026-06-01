@@ -24,3 +24,15 @@
   - ClothingHeadHatBeretTdfWarden
   - ClothingHeadHatTdfWarden
   - TdfHelmet
+
+- type: loadoutGroup
+  id: TdfWardenOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 1
+  loadouts:
+  - ClothingOuterCoatTdfWarden
+  - ClothingOuterCoatTdfWardenAlt
+  fallbacks:
+  - ClothingOuterCoatTdfWarden
+  subgroups:
+  - TdfOuterClothing

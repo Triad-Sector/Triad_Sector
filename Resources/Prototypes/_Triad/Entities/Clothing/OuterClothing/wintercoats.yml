@@ -1,6 +1,6 @@
 - type: entity
   parent: [ClothingOuterCoatTdfTrench, ClothingOuterWinterCoat]
-  id: ClothingOuterWinterTdfWarden
+  id: ClothingOuterWinterTdfChiefEnforcer
   name: chief enforcer's winter trenchcoat
   description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat.
   components:

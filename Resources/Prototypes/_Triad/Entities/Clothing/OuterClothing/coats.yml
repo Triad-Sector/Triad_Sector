@@ -1,6 +1,6 @@
 - type: entity
   parent: ClothingOuterCoatHoSTrench
-  id: ClothingOuterCoatTdfTrench
+  id: ClothingOuterCoatTdfChiefEnforcerTrench
   name: chief enforcer's armored trenchcoat
   description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence. Has a nice and gold TDF stripe around the coat.
   components:
@@ -11,7 +11,7 @@
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase]
-  id: ClothingOuterCoatWarden
+  id: ClothingOuterCoatTdfWarden
   name: TDF warden's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
   components:
@@ -22,7 +22,7 @@
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat]
-  id: ClothingOuterWinterTdfWarden
+  id: ClothingOuterCoatTdfWardenAlt
   name: TDF warden's armored coat
   description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:

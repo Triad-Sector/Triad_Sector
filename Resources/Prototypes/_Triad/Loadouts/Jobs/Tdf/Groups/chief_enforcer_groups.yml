@@ -34,3 +34,15 @@
   loadouts:
   - ClothingHeadHatBeretTdfChiefEnforcer
   - TdfHelmet
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 1
+  loadouts:
+  - ClothingOuterCoatTdfChiefEnforcerTrench
+  - ClothingOuterWinterTdfChiefEnforcer
+  fallbacks:
+  - ClothingOuterCoatTdfChiefEnforcerTrench
+  subgroups:
+  - TdfOuterClothing
