@@ -93,7 +93,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 1
+        Heat: 0 # Triad 1->0
 
 - type: entity
   parent: BasicHitscan

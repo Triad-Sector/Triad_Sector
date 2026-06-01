@@ -46,6 +46,14 @@ public sealed partial class ItemToggleComponent : Component
     public int AltPriority;
     // End Frontier
 
+    // Triad: prevent wielding on toggle hardcoding
+    /// <summary>
+    /// If this is set to true, the item will toggle itself whenever wielded/unwielded.
+    /// </summary>
+    [DataField]
+    public bool ToggleOnWielded = true;
+    // End Triad
+
     /// <summary>
     ///     The localized text to display in the verb to activate.
     /// </summary>

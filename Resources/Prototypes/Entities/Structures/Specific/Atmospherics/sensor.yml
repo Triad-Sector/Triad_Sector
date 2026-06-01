@@ -46,6 +46,15 @@
   placement:
     mode: SnapgridCenter
   components:
+    # Triad: RPD port — air sensor is in the RPD's recipe list but doesn't inherit from GasPipeBase. Matches
+    # the alarm/pipe setup: deconstructable: false keeps the regular RCD out, rpd: true admits the RPD.
+    - type: RCDDeconstructable
+      cost: 1
+      delay: 1
+      fx: EffectRCDDeconstruct2
+      deconstructable: false
+      rpd: true
+    # End Triad
     - type: Transform
       anchored: true
     - type: Damageable

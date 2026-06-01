@@ -454,6 +454,13 @@
   - type: CartridgeAmmo
     proto: CleanerGrenadeLaunched
     deleteOnSpawn: true
+  # Triad : Make audio less louder
+  - type: SoundOnTrigger
+    sound:
+       path: /Audio/_Mono/Weapons/Grenades/smoke_bomb.ogg
+       params:
+          volume: -6
+  # End Triad
 
 - type: entity
   parent: SmokeGrenade

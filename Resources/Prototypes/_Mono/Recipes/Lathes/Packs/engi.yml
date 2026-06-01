@@ -18,7 +18,10 @@
 ## Dynamic
 
 - type: latheRecipePack
+  # Triad: id kept as "RCD" since the pack is referenced by that name in vendor/research configs;
+  # RPD is bundled alongside as a parity tool sharing the same RCDAmmo cartridges.
   id: RCD
   recipes:
   - RCD
   - RCDAmmo
+  - RPD # Triad

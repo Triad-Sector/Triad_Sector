@@ -12,9 +12,9 @@
       params:
         variation: 0.125
     Chitter:
-      path: /Audio/Voice/Talk/pai.ogg
+      path: /Audio/Voice/Arachnid/arachnid_chitter.ogg #Triad - Pointed to the correct chitter audio file.
     Squeak:
-      path: /Audio/Voice/Talk/pai.ogg
+      path: /Audio/Animals/mouse_squeak.ogg #Triad - Pointed to the correct chitter audio file.
     CatMeow:
       collection: CatMeows
       params:

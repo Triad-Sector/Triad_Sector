@@ -562,9 +562,15 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
+        if (HasComp<ShipyardVoucherComponent>(targetId))
+        {
+            ConsolePopup(player, "Error: Stored ships cannot be called in with vouchers.");
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
         TryComp<IdCardComponent>(targetId, out var idCard);
-        TryComp<ShipyardVoucherComponent>(targetId, out var voucher);
-        if (idCard is null && voucher is null)
+        if (idCard is null)
         {
             ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(player, uid, component);

@@ -1084,8 +1084,8 @@
     sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
-  - type: AddAccentClothing
-    accent: PirateAccent
+  #- type: AddAccentClothing # Triad removal - Remove forced accents
+  #  accent: PirateAccent
   - type: SuitSensor # Frontier
     randomMode: false # Frontier
     mode: SensorOff # Frontier
