@@ -66,10 +66,10 @@
   - TdfMedicPda
 
 - type: loadoutGroup
-  id: TdfHeadMedic
+  id: TdfMedicHead
   name: loadout-group-contractor-head
   minLimit: 0
   loadouts:
-  - TdfHelmet
-  - TdfBeret
-  - TdfBeretMedic
+  - ClothingHeadHatBeretTdfMedic
+  subgroups:
+  - TdfHead

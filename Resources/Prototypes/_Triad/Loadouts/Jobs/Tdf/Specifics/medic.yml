@@ -35,3 +35,8 @@
   id: TdfMedicPda
   equipment:
     id: TdfMedicPda
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfMedic
+  equipment:
+    head: ClothingHeadHatBeretTdfMedic

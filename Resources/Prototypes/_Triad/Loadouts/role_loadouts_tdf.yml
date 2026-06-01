@@ -54,7 +54,7 @@
 - type: roleLoadout
   id: JobTdfMedic
   groups:
-  - TdfHeadMedic
+  - TdfMedicHead
   - TdfMedicNeck
   - TdfMedicJumpsuit
   - TdfMedicGloves
@@ -109,7 +109,7 @@
 - type: roleLoadout
   id: JobTdfWarden
   groups:
-  - TdfHead
+  - TdfWardenHead
   - TdfNeck
   - TdfWardenJumpsuit
   - TdfGloves
@@ -136,7 +136,7 @@
 - type: roleLoadout
   id: JobTdfChiefEnforcer
   groups:
-  - TdfHead
+  - TdfChiefEnforcerHead
   - TdfNeck
   - TdfChiefEnforcerJumpsuit
   - TdfGloves

@@ -77,7 +77,7 @@
   minLimit: 0
   loadouts:
   - TdfHelmet
-  - TdfBeret
+  - ClothingHeadHatBeretTdf
 
 - type: loadoutGroup
   id: TdfGloves

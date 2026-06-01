@@ -7,3 +7,13 @@
   id: TdfWardenPda
   equipment:
     id: TdfWardenPda
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfWarden
+  equipment:
+    head: ClothingHeadHatBeretTdfWarden
+
+- type: loadout
+  id: ClothingHeadHatTdfWarden
+  equipment:
+    head: ClothingHeadHatTdfWarden

@@ -4,6 +4,6 @@
     head: ClothingHeadHelmetMercenaryBlack
 
 - type: loadout
-  id: TdfBeret
+  id: ClothingHeadHatBeretTdf
   equipment:
-    head: ClothingHeadHatBeretCommander
+    head: ClothingHeadHatBeretTdf

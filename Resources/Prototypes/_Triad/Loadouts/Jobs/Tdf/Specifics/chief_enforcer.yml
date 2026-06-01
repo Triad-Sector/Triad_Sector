@@ -18,3 +18,8 @@
   id: ClothingMaskGasSwatTdf
   equipment:
     mask: ClothingMaskGasSwatTdf
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfChiefEnforcer
+  equipment:
+    head: ClothingHeadHatBeretTdfChiefEnforcer

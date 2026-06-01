@@ -26,3 +26,11 @@
   - ClothingMaskGasSwatTdf
   subgroups:
   - TdfFace
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatBeretTdfChiefEnforcer
+  - TdfHelmet
