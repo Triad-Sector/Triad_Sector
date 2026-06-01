@@ -1,0 +1,56 @@
+- type: entity
+  parent: ClothingHeadHatBeretSecurity
+  id: ClothingHeadHatBeretTdf
+  name: TDF beret
+  description: A stylish clothing option for TDF enforcers.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretTdfMedic
+  name: TDF medic beret
+  description: White beret with the red and gold symbol of the TDF.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_medic.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_medic.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretTdfWarden
+  name: TDF warden's beret
+  description: A repurposed corporate blue beret, now sewn with the TDF symbol and warden's stripe.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_warden.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_warden.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretTdfChiefEnforcer
+  name: chief enforcer's beret
+  description: A black beret with a TDF Chief Enforers's rank emblem. For those that are more inclined towards style than safety.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_ce.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_ce.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTdfWarden
+  name: TDF warden's cap
+  description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you are THE LAW!
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
+  - type: StealTarget
+    stealGroup: ClothingHeadHatWarden
