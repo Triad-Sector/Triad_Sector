@@ -37,6 +37,8 @@ namespace Content.Client.Administration.UI.Tabs.AdminbusTab
             LoadGamePrototypeButton.OnPressed += LoadGamePrototypeButtonOnPressed;
             LoadGamePrototypeButton.Disabled = !adminManager.CanCommand("loadprototype");
             LoadBlueprintsButton.Disabled = !adminManager.CanCommand("loadgrid");
+            // Triad: tamper protection panel moved to the Admin tab (declarative CommandButtons,
+            // no code-behind wiring needed there). See AdminTab.xaml.
         }
 
         private void OnStatusUpdate()

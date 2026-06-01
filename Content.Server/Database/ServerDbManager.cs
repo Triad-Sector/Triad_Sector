@@ -387,6 +387,21 @@ namespace Content.Server.Database
         Task SendNotification(DatabaseNotification notification);
 
         #endregion
+
+        // Triad: tamper protection
+        #region Triad
+        /// <summary>
+        ///     Run an arbitrary EF Core command against the <see cref="ServerDbContext"/> on a worker thread.
+        ///     Intended for Triad-only feature stores that own queries which never make sense in core
+        ///     <see cref="ServerDbBase"/>. Treat the context as scoped to <paramref name="fn"/>; do not
+        ///     hand it out to callers, do not retain it across await boundaries outside the lambda.
+        /// </summary>
+        Task<T> RunTriadDbCommand<T>(Func<ServerDbContext, CancellationToken, Task<T>> fn, CancellationToken ct);
+
+        /// <inheritdoc cref="RunTriadDbCommand{T}"/>
+        Task RunTriadDbCommand(Func<ServerDbContext, CancellationToken, Task> fn, CancellationToken ct);
+        #endregion
+        // End Triad
     }
 
     /// <summary>
@@ -1164,6 +1179,22 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.UpdatePlayerConsentReadReceipt(readerUserId, readConsentSettingsId));
         }
+
+        // Triad: tamper protection
+        public Task<T> RunTriadDbCommand<T>(Func<ServerDbContext, CancellationToken, Task<T>> fn, CancellationToken ct)
+        {
+            // Caller decides read vs write; bump the write counter since most Triad ops mutate.
+            // If a hot read-only Triad path emerges, we can split the counters later.
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RunWithContextAsync(fn, ct));
+        }
+
+        public Task RunTriadDbCommand(Func<ServerDbContext, CancellationToken, Task> fn, CancellationToken ct)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RunWithContextAsync(fn, ct));
+        }
+        // End Triad
 
         // Wrapper functions to run DB commands from the thread pool.
         // This will avoid SynchronizationContext capturing and avoid running CPU work on the main thread.

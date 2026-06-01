@@ -12,5 +12,7 @@
         <Button Name="LoadGamePrototypeButton" Text="{Loc 'load-game-prototype'}"/>
         <cc:UICommandButton Name="LoadBlueprintsButton" Command="loadbp" Text="{Loc 'load-blueprints'}" WindowType="{x:Type abt:LoadBlueprintsWindow}"/>
         <cc:CommandButton Command="deleteewc Singularity" Name="DeleteSingulos" Text="{Loc 'delete-singularities'}"/>
+        <!-- Triad: tamper protection panel moved to the Admin tab (next to Admin Logs), split into
+             Tamper Audit / Permits buttons. See AdminTab.xaml. -->
     </GridContainer>
 </Control>

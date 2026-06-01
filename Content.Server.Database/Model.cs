@@ -48,6 +48,11 @@ namespace Content.Server.Database
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
+        // Triad: tamper protection
+        public DbSet<TriadShipyardSigningKey>       TriadShipyardSigningKeys        { get; set; } = default!;
+        public DbSet<TriadShipyardAuditEvent>       TriadShipyardAuditEvents        { get; set; } = default!;
+        public DbSet<TriadShipyardMigrationPermit>  TriadShipyardMigrationPermits   { get; set; } = default!;
+        // End Triad
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -403,6 +408,22 @@ namespace Content.Server.Database
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Type)
                 .HasDefaultValue(HwidType.Legacy);
+
+            // Triad: tamper protection indexes
+            modelBuilder.Entity<TriadShipyardAuditEvent>()
+                .HasIndex(a => new { a.PlayerUserId, a.At });
+
+            modelBuilder.Entity<TriadShipyardAuditEvent>()
+                .HasIndex(a => new { a.EventType, a.At });
+
+            modelBuilder.Entity<TriadShipyardAuditEvent>()
+                .HasIndex(a => new { a.ShipHash, a.At });
+
+            // One active permit per player (the per-player legacy-onboarding bypass).
+            modelBuilder.Entity<TriadShipyardMigrationPermit>()
+                .HasIndex(p => p.PlayerUserId)
+                .IsUnique();
+            // End Triad
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -1427,4 +1448,102 @@ namespace Content.Server.Database
         /// </summary>
         public float Score { get; set; }
     }
+
+    // Triad: tamper protection
+    public class TriadShipyardSigningKey
+    {
+        public int Id { get; set; }
+        public byte[] PublicKey { get; set; } = default!;
+
+        /// <summary>
+        /// F14 fix: the private key lives on disk as a PEM file, not in the database. This stable
+        /// identifier is the filename stem under <c>triad.tamper_signing_keys_dir</c>. DB compromise
+        /// alone now yields no usable signing material - the attacker would also need filesystem
+        /// access to read the keys directory. Nullable so rows that pre-date this change can be
+        /// retired without being usable; the keystore treats null KeyId as "not loadable" and
+        /// either retires the row and generates fresh, or refuses to start.
+        /// </summary>
+        public string? KeyId { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime? RetiredAt { get; set; }
+        public string? Notes { get; set; }
+    }
+
+    /// <summary>
+    /// A per-player legacy-onboarding permit. While the server is in enforce mode, a player with an
+    /// active permit may load non-our-key (unsigned or foreign-signed) ships, which the load path
+    /// re-signs with the server key. It is the rollout exception for stragglers who did not get a
+    /// ship signed during the notify window; it clears on admin revoke or session end.
+    /// </summary>
+    public class TriadShipyardMigrationPermit
+    {
+        public int Id { get; set; }
+        public Guid PlayerUserId { get; set; }
+        public Guid GrantedByAdminId { get; set; }
+        public DateTime GrantedAt { get; set; }
+        public string? Notes { get; set; }
+    }
+
+    public enum TriadShipyardEventType
+    {
+        SaveSigned             = 0,
+        LoadVerifiedTrusted    = 1,
+        LoadVerifiedUntrusted  = 2,
+        LoadUnsigned           = 3,
+        LoadInvalidSignature   = 4,
+        LoadMigrated           = 5,
+        LoadRejected           = 6,
+        PermitGranted          = 7,
+        PermitRevoked          = 8,
+        // Triad: enforce-mode reject reasons, split out from the generic LoadRejected (6) so the
+        // admin feed can name WHY a load was blocked. These are new int values on an int-backed enum
+        // column, so they need no DB migration. LoadRejected (6) is kept for the empty-payload reject
+        // and for back-compat with rows written before this split.
+        LoadRejectedUnsigned         = 9,
+        LoadRejectedInvalidSignature = 10,
+        LoadRejectedForeignKey       = 11,
+    }
+
+    public class TriadShipyardAuditEvent
+    {
+        public long Id { get; set; }
+        /// <summary>
+        /// Event timestamp. Stored as UTC. Always use <c>DateTime.UtcNow</c> at write sites; non-UTC values will throw on Postgres.
+        /// </summary>
+        public DateTime At { get; set; }
+        public TriadShipyardEventType EventType { get; set; }
+
+        public int? RoundId { get; set; }
+        public string? ServerName { get; set; }
+
+        public Guid PlayerUserId { get; set; }
+        public string? PlayerName { get; set; }
+
+        public string? ShipName { get; set; }
+        // NOT NULL in the DB. Default to empty (not null!) so a record path that legitimately has no
+        // ship hash (rejected-load and permit-action rows) can't enqueue a null that fails the INSERT
+        // and rolls back the whole batched audit transaction, taking unrelated events down with it.
+        public byte[] ShipHash { get; set; } = Array.Empty<byte>();
+        public byte[]? PublicKey { get; set; }
+        /// <summary>
+        /// Loose reference to <see cref="TriadShipyardSigningKey.Id"/>. Intentionally NOT an EF foreign key:
+        /// audit rows must outlive signing keys, and a rotated or deleted key must not cascade-delete history.
+        /// Set only on SaveSigned events.
+        /// </summary>
+        public int? SigningKeyId { get; set; }
+
+        public int? SaveTimeAppraisal { get; set; }
+        public int? LoadTimeAppraisal { get; set; }
+
+        public string? VesselId { get; set; }
+        public string? MapId { get; set; }
+        public string? SourceFilePath { get; set; }
+        public string? DeedHolderEntity { get; set; }
+
+        // Set on admin-action events (PermitGranted / PermitRevoked): which admin performed the
+        // grant or revoke. Null on player save/load events.
+        public Guid? AdminUserId { get; set; }
+    }
+    // End Triad
 }
