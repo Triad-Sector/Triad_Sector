@@ -1092,3 +1092,10 @@ Entries:
   id: 2249
   time: '2026-05-30T23:50:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/144
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Remove datafarm outright
+  id: 2250
+  time: '2026-06-01T04:01:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/170
