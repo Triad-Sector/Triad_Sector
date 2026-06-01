@@ -15,6 +15,12 @@
     },
     {
       "name": "tdf-enforcer"
+    },
+    {
+      "name": "tdf-warden"
+    },
+    {
+      "name": "tdf-chief"
     }
   ]
 }

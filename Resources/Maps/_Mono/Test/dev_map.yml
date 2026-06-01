@@ -6352,7 +6352,7 @@ entities:
     - type: Transform
       pos: -4.5,2.5
       parent: 2
-- proto: NFSpawnPointSeniorOfficer
+- proto: SpawnPointTdfPatrolTeamLeader
   entities:
   - uid: 917
     components:
@@ -7727,7 +7727,7 @@ entities:
     - type: Transform
       pos: 3.5,7.5
       parent: 2
-- proto: SpawnPointBailiff
+- proto: SpawnPointTdfWarden
   entities:
   - uid: 1120
     components:
@@ -7944,7 +7944,7 @@ entities:
     - type: Transform
       pos: -4.5,2.5
       parent: 2
-- proto: SpawnPointSheriff
+- proto: SpawnPointTdfChiefEnforcer
   entities:
   - uid: 1149
     components:
