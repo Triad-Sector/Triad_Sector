@@ -63,6 +63,9 @@
   - type: GunRequiresWield
   - type: PirateBountyItem
     id: ExperimentalFactionWeapon
+  - type: Tag
+    tags:
+    - TriadSmartGun
   - type: SmartGun
     requiresWield: true
   - type: LaserPointer

@@ -56,10 +56,21 @@ public sealed class WeaponHarnessSystem : EntitySystem
         EntityUid user,
         RequiresWeaponHarnessComponent? support = null)
     {
+        return TryGetActivePoweredHarness(gun, user, support, out _);
+    }
+
+    public bool TryGetActivePoweredHarness(
+        EntityUid gun,
+        EntityUid user,
+        RequiresWeaponHarnessComponent? support,
+        out Entity<WeaponHarnessComponent> harness)
+    {
+        harness = default;
+
         return Resolve(gun, ref support, false) &&
                TryComp(gun, out WieldableComponent? wieldable) &&
                wieldable.Wielded &&
-               TryGetPoweredHarness(user, support.SupportKey, out _);
+               TryGetPoweredHarnessEntity(user, support.SupportKey, out harness);
     }
 
     public bool TryGetPoweredHarness(
@@ -69,12 +80,25 @@ public sealed class WeaponHarnessSystem : EntitySystem
     {
         harnessUid = default;
 
-        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
-            !IsMatchingHarness(belt.Value, supportKey) ||
-            !_powerCell.HasActivatableCharge(belt.Value))
+        if (!TryGetPoweredHarnessEntity(user, supportKey, out var harness))
             return false;
 
-        harnessUid = belt.Value;
+        harnessUid = harness.Owner;
+        return true;
+    }
+
+    public bool TryGetPoweredHarnessEntity(
+        EntityUid user,
+        string supportKey,
+        out Entity<WeaponHarnessComponent> harness)
+    {
+        harness = default;
+
+        if (!TryGetMatchingHarness(user, supportKey, out var matchingHarness) ||
+            !_powerCell.HasActivatableCharge(matchingHarness.Owner))
+            return false;
+
+        harness = matchingHarness;
         return true;
     }
 
@@ -161,11 +185,9 @@ public sealed class WeaponHarnessSystem : EntitySystem
         var user = Transform(ent.Owner).ParentUid;
 
         if (!HasSupportedWeaponInHandOrSuitStorage(user, ent.Comp.SupportKey) ||
-            TryGetPoweredHarness(user, ent.Comp.SupportKey, out _))
-            return;
-
-        if (!TryGetHarnessWithCell(user, ent.Comp.SupportKey, out var harnessUid) ||
-            harnessUid != ent.Owner)
+            !TryGetHarnessWithCell(user, ent.Comp.SupportKey, out var harness) ||
+            harness.Owner != ent.Owner ||
+            _powerCell.HasActivatableCharge(ent.Owner))
             return;
 
         args.Args.ModifySpeed(ent.Comp.DrainedWalkModifier, ent.Comp.DrainedSprintModifier);
@@ -245,25 +267,37 @@ public sealed class WeaponHarnessSystem : EntitySystem
             _gun.RefreshModifiers((gunUid, gun), user);
     }
 
-    private bool TryGetHarnessWithCell(EntityUid user, string supportKey, out EntityUid harnessUid)
+    private bool TryGetHarnessWithCell(
+        EntityUid user,
+        string supportKey,
+        out Entity<WeaponHarnessComponent> harness)
     {
-        harnessUid = default;
+        harness = default;
 
-        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
-            !IsMatchingHarness(belt.Value, supportKey) ||
-            !TryComp<PowerCellSlotComponent>(belt.Value, out var slot) ||
-            !_itemSlots.TryGetSlot(belt.Value, slot.CellSlotId, out var itemSlot) ||
+        if (!TryGetMatchingHarness(user, supportKey, out var matchingHarness) ||
+            !TryComp<PowerCellSlotComponent>(matchingHarness.Owner, out var slot) ||
+            !_itemSlots.TryGetSlot(matchingHarness.Owner, slot.CellSlotId, out var itemSlot) ||
             itemSlot.Item == null)
             return false;
 
-        harnessUid = belt.Value;
+        harness = matchingHarness;
         return true;
     }
 
-    private bool IsMatchingHarness(EntityUid harnessUid, string supportKey)
+    private bool TryGetMatchingHarness(
+        EntityUid user,
+        string supportKey,
+        out Entity<WeaponHarnessComponent> harness)
     {
-        return TryComp<WeaponHarnessComponent>(harnessUid, out var harness) &&
-               harness.SupportKey == supportKey;
+        harness = default;
+
+        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
+            !TryComp<WeaponHarnessComponent>(belt.Value, out var harnessComp) ||
+            harnessComp.SupportKey != supportKey)
+            return false;
+
+        harness = (belt.Value, harnessComp);
+        return true;
     }
 
     private bool IsSupportedWeapon(EntityUid weaponUid, string supportKey)

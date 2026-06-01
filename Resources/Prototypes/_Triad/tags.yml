@@ -23,8 +23,9 @@
 - type: Tag
   id: MachinePistol
 
+- type: Tag
+  id: TriadSmartGun
+
 # Clothing
 - type: Tag
   id: AdvancedTacticalBackpack
-- type: Tag
-  id: TriadSmartGunHarness
