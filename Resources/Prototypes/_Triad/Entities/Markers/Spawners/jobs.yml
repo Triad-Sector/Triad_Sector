@@ -43,7 +43,7 @@
     layers:
       - sprite: _NF/Markers/jobs.rsi
         state: green
-      - state: tdf-enforcer
+      - state: tdf-patrol-lead
 
 - type: entity
   id: SpawnPointTdfMedic
