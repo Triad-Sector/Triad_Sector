@@ -1,4 +1,5 @@
-﻿using Content.Shared._DV.CCVars;
+﻿using System.Linq;
+using Content.Shared._DV.CCVars;
 using Content.Shared._DV.Traits;
 using Content.Shared._DV.Traits.Conditions;
 using Content.Shared._DV.Traits.Effects;
@@ -55,14 +56,19 @@ public sealed class TraitSystem : EntitySystem
         // Validate and collect valid traits
         var validTraits = ValidateTraits(args.Mob, args.Profile.TraitPreferences, args.Player, args.JobId, speciesId, args.Profile, disabledTraits);
 
-        // Apply valid traits
+        // Apply valid traits, highest priority first (ties broken by lower cost) so order-sensitive
+        // effects (e.g. add-vs-remove of the same component) resolve deterministically.
+        var validPrototypes = new List<TraitPrototype>();
         foreach (var traitId in validTraits)
         {
             if (!_prototype.TryIndex(traitId, out var trait))
                 continue;
 
-            ApplyTrait(args.Mob, trait);
+            validPrototypes.Add(trait);
         }
+
+        foreach (var trait in validPrototypes.OrderByDescending(a => a.Priority).ThenBy(a => a.Cost))
+            ApplyTrait(args.Mob, trait);
 
         // Send disabled traits notification to client if any were rejected
         if (disabledTraits.Count > 0)

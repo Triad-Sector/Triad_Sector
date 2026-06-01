@@ -51,4 +51,11 @@ public sealed partial class TraitPrototype : IPrototype
     /// </summary>
     [DataField(serverOnly: true)]
     public List<BaseTraitEffect> Effects = new();
+
+    /// <summary>
+    /// The priority of this trait. Higher priority traits are applied first.
+    /// Lets order-sensitive effects (e.g. add-vs-remove of the same component) resolve deterministically.
+    /// </summary>
+    [DataField]
+    public int Priority = 0;
 }
