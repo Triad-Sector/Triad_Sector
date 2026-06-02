@@ -12,7 +12,10 @@
     - id: EmergencyMedipen
     - id: Flare
       amount: 2
-    - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+    # Triad: revert Mono's combined MRE package to a single bar + water bottle
+    # - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+    - id: FoodMREPSB
+    - id: DrinkWaterBottleFull
     - id: CrowbarPocket
     - id: HandHeldMassScanner
   - type: Item
@@ -51,7 +54,10 @@
       - id: EmergencyMedipen
       - id: Flare
         amount: 2
-      - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+      # Triad: revert Mono's combined MRE package to a single bar + water bottle
+      # - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+      - id: FoodMREPSB
+      - id: DrinkWaterBottleFull
       - id: CrowbarPocket
       - id: HandHeldMassScanner
 
@@ -67,6 +73,9 @@
       - id: EmergencyMedipen
       - id: Flare
         amount: 2
-      - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+      # Triad: revert Mono's combined MRE package to a single bar + water bottle
+      # - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+      - id: FoodMREPSB
+      - id: DrinkWaterBottleFull
       - id: CrowbarPocket
       - id: HandHeldMassScanner
