@@ -145,6 +145,7 @@ public sealed partial class TraitCategory : BoxContainer
     /// </summary>
     public void FilterTraits(string searchText)
     {
+        var searching = !string.IsNullOrEmpty(searchText);
         var hasVisibleTraits = false;
 
         foreach (var (traitId, entry) in _traitEntries)
@@ -153,7 +154,7 @@ public sealed partial class TraitCategory : BoxContainer
             var name = Loc.GetString(trait.Name);
             var description = Loc.GetString(trait.Description);
 
-            var matchesSearch = string.IsNullOrEmpty(searchText) ||
+            var matchesSearch = !searching ||
                                 name.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
                                 description.Contains(searchText, StringComparison.OrdinalIgnoreCase);
 
@@ -165,6 +166,19 @@ public sealed partial class TraitCategory : BoxContainer
 
         // Hide entire category if no traits match search
         Visible = hasVisibleTraits;
+
+        // Triad: categories default to collapsed, so an active search has to force the matching ones open or the
+        // results would be hidden inside the collapsed panel. Clearing the search restores the expanded/collapsed
+        // state the user (or the default) left it in.
+        if (searching)
+        {
+            ContentPanel.Visible = hasVisibleTraits;
+            ExpandIcon.Text = hasVisibleTraits ? "▼" : "▶";
+        }
+        else
+        {
+            UpdateExpandedState();
+        }
     }
 
     /// <summary>

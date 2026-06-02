@@ -47,6 +47,9 @@ public sealed partial class TraitCategoryPrototype : IPrototype
     /// <summary>
     /// Whether this category starts expanded or collapsed.
     /// </summary>
+    // Triad: default collapsed so the per-category headers (and their point caps) sit adjacent and read at a
+    // glance; a big expanded list pushes the next category's cap off-screen and reads like one global budget.
+    // Per-category opt-in to expanded is still available via `defaultExpanded: true` in YAML.
     [DataField]
-    public bool DefaultExpanded = true;
+    public bool DefaultExpanded = false;
 }

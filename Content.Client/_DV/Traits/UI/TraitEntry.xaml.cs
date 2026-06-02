@@ -57,6 +57,20 @@ public sealed partial class TraitEntry : PanelContainer
 
         // Build condition tooltips
         UpdateConditionTooltips();
+
+        // Triad: pin the description wrap width to the entry's real arranged width (see UpdateDescriptionWrap).
+        OnResized += UpdateDescriptionWrap;
+    }
+
+    private void UpdateDescriptionWrap()
+    {
+        // This editor measures entries wider than they finally arrange (the lobby sprite panel claims space at
+        // arrange time), so RichTextLabel caches a too-wide wrap and every line clips at the column edge. Pin the
+        // label's max width to the entry's actual width, mirroring the manual width handling the global points bar
+        // already uses in TraitsTab. Width - 54 = inner margins (10 + 10) + the description's 34px left indent.
+        var available = Width - 54f;
+        if (available > 0f && System.Math.Abs(TraitDescriptionLabel.MaxWidth - available) > 0.5f)
+            TraitDescriptionLabel.MaxWidth = available;
     }
 
     private void UpdateConditionTooltips()
