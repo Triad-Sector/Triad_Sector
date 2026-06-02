@@ -473,13 +473,10 @@
         Blunt: 12
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
+  # Triad: matches the RCD (Normal, default 2x2 shape, floating icon). Huge was rejected by the Frontier
+  # backpack/ship-stash maxItemSize cap, and the 64x64 storage sprite overflowed the slot.
   - type: Item
-    size: Huge
-    storedSprite:
-      state: storage
-      sprite: Objects/Tools/rpd_storage_64x.rsi
-    shape:
-    - 0,0,3,1
+    size: Normal
   - type: RCD
     availablePrototypes:
     - PipeFourway
