@@ -26,12 +26,11 @@
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'Grunder TSF{1}'
+        mapNameTemplate: 'Grunder TDF{1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
       - type: StationJobs
         availableJobs:
-          Deputy: [ 0, 0 ]
-          TsfBorg: [ 0, 0 ]
+          TdfEnforcer: [ 0, 0 ]
 
