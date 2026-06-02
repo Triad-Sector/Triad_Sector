@@ -123,6 +123,10 @@ public sealed class DefusableSystem : SharedDefusableSystem
     /// Triad, Ensures defusable bombs are marked as activated when their timer starts.
     private void OnActiveTimer(EntityUid uid, DefusableComponent comp, ref ActiveTimerTriggerEvent args)
     {
+        var xform = Transform(uid);
+        if (!xform.Anchored)
+            _transform.AnchorEntity(uid, xform);
+
         SetBolt(comp, true);
         SetActivated(comp, true);
     }

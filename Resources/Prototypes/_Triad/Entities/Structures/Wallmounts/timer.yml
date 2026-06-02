@@ -38,17 +38,6 @@
     interfaces:
       enum.SignalTimerUiKey.Key:
         type: SignalTimerBoundUserInterface
-  - type: Construction
-    graph: Timer
-    node: signal
-    containers:
-    - board
-  - type: ContainerContainer
-    containers:
-      board: !type:Container
-  - type: ContainerFill
-    containers:
-      board: [ SignalTimerElectronics ]
 
 # These screen timers though, are good for making countdowns on bombing timer, blow some stuff up
 - type: entity
@@ -71,11 +60,3 @@
     sprite: Structures/Wallmounts/signalscreen.rsi
     state: signalscreen
     noRot: true
-  - type: Construction
-    graph: Timer
-    node: screen
-    containers:
-    - board
-  - type: ContainerFill
-    containers:
-      board: [ ScreenTimerElectronics ]
