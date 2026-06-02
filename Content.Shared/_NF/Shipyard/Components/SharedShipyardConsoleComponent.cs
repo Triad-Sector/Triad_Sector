@@ -73,5 +73,13 @@ public sealed partial class ShipyardConsoleComponent : Component
     /// Triad - Job blacklist for the ship saving and loading.
     /// </summary>
     [DataField]
-    public List<ProtoId<JobPrototype>> ShipSaveJobBlacklist = new();
+    public List<ProtoId<JobPrototype>> ShipSaveJobBlacklist = new()
+    {
+        "TdfChiefEnforcer",
+        "TdfWarden",
+        "TdfPatrolTeamLeader",
+        "TdfMedic",
+        "TdfEnforcer",
+        "TdfCadet"
+    };
 }
