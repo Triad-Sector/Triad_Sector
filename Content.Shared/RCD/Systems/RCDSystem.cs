@@ -177,6 +177,7 @@ public class RCDSystem : EntitySystem
         var user = args.User;
         var location = args.ClickLocation;
         var prototype = _protoManager.Index(component.ProtoId);
+        var target = args.Target; // Triad: reassigned below so the RPD can reach pipes hidden under floor tiles.
 
         // Initial validity checks
         if (!location.IsValid(EntityManager))
@@ -190,7 +191,14 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
+        // Triad: a pipe under a floor tile is invisible and blocks interactions (SubFloorHideComponent), so the click
+        // lands on the bare tile with no target. Resolve an RPD-deconstructable entity anchored on that tile so the
+        // RPD can chew covered pipes. Scoped to the RPD in Deconstruct mode; the RCD is unaffected.
+        if (target == null && prototype.Mode == RcdMode.Deconstruct && HasComp<RPDComponent>(uid))
+            target = FindSubfloorRpdDeconstructable(mapGridData.Value);
+        // End Triad
+
+        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
                 tilePlacementDirection: component.ConstructionDirection))
             return;
 
@@ -210,9 +218,9 @@ public class RCDSystem : EntitySystem
             case RcdMode.Deconstruct:
 
                 // Deconstructing an object
-                if (args.Target != null)
+                if (target != null)
                 {
-                    if (TryComp<RCDDeconstructableComponent>(args.Target, out var destructible))
+                    if (TryComp<RCDDeconstructableComponent>(target, out var destructible))
                     {
                         cost = destructible.Cost;
                         delay = destructible.Delay;
@@ -267,7 +275,7 @@ public class RCDSystem : EntitySystem
             cost,
             EntityManager.GetNetEntity(effect));
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: args.Target, used: uid) // Mono - add delay multiplier.
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: target, used: uid) // Mono - add delay multiplier.
         {
             BreakOnDamage = true,
             BreakOnHandChange = true,
@@ -759,6 +767,31 @@ public class RCDSystem : EntitySystem
 
         return boundingPolygon.ComputeAABB(boundingTransform, 0).Intersects(fixture.Shape.ComputeAABB(entXform, 0));
     }
+
+    // Triad: returns the RPD-deconstructable entity anchored on the tile, chosen deterministically by NetEntity so
+    // client prediction and the server agree. Lets the RPD target pipes hidden beneath floor tiles, which are
+    // invisible and non-interactable through the normal click path.
+    private EntityUid? FindSubfloorRpdDeconstructable(MapGridData mapGridData)
+    {
+        EntityUid? best = null;
+        var bestId = int.MaxValue;
+
+        foreach (var ent in _mapSystem.GetAnchoredEntities(mapGridData.GridUid, mapGridData.Component, mapGridData.Position))
+        {
+            if (!TryComp<RCDDeconstructableComponent>(ent, out var decon) || !decon.RpdDeconstructable)
+                continue;
+
+            var netId = GetNetEntity(ent).Id;
+            if (netId < bestId)
+            {
+                bestId = netId;
+                best = ent;
+            }
+        }
+
+        return best;
+    }
+    // End Triad
 
     #endregion
 }
