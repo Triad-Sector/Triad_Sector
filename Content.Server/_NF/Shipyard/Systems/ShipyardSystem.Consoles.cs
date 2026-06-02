@@ -452,7 +452,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        if (IsShipSaveWhitelistValid(player, component))
+        if (!IsShipSaveWhitelistValid(player, component))
             return;
 
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
@@ -560,7 +560,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        if (IsShipSaveWhitelistValid(player, component))
+        if (!IsShipSaveWhitelistValid(player, component))
             return;
 
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
