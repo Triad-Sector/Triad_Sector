@@ -309,11 +309,11 @@
 #       - SecurityUplink
 
 - type: listing
-  id: UplinkClothingOuterHardsuitM82c
-  name: uplink-security-hardsuit-m82c-name
-  description: uplink-security-hardsuit-m82c-desc
-  productEntity: ClothingOuterHardsuitM82c
-  icon: { sprite: _Mono/Clothing/OuterClothing/Hardsuits/m82c.rsi, state: icon }
+  id: UplinkClothingOuterHardsuitTdf
+  name: uplink-security-hardsuit-tdf-name
+  description: uplink-security-hardsuit-tdf-desc
+  productEntity: ClothingOuterHardsuitTdf
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -325,11 +325,11 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkClothingOuterHardsuitM82b
-  name: uplink-security-hardsuit-m82b-name
-  description: uplink-security-hardsuit-m82b-desc
-  productEntity: ClothingOuterHardsuitM82b
-  icon: { sprite: _Mono/Clothing/OuterClothing/Hardsuits/m82b.rsi, state: icon }
+  id: UplinkClothingOuterHardsuitTdfMedic
+  name: uplink-security-hardsuit-tdf-medic-name
+  description: uplink-security-hardsuit-tdf-medic-desc
+  productEntity: ClothingOuterHardsuitTdfMedic
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
