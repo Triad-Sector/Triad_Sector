@@ -32,6 +32,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     private Button? _loadShipButton;
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
+    private Label? _savedShipsLabel;
     private int _selectedShipIndex = -1;
 
     private readonly EntityWhitelistSystem _whitelist; // Triad
@@ -85,6 +86,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
         _savedShipsList = _menu.FindControl<ItemList>("SavedShipsList");
+        _savedShipsLabel = _menu.FindControl<Label>("SavedShipsLabel");
 
         if (_loadShipButton != null)
             _loadShipButton.OnPressed += OnLoadShipButtonPressed;
@@ -179,11 +181,18 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         // Triad - shipsave blacklist for roles
         if (EntMan.TryGetComponent(Owner, out ShipyardConsoleComponent? console))
         {
-            if (_player.LocalEntity != null && !_whitelist.CheckBoth(_player.LocalEntity, console.ShipSaveBlacklist, console.ShipSaveWhitelist))
+            if (_player.LocalEntity != null)
             {
-                _saveShipButton?.Visible = false;
-                _loadShipButton?.Visible = false;
-                _savedShipsList?.Visible = false;
+                var isWhitelistValid = _whitelist.CheckBoth(_player.LocalEntity, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
+
+                if (!isWhitelistValid)
+                {
+                    _sawmill.Info("Player is blacklisted from saving ships - hiding save/load UI.");
+                    _saveShipButton?.Visible = false;
+                    _loadShipButton?.Visible = false;
+                    _savedShipsList?.Visible = false;
+                    _savedShipsLabel?.Visible = false;
+                }
             }
         }
     }

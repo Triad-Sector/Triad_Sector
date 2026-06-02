@@ -146,7 +146,7 @@
             </BoxContainer>
         </BoxContainer>
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="0 8 0 2">
-            <Label Text="Saved Ships:" />
+            <Label Text="Saved Ships:" Name="SavedShipsLabel" />
             <ItemList Name="SavedShipsList"
                       MinSize="0 100"
                       HorizontalExpand="True" />
