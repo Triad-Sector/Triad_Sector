@@ -30,6 +30,11 @@
   name: trait-wheelchair-bound-name
   description: trait-wheelchair-bound-desc
   category: Disabilities
+  conditions:
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:

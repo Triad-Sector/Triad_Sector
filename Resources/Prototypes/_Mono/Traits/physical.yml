@@ -46,6 +46,10 @@
   - !type:IsSpeciesCondition
     species: Tajaran
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -106,6 +110,10 @@
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -123,6 +131,10 @@
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
     invert: true
   effects:
   - !type:AddCompsEffect
@@ -171,6 +183,10 @@
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -187,6 +203,10 @@
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -201,6 +221,10 @@
   conditions:
   - !type:IsSpeciesCondition
     species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
     invert: true
   effects:
   - !type:AddCompsEffect
@@ -306,6 +330,10 @@
   - !type:IsSpeciesCondition
     species: Dwarf
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -317,6 +345,11 @@
   description: trait-striking-calluses-desc
   category: Physical
   cost: 2
+  conditions:
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -337,6 +370,10 @@
     invert: true
   - !type:IsSpeciesCondition
     species: Tajaran
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
     invert: true
   effects:
   - !type:AddCompsEffect
@@ -436,6 +473,10 @@
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
     invert: true
   effects:
   - !type:AddCompsEffect

@@ -72,6 +72,10 @@
   - !type:HasTraitCondition
     trait: WillToLive
     invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
   effects: # Mono: Add a custom component instead of overriding MobThresholds manually
   - !type:AddCompsEffect
     components:
