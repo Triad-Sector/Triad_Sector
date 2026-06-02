@@ -120,7 +120,14 @@
       cellSlotId: cell_slot
     - type: ContainerContainer
       containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
         cell_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: ItemSlots
       slots:
         cell_slot:
