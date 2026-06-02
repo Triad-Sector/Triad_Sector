@@ -21,6 +21,8 @@ marking-ResomiUpperEarsShort-upper_ear_short = Resomi Short Ears
 marking-ResomiUpperEarsAlternate = Resomi Upper Ears (Alternate)
 marking-ResomiUpperEarsAlternate-upper_ear_alternate = Resomi Upper Ears(Alternate)
 marking-ResomiUpperEarsAlternate-upper_ear_alternate_Earring = Earrings
+# Triad: lowercase variant matching the actual RSI state in resomi.yml
+marking-ResomiUpperEarsAlternate-upper_ear_alternate_earring = Earrings
 marking-ResomiLowerEars = Resomi Lower Ears
 marking-ResomiLowerEars-lower_ear = Resomi Lower Ears
 marking-ResomiHeadFluff = Resomi Head Fluff

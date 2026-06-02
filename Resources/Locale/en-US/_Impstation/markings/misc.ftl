@@ -209,6 +209,8 @@ marking-VoxBelly = Belly
 marking-VoxBelly-voxbelly = Belly
 marking-VoxTailBalled = Thrasher
 marking-VoxTailBalled-voxtailballed = Thrasher
+# Triad: missing key referenced by misc.yml (VoxTailBalled also includes vox_parts.rsi tail state)
+marking-VoxTailBalled-tail = Base Tail
 marking-VoxTailSplit = Twinned
 marking-VoxTailSplit-voxtailsplit = Twinned
 
