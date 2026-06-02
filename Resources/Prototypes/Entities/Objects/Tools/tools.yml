@@ -506,6 +506,16 @@
     - SensorPipe
     - Deconstruct
   - type: RPD
+  # Triad: built-in short-range t-ray so the operator sees the subfloor pipes they're laying or pulling. The reveal
+  # whitelist limits it to atmos pipe infrastructure (AtmosPipeLayers covers pipes, vents, pumps, valves), so power
+  # cables stay hidden. Shorter range than the standalone t-ray's 4.
+  - type: TrayScanner
+    enabled: true
+    canToggle: false
+    range: 2
+    revealWhitelist:
+      components:
+      - AtmosPipeLayers
   - type: LimitedCharges
     maxCharges: 45
   - type: Sprite
