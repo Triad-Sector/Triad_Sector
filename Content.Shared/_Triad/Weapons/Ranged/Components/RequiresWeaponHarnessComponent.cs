@@ -6,7 +6,7 @@ namespace Content.Shared._Triad.Weapons.Ranged.Components;
 /// Marks a gun that receives its full handling only while the user wears a matching powered harness.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class RequiresWeaponHarnessComponent : Component
+public sealed partial class ReqWeapHarnComponent : Component
 {
     [DataField, AutoNetworkedField]
     public string SupportKey = "Default";

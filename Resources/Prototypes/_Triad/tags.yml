@@ -24,7 +24,7 @@
   id: MachinePistol
 
 - type: Tag
-  id: TriadSmartGun
+  id: TriadHeavyWeapon
 
 # Clothing
 - type: Tag

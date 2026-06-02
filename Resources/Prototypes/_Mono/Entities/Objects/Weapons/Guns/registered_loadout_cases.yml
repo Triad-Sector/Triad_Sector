@@ -143,7 +143,7 @@
     contents:
     - id: WeaponSmartLmgRegistered
       amount: 1
-    # Triad: MLA-79 needs this powered belt harness for full accuracy, movement, and smartgun support.
+    # Triad: MLA-79 needs this powered belt harness for full accuracy, movement, and heavy weapon support.
     - id: MLA79Harness
       amount: 1
     - id: MagazineSmartLMG

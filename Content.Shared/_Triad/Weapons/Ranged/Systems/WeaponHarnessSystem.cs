@@ -34,27 +34,27 @@ public sealed class WeaponHarnessSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, HeldRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMovementSpeed);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnGunInventoryRefreshMovementSpeed);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GotEquippedHandEvent>(OnGunEquippedHand);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GotUnequippedHandEvent>(OnGunUnequippedHand);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GotEquippedEvent>(OnGunEquippedInventory);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GotUnequippedEvent>(OnGunUnequippedInventory);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, ItemWieldedEvent>(OnGunWielded);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, ItemUnwieldedEvent>(OnGunUnwielded);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, AmmoShotEvent>(OnAmmoShot, after: [typeof(SmartGunSystem)]);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers);
+        SubscribeLocalEvent<ReqWeapHarnComponent, HeldRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMovementSpeed);
+        SubscribeLocalEvent<ReqWeapHarnComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnGunInventoryRefreshMovementSpeed);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GotEquippedHandEvent>(OnGunEquippedHand);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GotUnequippedHandEvent>(OnGunUnequippedHand);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GotEquippedEvent>(OnGunEquippedInventory);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GotUnequippedEvent>(OnGunUnequippedInventory);
+        SubscribeLocalEvent<ReqWeapHarnComponent, ItemWieldedEvent>(OnGunWielded);
+        SubscribeLocalEvent<ReqWeapHarnComponent, ItemUnwieldedEvent>(OnGunUnwielded);
+        SubscribeLocalEvent<ReqWeapHarnComponent, AmmoShotEvent>(OnAmmoShot, after: [typeof(SmartGunSystem)]);
 
-        SubscribeLocalEvent<WeaponHarnessComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnHarnessRefreshMovementSpeed);
-        SubscribeLocalEvent<WeaponHarnessComponent, GotEquippedEvent>(OnHarnessEquipped);
-        SubscribeLocalEvent<WeaponHarnessComponent, GotUnequippedEvent>(OnHarnessUnequipped);
-        SubscribeLocalEvent<WeaponHarnessComponent, PowerCellChangedEvent>(OnHarnessPowerCellChanged);
+        SubscribeLocalEvent<WeapHarnComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnHarnessRefreshMovementSpeed);
+        SubscribeLocalEvent<WeapHarnComponent, GotEquippedEvent>(OnHarnessEquipped);
+        SubscribeLocalEvent<WeapHarnComponent, GotUnequippedEvent>(OnHarnessUnequipped);
+        SubscribeLocalEvent<WeapHarnComponent, PowerCellChangedEvent>(OnHarnessPowerCellChanged);
     }
 
     public bool HasActiveSupport(
         EntityUid gun,
         EntityUid user,
-        RequiresWeaponHarnessComponent? support = null)
+        ReqWeapHarnComponent? support = null)
     {
         return TryGetActivePoweredHarness(gun, user, support, out _);
     }
@@ -62,8 +62,8 @@ public sealed class WeaponHarnessSystem : EntitySystem
     public bool TryGetActivePoweredHarness(
         EntityUid gun,
         EntityUid user,
-        RequiresWeaponHarnessComponent? support,
-        out Entity<WeaponHarnessComponent> harness)
+        ReqWeapHarnComponent? support,
+        out Entity<WeapHarnComponent> harness)
     {
         harness = default;
 
@@ -90,7 +90,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     public bool TryGetPoweredHarnessEntity(
         EntityUid user,
         string supportKey,
-        out Entity<WeaponHarnessComponent> harness)
+        out Entity<WeapHarnComponent> harness)
     {
         harness = default;
 
@@ -114,7 +114,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
                IsSupportedWeapon(suitStorage.Value, supportKey);
     }
 
-    private void OnGunRefreshModifiers(Entity<RequiresWeaponHarnessComponent> ent, ref GunRefreshModifiersEvent args)
+    private void OnGunRefreshModifiers(Entity<ReqWeapHarnComponent> ent, ref GunRefreshModifiersEvent args)
     {
         if (args.User == null || !HasActiveSupport(ent.Owner, args.User.Value, ent.Comp))
             return;
@@ -125,7 +125,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
         args.AngleIncrease += ent.Comp.AngleIncreaseBonus;
     }
 
-    private void OnAmmoShot(Entity<RequiresWeaponHarnessComponent> ent, ref AmmoShotEvent args)
+    private void OnAmmoShot(Entity<ReqWeapHarnComponent> ent, ref AmmoShotEvent args)
     {
         var user = Transform(ent.Owner).ParentUid;
         if (HasActiveSupport(ent.Owner, user, ent.Comp))
@@ -143,7 +143,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     }
 
     private void OnRefreshMovementSpeed(
-        Entity<RequiresWeaponHarnessComponent> ent,
+        Entity<ReqWeapHarnComponent> ent,
         ref HeldRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         var user = Transform(ent.Owner).ParentUid;
@@ -162,7 +162,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     }
 
     private void OnGunInventoryRefreshMovementSpeed(
-        Entity<RequiresWeaponHarnessComponent> ent,
+        Entity<ReqWeapHarnComponent> ent,
         ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         var user = Transform(ent.Owner).ParentUid;
@@ -179,7 +179,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     }
 
     private void OnHarnessRefreshMovementSpeed(
-        Entity<WeaponHarnessComponent> ent,
+        Entity<WeapHarnComponent> ent,
         ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         var user = Transform(ent.Owner).ParentUid;
@@ -193,56 +193,56 @@ public sealed class WeaponHarnessSystem : EntitySystem
         args.Args.ModifySpeed(ent.Comp.DrainedWalkModifier, ent.Comp.DrainedSprintModifier);
     }
 
-    private void OnGunEquippedHand(Entity<RequiresWeaponHarnessComponent> ent, ref GotEquippedHandEvent args)
+    private void OnGunEquippedHand(Entity<ReqWeapHarnComponent> ent, ref GotEquippedHandEvent args)
     {
         RefreshGunAndUser(ent.Owner, args.User);
-        RaiseLocalEvent(new WeaponHarnessGunEquippedHandEvent(ent.Owner, args.User));
+        RaiseLocalEvent(new WeapHarnGunEquipEvent(ent.Owner, args.User));
     }
 
-    private void OnGunUnequippedHand(Entity<RequiresWeaponHarnessComponent> ent, ref GotUnequippedHandEvent args)
+    private void OnGunUnequippedHand(Entity<ReqWeapHarnComponent> ent, ref GotUnequippedHandEvent args)
     {
         RefreshGunAndUser(ent.Owner, args.User);
-        RaiseLocalEvent(new WeaponHarnessGunUnequippedHandEvent(args.User));
+        RaiseLocalEvent(new WeapHarnGunUnEquipEvent(args.User));
     }
 
-    private void OnGunEquippedInventory(Entity<RequiresWeaponHarnessComponent> ent, ref GotEquippedEvent args)
+    private void OnGunEquippedInventory(Entity<ReqWeapHarnComponent> ent, ref GotEquippedEvent args)
     {
         RefreshHeldSupportedWeapons(args.Equipee);
     }
 
-    private void OnGunUnequippedInventory(Entity<RequiresWeaponHarnessComponent> ent, ref GotUnequippedEvent args)
+    private void OnGunUnequippedInventory(Entity<ReqWeapHarnComponent> ent, ref GotUnequippedEvent args)
     {
         RefreshHeldSupportedWeapons(args.Equipee);
-        RaiseLocalEvent(new WeaponHarnessGunUnequippedInventoryEvent(ent.Owner, args.Equipee, args.Slot));
+        RaiseLocalEvent(new WeapHarnGunUnEquipInvEvent(ent.Owner, args.Equipee, args.Slot));
     }
 
-    private void OnGunWielded(Entity<RequiresWeaponHarnessComponent> ent, ref ItemWieldedEvent args)
+    private void OnGunWielded(Entity<ReqWeapHarnComponent> ent, ref ItemWieldedEvent args)
     {
         RefreshGunAndUser(ent.Owner, args.User);
     }
 
-    private void OnGunUnwielded(Entity<RequiresWeaponHarnessComponent> ent, ref ItemUnwieldedEvent args)
+    private void OnGunUnwielded(Entity<ReqWeapHarnComponent> ent, ref ItemUnwieldedEvent args)
     {
         RefreshGunAndUser(ent.Owner, args.User);
     }
 
-    private void OnHarnessEquipped(Entity<WeaponHarnessComponent> ent, ref GotEquippedEvent args)
+    private void OnHarnessEquipped(Entity<WeapHarnComponent> ent, ref GotEquippedEvent args)
     {
         RefreshHeldSupportedWeapons(args.Equipee);
-        RaiseLocalEvent(new WeaponHarnessEquippedEvent(ent.Owner, args.Equipee, args.Slot));
+        RaiseLocalEvent(new WeapHarnEquipEvent(ent.Owner, args.Equipee, args.Slot));
     }
 
-    private void OnHarnessUnequipped(Entity<WeaponHarnessComponent> ent, ref GotUnequippedEvent args)
+    private void OnHarnessUnequipped(Entity<WeapHarnComponent> ent, ref GotUnequippedEvent args)
     {
         RefreshHeldSupportedWeapons(args.Equipee);
-        RaiseLocalEvent(new WeaponHarnessUnequippedEvent(ent.Owner, args.Equipee, args.Slot));
+        RaiseLocalEvent(new WeapHarnUnequipEvent(ent.Owner, args.Equipee, args.Slot));
     }
 
-    private void OnHarnessPowerCellChanged(Entity<WeaponHarnessComponent> ent, ref PowerCellChangedEvent args)
+    private void OnHarnessPowerCellChanged(Entity<WeapHarnComponent> ent, ref PowerCellChangedEvent args)
     {
         var wearer = Transform(ent.Owner).ParentUid;
         RefreshHeldSupportedWeapons(wearer);
-        RaiseLocalEvent(new WeaponHarnessPowerCellChangedEvent(ent.Owner));
+        RaiseLocalEvent(new WeapHarnPowerCellChangeEvent(ent.Owner));
     }
 
     public void RefreshHeldSupportedWeapons(EntityUid user)
@@ -252,7 +252,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
         foreach (var held in _hands.EnumerateHeld(user))
         {
             if (!TryComp<GunComponent>(held, out var gun) ||
-                !HasComp<RequiresWeaponHarnessComponent>(held))
+                !HasComp<ReqWeapHarnComponent>(held))
                 continue;
 
             _gun.RefreshModifiers((held, gun), user);
@@ -270,7 +270,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     private bool TryGetHarnessWithCell(
         EntityUid user,
         string supportKey,
-        out Entity<WeaponHarnessComponent> harness)
+        out Entity<WeapHarnComponent> harness)
     {
         harness = default;
 
@@ -287,12 +287,12 @@ public sealed class WeaponHarnessSystem : EntitySystem
     private bool TryGetMatchingHarness(
         EntityUid user,
         string supportKey,
-        out Entity<WeaponHarnessComponent> harness)
+        out Entity<WeapHarnComponent> harness)
     {
         harness = default;
 
         if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
-            !TryComp<WeaponHarnessComponent>(belt.Value, out var harnessComp) ||
+            !TryComp<WeapHarnComponent>(belt.Value, out var harnessComp) ||
             harnessComp.SupportKey != supportKey)
             return false;
 
@@ -302,7 +302,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
 
     private bool IsSupportedWeapon(EntityUid weaponUid, string supportKey)
     {
-        return TryComp<RequiresWeaponHarnessComponent>(weaponUid, out var support) &&
+        return TryComp<ReqWeapHarnComponent>(weaponUid, out var support) &&
                support.SupportKey == supportKey;
     }
 }

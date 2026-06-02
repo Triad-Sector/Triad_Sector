@@ -9,7 +9,7 @@ namespace Content.Shared._Triad.Weapons.Ranged.Components;
 /// Marks a belt item as a powered support harness for matching weapons.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class WeaponHarnessComponent : Component
+public sealed partial class WeapHarnComponent : Component
 {
     [DataField]
     public string SupportKey = "Default";

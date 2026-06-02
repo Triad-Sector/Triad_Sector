@@ -1,6 +1,5 @@
 using Content.Server.PowerCell;
 using Content.Shared.Alert;
-using Content.Shared._Goobstation.Weapons.SmartGun;
 using Content.Shared._Triad.Weapons.Ranged.Components;
 using Content.Shared._Triad.Weapons.Ranged.Events;
 using Content.Shared._Triad.Weapons.Ranged.Systems;
@@ -22,7 +21,7 @@ namespace Content.Server._Triad.Weapons.Ranged.Systems;
 
 public sealed class WeaponHarnessPowerSystem : EntitySystem
 {
-    private static readonly ProtoId<TagPrototype> SmartGunTag = "TriadSmartGun";
+    private static readonly ProtoId<TagPrototype> HeavyWeaponTag = "TriadHeavyWeapon";
 
     private readonly HashSet<EntityUid> _suppressNextLinkFeedback = new();
 
@@ -39,20 +38,20 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, GunShotEvent>(OnGunShot);
-        SubscribeLocalEvent<RequiresWeaponHarnessComponent, DroppedEvent>(OnSupportedWeaponDropped);
-        SubscribeLocalEvent<WeaponHarnessGunEquippedHandEvent>(OnSupportedWeaponEquippedHand);
-        SubscribeLocalEvent<WeaponHarnessGunUnequippedHandEvent>(OnSupportedWeaponUnequippedHand);
-        SubscribeLocalEvent<WeaponHarnessGunUnequippedInventoryEvent>(OnSupportedWeaponUnequippedInventory);
-        SubscribeLocalEvent<WeaponHarnessEquippedEvent>(OnHarnessEquipped);
-        SubscribeLocalEvent<WeaponHarnessUnequippedEvent>(OnHarnessUnequipped);
-        SubscribeLocalEvent<WeaponHarnessPowerCellChangedEvent>(OnHarnessPowerCellChanged);
-        SubscribeLocalEvent<WeaponHarnessComponent, GetVerbsEvent<AlternativeVerb>>(OnHarnessGetAlternativeVerbs);
+        SubscribeLocalEvent<ReqWeapHarnComponent, GunShotEvent>(OnGunShot);
+        SubscribeLocalEvent<ReqWeapHarnComponent, DroppedEvent>(OnSupportedWeaponDropped);
+        SubscribeLocalEvent<WeapHarnGunEquipEvent>(OnSupportedWeaponEquippedHand);
+        SubscribeLocalEvent<WeapHarnGunUnEquipEvent>(OnSupportedWeaponUnequippedHand);
+        SubscribeLocalEvent<WeapHarnGunUnEquipInvEvent>(OnSupportedWeaponUnequippedInventory);
+        SubscribeLocalEvent<WeapHarnEquipEvent>(OnHarnessEquipped);
+        SubscribeLocalEvent<WeapHarnUnequipEvent>(OnHarnessUnequipped);
+        SubscribeLocalEvent<WeapHarnPowerCellChangeEvent>(OnHarnessPowerCellChanged);
+        SubscribeLocalEvent<WeapHarnComponent, GetVerbsEvent<AlternativeVerb>>(OnHarnessGetAlternativeVerbs);
     }
 
     private static readonly TimeSpan ActiveDrainDelay = TimeSpan.FromSeconds(1);
 
-    private void OnGunShot(Entity<RequiresWeaponHarnessComponent> ent, ref GunShotEvent args)
+    private void OnGunShot(Entity<ReqWeapHarnComponent> ent, ref GunShotEvent args)
     {
         if (!_harnessSupport.TryGetActivePoweredHarness(ent.Owner, args.User, ent.Comp, out var harness) ||
             !TryComp<PowerCellDrawComponent>(harness.Owner, out var draw))
@@ -65,7 +64,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         UpdateHarnessAlerts(harness, args.User, true);
     }
 
-    private void OnSupportedWeaponDropped(Entity<RequiresWeaponHarnessComponent> ent, ref DroppedEvent args)
+    private void OnSupportedWeaponDropped(Entity<ReqWeapHarnComponent> ent, ref DroppedEvent args)
     {
         if (args.Handled ||
             !TryGetMagneticHarness(args.User, ent.Comp.SupportKey, out _) ||
@@ -98,7 +97,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<WeaponHarnessComponent, TransformComponent>();
+        var query = EntityQueryEnumerator<WeapHarnComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var harness, out var xform))
         {
             if (_timing.CurTime < harness.NextActiveDrain)
@@ -122,16 +121,16 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         }
     }
 
-    private void OnSupportedWeaponEquippedHand(WeaponHarnessGunEquippedHandEvent args)
+    private void OnSupportedWeaponEquippedHand(WeapHarnGunEquipEvent args)
     {
-        if (!TryComp<RequiresWeaponHarnessComponent>(args.Gun, out var support))
+        if (!TryComp<ReqWeapHarnComponent>(args.Gun, out var support))
             return;
 
         var showFeedback = !_suppressNextLinkFeedback.Remove(args.Gun);
         TryLinkHarness(args.User, support.SupportKey, showFeedback, showFeedback);
     }
 
-    private void OnSupportedWeaponUnequippedHand(WeaponHarnessGunUnequippedHandEvent args)
+    private void OnSupportedWeaponUnequippedHand(WeapHarnGunUnEquipEvent args)
     {
         if (!TryGetHarness(args.User, out var harnessUid, out var harness) ||
             _harnessSupport.HasSupportedWeaponInHandOrSuitStorage(args.User, harness.SupportKey))
@@ -140,35 +139,35 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         harness.LinkSoundPlayed = false;
     }
 
-    private void OnSupportedWeaponUnequippedInventory(WeaponHarnessGunUnequippedInventoryEvent args)
+    private void OnSupportedWeaponUnequippedInventory(WeapHarnGunUnEquipInvEvent args)
     {
         if (args.Slot == WeaponHarnessSystem.SuitStorageSlot)
             _suppressNextLinkFeedback.Add(args.Gun);
     }
 
-    private void OnHarnessEquipped(WeaponHarnessEquippedEvent args)
+    private void OnHarnessEquipped(WeapHarnEquipEvent args)
     {
         if (args.Slot != WeaponHarnessSystem.BeltSlot ||
-            !TryComp<WeaponHarnessComponent>(args.Harness, out var harness))
+            !TryComp<WeapHarnComponent>(args.Harness, out var harness))
             return;
 
         TryLinkHarness(args.User, harness.SupportKey, true, false);
         UpdateHarnessAlerts((args.Harness, harness), args.User, true);
     }
 
-    private void OnHarnessUnequipped(WeaponHarnessUnequippedEvent args)
+    private void OnHarnessUnequipped(WeapHarnUnequipEvent args)
     {
         if (args.Slot != WeaponHarnessSystem.BeltSlot ||
-            !TryComp<WeaponHarnessComponent>(args.Harness, out var harness))
+            !TryComp<WeapHarnComponent>(args.Harness, out var harness))
             return;
 
         ClearHarnessAlerts(args.User, harness);
         ResetHarnessWarnings(harness);
     }
 
-    private void OnHarnessPowerCellChanged(WeaponHarnessPowerCellChangedEvent args)
+    private void OnHarnessPowerCellChanged(WeapHarnPowerCellChangeEvent args)
     {
-        if (!TryComp<WeaponHarnessComponent>(args.Harness, out var harness))
+        if (!TryComp<WeapHarnComponent>(args.Harness, out var harness))
             return;
 
         if (!TryGetHarnessWearer(args.Harness, out var wearer))
@@ -180,7 +179,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         UpdateHarnessAlerts((args.Harness, harness), wearer, true);
     }
 
-    private void OnHarnessGetAlternativeVerbs(Entity<WeaponHarnessComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    private void OnHarnessGetAlternativeVerbs(Entity<WeapHarnComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
             return;
@@ -200,7 +199,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         });
     }
 
-    private void ToggleMagneticRetrieval(Entity<WeaponHarnessComponent> ent, EntityUid user)
+    private void ToggleMagneticRetrieval(Entity<WeapHarnComponent> ent, EntityUid user)
     {
         ent.Comp.MagneticRetrievalEnabled = !ent.Comp.MagneticRetrievalEnabled;
 
@@ -234,7 +233,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     private bool TryGetMagneticHarness(
         EntityUid user,
         string supportKey,
-        out Entity<WeaponHarnessComponent> harness)
+        out Entity<WeapHarnComponent> harness)
     {
         return _harnessSupport.TryGetPoweredHarnessEntity(user, supportKey, out harness) &&
                harness.Comp.MagneticRetrievalEnabled;
@@ -242,11 +241,10 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
 
     private bool CanMagneticallyRetrieve(EntityUid uid)
     {
-        return HasComp<SmartGunComponent>(uid) &&
-               _tag.HasTag(uid, SmartGunTag);
+        return _tag.HasTag(uid, HeavyWeaponTag);
     }
 
-    private void UpdateHarnessAlerts(Entity<WeaponHarnessComponent> ent, EntityUid wearer, bool playSounds)
+    private void UpdateHarnessAlerts(Entity<WeapHarnComponent> ent, EntityUid wearer, bool playSounds)
     {
         if (!_powerCell.TryGetBatteryFromSlot(ent.Owner, out var battery))
         {
@@ -299,13 +297,13 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     private bool TryGetHarness(
         EntityUid user,
         out EntityUid harnessUid,
-        out WeaponHarnessComponent harness)
+        out WeapHarnComponent harness)
     {
         harnessUid = default;
         harness = default!;
 
         if (!_inventory.TryGetSlotEntity(user, WeaponHarnessSystem.BeltSlot, out var belt) ||
-            !TryComp<WeaponHarnessComponent>(belt.Value, out var harnessComp))
+            !TryComp<WeapHarnComponent>(belt.Value, out var harnessComp))
             return false;
 
         harnessUid = belt.Value;
@@ -319,13 +317,13 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         return TryGetHarness(wearer, out var beltHarness, out _) && beltHarness == harnessUid;
     }
 
-    private void ClearHarnessAlerts(EntityUid wearer, WeaponHarnessComponent harness)
+    private void ClearHarnessAlerts(EntityUid wearer, WeapHarnComponent harness)
     {
         _alerts.ClearAlert(wearer, harness.LowPowerAlert);
         _alerts.ClearAlert(wearer, harness.DepletedAlert);
     }
 
-    private static void ResetHarnessWarnings(WeaponHarnessComponent harness)
+    private static void ResetHarnessWarnings(WeapHarnComponent harness)
     {
         harness.HalfChargeWarned = false;
         harness.DepletedWarned = false;

@@ -144,8 +144,8 @@
         - 0,0,5,1
       whitelist:
         tags:
-          - TriadSmartGun
-    - type: WeaponHarness
+          - TriadHeavyWeapon
+    - type: WeapHarn
       supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower
       depletedAlert: Mla79HarnessDepleted
