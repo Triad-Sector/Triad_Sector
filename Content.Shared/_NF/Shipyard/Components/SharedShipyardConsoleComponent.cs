@@ -5,7 +5,8 @@ using Robust.Shared.Prototypes;
 using Content.Shared.Radio;
 using Content.Shared.Access;
 using Content.Shared._NF.Bank.Components;
-using Content.Shared.Roles; // Triad
+using Content.Shared.Roles;
+using Content.Shared.Whitelist; // Triad
 
 namespace Content.Shared._NF.Shipyard.Components;
 
@@ -70,16 +71,14 @@ public sealed partial class ShipyardConsoleComponent : Component
     public bool IgnoreBaseSaleRate;
 
     /// <summary>
-    /// Triad - Job blacklist for the ship saving and loading.
+    /// Triad - Whitelist for the ship saving and loading
     /// </summary>
     [DataField]
-    public List<ProtoId<JobPrototype>> ShipSaveJobBlacklist = new()
-    {
-        "TdfChiefEnforcer",
-        "TdfWarden",
-        "TdfPatrolTeamLeader",
-        "TdfMedic",
-        "TdfEnforcer",
-        "TdfCadet"
-    };
+    public EntityWhitelist? ShipSaveWhitelist;
+
+    /// <summary>
+    /// Triad - Blacklist for the ship saving and loading
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? ShipSaveBlacklist;
 }

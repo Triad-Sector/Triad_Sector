@@ -27,6 +27,7 @@
     - type: NpcFactionMember
       factions:
       - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial

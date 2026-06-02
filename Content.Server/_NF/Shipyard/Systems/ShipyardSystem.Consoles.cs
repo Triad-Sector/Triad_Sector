@@ -60,7 +60,7 @@ using Content.Shared._Mono.Shipyard;
 using Content.Shared.Tag;
 using Robust.Shared.Timing;
 using Content.Shared._Triad.CCVar;
-using Content.Shared.Roles.Jobs;
+using Content.Shared.Whitelist; // Triad
 
 // Suppress naming style rule for the _NF namespace prefix (project convention)
 #pragma warning disable IDE1006
@@ -91,7 +91,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly ShipyardDirectionSystem _shipyardDirection = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     private static readonly ProtoId<TagPrototype> CrewedShuttleTag = "CrewedShuttle";
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
@@ -452,7 +452,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        if (IsBlacklistedShipSaveRole(player, component))
+        if (IsShipSaveWhitelistValid(player, component))
             return;
 
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
@@ -560,7 +560,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        if (IsBlacklistedShipSaveRole(player, component))
+        if (IsShipSaveWhitelistValid(player, component))
             return;
 
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
@@ -1163,22 +1163,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     /// <summary>
-    /// Checks if a player is currently on the unassign cooldown and returns the remaining time.
+    /// Checks if a player is valid for saving a ship based on the entity whitelist of the shipyard console.
     /// </summary>
-    private bool IsBlacklistedShipSaveRole(EntityUid user, ShipyardConsoleComponent console)
+    private bool IsShipSaveWhitelistValid(EntityUid user, ShipyardConsoleComponent console)
     {
-        var isBlacklisted = false;
-
-        if (_mind.TryGetMind(user, out var mindId, out _))
-        {
-            foreach (var job in console.ShipSaveJobBlacklist)
-            {
-                if (_job.MindHasJobWithId(mindId, job.Id))
-                    isBlacklisted = true;
-            }
-        }
-
-        return isBlacklisted;
+        return _whitelist.CheckBoth(user, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
     }
     // Triad End
 

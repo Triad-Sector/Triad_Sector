@@ -28,6 +28,9 @@
         - IdCard
         - ShipyardVoucher
     newAccessLevels: [Captain]
+    shipSaveBlacklist:
+      components:
+        - ShipSavingBlacklist
   - type: ActivatableUI
     singleUser: true
     key: enum.ShipyardConsoleUiKey.Shipyard

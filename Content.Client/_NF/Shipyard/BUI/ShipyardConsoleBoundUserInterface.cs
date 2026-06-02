@@ -12,14 +12,15 @@ using Robust.Shared.Log;
 using Content.Shared.Roles.Jobs; // Triad
 using Content.Shared.Mind;
 using Robust.Client.Player;
-using Content.Shared._NF.Shipyard.Components; // Triad
+using Content.Shared._NF.Shipyard.Components;
+using Content.Shared.Whitelist; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
     [Dependency] private readonly IPlayerManager _player = default!; // Triad
+    [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
     private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
 
     private ShipyardConsoleMenu? _menu;
@@ -33,13 +34,11 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     private ItemList? _savedShipsList;
     private int _selectedShipIndex = -1;
 
-    private readonly SharedJobSystem _job; // Triad
-    private readonly SharedMindSystem _mind; // Triad
+    private readonly EntityWhitelistSystem _whitelist; // Triad
 
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
-        _job = EntMan.System<SharedJobSystem>();
-        _mind = EntMan.System<SharedMindSystem>(); // Triad
+        _whitelist = EntMan.System<EntityWhitelistSystem>(); // Triad
     }
 
     protected override void Open()
@@ -180,18 +179,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         // Triad - shipsave blacklist for roles
         if (EntMan.TryGetComponent(Owner, out ShipyardConsoleComponent? console))
         {
-            var validJob = true;
-
-            if (_player.LocalSession != null && _mind.TryGetMind(_player.LocalSession.UserId, out var mindId))
-            {
-                foreach (var job in console.ShipSaveJobBlacklist)
-                {
-                    if (_job.MindHasJobWithId(mindId, job.Id))
-                        validJob = false;
-                }
-            }
-
-            if (!validJob)
+            if (_player.LocalEntity != null && !_whitelist.CheckBoth(_player.LocalEntity, console.ShipSaveBlacklist, console.ShipSaveWhitelist))
             {
                 _saveShipButton?.Visible = false;
                 _loadShipButton?.Visible = false;

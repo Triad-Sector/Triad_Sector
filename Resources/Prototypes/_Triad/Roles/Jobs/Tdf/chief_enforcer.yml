@@ -39,6 +39,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: ShipSavingBlacklist # TDF can't save ships
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

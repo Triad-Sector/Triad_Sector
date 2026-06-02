@@ -34,6 +34,7 @@
     - type: NpcFactionMember
       factions:
       - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
     - type: SurgerySpeedModifier
       SpeedModifier: 1.65
   - !type:AddImplantSpecial
