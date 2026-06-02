@@ -4,8 +4,7 @@
   id: WeaponSmartLmg
   description: A military prototype that saw rare use in front-lines field testing. This is a refined version for standard production.
   components:
-  # Triad: Removed GunWieldBonus and SpeedModifiedOnWield so harness support controls the MLA-79 bonuses.
-  # Triad: RequiresWeaponHarness below restores accuracy and movement behavior through the powered harness.
+  # Triad: Removed GunWieldBonus and SpeedModifiedOnWield so harness support controls the MLA-79 bonuses. RequiresWeaponHarness below restores accuracy and movement behavior through the powered harness.
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/SmartGuns/ml79a.rsi
     layers:
@@ -63,6 +62,7 @@
   - type: GunRequiresWield
   - type: PirateBountyItem
     id: ExperimentalFactionWeapon
+  # Triad: Tag implemented for the gun to be properly identified by its harness.
   - type: Tag
     tags:
     - TriadSmartGun
@@ -80,3 +80,4 @@
     maxAngleBonus: -37
     unsupportedWalkModifier: 0.5
     unsupportedSprintModifier: 0.4
+  #Triad: End
