@@ -109,7 +109,10 @@ public sealed class TraitSystem : EntitySystem
             Profile = profile,
         };
 
-        foreach (var traitId in selectedTraits)
+        // Evaluate traits in a deterministic order (highest priority, then cheapest, then id) so that when a
+        // profile is over a cap, which traits survive the cut is stable across spawns and matches the apply
+        // order below. Iterating the raw set would make the rejected subset hash-arbitrary.
+        foreach (var traitId in selectedTraits.OrderByDescending(id => _prototype.TryIndex<TraitPrototype>(id, out var pa) ? pa.Priority : int.MinValue).ThenBy(id => _prototype.TryIndex<TraitPrototype>(id, out var pb) ? pb.Cost : int.MaxValue).ThenBy(id => id.Id))
         {
             if (!_prototype.TryIndex(traitId, out var trait))
             {
