@@ -4,7 +4,7 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 03/27/2026 19:43:44
+  time: 05/31/2026 13:03:23
   entityCount: 10733
 maps:
 - 1
@@ -300,10 +300,10 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
-        Puddle: []
         Kudzu: []
         Smoke: []
+        MetalFoam: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -8720,6 +8720,7 @@ entities:
     - type: NavMap
     - type: ShipGridLock
       locked: False
+    - type: ThermalSignature
 - proto: ActionToggleLight
   entities:
   - uid: 4
@@ -29887,14 +29888,6 @@ entities:
     - type: Transform
       pos: 12.5,28.5
       parent: 2
-- proto: ConstructionBox
-  entities:
-  - uid: 3814
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -38.5,40.5
-      parent: 2
 - proto: ConveyorBelt
   entities:
   - uid: 3815
@@ -40331,16 +40324,16 @@ entities:
       - Oxygen
     - type: AtmosPipeColor
       color: '#0055CCFF'
-- proto: GasMinerNitrogenStationLarge
+- proto: GasMinerNitrogenTriad
   entities:
-  - uid: 5339
+  - uid: 5340
     components:
     - type: Transform
       pos: -34.5,64.5
       parent: 2
-- proto: GasMinerOxygenStationLarge
+- proto: GasMinerOxygenTriad
   entities:
-  - uid: 5340
+  - uid: 5339
     components:
     - type: Transform
       pos: -36.5,64.5
@@ -55032,6 +55025,14 @@ entities:
     - type: Transform
       pos: -13.5,49.5
       parent: 2
+- proto: NFMagnetBoxConstruction
+  entities:
+  - uid: 3814
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -38.5,40.5
+      parent: 2
 - proto: NFPlushieCmo
   entities:
   - uid: 7253
@@ -61845,6 +61846,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 14.5,44.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: SinkWide
   entities:
   - uid: 8303
@@ -61853,12 +61856,16 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 9.555361,52.50066
       parent: 2
+    - type: Fixtures
+      fixtures: {}
   - uid: 8304
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 17.5,24.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: SmallLightDim
   entities:
   - uid: 8305

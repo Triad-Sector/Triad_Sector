@@ -1099,3 +1099,26 @@ Entries:
   id: 2250
   time: '2026-06-01T04:01:55.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/170
+- author: SislenC
+  changes:
+    - type: Tweak
+      message: Chicken Nugget box is now 2x2 down from 3x3.
+  id: 2251
+  time: '2026-06-02T03:23:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/168
+- author: SketchiiArtist
+  changes:
+    - type: Tweak
+      message: Changed max description length to 2048 characters.
+  id: 2252
+  time: '2026-06-02T03:25:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/164
+- author: Dimasw99
+  changes:
+    - type: Tweak
+      message: >-
+        Adjusted oxy, plasma and nitrogen station miners from 400mol/s to 6, 6
+        and 24 respectively
+  id: 2253
+  time: '2026-06-02T03:29:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/171
