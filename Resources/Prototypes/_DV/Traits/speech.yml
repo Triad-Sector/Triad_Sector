@@ -95,11 +95,13 @@
   name: trait-scottish-accent-name
   description: trait-scottish-accent-desc
   category: Accents
-  cost: 0
+  cost: 1 # Triad: restore pre-port cost (the migration uniquely dropped this to 0)
   effects:
   - !type:AddCompsEffect
     components:
     - type: ScottishAccent
+  - !type:SpawnItemInHandEffect # Triad: restore the bagpipe the migration dropped (was traitGear: BagpipeInstrument)
+    item: BagpipeInstrument
 
 - type: trait
   id: Accentless
