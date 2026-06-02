@@ -9,13 +9,17 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
-using System.Linq;
+using Content.Shared.Roles.Jobs; // Triad
+using Content.Shared.Mind;
+using Robust.Client.Player;
+using Content.Shared._NF.Shipyard.Components; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
+    [Dependency] private readonly IPlayerManager _player = default!; // Triad
     private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
 
     private ShipyardConsoleMenu? _menu;
@@ -29,10 +33,13 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     private ItemList? _savedShipsList;
     private int _selectedShipIndex = -1;
 
-
+    private readonly SharedJobSystem _job; // Triad
+    private readonly SharedMindSystem _mind; // Triad
 
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
+        _job = EntMan.System<SharedJobSystem>();
+        _mind = EntMan.System<SharedMindSystem>(); // Triad
     }
 
     protected override void Open()
@@ -168,6 +175,28 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         {
             _loadShipButton.Disabled = savedShipFiles.Count == 0;
             _sawmill.Info($"Load button disabled: {_loadShipButton.Disabled}");
+        }
+
+        // Triad - shipsave blacklist for roles
+        if (EntMan.TryGetComponent(Owner, out ShipyardConsoleComponent? console))
+        {
+            var validJob = true;
+
+            if (_player.LocalSession != null && _mind.TryGetMind(_player.LocalSession.UserId, out var mindId))
+            {
+                foreach (var job in console.ShipSaveJobBlacklist)
+                {
+                    if (_job.MindHasJobWithId(mindId, job.Id))
+                        validJob = false;
+                }
+            }
+
+            if (!validJob)
+            {
+                _saveShipButton?.Visible = false;
+                _loadShipButton?.Visible = false;
+                _savedShipsList?.Visible = false;
+            }
         }
     }
 
