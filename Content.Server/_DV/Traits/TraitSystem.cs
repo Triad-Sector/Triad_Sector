@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Shared._DV.CCVars;
 using Content.Shared._DV.Traits;
 using Content.Shared._DV.Traits.Conditions;
@@ -53,21 +52,12 @@ public sealed class TraitSystem : EntitySystem
         // Track disabled traits and reasons
         var disabledTraits = new Dictionary<ProtoId<TraitPrototype>, List<string>>();
 
-        // Validate and collect valid traits
+        // Validate and collect valid traits. ValidateTraits returns them already in apply order (highest priority
+        // first, ties broken by lower cost then id) so order-sensitive effects (e.g. add-vs-remove of the same
+        // component) resolve deterministically.
         var validTraits = ValidateTraits(args.Mob, args.Profile.TraitPreferences, args.Player, args.JobId, speciesId, args.Profile, disabledTraits);
 
-        // Apply valid traits, highest priority first (ties broken by lower cost) so order-sensitive
-        // effects (e.g. add-vs-remove of the same component) resolve deterministically.
-        var validPrototypes = new List<TraitPrototype>();
-        foreach (var traitId in validTraits)
-        {
-            if (!_prototype.TryIndex(traitId, out var trait))
-                continue;
-
-            validPrototypes.Add(trait);
-        }
-
-        foreach (var trait in validPrototypes.OrderByDescending(a => a.Priority).ThenBy(a => a.Cost))
+        foreach (var trait in validTraits)
             ApplyTrait(args.Mob, trait);
 
         // Send disabled traits notification to client if any were rejected
@@ -80,7 +70,7 @@ public sealed class TraitSystem : EntitySystem
     /// <summary>
     /// Validates a set of trait selections against all rules and returns the valid subset.
     /// </summary>
-    private HashSet<ProtoId<TraitPrototype>> ValidateTraits(
+    private List<TraitPrototype> ValidateTraits(
         EntityUid player,
         IReadOnlySet<ProtoId<TraitPrototype>> selectedTraits,
         ICommonSession? session,
@@ -89,7 +79,7 @@ public sealed class TraitSystem : EntitySystem
         HumanoidCharacterProfile? profile,
         Dictionary<ProtoId<TraitPrototype>, List<string>> disabledTraits)
     {
-        var validTraits = new HashSet<ProtoId<TraitPrototype>>();
+        var validTraits = new List<TraitPrototype>();
         var totalPoints = 0;
         var traitCount = 0;
         var categoryTraitCounts = new Dictionary<ProtoId<TraitCategoryPrototype>, int>();
@@ -109,17 +99,32 @@ public sealed class TraitSystem : EntitySystem
             Profile = profile,
         };
 
-        // Evaluate traits in a deterministic order (highest priority, then cheapest, then id) so that when a
-        // profile is over a cap, which traits survive the cut is stable across spawns and matches the apply
-        // order below. Iterating the raw set would make the rejected subset hash-arbitrary.
-        foreach (var traitId in selectedTraits.OrderByDescending(id => _prototype.TryIndex<TraitPrototype>(id, out var pa) ? pa.Priority : int.MinValue).ThenBy(id => _prototype.TryIndex<TraitPrototype>(id, out var pb) ? pb.Cost : int.MaxValue).ThenBy(id => id.Id))
+        // Resolve once (logging unknowns), then evaluate in a deterministic order (highest priority, then cheapest,
+        // then id) so the surviving subset is stable across spawns and is returned already in apply order. Resolving
+        // up front also keeps the sort comparator free of repeated prototype lookups. Ordinal keeps the tiebreak
+        // host-independent.
+        var sorted = new List<TraitPrototype>();
+        foreach (var selectedId in selectedTraits)
         {
-            if (!_prototype.TryIndex(traitId, out var trait))
-            {
-                Log.Warning($"Unknown trait ID in player preferences: {traitId}");
-                continue;
-            }
+            if (_prototype.TryIndex(selectedId, out var resolved))
+                sorted.Add(resolved);
+            else
+                Log.Warning($"Unknown trait ID in player preferences: {selectedId}");
+        }
 
+        sorted.Sort(static (a, b) =>
+        {
+            var byPriority = b.Priority.CompareTo(a.Priority); // highest priority first
+            if (byPriority != 0)
+                return byPriority;
+
+            var byCost = a.Cost.CompareTo(b.Cost); // cheapest first
+            return byCost != 0 ? byCost : string.CompareOrdinal(a.ID, b.ID);
+        });
+
+        foreach (var trait in sorted)
+        {
+            ProtoId<TraitPrototype> traitId = trait.ID;
             var rejectionReasons = new List<string>();
 
             // Check global trait count limit
@@ -157,7 +162,7 @@ public sealed class TraitSystem : EntitySystem
             }
 
             // Trait is valid, add it
-            validTraits.Add(traitId);
+            validTraits.Add(trait);
             totalPoints += trait.Cost;
             traitCount++;
 
@@ -213,7 +218,19 @@ public sealed class TraitSystem : EntitySystem
     {
         foreach (var condition in trait.Conditions)
         {
-            if (condition.Evaluate(ctx))
+            bool passed;
+            try
+            {
+                passed = condition.Evaluate(ctx);
+            }
+            catch (Exception e)
+            {
+                // Triad: a malformed condition must reject its trait, not crash OnPlayerSpawnComplete. Fail safe.
+                Log.Error($"Error evaluating condition {condition.GetType().Name} for trait {trait.ID}: {e}");
+                return false;
+            }
+
+            if (passed)
                 continue;
 
             // Get human-readable reason from the condition

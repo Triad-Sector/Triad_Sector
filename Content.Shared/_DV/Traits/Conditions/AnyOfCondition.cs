@@ -18,13 +18,9 @@ public sealed partial class AnyOfCondition : BaseTraitCondition
 
     protected override bool EvaluateImplementation(TraitConditionContext ctx)
     {
-        // Inversion doesn't make sense for AnyOfCondition - use inverted child conditions instead
-        if (Invert)
-        {
-            throw new InvalidOperationException(
-                "AnyOfCondition does not support Invert. To require none of the conditions, " +
-                "invert the individual child conditions instead.");
-        }
+        // Triad: was throwing on Invert, which crashed player spawn (CheckConditions has no try/catch). Inversion
+        // is well-defined here: the base Evaluate XORs the result, so an inverted AnyOf means "none of these pass"
+        // (NOT(A OR B)), which the client preview already does and inverting the children cannot express. Let it run.
 
         // Empty list should fail
         if (Conditions.Count == 0)

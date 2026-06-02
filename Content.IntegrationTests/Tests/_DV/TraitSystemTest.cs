@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Content.Server._DV.Traits;
 using Content.Shared._DV.Traits;
@@ -602,13 +603,13 @@ public sealed partial class TraitSystemTest
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             var disabledTraits = new Dictionary<ProtoId<TraitPrototype>, List<string>>();
-            var validTraits = (HashSet<ProtoId<TraitPrototype>>)method?.Invoke(traitSys,
+            var validTraits = (List<TraitPrototype>)method?.Invoke(traitSys,
                 new object[] { player, profile.TraitPreferences, null, null, null, profile, disabledTraits });
 
             Assert.Multiple(() =>
             {
                 Assert.That(validTraits?.Count, Is.EqualTo(1), "Only one conflicting trait should be valid");
-                Assert.That(validTraits.Contains("TestTraitConflictB"), Is.True, "Non-complaining trait should be kept");
+                Assert.That(validTraits.Any(t => t.ID == "TestTraitConflictB"), Is.True, "Non-complaining trait should be kept");
                 Assert.That(disabledTraits.ContainsKey("TestTraitConflictA"), Is.True, "Trait with conflicts should be rejected");
             });
 
@@ -641,7 +642,7 @@ public sealed partial class TraitSystemTest
             var method = typeof(TraitSystem).GetMethod("ValidateTraits",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var validTraits = (HashSet<ProtoId<TraitPrototype>>)method?.Invoke(traitSys,
+            var validTraits = (List<TraitPrototype>)method?.Invoke(traitSys,
                 new object[] { player, selectedTraits, null, null, null, null, new Dictionary<ProtoId<TraitPrototype>, List<string>>() });
 
             Assert.That(validTraits?.Count, Is.EqualTo(2), "Should respect category maxTraits limit");
@@ -676,7 +677,7 @@ public sealed partial class TraitSystemTest
             var method = typeof(TraitSystem).GetMethod("ValidateTraits",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var validTraits = (HashSet<ProtoId<TraitPrototype>>)method?.Invoke(traitSys,
+            var validTraits = (List<TraitPrototype>)method?.Invoke(traitSys,
                 new object[] { player, selectedTraits, null, null, null, null, new Dictionary<ProtoId<TraitPrototype>, List<string>>() });
 
             Assert.That(validTraits?.Count, Is.EqualTo(2), "Should respect category maxPoints limit");
@@ -709,10 +710,10 @@ public sealed partial class TraitSystemTest
             var method = typeof(TraitSystem).GetMethod("ValidateTraits",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var validTraits = (HashSet<ProtoId<TraitPrototype>>)method?.Invoke(traitSys,
+            var validTraits = (List<TraitPrototype>)method?.Invoke(traitSys,
                 new object[] { player, selectedTraits, null, null, null, null, new Dictionary<ProtoId<TraitPrototype>, List<string>>() });
 
-            Assert.That(validTraits?.Contains("TestTraitHasComp"), Is.True, "Trait with met condition should be valid");
+            Assert.That(validTraits?.Any(t => t.ID == "TestTraitHasComp"), Is.True, "Trait with met condition should be valid");
 
             entMan.DeleteEntity(player);
         });
@@ -742,10 +743,10 @@ public sealed partial class TraitSystemTest
             var method = typeof(TraitSystem).GetMethod("ValidateTraits",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var validTraits = (HashSet<ProtoId<TraitPrototype>>)method?.Invoke(traitSys,
+            var validTraits = (List<TraitPrototype>)method?.Invoke(traitSys,
                 new object[] { player, selectedTraits, null, null, null, null, new Dictionary<ProtoId<TraitPrototype>, List<string>>() });
 
-            Assert.That(validTraits?.Contains("TestTraitHasComp"),
+            Assert.That(validTraits?.Any(t => t.ID == "TestTraitHasComp"),
                 Is.False,
                 "Trait with unmet condition should be rejected");
 

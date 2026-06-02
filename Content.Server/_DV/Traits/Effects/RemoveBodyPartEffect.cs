@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Body.Systems;
 using Content.Shared._DV.Traits.Effects;
 using Content.Shared.Body.Components;
@@ -32,16 +33,22 @@ public sealed partial class RemoveBodyPartEffect : BaseTraitEffect
         if (bodySys.GetRootPartOrNull(ctx.Player, body) is not { } root)
             return;
 
-        foreach (var part in bodySys.GetBodyChildrenOfType(ctx.Player, Part, body, Symmetry))
-        {
-            foreach (var child in bodySys.GetBodyPartChildren(part.Id, part.Component))
-            {
-                ctx.EntMan.DeleteEntity(child.Id);
-            }
-            ctx.EntMan.DeleteEntity(part.Id);
+        // Triad: materialize before deleting. GetBodyChildrenOfType and GetBodyPartChildren are lazy iterators over
+        // the live body graph, so deleting parts mid-enumeration could invalidate them. GetBodyPartChildren yields
+        // the part itself first, so deleting its results removes the whole subtree (the old explicit part delete was
+        // a double-delete of part.Id).
+        var targetParts = bodySys.GetBodyChildrenOfType(ctx.Player, Part, body, Symmetry).ToList();
+        if (targetParts.Count == 0)
+            return;
 
-            // apparently chopping off limbs makes people bleed a lot. Who would have guessed?
-            bloodstreamSys.TryModifyBleedAmount(ctx.Player, -100f);
+        foreach (var part in targetParts)
+        {
+            foreach (var child in bodySys.GetBodyPartChildren(part.Id, part.Component).ToList())
+                ctx.EntMan.DeleteEntity(child.Id);
         }
+
+        // Removing a limb can leave the bloodstream bleeding; clamp it back to zero so a trait-chosen amputee does
+        // not spawn already bleeding out (the negative amount is clamped to 0).
+        bloodstreamSys.TryModifyBleedAmount(ctx.Player, -100f);
     }
 }

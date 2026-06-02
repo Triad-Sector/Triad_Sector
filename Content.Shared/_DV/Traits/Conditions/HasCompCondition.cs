@@ -27,17 +27,15 @@ public sealed partial class HasCompCondition : BaseTraitCondition
         if (string.IsNullOrEmpty(Component))
             return false;
 
-        try
+        // Triad: TryGetRegistration over GetRegistration-in-try/catch (matches RemCompsEffect). Avoids
+        // exception-as-control-flow on the spawn path and stops swallowing unrelated exceptions as a silent false.
+        if (!ctx.CompFactory.TryGetRegistration(Component, out var registration))
         {
-            var compType = ctx.CompFactory.GetRegistration(Component).Type;
-            return ctx.EntMan.HasComponent(ctx.Player, compType);
-        }
-        catch (Exception)
-        {
-            // Log the actual error instead of silently catching
             ctx.LogMan.GetSawmill("traits").Error($"Failed to get component registration for '{Component}'");
             return false;
         }
+
+        return ctx.EntMan.HasComponent(ctx.Player, registration.Type);
     }
 
     public override string GetTooltip(IPrototypeManager proto, ILocalizationManager loc, int depth)
