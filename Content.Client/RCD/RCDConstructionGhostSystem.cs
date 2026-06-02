@@ -136,6 +136,17 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
 
         var prototype = _protoManager.Index(rcd.ProtoId);
 
+        // Triad: the RPD deconstructs an existing pipe on click (via AfterInteract), so there's nothing to preview
+        // in Deconstruct mode, and the construct-style whole-tile ghost reads as targeting the tile rather than the
+        // pipe under it. Suppress the placer here; RCD deconstruct and RPD construct keep their ghost.
+        if (HasComp<RPDComponent>(heldEntity) && prototype.Mode == RcdMode.Deconstruct)
+        {
+            if (placerIsRCD)
+                _placementManager.Clear();
+            return;
+        }
+        // End Triad
+
         // Update the direction the RCD prototype based on the placer direction
         if (_placementDirection != _placementManager.Direction)
         {
