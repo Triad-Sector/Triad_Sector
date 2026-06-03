@@ -161,6 +161,8 @@ marking-AvaliMultiwingTipsLeftHand-l_hand_multiwing3 = Third feather
 marking-AvaliMultiwingTipsLeftHand-l_hand_multiwing4 = Fourth feather
 marking-AvaliMultiwingTipsLeftHand-l_hand_wingtips = Feather tips
 marking-AvaliMultiwingTipsLefttHand-l_hand_isolated = Hand
+# Triad: corrects typo in 'Leftt' sibling above
+marking-AvaliMultiwingTipsLeftHand-l_hand_isolated = Hand
 
 marking-AvaliMultiwingTipsRightHand = Multicolored Wing With Tips Right Hand
 marking-AvaliMultiwingTipsRightHand-r_hand_multiwing1 = First Feather
@@ -184,11 +186,19 @@ marking-AvaliBicoloredTipsLeftHand = Two Colored Wing with Tips Left Hand
 marking-AvaliBicoloredTipsLeftHand-l_hand_back = Under Side
 marking-AvaliBicoloredTipsLeftHand-l_hand_right = Outer Side
 marking-AvaliBicoloredTipsLeftHand-l_hand_isolated = Hand
+# Triad: missing sublayer keys referenced by avali.yml (BicoloredTips uses front/wingtips, not just right)
+marking-AvaliBicoloredTipsLeftHand-l_hand_front = Front feathers
+marking-AvaliBicoloredTipsLeftHand-l_hand_wingtips = Feather tips
+# End Triad
 
 marking-AvaliBicoloredTipsRightHand = Two Colored Wing with Tips Right Hand
 marking-AvaliBicoloredTipsRightHand-r_hand_back = Under Side
 marking-AvaliBicoloredTipsRightHand-r_hand_right = Outer Side
 marking-AvaliBicoloredTipsRightHand-r_hand_isolated = Hand
+# Triad: missing sublayer keys referenced by avali.yml (BicoloredTips uses front/wingtips, not just right)
+marking-AvaliBicoloredTipsRightHand-r_hand_front = Front feathers
+marking-AvaliBicoloredTipsRightHand-r_hand_wingtips = Feather tips
+# End Triad
 
 marking-AvaliEarringOne = Avali Earring One
 marking-AvaliEarringOne-avali_earring1_1 = Top

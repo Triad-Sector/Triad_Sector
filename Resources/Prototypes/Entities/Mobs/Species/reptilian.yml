@@ -8,6 +8,7 @@
   - type: HumanoidAppearance
     species: Reptilian
     hideLayersOnEquip:
+    - Hair # Triad - Reptilian hair.
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
@@ -166,6 +167,7 @@
   - type: HumanoidAppearance
     species: Reptilian
     hideLayersOnEquip: # WWDP
+    - Hair # Triad - Reptilian hair.
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide

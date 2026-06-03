@@ -74,6 +74,7 @@
     - MailingUnitElectronics
     - APCElectronics
     - SMESMachineCircuitboard
+    - PortableSMESMachineCircuitboard
     - SubstationMachineCircuitboard
     - SmallThrusterMachineCircuitboard
     - SmallGyroscopeMachineCircuitboard

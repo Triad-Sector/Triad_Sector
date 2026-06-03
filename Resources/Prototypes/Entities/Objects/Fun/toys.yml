@@ -1096,6 +1096,7 @@
       params:
         volume: -5
         maxDistance: 10
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BasePlushie
@@ -1395,6 +1396,7 @@
     size: Normal
     sprite: Objects/Fun/toys.rsi
     heldPrefix: singularitytoy
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BaseItem
@@ -1421,6 +1423,7 @@
       params:
         variation: 0.65
         volume: -10
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BaseItem
@@ -1812,6 +1815,7 @@
       params:
         volume: -9
         maxDistance: 3
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BasePlushie

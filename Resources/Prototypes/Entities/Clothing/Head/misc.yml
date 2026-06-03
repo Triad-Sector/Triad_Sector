@@ -168,8 +168,8 @@
     sprite: Clothing/Head/Misc/fancycrown.rsi
   - type: StaticPrice
     price: 3000
-  - type: AddAccentClothing
-    accent: MobsterAccent
+  #- type: AddAccentClothing # Triad removal - Remove forced accents
+  #  accent: MobsterAccent
   - type: NFTreasure # Frontier
 
 - type: entity
