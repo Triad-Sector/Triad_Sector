@@ -143,7 +143,7 @@ public abstract partial class SharedShuttleSystem
     /// Turns the set service flags into a bracketed tag for display.
     /// Each set flag contributes its localized shortform string, falling back to the
     /// first character of the flag name when no shortform string is defined.
-    /// Rendered at the front of the IFF label so it isn't trimmed when the scan list truncates names.
+    /// Rendered at the front of the IFF label, with a trailing space before the name, so the tag isn't trimmed when the scan list truncates names.
     /// </summary>
     /// <param name="flags">The IFF flags to render.</param>
     /// <returns>The string to display, or empty when no flags are set.</returns>
@@ -163,7 +163,7 @@ public abstract partial class SharedShuttleSystem
             else
                 outputString = string.Concat(outputString, flag.ToString()[0]); // Fallback: use first character of string
         }
-        return $"[{outputString}]";
+        return $"[{outputString}] ";
     }
 
     [PublicAPI]

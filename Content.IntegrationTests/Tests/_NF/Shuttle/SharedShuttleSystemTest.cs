@@ -57,7 +57,7 @@ public sealed class ServiceFlagsSuffixTests
         }
 
         // Extract the characters between brackets
-        var characters = _shuttle.GetServiceFlagsPrefix(allFlags).Trim('[', ']');
+        var characters = _shuttle.GetServiceFlagsPrefix(allFlags).Trim('[', ']', ' ');
 
         // Check that we have three separate character combinations.
         Assert.Multiple(() =>
@@ -72,7 +72,7 @@ public sealed class ServiceFlagsSuffixTests
 
                 var oneFlagResult = _shuttle.GetServiceFlagsPrefix(flag);
                 // Extract the characters between brackets
-                var oneFlagCharacters = oneFlagResult.Trim('[', ']');
+                var oneFlagCharacters = oneFlagResult.Trim('[', ']', ' ');
                 // Check that we have three separate character combination.
                 Assert.That(oneFlagCharacters.Length, Is.EqualTo(1));
                 Assert.That(characters.Contains(oneFlagCharacters[0]), Is.True);
