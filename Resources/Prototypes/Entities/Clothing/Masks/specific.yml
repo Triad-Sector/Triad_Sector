@@ -42,6 +42,8 @@
     - type: Tag
       tags:
       - IPCMaskWearable # EE - IPCs
+    - type: SavingContraband # Triad
+      examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: ClothingMaskBase

@@ -623,6 +623,11 @@
   id: AiCoreElectronics
   result: AiCoreElectronics
 
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: PortableSMESMachineCircuitboard
+  result: PortableSMESMachineCircuitboard
+
 # Assmos - Crystallizer
 - type: latheRecipe
   parent: BaseCircuitboardRecipe

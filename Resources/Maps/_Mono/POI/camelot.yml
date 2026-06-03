@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 264.0.0
+  engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 11/30/2025 20:47:51
+  time: 05/31/2026 12:38:35
   entityCount: 11257
 maps: []
 grids:
@@ -3282,6 +3282,11 @@ entities:
             3365: -37,-13
             3429: -28,12
     - type: SpreaderGrid
+      spreadQueues:
+        Kudzu: []
+        MetalFoam: []
+        Smoke: []
+        Puddle: []
     - type: GridAtmosphere
       version: 2
       data:
@@ -4219,6 +4224,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: NavMap
+    - type: ThermalSignature
 - proto: AirAlarm
   entities:
   - uid: 3
@@ -37931,14 +37937,14 @@ entities:
       - BZ
     - type: AtmosPipeColor
       color: '#DD0075FF'
-- proto: GasMinerNitrogenStationLarge
+- proto: GasMinerNitrogenTriad
   entities:
   - uid: 5893
     components:
     - type: Transform
       pos: -38.5,-2.5
       parent: 1
-- proto: GasMinerOxygenStation
+- proto: GasMinerOxygenTriad
   entities:
   - uid: 5894
     components:
@@ -56876,57 +56882,77 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -43.5,25.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8363
     components:
     - type: Transform
       pos: 3.5,5.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8364
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -22.5,8.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8365
     components:
     - type: Transform
       pos: -24.5,-17.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8366
     components:
     - type: Transform
       pos: -26.5,-17.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8367
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -22.5,12.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8368
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 5.5,-13.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8369
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -32.5,-16.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8370
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,-12.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 8371
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 12.5,-5.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: SmartFridge
   entities:
   - uid: 8372

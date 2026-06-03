@@ -4,7 +4,7 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 03/27/2026 19:48:27
+  time: 05/31/2026 12:41:42
   entityCount: 4338
 maps: []
 grids:
@@ -142,10 +142,10 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
-        Puddle: []
         Kudzu: []
+        MetalFoam: []
         Smoke: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -3406,6 +3406,7 @@ entities:
     - type: RadiationGridResistance
     - type: ShipGridLock
       locked: False
+    - type: ThermalSignature
 - proto: ActionToggleInternals
   entities:
   - uid: 4
@@ -4804,7 +4805,7 @@ entities:
       pos: -6.5,5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -60898.684
+      secondsUntilStateChange: -60951.418
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -5005,7 +5006,7 @@ entities:
       pos: 1.5,21.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -38606.23
+      secondsUntilStateChange: -38658.965
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -13942,14 +13943,14 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-- proto: GasMinerNitrogenStationLarge
+- proto: GasMinerNitrogenTriad
   entities:
   - uid: 1749
     components:
     - type: Transform
       pos: 4.5,13.5
       parent: 1
-- proto: GasMinerOxygenStationLarge
+- proto: GasMinerOxygenTriad
   entities:
   - uid: 1750
     components:
@@ -27509,6 +27510,8 @@ entities:
     - type: Transform
       pos: -17.5,35.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: SinkWide
   entities:
   - uid: 3504
@@ -27516,17 +27519,23 @@ entities:
     - type: Transform
       pos: 5.5,36.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 3505
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -26.5,11.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 3506
     components:
     - type: Transform
       pos: -10.5,9.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: SmartFridgeMedical
   entities:
   - uid: 3507
@@ -32489,7 +32498,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -9482.565
+      secondsUntilStateChange: -9535.302
       state: Opening
     - type: Airlock
       autoClose: False
