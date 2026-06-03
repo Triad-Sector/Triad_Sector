@@ -154,7 +154,7 @@ public sealed partial class ShuttleSystem
 
         var gridUid = transform.GridUid.Value;
 
-        // Set the service flags on the IFFComponent.
+        // Get the service flags from the IFFComponent.
         if (!EntityManager.TryGetComponent<IFFComponent>(gridUid, out var iffComponent))
             return ServiceFlags.None;
 
@@ -177,9 +177,8 @@ public sealed partial class ShuttleSystem
         if (!EntityManager.TryGetComponent<IFFComponent>(gridUid, out var iffComponent))
             return;
 
-        iffComponent.ServiceFlags = args.ServiceFlags;
-        _console.RefreshShuttleConsoles(gridUid);
-        Dirty(gridUid, iffComponent);
+        SetServiceFlags(gridUid, args.ServiceFlags, iffComponent); // honor the ReadOnly POI IFF guard instead of writing the field directly
+        _console.RefreshShuttleConsoles(gridUid); // push updated nav state to the shuttle consoles
     }
 
 }

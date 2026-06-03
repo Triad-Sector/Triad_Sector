@@ -43,7 +43,7 @@ public sealed class ServiceFlagsSuffixTests
     }
 
     [Test]
-    public void GetServiceFlagsPrefix_MultipleFlagsUniqueChars_ReturnsFirstCharacters()
+    public void GetServiceFlagsPrefix_MultipleFlags_ReturnsDistinctShortforms()
     {
         // Assemble all enum values into one
         var valueCount = 0;
@@ -71,7 +71,7 @@ public sealed class ServiceFlagsSuffixTests
                     continue;
 
                 var oneFlagResult = _shuttle.GetServiceFlagsPrefix(flag);
-                // Extract the characters between brackets and split by '|'
+                // Extract the characters between brackets
                 var oneFlagCharacters = oneFlagResult.Trim('[', ']');
                 // Check that we have three separate character combination.
                 Assert.That(oneFlagCharacters.Length, Is.EqualTo(1));
