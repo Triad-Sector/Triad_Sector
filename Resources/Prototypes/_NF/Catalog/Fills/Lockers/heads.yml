@@ -47,10 +47,10 @@
       - id: MedalCase # Frontier
       - id: Demag # Frontier
       # - id: ShipVoucherRavager # Triad
-      - id: WeaponEnergyShotgunOverseer # Mono
-      - id: WeaponOverseerMace # Mono
+      # - id: WeaponEnergyShotgunOverseer # Triad
+      # - id: WeaponOverseerMace # Triad
       - id: PhoneInstrumentHigh # Mono
-      - id: WeaponCaseShortBombCollar # Mono
+      # - id: WeaponCaseShortBombCollar # Triad
 
 - type: entity
   id: LockerNfsdSheriffFilled
