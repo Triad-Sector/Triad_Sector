@@ -581,12 +581,6 @@ public sealed partial class ChatUIController : UIController
             CanSendChannels |= ChatSelectChannel.Dead;
         }
 
-        if (_admin.HasFlag(AdminFlags.Pii) && _ghost is { IsGhost: true })
-        {
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
-        }
-
         // only admins can see / filter asay
         if (_admin.HasFlag(AdminFlags.Adminchat))
         {
