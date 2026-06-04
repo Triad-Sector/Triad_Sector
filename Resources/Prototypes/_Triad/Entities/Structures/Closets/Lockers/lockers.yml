@@ -6,14 +6,9 @@
   - type: Sprite
     sprite: _Triad/Structure/Storage/closet.rsi
     layers:
-    - state: generic
-      sprite: Structures/Storage/closet.rsi
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: generic_door
-      sprite: Structures/Storage/closet.rsi
-      map: ["enum.StorageVisualLayers.Door"]
+    - map: ["enum.StorageVisualLayers.Base"]
+    - map: ["enum.StorageVisualLayers.Door"]
     - state: locked
-      sprite: Structures/Storage/closet.rsi
       map: ["enum.LockVisualLayers.Lock"]
       shader: unshaded
     - state: welded

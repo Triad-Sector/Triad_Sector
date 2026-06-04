@@ -36,6 +36,12 @@
     },
     {
       "name": "tdf_warden_door"
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "unlocked"
     }
   ]
 }
