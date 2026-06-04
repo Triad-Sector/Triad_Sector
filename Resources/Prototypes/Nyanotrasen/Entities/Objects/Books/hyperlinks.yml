@@ -32,8 +32,8 @@
 - type: entity
   parent: BaseHyperlinkBook
   id: HyperlinkBookNfsdSop
-  name: TSFMC SOP manual
-  description: A book defining TSFMC standard operating procedures.
+  name: TDF SOP manual
+  description: A book defining TDF standard operating procedures.
   components:
   - type: Sprite
     sprite: Nyanotrasen/Objects/Misc/books.rsi

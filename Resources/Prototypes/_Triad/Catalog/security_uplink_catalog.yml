@@ -536,8 +536,8 @@
   id: UplinkSecurityHolo
   name:  uplink-security-holo-name
   description: uplink-security-holo-desc
-  productEntity: HoloprojectorNfsd
-  icon: { sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi, state: icon }
+  productEntity: HoloprojectorSecurity
+  icon: { sprite: Objects/Devices/Holoprojectors/security.rsi, state: icon }
   cost:
     TriadCommerceCredit: 5
   categories:
@@ -549,7 +549,7 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkForcefieldTSF
+  id: UplinkForcefieldTDF
   name:  uplink-security-forcefield-name
   description: uplink-security-forcefield-desc
   productEntity: HoloprojectorFieldTSF
