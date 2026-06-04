@@ -1,6 +1,7 @@
 using System.Collections.Frozen;
 using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
 using System.Text.RegularExpressions;
+using Content.Shared._DV.Chat;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Popups;
@@ -26,6 +27,8 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char OOCPrefix = '[';
     public const char EmotesPrefix = '@';
     public const char EmotesAltPrefix = '*';
+    public const char AudibleEmotePrefix = '!'; // DeltaV - You may now scream audibly!
+    public const char PossessiveEmotePrefix = '\''; // DeltaV - You may now be possessive of things! Whatever that means.
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
     public const char CollectiveMindPrefix = '+';
@@ -161,6 +164,7 @@ public abstract partial class SharedChatSystem : EntitySystem
         string input,
         out string output,
         out RadioChannelPrototype? channel,
+        bool capitalize = true, // DeltaV - We might not want to capitalize the first letter if we send in emotes.
         bool quiet = false)
     {
         output = input.Trim();
@@ -171,7 +175,7 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         if (input.StartsWith(RadioCommonPrefix))
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
+            output = capitalize ? SanitizeMessageCapital(input[1..].TrimStart()) : input[1..].TrimStart(); // DeltaV
             channel = _prototypeManager.Index<RadioChannelPrototype>(CommonChannel);
             return true;
         }
@@ -181,7 +185,7 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         if (input.Length < 2 || char.IsWhiteSpace(input[1]))
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
+            output = capitalize ? SanitizeMessageCapital(input[1..].TrimStart()) : input[1..].TrimStart(); // DeltaV
             if (!quiet)
                 _popup.PopupEntity(Loc.GetString("chat-manager-no-radio-key"), source, source);
             return true;
@@ -189,7 +193,7 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         var channelKey = input[1];
         channelKey = char.ToLower(channelKey);
-        output = SanitizeMessageCapital(input[2..].TrimStart());
+        output = capitalize ? SanitizeMessageCapital(input[2..].TrimStart()) : input[2..].TrimStart(); // DeltaV
 
         if (channelKey == DefaultChannelKey)
         {
@@ -376,11 +380,29 @@ public abstract partial class SharedChatSystem : EntitySystem
         return rawmsg.Substring(tagStart, tagEnd - tagStart);
     }
 
+    // DeltaV
+    protected virtual void SendAudibleEntityEmote(
+        EntityUid source,
+        string action,
+        ChatTransmitRange range,
+        string? nameOverride,
+        RadioChannelPrototype? channel,
+        EmoteType? emoteType,
+        bool hideLog = false,
+        bool checkEmote = true,
+        bool ignoreActionBlocker = false,
+        NetUserId? author = null
+    )
+    {
+    }
+    // DeltaV - End
+
     protected virtual void SendEntityEmote(
         EntityUid source,
         string action,
         ChatTransmitRange range,
         string? nameOverride,
+        EmoteType? emoteType,
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
