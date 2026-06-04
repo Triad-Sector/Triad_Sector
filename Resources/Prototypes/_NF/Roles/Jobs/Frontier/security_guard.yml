@@ -33,6 +33,7 @@
     prototype: FrontierBirthdayGift
   - !type:AddComponentSpecial # Triad
     components:
+      - type: ShipSavingBlacklist # Triad - can't save ships
       - type: NpcFactionMember
         factions:
         - TDF # Station guards were sent to the TFA by the TDF

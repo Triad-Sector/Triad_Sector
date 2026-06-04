@@ -39,7 +39,7 @@
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
         - id: ClothingOuterHardsuitNfsdSheriff
-        - id: ClothingMaskGasSheriff
+        - id: ClothingMaskGasSwatTdf
         - id: JetpackNfsdFilled
         - id: ClothingShoesBootsMagSecurity
   - type: AccessReader

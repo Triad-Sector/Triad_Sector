@@ -52,10 +52,7 @@
   storage:
     back:
     - Multitool
-    - DoorRemoteTdf
     - BaseSecurityUplinkRadioChiefEnforcer
-    - PhoneInstrumentHigh
     - EncryptionKeyService
     - EncryptionKeySecurity
     - ShipVoucherRavager
-    - PhoneInstrumentHigh

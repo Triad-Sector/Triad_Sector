@@ -1,7 +1,7 @@
 - type: latheRecipePack
   id: TdfTechfabStatic
   recipes:
-  - ClothingEyesHudTdf
+  - ClothingEyesHudSecurityTdf
   - CombatKnife
   - Flash
   - ForensicPad
