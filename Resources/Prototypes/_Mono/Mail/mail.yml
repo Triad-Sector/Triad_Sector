@@ -45,6 +45,20 @@
     - id: RCDAmmo
       amount: 2
 
+# Triad: RPD port from funky-station — same payload shape as MailMonoRCD (tool + 2 ammo).
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailMonoRPD
+  suffix: RPD
+  components:
+  - type: Mail
+    contents:
+    - id: RPD
+    - id: RCDAmmo
+      amount: 2
+# End Triad
+
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: BaseMailLarge

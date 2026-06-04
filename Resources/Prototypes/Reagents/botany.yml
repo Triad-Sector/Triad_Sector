@@ -269,10 +269,10 @@
         ignoreResistances: true
         damage:
           groups:
-            Brute: -5
-            Burn: -5
+            Brute: -0.1 # Triad
+            Burn: -0.25 # Triad
           types:
-            Bloodloss: -5
+            Bloodloss: -0.1 # Triad
       - !type:Oxygenate # ammonia displaces nitrogen in vox blood
         conditions:
         - !type:OrganType

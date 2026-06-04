@@ -3,6 +3,7 @@
 // See AGPLv3.txt for details.
 using Content.Client.Shuttles.UI;
 using Content.Shared._NF.Shuttles.Events;
+using Content.Shared.Shuttles.Components;
 
 namespace Content.Client.Shuttles.BUI
 {
@@ -14,6 +15,7 @@ namespace Content.Client.Shuttles.BUI
             _window.OnInertiaDampeningModeChanged += OnInertiaDampeningModeChanged;
             _window.OnMaxShuttleSpeedChanged += OnMaxShuttleSpeedChanged;
             _window.OnNetworkPortButtonPressed += OnNetworkPortButtonPressed;
+            _window.OnServiceFlagsChanged += OnServiceFlagsChanged; // Frontier
         }
         private void OnInertiaDampeningModeChanged(NetEntity? entityUid, InertiaDampeningMode mode)
         {
@@ -38,6 +40,16 @@ namespace Content.Client.Shuttles.BUI
             {
                 SourcePort = sourcePort,
                 TargetPort = targetPort
+            });
+        }
+
+        // Frontier: service flags
+        private void OnServiceFlagsChanged(NetEntity? entityUid, ServiceFlags flags)
+        {
+            SendMessage(new SetServiceFlagsRequest
+            {
+                ShuttleEntityUid = entityUid,
+                ServiceFlags = flags,
             });
         }
     }

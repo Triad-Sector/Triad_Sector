@@ -17,6 +17,12 @@
         type: SprayPainterBoundUserInterface
   - type: SprayPainter
     colorPalette:
+      # Triad
+      # Virnazush moved existing spray painter colors to here.
+      waste: '#990000'
+      distro: '#0055cc'
+      air: '#03fcd3'
+      mix: '#947507'
       red: '#FF1212FF'
       yellow: '#B3A234FF'
       brown: '#947507FF'
@@ -25,11 +31,31 @@
       blue: '#0335FCFF'
       white: '#FFFFFFFF'
       black: '#333333FF'
-      # standard atmos pipes
-      waste: '#990000'
-      distro: '#0055cc'
-      air: '#03fcd3'
-      mix: '#947507'
+      # Virnazush added more colors to make the spray painter more useful.
+      external: '#9955cc' 
+      oxygen: '#0335FCFF'
+      nitrogen: '#ba0000'
+      carbon dioxide: '#525252'
+      water vapor: '#969696'
+      plasma: '#FF00FF' 
+      tritium: '#7DC855'
+      bz: '#d7bdb4'
+      frezon: '#87CEEB'
+      healium: '#0FFF50'
+      nitrium: '#F1DD38'
+      pluoxium: '#4682B4'
+      ammonia: '#800080'
+      nitrous oxide: '#FF4040'
+      bright yellow: '#FFFF00'
+      orange: '#FFA500'
+      dark brown: '#8B4513'
+      coral: '#FF7F50'
+      dark green: '#006400'
+      purple: '#800080'
+      dark purple: '#4B0082'
+      pink: '#FFC0CB'
+      violet: '#EE82EE' 
+      # End Triad
   - type: StaticPrice
     price: 20 # Frontier 40<20
   - type: LimitedCharges # Upstream#37341

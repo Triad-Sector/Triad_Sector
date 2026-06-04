@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Mono.Projectiles.TargetGuided;
+using Content.Server._Mono.Projectiles.TargetSeeking;
 using Content.Shared._Mono.FireControl;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Components;
@@ -12,6 +13,15 @@ namespace Content.Server._Mono.FireControl;
 public sealed partial class FireControlSystem
 {
     [Dependency] private readonly TargetGuidedSystem _targetGuided = null!;
+    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+    [Dependency] private readonly TargetSeekingSystem _seekingSystem = null!;
+
+    // Set in OnFire immediately before FireWeapons and cleared immediately after.
+    // Consumed synchronously by OnTargetGuidedShot via the AmmoShotEvent chain.
+    // Stored here rather than on FireControlConsoleComponent to avoid leaving stale
+    // observable state on the component between fire events.
+    private EntityUid? _pendingLockedTarget;
+    // Triad: targeting lock code end
 
     /// <summary>
     /// List of active guided missiles that need cursor position updates
@@ -63,12 +73,16 @@ public sealed partial class FireControlSystem
         if (!targetCoords.HasValue || !targetCoords.Value.IsValid(EntityManager))
             return;
 
-        // Find the controlling console for position updates if this is a fire controllable
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+        // Locked target was set by OnFire synchronously before FireWeapons was called.
+        var lockedTarget = _pendingLockedTarget;
+        // Triad: targeting lock code end
+
+        // Find the controlling console for cursor-guided position updates.
         EntityUid? controllingConsole = null;
         if (TryComp<FireControllableComponent>(uid, out var fireControllable) &&
             fireControllable.ControllingServer != null)
         {
-            // Find the active console that fired this
             var query = EntityQueryEnumerator<FireControlConsoleComponent>();
             while (query.MoveNext(out var consoleUid, out var console))
             {
@@ -76,11 +90,8 @@ public sealed partial class FireControlSystem
                 {
                     controllingConsole = consoleUid;
 
-                    // Store initial cursor position if we're seeing it for the first time
                     if (!_consoleMousePositions.ContainsKey(consoleUid))
-                    {
                         _consoleMousePositions[consoleUid] = targetCoords.Value;
-                    }
 
                     break;
                 }
@@ -89,6 +100,18 @@ public sealed partial class FireControlSystem
 
         foreach (var projectileUid in args.FiredProjectiles)
         {
+            // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+            // If a lock-on target is set and this missile can seek, skip cursor guidance entirely —
+            // the seeking system handles steering permanently with no cursor retargeting.
+            if (lockedTarget.HasValue && Exists(lockedTarget.Value) && TryComp<TargetSeekingComponent>(projectileUid, out var seekComp))
+            {
+                // Use SetSeekerTarget so the target receives EntityStartedBeingSeekedTargetEvent,
+                // triggering missile-lock warnings on the defending ship.
+                _seekingSystem.SetSeekerTarget((projectileUid, seekComp), lockedTarget.Value);
+                continue;
+            }
+            // Triad: targeting lock code end
+
             if (!TryComp<TargetGuidedComponent>(projectileUid, out var guidedComp))
                 continue;
 

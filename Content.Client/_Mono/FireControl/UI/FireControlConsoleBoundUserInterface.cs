@@ -80,8 +80,24 @@ public sealed class FireControlConsoleBoundUserInterface : BoundUserInterface
                 selected.Add(button.Key);
         }
 
+        // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+        NetEntity? lockedTarget = null;
+        if (_window.Radar is FireControlNavControl navControl
+            && navControl.SelectedTargetGrid.HasValue
+            && EntMan.EntityExists(navControl.SelectedTargetGrid.Value))
+            lockedTarget = EntMan.GetNetEntity(navControl.SelectedTargetGrid.Value);
+        // Triad: targeting lock code end
+
         if (selected.Count > 0)
-            SendMessage(new FireControlConsoleFireMessage(selected, coordinates));
+        {
+            SendMessage(new FireControlConsoleFireMessage(
+                selected,
+                coordinates,
+                // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+                lockedTarget
+                // Triad: targeting lock code end
+            ));
+        }
     }
 
     private void SendCursorUpdateMessage(NetCoordinates coordinates)

@@ -7,10 +7,10 @@
   alwaysUseSpawner: true
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 27000 # triad
+      time: 27000 # triad 7.30 hours
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 1800 # triad
+      time: 9000 # triad 2.30 hours
   canBeAntag: false
   icon: "JobIconStc"
   assignedCompany: Colonial

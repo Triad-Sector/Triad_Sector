@@ -43,8 +43,10 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "underpants" ]
-    - map: [ "undershirt" ]
+    #- map: [ "underpants" ] # Triad removal - Underwear.
+    #- map: [ "undershirt" ] # Triad removal - Underwear.
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ] # Triad - Underwear.
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ] # Triad - Underwear.
     - map: [ "socks" ]
     - map: [ "jumpsuit" ]
     - map: [ "balaclava" ]
@@ -185,8 +187,10 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "underpants" ]
-    - map: [ "undershirt" ]
+    #- map: [ "underpants" ] # Triad removal - Underwear.
+    #- map: [ "undershirt" ] # Triad removal - Underwear.
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ] # Triad - Underwear.
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ] # Triad - Underwear.
     - map: [ "socks" ]
     - map: [ "jumpsuit" ]
     - map: [ "balaclava" ]

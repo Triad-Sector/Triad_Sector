@@ -689,3 +689,572 @@ Entries:
   id: 2205
   time: '2026-05-17T06:24:11.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/80
+- author: Minerva
+  changes:
+    - type: Fix
+      message: >-
+        Undergarment layering has been fixed for the following species: IPC,
+        Harpy, Rodentia, Feroxi, Vulpkanin, Chitinid.
+  id: 2206
+  time: '2026-05-18T02:50:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/97
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: >-
+        Suit sensor now defaults to coords on spawn, you can still change it
+        whenever & wherever
+  id: 2207
+  time: '2026-05-18T23:58:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/98
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Gas tank dispensers now stock water vapor tanks.
+  id: 2208
+  time: '2026-05-19T03:20:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/100
+- author: ScolarVisari
+  changes:
+    - type: Add
+      message: Colorable thick eyebrow markings to Humans and Dwarves.
+  id: 2209
+  time: '2026-05-19T03:30:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/95
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Water vapor canisters are now on sale at the Trade Mall for 3000
+        credits.
+  id: 2210
+  time: '2026-05-19T03:55:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/101
+- author: Monolith
+  changes:
+    - type: Tweak
+      message: Asteroids no longer produce infection anomalies
+    - type: Tweak
+      message: 'Rebalanced almost every Energy/mining shipgun:'
+    - type: Tweak
+      message: Significantly nerfed ship ramming.
+    - type: Tweak
+      message: Nerfed ASF-59 "Flail" health.
+    - type: Tweak
+      message: Nerfed ASF-59-B "Mace" health.
+    - type: Tweak
+      message: Buffed projectile speeds of several shipguns
+  id: 2211
+  time: '2026-05-19T06:51:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/102
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a brand new ChemMaster UI with a toggle for the old one.
+    - type: Add
+      message: Added more transfer amounts for the ChemMaster. (15 and 30)
+    - type: Fix
+      message: Hopefully fixed a ChemMaster grid-reload client-side bug.
+  id: 2212
+  time: '2026-05-20T01:40:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/99
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Increased the hour requirement for Overseer & STC
+  id: 2213
+  time: '2026-05-20T14:43:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/69
+- author: Dot5511
+  changes:
+    - type: Tweak
+      message: The shops in the Trade Mall have more in them!
+    - type: Tweak
+      message: Trade mall now has a gathering hub with lathes!
+    - type: Fix
+      message: Button in the Trade Mall's Cryo area now works as intended
+  id: 2214
+  time: '2026-05-21T06:24:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/104
+- author: MorganLLee79
+  changes:
+    - type: Add
+      message: Added fun!
+    - type: Remove
+      message: Removed fun!
+    - type: Tweak
+      message: Changed fun!
+    - type: Fix
+      message: Fixed fun!
+  id: 2215
+  time: '2026-05-22T11:31:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/106
+- author: dijonmustard01
+  changes:
+    - type: Add
+      message: Added "FitsInMedicalStash" tag to tourniquets
+  id: 2216
+  time: '2026-05-22T11:43:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/110
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Now need to right click to change custom examine
+  id: 2217
+  time: '2026-05-22T11:51:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/91
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: >-
+        (Potentially) fixed a Vending Machine client-side grid reload bug,
+        similar to what the Chem Master had.
+    - type: Fix
+      message: Fixed the ChemMaster Classic-mode sorting.
+    - type: Fix
+      message: Fixed the ChemMaster search bar resetting on a UI update.
+  id: 2218
+  time: '2026-05-23T16:04:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/108
+- author: dijonmustard01
+  changes:
+    - type: Add
+      message: >-
+        Adds "DeviceLinkSink" type to gyroscope entity, along with ports for
+        "On", "Off", and "Toggle"
+  id: 2219
+  time: '2026-05-23T16:23:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/111
+- author: Shy-ivy
+  changes:
+    - type: Add
+      message: 'Rodentia and mice can now consume theobromine and allicin '
+    - type: Tweak
+      message: Rodentia now have rat organs
+    - type: Tweak
+      message: >-
+        Ammonia healing was nerfed for rat organs from 5 to 0.25 burn 0.1 brute
+        and 0.1  bloodloss
+  id: 2220
+  time: '2026-05-24T00:59:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/105
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix consent saving now pls
+  id: 2221
+  time: '2026-05-24T01:16:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/118
+- author: jessetheneko272
+  changes:
+    - type: Fix
+      message: Made Holoflarepistols usable by pacifists.
+  id: 2222
+  time: '2026-05-24T06:54:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/114
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: Hydrakin no longer get a toxin warning when breathing plasma or tritium.
+    - type: Fix
+      message: >-
+        Hydrakin no longer take radiation damage from inhaling tritium.
+        Injecting it still hurts.
+  id: 2223
+  time: '2026-05-24T10:36:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/119
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Hydrakin emotes now play at the default species volume instead of being
+        attenuated 8 dB.
+  id: 2224
+  time: '2026-05-24T12:51:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/122
+- author: Virnazush
+  changes:
+    - type: Tweak
+      message: Spray painters are now available in loadout.
+    - type: Tweak
+      message: Spray painters now have more pipe color options.
+  id: 2225
+  time: '2026-05-25T18:03:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/129
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Added the Rapid Piping Device (RPD), a specialized engineering tool that
+        builds and removes pipes, atmos hardware, air sensors, and air alarms.
+        Supports per-tile layer selection, color staining, and a flip toggle (R)
+        for asymmetric recipes like the gas filter and mixer. Available from the
+        engineering and CE lockers, the Protolathe (after researching Advanced
+        Tools Technology), and as a rare mail reward.
+    - type: Tweak
+      message: >-
+        The RPD color picker now mirrors the spray painter's atmos palette
+        (pipe-loop labels plus a row of named-gas colors, alphabetized) so the
+        two tools agree on every color.
+  id: 2226
+  time: '2026-05-26T04:19:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/124
+- author: SislenC
+  changes:
+    - type: Tweak
+      message: Bomb suit, bomb helmet, and rad suit save on ship save.
+  id: 2227
+  time: '2026-05-26T04:19:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/126
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Disablers now deal 0 heat damage. As a result of this, pacifists can now
+        use disablers.
+    - type: Tweak
+      message: Practice weapons can now be used by pacifists.
+  id: 2228
+  time: '2026-05-26T04:25:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/113
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Tajaran Leopard Tails
+  id: 2229
+  time: '2026-05-26T12:28:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/133
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Business cards have been ported from Frontier. They are available in the
+        MailVend.
+    - type: Add
+      message: >-
+        Emu cargo mechs have been ported from Frontier. They are available from
+        the Trade Mall. Their forks are under basic mech research.
+    - type: Add
+      message: >-
+        Crate racks have been ported from Frontier. You can construct them in
+        the crafting menu. This does not work for hiding your contraband.
+  id: 2230
+  time: '2026-05-26T12:33:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/125
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Lower the volume of cleannade by -6db
+  id: 2231
+  time: '2026-05-26T14:22:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/131
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: Shutters can now be rotated at placement.
+    - type: Fix
+      message: >-
+        Shutter frames anchor on creation, so they no longer drift off-tile
+        mid-build.
+    - type: Tweak
+      message: Shutters can be built on tiles that already hold a window or grille.
+  id: 2232
+  time: '2026-05-26T14:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/116
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: LPB pinpointers can no longer be saved in stash
+  id: 2233
+  time: '2026-05-26T15:04:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/135
+- author: Shy-ivy
+  changes:
+    - type: Add
+      message: Collars can now be engraved, they don't give any tactical advantage
+  id: 2234
+  time: '2026-05-26T15:16:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/120
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Portable gaslocks now persist on ship save.
+  id: 2235
+  time: '2026-05-26T21:10:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/138
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Rollerbeds (folded and unfolded) now persist on ship saving.
+  id: 2236
+  time: '2026-05-26T21:11:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/137
+- author: Psyk117
+  changes:
+    - type: Add
+      message: Added *chitters and *squeaks to the Protogen emote whitelist
+    - type: Fix
+      message: >-
+        Changed the filepaths for the Chitter and Squeak to point to actual
+        noises.
+  id: 2237
+  time: '2026-05-27T19:26:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/60
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Cable sprites have been ported from Wizard's Den.
+  id: 2238
+  time: '2026-05-28T10:01:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/136
+- author: dijonmustard01
+  changes:
+    - type: Add
+      message: Added the Portable SMES unit and its corresponding machine board.
+  id: 2239
+  time: '2026-05-29T16:50:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/132
+- author: runicguardian
+  changes:
+    - type: Tweak
+      message: Skub now persists on ship save.
+  id: 2240
+  time: '2026-05-30T17:15:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/160
+- author: IngvarJackal
+  changes:
+    - type: Fix
+      message: ongoing tasks in lathes don't break ship saving any more
+  id: 2241
+  time: '2026-05-30T17:18:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/154
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: STC can now use the communication console
+  id: 2242
+  time: '2026-05-30T17:20:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/163
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Reptilians can now have hair, though not facial hair.
+  id: 2243
+  time: '2026-05-30T17:23:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/77
+- author: SquishyEmmaaaa
+  changes:
+    - type: Fix
+      message: Vodka bottles now fit in the booze dispenser.
+  id: 2244
+  time: '2026-05-30T17:27:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/158
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Forced accents have been removed from most clothings. Some exceptions
+        were made such as cat/doggy ears, muzzles, and cluwne masks.
+  id: 2245
+  time: '2026-05-30T17:47:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/157
+- author: IrkallaEpsilon
+  changes:
+    - type: Remove
+      message: The vent clog event has been disabled.
+  id: 2246
+  time: '2026-05-30T19:00:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/146
+- author: ShepardToTheStars
+  changes:
+    - type: Tweak
+      message: >-
+        Health analyzers will now become active again if you move back into
+        range of your patient!
+  id: 2247
+  time: '2026-05-30T19:24:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/149
+- author: SislenC
+  changes:
+    - type: Tweak
+      message: 'Removed damage from DT-12 Lawbringer''s disabler round to match PR #113.'
+  id: 2248
+  time: '2026-05-30T23:05:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/167
+- author: Monolith
+  changes:
+    - type: Add
+      message: Added heavy-duty airlocks.
+    - type: Tweak
+      message: Buffed high-sec airlock HP.
+    - type: Add
+      message: Add spraypainter for heavy duty airlock
+  id: 2249
+  time: '2026-05-30T23:50:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/144
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Remove datafarm outright
+  id: 2250
+  time: '2026-06-01T04:01:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/170
+- author: SislenC
+  changes:
+    - type: Tweak
+      message: Chicken Nugget box is now 2x2 down from 3x3.
+  id: 2251
+  time: '2026-06-02T03:23:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/168
+- author: SketchiiArtist
+  changes:
+    - type: Tweak
+      message: Changed max description length to 2048 characters.
+  id: 2252
+  time: '2026-06-02T03:25:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/164
+- author: Dimasw99
+  changes:
+    - type: Tweak
+      message: >-
+        Adjusted oxy, plasma and nitrogen station miners from 400mol/s to 6, 6
+        and 24 respectively
+  id: 2253
+  time: '2026-06-02T03:29:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/171
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Syndicate electric range board now included in the combat bakery kit
+    - type: Tweak
+      message: several TC price inflation, and shrinkflation
+    - type: Tweak
+      message: Dark Mechs no longer obtainable through surplus crates
+    - type: Tweak
+      message: >-
+        Multiple description has been updated and changed to fit current server
+        info
+  id: 2254
+  time: '2026-06-02T07:54:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/128
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Markings, materials, and IPC/Silicon emotes whose translations were
+        missing now display proper localized names instead of raw prototype IDs
+        or literal English.
+  id: 2255
+  time: '2026-06-02T07:56:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/121
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: >-
+        Introduces three new markdown options for your paperwork! [check],
+        [form], and [signature].
+  id: 2256
+  time: '2026-06-02T08:00:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/173
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: changed ruin tanker shield to MS-100
+  id: 2257
+  time: '2026-06-03T00:14:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/180
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Portable pumps have been ported from Frontier. These can be anchored and
+        powered (with nearby LV or a cell) to clean up spills. They have an
+        internal buffer that destroys excess liquids. You can find their boards
+        under the Advanced Cleaning research.
+    - type: Add
+      message: >-
+        Floodlights and desk lamps can now be anchored to use APC power (instead
+        of battery power) like other anchored machines.
+  id: 2258
+  time: '2026-06-03T02:30:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/174
+- author: Virnazush
+  changes:
+    - type: Tweak
+      message: Towels can now be saved to ships.
+    - type: Tweak
+      message: >-
+        Rolling Pins can now be saved to ships, probably was missed in the
+        previous kitchen item saving PR. 
+    - type: Tweak
+      message: >-
+        Toys such as Newton Cradles, Miniatures Toy Nukes, Toy Singulo, and Toy
+        Tesla can be saved to ships.
+    - type: Tweak
+      message: 'Handheld Instruments, can now be saved to ships.  '
+    - type: Tweak
+      message: 'Handheld flags can now be saved to ships. '
+  id: 2259
+  time: '2026-06-03T02:38:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/140
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Shuttle consoles can now advertise Services, Shopping, and Social,
+        tagging the ship's IFF label on the radar so others can see what it
+        offers.
+  id: 2260
+  time: '2026-06-03T22:20:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/183
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Survival boxes now start with a single MRE bar and a bottle of water
+        instead of a full MRE package.
+    - type: Remove
+      message: >-
+        MRE crates no longer appear in salvage loot or the cargo market, and the
+        MRE package was pulled from the sustenance vending machine.
+  id: 2261
+  time: '2026-06-03T22:20:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/181
+- author: dijonmustard01
+  changes:
+    - type: Tweak
+      message: >-
+        Allows gas mining drills to be upgraded with superior manipulators to
+        increase the rate of gas extraction
+    - type: Tweak
+      message: >-
+        Allows gas mining drills to be anchorable on regular, non-gas deposit
+        tiles.
+  id: 2262
+  time: '2026-06-04T02:17:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/115
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Adjusted drop pod and contra crates lootpool
+  id: 2263
+  time: '2026-06-04T02:37:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/134
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Added a countdown to when the shift will end to the PDA. Hey! Stop
+        watching the clock and get back to work!
+  id: 2264
+  time: '2026-06-04T03:11:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/103
+- author: IngvarJackal
+  changes:
+    - type: Add
+      message: Added targeting lock and linear firing solution.
+    - type: Tweak
+      message: Missile decoys now work.
+  id: 2265
+  time: '2026-06-04T03:12:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/139

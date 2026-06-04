@@ -11,6 +11,10 @@
 #    ExtendedEmergencyNitrogenTankFilled: 5 # Frontier
     NitrogenTankFilled: 10
     DoubleEmergencyNitrogenTankFilled: 10
+    # Triad changes - Feroxi use water vapor.
+    WaterVaporTankFilled: 10
+    DoubleEmergencyWaterVaporTankFilled: 10
+    # End Triad
 
 - type: vendingMachineInventory
   id: TankDispenserEngineeringInventory
@@ -18,7 +22,9 @@
     PlasmaTankFilled: 10
     NitrogenTankFilled: 10
     OxygenTankFilled: 10
+    WaterVaporTankFilled: 10 # Triad - Feroxi use water vapor.
   emaggedInventory:
     DoubleEmergencyAirTankFilled: 1
     DoubleEmergencyOxygenTankFilled: 1
     DoubleEmergencyNitrogenTankFilled: 1
+    DoubleEmergencyWaterVaporTankFilled: 1 # Triad - Feroxi use water vapor.

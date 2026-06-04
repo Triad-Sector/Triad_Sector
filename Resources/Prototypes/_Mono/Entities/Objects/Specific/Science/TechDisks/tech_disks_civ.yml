@@ -246,4 +246,5 @@
     recipes:
     - RCD
     - RCDAmmo
+    - RPD # Triad
     - NFBlueprintRCDAmmo

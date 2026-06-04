@@ -27,6 +27,7 @@ using Content.Server._NF.SectorServices; // Frontier
 using Content.Shared._Mono.Company;
 using Robust.Shared.Prototypes;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Server.RoundEnd; // Frontier
 
 namespace Content.Server.PDA
 {
@@ -45,7 +46,8 @@ namespace Content.Server.PDA
         [Dependency] private readonly SectorServiceSystem _sectorService = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IConfigurationManager _config = default!; // DeltaV
-
+        [Dependency] private readonly RoundEndSystem _roundEndSystem = default!; // Frontier
+        
         private static DateTime ServerDate; // DeltaV - PDA
 
         public override void Initialize()
@@ -254,6 +256,7 @@ namespace Content.Server.PDA
                 },
                 balance, // Frontier
                 ownedShipName, // Frontier
+                _roundEndSystem.GetAutoCallTime(), // Frontier
                 pda.StationName,
                 showUplink,
                 hasInstrument,

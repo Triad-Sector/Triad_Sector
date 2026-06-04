@@ -23,7 +23,7 @@
     # - id: SnakeSpawn
     # - id: SpiderClownSpawn
     # - id: SpiderSpawn
-    - id: VentClog
+    # - id: VentClog # Triad Edit -- Disabled
     - id: BluespaceCargoCrate # Frontier
     - id: BluespaceMcCargoCrate # Frontier
     - id: BluespaceSyndicateCrate # Frontier

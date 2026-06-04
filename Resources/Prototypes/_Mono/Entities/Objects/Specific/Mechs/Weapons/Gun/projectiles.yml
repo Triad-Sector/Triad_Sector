@@ -236,6 +236,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: TargetSeekingTarget
+  - type: MissileDecoy # Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false
@@ -246,9 +247,11 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.1,-0.1,0.1,0.1"
+          bounds: "-0.15,-0.15,0.15,0.15" # Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
+        layer:
+        - LowImpassable # Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139 ; MachineMask includes LowImpassable, so missiles trigger on contact
         mask:
-        - ItemMask # BulletImpassable
+        - ItemMask # Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139 ; ItemMask rather than BulletImpassable so ordinary bullets don't detonate on flares
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
     state: magicm_cyan

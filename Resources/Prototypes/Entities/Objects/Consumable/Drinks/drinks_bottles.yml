@@ -496,6 +496,7 @@
   - type: Tag
     tags:
     - VodkaBounty
+    - DrinkBottle # Triad
 
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]

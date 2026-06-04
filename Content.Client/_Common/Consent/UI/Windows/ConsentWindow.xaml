@@ -35,10 +35,12 @@ SPDX-License-Identifier: MIT
         </PanelContainer>
         <Control MinSize="0 10" />
         <Label Text="{Loc consent-window-toggles-label}" />
+
         <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False" VScrollEnabled="True" MinHeight="50">
             <BoxContainer Name="ConsentSettings" Orientation="Vertical" HorizontalExpand="True" SeparationOverride="2">
                 <!-- Consent toggle controls are generated in code -->
             </BoxContainer>
         </ScrollContainer>
+
     </BoxContainer>
 </controls:FancyWindow>

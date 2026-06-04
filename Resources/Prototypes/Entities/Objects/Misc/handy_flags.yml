@@ -9,6 +9,7 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
@@ -21,6 +22,7 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall]
@@ -33,6 +35,7 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
@@ -45,6 +48,7 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
@@ -57,3 +61,4 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/pirate_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad

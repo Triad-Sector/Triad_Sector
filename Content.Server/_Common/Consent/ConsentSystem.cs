@@ -13,6 +13,7 @@ namespace Content.Server._Common.Consent;
 public sealed class ConsentSystem : SharedConsentSystem
 {
     [Dependency] private readonly IServerConsentManager _consentManager = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public override void Initialize()
     {

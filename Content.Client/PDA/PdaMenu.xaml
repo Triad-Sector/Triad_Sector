@@ -49,10 +49,13 @@
                 <RichTextLabel Name="CurrentDateLabel" Access="Public"/>
             </ContainerButton>
             <!-- End DeltaV changes -->
+            <!-- Frontier -->
+            <ContainerButton Name="RemainingTimeButton">
+                <RichTextLabel Name="RemainingTimeLabel" Access="Public"/>
+            </ContainerButton>
             <ContainerButton Name="StationAlertLevelInstructionsButton">
                 <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
             </ContainerButton>
-            <!-- Frontier -->
             <ContainerButton Name="BalanceButton">
                 <RichTextLabel Name="BalanceLabel" Access="Public"/>
             </ContainerButton>

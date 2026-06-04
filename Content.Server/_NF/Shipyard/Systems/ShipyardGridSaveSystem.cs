@@ -29,8 +29,10 @@ using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Utility;
 using YamlDotNet.Core;
 using YamlDotNet.RepresentationModel;
+using Content.Server.Lathe.Components; // Triad
 using Content.Server.Light.Components;
 using Content.Shared._Triad.Shipyard.Save; // Triad
+using Content.Shared.Lathe; // Triad
 using Content.Shared._Triad.Shipyard.Load; // Triad
 using Content.Shared._Triad.Shipyard.Save.Contraband; // Triad
 using System.Linq;
@@ -284,6 +286,10 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // Triad: remove any edge spreaders, we cannot save these
             RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
 
+            // Triad
+            // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
+            ResetFabricatorsOnGrid(gridUid);
+
             // Remove repair data, it is re-added on load
             RemComp<ShipRepairDataComponent>(gridUid);
 
@@ -356,6 +362,28 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         foreach (var uid in toRemove)
         {
             Del(uid);
+        }
+    }
+
+    // Triad
+    /// <summary>
+    /// Resets all fabricators on the grid before saving: disables loop mode, disables skip mode,
+    /// clears the queue, and cancels any active production job.
+    /// This prevents the serializer from hitting an in-progress fab state and breaking mid-save.
+    /// </summary>
+    private void ResetFabricatorsOnGrid(EntityUid gridUid)
+    {
+        var latheQuery = _entityManager.EntityQueryEnumerator<LatheComponent, TransformComponent>();
+        while (latheQuery.MoveNext(out var uid, out var lathe, out var xform))
+        {
+            if (xform.GridUid != gridUid)
+                continue;
+
+            lathe.Loop = false;
+            lathe.SkipBad = false;
+            lathe.Queue.Clear();
+            lathe.CurrentRecipe = null;
+            RemComp<LatheProducingComponent>(uid);
         }
     }
 

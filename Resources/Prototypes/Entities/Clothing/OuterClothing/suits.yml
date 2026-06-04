@@ -29,6 +29,7 @@
     slots: WITHOUT_POCKET
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.5
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: ClothingOuterSuitBomb
@@ -126,6 +127,7 @@
       head: ClothingHeadHatHoodRad
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseToggleClothing]
