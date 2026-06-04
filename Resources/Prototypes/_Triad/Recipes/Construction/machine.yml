@@ -76,7 +76,7 @@
   category: construction-category-storage
   icon:
     sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
-    state: fuel_storage_stash
+    state: fuel_door
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: true

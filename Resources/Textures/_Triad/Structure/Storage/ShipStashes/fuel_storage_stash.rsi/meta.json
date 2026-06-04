@@ -7,14 +7,8 @@
     "y": 32
   },
   "states": [
-    {
-      "name": "fuel_storage_stash",
-      "delays": [
-          [
-            0.2,
-            0.2
-          ]
-      ]
-    }
+    { "name": "fuel_door"},
+    { "name": "fuel_open"},
+    { "name": "fuel"}
   ]
 }

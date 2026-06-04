@@ -147,16 +147,35 @@
       limitId: HydroponicsStash
 
 - type: entity
-  parent: BasePersistentShipStorageStash
   id: FuelStorageStash
+  placement:
+    mode: SnapgridCenter
   name: fuel stash
   description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
-      state: fuel_storage_stash
+    - type: Transform
       noRot: false
+    - type: Sprite
       drawdepth: WallMountedItems
+      noRot: false
+      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
+      layers:
+      - state: fuel
+        map: ["enum.StorageVisualLayers.Base"]
+      - state: fuel_door
+        map: ["enum.StorageVisualLayers.Door"]
+    - type: InteractionOutline
+    - type: Clickable
+    - type: WallMount
+      arc: 175
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          ents: []   
+    - type: UserInterface
+      interfaces:
+        enum.StorageUiKey.Key:
+          type: StorageBoundUserInterface
     - type: Storage
       grid:
       - 0,0,7,3
@@ -166,9 +185,19 @@
     - type: Construction
       graph: FuelStorageStashGraph
       node: FuelStorageStashNode
+    - type: PlaceableSurface
+      placeCentered: true
+      isPlaceable: false
     - type: ShipSaveLimit
       limitId: FuelStash
-    - type: WallMount
-      arc: 360 # unable to get the arc to rotate with build direction - temp fix until someone who knows more can fix it
-    - type: Transform
-      noRot: false
+    - type: RadarBlip
+      radarColor: "#e3ffea"
+      scale: 1.5
+      requireNoGrid: true
+      shape: square
+    - type: Appearance
+    - type: EntityStorageVisuals
+      stateBaseClosed: fuel
+      stateDoorOpen: fuel_open
+      stateDoorClosed: fuel_door
+    - type: HLPersistOnShipSave
