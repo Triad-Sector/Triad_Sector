@@ -8,6 +8,12 @@ spray-painter-style-airlockstandard-tdf = TDF
 spray-painter-style-airlockglass-tdf = TDF
 
 # Lockers
+spray-painter-style-locker-tdf = TDF
+spray-painter-style-locker-tdf-evidence = TDF (evidence)
+spray-painter-style-locker-tdf-medic = TDF (medic)
+spray-painter-style-locker-tdf-leader = TDF (patrol team leader)
+spray-painter-style-locker-tdf-warden = TDF (warden)
+spray-painter-style-locker-tdf-chief = TDF (chief enforcer)
 
 # Crates
 
