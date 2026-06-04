@@ -703,7 +703,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var name = loadShipName;
 
         // Attempt to load the shuttle from the in-message YAML only.
-        // Triad: F1 fix - the SourceFilePath disk-load fallback (commented below) bypassed
+        // Triad: F1 fix - removed the SourceFilePath disk-load fallback, which bypassed
         // tamper protection by loading whatever path the client named under /UserData.
         // The YAML path above already runs through compatibility recovery; if it fails,
         // the load fails. SourceFilePath stays in scope only as audit-row / migration metadata.
@@ -715,20 +715,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 loaded = TryPurchaseShuttleFromYamlData(uid, shipYaml, out shuttleUidOut);
             }
-
-            // Triad: F1 fix - removed disk-load fallback that read client-supplied path under /UserData.
-            // Pre-fix:
-            // if (!loaded && !string.IsNullOrWhiteSpace(args.SourceFilePath))
-            // {
-            //     var norm = args.SourceFilePath!.Replace('\\', '/');
-            //     if (!norm.StartsWith("/"))
-            //         norm = "/" + norm;
-            //     if (!norm.StartsWith("/UserData", StringComparison.OrdinalIgnoreCase))
-            //         norm = "/UserData/" + norm.TrimStart('/');
-            //     var resPath = new ResPath(norm);
-            //     loaded = TryPurchaseShuttleFromFile(uid, resPath, out shuttleUidOut);
-            // }
-            // End Triad
         }
         catch (Exception ex)
         {
