@@ -564,7 +564,6 @@ public sealed partial class ChatUIController : UIController
             if (_ghost is not {IsGhost: true})
             {
                 CanSendChannels |= ChatSelectChannel.Local;
-                CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
                 // Floofstation section - only non-ghosts can chat in those
