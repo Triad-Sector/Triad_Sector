@@ -147,22 +147,19 @@
     idleState: icon
     runningState: icon
     staticPacks:
-    - NFNfsdTechfabDeprecatedStatic
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
     dynamicPacks:
-    - NFNfsdTechfabDeprecated
+    - TdfTechfabDynamic
     - DynamicAmmoRecipePack
-    # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
+    # Triad start
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
-    # Mono end
+    # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
