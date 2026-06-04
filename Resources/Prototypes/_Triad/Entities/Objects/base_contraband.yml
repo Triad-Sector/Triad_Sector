@@ -53,6 +53,8 @@
   components:
   - type: Contraband
     severity: FactionGear1
+    turnInValues:
+      TriadCommerceCredit: 10
 
 - type: entity
   parent: BaseFactionGearSDT0
@@ -61,6 +63,8 @@
   components:
   - type: Contraband
     severity: FactionGear2
+    turnInValues:
+      TriadCommerceCredit: 30
 
 - type: entity
   parent: BaseFactionGearSDT0
@@ -69,3 +73,5 @@
   components:
   - type: Contraband
     severity: FactionGear3
+    turnInValues:
+      TriadCommerceCredit: 45

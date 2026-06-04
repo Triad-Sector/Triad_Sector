@@ -1,5 +1,5 @@
 - type: entity
-  name: TSFMC energy shield
+  name: TDF energy shield
   parent: [ BaseFactionGearTDFT2, EnergyShield ]
   id: EnergyShieldNfsd
   components:
