@@ -127,7 +127,7 @@
 - type: entity
   id: AirlockGlassShuttleNfsdCapital
   parent: AirlockGlassShuttleNfsd
-  suffix: CAPITAL ONLY, TSFMC, Glass, Docking
+  suffix: CAPITAL ONLY, TDF, Glass, Docking
   components:
   - type: Destructible # Mono - buff docking port health
     thresholds:
@@ -145,7 +145,7 @@
 - type: entity
   id: AirlockShuttleNfsdCapital
   parent: AirlockShuttleNfsd
-  suffix: CAPITAL ONLY, TSFMC, Docking
+  suffix: CAPITAL ONLY, TDF, Docking
   components:
   - type: Destructible # Mono - buff docking port health
     thresholds:
