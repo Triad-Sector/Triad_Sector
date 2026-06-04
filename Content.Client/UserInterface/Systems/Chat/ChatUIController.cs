@@ -550,7 +550,6 @@ public sealed partial class ChatUIController : UIController
         {
             // can always hear local / radio / emote / notifications when in the game
             FilterableChannels |= ChatChannel.Local;
-            FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
             FilterableChannels |= ChatChannel.Notifications;
@@ -564,11 +563,13 @@ public sealed partial class ChatUIController : UIController
             if (_ghost is not {IsGhost: true})
             {
                 CanSendChannels |= ChatSelectChannel.Local;
+                CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
                 // Floofstation section - only non-ghosts can chat in those
                 CanSendChannels |= ChatSelectChannel.Subtle;
                 CanSendChannels |= ChatSelectChannel.SubtleOOC;
+                FilterableChannels |= ChatChannel.Whisper;
                 // Floofstation section end
             }
         }
