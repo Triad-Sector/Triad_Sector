@@ -1,0 +1,26 @@
+# Sourced from the _DEN namespace, ported via HardLight.
+
+- type: flavor
+  id: jaegermister
+  flavorType: Complex
+  description: flavor-complex-jaegermister
+
+- type: flavor
+  id: jaegerbomb
+  flavorType: Complex
+  description: flavor-complex-jaegerbomb
+
+- type: flavor
+  id: bloody-jaeger
+  flavorType: Complex
+  description: flavor-complex-bloody-jaeger
+
+- type: flavor
+  id: chartruse
+  flavorType: Complex
+  description: flavor-complex-chartruse
+
+- type: flavor
+  id: death-flip
+  flavorType: Complex
+  description: flavor-complex-death-flip

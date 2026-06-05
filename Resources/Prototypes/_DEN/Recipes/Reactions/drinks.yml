@@ -1,0 +1,55 @@
+# Sourced from the _DEN namespace, ported via HardLight.
+
+- type: reaction
+  id: Jaegerbomb
+  reactants:
+    EnergyDrink:
+      amount: 5
+    Jaegermister:
+      amount: 1
+  products:
+    Jaegerbomb: 6
+
+- type: reaction
+  id: BloodyJaeger
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    BloodyMary:
+      amount: 4
+    Jaegermister:
+      amount: 1
+    Ice:
+      amount: 1
+  products:
+    BloodyJaeger: 6
+
+- type: reaction
+  id: Chartruse
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    FrostOil:
+      amount: 1
+    JuiceLemon:
+      amount: 1
+    Gin:
+      amount: 1
+  products:
+    Chartruse: 3
+
+- type: reaction
+  id: DeathFlip
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Tequila:
+      amount: 2
+    Chartruse:
+      amount: 1
+    Jaegermister:
+      amount: 1
+    Egg:
+      amount: 1
+  products:
+    DeathFlip: 5

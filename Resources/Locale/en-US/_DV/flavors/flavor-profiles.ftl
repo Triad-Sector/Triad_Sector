@@ -25,3 +25,10 @@ flavor-complex-greengrass = like a holiday in the sun
 flavor-complex-daiquiri = fashionable
 flavor-complex-arsonistsbrew = like ash and flame
 flavor-complex-dulleavene = ominous
+
+# Delta-V cocktails ported via HardLight
+flavor-complex-old-fashioned = like bittersweet whiskey
+flavor-complex-mnatsa-collins = like sweet and sour brandy
+flavor-complex-affogato = like boozy ice cream
+flavor-complex-five-oclock = like hard tea
+flavor-complex-lemon-lime-bitters = like an Aussie dessert
