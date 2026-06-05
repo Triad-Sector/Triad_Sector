@@ -9,7 +9,7 @@
     state: brain-slime
   - type: Stomach
     specialDigestible:
-      Frontier: general moth digestion
+      #Triad
       tags:
        - ClothMade
        - Paper
@@ -17,13 +17,15 @@
        - Trash
       components:
       - MothFood
-      End Frontier: general moth digestion
+      #End Triad
   - type: Organ
     slotId: core
   - type: Brain
   - type: Metabolizer
     maxReagents: 6
+    #Triad
     metabolizerTypes: [ Slime, Animal, Goblin, Moth, Vox ]
+    #End Triad
     removeEmpty: true
     groups:
     - id: Food
