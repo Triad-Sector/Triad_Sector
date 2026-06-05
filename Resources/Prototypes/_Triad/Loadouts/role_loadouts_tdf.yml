@@ -20,8 +20,8 @@
   - ContractorFun
   - ContractorTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfFirearm
+  - TdfMag
   - FactionArmorPlates
   canCustomizeName: true
 
@@ -48,8 +48,8 @@
   - ContractorFun
   - ContractorTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfFirearm
+  - TdfMag
   - FactionArmorPlates
   canCustomizeName: true
 
@@ -76,8 +76,8 @@
   - ContractorFun
   - ContractorTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfFirearm
+  - TdfMag
   - FactionArmorPlates
   canCustomizeName: true
 
@@ -104,8 +104,8 @@
   - ContractorFun
   - SeniorOfficerTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfFirearm
+  - TdfMag
   - FactionArmorPlates
   canCustomizeName: true
 
@@ -132,8 +132,8 @@
   - ContractorFun
   - SeniorOfficerTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfFirearm
+  - TdfMag
   - FactionArmorPlates
   canCustomizeName: true
 
@@ -160,7 +160,7 @@
   - ContractorEncryptionKey
   - SeniorOfficerTrinkets
   - NfsdSpeciesSpecific
-  - TsfmcFirearm
-  - TsfmcMag
+  - TdfChiefEnforcerFirearm
+  - TdfChiefEnforcerMag
   - FactionArmorPlates
   canCustomizeName: true

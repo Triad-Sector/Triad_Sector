@@ -133,3 +133,30 @@
   - MercenaryClothingOuterArmorBPVestMedium
   fallbacks:
   - MercenaryClothingOuterArmorBPVestLight
+
+# Guns
+- type: loadoutGroup
+  id: TdfFirearm
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - TdfLecterLoadout
+  - FactionDrozdLoadout
+  - FactionVulcanLoadout
+  - FactionEnergyGunLoadout
+  fallbacks:
+  - TdfLecterLoadout
+
+- type: loadoutGroup
+  id: TdfMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - TSFCaselessAmmoBoxLoadout # Lecter
+  - FactionAcpSmgAmmoLoadout #Drozd
+  - FactionAcpSmgEmpAmmoLoadout #Drozd EMP
+  - Faction762x51mmAmmoLoadout #Vulcan
+  - FactionRechargerLoadout #Energy
+  - FactionAcpPistolAmmoLoadout #MK58
+  fallbacks:
+  - TSFCaselessAmmoBoxLoadout #Lecter

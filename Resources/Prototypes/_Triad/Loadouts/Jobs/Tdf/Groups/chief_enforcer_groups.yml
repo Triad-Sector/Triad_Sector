@@ -46,3 +46,24 @@
   - ClothingOuterCoatTdfChiefEnforcerTrench
   subgroups:
   - TdfOuterClothing
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerFirearm
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - FactionFrostLoadout
+  - FactionBanditLoadout
+  subgroups:
+  - TdfFirearm
+  fallbacks:
+  - FactionFrostLoadout
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - Faction8x65mmAmmoLoadout # Bandit
+  subgroups:
+  - TdfMag

@@ -1,0 +1,7 @@
+# Rifles
+
+- type: loadout #Lecter
+  id: TdfLecterLoadout
+  price: 0
+  equipment:
+    suitstorage: WeaponRifleLecterTdf
