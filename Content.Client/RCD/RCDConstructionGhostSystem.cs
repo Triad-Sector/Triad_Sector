@@ -155,6 +155,11 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             if (placerIsRCD)
                 _placementManager.Clear();
+
+            // Triad: no placement mode runs in deconstruct mode, so stream eye rotation here the way the construct
+            // placement mode does — the server reproduces the operator's cursor-aimed pipe layer from it to pick
+            // which covered pipe to chew. On change only, to stay off the per-frame network path.
+            StreamEyeRotation(heldEntity.Value);
             return;
         }
         // End Triad

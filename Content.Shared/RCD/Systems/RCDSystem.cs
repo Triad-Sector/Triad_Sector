@@ -193,12 +193,16 @@ public class RCDSystem : EntitySystem
 
         // Triad: a pipe under a floor tile is invisible and non-interactable (SubFloorHideComponent), so the click
         // resolves either no target (bare tile) or a visible non-pipe entity sharing the tile, e.g. a firelock or
-        // window. In RPD Deconstruct mode, whenever the resolved target isn't itself RPD-deconstructable, look past
-        // it for an RPD-deconstructable entity anchored on the tile so the RPD can chew covered pipes. Falls back to
-        // the original target (null = tile deconstruct, or a no-op on a non-pipe) when the tile has no such pipe.
-        // Scoped to the RPD in Deconstruct mode; the RCD is unaffected.
+        // window. In RPD Deconstruct mode, whenever the resolved target isn't itself RPD-deconstructable, hand off
+        // to RPDSystem via the resolve event to look past it for an RPD-deconstructable entity anchored on the tile,
+        // the one on the operator's aimed pipe layer, so the RPD can chew covered pipes. A plain RCD has no handler so
+        // its target is left untouched; a null result falls back to the original click target.
         if (prototype.Mode == RcdMode.Deconstruct && HasComp<RPDComponent>(uid) && !IsRpdDeconstructable(target))
-            target = FindSubfloorRpdDeconstructable(mapGridData.Value) ?? target;
+        {
+            var resolve = new RCDDeconstructTargetResolveEvent(mapGridData.Value, target);
+            RaiseLocalEvent(uid, ref resolve);
+            target = resolve.Target;
+        }
         // End Triad
 
         if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
@@ -775,30 +779,6 @@ public class RCDSystem : EntitySystem
     // Null-safe so the OnAfterInteract gate can test the raw click target directly.
     private bool IsRpdDeconstructable(EntityUid? target)
         => TryComp<RCDDeconstructableComponent>(target, out var decon) && decon.RpdDeconstructable;
-
-    // Triad: returns the RPD-deconstructable entity anchored on the tile, chosen deterministically by NetEntity so
-    // client prediction and the server agree. Lets the RPD target pipes hidden beneath floor tiles, which are
-    // invisible and non-interactable through the normal click path.
-    private EntityUid? FindSubfloorRpdDeconstructable(MapGridData mapGridData)
-    {
-        EntityUid? best = null;
-        var bestId = int.MaxValue;
-
-        foreach (var ent in _mapSystem.GetAnchoredEntities(mapGridData.GridUid, mapGridData.Component, mapGridData.Position))
-        {
-            if (!IsRpdDeconstructable(ent))
-                continue;
-
-            var netId = GetNetEntity(ent).Id;
-            if (netId < bestId)
-            {
-                bestId = netId;
-                best = ent;
-            }
-        }
-
-        return best;
-    }
     // End Triad
 
     #endregion
