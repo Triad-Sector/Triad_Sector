@@ -440,8 +440,8 @@
   parent:
   - VehicleHoverbikeMailcarrier
   id: VehicleHoverbikeNfsd
-  name: TSFMC hoverbike
-  description: An TSFMC issued turbine with bike handles. Very safe.
+  name: TDF hoverbike
+  description: An TDF issued turbine with bike handles. Very safe.
   components:
   - type: Vehicle
     northOver: true

@@ -31,10 +31,10 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMR8C
-  name:  uplink-security-mr8c-name
-  description: uplink-security-mr8c-desc
-  productEntity: WeaponRifleMR8C
+  id: UplinkSecurityMR8T
+  name:  uplink-security-mr8t-name
+  description: uplink-security-mr8t-desc
+  productEntity: WeaponRifleMR8T
   cost:
     TriadCommerceCredit: 125
   categories:
@@ -424,8 +424,8 @@
   id: UplinkSecurityLecter
   name:  uplink-security-lecter-name
   description: uplink-security-lecter-desc
-  productEntity: WeaponRifleLecter
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Rifles/lecter.rsi, state: icon }
+  productEntity: WeaponRifleLecterTdf
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi, state: icon }
   cost:
     TriadCommerceCredit: 15
   categories:

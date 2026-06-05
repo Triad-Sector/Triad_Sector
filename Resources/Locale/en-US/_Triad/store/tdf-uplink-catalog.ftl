@@ -36,26 +36,40 @@ uplink-security-emitter-name = EMP Emitter
 uplink-security-emitter-desc = A high-energy pulse emitter tuned to disrupt electronics and power systems. Harmless to living things. Projectiles pass through glass. Has an internal battery, but requires using a security charging dock.
 uplink-security-enforcer-name = Enforcer
 uplink-security-enforcer-desc = An updated model of the Kammerer, boasts a 7 shell magazine. Uses 12 gauge shotgun shells.
+
+uplink-security-mr8t-name = MR-8T BR
+uplink-security-mr8t-desc = A semi-auto rifle firing 8x65mm SKR rounds, modified from the original Federated Solarian Republic version. You're one lucky enforcer, these things are expensive.
+
 uplink-security-lecter-name = Lecter
 uplink-security-lecter-desc = Standard issue fully automatic rifle. Uses 6.8x52mm Caseless.
+
 uplink-security-vulcan-name = Vulcan
 uplink-security-vulcan-desc = Heavy duty, select fire battle rifle. Uses 7.62x51mm.
+
 uplink-security-lasercarbine-name = Laser Rifle
 uplink-security-lasercarbine-desc = Standard issue laser carbine. Has an internal battery, but requires using a security charging dock. Fires through glass.
+
 uplink-security-disablersmg-name = Disabler SMG
 uplink-security-disablersmg-desc = Fully automatic, rapid fire disabler. Tuned to the same frequency as standard disablers, the ultimate less-lethal instrument. Has an internal battery, but requires using a security charging dock.
+
 uplink-security-energysword-name = Energy Sword
 uplink-security-energysword-desc = Reverse-engineered, NT manufactured energy sword. Chance to reflect projectiles.
+
 uplink-security-wt550-name = WT550
 uplink-security-wt550-desc = A fully automatic submachine gun. This design uses special top-mounted magazines, allowing for simpler and faster operation in the field. Uses 4.6x30mm.
+
 uplink-security-energygun-name = Energy Gun
 uplink-security-energygun-desc = A semi-automatic energy gun capable of firing both non-lethal stun bolts, as well as overcharged lethal energy bolts. Has an internal battery, but requires using a security charging dock.
+
 uplink-security-emprpg-name = RPG-7
 uplink-security-emprpg-desc = A rocket propelled grenade launcher. Comes with 1 EMP round.
+
 uplink-security-empgrenade-name = EMP Grenade
 uplink-security-empgrenade-desc = A handheld grenade that emits a high energy pulse that disrupts electronics and power systems in a moderately large radius.
+
 uplink-security-forcefield-name = Tactical Forcefield Projector
 uplink-security-forcefield-desc = A battery powered forcefield projector offering an advanced forcefield that blocks movement and bullets while allowing lasers to pass through.
+
 uplink-security-holo-name = Holobarrier
 uplink-security-holo-desc = A battery powered holoprojecter that places temporary barriers to bar movement.
 uplink-security-jetpack-name = Jetpack
@@ -146,8 +160,8 @@ uplink-security-stingergrenade-box-name = Stinger Grenade Box
 uplink-security-stingergrenade-box-desc = A box containing 4 stinger grenades.
 uplink-security-breachingcharge-box-name = Breaching Charge Box
 uplink-security-breachingcharge-box-desc = A box containing 4 breaching charges.
-uplink-security-hoverbike-name = TSFMC Hoverbike Flatpack
-uplink-security-hoverbike-desc = Flatpack containing TSFMC issued turbine with bike handles. Keys already slotted in the ignition. Very safe.
+uplink-security-hoverbike-name = TDF Hoverbike Flatpack
+uplink-security-hoverbike-desc = Flatpack containing TDF issued turbine with bike handles. Keys already slotted in the ignition. Very safe.
 uplink-security-trackingdart-bundle-name = Tracking Dart Bundle
 uplink-security-trackingdart-bundle-desc = A bundle containing a Lake type launcher, 3 tracking darts and 3 pinpointers.
 uplink-security-emp-bundle-name = EMP Bundle
@@ -156,10 +170,13 @@ uplink-security-emp-ammo-name = EMP Projectile Ammo
 uplink-security-emp-ammo-desc = A box containing 4 EMP projectile grenades.
 uplink-security-trackingdart-ammo-name = Tracking Darts Ammo
 uplink-security-trackingdart-ammo-desc = A box containing 3 tracking darts and 3 pinpointers.
+
 uplink-security-spaceblade-sec-name = Security SpaceBlade
 uplink-security-spaceblade-sec-desc = The latest in stun tech.
+
 uplink-security-contraband-forensics-module-name = Contraband Forenics Module
 uplink-security-contraband-forensics-module-desc = A program for scanning and reporting contraband dead drops and pods for bounties. Slots into a forensic scanner.
+
 uplink-security-mechpulserifle-name = CL-94 Pulse Emitter
 uplink-security-mechpulserifle-desc = A mech-mounted Pulse Rifle.
 
