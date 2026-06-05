@@ -92,7 +92,7 @@
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeyCommand
-  name: Triad Sector command encryption key # Triad
+  name: triad sector command encryption key # Triad
   categories: [ DoNotMap ] # Frontier
   description: An encryption key used by the Triad sector's main leaders. # Triad
   components:
@@ -106,8 +106,6 @@
     - state: com_label
   - type: PirateBountyItem # Mono
     id: EncryptionKeyFaction
-  - type: SavingContraband # Triad
-    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: [EncryptionKey, RecyclableItemDeviceTiny]
