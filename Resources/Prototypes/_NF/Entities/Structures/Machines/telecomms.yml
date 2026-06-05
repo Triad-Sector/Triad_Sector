@@ -13,7 +13,7 @@
       - EncryptionKeyScience
       - EncryptionKeySecurity
       - EncryptionKeyService
-#      - EncryptionKeyCommand #Mono
+      - EncryptionKeyCommand
 #      - EncryptionKeyNfsd #Mono
       - EncryptionKeyTraffic
 
