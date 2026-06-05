@@ -444,9 +444,11 @@
       effects:
       - !type:HealthChange
         conditions:
+        #Triad
         - !type:OrganType
           type: Slime
           shouldHave: false
+          #End Triad
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
         - !type:OrganType # Triad
@@ -594,9 +596,11 @@
         conditions:
         - !type:ReagentThreshold
           min: 1
+          #Triad
         - !type:OrganType
           type: Slime
           shouldHave: false
+          #End Triad
         - !type:OrganType
           type: Animal
         - !type:OrganType # Triad
