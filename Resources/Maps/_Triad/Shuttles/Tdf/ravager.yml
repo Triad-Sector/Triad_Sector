@@ -12927,14 +12927,14 @@ entities:
     - type: Transform
       pos: 33.5,-10.5
       parent: 4270
-- proto: VendingMachineSec
+- proto: VendingMachineTdfTech
   entities:
   - uid: 726
     components:
     - type: Transform
       pos: 29.5,-0.5
       parent: 4270
-- proto: VendingMachineSecDrobe
+- proto: VendingMachineTdfDrobe
   entities:
   - uid: 728
     components:

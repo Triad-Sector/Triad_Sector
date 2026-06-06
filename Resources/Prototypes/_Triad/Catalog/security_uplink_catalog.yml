@@ -425,7 +425,7 @@
   name:  uplink-security-lecter-name
   description: uplink-security-lecter-desc
   productEntity: WeaponRifleLecterTdf
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi, state: icon }
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi, state: icon }
   cost:
     TriadCommerceCredit: 15
   categories:
@@ -536,8 +536,8 @@
   id: UplinkSecurityHolo
   name:  uplink-security-holo-name
   description: uplink-security-holo-desc
-  productEntity: HoloprojectorSecurity
-  icon: { sprite: Objects/Devices/Holoprojectors/security.rsi, state: icon }
+  productEntity: HoloprojectorNfsd
+  icon: { sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi, state: icon }
   cost:
     TriadCommerceCredit: 5
   categories:
