@@ -1,6 +1,6 @@
 - type: entity
-  id: CrateTrackingImplantsTdf
-  parent: CrateNfsdSecure1
+  id: CrateTdfTrackingImplants
+  parent: CrateTdf
   name: TDF tracking implants
   description: Contains a handful of TDF tracking implanters. Good for prisoners you'd like to release but still keep track of.
   components:
@@ -51,6 +51,4 @@
     - id: WeaponRifleVulcanRubber
       amount: 4
     - id: WeaponShotgunEnforcerRubber
-      amount: 4
-    - id: WeaponEnergyGun
       amount: 4
