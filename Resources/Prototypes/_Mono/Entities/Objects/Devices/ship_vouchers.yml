@@ -282,7 +282,7 @@
     - Inertia
   - type: StaticPrice
     vendPrice: 30000
-    
+
 - type: entity
   parent: BaseShipLPC
   id: ShipVoucherSnakelet
@@ -326,7 +326,7 @@
 
 - type: entity
   parent: BaseShipLPC
-  id: ShipVoucherRavager
+  id: ShipVoucherRavager # Triad - modified this voucher
   name: ravager LPC
   description: A small card that contains the data for the procurement of a Ravager-class mothership from the flagship's reserves.
   components:
@@ -337,8 +337,10 @@
     - state: vouchermilitary
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Sr
-    companyName: Colonial
+    consoleType: Security
+    companyName: TDF
+    accessGroups:
+    - GeneralTdfAccess
     vessels:
     - Ravager
   - type: StaticPrice
@@ -348,7 +350,7 @@
   parent: BaseShipLPC
   id: ShipVoucherRook
   name: rook LPC
-  description: A small card that contains the data for the procurement of a Rook class drone. 
+  description: A small card that contains the data for the procurement of a Rook class drone.
   components:
   - type: Sprite
     layers:
@@ -368,7 +370,7 @@
   parent: BaseShipLPC
   id: ShipVoucherTaser
   name: taser LPC
-  description: A small card that contains the data for the procurement of a taser class drone. 
+  description: A small card that contains the data for the procurement of a taser class drone.
   components:
   - type: Sprite
     layers:
