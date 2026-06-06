@@ -75,6 +75,31 @@
     angleIncrease: 0.4
 
 - type: entity
+  parent: WeaponRifleLecterTdf
+  id: WeaponRifleLecterTdfRubber
+  suffix: Non-Lethal
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine68x52mmCaselessRubber
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - Magazine68x52mmCaseless
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge68x52mmCaselessRubber
+        priority: 1
+        whitelist:
+          tags:
+            - Cartridge68x52mmCaseless
+
+- type: entity
   name: TDF MR-8T DMR (8x65mm SKR)
   parent: [BaseFactionGearTDFT2, WeaponRifleMR8C]
   id: WeaponRifleMR8T
