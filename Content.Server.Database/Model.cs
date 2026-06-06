@@ -780,7 +780,7 @@ namespace Content.Server.Database
     }
 
     /// <summary>
-    /// An exemption for a specific user to a certain type of <see cref="ServerBan"/>.
+    /// An exemption for a specific user to a certain type of <see cref="Ban"/>.
     /// </summary>
     /// <example>
     /// Certain players may need to be exempted from VPN bans due to issues with their ISP.
