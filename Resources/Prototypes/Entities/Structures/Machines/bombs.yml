@@ -132,7 +132,18 @@
       totalIntensity: 4000.0
       intensitySlope: 3
       maxIntensity: 400
-
+    - type: Destructible # Triad
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 125
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:ExplodeBehavior
+    - type: Anchorable
+      delay: 300 # Triad, try to unanchor this chucklenuts
+        
 - type: entity
   parent: SyndicateBomb
   id: SyndicateBombFake
