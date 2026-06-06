@@ -339,8 +339,6 @@
     destroyOnEmpty: true
     consoleType: Security
     companyName: TDF
-    accessGroups:
-    - GeneralTdfAccess
     vessels:
     - Ravager
   - type: StaticPrice

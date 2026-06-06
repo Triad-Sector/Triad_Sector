@@ -15,11 +15,11 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - MercenaryClothingShoesBootsCombat
-  - MercenaryClothingShoesBootsJack
-  - MercenaryClothingShoesMagSecurity
+  - CombatBoots
+  - JackBoots
+  - ClothingShoesBootsMagSecurityFilled
   fallbacks:
-  - MercenaryClothingShoesBootsCombat
+  - CombatBoots
 
 - type: loadoutGroup
   id: TdfBelt

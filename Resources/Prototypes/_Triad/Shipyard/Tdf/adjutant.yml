@@ -5,6 +5,7 @@
   parent: BaseVessel
   name: TDF Adjutant
   description: One of the first ships that can be traced back to the first proper warship of the original CDF when the sector was in full-out war. Now, it serves as a reminder of the struggle and many lives lost in the race to break the shackle of oppression. 2 TARNYX, 2 90mm Longbow, PDW, and flare system. This ship will ensure those who defile the sanctity of the sector independence will know the struggle of oppression.
+  price: 90650
   category: Medium
   group: Security
   access: Security
@@ -14,7 +15,7 @@
   - Patrol
   - Corvette
   engine:
-  - AME
+  - Bananium
 
 - type: gameMap
   id: Adjutant

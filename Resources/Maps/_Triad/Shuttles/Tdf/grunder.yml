@@ -4,7 +4,7 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/05/2026 16:33:52
+  time: 06/06/2026 20:34:04
   entityCount: 671
 maps: []
 grids:
@@ -81,10 +81,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Kudzu: []
-        Puddle: []
         Smoke: []
         MetalFoam: []
+        Kudzu: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -536,31 +536,26 @@ entities:
   - uid: 19
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -1.5,-0.5
+      pos: -3.5,-2.5
       parent: 1
   - uid: 20
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -1.5,-1.5
+      pos: -3.5,-1.5
       parent: 1
   - uid: 21
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -1.5,-2.5
+      pos: -3.5,-0.5
       parent: 1
   - uid: 22
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -2.5,-0.5
       parent: 1
   - uid: 23
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -2.5,-1.5
       parent: 1
     - type: PointLight
@@ -569,26 +564,22 @@ entities:
   - uid: 24
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -2.5,-2.5
       parent: 1
   - uid: 25
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-0.5
+      pos: -1.5,-2.5
       parent: 1
   - uid: 26
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-1.5
+      pos: -1.5,-1.5
       parent: 1
   - uid: 27
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-2.5
+      pos: -1.5,-0.5
       parent: 1
 - proto: APCBasic
   entities:
@@ -2757,38 +2748,28 @@ entities:
       startingCharge: 0
     - type: ApcPowerReceiver
       powerLoad: 20
-- proto: Gyroscope
+- proto: GyroscopeTdf
   entities:
   - uid: 378
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 4.5,-4.5
+      pos: -2.5,-4.5
       parent: 1
   - uid: 379
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-4.5
+      pos: 6.5,-4.5
       parent: 1
   - uid: 380
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-4.5
+      pos: 4.5,-4.5
       parent: 1
-    - type: ApcPowerReceiver
-      powerLoad: 1
   - uid: 381
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 6.5,-4.5
+      pos: -5.5,-4.5
       parent: 1
-    - type: Thruster
-      enabled: False
-    - type: ApcPowerReceiver
-      powerLoad: 1
 - proto: JukeboxWallmountShip
   entities:
   - uid: 382
@@ -3402,12 +3383,12 @@ entities:
     - type: Transform
       pos: 3.5,8.5
       parent: 1
-- proto: VendingMachineTdfTech
+- proto: VendingMachineTankDispenserEVA
   entities:
-  - uid: 467
+  - uid: 469
     components:
     - type: Transform
-      pos: 1.5,-1.5
+      pos: -0.5,-7.5
       parent: 1
 - proto: VendingMachineTdfDrobe
   entities:
@@ -3416,12 +3397,12 @@ entities:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
-- proto: VendingMachineTankDispenserEVA
+- proto: VendingMachineTdfTech
   entities:
-  - uid: 469
+  - uid: 467
     components:
     - type: Transform
-      pos: -0.5,-7.5
+      pos: 1.5,-1.5
       parent: 1
 - proto: WallPlastitanium
   entities:

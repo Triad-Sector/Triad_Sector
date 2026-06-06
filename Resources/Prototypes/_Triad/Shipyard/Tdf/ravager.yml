@@ -5,7 +5,7 @@
 - type: vessel
   id: Ravager
   parent: BaseVessel
-  name: Ravager
+  name: TDF Ravager
   description: Capital class security mothership made for fast neutralization of civilian threats. An old design from the Fifty-year war, but it still holds up well today.
   price: 875800
   purchasable: false # voucher only
