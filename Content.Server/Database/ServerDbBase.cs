@@ -705,6 +705,19 @@ namespace Content.Server.Database
             if (player == null)
                 return null;
 
+            return MakePlayerRecord(player.UserId, player);
+        }
+
+        protected PlayerRecord MakePlayerRecord(Guid userId, Player? player)
+        {
+            if (player == null)
+            {
+                // We don't have a record for this player in the database.
+                // This is possible, for example, when banning people that never connected to the server.
+                // Just return fallback data here, I guess.
+                return new PlayerRecord(new NetUserId(userId), default, userId.ToString(), default, null, null);
+            }
+
             return new PlayerRecord(
                 new NetUserId(player.UserId),
                 new DateTimeOffset(NormalizeDatabaseTime(player.FirstSeenTime)),
