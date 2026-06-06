@@ -12,3 +12,6 @@ reagent-desc-affogato = Ice cream suffocated in Cognac, coffee liqueur, and Ango
 
 reagent-name-five-oclock = Five O'Clock
 reagent-desc-five-oclock = In space, even tea-time contains alcohol.
+
+reagent-name-mliko = Mliko
+reagent-desc-mliko = A bartender's sick idea of a joke. The entire glass is filled with beer foam!

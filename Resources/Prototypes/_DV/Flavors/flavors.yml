@@ -141,3 +141,23 @@
   id: lemonlimebitters
   flavorType: Complex
   description: flavor-complex-lemon-lime-bitters
+
+- type: flavor
+  id: healthcodeviolation
+  flavorType: Complex
+  description: flavor-complex-healthcodeviolation
+
+- type: flavor
+  id: mothamphetamine
+  flavorType: Complex
+  description: flavor-complex-mothamphetamine-deltav
+
+- type: flavor
+  id: doubleicecream
+  flavorType: Complex
+  description: flavor-complex-double-ice-cream
+
+- type: flavor
+  id: mliko
+  flavorType: Complex
+  description: flavor-complex-mliko

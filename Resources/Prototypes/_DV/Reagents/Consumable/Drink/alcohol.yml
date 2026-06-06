@@ -110,3 +110,26 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.07
+
+- type: reagent
+  id: Mliko
+  name: reagent-name-mliko
+  parent: BaseAlcohol
+  desc: reagent-desc-mliko
+  physicalDesc: reagent-physical-desc-foamy
+  flavor: mliko
+  color: "#fefff1"
+  metamorphicSprite:
+    sprite: _DV/Objects/Consumable/Drinks/mliko.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.02
