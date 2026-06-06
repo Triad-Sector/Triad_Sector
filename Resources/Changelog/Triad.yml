@@ -1122,3 +1122,146 @@ Entries:
   id: 2253
   time: '2026-06-02T03:29:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/171
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Syndicate electric range board now included in the combat bakery kit
+    - type: Tweak
+      message: several TC price inflation, and shrinkflation
+    - type: Tweak
+      message: Dark Mechs no longer obtainable through surplus crates
+    - type: Tweak
+      message: >-
+        Multiple description has been updated and changed to fit current server
+        info
+  id: 2254
+  time: '2026-06-02T07:54:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/128
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Markings, materials, and IPC/Silicon emotes whose translations were
+        missing now display proper localized names instead of raw prototype IDs
+        or literal English.
+  id: 2255
+  time: '2026-06-02T07:56:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/121
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: >-
+        Introduces three new markdown options for your paperwork! [check],
+        [form], and [signature].
+  id: 2256
+  time: '2026-06-02T08:00:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/173
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: changed ruin tanker shield to MS-100
+  id: 2257
+  time: '2026-06-03T00:14:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/180
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Portable pumps have been ported from Frontier. These can be anchored and
+        powered (with nearby LV or a cell) to clean up spills. They have an
+        internal buffer that destroys excess liquids. You can find their boards
+        under the Advanced Cleaning research.
+    - type: Add
+      message: >-
+        Floodlights and desk lamps can now be anchored to use APC power (instead
+        of battery power) like other anchored machines.
+  id: 2258
+  time: '2026-06-03T02:30:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/174
+- author: Virnazush
+  changes:
+    - type: Tweak
+      message: Towels can now be saved to ships.
+    - type: Tweak
+      message: >-
+        Rolling Pins can now be saved to ships, probably was missed in the
+        previous kitchen item saving PR. 
+    - type: Tweak
+      message: >-
+        Toys such as Newton Cradles, Miniatures Toy Nukes, Toy Singulo, and Toy
+        Tesla can be saved to ships.
+    - type: Tweak
+      message: 'Handheld Instruments, can now be saved to ships.  '
+    - type: Tweak
+      message: 'Handheld flags can now be saved to ships. '
+  id: 2259
+  time: '2026-06-03T02:38:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/140
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Shuttle consoles can now advertise Services, Shopping, and Social,
+        tagging the ship's IFF label on the radar so others can see what it
+        offers.
+  id: 2260
+  time: '2026-06-03T22:20:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/183
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Survival boxes now start with a single MRE bar and a bottle of water
+        instead of a full MRE package.
+    - type: Remove
+      message: >-
+        MRE crates no longer appear in salvage loot or the cargo market, and the
+        MRE package was pulled from the sustenance vending machine.
+  id: 2261
+  time: '2026-06-03T22:20:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/181
+- author: dijonmustard01
+  changes:
+    - type: Tweak
+      message: >-
+        Allows gas mining drills to be upgraded with superior manipulators to
+        increase the rate of gas extraction
+    - type: Tweak
+      message: >-
+        Allows gas mining drills to be anchorable on regular, non-gas deposit
+        tiles.
+  id: 2262
+  time: '2026-06-04T02:17:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/115
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Adjusted drop pod and contra crates lootpool
+  id: 2263
+  time: '2026-06-04T02:37:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/134
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Added a countdown to when the shift will end to the PDA. Hey! Stop
+        watching the clock and get back to work!
+  id: 2264
+  time: '2026-06-04T03:11:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/103
+- author: IngvarJackal
+  changes:
+    - type: Add
+      message: Added targeting lock and linear firing solution.
+    - type: Tweak
+      message: Missile decoys now work.
+  id: 2265
+  time: '2026-06-04T03:12:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/139
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Revert the targeting lock
+  id: 2266
+  time: '2026-06-05T00:36:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/184

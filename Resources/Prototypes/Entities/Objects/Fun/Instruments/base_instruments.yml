@@ -19,6 +19,7 @@
     size: Normal
   - type: StaticPrice
     price: 200
+  - type: HLPersistOnShipSave #Triad
 
 #These are for instruments that are larger, can't be picked up, or have collision
 - type: entity

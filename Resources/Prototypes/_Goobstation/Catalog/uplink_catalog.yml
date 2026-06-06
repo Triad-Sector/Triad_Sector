@@ -10,6 +10,13 @@
     Telecrystal: 200 # 400->200 - Mono
   categories:
   - UplinkAllies
+  # Triad Start
+  conditions:
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+          - SurplusBundle
+  # Triad Ends
 
 - type: listing
   id: UplinkMauler
@@ -21,6 +28,13 @@
     Telecrystal: 325 # 650->325 - Mono
   categories:
   - UplinkAllies
+  # Triad Start
+  conditions:
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+          - SurplusBundle
+  # Triad Ends
 #  conditions: # Mono
 #  - !type:StoreWhitelistCondition
 #    whitelist:
