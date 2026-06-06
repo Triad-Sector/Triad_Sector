@@ -2,13 +2,12 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Notes;
+using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Shared.Administration;
-using Content.Shared.Administration.Systems;
 using Content.Shared.Database;
 using Content.Shared.Eui;
-using Content.Shared.Follower;
 using Robust.Server.Player;
 using Robust.Shared.Player;
 
@@ -34,13 +33,11 @@ public sealed class PlayerPanelEui : BaseEui
     private bool _frozen;
     private bool _canFreeze;
     private bool _canAhelp;
-    private FollowerSystem _follower;
 
     public PlayerPanelEui(LocatedPlayerData player)
     {
         IoCManager.InjectDependencies(this);
         _targetPlayer = player;
-        _follower = _entity.System<FollowerSystem>();
     }
 
     public override void Opened()
@@ -144,16 +141,6 @@ public sealed class PlayerPanelEui : BaseEui
                     _entity.DeleteEntity(session.AttachedEntity);
                 }
                 break;
-            case PlayerPanelFollowMessage:
-                if (!_admins.HasAdminFlag(Player, AdminFlags.Admin) ||
-                    !_player.TryGetSessionById(_targetPlayer.UserId, out session) ||
-                    session.AttachedEntity == null ||
-                    Player.AttachedEntity is null ||
-                    session.AttachedEntity == Player.AttachedEntity)
-                    return;
-
-                _follower.StartFollowingEntity(Player.AttachedEntity.Value, session.AttachedEntity.Value);
-                break;
         }
     }
 
@@ -187,7 +174,7 @@ public sealed class PlayerPanelEui : BaseEui
             _whitelisted = await _db.GetWhitelistStatusAsync(_targetPlayer.UserId);
             // This won't get associated ip or hwid bans but they were not placed on this account anyways
             _bans = (await _db.GetBansAsync(null, _targetPlayer.UserId, null, null)).Count;
-            _roleBans = (await _db.GetBansAsync(null, _targetPlayer.UserId, null, null, type: BanType.Role)).Count();
+            _roleBans = (await _db.GetBansAsync(null, _targetPlayer.UserId, null, null, type: BanType.Role)).Count;
         }
         else
         {
