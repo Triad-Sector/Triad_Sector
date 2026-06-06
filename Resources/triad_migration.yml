@@ -12,3 +12,7 @@ SuitStorageM82b: SuitStorageTdfMedic
 SuitStorageWallmountM82c: SuitStorageWallmountTdf
 SuitStorageWallmountM82b: SuitStorageWallmountTdfMedic
 SuitStorageWallmountM86: null
+
+# 2026-06-06
+VendingMachineNfsdDrobe: VendingMachineTdfDrobe
+VendingMachineNfsdTech: VendingMachineTdfTech
