@@ -16,3 +16,5 @@ SuitStorageWallmountM86: null
 # 2026-06-06
 VendingMachineNfsdDrobe: VendingMachineTdfDrobe
 VendingMachineNfsdTech: VendingMachineTdfTech
+ClothingBackpackDuffelNfsdEmpBundle: ClothingBackpackDuffelTdfEmpBundle
+ClothingBackpackDuffelNfsdTrackingBundle: ClothingBackpackDuffelTdfTrackingBundle

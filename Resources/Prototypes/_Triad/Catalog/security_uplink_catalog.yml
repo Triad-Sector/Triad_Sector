@@ -1416,8 +1416,8 @@
   id: UplinkSecurityTrackingBundle
   name: uplink-security-trackingdart-bundle-name
   description: uplink-security-trackingdart-bundle-desc
-  productEntity: ClothingBackpackDuffelNfsdTrackingBundle
-  icon: { sprite: _NF/Clothing/Back/Duffels/nfsd_brown.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelTdfTrackingBundle
+  icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
   cost:
     TriadCommerceCredit: 20
   categories:
@@ -1432,8 +1432,8 @@
   id: UplinkSecurityEmpBundle
   name: uplink-security-emp-bundle-name
   description: uplink-security-emp-bundle-desc
-  productEntity: ClothingBackpackDuffelNfsdEmpBundle
-  icon: { sprite: _NF/Clothing/Back/Duffels/nfsd_brown.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelTdfEmpBundle
+  icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
   cost:
     TriadCommerceCredit: 20
   categories:

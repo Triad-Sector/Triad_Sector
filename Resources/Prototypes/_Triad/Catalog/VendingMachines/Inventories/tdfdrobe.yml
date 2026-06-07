@@ -1,9 +1,12 @@
 - type: vendingMachineInventory
   id: TdfDrobeInventory
   startingInventory:
-    ClothingBackpackSecurity: 10 # TODO TDF variant
-    ClothingBackpackSatchelSecurity: 10 # TODO TDF variant
-    ClothingBackpackDuffelSecurity: 10 # TODO TDF variant
+    ClothingBackpackTdf: 5
+    ClothingBackpackSatchelTdf: 5
+    ClothingBackpackDuffelTdf: 5
+    ClothingBackpackSecurity: 5
+    ClothingBackpackSatchelSecurity: 5
+    ClothingBackpackDuffelSecurity: 5
     ClothingHandsGlovesCombatNfsdBrown: 5
     ClothingHandsGlovesCombatNfsdCream: 5
     ClothingHandsGlovesCombat: 5

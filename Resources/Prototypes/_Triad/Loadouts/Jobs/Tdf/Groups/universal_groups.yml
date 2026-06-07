@@ -3,12 +3,14 @@
   name: loadout-group-contractor-backpack
   minLimit: 1
   loadouts:
+  - ClothingBackpackTdf
+  - ClothingBackpackSatchelTdf
+  - ClothingBackpackDuffelTdf
   - SecurityGuardBackpack
   - SecurityGuardSatchel
   - SecurityGuardDuffel
-  # TODO - TDF backpacks?
   fallbacks:
-  - SecurityGuardBackpack
+  - ClothingBackpackTdf
 
 - type: loadoutGroup
   id: TdfShoes
