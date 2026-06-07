@@ -43,4 +43,4 @@
         - id: JetpackNfsdFilled
         - id: ClothingShoesBootsMagSecurity
   - type: AccessReader
-    access: [["Security"]]
+    access: [["TdfChiefEnforcer"]]
