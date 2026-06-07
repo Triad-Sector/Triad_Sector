@@ -3692,8 +3692,6 @@ entities:
           enabled: True
         ignore: False
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
       address: VNT-4957-09D6
