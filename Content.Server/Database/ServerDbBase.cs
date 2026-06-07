@@ -454,6 +454,30 @@ namespace Content.Server.Database
 
         #endregion
 
+        // Triad: tamper protection
+        #region Triad
+
+        /// <summary>
+        ///     Open a scoped <see cref="ServerDbContext"/> and run an arbitrary EF Core command against it.
+        ///     This is the bridge used by Triad-only feature stores (e.g. shipyard tamper-protection)
+        ///     that own queries which should not bleed into the rest of <see cref="ServerDbBase"/>.
+        ///     The context is disposed when <paramref name="fn"/> returns; do not let it escape.
+        /// </summary>
+        public async Task<T> RunWithContextAsync<T>(Func<ServerDbContext, CancellationToken, Task<T>> fn, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            return await fn(db.DbContext, cancel);
+        }
+
+        public async Task RunWithContextAsync(Func<ServerDbContext, CancellationToken, Task> fn, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            await fn(db.DbContext, cancel);
+        }
+
+        #endregion
+        // End Triad
+
         #region Bans
         /*
          * BAN STUFF
