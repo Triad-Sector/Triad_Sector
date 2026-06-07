@@ -570,7 +570,19 @@ public sealed partial class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Subtle;
                 CanSendChannels |= ChatSelectChannel.SubtleOOC;
                 FilterableChannels |= ChatChannel.Whisper;
-                // Floofstation section end
+// Triad start
+FilterableChannels |= ChatChannel.Subtle;
+FilterableChannels |= ChatChannel.SubtleOOC;
+FilterableChannels |= ChatChannel.Whisper;
+// Triad end
+CanSendChannels |= ChatSelectChannel.Local;
+CanSendChannels |= ChatSelectChannel.Whisper;
+CanSendChannels |= ChatSelectChannel.Radio;
+CanSendChannels |= ChatSelectChannel.Emotes;
+// Floofstation section - only non-ghosts can chat in those
+CanSendChannels |= ChatSelectChannel.Subtle;
+CanSendChannels |= ChatSelectChannel.SubtleOOC;
+// Floofstation section end
             }
         }
 
