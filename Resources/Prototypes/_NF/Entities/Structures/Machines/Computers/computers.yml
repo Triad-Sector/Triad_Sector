@@ -279,6 +279,7 @@
   parent: ComputerContrabandPalletConsole
   id: ComputerContrabandPalletConsolePirate
   description: Takes faction tech to be sent off to research and grants DC in exchange.
+  suffix: TIC
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
