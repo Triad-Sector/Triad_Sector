@@ -579,10 +579,10 @@ public sealed partial class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
-               // Floofstation section - only non-ghosts can chat in those
-               CanSendChannels |= ChatSelectChannel.Subtle;
-               CanSendChannels |= ChatSelectChannel.SubtleOOC;
-               // Floofstation section end
+                // Floofstation section - only non-ghosts can chat in those
+                CanSendChannels |= ChatSelectChannel.Subtle;
+                CanSendChannels |= ChatSelectChannel.SubtleOOC;
+                // Floofstation section end
             }
         }
 
