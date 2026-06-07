@@ -55,8 +55,8 @@
 - type: entity
   parent: BaseSignDirectionalNF
   id: SignDirectionalNfsd
-  name: TSFMC outpost sign
-  description: A direction sign, pointing out which way an TSFMC outpost is.
+  name: TDF outpost sign
+  description: A direction sign, pointing out which way a TDF outpost is.
   components:
   - type: Sprite
     state: direction_nfsd

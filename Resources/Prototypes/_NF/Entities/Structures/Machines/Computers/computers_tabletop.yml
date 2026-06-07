@@ -650,7 +650,7 @@
 - type: entity
   parent: BaseComputerTabletopStationAdminBankATM
   id: ComputerTabletopStationAdminBankATMNfsd
-  description: Used to transfer funds from the TSFMC-FOB's bank account
+  description: Used to transfer funds from the TDF's bank account
   suffix: TDF, Tabletop
   components:
   - type: StationBankATM
