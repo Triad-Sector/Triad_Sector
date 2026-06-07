@@ -5,11 +5,11 @@
 # highlights-pilot =
 # highlights-mercenary =
 
-highlights-overseer = "Overseer", "CC", "Triad"
-highlights-station-traffic-controller = "STC", "Traffic", "CC", "Triad"
-highlights-judge = "Judge", "CC", "Triad", "Contraband"
-highlights-service-worker = "Service", "Worker", "CC", "Triad"
-highlights-janitor = "Jani", "Janitor", "CC", "Triad"
+highlights-overseer = "Overseer", "CC", "Venmar"
+highlights-station-traffic-controller = "STC", "Traffic", "CC", "Venmar"
+highlights-judge = "Judge", "CC", "Venmar", "Contraband"
+highlights-service-worker = "Service", "Worker", "CC", "Venmar"
+highlights-janitor = "Jani", "Janitor", "CC", "Venmar"
 highlights-mail-carrier = "Mail man", "Mail carrier", "Mail"
 highlights-cyborg = "borg", "cyborg", "robot", "CC"
 
