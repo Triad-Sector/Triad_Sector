@@ -5,7 +5,7 @@
   parent: BaseVessel
   name: TDF Grunder
   description: Designed for rapid deployment, the Grunder is equipped to launch boarding parties from its rear bay. Despite its lack of armor, the ship excels at stripping enemy hulls and bypassing shields. However, it relies heavily on fleet support and must wait for the right opportunity to strike.
-  price: 119000
+  price: 135000
   category: Medium
   group: Security
   access: Security
