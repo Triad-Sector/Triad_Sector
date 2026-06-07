@@ -592,7 +592,10 @@ CanSendChannels |= ChatSelectChannel.SubtleOOC;
             FilterableChannels |= ChatChannel.Dead;
             CanSendChannels |= ChatSelectChannel.Dead;
         }
-
+        if (_admin.HasFlag(AdminFlags.Pii) && _ghost is { IsGhost: true })
+        {
+            FilterableChannels |= ChatChannel.Whisper;
+        }
         // only admins can see / filter asay
         if (_admin.HasFlag(AdminFlags.Adminchat))
         {
