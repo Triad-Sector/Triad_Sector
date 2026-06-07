@@ -5944,9 +5944,6 @@ entities:
   entities:
   - uid: 2077
     components:
-    - type: MetaData
-      desc: An archaic beret in corporate blue with a warden's rank emblem.
-      name: pre-corporate war warden beret
     - type: Transform
       parent: 2075
     - type: Physics
@@ -6424,7 +6421,7 @@ entities:
     - type: Transform
       pos: 29.421402,-7.341307
       parent: 4270
-- proto: DresserFilled
+- proto: DresserTdfChiefEnforcerFilled
   entities:
   - uid: 65
     components:

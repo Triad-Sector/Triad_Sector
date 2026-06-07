@@ -11,5 +11,5 @@
       - id: ClothingUniformJumpsuitSr
       - id: ClothingUniformJumpskirtSr
       - id: ClothingUniformJumpsuitSecGuard
-      - id: ClothingUniformJumpskirtSecGuard
+      # - id: ClothingUniformJumpskirtSecGuard Triad pending resprite
       - id: ClothingShoesLeather
