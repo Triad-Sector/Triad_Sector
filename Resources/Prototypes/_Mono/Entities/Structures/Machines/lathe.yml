@@ -37,7 +37,7 @@
     # TSF start
     - MonoTSFWeaponsDynamicMelee
     - MonoTSFWeaponsDynamicRanged
-    - MonoTSFVouchersDynamic
+    #- MonoTSFVouchersDynamic Triad
     - MonoTSFMiscDynamic
     - MonoTSFGearDynamic
     # USSP start
