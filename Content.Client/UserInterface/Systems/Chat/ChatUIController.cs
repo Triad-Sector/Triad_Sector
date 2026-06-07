@@ -562,10 +562,6 @@ public sealed partial class ChatUIController : UIController
             // TODO: this logic is iffy (checking if controlling something that's NOT a ghost), is there a better way to check this?
             if (_ghost is not {IsGhost: true})
             {
-                // Floofstation section - only non-ghosts can chat in those
-                CanSendChannels |= ChatSelectChannel.Subtle;
-                CanSendChannels |= ChatSelectChannel.SubtleOOC;
-                // Floofstation end
                 // Triad start
                 FilterableChannels |= ChatChannel.Subtle;
                 FilterableChannels |= ChatChannel.SubtleOOC;
