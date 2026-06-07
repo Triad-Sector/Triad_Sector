@@ -38,7 +38,7 @@
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitNfsdSheriff
+        - id: ClothingOuterHardsuitTdfChiefEnforcer
         - id: ClothingMaskGasSwatTdf
         - id: JetpackNfsdFilled
         - id: ClothingShoesBootsMagSecurity
