@@ -18,3 +18,6 @@ VendingMachineNfsdDrobe: VendingMachineTdfDrobe
 VendingMachineNfsdTech: VendingMachineTdfTech
 ClothingBackpackDuffelNfsdEmpBundle: ClothingBackpackDuffelTdfEmpBundle
 ClothingBackpackDuffelNfsdTrackingBundle: ClothingBackpackDuffelTdfTrackingBundle
+ShipVoucherFlyssa: null
+ShipVoucherTsfmcColonel: null
+ShipVoucherAltair: null
