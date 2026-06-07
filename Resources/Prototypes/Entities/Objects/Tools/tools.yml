@@ -729,3 +729,4 @@
   - type: Construction
     graph: WoodenRollingPin
     node: rollingpin
+  - type: HLPersistOnShipSave #Triad
