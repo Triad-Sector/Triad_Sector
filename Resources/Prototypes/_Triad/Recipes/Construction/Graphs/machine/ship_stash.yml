@@ -186,6 +186,9 @@
         - material: Plasteel
           amount: 10
           doAfter: 2
+        - material: Cable
+          amount: 5
+          doAfter: 3
 
   - node: FuelStorageStashNode
     entity: FuelStorageStash
