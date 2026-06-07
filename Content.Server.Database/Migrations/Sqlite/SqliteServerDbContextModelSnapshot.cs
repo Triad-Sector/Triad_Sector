@@ -1425,6 +1425,160 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("trait", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardAuditEvent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("triad_shipyard_audit_events_id");
+
+                    b.Property<Guid?>("AdminUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("admin_user_id");
+
+                    b.Property<DateTime>("At")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("at");
+
+                    b.Property<string>("DeedHolderEntity")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("deed_holder_entity");
+
+                    b.Property<int>("EventType")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("event_type");
+
+                    b.Property<int?>("LoadTimeAppraisal")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("load_time_appraisal");
+
+                    b.Property<string>("MapId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("map_id");
+
+                    b.Property<string>("PlayerName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_name");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<byte[]>("PublicKey")
+                        .HasColumnType("BLOB")
+                        .HasColumnName("public_key");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("round_id");
+
+                    b.Property<int?>("SaveTimeAppraisal")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("save_time_appraisal");
+
+                    b.Property<string>("ServerName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("server_name");
+
+                    b.Property<byte[]>("ShipHash")
+                        .IsRequired()
+                        .HasColumnType("BLOB")
+                        .HasColumnName("ship_hash");
+
+                    b.Property<string>("ShipName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ship_name");
+
+                    b.Property<int?>("SigningKeyId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("signing_key_id");
+
+                    b.Property<string>("SourceFilePath")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("source_file_path");
+
+                    b.Property<string>("VesselId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("vessel_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_audit_events");
+
+                    b.HasIndex("EventType", "At");
+
+                    b.HasIndex("PlayerUserId", "At");
+
+                    b.HasIndex("ShipHash", "At");
+
+                    b.ToTable("triad_shipyard_audit_events", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardMigrationPermit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("triad_shipyard_migration_permits_id");
+
+                    b.Property<DateTime>("GrantedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("granted_at");
+
+                    b.Property<Guid>("GrantedByAdminId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("granted_by_admin_id");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("notes");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_migration_permits");
+
+                    b.HasIndex("PlayerUserId")
+                        .IsUnique();
+
+                    b.ToTable("triad_shipyard_migration_permits", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardSigningKey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("triad_shipyard_signing_keys_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("KeyId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("key_id");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("notes");
+
+                    b.Property<byte[]>("PublicKey")
+                        .IsRequired()
+                        .HasColumnType("BLOB")
+                        .HasColumnName("public_key");
+
+                    b.Property<DateTime?>("RetiredAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("retired_at");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_signing_keys");
+
+                    b.ToTable("triad_shipyard_signing_keys", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.UploadedResourceLog", b =>
                 {
                     b.Property<int>("Id")

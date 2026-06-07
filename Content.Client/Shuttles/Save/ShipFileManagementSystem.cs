@@ -1,4 +1,7 @@
 using Content.Shared._NF.Shuttles.Save;
+// Triad: tamper protection
+using Content.Shared._Triad.Shipyard.Save;
+// End Triad
 using System.Threading.Tasks;
 using System.Linq;
 using Robust.Shared.ContentPack;
@@ -68,6 +71,9 @@ namespace Content.Client.Shuttles.Save
             SubscribeNetworkEvent<AdminRequestPlayerShipsMessage>(HandleAdminRequestPlayerShips);
             SubscribeNetworkEvent<AdminRequestShipDataMessage>(HandleAdminRequestShipData);
             SubscribeNetworkEvent<DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
+            // Triad: tamper protection
+            SubscribeNetworkEvent<MigrateShipFileMessage>(OnMigrateShipFile);
+            // End Triad
 
             // Ensure saved_ships directory exists on startup
             EnsureSavedShipsDirectoryExists();
@@ -269,6 +275,18 @@ namespace Content.Client.Shuttles.Save
                 DeletableShipPaths.RemoveAt(index);
                 return true;
             }
+        }
+
+        /// <summary>
+        ///     F5 fix: non-consuming variant of <see cref="WasShipMarkedAsDeletable"/> for the
+        ///     <c>MigrateShipFileMessage</c> handler. The Migrate-then-Delete success sequence
+        ///     needs to consult the allow-list twice: once for Migrate (non-consuming), then
+        ///     once for Delete (consuming, via WasShipMarkedAsDeletable). Single allow-list,
+        ///     two consumers with different consumption semantics.
+        /// </summary>
+        public static bool IsShipPathMarkedAsDeletable(string filePath)
+        {
+            return DeletableShipPaths.Contains(filePath);
         }
         // Triad end
 
@@ -552,6 +570,69 @@ namespace Content.Client.Shuttles.Save
                 _sawmill.Warning($"Failed to move local ship file '{message.FilePath}' to backup: {ex.Message}");
             }
         }
+
+        // Triad: tamper protection
+        private void OnMigrateShipFile(MigrateShipFileMessage ev)
+        {
+            try
+            {
+                // F5 fix (a): only accept Migrate for paths the client originally vouched for
+                // via MarkShipPathAsDeletable. Without this gate, a hostile or compromised server
+                // could send MigrateShipFileMessage("/config.toml", evilContents) and the client
+                // would silently overwrite any UserData file. Uses the non-consuming variant so
+                // the subsequent Delete (which fires alongside Migrate on success in the new S1
+                // ordering) still finds the allow-list entry.
+                if (!IsShipPathMarkedAsDeletable(ev.TargetPath))
+                {
+                    _sawmill.Warning(
+                        $"Refused server-sent MigrateShipFileMessage for path '{ev.TargetPath}' "
+                        + "(not previously vouched for via MarkShipPathAsDeletable).");
+                    return;
+                }
+
+                var path = ev.TargetPath.Replace('\\', '/');
+                if (!path.StartsWith("/"))
+                    path = "/" + path;
+
+                // F5 fix (b): explicitly reject path-traversal segments. Don't trust ResPath's
+                // sanitization (the review noted it 'may or may not sanitize'); do our own.
+                foreach (var segment in path.Split('/'))
+                {
+                    if (segment == "..")
+                    {
+                        _sawmill.Warning(
+                            $"Refused server-sent MigrateShipFileMessage with '..' segment: '{ev.TargetPath}'.");
+                        return;
+                    }
+                }
+
+                var resPath = new ResPath(path);
+                using (var writer = _resourceManager.UserData.OpenWriteText(resPath))
+                {
+                    writer.Write(ev.Contents);
+                }
+
+                // F5 fix (c): invalidate cache entries so the next load reads the new envelope
+                // from disk rather than serving pre-migration bytes from CachedShipData. Remove
+                // rather than overwrite to keep this loop simple - the next legitimate access
+                // re-populates from disk.
+                // The caches are keyed inconsistently across entry points (save by file name, load by
+                // the rooted path), and we just wrote under the normalized `path` while the server sent
+                // `ev.TargetPath`. Clear both forms so a leading-slash/separator difference can't leave
+                // the stale pre-migration bytes behind (a miss is a harmless no-op).
+                CachedShipData.Remove(ev.TargetPath);
+                CachedShipData.Remove(path);
+                ShipMetadataCache.Remove(ev.TargetPath);
+                ShipMetadataCache.Remove(path);
+
+                _sawmill.Info($"Migrated local ship file to new envelope format: {path}");
+            }
+            catch (Exception ex)
+            {
+                _sawmill.Error($"Failed to migrate local ship file '{ev.TargetPath}': {ex.Message}");
+            }
+        }
+        // End Triad
 
         private static string ExtractFileNameWithoutExtension(string filePath)
         {

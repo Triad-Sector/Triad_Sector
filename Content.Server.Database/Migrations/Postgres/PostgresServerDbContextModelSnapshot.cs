@@ -1506,6 +1506,166 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("trait", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardAuditEvent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("triad_shipyard_audit_events_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid?>("AdminUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("admin_user_id");
+
+                    b.Property<DateTime>("At")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("at");
+
+                    b.Property<string>("DeedHolderEntity")
+                        .HasColumnType("text")
+                        .HasColumnName("deed_holder_entity");
+
+                    b.Property<int>("EventType")
+                        .HasColumnType("integer")
+                        .HasColumnName("event_type");
+
+                    b.Property<int?>("LoadTimeAppraisal")
+                        .HasColumnType("integer")
+                        .HasColumnName("load_time_appraisal");
+
+                    b.Property<string>("MapId")
+                        .HasColumnType("text")
+                        .HasColumnName("map_id");
+
+                    b.Property<string>("PlayerName")
+                        .HasColumnType("text")
+                        .HasColumnName("player_name");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<byte[]>("PublicKey")
+                        .HasColumnType("bytea")
+                        .HasColumnName("public_key");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<int?>("SaveTimeAppraisal")
+                        .HasColumnType("integer")
+                        .HasColumnName("save_time_appraisal");
+
+                    b.Property<string>("ServerName")
+                        .HasColumnType("text")
+                        .HasColumnName("server_name");
+
+                    b.Property<byte[]>("ShipHash")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("ship_hash");
+
+                    b.Property<string>("ShipName")
+                        .HasColumnType("text")
+                        .HasColumnName("ship_name");
+
+                    b.Property<int?>("SigningKeyId")
+                        .HasColumnType("integer")
+                        .HasColumnName("signing_key_id");
+
+                    b.Property<string>("SourceFilePath")
+                        .HasColumnType("text")
+                        .HasColumnName("source_file_path");
+
+                    b.Property<string>("VesselId")
+                        .HasColumnType("text")
+                        .HasColumnName("vessel_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_audit_events");
+
+                    b.HasIndex("EventType", "At");
+
+                    b.HasIndex("PlayerUserId", "At");
+
+                    b.HasIndex("ShipHash", "At");
+
+                    b.ToTable("triad_shipyard_audit_events", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardMigrationPermit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("triad_shipyard_migration_permits_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("GrantedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("granted_at");
+
+                    b.Property<Guid>("GrantedByAdminId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("granted_by_admin_id");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text")
+                        .HasColumnName("notes");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_migration_permits");
+
+                    b.HasIndex("PlayerUserId")
+                        .IsUnique();
+
+                    b.ToTable("triad_shipyard_migration_permits", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardSigningKey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("triad_shipyard_signing_keys_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("KeyId")
+                        .HasColumnType("text")
+                        .HasColumnName("key_id");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text")
+                        .HasColumnName("notes");
+
+                    b.Property<byte[]>("PublicKey")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("public_key");
+
+                    b.Property<DateTime?>("RetiredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("retired_at");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_signing_keys");
+
+                    b.ToTable("triad_shipyard_signing_keys", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.UploadedResourceLog", b =>
                 {
                     b.Property<int>("Id")
