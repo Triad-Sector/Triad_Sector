@@ -34,7 +34,7 @@
     contents:
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
-    - id: UndeterminedVoidsuitHeadOfSecurity # Mono
+    - id: ClothingOuterEVASuitSr # Triad | TODO: Actual hardsuit for the overseer
     - id: ClothingMaskBreath
     - id: JetpackMiniFilled
 
