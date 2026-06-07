@@ -28,7 +28,7 @@
   - type: AccessReader
     access: [["Security"]]
 
-#Colonel hardsuit
+# TDF CE hardsuit
 - type: entity
   id: SuitStorageChiefEnforcer
   parent: SuitStorageBase
