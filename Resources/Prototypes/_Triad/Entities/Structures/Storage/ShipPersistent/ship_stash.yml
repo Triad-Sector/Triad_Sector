@@ -147,23 +147,16 @@
       limitId: HydroponicsStash
 
 - type: entity
-  id: FuelStorageStash
+  id: WallStashBase
+  abstract: true
   placement:
     mode: SnapgridCenter
-  name: fuel stash
-  description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
   components:
     - type: Transform
       noRot: false
     - type: Sprite
       drawdepth: WallMountedItems
       noRot: false
-      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
-      layers:
-      - state: fuel
-        map: ["enum.StorageVisualLayers.Base"]
-      - state: fuel_door
-        map: ["enum.StorageVisualLayers.Door"]
     - type: InteractionOutline
     - type: Clickable
     - type: WallMount
@@ -171,11 +164,37 @@
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents: []   
+          ents: []
     - type: UserInterface
       interfaces:
         enum.StorageUiKey.Key:
           type: StorageBoundUserInterface
+    - type: Storage
+      grid:
+      - 0,0,0,0
+    - type: PlaceableSurface
+      placeCentered: true
+      isPlaceable: false
+    - type: RadarBlip
+      radarColor: "#e3ffea"
+      scale: 1.5
+      requireNoGrid: true
+      shape: square
+
+
+- type: entity
+  id: FuelStorageStash
+  parent: WallStashBase
+  name: fuel stash
+  description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
+      layers:
+      - state: fuel
+        map: ["enum.StorageVisualLayers.Base"]
+      - state: fuel_door
+        map: ["enum.StorageVisualLayers.Door"]
     - type: Storage
       grid:
       - 0,0,7,3
@@ -185,16 +204,8 @@
     - type: Construction
       graph: FuelStorageStashGraph
       node: FuelStorageStashNode
-    - type: PlaceableSurface
-      placeCentered: true
-      isPlaceable: false
     - type: ShipSaveLimit
       limitId: FuelStash
-    - type: RadarBlip
-      radarColor: "#e3ffea"
-      scale: 1.5
-      requireNoGrid: true
-      shape: square
     - type: Appearance
     - type: EntityStorageVisuals
       stateBaseClosed: fuel

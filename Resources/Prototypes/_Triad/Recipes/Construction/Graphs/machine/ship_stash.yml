@@ -186,9 +186,6 @@
         - material: Plasteel
           amount: 10
           doAfter: 2
-        - material: Cable
-          amount: 5
-          doAfter: 3
 
   - node: FuelStorageStashNode
     entity: FuelStorageStash
@@ -206,7 +203,7 @@
           prototype: SheetPlasteel1
           amount: 10
         - !type:SpawnPrototype
-          prototype: SheetSteel10
-          amount: 2
+          prototype: SheetSteel1
+          amount: 20
         - !type:EmptyAllContainers
         - !type:DeleteEntity
