@@ -68,7 +68,9 @@ public abstract partial class SharedShuttleSystem
             }
         }
 
-        var labelText = string.IsNullOrEmpty(entName) ? Loc.GetString("shuttle-console-unknown") : entName;
+        // Frontier: prepend the advertised-service flag tag so it survives label truncation in the scan list
+        var prefix = component != null ? GetServiceFlagsPrefix(component.ServiceFlags) : string.Empty;
+        var labelText = prefix + (string.IsNullOrEmpty(entName) ? Loc.GetString("shuttle-console-unknown") : entName);
 
         // Add company info if available
         if (companyName != null && companyColor != null)
@@ -113,6 +115,55 @@ public abstract partial class SharedShuttleSystem
         component.Flags |= flags;
         Dirty(gridUid, component);
         UpdateIFFInterfaces(gridUid, component);
+    }
+
+    /// <summary>
+    /// Frontier: Service flags
+    /// Sets the service flags for this grid to appear as on radar.
+    /// </summary>
+    /// <param name="gridUid">The grid to set the flags for.</param>
+    /// <param name="flags">The flags to set.</param>
+    /// <param name="component">The IFF component to set the flags for.</param>
+    public void SetServiceFlags(EntityUid gridUid, ServiceFlags flags, IFFComponent? component = null)
+    {
+        component ??= EnsureComp<IFFComponent>(gridUid);
+
+        if (component.ReadOnly) // Frontier: POI IFF protection
+            return; // Frontier: POI IFF protection
+
+        if (component.ServiceFlags == flags)
+            return;
+
+        component.ServiceFlags = flags;
+        Dirty(gridUid, component);
+        UpdateIFFInterfaces(gridUid, component);
+    }
+
+    /// <summary>
+    /// Turns the set service flags into a bracketed tag for display.
+    /// Each set flag contributes its localized shortform string, falling back to the
+    /// first character of the flag name when no shortform string is defined.
+    /// Rendered at the front of the IFF label, with a trailing space before the name, so the tag isn't trimmed when the scan list truncates names.
+    /// </summary>
+    /// <param name="flags">The IFF flags to render.</param>
+    /// <returns>The string to display, or empty when no flags are set.</returns>
+    public string GetServiceFlagsPrefix(ServiceFlags flags)
+    {
+        if (flags == ServiceFlags.None)
+            return string.Empty;
+
+        string outputString = "";
+        foreach (var flag in Enum.GetValues<ServiceFlags>())
+        {
+            if (flag == ServiceFlags.None || !flags.HasFlag(flag))
+                continue;
+
+            if (Loc.TryGetString($"shuttle-console-service-flag-{flag}-shortform", out var flagString))
+                outputString = string.Concat(outputString, flagString);
+            else
+                outputString = string.Concat(outputString, flag.ToString()[0]); // Fallback: use first character of string
+        }
+        return $"[{outputString}] ";
     }
 
     [PublicAPI]

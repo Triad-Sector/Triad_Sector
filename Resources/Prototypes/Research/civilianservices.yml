@@ -104,6 +104,7 @@
 #   cost: 5000
 #   recipeUnlocks:
 #   - BorgModuleAdvancedCleaning
+#   - PortablePumpMachineCircuitBoard # Frontier
 #   technologyPrerequisites:
 #   - BasicParts
 #   position: 5, -1
@@ -219,6 +220,7 @@
   - NFBlueprintAdvMopItem # Frontier
   - ReinforcedJug # Frontier
   - BorgModuleAdvancedCleaning
+  - PortablePumpMachineCircuitBoard # Frontier
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   - JanicartFlatpack
