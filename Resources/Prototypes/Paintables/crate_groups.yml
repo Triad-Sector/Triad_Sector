@@ -45,6 +45,6 @@
     mercenary-ammo: CrateAmmoSecureMercenary # Frontier
     firearms: CrateFirearmsSecure # Frontier
     uranium: CrateUranium # Frontier
-    brigmedic: CrateNfsdBrigmedic # Frontier
-    nfsd1: CrateNfsdSecure1 # Frontier
-    nfsd2: CrateNfsdSecure2 # Frontier
+    tdf-medic: CrateTdfMedic # Triad
+    tdf: CrateTdf # Triad
+    tdf-armory: CrateTdfArmory # Triad

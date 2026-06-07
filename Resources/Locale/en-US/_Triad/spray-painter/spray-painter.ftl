@@ -16,6 +16,9 @@ spray-painter-style-locker-tdf-warden = TDF (warden)
 spray-painter-style-locker-tdf-chief = TDF (chief enforcer)
 
 # Crates
+spray-painter-style-cratesecure-tdf-medic = TDF (medic)
+spray-painter-style-cratesecure-tdf = TDF
+spray-painter-style-cratesecure-tdf-armory = TDF (armory)
 
 # Canisters
 spray-painter-style-canisters-healium = Healium
