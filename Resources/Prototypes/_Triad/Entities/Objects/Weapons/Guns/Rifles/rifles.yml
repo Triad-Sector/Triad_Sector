@@ -84,22 +84,22 @@
       gun_magazine:
         name: Magazine
         startingItem: Magazine68x52mmCaselessRubber
-        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg # Mono
-        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg # Mono
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - Magazine68x52mmCaseless # Mono
-            - Magazine556x45mmFMJ # Mono
+            - Magazine68x52mmCaseless
+            - Magazine556x45mmFMJ
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge68x52mmCaseless # Mono
+        startingItem: Cartridge68x52mmCaseless
         priority: 1
         whitelist:
           tags:
-            - Cartridge68x52mmCaseless # Mono
-            - Cartridge556x45mmFMJ # Mono
+            - Cartridge68x52mmCaseless
+            - Cartridge556x45mmFMJ
 
 - type: entity
   name: TDF MR-8T DMR (8x65mm SKR)
