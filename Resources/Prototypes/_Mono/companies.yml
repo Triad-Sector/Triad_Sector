@@ -101,7 +101,6 @@
   description: midnight-arms-co-description
   color: "#FF2E2E"
   image: /Textures/_Mono/Companies/MACo.png
-  disabled: true # Triad
 
 - type: company
   id: USSP
