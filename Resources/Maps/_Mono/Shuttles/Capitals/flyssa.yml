@@ -15575,7 +15575,7 @@ entities:
     - type: Transform
       pos: 8.5,18.5
       parent: 1
-- proto: SuitStorageM82b
+- proto: SuitStorageTdfMedic
   entities:
   - uid: 1432
     components:
