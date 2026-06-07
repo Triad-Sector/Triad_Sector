@@ -597,6 +597,7 @@ public sealed partial class ChatUIController : UIController
         {
             FilterableChannels |= ChatChannel.Whisper;
         }
+        
         // only admins can see / filter asay
         if (_admin.HasFlag(AdminFlags.Adminchat))
         {
