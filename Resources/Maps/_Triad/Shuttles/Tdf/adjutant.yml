@@ -3925,8 +3925,6 @@ entities:
           enabled: True
         ignore: False
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
       address: VNT-14BA-2523
@@ -5547,8 +5545,6 @@ entities:
           enabled: True
         ignore: False
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
       address: SCR-19AD-7B49
@@ -5782,8 +5778,6 @@ entities:
           enabled: True
         ignore: False
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
       address: SCR-1B94-887E
