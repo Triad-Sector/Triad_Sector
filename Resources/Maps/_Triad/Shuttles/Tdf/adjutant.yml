@@ -2388,8 +2388,6 @@ entities:
           ents:
           - 623
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
       address: 37CB-97D5
