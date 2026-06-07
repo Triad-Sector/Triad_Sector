@@ -565,10 +565,3 @@ SellOnlyMothershipComputer: null # Mono
 GunneryServer: GunneryServerMedium # Mono
 
 # Frontier: put Frontier-related migrations in nf_migration.yml. Thank you.
-SuitStorageM86: null
-SuitStorageSheriff: SuitStorageChiefEnforcer
-SuitStorageM82c: SuitStorageTdf
-SuitStorageM82b: SuitStorageTdfMedic
-SuitStorageWallmountM82c: SuitStorageWallmountTdf
-SuitStorageWallmountM82b: SuitStorageWallmountTdfMedic
-SuitStorageWallmountM86: null
