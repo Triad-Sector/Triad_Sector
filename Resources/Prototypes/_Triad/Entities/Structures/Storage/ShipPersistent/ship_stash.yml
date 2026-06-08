@@ -25,6 +25,41 @@
     shape: square
 
 - type: entity
+  id: BasePersistentShipStorageStashWallmount
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Transform
+      noRot: false
+    - type: Sprite
+      drawdepth: WallMountedItems
+      noRot: false
+    - type: InteractionOutline
+    - type: Clickable
+    - type: WallMount
+      arc: 175
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          ents: []
+    - type: UserInterface
+      interfaces:
+        enum.StorageUiKey.Key:
+          type: StorageBoundUserInterface
+    - type: Storage
+      grid:
+      - 0,0,0,0
+    - type: PlaceableSurface
+      placeCentered: true
+      isPlaceable: false
+    - type: RadarBlip
+      radarColor: "#e3ffea"
+      scale: 1.5
+      requireNoGrid: true
+      shape: square
+
+- type: entity
   parent: BasePersistentShipStorageStash
   id: CivilianStorageStash
   name: civilian storage stash
@@ -147,44 +182,8 @@
       limitId: HydroponicsStash
 
 - type: entity
-  id: WallStashBase
-  abstract: true
-  placement:
-    mode: SnapgridCenter
-  components:
-    - type: Transform
-      noRot: false
-    - type: Sprite
-      drawdepth: WallMountedItems
-      noRot: false
-    - type: InteractionOutline
-    - type: Clickable
-    - type: WallMount
-      arc: 175
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          ents: []
-    - type: UserInterface
-      interfaces:
-        enum.StorageUiKey.Key:
-          type: StorageBoundUserInterface
-    - type: Storage
-      grid:
-      - 0,0,0,0
-    - type: PlaceableSurface
-      placeCentered: true
-      isPlaceable: false
-    - type: RadarBlip
-      radarColor: "#e3ffea"
-      scale: 1.5
-      requireNoGrid: true
-      shape: square
-
-
-- type: entity
   id: FuelStorageStash
-  parent: WallStashBase
+  parent: BasePersistentShipStorageStashWallmount
   name: fuel stash
   description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
   components:
