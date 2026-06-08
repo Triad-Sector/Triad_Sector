@@ -22,7 +22,6 @@
     tags: # Frontier
     - Recyclable # Frontier
     - FitsInFuelStash # Triad
-    
   - type: Destructible # Mono
     thresholds:
     - trigger:
