@@ -181,7 +181,6 @@
       requireNoGrid: true
       shape: square
 
-
 - type: entity
   id: FuelStorageStash
   parent: WallStashBase
