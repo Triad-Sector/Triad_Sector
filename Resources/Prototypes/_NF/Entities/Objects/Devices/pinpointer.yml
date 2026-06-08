@@ -18,6 +18,8 @@
   - type: Pinpointer
     component: SyndicateFOB
     targetName: unknown
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-1-text
 
 # Dead Drop
 - type: entity

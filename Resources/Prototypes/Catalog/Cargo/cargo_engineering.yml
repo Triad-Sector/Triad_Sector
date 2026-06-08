@@ -141,6 +141,19 @@
   category: cargoproduct-category-name-engineering
   group: market
 
+# Triad: RPD port from funky-station — mirrors EngineeringRCD; abstract preserves Frontier's hide pattern.
+- type: cargoProduct
+  id: EngineeringRPD
+  abstract: true # Frontier
+  icon:
+    sprite: Objects/Tools/rpd.rsi
+    state: icon
+  product: CrateRPD
+  cost: 800
+  category: cargoproduct-category-name-engineering
+  group: market
+# End Triad
+
 - type: cargoProduct
   id: EngineeringParticleDecelerators
   abstract: true # Frontier
@@ -157,7 +170,7 @@
   icon:
     sprite: Structures/Piping/Atmospherics/Portable/portable_sheater.rsi
     state: sheaterOff
-  product: SpaceHeaterAnchored # Frontier: CrateEngineeringSpaceHeater<SpaceHeaterAnchored
+  product: CrateEngineeringSpaceHeater
   cost: 600 # Frontier: 350<600
   category: cargoproduct-category-name-engineering
   group: market

@@ -90,10 +90,11 @@
 
 # Datafarm
 
-- type: latheRecipe
-  parent: BaseGoldCircuitboardRecipe
-  id: DataFarmResearchCircuitboard
-  result: DataFarmResearchCircuitboard
+# Triad : remove datafarm
+# - type: latheRecipe
+#   parent: BaseGoldCircuitboardRecipe
+#   id: DataFarmResearchCircuitboard
+#   result: DataFarmResearchCircuitboard
 
 # economy
 

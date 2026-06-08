@@ -108,4 +108,4 @@
   - type: StorageFill
     contents:
       - id: StimpackMini
-        amount: 6
+        amount: 5 # Triad 5 < 6

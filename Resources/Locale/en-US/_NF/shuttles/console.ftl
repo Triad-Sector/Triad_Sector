@@ -35,3 +35,17 @@ shuttle-console-device-button-5 = Port 5
 shuttle-console-device-button-6 = Port 6
 shuttle-console-device-button-7 = Port 7
 shuttle-console-device-button-8 = Port 8
+
+# Frontier - Service Flags
+shuttle-console-service-flags = Advertise Features
+shuttle-console-service-flag-Services-label = Services
+shuttle-console-service-flag-Trade-label = Shopping
+shuttle-console-service-flag-Social-label = Social
+
+shuttle-console-service-flag-Services-shortform = ♫
+shuttle-console-service-flag-Trade-shortform = $
+shuttle-console-service-flag-Social-shortform = ☺
+
+shuttle-console-service-flag-Services-description = Services (e.g. medical, dining, engineering) offered onboard.
+shuttle-console-service-flag-Trade-description = Goods sold onboard.
+shuttle-console-service-flag-Social-description = A social space to gather and hang out.

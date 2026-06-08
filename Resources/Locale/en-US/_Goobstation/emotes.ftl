@@ -7,12 +7,14 @@ chat-emote-msg-jump = jumps!
 chat-emote-name-trill = Trill
 chat-emote-name-warble = Warble
 chat-emote-name-wurble = Wurble
-chat-emote-name-mars = Mars
+# Triad: orphaned Goobstation key (no prototype references it); commented out, not deleted, so upstream merges surface it
+# chat-emote-name-mars = Mars
 chat-emote-name-bagawk = Bagawk
 
 # Message
 chat-emote-msg-trill = trills!
 chat-emote-msg-warble = warbles!
 chat-emote-msg-wurble = wurbles!
-chat-emote-msg-mars = mars.
+# Triad: orphaned Goobstation key (no prototype references it); commented out, not deleted, so upstream merges surface it
+# chat-emote-msg-mars = mars.
 chat-emote-msg-bagawk = bagawks!

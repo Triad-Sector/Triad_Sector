@@ -95,6 +95,17 @@
     Steel: 1000
     Plastic: 300
 
+# Triad: RPD port from funky-station — same cost as the RCD; the RPD reuses RCDAmmo cartridges.
+- type: latheRecipe
+  id: RPD
+  parent: NFBaseToolsRecipe
+  result: RPDEmpty
+  completetime: 4
+  materials:
+    Steel: 1000
+    Plastic: 300
+# End Triad
+
 - type: latheRecipe
   id: RCDAmmo
   parent: NFBaseToolsRecipe

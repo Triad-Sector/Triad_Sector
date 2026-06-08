@@ -14,7 +14,7 @@
   id: Whirr # uncategorized as it is generic - Mono, youre an idiot.
   name: chat-emote-name-whirr
   category: Vocal
-  chatMessages: [ whirrs ]
+  chatMessages: ["chat-emote-msg-whirr"] # Triad: was literal `whirrs`
   whitelist: # Mono - IPC's, borgs, protogens
     components:
     - Silicon
@@ -26,7 +26,7 @@
   id: Boop
   name: chat-emote-name-boop
   category: Vocal
-  chatMessages: [ boops. ]
+  chatMessages: ["chat-emote-msg-boop"] # Triad: was literal `boops.`
   whitelist:
     components:
     - Silicon
