@@ -56,4 +56,37 @@ public sealed class RPDDeconstructTargetTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task RpdAdmitsItsWhitelistForDeconstruct()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var mapMan = server.ResolveDependency<IMapManager>();
+        var mapSys = entMan.System<SharedMapSystem>();
+
+        await server.WaitAssertion(() =>
+        {
+            mapSys.CreateMap(out var mapId);
+            var grid = mapMan.CreateGridEntity(mapId);
+            mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
+            var pipe = entMan.SpawnEntity("GasPipeStraight", grid.Owner.ToCoordinates(0, 0));
+            var rpdTool = entMan.SpawnEntity("RPD", grid.Owner.ToCoordinates(0, 0));
+            var user = entMan.SpawnEntity(null, grid.Owner.ToCoordinates(0, 0));
+
+            // The RPD admits a pipe (rpd: true, deconstructable: false) without RCD knowing what an RPD is.
+            var a1 = new RCDDeconstructAttemptEvent(pipe, user, false);
+            entMan.EventBus.RaiseLocalEvent(rpdTool, ref a1);
+            Assert.That(a1.Admitted, Is.True, "RPD should admit an rpd-deconstructable pipe");
+            Assert.That(a1.Cancelled, Is.False);
+
+            // The RPD refuses a tile (null target).
+            var a2 = new RCDDeconstructAttemptEvent(null, user, false);
+            entMan.EventBus.RaiseLocalEvent(rpdTool, ref a2);
+            Assert.That(a2.Cancelled, Is.True, "RPD should refuse a null (tile) target");
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
