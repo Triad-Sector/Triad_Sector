@@ -14,7 +14,7 @@
   loadouts:
   - SecurityGuardDrozdLoadout
   - SecurityGuardAkLoadout
-  - SecurityGuardLecterLoadout
+  - TdfLecterLoadout # Triad
   - SecurityGuardVulcanLoadout
   - SecurityGuardVectorLoadout
   - SecurityGuardKammererLoadout
