@@ -1,6 +1,6 @@
 - type: construction
-  name: handrail
   id: Handrail
+  name: handrail
   graph: TriadSeat
   startNode: start
   targetNode: handrail

@@ -1,7 +1,7 @@
 - type: entity
-  name: handrail
-  id: Handrail
   parent: ChairBase
+  id: Handrail
+  name: handrail
   components:
   - type: Sprite
     sprite: _Triad/Structure/Furniture/chairs.rsi
