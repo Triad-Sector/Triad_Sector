@@ -23,7 +23,7 @@ frontier-lobby-exped-description = This is base camp for mercenaries and alike. 
    - Socialize with other mercenaries - or not.
 
 frontier-lobby-medical-subtext = The medical dispatch hub and search and rescue center.
-frontier-lobby-medical-description = TSF civilian medical dispatch hub. Here you can:
+frontier-lobby-medical-description = The civilian medical dispatch hub, operated by the Triad Frontier Association. Here you can:
    - Start or find a medical response crew
    - Socialize with other medics
    - Purchase medical specialist ships
