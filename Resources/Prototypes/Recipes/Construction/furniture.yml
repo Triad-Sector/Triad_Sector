@@ -153,6 +153,24 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: handrail
+  id: Handrail
+  graph: Seat
+  startNode: start
+  targetNode: handrail
+  category: construction-category-furniture
+  description: For holding onto.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: handrail
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+
+- type: construction
   name: meat chair
   id: ChairMeat
   graph: Seat
@@ -732,7 +750,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsBlack
   name: black curtains
@@ -762,7 +780,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsCyan
   name: cyan curtains
@@ -777,7 +795,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsGreen
   name: green curtains
@@ -792,7 +810,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsOrange
   name: orange curtains
@@ -807,7 +825,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsPink
   name: pink curtains
@@ -822,7 +840,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsPurple
   name: purple curtains
@@ -837,7 +855,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-    
+
 - type: construction
   id: CurtainsRed
   name: red curtains

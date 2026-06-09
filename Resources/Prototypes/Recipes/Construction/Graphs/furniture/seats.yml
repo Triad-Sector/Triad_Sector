@@ -51,6 +51,11 @@
             - material: WoodPlank
               amount: 3
               doAfter: 1
+        - to: handrail
+          steps:
+            - material: MetalRod
+              amount: 2
+              doAfter: 1
         - to: chairMeat
           steps:
             - material: MeatSheets
@@ -247,6 +252,16 @@
             - material: FloorCarpetWhite
               amount: 1
     # End Frontier
+    - node: handrail
+      entity: Handrail
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+          steps:
+            - tool: Screwing
+              doAfter: 1
 
     - node: chairMeat
       entity: ChairMeat
