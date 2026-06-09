@@ -8,8 +8,8 @@
     sprite: Mobs/Species/Slime/organs.rsi
     state: brain-slime
   - type: Stomach
+    #Triad
     specialDigestible:
-      #Triad
       tags:
        - ClothMade
        - Paper
@@ -17,15 +17,13 @@
        - Trash
       components:
       - MothFood
-      #End Triad
+    #End Triad
   - type: Organ
     slotId: core
   - type: Brain
   - type: Metabolizer
     maxReagents: 6
-    #Triad
-    metabolizerTypes: [ Slime, Animal, Goblin, Moth, Vox ]
-    #End Triad
+    metabolizerTypes: [ Slime, Animal, Goblin, Moth, Vox ] #Triad
     removeEmpty: true
     groups:
     - id: Food
