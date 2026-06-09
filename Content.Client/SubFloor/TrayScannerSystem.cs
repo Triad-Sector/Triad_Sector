@@ -1,6 +1,7 @@
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.SubFloor;
+using Content.Shared.Whitelist;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -20,6 +21,10 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TrayScanRevealSystem _trayScanReveal = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Triad: reveal-filter check.
+
+    // Triad: reused each Update so the per-frame reveal-filter pass doesn't allocate a list.
+    private readonly List<EntityWhitelist> _activeWhitelists = new();
 
     private const string TRayAnimationKey = "trays";
     private const double AnimationLength = 0.3;
@@ -50,6 +55,11 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
         // API is extremely skrungly. If this ever shows up on dottrace ping me and laugh.
         var canSee = false;
 
+        // Triad: gather active scanners' reveal whitelists. A scanner with no whitelist reveals everything
+        // (anyUnfiltered), preserving the stock t-ray; otherwise only entities a whitelist admits are revealed.
+        _activeWhitelists.Clear();
+        var anyUnfiltered = false;
+
         // TODO: Common iterator for both systems.
         if (_inventory.TryGetContainerSlotEnumerator(player.Value, out var enumerator))
         {
@@ -62,6 +72,7 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
 
                     canSee = true;
                     range = MathF.Max(range, sneakScanner.Range);
+                    CollectRevealFilter(sneakScanner, ref anyUnfiltered); // Triad
                 }
             }
         }
@@ -73,6 +84,7 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
 
             range = MathF.Max(heldScanner.Range, range);
             canSee = true;
+            CollectRevealFilter(heldScanner, ref anyUnfiltered); // Triad
         }
 
         inRange = new HashSet<Entity<SubFloorHideComponent>>();
@@ -80,6 +92,12 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
         if (canSee)
         {
             _lookup.GetEntitiesInRange(playerMap, playerPos, range, inRange, flags: Flags);
+
+            // Triad: drop entities no active whitelist admits, unless some scanner reveals everything. Filtering the
+            // set here means the hide pass below also un-reveals anything that's now filtered out.
+            if (!anyUnfiltered)
+                inRange.RemoveWhere(e => !MatchesActiveWhitelist(e.Owner));
+            // End Triad
 
             foreach (var (uid, comp) in inRange)
             {
@@ -169,5 +187,26 @@ public sealed class TrayScannerSystem : SharedTrayScannerSystem
     private void SetRevealed(EntityUid uid, bool value)
     {
         _appearance.SetData(uid, SubFloorVisuals.ScannerRevealed, value);
+    }
+
+    // Triad: record a scanner's reveal filter for this Update pass. No whitelist means "reveal everything".
+    private void CollectRevealFilter(TrayScannerComponent scanner, ref bool anyUnfiltered)
+    {
+        if (scanner.RevealWhitelist is { } whitelist)
+            _activeWhitelists.Add(whitelist);
+        else
+            anyUnfiltered = true;
+    }
+
+    // Triad: true when any active scanner's reveal whitelist admits the entity.
+    private bool MatchesActiveWhitelist(EntityUid uid)
+    {
+        foreach (var whitelist in _activeWhitelists)
+        {
+            if (_whitelist.IsValid(whitelist, uid))
+                return true;
+        }
+
+        return false;
     }
 }

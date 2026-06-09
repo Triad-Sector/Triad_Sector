@@ -35,6 +35,7 @@
   - type: Sprite
     scale: 0.9, 0.9
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -67,6 +68,7 @@
     - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
@@ -179,6 +181,7 @@
   - type: Sprite
     scale: 0.9, 0.9
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -206,6 +209,7 @@
     - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
