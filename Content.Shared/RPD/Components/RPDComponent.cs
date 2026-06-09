@@ -23,12 +23,6 @@ public sealed partial class RPDComponent : Component
     public string PipeColor { get; set; } = RPDPalette.DefaultKey;
 
     /// <summary>
-    /// Player eye rotation as of the last <c>RPDEyeRotationEvent</c>. Server-only ephemeral state — clients send
-    /// it up but the server doesn't echo it back. Not networked.
-    /// </summary>
-    public float? LastKnownEyeRotation { get; set; } = null;
-
-    /// <summary>
     /// Pipe layer chosen at the last <see cref="Robust.Shared.GameObjects.AfterInteractEvent"/>. Per-entity so
     /// concurrent users with their own RPDs don't trample each other's selection between click and do-after
     /// completion. Server-only state.
