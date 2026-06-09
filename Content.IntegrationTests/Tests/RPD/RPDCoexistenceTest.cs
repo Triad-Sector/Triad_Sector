@@ -51,4 +51,40 @@ public sealed class RPDCoexistenceTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task ScrewdriverdLayerIsRespected()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var mapMan = server.ResolveDependency<IMapManager>();
+        var mapSys = entMan.System<SharedMapSystem>();
+        var layers = entMan.System<AtmosPipeLayersSystem>();
+        var overlap = entMan.System<PipeRestrictOverlapSystem>();
+
+        await server.WaitAssertion(() =>
+        {
+            mapSys.CreateMap(out var mapId);
+            var grid = mapMan.CreateGridEntity(mapId);
+            mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
+            var pipe = entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // Primary
+
+            // Move the existing pipe to Secondary via the layer system (proto stays GasPipeStraight).
+            var pipeLayers = entMan.GetComponent<AtmosPipeLayersComponent>(pipe);
+            layers.SetPipeLayer((pipe, pipeLayers), AtmosPipeLayer.Secondary);
+
+            // A new Secondary now conflicts (live layer match), even though protos differ.
+            Assert.That(
+                overlap.WouldPlacementOverlap((grid.Owner, grid.Comp), new Vector2i(0, 0), Straight, Angle.Zero, AtmosPipeLayer.Secondary),
+                Is.True, "placement must use the existing pipe's live layer, not its prototype layer");
+
+            // Primary is now free.
+            Assert.That(
+                overlap.WouldPlacementOverlap((grid.Owner, grid.Comp), new Vector2i(0, 0), Straight, Angle.Zero, AtmosPipeLayer.Primary),
+                Is.False, "Primary should be free after the existing pipe moved to Secondary");
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
