@@ -330,7 +330,7 @@
 - type: entity
   abstract: true
   id: StorageFillEVASuitNfsd
-  description: Contains a standard issue TSFMC EVA kit.
+  description: Contains a standard issue SD EVA kit.
   components:
   - type: StorageFill
     contents:
