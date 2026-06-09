@@ -135,4 +135,30 @@ public struct RCDDeconstructTargetResolveEvent
         Target = target;
     }
 }
+
+/// <summary>
+/// Raised during <c>ConstructObject</c> validation so a sibling system can veto the placement with logic RCD
+/// does not own (e.g. RPD pipe-layer conflict). Setting <c>Cancelled = true</c> blocks the placement; the handler
+/// owns any user-facing popup. Plain RCD has no handler, so the placement proceeds untouched.
+/// </summary>
+[ByRefEvent]
+public struct RCDConstructionAttemptEvent
+{
+    public readonly MapGridData MapGridData;
+    public readonly RCDPrototype Recipe;
+    public readonly Direction Direction;
+    public readonly EntityUid User;
+    public readonly bool ShowPopups;
+    public bool Cancelled;
+
+    public RCDConstructionAttemptEvent(MapGridData mapGridData, RCDPrototype recipe, Direction direction, EntityUid user, bool showPopups)
+    {
+        MapGridData = mapGridData;
+        Recipe = recipe;
+        Direction = direction;
+        User = user;
+        ShowPopups = showPopups;
+        Cancelled = false;
+    }
+}
 // End Triad
