@@ -1,5 +1,6 @@
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.Components; // Triad
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
@@ -431,7 +432,7 @@ public class RCDSystem : EntitySystem
         return false;
     }
 
-    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
+    public bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
         Direction? tilePlacementDirection = null)
     {
         var prototype = _protoManager.Index(component.ProtoId);
@@ -498,11 +499,20 @@ public class RCDSystem : EntitySystem
         _intersectingEntities.Clear();
         _lookup.GetLocalEntitiesIntersecting(mapGridData.GridUid, mapGridData.Position, _intersectingEntities, -0.05f, LookupFlags.Uncontained);
 
+        // Triad: layer-capable pipe recipes coexist across layers, so the base-proto identity guard must not reject
+        // them. The layer-aware verdict comes from RCDConstructionAttemptEvent below (RPD) and the PipeRestrictOverlap
+        // backstop. Knowable from the recipe + base proto alone, with no reference to RPDComponent.
+        var layerCapable = !prototype.NoLayers
+            && prototype.Prototype != null
+            && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
+            && baseProto.TryGetComponent<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+        // End Triad
+
         foreach (var ent in _intersectingEntities)
         {
             // space-wizards/space-station-14#42556 — block spamming the same entity on one tile (e.g. lights);
             // AllowMultiDirection permits one per cardinal direction (directional windows, diagonals, etc.).
-            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            if (!layerCapable && prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype) // Triad: skip identity guard for layer-capable pipes
             {
                 var isIdentical = true;
                 if (prototype.AllowMultiDirection)
@@ -553,6 +563,14 @@ public class RCDSystem : EntitySystem
                 }
             }
         }
+
+        // Triad: let a sibling system (RPD) apply layer-aware conflict rules RCD does not own. Plain RCD has no
+        // handler, so this is a no-op for non-RPD tools.
+        var constructAttempt = new RCDConstructionAttemptEvent(mapGridData, prototype, tilePlacementDirection ?? component.ConstructionDirection, user, popMsgs);
+        RaiseLocalEvent(uid, ref constructAttempt);
+        if (constructAttempt.Cancelled)
+            return false;
+        // End Triad
 
         return true;
     }
