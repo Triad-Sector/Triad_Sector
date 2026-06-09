@@ -50,18 +50,12 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
     private const float SearchBoxSize = 2f;
     private const float PlaceColorBaseAlpha = 0.5f;
-    private const float GuideRadius = 0.1f;
-
-    // 7 px from tile center on a 32 px tile — leaves room for three guide circles without overlapping the
-    // central one.
-    private const float GuideOffsetInTileUnits = 7f / 32f;
 
     // Per-instance (not static) so a tool swap doesn't leave stale layer/rotation state behind. A new placement
     // session starts at Primary with no eye rotation cached, forcing the first send.
     private EntityCoordinates _mouseCoordsRaw = default;
     private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
     private AtmosPipeLayer? _lastSentLayer = null;
-    private readonly Color _guideColor = new(0, 0, 0.5785f);
 
     public AlignRPDAtmosPipeLayers(PlacementManager pMan) : base(pMan)
     {
@@ -89,18 +83,10 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
         if (pManager.PlacementType == PlacementTypes.None)
         {
-            // Draw three guide dots: center (Primary), and two flanking dots along the camera-relative cardinal
-            // axis (Secondary on the NE/E side, Tertiary on SW/W). The flip via `multi` keeps the guides on a
-            // consistent screen-relative axis as the grid rotates.
+            // Three guide dots showing the cursor-quadrant layer aim; see RPDLayerGuide.
             var gridRotation = _transformSystem.GetWorldRotation(gridUid.Value);
             var worldPosition = _mapSystem.LocalToWorld(gridUid.Value, grid, MouseCoords.Position);
-            var direction = (_eyeManager.CurrentEye.Rotation + gridRotation + Math.PI / 2).GetCardinalDir();
-            var multi = (direction == Direction.North || direction == Direction.South) ? -1f : 1f;
-            var offset = gridRotation.RotateVec(new Vector2(multi * GuideOffsetInTileUnits, GuideOffsetInTileUnits));
-
-            args.WorldHandle.DrawCircle(worldPosition, GuideRadius, _guideColor);
-            args.WorldHandle.DrawCircle(worldPosition + offset, GuideRadius, _guideColor);
-            args.WorldHandle.DrawCircle(worldPosition - offset, GuideRadius, _guideColor);
+            RPDLayerGuide.Draw(args.WorldHandle, worldPosition, gridRotation, _eyeManager.CurrentEye.Rotation);
         }
 
         base.Render(args);
