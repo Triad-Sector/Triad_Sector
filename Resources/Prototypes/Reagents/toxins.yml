@@ -448,7 +448,7 @@
         - !type:OrganType
           type: Slime
           shouldHave: false
-          #End Triad
+        #End Triad
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
         - !type:OrganType # Triad
@@ -596,11 +596,11 @@
         conditions:
         - !type:ReagentThreshold
           min: 1
-          #Triad
+        #Triad
         - !type:OrganType
           type: Slime
           shouldHave: false
-          #End Triad
+        #End Triad
         - !type:OrganType
           type: Animal
         - !type:OrganType # Triad
