@@ -35,12 +35,13 @@
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
     - id: ClothingOuterEVASuitSr # Triad | TODO: Actual hardsuit for the overseer
-    - id: TriadTempPaperNoteSr # Triad
+    - id: PaperWrittenNoticeSr # Triad
     - id: ClothingMaskBreath
     - id: JetpackMiniFilled
 
 - type: entity
-  id: TriadTempPaperNoteSr # delete when overseer gets hardsuit
+  parent: Paper
+  id: PaperWrittenNoticeSr # delete when overseer gets hardsuit
   categories: [ HideSpawnMenu ]
   components:
   - type: Paper
