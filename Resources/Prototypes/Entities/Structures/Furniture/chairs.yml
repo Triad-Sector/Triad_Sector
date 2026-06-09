@@ -127,22 +127,6 @@
     state: chair-greyscale
 
 - type: entity
-  name: handrail
-  id: Handrail
-  parent: ChairBase
-  components:
-  - type: Sprite
-    state: handrail
-  - type: Construction
-    graph: Seat
-    node: handrail
-  - type: Strap
-    position: Stand
-    buckleOffset: "0, 0.25"
-  - type: Anchorable
-    flags: Unanchorable # Looks awful dragged around, just deconstruct
-
-- type: entity
   name: stool
   id: Stool
   parent: UnanchoredChairBase

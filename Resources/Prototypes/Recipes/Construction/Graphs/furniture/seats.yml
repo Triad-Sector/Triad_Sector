@@ -252,6 +252,8 @@
             - material: FloorCarpetWhite
               amount: 1
     # End Frontier
+
+    # Triad
     - node: handrail
       entity: Handrail
       edges:
@@ -262,6 +264,7 @@
           steps:
             - tool: Screwing
               doAfter: 1
+    #Triad end
 
     - node: chairMeat
       entity: ChairMeat

@@ -1,0 +1,16 @@
+- type: entity
+  name: handrail
+  id: Handrail
+  parent: ChairBase
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Furniture/chairs.rsi
+    state: handrail
+  - type: Construction
+    graph: Seat
+    node: handrail
+  - type: Strap
+    position: Stand
+    buckleOffset: "0, 0.25"
+  - type: Anchorable #looks really bad dragged around
+    flags: Anchorable

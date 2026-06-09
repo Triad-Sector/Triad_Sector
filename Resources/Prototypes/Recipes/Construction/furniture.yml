@@ -153,24 +153,6 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: handrail
-  id: Handrail
-  graph: Seat
-  startNode: start
-  targetNode: handrail
-  category: construction-category-furniture
-  description: For holding onto.
-  icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: handrail
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-
-- type: construction
   name: meat chair
   id: ChairMeat
   graph: Seat
