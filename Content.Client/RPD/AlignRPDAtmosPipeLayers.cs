@@ -60,7 +60,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
     // session starts at Primary with no eye rotation cached, forcing the first send.
     private EntityCoordinates _mouseCoordsRaw = default;
     private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
-    private float? _currentEyeRotation = null;
+    private AtmosPipeLayer? _lastSentLayer = null;
     private readonly Color _guideColor = new(0, 0, 0.5785f);
 
     public AlignRPDAtmosPipeLayers(PlacementManager pMan) : base(pMan)
@@ -144,23 +144,23 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
         {
             if (newLayer != _currentLayer)
                 _currentLayer = newLayer;
-            UpdateEyeRotation(heldEntity, _eyeManager.CurrentEye.Rotation);
+            SendLayer(heldEntity);
         }
 
         UpdatePlacer(_currentLayer);
     }
 
     /// <summary>
-    /// Sends eye rotation to the server only when it changes. Because <see cref="_currentEyeRotation"/> is an
-    /// instance field initialized to <c>null</c>, the first call in a new placement session always sends — fixing
-    /// the stale-eye-rotation-after-tool-swap window the static version had.
+    /// Sends the cursor-aimed pipe layer to the server only when it changes. The layer is exactly what the ghost
+    /// displays, so the commit lands on the layer the operator sees. Instance field initialized to <c>null</c>
+    /// forces the first send in a new placement session, fixing the stale-after-tool-swap window the old version had.
     /// </summary>
-    private void UpdateEyeRotation(EntityUid heldEntity, Angle eyeRotation)
+    private void SendLayer(EntityUid heldEntity)
     {
-        if (_currentEyeRotation == eyeRotation.Theta)
+        if (_lastSentLayer == _currentLayer)
             return;
-        _currentEyeRotation = (float) eyeRotation.Theta;
-        _entityNetwork.SendSystemNetworkMessage(new RPDEyeRotationEvent(_entityManager.GetNetEntity(heldEntity), _currentEyeRotation));
+        _lastSentLayer = _currentLayer;
+        _entityNetwork.SendSystemNetworkMessage(new RPDLayerSelectEvent(_entityManager.GetNetEntity(heldEntity), _currentLayer));
     }
 
     private void UpdatePlacer(AtmosPipeLayer layer)
