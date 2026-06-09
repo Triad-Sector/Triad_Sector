@@ -44,6 +44,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Paper
+    stampState: paper_stamp-centcom
+    stampedBy:
+    - stampedColor: "#126e0a"
+      stampedName: TFA-HighComm Quartermaster
+    - stampedColor: '#333333FF'
+      stampedName: Helios Trex
+      stampType: Signature
     content: |2
       [head=3]Official Notice[/head]
       Hello, overseer of Venmar Station.
@@ -52,7 +59,7 @@
       A new hardsuit should be issued to you within due time.
 
       Sincerely,
-            Helios Trex, TFA-HighComm Quartermaster, Triad Frontier Association
+            Helios Trex, HighComm Quartermaster, Triad Frontier Association
 
 - type: entity
   abstract: true
