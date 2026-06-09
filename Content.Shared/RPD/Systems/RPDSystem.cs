@@ -56,8 +56,14 @@ public sealed class RPDSystem : EntitySystem
             return;
         }
 
-        // RCDSystem already handles the "target lacks RCDDeconstructable" case; we only add the RPD-specific opt-in gate.
-        if (TryComp<RCDDeconstructableComponent>(target, out var decon) && !decon.RpdDeconstructable)
+        // No RCDDeconstructable at all -> leave it to RCD's own whitelist rejection.
+        if (!TryComp<RCDDeconstructableComponent>(target, out var decon))
+            return;
+
+        // The RPD admits its own whitelist; RCD doesn't need to know what an RPD is.
+        if (decon.RpdDeconstructable)
+            args.Admitted = true;
+        else
         {
             if (args.ShowPopups)
                 _popup.PopupClient(Loc.GetString("rpd-component-deconstruct-target-invalid"), ent, args.User);
@@ -149,13 +155,18 @@ public sealed class RPDSystem : EntitySystem
     /// <summary>
     /// Resolves the covered-pipe deconstruct target the direct click couldn't reach (the pipe sits under a floor tile,
     /// hidden and non-interactable). Picks the RPD-deconstructable entity anchored on the tile whose pipe layer matches
-    /// the operator's cursor-aimed layer (<see cref="RPDComponent.CurrentLayer"/>, set in <see cref="OnAfterInteract"/>
-    /// from the streamed eye rotation), so deconstruct mirrors construct: aim at a quadrant, pull that layer.
+    /// the operator's cursor-aimed layer (<see cref="RPDComponent.CurrentLayer"/>, pushed by the client), so
+    /// deconstruct mirrors construct: aim at a quadrant, pull that layer.
     /// Server-authoritative — CurrentLayer is server-only state and the do-after that does the work only starts
     /// server-side, so the client's placeholder pick (default Primary) is cosmetic and never desyncs the result.
     /// </summary>
     private void OnDeconstructTargetResolve(Entity<RPDComponent> ent, ref RCDDeconstructTargetResolveEvent args)
     {
+        // The direct click already hit an RPD-deconstructable target (a visible, uncovered pipe) -> use it; only
+        // look past the target when the click landed on a tile or a non-pipe (firelock, window) covering the pipe.
+        if (args.Target is { } t && IsRpdDeconstructable(t))
+            return;
+
         args.Target = FindSubfloorRpdDeconstructable(args.MapGridData, ent.Comp.CurrentLayer) ?? args.Target;
     }
 

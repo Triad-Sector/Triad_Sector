@@ -13,7 +13,6 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
-using Content.Shared.RPD.Components; // Triad
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
@@ -192,13 +191,10 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        // Triad: a pipe under a floor tile is invisible and non-interactable (SubFloorHideComponent), so the click
-        // resolves either no target (bare tile) or a visible non-pipe entity sharing the tile, e.g. a firelock or
-        // window. In RPD Deconstruct mode, whenever the resolved target isn't itself RPD-deconstructable, hand off
-        // to RPDSystem via the resolve event to look past it for an RPD-deconstructable entity anchored on the tile,
-        // the one on the operator's aimed pipe layer, so the RPD can chew covered pipes. A plain RCD has no handler so
-        // its target is left untouched; a null result falls back to the original click target.
-        if (prototype.Mode == RcdMode.Deconstruct && HasComp<RPDComponent>(uid) && !IsRpdDeconstructable(target))
+        // Triad: in Deconstruct mode, hand off to a sibling (RPDSystem) to optionally redirect the target, e.g. to
+        // a covered pipe under a floor tile on the operator's aimed layer. Plain RCD has no handler, so its target
+        // is left untouched. RPDSystem owns the "already deconstructable, don't redirect" decision.
+        if (prototype.Mode == RcdMode.Deconstruct)
         {
             var resolve = new RCDDeconstructTargetResolveEvent(mapGridData.Value, target);
             RaiseLocalEvent(uid, ref resolve);
@@ -621,12 +617,10 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // Triad: RPD tools share this gate; admit a target if either the generic Deconstructable flag is on,
-            // or the tool is an RPD and the target opted into RpdDeconstructable. RPDSystem's earlier
-            // RCDDeconstructAttemptEvent handler has already enforced the RPD-only whitelist semantics.
-            var hasRpd = HasComp<RPDComponent>(uid);
+            // Triad: admit a target if the generic Deconstructable flag is on, or a sibling handler admitted it
+            // earlier via RCDDeconstructAttemptEvent (the RPD admits its own whitelist). RCD stays RPD-agnostic.
             if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible)
-                || !(deconstructible.Deconstructable || (hasRpd && deconstructible.RpdDeconstructable)))
+                || !(deconstructible.Deconstructable || attempt.Admitted))
             // End Triad
             {
                 if (popMsgs)
@@ -792,12 +786,6 @@ public class RCDSystem : EntitySystem
 
         return boundingPolygon.ComputeAABB(boundingTransform, 0).Intersects(fixture.Shape.ComputeAABB(entXform, 0));
     }
-
-    // Triad: true only when the entity opts into RPD deconstruction (RCDDeconstructableComponent.RpdDeconstructable).
-    // Null-safe so the OnAfterInteract gate can test the raw click target directly.
-    private bool IsRpdDeconstructable(EntityUid? target)
-        => TryComp<RCDDeconstructableComponent>(target, out var decon) && decon.RpdDeconstructable;
-    // End Triad
 
     #endregion
 }
