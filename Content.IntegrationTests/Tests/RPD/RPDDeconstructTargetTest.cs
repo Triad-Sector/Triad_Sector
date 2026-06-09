@@ -89,4 +89,37 @@ public sealed class RPDDeconstructTargetTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task DeconstructAimWinsOverDirectlyClickedLayeredPipe()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var mapMan = server.ResolveDependency<IMapManager>();
+        var mapSys = entMan.System<SharedMapSystem>();
+        var rcd = entMan.System<Content.Shared.RCD.Systems.RCDSystem>();
+        var rpd = entMan.System<RPDSystem>();
+
+        await server.WaitAssertion(() =>
+        {
+            mapSys.CreateMap(out var mapId);
+            var grid = mapMan.CreateGridEntity(mapId);
+            mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
+            var primary = entMan.SpawnEntity("GasPipeStraight", grid.Owner.ToCoordinates(0, 0));
+            var secondary = entMan.SpawnEntity("GasPipeStraightAlt1", grid.Owner.ToCoordinates(0, 0));
+            var rpdTool = entMan.SpawnEntity("RPD", grid.Owner.ToCoordinates(0, 0));
+            var rpdComp = entMan.GetComponent<RPDComponent>(rpdTool);
+
+            Assert.That(rcd.TryGetMapGridData(grid.Owner.ToCoordinates(0, 0), rpdTool, out var data), Is.True);
+
+            // The cursor grabbed the Primary pipe directly, but the operator aims Secondary -> aim wins.
+            rpd.SetLayer((rpdTool, rpdComp), AtmosPipeLayer.Secondary);
+            var ev = new RCDDeconstructTargetResolveEvent(data!.Value, primary);
+            entMan.EventBus.RaiseLocalEvent(rpdTool, ref ev);
+            Assert.That(ev.Target, Is.EqualTo(secondary), "aim should override a directly-clicked layered pipe");
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }

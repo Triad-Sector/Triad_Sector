@@ -162,9 +162,10 @@ public sealed class RPDSystem : EntitySystem
     /// </summary>
     private void OnDeconstructTargetResolve(Entity<RPDComponent> ent, ref RCDDeconstructTargetResolveEvent args)
     {
-        // The direct click already hit an RPD-deconstructable target (a visible, uncovered pipe) -> use it; only
-        // look past the target when the click landed on a tile or a non-pipe (firelock, window) covering the pipe.
-        if (args.Target is { } t && IsRpdDeconstructable(t))
+        // A directly-clicked non-layered RPD-deconstructable device (air sensor/alarm) is taken as-is. For layered
+        // pipes the operator's aimed quadrant wins, so stacked layers on one tile resolve to the pipe under the aim,
+        // not whichever one the cursor grabbed.
+        if (args.Target is { } t && IsRpdDeconstructable(t) && !HasComp<AtmosPipeLayersComponent>(t))
             return;
 
         args.Target = FindSubfloorRpdDeconstructable(args.MapGridData, ent.Comp.CurrentLayer) ?? args.Target;
