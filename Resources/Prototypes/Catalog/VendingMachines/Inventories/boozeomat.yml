@@ -48,6 +48,10 @@
     DrinkSakeBottleFull: 3
     DrinkBeerCan: 5
     DrinkWineCan: 5
+    # Triad: stock ported mixer spirits so bartenders can make the _DV/_DEN cocktails
+    DrinkAngobittersBottleFull: 3
+    DrinkJaegermisterBottleFull: 5
+    # End Triad
   contrabandInventory:
     EthanolChemistryBottle: 3
     DrinkBottleOfNothingFull: 1
