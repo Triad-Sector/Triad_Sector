@@ -7,7 +7,7 @@
     sprite: _Triad/Structure/Furniture/chairs.rsi
     state: handrail
   - type: Construction
-    graph: Seat
+    graph: TriadSeat
     node: handrail
   - type: Strap
     position: Stand

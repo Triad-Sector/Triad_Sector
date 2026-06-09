@@ -1,7 +1,7 @@
 - type: construction
   name: handrail
   id: Handrail
-  graph: Seat
+  graph: TriadSeat
   startNode: start
   targetNode: handrail
   category: construction-category-furniture
