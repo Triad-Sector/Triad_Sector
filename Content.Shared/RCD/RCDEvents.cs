@@ -70,6 +70,11 @@ public struct RCDDeconstructAttemptEvent
     public readonly EntityUid User;
     public readonly bool ShowPopups;
     public bool Cancelled;
+    /// <summary>
+    /// Set by a sibling handler (RPD) to admit a target RCD would otherwise reject (e.g. an <c>rpd: true</c>,
+    /// <c>deconstructable: false</c> pipe), so RCDSystem doesn't need to know what an RPD is.
+    /// </summary>
+    public bool Admitted;
 
     public RCDDeconstructAttemptEvent(EntityUid? target, EntityUid user, bool showPopups)
     {
@@ -77,6 +82,7 @@ public struct RCDDeconstructAttemptEvent
         User = user;
         ShowPopups = showPopups;
         Cancelled = false;
+        Admitted = false;
     }
 }
 
