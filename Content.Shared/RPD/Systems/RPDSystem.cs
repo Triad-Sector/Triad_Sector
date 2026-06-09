@@ -48,6 +48,7 @@ public sealed class RPDSystem : EntitySystem
         SubscribeLocalEvent<RPDComponent, RPDColorChangeMessage>(OnColorChange);
 
         SubscribeNetworkEvent<RPDEyeRotationEvent>(OnEyeRotation);
+        SubscribeNetworkEvent<RPDLayerSelectEvent>(OnLayerSelect);
     }
 
     /// <summary>
@@ -185,6 +186,39 @@ public sealed class RPDSystem : EntitySystem
             return;
 
         rpd.LastKnownEyeRotation = ev.EyeRotation;
+    }
+
+    /// <summary>
+    /// Client streams its cursor-aimed pipe layer; stored per-RPD for spawn and deconstruct targeting. Validated
+    /// to the sender's active-hand RPD so a client can't set the layer on a tool it isn't holding.
+    /// </summary>
+    private void OnLayerSelect(RPDLayerSelectEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+            return;
+
+        if (!TryComp<RPDComponent>(uid, out var rpd))
+            return;
+
+        SetLayer((uid, rpd), ev.Layer);
+    }
+
+    /// <summary>
+    /// Sets the RPD's selected pipe layer. Clamps to a defined enum value so a malicious client can't store
+    /// garbage; an unsupported-but-valid layer (target has fewer layers) simply no-ops the alternative-prototype
+    /// lookup at spawn. Server-only ephemeral state, not networked.
+    /// </summary>
+    public void SetLayer(Entity<RPDComponent> ent, AtmosPipeLayer layer)
+    {
+        if (!Enum.IsDefined(layer))
+            return;
+
+        ent.Comp.CurrentLayer = layer;
     }
 
     /// <summary>
