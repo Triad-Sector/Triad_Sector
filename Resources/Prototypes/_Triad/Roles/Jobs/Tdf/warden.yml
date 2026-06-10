@@ -20,6 +20,7 @@
   accessGroups:
   - GeneralTdfAccessBrig
   access:
+  - Command
   - Armory
   - Medical
   - Chemistry
