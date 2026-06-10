@@ -420,11 +420,13 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 
             // Force drawing it at this point.
             // Mono
+            // Frontier: prepend the advertised-service flag tag (only when the label isn't hidden) so the map radar matches the nav radar and map list
+            var serviceFlagsPrefix = (!hideLabel && iffComp != null) ? _shuttles.GetServiceFlagsPrefix(iffComp.ServiceFlags) : string.Empty;
             var iffText = hideLabel ?
                 detectionLevel == DetectionLevel.PartialDetected ?
                     Loc.GetString($"shuttle-console-signature-infrared")
                     : _detection.HandleUnknownMassLabel(grid.Owner)
-                : _shuttles.GetIFFLabel(grid, self: true, component: iffComp);
+                : serviceFlagsPrefix + _shuttles.GetIFFLabel(grid, self: true, component: iffComp);
 
             if (string.IsNullOrEmpty(iffText))
                 continue;

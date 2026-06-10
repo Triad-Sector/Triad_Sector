@@ -15,6 +15,8 @@
 - type: speciesBaseSprites
   id: MobReptilianSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobReptilianHead
     Hair: MobHumanoidAnyMarking # Triad - Reptilian hair.
     Snout: MobHumanoidAnyMarking

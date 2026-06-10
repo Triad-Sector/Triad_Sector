@@ -1,3 +1,4 @@
+using Content.Shared.RCD.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -111,6 +112,27 @@ public struct RCDObjectSpawnedEvent
     {
         Spawned = spawned;
         Recipe = recipe;
+    }
+}
+
+/// <summary>
+/// Raised in RCD Deconstruct mode when the direct click didn't land on an RPD-deconstructable target — typically
+/// the pipe is hidden under a floor tile (<c>SubFloorHideComponent</c>), so the click resolved to bare tile or a
+/// tile-sharing structure. A handler (<c>RPDSystem</c>) may set <c>Target</c> to an RPD-deconstructable entity
+/// anchored on the tile, choosing the one on the operator's aimed pipe layer. Left null = no override, the original
+/// click target stands. No handler (plain RCD) leaves <c>Target</c> untouched. <c>MapGridData</c> is the clicked
+/// tile, for searching its anchored set.
+/// </summary>
+[ByRefEvent]
+public struct RCDDeconstructTargetResolveEvent
+{
+    public readonly MapGridData MapGridData;
+    public EntityUid? Target;
+
+    public RCDDeconstructTargetResolveEvent(MapGridData mapGridData, EntityUid? target)
+    {
+        MapGridData = mapGridData;
+        Target = target;
     }
 }
 // End Triad

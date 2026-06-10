@@ -88,7 +88,8 @@ public sealed class PacificationSystem : EntitySystem
             return;
 
         // If we would do zero damage, it should be fine.
-        if (args.Weapon != null && args.Weapon.Value.Comp.Damage.GetTotal() == FixedPoint2.Zero)
+        // Triad - allow weapons that heal to be used by pacifists
+        if (args.Weapon != null && args.Weapon.Value.Comp.Damage.GetTotal() <= FixedPoint2.Zero)
             return;
 
         if (PacifiedCanAttack(uid, args.Target.Value, out var reason))

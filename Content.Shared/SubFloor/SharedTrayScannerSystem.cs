@@ -90,6 +90,12 @@ public abstract class SharedTrayScannerSystem : EntitySystem
 
     private void OnTrayScannerActivate(EntityUid uid, TrayScannerComponent scanner, ActivateInWorldEvent args)
     {
+        // Triad: an always-on embedded scanner (e.g. the RPD's) must not intercept activate; that event opens the
+        // tool's own UI. Bail without consuming it so ActivatableUI still handles the activation.
+        if (!scanner.CanToggle)
+            return;
+        // End Triad
+
         if (args.Handled || !args.Complex)
             return;
 

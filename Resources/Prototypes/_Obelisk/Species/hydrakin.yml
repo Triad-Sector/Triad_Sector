@@ -23,6 +23,8 @@
 - type: speciesBaseSprites
   id: MobHydrakinSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobHydrakinHead
     Hair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking

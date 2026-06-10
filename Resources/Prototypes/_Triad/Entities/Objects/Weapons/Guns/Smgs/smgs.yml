@@ -1,0 +1,98 @@
+- type: entity
+  name: HZD Squire (9x19mm)
+  parent: [BaseWeaponSubMachineGun, BaseGunWieldable, BaseGunToggleable]
+  id: WeaponSubMachineGunSquire
+  description: A somewhat novel SMG design featuring a rare folding stock for stowage, near uncontrollable with its stock folded. Designed by HZD to fit the niche weapon requirements of combatants with strict storage capacity.
+  components:
+  - type: GunToggleableBonus
+    minAngle: -5
+    maxAngle: -16
+    bonusFireRate: 0
+    requiresToggle: false
+  - type: GunWieldBonus
+    minAngle: -2
+    maxAngle: -9
+  - type: Gun
+    minAngle: 10
+    maxAngle: 35
+    fireRate: 7.5
+    angleIncrease: 7
+    angleDecay: 17
+    selectedMode: FullAuto
+    soundGunshot:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/smg.ogg
+    availableModes:
+    - SemiAuto
+    - FullAuto
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire.rsi
+    layers:
+      - state: stock
+        map: ["enum.ToggleableVisuals.Layer"]
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: ItemToggleSize
+    activatedSize: Large
+    activatedShape:
+    - 0,0,3,1
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
+  - type: ItemToggle
+    activated: false
+    onUse: false
+    onActivate: false
+    onAltUse: true
+    altPriority: 1
+    verbToggleOff: fold-verb
+    verbToggleOn: unfold-verb
+    soundActivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+    soundDeactivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine9x19mmSubMachineGunFMJ
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/cm82_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/pistol_alt_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - Magazine9x19mmSubMachineGunFMJ
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge9x19mmFMJ
+        priority: 1
+        whitelist:
+          tags:
+            - Cartridge9x19mmFMJ
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+            True: { state: stock }
+            False: { state: stock-folded }
+  - type: StaticPrice
+    price: 500

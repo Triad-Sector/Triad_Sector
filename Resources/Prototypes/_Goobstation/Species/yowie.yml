@@ -20,6 +20,8 @@
 - type: speciesBaseSprites
   id: MobYowieSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobYowieHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking

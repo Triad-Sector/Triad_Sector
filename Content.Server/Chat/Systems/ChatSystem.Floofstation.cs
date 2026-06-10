@@ -72,7 +72,8 @@ public sealed partial class ChatSystem
                 continue;
 
             // Post-rebase, observers can't see subtle messages unless they are admins, and subtle respects LOS for non-observers
-            if (data.Observer && !CanObserverSeeSubtle(session) || data is { Observer: false, InLOS: false })
+            // Triad - removed CanObserverSeeSubtle. ALL ghosts should not be able to see subtle.
+            if (data.Observer || data is { Observer: false, InLOS: false })
                 continue;
 
             if (MessageRangeCheck(session, data, range) == MessageRangeCheckResult.Disallowed)

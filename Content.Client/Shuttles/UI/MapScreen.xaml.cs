@@ -393,9 +393,13 @@ public sealed partial class MapScreen : BoxContainer
                         : _detection.HandleUnknownMassLabel(grid.Owner)
                     : _entManager.GetComponent<MetaDataComponent>(grid.Owner).EntityName;
 
+                // Frontier: prepend the advertised-service flag tag (only when the label isn't hidden) so it survives truncation
+                var serviceFlagsPrefix = (!hideLabel && iffComp != null) ? _shuttles.GetServiceFlagsPrefix(iffComp.ServiceFlags) : string.Empty;
+
                 var gridObj = new GridMapObject()
                 {
-                    Name = name, // Mono
+                    Name = serviceFlagsPrefix + name, // Frontier service flags + Mono name
+                    ServiceFlags = iffComp?.ServiceFlags ?? ServiceFlags.None, // Frontier
                     Entity = grid.Owner,
                     HideButton = iffComp != null && (iffComp.Flags & IFFFlags.HideLabelAlways) != 0x0,
                 };
