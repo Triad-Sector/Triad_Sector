@@ -1,7 +1,7 @@
 - type: pointOfInterest
   id: TDFOutpost
   parent: [BasePOI, BaseRepairablePOI]
-  name: 'TDF Outpost'
+  name: 'Auric Outpost'
   minimumDistance: 4500
   maximumDistance: 5500
   spawnGamePreset: [ NFAdventure, NFPirate, MonoStandard, MonoRogueTSF, MonoTSFUSSP, MonoADS, MonoChimera, MonoMixed, MonoAllAtOnce ]
@@ -16,7 +16,7 @@
 
 - type: gameMap
   id: TDFOutpost
-  mapName: 'TDF Outpost'
+  mapName: 'Auric Outpost'
   mapPath: /Maps/_Triad/POI/tdfoutpost.yml
   minPlayers: 0
   randomRotation: false
@@ -28,7 +28,7 @@
         description: "Home of the Triad Defense Force, the last bastion of law and safety."
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'TDF Outpost'
+          mapNameTemplate: 'Auric Outpost'
         - type: ExtraStationInformation
           icon:
             sprite: _Triad/Structure/Decoration/banner.rsi
@@ -40,9 +40,9 @@
           availableJobs:
             TdfChiefEnforcer: [ 1, 1 ]
             TdfWarden: [1, 1 ]
-            TdfPatrolTeamLeader: [ 2, 2 ] # Mono
-            TdfMedic: [ 2, 2 ] # Mono
-            TdfEnforcer: [ 5, 5 ] # Mono
+            TdfPatrolTeamLeader: [ 2, 2 ]
+            TdfMedic: [ 2, 2 ]
+            TdfEnforcer: [ 5, 5 ]
             TdfCadet: [ 5, 5 ]
           tags:
           - TdfChiefEnforcer
