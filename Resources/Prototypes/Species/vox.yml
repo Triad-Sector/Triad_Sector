@@ -17,6 +17,8 @@
 - type: speciesBaseSprites
   id: MobVoxSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobVoxHead
     Snout: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking

@@ -79,7 +79,9 @@ public abstract class SharedLatheSystem : EntitySystem
             foreach (var (material, needed) in recipe.Materials)
             {
                 var adjustedAmount = AdjustMaterial(needed, recipe.MaterialDiscountScale, ent.Comp.FinalMaterialUseMultiplier);
-                currentMaterial[material] -= adjustedAmount * (batch.ItemsRequested - batch.ItemsPrinted);
+                // Triad: the lathe may have none of this material stored yet, so the key can be absent.
+                // Indexing a missing key threw KeyNotFoundException on every recipe queue (tens of thousands/day).
+                currentMaterial[material] = currentMaterial.GetValueOrDefault(material) - adjustedAmount * (batch.ItemsRequested - batch.ItemsPrinted);
             }
         }
         return currentMaterial;

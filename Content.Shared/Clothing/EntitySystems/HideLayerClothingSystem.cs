@@ -67,7 +67,9 @@ public sealed class HideLayerClothingSystem : EntitySystem
         if (!Resolve(clothing.Owner, ref clothing.Comp1, ref clothing.Comp2))
             return;
 
-        if (!Resolve(user.Owner, ref user.Comp))
+        // Triad: a non-humanoid wearer (e.g. a grid that ended up with an InventoryComponent) has no
+        // layers to hide; resolve quietly instead of logging a spurious "can't resolve" error on teardown.
+        if (!Resolve(user.Owner, ref user.Comp, logMissing: false))
             return;
 
         hideLayers &= IsEnabled(clothing!);

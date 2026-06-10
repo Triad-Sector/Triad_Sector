@@ -1,0 +1,26 @@
+- type: entity #for guns with a toggling mechanic
+  id: BaseGunToggleable
+  abstract: true
+  components:
+  - type: ItemToggle
+    activated: false
+    onUse: false
+    onActivate: false
+    onAltUse: false
+    toggleOnWielded: false
+    altPriority: 3
+    verbToggleOff: unfold-verb
+    verbToggleOn: fold-verb
+    soundActivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+    soundDeactivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+  - type: GunToggleableBonus
+    minAngle: 10
+    maxAngle: 15
+    bonusFireRate: 0
+    requiresToggle: false

@@ -12,6 +12,8 @@
 - type: speciesBaseSprites
   id: MobMonkeySprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Special: MobMonkeyAnyMarking
     Head: MobMonkeyHead
     HeadTop: MobMonkeyAnyMarking

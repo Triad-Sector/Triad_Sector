@@ -12,6 +12,8 @@
 - type: speciesBaseSprites
   id: MobProtogenSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobProtogenHead
     UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear.
     UndergarmentBottom: MobHumanoidAnyMarking # Triad - Underwear.

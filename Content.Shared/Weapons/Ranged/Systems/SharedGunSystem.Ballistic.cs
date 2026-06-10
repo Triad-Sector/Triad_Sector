@@ -292,6 +292,16 @@ public abstract partial class SharedGunSystem
             {
                 entity = component.Entities[^1];
 
+                // Triad: a deleted ammo entity can leave EntityUid.Invalid in the list; EnsureShootable
+                // then throws "Entity 0 is not valid" on AddComponent every auto-fire tick. Drop the dead
+                // ref and skip this shot instead of crashing.
+                if (!Exists(entity))
+                {
+                    component.Entities.RemoveAt(component.Entities.Count - 1);
+                    DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
+                    continue;
+                }
+
                 args.Ammo.Add((entity, EnsureShootable(entity)));
 
                 if (!component.AutoCycle) //  Goobstation - do not remove spent ammo from the gun it doesn't autocycle

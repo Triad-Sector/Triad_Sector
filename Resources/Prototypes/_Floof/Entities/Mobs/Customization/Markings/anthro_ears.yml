@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2025 BlitzTheSquishy
+# SPDX-FileCopyrightText: 2025 sleepyyapril
+#
+# SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
+
+#####    EARS    #####
+
+- type: marking
+  id: EarsRaccoon
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  colorLinks:
+    m_ears_raccoon_ADJ_primary: m_ears_raccoon_FRONT_primary
+    m_ears_raccoon_ADJ_secondary: m_ears_raccoon_FRONT_secondary
+    # Begin Den additions - reorganize skyrat textures
+  sprites:
+  - sprite: _Floof/Mobs/Customization/Skyratears/raccoon.rsi
+    state: m_ears_raccoon_ADJ_primary
+  - sprite: _Floof/Mobs/Customization/Skyratears/raccoon.rsi
+    state: m_ears_raccoon_ADJ_secondary
+  - sprite: _Floof/Mobs/Customization/Skyratears/raccoon.rsi
+    state: m_ears_raccoon_FRONT_primary
+  - sprite: _Floof/Mobs/Customization/Skyratears/raccoon.rsi
+    state: m_ears_raccoon_FRONT_secondary
+    # End Den additions
+
+- type: marking
+  id: EarsSquirrel
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  colorLinks:
+    m_ears_squirrel_ADJ_primary: m_ears_squirrel_FRONT_primary
+    m_ears_squirrel_ADJ_secondary: m_ears_squirrel_FRONT_secondary
+    # Begin Den additions - reorganize skyrat textures
+  sprites:
+  - sprite: _Floof/Mobs/Customization/Skyratears/squirrel.rsi
+    state: m_ears_squirrel_ADJ_primary
+  - sprite: _Floof/Mobs/Customization/Skyratears/squirrel.rsi
+    state: m_ears_squirrel_ADJ_secondary
+  - sprite: _Floof/Mobs/Customization/Skyratears/squirrel.rsi
+    state: m_ears_squirrel_FRONT_primary
+  - sprite: _Floof/Mobs/Customization/Skyratears/squirrel.rsi
+    state: m_ears_squirrel_FRONT_secondary
+    # End Den additions
