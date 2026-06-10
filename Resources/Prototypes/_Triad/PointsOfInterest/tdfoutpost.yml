@@ -9,7 +9,7 @@
   gridPath: /Maps/_Triad/POI/tdfoutpost.yml
   addComponents:
   - type: IFF
-    color: "#047abd"
+    color: "#FFD580"
     readOnly: true
   - type: SolarPoweredGrid
     doNotCull: true
