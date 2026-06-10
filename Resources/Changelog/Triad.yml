@@ -1381,3 +1381,12 @@ Entries:
   id: 2278
   time: '2026-06-09T00:46:13.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/195
+- author: RemervKeberb
+  changes:
+    - type: Add
+      message: >-
+        Added the handrail, a new constructible object. You can hold onto it to
+        prevent being knocked down in FTL, a stylish way to avoid FTL accidents!
+  id: 2279
+  time: '2026-06-10T02:22:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/198
