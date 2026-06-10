@@ -18,7 +18,7 @@
   - Maintenance
   - External # Frontier
   - Service
-  - Janitor
+  - Janitor # Triad
   - Frontier # Frontier
   special:
   - !type:AddImplantSpecial
