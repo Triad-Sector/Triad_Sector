@@ -1,0 +1,9 @@
+- type: loadout
+  id: ContractorSpecialGunSquire
+  name: HZD Squire gun case
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MonoCivVet
+  price: 35000
+  inhand:
+  - WeaponCaseSquireRegistered

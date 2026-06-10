@@ -14,3 +14,20 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: Handrail
+  name: handrail
+  graph: TriadSeat
+  startNode: start
+  targetNode: handrail
+  category: construction-category-furniture
+  description: For holding onto.
+  icon:
+    sprite: _Triad/Structure/Furniture/chairs.rsi
+    state: handrail
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

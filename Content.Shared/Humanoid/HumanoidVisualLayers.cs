@@ -19,6 +19,8 @@ namespace Content.Shared.Humanoid
         Snout,
         HeadSide, // side parts (i.e., frills)
         HeadTop,  // top parts (i.e., ears)
+        TailBehind, // DEN
+        TailOversuit, // DEN
         Eyes,
         RArm,
         LArm,
