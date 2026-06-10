@@ -12,8 +12,8 @@
   supervisors: job-supervisors-service
   accessGroups: # Frontier
   - GeneralAccess # Frontier
-  access: # Triad
-  - Service # Triad
+  # access: # Frontier
+  # - Service # Frontier
   # - Maintenance # Frontier
   # - Bar # Frontier
   # - Kitchen # Frontier
