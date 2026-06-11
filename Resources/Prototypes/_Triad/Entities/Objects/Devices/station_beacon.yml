@@ -1,0 +1,26 @@
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfChiefEnforcer
+  suffix: TDF Chief Enforcer
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-tdf-chief
+    color: "#57482b"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfWarden
+  suffix: TDF Warden
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-warden
+    color: "#a78b53"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfPatrolTeamLeader
+  suffix: TDF Patrol Team Leader
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-tdf-patrol-lead
+    color: "#FFD580"
