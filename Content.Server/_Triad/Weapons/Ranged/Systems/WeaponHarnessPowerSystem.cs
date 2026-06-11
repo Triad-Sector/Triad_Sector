@@ -257,7 +257,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
             if (playSound)
                 PlayHarnSound(harness.Comp.LinkSound, user);
 
-            if (showPopup)
+            if (showPopup && !string.IsNullOrEmpty(harness.Comp.LinkPopup))
                 _popup.PopupEntity(harness.Comp.LinkPopup, user, user, PopupType.Medium);
 
             harness.Comp.LinkSoundPlayed = true;

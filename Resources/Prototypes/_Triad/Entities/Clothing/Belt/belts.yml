@@ -150,6 +150,6 @@
       supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower
       depletedAlert: Mla79HarnessDepleted
-      linkPopup: GUN READY
+      linkPopup: ""
       magneticRetrievalEnabledPopup: MLA-79 magnetic retrieval enabled.
       magneticRetrievalDisabledPopup: MLA-79 magnetic retrieval disabled.
