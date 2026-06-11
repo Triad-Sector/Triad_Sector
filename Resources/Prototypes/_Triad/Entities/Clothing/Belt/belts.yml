@@ -142,9 +142,10 @@
     - type: Storage
       grid:
         - 0,0,5,1
-      whitelist:
-        tags:
-          - TriadHeavyWeapon
+      whitelist: null
+    - type: Tag
+      tags:
+        - TriadHeavyWeapon
     - type: WeapHarn
       supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower
