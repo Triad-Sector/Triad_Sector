@@ -32,3 +32,11 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-briefing
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconLockerRoom
+  suffix: Locker Room
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-locker-room
