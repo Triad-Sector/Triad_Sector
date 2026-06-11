@@ -37,6 +37,10 @@
       - type: NpcFactionMember
         factions:
         - TDF # Station guards were sent to the TFA by the TDF
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Nfsd # TDF radio
+        - Service # Colonial Staff radio
 
 - type: startingGear
   id: SecurityGuardGear

@@ -40,6 +40,9 @@
     components:
       - type: CommandStaff
       - type: ShipSavingBlacklist # TDF can't save ships
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Nfsd # TDF radio
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

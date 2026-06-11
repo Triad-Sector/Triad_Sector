@@ -29,6 +29,9 @@
       factions:
       - TDF
     - type: ShipSavingBlacklist # TDF can't save ships
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial
