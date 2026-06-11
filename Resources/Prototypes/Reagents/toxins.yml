@@ -463,7 +463,7 @@
           - !type:OrganType
             type: Animal
           - !type:OrganType # Triad
-            type: Rat
+            type: Rat # Triad
             type: Slime # Triad
             shouldHave: false # Triad
 
