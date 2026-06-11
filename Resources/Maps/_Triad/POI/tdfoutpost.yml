@@ -4,7 +4,7 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/11/2026 17:36:56
+  time: 06/11/2026 18:02:17
   entityCount: 5859
 maps: []
 grids:
@@ -210,10 +210,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
-        Puddle: []
         Kudzu: []
+        Puddle: []
         Smoke: []
+        MetalFoam: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -15664,13 +15664,6 @@ entities:
     - type: Transform
       pos: -15.5,12.5
       parent: 1
-- proto: DefaultStationBeacon
-  entities:
-  - uid: 4511
-    components:
-    - type: Transform
-      pos: -1.5,0.5
-      parent: 1
 - proto: DefaultStationBeaconArmory
   entities:
   - uid: 4517
@@ -15698,6 +15691,13 @@ entities:
     components:
     - type: Transform
       pos: -25.5,0.5
+      parent: 1
+- proto: DefaultStationBeaconBriefing
+  entities:
+  - uid: 4511
+    components:
+    - type: Transform
+      pos: -1.5,0.5
       parent: 1
 - proto: DefaultStationBeaconBrig
   entities:
@@ -30851,7 +30851,7 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: SpawnMechRipley2
+- proto: SpawnMechEmu
   entities:
   - uid: 4516
     components:

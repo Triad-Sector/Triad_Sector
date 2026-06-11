@@ -5,7 +5,7 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-tdf-chief
-    color: "#57482b"
+    color: "#fcd381"
 
 - type: entity
   parent: DefaultStationBeacon
@@ -14,7 +14,7 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-warden
-    color: "#a78b53"
+    color: "#ccb586"
 
 - type: entity
   parent: DefaultStationBeacon
@@ -23,4 +23,12 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-tdf-patrol-lead
-    color: "#FFD580"
+    color: "#e4b659"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconBriefing
+  suffix: Briefing
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-briefing

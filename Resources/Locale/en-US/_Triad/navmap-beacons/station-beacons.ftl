@@ -1,2 +1,4 @@
-station-beacon-tdf-chief = Chief Enforcer's room
-station-beacon-tdf-patrol-lead = Patrol Team Leader quarters
+station-beacon-tdf-chief = CE
+station-beacon-tdf-patrol-lead = PTL quarters
+
+station-beacon-briefing = Briefing
