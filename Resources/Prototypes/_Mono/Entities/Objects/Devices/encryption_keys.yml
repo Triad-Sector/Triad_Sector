@@ -53,7 +53,7 @@
         - state: crypt_blue
         - state: pirate_label
 
-# Overseer variant w/ no TDF or Triad command radio key
+# Overseer variant w/ no TDF radio key
 
 - type: entity
   parent: EncryptionKeyStationMaster
