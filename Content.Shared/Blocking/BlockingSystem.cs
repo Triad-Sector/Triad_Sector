@@ -183,10 +183,13 @@ public sealed partial class BlockingSystem : SharedBlockingSystem // Mono
         //In theory the user should not be null when this fires off
         if (component.User != null)
         {
-            _actionsSystem.RemoveProvidedActions(component.User.Value, uid);
-            StopBlockingHelper(uid, component, component.User.Value);
-            // Mono start
+            // Triad: cache the user up front. StopBlockingHelper clears component.User, so the
+            // Mono visuals cleanup below used to re-read component.User.Value and throw an NRE
+            // during grid teardown (e.g. saving/deleting a ship holding an energy shield).
             var user = component.User.Value;
+            _actionsSystem.RemoveProvidedActions(user, uid);
+            StopBlockingHelper(uid, component, user);
+            // Mono start
             if (HasComp<BlockingVisualsComponent>(user))
                 RemCompDeferred<BlockingVisualsComponent>(user);
             // Mono end

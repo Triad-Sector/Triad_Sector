@@ -52494,7 +52494,7 @@ entities:
     - type: Transform
       pos: 45.29731,-16.793638
       parent: 2
-- proto: EthanolChemistryBottle
+- proto: ChemistryBottleEthanol
   entities:
   - uid: 385
     components:
@@ -52645,7 +52645,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,35.5
       parent: 2
-- proto: EZNutrientChemistryBottle
+- proto: ChemistryBottleEZNutrient
   entities:
   - uid: 14379
     components:
@@ -79164,7 +79164,7 @@ entities:
     - type: Transform
       pos: 20.50719,-11.491249
       parent: 2
-- proto: HydrogenChemistryBottle
+- proto: ChemistryBottleHydrogen
   entities:
   - uid: 401
     components:
@@ -81769,7 +81769,7 @@ entities:
     - type: Transform
       pos: 25.5,47.5
       parent: 2
-- proto: NitrogenChemistryBottle
+- proto: ChemistryBottleNitrogen
   entities:
   - uid: 13772
     components:
@@ -82231,7 +82231,7 @@ entities:
     - type: Transform
       pos: -31.055569,-10.24702
       parent: 2
-- proto: PhosphorusChemistryBottle
+- proto: ChemistryBottlePhosphorus
   entities:
   - uid: 13773
     components:

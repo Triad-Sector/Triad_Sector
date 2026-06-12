@@ -53,7 +53,7 @@
     DrinkJaegermisterBottleFull: 5
     # End Triad
   contrabandInventory:
-    EthanolChemistryBottle: 3
+    ChemistryBottleEthanol: 3
     DrinkBottleOfNothingFull: 1
   emaggedInventory:
     DrinkPoisonWinebottleFull: 2

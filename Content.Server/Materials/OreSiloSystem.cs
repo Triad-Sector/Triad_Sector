@@ -138,6 +138,11 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
             }
             foreach (var toAdd in _silosToAdd)
             {
+                // Triad: a deleted silo leaves its clients holding a stale EntityUid. Passing it to
+                // AddSessionOverride resolves to entity 0, and the engine logs "non-existent entity 0"
+                // every tick for every nearby player (millions of errors/day). Skip dead refs.
+                if (!Exists(toAdd))
+                    continue;
                 _pvsOverride.AddSessionOverride(toAdd, actorComp.PlayerSession);
             }
         }
