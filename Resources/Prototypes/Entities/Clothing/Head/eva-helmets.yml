@@ -83,8 +83,8 @@
       - state: equipped-head-light-vox
       head-vulpkanin: # Mono
       - state: equipped-head-light-vulpkanin
-      # head-hydrakin: # Mono
-      # - state: equipped-head-light-hydrakin
+      head-hydrakin: # Mono
+      - state: equipped-head-light-hydrakin
       head-avali: #starlight
       - state: equipped-head-light-avali
   - type: Clothing
@@ -95,8 +95,8 @@
       - state: equipped-head-vox
       head-vulpkanin: # Mono
       - state: equipped-head-vulpkanin
-      # head-hydrakin: # Mono
-      # - state: equipped-head-hydrakin
+      head-hydrakin: # Mono
+      - state: equipped-head-hydrakin
       head-avali: #starlight
       - state: equipped-head-avali
   - type: TemperatureProtection
