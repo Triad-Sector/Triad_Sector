@@ -89,3 +89,13 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsTdfChiefEnforcer ]
+
+# High security doors
+- type: entity
+  parent: HighSecDoor
+  id: HighSecTriadMedicalLocked
+  suffix: Medical, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMedical ]

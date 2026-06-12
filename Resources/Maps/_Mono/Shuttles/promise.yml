@@ -5183,7 +5183,7 @@ entities:
       parent: 499
     - type: Physics
       canCollide: False
-- proto: EpinephrineChemistryBottle
+- proto: ChemistryBottleEpinephrine
   entities:
   - uid: 298
     components:

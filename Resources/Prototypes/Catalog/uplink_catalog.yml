@@ -615,10 +615,10 @@
       - SurplusBundle
 
 - type: listing
-  id: UplinkNocturineChemistryBottle
+  id: UplinkChemistryBottleNocturine
   name: uplink-nocturine-chemistry-bottle-name
   description: uplink-nocturine-chemistry-bottle-desc
-  productEntity: NocturineChemistryBottle
+  productEntity: ChemistryBottleNocturine
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 15 # Mono

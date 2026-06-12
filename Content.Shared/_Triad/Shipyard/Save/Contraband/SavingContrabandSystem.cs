@@ -30,7 +30,7 @@ public sealed class SavingContrabandSystem : EntitySystem
             ent.Comp,
             msg,
             Loc.GetString("ship-saving-contraband-examine-verb-text"),
-            "/Textures/Interface/VerbIcons/anchor.svg.192dpi.png",
+            "/Textures/_Triad/Interface/VerbIcons/savecontraband.svg.192dpi.png",
             Loc.GetString("ship-saving-contraband-examine-verb-message"));
     }
 }
