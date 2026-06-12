@@ -21,11 +21,13 @@
   - Mail # Frontier
   - Frontier # Frontier
   special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:GiveItemOnHolidaySpecial # Frontier
-    holiday: FrontierBirthday # Frontier
-    prototype: FrontierBirthdayGift # Frontier
+  #- !type:AddImplantSpecial Triad
+  #  implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 - type: startingGear
   id: MailCarrierGear

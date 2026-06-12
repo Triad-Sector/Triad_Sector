@@ -20,11 +20,17 @@
   - Service
   - Frontier # Frontier
   special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+  #- !type:AddImplantSpecial
+  #  implants: [ MindShieldImplant ] Triad
   - !type:GiveItemOnHolidaySpecial # Frontier
     holiday: FrontierBirthday # Frontier
     prototype: FrontierBirthdayGift # Frontier
+  special:
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 # Frontier: valet loadout
 - type: startingGear
