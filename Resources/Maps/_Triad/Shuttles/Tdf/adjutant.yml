@@ -4,8 +4,8 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/06/2026 20:44:29
-  entityCount: 576
+  time: 06/12/2026 01:48:10
+  entityCount: 540
 maps: []
 grids:
 - 1
@@ -88,10 +88,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
+        Puddle: []
+        Kudzu: []
         Smoke: []
         MetalFoam: []
-        Kudzu: []
-        Puddle: []
       updateAccumulator: 0.8659868
     - type: Shuttle
       dampingModifier: 2.5
@@ -341,221 +341,9 @@ entities:
     - type: PilotedShuttle
       inputSources: []
     - type: GridCleanupGrid
-  - uid: 398
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - battery
-    - type: Transform
-      parent: 397
-    - type: Solution
-      solution:
-        maxVol: 5
-        name: battery
-        reagents: []
-    - type: ContainedSolution
-      containerName: battery
-      container: 397
-  - uid: 416
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 415
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 415
-  - uid: 418
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 417
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 417
-  - uid: 420
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 419
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 419
-  - uid: 422
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 421
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 421
-  - uid: 424
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 423
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 423
-  - uid: 426
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - injector
-    - type: Transform
-      parent: 425
-    - type: Solution
-      solution:
-        maxVol: 15
-        name: injector
-        reagents: []
-    - type: ContainedSolution
-      containerName: injector
-      container: 425
-  - uid: 428
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - drink
-    - type: Transform
-      parent: 427
-    - type: Solution
-      solution:
-        maxVol: 30
-        name: drink
-        reagents:
-        - data: []
-          ReagentId: Epinephrine
-          Quantity: 30
-    - type: ContainedSolution
-      containerName: drink
-      container: 427
-  - uid: 438
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 437
-    - type: Solution
-      solution:
-        maxVol: 20
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Tricordrazine
-          Quantity: 10
-    - type: ContainedSolution
-      containerName: food
-      container: 437
-  - uid: 440
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 439
-    - type: Solution
-      solution:
-        maxVol: 20
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Tricordrazine
-          Quantity: 10
-    - type: ContainedSolution
-      containerName: food
-      container: 439
-  - uid: 442
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 441
-    - type: Solution
-      solution:
-        maxVol: 20
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Tricordrazine
-          Quantity: 10
-    - type: ContainedSolution
-      containerName: food
-      container: 441
-  - uid: 444
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 443
-    - type: Solution
-      solution:
-        maxVol: 20
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Tricordrazine
-          Quantity: 10
-    - type: ContainedSolution
-      containerName: food
-      container: 443
-  - uid: 446
-    mapInit: true
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 445
-    - type: Solution
-      solution:
-        maxVol: 20
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Tricordrazine
-          Quantity: 10
-    - type: ContainedSolution
-      containerName: food
-      container: 445
   - uid: 450
     mapInit: true
+    paused: true
     components:
     - type: MetaData
       name: solution - lvcable
@@ -577,6 +365,7 @@ entities:
       container: 449
   - uid: 452
     mapInit: true
+    paused: true
     components:
     - type: MetaData
       name: solution - glass
@@ -595,6 +384,7 @@ entities:
       container: 451
   - uid: 516
     mapInit: true
+    paused: true
     components:
     - type: MetaData
       name: solution - battery
@@ -610,6 +400,7 @@ entities:
       container: 515
   - uid: 607
     mapInit: true
+    paused: true
     components:
     - type: MetaData
       name: solution - glass
@@ -628,6 +419,7 @@ entities:
       container: 606
   - uid: 609
     mapInit: true
+    paused: true
     components:
     - type: MetaData
       name: solution - steel
@@ -674,6 +466,7 @@ entities:
   entities:
   - uid: 392
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 86
@@ -685,6 +478,7 @@ entities:
   entities:
   - uid: 2
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -716,6 +510,7 @@ entities:
       - 614
   - uid: 3
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -745,6 +540,7 @@ entities:
       - 620
   - uid: 4
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -777,6 +573,7 @@ entities:
   entities:
   - uid: 192
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 2
@@ -786,6 +583,7 @@ entities:
       canCollide: False
   - uid: 193
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 3
@@ -795,6 +593,7 @@ entities:
       canCollide: False
   - uid: 391
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 4
@@ -806,6 +605,7 @@ entities:
   entities:
   - uid: 634
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,-3.5
@@ -826,6 +626,7 @@ entities:
       receiveFrequency: 1280
   - uid: 636
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,-3.5
@@ -941,6 +742,7 @@ entities:
   entities:
   - uid: 13
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -952,6 +754,7 @@ entities:
       currentSupply: 8665
   - uid: 14
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -963,6 +766,7 @@ entities:
       currentSupply: 23630
   - uid: 15
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -974,6 +778,7 @@ entities:
       currentSupply: 4785
   - uid: 16
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -988,12 +793,14 @@ entities:
   entities:
   - uid: 17
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,-3.5
       parent: 1
   - uid: 18
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,-3.5
@@ -1007,348 +814,406 @@ entities:
       parent: 1
   - uid: 332
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,14.5
       parent: 1
   - uid: 333
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,15.5
       parent: 1
   - uid: 334
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,14.5
       parent: 1
   - uid: 335
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,15.5
       parent: 1
   - uid: 336
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,14.5
       parent: 1
   - uid: 337
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,13.5
       parent: 1
   - uid: 338
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,12.5
       parent: 1
   - uid: 339
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,14.5
       parent: 1
   - uid: 340
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,13.5
       parent: 1
   - uid: 341
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,12.5
       parent: 1
   - uid: 342
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,10.5
       parent: 1
   - uid: 343
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,10.5
       parent: 1
   - uid: 344
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,11.5
       parent: 1
   - uid: 345
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,10.5
       parent: 1
   - uid: 346
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,11.5
       parent: 1
   - uid: 347
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,10.5
       parent: 1
   - uid: 348
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -5.5,8.5
       parent: 1
   - uid: 349
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -5.5,7.5
       parent: 1
   - uid: 350
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -5.5,6.5
       parent: 1
   - uid: 351
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,7.5
       parent: 1
   - uid: 352
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,6.5
       parent: 1
   - uid: 353
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,8.5
       parent: 1
   - uid: 354
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,8.5
       parent: 1
   - uid: 355
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,7.5
       parent: 1
   - uid: 356
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,6.5
       parent: 1
   - uid: 357
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 5.5,8.5
       parent: 1
   - uid: 358
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 5.5,7.5
       parent: 1
   - uid: 359
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 5.5,6.5
       parent: 1
   - uid: 360
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,3.5
       parent: 1
   - uid: 361
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,2.5
       parent: 1
   - uid: 362
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,1.5
       parent: 1
   - uid: 363
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,0.5
       parent: 1
   - uid: 364
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,0.5
       parent: 1
   - uid: 365
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,1.5
       parent: 1
   - uid: 366
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,2.5
       parent: 1
   - uid: 367
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,3.5
       parent: 1
   - uid: 368
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -6.5,-1.5
       parent: 1
   - uid: 369
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,-1.5
       parent: 1
   - uid: 370
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,-2.5
       parent: 1
   - uid: 371
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,-3.5
       parent: 1
   - uid: 372
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,-1.5
       parent: 1
   - uid: 373
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,-2.5
       parent: 1
   - uid: 374
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,-3.5
       parent: 1
   - uid: 375
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,-3.5
       parent: 1
   - uid: 376
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,-3.5
       parent: 1
   - uid: 377
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,-3.5
       parent: 1
   - uid: 378
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,-3.5
       parent: 1
   - uid: 379
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,-2.5
       parent: 1
   - uid: 380
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,-1.5
       parent: 1
   - uid: 381
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,-2.5
       parent: 1
   - uid: 382
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,-1.5
       parent: 1
   - uid: 383
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 6.5,-1.5
       parent: 1
   - uid: 384
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,4.5
       parent: 1
   - uid: 385
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -4.5,3.5
       parent: 1
   - uid: 387
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,3.5
       parent: 1
   - uid: 388
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 4.5,4.5
       parent: 1
   - uid: 389
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,-3.5
       parent: 1
   - uid: 390
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,-3.5
@@ -1358,339 +1223,284 @@ entities:
     - type: Transform
       pos: 4.5,1.5
       parent: 1
-- proto: Bloodpack
-  entities:
-  - uid: 433
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 434
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: BoxSyringe
-  entities:
-  - uid: 414
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: Storage
-      storedItems:
-        415:
-          position: 0,0
-          _rotation: South
-        417:
-          position: 1,0
-          _rotation: South
-        419:
-          position: 2,0
-          _rotation: South
-        421:
-          position: 0,1
-          _rotation: South
-        423:
-          position: 1,1
-          _rotation: South
-        425:
-          position: 2,1
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 415
-          - 417
-          - 419
-          - 421
-          - 423
-          - 425
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          length: 1
-        quickInsert:
-          length: 0.5
-        storage: {}
-    - type: InsideEntityStorage
-- proto: Brutepack
-  entities:
-  - uid: 429
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 430
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: CableApcExtension
   entities:
   - uid: 19
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,8.5
       parent: 1
   - uid: 20
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,9.5
       parent: 1
   - uid: 21
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,10.5
       parent: 1
   - uid: 22
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,11.5
       parent: 1
   - uid: 23
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,12.5
       parent: 1
   - uid: 24
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,13.5
       parent: 1
   - uid: 25
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,11.5
       parent: 1
   - uid: 26
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,11.5
       parent: 1
   - uid: 27
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,11.5
       parent: 1
   - uid: 28
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,8.5
       parent: 1
   - uid: 29
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
   - uid: 30
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,8.5
       parent: 1
   - uid: 31
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,8.5
       parent: 1
   - uid: 32
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,8.5
       parent: 1
   - uid: 33
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,8.5
       parent: 1
   - uid: 34
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,8.5
       parent: 1
   - uid: 35
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,8.5
       parent: 1
   - uid: 36
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
   - uid: 41
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,5.5
       parent: 1
   - uid: 42
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,5.5
       parent: 1
   - uid: 43
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,5.5
       parent: 1
   - uid: 44
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,5.5
       parent: 1
   - uid: 45
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,6.5
       parent: 1
   - uid: 46
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
   - uid: 47
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,1.5
       parent: 1
   - uid: 48
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,1.5
       parent: 1
   - uid: 49
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,0.5
       parent: 1
   - uid: 50
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,0.5
       parent: 1
   - uid: 51
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,0.5
       parent: 1
   - uid: 52
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,1.5
       parent: 1
   - uid: 53
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,1.5
       parent: 1
   - uid: 54
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,0.5
       parent: 1
   - uid: 55
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,0.5
       parent: 1
   - uid: 56
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
   - uid: 57
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
   - uid: 58
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,-1.5
       parent: 1
   - uid: 59
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,-1.5
       parent: 1
   - uid: 60
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,-1.5
       parent: 1
   - uid: 61
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,-1.5
       parent: 1
   - uid: 62
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,-1.5
@@ -1707,6 +1517,7 @@ entities:
       parent: 1
   - uid: 641
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,5.5
@@ -1715,6 +1526,7 @@ entities:
   entities:
   - uid: 449
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -1736,18 +1548,21 @@ entities:
   entities:
   - uid: 63
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,5.5
       parent: 1
   - uid: 64
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,5.5
       parent: 1
   - uid: 65
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,4.5
@@ -1756,108 +1571,126 @@ entities:
   entities:
   - uid: 66
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,4.5
       parent: 1
   - uid: 67
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,5.5
       parent: 1
   - uid: 68
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,6.5
       parent: 1
   - uid: 69
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,6.5
       parent: 1
   - uid: 70
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,6.5
       parent: 1
   - uid: 71
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
   - uid: 72
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,7.5
       parent: 1
   - uid: 73
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
   - uid: 74
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,8.5
       parent: 1
   - uid: 75
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,6.5
       parent: 1
   - uid: 76
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,5.5
       parent: 1
   - uid: 77
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,4.5
       parent: 1
   - uid: 78
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,3.5
       parent: 1
   - uid: 79
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,2.5
       parent: 1
   - uid: 80
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,0.5
       parent: 1
   - uid: 81
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
   - uid: 82
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,1.5
       parent: 1
   - uid: 83
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,1.5
@@ -1866,6 +1699,7 @@ entities:
   entities:
   - uid: 84
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1875,6 +1709,7 @@ entities:
   entities:
   - uid: 453
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -1884,6 +1719,7 @@ entities:
       canCollide: False
   - uid: 454
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -1893,6 +1729,7 @@ entities:
       canCollide: False
   - uid: 455
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -1902,6 +1739,7 @@ entities:
       canCollide: False
   - uid: 456
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -1911,6 +1749,7 @@ entities:
       canCollide: False
   - uid: 514
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 191
@@ -1920,6 +1759,7 @@ entities:
       canCollide: False
   - uid: 610
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -1929,6 +1769,7 @@ entities:
       canCollide: False
   - uid: 611
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -1966,6 +1807,7 @@ entities:
   entities:
   - uid: 85
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -1993,6 +1835,7 @@ entities:
   entities:
   - uid: 86
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2025,6 +1868,7 @@ entities:
   entities:
   - uid: 87
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,10.5
@@ -2056,6 +1900,7 @@ entities:
   entities:
   - uid: 88
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,10.5
@@ -2124,59 +1969,19 @@ entities:
     - type: Transform
       pos: -0.5,14.5
       parent: 1
-- proto: Defibrillator
-  entities:
-  - uid: 396
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 89
-    - type: PowerCellDraw
-      nextUpdate: -712.8851377
-      enabled: False
-      canUse: True
-      canDraw: True
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 0
-          startTime: 0
-          length: 1
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      spokenLanguages:
-      - TauCetiBasic
-      currentLanguage: TauCetiBasic
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 397
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 89
-    mapInit: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,7.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        ItemCabinet: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 396
 - proto: DoorElectronics
   entities:
   - uid: 413
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 162
@@ -2186,6 +1991,7 @@ entities:
       canCollide: False
   - uid: 603
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 329
@@ -2197,6 +2003,7 @@ entities:
   entities:
   - uid: 635
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 634
@@ -2206,6 +2013,7 @@ entities:
       canCollide: False
   - uid: 637
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 636
@@ -2242,6 +2050,7 @@ entities:
   entities:
   - uid: 394
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 88
@@ -2249,34 +2058,6 @@ entities:
       nextSound: -16117.0093078
     - type: Physics
       canCollide: False
-- proto: EpinephrineChemistryBottle
-  entities:
-  - uid: 427
-    mapInit: true
-    components:
-    - type: MetaData
-      name: bottle (epinephrine)
-    - type: Transform
-      parent: 163
-    - type: Label
-      currentLabel: epinephrine
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - drink
-    - type: MeleeWeapon
-      nextAttack: -16117.0093078
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: bottle
-    - type: ContainerContainer
-      containers:
-        solution@drink: !type:ContainerSlot
-          ent: 428
-    - type: InsideEntityStorage
 - proto: ExtinguisherCabinetFilled
   entities:
   - uid: 90
@@ -2296,6 +2077,7 @@ entities:
   entities:
   - uid: 614
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,8.5
@@ -2316,6 +2098,7 @@ entities:
       powered: True
   - uid: 616
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,6.5
@@ -2336,6 +2119,7 @@ entities:
       powered: True
   - uid: 618
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,4.5
@@ -2356,6 +2140,7 @@ entities:
       powered: True
   - uid: 620
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,2.5
@@ -2376,6 +2161,7 @@ entities:
       powered: True
   - uid: 622
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,-0.5
@@ -2398,6 +2184,7 @@ entities:
   entities:
   - uid: 615
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 614
@@ -2407,6 +2194,7 @@ entities:
       canCollide: False
   - uid: 617
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 616
@@ -2416,6 +2204,7 @@ entities:
       canCollide: False
   - uid: 619
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 618
@@ -2425,6 +2214,7 @@ entities:
       canCollide: False
   - uid: 621
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 620
@@ -2434,6 +2224,7 @@ entities:
       canCollide: False
   - uid: 623
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 622
@@ -2445,6 +2236,7 @@ entities:
   entities:
   - uid: 447
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 164
@@ -2457,6 +2249,7 @@ entities:
   entities:
   - uid: 92
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2482,6 +2275,7 @@ entities:
   entities:
   - uid: 93
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2504,6 +2298,7 @@ entities:
       color: '#990000FF'
   - uid: 94
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2517,6 +2312,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 95
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2530,6 +2326,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 96
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,9.5
@@ -2544,6 +2341,7 @@ entities:
   entities:
   - uid: 97
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,6.5
@@ -2558,6 +2356,7 @@ entities:
   entities:
   - uid: 98
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,5.5
@@ -2572,6 +2371,7 @@ entities:
   entities:
   - uid: 99
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2585,6 +2385,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 100
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2598,6 +2399,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 101
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2611,6 +2413,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 102
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2624,6 +2427,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 103
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2637,6 +2441,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 104
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2650,6 +2455,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 105
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,7.5
@@ -2662,6 +2468,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 106
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,8.5
@@ -2674,6 +2481,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 107
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,0.5
@@ -2686,6 +2494,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 108
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2699,6 +2508,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 109
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2722,6 +2532,7 @@ entities:
   entities:
   - uid: 110
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,1.5
@@ -2734,6 +2545,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 111
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,0.5
@@ -2746,6 +2558,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 112
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,-0.5
@@ -2758,6 +2571,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 113
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,1.5
@@ -2770,6 +2584,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 114
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2783,6 +2598,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 115
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2796,6 +2612,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 116
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2809,6 +2626,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 117
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2822,6 +2640,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 118
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2835,6 +2654,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 119
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2848,6 +2668,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 120
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2861,6 +2682,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 121
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2874,6 +2696,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 122
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2905,6 +2728,7 @@ entities:
   entities:
   - uid: 124
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2918,6 +2742,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 125
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,2.5
@@ -2930,6 +2755,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 126
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2945,6 +2771,7 @@ entities:
   entities:
   - uid: 127
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2958,6 +2785,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 128
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,2.5
@@ -2980,6 +2808,7 @@ entities:
   entities:
   - uid: 129
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,7.5
@@ -2990,6 +2819,7 @@ entities:
       nextSound: -15511.5480403
   - uid: 130
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,7.5
@@ -3000,6 +2830,7 @@ entities:
   entities:
   - uid: 131
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3233,6 +3064,7 @@ entities:
       receiveFrequency: 1621
   - uid: 132
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3466,6 +3298,7 @@ entities:
       receiveFrequency: 1621
   - uid: 133
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3699,6 +3532,7 @@ entities:
       receiveFrequency: 1621
   - uid: 134
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3932,6 +3766,7 @@ entities:
       receiveFrequency: 1621
   - uid: 135
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,9.5
@@ -4160,6 +3995,7 @@ entities:
         ignore: False
   - uid: 136
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4395,6 +4231,7 @@ entities:
   entities:
   - uid: 137
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -4626,6 +4463,7 @@ entities:
       pipeLayer: Tertiary
   - uid: 138
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -4855,6 +4693,7 @@ entities:
       pipeLayer: Tertiary
   - uid: 139
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5088,6 +4927,7 @@ entities:
       pipeLayer: Tertiary
   - uid: 140
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -5321,6 +5161,7 @@ entities:
       pipeLayer: Tertiary
   - uid: 141
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -5554,6 +5395,7 @@ entities:
       pipeLayer: Tertiary
   - uid: 142
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -5785,18 +5627,6 @@ entities:
       receiveFrequency: 1621
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
-- proto: Gauze
-  entities:
-  - uid: 435
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: GravityGeneratorMini
   entities:
   - uid: 6
@@ -5808,6 +5638,7 @@ entities:
   entities:
   - uid: 143
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -5815,6 +5646,7 @@ entities:
       parent: 1
   - uid: 144
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -5822,6 +5654,7 @@ entities:
       parent: 1
   - uid: 145
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5829,6 +5662,7 @@ entities:
       parent: 1
   - uid: 146
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5836,6 +5670,7 @@ entities:
       parent: 1
   - uid: 147
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5843,6 +5678,7 @@ entities:
       parent: 1
   - uid: 148
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5850,6 +5686,7 @@ entities:
       parent: 1
   - uid: 149
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5857,6 +5694,7 @@ entities:
       parent: 1
   - uid: 150
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5864,6 +5702,7 @@ entities:
       parent: 1
   - uid: 151
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5871,6 +5710,7 @@ entities:
       parent: 1
   - uid: 152
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5892,6 +5732,7 @@ entities:
   entities:
   - uid: 153
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -5899,6 +5740,7 @@ entities:
       parent: 1
   - uid: 154
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -5908,6 +5750,7 @@ entities:
   entities:
   - uid: 393
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 87
@@ -5919,6 +5762,7 @@ entities:
   entities:
   - uid: 604
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,6.5
@@ -6024,6 +5868,7 @@ entities:
   entities:
   - uid: 162
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -6049,6 +5894,7 @@ entities:
   entities:
   - uid: 448
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -6060,6 +5906,7 @@ entities:
   entities:
   - uid: 475
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 183
@@ -6070,39 +5917,18 @@ entities:
 - proto: LockerWallColorMedicalFilled
   entities:
   - uid: 163
-    mapInit: true
     components:
     - type: Transform
       pos: 1.5,8.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 414
-          - 427
-          - 429
-          - 430
-          - 431
-          - 432
-          - 433
-          - 434
-          - 435
-          - 436
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
     - type: EntityStorage
       air:
         volume: 200
         immutable: False
-        temperature: 293.14926
+        temperature: 293.14917
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.734816
+        - 6.5262127
         - 0
         - 0
         - 0
@@ -6121,6 +5947,7 @@ entities:
   entities:
   - uid: 164
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -6170,6 +5997,7 @@ entities:
   entities:
   - uid: 605
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -6225,6 +6053,7 @@ entities:
   entities:
   - uid: 612
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -6234,6 +6063,7 @@ entities:
       canCollide: False
   - uid: 613
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -6245,6 +6075,7 @@ entities:
   entities:
   - uid: 165
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,9.5
@@ -6276,6 +6107,7 @@ entities:
   entities:
   - uid: 166
     mapInit: true
+    paused: true
     components:
     - type: Transform
       anchored: True
@@ -6283,32 +6115,11 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
-- proto: Ointment
-  entities:
-  - uid: 431
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 432
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 163
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: OxygenCanister
   entities:
   - uid: 167
     mapInit: true
+    paused: true
     components:
     - type: Transform
       anchored: True
@@ -6316,168 +6127,11 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
-- proto: PillCanisterTricordrazine
-  entities:
-  - uid: 436
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill canister (tricordrazine 10u)
-    - type: Transform
-      parent: 163
-    - type: Storage
-      storedItems:
-        437:
-          position: 0,0
-          _rotation: South
-        439:
-          position: 1,0
-          _rotation: South
-        441:
-          position: 2,0
-          _rotation: South
-        443:
-          position: 3,0
-          _rotation: South
-        445:
-          position: 4,0
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 437
-          - 439
-          - 441
-          - 443
-          - 445
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          length: 1
-        quickInsert:
-          length: 0.5
-        storage: {}
-    - type: NameModifier
-      baseName: pill canister
-    - type: InsideEntityStorage
-- proto: PillTricordrazine
-  entities:
-  - uid: 437
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill (tricordrazine 10u)
-    - type: Transform
-      parent: 436
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: pill
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 438
-  - uid: 439
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill (tricordrazine 10u)
-    - type: Transform
-      parent: 436
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: pill
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 440
-  - uid: 441
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill (tricordrazine 10u)
-    - type: Transform
-      parent: 436
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: pill
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 442
-  - uid: 443
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill (tricordrazine 10u)
-    - type: Transform
-      parent: 436
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: pill
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 444
-  - uid: 445
-    mapInit: true
-    components:
-    - type: MetaData
-      name: pill (tricordrazine 10u)
-    - type: Transform
-      parent: 436
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: NameModifier
-      baseName: pill
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 446
 - proto: PlasmaReinforcedWindowDirectional
   entities:
   - uid: 168
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -6490,29 +6144,11 @@ entities:
     - type: Transform
       pos: -2.5,5.5
       parent: 1
-- proto: PowerCellMedium
-  entities:
-  - uid: 397
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 396
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - battery
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@battery: !type:ContainerSlot
-          ent: 398
 - proto: PowerCellSmall
   entities:
   - uid: 515
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 191
@@ -6595,6 +6231,7 @@ entities:
   entities:
   - uid: 183
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,10.5
@@ -6992,6 +6629,7 @@ entities:
   entities:
   - uid: 451
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 165
@@ -7011,6 +6649,7 @@ entities:
           ent: 452
   - uid: 606
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -7032,6 +6671,7 @@ entities:
   entities:
   - uid: 608
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 604
@@ -7053,6 +6693,7 @@ entities:
   entities:
   - uid: 638
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0,6
@@ -7601,6 +7242,7 @@ entities:
   entities:
   - uid: 395
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 88
@@ -7669,6 +7311,7 @@ entities:
   entities:
   - uid: 191
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -7709,10 +7352,33 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,1.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: SunnyMagazine
   entities:
   - uid: 595
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 321
@@ -7724,6 +7390,7 @@ entities:
       canCollide: False
   - uid: 596
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 322
@@ -7733,114 +7400,11 @@ entities:
       nextSound: -16117.0093078
     - type: Physics
       canCollide: False
-- proto: Syringe
-  entities:
-  - uid: 415
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 416
-  - uid: 417
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 418
-  - uid: 419
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 420
-  - uid: 421
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 422
-  - uid: 423
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 424
-  - uid: 425
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 414
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - injector
-    - type: EmitSoundOnCollide
-      nextSound: -16117.0093078
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@injector: !type:ContainerSlot
-          ent: 426
 - proto: TableReinforced
   entities:
   - uid: 194
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7848,6 +7412,7 @@ entities:
       parent: 1
   - uid: 195
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7855,6 +7420,7 @@ entities:
       parent: 1
   - uid: 196
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7862,6 +7428,7 @@ entities:
       parent: 1
   - uid: 197
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7940,6 +7507,7 @@ entities:
   entities:
   - uid: 513
     mapInit: true
+    paused: true
     components:
     - type: Transform
       parent: 191
@@ -7951,6 +7519,7 @@ entities:
   entities:
   - uid: 210
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7958,6 +7527,7 @@ entities:
       parent: 1
   - uid: 211
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -7965,6 +7535,7 @@ entities:
       parent: 1
   - uid: 212
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7972,6 +7543,7 @@ entities:
       parent: 1
   - uid: 213
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -7979,6 +7551,7 @@ entities:
       parent: 1
   - uid: 214
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -7986,12 +7559,14 @@ entities:
       parent: 1
   - uid: 215
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,12.5
       parent: 1
   - uid: 216
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -7999,18 +7574,21 @@ entities:
       parent: 1
   - uid: 217
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -2.5,11.5
       parent: 1
   - uid: 218
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 2.5,11.5
       parent: 1
   - uid: 219
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8018,6 +7596,7 @@ entities:
       parent: 1
   - uid: 220
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8025,6 +7604,7 @@ entities:
       parent: 1
   - uid: 221
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8032,6 +7612,7 @@ entities:
       parent: 1
   - uid: 222
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8039,6 +7620,7 @@ entities:
       parent: 1
   - uid: 223
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8046,6 +7628,7 @@ entities:
       parent: 1
   - uid: 224
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8053,6 +7636,7 @@ entities:
       parent: 1
   - uid: 225
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8060,6 +7644,7 @@ entities:
       parent: 1
   - uid: 226
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8067,18 +7652,21 @@ entities:
       parent: 1
   - uid: 227
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,12.5
       parent: 1
   - uid: 228
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,13.5
       parent: 1
   - uid: 229
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8086,24 +7674,28 @@ entities:
       parent: 1
   - uid: 230
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,13.5
       parent: 1
   - uid: 231
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -0.5,12.5
       parent: 1
   - uid: 232
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,12.5
       parent: 1
   - uid: 233
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8111,6 +7703,7 @@ entities:
       parent: 1
   - uid: 234
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8118,6 +7711,7 @@ entities:
       parent: 1
   - uid: 235
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8125,6 +7719,7 @@ entities:
       parent: 1
   - uid: 236
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8132,6 +7727,7 @@ entities:
       parent: 1
   - uid: 237
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8139,6 +7735,7 @@ entities:
       parent: 1
   - uid: 238
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8146,6 +7743,7 @@ entities:
       parent: 1
   - uid: 239
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8153,6 +7751,7 @@ entities:
       parent: 1
   - uid: 240
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8160,6 +7759,7 @@ entities:
       parent: 1
   - uid: 241
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8169,6 +7769,7 @@ entities:
   entities:
   - uid: 242
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8176,6 +7777,7 @@ entities:
       parent: 1
   - uid: 243
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8183,6 +7785,7 @@ entities:
       parent: 1
   - uid: 244
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8190,6 +7793,7 @@ entities:
       parent: 1
   - uid: 245
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8197,12 +7801,14 @@ entities:
       parent: 1
   - uid: 246
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -5.5,9.5
       parent: 1
   - uid: 247
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8212,6 +7818,7 @@ entities:
   entities:
   - uid: 248
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8219,6 +7826,7 @@ entities:
       parent: 1
   - uid: 249
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8226,18 +7834,21 @@ entities:
       parent: 1
   - uid: 250
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,13.5
       parent: 1
   - uid: 251
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 3.5,4.5
       parent: 1
   - uid: 252
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8245,6 +7856,7 @@ entities:
       parent: 1
   - uid: 253
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8252,6 +7864,7 @@ entities:
       parent: 1
   - uid: 254
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8259,6 +7872,7 @@ entities:
       parent: 1
   - uid: 255
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8266,12 +7880,14 @@ entities:
       parent: 1
   - uid: 256
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 1.5,14.5
       parent: 1
   - uid: 257
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8279,6 +7895,7 @@ entities:
       parent: 1
   - uid: 258
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8286,6 +7903,7 @@ entities:
       parent: 1
   - uid: 259
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8293,6 +7911,7 @@ entities:
       parent: 1
   - uid: 260
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8300,6 +7919,7 @@ entities:
       parent: 1
   - uid: 261
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8307,6 +7927,7 @@ entities:
       parent: 1
   - uid: 262
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8314,6 +7935,7 @@ entities:
       parent: 1
   - uid: 263
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8321,6 +7943,7 @@ entities:
       parent: 1
   - uid: 264
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8328,6 +7951,7 @@ entities:
       parent: 1
   - uid: 265
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8335,6 +7959,7 @@ entities:
       parent: 1
   - uid: 266
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8342,6 +7967,7 @@ entities:
       parent: 1
   - uid: 267
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8349,6 +7975,7 @@ entities:
       parent: 1
   - uid: 268
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8356,6 +7983,7 @@ entities:
       parent: 1
   - uid: 269
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8363,6 +7991,7 @@ entities:
       parent: 1
   - uid: 270
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8370,6 +7999,7 @@ entities:
       parent: 1
   - uid: 271
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8377,6 +8007,7 @@ entities:
       parent: 1
   - uid: 272
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8384,6 +8015,7 @@ entities:
       parent: 1
   - uid: 273
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8391,6 +8023,7 @@ entities:
       parent: 1
   - uid: 274
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8398,6 +8031,7 @@ entities:
       parent: 1
   - uid: 275
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8405,6 +8039,7 @@ entities:
       parent: 1
   - uid: 276
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8412,6 +8047,7 @@ entities:
       parent: 1
   - uid: 277
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8419,6 +8055,7 @@ entities:
       parent: 1
   - uid: 278
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8426,18 +8063,21 @@ entities:
       parent: 1
   - uid: 279
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,4.5
       parent: 1
   - uid: 280
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,13.5
       parent: 1
   - uid: 281
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8445,6 +8085,7 @@ entities:
       parent: 1
   - uid: 282
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8452,6 +8093,7 @@ entities:
       parent: 1
   - uid: 283
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8459,12 +8101,14 @@ entities:
       parent: 1
   - uid: 284
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -1.5,14.5
       parent: 1
   - uid: 285
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8472,6 +8116,7 @@ entities:
       parent: 1
   - uid: 286
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8479,6 +8124,7 @@ entities:
       parent: 1
   - uid: 287
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8486,6 +8132,7 @@ entities:
       parent: 1
   - uid: 288
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8493,6 +8140,7 @@ entities:
       parent: 1
   - uid: 289
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8500,6 +8148,7 @@ entities:
       parent: 1
   - uid: 290
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8507,6 +8156,7 @@ entities:
       parent: 1
   - uid: 291
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8514,6 +8164,7 @@ entities:
       parent: 1
   - uid: 292
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8521,6 +8172,7 @@ entities:
       parent: 1
   - uid: 293
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8528,6 +8180,7 @@ entities:
       parent: 1
   - uid: 294
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8535,6 +8188,7 @@ entities:
       parent: 1
   - uid: 295
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8542,6 +8196,7 @@ entities:
       parent: 1
   - uid: 296
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8549,6 +8204,7 @@ entities:
       parent: 1
   - uid: 297
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8556,6 +8212,7 @@ entities:
       parent: 1
   - uid: 298
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8563,6 +8220,7 @@ entities:
       parent: 1
   - uid: 299
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8570,6 +8228,7 @@ entities:
       parent: 1
   - uid: 300
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8577,6 +8236,7 @@ entities:
       parent: 1
   - uid: 301
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8584,6 +8244,7 @@ entities:
       parent: 1
   - uid: 302
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8603,12 +8264,14 @@ entities:
   entities:
   - uid: 303
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -6.5,-0.5
       parent: 1
   - uid: 304
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8616,12 +8279,14 @@ entities:
       parent: 1
   - uid: 305
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -3.5,1.5
       parent: 1
   - uid: 306
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8629,6 +8294,7 @@ entities:
       parent: 1
   - uid: 307
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8636,6 +8302,7 @@ entities:
       parent: 1
   - uid: 308
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8643,6 +8310,7 @@ entities:
       parent: 1
   - uid: 309
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8650,6 +8318,7 @@ entities:
       parent: 1
   - uid: 310
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8657,6 +8326,7 @@ entities:
       parent: 1
   - uid: 311
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8664,6 +8334,7 @@ entities:
       parent: 1
   - uid: 312
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8671,12 +8342,14 @@ entities:
       parent: 1
   - uid: 313
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: -5.5,0.5
       parent: 1
   - uid: 314
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8684,6 +8357,7 @@ entities:
       parent: 1
   - uid: 317
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -8691,6 +8365,7 @@ entities:
       parent: 1
   - uid: 318
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8719,6 +8394,7 @@ entities:
   entities:
   - uid: 331
     mapInit: true
+    paused: true
     components:
     - type: Transform
       pos: 0.5,7.5
@@ -8763,6 +8439,7 @@ entities:
   entities:
   - uid: 321
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8794,6 +8471,7 @@ entities:
     - type: AutoShootGun
   - uid: 322
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8862,6 +8540,7 @@ entities:
   entities:
   - uid: 328
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.1371482341805623 rad
@@ -8897,6 +8576,7 @@ entities:
   entities:
   - uid: 329
     mapInit: true
+    paused: true
     components:
     - type: Transform
       rot: 3.141592653589793 rad
