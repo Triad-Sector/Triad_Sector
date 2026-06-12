@@ -1,7 +1,9 @@
 using Content.Server._NF.Radio; // Frontier
 using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
+using Content.Server.Ghost;
 using Content.Server.Power.Components;
 using Content.Shared._Mono.Radio;
 using Content.Shared.Chat;
@@ -34,6 +36,9 @@ public sealed partial class RadioSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private LanguageSystem _language = default!; // Einstein Engines - Language
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private GhostSystem _ghost = default!;
+    [Dependency] private EntityQuery<TelecomExemptComponent> _exemptQuery = default!;
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -72,22 +77,30 @@ public sealed partial class RadioSystem : EntitySystem
 
     private void OnIntrinsicReceive(EntityUid uid, IntrinsicRadioReceiverComponent component, ref RadioReceiveEvent args)
     {
-        if (TryComp(uid, out ActorComponent? actor))
+        if (!TryComp(uid, out ActorComponent? actor))
+            return;
+
+        // Einstein Engines - Languages begin
+        var listener = uid;
+        var msg = args.OriginalChatMsg;
+
+        if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
+            msg = args.LanguageObfuscatedChatMsg;
+
+        if (_ghost.CanGhostWarp(actor.PlayerSession, out _))
         {
-            // Einstein Engines - Languages begin
-            var listener = uid;
-            var msg = args.OriginalChatMsg;
-
-            if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
-                msg = args.LanguageObfuscatedChatMsg;
-
-            _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
-            // Einstein Engines - Languages end
-
-            // Send radio noise event to client for IPCs
-            var radioNoiseEvent = new RadioNoiseEvent(GetNetEntity(uid), args.Channel.ID);
-            RaiseNetworkEvent(radioNoiseEvent, actor.PlayerSession);
+            msg.WrappedMessage = _chatManager.PrependFollowButtonIfAppropriate(
+                    msg.WrappedMessage,
+                    args.MessageSource,
+                    actor.PlayerSession.Channel);
         }
+
+        _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
+
+        // Send radio noise event to client for IPCs
+        var radioNoiseEvent = new RadioNoiseEvent(GetNetEntity(uid), args.Channel.ID);
+        RaiseNetworkEvent(radioNoiseEvent, actor.PlayerSession);
+        // Einstein Engines - Languages end
     }
 
     /// <summary>

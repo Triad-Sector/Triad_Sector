@@ -65,6 +65,7 @@ ui-options-show-looc-on-head = Show LOOC chat above characters head
 ui-options-radio-noise = Play radio static sounds
 ui-options-fancy-speech = Show names in speech bubbles
 ui-options-fancy-name-background = Add background to speech bubble names
+ui-options-chat-follow-button = As ghost, show a follow button next to chat messages
 ui-options-vsync = VSync
 ui-options-fullscreen = Fullscreen
 ui-options-lighting-label = Lighting Quality:

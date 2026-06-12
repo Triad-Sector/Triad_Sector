@@ -54,4 +54,11 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> AdminOverlayStartingJob =
         CVarDef.Create("ui.admin_overlay_starting_job", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// If true, ghosts will see an "(F)" button next to chat messages, which can be used to follow the sender.
+    /// </summary>
+    public static readonly CVarDef<bool> InterfaceChatFollowButton =
+        CVarDef.Create("ui.chat_follow_button", true, CVar.CLIENT | CVar.REPLICATED | CVar.ARCHIVE);
+
 }
