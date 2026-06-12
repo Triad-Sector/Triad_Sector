@@ -19,7 +19,8 @@ public sealed class RPDVentLayerTest
 {
     private const string Straight = "GasPipeStraight"; // longitudinal (North|South), Primary
 
-    // Every Vents-category RPD recipe target and its expected alt-layer wiring.
+    // Every layer-capable RPD recipe target (Vents + AtmosphericUtility categories, both mirror
+    // prototypes included) and its expected alt-layer wiring.
     private static readonly (string Base, string Alt1, string Alt2)[] Devices =
     {
         ("GasVentPump", "GasVentPumpAlt1", "GasVentPumpAlt2"),
@@ -27,6 +28,12 @@ public sealed class RPDVentLayerTest
         ("GasVentScrubber", "GasVentScrubberAlt1", "GasVentScrubberAlt2"),
         ("GasOutletInjector", "GasOutletInjectorAlt1", "GasOutletInjectorAlt2"),
         ("GasDualPortVentPump", "GasDualPortVentPumpAlt1", "GasDualPortVentPumpAlt2"),
+        ("GasFilter", "GasFilterAlt1", "GasFilterAlt2"),
+        ("GasFilterFlipped", "GasFilterFlippedAlt1", "GasFilterFlippedAlt2"),
+        ("GasMixer", "GasMixerAlt1", "GasMixerAlt2"),
+        ("GasMixerFlipped", "GasMixerFlippedAlt1", "GasMixerFlippedAlt2"),
+        ("PressureControlledValve", "PressureControlledValveAlt1", "PressureControlledValveAlt2"),
+        ("GasPort", "GasPortAlt1", "GasPortAlt2"),
     };
 
     [Test]
