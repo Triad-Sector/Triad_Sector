@@ -45,6 +45,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+    failIfSpace: false
 
 - type: construction
   id: GreebleRadarpanel1
@@ -62,6 +63,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+    failIfSpace: false
 
 - type: construction
   id: GreebleRadarpanel2
@@ -79,3 +81,4 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+    failIfSpace: false
