@@ -675,24 +675,38 @@ public class RCDSystem : EntitySystem
                 if (string.IsNullOrEmpty(spawnProto))
                     return;
 
-                var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // Triad: the recipe rotation must ride into the spawn call. Pipe-bearing prototypes anchor during
+                // entity startup and PipeRestrictOverlap judges their node directions right there; rotating after
+                // Spawn() meant that check always ran south-facing, falsely unanchoring legal rotated placements
+                // (e.g. crossing two same-layer straight pipes).
+                var rotation = prototype.Rotation switch
+                {
+                    RcdRotation.Fixed => Angle.Zero,
+                    RcdRotation.Camera => Transform(uid).LocalRotation,
+                    RcdRotation.User => direction.ToAngle(),
+                    _ => Angle.Zero,
+                };
+
+                var ent = SpawnAttachedTo(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position), rotation: rotation);
 
                 var spawned = new RCDObjectSpawnedEvent(ent, prototype);
                 RaiseLocalEvent(uid, ref spawned);
-                // End Triad
 
-                switch (prototype.Rotation)
-                {
-                    case RcdRotation.Fixed:
-                        Transform(ent).LocalRotation = Angle.Zero;
-                        break;
-                    case RcdRotation.Camera:
-                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
-                        break;
-                    case RcdRotation.User:
-                        Transform(ent).LocalRotation = direction.ToAngle();
-                        break;
-                }
+                // Triad: rotation now applied at spawn (see above); this post-spawn switch ran after the
+                // anchor-time overlap check had already judged the entity facing south.
+                // switch (prototype.Rotation)
+                // {
+                //     case RcdRotation.Fixed:
+                //         Transform(ent).LocalRotation = Angle.Zero;
+                //         break;
+                //     case RcdRotation.Camera:
+                //         Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                //         break;
+                //     case RcdRotation.User:
+                //         Transform(ent).LocalRotation = direction.ToAngle();
+                //         break;
+                // }
+                // End Triad
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {mapGridData.Position} on grid {mapGridData.GridUid}");
                 break;
