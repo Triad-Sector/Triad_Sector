@@ -555,3 +555,172 @@
       map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
   - type: Construction
     node: pressureregulatorAlt2
+
+# Triad: cursor-quadrant layer placement for the RPD's Vents category (air vent, passive vent, scrubber,
+# injector, dual-port vent), completing the upstream pump/valve/sensor set above. Unlike the pumps, the
+# device body keeps the base prototype's RSI (there is no offset alt art for vents and none is needed at
+# FloorObjects draw depth); only the pipe-connector sprite layer swaps to the alt RSI. The root sprite path
+# is deliberately inherited so a body-RSI change on the base propagates here.
+
+# GasVentPump
+- type: entity
+  parent: [GasPipeLayerAlt1, GasVentPump]
+  id: GasVentPumpAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: ventpumpAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasVentPump]
+  id: GasVentPumpAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: ventpumpAlt2
+
+# GasPassiveVent
+- type: entity
+  parent: [GasPipeLayerAlt1, GasPassiveVent]
+  id: GasPassiveVentAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_passive
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: passiveventAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasPassiveVent]
+  id: GasPassiveVentAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_passive
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: passiveventAlt2
+
+# GasVentScrubber
+- type: entity
+  parent: [GasPipeLayerAlt1, GasVentScrubber]
+  id: GasVentScrubberAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: scrub_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: ventscrubberAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasVentScrubber]
+  id: GasVentScrubberAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: scrub_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: ventscrubberAlt2
+
+# GasOutletInjector
+- type: entity
+  parent: [GasPipeLayerAlt1, GasOutletInjector]
+  id: GasOutletInjectorAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: injector
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+    - state: injector-unshaded
+      shader: unshaded
+      map: [ "enum.LightLayers.Unshaded" ]
+      color: "#990000"
+  - type: Construction
+    node: outletinjectorAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasOutletInjector]
+  id: GasOutletInjectorAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeUnaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: injector
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+    - state: injector-unshaded
+      shader: unshaded
+      map: [ "enum.LightLayers.Unshaded" ]
+      color: "#990000"
+  - type: Construction
+    node: outletinjectorAlt2
+
+# GasDualPortVentPump
+- type: entity
+  parent: [GasPipeLayerAlt1, GasDualPortVentPump]
+  id: GasDualPortVentPumpAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeBinaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: dualportventpumpAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasDualPortVentPump]
+  id: GasDualPortVentPumpAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeBinaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: vent_off
+      map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
+  - type: Construction
+    node: dualportventpumpAlt2
