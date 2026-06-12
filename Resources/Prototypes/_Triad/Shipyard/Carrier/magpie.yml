@@ -7,13 +7,13 @@
   description: The Corvus Industries Magpie, a scavanger variant built from the robust raven hull. Intended to act as the main logistic backbone of Corvus fleets boasting mining and expedition capability with some cargo capability to boot, if you don't mind shutting off one of the exits.
   price: 70500 #Rounded up to 59K, with a 20% tax
   category: Small
-  group: Shipyard
+  group: Expedition
   access: Mercenary
   shuttlePath: /Maps/_Triad/Shuttles/Carrier/magpie.yml
   guidebookPage: Null
   class:
-  - Patrol
-  - Fighter
+  - Expedition
+  - Salvage
   engine:
   - Uranium
 
