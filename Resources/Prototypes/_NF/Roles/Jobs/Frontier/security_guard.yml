@@ -40,7 +40,7 @@
       - type: ShipSavingBlacklist # Triad - can't save ships
       - type: NpcFactionMember
         factions:
-        - TDF # Station guards were sent to the TFA by the TDF
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
       - type: CryoSleepRadioOverride
         overrides:
         - Service # Colonial Staff radio
