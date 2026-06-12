@@ -31,7 +31,7 @@
     RankStationGuardJunior: []
   special:
   - !type:AddImplantSpecial
-    implants: [ TrackingImplant ] # Triad - re-add sec implant
+    implants: [ MindShieldImplant ] # Triad - re-add sec implant
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
