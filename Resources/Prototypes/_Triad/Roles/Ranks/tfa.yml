@@ -15,16 +15,16 @@
   prefix: EMT
 
 - type: rank
-  id: RankTfaSeniorOfficer
+  id: RankStationGuardSenior
   name: Senior Security Officer
   prefix: Sr. Off.
 
 - type: rank
-  id: RankTfaOfficer
+  id: RankStationGuard
   name: Security Officer
   prefix: Off.
 
 - type: rank
-  id: RankTfaJuniorOfficer
+  id: RankStationGuardJunior
   name: Junior Security Officer
   prefix: Jr. Off.

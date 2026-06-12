@@ -20,15 +20,15 @@
   - AllAccessColonial
   # Triad End
   ranks: # Triad, ranks
-    RankTfaSeniorOfficer:
+    RankStationGuardSenior:
     - !type:RoleTimeRequirement
       role: JobSecurityGuard # YOU ARE THE PROTECTOR OF THE STATION
       time: 288000 # 80 hours
-    RankTfaOfficer:
+    RankStationGuard:
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
       time: 36000 # 10 hours
-    RankTfaJuniorOfficer: []
+    RankStationGuardJunior: []
   special:
   - !type:AddImplantSpecial
     implants: [ TrackingImplant ] # Triad - re-add sec implant
