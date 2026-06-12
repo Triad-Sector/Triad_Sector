@@ -429,16 +429,6 @@
   - type: MarketModifier
     mod: 5
 
-- type: entity
-  parent: NFVendingMachineCart
-  id: NFVendingMachineCartNfsd
-  suffix: NFSD
-  components:
-  - type: VendingMachine
-    pack: NFPTechNfsdInventory
-  - type: AccessReader
-    access: [["HeadOfSecurity"]]
-
 # Punk stuff
 - type: entity
   parent:

@@ -53,3 +53,13 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Security"]]
+
+- type: entity
+  parent: NFVendingMachineCart
+  id: VendingMachineCartTdf
+  suffix: TDF
+  components:
+  - type: VendingMachine
+    pack: PTechTdfInventory
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"], ["TdfWarden"]]

@@ -21,3 +21,6 @@ ClothingBackpackDuffelNfsdTrackingBundle: ClothingBackpackDuffelTdfTrackingBundl
 ShipVoucherFlyssa: null
 ShipVoucherTsfmcColonel: null
 ShipVoucherAltair: null
+
+# 2026-06-12
+NFVendingMachineCartNfsd: VendingMachineCartTdf
