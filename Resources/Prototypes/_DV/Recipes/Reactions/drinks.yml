@@ -1,0 +1,178 @@
+# Sourced from Delta-V Station 14 (_DV namespace), ported via HardLight.
+
+- type: reaction
+  id: LemonLimeBitters
+  reactants:
+    Lemonade:
+      amount: 5
+    JuiceLime:
+      amount: 2
+    Sugar:
+      amount: 2
+    Angobitters:
+      amount: 1
+  products:
+    LemonLimeBitters: 10
+
+- type: reaction
+  id: OldFashioned
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Whiskey:
+      amount: 5
+    Angobitters:
+      amount: 2
+    Sugar:
+      amount: 2
+    JuiceOrange:
+      amount: 1
+  products:
+    OldFashioned: 10
+
+- type: reaction
+  id: MnatsaCollins
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Cognac:
+      amount: 5
+    SodaWater:
+      amount: 5
+    JuiceLemon:
+      amount: 2
+    Sugar:
+      amount: 2
+    Angobitters:
+      amount: 1
+  products:
+    MnatsaCollins: 15
+
+- type: reaction
+  id: Affogato
+  reactants:
+    IceCream:
+      amount: 5
+    Cognac:
+      amount: 2
+    CoffeeLiqueur:
+      amount: 2
+    Angobitters:
+      amount: 1
+  products:
+    Affogato: 10
+
+- type: reaction
+  id: FiveOClock
+  reactants:
+    Tea:
+      amount: 5
+    Cognac:
+      amount: 2
+    JuiceLemon:
+      amount: 2
+    Angobitters:
+      amount: 1
+  products:
+    FiveOClock: 10
+
+- type: reaction
+  id: HealthViolation
+  reactants:
+    GargleBlaster:
+      amount: 10
+    Moonshine:
+      amount: 6
+    VodkaMartini:
+      amount: 3
+    Vermouth:
+      amount: 1
+  products:
+    HealthViolation: 20
+
+- type: reaction
+  id: Gunmetal
+  reactants:
+    Cream:
+      amount: 1
+    WeldingFuel:
+      amount: 1
+    Rum:
+      amount: 1
+  products:
+    Gunmetal: 3
+
+- type: reaction
+  id: LemonDrop
+  reactants:
+    Vodka:
+      amount: 2
+    Sugar:
+      amount: 2
+    JuiceLemon:
+      amount: 1
+  products:
+    LemonDrop: 5
+
+- type: reaction
+  id: GreenGrass
+  reactants:
+    BlueCuracao:
+      amount: 2
+    JuiceOrange:
+      amount: 3
+    Ice:
+      amount: 1
+  products:
+    GreenGrass: 6
+
+- type: reaction
+  id: ArsonistsBrew
+  minTemp: 373.15
+  reactants:
+    Thermite:
+      amount: 1
+    WeldingFuel:
+      amount: 1
+    CapsaicinOil:
+      amount: 1
+    Whiskey:
+      amount: 1
+    Phosphorus:
+      amount: 1
+  products:
+    ArsonistsBrew: 5
+
+- type: reaction
+  id: Mothamphetamine
+  reactants:
+    FourteenLoko:
+      amount: 1
+    EnergyDrink:
+      amount: 1
+    BlueCuracao:
+      amount: 1
+  products:
+    Mothamphetamine: 3
+
+- type: reaction
+  id: Mliko
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Beer:
+      amount: 1
+  products:
+    Mliko: 3
+
+- type: reaction
+  id: DoubleIceCream
+  reactants:
+    RootBeerFloat:
+      amount: 1
+    IceCream:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    DoubleIceCream: 3

@@ -3,7 +3,7 @@
   name: chat-emote-name-whine
   category: Vocal
   available: false
-  chatMessages: [whines.]
+  chatMessages: ["chat-emote-msg-whine"] # Triad: was literal `whines.`
   whitelist:
     components:
     - Vocal
@@ -19,7 +19,7 @@
   name: chat-emote-name-yip
   category: Vocal
   available: false
-  chatMessages: [yips.]
+  chatMessages: ["chat-emote-msg-yip"] # Triad: was literal `yips.`
   whitelist:
     components:
     - Vocal

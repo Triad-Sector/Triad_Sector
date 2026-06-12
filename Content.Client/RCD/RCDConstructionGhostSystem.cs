@@ -7,7 +7,9 @@ using Content.Shared.Maps;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
+using Content.Shared.RPD;
 using Content.Shared.RPD.Components;
+using Robust.Client.Graphics;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -26,6 +28,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     [Dependency] private readonly IPlacementManager _placementManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefs = default!;
     [Dependency] private readonly RCDSystem _rcdSystem = default!;
+    [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly IOverlayManager _overlayManager = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
     // Triad: RPD port from funky-station — pipe-layer-aware ghost for RPDs + mirror-prototype flip toggle.
@@ -36,6 +40,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     private EntityUid? _lastHeldRcd;
     // End Triad
     private Direction _placementDirection = default;
+    // Triad: last eye rotation streamed while deconstructing; null forces a resend on tool swap / re-equip.
+    private float? _lastSentEyeRotation;
 
     // Triad: RPD port from funky-station — bind R (EditorFlipObject) to toggle the mirrored variant of the
     // currently selected RCD recipe (e.g. gas filter flipped). Mirror state is networked to the server via
@@ -55,11 +61,15 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
                 new PointerInputCmdHandler(HandleFlip, outsidePrediction: true),
                 typeof(ConstructionSystem))
             .Register<RCDConstructionGhostSystem>();
+
+        // Triad: the layer-aim guide dots for deconstruct mode (construct draws its own via the placement mode).
+        _overlayManager.AddOverlay(new RPDDeconstructLayerGuideOverlay());
     }
 
     public override void Shutdown()
     {
         CommandBinds.Unregister<RCDConstructionGhostSystem>();
+        _overlayManager.RemoveOverlay<RPDDeconstructLayerGuideOverlay>();
         base.Shutdown();
     }
 
@@ -121,6 +131,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             // Triad: drop the cached flip state so we don't leak it onto whatever tool the player picks up next.
             _lastHeldRcd = null;
             _useMirrorPrototype = false;
+            _lastSentEyeRotation = null;
             // End Triad
             return;
         }
@@ -131,10 +142,27 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             _lastHeldRcd = heldEntity;
             _useMirrorPrototype = rcd.UseMirrorPrototype;
+            _lastSentEyeRotation = null; // Triad: force a fresh eye-rotation send for the newly held tool.
         }
         // End Triad
 
         var prototype = _protoManager.Index(rcd.ProtoId);
+
+        // Triad: the RPD deconstructs an existing pipe on click (via AfterInteract), so there's nothing to preview
+        // in Deconstruct mode, and the construct-style whole-tile ghost reads as targeting the tile rather than the
+        // pipe under it. Suppress the placer here; RCD deconstruct and RPD construct keep their ghost.
+        if (HasComp<RPDComponent>(heldEntity) && prototype.Mode == RcdMode.Deconstruct)
+        {
+            if (placerIsRCD)
+                _placementManager.Clear();
+
+            // Triad: no placement mode runs in deconstruct mode, so stream eye rotation here the way the construct
+            // placement mode does — the server reproduces the operator's cursor-aimed pipe layer from it to pick
+            // which covered pipe to chew. On change only, to stay off the per-frame network path.
+            StreamEyeRotation(heldEntity.Value);
+            return;
+        }
+        // End Triad
 
         // Update the direction the RCD prototype based on the placer direction
         if (_placementDirection != _placementManager.Direction)
@@ -183,5 +211,18 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
 
         _placementManager.Clear();
         _placementManager.BeginPlacing(newObjInfo);
+    }
+
+    // Triad: mirror of AlignRPDAtmosPipeLayers.UpdateEyeRotation for deconstruct mode, which runs no placement mode.
+    // Streams the local eye rotation to the server (on change) so RPDSystem can compute the cursor-aimed pipe layer
+    // when resolving which covered pipe to deconstruct.
+    private void StreamEyeRotation(EntityUid heldEntity)
+    {
+        var rotation = (float) _eyeManager.CurrentEye.Rotation.Theta;
+        if (_lastSentEyeRotation == rotation)
+            return;
+
+        _lastSentEyeRotation = rotation;
+        RaiseNetworkEvent(new RPDEyeRotationEvent(GetNetEntity(heldEntity), rotation));
     }
 }

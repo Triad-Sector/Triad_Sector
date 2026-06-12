@@ -5,6 +5,9 @@
 - type: Tag
   id: FitsInMedicalStash
 
+- type: Tag
+  id: FitsInFuelStash
+
 # Melee Weapons
 - type: Tag
   id: Cutlass

@@ -58,9 +58,7 @@
       - id: HydroponicsToolHatchet
 #      - id: ClothingOuterApronBotanist # Frontier
 #      - id: ClothingHandsGlovesLeather # Frontier
-      - id: HydroponicsToolClippers # Frontier
-      - id: HydroponicsToolSpade # Frontier
-      - id: EZNutrientChemistryBottle
+      - id: ChemistryBottleEZNutrient
         amount: 2
 
 - type: entity

@@ -16,6 +16,8 @@
 - type: speciesBaseSprites
   id: MobRodentiaSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobRodentiaHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
