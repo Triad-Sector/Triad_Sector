@@ -426,6 +426,12 @@
           map: [ "enum.SubfloorLayers.FirstLayer" ]
     - type: AtmosPipeLayers
       spriteRsiPaths: {}
+      # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml).
+      alternativePrototypes:
+        Primary: GasPort
+        Secondary: GasPortAlt1
+        Tertiary: GasPortAlt2
+      # End Triad
     - type: Appearance
     - type: PipeColorVisuals
     - type: GasPort

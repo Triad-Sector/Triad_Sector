@@ -136,6 +136,18 @@
       - material: Steel
         amount: 2
         doAfter: 1
+
+    - to: portAlt1
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+
+    - to: portAlt2
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
     # End Triad
 
     - to: radiator
@@ -467,6 +479,40 @@
       steps:
       - tool: Welding
         doAfter: 1
+
+  # Triad: alt-layer node pair for the canister port (see alt_layers.yml).
+  - node: portAlt1
+    entity: GasPortAlt1
+    edges:
+    - to: start
+      conditions:
+      - !type:EntityAnchored
+        anchored: false
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Welding
+        doAfter: 1
+
+  - node: portAlt2
+    entity: GasPortAlt2
+    edges:
+    - to: start
+      conditions:
+      - !type:EntityAnchored
+        anchored: false
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Welding
+        doAfter: 1
+  # End Triad
 
   - node: dualportventpump
     entity: GasDualPortVentPump
