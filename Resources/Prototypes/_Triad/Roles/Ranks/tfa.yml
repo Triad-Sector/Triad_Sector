@@ -13,3 +13,18 @@
   id: RankEmergencyResponder
   name: Emergency Medical Technician
   prefix: EMT
+
+- type: rank
+  id: RankTfaSeniorOfficer
+  name: Senior Security Officer
+  prefix: Sr. Off.
+
+- type: rank
+  id: RankTfaOfficer
+  name: Security Officer
+  prefix: Off.
+
+- type: rank
+  id: RankTfaJuniorOfficer
+  name: Junior Security Officer
+  prefix: Jr. Off.

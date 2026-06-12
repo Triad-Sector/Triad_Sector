@@ -20,14 +20,18 @@
   - AllAccessColonial
   # Triad End
   ranks: # Triad, ranks
-    RankEnforcer:
+    RankTfaSeniorOfficer:
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard # YOU ARE THE PROTECTOR OF THE STATION
+      time: 288000 # 80 hours
+    RankTfaOfficer:
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 90000 # 25 hours
-    RankJuniorEnforcer: []
+      time: 36000 # 10 hours
+    RankTfaJuniorOfficer: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
+    implants: [ TrackingImplant ] # Triad - re-add sec implant
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
