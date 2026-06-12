@@ -13305,7 +13305,7 @@ entities:
         43:
         - - Pressed
           - DoorBolt
-- proto: RobustHarvestChemistryBottle
+- proto: ChemistryBottleRobustHarvest
   entities:
   - uid: 1878
     components:

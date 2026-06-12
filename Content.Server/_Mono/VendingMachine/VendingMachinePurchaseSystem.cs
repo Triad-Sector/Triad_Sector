@@ -38,8 +38,7 @@ public sealed class VendingMachinePurchaseSystem : EntitySystem
         var purchaseComponent = AddComp<VendingMachinePurchaseComponent>(purchasedEntity);
         purchaseComponent.PurchaseGrid = vendingTransform.GridUid.Value;
         purchaseComponent.OriginalPurchasePrice = purchasePrice;
-
-        Dirty(purchasedEntity, purchaseComponent);
+        // Triad: component is server-only and no longer networked, so no Dirty() call.
     }
 
 

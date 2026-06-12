@@ -186,8 +186,8 @@
   - type: Appearance
   - type: GunRequiresWield
   - type: GunWieldBonus
-    minAngle: 10
-    maxAngle: 8
+    minAngle: -10 # Triad Edit -- Bugfix
+    maxAngle: -8  # Triad Edit -- Bugfix
 
 - type: entity
   name: CS Burner (12.7x99mm)
