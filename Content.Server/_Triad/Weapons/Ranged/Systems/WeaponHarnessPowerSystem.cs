@@ -49,7 +49,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         SubscribeLocalEvent<WeapHarnEquipEvent>(OnHarnEquip);
         SubscribeLocalEvent<WeapHarnUnequipEvent>(OnHarnUnequip);
         SubscribeLocalEvent<WeapHarnPowerCellChangeEvent>(OnHarnPowerCellChange);
-        SubscribeLocalEvent<WeapHarnComponent, GetVerbsEvent<AlternativeVerb>>(OnHarnGetAltVerbs);
+        SubscribeLocalEvent<WeapHarnComponent, GetVerbsEvent<Verb>>(OnHarnGetVerbs);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
     }
 
@@ -215,7 +215,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         UpdateHarnAlert((args.Harness, harness), wearer, true);
     }
 
-    private void OnHarnGetAltVerbs(Entity<WeapHarnComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    private void OnHarnGetVerbs(Entity<WeapHarnComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
             return;
@@ -225,7 +225,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
 
         var user = args.User;
 
-        args.Verbs.Add(new AlternativeVerb
+        args.Verbs.Add(new Verb
         {
             Text = ent.Comp.MagneticRetrievalEnabled
                 ? ent.Comp.DisableMagneticRetrievalVerb
