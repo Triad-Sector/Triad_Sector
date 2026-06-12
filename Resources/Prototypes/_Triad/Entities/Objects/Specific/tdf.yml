@@ -3,7 +3,7 @@
   parent: BaseItem
   id: TriadCommerceCredit
   suffix: 100 TCC
-  description: A token awarded to TDF personnel for turning in contraband. It can be exchanged in an TDF uplink device for a variety of law enforcement tools.
+  description: A token awarded to TDF personnel for turning in contraband or factional equipment. It can be exchanged in an TDF uplink device for a variety of tools.
   components:
   - type: Sprite
     sprite: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
