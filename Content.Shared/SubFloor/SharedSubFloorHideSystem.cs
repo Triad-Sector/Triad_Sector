@@ -88,9 +88,11 @@ namespace Content.Shared.SubFloor
         private void OnInteractionAttempt(EntityUid uid, SubFloorHideComponent component, ref GettingInteractedWithAttemptEvent args)
         {
             // No interactions with entities hidden under floor tiles...
-            // Triad: ...unless the user holds a tool flagged SubfloorReach (the RPD), so it can deconstruct the
-            // pipes its own t-ray reveals. Explosion/attack protection is unaffected (those gate on
-            // BlockInteractions directly).
+            // Triad: ...unless the user holds a tool flagged SubfloorReach (the RPD). This lifts the interaction
+            // block entirely while the tool is held: the motivating case is letting the RPD deconstruct the pipes
+            // its own t-ray reveals, but it also permits any other interaction with the covered entity (e.g. opening
+            // a buried filter's UI). Acceptable, the tool is in hand. Explosion/attack protection is unaffected
+            // (those gate on BlockInteractions directly, not through this attempt event).
             if (component.BlockInteractions && component.IsUnderCover && !HolderCanReachSubfloor(args.Uid))
                 args.Cancelled = true;
         }

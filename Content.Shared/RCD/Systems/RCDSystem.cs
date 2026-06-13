@@ -498,6 +498,9 @@ public class RCDSystem : EntitySystem
         // Triad: layer-capable pipe recipes coexist across layers, so the base-proto identity guard must not reject
         // them. The layer-aware verdict comes from RCDConstructionAttemptEvent below (RPD) and the PipeRestrictOverlap
         // backstop. Knowable from the recipe + base proto alone, with no reference to RPDComponent.
+        // NB: today only the RPD has layer-capable (pipe) recipes, so the RCDConstructionAttemptEvent veto always
+        // fires for these. If a non-RPD tool ever gets a layer-capable recipe it loses that veto and leans solely on
+        // the PipeRestrictOverlap anchor-time backstop, which only catches same-(direction, layer) overlap.
         var layerCapable = !prototype.NoLayers
             && prototype.Prototype != null
             && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
