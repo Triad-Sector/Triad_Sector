@@ -246,7 +246,7 @@
   suffix: AI, Drone-Quake
   components:
   - type: HTN
-    sleepPlayerCheckRangeOverride: 8000
+    sleepPlayerCheckRangeOverride: 4000
     rootTask:
       task: DroneCompoundQuake
 

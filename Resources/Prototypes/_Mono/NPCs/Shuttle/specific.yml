@@ -240,7 +240,7 @@
   parent: NearbyShuttleTargets
   query:
   - !type:NearbyNpcTargetsQuery
-    range: 8000
+    range: 4000
 
 - type: htnCompound
   id: DroneCompoundQuake
