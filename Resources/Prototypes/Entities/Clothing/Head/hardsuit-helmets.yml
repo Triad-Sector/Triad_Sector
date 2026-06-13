@@ -764,7 +764,7 @@
       - state: equipped-head-unshaded
         shader: unshaded
       head-vox:
-      - state: equipped-head-light-vox
+      - state: equipped-head-vox
       - state: equipped-head-unshaded-vox
         shader: unshaded
       head-vulpkanin: # Mono
