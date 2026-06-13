@@ -97,8 +97,11 @@ public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
         if (healable.Damage.DamageDict is null)
             return false;
 
+        // Triad: the target may not track every damage type the welder can heal (e.g. a silicon
+        // whose damage container has no "Radiation" key). Indexing by key threw KeyNotFoundException;
+        // TryGetValue treats an untracked type as zero damage instead of crashing the tick.
         foreach (var type in healable.Damage.DamageDict)
-            if (damageable.Comp.Damage.DamageDict[type.Key].Value > 0)
+            if (damageable.Comp.Damage.DamageDict.TryGetValue(type.Key, out var value) && value.Value > 0)
                 return true;
 
         // In case the healer is a humanoid entity with targeting, we run the check on the targeted parts.
@@ -109,7 +112,7 @@ public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
         foreach (var part in _bodySystem.GetBodyChildrenOfType(damageable, targetType, symmetry: targetSymmetry))
             if (TryComp<DamageableComponent>(part.Id, out var damageablePart))
                 foreach (var type in healable.Damage.DamageDict)
-                    if (damageablePart.Damage.DamageDict[type.Key].Value > 0)
+                    if (damageablePart.Damage.DamageDict.TryGetValue(type.Key, out var partValue) && partValue.Value > 0)
                         return true;
 
         return false;
