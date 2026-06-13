@@ -1,16 +1,12 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from shiptest-ss13/Shiptest. Vox states made by Flareguy for SS14. hydrakin sprite by Zethine / @synthetic_086 (discord), Avali state by DocMoth (Github). Vox states made by Flareguy for SS14.",
+    "copyright": "Taken from shiptest-ss13/Shiptest. Vox states made by Flareguy for SS14. hydrakin sprite by Zethine / @synthetic_086 (discord), Avali state by DocMoth (Github).",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
-        {
-            "name": "equipped-HELMET-vox",
-            "directions": 4
-        },
         {
             "name": "icon"
         },
@@ -19,15 +15,15 @@
             "directions": 4
         },
         {
+            "name": "equipped-HELMET-vox",
+            "directions": 4
+        },
+        {
             "name": "equipped-HELMET-hydrakin",
             "directions": 4
         },
         {
-            "name": "on-equipped-HELMET-avali",
-            "directions": 4
-        },
-        {
-            "name": "off-equipped-HELMET-avali",
+            "name": "equipped-HELMET-avali",
             "directions": 4
         }
     ]

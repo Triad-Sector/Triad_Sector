@@ -55,8 +55,8 @@
       - state: equipped-head-light-avali
         shader: unshaded
       head-vulpkanin: # Mono
-      - state: equipped-head-vulpkanin
-      - state: equipped-head-unshaded-vulpkanin
+      - state: equipped-head-light-vulpkanin
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -74,6 +74,7 @@
       head-vulpkanin: # Mono
       - state: equipped-head-vulpkanin
       - state: equipped-head-unshaded-vulpkanin
+        shader: unshaded
   - type: PointLight
     color: "#adffe6"
   - type: PressureProtection
@@ -761,6 +762,14 @@
       head:
       - state: equipped-head
       - state: equipped-head-unshaded
+        shader: unshaded
+      head-vox:
+      - state: equipped-head-light-vox
+      - state: equipped-head-unshaded-vox
+        shader: unshaded
+      head-vulpkanin: # Mono
+      - state: equipped-head-vulpkanin
+      - state: equipped-head-unshaded-vulpkanin
         shader: unshaded
   - type: PointLight
     color: orange
