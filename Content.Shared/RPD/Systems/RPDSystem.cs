@@ -16,15 +16,13 @@ namespace Content.Shared.RPD.Systems;
 
 /// <summary>
 /// Adds RPD-specific behavior on top of the generic RCD pipeline. Subscribes to <c>RCDSystem</c>'s extensibility
-/// events to (a) gate deconstruction to RPD-whitelisted atmos hardware only, (b) swap the spawn prototype to the
-/// pipe-layer alternative chosen by cursor quadrant, and (c) stain spawned pipes/atmos hardware with the
-/// operator's selected color. The stain is an unconditional <c>PipeColorVisuals.Color</c> appearance write —
-/// entities without a <c>PipeColorVisuals</c> visualizer (air alarms, air sensors) absorb it harmlessly.
+/// events to (a) gate deconstruction to RPD-whitelisted atmos hardware only and (b) swap the spawn prototype to the
+/// pipe-layer alternative chosen by cursor quadrant. The operator's pipe-color stain lives server-side in
+/// <c>RPDPipeColorSystem</c>, which owns the canonical <c>AtmosPipeColorComponent</c>.
 /// </summary>
 public sealed class RPDSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAtmosPipeLayersSystem _pipeLayers = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -35,7 +33,6 @@ public sealed class RPDSystem : EntitySystem
 
         SubscribeLocalEvent<RPDComponent, RCDDeconstructAttemptEvent>(OnDeconstructAttempt);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnAttemptEvent>(OnObjectSpawnAttempt);
-        SubscribeLocalEvent<RPDComponent, RCDObjectSpawnedEvent>(OnObjectSpawned);
         SubscribeLocalEvent<RPDComponent, RCDDeconstructTargetResolveEvent>(OnDeconstructTargetResolve);
         SubscribeLocalEvent<RPDComponent, RPDColorChangeMessage>(OnColorChange);
 
@@ -88,22 +85,6 @@ public sealed class RPDSystem : EntitySystem
 
         if (_pipeLayers.TryGetAlternativePrototype(atmosPipeLayers, ent.Comp.CurrentLayer, out var layerProto))
             args.SpawnProto = layerProto.Id;
-    }
-
-    /// <summary>
-    /// Applies the operator's selected pipe-color stain to the freshly spawned entity. The default key skips the
-    /// write entirely; otherwise the appearance data is set unconditionally and the <c>PipeColorVisuals</c>
-    /// visualizer (on every pipe/pump/vent/valve/mixer/heat-exchanger prototype) picks it up. Entities without
-    /// the visualizer (air alarms, air sensors) absorb the appearance bytes harmlessly — cheaper than a per-spawn
-    /// component check.
-    /// </summary>
-    private void OnObjectSpawned(Entity<RPDComponent> ent, ref RCDObjectSpawnedEvent args)
-    {
-        if (ent.Comp.PipeColor == RPDPalette.DefaultKey)
-            return;
-
-        if (RPDPalette.Colors.TryGetValue(ent.Comp.PipeColor, out var pipeColor) && pipeColor is { } color)
-            _appearance.SetData(args.Spawned, PipeColorVisuals.Color, color);
     }
 
     /// <summary>
