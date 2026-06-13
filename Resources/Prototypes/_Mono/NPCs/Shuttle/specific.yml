@@ -237,7 +237,6 @@
 
 - type: utilityQuery
   id: NearbyShuttleTargetsLongRange
-  parent: NearbyShuttleTargets
   query:
   - !type:NearbyNpcTargetsQuery
     range: 4000
