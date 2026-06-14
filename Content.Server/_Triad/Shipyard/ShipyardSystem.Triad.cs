@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Server._Triad.Shipyard;
 using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent.ShipShields;
 using Content.Shared._NF.Shipyard;
@@ -13,6 +14,9 @@ namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
+    [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSave = default!;
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+
     /// <summary>
     /// Writes YAML data to a temporary file and attempts the same initial strict load path as purchase-from-file.
     /// </summary>

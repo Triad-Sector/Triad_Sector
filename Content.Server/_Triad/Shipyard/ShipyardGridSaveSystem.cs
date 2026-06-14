@@ -78,7 +78,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     private EntityQuery<HLPersistOnShipSaveComponent> _persistOnSaveQuery;
     private EntityQuery<TransformComponent> _transformQuery;
 
-
     public override void Initialize()
     {
         base.Initialize();

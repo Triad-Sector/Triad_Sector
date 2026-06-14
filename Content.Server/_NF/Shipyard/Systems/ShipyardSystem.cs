@@ -19,12 +19,10 @@ using Content.Shared.Mobs.Components;
 using Robust.Shared.Containers;
 using Content.Server._NF.Station.Components;
 using Content.Server.Storage.Components;
-using Content.Server._Triad.Shipyard;
 using Content.Shared._Mono.Shipyard;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Utility;
 using Robust.Shared.ContentPack;
-using Content.Shared.Timing;
 using Robust.Shared.Physics;
 using Robust.Shared.Map.Components;
 
@@ -45,8 +43,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IResourceManager _resources = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!; // For safe container removal before deletion
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSave = default!; // Triad
 
     private EntityQuery<TransformComponent> _transformQuery;
 
@@ -56,7 +52,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     private ISawmill _sawmill = default!;
     private bool _enabled;
     private float _baseSaleRate;
-    private readonly Dictionary<EntityUid, TimeSpan> _lastLoadCharge = new(); // Per-player load charge cooldown
+
 
     // The type of error from the attempted sale of a ship.
     public enum ShipyardSaleError
