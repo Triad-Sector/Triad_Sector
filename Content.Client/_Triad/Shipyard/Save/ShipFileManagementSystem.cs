@@ -60,7 +60,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
         _sawmill = _log.GetSawmill("shipsave_file_management");
 
         SubscribeNetworkEvent<SendShipSaveDataClientMessage>(HandleSaveShipDataClient);
-        SubscribeNetworkEvent<SendAvailableShipsMessage>(HandleAvailableShipsMessage);
         SubscribeNetworkEvent<DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
         // Triad: tamper protection
         SubscribeNetworkEvent<MigrateShipFileMessage>(OnMigrateShipFile);
@@ -76,9 +75,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
             LoadExistingShips();
         }
         // Skip reload if ships already loaded by previous instance
-
-        // Request available ships from server
-        RaiseNetworkEvent(new RequestAvailableShipsMessage());
     }
 
     private void EnsureSavedShipsDirectoryExists()
@@ -119,26 +115,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
 
         // Trigger UI update
         ShipsUpdated?.Invoke();
-    }
-
-    private void HandleAvailableShipsMessage(SendAvailableShipsMessage message)
-    {
-        // Don't clear locally loaded ships - server message is for server-side ships only
-        // The client handles local ship files independently
-        _sawmill.Debug($"Instance #{_instanceId}: Received {message.ShipNames.Count} available ships from server (not clearing local ships)");
-        _sawmill.Debug($"Instance #{_instanceId}: Current state before processing: {AvailableShips.Count} ships, {CachedShipData.Count} cached");
-
-        // Only add server ships that aren't already in our local list
-        foreach (var serverShip in message.ShipNames)
-        {
-            if (!AvailableShips.Contains(serverShip))
-            {
-                AvailableShips.Add(serverShip);
-                _sawmill.Debug($"Instance #{_instanceId}: Added server ship: {serverShip}");
-            }
-        }
-
-        _sawmill.Info($"Instance #{_instanceId}: Final state after processing: {AvailableShips.Count} ships");
     }
 
     public async Task<string?> GetShipYamlData(string filePath)
