@@ -184,6 +184,9 @@
   markingCategory: Tail
   speciesRestriction: [Oni] #Triad
   sprites:
+  # Triad: base tail silhouette (sourced from ADT parts.rsi:tail; dropped during the original import, leaving only the overlay)
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: demon_tail_base
   - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
     state: demon_tail
 
@@ -193,6 +196,9 @@
   markingCategory: Tail
   speciesRestriction: [Oni] #Triad
   sprites:
+  # Triad: base tail silhouette (sourced from ADT parts.rsi:tail; dropped during the original import, leaving only the overlay)
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: demon_tail_base
   - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
     state: long
 
@@ -202,5 +208,62 @@
   markingCategory: Tail
   speciesRestriction: [Oni] #Triad
   sprites:
+  # Triad: base tail silhouette (sourced from ADT parts.rsi:tail; dropped during the original import, leaving only the overlay)
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: demon_tail_base
   - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
     state: up
+
+# Triad: animated "waggin" demon tails (ADT / Corvax-Wega) + plain base-only options, re-sourced from AdventureTimeSS14.
+# Each animated tail layers the animated base silhouette (tail_waggin) under its animated pattern overlay, frame-for-frame.
+- type: marking
+  id: DemomTail1Animated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Oni] #Triad
+  sprites:
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: tail_waggin
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: demon_tail_waggin
+
+- type: marking
+  id: DemomTailLongAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Oni] #Triad
+  sprites:
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: tail_waggin
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: long_waggin
+
+- type: marking
+  id: DemomTailUpAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Oni] #Triad
+  sprites:
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: tail_waggin
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: up_waggin
+
+# Plain base-only tails: the silhouette with no pattern overlay (single color).
+- type: marking
+  id: DemomTailPlain
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Oni] #Triad
+  sprites:
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: demon_tail_base
+
+- type: marking
+  id: DemomTailPlainAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Oni] #Triad
+  sprites:
+  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
+    state: tail_waggin

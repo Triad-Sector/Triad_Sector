@@ -1478,3 +1478,96 @@ Entries:
   id: 2288
   time: '2026-06-11T22:51:16.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/161
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Bomber jackets are now insulative, like winter coats
+  id: 2289
+  time: '2026-06-13T00:32:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/214
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Decorative ship greebles are now constructable and deconstructable:
+        antennas, radar panels, and ELINT. These still have no function. Be
+        aware that they have an offset the construction ghost doesn't show,
+        allowing you to build "off the grid".
+  id: 2290
+  time: '2026-06-13T23:10:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/213
+- author: RemervKeberb
+  changes:
+    - type: Add
+      message: a new drone to Far Reaches IV
+  id: 2291
+  time: '2026-06-14T00:29:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/218
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: >-
+        Avali, Protogen and Hydrakin cubes have been added to the biocube
+        fabricator.
+  id: 2292
+  time: '2026-06-14T00:37:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/215
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: >-
+        Chameleon Projector will no longer cause you to be permanently slowed
+        down
+  id: 2293
+  time: '2026-06-14T01:22:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/221
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: The public transit shuttle no longer gets stuck and unable to depart.
+    - type: Fix
+      message: Disposal units once again trigger their linked devices for automation.
+    - type: Fix
+      message: >-
+        Welding-repairing a silicon no longer errors when the target is missing
+        a damage type the welder can heal.
+  id: 2294
+  time: '2026-06-14T02:36:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/220
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Character traits are now grouped into categories (Physical, Medical,
+        Mental, Disabilities, Accents, Languages), each with its own limits, on
+        top of an overall trait-point budget. Negative-cost traits grant extra
+        points to spend.
+    - type: Tweak
+      message: >-
+        The Traits menu now opens with categories collapsed and supports
+        searching.
+    - type: Tweak
+      message: >-
+        Existing trait selections have been reset as part of the trait rework;
+        please reselect your traits.
+  id: 2295
+  time: '2026-06-14T03:53:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/179
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: 'Revert the #220 PR because issues'
+  id: 2296
+  time: '2026-06-14T05:25:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/223
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        An estimated appraisal of your ship will be displayed when you select a
+        saved ship in the shipyard console. This value will not be visible if
+        your ship was saved pre-tamper update. Resaving your ship will fix this,
+        however.
+  id: 2297
+  time: '2026-06-14T13:28:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/222

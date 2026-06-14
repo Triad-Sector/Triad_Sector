@@ -391,6 +391,19 @@ namespace Content.Client.Shuttles.Save
             }
         }
 
+        // Useful for gathering fields inside of a ship YML file, like the stored appraisal value
+        public string GetKeyValueFromPath(string filePath, string key)
+        {
+            using var reader = _resourceManager.UserData.OpenText(new(filePath));
+            var content = reader.ReadToEnd();
+
+            // lazy loading
+            var lines = content.Split('\n');
+            var val = lines.FirstOrDefault(l => l.Trim().StartsWith($"{key}:"))?.Split(':')[1].Trim() ?? "Unknown";
+
+            return val;
+        }
+
         // Update ship index periodically instead of on every change
         public void FlushPendingIndexUpdates()
         {
