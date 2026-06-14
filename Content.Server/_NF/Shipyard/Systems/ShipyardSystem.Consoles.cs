@@ -54,7 +54,6 @@ using Content.Server.StationEvents.Components;
 using Content.Shared._Mono.Company;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Shuttles.Components;
-using Content.Shared._NF.Shuttles.Save; // Triad
 using Content.Shared._Triad.Shipyard.Save; // Triad
 using Robust.Shared.Player;
 using Content.Shared._Mono.Ships.Components;

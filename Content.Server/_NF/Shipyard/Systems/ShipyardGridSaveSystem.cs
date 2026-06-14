@@ -12,7 +12,6 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Mind.Components; // HardLight
-using Content.Shared._NF.Shuttles.Save; // For SendShipSaveDataClientMessage
 using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
 using Robust.Server.Player;
 using Robust.Shared.Containers;

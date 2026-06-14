@@ -1,7 +1,4 @@
-using Content.Shared._NF.Shuttles.Save;
-// Triad: tamper protection
 using Content.Shared._Triad.Shipyard.Save;
-// End Triad
 using System.Threading.Tasks;
 using System.Linq;
 using Robust.Shared.ContentPack;
@@ -16,9 +13,7 @@ public sealed class ShipFileManagementSystem : EntitySystem
 
     // Static data shared across all instances to handle multiple system instances
     private static readonly Dictionary<string, string> CachedShipData = new();
-    private static readonly Dictionary<string, (string shipName, DateTime timestamp)> ShipMetadataCache = new();
 
-    // Triad start
     /// <summary>
     ///     Holds all file paths whitelisted for <see cref="DeleteLocalShipFileMessage"/>
     /// </summary>
@@ -27,7 +22,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
     ///     This prevents a rogue server from deleting non-ship-related files using path traversal trick shots
     /// </remarks>
     private static readonly List<string> DeletableShipPaths = new();
-    // Triad end
 
     private static readonly List<string> AvailableShips = new();
     private static event Action? ShipsUpdated;
@@ -67,9 +61,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
 
         SubscribeNetworkEvent<SendShipSaveDataClientMessage>(HandleSaveShipDataClient);
         SubscribeNetworkEvent<SendAvailableShipsMessage>(HandleAvailableShipsMessage);
-        SubscribeNetworkEvent<ShipConvertedToSecureFormatMessage>(HandleShipConvertedToSecureFormat);
-        SubscribeNetworkEvent<AdminRequestPlayerShipsMessage>(HandleAdminRequestPlayerShips);
-        SubscribeNetworkEvent<AdminRequestShipDataMessage>(HandleAdminRequestShipData);
         SubscribeNetworkEvent<DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
         // Triad: tamper protection
         SubscribeNetworkEvent<MigrateShipFileMessage>(OnMigrateShipFile);
@@ -148,76 +139,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
         }
 
         _sawmill.Info($"Instance #{_instanceId}: Final state after processing: {AvailableShips.Count} ships");
-    }
-
-    private void HandleShipConvertedToSecureFormat(ShipConvertedToSecureFormatMessage message)
-    {
-        _sawmill.Warning($"Legacy ship '{message.ShipName}' was automatically converted to secure format by server");
-
-        // Find and overwrite the original file with the converted version
-        var originalFile = AvailableShips.FirstOrDefault(ship =>
-            ship.Contains(message.ShipName) || CachedShipData.ContainsKey(ship) &&
-            CachedShipData[ship].Contains($"shipName: {message.ShipName}"));
-
-        if (originalFile != null)
-        {
-            try
-            {
-                // Overwrite the original file with converted data
-                using var writer = _resourceManager.UserData.OpenWriteText(new(originalFile));
-                writer.Write(message.ConvertedYamlData);
-
-                // Update cached data
-                CachedShipData[originalFile] = message.ConvertedYamlData;
-
-                _sawmill.Info($"Successfully overwrote legacy ship file '{originalFile}' with secure format");
-                _sawmill.Info($"Ship '{message.ShipName}' is now protected against tampering");
-            }
-            catch (Exception ex)
-            {
-                _sawmill.Error($"Failed to overwrite legacy ship file '{originalFile}': {ex.Message}");
-                _sawmill.Warning($"Legacy ship '{message.ShipName}' conversion failed - please manually re-save the ship to get secure format");
-            }
-        }
-        else
-        {
-            _sawmill.Warning($"Could not find original file for converted ship '{message.ShipName}' - creating new file");
-
-            // Create a new file with the converted data
-            var fileName = $"/Exports/{message.ShipName}_converted_{DateTime.Now:yyyyMMdd_HHmmss}.yml";
-            try
-            {
-                using var writer = _resourceManager.UserData.OpenWriteText(new(fileName));
-                writer.Write(message.ConvertedYamlData);
-
-                // Add to cache and available ships
-                CachedShipData[fileName] = message.ConvertedYamlData;
-                if (!AvailableShips.Contains(fileName))
-                {
-                    AvailableShips.Add(fileName);
-                }
-
-                _sawmill.Info($"Created new secure format file for converted ship: {fileName}");
-            }
-            catch (Exception ex)
-            {
-                _sawmill.Error($"Failed to create converted ship file: {ex.Message}");
-            }
-        }
-    }
-
-    public async Task LoadShipFromFile(string filePath)
-    {
-        var yamlData = await GetShipYamlData(filePath);
-        if (yamlData != null)
-        {
-            RaiseNetworkEvent(new RequestLoadShipMessage(yamlData));
-
-            // Extract ship name for the event (extract filename without path and extension)
-            var shipName = ExtractFileNameWithoutExtension(filePath);
-            ShipLoaded?.Invoke(shipName);
-        }
-        await Task.CompletedTask;
     }
 
     public async Task<string?> GetShipYamlData(string filePath)
@@ -313,19 +234,7 @@ public sealed class ShipFileManagementSystem : EntitySystem
                     && !filePath.Contains("ship_index"))
                 {
                     if (!AvailableShips.Contains(filePath))
-                    {
                         AvailableShips.Add(filePath);
-
-                        // Use lazy loading - only cache metadata for now
-                        try
-                        {
-                            CacheShipMetadata(filePath);
-                        }
-                        catch (Exception shipEx)
-                        {
-                            _sawmill.Error($"Failed to cache metadata for {filePath}: {shipEx.Message}");
-                        }
-                    }
                 }
             }
 
@@ -368,29 +277,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
         }
     }
 
-    private void CacheShipMetadata(string filePath)
-    {
-        try
-        {
-            using var reader = _resourceManager.UserData.OpenText(new(filePath));
-            var content = reader.ReadToEnd();
-
-            // Parse metadata without caching full content (lazy loading)
-            var lines = content.Split('\n');
-            var shipName = lines.FirstOrDefault(l => l.Trim().StartsWith("shipName:"))?.Split(':')[1].Trim() ?? "Unknown";
-            var timestampStr = lines.FirstOrDefault(l => l.Trim().StartsWith("timestamp:"))?.Split(':', 2)[1].Trim() ?? "";
-
-            if (DateTime.TryParse(timestampStr, out var timestamp))
-            {
-                ShipMetadataCache[filePath] = (shipName, timestamp);
-            }
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Warning($"Failed to cache metadata for {filePath}: {ex.Message}");
-        }
-    }
-
     // Useful for gathering fields inside of a ship YML file, like the stored appraisal value
     public string GetKeyValueFromPath(string filePath, string key)
     {
@@ -415,18 +301,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
 
     public List<string> GetSavedShipFiles()
     {
-        /*
-        _sawmill.Info($"GetSavedShipFiles called on Instance #{_instanceId}: returning {_staticAvailableShips.Count} ships");
-        _sawmill.Info($"Cache contains {_staticCachedShipData.Count} cached ships");
-        foreach (var ship in _staticAvailableShips)
-        {
-            _sawmill.Info($"  - Available: {ship}");
-        }
-        foreach (var cached in _staticCachedShipData.Keys)
-        {
-            _sawmill.Info($"  - Cached: {cached}");
-        }*/
-        // Return list of ships available from server and cached locally
         return new List<string>(AvailableShips);
     }
 
@@ -438,73 +312,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
     public static string? GetShipData(string shipName)
     {
         return CachedShipData.TryGetValue(shipName, out var data) ? data : null;
-    }
-
-    private void HandleAdminRequestPlayerShips(AdminRequestPlayerShipsMessage message)
-    {
-        try
-        {
-            // Only respond if this is our player ID
-            var playerManager = IoCManager.Resolve<Robust.Client.Player.IPlayerManager>();
-            if (playerManager.LocalSession?.UserId != message.PlayerId)
-                return;
-
-            var ships = new List<(string filename, string shipName, DateTime timestamp)>();
-
-            // Use cached metadata instead of re-parsing YAML
-            foreach (var filename in AvailableShips)
-            {
-                if (ShipMetadataCache.TryGetValue(filename, out var metadata))
-                {
-                    ships.Add((filename, metadata.shipName, metadata.timestamp));
-                }
-                else
-                {
-                    // Fallback: cache metadata if not already cached
-                    try
-                    {
-                        CacheShipMetadata(filename);
-                        if (ShipMetadataCache.TryGetValue(filename, out metadata))
-                        {
-                            ships.Add((filename, metadata.shipName, metadata.timestamp));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _sawmill.Warning($"Failed to get metadata for {filename}: {ex.Message}");
-                    }
-                }
-            }
-
-            // Send response back to admin
-            RaiseNetworkEvent(new AdminSendPlayerShipsMessage(ships, message.AdminName));
-            _sawmill.Info($"Sent {ships.Count} ship details to admin {message.AdminName}");
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to handle admin request for player ships: {ex.Message}");
-        }
-    }
-
-    private void HandleAdminRequestShipData(AdminRequestShipDataMessage message)
-    {
-        try
-        {
-            // Check if we have the requested ship data
-            if (CachedShipData.TryGetValue(message.ShipFilename, out var shipData))
-            {
-                RaiseNetworkEvent(new AdminSendShipDataMessage(shipData, message.ShipFilename, message.AdminName));
-                _sawmill.Info($"Sent ship data for {message.ShipFilename} to admin {message.AdminName}");
-            }
-            else
-            {
-                _sawmill.Warning($"Admin {message.AdminName} requested ship data for {message.ShipFilename} but file not found");
-            }
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to handle admin request for ship data: {ex.Message}");
-        }
     }
 
     /// <summary>
@@ -571,7 +378,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
 
             // Remove original entry from caches and list (do not add backup to menu)
             CachedShipData.Remove(message.FilePath);
-            ShipMetadataCache.Remove(message.FilePath);
             AvailableShips.Remove(message.FilePath);
 
             // Mark index update and notify UI
@@ -635,8 +441,6 @@ public sealed class ShipFileManagementSystem : EntitySystem
             // the stale pre-migration bytes behind (a miss is a harmless no-op).
             CachedShipData.Remove(ev.TargetPath);
             CachedShipData.Remove(path);
-            ShipMetadataCache.Remove(ev.TargetPath);
-            ShipMetadataCache.Remove(path);
 
             _sawmill.Info($"Migrated local ship file to new envelope format: {path}");
         }
