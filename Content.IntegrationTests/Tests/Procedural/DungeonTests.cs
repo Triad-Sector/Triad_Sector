@@ -1,6 +1,10 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Content.Server.Procedural;
 using Content.Shared.Procedural;
+using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 
@@ -9,6 +13,52 @@ namespace Content.IntegrationTests.Tests.Procedural;
 [TestOf(typeof(DungeonSystem))]
 public sealed class DungeonTests
 {
+    // Triad TEMP: drives a real NFVGRoidBasalt generation so the SetTilesChunked measurement can confirm the noise
+    // commit no longer stalls a tick. Delete with the measurement instrumentation.
+    [Test]
+    public async Task ProfileVgroidDungeonGen()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        var server = pair.Server;
+        var entManager = server.ResolveDependency<IEntityManager>();
+
+        async Task<Task<List<Dungeon>>> StartGen(string label)
+        {
+            Task<List<Dungeon>>? task = null;
+            await server.WaitPost(() =>
+            {
+                var mapSys = entManager.System<SharedMapSystem>();
+                var dungeonSys = entManager.System<DungeonSystem>();
+                var config = server.ResolveDependency<IPrototypeManager>().Index<DungeonConfigPrototype>("NFVGRoidBasalt");
+
+                var mapUid = mapSys.CreateMap(out var mapId);
+                var gridUid = entManager.CreateEntityUninitialized(null, new EntityCoordinates(mapUid, Vector2i.Zero));
+                var grid = entManager.AddComponent<MapGridComponent>(gridUid);
+                entManager.InitializeAndStartEntity(gridUid, mapId);
+
+                task = dungeonSys.GenerateDungeonAsync(config, label, gridUid, grid, Vector2i.Zero, 1337);
+            });
+            return task!;
+        }
+
+        async Task PumpUntil(Task<List<Dungeon>> task)
+        {
+            var ticks = 0;
+            while (!task.IsCompleted && ticks < 20000)
+            {
+                await server.WaitRunTicks(10);
+                ticks += 10;
+            }
+
+            if (task.IsFaulted)
+                Assert.Fail($"Dungeon gen threw: {task.Exception}");
+            Assert.That(task.IsCompletedSuccessfully, Is.True, $"Dungeon gen did not finish within {ticks} ticks");
+        }
+
+        await PumpUntil(await StartGen("COLD"));
+        await PumpUntil(await StartGen("WARM"));
+    }
+
     [Test]
     public async Task TestDungeonRoomPackBounds()
     {

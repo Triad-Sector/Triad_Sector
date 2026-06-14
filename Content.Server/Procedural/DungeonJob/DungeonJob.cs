@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Decals;
@@ -28,6 +29,27 @@ namespace Content.Server.Procedural.DungeonJob;
 public sealed partial class DungeonJob : Job<List<Dungeon>>
 {
     public bool TimeSlice = true;
+
+    // Triad: how many grid chunks' worth of tiles to commit per SetTiles call in SetTilesChunked. A single bulk
+    // commit of a whole noise floor measured ~125ms locally: SetTiles regenerates fixtures + broadphase proxies for
+    // every touched chunk in one un-yieldable call (worst-cased on shuttle grids, where the fixture density diff
+    // always misses and forces a full destroy+recreate). Batching by a few chunks with a yield between keeps each
+    // commit well under a frame at the cost of a little wall-clock.
+    // Triad TEMP: static (not const) so the `dungeonbatch` debug command can toggle chunking for the live A/B.
+    // Revert to `private const int ... = 4;` before the PR.
+    public static int TileCommitChunkBatch = 4;
+
+    // Triad: cell size used to group tiles before committing. Mirrors the engine's default MapGridComponent.ChunkSize
+    // (internal, so not readable from content); dungeon grids are created with the default, so 16 keeps each batch
+    // aligned to whole grid chunks and avoids regenerating a chunk's collision in two separate commits.
+    private const int TileCommitCellSize = 16;
+
+    // Triad TEMP measurement: time each yield-to-yield span to rank the un-yieldable blocks. Strip before PR.
+    private long _spanStart;
+    private string _phase = "init";
+    private double _worstSpanMs;
+    private string _worstSpanPhase = "none";
+    private const double SpanLogThresholdMs = 3.0;
 
     private readonly IEntityManager _entManager;
     private readonly IPrototypeManager _prototype;
@@ -148,6 +170,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     protected override async Task<List<Dungeon>?> Process()
     {
         _sawmill.Info($"Generating dungeon {_genId} with seed {_seed} on {_entManager.ToPrettyString(_gridUid)}"); // Frontier: _gen<_genId
+        _spanStart = Stopwatch.GetTimestamp(); // Triad TEMP
         _grid.CanSplit = false;
         var random = new Random(_seed);
         var position = (_position + random.NextPolarVector2(_gen.MinOffset, _gen.MaxOffset)).Floored();
@@ -179,6 +202,8 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
             npcSystem.WakeNPC(npc.Owner, npc.Comp);
         }
 
+        _sawmill.Warning($"[dungeon-prof] {_genId} DONE worstSpan={_worstSpanMs:F1}ms@{_worstSpanPhase}"); // Triad TEMP
+
         return dungeons;
     }
 
@@ -192,6 +217,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
         Random random)
     {
         _sawmill.Debug($"Doing postgen {layer.GetType()} for {_gen} with seed {_seed}");
+        _phase = layer.GetType().Name; // Triad TEMP
 
         // If there's a way to just call the methods directly for the love of god tell me.
         // Some of these don't care about reservedtiles because they only operate on dungeon tiles (which should
@@ -318,9 +344,76 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     /// </summary>
     private async Task SuspendDungeon()
     {
-        if (!TimeSlice)
+        // Triad TEMP: close out the synchronous span ending at this checkpoint.
+        var elapsedMs = (Stopwatch.GetTimestamp() - _spanStart) * 1000.0 / Stopwatch.Frequency;
+        if (elapsedMs > _worstSpanMs)
+        {
+            _worstSpanMs = elapsedMs;
+            _worstSpanPhase = _phase;
+        }
+        if (elapsedMs >= SpanLogThresholdMs)
+            _sawmill.Warning($"[dungeon-prof] {_genId} span phase={_phase} {elapsedMs:F1}ms");
+
+        if (TimeSlice)
+            await SuspendIfOutOfTime();
+
+        _spanStart = Stopwatch.GetTimestamp(); // Triad TEMP
+    }
+
+    /// <summary>
+    /// Triad: commits tiles to the grid in chunk-aligned batches, yielding between batches, so the per-chunk
+    /// fixture/broadphase rebuild inside <see cref="SharedMapSystem.SetTiles(EntityUid, MapGridComponent, List{ValueTuple{Vector2i, Tile}})"/>
+    /// can't stall a single tick. Tiles are grouped by grid chunk so no chunk is split across two commits (which
+    /// would regenerate that chunk's collision twice).
+    /// </summary>
+    private async Task SetTilesChunked(List<(Vector2i Index, Tile Tile)> tiles)
+    {
+        if (tiles.Count == 0)
             return;
 
-        await SuspendIfOutOfTime();
+        // Group tiles by chunk without allocating a dictionary + a list per chunk: sort in place so same-chunk tiles
+        // are contiguous, then slice. The sort only reorders the commit (contents and final grid are unchanged), and
+        // callers must not depend on the input order after calling this.
+        tiles.Sort(static (a, b) =>
+        {
+            var ca = SharedMapSystem.GetChunkIndices(a.Index, TileCommitCellSize);
+            var cb = SharedMapSystem.GetChunkIndices(b.Index, TileCommitCellSize);
+            var cmp = ca.Y.CompareTo(cb.Y);
+            return cmp != 0 ? cmp : ca.X.CompareTo(cb.X);
+        });
+
+        var batch = new List<(Vector2i, Tile)>();
+        var chunksInBatch = 0;
+        var haveLast = false;
+        var lastChunk = Vector2i.Zero;
+
+        foreach (var entry in tiles)
+        {
+            var chunk = SharedMapSystem.GetChunkIndices(entry.Index, TileCommitCellSize);
+
+            // Crossed into a new chunk: the previous one is complete. Flush once the batch holds enough whole chunks.
+            if (haveLast && chunk != lastChunk && ++chunksInBatch >= TileCommitChunkBatch)
+            {
+                _maps.SetTiles(_gridUid, _grid, batch);
+                batch.Clear();
+                chunksInBatch = 0;
+                await SuspendDungeon();
+
+                // The original single SetTiles couldn't be interrupted; batching adds yields, so guard against the grid
+                // being deleted (round restart / cancellation) mid-commit before touching it again, like GetDungeons does.
+                if (!ValidateResume())
+                    return;
+            }
+
+            batch.Add((entry.Index, entry.Tile));
+            lastChunk = chunk;
+            haveLast = true;
+        }
+
+        if (batch.Count > 0)
+        {
+            _maps.SetTiles(_gridUid, _grid, batch);
+            await SuspendDungeon();
+        }
     }
 }

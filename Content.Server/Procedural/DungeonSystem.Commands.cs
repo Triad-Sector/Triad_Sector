@@ -72,6 +72,31 @@ public sealed partial class DungeonSystem
         GenerateDungeon(dungeon, dungeon.ID, dungeonUid, dungeonGrid, position, seed); // Frontier: add dungeon.ID
     }
 
+    // Triad TEMP: live A/B toggle for the chunked tile commit (SetTilesChunked). Set huge to effectively disable
+    // chunking (one bulk SetTiles, the old behaviour), or 4 for the chunked default. Remove before the PR.
+    [AdminCommand(AdminFlags.Debug)]
+    private void SetDungeonBatch(IConsoleShell shell, string argstr, string[] args)
+    {
+        if (args.Length >= 1 && int.TryParse(args[0], out var n))
+            DungeonJob.DungeonJob.TileCommitChunkBatch = n;
+
+        shell.WriteLine($"dungeon tile commit batch = {DungeonJob.DungeonJob.TileCommitChunkBatch}");
+    }
+
+    // Triad TEMP: generate one NFVGRoidBasalt (the heavy bluespace config) on a fresh map for live profiling. Remove before PR.
+    [AdminCommand(AdminFlags.Debug)]
+    private void DungenTest(IConsoleShell shell, string argstr, string[] args)
+    {
+        var mapUid = _maps.CreateMap(out var mapId);
+        var gridUid = EntityManager.CreateEntityUninitialized(null, new EntityCoordinates(mapUid, Vector2i.Zero));
+        var grid = EntityManager.AddComponent<MapGridComponent>(gridUid);
+        EntityManager.InitializeAndStartEntity(gridUid, mapId);
+
+        var config = _prototype.Index<DungeonConfigPrototype>("NFVGRoidBasalt");
+        GenerateDungeon(config, config.ID, gridUid, grid, Vector2i.Zero, new Random().Next());
+        shell.WriteLine($"dungentest: queued NFVGRoidBasalt on map {mapId}");
+    }
+
     private CompletionResult CompletionCallback(IConsoleShell shell, string[] args)
     {
         if (args.Length == 1)

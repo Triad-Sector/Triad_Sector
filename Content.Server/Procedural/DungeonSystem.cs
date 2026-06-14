@@ -64,6 +64,8 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
         _metaQuery = GetEntityQuery<MetaDataComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
         _console.RegisterCommand("dungen", Loc.GetString("cmd-dungen-desc"), Loc.GetString("cmd-dungen-help"), GenerateDungeon, CompletionCallback);
+        _console.RegisterCommand("dungeonbatch", "TEMP: get/set the dungeon tile commit chunk batch", "dungeonbatch [n]", SetDungeonBatch); // Triad TEMP
+        _console.RegisterCommand("dungentest", "TEMP: gen NFVGRoidBasalt on a fresh map", "dungentest", DungenTest); // Triad TEMP
         _console.RegisterCommand("dungen_preset_vis", Loc.GetString("cmd-dungen_preset_vis-desc"), Loc.GetString("cmd-dungen_preset_vis-help"), DungeonPresetVis, PresetCallback);
         _console.RegisterCommand("dungen_pack_vis", Loc.GetString("cmd-dungen_pack_vis-desc"), Loc.GetString("cmd-dungen_pack_vis-help"), DungeonPackVis, PackCallback);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(PrototypeReload);
