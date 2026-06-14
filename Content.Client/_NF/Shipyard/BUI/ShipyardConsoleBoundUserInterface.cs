@@ -6,7 +6,6 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
 using Content.Client.Shuttles.Save;
 using Robust.Client.UserInterface.Controls;
-using System.Text.RegularExpressions;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
 using System.Linq;
