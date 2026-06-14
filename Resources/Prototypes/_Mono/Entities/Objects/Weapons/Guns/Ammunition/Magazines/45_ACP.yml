@@ -172,7 +172,7 @@
 #Start HighCapacity mags
 - type: entity
   id: BaseMagazine45_ACPPistolHighCapacityFMJ
-  name: machine pistol magazine (.45 ACP FMJ)
+  name: extended pistol magazine (.45 ACP FMJ) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   abstract: true
   components:
@@ -205,7 +205,7 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityEmpty
-  name: machine pistol magazine (.45 ACP any)
+  name: extended pistol magazine (.45 ACP any) # Triad
   suffix: empty
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
@@ -218,9 +218,23 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
+- type: entity # Triad
+  id: Magazine45_ACPPistolHighCapacityIncendiary
+  name: extended pistol magazine (.45 ACP incendiary)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPIncendiary
+  - type: Sprite
+    layers:
+    - state: red
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
 - type: entity
   id: Magazine45_ACPPistolHighCapacityFMJ
-  name: machine pistol magazine (.45 ACP FMJ)
+  name: extended pistol magazine (.45 ACP FMJ) # Triad
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -234,7 +248,7 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityPractice
-  name: machine pistol magazine (.45 ACP practice)
+  name: extended pistol magazine (.45 ACP practice) # Triad
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -246,10 +260,24 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
+- type: entity # Triad
+  id: Magazine45_ACPPistolHighCapacityUranium
+  name: extended pistol magazine (.45 ACP uranium)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPUranium
+  - type: Sprite
+    layers:
+    - state: uranium
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
 - type: entity
   id: Magazine45_ACPPistolHighCapacityRubber
-  name: machine pistol magazine (.45 ACP rubber)
-  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  name: extended pistol magazine (.45 ACP rubber)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ # Triad
   components:
   - type: BallisticAmmoProvider
     proto: Cartridge45_ACPFMJ
@@ -260,6 +288,57 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+
+# Triad Start
+#Mono AP system
+#anti-flesh ammo
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityHP
+  name: extended pistol magazine (.45 ACP hollow-point)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPHP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: HP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityRIP
+  name: extended pistol magazine (.45 ACP RIP)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPRIP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: RIP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#armor-piercing ammo
+
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityPlasteelAP
+  name: extended pistol magazine (.45 ACP AP)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPPlasteelAP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: plasteelAP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+# Triad End
 
 #End HighCapacity mags
 #Start SubMachineGun mags
