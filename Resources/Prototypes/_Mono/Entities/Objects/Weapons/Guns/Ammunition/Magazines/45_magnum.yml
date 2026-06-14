@@ -267,7 +267,7 @@
   parent: BaseMagazine45_magnumPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge45_magnumFMJ
+    proto: Cartridge45_magnumPractice
   - type: Sprite
     layers:
     - state: practice
@@ -295,7 +295,7 @@
   parent: BaseMagazine45_magnumPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge45_magnumFMJ
+    proto: Cartridge45_magnumRubber
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_magnum/45_magnum_pistol_high_capacity_mag.rsi
     layers:

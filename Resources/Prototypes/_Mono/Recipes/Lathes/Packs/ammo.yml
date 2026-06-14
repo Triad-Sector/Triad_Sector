@@ -760,7 +760,7 @@
   - Magazine762x39mmHP
   - AmmoBox762x39mmHP
   - Magazine45_magnumPistolHP
-  # - Magazine45_magnumPistolHighCapacityHP # Triad
+  - Magazine45_magnumPistolHighCapacityHP # Triad
   - SpeedLoader45_magnumHP
   - AmmoBox45_magnumHP
   - Magazine46x30mmPistolHP
@@ -816,12 +816,12 @@
   - Magazine57x28mmSubMachineGunUranium
   - AmmoBox57x28mmUranium
   - Magazine9x19mmPistolUranium
-  - Magazine9x19mmPistolHighCapacityUranium # Triad
+  # - Magazine9x19mmPistolHighCapacityUranium # Triad
   - Magazine9x19mmSubMachineGunUranium
   - SpeedLoader9x19mmUranium
   - AmmoBox9x19mmUranium
   - Magazine45_ACPPistolUranium
-  - Magazine45_ACPPistolHighCapacityUranium # Triad
+  # - Magazine45_ACPPistolHighCapacityUranium # Triad
   - Magazine45_ACPSubMachineGunUranium
   - AmmoBox45_ACPUranium
 
@@ -852,12 +852,12 @@
   - Magazine57x28mmSubMachineGunIncendiary
   - AmmoBox57x28mmIncendiary
   - Magazine9x19mmPistolIncendiary
-  - Magazine9x19mmPistolHighCapacityIncendiary # Triad
+  # - Magazine9x19mmPistolHighCapacityIncendiary # Triad
   - Magazine9x19mmSubMachineGunIncendiary
   - SpeedLoader9x19mmIncendiary
   - AmmoBox9x19mmIncendiary
   - Magazine45_ACPPistolIncendiary
-  - Magazine45_ACPPistolHighCapacityIncendiary # Triad
+  # - Magazine45_ACPPistolHighCapacityIncendiary # Triad
   - Magazine45_ACPSubMachineGunIncendiary
   - AmmoBox45_ACPIncendiary
   - AmmoBox23x75mmFlashbang
@@ -885,11 +885,11 @@
   - Magazine57x28mmSubMachineGunPlasteelAP
   - AmmoBox57x28mmPlasteelAP
   - Magazine9x19mmPistolPlasteelAP
-  - Magazine9x19mmPistolHighCapacityPlasteelAP # Triad
+  # - Magazine9x19mmPistolHighCapacityPlasteelAP # Triad
   - Magazine9x19mmSubMachineGunPlasteelAP
   - AmmoBox9x19mmPlasteelAP
   - Magazine45_ACPPistolPlasteelAP
-  - Magazine45_ACPPistolHighCapacityPlasteelAP # Triad
+  # - Magazine45_ACPPistolHighCapacityPlasteelAP # Triad
   - Magazine45_ACPSubMachineGunPlasteelAP
   - AmmoBox45_ACPPlasteelAP
   - AmmoBox23x75mmSlugAP
@@ -925,11 +925,11 @@
   - Magazine57x28mmSubMachineGunRIP
   - AmmoBox57x28mmRIP
   - Magazine9x19mmPistolRIP
-  - Magazine9x19mmPistolHighCapacityRIP # Triad
+  # - Magazine9x19mmPistolHighCapacityRIP # Triad
   - Magazine9x19mmSubMachineGunRIP
   - AmmoBox9x19mmRIP
   - Magazine45_ACPPistolRIP
-  - Magazine45_ACPPistolHighCapacityRIP # Triad
+  # - Magazine45_ACPPistolHighCapacityRIP # Triad
   - Magazine45_ACPSubMachineGunRIP
   - AmmoBox45_ACPRIP
 
