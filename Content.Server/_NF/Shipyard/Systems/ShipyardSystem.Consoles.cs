@@ -645,7 +645,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             // an unexpected exception elsewhere in EvaluateLoad should not crash this network
             // handler. Treat as the existing 'hard reject for invalid signature' decision so the
             // standard rejection path (audit + popup + deny sound + return) handles it cleanly.
-            Logger.Warning($"EvaluateLoad threw {ex.GetType().Name}; treating as invalid signature: {ex.Message}");
+            _sawmill.Warning($"EvaluateLoad threw {ex.GetType().Name}; treating as invalid signature: {ex.Message}");
             decision = new LoadDecision(false, TriadShipyardEventType.LoadRejectedInvalidSignature, "shipyard-tamper-blocked-invalid-signature");
         }
 
@@ -717,7 +717,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Error while attempting to load shuttle from YAML data: {ex}");
+            _sawmill.Error($"Error while attempting to load shuttle from YAML data: {ex}");
             loaded = false;
         }
 
@@ -755,8 +755,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var cooldown = TimeSpan.FromMinutes(5);
         var chargedRecently = _lastLoadCharge.TryGetValue(player, out var lastCharge) && (now - lastCharge) < cooldown;
 
-        int currentBalance = bankAccount.Balance;
-        int newBalance = currentBalance - appraisalCost;
+        var currentBalance = bankAccount.Balance;
+        var newBalance = currentBalance - appraisalCost;
 
         if (!chargedRecently)
         {
@@ -803,12 +803,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 && member.Station == consoleStation)
             {
                 _station.RemoveGridFromStation(consoleStation.Value, shuttleUid);
-                Logger.Info($"[ShipLoad(Console)] Removed station membership from loaded ship {ToPrettyString(shuttleUid)} (station {ToPrettyString(consoleStation.Value)})");
+                _sawmill.Info($"[ShipLoad(Console)] Removed station membership from loaded ship {ToPrettyString(shuttleUid)} (station {ToPrettyString(consoleStation.Value)})");
             }
         }
         catch (Exception rmEx)
         {
-            Logger.Warning($"[ShipLoad(Console)] Failed to remove station membership from {ToPrettyString(shuttleUid)}: {rmEx.Message}");
+            _sawmill.Warning($"[ShipLoad(Console)] Failed to remove station membership from {ToPrettyString(shuttleUid)}: {rmEx.Message}");
         }
 
         // For loaded ships, we don't spawn a new station via a GameMap prototype unless we can infer the vessel ID.
@@ -976,7 +976,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             }
             var deleteEv = new DeleteLocalShipFileMessage(args.SourceFilePath!);
             RaiseNetworkEvent(deleteEv, session);
-            Logger.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");
+            _sawmill.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");
         }
     }
 

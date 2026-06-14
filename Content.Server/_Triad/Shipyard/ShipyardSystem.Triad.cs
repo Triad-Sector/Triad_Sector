@@ -14,26 +14,7 @@ namespace Content.Server._NF.Shipyard.Systems;
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
     /// <summary>
-    /// Loads a shuttle from a file and docks it to the grid the console is on, like ship purchases.
-    /// This is used for loading saved ships.
-    /// </summary>
-    /// <param name="consoleUid">The entity of the shipyard console to dock to its grid</param>
-    /// <param name="shuttlePath">The path to the shuttle file to load. Must be a grid file!</param>
-    /// <param name="shuttleEntityUid">The EntityUid of the shuttle that was loaded</param>
-    public bool TryPurchaseShuttleFromFile(EntityUid consoleUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
-    {
-        if (!TryAddShuttle(shuttlePath, out var shuttleGrid)) // HardLight
-        {
-            shuttleEntityUid = null;
-            return false;
-        }
-
-        return TryFinalizeLoadedShuttle(consoleUid, shuttleGrid.Value, out shuttleEntityUid); // HardLight
-    }
-
-    /// <summary>
-    /// HardLight: Writes YAML data to a temporary file and attempts the same initial strict load path as purchase-from-file.
-    /// If that fails, applies compatibility recovery stages before falling back to tolerant ship-data reconstruction.
+    /// Writes YAML data to a temporary file and attempts the same initial strict load path as purchase-from-file.
     /// </summary>
     private bool TryPurchaseShuttleFromYamlData(EntityUid consoleUid, string yamlData, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
     {
@@ -53,7 +34,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 writer.Write(yamlData);
             }
 
-            // Fast path: strict load with original YAML; no extra scanning work.
+            // Try load the
             if (TryPurchaseShuttleFromFileSafe(consoleUid, tempPath, out shuttleEntityUid))
                 return true;
 
@@ -61,7 +42,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         catch (Exception ex)
         {
-            _sawmill.Warning($"Failed to purchase shuttle from YAML data: {ex.Message}"); // HardLight: Error<Warning
+            _sawmill.Warning($"Failed to purchase shuttle from YAML data: {ex.Message}");
             return false;
         }
         finally
@@ -78,7 +59,24 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
     }
 
-    // HardLight: Wraps TryPurchaseShuttleFromFile in a try-catch to prevent exceptions from bubbling up and crashing the load process
+    /// <summary>
+    /// Loads a shuttle from a file and docks it to the grid the console is on, like ship purchases.
+    /// This is used for loading saved ships.
+    /// </summary>
+    /// <param name="consoleUid">The entity of the shipyard console to dock to its grid</param>
+    /// <param name="shuttlePath">The path to the shuttle file to load. Must be a grid file!</param>
+    /// <param name="shuttleEntityUid">The EntityUid of the shuttle that was loaded</param>
+    public bool TryPurchaseShuttleFromFile(EntityUid consoleUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
+    {
+        if (!TryAddShuttle(shuttlePath, out var shuttleGrid)) // HardLight
+        {
+            shuttleEntityUid = null;
+            return false;
+        }
+
+        return TryFinalizeLoadedShuttle(consoleUid, shuttleGrid.Value, out shuttleEntityUid);
+    }
+
     private bool TryPurchaseShuttleFromFileSafe(EntityUid consoleUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
     {
         shuttleEntityUid = null;
@@ -89,12 +87,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         catch (Exception ex)
         {
-            _sawmill.Debug($"[ShipLoad] Strict load stage threw exception: {ex.Message}");
+            _sawmill.Debug($"Strict load stage threw exception: {ex.Message}");
             return false;
         }
     }
 
-    // HardLight: Performs final setup and docking for a loaded shuttle, with error handling to prevent load crashes.
+    /// <summary>
+    /// Finalizes a loaded shuttle by removing any unneeded components and otherwise.
+    /// </summary>
     private bool TryFinalizeLoadedShuttle(EntityUid consoleUid, EntityUid grid, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
     {
         shuttleEntityUid = null;
@@ -133,12 +133,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         {
             _sawmill.Warning($"[ShipLoad] PurgeJointsAndResetDocks failed on {grid}: {ex.Message}");
         }
+
         // Add new grid to the same station as the console's grid (for IFF / ownership), if any
         var consoleGridUid = consoleXform.GridUid.Value;
         if (TryComp<StationMemberComponent>(consoleGridUid, out var stationMember))
-        {
             _station.AddGridToStation(stationMember.Station, grid);
-        }
 
         _shuttle.TryFTLDock(grid, shuttleComponent, consoleGridUid);
         shuttleEntityUid = grid;
