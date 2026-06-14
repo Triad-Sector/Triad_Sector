@@ -23,6 +23,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
+
     private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
 
     private ShipyardConsoleMenu? _menu;
