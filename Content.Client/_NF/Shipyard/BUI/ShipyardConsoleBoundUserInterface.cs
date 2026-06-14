@@ -6,10 +6,14 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
 using Content.Client.Shuttles.Save;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.XAML;
+using System.Text.RegularExpressions;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
 using System.Linq;
+using Robust.Shared.Serialization.Markdown;
+using System.IO;
+using Robust.Shared.Serialization.Markdown.Mapping;
+using Robust.Shared.Serialization.Markdown.Value;
 
 namespace Content.Client._NF.Shipyard.BUI;
 
@@ -27,9 +31,11 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     private Button? _loadShipButton;
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
+    private Label? _selectedShipPriceLabel;
     private int _selectedShipIndex = -1;
 
-
+    // This should be the same as Content.Server/_Triad/Shipyard/AuthenticatedShipFile/AppraisalKey
+    private const string AppraisalKey = "appraisal";
 
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -79,13 +85,16 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
         _savedShipsList = _menu.FindControl<ItemList>("SavedShipsList");
+        _selectedShipPriceLabel = _menu.FindControl<Label>("SelectedShipPriceLabel");
 
-        if (_loadShipButton != null)
-            _loadShipButton.OnPressed += OnLoadShipButtonPressed;
+        _loadShipButton?.OnPressed += OnLoadShipButtonPressed;
         // Save button already wired via ShipyardConsoleMenu to raise OnSaveShip, which we handle in SaveShip()
         // Avoid wiring a second handler that would incorrectly send a direct save request.
         if (_savedShipsList != null)
+        {
             _savedShipsList.OnItemSelected += OnSavedShipSelected;
+            _savedShipsList.OnItemDeselected += OnSavedShipDeselected;
+        }
 
         // Subscribe to ship updates
         _shipFileManagementSystem.OnShipsUpdated += RefreshSavedShipList;
@@ -130,12 +139,29 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         }
     }
 
-    private void OnSavedShipSelected(ItemList.ItemListSelectedEventArgs args)
+    private async void OnSavedShipSelected(ItemList.ItemListSelectedEventArgs args)
     {
         // Store selected index and update Load Ship button state
         _selectedShipIndex = args.ItemIndex;
-        if (_loadShipButton != null)
-            _loadShipButton.Disabled = false;
+        _loadShipButton?.Disabled = false;
+
+        // Set load price label
+        var selectedItem = args.ItemList[_selectedShipIndex];
+        var filePath = (string)selectedItem.Metadata!;
+        var appraisalValue = _shipFileManagementSystem.GetKeyValueFromPath(filePath, AppraisalKey);
+
+        // Round it up
+        if (double.TryParse(appraisalValue, out var finalValue))
+            finalValue = (int)Math.Round(finalValue * 100, MidpointRounding.AwayFromZero);
+
+        _selectedShipPriceLabel?.Text = "$" + finalValue;
+    }
+
+    private void OnSavedShipDeselected(ItemList.ItemListDeselectedEventArgs args)
+    {
+        // Store selected index and update Load Ship button state
+        _selectedShipPriceLabel?.Text = Loc.GetString("shipyard-console-save-appraisal-no-ship-selected-text");
+        _loadShipButton?.Disabled = true;
     }
 
     private void OnShipLoaded(string shipName)
@@ -161,13 +187,6 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             var item = _savedShipsList.AddItem(fileName);
             item.Metadata = filePath;
             //_sawmill.Info($"Added ship to UI list: {fileName} (path: {filePath})");
-        }
-
-        // Enable/disable load button based on available ships
-        if (_loadShipButton != null)
-        {
-            _loadShipButton.Disabled = savedShipFiles.Count == 0;
-            _sawmill.Info($"Load button disabled: {_loadShipButton.Disabled}");
         }
     }
 
