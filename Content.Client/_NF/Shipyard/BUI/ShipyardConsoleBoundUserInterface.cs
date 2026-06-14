@@ -14,12 +14,15 @@ using Robust.Shared.Serialization.Markdown;
 using System.IO;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Serialization.Markdown.Value;
+using Robust.Shared.Configuration;
+using Content.Shared._Triad.CCVar;
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
+    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
     private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
 
     private ShipyardConsoleMenu? _menu;
@@ -32,6 +35,8 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
     private Label? _selectedShipPriceLabel;
+    private Label? _taxRateLabel;
+
     private int _selectedShipIndex = -1;
 
     // This should be the same as Content.Server/_Triad/Shipyard/AuthenticatedShipFile/AppraisalKey
@@ -86,6 +91,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
         _savedShipsList = _menu.FindControl<ItemList>("SavedShipsList");
         _selectedShipPriceLabel = _menu.FindControl<Label>("SelectedShipPriceLabel");
+        _taxRateLabel = _menu.FindControl<Label>("TaxRateLabel");
 
         _loadShipButton?.OnPressed += OnLoadShipButtonPressed;
         // Save button already wired via ShipyardConsoleMenu to raise OnSaveShip, which we handle in SaveShip()
@@ -101,6 +107,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _shipFileManagementSystem.OnShipLoaded += OnShipLoaded;
 
         RefreshSavedShipList();
+        RefreshTaxRateLabel();
     }
 
     // Removed duplicate direct save path to prevent sending an incorrect deed UID.
@@ -150,9 +157,13 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         var filePath = (string)selectedItem.Metadata!;
         var appraisalValue = _shipFileManagementSystem.GetKeyValueFromPath(filePath, AppraisalKey);
 
-        // Round it up
-        if (double.TryParse(appraisalValue, out var finalValue))
-            finalValue = (int)Math.Round(finalValue * 100, MidpointRounding.AwayFromZero);
+        // Round it up 2 significant digits
+        if (int.TryParse(appraisalValue, out var finalValue) && finalValue != 0)
+        {
+            var digits = (int)Math.Floor(Math.Log10(Math.Abs(finalValue)));
+            var factor = Math.Pow(10, digits - 1);
+            finalValue = (int)(Math.Round(finalValue / factor) * factor);
+        }
 
         _selectedShipPriceLabel?.Text = "$" + finalValue;
     }
@@ -188,6 +199,12 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             item.Metadata = filePath;
             //_sawmill.Info($"Added ship to UI list: {fileName} (path: {filePath})");
         }
+    }
+
+    private void RefreshTaxRateLabel()
+    {
+        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
+        _taxRateLabel?.Text = Loc.GetString("shipyard-console-tax-rate-price-label", ("tax", loadShipPrice));
     }
 
     private static string ExtractFileNameWithoutExtension(string filePath)

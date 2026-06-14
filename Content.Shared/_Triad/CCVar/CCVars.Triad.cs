@@ -13,7 +13,7 @@ public sealed class TriadCCVars
     ///     How much the ship cost will be. 0.3f = 30% of full appraisal
     /// </summary>
     public static readonly CVarDef<float> LoadShipPrice =
-        CVarDef.Create("triad.load_ship_price", 0.3f, CVar.SERVERONLY);
+        CVarDef.Create("triad.load_ship_price", 0.3f, CVar.SERVER | CVar.REPLICATED);
 
     // Triad: tamper protection
     /// <summary>
