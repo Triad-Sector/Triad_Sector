@@ -6,18 +6,9 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
 using Content.Client.Shuttles.Save;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.IoC;
-using Robust.Shared.Log;
-using Content.Shared.Roles.Jobs; // Triad
-using Content.Shared.Mind;
 using Robust.Client.Player;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared.Whitelist; // Triad
-using System.Linq;
-using Robust.Shared.Serialization.Markdown;
-using System.IO;
-using Robust.Shared.Serialization.Markdown.Mapping;
-using Robust.Shared.Serialization.Markdown.Value;
 using Robust.Shared.Configuration;
 using Content.Shared._Triad.CCVar;
 
@@ -36,17 +27,16 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     public int Balance { get; private set; }
 
     public int? ShipSellValue { get; private set; }
-    
+
     private BoxContainer? _savedShipsContainer;
     private Button? _loadShipButton;
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
     private Label? _selectedShipPriceLabel;
     private Label? _taxRateLabel;
-    private int _selectedShipIndex = -1;
 
     private int _selectedShipIndex = -1;
-    
+
     private readonly EntityWhitelistSystem _whitelist; // Triad
 
     // This should be the same as Content.Server/_Triad/Shipyard/AuthenticatedShipFile/AppraisalKey
@@ -97,7 +87,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         {
             _sawmill.Debug($"InitializeSaveLoadControls: ShipFileManagementSystem has {shipCount} ships");
         }
-        
+
         _savedShipsContainer = _menu.FindControl<BoxContainer>("SavedShipsContainer");
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
