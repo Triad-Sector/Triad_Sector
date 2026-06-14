@@ -121,13 +121,7 @@
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
         cell_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
     - type: ItemSlots
       slots:
         cell_slot:
@@ -142,10 +136,6 @@
     - type: Storage
       grid:
         - 0,0,5,1
-      whitelist: null
-    - type: Tag
-      tags:
-        - TriadHeavyWeapon
     - type: WeapHarn
       supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower

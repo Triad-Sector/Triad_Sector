@@ -1,3 +1,4 @@
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
@@ -34,4 +35,7 @@ public sealed partial class ReqWeapHarnComponent : Component
 
     [DataField, AutoNetworkedField]
     public float UnsupportedSprintModifier = 0.4f;
+
+    [DataField("magnetRetrieve")]
+    public EntityWhitelist? MagnetRetrive;
 }

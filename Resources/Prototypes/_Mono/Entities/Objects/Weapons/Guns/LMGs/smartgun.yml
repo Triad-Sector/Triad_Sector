@@ -76,6 +76,9 @@
   # Triad: Harness-specific support. Without a powered harness, this weapon keeps base spread and slows the wielder.
   - type: ReqWeapHarn
     supportKey: Mla79Smartgun
+    magnetRetrieve:
+      tags:
+      - TriadHeavyWeapon
     minAngleBonus: -5
     maxAngleBonus: -37
     unsupportedWalkModifier: 0.5
