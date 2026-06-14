@@ -82,14 +82,6 @@ public sealed partial class TargetSeekingComponent : Component
     /// Whether seeking has been disabled (e.g., after entering an enemy grid).
     /// </summary>
     public bool SeekingDisabled;
-
-    // Triad: targeting lock code start https://github.com/Triad-Sector/Triad_Sector/pull/139
-    /// <summary>
-    /// Next game-time at which to run the decoy (flare) proximity scan.
-    /// Throttled to 2 Hz; no need for every-tick precision on a countermeasure check.
-    /// </summary>
-    public TimeSpan NextDecoyCheck = TimeSpan.Zero;
-    // Triad: targeting lock code end
 }
 
 /// <summary>

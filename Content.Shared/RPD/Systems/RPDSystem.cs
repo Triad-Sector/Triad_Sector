@@ -44,6 +44,7 @@ public sealed class RPDSystem : EntitySystem
         SubscribeLocalEvent<RPDComponent, RCDDeconstructAttemptEvent>(OnDeconstructAttempt);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnAttemptEvent>(OnObjectSpawnAttempt);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnedEvent>(OnObjectSpawned);
+        SubscribeLocalEvent<RPDComponent, RCDDeconstructTargetResolveEvent>(OnDeconstructTargetResolve);
         SubscribeLocalEvent<RPDComponent, RPDColorChangeMessage>(OnColorChange);
 
         SubscribeNetworkEvent<RPDEyeRotationEvent>(OnEyeRotation);
@@ -185,4 +186,59 @@ public sealed class RPDSystem : EntitySystem
 
         rpd.LastKnownEyeRotation = ev.EyeRotation;
     }
+
+    /// <summary>
+    /// Resolves the covered-pipe deconstruct target the direct click couldn't reach (the pipe sits under a floor tile,
+    /// hidden and non-interactable). Picks the RPD-deconstructable entity anchored on the tile whose pipe layer matches
+    /// the operator's cursor-aimed layer (<see cref="RPDComponent.CurrentLayer"/>, set in <see cref="OnAfterInteract"/>
+    /// from the streamed eye rotation), so deconstruct mirrors construct: aim at a quadrant, pull that layer.
+    /// Server-authoritative — CurrentLayer is server-only state and the do-after that does the work only starts
+    /// server-side, so the client's placeholder pick (default Primary) is cosmetic and never desyncs the result.
+    /// </summary>
+    private void OnDeconstructTargetResolve(Entity<RPDComponent> ent, ref RCDDeconstructTargetResolveEvent args)
+    {
+        args.Target = FindSubfloorRpdDeconstructable(args.MapGridData, ent.Comp.CurrentLayer) ?? args.Target;
+    }
+
+    /// <summary>
+    /// Searches a tile's anchored entities for the RPD-deconstructable one to chew. Prefers the entity on the
+    /// operator's aimed pipe layer; falls back to the lowest-NetEntity candidate when nothing sits on that layer
+    /// (single-layer pipe, or a non-layered atmos device such as an air sensor/alarm). Lowest-NetEntity keeps any tie
+    /// deterministic.
+    /// </summary>
+    private EntityUid? FindSubfloorRpdDeconstructable(MapGridData mapGridData, AtmosPipeLayer aimedLayer)
+    {
+        EntityUid? layerMatch = null;
+        var layerMatchId = int.MaxValue;
+        EntityUid? fallback = null;
+        var fallbackId = int.MaxValue;
+
+        foreach (var anchored in _mapSystem.GetAnchoredEntities(mapGridData.GridUid, mapGridData.Component, mapGridData.Position))
+        {
+            if (!IsRpdDeconstructable(anchored))
+                continue;
+
+            var netId = GetNetEntity(anchored).Id;
+
+            if (netId < fallbackId)
+            {
+                fallbackId = netId;
+                fallback = anchored;
+            }
+
+            if (TryComp<AtmosPipeLayersComponent>(anchored, out var layers)
+                && layers.CurrentPipeLayer == aimedLayer
+                && netId < layerMatchId)
+            {
+                layerMatchId = netId;
+                layerMatch = anchored;
+            }
+        }
+
+        return layerMatch ?? fallback;
+    }
+
+    // Mirror of RCDSystem.IsRpdDeconstructable: the entity opts into RPD deconstruction via RCDDeconstructableComponent.
+    private bool IsRpdDeconstructable(EntityUid target)
+        => TryComp<RCDDeconstructableComponent>(target, out var decon) && decon.RpdDeconstructable;
 }

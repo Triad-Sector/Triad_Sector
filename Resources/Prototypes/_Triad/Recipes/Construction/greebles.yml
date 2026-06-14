@@ -1,0 +1,84 @@
+# These are all decorative.
+- type: construction
+  id: GreebleAntenna1
+  name: antenna
+  graph: TriadGreebles
+  startNode: start
+  targetNode: antenna1
+  category: construction-category-furniture
+  description: Like antennas to hell. Usually part of a ship or station's UHF communication systems. This is decorative.
+  icon:
+    sprite: _Mono/Structures/Decoration/Greeble/antennae.rsi
+    state: antenna1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+- type: construction
+  id: GreebleAntenna2
+  name: antenna
+  graph: TriadGreebles
+  startNode: start
+  targetNode: antenna2
+  category: construction-category-furniture
+  description: Like antennas to hell. Usually part of a ship or station's UHF communication systems. This is decorative.
+  icon:
+    sprite: _Mono/Structures/Decoration/Greeble/antennae.rsi
+    state: antenna2
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+- type: construction
+  id: GreebleElint1
+  name: ELINT system
+  graph: TriadGreebles
+  startNode: start
+  targetNode: elint1
+  category: construction-category-structures
+  description: Used for reading noncommunication electromagnetic radiation and their properties, such as radar signals. Who gives a shit? This is decorative.
+  icon:
+    sprite: _Mono/Structures/Decoration/Greeble/32x32.rsi
+    state: elint1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+    failIfSpace: false
+
+- type: construction
+  id: GreebleRadarpanel1
+  name: radar panel
+  graph: TriadGreebles
+  startNode: start
+  targetNode: radarpanel1
+  category: construction-category-furniture
+  description: Some kind of protective fiberglass panelling. Seen in various systems, such as weather and altitude mapping to military early-warning systems. If it's powerful enough, you might get cancer a bit faster! This is decorative.
+  icon:
+    sprite: _Mono/Structures/Decoration/Greeble/64x64.rsi
+    state: radarpanel1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+    failIfSpace: false
+
+- type: construction
+  id: GreebleRadarpanel2
+  name: radar panel
+  graph: TriadGreebles
+  startNode: start
+  targetNode: radarpanel2
+  category: construction-category-furniture
+  description: Some kind of protective fiberglass panelling. Seen in various systems, such as weather and altitude mapping to military early-warning systems. If it's powerful enough, you might get cancer a bit faster! This is decorative.
+  icon:
+    sprite: _Mono/Structures/Decoration/Greeble/64x64.rsi
+    state: radarpanel2
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+    failIfSpace: false

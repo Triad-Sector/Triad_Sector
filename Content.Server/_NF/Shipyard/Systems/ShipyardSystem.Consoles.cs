@@ -22,6 +22,7 @@ using Robust.Shared.Utility;
 using Content.Shared.Radio;
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.Database; // Triad: tamper protection (TriadShipyardEventType)
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Server.Maps;
@@ -41,6 +42,7 @@ using Content.Server.Station.Events;
 using Content.Server._NF.Station.Components;
 using System.Text.RegularExpressions;
 using Content.Server._Mono.Shipyard;
+using Content.Server._Triad.Shipyard;
 using Content.Server.Shuttles.Systems;
 using Robust.Server.Player;
 using Content.Shared.UserInterface;
@@ -87,9 +89,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly EntityManager _entityManager = default!;
     [Dependency] private readonly ShuttleRecordsSystem _shuttleRecordsSystem = default!;
     [Dependency] private readonly ShuttleConsoleLockSystem _shuttleConsoleLock = default!;
+    [Dependency] private readonly Content.Server.GameTicking.GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly ShipyardDirectionSystem _shipyardDirection = default!;
+    [Dependency] private readonly Content.Server._Triad.Shipyard.TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
 
     private static readonly ProtoId<TagPrototype> CrewedShuttleTag = "CrewedShuttle";
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
@@ -550,8 +554,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
     public void OnLoadMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleLoadMessage args)
     {
-        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
-
         if (args.Actor is not { Valid: true } player)
             return;
 
@@ -591,48 +593,132 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        // Compute a ship name from YAML or the source file path
-        var name = ExtractShipNameFromYaml(args.YamlData);
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            if (!string.IsNullOrWhiteSpace(args.SourceFilePath))
-            {
-                try
-                {
-                    name = System.IO.Path.GetFileNameWithoutExtension(args.SourceFilePath);
-                }
-                catch { name = null; }
-            }
-        }
-        name ??= $"LoadedShip_{DateTime.Now:yyyyMMdd_HHmmss}";
 
-        // Attempt to load the shuttle using the exact purchase-from-file path.
-        // If the client provided a source file path under UserData, use it; otherwise, write YAML to a temp and load from there.
+        // Triad: tamper protection
+        if (!_mind.TryGetMind(player, out _, out var tamperMind) || tamperMind.UserId == null)
+        {
+            ConsolePopup(player, Loc.GetString("shipyard-console-load-failed"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        if (!_player.TryGetSessionByEntity(player, out var playerSession))
+        {
+            ConsolePopup(player, Loc.GetString("shipyard-console-load-failed"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        // Triad: F1 fix - empty YamlData is never a legitimate load. Legitimate clients
+        // always send YAML bytes alongside SourceFilePath (see Content.Client/_NF/Shipyard/BUI/
+        // ShipyardConsoleBoundUserInterface.cs). An empty payload means a modded client is
+        // trying to skip tamper evaluation and reach the SourceFilePath disk-load fallback.
+        // Reject hard and write a forensic audit row.
+        if (string.IsNullOrWhiteSpace(args.YamlData))
+        {
+            _ = _tamperPolicy.RecordRejectedLoadAsync(
+                tamperMind.UserId!.Value, playerSession.Name, args.SourceFilePath, _gameTicker.RoundId > 0 ? _gameTicker.RoundId : null);
+            ConsolePopup(player, Loc.GetString("shipyard-tamper-blocked-empty-payload"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        var authShip = AuthenticatedShipFile.FromShipFile(args.YamlData);
+        // Triad: resolve the ship name up front with the SAME tiers the load below uses (YAML name
+        // -> source filename -> generated fallback), so the audit rows and EvaluateLoad record the
+        // exact name the ship loads under rather than null. Re-signing in the migration branch leaves
+        // the ship data unchanged, so this value holds for the migrated envelope too.
+        var loadShipName = authShip.ShipYamlString() is { } loadYaml ? ExtractShipNameFromYaml(loadYaml) : null;
+        if (string.IsNullOrWhiteSpace(loadShipName) && !string.IsNullOrWhiteSpace(args.SourceFilePath))
+        {
+            try { loadShipName = System.IO.Path.GetFileNameWithoutExtension(args.SourceFilePath); }
+            catch { loadShipName = null; }
+        }
+        loadShipName ??= $"LoadedShip_{DateTime.Now:yyyyMMdd_HHmmss}";
+        LoadDecision decision;
+        try
+        {
+            decision = _tamperPolicy.EvaluateLoad(authShip, tamperMind.UserId!.Value, loadShipName);
+        }
+        catch (Exception ex)
+        {
+            // F6 fix (belt-and-braces): even with IsShipSigned guarded against malformed pubkeys,
+            // an unexpected exception elsewhere in EvaluateLoad should not crash this network
+            // handler. Treat as the existing 'hard reject for invalid signature' decision so the
+            // standard rejection path (audit + popup + deny sound + return) handles it cleanly.
+            Logger.Warning($"EvaluateLoad threw {ex.GetType().Name}; treating as invalid signature: {ex.Message}");
+            decision = new LoadDecision(false, TriadShipyardEventType.LoadRejectedInvalidSignature, "shipyard-tamper-blocked-invalid-signature");
+        }
+
+        if (!decision.Allow)
+        {
+            _ = _tamperPolicy.RecordLoadAsync(
+                authShip, tamperMind.UserId!.Value, playerSession.Name,
+                shipName: loadShipName,
+                decision.ResolvedEvent,
+                loadTimeAppraisal: null,
+                roundId: _gameTicker.RoundId > 0 ? _gameTicker.RoundId : null, serverName: null,
+                vesselId: null, mapId: null,
+                sourceFilePath: args.SourceFilePath,
+                deedHolderEntity: null);
+
+            ConsolePopup(player, Loc.GetString(decision.PopupReasonLocId ?? "shipyard-console-load-blocked-tamper"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        // Migration branch: a permitted player loading a non-trusted ship. Re-sign with the
+        // active key so the audit row + load path see the migrated envelope, but DEFER the
+        // network push until TryPurchaseShuttleFromYamlData succeeds. If the load fails after
+        // this point, the client keeps their original envelope on disk and can retry without
+        // having lost their authoritative copy. Appraisal is an advisory display hint
+        // (see AuthenticatedShipFile._appraisal comment); pass the original value through so
+        // the migrated envelope's display matches the source rather than zeroing out.
+        string? migratedEnvelopeToPush = null;
+        if (decision.ResolvedEvent == TriadShipyardEventType.LoadMigrated
+            && !string.IsNullOrWhiteSpace(args.SourceFilePath))
+        {
+            var migrated = _tamperPolicy.ReSignForMigration(authShip, authShip.Appraisal ?? 0);
+            migratedEnvelopeToPush = migrated.ShipFileString();
+            authShip = migrated;
+        }
+
+        _ = _tamperPolicy.RecordLoadAsync(
+            authShip, tamperMind.UserId!.Value, playerSession.Name,
+            shipName: loadShipName,
+            decision.ResolvedEvent,
+            loadTimeAppraisal: null,
+            roundId: _gameTicker.RoundId > 0 ? _gameTicker.RoundId : null, serverName: null,
+            vesselId: null, mapId: null,
+            sourceFilePath: args.SourceFilePath,
+            deedHolderEntity: null);
+
+        var shipYaml = authShip.ShipYamlString();
+        // End Triad
+
+
+
+        // Triad: reuse the name resolved up front (above) so the audit row and the spawned ship
+        // share one name instead of recomputing (which could diverge on the generated fallback).
+        var name = loadShipName;
+
+        // Attempt to load the shuttle from the in-message YAML only.
+        // Triad: F1 fix - removed the SourceFilePath disk-load fallback, which bypassed
+        // tamper protection by loading whatever path the client named under /UserData.
+        // The YAML path above already runs through compatibility recovery; if it fails,
+        // the load fails. SourceFilePath stays in scope only as audit-row / migration metadata.
         EntityUid? shuttleUidOut = null;
         bool loaded = false;
         try
         {
-            if (!string.IsNullOrWhiteSpace(args.YamlData))
+            if (!string.IsNullOrWhiteSpace(shipYaml))
             {
-                loaded = TryPurchaseShuttleFromYamlData(uid, args.YamlData, out shuttleUidOut);
-            }
-
-            if (!loaded && !string.IsNullOrWhiteSpace(args.SourceFilePath))
-            {
-                // Normalize to a ResPath under /UserData
-                var norm = args.SourceFilePath!.Replace('\\', '/');
-                if (!norm.StartsWith("/"))
-                    norm = "/" + norm;
-                if (!norm.StartsWith("/UserData", StringComparison.OrdinalIgnoreCase))
-                    norm = "/UserData/" + norm.TrimStart('/');
-
-                var resPath = new ResPath(norm);
-                loaded = TryPurchaseShuttleFromFile(uid, resPath, out shuttleUidOut);
+                loaded = TryPurchaseShuttleFromYamlData(uid, shipYaml, out shuttleUidOut);
             }
         }
         catch (Exception ex)
         {
-            Logger.Error($"Error while attempting to load shuttle from file/temp: {ex}");
+            Logger.Error($"Error while attempting to load shuttle from YAML data: {ex}");
             loaded = false;
         }
 
@@ -652,17 +738,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         // Calculate appraisal cost for the loaded ship from cvar loadShipPrice
+        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
         var fullAppraisal = _pricing.AppraiseGrid(shuttleUid, null);
         var appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
 
         // Check if player has a bank account and session to charge them
-        if (!_player.TryGetSessionByEntity(player, out var playerSession))
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-failed"));
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
+        // Triad: playerSession is captured earlier (above tamper-protection block)
         if (!TryComp<BankAccountComponent>(player, out var bankAccount))
         {
             ConsolePopup(player, Loc.GetString("shipyard-console-no-bank"));
@@ -881,9 +962,19 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} loaded shuttle {ToPrettyString(shuttleUid)} from {(args.SourceFilePath ?? "YAML data")} via {ToPrettyString(uid)}");
 
-        // After a successful server-side load, instruct the client to delete their local YAML file.
+        // After a successful server-side load, push deferred Migrate (if applicable) THEN Delete.
+        // Order matters: Migrate overwrites the local file in place; Delete moves the (now-migrated)
+        // file to /Exports/backup. Reversing the order would leave the original unsigned envelope
+        // in backup and the signed one in /Exports - reasonable but inconsistent with the previous
+        // end state, so we keep the existing Migrate-before-Delete ordering.
         if (!string.IsNullOrWhiteSpace(args.SourceFilePath) && _player.TryGetSessionByEntity(player, out var session))
         {
+            if (migratedEnvelopeToPush != null)
+            {
+                RaiseNetworkEvent(
+                    new Content.Shared._Triad.Shipyard.Save.MigrateShipFileMessage(args.SourceFilePath!, migratedEnvelopeToPush),
+                    session);
+            }
             var deleteEv = new DeleteLocalShipFileMessage(args.SourceFilePath!);
             RaiseNetworkEvent(deleteEv, session);
             Logger.Info($"Requested client to delete local ship file '{args.SourceFilePath}' after successful load");

@@ -11,6 +11,8 @@
 - type: speciesBaseSprites
   id: MobHarpySprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobHarpyHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking

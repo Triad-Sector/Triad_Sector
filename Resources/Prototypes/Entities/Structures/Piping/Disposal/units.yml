@@ -93,6 +93,24 @@
       - DisposalEject
       sources:
       - DisposalReady
+  # Triad: AutomationSlots above declares device-link ports and DisposalSignalSystem already
+  # handles them (Flush/Eject/Toggle sinks), but the device-link components backing those ports
+  # were dropped when AutomationSlots was ported in. Without them the signals never arrived
+  # (disposal automation was dead) and the network configurator logged "Can't resolve
+  # DeviceLinkSourceComponent" on every disposal unit. Restore the wiring, mirroring the Autolathe.
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+    - Toggle
+    - DisposalFlush
+    - DisposalEject
+  - type: DeviceLinkSource
+    ports:
+    - DisposalReady
   # Mono
   - type: ShipRepairable
     repairTime: 5

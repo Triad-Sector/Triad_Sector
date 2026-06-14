@@ -33,6 +33,8 @@
   - type: ShipRepairable
     repairTime: 1
     repairCost: 0
+  - type: Sprite
+    drawDepth: Overdoors
 
 - type: entity
   name: antenna
@@ -52,6 +54,11 @@
   - type: GridEdgeMarker
     begin: 0, -0.1
     end: 0, 1.5
+  # Triad changes - Buildable greebles.
+  - type: Construction
+    graph: TriadGreebles
+    node: antenna1
+  # End Triad
 
 - type: entity
   name: antenna
@@ -71,6 +78,11 @@
   - type: GridEdgeMarker
     begin: 0, -0.1
     end: 0, 1.2
+  # Triad changes - Buildable greebles.
+  - type: Construction
+    graph: TriadGreebles
+    node: antenna2
+  # End Triad
 
 - type: entity
   name: ELINT system
@@ -85,6 +97,11 @@
       sprite: _Mono/Structures/Decoration/Greeble/32x32.rsi
       layers:
         - state: elint1
+  # Triad changes - Buildable greebles.
+    - type: Construction
+      graph: TriadGreebles
+      node: elint1
+  # End Triad
 
 - type: entity
   name: radar panel
@@ -99,6 +116,11 @@
       sprite: _Mono/Structures/Decoration/Greeble/64x64.rsi
       layers:
         - state: radarpanel1
+  # Triad changes - Buildable greebles.
+    - type: Construction
+      graph: TriadGreebles
+      node: radarpanel1
+  # End Triad
 
 - type: entity
   name: radar panel
@@ -113,3 +135,8 @@
       sprite: _Mono/Structures/Decoration/Greeble/64x64.rsi
       layers:
         - state: radarpanel2
+  # Triad changes - Buildable greebles.
+    - type: Construction
+      graph: TriadGreebles
+      node: radarpanel2
+  # End Triad

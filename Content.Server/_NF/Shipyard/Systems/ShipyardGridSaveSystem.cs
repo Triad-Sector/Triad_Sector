@@ -43,6 +43,10 @@ using Robust.Shared.Collections;
 using Content.Shared.NodeContainer;
 using Content.Server.Station.Systems;
 using Content.Server._NF.ShuttleRecords;
+using Content.Server._Triad.Shipyard;
+using Content.Server.Cargo.Systems;
+using Content.Shared._Triad.CCVar;
+using Robust.Shared.Configuration;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -56,6 +60,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly PricingSystem _pricing = default!; // Triad
+    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -64,6 +70,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
     [Dependency] private readonly StationSystem _station = default!; // Triad
     [Dependency] private readonly ShuttleRecordsSystem _shuttleRecords = default!; // Triad
+    [Dependency] private readonly Content.Server._Triad.Shipyard.TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
+    [Dependency] private readonly Content.Server.GameTicking.GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
@@ -310,6 +318,15 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
                 // Disable auto-include logging to avoid excessive log spam/lag during saves.
                 LogAutoInclude = null
             };
+
+
+            // triad start
+            // these three lines were lifted from the loading code, and should be refactored into a function at some point
+            var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
+            var fullAppraisal = _pricing.AppraiseGrid(gridUid, null);
+            var appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
+            // triad end
+
             var (node, category) = _mapLoader.SerializeEntitiesRecursive(entities, opts);
             /* if (category != FileCategory.Grid)
             {
@@ -322,8 +339,26 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // 3) Convert MappingDataNode to YAML text without touching disk
             var yaml = WriteYamlToString(node);
 
+            // Triad ship anti-tamper start
+            var shipFileBox = _tamperPolicy.SignSave(yaml, appraisalCost);
+            _ = _tamperPolicy.RecordSaveAsync(
+                shipFileBox,
+                playerSession.UserId,
+                playerSession.Name,
+                shipName,
+                appraisalCost,
+                signingKeyId: null,
+                roundId: _gameTicker.RoundId > 0 ? _gameTicker.RoundId : null,
+                serverName: null,
+                vesselId: null,
+                mapId: null,
+                deedHolderEntity: null);
+            // Triad ship antitamper end
+
             // 4) Send to client for local saving
-            var saveMessage = new SendShipSaveDataClientMessage(shipName, yaml);
+            // Triad: send the signed envelope (ShipFileString) so the client stores the wrapped form,
+            // not the raw inner YAML. Fix for the bug acknowledged in the base patch's commit message.
+            var saveMessage = new SendShipSaveDataClientMessage(shipName, shipFileBox.ShipFileString());
             RaiseNetworkEvent(saveMessage, playerSession);
             //_sawmill.Info($"Sent ship data '{shipName}' to client {playerSession.Name} for local saving");
 

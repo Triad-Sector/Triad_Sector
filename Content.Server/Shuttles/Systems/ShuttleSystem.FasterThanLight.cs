@@ -444,6 +444,13 @@ public sealed partial class ShuttleSystem
 
         hyperspace.StartupTime = startupTime.Value;
         hyperspace.TravelTime = hyperspaceTime.Value;
+        // Triad: FTLToDock routes through here via EnsureComp<FTLComponent> but, unlike TrySetupFTL,
+        // never set the state. A freshly-ensured component stays in its default Available state, so once
+        // StateTime elapsed UpdateHyperspace hit the default case, logged "invalid FTL state Available"
+        // and dropped the component. That broke the public transit bus (it spammed errors every route
+        // cycle and never advanced through the FTL state machine). State and StateTime define the
+        // Starting phase together, so set them together here.
+        hyperspace.State = FTLState.Starting;
         hyperspace.StateTime = StartEndTime.FromStartDuration(
             _gameTiming.CurTime,
             TimeSpan.FromSeconds(hyperspace.StartupTime));

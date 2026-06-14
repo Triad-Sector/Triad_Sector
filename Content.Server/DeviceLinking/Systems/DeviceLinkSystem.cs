@@ -23,7 +23,11 @@ public sealed class DeviceLinkSystem : SharedDeviceLinkSystem
     #region Sending & Receiving
     public override void InvokePort(EntityUid uid, string port, NetworkPayload? data = null, DeviceLinkSourceComponent? sourceComponent = null)
     {
-        if (!Resolve(uid, ref sourceComponent) || !sourceComponent.Outputs.TryGetValue(port, out var sinks))
+        // Triad: InvokePort is a no-op when the entity isn't a wired source, so a missing
+        // DeviceLinkSourceComponent is not an error. Resolve with logMissing:false to match the
+        // already-silent missing-port case below; the loud default spammed the server log whenever
+        // an entity (e.g. a disposal unit) invoked a port without being wired as a source.
+        if (!Resolve(uid, ref sourceComponent, false) || !sourceComponent.Outputs.TryGetValue(port, out var sinks))
             return;
 
         foreach (var sinkUid in sinks)

@@ -93263,7 +93263,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -82.5,153.5
       parent: 2
-- proto: EZNutrientChemistryBottle
+- proto: ChemistryBottleEZNutrient
   entities:
   - uid: 8429
     components:
@@ -142077,7 +142077,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -35.5389,189.77164
       parent: 2
-- proto: OmnizineChemistryBottle
+- proto: ChemistryBottleOmnizine
   entities:
   - uid: 22913
     components:
@@ -157695,7 +157695,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: RobustHarvestChemistryBottle
+- proto: ChemistryBottleRobustHarvest
   entities:
   - uid: 11333
     components:
@@ -172370,7 +172370,7 @@ entities:
     - type: Transform
       pos: -79.39981,100.55035
       parent: 2
-- proto: UnstableMutagenChemistryBottle
+- proto: ChemistryBottleUnstableMutagen
   entities:
   - uid: 38267
     components:

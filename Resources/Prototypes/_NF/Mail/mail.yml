@@ -1736,7 +1736,7 @@
   - type: Mail
     isFragile: true
     contents:
-      - id: OmnizineChemistryBottle
+      - id: ChemistryBottleOmnizine
       - id: Syringe
 
 - type: entity

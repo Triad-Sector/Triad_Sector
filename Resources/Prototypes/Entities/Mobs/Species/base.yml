@@ -12,6 +12,7 @@
   components:
   - type: Sprite
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -32,6 +33,7 @@
     - map: [ "ears" ]
     - map: [ "id" ] # Mono - move from between belt and back
     - map: [ "outerClothing" ] # mono - i hate you upstream
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
     - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "back" ]
@@ -329,6 +331,7 @@
     noRot: true
     # TODO BODY Turn these into individual body parts?
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -358,6 +361,7 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]

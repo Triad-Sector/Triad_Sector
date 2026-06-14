@@ -58,6 +58,12 @@ public sealed class ProjectileAnomalySystem : EntitySystem
         Log.Debug($"shots: {projectileCount}");
         while (projectileCount > 0)
         {
+            // Triad: a supercritical projectile anomaly with nothing in range leaves both lists empty;
+            // _random.Pick(inRange) then threw ArgumentOutOfRangeException every tick (~70k/day) and the
+            // supercrit effect never resolved. Bail when there's nothing to target.
+            if (priority.Count == 0 && inRange.Count == 0)
+                break;
+
             Log.Debug($"{projectileCount}");
             var target = priority.Any()
                 ? _random.PickAndTake(priority)

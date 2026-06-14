@@ -1258,3 +1258,298 @@ Entries:
   id: 2265
   time: '2026-06-04T03:12:26.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/139
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Revert the targeting lock
+  id: 2266
+  time: '2026-06-05T00:36:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/184
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Saved ship files are now signed and verified on load, so edited or
+        forged ship files can be flagged or rejected, with an admin audit log of
+        ship save/load activity.
+  id: 2267
+  time: '2026-06-07T04:18:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/172
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added showers!
+  id: 2268
+  time: '2026-06-07T04:19:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/190
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: >-
+        Security cameras now have a new sprite and animation ported from
+        Wizard's Den.
+  id: 2269
+  time: '2026-06-07T22:31:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/178
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Rapid Piping Device now has a built-in scanner that reveals
+        atmospheric pipes under flooring while you hold it.
+    - type: Add
+      message: >-
+        The RPD can now deconstruct pipes hidden beneath floor tiles, under
+        firelocks, and on a specific pipe layer chosen by aiming your cursor
+        within the tile.
+    - type: Tweak
+      message: The Rapid Piping Device is now backpack-sized and fits in STASHES!
+    - type: Fix
+      message: Ungoofed the inventory sprite
+  id: 2270
+  time: '2026-06-07T22:35:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/187
+- author: Stedar111
+  changes:
+    - type: Add
+      message: HZD Squire, a folding SMG!
+  id: 2271
+  time: '2026-06-08T12:26:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/147
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: Ghosts can no longer see whisper due to privacy concerns.
+    - type: Remove
+      message: Admin ghosts can no longer see subtle and subtle OOC.
+  id: 2272
+  time: '2026-06-08T20:08:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/185
+- author: IrkallaEpsilon
+  changes:
+    - type: Remove
+      message: >-
+        Removed fun! A ship saving compatibility issue mainly with actor
+        components applied to anchored hydroponics trays. Oh they also keep
+        genning ghost roles on parental plants according to some places that
+        removed this feature already.
+  id: 2273
+  time: '2026-06-08T23:56:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/193
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        56 new bartender cocktails are now mixable. Old Fashioned, Jaegerbomb,
+        Dark Oasis, Dragon's Breath, Prairie Oyster, and many more.
+    - type: Add
+      message: Angobitters and jaegermister bottles are now stocked in the booze-o-mat.
+  id: 2274
+  time: '2026-06-08T23:56:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/189
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: Ported new Raccoon and Squirrel tails and ears!
+  id: 2275
+  time: '2026-06-09T00:00:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/188
+- author: SislenC
+  changes:
+    - type: Add
+      message: New stash! Fuel stash now available to be built, limited 1 per ship.
+  id: 2276
+  time: '2026-06-09T00:01:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/186
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: >-
+        Added screen timers & triggers that can and should only be used in
+        mapping
+    - type: Tweak
+      message: Hard bombs can now be linked to a trigger
+    - type: Tweak
+      message: more timer options for Hard bombs and now defaults at 120
+  id: 2277
+  time: '2026-06-09T00:02:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/156
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Try to fix the ghost role bug so it doesn't bother people anymore.
+  id: 2278
+  time: '2026-06-09T00:46:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/195
+- author: RemervKeberb
+  changes:
+    - type: Add
+      message: >-
+        Added the handrail, a new constructible object. You can hold onto it to
+        prevent being knocked down in FTL, a stylish way to avoid FTL accidents!
+  id: 2279
+  time: '2026-06-10T02:22:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/198
+- author: RemervKeberb
+  changes:
+    - type: Fix
+      message: >-
+        Fixed the handrails bounding box, the instructions were upside down, now
+        you will properly be installing them at head height allowing for other
+        objects to slide on under them.
+  id: 2280
+  time: '2026-06-10T13:09:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/206
+- author: Lazlo23
+  changes:
+    - type: Tweak
+      message: Plant analyzers now properly fit into botanical stashes
+  id: 2281
+  time: '2026-06-10T13:47:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/201
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Fixed an error when queueing a lathe recipe for a material the lathe
+        does not currently have stocked.
+    - type: Fix
+      message: >-
+        Projectile anomalies no longer fail to fire when they go supercritical
+        with nothing in range.
+    - type: Fix
+      message: Fixed an error that could occur while auto-firing ballistic weapons.
+    - type: Fix
+      message: >-
+        Improved server performance by eliminating several high-frequency
+        internal errors (most notably from ore silos).
+  id: 2282
+  time: '2026-06-10T15:29:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/203
+- author: IrkallaEpsilon
+  changes:
+    - type: Fix
+      message: M90 wield bonus now works properly
+  id: 2283
+  time: '2026-06-10T23:38:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/207
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Changed save contraband icon
+  id: 2284
+  time: '2026-06-11T22:17:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/210
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: high sec medical airlock (mapping purposes)
+    - type: Tweak
+      message: both ATU Tacsuit is now a saving contraband
+    - type: Tweak
+      message: Medical armory access adjusted to be accessible by ER
+  id: 2285
+  time: '2026-06-11T22:21:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/209
+- author: SquishyEmmaaaa
+  changes:
+    - type: Remove
+      message: >-
+        VegetableOil reagent no longer obtainable, now unused. Any existing
+        stock has gone stale!
+    - type: Tweak
+      message: Corn Oil is now known as Vegetable Oil!
+  id: 2286
+  time: '2026-06-11T22:32:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/159
+- author: Dimasw99
+  changes:
+    - type: Tweak
+      message: Guardian Unit DPS buffed from 8 to 16
+    - type: Fix
+      message: Guardian Unit doing 0 damage
+  id: 2287
+  time: '2026-06-11T22:32:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/208
+- author: SquishyEmmaaaa
+  changes:
+    - type: Tweak
+      message: Renames filled chemistry bottle references.
+  id: 2288
+  time: '2026-06-11T22:51:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/161
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Bomber jackets are now insulative, like winter coats
+  id: 2289
+  time: '2026-06-13T00:32:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/214
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Decorative ship greebles are now constructable and deconstructable:
+        antennas, radar panels, and ELINT. These still have no function. Be
+        aware that they have an offset the construction ghost doesn't show,
+        allowing you to build "off the grid".
+  id: 2290
+  time: '2026-06-13T23:10:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/213
+- author: RemervKeberb
+  changes:
+    - type: Add
+      message: a new drone to Far Reaches IV
+  id: 2291
+  time: '2026-06-14T00:29:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/218
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: >-
+        Avali, Protogen and Hydrakin cubes have been added to the biocube
+        fabricator.
+  id: 2292
+  time: '2026-06-14T00:37:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/215
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: >-
+        Chameleon Projector will no longer cause you to be permanently slowed
+        down
+  id: 2293
+  time: '2026-06-14T01:22:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/221
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: The public transit shuttle no longer gets stuck and unable to depart.
+    - type: Fix
+      message: Disposal units once again trigger their linked devices for automation.
+    - type: Fix
+      message: >-
+        Welding-repairing a silicon no longer errors when the target is missing
+        a damage type the welder can heal.
+  id: 2294
+  time: '2026-06-14T02:36:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/220
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Character traits are now grouped into categories (Physical, Medical,
+        Mental, Disabilities, Accents, Languages), each with its own limits, on
+        top of an overall trait-point budget. Negative-cost traits grant extra
+        points to spend.
+    - type: Tweak
+      message: >-
+        The Traits menu now opens with categories collapsed and supports
+        searching.
+    - type: Tweak
+      message: >-
+        Existing trait selections have been reset as part of the trait rework;
+        please reselect your traits.
+  id: 2295
+  time: '2026-06-14T03:53:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/179
