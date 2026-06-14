@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Threading.Tasks;
 using Content.Shared.Decals;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
@@ -135,6 +136,28 @@ public sealed partial class DungeonSystem
         HashSet<Vector2i>? reservedTiles = null,
         bool clearExisting = false)
     {
+        // Triad: synchronous entry (RoomFillSystem on MapInit). With no suspend callback the core never awaits, so it
+        // completes synchronously; the assert guards that invariant and GetResult surfaces any exception.
+        var task = SpawnRoomAsync(gridUid, grid, roomTransform, room, reservedTiles, clearExisting, null);
+        DebugTools.Assert(task.IsCompleted, "SpawnRoom must complete synchronously when no suspend callback is supplied.");
+        task.GetAwaiter().GetResult();
+    }
+
+    /// <summary>
+    /// Triad: async core for <see cref="SpawnRoom"/>. The dungeon job passes a suspend callback to yield mid-room so a
+    /// room full of anchored entities/decals doesn't stall a tick; the sync wrapper passes null and this runs straight
+    /// through. The callback yields and returns false if the grid was deleted mid-room, in which case we stop. Template
+    /// queries are materialized before the yielding loops so a concurrent dungeon job can't alias the lookup buffers.
+    /// </summary>
+    public async Task SpawnRoomAsync(
+        EntityUid gridUid,
+        MapGridComponent grid,
+        Matrix3x2 roomTransform,
+        DungeonRoomPrototype room,
+        HashSet<Vector2i>? reservedTiles,
+        bool clearExisting,
+        Func<ValueTask<bool>>? suspend)
+    {
         // Ensure the underlying template exists.
         var roomMap = GetOrCreateTemplate(room);
         var templateMapUid = _mapManager.GetMapEntityId(roomMap);
@@ -189,7 +212,13 @@ public sealed partial class DungeonSystem
         // Load entities
         // TODO: I don't think engine supports full entity copying so we do this piece of shit.
 
+        // Triad: materialize the template query before the yielding loop so a concurrent dungeon job can't alias the
+        // lookup buffer across a yield.
+        var templateEnts = new List<EntityUid>();
         foreach (var templateEnt in _lookup.GetEntitiesIntersecting(templateMapUid, bounds, LookupFlags.Uncontained))
+            templateEnts.Add(templateEnt);
+
+        foreach (var templateEnt in templateEnts)
         {
             var templateXform = _xformQuery.GetComponent(templateEnt);
             var childPos = Vector2.Transform(templateXform.LocalPosition - roomCenter, roomTransform);
@@ -212,6 +241,10 @@ public sealed partial class DungeonSystem
                 _transform.AnchorEntity((ent, childXform), (gridUid, grid));
             else if (!anchored && childXform.Anchored)
                 _transform.Unanchor(ent, childXform);
+
+            // Triad: yield after each entity so a room full of anchored entities doesn't stall a tick.
+            if (suspend != null && !await suspend())
+                return;
         }
 
         // Load decals
@@ -219,7 +252,12 @@ public sealed partial class DungeonSystem
         {
             EnsureComp<DecalGridComponent>(gridUid);
 
+            // Triad: materialize before the yielding loop, same reasoning as the entity query above.
+            var roomDecals = new List<Decal>();
             foreach (var (_, decal) in _decals.GetDecalsIntersecting(templateMapUid, bounds, loadedDecals))
+                roomDecals.Add(decal);
+
+            foreach (var decal in roomDecals)
             {
                 // Offset by 0.5 because decals are offset from bot-left corner
                 // So we convert it to center of tile then convert it back again after transform.
@@ -279,6 +317,10 @@ public sealed partial class DungeonSystem
                     decal.Cleanable);
 
                 DebugTools.Assert(result);
+
+                // Triad: yield after each decal.
+                if (suspend != null && !await suspend())
+                    return;
             }
         }
     }
