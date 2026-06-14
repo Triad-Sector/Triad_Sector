@@ -146,7 +146,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         }
     }
 
-    private async void OnSavedShipSelected(ItemList.ItemListSelectedEventArgs args)
+    private void OnSavedShipSelected(ItemList.ItemListSelectedEventArgs args)
     {
         // Store selected index and update Load Ship button state
         _selectedShipIndex = args.ItemIndex;
