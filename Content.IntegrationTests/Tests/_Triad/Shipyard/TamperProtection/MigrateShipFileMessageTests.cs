@@ -54,7 +54,7 @@ public sealed class MigrateShipFileMessageTests
         // precondition here so the handler reaches its happy path.
         await client.WaitPost(() =>
         {
-            Content.Client.Shuttles.Save.ShipFileManagementSystem.MarkShipPathAsDeletable(path);
+            Client._Triad.Shipyard.Save.ShipFileManagementSystem.MarkShipPathAsDeletable(path);
         });
 
         // Raise the network event from the server to the connected client's channel.
