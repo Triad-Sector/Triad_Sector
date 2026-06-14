@@ -1,18 +1,26 @@
 using Content.Shared.Alert;
+using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
 
-/// <summary>
-/// Marks a belt item as a powered support harness for matching weapons.
-/// </summary>
+/// Marks an item as a powered support harness for matching weapons.
+/// Harnesses and weapons are paired by <see cref="SupportKey"/>, so new pairs can be defined in YAML.
+/// Configures the equipped harness slot, magnetic retrieval slot, power drain, alerts, sounds, verbs, and drained movement.
+/// The harness item's Clothing component must also allow the configured <see cref="HarnessSlot"/>.
 [RegisterComponent, NetworkedComponent]
 public sealed partial class WeapHarnComponent : Component
 {
     [DataField]
     public string SupportKey = "Default";
+
+    [DataField]
+    public SlotFlags HarnessSlot = SlotFlags.BELT;
+
+    [DataField]
+    public SlotFlags RetrievalSlot = SlotFlags.SUITSTORAGE;
 
     [DataField]
     public float ActiveChargePerSecond = 5f;

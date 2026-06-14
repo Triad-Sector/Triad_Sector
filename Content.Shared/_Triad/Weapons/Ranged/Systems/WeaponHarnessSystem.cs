@@ -15,14 +15,16 @@ using Content.Shared.Wieldable.Components;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Systems;
 
+/// Applies weapon harness handling and movement behavior.
+/// Matching harnesses are found by <see cref="WeapHarnComponent.SupportKey"/> and must be equipped in their configured
+/// <see cref="WeapHarnComponent.HarnessSlot"/>. Supported weapons count when held or stored in the harness-configured
+/// <see cref="WeapHarnComponent.RetrievalSlot"/>.
 public sealed class WeaponHarnessSystem : EntitySystem
 {
-    public const string BeltSlot = "belt";
-    public const string SuitStorageSlot = "suitstorage";
-
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;
@@ -102,7 +104,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
         return true;
     }
 
-    public bool HasSupWeapInHandOrSuitStore(EntityUid user, string supportKey)
+    public bool HasSupWeapInHandOrRetrievalSlot(EntityUid user, string supportKey)
     {
         foreach (var held in _hands.EnumerateHeld(user))
         {
@@ -110,8 +112,9 @@ public sealed class WeaponHarnessSystem : EntitySystem
                 return true;
         }
 
-        return _inventory.TryGetSlotEntity(user, SuitStorageSlot, out var suitStorage) &&
-               IsSupWeap(suitStorage.Value, supportKey);
+        return TryGetMatchHarn(user, supportKey, out var harness) &&
+               TryGetSlotEntity(user, harness.Comp.RetrievalSlot, out var retrievalSlot) &&
+               IsSupWeap(retrievalSlot.Value, supportKey);
     }
 
     private void OnGunRefreshModifiers(Entity<ReqWeapHarnComponent> ent, ref GunRefreshModifiersEvent args)
@@ -167,8 +170,9 @@ public sealed class WeaponHarnessSystem : EntitySystem
     {
         var user = Transform(ent.Owner).ParentUid;
 
-        if (!_inventory.TryGetSlotEntity(user, SuitStorageSlot, out var suitStorage) ||
-            suitStorage.Value != ent.Owner ||
+        if (!TryGetMatchHarn(user, ent.Comp.SupportKey, out var matchingHarness) ||
+            !TryGetSlotEntity(user, matchingHarness.Comp.RetrievalSlot, out var retrievalSlot) ||
+            retrievalSlot.Value != ent.Owner ||
             TryGetPowHarn(user, ent.Comp.SupportKey, out _) ||
             TryGetHarnWithCell(user, ent.Comp.SupportKey, out _))
         {
@@ -184,7 +188,7 @@ public sealed class WeaponHarnessSystem : EntitySystem
     {
         var user = Transform(ent.Owner).ParentUid;
 
-        if (!HasSupWeapInHandOrSuitStore(user, ent.Comp.SupportKey) ||
+        if (!HasSupWeapInHandOrRetrievalSlot(user, ent.Comp.SupportKey) ||
             !TryGetHarnWithCell(user, ent.Comp.SupportKey, out var harness) ||
             harness.Owner != ent.Owner ||
             _powerCell.HasActivatableCharge(ent.Owner))
@@ -291,13 +295,54 @@ public sealed class WeaponHarnessSystem : EntitySystem
     {
         harness = default;
 
-        if (!_inventory.TryGetSlotEntity(user, BeltSlot, out var belt) ||
-            !TryComp<WeapHarnComponent>(belt.Value, out var harnessComp) ||
-            harnessComp.SupportKey != supportKey)
+        var enumerator = _inventory.GetSlotEnumerator(user);
+        while (enumerator.NextItem(out var item, out var slot))
+        {
+            if (!TryComp<WeapHarnComponent>(item, out var harnessComp) ||
+                harnessComp.SupportKey != supportKey ||
+                (slot.SlotFlags & harnessComp.HarnessSlot) == 0)
+                continue;
+
+            harness = (item, harnessComp);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool TryGetSlotEntity(EntityUid user, SlotFlags slotFlags, [NotNullWhen(true)] out EntityUid? slotEntity)
+    {
+        slotEntity = null;
+
+        if (slotFlags == SlotFlags.NONE)
             return false;
 
-        harness = (belt.Value, harnessComp);
+        var enumerator = _inventory.GetSlotEnumerator(user, slotFlags);
+        if (!enumerator.NextItem(out var item, out _))
+            return false;
+
+        slotEntity = item;
         return true;
+    }
+
+    public bool TryGetSlotName(EntityUid user, SlotFlags slotFlags, [NotNullWhen(true)] out string? slotName)
+    {
+        slotName = null;
+
+        if (slotFlags == SlotFlags.NONE ||
+            !_inventory.TryGetSlots(user, out var slots))
+            return false;
+
+        foreach (var slot in slots)
+        {
+            if ((slot.SlotFlags & slotFlags) == 0)
+                continue;
+
+            slotName = slot.Name;
+            return true;
+        }
+
+        return false;
     }
 
     private bool IsSupWeap(EntityUid weaponUid, string supportKey)

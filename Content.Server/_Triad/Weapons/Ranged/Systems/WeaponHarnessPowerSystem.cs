@@ -21,6 +21,9 @@ using System.Collections.Generic;
 
 namespace Content.Server._Triad.Weapons.Ranged.Systems;
 
+/// Handles powered harness charge use, alerts, link feedback, magnetic retrieval, and retrieval toggle verbs.
+/// Magnetic retrieval stores supported weapons in the harness-configured <see cref="WeapHarnComponent.RetrievalSlot"/>
+/// when dropped or when the wearer becomes critical or dead.
 public sealed class WeaponHarnessPowerSystem : EntitySystem
 {
     private static readonly ProtoId<TagPrototype> HeavyWeaponTag = "TriadHeavyWeapon";
@@ -86,12 +89,13 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     {
         if (Deleted(gun) ||
             Deleted(user) ||
-            !TryGetMagnetHarn(user, supportKey, out _) ||
+            !TryGetMagnetHarn(user, supportKey, out var harness) ||
             !CanMagnetRetrieve(gun) ||
-            _inventory.TryGetSlotEntity(user, WeaponHarnessSystem.SuitStorageSlot, out _))
+            !_harnessSupport.TryGetSlotName(user, harness.Comp.RetrievalSlot, out var retrievalSlot) ||
+            _inventory.TryGetSlotEntity(user, retrievalSlot, out _))
             return;
 
-        if (!_inventory.TryEquip(user, user, gun, WeaponHarnessSystem.SuitStorageSlot, silent: true, force: true))
+        if (!_inventory.TryEquip(user, user, gun, retrievalSlot, silent: true, force: true))
             return;
 
         _harnessSupport.RefreshHeldSupWeap(user);
@@ -107,9 +111,10 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
 
     private void TryRetrieveHeldSuppWeap(EntityUid user)
     {
-        if (_inventory.TryGetSlotEntity(user, WeaponHarnessSystem.SuitStorageSlot, out _) ||
-            !TryGetHarness(user, out _, out var harness) ||
-            !TryGetMagnetHarn(user, harness.SupportKey, out _))
+        if (!TryGetHarness(user, out _, out var harness) ||
+            !TryGetMagnetHarn(user, harness.SupportKey, out _) ||
+            !_harnessSupport.TryGetSlotName(user, harness.RetrievalSlot, out var retrievalSlot) ||
+            _inventory.TryGetSlotEntity(user, retrievalSlot, out _))
             return;
 
         foreach (var held in _hands.EnumerateHeld(user))
@@ -121,7 +126,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
                 continue;
             }
 
-            if (!_inventory.TryEquip(user, user, held, WeaponHarnessSystem.SuitStorageSlot, silent: true, force: true))
+            if (!_inventory.TryEquip(user, user, held, retrievalSlot, silent: true, force: true))
                 return;
 
             _harnessSupport.RefreshHeldSupWeap(user);
@@ -144,7 +149,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
             var wearer = xform.ParentUid;
             if (!_harnessSupport.TryGetPowHarnEntity(wearer, harness.SupportKey, out var poweredHarness) ||
                 poweredHarness.Owner != uid ||
-                !_harnessSupport.HasSupWeapInHandOrSuitStore(wearer, harness.SupportKey))
+                !_harnessSupport.HasSupWeapInHandOrRetrievalSlot(wearer, harness.SupportKey))
             {
                 continue;
             }
@@ -169,7 +174,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     private void OnSupWeapUnequipHand(WeapHarnGunUnEquipEvent args)
     {
         if (!TryGetHarness(args.User, out var harnessUid, out var harness) ||
-            _harnessSupport.HasSupWeapInHandOrSuitStore(args.User, harness.SupportKey))
+            _harnessSupport.HasSupWeapInHandOrRetrievalSlot(args.User, harness.SupportKey))
             return;
 
         harness.LinkSoundPlayed = false;
@@ -177,14 +182,17 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
 
     private void OnSupWeapUnequipInv(WeapHarnGunUnEquipInvEvent args)
     {
-        if (args.Slot == WeaponHarnessSystem.SuitStorageSlot)
+        if (TryGetHarness(args.User, out _, out var harness) &&
+            _harnessSupport.TryGetSlotName(args.User, harness.RetrievalSlot, out var retrievalSlot) &&
+            args.Slot == retrievalSlot)
             _suppressNextLinkFeedback.Add(args.Gun);
     }
 
     private void OnHarnEquip(WeapHarnEquipEvent args)
     {
-        if (args.Slot != WeaponHarnessSystem.BeltSlot ||
-            !TryComp<WeapHarnComponent>(args.Harness, out var harness))
+        if (!TryComp<WeapHarnComponent>(args.Harness, out var harness) ||
+            !_inventory.TryGetSlot(args.User, args.Slot, out var slot) ||
+            (slot.SlotFlags & harness.HarnessSlot) == 0)
             return;
 
         TryLinkHarness(args.User, harness.SupportKey, true, false);
@@ -193,8 +201,9 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
 
     private void OnHarnUnequip(WeapHarnUnequipEvent args)
     {
-        if (args.Slot != WeaponHarnessSystem.BeltSlot ||
-            !TryComp<WeapHarnComponent>(args.Harness, out var harness))
+        if (!TryComp<WeapHarnComponent>(args.Harness, out var harness) ||
+            !_inventory.TryGetSlot(args.User, args.Slot, out var slot) ||
+            (slot.SlotFlags & harness.HarnessSlot) == 0)
             return;
 
         ClearHarnAlert(args.User, harness);
@@ -249,7 +258,7 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
     private void TryLinkHarness(EntityUid user, string supportKey, bool showPopup, bool playSound)
     {
         if (!_harnessSupport.TryGetPowHarnEntity(user, supportKey, out var harness) ||
-            !_harnessSupport.HasSupWeapInHandOrSuitStore(user, supportKey))
+            !_harnessSupport.HasSupWeapInHandOrRetrievalSlot(user, supportKey))
             return;
 
         if (!harness.Comp.LinkSoundPlayed)
@@ -338,19 +347,27 @@ public sealed class WeaponHarnessPowerSystem : EntitySystem
         harnessUid = default;
         harness = default!;
 
-        if (!_inventory.TryGetSlotEntity(user, WeaponHarnessSystem.BeltSlot, out var belt) ||
-            !TryComp<WeapHarnComponent>(belt.Value, out var harnessComp))
-            return false;
+        var enumerator = _inventory.GetSlotEnumerator(user);
+        while (enumerator.NextItem(out var item, out var slot))
+        {
+            if (!TryComp<WeapHarnComponent>(item, out var harnessComp) ||
+                (slot.SlotFlags & harnessComp.HarnessSlot) == 0)
+                continue;
 
-        harnessUid = belt.Value;
-        harness = harnessComp;
-        return true;
+            harnessUid = item;
+            harness = harnessComp;
+            return true;
+        }
+
+        return false;
     }
 
     private bool TryGetHarnWearer(EntityUid harnessUid, out EntityUid wearer)
     {
         wearer = Transform(harnessUid).ParentUid;
-        return TryGetHarness(wearer, out var beltHarness, out _) && beltHarness == harnessUid;
+        return TryComp<WeapHarnComponent>(harnessUid, out var harness) &&
+               _inventory.TryGetContainingSlot(harnessUid, out var slot) &&
+               (slot.SlotFlags & harness.HarnessSlot) != 0;
     }
 
     private void ClearHarnAlert(EntityUid wearer, WeapHarnComponent harness)

@@ -3,9 +3,10 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
 
-/// <summary>
+
 /// Marks a gun that receives its full handling only while the user wears a matching powered harness.
-/// </summary>
+/// Weapons and harnesses are paired by <see cref="SupportKey"/>, so new weapon/harness pairs can be defined in YAML.
+/// Configures powered spread bonuses, powered/unsupported movement modifiers, and magnetic retrieval eligibility.
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ReqWeapHarnComponent : Component
 {
