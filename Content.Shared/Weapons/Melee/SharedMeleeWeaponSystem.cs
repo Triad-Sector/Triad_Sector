@@ -179,11 +179,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not {} user)
             return;
 
-        // Triad: a stale/invalid attached entity (lagging or transitioning player sending a late
-        // attack event) is routine, not an error. Return silently. The Log.Error inherited from
-        // #1255 "Console Error Spam Fix Attempt" was itself the #1 server log offender (~2400/48h).
+        // Validate that the user entity is valid
         if (!user.IsValid())
+        {
+            Log.Error($"OnLightAttack received invalid user entity: {user} from session {args.SenderSession}");
             return;
+        }
 
         if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
             weaponUid != GetEntity(msg.Weapon))
@@ -199,11 +200,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not {} user)
             return;
 
-        // Triad: a stale/invalid attached entity (lagging or transitioning player sending a late
-        // attack event) is routine, not an error. Return silently. The Log.Error inherited from
-        // #1255 "Console Error Spam Fix Attempt" was itself the #1 server log offender (~2400/48h).
+        // Validate that the user entity is valid
         if (!user.IsValid())
+        {
+            Log.Error($"OnHeavyAttack received invalid user entity: {user} from session {args.SenderSession}");
             return;
+        }
 
         if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
             weaponUid != GetEntity(msg.Weapon) ||
@@ -220,11 +222,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not {} user)
             return;
 
-        // Triad: a stale/invalid attached entity (lagging or transitioning player sending a late
-        // attack event) is routine, not an error. Return silently. The Log.Error inherited from
-        // #1255 "Console Error Spam Fix Attempt" was itself the #1 server log offender (~2400/48h).
+        // Validate that the user entity is valid
         if (!user.IsValid())
+        {
+            Log.Error($"OnDisarmAttack received invalid user entity: {user} from session {args.SenderSession}");
             return;
+        }
 
         if (TryGetWeapon(user, out var weaponUid, out var weapon))
             AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
@@ -581,10 +584,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     {
         // TODO: This is copy-paste as fuck with DoPreciseAttack
 
-        // Triad: defensive guard kept, but a stale/invalid user (lagging player, late event) is
-        // routine, not an error. Return silently instead of the inherited #1255 Log.Error spam.
+        // Validate that the user entity is valid
         if (!user.IsValid())
+        {
+            Log.Error($"DoHeavyAttack called with invalid user entity: {user}");
             return false;
+        }
 
         if (!TryComp(user, out TransformComponent? userXform))
             return false;
