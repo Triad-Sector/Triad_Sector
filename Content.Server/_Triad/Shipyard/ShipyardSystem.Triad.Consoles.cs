@@ -366,6 +366,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 ("ship", name), ("cost", appraisalCost)));
         }
 
+        // Add company information to the shuttle from the ID card or voucher
+        AddCompanyInformation(targetId, shuttleUid); // Triad, generic method for adding company info
+
         var boughtEv = new ShipBoughtEvent();
         RaiseLocalEvent(shuttleUid, boughtEv);
 
