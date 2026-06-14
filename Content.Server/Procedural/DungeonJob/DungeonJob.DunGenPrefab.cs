@@ -231,8 +231,10 @@ public sealed partial class DungeonJob
 
                 // The expensive bit yippy.
                 // Triad: yield mid-room (per entity/decal) so a room's anchored content doesn't stall a tick.
-                await _dungeon.SpawnRoomAsync(_gridUid, _grid, dungeonMatty, room, reservedTiles, false,
-                    async () => { await SuspendDungeon(); return ValidateResume(); });
+                Func<ValueTask<bool>>? roomSuspend = SliceLayers
+                    ? async () => { await SuspendDungeon(); return ValidateResume(); }
+                    : null;
+                await _dungeon.SpawnRoomAsync(_gridUid, _grid, dungeonMatty, room, reservedTiles, false, roomSuspend);
 
                 var roomCenter = (room.Offset + room.Size / 2f) * _grid.TileSize;
                 var roomTiles = new HashSet<Vector2i>(room.Size.X * room.Size.Y);

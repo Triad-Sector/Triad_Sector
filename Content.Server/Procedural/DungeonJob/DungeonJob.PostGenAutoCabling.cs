@@ -73,10 +73,13 @@ public sealed partial class DungeonJob
         {
             // Triad: the cable A* search ran in one un-yielded span (~59ms); yield every iteration so even the
             // empty-tile continue path below can't burst un-sliced.
-            await SuspendDungeon();
+            if (SliceLayers)
+            {
+                await SuspendDungeon();
 
-            if (!ValidateResume())
-                return;
+                if (!ValidateResume())
+                    return;
+            }
 
             if (frontier.Count == 0)
             {
@@ -170,10 +173,13 @@ public sealed partial class DungeonJob
             _entManager.SpawnEntity(ent, _maps.GridTileToLocal(_gridUid, _grid, tile));
 
             // Triad: slice the cable spawn pass so a fully-cabled dungeon doesn't spawn every cable in one block.
-            await SuspendDungeon();
+            if (SliceLayers)
+            {
+                await SuspendDungeon();
 
-            if (!ValidateResume())
-                return;
+                if (!ValidateResume())
+                    return;
+            }
         }
     }
 }

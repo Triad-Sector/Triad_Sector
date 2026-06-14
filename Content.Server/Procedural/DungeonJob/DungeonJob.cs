@@ -39,6 +39,10 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     // Revert to `private const int ... = 4;` before the PR.
     public static int TileCommitChunkBatch = 4;
 
+    // Triad TEMP: master switch for the per-layer yield slicing (Ore/AutoCabling/SpawnRoom), so the live A/B can
+    // compare the original un-sliced behaviour vs fully smoothed in one server run. Remove (always-on) before the PR.
+    public static bool SliceLayers = true;
+
     // Triad: cell size used to group tiles before committing. Mirrors the engine's default MapGridComponent.ChunkSize
     // (internal, so not readable from content); dungeon grids are created with the default, so 16 keeps each batch
     // aligned to whole grid chunks and avoids regenerating a chunk's collision in two separate commits.

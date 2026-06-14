@@ -146,10 +146,13 @@ public sealed partial class DungeonJob
 
                     // Triad: slice the per-vein spawn burst; the outer loop only yields once per group, so a large
                     // MaxGroupSize otherwise spawns the whole vein in one un-yielded block.
-                    await SuspendDungeon();
+                    if (SliceLayers)
+                    {
+                        await SuspendDungeon();
 
-                    if (!ValidateResume())
-                        return;
+                        if (!ValidateResume())
+                            return;
+                    }
                 }
             }
 

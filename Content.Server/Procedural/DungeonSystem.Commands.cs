@@ -97,6 +97,16 @@ public sealed partial class DungeonSystem
         shell.WriteLine($"dungentest: queued NFVGRoidBasalt on map {mapId}");
     }
 
+    // Triad TEMP: master switch for per-layer yield slicing (Ore/AutoCabling/SpawnRoom) for the live A/B. Remove before PR.
+    [AdminCommand(AdminFlags.Debug)]
+    private void SetDungeonSlice(IConsoleShell shell, string argstr, string[] args)
+    {
+        if (args.Length >= 1 && int.TryParse(args[0], out var n))
+            DungeonJob.DungeonJob.SliceLayers = n != 0;
+
+        shell.WriteLine($"dungeon layer slicing = {DungeonJob.DungeonJob.SliceLayers}");
+    }
+
     private CompletionResult CompletionCallback(IConsoleShell shell, string[] args)
     {
         if (args.Length == 1)
