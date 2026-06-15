@@ -4,11 +4,13 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
-using Content.Client._Triad.Shipyard.Save;
+using Content.Client._Triad.Shipyard.Save; // Triad
+using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
 using Content.Shared._Triad.CCVar;
 using Content.Shared.Whitelist; // Triad
+using Robust.Client.Player; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
@@ -18,10 +20,11 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
 
-    private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
+    private ISawmill _sawmill = default!;
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
+
     public int Balance { get; private set; }
 
     public int? ShipSellValue { get; private set; }
@@ -43,6 +46,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         _whitelist = EntMan.System<EntityWhitelistSystem>(); // Triad
+        _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
     }
 
     protected override void Open()
@@ -237,7 +241,6 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             fileName = fileName.Substring(0, lastDot);
         return fileName;
     }
-
 
     private void Populate(List<string> availablePrototypes, List<string> unavailablePrototypes, bool freeListings, bool validId)
     {
