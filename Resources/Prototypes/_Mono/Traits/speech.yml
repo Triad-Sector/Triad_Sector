@@ -11,6 +11,17 @@
     components:
     - type: BoganAccent
 
+- type: trait
+  id: RussianAccent
+  name: trait-russian-name
+  description: trait-russian-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+
 # 1 Cost - Languages
 
 - type: trait

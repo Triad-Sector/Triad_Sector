@@ -4,13 +4,11 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
-using Content.Client.Shuttles.Save;
+using Content.Client._Triad.Shipyard.Save;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.Player;
-using Content.Shared._NF.Shipyard.Components;
-using Content.Shared.Whitelist; // Triad
 using Robust.Shared.Configuration;
 using Content.Shared._Triad.CCVar;
+using Content.Shared.Whitelist; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 

@@ -109,6 +109,17 @@
     item: BagpipeInstrument
 
 - type: trait
+  id: GermanAccent
+  name: trait-german-name
+  description: trait-german-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GermanAccent
+
+- type: trait
   id: Accentless
   name: trait-accentless-name
   description: trait-accentless-desc

@@ -1571,3 +1571,69 @@ Entries:
   id: 2297
   time: '2026-06-14T13:28:39.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/222
+- author: SquishyEmmaaaa
+  changes:
+    - type: Fix
+      message: >-
+        Fixed seed packets being affected by the original plant even after
+        clipping.
+  id: 2298
+  time: '2026-06-14T17:01:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/194
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Service workers now can access Janitor supplies, within reason
+  id: 2299
+  time: '2026-06-14T17:04:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/202
+- author: runicguardian
+  changes:
+    - type: Add
+      message: Added LessLethal ammo (EMP and Flash) to the China Lake! PLOOP!
+  id: 2300
+  time: '2026-06-14T17:07:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/219
+- author: runicguardian
+  changes:
+    - type: Tweak
+      message: >-
+        Filled chef belt now contains a knife, rolling pin, and selective
+        dropper!
+  id: 2301
+  time: '2026-06-14T22:45:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/225
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added back the Russian accent!
+  id: 2302
+  time: '2026-06-14T22:48:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/227
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added german accent back
+  id: 2303
+  time: '2026-06-15T13:02:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/231
+- author: SomeoneElsHere
+  changes:
+    - type: Add
+      message: >-
+        Added a noise and message to Handheld/Non-Handheld Crew Monitoring
+        Consoles if you gain 100+ damage at once.
+  id: 2304
+  time: '2026-06-15T13:06:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/192
+- author: TheBweepers
+  changes:
+    - type: Add
+      message: Allows Slime People to eat cloth, paper, raw meat, and everything else!
+    - type: Tweak
+      message: >-
+        Adjusts Allicin and Theobromise to stop slime people from being effected
+        by them after the above change made them suseptable
+  id: 2305
+  time: '2026-06-15T13:10:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/169

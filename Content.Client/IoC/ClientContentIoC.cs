@@ -27,7 +27,7 @@ using Content.Shared.Chat;
 using Content.Shared.IoC;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
-using Content.Client.Shuttles.Save;
+using Content.Client._Triad.Shipyard.Save;
 
 namespace Content.Client.IoC
 {

@@ -52,6 +52,7 @@
     whitelist:
       tags:
         - Grenade
+        - LessLethalGrenade #Triad
     capacity: 3
     proto: 40mmGrenadeFragmentation
     soundInsert:
