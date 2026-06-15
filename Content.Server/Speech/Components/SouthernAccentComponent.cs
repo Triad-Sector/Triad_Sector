@@ -19,6 +19,8 @@ public sealed partial class SouthernAccentComponent : Component, IDrawlAccentCom
         "accent-southern-prefix-4",
         "accent-southern-prefix-5",
         "accent-southern-prefix-6",
+        "accent-southern-prefix-7",
+        "accent-southern-prefix-8",
     };
 
     [DataField]
@@ -33,6 +35,8 @@ public sealed partial class SouthernAccentComponent : Component, IDrawlAccentCom
         "accent-southern-suffix-4",
         "accent-southern-suffix-5",
         "accent-southern-suffix-6",
+        "accent-southern-suffix-7",
+        "accent-southern-suffix-8",
     };
 
     [DataField]

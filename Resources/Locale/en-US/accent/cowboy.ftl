@@ -530,16 +530,32 @@ accent-cowboy-words-176 = lawyer
 accent-cowboy-replacement-176 = shyster
 
 
+# Triad: occasional 18+ swaps (input-gated)
+accent-cowboy-words-177 = bullshit
+accent-cowboy-replacement-177 = horseshit
+
+accent-cowboy-words-178 = asshole
+accent-cowboy-replacement-178 = horse's ass
+
+accent-cowboy-words-179 = coward
+accent-cowboy-replacement-179 = yellow-belly
+
+accent-cowboy-words-180 = damn
+accent-cowboy-replacement-180 = goddamn
+
 # Triad: prefix/suffix tics for the shared drawl engine (DrawlAccentSystem)
-accent-cowboy-prefix-1 = Howdy,
-accent-cowboy-prefix-2 = Well now,
-accent-cowboy-prefix-3 = Shoot,
-accent-cowboy-prefix-4 = Heck,
-accent-cowboy-prefix-5 = Listen here,
-accent-cowboy-prefix-6 = Well I'll be,
+accent-cowboy-prefix-1 = Well now,
+accent-cowboy-prefix-2 = Shoot,
+accent-cowboy-prefix-3 = Heck,
+accent-cowboy-prefix-4 = Listen here,
+accent-cowboy-prefix-5 = Well I'll be,
+accent-cowboy-prefix-6 = Hell,
+accent-cowboy-prefix-7 = Damn,
 
 accent-cowboy-suffix-1 = , partner
 accent-cowboy-suffix-2 = , pardner
 accent-cowboy-suffix-3 = , I reckon
 accent-cowboy-suffix-4 = , y'hear
 accent-cowboy-suffix-5 = , sure as shootin'
+accent-cowboy-suffix-6 = , ya bastard
+accent-cowboy-suffix-7 = , dammit

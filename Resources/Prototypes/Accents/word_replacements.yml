@@ -443,6 +443,10 @@
     accent-cowboy-words-174: accent-cowboy-replacement-174
     accent-cowboy-words-175: accent-cowboy-replacement-175
     accent-cowboy-words-176: accent-cowboy-replacement-176
+    accent-cowboy-words-177: accent-cowboy-replacement-177
+    accent-cowboy-words-178: accent-cowboy-replacement-178
+    accent-cowboy-words-179: accent-cowboy-replacement-179
+    accent-cowboy-words-180: accent-cowboy-replacement-180
 
 - type: accent
   id: southern
@@ -453,6 +457,9 @@
     accent-southern-words-4: accent-southern-words-replace-4
     accent-southern-words-5: accent-southern-words-replace-5
     accent-southern-words-6: accent-southern-words-replace-6
+    accent-southern-words-7: accent-southern-words-replace-7
+    accent-southern-words-8: accent-southern-words-replace-8
+    accent-southern-words-9: accent-southern-words-replace-9
 
 # For the chat sanitization system
 - type: accent
