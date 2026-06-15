@@ -218,20 +218,6 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
-- type: entity # Triad
-  id: Magazine9x19mmPistolHighCapacityIncendiary
-  name: extended pistol magazine (9x19mm incendiary)
-  parent: BaseMagazine9x19mmPistolHighCapacityFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmIncendiary
-  - type: Sprite
-    layers:
-    - state: red
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-
 - type: entity
   id: Magazine9x19mmPistolHighCapacityFMJ
   name: extended pistol magazine (9x19mm FMJ) # Triad
@@ -260,20 +246,6 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
-- type: entity # Triad
-  id: Magazine9x19mmPistolHighCapacityUranium
-  name: extended pistol magazine (9x19mm uranium)
-  parent: BaseMagazine9x19mmPistolHighCapacityFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmUranium
-  - type: Sprite
-    layers:
-    - state: uranium
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-
 - type: entity
   id: Magazine9x19mmPistolHighCapacityRubber
   name: extended pistol magazine (9x19mm rubber) # Triad
@@ -288,58 +260,6 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-
-# Triad Start
-#Mono AP system
-#anti-flesh ammo
-- type: entity 
-  id: Magazine9x19mmPistolHighCapacityHP
-  name: extended pistol magazine (9x19mm hollow-point)
-  parent: BaseMagazine9x19mmPistolHighCapacityFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmHP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_pistol_high_capacity_mag.rsi
-    layers:
-    - state: HP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-
-- type: entity
-  id: Magazine9x19mmPistolHighCapacityRIP
-  name: extended pistol magazine (9x19mm RIP)
-  parent: BaseMagazine9x19mmPistolHighCapacityFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmRIP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_pistol_high_capacity_mag.rsi
-    layers:
-    - state: RIP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-
-#armor-piercing ammo
-
-- type: entity
-  id: Magazine9x19mmPistolHighCapacityPlasteelAP
-  name: extended pistol magazine (9x19mm AP)
-  parent: BaseMagazine9x19mmPistolHighCapacityFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmPlasteelAP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_pistol_high_capacity_mag.rsi
-    layers:
-    - state: plasteelAP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-# Triad End
-
 #End HighCapacity mags
 #Start SubMachineGun mags
 - type: entity
