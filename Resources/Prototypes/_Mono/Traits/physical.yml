@@ -65,6 +65,11 @@
   - !type:HasTraitCondition
     trait: Tenacity
     invert: true
+  # Triad: Osteogenesis adds a stronger GlassJaw; taking both silently drops one (engine skips
+  # duplicate components). They are redundant variants, so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: OsteogenesisImperfecta
+    invert: true
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
@@ -129,6 +134,11 @@
   - !type:HasTraitCondition
     trait: WillToLive
     invert: true
+  # Triad: Redshirt also adds the WillToDie component; taking both silently drops one. Both are
+  # "you die more easily", so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: Redshirt
+    invert: true
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
@@ -179,6 +189,10 @@
   conditions:
   - !type:HasTraitCondition
     trait: Tenacity
+    invert: true
+  # Triad: mutually exclusive with GlassJaw (both add the GlassJaw component; taking both drops one).
+  - !type:HasTraitCondition
+    trait: GlassJaw
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
@@ -417,12 +431,14 @@
         species: IPC
         invert: true
   effects:
+  # Triad: own component instead of a 2nd DamageProtectionBuff. Two traits adding the same component
+  # silently drop one (engine skips duplicates), which let BionicLegs/Spinarette/etc strip DermalArmor.
   - !type:AddCompsEffect
     components:
-    - type: DamageProtectionBuff
+    - type: HardenedLymphocytes
       modifiers:
-        dermal:
-          id: DermalArmorTrait
+        lymphocytes:
+          id: HardenedLymphocytesTrait
           coefficients:
             Shock: 1.25
           flatReductions:
