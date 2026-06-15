@@ -31,8 +31,7 @@
   effects:
   - !type:AddCompsEffect
     components:
-    - type: ReplacementAccent
-      accent: cowboy
+    - type: CowboyAccent # Triad: promoted from generic ReplacementAccent to the shared drawl engine
 
 - type: trait
   id: ItalianAccent
