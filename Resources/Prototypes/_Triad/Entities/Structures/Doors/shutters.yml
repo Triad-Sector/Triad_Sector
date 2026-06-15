@@ -1,0 +1,106 @@
+- type: entity
+  id: BaseShutter
+  parent: BaseStructure
+  name: shutter
+  abstract: true
+  description: One shudders to think about what might be behind this shutter.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: StationAiWhitelist
+  - type: Sprite
+    sprite: Structures/Doors/Shutters/shutters.rsi
+    drawdepth: BlastDoors
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49" # don't want this colliding with walls or they won't close
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - AirlockLayer
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronics ]
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+  - type: NavMapDoor
+  - type: Tag
+    tags:
+    - ForceNoFixRotations # Don't want the fixrotations command to target these
+  - type: Door
+    openDrawDepth: BlastDoors
+    closedDrawDepth: BlastDoors
+    bumpOpen: false
+    clickOpen: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 1.2
+    openTimeOne: 1.2
+    openTimeTwo: 0.2
+    openingAnimationTime: 1.4
+    closingAnimationTime: 1.4
+    crushDamage:
+      types:
+        Blunt: 5 # getting shutters closed on you probably doesn't hurt that much
+    openSound:
+      path: /Audio/Machines/shutter.ogg
+    closeSound:
+      path: /Audio/Machines/shutter.ogg
+  - type: Weldable
+    time: 3
+  - type: Appearance
+  - type: UserInterface
+    interfaces:
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Airtight
+  - type: RadiationBlocker
+    resistance: 2
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 750 # Mono 500->750
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: DoorSignalControl
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+      - Open
+      - Close
+      - Toggle
+  - type: DeviceLinkSource
+    ports:
+    - DoorStatus
+    lastSignals:
+      DoorStatus: false
+  - type: InteractionPopup
+    interactSuccessString: shutter-rattle
+    messagePerceivedByOthers: shutter-rattle
+    interactSuccessSound:
+      collection: FenceRattle
+  - type: BlockWeather
+  # Triad - lets the shutter be interacted with even when a window/grille shares its tile (matches BaseFirelock)
+  - type: WallMount
+    arc: 360

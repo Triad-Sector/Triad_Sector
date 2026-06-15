@@ -1,0 +1,53 @@
+- type: entity
+  id: BlastDoor
+  parent: BaseStructure
+  name: blast door
+  description: An exceptionally tough blast door, good luck blasting through this.
+  suffix: indestructible
+  components:
+  - type: AccessReader
+    containerAccessProvider: board
+  - type: Sprite
+    sprite: Structures/Doors/Shutters/blastdoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.4
+    openTimeOne: 0.4
+    openTimeTwo: 0.4
+    openingAnimationTime: 1.0
+    closingAnimationTime: 1.0
+    canPry: false
+    crushDamage:
+      types:
+        Blunt: 25 # yowch
+    openSound:
+      path: /Audio/Machines/blastdoor.ogg
+    closeSound:
+      path: /Audio/Machines/blastdoor.ogg
+  - type: Occluder
+  - type: Appearance
+  - type: RadiationBlocker
+    resistance: 8
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronics ]
+  # - type: ExplosionResistance
+  #   damageCoefficient: 0
+  # - type: Armor
+  #   modifiers:
+  #     coefficients:
+  #       Blunt: 0
+  #       Slash: 0
+  #       Piercing: 0
+  #       Heat: 0
+  #       Structural: 0
+  - type: StaticPrice
+    price: 1000 
+  - type: InteractionPopup
+    interactSuccessString: comp-window-knock
+    messagePerceivedByOthers: comp-window-knock
+    interactSuccessSound:
+      path: /Audio/Effects/glass_knock.ogg

@@ -1,20 +1,20 @@
-- type: entity
-  id: BlastDoorIndestructible
-  parent: BlastDoor
-  name: blast door
-  description: An exceptionally tough blast door, good luck blasting through this.
-  suffix: indestructible
-  components:
-  - type: ExplosionResistance
-    damageCoefficient: 0
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0
-        Slash: 0
-        Piercing: 0
-        Heat: 0
-        Structural: 0
+# - type: entity
+#   id: BlastDoorIndestructible
+#   parent: BlastDoor
+#   name: blast door
+#   description: An exceptionally tough blast door, good luck blasting through this.
+#   suffix: indestructible
+#   components:
+#   - type: ExplosionResistance
+#     damageCoefficient: 0
+#   - type: Armor
+#     modifiers:
+#       coefficients:
+#         Blunt: 0
+#         Slash: 0
+#         Piercing: 0
+#         Heat: 0 
+#         Structural: 0
 
 - type: entity
   parent: BlastDoor
