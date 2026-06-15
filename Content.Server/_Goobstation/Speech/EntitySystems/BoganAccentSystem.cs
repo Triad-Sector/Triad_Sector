@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -17,30 +16,27 @@ public sealed class BoganAccentSystem : EntitySystem
 
     private void OnAccent(EntityUid uid, BoganAccentComponent component, AccentGetEvent args)
     {
-        var message = args.Message;
+        var msg = _replacement.ApplyReplacements(args.Message, "bogan");
 
-        message = _replacement.ApplyReplacements(message, "bogan");
+        // Triad: bogans drop the g too ("havin' a chat"); shared keep-list spares king/ring/wing.
+        msg = AccentHelpers.DropG(msg);
 
-        // Prefix
-        if (_random.Prob(0.15f))
+        if (string.IsNullOrWhiteSpace(msg))
         {
-            var pick = _random.Next(1, 5); // Triad: was (1,4), which never picked prefix-4 (upper bound is exclusive).
-
-            // Reverse sanitize capital
-            message = message[0].ToString().ToLower() + message.Remove(0, 1);
-            message = Loc.GetString($"accent-bogan-prefix-{pick}") + " " + message;
+            args.Message = msg;
+            return;
         }
 
-        // Sanitize capital again, in case we substituted a word that should be capitalized
-        message = message[0].ToString().ToUpper() + message.Remove(0, 1);
+        // Triad: re-agree a/an after swaps, then data-driven prob prefix/suffix tics with the shared
+        // caps-aware placement (replaces the old hardcoded probs + _random.Next index math).
+        msg = AccentHelpers.FixArticles(msg);
 
-        // Suffixes
-        if (_random.Prob(0.3f))
-        {
-            var pick = _random.Next(1, 6); // Triad: was (1,5), which never picked suffix-5 (upper bound is exclusive).
-            message += Loc.GetString($"accent-bogan-suffix-{pick}");
-        }
+        if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+            msg = AccentHelpers.PrependPrefix(msg, Loc.GetString(_random.Pick(component.Prefixes)));
 
-        args.Message = message;
+        if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+            msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(component.Suffixes)));
+
+        args.Message = msg;
     }
-};
+}
