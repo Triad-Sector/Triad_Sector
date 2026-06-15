@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Decals;
@@ -35,25 +34,12 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     // every touched chunk in one un-yieldable call (worst-cased on shuttle grids, where the fixture density diff
     // always misses and forces a full destroy+recreate). Batching by a few chunks with a yield between keeps each
     // commit well under a frame at the cost of a little wall-clock.
-    // Triad TEMP: static (not const) so the `dungeonbatch` debug command can toggle chunking for the live A/B.
-    // Revert to `private const int ... = 4;` before the PR.
-    public static int TileCommitChunkBatch = 4;
-
-    // Triad TEMP: master switch for the per-layer yield slicing (Ore/AutoCabling/SpawnRoom), so the live A/B can
-    // compare the original un-sliced behaviour vs fully smoothed in one server run. Remove (always-on) before the PR.
-    public static bool SliceLayers = true;
+    private const int TileCommitChunkBatch = 4;
 
     // Triad: cell size used to group tiles before committing. Mirrors the engine's default MapGridComponent.ChunkSize
     // (internal, so not readable from content); dungeon grids are created with the default, so 16 keeps each batch
     // aligned to whole grid chunks and avoids regenerating a chunk's collision in two separate commits.
     private const int TileCommitCellSize = 16;
-
-    // Triad TEMP measurement: time each yield-to-yield span to rank the un-yieldable blocks. Strip before PR.
-    private long _spanStart;
-    private string _phase = "init";
-    private double _worstSpanMs;
-    private string _worstSpanPhase = "none";
-    private const double SpanLogThresholdMs = 3.0;
 
     private readonly IEntityManager _entManager;
     private readonly IPrototypeManager _prototype;
@@ -174,7 +160,6 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     protected override async Task<List<Dungeon>?> Process()
     {
         _sawmill.Info($"Generating dungeon {_genId} with seed {_seed} on {_entManager.ToPrettyString(_gridUid)}"); // Frontier: _gen<_genId
-        _spanStart = Stopwatch.GetTimestamp(); // Triad TEMP
         _grid.CanSplit = false;
         var random = new Random(_seed);
         var position = (_position + random.NextPolarVector2(_gen.MinOffset, _gen.MaxOffset)).Floored();
@@ -206,8 +191,6 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
             npcSystem.WakeNPC(npc.Owner, npc.Comp);
         }
 
-        _sawmill.Warning($"[dungeon-prof] {_genId} DONE worstSpan={_worstSpanMs:F1}ms@{_worstSpanPhase}"); // Triad TEMP
-
         return dungeons;
     }
 
@@ -221,7 +204,6 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
         Random random)
     {
         _sawmill.Debug($"Doing postgen {layer.GetType()} for {_gen} with seed {_seed}");
-        _phase = layer.GetType().Name; // Triad TEMP
 
         // If there's a way to just call the methods directly for the love of god tell me.
         // Some of these don't care about reservedtiles because they only operate on dungeon tiles (which should
@@ -348,20 +330,8 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     /// </summary>
     private async Task SuspendDungeon()
     {
-        // Triad TEMP: close out the synchronous span ending at this checkpoint.
-        var elapsedMs = (Stopwatch.GetTimestamp() - _spanStart) * 1000.0 / Stopwatch.Frequency;
-        if (elapsedMs > _worstSpanMs)
-        {
-            _worstSpanMs = elapsedMs;
-            _worstSpanPhase = _phase;
-        }
-        if (elapsedMs >= SpanLogThresholdMs)
-            _sawmill.Warning($"[dungeon-prof] {_genId} span phase={_phase} {elapsedMs:F1}ms");
-
         if (TimeSlice)
             await SuspendIfOutOfTime();
-
-        _spanStart = Stopwatch.GetTimestamp(); // Triad TEMP
     }
 
     /// <summary>
