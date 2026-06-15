@@ -50,7 +50,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!IsShipSaveWhitelistValid(uid, component))
+        if (!IsShipSaveWhitelistValid(player, component))
             return;
 
         if (!TryComp<IdCardComponent>(targetId, out var idCard))
@@ -155,7 +155,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!IsShipSaveWhitelistValid(uid, component))
+        if (!IsShipSaveWhitelistValid(player, component))
             return;
 
         if (HasComp<ShipyardVoucherComponent>(targetId))
