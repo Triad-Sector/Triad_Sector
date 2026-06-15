@@ -24,6 +24,12 @@ public sealed partial class TraitCategory : BoxContainer
     public int SelectedCount;
     public int PointsSpent;
 
+    /// <summary>
+    /// Triad: extra slots granted to this category by selected granter traits (e.g. Foreigner), set by
+    /// the parent tab so the "X / N" label reflects the effective cap, not just the base MaxTraits.
+    /// </summary>
+    public int BonusSlots;
+
     public TraitCategory(TraitCategoryPrototype category, List<TraitPrototype> traits)
     {
         RobustXamlLoader.Load(this);
@@ -87,9 +93,10 @@ public sealed partial class TraitCategory : BoxContainer
 
         if (_category.MaxTraits.HasValue)
         {
+            // Triad: show the effective cap (base + granted slots), so Foreigner's extra language slots read correctly.
             CategoryStatsLabel.Text = Loc.GetString("trait-category-traits",
                 ("selected", SelectedCount),
-                ("max", _category.MaxTraits.Value));
+                ("max", _category.MaxTraits.Value + BonusSlots));
         }
         else
         {
@@ -100,8 +107,10 @@ public sealed partial class TraitCategory : BoxContainer
         if (_category.MaxPoints.HasValue)
         {
             CategoryPointsLabel.Visible = true;
+            // Triad: show points still AVAILABLE (max - spent), so negative-cost traits raise the
+            // number instead of showing a confusing "-4 / 6". Matches the global points label.
             CategoryPointsLabel.Text = Loc.GetString("trait-category-points",
-                ("selected", PointsSpent),
+                ("available", _category.MaxPoints.Value - PointsSpent),
                 ("max", _category.MaxPoints.Value));
         }
         else

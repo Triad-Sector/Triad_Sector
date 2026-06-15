@@ -52,6 +52,8 @@ public sealed class DCCVars
 
     /// <summary>
     /// Maximum number of traits that can be selected globally.
+    /// Triad: 0 (or any non-positive value) means unlimited; the count gate and the UI counter are
+    /// both dropped, leaving per-category dials and the global point budget as the only limits.
     /// </summary>
     public static readonly CVarDef<int> MaxTraitCount =
         CVarDef.Create("traits.max_count", 10, CVar.SERVER | CVar.REPLICATED);

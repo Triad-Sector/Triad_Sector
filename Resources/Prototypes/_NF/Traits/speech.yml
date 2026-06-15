@@ -5,7 +5,7 @@
   name: trait-streetpunk-accent-name
   description: trait-streetpunk-accent-desc
   category: Accents
-  cost: 1
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:
@@ -18,7 +18,7 @@
   name: trait-goblin-accent-name
   description: trait-goblin-accent-desc
   category: Accents
-  cost: 2
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:

@@ -5,7 +5,7 @@
   name: trait-pirate-accent-name
   description: trait-pirate-accent-desc
   category: Accents
-  cost: 2
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:
@@ -16,7 +16,7 @@
   name: trait-southern-name
   description: trait-southern-desc
   category: Accents
-  cost: 2
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:
@@ -27,7 +27,7 @@
   name: trait-cowboy-name
   description: trait-cowboy-desc
   category: Accents
-  cost: 2
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:
@@ -39,19 +39,25 @@
   name: trait-italian-name
   description: trait-italian-desc
   category: Accents
-  cost: 2
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:
     - type: ReplacementAccent
       accent: italian
 
+# Triad: Muted is a speech DISABILITY, not an accent. Recategorized to Disabilities (free, and correctly
+# independent of LANGUAGES: a mute character still understands languages, they just can't speak aloud).
+# TODO(Triad): Muted should lock out the entire Accents category (no accent if you can't speak). Implement
+# as a category-level condition (e.g. NoTraitInCategory: Accents) so new accents are covered automatically,
+# rather than per-accent exclusions that silently break when someone adds an accent without updating Muted.
+# Not yet enforced: Muted + an accent is currently selectable (harmless, the accent never renders on muted speech).
 - type: trait
   id: Muted
   name: trait-muted-name
   description: trait-muted-desc
-  category: Accents
-  cost: 2
+  category: Disabilities
+  cost: 0
   conditions:
   # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
   - !type:HasCompCondition
@@ -100,7 +106,7 @@
   name: trait-scottish-accent-name
   description: trait-scottish-accent-desc
   category: Accents
-  cost: 1 # Triad: restore pre-port cost (the migration uniquely dropped this to 0)
+  cost: 0 # Triad: accents are cosmetic RP. (Grants a BagpipeInstrument; that item is the flavor, not a cost.)
   effects:
   - !type:AddCompsEffect
     components:
@@ -113,7 +119,7 @@
   name: trait-german-name
   description: trait-german-desc
   category: Accents
-  cost: 1
+  cost: 0 # Triad: accents are cosmetic RP, not a point cost.
   effects:
   - !type:AddCompsEffect
     components:

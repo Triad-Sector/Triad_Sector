@@ -118,8 +118,8 @@ public sealed partial class TraitsTab : BoxContainer
 
         if (selected)
         {
-            // Check global limits
-            if (_currentTraitCount >= _maxGlobalTraits)
+            // Check global limits. Triad: _maxGlobalTraits <= 0 means unlimited.
+            if (_maxGlobalTraits > 0 && _currentTraitCount >= _maxGlobalTraits)
             {
                 RevertTraitToggle(traitId);
                 return;
@@ -135,8 +135,9 @@ public sealed partial class TraitsTab : BoxContainer
             if (_categoryUis.TryGetValue(trait.Category, out var categoryUi))
             {
                 var categoryProto = _prototype.Index(trait.Category);
+                // Triad: granter traits (GrantsCategorySlots) raise the effective cap; mirror the server calc.
                 if (categoryProto.MaxTraits.HasValue &&
-                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value)
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value + GetGrantedSlots(trait.Category))
                 {
                     RevertTraitToggle(traitId);
                     return;
@@ -174,6 +175,18 @@ public sealed partial class TraitsTab : BoxContainer
         OnTraitsChanged?.Invoke(_selectedTraits);
     }
 
+    // Triad: sum extra slots granted to a category by currently-selected granter traits (e.g. Foreigner).
+    private int GetGrantedSlots(ProtoId<TraitCategoryPrototype> category)
+    {
+        var total = 0;
+        foreach (var selectedId in _selectedTraits)
+        {
+            if (_prototype.Index(selectedId).GrantsCategorySlots.TryGetValue(category, out var slots))
+                total += slots;
+        }
+        return total;
+    }
+
     private void RevertTraitToggle(ProtoId<TraitPrototype> traitId)
     {
         var trait = _prototype.Index(traitId);
@@ -185,7 +198,11 @@ public sealed partial class TraitsTab : BoxContainer
 
     private void UpdateGlobalStats()
     {
-        GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
+        // Triad: _maxGlobalTraits <= 0 means unlimited, so drop the now-meaningless "X / N" counter.
+        GlobalTraitCountLabel.Visible = _maxGlobalTraits > 0;
+        if (_maxGlobalTraits > 0)
+            GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
+
         GlobalPointsLabel.Text = $"{_maxGlobalPoints - _currentPointsSpent} / {_maxGlobalPoints}";
 
         // Calculate remaining points (clamped to not go below 0 in display)
@@ -241,6 +258,8 @@ public sealed partial class TraitsTab : BoxContainer
     {
         if (_categoryUis.TryGetValue(categoryId, out var categoryUi))
         {
+            // Triad: feed the granted-slot total so the category's "X / N" cap reflects granters (e.g. Foreigner).
+            categoryUi.BonusSlots = GetGrantedSlots(categoryId);
             categoryUi.UpdateStats();
         }
     }

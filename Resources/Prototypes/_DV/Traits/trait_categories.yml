@@ -13,9 +13,9 @@
 - type: traitCategory
   id: Accents
   name: trait-category-accents
+  # Triad: accents are cosmetic RP (word-swaps, not comprehension). Free, capped at 2 picks, no point cost.
   priority: 30
-  maxTraits: 3
-  maxPoints: 2
+  maxTraits: 2
   accentColor: "#38bdf8"  # Light blue
 
 - type: traitCategory

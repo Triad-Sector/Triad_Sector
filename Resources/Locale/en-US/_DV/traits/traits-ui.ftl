@@ -23,7 +23,7 @@ disabled-traits-reason-conflict = Conflicts with selected trait: {$trait}
 ## Category suffixes
 trait-category-traits = {$selected} / {$max} traits
 trait-category-traits-unlimited = {$selected} traits
-trait-category-points = ({$selected} / {$max} pts)
+trait-category-points = ({$available} / {$max} pts available)
 
 ## Requirements tooltips
 trait-requirements-tooltip = [bold]Requirements:[/bold]
