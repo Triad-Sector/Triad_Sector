@@ -24,7 +24,7 @@ public sealed class BoganAccentSystem : EntitySystem
         // Prefix
         if (_random.Prob(0.15f))
         {
-            var pick = _random.Next(1, 4);
+            var pick = _random.Next(1, 5); // Triad: was (1,4), which never picked prefix-4 (upper bound is exclusive).
 
             // Reverse sanitize capital
             message = message[0].ToString().ToLower() + message.Remove(0, 1);
@@ -37,7 +37,7 @@ public sealed class BoganAccentSystem : EntitySystem
         // Suffixes
         if (_random.Prob(0.3f))
         {
-            var pick = _random.Next(1, 5);
+            var pick = _random.Next(1, 6); // Triad: was (1,5), which never picked suffix-5 (upper bound is exclusive).
             message += Loc.GetString($"accent-bogan-suffix-{pick}");
         }
 
