@@ -1,4 +1,4 @@
-﻿# these specifically mostly come from examples of specific scottish-english (not necessarily scots) verbiage
+# these specifically mostly come from examples of specific scottish-english (not necessarily scots) verbiage
 # https://en.wikipedia.org/wiki/Scotticism
 # https://en.wikipedia.org/wiki/Scottish_English
 # https://www.cs.stir.ac.uk/~kjt/general/scots.html
@@ -467,3 +467,18 @@ accent-scottish-words-replace-162 = reddies
 
 accent-scottish-words-163 = syndicate agents
 accent-scottish-words-replace-163 = snakey bastards
+
+# Triad: Scots tic pools (prefixes = interjections not greetings; suffixes = address/affirmation only)
+accent-scottish-prefix-1 = Och,
+accent-scottish-prefix-2 = Aye,
+accent-scottish-prefix-3 = Listen,
+accent-scottish-prefix-4 = Haud on,
+accent-scottish-prefix-5 = Jings,
+accent-scottish-prefix-6 = Shite,
+
+accent-scottish-suffix-1 = , pal
+accent-scottish-suffix-2 = , ken
+accent-scottish-suffix-3 = , aye
+accent-scottish-suffix-4 = , so it is
+accent-scottish-suffix-5 = , ye ken
+accent-scottish-suffix-6 = , an' that
