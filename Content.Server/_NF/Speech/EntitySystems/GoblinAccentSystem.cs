@@ -20,8 +20,7 @@ public sealed class GoblinAccentSystem : EntitySystem
     private static readonly Regex RegexErsUpper = new(@"(\w)ERS\b"); // Replace "..XXers", e.g. "fixers"->"fixas"
     private static readonly Regex RegexTt = new(@"([aeiouy])tt", RegexOptions.IgnoreCase);
     private static readonly Regex RegexOf = new(@"\b(o)f\b", RegexOptions.IgnoreCase);
-    private static readonly Regex RegexThe = new(@"\bthe\b");
-    private static readonly Regex RegexTheUpper = new(@"\bTHE\b");
+    private static readonly Regex RegexThe = new(@"\bthe\b", RegexOptions.IgnoreCase); // Triad: also catches Title-case "The"
     private static readonly Regex RegexH = new(@"\bh", RegexOptions.IgnoreCase);
     private static readonly Regex RegexSelf = new(@"self\b");
     private static readonly Regex RegexSelfUpper = new(@"SELF\b");
@@ -53,8 +52,9 @@ public sealed class GoblinAccentSystem : EntitySystem
         message = RegexSelf.Replace(message, "sewf");
         message = RegexSelfUpper.Replace(message, "SEWF");
         message = RegexOf.Replace(message, "$1'"); //of->o', OF->O'
-        message = RegexThe.Replace(message, "da");
-        message = RegexTheUpper.Replace(message, "DA");
+        // Triad: case-preserving the->da so sentence-initial "The" becomes "Da", not slipping through.
+        message = RegexThe.Replace(message, m =>
+            m.Value == m.Value.ToUpperInvariant() ? "DA" : char.IsUpper(m.Value[0]) ? "Da" : "da");
 
         // Triad: the rich phonetics above are the goblin identity; layer the rubric on top via the shared
         // helpers -- a/an re-agreement (handles h-dropped "a 'ouse" -> "an 'ouse") and data-driven tics.

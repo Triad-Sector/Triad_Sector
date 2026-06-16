@@ -35,8 +35,10 @@ public sealed class GoblinAccentTest
                 return ev.Message;
             }
 
-            // Core phonetics: the -> da, -ing -> -in', self -> sewf.
+            // Core phonetics: the -> da (case-preserving, incl. sentence-initial "The"), -ing, self.
             Assert.That(Goblin("the"), Is.EqualTo("da"));
+            Assert.That(Goblin("The"), Is.EqualTo("Da"));
+            Assert.That(Goblin("THE"), Is.EqualTo("DA"));
             Assert.That(Goblin("running"), Does.Contain("runnin'"));
             Assert.That(Goblin("myself"), Does.Contain("sewf"));
 
