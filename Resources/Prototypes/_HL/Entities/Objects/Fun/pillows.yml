@@ -61,8 +61,6 @@
     name: secret-stash-pillow #Triad (secret stash rename)
   - type: HLPersistOnShipSave # Triad (ship saving here)
 
-
-
 - type: entity
   id: PillowLongWhite
   parent: BasePillow
@@ -370,7 +368,6 @@
       map: ["base"]
  #  - state: pillow_body_urist_back        #triad removal (see above)
  #    map: ["back"]
-
 
 - type: entity
   id: PillowBodyMiku
