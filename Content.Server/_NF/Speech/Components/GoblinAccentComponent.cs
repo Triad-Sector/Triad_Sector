@@ -17,7 +17,7 @@ public sealed partial class GoblinAccentComponent : Component
     };
 
     [DataField]
-    public float PrefixProb { get; set; } = 0.12f;
+    public float PrefixProb { get; set; } = 0.01f;
 
     [DataField]
     public List<string> Suffixes { get; set; } = new()
@@ -27,5 +27,5 @@ public sealed partial class GoblinAccentComponent : Component
     };
 
     [DataField]
-    public float SuffixProb { get; set; } = 0.15f;
+    public float SuffixProb { get; set; } = 0.02f;
 }

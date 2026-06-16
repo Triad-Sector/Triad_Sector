@@ -16,7 +16,7 @@ public sealed partial class BoganAccentComponent : Component
     };
 
     [DataField]
-    public float PrefixProb { get; set; } = 0.15f;
+    public float PrefixProb { get; set; } = 0.02f;
 
     [DataField]
     public List<string> Suffixes { get; set; } = new()
@@ -26,5 +26,5 @@ public sealed partial class BoganAccentComponent : Component
     };
 
     [DataField]
-    public float SuffixProb { get; set; } = 0.3f;
+    public float SuffixProb { get; set; } = 0.03f;
 }

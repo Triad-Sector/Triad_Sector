@@ -99,7 +99,8 @@ public static class AccentHelpers
 
     /// <summary>
     ///     Appends a suffix tic just before any trailing .!? so "rustler!" -> "rustler, mate!", not
-    ///     "rustler!, mate". The suffix should lead with its own ", " and carry no end punctuation.
+    ///     "rustler!, mate". A suffix that carries its OWN terminal .!? (e.g. ", da?") supersedes the
+    ///     message's punctuation instead of stacking onto it ("me." -> "me, da?", not "me, da?.").
     /// </summary>
     public static string AppendSuffix(string message, string suffix)
     {
@@ -108,6 +109,10 @@ public static class AccentHelpers
         var punctLen = 0;
         while (punctLen < trimmed.Length && trimmed[^(punctLen + 1)] is '.' or '!' or '?')
             punctLen++;
+
+        // The suffix brings its own end punctuation: let it replace the sentence's, don't double up.
+        if (suffix.Length > 0 && suffix[^1] is '.' or '!' or '?')
+            return trimmed[..(trimmed.Length - punctLen)] + suffix;
 
         return trimmed[..(trimmed.Length - punctLen)] + suffix + trimmed[(trimmed.Length - punctLen)..];
     }
