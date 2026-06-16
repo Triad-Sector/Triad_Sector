@@ -1,3 +1,7 @@
+# Triad - This file is licensed under AGPLv3
+# Copyright (c) 2025 Triad Contributors
+# See AGPLv3.txt for details.
+
 # Freeport Corsair: spacelane buccaneer. Pirate vocab + salty interjection/affirmation tics. Triad-
 # original, inspired by (not copied from) the upstream Pirate accent. Frequency-prioritized from IC chat.
 

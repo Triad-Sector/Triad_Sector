@@ -837,7 +837,7 @@
   id: Cossack
   parent: EventHumanoid
   components:
-    - type: TerraSlavicAccent
+    - type: TerraSlavicAccent # Triad: RussianAccent<TerraSlavicAccent
     - type: ScrambledAccent
     - type: SlurredAccent
     - type: SouthernAccent

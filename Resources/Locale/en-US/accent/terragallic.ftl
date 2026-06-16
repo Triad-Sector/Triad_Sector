@@ -1,3 +1,5 @@
+# Triad: renamed from french.ftl; vocabulary rewritten for the vague-setting accent.
+
 accent-terragallic-words-1 = yes
 accent-terragallic-words-replace-1 = oui
 

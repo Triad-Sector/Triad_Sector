@@ -1,3 +1,5 @@
+# Triad: renamed from german.ftl; vocabulary rewritten for the vague-setting accent.
+
 accent-terragermanic-words-1 = yes
 accent-terragermanic-words-1-2 = yea
 accent-terragermanic-words-replace-1 = ja

@@ -1,6 +1,8 @@
-// SPDX-FileCopyrightText: 2026 Triad Sector contributors
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
 
 using Content.Server._Triad.Speech.Components;
 using Content.Server._Triad.Speech.EntitySystems;

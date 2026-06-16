@@ -11,6 +11,7 @@
     components:
     - type: BoganAccent
 
+# Triad: renamed RussianAccent trait -> TerraSlavicAccent (vague-setting rename)
 - type: trait
   id: TerraSlavicAccent
   name: trait-terraslavic-name
@@ -21,6 +22,7 @@
   - !type:AddCompsEffect
     components:
     - type: TerraSlavicAccent
+# End Triad
 
 # 1 Cost - Languages
 

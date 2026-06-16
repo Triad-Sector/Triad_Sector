@@ -64,6 +64,7 @@
     components:
     - type: Muted
 
+# Triad: renamed FrenchAccent trait -> TerraGallicAccent (vague-setting rename)
 - type: trait
   id: TerraGallicAccent
   name: trait-terragallic-accent-name
@@ -74,7 +75,9 @@
   - !type:AddCompsEffect
     components:
     - type: TerraGallicAccent
+# End Triad
 
+# Triad: renamed SpanishAccent trait -> TerraLatinoAccent (vague-setting rename)
 - type: trait
   id: TerraLatinoAccent
   name: trait-terralatino-accent-name
@@ -85,6 +88,7 @@
   - !type:AddCompsEffect
     components:
     - type: TerraLatinoAccent
+# End Triad
 
 # Triad: removed - retired the Mobster player trait in favor of the Triad-original New Brooklyn accent
 # (see _Triad/Traits/speech.yml). The MobsterAccent COMPONENT stays for the regal rat mob + bound role/items.

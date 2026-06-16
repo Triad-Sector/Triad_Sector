@@ -1,3 +1,5 @@
+# Triad: renamed from russian.ftl; vocabulary rewritten for the vague-setting accent.
+
 accent-terraslavic-words-1 = yes
 accent-terraslavic-words-replace-1 = da
 

@@ -1,3 +1,5 @@
+# Triad: renamed from spanish.ftl; vocabulary rewritten for the vague-setting accent.
+
 accent-terralatino-words-1 = yes
 accent-terralatino-words-replace-1 = si
 

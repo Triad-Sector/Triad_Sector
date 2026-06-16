@@ -1,9 +1,11 @@
 trait-dwarven-brogue-name = Dwarven Brogue
 trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
+# Triad: renamed from trait-french-accent (vague-setting rename)
 trait-terragallic-accent-name = Terra Gallic accent
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
 
+# Triad: renamed from trait-spanish-accent (vague-setting rename)
 trait-terralatino-accent-name = Terra Latino accent
 trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get those espesos!
 
