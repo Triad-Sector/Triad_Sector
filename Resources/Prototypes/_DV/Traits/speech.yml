@@ -1,15 +1,18 @@
 ## If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
 
-- type: trait
-  id: PirateAccent
-  name: trait-pirate-accent-name
-  description: trait-pirate-accent-desc
-  category: Accents
-  cost: 2
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: PirateAccent
+# Triad: removed - retired the Pirate player trait in favor of the Triad-original Freeport Corsair accent
+# (see _Triad/Traits/speech.yml). The PirateAccent COMPONENT stays for the cursed cutlass, pirate uniforms,
+# and pet NPC.
+#- type: trait
+#  id: PirateAccent
+#  name: trait-pirate-accent-name
+#  description: trait-pirate-accent-desc
+#  category: Accents
+#  cost: 2
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: PirateAccent
 
 - type: trait
   id: SouthernAccent
