@@ -61,8 +61,6 @@
     name: secret-stash-pillow #Triad (secret stash rename)
   - type: HLPersistOnShipSave # Triad (ship saving here)
 
-
-
 - type: entity
   id: PillowLongWhite
   parent: BasePillow
@@ -150,7 +148,7 @@
 - type: entity
   id: PillowSquareBlue
   parent: BasePillow
-  name: Square blue pillow #triad grammar
+  name: square blue pillow #triad grammar
   description: Comfy but square. #triad grammar
   components:
   - type: Item
@@ -359,7 +357,7 @@
   id: PillowBodyUrist
   parent: PillowBodyBase
   name: urist body pillow
-  description: looks average in every kind of way
+  description: Looks average in every kind of way. #Triad Grammar
   components:
   - type: Item
     heldPrefix: whitepillow
@@ -370,7 +368,6 @@
       map: ["base"]
  #  - state: pillow_body_urist_back        #triad removal (see above)
  #    map: ["back"]
-
 
 - type: entity
   id: PillowBodyMiku
