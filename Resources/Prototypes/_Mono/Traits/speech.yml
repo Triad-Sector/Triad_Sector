@@ -6,6 +6,11 @@
   description: trait-bogan-accent-desc
   category: Accents
   cost: 0 # Triad: accents/languages are cosmetic RP, not a point cost.
+  conditions:
+  # Triad: Yowie speak Bogan natively (BaseMobYowie carries BoganAccent), so taking it as a trait is redundant.
+  - !type:IsSpeciesCondition
+    species: Yowie
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:

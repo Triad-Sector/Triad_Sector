@@ -13,9 +13,11 @@
 - type: traitCategory
   id: Accents
   name: trait-category-accents
-  # Triad: accents are cosmetic RP (word-swaps, not comprehension). Free, capped at 2 picks, no point cost.
+  # Triad: accents are cosmetic RP (word-swaps, not comprehension). Free, capped at 1 pick, no point cost.
+  # Single pick on purpose: two accents both rewrite the same sentence (each AccentGetEvent subscriber fires),
+  # and the ReplacementAccent-based ones share one component so the 2nd was silently dropped anyway.
   priority: 30
-  maxTraits: 2
+  maxTraits: 1
   accentColor: "#38bdf8"  # Light blue
 
 - type: traitCategory

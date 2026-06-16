@@ -3,6 +3,7 @@
   name: trait-pious-name
   description: trait-pious-desc
   category: Mental
+  cost: 0 # Triad: mental/faith traits are RP, not a point economy. (The Bible it grants is flavor, not a cost.)
   conditions:
   - !type:HasTraitCondition
     trait: Pacifist
