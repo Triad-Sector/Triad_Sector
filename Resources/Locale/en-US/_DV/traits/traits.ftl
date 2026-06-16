@@ -1,8 +1,8 @@
 trait-dwarven-brogue-name = Dwarven Brogue
 trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
-trait-french-accent-name = French accent
-trait-french-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
+trait-terragallic-accent-name = Terra Gallic accent
+trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
 
 trait-terralatino-accent-name = Terra Latino accent
 trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get those espesos!

@@ -786,6 +786,52 @@
     accent-terralatino-words-34: accent-terralatino-words-replace-34
 
 - type: accent
+  id: terragallic
+  wordReplacements:
+    accent-terragallic-words-1: accent-terragallic-words-replace-1
+    accent-terragallic-words-2: accent-terragallic-words-replace-2
+    accent-terragallic-words-3: accent-terragallic-words-replace-3
+    accent-terragallic-words-3-2: accent-terragallic-words-replace-3
+    accent-terragallic-words-4: accent-terragallic-words-replace-4
+    accent-terragallic-words-4-2: accent-terragallic-words-replace-4
+    accent-terragallic-words-5: accent-terragallic-words-replace-5
+    accent-terragallic-words-6: accent-terragallic-words-replace-6
+    accent-terragallic-words-7: accent-terragallic-words-replace-7
+    accent-terragallic-words-8: accent-terragallic-words-replace-8
+    accent-terragallic-words-9: accent-terragallic-words-replace-9
+    accent-terragallic-words-9-2: accent-terragallic-words-replace-9
+    accent-terragallic-words-10: accent-terragallic-words-replace-10
+    accent-terragallic-words-11: accent-terragallic-words-replace-11
+    accent-terragallic-words-12: accent-terragallic-words-replace-12
+    accent-terragallic-words-12-2: accent-terragallic-words-replace-12
+    accent-terragallic-words-13: accent-terragallic-words-replace-13
+    accent-terragallic-words-13-2: accent-terragallic-words-replace-13
+    accent-terragallic-words-14: accent-terragallic-words-replace-14
+    accent-terragallic-words-15: accent-terragallic-words-replace-15
+    accent-terragallic-words-16: accent-terragallic-words-replace-16
+    accent-terragallic-words-17: accent-terragallic-words-replace-17
+    accent-terragallic-words-18: accent-terragallic-words-replace-18
+    accent-terragallic-words-19: accent-terragallic-words-replace-19
+    accent-terragallic-words-20: accent-terragallic-words-replace-20
+    accent-terragallic-words-20-2: accent-terragallic-words-replace-20
+    accent-terragallic-words-21: accent-terragallic-words-replace-21
+    accent-terragallic-words-22: accent-terragallic-words-replace-22
+    accent-terragallic-words-22-2: accent-terragallic-words-replace-22
+    accent-terragallic-words-23: accent-terragallic-words-replace-23
+    accent-terragallic-words-24: accent-terragallic-words-replace-24
+    accent-terragallic-words-25: accent-terragallic-words-replace-25
+    accent-terragallic-words-26: accent-terragallic-words-replace-26
+    accent-terragallic-words-27: accent-terragallic-words-replace-27
+    accent-terragallic-words-28: accent-terragallic-words-replace-28
+    accent-terragallic-words-29: accent-terragallic-words-replace-29
+    accent-terragallic-words-30: accent-terragallic-words-replace-30
+    accent-terragallic-words-31: accent-terragallic-words-replace-31
+    accent-terragallic-words-32: accent-terragallic-words-replace-32
+    accent-terragallic-words-32-2: accent-terragallic-words-replace-32
+    accent-terragallic-words-32-3: accent-terragallic-words-replace-32
+    accent-terragallic-words-33: accent-terragallic-words-replace-33
+
+- type: accent
   id: skeleton
   wordReplacements:
     accent-skeleton-words-1: accent-skeleton-words-replace-1

@@ -62,15 +62,15 @@
     - type: Muted
 
 - type: trait
-  id: FrenchAccent
-  name: trait-french-accent-name
-  description: trait-french-accent-desc
+  id: TerraGallicAccent
+  name: trait-terragallic-accent-name
+  description: trait-terragallic-accent-desc
   category: Accents
   cost: 0
   effects:
   - !type:AddCompsEffect
     components:
-    - type: FrenchAccent
+    - type: TerraGallicAccent
 
 - type: trait
   id: TerraLatinoAccent
