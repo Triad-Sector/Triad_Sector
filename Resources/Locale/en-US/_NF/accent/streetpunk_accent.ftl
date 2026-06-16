@@ -692,3 +692,21 @@ accent-streetpunk-replacement-340 = y’know
 accent-streetpunk-replacement-341 = you'da
 accent-streetpunk-replacement-342 = you'da
 accent-streetpunk-replacement-343 = ya
+
+# Triad: cyberpunk/shadowrun tic pools (prefixes = interjections not greetings; 18+ options a minority)
+accent-streetpunk-prefix-1 = Yo,
+accent-streetpunk-prefix-2 = Listen up,
+accent-streetpunk-prefix-3 = Look,
+accent-streetpunk-prefix-4 = Real talk,
+accent-streetpunk-prefix-5 = Straight up,
+accent-streetpunk-prefix-6 = No cap,
+accent-streetpunk-prefix-7 = Shit,
+
+accent-streetpunk-suffix-1 = , choom
+accent-streetpunk-suffix-2 = , chummer
+accent-streetpunk-suffix-3 = , ya know
+accent-streetpunk-suffix-4 = , for real
+accent-streetpunk-suffix-5 = , no cap
+accent-streetpunk-suffix-6 = , preem
+accent-streetpunk-suffix-7 = , ya gonk
+accent-streetpunk-suffix-8 = , ya drekhead
