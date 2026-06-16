@@ -50,8 +50,14 @@ namespace Content.Server.Speech.EntitySystems
             if (!_proto.TryIndex<ReplacementAccentPrototype>(accent, out var prototype))
                 return message;
 
-            if (!_random.Prob(prototype.ReplacementChance))
+            // Triad: ReplacementChance was a whole-MESSAGE gate (fail = the whole line came out
+            // plain English), reading as the accent flickering on/off between sentences. It is now
+            // rolled PER WORD in the loop below as a smooth density dial (0.5 = each matching word
+            // independently has a 50% chance to swap). FullReplacements keeps the per-message roll
+            // (no per-word granularity). Default 1f = unchanged behavior.
+            if (prototype.FullReplacements != null && !_random.Prob(prototype.ReplacementChance))
                 return message;
+            // End Triad
 
             // Prioritize fully replacing if that exists--
             // ideally both aren't used at the same time (but we don't have a way to enforce that in serialization yet)
@@ -75,6 +81,17 @@ namespace Content.Server.Speech.EntitySystems
                 {
                     // fetch the match again as the character indices may have changed
                     Match match = regex.Match(maskMessage);
+
+                    // Triad: per-word density roll. On a fail, mask this match (so it is not
+                    // retried) but leave the original word in message -- i.e. skip the swap.
+                    if (!_random.Prob(prototype.ReplacementChance))
+                    {
+                        maskMessage = maskMessage.Remove(match.Index, match.Length)
+                            .Insert(match.Index, new string('_', match.Length));
+                        continue;
+                    }
+                    // End Triad
+
                     var replacement = replace;
 
                     // Intelligently replace capitalization

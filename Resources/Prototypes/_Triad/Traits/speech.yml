@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Triad Sector contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# New Brooklyn: Triad-original wiseguy borough accent. Replaces the retired upstream Mobster trait as
+# the player-selectable choice (the Mobster component still backs the regal rat mob + its role/items).
+- type: trait
+  id: NewBrooklynAccent
+  name: trait-newbrooklyn-accent-name
+  description: trait-newbrooklyn-accent-desc
+  category: Accents
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: NewBrooklynAccent

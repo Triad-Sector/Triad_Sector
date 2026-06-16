@@ -83,16 +83,18 @@
     components:
     - type: TerraLatinoAccent
 
-- type: trait
-  id: MobsterAccent
-  name: trait-mobster-accent-name
-  description: trait-mobster-accent-desc
-  category: Accents
-  cost: 0
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: MobsterAccent
+# Triad: removed - retired the Mobster player trait in favor of the Triad-original New Brooklyn accent
+# (see _Triad/Traits/speech.yml). The MobsterAccent COMPONENT stays for the regal rat mob + bound role/items.
+#- type: trait
+#  id: MobsterAccent
+#  name: trait-mobster-accent-name
+#  description: trait-mobster-accent-desc
+#  category: Accents
+#  cost: 0
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: MobsterAccent
 
 - type: trait
   id: DwarvenBrogue # Triad: merged the near-identical Scottish + Dwarf accents into one brogue
