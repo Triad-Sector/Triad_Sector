@@ -6,8 +6,11 @@ namespace Content.Server._NF.Speech.Components;
 [Access(typeof(CavemanAccentSystem))]
 public sealed partial class CavemanAccentComponent : Component
 {
+    // Triad: raised 5 -> 8 so everyday words (doctor, weapon, bridge, airlock) survive and only the
+    // genuinely long ones (maintenance, atmospherics, coordinates) grunt out -- 5 made it unintelligible.
+    // Most common long words are caught by the word-list below before length ever matters.
     [ViewVariables(VVAccess.ReadWrite)]
-    public static int MaxWordLength = 5; // so man not talk smart, any word up dis be gone
+    public static int MaxWordLength = 8;
 
     // Triad: filler/grammar words a caveman drops entirely ("me go store"). The keys were mistyped
     // (forbidden-words-N) so they never resolved, and the system never used them -- both fixed now.

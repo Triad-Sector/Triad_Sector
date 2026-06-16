@@ -112,7 +112,7 @@ public sealed class CavemanAccentSystem : EntitySystem
     {
         var grunt = Loc.GetString(_random.Pick(CavemanAccentComponent.Grunts));
 
-        if (_random.Prob(0.5f))
+        if (_random.Prob(0.25f)) // Triad: was 0.5 -- double-grunts added a lot of noise
         {
             grunt += "-";
             grunt += Loc.GetString(_random.Pick(CavemanAccentComponent.Grunts));
