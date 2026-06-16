@@ -65,6 +65,11 @@ public static class AccentHelpers
 
     private static bool StartsWithVowelSound(string word)
     {
+        // Triad: h-dropping dialects (goblin cockney) turn "house" -> "'ouse", which sounds vowel-initial
+        // and wants "an 'ouse"; skip a leading apostrophe so the vowel check sees the real first sound.
+        word = word.TrimStart('\'');
+        if (word.Length == 0)
+            return false;
         if (AnExceptions.Contains(word))
             return true;
         if (AExceptions.Contains(word))
