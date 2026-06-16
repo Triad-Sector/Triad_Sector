@@ -693,6 +693,12 @@ accent-streetpunk-replacement-341 = you'da
 accent-streetpunk-replacement-342 = you'da
 accent-streetpunk-replacement-343 = ya
 
+accent-streetpunk-replaced-344 = mercenary
+accent-streetpunk-replacement-344 = solo
+
+accent-streetpunk-replaced-345 = merc
+accent-streetpunk-replacement-345 = solo
+
 # Triad: Night City (Cyberpunk 2077) tic pools (prefixes = interjections not greetings; 18+ a minority)
 accent-streetpunk-prefix-1 = Yo,
 accent-streetpunk-prefix-2 = Listen up,
