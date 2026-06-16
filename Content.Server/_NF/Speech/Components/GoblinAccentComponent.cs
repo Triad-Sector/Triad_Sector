@@ -24,7 +24,6 @@ public sealed partial class GoblinAccentComponent : Component
     {
         "accent-goblin-suffix-1", "accent-goblin-suffix-2", "accent-goblin-suffix-3",
         "accent-goblin-suffix-4", "accent-goblin-suffix-5", "accent-goblin-suffix-6",
-        "accent-goblin-suffix-7", "accent-goblin-suffix-8",
     };
 
     [DataField]

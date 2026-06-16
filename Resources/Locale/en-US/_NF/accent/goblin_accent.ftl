@@ -876,6 +876,4 @@ accent-goblin-suffix-2 = , guv
 accent-goblin-suffix-3 = , yeh
 accent-goblin-suffix-4 = , mate
 accent-goblin-suffix-5 = , see
-accent-goblin-suffix-6 = , ya git
-accent-goblin-suffix-7 = , an' no mistake
-accent-goblin-suffix-8 = , ya tosser
+accent-goblin-suffix-6 = , an' no mistake

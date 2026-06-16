@@ -35,7 +35,6 @@ public sealed partial class CowboyAccentComponent : Component, IDrawlAccentCompo
         "accent-cowboy-suffix-4",
         "accent-cowboy-suffix-5",
         "accent-cowboy-suffix-6",
-        "accent-cowboy-suffix-7",
     };
 
     [DataField]

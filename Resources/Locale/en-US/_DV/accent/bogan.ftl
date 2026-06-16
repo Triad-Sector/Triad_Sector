@@ -13,12 +13,9 @@ accent-bogan-prefix-8 = Fuckin',
 accent-bogan-suffix-1 = , mate
 accent-bogan-suffix-2 = , fair dinkum
 accent-bogan-suffix-3 = , fair dinkum mate
-accent-bogan-suffix-4 = , ya drongo
-accent-bogan-suffix-5 = , but
-accent-bogan-suffix-6 = , eh
-accent-bogan-suffix-7 = , ya bastard
-accent-bogan-suffix-8 = , fuckin' oath
-accent-bogan-suffix-9 = , ya cunt
+accent-bogan-suffix-4 = , but
+accent-bogan-suffix-5 = , eh
+accent-bogan-suffix-6 = , fuckin' oath
 
 # People and roles
 accent-bogan-words-1 = man

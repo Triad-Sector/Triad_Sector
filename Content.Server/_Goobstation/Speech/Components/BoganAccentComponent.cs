@@ -23,7 +23,6 @@ public sealed partial class BoganAccentComponent : Component
     {
         "accent-bogan-suffix-1", "accent-bogan-suffix-2", "accent-bogan-suffix-3",
         "accent-bogan-suffix-4", "accent-bogan-suffix-5", "accent-bogan-suffix-6",
-        "accent-bogan-suffix-7", "accent-bogan-suffix-8", "accent-bogan-suffix-9",
     };
 
     [DataField]

@@ -13,7 +13,6 @@ public sealed partial class StreetpunkAccentComponent : Component
     {
         "accent-streetpunk-prefix-1", "accent-streetpunk-prefix-2", "accent-streetpunk-prefix-3",
         "accent-streetpunk-prefix-4", "accent-streetpunk-prefix-5", "accent-streetpunk-prefix-6",
-        "accent-streetpunk-prefix-7",
     };
 
     [DataField]
@@ -24,7 +23,6 @@ public sealed partial class StreetpunkAccentComponent : Component
     {
         "accent-streetpunk-suffix-1", "accent-streetpunk-suffix-2", "accent-streetpunk-suffix-3",
         "accent-streetpunk-suffix-4", "accent-streetpunk-suffix-5", "accent-streetpunk-suffix-6",
-        "accent-streetpunk-suffix-7", "accent-streetpunk-suffix-8",
     };
 
     [DataField]

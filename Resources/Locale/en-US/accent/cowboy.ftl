@@ -557,5 +557,4 @@ accent-cowboy-suffix-2 = , pardner
 accent-cowboy-suffix-3 = , I reckon
 accent-cowboy-suffix-4 = , y'hear
 accent-cowboy-suffix-5 = , sure as shootin'
-accent-cowboy-suffix-6 = , ya bastard
-accent-cowboy-suffix-7 = , dammit
+accent-cowboy-suffix-6 = , dammit
