@@ -154,8 +154,9 @@ public sealed class TraitSystem : EntitySystem
                 continue;
             }
 
-            // Check global points limit
-            if (totalPoints + trait.Cost > _maxTraitPoints)
+            // Check global points limit. Triad: _maxTraitPoints <= 0 means unlimited, leaving per-category
+            // MaxPoints as the only point budget (mirrors the _maxTraitCount <= 0 escape hatch above).
+            if (_maxTraitPoints > 0 && totalPoints + trait.Cost > _maxTraitPoints)
             {
                 Log.Warning($"Trait {traitId} rejected: global points limit ({_maxTraitPoints}) would be exceeded");
                 rejectionReasons.Add(Loc.GetString("disabled-traits-reason-points-limit"));

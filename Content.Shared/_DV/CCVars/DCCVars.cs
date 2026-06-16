@@ -53,17 +53,20 @@ public sealed class DCCVars
     /// <summary>
     /// Maximum number of traits that can be selected globally.
     /// Triad: 0 (or any non-positive value) means unlimited; the count gate and the UI counter are
-    /// both dropped, leaving per-category dials and the global point budget as the only limits.
+    /// both dropped, leaving per-category trait/point dials as the only limits.
     /// </summary>
     public static readonly CVarDef<int> MaxTraitCount =
         CVarDef.Create("traits.max_count", 10, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
-    /// Maximum trait points available to spend.
+    /// Maximum trait points available to spend from one global pool.
     /// Traits with positive cost consume points, negative cost traits grant points.
+    /// Triad: defaults to 0 = unlimited; the global gate, the UI label and the progress bar are all
+    /// dropped, leaving per-category MaxPoints as the point budget (so points allocate per category,
+    /// the same way the count cap does). Set a positive value to restore a single shared pool.
     /// </summary>
     public static readonly CVarDef<int> MaxTraitPoints =
-        CVarDef.Create("traits.max_points", 15, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("traits.max_points", 0, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// Whether to skip showing the disabled traits popup when spawning.
