@@ -140,6 +140,18 @@
       supportKey: Mla79Smartgun
       lowPowerAlert: Mla79HarnessLowPower
       depletedAlert: Mla79HarnessDepleted
+      linkSound:
+        path: /Audio/Machines/chime.ogg
+        params:
+          volume: -4.5
+      halfChargeSound:
+        path: /Audio/Machines/twobeep.ogg
+        params:
+          volume: -4.5
+      depletedSound:
+        path: /Audio/Machines/Nuke/angry_beep.ogg
+        params:
+          volume: -4.5
       linkPopup: ""
       magneticRetrievalEnabledPopup: MLA-79 magnetic retrieval enabled.
       magneticRetrievalDisabledPopup: MLA-79 magnetic retrieval disabled.
