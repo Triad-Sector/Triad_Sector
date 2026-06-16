@@ -861,3 +861,21 @@ accent-goblin-words-replace-426 = 'oom
 accent-goblin-words-replace-427 = 'oomevah
 accent-goblin-words-replace-428 = wotevah
 accent-goblin-words-replace-429 = strenf
+
+# Triad: cockney/cant tic pools (prefixes = interjections not greetings; 18+ options a minority)
+accent-goblin-prefix-1 = Oi,
+accent-goblin-prefix-2 = Cor,
+accent-goblin-prefix-3 = Blimey,
+accent-goblin-prefix-4 = 'Ere,
+accent-goblin-prefix-5 = Gawd,
+accent-goblin-prefix-6 = Right,
+accent-goblin-prefix-7 = Bloody 'ell,
+
+accent-goblin-suffix-1 = , innit
+accent-goblin-suffix-2 = , guv
+accent-goblin-suffix-3 = , yeh
+accent-goblin-suffix-4 = , mate
+accent-goblin-suffix-5 = , see
+accent-goblin-suffix-6 = , ya git
+accent-goblin-suffix-7 = , an' no mistake
+accent-goblin-suffix-8 = , ya tosser

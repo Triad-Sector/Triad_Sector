@@ -1,6 +1,7 @@
 using Content.Server._NF.Speech.Components;
 using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
+using Robust.Shared.Random;
 using System.Text.RegularExpressions;
 
 namespace Content.Server._NF.Speech.EntitySystems;
@@ -8,6 +9,7 @@ namespace Content.Server._NF.Speech.EntitySystems;
 // The whole code is a copy of SouthernAccentSystem by UBlueberry (https://github.com/UBlueberry)
 public sealed class GoblinAccentSystem : EntitySystem
 {
+    [Dependency] private readonly IRobustRandom _random = default!; // Triad: for the tic pools below
     private static readonly Regex RegexIng = new(@"(in)g\b", RegexOptions.IgnoreCase);
     private static readonly Regex RegexAnd = new(@"\b(an)d\b", RegexOptions.IgnoreCase);
     private static readonly Regex RegexEr = new(@"([^\WpPfF])er\b"); // Keep "er", "per", "Per", "fer" and "Fer"
@@ -53,6 +55,19 @@ public sealed class GoblinAccentSystem : EntitySystem
         message = RegexOf.Replace(message, "$1'"); //of->o', OF->O'
         message = RegexThe.Replace(message, "da");
         message = RegexTheUpper.Replace(message, "DA");
+
+        // Triad: the rich phonetics above are the goblin identity; layer the rubric on top via the shared
+        // helpers -- a/an re-agreement (handles h-dropped "a 'ouse" -> "an 'ouse") and data-driven tics.
+        if (!string.IsNullOrWhiteSpace(message))
+        {
+            message = AccentHelpers.FixArticles(message);
+
+            if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+                message = AccentHelpers.PrependPrefix(message, Loc.GetString(_random.Pick(component.Prefixes)));
+
+            if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+                message = AccentHelpers.AppendSuffix(message, Loc.GetString(_random.Pick(component.Suffixes)));
+        }
 
         args.Message = message;
     }
