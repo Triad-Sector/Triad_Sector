@@ -95,16 +95,16 @@
     - type: MobsterAccent
 
 - type: trait
-  id: ScottishAccent
-  name: trait-scottish-accent-name
-  description: trait-scottish-accent-desc
+  id: DwarvenBrogue # Triad: merged the near-identical Scottish + Dwarf accents into one brogue
+  name: trait-dwarven-brogue-name
+  description: trait-dwarven-brogue-desc
   category: Accents
-  cost: 1 # Triad: restore pre-port cost (the migration uniquely dropped this to 0)
+  cost: 1
   effects:
   - !type:AddCompsEffect
     components:
-    - type: ScottishAccent
-  - !type:SpawnItemInHandEffect # Triad: restore the bagpipe the migration dropped (was traitGear: BagpipeInstrument)
+    - type: DwarfAccent
+  - !type:SpawnItemInHandEffect # Triad: keep the bagpipe
     item: BagpipeInstrument
 
 - type: trait
@@ -121,8 +121,7 @@
       - type: GoblinAccent # Frontier
       - type: LizardAccent
       - type: MothAccent
-      - type: ReplacementAccent
-        accent: dwarf
+      - type: DwarfAccent
 
 - type: trait
   id: SocialAnxiety

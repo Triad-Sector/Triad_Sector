@@ -1,5 +1,5 @@
-trait-scottish-accent-name = Scottish accent
-trait-scottish-accent-desc = Fer tha folk who come frae Hielan clan.
+trait-dwarven-brogue-name = Dwarven Brogue
+trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
 trait-french-accent-name = French accent
 trait-french-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
