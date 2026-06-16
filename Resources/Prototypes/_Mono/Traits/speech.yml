@@ -12,15 +12,15 @@
     - type: BoganAccent
 
 - type: trait
-  id: RussianAccent
-  name: trait-russian-name
-  description: trait-russian-desc
+  id: TerraSlavicAccent
+  name: trait-terraslavic-name
+  description: trait-terraslavic-desc
   category: Accents
   cost: 1
   effects:
   - !type:AddCompsEffect
     components:
-    - type: RussianAccent
+    - type: TerraSlavicAccent
 
 # 1 Cost - Languages
 

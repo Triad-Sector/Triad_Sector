@@ -73,15 +73,15 @@
     - type: FrenchAccent
 
 - type: trait
-  id: SpanishAccent
-  name: trait-spanish-accent-name
-  description: trait-spanish-accent-desc
+  id: TerraLatinoAccent
+  name: trait-terralatino-accent-name
+  description: trait-terralatino-accent-desc
   category: Accents
   cost: 0
   effects:
   - !type:AddCompsEffect
     components:
-    - type: SpanishAccent
+    - type: TerraLatinoAccent
 
 - type: trait
   id: MobsterAccent

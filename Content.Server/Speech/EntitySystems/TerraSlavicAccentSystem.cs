@@ -1,0 +1,99 @@
+// Triad: renamed from RussianAccent to keep real-world nations vague in the post-corporate setting.
+// Enriched onto the shared AccentHelpers: article-drop (the signature Slavic cue), a/an fixup, and
+// data-driven prefix/suffix tics, with the faux-Cyrillic letter-sub kept LAST so the helpers and
+// caps logic operate on Latin text, never on the substituted glyphs.
+using System.Text;
+using System.Text.RegularExpressions;
+using Content.Server.Speech.Components;
+using Robust.Shared.Random;
+
+namespace Content.Server.Speech.EntitySystems;
+
+public sealed class TerraSlavicAccentSystem : EntitySystem
+{
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+
+    // Slavic English drops articles: "pass me the wrench" -> "pass me wrench". Match a standalone
+    // the/a/an as a whole word (with its following space) and strip it. Sentence-initial capital is
+    // re-stamped onto the next word so "The captain" -> "Captain", not "captain".
+    private static readonly Regex ArticleDrop =
+        new(@"\b([Tt]he|[Aa]n?)\s+", RegexOptions.Compiled);
+
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<TerraSlavicAccentComponent, AccentGetEvent>(OnAccent);
+    }
+
+    public string Accentuate(string message, TerraSlavicAccentComponent component)
+    {
+        var msg = _replacement.ApplyReplacements(message, "terraslavic");
+
+        // Drop articles, preserving a leading capital by handing it to the now-first word. This is the
+        // signature Slavic cue, but rolled per-article (component.ArticleDropProb) so it stays an
+        // occasional slip rather than a constant disjointed clip.
+        msg = DropArticles(msg, component.ArticleDropProb);
+
+        if (string.IsNullOrWhiteSpace(msg))
+            return msg;
+
+        if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+            msg = AccentHelpers.PrependPrefix(msg, Loc.GetString(_random.Pick(component.Prefixes)));
+
+        if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+            msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(component.Suffixes)));
+
+        // Faux-Cyrillic glyph swap runs LAST: it produces non-Latin chars the helpers can't reason about.
+        return Cyrillicize(msg);
+    }
+
+    private string DropArticles(string message, float prob)
+    {
+        if (prob <= 0f)
+            return message;
+
+        var wasSentenceCap = message.Length > 0 && char.IsUpper(message[0]);
+
+        // Roll per article: keep it (return the whole match) or drop it (return empty) on a hit.
+        var result = ArticleDrop.Replace(message, m => _random.Prob(prob) ? string.Empty : m.Value);
+
+        // If a sentence-initial article was the one dropped, re-capitalize the new first letter.
+        if (wasSentenceCap && result.Length > 0 && char.IsLower(result[0]))
+            result = char.ToUpperInvariant(result[0]) + result[1..];
+
+        return result;
+    }
+
+    private static string Cyrillicize(string message)
+    {
+        var sb = new StringBuilder(message);
+        for (var i = 0; i < sb.Length; i++)
+        {
+            sb[i] = sb[i] switch
+            {
+                'A' => 'Д',
+                'b' => 'в',
+                'N' => 'И',
+                'n' => 'и',
+                'K' => 'К',
+                'k' => 'к',
+                'm' => 'м',
+                'h' => 'н',
+                't' => 'т',
+                'R' => 'Я',
+                'r' => 'я',
+                'Y' => 'У',
+                'W' => 'Ш',
+                'w' => 'ш',
+                _ => sb[i]
+            };
+        }
+
+        return sb.ToString();
+    }
+
+    private void OnAccent(EntityUid uid, TerraSlavicAccentComponent component, AccentGetEvent args)
+    {
+        args.Message = Accentuate(args.Message, component);
+    }
+}
