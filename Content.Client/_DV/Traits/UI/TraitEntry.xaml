@@ -3,6 +3,13 @@
                 HorizontalExpand="True"
                 Margin="0 0 0 4">
 
+    <!-- Triad: the panel paints the state stylebox (red/green/grey); a transparent full-bleed button on top
+         catches the whole-row click. Keeping paint and hit-test on separate controls avoids the Button draw-mode
+         overriding the custom stylebox (which washed disabled entries to black). -->
+    <Button Name="ClickArea"
+            StyleClasses="TraitsEntryClickArea"
+            HorizontalExpand="True"/>
+
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   Margin="10 8">
@@ -11,19 +18,13 @@
         <BoxContainer Orientation="Horizontal"
                       HorizontalExpand="True">
 
-            <!-- Toggle Container -->
+            <!-- State indicator: lock icon for rule-blocked entries (species/job/mutex). -->
             <BoxContainer Name="ToggleContainer"
                           Orientation="Horizontal"
                           VerticalAlignment="Center"
                           Margin="0 0 10 0"
                           SetWidth="24">
 
-                <!-- Checkbox -->
-                <CheckBox Name="TraitCheckbox"
-                          StyleClasses="TraitsEntryCheckbox"
-                          VerticalAlignment="Center"/>
-
-                <!-- Lock Icon -->
                 <TextureRect Name="LockIcon"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Center"

@@ -21,9 +21,20 @@ public sealed partial class TraitEntry : PanelContainer
 
     public event Action<bool>? OnToggled;
 
-    public bool IsSelected => TraitCheckbox.Pressed;
+    public bool IsSelected { get; private set; }
     public readonly int TraitCost;
+
+    /// <summary>
+    /// Whether the trait passes its conditions (species / job / mutex). False renders red and blocks selection.
+    /// </summary>
     public bool MeetsConditions { get; private set; } = true;
+
+    /// <summary>
+    /// Triad: whether the player still has the budget (category/global trait slots and points) to add this trait.
+    /// Pushed from the parent tab. An unselected, unaffordable entry renders grey and is unclickable; a selected
+    /// one stays clickable so you can deselect to free budget. Does not gate already-selected entries.
+    /// </summary>
+    public bool Affordable { get; private set; } = true;
 
     private readonly TraitPrototype _trait;
     private bool _isUpdating;
@@ -36,7 +47,7 @@ public sealed partial class TraitEntry : PanelContainer
         _trait = trait;
         TraitCost = trait.Cost;
 
-        // Enable mouse events so tooltips work
+        // Tooltips are supplied on the panel; it needs to receive mouse-over to show them.
         MouseFilter = MouseFilterMode.Pass;
 
         TraitNameLabel.Text = Loc.GetString(trait.Name);
@@ -53,10 +64,13 @@ public sealed partial class TraitEntry : PanelContainer
         TraitCostLabel.Text = costText;
         TraitCostLabel.ModulateSelfOverride = Color.FromHex(costColor);
 
-        TraitCheckbox.OnToggled += OnCheckboxToggled;
+        // Triad: the whole row is the hit target now (users kept missing the small checkbox). A transparent
+        // full-bleed button (ClickArea) catches the click; the panel itself carries the green/red/grey stylebox.
+        ClickArea.OnPressed += OnEntryPressed;
 
         // Build condition tooltips
         UpdateConditionTooltips();
+        UpdateVisualState();
 
         // Triad: pin the description wrap width to the entry's real arranged width (see UpdateDescriptionWrap).
         OnResized += UpdateDescriptionWrap;
@@ -138,7 +152,23 @@ public sealed partial class TraitEntry : PanelContainer
             }
         }
 
-        UpdateDisabledState();
+        // Conditions no longer met: force-deselect (e.g. a mutex partner was just picked, or species changed).
+        if (!MeetsConditions && IsSelected)
+        {
+            SetSelected(false);
+            OnToggled?.Invoke(false);
+        }
+
+        UpdateVisualState();
+    }
+
+    /// <summary>
+    /// Triad: set by the parent tab after recomputing budget. Drives the grey "can't afford" state.
+    /// </summary>
+    public void SetAffordable(bool affordable)
+    {
+        Affordable = affordable;
+        UpdateVisualState();
     }
 
     private bool CheckSpeciesCondition(IsSpeciesCondition condition, ProtoId<SpeciesPrototype>? speciesId)
@@ -224,72 +254,66 @@ public sealed partial class TraitEntry : PanelContainer
         return false;
     }
 
-    private void UpdateDisabledState()
-    {
-        if (!MeetsConditions)
-        {
-            // Hide checkbox, show lock icon
-            TraitCheckbox.Visible = false;
-            LockIcon.Visible = true;
-
-            // Deselect if conditions no longer met
-            if (TraitCheckbox.Pressed)
-            {
-                _isUpdating = true;
-                TraitCheckbox.Pressed = false;
-                UpdateSelectedStyle();
-                _isUpdating = false;
-                OnToggled?.Invoke(false);
-            }
-
-            // Add disabled styling
-            AddStyleClass("TraitsEntryDisabled");
-        }
-        else
-        {
-            // Show checkbox, hide lock icon
-            TraitCheckbox.Visible = true;
-            LockIcon.Visible = false;
-
-            // Remove disabled styling - stylesheet restores normal colors
-            RemoveStyleClass("TraitsEntryDisabled");
-
-            // Reset to normal tooltips
-            UpdateConditionTooltips();
-        }
-    }
-
-    private void OnCheckboxToggled(BaseButton.ButtonToggledEventArgs args)
+    private void OnEntryPressed(BaseButton.ButtonEventArgs args)
     {
         if (_isUpdating)
             return;
 
+        // Rule-blocked entries (red) never toggle. Unaffordable unselected entries (grey) never toggle.
+        // A selected entry always toggles off, so the player can free budget even when at the cap.
         if (!MeetsConditions)
-        {
-            // This shouldn't happen since checkbox is hidden, but just in case
-            _isUpdating = true;
-            TraitCheckbox.Pressed = false;
-            _isUpdating = false;
             return;
-        }
+        if (!IsSelected && !Affordable)
+            return;
 
-        UpdateSelectedStyle();
-        OnToggled?.Invoke(args.Pressed);
+        SetSelected(!IsSelected);
+        OnToggled?.Invoke(IsSelected);
     }
 
     public void SetSelected(bool selected)
     {
         _isUpdating = true;
-        TraitCheckbox.Pressed = selected && MeetsConditions;
-        UpdateSelectedStyle();
+        IsSelected = selected && MeetsConditions;
+        UpdateVisualState();
         _isUpdating = false;
     }
 
-    private void UpdateSelectedStyle()
+    /// <summary>
+    /// Triad: single source of truth for the entry's look. Four states, in priority order:
+    /// rule-blocked (red, lock icon) &gt; selected (green) &gt; unaffordable (grey) &gt; available (normal).
+    /// </summary>
+    private void UpdateVisualState()
     {
-        if (TraitCheckbox.Pressed)
+        RemoveStyleClass("TraitsEntrySelected");
+        RemoveStyleClass("TraitsEntryRuleBlocked");
+        RemoveStyleClass("TraitsEntryDisabled");
+        LockIcon.Visible = false;
+
+        if (!MeetsConditions)
+        {
+            // Blocked by a rule the player could only change via species/job/other selections.
+            // ClickArea disabled so the row gives no press feedback, not just a no-op click.
+            LockIcon.Visible = true;
+            AddStyleClass("TraitsEntryRuleBlocked");
+            ClickArea.Disabled = true;
+        }
+        else if (IsSelected)
+        {
+            // Always clickable so it can be deselected, even when the category/points are at the cap.
             AddStyleClass("TraitsEntrySelected");
+            ClickArea.Disabled = false;
+        }
+        else if (!Affordable)
+        {
+            // No budget left; greyed and unclickable until the player frees slots/points.
+            AddStyleClass("TraitsEntryDisabled");
+            ClickArea.Disabled = true;
+        }
         else
-            RemoveStyleClass("TraitsEntrySelected");
+        {
+            ClickArea.Disabled = false;
+        }
+
+        UpdateConditionTooltips();
     }
 }

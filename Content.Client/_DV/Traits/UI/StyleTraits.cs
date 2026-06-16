@@ -79,13 +79,25 @@ public sealed class StyleTraits : StyleBase
         };
         entryPanelBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
 
+        // Triad: selected = green (was blue). The whole row is the click target now, so the fill carries the
+        // "this is on" signal that the dropped checkbox used to.
         var entrySelectedBox = new StyleBoxFlat
         {
-            BackgroundColor = Color.FromHex("#2a3a4a"),
-            BorderColor = accentBlue,
+            BackgroundColor = Color.FromHex("#2f5a3f"),
+            BorderColor = accentGreen,
             BorderThickness = new Thickness(1, 1, 1, 1)
         };
         entrySelectedBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
+
+        // Triad: rule-blocked = red tint (species/job/mutex). Distinct from the grey "no budget" state so the
+        // player can tell "I can never pick this" from "I can't pick this right now".
+        var entryRuleBlockedBox = new StyleBoxFlat
+        {
+            BackgroundColor = Color.FromHex("#5a2f2f"),
+            BorderColor = accentRed,
+            BorderThickness = new Thickness(1)
+        };
+        entryRuleBlockedBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
 
         var entryDisabledBox = new StyleBoxFlat
         {
@@ -225,6 +237,8 @@ public sealed class StyleTraits : StyleBase
                 .Prop(PanelContainer.StylePropertyPanel, categoryContentBox),
 
             // ===== TRAIT ENTRY =====
+            // Triad: the panel paints the state stylebox; a transparent ClickArea button on top catches clicks.
+            // No modulate, the box colors carry the state (modulate over a dark theme washed entries to black).
             Element<PanelContainer>()
                 .Class("TraitsEntryPanel")
                 .Prop(PanelContainer.StylePropertyPanel, entryPanelBox),
@@ -233,11 +247,21 @@ public sealed class StyleTraits : StyleBase
                 .Class("TraitsEntryPanel", "TraitsEntrySelected")
                 .Prop(PanelContainer.StylePropertyPanel, entrySelectedBox),
 
-            // Disabled entry styling
+            // Rule-blocked entry styling (red): species / job / mutex.
+            Element<PanelContainer>()
+                .Class("TraitsEntryPanel", "TraitsEntryRuleBlocked")
+                .Prop(PanelContainer.StylePropertyPanel, entryRuleBlockedBox),
+
+            // Budget-disabled entry styling (grey): no slots / points left.
             Element<PanelContainer>()
                 .Class("TraitsEntryPanel", "TraitsEntryDisabled")
-                .Prop(PanelContainer.StylePropertyPanel, entryDisabledBox)
-                .Prop(Control.StylePropertyModulateSelf, new Color(1f, 1f, 1f, 0.5f)),
+                .Prop(PanelContainer.StylePropertyPanel, entryDisabledBox),
+
+            // The full-bleed click overlay is visually transparent (no stylebox in any draw mode) so the panel's
+            // state color shows through. It exists only to catch the whole-row click.
+            Element<ContainerButton>()
+                .Class("TraitsEntryClickArea")
+                .Prop(ContainerButton.StylePropertyStyleBox, new StyleBoxEmpty()),
 
             Element<Label>()
                 .Class("TraitsEntryNameLabel")

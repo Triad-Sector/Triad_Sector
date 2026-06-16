@@ -15,7 +15,7 @@
             </BoxContainer>
 
             <!-- Points Progress Bar -->
-            <BoxContainer Orientation="Vertical" Margin="0 4 0 0">
+            <BoxContainer Name="PointsProgressContainer" Orientation="Vertical" Margin="0 4 0 0">
                 <BoxContainer Orientation="Horizontal" Margin="0 0 0 4">
                     <Label Text="{Loc 'trait-editor-points-label'}"
                            StyleClasses="TraitsSubtitleLabel"/>

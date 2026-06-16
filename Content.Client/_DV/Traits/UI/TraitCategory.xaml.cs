@@ -127,6 +127,20 @@ public sealed partial class TraitCategory : BoxContainer
         }
     }
 
+    /// <summary>
+    /// Triad: the traits in this category, so the parent tab can compute per-trait affordability.
+    /// </summary>
+    public IReadOnlyList<TraitPrototype> Traits => _allTraits;
+
+    /// <summary>
+    /// Triad: push the computed budget state for one trait down to its entry (drives the grey "can't afford" look).
+    /// </summary>
+    public void SetTraitAffordable(ProtoId<TraitPrototype> traitId, bool affordable)
+    {
+        if (_traitEntries.TryGetValue(traitId, out var entry))
+            entry.SetAffordable(affordable);
+    }
+
     public void ClearSelection()
     {
         foreach (var (_, entry) in _traitEntries)

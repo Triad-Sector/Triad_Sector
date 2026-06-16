@@ -92,9 +92,12 @@ public sealed partial class TraitsTab : BoxContainer
             .ThenBy(c => Loc.GetString(c.Name))
             .ToList();
 
+        // Triad: order by cost ascending so the biggest point GAIN (most negative) sits at the top and the
+        // biggest point COST (most positive) at the bottom; ties (and all-zero categories like Accents) fall
+        // back to alphabetical by name.
         var traitsByCategory = _prototype.EnumeratePrototypes<TraitPrototype>()
             .GroupBy(t => t.Category)
-            .ToDictionary(g => g.Key, g => g.OrderBy(t => Loc.GetString(t.Name)).ToList());
+            .ToDictionary(g => g.Key, g => g.OrderBy(t => t.Cost).ThenBy(t => Loc.GetString(t.Name)).ToList());
 
         foreach (var category in categories)
         {
@@ -110,6 +113,7 @@ public sealed partial class TraitsTab : BoxContainer
         // Apply current filters and conditions
         ApplySearchFilter();
         UpdateAllConditions();
+        UpdateAffordability();
     }
 
     private void OnTraitToggled(ProtoId<TraitPrototype> traitId, bool selected)
@@ -125,7 +129,9 @@ public sealed partial class TraitsTab : BoxContainer
                 return;
             }
 
-            if (_currentPointsSpent + trait.Cost > _maxGlobalPoints)
+            // Triad: _maxGlobalPoints <= 0 means unlimited, so the global points gate drops out and only
+            // per-category MaxPoints constrains spending (mirrors the unlimited-count gate above).
+            if (_maxGlobalPoints > 0 && _currentPointsSpent + trait.Cost > _maxGlobalPoints)
             {
                 RevertTraitToggle(traitId);
                 return;
@@ -172,7 +178,45 @@ public sealed partial class TraitsTab : BoxContainer
         UpdateGlobalStats();
         UpdateCategoryStats(trait.Category);
         UpdateAllConditions();
+        UpdateAffordability();
         OnTraitsChanged?.Invoke(_selectedTraits);
+    }
+
+    // Triad: grey out unselected traits the player can no longer afford (global points, category slots, or
+    // category points), mirroring the gates in OnTraitToggled. Selected traits stay affordable so they remain
+    // clickable to deselect. Rule-blocked entries are handled separately (red) and ignore this.
+    private void UpdateAffordability()
+    {
+        foreach (var (categoryId, categoryUi) in _categoryUis)
+        {
+            var categoryProto = _prototype.Index(categoryId);
+            var grantedSlots = GetGrantedSlots(categoryId);
+
+            foreach (var trait in categoryUi.Traits)
+            {
+                // Selected entries always remain clickable (so you can deselect to free budget).
+                if (_selectedTraits.Contains(trait.ID))
+                {
+                    categoryUi.SetTraitAffordable(trait.ID, true);
+                    continue;
+                }
+
+                var affordable = true;
+
+                if (_maxGlobalPoints > 0 && _currentPointsSpent + trait.Cost > _maxGlobalPoints)
+                    affordable = false;
+
+                if (categoryProto.MaxTraits.HasValue &&
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value + grantedSlots)
+                    affordable = false;
+
+                if (categoryProto.MaxPoints.HasValue &&
+                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints.Value)
+                    affordable = false;
+
+                categoryUi.SetTraitAffordable(trait.ID, affordable);
+            }
+        }
     }
 
     // Triad: sum extra slots granted to a category by currently-selected granter traits (e.g. Foreigner).
@@ -203,16 +247,18 @@ public sealed partial class TraitsTab : BoxContainer
         if (_maxGlobalTraits > 0)
             GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
 
-        GlobalPointsLabel.Text = $"{_maxGlobalPoints - _currentPointsSpent} / {_maxGlobalPoints}";
+        // Triad: _maxGlobalPoints <= 0 means unlimited, so hide the whole global points label + bar and let
+        // per-category point dials speak for themselves. Bail before the bar math, which divides by the max.
+        PointsProgressContainer.Visible = _maxGlobalPoints > 0;
+        if (_maxGlobalPoints <= 0)
+            return;
 
         // Calculate remaining points (clamped to not go below 0 in display)
         var remainingPoints = _maxGlobalPoints - _currentPointsSpent;
         GlobalPointsLabel.Text = $"{remainingPoints} / {_maxGlobalPoints}";
 
         // Calculate progress bar percentage - clamp between 0 and 1
-        var percentage = _maxGlobalPoints > 0
-            ? Math.Clamp((float)remainingPoints / _maxGlobalPoints, 0f, 1f)
-            : 0f;
+        var percentage = Math.Clamp((float)remainingPoints / _maxGlobalPoints, 0f, 1f);
 
         // Update progress bar using percentage-based sizing
         var parent = GlobalPointsBar.Parent;
@@ -331,6 +377,8 @@ public sealed partial class TraitsTab : BoxContainer
             UpdateCategoryStats(categoryId);
         }
 
+        UpdateAffordability();
+
         // Fire event if selection changed
         if (!_selectedTraits.SetEquals(previouslySelected))
         {
@@ -374,5 +422,7 @@ public sealed partial class TraitsTab : BoxContainer
         {
             UpdateCategoryStats(categoryId);
         }
+
+        UpdateAffordability();
     }
 }
