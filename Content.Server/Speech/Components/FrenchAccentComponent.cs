@@ -1,4 +1,4 @@
-// Triad: renamed from FrenchAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched French accent. Identifiers kept upstream-named for clean cherry-picking;
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;
@@ -8,16 +8,16 @@ namespace Content.Server.Speech.Components;
 /// becomes "'", plus French-style spacing before ! ? : and ;.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(TerraGallicAccentSystem))]
-public sealed partial class TerraGallicAccentComponent : Component
+[Access(typeof(FrenchAccentSystem))]
+public sealed partial class FrenchAccentComponent : Component
 {
     // Tics, data-driven. Prefixes are interjections (never greetings -- greetings are word-swaps);
     // suffixes are address/affirmation only (no insults). Probs sit in the 1-3% "special flair" band.
     [DataField]
     public List<string> Prefixes { get; set; } = new()
     {
-        "accent-terragallic-prefix-1", "accent-terragallic-prefix-2",
-        "accent-terragallic-prefix-3", "accent-terragallic-prefix-4",
+        "accent-french-prefix-1", "accent-french-prefix-2",
+        "accent-french-prefix-3", "accent-french-prefix-4",
     };
 
     [DataField]
@@ -26,8 +26,8 @@ public sealed partial class TerraGallicAccentComponent : Component
     [DataField]
     public List<string> Suffixes { get; set; } = new()
     {
-        "accent-terragallic-suffix-1", "accent-terragallic-suffix-2",
-        "accent-terragallic-suffix-3", "accent-terragallic-suffix-4",
+        "accent-french-suffix-1", "accent-french-suffix-2",
+        "accent-french-suffix-3", "accent-french-suffix-4",
     };
 
     [DataField]

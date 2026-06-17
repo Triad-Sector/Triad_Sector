@@ -11,9 +11,9 @@
     components:
     - type: BoganAccent
 
-# Triad: renamed RussianAccent trait -> TerraSlavicAccent (vague-setting rename)
+# Triad: Russian accent, display name overridden to "Terra Slavic" (trait-terraslavic-name); vocab enriched
 - type: trait
-  id: TerraSlavicAccent
+  id: RussianAccent
   name: trait-terraslavic-name
   description: trait-terraslavic-desc
   category: Accents
@@ -21,7 +21,7 @@
   effects:
   - !type:AddCompsEffect
     components:
-    - type: TerraSlavicAccent
+    - type: RussianAccent
 # End Triad
 
 # 1 Cost - Languages

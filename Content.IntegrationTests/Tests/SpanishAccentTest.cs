@@ -8,8 +8,8 @@ namespace Content.IntegrationTests.Tests;
 
 // Triad: regression coverage for Terra Latino (renamed + enriched from Spanish). Tics off (deterministic).
 [TestFixture]
-[TestOf(typeof(TerraLatinoAccentSystem))]
-public sealed class TerraLatinoAccentTest
+[TestOf(typeof(SpanishAccentSystem))]
+public sealed class SpanishAccentTest
 {
     [Test]
     public async Task TerraLatinoSwapsPhoneticsPunctuation()
@@ -21,7 +21,7 @@ public sealed class TerraLatinoAccentTest
         await server.WaitAssertion(() =>
         {
             var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
-            var comp = entMan.AddComponent<TerraLatinoAccentComponent>(uid);
+            var comp = entMan.AddComponent<SpanishAccentComponent>(uid);
 #pragma warning disable RA0002
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;

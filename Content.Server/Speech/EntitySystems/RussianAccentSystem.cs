@@ -1,4 +1,4 @@
-// Triad: renamed from RussianAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched Russian accent. Identifiers kept upstream-named for clean cherry-picking;
 // Enriched onto the shared AccentHelpers: article-drop (the signature Slavic cue), a/an fixup, and
 // data-driven prefix/suffix tics, with the faux-Cyrillic letter-sub kept LAST so the helpers and
 // caps logic operate on Latin text, never on the substituted glyphs.
@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class TerraSlavicAccentSystem : EntitySystem
+public sealed class RussianAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
@@ -22,12 +22,12 @@ public sealed class TerraSlavicAccentSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<TerraSlavicAccentComponent, AccentGetEvent>(OnAccent);
+        SubscribeLocalEvent<RussianAccentComponent, AccentGetEvent>(OnAccent);
     }
 
-    public string Accentuate(string message, TerraSlavicAccentComponent component)
+    public string Accentuate(string message, RussianAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "terraslavic");
+        var msg = _replacement.ApplyReplacements(message, "russian");
 
         // Drop articles, preserving a leading capital by handing it to the now-first word. This is the
         // signature Slavic cue, but rolled per-article (component.ArticleDropProb) so it stays an
@@ -92,7 +92,7 @@ public sealed class TerraSlavicAccentSystem : EntitySystem
         return sb.ToString();
     }
 
-    private void OnAccent(EntityUid uid, TerraSlavicAccentComponent component, AccentGetEvent args)
+    private void OnAccent(EntityUid uid, RussianAccentComponent component, AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message, component);
     }

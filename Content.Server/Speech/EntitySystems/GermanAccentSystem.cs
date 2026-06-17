@@ -1,4 +1,4 @@
-// Triad: renamed from GermanAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched German accent. Identifiers kept upstream-named for clean cherry-picking;
 // Enriched onto the shared AccentHelpers (a/an fixup + data-driven prefix/suffix tics) on top of the
 // original phonetics: probabilistic the->das, th->zh, and the random-umlaut pass. The das/umlaut
 // chances are now component DataFields instead of hardcoded.
@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class TerraGermanicAccentSystem : EntitySystem
+public sealed class GermanAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
@@ -19,10 +19,10 @@ public sealed class TerraGermanicAccentSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<TerraGermanicAccentComponent, AccentGetEvent>(OnAccent);
+        SubscribeLocalEvent<GermanAccentComponent, AccentGetEvent>(OnAccent);
     }
 
-    public string Accentuate(string message, TerraGermanicAccentComponent component)
+    public string Accentuate(string message, GermanAccentComponent component)
     {
         var msg = message;
 
@@ -40,7 +40,7 @@ public sealed class TerraGermanicAccentSystem : EntitySystem
         }
 
         // Word replacements.
-        msg = _replacement.ApplyReplacements(msg, "terragermanic");
+        msg = _replacement.ApplyReplacements(msg, "german");
 
         // th -> zh (zhis, zhat...); "the -> ze" is already handled by the replacements.
         var msgBuilder = new StringBuilder(msg);
@@ -93,7 +93,7 @@ public sealed class TerraGermanicAccentSystem : EntitySystem
         return msg;
     }
 
-    private void OnAccent(Entity<TerraGermanicAccentComponent> ent, ref AccentGetEvent args)
+    private void OnAccent(Entity<GermanAccentComponent> ent, ref AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message, ent.Comp);
     }

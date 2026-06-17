@@ -17,7 +17,7 @@
     components:
     - type: MimePowers
       preventWriting: true
-    - type: TerraGallicAccent # Triad: FrenchAccent<TerraGallicAccent
+    - type: FrenchAccent # Triad: FrenchAccent<FrenchAccent
 
 - type: startingGear
   id: MimeGear

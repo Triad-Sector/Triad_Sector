@@ -14,17 +14,3 @@
   - !type:AddCompsEffect
     components:
     - type: NewBrooklynAccent
-
-# Freeport Corsair: Triad-original spacelane buccaneer accent. Replaces the retired upstream Pirate trait
-# as the player-selectable choice (the Pirate component still backs the cursed cutlass, pirate uniforms,
-# and pet NPC). Cost mirrors the upstream Pirate trait.
-- type: trait
-  id: FreeportCorsairAccent
-  name: trait-freeportcorsair-accent-name
-  description: trait-freeportcorsair-accent-desc
-  category: Accents
-  cost: 2
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: FreeportCorsairAccent

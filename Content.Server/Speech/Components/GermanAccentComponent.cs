@@ -1,19 +1,19 @@
-// Triad: renamed from GermanAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched German accent. Identifiers kept upstream-named for clean cherry-picking;
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;
 
 [RegisterComponent]
-[Access(typeof(TerraGermanicAccentSystem))]
-public sealed partial class TerraGermanicAccentComponent : Component
+[Access(typeof(GermanAccentSystem))]
+public sealed partial class GermanAccentComponent : Component
 {
     // Tics, data-driven. Prefixes are interjections (never greetings -- greetings are word-swaps);
     // suffixes are address/affirmation only (no insults). Probs sit in the 1-3% "special flair" band.
     [DataField]
     public List<string> Prefixes { get; set; } = new()
     {
-        "accent-terragermanic-prefix-1", "accent-terragermanic-prefix-2",
-        "accent-terragermanic-prefix-3", "accent-terragermanic-prefix-4",
+        "accent-german-prefix-1", "accent-german-prefix-2",
+        "accent-german-prefix-3", "accent-german-prefix-4",
     };
 
     [DataField]
@@ -22,8 +22,8 @@ public sealed partial class TerraGermanicAccentComponent : Component
     [DataField]
     public List<string> Suffixes { get; set; } = new()
     {
-        "accent-terragermanic-suffix-1", "accent-terragermanic-suffix-2",
-        "accent-terragermanic-suffix-3", "accent-terragermanic-suffix-4",
+        "accent-german-suffix-1", "accent-german-suffix-2",
+        "accent-german-suffix-3", "accent-german-suffix-4",
     };
 
     [DataField]

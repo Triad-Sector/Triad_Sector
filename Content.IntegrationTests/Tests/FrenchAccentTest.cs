@@ -8,8 +8,8 @@ namespace Content.IntegrationTests.Tests;
 
 // Triad: regression coverage for Terra Gallic (renamed + enriched from French). Tics off (deterministic).
 [TestFixture]
-[TestOf(typeof(TerraGallicAccentSystem))]
-public sealed class TerraGallicAccentTest
+[TestOf(typeof(FrenchAccentSystem))]
+public sealed class FrenchAccentTest
 {
     [Test]
     public async Task TerraGallicSwapsPhoneticsPunctuation()
@@ -21,7 +21,7 @@ public sealed class TerraGallicAccentTest
         await server.WaitAssertion(() =>
         {
             var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
-            var comp = entMan.AddComponent<TerraGallicAccentComponent>(uid);
+            var comp = entMan.AddComponent<FrenchAccentComponent>(uid);
 #pragma warning disable RA0002
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;

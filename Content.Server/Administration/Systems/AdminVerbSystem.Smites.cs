@@ -935,15 +935,15 @@ public sealed partial class AdminVerbSystem
             {
                 EnsureComp<BarkAccentComponent>(args.Target);
                 EnsureComp<BleatingAccentComponent>(args.Target);
-                EnsureComp<TerraGallicAccentComponent>(args.Target); // Triad: FrenchAccent<TerraGallicAccent
-                EnsureComp<TerraGermanicAccentComponent>(args.Target); // Triad: GermanAccent<TerraGermanicAccent
+                EnsureComp<FrenchAccentComponent>(args.Target);
+                EnsureComp<GermanAccentComponent>(args.Target);
                 EnsureComp<LizardAccentComponent>(args.Target);
                 EnsureComp<MobsterAccentComponent>(args.Target);
                 EnsureComp<MothAccentComponent>(args.Target);
                 EnsureComp<OwOAccentComponent>(args.Target);
                 EnsureComp<SkeletonAccentComponent>(args.Target);
                 EnsureComp<SouthernAccentComponent>(args.Target);
-                EnsureComp<TerraLatinoAccentComponent>(args.Target); // Triad: SpanishAccent<TerraLatinoAccent
+                EnsureComp<SpanishAccentComponent>(args.Target);
                 EnsureComp<StutteringAccentComponent>(args.Target);
 
                 if (_random.Next(0, 8) == 0)

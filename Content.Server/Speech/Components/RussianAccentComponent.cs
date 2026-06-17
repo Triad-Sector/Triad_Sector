@@ -1,19 +1,19 @@
-// Triad: renamed from RussianAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched Russian accent. Identifiers kept upstream-named for clean cherry-picking;
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;
 
 [RegisterComponent]
-[Access(typeof(TerraSlavicAccentSystem))]
-public sealed partial class TerraSlavicAccentComponent : Component
+[Access(typeof(RussianAccentSystem))]
+public sealed partial class RussianAccentComponent : Component
 {
     // Tics, data-driven. Prefixes are interjections (never greetings -- greetings are word-swaps);
     // suffixes are address/affirmation only (no insults). Probs sit in the 1-3% "special flair" band.
     [DataField]
     public List<string> Prefixes { get; set; } = new()
     {
-        "accent-terraslavic-prefix-1", "accent-terraslavic-prefix-2",
-        "accent-terraslavic-prefix-3", "accent-terraslavic-prefix-4",
+        "accent-russian-prefix-1", "accent-russian-prefix-2",
+        "accent-russian-prefix-3", "accent-russian-prefix-4",
     };
 
     [DataField]
@@ -22,8 +22,8 @@ public sealed partial class TerraSlavicAccentComponent : Component
     [DataField]
     public List<string> Suffixes { get; set; } = new()
     {
-        "accent-terraslavic-suffix-1", "accent-terraslavic-suffix-2",
-        "accent-terraslavic-suffix-3", "accent-terraslavic-suffix-4",
+        "accent-russian-suffix-1", "accent-russian-suffix-2",
+        "accent-russian-suffix-3", "accent-russian-suffix-4",
     };
 
     [DataField]

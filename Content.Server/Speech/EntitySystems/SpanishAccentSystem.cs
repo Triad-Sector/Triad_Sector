@@ -1,4 +1,4 @@
-// Triad: renamed from SpanishAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched Spanish accent. Identifiers kept upstream-named for clean cherry-picking;
 // Enriched onto the shared AccentHelpers: word-swaps + data-driven prefix/suffix tics on top of the
 // original phonetics (es-insertion before s, inverted ¿/¡ punctuation).
 using System.Text;
@@ -8,14 +8,14 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class TerraLatinoAccentSystem : EntitySystem
+public sealed class SpanishAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<TerraLatinoAccentComponent, AccentGetEvent>(OnAccent);
+        SubscribeLocalEvent<SpanishAccentComponent, AccentGetEvent>(OnAccent);
     }
 
     // Spanish replacement outputs that start with S. The es-insertion phonetic models a Spanish speaker
@@ -25,9 +25,9 @@ public sealed class TerraLatinoAccentSystem : EntitySystem
     private static readonly HashSet<string> SpanishSWords =
         new(StringComparer.OrdinalIgnoreCase) { "si", "señor", "siento" };
 
-    public string Accentuate(string message, TerraLatinoAccentComponent component)
+    public string Accentuate(string message, SpanishAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "terralatino");
+        var msg = _replacement.ApplyReplacements(message, "spanish");
 
         // Phonetic: insert E before a word-initial S (es-paña), the signature feature. Skips our own
         // Spanish swaps so they are not re-prefixed.
@@ -99,7 +99,7 @@ public sealed class TerraLatinoAccentSystem : EntitySystem
         return msg.ToString();
     }
 
-    private void OnAccent(EntityUid uid, TerraLatinoAccentComponent component, AccentGetEvent args)
+    private void OnAccent(EntityUid uid, SpanishAccentComponent component, AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message, component);
     }

@@ -9,8 +9,8 @@ namespace Content.IntegrationTests.Tests;
 // Triad: regression coverage for Terra Germanic (renamed + enriched from German). Tics + das + umlaut
 // probs forced for determinism.
 [TestFixture]
-[TestOf(typeof(TerraGermanicAccentSystem))]
-public sealed class TerraGermanicAccentTest
+[TestOf(typeof(GermanAccentSystem))]
+public sealed class GermanAccentTest
 {
     [Test]
     public async Task TerraGermanicSwapsPhonetics()
@@ -22,7 +22,7 @@ public sealed class TerraGermanicAccentTest
         await server.WaitAssertion(() =>
         {
             var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
-            var comp = entMan.AddComponent<TerraGermanicAccentComponent>(uid);
+            var comp = entMan.AddComponent<GermanAccentComponent>(uid);
 #pragma warning disable RA0002
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;
@@ -62,7 +62,7 @@ public sealed class TerraGermanicAccentTest
         await server.WaitAssertion(() =>
         {
             var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
-            var comp = entMan.AddComponent<TerraGermanicAccentComponent>(uid);
+            var comp = entMan.AddComponent<GermanAccentComponent>(uid);
 #pragma warning disable RA0002
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;

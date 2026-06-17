@@ -1,4 +1,4 @@
-// Triad: renamed from FrenchAccent to keep real-world nations vague in the post-corporate setting.
+// Triad: enriched French accent. Identifiers kept upstream-named for clean cherry-picking;
 // Enriched onto the shared AccentHelpers (a/an fixup + data-driven prefix/suffix tics) on top of the
 // original phonetics: th -> 'z, word-initial h -> ', and French-style spacing before ! ? : ;.
 using System.Text.RegularExpressions;
@@ -10,7 +10,7 @@ namespace Content.Server.Speech.EntitySystems;
 /// <summary>
 /// System that gives the speaker a faux-Gallic accent.
 /// </summary>
-public sealed class TerraGallicAccentSystem : EntitySystem
+public sealed class FrenchAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
@@ -23,12 +23,12 @@ public sealed class TerraGallicAccentSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<TerraGallicAccentComponent, AccentGetEvent>(OnAccentGet);
+        SubscribeLocalEvent<FrenchAccentComponent, AccentGetEvent>(OnAccentGet);
     }
 
-    public string Accentuate(string message, TerraGallicAccentComponent component)
+    public string Accentuate(string message, FrenchAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "terragallic");
+        var msg = _replacement.ApplyReplacements(message, "french");
 
         // Phonetics: th -> 'z, then word-initial h -> '.
         msg = RegexTh.Replace(msg, "'z");
@@ -51,7 +51,7 @@ public sealed class TerraGallicAccentSystem : EntitySystem
         return msg;
     }
 
-    private void OnAccentGet(EntityUid uid, TerraGallicAccentComponent component, AccentGetEvent args)
+    private void OnAccentGet(EntityUid uid, FrenchAccentComponent component, AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message, component);
     }

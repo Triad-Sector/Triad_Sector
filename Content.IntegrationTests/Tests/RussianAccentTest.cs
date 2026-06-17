@@ -8,8 +8,8 @@ namespace Content.IntegrationTests.Tests;
 
 // Triad: regression coverage for Terra Slavic (renamed + enriched from Russian). Tics off (deterministic).
 [TestFixture]
-[TestOf(typeof(TerraSlavicAccentSystem))]
-public sealed class TerraSlavicAccentTest
+[TestOf(typeof(RussianAccentSystem))]
+public sealed class RussianAccentTest
 {
     [Test]
     public async Task TerraSlavicSwapsDropArticlesCyrillic()
@@ -21,7 +21,7 @@ public sealed class TerraSlavicAccentTest
         await server.WaitAssertion(() =>
         {
             var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
-            var comp = entMan.AddComponent<TerraSlavicAccentComponent>(uid);
+            var comp = entMan.AddComponent<RussianAccentComponent>(uid);
 #pragma warning disable RA0002
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;

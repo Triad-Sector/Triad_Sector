@@ -67,6 +67,6 @@ trait-painnumbness-name = Numb
 trait-painnumbness-desc = You lack any sense of feeling pain, being unaware of how hurt you may be.
 
 # Mono
-# Triad: renamed from trait-russian (vague-setting rename)
+# Triad: "Terra Slavic" display name for the Russian accent
 trait-terraslavic-name = Terra Slavic accent
 trait-terraslavic-desc = You hail from the old Slavic enclaves of Sol.

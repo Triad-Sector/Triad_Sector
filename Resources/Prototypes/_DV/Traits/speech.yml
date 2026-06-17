@@ -1,18 +1,19 @@
 ## If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
 
-# Triad: removed - retired the Pirate player trait in favor of the Triad-original Freeport Corsair accent
-# (see _Triad/Traits/speech.yml). The PirateAccent COMPONENT stays for the cursed cutlass, pirate uniforms,
-# and pet NPC.
-#- type: trait
-#  id: PirateAccent
-#  name: trait-pirate-accent-name
-#  description: trait-pirate-accent-desc
-#  category: Accents
-#  cost: 2
-#  effects:
-#  - !type:AddCompsEffect
-#    components:
-#    - type: PirateAccent
+# Triad: Pirate accent, enriched + display name overridden to "Freeport Corsair"
+# (trait-freeportcorsair-accent-name). Kept the upstream PirateAccent id/component for portability and
+# so the cursed cutlass, pirate uniforms, and pet NPC share the enriched accent.
+- type: trait
+  id: PirateAccent
+  name: trait-freeportcorsair-accent-name
+  description: trait-freeportcorsair-accent-desc
+  category: Accents
+  cost: 2
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: PirateAccent
+# End Triad
 
 - type: trait
   id: SouthernAccent
@@ -64,9 +65,9 @@
     components:
     - type: Muted
 
-# Triad: renamed FrenchAccent trait -> TerraGallicAccent (vague-setting rename)
+# Triad: French accent, display name overridden to "Terra Gallic" (trait-terragallic-accent-name); vocab enriched
 - type: trait
-  id: TerraGallicAccent
+  id: FrenchAccent
   name: trait-terragallic-accent-name
   description: trait-terragallic-accent-desc
   category: Accents
@@ -74,12 +75,12 @@
   effects:
   - !type:AddCompsEffect
     components:
-    - type: TerraGallicAccent
+    - type: FrenchAccent
 # End Triad
 
-# Triad: renamed SpanishAccent trait -> TerraLatinoAccent (vague-setting rename)
+# Triad: Spanish accent, display name overridden to "Terra Latino" (trait-terralatino-accent-name); vocab enriched
 - type: trait
-  id: TerraLatinoAccent
+  id: SpanishAccent
   name: trait-terralatino-accent-name
   description: trait-terralatino-accent-desc
   category: Accents
@@ -87,7 +88,7 @@
   effects:
   - !type:AddCompsEffect
     components:
-    - type: TerraLatinoAccent
+    - type: SpanishAccent
 # End Triad
 
 # Triad: removed - retired the Mobster player trait in favor of the Triad-original New Brooklyn accent

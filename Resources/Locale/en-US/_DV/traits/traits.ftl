@@ -1,13 +1,17 @@
 trait-dwarven-brogue-name = Dwarven Brogue
 trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
-# Triad: renamed from trait-french-accent (vague-setting rename)
+# Triad: "Terra Gallic" display name for the French accent
 trait-terragallic-accent-name = Terra Gallic accent
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
 
-# Triad: renamed from trait-spanish-accent (vague-setting rename)
+# Triad: "Terra Latino" display name for the Spanish accent
 trait-terralatino-accent-name = Terra Latino accent
 trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get those espesos!
+
+# Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
+trait-freeportcorsair-accent-name = Freeport Corsair accent
+trait-freeportcorsair-accent-desc = Arrr, ye talk like a corsair fresh off the free ports. Grog, doubloons, an' a black flag, savvy?
 
 trait-mobster-accent-name = Mobster accent
 trait-mobster-accent-desc = Fugeddaboutit! Yous talk numhally, capiche?
