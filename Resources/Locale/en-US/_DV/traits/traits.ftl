@@ -17,6 +17,22 @@ trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclave
 trait-freeportcorsair-accent-name = Freeport Corsair accent
 trait-freeportcorsair-accent-desc = Arrr, ye talk like a corsair fresh off the free ports. Grog, doubloons, an' a black flag, savvy?
 
+# Triad: "Heartworld Gentry" display name for the (enriched) Southern accent
+trait-heartworldgentry-accent-name = Heartworld Gentry accent
+trait-heartworldgentry-accent-desc = You have the genteel drawl of the old Heartworld estates.
+
+# Triad: "Trailhand" display name for the (enriched) Cowboy accent
+trait-trailhand-accent-name = Trailhand accent
+trait-trailhand-accent-desc = You talk like you've spent more years on the trail than off it.
+
+# Triad: "Dustkin" display name for the (enriched) Bogan accent
+trait-dustkin-accent-name = Dustkin accent
+trait-dustkin-accent-desc = Oi! You speak like you were raised out on the dusty rim, ya drongo.
+
+# Triad: "Edgerunner" display name for the (enriched) Streetpunk accent
+trait-edgerunner-accent-name = Edgerunner accent
+trait-edgerunner-accent-desc = Ya came up runnin' the edges of a sprawlin' megacity an' never went to school. An' it shows, choom.
+
 trait-mobster-accent-name = Mobster accent
 trait-mobster-accent-desc = Fugeddaboutit! Yous talk numhally, capiche?
 

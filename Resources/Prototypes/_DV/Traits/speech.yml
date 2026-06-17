@@ -15,27 +15,31 @@
     - type: PirateAccent
 # End Triad
 
+# Triad: Southern accent, display name overridden to "Heartworld Gentry" (trait-heartworldgentry-accent-name); vocab enriched
 - type: trait
   id: SouthernAccent
-  name: trait-southern-name
-  description: trait-southern-desc
+  name: trait-heartworldgentry-accent-name
+  description: trait-heartworldgentry-accent-desc
   category: Accents
   cost: 2
   effects:
   - !type:AddCompsEffect
     components:
     - type: SouthernAccent
+# End Triad
 
+# Triad: Cowboy accent, display name overridden to "Trailhand" (trait-trailhand-accent-name); promoted to the shared drawl engine + enriched
 - type: trait
   id: CowboyAccent
-  name: trait-cowboy-name
-  description: trait-cowboy-desc
+  name: trait-trailhand-accent-name
+  description: trait-trailhand-accent-desc
   category: Accents
   cost: 2
   effects:
   - !type:AddCompsEffect
     components:
-    - type: CowboyAccent # Triad: promoted from generic ReplacementAccent to the shared drawl engine
+    - type: CowboyAccent
+# End Triad
 
 - type: trait
   id: ItalianAccent

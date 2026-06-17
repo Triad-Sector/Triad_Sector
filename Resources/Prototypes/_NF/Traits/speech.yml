@@ -1,15 +1,17 @@
 # 1 Cost
 
+# Triad: Streetpunk accent, display name overridden to "Edgerunner" (trait-edgerunner-accent-name); vocab enriched
 - type: trait
   id: StreetpunkAccent
-  name: trait-streetpunk-accent-name
-  description: trait-streetpunk-accent-desc
+  name: trait-edgerunner-accent-name
+  description: trait-edgerunner-accent-desc
   category: Accents
   cost: 1
   effects:
   - !type:AddCompsEffect
     components:
     - type: StreetpunkAccent
+# End Triad
 
 # 2 Cost
 

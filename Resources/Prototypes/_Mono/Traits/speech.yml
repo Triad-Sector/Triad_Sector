@@ -1,15 +1,17 @@
 # 1 Cost
 
+# Triad: Bogan accent, display name overridden to "Dustkin" (trait-dustkin-accent-name); vocab enriched
 - type: trait
   id: BoganAccent
-  name: trait-bogan-accent-name
-  description: trait-bogan-accent-desc
+  name: trait-dustkin-accent-name
+  description: trait-dustkin-accent-desc
   category: Accents
   cost: 1
   effects:
   - !type:AddCompsEffect
     components:
     - type: BoganAccent
+# End Triad
 
 # Triad: Russian accent, display name overridden to "Terra Slavic" (trait-terraslavic-name); vocab enriched
 - type: trait
