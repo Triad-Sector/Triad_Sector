@@ -1,4 +1,4 @@
-trait-bogan-accent-name = Bogan accent
+trait-bogan-accent-name = Bogan Accent
 trait-bogan-accent-desc = Oi! You speaking like a Yowie!
 
 # Physical
@@ -31,12 +31,12 @@ trait-tenacity-desc = [italic]Through raw grit, willpower, or subtle bionic augm
 
     • Critical threshold increased by 5 points.
 
-trait-will-to-live-name = Will To Live
+trait-will-to-live-name = Will to Live
 trait-will-to-live-desc = [italic]You have an unusually strong "will to live", and resist death more than others.[/italic]
 
     • Death threshold increased by 10 points.
 
-trait-will-to-die-name = Will To Die
+trait-will-to-die-name = Will to Die
 trait-will-to-die-desc = [italic]You have an unusually weak "will to live", and succumb to injuries sooner than others.[/italic]
 
     • Death threshold decreased by 15 points.
