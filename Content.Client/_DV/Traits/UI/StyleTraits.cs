@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Robust.Client.Graphics;
@@ -126,10 +126,20 @@ public sealed class StyleTraits : StyleBase
             "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
         };
 
+        // Triad: bold variant for the category headings and trait names.
+        var boldFontPaths = new[]
+        {
+            "/Fonts/NotoSans/NotoSans-Bold.ttf",
+            "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
+            "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
+        };
+
         var notoSans10 = resCache.GetFont(fontPaths, 10);
         var notoSans11 = resCache.GetFont(fontPaths, 11);
         var notoSans12 = resCache.GetFont(fontPaths, 12);
         var notoSans14 = resCache.GetFont(fontPaths, 14);
+        var notoSansBold11 = resCache.GetFont(boldFontPaths, 11);
+        var notoSansBold12 = resCache.GetFont(boldFontPaths, 12);
 
         return new StyleRule[]
         {
@@ -213,7 +223,7 @@ public sealed class StyleTraits : StyleBase
 
             Element<Label>()
                 .Class("TraitsCategoryNameLabel")
-                .Prop(Label.StylePropertyFont, notoSans12)
+                .Prop(Label.StylePropertyFont, notoSansBold12)
                 .Prop(Label.StylePropertyFontColor, textPrimary),
 
             Element<Label>()
@@ -265,7 +275,7 @@ public sealed class StyleTraits : StyleBase
 
             Element<Label>()
                 .Class("TraitsEntryNameLabel")
-                .Prop(Label.StylePropertyFont, notoSans11)
+                .Prop(Label.StylePropertyFont, notoSansBold11)
                 .Prop(Label.StylePropertyFontColor, textPrimary),
 
             Element<Label>()

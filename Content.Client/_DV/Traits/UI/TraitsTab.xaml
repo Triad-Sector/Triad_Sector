@@ -60,7 +60,6 @@
                    StyleClasses="TraitsFooterText"/>
             <Control HorizontalExpand="True"/>
             <Label Name="FooterInfoLabel"
-                   Text="{Loc 'trait-editor-footer-info'}"
                    StyleClasses="TraitsFooterText"/>
         </BoxContainer>
     </PanelContainer>

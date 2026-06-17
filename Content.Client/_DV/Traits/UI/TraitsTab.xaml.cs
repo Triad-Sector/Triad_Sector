@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Stylesheets; // Mono - Backport of Sheetlet to stylesheet
 using Content.Shared._DV.CCVars;
 using Content.Shared._DV.Traits;
@@ -142,15 +142,15 @@ public sealed partial class TraitsTab : BoxContainer
             {
                 var categoryProto = _prototype.Index(trait.Category);
                 // Triad: granter traits (GrantsCategorySlots) raise the effective cap; mirror the server calc.
-                if (categoryProto.MaxTraits.HasValue &&
-                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value + GetGrantedSlots(trait.Category))
+                if (categoryProto.HasTraitLimit &&
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits!.Value + GetGrantedSlots(trait.Category))
                 {
                     RevertTraitToggle(traitId);
                     return;
                 }
 
-                if (categoryProto.MaxPoints.HasValue &&
-                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints.Value)
+                if (categoryProto.HasPointLimit &&
+                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints!.Value)
                 {
                     RevertTraitToggle(traitId);
                     return;
@@ -201,20 +201,30 @@ public sealed partial class TraitsTab : BoxContainer
                     continue;
                 }
 
+                // Determine affordability and, if blocked, the specific reason to show on hover. Order mirrors
+                // the OnTraitToggled gates; the first limit hit wins the explanation.
                 var affordable = true;
+                string? reason = null;
 
                 if (_maxGlobalPoints > 0 && _currentPointsSpent + trait.Cost > _maxGlobalPoints)
+                {
                     affordable = false;
-
-                if (categoryProto.MaxTraits.HasValue &&
-                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value + grantedSlots)
+                    reason = Loc.GetString("disabled-traits-reason-points-limit");
+                }
+                else if (categoryProto.HasTraitLimit &&
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits!.Value + grantedSlots)
+                {
                     affordable = false;
-
-                if (categoryProto.MaxPoints.HasValue &&
-                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints.Value)
+                    reason = Loc.GetString("disabled-traits-reason-category-limit", ("category", Loc.GetString(categoryProto.Name)));
+                }
+                else if (categoryProto.HasPointLimit &&
+                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints!.Value)
+                {
                     affordable = false;
+                    reason = Loc.GetString("disabled-traits-reason-category-points", ("category", Loc.GetString(categoryProto.Name)));
+                }
 
-                categoryUi.SetTraitAffordable(trait.ID, affordable);
+                categoryUi.SetTraitAffordable(trait.ID, affordable, reason);
             }
         }
     }
@@ -240,8 +250,35 @@ public sealed partial class TraitsTab : BoxContainer
         }
     }
 
+    // Triad: the footer line reflects the ACTUAL limit configuration so it stays honest if a server sets global
+    // caps (max_count/max_points > 0) or per-category caps. Hidden entirely when nothing is limited.
+    private void UpdateFooterInfo()
+    {
+        var globalLimited = _maxGlobalTraits > 0 || _maxGlobalPoints > 0;
+        var categoryLimited = false;
+        foreach (var cat in _prototype.EnumeratePrototypes<TraitCategoryPrototype>())
+        {
+            if (cat.HasTraitLimit || cat.HasPointLimit)
+            {
+                categoryLimited = true;
+                break;
+            }
+        }
+
+        string? key =
+            globalLimited && categoryLimited ? "trait-editor-footer-info-both" :
+            globalLimited ? "trait-editor-footer-info-global" :
+            categoryLimited ? "trait-editor-footer-info-category" :
+            null;
+
+        FooterInfoLabel.Visible = key != null;
+        if (key != null)
+            FooterInfoLabel.Text = Loc.GetString(key);
+    }
+
     private void UpdateGlobalStats()
     {
+        UpdateFooterInfo();
         // Triad: _maxGlobalTraits <= 0 means unlimited, so drop the now-meaningless "X / N" counter.
         GlobalTraitCountLabel.Visible = _maxGlobalTraits > 0;
         if (_maxGlobalTraits > 0)
