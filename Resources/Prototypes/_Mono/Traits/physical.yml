@@ -263,6 +263,17 @@
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
+  # Triad: the spinarette spins silk into the palm, so it needs a hand. Block it only for a DOUBLE arm amputee
+  # (both arms gone = no hands); a one-armed character still has a hand and can use it. invert on AllOf =
+  # "not (no left arm AND no right arm)".
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
