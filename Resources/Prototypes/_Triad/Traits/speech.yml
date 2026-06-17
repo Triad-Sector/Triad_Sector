@@ -14,3 +14,16 @@
   - !type:AddCompsEffect
     components:
     - type: NewBrooklynAccent
+
+# Neanderthal: player-selectable trait for the enriched upstream CavemanAccent (previously only on a pet
+# mob + an admin smite, never pickable). Keeps the upstream CavemanAccent id/component for portability.
+- type: trait
+  id: NeanderthalAccent
+  name: trait-neanderthal-accent-name
+  description: trait-neanderthal-accent-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: CavemanAccent

@@ -4,3 +4,7 @@
 
 trait-newbrooklyn-accent-name = New Brooklyn accent
 trait-newbrooklyn-accent-desc = Ey, yous talk like da old borough back on Earth. Pizza, da garage, walkin' heeyah, ya know?
+
+# Neanderthal: display name for the enriched upstream Caveman accent
+trait-neanderthal-accent-name = Neanderthal accent
+trait-neanderthal-accent-desc = Ugh. You talk small. Big word hard. Club good.
