@@ -289,10 +289,10 @@ public sealed partial class TraitEntry : PanelContainer
                 return true;
         }
 
-        // None of the children passed
-        return false;
-    }
-
+        // None of the children passed
+        return false;
+    }
+
     // Triad: client mirror of AllOfCondition — passes only if every child passes (logical AND), recursing into
     // nested AnyOf/AllOf. HasComp children can't be read in the lobby (same limit as elsewhere), so they pass.
     private bool CheckAllOfCondition(AllOfCondition condition, ProtoId<JobPrototype>? jobId, ProtoId<SpeciesPrototype>? speciesId, IReadOnlySet<ProtoId<AntagPrototype>>? antagPreferences, IReadOnlySet<ProtoId<TraitPrototype>>? traits, string? companyName)
