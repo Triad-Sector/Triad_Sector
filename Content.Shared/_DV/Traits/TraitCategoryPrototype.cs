@@ -26,17 +26,27 @@ public sealed partial class TraitCategoryPrototype : IPrototype
 
     /// <summary>
     /// Maximum number of traits that can be selected from this category.
-    /// Null means unlimited (only global limit applies).
+    /// Triad: a value of null OR &lt;= 0 is considered unlimited (only the global limit applies). Accepting both
+    /// keeps the "omit the field" prototype idiom AND the cvar convention (traits.max_count uses &lt;= 0 = unlimited),
+    /// so a category author who writes `maxTraits: 0` expecting "no limit" gets that, not a hard zero cap. Read
+    /// through <see cref="HasTraitLimit"/>, never <c>MaxTraits.HasValue</c>.
     /// </summary>
     [DataField]
     public int? MaxTraits;
 
     /// <summary>
     /// Maximum trait points that can be spent in this category.
-    /// Null means unlimited (only global limit applies).
+    /// Triad: null OR &lt;= 0 is unlimited, same convention as <see cref="MaxTraits"/>. Read through
+    /// <see cref="HasPointLimit"/>.
     /// </summary>
     [DataField]
     public int? MaxPoints;
+
+    /// <summary>Triad: true when this category enforces a finite trait-count cap (a positive MaxTraits).</summary>
+    public bool HasTraitLimit => MaxTraits is > 0;
+
+    /// <summary>Triad: true when this category enforces a finite point budget (a positive MaxPoints).</summary>
+    public bool HasPointLimit => MaxPoints is > 0;
 
     /// <summary>
     /// Color hex for the category header accent.

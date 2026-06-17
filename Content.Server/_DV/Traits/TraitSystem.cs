@@ -213,10 +213,11 @@ public sealed class TraitSystem : EntitySystem
         categoryPointTotals.TryGetValue(trait.Category, out var currentPoints);
 
         // Check category trait count limit. Triad: granter traits (GrantsCategorySlots) raise the effective cap.
-        if (category.MaxTraits.HasValue)
+        // HasTraitLimit (not MaxTraits.HasValue) so null OR <= 0 both read as unlimited.
+        if (category.HasTraitLimit)
         {
             categorySlotGrants.TryGetValue(trait.Category, out var grantedSlots);
-            var effectiveMaxTraits = category.MaxTraits.Value + grantedSlots;
+            var effectiveMaxTraits = category.MaxTraits!.Value + grantedSlots;
             if (currentCount >= effectiveMaxTraits)
             {
                 rejectionReasons.Add(Loc.GetString("disabled-traits-reason-category-limit",
@@ -226,7 +227,7 @@ public sealed class TraitSystem : EntitySystem
         }
 
         // Check category points limit
-        if (category.MaxPoints.HasValue && currentPoints + trait.Cost > category.MaxPoints.Value)
+        if (category.HasPointLimit && currentPoints + trait.Cost > category.MaxPoints!.Value)
         {
             rejectionReasons.Add(Loc.GetString("disabled-traits-reason-category-points",
                 ("category", Loc.GetString(category.Name))));
