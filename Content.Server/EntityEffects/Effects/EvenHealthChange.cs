@@ -3,6 +3,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Localizations;
+using Content.Shared._Shitmed.Targeting; // Shitmed Change
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -136,6 +137,11 @@ public sealed partial class EvenHealthChange : EntityEffect
             args.TargetEntity,
             dspec * scale,
             IgnoreResistances,
-            interruptsDoAfters: false);
+            interruptsDoAfters: false,
+            // Shitmed Change Start
+            targetPart: TargetBodyPart.All,
+            partMultiplier: 1.00f,
+            canSever: false);
+        // Shitmed Change End
     }
 }

@@ -1610,3 +1610,50 @@ Entries:
   id: 2302
   time: '2026-06-14T22:48:34.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/227
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added german accent back
+  id: 2303
+  time: '2026-06-15T13:02:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/231
+- author: SomeoneElsHere
+  changes:
+    - type: Add
+      message: >-
+        Added a noise and message to Handheld/Non-Handheld Crew Monitoring
+        Consoles if you gain 100+ damage at once.
+  id: 2304
+  time: '2026-06-15T13:06:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/192
+- author: TheBweepers
+  changes:
+    - type: Add
+      message: Allows Slime People to eat cloth, paper, raw meat, and everything else!
+    - type: Tweak
+      message: >-
+        Adjusts Allicin and Theobromise to stop slime people from being effected
+        by them after the above change made them suseptable
+  id: 2305
+  time: '2026-06-15T13:10:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/169
+- author: Dimasw99
+  changes:
+    - type: Fix
+      message: >-
+        EventHealthChange affects limbs now. Making meds like cryoxadone heal
+        limbs now too.
+  id: 2306
+  time: '2026-06-16T02:39:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/232
+- author: Virnazush
+  changes:
+    - type: Add
+      message: MLA-79 Harness
+    - type: Tweak
+      message: >-
+        MLA-79 Smartgun weapon now requires the Harness to function, without it
+        the player will suffer movement and accuracy penalties.
+  id: 2307
+  time: '2026-06-16T03:00:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/176

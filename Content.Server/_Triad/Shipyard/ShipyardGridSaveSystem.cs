@@ -1,5 +1,4 @@
 using System.IO;
-using System.Threading.Tasks;
 using Content.Server.Construction.Components;
 using Content.Server.Spreader;
 using Content.Server._HL.Shipyard; // HardLight
@@ -12,11 +11,8 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Mind.Components; // HardLight
-using Content.Shared._NF.Shuttles.Save; // For SendShipSaveDataClientMessage
 using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
-using Robust.Server.Player;
 using Robust.Shared.Containers;
-using Robust.Shared.ContentPack;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map.Components;
@@ -26,7 +22,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes; // HardLight
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
-using Robust.Shared.Utility;
 using YamlDotNet.Core;
 using YamlDotNet.RepresentationModel;
 using Content.Server.Lathe.Components; // Triad
@@ -40,15 +35,14 @@ using Content.Shared.Containers;
 using Content.Shared.Doors.Components;
 using Content.Shared._Mono.ShipRepair.Components;
 using Robust.Shared.Collections;
-using Content.Shared.NodeContainer;
 using Content.Server.Station.Systems;
 using Content.Server._NF.ShuttleRecords;
-using Content.Server._Triad.Shipyard;
 using Content.Server.Cargo.Systems;
 using Content.Shared._Triad.CCVar;
 using Robust.Shared.Configuration;
+using Content.Server.GameTicking;
 
-namespace Content.Server._NF.Shipyard.Systems;
+namespace Content.Server._Triad.Shipyard;
 
 /// <summary>
 /// System for saving ships using the MapLoaderSystem infrastructure.
@@ -59,10 +53,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly PricingSystem _pricing = default!; // Triad
     [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
-    [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
@@ -70,8 +62,8 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
     [Dependency] private readonly StationSystem _station = default!; // Triad
     [Dependency] private readonly ShuttleRecordsSystem _shuttleRecords = default!; // Triad
-    [Dependency] private readonly Content.Server._Triad.Shipyard.TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
-    [Dependency] private readonly Content.Server.GameTicking.GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
+    [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
+    [Dependency] private readonly GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
@@ -85,7 +77,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
     private EntityQuery<HLPersistOnShipSaveComponent> _persistOnSaveQuery;
     private EntityQuery<TransformComponent> _transformQuery;
-
 
     public override void Initialize()
     {
@@ -633,7 +624,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         ShipSaveYamlSanitizer.SanitizeShipSaveNode(root, _prototypeManager); // HardLight
     }
 
-    private string WriteYamlToString(MappingDataNode node)
+    private static string WriteYamlToString(MappingDataNode node)
     {
         // Based on MapLoaderSystem.Write but to a string instead of file
         var document = new YamlDocument(node.ToYaml());
@@ -641,29 +632,5 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         var stream = new YamlStream { document };
         stream.Save(new YamlMappingFix(new Emitter(writer)), false);
         return writer.ToString();
-    }
-
-    /// <summary>
-    /// Writes YAML data to a temporary file in UserData for loading
-    /// </summary>
-    public async Task<bool> WriteYamlToUserData(string fileName, string yamlData)
-    {
-        try
-        {
-            var userDataPath = _resourceManager.UserData;
-            var resPath = new ResPath(fileName);
-
-            await using var stream = userDataPath.OpenWrite(resPath);
-            await using var writer = new StreamWriter(stream);
-            await writer.WriteAsync(yamlData);
-
-            //_sawmill.Info($"Temporary YAML file written: {resPath}");
-            return true;
-        }
-        catch (Exception ex)
-        {
-            //_sawmill.Error($"Failed to write temporary YAML file {fileName}: {ex}");
-            return false;
-        }
     }
 }

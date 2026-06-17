@@ -276,6 +276,9 @@
     - type: MachinePart # Frontier
       part: PowerCell # Frontier
       rating: 6 # Frontier: tier of this is arguable # Mono: 4->6 - if you use this for a SMES it better work good
+    - type: Tag #Triad
+      tags:
+        - PowerCellAntique #Triad End
 
 # Power cage (big heavy power cell for big devices)
 
