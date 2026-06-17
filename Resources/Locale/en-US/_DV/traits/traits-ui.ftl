@@ -52,6 +52,12 @@ trait-condition-all-of = All of the following must be true:
 
 ## Trait-specific condition tooltips
 trait-condition-needs-an-arm = You must have at least one arm.
+trait-condition-needs-a-leg = You must have at least one leg.
+trait-condition-muted-no-accents = You can't speak, so an accent would do nothing.
+
+## Category conditions
+trait-condition-category-has = Must have a {$category} trait.
+trait-condition-category-has-not = Must not have a {$category} trait.
 
 ## Species conditions
 trait-condition-species-is = You must be {INDEFINITE($species)} [color=yellow]{$species}[/color].

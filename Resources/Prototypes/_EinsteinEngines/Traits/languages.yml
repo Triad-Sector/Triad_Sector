@@ -50,6 +50,17 @@
   description: trait-language-signlanguage-desc
   category: LanguageTraits
   cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  conditions:
+  # Triad: signing needs hands. Block for a DOUBLE arm amputee (both arms gone = no hands); a one-armed
+  # character can still sign. Consistent with the other limb gates (Spinarette, Striking Calluses, etc.).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:

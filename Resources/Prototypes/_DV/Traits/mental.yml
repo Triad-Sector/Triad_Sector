@@ -38,6 +38,10 @@
   - !type:HasTraitCondition
     trait: Pious
     invert: true
+  # Triad: a pacifist can't strike the living, so Striking Calluses (+unarmed damage) is a dead pick.
+  - !type:HasTraitCondition
+    trait: StrikingCalluses
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:

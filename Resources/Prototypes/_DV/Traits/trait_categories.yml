@@ -13,11 +13,13 @@
 - type: traitCategory
   id: Accents
   name: trait-category-accents
-  # Triad: accents are cosmetic RP (word-swaps, not comprehension). Free, capped at 1 pick, no point cost.
-  # Single pick on purpose: two accents both rewrite the same sentence (each AccentGetEvent subscriber fires),
-  # and the ReplacementAccent-based ones share one component so the 2nd was silently dropped anyway.
+  # Triad: a dialect accent costs 1 from this category's point pool (maxPoints below), so you get exactly ONE
+  # paid dialect. Count is uncapped (maxTraits 0 = unlimited) so free cost-0 speech modifiers (Stutter,
+  # Frontal Lisp, Accentless) ride alongside the one dialect without burning a slot. Global limits stay off, so
+  # this point is spent only within Accents and counts for nothing else.
   priority: 30
-  maxTraits: 1
+  maxTraits: 0
+  maxPoints: 1
   accentColor: "#38bdf8"  # Light blue
 
 - type: traitCategory

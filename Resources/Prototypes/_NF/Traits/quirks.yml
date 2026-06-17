@@ -8,6 +8,10 @@
   - !type:HasTraitCondition
     trait: Pacifist
     invert: true
+  # Triad: Pious pacifies (vows against striking in anger), so Striking Calluses (+unarmed damage) is a dead pick.
+  - !type:HasTraitCondition
+    trait: StrikingCalluses
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:

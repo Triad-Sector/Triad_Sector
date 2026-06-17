@@ -197,6 +197,11 @@
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
+  # Triad: contradicts SelfAware (precise self-damage readout). Being numb to your injuries can't coexist
+  # with an in-head health analyzer.
+  - !type:HasTraitCondition
+    trait: SelfAware
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
