@@ -117,16 +117,19 @@
   - !type:SpawnItemInHandEffect # Triad: keep the bagpipe
     item: BagpipeInstrument
 
+# Triad: German accent, display name overridden to "Terra Germanic" (trait-terragermanic-accent-name);
+# our enriched German vocab takes precedence over the upstream "German accent" trait added in #231.
 - type: trait
   id: GermanAccent
-  name: trait-german-name
-  description: trait-german-desc
+  name: trait-terragermanic-accent-name
+  description: trait-terragermanic-accent-desc
   category: Accents
   cost: 1
   effects:
   - !type:AddCompsEffect
     components:
     - type: GermanAccent
+# End Triad
 
 - type: trait
   id: Accentless

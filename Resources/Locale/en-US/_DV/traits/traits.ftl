@@ -9,6 +9,10 @@ trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong de
 trait-terralatino-accent-name = Terra Latino accent
 trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get those espesos!
 
+# Triad: "Terra Germanic" display name for the German accent
+trait-terragermanic-accent-name = Terra Germanic accent
+trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclaves. Wunderbar.
+
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
 trait-freeportcorsair-accent-name = Freeport Corsair accent
 trait-freeportcorsair-accent-desc = Arrr, ye talk like a corsair fresh off the free ports. Grog, doubloons, an' a black flag, savvy?
