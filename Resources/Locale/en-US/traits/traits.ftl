@@ -8,7 +8,7 @@ trait-narcolepsy-name = Narcolepsy
 trait-narcolepsy-desc = You fall asleep randomly.
 
 trait-pacifist-name = Pacifist
-trait-pacifist-desc = You cannot attack or hurt any living beings.
+trait-pacifist-desc = You are unwilling to raise a hand against the living. You cannot attack living creatures or use most harmful weapons, though indirect harm is still possible.
 
 permanent-blindness-trait-examined = [color=lightblue]{CAPITALIZE(POSS-ADJ($target))} eyes are glassy and unfocused. It doesn't seem like {SUBJECT($target)} can see you well, if at all.[/color]
 

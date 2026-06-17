@@ -439,12 +439,8 @@
       modifiers:
         lymphocytes:
           id: HardenedLymphocytesTrait
-          coefficients:
-            Shock: 1.25
           flatReductions:
-            Blunt: 1.5
-            Slash: 1.5
-            Piercing: 1.5
+            Radiation: 1
 
 - type: trait
   id: Ironman

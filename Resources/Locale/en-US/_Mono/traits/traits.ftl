@@ -7,6 +7,9 @@ trait-prybar-prosthetics-desc = Your arms have been reinforced with steel and hy
 
 trait-vigor-name = Vigor
 trait-vigor-desc = Whether by pure determination, fitness, or bionic augmentations, your endurance is enhanced.
+    Your stamina is increased by 10 points.
+    Your stamina regen per second is increased by 0.6 points.
+    Stamina regen now starts 2.25 seconds after taking stamina damage, instead of 3 seconds.
 
 trait-lethargy-name = Lethargy
 trait-lethargy-desc = You become tired faster than others, making you more vulnerable to exhaustion and fatigue.
