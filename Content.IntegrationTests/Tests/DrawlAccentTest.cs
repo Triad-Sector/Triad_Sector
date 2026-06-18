@@ -38,7 +38,7 @@ public sealed class DrawlAccentTest
             {
                 PrefixProb = 1f,
                 SuffixProb = 0f,
-                Prefixes = new() { "accent-cowboy-prefix-1" }, // "Well now,"
+                Prefixes = new() { "accent-cowboy-prefix-1" }, // "Yee-haw,"
             };
 #pragma warning restore RA0002
 
@@ -62,7 +62,7 @@ public sealed class DrawlAccentTest
             Assert.That(drawl.Drawl("a stinging wing", southernNoTics), Is.EqualTo("a stingin' wing"));
 
             // An "I'm"/"I'd" contraction after a prefix keeps its capital, not lowercased to "i'm".
-            Assert.That(drawl.Drawl("I'm thinking", cowboyPrefix), Does.StartWith("Well now, I'm"));
+            Assert.That(drawl.Drawl("I'm thinking", cowboyPrefix), Does.StartWith("Yee-haw, I'm"));
 
             // a/an re-agrees after a swap flips the following word's vowel-sound.
             Assert.That(drawl.Drawl("there is a nukie", cowboyNoTics), Does.Contain("an outlaw"));
@@ -80,12 +80,12 @@ public sealed class DrawlAccentTest
 
             // A lone leading "I" is not a shout: the prefix stays mixed-case.
             var notShout = drawl.Drawl("I think so", cowboyPrefix);
-            Assert.That(notShout, Does.StartWith("Well now,"));
-            Assert.That(notShout, Does.Not.StartWith("WELL NOW"));
+            Assert.That(notShout, Does.StartWith("Yee-haw,"));
+            Assert.That(notShout, Does.Not.StartWith("YEE-HAW"));
 
             // A genuine shout DOES carry to the prefix.
             var shout = drawl.Drawl("STOP RIGHT THERE", cowboyPrefix);
-            Assert.That(shout, Does.StartWith("WELL NOW,"));
+            Assert.That(shout, Does.StartWith("YEE-HAW,"));
         });
 
         await pair.CleanReturnAsync();
