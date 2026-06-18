@@ -6,43 +6,43 @@ trait-dwarven-brogue-mild-name = Dwarven Brogue (mild)
 trait-dwarven-brogue-mild-desc = Fer Hielan folk who've spent lang years doon among tha colonies; tha brogue's gone saft, but it lingers.
 
 # Triad: "Terra Gallic" display name for the French accent
-trait-terragallic-accent-name = Terra Gallic accent
+trait-terragallic-accent-name = Terra Gallic
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
-trait-terragallic-mild-accent-name = Terra Gallic accent (mild)
+trait-terragallic-mild-accent-name = Terra Gallic (mild)
 trait-terragallic-mild-accent-desc = A trace of ze old country lingers; the colonies have worn it down, but the taste for wine and baguettes never left.
 
 # Triad: "Terra Latino" display name for the Spanish accent
-trait-terralatino-accent-name = Terra Latino accent
+trait-terralatino-accent-name = Terra Latino
 trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get those espesos!
 
 # Triad: "Terra Germanic" display name for the German accent
-trait-terragermanic-accent-name = Terra Germanic accent
+trait-terragermanic-accent-name = Terra Germanic
 trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclaves. Wunderbar.
-trait-terragermanic-mild-accent-name = Terra Germanic accent (mild)
+trait-terragermanic-mild-accent-name = Terra Germanic (mild)
 trait-terragermanic-mild-accent-desc = You hail from the old Germanic enclaves, though years among the colonies have softened the edge. Ja, it still slips through now and then.
 
 # Triad: slight Spanish accent
-trait-terralatino-mild-accent-name = Terra Latino accent (mild)
+trait-terralatino-mild-accent-name = Terra Latino (mild)
 trait-terralatino-mild-accent-desc = Your Terra Latino roots still show in the small things, but years on the común tongue have smoothed them over.
 
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
-trait-freeportcorsair-accent-name = Freeport Corsair accent
+trait-freeportcorsair-accent-name = Freeport Corsair
 trait-freeportcorsair-accent-desc = Arrr, ye talk like a corsair fresh off the free ports. Grog, doubloons, an' a black flag, savvy?
 
 # Triad: "Heartworld Gentry" display name for the (enriched) Southern accent
-trait-heartworldgentry-accent-name = Heartworld Gentry accent
+trait-heartworldgentry-accent-name = Heartworld Gentry
 trait-heartworldgentry-accent-desc = You have the genteel drawl of the old Heartworld estates.
 
 # Triad: "Trailhand" display name for the (enriched) Cowboy accent
-trait-trailhand-accent-name = Trailhand accent
+trait-trailhand-accent-name = Trailhand
 trait-trailhand-accent-desc = You talk like you've spent more years on the trail than off it.
 
 # Triad: "Dustkin" display name for the (enriched) Bogan accent
-trait-dustkin-accent-name = Dustkin accent
+trait-dustkin-accent-name = Dustkin
 trait-dustkin-accent-desc = Oi! You speak like you were raised out on the dusty rim, ya drongo.
 
 # Triad: "Edgerunner" display name for the (enriched) Streetpunk accent
-trait-edgerunner-accent-name = Edgerunner accent
+trait-edgerunner-accent-name = Edgerunner
 trait-edgerunner-accent-desc = Ya came up runnin' the edges of a sprawlin' megacity an' never went to school. An' it shows, choom.
 
 trait-mobster-accent-name = Mobster accent

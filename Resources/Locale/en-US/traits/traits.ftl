@@ -68,7 +68,7 @@ trait-painnumbness-desc = You lack any sense of feeling pain, being unaware of h
 
 # Mono
 # Triad: "Terra Slavic" display name for the Russian accent
-trait-terraslavic-name = Terra Slavic accent
+trait-terraslavic-name = Terra Slavic
 trait-terraslavic-desc = You hail from the old Slavic enclaves of Sol.
-trait-terraslavic-mild-name = Terra Slavic accent (mild)
+trait-terraslavic-mild-name = Terra Slavic (mild)
 trait-terraslavic-mild-desc = You hail from the old Slavic enclaves of Sol, though the years have worn the hard edges from your tongue.
