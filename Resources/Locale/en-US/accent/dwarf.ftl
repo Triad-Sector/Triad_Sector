@@ -511,6 +511,26 @@ accent-dwarf-words-replace-169 = oor
 accent-dwarf-words-170 = hour
 accent-dwarf-words-replace-170 = oor
 
+# High-frequency Scots function words. No -ing/intervocalic-t/-ight/-all in these values, so the
+# g-drop / glottal / ch-velar / vocalised-L passes leave them intact.
+accent-dwarf-words-171 = and
+accent-dwarf-words-replace-171 = an'
+
+accent-dwarf-words-172 = just
+accent-dwarf-words-replace-172 = jus'
+
+accent-dwarf-words-173 = your
+accent-dwarf-words-replace-173 = yer
+
+accent-dwarf-words-174 = one
+accent-dwarf-words-replace-174 = yin
+
+accent-dwarf-words-175 = good
+accent-dwarf-words-replace-175 = guid
+
+accent-dwarf-words-176 = well
+accent-dwarf-words-replace-176 = weel
+
 # Triad: Dwarven Brogue tic pools (prefixes = interjections not greetings; suffixes = address/affirmation)
 accent-dwarf-prefix-1 = Och,
 accent-dwarf-prefix-2 = Aye,

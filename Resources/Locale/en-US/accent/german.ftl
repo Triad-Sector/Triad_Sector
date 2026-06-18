@@ -200,6 +200,29 @@ accent-german-words-replace-61 = kugelblitz
 accent-german-words-62 = car
 accent-german-words-replace-62 = auto
 
+# Common function words a German speaker keeps in their native tongue. These run before the phonetics,
+# so none collide with v->f / w->v / th->z.
+accent-german-words-63 = is
+accent-german-words-replace-63 = ist
+
+accent-german-words-64 = for
+accent-german-words-replace-64 = für
+
+accent-german-words-65 = good
+accent-german-words-replace-65 = gut
+
+accent-german-words-66 = but
+accent-german-words-replace-66 = aber
+
+accent-german-words-67 = now
+accent-german-words-replace-67 = jetzt
+
+accent-german-words-68 = please
+accent-german-words-replace-68 = bitte
+
+accent-german-words-69 = never
+accent-german-words-replace-69 = niemals
+
 # Tics -- prefixes are interjections (no greetings), suffixes are address/affirmation (no insults).
 accent-german-prefix-1 = Ach,
 accent-german-prefix-2 = Ja,

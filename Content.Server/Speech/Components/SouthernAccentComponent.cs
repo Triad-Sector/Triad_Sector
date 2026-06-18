@@ -23,8 +23,9 @@ public sealed partial class SouthernAccentComponent : Component, IDrawlAccentCom
         "accent-southern-prefix-8",
     };
 
+    // Triad: bumped from 0.01 so the warm-genteel tics actually land. Dial to tune if it reads too often.
     [DataField]
-    public float PrefixProb { get; set; } = 0.01f;
+    public float PrefixProb { get; set; } = 0.05f;
 
     [DataField]
     public List<string> Suffixes { get; set; } = new()
@@ -40,5 +41,5 @@ public sealed partial class SouthernAccentComponent : Component, IDrawlAccentCom
     };
 
     [DataField]
-    public float SuffixProb { get; set; } = 0.01f;
+    public float SuffixProb { get; set; } = 0.05f;
 }

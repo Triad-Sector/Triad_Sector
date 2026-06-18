@@ -111,6 +111,44 @@ accent-spanish-words-replace-33 = joder
 accent-spanish-words-34 = shit
 accent-spanish-words-replace-34 = mierda
 
+# Common function words. None contain v/j or a word-initial s+consonant, so the v->b / j->h / es-insertion
+# passes leave them intact.
+accent-spanish-words-35 = my
+accent-spanish-words-replace-35 = mi
+
+accent-spanish-words-36 = here
+accent-spanish-words-replace-36 = aquí
+
+accent-spanish-words-37 = now
+accent-spanish-words-replace-37 = ahora
+
+accent-spanish-words-38 = why
+accent-spanish-words-replace-38 = por qué
+
+accent-spanish-words-39 = nothing
+accent-spanish-words-replace-39 = nada
+
+accent-spanish-words-40 = of course
+accent-spanish-words-replace-40 = claro
+
+accent-spanish-words-41 = money
+accent-spanish-words-replace-41 = dinero
+
+accent-spanish-words-42 = but
+accent-spanish-words-replace-42 = pero
+
+accent-spanish-words-43 = with
+accent-spanish-words-replace-43 = con
+
+accent-spanish-words-44 = for
+accent-spanish-words-replace-44 = para
+
+accent-spanish-words-45 = maybe
+accent-spanish-words-replace-45 = quizás
+
+accent-spanish-words-46 = understand
+accent-spanish-words-replace-46 = entiendo
+
 # Tics -- prefixes are interjections (no greetings), suffixes are address/affirmation (no insults).
 accent-spanish-prefix-1 = Oye,
 accent-spanish-prefix-2 = Ay,

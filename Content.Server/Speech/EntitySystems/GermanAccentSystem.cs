@@ -20,9 +20,10 @@ public sealed class GermanAccentSystem : EntitySystem
 
     private static readonly Regex RegexThe = new(@"(?<=\s|^)the(?=\s|$)", RegexOptions.IgnoreCase);
     private static readonly Regex RegexV = new("v", RegexOptions.IgnoreCase);
-    // Consonantal w only: word-initial or after a consonant. The negative lookbehind spares the
-    // "ow/aw/ew" vowel digraphs so "now/saw/new/how" don't turn into "nov/sav/nev/hov".
-    private static readonly Regex RegexW = new(@"(?<![aeiou])w", RegexOptions.IgnoreCase);
+    // Consonantal w only: word-initial or after a consonant. The lookbehind spares the "ow/aw/ew" vowel
+    // digraphs (so "now/saw/new/how" don't become "nov/sav/nev/hov") AND a preceding w, so elongated
+    // chat exclamations ("owwww", "wwww", "ewww") aren't amplified into "owvvv"/"vvvv".
+    private static readonly Regex RegexW = new(@"(?<![aeiouw])w", RegexOptions.IgnoreCase);
     private static readonly Regex RegexTh = new("th", RegexOptions.IgnoreCase);
     // Word-final voiced obstruent -> voiceless. The (?![\w']) keeps it at the end of the spoken word.
     private static readonly Regex RegexFinalObstruent = new(@"[dgb](?![\w'])", RegexOptions.IgnoreCase);

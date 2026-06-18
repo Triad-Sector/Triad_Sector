@@ -249,6 +249,12 @@
     accent-dwarf-words-168: accent-dwarf-words-replace-168
     accent-dwarf-words-169: accent-dwarf-words-replace-169
     accent-dwarf-words-170: accent-dwarf-words-replace-170
+    accent-dwarf-words-171: accent-dwarf-words-replace-171
+    accent-dwarf-words-172: accent-dwarf-words-replace-172
+    accent-dwarf-words-173: accent-dwarf-words-replace-173
+    accent-dwarf-words-174: accent-dwarf-words-replace-174
+    accent-dwarf-words-175: accent-dwarf-words-replace-175
+    accent-dwarf-words-176: accent-dwarf-words-replace-176
 
 - type: accent
   id: pirate
@@ -486,6 +492,15 @@
     accent-cowboy-words-178: accent-cowboy-replacement-178
     accent-cowboy-words-179: accent-cowboy-replacement-179
     accent-cowboy-words-180: accent-cowboy-replacement-180
+    accent-cowboy-words-181: accent-cowboy-replacement-181
+    accent-cowboy-words-182: accent-cowboy-replacement-182
+    accent-cowboy-words-182-2: accent-cowboy-replacement-182
+    accent-cowboy-words-183: accent-cowboy-replacement-183
+    accent-cowboy-words-183-2: accent-cowboy-replacement-183
+    accent-cowboy-words-184: accent-cowboy-replacement-184
+    accent-cowboy-words-185: accent-cowboy-replacement-185
+    accent-cowboy-words-185-2: accent-cowboy-replacement-185
+    accent-cowboy-words-186: accent-cowboy-replacement-186
 
 - type: accent
   id: southern
@@ -499,6 +514,24 @@
     accent-southern-words-7: accent-southern-words-replace-7
     accent-southern-words-8: accent-southern-words-replace-8
     accent-southern-words-9: accent-southern-words-replace-9
+    accent-southern-words-10: accent-southern-words-replace-10
+    accent-southern-words-11: accent-southern-words-replace-11
+    accent-southern-words-12: accent-southern-words-replace-12
+    accent-southern-words-12-2: accent-southern-words-replace-12
+    accent-southern-words-12-3: accent-southern-words-replace-12
+    accent-southern-words-13: accent-southern-words-replace-13
+    accent-southern-words-13-2: accent-southern-words-replace-13
+    accent-southern-words-14: accent-southern-words-replace-14
+    accent-southern-words-15: accent-southern-words-replace-15
+    accent-southern-words-16: accent-southern-words-replace-16
+    accent-southern-words-17: accent-southern-words-replace-17
+    accent-southern-words-17-2: accent-southern-words-replace-17
+    accent-southern-words-18: accent-southern-words-replace-18
+    accent-southern-words-18-2: accent-southern-words-replace-18
+    accent-southern-words-19: accent-southern-words-replace-19
+    accent-southern-words-20: accent-southern-words-replace-20
+    accent-southern-words-21: accent-southern-words-replace-21
+    accent-southern-words-21-2: accent-southern-words-replace-21
 
 # For the chat sanitization system
 - type: accent
@@ -698,6 +731,13 @@
     accent-german-words-61-4: accent-german-words-replace-61
     accent-german-words-61-5: accent-german-words-replace-61
     accent-german-words-62: accent-german-words-replace-62
+    accent-german-words-63: accent-german-words-replace-63
+    accent-german-words-64: accent-german-words-replace-64
+    accent-german-words-65: accent-german-words-replace-65
+    accent-german-words-66: accent-german-words-replace-66
+    accent-german-words-67: accent-german-words-replace-67
+    accent-german-words-68: accent-german-words-replace-68
+    accent-german-words-69: accent-german-words-replace-69
 
 - type: accent
   id: russian
@@ -753,6 +793,9 @@
     accent-russian-words-37: accent-russian-words-replace-37
     accent-russian-words-38: accent-russian-words-replace-38
     accent-russian-words-39: accent-russian-words-replace-39
+    accent-russian-words-40: accent-russian-words-replace-40
+    accent-russian-words-41: accent-russian-words-replace-41
+    accent-russian-words-42: accent-russian-words-replace-42
 
 - type: accent
   id: spanish
@@ -800,6 +843,18 @@
     accent-spanish-words-32-2: accent-spanish-words-replace-32
     accent-spanish-words-33: accent-spanish-words-replace-33
     accent-spanish-words-34: accent-spanish-words-replace-34
+    accent-spanish-words-35: accent-spanish-words-replace-35
+    accent-spanish-words-36: accent-spanish-words-replace-36
+    accent-spanish-words-37: accent-spanish-words-replace-37
+    accent-spanish-words-38: accent-spanish-words-replace-38
+    accent-spanish-words-39: accent-spanish-words-replace-39
+    accent-spanish-words-40: accent-spanish-words-replace-40
+    accent-spanish-words-41: accent-spanish-words-replace-41
+    accent-spanish-words-42: accent-spanish-words-replace-42
+    accent-spanish-words-43: accent-spanish-words-replace-43
+    accent-spanish-words-44: accent-spanish-words-replace-44
+    accent-spanish-words-45: accent-spanish-words-replace-45
+    accent-spanish-words-46: accent-spanish-words-replace-46
 
 - type: accent
   id: french
@@ -846,6 +901,8 @@
     accent-french-words-32-2: accent-french-words-replace-32
     accent-french-words-32-3: accent-french-words-replace-32
     accent-french-words-33: accent-french-words-replace-33
+    accent-french-words-34: accent-french-words-replace-34
+    accent-french-words-35: accent-french-words-replace-35
 
 - type: accent
   id: skeleton

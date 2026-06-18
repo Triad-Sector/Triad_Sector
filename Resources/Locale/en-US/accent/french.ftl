@@ -109,6 +109,14 @@ accent-french-words-replace-32 = merde
 accent-french-words-33 = fuck
 accent-french-words-replace-33 = putain
 
+# French phonetics already front the/this/that/with via th->z, so these fill the function-word gaps the
+# phonetic pass can't reach.
+accent-french-words-34 = my
+accent-french-words-replace-34 = mon
+
+accent-french-words-35 = why
+accent-french-words-replace-35 = pourquoi
+
 # Tics -- prefixes are neutral discourse markers (no greetings); suffixes are affirmation/tag-question
 # ONLY (no address terms -- French address terms read as flirtatious, which is unwanted at an 18+ table).
 accent-french-prefix-1 = Ah,

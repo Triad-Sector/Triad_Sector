@@ -21,10 +21,15 @@ public sealed partial class CowboyAccentComponent : Component, IDrawlAccentCompo
         "accent-cowboy-prefix-5",
         "accent-cowboy-prefix-6",
         "accent-cowboy-prefix-7",
+        "accent-cowboy-prefix-8",
+        "accent-cowboy-prefix-9",
+        "accent-cowboy-prefix-10",
     };
 
+    // Triad: bumped from 0.01 so the cartoon-Western tics actually land. This is the dial to tune if the
+    // yee-haw reads as too frequent.
     [DataField]
-    public float PrefixProb { get; set; } = 0.01f;
+    public float PrefixProb { get; set; } = 0.05f;
 
     [DataField]
     public List<string> Suffixes { get; set; } = new()
@@ -35,8 +40,10 @@ public sealed partial class CowboyAccentComponent : Component, IDrawlAccentCompo
         "accent-cowboy-suffix-4",
         "accent-cowboy-suffix-5",
         "accent-cowboy-suffix-6",
+        "accent-cowboy-suffix-7",
+        "accent-cowboy-suffix-8",
     };
 
     [DataField]
-    public float SuffixProb { get; set; } = 0.01f;
+    public float SuffixProb { get; set; } = 0.05f;
 }

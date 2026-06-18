@@ -52,6 +52,13 @@ public sealed class DwarfAccentTest
             Assert.That(Dwarf("night"), Is.EqualTo("nicht"));
             Assert.That(Dwarf("all"), Is.EqualTo("aw"));
             Assert.That(Dwarf("call"), Is.EqualTo("caw"));
+
+            // Population vocab swaps from prod chat. The apostrophe in "an'" blocks FixArticles (it keys on
+            // an article token followed by whitespace), and none of these hit g-drop/glottal/-ight/-all.
+            Assert.That(Dwarf("and"), Is.EqualTo("an'"));
+            Assert.That(Dwarf("just"), Is.EqualTo("jus'"));
+            Assert.That(Dwarf("your"), Is.EqualTo("yer"));
+            Assert.That(Dwarf("good"), Is.EqualTo("guid"));
         });
 
         await pair.CleanReturnAsync();

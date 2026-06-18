@@ -131,6 +131,17 @@ accent-russian-words-replace-38 = blyat
 accent-russian-words-39 = shit
 accent-russian-words-replace-39 = cherty
 
+# Swaps run before the Cyrillic glyph pass, so these get the faux-Cyrillic treatment for free.
+# Note: is/are/am are handled by the copula-drop, not swapped here.
+accent-russian-words-40 = my
+accent-russian-words-replace-40 = moy
+
+accent-russian-words-41 = money
+accent-russian-words-replace-41 = dengi
+
+accent-russian-words-42 = of course
+accent-russian-words-replace-42 = konechno
+
 # Tics -- prefixes are interjections (no greetings), suffixes are address/affirmation (no insults).
 accent-russian-prefix-1 = Eh,
 accent-russian-prefix-2 = Bah,

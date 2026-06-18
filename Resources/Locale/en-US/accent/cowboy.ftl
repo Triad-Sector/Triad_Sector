@@ -543,18 +543,46 @@ accent-cowboy-replacement-179 = yellow-belly
 accent-cowboy-words-180 = damn
 accent-cowboy-replacement-180 = goddamn
 
+# Cartoon-Western swaps: the exaggerated "snake in my boot" register.
+accent-cowboy-words-181 = yes
+accent-cowboy-replacement-181 = you betcha
+
+accent-cowboy-words-182 = great
+accent-cowboy-words-182-2 = awesome
+accent-cowboy-replacement-182 = mighty fine
+
+accent-cowboy-words-183 = scared
+accent-cowboy-words-183-2 = afraid
+accent-cowboy-replacement-183 = spooked
+
+accent-cowboy-words-184 = calm down
+accent-cowboy-replacement-184 = simmer down
+
+accent-cowboy-words-185 = let's go
+accent-cowboy-words-185-2 = lets go
+accent-cowboy-replacement-185 = saddle up
+
+accent-cowboy-words-186 = wait
+accent-cowboy-replacement-186 = hold yer horses
+
 # Triad: prefix/suffix tics for the shared drawl engine (DrawlAccentSystem)
-accent-cowboy-prefix-1 = Well now,
-accent-cowboy-prefix-2 = Shoot,
-accent-cowboy-prefix-3 = Heck,
-accent-cowboy-prefix-4 = Listen here,
-accent-cowboy-prefix-5 = Well I'll be,
-accent-cowboy-prefix-6 = Hell,
-accent-cowboy-prefix-7 = Damn,
+# Prefixes are interjections only (no greetings, no commands); suffixes are address/affirmation (no insults).
+accent-cowboy-prefix-1 = Yee-haw,
+accent-cowboy-prefix-2 = Well shoot,
+accent-cowboy-prefix-3 = Hoo-wee,
+accent-cowboy-prefix-4 = Tarnation,
+accent-cowboy-prefix-5 = Hot diggity,
+accent-cowboy-prefix-6 = Well I'll be a horned toad,
+accent-cowboy-prefix-7 = Yippee-ki-yay,
+accent-cowboy-prefix-8 = Well butter my biscuit,
+accent-cowboy-prefix-9 = Well doggies,
+accent-cowboy-prefix-10 = Dadgummit,
 
 accent-cowboy-suffix-1 = , partner
 accent-cowboy-suffix-2 = , pardner
 accent-cowboy-suffix-3 = , I reckon
 accent-cowboy-suffix-4 = , y'hear
 accent-cowboy-suffix-5 = , sure as shootin'
-accent-cowboy-suffix-6 = , dammit
+accent-cowboy-suffix-6 = , yee-haw
+accent-cowboy-suffix-7 = , I tell ya
+accent-cowboy-suffix-8 = , hot dang

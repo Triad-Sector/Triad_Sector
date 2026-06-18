@@ -65,6 +65,13 @@ public sealed class SpanishAccentTest
 
             // 18+ swap is input-gated (fires only on the literal word).
             Assert.That(Latino("damn"), Is.EqualTo("carajo"));
+
+            // Population vocab swaps from prod chat. None contain v/j or a word-initial s+consonant, so the
+            // v->b / j->h / es-insertion passes leave them whole ("para" is not é-prefixed, "con" stays).
+            Assert.That(Latino("my"), Is.EqualTo("mi"));
+            Assert.That(Latino("but"), Is.EqualTo("pero"));
+            Assert.That(Latino("for"), Is.EqualTo("para"));
+            Assert.That(Latino("with"), Is.EqualTo("con"));
         });
 
         await pair.CleanReturnAsync();

@@ -55,6 +55,10 @@ public sealed class FrenchAccentTest
 
             // 18+ swap is input-gated.
             Assert.That(Gal("fuck"), Is.EqualTo("putain"));
+
+            // Population vocab swaps from prod chat (mon/pourquoi). No th/j/initial-h to re-mangle.
+            Assert.That(Gal("my"), Is.EqualTo("mon"));
+            Assert.That(Gal("why"), Is.EqualTo("pourquoi"));
         });
 
         await pair.CleanReturnAsync();

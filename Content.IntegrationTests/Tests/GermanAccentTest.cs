@@ -49,17 +49,29 @@ public sealed class GermanAccentTest
             Assert.That(Ger("that"), Is.EqualTo("zat"));
             Assert.That(Ger("with"), Is.EqualTo("viz"));
 
-            // w -> v on consonantal w, but never the "ow/aw/ew" vowel digraphs.
+            // w -> v on consonantal w, but never the "ow/aw/ew" vowel digraphs ("how" keeps its w).
             Assert.That(Ger("water"), Is.EqualTo("vater"));
-            Assert.That(Ger("now"), Is.EqualTo("now"));
+            Assert.That(Ger("how"), Is.EqualTo("how"));
+            // Elongated chat w-runs are spared (w after w), so "owwww" isn't amplified to "owvvv".
+            Assert.That(Ger("owwww"), Is.EqualTo("owwww"));
 
             // v -> f, and it does NOT eat the v that w->v just produced ("water" stayed "vater").
             Assert.That(Ger("very"), Is.EqualTo("fery"));
             Assert.That(Ger("have"), Is.EqualTo("hafe"));
 
-            // Final-obstruent devoicing: d->t, g->k (so -ing -> -ink), b->p.
-            Assert.That(Ger("good"), Is.EqualTo("goot"));
+            // Final-obstruent devoicing: g->k (so -ing -> -ink), and d->t on a non-swapped word.
             Assert.That(Ger("singing"), Is.EqualTo("singink"));
+            Assert.That(Ger("cold"), Is.EqualTo("colt"));
+
+            // Population vocab swaps mined from prod chat. "good"/"now" are now vocab (gut/jetzt), not the
+            // old phonetic forms (goot/now); these run before the phonetics so nothing re-mangles them.
+            Assert.That(Ger("good"), Is.EqualTo("gut"));
+            Assert.That(Ger("now"), Is.EqualTo("jetzt"));
+            Assert.That(Ger("is"), Is.EqualTo("ist"));
+            Assert.That(Ger("for"), Is.EqualTo("für"));
+            Assert.That(Ger("but"), Is.EqualTo("aber"));
+            Assert.That(Ger("please"), Is.EqualTo("bitte"));
+            Assert.That(Ger("never"), Is.EqualTo("niemals"));
         });
 
         await pair.CleanReturnAsync();
