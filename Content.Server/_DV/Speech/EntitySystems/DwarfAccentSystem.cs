@@ -6,14 +6,19 @@ using System.Text.RegularExpressions;
 
 namespace Content.Server._DV.Speech.EntitySystems;
 
-// Triad: the Dwarven Brogue. Merged from the near-identical Scottish + Dwarf word lists onto the shared
-// AccentHelpers, plus the signature Scots glottal stop. Used by the Dwarf species and the (renamed)
-// brogue trait. Trilled 'r' is intentionally not modelled -- it does not survive as text.
+// Triad: the Dwarven Brogue (TF2-Demoman-thick Scots). Merged from the near-identical Scottish + Dwarf
+// word lists onto the shared AccentHelpers, plus the signature Scots phonetics. Deliberately does NOT
+// touch "th" -- that keeps the brogue distinct from the German/French accents, which both front th->z.
+// Trilled 'r' is intentionally not modelled -- it does not survive as text.
 public sealed class DwarfAccentSystem : EntitySystem
 {
     // Glottal stop on intervocalic t/tt: water -> wa'er, butter -> bu'er. Only fire before a/e/o/y, never
     // i/u, so "nation"/"nature"/"situation" (where t is a /sh/-/ch/ sound) are left alone.
     private static readonly Regex RegexGlottal = new(@"([aeiou])tt?([aeoy])", RegexOptions.IgnoreCase);
+    // Scots ch-velar: the "-ight" cluster becomes "-icht" (night -> nicht, right -> richt, fight -> ficht).
+    private static readonly Regex RegexIght = new("ight", RegexOptions.IgnoreCase);
+    // Scots vocalised L: word-final "-all" becomes "-aw" (all -> aw, call -> caw, wall -> waw, small -> smaw).
+    private static readonly Regex RegexAll = new(@"all\b", RegexOptions.IgnoreCase);
 
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
@@ -33,6 +38,9 @@ public sealed class DwarfAccentSystem : EntitySystem
         // are word-listed, a blanket ou->oo regex would wreck your/group/four.
         msg = AccentHelpers.DropG(msg);
         msg = RegexGlottal.Replace(msg, "$1'$2");
+        // ch-velar and vocalised-L, case-preserving (so "Night" -> "Nicht", "ALL" -> "AW").
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexIght, "icht");
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexAll, "aw");
 
         if (string.IsNullOrWhiteSpace(msg))
             return msg;

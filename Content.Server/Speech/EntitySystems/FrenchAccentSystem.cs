@@ -1,6 +1,10 @@
-// Triad: enriched French accent. Identifiers kept upstream-named for clean cherry-picking;
-// Enriched onto the shared AccentHelpers (a/an fixup + data-driven prefix/suffix tics) on top of the
-// original phonetics: th -> 'z, word-initial h -> ', and French-style spacing before ! ? : ;.
+// Triad: enriched French accent (TF2-Spy / Clouseau-thick). Identifiers kept upstream-named for clean
+// cherry-picking. Phonetics ride the shared case-preserving helper. Distinct from German on purpose:
+// French DROPS word-initial h (German keeps it) and never does German's w->v / final devoicing.
+//   th -> z   (the->ze, this->zis, with->wiz; French has no /th/, realizes it as /z/)
+//   word-initial h dropped -> ' (have->'ave, Hello->'Ello; case promoted onto the next letter)
+//   j -> zh   (just->zhust, major->mazhor; the French /ʒ/)
+//   + French-style space before ! ? : ; (typographic tic German lacks)
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
@@ -16,7 +20,7 @@ public sealed class FrenchAccentSystem : EntitySystem
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
     private static readonly Regex RegexTh = new("th", RegexOptions.IgnoreCase);
-    private static readonly Regex RegexStartH = new(@"(?<!\w)h", RegexOptions.IgnoreCase);
+    private static readonly Regex RegexJ = new("j", RegexOptions.IgnoreCase);
     private static readonly Regex RegexSpacePunctuation = new(@"(?<=\w\w)[!?;:](?!\w)", RegexOptions.IgnoreCase);
 
     public override void Initialize()
@@ -28,11 +32,15 @@ public sealed class FrenchAccentSystem : EntitySystem
 
     public string Accentuate(string message, FrenchAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "french");
+        // j -> zh runs on the raw English BEFORE the word swaps, so a French loanword swap that itself
+        // contains a j ("hello" -> "bonjour") is not re-mangled into "bonzhour". English "just" -> "zhust".
+        var msg = AccentHelpers.ReplaceCasePreserving(message, RegexJ, "zh");
 
-        // Phonetics: th -> 'z, then word-initial h -> '.
-        msg = RegexTh.Replace(msg, "'z");
-        msg = RegexStartH.Replace(msg, "'");
+        msg = _replacement.ApplyReplacements(msg, "french");
+
+        // Phonetics: th -> z (case-preserving), then drop word-initial h (shared case-aware helper).
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z");
+        msg = AccentHelpers.DropInitialH(msg);
 
         if (!string.IsNullOrWhiteSpace(msg))
         {

@@ -45,8 +45,21 @@ public sealed class GermanAccentTest
             // "the" -> "ze" when das is disabled.
             Assert.That(Ger("the"), Is.EqualTo("ze"));
 
-            // th -> zh phonetic on a word-initial th ("that" -> "zhat").
-            Assert.That(Ger("that"), Is.EqualTo("zhat"));
+            // th -> z (German has no /th/): "that" -> "zat", "with" stacks w->v then th->z -> "viz".
+            Assert.That(Ger("that"), Is.EqualTo("zat"));
+            Assert.That(Ger("with"), Is.EqualTo("viz"));
+
+            // w -> v on consonantal w, but never the "ow/aw/ew" vowel digraphs.
+            Assert.That(Ger("water"), Is.EqualTo("vater"));
+            Assert.That(Ger("now"), Is.EqualTo("now"));
+
+            // v -> f, and it does NOT eat the v that w->v just produced ("water" stayed "vater").
+            Assert.That(Ger("very"), Is.EqualTo("fery"));
+            Assert.That(Ger("have"), Is.EqualTo("hafe"));
+
+            // Final-obstruent devoicing: d->t, g->k (so -ing -> -ink), b->p.
+            Assert.That(Ger("good"), Is.EqualTo("goot"));
+            Assert.That(Ger("singing"), Is.EqualTo("singink"));
         });
 
         await pair.CleanReturnAsync();

@@ -47,6 +47,11 @@ public sealed class DwarfAccentTest
             Assert.That(Dwarf("water"), Is.EqualTo("wa'er"));
             Assert.That(Dwarf("butter"), Is.EqualTo("bu'er"));
             Assert.That(Dwarf("nation"), Is.EqualTo("nation"));
+
+            // Scots ch-velar (-ight -> -icht) and vocalised L (word-final -all -> -aw).
+            Assert.That(Dwarf("night"), Is.EqualTo("nicht"));
+            Assert.That(Dwarf("all"), Is.EqualTo("aw"));
+            Assert.That(Dwarf("call"), Is.EqualTo("caw"));
         });
 
         await pair.CleanReturnAsync();

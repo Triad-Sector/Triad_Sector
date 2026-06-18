@@ -78,8 +78,8 @@ accent-german-words-replace-24 = döner
 accent-german-words-25 = mouse
 accent-german-words-replace-25 = maus
 
-accent-german-words-26 = what
-accent-german-words-replace-26 = wat
+# "what" intentionally has no word swap: the phonetic w->v pass produces "vhat" on its own (and runs
+# after v->f, so it survives). A literal "vhat" swap here would get devoiced to "fhat" by the v->f pass.
 
 accent-german-words-27 = thank you
 accent-german-words-replace-27 = dankeschön

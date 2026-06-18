@@ -1,7 +1,11 @@
-// Triad: enriched German accent. Identifiers kept upstream-named for clean cherry-picking;
-// Enriched onto the shared AccentHelpers (a/an fixup + data-driven prefix/suffix tics) on top of the
-// original phonetics: probabilistic the->das, th->zh, and the random-umlaut pass. The das/umlaut
-// chances are now component DataFields instead of hardcoded.
+// Triad: enriched German accent (TF2-Medic-thick). Identifiers kept upstream-named for clean
+// cherry-picking. Phonetics now ride the shared case-preserving helper instead of char-shift hacks:
+//   v -> f   (have->hafe, very->fery, over->ofer; German /v/ + obstruent devoicing)
+//   w -> v   (water->vater, will->vill; only consonantal w, never the "ow/aw/ew" vowel digraphs)
+//   th -> z  (think->zink, with->viz, brother->brozer; German has no /th/)
+//   final d/g/b -> t/k/p  (good->goot, dog->dok, club->clup, and -ing->-ink: singing->singink)
+// ORDER MATTERS: v->f runs BEFORE w->v so the v's that w->v creates are not devoiced back to f.
+// das/umlaut chances stay component DataFields. Word swaps (ja/nein/ze/und...) run first.
 using System.Text;
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
@@ -14,8 +18,14 @@ public sealed class GermanAccentSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
-    private static readonly Regex RegexTh = new(@"(?<=\s|^)th", RegexOptions.IgnoreCase);
     private static readonly Regex RegexThe = new(@"(?<=\s|^)the(?=\s|$)", RegexOptions.IgnoreCase);
+    private static readonly Regex RegexV = new("v", RegexOptions.IgnoreCase);
+    // Consonantal w only: word-initial or after a consonant. The negative lookbehind spares the
+    // "ow/aw/ew" vowel digraphs so "now/saw/new/how" don't turn into "nov/sav/nev/hov".
+    private static readonly Regex RegexW = new(@"(?<![aeiou])w", RegexOptions.IgnoreCase);
+    private static readonly Regex RegexTh = new("th", RegexOptions.IgnoreCase);
+    // Word-final voiced obstruent -> voiceless. The (?![\w']) keeps it at the end of the spoken word.
+    private static readonly Regex RegexFinalObstruent = new(@"[dgb](?![\w'])", RegexOptions.IgnoreCase);
 
     public override void Initialize()
     {
@@ -26,58 +36,22 @@ public sealed class GermanAccentSystem : EntitySystem
     {
         var msg = message;
 
-        // Rarely, "the" becomes "das" instead of "ze". Shift T, H, E over to D, A, S to preserve caps.
-        foreach (Match match in RegexThe.Matches(msg))
-        {
-            if (_random.Prob(component.DasProb))
-            {
-                msg = msg.Substring(0, match.Index) +
-                      (char)(msg[match.Index] - 16) +
-                      (char)(msg[match.Index + 1] - 7) +
-                      (char)(msg[match.Index + 2] + 14) +
-                      msg.Substring(match.Index + 3);
-            }
-        }
+        // Rarely, "the" becomes "das" instead of the usual "ze". Per-match roll via an evaluator so
+        // the casing is preserved and the index never drifts mid-loop.
+        msg = RegexThe.Replace(msg, m =>
+            _random.Prob(component.DasProb) ? AccentHelpers.MatchCase(m.Value, "das") : m.Value);
 
-        // Word replacements.
+        // Word replacements (ja/nein/ze/und/wasser...). Run first so swap outputs get accented too.
         msg = _replacement.ApplyReplacements(msg, "german");
 
-        // th -> zh (zhis, zhat...); "the -> ze" is already handled by the replacements.
-        var msgBuilder = new StringBuilder(msg);
-        foreach (Match match in RegexTh.Matches(msg))
-        {
-            // Shift T over to Z to preserve capitalization.
-            msgBuilder[match.Index] = (char)(msgBuilder[match.Index] + 6);
-        }
+        // Phonetics, case-preserving. v->f BEFORE w->v (see header note on ordering).
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "f");
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexW, "v");
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z");
+        msg = RegexFinalObstruent.Replace(msg, DevoiceFinal);
 
         // Random umlaut time. The joke outweighs the emotional damage this inflicts on actual Germans.
-        var umlautCooldown = 0;
-        for (var i = 0; i < msgBuilder.Length; i++)
-        {
-            if (umlautCooldown == 0)
-            {
-                if (_random.Prob(component.UmlautProb))
-                {
-                    msgBuilder[i] = msgBuilder[i] switch
-                    {
-                        'A' => 'Ä',
-                        'a' => 'ä',
-                        'O' => 'Ö',
-                        'o' => 'ö',
-                        'U' => 'Ü',
-                        'u' => 'ü',
-                        _ => msgBuilder[i]
-                    };
-                    umlautCooldown = 4;
-                }
-            }
-            else
-            {
-                umlautCooldown--;
-            }
-        }
-
-        msg = msgBuilder.ToString();
+        msg = ApplyUmlauts(msg, component.UmlautProb);
 
         if (!string.IsNullOrWhiteSpace(msg))
         {
@@ -91,6 +65,54 @@ public sealed class GermanAccentSystem : EntitySystem
         }
 
         return msg;
+    }
+
+    private static string DevoiceFinal(Match m)
+    {
+        var c = m.Value[0];
+        var repl = char.ToLowerInvariant(c) switch
+        {
+            'd' => 't',
+            'g' => 'k',
+            'b' => 'p',
+            _ => c,
+        };
+        return (char.IsUpper(c) ? char.ToUpperInvariant(repl) : repl).ToString();
+    }
+
+    private string ApplyUmlauts(string msg, float prob)
+    {
+        if (prob <= 0f)
+            return msg;
+
+        var sb = new StringBuilder(msg);
+        var cooldown = 0;
+        for (var i = 0; i < sb.Length; i++)
+        {
+            if (cooldown == 0)
+            {
+                if (_random.Prob(prob))
+                {
+                    sb[i] = sb[i] switch
+                    {
+                        'A' => 'Ä',
+                        'a' => 'ä',
+                        'O' => 'Ö',
+                        'o' => 'ö',
+                        'U' => 'Ü',
+                        'u' => 'ü',
+                        _ => sb[i],
+                    };
+                    cooldown = 4;
+                }
+            }
+            else
+            {
+                cooldown--;
+            }
+        }
+
+        return sb.ToString();
     }
 
     private void OnAccent(Entity<GermanAccentComponent> ent, ref AccentGetEvent args)

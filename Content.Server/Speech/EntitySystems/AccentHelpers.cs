@@ -37,6 +37,10 @@ public static class AccentHelpers
 
     private static readonly Regex FirstWord = new(@"^(\S+)");
 
+    // Word-initial h plus the letter after it, so a dropped capital ("Hello") can promote its case onto
+    // the next letter ("'Ello") instead of leaving a lowercase opener.
+    private static readonly Regex InitialH = new(@"(?<!\w)h(\w)?", RegexOptions.IgnoreCase);
+
     /// <summary>Drops the g from -ing gerunds ("running" -> "runnin'") while sparing short -ing nouns.</summary>
     public static string DropG(string message)
     {
@@ -115,5 +119,53 @@ public static class AccentHelpers
             return trimmed[..(trimmed.Length - punctLen)] + suffix;
 
         return trimmed[..(trimmed.Length - punctLen)] + suffix + trimmed[(trimmed.Length - punctLen)..];
+    }
+
+    /// <summary>
+    ///     Regex-replaces every match while copying the matched token's casing onto the replacement,
+    ///     so a phonetic pass ("water" -> "vater") doesn't flatten capitalization the way a raw
+    ///     <see cref="Regex.Replace(string, string)"/> would. Use this for fixed-string phonetic swaps;
+    ///     for capture-group transforms call <see cref="MatchCase"/> directly inside your own evaluator.
+    /// </summary>
+    public static string ReplaceCasePreserving(string message, Regex regex, string replacement)
+    {
+        return regex.Replace(message, m => MatchCase(m.Value, replacement));
+    }
+
+    /// <summary>
+    ///     Copies the casing shape of <paramref name="source"/> onto <paramref name="replacement"/>:
+    ///     an all-caps shout stays a shout, a leading capital stays capitalized, anything else is
+    ///     returned verbatim. Mirrors the capitalization logic in ReplacementAccentSystem so bespoke
+    ///     phonetic passes match the word-swap engine instead of each re-inventing (and breaking) it.
+    /// </summary>
+    /// <summary>
+    ///     Drops a word-initial h (cockney/French h-dropping: "have" -> "'ave"), carrying a dropped
+    ///     capital onto the surviving next letter so a sentence opener stays capitalized ("Hello" -> "'Ello").
+    /// </summary>
+    public static string DropInitialH(string message)
+    {
+        return InitialH.Replace(message, m =>
+        {
+            var next = m.Groups[1].Value;
+            if (char.IsUpper(m.Value[0]) && next.Length > 0)
+                next = char.ToUpperInvariant(next[0]).ToString();
+            return "'" + next;
+        });
+    }
+
+    public static string MatchCase(string source, string replacement)
+    {
+        if (replacement.Length == 0 || source.Length == 0)
+            return replacement;
+
+        // All-caps shout -> shout the replacement too, but a lone 1-char match ("I") only shouts a
+        // 1-char replacement, so "I" -> "Ah" doesn't become "AH" (same guard the swap engine uses).
+        if (!source.Any(char.IsLower) && (source.Length > 1 || replacement.Length == 1))
+            return replacement.ToUpperInvariant();
+
+        if (char.IsUpper(source[0]))
+            return char.ToUpperInvariant(replacement[0]) + replacement[1..];
+
+        return replacement;
     }
 }

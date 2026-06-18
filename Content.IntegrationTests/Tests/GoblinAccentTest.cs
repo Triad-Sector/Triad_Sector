@@ -44,6 +44,13 @@ public sealed class GoblinAccentTest
 
             // h-dropping makes "a hell" sound vowel-initial -> a/an fixup gives the cockney "an 'ell".
             Assert.That(Goblin("a hell"), Is.EqualTo("an 'ell"));
+
+            // th-fronting RULE for words the list doesn't cover: th -> f, intervocalic th -> v (+ -er -> -ah).
+            Assert.That(Goblin("north"), Is.EqualTo("norf"));
+            Assert.That(Goblin("both"), Is.EqualTo("bof"));
+            Assert.That(Goblin("weather"), Is.EqualTo("weavah"));
+            // king is not list-swapped, so the shared keep-list spares it from g-dropping.
+            Assert.That(Goblin("king"), Is.EqualTo("king"));
         });
 
         await pair.CleanReturnAsync();

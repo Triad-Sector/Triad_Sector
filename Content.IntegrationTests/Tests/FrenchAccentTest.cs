@@ -41,10 +41,14 @@ public sealed class FrenchAccentTest
             // A swap supersedes the h-drop: "hello" -> "bonjour" (not "'ello").
             Assert.That(Gal("hello"), Is.EqualTo("bonjour"));
 
-            // Phonetic: th -> 'z. "the" has no vocab swap here, so it phoneticizes to "'ze".
-            Assert.That(Gal("the"), Is.EqualTo("'ze"));
-            // Word-initial h -> ' on a word with no swap.
-            Assert.That(Gal("here"), Does.StartWith("'"));
+            // Phonetic: th -> z. "the" has no vocab swap here, so it phoneticizes to "ze".
+            Assert.That(Gal("the"), Is.EqualTo("ze"));
+            Assert.That(Gal("with"), Is.EqualTo("wiz"));
+            // Word-initial h dropped; a dropped capital carries onto the next letter ("Here" -> "'Ere").
+            Assert.That(Gal("here"), Is.EqualTo("'ere"));
+            Assert.That(Gal("Here"), Is.EqualTo("'Ere"));
+            // j -> zh (the French /ʒ/).
+            Assert.That(Gal("just"), Is.EqualTo("zhust"));
 
             // French-style spacing inserted before terminal ? / !.
             Assert.That(Gal("what?"), Does.Contain(" ?"));
