@@ -82,6 +82,19 @@
     - type: FrenchAccent
 # End Triad
 
+# Triad: lighter "slight" French. Same cost as thick (0).
+- type: trait
+  id: FrenchAccentSlight
+  name: trait-terragallic-mild-accent-name
+  description: trait-terragallic-mild-accent-desc
+  category: Accents
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: FrenchAccent
+      strength: Slight
+
 # Triad: Spanish accent, display name overridden to "Terra Latino" (trait-terralatino-accent-name); vocab enriched
 - type: trait
   id: SpanishAccent

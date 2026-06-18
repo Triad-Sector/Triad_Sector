@@ -958,6 +958,19 @@
     accent-french-words-34: accent-french-words-replace-34
     accent-french-words-35: accent-french-words-replace-35
 
+# Triad: slim iconic-only list for the Slight French variant. Reuses existing french loc keys.
+- type: accent
+  id: french_slight
+  wordReplacements:
+    accent-french-words-1: accent-french-words-replace-1   # yes -> oui
+    accent-french-words-2: accent-french-words-replace-2   # no -> non
+    accent-french-words-4: accent-french-words-replace-4   # thanks -> merci
+    accent-french-words-4-2: accent-french-words-replace-4 # thank you -> merci
+    accent-french-words-7: accent-french-words-replace-7   # hello -> bonjour
+    accent-french-words-8: accent-french-words-replace-8   # hi -> salut
+    accent-french-words-6: accent-french-words-replace-6   # sorry -> pardon
+    accent-french-words-10: accent-french-words-replace-10 # friend -> ami
+
 - type: accent
   id: skeleton
   wordReplacements:

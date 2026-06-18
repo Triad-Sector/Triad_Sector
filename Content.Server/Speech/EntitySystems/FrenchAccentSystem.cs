@@ -6,6 +6,7 @@
 //   j -> zh   (just->zhust, major->mazhor; the French /ʒ/)
 //   + French-style space before ! ? : ; (typographic tic German lacks)
 using System.Text.RegularExpressions;
+using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -32,15 +33,22 @@ public sealed class FrenchAccentSystem : EntitySystem
 
     public string Accentuate(string message, FrenchAccentComponent component)
     {
-        // j -> zh runs on the raw English BEFORE the word swaps, so a French loanword swap that itself
-        // contains a j ("hello" -> "bonjour") is not re-mangled into "bonzhour". English "just" -> "zhust".
-        var msg = AccentHelpers.ReplaceCasePreserving(message, RegexJ, "zh");
+        var slight = component.Strength == AccentStrength.Slight;
+        var chance = slight ? component.SlightChance : 1f;
 
-        msg = _replacement.ApplyReplacements(msg, "french");
+        // j -> zh on raw English BEFORE swaps. Thick-only: zhust-for-just hurts slight.
+        var msg = slight
+            ? message
+            : AccentHelpers.ReplaceCasePreserving(message, RegexJ, "zh");
 
-        // Phonetics: th -> z (case-preserving), then drop word-initial h (shared case-aware helper).
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z");
-        msg = AccentHelpers.DropInitialH(msg);
+        msg = _replacement.ApplyReplacements(msg, slight ? "french_slight" : "french");
+
+        // th -> z, per-match chance (1 for thick). Kept in slight: "ze" is iconic and recognizable.
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z", _random, chance);
+
+        // Word-initial h-drop is thick-only (less recognizable than th->z).
+        if (!slight)
+            msg = AccentHelpers.DropInitialH(msg);
 
         if (!string.IsNullOrWhiteSpace(msg))
         {

@@ -8,6 +8,8 @@ trait-dwarven-brogue-mild-desc = A gentler brogue. The g's still drop and the od
 # Triad: "Terra Gallic" display name for the French accent
 trait-terragallic-accent-name = Terra Gallic accent
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
+trait-terragallic-mild-accent-name = Terra Gallic accent (mild)
+trait-terragallic-mild-accent-desc = A faint Gallic lilt. The odd "ze" slips through, but your h's and j's have come back.
 
 # Triad: "Terra Latino" display name for the Spanish accent
 trait-terralatino-accent-name = Terra Latino accent

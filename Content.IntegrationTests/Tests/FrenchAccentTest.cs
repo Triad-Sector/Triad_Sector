@@ -63,4 +63,50 @@ public sealed class FrenchAccentTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task GallicSlight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
+            var comp = entMan.AddComponent<FrenchAccentComponent>(uid);
+#pragma warning disable RA0002
+            comp.Strength = AccentStrength.Slight;
+            comp.PrefixProb = 0f;
+            comp.SuffixProb = 0f;
+            comp.SlightChance = 1f;
+#pragma warning restore RA0002
+
+            string Gal(string s)
+            {
+                var ev = new AccentGetEvent(uid, s);
+                entMan.EventBus.RaiseLocalEvent(uid, ev);
+                return ev.Message;
+            }
+
+            // Iconic swaps kept.
+            Assert.That(Gal("yes"), Is.EqualTo("oui"));
+            Assert.That(Gal("hello"), Is.EqualTo("bonjour"));
+            // Function-word swaps dropped.
+            Assert.That(Gal("my"), Is.EqualTo("my"));
+            // th->z kept at chance 1.
+            Assert.That(Gal("the"), Is.EqualTo("ze"));
+            // h-drop and j->zh excluded.
+            Assert.That(Gal("have"), Is.EqualTo("have"));
+            Assert.That(Gal("just"), Is.EqualTo("just"));
+
+            // chance 0: th->z off.
+#pragma warning disable RA0002
+            comp.SlightChance = 0f;
+#pragma warning restore RA0002
+            Assert.That(Gal("the"), Is.EqualTo("the"));
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
