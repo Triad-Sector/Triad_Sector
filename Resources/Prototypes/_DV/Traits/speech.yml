@@ -95,6 +95,20 @@
     - type: SpanishAccent
 # End Triad
 
+# Triad: lighter "slight" Spanish. Same cost as thick (0).
+- type: trait
+  id: SpanishAccentSlight
+  name: trait-terralatino-mild-accent-name
+  description: trait-terralatino-mild-accent-desc
+  category: Accents
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: SpanishAccent
+      strength: Slight
+# End Triad
+
 # Triad: lighter "slight" Russian (no faux-Cyrillic). Same cost as thick.
 - type: trait
   id: RussianAccentSlight

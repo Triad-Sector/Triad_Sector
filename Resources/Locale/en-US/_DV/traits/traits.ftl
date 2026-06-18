@@ -19,6 +19,10 @@ trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclave
 trait-terragermanic-mild-accent-name = Terra Germanic accent (mild)
 trait-terragermanic-mild-accent-desc = A lighter Germanic lilt. You have been speaking the common tongue long enough to soften it.
 
+# Triad: slight Spanish accent
+trait-terralatino-mild-accent-name = Terra Latino accent (mild)
+trait-terralatino-mild-accent-desc = A gentle Latino lilt. The odd word still bends, but you speak the common tongue cleanly.
+
 # Triad: slight Russian accent (no faux-Cyrillic)
 trait-russian-mild-accent-name = Russian accent (mild)
 trait-russian-mild-accent-desc = A softened Slavic cadence. The clipped articles slip out now and then, but the words stay clear.

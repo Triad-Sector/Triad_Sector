@@ -897,6 +897,19 @@
     accent-spanish-words-45: accent-spanish-words-replace-45
     accent-spanish-words-46: accent-spanish-words-replace-46
 
+# Triad: slim iconic-only list for the Slight Spanish variant. Reuses existing spanish loc keys.
+- type: accent
+  id: spanish_slight
+  wordReplacements:
+    accent-spanish-words-1: accent-spanish-words-replace-1   # yes -> si
+    accent-spanish-words-3: accent-spanish-words-replace-3   # hello -> hola
+    accent-spanish-words-3-2: accent-spanish-words-replace-3 # hi -> hola
+    accent-spanish-words-6: accent-spanish-words-replace-6   # thanks -> gracias
+    accent-spanish-words-6-2: accent-spanish-words-replace-6 # thank you -> gracias
+    accent-spanish-words-5: accent-spanish-words-replace-5   # goodbye -> adios
+    accent-spanish-words-9: accent-spanish-words-replace-9   # friend -> amigo
+    accent-spanish-words-4: accent-spanish-words-replace-4   # hey -> oye
+
 - type: accent
   id: french
   wordReplacements:

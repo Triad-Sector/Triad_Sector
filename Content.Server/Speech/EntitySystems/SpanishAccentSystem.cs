@@ -3,6 +3,7 @@
 // original phonetics (es-insertion before s, inverted ¿/¡ punctuation).
 using System.Text;
 using System.Text.RegularExpressions;
+using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -31,18 +32,22 @@ public sealed class SpanishAccentSystem : EntitySystem
 
     public string Accentuate(string message, SpanishAccentComponent component)
     {
-        // j -> h on raw English BEFORE swaps, so a Spanish swap output that contains j ("damn" -> "carajo")
-        // keeps its recognizable spelling instead of being re-processed into "caraho".
-        var msg = AccentHelpers.ReplaceCasePreserving(message, RegexJ, "h");
+        var slight = component.Strength == AccentStrength.Slight;
+        var chance = slight ? component.SlightChance : 1f;
 
-        msg = _replacement.ApplyReplacements(msg, "spanish");
+        // j -> h on raw English BEFORE swaps (protects "carajo"). Thick-only: hust-for-just hurts slight.
+        var msg = slight
+            ? message
+            : AccentHelpers.ReplaceCasePreserving(message, RegexJ, "h");
 
-        // v -> b AFTER swaps, so "very" -> "muy" (the swap) wins; any leftover English v still b-ifies
-        // (vote -> bote). Spanish v-outputs like "vamos" -> "bamos" is how they're actually pronounced.
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "b");
+        msg = _replacement.ApplyReplacements(msg, slight ? "spanish_slight" : "spanish");
 
-        // Phonetic: insert E before a word-initial s+CONSONANT (es-paña, es-top), the signature feature.
-        msg = InsertS(msg);
+        // v -> b, per-match chance (1 for thick).
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "b", _random, chance);
+
+        // Phonetic es-insertion before word-initial s+consonant. Per-message gate in slight.
+        if (!slight || _random.Prob(component.SlightChance))
+            msg = InsertS(msg);
 
         if (!string.IsNullOrWhiteSpace(msg))
         {

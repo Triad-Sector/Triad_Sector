@@ -76,4 +76,51 @@ public sealed class SpanishAccentTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task LatinoSlight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
+            var comp = entMan.AddComponent<SpanishAccentComponent>(uid);
+#pragma warning disable RA0002
+            comp.Strength = AccentStrength.Slight;
+            comp.PrefixProb = 0f;
+            comp.SuffixProb = 0f;
+            comp.SlightChance = 1f;
+#pragma warning restore RA0002
+
+            string Latino(string s)
+            {
+                var ev = new AccentGetEvent(uid, s);
+                entMan.EventBus.RaiseLocalEvent(uid, ev);
+                return ev.Message;
+            }
+
+            // Iconic swaps kept.
+            Assert.That(Latino("yes"), Is.EqualTo("si"));
+            // Function-word swaps dropped.
+            Assert.That(Latino("my"), Is.EqualTo("my"));
+            Assert.That(Latino("with"), Is.EqualTo("with"));
+            // j->h excluded (stays "just", not "hust").
+            Assert.That(Latino("just"), Is.EqualTo("just"));
+            // Kept phonetics fire at chance 1.
+            Assert.That(Latino("vote"), Is.EqualTo("bote"));      // v->b
+            Assert.That(Latino("station"), Is.EqualTo("éstation")); // es-insertion
+
+            // chance 0: kept phonetics off.
+#pragma warning disable RA0002
+            comp.SlightChance = 0f;
+#pragma warning restore RA0002
+            Assert.That(Latino("vote"), Is.EqualTo("vote"));
+            Assert.That(Latino("station"), Is.EqualTo("station"));
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
