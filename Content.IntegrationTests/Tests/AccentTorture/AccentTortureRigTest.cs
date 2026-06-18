@@ -46,6 +46,8 @@ public sealed class AccentTortureRigTest
         ("GoblinAccent", "Goblin"),
         ("StreetpunkAccent", "Streetpunk"),
         ("CavemanAccent", "Caveman"),
+        ("LizardAccent", "Lizard"),
+        ("MothAccent", "Moth"),
     };
 
     private static string CorpusPath =>
@@ -104,15 +106,18 @@ public sealed class AccentTortureRigTest
         await pair.CleanReturnAsync();
     }
 
-    // Zero every float DataField whose name ends in "Prob" so random tics don't pollute the dump.
+    // Zero every float DataField whose name ends in "Prob" or "Chance" (PrefixProb, DasProb, ackChance,
+    // flutterChance...) so random tics don't pollute the deterministic-core dump.
+    private static bool IsRngKnob(string name) => name.EndsWith("Prob") || name.EndsWith("Chance");
+
     private static void ZeroProbKnobs(IComponent comp)
     {
         foreach (var f in comp.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
-            if (f.FieldType == typeof(float) && f.Name.EndsWith("Prob"))
+            if (f.FieldType == typeof(float) && IsRngKnob(f.Name))
                 f.SetValue(comp, 0f);
 
         foreach (var p in comp.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
-            if (p.CanWrite && p.PropertyType == typeof(float) && p.Name.EndsWith("Prob"))
+            if (p.CanWrite && p.PropertyType == typeof(float) && IsRngKnob(p.Name))
                 p.SetValue(comp, 0f);
     }
 }
