@@ -44,7 +44,7 @@ public sealed partial class RussianAccentComponent : Component
     [DataField]
     public AccentStrength Strength { get; set; } = AccentStrength.Thick;
 
-    /// <summary>Triad: reserved dial for slight phonetic gating. Russian slight gates via the drop probs.</summary>
+    /// <summary>Triad: when Strength is Slight, scales the article/copula drop rate down (thick uses the full rate).</summary>
     [DataField]
     public float SlightChance { get; set; } = 0.3f;
 }

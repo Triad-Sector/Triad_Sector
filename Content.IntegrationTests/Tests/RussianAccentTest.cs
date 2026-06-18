@@ -93,11 +93,21 @@ public sealed class RussianAccentTest
                 return ev.Message;
             }
 
-            // Cyrillicize is excluded in slight: output is plain Latin, fully readable.
-            Assert.That(Slav("work the wrench"), Is.EqualTo("work the wrench"));
-            // Iconic swaps still fire.
-            Assert.That(Slav("yes"), Is.EqualTo("da"));
-            Assert.That(Slav("no"), Is.EqualTo("nyet"));
+            // Faux-Cyrillic runs in slight too: the slim swap fires AND the glyph pass applies.
+            Assert.That(Slav("hello"), Is.EqualTo("pяivyeт")); // hello -> privyet -> cyrillicized (same as thick)
+            Assert.That(Slav("yes"), Is.EqualTo("da"));        // da: d,a are not in the glyph map
+
+            // SlightChance scales the article-drop rate: off at 0 (article kept), full at 1 (article dropped).
+#pragma warning disable RA0002
+            comp.ArticleDropProb = 1f;
+            comp.SlightChance = 0f;
+#pragma warning restore RA0002
+            Assert.That(Slav("the ship").Split(' ').Length, Is.EqualTo(2)); // "the" kept
+
+#pragma warning disable RA0002
+            comp.SlightChance = 1f;
+#pragma warning restore RA0002
+            Assert.That(Slav("the ship").Split(' ').Length, Is.EqualTo(1)); // "the" dropped
         });
 
         await pair.CleanReturnAsync();
