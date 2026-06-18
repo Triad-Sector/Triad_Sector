@@ -1,4 +1,5 @@
 using Content.Server._DV.Speech.EntitySystems;
+using Content.Server.Speech;
 
 namespace Content.Server._DV.Speech.Components;
 
@@ -27,4 +28,12 @@ public sealed partial class DwarfAccentComponent : Component
 
     [DataField]
     public float SuffixProb { get; set; } = 0.02f;
+
+    /// <summary>Triad: Thick (default) runs the full brogue; Slight runs the lighter, intelligible variant.</summary>
+    [DataField]
+    public AccentStrength Strength { get; set; } = AccentStrength.Thick;
+
+    /// <summary>Triad: per-pass chance the glottal stop fires when Strength is Slight. Thick ignores it.</summary>
+    [DataField]
+    public float SlightChance { get; set; } = 0.3f;
 }

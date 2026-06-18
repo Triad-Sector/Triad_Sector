@@ -135,6 +135,20 @@
   - !type:SpawnItemInHandEffect # Triad: keep the bagpipe
     item: BagpipeInstrument
 
+# Triad: lighter "slight" Dwarven Brogue. Same cost as thick (no bagpipe on the mild version).
+- type: trait
+  id: DwarvenBrogueSlight
+  name: trait-dwarven-brogue-mild-name
+  description: trait-dwarven-brogue-mild-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: DwarfAccent
+      strength: Slight
+# End Triad
+
 # Triad: German accent, display name overridden to "Terra Germanic" (trait-terragermanic-accent-name);
 # our enriched German vocab takes precedence over the upstream "German accent" trait added in #231.
 - type: trait

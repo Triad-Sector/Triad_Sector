@@ -256,6 +256,20 @@
     accent-dwarf-words-175: accent-dwarf-words-replace-175
     accent-dwarf-words-176: accent-dwarf-words-replace-176
 
+# Triad: slim iconic-only list for the Slight Dwarf variant. Reuses existing dwarf loc keys.
+# Keeps the recognizable Scots markers (aye/ye/wee/nae/lass/lad), drops the 100+ vowel-shift entries.
+- type: accent
+  id: dwarf_slight
+  wordReplacements:
+    accent-dwarf-words-30: accent-dwarf-words-replace-30   # yes -> aye
+    accent-dwarf-words-28: accent-dwarf-words-replace-28   # yeah -> aye
+    accent-dwarf-words-15: accent-dwarf-words-replace-15   # you -> ye
+    accent-dwarf-words-25: accent-dwarf-words-replace-25   # little -> wee
+    accent-dwarf-words-58: accent-dwarf-words-replace-58   # no -> nae
+    accent-dwarf-words-4: accent-dwarf-words-replace-4     # woman -> lass
+    accent-dwarf-words-3: accent-dwarf-words-replace-3     # man -> lad
+    accent-dwarf-words-67: accent-dwarf-words-replace-67   # hey -> oi
+
 - type: accent
   id: pirate
   wordReplacements:

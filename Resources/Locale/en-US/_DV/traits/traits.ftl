@@ -1,6 +1,10 @@
 trait-dwarven-brogue-name = Dwarven Brogue
 trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
+# Triad: slight Dwarven Brogue variant
+trait-dwarven-brogue-mild-name = Dwarven Brogue (mild)
+trait-dwarven-brogue-mild-desc = A gentler brogue. The g's still drop and the odd word glottals, but the broad vowels have flattened out.
+
 # Triad: "Terra Gallic" display name for the French accent
 trait-terragallic-accent-name = Terra Gallic accent
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.

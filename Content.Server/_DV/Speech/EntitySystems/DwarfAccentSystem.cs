@@ -32,15 +32,25 @@ public sealed class DwarfAccentSystem : EntitySystem
 
     public string Accentuate(string message, DwarfAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "dwarf");
+        var slight = component.Strength == AccentStrength.Slight;
+        var msg = _replacement.ApplyReplacements(message, slight ? "dwarf_slight" : "dwarf");
 
-        // Phonetics: g-drop (keep-list spares king/ring) then the glottal stop. Vowel shifts (hoose/doon)
-        // are word-listed, a blanket ou->oo regex would wreck your/group/four.
+        // g-drop is highly intelligible, kept in both tiers.
         msg = AccentHelpers.DropG(msg);
-        msg = RegexGlottal.Replace(msg, "$1'$2");
-        // ch-velar and vocalised-L, case-preserving (so "Night" -> "Nicht", "ALL" -> "AW").
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexIght, "icht");
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexAll, "aw");
+
+        if (slight)
+        {
+            // Slight: keep only the glottal stop, gated per-message; the ch-velar (-icht) and vocalised-L
+            // (-aw) passes are too mangling for the intelligible tier, so they are excluded.
+            if (_random.Prob(component.SlightChance))
+                msg = RegexGlottal.Replace(msg, "$1'$2");
+        }
+        else
+        {
+            msg = RegexGlottal.Replace(msg, "$1'$2");
+            msg = AccentHelpers.ReplaceCasePreserving(msg, RegexIght, "icht");
+            msg = AccentHelpers.ReplaceCasePreserving(msg, RegexAll, "aw");
+        }
 
         if (string.IsNullOrWhiteSpace(msg))
             return msg;

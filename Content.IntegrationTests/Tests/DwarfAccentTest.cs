@@ -63,4 +63,49 @@ public sealed class DwarfAccentTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task DwarfSlight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
+            var comp = entMan.AddComponent<DwarfAccentComponent>(uid);
+#pragma warning disable RA0002
+            comp.Strength = AccentStrength.Slight;
+            comp.PrefixProb = 0f;
+            comp.SuffixProb = 0f;
+            comp.SlightChance = 1f;
+#pragma warning restore RA0002
+
+            string Dwarf(string s)
+            {
+                var ev = new AccentGetEvent(uid, s);
+                entMan.EventBus.RaiseLocalEvent(uid, ev);
+                return ev.Message;
+            }
+
+            // g-drop kept (readable); glottal kept at chance 1.
+            Assert.That(Dwarf("running"), Does.Contain("runnin'"));
+            Assert.That(Dwarf("water"), Is.EqualTo("wa'er"));
+            // -ight and -all passes excluded in slight (stay intelligible).
+            Assert.That(Dwarf("night"), Is.EqualTo("night"));
+            Assert.That(Dwarf("all"), Is.EqualTo("all"));
+            // Iconic swap kept; bulk vowel-shift entries dropped from the slim list, so "house" stays.
+            Assert.That(Dwarf("yes"), Is.EqualTo("aye"));
+            Assert.That(Dwarf("house"), Is.EqualTo("house"));
+
+            // glottal off at chance 0.
+#pragma warning disable RA0002
+            comp.SlightChance = 0f;
+#pragma warning restore RA0002
+            Assert.That(Dwarf("water"), Is.EqualTo("water"));
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
