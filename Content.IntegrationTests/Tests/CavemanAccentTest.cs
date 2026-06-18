@@ -38,6 +38,9 @@ public sealed class CavemanAccentTest
             var dropped = Caveman("you are good");
             Assert.That(dropped, Does.Not.Contain("are").IgnoreCase);
             Assert.That(dropped, Does.Contain("you").IgnoreCase);
+
+            // Prepositions/conjunctions are dropped too: "you and me" -> "you me".
+            Assert.That(Caveman("you and me"), Does.Not.Contain("and").IgnoreCase);
         });
 
         await pair.CleanReturnAsync();

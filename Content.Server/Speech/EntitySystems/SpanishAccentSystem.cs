@@ -25,12 +25,23 @@ public sealed class SpanishAccentSystem : EntitySystem
     private static readonly HashSet<string> SpanishSWords =
         new(StringComparer.OrdinalIgnoreCase) { "si", "señor", "siento" };
 
+    // Spanish realizes English /v/ as /b/ (very -> bery) and English "j" as /x/ ~ "h" (just -> hust).
+    private static readonly Regex RegexV = new("v", RegexOptions.IgnoreCase);
+    private static readonly Regex RegexJ = new("j", RegexOptions.IgnoreCase);
+
     public string Accentuate(string message, SpanishAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "spanish");
+        // j -> h on raw English BEFORE swaps, so a Spanish swap output that contains j ("damn" -> "carajo")
+        // keeps its recognizable spelling instead of being re-processed into "caraho".
+        var msg = AccentHelpers.ReplaceCasePreserving(message, RegexJ, "h");
 
-        // Phonetic: insert E before a word-initial S (es-paña), the signature feature. Skips our own
-        // Spanish swaps so they are not re-prefixed.
+        msg = _replacement.ApplyReplacements(msg, "spanish");
+
+        // v -> b AFTER swaps, so "very" -> "muy" (the swap) wins; any leftover English v still b-ifies
+        // (vote -> bote). Spanish v-outputs like "vamos" -> "bamos" is how they're actually pronounced.
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "b");
+
+        // Phonetic: insert E before a word-initial s+CONSONANT (es-paña, es-top), the signature feature.
         msg = InsertS(msg);
 
         if (!string.IsNullOrWhiteSpace(msg))
@@ -61,6 +72,12 @@ public sealed class SpanishAccentSystem : EntitySystem
         {
             var word = m.Groups[1].Value + m.Groups[2].Value;
             if (SpanishSWords.Contains(word))
+                return word;
+
+            // Epenthesis only happens before s+CONSONANT (escuela, estación), never s+vowel: "see"/"sun"
+            // stay put. This also makes the SpanishSWords skip-set mostly redundant (si/señor are s+vowel).
+            var rest = m.Groups[2].Value;
+            if (rest.Length == 0 || "aeiouáéíóúüAEIOUÁÉÍÓÚÜ".IndexOf(rest[0]) >= 0)
                 return word;
 
             // Move a leading capital to the inserted vowel and lowercase the now-second letter:

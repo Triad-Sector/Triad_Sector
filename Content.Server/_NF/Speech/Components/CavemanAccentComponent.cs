@@ -34,6 +34,14 @@ public sealed partial class CavemanAccentComponent : Component
         "accent-caveman-forbidden-14",
         "accent-caveman-forbidden-15",
         "accent-caveman-forbidden-16",
+        "accent-caveman-forbidden-17",
+        "accent-caveman-forbidden-18",
+        "accent-caveman-forbidden-19",
+        "accent-caveman-forbidden-20",
+        "accent-caveman-forbidden-21",
+        "accent-caveman-forbidden-22",
+        "accent-caveman-forbidden-23",
+        "accent-caveman-forbidden-24",
     };
 
     [ViewVariables]

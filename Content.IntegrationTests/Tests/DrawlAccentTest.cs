@@ -52,6 +52,11 @@ public sealed class DrawlAccentTest
             var southernLine = drawl.Drawl("running and fighting", southernNoTics);
             Assert.That(southernLine, Is.EqualTo("runnin' an' fightin'"));
 
+            // The drawl monophthong: standalone "I" -> "Ah" (but the contraction "I'm" is left alone).
+            Assert.That(drawl.Drawl("I", southernNoTics), Is.EqualTo("Ah"));
+            // Sentence-initial "And" is caught now (the old case-sensitive rule missed it).
+            Assert.That(drawl.Drawl("And then", southernNoTics), Does.StartWith("An' "));
+
             // Short non-gerund -ing nouns are spared; real gerunds still drop.
             Assert.That(drawl.Drawl("the king is running", southernNoTics), Is.EqualTo("the king is runnin'"));
             Assert.That(drawl.Drawl("a stinging wing", southernNoTics), Is.EqualTo("a stingin' wing"));

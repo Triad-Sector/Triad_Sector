@@ -37,10 +37,14 @@ public sealed class BoganAccentTest
 
             // Word swaps + g-drop (running -> runnin').
             Assert.That(Bogan("the doctor is running"), Is.EqualTo("the quack is runnin'"));
-            Assert.That(Bogan("that is good"), Is.EqualTo("that is bloody ripper"));
+            // good -> "bloody ripper", then non-rhotic -er -> -a makes it the authentic "bloody rippa".
+            Assert.That(Bogan("that is good"), Is.EqualTo("that is bloody rippa"));
 
             // The shared -ing keep-list still spares short non-gerund nouns.
             Assert.That(Bogan("the king is going"), Is.EqualTo("the king is goin'"));
+
+            // Non-rhotic Aussie -er -> -a (two letters before "er", so "her"/"per" are spared).
+            Assert.That(Bogan("computer"), Is.EqualTo("computa"));
 
             // prison -> clink reads in any context (no stranded article).
             Assert.That(Bogan("go to prison"), Is.EqualTo("go to clink"));

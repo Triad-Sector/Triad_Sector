@@ -39,6 +39,9 @@ public sealed class StreetpunkAccentTest
             Assert.That(Punk("running"), Does.Contain("runnin'"));
             Assert.That(Punk("king"), Is.EqualTo("king"));
 
+            // and -> an' is now case-insensitive, so a sentence-initial "And" is caught too.
+            Assert.That(Punk("And"), Is.EqualTo("An'"));
+
             // Order fix: word swaps now fire (officer -> badge). Was dead under the old phonetics-first order.
             Assert.That(Punk("the officer"), Does.Contain("badge"));
 

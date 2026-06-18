@@ -8,7 +8,7 @@ namespace Content.Server._NF.Speech.EntitySystems;
 
 public sealed class StreetpunkAccentSystem : EntitySystem
 {
-    private static readonly Regex RegexAnd = new(@"\band\b");
+    private static readonly Regex RegexAnd = new(@"\b(an)d\b", RegexOptions.IgnoreCase); // case-preserving via $1
     private static readonly Regex RegexDve = new("d've");
 
     [Dependency] private readonly IRobustRandom _random = default!; // Triad: tic pools
@@ -30,7 +30,7 @@ public sealed class StreetpunkAccentSystem : EntitySystem
 
         //They shoulda started runnin' an' hidin' from me! <- bit from SouthernDrawl Accent
         msg = AccentHelpers.DropG(msg); // Triad: keep-list spares king/ring/wing (bare ing\b mangled them)
-        msg = RegexAnd.Replace(msg, "an'");
+        msg = RegexAnd.Replace(msg, "$1'"); // and -> an', And -> An', AND -> AN'
         msg = RegexDve.Replace(msg, "da");
 
         if (string.IsNullOrWhiteSpace(msg))

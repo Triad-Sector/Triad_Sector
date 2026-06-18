@@ -19,6 +19,8 @@ public sealed class RussianAccentSystem : EntitySystem
     // re-stamped onto the next word so "The captain" -> "Captain", not "captain".
     private static readonly Regex ArticleDrop =
         new(@"\b([Tt]he|[Aa]n?)\s+", RegexOptions.Compiled);
+    private static readonly Regex CopulaDrop =
+        new(@"\b(is|are|am|was|were|be)\s+", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
     public override void Initialize()
     {
@@ -29,10 +31,10 @@ public sealed class RussianAccentSystem : EntitySystem
     {
         var msg = _replacement.ApplyReplacements(message, "russian");
 
-        // Drop articles, preserving a leading capital by handing it to the now-first word. This is the
-        // signature Slavic cue, but rolled per-article (component.ArticleDropProb) so it stays an
-        // occasional slip rather than a constant disjointed clip.
-        msg = DropArticles(msg, component.ArticleDropProb);
+        // Drop articles and copulas, preserving a leading capital by handing it to the now-first word.
+        // The signature Slavic cues, rolled per-word so they stay occasional slips, not a constant clip.
+        msg = DropWords(msg, ArticleDrop, component.ArticleDropProb);
+        msg = DropWords(msg, CopulaDrop, component.CopulaDropProb);
 
         if (string.IsNullOrWhiteSpace(msg))
             return msg;
@@ -47,17 +49,17 @@ public sealed class RussianAccentSystem : EntitySystem
         return Cyrillicize(msg);
     }
 
-    private string DropArticles(string message, float prob)
+    private string DropWords(string message, Regex regex, float prob)
     {
         if (prob <= 0f)
             return message;
 
         var wasSentenceCap = message.Length > 0 && char.IsUpper(message[0]);
 
-        // Roll per article: keep it (return the whole match) or drop it (return empty) on a hit.
-        var result = ArticleDrop.Replace(message, m => _random.Prob(prob) ? string.Empty : m.Value);
+        // Roll per match: keep it (return the whole match) or drop it (return empty) on a hit.
+        var result = regex.Replace(message, m => _random.Prob(prob) ? string.Empty : m.Value);
 
-        // If a sentence-initial article was the one dropped, re-capitalize the new first letter.
+        // If a sentence-initial word was the one dropped, re-capitalize the new first letter.
         if (wasSentenceCap && result.Length > 0 && char.IsLower(result[0]))
             result = char.ToUpperInvariant(result[0]) + result[1..];
 

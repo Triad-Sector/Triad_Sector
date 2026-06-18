@@ -137,3 +137,10 @@ accent-newbrooklyn-words-replace-37 = wattah
 
 accent-newbrooklyn-words-38 = forget it
 accent-newbrooklyn-words-replace-38 = fuhgeddaboudit
+
+# Voiced-th function words the th->t rule would otherwise wrongly hard-stop to "ten"/"tan".
+accent-newbrooklyn-words-39 = then
+accent-newbrooklyn-words-replace-39 = den
+
+accent-newbrooklyn-words-40 = than
+accent-newbrooklyn-words-replace-40 = dan

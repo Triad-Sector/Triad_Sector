@@ -33,4 +33,9 @@ public sealed partial class RussianAccentComponent : Component
     // them and the Slavic clipping reads as an occasional slip, not a constant disjointed stutter.
     [DataField]
     public float ArticleDropProb { get; set; } = 0.05f;
+
+    // Per-COPULA chance to drop a standalone is/are/am/was/were/be ("he is strong" -> "he strong").
+    // The other classic Slavic-English cue; rolled per-word like ArticleDropProb so it stays occasional.
+    [DataField]
+    public float CopulaDropProb { get; set; } = 0.05f;
 }

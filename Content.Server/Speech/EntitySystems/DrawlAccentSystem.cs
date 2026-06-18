@@ -11,11 +11,14 @@ namespace Content.Server.Speech.EntitySystems;
 // upstream edit to that file will surface here as a rename/modify conflict.
 public sealed class DrawlAccentSystem : EntitySystem
 {
-    // Drawl-specific phonetics (not shared): "and" -> "an'", "would've" -> "woulda".
-    private static readonly Regex RegexLowerAnd = new(@"\band\b");
-    private static readonly Regex RegexUpperAnd = new(@"\bAND\b");
-    private static readonly Regex RegexLowerDve = new(@"d've\b");
-    private static readonly Regex RegexUpperDve = new(@"D'VE\b");
+    // Drawl-specific phonetics (not shared): "and" -> "an'", "would've" -> "woulda", standalone "I" -> "Ah".
+    // The and/d've regexes are IgnoreCase (case-preserving via the capture / MatchCase) so a sentence-initial
+    // "And" is caught too -- the old separate lower/UPPER pair silently missed Title-case "And".
+    private static readonly Regex RegexAnd = new(@"\b(an)d\b", RegexOptions.IgnoreCase);
+    private static readonly Regex RegexDve = new(@"d've\b", RegexOptions.IgnoreCase);
+    // The drawl monophthong: the standalone pronoun "I" becomes "Ah". The (?!') keeps it off
+    // contractions ("I'm"/"I'll") so they don't collide with the prefix's capital-handling.
+    private static readonly Regex RegexI = new(@"\bI\b(?!')");
 
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
@@ -48,10 +51,9 @@ public sealed class DrawlAccentSystem : EntitySystem
 
         //They shoulda started runnin' an' hidin' from me!
         msg = AccentHelpers.DropG(msg);
-        msg = RegexLowerAnd.Replace(msg, "an'");
-        msg = RegexUpperAnd.Replace(msg, "AN'");
-        msg = RegexLowerDve.Replace(msg, "da");
-        msg = RegexUpperDve.Replace(msg, "DA");
+        msg = RegexAnd.Replace(msg, "$1'");                                 // and -> an', And -> An', AND -> AN'
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexDve, "da");     // would've -> woulda, WOULD'VE -> WOULDA
+        msg = RegexI.Replace(msg, "Ah");                                    // standalone I -> Ah
 
         if (string.IsNullOrWhiteSpace(msg))
             return msg;

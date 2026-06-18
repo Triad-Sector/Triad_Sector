@@ -26,6 +26,7 @@ public sealed class RussianAccentTest
             comp.PrefixProb = 0f;
             comp.SuffixProb = 0f;
             comp.ArticleDropProb = 1f; // force deterministic article-drop for the assertions below
+            comp.CopulaDropProb = 1f;  // force deterministic copula-drop
 #pragma warning restore RA0002
 
             string Slav(string s)
@@ -48,6 +49,9 @@ public sealed class RussianAccentTest
 
             // Sentence-initial article hands its capital to the next word.
             Assert.That(Slav("The captain"), Does.StartWith("C")); // "The " dropped, Captain stays capital
+
+            // Copula-drop is the other Slavic cue: "he is big" -> "he big" (is/are/am... vanish).
+            Assert.That(Slav("he is big"), Does.Not.Contain("is"));
 
             // Faux-Cyrillic glyph swap on a word with no vocab/article hit.
             Assert.That(Slav("work"), Is.EqualTo("яaвoтa"));   // work -> rabota -> я,в,т glyphs

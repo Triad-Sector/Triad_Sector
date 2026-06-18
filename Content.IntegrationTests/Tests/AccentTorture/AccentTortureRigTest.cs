@@ -22,10 +22,11 @@ namespace Content.IntegrationTests.Tests.AccentTorture;
 // real pooled server -- real ReplacementAccentSystem, real prototypes, real loc -- and dumps every
 // "input => output" pair to %TEMP%/accent-torture/<accent>.txt for eyeballing. All *Prob tic knobs are
 // zeroed so the deterministic phonetic + word-swap core is isolated from random prefix/suffix noise.
-// [Explicit] so CI never runs this dev rig (it reads a hardcoded local corpus path). Run it manually:
+// Dev rig (not CI regression): dumps the full corpus through one accent to %TEMP%/accent-torture for
+// eyeballing. Auto-skips when the local corpus path is absent (e.g. on CI), so it stays harmless there
+// without needing [Explicit]. Run locally with:
 //   dotnet test Content.IntegrationTests --filter "FullyQualifiedName~AccentTortureRig"
 [TestFixture]
-[Explicit]
 [Category("AccentTorture")]
 public sealed class AccentTortureRigTest
 {
@@ -63,7 +64,8 @@ public sealed class AccentTortureRigTest
     [TestCaseSource(nameof(Cases))]
     public async Task Torture(string accentName)
     {
-        Assert.That(File.Exists(CorpusPath), $"Corpus not found at {CorpusPath} (run Tools/Accents/Gen-TortureCorpus.ps1).");
+        if (!File.Exists(CorpusPath))
+            Assert.Ignore($"Corpus not present at {CorpusPath}; skipping dev-only torture rig.");
         var corpus = File.ReadAllLines(CorpusPath);
 
         await using var pair = await PoolManager.GetServerClient();

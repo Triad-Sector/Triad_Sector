@@ -47,10 +47,18 @@ public sealed class NewBrooklynAccentTest
             Assert.That(Brk("friend"), Is.EqualTo("buddy"));
             Assert.That(Brk("coffee"), Is.EqualTo("a regulah"));
 
-            // Borough phonetics: -ing -> -in', or -> uh, ar -> ah (mid-word).
-            Assert.That(Brk("thinking"), Is.EqualTo("thinkin'"));
+            // Borough phonetics: -ing -> -in', coda or -> uh, coda ar -> ah, th-stopping (th -> t).
+            Assert.That(Brk("thinking"), Is.EqualTo("tinkin'"));
+            Assert.That(Brk("think"), Is.EqualTo("tink"));
+            Assert.That(Brk("both"), Is.EqualTo("bot"));
             Assert.That(Brk("forget"), Is.EqualTo("fuhget"));
             Assert.That(Brk("target"), Is.EqualTo("tahget"));
+
+            // Coda-r drops before a consonant or word-end (work -> wuhk, world -> wuhld)...
+            Assert.That(Brk("world"), Is.EqualTo("wuhld"));
+            // ...but is spared before a vowel or a doubled r, so the old "carry -> cahry" bug stays fixed.
+            Assert.That(Brk("carry"), Is.EqualTo("carry"));
+            Assert.That(Brk("sorry"), Is.EqualTo("sorry"));
         });
 
         await pair.CleanReturnAsync();

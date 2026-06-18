@@ -45,6 +45,9 @@ public sealed class PirateAccentTest
             // Salty g-drop (keep-list spares king).
             Assert.That(Pir("sailing"), Is.EqualTo("sailin'"));
             Assert.That(Pir("king"), Is.EqualTo("king"));
+
+            // of -> o' (cup of grog -> cup o' grog).
+            Assert.That(Pir("of"), Is.EqualTo("o'"));
         });
 
         await pair.CleanReturnAsync();

@@ -15,6 +15,15 @@ accent-caveman-forbidden-13 = was
 accent-caveman-forbidden-14 = the
 accent-caveman-forbidden-15 = it's
 accent-caveman-forbidden-16 = its
+# Triad: prepositions/conjunctions a caveman also drops ("rock in cave" -> "rock cave", "hunt and eat" -> "hunt eat").
+accent-caveman-forbidden-17 = of
+accent-caveman-forbidden-18 = in
+accent-caveman-forbidden-19 = on
+accent-caveman-forbidden-20 = with
+accent-caveman-forbidden-21 = and
+accent-caveman-forbidden-22 = or
+accent-caveman-forbidden-23 = but
+accent-caveman-forbidden-24 = for
 accent-caveman-forbidden-empty = {""}
 
 accent-caveman-numbers-0 = no

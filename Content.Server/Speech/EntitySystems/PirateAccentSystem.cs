@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -8,6 +9,8 @@ namespace Content.Server.Speech.EntitySystems;
 // Replaces the upstream prefix-only "Yarr" implementation. Kept the PirateAccent name for portability.
 public sealed class PirateAccentSystem : EntitySystem
 {
+    private static readonly Regex RegexOf = new(@"\b(o)f\b", RegexOptions.IgnoreCase); // of -> o'
+
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
@@ -24,6 +27,7 @@ public sealed class PirateAccentSystem : EntitySystem
 
         // Salty g-drop: sailing -> sailin', fighting -> fightin' (keep-list spares king/ring).
         msg = AccentHelpers.DropG(msg);
+        msg = RegexOf.Replace(msg, "$1'"); // cup of grog -> cup o' grog
 
         if (string.IsNullOrWhiteSpace(msg))
             return msg;

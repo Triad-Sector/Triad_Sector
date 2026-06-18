@@ -51,6 +51,14 @@ public sealed class SpanishAccentTest
             Assert.That(Latino("yes"), Is.EqualTo("si"));
             Assert.That(Latino("sir"), Is.EqualTo("señor"));
 
+            // es-insertion only fires before s+CONSONANT, never s+vowel (the old "see -> ésee" overmatch).
+            Assert.That(Latino("snake"), Is.EqualTo("ésnake"));
+            Assert.That(Latino("see"), Is.EqualTo("see"));
+
+            // v -> b (after swaps, so leftover English v) and j -> h (before swaps, so "carajo" survives).
+            Assert.That(Latino("vote"), Is.EqualTo("bote"));
+            Assert.That(Latino("just"), Is.EqualTo("hust"));
+
             // Inverted opening punctuation on ?/!.
             Assert.That(Latino("what?"), Does.StartWith("¿"));
             Assert.That(Latino("help!"), Does.StartWith("¡"));
