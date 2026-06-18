@@ -92,10 +92,16 @@ public sealed class AccentTortureRigTest
                 return ev.Message;
             }
 
-            results.Add($"# {accentName} -- {corpus.Length} lines, *Prob tics zeroed");
-            results.Add(new string('-', 70));
+            var pairs = new List<(string, string)>(corpus.Length);
             foreach (var line in corpus)
-                results.Add($"{line}\n  => {Run(line)}");
+                pairs.Add((line, Run(line)));
+
+            var (wordPct, editRatio) = Thickness(pairs);
+            results.Add($"# {accentName} -- {corpus.Length} lines, *Prob tics zeroed");
+            results.Add($"# thickness: {wordPct:P1} words changed, edit-ratio {editRatio:F3}");
+            results.Add(new string('-', 70));
+            foreach (var (inp, outp) in pairs)
+                results.Add($"{inp}\n  => {outp}");
         });
 
         Directory.CreateDirectory(OutDir);
@@ -108,7 +114,10 @@ public sealed class AccentTortureRigTest
 
     // Zero every float DataField whose name ends in "Prob" or "Chance" (PrefixProb, DasProb, ackChance,
     // flutterChance...) so random tics don't pollute the deterministic-core dump.
-    private static bool IsRngKnob(string name) => name.EndsWith("Prob") || name.EndsWith("Chance");
+    // Zero tic/random knobs for a deterministic core, but KEEP SlightChance: it is the slight tier's
+    // phonetic dial, and zeroing it would suppress the very transforms the thickness metric measures.
+    private static bool IsRngKnob(string name) =>
+        name != "SlightChance" && (name.EndsWith("Prob") || name.EndsWith("Chance"));
 
     private static void ZeroProbKnobs(IComponent comp)
     {
@@ -119,5 +128,48 @@ public sealed class AccentTortureRigTest
         foreach (var p in comp.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             if (p.CanWrite && p.PropertyType == typeof(float) && IsRngKnob(p.Name))
                 p.SetValue(comp, 0f);
+    }
+
+    // Fraction of whitespace-split tokens that changed, plus mean normalized Levenshtein distance.
+    private static (double WordPct, double EditRatio) Thickness(IReadOnlyList<(string In, string Out)> pairs)
+    {
+        long wordsTotal = 0, wordsChanged = 0;
+        double editSum = 0;
+        foreach (var (inp, outp) in pairs)
+        {
+            var a = inp.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var b = outp.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var n = System.Math.Max(a.Length, b.Length);
+            for (var i = 0; i < n; i++)
+            {
+                wordsTotal++;
+                var wa = i < a.Length ? a[i] : "";
+                var wb = i < b.Length ? b[i] : "";
+                if (wa != wb)
+                    wordsChanged++;
+            }
+            var maxLen = System.Math.Max(inp.Length, outp.Length);
+            editSum += maxLen == 0 ? 0 : (double)Levenshtein(inp, outp) / maxLen;
+        }
+        return (wordsTotal == 0 ? 0 : (double)wordsChanged / wordsTotal, pairs.Count == 0 ? 0 : editSum / pairs.Count);
+    }
+
+    private static int Levenshtein(string s, string t)
+    {
+        var d = new int[t.Length + 1];
+        for (var j = 0; j <= t.Length; j++) d[j] = j;
+        for (var i = 1; i <= s.Length; i++)
+        {
+            var prev = d[0];
+            d[0] = i;
+            for (var j = 1; j <= t.Length; j++)
+            {
+                var cur = d[j];
+                var cost = s[i - 1] == t[j - 1] ? 0 : 1;
+                d[j] = System.Math.Min(System.Math.Min(d[j] + 1, d[j - 1] + 1), prev + cost);
+                prev = cur;
+            }
+        }
+        return d[t.Length];
     }
 }
