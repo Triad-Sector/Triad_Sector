@@ -39,6 +39,13 @@ rcd-component-windows-and-grilles = Windows and grilles
 rcd-component-airlocks = Airlocks
 rcd-component-electrical = Electrical
 rcd-component-lighting = Lighting
+# Triad: RPD port from funky-station
+rcd-component-piping = Piping
+rcd-component-atmosphericutility = Atmospheric Utility
+rcd-component-pumps = Pumps & Valves
+rcd-component-vents = Vents
+rcd-component-sensorsmonitors = Sensors & Monitors
+# End Triad
 
 
 ### Prototype names (note: constructable items will be puralized)

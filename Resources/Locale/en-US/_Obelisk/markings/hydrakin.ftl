@@ -12,6 +12,18 @@ marking-HydrakinTailFeathers = Feathered (painted)
 marking-HydrakinTailSpiny = Spiny (painted)
 marking-HydrakinTailFins = Fins (painted)
 marking-HydrakinHydraTailFeathers = Seer (painted)
+# Triad: missing sublayer keys for hydrakin tails referenced by hydrakin.yml
+marking-HydrakinTailNub-tail_nub = Tail
+marking-HydrakinTailNub-tail_nub_overlay = Overlay
+marking-HydrakinTailFeathers-tail_feathers = Tail
+marking-HydrakinTailFeathers-tail_feathers_overlay = Overlay
+marking-HydrakinTailSpiny-tail_spiny = Tail
+marking-HydrakinTailSpiny-tail_spiny_overlay = Overlay
+marking-HydrakinTailFins-tail_fins = Tail
+marking-HydrakinTailFins-tail_fins_overlay = Overlay
+marking-HydrakinHydraTailFeathers-tail_feathers_seer = Tail
+marking-HydrakinHydraTailFeathers-tail_feathers_seer_overlay = Overlay
+# End Triad
 marking-HydrakinTailFeathersUnpainted = Feathered
 marking-HydrakinTailSpinyUnpainted = Spiny
 marking-HydrakinTailFinsUnpainted = Fins
@@ -27,6 +39,18 @@ marking-HydrakinEarsOldPainted = Thin Ears (painted)
 marking-HydrakinEarsFinPainted = Fin Ears (painted)
 marking-HydrakinEarsFrilledPainted = Frilled Ears (painted)
 marking-HydrakinHydraSeerEarsPainted = Seer Ears (painted)
+# Triad: missing sublayer keys for painted hydrakin ear variants
+marking-HydrakinEarsDefaultPainted-ears_default = Ears
+marking-HydrakinEarsDefaultPainted-ears_default_overlay = Overlay
+marking-HydrakinEarsOldPainted-ears_thin = Ears
+marking-HydrakinEarsOldPainted-ears_thin_overlay = Overlay
+marking-HydrakinEarsFinPainted-ears_fin = Ears
+marking-HydrakinEarsFinPainted-ears_fin_overlay = Overlay
+marking-HydrakinEarsFrilledPainted-ears_frilled = Ears
+marking-HydrakinEarsFrilledPainted-ears_frilled_overlay = Overlay
+marking-HydrakinHydraSeerEarsPainted-ears_seer = Ears
+marking-HydrakinHydraSeerEarsPainted-ears_seer_overlay = Overlay
+# End Triad
 
 marking-HydrakinProtoChest = Cyberkin
 

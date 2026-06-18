@@ -1,4 +1,5 @@
 using Content.Shared.RCD.Systems;
+using Content.Shared.RPD.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics;
@@ -12,7 +13,7 @@ namespace Content.Shared.RCD.Components;
 /// Charges can be refilled with RCD ammo
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RCDSystem))]
+[Access(typeof(RCDSystem), typeof(RPDSystem))]
 public sealed partial class RCDComponent : Component
 {
     /// <summary>
@@ -32,6 +33,16 @@ public sealed partial class RCDComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public ProtoId<RCDPrototype> ProtoId { get; set; } = "Invalid";
+
+    // Triad: MirrorPrototype is a general RCD feature (asymmetric recipes); the RPD-specific state lives on
+    // RPDComponent in Content.Shared.RPD. See Resources/Prototypes/_Triad/RPD/ for the RPD subsystem.
+    /// <summary>
+    /// If true, the next construction uses <see cref="RCDPrototype.MirrorPrototype"/> instead of
+    /// <see cref="RCDPrototype.Prototype"/> (where the prototype defines one).
+    /// </summary>
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
+    public bool UseMirrorPrototype = false;
+    // End Triad
 
     /// <summary>
     /// The direction constructed entities will face upon spawning

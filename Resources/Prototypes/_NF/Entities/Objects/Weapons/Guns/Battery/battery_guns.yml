@@ -224,3 +224,4 @@
           Yellow: { state: mode-yellow }
   - type: StaticPrice
     price: 250
+  - type: PacifismAllowedGun #Triad

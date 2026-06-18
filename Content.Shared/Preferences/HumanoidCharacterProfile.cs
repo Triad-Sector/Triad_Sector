@@ -17,6 +17,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared._DV.Traits; // DeltaV - Traits rework
 
 namespace Content.Shared.Preferences
 {
@@ -32,7 +33,7 @@ namespace Content.Shared.Preferences
 
         public const int MaxNameLength = 32;
         public const int MaxLoadoutNameLength = 32;
-        public const int MaxDescLength = 512;
+        public const int MaxDescLength = 2048; // Triad - 512<2048
 
         public const int DefaultBalance = 75000;
 
@@ -431,35 +432,32 @@ namespace Content.Shared.Preferences
             // Category not found so dump it.
             TraitCategoryPrototype? traitCategory = null;
 
-            if (category != null && !protoManager.TryIndex(category, out traitCategory))
+            if (!protoManager.TryIndex(category, out traitCategory)) // DeltaV 13/01/26 Traits - Category is no longer nullable
                 return new(this);
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
 
-            if (traitCategory == null || traitCategory.MaxTraitPoints < 0)
+            // Triad: removed the dead `MaxPoints < 0` unlimited sentinel. MaxPoints is now int? where null means
+            // unlimited (the old "negative is unlimited" convention is gone), so an unlimited category just skips
+            // the cap check, matching the server's TraitSystem.ValidateCategoryLimits.
+            if (traitCategory.MaxPoints is { } maxPoints)
             {
-                return new(this)
+                var count = 0;
+                foreach (var trait in list)
                 {
-                    _traitPreferences = list,
-                };
-            }
+                    // If trait not found or another category don't count its points.
+                    if (!protoManager.TryIndex<TraitPrototype>(trait, out var otherProto) ||
+                        otherProto.Category != traitCategory)
+                    {
+                        continue;
+                    }
 
-            var count = 0;
-            foreach (var trait in list)
-            {
-                // If trait not found or another category don't count its points.
-                if (!protoManager.TryIndex<TraitPrototype>(trait, out var otherProto) ||
-                    otherProto.Category != traitCategory)
-                {
-                    continue;
+                    count += otherProto.Cost;
                 }
 
-                count += otherProto.Cost;
-            }
-
-            if (count > traitCategory.MaxTraitPoints && traitProto.Cost != 0)
-            {
-                return new(this);
+                // A zero-cost trait can always be added, even at the cap.
+                if (count > maxPoints && traitProto.Cost != 0)
+                    return new(this);
             }
 
             return new(this)
@@ -732,27 +730,38 @@ namespace Content.Shared.Preferences
             var groups = new Dictionary<string, int>();
             var result = new List<ProtoId<TraitPrototype>>();
 
+            // Triad: resolve once, then prune in a deterministic order (highest priority, then cheapest, then id)
+            // so which traits survive a category-point overflow is stable across saves and restarts and matches the
+            // server's spawn-time order. The incoming set is a HashSet; iterating it raw made the dropped subset
+            // hash-arbitrary, which defeated the deterministic trait ordering the rest of this system relies on.
+            var resolved = new List<(ProtoId<TraitPrototype> Trait, TraitPrototype Proto)>();
             foreach (var trait in traits)
             {
-                if (!protoManager.TryIndex(trait, out var traitProto))
-                    continue;
+                if (protoManager.TryIndex(trait, out var traitProto))
+                    resolved.Add((trait, traitProto));
+            }
 
-                // Always valid.
-                if (traitProto.Category == null)
-                {
-                    result.Add(trait);
-                    continue;
-                }
+            resolved.Sort(static (a, b) =>
+            {
+                var byPriority = b.Proto.Priority.CompareTo(a.Proto.Priority); // highest priority first
+                if (byPriority != 0)
+                    return byPriority;
 
-                // No category so dump it.
+                var byCost = a.Proto.Cost.CompareTo(b.Proto.Cost); // cheapest first
+                return byCost != 0 ? byCost : string.CompareOrdinal(a.Trait.Id, b.Trait.Id);
+            });
+
+            foreach (var (trait, traitProto) in resolved)
+            {
+                // Category no longer resolves so dump it.
                 if (!protoManager.TryIndex(traitProto.Category, out var category))
                     continue;
 
                 var existing = groups.GetOrNew(category.ID);
                 existing += traitProto.Cost;
 
-                // Too expensive.
-                if (existing > category.MaxTraitPoints)
+                // Too expensive. MaxPoints is nullable: null means unlimited, so this never trips for it.
+                if (existing > category.MaxPoints) // DeltaV 13/01/26 - Traits:  Was MaxTraitPoints
                     continue;
 
                 groups[category.ID] = existing;

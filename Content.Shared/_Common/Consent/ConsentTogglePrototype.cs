@@ -3,6 +3,7 @@
 
 namespace Content.Shared._Common.Consent;
 
+using System;
 using Robust.Shared.Prototypes;
 
 /// <summary>

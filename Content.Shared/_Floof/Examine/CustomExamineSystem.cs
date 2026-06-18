@@ -1,7 +1,9 @@
+using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Common.Consent;
+using Content.Shared._Floof.Util;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Managers;
-using Content.Shared._Common.Consent;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Robust.Shared.Player;
@@ -20,7 +22,18 @@ public abstract class SharedCustomExamineSystem : EntitySystem
     /// <summary>Max length of any content field, INCLUDING markup.</summary>
     public static int AbsolutelyMaxLength = 1024;
 
-    private static readonly Regex BadMarkupRegex = new("\\[.*?head.*?\\]", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(5));
+    private static readonly string[] AllowedTags = // This sucks, shared markup when
+    [
+        "bolditalic",
+        "bold",
+        "bullet",
+        "color",
+        "heading",
+        "italic",
+        "mono",
+        "scramble", // Some people abuse it in funny ways
+        "language",
+    ];
 
     [Dependency] private readonly SharedConsentSystem _consent = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
@@ -56,10 +69,10 @@ public abstract class SharedCustomExamineSystem : EntitySystem
                  publicRangeHidden = hasPublic && (!hasSubtle || subtleRangeHidden) && !_examine.InRangeUnOccluded(args.Examiner, args.Examined, publicData.VisibilityRange);
 
             if (hasPublic && !publicConsentHidden && !publicRangeHidden)
-                args.PushMarkup(publicData.Content!);
+                args.PushMessage(SanitizeMarkup(publicData.Content!));
 
             if (hasSubtle && !subtleConsentHidden && !subtleRangeHidden)
-                args.PushMarkup(subtleData.Content!);
+                args.PushMessage(SanitizeMarkup(subtleData.Content!));
 
             // If something is hidden due to consent preferences, add a note (but only if in range)
             if (hasPublic && !publicRangeHidden && publicConsentHidden || hasSubtle && !subtleRangeHidden && subtleConsentHidden)
@@ -75,7 +88,7 @@ public abstract class SharedCustomExamineSystem : EntitySystem
 
     private void CheckExpirations(Entity<CustomExamineComponent> ent)
     {
-        bool Check(CustomExamineData data)
+        bool Check(ref CustomExamineData data)
         {
             if (data.Content is null
                 || data.ExpireTime.Ticks <= 0
@@ -87,7 +100,7 @@ public abstract class SharedCustomExamineSystem : EntitySystem
         }
 
         // Note: using | (bitwise or) instead of || (logical or) because the former is not short-circuiting
-        if (Check(ent.Comp.PublicData) | Check(ent.Comp.SubtleData))
+        if (Check(ref ent.Comp.PublicData) | Check(ref ent.Comp.SubtleData))
             Dirty(ent);
     }
 
@@ -105,9 +118,6 @@ public abstract class SharedCustomExamineSystem : EntitySystem
         if (data.Content is null)
             return;
 
-        // Exclude forbidden markup. Unlike ss14's chat cleanup code, this should also remove nested markup.
-        data.Content = BadMarkupRegex.Replace(data.Content, "<bad markup>").Trim();
-
         // Shitty way to preserve and ignore markup while trimming
         var markupLength = MarkupLength(data.Content);
         if (data.Content.Length > AbsolutelyMaxLength)
@@ -122,4 +132,13 @@ public abstract class SharedCustomExamineSystem : EntitySystem
     protected int LengthWithoutMarkup(string text) => FormattedMessage.RemoveMarkupPermissive(text).Length;
 
     protected int MarkupLength(string text) => text.Length - LengthWithoutMarkup(text);
+
+    /// <summary>
+    ///     Removes disallowed tags from the formatted message.
+    /// </summary>
+    protected FormattedMessage SanitizeMarkup(string text)
+    {
+        var msg = FormattedMessage.FromMarkupPermissive(text);
+        return FormattedMessageHelpers.SanitizeMarkup(msg, AllowedTags, "<bad markup>");
+    }
 }

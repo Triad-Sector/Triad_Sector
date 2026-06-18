@@ -12,10 +12,12 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
+using Content.Shared.RPD.Components; // Triad
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -76,7 +78,30 @@ public class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
+        // Triad: mirror-flip toggle (R key); RPD-specific subscriptions live in RPDSystem.
+        SubscribeNetworkEvent<RCDConstructionGhostFlipEvent>(OnRCDConstructionGhostFlipEvent);
+        // End Triad
     }
+
+    // Triad: flip key toggles the mirrored prototype variant for the next placement. Operator must be holding the
+    // flipped tool in their active hand.
+    private void OnRCDConstructionGhostFlipEvent(RCDConstructionGhostFlipEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+            return;
+
+        if (!TryComp<RCDComponent>(uid, out var rcd))
+            return;
+
+        rcd.UseMirrorPrototype = ev.UseMirrorPrototype;
+        Dirty(uid, rcd);
+    }
+    // End Triad
 
     #region Event handling
 
@@ -152,6 +177,7 @@ public class RCDSystem : EntitySystem
         var user = args.User;
         var location = args.ClickLocation;
         var prototype = _protoManager.Index(component.ProtoId);
+        var target = args.Target; // Triad: reassigned below so the RPD can reach pipes hidden under floor tiles.
 
         // Initial validity checks
         if (!location.IsValid(EntityManager))
@@ -165,7 +191,21 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
+        // Triad: a pipe under a floor tile is invisible and non-interactable (SubFloorHideComponent), so the click
+        // resolves either no target (bare tile) or a visible non-pipe entity sharing the tile, e.g. a firelock or
+        // window. In RPD Deconstruct mode, whenever the resolved target isn't itself RPD-deconstructable, hand off
+        // to RPDSystem via the resolve event to look past it for an RPD-deconstructable entity anchored on the tile,
+        // the one on the operator's aimed pipe layer, so the RPD can chew covered pipes. A plain RCD has no handler so
+        // its target is left untouched; a null result falls back to the original click target.
+        if (prototype.Mode == RcdMode.Deconstruct && HasComp<RPDComponent>(uid) && !IsRpdDeconstructable(target))
+        {
+            var resolve = new RCDDeconstructTargetResolveEvent(mapGridData.Value, target);
+            RaiseLocalEvent(uid, ref resolve);
+            target = resolve.Target;
+        }
+        // End Triad
+
+        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
                 tilePlacementDirection: component.ConstructionDirection))
             return;
 
@@ -185,9 +225,9 @@ public class RCDSystem : EntitySystem
             case RcdMode.Deconstruct:
 
                 // Deconstructing an object
-                if (args.Target != null)
+                if (target != null)
                 {
-                    if (TryComp<RCDDeconstructableComponent>(args.Target, out var destructible))
+                    if (TryComp<RCDDeconstructableComponent>(target, out var destructible))
                     {
                         cost = destructible.Cost;
                         delay = destructible.Delay;
@@ -242,7 +282,7 @@ public class RCDSystem : EntitySystem
             cost,
             EntityManager.GetNetEntity(effect));
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: args.Target, used: uid) // Mono - add delay multiplier.
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: target, used: uid) // Mono - add delay multiplier.
         {
             BreakOnDamage = true,
             BreakOnHandChange = true,
@@ -519,6 +559,14 @@ public class RCDSystem : EntitySystem
 
     private bool IsDeconstructionStillValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid? target, EntityUid user, bool popMsgs = true)
     {
+        // Triad: sibling systems (e.g. RPDSystem) may add their own decon gating via the cancellable
+        // RCDDeconstructAttemptEvent — handler is responsible for the user popup when it cancels.
+        var attempt = new RCDDeconstructAttemptEvent(target, user, popMsgs);
+        RaiseLocalEvent(uid, ref attempt);
+        if (attempt.Cancelled)
+            return false;
+        // End Triad
+
         // Attempt to deconstruct a floor tile
         if (target == null)
         {
@@ -555,8 +603,13 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // The object is not in the whitelist
-            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.Deconstructable)
+            // Triad: RPD tools share this gate; admit a target if either the generic Deconstructable flag is on,
+            // or the tool is an RPD and the target opted into RpdDeconstructable. RPDSystem's earlier
+            // RCDDeconstructAttemptEvent handler has already enforced the RPD-only whitelist semantics.
+            var hasRpd = HasComp<RPDComponent>(uid);
+            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible)
+                || !(deconstructible.Deconstructable || (hasRpd && deconstructible.RpdDeconstructable)))
+            // End Triad
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
@@ -596,7 +649,25 @@ public class RCDSystem : EntitySystem
             }
 
             case RcdMode.ConstructObject:
-                var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // Triad: pick the mirrored variant first (general RCD feature), then let sibling systems
+                // rewrite the spawn proto via RCDObjectSpawnAttemptEvent (e.g. RPDSystem swaps in the layer
+                // alternative). Post-spawn decoration (e.g. pipe color stain) happens via RCDObjectSpawnedEvent.
+                var spawnProto = (component.UseMirrorPrototype && prototype.MirrorPrototype is { } mirror)
+                    ? mirror.Id
+                    : prototype.Prototype;
+
+                var spawnAttempt = new RCDObjectSpawnAttemptEvent(prototype, spawnProto);
+                RaiseLocalEvent(uid, ref spawnAttempt);
+                spawnProto = spawnAttempt.SpawnProto;
+
+                if (string.IsNullOrEmpty(spawnProto))
+                    return;
+
+                var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+
+                var spawned = new RCDObjectSpawnedEvent(ent, prototype);
+                RaiseLocalEvent(uid, ref spawned);
+                // End Triad
 
                 switch (prototype.Rotation)
                 {
@@ -703,6 +774,12 @@ public class RCDSystem : EntitySystem
 
         return boundingPolygon.ComputeAABB(boundingTransform, 0).Intersects(fixture.Shape.ComputeAABB(entXform, 0));
     }
+
+    // Triad: true only when the entity opts into RPD deconstruction (RCDDeconstructableComponent.RpdDeconstructable).
+    // Null-safe so the OnAfterInteract gate can test the raw click target directly.
+    private bool IsRpdDeconstructable(EntityUid? target)
+        => TryComp<RCDDeconstructableComponent>(target, out var decon) && decon.RpdDeconstructable;
+    // End Triad
 
     #endregion
 }

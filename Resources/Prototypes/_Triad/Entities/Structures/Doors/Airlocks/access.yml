@@ -1,0 +1,9 @@
+# a very specific highsec door for Current MD armory, and for future rework of triad's MD
+- type: entity
+  parent: HighSecDoor
+  id: HighSecTriadMedicalLocked
+  suffix: Medical, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMedical ]

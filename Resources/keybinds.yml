@@ -205,6 +205,10 @@ binds:
 - function: OpenLanguageMenu # Einstein Engines - Language
   type: State
   key: L
+- function: OpenConsentWindow
+  type: State
+  key: C
+  mod1: Alt
 - function: TextCursorSelect
   # TextCursorSelect HAS to be above ExamineEntity
   # So that LineEdit receives it correctly.

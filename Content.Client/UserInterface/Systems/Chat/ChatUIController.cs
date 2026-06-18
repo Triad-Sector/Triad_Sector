@@ -550,19 +550,19 @@ public sealed partial class ChatUIController : UIController
         {
             // can always hear local / radio / emote / notifications when in the game
             FilterableChannels |= ChatChannel.Local;
-            FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
             FilterableChannels |= ChatChannel.Notifications;
-            // Floofstation section
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
-            // Floofstation section end
 
             // Can only send local / radio / emote when attached to a non-ghost entity.
             // TODO: this logic is iffy (checking if controlling something that's NOT a ghost), is there a better way to check this?
             if (_ghost is not {IsGhost: true})
             {
+                // Triad start - only non-ghosts can see subtle, whisper, and subtle OOC
+                FilterableChannels |= ChatChannel.Subtle;
+                FilterableChannels |= ChatChannel.SubtleOOC;
+                FilterableChannels |= ChatChannel.Whisper;
+                // Triad end
                 CanSendChannels |= ChatSelectChannel.Local;
                 CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
@@ -581,10 +581,9 @@ public sealed partial class ChatUIController : UIController
             CanSendChannels |= ChatSelectChannel.Dead;
         }
 
-        if (_admin.HasFlag(AdminFlags.Pii) && _ghost is { IsGhost: true })
+        if (_admin.HasFlag(AdminFlags.Admin) && _ghost is { IsGhost: true })
         {
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
+            FilterableChannels |= ChatChannel.Whisper;
         }
 
         // only admins can see / filter asay
