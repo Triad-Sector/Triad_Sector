@@ -739,6 +739,20 @@
     accent-german-words-68: accent-german-words-replace-68
     accent-german-words-69: accent-german-words-replace-69
 
+# Triad: slim iconic-only list for the Slight German variant (greetings + yes/no + thanks, no
+# function-word swaps). Reuses the existing german loc keys.
+- type: accent
+  id: german_slight
+  wordReplacements:
+    accent-german-words-1: accent-german-words-replace-1     # yes -> ja
+    accent-german-words-1-2: accent-german-words-replace-1   # yea -> ja
+    accent-german-words-2: accent-german-words-replace-2     # no -> nein
+    accent-german-words-13: accent-german-words-replace-13   # my god -> mein gott
+    accent-german-words-27: accent-german-words-replace-27   # thank you -> dankeschoen
+    accent-german-words-28: accent-german-words-replace-28   # thanks -> danke
+    accent-german-words-48: accent-german-words-replace-48   # hi -> hallo
+    accent-german-words-49: accent-german-words-replace-49   # hello -> guten Tag
+
 - type: accent
   id: russian
   wordReplacements:

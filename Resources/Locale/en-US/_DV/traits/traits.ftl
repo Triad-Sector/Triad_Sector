@@ -12,6 +12,8 @@ trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get 
 # Triad: "Terra Germanic" display name for the German accent
 trait-terragermanic-accent-name = Terra Germanic accent
 trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclaves. Wunderbar.
+trait-terragermanic-mild-accent-name = Terra Germanic accent (mild)
+trait-terragermanic-mild-accent-desc = A lighter Germanic lilt. You have been speaking the common tongue long enough to soften it.
 
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
 trait-freeportcorsair-accent-name = Freeport Corsair accent

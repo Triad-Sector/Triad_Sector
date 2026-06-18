@@ -8,6 +8,7 @@
 // das/umlaut chances stay component DataFields. Word swaps (ja/nein/ze/und...) run first.
 using System.Text;
 using System.Text.RegularExpressions;
+using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -35,24 +36,29 @@ public sealed class GermanAccentSystem : EntitySystem
 
     public string Accentuate(string message, GermanAccentComponent component)
     {
+        var slight = component.Strength == AccentStrength.Slight;
+        var chance = slight ? component.SlightChance : 1f;
         var msg = message;
 
-        // Rarely, "the" becomes "das" instead of the usual "ze". Per-match roll via an evaluator so
-        // the casing is preserved and the index never drifts mid-loop.
+        // Rarely, "the" -> "das". In slight, scale the chance down so it stays an occasional flourish.
+        var dasProb = slight ? component.DasProb * component.SlightChance : component.DasProb;
         msg = RegexThe.Replace(msg, m =>
-            _random.Prob(component.DasProb) ? AccentHelpers.MatchCase(m.Value, "das") : m.Value);
+            _random.Prob(dasProb) ? AccentHelpers.MatchCase(m.Value, "das") : m.Value);
 
-        // Word replacements (ja/nein/ze/und/wasser...). Run first so swap outputs get accented too.
-        msg = _replacement.ApplyReplacements(msg, "german");
+        // Word swaps: the full list for thick, a slim iconic-only list for slight.
+        msg = _replacement.ApplyReplacements(msg, slight ? "german_slight" : "german");
 
-        // Phonetics, case-preserving. v->f BEFORE w->v (see header note on ordering).
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "f");
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexW, "v");
-        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z");
-        msg = RegexFinalObstruent.Replace(msg, DevoiceFinal);
+        // Phonetics, case-preserving. Per-match chance = 1 for thick (always), SlightChance for slight.
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexV, "f", _random, chance);
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexW, "v", _random, chance);
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexTh, "z", _random, chance);
 
-        // Random umlaut time. The joke outweighs the emotional damage this inflicts on actual Germans.
-        msg = ApplyUmlauts(msg, component.UmlautProb);
+        // Final-obstruent devoicing and umlauts are thick-only (too mangling for the intelligible slight tier).
+        if (!slight)
+        {
+            msg = RegexFinalObstruent.Replace(msg, DevoiceFinal);
+            msg = ApplyUmlauts(msg, component.UmlautProb);
+        }
 
         if (!string.IsNullOrWhiteSpace(msg))
         {

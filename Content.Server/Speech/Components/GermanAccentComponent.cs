@@ -1,4 +1,5 @@
 // Triad: enriched German accent. Identifiers kept upstream-named for clean cherry-picking;
+using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;
@@ -35,4 +36,12 @@ public sealed partial class GermanAccentComponent : Component
 
     [DataField]
     public float UmlautProb { get; set; } = 0.1f;
+
+    /// <summary>Triad: Thick (default) runs the full accent; Slight runs the lighter, intelligible variant.</summary>
+    [DataField]
+    public AccentStrength Strength { get; set; } = AccentStrength.Thick;
+
+    /// <summary>Triad: per-match chance each gated phonetic pass fires when Strength is Slight. Thick ignores it.</summary>
+    [DataField]
+    public float SlightChance { get; set; } = 0.3f;
 }

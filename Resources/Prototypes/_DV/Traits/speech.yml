@@ -135,6 +135,20 @@
     - type: GermanAccent
 # End Triad
 
+# Triad: lighter "slight" German for an assimilated colonist. Same cost as thick.
+- type: trait
+  id: GermanAccentSlight
+  name: trait-terragermanic-mild-accent-name
+  description: trait-terragermanic-mild-accent-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GermanAccent
+      strength: Slight
+# End Triad
+
 - type: trait
   id: Accentless
   name: trait-accentless-name

@@ -108,4 +108,58 @@ public sealed class GermanAccentTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task TerraGermanicSlight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
+            var comp = entMan.AddComponent<GermanAccentComponent>(uid);
+#pragma warning disable RA0002
+            comp.Strength = AccentStrength.Slight;
+            comp.PrefixProb = 0f;
+            comp.SuffixProb = 0f;
+            comp.DasProb = 0f;
+            comp.UmlautProb = 0f;
+#pragma warning restore RA0002
+
+            string Ger(string s)
+            {
+                var ev = new AccentGetEvent(uid, s);
+                entMan.EventBus.RaiseLocalEvent(uid, ev);
+                return ev.Message;
+            }
+
+            // Iconic word swaps still fire (the slim list is always-on).
+            Assert.That(Ger("yes"), Is.EqualTo("ja"));
+            Assert.That(Ger("no"), Is.EqualTo("nein"));
+
+            // Thick-only function-word swaps are gone in slight.
+            Assert.That(Ger("is"), Is.EqualTo("is"));
+            Assert.That(Ger("for"), Is.EqualTo("for"));
+
+            // SlightChance = 1: the KEPT phonetics fire every time...
+#pragma warning disable RA0002
+            comp.SlightChance = 1f;
+#pragma warning restore RA0002
+            Assert.That(Ger("water"), Is.EqualTo("vater")); // w->v
+            Assert.That(Ger("very"), Is.EqualTo("fery"));   // v->f
+            // ...but final-devoicing stays excluded ("good" is not "goot"/"gut").
+            Assert.That(Ger("good"), Is.EqualTo("good"));
+
+            // SlightChance = 0: phonetics off entirely, only the slim word swaps remain.
+#pragma warning disable RA0002
+            comp.SlightChance = 0f;
+#pragma warning restore RA0002
+            Assert.That(Ger("water"), Is.EqualTo("water"));
+            Assert.That(Ger("yes"), Is.EqualTo("ja"));
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }
