@@ -5,8 +5,9 @@ using Content.Server.Speech.EntitySystems;
 namespace Content.Server.Speech.Components;
 
 /// <summary>
-/// Terra Gallic accent replaces spoken letters: "th" becomes "z", word-initial "h" is dropped, and
-/// "j" becomes "zh", plus French-style spacing before ! ? : and ;.
+/// Terra Gallic accent. Thick (default): th->z, word-initial h dropped, j->zh, plus French-style
+/// spacing before ! ? : and ;. Slight: only a gated th->z (by SlightChance) over an iconic-only word
+/// list; h-drop and j->zh are omitted.
 /// </summary>
 [RegisterComponent]
 [Access(typeof(FrenchAccentSystem))]

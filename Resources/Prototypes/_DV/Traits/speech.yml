@@ -94,6 +94,7 @@
     components:
     - type: FrenchAccent
       strength: Slight
+# End Triad
 
 # Triad: Spanish accent, display name overridden to "Terra Latino" (trait-terralatino-accent-name); vocab enriched
 - type: trait
