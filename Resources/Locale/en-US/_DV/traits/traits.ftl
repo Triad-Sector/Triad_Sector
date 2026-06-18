@@ -3,13 +3,13 @@ trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' la
 
 # Triad: slight Dwarven Brogue variant
 trait-dwarven-brogue-mild-name = Dwarven Brogue (mild)
-trait-dwarven-brogue-mild-desc = A gentler brogue. The g's still drop and the odd word glottals, but the broad vowels have flattened out.
+trait-dwarven-brogue-mild-desc = Fer Hielan folk who've spent lang years doon among tha colonies; tha brogue's gone saft, but it lingers.
 
 # Triad: "Terra Gallic" display name for the French accent
 trait-terragallic-accent-name = Terra Gallic accent
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
 trait-terragallic-mild-accent-name = Terra Gallic accent (mild)
-trait-terragallic-mild-accent-desc = A faint Gallic lilt. The odd "ze" slips through, but your h's and j's have come back.
+trait-terragallic-mild-accent-desc = A trace of ze old country lingers; the colonies have worn it down, but the taste for wine and baguettes never left.
 
 # Triad: "Terra Latino" display name for the Spanish accent
 trait-terralatino-accent-name = Terra Latino accent
@@ -19,15 +19,11 @@ trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get 
 trait-terragermanic-accent-name = Terra Germanic accent
 trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclaves. Wunderbar.
 trait-terragermanic-mild-accent-name = Terra Germanic accent (mild)
-trait-terragermanic-mild-accent-desc = A lighter Germanic lilt. You have been speaking the common tongue long enough to soften it.
+trait-terragermanic-mild-accent-desc = You hail from the old Germanic enclaves, though years among the colonies have softened the edge. Ja, it still slips through now and then.
 
 # Triad: slight Spanish accent
 trait-terralatino-mild-accent-name = Terra Latino accent (mild)
-trait-terralatino-mild-accent-desc = A gentle Latino lilt. The odd word still bends, but you speak the common tongue cleanly.
-
-# Triad: slight Russian accent (no faux-Cyrillic)
-trait-russian-mild-accent-name = Russian accent (mild)
-trait-russian-mild-accent-desc = A softened Slavic cadence. The clipped articles slip out now and then, but the words stay clear.
+trait-terralatino-mild-accent-desc = Your Terra Latino roots still show in the small things, but years on the común tongue have smoothed them over.
 
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
 trait-freeportcorsair-accent-name = Freeport Corsair accent

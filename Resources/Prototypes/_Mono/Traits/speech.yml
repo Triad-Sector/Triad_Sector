@@ -26,6 +26,20 @@
     - type: RussianAccent
 # End Triad
 
+# Triad: lighter "slight" Terra Slavic (faux-Cyrillic kept, clipping dialed down). Same cost as thick.
+- type: trait
+  id: RussianAccentSlight
+  name: trait-terraslavic-mild-name
+  description: trait-terraslavic-mild-desc
+  category: Accents
+  cost: 1
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+      strength: Slight
+# End Triad
+
 # 1 Cost - Languages
 
 - type: trait
