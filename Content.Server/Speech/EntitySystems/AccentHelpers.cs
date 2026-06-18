@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -130,6 +131,22 @@ public static class AccentHelpers
     public static string ReplaceCasePreserving(string message, Regex regex, string replacement)
     {
         return regex.Replace(message, m => MatchCase(m.Value, replacement));
+    }
+
+    /// <summary>
+    ///     Triad: per-match probabilistic variant of <see cref="ReplaceCasePreserving(string, Regex, string)"/>.
+    ///     Each match is replaced only on a <paramref name="chance"/> roll (case preserved), else left as-is.
+    ///     Used by the "slight" accent tier to make a phonetic pass an occasional slip. At chance >= 1 it
+    ///     always replaces (no RNG call); at chance &lt;= 0 it never does.
+    /// </summary>
+    public static string ReplaceCasePreserving(string message, Regex regex, string replacement, IRobustRandom random, float chance)
+    {
+        return regex.Replace(message, m =>
+        {
+            if (chance < 1f && !random.Prob(chance))
+                return m.Value;
+            return MatchCase(m.Value, replacement);
+        });
     }
 
     /// <summary>
