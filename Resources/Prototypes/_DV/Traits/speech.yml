@@ -95,6 +95,20 @@
     - type: SpanishAccent
 # End Triad
 
+# Triad: lighter "slight" Russian (no faux-Cyrillic). Same cost as thick.
+- type: trait
+  id: RussianAccentSlight
+  name: trait-russian-mild-accent-name
+  description: trait-russian-mild-accent-desc
+  category: Accents
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+      strength: Slight
+# End Triad
+
 # Triad: removed - retired the Mobster player trait in favor of the Triad-original New Brooklyn accent
 # (see _Triad/Traits/speech.yml). The MobsterAccent COMPONENT stays for the regal rat mob + bound role/items.
 #- type: trait

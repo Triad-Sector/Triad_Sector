@@ -1,4 +1,5 @@
 // Triad: enriched Russian accent. Identifiers kept upstream-named for clean cherry-picking;
+using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;
@@ -38,4 +39,12 @@ public sealed partial class RussianAccentComponent : Component
     // The other classic Slavic-English cue; rolled per-word like ArticleDropProb so it stays occasional.
     [DataField]
     public float CopulaDropProb { get; set; } = 0.05f;
+
+    /// <summary>Triad: Thick (default) runs the full accent; Slight runs the lighter, intelligible variant.</summary>
+    [DataField]
+    public AccentStrength Strength { get; set; } = AccentStrength.Thick;
+
+    /// <summary>Triad: reserved dial for slight phonetic gating. Russian slight gates via the drop probs.</summary>
+    [DataField]
+    public float SlightChance { get; set; } = 0.3f;
 }

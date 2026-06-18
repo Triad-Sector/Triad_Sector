@@ -811,6 +811,19 @@
     accent-russian-words-41: accent-russian-words-replace-41
     accent-russian-words-42: accent-russian-words-replace-42
 
+# Triad: slim iconic-only list for the Slight Russian variant. Reuses existing russian loc keys.
+- type: accent
+  id: russian_slight
+  wordReplacements:
+    accent-russian-words-1: accent-russian-words-replace-1   # yes -> da
+    accent-russian-words-2: accent-russian-words-replace-2   # no -> nyet
+    accent-russian-words-7: accent-russian-words-replace-7   # yeah -> da
+    accent-russian-words-13: accent-russian-words-replace-13 # hello -> privyet
+    accent-russian-words-14: accent-russian-words-replace-14 # hi -> privyet
+    accent-russian-words-17: accent-russian-words-replace-17 # thanks -> spasibo
+    accent-russian-words-17-2: accent-russian-words-replace-17 # thank you -> spasibo
+    accent-russian-words-4: accent-russian-words-replace-4   # friend -> comrade
+
 - type: accent
   id: spanish
   wordReplacements:

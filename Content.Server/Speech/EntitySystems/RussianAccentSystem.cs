@@ -4,6 +4,7 @@
 // caps logic operate on Latin text, never on the substituted glyphs.
 using System.Text;
 using System.Text.RegularExpressions;
+using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -29,7 +30,8 @@ public sealed class RussianAccentSystem : EntitySystem
 
     public string Accentuate(string message, RussianAccentComponent component)
     {
-        var msg = _replacement.ApplyReplacements(message, "russian");
+        var slight = component.Strength == AccentStrength.Slight;
+        var msg = _replacement.ApplyReplacements(message, slight ? "russian_slight" : "russian");
 
         // Drop articles and copulas, preserving a leading capital by handing it to the now-first word.
         // The signature Slavic cues, rolled per-word so they stay occasional slips, not a constant clip.
@@ -45,8 +47,9 @@ public sealed class RussianAccentSystem : EntitySystem
         if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
             msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(component.Suffixes)));
 
-        // Faux-Cyrillic glyph swap runs LAST: it produces non-Latin chars the helpers can't reason about.
-        return Cyrillicize(msg);
+        // Faux-Cyrillic glyph swap runs LAST. Thick-only: it is the biggest readability hit, so the
+        // intelligible slight tier skips it and stays in Latin text.
+        return slight ? msg : Cyrillicize(msg);
     }
 
     private string DropWords(string message, Regex regex, float prob)

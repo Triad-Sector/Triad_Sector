@@ -66,4 +66,40 @@ public sealed class RussianAccentTest
 
         await pair.CleanReturnAsync();
     }
+
+    [Test]
+    public async Task SlavSlight()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.ResolveDependency<IEntityManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var uid = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
+            var comp = entMan.AddComponent<RussianAccentComponent>(uid);
+#pragma warning disable RA0002
+            comp.Strength = AccentStrength.Slight;
+            comp.PrefixProb = 0f;
+            comp.SuffixProb = 0f;
+            comp.ArticleDropProb = 0f;
+            comp.CopulaDropProb = 0f;
+#pragma warning restore RA0002
+
+            string Slav(string s)
+            {
+                var ev = new AccentGetEvent(uid, s);
+                entMan.EventBus.RaiseLocalEvent(uid, ev);
+                return ev.Message;
+            }
+
+            // Cyrillicize is excluded in slight: output is plain Latin, fully readable.
+            Assert.That(Slav("work the wrench"), Is.EqualTo("work the wrench"));
+            // Iconic swaps still fire.
+            Assert.That(Slav("yes"), Is.EqualTo("da"));
+            Assert.That(Slav("no"), Is.EqualTo("nyet"));
+        });
+
+        await pair.CleanReturnAsync();
+    }
 }

@@ -15,6 +15,10 @@ trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclave
 trait-terragermanic-mild-accent-name = Terra Germanic accent (mild)
 trait-terragermanic-mild-accent-desc = A lighter Germanic lilt. You have been speaking the common tongue long enough to soften it.
 
+# Triad: slight Russian accent (no faux-Cyrillic)
+trait-russian-mild-accent-name = Russian accent (mild)
+trait-russian-mild-accent-desc = A softened Slavic cadence. The clipped articles slip out now and then, but the words stay clear.
+
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
 trait-freeportcorsair-accent-name = Freeport Corsair accent
 trait-freeportcorsair-accent-desc = Arrr, ye talk like a corsair fresh off the free ports. Grog, doubloons, an' a black flag, savvy?
