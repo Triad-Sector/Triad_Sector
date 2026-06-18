@@ -12,7 +12,7 @@
     deleteOnSpawn: true
     proto: Bullet55_SAM
   - type: Sprite
-    sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Casings/smartgun.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/smart_casing.rsi # Triad new sprite
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
