@@ -8,3 +8,6 @@ trait-newbrooklyn-accent-desc = Ey, yous talk like da old borough back on Earth.
 # Neanderthal: display name for the enriched upstream Caveman accent
 trait-neanderthal-accent-name = Neanderthal
 trait-neanderthal-accent-desc = Ugh. You talk small. Big word hard. Club good.
+
+# Triad: shown on a paid accent a Dwarf/Goblin can't take until they clear their native accent with Accentless
+trait-condition-free-accent-slot = Requires the Accentless trait (your species already speaks a strong native accent)

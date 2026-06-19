@@ -12,6 +12,7 @@
   - !type:IsSpeciesCondition
     species: Yowie
     invert: true
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -25,6 +26,8 @@
   description: trait-terraslavic-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -38,6 +41,8 @@
   description: trait-terraslavic-mild-desc
   category: Accents
   cost: 1
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:

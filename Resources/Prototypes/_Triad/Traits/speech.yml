@@ -10,6 +10,8 @@
   description: trait-newbrooklyn-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -23,6 +25,8 @@
   description: trait-neanderthal-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:

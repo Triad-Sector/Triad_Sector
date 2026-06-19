@@ -9,6 +9,8 @@
   description: trait-freeportcorsair-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -22,6 +24,8 @@
   description: trait-heartworldgentry-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -35,6 +39,8 @@
   description: trait-trailhand-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -86,6 +92,8 @@
   description: trait-terragallic-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -99,6 +107,8 @@
   description: trait-terragallic-mild-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -113,6 +123,8 @@
   description: trait-terralatino-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -126,6 +138,8 @@
   description: trait-terralatino-mild-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -152,6 +166,13 @@
   description: trait-dwarven-brogue-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool. (Grants a BagpipeInstrument; that item is flavor, not the cost.)
+  conditions:
+  # Triad: Dwarves speak the brogue natively, so never re-take it. Other heavy-native species (Goblin) need
+  # Accentless first so two dialects don't stack.
+  - !type:IsSpeciesCondition
+    species: Dwarf
+    invert: true
+  - !type:HasFreeAccentSlotCondition
   effects:
   - !type:AddCompsEffect
     components:
@@ -166,8 +187,16 @@
   description: trait-dwarven-brogue-mild-desc
   category: Accents
   cost: 1
+  conditions:
+  # Triad: a Dwarf may dial their own brogue down to mild directly (the OverwriteCompsEffect below replaces
+  # their native thick DwarfAccent, no Accentless needed). Any other heavy-native species (Goblin) needs Accentless.
+  - !type:AnyOfCondition
+    conditions:
+    - !type:IsSpeciesCondition
+      species: Dwarf
+    - !type:HasFreeAccentSlotCondition
   effects:
-  - !type:AddCompsEffect
+  - !type:OverwriteCompsEffect
     components:
     - type: DwarfAccent
       strength: Slight
@@ -181,6 +210,8 @@
   description: trait-terragermanic-accent-desc
   category: Accents
   cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -194,6 +225,8 @@
   description: trait-terragermanic-mild-accent-desc
   category: Accents
   cost: 1
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
