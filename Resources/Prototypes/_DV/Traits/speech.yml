@@ -41,17 +41,19 @@
     - type: CowboyAccent
 # End Triad
 
-- type: trait
-  id: ItalianAccent
-  name: trait-italian-name
-  description: trait-italian-desc
-  category: Accents
-  cost: 2
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: ReplacementAccent
-      accent: italian
+# Triad: removed - retired the Italian ("space Italian") player trait; it is the unenriched legacy accent
+# and not wanted at the Triad table. The `italian` accent prototype + the items that grant it stay.
+#- type: trait
+#  id: ItalianAccent
+#  name: trait-italian-name
+#  description: trait-italian-desc
+#  category: Accents
+#  cost: 2
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: ReplacementAccent
+#      accent: italian
 
 - type: trait
   id: Muted
