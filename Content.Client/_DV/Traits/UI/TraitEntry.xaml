@@ -1,0 +1,53 @@
+<PanelContainer xmlns="https://spacestation14.io"
+                StyleClasses="TraitsEntryPanel"
+                HorizontalExpand="True"
+                Margin="0 0 0 4">
+
+    <BoxContainer Orientation="Vertical"
+                  HorizontalExpand="True"
+                  Margin="10 8">
+
+        <!-- Name and Cost Row -->
+        <BoxContainer Orientation="Horizontal"
+                      HorizontalExpand="True">
+
+            <!-- Toggle Container -->
+            <BoxContainer Name="ToggleContainer"
+                          Orientation="Horizontal"
+                          VerticalAlignment="Center"
+                          Margin="0 0 10 0"
+                          SetWidth="24">
+
+                <!-- Checkbox -->
+                <CheckBox Name="TraitCheckbox"
+                          StyleClasses="TraitsEntryCheckbox"
+                          VerticalAlignment="Center"/>
+
+                <!-- Lock Icon -->
+                <TextureRect Name="LockIcon"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             SetSize="20 20"
+                             Stretch="KeepAspectCentered"
+                             TexturePath="/Textures/Interface/VerbIcons/lock.svg.192dpi.png"
+                             Visible="False"/>
+            </BoxContainer>
+
+            <Label Name="TraitNameLabel"
+                   StyleClasses="TraitsEntryNameLabel"
+                   VerticalAlignment="Center"/>
+            <Control HorizontalExpand="True"/>
+            <Label Name="TraitCostLabel"
+                   StyleClasses="TraitsEntryCostLabel"
+                   VerticalAlignment="Center"/>
+        </BoxContainer>
+
+        <!-- Description as its own full-width row so it wraps to the column.
+             Triad: was nested in a horizontally-expanding child, which Robust never measures with a
+             finite width (see BoxContainer.MeasureItems), so the RichTextLabel clipped instead of wrapping. -->
+        <RichTextLabel Name="TraitDescriptionLabel"
+                       StyleClasses="TraitsEntryDescriptionLabel"
+                       HorizontalExpand="True"
+                       Margin="34 4 0 0"/>
+    </BoxContainer>
+</PanelContainer>
