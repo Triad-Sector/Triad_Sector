@@ -535,9 +535,17 @@
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
   - type: CrewMonitoringConsole
+    warningSound: # Triad - added sound message for high damage patients
+      params:
+        maximumDistance: 8 # Triad - Let this be small enough so that you can hear it only in a room
+        volume: -15
+      path: /Audio/_Triad/Machines/medDanger.ogg
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
+  - type: Speech # Triad - added chat message for high damage patients
+    speechVerb: Robotic
+    speechSounds: Borg
 #  - type: WirelessNetworkConnection
 #    range: 1200
   # Mono

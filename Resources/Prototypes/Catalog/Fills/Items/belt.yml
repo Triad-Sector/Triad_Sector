@@ -208,3 +208,6 @@
     contents:
     - id: FoodShakerSalt
     - id: FoodShakerPepper
+    - id: RollingPin #Triad
+    - id: KitchenKnife #Triad
+    - id: ServiceSelectiveDropper #Triad

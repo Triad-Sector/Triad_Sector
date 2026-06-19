@@ -58,4 +58,12 @@ public sealed partial class TraitPrototype : IPrototype
     /// </summary>
     [DataField]
     public int Priority = 0;
+
+    /// <summary>
+    /// Triad: extra trait slots this trait grants to a category's MaxTraits when selected.
+    /// Lets a trait raise a category's effective cap (e.g. Foreigner granting extra language slots).
+    /// Keyed by category id. Grants from all selected, otherwise-valid traits are summed.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<TraitCategoryPrototype>, int> GrantsCategorySlots = new();
 }

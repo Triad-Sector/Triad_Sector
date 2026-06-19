@@ -1553,3 +1553,210 @@ Entries:
   id: 2295
   time: '2026-06-14T03:53:57.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/179
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: 'Revert the #220 PR because issues'
+  id: 2296
+  time: '2026-06-14T05:25:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/223
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        An estimated appraisal of your ship will be displayed when you select a
+        saved ship in the shipyard console. This value will not be visible if
+        your ship was saved pre-tamper update. Resaving your ship will fix this,
+        however.
+  id: 2297
+  time: '2026-06-14T13:28:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/222
+- author: SquishyEmmaaaa
+  changes:
+    - type: Fix
+      message: >-
+        Fixed seed packets being affected by the original plant even after
+        clipping.
+  id: 2298
+  time: '2026-06-14T17:01:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/194
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Service workers now can access Janitor supplies, within reason
+  id: 2299
+  time: '2026-06-14T17:04:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/202
+- author: runicguardian
+  changes:
+    - type: Add
+      message: Added LessLethal ammo (EMP and Flash) to the China Lake! PLOOP!
+  id: 2300
+  time: '2026-06-14T17:07:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/219
+- author: runicguardian
+  changes:
+    - type: Tweak
+      message: >-
+        Filled chef belt now contains a knife, rolling pin, and selective
+        dropper!
+  id: 2301
+  time: '2026-06-14T22:45:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/225
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added back the Russian accent!
+  id: 2302
+  time: '2026-06-14T22:48:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/227
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added german accent back
+  id: 2303
+  time: '2026-06-15T13:02:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/231
+- author: SomeoneElsHere
+  changes:
+    - type: Add
+      message: >-
+        Added a noise and message to Handheld/Non-Handheld Crew Monitoring
+        Consoles if you gain 100+ damage at once.
+  id: 2304
+  time: '2026-06-15T13:06:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/192
+- author: TheBweepers
+  changes:
+    - type: Add
+      message: Allows Slime People to eat cloth, paper, raw meat, and everything else!
+    - type: Tweak
+      message: >-
+        Adjusts Allicin and Theobromise to stop slime people from being effected
+        by them after the above change made them suseptable
+  id: 2305
+  time: '2026-06-15T13:10:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/169
+- author: Dimasw99
+  changes:
+    - type: Fix
+      message: >-
+        EventHealthChange affects limbs now. Making meds like cryoxadone heal
+        limbs now too.
+  id: 2306
+  time: '2026-06-16T02:39:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/232
+- author: Virnazush
+  changes:
+    - type: Add
+      message: MLA-79 Harness
+    - type: Tweak
+      message: >-
+        MLA-79 Smartgun weapon now requires the Harness to function, without it
+        the player will suffer movement and accuracy penalties.
+  id: 2307
+  time: '2026-06-16T03:00:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/176
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: In-hand sprites for various liquors and snacks.
+    - type: Add
+      message: Spacepresso machines for your ship lounges.
+    - type: Add
+      message: >-
+        New reagent: Caramexinin! Now your fluffy friends can have a coffee
+        spiked with this safely, as a treat.
+    - type: Tweak
+      message: Booze-o-Mats now get pineapple juice cartons.
+  id: 2308
+  time: '2026-06-19T07:07:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/230
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Character traits now use per-category limits and points. Accents cost
+        from their own pool, so you get one dialect accent, while stutter, lisp,
+        and accentless are free and stack with it.
+    - type: Tweak
+      message: >-
+        Drawback traits (disabilities and most medical/mental traits) are now
+        free.
+    - type: Fix
+      message: >-
+        Contradictory traits can no longer be taken together (opposing
+        endurance/toughness traits, a mute with an accent, wheelchair-bound with
+        bionic legs, and more).
+    - type: Fix
+      message: Feeble and Steadfast now actually change how much damage slows you down.
+    - type: Fix
+      message: >-
+        Trait names and descriptions in the editor read cleanly: no mid-sentence
+        line breaks, consistent Title Case.
+    - type: Tweak
+      message: >-
+        Redesigned the character traits editor with clickable rows, colour-coded
+        states, and hover reasons for disabled traits.
+  id: 2309
+  time: '2026-06-19T13:34:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/234
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Returning from a salvage expedition early no longer deletes your ship if
+        you do it right after jumping in.
+  id: 2310
+  time: '2026-06-19T15:11:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/236
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Most speech accents got a big personality pass: real phonetic quirks,
+        occasional verbal tics, and a lot more dialect vocabulary.
+    - type: Add
+      message: >-
+        German, Russian, Dwarven, Spanish, and French accents now have a
+        "(Mild)" trait variant that stays easier to read.
+    - type: Tweak
+      message: >-
+        Southern and Cowboy now share one drawl engine, and the Scottish accent
+        is now the Dwarven Brogue.
+    - type: Tweak
+      message: >-
+        Dwarves and Goblins can't double up on accents; take the free Accentless
+        trait to swap to a different one.
+    - type: Tweak
+      message: >-
+        enriched accents now show lore names (Terra Gallic, Heartworld Gentry,
+        Dustkin, and so on); the Italian trait is retired and Mobster is now the
+        New Brooklyn accent.
+  id: 2311
+  time: '2026-06-19T18:17:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/235
+- author: Upstream
+  changes:
+    - type: Add
+      message: Added stencil lettering decals to the spraypainter.
+  id: 2312
+  time: '2026-06-19T19:38:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/237
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        The RPD builds vents, scrubbers, injectors, filters, mixers, valves, and
+        canister ports on the pipe layer you're aiming at, just like pipes.
+    - type: Fix
+      message: >-
+        The RPD can deconstruct pipes hidden under floor tiles or sitting
+        beneath firelocks, and it targets the layer you aim at.
+    - type: Fix
+      message: >-
+        RPD-built devices respect their facing at placement time, so rotated
+        builds no longer collide with devices they don't actually overlap.
+  id: 2313
+  time: '2026-06-19T20:13:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/216

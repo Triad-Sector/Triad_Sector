@@ -3,9 +3,14 @@
   name: trait-pious-name
   description: trait-pious-desc
   category: Mental
+  cost: 0 # Triad: mental/faith traits are RP, not a point economy. (The Bible it grants is flavor, not a cost.)
   conditions:
   - !type:HasTraitCondition
     trait: Pacifist
+    invert: true
+  # Triad: Pious pacifies (vows against striking in anger), so Striking Calluses (+unarmed damage) is a dead pick.
+  - !type:HasTraitCondition
+    trait: StrikingCalluses
     invert: true
   effects:
   - !type:AddCompsEffect

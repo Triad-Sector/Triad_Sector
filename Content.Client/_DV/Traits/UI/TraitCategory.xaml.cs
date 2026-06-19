@@ -24,6 +24,12 @@ public sealed partial class TraitCategory : BoxContainer
     public int SelectedCount;
     public int PointsSpent;
 
+    /// <summary>
+    /// Triad: extra slots granted to this category by selected granter traits (e.g. Foreigner), set by
+    /// the parent tab so the "X / N" label reflects the effective cap, not just the base MaxTraits.
+    /// </summary>
+    public int BonusSlots;
+
     public TraitCategory(TraitCategoryPrototype category, List<TraitPrototype> traits)
     {
         RobustXamlLoader.Load(this);
@@ -55,6 +61,8 @@ public sealed partial class TraitCategory : BoxContainer
         foreach (var trait in _allTraits)
         {
             var entry = new TraitEntry(trait);
+            // Triad: hide the per-trait cost in categories with no point budget; the cost is noise there.
+            entry.SetCostVisible(_category.HasPointLimit);
             entry.OnToggled += selected => OnTraitEntryToggled(trait.ID, selected);
             _traitEntries[trait.ID] = entry;
             TraitsContainer.AddChild(entry);
@@ -85,11 +93,12 @@ public sealed partial class TraitCategory : BoxContainer
             .Where(e => e.IsSelected)
             .Sum(e => e.TraitCost);
 
-        if (_category.MaxTraits.HasValue)
+        if (_category.HasTraitLimit)
         {
+            // Triad: show the effective cap (base + granted slots), so Foreigner's extra language slots read correctly.
             CategoryStatsLabel.Text = Loc.GetString("trait-category-traits",
                 ("selected", SelectedCount),
-                ("max", _category.MaxTraits.Value));
+                ("max", _category.MaxTraits!.Value + BonusSlots));
         }
         else
         {
@@ -97,12 +106,14 @@ public sealed partial class TraitCategory : BoxContainer
                 ("selected", SelectedCount));
         }
 
-        if (_category.MaxPoints.HasValue)
+        if (_category.HasPointLimit)
         {
             CategoryPointsLabel.Visible = true;
+            // Triad: show points still AVAILABLE (max - spent), so negative-cost traits raise the
+            // number instead of showing a confusing "-4 / 6". Matches the global points label.
             CategoryPointsLabel.Text = Loc.GetString("trait-category-points",
-                ("selected", PointsSpent),
-                ("max", _category.MaxPoints.Value));
+                ("available", _category.MaxPoints!.Value - PointsSpent),
+                ("max", _category.MaxPoints!.Value));
         }
         else
         {
@@ -116,6 +127,20 @@ public sealed partial class TraitCategory : BoxContainer
         {
             entry.SetSelected(selected);
         }
+    }
+
+    /// <summary>
+    /// Triad: the traits in this category, so the parent tab can compute per-trait affordability.
+    /// </summary>
+    public IReadOnlyList<TraitPrototype> Traits => _allTraits;
+
+    /// <summary>
+    /// Triad: push the computed budget state for one trait down to its entry (drives the grey "can't afford" look).
+    /// </summary>
+    public void SetTraitAffordable(ProtoId<TraitPrototype> traitId, bool affordable, string? reason = null)
+    {
+        if (_traitEntries.TryGetValue(traitId, out var entry))
+            entry.SetAffordable(affordable, reason);
     }
 
     public void ClearSelection()

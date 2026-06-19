@@ -1,11 +1,16 @@
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
+using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers relocated to _Triad
 
 namespace Content.Server.Speech.EntitySystems;
 
 public sealed class BoganAccentSystem : EntitySystem
 {
+    // Non-rhotic Aussie -er -> -a (water -> wata, better -> betta). Two word chars before "er" keeps it
+    // off short words like "her"/"per". Shorter "-a" than the cockney "-ah" keeps bogan distinct.
+    private static readonly Regex RegexEr = new(@"(?<=\w\w)er\b", RegexOptions.IgnoreCase);
+
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
@@ -17,30 +22,28 @@ public sealed class BoganAccentSystem : EntitySystem
 
     private void OnAccent(EntityUid uid, BoganAccentComponent component, AccentGetEvent args)
     {
-        var message = args.Message;
+        var msg = _replacement.ApplyReplacements(args.Message, "bogan");
 
-        message = _replacement.ApplyReplacements(message, "bogan");
+        // Triad: bogans drop the g too ("havin' a chat"); shared keep-list spares king/ring/wing.
+        msg = AccentHelpers.DropG(msg);
+        msg = AccentHelpers.ReplaceCasePreserving(msg, RegexEr, "a"); // water -> wata, over -> ova
 
-        // Prefix
-        if (_random.Prob(0.15f))
+        if (string.IsNullOrWhiteSpace(msg))
         {
-            var pick = _random.Next(1, 4);
-
-            // Reverse sanitize capital
-            message = message[0].ToString().ToLower() + message.Remove(0, 1);
-            message = Loc.GetString($"accent-bogan-prefix-{pick}") + " " + message;
+            args.Message = msg;
+            return;
         }
 
-        // Sanitize capital again, in case we substituted a word that should be capitalized
-        message = message[0].ToString().ToUpper() + message.Remove(0, 1);
+        // Triad: re-agree a/an after swaps, then data-driven prob prefix/suffix tics with the shared
+        // caps-aware placement (replaces the old hardcoded probs + _random.Next index math).
+        msg = AccentHelpers.FixArticles(msg);
 
-        // Suffixes
-        if (_random.Prob(0.3f))
-        {
-            var pick = _random.Next(1, 5);
-            message += Loc.GetString($"accent-bogan-suffix-{pick}");
-        }
+        if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+            msg = AccentHelpers.PrependPrefix(msg, Loc.GetString(_random.Pick(component.Prefixes)));
 
-        args.Message = message;
+        if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+            msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(component.Suffixes)));
+
+        args.Message = msg;
     }
-};
+}

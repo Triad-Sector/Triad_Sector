@@ -19,6 +19,8 @@
   - External # Frontier
   - Service
   - Frontier # Frontier
+  extendedAccess: # Triad
+  - Janitor # Triad
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

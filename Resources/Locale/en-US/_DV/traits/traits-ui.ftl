@@ -3,7 +3,10 @@ trait-editor-title = Character Traits
 trait-editor-points-label = Available Points
 trait-editor-search-placeholder = Search traits...
 trait-editor-footer-hint = Hover over traits for details
-trait-editor-footer-info = Negative costs grant bonus points
+# Footer info is chosen at runtime to match the actual limit configuration (global, per-category, or both).
+trait-editor-footer-info-global = Limits are set globally
+trait-editor-footer-info-category = Limits are set per category
+trait-editor-footer-info-both = Limits are set globally and per category
 
 ## Disabled Traits Popup
 disabled-traits-popup-title = Traits Disabled
@@ -14,16 +17,16 @@ disabled-traits-popup-skip-checkbox = Don't show this again
 disabled-traits-popup-close-button = Close
 
 ## Disabled Traits Reasons
-disabled-traits-reason-global-limit = Global trait limit reached
-disabled-traits-reason-points-limit = Not enough trait points remaining
-disabled-traits-reason-category-limit = Category "{$category}" trait limit reached
-disabled-traits-reason-category-points = Category "{$category}" points limit reached
+disabled-traits-reason-global-limit = Global trait limit reached. Deselect a trait to make room.
+disabled-traits-reason-points-limit = Not enough global trait points left. Deselect a trait to free some up.
+disabled-traits-reason-category-limit = {$category} trait limit reached. Deselect a {$category} trait to make room.
+disabled-traits-reason-category-points = Not enough {$category} points left. Deselect a {$category} trait to free some up.
 disabled-traits-reason-conflict = Conflicts with selected trait: {$trait}
 
 ## Category suffixes
 trait-category-traits = {$selected} / {$max} traits
 trait-category-traits-unlimited = {$selected} traits
-trait-category-points = ({$selected} / {$max} pts)
+trait-category-points = ({$available} / {$max} pts available)
 
 ## Requirements tooltips
 trait-requirements-tooltip = [bold]Requirements:[/bold]
@@ -44,6 +47,17 @@ trait-conditions-tooltip = [bold]Conditions:[/bold]
 ## Composite conditions
 trait-condition-any-of = Any of the following must be true:
     {$requirements}
+trait-condition-all-of = All of the following must be true:
+    {$requirements}
+
+## Trait-specific condition tooltips
+trait-condition-needs-an-arm = You must have at least one arm.
+trait-condition-needs-a-leg = You must have at least one leg.
+trait-condition-muted-no-accents = You can't speak, so an accent would do nothing.
+
+## Category conditions
+trait-condition-category-has = Must have a {$category} trait.
+trait-condition-category-has-not = Must not have a {$category} trait.
 
 ## Species conditions
 trait-condition-species-is = You must be {INDEFINITE($species)} [color=yellow]{$species}[/color].

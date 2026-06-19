@@ -33,7 +33,7 @@
     currentLabel: reagent-name-root-beer-float
 
 - type: entity
-  parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
+  parent: [DrinkBottleVisualsNoInHand, DrinkBottleGlassBaseFull] # Triad: No in-hands so DrinkBottleVisualsAll<DrinkBottleVisualsNoInHand
   id: DrinkBeerCervezaCristalFull
   name: cerveza cristal bottle
   suffix: Admeme
