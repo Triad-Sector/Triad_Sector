@@ -2,13 +2,13 @@ trait-dwarven-brogue-name = Dwarven Brogue
 trait-dwarven-brogue-desc = Fer tha folk who come frae Hielan clan, dwarf an' lang-leggit alike.
 
 # Triad: slight Dwarven Brogue variant
-trait-dwarven-brogue-mild-name = Dwarven Brogue (mild)
+trait-dwarven-brogue-mild-name = Dwarven Brogue (Mild)
 trait-dwarven-brogue-mild-desc = Fer Hielan folk who've spent lang years doon among tha colonies; tha brogue's gone saft, but it lingers.
 
 # Triad: "Terra Gallic" display name for the French accent
 trait-terragallic-accent-name = Terra Gallic
 trait-terragallic-accent-desc = 'Ze winds are changing, and you 'ave a strong desire for wine and baguettes.
-trait-terragallic-mild-accent-name = Terra Gallic (mild)
+trait-terragallic-mild-accent-name = Terra Gallic (Mild)
 trait-terragallic-mild-accent-desc = A trace of ze old country lingers; the colonies have worn it down, but the taste for wine and baguettes never left.
 
 # Triad: "Terra Latino" display name for the Spanish accent
@@ -18,11 +18,11 @@ trait-terralatino-accent-desc = Your Terra Latino traditions shine through, get 
 # Triad: "Terra Germanic" display name for the German accent
 trait-terragermanic-accent-name = Terra Germanic
 trait-terragermanic-accent-desc = Ja, ja, you hail from the old Germanic enclaves. Wunderbar.
-trait-terragermanic-mild-accent-name = Terra Germanic (mild)
+trait-terragermanic-mild-accent-name = Terra Germanic (Mild)
 trait-terragermanic-mild-accent-desc = You hail from the old Germanic enclaves, though years among the colonies have softened the edge. Ja, it still slips through now and then.
 
 # Triad: slight Spanish accent
-trait-terralatino-mild-accent-name = Terra Latino (mild)
+trait-terralatino-mild-accent-name = Terra Latino (Mild)
 trait-terralatino-mild-accent-desc = Your Terra Latino roots still show in the small things, but years on the común tongue have smoothed them over.
 
 # Triad: "Freeport Corsair" display name for the (enriched) Pirate accent
