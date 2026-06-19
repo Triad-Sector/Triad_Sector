@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprited by LinkUyx#6557. Reptilian edit by Nairod(Github). hydrakin sprite by Zethine / @synthetic_086 (discord).",
+  "copyright": "Sprited by LinkUyx#6557. Reptilian edit by Nairod(Github). hydrakin sprite by Zethine / @synthetic_086 (discord), Vulpkanin version by Wuffindy",
   "size": {
     "x": 32,
     "y": 32
@@ -64,10 +64,6 @@
     },
     {
       "name": "equipped-MASK-vulpkanin",
-      "directions": 4
-    },
-    {
-      "name": "up-equipped-MASK-vulpkanin",
       "directions": 4
     }
   ]
