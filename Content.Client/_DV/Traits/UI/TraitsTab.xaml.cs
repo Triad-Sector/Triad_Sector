@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Stylesheets; // Mono - Backport of Sheetlet to stylesheet
 using Content.Shared._DV.CCVars;
 using Content.Shared._DV.Traits;
@@ -92,9 +92,12 @@ public sealed partial class TraitsTab : BoxContainer
             .ThenBy(c => Loc.GetString(c.Name))
             .ToList();
 
+        // Triad: order by cost ascending so the biggest point GAIN (most negative) sits at the top and the
+        // biggest point COST (most positive) at the bottom; ties (and all-zero categories like Accents) fall
+        // back to alphabetical by name.
         var traitsByCategory = _prototype.EnumeratePrototypes<TraitPrototype>()
             .GroupBy(t => t.Category)
-            .ToDictionary(g => g.Key, g => g.OrderBy(t => Loc.GetString(t.Name)).ToList());
+            .ToDictionary(g => g.Key, g => g.OrderBy(t => t.Cost).ThenBy(t => Loc.GetString(t.Name)).ToList());
 
         foreach (var category in categories)
         {
@@ -110,6 +113,7 @@ public sealed partial class TraitsTab : BoxContainer
         // Apply current filters and conditions
         ApplySearchFilter();
         UpdateAllConditions();
+        UpdateAffordability();
     }
 
     private void OnTraitToggled(ProtoId<TraitPrototype> traitId, bool selected)
@@ -118,14 +122,16 @@ public sealed partial class TraitsTab : BoxContainer
 
         if (selected)
         {
-            // Check global limits
-            if (_currentTraitCount >= _maxGlobalTraits)
+            // Check global limits. Triad: _maxGlobalTraits <= 0 means unlimited.
+            if (_maxGlobalTraits > 0 && _currentTraitCount >= _maxGlobalTraits)
             {
                 RevertTraitToggle(traitId);
                 return;
             }
 
-            if (_currentPointsSpent + trait.Cost > _maxGlobalPoints)
+            // Triad: _maxGlobalPoints <= 0 means unlimited, so the global points gate drops out and only
+            // per-category MaxPoints constrains spending (mirrors the unlimited-count gate above).
+            if (_maxGlobalPoints > 0 && _currentPointsSpent + trait.Cost > _maxGlobalPoints)
             {
                 RevertTraitToggle(traitId);
                 return;
@@ -135,15 +141,16 @@ public sealed partial class TraitsTab : BoxContainer
             if (_categoryUis.TryGetValue(trait.Category, out var categoryUi))
             {
                 var categoryProto = _prototype.Index(trait.Category);
-                if (categoryProto.MaxTraits.HasValue &&
-                    categoryUi.SelectedCount >= categoryProto.MaxTraits.Value)
+                // Triad: granter traits (GrantsCategorySlots) raise the effective cap; mirror the server calc.
+                if (categoryProto.HasTraitLimit &&
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits!.Value + GetGrantedSlots(trait.Category))
                 {
                     RevertTraitToggle(traitId);
                     return;
                 }
 
-                if (categoryProto.MaxPoints.HasValue &&
-                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints.Value)
+                if (categoryProto.HasPointLimit &&
+                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints!.Value)
                 {
                     RevertTraitToggle(traitId);
                     return;
@@ -171,7 +178,67 @@ public sealed partial class TraitsTab : BoxContainer
         UpdateGlobalStats();
         UpdateCategoryStats(trait.Category);
         UpdateAllConditions();
+        UpdateAffordability();
         OnTraitsChanged?.Invoke(_selectedTraits);
+    }
+
+    // Triad: grey out unselected traits the player can no longer afford (global points, category slots, or
+    // category points), mirroring the gates in OnTraitToggled. Selected traits stay affordable so they remain
+    // clickable to deselect. Rule-blocked entries are handled separately (red) and ignore this.
+    private void UpdateAffordability()
+    {
+        foreach (var (categoryId, categoryUi) in _categoryUis)
+        {
+            var categoryProto = _prototype.Index(categoryId);
+            var grantedSlots = GetGrantedSlots(categoryId);
+
+            foreach (var trait in categoryUi.Traits)
+            {
+                // Selected entries always remain clickable (so you can deselect to free budget).
+                if (_selectedTraits.Contains(trait.ID))
+                {
+                    categoryUi.SetTraitAffordable(trait.ID, true);
+                    continue;
+                }
+
+                // Determine affordability and, if blocked, the specific reason to show on hover. Order mirrors
+                // the OnTraitToggled gates; the first limit hit wins the explanation.
+                var affordable = true;
+                string? reason = null;
+
+                if (_maxGlobalPoints > 0 && _currentPointsSpent + trait.Cost > _maxGlobalPoints)
+                {
+                    affordable = false;
+                    reason = Loc.GetString("disabled-traits-reason-points-limit");
+                }
+                else if (categoryProto.HasTraitLimit &&
+                    categoryUi.SelectedCount >= categoryProto.MaxTraits!.Value + grantedSlots)
+                {
+                    affordable = false;
+                    reason = Loc.GetString("disabled-traits-reason-category-limit", ("category", Loc.GetString(categoryProto.Name)));
+                }
+                else if (categoryProto.HasPointLimit &&
+                    categoryUi.PointsSpent + trait.Cost > categoryProto.MaxPoints!.Value)
+                {
+                    affordable = false;
+                    reason = Loc.GetString("disabled-traits-reason-category-points", ("category", Loc.GetString(categoryProto.Name)));
+                }
+
+                categoryUi.SetTraitAffordable(trait.ID, affordable, reason);
+            }
+        }
+    }
+
+    // Triad: sum extra slots granted to a category by currently-selected granter traits (e.g. Foreigner).
+    private int GetGrantedSlots(ProtoId<TraitCategoryPrototype> category)
+    {
+        var total = 0;
+        foreach (var selectedId in _selectedTraits)
+        {
+            if (_prototype.Index(selectedId).GrantsCategorySlots.TryGetValue(category, out var slots))
+                total += slots;
+        }
+        return total;
     }
 
     private void RevertTraitToggle(ProtoId<TraitPrototype> traitId)
@@ -183,19 +250,52 @@ public sealed partial class TraitsTab : BoxContainer
         }
     }
 
+    // Triad: the footer line reflects the ACTUAL limit configuration so it stays honest if a server sets global
+    // caps (max_count/max_points > 0) or per-category caps. Hidden entirely when nothing is limited.
+    private void UpdateFooterInfo()
+    {
+        var globalLimited = _maxGlobalTraits > 0 || _maxGlobalPoints > 0;
+        var categoryLimited = false;
+        foreach (var cat in _prototype.EnumeratePrototypes<TraitCategoryPrototype>())
+        {
+            if (cat.HasTraitLimit || cat.HasPointLimit)
+            {
+                categoryLimited = true;
+                break;
+            }
+        }
+
+        string? key =
+            globalLimited && categoryLimited ? "trait-editor-footer-info-both" :
+            globalLimited ? "trait-editor-footer-info-global" :
+            categoryLimited ? "trait-editor-footer-info-category" :
+            null;
+
+        FooterInfoLabel.Visible = key != null;
+        if (key != null)
+            FooterInfoLabel.Text = Loc.GetString(key);
+    }
+
     private void UpdateGlobalStats()
     {
-        GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
-        GlobalPointsLabel.Text = $"{_maxGlobalPoints - _currentPointsSpent} / {_maxGlobalPoints}";
+        UpdateFooterInfo();
+        // Triad: _maxGlobalTraits <= 0 means unlimited, so drop the now-meaningless "X / N" counter.
+        GlobalTraitCountLabel.Visible = _maxGlobalTraits > 0;
+        if (_maxGlobalTraits > 0)
+            GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
+
+        // Triad: _maxGlobalPoints <= 0 means unlimited, so hide the whole global points label + bar and let
+        // per-category point dials speak for themselves. Bail before the bar math, which divides by the max.
+        PointsProgressContainer.Visible = _maxGlobalPoints > 0;
+        if (_maxGlobalPoints <= 0)
+            return;
 
         // Calculate remaining points (clamped to not go below 0 in display)
         var remainingPoints = _maxGlobalPoints - _currentPointsSpent;
         GlobalPointsLabel.Text = $"{remainingPoints} / {_maxGlobalPoints}";
 
         // Calculate progress bar percentage - clamp between 0 and 1
-        var percentage = _maxGlobalPoints > 0
-            ? Math.Clamp((float)remainingPoints / _maxGlobalPoints, 0f, 1f)
-            : 0f;
+        var percentage = Math.Clamp((float)remainingPoints / _maxGlobalPoints, 0f, 1f);
 
         // Update progress bar using percentage-based sizing
         var parent = GlobalPointsBar.Parent;
@@ -241,6 +341,8 @@ public sealed partial class TraitsTab : BoxContainer
     {
         if (_categoryUis.TryGetValue(categoryId, out var categoryUi))
         {
+            // Triad: feed the granted-slot total so the category's "X / N" cap reflects granters (e.g. Foreigner).
+            categoryUi.BonusSlots = GetGrantedSlots(categoryId);
             categoryUi.UpdateStats();
         }
     }
@@ -312,6 +414,8 @@ public sealed partial class TraitsTab : BoxContainer
             UpdateCategoryStats(categoryId);
         }
 
+        UpdateAffordability();
+
         // Fire event if selection changed
         if (!_selectedTraits.SetEquals(previouslySelected))
         {
@@ -355,5 +459,7 @@ public sealed partial class TraitsTab : BoxContainer
         {
             UpdateCategoryStats(categoryId);
         }
+
+        UpdateAffordability();
     }
 }

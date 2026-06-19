@@ -6,21 +6,19 @@
   name: trait-edgerunner-accent-name
   description: trait-edgerunner-accent-desc
   category: Accents
-  cost: 1
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
   effects:
   - !type:AddCompsEffect
     components:
     - type: StreetpunkAccent
 # End Triad
 
-# 2 Cost
-
 - type: trait
   id: GoblinAccent
   name: trait-goblin-accent-name
   description: trait-goblin-accent-desc
   category: Accents
-  cost: 2
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
   effects:
   - !type:AddCompsEffect
     components:

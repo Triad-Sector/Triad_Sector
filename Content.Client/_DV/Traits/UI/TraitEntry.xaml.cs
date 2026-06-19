@@ -21,9 +21,23 @@ public sealed partial class TraitEntry : PanelContainer
 
     public event Action<bool>? OnToggled;
 
-    public bool IsSelected => TraitCheckbox.Pressed;
+    public bool IsSelected { get; private set; }
     public readonly int TraitCost;
+
+    /// <summary>
+    /// Whether the trait passes its conditions (species / job / mutex). False renders red and blocks selection.
+    /// </summary>
     public bool MeetsConditions { get; private set; } = true;
+
+    /// <summary>
+    /// Triad: whether the player still has the budget (category/global trait slots and points) to add this trait.
+    /// Pushed from the parent tab. An unselected, unaffordable entry renders grey and is unclickable; a selected
+    /// one stays clickable so you can deselect to free budget. Does not gate already-selected entries.
+    /// </summary>
+    public bool Affordable { get; private set; } = true;
+
+    // Triad: resolved text explaining WHY this entry is unaffordable (which budget was hit), shown on hover. Null when affordable.
+    private string? _unaffordableReason;
 
     private readonly TraitPrototype _trait;
     private bool _isUpdating;
@@ -36,11 +50,22 @@ public sealed partial class TraitEntry : PanelContainer
         _trait = trait;
         TraitCost = trait.Cost;
 
-        // Enable mouse events so tooltips work
+        // Tooltips are supplied on the panel; it needs to receive mouse-over to show them.
         MouseFilter = MouseFilterMode.Pass;
 
         TraitNameLabel.Text = Loc.GetString(trait.Name);
-        TraitDescriptionLabel.SetMessage(Loc.GetString(trait.Description));
+
+        // Triad: parse the description as markup so [italic] flavor renders. Fall back to plain text if a
+        // description has malformed markup, so one bad string can't blank or crash the entry.
+        var desc = Loc.GetString(trait.Description);
+        try
+        {
+            TraitDescriptionLabel.SetMessage(FormattedMessage.FromMarkupOrThrow(desc));
+        }
+        catch (Exception)
+        {
+            TraitDescriptionLabel.SetMessage(desc);
+        }
 
         // Format cost display: positive trait cost spends points, negative trait cost grants points.
         var costText = trait.Cost switch
@@ -53,10 +78,13 @@ public sealed partial class TraitEntry : PanelContainer
         TraitCostLabel.Text = costText;
         TraitCostLabel.ModulateSelfOverride = Color.FromHex(costColor);
 
-        TraitCheckbox.OnToggled += OnCheckboxToggled;
+        // Triad: the whole row is the hit target now (users kept missing the small checkbox). A transparent
+        // full-bleed button (ClickArea) catches the click; the panel itself carries the green/red/grey stylebox.
+        ClickArea.OnPressed += OnEntryPressed;
 
-        // Build condition tooltips
-        UpdateConditionTooltips();
+        // Build the hover tooltip (condition or budget reason).
+        UpdateTooltip();
+        UpdateVisualState();
 
         // Triad: pin the description wrap width to the entry's real arranged width (see UpdateDescriptionWrap).
         OnResized += UpdateDescriptionWrap;
@@ -65,32 +93,46 @@ public sealed partial class TraitEntry : PanelContainer
     private void UpdateDescriptionWrap()
     {
         // This editor measures entries wider than they finally arrange (the lobby sprite panel claims space at
-        // arrange time), so RichTextLabel caches a too-wide wrap and every line clips at the column edge. Pin the
-        // label's max width to the entry's actual width, mirroring the manual width handling the global points bar
-        // already uses in TraitsTab. Width - 54 = inner margins (10 + 10) + the description's 34px left indent.
-        var available = Width - 54f;
+        // arrange time), so RichTextLabel caches a too-wide wrap and clips at the column edge. Pin the label's max
+        // width to its PARENT column's arranged width, which the layout pass has already sized correctly around the
+        // lock and cost. Reading the real arranged width (not entry-width-minus-guesses) self-corrects when the
+        // cost is hidden or margins change, instead of over-reserving and wrapping early.
+        if (TraitDescriptionLabel.Parent is not { } column)
+            return;
+        var available = column.Width;
         if (available > 0f && System.Math.Abs(TraitDescriptionLabel.MaxWidth - available) > 0.5f)
             TraitDescriptionLabel.MaxWidth = available;
     }
 
-    private void UpdateConditionTooltips()
+    // Triad: the tooltip explains why an entry can't be taken. Rule-blocked (red) entries list their failed
+    // conditions; budget-blocked (grey) entries show which limit was hit. It is attached to ClickArea, not the
+    // panel, because the full-bleed ClickArea button sits on top and is what actually receives the mouse-over.
+    private void UpdateTooltip()
     {
-        var conditionsTooltip = new StringBuilder();
+        string? text = null;
 
-        foreach (var condition in _trait.Conditions)
+        if (!MeetsConditions)
         {
-            conditionsTooltip.Append(condition.GetTooltip(_prototype, _loc, 0));
+            var conditions = new StringBuilder();
+            foreach (var condition in _trait.Conditions)
+                conditions.Append(condition.GetTooltip(_prototype, _loc, 0));
+
+            if (conditions.Length > 0)
+                text = Loc.GetString("trait-conditions-tooltip", ("conditions", conditions.ToString())).ToString().Trim();
+        }
+        else if (!Affordable && _unaffordableReason != null)
+        {
+            text = _unaffordableReason;
         }
 
-        if (conditionsTooltip.Length > 0)
+        if (text != null)
         {
-            var tooltip = Loc.GetString("trait-conditions-tooltip", ("conditions", conditionsTooltip.ToString())).ToString().Trim();
-            var markupTooltip = CreateMarkupTooltip(tooltip);
-            TooltipSupplier = _ => markupTooltip;
+            var markupTooltip = CreateMarkupTooltip(text);
+            ClickArea.TooltipSupplier = _ => markupTooltip;
         }
         else
         {
-            TooltipSupplier = null;
+            ClickArea.TooltipSupplier = null;
         }
     }
 
@@ -126,6 +168,7 @@ public sealed partial class TraitEntry : PanelContainer
                 HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
                 InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName), // Mono - Company condition
                 AnyOfCondition anyOfCond => CheckAnyOfCondition(anyOfCond, jobId, speciesId, antagPreferences, traits, companyName),
+                AllOfCondition allOfCond => CheckAllOfCondition(allOfCond, jobId, speciesId, antagPreferences, traits, companyName),
                 _ => true,
             };
 
@@ -138,7 +181,32 @@ public sealed partial class TraitEntry : PanelContainer
             }
         }
 
-        UpdateDisabledState();
+        // Conditions no longer met: force-deselect (e.g. a mutex partner was just picked, or species changed).
+        if (!MeetsConditions && IsSelected)
+        {
+            SetSelected(false);
+            OnToggled?.Invoke(false);
+        }
+
+        UpdateVisualState();
+    }
+
+    /// <summary>
+    /// Triad: set by the parent tab after recomputing budget. Drives the grey "can't afford" state.
+    /// </summary>
+    public void SetAffordable(bool affordable, string? reason = null)
+    {
+        Affordable = affordable;
+        _unaffordableReason = reason;
+        UpdateVisualState();
+    }
+
+    /// <summary>
+    /// Triad: hide the point-cost label in categories with no point budget, where the cost is meaningless noise.
+    /// </summary>
+    public void SetCostVisible(bool visible)
+    {
+        TraitCostLabel.Visible = visible;
     }
 
     private bool CheckSpeciesCondition(IsSpeciesCondition condition, ProtoId<SpeciesPrototype>? speciesId)
@@ -209,6 +277,7 @@ public sealed partial class TraitEntry : PanelContainer
                 HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
                 InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName), // Mono - Company condition
                 AnyOfCondition nestedAnyOf => CheckAnyOfCondition(nestedAnyOf, jobId, speciesId, antagPreferences, traits, companyName), // Recursive!
+                AllOfCondition nestedAllOf => CheckAllOfCondition(nestedAllOf, jobId, speciesId, antagPreferences, traits, companyName),
                 _ => true,
             };
 
@@ -224,72 +293,102 @@ public sealed partial class TraitEntry : PanelContainer
         return false;
     }
 
-    private void UpdateDisabledState()
+    // Triad: client mirror of AllOfCondition — passes only if every child passes (logical AND), recursing into
+    // nested AnyOf/AllOf. HasComp children can't be read in the lobby (same limit as elsewhere), so they pass.
+    private bool CheckAllOfCondition(AllOfCondition condition, ProtoId<JobPrototype>? jobId, ProtoId<SpeciesPrototype>? speciesId, IReadOnlySet<ProtoId<AntagPrototype>>? antagPreferences, IReadOnlySet<ProtoId<TraitPrototype>>? traits, string? companyName)
     {
-        if (!MeetsConditions)
-        {
-            // Hide checkbox, show lock icon
-            TraitCheckbox.Visible = false;
-            LockIcon.Visible = true;
+        if (condition.Conditions.Count == 0)
+            return false;
 
-            // Deselect if conditions no longer met
-            if (TraitCheckbox.Pressed)
+        foreach (var childCondition in condition.Conditions)
+        {
+            var result = childCondition switch
             {
-                _isUpdating = true;
-                TraitCheckbox.Pressed = false;
-                UpdateSelectedStyle();
-                _isUpdating = false;
-                OnToggled?.Invoke(false);
-            }
+                IsSpeciesCondition speciesCond => CheckSpeciesCondition(speciesCond, speciesId),
+                HasJobCondition jobCond => CheckJobCondition(jobCond, jobId),
+                InDepartmentCondition deptCond => CheckDepartmentCondition(deptCond, jobId),
+                HasCompCondition compCond => !compCond.Invert, // can't check in lobby
+                IsAntagEligibleCondition antagEligibleCond => CheckAntagEligibleCondition(antagEligibleCond, antagPreferences),
+                HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
+                InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName),
+                AnyOfCondition nestedAnyOf => CheckAnyOfCondition(nestedAnyOf, jobId, speciesId, antagPreferences, traits, companyName),
+                AllOfCondition nestedAllOf => CheckAllOfCondition(nestedAllOf, jobId, speciesId, antagPreferences, traits, companyName),
+                _ => true,
+            };
 
-            // Add disabled styling
-            AddStyleClass("TraitsEntryDisabled");
+            result ^= childCondition.Invert;
+
+            // If any child fails, the AllOf fails.
+            if (!result)
+                return false;
         }
-        else
-        {
-            // Show checkbox, hide lock icon
-            TraitCheckbox.Visible = true;
-            LockIcon.Visible = false;
 
-            // Remove disabled styling - stylesheet restores normal colors
-            RemoveStyleClass("TraitsEntryDisabled");
-
-            // Reset to normal tooltips
-            UpdateConditionTooltips();
-        }
+        // Every child passed.
+        return true;
     }
 
-    private void OnCheckboxToggled(BaseButton.ButtonToggledEventArgs args)
+    private void OnEntryPressed(BaseButton.ButtonEventArgs args)
     {
         if (_isUpdating)
             return;
 
+        // Rule-blocked entries (red) never toggle. Unaffordable unselected entries (grey) never toggle.
+        // A selected entry always toggles off, so the player can free budget even when at the cap.
         if (!MeetsConditions)
-        {
-            // This shouldn't happen since checkbox is hidden, but just in case
-            _isUpdating = true;
-            TraitCheckbox.Pressed = false;
-            _isUpdating = false;
             return;
-        }
+        if (!IsSelected && !Affordable)
+            return;
 
-        UpdateSelectedStyle();
-        OnToggled?.Invoke(args.Pressed);
+        SetSelected(!IsSelected);
+        OnToggled?.Invoke(IsSelected);
     }
 
     public void SetSelected(bool selected)
     {
         _isUpdating = true;
-        TraitCheckbox.Pressed = selected && MeetsConditions;
-        UpdateSelectedStyle();
+        IsSelected = selected && MeetsConditions;
+        UpdateVisualState();
         _isUpdating = false;
     }
 
-    private void UpdateSelectedStyle()
+    /// <summary>
+    /// Triad: single source of truth for the entry's look. Four states, in priority order:
+    /// rule-blocked (red, lock) &gt; selected (green) &gt; unaffordable (grey, lock) &gt; available (normal).
+    /// </summary>
+    private void UpdateVisualState()
     {
-        if (TraitCheckbox.Pressed)
+        RemoveStyleClass("TraitsEntrySelected");
+        RemoveStyleClass("TraitsEntryRuleBlocked");
+        RemoveStyleClass("TraitsEntryDisabled");
+        LockIcon.Visible = false;
+
+        if (!MeetsConditions)
+        {
+            // Blocked by a rule the player could only change via species/job/other selections.
+            // ClickArea disabled so the row gives no press feedback, not just a no-op click.
+            LockIcon.Visible = true;
+            AddStyleClass("TraitsEntryRuleBlocked");
+            ClickArea.Disabled = true;
+        }
+        else if (IsSelected)
+        {
+            // Always clickable so it can be deselected, even when the category/points are at the cap.
             AddStyleClass("TraitsEntrySelected");
+            ClickArea.Disabled = false;
+        }
+        else if (!Affordable)
+        {
+            // No budget left; greyed and unclickable, with a lock icon so the affordance matches rule-blocked
+            // entries. The hover tooltip explains which budget was hit.
+            LockIcon.Visible = true;
+            AddStyleClass("TraitsEntryDisabled");
+            ClickArea.Disabled = true;
+        }
         else
-            RemoveStyleClass("TraitsEntrySelected");
+        {
+            ClickArea.Disabled = false;
+        }
+
+        UpdateTooltip();
     }
 }

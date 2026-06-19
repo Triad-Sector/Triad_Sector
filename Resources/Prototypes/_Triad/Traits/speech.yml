@@ -9,7 +9,7 @@
   name: trait-newbrooklyn-accent-name
   description: trait-newbrooklyn-accent-desc
   category: Accents
-  cost: 0
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
   effects:
   - !type:AddCompsEffect
     components:
@@ -22,7 +22,7 @@
   name: trait-neanderthal-accent-name
   description: trait-neanderthal-accent-desc
   category: Accents
-  cost: 1
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
   effects:
   - !type:AddCompsEffect
     components:

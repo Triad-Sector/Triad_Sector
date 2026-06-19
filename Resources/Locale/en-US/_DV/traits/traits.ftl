@@ -45,21 +45,19 @@ trait-dustkin-accent-desc = Oi! You speak like you were raised out on the dusty 
 trait-edgerunner-accent-name = Edgerunner
 trait-edgerunner-accent-desc = Ya came up runnin' the edges of a sprawlin' megacity an' never went to school. An' it shows, choom.
 
-trait-mobster-accent-name = Mobster accent
+trait-mobster-accent-name = Mobster Accent
 trait-mobster-accent-desc = Fugeddaboutit! Yous talk numhally, capiche?
 
-trait-ultravision-name = Ultraviolet vision
-trait-ultravision-desc = Whether through custom bionic eyes, random mutation,
-                         or a bad organ replacement, you perceive the world with ultraviolet light.
+trait-ultravision-name = Ultraviolet Vision
+trait-ultravision-desc = Whether through custom bionic eyes, random mutation, or a bad organ replacement, you perceive the world with ultraviolet light.
 
 trait-deuteranopia-name = Deuteranopia
-trait-deuteranopia-desc = Whether through custom bionic eyes, random mutation,
-                          or a bad organ replacement, you have red-green colour blindness.
+trait-deuteranopia-desc = Whether through custom bionic eyes, random mutation, or a bad organ replacement, you have red-green colour blindness.
 
 trait-uncloneable-name = Uncloneable
 trait-uncloneable-desc = Cannot be cloned
 
-trait-dysgraphia-name = Unable to write
+trait-dysgraphia-name = Unable to Write
 trait-dysgraphia-desc = You cannot write, whether because of a disability, your history, or by choice.
 
 trait-amputee-left-arm-name = Amputee (Arm, Left)
