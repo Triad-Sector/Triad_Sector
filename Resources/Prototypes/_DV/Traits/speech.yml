@@ -188,15 +188,12 @@
   category: Accents
   cost: 1
   conditions:
-  # Triad: a Dwarf may dial their own brogue down to mild directly (the OverwriteCompsEffect below replaces
-  # their native thick DwarfAccent, no Accentless needed). Any other heavy-native species (Goblin) needs Accentless.
-  - !type:AnyOfCondition
-    conditions:
-    - !type:IsSpeciesCondition
-      species: Dwarf
-    - !type:HasFreeAccentSlotCondition
+  # Triad: same gate as any dialect; a Dwarf takes the mild brogue only after Accentless clears their native
+  # one. Accentless is cost 0, so it applies first (cheapest-first order) and removes the native thick
+  # DwarfAccent before this slight one is added.
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
-  - !type:OverwriteCompsEffect
+  - !type:AddCompsEffect
     components:
     - type: DwarfAccent
       strength: Slight

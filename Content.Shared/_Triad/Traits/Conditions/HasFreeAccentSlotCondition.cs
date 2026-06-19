@@ -20,12 +20,13 @@ namespace Content.Shared._Triad.Traits.Conditions;
 public sealed partial class HasFreeAccentSlotCondition : BaseTraitCondition
 {
     // Species whose native accent is heavy enough that a second dialect would mangle speech. Kept in code,
-    // not a DataField, because the identical gate rides on every paid accent; change the set here.
-    private static readonly ProtoId<SpeciesPrototype>[] HeavyNativeAccentSpecies =
+    // not a DataField, because the identical gate rides on every paid accent; change the set here. Public so
+    // the client lobby mirror (TraitEntry) shares one source of truth and the two evaluators can't drift.
+    public static readonly ProtoId<SpeciesPrototype>[] HeavyNativeAccentSpecies =
         { "Dwarf", "Goblin" };
 
     // Taking this trait clears the native accent, which frees the slot for a chosen dialect.
-    private static readonly ProtoId<TraitPrototype> AccentlessTrait = "Accentless";
+    public static readonly ProtoId<TraitPrototype> AccentlessTrait = "Accentless";
 
     protected override bool EvaluateImplementation(TraitConditionContext ctx)
     {
