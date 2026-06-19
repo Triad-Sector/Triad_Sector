@@ -3,6 +3,7 @@ using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
 using Robust.Shared.Random;
 using System.Text.RegularExpressions;
+using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers relocated to _Triad
 
 namespace Content.Server._NF.Speech.EntitySystems;
 

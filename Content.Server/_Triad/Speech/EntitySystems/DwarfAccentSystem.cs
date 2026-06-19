@@ -1,10 +1,15 @@
-using Content.Server._DV.Speech.Components;
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
+using Content.Server._Triad.Speech.Components;
 using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
 using Robust.Shared.Random;
 using System.Text.RegularExpressions;
 
-namespace Content.Server._DV.Speech.EntitySystems;
+namespace Content.Server._Triad.Speech.EntitySystems;
 
 // Triad: the Dwarven Brogue (TF2-Demoman-thick Scots). Merged from the near-identical Scottish + Dwarf
 // word lists onto the shared AccentHelpers, plus the signature Scots phonetics. Deliberately does NOT

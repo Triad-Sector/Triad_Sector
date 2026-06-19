@@ -1,4 +1,5 @@
 // Triad: enriched German accent. Identifiers kept upstream-named for clean cherry-picking;
+using Content.Server._Triad.Speech; // Triad: AccentStrength relocated to _Triad
 using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
 

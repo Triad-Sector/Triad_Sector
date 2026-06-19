@@ -1,7 +1,11 @@
-using Content.Server._DV.Speech.EntitySystems;
-using Content.Server.Speech;
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
+using Content.Server._Triad.Speech.EntitySystems;
 
-namespace Content.Server._DV.Speech.Components;
+namespace Content.Server._Triad.Speech.Components;
 
 [RegisterComponent]
 [Access(typeof(DwarfAccentSystem))]

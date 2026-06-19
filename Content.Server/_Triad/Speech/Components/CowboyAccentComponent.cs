@@ -1,6 +1,11 @@
-using Content.Server.Speech.EntitySystems;
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
+using Content.Server._Triad.Speech.EntitySystems;
 
-namespace Content.Server.Speech.Components;
+namespace Content.Server._Triad.Speech.Components;
 
 // Triad: Cowboy promoted from a data-only ReplacementAccent word list to a dedicated component on the
 // shared DrawlAccentSystem, so its rich Western vocab finally gets the drawl + prefix/suffix tics.

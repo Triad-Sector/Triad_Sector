@@ -1,3 +1,4 @@
+using Content.Server._Triad.Speech.EntitySystems; // Triad: DrawlAccentSystem + IDrawlAccentComponent relocated to _Triad
 using Content.Server.Speech.EntitySystems;
 
 namespace Content.Server.Speech.Components;

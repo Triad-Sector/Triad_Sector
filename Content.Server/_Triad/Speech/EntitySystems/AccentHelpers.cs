@@ -1,10 +1,15 @@
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Robust.Shared.Random;
 
-namespace Content.Server.Speech.EntitySystems;
+namespace Content.Server._Triad.Speech.EntitySystems;
 
 // Triad: shared text helpers for speech accents. The gnarly, reusable bits -- g-dropping with a
 // non-gerund keep-list, a/an re-agreement, and caps-aware affix placement -- live here so every

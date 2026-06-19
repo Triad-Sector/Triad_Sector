@@ -1,8 +1,16 @@
+/*
+ * Triad - This file is licensed under AGPLv3
+ * Copyright (c) 2025 Triad Contributors
+ * See AGPLv3.txt for details.
+ */
 using System.Text.RegularExpressions;
+using Content.Server._Triad.Speech.Components;
+using Content.Server.Speech;
 using Content.Server.Speech.Components;
+using Content.Server.Speech.EntitySystems;
 using Robust.Shared.Random;
 
-namespace Content.Server.Speech.EntitySystems;
+namespace Content.Server._Triad.Speech.EntitySystems;
 
 // Triad: expanded from upstream SouthernAccentSystem into a shared "drawl" engine driving both the
 // Southern and Cowboy accents. Shared mechanics (g-drop, a/an, caps-aware tics) live in AccentHelpers;
