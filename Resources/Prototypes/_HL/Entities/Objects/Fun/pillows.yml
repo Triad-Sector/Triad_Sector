@@ -220,7 +220,7 @@
     state: pillow_reigal_red
 
 - type: entity
-  id: PillowStarburst  #Triad Grammar starbirst>starbusrt
+  id: PillowStarburst  #Triad Grammar starbirst>starburst
   parent: BasePillow
   name: starburst pillow
   description: Smells like blue raspberry candy. #Triad grammar
