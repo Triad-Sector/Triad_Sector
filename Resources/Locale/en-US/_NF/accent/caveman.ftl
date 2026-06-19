@@ -336,7 +336,7 @@ accent-caveman-replacement-137 = many
 accent-caveman-replaced-138 = dozen
 accent-caveman-replacement-138 = many
 
-# Triad: data-mined common-word rescues -- top real-chat words that grunted out, mapped to small caveman words
+# Triad: common-word rescues -- frequent words that grunted out, mapped to small caveman words
 accent-caveman-replaced-139 = something
 accent-caveman-replacement-139 = thing
 accent-caveman-replaced-140 = somethin

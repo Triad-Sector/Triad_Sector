@@ -107,7 +107,7 @@ accent-russian-words-33 = work
 accent-russian-words-33-2 = job
 accent-russian-words-replace-33 = rabota
 
-# Population-native batch, mined from prod IC chat frequency (combat/movement/oaths players actually type).
+# Common combat, movement, and oath words players reach for constantly.
 accent-russian-words-34 = come
 accent-russian-words-34-2 = move
 accent-russian-words-replace-34 = davai

@@ -349,7 +349,7 @@ accent-bogan-words-108 = mosquito
 accent-bogan-words-replace-108 = mozzie
 
 
-# People and roles (scrape)
+# People and roles (more)
 accent-bogan-words-109 = wife
 accent-bogan-words-replace-109 = missus
 
@@ -371,7 +371,7 @@ accent-bogan-words-replace-114 = hooroo
 accent-bogan-words-116 = wow
 accent-bogan-words-replace-116 = crikey
 
-# Descriptors (scrape)
+# Descriptors (more)
 accent-bogan-words-117 = lazy
 accent-bogan-words-replace-117 = slack
 
@@ -393,7 +393,7 @@ accent-bogan-words-replace-122 = bonza
 accent-bogan-words-123 = nosy
 accent-bogan-words-replace-123 = stickybeak
 
-# Objects and places (scrape)
+# Objects and places (more)
 accent-bogan-words-124 = umbrella
 accent-bogan-words-replace-124 = brolly
 
@@ -415,7 +415,7 @@ accent-bogan-words-replace-129 = daks
 accent-bogan-words-130 = scam
 accent-bogan-words-replace-130 = rort
 
-# Food and drink (scrape)
+# Food and drink (more)
 accent-bogan-words-131 = sausages
 accent-bogan-words-replace-131 = snags
 
@@ -428,7 +428,7 @@ accent-bogan-words-replace-133 = goon
 accent-bogan-words-134 = avocado
 accent-bogan-words-replace-134 = avo
 
-# Actions (scrape)
+# Actions (more)
 accent-bogan-words-135 = complaining
 accent-bogan-words-replace-135 = whingein'
 

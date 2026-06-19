@@ -3,8 +3,8 @@
 # See AGPLv3.txt for details.
 
 # New Brooklyn: the everyman borough accent. The pizzeria owner, the garage mechanic, the guy on the
-# corner. NYC working-class phonetic spellings + regular-Joe slang, frequency-prioritized from prod IC
-# chat. Tic prefixes are interjections; suffixes are everyman address/affirmation (no insults).
+# corner. NYC working-class phonetic spellings + regular-Joe slang. Tic prefixes are interjections;
+# suffixes are everyman address/affirmation (no insults).
 
 # Tics
 accent-newbrooklyn-prefix-1 = Ey,

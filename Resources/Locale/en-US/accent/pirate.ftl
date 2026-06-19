@@ -1,5 +1,5 @@
 # Triad: enriched Pirate accent vocab (display name "Freeport Corsair"). Buccaneer swaps + salty
-# interjection/affirmation tics, frequency-prioritized from prod IC chat. Upstream-named for portability.
+# interjection/affirmation tics. Upstream-named for portability.
 
 # Tics -- prefixes are the "Arrr" interjections (no greetings); suffixes are salty affirmation/address.
 accent-pirate-prefix-1 = Arrr,
