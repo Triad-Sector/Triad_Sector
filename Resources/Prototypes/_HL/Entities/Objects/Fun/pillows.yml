@@ -199,7 +199,7 @@
   id: PillowPawPrint
   parent: BasePillow
   name: paw print pillow
-  description: Comfy, with a paw on it. #triad changed description from "Imagine if this paw stepped on you, instead of the pillow."
+  description: Comfy, with a paw on it. #triad changed description
   components:
   - type: Item
     heldPrefix: bluepillow
