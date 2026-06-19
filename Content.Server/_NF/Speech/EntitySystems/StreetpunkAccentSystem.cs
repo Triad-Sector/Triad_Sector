@@ -40,10 +40,10 @@ public sealed class StreetpunkAccentSystem : EntitySystem
         // Triad: a/an re-agreement + data-driven cyberpunk tic pools via the shared helpers.
         msg = AccentHelpers.FixArticles(msg);
 
-        if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+        if (AccentHelpers.AffixesEnabled && component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
             msg = AccentHelpers.PrependPrefix(msg, Loc.GetString(_random.Pick(component.Prefixes)));
 
-        if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+        if (AccentHelpers.AffixesEnabled && component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
             msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(component.Suffixes)));
 
         return msg;

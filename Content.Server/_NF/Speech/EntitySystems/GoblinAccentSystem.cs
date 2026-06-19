@@ -72,10 +72,10 @@ public sealed class GoblinAccentSystem : EntitySystem
         {
             message = AccentHelpers.FixArticles(message);
 
-            if (component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
+            if (AccentHelpers.AffixesEnabled && component.Prefixes.Count > 0 && _random.Prob(component.PrefixProb))
                 message = AccentHelpers.PrependPrefix(message, Loc.GetString(_random.Pick(component.Prefixes)));
 
-            if (component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
+            if (AccentHelpers.AffixesEnabled && component.Suffixes.Count > 0 && _random.Prob(component.SuffixProb))
                 message = AccentHelpers.AppendSuffix(message, Loc.GetString(_random.Pick(component.Suffixes)));
         }
 
