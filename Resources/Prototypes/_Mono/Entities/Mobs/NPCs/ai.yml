@@ -47,7 +47,8 @@
   - type: Anchorable
   - type: HTN
     sleepPlayerCheckRangeOverride: 4000
-    sleepMaxGridSpeed: 10 # don't sleep so we can still dodge grids or such if drifting far from players
+    # Triad: disabled. A rammer is always moving, so this kept it permanently awake, it never slept away from players and self-piloted across the sector into safe zones (CC) and over-despawned in the far reaches. Per-drone radial containment is the real fix; this stops the bleeding. (revert of #4075)
+    # sleepMaxGridSpeed: 10 # don't sleep so we can still dodge grids or such if drifting far from players
     rootTask:
       task: RammerShuttleCompound
   - type: StaticPrice
