@@ -35,6 +35,7 @@ public sealed partial class ShipSteeringSystem : EntitySystem
     [Dependency] private EntityQuery<ProjectileGridPhaseComponent> _phaseQuery;
     [Dependency] private EntityQuery<PhysicsComponent> _physQuery;
     [Dependency] private EntityQuery<ShuttleComponent> _shuttleQuery;
+    [Dependency] private EntityQuery<ShuttleConsoleComponent> _consoleQuery; // Triad
     [Dependency] private EntityQuery<ProjectileComponent> _projectileQuery;
     [Dependency] private EntityQuery<EmpOnTriggerComponent> _empQuery;
     [Dependency] private EntityQuery<ExplosiveComponent> _explosiveQuery;
@@ -152,7 +153,8 @@ public sealed partial class ShipSteeringSystem : EntitySystem
 
             RotationCompensation = ref ent.Comp.RotationCompensation,
 
-            FrameTime = args.FrameTime
+            FrameTime = args.FrameTime,
+            ManageDampening = !_consoleQuery.HasComp(ent), // Triad: leave dampening to the player on console autopilot
         };
 
         args.Input = ProcessMovement(ref context, config);
@@ -260,10 +262,14 @@ public sealed partial class ShipSteeringSystem : EntitySystem
         strafeInput = GetGoodThrustVector(strafeInput, ctx.Shuttle) * MathF.Min(1f, wishInputVec.Length());
 
         // also set us to anchor dampening if we wish to brake
-        if (brakeInput == 1f && ctx.ShipBody.LinearVelocity.Length() >= config.AnchorMaxVelocity)
-            _shuttle.SetInertiaDampening(ctx.ShipUid, ctx.ShipBody, ctx.Shuttle, ctx.ShipXform, InertiaDampeningMode.Anchor);
-        else
-            _shuttle.SetInertiaDampening(ctx.ShipUid, ctx.ShipBody, ctx.Shuttle, ctx.ShipXform, InertiaDampeningMode.Off);
+        // Triad: only NPC ships auto-manage dampening; player autopilot keeps the pilot's Drive/Cruise/Park selection (regression from #4064)
+        if (ctx.ManageDampening)
+        {
+            if (brakeInput == 1f && ctx.ShipBody.LinearVelocity.Length() >= config.AnchorMaxVelocity)
+                _shuttle.SetInertiaDampening(ctx.ShipUid, ctx.ShipBody, ctx.Shuttle, ctx.ShipXform, InertiaDampeningMode.Anchor);
+            else
+                _shuttle.SetInertiaDampening(ctx.ShipUid, ctx.ShipBody, ctx.Shuttle, ctx.ShipXform, InertiaDampeningMode.Off);
+        }
 
         return new ShuttleInput(strafeInput, rotControl.RotationInput, brakeInput);
     }
@@ -750,6 +756,7 @@ public sealed partial class ShipSteeringSystem : EntitySystem
         public ref float RotationCompensation;
         // misc
         public float FrameTime;
+        public bool ManageDampening; // Triad: false for player-console autopilot so we don't stomp the pilot's dampening mode
     }
 
     private record struct SteeringConfig
