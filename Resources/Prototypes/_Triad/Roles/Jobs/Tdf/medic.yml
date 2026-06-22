@@ -18,6 +18,7 @@
       department: Security
       time: 18000 # 5 hours
   startingGear: TdfMedicGear
+  alwaysUseSpawner: true
   icon: JobIconTdfMedic
   supervisors: job-supervisors-tdf-warden
   weight: 125

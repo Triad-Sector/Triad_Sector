@@ -8,6 +8,7 @@
       department: Security
       time: 90000 # 20 hours
   startingGear: TdfLeaderGear
+  alwaysUseSpawner: true
   icon: JobIconTdfPatrolTeamLeader
   supervisors: job-supervisors-tdf-enforcer
   weight: 140

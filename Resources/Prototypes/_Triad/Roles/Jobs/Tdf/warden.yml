@@ -11,6 +11,7 @@
       role: JobTdfPatrolTeamLeader
       time: 3600 # 1 hour
   startingGear: TdfWardenGear
+  alwaysUseSpawner: true
   icon: JobIconTdfWarden
   supervisors: job-supervisors-tdf-enforcer
   weight: 150
