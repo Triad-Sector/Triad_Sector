@@ -18,6 +18,7 @@ public sealed class BlockWieldOnUntoggledSystem : EntitySystem
         SubscribeLocalEvent<BlockWieldOnUntoggledComponent, WieldAttemptEvent>(OnWeaponWield);
         SubscribeLocalEvent<BlockWieldOnUntoggledComponent, ItemToggledEvent>(OnItemToggled);
     }
+    
     private void OnWeaponWield(Entity<BlockWieldOnUntoggledComponent> ent, ref WieldAttemptEvent args)
     {
         if (ent.Comp.BlockWieldOnUntoggled && !_itemToggle.IsActivated(ent.Owner))
