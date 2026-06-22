@@ -1,12 +1,16 @@
-using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
 using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
@@ -14,6 +18,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Materials;
 
@@ -30,6 +35,8 @@ public abstract class SharedMaterialReclaimerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     //[Dependency] private readonly EmagSystem _emag = default!; // Frontier: no point
+    [Dependency] private readonly OpenableSystem _openable = default!; // (#43766)
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!; // (#43766)
 
     public const string ActiveReclaimerContainerId = "active-material-reclaimer-container";
 
@@ -42,6 +49,30 @@ public abstract class SharedMaterialReclaimerSystem : EntitySystem
         SubscribeLocalEvent<MaterialReclaimerComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CollideMaterialReclaimerComponent, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<ActiveMaterialReclaimerComponent, ComponentStartup>(OnActiveStartup);
+        SubscribeLocalEvent<MaterialReclaimerComponent, InteractUsingEvent>(OnInteractUsing,
+            before: [typeof(SolutionTransferSystem), typeof(AnchorableSystem)]);
+    }
+    private void OnInteractUsing(Entity<MaterialReclaimerComponent> entity, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        // if we're trying to get a solution out of the reclaimer, don't destroy it
+        // Frontier: no Contents.Any() gate - do not trash solution containers even if the reclaimer is empty
+        if (entity.Comp.SolutionContainerId != null && _solutionContainer.TryGetSolution(entity.Owner, entity.Comp.SolutionContainerId, out _, out var outputSolution))
+        {
+            if (_solutionContainer.EnumerateSolutions(args.Used).Any(s => s.Solution.Comp.Solution.AvailableVolume > 0))
+            {
+                if (_openable.IsClosed(args.Used))
+                    return;
+
+                if (TryComp<SolutionTransferComponent>(args.Used, out var transfer) &&
+                    transfer.CanReceive) // Frontier: CanReceive (fillable container), not CanSend
+                    return;
+            }
+        }
+
+        args.Handled = TryStartProcessItem(entity.Owner, args.Used, entity.Comp, args.User);
     }
 
     private void OnMapInit(EntityUid uid, MaterialReclaimerComponent component, MapInitEvent args)

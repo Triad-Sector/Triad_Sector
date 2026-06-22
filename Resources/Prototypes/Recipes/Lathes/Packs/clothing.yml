@@ -242,3 +242,19 @@
   - ClothingOuterWinterSyndie
   - ClothingOuterWinterSyndieCap
   - BedsheetSyndie
+
+# Hardlight start -pillows
+- type: latheRecipePack 
+  id: PillowsStandard
+  recipes:
+  - PillowSmallWhite
+  - PillowLongWhite
+  - PillowLumpBlue
+  - PillowLumpRed
+  - PillowLumpWhite
+  - PillowSmallBlue
+  - PillowSmallRed
+  - PillowSquareBlue
+  - PillowSquareRed
+  - PillowSquareWhite
+#hardlight end

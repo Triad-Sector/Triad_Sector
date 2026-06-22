@@ -516,6 +516,8 @@
     revealWhitelist:
       components:
       - AtmosPipeLayers
+  # Triad: lets the operator deconstruct the pipes the built-in t-ray reveals under floor tiles.
+  - type: SubfloorReach
   - type: LimitedCharges
     maxCharges: 45
   - type: Sprite

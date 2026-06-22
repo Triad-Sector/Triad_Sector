@@ -22,6 +22,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
 using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
+using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Flash
 {
@@ -99,8 +100,12 @@ namespace Content.Server.Flash
                 _popup.PopupEntity(Loc.GetString("flash-component-becomes-empty"), user);
             }
 
-            uid.SpawnTimer(400, () =>
+            // Triad: engine v275 removed the SpawnTimer extension; static Timer + deletion guard keeps the old semantics
+            Timer.Spawn(400, () =>
             {
+                if (Deleted(uid))
+                    return;
+
                 _appearance.SetData(uid, FlashVisuals.Flashing, false);
                 comp.Flashing = false;
             });

@@ -68,7 +68,7 @@
   id: WeaponTurretFragment
   name: "\"Fragment\" modified mass driver"
   parent: WeaponTurretShard
-  description: Appears to be a heavily modified "Shard" mass driver. Unstable and rarely found in the wild.
+  description: Appears to be a heavily modified "Shard" mass driver. Unstable to maintain because of it's complexity and rarely found in the wild. # Triad changes
   suffix: Drone T2
   components:
   - type: StaticPrice
@@ -109,6 +109,8 @@
       bounds: "-1,-1.5,1,1.5"
   - type: ShipGunClass
     shipClass: Medium
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: WeaponTurretPinhole
