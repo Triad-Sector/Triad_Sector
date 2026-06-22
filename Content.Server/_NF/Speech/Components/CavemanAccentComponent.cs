@@ -6,28 +6,42 @@ namespace Content.Server._NF.Speech.Components;
 [Access(typeof(CavemanAccentSystem))]
 public sealed partial class CavemanAccentComponent : Component
 {
+    // Triad: raised 5 -> 8 so everyday words (doctor, weapon, bridge, airlock) survive and only the
+    // genuinely long ones (maintenance, atmospherics, coordinates) grunt out -- 5 made it unintelligible.
+    // Most common long words are caught by the word-list below before length ever matters.
     [ViewVariables(VVAccess.ReadWrite)]
-    public static int MaxWordLength = 5; // so man not talk smart, any word up dis be gone
+    public static int MaxWordLength = 8;
 
+    // Triad: filler/grammar words a caveman drops entirely ("me go store"). The keys were mistyped
+    // (forbidden-words-N) so they never resolved, and the system never used them -- both fixed now.
     [ViewVariables]
     public static readonly List<string> ForbiddenWords = new()
     {
-        "accent-caveman-forbidden-words-0",
-        "accent-caveman-forbidden-words-1",
-        "accent-caveman-forbidden-words-2",
-        "accent-caveman-forbidden-words-3",
-        "accent-caveman-forbidden-words-4",
-        "accent-caveman-forbidden-words-5",
-        "accent-caveman-forbidden-words-6",
-        "accent-caveman-forbidden-words-7",
-        "accent-caveman-forbidden-words-8",
-        "accent-caveman-forbidden-words-9",
-        "accent-caveman-forbidden-words-10",
-        "accent-caveman-forbidden-words-11",
-        "accent-caveman-forbidden-words-12",
-        "accent-caveman-forbidden-words-13",
-        "accent-caveman-forbidden-words-14",
-        "accent-caveman-forbidden-words-15",
+        "accent-caveman-forbidden-0",
+        "accent-caveman-forbidden-1",
+        "accent-caveman-forbidden-2",
+        "accent-caveman-forbidden-3",
+        "accent-caveman-forbidden-4",
+        "accent-caveman-forbidden-5",
+        "accent-caveman-forbidden-6",
+        "accent-caveman-forbidden-7",
+        "accent-caveman-forbidden-8",
+        "accent-caveman-forbidden-9",
+        "accent-caveman-forbidden-10",
+        "accent-caveman-forbidden-11",
+        "accent-caveman-forbidden-12",
+        "accent-caveman-forbidden-13",
+        "accent-caveman-forbidden-14",
+        "accent-caveman-forbidden-15",
+        "accent-caveman-forbidden-16",
+        "accent-caveman-forbidden-17",
+        "accent-caveman-forbidden-18",
+        "accent-caveman-forbidden-19",
+        "accent-caveman-forbidden-20",
+        "accent-caveman-forbidden-21",
+        "accent-caveman-forbidden-22",
+        "accent-caveman-forbidden-23",
+        "accent-caveman-forbidden-24",
     };
 
     [ViewVariables]

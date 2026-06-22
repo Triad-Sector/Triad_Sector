@@ -580,7 +580,7 @@ namespace Content.Server.GameTicking
 
                 if (TryGetEntity(mind.OriginalOwnedEntity, out var entity) && pvsOverride)
                 {
-                    _pvsOverride.AddGlobalOverride(GetNetEntity(entity.Value), recursive: true);
+                    _pvsOverride.AddGlobalOverride(entity.Value); // Triad: engine v275 removed the NetEntity overload and its recursive arg
                 }
 
                 var roles = _roles.MindGetAllRoleInfo(mindId);

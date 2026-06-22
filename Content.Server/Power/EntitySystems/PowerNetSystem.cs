@@ -334,9 +334,11 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
             while (enumerator.MoveNext(out var uid, out var apcReceiver))
             {
+                // (#43879) zero-load devices must not report as powered
                 var powered = !apcReceiver.PowerDisabled
                               && (!apcReceiver.NeedsPower
-                                  || MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
+                                  || apcReceiver.Load > 0
+                                  && MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
                                       apcReceiver.Load));
 
                 MetaDataComponent? metadata = null;

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Robust.Client.Graphics;
@@ -79,13 +79,25 @@ public sealed class StyleTraits : StyleBase
         };
         entryPanelBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
 
+        // Triad: selected = green (was blue). The whole row is the click target now, so the fill carries the
+        // "this is on" signal that the dropped checkbox used to.
         var entrySelectedBox = new StyleBoxFlat
         {
-            BackgroundColor = Color.FromHex("#2a3a4a"),
-            BorderColor = accentBlue,
+            BackgroundColor = Color.FromHex("#2f5a3f"),
+            BorderColor = accentGreen,
             BorderThickness = new Thickness(1, 1, 1, 1)
         };
         entrySelectedBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
+
+        // Triad: rule-blocked = red tint (species/job/mutex). Distinct from the grey "no budget" state so the
+        // player can tell "I can never pick this" from "I can't pick this right now".
+        var entryRuleBlockedBox = new StyleBoxFlat
+        {
+            BackgroundColor = Color.FromHex("#5a2f2f"),
+            BorderColor = accentRed,
+            BorderThickness = new Thickness(1)
+        };
+        entryRuleBlockedBox.SetContentMarginOverride(StyleBox.Margin.All, 0);
 
         var entryDisabledBox = new StyleBoxFlat
         {
@@ -114,10 +126,20 @@ public sealed class StyleTraits : StyleBase
             "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
         };
 
+        // Triad: bold variant for the category headings and trait names.
+        var boldFontPaths = new[]
+        {
+            "/Fonts/NotoSans/NotoSans-Bold.ttf",
+            "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
+            "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
+        };
+
         var notoSans10 = resCache.GetFont(fontPaths, 10);
         var notoSans11 = resCache.GetFont(fontPaths, 11);
         var notoSans12 = resCache.GetFont(fontPaths, 12);
         var notoSans14 = resCache.GetFont(fontPaths, 14);
+        var notoSansBold11 = resCache.GetFont(boldFontPaths, 11);
+        var notoSansBold12 = resCache.GetFont(boldFontPaths, 12);
 
         return new StyleRule[]
         {
@@ -201,7 +223,7 @@ public sealed class StyleTraits : StyleBase
 
             Element<Label>()
                 .Class("TraitsCategoryNameLabel")
-                .Prop(Label.StylePropertyFont, notoSans12)
+                .Prop(Label.StylePropertyFont, notoSansBold12)
                 .Prop(Label.StylePropertyFontColor, textPrimary),
 
             Element<Label>()
@@ -225,6 +247,8 @@ public sealed class StyleTraits : StyleBase
                 .Prop(PanelContainer.StylePropertyPanel, categoryContentBox),
 
             // ===== TRAIT ENTRY =====
+            // Triad: the panel paints the state stylebox; a transparent ClickArea button on top catches clicks.
+            // No modulate, the box colors carry the state (modulate over a dark theme washed entries to black).
             Element<PanelContainer>()
                 .Class("TraitsEntryPanel")
                 .Prop(PanelContainer.StylePropertyPanel, entryPanelBox),
@@ -233,15 +257,25 @@ public sealed class StyleTraits : StyleBase
                 .Class("TraitsEntryPanel", "TraitsEntrySelected")
                 .Prop(PanelContainer.StylePropertyPanel, entrySelectedBox),
 
-            // Disabled entry styling
+            // Rule-blocked entry styling (red): species / job / mutex.
+            Element<PanelContainer>()
+                .Class("TraitsEntryPanel", "TraitsEntryRuleBlocked")
+                .Prop(PanelContainer.StylePropertyPanel, entryRuleBlockedBox),
+
+            // Budget-disabled entry styling (grey): no slots / points left.
             Element<PanelContainer>()
                 .Class("TraitsEntryPanel", "TraitsEntryDisabled")
-                .Prop(PanelContainer.StylePropertyPanel, entryDisabledBox)
-                .Prop(Control.StylePropertyModulateSelf, new Color(1f, 1f, 1f, 0.5f)),
+                .Prop(PanelContainer.StylePropertyPanel, entryDisabledBox),
+
+            // The full-bleed click overlay is visually transparent (no stylebox in any draw mode) so the panel's
+            // state color shows through. It exists only to catch the whole-row click.
+            Element<ContainerButton>()
+                .Class("TraitsEntryClickArea")
+                .Prop(ContainerButton.StylePropertyStyleBox, new StyleBoxEmpty()),
 
             Element<Label>()
                 .Class("TraitsEntryNameLabel")
-                .Prop(Label.StylePropertyFont, notoSans11)
+                .Prop(Label.StylePropertyFont, notoSansBold11)
                 .Prop(Label.StylePropertyFontColor, textPrimary),
 
             Element<Label>()

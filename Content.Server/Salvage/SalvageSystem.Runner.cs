@@ -160,6 +160,20 @@ public sealed partial class SalvageSystem
         QueueDel(ev.FromMapUid.Value);
     }
 
+    // Triad: true while any player ship (ShuttleComponent grid) is still parented to the expedition
+    // map. Dungeon/asteroid terrain grids aren't shuttles, so they don't block teardown.
+    private bool ExpeditionMapHasShuttle(EntityUid map)
+    {
+        var query = AllEntityQuery<ShuttleComponent, TransformComponent>();
+        while (query.MoveNext(out _, out var xform))
+        {
+            if (xform.MapUid == map)
+                return true;
+        }
+
+        return false;
+    }
+
     // Runs the expedition
     private void UpdateRunner()
     {
@@ -269,7 +283,12 @@ public sealed partial class SalvageSystem
 
             if (remaining < TimeSpan.Zero)
             {
-                QueueDel(uid);
+                // Triad: don't tear down the expedition map while a player ship is still on it.
+                // The auto-FTL above retries every tick, so a ship stranded by its FTL-drive
+                // cooldown is evacuated once the drive is ready; deferring until the map is clear
+                // turns "ship + crew deleted" into "expedition ends a few seconds late".
+                if (!ExpeditionMapHasShuttle(uid))
+                    QueueDel(uid);
             }
         }
 

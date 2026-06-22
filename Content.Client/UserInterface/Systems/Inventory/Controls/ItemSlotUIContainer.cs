@@ -11,7 +11,7 @@ public interface IItemslotUIContainer
     public bool TryAddButton(SlotControl control);
 }
 
-[Virtual]
+// Triad: removed [Virtual] - engine v277 RA0053 forbids it on abstract types (wizden removed it upstream in #43347)
 public abstract class ItemSlotUIContainer<T> : GridContainer, IItemslotUIContainer where T : SlotControl
 {
     protected readonly Dictionary<string, T> Buttons = new();

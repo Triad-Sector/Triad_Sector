@@ -426,6 +426,12 @@
           map: [ "enum.SubfloorLayers.FirstLayer" ]
     - type: AtmosPipeLayers
       spriteRsiPaths: {}
+      # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml).
+      alternativePrototypes:
+        Primary: GasPort
+        Secondary: GasPortAlt1
+        Tertiary: GasPortAlt2
+      # End Triad
     - type: Appearance
     - type: PipeColorVisuals
     - type: GasPort
@@ -466,6 +472,14 @@
           map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
     - type: AtmosPipeLayers
       spriteRsiPaths: {}
+      # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml). Must be
+      # declared here even though GasVentPump has its own map: inheritance merges the parent's in otherwise,
+      # and an RPD-built dual-port vent aimed off-Primary would spawn a single-port GasVentPumpAlt1.
+      alternativePrototypes:
+        Primary: GasDualPortVentPump
+        Secondary: GasDualPortVentPumpAlt1
+        Tertiary: GasDualPortVentPumpAlt2
+      # End Triad
     - type: GenericVisualizer
       visuals:
         enum.VentPumpVisuals.State:
