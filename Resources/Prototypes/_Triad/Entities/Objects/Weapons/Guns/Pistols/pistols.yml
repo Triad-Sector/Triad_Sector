@@ -33,7 +33,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stiletto_inhands_32x.rsi
     size: Normal
     shape:
     - 0,1,1,1
@@ -99,5 +99,5 @@
     price: 500
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
-    maxOffset: 7
-    pvsIncrease: 0.7
+    maxOffset: 4
+    pvsIncrease: 0.4
