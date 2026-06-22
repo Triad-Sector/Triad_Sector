@@ -15,6 +15,7 @@ public sealed class BlockWieldOnUntoggledSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        
         SubscribeLocalEvent<BlockWieldOnUntoggledComponent, WieldAttemptEvent>(OnWeaponWield);
         SubscribeLocalEvent<BlockWieldOnUntoggledComponent, ItemToggledEvent>(OnItemToggled);
     }
