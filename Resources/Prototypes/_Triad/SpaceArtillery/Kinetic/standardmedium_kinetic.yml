@@ -3,8 +3,7 @@
 - type: entity
   id: WeaponTurretAC-35
   name: AC-35 Chaingun
-  parent:
-  - BallisticArtilleryMagazine
+  parent: BallisticArtilleryMagazine
   suffix: Medium, T2
   description: A quad-barrel, 35mm chaingun firing solid shot AP rounds, designed to be mounted upon fighters by Armamenti Corvus. Can be remotely activated or linked up to a GCS.
   components:
