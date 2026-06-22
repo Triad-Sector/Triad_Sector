@@ -47,7 +47,9 @@ public class MapLoadBenchmark
         PoolManager.Shutdown();
     }
 
-    public static readonly string[] MapsSource = { "Empty", "Satlern", "Box", "Bagel", "Dev", "CentComm", "Core", "TestTeg", "Packed", "Omega", "Reach", "Meta", "Marathon", "MeteorArena", "Fland", "Oasis", "Convex"};
+    // Triad: ParamsSource requires a public property/method, not a field, or the BenchmarkDotNet
+    // switcher throws while validating this type and blocks every benchmark in the assembly.
+    public static string[] MapsSource { get; } = { "Empty", "Satlern", "Box", "Bagel", "Dev", "CentComm", "Core", "TestTeg", "Packed", "Omega", "Reach", "Meta", "Marathon", "MeteorArena", "Fland", "Oasis", "Convex"};
 
     [ParamsSource(nameof(MapsSource))]
     public string Map;
