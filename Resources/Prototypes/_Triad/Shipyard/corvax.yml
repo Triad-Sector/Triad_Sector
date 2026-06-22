@@ -13,7 +13,7 @@
   guidebookPage: Null
   class:
   - Patrol
-  - Capital
+  - Frigate #Turns out Capital is the tag used to restrict a ship from doing piloting+gunning, so Frigate stolen from the Buran.
   engine:
   - Plasma
 
