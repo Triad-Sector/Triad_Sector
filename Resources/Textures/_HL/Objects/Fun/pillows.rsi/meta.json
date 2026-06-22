@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Lazlo",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    { "name": "pillow_long_white" },
+    { "name": "pillow_lump_blue" },
+    { "name": "pillow_lump_red" },
+    { "name": "pillow_lump_white" },
+    { "name": "pillow_small_blue" },
+    { "name": "pillow_small_red" },
+    { "name": "pillow_small_white" },
+    { "name": "pillow_square_blue" },
+    { "name": "pillow_square_red" },
+    { "name": "pillow_square_white" },
+    { "name": "bluepillow-inhand-left", "directions": 4 },
+    { "name": "bluepillow-inhand-right", "directions": 4 },
+    { "name": "greenpillow-inhand-left", "directions": 4 },
+    { "name": "greenpillow-inhand-right", "directions": 4 },
+    { "name": "redpillow-inhand-left", "directions": 4 },
+    { "name": "redpillow-inhand-right", "directions": 4 },
+    { "name": "whitepillow-inhand-left", "directions": 4 },
+    { "name": "whitepillow-inhand-right", "directions": 4 }
+  ]
+}

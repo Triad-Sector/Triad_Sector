@@ -60,7 +60,12 @@ public sealed partial class DungeonJob
             tiles.Add((index, _tile.GetVariantTile((ContentTileDefinition)tileDef, random)));
         }
 
-        _maps.SetTiles(_gridUid, _grid, tiles);
+        // Triad: chunk the commit. SetTilesChunked reorders `tiles`, which is fine for the order-independent wall
+        // pass below; re-check the grid survived (the commit yields) before that pass starts touching it.
+        await SetTilesChunked(tiles);
+
+        if (!ValidateResume())
+            return;
 
         // Double iteration coz we bulk set tiles for speed.
         for (var i = 0; i < tiles.Count; i++)

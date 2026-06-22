@@ -1,5 +1,6 @@
 using Content.Client.Construction;
 using Content.Client.RPD;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Interaction;
@@ -10,12 +11,14 @@ using Content.Shared.RCD.Systems;
 using Content.Shared.RPD;
 using Content.Shared.RPD.Components;
 using Robust.Client.Graphics;
+using Robust.Client.Input;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
+using Robust.Shared.Maths;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -30,6 +33,11 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     [Dependency] private readonly RCDSystem _rcdSystem = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    // Triad: deconstruct mode computes its own cursor-aimed layer (no placement mode runs), so it needs cursor +
+    // grid access the construct placement mode gets for free.
+    [Dependency] private readonly IInputManager _inputManager = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
     // Triad: RPD port from funky-station — pipe-layer-aware ghost for RPDs + mirror-prototype flip toggle.
@@ -40,8 +48,8 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     private EntityUid? _lastHeldRcd;
     // End Triad
     private Direction _placementDirection = default;
-    // Triad: last eye rotation streamed while deconstructing; null forces a resend on tool swap / re-equip.
-    private float? _lastSentEyeRotation;
+    // Triad: last pipe layer pushed while deconstructing; null forces a resend on tool swap / re-equip.
+    private AtmosPipeLayer? _lastSentLayer;
 
     // Triad: RPD port from funky-station — bind R (EditorFlipObject) to toggle the mirrored variant of the
     // currently selected RCD recipe (e.g. gas filter flipped). Mirror state is networked to the server via
@@ -131,7 +139,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             // Triad: drop the cached flip state so we don't leak it onto whatever tool the player picks up next.
             _lastHeldRcd = null;
             _useMirrorPrototype = false;
-            _lastSentEyeRotation = null;
+            _lastSentLayer = null;
             // End Triad
             return;
         }
@@ -142,7 +150,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             _lastHeldRcd = heldEntity;
             _useMirrorPrototype = rcd.UseMirrorPrototype;
-            _lastSentEyeRotation = null; // Triad: force a fresh eye-rotation send for the newly held tool.
+            _lastSentLayer = null; // Triad: force a fresh layer send for the newly held tool.
         }
         // End Triad
 
@@ -156,10 +164,10 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             if (placerIsRCD)
                 _placementManager.Clear();
 
-            // Triad: no placement mode runs in deconstruct mode, so stream eye rotation here the way the construct
-            // placement mode does — the server reproduces the operator's cursor-aimed pipe layer from it to pick
-            // which covered pipe to chew. On change only, to stay off the per-frame network path.
-            StreamEyeRotation(heldEntity.Value);
+            // Triad: no placement mode runs in deconstruct mode, so compute the cursor-aimed pipe layer here the way
+            // the construct placement mode does and push it. The server uses it to pick which covered pipe to chew.
+            // On change only, to stay off the per-frame network path.
+            StreamLayer(heldEntity.Value);
             return;
         }
         // End Triad
@@ -213,16 +221,31 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         _placementManager.BeginPlacing(newObjInfo);
     }
 
-    // Triad: mirror of AlignRPDAtmosPipeLayers.UpdateEyeRotation for deconstruct mode, which runs no placement mode.
-    // Streams the local eye rotation to the server (on change) so RPDSystem can compute the cursor-aimed pipe layer
-    // when resolving which covered pipe to deconstruct.
-    private void StreamEyeRotation(EntityUid heldEntity)
+    // Triad: deconstruct runs no placement mode, so compute the cursor-aimed pipe layer here (mirroring the construct
+    // placement mode's math) and push it on change. The server uses it to pick which covered pipe to chew.
+    private void StreamLayer(EntityUid heldEntity)
     {
-        var rotation = (float) _eyeManager.CurrentEye.Rotation.Theta;
-        if (_lastSentEyeRotation == rotation)
+        var mouseScreen = _inputManager.MouseScreenPosition;
+        if (!mouseScreen.IsValid)
             return;
 
-        _lastSentEyeRotation = rotation;
-        RaiseNetworkEvent(new RPDEyeRotationEvent(GetNetEntity(heldEntity), rotation));
+        var mouseMap = _eyeManager.PixelToMap(mouseScreen.Position);
+        if (!_mapManager.TryFindGridAt(mouseMap, out var gridUid, out var grid))
+            return;
+
+        var localPos = System.Numerics.Vector2.Transform(mouseMap.Position, _transformSystem.GetInvWorldMatrix(gridUid));
+        var tileSize = grid.TileSize;
+        var indices = new Vector2i((int) MathF.Floor(localPos.X / tileSize), (int) MathF.Floor(localPos.Y / tileSize));
+        var tileCenterLocal = new System.Numerics.Vector2((indices.X + 0.5f) * tileSize, (indices.Y + 0.5f) * tileSize);
+        var mouseDiff = localPos - tileCenterLocal;
+
+        var gridRotation = _transformSystem.GetWorldRotation(gridUid);
+        var layer = RPDLayerMath.PickLayer(mouseDiff, _eyeManager.CurrentEye.Rotation, gridRotation);
+
+        if (_lastSentLayer == layer)
+            return;
+
+        _lastSentLayer = layer;
+        RaiseNetworkEvent(new RPDLayerSelectEvent(GetNetEntity(heldEntity), layer));
     }
 }

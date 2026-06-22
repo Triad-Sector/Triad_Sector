@@ -122,13 +122,31 @@ public sealed class TraitSystem : EntitySystem
             return byCost != 0 ? byCost : string.CompareOrdinal(a.ID, b.ID);
         });
 
+        // Triad: pre-compute extra category slots granted by selected traits (e.g. Foreigner granting
+        // language slots). Done before the main loop so a granter raises the cap regardless of where it
+        // sorts relative to the traits filling those slots. Only count granters whose own conditions pass,
+        // so a rejected granter doesn't hand out slots.
+        var categorySlotGrants = new Dictionary<ProtoId<TraitCategoryPrototype>, int>();
+        foreach (var trait in sorted)
+        {
+            if (trait.GrantsCategorySlots.Count == 0)
+                continue;
+            if (!CheckConditions(trait, conditionCtx, new List<string>()))
+                continue;
+            foreach (var (cat, slots) in trait.GrantsCategorySlots)
+            {
+                categorySlotGrants.TryGetValue(cat, out var existing);
+                categorySlotGrants[cat] = existing + slots;
+            }
+        }
+
         foreach (var trait in sorted)
         {
             ProtoId<TraitPrototype> traitId = trait.ID;
             var rejectionReasons = new List<string>();
 
-            // Check global trait count limit
-            if (traitCount >= _maxTraitCount)
+            // Check global trait count limit. Triad: _maxTraitCount <= 0 means unlimited.
+            if (_maxTraitCount > 0 && traitCount >= _maxTraitCount)
             {
                 Log.Warning($"Trait {traitId} rejected: global trait count limit ({_maxTraitCount}) exceeded");
                 rejectionReasons.Add(Loc.GetString("disabled-traits-reason-global-limit"));
@@ -136,8 +154,9 @@ public sealed class TraitSystem : EntitySystem
                 continue;
             }
 
-            // Check global points limit
-            if (totalPoints + trait.Cost > _maxTraitPoints)
+            // Check global points limit. Triad: _maxTraitPoints <= 0 means unlimited, leaving per-category
+            // MaxPoints as the only point budget (mirrors the _maxTraitCount <= 0 escape hatch above).
+            if (_maxTraitPoints > 0 && totalPoints + trait.Cost > _maxTraitPoints)
             {
                 Log.Warning($"Trait {traitId} rejected: global points limit ({_maxTraitPoints}) would be exceeded");
                 rejectionReasons.Add(Loc.GetString("disabled-traits-reason-points-limit"));
@@ -146,7 +165,7 @@ public sealed class TraitSystem : EntitySystem
             }
 
             // Check category limits
-            if (!ValidateCategoryLimits(trait, categoryTraitCounts, categoryPointTotals, rejectionReasons))
+            if (!ValidateCategoryLimits(trait, categoryTraitCounts, categoryPointTotals, categorySlotGrants, rejectionReasons))
             {
                 Log.Warning($"Trait {traitId} rejected: category limits exceeded");
                 disabledTraits[traitId] = rejectionReasons;
@@ -184,6 +203,7 @@ public sealed class TraitSystem : EntitySystem
         TraitPrototype trait,
         Dictionary<ProtoId<TraitCategoryPrototype>, int> categoryTraitCounts,
         Dictionary<ProtoId<TraitCategoryPrototype>, int> categoryPointTotals,
+        Dictionary<ProtoId<TraitCategoryPrototype>, int> categorySlotGrants,
         List<string> rejectionReasons)
     {
         if (!_prototype.TryIndex(trait.Category, out var category))
@@ -192,16 +212,22 @@ public sealed class TraitSystem : EntitySystem
         categoryTraitCounts.TryGetValue(trait.Category, out var currentCount);
         categoryPointTotals.TryGetValue(trait.Category, out var currentPoints);
 
-        // Check category trait count limit
-        if (category.MaxTraits.HasValue && currentCount >= category.MaxTraits.Value)
+        // Check category trait count limit. Triad: granter traits (GrantsCategorySlots) raise the effective cap.
+        // HasTraitLimit (not MaxTraits.HasValue) so null OR <= 0 both read as unlimited.
+        if (category.HasTraitLimit)
         {
-            rejectionReasons.Add(Loc.GetString("disabled-traits-reason-category-limit",
-                ("category", Loc.GetString(category.Name))));
-            return false;
+            categorySlotGrants.TryGetValue(trait.Category, out var grantedSlots);
+            var effectiveMaxTraits = category.MaxTraits!.Value + grantedSlots;
+            if (currentCount >= effectiveMaxTraits)
+            {
+                rejectionReasons.Add(Loc.GetString("disabled-traits-reason-category-limit",
+                    ("category", Loc.GetString(category.Name))));
+                return false;
+            }
         }
 
         // Check category points limit
-        if (category.MaxPoints.HasValue && currentPoints + trait.Cost > category.MaxPoints.Value)
+        if (category.HasPointLimit && currentPoints + trait.Cost > category.MaxPoints!.Value)
         {
             rejectionReasons.Add(Loc.GetString("disabled-traits-reason-category-points",
                 ("category", Loc.GetString(category.Name))));

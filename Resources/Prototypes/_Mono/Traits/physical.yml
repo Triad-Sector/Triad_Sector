@@ -4,6 +4,17 @@
   description: trait-prybar-prosthetics-desc
   category: Physical
   cost: 2
+  conditions:
+  # Triad: the prosthetics replace your arms, so they need an arm to replace. Block only for a DOUBLE arm
+  # amputee (both arms gone); a one-armed character still gets the bionic on the remaining arm.
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
@@ -65,6 +76,11 @@
   - !type:HasTraitCondition
     trait: Tenacity
     invert: true
+  # Triad: Osteogenesis adds a stronger GlassJaw; taking both silently drops one (engine skips
+  # duplicate components). They are redundant variants, so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: OsteogenesisImperfecta
+    invert: true
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
@@ -85,6 +101,11 @@
     invert: true
   - !type:HasTraitCondition
     trait: OsteogenesisImperfecta
+    invert: true
+  # Triad: Redshirt drops Dead to 100 (base Crit is 100); +5 Crit would put Crit (105) ABOVE Dead, inverting
+  # the crit/dead ordering (you die before you can crit). GlassJaw/Osteogenesis only LOWER crit, so they stay safe.
+  - !type:HasTraitCondition
+    trait: Redshirt
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
@@ -129,6 +150,11 @@
   - !type:HasTraitCondition
     trait: WillToLive
     invert: true
+  # Triad: Redshirt also adds the WillToDie component; taking both silently drops one. Both are
+  # "you die more easily", so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: Redshirt
+    invert: true
   - !type:IsSpeciesCondition
     species: IPC
     invert: true
@@ -151,6 +177,19 @@
   - !type:IsSpeciesCondition
     species: Felinid
     invert: true
+  # Triad: "deft with your hands" is the opposite of Clumsy; they cancel thematically.
+  - !type:HasTraitCondition
+    trait: Clumsy
+    invert: true
+  # Triad: pickpocketing and stripping need a hand. Block only for a DOUBLE arm amputee (no hands).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
@@ -165,6 +204,20 @@
   description: trait-bionic-legs-desc
   category: Physical
   cost: 2
+  conditions:
+  # Triad: contradicts WheelchairBound (LegsParalyzed); faster-on-foot is moot with paralyzed legs.
+  - !type:HasTraitCondition
+    trait: WheelchairBound
+    invert: true
+  # Triad: needs a leg to augment. Block only for a DOUBLE leg amputee (both legs gone); one leg is enough.
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-a-leg
+    conditions:
+    - !type:HasTraitCondition
+      trait: LegAmputeeLeft
+    - !type:HasTraitCondition
+      trait: LegAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
@@ -179,6 +232,10 @@
   conditions:
   - !type:HasTraitCondition
     trait: Tenacity
+    invert: true
+  # Triad: mutually exclusive with GlassJaw (both add the GlassJaw component; taking both drops one).
+  - !type:HasTraitCondition
+    trait: GlassJaw
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
@@ -249,6 +306,17 @@
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
+  # Triad: the spinarette spins silk into the palm, so it needs a hand. Block it only for a DOUBLE arm amputee
+  # (both arms gone = no hands); a one-armed character still has a hand and can use it. invert on AllOf =
+  # "not (no left arm AND no right arm)".
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
@@ -275,7 +343,9 @@
     species: Tajaran
     invert: true
   effects:
-  - !type:AddCompsEffect
+  # Triad: SlowOnDamage is already on the base mob, so AddCompsEffect (removeExisting:false) would skip these
+  # and Feeble would do nothing. Overwrite replaces the base 60/80 thresholds with these harsher ones.
+  - !type:OverwriteCompsEffect
     components:
     - type: SlowOnDamage
       speedModifierThresholds:
@@ -309,6 +379,12 @@
   description: trait-self-aware-desc
   category: Physical
   cost: 2
+  conditions:
+  # Triad: contradicts PainNumbness, which makes you unaware of your injuries and cancels the health alert.
+  # You can't be both numb to your own damage and able to gauge it precisely.
+  - !type:HasTraitCondition
+    trait: PainNumbness
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -323,6 +399,10 @@
   conditions:
   - !type:HasTraitCondition
     trait: AlcoholTolerance
+    invert: true
+  # Triad: the dwarven liver grants alcohol tolerance, the direct opposite of Lightweight Drunk.
+  - !type:HasTraitCondition
+    trait: LightweightDrunk
     invert: true
   - !type:IsSpeciesCondition
     species: IPC
@@ -350,6 +430,22 @@
   - !type:HasCompCondition
     component: BorgChassis
     invert: true
+  # Triad: a pacifist (or pious pacifist) can't strike the living, so +unarmed damage is a dead pick.
+  - !type:HasTraitCondition
+    trait: Pacifist
+    invert: true
+  - !type:HasTraitCondition
+    trait: Pious
+    invert: true
+  # Triad: unarmed strikes need a hand. Block only for a DOUBLE arm amputee (both arms gone = no hands).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
   effects:
   - !type:AddCompsEffect
     components:
@@ -376,7 +472,9 @@
     component: BorgChassis
     invert: true
   effects:
-  - !type:AddCompsEffect
+  # Triad: SlowOnDamage is already on the base mob, so AddCompsEffect (removeExisting:false) would skip these
+  # and Steadfast would do nothing. Overwrite replaces the base 60/80 thresholds with these gentler ones.
+  - !type:OverwriteCompsEffect
     components:
     - type: SlowOnDamage
       speedModifierThresholds:
@@ -417,18 +515,16 @@
         species: IPC
         invert: true
   effects:
+  # Triad: own component instead of a 2nd DamageProtectionBuff. Two traits adding the same component
+  # silently drop one (engine skips duplicates), which let BionicLegs/Spinarette/etc strip DermalArmor.
   - !type:AddCompsEffect
     components:
-    - type: DamageProtectionBuff
+    - type: HardenedLymphocytes
       modifiers:
-        dermal:
-          id: DermalArmorTrait
-          coefficients:
-            Shock: 1.25
+        lymphocytes:
+          id: HardenedLymphocytesTrait
           flatReductions:
-            Blunt: 1.5
-            Slash: 1.5
-            Piercing: 1.5
+            Radiation: 1
 
 - type: trait
   id: Ironman
