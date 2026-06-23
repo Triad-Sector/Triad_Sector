@@ -166,6 +166,24 @@ public sealed partial class RadiationSystem : EntitySystem
         UpdateSource((entity.Owner, entity.Comp));
     }
 
+    // Triad: cache-invalidating intensity setter. The gridcast reads only from the cached
+    // _sourceTree/_sourceDataMap, so callers must never write Intensity/Slope directly -
+    // they have to route through here (or SetSourceEnabled) so UpdateSource refreshes the cache.
+    /// <summary>
+    ///     Sets the source's radiation intensity (and optionally its falloff slope), refreshing the source cache.
+    /// </summary>
+    public void SetSourceIntensity(Entity<RadiationSourceComponent?> entity, float intensity, float? slope = null)
+    {
+        if (!Resolve(entity, ref entity.Comp, false))
+            return;
+
+        entity.Comp.Intensity = intensity;
+        if (slope is { } s)
+            entity.Comp.Slope = s;
+
+        UpdateSource((entity.Owner, entity.Comp));
+    }
+
     /// <summary>
     ///     Marks entity to receive/ignore radiation rays.
     /// </summary>
