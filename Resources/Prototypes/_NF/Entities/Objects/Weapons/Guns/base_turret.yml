@@ -65,6 +65,14 @@
     rootTask:
       task: TurretCompound
     blackboard:
+    # Triad Start
+      AggroVisionRadius: !type:Single
+        14
+      VisionRadius: !type:Single
+        14
+      RangedRange: !type:Single
+        14
+    # Triad End
       RotateSpeed: !type:Single
         3.141
       SoundTargetInLOS: !type:SoundPathSpecifier

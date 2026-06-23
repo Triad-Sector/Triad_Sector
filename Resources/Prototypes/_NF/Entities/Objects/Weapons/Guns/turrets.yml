@@ -160,7 +160,7 @@
   - type: Sprite
     sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
   - type: Gun
-    fireRate: 2
+    fireRate: 3 # Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
       params:
