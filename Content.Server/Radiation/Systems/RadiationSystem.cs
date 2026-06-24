@@ -77,8 +77,6 @@ public sealed partial class RadiationSystem : EntitySystem
         entity.Comp.Intensity = intensity;
         if (slope is { } s)
             entity.Comp.Slope = s;
-
-        UpdateSource((entity.Owner, entity.Comp));
     }
 
     /// <summary>
