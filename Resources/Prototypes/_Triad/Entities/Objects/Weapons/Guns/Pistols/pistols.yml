@@ -9,6 +9,7 @@
     maxAngle: -9
     bonusFireRate: 0
     requiresToggle: false
+  - type: BlockWieldOnUntoggled
   - type: GunWieldBonus
     minAngle: -1
     maxAngle: -9
@@ -23,7 +24,7 @@
     availableModes:
     - SemiAuto
   - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stilleto.rsi
     layers:
     - state: stock
       map: ["enum.ToggleableVisuals.Layer"]
@@ -32,7 +33,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stiletto_inhands_32x.rsi
     size: Normal
     shape:
     - 0,1,1,1
@@ -96,3 +97,7 @@
           False: { state: stock-folded }
   - type: StaticPrice
     price: 500
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 4
+    pvsIncrease: 0.4
