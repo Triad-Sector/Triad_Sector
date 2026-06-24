@@ -10,6 +10,7 @@ using Content.Shared.Popups;
 using Content.Shared.Power.Generator;
 using Robust.Server.GameObjects;
 using Content.Shared.Radiation.Components; // Frontier
+using Content.Server.Radiation.Systems; // Triad: cache-invalidating rad-source setters
 using Content.Shared.Audio; // Frontier
 using Content.Shared.Materials; // Frontier
 using Content.Server._NF.Power.Components; // Frontier
@@ -30,6 +31,7 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
     [Dependency] private readonly PuddleSystem _puddle = default!;
 
     [Dependency] private readonly PointLightSystem _pointLight = default!; // Frontier: Rads glow
+    [Dependency] private readonly RadiationSystem _radiation = default!; // Triad: route rad-source writes through the cache
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!; // Frontier: Rads sound
 
     private EntityQuery<UpgradePowerSupplierComponent> _upgradeQuery; // Frontier: keeping upgradeable power supplies
@@ -199,10 +201,8 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
     // Frontier: radioactive generators
     public void TryUpdateGeneratorRadiation(EntityUid uid, bool on, FuelGeneratorComponent component) // Frontier
     {
-        if (!TryComp<RadiationSourceComponent>(uid, out var radiation)) // Frontier
+        if (!HasComp<RadiationSourceComponent>(uid)) // Frontier // Triad: HasComp - we mutate via _radiation, not the local ref
             return;
-
-        radiation.Enabled = on;
 
         if (on)
         {
@@ -211,8 +211,11 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
             float radiationSlope = radiationIntensity / 3;
             float visualRadius = 1f + (component.RadiationIntensity * component.TargetPower / 4);
 
-            radiation.Intensity = radiationIntensity;
-            radiation.Slope = Math.Max(0.5f, radiationSlope); // Slope should always be at least 0.5 (typical for bananium)
+            // Triad: set intensity/slope first, then enable - both go through the system so the
+            // source cache (_sourceTree/_sourceDataMap) actually picks up the change. Direct field
+            // writes here used to silently no-op because nothing called UpdateSource.
+            _radiation.SetSourceIntensity(uid, radiationIntensity, Math.Max(0.5f, radiationSlope)); // Slope >= 0.5 (typical for bananium)
+            _radiation.SetSourceEnabled(uid, true);
 
             EnsureComp<PointLightComponent>(uid, out var light);
             _pointLight.SetColor(uid, component.RadiationColor, light); // Add glow - on
@@ -224,6 +227,7 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
         }
         else
         {
+            _radiation.SetSourceEnabled(uid, false); // Triad: was a direct radiation.Enabled write; route through the system to refresh the cache
             RemComp<PointLightComponent>(uid); // Remove glow - off
             _ambientSoundSystem.SetAmbience(uid, false);
         }

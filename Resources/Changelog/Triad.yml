@@ -1882,3 +1882,70 @@ Entries:
   id: 2323
   time: '2026-06-22T15:53:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/246
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Fax machines are now far faster for sending and copying. In roughly the
+        time it would take you to change the destination, you can send another
+        fax.
+  id: 2324
+  time: '2026-06-23T01:34:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/247
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Optimized NPC ship steering for better server performance with large
+        fleets.
+  id: 2325
+  time: '2026-06-23T07:01:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/251
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Optimized weightlessness checks for better performance with many
+        creatures.
+  id: 2326
+  time: '2026-06-23T07:10:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/253
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: Optimized space wind performance during large depressurization events.
+  id: 2327
+  time: '2026-06-23T07:19:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/252
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Radioactive generators now correctly emit radiation that reflects their
+        power state.
+  id: 2328
+  time: '2026-06-23T10:28:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/254
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed snoring trait being unselectable, it is under medical
+    - type: Fix
+      message: Fixed muted trait being unselectable
+    - type: Fix
+      message: >-
+        Fixed osteogenesis and redshirt being incompatible with eachother, it
+        now correctly gives you 50 HP to crit and 100 HP to dead as intended.
+  id: 2329
+  time: '2026-06-23T16:25:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/255
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Radiation Sources not updating to their parent grids. You should
+        no longer experience patches of radiation, or radiation coming from your
+        generators being non-existent.
+  id: 2330
+  time: '2026-06-24T01:41:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/257
