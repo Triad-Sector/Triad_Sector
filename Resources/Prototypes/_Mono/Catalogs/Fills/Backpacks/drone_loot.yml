@@ -22,7 +22,7 @@
       amount: 1
     # Material
     - id: SheetPlastitanium10
-      amount: 1 # Triad
+      amount: 1
     # Parts
     - id: AdvancedCapacitorStockPart
       prob: 0.8
@@ -49,7 +49,6 @@
     # - id: SpawnDungeonLootCircuitBoardSalvage
     #   prob: 0.2
     - id: SpawnDungeonLootCircuitBoard
-      prob: 0.4
       amount: 1
       maxAmount: 3
     # Flatpacks
@@ -64,7 +63,7 @@
       prob: 0.3
     # Tech disk
     - id: SpawnLootTechDisksT1
-      prob: 0.2
+      prob: 0.3
       # Triad End
     sound:
       path: /Audio/Machines/windoor_open.ogg
@@ -85,11 +84,15 @@
       amount: 1
     - id: ScrapOre20
       amount: 1
+    - id: ScrapOre20
+      prob: 0.2
+      amount: 1
     - id: ScrapOre10
       amount: 1
     # Material
     - id: SheetPlastitanium10
-      amount: 2
+      amount: 1
+      maxAmount: 2
     # Parts
     - id: AdvancedCapacitorStockPart
       amount: 1
@@ -148,7 +151,7 @@
       amount: 3
     # Material 
     - id: SheetPlastitanium10
-      amount: 4
+      amount: 5
     # Parts
     - id: SuperCapacitorStockPart
       amount: 2
