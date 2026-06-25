@@ -52,8 +52,6 @@
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
     onAltUse: true
     altPriority: 1
-    verbToggleOff: fold-verb
-    verbToggleOn: unfold-verb
     soundActivate:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
       params:
