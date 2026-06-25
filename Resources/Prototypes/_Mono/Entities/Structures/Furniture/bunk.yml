@@ -10,7 +10,7 @@
     state: bottom_bunk
     noRot: true
   - type: Strap
-    #buckleOffset: "0,-0.2"
+    buckleOffset: "0,-0.2"
   - type: InteractionOutline
   - type: Construction
     graph: bunkbed
@@ -31,7 +31,7 @@
     - state: top_bunk_ladder
     noRot: true
   - type: Strap
-    #buckleOffset: "0,0.3"
+    buckleOffset: "0,0.3"
   - type: InteractionOutline
   - type: Construction
     graph: bunkbed
