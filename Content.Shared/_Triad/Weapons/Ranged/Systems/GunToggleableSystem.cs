@@ -35,7 +35,7 @@ public sealed partial class GunToggleableSystem : EntitySystem
         SubscribeLocalEvent<GunToggleableBonusComponent, GetVerbsEvent<AlternativeVerb>>(OnAlternateVerb);
         SubscribeLocalEvent<GunToggleableBonusComponent, GunToggleableToggleDoAfterEvent>(OnToggleDoAfterEvent);
 
-        SubscribeLocalEvent<GunChangeShotSoundOnToggled, GunRefreshModifiersEvent>(OnGetToggleSound);
+        SubscribeLocalEvent<GunChangeShotSoundOnToggledComponent, GunRefreshModifiersEvent>(OnGetToggleSound);
     }
 
     private void OnGunItemToggled(Entity<GunComponent> ent, ref ItemToggledEvent args)
@@ -124,7 +124,7 @@ public sealed partial class GunToggleableSystem : EntitySystem
         _itemToggle.Toggle((ent.Owner, toggle), args.User, predicted: toggle.Predictable);
     }
 
-    private void OnGetToggleSound(Entity<GunChangeShotSoundOnToggled> ent, ref GunRefreshModifiersEvent args)
+    private void OnGetToggleSound(Entity<GunChangeShotSoundOnToggledComponent> ent, ref GunRefreshModifiersEvent args)
     {
         if (!_itemToggle.IsActivated(ent.Owner))
             return;
