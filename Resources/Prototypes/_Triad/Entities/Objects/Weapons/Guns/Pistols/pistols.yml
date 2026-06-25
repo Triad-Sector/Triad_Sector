@@ -48,8 +48,6 @@
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
   - type: ItemToggle
-    soundGunshot:
-      path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
     onAltUse: true
     altPriority: 1
     soundActivate:
