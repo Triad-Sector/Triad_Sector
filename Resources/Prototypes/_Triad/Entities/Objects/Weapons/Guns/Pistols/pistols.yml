@@ -9,6 +9,9 @@
     maxAngle: -6
     bonusFireRate: -1
     requiresToggle: false
+  - type: GunChangeShotSoundOnToggled
+    sound:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
   - type: BlockWieldOnUntoggled
   - type: GunWieldBonus
     minAngle: -1
