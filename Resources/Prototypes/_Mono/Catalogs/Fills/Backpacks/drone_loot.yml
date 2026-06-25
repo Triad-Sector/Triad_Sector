@@ -32,7 +32,7 @@
       prob: 0.8
       amount: 1
       maxAmount: 2
-    - id: AdvancedManipulatorStockPart
+    - id: NanoManipulatorStockPart
       prob: 0.8
       amount: 1
       maxAmount: 2
@@ -57,10 +57,11 @@
     # rare shard drop even from T1
     # - id: WeaponTurretShardFlatpack 
     #   prob: 0.5
-    # Research disk, expected value ~7.5k/drone
+    # Research disk, expected value ~10k/drone
     - id: RogueSiliconResearchDisk5000
-    - id: RogueSiliconResearchDisk5000
-      prob: 0.3
+      amount: 2
+    # - id: RogueSiliconResearchDisk5000
+    #   prob: 0.3
     # Tech disk
     - id: SpawnLootTechDisksT1
       prob: 0.3
@@ -100,19 +101,19 @@
     - id: AdvancedMatterBinStockPart
       amount: 1
       maxAmount: 2
-    - id: AdvancedManipulatorStockPart
+    - id: NanoManipulatorStockPart
       amount: 1
       maxAmount: 2
     - id: SuperCapacitorStockPart
-      prob: 0.1
+      prob: 0.2
       amount: 0
       maxAmount: 1
     - id: SuperMatterBinStockPart
-      prob: 0.1
+      prob: 0.2
       amount: 0
       maxAmount: 1
     - id: PicoManipulatorStockPart
-      prob: 0.1
+      prob: 0.2
       amount: 0
       maxAmount: 1
     - id: SpawnDungeonLootPowerCell
@@ -122,7 +123,7 @@
     # no flatpacks or boards, just gamble scrap
     # Research disk, expected value ~22.5k/drone # Triad reduce to 20k from 80k
     - id: RogueSiliconResearchDisk5000
-      prob: 0.4
+      prob: 0.6
       amount: 1
     - id: RogueSiliconResearchDisk10000
       amount: 2
@@ -179,9 +180,9 @@
       amount: 1
       maxAmount: 2
     - id: PowerCellMicroreactor
-      prob: 0.01 # Triad
-    - id: PowerCellAntiqueProto # Triad adding antique as super rare, since killing its rarity in brass, this is an alternative
-      prob: 0.001
+      prob: 0.05 # Triad
+    - id: PowerCellAntiqueProto # Triad adding antique as super rare, as a bonus
+      prob: 0.005
     # free guns # Triad disabled gun Flatpacks
     # - id: WeaponTurretShardFlatpack
     #   amount: 1
@@ -189,9 +190,7 @@
     # - id: WeaponTurretPinholeFlatpack
     # no flatpacks or boards, just gamble scrap
     # Research disk, expected value 100k/drone # Triad
-    - id: RogueSiliconResearchDisk10000
-      amount: 1
-    - id: RogueSiliconResearchDisk20000
+    - id: RogueSiliconResearchDisk25000
       amount: 2
     - id: RogueSiliconResearchDisk50000
       amount: 1
