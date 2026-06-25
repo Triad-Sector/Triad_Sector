@@ -4,6 +4,7 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects; // Triad: LookupFlags
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -140,7 +141,10 @@ namespace Content.Server.Atmos.EntitySystems
             }
 
             _entSet.Clear();
-            _lookup.GetLocalEntitiesIntersecting(tile.GridIndex, tile.GridIndices, _entSet, 0f);
+            // Triad: narrow lookup flags. HPD only acts on dynamic/sundries movable bodies (the
+            // MovedByPressure filter below rejects static/contained/sensor entities anyway), so there
+            // is no need to walk the static tree or recurse into containers per tile per atmos tick.
+            _lookup.GetLocalEntitiesIntersecting(tile.GridIndex, tile.GridIndices, _entSet, 0f, LookupFlags.Dynamic | LookupFlags.Sundries);
 
             foreach (var entity in _entSet)
             {
