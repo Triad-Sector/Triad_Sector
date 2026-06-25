@@ -50,9 +50,6 @@
   - type: ItemToggle
     soundGunshot:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
-    activated: false
-    onUse: false
-    onActivate: false
     onAltUse: true
     altPriority: 1
     verbToggleOff: fold-verb
