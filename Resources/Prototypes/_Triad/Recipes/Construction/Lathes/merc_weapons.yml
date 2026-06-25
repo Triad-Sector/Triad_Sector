@@ -2,6 +2,9 @@
   id: WeaponPistolStiletto
   parent: BaseWeaponRecipeLong
   result: WeaponPistolStiletto
+  icon:
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stilleto.rsi
+    state: icon-full
   categories:
   - Sidearms
   - Ballistic
