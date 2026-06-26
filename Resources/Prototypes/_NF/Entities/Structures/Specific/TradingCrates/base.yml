@@ -134,8 +134,8 @@
     taxAccounts:
       BlackMarket: 0.3
       nfsd: -0.075
-  - type: RadarBlip
+  - type: RadarBlip # Triad, no immidiate visibility
     radarColor: "#cc4e0e"
     scale: 1.5
     shape: hexagon
-    visibleFromOtherGrids: true
+    requireNoGrid: true
