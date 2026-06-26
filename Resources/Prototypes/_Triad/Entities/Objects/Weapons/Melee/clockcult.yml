@@ -3,6 +3,7 @@
   id: RatvarianSpear
   name: ratvarian spear
   description: A heavy, razor-sharp spear made of brass. It thrums with barely-contained energy.
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     sprite: _Triad/Objects/Weapons/Melee/ratvarian_spear.rsi
@@ -23,26 +24,28 @@
     animation: WeaponArcThrust
     damage:
       types:
-        Piercing: 3
-        Slash: 10
+        Piercing: 10
+        Slash: 20
         Asphyxiation: 2
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 20
+        Piercing: 30
+        Asphyxiation: 5
   - type: DamageOnLand
     damage:
       types:
         Blunt: 5
+  - type: SavingContraband
   - type: UseDelay
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 2
-        Slash: 2
+        Piercing: 6
+        Slash: 6
   - type: Fixtures
     fixtures:
       fix1:
