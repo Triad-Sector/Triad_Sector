@@ -57,9 +57,6 @@
     powerLoad: 1000 # suspiciously low power-using AI
   - type: ExtensionCableReceiver
   - type: TargetSeekingTarget
-  - type: PassiveThermalSignature # Mono
-    signature: 500000 # vibe number
-  - type: ThermalSignature # Mono
 
 - type: entity
   id: NpcStationAiApproacher
