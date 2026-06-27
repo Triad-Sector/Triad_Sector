@@ -39,15 +39,17 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: GhostRole
-    name: ghost-role-information-baby-dragon-name
-    description: ghost-role-information-baby-dragon-description
-    rules: ghost-role-information-baby-dragon-rules
-    prototype: BabyDragon
-    mindRoles:
-    - MindRoleGhostRoleFamiliar
-  - type: GhostRoleMobSpawner
-    prototype: MobSpawnBabyDragon
+# TRIAD CHANGE:  Breaches rules not to play underage character, removed
+#  - type: GhostRole
+#    name: ghost-role-information-baby-dragon-name
+#    description: ghost-role-information-baby-dragon-description
+#    rules: ghost-role-information-baby-dragon-rules
+#    prototype: BabyDragon
+#    mindRoles:
+#    - MindRoleGhostRoleFamiliar
+#  - type: GhostRoleMobSpawner
+#    prototype: MobSpawnBabyDragon
+# END TRIAD CHANGE
   - type: SolutionContainerManager
     solutions:
       food:
