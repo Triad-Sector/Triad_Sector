@@ -49,6 +49,8 @@
     sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
   - type: ItemToggle
     onAltUse: true
+    verbToggleOff: fold-verb
+    verbToggleOn: unfold-verb
     altPriority: 1
     soundActivate:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
