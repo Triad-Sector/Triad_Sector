@@ -13,3 +13,9 @@ guide-entry-section10 = Command And Security Section
 guide-entry-section11 = Antagonist Guidelines Section
 guide-entry-section12 = Escalation Guidelines Section
 guide-entry-section13 = Ship Saving Section
+
+guide-entry-sector-law = Sector Law
+guide-entry-sector-law-contraband-list = Contraband List
+guide-entry-sector-law-citizen-rights = Citizen Rights
+guide-entry-sector-law-definitions = Definitions
+guide-entry-tdf-sop = TDF SOP

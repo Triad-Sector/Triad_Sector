@@ -43,7 +43,7 @@
         - Write
     # Frontier: space law slot
     bookSlot:
-      startingItem: HyperlinkBookSpaceLaw
+      startingItem: BookTriadLaw # Triad
       priority: -2
       whitelist:
         tags:

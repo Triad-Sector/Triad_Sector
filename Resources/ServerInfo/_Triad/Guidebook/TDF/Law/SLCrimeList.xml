@@ -1,0 +1,708 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]CRIME LISTING[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [bold]Quick Reference[/bold]
+  - [color=#8ed38e]100 Series:[/color] Public Order Crimes
+  - [color=#7ac4c7]200 Series:[/color] Property Crimes
+  - [color=#AD6053]300 Series:[/color] Violent Crimes
+  - [color=#E55757]400 Series:[/color] Capital Crimes
+  - [color=#78E2C8]500 Series:[/color] Spaceflight Crimes
+  - [color=#AF74AD]600 Series:[/color] Government Crimes
+  - [color=#DDE0B3]700 Series:[/color] TDF Crimes
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]PUBLIC ORDER CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#2e422e">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-101
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Disorderly Conduct
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Public disturbances, disruptive behavior, refusal of lawful orders.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 5,000 credits or 15 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#2e422e">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-102
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Trespassing
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unauthorized entry into restricted areas.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 10,000 credits or 30 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#2e422e">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-103
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Harassment
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Threats, intimidation, repeated unwanted contact.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 10,000 credits or 30 min detention.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]PROPERTY CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#5b8d8f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-201
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Theft
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Stealing property, cargo, ships, or equipment.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Restitution, fine up to 25,000 credits, and 60 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#5b8d8f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-202
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Smuggling
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Transporting illegal or restricted contraband.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Cargo seizure, fine up to 50,000 credits, and 90 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#5b8d8f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-203
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Vandalism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Damaging public or private property.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Restitution, fine up to 20,000 credits, and 45 min detention.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]VIOLENT CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8b4d42">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-301
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Piracy
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Theft or seizure of assets through force or intimidation.
+        Harassment should [italic]not[/italic] be applied as an additional offense.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 100,000 credits and 120 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8b4d42">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-302
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Assault
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Physical attack causing injury or threat of physical injury.
+        Harassment should [italic]not[/italic] be applied as an additional offense.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 25,000 credits and 60 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8b4d42">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-303
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Aggravated Assault
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Assault involving weapons or severe injury.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 50,000 credits and 120 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8b4d42">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-304
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Kidnapping
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unlawful detainment or transport of a person.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 75,000 credits and 120 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8b4d42">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-305
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Manslaughter
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unlawful killing of a person without malice or planning beforehand.
+        This is different from murder, and intent and whether the kill was planned is key here.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        60 min detention.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]CAPITAL CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#be4848">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-401
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Attempted Murder
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Intentional attempt to unlawfully kill a person.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 100,000 credits and 120 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#be4848">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-402
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Murder
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unlawful killing of another person.
+        The intent is the key here, and this should not be confused with Manslaughter.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Maximum sentence and bounty authorization.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#be4848">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-403
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Terrorism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Acts intended to cause mass harm or fear.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Maximum sentence and bounty authorization.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]SPACEFLIGHT CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#66c2ab">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-501
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Reckless Piloting
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Dangerous spacecraft operation, with possibility of serious harm or destruction of property.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 20,000 credits.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#66c2ab">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-502
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Illegal Weapons Discharge
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unauthorized use of ship-mounted weapons in protected areas.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 150,000 credits and 20 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#66c2ab">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-503
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unauthorized Interdiction
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Illegal stopping or disabling of vessels, through EMP, road blocks, or otherwise.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 250,000 credits and 90 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#66c2ab">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-504
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Station Blockade
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Preventing lawful station traffic.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 375,000 credits and 90 min detention.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]GOVERNMENT CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#81547f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-601
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Obstruction of Justice
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Interfering with a lawful investigation, arrest, or judicial proceeding; concealing suspects; destroying evidence.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 30,000 Credits or 60 minutes detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#81547f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-602
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Bribery
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Offering, giving, receiving, or soliciting something of value to change or influence the actions of a public official or Enforcer.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 50,000 credits and 60 minutes detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#81547f">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-603
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Impersonation of Authority
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Falsely claiming official authority, such as a person claiming they are the Chief Enforcer, or the Overseer of Venmar Station.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Fine up to 25,000 credits and 60 minutes detention.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [color=#897236][mono]──── [color=#FFA500][bold]TDF CRIMES[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Offense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#84866b">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-701
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Neglect of Duty
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Refusing to follow assigned duties, or lawful and reasonable orders from a higher-ranking as an Enforcer.
+        This should be charged also when an Enforcer disobeys the law or breaches Standard Operating Procedure.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Immediate discharge and 15 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#84866b">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-702
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Desertion
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Abandoning assigned duties during active operations as an Enforcer.
+        This is a step above Neglect of Duty, and the two should not be stacked with eachother.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Immediate discharge and 120 min detention.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#84866b">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-703
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Mutiny
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Rebellion or conspiracy to rebel against lawful chain of command.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Immediate discharge and maximum sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#84866b">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-704
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Espionage
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Theft or transmission of classified information, to Hostile Actors or any other unauthorized personnel.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Immediate discharge, maximum sentence, and asset seizure.
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

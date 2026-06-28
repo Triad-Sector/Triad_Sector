@@ -42,7 +42,7 @@
   id: TdfCadetGear
   equipment:
     pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
-    pocket2: BookSecurity
+    pocket2: BookTdfForBabies
   storage:
     back:
     - Magazine45_ACPPistolFMJ

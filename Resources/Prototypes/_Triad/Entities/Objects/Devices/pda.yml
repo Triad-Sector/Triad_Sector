@@ -27,7 +27,7 @@
   components:
   - type: Pda
     bookSlot:
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -139,7 +139,7 @@
   - type: Pda
     id: TdfChiefIDCard
     bookSlot:
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:

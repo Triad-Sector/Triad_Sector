@@ -24,3 +24,7 @@ ShipVoucherAltair: null
 
 # 2026-06-12
 NFVendingMachineCartNfsd: VendingMachineCartTdf
+
+# 2026-06-28
+HyperlinkBookSpaceLaw: BookTriadLaw
+HyperlinkBookNfsdSop: BookTdfSop
