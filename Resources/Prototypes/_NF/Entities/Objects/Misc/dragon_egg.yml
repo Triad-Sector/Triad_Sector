@@ -39,7 +39,7 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-# TRIAD CHANGE:  Breaches rules not to play underage character, removed
+# Triad start: removed due to breaches rules not to play underage character.
 #  - type: GhostRole
 #    name: ghost-role-information-baby-dragon-name
 #    description: ghost-role-information-baby-dragon-description
