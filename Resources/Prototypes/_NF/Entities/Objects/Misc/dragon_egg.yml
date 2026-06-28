@@ -49,7 +49,7 @@
 #    - MindRoleGhostRoleFamiliar
 #  - type: GhostRoleMobSpawner
 #    prototype: MobSpawnBabyDragon
-# END TRIAD CHANGE
+# Triand end
   - type: SolutionContainerManager
     solutions:
       food:
