@@ -130,7 +130,7 @@
 #  - type: SentienceTarget # sentient PDA = pAI lite
 #    flavorKind: station-event-random-sentience-flavor-mechanical
 #    weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
-#  END TRIAD CHANGE
+#  Triad End
   - type: BlockMovement
     blockInteraction: false # lets the PDA toggle its own flashlight
   - type: TypingIndicator
