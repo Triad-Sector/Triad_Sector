@@ -1028,9 +1028,9 @@
       color: "#292a31"
     - state: closed
       map: ["closeLayer"]
-      color: "#a09a75"
+      color: "#817d60"
     - state: open
-      color: "#a09a75"
+      color: "#817d60"
       map: ["openLayer"]
       visible: false
     - state: inside
@@ -1050,23 +1050,23 @@
       visible: false
     - state: decal-line-01
       map: [ "decal1" ]
-      color: "#d4cc9a"
+      color: "#f0e49b"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#a09a75"
+        color: "#817d60"
       right:
       - state: inhand-right
-        color: "#a09a75"
+        color: "#817d60"
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
-        color: "#a09a75"
+        color: "#817d60"
       pocket:
       - state: equipped-BELT
-        color: "#a09a75"
+        color: "#817d60"
 
 - type: entity
   id: NFPouchPirate
