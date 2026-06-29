@@ -9,6 +9,8 @@
       - id: ClothingHeadHatBeretHoS
       - id: ClothingUniformJumpsuitTdfChiefEnforcer
       - id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+      - id: ClothingNeckMantleTdfChiefEnforcer
+      - id: ClothingNeckCloakTdfChiefEnforcer
 
 - type: entity
   id: DresserTdfWardenFilled

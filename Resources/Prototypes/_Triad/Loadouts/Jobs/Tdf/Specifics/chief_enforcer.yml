@@ -33,3 +33,13 @@
   id: ClothingOuterWinterTdfChiefEnforcer
   equipment:
     outerClothing: ClothingOuterWinterTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingNeckMantleTdfChiefEnforcer
+  equipment:
+    neck: ClothingNeckMantleTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingNeckCloakTdfChiefEnforcer
+  equipment:
+    neck: ClothingNeckCloakTdfChiefEnforcer

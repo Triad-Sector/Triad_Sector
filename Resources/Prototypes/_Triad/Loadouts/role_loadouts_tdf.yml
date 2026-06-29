@@ -141,7 +141,7 @@
   id: JobTdfChiefEnforcer
   groups:
   - TdfChiefEnforcerHead
-  - TdfNeck
+  - TdfChiefEnforcerNeck
   - TdfChiefEnforcerJumpsuit
   - TdfGloves
   - TdfBackpack

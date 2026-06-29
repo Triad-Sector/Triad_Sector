@@ -67,3 +67,13 @@
   - Faction8x65mmAmmoLoadout # Bandit
   subgroups:
   - TdfMag
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerNeck
+  name: loadout-group-contractor-neck
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
+  - ClothingNeckMantleTdfChiefEnforcer
+  - ClothingNeckCloakTdfChiefEnforcer
