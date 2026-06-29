@@ -439,6 +439,7 @@
 - type: entity
   parent:
   - VehicleHoverbikeMailcarrier
+  - BaseFactionGearTDFT2 # Triadd
   id: VehicleHoverbikeNfsd
   name: TDF hoverbike
   description: An TDF issued turbine with bike handles. Very safe.
@@ -455,7 +456,7 @@
     sprite: _NF/Objects/Vehicles/hoverbike.rsi
     layers:
     - state: hull
-      color: "#d1bc82"
+      color: "#a8996f"
     - state: engine
       map: ["enum.VehicleVisualLayers.AutoAnimate"]
     - state: nfsdstar
