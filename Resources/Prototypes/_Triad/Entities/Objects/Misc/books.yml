@@ -38,7 +38,7 @@
     - BookNfsdSop
 
 - type: entity
-  id: BookTriadLaw
+  id: BookTdfSop
   parent: BaseGuidebook
   name: TDF SOP manual
   description: A book defining TDF standard operating procedures.
