@@ -435,7 +435,7 @@
             - Gun # Any gun :(, including RPDS
         priority: 2
 
-# NFSD
+# TDF
 - type: entity
   parent:
   - VehicleHoverbikeMailcarrier
