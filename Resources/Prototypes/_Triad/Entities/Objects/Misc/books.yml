@@ -20,24 +20,6 @@
     - BookSpaceLaw
 
 - type: entity
-  id: BookTriadLaw
-  parent: BaseGuidebook
-  name: TDF SOP manual
-  description: A book defining TDF standard operating procedures.
-  components:
-  - type: Sprite
-    sprite: _Triad/Objects/Misc/books.rsi
-    layers:
-    - state: tdf_sop
-  - type: GuideHelp
-    #guides:
-    # - sop TODO
-  - type: Tag
-    tags:
-    - Book
-    - BookNfsdSop
-
-- type: entity
   id: BookTdfSop
   parent: BaseGuidebook
   name: TDF SOP manual
