@@ -55,6 +55,7 @@
                 params:
                   volume: -4
     - type: HLPersistOnShipSave # Triad
+      saveContents: true
 
 - type: entity
   parent: ExtinguisherCabinet
