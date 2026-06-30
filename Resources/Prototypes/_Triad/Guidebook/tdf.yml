@@ -7,6 +7,7 @@
   - Defusal
   - CriminalRecords
   - SectorLaw
+  - TdfSop
   - Smuggling
 
 - type: guideEntry
@@ -58,3 +59,45 @@
   id: SLContrabandList
   name: guide-entry-sector-law-contraband-list
   text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLContrabandList.xml"
+
+- type: guideEntry
+  id: TdfSop
+  name: guide-entry-tdf-sop
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/TdfSop.xml"
+  children:
+  - SOPJurisdictionalAuthority
+  - SOPSmuggling
+  - SOPNavalEngagements
+  - SOPPostArrestProcedure
+  - SOPChainOfCommand
+  - SOPCommandAuthority
+
+- type: guideEntry
+  id: SOPJurisdictionalAuthority
+  name: guide-entry-tdf-sop-jurisdictional-authority
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPJurisdictionalAuthority.xml"
+
+- type: guideEntry
+  id: SOPSmuggling
+  name: guide-entry-tdf-sop-smuggling
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPSmuggling.xml"
+
+- type: guideEntry
+  id: SOPNavalEngagements
+  name: guide-entry-tdf-sop-naval-engagements
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPNavalEngagements.xml"
+
+- type: guideEntry
+  id: SOPPostArrestProcedure
+  name: guide-entry-tdf-sop-arrest-procedure
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPPostArrestProcedure.xml"
+
+- type: guideEntry
+  id: SOPChainOfCommand
+  name: guide-entry-tdf-sop-coc
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPChainOfCommand.xml"
+
+- type: guideEntry
+  id: SOPCommandAuthority
+  name: guide-entry-tdf-sop-command-authority
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPCommandAuthority.xml"

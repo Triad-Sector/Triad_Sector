@@ -18,4 +18,11 @@ guide-entry-sector-law = Sector Law
 guide-entry-sector-law-contraband-list = Contraband List
 guide-entry-sector-law-citizen-rights = Citizen Rights
 guide-entry-sector-law-definitions = Definitions
-guide-entry-tdf-sop = TDF SOP
+
+guide-entry-tdf-sop = TDF Standard Operating Procedure
+guide-entry-tdf-sop-jurisdictional-authority = I. Jurisdictional Authority
+guide-entry-tdf-sop-smuggling = II. Smuggling
+guide-entry-tdf-sop-naval-engagements = III. Belligerent Vessel's Aggression & Naval Engagements
+guide-entry-tdf-sop-arrest-procedure = IV. Post-Arrest Procedure
+guide-entry-tdf-sop-coc = V. Chain of Command
+guide-entry-tdf-sop-command-authority = VI. Command Authority and Privileges

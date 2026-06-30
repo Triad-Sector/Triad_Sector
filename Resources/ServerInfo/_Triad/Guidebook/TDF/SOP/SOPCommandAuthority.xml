@@ -1,0 +1,23 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]VI. Command Authority and Privileges[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  The [bold]Chief Enforcer[/bold] holds significantly greater authority than an acting [bold]Commander[/bold]. The [bold]Chief Enforcer[/bold] also inherits all privileges granted to a [bold]Commander[/bold] by default.
+
+  An acting [bold]Commander[/bold] may not use any Chief Enforcer-specific privileges.
+
+  [head=3][color=#FFA500]Commander Privileges[/color][/head]
+
+  A [bold]Commander[/bold] has the following privileges:
+  - 1. Change the sector's DEFCON level.
+  - 2. Declare a No-Fly Zone.
+  - 3. Write and sign search or arrest warrants.
+
+  [head=3][color=#FFA500]Chief Enforcer Privileges[/color][/head]
+
+  The [bold]Chief Enforcer[/bold] has the following privileges:
+  - 1. Sign and approve Class 2 Contraband permits.
+  - 2. Conduct warrantless searches when sufficient reasonable suspicion exists.
+  - 3. Open new TDF positions outside of the default allotted slots established by TDF High Command.
+  - 4. Use and access the TDF Outpost account to pay staff and fund operations.
+  - 5. Serve as the final authority in matters concerning the interpretation of TDF law, policy, and procedure whenever disputes, ambiguity, or disagreements arise.
+</Document>

@@ -22,7 +22,7 @@
 - type: entity
   id: BookTdfSop
   parent: BaseGuidebook
-  name: TDF SOP manual
+  name: TDF Security Forces SOP manual
   description: A book defining TDF standard operating procedures.
   components:
   - type: Sprite
@@ -30,8 +30,8 @@
     layers:
     - state: tdf_sop
   - type: GuideHelp
-    #guides:
-    # - sop TODO
+    guides:
+     - TdfSop
   - type: Tag
     tags:
     - Book
