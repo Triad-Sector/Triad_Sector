@@ -2016,3 +2016,10 @@ Entries:
   id: 2338
   time: '2026-06-28T04:18:35.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/269
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: TEG now shows max power output
+  id: 2339
+  time: '2026-06-30T00:32:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/271
