@@ -1,6 +1,6 @@
 using System.Numerics;
-using Content.Server.Power.Components;
 using Content.Server.DeviceNetwork.Systems;
+using Content.Server.Power.Components;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.SurveillanceCamera.Components;
 
@@ -13,6 +13,7 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<SurveillanceCameraComponent, MapInitEvent>(OnCameraInit, after: [typeof(DeviceNetworkSystem)]);
         SubscribeLocalEvent<SurveillanceCameraComponent, MoveEvent>(OnCameraMoved);
 
