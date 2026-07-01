@@ -4,7 +4,7 @@
   name: 'Auric Outpost'
   minimumDistance: 4500
   maximumDistance: 5500
-  spawnGamePreset: [ NFAdventure, NFPirate, MonoStandard, MonoRogueTSF, MonoTSFUSSP, MonoADS, MonoChimera, MonoMixed, MonoAllAtOnce ]
+  spawnGamePreset: [ TriadStandard, NFAdventure, NFPirate, MonoAllAtOnce ]
   spawnGroup: Required
   gridPath: /Maps/_Triad/POI/tdfoutpost.yml
   addComponents:
