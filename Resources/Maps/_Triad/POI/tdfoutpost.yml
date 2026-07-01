@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 277.0.0
+  engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 06/22/2026 15:47:37
-  entityCount: 5868
+  time: 07/01/2026 18:06:18
+  entityCount: 5869
 maps: []
 grids:
 - 1
@@ -212,9 +212,9 @@ entities:
     - type: SpreaderGrid
       spreadQueues:
         Puddle: []
-        Kudzu: []
-        Smoke: []
         MetalFoam: []
+        Smoke: []
+        Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -4731,8 +4731,10 @@ entities:
   - uid: 143
     components:
     - type: Transform
-      pos: 7.522619,-2.3059359
-      parent: 1
+      parent: 2433
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: BoxFolderBlack
   entities:
   - uid: 5365
@@ -15502,11 +15504,11 @@ entities:
       startingCharge: 0
 - proto: ComputerTabletopStationAdminBankATMNfsd
   entities:
-  - uid: 5152
+  - uid: 5869
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,-2.5
+      rot: 3.141592653589793 rad
+      pos: 7.5,-2.5
       parent: 1
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -17185,6 +17187,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 6.5,-32.5
+      parent: 1
+- proto: FaxMachineNFNfsd
+  entities:
+  - uid: 2451
+    components:
+    - type: Transform
+      pos: 6.5,-2.5
       parent: 1
 - proto: filingCabinetDrawerRandom
   entities:
@@ -28653,6 +28662,13 @@ entities:
     - type: Transform
       pos: -14.5,10.5
       parent: 1
+- proto: HolopadTdfCommand
+  entities:
+  - uid: 5152
+    components:
+    - type: Transform
+      pos: -26.5,0.5
+      parent: 1
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 2423
@@ -28915,6 +28931,17 @@ entities:
     - type: Transform
       pos: 4.5,-5.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 143
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: LockerTdfEvidence
   entities:
   - uid: 495
@@ -29197,11 +29224,6 @@ entities:
       parent: 1
 - proto: NFHolopadNFSDSheriff
   entities:
-  - uid: 2451
-    components:
-    - type: Transform
-      pos: -26.5,0.5
-      parent: 1
   - uid: 2503
     components:
     - type: Transform
