@@ -68,7 +68,7 @@
   - SOPJurisdictionalAuthority
   - SOPSmuggling
   - SOPNavalEngagements
-  - SOPPostArrestProcedure
+  - SOPArrestProcedure
   - SOPChainOfCommand
   - SOPCommandAuthority
 
@@ -88,9 +88,9 @@
   text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPNavalEngagements.xml"
 
 - type: guideEntry
-  id: SOPPostArrestProcedure
+  id: SOPArrestProcedure
   name: guide-entry-tdf-sop-arrest-procedure
-  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPPostArrestProcedure.xml"
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPArrestProcedure.xml"
 
 - type: guideEntry
   id: SOPChainOfCommand
