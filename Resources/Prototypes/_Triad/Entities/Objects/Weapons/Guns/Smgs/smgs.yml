@@ -5,19 +5,20 @@
   description: A somewhat novel SMG design featuring a rare folding stock for stowage, near uncontrollable with its stock folded. Designed by HZD to fit the niche weapon requirements of combatants with strict storage capacity.
   components:
   - type: GunToggleableBonus
-    minAngle: -5
-    maxAngle: -16
+    minAngle: -6
+    maxAngle: -14
     bonusFireRate: 0
     requiresToggle: false
-    angleDecay: 7
+    angleDecay: 5
+    angleIncrease: -4
   - type: GunWieldBonus
     minAngle: -2
-    maxAngle: -9
+    maxAngle: -10
   - type: Gun
-    minAngle: 10
-    maxAngle: 35
-    fireRate: 7.5
-    angleIncrease: 7
+    minAngle: 12
+    maxAngle: 38
+    fireRate: 7
+    angleIncrease: 8
     angleDecay: 8
     selectedMode: FullAuto
     soundGunshot:
