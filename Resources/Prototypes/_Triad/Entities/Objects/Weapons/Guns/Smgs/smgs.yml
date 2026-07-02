@@ -9,6 +9,7 @@
     maxAngle: -16
     bonusFireRate: 0
     requiresToggle: false
+    angleDecay: 7
   - type: GunWieldBonus
     minAngle: -2
     maxAngle: -9
@@ -17,7 +18,7 @@
     maxAngle: 35
     fireRate: 7.5
     angleIncrease: 7
-    angleDecay: 17
+    angleDecay: 8
     selectedMode: FullAuto
     soundGunshot:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/smg.ogg
@@ -45,13 +46,7 @@
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
   - type: ItemToggle
-    activated: false
-    onUse: false
-    onActivate: false
-    onAltUse: true
     altPriority: 1
-    verbToggleOff: fold-verb
-    verbToggleOn: unfold-verb
     soundActivate:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
       params:

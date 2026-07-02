@@ -6,7 +6,7 @@
     activated: false
     onUse: false
     onActivate: false
-    onAltUse: false
+    onAltUse: false # Make sure this value stays false, GunToggleableBonus adds its own alternative verb
     toggleOnWielded: false
     altPriority: 3
     verbToggleOff: unfold-verb
@@ -24,3 +24,4 @@
     maxAngle: 15
     bonusFireRate: 0
     requiresToggle: false
+    doAfterTime: 0.5

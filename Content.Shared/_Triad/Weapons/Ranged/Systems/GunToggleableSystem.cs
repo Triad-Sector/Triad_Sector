@@ -9,20 +9,24 @@ using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Verbs;
 using Content.Shared.DoAfter;
 using Content.Shared._Triad.Weapons.Ranged.Events;
+using System.Dynamic;
+using Content.Shared.Weapons.Ranged.Components;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Systems;
 
-public sealed class GunToggleableBonusSystem : EntitySystem
+public sealed partial class GunToggleableSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly ItemToggleSystem _itemToggle = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private ItemToggleSystem _itemToggle = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<GunComponent, ItemToggledEvent>(OnGunItemToggled);
 
         SubscribeLocalEvent<GunToggleableBonusComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers);
         SubscribeLocalEvent<GunToggleableBonusComponent, ShotAttemptedEvent>(OnShootAttempt);
@@ -30,6 +34,13 @@ public sealed class GunToggleableBonusSystem : EntitySystem
         SubscribeLocalEvent<GunToggleableBonusComponent, ItemToggledEvent>(OnToggled);
         SubscribeLocalEvent<GunToggleableBonusComponent, GetVerbsEvent<AlternativeVerb>>(OnAlternateVerb);
         SubscribeLocalEvent<GunToggleableBonusComponent, GunToggleableToggleDoAfterEvent>(OnToggleDoAfterEvent);
+
+        SubscribeLocalEvent<GunChangeShotSoundOnToggledComponent, GunRefreshModifiersEvent>(OnGetToggleSound);
+    }
+
+    private void OnGunItemToggled(Entity<GunComponent> ent, ref ItemToggledEvent args)
+    {
+        _gun.RefreshModifiers(ent.Owner, args.User);
     }
 
     private void OnGunRefreshModifiers(Entity<GunToggleableBonusComponent> bonus, ref GunRefreshModifiersEvent args)
@@ -111,5 +122,13 @@ public sealed class GunToggleableBonusSystem : EntitySystem
 
         args.Handled = true;
         _itemToggle.Toggle((ent.Owner, toggle), args.User, predicted: toggle.Predictable);
+    }
+
+    private void OnGetToggleSound(Entity<GunChangeShotSoundOnToggledComponent> ent, ref GunRefreshModifiersEvent args)
+    {
+        if (!_itemToggle.IsActivated(ent.Owner))
+            return;
+
+        args.SoundGunshot = ent.Comp.Sound;
     }
 }

@@ -1,11 +1,10 @@
 - type: entity
-  parent: BaseStorageStructure
-  id: BasePersistentShipStorageStash
+  id: BasePersistentStorage
   abstract: true
   components:
-  - type: Sprite
-    noRot: true
   - type: HLPersistOnShipSave
+    saveContents: true
+  - type: Appearance
   - type: Storage
     maxItemSize: Large
     blacklist:
@@ -25,6 +24,15 @@
     shape: square
 
 - type: entity
+  parent: [BaseStorageStructure, BasePersistentStorage]
+  id: BasePersistentShipStorageStash
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+
+- type: entity
+  parent: BasePersistentStorage
   id: BasePersistentShipStorageStashWallmount
   abstract: true
   placement:
@@ -53,11 +61,6 @@
     - type: PlaceableSurface
       placeCentered: true
       isPlaceable: false
-    - type: RadarBlip
-      radarColor: "#e3ffea"
-      scale: 1.5
-      requireNoGrid: true
-      shape: square
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -205,9 +208,7 @@
       node: FuelStorageStashNode
     - type: ShipSaveLimit
       limitId: FuelStash
-    - type: Appearance
     - type: EntityStorageVisuals
       stateBaseClosed: fuel
       stateDoorOpen: fuel_open
       stateDoorClosed: fuel_door
-    - type: HLPersistOnShipSave
