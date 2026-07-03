@@ -169,7 +169,7 @@
   components:
     - type: Item # Mono
       size: Large
-      sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd_inhands_32x.rsi
+      sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd.rsi # Triad
     - type: Sprite
       sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd.rsi # Mono
       layers:
@@ -178,7 +178,7 @@
         - state: mag-0
           map: ["enum.GunVisualLayers.Mag"]
     - type: Clothing
-      sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd_inhands_32x.rsi # Mono
+      sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd.rsi # Triad
     - type: Wieldable
       unwieldOnUse: false
     - type: GunWieldBonus
