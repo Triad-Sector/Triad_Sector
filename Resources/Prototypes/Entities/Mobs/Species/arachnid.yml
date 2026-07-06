@@ -130,6 +130,7 @@
         visible: false
   - type: Inventory
     templateId: arachnid
+    speciesId: arachnid
   - type: Carriable # Frontier: Carrying system from nyanotrasen.
 
 
@@ -140,5 +141,7 @@
   components:
   - type: HumanoidAppearance
     species: Arachnid
+  - type: Inventory
+    speciesId: arachnid
 
 #>88w88<

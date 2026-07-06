@@ -2066,3 +2066,67 @@ Entries:
   id: 2344
   time: '2026-07-02T12:40:44.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/270
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Starting gun update optimizations
+    - type: Fix
+      message: Adaptive raycasting
+    - type: Fix
+      message: Viewport bounds check for shield drawing
+  id: 2345
+  time: '2026-07-04T01:16:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/284
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Readjusted sprite sizes and offsets of several guns
+  id: 2346
+  time: '2026-07-04T06:13:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/281
+- author: Stedar111
+  changes:
+    - type: Tweak
+      message: Nerfed the Squire to incentivize unfolding it.
+    - type: Fix
+      message: >-
+        Fixed the toggle verb for the Squire and Stiletto displaying the
+        opposite name.
+  id: 2347
+  time: '2026-07-04T06:13:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/279
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: >-
+        Rules after community feedback/clarification requests.  Please see PR
+        for full list of changes
+  id: 2348
+  time: '2026-07-04T14:29:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/285
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix subtle and whisper for ghost hearing toggles
+  id: 2349
+  time: '2026-07-04T14:30:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/286
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        High Command Outpost - Area for admins to RP their CC characters with
+        players
+  id: 2350
+  time: '2026-07-05T04:16:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/280
+- author: HTMLSystem
+  changes:
+    - type: Fix
+      message: >-
+        Arachnid and moth eyewear sprites will now work, but only on
+        wizden-original eyewear. Will make sprites for eyewear from other forks
+        soon!
+  id: 2351
+  time: '2026-07-05T04:22:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/282
