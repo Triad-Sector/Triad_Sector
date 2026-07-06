@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.M_Emp;
 
-[NetworkedComponent, RegisterComponent, Virtual]
+[NetworkedComponent, RegisterComponent] // Triad: removed Virtual - engine v277 RA0053 forbids it on sealed types
 public sealed partial class SharedM_EmpComponent : Component
 {
 }

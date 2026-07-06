@@ -249,6 +249,7 @@
     components:
     - type: GlassJaw
       critDecrease: 50
+      critSetValueFallback: 50 # Triad, fallback that sets crit state threshold to 50 if no critical state exists. This is done so the trait does not conflict with redshirt.
 
 - type: trait
   id: Hemophilia

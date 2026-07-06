@@ -14,3 +14,20 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+- type: construction
+  id: BunkBed
+  name: bunk bed
+  description: This is used to lie in, sleep in or strap on. Use a crowbar to adjust the position.
+  graph: bunkbed
+  startNode: start
+  targetNode: bunkbottom
+  category: construction-category-furniture
+  icon:
+    sprite: _Mono/Structures/Furniture/Beds/bunk.rsi
+    state: bottom_bunk
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

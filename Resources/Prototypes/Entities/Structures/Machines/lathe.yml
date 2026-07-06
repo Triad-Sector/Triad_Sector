@@ -660,6 +660,7 @@
     - Bedsheets
     - NFFloorTilesCarpet # Frontier
     - NFWallets # Frontier
+    - PillowsStandard # HL
     dynamicPacks: # Frontier
     - NFPouches # Frontier
   - type: EmagLatheRecipes

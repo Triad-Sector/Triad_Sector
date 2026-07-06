@@ -17,6 +17,8 @@
     - type: Clickable
     - type: Transform
       anchored: true
+    - type: Anchorable # Triad: can move
+    - type: Pullable # Triad: can move
     - type: Physics
       bodyType: Static
       canCollide: false

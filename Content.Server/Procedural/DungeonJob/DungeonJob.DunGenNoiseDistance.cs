@@ -87,13 +87,13 @@ public sealed partial class DungeonJob
 
         var room = new DungeonRoom(roomTiles, area.Center, area, new HashSet<Vector2i>());
 
-        _maps.SetTiles(_gridUid, _grid, tiles);
+        // Triad: chunk the commit so the whole noise floor doesn't regenerate fixtures in one ~125ms tick stall.
+        await SetTilesChunked(tiles);
         var dungeon = new Dungeon(new List<DungeonRoom>()
         {
             room,
         });
 
-        await SuspendDungeon();
         return dungeon;
     }
 

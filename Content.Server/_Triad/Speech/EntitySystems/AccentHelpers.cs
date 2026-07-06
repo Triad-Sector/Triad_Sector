@@ -17,6 +17,14 @@ namespace Content.Server._Triad.Speech.EntitySystems;
 // them instead of copy-pasting. Pure string in/out, no DI, so it stays trivially testable.
 public static class AccentHelpers
 {
+    // Triad: master kill-switch for the prefix/suffix tic pools, parked 2026-06-19. The random
+    // interjection/affirmation affixes were shifting the meaning of sentences in ways playtesters
+    // disliked, so the feature is off wholesale. Every accent's prefix and suffix guard ANDs on this;
+    // flip to true to re-enable. The per-accent pools, probabilities, and .ftl entries are left intact
+    // so revival is just this one bool. static readonly (not const) to avoid unreachable-code warnings
+    // at the short-circuited guards.
+    public static readonly bool AffixesEnabled = false;
+
     private static readonly Regex IngWord = new(@"\b(\w+?)(ing)\b", RegexOptions.IgnoreCase);
 
     // Short words that merely END in -ing but are not gerunds; never drop their g.

@@ -648,6 +648,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool ignoreActionBlocker = false
         )
     {
+        const ChatChannel chatChannel = ChatChannel.Whisper;
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
             return;
 
@@ -675,8 +676,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
-
-        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        foreach (var (session, data) in GetRecipients(chatChannel, source, WhisperMuffledRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
@@ -716,11 +716,11 @@ public sealed partial class ChatSystem : SharedChatSystem
                 wrappedMessage = WrapWhisperMessage(source, "chat-manager-entity-whisper-unknown-wrap-message", string.Empty, result, language);
             }
 
-            _chatManager.ChatMessageToOne(ChatChannel.Whisper, result, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(chatChannel, result, wrappedMessage, source, false, session.Channel);
         }
 
         var replayWrap = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, message, language);
-        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        _replay.RecordServerMessage(new ChatMessage(chatChannel, message, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
         // Einstein Engines - Languages end
 
         var ev = new EntitySpokeEvent(source, message, channel, true, language); // Einstein Engines - Languages
@@ -754,6 +754,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool ignoreActionBlocker = false)
     {
+        const ChatChannel chatChannel = ChatChannel.CollectiveMind;
         var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage), language);
         if (message.Length == 0)
             return;
@@ -775,8 +776,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
-
-        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        foreach (var (session, data) in GetRecipients(chatChannel, source, WhisperMuffledRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
@@ -792,7 +792,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var wrappedMessage = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, perceivedMessage, language);
-            _chatManager.ChatMessageToOne(ChatChannel.CollectiveMind, message, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(chatChannel, message, wrappedMessage, source, false, session.Channel);
         }
 
         if (!hideLog)
@@ -970,8 +970,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private void SendInVoiceRange(ChatChannel channel, string name, string message, string wrappedMessage, string obfuscated, string obfuscatedWrappedMessage, EntityUid source, ChatTransmitRange range, NetUserId? author = null, LanguagePrototype? languageOverride = null) // Einstein Engines - Language
     {
         var language = languageOverride ?? _language.GetLanguage(source); // Einstein Engines - Language
-
-        foreach (var (session, data) in GetRecipients(source, VoiceRange))
+        foreach (var (session, data) in GetRecipients(channel, source, VoiceRange))
         {
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
@@ -1156,13 +1155,16 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     /// <summary>
     ///     Returns list of players and ranges for all players withing some range. Also returns observers with a range of -1.
+    ///
+    ///     Triad: it also handles applying range limits to admins hearing subtle messages even in observer mode and preventing non-admin ghosts from hearing those messages at all
     /// </summary>
-    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange)
+    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(ChatChannel channel, EntityUid source, float voiceGetRange)
     {
         // TODO proper speech occlusion
 
         var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
         var ghostHearing = GetEntityQuery<GhostHearingComponent>();
+        var ghost = GetEntityQuery<GhostComponent>();
         var xforms = GetEntityQuery<TransformComponent>();
 
         var transformSource = xforms.GetComponent(source);
@@ -1172,14 +1174,28 @@ public sealed partial class ChatSystem : SharedChatSystem
         foreach (var player in _playerManager.Sessions)
         {
             if (player.AttachedEntity is not { Valid: true } playerEntity)
-                continue;
+                continue; // don't send messages to non-players
 
             var transformEntity = xforms.GetComponent(playerEntity);
 
-            if (transformEntity.MapID != sourceMapId)
+            // triad start
+            const ChatChannel privateMask = ChatChannel.Subtle | ChatChannel.SubtleOOC | ChatChannel.Whisper;
+            var messageIsPrivate = (channel & privateMask) != ChatChannel.None;
+            var hasGhostHearing = ghostHearing.HasComponent(playerEntity);
+            var isGhost = ghost.HasComponent(playerEntity);
+            var isAdminPiiPerm = _adminManager.HasAdminFlag(playerEntity, AdminFlags.Pii);
+
+            // ghosts that are not admins are never "in range" of subtle messages no matter where they are
+            if (messageIsPrivate && isGhost && !isAdminPiiPerm)
                 continue;
 
-            var observer = ghostHearing.HasComponent(playerEntity);
+            // ghostHearing means you can hear messages from anywhere unless they are subtle
+            var observer = hasGhostHearing && !messageIsPrivate;
+
+            // ghostHearing works across worlds for applicable messages
+            if (!observer && transformEntity.MapID != sourceMapId)
+                continue;
+            // triad end
 
             // Floofstation edit - check LOS
             sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance);

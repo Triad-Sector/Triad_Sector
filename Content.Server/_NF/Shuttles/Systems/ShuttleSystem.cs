@@ -24,7 +24,7 @@ public sealed partial class ShuttleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, SetServiceFlagsRequest>(NfSetServiceFlags); // Frontier
     }
 
-    private bool SetInertiaDampening(EntityUid uid, PhysicsComponent physicsComponent, ShuttleComponent shuttleComponent, TransformComponent transform, InertiaDampeningMode mode)
+    public bool SetInertiaDampening(EntityUid uid, PhysicsComponent physicsComponent, ShuttleComponent shuttleComponent, TransformComponent transform, InertiaDampeningMode mode) // Mono: public for ship AI (ported with #4064)
     {
         if (!transform.GridUid.HasValue)
         {

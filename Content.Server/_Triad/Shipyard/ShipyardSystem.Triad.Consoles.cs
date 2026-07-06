@@ -342,29 +342,17 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        var currentBalance = bankAccount.Balance;
-        var newBalance = currentBalance - appraisalCost;
-
-        // Force charge the player - allow going into debt
-        if (!_bank.TryBankWithdrawAllowDebt(player, appraisalCost))
+        if (!_bank.TryBankWithdraw(player, appraisalCost))
         {
-            // This should rarely happen (only if no session/prefs/etc)
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-failed"));
+            Del(shuttleUid);
+            ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", appraisalCost)));
             PlayDenySound(player, uid, component);
             return;
         }
 
         // Notify player of the charge and their new balance
-        if (newBalance < 0)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-success-debt",
-                ("ship", name), ("cost", appraisalCost), ("debt", -newBalance)));
-        }
-        else
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-success-charged",
+        ConsolePopup(player, Loc.GetString("shipyard-console-load-success-charged",
                 ("ship", name), ("cost", appraisalCost)));
-        }
 
         // Add company information to the shuttle from the ID card or voucher
         AddCompanyInformation(targetId, shuttleUid); // Triad, generic method for adding company info

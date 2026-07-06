@@ -69,10 +69,10 @@ public sealed class DrawlAccentSystem : EntitySystem
         // A swap can flip a word's vowel-sound, leaving "a outlaw" / "an space critter".
         msg = AccentHelpers.FixArticles(msg);
 
-        if (accent.Prefixes.Count > 0 && _random.Prob(accent.PrefixProb))
+        if (AccentHelpers.AffixesEnabled && accent.Prefixes.Count > 0 && _random.Prob(accent.PrefixProb))
             msg = AccentHelpers.PrependPrefix(msg, Loc.GetString(_random.Pick(accent.Prefixes)));
 
-        if (accent.Suffixes.Count > 0 && _random.Prob(accent.SuffixProb))
+        if (AccentHelpers.AffixesEnabled && accent.Suffixes.Count > 0 && _random.Prob(accent.SuffixProb))
             msg = AccentHelpers.AppendSuffix(msg, Loc.GetString(_random.Pick(accent.Suffixes)));
 
         return msg;
