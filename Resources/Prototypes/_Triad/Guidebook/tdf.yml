@@ -48,6 +48,7 @@
   - SLCrimeList100Series
   - SLCrimeList200Series
   - SLCrimeList300Series
+  - SLCrimeList400Series
 
 - type: guideEntry
   id: SLCrimeList100Series
@@ -63,6 +64,11 @@
   id: SLCrimeList300Series
   name: guide-entry-sl-crime-list-300-series
   text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList300Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList400Series
+  name: guide-entry-sl-crime-list-400-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList400Series.xml"
 
 - type: guideEntry
   id: SLCitizenRights
