@@ -67,6 +67,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_NF/POI/lpbravo.yml", // Contains syndicate rubber stamp
             "/Maps/_NF/Shuttles/Admin/fishbowl.yml", // Contains CentComm folder
             "/Maps/_Mono/Admin/minicentcomm.yml", // Admeme centcomm
+            "/Maps/_Triad/Admin/highcommandoutpost.yml", // High comm outpost, contains DNM stamp
             // End Frontier
         };
 
