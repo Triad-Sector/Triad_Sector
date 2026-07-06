@@ -9,8 +9,8 @@
     onAltUse: false # Make sure this value stays false, GunToggleableBonus adds its own alternative verb
     toggleOnWielded: false
     altPriority: 3
-    verbToggleOff: unfold-verb
-    verbToggleOn: fold-verb
+    verbToggleOff: fold-verb
+    verbToggleOn: unfold-verb
     soundActivate:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
       params:
