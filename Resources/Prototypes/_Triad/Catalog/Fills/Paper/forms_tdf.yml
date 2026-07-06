@@ -21,14 +21,14 @@
   parent: [FillTdfForms, BoxFolderTdf]
   id: BoxFolderTdfForms
   name: TDF form folder
-  description: A folder filled with TSFMC paperwork templates.
+  description: A folder filled with TDF paperwork templates.
   suffix: Forms, Normal
 
 - type: entity
   parent: [FillTdfForms, BoxFolderTdfInvert]
   id: BoxFolderTdfFormsInvert
   name: TDF form folder
-  description: A folder filled with TSFMC paperwork templates.
+  description: A folder filled with TDF paperwork templates.
   suffix: Forms, Invert
 
 # Forms
