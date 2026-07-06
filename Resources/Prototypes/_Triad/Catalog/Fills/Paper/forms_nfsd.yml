@@ -40,9 +40,9 @@
   components:
   - type: Paper
     content: |2
-      [color=#CCBF70]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
       [bold]Do Not Resuscitate Order[/bold]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
       The subject of this DNR (Do Not Resuscitate) has either requested, or been ordered, not to be resuscitated, cloned or anything that would bring them back to life.
 
@@ -52,9 +52,9 @@
       Note(s):
 
       [color=gray][italic]
-      [color=#CCBF70]Only with the approval of both DoC and Chief Enforcer, or the Overseer, or someone with a higher standing than Chief Enforcer, can they be allowed to be brought back to life.[/color]
+      [color=#725B24]Only with the approval of both DoC and Chief Enforcer, or the Overseer, or someone with a higher standing than Chief Enforcer, can they be allowed to be brought back to life.[/color]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
 - type: entity # Creator: Aqualious (discord)
   id: PaperWrittenTdfInvestigatorReport
@@ -64,15 +64,15 @@
   components:
   - type: Paper
     content: |2
-      [color=#CCBF70]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
       [bold]Investigator Forensic Case File[/bold]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
       [bold]Investigator's Name:[/bold] [signature]
       [bold]Current Case Name/Summary:[/bold]
       [color=Red][form][/color]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=3]Evidence Logs[/head]
 
       [bold]Door Log Notes:[/bold]
@@ -85,16 +85,16 @@
       - [form]
       - [form]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
-      [bold]Witness Statements[/bold]
-      [italic] Name [/italic]
+      [bold]Witness Statements:[/bold]
+      [italic][form][/italic]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [bold]Conclusions At Present:[/bold]
       [form]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
 - type: entity # Creator: Aqualious (discord)
   id: PaperWrittenTdfAfterActionReport
@@ -104,9 +104,9 @@
   components:
   - type: Paper
     content: |2
-      [color=#CCBF70]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
       [bold]After-Action Report[/bold]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
       [bold]Reporting Enforcer: [/bold] [color=#494016][form][/color]
       [bold]Rank: [/bold] [color=#494016][form][/color]
@@ -114,13 +114,13 @@
       [bold]Date and Time of Incident: [/bold][form]
       [bold]Current Shift Time: [/bold][form]
 
-      [color=#CCBF70]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
+      [color=#725B24]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
       [bold]Critical Context: [/bold][form]
 
       [head=3][bold]Event Details:[/bold][/head]
       [form]
 
-      [color=#CCBF70]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
+      [color=#725B24]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
       [head=3][bold]Conclusions:[/bold][/head]
       [form]
 
@@ -129,7 +129,7 @@
 
       [bold]Signature:[/bold] [signature]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
 - type: entity # Creator: Aqualious (discord)
   id: PaperWrittenTdfContrabandPermit
@@ -139,9 +139,9 @@
   components:
   - type: Paper
     content: |2
-      [color=#CCBF70]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
       [bold]Contraband Permit[/bold]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
       [bold]This Document is a sworn declaration of contraband permitted to be used and carried on a Triad citizen, henceforth known as the Carrier.[/bold]
 
@@ -149,7 +149,7 @@
 
       [color=red]Only Class 2 and below Contraband permits may be issued. Class 3 Contraband is not permitted to be carried by any citizen, regardless of permit.[/color]
 
-      [color=#40516e]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [bold]Carrier Information [/bold]
 
       [bold]Name: [/bold][form]
@@ -159,7 +159,7 @@
       [bold]Reason For Permit: [/bold]
       [form]
 
-      [color=#40516e]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [bold]Carried Equipment (Firearms, Tools, etc)[/bold]
       • [form]
       • [form]
@@ -174,13 +174,13 @@
       • [form]
       • [form]
 
-      [bold]Chief Enforcer: [/bold][signature]
+      [bold]Chief Enforcer Signature: [/bold][signature]
       [bold]Carrier Signature: [/bold][signature]
 
       [color=gray][italic]
-      [color=#CCBF70]Only with the signature and stamp of the Chief Enforcer, is this permit valid. Permit may be revoked at any time if the Carrier violates the terms of the permit or Triad sector law.[/color]
+      [color=#725B24]Only with the signature and stamp of the Chief Enforcer, is this permit valid. Permit may be revoked at any time if the Carrier violates the terms of the permit or Triad sector law.[/color]
 
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
 - type: entity # Creator: Aqualious (discord)
   id: PaperWrittenTdfShipSearchWarrant
@@ -190,9 +190,9 @@
   components:
   - type: Paper
     content: |2
-      [color=#CCBF70]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
       [bold]Ship Search Warrant[/bold]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
 
       [italic] This warrant - legally authorized by powers at hand - grants the TDF the lawful right to exhort their authority and conduct a lawful ship search.[/italic]
 
@@ -207,4 +207,4 @@
       [bold]Warden or Chief Enforcer Signature: [/bold][signature]
 
       [color=#aaaaaa]This document is not valid unless stamped by at least one of the listed required personnel. This Warrant is not required on Red Alert; however, given the scope, justifications to High Command should be reported before the search is conducted.[/color]
-      [color=#CCBF70]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
