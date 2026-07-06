@@ -44,6 +44,25 @@
   id: SLCrimeList
   name: guide-entry-rules-sl-crime-list
   text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList.xml"
+  children:
+  - SLCrimeList100Series
+  - SLCrimeList200Series
+  - SLCrimeList300Series
+
+- type: guideEntry
+  id: SLCrimeList100Series
+  name: guide-entry-sl-crime-list-100-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList100Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList200Series
+  name: guide-entry-sl-crime-list-200-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList200Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList300Series
+  name: guide-entry-sl-crime-list-300-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList300Series.xml"
 
 - type: guideEntry
   id: SLCitizenRights
