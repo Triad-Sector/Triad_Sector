@@ -4364,7 +4364,7 @@ entities:
     - type: Transform
       pos: 2.5,1.5
       parent: 1
-- proto: HyperlinkBookSpaceLaw
+- proto: BookTriadLaw
   entities:
   - uid: 485
     components:
