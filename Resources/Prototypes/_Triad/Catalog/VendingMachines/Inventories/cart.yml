@@ -13,8 +13,8 @@
     BoxPaper: 4
     BoxPaperOffice: 4
     BoxEnvelope: 4
-    #BoxFolderTdfForms: 3
-    #BoxFolderTdfFormsBrown: 3 TODO
+    BoxFolderTdfForms: 3
+    BoxFolderTdfFormsInvert: 3
     BoxFolderGreen: 3
     BoxFolderBlack: 3
     BoxFolderRed: 3
