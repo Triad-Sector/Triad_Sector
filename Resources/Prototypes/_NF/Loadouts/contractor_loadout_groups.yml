@@ -207,6 +207,15 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
+  # Triad start - Ported MNK clothes.
+  - ClothingUniformMNKOfficeSkirt
+  - ClothingUniformMNKUnderGarment
+  - ClothingUniformMNKDressBlack
+  - ClothingUniformMNKGymBra
+  - ClothingUniformMNKBlackOveralls
+  - ClothingUniformMNKBlackShoulder
+  - ClothingUniformMNKTracksuitBlack
+  # End Triad
 
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
@@ -392,6 +401,11 @@
   - ContractorWetFloorSign
   - ContractorClothingOuterCoatExpensive
   - ContractorClothingOuterCoatSpaceAsshole
+  # Triad start - Ported MNK clothes.
+  - ClothingOuterCoatMNKBlackJacket
+  - ClothingOuterCoatMNKWhiteHoodie
+  - ClothingOuterCoatMNKBlackTopCoat
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorBelt
