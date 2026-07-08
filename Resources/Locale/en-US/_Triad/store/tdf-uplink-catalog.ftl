@@ -72,34 +72,55 @@ uplink-security-forcefield-desc = A battery powered forcefield projector offerin
 
 uplink-security-holo-name = Holobarrier
 uplink-security-holo-desc = A battery powered holoprojecter that places temporary barriers to bar movement.
+
 uplink-security-jetpack-name = Jetpack
 uplink-security-jetpack-desc = A pre-filled jetpack for EVA. Comes in a fashionable tan.
+
 uplink-security-magboots-name = Security Magboots
 uplink-security-magboots-desc = Light weight magboots designed to keep the wearer grounded in low and no gravity environments.
+
 uplink-security-techfab-name = TDF Techfab
 uplink-security-techfab-desc = A circuit board for a TDF Techfab. Allows the production of ammunition, magazines, weapons, and numerous other utilities. Uses raw resources. Can be upgraded.
+
 uplink-security-key-name = TDF Encryption Keys
 uplink-security-key-desc = A box of 4 encryption keys that give access to the TDF radio channel.
+
 uplink-security-emprocket-name = EMP Rocket
 uplink-security-emprocket-desc = An EMP rocket for the RPG-7.
+
 uplink-security-Magazine9x19mmPistolFMJ-name = 9x19mm Pistol Magazines
 uplink-security-Magazine9x19mmPistolFMJ-desc = A box containing 4 filled 9x19mm magazines.
+
 uplink-security-Magazine9x19mmPistolFMJ-rubber-name = 9x19mm Pistol Rubber Magazines
 uplink-security-Magazine9x19mmPistolFMJ-rubber-desc = A box containing 4 filled 9x19mm (rubber) magazines.
+
+uplink-security-Magazine45ACPPistolFMJ-name = .45 ACP Pistol Magazines
+uplink-security-Magazine45ACPPistolFMJ-desc = A box containing 4 filled .45 ACP magazines.
+
+uplink-security-Magazine45ACPPistolFMJ-rubber-name = .45 ACP Pistol Rubber Magazines
+uplink-security-Magazine45ACPPistolFMJ-rubber-desc = A box containing 4 filled .45 ACP (rubber) magazines.
+
 uplink-security-5-56x45mmMagazine-name = 5.56x45mm Magazines
 uplink-security-5-56x45mmMagazine-desc = A box containing 4 filled 5.56x45mm magazines.
+
 uplink-security-5-56x45mmMagazine-rubber-name = 5.56x45mm Rubber Magazines
 uplink-security-5-56x45mmMagazine-rubber-desc = A box containing 4 filled 5.56x45mm (rubber) magazines.
+
 uplink-security-7-62x39mmMagazine-name = 7.62x39mm Magazines
 uplink-security-7-62x39mmMagazine-desc = A box containing 4 filled 7.62x39mm magazines.
+
 uplink-security-7-62x39mmMagazine-rubber-name = 7.62x39mm Rubber Magazines
 uplink-security-7-62x39mmMagazine-rubber-desc = a Box containing 4 filled 7.62x39mm (rubber) magazines.
+
 uplink-security-7-62x51mmMagazine-name = 7.62x51mm Magazines
 uplink-security-7-62x51mmMagazine-desc = A box containing 4 filled 7.62x51mm magazines.
+
 uplink-security-7-62x51mmMagazine-rubber-name = 7.62x51mm Rubber Magazines
 uplink-security-7-62x51mmMagazine-rubber-desc = a Box containing 4 filled 7.62x51mm (rubber) magazines.
+
 uplink-security-wt550magazine-name = 4.6x30mm Top-mounted Magazines
 uplink-security-wt550magazine-desc = A box containing 4 filled 4.6x30mm top-mounted magazines.
+
 uplink-security-hypo-name = Hypospray
 uplink-security-hypo-desc = A sterile medical injector for instant delivery of medications.
 uplink-security-ambuzol-name = Ambuzol Syringe
