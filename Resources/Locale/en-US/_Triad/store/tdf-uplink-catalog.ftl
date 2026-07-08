@@ -100,6 +100,12 @@ uplink-security-Magazine45ACPPistolFMJ-desc = A box containing 4 filled .45 ACP 
 uplink-security-Magazine45ACPPistolFMJ-rubber-name = .45 ACP Pistol Rubber Magazines
 uplink-security-Magazine45ACPPistolFMJ-rubber-desc = A box containing 4 filled .45 ACP (rubber) magazines.
 
+uplink-security-Magazine45ACPPistolFMJ-smg-name = .45 ACP SMG Magazines
+uplink-security-Magazine45ACPPistolFMJ-smg-desc = A box containing 4 filled .45 ACP SMG magazines.
+
+uplink-security-Magazine45ACPPistolFMJ-smg-rubber-name = .45 ACP SMG Rubber Magazines
+uplink-security-Magazine45ACPPistolFMJ-smg-rubber-desc = A box containing 4 filled .45 ACP (rubber) SMG magazines.
+
 uplink-security-5-56x45mmMagazine-name = 5.56x45mm Magazines
 uplink-security-5-56x45mmMagazine-desc = A box containing 4 filled 5.56x45mm magazines.
 

@@ -802,6 +802,22 @@
           - SecurityUplink
 
 - type: listing
+  id: UplinkSecurity45ACPSMGMagazine
+  name: uplink-security-Magazine45ACPPistolFMJ-smg-name
+  description: uplink-security-Magazine45ACPPistolFMJ-smg-desc
+  productEntity: BoxMagazine45_ACPSubMachineGunFMJ
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
   id: UplinkSecurity556x45mmMagazine
   name:  uplink-security-5-56x45mmMagazine-name
   description: uplink-security-5-56x45mmMagazine-desc
@@ -902,6 +918,22 @@
   name: uplink-security-Magazine45ACPPistolFMJ-rubber-name
   description: uplink-security-Magazine45ACPPistolFMJ-rubber-desc
   productEntity: BoxMagazine45_ACPRubber
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
+  id: UplinkSecurity45ACPSMGMagazineRubber
+  name: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-name
+  description: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-desc
+  productEntity: BoxMagazine45_ACPSubMachineGunRubber
   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   cost:
     TriadCommerceCredit: 5
