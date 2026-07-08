@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/08/2026 20:36:59
-  entityCount: 14171
+  time: 07/08/2026 20:55:37
+  entityCount: 14173
 maps:
 - 1
 grids:
@@ -14827,7 +14827,8 @@ entities:
           12,-4:
             1: 3627
           12,-3:
-            1: 3
+            6: 1
+            1: 2
           12,-2:
             0: 20480
           12,-1:
@@ -15709,6 +15710,25 @@ entities:
           moles:
           - 0
           - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 147.92499
+          moles:
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -17714,7 +17734,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.5,-6.5
       parent: 2
-  - uid: 14171
+  - uid: 14173
     components:
     - type: Transform
       anchored: False
@@ -39983,6 +40003,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 20.619112,15.730549
       parent: 2
+- proto: ClothingUniformJumpsuitPirateSlops
+  entities:
+  - uid: 14172
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 47.859474,-11.567471
+      parent: 2
 - proto: Coal1
   entities:
   - uid: 4438
@@ -40954,13 +40982,6 @@ entities:
     components:
     - type: Transform
       pos: 31.5,40.5
-      parent: 2
-- proto: CratePirateChest
-  entities:
-  - uid: 4548
-    components:
-    - type: Transform
-      pos: 48.5,-11.5
       parent: 2
 - proto: CrateSecurityNonlethal
   entities:
@@ -49198,7 +49219,7 @@ entities:
       pos: 40.5,8.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -103975.66
+      secondsUntilStateChange: -105092.69
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -49985,7 +50006,7 @@ entities:
       deviceLists:
       - 58
     - type: Door
-      secondsUntilStateChange: -48691.54
+      secondsUntilStateChange: -49808.562
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 14804.3518643
@@ -74588,6 +74609,11 @@ entities:
       parent: 2
 - proto: PirateFlag
   entities:
+  - uid: 4548
+    components:
+    - type: Transform
+      pos: 47.5,-10.5
+      parent: 2
   - uid: 9209
     components:
     - type: Transform
@@ -74600,6 +74626,12 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5573301,9.761133
+      parent: 2
+  - uid: 14171
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 48.50588,-11.447272
       parent: 2
 - proto: PlasticFlapsAirtightOpaque
   entities:
