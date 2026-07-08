@@ -124,7 +124,7 @@
   - type: Pda
     id: ShriffIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -164,7 +164,7 @@
   - type: Pda
     id: CadetIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -189,7 +189,7 @@
   - type: Pda
     id: DeputyIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -214,7 +214,7 @@
   - type: Pda
     id: BrigmedicNFIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -239,7 +239,7 @@
   - type: Pda
     id: SergeantIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -264,7 +264,7 @@
   - type: Pda
     id: BailiffIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -289,7 +289,7 @@
   - type: Pda
     id: NFDetectiveIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -320,7 +320,7 @@
         tags:
         - Write
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:
@@ -340,7 +340,7 @@
 - type: entity
   parent: BaseSecurityPDA
   id: SrPDA
-  name: colonial liaison PDA
+  name: overseer PDA
   description: Looks like it's been clawed on.
   components:
   - type: Pda

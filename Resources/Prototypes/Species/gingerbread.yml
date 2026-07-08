@@ -12,6 +12,8 @@
 - type: speciesBaseSprites
   id: MobGingerbreadSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobGingerbreadHead
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking

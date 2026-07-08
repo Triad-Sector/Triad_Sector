@@ -20,6 +20,18 @@
   - type: CollideOnAnchor
   - type: Anchorable
   - type: Rotatable
+  # Triad: RPD port from funky-station — lets the RPD chew gas pipes (and, via prototype inheritance, every
+  # GasUnaryBase / GasBinaryBase / GasTrinaryBase descendant: vents, scrubbers, pumps, mixers, filters, ports,
+  # heat exchangers, regulators, valves, the gas-pipe sensor). `deconstructable: false` keeps the plain RCD
+  # from picking these up — the regular RCD's Deconstruct recipe was previously a no-op against atmos
+  # hardware (none of it was RCDDeconstructable at all) and we want to preserve that.
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 2
+    fx: EffectRCDDeconstruct2
+    deconstructable: false
+    rpd: true
+  # End Triad
   - type: Destructible
     thresholds:
     - trigger: # for nukes

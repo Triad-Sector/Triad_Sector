@@ -1,0 +1,31 @@
+<Document>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // OFFICIAL DOCUMENTS[/color][color=#897236]    Triad Security Forces ║[/color]\n[color=#897236]║                                                SOP ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  [color=#897236][mono]──── [color=#FFA500][bold]STANDARD OPERATING PROCEDURE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  This Standard Operating Procedure (SOP) is designed for Triad Defence Force (Referred to as TDF for the remainder of this document) Enforcers and Security forces operating within the Triad sector.
+  In this region struggling to rebuild, the goal is to maintain order without inciting a full scale riot, while remaining lethal enough to deter organized piracy and the spread of illicit/unauthorized cargo.
+
+  [color=#897236][mono]──── [color=#FFA500][bold]DEFINITIONS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  Below are the definitons used in SOP as well as Triad Sector legal code:
+  - [textlink="Definitions" link="SLDefinitions"]
+
+  [color=#897236][mono]──── [color=#FFA500][bold]PAGES[/bold][/color] ───────────────────────────────[/mono][/color]
+  - [textlink="I. Jurisdictional Authority" link="SOPJurisdictionalAuthority"]
+  - [textlink="II. Smuggling" link="SOPSmuggling"]
+  - [textlink="III. Belligerent Vessel's Aggression & Naval Engagements" link="SOPNavalEngagements"]
+  - [textlink="IV. Post-Arrest Procedure" link="SOPPostArrestProcedure"]
+  - [textlink="V. Chain of Command" link="SOPChainOfCommand"]
+  - [textlink="VI. Command Authority and Privileges" link="SOPCommandAuthority"]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+</Document>

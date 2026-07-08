@@ -6,7 +6,7 @@
 
 - type: nameIdentifierGroup
   id: NuclearReactorTSF
-  prefix: TSF-NFR
+  prefix: TDF-NFR
   minValue: 10
   maxValue: 99
 
@@ -38,7 +38,7 @@
 
 - type: nameIdentifierGroup
   id: NuclearReactorTSFSmall
-  prefix: TSF-NFR-S
+  prefix: TDF-NFR-S
   minValue: 10
   maxValue: 99
 

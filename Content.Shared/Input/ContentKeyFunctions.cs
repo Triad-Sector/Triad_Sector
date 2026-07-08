@@ -60,7 +60,6 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction OpenPocket2 = "OpenPocket2";
         public static readonly BoundKeyFunction OpenSuitStorage = "OpenSuitStorage";
         public static readonly BoundKeyFunction OpenOuterClothing = "OpenOuterClothing";
-        public static readonly BoundKeyFunction OpenConsentWindow = "OpenConsentWindow"; // Floofstation
         // Mono End
         public static readonly BoundKeyFunction OpenWallet = "OpenWallet"; // Frontier
         public static readonly BoundKeyFunction OpenAHelp = "OpenAHelp";
@@ -78,6 +77,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction RotateObjectCounterclockwise = "RotateObjectCounterclockwise";
         public static readonly BoundKeyFunction FlipObject = "FlipObject";
         public static readonly BoundKeyFunction ToggleRoundEndSummaryWindow = "ToggleRoundEndSummaryWindow";
+        public static readonly BoundKeyFunction OpenConsentWindow = "OpenConsentWindow"; // Floofstation
         public static readonly BoundKeyFunction OpenEntitySpawnWindow = "OpenEntitySpawnWindow";
         public static readonly BoundKeyFunction OpenSandboxWindow = "OpenSandboxWindow";
         public static readonly BoundKeyFunction OpenTileSpawnWindow = "OpenTileSpawnWindow";

@@ -1,7 +1,7 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                            xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                            xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                           SetSize="900 600"
+                           SetSize="900 700"
                            MinSize="900 450">
     <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 8 0 2">
         <PanelContainer.PanelOverride>
@@ -134,6 +134,29 @@
                     Disabled="True" />
         </BoxContainer>
 
+        <BoxContainer Name="SavedShipsContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 8 0 2">
+            <Label Text="Saved Ships:" />
+            <ItemList Name="SavedShipsList"
+                      MinSize="0 100"
+                      HorizontalExpand="True" />
+        <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 5 0 5">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#141414"/>
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" Margin="5 0 0 0">
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="{Loc 'shipyard-console-tax-rate-label'}" StyleClasses="LabelKeyText" />
+                    <Label Name="TaxRateLabel" Text="???" />
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="{Loc 'shipyard-console-save-appraisal-label'}"
+                        StyleClasses="LabelKeyText" />
+                    <Label Name="SelectedShipPriceLabel"
+                        Text="{Loc 'shipyard-console-save-appraisal-no-ship-selected-text'}" />
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+        </BoxContainer>
         <!-- Footer -->
         <BoxContainer Orientation="Vertical" Margin="0 5 0 0" >
             <PanelContainer StyleClasses="LowDivider" Margin="0 5 0 0" />
@@ -144,12 +167,6 @@
                 <TextureRect StyleClasses="NTLogoDark" Stretch="KeepAspectCentered"
                              VerticalAlignment="Center" HorizontalAlignment="Right" SetSize="19 19"/>
             </BoxContainer>
-        </BoxContainer>
-        <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="0 8 0 2">
-            <Label Text="Saved Ships:" />
-            <ItemList Name="SavedShipsList"
-                      MinSize="0 100"
-                      HorizontalExpand="True" />
         </BoxContainer>
     </BoxContainer>
         </PanelContainer>

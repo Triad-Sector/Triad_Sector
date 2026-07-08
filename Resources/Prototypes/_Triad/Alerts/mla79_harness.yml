@@ -1,0 +1,17 @@
+- type: alert
+  id: Mla79HarnessLowPower
+  category: Battery
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery5
+  name: alerts-mla79-harness-low-power-name
+  description: alerts-mla79-harness-low-power-desc
+
+- type: alert
+  id: Mla79HarnessDepleted
+  category: Battery
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery0
+  name: alerts-mla79-harness-depleted-name
+  description: alerts-mla79-harness-depleted-desc

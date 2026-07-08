@@ -138,5 +138,7 @@
   components:
   - type: HumanoidAppearance
     species: IPC
+    undergarmentTop: null # Triad, disable IPC default underwear
+    undergarmentBottom: null # Triad, disable IPC default underwear
   - type: Inventory
     templateId: ipc

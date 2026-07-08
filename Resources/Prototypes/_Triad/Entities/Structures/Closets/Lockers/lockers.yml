@@ -1,0 +1,107 @@
+- type: entity
+  parent: ClosetBase
+  id: TriadLockerBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/closet.rsi
+    layers:
+    - map: ["enum.StorageVisualLayers.Base"]
+    - map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      sprite: Structures/Storage/closet.rsi
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      offset: "-0.065,0"
+      map: ["enum.PaperLabelVisuals.Layer"]
+
+- type: entity
+  parent: TriadLockerBase
+  id: TriadLockerBaseSecure
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 175
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+# TDF Enforcer
+- type: entity
+  parent: [TriadLockerBaseSecure, LockerSecurity]
+  id: LockerTdf
+  name: TDF locker
+  suffix: Default
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/closet.rsi
+  - type: EntityStorageVisuals
+    stateBaseClosed: tdf
+    stateDoorOpen: tdf_open
+    stateDoorClosed: tdf_door
+
+# TDF - Evidence
+- type: entity
+  parent: LockerTdf
+  id: LockerTdfEvidence
+  name: TDF evidence locker
+  suffix: Evidence
+  # TODO: New Sprite?
+
+# TDF Combat Medic
+- type: entity
+  parent: LockerNfsdBrigmedic
+  id: LockerTdfMedic
+  name: TDF medic locker
+  suffix: TDF Medic
+
+# TDF Patrol Team Leader
+- type: entity
+  parent: LockerTdf
+  id: LockerTdfPatrolTeamLeader
+  suffix: Patrol Team Leader
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: tdf_leader
+    stateDoorOpen: tdf_leader_open
+    stateDoorClosed: tdf_leader_door
+  - type: AccessReader
+    access: [["TdfPatrolTeamLeader"]]
+
+# TDF Warden
+- type: entity
+  parent: LockerTdf
+  id: LockerTdfWarden
+  suffix: Warden
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: tdf
+    stateDoorOpen: tdf_open
+    stateDoorClosed: tdf_warden_door
+  - type: AccessReader
+    access: [["TdfWarden"]]
+
+# TDF Chief Enforcer
+- type: entity
+  parent: LockerTdf
+  id: LockerTdfChiefEnforcer
+  suffix: Chief Enforcer
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: tdf_chief
+    stateDoorOpen: tdf_chief_open
+    stateDoorClosed: tdf_chief_door
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"]]

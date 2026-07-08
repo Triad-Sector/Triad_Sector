@@ -211,7 +211,7 @@
       - id: BookMedicalReferenceBook
       - id: BookHowToSurvive
       - id: BookChemicalCompendium
-      - id: HyperlinkBookSpaceLaw # Frontier: BookSpaceLaw<HyperlinkBookSpaceLaw
+      - id: BookTriadLaw # Frontier: BookSpaceLaw<BookTriadLaw
 
 - type: entity
   id: CrateServiceSodaDispenser

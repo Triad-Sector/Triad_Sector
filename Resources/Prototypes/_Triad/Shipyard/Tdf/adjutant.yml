@@ -1,0 +1,38 @@
+# Author: Deox
+# Discord: deoxnirvislyfer_
+
+- type: vessel
+  id: Adjutant
+  parent: BaseVessel
+  name: TDF Adjutant
+  description: One of the first ships that can be traced back to the first proper warship of the original CDF when the sector was in full-out war. Now, it serves as a reminder of the struggle and many lives lost in the race to break the shackle of oppression. 2 TARNYX, 2 90mm Longbow, PDW, and flare system. This ship will ensure those who defile the sanctity of the sector independence will know the struggle of oppression.
+  price: 110000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Corvette
+  engine:
+  - Bananium
+
+- type: gameMap
+  id: Adjutant
+  mapName: 'Adjutant'
+  mapPath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  minPlayers: 0
+  stations:
+    Adjutant:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Adjutant TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+

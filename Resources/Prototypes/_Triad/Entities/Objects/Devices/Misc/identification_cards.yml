@@ -1,0 +1,76 @@
+- type: entity
+  parent: IDCardStandard
+  id: TdfJuniorEnforcerIdCard
+  name: TDF junior enforcer ID card
+  components:
+  - type: PresetIdCard
+    job: TdfCadet
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/id_cards.rsi
+    layers:
+    - state: tdf
+    - state: idtdfcadet
+  - type: Clothing
+    sprite: _Triad/Objects/Misc/id_cards.rsi
+  - type: Item
+    heldPrefix: tdf
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfEnforcerIDCard
+  name: TDF enforcer ID card
+  components:
+  - type: PresetIdCard
+    job: TdfEnforcer
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfenforcer
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfMedicIDCard
+  name: TDF medic ID card
+  components:
+  - type: PresetIdCard
+    job: TdfMedic
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfmedic
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfPatrolTeamLeaderIDCard
+  name: TDF patrol team leader ID card
+  components:
+  - type: PresetIdCard
+    job: TdfPatrolTeamLeader
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfleader
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfWardenIDCard
+  name: TDF warden ID card
+  components:
+  - type: PresetIdCard
+    job: TdfWarden
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfwarden
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfChiefIDCard
+  name: TDF chief enforcer ID card
+  components:
+  - type: PresetIdCard
+    job: TdfChiefEnforcer
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfchief

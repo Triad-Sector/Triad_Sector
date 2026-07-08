@@ -43,7 +43,7 @@
 - type: startingGear
   id: PublicAffairGear
   equipment:
-    pocket1: HyperlinkBookSpaceLaw
+    pocket1: BookTriadLaw # Triad
     pocket2: BoxFolderClipboardPal
   storage:
     back:

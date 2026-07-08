@@ -11,7 +11,8 @@ namespace Content.Server.NPC.Queries.Queries;
 public sealed partial class NearbyNpcTargetsQuery : UtilityQuery
 {
     [DataField]
-    public float Range = 4000f;
+    // Triad: revert of Mono #3728 (2x targeting range), halved back for perf.
+    public float Range = 2000f;
 
     // TODO: make this use factions
     [DataField]

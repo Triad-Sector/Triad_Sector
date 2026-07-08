@@ -1,7 +1,7 @@
 - type: entity
   parent: AirlockShuttleNfsdOutpost
   id: AirlockShuttleNfsdOutpostLocked
-  suffix: OUTPOST ONLY, TSFMC, Docking, Locked
+  suffix: OUTPOST ONLY, TDF, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -10,7 +10,7 @@
 - type: entity
   parent: AirlockGlassShuttleNfsdOutpost
   id: AirlockGlassShuttleNfsdOutpostLocked
-  suffix: OUTPOST ONLY, TSFMC, Glass, Docking, Locked
+  suffix: OUTPOST ONLY, TDF, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -30,7 +30,7 @@
 - type: entity
   parent: AirlockShuttleNfsdCapital
   id: AirlockShuttleNfsdCapitalLocked
-  suffix: CAPITAL ONLY, TSFMC, Docking, Locked
+  suffix: CAPITAL ONLY, TDF, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -39,7 +39,7 @@
 - type: entity
   parent: AirlockGlassShuttleNfsdCapital
   id: AirlockGlassShuttleNfsdCapitalLocked
-  suffix: CAPITAL ONLY, TSFMC, Glass, Docking, Locked
+  suffix: CAPITAL ONLY, TDF, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:

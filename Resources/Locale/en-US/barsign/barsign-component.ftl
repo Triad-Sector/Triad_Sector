@@ -102,7 +102,7 @@ barsign-prototype-description-maltroach = Squeak!
 
 ## Whiskey Echoes
 barsign-prototype-name-whiskeyechoes = Whiskey Echoes
-barsign-prototype-description-whiskeyechoes = An elite bar for elite oper-wait, this is a TSF region. Why's this sign in the database?
+barsign-prototype-description-whiskeyechoes = An elite bar for elite oper-wait, the syndicate's fucked up. Why's this sign in the database?
 
 ## EmpBarSign
 barsign-prototype-description-empbarsign = Something has gone very wrong.

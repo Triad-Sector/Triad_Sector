@@ -5,6 +5,7 @@ using Content.Shared.Examine;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Storage;
 using JetBrains.Annotations;
+using Robust.Shared.Collections;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -44,6 +45,8 @@ public abstract class SharedItemSystem : EntitySystem
 
         component.Size = size;
         Dirty(uid, component);
+        var ev = new ItemSizeChangedEvent(uid); // (#37638)
+        RaiseLocalEvent(uid, ref ev, broadcast: true);
     }
 
     public void SetShape(EntityUid uid, List<Box2i>? shape, ItemComponent? component = null)
@@ -53,6 +56,8 @@ public abstract class SharedItemSystem : EntitySystem
 
         component.Shape = shape;
         Dirty(uid, component);
+        var ev = new ItemSizeChangedEvent(uid); // (#37638)
+        RaiseLocalEvent(uid, ref ev, broadcast: true);
     }
 
     public void SetHeldPrefix(EntityUid uid, string? heldPrefix, bool force = false, ItemComponent? component = null)
@@ -187,15 +192,21 @@ public abstract class SharedItemSystem : EntitySystem
     public IReadOnlyList<Box2i> GetAdjustedItemShape(Entity<ItemComponent?> entity, Angle rotation, Vector2i position)
     {
         if (!Resolve(entity, ref entity.Comp))
-            return new Box2i[] { };
+            return [];
 
+        var adjustedShapes = new List<Box2i>();
+        GetAdjustedItemShape(adjustedShapes, entity, rotation, position);
+        return adjustedShapes;
+    }
+
+    public void GetAdjustedItemShape(List<Box2i> adjustedShapes, Entity<ItemComponent?> entity, Angle rotation, Vector2i position)
+    {
         var shapes = GetItemShape(entity);
         var boundingShape = shapes.GetBoundingBox();
         var boundingCenter = ((Box2) boundingShape).Center;
         var matty = Matrix3Helpers.CreateTransform(boundingCenter, rotation);
         var drift = boundingShape.BottomLeft - matty.TransformBox(boundingShape).BottomLeft;
 
-        var adjustedShapes = new List<Box2i>();
         foreach (var shape in shapes)
         {
             var transformed = matty.TransformBox(shape).Translated(drift);
@@ -204,8 +215,6 @@ public abstract class SharedItemSystem : EntitySystem
 
             adjustedShapes.Add(translated);
         }
-
-        return adjustedShapes;
     }
 
     /// <summary>

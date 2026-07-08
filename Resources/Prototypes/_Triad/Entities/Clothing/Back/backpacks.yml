@@ -1,0 +1,8 @@
+- type: entity
+  parent: NFClothingBackpack
+  id: ClothingBackpackTdf
+  name: TDF backpack
+  description: It's a very golden and tactical backpack.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Backpacks/tdf.rsi

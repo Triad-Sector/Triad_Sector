@@ -9,7 +9,7 @@ If you want to host or create content for Monolith, this is the repo you need. I
 
 ## Links
 
-[Discord](https://discord.gg/q6dqdPcMnv) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
+[Discord](https://discord.gg/J9Rn76nKbz) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
 
 ## Contributing
 

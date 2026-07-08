@@ -205,4 +205,10 @@ public sealed partial class MechComponent : Component
     [DataField] public EntityUid? MechEjectActionEntity;
     [DataField, AutoNetworkedField] public EntityUid? ToggleActionEntity; //Goobstation Mech Lights toggle action
     [DataField] public EntityUid? MechRadarUiActionEntity;
+
+    /// <summary>
+    /// Frontier: whether or not the equipment in the mech can be removed.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool CanRemoveEquipment = true;
 }

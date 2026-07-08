@@ -837,8 +837,8 @@
 - type: entity
   parent: UniformPrinterFlatpack
   id: NfsdTechFabFlatpack
-  name: TSFMC techfab flatpack
-  description: A flatpack used for constructing an TSFMC techfab.
+  name: TDF techfab flatpack
+  description: A flatpack used for constructing an TDF techfab.
   components:
   - type: Flatpack
     entity: NfsdTechFab
@@ -847,6 +847,8 @@
   - type: Item
     shape:
     - 0,0,1,1
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: UniformPrinterFlatpack
@@ -888,7 +890,7 @@
 - type: entity
   parent: HoverbikeFlatpack
   id: HoverbikeNfsdFlatpack
-  name: TSFMC hoverbike flatpack
+  name: TDF hoverbike flatpack
   description: A flatpack used for constructing a hoverbike. Keys already slotted in the ignition.
   components:
   - type: Flatpack

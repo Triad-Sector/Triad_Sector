@@ -1,0 +1,51 @@
+- type: job
+  id: TdfCadet
+  name: job-name-tdf-cadet
+  description: job-description-tdf-cadet
+  playTimeTracker: JobTdfCadet
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 16200 # 4.5 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 # 15 hours
+      inverted: true # Leave slots open for newer, less confident players.
+  startingGear: TdfCadetGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfCadet
+  supervisors: job-supervisors-tdf-cadet
+  weight: 70
+  displayWeight: 10
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - CadetTdfAccess
+  ranks:
+    RankJuniorEnforcer: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfCadetGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+    pocket2: BookTdfForBabies
+  storage:
+    back:
+    - Magazine45_ACPPistolFMJ
+    - TriadCommerceCredit50
+    - BaseSecurityUplinkRadio
+    - RadioHandheldNF

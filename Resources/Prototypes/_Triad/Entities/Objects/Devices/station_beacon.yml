@@ -1,0 +1,42 @@
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfChiefEnforcer
+  suffix: TDF Chief Enforcer
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-tdf-chief
+    color: "#fcd381"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfWarden
+  suffix: TDF Warden
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-warden
+    color: "#ccb586"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconTdfPatrolTeamLeader
+  suffix: TDF Patrol Team Leader
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-tdf-patrol-lead
+    color: "#e4b659"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconBriefing
+  suffix: Briefing
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-briefing
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconLockerRoom
+  suffix: Locker Room
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-locker-room

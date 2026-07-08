@@ -1,0 +1,8 @@
+- type: marking
+  id: ThickEyebrows
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/eyebrows.rsi
+    state: thick_eyebrows

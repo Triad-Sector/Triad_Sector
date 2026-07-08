@@ -1,0 +1,46 @@
+- type: job
+  id: TdfEnforcer
+  name: job-name-tdf-enforcer
+  description: job-description-tdf-enforcer
+  playTimeTracker: JobTdfEnforcer
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # 5 hours
+  startingGear: TdfEnforcerGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfEnforcer
+  supervisors: job-supervisors-tdf-patrol-team-leader
+  weight: 130
+  displayWeight: 40
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - GeneralTdfAccessBrig
+  ranks:
+    RankEnforcer: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfEnforcerGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+  storage:
+    back:
+    - Magazine45_ACPPistolFMJ
+    - BaseSecurityUplinkRadioEnforcer
+    - RadioHandheldNF

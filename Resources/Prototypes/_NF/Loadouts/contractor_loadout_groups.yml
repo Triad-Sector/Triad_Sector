@@ -770,6 +770,7 @@
   - ContractorHandheldGPSBasic
   - ContractorRadioHandheld
   - ContractorNetworkConfigurator
+  - ContractorSprayPainter # Triad
   - ContractorHandheldHealthAnalyzerUnpowered
   - ContractorAnomalyScanner
   - ContractorBucket

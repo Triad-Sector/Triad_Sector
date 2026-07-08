@@ -11,26 +11,25 @@
           state: icon
     - type: RandomSpawner
       prototypes:
-        - CrateTradeContrabandSecure5
-        - CrateTradeContrabandSecure4
+        - CrateTradeContrabandSecure4 # Triad, multiple of the same one for higher chance
         - CrateTradeContrabandSecure3
         - CrateTradeContrabandSecure2
         - CrateTradeContrabandSecure1
         - CrateTradeContrabandSecure1
         - LandMineExplosive
         - BannerSyndicate
-        - Telecrystal5 # Mono
-        - Telecrystal5 # Mono
-        - Telecrystal5 # Mono
+        - Telecrystal5 # Triad
+        - Telecrystal5 # Triad
       rarePrototypes:
+        - CrateTradeContrabandSecure5 # Triad
+        - CrateTradeContrabandSecure5 # Triad
         - Telecrystal25 # Mono
         - Telecrystal25 # Mono
-        - Telecrystal25 # Mono
+        - CrateSyndicateSurplusBundle
+        - CrateNanotrasenLootFilledT1 # Mono
         - SpawnMobWeaponTurretLaserSyndicateNF # Mono
         - SpawnMobWeaponTurretSyndicate # Mono
-        - CrateSyndicateSurplusBundle # Mono
-        - CrateNanotrasenLootFilledT1 # Mono
-      rareChance: 0.1 # Mono
+      rareChance: 0.025 # Triad
 
 - type: entity
   name: Contraband Crate Spawner
@@ -50,9 +49,6 @@
         - CrateTradeContrabandSecure3
         - CrateNanotrasenLootFilledT1 # Mono
       rarePrototypes:
-        - CrateSyndicateSurplusBundle
-        - CrateSyndicateSurplusBundle
-        - CrateSyndicateSuperSurplusBundle
 # Begin Mono additions
         - CrateSyndicateSurplusBundle
         - CrateSyndicateSurplusBundle
@@ -61,7 +57,7 @@
         - CrateNanotrasenLootFilledT2
         - CrateNanotrasenLootFilledT2
 # End Mono Additions
-      rareChance: 0.1
+      rareChance: 0.05 # Triad
 
 - type: entity
   name: Syndicate POI Pinpointer
@@ -85,18 +81,16 @@
         - ClothingEyesHudSyndicate
         - ClothingBackpackDuffelSyndicatePyjamaBundle
         - ClothingBackpackDuffelSyndicateMedicalBundleFilled
-        - EncryptionKeySyndie
         - ClothingShoesBootsMagSyndie
-        - ClothingHeadsetAltSyndicate
         - ToyFigurineNukieElite
         - ToyNuke
         - PlushieNuke
-        - Telecrystal25 # Mono
-        - Telecrystal25 # Mono
+        - Telecrystal5 # Triad
       rarePrototypes:
+        - Telecrystal25 # Triad
         - ClothingBackpackDuffelSyndicateHardsuitBundle
         - ClothingBackpackDuffelSyndicateMedicHardsuitBundle
         - PinpointerSyndicatePOI
         - PinpointerSyndicatePOI
-      rareChance: 0.2 # Mono
+      rareChance: 0.02 # Triad
       offset: 0

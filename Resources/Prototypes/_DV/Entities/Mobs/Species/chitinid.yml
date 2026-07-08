@@ -110,6 +110,7 @@
     noRot: true
     drawdepth: Mobs
     layers:
+      - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
       - map: [ "enum.HumanoidVisualLayers.Chest" ]
       - map: [ "enum.HumanoidVisualLayers.Head" ]
       - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -118,6 +119,8 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ] # Triad - Underwear.
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ] # Triad - Underwear.
       - map: [ "jumpsuit" ]
       - map: [ "balaclava" ]
       - map: [ "enum.HumanoidVisualLayers.LHand" ]
@@ -137,6 +140,7 @@
       - map: [ "belt" ]
       - map: [ "id" ]
       - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
       - map: [ "neck" ]
       - map: [ "enum.HumanoidVisualLayers.Tail" ] #in the utopian future we should probably have a wings enum inserted here so everyhting doesn't break
       - map: [ "enum.HumanoidVisualLayers.FacialHair" ]

@@ -143,6 +143,13 @@ public sealed partial class DungeonJob
                     _entManager.SpawnAtPosition(prototype, _maps.GridTileToLocal(_gridUid, _grid, node));
 
                     groupSize--;
+
+                    // Triad: slice the per-vein spawn burst; the outer loop only yields once per group, so a large
+                    // MaxGroupSize otherwise spawns the whole vein in one un-yielded block.
+                    await SuspendDungeon();
+
+                    if (!ValidateResume())
+                        return;
                 }
             }
 

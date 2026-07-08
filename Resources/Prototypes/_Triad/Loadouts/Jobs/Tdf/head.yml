@@ -1,0 +1,9 @@
+- type: loadout
+  id: TdfHelmet
+  equipment:
+    head: ClothingHeadHelmetMercenaryBlack
+
+- type: loadout
+  id: ClothingHeadHatBeretTdf
+  equipment:
+    head: ClothingHeadHatBeretTdf

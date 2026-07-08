@@ -16,10 +16,14 @@
 - type: speciesBaseSprites
   id: MobRodentiaSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobRodentiaHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear.
+    UndergarmentBottom: MobHumanoidAnyMarking # Triad - Underwear.
     Chest: MobRodentiaTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -63,6 +67,14 @@
     HeadSide:
       points: 1
       required: false
+    # Triad changes - Underwear.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # End Triad.
     Chest:
       points: 2
       required: false

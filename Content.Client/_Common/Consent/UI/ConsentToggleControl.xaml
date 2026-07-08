@@ -12,7 +12,7 @@ SPDX-License-Identifier: MIT
         </PanelContainer.PanelOverride>
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="5">
             <BoxContainer Orientation="Horizontal" Margin="5">
-                <RichTextLabel Name="ConsentToggleNameLabel" />
+                <Label Name="ConsentToggleNameLabel" />
                 <Control HorizontalExpand="True" />
                 <Button
                     Name="ConsentToggleOffButton"
@@ -27,7 +27,7 @@ SPDX-License-Identifier: MIT
                     Text="On"
                     StyleClasses="OpenLeft" />
             </BoxContainer>
-            <RichTextLabel Name="ConsentToggleDescriptionLabel" />
+            <Label Name="ConsentToggleDescriptionLabel" />
         </BoxContainer>
     </PanelContainer>
 </Control>

@@ -102,3 +102,4 @@
     node: medicalpod
     containers:
     - entity_storage
+  - type: NFForkLiftable

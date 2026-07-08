@@ -35,7 +35,7 @@ public abstract partial class SharedConsentSystem : EntitySystem
 
     public bool HasConsent(Entity<ConsentComponent?> ent, ProtoId<ConsentTogglePrototype> consentId)
     {
-        if (!Resolve(ent, ref ent.Comp, false))
+        if (!Resolve(ent, ref ent.Comp))
         {
             // Entities that have never been controlled by a player consent to all mechanics.
             return true;

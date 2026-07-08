@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleTdfChiefEnforcer
+  name: chief enforcer's mantle
+  description: For only the most commited to the Triad Defense Force.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Neck/Mantles/tdfchief.rsi

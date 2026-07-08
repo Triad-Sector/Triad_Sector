@@ -236,6 +236,7 @@
   - type: Sprite # Drawlayers. Top to bottom in order I believe.
     netsync: false
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -261,8 +262,9 @@
     - map: [ "outerClothing" ]
     - map: [ "eyes" ]
     - map: [ "belt" ]
-    - map: [ "neck" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
+    - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.TailExtras" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]

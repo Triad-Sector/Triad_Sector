@@ -9,6 +9,16 @@
   components:
   - type: StationAiWhitelist
   - type: WallMount
+  # Triad: RPD port — air alarm is in the RPD's recipe list but doesn't inherit from GasPipeBase, so the
+  # base-class RCDDeconstructable doesn't reach it. Mirror that setup here so the RPD can deconstruct alarms
+  # without exposing them to the regular RCD.
+  - type: RCDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+    deconstructable: false
+    rpd: true
+  # End Triad
   - type: ApcPowerReceiver
   - type: Electrified
     enabled: false

@@ -1,0 +1,23 @@
+# Moved from _NF/Loadouts/role_loadouts.yml
+- type: roleLoadout
+  id: JobStationRepresentative # Overseer
+  groups:
+  - StationRepHead
+  - StationRepNeck
+  - StationRepJumpsuit
+  - StationRepGloves
+  - StationRepBackpack
+  - StationRepOuterClothing
+  - StationRepGlasses
+  - StationRepEars
+  - MonoSecurityGuardShoes
+  - ContractorBoxSurvival
+  - StationRepPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorImplanter
+  - ContractorUtility
+  - StationRepTrinkets
+  - ContractorBureaucracy
+  - NFSpeciesSpecific
+  - ContractorArmorPlates

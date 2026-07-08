@@ -31,4 +31,12 @@ public sealed partial class RCDDeconstructableComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Deconstructable = true;
+
+    // Triad: RPD port from funky-station — separate whitelist for RPD deconstruct so the RPD only chews pipes/atmos devices, not walls.
+    /// <summary>
+    /// Toggles whether this entity is deconstructable by the RPD specifically.
+    /// </summary>
+    [DataField("rpd"), ViewVariables(VVAccess.ReadWrite)]
+    public bool RpdDeconstructable = false;
+    // End Triad
 }

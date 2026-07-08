@@ -1,5 +1,5 @@
 # Triad - Disabled Mono Related events, except the MonoMonolithicEventsScheduler & PortstrikeAnnounceRuleHour
-
+# Use Triad game presets: _Triad/game_presets.yml
 - type: gamePreset
   id: MonoStandard
   alias:
@@ -73,7 +73,7 @@
   id: MonoADS
   name: mono-ads-title
   description: mono-ads-description
-  showInVote: true
+  showInVote: false # Triad
   rules:
   - NFAdventure
   - BasicStationEventScheduler
@@ -121,7 +121,7 @@
   # - MonoChimeraSTCShuttleSpawnerSchedulerSlow
   # - MonoAISTCShuttleSpawnerSchedulerSlow
   # - MonoAISTCShuttleSpawnerSchedulerTier2Slow
-  # - MonoAsakimSTCShuttleSpawnerSchedulerSlow 
+  # - MonoAsakimSTCShuttleSpawnerSchedulerSlow
   - MonoMonolithicEventsScheduler
   - PortstrikeAnnounceRuleHour4
 

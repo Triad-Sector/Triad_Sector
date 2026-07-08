@@ -12,16 +12,19 @@ namespace Content.Shared.Humanoid
         Wings, // For IPC wings porting from SimpleStation
         Hair,
         FacialHair,
+        UndergarmentTop,
+        UndergarmentBottom,
         Chest,
         Head,
         Snout,
         HeadSide, // side parts (i.e., frills)
         HeadTop,  // top parts (i.e., ears)
+        TailBehind, // DEN
+        TailOversuit, // DEN
         Eyes,
         RArm,
         LArm,
         RHand,
-
         LHand,
         RLeg,
         LLeg,
