@@ -1,8 +1,8 @@
 # Examples for job highlights "-dummy" is the job key.
 # highlights-dummy  = "TIC", "Jupiter", "Solarian", "Venmar"
 
-highlights-chief-enforcer = "CE", "Chief Enforcer", TDF
-highlights-warden = "Warden", "Sentence", "Brig", TSF, TSFMC
+highlights-chief-enforcer = "CE", "Chief Enforcer", TDF, "Venmar"
+highlights-warden = "Warden", "Sentence", "Brig", TDF
 highlights-patrol-team-leader = "Patrol", "Leader", "PTL", "patrol team", TDF, "Briefing"
 highlights-combat-medic = Medical, Surgery, "Medic", "Doc", TDF, "Briefing"
 highlights-enforcer = Enforcer, TDF, "Briefing"
