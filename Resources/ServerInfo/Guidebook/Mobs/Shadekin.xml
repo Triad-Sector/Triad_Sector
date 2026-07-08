@@ -1,49 +1,98 @@
 <Document>
-  # Shadekin
-  <Box>
-    <GuideEntityEmbed Entity="MobShadekin" Caption=""/>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  Shadekin are naturally very curious creatures, eventually exploring our dimension, especially as they are attracted to anomalous places and phenomena, often seeking to understand such. Their homeworld originally was a tidally locked planet where they resided on the nightside. At some point during their existence this world was plunged into an adjacent dimension; They began to adapt and thus it became their new home while becoming somewhat uncommon to rare visitors to realspace.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+[color=#999999][italic]“Exo-dimensional, cat-like aliens with four ears and large glowing eyes. And just like cats they like dark spots and are very curious.”[/italic][/color]
+
+ <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
 
-  In recent history a company known as the Void Enigma Institute (VEI) was working on advanced technology involving teleportation and exo-dimensional exploration.
-  After a catastrophic mishap at one of their research facilities Shadekin, amongst other exodimensional dwellers were pulled into realspace in greater numbers. They found themself in a place surging with anomalous phenomena.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-SHK[/mono]
 
-  One in particular referred to as the “Monolith” became the center of  the attention of many, seeking to understand it, to satiate their own curiosity. What they found is a sector torn by prior conflicts and mistakes of the past, resources are scarce and their own research for their curiosities sake hindered.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Feline[/mono]
 
-  ## Racial Features
+      [mono][color=#897236]ORIGIN     [/color]  Exodimension “Kur”[/mono]
 
-  Due to their exo-dimensional origins they have quite a few unique biological features:
+      [mono][color=#897236]METABOLIC  [/color]  [color=#808080 ][bold]Shadekin Blood[/bold][/color] — High-Entropy Hem-Analogues (HEHAs)[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobShadekin" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Exodimensional, four eared, furred, clawed cat-like sapients with intrinsic night vision and high sensitivity to light. Complex, highly conductive blood composition, low bloodclotting, exceptionally durable genetics.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■■[/color][color=#555555]□□□□[/color]  20% vulnerable[/mono]
+
+  [mono]  Cold      [color=#897236]■■■■[/color][color=#555555]□□[/color] 25% resistant[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#cc3333]■■[/color][color=#555555]□□□[/color]  25% vulnerable[/mono]
+
+  [mono]  Bloodloss     [color=#ffa500]■[/color][color=#555555]□□□[/color]  100% higher bleedrate, 75% slower blood regeneration[/mono]
+
+  [mono]  Genetic     [color=#1e90ff]■■■■■[/color][color=#555555]□□□[/color]  75% resistance
+
+  [mono]  Radiation    [color=#ffa500]■■[/color][color=#555555]□□□[/color]  30% vulnerable
+
+  [color=#999999][italic]“Their blood is nothing like anything we have seen before, yet it works similar to iron based blood. It's needlessly complex. Nightvision that outperforms anything we have made and strangely resilient genomes. Yet quite fragile. Weird cats. ”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#9fe0ed][bold]Flashes and bright lights[/bold][/color] will confer significant sight impairment, roughly double of baseline in magnitude and recovery time.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Powerful intrinsic Nightvision[/bold][/color] even in near lightless conditions.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash Damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Bloodclotting and Oxygenation[/bold][/color]: Recommendation to stem bleeding of any wounded Shadekin first, then administer bloodclotting, oxygenation and blood restoration substances first due to their intrinsically low blood platelet count.
+
+  [color=#999999][italic]“So apparently various Xenobiologists and Medical Doctors are claiming that their respiratory system is more of an “evolutionary afterthought”. It is “rudimentary yet functional” and “very basic” while it's being suggested that they do not breathe at all in their place of origin.”  — J.[/italic][/color]
 
 
-  - Their blood is quite different from that of most other species, being difficult to clot due to its unique composition, and taking longer to replenish if lost. Shadekin receive [color=#ffa500]100% more bloodloss damage and heal bloodloss damage 75% slower[/color].
-  - Due to their unique body composition, they are more resistant to genetic damages, [color=#1e90ff]75% less cellular damage[/color], but are weaker to radiation exposure, [color=#ffa500]30% more radiation damage[/color], and electrical shocks, [color=#ffa500]25% more shock damage[/color].
-  - Due to their short fur, shadekin are more resistant to cold, [color=#1e90ff]25% less cold damage[/color], but have difficulty dealing with heat, [color=#ffa500]20% more heat damage[/color].
-  - Shadekin eyes are more susceptible to flashes, taking twice as long to recover from them.
-  - Their eyes have adapted to their home dimension's lack of light, granting them near perfect vision in pitch black darkness.
-  - Their fingers have short claws at their tips, letting them deal [color=red]5[/color] slash damage with unarmed attacks.
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]30% more Heat damage, 25% more Shock damage and 30% more radiation damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
+
+  [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+Subject species originates from an exodimensional plane a long deprecated corporation, ([color=#893BFF][bold]Void Enigma Institute (VEI)[/bold][/color]), accessed by means of teleporation experiments. Most information on VEI and their research in [color=#a4885c][bold]Triad sector[/bold][/color] has been lost. What little is known is that VEI managed to repeatedly translocate and perforate into an adjacent exodimension referred to as “Kur” or “The Dark”, as subject species calls it, which is underlying vastly altered laws of physics when compared to our own universe, such as vastly different behavior of visible light and an absence of nuclear fusion. The subject species supposedly is one of the sapient inhabitants of “Kur”. According to some members of the subject species, they have been infrequent visitors to our universe, similar to how VEI seemingly was visiting theirs, driven by curiosity. Allegedly, at some point, VEI lost control over one of their experiments and the resulting resonance cascade event resulting in many of the subject species to now be stranded in our world, seeking a way home.
 
 
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  ## Shadekin Language and Empathy:
-
-  Shadekin language, commonly referred to as “marrish” consists of a combination of wurbles, hisses and a distinct sound that can be described as a “Marr”, similar to a “meow” of a cat. Additionally, tail and ear movement is of great importance during verbal communication. Their language is exceptionally information dense.
-
-  Most if not all Shadekin possess an intrinsic understanding of each other's intent and motives, often assisting with non-verbal communication. This mechanism is commonly referred to as Shadekin Empathy. While this “Empathy” mechanism seems like “telepathy” at first it is nowadays quite well understood: Shadekin possess denser, more functional mirror neurons and can read a lot of information on intent from one another by eye-contact, similar to how humans do albeit considerably more amplified. Species with similar expressiveness in their eyes (i.e. humans) are often said to have a somewhat easier time conversing with Shadekin, especially since Shadekin seek direct eye contact.
-
-  ## Shadekin Age and Lifecycle:
-
-  Shadekin are adults at the age of 18 like every other species. After around 100 years a Shadekin stops showing any notable sign of biological aging. Common Age ranges in realspace are 18-400 years. Shadekin older than 400 years often go through extensive meditative periods, reflecting and processing their experiences to prevent long term mental degradation. Keeping a sound mind is of great importance to Shadekin, almost greater than slaking their own natural curiosity.
-
-  ## Shadekin names
-
-  Shadekin often pick their name from a physical concept or psychological state they find enticing. Names like "Entropy", "Veil", "Harmony", "Joy", "Malice", "Bliss", “Devotion”, “Wanderlust” or “Knowledge” are some examples Some Shadekin take scientific concepts they learned about or know a lot about to them or professions they enjoy enacting such as "Chemist", "Theta", "Higgs", "Planck", “Botanist”, “Plants” etc.
-
-  Shadekin names can be extremely broad and can consist of multiple words. In some cases there is a Shadekin with a regular name such as "John" but it is not unreasonable if the name has a meaning to the kin in question. Names and concepts from obscure languages other species used are also quite popular with Shadekin, i.e. human babylonian culture or Lizard/Unathi ancient linguistics. Lastly, sometimes a Shadekin mother imparts either their name or a name of their choice onto their off-spring which often becomes part of their moniker.
-
-  ## Eye color and their perceived significance:
-
-
-  Shadekin Eye colors are often associated, almost stereotyped with personality traits. While there are complex psychological and biological factors during a Shadekins development that show certain personality and physical traits manifest in certain eye colors more frequently the associate of eye color to behavior is quite often just that: Stereotypes. Genetically, eye-colors are always inherited from the mother, so a Shadekin hatched with purple eyes will retain purple eyes in most cases.
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 </Document>
