@@ -2844,9 +2844,6 @@ entities:
     - type: Transform
       pos: -6.5,10.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
       - 5
@@ -4016,9 +4013,6 @@ entities:
     - type: Transform
       pos: -7.5,13.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
     - type: AtmosPipeLayers
@@ -4130,9 +4124,6 @@ entities:
     - type: Transform
       pos: -6.5,13.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
     - type: AtmosPipeColor
