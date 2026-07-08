@@ -54,6 +54,7 @@
     metabolizerTypes: [Avali]
     groups:
     - id: Alcohol
+    rateModifier: 0.1 # Triad removes alcohol very slowly
   - type: Sprite
     sprite: _Starlight/Mobs/Species/Avali/organs.rsi
     state: liver
