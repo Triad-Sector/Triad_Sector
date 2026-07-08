@@ -54,7 +54,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: High Command Outpost
+      name: grid
     - type: Transform
       pos: -0.56726074,-0.73760986
       parent: invalid

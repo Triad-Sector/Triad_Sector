@@ -2269,3 +2269,10 @@ Entries:
   id: 2364
   time: '2026-07-08T18:29:09.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/300
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Venmar and HCO minor mapping fixes
+  id: 2365
+  time: '2026-07-08T21:47:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/301

@@ -162,3 +162,12 @@
     borderColor: "#515151"
     accentVColor: "#858321"
     accentHColor: "#832d2d"
+  - type: CartridgeLoader # Extended with the ledger
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - BountyContractsCartridge
+    - AstroNavCartridge
+    - WantedListCartridge
+    - LedgerCartridge

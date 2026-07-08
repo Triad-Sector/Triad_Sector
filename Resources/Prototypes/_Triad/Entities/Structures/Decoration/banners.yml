@@ -20,5 +20,3 @@
   - type: Sprite
     sprite: _Triad/Structure/Decoration/banner.rsi
     state: tfa-banner
-  - type: Construction
-    graph: TriadBannersGraph
