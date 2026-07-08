@@ -885,10 +885,12 @@
   conditions:
     - !type:TileNotBlocked
       failIfSpace: false
-    - !type:TileType
-      targets:
-        - Lattice
-        - Plating
+    # Triad removal - Allow building catwalks regardless of tile type.
+    #- !type:TileType
+    #  targets:
+    #    - Lattice
+    #    - Plating
+    # End Triad
   icon:
     sprite: Structures/catwalk.rsi
     state: catwalk_preview

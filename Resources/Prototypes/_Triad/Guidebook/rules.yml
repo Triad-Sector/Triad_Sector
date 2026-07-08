@@ -2,7 +2,7 @@
   id: TriadRuleset
   name: guide-entry-frontier-rules
   text: "/ServerInfo/_Triad/Guidebook/Rules/CoreRules/RuleC0.xml"
-  priority: -2
+  priority: -3
   ruleEntry: true
   children:
   - TriadRuleC1

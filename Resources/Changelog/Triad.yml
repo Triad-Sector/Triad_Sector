@@ -2130,3 +2130,60 @@ Entries:
   id: 2351
   time: '2026-07-05T04:22:32.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/282
+- author: mnva0
+  changes:
+    - type: Fix
+      message: Trap Avoider no longer allows walking on lava or over chasms.
+  id: 2352
+  time: '2026-07-06T22:08:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/290
+- author: Dimasw99
+  changes:
+    - type: Tweak
+      message: >-
+        Asteroids now have their own unique gas deposits with specific gas
+        ratios for each type.
+    - type: Tweak
+      message: Significantly increased the amount of moles per asteroid on average.
+  id: 2353
+  time: '2026-07-06T22:08:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/261
+- author: HTMLSystem
+  changes:
+    - type: Tweak
+      message: Arachnids and Moths now have sprites for all eyewear ingame!
+    - type: Fix
+      message: Moth eyewear sprites ACTUALLY work now, apologies for the fake out!
+  id: 2354
+  time: '2026-07-06T22:39:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/283
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Catwalks now have no tile type restrictions on placement, meaning
+        builders now have another thing to play around with for decor.
+    - type: Tweak
+      message: >-
+        As a consequence of removing tile restrictions: catwalks can also now be
+        used for their intended purpose of safely crossing lava, liquid plasma,
+        or chasms.
+  id: 2355
+  time: '2026-07-08T01:36:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/296
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: Station AI is now able to read loose papers and envelopes.
+  id: 2356
+  time: '2026-07-08T01:37:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/294
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: >-
+        Scarves now help insulate from cold temperatures. This is equivalent to
+        the protection of winter boots.
+  id: 2357
+  time: '2026-07-08T01:38:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/293

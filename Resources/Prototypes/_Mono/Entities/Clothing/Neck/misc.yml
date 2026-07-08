@@ -50,6 +50,7 @@
   id: ClothingNeckViperGroupMantle
   name: viper group mantle
   description: A mantle bearing the colours and mark of a viper.
+  categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: Sprite
     sprite: _Mono/Clothing/Neck/Misc/viper_group_mantle.rsi

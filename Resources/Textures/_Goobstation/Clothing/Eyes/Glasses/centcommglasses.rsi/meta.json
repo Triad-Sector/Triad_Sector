@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprited by Taro Verne",
+    "copyright": "Sprited by Taro Verne, arachnid & moth by HTMLSystem (github)",
     "size": {
         "x": 32,
         "y": 32
@@ -15,7 +15,15 @@
             "directions": 4
         },
         {
+            "name": "equipped-EYES-arachnid",
+            "directions": 4
+        },
+        {
             "name": "equipped-EYES-hamster",
+            "directions": 4
+        },
+        {
+            "name": "equipped-EYES-moth",
             "directions": 4
         },
         {
