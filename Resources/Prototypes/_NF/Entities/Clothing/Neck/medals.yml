@@ -11,6 +11,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -25,6 +26,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -39,6 +41,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -53,6 +56,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -67,6 +71,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -81,6 +86,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 - type: entity
   parent: ClothingNeckBase
@@ -95,6 +101,7 @@
   - type: Tag
     tags:
       - Medal
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
 
 # just a little joke :)
 - type: entity
@@ -113,3 +120,4 @@
   - type: Construction
     graph: ClothingNeckMedalGloriousOrder
     node: GloriousOrder
+  - type: Engraveable # Triad - Makes medals and badges engraveable.
