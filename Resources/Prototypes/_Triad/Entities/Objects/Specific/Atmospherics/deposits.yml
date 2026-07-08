@@ -1,0 +1,275 @@
+# region Standard Deposits
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositBaseAsteroid
+  suffix: BaseAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: BaseAsteroid
+  - type: Sprite
+    color: "#d67e27"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositIceAsteroid
+  suffix: IceAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: IceAsteroid
+  - type: Sprite
+    color: "#d6fffc"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositAndesiteAsteroid
+  suffix: AndesiteAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: AndesiteAsteroid
+  - type: Sprite
+    color: "#95c280"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositBasaltAsteroid
+  suffix: BasaltAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: BasaltAsteroid
+  - type: Sprite
+    color: "#b5b5b5"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositSandAsteroid
+  suffix: SandAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: SandAsteroid
+  - type: Sprite
+    color: "#cad17b"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositChromiteAsteroid
+  suffix: ChromiteAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: ChromiteAsteroid
+  - type: Sprite
+    color: "#8178cc"
+
+- type: entity
+  parent: BaseGasDeposit
+  id: GasDepositRockAsteroid
+  suffix: RockAsteroid
+  components:
+  - type: RandomGasDeposit
+    depositPrototype: RockAsteroid
+  - type: Sprite
+    color: "#BF8C5C"
+# endregion Standard Deposits
+
+# region Very Small Deposits
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositBaseAsteroid
+  id: GasDepositBaseAsteroidVerySmall
+  suffix: BaseAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositIceAsteroid
+  id: GasDepositIceAsteroidVerySmall
+  suffix: IceAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositAndesiteAsteroid
+  id: GasDepositAndesiteAsteroidVerySmall
+  suffix: AndesiteAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositBasaltAsteroid
+  id: GasDepositBasaltAsteroidVerySmall
+  suffix: BasaltAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositSandAsteroid
+  id: GasDepositSandAsteroidVerySmall
+  suffix: SandAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositChromiteAsteroid
+  id: GasDepositChromiteAsteroidVerySmall
+  suffix: ChromiteAsteroid, Very Small
+
+- type: entity
+  parent:
+  - BaseGasDepositVerySmall
+  - GasDepositRockAsteroid
+  id: GasDepositRockAsteroidVerySmall
+  suffix: RockAsteroid, Very Small
+# endregion Very Small Deposits
+
+# region Small Deposits
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositBaseAsteroid
+  id: GasDepositBaseAsteroidSmall
+  suffix: BaseAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositIceAsteroid
+  id: GasDepositIceAsteroidSmall
+  suffix: IceAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositAndesiteAsteroid
+  id: GasDepositAndesiteAsteroidSmall
+  suffix: AndesiteAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositBasaltAsteroid
+  id: GasDepositBasaltAsteroidSmall
+  suffix: BasaltAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositSandAsteroid
+  id: GasDepositSandAsteroidSmall
+  suffix: SandAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositChromiteAsteroid
+  id: GasDepositChromiteAsteroidSmall
+  suffix: ChromiteAsteroid, Small
+
+- type: entity
+  parent:
+  - BaseGasDepositSmall
+  - GasDepositRockAsteroid
+  id: GasDepositRockAsteroidSmall
+  suffix: RockAsteroid, Small
+# endregion Small Deposits
+
+# region Large Deposits
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositBaseAsteroid
+  id: GasDepositBaseAsteroidLarge
+  suffix: BaseAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositIceAsteroid
+  id: GasDepositIceAsteroidLarge
+  suffix: IceAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositAndesiteAsteroid
+  id: GasDepositAndesiteAsteroidLarge
+  suffix: AndesiteAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositBasaltAsteroid
+  id: GasDepositBasaltAsteroidLarge
+  suffix: BasaltAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositSandAsteroid
+  id: GasDepositSandAsteroidLarge
+  suffix: SandAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositChromiteAsteroid
+  id: GasDepositChromiteAsteroidLarge
+  suffix: ChromiteAsteroid, Large
+
+- type: entity
+  parent:
+  - BaseGasDepositLarge
+  - GasDepositRockAsteroid
+  id: GasDepositRockAsteroidLarge
+  suffix: RockAsteroid, Large
+# endregion Large Deposits
+
+# region Very Large Deposits
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositBaseAsteroid
+  id: GasDepositBaseAsteroidVeryLarge
+  suffix: BaseAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositIceAsteroid
+  id: GasDepositIceAsteroidVeryLarge
+  suffix: IceAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositAndesiteAsteroid
+  id: GasDepositAndesiteAsteroidVeryLarge
+  suffix: AndesiteAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositBasaltAsteroid
+  id: GasDepositBasaltAsteroidVeryLarge
+  suffix: BasaltAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositSandAsteroid
+  id: GasDepositSandAsteroidVeryLarge
+  suffix: SandAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositChromiteAsteroid
+  id: GasDepositChromiteAsteroidVeryLarge
+  suffix: ChromiteAsteroid, Very Large
+
+- type: entity
+  parent:
+  - BaseGasDepositVeryLarge
+  - GasDepositRockAsteroid
+  id: GasDepositRockAsteroidVeryLarge
+  suffix: RockAsteroid, Very Large
+# endregion Very Large Deposits

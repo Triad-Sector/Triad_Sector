@@ -1,0 +1,30 @@
+# 2026-05-28
+ThrusterNfsd: ThrusterTdf
+GyroscopeNfsd: GyroscopeTdf
+SmallGyroscopeNfsd: SmallGyroscopeTdf
+ThrusterLargeNfsd: ThrusterLargeTdf
+
+# 2026-06-04
+SuitStorageM86: null
+SuitStorageSheriff: SuitStorageChiefEnforcer
+SuitStorageM82c: SuitStorageTdf
+SuitStorageM82b: SuitStorageTdfMedic
+SuitStorageWallmountM82c: SuitStorageWallmountTdf
+SuitStorageWallmountM82b: SuitStorageWallmountTdfMedic
+SuitStorageWallmountM86: null
+
+# 2026-06-06
+VendingMachineNfsdDrobe: VendingMachineTdfDrobe
+VendingMachineNfsdTech: VendingMachineTdfTech
+ClothingBackpackDuffelNfsdEmpBundle: ClothingBackpackDuffelTdfEmpBundle
+ClothingBackpackDuffelNfsdTrackingBundle: ClothingBackpackDuffelTdfTrackingBundle
+ShipVoucherFlyssa: null
+ShipVoucherTsfmcColonel: null
+ShipVoucherAltair: null
+
+# 2026-06-12
+NFVendingMachineCartNfsd: VendingMachineCartTdf
+
+# 2026-06-28
+HyperlinkBookSpaceLaw: BookTriadLaw
+HyperlinkBookNfsdSop: BookTdfSop

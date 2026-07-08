@@ -125,8 +125,8 @@
 - type: entity
   id: NfsdTechFab
   parent: [ BlueprintReceiverBase, SecurityTechFab ]
-  name: TSFMC techfab
-  description: Prints equipment for use by TSFMC.
+  name: TDF techfab
+  description: Prints equipment for use by TDF.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/techfab.rsi
@@ -147,27 +147,26 @@
     idleState: icon
     runningState: icon
     staticPacks:
-    - NFNfsdTechfabDeprecatedStatic
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
     dynamicPacks:
-    - NFNfsdTechfabDeprecated
+    - TdfTechfabDynamic
     - DynamicAmmoRecipePack
-    # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
+    # Triad start
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
-    # Mono end
+    # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
   - type: PirateBountyItem # Mono
     id: Techfab
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: MercenaryTechFab
@@ -212,7 +211,7 @@
     - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
     - MonoUSSPWeaponsDynamicRanged
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -283,7 +282,7 @@
     - MonoUSSPVouchersDynamic
     - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic
     - MonoUSSPWeaponsDynamicRanged
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo

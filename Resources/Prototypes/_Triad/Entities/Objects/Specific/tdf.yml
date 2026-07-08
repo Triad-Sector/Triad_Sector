@@ -1,0 +1,144 @@
+- type: entity
+  name: Triad Commerce Credit
+  parent: BaseItem
+  id: TriadCommerceCredit
+  suffix: 100 TCC
+  description: A token awarded to TDF personnel for turning in contraband or factional equipment. It can be exchanged in an TDF uplink device for a variety of tools.
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
+    state: frontieruplinkcoin
+  - type: Item
+    sprite: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
+    size: Tiny
+  - type: Stack
+    count: 100
+    stackType: TriadCommerceCredit
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 40
+  - type: Currency
+    price:
+      TriadCommerceCredit: 1
+  - type: SavingContraband
+
+- type: entity
+  parent: TriadCommerceCredit
+  id: TriadCommerceCredit1
+  suffix: 1 TCC
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: TriadCommerceCredit
+  id: TriadCommerceCredit5
+  suffix: 5 TCC
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: TriadCommerceCredit
+  id: TriadCommerceCredit25
+  suffix: 25 TCC
+  components:
+  - type: Stack
+    count: 25
+
+- type: entity
+  parent: TriadCommerceCredit
+  id: TriadCommerceCredit50
+  suffix: 50 TCC
+  components:
+  - type: Stack
+    count: 50
+
+# Uplinks
+- type: entity
+  parent: [ BaseItem, StorePresetSecurityUplink ]
+  id: BaseSecurityUplinkRadio
+  name: TDF uplink
+  description: Tablet-thingie. Turns Triad Commerce Credits into sweet-sweet security gear!
+  suffix: Empty
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Devices/tdf_uplink.rsi
+    layers:
+    - state: icon
+      scale: 0.7, 0.7
+    - state: icon-overlay
+      scale: 0.7, 0.7
+      shader: unshaded
+  - type: Item
+    sprite: _Triad/Objects/Devices/tdf_uplink.rsi
+    heldPrefix: icon
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Tag
+    tags:
+    - SecurityUplink
+
+- type: entity
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioDebug
+  suffix: Security, DEBUG
+  components:
+  - type: Store
+    balance:
+      TriadCommerceCredit: 99999
+
+- type: entity
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioChiefEnforcer
+  suffix: Chief Enforcer, 125
+  components:
+  - type: Store
+    balance:
+      TriadCommerceCredit: 125
+
+- type: entity
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioWarden
+  suffix: Warden, 100
+  components:
+  - type: Store
+    balance:
+      TriadCommerceCredit: 100
+
+- type: entity
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioPatrolTeamLeader
+  suffix: Patrol Team Leader, 75
+  components:
+  - type: Store
+    balance:
+      TriadCommerceCredit: 75
+
+- type: entity
+  parent: BaseSecurityUplinkRadio
+  id: BaseSecurityUplinkRadioEnforcer
+  suffix: Enforcer, 75
+  components:
+  - type: Store
+    balance:
+      TriadCommerceCredit: 75
+
+- type: entity
+  name: TDF deployable barrier
+  id: NfsdDeployableBarrier
+  description: A deployable barrier. Swipe your ID card to lock/unlock it.
+  parent: DeployableBarrier
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Specific/Security/nfsdbarrier.rsi
+    layers:
+    - state: idle
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]

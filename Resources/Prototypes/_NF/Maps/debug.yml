@@ -41,27 +41,27 @@
             CCServiceWorker: [ -1, -1 ]
             NFJanitor: [ -1, -1 ]
             MailCarrier: [ -1, -1 ]
-            Sheriff: [ -1, -1]
-            # Bailiff: [ -1, -1] Mono
-            SeniorOfficer: [ -1, -1]
-            Brigmedic: [ -1, -1]
+            TdfChiefEnforcer: [ -1, -1]
+            TdfWarden: [ -1, -1]
+            TdfPatrolTeamLeader: [ -1, -1]
+            TdfMedic: [ -1, -1]
             # NFDetective: [ -1, -1] Mono
-            Deputy: [ -1, -1]
-            # Cadet: [ -1, -1] Mono
+            TdfEnforcer: [ -1, -1]
+            TdfCadet: [ -1, -1] # Triad
             # PublicAffairsLiaison: [ -1, -1] Mono
-            PirateCaptain: [ -1, -1]
-            PirateFirstMate: [ -1, -1]
-            PDVDenasvar: [ -1, -1] #Mono
-            Pirate: [ -1, -1]
-            PDVInfiltrator: [ -1, -1] # Mono]
-            TsfBorg: [ -1, -1 ]
-            PdvBorg: [ -1, -1 ]
+            # PirateCaptain: [ -1, -1]
+            # PirateFirstMate: [ -1, -1]
+            # PDVDenasvar: [ -1, -1] #Mono
+            # Pirate: [ -1, -1]
+            # PDVInfiltrator: [ -1, -1] # Mono]
+            # TsfBorg: [ -1, -1 ]
+            # PdvBorg: [ -1, -1 ]
             # Prisoner: [ -1, -1] # Mono
             # USSPCommissar: [ -1, -1]
             # USSPSergeant: [ -1, -1]
             # USSPCorporal: [ -1, -1]
             # USSPMedic: [ -1, -1]
             # USSPRifleman: [ -1, -1]
-            TsfEngineer: [ -1, -1 ]
+            # TsfEngineer: [ -1, -1 ]
         - type: StationDeadDrop
           maxDeadDrops: 20 # Testing

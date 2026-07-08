@@ -1,0 +1,164 @@
+- type: entity
+  parent: BasePDA
+  id: TriadBasePDA
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Icon
+    sprite: _Triad/Objects/Devices/pda.rsi
+    state: pda
+
+- type: entity
+  parent: TriadBasePDA
+  id: BaseTdfPDA
+  abstract: true
+  components:
+  - type: Pda
+    bookSlot:
+      startingItem: BookTdfSop
+      priority: -2
+      whitelist:
+        tags:
+        - BookSpaceLaw
+        - BookNfsdSop
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - BountyContractsCartridge
+    - AstroNavCartridge
+    - WantedListCartridge
+  - type: PdaBorderColor
+    borderColor: "#515151"
+    accentVColor: "#858321"
+
+- type: entity
+  parent: BaseTdfPDA
+  id: TdfCadetPda
+  name: TDF cadet PDA
+  description: Bummer. You're just a cadet!
+  components:
+  - type: Pda
+    id: TdfJuniorEnforcerIdCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-junior-enforcer
+  - type: Icon
+    state: pda-junior-enforcer
+
+- type: entity
+  parent: BaseTdfPDA
+  id: TdfPda
+  name: TDF PDA
+  description: Standard issue PDA for members of the Triad Defense Force.
+  components:
+  - type: Pda
+    id: TdfEnforcerIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-enforcer
+  - type: Icon
+    state: pda-enforcer
+
+- type: entity
+  parent: TdfPda
+  id: TdfPatrolTeamLeaderPda
+  suffix: Patrol Team Leader
+  components:
+  - type: Pda
+    id: TdfPatrolTeamLeaderIDCard
+
+- type: entity
+  parent: BaseTdfPDA
+  id: TdfMedicPda
+  name: TDF medical PDA
+  description: It's like a TDF PDA, but sterile. Cool.
+  components:
+  - type: Pda
+    id: TdfMedicIDCard
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - BountyContractsCartridge
+    - AstroNavCartridge
+    - WantedListCartridge
+    - MedTekCartridge
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-medic
+  - type: Icon
+    state: pda-medic
+
+- type: entity
+  parent: TdfMedicPda
+  id: TdfWardenPda
+  name: TDF warden PDA
+  description: The OS appears to be jailbroken.
+  components:
+  - type: Pda
+    id: TdfWardenIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-warden
+  - type: Icon
+    state: pda-warden
+  - type: PdaBorderColor
+    borderColor: "#515151"
+    accentVColor: "#858321"
+    accentHColor: "#b1b1b1"
+
+- type: entity
+  parent: BaseTdfPDA
+  id: TdfChiefPda
+  name: TDF chief enforcer PDA
+  description: You're The Enforcer. The Law.
+  components:
+  - type: Pda
+    id: TdfChiefIDCard
+    bookSlot:
+      startingItem: BookTdfSop
+      priority: -2
+      whitelist:
+        tags:
+        - BookSpaceLaw
+        - BookNfsdSop
+    penSlot:
+      startingItem: LuxuryPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-chief-enforcer
+  - type: Icon
+    state: pda-chief-enforcer
+  - type: PdaBorderColor
+    borderColor: "#515151"
+    accentVColor: "#858321"
+    accentHColor: "#832d2d"

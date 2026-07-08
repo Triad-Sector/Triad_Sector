@@ -1,8 +1,8 @@
 - type: vessel
   id: Comet
   parent: BaseVessel
-  name: CDM Comet
-  description: A de-militarized, jack-of-all-trades, utility vessel with expeditionary functionality.
+  name: CDF Comet # Triad, name and description change
+  description: An old de-militarized, jack-of-all-trades, utility vessel that saw service when the Civilian Defense Militia was still around.
   price: 120000
   category: Large
   group: Expedition
@@ -17,7 +17,7 @@
 
 - type: gameMap
   id: Comet
-  mapName: 'CDM Comet'
+  mapName: 'CDF Comet' # Triad, name and description change
   mapPath: /Maps/_Mono/Shuttles/Expedition/comet.yml
   minPlayers: 0
   stations:

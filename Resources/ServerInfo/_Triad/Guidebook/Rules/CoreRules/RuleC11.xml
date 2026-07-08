@@ -1,11 +1,27 @@
 ﻿<Document>
-[color=#ffff00][head=3]Section 11: Antagonist Guidelines[/head][/color]
+[color=#ffff00][head=3]Section 11: Ship Saving and Design[/head][/color]
 
-[color=#a4885c]11.1[/color] Antagonists are held to a higher standard, similar to Command. *1
+[color=#a4885c]11.1[/color] Ships are to be no larger than 80×50 tiles. ★
 
-[color=#a4885c]11.2[/color] Antagonists are expected to roleplay with others, this includes Security and Command. *1
+[color=#a4885c]11.2[/color] Do not abuse the ship save mechanic to avoid in-character consequences. [color=#f1c232]★★[/color]
 
-[color=#a4885c]11.3[/color] The damage that an antagonist is allowed to cause must be proportional to their objectives. *1
+[color=#a4885c]11.3[/color] Do not exploit the stash to duplicate items.    [color=#cc0000]★★★[/color]
 
-[color=#a4885c]11.4[/color] Ghost roles have their own independent rules that must be followed. *1
+[color=#a4885c]11.4[/color] Ship backups are only to be used in the event of bugs, server issues, or other OOC problems. Loading backups may only be done with admin permission. Request this through an ahelp in-game or a ticket on the Discord. [color=#f1c232]★★[/color]
+
+  -  [color=#a4885c]11.4A[/color] You may not load a ship backup if your ship was destroyed by hostile elements such as automated defenses or offenses (Drones, LPBs, etc.).
+
+  -  [color=#a4885c]11.4B[/color] You may not load from a backup if your ship deed was lost. Recover that ship through IC means.
+
+  -  [color=#a4885c]11.4C[/color] Any ship that was not saved due to player negligence is not entitled to compensation from the administration for loss of progress when loading a backup. An ahelp is still required.
+
+[color=#a4885c]11.5[/color] Thrusters should be in a position where it is possible to hit them with ship weapons.  There should be no entities (except for 2 grills) that block the path of thrusters being shot from another ship. [color=#f1c232]★★[/color]
+
+  - [color=#a4885c]11.5A[/color] Thrusters should not be placed at the exhaust of another thruster.
+
+  -  [color=#a4885c]11.5B[/color] For more information, refer to Thruster Placement in Discord → Admin Questions → Thruster Placement.
+
+[color=#a4885c]11.6[/color] Machine setups that cause server lag are not allowed. Any player who owns such a setup on their ship will be given a single warning to remove it if it causes server lag. Failure to comply will result in the ship being deleted. [color=#f1c232]★★[/color]
+
+[color=#a4885c]11.7[/color] Directional fans should be used sparingly and not as replacements for walls, windows or similar. [color=#f1c232]★★[/color]
 </Document>

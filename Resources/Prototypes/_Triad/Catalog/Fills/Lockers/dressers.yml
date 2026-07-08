@@ -1,0 +1,25 @@
+- type: entity
+  id: DresserTdfChiefEnforcerFilled
+  parent: Dresser
+  suffix: Filled, TDF Chief Enforcer
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHatBeretTdfChiefEnforcer
+      - id: ClothingHeadHatBeretHoS
+      - id: ClothingUniformJumpsuitTdfChiefEnforcer
+      - id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+      - id: ClothingNeckMantleTdfChiefEnforcer
+      - id: ClothingNeckCloakTdfChiefEnforcer
+
+- type: entity
+  id: DresserTdfWardenFilled
+  parent: Dresser
+  suffix: Filled, TDF Warden
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHatTdfWarden
+      - id: ClothingHeadHatBeretTdfWarden
+      - id: ClothingHeadHatBeretWarden
+      - id: ClothingUniformJumpsuitTdfWarden

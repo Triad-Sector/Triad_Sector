@@ -36,6 +36,8 @@ namespace Content.Client.PDA
 
         private string _balance = Loc.GetString("comp-pda-ui-unknown"); // Frontier
         private string _shuttleDeed = Loc.GetString("comp-pda-ui-unknown"); // Frontier
+        private string _currentDate = Loc.GetString("comp-pda-ui-unknown"); // DeltaV - PDA date
+
         private TimeSpan? _roundEndTime = null; // Frontier
         private int _currentView;
 
@@ -140,8 +142,12 @@ namespace Content.Client.PDA
                 _clipboard.SetText(_instructions);
             };
 
-
-
+            // Begin DeltaV additions
+            CurrentDateButton.OnPressed += _ =>
+            {
+                _clipboard.SetText(_currentDate);
+            };
+            // End DeltaV additions
 
             HideAllViews();
             ToHomeScreen();
@@ -239,6 +245,14 @@ namespace Content.Client.PDA
                 "comp-pda-ui-station-alert-level-instructions",
                 ("instructions", _instructions))
             );
+            // Begin DeltaV additions
+            if (state.PdaOwnerInfo.CurrentDate is { } curDate)
+                _currentDate = curDate.ToString("dd MMMM yyyy");
+                CurrentDateLabel.SetMarkup(Loc.GetString(
+                    "comp-pda-ui-current-date",
+                    ("date", _currentDate)
+                ));
+            // End DeltaV additions
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 

@@ -54,7 +54,7 @@ language-Tradeband-description =
 
 language-Freespeak-name = Asher
 language-Freespeak-description =
-    A rarely heard language outside of the colossus sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space.
+    A rarely heard language outside of the Triad sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space.
     Usually equated to slurred speach, relying more on tone to have the words mean something.
 
 # Mono - edited to remove mentions of elyran republic, or whatever it was

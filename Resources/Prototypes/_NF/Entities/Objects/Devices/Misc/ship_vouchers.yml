@@ -21,6 +21,7 @@
     price: 0
   - type: CargoSellBlacklist
   - type: NFShipyardVoucher # FIXME - whitelist component to prevent misprediction
+  - type: SavingContraband # Triad
 
 # NFSD vouchers
 - type: entity

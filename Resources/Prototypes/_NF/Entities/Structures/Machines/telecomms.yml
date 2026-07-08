@@ -13,14 +13,14 @@
       - EncryptionKeyScience
       - EncryptionKeySecurity
       - EncryptionKeyService
-#      - EncryptionKeyCommand #Mono
+      - EncryptionKeyCommand
 #      - EncryptionKeyNfsd #Mono
       - EncryptionKeyTraffic
 
 - type: entity
   parent: TelecomServer
   id: TelecomServerFilledNfsd
-  suffix: TSFMC #Mono: Ship suffix out
+  suffix: TDF #Mono: Ship suffix out
   components:
   - type: ContainerFill
     containers:

@@ -1875,3 +1875,367 @@ Entries:
   id: 2322
   time: '2026-06-21T07:54:56.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/245
+- author: SquishyEmmaaaa
+  changes:
+    - type: Tweak
+      message: Updated Dawson's Christian in the Jukebox, enjoy the updated filk!
+  id: 2323
+  time: '2026-06-22T15:53:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/246
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Fax machines are now far faster for sending and copying. In roughly the
+        time it would take you to change the destination, you can send another
+        fax.
+  id: 2324
+  time: '2026-06-23T01:34:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/247
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Optimized NPC ship steering for better server performance with large
+        fleets.
+  id: 2325
+  time: '2026-06-23T07:01:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/251
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Optimized weightlessness checks for better performance with many
+        creatures.
+  id: 2326
+  time: '2026-06-23T07:10:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/253
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: Optimized space wind performance during large depressurization events.
+  id: 2327
+  time: '2026-06-23T07:19:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/252
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Radioactive generators now correctly emit radiation that reflects their
+        power state.
+  id: 2328
+  time: '2026-06-23T10:28:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/254
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed snoring trait being unselectable, it is under medical
+    - type: Fix
+      message: Fixed muted trait being unselectable
+    - type: Fix
+      message: >-
+        Fixed osteogenesis and redshirt being incompatible with eachother, it
+        now correctly gives you 50 HP to crit and 100 HP to dead as intended.
+  id: 2329
+  time: '2026-06-23T16:25:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/255
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Radiation Sources not updating to their parent grids. You should
+        no longer experience patches of radiation, or radiation coming from your
+        generators being non-existent.
+  id: 2330
+  time: '2026-06-24T01:41:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/257
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Gas deposit scanner now has a range of 64 tiles, from 20.
+  id: 2331
+  time: '2026-06-25T21:20:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/262
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added Bunk beds as constructible objects. You can use a crowbar on bunk
+        beds to change their orientation now.
+    - type: Tweak
+      message: >-
+        Bunk beds offset you correctly, making it so two spacemen laying on a
+        bunk bed do not looked stacked on top of eachother, but rather on the
+        correct mattress.
+  id: 2332
+  time: '2026-06-25T21:20:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/263
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: >-
+        Fixed a bug in Lidgren.Network HandleReleasedFragment that could cause
+        out of memory errors.
+  id: 2333
+  time: '2026-06-25T21:22:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/264
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Comas and apostrophes can now be used in character names
+  id: 2334
+  time: '2026-06-25T21:27:14.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/260
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix engine again to 277.2.1
+  id: 2335
+  time: '2026-06-25T22:04:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/265
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: >-
+        Few ambient that ends abruptly or unnaturally has been edited to have
+        smoother fade out ending
+  id: 2336
+  time: '2026-06-27T08:53:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/268
+- author: Stedar111
+  changes:
+    - type: Add
+      message: Added HZD Stiletto, a researchable handgun!
+  id: 2337
+  time: '2026-06-27T09:28:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/233
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: 'Ghost Roles: PDA and Baby Dragon due to rule breach potential'
+  id: 2338
+  time: '2026-06-28T04:18:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/269
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: TEG now shows max power output
+  id: 2339
+  time: '2026-06-30T00:32:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/271
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed the HZD Squire and HZD Stiletto not having a do-after for toggling
+        their attachments.
+    - type: Tweak
+      message: Made the Stiletto have a 1.5 second do-after, from 0.5 seconds.
+    - type: Tweak
+      message: >-
+        The HZD Squire has less angle decay while the stock is folded, make it
+        slightly harder to control unfolded.
+  id: 2340
+  time: '2026-06-30T01:47:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/272
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Fire axe cabinets now persist their contents on save
+  id: 2341
+  time: '2026-06-30T01:53:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/273
+- author: IngvarJackal
+  changes:
+    - type: Tweak
+      message: Sinks and drains are moveable
+  id: 2342
+  time: '2026-06-30T06:15:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/151
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: Fixed Hunger and Thirst misprediction
+  id: 2343
+  time: '2026-07-01T12:14:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/275
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Ingame rules
+  id: 2344
+  time: '2026-07-02T12:40:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/270
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Starting gun update optimizations
+    - type: Fix
+      message: Adaptive raycasting
+    - type: Fix
+      message: Viewport bounds check for shield drawing
+  id: 2345
+  time: '2026-07-04T01:16:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/284
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Readjusted sprite sizes and offsets of several guns
+  id: 2346
+  time: '2026-07-04T06:13:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/281
+- author: Stedar111
+  changes:
+    - type: Tweak
+      message: Nerfed the Squire to incentivize unfolding it.
+    - type: Fix
+      message: >-
+        Fixed the toggle verb for the Squire and Stiletto displaying the
+        opposite name.
+  id: 2347
+  time: '2026-07-04T06:13:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/279
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: >-
+        Rules after community feedback/clarification requests.  Please see PR
+        for full list of changes
+  id: 2348
+  time: '2026-07-04T14:29:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/285
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix subtle and whisper for ghost hearing toggles
+  id: 2349
+  time: '2026-07-04T14:30:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/286
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        High Command Outpost - Area for admins to RP their CC characters with
+        players
+  id: 2350
+  time: '2026-07-05T04:16:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/280
+- author: HTMLSystem
+  changes:
+    - type: Fix
+      message: >-
+        Arachnid and moth eyewear sprites will now work, but only on
+        wizden-original eyewear. Will make sprites for eyewear from other forks
+        soon!
+  id: 2351
+  time: '2026-07-05T04:22:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/282
+- author: mnva0
+  changes:
+    - type: Fix
+      message: Trap Avoider no longer allows walking on lava or over chasms.
+  id: 2352
+  time: '2026-07-06T22:08:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/290
+- author: Dimasw99
+  changes:
+    - type: Tweak
+      message: >-
+        Asteroids now have their own unique gas deposits with specific gas
+        ratios for each type.
+    - type: Tweak
+      message: Significantly increased the amount of moles per asteroid on average.
+  id: 2353
+  time: '2026-07-06T22:08:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/261
+- author: HTMLSystem
+  changes:
+    - type: Tweak
+      message: Arachnids and Moths now have sprites for all eyewear ingame!
+    - type: Fix
+      message: Moth eyewear sprites ACTUALLY work now, apologies for the fake out!
+  id: 2354
+  time: '2026-07-06T22:39:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/283
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Catwalks now have no tile type restrictions on placement, meaning
+        builders now have another thing to play around with for decor.
+    - type: Tweak
+      message: >-
+        As a consequence of removing tile restrictions: catwalks can also now be
+        used for their intended purpose of safely crossing lava, liquid plasma,
+        or chasms.
+  id: 2355
+  time: '2026-07-08T01:36:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/296
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: Station AI is now able to read loose papers and envelopes.
+  id: 2356
+  time: '2026-07-08T01:37:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/294
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: >-
+        Scarves now help insulate from cold temperatures. This is equivalent to
+        the protection of winter boots.
+  id: 2357
+  time: '2026-07-08T01:38:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/293
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the Triad Defense force; local security militia! They will be
+        enforcing the laws around the sector.
+    - type: Tweak
+      message: >-
+        Renamed the Judge role to Station Guard, being a dedicated Venmar
+        Station guard, bringing any criminals to the TDF base, but they do not
+        have jurisdiction over arresting criminals outside of MD/Central station
+        space
+    - type: Tweak
+      message: >-
+        The Overseer has had a change of duties. They will now ensure Colonial
+        personnel do their duties, do bookkeeping, and use the ID card console
+        on anyone that needs an access change.
+    - type: Tweak
+      message: Added ranks for DoC, Overseer, and Emergency responders.
+    - type: Tweak
+      message: Station guards now have playtime ranks.
+    - type: Tweak
+      message: >-
+        The Overseer now spawns with a multiphase energy gun instead of the
+        lawbringer. Station guards now get a disabler instead of the lawbringer.
+    - type: Add
+      message: Added Adjudant corvette ship to TDF shipyard, made by Deox
+    - type: Add
+      message: Added Grunder destroyer ship to TDF shipyard, made by Clift
+    - type: Remove
+      message: Disabled Camelot pending major USSP rework.
+  id: 2358
+  time: '2026-07-08T12:29:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/107
+- author: Upstream
+  changes:
+    - type: Add
+      message: >-
+        Additional spray painter features have been ported from Wizard's Den. A
+        Palette button, rotation buttons, and a color picker.
+  id: 2359
+  time: '2026-07-08T13:53:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/292
+- author: HTMLSystem
+  changes:
+    - type: Tweak
+      message: >-
+        Change up arachnid's layering. Big glasses and over-ear headsets should
+        look better on them now!
+  id: 2360
+  time: '2026-07-08T13:56:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/289

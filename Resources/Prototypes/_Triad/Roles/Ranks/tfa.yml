@@ -1,0 +1,30 @@
+# Triad Frontier Association ranks
+- type: rank
+  id: RankOverseer
+  name: Overseer
+  prefix: Overseer
+
+- type: rank
+  id: RankDoC
+  name: Director of Care
+  prefix: Dr.
+
+- type: rank
+  id: RankEmergencyResponder
+  name: Emergency Medical Technician
+  prefix: EMT
+
+- type: rank
+  id: RankStationGuardSenior
+  name: Senior Security Officer
+  prefix: Sr. Off.
+
+- type: rank
+  id: RankStationGuard
+  name: Security Officer
+  prefix: Off.
+
+- type: rank
+  id: RankStationGuardJunior
+  name: Junior Security Officer
+  prefix: Jr. Off.

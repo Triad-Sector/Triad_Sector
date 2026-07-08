@@ -52,7 +52,7 @@
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerCaptain
   name: captain's messenger bag
-  description: An exclusive messenger bag for Nanotrasen officers.
+  description: An exclusive messenger bag for Nanotrasen officers. Well, was exclusive, atleast.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi
@@ -89,8 +89,8 @@
 - type: entity
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerSr
-  name: colonial liaison's messenger bag
-  description: An exclusive messenger bag for Nanotrasen officers.
+  name: overseer's messenger bag
+  description: An exclusive messenger bag for the TFA's overseer.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi
@@ -755,7 +755,7 @@
 - type: entity
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerNfsdBrown
-  name: TSFMC messenger bag
+  name: solarian PMC messenger bag
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi
@@ -800,7 +800,7 @@
 - type: entity
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerNfsdCream
-  name: TSFMC messenger bag
+  name: solarian PMC messenger bag
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi

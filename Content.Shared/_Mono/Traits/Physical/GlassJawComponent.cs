@@ -11,4 +11,10 @@ public sealed partial class GlassJawComponent : Component
     /// </summary>
     [DataField]
     public int CritDecrease = 10;
+
+    /// <summary>
+    /// Triad: Optional field for setting the critical thresholds directly, if the threshold does not exist
+    /// </summary>
+    [DataField]
+    public int? CritSetValueFallback;
 }

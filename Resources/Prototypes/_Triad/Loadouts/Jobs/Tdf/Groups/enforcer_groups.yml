@@ -1,0 +1,8 @@
+- type: loadoutGroup
+  id: TdfEnforcerJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfEnforcer
+  fallbacks:
+  - ClothingUniformJumpsuitTdfEnforcer

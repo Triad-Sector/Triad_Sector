@@ -1,0 +1,370 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]100 SERIES: INDIVIDUAL[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [head=3][color=#FFA500]Misdemeanor[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-101
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Assault
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To threaten unwanted physical contact on an individual with both capability and intent to do so.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        5,000 credits fine OR up to 20 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-102
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Harassment
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To verbally demean, humiliate, or harass an individual with malice; or maliciously spread false information amongst a population repeatedly.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        2,500 credits fine OR up to 10 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-103
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Petty Larceny
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To unlawfully deprive an individual of personal property(s) rightfully in their possession, without their knowledge or consent, where the value of the property(s) is below 25,000 credits.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        5,000 credits fine, restitution, OR up to 5 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-104
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Battery
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To cause physical harm or to effect unwanted physical contact on an individual.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        10,000 credits fine OR up to 30 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-105
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Endangerment
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To, through reckless conduct, negligence, action, or inaction, create a substantial risk to the life, health, safety, or property of another.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        15,000 credits fine OR up to 30 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-106
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Contraband Possession
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To be in unauthorized possession of a Class 2 or below restricted item outlined by the [textlink="contraband list" link="SLContrabandList"].
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        20,000 credits fine OR up to 30 minutes of imprisonment, and confiscation of contraband.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-107
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Obstruction of Justice
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To wilfully interfere with a decree of the court, warrant, or arrest.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        15,000 credits fine OR up to 20 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Grand Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-108
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Individual Grand Possession
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To be in unauthorized possession of a Class 3 restricted item outlined by the [textlink="contraband list" link="SLContrabandList"].
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        40,000 credits fine OR up to 50 minutes of imprisonment, and confiscation of contraband.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-109
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Kidnapping
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To unlawfully confine or restrict the free movement of an individual against their will.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        50,000 credits fine OR up to 40 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-110
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Manslaughter
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To cause violence onto an individual to the extent that it results in their death, without premeditation or intent to do so.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 45 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-111
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Murder
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To cause physical harm or to effect unwanted physical contact onto an individual, to the extent that it results in their death, with clear intent and premeditation to do so.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        60 minutes of imprisonment, and an optional fine of up to 75,000 credits.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Capital[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-112
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Prevention of Revival
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To commit an act that prevents the revival of an individual by standard medical care following their death. This includes, but is not limited to: Destruction of the Body, Hiding of the Body, Destruction of the Brain.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-113
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Individual to Ship Destruction
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To maliciously commit an act that, directly or indirectly, renders another vessel or its part uninhabitable or inoperable without due permission of the Ship's Captain.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

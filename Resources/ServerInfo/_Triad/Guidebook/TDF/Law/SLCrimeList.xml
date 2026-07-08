@@ -1,0 +1,225 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]CRIME LISTING[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [head=3][color=#FFA500]Crime Categories[/color][/head]
+  - [color=#8ed38e]100 Series:[/color] [textlink="Criminal actions that affect an individual, or a group of people." link="SLCrimeList100Series"]
+  - [color=#78E2C8]200 Series:[/color] [textlink="Criminal actions that affect a Station, Ship, or the Sector at a whole." link="SLCrimeList200Series"]
+  - [color=#AF74AD]300 Series:[/color] [textlink="Criminal actions conducted by a Ship, which will be attributed to the Captain of that ship." link="SLCrimeList300Series"]
+  - [color=#DDE0B3]400 Series:[/color] [textlink="Criminal actions committed by individuals in the Triad Defense Force in violation of their duties, authority, or the command structure." link="SLCrimeList400Series"]
+
+  [head=3][color=#FFA500]Sentencing[/color][/head]
+
+  The Commander and Warden are responsible for ensuring Enforcers apply a just and fair sentence to offenders, based on the severity of the crime. Should they become aware of a misplaced or unjust sentence, they must work to correct it if there are no immediate threats or matters that require their attention. Failure to correct a known unjust sentence will be considered dereliction of duty.
+
+  When sentencing an offender, the following should be followed:
+  - The sentence placed upon a prisoner should be proportional to the severity of the crime, re-offenses, behavior during arrest, and their cooperation with Enforcers.
+  - Use common sense when sentencing. An Enforcer should not seek to maximize the sentence of a prisoner. Use sentence modifiers where appropriate.
+
+  The Warden should sentencing prisoners after being informed of the prisoner's crimes. If they are unavailable, use the list below to determine who should sentence the prisoner:
+  - The Commander.
+  - An Enforcer unaffiliated with the arrest.
+  - The arresting Enforcer, if no other options are available in a timely manner.
+  - Junior Enforcers should not be sentencing prisoners unless there are no other personnel available.
+
+  [head=3][color=#FFA500]Punishments[/color][/head]
+
+  The various ways in which someone who is found guilty of a crime may be sentenced are as follows:
+  - Imprisonment: The convict will be placed in the communal brig on the Auric Outpost for a set amount of time.
+  - Fining: The convict will be charged an amount of credits to be paid to the Triad Defense Force or Venmar Station budget.
+  - Permanent Confinement: The convict will be permanently confined in the communal brig for the remainder of the shift.
+  - Execution: The convict will be executed legally. Executions require strict approval from the Commander, with methods of legal execution include: firing squad, lethal injection, and electrocution. Methods outside of these are not permitted. The convict should select their method of execution. If they are unable or unwilling, the Warden or Commander will select the method of execution.
+
+  [color=#897236][mono]──── [color=#FFA500][bold]CRIME MODIFIERS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [head=3][color=#FFA500]Aggravating[/color][/head]
+
+  <Table Columns="3">
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Addition of Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Accessory
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity found guilty of assisting in the commission of a crime, without participating in the crime itself, knowing that a crime will be, has been, or is being committed, will receive the sentence for the crimes in which they took part in full.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Same sentence and fine as the crime committed.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Resisting Arrest
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        The offender actively resisted lawful detention through force, violence, or flight.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Add 5,000 credits to the fine and 10 minutes to the prison sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Aggravation
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any individual found guilty of committing a crime with reckless abandon, evident signs of lack of regret or remorse, or blatant disregard for potential collateral damage, will be considered for harsher punishments.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to +25% of original fine and up to +25% of original sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Attempts
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity found guilty of attempting to commit a crime, with the intent to carry out that crime, will receive the sentence for the crimes they attempted in full.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to half (50%) of the original fine and original sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Conspiracy
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any individual found guilty of planning to commit a crime, with the intent to carry out that crime eventually, and having committed an overt act pursuant to that end, will receive the sentence for the crimes they conspired towards in full.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Same sentence and fine as the conspired crime(s).
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Recidivism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity convicted of the same criminal charge multiple times.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to +25% of original fine and up to +25% of original sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#635353">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Solicitation
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity found guilty of encouraging, bribing, requesting, or instructing an individual to commit a crime, with the intent that the entity being solicited to commit the crime, will receive for the crimes they solicited in full.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Same sentence and fine as the solicited crime(s).
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Extenuating[/color][/head]
+
+  <Table Columns="3">
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Reduction of Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#475368">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Cooperation
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity who shares actionable intelligence with the authorities, turns oneself in, testifies against accomplices, confesses to their crime, or otherwise aids the prosecution, may have their sentence reduced or waived.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 100% waived fine and sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#475368">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Dire Emergency
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity found to have committed a crime in the process of absolutely necessary and reasonable actions, taken with the intent to resolve or mitigate the effects of a dire emergency on one's vessel or habitat, may have their sentence reduced by any amount, or completely waived.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 100% waived fine and sentence.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#475368">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Self-Defense
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Any entity found to have committed a crime or crimes in protection of oneself or another, and only to the necessary extent to avert a direct and imminent threat to the health and life of innocent individuals, may have their sentence reduced by any amount, or completely waived.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 100% waived fine and sentence.
+      </Box>
+    </ColorBox>
+  </Table>
+</Document>

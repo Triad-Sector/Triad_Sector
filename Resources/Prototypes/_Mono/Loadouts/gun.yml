@@ -542,9 +542,8 @@
 - type: loadout #Lecter
   id: FactionLecterLoadout
   price: 0
-  storage:
-    back:
-    - WeaponRifleLecter
+  equipment:
+    suitstorage: WeaponRifleLecter
 
 - type: loadout #Lecter Ammo
   id: Faction556x45mmAmmoLoadout
@@ -556,9 +555,8 @@
 - type: loadout #Vulcan
   id: FactionVulcanLoadout
   price: 0
-  storage:
-    back:
-    - WeaponRifleVulcan
+  equipment:
+    suitstorage: WeaponRifleVulcan
 
 - type: loadout #Vulcan Ammo
   id: Faction762x51mmAmmoLoadout
@@ -570,9 +568,8 @@
 - type: loadout #Bandit
   id: FactionBanditLoadout
   price: 0
-  storage:
-    back:
-    - WeaponRifleMR3C
+  equipment:
+    suitstorage: WeaponRifleMR3C
 
 - type: loadout #Bandit Ammo
   id: Faction8x65mmAmmoLoadout
@@ -628,9 +625,8 @@
 - type: loadout #Drozd
   id: FactionDrozdLoadout
   price: 0
-  storage:
-    back:
-    - WeaponSubMachineGunDrozd
+  equipment:
+    suitstorage: WeaponSubMachineGunDrozd
 
 - type: loadout #Drozd Ammo
   id: FactionAcpSmgAmmoLoadout
@@ -716,23 +712,20 @@
 - type: loadout #Energy Gun
   id: FactionEnergyGunLoadout
   price: 0
-  storage:
-    back:
-    - WeaponEnergyGun
+  equipment:
+    suitstorage: WeaponEnergyGun
 
 - type: loadout #Energy Recharger Flatpack
   id: FactionRechargerLoadout
   price: 0
-  storage:
-    back:
-    - WeaponCapacitorRechargerFlatpack
+  equipment:
+    suitstorage: WeaponCapacitorRechargerFlatpack
 
 - type: loadout #Colonel EN-5
   id: FactionFrostLoadout
   price: 0
-  storage:
-    back:
-    - WeaponEnergyGunFrost
+  equipment:
+    suitstorage: WeaponEnergyGunFrost
 
 # Sidearms
 

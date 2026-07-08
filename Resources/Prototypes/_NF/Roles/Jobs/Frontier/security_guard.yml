@@ -14,26 +14,41 @@
   weight: 80
   displayWeight: 20 # Second from the bottom
   canBeAntag: false
-  access:
-  - Security
-  - Brig
-  - Maintenance
-  - Service
-  - External
-  - Mercenary
-  - Captain
-  - Frontier
+  # Triad, modify access levels
+  accessGroups:
+  - GeneralTdfAccess
+  - AllAccessColonial
+  # Triad End
+  ranks: # Triad, ranks
+    RankStationGuardSenior:
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard # YOU ARE THE PROTECTOR OF THE STATION
+      time: 288000 # 80 hours
+    RankStationGuard:
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard
+      time: 36000 # 10 hours
+    RankStationGuardJunior: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
+    implants: [ MindShieldImplant ] # Triad - re-add sec implant
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: ShipSavingBlacklist # Triad - can't save ships
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 - type: startingGear
   id: SecurityGuardGear
   equipment:
-    pocket1: WeaponEnergyGunLawbringer
+    pocket1: WeaponDisabler
   storage:
     back:
     - EncryptionKeyService

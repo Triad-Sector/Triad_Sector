@@ -1,0 +1,10 @@
+- type: trait
+  id: Snoring
+  name: trait-snoring-name
+  description: trait-snoring-desc
+  category: Medical
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Snoring

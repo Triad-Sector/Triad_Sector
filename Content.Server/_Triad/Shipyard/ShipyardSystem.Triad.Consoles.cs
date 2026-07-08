@@ -27,12 +27,14 @@ using Content.Shared.Radio;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
+using Content.Shared.Whitelist;
 using Robust.Shared.Player;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ShuttleConsoleSystem _shuttleConsole = default!;
     [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!;
 
@@ -47,6 +49,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, uid, component);
             return;
         }
+
+        if (!IsShipSaveWhitelistValid(player, component))
+            return;
 
         if (!TryComp<IdCardComponent>(targetId, out var idCard))
         {
@@ -149,6 +154,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, uid, component);
             return;
         }
+
+        if (!IsShipSaveWhitelistValid(player, component))
+            return;
 
         if (HasComp<ShipyardVoucherComponent>(targetId))
         {
@@ -615,5 +623,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var newAccess = newCap.Tags.ToList();
         newAccess.AddRange(console.NewAccessLevels);
         _accessSystem.TrySetTags(targetId, newAccess, newCap);
+    }
+
+    /// <summary>
+    /// Checks if a player is valid for saving a ship based on the entity whitelist and blacklist of the shipyard console.
+    /// </summary>
+    private bool IsShipSaveWhitelistValid(EntityUid user, ShipyardConsoleComponent console)
+    {
+        return _whitelist.CheckBoth(user, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
     }
 }

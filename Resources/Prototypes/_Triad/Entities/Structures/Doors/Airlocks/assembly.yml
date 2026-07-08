@@ -1,0 +1,18 @@
+# TDF
+- type: entity
+  parent: AirlockAssembly
+  id: AirlockAssemblyTdf
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Standard/tdf.rsi
+    state: assembly
+
+- type: entity
+  parent: AirlockAssembly
+  id: AirlockAssemblyTdfGlass
+  suffix: TDF, Glass
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Glass/tdf.rsi
+    state: assembly

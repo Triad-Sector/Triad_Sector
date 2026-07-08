@@ -138,6 +138,7 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+    speciesId: moth
 
 
 - type: entity
@@ -154,4 +155,5 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+    speciesId: moth
 

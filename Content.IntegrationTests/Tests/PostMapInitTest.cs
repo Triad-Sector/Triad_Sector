@@ -67,6 +67,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_NF/POI/lpbravo.yml", // Contains syndicate rubber stamp
             "/Maps/_NF/Shuttles/Admin/fishbowl.yml", // Contains CentComm folder
             "/Maps/_Mono/Admin/minicentcomm.yml", // Admeme centcomm
+            "/Maps/_Triad/Admin/highcommandoutpost.yml", // High comm outpost, contains DNM stamp
             // End Frontier
         };
 
@@ -166,7 +167,7 @@ namespace Content.IntegrationTests.Tests
             var protoManager = server.ResolveDependency<IPrototypeManager>();
             var loader = server.System<MapLoaderSystem>();
 
-            var mapFolder = new ResPath("/Maps/_Mono"); // Mono
+            var mapFolder = new ResPath("/Maps/_Triad"); // Triad
             var maps = resourceManager
                 .ContentFindFiles(mapFolder)
                 .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
