@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/08/2026 19:54:39
-  entityCount: 14168
+  time: 07/08/2026 20:36:59
+  entityCount: 14171
 maps:
 - 1
 grids:
@@ -17714,7 +17714,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.5,-6.5
       parent: 2
-  - uid: 14168
+  - uid: 14171
     components:
     - type: Transform
       anchored: False
@@ -33168,6 +33168,26 @@ entities:
     - type: Transform
       pos: 59.5,36.5
       parent: 2
+  - uid: 14103
+    components:
+    - type: Transform
+      pos: 26.5,-8.5
+      parent: 2
+  - uid: 14168
+    components:
+    - type: Transform
+      pos: 27.5,-8.5
+      parent: 2
+  - uid: 14169
+    components:
+    - type: Transform
+      pos: 26.5,-13.5
+      parent: 2
+  - uid: 14170
+    components:
+    - type: Transform
+      pos: 27.5,-13.5
+      parent: 2
 - proto: CableMV
   entities:
   - uid: 3159
@@ -44682,12 +44702,12 @@ entities:
     - type: Transform
       pos: 3.5,-9.5
       parent: 2
-- proto: DefaultStationBeaconHOSRoom
+- proto: DefaultStationBeaconMailRoom
   entities:
   - uid: 5222
     components:
     - type: Transform
-      pos: -0.5,3.5
+      pos: 36.5,29.5
       parent: 2
 - proto: DefaultStationBeaconSecurity
   entities:
@@ -46428,7 +46448,7 @@ entities:
     - type: Transform
       pos: 8.5,13.5
       parent: 2
-- proto: DresserHeadOfSecurityFilled
+- proto: DresserStationRepresentativeFilled
   entities:
   - uid: 5523
     components:
@@ -49178,7 +49198,7 @@ entities:
       pos: 40.5,8.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -101438.36
+      secondsUntilStateChange: -103975.66
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -49965,7 +49985,7 @@ entities:
       deviceLists:
       - 58
     - type: Door
-      secondsUntilStateChange: -46154.242
+      secondsUntilStateChange: -48691.54
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 14804.3518643
@@ -54363,6 +54383,7 @@ entities:
       color: '#0335FCFF'
     - type: GasDepositExtractor
       depositEntity: 5195
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54379,6 +54400,7 @@ entities:
       color: '#0335FCFF'
     - type: GasDepositExtractor
       depositEntity: 5197
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54395,6 +54417,7 @@ entities:
       color: '#0335FCFF'
     - type: GasDepositExtractor
       depositEntity: 5196
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54411,6 +54434,7 @@ entities:
       color: '#0335FCFF'
     - type: GasDepositExtractor
       depositEntity: 5194
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54427,6 +54451,7 @@ entities:
       color: '#BA0000FF'
     - type: GasDepositExtractor
       depositEntity: 5192
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54443,6 +54468,7 @@ entities:
       color: '#BA0000FF'
     - type: GasDepositExtractor
       depositEntity: 5191
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54458,6 +54484,7 @@ entities:
       color: '#BA0000FF'
     - type: GasDepositExtractor
       depositEntity: 5193
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -54474,6 +54501,7 @@ entities:
       color: '#BA0000FF'
     - type: GasDepositExtractor
       depositEntity: 5190
+      targetPressure: 4500
       enabled: True
     - type: Physics
       bodyType: Static
@@ -101904,7 +101932,7 @@ entities:
     - type: Transform
       pos: -12.5,19.5
       parent: 2
-- proto: WindoorSecureCentralCommandLocked
+- proto: WindoorSecureCommandLocked
   entities:
   - uid: 14065
     components:
@@ -101915,16 +101943,14 @@ entities:
   - uid: 14066
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -6.5,7.5
+      pos: -5.5,11.5
       parent: 2
   - uid: 14067
     components:
     - type: Transform
-      pos: -5.5,11.5
+      rot: -1.5707963267948966 rad
+      pos: -6.5,7.5
       parent: 2
-- proto: WindoorSecureCommandLocked
-  entities:
   - uid: 14068
     components:
     - type: Transform
@@ -102131,12 +102157,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,5.5
-      parent: 2
-  - uid: 14103
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 17.5,5.5
       parent: 2
   - uid: 14104
     components:
