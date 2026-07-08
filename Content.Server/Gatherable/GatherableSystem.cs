@@ -57,7 +57,7 @@ public sealed partial class GatherableSystem : EntitySystem
         if (!Resolve(gatheredUid, ref component))
             return;
 
-        if (!HasComp<GodmodeComponent>(gatheredUid)) // Triad, godmode asteroid fixes
+        if (HasComp<GodmodeComponent>(gatheredUid)) // Triad, godmode asteroid fixes
             return;
 
         if (TryComp<SoundOnGatherComponent>(gatheredUid, out var soundComp))
