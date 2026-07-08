@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/08/2026 20:55:37
-  entityCount: 14173
+  time: 07/08/2026 21:11:28
+  entityCount: 14182
 maps:
 - 1
 grids:
@@ -1765,6 +1765,7 @@ entities:
           decals:
             2034: 11,14
             6305: 18,12
+            12486: -10,-7
         - node:
             color: '#FFFFFFFF'
             id: ConcreteTrimCornerNe
@@ -1782,6 +1783,7 @@ entities:
           decals:
             2036: 10,13
             7949: 52,14
+            12489: -11,-8
         - node:
             color: '#FFFFFFFF'
             id: ConcreteTrimInnerNw
@@ -1790,6 +1792,12 @@ entities:
             6307: 19,11
             7950: 50,14
             7969: 52,12
+            12491: -9,-8
+        - node:
+            color: '#FFFFFFFF'
+            id: ConcreteTrimInnerSe
+          decals:
+            12488: -11,-6
         - node:
             color: '#FFFFFFFF'
             id: ConcreteTrimLineE
@@ -1797,6 +1805,7 @@ entities:
             2035: 10,14
             7940: 53,13
             7941: 53,14
+            12487: -11,-7
         - node:
             color: '#999999FF'
             id: ConcreteTrimLineN
@@ -1822,6 +1831,7 @@ entities:
             7963: 49,12
             7964: 50,12
             7965: 51,12
+            12490: -10,-8
         - node:
             color: '#FFFFFFFF'
             id: ConcreteTrimLineS
@@ -15749,6 +15759,44 @@ entities:
     - type: ShipGridLock
       locked: False
     - type: NavMap
+  - uid: 14175
+    mapInit: true
+    paused: true
+    components:
+    - type: MetaData
+      name: solution - food
+    - type: Transform
+      parent: 14174
+    - type: Solution
+      solution:
+        maxVol: 1
+        name: food
+        reagents:
+        - data: []
+          ReagentId: Fiber
+          Quantity: 1
+    - type: ContainedSolution
+      containerName: food
+      container: 14174
+  - uid: 14177
+    mapInit: true
+    paused: true
+    components:
+    - type: MetaData
+      name: solution - food
+    - type: Transform
+      parent: 14176
+    - type: Solution
+      solution:
+        maxVol: 1
+        name: food
+        reagents:
+        - data: []
+          ReagentId: Fiber
+          Quantity: 1
+    - type: ContainedSolution
+      containerName: food
+      container: 14176
 - proto: AcousticGuitarInstrument
   entities:
   - uid: 3
@@ -17734,7 +17782,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.5,-6.5
       parent: 2
-  - uid: 14173
+  - uid: 14182
     components:
     - type: Transform
       anchored: False
@@ -24169,22 +24217,22 @@ entities:
       parent: 2
 - proto: BannerTfa
   entities:
-  - uid: 14163
+  - uid: 14164
     components:
     - type: Transform
       pos: 49.5,16.5
       parent: 2
-  - uid: 14164
+  - uid: 14165
     components:
     - type: Transform
       pos: 53.5,16.5
       parent: 2
-  - uid: 14165
+  - uid: 14166
     components:
     - type: Transform
       pos: 25.5,6.5
       parent: 2
-  - uid: 14166
+  - uid: 14167
     components:
     - type: Transform
       pos: 29.5,6.5
@@ -33193,17 +33241,17 @@ entities:
     - type: Transform
       pos: 26.5,-8.5
       parent: 2
-  - uid: 14168
+  - uid: 14169
     components:
     - type: Transform
       pos: 27.5,-8.5
       parent: 2
-  - uid: 14169
+  - uid: 14170
     components:
     - type: Transform
       pos: 26.5,-13.5
       parent: 2
-  - uid: 14170
+  - uid: 14171
     components:
     - type: Transform
       pos: 27.5,-13.5
@@ -40005,7 +40053,7 @@ entities:
       parent: 2
 - proto: ClothingUniformJumpsuitPirateSlops
   entities:
-  - uid: 14172
+  - uid: 14173
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -46222,7 +46270,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 33.5,7.5
       parent: 2
-  - uid: 14167
+  - uid: 14168
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -49219,7 +49267,7 @@ entities:
       pos: 40.5,8.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -105092.69
+      secondsUntilStateChange: -106041.43
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -50006,7 +50054,7 @@ entities:
       deviceLists:
       - 58
     - type: Door
-      secondsUntilStateChange: -49808.562
+      secondsUntilStateChange: -50757.312
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 14804.3518643
@@ -74265,18 +74313,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 10.666778,7.7197094
       parent: 2
-  - uid: 9157
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 36.658527,-10.418397
-      parent: 2
-    - type: Paper
-      content: >-
-        do nt tch my stsh pls am gtng more mny 4 frst shp plse
-
-
-        thak u
   - uid: 9158
     components:
     - type: Transform
@@ -74331,6 +74367,149 @@ entities:
     - type: Transform
       pos: 48.86167,21.629185
       parent: 2
+  - uid: 14174
+    mapInit: true
+    paused: true
+    components:
+    - type: MetaData
+      name: Desperate Paper
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 36.697575,-10.552834
+      parent: 2
+    - type: Paper
+      stampState: paper_stamp-cap
+      stampedBy:
+      - reapply: False
+        stampType: RubberStamp
+        stampedColor: '#107432FF'
+        stampedName: Froggy Rustbomb
+      content: >-
+        do nt tch my stsh pls am gtng mr mny 4 1st shp plse
+
+
+        thak u
+      editingDisabled: True
+    - type: EmitSoundOnCollide
+      nextSound: -7177.2068103
+    - type: Tag
+      tags:
+      - Document
+      - Paper
+      - NFPaperStampProtected
+    - type: SolutionContainerManager
+      solutions: null
+      containers:
+      - food
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PolygonShape
+            radius: 0.01
+            vertices:
+            - -0.25,-0.25
+            - 0.25,-0.25
+            - 0.25,0.25
+            - -0.25,0.25
+          mask:
+          - Impassable
+          - HighImpassable
+          layer: []
+          density: 20
+          hard: True
+          restitution: 0.3
+          friction: 0.2
+        flammable:
+          shape: !type:PhysShapeCircle
+            radius: 0.35
+            position: 0,0
+          mask:
+          - TableLayer
+          - HighImpassable
+          - LowImpassable
+          - BulletImpassable
+          - InteractImpassable
+          - Opaque
+          layer: []
+          density: 1
+          hard: False
+          restitution: 0
+          friction: 0.4
+    - type: ContainerContainer
+      containers:
+        solution@food: !type:ContainerSlot
+          ent: 14175
+  - uid: 14176
+    mapInit: true
+    paused: true
+    components:
+    - type: MetaData
+      name: Resigned Confession
+    - type: Transform
+      pos: 31.091063,-14.524438
+      parent: 2
+    - type: Paper
+      stampState: paper_stamp-cap
+      stampedBy:
+      - reapply: False
+        stampType: RubberStamp
+        stampedColor: '#9F2132FF'
+        stampedName: The Professor
+      content: >-
+        I've done everything I can, but I've been stopped at the last hurdle.  I lack the explosives to finish my job.
+
+
+        I hope someone can finish what I've started.  Until then... At least it's peaceful here with the heat.
+      editingDisabled: True
+    - type: EmitSoundOnCollide
+      nextSound: -7177.2068103
+    - type: Tag
+      tags:
+      - Document
+      - Paper
+      - NFPaperStampProtected
+    - type: SolutionContainerManager
+      solutions: null
+      containers:
+      - food
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PolygonShape
+            radius: 0.01
+            vertices:
+            - -0.25,-0.25
+            - 0.25,-0.25
+            - 0.25,0.25
+            - -0.25,0.25
+          mask:
+          - Impassable
+          - HighImpassable
+          layer: []
+          density: 20
+          hard: True
+          restitution: 0.3
+          friction: 0.2
+        flammable:
+          shape: !type:PhysShapeCircle
+            radius: 0.35
+            position: 0,0
+          mask:
+          - TableLayer
+          - HighImpassable
+          - LowImpassable
+          - BulletImpassable
+          - InteractImpassable
+          - Opaque
+          layer: []
+          density: 1
+          hard: False
+          restitution: 0
+          friction: 0.4
+    - type: ContainerContainer
+      containers:
+        solution@food: !type:ContainerSlot
+          ent: 14177
 - proto: PaperBin20
   entities:
   - uid: 9167
@@ -74368,20 +74547,6 @@ entities:
     - type: Transform
       pos: 1.5,6.5
       parent: 2
-- proto: PaperCaptainsThoughts
-  entities:
-  - uid: 9173
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.80979,-15.396873
-      parent: 2
-    - type: Paper
-      content: >-
-        I've done everything I can, but I've been stopped at the last hurdle.  I lack the explosives to finish my job.
-
-
-        I hope someone can finish what I've started.  Until then... At least it's peaceful here with the heat.
 - proto: PaperDyedRed
   entities:
   - uid: 9174
@@ -74627,7 +74792,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -3.5573301,9.761133
       parent: 2
-  - uid: 14171
+  - uid: 14172
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -84095,6 +84260,12 @@ entities:
       parent: 2
 - proto: TableFancyBlue
   entities:
+  - uid: 9173
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 53.5,21.5
+      parent: 2
   - uid: 10779
     components:
     - type: Transform
@@ -84103,6 +84274,12 @@ entities:
       parent: 2
 - proto: TableFancyRed
   entities:
+  - uid: 9157
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 49.5,21.5
+      parent: 2
   - uid: 10780
     components:
     - type: Transform
@@ -102511,6 +102688,36 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 45.5,-14.5
+      parent: 2
+  - uid: 14163
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 65.5,-8.5
+      parent: 2
+  - uid: 14178
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 47.5,-11.5
+      parent: 2
+  - uid: 14179
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 49.5,-15.5
+      parent: 2
+  - uid: 14180
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 55.5,-9.5
+      parent: 2
+  - uid: 14181
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 56.5,-9.5
       parent: 2
 - proto: WoodenSupportWallBroken
   entities:
