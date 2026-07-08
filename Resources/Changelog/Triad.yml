@@ -2262,3 +2262,10 @@ Entries:
   id: 2363
   time: '2026-07-08T17:15:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/299
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added .45 ACP SMG mags to TDF uplink
+  id: 2364
+  time: '2026-07-08T18:29:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/300

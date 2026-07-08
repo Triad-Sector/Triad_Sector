@@ -10,3 +10,15 @@
   - type: Construction
     graph: TriadBannersGraph
     node: BannerTDFNode
+
+- type: entity
+  id: BannerTfa
+  parent: BannerBase
+  name: TFA banner
+  description: A banner proudly displaying the logo of the Triad Frontier Association. May Triad prosper.
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Decoration/banner.rsi
+    state: tfa-banner
+  - type: Construction
+    graph: TriadBannersGraph
