@@ -1,0 +1,17 @@
+{
+   "version" : 1,
+   "copyright" :"tdf_sop and tdf_guide made by TheRealMasterChief117",
+   "license" : "CC-BY-SA-4.0",
+   "size" : {
+      "x" : 32,
+      "y" : 32
+   },
+   "states" : [
+      {
+         "name" : "tdf_sop"
+      },
+      {
+         "name" : "tdf_guide"
+      }
+   ]
+}

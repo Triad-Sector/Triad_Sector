@@ -435,13 +435,14 @@
             - Gun # Any gun :(, including RPDS
         priority: 2
 
-# NFSD
+# TDF
 - type: entity
   parent:
   - VehicleHoverbikeMailcarrier
+  - BaseFactionGearTDFT2 # Triadd
   id: VehicleHoverbikeNfsd
-  name: TSFMC hoverbike
-  description: An TSFMC issued turbine with bike handles. Very safe.
+  name: TDF hoverbike
+  description: An TDF issued turbine with bike handles. Very safe.
   components:
   - type: Vehicle
     northOver: true
@@ -455,7 +456,7 @@
     sprite: _NF/Objects/Vehicles/hoverbike.rsi
     layers:
     - state: hull
-      color: "#3d4b54"
+      color: "#a8996f"
     - state: engine
       map: ["enum.VehicleVisualLayers.AutoAnimate"]
     - state: nfsdstar

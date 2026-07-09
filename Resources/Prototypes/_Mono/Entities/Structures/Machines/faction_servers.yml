@@ -136,7 +136,7 @@
     - UsspShipyard
     - UsspEquipment
     - UsspWeapons
-    - ViperGroup
+    #- ViperGroup Triad, removed
     - FactionUniversal
     - Industrial
     - Arsenal

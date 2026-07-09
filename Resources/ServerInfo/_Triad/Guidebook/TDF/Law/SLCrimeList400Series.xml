@@ -1,0 +1,350 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]400 SERIES: TRIAD DEFENSE FORCE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [head=3][color=#FFA500]Misdemeanor[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-401
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Conduct Unbecoming
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To engage in conduct that brings discredit upon the Triad Defense Force or undermines public confidence as an Enforcer.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        10,000 credits fine OR up to 20 minutes of imprisonment, and written reprimand.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-402
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Dereliction of Duty
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To negligently fail to perform assigned duties without malicious intent, resulting in inconvenience or minor harm.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 30 minutes of imprisonment and possible suspension.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-403
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Insubordination
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To refuse or fail to obey a lawful order from a superior officer without reasonable justification.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Up to 30 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-404
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Abuse of Authority
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To knowingly misuse one's official authority, position, or powers for individual gain or to unlawfully deprive another of their rights.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        40,000 credits fine OR up to 60 minutes of imprisonment, and possible demotion.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-405
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Negligent Use of Force
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To use force beyond what is reasonably necessary while performing official duties.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        40,000 credits fine OR up to 45 minutes of imprisonment, and suspension pending review.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-406
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Unlawful Detention
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To knowingly arrest, detain, or imprison an individual without lawful authority or probable cause.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        50,000 credits fine OR up to 60 minutes of imprisonment, and possible dismissal.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Grand Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-407
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Evidence Tampering
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To knowingly alter, conceal, destroy, fabricate, or falsify evidence, reports, or official records.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        75,000 credits fine OR up to 60 minutes of imprisonment, and possible dismissal.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-408
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Corruption
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To solicit, offer, or accept bribes, favors, or compensation in exchange for official action or inaction.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        100,000 credits fine OR up to 60 minutes of imprisonment, and mandatory dismissal.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-409
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Desertion
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To abandon an assigned post or operation without authorization during an active deployment or emergency.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        100,000 credits fine OR up to 60 minutes of imprisonment, and mandatory dismissal.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Capital[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-410
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Mutiny
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To organize, incite, or participate in rebellion against the lawful command of the Triad Defense Force or Sector Government.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-411
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Treason
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To knowingly aid Hostile Actors or act with intent to overthrow or seriously undermine the Triad Sector Government or the Triad Defense Force.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#767953">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-412
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Crimes Against Sapience
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To knowingly commit or order acts involving torture, unlawful execution, mass murder, or systematic abuse of civilians or prisoners while acting under the authority of the Triad Defense Force.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

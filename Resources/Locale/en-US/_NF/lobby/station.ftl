@@ -1,2 +1,2 @@
 ﻿station-frontier-outpost = Colonial Outpost
-station-nsfd = TSFMC-FOB
+station-nsfd = Auric Outpost

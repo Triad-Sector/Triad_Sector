@@ -5695,7 +5695,7 @@ entities:
     - type: Transform
       pos: 3.5,0.5
       parent: 1
-- proto: SuitStorageM82c
+- proto: SuitStorageTdf
   entities:
   - uid: 238
     components:

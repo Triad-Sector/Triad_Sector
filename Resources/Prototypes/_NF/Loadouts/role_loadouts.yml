@@ -213,38 +213,34 @@
   - ContractorMag # Mono
   - ContractorArmorPlates # Mono
 
-# Mono edit
-- type: roleLoadout
-  id: JobStationRepresentative
-  groups:
+# Triad - Moved to _Triad/Loadouts/role_loadouts.yml
+#- type: roleLoadout
+#  id: JobStationRepresentative
+#  groups:
 #  - StationRepHead
 #  - StationRepNeck
 #  - StationRepJumpsuit
-  - StationRepGloves
-  - StationRepBackpack
-  - StationRepOuterClothing
+#  - StationRepGloves
+#  - StationRepBackpack
+#  - StationRepOuterClothing
 #  - ContractorShoes
 #  - ContractorFace
-#  - ContractorGlasses
 #  - ContractorBelt
-  - MonoSecurityGuardHud
-  - StationRepEars
-  - MonoSecurityGuardShoes
-  - HeadofSecurityHead
-  - HeadofSecurityJumpsuit
-  - HeadofSecurityNeck
-  - ColonialLiaisonFirearm # Mono
-  - ContractorBoxSurvival
-  - StationRepPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorUtility # Mono
- # - ContractorFun # Mono - no fun allowed
-  - StationRepTrinkets
-  - ContractorBureaucracy
-  - NFSpeciesSpecific
-  - ContractorArmorPlates # Mono
+#  - StationRepGlasses
+#  - StationRepEars
+#  - MonoSecurityGuardShoes
+#  - ColonialLiaisonFirearm # Mono
+#  - ContractorBoxSurvival
+#  - StationRepPDA
+#  - ContractorWallet
+#  - ContractorCartridge
+#  - ContractorImplanter
+#  - ContractorUtility # Mono
+# - ContractorFun # Mono - no fun allowed
+#  - StationRepTrinkets
+#  - ContractorBureaucracy
+#  - NFSpeciesSpecific
+#  - ContractorArmorPlates # Mono
 
 - type: roleLoadout
   id: JobSecurityGuard

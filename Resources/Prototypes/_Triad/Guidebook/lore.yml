@@ -1,0 +1,88 @@
+# Primer and timeline
+- type: guideEntry
+  id: BasicLore
+  name: Lore
+  text: "/ServerInfo/Guidebook/Lore/Primer.xml"
+  priority: -2
+  children:
+  - Timeline
+  - TriadFactions
+
+- type: guideEntry
+  id: Timeline
+  name: Full Timeline
+  text: "/ServerInfo/Guidebook/Lore/Timeline.xml"
+  children:
+  - CorporateWar
+  - FiftyYearWar
+  - TheGreatTurnover
+  - TheFalseHope
+  - TheFanaticDoctrine
+  - PickingUpThePieces
+  - PresentDay
+
+- type: guideEntry
+  id: CorporateWar
+  name: The Corporate War
+  text: "/ServerInfo/Guidebook/Lore/Timeline/CorporateWar.xml"
+
+- type: guideEntry
+  id: FiftyYearWar
+  name: The 50-Year War
+  text: "/ServerInfo/Guidebook/Lore/Timeline/FiftyYearWar.xml"
+
+- type: guideEntry
+  id: TheGreatTurnover
+  name: The Great Turnover
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheGreatTurnover.xml"
+
+- type: guideEntry
+  id: TheFalseHope
+  name: The False Hope
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheFalseHope.xml"
+
+- type: guideEntry
+  id: TheFanaticDoctrine
+  name: The Fanatic Doctrine
+  text: "/ServerInfo/Guidebook/Lore/Timeline/TheFanaticDoctrine.xml"
+
+- type: guideEntry
+  id: PickingUpThePieces
+  name: Picking Up The Pieces
+  text: "/ServerInfo/Guidebook/Lore/Timeline/PickingUpThePieces.xml"
+
+- type: guideEntry
+  id: PresentDay
+  name: Present Day
+  text: "/ServerInfo/Guidebook/Lore/Timeline/PresentDay.xml"
+
+# Factions
+- type: guideEntry
+  id: TriadFactions
+  name: Factions
+  text: "/ServerInfo/Guidebook/Lore/Factions.xml"
+  children:
+  - TriadDefenseForce
+  - TriadFrontierAssociation
+  - SolarianDirective
+  - ImperialCoalition
+
+- type: guideEntry
+  id: TriadDefenseForce
+  name: Triad Defense Force
+  text: "/ServerInfo/Guidebook/Lore/Factions/TriadDefenseForce.xml"
+
+- type: guideEntry
+  id: TriadFrontierAssociation
+  name: Triad Frontier Association
+  text: "/ServerInfo/Guidebook/Lore/Factions/TriadFrontierAssociation.xml"
+
+- type: guideEntry
+  id: SolarianDirective
+  name: Solarian Directives
+  text: "/ServerInfo/Guidebook/Lore/Factions/SolarianDirective.xml"
+
+- type: guideEntry
+  id: ImperialCoalition
+  name: The Imperial Coalition
+  text: "/ServerInfo/Guidebook/Lore/Factions/ImperialCoalition.xml"

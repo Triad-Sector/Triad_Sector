@@ -1,0 +1,39 @@
+# # Author Info
+# # GitHub: NazrinNya
+# # Discord: NazrinNya
+
+- type: vessel
+  id: Ravager
+  parent: BaseVessel
+  name: TDF Ravager
+  description: Capital class security mothership made for fast neutralization of civilian threats. An old design from the Fifty-year war, but it still holds up well today.
+  price: 875800
+  purchasable: false # voucher only
+  category: Large
+  group: Security
+  access: Security # Shouldn't be buyable with sec voucher.
+  mapchecker_group_override: Security
+  shuttlePath: /Maps/_Triad/Shuttles/Tdf/ravager.yml
+  guidebookPage: Null
+  class:
+  - Science
+  engine:
+  - AME
+
+- type: gameMap
+  id: Ravager
+  mapName: 'Ravager'
+  mapPath: /Maps/_Triad/Shuttles/Tdf/ravager.yml
+  minPlayers: 0
+  stations:
+    Ravager:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Ravager TDF{1}'
+        nameGenerator: !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+          Borg: [ 0, 0 ]

@@ -900,6 +900,7 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - MedalCase # Triad
 
 - type: loadoutGroup # Mono - removed standard supply boxes.
   id: ContractorBoxSurvival

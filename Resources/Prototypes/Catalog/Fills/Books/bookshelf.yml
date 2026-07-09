@@ -21,7 +21,7 @@
       - id: BookScientistsGuidebook
       - id: BookSecurity
       - id: BookSpaceEncyclopedia
-      - id: HyperlinkBookSpaceLaw # Frontier: BookSpaceLaw<HyperlinkBookSpaceLaw
+      - id: BookTriadLaw # Triad: BookSpaceLaw<BookTriadLaw
       - id: BookTheBookOfControl
     # Handwritten books
     - !type:GroupSelector

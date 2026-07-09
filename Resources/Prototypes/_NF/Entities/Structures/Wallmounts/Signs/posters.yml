@@ -43,7 +43,7 @@
   parent: PosterBase
   id: NFPosterLegitWantedClarpy
   name: "Wanted: Clarpy"
-  description: Wanted for insurgency. Spot them? You can help deal a blow to the Rogue Sector, contact the TSFMC.
+  description: Wanted for insurgency. Spot them? You can help deal a blow to the Triad Sector, contact the TDF.
   components:
   - type: Sprite
     sprite: _NF/Structures/Wallmounts/posters.rsi
@@ -63,7 +63,7 @@
   parent: PosterBase
   id: NFPosterLegitHaveYouSeenThisEgg
   name: "Have You Seen This Egg?"
-  description: Please inform TSF personnel of any strange sightings like roaming space monsters, gigantic purple eggs, and strange notes left behind posters or vending machines.
+  description: Please inform TDF personnel of any strange sightings like roaming space monsters, gigantic purple eggs, and strange notes left behind posters or vending machines.
   components:
   - type: Sprite
     sprite: _NF/Structures/Wallmounts/posters.rsi

@@ -125,7 +125,7 @@
   name: CS C-20r submachine gun (9x19mm)
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunC20r
-  description: A Corporate-Era SMG, once used by Nuclear Operatives, it now finds purchase among the Phaethon Dynasty. Uses 9x19mm ammo.
+  description: A Corporate-Era SMG, once used by Nuclear Operatives, it now finds purchase among The Imperial Coalition. Uses 9x19mm ammo.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi

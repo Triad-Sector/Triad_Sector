@@ -4,26 +4,32 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
-using Content.Client._Triad.Shipyard.Save;
+using Content.Client._Triad.Shipyard.Save; // Triad
+using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
 using Content.Shared._Triad.CCVar;
+using Content.Shared.Whitelist; // Triad
+using Robust.Client.Player; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IPlayerManager _player = default!; // Triad
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
 
-    private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
+    private ISawmill _sawmill = default!;
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
+
     public int Balance { get; private set; }
 
     public int? ShipSellValue { get; private set; }
 
+    private BoxContainer? _savedShipsContainer;
     private Button? _loadShipButton;
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
@@ -32,11 +38,15 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 
     private int _selectedShipIndex = -1;
 
+    private readonly EntityWhitelistSystem _whitelist; // Triad
+
     // This should be the same as Content.Server/_Triad/Shipyard/AuthenticatedShipFile/AppraisalKey
     private const string AppraisalKey = "appraisal";
 
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
+        _whitelist = EntMan.System<EntityWhitelistSystem>(); // Triad
+        _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
     }
 
     protected override void Open()
@@ -80,6 +90,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             _sawmill.Debug($"InitializeSaveLoadControls: ShipFileManagementSystem has {shipCount} ships");
         }
 
+        _savedShipsContainer = _menu.FindControl<BoxContainer>("SavedShipsContainer");
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
         _savedShipsList = _menu.FindControl<ItemList>("SavedShipsList");
@@ -190,7 +201,23 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             var fileName = ExtractFileNameWithoutExtension(filePath);
             var item = _savedShipsList.AddItem(fileName);
             item.Metadata = filePath;
-            //_sawmill.Info($"Added ship to UI list: {fileName} (path: {filePath})");
+        }
+
+        // Triad - shipsave blacklist for roles
+        if (EntMan.TryGetComponent(Owner, out ShipyardConsoleComponent? console))
+        {
+            if (_player.LocalEntity != null)
+            {
+                var isWhitelistValid = _whitelist.CheckBoth(_player.LocalEntity, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
+
+                if (!isWhitelistValid)
+                {
+                    _sawmill.Info("Player is blacklisted from saving ships - hiding save/load UI.");
+                    _saveShipButton?.Visible = false;
+                    _loadShipButton?.Visible = false;
+                    _savedShipsContainer?.Visible = false;
+                }
+            }
         }
     }
 
@@ -214,7 +241,6 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             fileName = fileName.Substring(0, lastDot);
         return fileName;
     }
-
 
     private void Populate(List<string> availablePrototypes, List<string> unavailablePrototypes, bool freeListings, bool validId)
     {

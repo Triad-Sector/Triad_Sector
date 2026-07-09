@@ -2157,3 +2157,182 @@ Entries:
   id: 2354
   time: '2026-07-06T22:39:18.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/283
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Catwalks now have no tile type restrictions on placement, meaning
+        builders now have another thing to play around with for decor.
+    - type: Tweak
+      message: >-
+        As a consequence of removing tile restrictions: catwalks can also now be
+        used for their intended purpose of safely crossing lava, liquid plasma,
+        or chasms.
+  id: 2355
+  time: '2026-07-08T01:36:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/296
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: Station AI is now able to read loose papers and envelopes.
+  id: 2356
+  time: '2026-07-08T01:37:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/294
+- author: Upstream
+  changes:
+    - type: Tweak
+      message: >-
+        Scarves now help insulate from cold temperatures. This is equivalent to
+        the protection of winter boots.
+  id: 2357
+  time: '2026-07-08T01:38:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/293
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the Triad Defense force; local security militia! They will be
+        enforcing the laws around the sector.
+    - type: Tweak
+      message: >-
+        Renamed the Judge role to Station Guard, being a dedicated Venmar
+        Station guard, bringing any criminals to the TDF base, but they do not
+        have jurisdiction over arresting criminals outside of MD/Central station
+        space
+    - type: Tweak
+      message: >-
+        The Overseer has had a change of duties. They will now ensure Colonial
+        personnel do their duties, do bookkeeping, and use the ID card console
+        on anyone that needs an access change.
+    - type: Tweak
+      message: Added ranks for DoC, Overseer, and Emergency responders.
+    - type: Tweak
+      message: Station guards now have playtime ranks.
+    - type: Tweak
+      message: >-
+        The Overseer now spawns with a multiphase energy gun instead of the
+        lawbringer. Station guards now get a disabler instead of the lawbringer.
+    - type: Add
+      message: Added Adjudant corvette ship to TDF shipyard, made by Deox
+    - type: Add
+      message: Added Grunder destroyer ship to TDF shipyard, made by Clift
+    - type: Remove
+      message: Disabled Camelot pending major USSP rework.
+  id: 2358
+  time: '2026-07-08T12:29:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/107
+- author: Upstream
+  changes:
+    - type: Add
+      message: >-
+        Additional spray painter features have been ported from Wizard's Den. A
+        Palette button, rotation buttons, and a color picker.
+  id: 2359
+  time: '2026-07-08T13:53:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/292
+- author: HTMLSystem
+  changes:
+    - type: Tweak
+      message: >-
+        Change up arachnid's layering. Big glasses and over-ear headsets should
+        look better on them now!
+  id: 2360
+  time: '2026-07-08T13:56:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/289
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added new station, Venmar Station
+    - type: Remove
+      message: Removed old CC
+  id: 2361
+  time: '2026-07-08T14:33:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/250
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed Venmar station asteroid walls being destroyable via pickaxe
+  id: 2362
+  time: '2026-07-08T16:43:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/298
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added .45 ACP magazine boxes to the TDF uplink
+  id: 2363
+  time: '2026-07-08T17:15:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/299
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added .45 ACP SMG mags to TDF uplink
+  id: 2364
+  time: '2026-07-08T18:29:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/300
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Venmar and HCO minor mapping fixes
+  id: 2365
+  time: '2026-07-08T21:47:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/301
+- author: Eillyrea
+  changes:
+    - type: Fix
+      message: >-
+        GODS OF MAPTOSIA IF THERE ARE NO MORE ISSUES WITH VENMAR THEN MY SOUL IS
+        YOURS!!!!!
+  id: 2366
+  time: '2026-07-09T00:29:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/305
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Added the loadout Pride cloaks to the Pride-o-Mat's inventory. Happy
+        Pride, Frontier—wait, this isn't Frontier and it isn't Pride Month
+        now...
+  id: 2367
+  time: '2026-07-09T03:13:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/295
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added Clockcult gear, the Ratvarian spear, gauntlets, treads, helmet,
+        and cuirass. Unobtainable, but they are selectable via chameleon gear.
+  id: 2368
+  time: '2026-07-09T12:18:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/267
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed pipes and other machines not being anchorable under directional
+        windows.
+  id: 2369
+  time: '2026-07-09T13:24:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/310
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        The Chrono-legionnaires have retrieved the space biomes from Colossus
+        Central, Space Biomes now appear again.
+    - type: Fix
+      message: Fixed drones taking the day off
+    - type: Fix
+      message: Various tiny Venmar Station fixes relating to disposals mainly
+  id: 2370
+  time: '2026-07-09T16:25:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/313
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        The medal case has been added to loadout. Captains can now give a small
+        variety of medals to crewmembers who go above and beyond in their
+        duties.
+  id: 2371
+  time: '2026-07-09T16:27:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/306

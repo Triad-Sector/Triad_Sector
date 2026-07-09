@@ -1,0 +1,14 @@
+- type: entity
+  name: chief enforcer's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampChiefEnforcer
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-chief-enforcer
+    stampedColor: "#cc0000"
+    protected: true
+    stampState: "paper_stamp-hos"
+  - type: Sprite
+    state: stamp-hos
+  # TODO: Sprite and color?

@@ -1,3 +1,4 @@
+using Content.Shared._RMC14.Marines.Roles.Ranks;
 using Content.Shared._Mono.Company;
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
@@ -177,6 +178,12 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public List<ProtoId<GuideEntryPrototype>>? Guides;
+
+        /// <summary>
+        ///     Triad - list of ranks to use for this job and their requirements.
+        /// </summary>
+        [DataField]
+        public Dictionary<ProtoId<RankPrototype>, HashSet<JobRequirement>?>? Ranks; // Triad
     }
 
     /// <summary>

@@ -1,0 +1,14 @@
+- type: entity
+  parent: DoorRemoteNfsd
+  id: DoorRemoteTdf
+  name: TDF door remote
+  components:
+  - type: Sprite
+    layers:
+    - state: door_remotebase
+    - state: door_remotelightscolour
+      color: "#ad272e"
+    - state: door_remotescreencolour
+      color: "#ffd580"
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text

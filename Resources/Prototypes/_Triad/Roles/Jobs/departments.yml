@@ -1,0 +1,22 @@
+- type: department
+  id: Security
+  name: department-TriadDefenseForce
+  description: department-TriadDefenseForce-description
+  color: "#FFD580"
+  weight: 120
+  roles:
+  - TdfChiefEnforcer
+  - TdfWarden
+  - TdfPatrolTeamLeader
+  - TdfEnforcer
+  - TdfMedic
+  - TdfCadet
+
+- type: department
+  id: SolarianDirective
+  name: department-SolarianDirective
+  description: department-TriadDefenseForce-description # TODO, desc
+  color: "#556cf1"
+  weight: 120
+  # roles: TODO
+  editorHidden: true # TODO

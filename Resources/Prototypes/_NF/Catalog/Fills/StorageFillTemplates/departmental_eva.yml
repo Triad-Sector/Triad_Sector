@@ -34,9 +34,33 @@
     contents:
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
-    - id: UndeterminedVoidsuitHeadOfSecurity # Mono
+    - id: ClothingOuterEVASuitSr # Triad | TODO: Actual hardsuit for the overseer
+    - id: PaperWrittenNoticeSr # Triad
     - id: ClothingMaskBreath
     - id: JetpackMiniFilled
+
+- type: entity
+  parent: Paper
+  id: PaperWrittenNoticeSr # delete when overseer gets hardsuit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    stampState: paper_stamp-centcom
+    stampedBy:
+    - stampedColor: "#126e0a"
+      stampedName: TFA-HighComm Quartermaster
+    - stampedColor: '#333333FF'
+      stampedName: Helios Trex
+      stampType: Signature
+    content: |2
+      [head=3]Official Notice[/head]
+      Hello, overseer of Venmar Station.
+
+      Unfortunately, due to economic limitations, we have decided to seize your TFA-issued overseer hardsuit for the time being.
+      A stock EVA has been issued to you; a new hardsuit should be issued to you within due time.
+
+      Sincerely,
+            Helios Trex, HighComm Quartermaster, Triad Frontier Association
 
 - type: entity
   abstract: true
@@ -314,7 +338,7 @@
 - type: entity
   abstract: true
   id: StorageFillEVASuitNfsd
-  description: Contains a standard issue TSFMC EVA kit.
+  description: Contains a standard issue SD EVA kit.
   components:
   - type: StorageFill
     contents:

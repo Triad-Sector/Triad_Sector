@@ -120,7 +120,7 @@
 - type: entity
   id: HolosignForcefieldTSF
   parent: HolosignWetFloor
-  name: tsf holographic force field
+  name: security holographic force field # Triad - rename
   description: A powerful hard light field that can withstand a bullet hailstorm and block movement, while allowing lasers to pass through.
   components:
   - type: Physics

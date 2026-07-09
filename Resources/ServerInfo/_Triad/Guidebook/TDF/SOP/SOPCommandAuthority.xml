@@ -1,0 +1,45 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]VI. Command Authority and Privileges[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  The [bold]Chief Enforcer[/bold] holds significantly greater authority than an acting [bold]Commander[/bold]. The [bold]Chief Enforcer[/bold] also inherits all privileges granted to a [bold]Commander[/bold] by default.
+
+  An acting [bold]Commander[/bold] may not use any Chief Enforcer-specific privileges.
+
+  [head=3][color=#FFA500]Commander Privileges[/color][/head]
+
+  A [bold]Commander[/bold] has the following privileges:
+  - 1. Change the sector's DEFCON level.
+  - 2. Declare a No-Fly Zone.
+  - 3. Write and sign search or arrest warrants.
+  - 4. The ability to approve lawful executions.
+
+  [head=3][color=#FFA500]Chief Enforcer Privileges[/color][/head]
+
+  The [bold]Chief Enforcer[/bold] has the following privileges:
+  - 1. Sign and approve Class 2 Contraband permits.
+  - 2. Conduct warrantless searches when sufficient reasonable suspicion exists.
+  - 3. Open new TDF positions outside of the default allotted slots established by TDF High Command.
+  - 4. Use and access the TDF Outpost account to pay staff and fund operations.
+  - 5. The ability to post bounties on wanted criminals, and to approve bounty payouts.
+  - 6. Serve as the final authority in matters concerning the interpretation of TDF law, policy, and procedure whenever disputes, ambiguity, or disagreements arise.
+
+  [head=3][color=#FFA500]Bounties[/color][/head]
+
+  The Chief Enforcer has the ability to post bounties on wanted criminals.
+  Bounties may be pursued by any vigilantes or bounty hunters within the sector. Bounties must be posted with the crime committed, who the affected parties, and a reasonable bounty fund to be paid by Auric Outpost funding.
+  Fines collected may be used to fund bounty payouts, but assets seized may not.
+
+  [head=3][color=#FFA500]No-Fly Zones[/color][/head]
+
+  No-Fly Zones are areas declared in space, at most 250m, where civilian ships are not permitted. No-Fly Zones can only be declared by the Commander, and may only be used for the following reasons:
+  - To protect TDF assets, operations, or personnel.
+  - Public safety.
+  - Intentions by citizens to access the contents of an area for illegal activity, such as smuggling.
+
+  No-Fly-Zones should not be declared to simply ward off areas arbitrarily.
+
+  When a No-Fly Zone is declared, it must be clearly stated by the Commander over Broadband or a Communications Console, preferably a Communications Console.
+  In the announcement, they must state the duration of the No-Fly Zone, the reason for its declaration, and the name or coordinates of the restricted space and the radius of the zone.
+
+  Violating a No-Fly Zone is considered §TS-302, Traffic Noncompliance. §TS-205, Breaking and Entering may also apply if the perpetrator used force to enter a No-Fly Zone.
+</Document>

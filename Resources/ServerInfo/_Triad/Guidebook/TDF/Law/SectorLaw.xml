@@ -1,0 +1,43 @@
+<Document>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // OFFICIAL DOCUMENTS[/color][color=#897236]  Triad Sector Legal Code ║[/color]\n[color=#897236]║                                            TITLE 1 ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  [color=#897236][mono]──── [color=#FFA500][bold]GENERAL PROVISIONS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  In the Triad Sector, stations and other facilities operate under Triad sector law. All citizens of the Triad sector are expected to follow these laws.
+
+  - [textlink="Definitions" link="SLDefinitons"]
+  - [textlink="Citizen Rights" link="SLCitizenRights"]
+
+  [color=#897236][mono]──── [color=#FFA500][bold]CONTRABAND[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  Contraband is a broad category of items that are illegal to use or carry on your person without the proper authorization. There are three general tiers of contraband, and they are governed by the following regulations:
+
+  - [color=green]Class 1 Contraband:[/color] Weapons, explosives, chemicals and other items not covered by higher restrictions. Citizens have the right to purchase, use, carry, and distribute Class 1 Contraband, but this right can be taken away if multiple violent crimes are committed. Items used to commit crimes are considered Class 1 Contraband, unless the item in question already has a higher contraband ranking.
+  - [color=yellow]Class 2 Contraband:[/color] Any weapon, explosive, chemicals, and other items that are restricted for TDF use only. This includes, but is not limited to, TDF equipment, hacking tools, and mounted EMP cannons. Written permits can be granted to citizens for use of Class 2 Contraband. Only the official Chief Enforcer can issue C2 contraband permits.
+  - [color=red]Class 3 Contraband:[/color] Items in this category are not permitted to be used or possesed by any person or vessel. This category includes items such as Weapons of Mass Destruction (WMDs), hardbombs, biological weapons, and smuggled cargo.
+
+  - [textlink="Contraband List" link="SLContrabandList"]
+
+  Contraband differs from [textlink="Factional Equipment" link="SLDefinitons"]. Factional equipment such as Solarian or Coalition weapons are of technological interest, but they are not to be seized from Triad citizens unless they also fall under a restricted contraband category. See [textlink="SOP" link="TDFSOP"] for more details.
+
+  [color=#897236][mono]──── [color=#FFA500][bold]TDF SOP[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  All Enforcers are required to follow the regulations outlined by the Standard Operating Procedure.
+  Breach of SOP by Enforcers is considered §TS-402, Dereliction of Duty.
+
+  - [textlink="Standard Operating Procedure" link="TDFSOP"]
+
+  [color=#897236][mono]──── [color=#FFA500][bold]CRIME LISTING[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - [textlink="Crime Listing" link="SLCrimeList"]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+</Document>

@@ -1,0 +1,6 @@
+- type: npcFaction
+  id: TDF
+  neutral:
+  - CC
+  - SimpleNeutral
+  defaultHostile: true

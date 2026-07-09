@@ -98,6 +98,7 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 1
+  - type: StationAiWhitelist
 
 - type: entity
   name: paper scrap
@@ -734,3 +735,4 @@
       - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: StationAiWhitelist

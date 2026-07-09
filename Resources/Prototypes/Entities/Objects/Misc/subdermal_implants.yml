@@ -78,8 +78,8 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: TrackingImplant
-  name: TSFMC tracking implant # Mono - TSFMC named now
-  description: This implant has a condition monitor for the TSFMC radio channel. # Frontier: NFSD mentioned, no tracking
+  name: TDF tracking implant # Triad - TDF named now
+  description: This implant has a condition monitor for the TDF radio channel. # Triad: TDF mentioned, no tracking
   categories: [ HideSpawnMenu ]
   components:
     - type: SubdermalImplant
@@ -103,7 +103,7 @@
       - Dead
     - type: Rattle
       radioChannel: "Nfsd"
-      language: "SolCommon"
+      # language: "SolCommon" Triad - commented out
 
 #Traitor implants
 

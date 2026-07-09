@@ -120,7 +120,7 @@
         - MachineLayer
   - type: Contraband
     turnInValues:
-      FederationMilitaryCredit: 12 # Mono
+      TriadCommerceCredit: 12 # Triad
       Doubloon: 12 # Mono
   - type: ShipyardSellCondition
     blockSale: true

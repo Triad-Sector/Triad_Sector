@@ -301,7 +301,7 @@
   name: LWC pulse pistol
   parent: BaseWeaponBatterySmall
   id: WeaponPulsePistol
-  description: A state of the art energy pistol favoured as a sidearm by the TSFN and TSFMC. # Mono
+  description: A state of the art energy pistol favoured as a sidearm by the Solarian Directive. # Mono
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
@@ -348,7 +348,7 @@
   name: LWC pulse carbine
   parent: [BaseWeaponBattery, BaseGunWieldable]
   id: WeaponPulseCarbine
-  description: A common sight in the hands of higher ranked TSF, the pulse carbine is a punchy laser weapon salvaged from the remnants of Nanotrasen. # Mono
+  description: A common sight in the hands of higher ranked Solarian Directive, the pulse carbine is a punchy laser weapon salvaged from the remnants of Nanotrasen. # Mono
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
@@ -401,7 +401,7 @@
   name: NT pulse rifle
   parent: [BaseWeaponBattery, BaseGunWieldable]
   id: WeaponPulseRifle
-  description: A weapon that used to be used by the special operations units of NT, but now commonly seen in the hands of the TSF. # Mono
+  description: A weapon that used to be used by the special operations units of NT, but now commonly seen in the hands of the SD. # Mono
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi

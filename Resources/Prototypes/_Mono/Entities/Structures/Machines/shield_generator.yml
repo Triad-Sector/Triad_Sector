@@ -198,7 +198,7 @@
   parent: ShieldGeneratorBase
   name: LM-212 "Vanguard" Capital Shield Generator
   description: A heavy capital shield. Good durability, quick recharge and anti-collison built in one.
-  suffix: TSF CAPITAL ONLY
+  suffix: SD CAPITAL ONLY
   components:
   - type: ShipShieldEmitter
     damageLimit: 85000

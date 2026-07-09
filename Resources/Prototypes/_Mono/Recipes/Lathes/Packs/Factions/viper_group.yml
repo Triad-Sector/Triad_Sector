@@ -1,9 +1,10 @@
-- type: latheRecipePack
-  id: MonoViperGroupDynamic
-  recipes:
-  - ClothingNeckViperGroupMantle
-  - ClothingUniformJumpsuitViperGroupUniform
-  - ClothingUniformJumpsuitViperGroupTurtleneck
-  - ClothingOuterHardsuitViperGroupStandard
-  - ClothingOuterHardsuitViperGroupMedic
-  - ClothingOuterHardsuitViperGroupJuggernaut
+#- type: latheRecipePack
+  #id: MonoViperGroupDynamic
+  #recipes:
+  #- ClothingNeckViperGroupMantle
+  #- ClothingUniformJumpsuitViperGroupUniform
+  #- ClothingUniformJumpsuitViperGroupTurtleneck
+  #- ClothingOuterHardsuitViperGroupStandard
+  #- ClothingOuterHardsuitViperGroupMedic
+  #- ClothingOuterHardsuitViperGroupJuggernaut
+# Triad, removed

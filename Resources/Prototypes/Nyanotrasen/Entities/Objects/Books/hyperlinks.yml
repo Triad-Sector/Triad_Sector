@@ -12,40 +12,6 @@
   - type: StaticPrice
     price: 35
 
-- type: entity
-  parent: BaseHyperlinkBook
-  id: HyperlinkBookSpaceLaw
-  name: space law
-  description: A big book of laws for space courts.
-  components:
-  - type: Sprite
-    sprite: Nyanotrasen/Objects/Misc/books.rsi
-    layers:
-    - state: law_space
-  #- type: HyperlinkBook
-  #  url: https://frontierstation.wiki.gg/wiki/Space_Law  #Frontier
-  - type: Tag
-    tags:
-    - Book
-    - BookSpaceLaw  #Frontier
-
-- type: entity
-  parent: BaseHyperlinkBook
-  id: HyperlinkBookNfsdSop
-  name: TSFMC SOP manual
-  description: A book defining TSFMC standard operating procedures.
-  components:
-  - type: Sprite
-    sprite: Nyanotrasen/Objects/Misc/books.rsi
-    layers:
-    - state: nfsd_sop
-  #- type: HyperlinkBook
-  #  url: https://frontierstation.wiki.gg/wiki/NFSDSOP  #Frontier
-  - type: Tag
-    tags:
-    - Book
-    - BookNfsdSop  #Frontier
-
 #- type: entity
 #  parent: BaseHyperlinkBook
 #  id: HyperlinkBookSupernanny
