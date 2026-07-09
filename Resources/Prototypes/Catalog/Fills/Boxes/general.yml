@@ -367,7 +367,7 @@
         amount: 4
 
 - type: entity
-  name: TSFMC encryption key box
+  name: colonial security encryption key box
   parent: BoxEncryptionKeyPassenger
   id: BoxEncryptionKeySecurity
   components:

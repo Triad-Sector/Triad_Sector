@@ -56,3 +56,65 @@
   - type: Appearance
  #- type: NFWeaponDetails  # when we get details in from frontier
  #  manufacturer: weapon-details-manufacturer-SESWC-consortium
+
+- type: entity
+  name: TDF M-7 Lecter (6.8x52mm Caseless)
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterTdf
+  description: Reverse-engineered variant of the solarian republic's lecter, now used by the TDF as their standard issue rifle. Comes with a vertical grip to improve handling. Accurate, easy to use, and firing the 6.8x52mm STANAG round. Also accepts 5.56x45mm magazines to assist with standardization.
+  components:
+  - type: Item
+    size: Huge
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter_inhands_32x.rsi
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter_inhands_32x.rsi
+  - type: Gun
+    cameraRecoilScalar: 0.5 # grip
+    angleIncrease: 0.4
+
+- type: entity
+  parent: WeaponRifleLecterTdf
+  id: WeaponRifleLecterTdfRubber
+  suffix: Non-Lethal
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine68x52mmCaselessRubber
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - Magazine68x52mmCaseless
+            - Magazine556x45mmFMJ
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge68x52mmCaseless
+        priority: 1
+        whitelist:
+          tags:
+            - Cartridge68x52mmCaseless
+            - Cartridge556x45mmFMJ
+
+- type: entity
+  name: TDF MR-8T DMR (8x65mm SKR)
+  parent: [BaseFactionGearTDFT2, WeaponRifleMR8C]
+  id: WeaponRifleMR8T
+  description: An expensive TDF-modified version of the solarian republic's MR-8 DMR. It comes with a wooden grip, stock, a sleeker scope, and an improved barrel. Chambered in 8x65mm SKR. A label on the side reads "TRIAD DEFENSE FORCE".
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi
+  - type: Item
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c_inhands_32x.rsi
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c_inhands_32x.rsi
+  - type: Gun
+    projectileSpeed: 65 # Improved barrel
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.65
+    sprintModifier: 0.5

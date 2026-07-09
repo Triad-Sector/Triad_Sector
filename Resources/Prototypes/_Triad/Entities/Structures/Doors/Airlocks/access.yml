@@ -1,4 +1,96 @@
-# a very specific highsec door for Current MD armory, and for future rework of triad's MD
+# Airlocks
+- type: entity
+  parent: AirlockTdf
+  id: AirlockTdfSecurityLocked
+  suffix: TDF Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: AirlockTdf
+  id: AirlockTdfBrigLocked
+  suffix: TDF Brig, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBrig ]
+
+- type: entity
+  parent: AirlockTdf
+  id: AirlockTdfPatrolTeamLeaderLocked
+  suffix: TDF Patrol Team Leader, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfPatrolTeamLeader ]
+
+- type: entity
+  parent: AirlockTdf
+  id: AirlockTdfWardenLocked
+  suffix: TDF Warden, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfWarden ]
+
+- type: entity
+  parent: AirlockCommandLocked
+  id: AirlockCommandChiefEnforcerLocked
+  suffix: TDF Chief Enforcer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfChiefEnforcer ]
+
+# Glass Airlocks
+- type: entity
+  parent: AirlockTdfGlass
+  id: AirlockTdfGlassSecurityLocked
+  suffix: TDF Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: AirlockTdfGlass
+  id: AirlockTdfGlassGlassBrigLocked
+  suffix: TDF Brig, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBrig ]
+
+- type: entity
+  parent: AirlockTdfGlass
+  id: AirlockTdfGlassPatrolTeamLeaderLocked
+  suffix: TDF Patrol Team Leader, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfPatrolTeamLeader ]
+
+- type: entity
+  parent: AirlockTdfGlass
+  id: AirlockTdfGlassWardenLocked
+  suffix: TDF Warden, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfWarden ]
+
+- type: entity
+  parent: AirlockCommandGlassLocked
+  id: AirlockCommandGlassChiefEnforcerLocked
+  suffix: TDF Chief Enforcer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTdfChiefEnforcer ]
+
+# High security doors
 - type: entity
   parent: HighSecDoor
   id: HighSecTriadMedicalLocked

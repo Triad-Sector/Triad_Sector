@@ -1,0 +1,39 @@
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatTdfChiefEnforcerTrench
+  name: chief enforcer's armored trenchcoat
+  description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence. Has a nice and gold TDF stripe around the coat.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
+
+- type: entity
+  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase]
+  id: ClothingOuterCoatTdfWarden
+  name: TDF warden's armored jacket
+  description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+
+- type: entity
+  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat]
+  id: ClothingOuterCoatTdfWardenAlt
+  name: TDF warden's armored coat
+  description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 250
+      Durathread: 250
+      Plasteel: 125
+  - type: StaticPrice
+    price: 180

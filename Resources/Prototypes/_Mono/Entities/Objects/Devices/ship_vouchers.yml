@@ -142,65 +142,6 @@
     vessels:
     - Kupol
 
-# Tsfmc
-- type: entity
-  parent: ShipVoucherNfsdBailiff
-  id: ShipVoucherTsfmcColonel
-  name: TSFMC colonel ship voucher
-  description: Allows for two TSFMC ship purchases of any size, and allows for the procurement of a Polaris. Destroyed on sale.
-  components:
-  - type: ShipyardVoucher
-    redemptionsLeft: 2
-    access: # note - removed HOS/colonel access to prevent free flyssa (its only ship that uses HOS access, so it should be fine)
-    - Armory
-    - Sergeant
-    - Bailiff
-    - Security
-    vessels:
-    - Altair
-    accessGroups:
-    - GeneralNfsdAccess
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherFlyssa
-  name: TSF flyssa LPC
-  description: A small card that contains the data for the procurement of a Flyssa-class destroyer from the flagship's reserves.
-  components:
-  - type: Sprite
-    layers:
-    - state: htech
-    - state: stripetsfmc
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Security
-    companyName: TSF
-    vessels:
-    - Flyssa
-  - type: StaticPrice
-    vendPrice: 500000
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherAltair
-  name: TSF altair LPC
-  description: A small card that contains the data for the procurement of an Altair-class frigate from the flagship's reserves.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripetsfmc
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Security
-    companyName: TSF
-    vessels:
-    - Altair
-  - type: StaticPrice
-    vendPrice: 300000
-
 # PDV
 
 - type: entity
@@ -282,7 +223,7 @@
     - Inertia
   - type: StaticPrice
     vendPrice: 30000
-    
+
 - type: entity
   parent: BaseShipLPC
   id: ShipVoucherSnakelet
@@ -326,7 +267,7 @@
 
 - type: entity
   parent: BaseShipLPC
-  id: ShipVoucherRavager
+  id: ShipVoucherRavager # Triad - modified this voucher
   name: ravager LPC
   description: A small card that contains the data for the procurement of a Ravager-class mothership from the flagship's reserves.
   components:
@@ -337,8 +278,8 @@
     - state: vouchermilitary
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Sr
-    companyName: Colonial
+    consoleType: Security
+    companyName: TDF
     vessels:
     - Ravager
   - type: StaticPrice
@@ -348,7 +289,7 @@
   parent: BaseShipLPC
   id: ShipVoucherRook
   name: rook LPC
-  description: A small card that contains the data for the procurement of a Rook class drone. 
+  description: A small card that contains the data for the procurement of a Rook class drone.
   components:
   - type: Sprite
     layers:
@@ -368,7 +309,7 @@
   parent: BaseShipLPC
   id: ShipVoucherTaser
   name: taser LPC
-  description: A small card that contains the data for the procurement of a taser class drone. 
+  description: A small card that contains the data for the procurement of a taser class drone.
   components:
   - type: Sprite
     layers:

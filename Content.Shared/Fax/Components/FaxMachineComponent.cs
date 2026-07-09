@@ -103,14 +103,14 @@ public sealed partial class FaxMachineComponent : Component
     /// </summary>
     [ViewVariables]
     [DataField]
-    public float SendTimeout = 5f;
+    public float SendTimeout = 1f; // Triad - 1<5
 
     /// <summary>
     /// Message copying timeout
     /// </summary>
     [ViewVariables]
     [DataField]
-    public float CopyTimeout = 5f;
+    public float CopyTimeout = 1f; // Triad - 1<5
 
     /// <summary>
     /// Remaining time of inserting animation

@@ -12,9 +12,8 @@
   name: loadout-group-weapon
   minLimit: 0
   loadouts:
-  - SecurityGuardDrozdLoadout
   - SecurityGuardAkLoadout
-  - SecurityGuardLecterLoadout
+  - TdfLecterLoadout # Triad
   - SecurityGuardVulcanLoadout
   - SecurityGuardVectorLoadout
   - SecurityGuardKammererLoadout

@@ -160,7 +160,7 @@
   - type: Pda
     id: TsfEngiIDCard
     bookSlot: # Frontier
-      startingItem: HyperlinkBookNfsdSop
+      startingItem: BookTdfSop
       priority: -2
       whitelist:
         tags:

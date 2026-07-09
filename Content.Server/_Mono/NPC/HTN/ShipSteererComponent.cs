@@ -204,6 +204,36 @@ public sealed partial class ShipSteererComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public float TargetRotation = 0f;
+
+    // Triad: collision-avoidance scan throttle. The obstacle broadphase scan (FindGridsIntersecting +
+    // projectile lookup) was the steering hot path and ran every physics frame per NPC ship. We refresh
+    // it on this interval and reuse the cached avoidance result between scans.
+    /// <summary>
+    /// Minimum seconds between obstacle-avoidance broadphase scans. The cached avoidance result is
+    /// reused between scans; the rest of movement still updates every frame. Set to 0 to scan every frame.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float AvoidanceScanInterval = 0.1f;
+
+    /// <summary>
+    /// Seconds accumulated since the last avoidance scan.
+    /// </summary>
+    public float AvoidanceAccumulator;
+
+    /// <summary>
+    /// Whether a scan result has been cached yet (false forces a scan on the first steering frame).
+    /// </summary>
+    public bool AvoidanceCached;
+
+    /// <summary>
+    /// Cached avoidance vector from the last scan (null = no avoidance needed).
+    /// </summary>
+    public Vector2? CachedAvoidVec;
+
+    /// <summary>
+    /// Cached "all evasion directions blocked" flag from the last scan.
+    /// </summary>
+    public bool CachedAvoidAllBad;
 }
 
 public enum ShipSteeringStatus : byte

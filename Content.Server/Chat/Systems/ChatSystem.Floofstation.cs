@@ -66,7 +66,7 @@ public sealed partial class ChatSystem
     /// </summary>
     private void SendInSubtleRange(ChatChannel channel, EntityUid source, string message, string wrappedMessage, ChatTransmitRange range)
     {
-        foreach (var (session, data) in GetRecipients(source, WhisperClearRange))
+        foreach (var (session, data) in GetRecipients(channel, source, WhisperClearRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;

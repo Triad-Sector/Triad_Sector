@@ -10,10 +10,10 @@
 
 # TSFMC
 
-- type: radioChannel
-  id: Nfsd
-  name: chat-radio-ncmc
-  keycode: 's'
-  frequency: 1023
-  color: "#0c8ad3"
-
+#- type: radioChannel
+  #id: Nfsd
+  #name: chat-radio-ncmc
+  #keycode: 's' # Monolith
+  #frequency: 1023
+  #color: "#0c8ad3"
+  # Moved to _Triad/radio_channels.yml

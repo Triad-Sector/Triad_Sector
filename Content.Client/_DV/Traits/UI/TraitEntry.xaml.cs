@@ -159,20 +159,7 @@ public sealed partial class TraitEntry : PanelContainer
 
         foreach (var condition in _trait.Conditions)
         {
-            var result = condition switch
-            {
-                IsSpeciesCondition speciesCond => CheckSpeciesCondition(speciesCond, speciesId),
-                HasJobCondition jobCond => CheckJobCondition(jobCond, jobId),
-                InDepartmentCondition deptCond => CheckDepartmentCondition(deptCond, jobId),
-                HasCompCondition compCond => !compCond.Invert, // can't check in lobby but screws with the inversion logic
-                IsAntagEligibleCondition antagEligibleCond => CheckAntagEligibleCondition(antagEligibleCond, antagPreferences),
-                HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
-                HasFreeAccentSlotCondition => CheckFreeAccentSlot(speciesId, traits), // Triad - free accent slot gate
-                InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName), // Mono - Company condition
-                AnyOfCondition anyOfCond => CheckAnyOfCondition(anyOfCond, jobId, speciesId, antagPreferences, traits, companyName),
-                AllOfCondition allOfCond => CheckAllOfCondition(allOfCond, jobId, speciesId, antagPreferences, traits, companyName),
-                _ => true,
-            };
+            var result = CheckCondition(condition, jobId, speciesId, antagPreferences, traits, companyName);
 
             // Apply inversion
             result ^= condition.Invert;
@@ -191,6 +178,34 @@ public sealed partial class TraitEntry : PanelContainer
         }
 
         UpdateVisualState();
+    }
+
+    /// <summary>
+    /// Triad: Checks a given condition type into a method via a switch statement.
+    /// </summary>
+    private bool CheckCondition(
+        BaseTraitCondition condition,
+        ProtoId<JobPrototype>? jobId,
+        ProtoId<SpeciesPrototype>? speciesId,
+        IReadOnlySet<ProtoId<AntagPrototype>>? antagPreferences,
+        IReadOnlySet<ProtoId<TraitPrototype>>? traits,
+        string? companyName)
+    {
+        return condition switch
+        {
+            IsSpeciesCondition speciesCond => CheckSpeciesCondition(speciesCond, speciesId),
+            HasJobCondition jobCond => CheckJobCondition(jobCond, jobId),
+            InDepartmentCondition deptCond => CheckDepartmentCondition(deptCond, jobId),
+            HasCompCondition compCond => !compCond.Invert,
+            IsAntagEligibleCondition antagEligibleCond => CheckAntagEligibleCondition(antagEligibleCond, antagPreferences),
+            HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
+            HasTraitInCategoryCondition hasTraitInCategory => CheckHasTraitInCategoryCondition(hasTraitInCategory, traits),
+            HasFreeAccentSlotCondition => CheckFreeAccentSlot(speciesId, traits),
+            InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName),
+            AnyOfCondition anyOfCond => CheckAnyOfCondition(anyOfCond, jobId, speciesId, antagPreferences, traits, companyName),
+            AllOfCondition allOfCond => CheckAllOfCondition(allOfCond, jobId, speciesId, antagPreferences, traits, companyName),
+            _ => true,
+        };
     }
 
     /// <summary>
@@ -254,6 +269,23 @@ public sealed partial class TraitEntry : PanelContainer
         return traits.Contains(condition.Trait);
     }
 
+    private bool CheckHasTraitInCategoryCondition(HasTraitInCategoryCondition condition, IReadOnlySet<ProtoId<TraitPrototype>>? traits)
+    {
+        if (traits is null)
+            return false;
+
+        foreach (var traitId in traits)
+        {
+            if (!_prototype.TryIndex(traitId, out var traitProto))
+                continue;
+
+            if (traitProto.Category == condition.Category)
+                return true;
+        }
+
+        return false;
+    }
+
     // Triad: lobby mirror of HasFreeAccentSlotCondition. The editor can't read entity components, but it has the
     // selected species + trait set, which is all this gate needs. Shares the species list / unlock-trait id with
     // the shared condition so client and server evaluators can't drift.
@@ -280,20 +312,7 @@ public sealed partial class TraitEntry : PanelContainer
         // Return true if ANY child condition evaluates to true
         foreach (var childCondition in condition.Conditions)
         {
-            var result = childCondition switch
-            {
-                IsSpeciesCondition speciesCond => CheckSpeciesCondition(speciesCond, speciesId),
-                HasJobCondition jobCond => CheckJobCondition(jobCond, jobId),
-                InDepartmentCondition deptCond => CheckDepartmentCondition(deptCond, jobId),
-                HasCompCondition compCond => !compCond.Invert, // can't check in lobby
-                IsAntagEligibleCondition antagEligibleCond => CheckAntagEligibleCondition(antagEligibleCond, antagPreferences),
-                HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
-                HasFreeAccentSlotCondition => CheckFreeAccentSlot(speciesId, traits), // Triad - free accent slot gate
-                InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName), // Mono - Company condition
-                AnyOfCondition nestedAnyOf => CheckAnyOfCondition(nestedAnyOf, jobId, speciesId, antagPreferences, traits, companyName), // Recursive!
-                AllOfCondition nestedAllOf => CheckAllOfCondition(nestedAllOf, jobId, speciesId, antagPreferences, traits, companyName),
-                _ => true,
-            };
+            var result = CheckCondition(childCondition, jobId, speciesId, antagPreferences, traits, companyName);
 
             // Apply child's inversion
             result ^= childCondition.Invert;
@@ -316,21 +335,7 @@ public sealed partial class TraitEntry : PanelContainer
 
         foreach (var childCondition in condition.Conditions)
         {
-            var result = childCondition switch
-            {
-                IsSpeciesCondition speciesCond => CheckSpeciesCondition(speciesCond, speciesId),
-                HasJobCondition jobCond => CheckJobCondition(jobCond, jobId),
-                InDepartmentCondition deptCond => CheckDepartmentCondition(deptCond, jobId),
-                HasCompCondition compCond => !compCond.Invert, // can't check in lobby
-                IsAntagEligibleCondition antagEligibleCond => CheckAntagEligibleCondition(antagEligibleCond, antagPreferences),
-                HasTraitCondition hasTrait => CheckHasTraitCondition(hasTrait, traits),
-                HasFreeAccentSlotCondition => CheckFreeAccentSlot(speciesId, traits), // Triad - free accent slot gate
-                InCompanyCondition inCompanyCond => CheckInCompanyCondition(inCompanyCond, companyName),
-                AnyOfCondition nestedAnyOf => CheckAnyOfCondition(nestedAnyOf, jobId, speciesId, antagPreferences, traits, companyName),
-                AllOfCondition nestedAllOf => CheckAllOfCondition(nestedAllOf, jobId, speciesId, antagPreferences, traits, companyName),
-                _ => true,
-            };
-
+            var result = CheckCondition(childCondition, jobId, speciesId, antagPreferences, traits, companyName);
             result ^= childCondition.Invert;
 
             // If any child fails, the AllOf fails.

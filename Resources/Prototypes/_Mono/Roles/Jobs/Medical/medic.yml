@@ -5,7 +5,7 @@
   playTimeTracker: MdMedic
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 27000 # Half by Triad
+      time: 27000 # 7.5 hours - Half by Triad
   startingGear: MdMedicGear
   alwaysUseSpawner: true
   icon: "JobIconMedicalDoctor"
@@ -17,9 +17,11 @@
   accessGroups:
   - GeneralAccess
   - Medical
+  ranks: # Triad, ranks
+    RankEmergencyResponder: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, TrackingImplant ]
+    implants: [ MindShieldImplant ] # Triad - removed tracking implant
   - !type:AddComponentSpecial
     components:
       - type: NpcFactionMember
@@ -38,5 +40,5 @@
     pocket2: MedicalAppraisalTool
   storage:
     back:
-    - RubberStampDoc
+    - RubberStampDoctor
     - BoxFolderMedicalDoctor

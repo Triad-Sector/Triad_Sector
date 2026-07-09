@@ -171,7 +171,7 @@
   id: PaperMailNFPwrGameAd
   name: pwr game advertisement
   categories: [ HideSpawnMenu ]
-  suffix: "pwr game ad"
+  suffix: "old pwr game ad"
   parent: Paper
   components:
   - type: Paper
@@ -256,14 +256,14 @@
       stampType: Signature
     content: |2
       [head=3]Hello Valued Customer,[/head]
-      You have been selected to receive a complimentary sampler of scented soaps that Nanotrasen has to offer.
+      You have been selected to receive a complimentary sampler of scented soaps that Galatic Toiletries Co. has to offer.
 
       Why not enjoy a nice warm shower with our scented soaps?  Tested and effective vs. vent crud and mold.
 
       We hope you enjoy.
 
       Sincerely,
-            John Janitorial, Co-Vice President, TSF-NT Habs - Toiletries Dept.
+            John Janitorial, Co-Vice President, Galatic Toiletries Co.
 
 - type: entity
   id: PaperMailNTSoapAd2
@@ -412,7 +412,7 @@
 
         [head=1]EMP Preparedness Response[/head]
 
-      You have been selected to receive a NT EMP Preparedness kit as a test. Note that this is only a test. In a real emergency, follow the instructions of your vessel's command staff.
+      You have been selected to receive a TDF EMP Preparedness kit as a test. Note that this is only a test. In a real emergency, follow the instructions of your vessel's command staff.
 
       As the recipient of this, please note [bold]any improvements[/bold] that could be made towards the EMP preparedness of the vessel you were aboard when opening and submit this form to your serving Captain or Station Representative.
 
@@ -493,8 +493,8 @@
   - type: Paper
     stampState: paper_stamp-centcom
     stampedBy:
-    - stampedColor: '#006600FF'
-      stampedName: Central Admiralty of Frontier
+    - stampedColor: "#c91f1f"
+      stampedName: Chief Station Guard
     - stampedColor: '#333333FF'
       stampedName: Dusty Binn
       stampType: Signature
@@ -502,11 +502,11 @@
 
         [head=1]Notice of Organic Upcycling[/head]
 
-      [head=3]As part of Nanotrasen's sector-wide [color=#009900]Green Again[/color] policy, we have upcycled one of the station pets from a prior shift.
+      [head=3]As part of the Triad Frontier Association's [color=#009900]Green Again[/color] policy, we have upcycled one of the station pets from a prior shift.
 
       Enclosed is an emergency sustenance ration.[/head]
 
-      [bold]Subject:[/bold] NT-CAT-4183053 "Clippy"
+      [bold]Subject:[/bold] COL-CAT-4183053 "Clippy"
       [bold]DNA:[/bold] AACATATTACCGGCAT
       [bold]Repurposing:[/bold] Sustenance
 

@@ -3,9 +3,9 @@ id-card-access-level-captain = Captain
 id-card-access-level-cryogenics = Cryogenics
 id-card-access-level-emergency-shuttle-repeal = E.Shuttle Repeal All
 
-id-card-access-level-head-of-personnel = Station Representative
+id-card-access-level-head-of-personnel = Overseer
 id-card-access-level-head-of-security = Colonel
-id-card-access-level-security = Security
+# moved to Triad namespace id-card-access-level-security = Security
 id-card-access-level-armory = Armory
 id-card-access-level-brig = Brig
 id-card-access-level-detective = Detective

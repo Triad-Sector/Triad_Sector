@@ -1,0 +1,80 @@
+- type: entity
+  id: BluespaceVaultError
+  parent: BaseStationEventLongDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-bluespace-tdf-vault-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    warningAnnouncement: station-event-bluespace-tdf-vault-warning-announcement
+    endAnnouncement: station-event-bluespace-tdf-vault-end-announcement
+    earliestStart: 60
+    weight: 5
+    duration: 1020
+    maxDuration: 1350
+    reoccurrenceDelay: 360 # 6 hours
+  - type: BluespaceErrorRule
+    groups:
+      grid: !type:GridSpawnGroup
+        nameLoc:
+        - station-event-bluespace-name-TDFVault
+        minimumDistance: 5000 # Triad
+        maximumDistance: 10000 # Triad
+        addComponents:
+        - type: Gravity
+          enabled: true
+          inherent: true
+        - type: IFF
+          color: "#E10F9B"
+        - type: LinkedLifecycleGridParent
+        - type: ProtectedGrid
+          preventArtifactTriggers: true
+        - type: PreventPilot
+        - type: ForceAnchor
+        paths:
+        - /Maps/_Triad/Bluespace/tdfvault.yml
+    rewardAccounts:
+      Nfsd: 0.7 # TDF, 70% of the appraised grid
+      Frontier: 0.1 # 10% of the appraised grid to colonial outpost
+      Medical: 0.1
+
+- type: entity
+  id: BluespaceVaultSmallError
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-bluespace-tdf-vault-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    warningAnnouncement: station-event-bluespace-tdf-vault-warning-announcement
+    endAnnouncement: station-event-bluespace-tdf-vault-end-announcement
+    earliestStart: 60
+    maximumPlayers: 0
+    weight: 5
+    duration: 590
+    maxDuration: 780
+    reoccurrenceDelay: 360 # 6 hours
+  - type: BluespaceErrorRule
+    groups:
+      grid: !type:GridSpawnGroup
+        nameLoc:
+        - station-event-bluespace-name-TDFVault
+        minimumDistance: 5000
+        maximumDistance: 10000
+        addComponents:
+        - type: Gravity
+          enabled: true
+          inherent: true
+        - type: IFF
+          color: "#E10F9B"
+        - type: LinkedLifecycleGridParent
+        - type: ProtectedGrid
+          preventArtifactTriggers: true
+        - type: PreventPilot
+        - type: ForceAnchor
+        paths:
+        - /Maps/_Triad/Bluespace/tdfvaultsmall.yml
+    rewardAccounts:
+      Nfsd: 0.9 # TDF
+
+# TODO: Federated Solarian Republic vaults and Coalition vaults

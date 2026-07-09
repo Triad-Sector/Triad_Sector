@@ -1,0 +1,50 @@
+- type: job
+  id: TdfPatrolTeamLeader
+  name: job-name-tdf-patrol-team-leader
+  description: job-description-tdf-patrol-team-leader
+  playTimeTracker: JobTdfPatrolTeamLeader
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 90000 # 20 hours
+  startingGear: TdfLeaderGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfPatrolTeamLeader
+  supervisors: job-supervisors-tdf-enforcer
+  weight: 140
+  displayWeight: 50
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - GeneralTdfAccessBrig
+  access:
+  - TdfPatrolTeamLeader
+  - Medical
+  - Chemistry
+  ranks:
+    RankSeniorEnforcer: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfLeaderGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+  storage:
+    back:
+    - Magazine45_ACPPistolFMJ
+    - BaseSecurityUplinkRadioPatrolTeamLeader
+    - RadioHandheldNF

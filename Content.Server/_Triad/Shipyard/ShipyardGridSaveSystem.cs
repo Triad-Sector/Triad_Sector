@@ -49,21 +49,21 @@ namespace Content.Server._Triad.Shipyard;
 /// Saves ships as complete YAML files similar to savegrid command,
 /// after cleaning them of problematic components and moving to exports folder.
 /// </summary>
-public sealed class ShipyardGridSaveSystem : EntitySystem
+public sealed partial class ShipyardGridSaveSystem : EntitySystem
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] private readonly PricingSystem _pricing = default!; // Triad
-    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // HardLight
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
-    [Dependency] private readonly StationSystem _station = default!; // Triad
-    [Dependency] private readonly ShuttleRecordsSystem _shuttleRecords = default!; // Triad
-    [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
-    [Dependency] private readonly GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private PricingSystem _pricing = default!; // Triad
+    [Dependency] private IConfigurationManager _configManager = default!; // Triad
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!; // HardLight
+    [Dependency] private SharedTransformSystem _transform = default!; // Triad
+    [Dependency] private StationSystem _station = default!; // Triad
+    [Dependency] private ShuttleRecordsSystem _shuttleRecords = default!; // Triad
+    [Dependency] private TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
+    [Dependency] private GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
@@ -124,7 +124,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // Also remove any other shuttle deeds that reference this shuttle
             RemoveAllShuttleDeeds(grid);
 
-            // Destroy the station on the shuttle
+            // Destroy the station entity hooked to the shuttle
             if (_station.GetOwningStation(grid) is { Valid: true } shuttleStationUid)
                 _station.DeleteStation(shuttleStationUid);
 
@@ -269,10 +269,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     public bool TrySaveGridAsShip(EntityUid gridUid, string shipName, string playerUserId, ICommonSession playerSession)
     {
         if (!_gridQuery.HasComp(gridUid))
-        {
-            //_sawmill.Error($"Entity {gridUid} is not a valid grid");
             return false;
-        }
 
         try
         {
@@ -567,7 +564,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             if (!Exists(owner))
                 return false;
             // Also treat persistent entities as a preservation root.
-            if (_persistOnSaveQuery.HasComp(owner))
+            if (_persistOnSaveQuery.TryComp(owner, out var persist) && persist.SaveContents)
                 return true; // Found stash root above.
             if (HasComp<MachineComponent>(owner))
                 return true; // This is so machines keep their upgraded parts.

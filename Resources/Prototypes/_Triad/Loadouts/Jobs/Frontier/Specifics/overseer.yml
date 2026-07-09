@@ -1,0 +1,99 @@
+#T0
+- type: loadout
+  id: ClothingBackpackSatchelLeather
+  price: 0
+  equipment:
+    back: ClothingBackpackSatchelLeather
+
+- type: loadout
+  id: StationRepClothingHeadsetAltCentComCommon
+  price: 0
+  equipment:
+    ears: ClothingHeadsetAltCentComCommonSR # Mono
+
+- type: loadout
+  id: ClothingEyesHudCommand
+  price: 0
+  equipment:
+    eyes: ClothingEyesHudCommand
+
+- type: loadout
+  id: ClothingEyesGlassesCommand
+  price: 0
+  equipment:
+    eyes: ClothingEyesGlassesCommand
+
+- type: loadout
+  id: StationRepClothingHandsGlovesSr
+  price: 0
+  equipment:
+    gloves: ClothingHandsGlovesSr
+
+- type: loadout
+  id: StationRepClothingHeadHatSrCap
+  price: 0
+  equipment:
+    head: ClothingHeadHatSrCap
+
+- type: loadout
+  id: StationRepClothingHeadHatSrBeret
+  price: 0
+  equipment:
+    head: ClothingHeadHatSrBeret
+
+- type: loadout
+  id: StationRepClothingUniformJumpsuitSr
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSr
+
+- type: loadout
+  id: StationRepClothingUniformJumpskirtSr
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSr
+
+- type: loadout
+  id: StationRepClothingUniformJumpsuitMilitarySr
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT3
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitarySr
+
+- type: loadout
+  id: StationRepClothingNeckCloakSr
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakSr
+
+- type: loadout
+  id: StationRepClothingNeckMantleSr
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleSr
+
+- type: loadout
+  id: StationRepClothingOuterArmorSrCarapace
+  price: 1800
+  equipment:
+    outerClothing: ClothingOuterArmorSrCarapace
+
+- type: loadout
+  id: StationRepClothingOuterJacketSr
+  price: 800
+  equipment:
+    outerClothing: ClothingOuterJacketSr
+
+- type: loadout
+  id: StationRepSrPDA
+  equipment:
+    id: SrPDA
+
+- type: loadout
+  id: StationRepNFPouchSr
+  price: 0
+  storage:
+    back:
+    - NFPouchSr

@@ -1,0 +1,11 @@
+# ====DO NOT TOUCH - ADMIN COMPANIES====
+# On a less serious note, these are just companies that are auto-assigned to jobs.
+# You can add to this in CompanySystem.cs in Content.Server
+
+- type: company
+  id: TDF
+  form: Protagonist
+  name: TDF
+  color: "#FFD580"
+  disabled: true
+  companyUplinkCurrency: TriadCommerceCredit

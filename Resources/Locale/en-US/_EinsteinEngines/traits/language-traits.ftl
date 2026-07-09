@@ -13,13 +13,14 @@ trait-language-signlanguage-name = Sign Language
 trait-language-signlanguage-desc = The use of body language, hand signs, and other forms of dexterous movements to get your point across. You can understand and use Andromeda Standard Basic Sign Language (TCB-SL). If you are mute for any reason, you can still communicate with sign language.
 
 trait-language-solcommon-name = Sol Common
-trait-language-solcommon-desc = With its roots in Mandarin Chinese - Common evolved as the official language of the Trans-Solar Federation - with officials working to tie it together with a common tongue. It's spoken by state officials, the armed forces, by those who either feel a sense of national pride in the Federation or otherwise fell sway to the culture.
+trait-language-solcommon-desc = With its roots in Mandarin Chinese - Common evolved as the official language of the Federated Solarian Republic - with officials working to tie it together with a common tongue. It's spoken by state officials, the armed forces, by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.
 
 trait-language-tradeband-name = Tradeband
+
 trait-language-tradeband-desc = Descended from latin and romance languages of old Earth - Tradeband remains the main tongue of the upper class of humanity. The language sounds elegant and well structured to most ears. It remains in popular use with traders - diplomats - and those seeking to hold onto a piece of a romantic past.
 
 trait-language-freespeak-name = Asher
-trait-language-freespeak-desc = A rarely heard language outside of the colossus sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space. Usually equated to slurred speach, relying more on tone to have the words mean something.
+trait-language-freespeak-desc = A rarely heard language outside of the Triad sector, developed over time through isolation from the main systems and lost colonies abandoned to die on this edge of civilized space. Usually equated to slurred speach, relying more on tone to have the words mean something.
 
 trait-language-elyran-name = Elyran
 trait-language-elyran-desc = Constructed using elements of Farsi - Arabic - and Turkish - influence from all three of these languages can be seen throughout its grammar and vocabulary.

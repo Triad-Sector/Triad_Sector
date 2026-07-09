@@ -157,7 +157,7 @@ public sealed partial class ShipSteeringSystem : EntitySystem
             ManageDampening = !_consoleQuery.HasComp(ent), // Triad: leave dampening to the player on console autopilot
         };
 
-        args.Input = ProcessMovement(ref context, config);
+        args.Input = ProcessMovement(ref context, config, ent.Comp);
     }
 
     /// <summary>
@@ -231,7 +231,8 @@ public sealed partial class ShipSteeringSystem : EntitySystem
     /// </summary>
     private ShuttleInput ProcessMovement(
         ref SteeringContext ctx,
-        in SteeringConfig config)
+        in SteeringConfig config,
+        ShipSteererComponent comp)
     {
         // check our braking power
         var brakeCtx = GetBrakeContext(ref ctx, config.MaxArrivedVel);
@@ -239,8 +240,26 @@ public sealed partial class ShipSteeringSystem : EntitySystem
         var navVec = CalculateNavigationVector(ref ctx, brakeCtx);
 
         // check obstacle avoidance
-        ScanForObstacles(ref ctx, config, brakeCtx);
-        var avoidanceRes = CalculateAvoidanceVector(ref ctx, config, brakeCtx, navVec);
+        // Triad: the obstacle broadphase scan + avoidance computation are the steering hot path and
+        // previously ran every physics frame per ship. Refresh them on AvoidanceScanInterval and reuse
+        // the cached result between scans; nav/brake/rotation below still recompute every frame.
+        comp.AvoidanceAccumulator += ctx.FrameTime;
+        AvoidanceResult avoidanceRes;
+        if (!comp.AvoidanceCached
+            || comp.AvoidanceScanInterval <= 0f
+            || comp.AvoidanceAccumulator >= comp.AvoidanceScanInterval)
+        {
+            comp.AvoidanceAccumulator = 0f;
+            ScanForObstacles(ref ctx, config, brakeCtx);
+            avoidanceRes = CalculateAvoidanceVector(ref ctx, config, brakeCtx, navVec);
+            comp.CachedAvoidVec = avoidanceRes.AvoidVec;
+            comp.CachedAvoidAllBad = avoidanceRes.AllBad;
+            comp.AvoidanceCached = true;
+        }
+        else
+        {
+            avoidanceRes = new AvoidanceResult(comp.CachedAvoidVec, comp.CachedAvoidAllBad);
+        }
         var avoidanceVec = avoidanceRes.AvoidVec;
 
         // use avoidance vector if available or proceed with thrust as normal

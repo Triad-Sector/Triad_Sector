@@ -116,14 +116,16 @@
 - type: entity
   id: NfsdTechFabCircuitboard
   parent: SecurityTechFabCircuitboard
-  name: TSFMC techfab machine board
-  description: A machine printed circuit board for an TSFMC techfab.
+  name: TDF techfab machine board
+  description: A machine printed circuit board for an TDF techfab.
   components:
     - type: Sprite
       sprite: _NF/Objects/Misc/module.rsi
       state: nfsd
     - type: MachineBoard
       prototype: NfsdTechFab
+    - type: SavingContraband # Triad
+      examineText: ship-saving-contraband-2-text
 
 # Thrusters
 - type: entity
@@ -141,10 +143,10 @@
 - type: entity
   id: ThrusterNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: TSFMC thruster machine board
+  name: TDF thruster machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: ThrusterNfsd
+    prototype: ThrusterTdf # Triad - prototype
     requirements:
       Capacitor: 1
     stackRequirements:
@@ -223,10 +225,10 @@
 - type: entity
   id: GyroscopeNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: TSFMC gyroscope machine board
+  name: TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: GyroscopeNfsd
+    prototype: GyroscopeTdf # Triad - prototype
     requirements:
       Manipulator: 2
       Capacitor: 1
@@ -236,10 +238,10 @@
 - type: entity
   id: SmallGyroscopeNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: small TSFMC gyroscope machine board
+  name: small TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: SmallGyroscopeNfsd
+    prototype: SmallGyroscopeTdf # Triad - Prototype
     requirements:
       Manipulator: 2
       Capacitor: 1

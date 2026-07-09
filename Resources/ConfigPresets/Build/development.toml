@@ -3,6 +3,7 @@
 lobbyenabled = false
 map = "NFDev"
 role_timers = false
+current_year_offset = 802
 
 [ghost]
 role_time = 0.5

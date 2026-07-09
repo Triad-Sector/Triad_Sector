@@ -1,0 +1,119 @@
+- type: gasDeposit
+  id: BaseAsteroid
+  gases:
+  -  2000,  6000  # oxygen
+  -  4000, 12000  # nitrogen
+  -  3000,  9000  # carbon dioxide
+  -   800,  2400  # plasma
+  -    50,   150  # tritium
+  -   400,  1200  # water vapor
+  -   700,  2100  # ammonia
+  -   700,  2100  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+
+- type: gasDeposit
+  id: IceAsteroid
+  gases:
+  -  3500,  10500  # oxygen
+  -  2500,   7500  # nitrogen
+  -   800,   2400  # carbon dioxide
+  -   400,   1200  # plasma
+  -    50,    150  # tritium
+  -  4000,  12000  # water vapor
+  -   400,   1200  # ammonia
+  -   400,   1200  # nitrous oxide
+  -     0,      0  # frezon
+  -     0,      0  # BZ
+  -     0,      0  # Healium
+  -     0,      0  # Nitrium
+  -     0,      0  # Pluoxium
+
+- type: gasDeposit
+  id: AndesiteAsteroid
+  gases:
+  -  1500,  4500  # oxygen
+  -   500,  1500  # nitrogen
+  -  1000,  3000  # carbon dioxide
+  -  2000,  6000  # plasma
+  -    50,   150  # tritium
+  -   500,  1500  # water vapor
+  -  4000, 12000  # ammonia
+  -  2500,  7500  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+
+- type: gasDeposit
+  id: BasaltAsteroid
+  gases:
+  -  1500,  4500  # oxygen
+  -  1000,  3000  # nitrogen
+  -  1500,  4500  # carbon dioxide
+  -  3000,  9000  # plasma
+  -    50,   150  # tritium
+  -   600,  1800  # water vapor
+  -  2000,  6000  # ammonia
+  -  1000,  3000  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+
+- type: gasDeposit
+  id: SandAsteroid
+  gases:
+  -  1500,  4500  # oxygen
+  -  1000,  3000  # nitrogen
+  -  2000,  6000  # carbon dioxide
+  -   600,  1800  # plasma
+  -    50,   150  # tritium
+  -   400,  1200  # water vapor
+  -  1500,  4500  # ammonia
+  -  4500, 13500  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+
+- type: gasDeposit
+  id: ChromiteAsteroid
+  gases:
+  -  4000, 12000  # oxygen
+  -  3000,  9000  # nitrogen
+  -   700,  2100  # carbon dioxide
+  -   400,  1200  # plasma
+  -    50,   150  # tritium
+  -  2000,  4000  # water vapor
+  -   500,  1500  # ammonia
+  -  1000,  3000  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+
+- type: gasDeposit
+  id: RockAsteroid
+  gases:
+  -  2300,  6900  # oxygen
+  -  1200,  3600  # nitrogen
+  -  4000, 12000  # carbon dioxide
+  -  1000,  3000  # plasma
+  -    50,   150  # tritium
+  -  2000,  6000  # water vapor
+  -   800,  2400  # ammonia
+  -   400,  1200  # nitrous oxide
+  -     0,     0  # frezon
+  -     0,     0  # BZ
+  -     0,     0  # Healium
+  -     0,     0  # Nitrium
+  -     0,     0  # Pluoxium
+

@@ -1,0 +1,25 @@
+- type: vendingMachineInventory
+  id: PTechTdfInventory
+  startingInventory:
+    TdfCadetPda: 2
+    TdfPda: 2
+    TdfMedicPda: 2
+    ClearNFPDA: 4294967295 #infinite
+    ContractorIDCard: 4294967295 #infinite
+    ClothingHeadsetPrison: 4294967295 #infinite
+    RubberStampApproved: 4294967295 #Infinite
+    RubberStampDenied: 4294967295 #Infinite
+    Pen: 4294967295 #Infinite
+    BoxPaper: 4
+    BoxPaperOffice: 4
+    BoxEnvelope: 4
+    BoxFolderTdfForms: 3
+    BoxFolderTdfFormsInvert: 3
+    BoxFolderGreen: 3
+    BoxFolderBlack: 3
+    BoxFolderRed: 3
+    HandLabeler: 4294967295 #Infinite
+    EncryptionKeyTdf: 5 #Infinite
+    AccessConfigurator: 2
+  contrabandInventory:
+    LuxuryPen: 1

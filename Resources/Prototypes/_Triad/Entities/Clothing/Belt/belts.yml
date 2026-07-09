@@ -102,7 +102,42 @@
   - type: Appearance
 
 - type: entity
-  parent: NFClothingBeltStorageBase # Frontier: ClothingBeltStorageBase<NFClothingBeltStorageBase
+  parent: ClothingBeltSecurity
+  id: ClothingBeltTdf
+  name: TDF belt
+  description: Holds security gear! Used by members of the TDF.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/tdfbelt.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/tdfbelt.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingTdf
+  name: TDF chest rig
+  description: A set of tactical webbing worn by TDF members. Very yellow.. or gold.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/tdfwebbing.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/tdfwebbing.rsi
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingMed
+  id: ClothingBeltMilitaryWebbingMedTdf
+  name: TDF medical chest rig
+  description: A set of tactical webbing worn by TDF medics.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/tdfwebbingmed.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Belt/tdfwebbingmed.rsi
+    
+- type: entity
+  parent: NFClothingBeltStorageBase
   id: MLA79Harness
   name: MLA-79 Harness
   description: A powered harness designed to be utilized with the MLA-79 Smartgun, provides assistance in movement, aiming, and firing.

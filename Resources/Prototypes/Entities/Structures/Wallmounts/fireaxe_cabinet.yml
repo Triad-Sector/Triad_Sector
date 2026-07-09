@@ -53,6 +53,8 @@
           - FireAxe
   - type: Lock
   - type: AccessReader
+  - type: HLPersistOnShipSave # Triad
+    saveContents: true
 #    access: [["Atmospherics"], ["Command"]]
 
 - type: entity

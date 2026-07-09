@@ -1,0 +1,31 @@
+- type: vendingMachineInventory
+  id: TdfDrobeInventory
+  startingInventory:
+    ClothingBackpackTdf: 5
+    ClothingBackpackSatchelTdf: 5
+    ClothingBackpackDuffelTdf: 5
+    ClothingBackpackSecurity: 5
+    ClothingBackpackSatchelSecurity: 5
+    ClothingBackpackDuffelSecurity: 5
+    ClothingHandsGlovesCombatNfsdBrown: 5
+    ClothingHandsGlovesCombatNfsdCream: 5
+    ClothingHandsGlovesCombat: 5
+    ClothingHandsGlovesTacticalCombatBlack: 5
+    ClothingUniformJumpsuitTdfEnforcer: 10
+    ClothingUniformJumpsuitTdfJunior: 10
+    ClothingNeckIFFOrange: 30
+    ClothingHeadsetTdf: 15
+    ClothingMaskGasSecurity: 15
+    ClothingShoesBootsCombat: 15
+    ClothingHeadHelmetMercenaryBlack: 20
+    ClothingHeadHatBeretTdf: 10
+    ClothingOuterArmorBasicSlim: 15
+    ClothingOuterArmorBasic: 15
+    ClothingShoesBootsMagSecurity: 3
+    ClothingEyesGlassesSunglasses: 3
+    ClothingEyesHudSecurityTdf: 10
+    ClothingEyesHudMedSec: 2
+    ClothingBeltTdf: 10
+    ClothingBeltMilitaryWebbingTdf: 10
+    ClothingBeltWebbingsBigBase: 12 # TODO TDF variant
+    ClothingBeltMilitaryWebbingMedTdf: 3

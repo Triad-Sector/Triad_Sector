@@ -1,0 +1,58 @@
+- type: entity
+  id: BookTriadLaw
+  parent: BaseGuidebook
+  name: Triad sector law
+  description: A book comprising of the Triad sector legal code. May the TDF keep the law and order!
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_strong
+      color: "#504a8b"
+    - state: icon_law
+      color: "#ebecab"
+  - type: GuideHelp
+    guides:
+     - SectorLaw
+  - type: Tag
+    tags:
+    - Book
+    - BookSpaceLaw
+
+- type: entity
+  id: BookTdfSop
+  parent: BaseGuidebook
+  name: TDF Security Forces SOP manual
+  description: A book defining TDF standard operating procedures.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/books.rsi
+    layers:
+    - state: tdf_sop
+  - type: GuideHelp
+    guides:
+     - TdfSop
+  - type: Tag
+    tags:
+    - Book
+    - BookNfsdSop
+
+- type: entity
+  id: BookTdfForBabies
+  parent: BaseGuidebook
+  name: TDF for babies
+  description: TDF for babies, the number one reading material for Junior Enforcers in the Triad sector! Seems awfully thick.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/books.rsi
+    layers:
+    - state: tdf_guide
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    damage:
+      types:
+        Blunt: 10
+  - type: GuideHelp
+    guides:
+    - Security
+    # - Antagonists # Frontier: removed guidebook entry

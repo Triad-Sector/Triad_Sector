@@ -130,11 +130,11 @@ figurines-nukie-2 = Whiskey, Echo, Whiskey.
 figurines-nukie-3 = The nuke makes boom.
 figurines-nukie-4 = What's the code?
 
-figurines-nukie-elite-1 = Not a word in TSF Space.
+figurines-nukie-elite-1 = Not a word in Triad Space.
 figurines-nukie-elite-2 = THIS IS ROGUE SPACE!
 figurines-nukie-elite-3 = The grunts don't live beyond fifty!
 
-figurines-nukie-commander-1 = Death to the TSF!
+figurines-nukie-commander-1 = Death to NanoTrasen!
 
 figurines-footsoldier-1 = I'm an evil boy. Less boy every day, more evil every day.
 figurines-footsoldier-2 = Who will you choose? Them or us? Us or them?

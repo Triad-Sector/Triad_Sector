@@ -1,7 +1,7 @@
 - type: entity
   id: BluespaceDungeonBase
   parent: BaseStationEventNFModerateDelay # Triad changed to moderate
-  name: Colossus Sector Bluespace Monitoring # This name shows up in the radio messages.
+  name: Triad Sector Bluespace Monitoring # This name shows up in the radio messages.
   abstract: true
   components:
   - type: StationEvent

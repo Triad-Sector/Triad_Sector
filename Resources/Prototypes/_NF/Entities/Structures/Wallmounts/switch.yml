@@ -16,7 +16,7 @@
 
 - type: entity
   id: LockableButtonTSFMC
-  suffix: TSFMC
+  suffix: TDF
   parent: LockableButton
   components:
   - type: AccessReader

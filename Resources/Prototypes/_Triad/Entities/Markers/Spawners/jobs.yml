@@ -1,0 +1,86 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointJobTriadBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Triad/Markers/jobs.rsi
+
+- type: entity
+  id: SpawnPointTdfChiefEnforcer
+  parent: SpawnPointJobTriadBase
+  name: TDF chief enforcer
+  components:
+  - type: SpawnPoint
+    job_id: TdfChiefEnforcer
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - state: tdf-chief
+
+- type: entity
+  id: SpawnPointTdfWarden
+  parent: SpawnPointJobTriadBase
+  name: TDF warden
+  components:
+  - type: SpawnPoint
+    job_id: TdfWarden
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - state: tdf-warden
+
+- type: entity
+  id: SpawnPointTdfPatrolTeamLeader
+  parent: SpawnPointJobTriadBase
+  name: TDF patrol team leader
+  components:
+  - type: SpawnPoint
+    job_id: TdfPatrolTeamLeader
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - state: tdf-patrol-lead
+
+- type: entity
+  id: SpawnPointTdfMedic
+  parent: SpawnPointJobTriadBase
+  name: TDF combat medic
+  components:
+  - type: SpawnPoint
+    job_id: TdfMedic
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - state: tdf-medic
+
+- type: entity
+  id: SpawnPointTdfEnforcer
+  parent: SpawnPointJobTriadBase
+  name: TDF enforcer
+  components:
+  - type: SpawnPoint
+    job_id: TdfEnforcer
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - sprite: _Triad/Markers/jobs.rsi
+        state: tdf-enforcer
+
+- type: entity
+  id: SpawnPointTdfCadet
+  parent: SpawnPointJobTriadBase
+  name: TDF junior enforcer
+  components:
+  - type: SpawnPoint
+    job_id: TdfCadet
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+      - state: tdf-cadet

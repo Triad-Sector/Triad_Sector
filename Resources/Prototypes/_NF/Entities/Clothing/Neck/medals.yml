@@ -30,7 +30,7 @@
   parent: ClothingNeckBase
   id: ClothingNeckMedalNfsdShieldSilver
   name: shield of gallantry
-  description: For acts of conspicuous gallantry against enemies of the Frontier.
+  description: For acts of conspicuous gallantry against enemies of the Triad Sector.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Neck/Medals/shield_silver.rsi
@@ -57,7 +57,7 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckMedalNfsdCivStarSilver
-  name: friend of the frontier
+  name: friend of the triad sector
   description: In recognition of exceptional and honorable civilian service.
   components:
   - type: Sprite
@@ -100,7 +100,7 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckMedalGloriousOrder
-  name: the glorious order of the frontier, 1st class
+  name: the glorious order of the triad sector, 1st class
   description: For unequivocal entrepreneurship and lugubriosity against incorrigible verisimilitude.
   components:
   - type: Sprite

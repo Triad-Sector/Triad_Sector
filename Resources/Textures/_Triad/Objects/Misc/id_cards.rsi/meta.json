@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e | Resprited for TDF by TheRealMasterChief117",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "tdf-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "tdf-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "tdf"
+    },
+    {
+      "name": "idtdfenforcer"
+    },
+    {
+      "name": "idtdfcadet"
+    },
+    {
+      "name": "idtdfchief"
+    },
+    {
+      "name": "idtdfleader"
+    },
+    {
+      "name": "idtdfmedic"
+    },
+    {
+      "name": "idtdfwarden"
+    }
+  ]
+}
