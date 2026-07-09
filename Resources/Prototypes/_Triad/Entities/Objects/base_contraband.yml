@@ -75,3 +75,28 @@
     severity: FactionGear3
     turnInValues:
       TriadCommerceCredit: 45
+
+# Class 2 Contraband
+- type: entity
+  parent: BaseC2ContrabandUnredeemable
+  id: BaseTriadC2Contraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class2
+    turnInValues:
+      TriadCommerceCredit: 5
+
+# Class 3 Contraband
+- type: entity
+  parent: BaseC3ContrabandUnredeemable
+  id: BaseTriadC3Contraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class3General
+    turnInValues:
+      TriadCommerceCredit: 15
+  - type: ItemTax
+    taxAccounts:
+      nfsd: -0.05 # TDF account
