@@ -52,7 +52,7 @@
     rootTask:
       task: RammerShuttleCompound
   - type: StaticPrice
-    price: 20000 # Triad debuff, sells for 25k at depots, due to how easy this one can be farmed in first ring
+    price: 20000 # Triad, sells for 25k max due easily farmed in first ring
   - type: ApcPowerReceiver
     powerLoad: 1000 # suspiciously low power-using AI
   - type: ExtensionCableReceiver
