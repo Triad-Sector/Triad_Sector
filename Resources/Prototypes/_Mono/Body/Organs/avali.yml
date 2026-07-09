@@ -49,11 +49,11 @@
   description: "The liver of an avali."
   components:
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
-    updateInterval: 1.5
     maxReagents: 1
     metabolizerTypes: [Avali]
     groups:
     - id: Alcohol
+      rateModifier: 0.1 #Triad should remove alcohol from bloodstream now
   - type: Sprite
     sprite: _Starlight/Mobs/Species/Avali/organs.rsi
     state: liver
