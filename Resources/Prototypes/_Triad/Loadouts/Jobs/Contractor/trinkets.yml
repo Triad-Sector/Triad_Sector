@@ -1,0 +1,6 @@
+- type: loadout
+  id: MedalCase
+  price: 5000 # As to slightly help prevent medal inflation. This contains a lot of medals.
+  storage:
+    back:
+    - MedalCase
