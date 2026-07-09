@@ -113,7 +113,7 @@
       offset: "-0.5,0"
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: TradeCrate
-    valueAtDestination: 30000 # Mono, 30000 < 65000
+    valueAtDestination: 40000 # Triad, 40000 < 65000
     valueElsewhere: 5000 # Triad, 5000 < 45000
 
 - type: entity
@@ -207,7 +207,7 @@
       offset: "-0.5,0"
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: TradeCrate
-    valueAtDestination: 50000 # 105.000 is psychopathic + 45,000 making it 150,000 which is fucking stupid, 
+    valueAtDestination: 50000 # Mono 105.000 is psychopathic + 45,000 making it 150,000 which is fucking stupid, 
     valueElsewhere: 5000 # Mono, 5000 < 5000
     expressDeliveryDuration: 36000 # one hour, go go (timeout mostly for pirates & NFSD)
     expressOnTimeBonus: 25000 # Mono, 25000 < 45000
