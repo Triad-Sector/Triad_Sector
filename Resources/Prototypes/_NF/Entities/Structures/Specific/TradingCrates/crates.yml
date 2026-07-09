@@ -211,7 +211,7 @@
     valueElsewhere: 5000 # Mono, 5000 < 5000
     expressDeliveryDuration: 36000 # one hour, go go (timeout mostly for pirates & NFSD)
     expressOnTimeBonus: 25000 # Mono, 25000 < 45000
-    expressLatePenalty: 40000
+    expressLatePenalty: 40000 # Triad 40000 < 30000
 
 
 - type: entity
