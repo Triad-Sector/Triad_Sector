@@ -1,0 +1,23 @@
+- type: job
+  parent: TdfHighCommander
+  id: TdfHighCommandIntern
+  name: job-name-tdf-high-command-intern
+  description: job-description-tdf-high-command-intern
+  playTimeTracker: JobTdfHighCommandIntern
+  setPreference: false
+  startingGear: TdfHighCommandInternGear
+  icon: "JobIconNanotrasen"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  ranks:
+    RankHighCommandIntern: []
+
+- type: startingGear
+  id: TdfHighCommandInternGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfHighCommand
+    shoes: ClothingShoesBootsJack
+    id: TdfHighComInternPda
+    ears: ClothingHeadsetTdfHighCommand
+    pocket1: BoxFolderBlack
+    pocket2: LuxuryPen

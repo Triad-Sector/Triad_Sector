@@ -41,7 +41,7 @@
   description: department-NFCentralCommand-description # Frontier
   color: "#0c344d"
   roles:
-  - CentralCommandOfficial
+  - TdfHighCommander # Triad
 #  - CBURN # Frontier
   - ERTLeader
   - ERTChaplain

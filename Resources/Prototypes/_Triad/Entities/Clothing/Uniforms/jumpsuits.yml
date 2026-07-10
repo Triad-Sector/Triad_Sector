@@ -71,3 +71,7 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/highcom.rsi
+  - type: SavingContraband
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

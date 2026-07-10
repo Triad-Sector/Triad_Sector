@@ -74,3 +74,23 @@
     layers:
     - state: tdf
     - state: idtdfchief
+
+- type: entity
+  parent: TdfJuniorEnforcerIdCard
+  id: TdfHighCommIDCard
+  name: TDF high command ID card
+  components:
+  - type: PresetIdCard
+    job: TdfHighCommander
+  - type: Sprite
+    layers:
+    - state: tdf
+    - state: idtdfhighcom
+
+- type: entity
+  parent: TdfHighCommIDCard
+  id: TdfHighCommInternIDCard
+  name: TDF high command intern ID card
+  components:
+  - type: PresetIdCard
+    job: TdfHighCommandIntern

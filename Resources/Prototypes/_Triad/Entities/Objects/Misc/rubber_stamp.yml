@@ -11,6 +11,7 @@
     stampState: "paper_stamp-hos"
   - type: Sprite
     state: stamp-hos
+  - type: SavingContraband
   # TODO: Sprite and color?
 
 - type: entity
@@ -27,3 +28,4 @@
     stampedColor: "#293A68"
     stampState: "paper_stamp-tdf-highcomm"
     protected: true
+  - type: SavingContraband
