@@ -101,7 +101,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Any entity found guilty of attempting to commit a crime, with the intent to carry out that crime, will receive the sentence for the crimes they attempted in full.
+        Any entity found guilty of attempting to commit a crime, with the intent to carry out that crime, will receive the sentence for the crimes they attempted in half.
       </Box>
     </ColorBox>
     <ColorBox>
@@ -116,12 +116,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Any individual found guilty of planning to commit a crime, with the intent to carry out that crime eventually, and having committed an overt act pursuant to that end, will receive the sentence for the crimes they conspired towards in full.
+        Any individual found guilty of planning to commit a crime, with the intent to carry out that crime eventually, and having committed an overt act pursuant to that end, will receive the sentence for the crimes they conspired towards in half.
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Same sentence and fine as the conspired crime(s).
+        Up to half (50%) of the fine and sentence of the conspired crime(s).
       </Box>
     </ColorBox>
     <ColorBox Color="#635353">
