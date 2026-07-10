@@ -86,4 +86,4 @@
   conditions:
   - !type:TileNotBlocked
     failIfSpace: false
-  offset: 0.5,0.5
+  offset: 0.2,0
