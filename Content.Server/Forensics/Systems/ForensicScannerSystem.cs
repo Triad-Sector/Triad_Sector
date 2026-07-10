@@ -118,7 +118,7 @@ namespace Content.Server.Forensics
                         int payout = sectorDD.FMCAccumulator.Int();
                         sectorDD.FMCAccumulator -= payout;
 
-                        var stackPrototype = _prototypeManager.Index<StackPrototype>("FederationMilitaryCredit");
+                        var stackPrototype = _prototypeManager.Index<StackPrototype>("TriadCommerceCredit");
                         _stackSystem.Spawn(payout, stackPrototype, Transform(target).Coordinates);
                     }
                 }

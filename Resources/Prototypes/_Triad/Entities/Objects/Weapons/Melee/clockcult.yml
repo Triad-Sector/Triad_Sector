@@ -1,0 +1,70 @@
+- type: entity
+  parent: BaseItem
+  id: RatvarianSpear
+  name: ratvarian spear
+  description: A heavy, razor-sharp spear made of brass. It thrums with barely-contained energy.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Melee/ratvarian_spear.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - Spear
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Melee/ratvarian_spear.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - belt
+    - back
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    angle: 0
+    animation: WeaponArcThrust
+    damage:
+      types:
+        Piercing: 10
+        Slash: 20
+        Asphyxiation: 2
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 30
+        Asphyxiation: 5
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: SavingContraband
+  - type: UseDelay
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 6
+        Slash: 6
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+            - -0.40,-0.30
+            - -0.30,-0.40
+            - 0.40,0.30
+            - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: EmbeddableProjectile
+    offset: -0.15,0.0
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
+  - type: Item
+    size: Ginormous
+  - type: Sharp

@@ -2276,3 +2276,74 @@ Entries:
   id: 2365
   time: '2026-07-08T21:47:48.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/301
+- author: Eillyrea
+  changes:
+    - type: Fix
+      message: >-
+        GODS OF MAPTOSIA IF THERE ARE NO MORE ISSUES WITH VENMAR THEN MY SOUL IS
+        YOURS!!!!!
+  id: 2366
+  time: '2026-07-09T00:29:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/305
+- author: Frontier
+  changes:
+    - type: Add
+      message: >-
+        Added the loadout Pride cloaks to the Pride-o-Mat's inventory. Happy
+        Pride, Frontier—wait, this isn't Frontier and it isn't Pride Month
+        now...
+  id: 2367
+  time: '2026-07-09T03:13:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/295
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added Clockcult gear, the Ratvarian spear, gauntlets, treads, helmet,
+        and cuirass. Unobtainable, but they are selectable via chameleon gear.
+  id: 2368
+  time: '2026-07-09T12:18:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/267
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed pipes and other machines not being anchorable under directional
+        windows.
+  id: 2369
+  time: '2026-07-09T13:24:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/310
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        The Chrono-legionnaires have retrieved the space biomes from Colossus
+        Central, Space Biomes now appear again.
+    - type: Fix
+      message: Fixed drones taking the day off
+    - type: Fix
+      message: Various tiny Venmar Station fixes relating to disposals mainly
+  id: 2370
+  time: '2026-07-09T16:25:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/313
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        The medal case has been added to loadout. Captains can now give a small
+        variety of medals to crewmembers who go above and beyond in their
+        duties.
+  id: 2371
+  time: '2026-07-09T16:27:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/306
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ATM to Auric Outpost
+    - type: Add
+      message: Double airlock on military dock
+    - type: Add
+      message: Filing cabinets and it's form inside the briefing
+  id: 2372
+  time: '2026-07-10T00:35:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/318
