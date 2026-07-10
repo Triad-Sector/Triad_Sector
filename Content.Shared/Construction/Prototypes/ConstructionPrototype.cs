@@ -106,8 +106,8 @@ public sealed partial class ConstructionPrototype : IPrototype
     public IReadOnlyList<SpriteSpecifier> Layers => _layers ?? new List<SpriteSpecifier> { Icon };
 
     // Triad changes
-    [DataField("offset")]
-    public Vector2 Offset = Vector2.Zero;
+    [DataField]
+    public Vector2 GhostOffset = Vector2.Zero;
     // End Triad
 }
 

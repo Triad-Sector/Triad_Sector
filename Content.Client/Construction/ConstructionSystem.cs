@@ -217,7 +217,7 @@ namespace Content.Client.Construction
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
             sprite.Color = new Color(48, 255, 48, 128);
-            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.Offset); // Triad
+            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {
