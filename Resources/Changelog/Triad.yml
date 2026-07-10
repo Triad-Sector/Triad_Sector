@@ -2347,3 +2347,29 @@ Entries:
   id: 2372
   time: '2026-07-10T00:35:01.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/318
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add windoor CE and Warden
+    - type: Add
+      message: Turrets for TDF
+  id: 2373
+  time: '2026-07-10T13:02:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/319
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Drone loot readjusted to fit Triad's ship saving balancing
+    - type: Tweak
+      message: Contraband Crate sell price readjusted
+    - type: Tweak
+      message: Contraband Crate blips now only show when in close proximity
+    - type: Tweak
+      message: Contraband Crate FMC/DC value increased
+    - type: Remove
+      message: Drone Blackboxes no longer gives money
+    - type: Tweak
+      message: Drone core price increased
+  id: 2374
+  time: '2026-07-10T13:06:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/259

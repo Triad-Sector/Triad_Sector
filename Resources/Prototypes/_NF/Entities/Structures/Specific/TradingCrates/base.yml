@@ -49,7 +49,7 @@
     spread: 90
   - type: StaticPrice
     price: 0
-  # Triad Start - disable target of random sentience event  
+  # Triad Start - disable target of random sentience event
   # - type: SentienceTarget
   #   flavorKind: station-event-random-sentience-flavor-inanimate
   #   weight: 0.01 # 100 trade crates = 1 animal
@@ -120,8 +120,8 @@
         - MachineLayer
   - type: Contraband
     turnInValues:
-      TriadCommerceCredit: 12 # Triad
-      Doubloon: 12 # Mono
+      TriadCommerceCredit: 20 # Triad 12 -> 20 (50 of each currency is about 100k, so these are worth 50k to a faction person, PURELY based of money, so people have more a reason to talk to factions instead of depotslop)
+      Doubloon: 20 # Triad 12 -> 20
   - type: ShipyardSellCondition
     blockSale: true
     reason: shipyard-console-contraband-onboard
@@ -134,8 +134,9 @@
     taxAccounts:
       BlackMarket: 0.3
       nfsd: -0.075
-  - type: RadarBlip
-    radarColor: "#cc4e0e"
+  - type: RadarBlip # Triad, no immidiate visibility
+    radarColor: "#FFCCCB"
     scale: 1.5
     shape: hexagon
     visibleFromOtherGrids: true
+    maxDistance: 256

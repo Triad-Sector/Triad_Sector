@@ -4,3 +4,12 @@
   - CC
   - SimpleNeutral
   defaultHostile: true
+
+- type: npcFaction
+  id: TDFTurret
+  friendly:
+  - TDF
+  neutral:
+  - CC
+  - SimpleNeutral
+  defaultHostile: true

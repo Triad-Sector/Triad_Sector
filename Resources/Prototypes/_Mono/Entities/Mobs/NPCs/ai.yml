@@ -52,7 +52,7 @@
     rootTask:
       task: RammerShuttleCompound
   - type: StaticPrice
-    price: 20000
+    price: 20000 # Triad, sells for 25k max due easily farmed in first ring
   - type: ApcPowerReceiver
     powerLoad: 1000 # suspiciously low power-using AI
   - type: ExtensionCableReceiver
@@ -113,6 +113,8 @@
     - state: base
     - state: red_t2
       shader: unshaded
+  - type: StaticPrice  # Triad
+    price: 40000
   - type: HTN
     rootTask:
       task: RammerShuttleSmartDodgingCompound
@@ -168,6 +170,8 @@
     - state: base
     - state: green_t2
       shader: unshaded
+  - type: StaticPrice  # Triad
+    price: 40000
   - type: HTN
     rootTask:
       task: AttackerShuttleSmartCompound
@@ -203,6 +207,8 @@
   description: Shoots at you.
   suffix: AI, Drone-Medusa
   components:
+  - type: StaticPrice  # Triad
+    price: 40000
   - type: HTN
     rootTask:
       task: DroneCompoundMedusa
@@ -213,6 +219,8 @@
   description: Shoots at you. Broadsides.
   suffix: AI, Drone-Assembly
   components:
+  - type: StaticPrice  # Triad
+    price: 40000
   - type: HTN
     rootTask:
       task: DroneCompoundAssembly
@@ -224,6 +232,8 @@
   description: Shoots at you, up-close.
   suffix: AI, Drone-MPulsar
   components:
+  - type: StaticPrice  # Triad
+    price: 20000
   - type: HTN
     rootTask:
       task: DroneCompoundMPulsar
@@ -235,6 +245,8 @@
   description: Shoots at you, close-by.
   suffix: AI, Drone-Lance
   components:
+  - type: StaticPrice  # Triad
+    price: 20000
   - type: HTN
     rootTask:
       task: DroneCompoundLance
@@ -246,6 +258,8 @@
   description: Shoots at you.
   suffix: AI, Drone-Quake
   components:
+  - type: StaticPrice  # Triad
+    price: 40000
   - type: HTN
     sleepPlayerCheckRangeOverride: 2000 # Triad: revert of #4075 (Mono 2x'd 2000->4000)
     rootTask:
