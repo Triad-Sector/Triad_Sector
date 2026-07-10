@@ -313,6 +313,7 @@ public sealed partial class FireControlSystem : EntitySystem
             ShipGunClass.Medium => 6,
             ShipGunClass.Heavy => 9,
             ShipGunClass.Superheavy => 12,
+            ShipGunClass.Specialized => 24,
             _ => 0,
         };
     }

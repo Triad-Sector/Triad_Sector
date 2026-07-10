@@ -325,7 +325,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: SuperHeavy
+    shipClass: Specialized # Triad, Specialized (24) < SuperHeavy
   - type: ShipRepairable
     repairTime: 40
     repairCost: 250

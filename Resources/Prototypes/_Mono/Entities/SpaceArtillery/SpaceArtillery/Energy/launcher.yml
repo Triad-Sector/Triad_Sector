@@ -452,7 +452,7 @@
   - type: ShipGunType
     shipType: Energy
   - type: ShipGunClass
-    shipClass: Heavy
+    shipClass: SuperHeavy # Triad SuperHeavy (12) < Heavy
   - type: ShipRepairable
     repairTime: 70
     repairCost: 150
@@ -539,7 +539,7 @@
   - type: ShipGunType
     shipType: Energy
   - type: ShipGunClass
-    shipClass: Superheavy
+    shipClass: Specialized # Triad, Specialized (24) < SuperHeavy
   - type: ShipRepairable
     repairTime: 45
     repairCost: 250
@@ -610,7 +610,7 @@
   - type: ShipGunType
     shipType: Energy
   - type: ShipGunClass
-    shipClass: Light
+    shipClass: Medium # Triad Medium (6) < Light
   - type: ShipRepairable
     repairTime: 15
     repairCost: 40
@@ -679,7 +679,7 @@
   - type: ShipGunType
     shipType: Energy
   - type: ShipGunClass
-    shipClass: Heavy
+    shipClass: SuperHeavy # Triad Superheavy (12) < Heavy
   - type: ShipRepairable
     repairTime: 30
     repairCost: 100
@@ -723,7 +723,7 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/EmptyAlarm/smg_empty_alarm.ogg
   - type: ShipGunClass
-    shipClass: Heavy
+    shipClass: SuperHeavy # Triad Superheavy (12) < Heavy
   - type: HitscanBatteryAmmoProvider
     proto: ApolloLaser
     fireCost: 150
@@ -1192,7 +1192,7 @@
   - type: ShipGunType
     shipType: Energy
   - type: ShipGunClass
-    shipClass: Medium
+    shipClass: Heavy # Triad, Heavy (9) < Medium
   - type: ShipRepairable
     repairTime: 20
     repairCost: 100
@@ -1349,7 +1349,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Light
+    shipClass: Medium # Triad, Medium (6) < Light
   - type: ShipRepairable
     repairTime: 15
     repairCost: 80

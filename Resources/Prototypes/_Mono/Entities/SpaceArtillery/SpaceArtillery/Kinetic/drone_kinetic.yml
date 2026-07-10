@@ -62,7 +62,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Light
+    shipClass: Medium # Triad Medium (6) < Light
 
 - type: entity
   id: WeaponTurretFragment
@@ -182,4 +182,4 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Medium
+    shipClass: Heavy # Triad Heavy (9) < Medium

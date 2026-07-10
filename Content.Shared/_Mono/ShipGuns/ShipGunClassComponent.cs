@@ -25,5 +25,6 @@ public enum ShipGunClass
     Light,
     Medium,
     Heavy,
-    Superheavy
+    Superheavy,
+    Specialized
 }

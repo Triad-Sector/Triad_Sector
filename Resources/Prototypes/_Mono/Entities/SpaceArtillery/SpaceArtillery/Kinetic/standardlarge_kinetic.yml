@@ -85,7 +85,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Medium
+    shipClass: Heavy # Triad Heavy (9) < Medium
   - type: ShipRepairable
     repairTime: 30
     repairCost: 150
@@ -171,7 +171,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Medium
+    shipClass: Heavy # Triad Heavy (9) < Medium
   - type: ShipRepairable
     repairTime: 30
     repairCost: 150
@@ -355,7 +355,7 @@
   - type: ShipGunType
     shipType: Ballistic
   - type: ShipGunClass
-    shipClass: Heavy
+    shipClass: SuperHeavy # Triad SuperHeavy (12) < Heavy
   - type: ShipRepairable
     repairTime: 30
     repairCost: 150
