@@ -784,6 +784,11 @@
   - ContractorBible
   - ContractorMonkeyCubeWrapped
   - ContractorKoboldCubeWrapped
+  # Triad changes
+  - Whistle
+  - SecurityWhistle
+  - SyndicateWhistle
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorFun # Left Hand - 1 only
