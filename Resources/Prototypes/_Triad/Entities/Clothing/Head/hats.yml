@@ -44,6 +44,17 @@
 
 - type: entity
   parent: ClothingHeadBase
+  id: ClothingHeadHatBeretTdfHighCommand
+  name: TDF high command beret
+  description: A blue and orange beret, used by TDF High Command. Spooky.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_high_command.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/beret_tdf_high_command.rsi
+
+- type: entity
+  parent: ClothingHeadBase
   id: ClothingHeadHatTdfWarden
   name: TDF warden's cap
   description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you are THE LAW!
@@ -54,3 +65,14 @@
     sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
   - type: StealTarget
     stealGroup: ClothingHeadHatWarden
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTdfHighCommand
+  name: TDF high command cap
+  description: A blue and orange cap, used by TDF High Command. This cap alone gives you miles of authority!
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hats/cap_tdf_high_command.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hats/cap_tdf_high_command.rsi

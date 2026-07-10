@@ -17,3 +17,19 @@
     sprite: _Triad/Structure/Doors/Airlocks/Glass/tdf.rsi
   - type: Wires
     layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockTdfHighCommand
+  suffix: TDF High Command
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Standard/tdfhighcom.rsi
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockTdfHighCommandGlass
+  suffix: TDF High Command
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Glass/tdfhighcom.rsi

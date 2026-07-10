@@ -37,3 +37,15 @@
       Plasteel: 125
   - type: StaticPrice
     price: 180
+
+- type: entity
+  parent: ClothingOuterCoatTdfChiefEnforcerTrench
+  id: ClothingOuterCoatTdfHighCommand
+  name: TDF high command armored dress coat
+  description: A dress coat enhanced with a special alloy for some extra protection and style for TDF high commanders.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
+  - type: SavingContraband
