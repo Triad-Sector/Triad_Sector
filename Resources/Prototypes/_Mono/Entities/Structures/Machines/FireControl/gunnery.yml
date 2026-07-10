@@ -154,6 +154,8 @@
     batteryRechargeEfficiency: 0.95
   - type: Anchorable # Sorry Flyssa, but I am NOT risking this being used for a missile bus.
     flags: Anchorable
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-3-text
   - type: ShipRepairable
     repairTime: 40
     repairCost: 150
@@ -180,6 +182,8 @@
     batteryRechargeEfficiency: 0.95
   - type: Anchorable
     flags: Anchorable
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-3-text
   - type: ShipRepairable
     repairTime: 40
     repairCost: 150
