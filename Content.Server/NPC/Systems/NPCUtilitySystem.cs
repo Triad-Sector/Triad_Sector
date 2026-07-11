@@ -519,8 +519,6 @@ public sealed class NPCUtilitySystem : EntitySystem
                 }
                 break;
             }
-            // Mono - TODO: consider factions
-            // Triad: factions are now consulted below via the friendly-skip IFF check.
             case NearbyNpcTargetsQuery shuttlesQuery:
             {
                 var xform = Transform(owner);
