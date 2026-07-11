@@ -30,7 +30,9 @@
     materialComposition:
       Cloth: 250
       Durathread: 250
-      Plasteel: 125
+      Plasteel: 200
+  - type: StaticPrice
+    price: 500
   - type: SavingContraband
   - type: ToggleableClothing
     clothingPrototypes:
