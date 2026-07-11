@@ -57,6 +57,9 @@
     powerLoad: 1000 # suspiciously low power-using AI
   - type: ExtensionCableReceiver
   - type: TargetSeekingTarget
+  - type: NpcFactionMember # Triad: IFF identity for all drone cores (inherited fleet-wide); relations empty, see _Triad/ai_factions.yml
+    factions:
+    - ShipDrone
 
 - type: entity
   id: NpcStationAiApproacher
