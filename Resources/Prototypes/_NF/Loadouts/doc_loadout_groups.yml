@@ -44,8 +44,6 @@
   loadouts:
   - ChiefMedicalOfficerBeret
   - CMOMedicalHeadMirror
-  # Starlight Start
-  # End Starlight
   subgroups:
   - ContractorHead
 
