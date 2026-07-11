@@ -1,5 +1,4 @@
 - type: job
-  parent: TdfHighCommander
   id: TdfHighCommandIntern
   name: job-name-tdf-high-command-intern
   description: job-description-tdf-high-command-intern
