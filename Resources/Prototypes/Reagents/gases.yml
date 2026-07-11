@@ -122,6 +122,9 @@
         conditions:
           - !type:ReagentThreshold
             min: 1.5
+          - !type:OrganType # Triad - Hydrakin metabolises plasma without toxicity, hide the warning.
+            type: Hydrakin
+            shouldHave: false
         clear: True
         time: 5
       - !type:HealthChange # Mono
@@ -171,6 +174,10 @@
         - !type:OrganType
           type: Hydrakin
       - !type:HealthChange
+        conditions: # Triad - Hydrakin tolerate inhaled tritium without radiation accumulation.
+        - !type:OrganType
+          type: Hydrakin
+          shouldHave: false
         scaleByQuantity: true
         ignoreResistances: true
         damage:
@@ -183,6 +190,9 @@
         conditions:
           - !type:ReagentThreshold
             min: 1.5
+          - !type:OrganType # Triad - Hydrakin metabolises tritium without toxicity, hide the warning. Radiation damage still applies.
+            type: Hydrakin
+            shouldHave: false
         clear: True
         time: 5
       - !type:HealthChange # Mono

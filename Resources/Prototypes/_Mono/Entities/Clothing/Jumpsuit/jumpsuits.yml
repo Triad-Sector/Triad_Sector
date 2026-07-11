@@ -341,6 +341,7 @@
   id: ClothingUniformJumpsuitViperGroupUniform
   name: viper group uniform
   description: A uniform bearing the colours of the vipers.
+  categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice
     price: 700
@@ -358,6 +359,7 @@
   id: ClothingUniformJumpsuitViperGroupTurtleneck
   name: viper group turtleneck
   description: A turtleneck bearing the colours of the vipers.
+  categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice
     price: 700

@@ -93,7 +93,17 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 1
+        Heat: 0 # Triad 1->0
+
+- type: entity  # Triad - With firerate 8, kill an unarmored person in 6.25 seconds
+  parent: BasicHitscan
+  id: RadLaserGuardian
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 2
 
 - type: entity
   parent: BasicHitscan

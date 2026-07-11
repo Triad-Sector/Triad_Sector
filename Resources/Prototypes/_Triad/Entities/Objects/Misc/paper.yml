@@ -1,0 +1,34 @@
+- type: entity
+  parent: BoxFolderBase
+  id: BoxFolderTdf
+  name: TDF folder
+  suffix: Normal
+  description: A folder to contain important TDF forms.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: folder-tdf
+    - state: folder-base
+  - type: StorageFill
+    contents:
+      - id: Paper
+        prob: 0.5
+      - id: PaperOffice
+        prob: 0.4
+      - id: Paper
+        prob: 0.3
+      - id: PaperOffice
+        prob: 0.2
+      - id: Paper
+        prob: 0.2
+
+- type: entity
+  parent: BoxFolderTdf
+  id: BoxFolderTdfInvert
+  suffix: Invert
+  components:
+  - type: Sprite
+    layers:
+    - state: folder-tdf-invert
+    - state: folder-base

@@ -53,14 +53,14 @@ public sealed class ServerConsentManager : IServerConsentManager
         if (message.Consent.Freetext != consentSettings.ConsentFreetext)
         {
             consentSettings.ConsentFreetext = message.Consent.Freetext;
-            consentSettings.ConsentFreetextUpdatedAt = DateTime.Now;
+            consentSettings.ConsentFreetextUpdatedAt = DateTime.UtcNow;
         }
 
         // Log the change
         var session = _playerManager.GetSessionByChannel(message.MsgChannel);
         var togglesPretty = String.Join(", ", message.Consent.Toggles.Select(t => $"[{t.Key}: {t.Value}]"));
-        // _adminLogger.Add(LogType.Consent, LogImpact.Medium,
-        //     $"{session:Player} updated consent setting to: '{message.Consent.Freetext}' with toggles {togglesPretty}");
+        _adminLogger.Add(LogType.Consent, LogImpact.Medium,
+            $"{session:Player} updated consent setting to: '{message.Consent.Freetext}' with toggles {togglesPretty}");
 
         // Persistence
         if (ShouldStoreInDb(message.MsgChannel.AuthType))

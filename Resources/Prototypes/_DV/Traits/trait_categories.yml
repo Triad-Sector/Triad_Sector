@@ -1,0 +1,37 @@
+- type: traitCategory
+  id: Disabilities
+  name: trait-category-disabilities
+  priority: 0
+  accentColor: "#64748b"  # Slate / muted gray
+
+- type: traitCategory
+  id: Mental
+  name: trait-category-mental
+  priority: 20
+  accentColor: "#a855f7"  # Purple
+
+- type: traitCategory
+  id: Accents
+  name: trait-category-accents
+  # Triad: a dialect accent costs 1 from this category's point pool (maxPoints below), so you get exactly ONE
+  # paid dialect. Count is uncapped (maxTraits 0 = unlimited) so free cost-0 speech modifiers (Stutter,
+  # Frontal Lisp, Accentless) ride alongside the one dialect without burning a slot. Global limits stay off, so
+  # this point is spent only within Accents and counts for nothing else.
+  priority: 30
+  maxTraits: 0
+  maxPoints: 1
+  accentColor: "#38bdf8"  # Light blue
+
+- type: traitCategory
+  id: Medical
+  name: trait-category-medical
+  priority: 40
+  accentColor: "#ef4444"  # Red
+
+# Mono
+- type: traitCategory
+  id: Physical
+  name: trait-category-physical
+  priority: 50
+  maxPoints: 6
+  accentColor: "#e0e0e0" # Light gray

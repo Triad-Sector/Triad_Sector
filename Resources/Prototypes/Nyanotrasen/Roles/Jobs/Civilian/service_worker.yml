@@ -19,12 +19,16 @@
   - External # Frontier
   - Service
   - Frontier # Frontier
+  extendedAccess: # Triad
+  - Janitor # Triad
   special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:GiveItemOnHolidaySpecial # Frontier
-    holiday: FrontierBirthday # Frontier
-    prototype: FrontierBirthdayGift # Frontier
+  #- !type:AddImplantSpecial
+  #  implants: [ MindShieldImplant ] Triad
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 # Frontier: valet loadout
 - type: startingGear

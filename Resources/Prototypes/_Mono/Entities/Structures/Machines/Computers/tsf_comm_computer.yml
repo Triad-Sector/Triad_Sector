@@ -1,8 +1,8 @@
 - type: entity
   parent: ComputerComms
   id: TSFComputerComms
-  name: TSFMC communications computer
-  description: A communications console used by Trans-Solar installations to make sector-wide announcements.
+  name: TDF communications computer
+  description: A communications console used by TDF installations to make sector-wide announcements.
   components:
   - type: Sprite
     layers:

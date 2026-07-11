@@ -1,0 +1,48 @@
+- type: accessLevel
+  id: TdfChiefEnforcer
+  name: id-card-access-level-tdf-chief-enforcer
+
+- type: accessLevel
+  id: TdfWarden
+  name: id-card-access-level-tdf-warden
+
+- type: accessLevel
+  id: TdfPatrolTeamLeader
+  name: id-card-access-level-tdf-patrol-team-leader
+
+- type: accessGroup
+  id: GeneralTdfAccess # No brig access
+  tags:
+  - Maintenance
+  - External
+  - Security
+
+- type: accessGroup
+  id: CadetTdfAccess
+  tags:
+  - Maintenance
+  - External
+  - Security
+  - Brig
+
+- type: accessGroup
+  id: GeneralTdfAccessBrig
+  tags:
+  - Maintenance
+  - External
+  - Brig
+  - Security
+  - Mercenary
+  - Captain
+
+- type: accessGroup
+  id: GeneralTdfMedicAccess
+  tags:
+  - Maintenance
+  - External
+  - Brig
+  - Security
+  - Mercenary
+  - Captain
+  - Chemistry
+  - Medical

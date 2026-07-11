@@ -31,11 +31,11 @@
   - WeaponDEWSmilodon
   - WeaponLauncherTSFOsiris
 
-- type: latheRecipePack
-  id: MonoTSFVouchersDynamic
-  recipes:
-  - FlyssaVoucherTSF
-  - AltairVoucherTSF
+#- type: latheRecipePack
+#  id: MonoTSFVouchersDynamic
+#  recipes:
+#  - FlyssaVoucherTSF
+#  - AltairVoucherTSF
 
 - type: latheRecipePack
   id: MonoTSFMiscDynamic

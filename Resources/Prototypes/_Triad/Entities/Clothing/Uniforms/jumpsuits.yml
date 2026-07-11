@@ -1,0 +1,63 @@
+# Triad Defense Force
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfJunior
+  name: TDF junior enforcer tactical jumpsuit
+  description: A tactical jumpsuit for junior enforcers in the field. A gold-colored 'C' is emblazoned on the back.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/junior_enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfCombatMedic
+  name: TDF combat medic jumpsuit
+  description: A tactical jumpsuit for TDF medics in the field, sporting a blue cross.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/combat_medic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfEnforcer
+  name: TDF enforcer tactical jumpsuit
+  description: A tactical jumpsuit for enforcers in the field.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfPatrolTeamLeader
+  name: TDF patrol team leader tactical jumpsuit
+  description: A tactical jumpsuit for patrol team leaders in the field, sporting a double armband.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/section_leader.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfWarden
+  name: TDF warden tactical jumpsuit
+  description: A tactical jumpsuit for the dude who sits in the brig all the time.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/warden.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfChiefEnforcer
+  name: TDF chief enforcer tactical turtleneck
+  description: A tactical turtleneck for the Chief Enforcer of the Triad Defense Force.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/chief_enforcer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  name: chief enforcer's formal suit
+  description: A suit for special occasions.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/chief_enforcer_dress.rsi

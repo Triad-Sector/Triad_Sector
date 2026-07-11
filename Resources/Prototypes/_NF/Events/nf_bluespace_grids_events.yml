@@ -40,86 +40,87 @@
     rewardAccounts:
       Nfsd: 1.0
 
-- type: entity
-  id: BluespaceVaultError
-  parent: BaseStationEventLongDelay # Triad changed to long because of how easy it is to breach this one
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-bluespace-vault-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    warningAnnouncement: station-event-bluespace-vault-warning-announcement
-    endAnnouncement: station-event-bluespace-vault-end-announcement
-    earliestStart: 60 # Mono
-    weight: 5
-    duration: 1020
-    maxDuration: 1350
-    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
-    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
-    #  Sheriff: 1
-  - type: BluespaceErrorRule
-    groups:
-      grid: !type:GridSpawnGroup
-        nameLoc:
-        - station-event-bluespace-name-SecureNTVault
-        minimumDistance: 5000 # Triad
-        maximumDistance: 10000 # Triad
-        addComponents:
-        - type: Gravity
-          enabled: true
-          inherent: true
-        - type: IFF
-          color: "#E10F9B"
-        - type: LinkedLifecycleGridParent
-        - type: ProtectedGrid
-          preventArtifactTriggers: true
-        - type: PreventPilot
-        - type: ForceAnchor
-        paths:
-        - /Maps/_NF/Bluespace/vault.yml
-    rewardAccounts:
-      Nfsd: 1.0
+# Triad - moved these to Triad namespace for TDF vaults
+#- type: entity
+#  id: BluespaceVaultError
+#  parent: BaseStationEventLongDelay # Triad changed to long because of how easy it is to breach this one
+#  components:
+#  - type: StationEvent
+#    startAnnouncement: station-event-bluespace-vault-start-announcement
+#    startAudio:
+#     path: /Audio/Announcements/attention.ogg
+#    warningAnnouncement: station-event-bluespace-vault-warning-announcement
+#   endAnnouncement: station-event-bluespace-vault-end-announcement
+#    earliestStart: 60 # Mono
+#    weight: 5
+#    duration: 1020
+#    maxDuration: 1350
+#    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
+#    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
+#    #  Sheriff: 1
+#  - type: BluespaceErrorRule
+#    groups:
+#      grid: !type:GridSpawnGroup
+#        nameLoc:
+#        - station-event-bluespace-name-SecureNTVault
+#        minimumDistance: 5000 # Triad
+#        maximumDistance: 10000 # Triad
+#        addComponents:
+#        - type: Gravity
+#          enabled: true
+#          inherent: true
+#        - type: IFF
+#          color: "#E10F9B"
+#        - type: LinkedLifecycleGridParent
+#        - type: ProtectedGrid
+#          preventArtifactTriggers: true
+#        - type: PreventPilot
+#        - type: ForceAnchor
+#        paths:
+#        - /Maps/_NF/Bluespace/vault.yml
+#    rewardAccounts:
+#      Nfsd: 1.0
 
-- type: entity
-  id: BluespaceVaultSmallError
-  parent: BaseStationEventShortDelay # Triad, didnt change anything, for what t's worth, keep it as is
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-bluespace-vault-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    warningAnnouncement: station-event-bluespace-vault-warning-announcement
-    endAnnouncement: station-event-bluespace-vault-end-announcement
-    earliestStart: 60 # Mono
-    maximumPlayers: 0 # Mono
-    weight: 5
-    duration: 590
-    maxDuration: 780
-    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
-    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
-    #  Sheriff: 1
-  - type: BluespaceErrorRule
-    groups:
-      grid: !type:GridSpawnGroup
-        nameLoc:
-        - station-event-bluespace-name-SecureNTVault
-        minimumDistance: 5000 # Triad
-        maximumDistance: 10000 # Triad
-        addComponents:
-        - type: Gravity
-          enabled: true
-          inherent: true
-        - type: IFF
-          color: "#E10F9B"
-        - type: LinkedLifecycleGridParent
-        - type: ProtectedGrid
-          preventArtifactTriggers: true
-        - type: PreventPilot
-        - type: ForceAnchor
-        paths:
-        - /Maps/_NF/Bluespace/vaultsmall.yml
-    rewardAccounts:
-      Nfsd: 1.0
+#- type: entity
+#  id: BluespaceVaultSmallError
+#  parent: BaseStationEventShortDelay # Triad, didnt change anything, for what t's worth, keep it as is
+#  components:
+#  - type: StationEvent
+#    startAnnouncement: station-event-bluespace-vault-start-announcement
+#    startAudio:
+#      path: /Audio/Announcements/attention.ogg
+#    warningAnnouncement: station-event-bluespace-vault-warning-announcement
+#    endAnnouncement: station-event-bluespace-vault-end-announcement
+#    earliestStart: 60 # Mono
+#    maximumPlayers: 0 # Mono
+#    weight: 5
+#   duration: 590
+#    maxDuration: 780
+#    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
+#    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
+#    #  Sheriff: 1
+#  - type: BluespaceErrorRule
+#    groups:
+#      grid: !type:GridSpawnGroup
+#        nameLoc:
+#        - station-event-bluespace-name-SecureNTVault
+#        minimumDistance: 5000 # Triad
+#        maximumDistance: 10000 # Triad
+#        addComponents:
+#        - type: Gravity
+#          enabled: true
+#          inherent: true
+#        - type: IFF
+#          color: "#E10F9B"
+#        - type: LinkedLifecycleGridParent
+#        - type: ProtectedGrid
+#          preventArtifactTriggers: true
+#        - type: PreventPilot
+#        - type: ForceAnchor
+#        paths:
+#       - /Maps/_NF/Bluespace/vaultsmall.yml
+#    rewardAccounts:
+#      Nfsd: 1.0
 
 - type: entity
   id: BluespaceSyndicateFTLInterception

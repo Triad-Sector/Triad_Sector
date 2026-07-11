@@ -23,7 +23,7 @@
   - type: PowerChargerVisuals
   - type: ApcPowerReceiver
     needsPower: false
-    powerLoad: 0 # Mono Revert
+    powerLoad: 1 # Triad, same as draw given in ChargerComponent.PassiveDraw; increased when it is actually charging something. Done to prevent test fails, needsPower should fix everything else.
   - type: StaticPrice
     price: 500
   - type: Tag

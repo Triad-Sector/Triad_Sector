@@ -21,7 +21,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled
@@ -64,7 +64,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled
@@ -108,7 +108,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled
@@ -151,7 +151,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled
@@ -199,7 +199,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled
@@ -242,7 +242,7 @@
   storage:
     back:
     - RadioHandheldNF
-    - BaseSecurityUplinkRadioDeputy
+    #- BaseSecurityUplinkRadioDeputy
     - DoubleEmergencyOxygenTank
     - MedkitCombatFilled
     - MedkitCombatFilled

@@ -46,7 +46,9 @@
       path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Anchorable
   - type: HTN
-    sleepPlayerCheckRangeOverride: 2000
+    sleepPlayerCheckRangeOverride: 2000 # Triad: revert of #4075 (Mono 2x'd 2000->4000)
+    # Triad: disabled. A rammer is always moving, so this kept it permanently awake, it never slept away from players and self-piloted across the sector into safe zones (CC) and over-despawned in the far reaches. Per-drone radial containment is the real fix; this stops the bleeding. (revert of #4075)
+    # sleepMaxGridSpeed: 10 # don't sleep so we can still dodge grids or such if drifting far from players
     rootTask:
       task: RammerShuttleCompound
   - type: StaticPrice
@@ -212,7 +214,6 @@
   suffix: AI, Drone-Assembly
   components:
   - type: HTN
-    sleepPlayerCheckRangeOverride: 4000
     rootTask:
       task: DroneCompoundAssembly
 
@@ -237,6 +238,18 @@
   - type: HTN
     rootTask:
       task: DroneCompoundLance
+
+- type: entity
+  id: NpcDroneAiQuake
+  name: attacker core
+  parent: [NpcStationAiAttackerSmart, BaseFactionGearOtherFactionT3]
+  description: Shoots at you.
+  suffix: AI, Drone-Quake
+  components:
+  - type: HTN
+    sleepPlayerCheckRangeOverride: 2000 # Triad: revert of #4075 (Mono 2x'd 2000->4000)
+    rootTask:
+      task: DroneCompoundQuake
 
 #region Spawners
 
@@ -398,3 +411,13 @@
   - type: ConditionalSpawner
     prototypes:
     - NpcDroneAiLance
+
+- type: entity
+  name: attacker core spawner
+  id: SpawnMobDroneAiQuake
+  parent: SpawnMobAttackerCore
+  suffix: Drone-Quake
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - NpcDroneAiQuake

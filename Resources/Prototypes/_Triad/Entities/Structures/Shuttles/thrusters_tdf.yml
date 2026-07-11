@@ -1,0 +1,50 @@
+- type: entity
+  parent: ThrusterLargeNfsd
+  id: ThrusterLargeTdf
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/thrustertdf_large.rsi
+
+- type: entity
+  parent: ThrusterNfsd
+  id: ThrusterTdf
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/thrustertdf.rsi
+
+- type: entity
+  parent: DebugThrusterNfsd
+  id: DebugThrusterTdf
+  suffix: DEBUG, TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/thrustertdf.rsi
+  - type: Machine
+    board: ThrusterNfsdMachineCircuitboard
+
+- type: entity
+  parent: GyroscopeNfsd
+  id: GyroscopeTdf
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
+
+- type: entity
+  parent: DebugGyroscopeNfsd
+  id: DebugGyroscopeTdf
+  suffix: DEBUG, TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
+
+- type: entity
+  parent: SmallGyroscopeNfsd
+  id: SmallGyroscopeTdf
+  name: small gyroscope
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Shuttles/nfsdgyroscope.rsi # TODO - Sprite

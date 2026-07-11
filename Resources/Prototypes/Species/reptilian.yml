@@ -15,8 +15,13 @@
 - type: speciesBaseSprites
   id: MobReptilianSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobReptilianHead
+    Hair: MobHumanoidAnyMarking # Triad - Reptilian hair.
     Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobReptilianTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -33,10 +38,10 @@
 
 - type: markingPoints
   id: MobReptilianMarkingLimits
-  onlyWhitelisted: true
+  onlyWhitelisted: false # Triad - Reptilian hair.
   points:
     Hair:
-      points: 0
+      points: 1 # Triad - Reptilian hair.
       required: false
     FacialHair:
       points: 0
@@ -54,6 +59,12 @@
       required: false
     HeadSide:
       points: 2 # WWDP-Edit
+      required: false
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
       required: false
     Chest:
       points: 3

@@ -1,0 +1,115 @@
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2]
+  id: ClothingOuterHardsuitTdf
+  name: TA-21 hardsuit
+  description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.6
+        Heat: 0.7
+        Radiation: 0.65
+        Caustic: 0.8
+  - type: StaminaDamageResistance
+    coefficient: 0.25
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdf
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 5000
+    vendPrice: 7500
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuit
+
+- type: entity
+  parent: ClothingOuterHardsuitTdf
+  id: ClothingOuterHardsuitTdfMedic
+  name: TA-21 medic hardsuit
+  description: Medic variant of the TA-21 outfitted with caustic and radiological shielding. Some of the blunt-absorbent gel layer is sacrificed for the NBC protection.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.7
+        Heat: 0.6
+        Radiation: 0.2
+        Caustic: 0.5
+        Poison: 0.9
+  - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfMedic
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+
+- type: entity
+  parent: ClothingOuterHardsuitTdf
+  id: ClothingOuterHardsuitTdfChiefEnforcer
+  name: TDF TA-35 'gilded' chief enforcer tacsuit
+  description: A powerful tacsuit made from remains of a NT bulwark modsuit. Lightweight and capable of taking a lot of physical damage. A premium tacsuit for only the most prestiged of TDF enforcers.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-chief.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-chief.rsi
+  - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfChiefEnforcer
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: FireProtection
+    reduction: 0.5
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.45
+        Radiation: 0.4
+        Caustic: 0.5
+        Poison: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 1
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.35
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue

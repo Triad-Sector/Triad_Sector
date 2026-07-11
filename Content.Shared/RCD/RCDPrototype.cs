@@ -61,6 +61,22 @@ public sealed partial class RCDPrototype : IPrototype
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public bool AllowMultiDirection { get; private set; }
 
+    // Triad: RPD port from funky-station. MirrorPrototype enables flipped variants (gas filter/mixer); NoLayers opts out
+    // of the RPD's quadrant-based pipe-layer placement for items that have no Primary/Secondary/Tertiary variants
+    // (vents, scrubbers, alarms, etc.).
+    /// <summary>
+    /// If the entity can be flipped, this prototype is available as an alternate (mode dependent).
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public EntProtoId? MirrorPrototype { get; private set; }
+
+    /// <summary>
+    /// If true, the RPD will not attempt to pick an atmos pipe layer alternative for this prototype.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public bool NoLayers { get; private set; }
+    // End Triad
+
     /// <summary>
     /// Number of charges consumed when the operation is completed
     /// </summary>

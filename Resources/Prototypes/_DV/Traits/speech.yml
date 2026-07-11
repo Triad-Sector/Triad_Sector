@@ -1,11 +1,298 @@
-# 1 Cost
+## If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+
+# Triad: Pirate accent, enriched + display name overridden to "Freeport Corsair"
+# (trait-freeportcorsair-accent-name). Kept the upstream PirateAccent id/component for portability and
+# so the cursed cutlass, pirate uniforms, and pet NPC share the enriched accent.
+- type: trait
+  id: PirateAccent
+  name: trait-freeportcorsair-accent-name
+  description: trait-freeportcorsair-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: PirateAccent
+# End Triad
+
+# Triad: Southern accent, display name overridden to "Heartworld Gentry" (trait-heartworldgentry-accent-name); vocab enriched
+- type: trait
+  id: SouthernAccent
+  name: trait-heartworldgentry-accent-name
+  description: trait-heartworldgentry-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: SouthernAccent
+# End Triad
+
+# Triad: Cowboy accent, display name overridden to "Trailhand" (trait-trailhand-accent-name); promoted to the shared drawl engine + enriched
+- type: trait
+  id: CowboyAccent
+  name: trait-trailhand-accent-name
+  description: trait-trailhand-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: CowboyAccent
+# End Triad
+
+# Triad: removed - retired the Italian ("space Italian") player trait; it is the unenriched legacy accent
+# and not wanted at the Triad table. The `italian` accent prototype + the items that grant it stay.
+#- type: trait
+#  id: ItalianAccent
+#  name: trait-italian-name
+#  description: trait-italian-desc
+#  category: Accents
+#  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: ReplacementAccent
+#      accent: italian
+
+# Triad: Muted is a speech DISABILITY, not an accent. Recategorized to Disabilities (free, and correctly
+# independent of LANGUAGES: a mute character still understands languages, they just can't speak aloud).
+- type: trait
+  id: Muted
+  name: trait-muted-name
+  description: trait-muted-desc
+  category: Disabilities
+  cost: 0
+  conditions:
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  # Triad: a mute character can't speak, so no accent (or Stutter/Frontal Lisp, also Accents-category) should
+  # apply. Category-level gate so any accent added later is covered automatically, no per-accent maintenance.
+  - !type:HasTraitInCategoryCondition
+    category: Accents
+    invert: true
+    tooltip: trait-condition-muted-no-accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Muted
+
+# Triad: French accent, display name overridden to "Terra Gallic" (trait-terragallic-accent-name); vocab enriched
+- type: trait
+  id: FrenchAccent
+  name: trait-terragallic-accent-name
+  description: trait-terragallic-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: FrenchAccent
+# End Triad
+
+# Triad: lighter "slight" French. Same cost as thick.
+- type: trait
+  id: FrenchAccentSlight
+  name: trait-terragallic-mild-accent-name
+  description: trait-terragallic-mild-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: FrenchAccent
+      strength: Slight
+# End Triad
+
+# Triad: Spanish accent, display name overridden to "Terra Latino" (trait-terralatino-accent-name); vocab enriched
+- type: trait
+  id: SpanishAccent
+  name: trait-terralatino-accent-name
+  description: trait-terralatino-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: SpanishAccent
+# End Triad
+
+# Triad: lighter "slight" Spanish. Same cost as thick.
+- type: trait
+  id: SpanishAccentSlight
+  name: trait-terralatino-mild-accent-name
+  description: trait-terralatino-mild-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: SpanishAccent
+      strength: Slight
+# End Triad
+
+# Triad: removed - retired the Mobster player trait in favor of the Triad-original New Brooklyn accent
+# (see _Triad/Traits/speech.yml). The MobsterAccent COMPONENT stays for the regal rat mob + bound role/items.
+#- type: trait
+#  id: MobsterAccent
+#  name: trait-mobster-accent-name
+#  description: trait-mobster-accent-desc
+#  category: Accents
+#  cost: 0
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#    - type: MobsterAccent
 
 - type: trait
-  id: ScottishAccent
-  name: trait-scottish-accent-name
-  description: trait-scottish-accent-desc
-  category: SpeechTraits
+  id: DwarvenBrogue # Triad: merged the near-identical Scottish + Dwarf accents into one brogue
+  name: trait-dwarven-brogue-name
+  description: trait-dwarven-brogue-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool. (Grants a BagpipeInstrument; that item is flavor, not the cost.)
+  conditions:
+  # Triad: Dwarves speak the brogue natively, so never re-take it. Other heavy-native species (Goblin) need
+  # Accentless first so two dialects don't stack.
+  - !type:IsSpeciesCondition
+    species: Dwarf
+    invert: true
+  - !type:HasFreeAccentSlotCondition
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: DwarfAccent
+  - !type:SpawnItemInHandEffect # Triad: keep the bagpipe
+    item: BagpipeInstrument
+
+# Triad: lighter "slight" Dwarven Brogue. Same cost as thick (no bagpipe on the mild version).
+- type: trait
+  id: DwarvenBrogueSlight
+  name: trait-dwarven-brogue-mild-name
+  description: trait-dwarven-brogue-mild-desc
+  category: Accents
   cost: 1
-  traitGear: BagpipeInstrument
-  components:
-    - type: ScottishAccent
+  conditions:
+  # Triad: same gate as any dialect; a Dwarf takes the mild brogue only after Accentless clears their native
+  # one. Accentless is cost 0, so it applies first (cheapest-first order) and removes the native thick
+  # DwarfAccent before this slight one is added.
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: DwarfAccent
+      strength: Slight
+# End Triad
+
+# Triad: German accent, display name overridden to "Terra Germanic" (trait-terragermanic-accent-name);
+# our enriched German vocab takes precedence over the upstream "German accent" trait added in #231.
+- type: trait
+  id: GermanAccent
+  name: trait-terragermanic-accent-name
+  description: trait-terragermanic-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GermanAccent
+# End Triad
+
+# Triad: lighter "slight" German for an assimilated colonist. Same cost as thick.
+- type: trait
+  id: GermanAccentSlight
+  name: trait-terragermanic-mild-accent-name
+  description: trait-terragermanic-mild-accent-desc
+  category: Accents
+  cost: 1
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GermanAccent
+      strength: Slight
+# End Triad
+
+- type: trait
+  id: Accentless
+  name: trait-accentless-name
+  description: trait-accentless-desc
+  category: Accents
+  cost: 0 # Triad: free modifier (removes a species accent), not a paid dialect.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Accentless
+      removes:
+      - type: GoblinAccent # Frontier
+      - type: LizardAccent
+      - type: MothAccent
+      - type: DwarfAccent
+
+- type: trait
+  id: SocialAnxiety
+  name: trait-socialanxiety-name
+  description: trait-socialanxiety-desc
+  category: Accents
+  cost: 0 # Triad: free speech modifier (post-layer stutter), not a paid dialect; rides alongside one dialect.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: StutteringAccent
+      matchRandomProb: 0.1
+      fourRandomProb: 0
+      threeRandomProb: 0
+      cutRandomProb: 0
+
+- type: trait
+  id: FrontalLisp
+  name: trait-frontal-lisp-name
+  description: trait-frontal-lisp-desc
+  category: Accents
+  cost: 0 # Triad: free speech modifier (post-layer lisp), not a paid dialect; rides alongside one dialect.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: FrontalLisp
+
+# Mono: Unimplemented trait
+# - type: trait
+#   id: Hushed
+#   name: trait-hushed-name
+#   description: trait-hushed-desc
+#   category: Accents
+#   cost: 0
+#   effects:
+#   - !type:AddCompsEffect
+#     components:
+#     - type: Hushed
+
+# Mono: Unimplemented trait
+# - type: trait
+#   id: AnglishTung
+#   name: trait-anglish-name
+#   description: trait-anglish-desc
+#   category: Accents
+#   cost: 2
+#   effects:
+#   - !type:AddCompsEffect
+#     components:
+#     - type: AnglishAccent

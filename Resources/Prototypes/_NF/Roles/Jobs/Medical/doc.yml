@@ -5,10 +5,10 @@
   playTimeTracker: JobDirectorOfCare
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 81000 # triad
+      time: 81000 # Triad - 22.5 hours
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 36000 # triad
+      time: 36000 # Triad - 10 hours
   alternateRequirementSets: # mono
     longerPlaytimeLessSec: # mono
     - !type:OverallPlaytimeRequirement # mono
@@ -24,15 +24,18 @@
   canBeAntag: false
   accessGroups:
   - AllAccessSR
+  ranks: # Triad, ranks
+    RankDoC: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
+    implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
       - type: NpcFactionMember
         factions:
         - MD # mono faction
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
       - type: SurgerySpeedModifier
         SpeedModifier: 2
   - !type:GiveItemOnHolidaySpecial

@@ -9,7 +9,7 @@
     hideCarryStatus: true
     severity: FactionGear0
     turnInValues:
-      FederationMilitaryCredit: 0
+      TriadCommerceCredit: 0 # Triad - currency change
       Doubloon: 0
 
 #region PDV
@@ -114,7 +114,7 @@
   - type: Contraband
     severity: OtherFactionGear1
     turnInValues:
-      FederationMilitaryCredit: 5
+      TriadCommerceCredit: 5 # Triad - currency change
       Doubloon: 5
 
 - type: entity
@@ -125,7 +125,7 @@
   - type: Contraband
     severity: OtherFactionGear2
     turnInValues:
-      FederationMilitaryCredit: 15
+      TriadCommerceCredit: 15 # Triad - currency change
       Doubloon: 15
 
 - type: entity
@@ -136,7 +136,7 @@
   - type: Contraband
     severity: OtherFactionGear3
     turnInValues:
-      FederationMilitaryCredit: 45
+      TriadCommerceCredit: 45 # Triad - currency change
       Doubloon: 45
 
 #endregion
@@ -160,7 +160,7 @@
   - type: Contraband
     severity: OtherFactionGear1
     turnInValues:
-      FederationMilitaryCredit: 5
+      TriadCommerceCredit: 5 # Triad - currency change
       Doubloon: 5
 
 - type: entity
@@ -171,7 +171,7 @@
   - type: Contraband
     severity: OtherFactionGear2
     turnInValues:
-      FederationMilitaryCredit: 15
+      TriadCommerceCredit: 15 # Triad - currency change
       Doubloon: 15
 
 - type: entity
@@ -182,7 +182,7 @@
   - type: Contraband
     severity: OtherFactionGear3
     turnInValues:
-      FederationMilitaryCredit: 45
+      TriadCommerceCredit: 45 # Triad
       Doubloon: 45
 
 #endregion
@@ -197,7 +197,7 @@
   - type: Contraband
     severity: MonolithContrabandT1
     turnInValues:
-      FederationMilitaryCredit: 15
+      TriadCommerceCredit: 15 # Triad
       Doubloon: 15
 
 - type: entity
@@ -208,7 +208,7 @@
   - type: Contraband
     severity: MonolithContrabandT2
     turnInValues:
-      FederationMilitaryCredit: 25
+      TriadCommerceCredit: 25 # Triad
       Doubloon: 25
 
 - type: entity
@@ -219,7 +219,7 @@
   - type: Contraband
     severity: MonolithContrabandT3
     turnInValues:
-      FederationMilitaryCredit: 50
+      TriadCommerceCredit: 50 # Triad
       Doubloon: 50
 
 #endregion

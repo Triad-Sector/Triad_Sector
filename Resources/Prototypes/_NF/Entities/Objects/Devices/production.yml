@@ -84,18 +84,48 @@
           amount: 2
           defaultPrototype: Beaker
 
+- type: entity
+  id: GasMiningDrillMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: gas mining drill machine board
+  description: A machine printed circuit board for a gas mining drill.
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: GasMiningDrill
+      requirements:
+        Manipulator: 3
+      stackRequirements:
+        Steel: 10
+
+- type: entity
+  id: GaslockFrameMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: portable gaslock machine board
+  description: A machine printed circuit board for a gas mining drill.
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: GaslockFrame
+      stackRequirements:
+        Steel: 10
+
 # TechFab
 - type: entity
   id: NfsdTechFabCircuitboard
   parent: SecurityTechFabCircuitboard
-  name: TSFMC techfab machine board
-  description: A machine printed circuit board for an TSFMC techfab.
+  name: TDF techfab machine board
+  description: A machine printed circuit board for an TDF techfab.
   components:
     - type: Sprite
       sprite: _NF/Objects/Misc/module.rsi
       state: nfsd
     - type: MachineBoard
       prototype: NfsdTechFab
+    - type: SavingContraband # Triad
+      examineText: ship-saving-contraband-2-text
 
 # Thrusters
 - type: entity
@@ -113,10 +143,10 @@
 - type: entity
   id: ThrusterNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: TSFMC thruster machine board
+  name: TDF thruster machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: ThrusterNfsd
+    prototype: ThrusterTdf # Triad - prototype
     requirements:
       Capacitor: 1
     stackRequirements:
@@ -195,10 +225,10 @@
 - type: entity
   id: GyroscopeNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: TSFMC gyroscope machine board
+  name: TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: GyroscopeNfsd
+    prototype: GyroscopeTdf # Triad - prototype
     requirements:
       Manipulator: 2
       Capacitor: 1
@@ -208,10 +238,10 @@
 - type: entity
   id: SmallGyroscopeNfsdMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: small TSFMC gyroscope machine board
+  name: small TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: SmallGyroscopeNfsd
+    prototype: SmallGyroscopeTdf # Triad - Prototype
     requirements:
       Manipulator: 2
       Capacitor: 1
@@ -292,6 +322,22 @@
         Silicon: 20
     - type: StaticPrice
       price: 40
+
+- type: entity
+  id: PortableSMESMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: portable SMES machine board
+  description: A machine printed circuit board for a portable SMES.
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: PortableSMESEmpty
+      requirements:
+        Capacitor: 1
+        PowerCell: 4
+      stackRequirements:
+        CableHV: 10
 
 - type: entity
   id: BlueprintLithographMachineCircuitboard
@@ -415,9 +461,45 @@
             defaultPrototype: Beaker
 
 - type: entity
+  id: ImpCoffeeMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: spacepresso machine board
+  description: A machine printed circuit board for a spacepresso machine.
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: ImpCoffeeMachineEmpty
+      stackRequirements:
+        Steel: 5
+      tagRequirements:
+          GlassBeaker:
+            amount: 1
+            defaultPrototype: Beaker
+
+- type: entity
   parent: StationAnchorCircuitboard
   id: MiniStationAnchorCircuitboard
   name: mini station anchor machine board
   components:
   - type: MachineBoard
     prototype: MiniStationAnchor
+
+- type: entity
+  id: PortablePumpMachineCircuitBoard
+  parent: BaseMachineCircuitboard
+  name: portable pump machine board
+  description: A machine printed circuit board for a portable pump.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: PortablePump
+    requirements:
+      Manipulator: 2
+    stackRequirements:
+      Cable: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker

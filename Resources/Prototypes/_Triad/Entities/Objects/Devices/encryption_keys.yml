@@ -1,0 +1,21 @@
+- type: entity
+  parent: [ BaseFactionGearTDFT1, EncryptionKey ]
+  id: EncryptionKeyTdf
+  name: TDF encryption key
+  categories: [ DoNotMap ]
+  description: An encryption key for the TDF channel.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Nfsd
+    defaultChannel: Nfsd
+  - type: Item
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+  - type: Sprite
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gray
+    - sprite: Objects/Devices/encryption_keys.rsi
+      state: hos_label
+  - type: PirateBountyItem
+    id: EncryptionKeyFaction

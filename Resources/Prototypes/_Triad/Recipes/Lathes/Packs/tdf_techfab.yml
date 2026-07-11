@@ -1,0 +1,47 @@
+- type: latheRecipePack
+  id: TdfTechfabStatic
+  recipes:
+  - ClothingEyesHudSecurityTdf
+  - CombatKnife
+  - Flash
+  - ForensicPad
+  - Handcuffs
+  - RiotShield
+  - Stunbaton
+  - TargetClown
+  - TargetHuman
+  - TargetSyndicate
+  - WeaponDisablerPractice
+  - WeaponLaserCarbinePractice
+  - Zipties
+  - ThrusterNfsdMachineCircuitboard
+  - SmallThrusterMachineCircuitboard
+  - GyroscopeNfsdMachineCircuitboard
+  - SmallGyroscopeNfsdMachineCircuitboard
+  - ClothingOuterHardsuitEVAPrisoner
+  - WeaponDisabler
+  - ContrabandAppraisalTool
+  - HoloprojectorNfsd
+  - ClothingBackpackElectropack
+  - PowerCageRechargerCircuitboard
+  - PowerCageHigh
+  - PowerCageMedium
+  - PowerCageSmall
+  - Signaller
+
+- type: latheRecipePack
+  id: TdfTechfabDynamic
+  recipes:
+  - ExplosivePayload
+  - FlashPayload
+  - PortableRecharger
+  - SignalTrigger
+  - TelescopicShield
+  - TimerTrigger
+  - Truncheon
+  - VoiceTrigger
+  - WeaponAdvancedLaser
+  - WeaponDisablerSMG
+  - WeaponLaserCannon
+  - WeaponLaserCarbine
+  - WeaponXrayCannon

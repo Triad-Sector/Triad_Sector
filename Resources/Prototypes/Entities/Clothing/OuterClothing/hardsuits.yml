@@ -833,7 +833,7 @@
   parent: [ClothingOuterHardsuitBase]
   id: ClothingOuterHardsuitJuggernaut
   name: cybersun juggernaut suit
-  description: A suit originally made by the cutting edge R&D department at cybersun to be hyper resilient, now recycled and used by the Phaethon Dynasty. Hefty and durable, but not fully insulated.
+  description: A suit originally made by the cutting edge R&D department at cybersun to be hyper resilient, now recycled and used by bandits. Hefty and durable, but not fully insulated.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Hardsuits/cybersun.rsi

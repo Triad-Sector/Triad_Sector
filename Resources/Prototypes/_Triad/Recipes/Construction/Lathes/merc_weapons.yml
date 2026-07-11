@@ -1,0 +1,17 @@
+- type: latheRecipe
+  id: WeaponPistolStiletto
+  parent: BaseWeaponRecipeLong
+  result: WeaponPistolStiletto
+  icon:
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stilleto.rsi
+    state: icon-full
+  categories:
+  - Sidearms
+  - Ballistic
+  - Weapons
+  materials:
+    Plastitanium: 500
+    Plasteel: 2000
+    Glass: 500
+    Gold: 500
+    Silver: 500

@@ -53,7 +53,7 @@
         - state: crypt_blue
         - state: pirate_label
 
-# Overseer variant w/ no TSFMC or TSF command radio key
+# Overseer variant w/ no TDF radio key
 
 - type: entity
   parent: EncryptionKeyStationMaster
@@ -62,6 +62,7 @@
   - type: EncryptionKey
     channels:
     - Common
+    - Command # Triad
     - Engineering
     - Medical
     - Science
@@ -70,6 +71,8 @@
     - Supply
     - Traffic
     defaultChannel: Service
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
  # Diplomacy with faction heads, seperated from master key to allow toggling off
 - type: entity
@@ -80,8 +83,10 @@
   components:
   - type: EncryptionKey
     channels:
-    - Command
-    - VanguardCommand
-    #- Nfsd #Deliberately excluded: You don't command them
+    # - Command
+    # - VanguardCommand
+    - Nfsd
     #- Freelance
     defaultChannel: Command
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text

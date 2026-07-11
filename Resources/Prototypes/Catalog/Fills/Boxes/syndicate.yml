@@ -80,8 +80,8 @@
       - state: france
   - type: StorageFill
     contents:
-      - id: WeaponCroissant
-        amount: 2
+      - id: WeaponCroissant # Triad changed to 1
       - id: WeaponBaguette
       - id: SyndicateMicrowaveMachineCircuitboard
+      - id: SyndicateElectricRangeMachineCircuitboard # Triad
       - id: PaperWrittenCombatBakeryKit

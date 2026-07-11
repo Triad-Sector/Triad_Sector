@@ -1,8 +1,8 @@
 - type: entity
   id: BannerNGC
   parent: BannerBase
-  name: TSF banner
-  description: A banner proudly displaying the stars of the Trans-Solar Federation.
+  name: Federated Solarian Republic banner
+  description: A banner proudly displaying the stars of the Sol system and its territories.
   components:
   - type: Sprite
     sprite: _Mono/Structures/Decoration/banner.rsi

@@ -1,0 +1,100 @@
+- type: entity
+  name: HZD Stiletto (.45 magnum)
+  parent: [BaseWeaponPistol, BaseGunWieldable, BaseGunToggleable]
+  id: WeaponPistolStiletto
+  description: A bulky "pistol" designed for the operative in need of a concealable mid-long range option, features a folding stock, scope, and suppressor that massively assists in increasing accuracy.
+  components:
+  - type: GunToggleableBonus
+    minAngle: -3
+    maxAngle: -6
+    bonusFireRate: -1
+    requiresToggle: false
+    doAfterTime: 1
+  - type: GunChangeShotSoundOnToggled
+    sound:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
+  - type: BlockWieldOnUntoggled
+  - type: GunWieldBonus
+    minAngle: -1
+    maxAngle: -6
+  - type: Gun
+    minAngle: 5
+    maxAngle: 15
+    fireRate: 3
+    angleIncrease: 9
+    angleDecay: 6
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
+    availableModes:
+    - SemiAuto
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stilleto.rsi
+    layers:
+    - state: stock
+      map: ["enum.ToggleableVisuals.Layer"]
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Triad/Objects/Weapons/Guns/Pistol/stiletto_inhands_32x.rsi
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+  - type: ItemToggleSize
+    activatedSize: Large
+    activatedShape:
+    - 0,0,3,1
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/SMGs/squire_inhands_32x.rsi
+  - type: ItemToggle
+    altPriority: 1
+    soundActivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+    soundDeactivate:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+      params:
+        variation: 0.2
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine45_magnumPistolFMJ
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - Magazine45_magnumPistolFMJ
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge45_magnumFMJ
+        priority: 1
+        whitelist:
+          tags:
+          - Cartridge45_magnumFMJ
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: stock }
+          False: { state: stock-folded }
+  - type: StaticPrice
+    price: 500
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 4
+    pvsIncrease: 0.4

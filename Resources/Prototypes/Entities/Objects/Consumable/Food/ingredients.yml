@@ -739,6 +739,12 @@
     entries:
       Taco: CheeseTaco
       Burger: CheeseBurger
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: cheesewedge-inhand-left
+      right:
+      - state: cheesewedge-inhand-right
 
 - type: entity
   name: chèvre log

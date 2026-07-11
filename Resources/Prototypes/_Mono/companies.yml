@@ -119,6 +119,7 @@
   description: dark-matter-enterprises-description
   color: "#BF00B9"
   image: /Textures/_Mono/Companies/dme.png #DME Logo
+  disabled: true # Triad
 
 - type: company
   id: AetherionDynamics
@@ -152,6 +153,7 @@
   name: Civil Defense Militia
   description: civil-defense-milita-description
   color: "#666600"
+  disabled: true # Triad
 
 - type: company
   id: UllmanIndustries
@@ -168,6 +170,7 @@
   description: nosske-eien-rnd-description
   color: "#9573AF"
   image: /Textures/_Mono/Companies/ne_rd.png
+  disabled: true # Triad
 
 - type: company
   id: blackhawkpmc
@@ -176,7 +179,7 @@
   description: blackhawkpmc-description
   color: "#419E23"
   image: /Textures/_Mono/Companies/BMC.png
-
+  disabled: true # Triad
 
 # Religious groups
 
@@ -219,17 +222,6 @@
   color: "#aa1010"
   image: /Textures/_Mono/Companies/CSP.png
   disabled: true
-  logins:
-    - GoobieWoob
-    - Coolzman
-    - Lumpy_the_Clown
-    - coolfied
-    - Callington
-    - Operator_Talon5
-    - CdrGreenwall
-    - MarssSett18
-    - Administratorx # Hopefully this doesnt get denied because it has adminstrator in it smh
-    - MSMarvin
 
 - type: company
   id: TheViperGroup
@@ -239,59 +231,12 @@
   color: "#B82121"
   image: /Textures/_Mono/Companies/thevipergroup.png # Example
   disabled: true
-  logins:
-  - Schizm1253
-  - Androidonator
-  - Archylle
-  - Battieralarm3
-  - bubz_bs
-  - capslfern
-  - DrOktober
-  - Ermac10108
-  - Ghost581
-  - hellcat76
-  - HungryCuban
-  - Scyron
-  - SwadianSupremacy
-  - Traildog
-  - PH77SER
-  - Siege_Of_Malta_Never_Happened
-  - gelliii
-  - Uranio
-  - Jinryuu
-  - FervantTwo8
-  - Exsa
-  - DesriTheRacoon
-  - AngusBeef
-  - ShirouAjisai
 
 - type: company
   id: RedSailCorsairs
   form: Antagonist
-  name: RedSail Corsairs 
+  name: RedSail Corsairs
   description: redsail-corsairs-description
   color: "#930000"
   image: /Textures/_Mono/Companies/redsailcorsairs.png
   disabled: true
-  logins: # Waiting for others to give me theyr SS14 names, 17 total 
-  - Corrupt
-  - Jasos
-  - Luksu
-  - FervantTwo8
-  - Wawa_pull
-  - Pffy
-  - SouthernSaint
-  - Abbyssl
-  - MSMarvin
-  - Dusky
-  - soulvapor
-  - EmmaFaith
-  - Ether
-  - MapleSilk
-  - Spacepeing
-  - zigcraft 
-  - burrrkeye
-  - enkidienne
-  - chugaa
-  - SLDuggy
-  - Middleagedman

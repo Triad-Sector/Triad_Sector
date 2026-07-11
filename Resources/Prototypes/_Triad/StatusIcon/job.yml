@@ -1,0 +1,47 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfChiefEnforcer
+  icon:
+    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
+    state: nfsdsheriff
+  jobName: job-name-tdf-chief-enforcer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfEnforcer
+  icon:
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfenforcer
+  jobName: job-name-tdf-enforcer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfMedic
+  icon:
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfmed
+  jobName: job-name-tdf-medic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfPatrolTeamLeader
+  icon:
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfleader
+  jobName: job-name-tdf-patrol-team-leader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfCadet
+  icon:
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfcadet
+  jobName: job-name-tdf-cadet
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTdfWarden
+  icon:
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfwarden
+  jobName: job-name-tdf-warden

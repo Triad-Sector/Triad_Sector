@@ -31,7 +31,7 @@
 - type: entity
   parent: CrateSecgear
   id: CrateNfsdBrigmedic
-  name: brigmedic crate
+  name: solarian medical crate
   components:
   - type: Icon
     sprite: _NF/Structures/Storage/Crates/nfsd_brigmed.rsi
@@ -43,7 +43,7 @@
 - type: entity
   parent: CrateSecgear
   id: CrateNfsdSecure1
-  name: TSFMC crate
+  name: solarian crate
   components:
   - type: Icon
     sprite: _NF/Structures/Storage/Crates/nfsd_secure1.rsi
@@ -55,7 +55,7 @@
 - type: entity
   parent: CrateSecgear
   id: CrateNfsdSecure2
-  name: TSFMC crate
+  name: solarian crate
   components:
   - type: Icon
     sprite: _NF/Structures/Storage/Crates/nfsd_secure2.rsi

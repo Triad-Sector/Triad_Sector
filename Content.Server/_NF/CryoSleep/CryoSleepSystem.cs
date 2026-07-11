@@ -39,6 +39,7 @@ using Robust.Shared.Timing;
 using Content.Server.Ghost;
 using Content.Shared.Roles;
 using Content.Server._NF.Shuttles.Components;
+using Content.Shared._Triad.CryoSleep;
 
 namespace Content.Server._NF.CryoSleep;
 
@@ -415,56 +416,20 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
                 ("y", Math.Round(mapPos.Position.Y)));
         }
 
-        // Check if character is a pirate, and if so, use Freelancer radio instead of Common
-        bool isPirate = false;
-        if (jobTitle != null)
+        // Triad - check if there's an cryo radio override on the body, if not then use common channel
+        if (TryComp<CryoSleepRadioOverrideComponent>(bodyId, out var comp))
         {
-            // Check if job is one of the pirate jobs
-            isPirate = jobTitle.Equals(Loc.GetString("job-name-pirate"), StringComparison.OrdinalIgnoreCase) ||
-                       jobTitle.Equals(Loc.GetString("job-name-pirate-captain"), StringComparison.OrdinalIgnoreCase) ||
-                       jobTitle.Equals(Loc.GetString("job-name-pirate-first-mate"), StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Check if character is TSF, and if so, use TSF radio instead of Common
-        bool isTSF = false;
-        if (jobTitle != null)
-        {
-            isTSF = jobTitle.Equals(Loc.GetString("job-name-bailiff"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-brigmedic"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-cadet-nf"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-deputy"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-nf-detective"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-sheriff"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-stc"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-sr"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-pal"), StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Send radio message on appropriate channel
-        if (isPirate)
-        {
-            // Use Freelancer channel for pirates
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>("Freelance", out var freelanceChannel))
+            foreach (var radioId in comp.Overrides)
             {
-                _radioSystem.SendRadioMessage(cryopod, message, freelanceChannel, cryopod);
-            }
-        }
-        else if (isTSF)
-        {
-            // Use TSF channel for TSF - Mono
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>("Nfsd", out var nfsdChannel))
-            {
-                _radioSystem.SendRadioMessage(cryopod, message, nfsdChannel, cryopod);
+                _radioSystem.SendRadioMessage(cryopod, message, radioId, cryopod);
             }
         }
         else
         {
-            // Use Common channel for everyone else
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>(SharedChatSystem.CommonChannel, out var commonChannel))
-            {
+            if (_prototypeManager.TryIndex(SharedChatSystem.CommonChannel, out var commonChannel))
                 _radioSystem.SendRadioMessage(cryopod, message, commonChannel, cryopod);
-            }
         }
+        // Triad end
 
         // Start a timer. When it ends, the body needs to be deleted.
         Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NFCCVars.CryoExpirationTime)), () =>

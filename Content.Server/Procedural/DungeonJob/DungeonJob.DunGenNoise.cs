@@ -144,7 +144,8 @@ public sealed partial class DungeonJob
             ValidateResume();
         }
 
-        _maps.SetTiles(_gridUid, _grid, tiles);
+        // Triad: chunk the commit so a large noise asteroid floor doesn't regenerate fixtures in one tick stall.
+        await SetTilesChunked(tiles);
         var dungeon = new Dungeon(rooms);
         return dungeon;
     }

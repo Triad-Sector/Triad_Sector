@@ -10,7 +10,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [rings.]
+  chatMessages: ["delta-chat-emote-msg-ring"] # Triad: was literal `rings.`
   chatTriggers:
     - ring
     - rings
@@ -29,7 +29,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [pews.]
+  chatMessages: ["delta-chat-emote-msg-pew"] # Triad: was literal `pews.`
   chatTriggers:
     - pew
     - pews
@@ -46,7 +46,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [bangs.]
+  chatMessages: ["delta-chat-emote-msg-bang"] # Triad: was literal `bangs.`
   chatTriggers:
     - bang
     - bangs
@@ -64,7 +64,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [revs.]
+  chatMessages: ["delta-chat-emote-msg-rev"] # Triad: was literal `revs.`
   chatTriggers:
     - rev
     - revs
@@ -82,7 +82,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [caws.]
+  chatMessages: ["delta-chat-emote-msg-caw"] # Triad: was literal `caws.`
   chatTriggers:
     - caw
     - caws
@@ -101,7 +101,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [barks.]
+  chatMessages: ["delta-chat-emote-msg-bark"] # Triad: was literal `barks.`
   chatTriggers:
     - bark
     - barks
@@ -119,7 +119,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [snarls.]
+  chatMessages: ["delta-chat-emote-msg-snarl"] # Triad: was literal `snarls.`
   chatTriggers:
     - snarl
     - snarls
@@ -137,7 +137,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [whimper.] # Starlight / Monolith: Renamed to whimper
+  chatMessages: ["delta-chat-emote-msg-whimper"] # Triad: was literal `whimper.`
   chatTriggers:
     - whimper
     - whimpers
@@ -155,7 +155,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [howls.]
+  chatMessages: ["delta-chat-emote-msg-howl"] # Triad: was literal `howls.`
   chatTriggers:
     - howl
     - howls
@@ -173,7 +173,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [awoos.]
+  chatMessages: ["delta-chat-emote-msg-awoo"] # Triad: was literal `awoos.`
   chatTriggers:
     - awoo
     - awoos
@@ -192,7 +192,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [gnashes.]
+  chatMessages: ["delta-chat-emote-msg-gnash"] # Triad: was literal `gnashes.`
   chatTriggers:
     - gnash
     - gnashes

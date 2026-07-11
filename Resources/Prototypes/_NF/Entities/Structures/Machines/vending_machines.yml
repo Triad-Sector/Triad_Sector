@@ -393,33 +393,6 @@
     color: "#EEEEFF"
 
 - type: entity
-  parent: VendingMachine # Mono - removed BaseStructureDisableAnchoring
-  id: VendingMachineNfsdDrobe
-  name: TSFMCDrobe
-  description: A vending machine for TSFMC clothing!
-  components:
-  - type: VendingMachine
-    pack: NfsdDrobeInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    requiresCash: true
-  - type: Advertise
-    pack: NfsdDrobeAds
-  - type: Sprite
-    sprite: _NF/Structures/Machines/VendingMachines/nfsddrobe.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Security"]]
-
-- type: entity
   parent: [BaseStructureDisableAnchoring, VendingMachine]
   id: VendingMachineYarrrDrobe
   name: YarrrDrobe
@@ -444,33 +417,6 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
 
 - type: entity
-  parent: VendingMachine # Mono - removed BaseStructureDisableAnchoring
-  id: VendingMachineNfsdTech
-  name: TSFMCTech
-  description: A vending machine for TSFMC tech!
-  components:
-  - type: VendingMachine
-    pack: NfsdTechInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    requiresCash: true
-  - type: Advertise
-    pack: NfsdDrobeAds
-  - type: Sprite
-    sprite: _NF/Structures/Machines/VendingMachines/nfsdtech.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Security"]]
-
-- type: entity
   parent: [BaseStructureDisableScrewing, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, VendingMachineCart]
   id: NFVendingMachineCart
   suffix: SR
@@ -482,16 +428,6 @@
     access: [["Command"]] #Monolith Change: Access change to allow DOC and Colonel to use it
   - type: MarketModifier
     mod: 5
-
-- type: entity
-  parent: NFVendingMachineCart
-  id: NFVendingMachineCartNfsd
-  suffix: NFSD
-  components:
-  - type: VendingMachine
-    pack: NFPTechNfsdInventory
-  - type: AccessReader
-    access: [["HeadOfSecurity"]]
 
 # Punk stuff
 - type: entity
