@@ -34,6 +34,11 @@
   - type: StaticPrice
     price: 500
   - type: SavingContraband
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container {}
+      storagebase: !type:Container
+        ents: []
   - type: ToggleableClothing
     clothingPrototypes:
       head: ClothingHeadHatHoodTdfHighCommand
