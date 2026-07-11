@@ -9,6 +9,9 @@ chat-emote-name-growl = Growl
 chat-emote-msg-scree = screes.
 chat-emote-msg-call = calls.
 chat-emote-msg-squawk = squawks.
+chat-emote-msg-lurr = purrs.
+chat-emote-msg-liss = hisses.
+chat-emote-msg-marr = marrs.
 # Triad: orphaned Starlight keys (typo'd, no prototype references them); commented out, not deleted, so upstream merges surface them
 # chat-emote-msg-lurr = purrs.
 # chat-emote-msg-liss = hisses.
