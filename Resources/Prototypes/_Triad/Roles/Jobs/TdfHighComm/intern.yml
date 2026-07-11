@@ -9,8 +9,26 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - TdfChiefEnforcer
+  - TdfWarden
+  - TdfPatrolTeamLeader
   ranks:
     RankHighCommandIntern: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: CryoSleepRadioOverride
+      overrides:
+      - CentCom # com radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
 
 - type: startingGear
   id: TdfHighCommandInternGear
