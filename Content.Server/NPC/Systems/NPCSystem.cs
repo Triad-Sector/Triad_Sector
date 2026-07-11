@@ -76,9 +76,16 @@ namespace Content.Server.NPC.Systems
             WakeNPC(uid, component);
         }
 
-        public void OnNPCMapInit(EntityUid uid, HTNComponent component, MapInitEvent args)
+        // Triad: port of Wizden #40244. Owner is set on ComponentStartup, not MapInit: components on
+        // pre-mapinit maps (e.g. the shipyard hold) are live and can be woken before MapInit ever fires,
+        // and every HTN operator assumes Owner is present.
+        public void OnNPCStartup(EntityUid uid, HTNComponent component, ComponentStartup args)
         {
             component.Blackboard.SetValue(NPCBlackboard.Owner, uid);
+        }
+
+        public void OnNPCMapInit(EntityUid uid, HTNComponent component, MapInitEvent args)
+        {
             WakeNPC(uid, component);
         }
 
@@ -178,6 +185,10 @@ namespace Content.Server.NPC.Systems
 
             while (npcQuery.MoveNext(out var npcUid, out var htn, out var npcTransform))
             {
+                // Triad: never wake/sleep an NPC that hasn't map-initialized; MapInit wakes it itself.
+                if (MetaData(npcUid).EntityLifeStage < EntityLifeStage.MapInitialized)
+                    continue;
+
                 // Skip NPCs that are players or have minds.
                 if (HasComp<ActorComponent>(npcUid) ||
                     (TryComp<MindContainerComponent>(npcUid, out var mindContainer) && mindContainer.HasMind))

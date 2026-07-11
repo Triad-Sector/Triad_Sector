@@ -2441,3 +2441,30 @@ Entries:
   id: 2380
   time: '2026-07-10T14:23:36.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/320
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        A broken NPC brain no longer freezes AI updates for every other NPC on
+        the server.
+  id: 2381
+  time: '2026-07-11T05:36:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/330
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Fixed NPC ship AI freezing when drones woke up before their map finished
+        loading.
+  id: 2382
+  time: '2026-07-11T05:47:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/331
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        NPC ship drones now respect faction relations and will not attack
+        friendly targets.
+  id: 2383
+  time: '2026-07-11T05:54:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/332
