@@ -10,3 +10,4 @@ chat-emote-msg-call = calls.
 chat-emote-msg-squawk = squawks.
 chat-emote-msg-lurr = purrs.
 chat-emote-msg-liss = hisses.
+chat-emote-msg-marr = marrs.
