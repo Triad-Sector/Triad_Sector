@@ -6,6 +6,12 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Starlight Start
+  - WFSLClothingUniformJumpskirtSuitNurse
+  - WFSLClothingUniformJumpskirtCoroner
+  - WFSLClothingUniformJumpsuitCoroner
+  - WFSLClothingUniformJumpsuitCoronerAlt
+  # End Starlight
   fallbacks:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
@@ -38,6 +44,8 @@
   loadouts:
   - ChiefMedicalOfficerBeret
   - CMOMedicalHeadMirror
+  # Starlight Start
+  # End Starlight
   subgroups:
   - ContractorHead
 
@@ -57,6 +65,9 @@
   loadouts:
   - DocClothingCloakCmo
   - DocClothingNeckMantleCMO
+  # Starlight Start
+  - WFClothingNeckStethoscope
+  # End Starlight
 
 - type: loadoutGroup
   id: DocPDA

@@ -20,6 +20,12 @@
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
   - ContractorClothingUniformJumpskirtPsychologist
+  # Starlight Start
+  - WFSLClothingUniformJumpskirtSuitNurse
+  - WFSLClothingUniformJumpskirtCoroner
+  - WFSLClothingUniformJumpsuitCoroner
+  - WFSLClothingUniformJumpsuitCoronerAlt
+  # End Starlight
   fallbacks:
   - MedicalDoctorJumpsuit
 

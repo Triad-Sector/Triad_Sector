@@ -1,0 +1,636 @@
+﻿- type: loadout
+  id: WFClothingHeadBandBlack
+  price: 0
+  equipment:
+    head: ClothingHeadBandBlack
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadBandBlue
+  price: 0
+  equipment:
+    head: ClothingHeadBandBlue
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadBandGreen
+  price: 0
+  equipment:
+    head: ClothingHeadBandGreen
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadBandRed
+  price: 0
+  equipment:
+    head: ClothingHeadBandRed
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadBandSkull
+  price: 0
+  equipment:
+    head: ClothingHeadBandSkull
+  groupBy: "headbands"
+
+- type: loadout
+  id: ClothingHeadHatTacticalMaidHeadband
+  price: 0
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadHatGreysoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreysoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatBluesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatBluesoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatYellowsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatYellowsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatGreensoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreensoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatOrangesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatOrangesoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatRedsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatRedsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatBlacksoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatBlacksoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatPurplesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatPurplesoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatCorpsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatCorpsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadBandGrey
+  price: 0
+  equipment:
+    head: ClothingHeadBandGrey
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadHatUshanka
+  price: 0
+  equipment:
+    head: ClothingHeadHatUshanka
+
+- type: loadout
+  id: WFClothingHeadHatHardhatYellow
+  price: 0
+  equipment:
+    head: ClothingHeadHatHardhatYellow
+
+- type: loadout
+  id: WFClothingHeadHatChef
+  price: 0
+  equipment:
+    head: ClothingHeadHatChef
+
+- type: loadout
+  id: WFClothingHeadHatCargosoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatCargosoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadBandBotany
+  price: 0
+  equipment:
+    head: ClothingHeadBandBotany
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadBandMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadBandMercenary
+  groupBy: "headbands"
+
+#T1
+- type: loadout
+  id: WFClothingHeadHatHoodBioScientist
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoodBioScientist
+
+- type: loadout
+  id: WFClothingHeadRastaHat
+  price: 0
+  equipment:
+    head: ClothingHeadRastaHat
+
+- type: loadout
+  id: WFClothingHeadHatSombrero
+  price: 0
+  equipment:
+    head: ClothingHeadHatSombrero
+
+- type: loadout
+  id: WFClothingHeadFishCap
+  price: 0
+  equipment:
+    head: ClothingHeadFishCap
+
+- type: loadout
+  id: WFClothingHeadHatTrucker
+  price: 0
+  equipment:
+    head: ClothingHeadHatTrucker
+
+- type: loadout
+  id: WFClothingHeadHatCasa
+  price: 0
+  equipment:
+    head: ClothingHeadHatCasa
+
+- type: loadout
+  id: WFClothingHeadHatBowlerHat
+  price: 0
+  equipment:
+    head: ClothingHeadHatBowlerHat
+
+- type: loadout
+  id: WFClothingHeadHatGreyFlatcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreyFlatcap
+  groupBy: "flatcaps"
+
+- type: loadout
+  id: WFClothingHeadHatBrownFlatcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatBrownFlatcap
+  groupBy: "flatcaps"
+
+- type: loadout
+  id: WFClothingHeadHatParamedicsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatParamedicsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadNurseHat
+  price: 0
+  equipment:
+    head: ClothingHeadNurseHat
+
+- type: loadout
+  id: WFClothingHeadHatBeretMedic
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretMedic
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatSurgcapGreen
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapGreen
+  groupBy: "surgical"
+
+- type: loadout
+  id: WFClothingHeadHatSurgcapBlue
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapBlue
+  groupBy: "surgical"
+
+- type: loadout
+  id: WFClothingHeadHatSurgcapPurple
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapPurple
+  groupBy: "surgical"
+
+- type: loadout
+  id: WFClothingHeadHatFedoraGrey
+  price: 0
+  equipment:
+    head: ClothingHeadHatFedoraGrey
+  groupBy: "ferdora"
+
+- type: loadout
+  id: WFClothingHeadHatFedoraBrown
+  price: 0
+  equipment:
+    head: ClothingHeadHatFedoraBrown
+  groupBy: "ferdora"
+
+- type: loadout
+  id: FoodPoppy
+  price: 0
+  equipment:
+    head: FoodPoppy
+
+- type: loadout
+  id: FoodLily
+  price: 0
+  equipment:
+    head: FoodLily
+
+- type: loadout
+  id: ClothingHeadHatFlowerWreath
+  price: 0
+  equipment:
+    head: ClothingHeadHatFlowerWreath
+
+- type: loadout
+  id: FoodAmbrosiaVulgaris
+  price: 0
+  equipment:
+    head: FoodAmbrosiaVulgaris
+
+- type: loadout
+  id: WFClothingHeadHatDruid
+  price: 0
+  equipment:
+    head: ClothingHeadHatDruid
+
+#T2
+- type: loadout
+  id: WFClothingHeadHatCaptain
+  price: 0
+  equipment:
+    head: ClothingHeadHatCaptain
+
+- type: loadout
+  id: WFClothingHeadHatCapcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatCapcap
+
+- type: loadout
+  id: WFClothingHeadTinfoil
+  price: 0
+  equipment:
+    head: ClothingHeadTinfoil
+
+- type: loadout
+  id: WFClothingHeadHatBeretRND
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretRND
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretMercenary
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretCommander
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretCommander
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretEngineering
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretEngineering
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretSeniorPhysician
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretSeniorPhysician
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretCmo
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretCmo
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretQM
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretQM
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatQMsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatQMsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatCardinal
+  price: 0
+  equipment:
+    head: ClothingHeadHatCardinal
+
+- type: loadout
+  id: WFClothingHeadHatHoodNunHood
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoodNunHood
+
+- type: loadout
+  id: WFClothingHeadSafari
+  price: 0
+  equipment:
+    head: ClothingHeadSafari
+
+- type: loadout
+  id: WFClothingHeadHatJester
+  price: 0
+  equipment:
+    head: ClothingHeadHatJester
+  groupBy: "clown"
+
+- type: loadout
+  id: WFClothingHeadHatJesterAlt
+  price: 0
+  equipment:
+    head: ClothingHeadHatJesterAlt
+  groupBy: "clown"
+
+- type: loadout
+  id: WFClothingHeadHatBeret
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeret
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatBeretFrench
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretFrench
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatMimesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatMimesoft
+  groupBy: "mime"
+
+- type: loadout
+  id: WFClothingHeadHatPilgrim
+  price: 0
+  equipment:
+    head: ClothingHeadHatPilgrim
+
+- type: loadout
+  id: WFClothingHeadHatStrawHat
+  price: 0
+  equipment:
+    head: ClothingHeadHatStrawHat
+
+- type: loadout
+  id: WFClothingHeadHatCowboyBlack
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBlack
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatCowboyBrown
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBrown
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatCowboyGrey
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyGrey
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatCowboyBountyHunter
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBountyHunter
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatBH
+  price: 0
+  equipment:
+    head: ClothingHeadHatBH
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatCowboyRed
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyRed
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatCowboyWhite
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyWhite
+  groupBy: "cowboy"
+
+- type: loadout
+  id: WFClothingHeadHatWideBrimmed
+  price: 0
+  equipment:
+    head: ClothingHeadHatWideBrimmed
+
+- type: loadout
+  id: WFClothingHeadHatWitchhunter
+  price: 0
+  equipment:
+    head: ClothingHeadHatWitchhunter
+
+- type: loadout
+  id: WFClothingHeadHatWitch1
+  price: 0
+  equipment:
+    head: ClothingHeadHatWitch1
+
+- type: loadout
+  id: WFClothingHeadHatBishopMitre
+  price: 0
+  equipment:
+    head: ClothingHeadHatBishopMitre
+
+- type: loadout
+  id: WFClothingHeadHatKippah
+  price: 0
+  equipment:
+    head: ClothingHeadHatKippah
+
+- type: loadout
+  id: WFClothingHeadHatPlaguedoctor
+  price: 0
+  equipment:
+    head: ClothingHeadHatPlaguedoctor
+
+#T3 for lols
+- type: loadout
+  id: WFPlunger
+  price: 0
+  equipment:
+    head: Plunger
+
+- type: loadout
+  id: WFClothingHeadHatCone
+  price: 0
+  equipment:
+    head: ClothingHeadHatCone
+
+- type: loadout
+  id: WFClothingHeadBandGold
+  price: 0
+  equipment:
+    head: ClothingHeadBandGold
+  groupBy: "headbands"
+
+- type: loadout
+  id: WFClothingHeadHatTophat
+  price: 0
+  equipment:
+    head: ClothingHeadHatTophat
+
+- type: loadout
+  id: WFClothingHeadHelmetBasic
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetBasic
+  groupBy: "helmets"
+
+- type: loadout
+  id: WFClothingHeadHelmetMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenary
+  groupBy: "helmets"
+
+- type: loadout
+  id: WFClothingHeadHelmetMercenaryBlack
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenaryBlack
+  groupBy: "helmets"
+
+- type: loadout
+  id: WFClothingHeadHatSecsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatSecsoft
+  groupBy: "caps"
+
+- type: loadout
+  id: ClothingHeadHatSyndie
+  price: 0
+  equipment:
+    head: ClothingHeadHatSyndie
+  groupBy: "caps"
+
+- type: loadout
+  id: WFClothingHeadHatBeretSecurity
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+  groupBy: "berets"
+
+- type: loadout
+  id: WFClothingHeadHatSecurityTrooper
+  price: 0
+  equipment:
+    head: ClothingHeadHatSecurityTrooper
+
+- type: loadout
+  id: ClothingHeadHatHoshat
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoshat
+
+- type: loadout
+  id: ClothingHeadHatSyndieMAA
+  price: 0
+  equipment:
+    head: ClothingHeadHatSyndieMAA
+
+- type: loadout
+  id: ClothingHeadHatBeretWarden
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretWarden
+  groupBy: "berets"
+
+- type: loadout
+  id: ClothingHeadHatBeretHoS
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretHoS
+  groupBy: "berets"
+
+- type: loadout
+  id: ClothingHeadHatWarden
+  price: 0
+  equipment:
+    head: ClothingHeadHatWarden
+
+# Starlight clothing
+- type: loadout
+  id: WFSLClothingHeadBase0121
+  price: 0
+  equipment:
+    head: SLClothingHeadBase0121
+
+- type: loadout
+  id: WFSLRedRegaliaHat
+  price: 0
+  equipment:
+    head: SLRedRegaliaHat
