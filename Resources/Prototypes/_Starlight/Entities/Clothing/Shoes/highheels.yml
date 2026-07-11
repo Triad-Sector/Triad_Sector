@@ -4,7 +4,7 @@
   parent: ClothingShoesBaseButcherable
   id: SLClothingShoesHighheelShoes
   name: high-heels
-  description: Snazy shoes for when you want to be stylish and noticed.
+  description: Snazzy shoes for when you want to be stylish and noticed.
   components:
   - type: MeleeWeapon
     damage:
