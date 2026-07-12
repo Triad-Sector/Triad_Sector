@@ -15,3 +15,18 @@
     Glass: 500
     Gold: 500
     Silver: 500
+
+- type: latheRecipe
+  id: WeaponRiflePike
+  parent: BaseWeaponRecipeLong
+  result: WeaponRiflePike
+  categories:
+  - Sidearms
+  - Ballistic
+  - Weapons
+  materials:
+    Plastitanium: 2000
+    Plasteel: 2000
+    Glass: 500
+    Gold: 500
+    Silver: 500

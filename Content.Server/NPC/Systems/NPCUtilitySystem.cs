@@ -519,7 +519,6 @@ public sealed class NPCUtilitySystem : EntitySystem
                 }
                 break;
             }
-            // Mono - TODO: consider factions
             case NearbyNpcTargetsQuery shuttlesQuery:
             {
                 var xform = Transform(owner);
@@ -535,6 +534,16 @@ public sealed class NPCUtilitySystem : EntitySystem
                         || (_transform.GetWorldPosition(target) - _transform.GetWorldPosition(xform)).Length() > shuttlesQuery.Range
                         || targetComp.NeedPower && !this.IsPowered(target, EntityManager)
                         || targetGrid != null && _whitelistSystem.IsBlacklistPass(shuttlesQuery.Blacklist, targetGrid.Value))
+                    {
+                        continue;
+                    }
+
+                    // Triad: IFF. Skip targets friendly to us (shared faction or declared friendly),
+                    // checking the target itself and then its grid so a faction stamped on the hull
+                    // covers everything aboard. Hostile, neutral, and factionless targets all remain
+                    // valid, so behavior is unchanged wherever no factions are authored.
+                    if (_npcFaction.IsEntityFriendly(owner, target)
+                        || targetGrid != null && _npcFaction.IsEntityFriendly(owner, targetGrid.Value))
                     {
                         continue;
                     }

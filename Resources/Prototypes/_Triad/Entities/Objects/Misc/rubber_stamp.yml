@@ -11,4 +11,21 @@
     stampState: "paper_stamp-hos"
   - type: Sprite
     state: stamp-hos
+  - type: SavingContraband
   # TODO: Sprite and color?
+
+- type: entity
+  name: TDF HighComm rubber stamp
+  parent: RubberStampBase
+  id: RubberStampTdfHighComm
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/stamps.rsi
+    state: stamp-highcomm
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-highcomm
+    stampedColor: "#293A68"
+    stampState: "paper_stamp-tdf-highcomm"
+    protected: true
+  - type: SavingContraband

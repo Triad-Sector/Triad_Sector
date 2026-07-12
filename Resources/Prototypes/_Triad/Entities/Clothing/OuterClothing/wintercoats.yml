@@ -15,3 +15,30 @@
       Plasteel: 125
   - type: StaticPrice
     price: 180
+
+- type: entity
+  parent: [ClothingOuterCoatTdfChiefEnforcerTrench, ClothingOuterWinterCoatToggleable]
+  id: ClothingOuterWinterTdfHighCommand
+  name: TDF high command winter coat
+  description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. Very special.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/WinterCoats/high_command.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/WinterCoats/high_command.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 250
+      Durathread: 250
+      Plasteel: 200
+  - type: StaticPrice
+    price: 500
+  - type: SavingContraband
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container {}
+      storagebase: !type:Container
+        ents: []
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHatHoodTdfHighCommand

@@ -1,0 +1,13 @@
+# TDF High-Command
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtTdfHighCommand
+  name: TDF high command jumpskirt
+  description: Paper-pusher.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpskirts/highcom.rsi
+  - type: SavingContraband
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

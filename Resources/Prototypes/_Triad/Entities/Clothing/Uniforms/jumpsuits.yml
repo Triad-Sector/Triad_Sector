@@ -61,3 +61,17 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/chief_enforcer_dress.rsi
+
+# TDF High-Command
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTdfHighCommand
+  name: TDF high command jumpsuit
+  description: Paper-pusher.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/highcom.rsi
+  - type: SavingContraband
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

@@ -2441,3 +2441,67 @@ Entries:
   id: 2380
   time: '2026-07-10T14:23:36.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/320
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        A broken NPC brain no longer freezes AI updates for every other NPC on
+        the server.
+  id: 2381
+  time: '2026-07-11T05:36:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/330
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Fixed NPC ship AI freezing when drones woke up before their map finished
+        loading.
+  id: 2382
+  time: '2026-07-11T05:47:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/331
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        NPC ship drones now respect faction relations and will not attack
+        friendly targets.
+  id: 2383
+  time: '2026-07-11T05:54:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/332
+- author: Stedar111
+  changes:
+    - type: Add
+      message: Added the HZD "Pike" a heavy, researchable, burst rifle.
+  id: 2384
+  time: '2026-07-11T15:55:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/303
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Whistles have been added to the Tools category of loadout. This
+        includes: regular, security red, and trench.
+  id: 2385
+  time: '2026-07-11T15:56:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/325
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added TDF High command stamps, gear, and gear presets/roles!
+  id: 2386
+  time: '2026-07-11T16:35:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/329
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: ToggleNetworkLinks Command to help with mappping
+  id: 2387
+  time: '2026-07-11T22:05:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/335
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added Designated Ship ID Framework and it's assets
+  id: 2388
+  time: '2026-07-12T13:17:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/345

@@ -6,6 +6,10 @@ job-description-tdf-enforcer = Stop smugglers, enforce the sector's law, and bri
 job-description-tdf-patrol-team-leader = Teach new cadets the basics of what the TDF does and deals with. Lead your assigned patrol team; show the sector the law has no bounds.
 job-description-tdf-chief-enforcer = Manage your TDF team and keep them efficient, quell dissent, and keep the sector safe.
 
+# TDF High Command
+job-description-tdf-high-commander = Act as an ambassador to the local TDF fleet at Auric Outpost.
+job-description-tdf-high-command-intern = Follow the orders of your superior High Commanders and file paperwork.
+
 # Freelancers
 job-description-contractor = Fulfill your own goals out in Triad space.
 job-description-mercenary = Execute the bidding of anyone- for the right price. Enjoy being unbound from the confines of the law.

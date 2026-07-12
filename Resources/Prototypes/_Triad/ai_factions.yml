@@ -13,3 +13,14 @@
   - CC
   - SimpleNeutral
   defaultHostile: true
+
+# Identity faction for autonomous NPC combat drones. Relations are deliberately empty:
+# the ship-targeting IFF only skips FRIENDLY targets, so an empty-relations faction changes
+# no live behavior until content declares friendlies (e.g. escort drones friendly to a
+# faction-stamped player hull). Do not add this faction to player-side entities like
+# DroneController; NPC drones would stop engaging them.
+# defaultHostileIncluded false keeps drone cores out of defaultHostile umbrellas, so
+# carps/turrets/mobs don't newly aggro cores just because they gained a faction.
+- type: npcFaction
+  id: ShipDrone
+  defaultHostileIncluded: false

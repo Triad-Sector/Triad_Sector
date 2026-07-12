@@ -63,3 +63,32 @@
     pack: PTechTdfInventory
   - type: AccessReader
     access: [["TdfChiefEnforcer"], ["TdfWarden"]]
+
+- type: entity
+  parent: [BaseStructureDisableAnchoring, VendingMachine]
+  id: VendingMachineTdfHighCommandDrobe
+  name: CommandDrobe
+  description: TDF high command things!
+  components:
+  - type: VendingMachine
+    pack: TdfCommandDrobeInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    requiresCash: true
+  - type: Sprite
+    sprite: _Triad/Structure/Machines/VendingMachine/highcommanddrobe.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#407aa0"
+  - type: AccessReader
+    access: [["CentralCommand"]]
