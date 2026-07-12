@@ -20,12 +20,12 @@
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
   - ContractorClothingUniformJumpskirtPsychologist
-  # Starlight Start
+  # Triad Start
   - WFSLClothingUniformJumpskirtSuitNurse
   - WFSLClothingUniformJumpskirtCoroner
   - WFSLClothingUniformJumpsuitCoroner
   - WFSLClothingUniformJumpsuitCoronerAlt
-  # End Starlight
+  # End Triad
   fallbacks:
   - MedicalDoctorJumpsuit
 
