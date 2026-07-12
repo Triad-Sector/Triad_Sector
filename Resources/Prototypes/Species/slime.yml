@@ -14,6 +14,10 @@
   sprites:
     TailBehind: MobHumanoidAnyMarking #DEN
     TailOversuit: MobHumanoidAnyMarking # DEN
+    Tail: MobSlimeMarkingFollowSkin # Triad
+    Snout: MobSlimeMarkingFollowSkin # Triad
+    HeadTop: MobSlimeMarkingFollowSkin # Triad
+    HeadSide: MobSlimeMarkingFollowSkin # Triad
     Head: MobSlimeHead
     Hair: MobSlimeMarkingFollowSkin
     FacialHair: MobSlimeMarkingFollowSkin
@@ -48,6 +52,20 @@
     Arms:
       points: 8 # imp 4<8
       required: false
+  # Triad Start - Add Snout and Tail Points, HeadTop, Headside
+    HeadTop:
+      points: 1
+      required: false
+    HeadSide:
+      points: 1
+      required: false
+    Snout:
+      points: 1
+      required: false
+    Tail:
+      points: 1
+      required: false
+  # End Triad
 
 - type: humanoidBaseSprite
   id: MobSlimeMarkingFollowSkin
