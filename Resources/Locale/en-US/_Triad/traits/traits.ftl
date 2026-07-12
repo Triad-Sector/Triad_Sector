@@ -2,6 +2,9 @@
 # Copyright (c) 2025 Triad Contributors
 # See AGPLv3.txt for details.
 
+trait-monochromacy-name = Monochromancy
+trait-monochromacy-desc = You are fully colorblind, everything you perceive ranges from blacks to whites.
+
 trait-newbrooklyn-accent-name = New Brooklyn
 trait-newbrooklyn-accent-desc = Ey, yous talk like da old borough back on Earth. Pizza, da garage, walkin' heeyah, ya know?
 
