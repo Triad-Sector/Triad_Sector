@@ -31,7 +31,10 @@
     lightningPrototype: SupermatterLightning
   - type: Beam
     sound: /Audio/_EE/Supermatter/lightning.ogg
-    allowSpriteOverwrite: false
+    # Triad: dropped upstream `allowSpriteOverwrite: false`; this fork's BeamComponent has no such
+    # field (EE addition). Cosmetic loss: LightningSystem passes a randomized generic lightning_N
+    # state to TryCreateBeam, so these arcs render as standard lightning instead of the
+    # yellow/blue/red variants until the field is ported.
   - type: TimedDespawn
     lifetime: 1
 

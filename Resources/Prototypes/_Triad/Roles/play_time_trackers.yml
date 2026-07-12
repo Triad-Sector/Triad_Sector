@@ -21,6 +21,8 @@
 
 - type: playTimeTracker
   id: JobPlantTechnician
+
+- type: playTimeTracker
   id: JobTdfHighCommander
 
 - type: playTimeTracker

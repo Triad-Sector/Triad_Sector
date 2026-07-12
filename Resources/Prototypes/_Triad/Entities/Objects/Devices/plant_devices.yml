@@ -37,6 +37,15 @@
   components:
   - type: PresetIdCard
     job: PlantManager
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: silver
+    - state: idplantmanager
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi
+  - type: Item
+    heldPrefix: silver
 
 - type: entity
   parent: IDCardStandard
@@ -45,3 +54,10 @@
   components:
   - type: PresetIdCard
     job: PlantTechnician
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idplanttechnician
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi
