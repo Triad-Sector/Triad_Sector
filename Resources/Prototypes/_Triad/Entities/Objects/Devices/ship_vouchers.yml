@@ -13,7 +13,7 @@
   parent: BaseShipDSID
   id: ShipVoucherEphemere
   name: ephemere dedicated ship id
-  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lost the DSID
+  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lose the DSID
   components:
   - type: Sprite
     layers:
