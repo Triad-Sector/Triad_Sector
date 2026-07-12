@@ -36,3 +36,10 @@ station-beacon-dock-six = Dock 6
 station-beacon-dock-six-a = Dock 6a
 station-beacon-dock-six-b = Dock 6b
 station-beacon-dock-six-c = Dock 6c
+
+# Triad: Edison Power Plant POI beacons
+station-beacon-dock-seven = Dock 7
+station-beacon-managers-office = PM's Office
+station-beacon-managers-quarters = PM's Quarters
+station-beacon-break-room = Break Room
+station-beacon-aux-chamber = Aux. Chamber

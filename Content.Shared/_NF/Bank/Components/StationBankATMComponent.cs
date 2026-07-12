@@ -37,4 +37,5 @@ public enum SectorBankAccount : byte
     Nfsd,
     Medical,
     BlackMarket,
+    Edison, // Triad: coyote-frontier's power plant account; funded by PowerTransmission energy sales
 }

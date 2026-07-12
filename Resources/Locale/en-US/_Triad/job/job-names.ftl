@@ -5,3 +5,5 @@ job-name-tdf-patrol-team-leader = Patrol Team Leader
 job-name-tdf-medic = Combat Medic
 job-name-tdf-enforcer = Enforcer
 job-name-tdf-cadet = Junior Enforcer
+job-name-plant-manager = Plant Manager
+job-name-plant-technician = Plant Technician

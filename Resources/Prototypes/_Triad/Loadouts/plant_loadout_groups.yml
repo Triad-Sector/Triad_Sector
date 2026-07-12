@@ -1,0 +1,244 @@
+# Loadout groups for the Edison plant roles. The Contractor* groups carry every department's
+# kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
+# from the same loadout prototypes, plus a few plant-specific additions defined below.
+
+# --- New loadout prototypes ---------------------------------------------------
+
+- type: loadout
+  id: PlantManagerChiefToolbelt
+  equipment:
+    belt: ClothingBeltChiefEngineerFilled
+
+- type: loadout
+  id: PlantManagerMessengerBag
+  equipment:
+    back: ClothingBackpackMessengerChiefEngineer
+
+- type: loadout
+  id: PlantHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: PlantEngineeringBeret
+  equipment:
+    head: ClothingHeadHatBeretEngineering
+
+- type: loadout
+  id: PlantScarfStripedOrange
+  equipment:
+    neck: ClothingNeckScarfStripedOrange
+
+- type: loadout
+  id: PlantGasAnalyzer
+  inhand:
+    - GasAnalyzer
+
+- type: loadout
+  id: PlantWelder
+  inhand:
+    - Welder
+
+- type: loadout
+  id: PlantHolofanProjector
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  price: 750
+  inhand:
+    - HolofanProjector
+
+# Cargo sells the RPD/RCD crates at 800; personal spawns are priced at or above that
+# so the loadout is a convenience, not an arbitrage. RCD is T2-gated: it deconstructs
+# walls and floors, so it stays behind the same 30-hour gate as the other T2 kit.
+- type: loadout
+  id: PlantRPD
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  price: 800
+  inhand:
+    - RPD
+
+- type: loadout
+  id: PlantRCD
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  price: 1200
+  inhand:
+    - RCD
+
+- type: loadout
+  id: PlantRCDAmmo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  price: 400
+  inhand:
+    - RCDAmmo
+
+# --- Shared groups (both plant roles) -----------------------------------------
+
+- type: loadoutGroup
+  id: PlantTools
+  name: loadout-group-plant-tools
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - PlantGasAnalyzer
+  - PlantWelder
+  - ContractorNetworkConfigurator
+  - ContractorGeigerCounter
+  - ContractorRadioHandheld
+  - PlantHolofanProjector
+  - PlantRPD
+  - PlantRCD
+  - PlantRCDAmmo
+
+- type: loadoutGroup
+  id: PlantBelt
+  name: loadout-group-plant-belt
+  minLimit: 0
+  loadouts:
+  - ContractorClothingBeltUtility
+  - ContractorClothingBeltUtilityFilled
+  - ContractorClothingBeltStorageWaistbag
+  - ContractorClothingBeltSalvageWebbingFilledNF
+  - ContractorBoxFolderClipboard
+
+- type: loadoutGroup
+  id: PlantFace
+  name: loadout-group-plant-face
+  minLimit: 0
+  loadouts:
+  - ContractorClothingMaskBreath
+  - ContractorClothingMaskGas
+  - ContractorClothingMaskGasAtmos
+  - ContractorClothingMaskNeckGaiter
+  - ContractorClothingMaskNeckGaiterRed
+
+- type: loadoutGroup
+  id: PlantGloves
+  name: loadout-group-plant-gloves
+  minLimit: 0
+  loadouts:
+  - ContractorClothingHandsGlovesColorYellow
+  - ContractorClothingHandsGlovesLeather
+  - ContractorClothingHandsGlovesFingerless
+  - ContractorClothingHandsGlovesRobohands
+  - ContractorClothingHandsGlovesColorBlack
+  - ContractorClothingHandsGlovesColorBrown
+  - ContractorClothingHandsGlovesColorGray
+  - ContractorClothingHandsGlovesColorWhite
+
+- type: loadoutGroup
+  id: PlantGlasses
+  name: loadout-group-plant-glasses
+  minLimit: 0
+  loadouts:
+  - ContractorClothingEyesGlassesMeson
+  - ContractorClothingEyesHudDiagnostic
+  - ContractorClothingEyesGlassesChemical
+  - ContractorClothingEyesGlasses
+  - ContractorClothingEyesGlassesCheapSunglasses
+
+- type: loadoutGroup
+  id: PlantEars
+  name: loadout-group-plant-ears
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingHeadsetEngineeringCommon
+  - ContractorClothingHeadsetAltEngineeringCommon
+  - ContractorClothingHeadsetGreyCommon
+  fallbacks:
+  - ContractorClothingHeadsetEngineeringCommon
+
+# --- Plant Manager ------------------------------------------------------------
+
+- type: loadoutGroup
+  id: PlantManagerJumpsuit
+  name: loadout-group-plant-manager-jumpsuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ChiefEngineerJumpsuit
+  - ChiefEngineerJumpskirt
+  - ChiefEngineerTurtleneck
+  - ChiefEngineerTurtleneckSkirt
+  - SeniorEngineerJumpsuit
+  - SeniorEngineerJumpskirt
+  fallbacks:
+  - ChiefEngineerJumpsuit
+
+- type: loadoutGroup
+  id: PlantManagerBackpack
+  name: loadout-group-plant-manager-backpack
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - PlantManagerMessengerBag
+  fallbacks:
+  - StationEngineerBackpack
+
+- type: loadoutGroup
+  id: PlantManagerBelt
+  name: loadout-group-plant-manager-belt
+  minLimit: 0
+  loadouts:
+  - PlantManagerChiefToolbelt
+
+# --- Plant Technician ---------------------------------------------------------
+
+- type: loadoutGroup
+  id: PlantTechnicianHead
+  name: loadout-group-plant-technician-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - StationEngineerHardhatOrange
+  - StationEngineerHardhatRed
+  - PlantHardhatBlue
+  - SeniorEngineerBeret
+  - PlantEngineeringBeret
+
+- type: loadoutGroup
+  id: PlantTechnicianNeck
+  name: loadout-group-plant-technician-neck
+  minLimit: 0
+  loadouts:
+  - PlantScarfStripedOrange
+
+- type: loadoutGroup
+  id: PlantTechnicianJumpsuit
+  name: loadout-group-plant-technician-jumpsuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationEngineerJumpsuit
+  - StationEngineerJumpskirt
+  - StationEngineerHazardsuit
+  - AtmosphericTechnicianJumpsuit
+  - AtmosphericTechnicianJumpskirt
+  - AtmosphericTechnicianJumpsuitCasual
+  fallbacks:
+  - StationEngineerJumpsuit
+
+- type: loadoutGroup
+  id: PlantTechnicianBackpack
+  name: loadout-group-plant-technician-backpack
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  fallbacks:
+  - StationEngineerBackpack

@@ -1,0 +1,87 @@
+- type: job
+  id: PlantManager
+  name: job-name-plant-manager
+  description: job-description-plant-manager
+  playTimeTracker: JobPlantManager
+  startingGear: PlantManagerGear
+  alwaysUseSpawner: true
+  icon: "JobIconPlantManager"
+  supervisors: job-supervisors-sr
+  assignedCompany: Colonial
+  canBeAntag: false
+  setPreference: true
+  weight: 100
+  displayWeight: 40
+  # The Plant Manager is the plant's chief engineer. ChiefEngineer access covers Coyote's plant-manager
+  # fixtures (gun safe, request computer, CE doors) and the admin bank terminal; Command for the
+  # manager-only areas; Engineering/Atmospherics for the rest of the plant.
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  - Command
+  - ChiefEngineer
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      - type: ShipSavingBlacklist # Triad - can't save ships
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - not TDF, but friendly and works with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Engineering
+
+- type: startingGear
+  id: PlantManagerGear
+  equipment:
+    id: PlantManagerPDA
+    ears: ClothingHeadsetEngineering
+    eyes: ClothingEyesGlassesMeson
+    belt: ClothingBeltUtilityEngineering
+
+- type: job
+  id: PlantTechnician
+  name: job-name-plant-technician
+  description: job-description-plant-technician
+  playTimeTracker: JobPlantTechnician
+  startingGear: PlantTechnicianGear
+  alwaysUseSpawner: true
+  icon: "JobIconPlantTechnician"
+  supervisors: job-supervisors-plant-manager
+  assignedCompany: Colonial
+  canBeAntag: false
+  setPreference: true
+  weight: 80
+  displayWeight: 30
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+      - type: ShipSavingBlacklist # Triad - can't save ships
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - not TDF, but friendly and works with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Engineering
+
+- type: startingGear
+  id: PlantTechnicianGear
+  equipment:
+    id: PlantTechnicianPDA
+    ears: ClothingHeadsetEngineering
+    eyes: ClothingEyesGlassesMeson
+    belt: ClothingBeltUtilityEngineering

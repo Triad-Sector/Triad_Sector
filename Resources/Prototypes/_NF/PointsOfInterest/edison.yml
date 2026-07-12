@@ -30,12 +30,23 @@
   minPlayers: 0
   stations:
     Edison:
-      stationProto: RecordsFrontierOutpost
+      stationProto: RecordsFrontierOutpostCargo # Triad: Cargo variant carries StationCargoOrderDatabase; without it the plant manager's request computer can't take orders
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Edison Power Plant'
-        # - type: StationJobs
-          # availableJobs:
-            # Pilot: [ 0, 0 ]
-            # Mercenary: [ 0, 0 ]
-            # Contractor: [ 0, 0 ]
+        # Triad: join-menu card (icon, subtext, description); mirrors medical.yml's setup
+        - type: ExtraStationInformation
+          icon:
+            sprite: Structures/Decoration/banner.rsi
+            state: banner_engineering
+          stationSubtext: 'triad-lobby-edison-subtext'
+          stationDescription: 'triad-lobby-edison-description'
+          lobbySortOrder: 5
+        # Triad: staff the plant with its own roles; Pilot/Mercenary let regular folks join here
+        - type: StationJobs
+          availableJobs:
+            PlantManager: [ 1, 1 ]
+            PlantTechnician: [ 3, 3 ]
+            Pilot: [ -1, -1 ]
+            Mercenary: [ -1, -1 ]
+            Contractor: [ -1, -1 ]
