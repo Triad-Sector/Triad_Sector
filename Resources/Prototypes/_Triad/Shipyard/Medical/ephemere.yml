@@ -1,0 +1,45 @@
+# Author Info
+# SigmundDoppler
+# Discord sigmunddoppler
+# GitHub https://github.com/Sigmund-Doppler
+
+# Shuttle Notes: 
+# DoC Voucher Ship
+
+- type: vessel
+  id: Ephemere
+  parent: BaseVessel
+  name: SPS Ephemere
+  description: A heavily armored quick entry and getaway DoC ship designed to venture into deep space to retrieve patients in dangerous territory, made to be nimble and able to bite back.  
+  limit: 1
+  price: 150000
+  purchasable: false # voucher only
+  category: Medium
+  group: Medical
+  shuttlePath: /Maps/_Triad/Shuttles/ephemere.yml
+  guidebookPage: null
+  class:
+  - Medical
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: ephemere
+  mapName: 'SPS Ephemere'
+  mapPath: /Maps/_Triad/Shuttles/ephemere.yml
+  minPlayers: 0
+  stations:
+    ephemere:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Ephemere MED{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            MdMedic: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
