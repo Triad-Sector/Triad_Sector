@@ -9,7 +9,7 @@
   id: horizon
   parent: BaseVessel
   name: NSC Horizon
-  description: An AME powered, Heavy cargo freighter for long range hauls. Recommendation: 2-4 crewmembers for operation.
+  description: An AME powered, Heavy cargo freighter for long range hauls. Recommendation. 2-4 crewmembers for operation.
   price: 120000
   category: Large
   group: Shipyard
