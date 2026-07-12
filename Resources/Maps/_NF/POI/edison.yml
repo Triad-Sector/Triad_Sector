@@ -5791,6 +5791,26 @@ entities:
           - DoorBolt
 - proto: AirlockEngineeringGlassLocked
   entities:
+  - uid: 195
+    components:
+    - type: Transform
+      pos: 8.5,30.5
+      parent: 1
+  - uid: 196
+    components:
+    - type: Transform
+      pos: 8.5,32.5
+      parent: 1
+  - uid: 238
+    components:
+    - type: Transform
+      pos: -4.5,30.5
+      parent: 1
+  - uid: 239
+    components:
+    - type: Transform
+      pos: -4.5,32.5
+      parent: 1
   - uid: 139
     components:
     - type: Transform
@@ -6210,16 +6230,6 @@ entities:
     - type: Transform
       pos: -4.5,-7.5
       parent: 1
-  - uid: 195
-    components:
-    - type: Transform
-      pos: 8.5,30.5
-      parent: 1
-  - uid: 196
-    components:
-    - type: Transform
-      pos: 8.5,32.5
-      parent: 1
   - uid: 197
     components:
     - type: Transform
@@ -6424,16 +6434,6 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-5.5
-      parent: 1
-  - uid: 238
-    components:
-    - type: Transform
-      pos: -4.5,30.5
-      parent: 1
-  - uid: 239
-    components:
-    - type: Transform
-      pos: -4.5,32.5
       parent: 1
   - uid: 240
     components:
