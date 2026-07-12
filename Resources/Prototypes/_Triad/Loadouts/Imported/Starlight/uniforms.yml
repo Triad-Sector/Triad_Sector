@@ -1857,10 +1857,12 @@
   groupBy: "journalist"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtVictorianrRed
+# Triad Start - ID Change
+  id: WFSLClothingUniformJumpskirtVictorianRed
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtVictorianrRed
+    jumpsuit: SLClothingUniformJumpskirtVictorianRed
+# End Triad 
   groupBy: "dresses"
 
 - type: loadout

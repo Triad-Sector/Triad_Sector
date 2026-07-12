@@ -250,7 +250,9 @@
   - WFSLClothingUniformJumpskirtScientistFormal
   - WFSLClothingUniformJumpskirtTango
   - WFSLClothingUniformJumpskirtVictorianBlack
-  - WFSLClothingUniformJumpskirtVictorianrRed
+# Triad Start - Change ID
+  - WFSLClothingUniformJumpskirtVictorianRed
+# End Triad
   - WFSLClothingUniformJumpsuitAerostatic
   - WFSLClothingUniformJumpsuitCaptainNoble
   - WFSLClothingUniformJumpsuitCapTurtleneck

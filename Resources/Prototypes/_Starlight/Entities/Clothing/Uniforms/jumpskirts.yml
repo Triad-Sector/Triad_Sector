@@ -4,7 +4,9 @@
   parent: ClothingUniformSkirtBase
   id: SLClothingUniformJumpskirtGothic
   name: gothic dress
-  description: A gothic dress is an elegant and mysterious garment characterized by its dark and intriguing style. Deep, dark shades like black, burgundy, or navy blue add an aura of mystery and aristocratic allure. Delicate lace accents, luxurious drapery, and ruffles evoke a sense of ancient romance. Keyhole or high neckline cuts give the gothic dress uniqueness and opulence. This dress is perfect for those who want to stand out and emphasize their individuality and mystique. In it, every woman feels refined and captivating, ready to enchant at first sight.
+# Triad Start - Reword
+  description: A blue dress adorned with lace and white frills.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_gothic.rsi
@@ -15,7 +17,9 @@
   parent: ClothingUniformSkirtBase
   id: SLClothingUniformJumpskirtMaid
   name: evening maid dress
-  description: This refined evening dress, inspired by the elegant maid's style, combines sophistication with a touch of playful femininity. Made from high-quality black satin, it is designed to highlight the refined taste and style of its wearer.
+# Triad Start - Reword
+  description: A classic maid dress complete with a white apron.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_maid.rsi
@@ -26,7 +30,9 @@
   parent: ClothingUniformSkirtBase
   id: SLClothingUniformJumpskirtDressRed
   name: evening red dress
-  description: This stunning evening gown embodies passion and boldness, blended with elegance and sophistication. Crafted from deep red silk, it captivates attention and exudes luxury and sensuality.
+# Triad Start - Reword
+  description: An elegant red dress that never goes out of style.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_red.rsi
@@ -37,7 +43,9 @@
   parent: ClothingUniformSkirtBase
   id: SLClothingUniformJumpskirtTango
   name: tango dress
-  description: This dress is made for tango, embodying passion and elegance. Its fitted silhouette, with a back cutout and decorative draping, accentuates feminine curves while offering freedom of movement and enhancing the beauty of the dance.
+# Triad Start - Reword
+  description: A flowing dress made for the dance floor.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_tango.rsi
@@ -48,7 +56,9 @@
   parent: ClothingUniformSkirtBase
   id: SLClothingUniformJumpskirtVictorianBlack
   name: victorian black dress
-  description: This black Victorian dress captures the essence of the era. Cutouts, lace, and cuffs add mystery, while the corset creates a refined silhouette. It's perfect for evening events where elegance and intrigue are desired.
+# Triad Start - Reword
+  description: A formal Victorian-style dress in black.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_victorian_black.rsi
@@ -79,9 +89,11 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtVictorianrRed
+# Triad Start - Reword, ID change
+  id: SLClothingUniformJumpskirtVictorianRed
   name: victorian red dress
-  description: Inspired by Victorian style, this red dress embodies passion and luxury. Intricate details like lace, puffed sleeves, and a voluminous skirt make it the perfect choice for special events where standing out and making an impression is key.
+  description: A red Victorian-style dress with elegant detailing.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_victorian_red.rsi
@@ -169,7 +181,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpskirtMiningSpecialist
   name: mining specialist's jumpskirt
-  description: A suit passed down through many generations. a fine layer of dust trails behind it.
+# Triad Start - Fixed casing
+  description: A suit passed down through many generations. A fine layer of dust trails behind it.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/mining.rsi
@@ -278,8 +292,10 @@
 - type: entity
   parent: ClothingUniformBase
   id: SLClothingUniformJumpskirtHoPTurtleneck
-  name: head of personal's turtleneck
-  description: It's Head of Personal's turtleneck.
+# Triad Start - Typo, reword
+  name: head of personnel's turtleneck
+  description: A turtleneck tailored for the Head of Personnel.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/hop_turtleneck.rsi
@@ -290,7 +306,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpskirtHoSBlack
   name: head of security's black skirt
-  description: It's Head of Security's black skirt.
+# Triad Start - Reword
+  description: A formal black uniform for the Head of Security.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/hos_black.rsi
@@ -301,7 +319,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpskirtRDClassical
   name: research director's classical skirt
-  description: It's Research Director's classical skirt.
+# Triad Start - Reword
+  description:  A refined uniform skirt befitting the Research Director.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/rd_classical.rsi
@@ -323,7 +343,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformElegantLadyDress
   name: elegant lady's dress
-  description: "A voluminous white blouse with a black skirt-perfect for highlighting your beauty, darling!"
+# Triad Start - Reword
+  description: "A voluminous white blouse with a black skirt. Perfect for highlighting your beauty, darling!"
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/lady.rsi

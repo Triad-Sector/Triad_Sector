@@ -146,8 +146,10 @@
 - type: entity
   parent: ClothingUniformBase
   id: SLClothingUniformJumpsuitHoPTurtleneck
-  name: head of personal's turtleneck
-  description: It's Head of Personal's turtleneck.
+# Triad Start - Typo
+  name: head of personnel's turtleneck
+  description: A turtleneck tailored for the Head of Personnel.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpsuit/hop_turtleneck.rsi
@@ -158,7 +160,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpsuitHoSBlack
   name: head of security's black suit
-  description: It's Head of Security's black suit.
+ # Triad Start - Typo, reword
+  description: A formal black uniform for the Head of Security.
+ # End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpsuit/hos_black.rsi
@@ -169,7 +173,9 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpsuitRDClassical
   name: research director's classical suit
-  description: It's Research Director's сlassical suit.
+# Triad Start - Typo, reword
+  description:  A classical take on the Research Director's uniform.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpsuit/rd_classical.rsi

@@ -15,7 +15,9 @@
   parent: ClothingHeadBase
   id: SLRedRegaliaHat
   name: red regalia Hat
-  description: A fancy red hat like a mafiaoso would wear.
+# Triad Start - Fixed Typo
+  description: A fancy red hat like a mafioso would wear.
+# End Triad
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/red_regalia.rsi

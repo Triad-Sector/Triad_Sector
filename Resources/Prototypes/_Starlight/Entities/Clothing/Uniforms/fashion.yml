@@ -4,7 +4,9 @@
   parent: ClothingUniformBase
   id: SLBodysuitJeansUniformSuit
   name: bodysuit and jeans
-  description: Fashionable and practicle. You could fight someone in this.
+# Triad Start - Typo
+  description: Fashionable and practical. You could fight someone in this.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/bodysuit_jeans.rsi
@@ -15,7 +17,9 @@
   parent: ClothingUniformBase
   id: SLCamoUniformSuit
   name: camo jumpsuit
-  description: Youd blend in if this was a forest.
+# Triad Start - Typo
+  description: You blend in as if this was a forest.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/camo_jumpsuit.rsi
@@ -25,7 +29,9 @@
 - type: entity
   parent: ClothingUniformBase
   id: SLCandyClownUniformSuit
-  name: candy clown
+# Triad Start -Changed to 'cotton candy clown jumpsuit'
+  name: cotton candy clown jumpsuit
+# End Triad
   description: Oh god this makes your eyes hurt!
   components:
   - type: Sprite
@@ -41,7 +47,9 @@
   parent: ClothingUniformBase
   id: SLCoolTanktopUniformSuit
   name: cool tanktop
-  description: Just like heroes wear when they fight Xenos.
+# Triad Start - Removed Xeno Mention
+  description: The kind of outfit heroes wear when they go fight the bad guys.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/cool_tanktop.rsi
@@ -151,7 +159,9 @@
   parent: ClothingUniformBase
   id: SLMessyDressShirtUniformSuit
   name: messy dress shirt
-  description: Thrown on in a hurry, probably hasnt been washed in a few days.
+# Triad Start - Punctuation typo
+  description: Thrown on in a hurry, probably hasn't been washed in a few days.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/messy_dress_shirt.rsi
@@ -173,7 +183,9 @@
   parent: ClothingUniformBase
   id: SLOldWomanUniformSuit
   name: old womans clothes
-  description: Makes anyone look like theyre 65.
+# Triad Start - Typo, reworded
+  description: Makes anyone look like they're over the age of 65.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/old_woman.rsi
@@ -195,7 +207,9 @@
   parent: ClothingUniformBase
   id: SLRefereeUniformSuit
   name: referee uniform
-  description: If theyre holding a red card you might as well shoot them. The time in genpop would be less painful.
+# Triad Start - Typo, added TDF mention
+  description: If they're holding a red card, you might as well shoot them. The time in the TDF jail cells would be less painful.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/referee.rsi
@@ -206,7 +220,7 @@
   parent: ClothingUniformBase
   id: SLSailorUniformSuit
   name: sailor uniform
-  description: Worn by the saltiest seamen. Wait what?
+  description: Worn by the saltiest seamen. Wait, what?
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/sailor.rsi
@@ -217,7 +231,9 @@
   parent: ClothingUniformBase
   id: SLStripedClownUniformSuit
   name: striped clown uniform
-  description: Somehow its brighter than anything youve ever seen.
+# Triad Start - Punctuation errors
+  description: Somehow it's brighter than anything you've ever seen.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/striped_clown.rsi
@@ -298,7 +314,9 @@
   parent: ClothingUniformBase
   id: SLRedRegaliaSuit
   name: red regalia suit
-  description: A fancy red suit like a mafiaoso would wear.
+# Triad Start - Typo
+  description: A fancy red suit like a mafioso would wear.
+# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/red_regalia.rsi
