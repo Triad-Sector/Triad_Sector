@@ -1,6 +1,6 @@
 - type: technology
   id: TdfBasicGuns
-  name: research-technology-tsfmc-guns
+  name: research-technology-tdf-guns
   entityIcon: WeaponRifleLecter
   discipline: TdfWeaponry
   tier: 1
@@ -12,7 +12,7 @@
   position: 12, 2
 
 - type: technology
-  id: TsfEshield
+  id: TdfEshield
   name: research-technology-tdf-eshield
   entityIcon: EnergyShield
   discipline: TdfWeaponry
@@ -23,4 +23,4 @@
   - EnergySwordTDF
   technologyPrerequisites:
   - UniversalMaterialResearchT2
-  position: 13, 7
+  position: 13, 3

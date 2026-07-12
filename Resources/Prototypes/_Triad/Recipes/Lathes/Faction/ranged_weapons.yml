@@ -1,7 +1,7 @@
 # TDF Weaponry
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRifleLecterTDF
+  id: WeaponRifleLecterTdf
   result: WeaponRifleLecterTdf
   categories:
   - Rifles

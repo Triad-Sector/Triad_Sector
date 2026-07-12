@@ -163,6 +163,9 @@
     # - TsfmcGear
     # - TsfmcEquipment
     # - TsfmcShipyard
+    - TdfWeaponry
+    - TdfEquipment
+    - TdfShipyard
     # End Triad
     - RogueWeaponry
     - RogueGear
