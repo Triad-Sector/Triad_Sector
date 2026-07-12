@@ -19,6 +19,8 @@
   - ContractorClothingUniformJumpskirtEngineering
   - ContractorClothingUniformJumpsuitHydroponics
   - ContractorClothingUniformJumpskirtHydroponics
+  - ContractorClothingUniformJumpsuitMedicalDoctor
+  - ContractorClothingUniformJumpskirtMedicalDoctor
   - ContractorClothingUniformJumpsuitScientist
   - ContractorClothingUniformJumpskirtScientist
   - ContractorClothingUniformJumpsuitColorWhite
@@ -71,6 +73,17 @@
   - ContractorClothingUniformJumpskirtBH
   - ContractorClothingUniformJumpsuitBHGrey
   - ContractorClothingUniformJumpskirtBHGrey
+  - ContractorUniformScrubsColorGreen
+  - ContractorUniformScrubsColorBlue
+  - ContractorUniformScrubsColorPurple
+  - ContractorClothingUniformJumpsuitParamedic
+  - ContractorClothingUniformJumpskirtParamedic
+  - ContractorClothingUniformJumpsuitVirology
+  - ContractorClothingUniformJumpskirtVirology
+  - ContractorClothingUniformJumpsuitChemistry
+  - ContractorClothingUniformJumpskirtChemistry
+  - ContractorClothingUniformJumpsuitGenetics
+  - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
   - ContractorClothingUniformJumpskirtPsychologist
   - ContractorClothingUniformJumpsuitScientistFormal
@@ -105,26 +118,8 @@
   - ContractorClothingUniformJumpsuitChaplainPilgrimVest
   - ContractorClothingUniformJumpsuitQMTurtleneck
   - ContractorClothingUniformJumpskirtQMTurtleneck
-  - ContractorUniformScrubsColorGreen
-  - ContractorUniformScrubsColorBlue
-  - ContractorUniformScrubsColorPurple
-  - ContractorClothingUniformJumpsuitParamedic
-  - ContractorClothingUniformJumpskirtParamedic
-  - ContractorClothingUniformJumpsuitVirology
-  - ContractorClothingUniformJumpskirtVirology
-  - ContractorClothingUniformJumpsuitChemistry
-  - ContractorClothingUniformJumpskirtChemistry
-  - ContractorClothingUniformJumpsuitGenetics
-  - ContractorClothingUniformJumpskirtGenetics
-  - ContractorClothingUniformJumpsuitMedicalDoctor
-  - ContractorClothingUniformJumpskirtMedicalDoctor
   - ContractorClothingUniformJumpsuitSeniorPhysician
   - ContractorClothingUniformJumpskirtSeniorPhysician
-  - ContractorClothingUniformJumpsuitMilitaryMedicalDoctor
-  - ContractorClothingUniformJumpsuitMilitaryParamedic
-  - ContractorClothingUniformJumpsuitMilitaryChemistry
-  - ContractorClothingUniformJumpsuitMilitaryVirology
-  - ContractorClothingUniformJumpsuitMilitaryGenetics
   #- ContractorClothingUniformJumpsuitCMO # Temp removed for MOM. Will return if replaced.
   #- ContractorClothingUniformJumpskirtCMO # Temp removed for MOM. Will return if replaced. #
   #- ContractorClothingUniformTurtleneckCMO # Temp removed for MOM. Will return if replaced. #
@@ -171,6 +166,11 @@
   - ContractorClothingUniformJumpsuitMilitaryCargo
   - ContractorClothingUniformJumpsuitMilitaryQM
   - ContractorClothingUniformDrakeIndustriesHauler
+  - ContractorClothingUniformJumpsuitMilitaryMedicalDoctor
+  - ContractorClothingUniformJumpsuitMilitaryParamedic
+  - ContractorClothingUniformJumpsuitMilitaryChemistry
+  - ContractorClothingUniformJumpsuitMilitaryVirology
+  - ContractorClothingUniformJumpsuitMilitaryGenetics
  # - ContractorClothingUniformJumpsuitMilitaryCMO # Temp removed for MOM. Will return if replaced.
   - ContractorClothingUniformJumpsuitMilitaryScientist
   - ContractorClothingUniformJumpsuitMilitaryResearchDirector
@@ -216,69 +216,62 @@
   - ClothingUniformMNKBlackShoulder
   - ClothingUniformMNKTracksuitBlack
   # End Triad
-  # Starlight Start
-  - WFClothingUniformJumpsuitColorMaroon
-  - WFClothingUniformJumpskirtColorMaroon
-  - WFClothingUniformJumpsuitColorLightBrown
-  - WFClothingUniformJumpskirtColorLightBrown
-  - WFClothingUniformJumpsuitColorBrown
-  - WFClothingUniformJumpskirtColorBrown
-  - WFClothingUniformColorRainbow
-  - WFClothingUniformJumpsuitMercenary
-  - WFClothingUniformJumpskirtMercenary
-  - WFClothingUniformJumpsuitPrivateSec
-  - WFClothingUniformJumpskirtPrivateSec
-  - WFClothingUniformJumpsuitMilitaryTurtleneckMercenary
-  - WFClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
-  - WFClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
-  - WFClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
-  - WFClothingUniformJumpsuitMilitaryPilot
-  - UniformMaid
-  - ClothingUniformJumpskirtJanimaidmini
-  - ClothingUniformJumpskirtTacticalMaid
-  - WFSLClothingUniformJumpskirtGothic
-  - WFSLClothingUniformJumpskirtMaid
-  - WFSLClothingUniformJumpskirtDressRed
-  - WFSLClothingUniformJumpskirtTango
-  - WFSLClothingUniformJumpskirtVictorianBlack
-  - WFSLClothingUniformJumpskirtReporter
-  - WFSLClothingUniformJumpskirtJournalist
-  - WFSLClothingUniformJumpskirtVictorianrRed
-  - WFSLClothingUniformJumpskirtPencilTan
-  - WFSLClothingUniformJumpskirtCargoSalvage
-  - WFSLClothingUniformJumpskirtCargoSalvageFormal
-  - WFSLClothingUniformJumpskirtSalvageLead
-  - WFSLClothingUniformJumpskirtMiningSpecialist
-  - WFSLClothingUniformJumpskirtCargoFormal
-  - WFSLClothingUniformJumpskirtScientistFormal
-  - WFSLClothingUniformJumpskirtElegantMaid
-  - WFSLClothingUniformColorJumpskirtRainbow
-  - WFSLClothingUniformJumpskirtSchool
-  - WFSLClothingUniformJumpskirtCapTurtleneck
-  - WFSLClothingUniformJumpskirtHoPTurtleneck
-  - WFSLClothingUniformJumpskirtHoSBlack
-  - WFSLClothingUniformJumpskirtRDClassical
-  - WFSLClothingUniformJulianneVA11HALLA
-  - WFSLClothingUniformElegantLadyDress
-  - WFSLClothingUniformPastryDress
-  - WFSLClothingUniformJumpsuitSuitCheckered
-  - WFSLClothingUniformJumpsuitSuitTan
-  - WFSLClothingUniformJumpsuitSuitWaiter
-  - WFSLClothingUniformJumpsuitCargoAlt
-  - WFSLClothingUniformJumpsuitCargoFormal
-  - WFSLClothingUniformJumpsuitSalvageFormal
-  - WFSLClothingUniformJumpsuitSuperstarCop
-  - WFSLClothingUniformJumpsuitAerostatic
-  - WFSLClothingUniformJumpsuitCapTurtleneck
-  - WFSLClothingUniformJumpsuitCaptainNoble
-  - WFSLClothingUniformJumpsuitHoPTurtleneck
-  - WFSLClothingUniformJumpsuitHoSBlack
-  - WFSLClothingUniformJumpsuitRDClassical
-  - WFSLClothingUniformJumpsuitVampir
-  - WFSLClothingUniformDama235123
+  # Triad start - Ported Starlight clothes
   - WFSLBodysuitJeansUniformSuit
   - WFSLCamoUniformSuit
   - WFSLCandyClownUniformSuit
+  - WFSLCargoOverallsUniformSuit
+  - WFSLClothingUniformBootsVampir
+  - WFSLClothingUniformColorJumpskirtRainbow
+  - WFSLClothingUniformDama0965
+  - WFSLClothingUniformDama235123
+  - WFSLClothingUniformElegantLadyDress
+  - WFSLClothingUniformJulianneVA11HALLA
+  - WFSLClothingUniformJumpskirtCapTurtleneck
+  - WFSLClothingUniformJumpskirtCargoFormal
+  - WFSLClothingUniformJumpskirtCargoSalvage
+  - WFSLClothingUniformJumpskirtCargoSalvageFormal
+  - WFSLClothingUniformJumpskirtClownFormal
+  - WFSLClothingUniformJumpskirtDressRed
+  - WFSLClothingUniformJumpskirtElegantMaid
+  - WFSLClothingUniformJumpskirtGothic
+  - WFSLClothingUniformJumpskirtHoPTurtleneck
+  - WFSLClothingUniformJumpskirtHoSBlack
+  - WFSLClothingUniformJumpskirtJournalist
+  - WFSLClothingUniformJumpskirtMaid
+  - WFSLClothingUniformJumpskirtMiningSpecialist
+  - WFSLClothingUniformJumpskirtPencilTan
+  - WFSLClothingUniformJumpskirtPerformerClown
+  - WFSLClothingUniformJumpskirtPerformerMime
+  - WFSLClothingUniformJumpskirtRDClassical
+  - WFSLClothingUniformJumpskirtReporter
+  - WFSLClothingUniformJumpskirtSalvageLead
+  - WFSLClothingUniformJumpskirtSchool
+  - WFSLClothingUniformJumpskirtScientistFormal
+  - WFSLClothingUniformJumpskirtTango
+  - WFSLClothingUniformJumpskirtVictorianBlack
+  - WFSLClothingUniformJumpskirtVictorianrRed
+  - WFSLClothingUniformJumpsuitAerostatic
+  - WFSLClothingUniformJumpsuitCaptainNoble
+  - WFSLClothingUniformJumpsuitCapTurtleneck
+  - WFSLClothingUniformJumpsuitCargoAlt
+  - WFSLClothingUniformJumpsuitCargoFormal
+  - WFSLClothingUniformJumpsuitClownFormal
+  - WFSLClothingUniformJumpsuitHoPTurtleneck
+  - WFSLClothingUniformJumpsuitHoSBlack
+  - WFSLClothingUniformJumpsuitMimeSuaveBlack
+  - WFSLClothingUniformJumpsuitMimeSuaveWhite
+  - WFSLClothingUniformJumpsuitPerformerClown
+  - WFSLClothingUniformJumpsuitPerformerMime
+  - WFSLClothingUniformJumpsuitRDClassical
+  - WFSLClothingUniformJumpsuitSalvageFormal
+  - WFSLClothingUniformJumpsuitSuitCheckered
+  - WFSLClothingUniformJumpsuitSuitTan
+  - WFSLClothingUniformJumpsuitSuitWaiter
+  - WFSLClothingUniformJumpsuitSuperstarCop
+  - WFSLClothingUniformJumpsuitVampir
+  - WFSLClothingUniformPastryDress
+  - WFSLClothingUniformShinelVampir
   - WFSLCoolTanktopUniformSuit
   - WFSLDruidRobesUniformSuit
   - WFSLFlamboyantUniformSuit
@@ -293,26 +286,18 @@
   - WFSLMimeFrillsUniformSuit
   - WFSLOldWomanUniformSuit
   - WFSLPunkJeansUniformSuit
+  - WFSLRedRegaliaSuit
   - WFSLRefereeUniformSuit
   - WFSLSailorUniformSuit
+  - WFSLSpottedClownUniformSuit
   - WFSLStripedClownUniformSuit
   - WFSLSundressUniformSuit
   - WFSLTatteredClothesUniformSuit
   - WFSLTieDyeUniformSuit
   - WFSLTogaUniformSuit
   - WFSLVintageUniformSuit
-  - WFSLCargoOverallsUniformSuit
-  - WFSLRedRegaliaSuit
-  - WFSLClothingUniformJumpsuitPerformerClown
-  - WFSLClothingUniformJumpsuitClownFormal
-  - WFSLClothingUniformJumpskirtPerformerClown
-  - WFSLClothingUniformJumpskirtClownFormal
-  - WFSLSpottedClownUniformSuit
-  - WFSLClothingUniformJumpsuitPerformerMime
-  - WFSLClothingUniformJumpskirtPerformerMime
-  - WFSLClothingUniformJumpsuitMimeSuaveWhite
-  - WFSLClothingUniformJumpsuitMimeSuaveBlack
-  # End Starlight
+  # End Triad
+
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -567,7 +552,9 @@
   - ContractorClothingShoesBootsWinterChef
   - ContractorClothingShoesBootsWinterChem
   - ContractorClothingShoesBootsWinterEngi
+  - ContractorClothingShoesBootsWinterGenetics
   - ContractorClothingShoesBootsWinterMiner
+  - ContractorClothingShoesBootsWinterParamedic
   - ContractorClothingShoesBootsWinterRobo
   - ContractorClothingShoesBootsWinterSci
   - ContractorClothingShoesBootsWinterViro
@@ -598,18 +585,10 @@
   - ContractorClothingShoesSkates
   - ContractorClothingShoesClownLarge
   - ContractorClothingShoesBling
-  # Starlight Start
-  - ClothingUnderSocksCoder
-  - ClothingUnderSocksBee
-  - WFClothingShoesBootsCombat
-  - WFClothingShoesMagMercenary
-  - WFClothingShoesMagSecurity
-  - WFClothingShoesBootsWinterHoS
-  - WFClothingShoesBootsWinterWarden
-  - WFSLClothingShoesHighheelShoes
-  - WFSLClothingUniformBootsVampir
+  # Triad start - Ported Starlight
   - WFSLClothingShoesBootsSalvage1208134
-  # End Starlight
+  - WFSLClothingShoesHighheelShoes
+  # End Triad
   fallbacks:
   - ContractorClothingShoesColorBlack
 
@@ -648,6 +627,12 @@
   - ContractorClothingHeadHatBowlerHat
   - ContractorClothingHeadHatGreyFlatcap
   - ContractorClothingHeadHatBrownFlatcap
+  - ContractorClothingHeadHatParamedicsoft
+  - ContractorClothingHeadNurseHat
+  - ContractorClothingHeadHatBeretMedic
+  - ContractorClothingHeadHatSurgcapGreen
+  - ContractorClothingHeadHatSurgcapBlue
+  - ContractorClothingHeadHatSurgcapPurple
   - ContractorClothingHeadHatFedoraGrey
   - ContractorClothingHeadHatFedoraBrown
   - ContractorClothingHeadHatCapcap
@@ -655,6 +640,7 @@
   - ContractorClothingHeadTinfoil
   - ContractorClothingHeadHatBeretRND
   - ContractorClothingHeadHatBeretEngineering
+  - ContractorClothingHeadHatBeretSeniorPhysician
 #  - ContractorClothingHeadHatBeretCmo # Temp removed for MOM. Will return if replaced.
   - ContractorClothingHeadHatBeretQM
   - ContractorClothingHeadHatQMsoft
@@ -685,29 +671,18 @@
   - ContractorClothingHeadHatWitchhunter
   - ContractorClothingHeadHatBishopMitre
   - ContractorClothingHeadHatKippah
+  - ContractorClothingHeadHatPlaguedoctor
   - ContractorPlunger
   - ContractorClothingHeadHatCone
   - ContractorClothingHeadBandGold
   - ContractorClothingHeadHatTophat
   - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
-  - ContractorClothingHeadHatParamedicsoft
-  - ContractorClothingHeadNurseHat
-  - ContractorClothingHeadHatBeretMedic
-  - ContractorClothingHeadHatSurgcapGreen
-  - ContractorClothingHeadHatSurgcapBlue
-  - ContractorClothingHeadHatSurgcapPurple
-  - ContractorClothingHeadHatBeretSeniorPhysician
-  # Starlight Start
-  - ClothingHeadHatTacticalMaidHeadband
-  - FoodPoppy
-  - FoodLily
-  - ClothingHeadHatFlowerWreath
-  - FoodAmbrosiaVulgaris
-  - WFClothingHeadHatBeretCommander
+  # Triad start - Ported Starlight
   - WFSLClothingHeadBase0121
   - WFSLRedRegaliaHat
-  # End Starlight
+  # End Triad
+
 - type: loadoutGroup
   id: ContractorEars
   name: loadout-group-contractor-ears
@@ -778,6 +753,7 @@
   - ContractorClothingNeckNovaSharksLeatherJacket
   - ContractorClothingNeckCrucifix
   - ContractorCDDogtags
+  - ContractorClothingNeckStethoscope
   - ContractorClothingOuterPoncho
   - ContractorClothingOuterPonchoClassic
   - ContractorClothingNeckPonchoSmallPurple # Monolith
@@ -827,12 +803,11 @@
   - ContractorClothingNeckMantleBH # Mono
   - ContractorClothingNeckCloakSanabi # Mono
   - ContractorClothingNeckUIOvercoat # Mono
-  # Starlight Start
-  - WFSLClothingUniformDama0965
-  - WFSLClothingUniformShinelVampir
+  # Triad start - Ported Starlight
   - WFSLClothingNeckTieGeoffroyblack12
   - WFSLRedRegaliaCloak
-  # End Starlight
+  # End Triad
+
 - type: loadoutGroup
   id: ContractorPDA
   name: loadout-group-contractor-id
