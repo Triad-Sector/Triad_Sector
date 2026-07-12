@@ -158,10 +158,12 @@
     - Arsenal
     - Experimental
     - CivilianServices
-    - TsfmcWeaponry
-    - TsfmcGear
-    - TsfmcEquipment
-    - TsfmcShipyard
+    # Triad Comment : remove TSF tech
+    # - TsfmcWeaponry
+    # - TsfmcGear
+    # - TsfmcEquipment
+    # - TsfmcShipyard
+    # End Triad
     - RogueWeaponry
     - RogueGear
     - RogueEquipment

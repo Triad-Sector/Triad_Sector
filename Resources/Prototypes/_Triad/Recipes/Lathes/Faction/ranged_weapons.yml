@@ -1,0 +1,13 @@
+# TDF Weaponry
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponRifleLecterTDF
+  result: WeaponRifleLecterTdf
+  categories:
+  - Rifles
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 1200
+    Plasteel: 1000
+    Plastic: 900

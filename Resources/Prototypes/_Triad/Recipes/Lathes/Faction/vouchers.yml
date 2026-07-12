@@ -1,0 +1,14 @@
+# TDF
+- type: latheRecipe
+  parent: BaseVoucherRecipe
+  id: BasicVoucherTDFTier1
+  result: ShipVoucherTier1
+  completetime: 100
+  materials:
+    Steel: 5000
+    Plasteel: 5000
+    Glass: 5000
+    Plasma: 5000
+    Uranium: 5000
+    Silver: 5000
+    Gold: 5000

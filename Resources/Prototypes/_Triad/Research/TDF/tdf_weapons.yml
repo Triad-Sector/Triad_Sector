@@ -1,0 +1,26 @@
+- type: technology
+  id: TdfBasicGuns
+  name: research-technology-tsfmc-guns
+  entityIcon: WeaponRifleLecter
+  discipline: TdfWeaponry
+  tier: 1
+  cost: 25000
+  recipeUnlocks:
+  - WeaponRifleLecterTdf
+  technologyPrerequisites:
+  - UniversalMaterialResearchT1
+  position: 12, 2
+
+- type: technology
+  id: TsfEshield
+  name: research-technology-tdf-eshield
+  entityIcon: EnergyShield
+  discipline: TdfWeaponry
+  tier: 2
+  cost: 30000
+  recipeUnlocks:
+  - EnergyShieldTDF
+  - EnergySwordTDF
+  technologyPrerequisites:
+  - UniversalMaterialResearchT2
+  position: 13, 7

@@ -11,8 +11,68 @@
 
 - type: entity
   parent: BaseShipDSID
-  id: ShipVoucherTest1
-  name: template dedicated ship id
+  id: TemplateDedicatedShipID
+  name: Template Dedicated Ship ID
+  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lost the DSID
+  components:
+  - type: Sprite
+    layers:
+    - state: med_id_handle
+    - state: motherboard
+    - state: med_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Medical
+    companyName: MD
+    vessels:
+    - ephemere
+  - type: StaticPrice
+    vendPrice: 150000
+
+- type: entity
+  parent: BaseShipDSID
+  id: ShipVoucherEphemere
+  name: Ephemere Dedicated Ship ID
+  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lost the DSID
+  components:
+  - type: Sprite
+    layers:
+    - state: med_id_handle
+    - state: motherboard
+    - state: tier_4
+    - state: med_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Medical
+    companyName: MD
+    vessels:
+    - ephemere
+  - type: StaticPrice
+    vendPrice: 150000
+
+- type: entity
+  parent: BaseShipDSID
+  id: ShipVoucherTier0
+  name: Tier 0 Dedicated Ship ID
+  description: Test
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_0
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF
+    vessels:
+    - Prosper
+
+- type: entity
+  parent: BaseShipDSID
+  id: ShipVoucherTier1
+  name: Tier 1 Dedicated Ship ID
   description: Test
   components:
   - type: Sprite
@@ -26,4 +86,5 @@
     consoleType: Security
     companyName: TDF
     vessels:
-    - Ravager
+    - Grunder
+    - Adjutant
