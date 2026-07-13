@@ -1,0 +1,105 @@
+# TDF Turrets
+# Ballistics
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretMediumRange
+  id: WeaponTurretTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretLongRange
+  id: WeaponTurretTDFLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+# Heavy Ballistic
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: WeaponTurretHeavyTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretHeavyMediumRange
+  id: WeaponTurretHeavyTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretHeavyMediumRange
+  id: BallisticTurretHeavyLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+# Energy
+- type: entity
+  parent: BaseWeaponTurretEnergyNF
+  id: EnergyTurretTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Gun
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretMediumRange
+  id: EnergyTurretTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EenrgyTurretLongRange
+  id: EnergyTurretTDFLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10

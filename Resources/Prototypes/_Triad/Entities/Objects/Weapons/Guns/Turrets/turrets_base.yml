@@ -27,6 +27,36 @@
       RangedRange: !type:Single
         32
 
+# Heavy Ballistics
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: BallisticTurretHeavyMediumRange
+  abstract: true
+  components:
+  - type: HTN
+    blackboard:
+      AggroVisionRadius: !type:Single
+        24
+      VisionRadius: !type:Single
+        24
+      RangedRange: !type:Single
+        24
+
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: BallisticTurretHeavyLongRange
+  abstract: true
+  components:
+  - type: HTN
+    blackboard:
+      AggroVisionRadius: !type:Single
+        32
+      VisionRadius: !type:Single
+        32
+      RangedRange: !type:Single
+        32
+        
+
 # Energy Turrets - we're using frontier ones because its better
 - type: entity
   parent: BaseWeaponTurretEnergyNF
