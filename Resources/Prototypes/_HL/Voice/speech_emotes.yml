@@ -1,0 +1,17 @@
+- type: emote
+  id: Pout
+  name: chat-emote-name-pout
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-pout"]
+  chatTriggers:
+  - pout
+  - pouts
+  - pouted
+  - pouting

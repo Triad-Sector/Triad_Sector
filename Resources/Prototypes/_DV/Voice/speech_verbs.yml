@@ -52,3 +52,12 @@
   - chat-speech-verb-feroxi-2
   - chat-speech-verb-feroxi-3
   - chat-speech-verb-feroxi-4
+
+- type: speechVerb
+  id: Kitsune
+  name: chat-speech-verb-name-kitsune
+  speechVerbStrings:
+  - chat-speech-verb-kitsune-1
+  - chat-speech-verb-kitsune-2
+  - chat-speech-verb-kitsune-3
+  - chat-speech-verb-kitsune-4

@@ -35,3 +35,11 @@
   priority: 50
   maxPoints: 6
   accentColor: "#e0e0e0" # Light gray
+
+# Triad
+- type: traitCategory
+  id: Emotes
+  name: trait-category-emotes
+  priority: 31
+  maxTraits: 1
+  accentColor: "#edc8ff" # Light gray # Triad TODO Pick actual color

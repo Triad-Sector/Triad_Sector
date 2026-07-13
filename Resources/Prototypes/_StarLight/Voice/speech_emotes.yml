@@ -19,16 +19,23 @@
   name: chat-emote-name-yip
   category: Vocal
   available: false
-  chatMessages: ["chat-emote-msg-yip"] # Triad: was literal `yips.`
+  icon: Interface/Actions/scream.png
   whitelist:
     components:
     - Vocal
   blacklist:
     components:
     - BorgChassis
+  chatMessages: ["chat-emote-msg-yip"]
   chatTriggers:
   - yip
+  - yip.
+  - yip?
+  - yip!
   - yips
+  - yips.
+  - yips?
+  - yips!
 
 - type: emote
   id: Scree

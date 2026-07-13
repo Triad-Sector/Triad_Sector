@@ -1,0 +1,143 @@
+# Triad - New Category [Total is replacement of emotes and noise when speaking.]
+# Emote and speech sound replacement.
+# Overriding the speech component with just allowedEmotes, breaks the normal speechSounds and speechVerb.
+# So no partial replacement trait.
+#
+#
+# OverrideCompsEffect wipes the component field and replaces with exactly what is specified,
+# rather than replacing sub-component values when specified.
+# Ideally, we would use RemCompsEffect to remove the componenet and then follow with AddCompsEffect for the items to achieve that behavior.
+# And OverrideCompsEffect would ideally just replace the sub-component fields when/where values are provided.
+# But thats not what was coded, so no partial replacements for now :<
+
+
+# To add a new partial or total replacement trait, use the examples here.
+# 
+# Replace <Species> with a capitalized name of the species, and <species> with the lowercase version.
+# Pull the allowedEmotes from the species yml file. This will replace what emotes someone has available.
+# The components of speechSounds, speechVerb, and vocal sounds also should come from the species yml file.
+
+
+# - type: trait
+#   id: RaisedBy<Species>
+#   name: trait-vocal-<species>-total-replacement-name
+#   description: trait-vocal-<species>-total-replacement-desc
+#   category: Emotes
+#   cost: 0
+#   conditions:
+#   - !type:IsSpeciesCondition
+#     species: <Species>
+#     invert: true
+#   effects:
+#   - !type:OverrideCompsEffect
+#     components:
+#     - type: Speech
+#       speechSounds:
+#       speechVerb:
+#       allowedEmotes:
+#     - type: Vocal
+#       sounds:
+#         Male:
+#         Female:
+#         Unsexed:
+
+- type: trait
+  id: RaisedByHarpies
+  name: trait-vocal-harpies-total-replacement-name
+  description: trait-vocal-harpies-total-replacement-desc
+  category: Emotes
+  cost: 0
+  conditions:
+  - !type:IsSpeciesCondition
+    species: Harpy
+    invert: true
+  - !type:AnyOfCondition
+    conditions:
+    - !type:IsSpeciesCondition
+      species: Avali
+    - !type:IsSpeciesCondition
+      species: Resomi
+  effects:
+  - !type:OverrideCompsEffect
+    components:
+    - type: Speech
+      speechSounds: Harpy
+      speechVerb: Harpy
+      allowedEmotes: ['Meow', 'Hiss', 'Mew', 'Purr', 'Growl', 'Bark', 'Snarl', 'Whine', 'Howl', 'Awoo', 'Honk', 'HarpyRing', 'HarpyPew', 'HarpyBang', 'Beep', 'HarpyRev', 'HarpyCaw', 'Squish', 'Chitter', 'Squeak', 'Click', 'Belch', 'Squish', Bagawk] # Frontier: add Belch, Squish
+    - type: Vocal
+      sounds:
+        Male: SoundsHarpy
+        Female: SoundsHarpy
+        Unsexed: SoundsHarpy
+
+- type: trait
+  id: RaisedByVulpkanin
+  name: trait-vocal-vulpkanin-total-replacement-name
+  description: trait-vocal-vulpkanin-total-replacement-desc
+  category: Emotes
+  cost: 0
+  conditions:
+  - !type:IsSpeciesCondition
+    species: Vulpkanin
+    invert: true
+  - !type:AnyOfCondition
+    conditions:
+    - !type:IsSpeciesCondition
+      species: Human
+    - !type:IsSpeciesCondition
+      species: Felinid
+  effects:
+  - !type:OverrideCompsEffect
+    components:
+    - type: Speech
+      speechSounds: Vulpkanin
+      speechVerb: Vulpkanin
+      allowedEmotes: ['Bark', 'Snarl', 'Whine', 'Howl', 'Awoo', 'Growl', 'Yip', 'Whimper'] # Starlight / Monolith: Add yip, whine; rename old whine to whimper
+    - type: Vocal
+      sounds:
+        Male: MaleVulpkanin
+        Female: FemaleVulpkanin
+        Unsexed: MaleVulpkanin
+
+- type: trait
+  id: RaisedByKitsune
+  name: trait-vocal-kitsune-total-replacement-name
+  description: trait-vocal-kitsune-total-replacement-desc
+  category: Emotes
+  cost: 0
+  conditions:
+  - !type:AnyOfCondition
+    conditions:
+    - !type:IsSpeciesCondition
+      species: Vulpkanin
+    - !type:IsSpeciesCondition
+      species: Human
+    - !type:IsSpeciesCondition
+      species: Felinid
+  effects:
+  - !type:OverrideCompsEffect
+    components:
+    - type: Speech
+      speechSounds: Alto
+      speechVerb: Kitsune
+      allowedEmotes: [ 'Squeak', 'Growl', 'Snarl', 'Bark', 'Whine', 'Howl', 'Purr', 'Yip', 'Pout' ]
+    - type: Vocal
+      sounds:
+        Male: MaleKitsune
+        Female: FemaleKitsune
+        Unsexed: MaleKitsune
+    # - type: TypingIndicator # Triad - No idea why typing indicator isnt overriding. Remove and override doesn't fix either. Deosn't work with trying to give felinid either.
+    #   proto: kitsune
+    # - type: InteractionPopup # Triad - Was giving both hug and hearts. Need to fix before implemented.
+    #   successChance: 0.5
+    #   interactSuccessString: petting-success-soft-floofy-kitsune
+    #   interactFailureString: petting-failure-generic
+    #   interactSuccessSpawn: EffectHearts
+    #   interactSuccessSound:
+    #     path: /Audio/Animals/fox_squeak.ogg
+    - type: PseudoItem
+      storedOffset: "0,17"
+      shape:
+        - 0,0,1,4
+        - 0,2,3,4
+        - 4,0,5,4

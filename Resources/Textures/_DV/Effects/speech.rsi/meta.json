@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Felinid sprites made by Adrian16199 (Github), Rodentia sprites made by portfiend, Feroxi sprites made by BlitzTheSquishy",
+    "copyright": "Felinid sprites made by Adrian16199 (Github), Rodentia sprites made by portfiend, Feroxi sprites made by BlitzTheSquishy, Kitsune added in https://github.com/DeltaV-Station/Delta-v/pull/3175 no attribution provided",
     "states": [
         {
             "name": "felinid0",
@@ -113,6 +113,23 @@
         },
         {
             "name": "feroxi3"
+        },
+        {
+            "name": "kitsune0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "kitsune1"
+        },
+        {
+            "name": "kitsune2"
         }
     ]
 }
