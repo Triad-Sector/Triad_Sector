@@ -47,8 +47,8 @@
     - TDFTurret
 
 - type: entity
-  parent: BallisticTurretHeavyMediumRange
-  id: BallisticTurretHeavyLongRange
+  parent: BallisticTurretHeavyLongRange
+  id: BallisticTurretHeavyTDFLongRange
   suffix: Triad, TDF, LongRange
   components:
   - type: NpcFactionMember
