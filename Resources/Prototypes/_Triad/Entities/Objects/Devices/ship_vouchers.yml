@@ -1,0 +1,29 @@
+#LPC base (just different sprites)
+- type: entity
+  abstract: true
+  parent: BaseShipVoucher
+  id: BaseShipDSID
+  name: ship dedicated ship id
+  description: Contains the necessary data for a shipyard console to produce a certain design.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/dsid_template.rsi
+
+- type: entity
+  parent: BaseShipDSID
+  id: ShipVoucherTest1
+  name: template dedicated ship id
+  description: Test
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_1
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF
+    vessels:
+    - Ravager

@@ -24,7 +24,7 @@
   parent: ClothingHandsBase
   id: ClothingHandsGlovesHeavyGoldenTrim
   name: heavy gold-trimmed gloves
-  description: A pair of gold-trimmed gloves made for Winter Solstice staff. These ones are insulated.
+  description: A pair of gold-trimmed gloves made for TDF High Command staff. These ones are insulated.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Hands/Gloves/goldtrim.rsi
@@ -39,7 +39,7 @@
   parent: ClothingHandsBase
   id: ClothingHandsGlovesGoldenTrim
   name: gold-trimmed gloves
-  description: A pair of gold-trimmed gloves made for Winter Solstice staff. Not insulated.
+  description: A pair of gold-trimmed gloves made for very important staff. Not insulated.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Hands/Gloves/goldtrim.rsi

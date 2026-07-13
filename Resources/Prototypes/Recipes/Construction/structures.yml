@@ -608,7 +608,7 @@
   canBuildInImpassable: true
   conditions:
     - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+    #- !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: window
@@ -626,7 +626,7 @@
   canBuildInImpassable: true
   conditions:
     - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+    #- !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: reinforced_window
@@ -644,7 +644,7 @@
   canBuildInImpassable: true
   conditions:
     - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+    #- !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: clock_window
@@ -662,7 +662,7 @@
   description: Clear, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+    #- !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: plasma_window
@@ -680,7 +680,7 @@
   description: Clear and even tougher, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+    #- !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: plasma_reinforced_window

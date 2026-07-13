@@ -86,8 +86,8 @@
 - type: entity
   parent: FaxMachineBase
   id: FaxMachineCentcom
-  name: CentComm long range fax machine
-  suffix: CentCom
+  name: TDF HighComm long range fax machine
+  suffix: TDF High Command
   components:
   - type: Sprite
     layers:
@@ -95,7 +95,7 @@
         map: [ "base" ]
         color: "#bfe3ff"
   - type: FaxMachine
-    name: "Central Command"
+    name: "TDF High Command"
     notifyAdmins: true
 
 - type: entity

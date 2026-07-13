@@ -2295,3 +2295,213 @@ Entries:
   id: 2367
   time: '2026-07-09T03:13:41.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/295
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added Clockcult gear, the Ratvarian spear, gauntlets, treads, helmet,
+        and cuirass. Unobtainable, but they are selectable via chameleon gear.
+  id: 2368
+  time: '2026-07-09T12:18:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/267
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed pipes and other machines not being anchorable under directional
+        windows.
+  id: 2369
+  time: '2026-07-09T13:24:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/310
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        The Chrono-legionnaires have retrieved the space biomes from Colossus
+        Central, Space Biomes now appear again.
+    - type: Fix
+      message: Fixed drones taking the day off
+    - type: Fix
+      message: Various tiny Venmar Station fixes relating to disposals mainly
+  id: 2370
+  time: '2026-07-09T16:25:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/313
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        The medal case has been added to loadout. Captains can now give a small
+        variety of medals to crewmembers who go above and beyond in their
+        duties.
+  id: 2371
+  time: '2026-07-09T16:27:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/306
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ATM to Auric Outpost
+    - type: Add
+      message: Double airlock on military dock
+    - type: Add
+      message: Filing cabinets and it's form inside the briefing
+  id: 2372
+  time: '2026-07-10T00:35:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/318
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Add windoor CE and Warden
+    - type: Add
+      message: Turrets for TDF
+  id: 2373
+  time: '2026-07-10T13:02:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/319
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Drone loot readjusted to fit Triad's ship saving balancing
+    - type: Tweak
+      message: Contraband Crate sell price readjusted
+    - type: Tweak
+      message: Contraband Crate blips now only show when in close proximity
+    - type: Tweak
+      message: Contraband Crate FMC/DC value increased
+    - type: Remove
+      message: Drone Blackboxes no longer gives money
+    - type: Tweak
+      message: Drone core price increased
+  id: 2374
+  time: '2026-07-10T13:06:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/259
+- author: Upstream
+  changes:
+    - type: Fix
+      message: >-
+        The forensic scanner no longer leaks fingerprints or glove prints onto
+        the scanning object if you use the right-click scan verb.
+  id: 2375
+  time: '2026-07-10T13:47:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/315
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed auth disruptors and emags being marked as 'imperial coalition'
+        contraband. They are now marked as Class 2 contra.
+  id: 2376
+  time: '2026-07-10T13:48:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/317
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: >-
+        Rules version 1.3.  Adds some new rules and clarifies a few others,
+        check PR for 'patch notes'
+  id: 2377
+  time: '2026-07-10T13:49:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/309
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Cryoxadone has been reverted to Airloss only Cryogenic medicine
+  id: 2378
+  time: '2026-07-10T13:52:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/287
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Maybe fix weird SOP/law guidebook formatting
+    - type: Tweak
+      message: >-
+        Sector Law - Conspiring to commit a crime is now only half the original
+        sentence.
+    - type: Tweak
+      message: >-
+        Sector Law - Removed Individual to Ship Destruction and Ship to Ship
+        Destruction. They have been replaced with destruction of property.
+    - type: Tweak
+      message: >-
+        Sector Law - Added Grand Destruction of property and Destruction of
+        property laws
+    - type: Tweak
+      message: >-
+        SOP, Smuggling - Hailing procedure no longer requires powering down of
+        ship, only to disable gunnery and shuttle consoles and enable FTL lock.
+    - type: Tweak
+      message: >-
+        SOP - Belligerent Vessel's Aggression & Naval Engagements has been
+        renamed to Naval Engagements
+  id: 2379
+  time: '2026-07-10T14:20:14.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/321
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Auric adjustments after feedback 1.1 (the mechanics overhaul)
+  id: 2380
+  time: '2026-07-10T14:23:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/320
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        A broken NPC brain no longer freezes AI updates for every other NPC on
+        the server.
+  id: 2381
+  time: '2026-07-11T05:36:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/330
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Fixed NPC ship AI freezing when drones woke up before their map finished
+        loading.
+  id: 2382
+  time: '2026-07-11T05:47:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/331
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        NPC ship drones now respect faction relations and will not attack
+        friendly targets.
+  id: 2383
+  time: '2026-07-11T05:54:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/332
+- author: Stedar111
+  changes:
+    - type: Add
+      message: Added the HZD "Pike" a heavy, researchable, burst rifle.
+  id: 2384
+  time: '2026-07-11T15:55:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/303
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Whistles have been added to the Tools category of loadout. This
+        includes: regular, security red, and trench.
+  id: 2385
+  time: '2026-07-11T15:56:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/325
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added TDF High command stamps, gear, and gear presets/roles!
+  id: 2386
+  time: '2026-07-11T16:35:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/329
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: ToggleNetworkLinks Command to help with mappping
+  id: 2387
+  time: '2026-07-11T22:05:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/335
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added Designated Ship ID Framework and it's assets
+  id: 2388
+  time: '2026-07-12T13:17:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/345

@@ -118,3 +118,84 @@
   - type: SpeedModifiedOnWield
     walkModifier: 0.65
     sprintModifier: 0.5
+
+- type: entity
+  name: HZD "Pike" (5.56x45mm)
+  parent: BaseWeaponRifle
+  id: WeaponRiflePike
+  description: Holk & Zis Dynamic's notoriously heavy burst rifle, featuring a scope and laser to assist in aiming.  A massively overbuilt rifle that was one of HZD's first offerings upon arriving in the sector, commonly seen in the hands of the hands of HZD guards who vigorously complain about its weight.
+  components:
+  - type: Item
+    size: Huge
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/pike_inhands_32x.rsi
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/pike.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/pike_inhands_32x.rsi
+  - type: GunRequiresWield
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -27
+    maxAngle: -43
+  - type: Gun
+    minAngle: 30
+    maxAngle: 48
+    angleIncrease: 2
+    angleDecay: 5
+    cameraRecoilScalar: 0.1
+    fireRate: 3
+    selectedMode: Burst
+    soundGunshot:
+      path: /Audio/_RMC14/Effects/Weapons/Guns/Gunshots/gun_m54c_1.ogg
+    availableModes:
+    - Burst
+    burstCooldown: 0.5
+    burstFireRate: 15
+    shotsPerBurst: 3
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.80
+    sprintModifier: 0.75
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 3.5
+    pvsIncrease: 0.5
+  - type: LaserPointer
+    targetedColor: "#FF0000"
+    defaultColor: "#FF0000"
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine556x45mmFMJ
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - Magazine556x45mmFMJ
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge556x45mmFMJ
+        priority: 1
+        whitelist:
+          tags:
+          - Cartridge556x45mmFMJ
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 3500

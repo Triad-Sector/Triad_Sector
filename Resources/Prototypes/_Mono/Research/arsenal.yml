@@ -9,6 +9,7 @@
   - WeaponLMGRatel
   - WeaponShotgunBigBuddy
   - WeaponPistolStiletto #Triad
+  - WeaponRiflePike #Triad
   technologyPrerequisites:
   - MercArmementSimple
   - AdvancedParts
