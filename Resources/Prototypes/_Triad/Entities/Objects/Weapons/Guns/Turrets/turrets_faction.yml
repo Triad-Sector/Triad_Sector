@@ -65,7 +65,7 @@
     factions:
     - TDFTurret
   - type: Gun
-    firerate: 2
+    fireRate: 2
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 10
