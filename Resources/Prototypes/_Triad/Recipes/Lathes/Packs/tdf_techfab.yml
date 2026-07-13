@@ -49,15 +49,23 @@
 - type: latheRecipePack
   id: TdfDynamicMelee
   recipes:
-  - EnergySwordTDF
-  - EnergyShieldTDF
+  - EnergySwordRecipeTDF
+  - EnergyShieldRecipeTDF
 
 - type: latheRecipePack
   id: TdfDynamicGun
   recipes:
-  - WeaponRifleLecterTDF
+  - WeaponRifleLecterRecipeTdf
+  - WeaponRifleMR8TRecipeTdf
+  - AmmoBox68x52mmCaselessBig
 
 - type: latheRecipePack
   id: TDFDynamicVoucher
   recipes:
   - BasicVoucherTDFTier1
+
+- type: latheRecipePack
+  id: TDFGearDynamic
+  recipes:
+  - ClothingOuterHardsuitTdf
+  - ClothingOuterHardsuitTdfMedic

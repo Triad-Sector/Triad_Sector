@@ -1,6 +1,6 @@
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: EnergyShieldTDF
+  id: EnergyShieldRecipeTDF
   categories:
   - Energy
   - Weapons
@@ -13,7 +13,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: EnergySwordTDF
+  id: EnergySwordRecipeTDF
   categories:
   - Energy
   - Weapons

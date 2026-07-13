@@ -52,8 +52,8 @@
 
 - type: entity
   parent: BaseShipDSID
-  id: ShipVoucherTier0
-  name: Tier 0 Dedicated Ship ID
+  id: ShipVouchertier0
+  name: tier 0 dedicated ship ID
   description: Test
   components:
   - type: Sprite
@@ -71,8 +71,8 @@
 
 - type: entity
   parent: BaseShipDSID
-  id: ShipVoucherTier1
-  name: Tier 1 Dedicated Ship ID
+  id: ShipVouchertier1
+  name: tier 1 dedicated ship ID
   description: Test
   components:
   - type: Sprite
