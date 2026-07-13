@@ -100,7 +100,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         if (!PassBlacklist((ent.Value, nightVisionComp), args.Performer))
         {
             if (nightVisionComp.BlacklistFailPopup is { } popupText)
-                _popup.PopupPredicted(popupText, args.Performer, args.Performer, PopupType.SmallCaution);
+                _popup.PopupClient(popupText, args.Performer, args.Performer, PopupType.SmallCaution);
 
             if (nightVisionComp.Enabled)
                 SetEnabled(ent.Value, false, args.Performer);
@@ -137,7 +137,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         if (!ent.Comp.Enabled)
             return false;
 
-        if (_whitelist.IsBlacklistFail(ent.Comp.BlacklistedComponents, ent.Owner))
+        if (!_whitelist.CheckBoth(ent.Owner, ent.Comp.BlacklistedComponents))
             return false;
 
         if (user != null && !PassBlacklist(ent, user.Value))
@@ -153,7 +153,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         {
             if (containerSlot.ContainedEntity is { } item)
             {
-                if (_whitelist.IsBlacklistFail(ent.Comp.BlacklistedComponents, item))
+                if (!_whitelist.CheckBoth(item, ent.Comp.BlacklistedComponents))
                     return false;
             }
         }
