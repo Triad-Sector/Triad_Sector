@@ -2498,3 +2498,51 @@ Entries:
   id: 2387
   time: '2026-07-11T22:05:23.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/335
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added Designated Ship ID Framework and it's assets
+  id: 2388
+  time: '2026-07-12T13:17:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/345
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: NSC Horizon Cargo Freighter.
+  id: 2389
+  time: '2026-07-13T08:22:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/308
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        New spawn location (Dorms) to Venmar, instrument vends, MNK vends, an
+        outhouse, small QOL changes
+  id: 2390
+  time: '2026-07-13T16:17:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/349
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        NVGs have been changed. Being in high-illumination areas will be harder
+        to see in with NVGs. They have a nice green filter now, as well.
+  id: 2391
+  time: '2026-07-13T18:23:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/350
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Mercenary fabricators now have the following items available roundstart:
+        disablers, disabler SMGs, and stun batons.
+  id: 2392
+  time: '2026-07-13T21:47:14.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/336
+- author: HameyTychol
+  changes:
+    - type: Fix
+      message: Avalis should be able to get drunk now!
+  id: 2393
+  time: '2026-07-13T21:49:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/316

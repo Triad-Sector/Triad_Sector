@@ -44,7 +44,7 @@
       points: 1
       required: false
     Chest:
-      points: 6 # Triad: increased for additional full-body slime markings
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
       points: 8 # imp 4<8
