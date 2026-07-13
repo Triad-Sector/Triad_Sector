@@ -37,17 +37,17 @@
       required: false
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:
-      points: 4 # Frontier 1<4
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
-      points: 8 # Frontier 2<8
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
       points: 8 # Frontier 2<8
