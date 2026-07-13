@@ -2,6 +2,8 @@ using Content.Shared.Actions;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
+using Content.Shared.Popups; // Triad
+using Content.Shared.Whitelist; // Triad
 
 namespace Content.Shared.NightVision;
 
@@ -12,12 +14,17 @@ namespace Content.Shared.NightVision;
 public abstract partial class SharedNightVisionSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
+    [Dependency] private InventorySystem _inventory = default!; // Triad
+    [Dependency] private SharedPopupSystem _popup = default!; // Triad
     public override void Initialize()
     {
         SubscribeLocalEvent<NightVisionComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<NightVisionComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<NightVisionComponent, GotEquippedEvent>(OnCompEquip);
-        SubscribeLocalEvent<NightVisionComponent, GotUnequippedEvent>(OnCompUnequip);
+        SubscribeLocalEvent<NightVisionComponent, GotUnequippedEvent>(OnCompUnequip); // Triad
+        SubscribeLocalEvent<NightVisionComponent, DidEquipEvent>(OnCompDidEquip); // Triad
+        SubscribeLocalEvent<NightVisionComponent, DidUnequipEvent>(OnCompDidUnequip);
         SubscribeLocalEvent<NightVisionComponent, InventoryRelayedEvent<RefreshNightVisionEvent>>(OnRefreshEquipmentHud);
         SubscribeLocalEvent<NightVisionComponent, RefreshNightVisionEvent>(OnRefreshComponentHud);
         SubscribeLocalEvent<ToggleNightVisionEvent>(OnToggleNightVisionEvent);
@@ -57,13 +64,27 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         ent.Comp.Enabled = false; // mono
         RefreshOverlay(ent);
     }
+    // Triad start
+    private void OnCompDidEquip(Entity<NightVisionComponent> ent, ref DidEquipEvent args)
+    {
+        RefreshOverlay(args.Equipee);
+    }
+    private void OnCompDidUnequip(Entity<NightVisionComponent> ent, ref DidUnequipEvent args)
+    {
+        RefreshOverlay(args.Equipee);
+    }
+    // Triad end
     protected virtual void OnRefreshEquipmentHud(Entity<NightVisionComponent> ent, ref InventoryRelayedEvent<RefreshNightVisionEvent> args)
     {
-        OnRefreshComponentHud(ent, ref args.Args);
+        var user = Transform(ent).ParentUid; // Triad, attempt to get the user if it was inventory relayed
+        if (!IsEnabled(ent, user))
+            return;
+
+        args.Args.Entities.Add(ent);
     }
     protected virtual void OnRefreshComponentHud(Entity<NightVisionComponent> ent, ref RefreshNightVisionEvent args)
     {
-        if (!ent.Comp.Enabled)
+        if (!IsEnabled(ent, ent.Owner))
             return;
 
         args.Entities.Add(ent);
@@ -75,6 +96,17 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
 
         if (!TryComp<NightVisionComponent>(ent, out var nightVisionComp))
             return;
+
+        if (!PassBlacklist((ent.Value, nightVisionComp), args.Performer))
+        {
+            if (nightVisionComp.BlacklistFailPopup is { } popupText)
+                _popup.PopupPredicted(popupText, args.Performer, args.Performer, PopupType.SmallCaution);
+
+            if (nightVisionComp.Enabled)
+                SetEnabled(ent.Value, false, args.Performer);
+
+            return;
+        }
 
         SetEnabled(ent.Value, !nightVisionComp.Enabled, args.Performer);
         args.Handled = true;
@@ -98,6 +130,37 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
     }
 
     protected virtual void RefreshOverlay(EntityUid entity) { }
+
+    // Triad start - blacklisted components for NVGs
+    public bool IsEnabled(Entity<NightVisionComponent> ent, EntityUid? user = null)
+    {
+        if (!ent.Comp.Enabled)
+            return false;
+
+        if (_whitelist.IsBlacklistFail(ent.Comp.BlacklistedComponents, ent.Owner))
+            return false;
+
+        if (user != null && !PassBlacklist(ent, user.Value))
+            return false;
+
+        return true;
+    }
+
+    public bool PassBlacklist(Entity<NightVisionComponent> ent, EntityUid user)
+    {
+        var enumerator = _inventory.GetSlotEnumerator(user, ent.Comp.BlacklistSlotFlags);
+        while (enumerator.MoveNext(out var containerSlot))
+        {
+            if (containerSlot.ContainedEntity is { } item)
+            {
+                if (_whitelist.IsBlacklistFail(ent.Comp.BlacklistedComponents, item))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+    // Triad end
 }
 
 [ByRefEvent]

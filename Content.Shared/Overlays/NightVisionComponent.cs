@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.Inventory;
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -73,7 +74,6 @@ public sealed partial class NightVisionComponent : Component
     [DataField, AutoNetworkedField]
     public bool GoggleEffect;
 
-
     /// <summary>
     /// How large the goggle radius should be, per circle.
     /// </summary>
@@ -98,5 +98,23 @@ public sealed partial class NightVisionComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Amplification = 32f;
+
+    /// <summary>
+    /// Triad - Night vision will be unusable if these components or entities equipped have this component.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public EntityWhitelist? BlacklistedComponents;
+
+    /// <summary>
+    /// Triad - Slot flags for the blacklist to check.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SlotFlags BlacklistSlotFlags = SlotFlags.All;
+
+    /// <summary>
+    /// Triad - Popup to show when blacklist fails, if any.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public LocId? BlacklistFailPopup;
 }
 public sealed partial class ToggleNightVisionEvent : InstantActionEvent;
