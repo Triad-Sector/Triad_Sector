@@ -84,6 +84,26 @@
         5,000 credits fine, restitution, OR up to 5 minutes of imprisonment.
       </Box>
     </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-104
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Destruction of Property
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To unlawfully damage or destroy other people's property/belongings, where the value of the property is below 25,000 credits.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        15,000 credits fine OR up to 20 minutes of imprisonment, and restitution.
+      </Box>
+    </ColorBox>
   </Table>
 
   \n
@@ -113,7 +133,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-104
+        TS-105
       </Box>
     </ColorBox>
     <ColorBox>
@@ -133,7 +153,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-105
+        TS-106
       </Box>
     </ColorBox>
     <ColorBox>
@@ -153,7 +173,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-106
+        TS-107
       </Box>
     </ColorBox>
     <ColorBox>
@@ -173,7 +193,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-107
+        TS-108
       </Box>
     </ColorBox>
     <ColorBox>
@@ -220,7 +240,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-108
+        TS-109
       </Box>
     </ColorBox>
     <ColorBox>
@@ -240,7 +260,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-109
+        TS-110
       </Box>
     </ColorBox>
     <ColorBox>
@@ -260,7 +280,27 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-110
+        TS-111
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Grand Destruction of Property
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To unlawfully damage or destroy other people's property/belongings, where the value of the property exceeds 25,000 credits.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        50,000 credits fine OR up to 40 minutes of imprisonment, and restitution.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#568056">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-112
       </Box>
     </ColorBox>
     <ColorBox>
@@ -275,12 +315,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Up to 45 minutes of imprisonment.
+        Up to 45 minutes of imprisonment, and an optional fine of up to 50,000 credits.
       </Box>
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-111
+        TS-113
       </Box>
     </ColorBox>
     <ColorBox>
@@ -327,7 +367,7 @@
     </ColorBox>
     <ColorBox Color="#568056">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-112
+        TS-114
       </Box>
     </ColorBox>
     <ColorBox>
@@ -338,26 +378,6 @@
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
         To commit an act that prevents the revival of an individual by standard medical care following their death. This includes, but is not limited to: Destruction of the Body, Hiding of the Body, Destruction of the Brain.
-      </Box>
-    </ColorBox>
-    <ColorBox>
-      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Execution, mandatory cryogenic imprisonment, or permanent confinement.
-      </Box>
-    </ColorBox>
-    <ColorBox Color="#568056">
-      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        TS-113
-      </Box>
-    </ColorBox>
-    <ColorBox>
-      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Individual to Ship Destruction
-      </Box>
-    </ColorBox>
-    <ColorBox>
-      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        To maliciously commit an act that, directly or indirectly, renders another vessel or its part uninhabitable or inoperable without due permission of the Ship's Captain.
       </Box>
     </ColorBox>
     <ColorBox>

@@ -19,7 +19,7 @@ alert-level-green-instructions = Sector is safe.
 alert-level-blue = 4 - BLUE
 # alert-level-blue-announcement = There is a confirmed threat to TSF rogue space. Security should perform random checks. Crewmembers are advised to be vigilant and report suspicious activity.
 # alert-level-blue-instructions = Crewmembers are advised to be vigilant and report suspicious activity.
-alert-level-blue-announcement = There is a threat in Colossus sectorspace. Crews are advised to be vigilant and report hostile activity.
+alert-level-blue-announcement = There is a threat in Triad sectorspace. Crews are advised to be vigilant and report hostile activity.
 alert-level-blue-instructions = Crews are encouraged to be vigilant and report hostile activity.
 
 # alert-level-red = Red

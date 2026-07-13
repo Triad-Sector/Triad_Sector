@@ -28,3 +28,22 @@
   name: Chief Enforcer
   prefix: Chief Enf.
   paygrade: TDF-5
+
+# High Command Ranks
+- type: rank
+  id: RankHighCommandIntern
+  name: High Command Intern
+  prefix: Intern
+  paygrade: TDF-6
+
+- type: rank
+  id: RankHighCommander
+  name: High Commander
+  prefix: Commander
+  paygrade: TDF-7
+
+- type: rank
+  id: RankSeniorHighCommander
+  name: Senior High Commander
+  prefix: Sr. Commander
+  paygrade: TDF-8

@@ -49,6 +49,9 @@
         },
         {
             "name": "pda-warden"
+        },
+        {
+            "name": "pda-highcom"
         }
     ]
 }

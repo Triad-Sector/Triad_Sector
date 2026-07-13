@@ -47,6 +47,7 @@ public sealed class HTNSystem : EntitySystem
         _loadedQuery = GetEntityQuery<LoadedChunkComponent>(); // Frontier
         SubscribeLocalEvent<HTNComponent, MobStateChangedEvent>(_npc.OnMobStateChange);
         SubscribeLocalEvent<HTNComponent, MapInitEvent>(_npc.OnNPCMapInit);
+        SubscribeLocalEvent<HTNComponent, ComponentStartup>(_npc.OnNPCStartup); // Triad: port of Wizden #40244, blackboard Owner must exist before MapInit
         SubscribeLocalEvent<HTNComponent, PlayerAttachedEvent>(_npc.OnPlayerNPCAttach);
         SubscribeLocalEvent<HTNComponent, PlayerDetachedEvent>(_npc.OnPlayerNPCDetach);
         SubscribeLocalEvent<HTNComponent, ComponentShutdown>(OnHTNShutdown);
@@ -184,11 +185,23 @@ public sealed class HTNSystem : EntitySystem
             {
                 if (comp.PlanningJob.Exception != null)
                 {
-                    Log.Fatal($"Received exception on planning job for {uid}!");
-                    _npc.SleepNPC(uid);
+                    // Triad: contain the failure to this NPC instead of rethrowing into the tick.
+                    // Upstream rethrows, which aborts every remaining NPC's update this frame and can
+                    // take the server down over one malformed domain. Quarantine: log loudly, strip
+                    // the brain, keep everyone else running. DebugTools.Assert preserves the
+                    // crash-loudly-in-dev property so bad domains still get fixed.
                     var exc = comp.PlanningJob.Exception;
+                    Log.Error($"Received exception on planning job for {ToPrettyString(uid)}, root task {comp.RootTask}, quarantining NPC:\n{exc}");
+                    _npc.SleepNPC(uid);
                     RemComp<HTNComponent>(uid);
-                    throw exc;
+                    DebugTools.Assert(false, $"HTN planning job threw for {ToPrettyString(uid)}: {exc.Message}");
+                    continue;
+                    // Triad: end of quarantine block; upstream code below was:
+                    // Log.Fatal($"Received exception on planning job for {uid}!");
+                    // _npc.SleepNPC(uid);
+                    // var exc = comp.PlanningJob.Exception;
+                    // RemComp<HTNComponent>(uid);
+                    // throw exc;
                 }
 
                 // If a new planning job has finished then handle it.

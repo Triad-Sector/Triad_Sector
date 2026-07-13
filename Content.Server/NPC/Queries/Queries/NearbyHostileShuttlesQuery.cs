@@ -14,7 +14,6 @@ public sealed partial class NearbyNpcTargetsQuery : UtilityQuery
     // Triad: revert of Mono #3728 (2x targeting range), halved back for perf.
     public float Range = 2000f;
 
-    // TODO: make this use factions
     [DataField]
     public EntityWhitelist Blacklist = new();
 }

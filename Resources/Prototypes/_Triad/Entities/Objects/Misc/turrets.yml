@@ -1,0 +1,41 @@
+- type: entity
+  id: WeaponTurretLaserTDF
+  name: laser turret
+  suffix: TDF
+  parent:
+  - BaseTurretSearchBeam
+  - BaseWeaponTurretEnergyNF
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.125
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 10
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretTDF
+  suffix: TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: WeaponTurretHeavyRIPBase
+  id: WeaponTurretHeavyRIPTDF
+  suffix: TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret

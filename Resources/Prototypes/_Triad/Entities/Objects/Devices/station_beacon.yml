@@ -40,3 +40,20 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-locker-room
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconOverseer
+  suffix: Overseer
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-overseer
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconRestaurant
+  suffix: Restautant
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-restaurant
+    color: "#b8b873"

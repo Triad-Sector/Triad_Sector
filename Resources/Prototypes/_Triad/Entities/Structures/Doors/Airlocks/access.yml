@@ -44,6 +44,15 @@
     containers:
       board: [ DoorElectronicsTdfChiefEnforcer ]
 
+- type: entity
+  parent: AirlockTdfHighCommand
+  id: AirlockTdfHighCommandLocked
+  suffix: TDF High Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
+
 # Glass Airlocks
 - type: entity
   parent: AirlockTdfGlass
@@ -89,6 +98,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsTdfChiefEnforcer ]
+
+- type: entity
+  parent: AirlockTdfHighCommandGlass
+  id: AirlockTdfHighCommandGlassLocked
+  suffix: TDF High Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
 
 # High security doors
 - type: entity

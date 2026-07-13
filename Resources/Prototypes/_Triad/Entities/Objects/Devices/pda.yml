@@ -171,3 +171,38 @@
     - AstroNavCartridge
     - WantedListCartridge
     - LedgerCartridge
+
+- type: entity
+  parent: TdfChiefPda
+  id: TdfHighComPda
+  name: TDF high command PDA
+  description: Damn. You either stole this or you have some insane authority.
+  components:
+  - type: Pda
+    id: TdfHighCommIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-highcom
+  - type: Icon
+    state: pda-highcom
+  - type: PdaBorderColor
+    borderColor: "#121e61"
+    accentVColor: "#be8d32"
+
+- type: entity
+  parent: TdfHighComPda
+  id: TdfHighComInternPda
+  name: TDF high command intern PDA
+  description: Intern. Do TDF High Command proud!
+  components:
+  - type: Pda
+    id: TdfHighCommInternIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-highcom
+  - type: Icon
+    state: pda-highcom

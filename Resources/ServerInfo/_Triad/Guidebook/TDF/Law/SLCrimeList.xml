@@ -5,7 +5,7 @@
   - [color=#8ed38e]100 Series:[/color] [textlink="Criminal actions that affect an individual, or a group of people." link="SLCrimeList100Series"]
   - [color=#78E2C8]200 Series:[/color] [textlink="Criminal actions that affect a Station, Ship, or the Sector at a whole." link="SLCrimeList200Series"]
   - [color=#AF74AD]300 Series:[/color] [textlink="Criminal actions conducted by a Ship, which will be attributed to the Captain of that ship." link="SLCrimeList300Series"]
-  - [color=#DDE0B3]400 Series:[/color] [textlink="Criminal actions committed by individuals in the Triad Defense Force in violation of their duties, authority, or the command structure." link="SLCrimeList400Series"]
+  - [color=#DDE0B3]400 Series:[/color] [textlink="Criminal actions committed by individuals in the Triad Defense Force in violation of their duties." link="SLCrimeList400Series"]
 
   [head=3][color=#FFA500]Sentencing[/color][/head]
 
@@ -101,7 +101,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Any entity found guilty of attempting to commit a crime, with the intent to carry out that crime, will receive the sentence for the crimes they attempted in full.
+        Any entity found guilty of attempting to commit a crime, with the intent to carry out that crime, will receive the sentence for the crimes they attempted in half.
       </Box>
     </ColorBox>
     <ColorBox>
@@ -116,12 +116,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Any individual found guilty of planning to commit a crime, with the intent to carry out that crime eventually, and having committed an overt act pursuant to that end, will receive the sentence for the crimes they conspired towards in full.
+        Any individual found guilty of planning to commit a crime, with the intent to carry out that crime eventually, and having committed an overt act pursuant to that end, will receive the sentence for the crimes they conspired towards in half.
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        Same sentence and fine as the conspired crime(s).
+        Up to half (50%) of the fine and sentence of the conspired crime(s).
       </Box>
     </ColorBox>
     <ColorBox Color="#635353">

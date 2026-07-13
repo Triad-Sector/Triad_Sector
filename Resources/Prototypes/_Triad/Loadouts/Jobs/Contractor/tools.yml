@@ -5,4 +5,22 @@
     proto: ContractorT2
   price: 5000
   inhand:
-    - SprayPainter 
+    - SprayPainter
+
+- type: loadout
+  id: Whistle
+  price: 0
+  inhand:
+  - Whistle
+
+- type: loadout
+  id: SecurityWhistle
+  price: 0
+  inhand:
+  - SecurityWhistle
+
+- type: loadout
+  id: SyndicateWhistle
+  price: 0
+  inhand:
+  - SyndicateWhistle

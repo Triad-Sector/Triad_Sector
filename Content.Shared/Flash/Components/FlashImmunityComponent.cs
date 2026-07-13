@@ -2,29 +2,28 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Flash.Components;
 
-// Starlight edit - moved this to Shared for BlocksSpecialVision
 /// <summary>
-///     Makes the entity immune to being flashed.
-///     When given to clothes in the "head", "eyes" or "mask" slot it protects the wearer.
+/// Makes the entity immune to being flashed.
+/// When given to clothes in the "head", "eyes" or "mask" slot it protects the wearer.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Goob and Starlight edit
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Goob edit
 public sealed partial class FlashImmunityComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("enabled")]
-    public bool Enabled { get; set; } = true;
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("protectionRange")]
-    public float ProtectionRange { get; set; } = 0f;
-
-    //starlight
     /// <summary>
-    /// If true, will affect night vision, thermal vision, and shadekin vision.
+    /// Is this component currently enabled?
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [AutoNetworkedField]
+    [DataField, AutoNetworkedField]
+    public bool Enabled = true;
+
+    /// <summary>
+    /// Should the flash protection be shown when examining the entity?
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool ShowInExamine = true;
+
+    /// <summary>
+    /// Should the flash protection be shown when examining the entity?
+    /// </summary>
     [DataField]
-    public bool BlocksSpecialVision { get; set; } = true;
-    //starlight end
+    public float ProtectionRange = 0f;
 }

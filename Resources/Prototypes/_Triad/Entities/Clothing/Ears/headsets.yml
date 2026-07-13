@@ -59,3 +59,35 @@
       - EncryptionKeyCommon
       - EncryptionKeyTdf
       - EncryptionKeyCommand
+
+- type: entity
+  parent: [ClothingHeadset, BaseTDFHeadset]
+  id: ClothingHeadsetTdfHighCommand
+  name: TDF high command headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCentCom
+      - EncryptionKeyStationMaster
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+
+- type: entity
+  parent: [ClothingHeadsetAlt, BaseTDFHeadset]
+  id: ClothingHeadsetAltTdfHighCommand
+  name: TDF high command over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCentCom
+      - EncryptionKeyStationMaster
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
