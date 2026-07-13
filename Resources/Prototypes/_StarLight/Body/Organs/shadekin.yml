@@ -18,7 +18,7 @@
   id: OrganShadekinEyes
   parent: OrganHumanEyes
   suffix: Shadekin
-  description: "Eyes of a BlackEye shadekin that can never see their home reality again."
+  description: "Eyes of a shadekin.. very bright."
   components:
   - type: Sprite
     sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
@@ -26,7 +26,19 @@
       - state: eyes
   - type: Organ
     onAdd:
-    - type: SLNightVision
+    - type: NightVision # Gen Scifi Exodimensional Cat Alien BS vision
+      relayOverlay: false
+      goggleEffect: true
+      viewCircleRadius: 450
+      viewCircleCount: 4
+      viewCircleSpacing: 280
+      action: ActionToggleNightVision
+      phosphorColor: "#93B8D4" #Blue-grey
+      lightingColor: "#33330a" #Brighter spots appear darker.
+      blacklistedComponents:
+        components:
+        - FlashImmunity
+      blacklistFailPopup: night-vision-component-cannot-use-flash
 
 - type: entity
   id: OrganShadekinTongue
