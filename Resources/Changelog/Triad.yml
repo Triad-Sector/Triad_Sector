@@ -2546,3 +2546,41 @@ Entries:
   id: 2393
   time: '2026-07-13T21:49:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/316
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Marking points have been increased for all species, with a few
+        exclusions for categories. Have fun!
+  id: 2394
+  time: '2026-07-13T22:20:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/348
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Warden now requires 20 hours of TDF time, rather than 25.
+    - type: Tweak
+      message: >-
+        Loosened patrol team leader requirements, now requires 15 hours of TDF
+        and 30 hours of overall playtime.
+  id: 2395
+  time: '2026-07-13T22:22:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/351
+- author: Fasuh
+  changes:
+    - type: Add
+      message: >-
+        Added Shadekin; A species of 4 eared felines with bright, monocolored
+        eyes. They may or may not be from an adjacent plane and are drawn to
+        realspace and especially anomalous zones (i.e. the Monolith) to sate
+        their own curiosity. Think kind of like Vortigaunts. They are hemophilic
+        and due to sheer complexity of their own bloods composition have issues
+        regenerating it (170% more bleed and 1/4th of normal blood regen). They
+        take more damage from the common damage types Radiation, Shock and Heat
+        but less from cold and the rare cellular. Their hyper-evolved eyes grant
+        them intrinsic nightvision if unobstructed by flash protective gear. Any
+        sort of flashes last longer and are more intense. The guidebook entry
+        provides more details on them and their lore.
+  id: 2396
+  time: '2026-07-13T22:45:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/96

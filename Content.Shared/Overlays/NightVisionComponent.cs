@@ -109,7 +109,7 @@ public sealed partial class NightVisionComponent : Component
     /// Triad - Slot flags for the blacklist to check.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SlotFlags BlacklistSlotFlags = SlotFlags.All;
+    public SlotFlags BlacklistSlotFlags = SlotFlags.WITHOUT_POCKET;
 
     /// <summary>
     /// Triad - Popup to show when blacklist fails, if any.

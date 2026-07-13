@@ -100,7 +100,10 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         if (!PassBlacklist((ent.Value, nightVisionComp), args.Performer))
         {
             if (nightVisionComp.BlacklistFailPopup is { } popupText)
-                _popup.PopupClient(popupText, args.Performer, args.Performer, PopupType.SmallCaution);
+            {
+                var locString = Loc.GetString(popupText);
+                _popup.PopupClient(locString, args.Performer, args.Performer, PopupType.SmallCaution);
+            }
 
             if (nightVisionComp.Enabled)
                 SetEnabled(ent.Value, false, args.Performer);

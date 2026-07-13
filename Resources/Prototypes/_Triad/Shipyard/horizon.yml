@@ -10,7 +10,7 @@
   parent: BaseVessel
   name: NSC Horizon
   description: An AME powered, heavy cargo freighter for long range hauls. 2-4 crewmembers is recommended for operation.
-  price: 120000
+  price: 138000
   category: Large
   group: Shipyard
   shuttlePath: /Maps/_Triad/Shuttles/horizon.yml
