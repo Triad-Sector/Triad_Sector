@@ -12,7 +12,7 @@
   alternateRequirementSets:
     longerPlaytimeLessSec:
     - !type:OverallPlaytimeRequirement
-      time: 360000 # 100 hours
+      time: 450000 # 125 hours
     - !type:DepartmentTimeRequirement
       department: Security
       time: 18000 # 5 hours
