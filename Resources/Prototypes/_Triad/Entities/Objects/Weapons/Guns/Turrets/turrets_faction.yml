@@ -89,7 +89,7 @@
     fireCost: 10
 
 - type: entity
-  parent: EenrgyTurretLongRange
+  parent: EnergyTurretLongRange
   id: EnergyTurretTDFLongRange
   suffix: Triad, TDF, LongRange
   components:
