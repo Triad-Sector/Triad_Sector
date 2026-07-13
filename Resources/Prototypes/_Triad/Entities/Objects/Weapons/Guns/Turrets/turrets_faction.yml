@@ -57,7 +57,7 @@
 
 # Energy
 - type: entity
-  parent: BaseWeaponTurretEnergyNF
+  parent: BaseWeaponTurretEnergyTriad
   id: EnergyTurretTDF
   suffix: Triad, TDF
   components:
@@ -65,9 +65,7 @@
     factions:
     - TDFTurret
   - type: Gun
-  - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
-    fireRate: 2
+    firerate: 2
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 10
@@ -80,8 +78,6 @@
   - type: NpcFactionMember
     factions:
     - TDFTurret
-  - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
@@ -96,8 +92,6 @@
   - type: NpcFactionMember
     factions:
     - TDFTurret
-  - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider

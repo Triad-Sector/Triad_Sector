@@ -1,4 +1,5 @@
 # Ballistic Turrets
+# Base Ballistic
 - type: entity
   parent: BaseWeaponBallisticTurret
   id: BallisticTurretMediumRange
@@ -7,11 +8,11 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        24
+        16
       VisionRadius: !type:Single
-        24
+        16
       RangedRange: !type:Single
-        24
+        16
 
 - type: entity
   parent: BaseWeaponBallisticTurret
@@ -21,11 +22,11 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        32
+        20
       VisionRadius: !type:Single
-        32
+        20
       RangedRange: !type:Single
-        32
+        20
 
 # Heavy Ballistics
 - type: entity
@@ -36,11 +37,11 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        24
+        16
       VisionRadius: !type:Single
-        24
+        16
       RangedRange: !type:Single
-        24
+        16
 
 - type: entity
   parent: BallisticTurretHeavyBase
@@ -50,38 +51,58 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        32
+        20
       VisionRadius: !type:Single
-        32
+        20
       RangedRange: !type:Single
-        32
+        20
         
 
 # Energy Turrets - we're using frontier ones because its better
 - type: entity
-  parent: BaseWeaponTurretEnergyNF
+  id: BaseWeaponTurretEnergyTriad
+  name: laser turret
+  abstract: true
+  parent:
+  - BaseTurretSearchBeam
+  - BaseWeaponTurretEnergyNF
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.125
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 10
+
+- type: entity
+  parent: BaseWeaponTurretEnergyTriad
   id: EnergyTurretMediumRange
   abstract: true
   components:
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        24
+        16
       VisionRadius: !type:Single
-        24
+        16
       RangedRange: !type:Single
-        24
+        16
 
 - type: entity
-  parent: BaseWeaponTurretEnergyNF
+  parent: BaseWeaponTurretEnergyTriad
   id: EnergyTurretLongRange
   abstract: true
   components:
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        32
+        20
       VisionRadius: !type:Single
-        32
+        20
       RangedRange: !type:Single
-        32
+        20

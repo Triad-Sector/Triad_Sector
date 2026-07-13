@@ -72,11 +72,11 @@
     blackboard:
       # Triad Start
       AggroVisionRadius: !type:Single
-        14
+        12
       VisionRadius: !type:Single
-        14
+        12
       RangedRange: !type:Single
-        14
+        12
       # Triad End
       RotateSpeed: !type:Single
         1.57 # Mono
@@ -124,16 +124,6 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 15
-  # Triad Start
-  - type: HTN
-    blackboard:
-      AggroVisionRadius: !type:Single
-        15
-      VisionRadius: !type:Single
-        15
-      RangedRange: !type:Single
-        15
-    # Triad End
 
 - type: entity
   parent: BaseWeaponTurret
