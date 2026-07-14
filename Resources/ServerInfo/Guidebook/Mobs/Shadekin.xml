@@ -46,8 +46,6 @@
 
   [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [mono]  Shock     [color=#cc3333]■■[/color][color=#555555]□□□[/color]  25% vulnerable[/mono]
-
   [mono]  Bloodloss     [color=#ffa500]■[/color][color=#555555]□□□[/color]  100% higher bleedrate, 75% slower blood regeneration[/mono]
 
   [mono]  Genetic     [color=#1e90ff]■■■■■■■[/color][color=#555555]□[/color]  90% resistance
@@ -81,7 +79,7 @@
 
   [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
-  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]30% more Heat damage, 25% more Shock damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]30% more Heat damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
