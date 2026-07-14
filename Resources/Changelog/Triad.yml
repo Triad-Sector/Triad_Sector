@@ -2595,3 +2595,10 @@ Entries:
   id: 2397
   time: '2026-07-14T00:04:13.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/342
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: New TDF medical ship, Mercy
+  id: 2398
+  time: '2026-07-14T06:17:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/344
