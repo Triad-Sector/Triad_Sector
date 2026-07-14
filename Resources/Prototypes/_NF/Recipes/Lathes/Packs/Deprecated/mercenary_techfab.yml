@@ -92,6 +92,11 @@
   - BaseBallBatNF
   - CrossbowModern
   - WeaponPistolPollock
+  # Triad changes - Nonlethal weapons moved to Static.
+  - Stunbaton
+  - WeaponDisabler
+  - WeaponDisablerSMG
+  # End Triad
   ## Cyborg Modules
   - BorgModuleMercenary # mono
 
@@ -162,7 +167,7 @@
   - KatanaNF
   - KukriKnifeNF
   - MacheteNF
-  - Stunbaton
+  #- Stunbaton # Triad - Moved to Static.
   - BolaNF
   - ExplosivePayload
   - FlashPayload
@@ -170,8 +175,8 @@
   - WeaponShotgunKammererNF
   - WeaponAdvancedLaser # After the changes made to windows shouldn't be that much of an issue now if it's widely available
   - WeaponLaserCarbine
-  - WeaponDisabler
-  - WeaponDisablerSMG
+  #- WeaponDisabler # Triad - Moved to Static.
+  #- WeaponDisablerSMG # Triad - Moved to Static.
   - WeaponLaserCannon
   - WeaponXrayCannon
 #Mono start
