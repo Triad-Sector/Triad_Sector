@@ -58,45 +58,45 @@
     noAirWhenFullyAirBlocked: false
 
 
-- type: entity
-  id: HoloPeel
-  parent: BaseHolosign # DeltaV
-  name: holopeel
-  description: A banana peel made of slippery hard light, watch your step!
-  components:
-  - type: Sprite
-    sprite: Structures/Holo/peel.rsi
-    state: icon
-  - type: Physics
-  - type: StepTrigger
-    intersectRatio: 0.2
-  - type: CollisionWake
-    enabled: false
-  - type: Fixtures
-    fixtures:
-      slips:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,0.2"
-        hard: false
-        layer:
-        - SlipLayer
-  #- type: TimedDespawn # DeltaV - Replaced by TimedDespawnDetailed
-  #  lifetime: 30
-  # DeltaV Additions
-  - type: TimedDespawnDetailed # DeltaV
-    lifetime: 30
-  - type: Holopeel # DeltaV - Whitelist for holoprojector pickup
-  # END DeltaV
-  - type: Clickable
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 10
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+#- type: entity
+#  id: HoloPeel
+#  parent: BaseHolosign # DeltaV
+#  name: holopeel
+#  description: A banana peel made of slippery hard light, watch your step!
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Holo/peel.rsi
+#    state: icon
+#  - type: Physics
+#  - type: StepTrigger
+#    intersectRatio: 0.2
+#  - type: CollisionWake
+#    enabled: false
+#  - type: Fixtures
+#   fixtures:
+#     slips:
+#        shape:
+#          !type:PhysShapeAabb
+#          bounds: "-0.2,-0.2,0.2,0.2"
+#        hard: false
+#        layer:
+#        - SlipLayer
+#  #- type: TimedDespawn # DeltaV - Replaced by TimedDespawnDetailed
+#  #  lifetime: 30
+#  # DeltaV Additions
+#  - type: TimedDespawnDetailed # DeltaV
+#    lifetime: 30
+#  - type: Holopeel # DeltaV - Whitelist for holoprojector pickup
+#  # END DeltaV
+#  - type: Clickable
+#  - type: Destructible
+#    thresholds:
+#      - trigger:
+#          !type:DamageTrigger
+#          damage: 10
+#        behaviors:
+#          - !type:DoActsBehavior
+#            acts: [ "Destruction" ]
 
 - type: entity
   id: HolosignSecurity

@@ -63,35 +63,35 @@
   #      disableEject: true
   #      swap: false
 
-- type: entity
-  parent: Holoprojector
-  id: HoloprojectorClownBorg
-  name: holopeel projector
-  description: A holopeel projector that creates a slippery, hard light banana peel. It recharges, so that the fun never ends!
-  suffix: borg
-  components:
-  #- type: HolosignProjector # DeltaV - Holoprojectors dont need batteries
-  #  signProto: HoloPeel
-  #  chargeUse: 240
-  - type: Sprite
-    sprite: Objects/Devices/Holoprojectors/peel.rsi
-    state: icon
-  #- type: ItemSlots # DeltaV - Holoprojectors dont need batteries
-  #  slots:
-  #    cell_slot:
-  #      name: power-cell-slot-component-slot-name-default
-  #      startingItem: PowerCellMicroreactor
-  #      disableEject: true
-  #      swap: false
-  # Begin DeltaV Additions
-  - type: ChargeHolosignProjector
-    signProto: HoloPeel
-    signComponentName: Holopeel
-  - type: LimitedCharges
-    maxCharges: 3 # same as it was on a medium cell
-  - type: AutoRecharge
-    rechargeDuration: 30 # Same as the holopeel lifetime
-  # End DeltaV Additions
+#- type: entity
+#  parent: Holoprojector
+#  id: HoloprojectorClownBorg
+#  name: holopeel projector
+#  description: A holopeel projector that creates a slippery, hard light banana peel. It recharges, so that the fun never ends!
+#  suffix: borg
+#  components:
+#  #- type: HolosignProjector # DeltaV - Holoprojectors dont need batteries
+#  #  signProto: HoloPeel
+#  #  chargeUse: 240
+#  - type: Sprite
+#    sprite: Objects/Devices/Holoprojectors/peel.rsi
+#    state: icon
+#  #- type: ItemSlots # DeltaV - Holoprojectors dont need batteries
+#  #  slots:
+#  #    cell_slot:
+#  #      name: power-cell-slot-component-slot-name-default
+#  #      startingItem: PowerCellMicroreactor
+#  #      disableEject: true
+#  #      swap: false
+#  # Begin DeltaV Additions
+#  - type: ChargeHolosignProjector
+#    signProto: HoloPeel
+#    signComponentName: Holopeel
+#  - type: LimitedCharges
+#    maxCharges: 3 # same as it was on a medium cell
+#  - type: AutoRecharge
+#    rechargeDuration: 30 # Same as the holopeel lifetime
+#  # End DeltaV Additions
 
 - type: entity
   parent: Holoprojector
