@@ -12,7 +12,7 @@
     signComponentName: Holobarrier
 
 - type: entity
-  parent: Holoprojector
+  parent: [BaseItem, RecyclableItemDeviceSmall] # Frontier: added RecyclableItemDeviceSmall
   id: HoloGraffitiProjector
   name: holograffiti projector
   description: Tag up the sharp end, let 'em know you were here.

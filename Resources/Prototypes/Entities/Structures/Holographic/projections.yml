@@ -200,8 +200,6 @@
         - FullTileMask
         layer:
         - GlassLayer
-  - type: TimedDespawn
-    lifetime: 180
   - type: PointLight
     enabled: true
     radius: 3
@@ -217,3 +215,6 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+  - type: TimedDespawnDetailed
+    lifetime: 180 # Triad
+  - type: HoloForcefield # Triad

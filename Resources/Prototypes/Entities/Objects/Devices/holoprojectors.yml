@@ -171,19 +171,23 @@
     - type: ChargeHolosignProjector
       signProto: HolosignForcefield
       signComponentName: HoloForcefield
+    - type: LimitedCharges
+      maxCharges: 12 # Triad
     - type: AutoRecharge
       rechargeDuration: 180 # Same as the HolosignForcefield lifetime
     # End DeltaV Additions
 
 - type: entity
   parent: [ BaseFactionGearTDFT1, Holoprojector ]
-  id: HoloprojectorFieldTSF
+  id: HoloprojectorFieldTSF # TDF
   name: TDF force field projector
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
-    - type: HolosignProjector
+    - type: ChargeHolosignProjector
       signProto: HolosignForcefieldTSF
-      chargeUse: 190
+      signComponentName: HoloForcefield
+    - type: AutoRecharge
+      rechargeDuration: 180 # Same as the HolosignForcefieldTSF lifetime
     - type: Sprite
       sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi
       state: icon
@@ -233,5 +237,6 @@
 - type: entity
   parent: HoloprojectorSecurity
   id: HoloprojectorSecurityEmpty
+  categories: [ HideSpawnMenu ] # DeltaV - This is identical to the normal one
   #     cell_slot:
   #       name: power-cell-slot-component-slot-name-default
