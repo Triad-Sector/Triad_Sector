@@ -53,22 +53,22 @@
       required: true
       defaultMarkings: [ ResomiTailFeathered ]
     Legs:
-      points: 6
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
-      points: 6
+      points: 8 # Triad - Increased to 8.
       required: false
     Head:
-      points: 4
+      points: 8 # Triad - Increased to 8.
       required: false
     HeadTop:
-      points: 4
+      points: 8 # Triad - Increased to 8.
       required: false
     HeadSide:
       points: 2
       required: false
     Chest:
-      points: 4
+      points: 8 # Triad - Increased to 8.
       required: false
 
 - type: humanoidBaseSprite

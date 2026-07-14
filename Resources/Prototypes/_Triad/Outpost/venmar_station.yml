@@ -40,6 +40,10 @@
             CCServiceWorker: [ 2, 2 ]
             NFJanitor: [ 2, 2 ]
             MailCarrier: [ 2, 2 ]
+            TdfPatrolTeamLeader: [ 1, 1 ]
+            TdfMedic: [ 1, 1 ]
+            TdfEnforcer: [ 2, 2 ]
+            TdfCadet: [ 2, 2 ]
           tags:
           - HeadOfPersonnel
           - HeadOfSecurity

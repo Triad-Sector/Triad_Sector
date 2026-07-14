@@ -4,9 +4,18 @@
   description: job-description-tdf-patrol-team-leader
   playTimeTracker: JobTdfPatrolTeamLeader
   requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 90000 # 20 hours
+      time: 54000 # 15 hours
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 450000 # 125 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # 5 hours
   startingGear: TdfLeaderGear
   alwaysUseSpawner: true
   icon: JobIconTdfPatrolTeamLeader

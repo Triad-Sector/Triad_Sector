@@ -1,0 +1,41 @@
+﻿# Author Info
+# SUI
+# Discord SUI
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Horizon
+  parent: BaseVessel
+  name: NSC Horizon
+  description: An AME powered, heavy cargo freighter for long range hauls. 2-4 crewmembers is recommended for operation.
+  price: 138000
+  category: Large
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/horizon.yml
+  #guidebookPage: ShipyardHorizon
+  class:
+  - Civilian
+  engine:
+  - AME
+
+- type: gameMap
+  id: Horizon
+  mapName: 'horizon'
+  mapPath: /Maps/_Triad/Shuttles/horizon.yml
+  minPlayers: 0
+  stations:
+    horizon:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Horizon CIV{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]
