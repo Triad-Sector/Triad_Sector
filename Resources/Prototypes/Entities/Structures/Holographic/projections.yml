@@ -111,6 +111,7 @@
       sprite: Structures/Holo/security.rsi
       state: icon
     - type: Fixtures
+      fixtures:
         fix1:
           shape:
             !type:PhysShapeAabb
@@ -131,7 +132,6 @@
       color: red
     # END DeltaV
     - type: Climbable
-    - type: Clickable
 
 - type: entity
   id: HolosignForcefield

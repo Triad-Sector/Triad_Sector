@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace Content.Shared._DV.Holosign;
 
-public sealed class ChargeHolosignSystem : EntitySystem
+public sealed partial class ChargeHolosignSystem : EntitySystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedChargesSystem _charges = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private readonly HashSet<Entity<IComponent>> _placedSigns = new();
 
@@ -66,7 +66,7 @@ public sealed class ChargeHolosignSystem : EntitySystem
             return false;
         }
 
-        var holoUid = EntityManager.PredictedSpawnAtPosition(ent.Comp1.SignProto, args.ClickLocation.SnapToGrid(EntityManager));
+        var holoUid = PredictedSpawnAtPosition(ent.Comp1.SignProto, args.ClickLocation.SnapToGrid(EntityManager));
         var xform = Transform(holoUid);
         if (!xform.Anchored)
             _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)
@@ -79,7 +79,7 @@ public sealed class ChargeHolosignSystem : EntitySystem
         if (!ent.Comp1.CanPickup)
             return false;
 
-        _charges.AddCharges(ent, 1, ent);
+        _charges.AddCharges(ent.Owner, 1); // Triad
 
         var userIdentity = Identity.Name(user, EntityManager);
         _popup.PopupPredicted(
@@ -88,7 +88,7 @@ public sealed class ChargeHolosignSystem : EntitySystem
             ent,
             user);
 
-        EntityManager.PredictedDeleteEntity(sign);
+        PredictedDel(sign);
         return true;
     }
 }
