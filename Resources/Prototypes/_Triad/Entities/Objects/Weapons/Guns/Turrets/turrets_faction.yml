@@ -67,7 +67,7 @@
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+    proto: RedLaser # Deals 18 Heat damage
     fireCost: 10
 
 - type: entity
