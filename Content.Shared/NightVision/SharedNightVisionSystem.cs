@@ -66,7 +66,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
 
         ent.Comp.Enabled = false; // mono
         Dirty(ent); // triad
-        RefreshOverlay(ent);
+        RefreshOverlay(args.Equipee);
     }
     // Triad start
     private void OnCompDidEquip(Entity<NightVisionComponent> ent, ref DidEquipEvent args)
