@@ -33,10 +33,9 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Jester
     - type: Transform
       pos: -0.515625,-0.4375
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -1122,8 +1121,6 @@ entities:
       pos: -1.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
       - 5
@@ -1134,8 +1131,6 @@ entities:
       pos: -0.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
       - 2
@@ -1146,8 +1141,6 @@ entities:
       pos: -2.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
       - 4
@@ -1158,8 +1151,6 @@ entities:
       pos: -1.5,-3.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
   - uid: 140
@@ -1169,8 +1160,6 @@ entities:
       pos: 0.5,-3.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
 - proto: GasMixerFlipped
@@ -1700,8 +1689,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
     - type: AtmosPipeLayers
@@ -1715,8 +1702,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
     - type: AtmosPipeLayers
@@ -1729,8 +1714,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2
     - type: AtmosPipeLayers
@@ -1743,8 +1726,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5
     - type: AtmosPipeLayers
@@ -1760,8 +1741,6 @@ entities:
     - type: AtmosPipeColor
       color: '#990000FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
     - type: AtmosPipeLayers
@@ -1775,8 +1754,6 @@ entities:
     - type: AtmosPipeColor
       color: '#990000FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 4
     - type: AtmosPipeLayers
@@ -1789,8 +1766,6 @@ entities:
     - type: AtmosPipeColor
       color: '#990000FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2
     - type: AtmosPipeLayers
@@ -1803,8 +1778,6 @@ entities:
     - type: AtmosPipeColor
       color: '#990000FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5
     - type: AtmosPipeLayers
