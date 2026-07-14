@@ -51098,8 +51098,6 @@ entities:
       pos: 63.5,-0.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 30
       - 62
@@ -51111,8 +51109,6 @@ entities:
       pos: 64.5,-0.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 30
       - 62
@@ -52791,8 +52787,6 @@ entities:
       pos: 61.5,13.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 62
       - 61
@@ -52803,8 +52797,6 @@ entities:
       pos: 61.5,12.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 62
       - 61
@@ -72194,8 +72186,6 @@ entities:
       pos: 59.5,11.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 61
     - type: AtmosPipeLayers
@@ -74453,8 +74443,6 @@ entities:
       pos: 58.5,11.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 61
     - type: AtmosPipeLayers
