@@ -28,3 +28,6 @@ NFVendingMachineCartNfsd: VendingMachineCartTdf
 # 2026-06-28
 HyperlinkBookSpaceLaw: BookTriadLaw
 HyperlinkBookNfsdSop: BookTdfSop
+
+# 2026-07-13
+ToggleNightVision: null

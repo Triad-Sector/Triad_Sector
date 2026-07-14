@@ -1,0 +1,106 @@
+- type: entity
+  id: OrganShadekinBrain
+  parent: OrganHumanBrain
+  description: "The source of incredible, unending intelligence. Marr."
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    state: brain
+
+# Triad edit start - Add lungs to shadekin
+- type: entity
+  id: OrganShadekinLungs
+  parent: OrganHumanLungs
+  name: lungs
+# Triad edit end
+
+- type: entity
+  id: OrganShadekinEyes
+  parent: OrganHumanEyes
+  suffix: Shadekin
+  description: "Eyes of a shadekin.. very bright."
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    layers:
+      - state: eyes
+  - type: Organ
+    onAdd:
+    - type: NightVision # Gen Scifi Exodimensional Cat Alien BS vision
+      relayOverlay: false
+      goggleEffect: true
+      viewCircleRadius: 450
+      viewCircleCount: 4
+      viewCircleSpacing: 280
+      action: ActionToggleNightVision
+      phosphorColor: "#93B8D4" #Blue-grey
+      lightingColor: "#33330a" #Brighter spots appear darker.
+      blacklistedComponents:
+        components:
+        - FlashImmunity
+      blacklistFailPopup: night-vision-component-cannot-use-flash
+
+- type: entity
+  id: OrganShadekinTongue
+  parent: OrganHumanTongue
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    state: tongue
+
+- type: entity
+  id: OrganShadekinAppendix
+  parent: OrganHumanAppendix
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    layers:
+      - state: appendix
+
+- type: entity
+  id: OrganShadekinHeart
+  parent: OrganHumanHeart
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    state: heart
+
+- type: entity
+  id: OrganShadekinStomach
+  parent: OrganHumanStomach
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    state: stomach
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 40
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+
+- type: entity
+  id: OrganShadekinLiver
+  parent: OrganHumanLiver
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    state: liver
+
+- type: entity
+  id: OrganShadekinKidneys
+  parent: OrganHumanKidneys
+  suffix: Shadekin
+  components:
+  - type: Sprite
+    sprite: _Starlight/Mobs/Species/Shadekin/organs.rsi
+    layers:
+      - state: kidneys

@@ -130,7 +130,9 @@ marking-fishbowl = Fishbowl
 marking-fishbowl-fishbowl1 = Fish
 # Frontier: bubbles < Bubbles
 marking-fishbowl-fishbowl2 = Fish Bubbles
-marking-FadingStars = Fading Starlight
+# Triad Start - Changed name to reflect it better
+marking-FadingStars = Fading Starlight (Glowing)
+# End Triad
 marking-FadingStars-fadingstars1 = Brightest
 marking-FadingStars-fadingstars2 = Middling
 marking-FadingStars-fadingstars3 = Darkest
