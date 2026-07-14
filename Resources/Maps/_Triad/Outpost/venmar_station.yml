@@ -77410,8 +77410,6 @@ entities:
 - proto: Paper
   entities:
   - uid: 3
-    mapInit: true
-    paused: true
     components:
     - type: MetaData
       name: Desperate Paper
