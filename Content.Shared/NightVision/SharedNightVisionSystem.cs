@@ -3,7 +3,8 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Content.Shared.Popups; // Triad
-using Content.Shared.Whitelist; // Triad
+using Content.Shared.Whitelist;
+using Robust.Shared.Audio.Systems; // Triad
 
 namespace Content.Shared.NightVision;
 
@@ -14,9 +15,11 @@ namespace Content.Shared.NightVision;
 public abstract partial class SharedNightVisionSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!; // Triad
     [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
     [Dependency] private InventorySystem _inventory = default!; // Triad
     [Dependency] private SharedPopupSystem _popup = default!; // Triad
+
     public override void Initialize()
     {
         SubscribeLocalEvent<NightVisionComponent, ComponentStartup>(OnStartup);
@@ -128,6 +131,13 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
 
         ent.Comp.Enabled = enabled;
         Dirty(ent);
+
+        // Triad start - nvg sound
+        var soundToPlay = enabled
+            ? ent.Comp.ActivateSound
+            : ent.Comp.DeactivateSound;
+        _audio.PlayLocal(soundToPlay, ent, viewer);
+        // Triad end
 
         RefreshOverlay(viewer ?? ent);
     }

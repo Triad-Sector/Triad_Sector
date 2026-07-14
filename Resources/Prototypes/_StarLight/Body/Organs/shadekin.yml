@@ -38,6 +38,8 @@
         components:
         - FlashImmunity
       blacklistFailPopup: night-vision-component-cannot-use-flash
+      activateSound: null
+      deactivateSound: null
 
 - type: entity
   id: OrganShadekinTongue

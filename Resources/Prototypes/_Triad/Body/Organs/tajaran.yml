@@ -14,3 +14,5 @@
       action: ActionToggleNightVision
       phosphorColor: "#919191" # Grey cat vision
       lightingColor: "#3a3a3a"
+      activateSound: null
+      deactivateSound: null
