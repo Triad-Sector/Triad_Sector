@@ -121,13 +121,13 @@ public sealed partial class NightVisionComponent : Component
     /// <summary>
     /// Triad - Sound to play to the client on activate.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public SoundSpecifier? ActivateSound = new SoundPathSpecifier("/Audio/_RMC14/Handling/toggle_nv1.ogg");
 
     /// <summary>
     /// Triad - Sound to play to the client on deactivate.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public SoundSpecifier? DeactivateSound = new SoundPathSpecifier("/Audio/_RMC14/Handling/toggle_nv2.ogg");
 }
 public sealed partial class ToggleNightVisionEvent : InstantActionEvent;

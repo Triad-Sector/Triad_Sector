@@ -64,8 +64,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         if (!ent.Comp.RelayOverlay)
             return;
 
-        ent.Comp.Enabled = false; // mono
-        RefreshOverlay(ent);
+        SetEnabled(ent.Owner, false, playSound: false); // Triad
     }
     // Triad start
     private void OnCompDidEquip(Entity<NightVisionComponent> ent, ref DidEquipEvent args)
@@ -121,7 +120,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
     /// <param name="ent">The night vision to toggle.</param>
     /// <param name="enabled">Whether to enable or disable.</param>
     /// <param name="viewer">Viewer of the night vision, used to refresh their overlay. If null, assumes the night vision entity is the viewer.</param>
-    public void SetEnabled(Entity<NightVisionComponent?> ent, bool enabled, EntityUid? viewer = null)
+    public void SetEnabled(Entity<NightVisionComponent?> ent, bool enabled, EntityUid? viewer = null, bool playSound = true)
     {
         if (!Resolve(ent, ref ent.Comp, false))
             return;
@@ -136,7 +135,8 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
         var soundToPlay = enabled
             ? ent.Comp.ActivateSound
             : ent.Comp.DeactivateSound;
-        _audio.PlayLocal(soundToPlay, ent, viewer);
+        if (playSound)
+            _audio.PlayLocal(soundToPlay, ent, viewer);
         // Triad end
 
         RefreshOverlay(viewer ?? ent);
