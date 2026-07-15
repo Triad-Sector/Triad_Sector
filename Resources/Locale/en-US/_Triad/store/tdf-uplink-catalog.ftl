@@ -212,3 +212,9 @@ uplink-security-hardsuit-tdf-desc = The TDF reverse-engineered an old NT hardsui
 
 uplink-security-hardsuit-tdf-medic-name = TA-21 Medic Hardsuit
 uplink-security-hardsuit-tdf-medic-desc = A variant of the TA-21 for NBC protection, usually utilized by combat medics.
+
+uplink-security-tier-0-voucher-name = Tier 0 Dedicated Ship ID
+uplink-security-tier-0-voucher-desc = A single use TDF DSID for any tier 0 vessel.
+
+uplink-security-tier-1-voucher-name = Tier 1 Dedicated Ship ID
+uplink-security-tier-1-voucher-desc = A single use TDF DSID for any tier 1 vessel.

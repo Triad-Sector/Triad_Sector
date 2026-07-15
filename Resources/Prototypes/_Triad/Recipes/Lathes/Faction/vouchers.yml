@@ -2,7 +2,7 @@
 - type: latheRecipe
   parent: BaseVoucherRecipe
   id: BasicVoucherTDF
-  result: ShipVoucherTier1
+  result: ShipVoucherTdfTier1
   completetime: 100
   materials:
     Steel: 5000
@@ -16,7 +16,7 @@
 - type: latheRecipe
   parent: BaseVoucherRecipe
   id: IntermediateVoucherTDF
-  result: ShipVoucherTier2
+  result: ShipVoucherTdfTier2
   completetime: 100
   materials:
     Steel: 15000
