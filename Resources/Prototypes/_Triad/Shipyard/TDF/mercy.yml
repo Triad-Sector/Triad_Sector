@@ -7,7 +7,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/Tdf/mercy.yml
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/mercy.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -17,7 +17,7 @@
 - type: gameMap
   id: Mercy
   mapName: 'Mercy'
-  mapPath: /Maps/_Triad/Shuttles/Tdf/mercy.yml
+  mapPath: /Maps/_Triad/Shuttles/TDF/mercy.yml
   minPlayers: 0
   stations:
     Mercy:
