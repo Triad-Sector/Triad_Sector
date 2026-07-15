@@ -7,7 +7,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/Tdf/jester.yml
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/jester.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -17,7 +17,7 @@
 - type: gameMap
   id: Jester
   mapName: 'Jester'
-  mapPath: /Maps/_Triad/Shuttles/Tdf/jester.yml
+  mapPath: /Maps/_Triad/Shuttles/TDF/jester.yml
   minPlayers: 0
   stations:
     Jester:
