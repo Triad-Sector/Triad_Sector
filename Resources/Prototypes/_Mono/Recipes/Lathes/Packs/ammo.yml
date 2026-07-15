@@ -953,12 +953,13 @@
   - MagazineDP29
 
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
-  - Magazine10Phz
-  - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+# Triad : commented due to inactive
+  # - Magazine700Thz
+  # - AmmoBox700Thz
+  # - Magazine10Phz
+  # - AmmoBox10Phz
+  # - LargePowerCell400Thz
+  # - LargePowerCell700Thz
 
 #Big Ammo Boxes
   - AmmoBox762x39mmBigFMJ
@@ -969,20 +970,21 @@
   - AmmoBox45_magnumBigFMJ
   - AmmoBox46x30mmBigFMJ
   - AmmoBox556x45mmBigFMJ
-  - AmmoBox57x28mmBigFMJ
+  # - AmmoBox57x28mmBigFMJ
   - AmmoBox635x40mmCaselessBig #PDV
-  - AmmoBox68x52mmCaselessBig #TSF
+  # - AmmoBox68x52mmCaselessBig #TSF
 
 #8x65 SKR Ammo Box
   - AmmoBox8x65mmSKR
 
-- type: latheRecipePack
-  id: EnergyAmmo # All energy ammo (which isn't a lot.)
-  recipes:
+# Not used for now
+# - type: latheRecipePack
+#   id: EnergyAmmo # All energy ammo (which isn't a lot.)
+#   recipes:
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
-  - Magazine10Phz
-  - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+  # - Magazine700Thz
+  # - AmmoBox700Thz
+  # - Magazine10Phz
+  # - AmmoBox10Phz
+  # - LargePowerCell400Thz
+  # - LargePowerCell700Thz
