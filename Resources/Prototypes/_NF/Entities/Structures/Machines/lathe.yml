@@ -207,9 +207,9 @@
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
+    # - MonoTSFWeaponsDynamicMelee
+    # - MonoTSFWeaponsDynamicRanged
+    # - MonoTSFMiscDynamic
     - MonoRogueWeaponsDynamicMelee
     - MonoRogueWeaponsDynamicRanged
     - MonoRogueMiscDynamic
@@ -279,9 +279,9 @@
     - DynamicAmmoRecipePack
     - SmartGun # Goobstation
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
+    # - MonoTSFWeaponsDynamicMelee
+    # - MonoTSFWeaponsDynamicRanged
+    # - MonoTSFMiscDynamic
     - MonoRogueWeaponsDynamicMelee
     - MonoRogueWeaponsDynamicRanged
     - MonoRogueMiscDynamic
