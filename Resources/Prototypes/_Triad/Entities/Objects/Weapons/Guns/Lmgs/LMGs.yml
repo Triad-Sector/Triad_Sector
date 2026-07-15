@@ -93,3 +93,4 @@
     baseDelay: 1.2
     modifiedDelay: 1.2
     preventFiring: true
+  - type: SavingContraband

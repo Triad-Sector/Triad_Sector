@@ -57,12 +57,14 @@
   recipes:
   - WeaponRifleLecterRecipeTdf
   - WeaponRifleMR8TRecipeTdf
+  - WeaponLMGRiotTdf
   - AmmoBox68x52mmCaselessBig
 
 - type: latheRecipePack
   id: TDFDynamicVoucher
   recipes:
-  - BasicVoucherTDFTier1
+  - BasicVoucherTDF
+  - IntermediateVoucherTDF
 
 - type: latheRecipePack
   id: TDFGearDynamic

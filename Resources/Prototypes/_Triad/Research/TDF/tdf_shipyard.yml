@@ -6,7 +6,21 @@
   tier: 1
   cost: 25000
   recipeUnlocks:
-  - BasicVoucherTDFTier1
+  - BasicVoucherTDF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
   position: 13, 2
+
+- type: technology
+  id: TdfTier2Ship
+  name: research-discipline-tdf-shipyard-tier1
+  entityIcon: ShipVoucherTier1
+  discipline: TdfShipyard
+  tier: 1
+  cost: 27500
+  recipeUnlocks:
+  - IntermediateVoucherTDF
+  technologyPrerequisites:
+  - TdfTier1Ship
+  - UniversalMaterialResearchT1
+  position: 13, 3
