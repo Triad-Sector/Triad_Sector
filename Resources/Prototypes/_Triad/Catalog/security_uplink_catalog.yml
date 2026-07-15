@@ -208,6 +208,9 @@
   name:  uplink-security-tier-0-voucher-name
   description: uplink-security-tier-0-voucher-desc
   productEntity: ShipVoucherTdfTier0
+  icon: {
+    sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
+    state: tier_0 }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -223,6 +226,9 @@
   name:  uplink-security-tier-1-voucher-name
   description: uplink-security-tier-1-voucher-desc
   productEntity: ShipVoucherTdfTier1
+  icon: {
+    sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
+    state: tier_1 }
   cost:
     TriadCommerceCredit: 20
   categories:
