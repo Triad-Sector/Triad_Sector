@@ -336,7 +336,6 @@ entities:
       - 86
       - 87
     - type: FireControlGrid
-    - type: ShipShielded
     - type: PilotedShuttle
       inputSources: []
     - type: GridCleanupGrid
