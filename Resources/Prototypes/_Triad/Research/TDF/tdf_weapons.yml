@@ -20,6 +20,7 @@
   cost: 35000
   recipeUnlocks:
   - WeaponRifleMR8TRecipeTdf
+  - WeaponLMGRiotTdf
   - AmmoBox68x52mmCaselessBig
   technologyPrerequisites:
   - TdfBasicGuns

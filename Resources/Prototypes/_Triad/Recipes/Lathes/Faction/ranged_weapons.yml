@@ -12,7 +12,6 @@
     Plasteel: 1000
     Plastic: 900
 
-
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
   id: WeaponRifleMR8TRecipeTdf
@@ -25,3 +24,17 @@
     Steel: 1200
     Plasteel: 650
     Plastic: 600
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponLMGRiotTdf
+  result: WeaponLMGRiot
+  categories:
+  - GPMGs
+  - MGs
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 3500
+    Plasteel: 2000
+    Plastic: 1200

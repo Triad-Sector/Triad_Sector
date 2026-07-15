@@ -11,48 +11,7 @@
 
 - type: entity
   parent: BaseShipDSID
-  id: TemplateDedicatedShipID
-  name: Template Dedicated Ship ID
-  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lost the DSID
-  components:
-  - type: Sprite
-    layers:
-    - state: med_id_handle
-    - state: motherboard
-    - state: med_logo
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Medical
-    companyName: MD
-    vessels:
-    - ephemere
-  - type: StaticPrice
-    vendPrice: 150000
-
-- type: entity
-  parent: BaseShipDSID
-  id: ShipVoucherEphemere
-  name: Ephemere Dedicated Ship ID
-  description: A small card that contains the data for the procurement of a Ephemere-class DoC ship. Do not lost the DSID
-  components:
-  - type: Sprite
-    layers:
-    - state: med_id_handle
-    - state: motherboard
-    - state: tier_4
-    - state: med_logo
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Medical
-    companyName: MD
-    vessels:
-    - ephemere
-  - type: StaticPrice
-    vendPrice: 150000
-
-- type: entity
-  parent: BaseShipDSID
-  id: ShipVouchertier0
+  id: ShipVoucherTier0
   name: tier 0 dedicated ship ID
   description: Test
   components:
@@ -71,7 +30,7 @@
 
 - type: entity
   parent: BaseShipDSID
-  id: ShipVouchertier1
+  id: ShipVoucherTier1
   name: tier 1 dedicated ship ID
   description: Test
   components:
