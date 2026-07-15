@@ -54,7 +54,7 @@
   storage:
     back:
     - Multitool
-    - DoorRemoteNfsd
-    - BaseSecurityUplinkRadioSheriff
-    - ShipVoucherTsfmcColonel
+    #- DoorRemoteNfsd
+    #- BaseSecurityUplinkRadioSheriff
+    #- ShipVoucherTsfmcColonel
     - PhoneInstrumentHigh

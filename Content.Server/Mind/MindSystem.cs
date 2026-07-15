@@ -70,7 +70,7 @@ public sealed class MindSystem : SharedMindSystem
         TransferTo(mindId, null, createGhost: false, mind: mind);
         DebugTools.AssertNull(mind.OwnedEntity);
 
-        if (!component.GhostOnShutdown || mind.Session == null || _gameTicker.RunLevel == GameRunLevel.PreRoundLobby)
+        if (!component.GhostOnShutdown || !_players.TryGetSessionById(mind.UserId, out _) || _gameTicker.RunLevel == GameRunLevel.PreRoundLobby) // SS220 ghost-del-fix
             return;
 
         var ghost = _ghosts.SpawnGhost((mindId, mind), uid);
@@ -292,8 +292,10 @@ public sealed class MindSystem : SharedMindSystem
             return;
 
         Dirty(mindId, mind);
-        var netMind = GetNetEntity(mindId);
-        _pvsOverride.ClearOverride(netMind);
+        // Triad: engine v275 removed ClearOverride(NetEntity); minds only ever get session overrides, so
+        // removing the current session's override is equivalent (matches upstream MindSystem).
+        if (mind.Session != null)
+            _pvsOverride.RemoveSessionOverride(mindId, mind.Session);
         if (userId != null && !_players.TryGetPlayerData(userId.Value, out _))
         {
             Log.Error($"Attempted to set mind user to invalid value {userId}");

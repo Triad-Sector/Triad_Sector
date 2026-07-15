@@ -1,0 +1,6 @@
+- type: radioChannel
+  id: Nfsd
+  name: chat-radio-tdf
+  keycode: "s" # Triad
+  frequency: 1459
+  color: "#FFD580"

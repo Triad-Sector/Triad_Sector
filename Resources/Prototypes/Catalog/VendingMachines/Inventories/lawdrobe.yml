@@ -16,7 +16,7 @@
     ClothingNeckLawyerbadge: 2
     RubberStampLawyer: 2
     BriefcaseBrown: 2
-    HyperlinkBookSpaceLaw: 3 # Frontier: BookSpaceLaw<HyperlinkBookSpaceLaw
+    BookTriadLaw: 3 # Triad: BookSpaceLaw<BookTriadLaw
     LuxuryPen: 2
     HandLabeler: 2
   contrabandInventory:

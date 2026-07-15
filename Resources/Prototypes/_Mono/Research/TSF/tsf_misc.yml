@@ -42,31 +42,31 @@
   - UniversalMaterialResearchT2
   position: 13, 7
 
-- type: technology
-  id: TsfAltair
-  name: research-technology-tsfmc-altair-voucher
-  entityIcon: ShipVoucherAltair
-  discipline: TsfmcShipyard
-  tier: 2
-  cost: 60000
-  recipeUnlocks:
-  - AltairVoucherTSF
-  technologyPrerequisites:
-  - UniversalMaterialResearchT2
-  position: 11, 9
+#- type: technology
+#  id: TsfAltair
+#  name: research-technology-tsfmc-altair-voucher
+#  entityIcon: ShipVoucherAltair
+#  discipline: TsfmcShipyard
+#  tier: 2
+#  cost: 60000
+#  recipeUnlocks:
+#  - AltairVoucherTSF
+#  technologyPrerequisites:
+#  - UniversalMaterialResearchT2
+#  position: 11, 9
 
-- type: technology
-  id: TsfFlyssa
-  name: research-technology-tsfmc-flyssa-voucher
-  entityIcon: ShipVoucherFlyssa
-  discipline: TsfmcShipyard
-  tier: 3
-  cost: 100000
-  recipeUnlocks:
-  - FlyssaVoucherTSF
-  technologyPrerequisites:
-  - TsfAltair
-  position: 13, 14
+#- type: technology
+#  id: TsfFlyssa
+#  name: research-technology-tsfmc-flyssa-voucher
+#  entityIcon: ShipVoucherFlyssa
+#  discipline: TsfmcShipyard
+#  tier: 3
+#  cost: 100000
+#  recipeUnlocks:
+#  - FlyssaVoucherTSF
+#  technologyPrerequisites:
+#  - TsfAltair
+#  position: 13, 14
 
 - type: technology
   id: TsfMeds

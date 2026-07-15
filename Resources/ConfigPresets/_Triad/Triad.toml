@@ -3,6 +3,7 @@ hostname = "[EN][MRP][18+]Triad Sector"
 desc = "Triad Sector is a unique twist on the traditional Space Station gameplay. In the Triad Sector, everyone can be the captain of their own ship to venture forth and explore space beyond the station! Salvage, mine, research, trade, or explore your way to riches aboard your own vessel! Includes ships saving!"
 lobbyenabled = true
 lobbyduration = 180
+current_year_offset = 802
 
 [game.panic_bunker]
 enabled = false

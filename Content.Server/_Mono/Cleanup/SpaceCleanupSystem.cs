@@ -165,7 +165,8 @@ public sealed class SpaceCleanupSystem : BaseCleanupSystem<PhysicsComponent>
                 continue;
 
             _sweepQueue.RemoveAt(i);
-            if (!coord.IsValid(EntityManager))
+            if (!coord.IsValid(EntityManager)
+                || radius <= 0f) // Triad: v277 lookup asserts on non-positive range
                 continue;
 
             _sweepEnts.Clear();

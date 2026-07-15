@@ -4,8 +4,21 @@
   description: trait-prybar-prosthetics-desc
   category: Physical
   cost: 2
-  components:
-  - type: PrybarProsthetics
+  conditions:
+  # Triad: the prosthetics replace your arms, so they need an arm to replace. Block only for a DOUBLE arm
+  # amputee (both arms gone); a one-armed character still gets the bionic on the remaining arm.
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: PrybarProsthetics
 
 - type: trait
   id: Vigor
@@ -13,13 +26,20 @@
   description: trait-vigor-desc
   category: Physical
   cost: 6
-  mutuallyExclusiveTraits:
-  - Lethargy
-  speciesBlacklist:
-  - Oni
-  - IPC
-  components:
-  - type: Vigor
+  conditions:
+  - !type:HasTraitCondition
+    trait: Lethargy
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Oni
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Vigor
 
 - type: trait
   id: Lethargy
@@ -27,16 +47,24 @@
   description: trait-lethargy-desc
   category: Physical
   cost: -4
-  mutuallyExclusiveTraits:
-  - Vigor
-  speciesBlacklist:
-  - Felinid
-  - Tajaran
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: Vigor
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Felinid
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Tajaran
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: Lethargy
+    - type: Lethargy
 
 - type: trait
   id: GlassJaw
@@ -44,12 +72,22 @@
   description: trait-glass-jaw-desc
   category: Physical
   cost: -2
-  mutuallyExclusiveTraits:
-  - Tenacity
-  speciesBlacklist:
-  - IPC
-  components:
-  - type: GlassJaw
+  conditions:
+  - !type:HasTraitCondition
+    trait: Tenacity
+    invert: true
+  # Triad: Osteogenesis adds a stronger GlassJaw; taking both silently drops one (engine skips
+  # duplicate components). They are redundant variants, so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: OsteogenesisImperfecta
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GlassJaw
 
 - type: trait
   id: Tenacity
@@ -57,13 +95,25 @@
   description: trait-tenacity-desc
   category: Physical
   cost: 1
-  mutuallyExclusiveTraits:
-  - GlassJaw
-  - OsteogenesisImperfecta
-  speciesBlacklist:
-  - IPC
-  components:
-  - type: Tenacity
+  conditions:
+  - !type:HasTraitCondition
+    trait: GlassJaw
+    invert: true
+  - !type:HasTraitCondition
+    trait: OsteogenesisImperfecta
+    invert: true
+  # Triad: Redshirt drops Dead to 100 (base Crit is 100); +5 Crit would put Crit (105) ABOVE Dead, inverting
+  # the crit/dead ordering (you die before you can crit). GlassJaw/Osteogenesis only LOWER crit, so they stay safe.
+  - !type:HasTraitCondition
+    trait: Redshirt
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Tenacity
 
 - type: trait
   id: WillToLive
@@ -71,16 +121,24 @@
   description: trait-will-to-live-desc
   category: Physical
   cost: 1
-  mutuallyExclusiveTraits:
-  - WillToDie
-  - Redshirt
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: WillToDie
+    invert: true
+  - !type:HasTraitCondition
+    trait: Redshirt
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: WillToLive
+    - type: WillToLive
 
 - type: trait
   id: WillToDie
@@ -88,29 +146,57 @@
   description: trait-will-to-die-desc
   category: Physical
   cost: -1
-  mutuallyExclusiveTraits:
-  - WillToLive
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: WillToLive
+    invert: true
+  # Triad: Redshirt also adds the WillToDie component; taking both silently drops one. Both are
+  # "you die more easily", so make them mutually exclusive.
+  - !type:HasTraitCondition
+    trait: Redshirt
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: WillToDie
+    - type: WillToDie
 
 - type: trait
   id: Thieving
   name: trait-thieving-name
   description: trait-thieving-desc
   category: Physical
-  cost: 2
-  speciesBlacklist:
-  - Felinid
-  components:
-  - type: Thieving
-    stealthy: false
-    timeMultiplier: 0.5
-    identifyHidden: true
+  cost: 3
+  conditions:
+  - !type:IsSpeciesCondition
+    species: Felinid
+    invert: true
+  # Triad: "deft with your hands" is the opposite of Clumsy; they cancel thematically.
+  - !type:HasTraitCondition
+    trait: Clumsy
+    invert: true
+  # Triad: pickpocketing and stripping need a hand. Block only for a DOUBLE arm amputee (no hands).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Thieving
+      stealthy: false
+      timeMultiplier: 0.5
+      identifyHidden: true
 
 - type: trait
   id: BionicLegs
@@ -118,8 +204,24 @@
   description: trait-bionic-legs-desc
   category: Physical
   cost: 2
-  components:
-  - type: BionicLegs
+  conditions:
+  # Triad: contradicts WheelchairBound (LegsParalyzed); faster-on-foot is moot with paralyzed legs.
+  - !type:HasTraitCondition
+    trait: WheelchairBound
+    invert: true
+  # Triad: needs a leg to augment. Block only for a DOUBLE leg amputee (both legs gone); one leg is enough.
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-a-leg
+    conditions:
+    - !type:HasTraitCondition
+      trait: LegAmputeeLeft
+    - !type:HasTraitCondition
+      trait: LegAmputeeRight
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: BionicLegs
 
 - type: trait
   id: OsteogenesisImperfecta
@@ -127,16 +229,27 @@
   description: trait-osteogenesis-imperfecta-desc
   category: Physical
   cost: -6
-  mutuallyExclusiveTraits:
-  - Tenacity
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: Tenacity
+    invert: true
+  # Triad: mutually exclusive with GlassJaw (both add the GlassJaw component; taking both drops one).
+  - !type:HasTraitCondition
+    trait: GlassJaw
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: GlassJaw
-    critDecrease: 50
+    - type: GlassJaw
+      critDecrease: 50
+      critSetValueFallback: 50 # Triad, fallback that sets crit state threshold to 50 if no critical state exists. This is done so the trait does not conflict with redshirt.
 
 - type: trait
   id: Hemophilia
@@ -144,13 +257,18 @@
   description: trait-hemophilia-desc
   category: Physical
   cost: -4
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: Hemophilia
+    - type: Hemophilia
 
 - type: trait
   id: Voracious
@@ -158,12 +276,17 @@
   description: trait-voracious-desc
   category: Physical
   cost: 1
-  speciesBlacklist:
-    - IPC
-  blacklist:
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
     - type: Voracious
       consumptionSpeedMultiplier: 2.0
 
@@ -173,13 +296,31 @@
   description: trait-bionic-spinarette-desc
   category: Physical
   cost: 2
-  speciesBlacklist:
-    - IPC
-    - Arachnid
-  blacklist:
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Arachnid
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits migration dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  # Triad: the spinarette spins silk into the palm, so it needs a hand. Block it only for a DOUBLE arm amputee
+  # (both arms gone = no hands); a one-armed character still has a hand and can use it. invert on AllOf =
+  # "not (no left arm AND no right arm)".
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
     - type: Sericulture
       action: ActionSericulture
       productionLength: 2
@@ -192,12 +333,21 @@
   description: trait-feeble-desc
   category: Physical
   cost: -4
-  mutuallyExclusiveTraits:
-   - Steadfast
-  speciesBlacklist:
-   - Felinid
-   - Tajaran
-  components:
+  conditions:
+  - !type:HasTraitCondition
+    trait: Steadfast
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Felinid
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Tajaran
+    invert: true
+  effects:
+  # Triad: SlowOnDamage is already on the base mob, so AddCompsEffect (removeExisting:false) would skip these
+  # and Feeble would do nothing. Overwrite replaces the base 60/80 thresholds with these harsher ones.
+  - !type:OverwriteCompsEffect
+    components:
     - type: SlowOnDamage
       speedModifierThresholds:
         "45": 0.70
@@ -209,11 +359,19 @@
   description: trait-trap-avoider-desc
   category: Physical
   cost: 3
-  speciesBlacklist:
-    - Felinid
-    - Tajaran
-    - Harpy
-  components:
+  conditions:
+  - !type:IsSpeciesCondition
+    species: Felinid
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Tajaran
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Harpy
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
     - type: TrapAvoider
 
 - type: trait
@@ -222,8 +380,16 @@
   description: trait-self-aware-desc
   category: Physical
   cost: 2
-  components:
-  - type: SelfAware
+  conditions:
+  # Triad: contradicts PainNumbness, which makes you unaware of your injuries and cancels the health alert.
+  # You can't be both numb to your own damage and able to gauge it precisely.
+  - !type:HasTraitCondition
+    trait: PainNumbness
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: SelfAware
 
 - type: trait
   id: LiquorLifeline
@@ -231,33 +397,28 @@
   description: trait-liquor-lifeline-desc
   category: Physical
   cost: 6
-  mutuallyExclusiveTraits:
-  - AlcoholTolerance
-  speciesBlacklist:
-  - IPC
-  - Dwarf
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: AlcoholTolerance
+    invert: true
+  # Triad: the dwarven liver grants alcohol tolerance, the direct opposite of Lightweight Drunk.
+  - !type:HasTraitCondition
+    trait: LightweightDrunk
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Dwarf
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: LiquorLifeline
-
-- type: trait
-  id: Redshirt
-  name: trait-redshirt-name
-  description: trait-redshirt-desc
-  category: Physical
-  cost: -8
-  mutuallyExclusiveTraits:
-  - WillToLive
-  speciesBlacklist:
-  - IPC
-  blacklist:
-    components:
-    - BorgChassis
-  components:
-  - type: WillToDie
-    deadDecrease: 100
+    - type: LiquorLifeline
 
 - type: trait
   id: StrikingCalluses
@@ -265,11 +426,31 @@
   description: trait-striking-calluses-desc
   category: Physical
   cost: 2
-  blacklist:
+  conditions:
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  # Triad: a pacifist (or pious pacifist) can't strike the living, so +unarmed damage is a dead pick.
+  - !type:HasTraitCondition
+    trait: Pacifist
+    invert: true
+  - !type:HasTraitCondition
+    trait: Pious
+    invert: true
+  # Triad: unarmed strikes need a hand. Block only for a DOUBLE arm amputee (both arms gone = no hands).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: StrikingCalluses
+    - type: StrikingCalluses
 
 - type: trait
   id: Steadfast
@@ -277,19 +458,29 @@
   description: trait-steadfast-desc
   category: Physical
   cost: 3
-  mutuallyExclusiveTraits:
-  - Feeble
-  speciesBlacklist:
-  - Felinid
-  - Tajaran
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: Feeble
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Felinid
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Tajaran
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  # Triad: SlowOnDamage is already on the base mob, so AddCompsEffect (removeExisting:false) would skip these
+  # and Steadfast would do nothing. Overwrite replaces the base 60/80 thresholds with these gentler ones.
+  - !type:OverwriteCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      "70": 0.83
-      "90": 0.70
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        "70": 0.83
+        "90": 0.70
 
 - type: trait
   id: DermalArmor
@@ -297,36 +488,44 @@
   description: trait-dermal-armor-desc
   category: Physical
   cost: 6
-  components:
-  - type: DamageProtectionBuff
-    modifiers:
-      dermal:
-        id: DermalArmorTrait
-        coefficients:
-          Shock: 1.25
-        flatReductions:
-          Blunt: 3.5
-          Slash: 3.5
-          Piercing: 3.5
-          
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: DamageProtectionBuff
+      modifiers:
+        dermal:
+          id: DermalArmorTrait
+          coefficients:
+            Shock: 1.25
+          flatReductions:
+            Blunt: 3.5
+            Slash: 3.5
+            Piercing: 3.5
+
 - type: trait
   id: HardenedLymphocytes
   name: trait-hardened-lymphocytes-name
   description: trait-hardened-lymphocytes-desc
   category: Physical
   cost: 4
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+    - !type:HasCompCondition
+        component: BorgChassis
+        invert: true
+    - !type:IsSpeciesCondition
+        species: IPC
+        invert: true
+  effects:
+  # Triad: own component instead of a 2nd DamageProtectionBuff. Two traits adding the same component
+  # silently drop one (engine skips duplicates), which let BionicLegs/Spinarette/etc strip DermalArmor.
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: DamageProtectionBuff
-    modifiers:
-      dermal:
-        id: HardenedLymphocytesTrait
-        flatReductions:
-          Radiation: 1
+    - type: HardenedLymphocytes
+      modifiers:
+        lymphocytes:
+          id: HardenedLymphocytesTrait
+          flatReductions:
+            Radiation: 1
 
 - type: trait
   id: Ironman
@@ -334,9 +533,12 @@
   description: trait-ironman-desc
   category: Physical
   cost: -5 # This shit was FREE for factions practically
-  components:
-  - type: Ironman
-  traitGear: ShipVoucherFrontierIronMan
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Ironman
+  - !type:SpawnItemInHandEffect
+    item: ShipVoucherFrontierIronMan
 
 - type: trait
   id: TemperatureTolerance
@@ -344,9 +546,11 @@
   description: trait-temperature-tolerance-desc
   category: Physical
   cost: 1
-  components:
-  - type: TemperatureProtection
-    coolingCoefficient: 0.6
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: TemperatureProtection
+      coolingCoefficient: 0.6
 
 - type: trait
   id: AlcoholTolerance
@@ -354,18 +558,28 @@
   description: trait-alcohol-tolerance-desc
   category: Physical
   cost: 1
-  mutuallyExclusiveTraits:
-  - LightweightDrunk
-  - LiquorLifeline
-  speciesBlacklist:
-  - Dwarf
-  - IPC
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: LightweightDrunk
+    invert: true
+  - !type:HasTraitCondition
+    trait: LiquorLifeline
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Dwarf
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: AlcoholTolerance
-    visualScaleMultiplier: 0.35
+    - type: AlcoholTolerance
+      visualScaleMultiplier: 0.35
 
 - type: trait
   id: PlateletFactories
@@ -373,21 +587,26 @@
   description: trait-platelet-factories-desc
   category: Physical
   cost: 6
-  mutuallyExclusiveTraits:
-  - Hemophilia
-  speciesBlacklist:
-  - IPC
-  blacklist:
+  conditions:
+  - !type:HasTraitCondition
+    trait: Hemophilia
+    invert: true
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddCompsEffect
     components:
-    - BorgChassis
-  components:
-  - type: PlateletFactories
-    intervalSeconds: 1
-    damagePerInterval:
-      groups:
-        Brute: -1.5
-        Burn: -2
-    critMultiplier: .25
+      - type: PlateletFactories
+        intervalSeconds: 1
+        damagePerInterval:
+          groups:
+            Brute: -1.5
+            Burn: -2
+        critMultiplier: .25
 
 - type: trait
   id: NaniteRepairDrones
@@ -395,32 +614,19 @@
   description: trait-nanite-repair-drones-desc
   category: Physical
   cost: 8
-  speciesBlacklist:
-  - Human
-  - Chitinid
-  - Oni
-  - Vulpkanin
-  - Vox
-  - Diona
-  - Moth
-  - Goblin
-  - Arachnid
-  - Resomi
-  - Harpy
-  - Reptilian
-  - Hydrakin
-  - Rodentia
-  - Dwarf
-  - SlimePerson
-  - Felinid
-  - Tajaran
-  blacklist:
-    components:
-    - BorgChassis
-  components:
-  - type: PlateletFactories
-    intervalSeconds: 1
-    damagePerInterval:
-      groups:
-        Brute: -1.5
-        Burn: -2
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+    - !type:AddCompsEffect
+      components:
+        - type: PlateletFactories
+          intervalSeconds: 1
+          damagePerInterval:
+            groups:
+              Brute: -1.5
+              Burn: -2
+

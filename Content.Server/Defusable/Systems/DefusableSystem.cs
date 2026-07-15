@@ -40,6 +40,7 @@ public sealed class DefusableSystem : SharedDefusableSystem
         SubscribeLocalEvent<DefusableComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
         SubscribeLocalEvent<DefusableComponent, AnchorAttemptEvent>(OnAnchorAttempt);
         SubscribeLocalEvent<DefusableComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
+        SubscribeLocalEvent<DefusableComponent, ActiveTimerTriggerEvent>(OnActiveTimer); // Triad added timer event
     }
 
     #region Subscribed Events
@@ -117,6 +118,17 @@ public sealed class DefusableSystem : SharedDefusableSystem
         _popup.PopupEntity(msg, uid, args.User);
 
         return true;
+    }
+
+    /// Triad, Ensures defusable bombs are marked as activated when their timer starts.
+    private void OnActiveTimer(EntityUid uid, DefusableComponent comp, ref ActiveTimerTriggerEvent args)
+    {
+        var xform = Transform(uid);
+        if (!xform.Anchored)
+            _transform.AnchorEntity(uid, xform);
+
+        SetBolt(comp, true);
+        SetActivated(comp, true);
     }
 
     #endregion

@@ -2,7 +2,7 @@
 - type: entity
   id: JetpackNfsd
   parent: JetpackBlue
-  name: TSFMC jetpack
+  name: TDF jetpack
   suffix: Empty
   components:
   - type: Item
@@ -16,7 +16,7 @@
 - type: entity
   id: JetpackNfsdFilled
   parent: JetpackBlueFilled
-  name: TSFMC jetpack
+  name: TDF jetpack
   suffix: Filled
   components:
   - type: Item

@@ -13,8 +13,8 @@
     WeedSpray: 20
     PestSpray: 20
     Syringe: 5
-    RobustHarvestChemistryBottle: 8
-    EZNutrientChemistryBottle: 3
+    ChemistryBottleRobustHarvest: 8 # Triad: This was 8, unsure where and when change was made
+    ChemistryBottleEZNutrient: 3
     Bucket: 3
 #    DiseaseSwab: 20 # Mono - carpal tunnel go away
     BoxMouthSwab: 1 # Mono - much less painful to vend once
@@ -22,7 +22,7 @@
     #TO DO:
     #plant analyzer
   contrabandInventory:
-    UnstableMutagenChemistryBottle: 1
+    ChemistryBottleUnstableMutagen: 1
     Joint: 1
   emaggedInventory:
-    Left4ZedChemistryBottle: 1
+    ChemistryBottleLeft4Zed: 1

@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelTdf
+  name: TDF satchel
+  description: A robust satchel for holding militia stuff.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Satchels/tdf.rsi

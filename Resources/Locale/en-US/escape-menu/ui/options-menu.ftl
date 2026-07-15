@@ -293,11 +293,13 @@ cmd-options-help = Usage: options [tab]
 ## Accessibility menu
 
 ui-options-accessability-header-visuals = Visuals
+ui-options-accessability-header-night-vision = Night Vision
 ui-options-accessability-header-content = Content
 
 ui-options-enable-color-name = Add colors to character names
 ui-options-colorblind-friendly = Colorblind friendly mode
 ui-options-reduced-motion = Reduce motion of visual effects
+ui-options-disable-nv-noise = Disable the noise effect on the night vision overlay
 ui-options-screen-shake-intensity = Screen shake intensity
 
 ui-options-chat-window-opacity = Chat window opacity
@@ -324,3 +326,8 @@ ui-options-function-target-right-leg = Target right leg
 ui-options-auto-fill-highlights = Automatically fill highlights with character name and job keywords
 ui-options-highlights-color = Highlight color
 ui-options-highlights-color-example = Example highlighted text
+
+## Accessibility — Triad night vision settings
+ui-options-use-night-vision-color = Use custom night vision tint
+ui-options-night-vision-color = Custom night vision tint/phosphor
+ui-options-night-vision-color-example = Example night vision tint

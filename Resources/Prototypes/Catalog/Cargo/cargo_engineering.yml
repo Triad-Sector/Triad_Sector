@@ -170,7 +170,7 @@
   icon:
     sprite: Structures/Piping/Atmospherics/Portable/portable_sheater.rsi
     state: sheaterOff
-  product: SpaceHeaterAnchored # Frontier: CrateEngineeringSpaceHeater<SpaceHeaterAnchored
+  product: CrateEngineeringSpaceHeater
   cost: 600 # Frontier: 350<600
   category: cargoproduct-category-name-engineering
   group: market

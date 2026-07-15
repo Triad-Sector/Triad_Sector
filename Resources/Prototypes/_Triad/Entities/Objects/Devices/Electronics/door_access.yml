@@ -1,0 +1,24 @@
+# TDF
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfWarden
+  suffix: TDF Warden, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfWarden"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfPatrolTeamLeader
+  suffix: TDF Patrol Team Leader, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfPatrolTeamLeader"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfChiefEnforcer
+  suffix: TDF Chief Enforcer, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"]]

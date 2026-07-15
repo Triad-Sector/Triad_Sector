@@ -13,8 +13,18 @@ public abstract partial class SharedLabelSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<LabelComponent, MapInitEvent>(OnLabelCompMapInit);
+        SubscribeLocalEvent<LabelComponent, ComponentShutdown>(OnLabelShutdown); // (#44022) revert name when the label component is removed
         SubscribeLocalEvent<LabelComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<LabelComponent, RefreshNameModifiersEvent>(OnRefreshNameModifiers);
+    }
+
+    private void OnLabelShutdown(Entity<LabelComponent> ent, ref ComponentShutdown args)
+    {
+        // Refreshing can add NameModifierComponent, which asserts on entities mid-deletion
+        if (TerminatingOrDeleted(ent.Owner))
+            return;
+
+        NameMod.RefreshNameModifiers(ent.Owner);
     }
 
     private void OnLabelCompMapInit(EntityUid uid, LabelComponent component, MapInitEvent args)

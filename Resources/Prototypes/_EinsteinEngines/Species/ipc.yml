@@ -27,6 +27,8 @@
 - type: speciesBaseSprites
   id: MobIPCSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobIPCHead
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -55,10 +57,10 @@
       defaultMarkings: [ MobIPCHeadDefault ]
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:

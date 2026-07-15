@@ -1,0 +1,49 @@
+# Triad Defense Force ranks
+- type: rank
+  id: RankJuniorEnforcer
+  name: Junior Enforcer
+  prefix: Jr. Enf.
+  paygrade: TDF-1
+
+- type: rank
+  id: RankEnforcer
+  name: Enforcer
+  prefix: Enf.
+  paygrade: TDF-2
+
+- type: rank
+  id: RankSeniorEnforcer
+  name: Senior Enforcer
+  prefix: Sr. Enf.
+  paygrade: TDF-3
+
+- type: rank
+  id: RankWarden
+  name: Warden
+  prefix: Warden
+  paygrade: TDF-4
+
+- type: rank
+  id: RankChiefEnforcer
+  name: Chief Enforcer
+  prefix: Chief Enf.
+  paygrade: TDF-5
+
+# High Command Ranks
+- type: rank
+  id: RankHighCommandIntern
+  name: High Command Intern
+  prefix: Intern
+  paygrade: TDF-6
+
+- type: rank
+  id: RankHighCommander
+  name: High Commander
+  prefix: Commander
+  paygrade: TDF-7
+
+- type: rank
+  id: RankSeniorHighCommander
+  name: Senior High Commander
+  prefix: Sr. Commander
+  paygrade: TDF-8

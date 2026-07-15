@@ -1,0 +1,27 @@
+- type: loadoutGroup
+  id: TdfCadetGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 1
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - ClothingEyesHudSecurityTdf
+  fallbacks:
+  - ClothingEyesHudSecurityTdf
+
+- type: loadoutGroup
+  id: TdfCadetJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfJunior
+  fallbacks:
+  - ClothingUniformJumpsuitTdfJunior
+
+- type: loadoutGroup
+  id: TdfCadetPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfCadetPda
+  fallbacks:
+  - TdfCadetPda

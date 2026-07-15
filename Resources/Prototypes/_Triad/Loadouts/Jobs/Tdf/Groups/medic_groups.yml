@@ -1,0 +1,75 @@
+- type: loadoutGroup
+  id: TdfMedicGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - NitrileGloves
+  - LatexGloves
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - NfsdClothingHandsGlovesCombatNfsdCream
+  - MercenaryClothingHandsGlovesCombat
+  - MercenaryClothingHandsGlovesTacticalCombatBlack
+  fallbacks:
+  - NitrileGloves
+
+- type: loadoutGroup
+  id: TdfMedicBelt
+  name: loadout-group-contractor-belt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingBeltMilitaryWebbingMedTdfFilledMedic
+  - ClothingBeltTdfFilledMedic
+  - ClothingBeltMilitaryWebbingMedFilledMedic
+  fallbacks:
+  - ClothingBeltMilitaryWebbingMedTdfFilledMedic
+
+- type: loadoutGroup
+  id: TdfMedicNeck
+  name: loadout-group-contractor-neck
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingNeckIFFRed
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
+  fallbacks:
+  - ContractorClothingNeckIFFRed
+
+- type: loadoutGroup
+  id: TdfMedicGlasses
+  name: loadout-group-contractor-glasses
+  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 1
+  loadouts:
+  - ClothingEyesHudMedSec
+  fallbacks:
+  - ClothingEyesHudMedSec
+
+- type: loadoutGroup
+  id: TdfMedicJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfCombatMedic
+  fallbacks:
+  - ClothingUniformJumpsuitTdfCombatMedic
+
+- type: loadoutGroup
+  id: TdfMedicPDA
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfMedicPda
+  fallbacks:
+  - TdfMedicPda
+
+- type: loadoutGroup
+  id: TdfMedicHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatBeretTdfMedic
+  subgroups:
+  - TdfHead

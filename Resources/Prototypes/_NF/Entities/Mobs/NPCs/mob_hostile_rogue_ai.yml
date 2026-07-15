@@ -1036,7 +1036,7 @@
   - type: Stamina
     critThreshold: 600
   - type: HitscanBatteryAmmoProvider
-    proto: RedLaserPractice # RedLaser
+    proto: RadLaserGuardian # Triad - 2 damage, 16 DPS
     fireCost: 10
   - type: Gun
     showExamineText: false

@@ -8,8 +8,12 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
+using Content.Shared.NPC.Systems;
+using Prometheus;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Physics.Components; // Mono
 using Robust.Shared.Player;
 
 namespace Content.Server.NPC.Systems
@@ -19,6 +23,10 @@ namespace Content.Server.NPC.Systems
     /// </summary>
     public sealed partial class NPCSystem : EntitySystem
     {
+        private static readonly Gauge ActiveGauge = Metrics.CreateGauge(
+            "npc_active_count",
+            "Amount of NPCs that are actively processing");
+
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
         [Dependency] private readonly HTNSystem _htn = default!;
         [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -68,9 +76,16 @@ namespace Content.Server.NPC.Systems
             WakeNPC(uid, component);
         }
 
-        public void OnNPCMapInit(EntityUid uid, HTNComponent component, MapInitEvent args)
+        // Triad: port of Wizden #40244. Owner is set on ComponentStartup, not MapInit: components on
+        // pre-mapinit maps (e.g. the shipyard hold) are live and can be woken before MapInit ever fires,
+        // and every HTN operator assumes Owner is present.
+        public void OnNPCStartup(EntityUid uid, HTNComponent component, ComponentStartup args)
         {
             component.Blackboard.SetValue(NPCBlackboard.Owner, uid);
+        }
+
+        public void OnNPCMapInit(EntityUid uid, HTNComponent component, MapInitEvent args)
+        {
             WakeNPC(uid, component);
         }
 
@@ -159,6 +174,8 @@ namespace Content.Server.NPC.Systems
 
             // Add your system here.
             _htn.UpdateNPC(ref _count, _maxUpdates, frameTime);
+
+            ActiveGauge.Set(Count<ActiveNPCComponent>());
         }
 
         private void CheckPlayerDistancesAndPauseNPCs()
@@ -168,6 +185,10 @@ namespace Content.Server.NPC.Systems
 
             while (npcQuery.MoveNext(out var npcUid, out var htn, out var npcTransform))
             {
+                // Triad: never wake/sleep an NPC that hasn't map-initialized; MapInit wakes it itself.
+                if (MetaData(npcUid).EntityLifeStage < EntityLifeStage.MapInitialized)
+                    continue;
+
                 // Skip NPCs that are players or have minds.
                 if (HasComp<ActorComponent>(npcUid) ||
                     (TryComp<MindContainerComponent>(npcUid, out var mindContainer) && mindContainer.HasMind))
@@ -177,30 +198,39 @@ namespace Content.Server.NPC.Systems
                 if (_mobState.IsIncapacitated(npcUid))
                     continue;
 
-                var minDistance = htn.SleepPlayerCheckRangeOverride ?? _playerPauseDistance; // Mono
-
                 var npcCoords = npcTransform.Coordinates;
                 var hasNearbyPlayer = false;
 
+                var minDistance = htn.SleepPlayerCheckRangeOverride ?? _playerPauseDistance; // Mono
+                // Mono
+                if (htn.SleepMaxGridSpeed is { } ms
+                    && TryComp<PhysicsComponent>(npcTransform.GridUid, out var gridBody)
+                    && gridBody.LinearVelocity.Length() > ms
+                    )
+                    hasNearbyPlayer = true;
+
                 // Check distance to all players.
-                var allPlayerData = _playerManager.GetAllPlayerData();
-                foreach (var playerData in allPlayerData)
+                if (!hasNearbyPlayer)
                 {
-                    var exists = _playerManager.TryGetSessionById(playerData.UserId, out var session);
-
-                    if (!exists || session == null
-                        || session.AttachedEntity is not { Valid: true } playerEnt
-                        || HasComp<GhostComponent>(playerEnt)
-                        || TryComp<MobStateComponent>(playerEnt, out var state) && state.CurrentState != MobState.Alive)
-                        continue;
-
-                    var playerCoords = Transform(playerEnt).Coordinates;
-
-                    if (npcCoords.TryDistance(EntityManager, playerCoords, out var distance) &&
-                        distance <= minDistance)
+                    var allPlayerData = _playerManager.GetAllPlayerData();
+                    foreach (var playerData in allPlayerData)
                     {
-                        hasNearbyPlayer = true;
-                        break;
+                        var exists = _playerManager.TryGetSessionById(playerData.UserId, out var session);
+
+                        if (!exists || session == null
+                            || session.AttachedEntity is not { Valid: true } playerEnt
+                            || HasComp<GhostComponent>(playerEnt)
+                            || TryComp<MobStateComponent>(playerEnt, out var state) && state.CurrentState != MobState.Alive)
+                            continue;
+
+                        var playerCoords = Transform(playerEnt).Coordinates;
+
+                        if (npcCoords.TryDistance(EntityManager, playerCoords, out var distance) &&
+                            distance <= minDistance)
+                        {
+                            hasNearbyPlayer = true;
+                            break;
+                        }
                     }
                 }
 

@@ -5,7 +5,7 @@
   maxLimit: 1
   loadouts:
   # Triad - Disabled all faction related weapons for the time being, it might return eventually™
-  # TSF playtime guns 
+  # TSF playtime guns
   # - ContractorSpecialGunEg4
   # - ContractorSpecialGunAnnie
   # - ContractorSpecialGunVulcan
@@ -19,13 +19,13 @@
   # Rogue playtime guns
   # - ContractorSpecialGunAnaconda
   # - ContractorSpecialGunMla73
-  # - ContractorSpecialGunWspr  
+  # - ContractorSpecialGunWspr
   # Civ playtime guns
   - ContractorSpecialGunSmartSMG
   - ContractorSpecialGunMla34
   - ContractorSpecialGunMla79
   - ContractorSpecialGunMalandro
-
+  - ContractorSpecialGunSquire # Triad
 # TSF playtime weapons
 
 - type: loadout

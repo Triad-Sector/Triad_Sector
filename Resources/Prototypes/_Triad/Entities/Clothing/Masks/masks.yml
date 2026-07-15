@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingMaskGasSwat
+  id: ClothingMaskGasSwatTdf
+  name: TDF swat gas mask
+  description: An extra reinforced gas mask. Spooky yellow eyes.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Mask/tdf_swat_mask.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Mask/tdf_swat_mask.rsi

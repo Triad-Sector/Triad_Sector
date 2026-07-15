@@ -1,0 +1,330 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]200 SERIES: STABILITY[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [head=3][color=#FFA500]Misdemeanor[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-201
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Hooliganism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To intentionally and maliciously engage in disruptive conduct, where one refuses to cease after a warning.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        5,000 credits fine OR up to 15 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-202
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Trespass
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To enter into an area where one is not authorized nor invited.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        7,500 credits fine OR up to 20 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-203
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Vandalism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To deface or superficially damage public property, or property belonging to another.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        10,000 credits fine, restitution, OR up to 15 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-204
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Vigilantism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To perform the responsibility and duty of a law enforcement officer without approval, bounty hunting license, or a due cause to act.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        10,000 credits fine OR up to 5-20 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-205
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Breaking and Entering
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To trespass into a restricted area, usually by force, with intent to commit a crime within.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        20,000 credits fine OR up to 35 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-206
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Rioting
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To partake in an unauthorized riotous, tumultuous, and disruptive public assembly that refuses to disperse after warning.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        30,000 credits fine OR up to 40 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Grand Felony[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-207
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Abuse of Power
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To intentionally misuse or wrongfully exercise one's own authority, influence, or control, resulting in harm, unjust treatment, or demonstrable loss to another individual.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        50,000 credits fine OR up to 60 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-208
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Grand Larceny
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To unlawfully deprive an individual of personal property(s) rightfully in their possession, without their knowledge or consent, where the value of the property(s) is greater than 25,000 credits.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        75,000 credits fine, restitution, OR up to 60 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-209
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Sabotage
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To maliciously commit an act that, directly or indirectly, hinders the operation of a vessel of its part; or, to commit an act that modifies and/or damages technology or equipment one is not authorized to access.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        100,000 credits fine OR up to 60 minutes of imprisonment.
+      </Box>
+    </ColorBox>
+  </Table>
+
+  \n
+
+  [head=3][color=#FFA500]Capital[/color][/head]
+
+  <Table Columns="4">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Name
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Description
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Punishment
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-210
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Sedition
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To act to overthrow a lawfully established station Overseer or governing body without lawful or legitimate cause.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3c7063">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        TS-211
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Terrorism
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        To maliciously commit an act or take hostages with reckless indifference to life in order to provoke a state of terror, intimidate, or otherwise compel the Sector to act or abstain from acting.
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Execution, mandatory cryogenic imprisonment, or permanent confinement.
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

@@ -39,5 +39,5 @@
   storage:
     back:
     - Magazine45_ACPPistolFMJ
-    - BaseSecurityUplinkRadioDeputy #Mono: Added Deputy uplink
+    #- BaseSecurityUplinkRadioDeputy #Mono: Added Deputy uplink
     - RadioHandheldNF # Mono

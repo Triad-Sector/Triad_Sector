@@ -7,7 +7,7 @@ using Robust.Shared.Input;
 
 namespace Content.Client.UserInterface.Controls
 {
-    [Virtual]
+    // Triad: removed [Virtual] - engine v277 RA0053 forbids it on abstract types (wizden removed it upstream in #43347)
     public abstract class SlotControl : Control, IEntityControl
     {
         public static int DefaultButtonSize = 64;

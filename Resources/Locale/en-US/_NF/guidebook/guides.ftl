@@ -1,6 +1,6 @@
 # Base entries
 guide-entry-nf14 = Frontier Guide
-guide-entry-bank = TSF Central Bank
+guide-entry-bank = Andromeda Central Bank
 guide-entry-piloting = Piloting
 guide-entry-startinggear = Starting Equipment
 guide-entry-hiring = Hiring Crew
@@ -11,7 +11,7 @@ guide-entry-shipyard = Shipyard
 guide-entry-frontier-rules = Server Rules
 
 # Engineering entries
-guide-entry-gas-mining = Gas Mining
+guide-entry-offshore-gas-mining = Offshore Gas Mining
 
 # Security entries
 guide-entry-nfsd-smuggling = Smuggling

@@ -17,132 +17,104 @@
   name: trait-language-SiikMaas-name
   description: trait-language-SiikMaas-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
+  cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
     - SiikMaas
-  languagesUnderstood:
-   - SiikMaas
 
 - type: trait
   id: Foreigner
   name: trait-language-foreigner-name
   description: trait-language-foreigner-desc
   category: LanguageTraits
-  cost: -2
-  components:
-  - type: ForeignerTrait
-    baseTranslator: TranslatorForeigner
+  cost: 0 # Triad: languages are free; Foreigner pays its way by granting extra language slots, not points.
+  # Triad: Foreigner is "you're from elsewhere, so you know other tongues". It raises the LanguageTraits
+  # cap by 2 (tune this dial), so a foreigner can pick more languages than a local would.
+  grantsCategorySlots:
+    LanguageTraits: 2
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: ForeignerTrait
+      baseTranslator: TranslatorForeigner
 
 - type: trait
   id: SignLanguage
   name: trait-language-signlanguage-name
   description: trait-language-signlanguage-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
+  cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  conditions:
+  # Triad: signing needs hands. Block for a DOUBLE arm amputee (both arms gone = no hands); a one-armed
+  # character can still sign. Consistent with the other limb gates (Spinarette, Striking Calluses, etc.).
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
     - Sign
-  languagesUnderstood:
-    - Sign
-
-# Uncomment when loadout points let you actually equip this w/ foreigner.
-#- type: trait
-#  id: SolCommon
-#  name: trait-language-solcommon-name
-#  description: trait-language-solcommon-desc
-#  category: LanguageTraits
-#  cost: 3 # Mono - TSF faction language, needs a trade-off (of having to use foreigner)
-#  components:
-#  - type: LanguageSpeaker
-#  languagesSpoken:
-#    - SolCommon
-#  languagesUnderstood:
-#    - SolCommon
 
 - type: trait
   id: Tradeband
   name: trait-language-tradeband-name
   description: trait-language-tradeband-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
+  cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
     - Tradeband
-  languagesUnderstood:
-    - Tradeband
 
-# Uncomment when loadout points let you actually equip this w/ foreigner.
-#- type: trait
-#  id: Freespeak
-#  name: trait-language-freespeak-name
-#  description: trait-language-freespeak-desc
-#  category: LanguageTraits
-#  cost: 3 # Mono - PDV faction language, needs a trade-off (of having to use foreigner)
-#  components:
-#  - type: LanguageSpeaker
-#  languagesSpoken:
-#    - Freespeak
-#  languagesUnderstood:
-#    - Freespeak
-
-#- type: trait
-#  id: Elyran
-#  name: trait-language-elyran-name
-#  description: trait-language-elyran-desc
-#  category: LanguageTraits
-#  cost: 1
-#  components:
-#  - type: LanguageSpeaker
-#  languagesSpoken:
-#    - Elyran
-#  languagesUnderstood:
-#    - Elyran
-
-# Commented out since it's species-specific.
-# - type: trait
-#   id: ValyrianStandard
-#   name: trait-language-valyrianstandard-name
-#   description: trait-language-valyrianstandard-desc
-#   category: LanguageTraits
-#   cost: 1
-#   functions:
-#     - !type:TraitModifyLanguages
-#       languagesSpoken:
-#         - ValyrianStandard
-#       languagesUnderstood:
-#         - ValyrianStandard
+- type: trait
+  id: Elyran
+  name: trait-language-elyran-name
+  description: trait-language-elyran-desc
+  category: LanguageTraits
+  cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Elyran
 
 - type: trait
   id: NovuNederic
   name: trait-language-novunederic-name
   description: trait-language-novunederic-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
+  cost: 0 # Triad: languages are free; the category cap is the limit, not points.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
     - NovuNederic
-  languagesUnderstood:
-    - NovuNederic
-
-# Commented out since it's species-specific.
-# - type: trait
-#   id: Azaziba
-#   name:
-#   description: trait-language-azaziba-desc
-#   category: LanguageTraits
-#   cost: 1
-#   # requirements:
-#   #   - !type:CharacterSpeciesRequirement
-#   #     species:
-#   #       - Reptilian
-#   functions:
-#     - !type:TraitModifyLanguages
-#       languagesSpoken:
-#         - Azaziba
-#       languagesUnderstood:
-#         - Azaziba

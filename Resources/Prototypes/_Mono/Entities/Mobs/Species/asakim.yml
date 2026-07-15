@@ -100,10 +100,6 @@
       reagents:
       - ReagentId: GastroToxin
         Quantity: 20
-  - type: NightVision
-    isEquipment: false
-    activateSound: null
-    deactivateSound: null
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 1

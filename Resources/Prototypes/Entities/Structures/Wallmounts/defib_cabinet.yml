@@ -50,6 +50,7 @@
         sound:
           collection: MetalGlassBreak
   - type: HLPersistOnShipSave # Triad
+    saveContents: true
 
 - type: entity
   parent: DefibrillatorCabinet

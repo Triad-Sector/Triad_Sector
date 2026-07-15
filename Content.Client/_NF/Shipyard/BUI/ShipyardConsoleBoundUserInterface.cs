@@ -4,35 +4,49 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
-using Content.Client.Shuttles.Save;
+using Content.Client._Triad.Shipyard.Save; // Triad
+using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.XAML;
-using Robust.Shared.IoC;
-using Robust.Shared.Log;
-using System.Linq;
+using Robust.Shared.Configuration;
+using Content.Shared._Triad.CCVar;
+using Content.Shared.Whitelist; // Triad
+using Robust.Client.Player; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IPlayerManager _player = default!; // Triad
     [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
-    private static readonly ISawmill _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
+    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
+
+    private ISawmill _sawmill = default!;
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
+
     public int Balance { get; private set; }
 
     public int? ShipSellValue { get; private set; }
 
+    private BoxContainer? _savedShipsContainer;
     private Button? _loadShipButton;
     private Button? _saveShipButton;
     private ItemList? _savedShipsList;
+    private Label? _selectedShipPriceLabel;
+    private Label? _taxRateLabel;
+
     private int _selectedShipIndex = -1;
 
+    private readonly EntityWhitelistSystem _whitelist; // Triad
 
+    // This should be the same as Content.Server/_Triad/Shipyard/AuthenticatedShipFile/AppraisalKey
+    private const string AppraisalKey = "appraisal";
 
     public ShipyardConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
+        _whitelist = EntMan.System<EntityWhitelistSystem>(); // Triad
+        _sawmill = Logger.GetSawmill("shipyard_console_bui"); // Triad
     }
 
     protected override void Open()
@@ -76,22 +90,28 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             _sawmill.Debug($"InitializeSaveLoadControls: ShipFileManagementSystem has {shipCount} ships");
         }
 
+        _savedShipsContainer = _menu.FindControl<BoxContainer>("SavedShipsContainer");
         _loadShipButton = _menu.FindControl<Button>("LoadShipButton");
         _saveShipButton = _menu.FindControl<Button>("SaveShipButton");
         _savedShipsList = _menu.FindControl<ItemList>("SavedShipsList");
+        _selectedShipPriceLabel = _menu.FindControl<Label>("SelectedShipPriceLabel");
+        _taxRateLabel = _menu.FindControl<Label>("TaxRateLabel");
 
-        if (_loadShipButton != null)
-            _loadShipButton.OnPressed += OnLoadShipButtonPressed;
+        _loadShipButton?.OnPressed += OnLoadShipButtonPressed;
         // Save button already wired via ShipyardConsoleMenu to raise OnSaveShip, which we handle in SaveShip()
         // Avoid wiring a second handler that would incorrectly send a direct save request.
         if (_savedShipsList != null)
+        {
             _savedShipsList.OnItemSelected += OnSavedShipSelected;
+            _savedShipsList.OnItemDeselected += OnSavedShipDeselected;
+        }
 
         // Subscribe to ship updates
         _shipFileManagementSystem.OnShipsUpdated += RefreshSavedShipList;
         _shipFileManagementSystem.OnShipLoaded += OnShipLoaded;
 
         RefreshSavedShipList();
+        RefreshTaxRateLabel();
     }
 
     // Removed duplicate direct save path to prevent sending an incorrect deed UID.
@@ -134,8 +154,29 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     {
         // Store selected index and update Load Ship button state
         _selectedShipIndex = args.ItemIndex;
-        if (_loadShipButton != null)
-            _loadShipButton.Disabled = false;
+        _loadShipButton?.Disabled = false;
+
+        // Set load price label
+        var selectedItem = args.ItemList[_selectedShipIndex];
+        var filePath = (string)selectedItem.Metadata!;
+        var appraisalValue = _shipFileManagementSystem.GetKeyValueFromPath(filePath, AppraisalKey);
+
+        // Round it up 2 significant digits
+        if (int.TryParse(appraisalValue, out var finalValue) && finalValue != 0)
+        {
+            var digits = (int)Math.Floor(Math.Log10(Math.Abs(finalValue)));
+            var factor = Math.Pow(10, digits - 1);
+            finalValue = (int)(Math.Round(finalValue / factor) * factor);
+        }
+
+        _selectedShipPriceLabel?.Text = "$" + finalValue;
+    }
+
+    private void OnSavedShipDeselected(ItemList.ItemListDeselectedEventArgs args)
+    {
+        // Store selected index and update Load Ship button state
+        _selectedShipPriceLabel?.Text = Loc.GetString("shipyard-console-save-appraisal-no-ship-selected-text");
+        _loadShipButton?.Disabled = true;
     }
 
     private void OnShipLoaded(string shipName)
@@ -160,15 +201,30 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             var fileName = ExtractFileNameWithoutExtension(filePath);
             var item = _savedShipsList.AddItem(fileName);
             item.Metadata = filePath;
-            //_sawmill.Info($"Added ship to UI list: {fileName} (path: {filePath})");
         }
 
-        // Enable/disable load button based on available ships
-        if (_loadShipButton != null)
+        // Triad - shipsave blacklist for roles
+        if (EntMan.TryGetComponent(Owner, out ShipyardConsoleComponent? console))
         {
-            _loadShipButton.Disabled = savedShipFiles.Count == 0;
-            _sawmill.Info($"Load button disabled: {_loadShipButton.Disabled}");
+            if (_player.LocalEntity != null)
+            {
+                var isWhitelistValid = _whitelist.CheckBoth(_player.LocalEntity, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
+
+                if (!isWhitelistValid)
+                {
+                    _sawmill.Info("Player is blacklisted from saving ships - hiding save/load UI.");
+                    _saveShipButton?.Visible = false;
+                    _loadShipButton?.Visible = false;
+                    _savedShipsContainer?.Visible = false;
+                }
+            }
         }
+    }
+
+    private void RefreshTaxRateLabel()
+    {
+        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
+        _taxRateLabel?.Text = Loc.GetString("shipyard-console-tax-rate-price-label", ("tax", loadShipPrice));
     }
 
     private static string ExtractFileNameWithoutExtension(string filePath)
@@ -185,7 +241,6 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             fileName = fileName.Substring(0, lastDot);
         return fileName;
     }
-
 
     private void Populate(List<string> availablePrototypes, List<string> unavailablePrototypes, bool freeListings, bool validId)
     {

@@ -172,7 +172,7 @@
 #Start HighCapacity mags
 - type: entity
   id: BaseMagazine57x28mmPistolHighCapacityFMJ
-  name: machine pistol magazine (5.7x28mm FMJ)
+  name: extended pistol magazine (5.7x28mm FMJ) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   abstract: true
   components:
@@ -184,7 +184,7 @@
     whitelist:
       tags:
         - Cartridge57x28mmFMJ
-    capacity: 34
+    capacity: 31  # Triad 31 < 34
   - type: Item
     size: Small
   - type: ContainerContainer
@@ -205,7 +205,7 @@
 
 - type: entity
   id: Magazine57x28mmPistolHighCapacityEmpty
-  name: machine pistol magazine (5.7x28mm any)
+  name: extended pistol magazine (5.7x28mm any) # Triad
   suffix: empty
   parent: BaseMagazine57x28mmPistolHighCapacityFMJ
   components:
@@ -220,7 +220,7 @@
 
 - type: entity
   id: Magazine57x28mmPistolHighCapacityFMJ
-  name: machine pistol magazine (5.7x28mm FMJ)
+  name: extended pistol magazine (5.7x28mm FMJ) # Triad
   parent: BaseMagazine57x28mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -234,7 +234,7 @@
 
 - type: entity
   id: Magazine57x28mmPistolHighCapacityPractice
-  name: machine pistol magazine (5.7x28mm practice)
+  name: extended pistol magazine (5.7x28mm practice) # Triad
   parent: BaseMagazine57x28mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -248,7 +248,7 @@
 
 - type: entity
   id: Magazine57x28mmPistolHighCapacityRubber
-  name: machine pistol magazine (5.7x28mm rubber)
+  name: extended pistol magazine (5.7x28mm rubber) # Triad
   parent: BaseMagazine57x28mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider

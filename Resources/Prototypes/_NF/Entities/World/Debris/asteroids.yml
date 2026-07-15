@@ -32,37 +32,24 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.5
-          min: 1
-          max: 2
+          prob: 0.4
+          min: 2
+          max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositOxygen
+        #Triad Change start
+        - id: GasDepositBaseAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositNitrogen
+        - id: GasDepositBaseAsteroidLarge
           orGroup: deposit
-        - id: GasDepositCarbonDioxide
+        - id: GasDepositBaseAsteroid
           orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        - id: GasDepositBaseAsteroidSmall
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
+        - id: GasDepositBaseAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
-        - id: GasDepositAir
-          orGroup: deposit
-        - id: GasDepositMuddleEven
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
+        #Triad change stop
+
 # endregion Rock Table
 
 # region Snow Table
@@ -97,41 +84,23 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.66
-          min: 1
-          max: 4
+          prob: 0.4
+          min: 2
+          max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositOxygen
+        #Triad Change start
+        - id: GasDepositIceAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositOxygenLarge
+        - id: GasDepositIceAsteroidLarge
           orGroup: deposit
-        - id: GasDepositNitrogen
+        - id: GasDepositIceAsteroid
           orGroup: deposit
-        - id: GasDepositNitrogenLarge
+        - id: GasDepositIceAsteroidSmall
           orGroup: deposit
-        - id: GasDepositAir
+        - id: GasDepositIceAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositAirLarge
-          orGroup: deposit
-        - id: GasDepositWaterVaporVeryLarge
-          orGroup: deposit
-        - id: GasDepositWaterVaporLarge
-          orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
-          orGroup: deposit
-        - id: GasDepositPlasmaSmall
-          orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion Snow Table
 
 # region Andesite Table
@@ -166,31 +135,23 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.33
-          min: 1
-          max: 1
+          prob: 0.4
+          min: 2
+          max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositNitrousOxide
+        #Triad Change start
+        - id: GasDepositAndesiteAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositCarbonDioxide
+        - id: GasDepositAndesiteAsteroidLarge
           orGroup: deposit
-        - id: GasDepositAmmonia
+        - id: GasDepositAndesiteAsteroid
           orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        - id: GasDepositAndesiteAsteroidSmall
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
+        - id: GasDepositAndesiteAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion Andesite Table
 
 # region Basalt Table
@@ -225,25 +186,23 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.5
-          min: 4
+          prob: 0.4
+          min: 2
           max: 6
           canBeAirSealed: true
         entries:
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        #Triad Change start
+        - id: GasDepositBasaltAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
+        - id: GasDepositBasaltAsteroidLarge
           orGroup: deposit
-        - id: GasDepositPlasma
+        - id: GasDepositBasaltAsteroid
           orGroup: deposit
-        - id: GasDepositPlasmaLarge
+        - id: GasDepositBasaltAsteroidSmall
           orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
+        - id: GasDepositBasaltAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion Basalt Table
 
 # region Sand Table
@@ -278,31 +237,23 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.5
+          prob: 0.4
           min: 2
-          max: 4
+          max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositCarbonDioxideSmall
+        #Triad Change start
+        - id: GasDepositSandAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositAmmonia
+        - id: GasDepositSandAsteroidLarge
           orGroup: deposit
-        - id: GasDepositNitrogenLarge
+        - id: GasDepositSandAsteroid
           orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        - id: GasDepositSandAsteroidSmall
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
+        - id: GasDepositSandAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion Sand Table
 
 # region Chromite Table
@@ -337,33 +288,23 @@
     - type: RandomEntityPopulator
       entries:
       - params:
-          prob: 0.6
-          min: 1
-          max: 1
+          prob: 0.4
+          min: 2
+          max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositOxygenVeryLarge
+        #Triad Change start
+        - id: GasDepositChromiteAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositMuddleEvenVeryLarge
+        - id: GasDepositChromiteAsteroidLarge
           orGroup: deposit
-        - id: GasDepositNitrogenVeryLarge
+        - id: GasDepositChromiteAsteroid
           orGroup: deposit
-        - id: GasDepositAirVeryLarge
+        - id: GasDepositChromiteAsteroidSmall
           orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        - id: GasDepositChromiteAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
-          orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion Chromite Table
 
 # region AsteroidRock Table
@@ -403,28 +344,18 @@
           max: 6
           canBeAirSealed: true
         entries:
-        - id: GasDepositNitrousOxideSmall
+        #Triad Change start
+        - id: GasDepositRockAsteroidVeryLarge
           orGroup: deposit
-        - id: GasDepositMuddleEvenSmall
+        - id: GasDepositRockAsteroidLarge
           orGroup: deposit
-        - id: GasDepositCarbonDioxideSmall
+        - id: GasDepositRockAsteroid
           orGroup: deposit
-        - id: GasDepositAirSmall
+        - id: GasDepositRockAsteroidSmall
           orGroup: deposit
-          # Mono Changes Start
-        - id: GasDepositPlasmaVerySmall
+        - id: GasDepositRockAsteroidVerySmall
           orGroup: deposit
-        - id: GasDepositPlasmaSmall
-          orGroup: deposit
-        - id: GasDepositPlasma
-          orGroup: deposit
-        - id: GasDepositPlasmaLarge
-          orGroup: deposit
-        - id: GasDepositPlasmaVeryLarge
-          orGroup: deposit
-        - id: GasDepositMuddlePlasma
-          orGroup: deposit
-          # Mono Changes End
+        #Triad change stop
 # endregion AsteroidRock Table
 
 # region Scrap Table

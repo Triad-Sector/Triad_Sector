@@ -1,5 +1,6 @@
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.Components; // Triad
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
@@ -12,7 +13,6 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
-using Content.Shared.RPD.Components; // Triad
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
@@ -177,6 +177,7 @@ public class RCDSystem : EntitySystem
         var user = args.User;
         var location = args.ClickLocation;
         var prototype = _protoManager.Index(component.ProtoId);
+        var target = args.Target; // Triad: reassigned below so the RPD can reach pipes hidden under floor tiles.
 
         // Initial validity checks
         if (!location.IsValid(EntityManager))
@@ -190,7 +191,18 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
+        // Triad: in Deconstruct mode, hand off to a sibling (RPDSystem) to optionally redirect the target, e.g. to
+        // a covered pipe under a floor tile on the operator's aimed layer. Plain RCD has no handler, so its target
+        // is left untouched. RPDSystem owns the "already deconstructable, don't redirect" decision.
+        if (prototype.Mode == RcdMode.Deconstruct)
+        {
+            var resolve = new RCDDeconstructTargetResolveEvent(mapGridData.Value, target);
+            RaiseLocalEvent(uid, ref resolve);
+            target = resolve.Target;
+        }
+        // End Triad
+
+        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
                 tilePlacementDirection: component.ConstructionDirection))
             return;
 
@@ -210,9 +222,9 @@ public class RCDSystem : EntitySystem
             case RcdMode.Deconstruct:
 
                 // Deconstructing an object
-                if (args.Target != null)
+                if (target != null)
                 {
-                    if (TryComp<RCDDeconstructableComponent>(args.Target, out var destructible))
+                    if (TryComp<RCDDeconstructableComponent>(target, out var destructible))
                     {
                         cost = destructible.Cost;
                         delay = destructible.Delay;
@@ -267,7 +279,7 @@ public class RCDSystem : EntitySystem
             cost,
             EntityManager.GetNetEntity(effect));
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: args.Target, used: uid) // Mono - add delay multiplier.
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: target, used: uid) // Mono - add delay multiplier.
         {
             BreakOnDamage = true,
             BreakOnHandChange = true,
@@ -416,7 +428,7 @@ public class RCDSystem : EntitySystem
         return false;
     }
 
-    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
+    public bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
         Direction? tilePlacementDirection = null)
     {
         var prototype = _protoManager.Index(component.ProtoId);
@@ -483,11 +495,23 @@ public class RCDSystem : EntitySystem
         _intersectingEntities.Clear();
         _lookup.GetLocalEntitiesIntersecting(mapGridData.GridUid, mapGridData.Position, _intersectingEntities, -0.05f, LookupFlags.Uncontained);
 
+        // Triad: layer-capable pipe recipes coexist across layers, so the base-proto identity guard must not reject
+        // them. The layer-aware verdict comes from RCDConstructionAttemptEvent below (RPD) and the PipeRestrictOverlap
+        // backstop. Knowable from the recipe + base proto alone, with no reference to RPDComponent.
+        // NB: today only the RPD has layer-capable (pipe) recipes, so the RCDConstructionAttemptEvent veto always
+        // fires for these. If a non-RPD tool ever gets a layer-capable recipe it loses that veto and leans solely on
+        // the PipeRestrictOverlap anchor-time backstop, which only catches same-(direction, layer) overlap.
+        var layerCapable = !prototype.NoLayers
+            && prototype.Prototype != null
+            && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
+            && baseProto.TryGetComponent<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+        // End Triad
+
         foreach (var ent in _intersectingEntities)
         {
             // space-wizards/space-station-14#42556 — block spamming the same entity on one tile (e.g. lights);
             // AllowMultiDirection permits one per cardinal direction (directional windows, diagonals, etc.).
-            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            if (!layerCapable && prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype) // Triad: skip identity guard for layer-capable pipes
             {
                 var isIdentical = true;
                 if (prototype.AllowMultiDirection)
@@ -539,6 +563,14 @@ public class RCDSystem : EntitySystem
             }
         }
 
+        // Triad: let a sibling system (RPD) apply layer-aware conflict rules RCD does not own. Plain RCD has no
+        // handler, so this is a no-op for non-RPD tools.
+        var constructAttempt = new RCDConstructionAttemptEvent(mapGridData, prototype, tilePlacementDirection ?? component.ConstructionDirection, user, popMsgs);
+        RaiseLocalEvent(uid, ref constructAttempt);
+        if (constructAttempt.Cancelled)
+            return false;
+        // End Triad
+
         return true;
     }
 
@@ -588,12 +620,10 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // Triad: RPD tools share this gate; admit a target if either the generic Deconstructable flag is on,
-            // or the tool is an RPD and the target opted into RpdDeconstructable. RPDSystem's earlier
-            // RCDDeconstructAttemptEvent handler has already enforced the RPD-only whitelist semantics.
-            var hasRpd = HasComp<RPDComponent>(uid);
+            // Triad: admit a target if the generic Deconstructable flag is on, or a sibling handler admitted it
+            // earlier via RCDDeconstructAttemptEvent (the RPD admits its own whitelist). RCD stays RPD-agnostic.
             if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible)
-                || !(deconstructible.Deconstructable || (hasRpd && deconstructible.RpdDeconstructable)))
+                || !(deconstructible.Deconstructable || attempt.Admitted))
             // End Triad
             {
                 if (popMsgs)
@@ -648,24 +678,38 @@ public class RCDSystem : EntitySystem
                 if (string.IsNullOrEmpty(spawnProto))
                     return;
 
-                var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // Triad: the recipe rotation must ride into the spawn call. Pipe-bearing prototypes anchor during
+                // entity startup and PipeRestrictOverlap judges their node directions right there; rotating after
+                // Spawn() meant that check always ran south-facing, falsely unanchoring legal rotated placements
+                // (e.g. crossing two same-layer straight pipes).
+                var rotation = prototype.Rotation switch
+                {
+                    RcdRotation.Fixed => Angle.Zero,
+                    RcdRotation.Camera => Transform(uid).LocalRotation,
+                    RcdRotation.User => direction.ToAngle(),
+                    _ => Angle.Zero,
+                };
+
+                var ent = SpawnAttachedTo(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position), rotation: rotation);
 
                 var spawned = new RCDObjectSpawnedEvent(ent, prototype);
                 RaiseLocalEvent(uid, ref spawned);
-                // End Triad
 
-                switch (prototype.Rotation)
-                {
-                    case RcdRotation.Fixed:
-                        Transform(ent).LocalRotation = Angle.Zero;
-                        break;
-                    case RcdRotation.Camera:
-                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
-                        break;
-                    case RcdRotation.User:
-                        Transform(ent).LocalRotation = direction.ToAngle();
-                        break;
-                }
+                // Triad: rotation now applied at spawn (see above); this post-spawn switch ran after the
+                // anchor-time overlap check had already judged the entity facing south.
+                // switch (prototype.Rotation)
+                // {
+                //     case RcdRotation.Fixed:
+                //         Transform(ent).LocalRotation = Angle.Zero;
+                //         break;
+                //     case RcdRotation.Camera:
+                //         Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                //         break;
+                //     case RcdRotation.User:
+                //         Transform(ent).LocalRotation = direction.ToAngle();
+                //         break;
+                // }
+                // End Triad
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {mapGridData.Position} on grid {mapGridData.GridUid}");
                 break;

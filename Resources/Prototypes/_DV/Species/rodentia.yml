@@ -16,6 +16,8 @@
 - type: speciesBaseSprites
   id: MobRodentiaSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobRodentiaHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
@@ -50,10 +52,10 @@
       required: true
       defaultMarkings: [ RodentiaTailDefault ]
     Legs:
-      points: 4
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
-      points: 4
+      points: 8 # Triad - Increased to 8.
       required: false
     Snout:
       points: 1
@@ -67,14 +69,14 @@
       required: false
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:
-      points: 2
+      points: 8 # Triad - Increased to 8.
       required: false
 
 - type: humanoidBaseSprite

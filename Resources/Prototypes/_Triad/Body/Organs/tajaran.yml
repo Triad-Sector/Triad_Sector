@@ -1,0 +1,18 @@
+- type: entity
+  id: OrganTajaranEyes
+  parent: OrganHumanEyes
+  suffix: Tajaran
+  description: "Eyes of a Tajaran. They have cat-like vision which allows them to see in low light conditions."
+  components:
+  - type: Organ
+    onAdd:
+    - type: NightVision # Cat eyes
+      relayOverlay: false
+      goggleEffect: true
+      viewCircleRadius: 1080
+      viewCircleCount: 1
+      action: ActionToggleNightVision
+      phosphorColor: "#919191" # Grey cat vision
+      lightingColor: "#3a3a3a"
+      activateSound: null
+      deactivateSound: null

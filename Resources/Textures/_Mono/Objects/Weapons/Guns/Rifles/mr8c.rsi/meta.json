@@ -1,10 +1,10 @@
 {
     "version": 1,
     "license": "CC-BY-NC-SA-3.0",
-    "copyright": "Made by _starch_ (discord) for Monolith.",
+    "copyright": "Made by _starch_ (discord) for Monolith, Sprite Size readjusted by Wuffindy",
     "size": {
         "x": 48,
-        "y": 48
+        "y": 32
     },
     "states": [
         {

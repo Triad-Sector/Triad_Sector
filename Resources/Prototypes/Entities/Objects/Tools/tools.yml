@@ -473,13 +473,10 @@
         Blunt: 12
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
+  # Triad: matches the RCD (Normal, default 2x2 shape, floating icon). Huge was rejected by the Frontier
+  # backpack/ship-stash maxItemSize cap, and the 64x64 storage sprite overflowed the slot.
   - type: Item
-    size: Huge
-    storedSprite:
-      state: storage
-      sprite: Objects/Tools/rpd_storage_64x.rsi
-    shape:
-    - 0,0,3,1
+    size: Normal
   - type: RCD
     availablePrototypes:
     - PipeFourway
@@ -509,6 +506,18 @@
     - SensorPipe
     - Deconstruct
   - type: RPD
+  # Triad: built-in short-range t-ray so the operator sees the subfloor pipes they're laying or pulling. The reveal
+  # whitelist limits it to atmos pipe infrastructure (AtmosPipeLayers covers pipes, vents, pumps, valves), so power
+  # cables stay hidden. Shorter range than the standalone t-ray's 4.
+  - type: TrayScanner
+    enabled: true
+    canToggle: false
+    range: 2
+    revealWhitelist:
+      components:
+      - AtmosPipeLayers
+  # Triad: lets the operator deconstruct the pipes the built-in t-ray reveals under floor tiles.
+  - type: SubfloorReach
   - type: LimitedCharges
     maxCharges: 45
   - type: Sprite
@@ -729,3 +738,4 @@
   - type: Construction
     graph: WoodenRollingPin
     node: rollingpin
+  - type: HLPersistOnShipSave #Triad

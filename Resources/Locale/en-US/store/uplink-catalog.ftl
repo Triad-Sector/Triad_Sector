@@ -184,7 +184,7 @@ uplink-storage-implanter-name = Storage Implanter
 uplink-storage-implanter-desc = Hide goodies inside of yourself with new bluespace technology!
 
 uplink-freedom-implanter-name = Freedom Implanter
-uplink-freedom-implanter-desc = Get away from those nasty TSFMC officers with this implant!
+uplink-freedom-implanter-desc = Get away from those nasty NT dogs with this implant!
 
 uplink-scram-implanter-name = Scram Implanter
 uplink-scram-implanter-desc = An implant which teleports you within a large radius. Attempts to teleport you onto an unobstructed tile. May sometimes fail to do so. Life insurance not included.

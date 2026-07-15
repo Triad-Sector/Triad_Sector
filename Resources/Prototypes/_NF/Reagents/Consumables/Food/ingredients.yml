@@ -15,7 +15,7 @@
       - !type:SatiateThirst
         factor: -0.25
 
-- type: reagent
+- type: reagent # Triad TODO: Reagents are not currently sanitized by our shipsaves, so removing this results in an "unknown reagent" which will crash someone on consumption/metabolizing. If we sanatize specific reagents on shipload, this can be removed if we add it to that.
   id: OilVegetable
   name: reagent-name-oil-vegetable
   group: Foods

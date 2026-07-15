@@ -1,0 +1,59 @@
+- type: job
+  id: TdfMedic
+  name: job-name-tdf-medic
+  description: job-description-tdf-medic
+  playTimeTracker: JobTdfMedic
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # 5 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 18000 # 5 hours
+  alternateRequirementSets:
+    longerPlaytimeNoMedical:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # 5 hours
+  startingGear: TdfMedicGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfMedic
+  supervisors: job-supervisors-tdf-warden
+  weight: 125
+  displayWeight: 35
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - GeneralTdfMedicAccess
+  ranks:
+    RankEnforcer: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
+    - type: SurgerySpeedModifier
+      SpeedModifier: 1.65
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfMedicGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+  storage:
+    back:
+    - EncryptionKeyMedical
+    - Magazine45_ACPPistolFMJ
+    - BaseSecurityUplinkRadioEnforcer
+    - RadioHandheldNF

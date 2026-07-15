@@ -36,7 +36,9 @@ namespace Content.Client.PDA
 
         private string _balance = Loc.GetString("comp-pda-ui-unknown"); // Frontier
         private string _shuttleDeed = Loc.GetString("comp-pda-ui-unknown"); // Frontier
+        private string _currentDate = Loc.GetString("comp-pda-ui-unknown"); // DeltaV - PDA date
 
+        private TimeSpan? _roundEndTime = null; // Frontier
         private int _currentView;
 
         public event Action<EntityUid>? OnProgramItemPressed;
@@ -140,8 +142,12 @@ namespace Content.Client.PDA
                 _clipboard.SetText(_instructions);
             };
 
-
-
+            // Begin DeltaV additions
+            CurrentDateButton.OnPressed += _ =>
+            {
+                _clipboard.SetText(_currentDate);
+            };
+            // End DeltaV additions
 
             HideAllViews();
             ToHomeScreen();
@@ -205,6 +211,25 @@ namespace Content.Client.PDA
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
 
+            // Frontier
+            if (state.RoundEndTime is not null)
+            {
+                // Synchronise ticking of the seconds place of the shift time and the roundend time
+                _roundEndTime = TimeSpan.FromSeconds(Math.Floor(state.RoundEndTime.Value.TotalSeconds))
+                                        .Add(TimeSpan.FromMilliseconds(_gameTicker.RoundStartTimeSpan.Milliseconds));
+
+                var remainingTime = _roundEndTime.Value.Subtract(_gameTiming.CurTime);
+                RemainingTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-remaining-time",
+                    ("time", remainingTime.ToString("hh\\:mm\\:ss"))));
+            }
+            else
+            {
+                _roundEndTime = null;
+            }
+
+            RemainingTimeLabel.Visible = _roundEndTime is not null;
+            // End Frontier
+
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
             var alertLevelKey = alertLevel != null ? $"alert-level-{alertLevel}" : "alert-level-unknown";
@@ -220,6 +245,14 @@ namespace Content.Client.PDA
                 "comp-pda-ui-station-alert-level-instructions",
                 ("instructions", _instructions))
             );
+            // Begin DeltaV additions
+            if (state.PdaOwnerInfo.CurrentDate is { } curDate)
+                _currentDate = curDate.ToString("dd MMMM yyyy");
+                CurrentDateLabel.SetMarkup(Loc.GetString(
+                    "comp-pda-ui-current-date",
+                    ("date", _currentDate)
+                ));
+            // End DeltaV additions
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 
@@ -378,6 +411,19 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
+
+            // Frontier
+            if (_roundEndTime is not null)
+            {
+                var remainingTime = _roundEndTime.Value.Subtract(_gameTiming.CurTime);
+                RemainingTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-remaining-time",
+                    ("time", remainingTime.ToString("hh\\:mm\\:ss"))));
+                if (remainingTime < TimeSpan.Zero){
+                    RemainingTimeLabel.Visible = false;
+                    _roundEndTime = null;
+                }
+            }
+            // End Frontier
         }
     }
 }
