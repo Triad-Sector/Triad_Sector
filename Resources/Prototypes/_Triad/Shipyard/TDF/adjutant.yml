@@ -10,7 +10,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/adjutant.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Adjutant
   mapName: 'Adjutant'
-  mapPath: /Maps/_Triad/Shuttles/Tdf/adjutant.yml
+  mapPath: /Maps/_Triad/Shuttles/TDF/adjutant.yml
   minPlayers: 0
   stations:
     Adjutant:

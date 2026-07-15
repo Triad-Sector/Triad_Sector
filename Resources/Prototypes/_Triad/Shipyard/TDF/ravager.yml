@@ -13,7 +13,7 @@
   group: Security
   access: Security # Shouldn't be buyable with sec voucher.
   mapchecker_group_override: Security
-  shuttlePath: /Maps/_Triad/Shuttles/Tdf/ravager.yml
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/ravager.yml
   guidebookPage: Null
   class:
   - Science
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Ravager
   mapName: 'Ravager'
-  mapPath: /Maps/_Triad/Shuttles/Tdf/ravager.yml
+  mapPath: /Maps/_Triad/Shuttles/TDF/ravager.yml
   minPlayers: 0
   stations:
     Ravager:

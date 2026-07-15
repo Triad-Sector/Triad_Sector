@@ -2602,3 +2602,56 @@ Entries:
   id: 2398
   time: '2026-07-14T06:17:24.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/344
+- author: satirically
+  changes:
+    - type: Add
+      message: Nosske-Eien is starting to make a presence again.
+  id: 2399
+  time: '2026-07-14T14:34:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/354
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Auric to version 1.2
+    - type: Fix
+      message: Ivy burning to death on Venmar
+  id: 2400
+  time: '2026-07-14T15:21:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/357
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: TDF Ships, Folder Structure.
+  id: 2401
+  time: '2026-07-14T16:23:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/358
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed station records computer filters causing your ship to be unable to
+        be saved.
+  id: 2402
+  time: '2026-07-14T19:58:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/361
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added night vision options under the accessibility tab. You can now
+        change the color of the night vision tint.
+    - type: Tweak
+      message: >-
+        Made tajaran night vision grey, and removed the circle radius around the
+        screen.
+    - type: Tweak
+      message: >-
+        Made shadekin vision slightly brighter, removed the circle radius around
+        the screen.
+    - type: Remove
+      message: Removed the stupid ass night vision blur.
+    - type: Add
+      message: Added back the sound for toggling Night vision goggles.
+  id: 2403
+  time: '2026-07-14T22:46:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/359

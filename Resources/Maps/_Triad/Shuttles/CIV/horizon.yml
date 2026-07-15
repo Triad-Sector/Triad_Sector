@@ -43,8 +43,6 @@ entities:
     components:
     - type: MetaData
       name: Horizon
-    - type: Transform
-      parent: invalid
     - type: MapGrid
       chunks:
         1,0:

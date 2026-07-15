@@ -764,7 +764,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader # Triad, added CMO/DOC (in case AA removal) & STC access
-    access: [["HeadOfPersonnel"], ["HeadOfSecurity"], ["ChiefMedicalOfficer"],["StationTrafficController"]]
+    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["ChiefMedicalOfficer"],["StationTrafficController"],["TdfWarden"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
     global: true #SR WILL NOT BE IGNORED

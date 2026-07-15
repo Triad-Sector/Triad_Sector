@@ -3,7 +3,8 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Content.Shared.Popups; // Triad
-using Content.Shared.Whitelist; // Triad
+using Content.Shared.Whitelist;
+using Robust.Shared.Audio.Systems; // Triad
 
 namespace Content.Shared.NightVision;
 
@@ -14,9 +15,11 @@ namespace Content.Shared.NightVision;
 public abstract partial class SharedNightVisionSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!; // Triad
     [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
     [Dependency] private InventorySystem _inventory = default!; // Triad
     [Dependency] private SharedPopupSystem _popup = default!; // Triad
+
     public override void Initialize()
     {
         SubscribeLocalEvent<NightVisionComponent, ComponentStartup>(OnStartup);
@@ -62,7 +65,8 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
             return;
 
         ent.Comp.Enabled = false; // mono
-        RefreshOverlay(ent);
+        Dirty(ent); // triad
+        RefreshOverlay(args.Equipee);
     }
     // Triad start
     private void OnCompDidEquip(Entity<NightVisionComponent> ent, ref DidEquipEvent args)
@@ -118,7 +122,7 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
     /// <param name="ent">The night vision to toggle.</param>
     /// <param name="enabled">Whether to enable or disable.</param>
     /// <param name="viewer">Viewer of the night vision, used to refresh their overlay. If null, assumes the night vision entity is the viewer.</param>
-    public void SetEnabled(Entity<NightVisionComponent?> ent, bool enabled, EntityUid? viewer = null)
+    public void SetEnabled(Entity<NightVisionComponent?> ent, bool enabled, EntityUid? viewer = null, bool playSound = true)
     {
         if (!Resolve(ent, ref ent.Comp, false))
             return;
@@ -128,6 +132,14 @@ public abstract partial class SharedNightVisionSystem : EntitySystem
 
         ent.Comp.Enabled = enabled;
         Dirty(ent);
+
+        // Triad start - nvg sound
+        var soundToPlay = enabled
+            ? ent.Comp.ActivateSound
+            : ent.Comp.DeactivateSound;
+        if (playSound)
+            _audio.PlayLocal(soundToPlay, ent, viewer);
+        // Triad end
 
         RefreshOverlay(viewer ?? ent);
     }

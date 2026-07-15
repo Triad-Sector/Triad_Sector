@@ -170,7 +170,7 @@
   description: nosske-eien-rnd-description
   color: "#9573AF"
   image: /Textures/_Mono/Companies/ne_rd.png
-  disabled: true # Triad
+  disabled: false
 
 - type: company
   id: blackhawkpmc
