@@ -2677,3 +2677,10 @@ Entries:
   id: 2405
   time: '2026-07-16T13:58:24.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/346
+- author: satirically
+  changes:
+    - type: Remove
+      message: Removed Emu fork from tech tree and its respective fab
+  id: 2406
+  time: '2026-07-16T15:14:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/367

@@ -49,7 +49,7 @@
     warningAnnouncement: station-event-bluespace-tdf-vault-warning-announcement
     endAnnouncement: station-event-bluespace-tdf-vault-end-announcement
     earliestStart: 60
-    maximumPlayers: 0
+    maximumPlayers: 30
     weight: 5
     duration: 590
     maxDuration: 780
