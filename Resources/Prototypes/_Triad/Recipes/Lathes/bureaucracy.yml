@@ -214,6 +214,7 @@
   result: BoxFolderClipboard
   materials:
     Wood: 100
+    Paper: 100 # TODO: Refactor clipboards upstream to have a filled variant instead of starting filled.
 
 ## Pens
 - type: latheRecipe
