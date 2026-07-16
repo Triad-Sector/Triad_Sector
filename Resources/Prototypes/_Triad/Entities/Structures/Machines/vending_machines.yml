@@ -1,5 +1,5 @@
 - type: entity
-  parent: VendingMachine # Mono - removed BaseStructureDisableAnchoring
+  parent: [VendingMachine, BaseClass2AShipContrabandSilent] # Mono - removed BaseStructureDisableAnchoring
   id: VendingMachineTdfTech
   name: TDF-Tek
   description: A vending machine for TDF tech!
@@ -28,7 +28,7 @@
     access: [["Security"]]
 
 - type: entity
-  parent: VendingMachine # Mono - removed BaseStructureDisableAnchoring
+  parent: [VendingMachine, BaseClass2AShipContrabandSilent] # Mono - removed BaseStructureDisableAnchoring
   id: VendingMachineTdfDrobe
   name: TDFDrobe
   description: A vending machine for TDF clothing!

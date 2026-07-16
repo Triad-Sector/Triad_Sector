@@ -1,5 +1,5 @@
 - type: entity
-  parent: ThrusterLargeNfsd
+  parent: [ThrusterLargeNfsd, BaseClass2AShipContrabandSilent]
   id: ThrusterLargeTdf
   suffix: TDF
   components:
@@ -7,7 +7,7 @@
     sprite: _Triad/Structure/Shuttles/thrustertdf_large.rsi
 
 - type: entity
-  parent: ThrusterNfsd
+  parent: [ThrusterNfsd, BaseClass2AShipContrabandSilent]
   id: ThrusterTdf
   suffix: TDF
   components:

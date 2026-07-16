@@ -2655,3 +2655,10 @@ Entries:
   id: 2403
   time: '2026-07-14T22:46:18.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/359
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship saving contraband proto for TDF and and it's silent one
+  id: 2404
+  time: '2026-07-16T12:45:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/322

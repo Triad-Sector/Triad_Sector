@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingNeckBase
+  parent: [ClothingNeckBase, BaseClass2AShipContrabandSilent]
   id: ClothingNeckCloakTdfChiefEnforcer
   name: chief enforcer's cloak
   description: An exquisite cloak fitting for those who have the leadership skills to serve as a Chief Enforcer. The shield of the Triad Defense Force is woven into the back of this cloak.

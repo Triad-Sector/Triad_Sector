@@ -103,7 +103,7 @@
 
 - type: entity
   name: TDF MR-8T DMR (8x65mm SKR)
-  parent: [BaseFactionGearTDFT2, WeaponRifleMR8C]
+  parent: [BaseFactionGearTDFT2, WeaponRifleMR8C, BaseClass2AShipContraband]
   id: WeaponRifleMR8T
   description: An expensive TDF-modified version of the solarian republic's MR-8 DMR. It comes with a wooden grip, stock, a sleeker scope, and an improved barrel. Chambered in 8x65mm SKR. A label on the side reads "TRIAD DEFENSE FORCE".
   components:
