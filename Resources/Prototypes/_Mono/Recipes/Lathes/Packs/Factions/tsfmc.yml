@@ -1,38 +1,35 @@
-# Triad : Commented because not used
-# - type: latheRecipePack
-#   id: MonoTSFGearDynamic
-#   recipes:
-#   - ClothingOuterHardsuitM82cTsf
-#   - ClothingOuterHardsuitM82bTsf
-#   - ClothingOuterHardsuitM86Tsf
-#   - ClothingOuterHardsuitM92XTsf
-#   - ClothingEyesNightVisionGoggles
-#   - ClothingUniformTsfmcMoppTsf
-#   - ClothingHandsGlovesMoppTsf
+- type: latheRecipePack
+  id: MonoTSFGearDynamic
+  recipes:
+  - ClothingOuterHardsuitM82cTsf
+  - ClothingOuterHardsuitM82bTsf
+  - ClothingOuterHardsuitM86Tsf
+  - ClothingOuterHardsuitM92XTsf
+  - ClothingEyesNightVisionGoggles
+  - ClothingUniformTsfmcMoppTsf
+  - ClothingHandsGlovesMoppTsf
 
-# Triad : Commented because not used
-# - type: latheRecipePack
-#   id: MonoTSFWeaponsDynamicMelee
-#   recipes:
-#   - EnergyShieldTSF
-#   - CrowbarPocketTSF
+- type: latheRecipePack
+  id: MonoTSFWeaponsDynamicMelee
+  recipes:
+  - EnergyShieldTSF
+  - CrowbarPocketTSF
 
-# Triad : Commented because not used
-# - type: latheRecipePack
-#   id: MonoTSFWeaponsDynamicRanged
-#   recipes:
-#   - WeaponRifleLecterTSF
-#   - WeaponRifleVulcanTSF
-#   - WeaponSubMachineGunDrozdTSF
-#   - WeaponRifleMR3CTSF
-#   - WeaponRifleAnnieTSF
+- type: latheRecipePack
+  id: MonoTSFWeaponsDynamicRanged
+  recipes:
+  - WeaponRifleLecterTSF
+  - WeaponRifleVulcanTSF
+  - WeaponSubMachineGunDrozdTSF
+  - WeaponRifleMR3CTSF
+  - WeaponRifleAnnieTSF
   #- WeaponLMGMR8BTSF
-#   - WeaponRifleMR8CTSF
-#   - WeaponRifleXlr556Tsf
-#   - WeaponLMGGrizzlyTSF
-#   - WeaponDEWCalico
-#   - WeaponDEWSmilodon
-#   - WeaponLauncherTSFOsiris
+  - WeaponRifleMR8CTSF
+  - WeaponRifleXlr556Tsf
+  - WeaponLMGGrizzlyTSF
+  - WeaponDEWCalico
+  - WeaponDEWSmilodon
+  - WeaponLauncherTSFOsiris
 
 #- type: latheRecipePack
 #  id: MonoTSFVouchersDynamic
@@ -40,16 +37,15 @@
 #  - FlyssaVoucherTSF
 #  - AltairVoucherTSF
 
-# Triad : Commented because not used
-# - type: latheRecipePack
-#   id: MonoTSFMiscDynamic
-#   recipes:
-#   - ForensicsScannerTSF
-#   - DemagTSF
-#   - SutureTSF
-#   - MeshTSF
-#   - NanolaminateFoamGrenadeTSF
-#   - PortableRecharger
-#   - MotionDetectorTSF
-#   - BasicBorgCombatModuleTSF
-#   - AdvancedBorgCombatModuleTSF
+- type: latheRecipePack
+  id: MonoTSFMiscDynamic
+  recipes:
+  - ForensicsScannerTSF
+  - DemagTSF
+  - SutureTSF
+  - MeshTSF
+  - NanolaminateFoamGrenadeTSF
+  - PortableRecharger
+  - MotionDetectorTSF
+  - BasicBorgCombatModuleTSF
+  - AdvancedBorgCombatModuleTSF

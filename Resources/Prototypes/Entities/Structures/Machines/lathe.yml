@@ -504,9 +504,9 @@
     - WeaponMechCombatArsenal
     - SmartGun # Goobstation
     # Mono start
-    # - MonoTSFWeaponsDynamicMelee
-    # - MonoTSFWeaponsDynamicRanged
-    # - MonoTSFMiscDynamic
+    - MonoTSFWeaponsDynamicMelee
+    - MonoTSFWeaponsDynamicRanged
+    - MonoTSFMiscDynamic
     - MonoRogueWeaponsDynamicMelee
     - MonoRogueWeaponsDynamicRanged
     - MonoRogueMiscDynamic

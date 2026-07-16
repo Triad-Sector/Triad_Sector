@@ -35,11 +35,11 @@
     - MonoRogueGearDynamic
     - MonoRogueGearProDynamic
     # TSF start
-    # - MonoTSFWeaponsDynamicMelee
-    # - MonoTSFWeaponsDynamicRanged
+    - MonoTSFWeaponsDynamicMelee
+    - MonoTSFWeaponsDynamicRanged
     #- MonoTSFVouchersDynamic Triad
-    # - MonoTSFMiscDynamic
-    # - MonoTSFGearDynamic
+    - MonoTSFMiscDynamic
+    - MonoTSFGearDynamic
     # USSP start
     - MonoUSSPVouchersDynamic
     - MonoUSSPArmorDynamic
