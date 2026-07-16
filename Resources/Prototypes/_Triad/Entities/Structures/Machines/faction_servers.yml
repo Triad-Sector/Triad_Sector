@@ -1,6 +1,6 @@
 - type: entity
-  id: [ResearchAndDevelopmentServerTdf, BaseClass2AShipContraband]
-  parent: BaseRdServerFaction
+  id: ResearchAndDevelopmentServerTdf
+  parent: [BaseRdServerFaction, BaseClass2AShipContraband]
   name: TDF R&D server
   description: Contains the collective knowledge of the TDF Faction in this sector.
   components:
