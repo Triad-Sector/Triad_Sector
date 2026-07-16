@@ -96,7 +96,7 @@
     - MechEquipmentGrabber
     - MechEquipmentHorn
     - MechEquipmentGrabberSmall
-    # - MechEquipmentFork # Frontier, Triad Edit
+    - MechEquipmentFork # Frontier
     - PowerCageSmall
     - PowerCageMedium
     - PowerCageHigh
