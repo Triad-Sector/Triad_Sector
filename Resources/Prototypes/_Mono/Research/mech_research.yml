@@ -14,7 +14,6 @@
   - RipleyCentralElectronics
   - RipleyPeripheralsElectronics
   - MechEquipmentGrabber
-  - MechEquipmentFork # Triad - Cherrypick NF MechCargo. Moved here from RipleyAPLU.
   - RipleyMKIIHarness
   - RipleyUpgradeKit
   - ClarkeHarness
@@ -27,6 +26,7 @@
   technologyPrerequisites:
   - AdvancedParts
   position: 2, 10
+# Removed MechEquipmentFork - Triad change
 
 
 # - type: technology
