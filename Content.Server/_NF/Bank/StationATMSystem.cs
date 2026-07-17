@@ -96,7 +96,7 @@ public sealed partial class BankSystem
         PlayConfirmSound(uid, component);
         _log.Info($"{args.Actor} withdrew {args.Amount}, '{args.Reason}': {args.Description}");
 
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} withdrew {args.Amount} from {component.Account} station bank account. '{args.Reason}': {args.Description}");
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Extreme, $"{ToPrettyString(player):actor} withdrew {args.Amount} from {component.Account} station bank account. '{args.Reason}': {args.Description}");
         //spawn the cash stack of whatever cash type the ATM is configured to.
         var stackPrototype = _prototypeManager.Index<StackPrototype>(component.CashType);
         _stackSystem.Spawn(args.Amount, stackPrototype, uid.ToCoordinates());
@@ -209,7 +209,7 @@ public sealed partial class BankSystem
         PlayConfirmSound(uid, component);
         _log.Info($"{args.Actor} deposited {args.Amount}, '{args.Reason}': {args.Description}");
 
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} deposited {args.Amount} to {component.Account} station bank account. '{args.Reason}': {args.Description}");
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Extreme, $"{ToPrettyString(player):actor} deposited {args.Amount} to {component.Account} station bank account. '{args.Reason}': {args.Description}");
 
         SetInsertedCashAmount(component, args.Amount, out int leftAmount, out bool empty);
 
