@@ -45,3 +45,29 @@
   - WeaponLaserCannon
   - WeaponLaserCarbine
   - WeaponXrayCannon
+
+- type: latheRecipePack
+  id: TdfDynamicMelee
+  recipes:
+  - EnergySwordRecipeTDF
+  - EnergyShieldRecipeTDF
+
+- type: latheRecipePack
+  id: TdfDynamicGun
+  recipes:
+  - WeaponRifleLecterRecipeTdf
+  - WeaponRifleMR8TRecipeTdf
+  - WeaponLMGRiotTdf
+  - AmmoBox68x52mmCaselessBig
+
+- type: latheRecipePack
+  id: TDFDynamicVoucher
+  recipes:
+  - BasicVoucherTDF
+  - IntermediateVoucherTDF
+
+- type: latheRecipePack
+  id: TDFGearDynamic
+  recipes:
+  - ClothingOuterHardsuitTdf
+  - ClothingOuterHardsuitTdfMedic

@@ -2655,3 +2655,46 @@ Entries:
   id: 2403
   time: '2026-07-14T22:46:18.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/359
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship saving contraband proto for TDF and and it's silent one
+  id: 2404
+  time: '2026-07-16T12:45:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/322
+- author: DDrakov
+  changes:
+    - type: Add
+      message: TDF RnD and it's Tech
+    - type: Add
+      message: TDF Designated Ship ID Tier 0, Tier 1 and Tier 2
+    - type: Add
+      message: 'TDF LMG '
+    - type: Tweak
+      message: Moved Adjutant into Tier 2
+    - type: Add
+      message: Add Jester, Fling, and Mercy to TDF shipyard
+  id: 2405
+  time: '2026-07-16T13:58:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/346
+- author: satirically
+  changes:
+    - type: Remove
+      message: Removed Emu fork from tech tree and its respective fab
+  id: 2406
+  time: '2026-07-16T15:14:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/367
+- author: satirically
+  changes:
+    - type: Fix
+      message: Power forks not being able to be put in mechs.
+  id: 2407
+  time: '2026-07-16T19:44:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/369
+- author: Khaomi
+  changes:
+    - type: Remove
+      message: Removed Lone Digger by Caravan Palace from Jukebox for copyright reason
+  id: 2408
+  time: '2026-07-17T07:03:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/372

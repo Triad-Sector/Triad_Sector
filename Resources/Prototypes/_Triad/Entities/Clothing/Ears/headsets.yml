@@ -1,10 +1,8 @@
 # TDF
 - type: entity
+  parent: BaseClass2AShipContrabandSilent
   id: BaseTDFHeadset
   abstract: true
-  components:
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]

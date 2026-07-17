@@ -1,0 +1,33 @@
+- type: vessel
+  id: Mercy
+  parent: BaseVessel
+  name: TDF Mercy
+  description: Born in the need of sufficient armed medical ship for extraction of civilian from contested space, Mercy is armed with modest weapons and 2 Tovek to deter any assailant against it's precious patient cargo. It has increased armor to withstand direct attacks, but cannot survive without proper escort due to it's heavy mass and thrust to weight ratio.
+  price: 135000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/mercy.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - AME
+
+- type: gameMap
+  id: Mercy
+  mapName: 'Mercy'
+  mapPath: /Maps/_Triad/Shuttles/TDF/mercy.yml
+  minPlayers: 0
+  stations:
+    Mercy:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Mercy TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
