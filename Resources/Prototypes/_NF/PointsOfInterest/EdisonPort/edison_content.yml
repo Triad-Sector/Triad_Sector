@@ -39,7 +39,7 @@
   - type: CargoOrderConsole
     taxAccounts:
       Frontier: 0.25
-      Nfsd: 0.15
+      TDF: 0.15
       Medical: 0.1
       Edison: 0.15
   - type: AccessReader
@@ -439,7 +439,7 @@
       - 0 # oxygen
       - 0 # nitrogen
       - 0 # CO2
-      - 1 # Plasma 
+      - 1 # Plasma
       - 0 # Tritium
       - 0 # Water vapor
       - 0 # Ammonia
