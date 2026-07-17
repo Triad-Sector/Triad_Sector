@@ -68,11 +68,11 @@
     sound:
       path: /Audio/Ambience/Objects/drain.ogg
   - type: Anchorable # Triad: can move
+    delay: 3
   - type: Pullable # Triad: can move
   - type: Rotatable # Triad
   - type: Physics # Hardlight
     bodyType: Static
-    canCollide: false
   - type: Fixtures # Triad
     fixtures:
       fix1:
