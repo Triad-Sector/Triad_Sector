@@ -1,3 +1,4 @@
+# Triad start, disable Mono version since it's still deconstructable
 # - type: entity
 #   id: BlastDoorIndestructible
 #   parent: BlastDoor
@@ -15,7 +16,7 @@
 #         Piercing: 0
 #         Heat: 0 
 #         Structural: 0
-
+# Triad end
 - type: entity
   parent: BlastDoor
   id: BlastDoorMonolithic

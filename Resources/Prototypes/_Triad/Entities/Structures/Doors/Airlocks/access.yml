@@ -111,6 +111,15 @@
 # High security doors
 - type: entity
   parent: HighSecDoor
+  id: HighSecTDFLocked
+  suffix: TDF, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: HighSecDoor
   id: HighSecTriadMedicalLocked
   suffix: Medical, Locked
   components:

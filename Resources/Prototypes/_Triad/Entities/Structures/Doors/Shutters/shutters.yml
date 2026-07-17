@@ -1,9 +1,10 @@
+# This version of shutter cannot be deconstructed, Vanilla ones can still be deconstructed
 - type: entity
-  id: BaseShutter
+  id: BaseShutterIndestructible
   parent: BaseStructure
   name: shutter
   abstract: true
-  description: One shudders to think about what might be behind this shutter.
+  description: no matter how hard you try, this shutter wont budge or dent except rattles
   placement:
     mode: SnapgridCenter
   components:
@@ -48,6 +49,7 @@
     openTimeTwo: 0.2
     openingAnimationTime: 1.4
     closingAnimationTime: 1.4
+    canPry: false # Unpryable for mapping dungeons
     crushDamage:
       types:
         Blunt: 5 # getting shutters closed on you probably doesn't hurt that much
@@ -68,14 +70,6 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 750 # Mono 500->750
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     mode: NoSprite
@@ -104,3 +98,24 @@
   # Triad - lets the shutter be interacted with even when a window/grille shares its tile (matches BaseFirelock)
   - type: WallMount
     arc: 360
+
+- type: entity
+  id: ShutterNormalIndestructible
+  parent: BaseShutterIndestructible
+  suffix: indestructible
+  components:
+  - type: Occluder
+
+- type: entity
+  id: ShutterWindowIndestructible
+  parent: BaseShutterIndestructible
+  name: window shutter
+  suffix: indestructible
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Shutters/shutters_window.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: RadiationBlocker
+    resistance: 1
