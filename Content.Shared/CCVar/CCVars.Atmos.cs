@@ -126,7 +126,7 @@ public sealed partial class CCVars
     ///     Atmos tickrate in TPS. Atmos processing will happen every 1/TPS seconds.
     /// </summary>
     public static readonly CVarDef<float> AtmosTickRate =
-        CVarDef.Create("atmos.tickrate", 15f, CVar.SERVERONLY);
+        CVarDef.Create("atmos.tickrate", 15f, CVar.SERVER | CVar.REPLICATED); // Triad: SERVERONLY>SERVER|REPLICATED so the supermatter console client can read the real tick rate instead of throwing on an unregistered cvar
 
     /// <summary>
     ///     Scale factor for how fast things happen in our atmosphere

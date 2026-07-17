@@ -1,0 +1,63 @@
+# PDAs
+
+- type: entity
+  parent: EngineerPDA
+  id: PlantManagerPDA
+  name: plant manager PDA
+  description: Tracks reactor output and the plant's account balance.
+  components:
+  - type: Pda
+    id: PlantManagerIDCard
+  - type: PdaBorderColor
+    borderColor: "#c59a3b"
+  - type: CartridgeLoader # Triad - extended with the ledger for the plant account
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - LedgerCartridge
+
+- type: entity
+  parent: EngineerPDA
+  id: PlantTechnicianPDA
+  name: plant technician PDA
+  description: Rugged, and smells faintly of coolant.
+  components:
+  - type: Pda
+    id: PlantTechnicianIDCard
+  - type: PdaBorderColor
+    borderColor: "#a37b2c"
+
+# ID cards (access flows from the referenced job)
+
+- type: entity
+  parent: IDCardStandard
+  id: PlantManagerIDCard
+  name: plant manager ID card
+  components:
+  - type: PresetIdCard
+    job: PlantManager
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: silver
+    - state: idplantmanager
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi
+  - type: Item
+    heldPrefix: silver
+
+- type: entity
+  parent: IDCardStandard
+  id: PlantTechnicianIDCard
+  name: plant technician ID card
+  components:
+  - type: PresetIdCard
+    job: PlantTechnician
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idplanttechnician
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi

@@ -20,3 +20,5 @@ job-description-sr = Handle access reassignment fairly using your ID console, ma
 job-description-stc = Expertly de-conflict the space around the station and help the Colonial Outpost issue fines for overdocked ships.
 job-description-security-guard = Hand over criminals to the TDF, ensure the TFA's stations are safe, and listen to the Overseer.
 job-description-doc = Provide guidance and direction for shift medics and work to safeguard the health of TFA colonial personnel and Triad residents.
+job-description-plant-manager = Answer to command, keep your technicians paid, and safeguard the health and safety of the Edison Power Plant and its crew.
+job-description-plant-technician = Be the working hands of the Edison Power Plant: tend the supermatter, run the gas and fuel lines, and keep the reactor online for the Plant Manager.

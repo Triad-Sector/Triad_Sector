@@ -17,6 +17,7 @@ ledger-tab-Frontier = Colonial Outpost
 ledger-tab-Nfsd = TDF
 ledger-tab-Medical = Medical Dispatch
 ledger-tab-BlackMarket = Black Market
+ledger-tab-Edison = Edison
 # Fallback, if this displays, something's wrong.
 ledger-tab-Unknown = Unknown
 
@@ -41,6 +42,7 @@ ledger-entry-type-StationDepositFines = Fines Deposited
 ledger-entry-type-StationDepositDonation = Donations
 ledger-entry-type-StationDepositAssetsSold = Sold Assets
 ledger-entry-type-StationDepositOther = Misc. Deposits
+ledger-entry-type-PowerTransmission = Energy Exports
 ledger-entry-type-MailPenalty = Mail Penalties
 ledger-entry-type-ShuttleRecordFees = Shuttle Record Fees
 ledger-entry-type-StationWithdrawalPayroll = Payroll

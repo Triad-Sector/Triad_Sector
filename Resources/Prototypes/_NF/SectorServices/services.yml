@@ -36,6 +36,10 @@
         !type:SectorBankAccountInfo
         balance: 8000
         increasePerSecond: 18 # ~65K per hour, they get ALOT just from people smuggling anyways.
+      Edison: # Triad: coyote's power plant account; a trickle - the plant earns by selling power
+        !type:SectorBankAccountInfo
+        balance: 8000
+        increasePerSecond: 1
 # mono edit end
 
  # A global source of character records (DNA, fingerprints, criminal records, etc.)

@@ -2698,3 +2698,61 @@ Entries:
   id: 2408
   time: '2026-07-17T07:03:43.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/372
+- author: Minerva
+  changes:
+    - type: Fix
+      message: >-
+        Decorative greeble (antenna, ELINT, radar) construction ghosts have been
+        partially fixed. When placed as contruction ghosts, they now display
+        properly. Placement previews have not been fixed yet.
+  id: 2409
+  time: '2026-07-17T20:01:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/323
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Edison Power Plant has been reworked into a full industrial station:
+        supermatter engine, radiation collectors, TEG, AME fuel fabricator, and
+        an energy-to-plasma converter.
+    - type: Add
+      message: >-
+        New Industrial department jobs at Edison: Plant Manager and Plant
+        Technician, with their own loadouts, spawns, and PDAs. Spacers, Pilots,
+        and Mercenaries can also join there.
+    - type: Add
+      message: >-
+        Edison now has its own sector bank account. Selling power pays the
+        plant, purchases at the plant's request computer kick back a cut, and
+        the Plant Manager pays wages from the office terminal.
+    - type: Add
+      message: >-
+        The CreditFlow Lite app shows an Edison ledger tab, and the plant's
+        machines now have working power-draw controls.
+    - type: Fix
+      message: >-
+        Supermatter tesla delaminations no longer spawn infinite tesla balls,
+        and a delamination can no longer detonate after announcing it was
+        averted.
+    - type: Fix
+      message: >-
+        The supermatter monitoring console no longer refreshes every tick, and
+        its gas readouts no longer break on gases the crystal ignores.
+    - type: Fix
+      message: >-
+        The ledger PDA cartridge is now named CreditFlow Lite to match its
+        program.
+    - type: Tweak
+      message: >-
+        Edison's shutter buttons are labeled and no longer overlap, and civilian
+        late-join spawns moved to the bus stop hall.
+  id: 2410
+  time: '2026-07-17T20:26:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/339
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: TDF Ships
+  id: 2411
+  time: '2026-07-17T20:37:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/375

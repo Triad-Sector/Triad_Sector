@@ -1,0 +1,690 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+#
+# Triad: Edison POI content dependencies. Entity prototypes the Coyote Edison map
+# places that this fork lacked, ported from ARF-SS13/coyote-frontier @ 2f30035e (which
+# aggregates content from _CS/coyote, _NF/Frontier, _HL/Hardlight, and standard layers).
+# Parent chains closed against this fork's existing protos; the 3 power machines
+# (AntiMatterFabricator, EnergyAirConverter, PowerTransmissionPoint) are backed by the
+# _NF Manufacturing / PowerTransmission C# systems ported alongside this. The Floof leash
+# was dropped (substituted in the map) rather than port the Leash subsystem.
+
+# --- FoodBoxDonkpocketSupermatter  (coyote: _CS/Entities/Objects/Consumables/Food/Containers/box.yml) ---
+- type: entity
+  parent: FoodBoxDonkpocket
+  id: FoodBoxDonkpocketSupermatter
+  name: box of limited edition supermatter-pockets
+  description: What was supposed to be "Suppermatter" led to a horrible misunderstanding and a class-action lawsuit.
+  components:
+  - type: Sprite
+    sprite: _CS/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: supermatter-box
+  - type: StorageFill
+    contents:
+    - id: FoodDonkpocket
+      amount: 6
+
+# Printable to-go box
+
+# --- CSComputerCargoOrdersEddison  (coyote: _CS/Entities/Structures/Machines/Computers/computers.yml) ---
+- type: entity
+  id: CSComputerCargoOrdersEddison
+  parent: ComputerCargoOrders
+  name: plant manager's request computer
+  description: Used to purchase restricted engineering supplies.
+  components:
+  # Triad: dropped the NFCargoOrderConsole override (NF sector-cargo variant not ported) and
+  # the coyote Sprite override (screen state 'request-eng' absent from our computers.rsi);
+  # inherits the stock cargo console + screen from parent ComputerCargoOrders.
+  # Triad: keep the parent's sector tax split but route a cut to the plant's own account.
+  - type: CargoOrderConsole
+    taxAccounts:
+      Frontier: 0.25
+      Nfsd: 0.15
+      Medical: 0.1
+      Edison: 0.15
+  - type: AccessReader
+    access: [["ChiefEngineer"]]
+
+# --- EdisonTechFab  (coyote: _CS/Entities/Structures/Machines/lathe.yml) ---
+- type: entity
+  # Triad: reparented to stock Autolathe. Coyote's NFBlueprintReceiver base, 20 custom recipe
+  # packs, and EdisonTechFabCircuitboard were not ported (disproportionate for a POI techfab);
+  # keeps the Edison techfab sprite and uses stock autolathe recipes/board. Lathe idle/running
+  # states point at the techfab.rsi 'icon' state so the visualizer resolves.
+  parent: Autolathe
+  id: EdisonTechFab
+  name: edison engineering techfab
+  description: Prints equipment for Edison engineers.
+  components:
+  - type: Sprite
+    sprite: _CS/Structures/Machines/techfab.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: edison
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+
+# --- ChemicalBarrelExplosiveMarket  (coyote: _CS/FuzzysStuff/FuzzyEngines.yml) ---
+- type: entity
+  id: ChemicalBarrelExplosiveMarket
+  parent: ChemicalBarrelExplosiveFilled
+  name: Metal Barrel
+  suffix: Welding Fuel
+  description: Industrial fuel for a Junior P.A.C.M.A.N. Highly explosive.
+
+# --- PlushieFlick  (coyote: _CS/Entities/Objects/Fun/toys.yml) ---
+- type: entity
+  parent: PlushieExperiment
+  id: PlushieFlick #yip!
+  name: cybersun engineer plushie
+  description: Each plushie is given its soul by pressing it to a supermatter sliver, if you listen closely you can hear yourself getting cancer in real-time!
+  components:
+  - type: Sprite
+    sprite: _CS/Objects/Fun/Plushies/flickplushie.rsi
+    state: flick
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: flick-inhand-left
+        shader: shaded
+      right:
+      - state: flick-inhand-right
+        shader: shaded
+    heldPrefix: plushieflick
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: flick-equipped-HELMET
+        shader: shaded
+    quickEquip: false
+    sprite: _CS/Objects/Fun/Plushies/flickplushie.rsi
+    equippedPrefix: plushieflick
+    slots:
+    - HEAD
+
+# Triad: Shower dropped as duplicate of _EE/Entities/Structures/Furniture/shower.yml (kept; constructable). Map resolves to it.
+
+# --- DangerTether  (coyote: _NF/Entities/Markers/danger_tether.yml) ---
+- type: entity
+  name: danger tether
+  description: Dangerous objects on this map (singularities, teslas) must be within 500 m of one of these objects.
+  id: DangerTether
+  suffix: "range 500m"
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/toys.rsi
+    layers:
+      - state: singularitytoy
+      - sprite: Markers/cross.rsi
+        state: pink
+  # Triad: dropped DangerTether component (DangerTether system not ported); static marker.
+
+# --- BusScheduleRoute1  (coyote: _NF/Entities/Structures/Wallmounts/bus_schedule.yml) ---
+- type: entity
+  parent: BusSchedule
+  id: BusScheduleRoute1
+  suffix: Route 1, Spawn Points
+  # Triad: BusSchedule component dropped (see parent); inherits the static sign.
+
+# --- JukeboxPOI  (coyote: _NF/Entities/Structures/Machines/jukebox.yml) ---
+- type: entity
+  id: JukeboxPOI
+  suffix: POI
+  parent: [ BaseStructureDisableToolUse, Jukebox ]
+  components:
+  - type: Machine
+    board: Null
+
+# --- GunSafePlantManager  (coyote: _NF/Catalog/Fills/Lockers/heads.yml) ---
+- type: entity
+  parent: GunSafe
+  id: GunSafePlantManager
+  name: plant manager's gun safe
+  suffix: Filled
+  components:
+  - type: AccessReader
+    access: [["ChiefEngineer"]]
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolMk58
+      amount: 2
+
+# --- MobileComputerTabletopComms  (coyote: _NF/Entities/Structures/Machines/Computers/computers_tabletop.yml) ---
+- type: entity
+  parent: [BaseStructureComputerTabletop, ComputerComms]
+  id: MobileComputerTabletopComms
+  components:
+  - type: Sprite
+    drawdepth: SmallObjects
+    layers:
+    - map: ["computerLayerBody"]
+      sprite: _NF/Structures/Machines/computer_tabletop.rsi
+      state: computer_tabletop
+    - map: ["computerLayerKeyboard"]
+      sprite: _NF/Structures/Machines/computer_tabletop.rsi
+      state: generic_keyboard_tabletop
+    - map: ["computerLayerScreen"]
+      sprite: Structures/Machines/computers.rsi
+      state: comm
+    - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+
+# --- ComputerTabletopStationAdminBankATMEdison  (coyote: _NF/Entities/Structures/Machines/Computers/computers_tabletop.yml) ---
+- type: entity
+  parent: BaseComputerTabletopStationAdminBankATM
+  id: ComputerTabletopStationAdminBankATMEdison
+  description: Used to transfer funds to and from Edison's bank account.
+  suffix: Edison, Tabletop
+  components:
+  - type: StationBankATM
+    account: Edison # Triad: restored coyote's Edison sector account
+  # Triad: the plant's chief engineer (Plant Manager) runs the terminal alongside the HoP/Chief Enforcer
+  - type: AccessReader
+    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["ChiefEngineer"]]
+
+# --- AntiMatterFabricator  (coyote: _NF/Entities/Structures/Machines/ame_fab.yml) ---
+- type: entity
+  parent: [ BaseStructureDisableToolUse, BaseStructureIndestructible, BaseMachine ]
+  id: AntiMatterFabricator
+  name: anti-matter fabricator
+  description: A colossal machine that converts plasteel and power into antimatter and stores it in AME fuel jars in a slot.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Anchorable
+    flags: None
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.45,-1.45,1.45,1.45"
+        density: 500
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+        enabled: false
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _NF/Structures/Machines/AMEFab/32x32.rsi # needed for item mapper
+    layers:
+    - sprite: _NF/Structures/Machines/AMEFab/base.rsi
+      state: base
+    - state: dial
+      offset: -0.5, 0.5
+      map: [ dial ]
+    - sprite: _NF/Structures/Machines/AMEFab/64x32.rsi
+      state: flywheel
+      offset: 0.5, 0.5
+      map: [ flywheel ]
+    - sprite: _NF/Structures/Machines/AMEFab/64x32.rsi
+      state: press
+      offset: -0.5, 0
+      map: [ press ]
+    - state: slot-full
+      offset: 1, 0
+      map: [ slot-full ]
+      visible: false
+    - state: slot-unlit
+      map: [ slot-unlit ]
+      shader: unshaded
+      visible: false
+    - state: material-good
+      map: [ material ]
+      shader: unshaded
+      visible: false
+    - state: panel-unlit
+      offset: 1, -1
+      map: [ panel ]
+      shader: unshaded
+      visible: false
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+      offset: 1, -0.5
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        dial:
+          True: { state: dial-animated }
+          False: { state: dial }
+        flywheel:
+          True: { state: flywheel-animated }
+          False: { state: flywheel }
+        press:
+          True: { state: press-animated }
+          False: { state: press }
+        panel:
+          True: { visible: true }
+          False: { visible: false }
+        material:
+          True: { visible: true }
+          False: { visible: false }
+      enum.EntitySpawnMaterialVisuals.SufficientMaterial:
+        material:
+          True: { state: material-good }
+          False: { state: material-low }
+  - type: ItemMapper
+    containerWhitelist:
+    - output
+    mapLayers:
+      slot-full:
+        whitelist:
+          components:
+          - NFFuel
+      slot-unlit:
+        whitelist:
+          components:
+          - NFFuel
+  - type: PowerConsumer
+    drawRate: 100000
+  - type: PowerMonitoringDevice
+    group: Consumer
+    loadNode: input
+    collectionName: transmissionpoint
+    sprite: _NF/Structures/Power/TransmissionPoint/32x32.rsi
+    state: icon
+  - type: WiredNetworkConnection
+  - type: UserInterface
+    interfaces:
+      enum.AdjustablePowerDrawUiKey.Key:
+        type: AdjustablePowerDrawBoundUserInterface
+  - type: ActivatableUI
+    key: enum.AdjustablePowerDrawUiKey.Key
+  - type: EntitySpawnPowerConsumer
+    spawn: AmeJar
+    energyPerSpawn: 6000000000 # 1.2 GJ (75% base eff.) multiplied by 5 to compensate for AmeJarBig buff
+    material: Plasteel
+    materialAmount: 500
+  - type: ItemSlots
+    slots:
+      output:
+        swap: false
+        insertOnInteract: false
+        ejectOnInteract: true
+        whitelist:
+          components:
+          - NFFuel
+  - type: ContainerContainer
+    containers:
+      output: !type:ContainerSlot {}
+  - type: MaterialStorage
+    materialWhiteList:
+    - Plasteel
+    storageLimit: 15000
+
+# --- EnergyAirConverter  (coyote: _NF/Entities/Structures/Piping/Atmospherics/unary.yml) ---
+- type: entity
+  parent: [ BaseStructureDisableToolUse, BaseStructureIndestructible, BaseMachine ]
+  id: EnergyAirConverter
+  name: energy-to-plasma converter
+  description: An enormous machine that converts huge amounts of power into superheated plasma.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Anchorable
+    flags: None
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.45,-1.45,1.45,1.45"
+        density: 500
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+        enabled: false
+      port:
+        !type:PortablePipeNode
+        nodeGroupID: Pipe
+        rotationsEnabled: false
+        volume: 1
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _NF/Structures/Machines/GasConverter/32x32.rsi
+    layers:
+    - sprite: _NF/Structures/Machines/GasConverter/base.rsi
+      state: base
+    - state: fan
+      map: [fan]
+      offset: -0.6875, 1 # 11/16, -22 px offset
+    - state: front-panel-unlit
+      shader: unshaded
+      map: [front-panel]
+      offset: 0, -1
+    - state: gas
+      color: "#FFFFFF01"
+      map: [gas]
+      offset: 1, 0.5
+    - state: window-unlit
+      shader: unshaded
+      map: [window]
+      offset: 0, 0.25
+    - state: panel-unlit
+      shader: unshaded
+      map: [panel]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        fan:
+          True: { state: fan-animated }
+          False: { state: fan }
+        front-panel:
+          True: { visible: true }
+          False: { visible: false }
+        panel:
+          True: { visible: true }
+          False: { visible: false }
+        window:
+          True: { visible: true }
+          False: { visible: false }
+      enum.GasCanisterVisuals.PressureState:
+        gas:
+          0: { color: "#FFFFFF01" }
+          1: { color: "#FFFFFF22" }
+          2: { color: "#FFFFFF44" }
+          3: { color: "#FFFFFF66" }
+  - type: PowerConsumer
+    drawRate: 100000
+  - type: PowerMonitoringDevice
+    group: Consumer
+    loadNode: input
+    collectionName: transmissionpoint
+    sprite: _NF/Structures/Power/TransmissionPoint/32x32.rsi
+    state: icon # FIXME: no icon, machine doesn't appear on the power monitor
+  - type: WiredNetworkConnection
+  - type: UserInterface
+    interfaces:
+      enum.AdjustablePowerDrawUiKey.Key:
+        type: AdjustablePowerDrawBoundUserInterface
+  - type: ActivatableUI
+    key: enum.AdjustablePowerDrawUiKey.Key
+  - type: GasSpawnPowerConsumer
+    spawnMixture:
+      moles:
+      - 0 # oxygen
+      - 0 # nitrogen
+      - 0 # CO2
+      - 1 # Plasma 
+      - 0 # Tritium
+      - 0 # Water vapor
+      - 0 # Ammonia
+      - 0 # N2O
+      - 0 # Frezon
+      temperature: 5273
+  - type: GasCanister
+    gasMixture:
+      volume: 10000 # big tank to store backup
+    gasTankSlot:
+      locked: True # cannot be unlocked, unusable
+  - type: AtmosDevice
+    requireAnchored: false
+    joinSystem: true
+  - type: GasPortable # for the connector port
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      tank_slot: !type:ContainerSlot {}
+
+# --- PowerTransmissionPoint  (coyote: _NF/Entities/Structures/Power/transmission_point.yml) ---
+- type: entity
+  id: PowerTransmissionPoint
+  parent: [ BaseStructureDisableToolUse, BaseStructureIndestructible, BaseMachine ]
+  name: power transmission point
+  description: A gargantuan machine for offsite power transmission using quantum entanglement.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Anchorable
+    flags: None
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.45,-1.45,1.45,1.45"
+        density: 500
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+  - type: AmbientSound
+    volume: -3
+    range: 6
+    sound:
+      path: /Audio/_NF/Ambience/power-hum.ogg
+    enabled: false
+  - type: Sprite
+    sprite: _NF/Structures/Power/TransmissionPoint/base.rsi
+    offset: 0,1
+    snapCardinals: false
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - state: base
+      - sprite: _NF/Structures/Power/TransmissionPoint/96x32.rsi
+        state: base-unlit
+        shader: unshaded
+        map: ["unlit"]
+        visible: false
+        offset: 0, 2
+      - sprite: _NF/Structures/Power/TransmissionPoint/96x32.rsi
+        state: base-foreground
+        offset: 0, 2
+      - sprite: _NF/Structures/Power/TransmissionPoint/32x32.rsi
+        state: panel-unlit
+        map: ["panel"]
+        visible: false
+        offset: 0, -2
+  - type: SpriteFade
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        unlit:
+          True: { visible: true }
+          False: { visible: false }
+        panel:
+          True: { visible: true }
+          False: { visible: false }
+  - type: PowerTransmission
+    account: Edison # Triad: restored coyote's Edison sector account
+  - type: PowerConsumer
+    drawRate: 100000
+  - type: ExaminableBattery
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+        enabled: false
+  - type: PowerMonitoringDevice
+    group: Consumer
+    loadNode: input
+    collectionName: transmissionpoint
+    sprite: _NF/Structures/Power/TransmissionPoint/32x32.rsi
+    state: icon
+  - type: Electrified
+    onHandInteract: false
+    onInteractUsing: false
+    onBump: false
+    requirePower: true
+    highVoltageNode: input
+  - type: WiredNetworkConnection
+  - type: GuideHelp
+    guides:
+    - VoltageNetworks
+    - Power
+  - type: UserInterface
+    interfaces:
+      enum.AdjustablePowerDrawUiKey.Key:
+        type: AdjustablePowerDrawBoundUserInterface
+  - type: ActivatableUI
+    key: enum.AdjustablePowerDrawUiKey.Key
+  - type: PointLight
+    color: "#00ccff"
+    energy: 4
+    radius: 7
+    enabled: false
+
+# --- VendingMachineAutoTuneVendPOI  (coyote: _NF/Entities/Structures/Machines/vending_machines.yml) ---
+- type: entity
+  parent: [VendingMachineAutoTuneVend, BaseStructureDisableAnchoring]
+  id: VendingMachineAutoTuneVendPOI
+  suffix: POI
+
+# Gas Tank Dispenser
+
+# --- DrinkElectricSharkGlass  (coyote: Entities/Objects/Consumable/Drinks/drinks.yml) ---
+- type: entity
+  parent: DrinkGlass
+  id: DrinkElectricSharkGlass
+  suffix: electric shark
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Cola
+          Quantity: 30
+  - type: Icon
+    sprite: Objects/Consumable/Drinks/electricshark.rsi
+    state: icon
+
+# Triad: ClothingNeckCollarEngi dropped as duplicate of canonical Floof/Entities/Clothing/Neck/collars.yml
+
+# --- BusSchedule  (coyote: _NF/Entities/Structures/Wallmounts/bus_schedule.yml) ---
+- type: entity
+  parent: BaseSign
+  id: BusSchedule
+  suffix: Auto
+  name: bus schedule
+  description: A schedule that tells you when the bus is here. Don't miss it!
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _NF/Structures/Wallmounts/bus_schedule.rsi
+    snapCardinals: true
+    layers:
+    - state: body
+    - state: top_greyscale
+      color: "#aaaaaa"
+  # Triad: dropped BusSchedule + PublicTransitVisuals components (Frontier PublicTransit
+  # system not ported); the sign is a static prop. our StationTransit still handles routes.
+  - type: Appearance
+
+# Triad: ClothingNeckCollarBase dropped as duplicate of canonical Floof/Entities/Clothing/Neck/collars.yml
+
+# --- PlushieExperiment  (coyote: Entities/Objects/Fun/toys.yml) ---
+- type: entity
+  parent: BasePlushie
+  id: PlushieExperiment #Arf!
+  name: experiment plushie
+  description: A plushie of a canid of sorts, it yearns to be detonated on a landmine.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/expiplush.rsi
+    state: expi
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: expi-inhand-left
+        shader: shaded
+      right:
+      - state: expi-inhand-right
+        shader: shaded
+    heldPrefix: plushielizard
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Items/Toys/arf.ogg
+  - type: Tag
+    tags:
+    - ClothMade
+    - Payload
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: expi-equipped-HELMET
+        shader: shaded
+    quickEquip: false
+    sprite: Objects/Fun/toys.rsi
+    equippedPrefix: expi
+    slots:
+    - HEAD
+  # Triad: dropped FoodSequenceElement (edible-plushie food sequence + CottonBurger tag not ported).
+
+# --- NFBlueprintReceiverBase  (coyote: _NF/Entities/Structures/Machines/lathe.yml) ---
+- type: entity
+  id: NFBlueprintReceiverBase
+  abstract: true
+  components:
+  - type: BlueprintReceiver
+    whitelist:
+      tags:
+      - BlueprintAutolathe
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      blueprint: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - blueprint
