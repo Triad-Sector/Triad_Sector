@@ -1,9 +1,11 @@
 using Content.Client.Overlays;
+using Content.Shared._Triad.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.NightVision;
 using Content.Shared.Overlays;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 
 namespace Content.Client.NightVision;
@@ -11,10 +13,14 @@ namespace Content.Client.NightVision;
 /// <inheritdoc/>
 public sealed partial class NightVisionSystem : SharedNightVisionSystem
 {
+    [Dependency] private IConfigurationManager _config = default!; // Triad
     [Dependency] private IOverlayManager _overlayMan = default!;
     [Dependency] private IPlayerManager _player = default!;
 
     private NightVisionOverlay _overlay = default!;
+
+    private bool _customNightVisionColorEnabled; // Triad
+    private string? _customNightVisionColor; // Triad
 
     public override void Initialize()
     {
@@ -26,6 +32,9 @@ public sealed partial class NightVisionSystem : SharedNightVisionSystem
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
         SubscribeLocalEvent<NightVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+
+        _config.OnValueChanged(TriadCCVars.UseNightVisionColor, OnCustomColorEnabledCvarUpdated, true);
+        _config.OnValueChanged(TriadCCVars.NightVisionColor, OnCustomColorCvarUpdated, true);
     }
 
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
@@ -50,6 +59,26 @@ public sealed partial class NightVisionSystem : SharedNightVisionSystem
             Deactivate(localPlayer.Value);
     }
 
+    private void OnCustomColorEnabledCvarUpdated(bool value)
+    {
+        _customNightVisionColorEnabled = value;
+
+        if (_player.LocalSession?.AttachedEntity == null)
+            return;
+
+        RefreshOverlay(_player.LocalSession.AttachedEntity.Value);
+    }
+
+    private void OnCustomColorCvarUpdated(string value)
+    {
+        _customNightVisionColor = value;
+
+        if (_player.LocalSession?.AttachedEntity == null)
+            return;
+
+        RefreshOverlay(_player.LocalSession.AttachedEntity.Value);
+    }
+
     /// <summary>
     /// Update the state of the overlay. Add/remove/modify based on <see cref="NightVisionComponent"/>s if any.
     /// </summary>
@@ -60,7 +89,7 @@ public sealed partial class NightVisionSystem : SharedNightVisionSystem
         if (entity != _player.LocalSession?.AttachedEntity)
             return;
 
-// Find the component with the lowest noise.
+        // Find the component with the lowest noise.
         NightVisionComponent? nvision = null;
         foreach (var ent in entities)
         {
@@ -84,15 +113,22 @@ public sealed partial class NightVisionSystem : SharedNightVisionSystem
             return;
         }
 
+        // Triad Start, custom nv colors
+        var phosphor = nvision.PhosphorColor;
+
+        if (_customNightVisionColorEnabled && _customNightVisionColor is { } customColor)
+            phosphor = Color.FromHex(customColor);
+
         // Relay all the settings from the component.
         _overlay.SetParameters(
             nvision.LightingColor,
-            nvision.PhosphorColor,
+            phosphor,
             nvision.GoggleEffect,
             nvision.ViewCircleRadius,
             nvision.ViewCircleSpacing,
             nvision.ViewCircleCount,
             nvision.Amplification);
+        // Triad end
 
         if (!_overlayMan.HasOverlay<NightVisionOverlay>())
             _overlayMan.AddOverlay(_overlay);

@@ -1,0 +1,26 @@
+- type: entity
+  id: ResearchAndDevelopmentServerTdf
+  parent: [BaseRdServerFaction, BaseClass2AShipContraband]
+  name: TDF R&D server
+  description: Contains the collective knowledge of the TDF Faction in this sector.
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/server.rsi
+    layers:
+    - state: server
+    - state: variant-tdf
+    - state: server_o
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: TechnologyDatabase
+    supportedDisciplines:
+    - FactionUniversal
+    - Industrial
+    - Arsenal
+    - Experimental
+    - CivilianServices
+    - MechaEngineering
+    - TdfWeaponry
+    - TdfEquipment
+    - TdfShipyard
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text

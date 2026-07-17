@@ -22,11 +22,11 @@
 
 - type: gameMap
   id: Horizon
-  mapName: 'horizon'
+  mapName: 'Horizon'
   mapPath: /Maps/_Triad/Shuttles/CIV/horizon.yml
   minPlayers: 0
   stations:
-    horizon:
+    Horizon:
       stationProto: StandardFrontierVessel
       components:
       - type: StationNameSetup

@@ -203,6 +203,42 @@
 #        tags:
 #          - SecurityUplink
 
+- type: listing
+  id: UplinkSecurityTier0Voucher
+  name:  uplink-security-tier-0-voucher-name
+  description: uplink-security-tier-0-voucher-desc
+  productEntity: ShipVoucherTdfTier0
+  icon: {
+    sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
+    state: tier_0 }
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityVouchers
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityTier1Voucher
+  name:  uplink-security-tier-1-voucher-name
+  description: uplink-security-tier-1-voucher-desc
+  productEntity: ShipVoucherTdfTier1
+  icon: {
+    sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
+    state: tier_1 }
+  cost:
+    TriadCommerceCredit: 20
+  categories:
+  - UplinkSecurityVouchers
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
 #- type: listing TODO
 #  id: UplinkSecurityMediumVoucher
 #  name:  uplink-security-medium-voucher-name

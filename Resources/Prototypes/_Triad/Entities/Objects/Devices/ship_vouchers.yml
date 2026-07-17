@@ -10,10 +10,30 @@
     sprite: _Triad/Objects/Misc/dsid_template.rsi
 
 - type: entity
-  parent: BaseShipDSID
-  id: ShipVoucherTest1
-  name: template dedicated ship id
-  description: Test
+  parent: [BaseShipDSID, BaseClass2AShipContraband]
+  id: ShipVoucherTdfTier0
+  name: tier 0 dedicated ship ID
+  description: The starting ID of any TDF personnel, provided early by high command and easily created with basic material. Granted, it wont land you on those fancy refined TDF ship, but what it has in access will get the job done
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_0
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF
+    vessels:
+    - Jester
+    - Fling
+
+- type: entity
+  parent: [BaseShipDSID, BaseClass2AShipContraband]
+  id: ShipVoucherTdfTier1
+  name: tier 1 dedicated ship ID
+  description: Despite the different mere in number, this DSID grants TDF personnel with higher access of different ships that can be a foundation of a patrol force or the backbone of and fleet action. Even though the resource cost goes high, it's only fair no?
   components:
   - type: Sprite
     layers:
@@ -26,4 +46,60 @@
     consoleType: Security
     companyName: TDF
     vessels:
-    - Ravager
+    - Grunder
+    - Jester
+    - Fling
+
+- type: entity
+  parent: [BaseShipDSID, BaseClass2AShipContraband]
+  id: ShipVoucherTdfTier2
+  name: tier 2 dedicated ship ID
+  description: This DSID grant access to more specialized ship class that tailored to specific situation. Handle them with care as this ID use much more refined resources that might not very available.
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_2
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF
+    vessels:
+    - Mercy
+    - Adjutant
+
+- type: entity
+  parent: [BaseShipDSID, BaseClass2AShipContraband]
+  id: ShipVoucherTdfTier3
+  name: tier 3 dedicated ship ID
+  description: Only in dire need of proven firepower and authority does this SID provide. The cost of making this are offset with access of ships that are created when chaos is unfolding, or perhaps in act of war does this ID call the spirit of liberation.
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_3
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF
+
+- type: entity
+  parent: [BaseShipDSID, BaseClass2AShipContraband]
+  id: ShipVoucherTdfTier4
+  name: tier 4 dedicated ship ID
+  description: Those who decide to defile the sancity of our cause, our struggle, and our sacrifice for a better future will witness that even when the shackle of oppresion is gone, the lesson are not. No sacrifice too great, no treachery too small. With this ID creation, the sector will witness the rage and courage of our forefathers.
+  components:
+  - type: Sprite
+    layers:
+    - state: tdf_id_handle
+    - state: motherboard
+    - state: tier_4
+    - state: tdf_logo
+  - type: ShipyardVoucher
+    destroyOnEmpty: true
+    consoleType: Security
+    companyName: TDF

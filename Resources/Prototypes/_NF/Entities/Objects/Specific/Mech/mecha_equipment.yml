@@ -24,3 +24,7 @@
   - type: ContainerContainer
     containers:
       item-container: !type:Container
+  - type: Tag
+    tags:
+    - IndustrialMech
+    - SmallMech

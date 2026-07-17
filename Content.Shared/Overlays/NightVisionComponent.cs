@@ -1,6 +1,7 @@
 using Content.Shared.Actions;
 using Content.Shared.Inventory;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -116,5 +117,17 @@ public sealed partial class NightVisionComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public LocId? BlacklistFailPopup;
+
+    /// <summary>
+    /// Triad - Sound to play to the client on activate.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? ActivateSound = new SoundPathSpecifier("/Audio/_RMC14/Handling/toggle_nv1.ogg");
+
+    /// <summary>
+    /// Triad - Sound to play to the client on deactivate.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? DeactivateSound = new SoundPathSpecifier("/Audio/_RMC14/Handling/toggle_nv2.ogg");
 }
 public sealed partial class ToggleNightVisionEvent : InstantActionEvent;

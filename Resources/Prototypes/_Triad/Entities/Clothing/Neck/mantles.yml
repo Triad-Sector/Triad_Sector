@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingNeckBase
+  parent: [ClothingNeckBase, BaseClass2AShipContrabandSilent]
   id: ClothingNeckMantleTdfChiefEnforcer
   name: chief enforcer's mantle
   description: For only the most commited to the Triad Defense Force.

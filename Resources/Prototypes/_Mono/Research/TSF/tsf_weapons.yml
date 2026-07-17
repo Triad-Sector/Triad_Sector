@@ -12,7 +12,7 @@
   - WeaponRifleMR3CTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
-  position: 12, 2
+  position: 26, 2
 
 - type: technology
   id: TsfAdvancedWeapons
@@ -32,7 +32,7 @@
   technologyPrerequisites:
   - TsfBasicGuns
   - UniversalMaterialResearchT2
-  position: 12, 7
+  position: 26, 7
 
 - type: technology
   id: TsfSuperWeapons
@@ -51,4 +51,4 @@
   technologyPrerequisites:
   - TsfAdvancedWeapons
   - UniversalMaterialResearchT3
-  position: 12, 12
+  position: 26, 12

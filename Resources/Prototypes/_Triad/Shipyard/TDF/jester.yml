@@ -1,0 +1,33 @@
+- type: vessel
+  id: Jester
+  parent: BaseVessel
+  name: TDF Jester
+  description: A small cheap ship with salvaging equipment competent enough to do space mining alongside protecting itself from small incursion from light interceptor and boarder, named jester due to its crew jokingly said this ship look big enough for two people only to find out its only enough for one people.
+  price: 63000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/jester.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - AME
+
+- type: gameMap
+  id: Jester
+  mapName: 'Jester'
+  mapPath: /Maps/_Triad/Shuttles/TDF/jester.yml
+  minPlayers: 0
+  stations:
+    Jester:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Jester TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]

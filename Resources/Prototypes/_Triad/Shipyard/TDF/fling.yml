@@ -1,0 +1,33 @@
+- type: vessel
+  id: Fling
+  parent: BaseVessel
+  name: TDF Fling
+  description: A small competent interceptor fitted with 4 large thruster to chase any hostile alongside taking its pilot as a prisoner, its 4 dravon and 2 ak570 is good enough to soften the armor of its enemy. While it lack of armor the ship is capable of doing hit and run to disturb its opponent.
+  price: 82000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/fling.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - AME
+
+- type: gameMap
+  id: Fling
+  mapName: 'Fling'
+  mapPath: /Maps/_Triad/Shuttles/TDF/fling.yml
+  minPlayers: 0
+  stations:
+    Fling:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Fling TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]

@@ -29,16 +29,17 @@
     - type: NightVision # Gen Scifi Exodimensional Cat Alien BS vision
       relayOverlay: false
       goggleEffect: true
-      viewCircleRadius: 450
-      viewCircleCount: 4
-      viewCircleSpacing: 280
+      viewCircleRadius: 1080
+      viewCircleCount: 1
       action: ActionToggleNightVision
       phosphorColor: "#93B8D4" #Blue-grey
-      lightingColor: "#33330a" #Brighter spots appear darker.
+      lightingColor: "#585813" #Brighter spots appear darker.
       blacklistedComponents:
         components:
         - FlashImmunity
       blacklistFailPopup: night-vision-component-cannot-use-flash
+      activateSound: null
+      deactivateSound: null
 
 - type: entity
   id: OrganShadekinTongue

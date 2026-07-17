@@ -46,13 +46,11 @@
 
   [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [mono]  Shock     [color=#cc3333]■■[/color][color=#555555]□□□[/color]  25% vulnerable[/mono]
-
   [mono]  Bloodloss     [color=#ffa500]■[/color][color=#555555]□□□[/color]  100% higher bleedrate, 75% slower blood regeneration[/mono]
 
-  [mono]  Genetic     [color=#1e90ff]■■■■■[/color][color=#555555]□□□[/color]  75% resistance
+  [mono]  Genetic     [color=#1e90ff]■■■■■■■[/color][color=#555555]□[/color]  90% resistance
 
-  [mono]  Radiation    [color=#ffa500]■■[/color][color=#555555]□□□[/color]  30% vulnerable
+  [mono]  Radiation    [color=#ffa500]■■■[/color][color=#555555]□□[/color]  65% resistance
 
   [color=#999999][italic]“Their blood is nothing like anything we have seen before, yet it works similar to iron based blood. It's needlessly complex. Nightvision that outperforms anything we have made and strangely resilient genomes. Yet quite fragile. Weird cats. ”  — J.[/italic][/color]
 
@@ -65,7 +63,7 @@
   [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
   - Breathes Oxygen.
-  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+  - Pressure tolerance: safe [color=#1e90ff][bold]50-385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
 
   [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
@@ -81,7 +79,7 @@
 
   [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
-  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]30% more Heat damage, 25% more Shock damage and 30% more radiation damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
+  [color=red][bold]▲ Warning:[/bold][/color] Takes [color=#ffa500][bold]20% more Heat damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
