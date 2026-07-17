@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Femur:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Femur MIL{1}'

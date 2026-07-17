@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Baeg:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Baeg CIV{1}'

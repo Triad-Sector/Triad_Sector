@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     Ample:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Ample SNB{1}'

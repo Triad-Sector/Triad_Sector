@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Notch:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Notch CIV{1}'

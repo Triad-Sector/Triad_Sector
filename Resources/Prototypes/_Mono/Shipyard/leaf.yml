@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Leaf:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Leaf MED{1}'

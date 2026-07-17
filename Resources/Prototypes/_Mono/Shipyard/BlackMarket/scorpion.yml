@@ -25,7 +25,7 @@
   minPlayers: 0
   stations:
     Scorpion:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Scorpion PDV{1}'

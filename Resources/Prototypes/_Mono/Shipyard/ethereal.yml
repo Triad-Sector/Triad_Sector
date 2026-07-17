@@ -7,7 +7,7 @@
   id: Ethereal
   parent: BaseVessel
   name: NS Ethereal
-  description: A science vessel shaped like a butterfly. Comes facilities to accomodate botany and artifact research, as well as chemistry. Comes with a pool & bar. 
+  description: A science vessel shaped like a butterfly. Comes facilities to accomodate botany and artifact research, as well as chemistry. Comes with a pool & bar.
   price: 120000
   category: Large
   group: Shipyard
@@ -30,7 +30,7 @@
   minPlayers: 0
   stations:
     Ethereal:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Ethereal CIV{1}'

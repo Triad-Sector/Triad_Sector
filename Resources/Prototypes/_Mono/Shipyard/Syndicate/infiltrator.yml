@@ -20,7 +20,7 @@
   minPlayers: 0
   stations:
     Infiltrator:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Infiltrator SYN{1}'

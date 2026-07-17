@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Praetorian:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Praetorian MIL{1}'

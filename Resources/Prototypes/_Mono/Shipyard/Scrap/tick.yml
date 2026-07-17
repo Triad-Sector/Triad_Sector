@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Tick:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tick SRP-MIL{1}'

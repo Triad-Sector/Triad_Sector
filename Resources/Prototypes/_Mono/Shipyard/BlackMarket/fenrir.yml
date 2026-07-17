@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     Fenrir:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Fenrir PDV{1}'

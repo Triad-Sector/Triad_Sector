@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Tzipora:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tzipora MED{1}'

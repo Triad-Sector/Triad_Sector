@@ -1,6 +1,6 @@
 # Author Info
 # GitHub: Leon-Krol
-# Discord: Vinny Shick 
+# Discord: Vinny Shick
 
 # Shuttle Notes:
 #
@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Tokarev:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tokarev MED{1}'

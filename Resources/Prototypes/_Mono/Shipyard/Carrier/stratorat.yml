@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     StratoRat:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Strato-Rat SNB{1}'

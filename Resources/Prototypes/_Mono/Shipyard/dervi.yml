@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     Dervi:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Dervi MED{1}'

@@ -22,7 +22,7 @@
   minPlayers: 0
   stations:
     Antlion:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Antlion DIS{1}'

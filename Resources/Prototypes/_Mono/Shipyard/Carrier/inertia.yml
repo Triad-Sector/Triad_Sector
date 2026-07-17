@@ -31,7 +31,7 @@
   minPlayers: 0
   stations:
     Inertia:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Inertia PDV{1}'

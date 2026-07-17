@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Canister:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Canister CIV{1}'

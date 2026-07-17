@@ -3,7 +3,7 @@
 # Discord: tsunameme
 
 # Shuttle Notes:
-# 
+#
 
 - type: vessel
   id: Zeros
@@ -29,7 +29,7 @@
   minPlayers: 0
   stations:
     Zeros:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Zeros CIV{1}'

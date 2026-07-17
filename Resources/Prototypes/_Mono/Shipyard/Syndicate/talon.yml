@@ -20,7 +20,7 @@
   minPlayers: 0
   stations:
     Talon:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Talon SYN{1}'

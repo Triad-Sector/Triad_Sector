@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     McChicken:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'McChicken CIV{1}'

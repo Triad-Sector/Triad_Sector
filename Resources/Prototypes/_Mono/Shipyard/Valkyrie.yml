@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Valkyrie:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Valkyrie MIL{1}'

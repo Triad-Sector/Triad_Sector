@@ -23,7 +23,7 @@
   minPlayers: 0
   stations:
     Hourglass:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Hourglass PDV{1}'

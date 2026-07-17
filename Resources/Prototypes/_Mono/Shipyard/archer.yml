@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Archer:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Archer MIL{1}'

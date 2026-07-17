@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     Solarsail:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Solarsail SRV{1}'

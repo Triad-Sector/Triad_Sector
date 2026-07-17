@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     QJ340:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'QJ-340 TSF{1}'

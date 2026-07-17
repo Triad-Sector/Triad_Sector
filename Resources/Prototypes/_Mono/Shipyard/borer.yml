@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Borer:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Borer CIV{1}'

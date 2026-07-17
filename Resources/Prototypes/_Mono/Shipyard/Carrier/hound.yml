@@ -10,7 +10,7 @@
   id: Hound
   parent: BaseVessel
   name: Hound
-  description: A security drone equiped with a prometheus cannon. 
+  description: A security drone equiped with a prometheus cannon.
   price: 35000
   category: Small
   group: Custom
@@ -30,7 +30,7 @@
   minPlayers: 0
   stations:
     Hound:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Hound SEC{1}'

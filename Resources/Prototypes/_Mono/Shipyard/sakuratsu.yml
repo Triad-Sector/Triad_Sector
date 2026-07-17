@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Sakuratsu:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Sakuratsu CIV{1}'

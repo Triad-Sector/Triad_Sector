@@ -23,7 +23,7 @@
   minPlayers: 0
   stations:
     Tethys:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tethys PDV{1}'

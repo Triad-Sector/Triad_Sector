@@ -6,7 +6,7 @@
   id: Parabellum
   parent: BaseVessel
   name: Parabellum
-  description: The parabellum is a patrol boat, made for escorting and unsuprisingly; patrolling stations and depots from any malicious ships. It's equipped with EMP launchers, as well as a hybrid EMP Missile launcher for more tougher encounters. 
+  description: The parabellum is a patrol boat, made for escorting and unsuprisingly; patrolling stations and depots from any malicious ships. It's equipped with EMP launchers, as well as a hybrid EMP Missile launcher for more tougher encounters.
   price: 92000
   category: Medium
   group: Sr
@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Parabellum:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Parabellum SEC{1}'

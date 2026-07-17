@@ -29,7 +29,7 @@
   minPlayers: 0
   stations:
     Phaeron:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Phaeron CIV{1}'

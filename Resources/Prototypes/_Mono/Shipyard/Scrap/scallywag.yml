@@ -29,7 +29,7 @@
   minPlayers: 0
   stations:
     Scallywag:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Scallywag MIL{1}'

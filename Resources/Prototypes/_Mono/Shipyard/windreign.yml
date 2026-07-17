@@ -22,7 +22,7 @@
   minPlayers: 0
   stations:
     Windreign:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Windreign CIV{1}'

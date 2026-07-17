@@ -25,7 +25,7 @@
   minPlayers: 0
   stations:
     Peregrine:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Peregrine CIV{1}'

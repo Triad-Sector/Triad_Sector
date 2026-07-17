@@ -28,7 +28,7 @@
   minPlayers: 0
   stations:
     Phantom:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Phantom MED{1}'

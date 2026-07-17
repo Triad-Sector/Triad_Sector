@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Promise:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Promise MED{1}'

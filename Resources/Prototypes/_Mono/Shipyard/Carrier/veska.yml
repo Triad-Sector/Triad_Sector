@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     Veska:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Veska MIL{1}'

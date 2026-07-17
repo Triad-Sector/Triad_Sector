@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Mite:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Mite MIL{1}'

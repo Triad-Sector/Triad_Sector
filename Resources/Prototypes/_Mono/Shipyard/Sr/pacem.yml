@@ -5,7 +5,7 @@
 - type: vessel
   id: Pacem
   parent: BaseVessel
-  name: Pacem 
+  name: Pacem
   description: A patrol corvette for inner ring defense and patrol. Recommended crew of 2.
   price: 130000 #Roughly 20% markup from appraisegrid
   category: Medium
@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Pacem:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Pacem SEC{1}'

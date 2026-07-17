@@ -28,7 +28,7 @@
   minPlayers: 0
   stations:
     McChilly:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'McChilly CIV{1}'

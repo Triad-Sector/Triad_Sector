@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     Bucket:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Bucket SRV{1}'

@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     Spyglass:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Spyglass CIV{1}'

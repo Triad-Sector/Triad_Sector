@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Velios:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Velios MED{1}'

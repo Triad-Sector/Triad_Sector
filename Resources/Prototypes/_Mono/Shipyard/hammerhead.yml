@@ -32,7 +32,7 @@
   minPlayers: 0
   stations:
     Hammerhead:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Hammerhead MIL{1}'

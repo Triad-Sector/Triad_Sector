@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     SpyglassMKII:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Spyglass MKII PDV{1}'

@@ -30,7 +30,7 @@
   minPlayers: 0
   stations:
     Rook:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Rook SEC{1}'

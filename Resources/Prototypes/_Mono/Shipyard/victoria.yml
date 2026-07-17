@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Victoria:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Victoria CIV{1}'

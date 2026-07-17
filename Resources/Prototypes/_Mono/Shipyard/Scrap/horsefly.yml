@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Horsefly:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Horsefly SRP-MIL{1}'

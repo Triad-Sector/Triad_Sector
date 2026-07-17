@@ -25,7 +25,7 @@
   minPlayers: 0
   stations:
     Noble:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Noble CIV{1}'

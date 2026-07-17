@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Tanuki:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tanuki MIL{1}'

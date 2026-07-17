@@ -23,7 +23,7 @@
   minPlayers: 0
   stations:
     Bastion:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Bastion PDV{1}'

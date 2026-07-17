@@ -20,7 +20,7 @@
   minPlayers: 0
   stations:
     Pillbox:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Pillbox CIV{1}'

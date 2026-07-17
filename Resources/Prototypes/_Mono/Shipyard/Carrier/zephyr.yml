@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     Zephyr:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Zephyr TSF{1}'

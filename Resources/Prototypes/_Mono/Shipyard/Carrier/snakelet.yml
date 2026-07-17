@@ -31,7 +31,7 @@
   minPlayers: 0
   stations:
     Snakelet:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Snakelet PDV{1}'

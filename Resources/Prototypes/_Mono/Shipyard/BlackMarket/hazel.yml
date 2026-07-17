@@ -24,7 +24,7 @@
   minPlayers: 0
   stations:
     Hazel:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Hazel PDV{1}'

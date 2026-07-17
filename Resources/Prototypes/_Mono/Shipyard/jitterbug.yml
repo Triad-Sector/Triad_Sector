@@ -29,7 +29,7 @@
   minPlayers: 0
   stations:
     Jitterbug:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Jitterbug CIV{1}'

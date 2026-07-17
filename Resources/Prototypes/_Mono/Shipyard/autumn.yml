@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Autumn:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Autumn CIV{1}'

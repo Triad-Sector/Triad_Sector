@@ -25,7 +25,7 @@
   minPlayers: 0
   stations:
     Saintie:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Saintie PDV{1}'
