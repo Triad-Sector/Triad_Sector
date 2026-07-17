@@ -33,7 +33,7 @@
           - Cash
     taxAccounts:
       Frontier: 0.02
-      Nfsd: 0.02
+      TDF: 0.02
       Medical: 0.01
   - type: ActivatableUI
     key: enum.BankATMMenuUiKey.ATM
@@ -52,7 +52,7 @@
   - type: BankATM
     taxAccounts:
       Frontier: 0
-      Nfsd: 0
+      TDF: 0
       Medical: 0
 
 - type: entity
@@ -282,7 +282,9 @@
   suffix: TDF # Triad
   components:
   - type: StationBankATM
-    account: Nfsd
+    account: TDF
+  - type: AccessReader
+    access: [["TdfWarden"], ["TdfChiefEnforcer"], ["TdfPatrolTeamLeader"]] # Triad
   - type: CompanyAccessReader
     requiredCompany: TDF # Triad
     popupMessage: company-access-denied-tdf # Triad

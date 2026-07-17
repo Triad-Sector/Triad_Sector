@@ -38,7 +38,7 @@
         paths:
         - /Maps/_NF/Bluespace/cache.yml
     rewardAccounts:
-      Nfsd: 1.0
+      TDF: 1.0
 
 # Triad - moved these to Triad namespace for TDF vaults
 #- type: entity

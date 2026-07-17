@@ -34,7 +34,7 @@
         paths:
         - /Maps/_Triad/Bluespace/tdfvault.yml
     rewardAccounts:
-      Nfsd: 0.7 # TDF, 70% of the appraised grid
+      TDF: 0.7 # TDF, 70% of the appraised grid
       Frontier: 0.1 # 10% of the appraised grid to colonial outpost
       Medical: 0.1
 
@@ -75,6 +75,6 @@
         paths:
         - /Maps/_Triad/Bluespace/tdfvaultsmall.yml
     rewardAccounts:
-      Nfsd: 0.9 # TDF
+      TDF: 0.9 # TDF
 
 # TODO: Federated Solarian Republic vaults and Coalition vaults

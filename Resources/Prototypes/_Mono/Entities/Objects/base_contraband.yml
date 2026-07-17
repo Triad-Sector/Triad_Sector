@@ -150,7 +150,7 @@
   components:
   - type: ItemTax
     taxAccounts:
-      nfsd: -0.2
+      TDF: -0.2
 
 - type: entity
   parent: BaseFactionGearTaxedT0
