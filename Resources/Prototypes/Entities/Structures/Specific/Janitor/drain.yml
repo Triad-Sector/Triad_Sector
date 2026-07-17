@@ -17,7 +17,6 @@
     - type: Clickable
     - type: Transform
       anchored: true
-      noRot: true
     - type: Anchorable # Triad: can move
       delay: 6
     - type: Pullable # Triad: can move
