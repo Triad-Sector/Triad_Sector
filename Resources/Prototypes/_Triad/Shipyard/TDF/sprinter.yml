@@ -5,7 +5,7 @@
   id: Sprinter
   parent: BaseVessel
   name: TDF Sprinter
-  description: TDF's medium sized cargo vessel designed for high speed manuvers, this ship is often used to transport contraband and TDF equipement between outpost, its low power gunnery make it a weak choise for ship combat tho its ability to move at high speed makes it a great ship at chassing crimials.
+  description: TDF's medium sized cargo vessel designed for high speed maneuvers. This ship is often used to transport contraband and TDF equipment between outposts. Its low-power gunnery make it a poor choice for ship combat, but its ability to move at high speed makes it excel at pursuing criminals.
   price: 73000
   category: Medium
   group: Security
