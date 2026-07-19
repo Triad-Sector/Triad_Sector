@@ -20,16 +20,16 @@
 
 - type: entity
   parent: AirlockCommand
-  id: AirlockTdfHighCommand
-  suffix: TDF High Command
+  id: AirlockTfaHighCommand
+  suffix: TFA High Command
   components:
   - type: Sprite
     sprite: _Triad/Structure/Doors/Airlocks/Standard/tdfhighcom.rsi
 
 - type: entity
   parent: AirlockCommandGlass
-  id: AirlockTdfHighCommandGlass
-  suffix: TDF High Command
+  id: AirlockTfaHighCommandGlass
+  suffix: TFA High Command
   components:
   - type: Sprite
     sprite: _Triad/Structure/Doors/Airlocks/Glass/tdfhighcom.rsi

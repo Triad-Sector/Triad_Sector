@@ -23,7 +23,7 @@
   id: JobPlantTechnician
 
 - type: playTimeTracker
-  id: JobTdfHighCommander
+  id: JobTfaHighCommandRep
 
 - type: playTimeTracker
-  id: JobTdfHighCommandIntern
+  id: JobTfaHighCommandIntern

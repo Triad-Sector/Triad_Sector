@@ -60,8 +60,8 @@
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
-  id: ClothingHeadsetTdfHighCommand
-  name: TDF high command headset
+  id: ClothingHeadsetHighCommand
+  name: TFA high command headset
   components:
   - type: ContainerFill
     containers:
@@ -76,8 +76,8 @@
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseTDFHeadset]
-  id: ClothingHeadsetAltTdfHighCommand
-  name: TDF high command over-ear headset
+  id: ClothingHeadsetAltHighCommand
+  name: TFA high command over-ear headset
   components:
   - type: ContainerFill
     containers:

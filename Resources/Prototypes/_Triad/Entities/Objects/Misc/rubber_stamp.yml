@@ -15,9 +15,9 @@
   # TODO: Sprite and color?
 
 - type: entity
-  name: TDF HighComm rubber stamp
+  name: TFA HighComm rubber stamp
   parent: RubberStampBase
-  id: RubberStampTdfHighComm
+  id: RubberStampTfaHighComm
   categories: [ DoNotMap ]
   components:
   - type: Sprite

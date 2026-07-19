@@ -18,9 +18,9 @@
 
 - type: entity
   parent: [ClothingOuterCoatTdfChiefEnforcerTrench, ClothingOuterWinterCoatToggleable]
-  id: ClothingOuterWinterTdfHighCommand
-  name: TDF high command winter coat
-  description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. Very special.
+  id: ClothingOuterWinterTfaHighCommand
+  name: TFA high command winter coat
+  description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. Very special. Usually worn by Triad Frontier Association officials.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/WinterCoats/high_command.rsi
