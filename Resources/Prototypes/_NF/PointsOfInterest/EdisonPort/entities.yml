@@ -4,15 +4,19 @@
 # so the map loads cleanly; refit later.
 
 # --- Lighting ------------------------------------------------------------------
-# Triad: dropped upstream `solarFlareShieldingCoefficient` (no solar-flare feature here),
-# the shielded RSI (not vendored), and the shielded construction node (graph node absent).
-# These behave as normal empty light fixtures until a shielded variant is built out.
+# Triad: dropped upstream `solarFlareShieldingCoefficient` (no solar-flare feature here) and
+# the shielded RSI (not vendored), so these use the normal light sprite. Buildable via the
+# self-contained ShieldedLightFixture graph (see shielded_light_construction.yml).
 - type: entity
   id: NFPoweredlightShieldedEmpty
   parent: PoweredlightEmpty
   name: shielded light
   description: A light fixture. Draws power and produces light when equipped with a light tube. Reinforced with plasteel to shield it from solar flares.
   suffix: Empty
+  components:
+  - type: Construction
+    graph: ShieldedLightFixture
+    node: shieldedTubeLight
 
 - type: entity
   id: NFPoweredSmallLightShieldedEmpty
@@ -20,6 +24,10 @@
   name: shielded small light
   description: A light fixture. Draws power and produces light when equipped with a light tube. Reinforced with plasteel to shield it from solar flares.
   suffix: Empty
+  components:
+  - type: Construction
+    graph: ShieldedLightFixture
+    node: shieldedBulbLight
 
 - type: entity
   parent: BaseLightTubeCrystal
@@ -36,7 +44,7 @@
 - type: entity
   id: SpawnPointPlantManager
   parent: SpawnPointJobBase
-  name: plant manager
+  name: Director of Infrastructure
   components:
   - type: SpawnPoint
     job_id: PlantManager
@@ -49,7 +57,7 @@
 - type: entity
   id: SpawnPointPlantTechnician
   parent: SpawnPointJobBase
-  name: plant technician
+  name: Sector Technician
   components:
   - type: SpawnPoint
     job_id: PlantTechnician
@@ -80,7 +88,7 @@
 - type: entity
   parent: DefaultStationBeaconCommand
   id: DefaultStationBeaconFrontierManagersOffice
-  suffix: PM's Office
+  suffix: Director's Office
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-managers-office
@@ -88,7 +96,7 @@
 - type: entity
   parent: DefaultStationBeaconCommand
   id: DefaultStationBeaconFrontierManagersQuarters
-  suffix: PM's Quarters
+  suffix: Director's Quarters
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-managers-quarters

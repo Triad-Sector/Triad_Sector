@@ -5,11 +5,6 @@
 # --- New loadout prototypes ---------------------------------------------------
 
 - type: loadout
-  id: PlantManagerChiefToolbelt
-  equipment:
-    belt: ClothingBeltChiefEngineerFilled
-
-- type: loadout
   id: PlantManagerMessengerBag
   equipment:
     back: ClothingBackpackMessengerChiefEngineer
@@ -99,13 +94,16 @@
 - type: loadoutGroup
   id: PlantBelt
   name: loadout-group-plant-belt
-  minLimit: 0
+  minLimit: 1
+  maxLimit: 1
   loadouts:
   - ContractorClothingBeltUtility
   - ContractorClothingBeltUtilityFilled
   - ContractorClothingBeltStorageWaistbag
   - ContractorClothingBeltSalvageWebbingFilledNF
   - ContractorBoxFolderClipboard
+  fallbacks:
+  - ContractorClothingBeltUtilityFilled
 
 - type: loadoutGroup
   id: PlantFace
@@ -155,7 +153,7 @@
   fallbacks:
   - ContractorClothingHeadsetEngineeringCommon
 
-# --- Plant Manager ------------------------------------------------------------
+# --- Director of Infrastructure -----------------------------------------------
 
 - type: loadoutGroup
   id: PlantManagerJumpsuit
@@ -185,14 +183,7 @@
   fallbacks:
   - StationEngineerBackpack
 
-- type: loadoutGroup
-  id: PlantManagerBelt
-  name: loadout-group-plant-manager-belt
-  minLimit: 0
-  loadouts:
-  - PlantManagerChiefToolbelt
-
-# --- Plant Technician ---------------------------------------------------------
+# --- Sector Technician --------------------------------------------------------
 
 - type: loadoutGroup
   id: PlantTechnicianHead

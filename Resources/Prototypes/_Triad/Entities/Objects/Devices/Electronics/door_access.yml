@@ -22,3 +22,13 @@
   components:
   - type: AccessReader
     access: [["TdfChiefEnforcer"]]
+
+# Triad: command-or-engineering board for the FrontierCommand engineering/atmos doors on the
+# outpost stations - command members OR engineering staff can open (was command-only HoS/HoP).
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsFrontierCommandEngineering
+  suffix: Command/Engineering, Locked
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Engineering"]]

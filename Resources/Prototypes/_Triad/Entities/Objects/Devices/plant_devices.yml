@@ -3,24 +3,25 @@
 - type: entity
   parent: EngineerPDA
   id: PlantManagerPDA
-  name: plant manager PDA
+  name: Director of Infrastructure PDA
   description: Tracks reactor output and the plant's account balance.
   components:
   - type: Pda
     id: PlantManagerIDCard
   - type: PdaBorderColor
     borderColor: "#c59a3b"
-  - type: CartridgeLoader # Triad - extended with the ledger for the plant account
+  - type: CartridgeLoader # Triad - extended with the ledger for the plant account + cargo bounties
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NewsReaderCartridge
     - LedgerCartridge
+    - BountyContractsCartridge
 
 - type: entity
   parent: EngineerPDA
   id: PlantTechnicianPDA
-  name: plant technician PDA
+  name: Sector Technician PDA
   description: Rugged, and smells faintly of coolant.
   components:
   - type: Pda
@@ -33,7 +34,7 @@
 - type: entity
   parent: IDCardStandard
   id: PlantManagerIDCard
-  name: plant manager ID card
+  name: Director of Infrastructure ID card
   components:
   - type: PresetIdCard
     job: PlantManager
@@ -50,7 +51,7 @@
 - type: entity
   parent: IDCardStandard
   id: PlantTechnicianIDCard
-  name: plant technician ID card
+  name: Sector Technician ID card
   components:
   - type: PresetIdCard
     job: PlantTechnician

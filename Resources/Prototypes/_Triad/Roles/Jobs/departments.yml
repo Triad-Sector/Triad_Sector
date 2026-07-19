@@ -1,7 +1,7 @@
 - type: department
-  id: Industrial
-  name: department-Industrial
-  description: department-Industrial-description
+  id: Infrastructure
+  name: department-Infrastructure
+  description: department-Infrastructure-description
   color: "#c59a3b"
   weight: 100
   roles:

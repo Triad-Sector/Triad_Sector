@@ -29,7 +29,7 @@
 - type: entity
   id: CSComputerCargoOrdersEddison
   parent: ComputerCargoOrders
-  name: plant manager's request computer
+  name: Director of Infrastructure's request computer
   description: Used to purchase restricted engineering supplies.
   components:
   # Triad: dropped the NFCargoOrderConsole override (NF sector-cargo variant not ported) and
@@ -43,7 +43,7 @@
       Medical: 0.1
       Edison: 0.15
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+    access: [["Command"]] # Triad: retired ChiefEngineer; the Director runs the plant on Command
 
 # --- EdisonTechFab  (coyote: _CS/Entities/Structures/Machines/lathe.yml) ---
 - type: entity
@@ -150,11 +150,11 @@
 - type: entity
   parent: GunSafe
   id: GunSafePlantManager
-  name: plant manager's gun safe
+  name: Director of Infrastructure's gun safe
   suffix: Filled
   components:
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+    access: [["Command"]] # Triad: retired ChiefEngineer; the Director runs the plant on Command
   - type: StorageFill
     contents:
     - id: WeaponPistolMk58
@@ -183,6 +183,10 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       sprite: Structures/Machines/computers.rsi
       state: generic_panel_open
+  # Triad: plant comms console - overrides the stationwide ComputerComms access so the Director of
+  # Infrastructure (Command) and Sector Technician (Engineering) can use it.
+  - type: AccessReader
+    access: [["Command"], ["Engineering"]]
 
 # --- ComputerTabletopStationAdminBankATMEdison  (coyote: _NF/Entities/Structures/Machines/Computers/computers_tabletop.yml) ---
 - type: entity
@@ -193,9 +197,9 @@
   components:
   - type: StationBankATM
     account: Edison # Triad: restored coyote's Edison sector account
-  # Triad: the plant's chief engineer (Plant Manager) runs the terminal alongside the HoP/Chief Enforcer
+  # Triad: the plant's chief engineer (Director of Infrastructure) runs the terminal alongside the HoP/Chief Enforcer
   - type: AccessReader
-    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["ChiefEngineer"]]
+    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["Command"]] # Triad: retired ChiefEngineer (Director via Command)
 
 # --- AntiMatterFabricator  (coyote: _NF/Entities/Structures/Machines/ame_fab.yml) ---
 - type: entity

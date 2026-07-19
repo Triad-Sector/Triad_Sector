@@ -12,16 +12,16 @@
   setPreference: true
   weight: 100
   displayWeight: 40
-  # The Plant Manager is the plant's chief engineer. ChiefEngineer access covers Coyote's plant-manager
-  # fixtures (gun safe, request computer, CE doors) and the admin bank terminal; Command for the
-  # manager-only areas; Engineering/Atmospherics for the rest of the plant.
+  # The Director of Infrastructure is the plant's chief engineer. Command covers the manager-only
+  # fixtures (gun safe, request computer, admin bank terminal) and the office/quarters + vault;
+  # Engineering/Atmospherics cover the rest of the plant. (ChiefEngineer retired - it isn't
+  # console-grantable and nothing plant-side needs it anymore.)
   access:
   - Engineering
   - Atmospherics
   - Maintenance
   - External
   - Command
-  - ChiefEngineer
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
@@ -29,7 +29,6 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      - type: ShipSavingBlacklist # Triad - can't save ships
       - type: NpcFactionMember
         factions:
         - TDF # Triad - not TDF, but friendly and works with them
@@ -41,9 +40,9 @@
   id: PlantManagerGear
   equipment:
     id: PlantManagerPDA
-    ears: ClothingHeadsetEngineering
-    eyes: ClothingEyesGlassesMeson
-    belt: ClothingBeltUtilityEngineering
+    belt: ClothingBeltChiefEngineerFilled # Triad: fixed CE toolbelt (no belt choice), lives in gear not a loadout category
+    # Triad: ears (guaranteed) and glasses (optional) come from the role loadout; kept out of gear
+    # so the loadout doesn't double-fill the slot and drop a duplicate.
 
 - type: job
   id: PlantTechnician
@@ -70,7 +69,6 @@
     prototype: FrontierBirthdayGift
   - !type:AddComponentSpecial
     components:
-      - type: ShipSavingBlacklist # Triad - can't save ships
       - type: NpcFactionMember
         factions:
         - TDF # Triad - not TDF, but friendly and works with them
@@ -82,6 +80,4 @@
   id: PlantTechnicianGear
   equipment:
     id: PlantTechnicianPDA
-    ears: ClothingHeadsetEngineering
-    eyes: ClothingEyesGlassesMeson
-    belt: ClothingBeltUtilityEngineering
+    # Triad: clothing comes from the role loadout (ears/belt guaranteed, glasses optional).

@@ -5610,7 +5610,14 @@ entities:
       rot: 3.141592653589793 rad
       pos: -11.5,15.5
       parent: 1
-- proto: AirlockChiefEngineerGlassLocked
+- proto: AirlockCommandLocked
+  entities:
+  - uid: 168
+    components:
+    - type: Transform
+      pos: 26.5,18.5
+      parent: 1
+- proto: AirlockCommandGlassLocked
   entities:
   - uid: 109
     components:
@@ -5959,11 +5966,6 @@ entities:
     - type: Transform
       pos: 17.5,-4.5
       parent: 1
-  - uid: 168
-    components:
-    - type: Transform
-      pos: 26.5,18.5
-      parent: 1
   - uid: 169
     components:
     - type: Transform
@@ -6195,7 +6197,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 12.5,12.5
       parent: 1
-- proto: AirlockFrontierCommandLocked
+- proto: AirlockEngineeringLocked
   entities:
   - uid: 189
     components:
@@ -40057,12 +40059,12 @@ entities:
   - uid: 6702
     components:
     - type: MetaData
-      name: Edison Plant Manager Office fax machine
+      name: Edison Director of Infrastructure Office fax machine
     - type: Transform
       pos: -10.5,37.5
       parent: 1
     - type: FaxMachine
-      name: Edison Plant Manager Office
+      name: Edison Director of Infrastructure Office
   - uid: 6703
     components:
     - type: MetaData
@@ -67389,7 +67391,7 @@ entities:
     - type: Transform
       pos: -11.5,28.5
       parent: 1
-- proto: HighSecFrontierCommandLocked
+- proto: HighSecCommandLocked
   entities:
   - uid: 10408
     components:
@@ -73269,7 +73271,7 @@ entities:
 
         [color=#E47A1F] [head=3][bold]Electra Dynamics™[/bold][/head][/color]  [color=gray][italic]                   Technical Specifications[/italic][/color]
 
-        [color=#F9B34F][/color] [head=4][color=#F9B34F][bold]Edison Shipyard     [/color][/bold][/head] [color=gray][italic]                       For plant manager use only[/bolditalic][/head][/color]
+        [color=#F9B34F][/color] [head=4][color=#F9B34F][bold]Edison Shipyard     [/color][/bold][/head] [color=gray][italic]                       For Director of Infrastructure use only[/bolditalic][/head][/color]
 
         [color=#134975]──────────────────────────────────────[/color]
 

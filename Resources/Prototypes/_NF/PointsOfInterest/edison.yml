@@ -30,7 +30,7 @@
   minPlayers: 0
   stations:
     Edison:
-      stationProto: RecordsFrontierOutpostCargo # Triad: Cargo variant carries StationCargoOrderDatabase; without it the plant manager's request computer can't take orders
+      stationProto: RecordsFrontierOutpostCargo # Triad: Cargo variant carries StationCargoOrderDatabase; without it the Director of Infrastructure's request computer can't take orders
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Edison Power Plant'

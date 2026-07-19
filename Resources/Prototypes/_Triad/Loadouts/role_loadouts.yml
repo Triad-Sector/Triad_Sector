@@ -22,7 +22,7 @@
   - NFSpeciesSpecific
   - ContractorArmorPlates
 
-# Plant Manager is the plant's chief engineer: CE wardrobe plus a curated engineering kit
+# The Director of Infrastructure is the plant's chief engineer: CE wardrobe plus a curated engineering kit
 # (the Plant* groups; the generic Contractor* groups carry too much cross-department gear).
 # No GroupTankHarness: NFSpeciesSpecific already forces LoadoutTankHarness (double vox harness otherwise).
 - type: roleLoadout
@@ -35,8 +35,6 @@
   - PlantManagerBackpack
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
-  - PlantBelt
-  - PlantManagerBelt
   - PlantFace
   - PlantGlasses
   - PlantEars
@@ -48,7 +46,7 @@
   - ContractorBureaucracy
   - NFSpeciesSpecific
 
-# Plant Technician is station-engineer tier. No ID group, keeps the plant ID from starting gear.
+# The Sector Technician is station-engineer tier. No ID group, keeps the plant ID from starting gear.
 - type: roleLoadout
   id: JobPlantTechnician
   groups:
