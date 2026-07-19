@@ -2,7 +2,7 @@
   id: TfaHighCommandIntern
   name: job-name-tfa-high-command-intern
   description: job-description-tfa-high-command-intern
-  playTimeTracker: JobTdfHighCommandIntern
+  playTimeTracker: JobTfaHighCommandIntern
   setPreference: false
   startingGear: TfaHighCommandInternGear
   icon: "JobIconNanotrasen" # Idk it looks good enough
