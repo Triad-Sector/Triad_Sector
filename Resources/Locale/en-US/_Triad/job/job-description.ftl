@@ -7,7 +7,7 @@ job-description-tdf-patrol-team-leader = Teach new cadets the basics of what the
 job-description-tdf-chief-enforcer = Manage your TDF team and keep them efficient, quell dissent, and keep the sector safe.
 
 # TFA High Command
-job-description-tfa-high-command = Act as an ambassador to Venmar Station, Medical Dispatch, and the power plant.
+job-description-tfa-high-command = Act as an ambassador to Venmar Station, Medical Dispatch, and the power plant from the Triad Frontier Association.
 job-description-tfa-high-command-intern = Follow the orders of your superior High Commanders and file paperwork.
 
 # Freelancers
