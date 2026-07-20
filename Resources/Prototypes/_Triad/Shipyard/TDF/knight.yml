@@ -4,8 +4,8 @@
 - type: vessel
   id: knight
   parent: BaseVessel
-  name: TDN Knight
-  description: Workhorse of the TDFN, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
+  name: TDF Knight
+  description: Workhorse of the TDF, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
   price: 210000
   category: Medium
   group: Security
@@ -27,7 +27,7 @@
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'TDN-Knight'
+        mapNameTemplate: 'TDF-Knight'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
