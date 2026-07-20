@@ -31,3 +31,11 @@ HyperlinkBookNfsdSop: BookTdfSop
 
 # 2026-07-13
 ToggleNightVision: null
+
+# 2026-07-16
+ClothingOuterHardsuitViperGroupStandard: ClothingOuterHardsuitSyndie
+ClothingOuterHardsuitViperGroupMedic: ClothingOuterHardsuitSyndieMedic
+ClothingOuterHardsuitViperGroupJuggernaut: ClothingOuterHardsuitSyndieElite
+ClothingHeadHelmetHardsuitViperGroupStandard: ClothingHeadHelmetHardsuitSyndie
+ClothingHeadHelmetHardsuitViperGroupMedic: ClothingHeadHelmetHardsuitSyndieMedic
+ClothingHeadHelmetHardsuitViperGroupJuggernaut: ClothingHeadHelmetHardsuitSyndieElite

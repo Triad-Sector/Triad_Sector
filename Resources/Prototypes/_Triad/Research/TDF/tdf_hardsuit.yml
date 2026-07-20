@@ -1,0 +1,13 @@
+- type: technology
+  id: TdfBasicEquipment
+  name: research-technology-tdf-basic-equipment
+  entityIcon: ClothingOuterHardsuitTdf
+  discipline: TdfEquipment
+  tier: 1
+  cost: 15000
+  recipeUnlocks:
+  - ClothingOuterHardsuitTdfMedic
+  - ClothingOuterHardsuitTdf
+  technologyPrerequisites:
+  - UniversalMaterialResearchT1
+  position: 12, 1

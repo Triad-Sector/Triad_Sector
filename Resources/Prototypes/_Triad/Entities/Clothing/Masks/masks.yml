@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingMaskGasSwat
+  parent: [ClothingMaskGasSwat, BaseClass2AShipContraband]
   id: ClothingMaskGasSwatTdf
   name: TDF swat gas mask
   description: An extra reinforced gas mask. Spooky yellow eyes.

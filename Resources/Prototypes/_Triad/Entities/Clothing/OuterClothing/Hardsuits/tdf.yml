@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2]
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseClass2AShipContraband]
   id: ClothingOuterHardsuitTdf
   name: TA-21 hardsuit
   description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
@@ -41,13 +41,11 @@
   - type: StaticPrice
     price: 5000
     vendPrice: 7500
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuit
 
 - type: entity
-  parent: ClothingOuterHardsuitTdf
+  parent: [ClothingOuterHardsuitTdf, BaseClass2AShipContraband]
   id: ClothingOuterHardsuitTdfMedic
   name: TA-21 medic hardsuit
   description: Medic variant of the TA-21 outfitted with caustic and radiological shielding. Some of the blunt-absorbent gel layer is sacrificed for the NBC protection.
@@ -75,7 +73,7 @@
       helmetattachment: ClothingHeadHelmetAttachmentBlock
 
 - type: entity
-  parent: ClothingOuterHardsuitTdf
+  parent: [ClothingOuterHardsuitTdf, BaseClass2AShipContraband]
   id: ClothingOuterHardsuitTdfChiefEnforcer
   name: TDF TA-35 'gilded' chief enforcer tacsuit
   description: A powerful tacsuit made from remains of a NT bulwark modsuit. Lightweight and capable of taking a lot of physical damage. A premium tacsuit for only the most prestiged of TDF enforcers.

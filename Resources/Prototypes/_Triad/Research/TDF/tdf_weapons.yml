@@ -1,0 +1,43 @@
+- type: technology
+  id: TdfBasicGuns
+  name: research-technology-tdf-guns
+  entityIcon: WeaponRifleLecter
+  discipline: TdfWeaponry
+  tier: 1
+  cost: 25000
+  recipeUnlocks:
+  - WeaponRifleLecterRecipeTdf
+  technologyPrerequisites:
+  - UniversalMaterialResearchT1
+  position: 12, 2
+
+- type: technology
+  id: TdfAdvanceGuns
+  name: research-technology-tdf-guns-advance
+  entityIcon: WeaponRifleMR8T
+  discipline: TdfWeaponry
+  tier: 1
+  cost: 35000
+  recipeUnlocks:
+  - WeaponRifleMR8TRecipeTdf
+  - WeaponLMGRiotTdf
+  - AmmoBox68x52mmCaselessBig
+  technologyPrerequisites:
+  - TdfBasicGuns
+  - UniversalMaterialResearchT2
+  position: 12, 4
+
+- type: technology
+  id: TdfEshield
+  name: research-technology-tdf-eshield
+  entityIcon: EnergyShield
+  discipline: TdfWeaponry
+  tier: 2
+  cost: 30000
+  recipeUnlocks:
+  - EnergyShieldRecipeTDF
+  - EnergySwordRecipeTDF
+  technologyPrerequisites:
+  - TdfBasicGuns
+  - UniversalMaterialResearchT2
+  position: 13, 4

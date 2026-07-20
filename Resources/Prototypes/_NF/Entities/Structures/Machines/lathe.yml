@@ -151,14 +151,20 @@
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
     dynamicPacks:
-    - TdfTechfabDynamic
     - DynamicAmmoRecipePack
-    # Triad start
+    # Mono start
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
+    # Mono end
+    # Triad start
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
     # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
