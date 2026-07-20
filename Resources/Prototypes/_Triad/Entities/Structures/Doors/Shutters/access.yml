@@ -1,5 +1,4 @@
-#Blast door
-
+  #Blast door
 - type: entity
   id: BlastDoorIndestructibleTDF
   parent: BaseBlastDoorIndestructible
@@ -28,7 +27,7 @@
       board: [ DoorElectronicsSD ]
 
 - type: entity
-  id: BlastDoorIndestructibleSD
+  id: BlastDoorIndestructibleTIC
   parent: BaseBlastDoorIndestructible
   suffix: indestructible, TIC, Locked
   components:
@@ -37,7 +36,6 @@
       board: [ DoorElectronicsTIC ]
 
 #Shutters
-
 - type: entity
   id: ShutterIndestructibleTDF
   parent: ShutterNormalIndestructible
@@ -75,9 +73,8 @@
       board: [ DoorElectronicsTIC ]
 
 #Window shutters
-
 - type: entity
-  id: BlastDoorIndestructibleTDF
+  id: ShutterWindowIndestructibleTDF
   parent: ShutterWindowIndestructible
   suffix: indestructible, TDF, Locked
   components:
@@ -86,7 +83,7 @@
       board: [ DoorElectronicsSecurity ]
 
 - type: entity
-  id: BlastDoorIndestructibleSyndicate
+  id: ShutterWindowIndestructibleSyndicate
   parent: ShutterWindowIndestructible
   suffix: indestructible, Syndicate, Locked
   components:
@@ -95,7 +92,7 @@
       board: [ DoorElectronicsSyndicateAgent ]
 
 - type: entity
-  id: BlastDoorIndestructibleSD
+  id: ShutterWindowIndestructibleSD
   parent: ShutterWindowIndestructible
   suffix: indestructible, SD, Locked
   components:
@@ -104,7 +101,7 @@
       board: [ DoorElectronicsSD ]
 
 - type: entity
-  id: BlastDoorIndestructibleTIC
+  id: ShutterWindowIndestructibleTIC
   parent: ShutterWindowIndestructible
   suffix: indestructible, TIC, Locked
   components:
