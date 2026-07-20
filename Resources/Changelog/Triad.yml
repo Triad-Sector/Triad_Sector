@@ -2866,3 +2866,63 @@ Entries:
   id: 2421
   time: '2026-07-19T19:59:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/383
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: Added new merc only ship, the Palisade
+  id: 2422
+  time: '2026-07-20T11:34:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/380
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: 'Added new expedition ship, The Prospector '
+  id: 2423
+  time: '2026-07-20T11:42:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/366
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Service techfab and Autolathes now have access to a large assortment of
+        bureaucratically-adjacent items under the new Bureaucracy lathe pack.
+        This includes paper, colored paper, business cards, pens, clipboards, a
+        briefcase, folders, and envelopes.
+  id: 2424
+  time: '2026-07-20T13:12:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/370
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reptilian sprites for the syndicate hardsuits have been redone, and
+        should look a lot better and not like a completely different suit!
+    - type: Tweak
+      message: Resprited humans to be inline with the art direction.
+  id: 2425
+  time: '2026-07-20T13:35:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/384
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed TDF ships getting syndicate smuggler faxes
+    - type: Fix
+      message: >-
+        Fixed ship vouchers mispredicting when you put them into the console
+        (being laggy and making no sound)
+  id: 2426
+  time: '2026-07-20T15:03:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/386
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: Added yellow and black crystals, crystal shards, and light tubes.
+    - type: Fix
+      message: Fixed an issue where small lights are too hard to shoot.
+    - type: Fix
+      message: >-
+        Fixed a bug where dragged objects would collide with wall mounted lights
+        and cameras.
+  id: 2427
+  time: '2026-07-20T15:04:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/365

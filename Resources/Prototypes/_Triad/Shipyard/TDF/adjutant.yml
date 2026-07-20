@@ -17,6 +17,8 @@
   - Corvette
   engine:
   - Bananium
+  addComponents:
+  - type: ShipSavingBlacklist
 
 - type: gameMap
   id: Adjutant
@@ -35,4 +37,3 @@
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
-
