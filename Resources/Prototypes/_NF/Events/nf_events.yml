@@ -81,7 +81,7 @@
     - !type:GetRandomDeadDropAction
     blacklist: # Triad - blacklist
       components:
-      - StationDeadDropHintExempt
+      - StationFaxDeadDropHintExempt
 
 - type: entity
   id: SmugglingFaxBig
@@ -106,4 +106,4 @@
     - !type:GetRandomDeadDropAction
     blacklist: # Triad - blacklist
       components:
-      - StationDeadDropHintExempt
+      - StationFaxDeadDropHintExempt
