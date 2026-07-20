@@ -48272,14 +48272,6 @@ entities:
       parent: 1
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyCommand
-  entities:
-  - uid: 1046
-    components:
-    - type: Transform
-      parent: 1041
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyCommon
   entities:
   - uid: 732
@@ -48316,14 +48308,6 @@ entities:
     components:
     - type: Transform
       parent: 1245
-    - type: Physics
-      canCollide: False
-- proto: EncryptionKeyNfsd
-  entities:
-  - uid: 1047
-    components:
-    - type: Transform
-      parent: 1041
     - type: Physics
       canCollide: False
 - proto: EnergyShieldNfsd
