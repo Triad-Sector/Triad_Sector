@@ -13,6 +13,8 @@
   - Patrol
   engine:
   - AME
+  addComponents:
+  - type: ShipSavingBlacklist
 
 - type: gameMap
   id: Mercy
@@ -32,3 +34,4 @@
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
       - type: StationDeadDropHintExempt
+      - type: ShipSavingBlacklist

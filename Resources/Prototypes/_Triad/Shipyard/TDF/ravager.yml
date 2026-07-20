@@ -19,6 +19,8 @@
   - Science
   engine:
   - AME
+  addComponents:
+  - type: ShipSavingBlacklist
 
 - type: gameMap
   id: Ravager
@@ -38,3 +40,4 @@
           TdfEnforcer: [ 0, 0 ]
           Borg: [ 0, 0 ]
       - type: StationDeadDropHintExempt
+      - type: ShipSavingBlacklist
