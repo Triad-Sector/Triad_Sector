@@ -15,7 +15,7 @@
   class:
   - Patrol
   engine:
-  - Plamsa
+  - Plasma
 
 - type: gameMap
   id: knight
