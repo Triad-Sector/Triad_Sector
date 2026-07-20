@@ -32,6 +32,9 @@ HyperlinkBookNfsdSop: BookTdfSop
 # 2026-07-13
 ToggleNightVision: null
 
+# 2026-07-14
+HoloprojectorNfsdEmpty: HoloprojectorNfsd
+
 # 2026-07-16
 ClothingOuterHardsuitViperGroupStandard: ClothingOuterHardsuitSyndie
 ClothingOuterHardsuitViperGroupMedic: ClothingOuterHardsuitSyndieMedic
@@ -39,3 +42,11 @@ ClothingOuterHardsuitViperGroupJuggernaut: ClothingOuterHardsuitSyndieElite
 ClothingHeadHelmetHardsuitViperGroupStandard: ClothingHeadHelmetHardsuitSyndie
 ClothingHeadHelmetHardsuitViperGroupMedic: ClothingHeadHelmetHardsuitSyndieMedic
 ClothingHeadHelmetHardsuitViperGroupJuggernaut: ClothingHeadHelmetHardsuitSyndieElite
+
+# 2026-07-19
+RubberStampTdfHighComm: RubberStampTfaHighComm
+AirlockTdfHighCommandGlass: AirlockTfaHighCommandGlass
+AirlockTdfHighCommandGlassLocked: AirlockTfaHighCommandGlassLocked
+AirlockTdfHighCommand: AirlockTfaHighCommand
+AirlockTdfHighCommandLocked: AirlockTfaHighCommandLocked
+VendingMachineTdfHighCommandDrobe: VendingMachineTfaHighCommandDrobe

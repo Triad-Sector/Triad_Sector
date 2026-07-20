@@ -51,7 +51,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: HighSecDoor
@@ -214,7 +214,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: [ AirlockAtmosphericsGlass, AirlockFrontierCommandGlassLocked]
@@ -223,7 +223,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: AirlockGlass

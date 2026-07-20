@@ -17,7 +17,13 @@
   id: JobTdfCadet
 
 - type: playTimeTracker
-  id: JobTdfHighCommander
+  id: JobPlantManager
 
 - type: playTimeTracker
-  id: JobTdfHighCommandIntern
+  id: JobPlantTechnician
+
+- type: playTimeTracker
+  id: JobTfaHighCommandRep
+
+- type: playTimeTracker
+  id: JobTfaHighCommandIntern

@@ -3,7 +3,7 @@
   parent: BaseVoucherRecipe
   id: BasicVoucherTDF
   result: ShipVoucherTdfTier1
-  completetime: 100
+  completetime: 60
   materials:
     Steel: 5000
     Plasteel: 5000
@@ -17,7 +17,7 @@
   parent: BaseVoucherRecipe
   id: IntermediateVoucherTDF
   result: ShipVoucherTdfTier2
-  completetime: 100
+  completetime: 60
   materials:
     Steel: 15000
     Plasteel: 15000

@@ -68,11 +68,20 @@
     sound:
       path: /Audio/Ambience/Objects/drain.ogg
   - type: Anchorable # Triad: can move
+    delay: 3
   - type: Pullable # Triad: can move
   - type: Rotatable # Triad
   - type: Physics # Hardlight
     bodyType: Static
-    canCollide: false
+  - type: Fixtures # Triad
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 75
+        mask:
+        - ItemMask
   - type: ShipRepairable # Triad: Make sinks SRD repairable
     repairTime: 4
     repairCost: 15

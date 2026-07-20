@@ -45,9 +45,9 @@
       board: [ DoorElectronicsTdfChiefEnforcer ]
 
 - type: entity
-  parent: AirlockTdfHighCommand
-  id: AirlockTdfHighCommandLocked
-  suffix: TDF High Command, Locked
+  parent: AirlockTfaHighCommand
+  id: AirlockTfaHighCommandLocked
+  suffix: TFA High Command, Locked
   components:
   - type: ContainerFill
     containers:
@@ -100,9 +100,9 @@
       board: [ DoorElectronicsTdfChiefEnforcer ]
 
 - type: entity
-  parent: AirlockTdfHighCommandGlass
-  id: AirlockTdfHighCommandGlassLocked
-  suffix: TDF High Command, Locked
+  parent: AirlockTfaHighCommandGlass
+  id: AirlockTfaHighCommandGlassLocked
+  suffix: TFA High Command, Locked
   components:
   - type: ContainerFill
     containers:

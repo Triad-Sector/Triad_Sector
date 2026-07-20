@@ -12,7 +12,7 @@
       viewCircleRadius: 1080
       viewCircleCount: 1
       action: ActionToggleNightVision
-      phosphorColor: "#919191" # Grey cat vision
-      lightingColor: "#3a3a3a"
+      phosphorColor: "#a3a3a3" # Grey cat vision
+      lightingColor: "#525252"
       activateSound: null
       deactivateSound: null

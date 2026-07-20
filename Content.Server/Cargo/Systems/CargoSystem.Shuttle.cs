@@ -425,7 +425,7 @@ public sealed partial class CargoSystem
                             case SectorBankAccount.Frontier:
                                 frontierTaxAmount += price * taxCoeff;
                                 break;
-                            case SectorBankAccount.Nfsd:
+                            case SectorBankAccount.TDF:
                                 nfsdTaxAmount += price * taxCoeff;
                                 break;
                             case SectorBankAccount.Medical:
@@ -491,7 +491,7 @@ public sealed partial class CargoSystem
         if (frontierTaxAmount > 0)
             _bank.TrySectorDeposit(SectorBankAccount.Frontier, (int)frontierTaxAmount, LedgerEntryType.ColonialOutpostSales);
         if (nfsdTaxAmount > 0)
-            _bank.TrySectorDeposit(SectorBankAccount.Nfsd, (int)nfsdTaxAmount, LedgerEntryType.TSFMCSales);
+            _bank.TrySectorDeposit(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCSales);
         if (medicalTaxAmount > 0)
             _bank.TrySectorDeposit(SectorBankAccount.Medical, (int)medicalTaxAmount, LedgerEntryType.MedicalSales);
         if (blackMarketTaxAmount < 0)
@@ -507,7 +507,7 @@ public sealed partial class CargoSystem
         if (nfsdTaxAmount < 0)
         {
             nfsdTaxAmount = -nfsdTaxAmount;
-            _bank.TrySectorWithdraw(SectorBankAccount.Nfsd, (int)nfsdTaxAmount, LedgerEntryType.TSFMCPenalties);
+            _bank.TrySectorWithdraw(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCPenalties);
         }
         if (medicalTaxAmount < 0)
         {

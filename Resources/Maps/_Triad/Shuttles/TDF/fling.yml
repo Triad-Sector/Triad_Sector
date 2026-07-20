@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/14/2026 15:02:27
-  entityCount: 486
+  time: 07/17/2026 20:03:28
+  entityCount: 487
 maps: []
 grids:
 - 1
@@ -85,10 +85,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Smoke: []
         MetalFoam: []
         Kudzu: []
         Puddle: []
+        Smoke: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -360,7 +360,7 @@ entities:
       pos: 0.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10880.408
+      secondsUntilStateChange: -11000.672
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1988,7 +1988,7 @@ entities:
     - type: Transform
       pos: -1.7401934,0.6281576
       parent: 1
-- proto: LockerEvidence
+- proto: LockerTdfEvidence
   entities:
   - uid: 256
     components:
@@ -2065,6 +2065,13 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
+- proto: PaperCup
+  entities:
+  - uid: 487
+    components:
+    - type: Transform
+      pos: 1.0314825,2.376122
+      parent: 1
 - proto: PlasmaReinforcedWindowDirectional
   entities:
   - uid: 266
@@ -3252,29 +3259,29 @@ entities:
       parent: 1
 - proto: WallWeaponCapacitorRechargerOmnidirectional
   entities:
-  - uid: 483
+  - uid: 471
     components:
     - type: Transform
       pos: -0.5,-8.5
       parent: 1
-  - uid: 484
+  - uid: 472
     components:
     - type: Transform
       pos: 1.5,-8.5
       parent: 1
-  - uid: 485
+  - uid: 473
     components:
     - type: Transform
       pos: 4.5,-3.5
       parent: 1
-  - uid: 486
+  - uid: 474
     components:
     - type: Transform
       pos: -3.5,-4.5
       parent: 1
 - proto: WarpPoint
   entities:
-  - uid: 471
+  - uid: 475
     components:
     - type: Transform
       pos: 0.5,0.5
@@ -3317,13 +3324,13 @@ entities:
       canCollide: False
 - proto: WeaponTurretAK570
   entities:
-  - uid: 472
+  - uid: 476
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,-0.5
       parent: 1
-  - uid: 473
+  - uid: 477
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3331,25 +3338,25 @@ entities:
       parent: 1
 - proto: WeaponTurretDravon
   entities:
-  - uid: 474
+  - uid: 478
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,5.5
       parent: 1
-  - uid: 475
+  - uid: 479
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,3.5
       parent: 1
-  - uid: 476
+  - uid: 480
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 3.5,3.5
       parent: 1
-  - uid: 477
+  - uid: 481
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3357,19 +3364,19 @@ entities:
       parent: 1
 - proto: WeaponTurretL85Autocannon
   entities:
-  - uid: 478
+  - uid: 482
     components:
     - type: Transform
       pos: 7.5,-8.5
       parent: 1
-  - uid: 479
+  - uid: 483
     components:
     - type: Transform
       pos: -6.5,-8.5
       parent: 1
 - proto: WeaponTurretTovek
   entities:
-  - uid: 480
+  - uid: 484
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3377,7 +3384,7 @@ entities:
       parent: 1
 - proto: WindoorSecure
   entities:
-  - uid: 481
+  - uid: 485
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -3385,7 +3392,7 @@ entities:
       parent: 1
 - proto: WindoorSecureUranium
   entities:
-  - uid: 482
+  - uid: 486
     components:
     - type: Transform
       rot: -1.5707963267948966 rad

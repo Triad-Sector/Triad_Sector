@@ -5,6 +5,12 @@ triad-lobby-tdf-description = The first and primary outpost of the TDF, where th
    - Report crimes
    - Turn in contraband and valuable faction gear
    Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.
+triad-lobby-edison-subtext = Where the mechanically-minded mingle.
+triad-lobby-edison-description = The sector's heavy industrial base. Here you can:
+   - Run the supermatter and keep the plant alive
+   - Generate, use, and sell massive amounts of power
+   - Work on engineering and atmospherics projects
+   - Socialize with other engineers
 triad-lobby-triad-subtext = Main hub for many space pioneers and TFA employees.
 triad-lobby-triad-description = Awaken from cryosleep here to:
    - Start your own crew and become captain

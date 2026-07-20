@@ -66,12 +66,12 @@
 
 - type: entity
   parent: [BaseStructureDisableAnchoring, VendingMachine]
-  id: VendingMachineTdfHighCommandDrobe
+  id: VendingMachineTfaHighCommandDrobe
   name: CommandDrobe
-  description: TDF high command things!
+  description: TFA high command things!
   components:
   - type: VendingMachine
-    pack: TdfCommandDrobeInventory
+    pack: TfaCommandDrobeInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded

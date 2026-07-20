@@ -18,10 +18,10 @@
     - type: Transform
       anchored: true
     - type: Anchorable # Triad: can move
+      delay: 6
     - type: Pullable # Triad: can move
     - type: Physics
       bodyType: Static
-      canCollide: false
     - type: AmbientSound
       enabled: false
       volume: -8
@@ -62,6 +62,15 @@
             - !type:PlaySoundBehavior
               sound:
                 collection: MetalBreak
+    - type: Fixtures # Triad
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 125
+          mask:
+          - ItemMask
     - type: ShipRepairable # Triad: Make drains SRD repairable
       repairTime: 5
       repairCost: 20

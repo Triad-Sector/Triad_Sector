@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/14/2026 15:22:28
-  entityCount: 388
+  time: 07/17/2026 19:59:18
+  entityCount: 395
 maps: []
 grids:
 - 1
@@ -63,10 +63,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Puddle: []
         MetalFoam: []
-        Smoke: []
         Kudzu: []
+        Puddle: []
+        Smoke: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -859,6 +859,41 @@ entities:
     - type: Transform
       pos: 0.5,9.5
       parent: 1
+  - uid: 389
+    components:
+    - type: Transform
+      pos: 1.5,-2.5
+      parent: 1
+  - uid: 390
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
+  - uid: 391
+    components:
+    - type: Transform
+      pos: 0.5,-4.5
+      parent: 1
+  - uid: 392
+    components:
+    - type: Transform
+      pos: 0.5,-5.5
+      parent: 1
+  - uid: 393
+    components:
+    - type: Transform
+      pos: 0.5,-6.5
+      parent: 1
+  - uid: 394
+    components:
+    - type: Transform
+      pos: 0.5,-3.5
+      parent: 1
+  - uid: 395
+    components:
+    - type: Transform
+      pos: 0.5,-7.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 101
@@ -1115,39 +1150,26 @@ entities:
     - type: Transform
       pos: -1.5,2.5
       parent: 1
-      deviceLists:
-      - 3
-      - 5
   - uid: 141
     components:
     - type: Transform
       pos: -0.5,0.5
       parent: 1
-      deviceLists:
-      - 3
-      - 2
   - uid: 142
     components:
     - type: Transform
       pos: -2.5,-0.5
       parent: 1
-      deviceLists:
-      - 3
-      - 4
   - uid: 143
     components:
     - type: Transform
       pos: -1.5,-3.5
       parent: 1
-      deviceLists:
-      - 3
   - uid: 144
     components:
     - type: Transform
       pos: 0.5,-3.5
       parent: 1
-      deviceLists:
-      - 3
 - proto: GasMixerFlipped
   entities:
   - uid: 145
@@ -1675,8 +1697,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-      deviceLists:
-      - 3
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
   - uid: 197
@@ -1687,8 +1707,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-      deviceLists:
-      - 4
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
   - uid: 198
@@ -1698,8 +1716,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-      deviceLists:
-      - 2
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
   - uid: 199
@@ -1709,8 +1725,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-      deviceLists:
-      - 5
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
 - proto: GasVentScrubber
@@ -1723,8 +1737,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-      deviceLists:
-      - 3
     - type: AtmosPipeLayers
       pipeLayer: Secondary
   - uid: 201
@@ -1735,8 +1747,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-      deviceLists:
-      - 4
     - type: AtmosPipeLayers
       pipeLayer: Secondary
   - uid: 202
@@ -1746,8 +1756,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-      deviceLists:
-      - 2
     - type: AtmosPipeLayers
       pipeLayer: Secondary
   - uid: 203
@@ -1757,8 +1765,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-      deviceLists:
-      - 5
     - type: AtmosPipeLayers
       pipeLayer: Secondary
 - proto: GravityGeneratorMini

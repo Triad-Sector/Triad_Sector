@@ -80,7 +80,7 @@
       TriadCommerceCredit: 15 # Triad - currency change
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: -0.05
+      TDF: -0.05
 
 - type: entity
   parent: BaseC3ContrabandUnredeemable
@@ -92,7 +92,7 @@
       TriadCommerceCredit: 10 # Triad - currency chnage
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: -0.05
+      TDF: -0.05
 
 - type: entity
   parent: BaseC3ContrabandUnredeemable
@@ -139,7 +139,7 @@
       TriadCommerceCredit: 5 # Triad - currency change
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: -0.1
+      TDF: -0.1
 
 - type: entity
   parent: BaseC3PirateContrabandNoValue
@@ -152,7 +152,7 @@
       TriadCommerceCredit: 20 # Triad - currency change
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: -0.1
+      TDF: -0.1
 
 - type: entity
   parent: BaseC3ContrabandUnredeemable
@@ -177,7 +177,7 @@
       TriadCommerceCredit: 10 # Triad - currency change
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: -0.2
+      TDF: -0.2
 
 - type: entity
   parent: BaseC3ContrabandUnredeemable

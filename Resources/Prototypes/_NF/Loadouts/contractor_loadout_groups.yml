@@ -207,6 +207,7 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
+  - StrainedShorts # Triad
   # Triad start - Ported MNK clothes.
   - ClothingUniformMNKOfficeSkirt
   - ClothingUniformMNKUnderGarment
@@ -379,6 +380,8 @@
   - ContractorClothingOuterWinterCoatPlaid
   - ContractorClothingOuterCoatBomber
   - ContractorClothingOuterCoatBomberPunkRed # Punkish (Static visuals)
+  - SpotsJacketBlue # Triad
+  - SpotsJacketRed # Triad
   - ContractorClothingOuterCoatJacketLeather # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketBiker # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketJamrock # Punkish (Static visuals)
@@ -491,6 +494,7 @@
   - ContractorClothingShoesBootsCowboyWhite
   - ContractorClothingShoesSnakeskinBoots
   - ContractorClothingShoesHighheelBoots
+  - HighTops # Triad
   - ContractorClothingShoesBootsCowboyFancy
   - ContractorClothingShoesBootsWinterChiefEngineer
 #  - ContractorClothingShoesBootsWinterCMO # Temp removed for MOM. Will return if replaced.

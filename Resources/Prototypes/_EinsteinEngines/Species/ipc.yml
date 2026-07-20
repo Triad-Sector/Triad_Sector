@@ -47,6 +47,7 @@
     LFoot: MobIPCLFoot
     RFoot: MobIPCRFoot
     Wings: MobHumanoidAnyMarking
+    WingsOversuit: MobHumanoidAnyMarking # Triad: over-body wing layer (companion to Wings)
 
 - type: markingPoints
   id: MobIPCMarkingLimits

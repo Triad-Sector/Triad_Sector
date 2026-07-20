@@ -15,10 +15,10 @@
     minAngle: 0
     maxAngle: 0
   - type: Gun
-    minAngle: 2 # More firerate than L6 and Grizzly but having more recoil.
+    minAngle: 3 # More firerate than L6 and Grizzly but having more recoil.
     maxAngle: 18
     angleIncrease: 1
-    angleDecay: 9
+    angleDecay: 3 # More time to cooldown
     fireRate: 9
     selectedMode: FullAuto
     availableModes:

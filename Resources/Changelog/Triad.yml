@@ -2698,3 +2698,171 @@ Entries:
   id: 2408
   time: '2026-07-17T07:03:43.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/372
+- author: Minerva
+  changes:
+    - type: Fix
+      message: >-
+        Decorative greeble (antenna, ELINT, radar) construction ghosts have been
+        partially fixed. When placed as contruction ghosts, they now display
+        properly. Placement previews have not been fixed yet.
+  id: 2409
+  time: '2026-07-17T20:01:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/323
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Edison Power Plant has been reworked into a full industrial station:
+        supermatter engine, radiation collectors, TEG, AME fuel fabricator, and
+        an energy-to-plasma converter.
+    - type: Add
+      message: >-
+        New Industrial department jobs at Edison: Plant Manager and Plant
+        Technician, with their own loadouts, spawns, and PDAs. Spacers, Pilots,
+        and Mercenaries can also join there.
+    - type: Add
+      message: >-
+        Edison now has its own sector bank account. Selling power pays the
+        plant, purchases at the plant's request computer kick back a cut, and
+        the Plant Manager pays wages from the office terminal.
+    - type: Add
+      message: >-
+        The CreditFlow Lite app shows an Edison ledger tab, and the plant's
+        machines now have working power-draw controls.
+    - type: Fix
+      message: >-
+        Supermatter tesla delaminations no longer spawn infinite tesla balls,
+        and a delamination can no longer detonate after announcing it was
+        averted.
+    - type: Fix
+      message: >-
+        The supermatter monitoring console no longer refreshes every tick, and
+        its gas readouts no longer break on gases the crystal ignores.
+    - type: Fix
+      message: >-
+        The ledger PDA cartridge is now named CreditFlow Lite to match its
+        program.
+    - type: Tweak
+      message: >-
+        Edison's shutter buttons are labeled and no longer overlap, and civilian
+        late-join spawns moved to the bus stop hall.
+  id: 2410
+  time: '2026-07-17T20:26:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/339
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: TDF Ships
+  id: 2411
+  time: '2026-07-17T20:37:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/375
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Added more turrets for TDF, Future Factions and Syndicate
+    - type: Tweak
+      message: Changed the laser type of TDF Laser turret into something stronger
+    - type: Tweak
+      message: >-
+        All default turret range has been increased to 12 tiles, about the same
+        range as your peek/zoom view
+  id: 2412
+  time: '2026-07-17T22:52:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/256
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed sinks and drains not being able to be pulled.
+  id: 2413
+  time: '2026-07-17T22:58:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/377
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Made Tajaran Night vision a bit brighter.
+  id: 2414
+  time: '2026-07-17T23:01:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/374
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: The Warden and Patrol Team Leaders now have access to the TDF funding.
+  id: 2415
+  time: '2026-07-18T00:18:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/376
+- author: Delta-V
+  changes:
+    - type: Remove
+      message: Removed the battery requirement from holofan projectors.
+    - type: Tweak
+      message: >-
+        Holoprojectors now work like in SS13, you can place up to 6 at once with
+        charges reclaimed by removing unused holoprojectors.
+  id: 2416
+  time: '2026-07-18T00:31:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/363
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        TDF Data Farm now generates 45 research points a second, from 200 points
+        a second.
+  id: 2417
+  time: '2026-07-18T00:56:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/378
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Increase RP for Voucher
+    - type: Tweak
+      message: Decrease voucher crafting time by 40%
+    - type: Tweak
+      message: >-
+        Increase Riot MMG recoil and decrease it's recoil decay, it's nerf or
+        nothing.
+  id: 2418
+  time: '2026-07-18T00:57:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/379
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added Spots Jackets (Red, Blue)
+    - type: Add
+      message: Added Strained Shorts
+    - type: Add
+      message: Added Hightops
+  id: 2419
+  time: '2026-07-18T08:57:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/211
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        IPC wings now render in the correct layer from every direction instead
+        of drawing over everything.
+    - type: Fix
+      message: Balaclavas, helmet covers, and helmet attachments now render on IPCs.
+    - type: Fix
+      message: Fixed the draw order of IPC ID cards and neck-slot items.
+  id: 2420
+  time: '2026-07-19T19:40:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/381
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Edison is now run by the Director of Infrastructure and Sector
+        Technician (the Infrastructure department).
+    - type: Add
+      message: Shielded light fixtures can now be constructed.
+    - type: Tweak
+      message: >-
+        Reworked Edison and outpost access so infrastructure staff can reach
+        their areas, consoles, and the material vault.
+    - type: Fix
+      message: Plant roles no longer drop duplicate equipment when spawning.
+    - type: Fix
+      message: Plant roles can save and load ships again.
+  id: 2421
+  time: '2026-07-19T19:59:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/383

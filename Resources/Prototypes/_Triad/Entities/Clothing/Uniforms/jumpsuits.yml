@@ -62,11 +62,11 @@
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/chief_enforcer_dress.rsi
 
-# TDF High-Command
+# Triad frontier association High-Command
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitTdfHighCommand
-  name: TDF high command jumpsuit
+  id: ClothingUniformJumpsuitTfaHighCommand
+  name: TFA high command jumpsuit
   description: Paper-pusher.
   components:
   - type: Sprite
@@ -75,3 +75,15 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
+
+# Generic - Civilian
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformStrainedShorts
+  name: strained shorts
+  description: These things are not the right size.
+  components:
+  - type: Sprite
+    sprite: _DEN/Clothing/Uniforms/Jumpsuit/strainedshorts.rsi
+  - type: Clothing
+    sprite: _DEN/Clothing/Uniforms/Jumpsuit/strainedshorts.rsi

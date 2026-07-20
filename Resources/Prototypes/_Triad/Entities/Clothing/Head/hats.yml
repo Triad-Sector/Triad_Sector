@@ -44,9 +44,9 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatBeretTdfHighCommand
-  name: TDF high command beret
-  description: A blue and orange beret, used by TDF High Command. Spooky.
+  id: ClothingHeadHatBeretTfaHighCommand
+  name: TFA high command beret
+  description: A blue and orange beret, used by Triad Frontier Association High Command. Spooky.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_high_command.rsi
@@ -68,9 +68,9 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatTdfHighCommand
-  name: TDF high command cap
-  description: A blue and orange cap, used by TDF High Command. This cap alone gives you miles of authority!
+  id: ClothingHeadHatTfaHighCommand
+  name: TFA high command cap
+  description: A blue and orange cap, used by Triad Frontier Association High Command. This cap alone gives you miles of authority!
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/cap_tdf_high_command.rsi

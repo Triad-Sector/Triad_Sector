@@ -174,12 +174,12 @@
 
 - type: entity
   parent: TdfChiefPda
-  id: TdfHighComPda
-  name: TDF high command PDA
-  description: Damn. You either stole this or you have some insane authority.
+  id: TfaHighComPda
+  name: TFA high command PDA
+  description: Damn. Nice PDA.
   components:
   - type: Pda
-    id: TdfHighCommIDCard
+    id: TfaHighCommIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -192,13 +192,13 @@
     accentVColor: "#be8d32"
 
 - type: entity
-  parent: TdfHighComPda
-  id: TdfHighComInternPda
-  name: TDF high command intern PDA
-  description: Intern. Do TDF High Command proud!
+  parent: TfaHighComPda
+  id: TfaHighComInternPda
+  name: TFA high command intern PDA
+  description: Intern. Do the Triad Frontier Association proud!
   components:
   - type: Pda
-    id: TdfHighCommInternIDCard
+    id: TfaHighCommInternIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

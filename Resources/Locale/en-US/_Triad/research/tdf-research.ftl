@@ -10,4 +10,5 @@ research-technology-tdf-basic-equipment = Standard Protection Equipment
 
 # T2 TDF
 research-technology-tdf-eshield = Energy Shield Manufacturing
+research-discipline-tdf-shipyard-tier2 = Tier 2 Shipyard Production
 research-technology-tdf-guns-advance = Advance Ballistics production

@@ -1,4 +1,27 @@
 - type: entity
+  parent: [ ClothingOuterStorageBase, ClothingFoldableBase ]
+  id: ClothingOuterCoatRedSpotsJacket
+  name: red spots bomber jacket
+  description: A lightweight bomber jacket with spots on it to deter predators. Cute!
+  components:
+  - type: Sprite
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_red.rsi
+  - type: Clothing
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_red.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageBase, ClothingFoldableBase ]
+  id: ClothingOuterCoatBlueSpotsJacket
+  name: blue spots bomber jacket
+  description: A lightweight bomber jacket with spots on it to deter predators. Cute!
+  components:
+  - type: Sprite
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_blue.rsi
+  - type: Clothing
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_blue.rsi
+
+
+- type: entity
   parent: [ClothingOuterCoatHoSTrench, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfChiefEnforcerTrench
   name: chief enforcer's armored trenchcoat
@@ -40,9 +63,9 @@
 
 - type: entity
   parent: ClothingOuterCoatTdfChiefEnforcerTrench
-  id: ClothingOuterCoatTdfHighCommand
-  name: TDF high command armored dress coat
-  description: A dress coat enhanced with a special alloy for some extra protection and style for TDF high commanders.
+  id: ClothingOuterCoatTfaHighCommand
+  name: TFA high command armored dress coat
+  description: A dress coat enhanced with a special alloy for some extra protection and style for Triad Frontier Association high command members.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
