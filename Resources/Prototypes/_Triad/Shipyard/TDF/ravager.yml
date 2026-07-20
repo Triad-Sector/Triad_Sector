@@ -37,3 +37,4 @@
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
           Borg: [ 0, 0 ]
+      - type: StationDeadDropHintExempt
