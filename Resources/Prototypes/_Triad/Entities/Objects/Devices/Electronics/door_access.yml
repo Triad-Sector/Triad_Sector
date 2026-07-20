@@ -22,3 +22,21 @@
   components:
   - type: AccessReader
     access: [["TdfChiefEnforcer"]]
+
+# SD
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSD
+  suffix: SD, Locked
+  components:
+  - type: AccessReader
+    access: [["Solarian"]]
+
+# TIC
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTIC
+  suffix: TIC, Locked
+  components:
+  - type: AccessReader
+    access: [["Coalition"]]
