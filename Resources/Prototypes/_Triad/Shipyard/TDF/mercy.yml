@@ -34,4 +34,3 @@
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
       - type: StationDeadDropHintExempt
-      - type: ShipSavingBlacklist
