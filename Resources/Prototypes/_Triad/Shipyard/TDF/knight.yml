@@ -2,9 +2,9 @@
 # Discord: leafybonsai
 
 - type: vessel
-  id: knight
+  id: Knight
   parent: BaseVessel
-  name: TDF Knight
+  name: TDN Knight
   description: Workhorse of the TDF, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
   price: 210000
   category: Medium
@@ -18,20 +18,21 @@
   - Plasma
 
 - type: gameMap
-  id: knight
-  mapName: 'knight'
+  id: Knight
+  mapName: 'Knight'
   mapPath: /Maps/_Triad/Shuttles/TDF/knight.yml
   minPlayers: 0
   stations:
-    knight:
+    Knight:
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'TDF-Knight'
+        mapNameTemplate: 'TDF-Knight{1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
+
 
