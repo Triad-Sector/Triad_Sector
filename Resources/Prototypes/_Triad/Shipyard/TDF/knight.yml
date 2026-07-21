@@ -4,7 +4,7 @@
 - type: vessel
   id: Knight
   parent: BaseVessel
-  name: TDN Knight
+  name: TDF Knight
   description: Workhorse of the TDF, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
   price: 210000
   category: Medium
