@@ -20,7 +20,7 @@
     - BasicSilicon
   - type: ProjectileBatteryAmmoProvider
     proto: Bullet762x51mmRubber
-    fireCost: 100
+    fireCost: 25
   - type: DeviceNetworkRequiresPower
   - type: WiredNetworkConnection
   - type: UserInterface
@@ -39,9 +39,9 @@
   - type: BatteryWeaponFireModes
     fireModes:
     - proto: Bullet762x51mmRubber
-      fireCost: 100
+      fireCost: 25
     - proto: Bullet762x51mmAntiMaterial
-      fireCost: 100
+      fireCost: 40
   - type: DeviceNetwork
     deviceNetId: Wired
     sendBroadcastAttemptEvent: true
@@ -58,9 +58,10 @@
 
 - type: entity
   parent: WeaponEnergyTurretStationControlPanel
-  id: WeaponEnergyTurretTSFControlPanel
-  name: TDF sentry turret control panel
+  id: WeaponEnergyTurretTDFControlPanel
+  name: sentry turret control panel
   description: A wall-mounted interface that allows a local artifical intelligence to adjust the operational parameters of linked sentry turrets.
+  suffix: TDF
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -77,7 +78,7 @@
 
 - type: entity
   parent: BallisticTurretHeavyAIBase
-  id: BallisticTurretHeavyAITSF
+  id: BallisticTurretHeavyAITDF
   name: TDF heavy remote sentry turret
   components:
   - type: AccessReader
