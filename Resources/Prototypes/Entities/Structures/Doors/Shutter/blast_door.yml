@@ -26,6 +26,7 @@
       path: /Audio/Machines/blastdoor.ogg
     closeSound:
       path: /Audio/Machines/blastdoor.ogg
+    performCollisionCheck: false # Triad
   - type: Occluder
   - type: Appearance
   - type: RadiationBlocker
