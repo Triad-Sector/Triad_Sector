@@ -103755,7 +103755,7 @@ entities:
     - type: Transform
       pos: 16.5,20.5
       parent: 2
-- proto: WallRockBasaltBluespace
+- proto: NFWallRockBasaltBluespace
   entities:
   - uid: 14452
     components:
@@ -103823,7 +103823,7 @@ entities:
     - type: Transform
       pos: 7.5,29.5
       parent: 2
-- proto: WallRockBasaltGoldGolem
+- proto: NFWallRockBasaltGoldGolem
   entities:
   - uid: 14464
     components:

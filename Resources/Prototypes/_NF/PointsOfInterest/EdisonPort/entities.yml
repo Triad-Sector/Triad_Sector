@@ -29,15 +29,6 @@
     graph: ShieldedLightFixture
     node: shieldedBulbLight
 
-- type: entity
-  parent: BaseLightTubeCrystal
-  name: ultraviolet light tube
-  id: LightTubeUltraviolet
-  description: A high power high energy bulb which has a small colored crystal inside.
-  components:
-  - type: LightBulb
-    color: "#5D0CED"
-
 # --- Job spawn markers -----------------------------------------------------------
 # Triad: restored from coyote (the earlier port had re-protoed the map's plant spawners
 # into SpawnPointLatejoin because the plant jobs didn't exist there).

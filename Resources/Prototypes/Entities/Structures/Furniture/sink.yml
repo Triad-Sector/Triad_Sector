@@ -100,6 +100,9 @@
         reagents:
         - ReagentId: Water
           Quantity: 500
+  - type: Construction # Triad
+    graph: sinkstemlesswater
+    node: finish
 
 - type: entity
   name: wide sink
@@ -117,6 +120,9 @@
       maxFillLevels: 1
       fillBaseName: sink_wide-fill-
       solutionName: drainBuffer
+    - type: Construction # Triad
+      graph: widesink
+      node: finish
 
 #Stemless Sink
 
@@ -147,3 +153,6 @@
         reagents:
         - ReagentId: Water
           Quantity: 500
+  - type: Construction # Triad
+    graph: sinkstemlesswater
+    node: finish

@@ -3176,7 +3176,7 @@ entities:
     - type: Transform
       pos: -2.32408,8.024502
       parent: 1
-- proto: ColoredLightTubeBlackLight
+- proto: ColoredLightTubeUltraviolet
   entities:
   - uid: 427
     components:
@@ -3641,7 +3641,7 @@ entities:
     - type: Transform
       pos: 4.5,-9.5
       parent: 1
-- proto: PoweredlightColoredBlack
+- proto: PoweredlightUltraviolet
   entities:
   - uid: 14
     components:

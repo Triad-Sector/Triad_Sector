@@ -2866,3 +2866,127 @@ Entries:
   id: 2421
   time: '2026-07-19T19:59:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/383
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: Added new merc only ship, the Palisade
+  id: 2422
+  time: '2026-07-20T11:34:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/380
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: 'Added new expedition ship, The Prospector '
+  id: 2423
+  time: '2026-07-20T11:42:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/366
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Service techfab and Autolathes now have access to a large assortment of
+        bureaucratically-adjacent items under the new Bureaucracy lathe pack.
+        This includes paper, colored paper, business cards, pens, clipboards, a
+        briefcase, folders, and envelopes.
+  id: 2424
+  time: '2026-07-20T13:12:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/370
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reptilian sprites for the syndicate hardsuits have been redone, and
+        should look a lot better and not like a completely different suit!
+    - type: Tweak
+      message: Resprited humans to be inline with the art direction.
+  id: 2425
+  time: '2026-07-20T13:35:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/384
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed TDF ships getting syndicate smuggler faxes
+    - type: Fix
+      message: >-
+        Fixed ship vouchers mispredicting when you put them into the console
+        (being laggy and making no sound)
+  id: 2426
+  time: '2026-07-20T15:03:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/386
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: Added yellow and black crystals, crystal shards, and light tubes.
+    - type: Fix
+      message: Fixed an issue where small lights are too hard to shoot.
+    - type: Fix
+      message: >-
+        Fixed a bug where dragged objects would collide with wall mounted lights
+        and cameras.
+  id: 2427
+  time: '2026-07-20T15:04:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/365
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed LPB's third AI Core not receiving power due to not having any
+        reachable wire
+  id: 2428
+  time: '2026-07-20T16:02:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/390
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Huge Auric visual overhaul, nearly done I promise
+  id: 2429
+  time: '2026-07-20T20:14:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/391
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Thrusters, Atmos, Wiring Visuals, a lot a lot a lot a lot
+  id: 2430
+  time: '2026-07-21T13:41:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/393
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added ability to construct sinks!
+    - type: Add
+      message: Added ability to construct drains!
+    - type: Add
+      message: >-
+        Added ability to construct extinguisher, defibrillator, and fire axe
+        cabinets!
+  id: 2431
+  time: '2026-07-21T17:50:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/278
+- author: HameyTychol
+  changes:
+    - type: Remove
+      message: Removed the ability to self execute
+  id: 2432
+  time: '2026-07-21T18:36:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/397
+- author: HameyTychol
+  changes:
+    - type: Add
+      message: Defibrillator cabinets recharge defibrillators now!
+  id: 2433
+  time: '2026-07-21T19:07:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/398
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Scrubbers can be set to scrub when above a certain percentage of a gas
+  id: 2434
+  time: '2026-07-21T22:17:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/399
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: Alive icon on the medhud
+  id: 2435
+  time: '2026-07-21T22:17:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/400

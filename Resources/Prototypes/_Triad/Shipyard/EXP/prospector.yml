@@ -1,0 +1,41 @@
+﻿# Author Info
+# SUI
+# Discord SUI
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Prospector
+  parent: BaseVessel
+  name: NSC Prospector
+  description: A Large expedition Vessel powered by a Double Core AME. 5-7 crewmembers is recommended for operation.
+  price: 236400
+  category: Large
+  group: Expedition
+  shuttlePath: /Maps/_Triad/Shuttles/EXP/prospector.yml
+  class:
+  - Expedition
+  - Salvage
+  engine:
+  - AME
+
+- type: gameMap
+  id: Prospector
+  mapName: 'Prospector'
+  mapPath: /Maps/_Triad/Shuttles/EXP/prospector.yml
+  minPlayers: 0
+  stations:
+    Prospector:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Prospector EXP{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]
