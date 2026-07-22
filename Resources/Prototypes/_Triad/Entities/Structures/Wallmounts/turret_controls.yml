@@ -60,7 +60,7 @@
   parent: WeaponEnergyTurretStationControlPanel
   id: WeaponEnergyTurretTDFControlPanel
   name: sentry turret control panel
-  description: A wall-mounted interface that allows a local artifical intelligence to adjust the operational parameters of linked sentry turrets.
+  description: A wall-mounted interface that allows personnel to adjust the operational parameters of linked TDF sentry turrets.
   suffix: TDF
   components:
   - type: AccessReader
