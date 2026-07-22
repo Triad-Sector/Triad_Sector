@@ -1,44 +1,44 @@
-- type: entity
-  id: BluespaceCacheError
-  parent: BaseStationEventNFModerateDelay # Triad Changed to Moderate (Previously, still spawned too Frequent, 2 vault side by side + 1 somewhere)
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-bluespace-cache-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    warningAnnouncement: station-event-bluespace-cache-warning-announcement
-    endAnnouncement: station-event-bluespace-cache-end-announcement
-    earliestStart: 60 # Mono
-    weight: 5
-    duration: 1350
-    maxDuration: 1560
-    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
-    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
-    #  Sheriff: 1
-  - type: BluespaceErrorRule
-    groups:
-      grid: !type:GridSpawnGroup
-        nameLoc:
-        - station-event-bluespace-name-SyndicateWeaponsCache
-        minimumDistance: 5000 # Triad
-        maximumDistance: 10000 # Triad
-        addComponents:
-        - type: Gravity
-          enabled: true
-          inherent: true
-        - type: IFF
-          color: "#E10F9B"
-        - type: Shuttle
-        - type: LinkedLifecycleGridParent
-        - type: ProtectedGrid
-          preventArtifactTriggers: true
-        - type: PreventPilot
-        - type: ForceAnchor # Added post-FTL, so anchoring is fine.
-        - type: ClaimableGrid # Mono
-        paths:
-        - /Maps/_NF/Bluespace/cache.yml
-    rewardAccounts:
-      TDF: 1.0
+#- type: entity
+#  id: BluespaceCacheError
+#  parent: BaseStationEventNFModerateDelay # Triad Changed to Moderate (Previously, still spawned too Frequent, 2 vault side by side + 1 somewhere)
+#  components:
+#  - type: StationEvent
+#    startAnnouncement: station-event-bluespace-cache-start-announcement
+#    startAudio:
+#      path: /Audio/Announcements/attention.ogg
+#    warningAnnouncement: station-event-bluespace-cache-warning-announcement
+#    endAnnouncement: station-event-bluespace-cache-end-announcement
+#    earliestStart: 60 # Mono
+#    weight: 5
+#    duration: 1350
+#    maxDuration: 1560
+#    reoccurrenceDelay: 360 # Triad: From 8 to 6 hours
+#    #requiredJobs: Mono - Remove Sheriff/Colonel requirement
+#    #  Sheriff: 1
+#  - type: BluespaceErrorRule
+#    groups:
+#      grid: !type:GridSpawnGroup
+#        nameLoc:
+#        - station-event-bluespace-name-SyndicateWeaponsCache
+#        minimumDistance: 5000 # Triad
+#        maximumDistance: 10000 # Triad
+#        addComponents:
+#        - type: Gravity
+#          enabled: true
+#          inherent: true
+#        - type: IFF
+#         color: "#E10F9B"
+#        - type: Shuttle
+#        - type: LinkedLifecycleGridParent
+#        - type: ProtectedGrid
+#          preventArtifactTriggers: true
+#        - type: PreventPilot
+#        - type: ForceAnchor # Added post-FTL, so anchoring is fine.
+#        - type: ClaimableGrid # Mono
+#        paths:
+#        - /Maps/_NF/Bluespace/cache.yml
+#    rewardAccounts:
+#     TDF: 1.0
 
 # Triad - moved these to Triad namespace for TDF vaults
 #- type: entity
