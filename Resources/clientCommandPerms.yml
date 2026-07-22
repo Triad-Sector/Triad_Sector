@@ -65,7 +65,7 @@
     - zoom
     - showsubfloor
     - showsubfloorforever
-    - showmarkers
+#    - showmarkers # Triad moved to Spawn perm
     - nodevis
     - nodevisfilter
     - detachent
