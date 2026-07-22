@@ -19,9 +19,8 @@
     openingAnimationTime: 1.0
     closingAnimationTime: 1.0
     canPry: false
-    crushDamage:
-      types:
-        Blunt: 25 # yowch
+    crushDamage: null # Triad
+    canCrush: false # Triad
     openSound:
       path: /Audio/Machines/blastdoor.ogg
     closeSound:
