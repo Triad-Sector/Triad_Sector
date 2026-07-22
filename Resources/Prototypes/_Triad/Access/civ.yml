@@ -1,11 +1,10 @@
 - type: accessGroup
-  id: CC
+  id: TFA
   tags:
   - HeadOfPersonnel
   - ChiefMedicalOfficer
   - StationTrafficController
   - Command
-  - Brig
   - Mail
   - Janitor
   - Medical
@@ -16,3 +15,12 @@
   tags:
   - Mercenary
   - Pilot
+  - Maintenance
+
+- type: accessGroup
+  id: AllAccessColonial # No brig access
+  tags:
+  - Service
+  - Mercenary
+  - Captain
+  - Frontier

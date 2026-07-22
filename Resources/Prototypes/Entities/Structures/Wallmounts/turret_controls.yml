@@ -94,39 +94,23 @@
   - type: TurretTargetSettings
     exemptAccessLevels:
     - Captain
-    - HeadOfSecurity
     - Security
     - Borg
     - BasicSilicon
   - type: DeployableTurretController
     accessGroups:
-    - TSF
-    - USSP
-    - PDV
-    - Viper
-    - CC
+    - TDF
+    - TFA
     - Civilian
     - Silicon
     accessLevels:
-    ## TSF
-    - HeadOfSecurity
-    - Armory
-    - Bailiff
-    - Sergeant
+    ## TDF
+    - TdfChiefEnforcer
+    - TdfWarden
+    - TdfPatrolTeamLeader
     - Security
-    - TsfmcEngineering
-    ## USSP
-    - USSPCommand
-    - USSPHigh
-    - USSP
-    ## PDV
-    - GrandVizier
-    - PDVCommand
-    - Pirate
-    ## VG
-    - ViperCommand
-    - Viper
-    ## CC
+    - Brig
+    ## TFA
     - HeadOfPersonnel
     - ChiefMedicalOfficer
     - StationTrafficController
@@ -139,10 +123,6 @@
     ## Civ
     - Mercenary
     - Pilot
-    ## Silicon
-    - StationAi
-    - Borg
-    - BasicSilicon
 
   # Device network
   - type: DeviceList
