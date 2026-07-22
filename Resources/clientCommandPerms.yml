@@ -85,3 +85,7 @@
     - uploadfile
     - loadprototype
     - uploadfolder
+
+- Flags: SPAWN
+  Command:
+    - showmarkers
