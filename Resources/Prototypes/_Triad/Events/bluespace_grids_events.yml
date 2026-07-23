@@ -93,7 +93,7 @@
     weight: 5
     duration: 1200
     maxDuration: 1500
-    reoccurrenceDelay: 360 # 6 hours
+    reoccurrenceDelay: 300 # 5 hours
     startRadioAnnouncement: station-event-bluespace-syndi-cache-start-radio-announcement
     startRadioAnnouncementChannel: Nfsd # TDF
   - type: BluespaceErrorRule
