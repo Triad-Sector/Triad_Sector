@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/23/2026 06:19:01
-  entityCount: 611
+  time: 07/23/2026 06:21:34
+  entityCount: 612
 maps: []
 grids:
 - 1
@@ -772,7 +772,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -62032.656
+      secondsUntilStateChange: -62185.516
       state: Opening
 - proto: AirlockTdf
   entities:
@@ -782,7 +782,7 @@ entities:
       pos: 2.5,19.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -60022.66
+      secondsUntilStateChange: -60175.52
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2824,6 +2824,14 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 612
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,5.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
 - proto: GasPipeTJunction
   entities:
   - uid: 168
@@ -4508,7 +4516,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -49293.906
+      secondsUntilStateChange: -49446.77
       state: Opening
     - type: Airlock
       autoClose: False
