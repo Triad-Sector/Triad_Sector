@@ -21218,8 +21218,6 @@ entities:
       pos: -19.5,26.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1241
       address: SNS-0975-4D8D
@@ -49995,8 +49993,6 @@ entities:
           ents:
           - 4997
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 9407
       - 9411
@@ -50171,8 +50167,6 @@ entities:
     - type: Firelock
       powered: True
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1290
       - 9410
@@ -50194,8 +50188,6 @@ entities:
     - type: Firelock
       powered: True
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1290
       - 9410
@@ -50217,8 +50209,6 @@ entities:
     - type: Firelock
       powered: True
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1290
       - 9410
@@ -50259,8 +50249,6 @@ entities:
           ents:
           - 5021
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 9411
       address: 4803-BA90
@@ -50910,8 +50898,6 @@ entities:
       pos: 4.5,17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1282
       - 1237
