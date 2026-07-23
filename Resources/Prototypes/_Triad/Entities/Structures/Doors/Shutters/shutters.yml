@@ -107,6 +107,20 @@
   - type: Occluder
 
 - type: entity
+  id: ShutterNormalIndestructibleOpen
+  parent: BaseShutterIndestructible
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
+
+- type: entity
   id: ShutterWindowIndestructible
   parent: BaseShutterIndestructible
   name: window shutter
@@ -119,3 +133,17 @@
       map: ["enum.DoorVisualLayers.Base"]
   - type: RadiationBlocker
     resistance: 1
+
+- type: entity
+  id: ShutterWindowIndestructibleOpen
+  parent: ShutterWindowIndestructible
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
