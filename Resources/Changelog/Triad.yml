@@ -2990,3 +2990,50 @@ Entries:
   id: 2435
   time: '2026-07-21T22:17:58.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/400
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed blast doors not closing on-top of airlocks
+  id: 2436
+  time: '2026-07-22T19:11:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/405
+- author: satirically
+  changes:
+    - type: Tweak
+      message: Knallstock can take extendeds now
+  id: 2437
+  time: '2026-07-23T01:50:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/409
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added Science Vessel to the shipyard, the Molecule.
+  id: 2438
+  time: '2026-07-23T03:43:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/403
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added privacy holoprojectors, available in loadouts under the fun
+        category and at an autolathe and service techfab. You can press Z to
+        access its interface, where you'll be able to give a description of the
+        events happening past the privacy holoprojectors. 
+  id: 2439
+  time: '2026-07-23T03:58:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/408
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        Rules 1.7, 1.7A, 1.7B, 1.7C, 5.4, 9.4A, 9.7, 10.2D (Please see PR for
+        more details)
+    - type: Remove
+      message: Removed fun. I hate fun.
+    - type: Tweak
+      message: >-
+        Rules: 2.3, 8.8, 9.1, 9.3, 9.3A, 10.2, 10.3 (Please see PR for more
+        details)
+  id: 2440
+  time: '2026-07-23T05:24:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/395

@@ -132,6 +132,7 @@
     - WetFloorSign
     - DeskBell
     - BrbSign
+    - HoloprojectorPrivate # Triad
 
 - type: latheRecipePack
   id: NFServiceTechfabDeprecated
