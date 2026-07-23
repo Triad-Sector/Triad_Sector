@@ -2990,3 +2990,10 @@ Entries:
   id: 2435
   time: '2026-07-21T22:17:58.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/400
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed blast doors not closing on-top of airlocks
+  id: 2436
+  time: '2026-07-22T19:11:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/405

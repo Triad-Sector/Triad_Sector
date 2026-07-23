@@ -1,7 +1,0 @@
-- type: accessGroup
-  id: AllAccessColonial # No brig access
-  tags:
-  - Service
-  - Mercenary
-  - Captain
-  - Frontier

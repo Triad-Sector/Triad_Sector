@@ -46,3 +46,12 @@
   - Captain
   - Chemistry
   - Medical
+
+- type: accessGroup
+  id: TDF
+  tags:
+  - TdfChiefEnforcer
+  - TdfWarden
+  - TdfPatrolTeamLeader
+  - Security
+  - Brig
