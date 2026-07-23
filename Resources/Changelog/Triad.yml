@@ -2997,3 +2997,10 @@ Entries:
   id: 2436
   time: '2026-07-22T19:11:05.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/405
+- author: satirically
+  changes:
+    - type: Tweak
+      message: Knallstock can take extendeds now
+  id: 2437
+  time: '2026-07-23T01:50:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/409
