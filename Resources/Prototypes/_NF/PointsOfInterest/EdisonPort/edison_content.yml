@@ -82,36 +82,6 @@
   suffix: Welding Fuel
   description: Industrial fuel for a Junior P.A.C.M.A.N. Highly explosive.
 
-# --- PlushieFlick  (coyote: _CS/Entities/Objects/Fun/toys.yml) ---
-- type: entity
-  parent: PlushieExperiment
-  id: PlushieFlick #yip!
-  name: cybersun engineer plushie
-  description: Each plushie is given its soul by pressing it to a supermatter sliver, if you listen closely you can hear yourself getting cancer in real-time!
-  components:
-  - type: Sprite
-    sprite: _CS/Objects/Fun/Plushies/flickplushie.rsi
-    state: flick
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: flick-inhand-left
-        shader: shaded
-      right:
-      - state: flick-inhand-right
-        shader: shaded
-    heldPrefix: plushieflick
-  - type: Clothing
-    clothingVisuals:
-      head:
-      - state: flick-equipped-HELMET
-        shader: shaded
-    quickEquip: false
-    sprite: _CS/Objects/Fun/Plushies/flickplushie.rsi
-    equippedPrefix: plushieflick
-    slots:
-    - HEAD
-
 # Triad: Shower dropped as duplicate of _EE/Entities/Structures/Furniture/shower.yml (kept; constructable). Map resolves to it.
 
 # --- DangerTether  (coyote: _NF/Entities/Markers/danger_tether.yml) ---
