@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/23/2026 06:15:03
-  entityCount: 610
+  time: 07/23/2026 06:19:01
+  entityCount: 611
 maps: []
 grids:
 - 1
@@ -750,6 +750,12 @@ entities:
       - 206
       - 239
       - 193
+      - 611
+      - 576
+      - 578
+      - 579
+      - 577
+      - 575
 - proto: AirlockShuttleNfsdLocked
   entities:
   - uid: 435
@@ -766,7 +772,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -61793.934
+      secondsUntilStateChange: -62032.656
       state: Opening
 - proto: AirlockTdf
   entities:
@@ -776,7 +782,7 @@ entities:
       pos: 2.5,19.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -59783.938
+      secondsUntilStateChange: -60022.66
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2415,6 +2421,11 @@ entities:
     - type: Transform
       pos: 2.5,19.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
   - uid: 581
     components:
     - type: Transform
@@ -2432,21 +2443,52 @@ entities:
     - type: Transform
       pos: 2.5,8.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
   - uid: 576
     components:
     - type: Transform
       pos: 0.5,12.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
   - uid: 577
     components:
     - type: Transform
       pos: 3.5,13.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
   - uid: 578
     components:
     - type: Transform
       pos: 1.5,17.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
+  - uid: 611
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,9.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 574
 - proto: FloorDrain
   entities:
   - uid: 533
@@ -4466,7 +4508,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -49055.188
+      secondsUntilStateChange: -49293.906
       state: Opening
     - type: Airlock
       autoClose: False
