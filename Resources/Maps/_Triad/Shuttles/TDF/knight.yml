@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/23/2026 06:21:34
-  entityCount: 612
+  time: 07/23/2026 06:26:43
+  entityCount: 610
 maps: []
 grids:
 - 1
@@ -750,7 +750,7 @@ entities:
       - 206
       - 239
       - 193
-      - 611
+      - 609
       - 576
       - 578
       - 579
@@ -772,7 +772,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -62185.516
+      secondsUntilStateChange: -62493.875
       state: Opening
 - proto: AirlockTdf
   entities:
@@ -782,7 +782,7 @@ entities:
       pos: 2.5,19.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -60175.52
+      secondsUntilStateChange: -60483.88
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1824,6 +1824,11 @@ entities:
     - type: Transform
       pos: -1.5,14.5
       parent: 1
+  - uid: 526
+    components:
+    - type: Transform
+      pos: 2.5,9.5
+      parent: 1
   - uid: 529
     components:
     - type: Transform
@@ -1834,10 +1839,15 @@ entities:
     - type: Transform
       pos: -1.5,17.5
       parent: 1
+  - uid: 552
+    components:
+    - type: Transform
+      pos: 2.5,8.5
+      parent: 1
   - uid: 554
     components:
     - type: Transform
-      pos: 2.5,9.5
+      pos: 2.5,7.5
       parent: 1
   - uid: 560
     components:
@@ -1847,29 +1857,19 @@ entities:
   - uid: 565
     components:
     - type: Transform
-      pos: 2.5,8.5
+      pos: 2.5,6.5
       parent: 1
   - uid: 580
     components:
     - type: Transform
-      pos: 2.5,7.5
+      pos: 2.5,5.5
       parent: 1
   - uid: 584
     components:
     - type: Transform
-      pos: 2.5,6.5
-      parent: 1
-  - uid: 586
-    components:
-    - type: Transform
-      pos: 2.5,5.5
-      parent: 1
-  - uid: 588
-    components:
-    - type: Transform
       pos: 2.5,4.5
       parent: 1
-  - uid: 589
+  - uid: 586
     components:
     - type: Transform
       pos: 2.5,3.5
@@ -1881,20 +1881,10 @@ entities:
     - type: Transform
       pos: -1.5,9.5
       parent: 1
-  - uid: 162
-    components:
-    - type: Transform
-      pos: -1.5,10.5
-      parent: 1
   - uid: 181
     components:
     - type: Transform
       pos: 0.5,8.5
-      parent: 1
-  - uid: 320
-    components:
-    - type: Transform
-      pos: -0.5,10.5
       parent: 1
   - uid: 348
     components:
@@ -2174,7 +2164,7 @@ entities:
       parent: 1
 - proto: ChairOfficeDark
   entities:
-  - uid: 367
+  - uid: 162
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2288,7 +2278,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.5,10.5
       parent: 1
-  - uid: 552
+  - uid: 456
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2370,19 +2360,19 @@ entities:
       parent: 1
 - proto: ExtinguisherCabinetFilled
   entities:
-  - uid: 526
+  - uid: 452
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 3.5,6.5
       parent: 1
-  - uid: 609
+  - uid: 607
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 3.5,20.5
       parent: 1
-  - uid: 610
+  - uid: 608
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2397,7 +2387,7 @@ entities:
       parent: 1
 - proto: filingCabinetDrawerRandom
   entities:
-  - uid: 601
+  - uid: 589
     components:
     - type: Transform
       pos: -0.76515454,21.619038
@@ -2408,7 +2398,7 @@ entities:
       prevFixedRotation: True
 - proto: FireAxeCabinetFilled
   entities:
-  - uid: 608
+  - uid: 606
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2478,7 +2468,7 @@ entities:
       - invalid
       deviceLists:
       - 574
-  - uid: 611
+  - uid: 609
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2499,7 +2489,7 @@ entities:
       parent: 1
 - proto: FoodBoxDonkpocketBerry
   entities:
-  - uid: 446
+  - uid: 367
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2507,7 +2497,7 @@ entities:
       parent: 1
 - proto: FoodBoxDonkpocketCarp
   entities:
-  - uid: 606
+  - uid: 600
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2524,6 +2514,7 @@ entities:
     - type: GasMixer
       inletTwoConcentration: 0.78
       inletOneConcentration: 0.22
+      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasOutletInjector
@@ -2824,7 +2815,7 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 612
+  - uid: 610
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3134,7 +3125,7 @@ entities:
       parent: 1
 - proto: GreebleRadarpanel1
   entities:
-  - uid: 452
+  - uid: 445
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3371,7 +3362,7 @@ entities:
       parent: 1
 - proto: LockerWallMaterialsFuelPlasmaFilled
   entities:
-  - uid: 456
+  - uid: 446
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3416,7 +3407,7 @@ entities:
       parent: 1
 - proto: NFPosterLegitMagnusWatching
   entities:
-  - uid: 607
+  - uid: 601
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3499,7 +3490,7 @@ entities:
       parent: 1
 - proto: PosterContrabandHackingGuide
   entities:
-  - uid: 445
+  - uid: 320
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3590,7 +3581,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,10.5
       parent: 1
-  - uid: 600
+  - uid: 588
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4516,7 +4507,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -49446.77
+      secondsUntilStateChange: -49755.13
       state: Opening
     - type: Airlock
       autoClose: False
