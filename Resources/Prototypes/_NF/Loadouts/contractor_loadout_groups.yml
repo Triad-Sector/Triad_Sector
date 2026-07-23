@@ -835,6 +835,9 @@
   - ContractorHoverbikeFlatpack
   - ContractorEmotionalPetCarrier
   - ContractorCrayonMagic
+  # Triad changes
+  - HoloprojectorPrivate
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorFace
