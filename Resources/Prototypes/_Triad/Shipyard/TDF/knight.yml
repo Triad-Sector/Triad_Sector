@@ -27,7 +27,7 @@
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'TDF-Knight{1}'
+        mapNameTemplate: 'Knight TDF{1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
