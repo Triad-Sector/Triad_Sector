@@ -809,9 +809,10 @@
   # End Triad
 
 - type: loadoutGroup
-  id: ContractorFun # Left Hand - 1 only
+  id: ContractorFun
   name: loadout-group-contractor-fun
   minLimit: 0
+  maxLimit: 2
   loadouts:
   - ContractorBriefcaseBrownFilled
   - ContractorToolboxEmergency
