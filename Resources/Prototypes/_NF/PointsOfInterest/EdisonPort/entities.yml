@@ -3,32 +3,6 @@
 # Frontier-specific fields/components/graphs absent on this fork were stripped (noted inline)
 # so the map loads cleanly; refit later.
 
-# --- Lighting ------------------------------------------------------------------
-# Triad: dropped upstream `solarFlareShieldingCoefficient` (no solar-flare feature here) and
-# the shielded RSI (not vendored), so these use the normal light sprite. Buildable via the
-# self-contained ShieldedLightFixture graph (see shielded_light_construction.yml).
-- type: entity
-  id: NFPoweredlightShieldedEmpty
-  parent: PoweredlightEmpty
-  name: shielded light
-  description: A light fixture. Draws power and produces light when equipped with a light tube. Reinforced with plasteel to shield it from solar flares.
-  suffix: Empty
-  components:
-  - type: Construction
-    graph: ShieldedLightFixture
-    node: shieldedTubeLight
-
-- type: entity
-  id: NFPoweredSmallLightShieldedEmpty
-  parent: PoweredSmallLightEmpty
-  name: shielded small light
-  description: A light fixture. Draws power and produces light when equipped with a light tube. Reinforced with plasteel to shield it from solar flares.
-  suffix: Empty
-  components:
-  - type: Construction
-    graph: ShieldedLightFixture
-    node: shieldedBulbLight
-
 # --- Job spawn markers -----------------------------------------------------------
 # Triad: restored from coyote (the earlier port had re-protoed the map's plant spawners
 # into SpawnPointLatejoin because the plant jobs didn't exist there).

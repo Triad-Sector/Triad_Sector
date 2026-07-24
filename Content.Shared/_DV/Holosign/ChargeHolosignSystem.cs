@@ -1,6 +1,8 @@
+using Content.Shared.Administration.Logs;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Database;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -15,6 +17,7 @@ public sealed partial class ChargeHolosignSystem : EntitySystem
     [Dependency] private SharedChargesSystem _charges = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!; // Triad
 
     private readonly HashSet<Entity<IComponent>> _placedSigns = new();
 
@@ -72,6 +75,11 @@ public sealed partial class ChargeHolosignSystem : EntitySystem
         if (!xform.Anchored)
             _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)
 
+        // Triad Start
+        var ev = new ChargeHolosignPlacedEvent(ent.Owner, args.User, holoUid);
+        RaiseLocalEvent(ent.Owner, ev, true); // Raised on the projector
+        // Triad end
+
         return true;
     }
 
@@ -88,6 +96,12 @@ public sealed partial class ChargeHolosignSystem : EntitySystem
             Loc.GetString("charge-holoprojector-reclaim-others", ("sign", sign), ("user", userIdentity)),
             ent,
             user);
+
+        // Triad Start
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(user):user} removed a {ToPrettyString(sign):holosign}");
+        var ev = new ChargeHolosignRemovedEvent(ent.Owner, user, sign);
+        RaiseLocalEvent(ent.Owner, ev, true); // Raised on the projector
+        // Triad end
 
         PredictedDel(sign);
         return true;

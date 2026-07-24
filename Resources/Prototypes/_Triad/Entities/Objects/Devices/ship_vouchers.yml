@@ -86,6 +86,8 @@
     destroyOnEmpty: true
     consoleType: Security
     companyName: TDF
+    vessels:
+    - Knight
 
 - type: entity
   parent: [BaseShipDSID, BaseClass2AShipContraband]
