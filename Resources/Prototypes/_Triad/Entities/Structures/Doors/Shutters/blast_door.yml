@@ -3,7 +3,7 @@
   id: BaseBlastDoorIndestructible
   parent: BaseShutterIndestructible
   name: blast door
-  description: this particular blast door seems to be mocking at your futile blasting
+  description: This particular blast door seems to be mocking you.
   abstract: true
   components:
   - type: AccessReader

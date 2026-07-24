@@ -135,9 +135,6 @@
     - NuclearOperative
     - SyndicateAgent
     - Wizard
-    - USSPCommand # Mono
-    - USSPHigh # Mono
-    - USSP # Mono
     - Solarian # Triad
     - Coalition # Triad
     privilegedIdSlot:
