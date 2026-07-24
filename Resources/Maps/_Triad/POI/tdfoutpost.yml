@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/24/2026 10:42:11
-  entityCount: 9656
+  time: 07/24/2026 22:07:54
+  entityCount: 9633
 maps: []
 grids:
 - 1
@@ -322,8 +322,8 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Puddle: []
         Smoke: []
+        Puddle: []
         Kudzu: []
         MetalFoam: []
       updateAccumulator: 0.6666002
@@ -15479,30 +15479,6 @@ entities:
       entIcon: 950
 - proto: ActionVendingThrow
   entities:
-  - uid: 1158
-    components:
-    - type: Transform
-      parent: 1157
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1157
-      attachedEntity: 1157
-  - uid: 1160
-    components:
-    - type: Transform
-      parent: 1159
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1159
-      attachedEntity: 1159
-  - uid: 1162
-    components:
-    - type: Transform
-      parent: 1161
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1161
-      attachedEntity: 1161
   - uid: 1164
     components:
     - type: Transform
@@ -15511,14 +15487,6 @@ entities:
       originalIconColor: '#FFFFFFFF'
       container: 1163
       attachedEntity: 1163
-  - uid: 1166
-    components:
-    - type: Transform
-      parent: 1165
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1165
-      attachedEntity: 1165
   - uid: 1168
     components:
     - type: Transform
@@ -15527,126 +15495,6 @@ entities:
       originalIconColor: '#FFFFFFFF'
       container: 1167
       attachedEntity: 1167
-  - uid: 1170
-    components:
-    - type: Transform
-      parent: 1169
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1169
-      attachedEntity: 1169
-  - uid: 1172
-    components:
-    - type: Transform
-      parent: 1171
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1171
-      attachedEntity: 1171
-  - uid: 1174
-    components:
-    - type: Transform
-      parent: 1173
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1173
-      attachedEntity: 1173
-  - uid: 1176
-    components:
-    - type: Transform
-      parent: 1175
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1175
-      attachedEntity: 1175
-  - uid: 1178
-    components:
-    - type: Transform
-      parent: 1177
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1177
-      attachedEntity: 1177
-  - uid: 1180
-    components:
-    - type: Transform
-      parent: 1179
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1179
-      attachedEntity: 1179
-  - uid: 1182
-    components:
-    - type: Transform
-      parent: 1181
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1181
-      attachedEntity: 1181
-  - uid: 1184
-    components:
-    - type: Transform
-      parent: 1183
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1183
-      attachedEntity: 1183
-  - uid: 1186
-    components:
-    - type: Transform
-      parent: 1185
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1185
-      attachedEntity: 1185
-  - uid: 1188
-    components:
-    - type: Transform
-      parent: 1187
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1187
-      attachedEntity: 1187
-  - uid: 1190
-    components:
-    - type: Transform
-      parent: 1189
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1189
-      attachedEntity: 1189
-  - uid: 1192
-    components:
-    - type: Transform
-      parent: 1191
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1191
-      attachedEntity: 1191
-  - uid: 1194
-    components:
-    - type: Transform
-      parent: 1193
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1193
-      attachedEntity: 1193
-  - uid: 1196
-    components:
-    - type: Transform
-      parent: 1195
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1195
-      attachedEntity: 1195
-  - uid: 1198
-    components:
-    - type: Transform
-      parent: 1197
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1197
-      attachedEntity: 1197
   - uid: 1200
     components:
     - type: Transform
@@ -15655,30 +15503,6 @@ entities:
       originalIconColor: '#FFFFFFFF'
       container: 1199
       attachedEntity: 1199
-  - uid: 1202
-    components:
-    - type: Transform
-      parent: 1201
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1201
-      attachedEntity: 1201
-  - uid: 1204
-    components:
-    - type: Transform
-      parent: 1203
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1203
-      attachedEntity: 1203
-  - uid: 1206
-    components:
-    - type: Transform
-      parent: 1205
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1205
-      attachedEntity: 1205
   - uid: 1208
     components:
     - type: Transform
@@ -15695,70 +15519,6 @@ entities:
       originalIconColor: '#FFFFFFFF'
       container: 1209
       attachedEntity: 1209
-  - uid: 1212
-    components:
-    - type: Transform
-      parent: 1211
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1211
-      attachedEntity: 1211
-  - uid: 1214
-    components:
-    - type: Transform
-      parent: 1213
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1213
-      attachedEntity: 1213
-  - uid: 1216
-    components:
-    - type: Transform
-      parent: 1215
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1215
-      attachedEntity: 1215
-  - uid: 1218
-    components:
-    - type: Transform
-      parent: 1217
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1217
-      attachedEntity: 1217
-  - uid: 1220
-    components:
-    - type: Transform
-      parent: 1219
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1219
-      attachedEntity: 1219
-  - uid: 1222
-    components:
-    - type: Transform
-      parent: 1221
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1221
-      attachedEntity: 1221
-  - uid: 1224
-    components:
-    - type: Transform
-      parent: 1223
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1223
-      attachedEntity: 1223
-  - uid: 1226
-    components:
-    - type: Transform
-      parent: 1225
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1225
-      attachedEntity: 1225
 - proto: AirAlarm
   entities:
   - uid: 1227
@@ -21942,16 +21702,6 @@ entities:
       parent: 1588
     - type: Physics
       canCollide: False
-- proto: AmmoBox68x52mmCaseless
-  entities:
-  - uid: 1592
-    components:
-    - type: Transform
-      parent: 1591
-    - type: BallisticAmmoProvider
-      unspawnedCount: 80
-    - type: Physics
-      canCollide: False
 - proto: AmmoTechFab
   entities:
   - uid: 2
@@ -26463,6 +26213,12 @@ entities:
       parent: 1
 - proto: BenchSofaCorpLeft
   entities:
+  - uid: 1192
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,-31.5
+      parent: 1
   - uid: 2307
     components:
     - type: Transform
@@ -26494,12 +26250,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,-29.5
-      parent: 1
-  - uid: 2312
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-31.5
       parent: 1
 - proto: BenchSofaCorpRight
   entities:
@@ -26819,6 +26569,15 @@ entities:
       createEnabled: True
     - type: Physics
       canCollide: False
+- proto: BoxBreachingCharges
+  entities:
+  - uid: 1198
+    components:
+    - type: Transform
+      parent: 6617
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: BoxEncryptionKeyScience
   entities:
   - uid: 2334
@@ -28011,6 +27770,26 @@ entities:
       parent: 1
 - proto: CableApcExtension
   entities:
+  - uid: 1205
+    components:
+    - type: Transform
+      pos: 17.5,-1.5
+      parent: 1
+  - uid: 1212
+    components:
+    - type: Transform
+      pos: 17.5,0.5
+      parent: 1
+  - uid: 1213
+    components:
+    - type: Transform
+      pos: 17.5,-0.5
+      parent: 1
+  - uid: 1214
+    components:
+    - type: Transform
+      pos: 17.5,-2.5
+      parent: 1
   - uid: 2357
     components:
     - type: Transform
@@ -37534,40 +37313,6 @@ entities:
       parent: 1
     - type: Physics
       canCollide: False
-- proto: Cartridge68x52mmCaseless
-  entities:
-  - uid: 1593
-    components:
-    - type: Transform
-      parent: 1591
-    - type: Physics
-      canCollide: False
-  - uid: 4113
-    components:
-    - type: Transform
-      parent: 4112
-    - type: Physics
-      canCollide: False
-  - uid: 4116
-    components:
-    - type: Transform
-      parent: 4115
-    - type: Physics
-      canCollide: False
-- proto: Cartridge8x65mmSKR
-  entities:
-  - uid: 4119
-    components:
-    - type: Transform
-      parent: 4118
-    - type: Physics
-      canCollide: False
-  - uid: 4122
-    components:
-    - type: Transform
-      parent: 4121
-    - type: Physics
-      canCollide: False
 - proto: Catwalk
   entities:
   - uid: 4124
@@ -38762,6 +38507,13 @@ entities:
       parent: 687
     - type: Physics
       canCollide: False
+- proto: ClothingNeckPonchoSmallPurple
+  entities:
+  - uid: 1177
+    components:
+    - type: Transform
+      pos: -6.6193285,-19.375282
+      parent: 1
 - proto: ClothingOuterHardsuitEVAPrisoner
   entities:
   - uid: 934
@@ -38972,6 +38724,30 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 695
+- proto: CMSemioticBridge
+  entities:
+  - uid: 1176
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.507911,2.2109516
+      parent: 1
+- proto: CMSemioticChem_lab
+  entities:
+  - uid: 1219
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -9.21285,16.783443
+      parent: 1
+- proto: CMSemioticMedical
+  entities:
+  - uid: 1220
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -9.216934,16.381893
+      parent: 1
 - proto: CMSemioticNorth
   entities:
   - uid: 9631
@@ -38997,6 +38773,28 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,-55.5
+      parent: 1
+- proto: CMSemioticRestrictedarea
+  entities:
+  - uid: 1222
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.5245435,-20.135593
+      parent: 1
+  - uid: 1223
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -1.4939752,-20.117075
+      parent: 1
+- proto: CMSemioticWater
+  entities:
+  - uid: 1221
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -27.494736,20.57339
       parent: 1
 - proto: CommsComputerCircuitboard
   entities:
@@ -46317,7 +46115,7 @@ entities:
     - type: Label
       currentLabel: Astrotame
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.15529557
+      sprayFizzinessThresholdRoll: 0.56822014
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46453,7 +46251,7 @@ entities:
     - type: Label
       currentLabel: BBQ sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.5282218
+      sprayFizzinessThresholdRoll: 0.9672415
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46783,7 +46581,7 @@ entities:
     - type: Label
       currentLabel: coconut water
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.116898425
+      sprayFizzinessThresholdRoll: 0.88705283
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46807,7 +46605,7 @@ entities:
     - type: Label
       currentLabel: coffee
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.22503427
+      sprayFizzinessThresholdRoll: 0.9829515
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46855,7 +46653,7 @@ entities:
     - type: Label
       currentLabel: coldsauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.22355323
+      sprayFizzinessThresholdRoll: 0.0680465
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46879,7 +46677,7 @@ entities:
     - type: Label
       currentLabel: cream
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.8845696
+      sprayFizzinessThresholdRoll: 0.86512333
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47093,7 +46891,7 @@ entities:
     - type: Label
       currentLabel: green tea
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.9173635
+      sprayFizzinessThresholdRoll: 0.094226584
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47117,7 +46915,7 @@ entities:
     - type: Label
       currentLabel: horseradish sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.60292625
+      sprayFizzinessThresholdRoll: 0.8288235
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47141,7 +46939,7 @@ entities:
     - type: Label
       currentLabel: hotsauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.5427349
+      sprayFizzinessThresholdRoll: 0.14806867
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47182,7 +46980,7 @@ entities:
     - type: Label
       currentLabel: ice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.7645193
+      sprayFizzinessThresholdRoll: 0.5963224
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47206,7 +47004,7 @@ entities:
     - type: Label
       currentLabel: lime juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.6332601
+      sprayFizzinessThresholdRoll: 0.7598539
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47230,7 +47028,7 @@ entities:
     - type: Label
       currentLabel: orange juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.33989823
+      sprayFizzinessThresholdRoll: 0.6565924
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47254,7 +47052,7 @@ entities:
     - type: Label
       currentLabel: ketchup
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.8173696
+      sprayFizzinessThresholdRoll: 0.35162577
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47302,7 +47100,7 @@ entities:
     - type: Label
       currentLabel: mayonnaise
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.12848976
+      sprayFizzinessThresholdRoll: 0.78293544
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47343,7 +47141,7 @@ entities:
     - type: Label
       currentLabel: mustard
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.43609366
+      sprayFizzinessThresholdRoll: 0.77159667
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47559,7 +47357,7 @@ entities:
     - type: Label
       currentLabel: soy sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.48224553
+      sprayFizzinessThresholdRoll: 0.39695448
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47631,7 +47429,7 @@ entities:
     - type: Label
       currentLabel: sugar
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.84350896
+      sprayFizzinessThresholdRoll: 0.44466186
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47672,7 +47470,7 @@ entities:
     - type: Label
       currentLabel: black tea
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.93356293
+      sprayFizzinessThresholdRoll: 0.41685376
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -48002,7 +47800,7 @@ entities:
     - type: Label
       currentLabel: watermelon juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.8357413
+      sprayFizzinessThresholdRoll: 0.9604254
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -48340,25 +48138,15 @@ entities:
           - 1104
 - proto: EnergySwordNfsd
   entities:
-  - uid: 4943
+  - uid: 1197
     components:
     - type: Transform
-      rot: 0.0007069904822856188 rad
-      pos: -13.42487,7.7378836
+      pos: -13.1296215,7.7398624
       parent: 1
-    - type: EnergySword
-      activatedColor: '#FFD580FF'
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 106.3589167
-          startTime: 0
-          length: 1
   - uid: 4944
     components:
     - type: Transform
-      rot: -0.000216278393054381 rad
-      pos: -13.262489,7.735081
+      pos: -13.370362,7.7645535
       parent: 1
     - type: EnergySword
       activatedColor: '#FFD580FF'
@@ -87954,9 +87742,22 @@ entities:
   entities:
   - uid: 6617
     components:
+    - type: MetaData
+      name: explosives safe
     - type: Transform
       pos: -15.5,12.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 1198
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 6618
     components:
     - type: Transform
@@ -88407,7 +88208,7 @@ entities:
     - type: Label
       currentLabel: caramexinin
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.5509198
+      sprayFizzinessThresholdRoll: 0.46188444
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -88784,115 +88585,11 @@ entities:
       canCollide: False
 - proto: LessLethalVendingMachinePOI
   entities:
-  - uid: 1157
+  - uid: 1187
     components:
     - type: Transform
       pos: 12.5,-17.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        WeaponDisabler:
-          amount: 4294967295
-          iD: WeaponDisabler
-          type: Regular
-        WeaponRevolverArgentiNonlethal:
-          amount: 4294967295
-          iD: WeaponRevolverArgentiNonlethal
-          type: Regular
-        WeaponShotgunDoubleBarreledRubber:
-          amount: 4294967295
-          iD: WeaponShotgunDoubleBarreledRubber
-          type: Regular
-        Stunbaton:
-          amount: 4294967295
-          iD: Stunbaton
-          type: Regular
-        AmmoBox12_gaugeBeanbag:
-          amount: 4294967295
-          iD: AmmoBox12_gaugeBeanbag
-          type: Regular
-        AmmoBox556x45mmRubber:
-          amount: 4294967295
-          iD: AmmoBox556x45mmRubber
-          type: Regular
-        AmmoBox635x40mmCaselessRubber:
-          amount: 4294967295
-          iD: AmmoBox635x40mmCaselessRubber
-          type: Regular
-        AmmoBox762x39mmRubber:
-          amount: 4294967295
-          iD: AmmoBox762x39mmRubber
-          type: Regular
-        AmmoBox9x19mmRubber:
-          amount: 4294967295
-          iD: AmmoBox9x19mmRubber
-          type: Regular
-        AmmoBox45_magnumRubber:
-          amount: 4294967295
-          iD: AmmoBox45_magnumRubber
-          type: Regular
-      contrabandInventory:
-        SpeedLoader556x45mmRubber:
-          amount: 3
-          iD: SpeedLoader556x45mmRubber
-          type: Contraband
-        SpeedLoader9x19mmRubber:
-          amount: 3
-          iD: SpeedLoader9x19mmRubber
-          type: Contraband
-        SpeedLoader45_magnumRubber:
-          amount: 3
-          iD: SpeedLoader45_magnumRubber
-          type: Contraband
-        WeaponRifleBBEmpty:
-          amount: 2
-          iD: WeaponRifleBBEmpty
-          type: Contraband
-        BoxCartridgeBB:
-          amount: 10
-          iD: BoxCartridgeBB
-          type: Contraband
-      emaggedInventory:
-        ThrowingKnife:
-          amount: 1
-          iD: ThrowingKnife
-          type: Emagged
-        BoxCartridgeRGBB:
-          amount: 1
-          iD: BoxCartridgeRGBB
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 21829.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1158
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1158
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1158
-    - type: ActionsContainer
 - proto: LightReplacer
   entities:
   - uid: 6633
@@ -89946,42 +89643,6 @@ entities:
       parent: 6671
     - type: BallisticAmmoProvider
       unspawnedCount: 1
-    - type: Physics
-      canCollide: False
-- proto: Magazine68x52mmCaseless
-  entities:
-  - uid: 4114
-    components:
-    - type: Transform
-      parent: 4112
-    - type: BallisticAmmoProvider
-      unspawnedCount: 30
-    - type: Physics
-      canCollide: False
-  - uid: 4117
-    components:
-    - type: Transform
-      parent: 4115
-    - type: BallisticAmmoProvider
-      unspawnedCount: 30
-    - type: Physics
-      canCollide: False
-- proto: Magazine8x65mmSKR
-  entities:
-  - uid: 4120
-    components:
-    - type: Transform
-      parent: 4118
-    - type: BallisticAmmoProvider
-      unspawnedCount: 25
-    - type: Physics
-      canCollide: False
-  - uid: 4123
-    components:
-    - type: Transform
-      parent: 4121
-    - type: BallisticAmmoProvider
-      unspawnedCount: 25
     - type: Physics
       canCollide: False
 - proto: Magazine90mm
@@ -100808,7 +100469,7 @@ entities:
     - type: Transform
       parent: 1105
     - type: Pda
-      currentDate: 2828-07-20T00:00:00.0000000+01:00
+      currentDate: 2828-07-19T19:00:00.0000000-04:00
     - type: ContainerContainer
       containers:
         PDA-id: !type:ContainerSlot
@@ -110792,7 +110453,7 @@ entities:
     - type: Transform
       parent: 1118
     - type: Pda
-      currentDate: 2828-07-20T00:00:00.0000000+01:00
+      currentDate: 2828-07-19T19:00:00.0000000-04:00
     - type: ContainerContainer
       containers:
         PDA-id: !type:ContainerSlot
@@ -120776,7 +120437,7 @@ entities:
     - type: Transform
       parent: 1131
     - type: Pda
-      currentDate: 2828-07-20T00:00:00.0000000+01:00
+      currentDate: 2828-07-19T19:00:00.0000000-04:00
     - type: ContainerContainer
       containers:
         PDA-id: !type:ContainerSlot
@@ -130760,7 +130421,7 @@ entities:
     - type: Transform
       parent: 1144
     - type: Pda
-      currentDate: 2828-07-20T00:00:00.0000000+01:00
+      currentDate: 2828-07-19T19:00:00.0000000-04:00
     - type: ContainerContainer
       containers:
         PDA-id: !type:ContainerSlot
@@ -140741,45 +140402,11 @@ entities:
     - type: HandheldGPS
 - proto: PrizeCounter
   entities:
-  - uid: 7059
+  - uid: 1201
     components:
     - type: Transform
       pos: -19.5,27.5
       parent: 1
-    - type: Advertise
-      nextAdvertisementTime: 21758.5042082
-    - type: MaterialStorage
-      materialWhiteList:
-      - PrizeTicket
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - FactionUniversal
-      - Industrial
-      - Arsenal
-      - Experimental
-      - CivilianServices
-      - MechaEngineering
-      - TdfWeaponry
-      - TdfEquipment
-      - TdfShipyard
-      currentTechnologyCards:
-      - UniversalMaterialResearchT1
-      - BasicParts
-    - type: MaterialStorageMagnetPickup
-      nextScan: 21605.7450619
-    - type: DeviceNetwork
-      address: 3884-66CE
-      receiveFrequency: 1280
-    - type: ThermalSignature
-      storedHeat: 37034.33
-    - type: SpamEmitSound
-      nextSound: 21946.719856
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      spokenLanguages:
-      - TauCetiBasic
-      currentLanguage: TauCetiBasic
 - proto: Protolathe
   entities:
   - uid: 788
@@ -144532,6 +144159,18 @@ entities:
       currentLanguage: TauCetiBasic
     - type: ApcPowerReceiver
       powerLoad: 5
+- proto: SpawnMechEmu
+  entities:
+  - uid: 1206
+    components:
+    - type: Transform
+      pos: 25.5,-20.5
+      parent: 1
+  - uid: 1211
+    components:
+    - type: Transform
+      pos: 26.5,21.5
+      parent: 1
 - proto: SpawnPointTdfCadet
   entities:
   - uid: 7291
@@ -145303,7 +144942,7 @@ entities:
         weapon1: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 1591
+          ent: 1191
         weapon2: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -145325,6 +144964,28 @@ entities:
     - type: Transform
       pos: -18.5,12.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        weapon1: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 1202
+        weapon2: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        weapon3: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        weapon4: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        weapon5: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: StructureGunRackWallmounted
   entities:
   - uid: 7357
@@ -146793,6 +146454,14 @@ entities:
       parent: 1
     - type: Physics
       canCollide: False
+- proto: TreasureCoinGold
+  entities:
+  - uid: 1174
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -22.400265,22.020044
+      parent: 1
 - proto: TreasureCoinIron
   entities:
   - uid: 7516
@@ -147012,332 +146681,16 @@ entities:
       canCollide: False
 - proto: VendingMachineAstroVendPOI
   entities:
-  - uid: 1159
-    components:
-    - type: Transform
-      pos: 19.5,27.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        NFWeaponHoloflareGun:
-          amount: 4294967295
-          iD: NFWeaponHoloflareGun
-          type: Regular
-        ClothingOuterHardsuitSpatio:
-          amount: 4294967295
-          iD: ClothingOuterHardsuitSpatio
-          type: Regular
-        ClothingShoesBootsMag:
-          amount: 4294967295
-          iD: ClothingShoesBootsMag
-          type: Regular
-        ClothingOuterEVASuitContractor:
-          amount: 4294967295
-          iD: ClothingOuterEVASuitContractor
-          type: Regular
-        RadioHandheldNF:
-          amount: 4294967295
-          iD: RadioHandheldNF
-          type: Regular
-        ClothingMaskGas:
-          amount: 4294967295
-          iD: ClothingMaskGas
-          type: Regular
-        JetpackMiniFilled:
-          amount: 4294967295
-          iD: JetpackMiniFilled
-          type: Regular
-        HandHeldMassScanner:
-          amount: 4294967295
-          iD: HandHeldMassScanner
-          type: Regular
-        AppraisalCartridge:
-          amount: 4294967295
-          iD: AppraisalCartridge
-          type: Regular
-        EncryptionKeyCommon:
-          amount: 4294967295
-          iD: EncryptionKeyCommon
-          type: Regular
-        EncryptionKeyTraffic:
-          amount: 4294967295
-          iD: EncryptionKeyTraffic
-          type: Regular
-        EncryptionKeyMedical:
-          amount: 4294967295
-          iD: EncryptionKeyMedical
-          type: Regular
-        EncryptionKeyCargo:
-          amount: 4294967295
-          iD: EncryptionKeyCargo
-          type: Regular
-        EncryptionKeyEngineering:
-          amount: 4294967295
-          iD: EncryptionKeyEngineering
-          type: Regular
-        EncryptionKeyScience:
-          amount: 4294967295
-          iD: EncryptionKeyScience
-          type: Regular
-        ClothingBackpackPilot:
-          amount: 3
-          iD: ClothingBackpackPilot
-          type: Regular
-        ClothingBackpackDuffelPilot:
-          amount: 3
-          iD: ClothingBackpackDuffelPilot
-          type: Regular
-        ClothingBackpackSatchelPilot:
-          amount: 3
-          iD: ClothingBackpackSatchelPilot
-          type: Regular
-        ClothingBackpackMessengerPilot:
-          amount: 3
-          iD: ClothingBackpackMessengerPilot
-          type: Regular
-        ClothingBeltPilot:
-          amount: 3
-          iD: ClothingBeltPilot
-          type: Regular
-        ClothingMaskPilot:
-          amount: 3
-          iD: ClothingMaskPilot
-          type: Regular
-        ClothingUniformJumpsuitPilot:
-          amount: 3
-          iD: ClothingUniformJumpsuitPilot
-          type: Regular
-        ClothingOuterCoatBomber:
-          amount: 3
-          iD: ClothingOuterCoatBomber
-          type: Regular
-        ClothingHeadsetAltPilot:
-          amount: 3
-          iD: ClothingHeadsetAltPilot
-          type: Regular
-        ClothingEyesGlassesPilot:
-          amount: 3
-          iD: ClothingEyesGlassesPilot
-          type: Regular
-        ClothingHandsGlovesPilot:
-          amount: 3
-          iD: ClothingHandsGlovesPilot
-          type: Regular
-        ClothingHeadHatPilot:
-          amount: 3
-          iD: ClothingHeadHatPilot
-          type: Regular
-        ClothingNeckScarfPilot:
-          amount: 3
-          iD: ClothingNeckScarfPilot
-          type: Regular
-        ClothingOuterEVASuitPilot:
-          amount: 5
-          iD: ClothingOuterEVASuitPilot
-          type: Regular
-        ClothingOuterHardsuitPilot:
-          amount: 3
-          iD: ClothingOuterHardsuitPilot
-          type: Regular
-        ClothingShoesBootsPilot:
-          amount: 3
-          iD: ClothingShoesBootsPilot
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 21769.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1160
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1160
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1160
-    - type: ActionsContainer
-  - uid: 1161
+  - uid: 1165
     components:
     - type: Transform
       pos: 19.5,-26.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        NFWeaponHoloflareGun:
-          amount: 4294967295
-          iD: NFWeaponHoloflareGun
-          type: Regular
-        ClothingOuterHardsuitSpatio:
-          amount: 4294967295
-          iD: ClothingOuterHardsuitSpatio
-          type: Regular
-        ClothingShoesBootsMag:
-          amount: 4294967295
-          iD: ClothingShoesBootsMag
-          type: Regular
-        ClothingOuterEVASuitContractor:
-          amount: 4294967295
-          iD: ClothingOuterEVASuitContractor
-          type: Regular
-        RadioHandheldNF:
-          amount: 4294967295
-          iD: RadioHandheldNF
-          type: Regular
-        ClothingMaskGas:
-          amount: 4294967295
-          iD: ClothingMaskGas
-          type: Regular
-        JetpackMiniFilled:
-          amount: 4294967295
-          iD: JetpackMiniFilled
-          type: Regular
-        HandHeldMassScanner:
-          amount: 4294967295
-          iD: HandHeldMassScanner
-          type: Regular
-        AppraisalCartridge:
-          amount: 4294967295
-          iD: AppraisalCartridge
-          type: Regular
-        EncryptionKeyCommon:
-          amount: 4294967295
-          iD: EncryptionKeyCommon
-          type: Regular
-        EncryptionKeyTraffic:
-          amount: 4294967295
-          iD: EncryptionKeyTraffic
-          type: Regular
-        EncryptionKeyMedical:
-          amount: 4294967295
-          iD: EncryptionKeyMedical
-          type: Regular
-        EncryptionKeyCargo:
-          amount: 4294967295
-          iD: EncryptionKeyCargo
-          type: Regular
-        EncryptionKeyEngineering:
-          amount: 4294967295
-          iD: EncryptionKeyEngineering
-          type: Regular
-        EncryptionKeyScience:
-          amount: 4294967295
-          iD: EncryptionKeyScience
-          type: Regular
-        ClothingBackpackPilot:
-          amount: 3
-          iD: ClothingBackpackPilot
-          type: Regular
-        ClothingBackpackDuffelPilot:
-          amount: 3
-          iD: ClothingBackpackDuffelPilot
-          type: Regular
-        ClothingBackpackSatchelPilot:
-          amount: 3
-          iD: ClothingBackpackSatchelPilot
-          type: Regular
-        ClothingBackpackMessengerPilot:
-          amount: 3
-          iD: ClothingBackpackMessengerPilot
-          type: Regular
-        ClothingBeltPilot:
-          amount: 3
-          iD: ClothingBeltPilot
-          type: Regular
-        ClothingMaskPilot:
-          amount: 3
-          iD: ClothingMaskPilot
-          type: Regular
-        ClothingUniformJumpsuitPilot:
-          amount: 3
-          iD: ClothingUniformJumpsuitPilot
-          type: Regular
-        ClothingOuterCoatBomber:
-          amount: 3
-          iD: ClothingOuterCoatBomber
-          type: Regular
-        ClothingHeadsetAltPilot:
-          amount: 3
-          iD: ClothingHeadsetAltPilot
-          type: Regular
-        ClothingEyesGlassesPilot:
-          amount: 3
-          iD: ClothingEyesGlassesPilot
-          type: Regular
-        ClothingHandsGlovesPilot:
-          amount: 3
-          iD: ClothingHandsGlovesPilot
-          type: Regular
-        ClothingHeadHatPilot:
-          amount: 3
-          iD: ClothingHeadHatPilot
-          type: Regular
-        ClothingNeckScarfPilot:
-          amount: 3
-          iD: ClothingNeckScarfPilot
-          type: Regular
-        ClothingOuterEVASuitPilot:
-          amount: 5
-          iD: ClothingOuterEVASuitPilot
-          type: Regular
-        ClothingOuterHardsuitPilot:
-          amount: 3
-          iD: ClothingOuterHardsuitPilot
-          type: Regular
-        ClothingShoesBootsPilot:
-          amount: 3
-          iD: ClothingShoesBootsPilot
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 21823.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1162
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1162
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1162
-    - type: ActionsContainer
+  - uid: 1166
+    components:
+    - type: Transform
+      pos: 19.5,27.5
+      parent: 1
 - proto: VendingMachineBarista
   entities:
   - uid: 1163
@@ -147475,295 +146828,11 @@ entities:
     - type: ActionsContainer
 - proto: VendingMachineBoozePOI
   entities:
-  - uid: 1165
+  - uid: 1160
     components:
     - type: Transform
       pos: -23.5,-21.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        DrinkGlass:
-          amount: 20
-          iD: DrinkGlass
-          type: Regular
-        DrinkShotGlass:
-          amount: 10
-          iD: DrinkShotGlass
-          type: Regular
-        DrinkGlassCoupeShaped:
-          amount: 5
-          iD: DrinkGlassCoupeShaped
-          type: Regular
-        DrinkSakeCupEmpty:
-          amount: 5
-          iD: DrinkSakeCupEmpty
-          type: Regular
-        DrinkShaker:
-          amount: 5
-          iD: DrinkShaker
-          type: Regular
-        DrinkJigger:
-          amount: 5
-          iD: DrinkJigger
-          type: Regular
-        DrinkIceBucket:
-          amount: 2
-          iD: DrinkIceBucket
-          type: Regular
-        BarSpoon:
-          amount: 3
-          iD: BarSpoon
-          type: Regular
-        DrinkKegSteel:
-          amount: 2
-          iD: DrinkKegSteel
-          type: Regular
-        DrinkKegWood:
-          amount: 2
-          iD: DrinkKegWood
-          type: Regular
-        DrinkKegPlastic:
-          amount: 2
-          iD: DrinkKegPlastic
-          type: Regular
-        CustomDrinkJug:
-          amount: 2
-          iD: CustomDrinkJug
-          type: Regular
-        DrinkAbsintheBottleFull:
-          amount: 1
-          iD: DrinkAbsintheBottleFull
-          type: Regular
-        DrinkAleBottleFull:
-          amount: 5
-          iD: DrinkAleBottleFull
-          type: Regular
-        DrinkBeerBottleFull:
-          amount: 5
-          iD: DrinkBeerBottleFull
-          type: Regular
-        DrinkBlueCuracaoBottleFull:
-          amount: 2
-          iD: DrinkBlueCuracaoBottleFull
-          type: Regular
-        DrinkCognacBottleFull:
-          amount: 4
-          iD: DrinkCognacBottleFull
-          type: Regular
-        DrinkCoconutWaterCarton:
-          amount: 3
-          iD: DrinkCoconutWaterCarton
-          type: Regular
-        DrinkColaBottleFull:
-          amount: 4
-          iD: DrinkColaBottleFull
-          type: Regular
-        DrinkEnergyDrinkCan:
-          amount: 8
-          iD: DrinkEnergyDrinkCan
-          type: Regular
-        DrinkMilkCarton:
-          amount: 2
-          iD: DrinkMilkCarton
-          type: Regular
-        DrinkCreamCarton:
-          amount: 5
-          iD: DrinkCreamCarton
-          type: Regular
-        DrinkGinBottleFull:
-          amount: 3
-          iD: DrinkGinBottleFull
-          type: Regular
-        DrinkGildlagerBottleFull:
-          amount: 2
-          iD: DrinkGildlagerBottleFull
-          type: Regular
-        DrinkGrenadineBottleFull:
-          amount: 2
-          iD: DrinkGrenadineBottleFull
-          type: Regular
-        DrinkJuiceLimeCarton:
-          amount: 3
-          iD: DrinkJuiceLimeCarton
-          type: Regular
-        DrinkJuiceLemonCarton:
-          amount: 3
-          iD: DrinkJuiceLemonCarton
-          type: Regular
-        DrinkJuicePineappleCarton:
-          amount: 3
-          iD: DrinkJuicePineappleCarton
-          type: Regular
-        DrinkJuiceOrangeCarton:
-          amount: 3
-          iD: DrinkJuiceOrangeCarton
-          type: Regular
-        DrinkJuiceTomatoCarton:
-          amount: 3
-          iD: DrinkJuiceTomatoCarton
-          type: Regular
-        DrinkCoffeeLiqueurBottleFull:
-          amount: 3
-          iD: DrinkCoffeeLiqueurBottleFull
-          type: Regular
-        DrinkMelonLiquorBottleFull:
-          amount: 3
-          iD: DrinkMelonLiquorBottleFull
-          type: Regular
-        DrinkPatronBottleFull:
-          amount: 2
-          iD: DrinkPatronBottleFull
-          type: Regular
-        DrinkRumBottleFull:
-          amount: 4
-          iD: DrinkRumBottleFull
-          type: Regular
-        DrinkSodaWaterCan:
-          amount: 8
-          iD: DrinkSodaWaterCan
-          type: Regular
-        DrinkSolDryCan:
-          amount: 8
-          iD: DrinkSolDryCan
-          type: Regular
-        DrinkSpaceMountainWindBottleFull:
-          amount: 3
-          iD: DrinkSpaceMountainWindBottleFull
-          type: Regular
-        DrinkSpaceUpBottleFull:
-          amount: 3
-          iD: DrinkSpaceUpBottleFull
-          type: Regular
-        DrinkTequilaBottleFull:
-          amount: 3
-          iD: DrinkTequilaBottleFull
-          type: Regular
-        DrinkTonicWaterCan:
-          amount: 8
-          iD: DrinkTonicWaterCan
-          type: Regular
-        DrinkVermouthBottleFull:
-          amount: 5
-          iD: DrinkVermouthBottleFull
-          type: Regular
-        DrinkVodkaBottleFull:
-          amount: 5
-          iD: DrinkVodkaBottleFull
-          type: Regular
-        DrinkWhiskeyBottleFull:
-          amount: 5
-          iD: DrinkWhiskeyBottleFull
-          type: Regular
-        DrinkWineBottleFull:
-          amount: 5
-          iD: DrinkWineBottleFull
-          type: Regular
-        DrinkChampagneBottleFull:
-          amount: 2
-          iD: DrinkChampagneBottleFull
-          type: Regular
-        DrinkSakeBottleFull:
-          amount: 3
-          iD: DrinkSakeBottleFull
-          type: Regular
-        DrinkBeerCan:
-          amount: 5
-          iD: DrinkBeerCan
-          type: Regular
-        DrinkWineCan:
-          amount: 5
-          iD: DrinkWineCan
-          type: Regular
-        DrinkAngobittersBottleFull:
-          amount: 3
-          iD: DrinkAngobittersBottleFull
-          type: Regular
-        DrinkJaegermisterBottleFull:
-          amount: 5
-          iD: DrinkJaegermisterBottleFull
-          type: Regular
-        DrinkDisposableCup:
-          amount: 5
-          iD: DrinkDisposableCup
-          type: Regular
-        EthylredoxrazineAutoInjector:
-          amount: 2
-          iD: EthylredoxrazineAutoInjector
-          type: Regular
-      contrabandInventory:
-        ChemistryBottleEthanol:
-          amount: 3
-          iD: ChemistryBottleEthanol
-          type: Contraband
-        DrinkBottleOfNothingFull:
-          amount: 1
-          iD: DrinkBottleOfNothingFull
-          type: Contraband
-      emaggedInventory:
-        DrinkPoisonWinebottleFull:
-          amount: 2
-          iD: DrinkPoisonWinebottleFull
-          type: Emagged
-        DrinkPremiumAbsintheBottleFull:
-          amount: 1
-          iD: DrinkPremiumAbsintheBottleFull
-          type: Emagged
-        DrinkPremiumGinBottleFull:
-          amount: 1
-          iD: DrinkPremiumGinBottleFull
-          type: Emagged
-        DrinkPremiumRumBottleFull:
-          amount: 1
-          iD: DrinkPremiumRumBottleFull
-          type: Emagged
-        DrinkPremiumTequilaBottleFull:
-          amount: 1
-          iD: DrinkPremiumTequilaBottleFull
-          type: Emagged
-        DrinkPremiumVodkaBottleFull:
-          amount: 1
-          iD: DrinkPremiumVodkaBottleFull
-          type: Emagged
-        DrinkPremiumWhiskeyBottleFull:
-          amount: 1
-          iD: DrinkPremiumWhiskeyBottleFull
-          type: Emagged
-        JugCaramexinin:
-          amount: 1
-          iD: JugCaramexinin
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 22016.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1166
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1166
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1166
-    - type: ActionsContainer
 - proto: VendingMachineCartTdf
   entities:
   - uid: 1167
@@ -147890,82 +146959,11 @@ entities:
     - type: ActionsContainer
 - proto: VendingMachineChang
   entities:
-  - uid: 1169
+  - uid: 1161
     components:
     - type: Transform
       pos: -17.5,-26.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        FoodCondimentPacketSoy:
-          amount: 5
-          iD: FoodCondimentPacketSoy
-          type: Regular
-        FoodSnackCookieFortune:
-          amount: 5
-          iD: FoodSnackCookieFortune
-          type: Regular
-        DrinkRamen:
-          amount: 0
-          iD: DrinkRamen
-          type: Regular
-        DrinkHellRamen:
-          amount: 1
-          iD: DrinkHellRamen
-          type: Regular
-        FoodSnackChowMein:
-          amount: 0
-          iD: FoodSnackChowMein
-          type: Regular
-        FoodSnackDanDanNoodles:
-          amount: 2
-          iD: FoodSnackDanDanNoodles
-          type: Regular
-        PairedChopsticks:
-          amount: 2
-          iD: PairedChopsticks
-          type: Regular
-      contrabandInventory:
-        FoodBakedDumplings:
-          amount: 2
-          iD: FoodBakedDumplings
-          type: Contraband
-        FoodSoupMiso:
-          amount: 2
-          iD: FoodSoupMiso
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 22014.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1170
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1170
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1170
-    - type: ActionsContainer
   - uid: 9628
     components:
     - type: Transform
@@ -147978,178 +146976,11 @@ entities:
       parent: 1
 - proto: VendingMachineChefvend
   entities:
-  - uid: 1171
+  - uid: 1162
     components:
     - type: Transform
       pos: -23.5,-23.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        ReagentContainerFlour:
-          amount: 5
-          iD: ReagentContainerFlour
-          type: Regular
-        ReagentContainerCornmeal:
-          amount: 5
-          iD: ReagentContainerCornmeal
-          type: Regular
-        ReagentContainerSugar:
-          amount: 5
-          iD: ReagentContainerSugar
-          type: Regular
-        ReagentContainerRice:
-          amount: 5
-          iD: ReagentContainerRice
-          type: Regular
-        ReagentContainerRaisin:
-          amount: 5
-          iD: ReagentContainerRaisin
-          type: Regular
-        ReagentContainerChocolate:
-          amount: 5
-          iD: ReagentContainerChocolate
-          type: Regular
-        ReagentContainerSalt:
-          amount: 5
-          iD: ReagentContainerSalt
-          type: Regular
-        ReagentContainerPepper:
-          amount: 5
-          iD: ReagentContainerPepper
-          type: Regular
-        FoodCondimentBottleEnzyme:
-          amount: 5
-          iD: FoodCondimentBottleEnzyme
-          type: Regular
-        FoodCondimentBottleHotsauce:
-          amount: 2
-          iD: FoodCondimentBottleHotsauce
-          type: Regular
-        FoodCondimentBottleKetchup:
-          amount: 2
-          iD: FoodCondimentBottleKetchup
-          type: Regular
-        FoodCondimentBottleBBQ:
-          amount: 2
-          iD: FoodCondimentBottleBBQ
-          type: Regular
-        FoodCondimentBottleVinegar:
-          amount: 5
-          iD: FoodCondimentBottleVinegar
-          type: Regular
-        FoodCondimentBottleSoysauce:
-          amount: 5
-          iD: FoodCondimentBottleSoysauce
-          type: Regular
-        ReagentContainerMayo:
-          amount: 2
-          iD: ReagentContainerMayo
-          type: Regular
-        OilJarOlive:
-          amount: 1
-          iD: OilJarOlive
-          type: Regular
-        OilJarCorn:
-          amount: 1
-          iD: OilJarCorn
-          type: Regular
-        OilJarGhee:
-          amount: 1
-          iD: OilJarGhee
-          type: Regular
-        MonkeyCubeBox:
-          amount: 2
-          iD: MonkeyCubeBox
-          type: Regular
-        KoboldCubeBox:
-          amount: 2
-          iD: KoboldCubeBox
-          type: Regular
-        PoultryCubeBox:
-          amount: 2
-          iD: PoultryCubeBox
-          type: Regular
-        RuminantCubeBox:
-          amount: 2
-          iD: RuminantCubeBox
-          type: Regular
-        FoodContainerEgg:
-          amount: 3
-          iD: FoodContainerEgg
-          type: Regular
-        DrinkMilkCarton:
-          amount: 2
-          iD: DrinkMilkCarton
-          type: Regular
-        DrinkSoyMilkCarton:
-          amount: 1
-          iD: DrinkSoyMilkCarton
-          type: Regular
-        FoodButter:
-          amount: 3
-          iD: FoodButter
-          type: Regular
-        FoodCheese:
-          amount: 2
-          iD: FoodCheese
-          type: Regular
-        FoodMeat:
-          amount: 6
-          iD: FoodMeat
-          type: Regular
-        FoodSausageCasing:
-          amount: 3
-          iD: FoodSausageCasing
-          type: Regular
-      contrabandInventory:
-        EggBoxBroken:
-          amount: 1
-          iD: EggBoxBroken
-          type: Contraband
-        FoodBoxDonkpocket:
-          amount: 1
-          iD: FoodBoxDonkpocket
-          type: Contraband
-        FoodFrozenSandwich:
-          amount: 2
-          iD: FoodFrozenSandwich
-          type: Contraband
-        FoodFrozenSandwichStrawberry:
-          amount: 2
-          iD: FoodFrozenSandwichStrawberry
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 21973.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1172
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1172
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1172
-    - type: ActionsContainer
 - proto: VendingMachineChemicals
   entities:
   - uid: 7525
@@ -148159,420 +146990,28 @@ entities:
       parent: 1
 - proto: VendingMachineCigsPOI
   entities:
-  - uid: 1173
-    components:
-    - type: Transform
-      pos: -14.5,-24.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        CigPackGreen:
-          amount: 2
-          iD: CigPackGreen
-          type: Regular
-        CigPackRed:
-          amount: 2
-          iD: CigPackRed
-          type: Regular
-        CigPackBlue:
-          amount: 2
-          iD: CigPackBlue
-          type: Regular
-        CigPackBlack:
-          amount: 2
-          iD: CigPackBlack
-          type: Regular
-        CigPackMixed:
-          amount: 2
-          iD: CigPackMixed
-          type: Regular
-        CigarCase:
-          amount: 1
-          iD: CigarCase
-          type: Regular
-        SmokingPipeFilledTobacco:
-          amount: 1
-          iD: SmokingPipeFilledTobacco
-          type: Regular
-        Vape:
-          amount: 1
-          iD: Vape
-          type: Regular
-        Matchbox:
-          amount: 5
-          iD: Matchbox
-          type: Regular
-        PackPaperRollingFilters:
-          amount: 3
-          iD: PackPaperRollingFilters
-          type: Regular
-        CheapLighter:
-          amount: 4
-          iD: CheapLighter
-          type: Regular
-        Lighter:
-          amount: 2
-          iD: Lighter
-          type: Regular
-        FlippoLighter:
-          amount: 2
-          iD: FlippoLighter
-          type: Regular
-        NFAshtray:
-          amount: 4
-          iD: NFAshtray
-          type: Regular
-        SmokingPipe:
-          amount: 4
-          iD: SmokingPipe
-          type: Regular
-        TobaccoPouchBrownFilled:
-          amount: 2
-          iD: TobaccoPouchBrownFilled
-          type: Regular
-        TobaccoPouchBlueFilled:
-          amount: 2
-          iD: TobaccoPouchBlueFilled
-          type: Regular
-        TobaccoPouchPurpleFilled:
-          amount: 2
-          iD: TobaccoPouchPurpleFilled
-          type: Regular
-      contrabandInventory:
-        TobaccoPouchRedFilled:
-          amount: 2
-          iD: TobaccoPouchRedFilled
-          type: Contraband
-        GroundTobacco:
-          amount: 3
-          iD: GroundTobacco
-          type: Contraband
-        CigarGold:
-          amount: 2
-          iD: CigarGold
-          type: Contraband
-        Igniter:
-          amount: 1
-          iD: Igniter
-          type: Contraband
-      emaggedInventory:
-        CigarPlatinumCase:
-          amount: 1
-          iD: CigarPlatinumCase
-          type: Emagged
-        CigPackSyndicate:
-          amount: 1
-          iD: CigPackSyndicate
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 21963.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1174
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1174
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1174
-    - type: ActionsContainer
-  - uid: 1175
+  - uid: 1169
     components:
     - type: Transform
       pos: 16.5,-11.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        CigPackGreen:
-          amount: 2
-          iD: CigPackGreen
-          type: Regular
-        CigPackRed:
-          amount: 2
-          iD: CigPackRed
-          type: Regular
-        CigPackBlue:
-          amount: 2
-          iD: CigPackBlue
-          type: Regular
-        CigPackBlack:
-          amount: 2
-          iD: CigPackBlack
-          type: Regular
-        CigPackMixed:
-          amount: 2
-          iD: CigPackMixed
-          type: Regular
-        CigarCase:
-          amount: 1
-          iD: CigarCase
-          type: Regular
-        SmokingPipeFilledTobacco:
-          amount: 1
-          iD: SmokingPipeFilledTobacco
-          type: Regular
-        Vape:
-          amount: 1
-          iD: Vape
-          type: Regular
-        Matchbox:
-          amount: 5
-          iD: Matchbox
-          type: Regular
-        PackPaperRollingFilters:
-          amount: 3
-          iD: PackPaperRollingFilters
-          type: Regular
-        CheapLighter:
-          amount: 4
-          iD: CheapLighter
-          type: Regular
-        Lighter:
-          amount: 2
-          iD: Lighter
-          type: Regular
-        FlippoLighter:
-          amount: 2
-          iD: FlippoLighter
-          type: Regular
-        NFAshtray:
-          amount: 4
-          iD: NFAshtray
-          type: Regular
-        SmokingPipe:
-          amount: 4
-          iD: SmokingPipe
-          type: Regular
-        TobaccoPouchBrownFilled:
-          amount: 2
-          iD: TobaccoPouchBrownFilled
-          type: Regular
-        TobaccoPouchBlueFilled:
-          amount: 2
-          iD: TobaccoPouchBlueFilled
-          type: Regular
-        TobaccoPouchPurpleFilled:
-          amount: 2
-          iD: TobaccoPouchPurpleFilled
-          type: Regular
-      contrabandInventory:
-        TobaccoPouchRedFilled:
-          amount: 2
-          iD: TobaccoPouchRedFilled
-          type: Contraband
-        GroundTobacco:
-          amount: 3
-          iD: GroundTobacco
-          type: Contraband
-        CigarGold:
-          amount: 2
-          iD: CigarGold
-          type: Contraband
-        Igniter:
-          amount: 1
-          iD: Igniter
-          type: Contraband
-      emaggedInventory:
-        CigarPlatinumCase:
-          amount: 1
-          iD: CigarPlatinumCase
-          type: Emagged
-        CigPackSyndicate:
-          amount: 1
-          iD: CigPackSyndicate
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 21720.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1176
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1176
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1176
-    - type: ActionsContainer
-- proto: VendingMachineCoffee
-  entities:
-  - uid: 1177
+  - uid: 1170
     components:
     - type: Transform
-      pos: 17.5,-11.5
+      pos: -14.5,-24.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        DrinkHotCoffee:
-          amount: 0
-          iD: DrinkHotCoffee
-          type: Regular
-        DrinkCafeLatte:
-          amount: 2
-          iD: DrinkCafeLatte
-          type: Regular
-        DrinkTeacup:
-          amount: 5
-          iD: DrinkTeacup
-          type: Regular
-        DrinkGreenTea:
-          amount: 5
-          iD: DrinkGreenTea
-          type: Regular
-        DrinkHotCoco:
-          amount: 1
-          iD: DrinkHotCoco
-          type: Regular
-      contrabandInventory:
-        DrinkTeapot:
-          amount: 1
-          iD: DrinkTeapot
-          type: Contraband
-      emaggedInventory:
-        DrinkNothing:
-          amount: 1
-          iD: DrinkNothing
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 21891.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1178
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1178
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1178
-    - type: ActionsContainer
-  - uid: 1179
+- proto: VendingMachineCoffee
+  entities:
+  - uid: 1172
     components:
     - type: Transform
       pos: 4.5,-28.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        DrinkHotCoffee:
-          amount: 2
-          iD: DrinkHotCoffee
-          type: Regular
-        DrinkCafeLatte:
-          amount: 2
-          iD: DrinkCafeLatte
-          type: Regular
-        DrinkTeacup:
-          amount: 1
-          iD: DrinkTeacup
-          type: Regular
-        DrinkGreenTea:
-          amount: 2
-          iD: DrinkGreenTea
-          type: Regular
-        DrinkHotCoco:
-          amount: 5
-          iD: DrinkHotCoco
-          type: Regular
-      contrabandInventory:
-        DrinkTeapot:
-          amount: 1
-          iD: DrinkTeapot
-          type: Contraband
-      emaggedInventory:
-        DrinkNothing:
-          amount: 1
-          iD: DrinkNothing
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 22127.5117818
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1180
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1180
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1180
-    - type: ActionsContainer
+  - uid: 1173
+    components:
+    - type: Transform
+      pos: 17.5,-11.5
+      parent: 1
 - proto: VendingMachineColaBlack
   entities:
   - uid: 9654
@@ -148582,836 +147021,71 @@ entities:
       parent: 1
 - proto: VendingMachineDinnerware
   entities:
-  - uid: 1181
+  - uid: 1171
     components:
     - type: Transform
       pos: -23.5,-24.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        ButchCleaver:
-          amount: 1
-          iD: ButchCleaver
-          type: Regular
-        KitchenKnife:
-          amount: 5
-          iD: KitchenKnife
-          type: Regular
-        RollingPin:
-          amount: 4
-          iD: RollingPin
-          type: Regular
-        Spoon:
-          amount: 4
-          iD: Spoon
-          type: Regular
-        Fork:
-          amount: 4
-          iD: Fork
-          type: Regular
-        PairedChopsticks:
-          amount: 4
-          iD: PairedChopsticks
-          type: Regular
-        FoodBowlBig:
-          amount: 10
-          iD: FoodBowlBig
-          type: Regular
-        FoodPlate:
-          amount: 10
-          iD: FoodPlate
-          type: Regular
-        FoodPlateSmall:
-          amount: 10
-          iD: FoodPlateSmall
-          type: Regular
-        FoodPlateTin:
-          amount: 5
-          iD: FoodPlateTin
-          type: Regular
-        FoodPlateMuffinTin:
-          amount: 5
-          iD: FoodPlateMuffinTin
-          type: Regular
-        FoodKebabSkewer:
-          amount: 5
-          iD: FoodKebabSkewer
-          type: Regular
-        DrinkGlass:
-          amount: 5
-          iD: DrinkGlass
-          type: Regular
-        Beaker:
-          amount: 5
-          iD: Beaker
-          type: Regular
-        LargeBeaker:
-          amount: 5
-          iD: LargeBeaker
-          type: Regular
-        Pitcher:
-          amount: 2
-          iD: Pitcher
-          type: Regular
-        DrinkMug:
-          amount: 5
-          iD: DrinkMug
-          type: Regular
-        DrinkMugBlack:
-          amount: 2
-          iD: DrinkMugBlack
-          type: Regular
-        DrinkMugBlue:
-          amount: 2
-          iD: DrinkMugBlue
-          type: Regular
-        DrinkMugGreen:
-          amount: 2
-          iD: DrinkMugGreen
-          type: Regular
-        DrinkMugHeart:
-          amount: 1
-          iD: DrinkMugHeart
-          type: Regular
-        DrinkMugMetal:
-          amount: 2
-          iD: DrinkMugMetal
-          type: Regular
-        DrinkMugMoebius:
-          amount: 1
-          iD: DrinkMugMoebius
-          type: Regular
-        DrinkMugOne:
-          amount: 1
-          iD: DrinkMugOne
-          type: Regular
-        DrinkMugRainbow:
-          amount: 2
-          iD: DrinkMugRainbow
-          type: Regular
-        DrinkMugRed:
-          amount: 2
-          iD: DrinkMugRed
-          type: Regular
-        ServiceSelectiveDropper:
-          amount: 2
-          iD: ServiceSelectiveDropper
-          type: Regular
-      contrabandInventory:
-        CandyBowl:
-          amount: 1
-          iD: CandyBowl
-          type: Contraband
-        BarSpoon:
-          amount: 2
-          iD: BarSpoon
-          type: Contraband
-        DrinkShaker:
-          amount: 2
-          iD: DrinkShaker
-          type: Contraband
-        BucketPaper:
-          amount: 2
-          iD: BucketPaper
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 21749.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1182
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1182
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1182
-    - type: ActionsContainer
 - proto: VendingMachineDonut
   entities:
-  - uid: 1183
+  - uid: 1157
     components:
     - type: Transform
       pos: 18.5,-11.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        FoodDonutChocolate:
-          amount: 5
-          iD: FoodDonutChocolate
-          type: Regular
-        FoodDonutApple:
-          amount: 0
-          iD: FoodDonutApple
-          type: Regular
-        FoodDonutPink:
-          amount: 2
-          iD: FoodDonutPink
-          type: Regular
-        FoodDonutBungo:
-          amount: 2
-          iD: FoodDonutBungo
-          type: Regular
-      contrabandInventory:
-        FoodBagel:
-          amount: 2
-          iD: FoodBagel
-          type: Contraband
-        FoodBagelPoppy:
-          amount: 0
-          iD: FoodBagelPoppy
-          type: Contraband
-      emaggedInventory:
-        FoodDonutPoison:
-          amount: 1
-          iD: FoodDonutPoison
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 22040.5117908
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1184
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1184
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1184
-    - type: ActionsContainer
-  - uid: 1185
+  - uid: 1188
     components:
     - type: Transform
       pos: -2.5,7.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        FoodDonutChocolate:
-          amount: 5
-          iD: FoodDonutChocolate
-          type: Regular
-        FoodDonutApple:
-          amount: 3
-          iD: FoodDonutApple
-          type: Regular
-        FoodDonutPink:
-          amount: 3
-          iD: FoodDonutPink
-          type: Regular
-        FoodDonutBungo:
-          amount: 0
-          iD: FoodDonutBungo
-          type: Regular
-      contrabandInventory:
-        FoodBagel:
-          amount: 1
-          iD: FoodBagel
-          type: Contraband
-        FoodBagelPoppy:
-          amount: 0
-          iD: FoodBagelPoppy
-          type: Contraband
-      emaggedInventory:
-        FoodDonutPoison:
-          amount: 0
-          iD: FoodDonutPoison
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 22004.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1186
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1186
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1186
-    - type: ActionsContainer
 - proto: VendingMachineDrGibb
   entities:
-  - uid: 1187
-    components:
-    - type: Transform
-      pos: -21.5,-26.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        DrinkDrGibbCan:
-          amount: 4
-          iD: DrinkDrGibbCan
-          type: Regular
-        DrinkGrapeCan:
-          amount: 0
-          iD: DrinkGrapeCan
-          type: Regular
-        DrinkRootBeerCan:
-          amount: 0
-          iD: DrinkRootBeerCan
-          type: Regular
-        DrinkIcedTeaCan:
-          amount: 2
-          iD: DrinkIcedTeaCan
-          type: Regular
-        DrinkSolDryCan:
-          amount: 1
-          iD: DrinkSolDryCan
-          type: Regular
-        DrinkLemonLimeCan:
-          amount: 1
-          iD: DrinkLemonLimeCan
-          type: Regular
-        DrinkLemonLimeCranberryCan:
-          amount: 1
-          iD: DrinkLemonLimeCranberryCan
-          type: Regular
-        DrinkFourteenLokoCan:
-          amount: 2
-          iD: DrinkFourteenLokoCan
-          type: Regular
-      contrabandInventory:
-        ClothingNeckStethoscope:
-          amount: 0
-          iD: ClothingNeckStethoscope
-          type: Contraband
-        Saw:
-          amount: 0
-          iD: Saw
-          type: Contraband
-        Tourniquet:
-          amount: 2
-          iD: Tourniquet
-          type: Contraband
-      emaggedInventory:
-        DrinkNukieCan:
-          amount: 2
-          iD: DrinkNukieCan
-          type: Emagged
-        DrinkChangelingStingCan:
-          amount: 1
-          iD: DrinkChangelingStingCan
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 21727.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1188
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1188
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1188
-    - type: ActionsContainer
-  - uid: 9650
+  - uid: 1178
     components:
     - type: Transform
       pos: 7.5,-48.5
       parent: 1
+  - uid: 1204
+    components:
+    - type: Transform
+      pos: -21.5,-26.5
+      parent: 1
 - proto: VendingMachineEngivendPOI
   entities:
-  - uid: 1189
+  - uid: 1175
     components:
     - type: Transform
       pos: 7.5,15.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        ClothingHandsGlovesColorYellow:
-          amount: 4294967295
-          iD: ClothingHandsGlovesColorYellow
-          type: Regular
-        CrowbarYellow:
-          amount: 4294967295
-          iD: CrowbarYellow
-          type: Regular
-        MaintenanceJack:
-          amount: 4294967295
-          iD: MaintenanceJack
-          type: Regular
-        Multitool:
-          amount: 4294967295
-          iD: Multitool
-          type: Regular
-        ClothingEyesGlassesMeson:
-          amount: 4294967295
-          iD: ClothingEyesGlassesMeson
-          type: Regular
-        ClothingEyesGlassesThermal:
-          amount: 4294967295
-          iD: ClothingEyesGlassesThermal
-          type: Regular
-        ClothingHeadHatWelding:
-          amount: 4294967295
-          iD: ClothingHeadHatWelding
-          type: Regular
-        HolofanProjector:
-          amount: 4294967295
-          iD: HolofanProjector
-          type: Regular
-        InflatableWallStack1:
-          amount: 4294967295
-          iD: InflatableWallStack1
-          type: Regular
-        InflatableDoorStack1:
-          amount: 4294967295
-          iD: InflatableDoorStack1
-          type: Regular
-        GeigerCounter:
-          amount: 4294967295
-          iD: GeigerCounter
-          type: Regular
-        PowerCellMedium:
-          amount: 4294967295
-          iD: PowerCellMedium
-          type: Regular
-        ShipRepairDevice:
-          amount: 4294967295
-          iD: ShipRepairDevice
-          type: Regular
-        ShipRepairDeviceAmmo:
-          amount: 4294967295
-          iD: ShipRepairDeviceAmmo
-          type: Regular
-        JerryCanNaniteFuel:
-          amount: 4294967295
-          iD: JerryCanNaniteFuel
-          type: Regular
-        NaniteApplicator:
-          amount: 4294967295
-          iD: NaniteApplicator
-          type: Regular
-        AirGrenade:
-          amount: 4294967295
-          iD: AirGrenade
-          type: Regular
-        ClothingHeadHatCone:
-          amount: 10
-          iD: ClothingHeadHatCone
-          type: Regular
-      contrabandInventory:
-        CowToolboxFilled:
-          amount: 1
-          iD: CowToolboxFilled
-          type: Contraband
-        DrinkBeerCan:
-          amount: 3
-          iD: DrinkBeerCan
-          type: Contraband
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1190
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1190
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1190
-    - type: ActionsContainer
 - proto: VendingMachineFuelVend
   entities:
-  - uid: 1191
-    components:
-    - type: Transform
-      pos: 20.5,27.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        FuelPlasma:
-          amount: 4294967295
-          iD: FuelPlasma
-          type: Regular
-        FuelUranium:
-          amount: 4294967295
-          iD: FuelUranium
-          type: Regular
-        AmeJar:
-          amount: 4294967295
-          iD: AmeJar
-          type: Regular
-        JerryCanWeldingFuel:
-          amount: 4294967295
-          iD: JerryCanWeldingFuel
-          type: Regular
-        FuelBananium:
-          amount: 4294967295
-          iD: FuelBananium
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 21994.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1192
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1192
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1192
-    - type: ActionsContainer
-  - uid: 1193
-    components:
-    - type: Transform
-      pos: 4.5,27.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        FuelPlasma:
-          amount: 4294967295
-          iD: FuelPlasma
-          type: Regular
-        FuelUranium:
-          amount: 4294967295
-          iD: FuelUranium
-          type: Regular
-        AmeJar:
-          amount: 4294967295
-          iD: AmeJar
-          type: Regular
-        JerryCanWeldingFuel:
-          amount: 4294967295
-          iD: JerryCanWeldingFuel
-          type: Regular
-        FuelBananium:
-          amount: 4294967295
-          iD: FuelBananium
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 21741.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1194
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1194
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1194
-    - type: ActionsContainer
-  - uid: 1195
-    components:
-    - type: Transform
-      pos: 21.5,-26.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        FuelPlasma:
-          amount: 4294967295
-          iD: FuelPlasma
-          type: Regular
-        FuelUranium:
-          amount: 4294967295
-          iD: FuelUranium
-          type: Regular
-        AmeJar:
-          amount: 4294967295
-          iD: AmeJar
-          type: Regular
-        JerryCanWeldingFuel:
-          amount: 4294967295
-          iD: JerryCanWeldingFuel
-          type: Regular
-        FuelBananium:
-          amount: 4294967295
-          iD: FuelBananium
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 22078.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1196
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1196
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1196
-    - type: ActionsContainer
-  - uid: 9633
+  - uid: 1183
     components:
     - type: Transform
       pos: 0.5,-39.5
       parent: 1
+  - uid: 1184
+    components:
+    - type: Transform
+      pos: 21.5,-26.5
+      parent: 1
+  - uid: 1185
+    components:
+    - type: Transform
+      pos: 4.5,27.5
+      parent: 1
+  - uid: 1186
+    components:
+    - type: Transform
+      pos: 20.5,27.5
+      parent: 1
 - proto: VendingMachineGamesPOI
   entities:
-  - uid: 1197
+  - uid: 1179
     components:
     - type: Transform
       pos: -16.5,-16.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        DiceBag:
-          amount: 6
-          iD: DiceBag
-          type: Regular
-        Paper:
-          amount: 80
-          iD: Paper
-          type: Regular
-        d6Dice:
-          amount: 8
-          iD: d6Dice
-          type: Regular
-        ChessBoard:
-          amount: 2
-          iD: ChessBoard
-          type: Regular
-        BackgammonBoard:
-          amount: 2
-          iD: BackgammonBoard
-          type: Regular
-        ParchisBoard:
-          amount: 2
-          iD: ParchisBoard
-          type: Regular
-        CheckerBoard:
-          amount: 2
-          iD: CheckerBoard
-          type: Regular
-        ShipBattlemap:
-          amount: 2
-          iD: ShipBattlemap
-          type: Regular
-        SnowBattlemap:
-          amount: 2
-          iD: SnowBattlemap
-          type: Regular
-        SandBattlemap:
-          amount: 2
-          iD: SandBattlemap
-          type: Regular
-        MoonBattlemap:
-          amount: 2
-          iD: MoonBattlemap
-          type: Regular
-        GrassBattlemap:
-          amount: 2
-          iD: GrassBattlemap
-          type: Regular
-        PaperCNCSheet:
-          amount: 6
-          iD: PaperCNCSheet
-          type: Regular
-        MysteryFigureBox:
-          amount: 5
-          iD: MysteryFigureBox
-          type: Regular
-        BooksBag:
-          amount: 3
-          iD: BooksBag
-          type: Regular
-        CardBoxBlack:
-          amount: 5
-          iD: CardBoxBlack
-          type: Regular
-      contrabandInventory:
-        Basketball:
-          amount: 1
-          iD: Basketball
-          type: Contraband
-        FoodSnackBoritos:
-          amount: 3
-          iD: FoodSnackBoritos
-          type: Contraband
-        DrinkSpaceMountainWindCan:
-          amount: 3
-          iD: DrinkSpaceMountainWindCan
-          type: Contraband
-        CardBoxNanotrasen:
-          amount: 1
-          iD: CardBoxNanotrasen
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 21870.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1198
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1198
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1198
-    - type: ActionsContainer
 - proto: VendingMachineMedical
   entities:
   - uid: 1199
@@ -149533,237 +147207,13 @@ entities:
     - type: Transform
       pos: 7.5,-50.5
       parent: 1
-- proto: VendingMachineSeeds
+- proto: VendingMachineSeedsUnlocked
   entities:
-  - uid: 1201
+  - uid: 1180
     components:
     - type: Transform
       pos: -22.5,24.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        AloeSeeds:
-          amount: 3
-          iD: AloeSeeds
-          type: Regular
-        AmbrosiaVulgarisSeeds:
-          amount: 3
-          iD: AmbrosiaVulgarisSeeds
-          type: Regular
-        AppleSeeds:
-          amount: 5
-          iD: AppleSeeds
-          type: Regular
-        AvocadoSeeds:
-          amount: 5
-          iD: AvocadoSeeds
-          type: Regular
-        BananaSeeds:
-          amount: 5
-          iD: BananaSeeds
-          type: Regular
-        BeeSeeds:
-          amount: 5
-          iD: BeeSeeds
-          type: Regular
-        BerrySeeds:
-          amount: 5
-          iD: BerrySeeds
-          type: Regular
-        BungoSeeds:
-          amount: 5
-          iD: BungoSeeds
-          type: Regular
-        CarrotSeeds:
-          amount: 5
-          iD: CarrotSeeds
-          type: Regular
-        CabbageSeeds:
-          amount: 5
-          iD: CabbageSeeds
-          type: Regular
-        ChanterelleSeeds:
-          amount: 5
-          iD: ChanterelleSeeds
-          type: Regular
-        CherrySeeds:
-          amount: 5
-          iD: CherrySeeds
-          type: Regular
-        ChiliSeeds:
-          amount: 5
-          iD: ChiliSeeds
-          type: Regular
-        CocoaSeeds:
-          amount: 3
-          iD: CocoaSeeds
-          type: Regular
-        CoffeeSeeds:
-          amount: 5
-          iD: CoffeeSeeds
-          type: Regular
-        CornSeeds:
-          amount: 5
-          iD: CornSeeds
-          type: Regular
-        CottonSeeds:
-          amount: 5
-          iD: CottonSeeds
-          type: Regular
-        CucumberSeeds:
-          amount: 5
-          iD: CucumberSeeds
-          type: Regular
-        EggplantSeeds:
-          amount: 5
-          iD: EggplantSeeds
-          type: Regular
-        EggySeeds:
-          amount: 5
-          iD: EggySeeds
-          type: Regular
-        GalaxythistleSeeds:
-          amount: 3
-          iD: GalaxythistleSeeds
-          type: Regular
-        GarlicSeeds:
-          amount: 3
-          iD: GarlicSeeds
-          type: Regular
-        GrapeSeeds:
-          amount: 5
-          iD: GrapeSeeds
-          type: Regular
-        LemonSeeds:
-          amount: 5
-          iD: LemonSeeds
-          type: Regular
-        LimeSeeds:
-          amount: 5
-          iD: LimeSeeds
-          type: Regular
-        PineappleSeeds:
-          amount: 5
-          iD: PineappleSeeds
-          type: Regular
-        LingzhiSeeds:
-          amount: 3
-          iD: LingzhiSeeds
-          type: Regular
-        OatSeeds:
-          amount: 5
-          iD: OatSeeds
-          type: Regular
-        OnionSeeds:
-          amount: 5
-          iD: OnionSeeds
-          type: Regular
-        OnionRedSeeds:
-          amount: 5
-          iD: OnionRedSeeds
-          type: Regular
-        OrangeSeeds:
-          amount: 5
-          iD: OrangeSeeds
-          type: Regular
-        PearSeeds:
-          amount: 3
-          iD: PearSeeds
-          type: Regular
-        PeaSeeds:
-          amount: 5
-          iD: PeaSeeds
-          type: Regular
-        PoppySeeds:
-          amount: 3
-          iD: PoppySeeds
-          type: Regular
-        PotatoSeeds:
-          amount: 5
-          iD: PotatoSeeds
-          type: Regular
-        PumpkinSeeds:
-          amount: 5
-          iD: PumpkinSeeds
-          type: Regular
-        RiceSeeds:
-          amount: 5
-          iD: RiceSeeds
-          type: Regular
-        SoybeanSeeds:
-          amount: 5
-          iD: SoybeanSeeds
-          type: Regular
-        SugarcaneSeeds:
-          amount: 5
-          iD: SugarcaneSeeds
-          type: Regular
-        TeaPlantSeeds:
-          amount: 5
-          iD: TeaPlantSeeds
-          type: Regular
-        TomatoSeeds:
-          amount: 5
-          iD: TomatoSeeds
-          type: Regular
-        TowercapSeeds:
-          amount: 5
-          iD: TowercapSeeds
-          type: Regular
-        WheatSeeds:
-          amount: 5
-          iD: WheatSeeds
-          type: Regular
-        WatermelonSeeds:
-          amount: 5
-          iD: WatermelonSeeds
-          type: Regular
-      contrabandInventory:
-        TobaccoSeeds:
-          amount: 2
-          iD: TobaccoSeeds
-          type: Contraband
-        FoodSnackSemki:
-          amount: 2
-          iD: FoodSnackSemki
-          type: Contraband
-      emaggedInventory:
-        FlyAmanitaSeeds:
-          amount: 1
-          iD: FlyAmanitaSeeds
-          type: Emagged
-    - type: Advertise
-      nextAdvertisementTime: 22122.5042082
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1202
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1202
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1202
-    - type: ActionsContainer
 - proto: VendingMachineShamblersJuice
   entities:
   - uid: 9655
@@ -149794,161 +147244,18 @@ entities:
       parent: 1
 - proto: VendingMachineSnackOrange
   entities:
-  - uid: 1203
+  - uid: 1181
     components:
     - type: Transform
       pos: -18.5,-26.5
       parent: 1
-    - type: PointLight
-      enabled: True
-    - type: VendingMachine
-      inventory:
-        FoodSnackRaisins:
-          amount: 2
-          iD: FoodSnackRaisins
-          type: Regular
-        FoodSnackChocolate:
-          amount: 0
-          iD: FoodSnackChocolate
-          type: Regular
-        FoodSnackCnDs:
-          amount: 1
-          iD: FoodSnackCnDs
-          type: Regular
-        FoodSnackPistachios:
-          amount: 3
-          iD: FoodSnackPistachios
-          type: Regular
-        FoodSnackSus:
-          amount: 1
-          iD: FoodSnackSus
-          type: Regular
-        FoodSnackSemki:
-          amount: 2
-          iD: FoodSnackSemki
-          type: Regular
-      contrabandInventory:
-        FoodSnackSyndi:
-          amount: 1
-          iD: FoodSnackSyndi
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 22077.5117958
-    - type: ActionGrant
-      actionEntities:
-      - 1204
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1204
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1204
-    - type: ActionsContainer
 - proto: VendingMachineSoda
   entities:
-  - uid: 1205
+  - uid: 1182
     components:
     - type: Transform
       pos: -19.5,-26.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        DrinkColaCan:
-          amount: 0
-          iD: DrinkColaCan
-          type: Regular
-        DrinkGrapeCan:
-          amount: 0
-          iD: DrinkGrapeCan
-          type: Regular
-        DrinkRootBeerCan:
-          amount: 2
-          iD: DrinkRootBeerCan
-          type: Regular
-        DrinkIcedTeaCan:
-          amount: 0
-          iD: DrinkIcedTeaCan
-          type: Regular
-        DrinkSolDryCan:
-          amount: 3
-          iD: DrinkSolDryCan
-          type: Regular
-        DrinkLemonLimeCan:
-          amount: 0
-          iD: DrinkLemonLimeCan
-          type: Regular
-        DrinkLemonLimeCranberryCan:
-          amount: 3
-          iD: DrinkLemonLimeCranberryCan
-          type: Regular
-        DrinkFourteenLokoCan:
-          amount: 3
-          iD: DrinkFourteenLokoCan
-          type: Regular
-      contrabandInventory:
-        DrinkColaBottleFull:
-          amount: 0
-          iD: DrinkColaBottleFull
-          type: Contraband
-      emaggedInventory:
-        DrinkNukieCan:
-          amount: 2
-          iD: DrinkNukieCan
-          type: Emagged
-        DrinkChangelingStingCan:
-          amount: 0
-          iD: DrinkChangelingStingCan
-          type: Emagged
-    - type: PointLight
-      enabled: True
-    - type: Advertise
-      nextAdvertisementTime: 21911.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1206
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1206
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1206
-    - type: ActionsContainer
   - uid: 9630
     components:
     - type: Transform
@@ -150148,825 +147455,59 @@ entities:
     - type: ActionsContainer
 - proto: VendingMachineTankDispenserEVAPOI
   entities:
-  - uid: 1211
-    components:
-    - type: Transform
-      pos: 17.5,25.5
-      parent: 1
-    - type: VendingMachine
-      inventory:
-        AirTankFilled:
-          amount: 4294967295
-          iD: AirTankFilled
-          type: Regular
-        DoubleEmergencyAirTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyAirTankFilled
-          type: Regular
-        OxygenTankFilled:
-          amount: 4294967295
-          iD: OxygenTankFilled
-          type: Regular
-        DoubleEmergencyOxygenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyOxygenTankFilled
-          type: Regular
-        NitrogenTankFilled:
-          amount: 4294967295
-          iD: NitrogenTankFilled
-          type: Regular
-        DoubleEmergencyNitrogenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyNitrogenTankFilled
-          type: Regular
-    - type: ActionGrant
-      actionEntities:
-      - 1212
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1212
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1212
-    - type: ActionsContainer
-  - uid: 1213
+  - uid: 1158
     components:
     - type: Transform
       pos: -3.5,27.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        AirTankFilled:
-          amount: 4294967295
-          iD: AirTankFilled
-          type: Regular
-        DoubleEmergencyAirTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyAirTankFilled
-          type: Regular
-        OxygenTankFilled:
-          amount: 4294967295
-          iD: OxygenTankFilled
-          type: Regular
-        DoubleEmergencyOxygenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyOxygenTankFilled
-          type: Regular
-        NitrogenTankFilled:
-          amount: 4294967295
-          iD: NitrogenTankFilled
-          type: Regular
-        DoubleEmergencyNitrogenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyNitrogenTankFilled
-          type: Regular
-    - type: ActionGrant
-      actionEntities:
-      - 1214
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1214
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1214
-    - type: ActionsContainer
-  - uid: 1215
+  - uid: 1159
+    components:
+    - type: Transform
+      pos: 17.5,25.5
+      parent: 1
+  - uid: 1217
     components:
     - type: Transform
       pos: 17.5,-26.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        AirTankFilled:
-          amount: 4294967295
-          iD: AirTankFilled
-          type: Regular
-        DoubleEmergencyAirTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyAirTankFilled
-          type: Regular
-        OxygenTankFilled:
-          amount: 4294967295
-          iD: OxygenTankFilled
-          type: Regular
-        DoubleEmergencyOxygenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyOxygenTankFilled
-          type: Regular
-        NitrogenTankFilled:
-          amount: 4294967295
-          iD: NitrogenTankFilled
-          type: Regular
-        DoubleEmergencyNitrogenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyNitrogenTankFilled
-          type: Regular
-    - type: ActionGrant
-      actionEntities:
-      - 1216
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1216
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1216
-    - type: ActionsContainer
-  - uid: 1217
+  - uid: 1218
     components:
     - type: Transform
       pos: 15.5,5.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        AirTankFilled:
-          amount: 4294967295
-          iD: AirTankFilled
-          type: Regular
-        DoubleEmergencyAirTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyAirTankFilled
-          type: Regular
-        OxygenTankFilled:
-          amount: 4294967295
-          iD: OxygenTankFilled
-          type: Regular
-        DoubleEmergencyOxygenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyOxygenTankFilled
-          type: Regular
-        NitrogenTankFilled:
-          amount: 4294967295
-          iD: NitrogenTankFilled
-          type: Regular
-        DoubleEmergencyNitrogenTankFilled:
-          amount: 4294967295
-          iD: DoubleEmergencyNitrogenTankFilled
-          type: Regular
-    - type: ActionGrant
-      actionEntities:
-      - 1218
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1218
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1218
-    - type: ActionsContainer
 - proto: VendingMachineTdfDrobe
   entities:
-  - uid: 1219
+  - uid: 1189
     components:
     - type: Transform
       pos: 12.5,-16.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        ClothingBackpackTdf:
-          amount: 5
-          iD: ClothingBackpackTdf
-          type: Regular
-        ClothingBackpackSatchelTdf:
-          amount: 5
-          iD: ClothingBackpackSatchelTdf
-          type: Regular
-        ClothingBackpackDuffelTdf:
-          amount: 5
-          iD: ClothingBackpackDuffelTdf
-          type: Regular
-        ClothingBackpackSecurity:
-          amount: 5
-          iD: ClothingBackpackSecurity
-          type: Regular
-        ClothingBackpackSatchelSecurity:
-          amount: 5
-          iD: ClothingBackpackSatchelSecurity
-          type: Regular
-        ClothingBackpackDuffelSecurity:
-          amount: 5
-          iD: ClothingBackpackDuffelSecurity
-          type: Regular
-        ClothingHandsGlovesCombatNfsdBrown:
-          amount: 5
-          iD: ClothingHandsGlovesCombatNfsdBrown
-          type: Regular
-        ClothingHandsGlovesCombatNfsdCream:
-          amount: 5
-          iD: ClothingHandsGlovesCombatNfsdCream
-          type: Regular
-        ClothingHandsGlovesCombat:
-          amount: 5
-          iD: ClothingHandsGlovesCombat
-          type: Regular
-        ClothingHandsGlovesTacticalCombatBlack:
-          amount: 5
-          iD: ClothingHandsGlovesTacticalCombatBlack
-          type: Regular
-        ClothingUniformJumpsuitTdfEnforcer:
-          amount: 10
-          iD: ClothingUniformJumpsuitTdfEnforcer
-          type: Regular
-        ClothingUniformJumpsuitTdfJunior:
-          amount: 10
-          iD: ClothingUniformJumpsuitTdfJunior
-          type: Regular
-        ClothingNeckIFFOrange:
-          amount: 30
-          iD: ClothingNeckIFFOrange
-          type: Regular
-        ClothingHeadsetTdf:
-          amount: 15
-          iD: ClothingHeadsetTdf
-          type: Regular
-        ClothingMaskGasSecurity:
-          amount: 15
-          iD: ClothingMaskGasSecurity
-          type: Regular
-        ClothingShoesBootsCombat:
-          amount: 15
-          iD: ClothingShoesBootsCombat
-          type: Regular
-        ClothingHeadHelmetMercenaryBlack:
-          amount: 20
-          iD: ClothingHeadHelmetMercenaryBlack
-          type: Regular
-        ClothingHeadHatBeretTdf:
-          amount: 10
-          iD: ClothingHeadHatBeretTdf
-          type: Regular
-        ClothingOuterArmorBasicSlim:
-          amount: 15
-          iD: ClothingOuterArmorBasicSlim
-          type: Regular
-        ClothingOuterArmorBasic:
-          amount: 15
-          iD: ClothingOuterArmorBasic
-          type: Regular
-        ClothingShoesBootsMagSecurity:
-          amount: 3
-          iD: ClothingShoesBootsMagSecurity
-          type: Regular
-        ClothingEyesGlassesSunglasses:
-          amount: 3
-          iD: ClothingEyesGlassesSunglasses
-          type: Regular
-        ClothingEyesHudSecurityTdf:
-          amount: 10
-          iD: ClothingEyesHudSecurityTdf
-          type: Regular
-        ClothingEyesHudMedSec:
-          amount: 2
-          iD: ClothingEyesHudMedSec
-          type: Regular
-        ClothingBeltTdf:
-          amount: 10
-          iD: ClothingBeltTdf
-          type: Regular
-        ClothingBeltMilitaryWebbingTdf:
-          amount: 10
-          iD: ClothingBeltMilitaryWebbingTdf
-          type: Regular
-        ClothingBeltWebbingsBigBase:
-          amount: 12
-          iD: ClothingBeltWebbingsBigBase
-          type: Regular
-        ClothingBeltMilitaryWebbingMedTdf:
-          amount: 3
-          iD: ClothingBeltMilitaryWebbingMedTdf
-          type: Regular
-    - type: Advertise
-      nextAdvertisementTime: 21816.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1220
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1220
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1220
-    - type: ActionsContainer
 - proto: VendingMachineTdfTech
   entities:
-  - uid: 1221
+  - uid: 1215
     components:
     - type: Transform
       pos: 12.5,-15.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        BookTriadLaw:
-          amount: 20
-          iD: BookTriadLaw
-          type: Regular
-        BookTdfSop:
-          amount: 20
-          iD: BookTdfSop
-          type: Regular
-        Handcuffs:
-          amount: 10
-          iD: Handcuffs
-          type: Regular
-        Zipties:
-          amount: 10
-          iD: Zipties
-          type: Regular
-        GrenadeFlashBang:
-          amount: 10
-          iD: GrenadeFlashBang
-          type: Regular
-        SecurityWhistle:
-          amount: 5
-          iD: SecurityWhistle
-          type: Regular
-        TearGasGrenade:
-          amount: 4
-          iD: TearGasGrenade
-          type: Regular
-        ClusterBangFull:
-          amount: 2
-          iD: ClusterBangFull
-          type: Regular
-        GrenadeStinger:
-          amount: 4
-          iD: GrenadeStinger
-          type: Regular
-        Flash:
-          amount: 10
-          iD: Flash
-          type: Regular
-        FlashlightSeclite:
-          amount: 10
-          iD: FlashlightSeclite
-          type: Regular
-        HoloprojectorNfsd:
-          amount: 4
-          iD: HoloprojectorNfsd
-          type: Regular
-        Tourniquet:
-          amount: 8
-          iD: Tourniquet
-          type: Regular
-        RiotShield:
-          amount: 3
-          iD: RiotShield
-          type: Regular
-        RiotLaserShield:
-          amount: 3
-          iD: RiotLaserShield
-          type: Regular
-        RiotBulletShield:
-          amount: 3
-          iD: RiotBulletShield
-          type: Regular
-        Stunbaton:
-          amount: 8
-          iD: Stunbaton
-          type: Regular
-        WeaponDisabler:
-          amount: 8
-          iD: WeaponDisabler
-          type: Regular
-        WeaponCapacitorRechargerFlatpack:
-          amount: 10
-          iD: WeaponCapacitorRechargerFlatpack
-          type: Regular
-        Multitool:
-          amount: 8
-          iD: Multitool
-          type: Regular
-        ContrabandAppraisalTool:
-          amount: 5
-          iD: ContrabandAppraisalTool
-          type: Regular
-        CrowbarRed:
-          amount: 10
-          iD: CrowbarRed
-          type: Regular
-        ForensicScanner:
-          amount: 8
-          iD: ForensicScanner
-          type: Regular
-        BoxForensicPad:
-          amount: 5
-          iD: BoxForensicPad
-          type: Regular
-        LogProbeCartridge:
-          amount: 5
-          iD: LogProbeCartridge
-          type: Regular
-        TrackingImplanter:
-          amount: 5
-          iD: TrackingImplanter
-          type: Regular
-        Binoculars:
-          amount: 5
-          iD: Binoculars
-          type: Regular
-      contrabandInventory:
-        FoodDonutHomer:
-          amount: 3
-          iD: FoodDonutHomer
-          type: Contraband
-        FoodBoxDonut:
-          amount: 3
-          iD: FoodBoxDonut
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 21804.5042082
-    - type: ActionGrant
-      actionEntities:
-      - 1222
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1222
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1222
-    - type: ActionsContainer
-  - uid: 1223
+  - uid: 1216
     components:
     - type: Transform
       pos: 18.5,27.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        BookTriadLaw:
-          amount: 20
-          iD: BookTriadLaw
-          type: Regular
-        BookTdfSop:
-          amount: 20
-          iD: BookTdfSop
-          type: Regular
-        Handcuffs:
-          amount: 10
-          iD: Handcuffs
-          type: Regular
-        Zipties:
-          amount: 10
-          iD: Zipties
-          type: Regular
-        GrenadeFlashBang:
-          amount: 10
-          iD: GrenadeFlashBang
-          type: Regular
-        SecurityWhistle:
-          amount: 5
-          iD: SecurityWhistle
-          type: Regular
-        TearGasGrenade:
-          amount: 4
-          iD: TearGasGrenade
-          type: Regular
-        ClusterBangFull:
-          amount: 2
-          iD: ClusterBangFull
-          type: Regular
-        GrenadeStinger:
-          amount: 4
-          iD: GrenadeStinger
-          type: Regular
-        Flash:
-          amount: 10
-          iD: Flash
-          type: Regular
-        FlashlightSeclite:
-          amount: 10
-          iD: FlashlightSeclite
-          type: Regular
-        HoloprojectorNfsd:
-          amount: 4
-          iD: HoloprojectorNfsd
-          type: Regular
-        Tourniquet:
-          amount: 8
-          iD: Tourniquet
-          type: Regular
-        RiotShield:
-          amount: 3
-          iD: RiotShield
-          type: Regular
-        RiotLaserShield:
-          amount: 3
-          iD: RiotLaserShield
-          type: Regular
-        RiotBulletShield:
-          amount: 3
-          iD: RiotBulletShield
-          type: Regular
-        Stunbaton:
-          amount: 8
-          iD: Stunbaton
-          type: Regular
-        WeaponDisabler:
-          amount: 8
-          iD: WeaponDisabler
-          type: Regular
-        WeaponCapacitorRechargerFlatpack:
-          amount: 10
-          iD: WeaponCapacitorRechargerFlatpack
-          type: Regular
-        Multitool:
-          amount: 8
-          iD: Multitool
-          type: Regular
-        ContrabandAppraisalTool:
-          amount: 5
-          iD: ContrabandAppraisalTool
-          type: Regular
-        CrowbarRed:
-          amount: 10
-          iD: CrowbarRed
-          type: Regular
-        ForensicScanner:
-          amount: 8
-          iD: ForensicScanner
-          type: Regular
-        BoxForensicPad:
-          amount: 5
-          iD: BoxForensicPad
-          type: Regular
-        LogProbeCartridge:
-          amount: 5
-          iD: LogProbeCartridge
-          type: Regular
-        TrackingImplanter:
-          amount: 5
-          iD: TrackingImplanter
-          type: Regular
-        Binoculars:
-          amount: 5
-          iD: Binoculars
-          type: Regular
-      contrabandInventory:
-        FoodDonutHomer:
-          amount: 3
-          iD: FoodDonutHomer
-          type: Contraband
-        FoodBoxDonut:
-          amount: 3
-          iD: FoodBoxDonut
-          type: Contraband
-    - type: Advertise
-      nextAdvertisementTime: 22138.5117728
-    - type: ActionGrant
-      actionEntities:
-      - 1224
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: PointLight
-      enabled: True
-    - type: Actions
-      actions:
-      - 1224
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1224
-    - type: ActionsContainer
+- proto: VendingMachineVendomatPOI
+  entities:
+  - uid: 1203
+    components:
+    - type: Transform
+      pos: -2.5,-17.5
+      parent: 1
 - proto: VendingMachineYouToolPOI
   entities:
-  - uid: 1225
+  - uid: 1190
     components:
     - type: Transform
       pos: 6.5,15.5
       parent: 1
-    - type: VendingMachine
-      inventory:
-        Screwdriver:
-          amount: 4294967295
-          iD: Screwdriver
-          type: Regular
-        Crowbar:
-          amount: 4294967295
-          iD: Crowbar
-          type: Regular
-        Wirecutter:
-          amount: 4294967295
-          iD: Wirecutter
-          type: Regular
-        Wrench:
-          amount: 4294967295
-          iD: Wrench
-          type: Regular
-        Welder:
-          amount: 4294967295
-          iD: Welder
-          type: Regular
-        NetworkConfigurator:
-          amount: 4294967295
-          iD: NetworkConfigurator
-          type: Regular
-        AppraisalTool:
-          amount: 4294967295
-          iD: AppraisalTool
-          type: Regular
-        ClothingBeltUtility:
-          amount: 4294967295
-          iD: ClothingBeltUtility
-          type: Regular
-        CableApcStack:
-          amount: 4294967295
-          iD: CableApcStack
-          type: Regular
-        CableMVStack:
-          amount: 4294967295
-          iD: CableMVStack
-          type: Regular
-        CableHVStack:
-          amount: 4294967295
-          iD: CableHVStack
-          type: Regular
-        FlashlightLantern:
-          amount: 4294967295
-          iD: FlashlightLantern
-          type: Regular
-        trayScanner:
-          amount: 4294967295
-          iD: trayScanner
-          type: Regular
-        GasAnalyzer:
-          amount: 4294967295
-          iD: GasAnalyzer
-          type: Regular
-        SprayPainter:
-          amount: 4294967295
-          iD: SprayPainter
-          type: Regular
-        SprayPainterAmmo:
-          amount: 4294967295
-          iD: SprayPainterAmmo
-          type: Regular
-      contrabandInventory:
-        Multitool:
-          amount: 4294967295
-          iD: Multitool
-          type: Contraband
-    - type: PointLight
-      enabled: True
-    - type: ActionGrant
-      actionEntities:
-      - 1226
-    - type: SpookySpeaker
-      nextSpeakTime: 106.3589167
-    - type: Actions
-      actions:
-      - 1226
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      spokenLanguages:
-      - TauCetiBasic
-      - RobotTalk
-      currentLanguage: TauCetiBasic
-    - type: ContainerContainer
-      containers:
-        cash_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1226
-    - type: ActionsContainer
 - proto: WallmountSubstationElectronics
   entities:
   - uid: 929
@@ -161565,30 +158106,16 @@ entities:
       - 2254
 - proto: WeaponLMGRiot
   entities:
-  - uid: 1591
+  - uid: 1191
     components:
     - type: Transform
       parent: 1590
-    - type: ContainerContainer
-      containers:
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 1592
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 1593
     - type: UseDelay
       delays:
         RMCWieldDelay:
-          endTime: 2539.3885412
-          startTime: 2432.3975676
+          endTime: 536.2664398
+          startTime: 535.6327977
           length: 1.2
-        default:
-          endTime: 106.3589167
-          startTime: 0
-          length: 1
     - type: Physics
       canCollide: False
 - proto: WeaponRevolverInspector
@@ -161607,76 +158134,38 @@ entities:
           length: 0.66
     - type: Physics
       canCollide: False
-- proto: WeaponRifleLecterTdf
+- proto: WeaponRifleLecterTdfRubber
   entities:
-  - uid: 4112
+  - uid: 1193
     components:
     - type: Transform
-      pos: -19.395685,12.684981
+      pos: -19.476145,12.530757
       parent: 1
-    - type: ContainerContainer
-      containers:
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4114
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4113
+  - uid: 1194
+    components:
+    - type: Transform
+      pos: -19.700947,12.780757
+      parent: 1
+- proto: WeaponRifleMR3CRegistered
+  entities:
+  - uid: 1202
+    components:
+    - type: Transform
+      parent: 7356
     - type: Physics
       canCollide: False
-  - uid: 4115
-    components:
-    - type: Transform
-      rot: 0.0005153495585545897 rad
-      pos: -19.686113,12.7371435
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4117
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4116
 - proto: WeaponRifleMR8T
   entities:
-  - uid: 4118
+  - uid: 1195
     components:
     - type: Transform
-      rot: 0.000441686250269413 rad
-      pos: -13.446264,12.736893
+      pos: -13.423573,12.73909
       parent: 1
-    - type: ContainerContainer
-      containers:
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4120
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4119
-  - uid: 4121
+  - uid: 1196
     components:
     - type: Transform
-      pos: -13.322239,12.584509
+      pos: -13.506906,12.48909
       parent: 1
-    - type: ContainerContainer
-      containers:
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4123
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 4122
-    - type: Physics
-      canCollide: False
 - proto: WeaponTurretAK570
   entities:
   - uid: 6665
