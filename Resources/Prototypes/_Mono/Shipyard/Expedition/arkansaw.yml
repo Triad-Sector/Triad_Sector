@@ -2,14 +2,14 @@
 # GitHub: Rubeebeebee
 # Discord: rubeebee
 
-# Shuttle Notes:
+# Shuttle Notes: mauve (@mauvelikeroses on discord) did her best to revise stuff a little <3
 #
 - type: vessel
   id: Arkansaw
   parent: BaseVessel
   name: COG Arkansaw
-  description: Made by a forgotten cult; it is a Capital sized mech carrier with a dedicated science and mining bay with mining pulsars. Relatively thin armor and runs on 3 bananium generators wired together. 
-  price: 262000 # engine is fueled with bananium, extremely radioactive engine room, thin armor, extremely vulnerable rear thrusters. 
+  description: Made by a forgotten cult; it is a Capital sized mech carrier with a dedicated science and mining bay with mining pulsars. Relatively thin armor and runs on 2 Z-Pinches wired together.
+  price: 246000 # appraisegrid at 204788 times 1.2 rounded up by the nearest thousandth
   category: Large
   group: Expedition
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/arkansaw.yml
@@ -19,7 +19,7 @@
   - Science
   - Salvage
   engine:
-  - Bananium
+  - Uranium
 
 - type: gameMap
   id: Arkansaw

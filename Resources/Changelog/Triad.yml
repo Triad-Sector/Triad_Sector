@@ -2866,3 +2866,233 @@ Entries:
   id: 2421
   time: '2026-07-19T19:59:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/383
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: Added new merc only ship, the Palisade
+  id: 2422
+  time: '2026-07-20T11:34:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/380
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: 'Added new expedition ship, The Prospector '
+  id: 2423
+  time: '2026-07-20T11:42:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/366
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Service techfab and Autolathes now have access to a large assortment of
+        bureaucratically-adjacent items under the new Bureaucracy lathe pack.
+        This includes paper, colored paper, business cards, pens, clipboards, a
+        briefcase, folders, and envelopes.
+  id: 2424
+  time: '2026-07-20T13:12:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/370
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reptilian sprites for the syndicate hardsuits have been redone, and
+        should look a lot better and not like a completely different suit!
+    - type: Tweak
+      message: Resprited humans to be inline with the art direction.
+  id: 2425
+  time: '2026-07-20T13:35:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/384
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed TDF ships getting syndicate smuggler faxes
+    - type: Fix
+      message: >-
+        Fixed ship vouchers mispredicting when you put them into the console
+        (being laggy and making no sound)
+  id: 2426
+  time: '2026-07-20T15:03:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/386
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: Added yellow and black crystals, crystal shards, and light tubes.
+    - type: Fix
+      message: Fixed an issue where small lights are too hard to shoot.
+    - type: Fix
+      message: >-
+        Fixed a bug where dragged objects would collide with wall mounted lights
+        and cameras.
+  id: 2427
+  time: '2026-07-20T15:04:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/365
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed LPB's third AI Core not receiving power due to not having any
+        reachable wire
+  id: 2428
+  time: '2026-07-20T16:02:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/390
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Huge Auric visual overhaul, nearly done I promise
+  id: 2429
+  time: '2026-07-20T20:14:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/391
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Thrusters, Atmos, Wiring Visuals, a lot a lot a lot a lot
+  id: 2430
+  time: '2026-07-21T13:41:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/393
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added ability to construct sinks!
+    - type: Add
+      message: Added ability to construct drains!
+    - type: Add
+      message: >-
+        Added ability to construct extinguisher, defibrillator, and fire axe
+        cabinets!
+  id: 2431
+  time: '2026-07-21T17:50:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/278
+- author: HameyTychol
+  changes:
+    - type: Remove
+      message: Removed the ability to self execute
+  id: 2432
+  time: '2026-07-21T18:36:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/397
+- author: HameyTychol
+  changes:
+    - type: Add
+      message: Defibrillator cabinets recharge defibrillators now!
+  id: 2433
+  time: '2026-07-21T19:07:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/398
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Scrubbers can be set to scrub when above a certain percentage of a gas
+  id: 2434
+  time: '2026-07-21T22:17:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/399
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: Alive icon on the medhud
+  id: 2435
+  time: '2026-07-21T22:17:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/400
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed blast doors not closing on-top of airlocks
+  id: 2436
+  time: '2026-07-22T19:11:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/405
+- author: satirically
+  changes:
+    - type: Tweak
+      message: Knallstock can take extendeds now
+  id: 2437
+  time: '2026-07-23T01:50:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/409
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added Science Vessel to the shipyard, the Molecule.
+  id: 2438
+  time: '2026-07-23T03:43:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/403
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added privacy holoprojectors, available in loadouts under the fun
+        category and at an autolathe and service techfab. You can press Z to
+        access its interface, where you'll be able to give a description of the
+        events happening past the privacy holoprojectors. 
+  id: 2439
+  time: '2026-07-23T03:58:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/408
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        Rules 1.7, 1.7A, 1.7B, 1.7C, 5.4, 9.4A, 9.7, 10.2D (Please see PR for
+        more details)
+    - type: Remove
+      message: Removed fun. I hate fun.
+    - type: Tweak
+      message: >-
+        Rules: 2.3, 8.8, 9.1, 9.3, 9.3A, 10.2, 10.3 (Please see PR for more
+        details)
+  id: 2440
+  time: '2026-07-23T05:24:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/395
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited the emergency EVA, EVA, prisoner EVA, and syndicate EVA to be
+        in-line with the art-style!
+  id: 2441
+  time: '2026-07-23T22:54:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/412
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: >-
+        Shielded lights can now be built, or upgraded from existing lights with
+        plasteel (remove the bulb first). These are much more resistant to solar
+        flares.
+  id: 2442
+  time: '2026-07-24T12:03:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/401
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Auric finalised until updates require changes
+  id: 2443
+  time: '2026-07-24T12:18:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/407
+- author: PhosphateWithManyOs
+  changes:
+    - type: Add
+      message: >-
+        You can now put circuit boards and tiles into construction bags and
+        boxes.
+  id: 2444
+  time: '2026-07-24T12:45:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/413
+- author: leafybonsai
+  changes:
+    - type: Add
+      message: TDF-Knight patrol ship
+  id: 2445
+  time: '2026-07-24T15:31:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/387
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Added fun!
+  id: 2446
+  time: '2026-07-24T16:39:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/414
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        The Syndicate Weapons cache has been reworked; it has a completely new
+        dungeon-like design, TDF are not paid to guard it. Work with eachother
+        to clear it out!
+  id: 2447
+  time: '2026-07-24T16:48:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/402

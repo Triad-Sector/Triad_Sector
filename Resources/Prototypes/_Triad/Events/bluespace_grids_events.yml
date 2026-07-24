@@ -76,5 +76,47 @@
         - /Maps/_Triad/Bluespace/tdfvaultsmall.yml
     rewardAccounts:
       TDF: 0.9 # TDF
+      Frontier: 0.1
+
+- type: entity
+  id: BluespaceCacheError
+  parent: BaseStationEventNFModerateDelay # Changed to Moderate (Previously, still spawned too Frequent, 2 vault side by side + 1 somewhere)
+  name: Auric Outpost # This shows up in the radio for the TDF
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-bluespace-syndi-cache-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    warningAnnouncement: station-event-bluespace-syndi-cache-warning-announcement
+    endAnnouncement: station-event-bluespace-syndi-cache-start-announcement
+    earliestStart: 60
+    weight: 5
+    duration: 1200
+    maxDuration: 1500
+    reoccurrenceDelay: 300 # 5 hours
+    startRadioAnnouncement: station-event-bluespace-syndi-cache-start-radio-announcement
+    startRadioAnnouncementChannel: Nfsd # TDF
+  - type: BluespaceErrorRule
+    groups:
+      grid: !type:GridSpawnGroup
+        nameLoc:
+        - station-event-bluespace-name-SyndicateWeaponsCache
+        minimumDistance: 9500 # Farther than most POIs but not as far as LPB
+        maximumDistance: 14000
+        addComponents:
+        - type: Gravity
+          enabled: true
+          inherent: true
+        - type: IFF
+          color: "#E10F9B"
+        - type: Shuttle
+        - type: LinkedLifecycleGridParent
+        - type: ProtectedGrid
+          preventArtifactTriggers: true
+        - type: PreventPilot
+        - type: ForceAnchor # Added post-FTL, so anchoring is fine.
+        - type: ClaimableGrid
+        paths:
+        - /Maps/_Triad/Bluespace/syndiecache.yml
 
 # TODO: Federated Solarian Republic vaults and Coalition vaults

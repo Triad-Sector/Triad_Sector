@@ -74,3 +74,6 @@
     - type: ShipRepairable # Triad: Make drains SRD repairable
       repairTime: 5
       repairCost: 20
+    - type: Construction # Triad
+      graph: floordrain
+      node: finish

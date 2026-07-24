@@ -19,6 +19,8 @@
   - Science
   engine:
   - AME
+  addComponents:
+  - type: ShipSavingBlacklist
 
 - type: gameMap
   id: Ravager

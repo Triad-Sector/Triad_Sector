@@ -190,7 +190,7 @@
 
 - type: entity
   id: WallRockScrapPileLithium
-  parent: WallRockScrapPile
+  parent: NFWallRockScrapPile
   description: An ore vein with lithium.
   suffix: Lithium
   components:

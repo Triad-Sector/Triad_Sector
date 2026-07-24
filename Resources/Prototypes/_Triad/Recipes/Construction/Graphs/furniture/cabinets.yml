@@ -1,0 +1,95 @@
+- type: constructionGraph
+  id: defibrillatorcabinet
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 7
+            - material: Glass
+              amount: 3
+              doAfter: 2
+    - node: finish
+      entity: DefibrillatorCabinet
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 7
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: constructionGraph
+  id: extinguishercabinet
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 7
+            - material: Glass
+              amount: 3
+              doAfter: 2
+    - node: finish
+      entity: ExtinguisherCabinet
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 7
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: constructionGraph
+  id: fireaxecabinet
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 7
+            - material: Glass
+              amount: 3
+              doAfter: 2
+    - node: finish
+      entity: FireAxeCabinet
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 7
+          steps:
+            - tool: Prying
+              doAfter: 2
