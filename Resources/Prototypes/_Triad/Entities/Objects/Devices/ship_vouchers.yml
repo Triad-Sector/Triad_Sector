@@ -86,7 +86,7 @@
     destroyOnEmpty: true
     consoleType: Security
     companyName: TDF
-     vessels:
+    vessels:
     - Knight
 
 - type: entity
