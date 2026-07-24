@@ -7,8 +7,11 @@ namespace Content.Server.NPC.HTN.Preconditions;
 
 public sealed partial class TargetInLOSPrecondition : HTNPrecondition
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
     private InteractionSystem _interaction = default!;
+    // Mono
+    private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<RequireProjectileTargetComponent> _requireTargetQuery;
 
     [DataField("targetKey")]
     public string TargetKey = "Target";
