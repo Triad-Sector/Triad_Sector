@@ -16,6 +16,8 @@
     coolingCoefficient: 0.005
   - type: ExplosionResistance
     damageCoefficient: 0.35
+  - type: Item
+    size: Ginormous
   - type: Armor
     modifiers:
       coefficients:
