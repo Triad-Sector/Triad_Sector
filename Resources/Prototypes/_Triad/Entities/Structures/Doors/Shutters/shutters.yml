@@ -4,7 +4,7 @@
   parent: BaseStructure
   name: shutter
   abstract: true
-  description: No matter how hard you try, this shutter does not budge or dent.
+  description: No matter how hard you try, this shutter won't budge or dent..
   placement:
     mode: SnapgridCenter
   components:
