@@ -2746,6 +2746,8 @@ entities:
       pos: 2.5,21.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeColor
@@ -2764,6 +2766,8 @@ entities:
       pos: 1.5,13.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeColor
@@ -2775,6 +2779,8 @@ entities:
       pos: -1.5,12.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeColor
@@ -2786,6 +2792,8 @@ entities:
       pos: 0.5,17.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeColor
@@ -2809,6 +2817,8 @@ entities:
       pos: 1.5,6.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeLayers
@@ -2822,6 +2832,8 @@ entities:
       pos: -0.5,17.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeLayers
@@ -2834,6 +2846,8 @@ entities:
       pos: 1.5,21.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeLayers
@@ -2847,6 +2861,8 @@ entities:
       pos: 0.5,9.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeLayers
@@ -2870,6 +2886,8 @@ entities:
       pos: 1.5,14.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 574
     - type: AtmosPipeLayers
