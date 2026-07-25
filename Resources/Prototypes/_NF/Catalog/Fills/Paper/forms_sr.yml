@@ -41,7 +41,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#000f89]◥[bold]N[/bold]◣ [bold]Frontier Outpost Command[/bold][/color]
+      [color=#000f89]◥[bold]N[/bold]◣ [bold]TFA Command[/bold][/color]
       [color=#000f89]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Employment Contract[/head]
 
@@ -59,7 +59,7 @@
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Colonel or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Chief Enforcer or Colossus Central's overseer).[/color]
 
 - type: entity
   id: PaperWrittenFrontierEmployeePayHistory
@@ -69,7 +69,7 @@
   components:
   - type: Paper
     content: |2 # If editing this, edit PaperWrittenNfsdPayHistory
-      [color=#000f89]◥[bold]N[/bold]◣ [bold]Frontier Outpost Command[/bold][/color]
+      [color=#000f89]◥[bold]N[/bold]◣ [bold]TFA Command[/bold][/color]
       [color=#000f89]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Employee Pay History[/head]
 
@@ -86,7 +86,7 @@
 
 
 
-      [color=#AAAAAA]This Form is void without the signature and stamp of Frontier Command (Colonel or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signature and stamp of Frontier Command (Colonel or Colossus Central's overseer).[/color]
 
 - type: entity # Based on form made by Willzile1 (Jon-Gah)
   id: PaperWrittenFrontierFundRequisition
@@ -107,7 +107,7 @@
 
 
 
-      [color=#AAAAAA]This Form is void without the signature and stamp of Frontier Command (Colonel or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signature and stamp of Frontier Command (Colonel or Colossus Central's overseer).[/color]
 
 - type: entity # Based on form made by Starly (Shaw Clifflower)
   id: PaperWrittenFrontierAuthorization
@@ -139,15 +139,15 @@
 
       This document does NOT deputize the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nanotrasen.
 
-      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the TSFMC or the Colonial Liaison, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
+      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the TSFMC or Colossus Central's overseer, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
 
-      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with TSFMC command and/or the Colonial Liaison to minimize casualties.
+      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with TSFMC command and/or Colossus Central's overseer to minimize casualties.
 
       Before engaging with hostile vessels, the authorized party is expected to follow any instructions given by the TSFMC for staging or other preparation prior to boarding.
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Colonel or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Colonel or Colossus Central's overseer).[/color]
 
 - type: entity # Based on form made by Willzile1 (Jon-Gah)
   id: PaperWrittenFrontierShuttleTitleChange
@@ -188,7 +188,7 @@
 
       This is a formal declaration from Frontier's Station Traffic Controller, hereby declaring the above vessel to be abandoned by its captain, and recognized as salvage. This vessel has been unresponsive on both radio and fax for over twenty (20) minutes.
 
-      Pursuant to Space Law §9.3, this vessel will be moved out to three hundred (300) meters from Frontier Station by an agent representing Frontier Station or the TSFMC, and will be salvageable by any other vessel operating within the sector.
+      Pursuant to Space Law §9.3, this vessel will be moved out to three hundred (300) meters from Frontier Station by an agent representing Frontier Station or the TDF, and will be salvageable by any other vessel operating within the sector.
 
       Neither the TSF Administration, nor the Nanotrasen Corporation, nor the Frontier Expansion Union, nor any other group will reimburse any party affiliated with this vessel for losses incurred.
 

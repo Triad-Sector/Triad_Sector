@@ -41,7 +41,8 @@
   description: department-NFCentralCommand-description # Frontier
   color: "#0c344d"
   roles:
-  - CentralCommandOfficial
+  - TfaHighCommandRep # Triad
+  - TfaHighCommandIntern # Triad
 #  - CBURN # Frontier
   - ERTLeader
   - ERTChaplain
@@ -77,7 +78,7 @@
   # - ERTEngineer # Frontier
   # - DeathSquad # Frontier
   - StationRepresentative # Frontier
-  # - Sheriff  # Frontier
+  - TdfChiefEnforcer  # Triad
   - StationTrafficController # Frontier
   - DirectorOfCare # Mono
   primary: false
@@ -102,12 +103,12 @@
   - DirectorOfCare # Mono
   - MdMedic # Mono
 
-- type: department
-  id: Security
-  name: department-Security
-  description: department-NFSecurity-description # Frontier
-  color: "#326DA8" # Mono
-  weight: 120 # Mono
+#- type: department Triad, see _Triad/Roles/Jobs/departments.yml
+#  id: Security
+#  name: department-Security
+#  description: department-NFSecurity-description # Frontier
+#  color: "#326DA8" # Mono
+#  weight: 120 # Mono
 # roles:
 #  - Detective # Frontier
 #  - HeadOfSecurity # Frontier
@@ -126,8 +127,8 @@
 #   - PublicAffairsLiaison # Frontier
 #   - TsfEngineer # Mono
 #   - TsfBorg # Mono
-  primary: false
-  editorHidden: true # Frontier
+#  primary: false
+#  editorHidden: true # Frontier
 
 - type: department
   id: Science

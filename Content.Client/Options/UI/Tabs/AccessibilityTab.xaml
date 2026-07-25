@@ -4,6 +4,9 @@
     <BoxContainer Orientation="Vertical">
         <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
             <BoxContainer Orientation="Vertical" Margin="8">
+                <Label Text="{Loc 'ui-options-accessability-header-content'}"
+                       StyleClasses="LabelKeyText"/>
+                <CheckBox Name="CensorNudityCheckBox" Text="{Loc 'ui-options-censor-nudity'}" />
                 <Label Text="{Loc 'ui-options-accessability-header-visuals'}"
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ReducedMotionCheckBox" Text="{Loc 'ui-options-reduced-motion'}" />
@@ -18,9 +21,12 @@
                 <ui:OptionColorSlider Name="HighlightsColorSlider"
                                       Title="{Loc 'ui-options-highlights-color'}"
                                       Example="{Loc 'ui-options-highlights-color-example'}"/>
-                <Label Text="{Loc 'ui-options-accessability-header-content'}"
+                <Label Text="{Loc 'ui-options-accessability-header-night-vision'}"
                        StyleClasses="LabelKeyText"/>
-                <CheckBox Name="CensorNudityCheckBox" Text="{Loc 'ui-options-censor-nudity'}" />
+                <CheckBox Name="UseNightVisionColorCheckBox" Text="{Loc 'ui-options-use-night-vision-color'}" />
+                <ui:OptionColorSlider Name="NightVisionColorSlider"
+                                      Title="{Loc 'ui-options-night-vision-color'}"
+                                      Example="{Loc 'ui-options-night-vision-color-example'}"/>
             </BoxContainer>
         </ScrollContainer>
         <ui:OptionsTabControlRow Name="Control" Access="Public" />

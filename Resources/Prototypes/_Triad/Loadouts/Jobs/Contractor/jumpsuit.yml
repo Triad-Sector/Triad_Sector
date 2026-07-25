@@ -1,0 +1,41 @@
+- type: loadout
+  id: ClothingUniformMNKOfficeSkirt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKOfficeSkirt
+
+- type: loadout
+  id: ClothingUniformMNKUnderGarment
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKUnderGarment
+
+- type: loadout
+  id: ClothingUniformMNKDressBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKDressBlack
+
+- type: loadout
+  id: ClothingUniformMNKGymBra
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKGymBra
+
+- type: loadout
+  id: ClothingUniformMNKBlackOveralls
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKBlackOveralls
+
+- type: loadout
+  id: ClothingUniformMNKBlackShoulder
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKBlackShoulder
+
+- type: loadout
+  id: ClothingUniformMNKTracksuitBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformMNKTracksuitBlack

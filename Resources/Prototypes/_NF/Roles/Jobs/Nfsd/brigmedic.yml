@@ -49,5 +49,5 @@
     back:
     - EncryptionKeyMedical
     - Magazine45_ACPPistolFMJ
-    - BaseSecurityUplinkRadioOfficer #Mono: Changed to officer uplink
+    #- BaseSecurityUplinkRadioOfficer #Mono: Changed to officer uplink
     - RadioHandheldNF # Mono

@@ -56,20 +56,20 @@
 #      defaultMarkings: [ GoblinNoseBasic ]
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     # End Triad.
     Chest:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
-      points: 2
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
-      points: 2
+      points: 8 # Triad - Increased to 8.
       required: false
 
 - type: humanoidBaseSprite

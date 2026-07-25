@@ -53,6 +53,11 @@
           - FireAxe
   - type: Lock
   - type: AccessReader
+  - type: HLPersistOnShipSave # Triad
+    saveContents: true
+  - type: Construction # Triad
+    graph: fireaxecabinet
+    node: finish
 #    access: [["Atmospherics"], ["Command"]]
 
 - type: entity

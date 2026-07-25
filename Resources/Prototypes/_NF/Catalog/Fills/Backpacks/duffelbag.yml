@@ -48,29 +48,6 @@
       - id: Retractor
       - id: NitrousOxideTankFilled # Mono
 
-- type: entity
-  parent: ClothingBackpackDuffelNfsdBrown
-  id: ClothingBackpackDuffelNfsdTrackingBundle
-  name: tracking bundle
-  description: "All the equipment needed to track almost anything, careful tracking people"
-  components:
-  - type: StorageFill
-    contents:
-      - id: WeaponLauncherNfsdLake
-      - id: NFBoxDartsTracking
-
-- type: entity
-  parent: ClothingBackpackDuffelNfsdBrown
-  id: ClothingBackpackDuffelNfsdEmpBundle
-  name: TSFMC Lake EMP bundle
-  description: "An old repainted China-Lake grenade launcher bundled with 10 rounds of EMP."
-  components:
-  - type: StorageFill
-    contents:
-      - id: WeaponLauncherNfsdLake
-      - id: 40mmGrenadeEMP
-        amount: 12
-
 # Not a duffelbag, but stored with other uplink-related backpacks
 - type: entity
   parent: ClothingBackpackSatchelLeather
@@ -100,7 +77,7 @@
 - type: entity
   parent: [ ClothingBackpackDuffelCaptain, StorageFillEVASuitSr ]
   id: ClothingBackpackDuffelEVABundleSr
-  name: colonial liaison EVA bundle
+  name: overseer EVA bundle
   suffix: Filled
 
 - type: entity

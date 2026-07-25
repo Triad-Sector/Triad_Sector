@@ -1,0 +1,165 @@
+- type: loadoutGroup
+  id: TdfBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  loadouts:
+  - ClothingBackpackTdf
+  - ClothingBackpackSatchelTdf
+  - ClothingBackpackDuffelTdf
+  - SecurityGuardBackpack
+  - SecurityGuardSatchel
+  - SecurityGuardDuffel
+  fallbacks:
+  - ClothingBackpackTdf
+
+- type: loadoutGroup
+  id: TdfShoes
+  name: loadout-group-contractor-shoes
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - CombatBoots
+  - JackBoots
+  - ClothingShoesBootsMagSecurityFilled
+  fallbacks:
+  - CombatBoots
+
+- type: loadoutGroup
+  id: TdfBelt
+  name: loadout-group-contractor-belt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingBeltTdfFilled
+  - ClothingBeltMilitaryWebbingTdfFilled
+  fallbacks:
+  - ClothingBeltTdfFilled
+
+- type: loadoutGroup
+  id: TdfFace
+  name: loadout-group-contractor-face
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityClothingMaskGasSecurity
+
+- type: loadoutGroup
+  id: TdfBalaclava
+  name: loadout-group-contractor-balaclava
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - TdfBalaclava
+  - TdfBalaclavaAlt
+
+- type: loadoutGroup
+  id: TdfGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingEyesGlassesSecurityTdf
+  - ClothingEyesHudSecurityTdf
+  fallbacks:
+  - ClothingEyesGlassesSecurityTdf
+
+- type: loadoutGroup
+  id: TdfNeck
+  name: loadout-group-contractor-neck
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
+  fallbacks:
+  - ContractorClothingNeckIFFOrange
+
+- type: loadoutGroup
+  id: TdfHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - TdfHelmet
+  - ClothingHeadHatBeretTdf
+
+- type: loadoutGroup
+  id: TdfGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 1
+  loadouts:
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - NfsdClothingHandsGlovesCombatNfsdCream
+  - MercenaryClothingHandsGlovesCombat
+  - MercenaryClothingHandsGlovesTacticalCombatBlack
+  fallbacks:
+  - NfsdClothingHandsGlovesCombatNfsdBrown
+  - MercenaryClothingHandsGlovesCombat
+
+- type: loadoutGroup
+  id: TdfPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfPda
+  fallbacks:
+  - TdfPda
+
+# Normal enforcer headsets
+- type: loadoutGroup
+  id: TdfEars
+  name: loadout-group-contractor-ears
+  minLimit: 1
+  loadouts:
+  - ClothingHeadsetTdf
+  - ClothingHeadsetAltTdf
+  fallbacks:
+  - ClothingHeadsetTdf
+
+# Senior headsets
+- type: loadoutGroup
+  id: TdfEarsSenior
+  name: loadout-group-contractor-ears
+  minLimit: 1
+  loadouts:
+  - ClothingHeadsetAltTdfCommand
+  - ClothingHeadsetTdfCommand
+  fallbacks:
+  - ClothingHeadsetAltTdfCommand
+
+# vests
+- type: loadoutGroup
+  id: TdfOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 1
+  loadouts:
+  - MercenaryClothingOuterArmorBPVestLight
+  - MercenaryClothingOuterArmorBPVestMedium
+  fallbacks:
+  - MercenaryClothingOuterArmorBPVestLight
+
+# Guns
+- type: loadoutGroup
+  id: TdfFirearm
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - TdfLecterLoadout
+  - FactionDrozdLoadout
+  - FactionVulcanLoadout
+  - FactionEnergyGunLoadout
+  fallbacks:
+  - TdfLecterLoadout
+
+- type: loadoutGroup
+  id: TdfMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - TSFCaselessAmmoBoxLoadout # Lecter
+  - FactionAcpSmgAmmoLoadout #Drozd
+  - FactionAcpSmgEmpAmmoLoadout #Drozd EMP
+  - Faction762x51mmAmmoLoadout #Vulcan
+  - FactionRechargerLoadout #Energy
+  - FactionAcpPistolAmmoLoadout #MK58
+  fallbacks:
+  - TSFCaselessAmmoBoxLoadout #Lecter

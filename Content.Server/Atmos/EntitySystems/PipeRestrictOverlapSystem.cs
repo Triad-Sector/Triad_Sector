@@ -10,6 +10,8 @@ using Content.Shared.NodeContainer;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Maths;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -21,6 +23,7 @@ public sealed class PipeRestrictOverlapSystem : EntitySystem
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
 
     private readonly List<EntityUid> _anchoredEntities = new();
     private EntityQuery<NodeContainerComponent> _nodeContainerQuery;
@@ -121,5 +124,51 @@ public sealed class PipeRestrictOverlapSystem : EntitySystem
                     yield return (pipeNode.OriginalPipeDirection.RotatePipeDirection(pipe.Comp2.LocalRotation), pipeNode.CurrentPipeLayer);
             }
         }
+    }
+
+    /// <summary>
+    /// Would a pipe of <paramref name="proto"/>, rotated by <paramref name="rotation"/>, on
+    /// <paramref name="layer"/>, overlap any anchored pipe already on this tile? Same predicate as
+    /// <see cref="PipeNodesOverlap"/>: a shared pipe direction AND the same layer. The layer is passed
+    /// explicitly because a screwdriver'd pipe's layer can diverge from its prototype and the placing
+    /// tool's chosen layer is the one that matters. Used by the RPD to pre-check a placement before spawn.
+    /// </summary>
+    public bool WouldPlacementOverlap(Entity<MapGridComponent> grid, Vector2i tile, EntProtoId proto, Angle rotation, AtmosPipeLayer layer)
+    {
+        if (!_proto.TryIndex(proto, out var entProto)
+            || !entProto.TryGetComponent<NodeContainerComponent>(out var nodes, EntityManager.ComponentFactory))
+            return false;
+
+        // Directions the would-be pipe occupies, in grid frame.
+        var placedDirs = PipeDirection.None;
+        foreach (var node in nodes.Nodes.Values)
+        {
+            if (node is PipeNode pipeNode)
+                placedDirs |= pipeNode.OriginalPipeDirection.RotatePipeDirection(rotation);
+        }
+
+        if (placedDirs == PipeDirection.None)
+            return false;
+
+        _anchoredEntities.Clear();
+        _map.GetAnchoredEntities((grid.Owner, grid.Comp), tile, _anchoredEntities);
+
+        foreach (var other in _anchoredEntities)
+        {
+            if (!_nodeContainerQuery.TryComp(other, out var otherNc))
+                continue;
+
+            foreach (var node in otherNc.Nodes.Values)
+            {
+                if (node is not PipeNode otherNode)
+                    continue;
+
+                var otherDir = otherNode.OriginalPipeDirection.RotatePipeDirection(Transform(other).LocalRotation);
+                if ((placedDirs & otherDir) != 0 && layer == otherNode.CurrentPipeLayer)
+                    return true;
+            }
+        }
+
+        return false;
     }
 }

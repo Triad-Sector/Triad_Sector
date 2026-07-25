@@ -1,0 +1,40 @@
+# TDF Weaponry
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponRifleLecterRecipeTdf
+  result: WeaponRifleLecterTdf
+  categories:
+  - Rifles
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 1200
+    Plasteel: 1000
+    Plastic: 900
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponRifleMR8TRecipeTdf
+  result: WeaponRifleMR8T
+  categories:
+  - DMRs
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 1200
+    Plasteel: 650
+    Plastic: 600
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponLMGRiotTdf
+  result: WeaponLMGRiot
+  categories:
+  - GPMGs
+  - MGs
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 3500
+    Plasteel: 2000
+    Plastic: 1200

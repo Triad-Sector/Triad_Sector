@@ -1,13 +1,54 @@
 # 1 Cost
 
+# Triad: Bogan accent, display name overridden to "Dustkin" (trait-dustkin-accent-name); vocab enriched
 - type: trait
   id: BoganAccent
-  name: trait-bogan-accent-name
-  description: trait-bogan-accent-desc
-  category: SpeechTraits
-  cost: 1
-  components:
+  name: trait-dustkin-accent-name
+  description: trait-dustkin-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  # Triad: Yowie speak Bogan natively (BaseMobYowie carries BoganAccent), so taking it as a trait is redundant.
+  - !type:IsSpeciesCondition
+    species: Yowie
+    invert: true
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
     - type: BoganAccent
+# End Triad
+
+# Triad: Russian accent, display name overridden to "Terra Slavic" (trait-terraslavic-name); vocab enriched
+- type: trait
+  id: RussianAccent
+  name: trait-terraslavic-name
+  description: trait-terraslavic-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+# End Triad
+
+# Triad: lighter "slight" Terra Slavic (faux-Cyrillic kept, clipping dialed down). Same cost as thick.
+- type: trait
+  id: RussianAccentSlight
+  name: trait-terraslavic-mild-name
+  description: trait-terraslavic-mild-desc
+  category: Accents
+  cost: 1
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: RussianAccent
+      strength: Slight
+# End Triad
 
 # 1 Cost - Languages
 
@@ -16,49 +57,45 @@
   name: trait-language-nekomimetic-name
   description: trait-language-nekomimetic-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-  - Nekomimetic
-  languagesUnderstood:
-  - Nekomimetic
-
-- type: trait
-  id: MonoElyran
-  name: trait-language-elyran-name
-  description: trait-language-elyran-desc
-  category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-  - Elyran
-  languagesUnderstood:
-  - Elyran
+  cost: 0 # Triad: accents/languages are cosmetic RP, not a point cost.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Nekomimetic
 
 - type: trait
   id: MonoGary
   name: trait-language-gary-name
   description: trait-language-gary-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-  - Gary
-  languagesUnderstood:
-  - Gary
+  cost: 0 # Triad: accents/languages are cosmetic RP, not a point cost.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Gary
 
 - type: trait
   id: MonoNovaCygniBasic
   name: trait-language-NovaCygni-name
   description: trait-language-NovaCygni-desc
   category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-  - NovaCygniBasic
-  languagesUnderstood:
-  - NovaCygniBasic
+  cost: 0 # Triad: accents/languages are cosmetic RP, not a point cost.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - NovaCygniBasic

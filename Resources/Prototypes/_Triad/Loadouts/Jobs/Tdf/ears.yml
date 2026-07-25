@@ -1,0 +1,19 @@
+- type: loadout
+  id: ClothingHeadsetTdf
+  equipment:
+    ears: ClothingHeadsetTdf
+
+- type: loadout
+  id: ClothingHeadsetAltTdf
+  equipment:
+    ears: ClothingHeadsetAltTdf
+
+- type: loadout
+  id: ClothingHeadsetTdfCommand
+  equipment:
+    ears: ClothingHeadsetTdfCommand
+
+- type: loadout
+  id: ClothingHeadsetAltTdfCommand
+  equipment:
+    ears: ClothingHeadsetAltTdfCommand

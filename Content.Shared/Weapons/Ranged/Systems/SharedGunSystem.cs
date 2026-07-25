@@ -76,6 +76,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected EntityQuery<PhysicsComponent> _physQuery; // Mono
     protected EntityQuery<ProjectileComponent> _projQuery; // Mono
+    private EntityQuery<AutoShootGunComponent> _autoShootGunQuery; // Mono
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -117,6 +118,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         _physQuery = GetEntityQuery<PhysicsComponent>(); // Mono
         _projQuery = GetEntityQuery<ProjectileComponent>(); // Mono
+        _autoShootGunQuery = GetEntityQuery<AutoShootGunComponent>();
     }
 
     private void OnMapInit(Entity<GunComponent> gun, ref MapInitEvent args)
@@ -349,7 +351,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
     {
-        if (TryComp<AutoShootGunComponent>(gunUid, out var auto) && !auto.CanFire && auto.RemainingTime <= TimeSpan.FromSeconds(0)) // Frontier // Mono
+        if (_autoShootGunQuery.TryComp(gunUid, out var auto) && !auto.CanFire && auto.RemainingTime <= TimeSpan.Zero) // Frontier // Mono
             return; // Frontier
 
         if (gun.FireRateModified <= 0f ||
@@ -388,6 +390,11 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (gun.SelectedMode == SelectiveFire.Burst || gun.BurstActivated)
             fireRate = TimeSpan.FromSeconds(1f / gun.BurstFireRate);
+
+        // Mono
+        var rateMulEv = new QueryFireRateMultiplierEvent(1f);
+        RaiseLocalEvent(gunUid, ref rateMulEv);
+        fireRate *= rateMulEv.ReloadTimeMul;
 
         // First shot
         // Previously we checked shotcounter but in some cases all the bullets got dumped at once

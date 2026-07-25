@@ -23,7 +23,8 @@
       - Atmospherics
       - Bar
       - Brig
-      - Detective
+      - TdfWarden # Triad
+      - TdfPatrolTeamLeader # Triad
       - Captain
       - Cargo
       - Chapel
@@ -35,7 +36,7 @@
       - External
       - Frontier # Frontier
       - HeadOfPersonnel
-      - HeadOfSecurity
+      - TdfChiefEnforcer # Triad
       - Hydroponics
       - Janitor
       - Kitchen
@@ -95,6 +96,8 @@
     - Atmospherics
     - Bar
     - Brig
+    - BasicSilicon
+    - Borg
     - Detective
     - Captain
     - Cargo
@@ -125,6 +128,7 @@
     - Salvage
     - Security
     - Service
+    - StationAi
     - StationTrafficController # Frontier
     - Theatre
     - CentralCommand

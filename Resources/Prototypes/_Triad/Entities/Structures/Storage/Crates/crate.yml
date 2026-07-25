@@ -1,0 +1,36 @@
+- type: entity
+  parent: CrateSecgear
+  id: CrateTdfMedic
+  name: TDF combat medic crate
+  components:
+  - type: Icon
+    sprite: _Triad/Structure/Storage/Crates/tdf_securemedic.rsi
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/Crates/tdf_securemedic.rsi
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  parent: CrateSecgear
+  id: CrateTdf
+  name: TDF crate
+  components:
+  - type: Icon
+    sprite: _Triad/Structure/Storage/Crates/tdf_secure1.rsi
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/Crates/tdf_secure1.rsi
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  parent: CrateSecgear
+  id: CrateTdfArmory
+  name: TDF armory crate
+  suffix: Armory
+  components:
+  - type: Icon
+    sprite: _Triad/Structure/Storage/Crates/tdf_secure2.rsi
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/Crates/tdf_secure2.rsi
+  - type: AccessReader
+    access: [["Armory"]]

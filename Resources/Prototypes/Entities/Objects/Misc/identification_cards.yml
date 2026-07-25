@@ -874,6 +874,9 @@
     - TsfmcEngineering # Mono
     - GrandVizier
     - PDVCommand # Mono
+    - TdfChiefEnforcer # Triad
+    - TdfPatrolTeamLeader # Triad
+    - TdfWarden # Triad
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

@@ -1,0 +1,75 @@
+# High Capacity Pistol Magazines
+- type: entity
+  id: Magazine45_magnumPistolHighCapacityIncendiary
+  name: extended pistol magazine (.45 magnum incendiary)
+  parent: BaseMagazine45_magnumPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_magnumIncendiary
+  - type: Sprite
+    layers:
+    - state: red
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine45_magnumPistolHighCapacityUranium
+  name: extended pistol magazine (.45 magnum uranium)
+  parent: BaseMagazine45_magnumPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_magnumUranium
+  - type: Sprite
+    layers:
+    - state: uranium
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#anti-flesh ammo
+- type: entity
+  id: Magazine45_magnumPistolHighCapacityHP
+  name: extended pistol magazine (.45 magnum hollow-point)
+  parent: BaseMagazine45_magnumPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_magnumHP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_magnum/45_magnum_pistol_mag.rsi
+    layers:
+    - state: HP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine45_magnumPistolHighCapacityRIP
+  name: extended pistol magazine (.45 magnum RIP)
+  parent: BaseMagazine45_magnumPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_magnumRIP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_magnum/45_magnum_pistol_mag.rsi
+    layers:
+    - state: RIP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#armor-piercing ammo
+- type: entity
+  id: Magazine45_magnumPistolHighCapacityPlasteelAP
+  name: extended pistol magazine (.45 magnum AP)
+  parent: BaseMagazine45_magnumPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_magnumPlasteelAP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_magnum/45_magnum_pistol_mag.rsi
+    layers:
+    - state: plasteelAP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]

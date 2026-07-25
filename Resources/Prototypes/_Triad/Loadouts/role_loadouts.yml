@@ -1,0 +1,69 @@
+# Moved from _NF/Loadouts/role_loadouts.yml
+- type: roleLoadout
+  id: JobStationRepresentative # Overseer
+  groups:
+  - StationRepHead
+  - StationRepNeck
+  - StationRepJumpsuit
+  - StationRepGloves
+  - StationRepBackpack
+  - StationRepOuterClothing
+  - StationRepGlasses
+  - StationRepEars
+  - MonoSecurityGuardShoes
+  - ContractorBoxSurvival
+  - StationRepPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorImplanter
+  - ContractorUtility
+  - StationRepTrinkets
+  - ContractorBureaucracy
+  - NFSpeciesSpecific
+  - ContractorArmorPlates
+
+# The Director of Infrastructure is the plant's chief engineer: CE wardrobe plus a curated engineering kit
+# (the Plant* groups; the generic Contractor* groups carry too much cross-department gear).
+# No GroupTankHarness: NFSpeciesSpecific already forces LoadoutTankHarness (double vox harness otherwise).
+- type: roleLoadout
+  id: JobPlantManager
+  groups:
+  - ChiefEngineerHead
+  - ChiefEngineerNeck
+  - PlantManagerJumpsuit
+  - PlantGloves
+  - PlantManagerBackpack
+  - ChiefEngineerOuterClothing
+  - ChiefEngineerShoes
+  - PlantFace
+  - PlantGlasses
+  - PlantEars
+  - ContractorEncryptionKey
+  - PlantTools
+  - ContractorBoxSurvival
+  - ContractorWallet
+  - ContractorTrinkets
+  - ContractorBureaucracy
+  - NFSpeciesSpecific
+
+# The Sector Technician is station-engineer tier. No ID group, keeps the plant ID from starting gear.
+- type: roleLoadout
+  id: JobPlantTechnician
+  groups:
+  - PlantTechnicianHead
+  - PlantTechnicianNeck
+  - PlantTechnicianJumpsuit
+  - PlantGloves
+  - PlantTechnicianBackpack
+  - StationEngineerOuterClothing
+  - StationEngineerShoes
+  - PlantBelt
+  - PlantFace
+  - PlantGlasses
+  - PlantEars
+  - ContractorEncryptionKey
+  - PlantTools
+  - ContractorBoxSurvival
+  - ContractorWallet
+  - ContractorTrinkets
+  - NFSpeciesSpecific

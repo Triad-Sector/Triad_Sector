@@ -147,7 +147,7 @@
   name: GP-909 'Osiris' Grenade Launcher
   parent: [ BaseWeaponLauncher, BaseItem ] # Frontier: BaseMinorContraband<BaseC1Contraband
   id: WeaponLauncherTSFOsiris
-  description: The TSF's powerful solution to things that don't have enough boom. Capable of firing most standard grenades.
+  description: The FSR's powerful solution to things that don't have enough boom. Capable of firing most standard grenades.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Launchers/osiris.rsi

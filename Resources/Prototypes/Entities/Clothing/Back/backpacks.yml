@@ -128,7 +128,7 @@
   parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpack
   id: ClothingBackpackCaptain
   name: captain's backpack
-  description: It's a special backpack made exclusively for TSF officers.
+  description: It's a special backpack made exclusively for Nanotrasen officers. Well, was exclusive, atleast.
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/captain.rsi

@@ -19,13 +19,13 @@
     openingAnimationTime: 1.0
     closingAnimationTime: 1.0
     canPry: false
-    crushDamage:
-      types:
-        Blunt: 25 # yowch
+    crushDamage: null # Triad
+    canCrush: false # Triad
     openSound:
       path: /Audio/Machines/blastdoor.ogg
     closeSound:
       path: /Audio/Machines/blastdoor.ogg
+    performCollisionCheck: false # Triad
   - type: Occluder
   - type: Appearance
   - type: RadiationBlocker

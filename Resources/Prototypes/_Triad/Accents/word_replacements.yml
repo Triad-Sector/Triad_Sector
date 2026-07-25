@@ -1,0 +1,56 @@
+# Triad - This file is licensed under AGPLv3
+# Copyright (c) 2025 Triad Contributors
+# See AGPLv3.txt for details.
+# New Brooklyn: everyman borough accent (Triad-original, inspired by the upstream Mobster phonetics).
+- type: accent
+  id: newbrooklyn
+  wordReplacements:
+    accent-newbrooklyn-words-1: accent-newbrooklyn-words-replace-1
+    accent-newbrooklyn-words-2: accent-newbrooklyn-words-replace-2
+    accent-newbrooklyn-words-3: accent-newbrooklyn-words-replace-3
+    accent-newbrooklyn-words-4: accent-newbrooklyn-words-replace-4
+    accent-newbrooklyn-words-5: accent-newbrooklyn-words-replace-5
+    accent-newbrooklyn-words-6: accent-newbrooklyn-words-replace-6
+    accent-newbrooklyn-words-7: accent-newbrooklyn-words-replace-7
+    accent-newbrooklyn-words-8: accent-newbrooklyn-words-replace-8
+    accent-newbrooklyn-words-9: accent-newbrooklyn-words-replace-9
+    accent-newbrooklyn-words-10: accent-newbrooklyn-words-replace-10
+    accent-newbrooklyn-words-11: accent-newbrooklyn-words-replace-11
+    accent-newbrooklyn-words-12: accent-newbrooklyn-words-replace-12
+    accent-newbrooklyn-words-13: accent-newbrooklyn-words-replace-13
+    accent-newbrooklyn-words-13-2: accent-newbrooklyn-words-replace-13
+    accent-newbrooklyn-words-13-3: accent-newbrooklyn-words-replace-13
+    accent-newbrooklyn-words-14: accent-newbrooklyn-words-replace-14
+    accent-newbrooklyn-words-14-2: accent-newbrooklyn-words-replace-14
+    accent-newbrooklyn-words-15: accent-newbrooklyn-words-replace-15
+    accent-newbrooklyn-words-15-2: accent-newbrooklyn-words-replace-15
+    accent-newbrooklyn-words-16: accent-newbrooklyn-words-replace-16
+    accent-newbrooklyn-words-18: accent-newbrooklyn-words-replace-18
+    accent-newbrooklyn-words-18-2: accent-newbrooklyn-words-replace-18
+    accent-newbrooklyn-words-18-3: accent-newbrooklyn-words-replace-18
+    accent-newbrooklyn-words-19: accent-newbrooklyn-words-replace-19
+    accent-newbrooklyn-words-20: accent-newbrooklyn-words-replace-20
+    accent-newbrooklyn-words-21: accent-newbrooklyn-words-replace-21
+    accent-newbrooklyn-words-22: accent-newbrooklyn-words-replace-22
+    accent-newbrooklyn-words-23: accent-newbrooklyn-words-replace-23
+    accent-newbrooklyn-words-24: accent-newbrooklyn-words-replace-24
+    accent-newbrooklyn-words-25: accent-newbrooklyn-words-replace-25
+    accent-newbrooklyn-words-26: accent-newbrooklyn-words-replace-26
+    accent-newbrooklyn-words-27: accent-newbrooklyn-words-replace-27
+    accent-newbrooklyn-words-28: accent-newbrooklyn-words-replace-28
+    accent-newbrooklyn-words-29: accent-newbrooklyn-words-replace-29
+    accent-newbrooklyn-words-30: accent-newbrooklyn-words-replace-30
+    accent-newbrooklyn-words-31: accent-newbrooklyn-words-replace-31
+    accent-newbrooklyn-words-32: accent-newbrooklyn-words-replace-32
+    accent-newbrooklyn-words-32-2: accent-newbrooklyn-words-replace-32
+    accent-newbrooklyn-words-33: accent-newbrooklyn-words-replace-33
+    accent-newbrooklyn-words-33-2: accent-newbrooklyn-words-replace-33
+    accent-newbrooklyn-words-34: accent-newbrooklyn-words-replace-34
+    accent-newbrooklyn-words-35: accent-newbrooklyn-words-replace-35
+    accent-newbrooklyn-words-36: accent-newbrooklyn-words-replace-36
+    accent-newbrooklyn-words-37: accent-newbrooklyn-words-replace-37
+    accent-newbrooklyn-words-38: accent-newbrooklyn-words-replace-38
+    accent-newbrooklyn-words-39: accent-newbrooklyn-words-replace-39
+    accent-newbrooklyn-words-40: accent-newbrooklyn-words-replace-40
+
+# Freeport Corsair: spacelane buccaneer (Triad-original, inspired by the upstream Pirate accent).

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseFactionGearPDVT1, BaseItem ]
+  parent: [BaseTriadC2Contraband, BaseItem ] # Triad
   id: EmagUnlimited
   suffix: Unlimited
   name: cryptographic sequencer

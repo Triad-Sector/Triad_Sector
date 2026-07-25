@@ -9,7 +9,7 @@ If you want to host or create content for Monolith, this is the repo you need. I
 
 ## Links
 
-[Discord](https://discord.gg/q6dqdPcMnv) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
+[Discord](https://discord.gg/J9Rn76nKbz) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
 
 ## Contributing
 
@@ -46,7 +46,11 @@ We provide some scripts shown below to make the job easier.
 
 ### MacOS
 
-> I don't know anybody using MacOS to test this, but it's probably roughly the same steps as Linux
+> 1. Clone this repository
+> 2. Run `Scripts/sh/updateEngine.sh` in a terminal to download the engine
+> 3. Run `Scripts/sh/buildAllDebug.sh` after making any changes to the source
+> 4. Run `Scripts/sh/runQuickAll.sh` to launch the client and the server
+> 5. Connect to localhost in the client and play
 
 ## License
 
