@@ -5,7 +5,7 @@
   name: rammer core
   description: You feel like the fact you're looking at this means this isn't safe.
   suffix: AI
-  parent: [BaseStructure, BaseFactionGearOtherFactionT2]
+  parent: [BaseStructure, BaseFactionGearOtherFactionT2Medium] # Triad, adjust contraband ranking
   components:
   - type: Destructible
     thresholds:
@@ -52,7 +52,7 @@
     rootTask:
       task: RammerShuttleCompound
   - type: StaticPrice
-    price: 20000 # Triad, sells for 25k max due easily farmed in first ring
+    price: 15000 # Triad, sells for 20k max due easily farmed in first ring
   - type: ApcPowerReceiver
     powerLoad: 1000 # suspiciously low power-using AI
   - type: ExtensionCableReceiver

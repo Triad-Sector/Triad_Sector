@@ -130,6 +130,17 @@
 
 - type: entity
   parent: BaseFactionGearOtherFactionT0
+  id: BaseFactionGearOtherFactionT2Medium
+  abstract: true
+  components:
+  - type: Contraband
+    severity: OtherFactionGear2
+    turnInValues:
+      TriadCommerceCredit: 25 # Triad - currency change
+      Doubloon: 25
+
+- type: entity
+  parent: BaseFactionGearOtherFactionT0
   id: BaseFactionGearOtherFactionT3
   abstract: true
   components:
