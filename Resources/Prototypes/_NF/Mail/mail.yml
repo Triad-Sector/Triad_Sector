@@ -728,8 +728,8 @@
   components:
   - type: Mail
     contents:
-    - id: HyperlinkBookSpaceLaw
-    - id: HyperlinkBookNfsdSop
+    - id: BookTriadLaw
+    - id: BookTdfSop
     - id: PaperMailNFSpaceLaw
 
 # Frontier Mail (Pony Express?)

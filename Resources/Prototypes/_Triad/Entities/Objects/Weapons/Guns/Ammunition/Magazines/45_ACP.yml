@@ -1,0 +1,75 @@
+# High Capacity Pistol Magazines
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityIncendiary
+  name: extended pistol magazine (.45 ACP incendiary)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPIncendiary
+  - type: Sprite
+    layers:
+    - state: red
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityUranium
+  name: extended pistol magazine (.45 ACP uranium)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPUranium
+  - type: Sprite
+    layers:
+    - state: uranium
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#anti-flesh ammo
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityHP
+  name: extended pistol magazine (.45 ACP hollow-point)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPHP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: HP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityRIP
+  name: extended pistol magazine (.45 ACP RIP)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPRIP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: RIP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#armor-piercing ammo
+- type: entity
+  id: Magazine45_ACPPistolHighCapacityPlasteelAP
+  name: extended pistol magazine (.45 ACP AP)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge45_ACPPlasteelAP
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
+    layers:
+    - state: plasteelAP
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]

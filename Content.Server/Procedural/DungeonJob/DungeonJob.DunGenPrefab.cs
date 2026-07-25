@@ -230,7 +230,9 @@ public sealed partial class DungeonJob
                 var dungeonMatty = Matrix3x2.Multiply(matty, dungeonTransform);
 
                 // The expensive bit yippy.
-                _dungeon.SpawnRoom(_gridUid, _grid, dungeonMatty, room, reservedTiles);
+                // Triad: yield mid-room (per entity/decal) so a room's anchored content doesn't stall a tick.
+                Func<ValueTask<bool>> roomSuspend = async () => { await SuspendDungeon(); return ValidateResume(); };
+                await _dungeon.SpawnRoomAsync(_gridUid, _grid, dungeonMatty, room, reservedTiles, false, roomSuspend);
 
                 var roomCenter = (room.Offset + room.Size / 2f) * _grid.TileSize;
                 var roomTiles = new HashSet<Vector2i>(room.Size.X * room.Size.Y);

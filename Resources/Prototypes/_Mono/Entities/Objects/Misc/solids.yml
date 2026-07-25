@@ -46,5 +46,5 @@
   - type: ItemTax # Mono
     taxAccounts:
       Medical: -0.05
-      nfsd: -0.1
+      TDF: -0.1
       BlackMarket: 0.25

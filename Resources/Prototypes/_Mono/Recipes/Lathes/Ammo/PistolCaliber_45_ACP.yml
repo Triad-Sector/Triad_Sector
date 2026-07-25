@@ -45,6 +45,55 @@
   id: Magazine45_ACPPistolRIP
   result: Magazine45_ACPPistolRIP
 
+# Triad Start
+#High Capacity Pistol Magazines
+
+- type: latheRecipe
+  parent: BaseAmmoFMJPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityFMJ
+  result: Magazine45_ACPPistolHighCapacityFMJ
+
+- type: latheRecipe
+  parent: BaseAmmoPlasteelAPPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityPlasteelAP
+  result: Magazine45_ACPPistolHighCapacityPlasteelAP
+
+- type: latheRecipe
+  parent: BaseAmmoRubberPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityRubber
+  result: Magazine45_ACPPistolHighCapacityRubber
+
+- type: latheRecipe
+  parent: BaseAmmoIncendiaryPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityIncendiary
+  result: Magazine45_ACPPistolHighCapacityIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoPracticePistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityPractice
+  result: Magazine45_ACPPistolHighCapacityPractice
+
+- type: latheRecipe
+  parent: BaseAmmoEmptyPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityEmpty
+  result: Magazine45_ACPPistolHighCapacityEmpty
+
+- type: latheRecipe
+  parent: BaseAmmoUraniumPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityUranium
+  result: Magazine45_ACPPistolHighCapacityUranium
+
+- type: latheRecipe
+  parent: BaseAmmoHPPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityHP
+  result: Magazine45_ACPPistolHighCapacityHP
+
+- type: latheRecipe
+  parent: BaseAmmoRIPPistolCaliberPistolHighCapacityMagazineRecipe
+  id: Magazine45_ACPPistolHighCapacityRIP
+  result: Magazine45_ACPPistolHighCapacityRIP
+# Triad End
+
 #SMG Magazines
 
 - type: latheRecipe

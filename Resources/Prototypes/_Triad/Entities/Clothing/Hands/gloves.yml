@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesClockwork
+  name: clockwork gauntlets
+  description: Heavy, shock-resistant gauntlets with brass reinforcement.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Hands/Gloves/clockwork_gauntlets.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Hands/Gloves/clockwork_gauntlets.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-orange
+  - type: FingerprintMask

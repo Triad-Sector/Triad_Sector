@@ -1,0 +1,11 @@
+- type: entity
+  parent:
+  - ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodTdfHighCommand
+  categories: [ HideSpawnMenu ]
+  name: high command hood
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hoods/Coat/high_com.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hoods/Coat/high_com.rsi

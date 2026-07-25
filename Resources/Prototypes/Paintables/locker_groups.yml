@@ -34,12 +34,12 @@
     mercenary: LockerMercenary # Frontier
     janitor: LockerJanitor # Frontier
     pilot: LockerPilot # Frontier
-    nfsd: LockerNfsdEvidence # Frontier
-    nfsd-copper: LockerNfsdCopper # Frontier
-    nfsd-silver: LockerNfsdSilver # Frontier
-    nfsd-brigmedic: LockerNfsdBrigmedic # Frontier
-    nfsd-gold: LockerNfsdSergeant # Frontier
-    nfsd-sheriff: LockerNfsdSheriff # Frontier
+    tdf: LockerTdf # Triad
+    tdf-evidence: LockerTdfEvidence # Triad
+    tdf-medic: LockerTdfMedic # Triad
+    tdf-leader: LockerTdfPatrolTeamLeader # Triad
+    tdf-warden: LockerTdfWarden # Triad
+    tdf-chief: LockerTdfChiefEnforcer # Triad
     station-representative: LockerStationRepresentative # Frontier
     fsb: ClosetFsbEva # Frontier
 

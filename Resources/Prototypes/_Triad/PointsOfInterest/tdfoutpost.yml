@@ -1,0 +1,52 @@
+- type: pointOfInterest
+  id: TDFOutpost
+  parent: [BasePOI, BaseRepairablePOI]
+  name: 'Auric Outpost'
+  minimumDistance: 4500
+  maximumDistance: 5500
+  spawnGamePreset: [ TriadStandard, NFAdventure, NFPirate, MonoAllAtOnce ]
+  spawnGroup: Required
+  gridPath: /Maps/_Triad/POI/tdfoutpost.yml
+  addComponents:
+  - type: IFF
+    color: "#FFD580"
+    readOnly: true
+  - type: SolarPoweredGrid
+    doNotCull: true
+
+- type: gameMap
+  id: TDFOutpost
+  mapName: 'Auric Outpost'
+  mapPath: /Maps/_Triad/POI/tdfoutpost.yml
+  minPlayers: 0
+  randomRotation: false
+  stations:
+    TDFOutpost:
+      stationProto: SecurityFrontierOutpost
+      gridComponents:
+      - type: VesselInfo
+        description: "Home of the Triad Defense Force, the last bastion of law and safety."
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Auric Outpost'
+        - type: ExtraStationInformation
+          icon:
+            sprite: _Triad/Structure/Decoration/banner.rsi
+            state: tdf-banner
+          stationSubtext: 'triad-lobby-tdf-subtext'
+          stationDescription: 'triad-lobby-tdf-description'
+          lobbySortOrder: 2
+        - type: StationJobs
+          availableJobs:
+            TdfChiefEnforcer: [ 1, 1 ]
+            TdfWarden: [1, 1 ]
+            TdfPatrolTeamLeader: [ 2, 2 ]
+            TdfMedic: [ 2, 2 ]
+            TdfEnforcer: [ 5, 5 ]
+            TdfCadet: [ 5, 5 ]
+          tags:
+          - TdfChiefEnforcer
+        - type: StationDeadDropReporting
+          messageSet: Nfsd
+        - type: StationDeadDropHintExempt
+

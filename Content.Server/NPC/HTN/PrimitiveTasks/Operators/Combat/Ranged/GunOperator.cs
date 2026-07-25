@@ -65,6 +65,7 @@ public sealed partial class GunOperator : HTNOperator, IHtnConditionalShutdown
     public override void Startup(NPCBlackboard blackboard)
     {
         base.Startup(blackboard);
+
         var ranged = _entManager.EnsureComponent<NPCRangedCombatComponent>(blackboard.GetValue<EntityUid>(NPCBlackboard.Owner));
         ranged.Target = blackboard.GetValue<EntityUid>(TargetKey);
         ranged.ObstructedMask = ObstructedMask; // Mono

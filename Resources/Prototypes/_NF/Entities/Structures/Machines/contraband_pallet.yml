@@ -1,7 +1,7 @@
 - type: entity
   id: ContrabandPallet
-  name: contraband exchange pallet
-  description: Designates valid items to exchange with CentCom for Federation Military Credits.
+  name: technology exchange pallet
+  description: Designates valid items to exchange for Triad Commerce Credits.
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructure] # Frontier - BaseStructureDisabledToolsUse,BaseStructureIndestructible
   components:
   - type: InteractionOutline

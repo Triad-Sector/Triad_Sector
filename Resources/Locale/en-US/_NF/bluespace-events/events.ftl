@@ -7,11 +7,11 @@ station-event-bluespace-scrap-start-announcement = Storms detected in bluespace 
 station-event-bluespace-scrap-warning-announcement = Bluespace instability detected on wreckage, five minutes until expected departure.
 station-event-bluespace-scrap-end-announcement = Critical bluespace instability detected, storm wreckage has exited the sector.
 
-station-event-bluespace-vault-start-announcement = A Solarian armored supply-vault is inbound to the sector. The TSFMC may declare the vault a restricted No Fly Zone. Station accounts will be rewarded for its safe return.
+station-event-bluespace-vault-start-announcement = A TDF armored supply-vault is inbound to the sector. The TDF may declare the vault a restricted No Fly Zone. Station accounts will be rewarded for its safe return.
 station-event-bluespace-vault-warning-announcement = Remote FTL procedures initialized, five minutes until vault extraction.
-station-event-bluespace-vault-end-announcement = We have retrieved the vault from this area of Colossus space. Station accounts have been subsidized.
+station-event-bluespace-vault-end-announcement = We have retrieved the vault from this area of Triad space. Station accounts have been subsidized.
 
-station-event-bluespace-cache-start-announcement = A Syndicate weapons cache is inbound to the sector. The TSFMC may declare the cache a No Fly Zone. Station accounts will be rewarded for guarding the cache.
+station-event-bluespace-cache-start-announcement = A Syndicate weapons cache is inbound to the sector. The TDF may declare the cache a No Fly Zone. Station accounts will be rewarded for guarding the cache.
 station-event-bluespace-cache-warning-announcement = Remote FTL procedures initialized, five minutes until weapons cache extraction.
 station-event-bluespace-cache-end-announcement = We have retrieved the Syndicate weapons cache from your sector. Station accounts have been paid.
 
@@ -34,10 +34,6 @@ station-event-bluespace-wizardfederation-scout-end-announcement = To ensure safe
 station-event-bluespace-bloodmoon-start-announcement = Attention all available TSF personnel! TSF-NC detected a Bluespace Anomaly in your sector with the signature indicative of the imminent arrival of a Blood Cult vessel. Code: Intercept, Expunge, Exterminate, Cauterise. Expect armed opposition, use of lethal force against enemy combatants is mandatory, take no prisoners. Warning! Materials on the Blood Cult vessel possess Level 3 Cognitohazard! Local security force is advised to take steps to limit NT personnel's exposure to hazardous materials. Reminder: NT personnel who are granted security clearance for the engagement are required to surrender any hazardous materials to the local security department for containment and undergo a medical examination afterward.
 station-event-bluespace-bloodmoon-warning-announcement = Remote FTL procedures initialized, five minutes until Blood Cult vessel dissipation.
 station-event-bluespace-bloodmoon-end-announcement = To ensure safer passage in FTL traffic patterns, the Blood Cult vessel has been dissipated to ensure non-collision.
-
-station-event-bluespace-generic-ftl-start-announcement = Attention all Colossus sector personnel! Colossus Sector Monitoring has detected an unidentified vessel entering the Colossus Sector. Investigate with caution, you may be at risk of harm or loss of life.
-station-event-bluespace-generic-ftl-warning-announcement = Remote FTL procedures initialized, five minutes until unidentified vessel dissipation.
-station-event-bluespace-generic-ftl-end-announcement = To ensure safer passage in FTL traffic patterns, the unidentified vessel has been dissipated to ensure non-collision.
 
 station-event-bluespace-name-BrokenMcDelivery = McDelivery
 station-event-bluespace-name-Cave = Cave

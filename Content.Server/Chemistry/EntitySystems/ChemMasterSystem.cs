@@ -413,6 +413,12 @@ namespace Content.Server.Chemistry.EntitySystems
             if (!TryComp(container, out StorageComponent? storage))
                 return null;
 
+            // HardLight: Null check to prevent ship load failures when the output slot contains a pill bottle.
+            // I assume ChemMasters attempt to load the contents of the pill bottle before the container itself,
+            // which is obviously impossible if true and thus results in a fail.
+            if (storage.Container == null)
+                return null;
+
             var pills = storage.Container.ContainedEntities.Select((Func<EntityUid, (string, FixedPoint2 quantity)>) (pill =>
             {
                 _solutionContainerSystem.TryGetSolution(pill, SharedChemMaster.PillSolutionName, out _, out var solution);

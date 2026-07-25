@@ -15,7 +15,7 @@
         - id: ClothingShoesBootsMagSecurity
   - type: AccessReader
     access: [["Mercenary"]]
-    
+
 - type: entity
   id: SuitStorageUsspL10
   parent: SuitStorageBase
@@ -48,70 +48,6 @@
         - id: ClothingShoesBootsMagSecurity
   - type: AccessReader
     access: [["USSPCommand"]]
-
-# TSFMC
-
-- type: entity
-  id: SuitStorageM82c
-  parent: SuitStorageBase
-  suffix: M82c Hardsuit
-  components:
-  - type: StorageFill
-    contents:
-    - id: OxygenTankFilled
-    - id: NitrogenTankFilled
-    - id: ClothingOuterHardsuitM82c
-    - id: JetpackSecurityFilled
-    - id: ClothingShoesBootsMagSecurity
-  - type: AccessReader
-    access: [["Security"]]
-
-- type: entity
-  id: SuitStorageM82b
-  parent: SuitStorageBase
-  suffix: M82b Hardsuit
-  components:
-  - type: StorageFill
-    contents:
-    - id: OxygenTankFilled
-    - id: NitrogenTankFilled
-    - id: ClothingOuterHardsuitM82b
-    - id: JetpackSecurityFilled
-    - id: ClothingShoesBootsMagSecurity
-  - type: AccessReader
-    access: [["Security"]]
-
-- type: entity
-  id: SuitStorageM86
-  parent: SuitStorageBase
-  suffix: M86 Hardsuit
-  components:
-  - type: StorageFill
-    contents:
-    - id: OxygenTankFilled
-    - id: NitrogenTankFilled
-    - id: ClothingOuterHardsuitM86
-    - id: JetpackSecurityFilled
-    - id: ClothingShoesBootsMagSecurity
-  - type: AccessReader
-    access: [["Security"]]
-
-#Colonel hardsuit
-- type: entity
-  id: SuitStorageSheriff
-  parent: SuitStorageBase
-  suffix: TSFMC Colonel
-  components:
-  - type: StorageFill
-    contents:
-        - id: OxygenTankFilled
-        - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitNfsdSheriff # Frontier
-        - id: ClothingMaskGasSheriff
-        - id: JetpackNfsdFilled
-        - id: ClothingShoesBootsMagSecurity # Frontier
-  - type: AccessReader
-    access: [["Security"]]
 
 # Syndicate
 

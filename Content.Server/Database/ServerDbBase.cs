@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared._Common.Consent;
+using Content.Shared._DV.Traits; // DV - Traits
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -1241,10 +1242,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
-        #region Consent Settings
-
-        #endregion
-
         #region Uploaded Resources Logs
 
         public async Task AddUploadedResourceLogAsync(NetUserId user, DateTimeOffset date, string path, byte[] data)
@@ -1960,8 +1957,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                     ReadAt = DateTime.UtcNow,
                 };
             }
-            else
-            {
+            else {
                 readRecipe.ReadAt = DateTime.UtcNow;
             }
 

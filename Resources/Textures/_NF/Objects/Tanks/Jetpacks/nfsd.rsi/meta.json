@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "license": "CC-BY-SA-4.0",
-  "copyright": "Made by GhostPrince for Frontier Server.",
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from tg station at https://github.com/tgstation/tgstation/blob/7f693d1395297b5dfdf1b5668394ce0b7388b27c/icons/obj/canisters.dmi, https://github.com/tgstation/tgstation/blob/12fabce3575b39651f788ace3792847e74c76d23/icons/mob/clothing/back.dmi, https://github.com/tgstation/tgstation/blob/b68c9677ce7589197ec48171a0089e5b0c34c1ee/icons/mob/inhands/equipment/jetpacks_righthand.dmi, and https://github.com/tgstation/tgstation/blob/b68c9677ce7589197ec48171a0089e5b0c34c1ee/icons/mob/inhands/equipment/jetpacks_lefthand.dmi",
   "size": {
     "x": 32,
     "y": 32

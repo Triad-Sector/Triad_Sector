@@ -126,7 +126,7 @@
     offset: 0
     prototypes:
       - PosterLegitHereForYourSafety
-      - PosterLegitNanotrasenLogo
+      # - PosterLegitNanotrasenLogo Triad
       - PosterLegitCleanliness
       - PosterLegitHelpOthers
       - PosterLegitBuild

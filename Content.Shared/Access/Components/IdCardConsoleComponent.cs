@@ -47,7 +47,7 @@ public sealed partial class IdCardConsoleComponent : Component
     {
         "Armory",
         //"Atmospherics",
-        "Bailiff", // Frontier
+        "TdfWarden", // Triad
         //"Bar",
         "Brig",
         "Detective",
@@ -59,11 +59,11 @@ public sealed partial class IdCardConsoleComponent : Component
         //"ChiefMedicalOfficer",
         "Command",
         //"Cryogenics",
-        //"Engineering",
-        "External",
+        "Engineering", // Triad: restored - engineering is a player-delegatable role on Triad (plant + ship engineers)
+        //"External", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
         "Frontier", // Frontier
         "HeadOfPersonnel",
-        "HeadOfSecurity",
+        "TdfChiefEnforcer", // Triad
         //"Hydroponics",
         "Janitor",
         //"Kitchen",
@@ -72,14 +72,14 @@ public sealed partial class IdCardConsoleComponent : Component
         //"Quartermaster",
         //"Research",
         "Lawyer",
-        "Maintenance",
+        //"Maintenance", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
         "Medical", // Frontier
         //"Quartermaster",
         //"Research",
         //"ResearchDirector",
         //"Salvage",
         "Security",
-        "Sergeant", // Frontier
+        "TdfPatrolTeamLeader", // Triad
         "Service",
         "StationTrafficController", // Frontier
         //"USSP", // Mono

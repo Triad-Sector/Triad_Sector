@@ -1,0 +1,24 @@
+- type: entity
+  parent: Holoprojector
+  id: HoloprojectorPrivate
+  name: privacy holoprojector
+  description: Marks an area as private using a holographic barrier.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Devices/Holoprojectors/privacy.rsi
+    state: icon
+  - type: ActivatableUI
+    key: enum.LabelHolosignProjectorUIKey.Key
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.LabelHolosignProjectorUIKey.Key:
+        type: HolosignProjectorLabelBUI
+  - type: ChargeHolosignProjector
+    signProto: HolosignPrivacy
+    signComponentName: LabeledHoloSign
+  - type: LabelHolosignOnProjected
+  - type: AutoRecharge
+    rechargeDuration: 60
+  - type: LimitedCharges
+    maxCharges: 12

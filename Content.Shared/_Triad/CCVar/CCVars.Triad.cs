@@ -13,7 +13,7 @@ public sealed class TriadCCVars
     ///     How much the ship cost will be. 0.3f = 30% of full appraisal
     /// </summary>
     public static readonly CVarDef<float> LoadShipPrice =
-        CVarDef.Create("triad.load_ship_price", 0.3f, CVar.SERVERONLY);
+        CVarDef.Create("triad.load_ship_price", 0.3f, CVar.SERVER | CVar.REPLICATED);
 
     // Triad: tamper protection
     /// <summary>
@@ -40,5 +40,9 @@ public sealed class TriadCCVars
     public static readonly CVarDef<string> TamperSigningKeysDir =
         CVarDef.Create("triad.tamper_signing_keys_dir", "./triad-signing-keys", CVar.SERVERONLY);
 
-    // End Triad
+    public static readonly CVarDef<bool> UseNightVisionColor =
+        CVarDef.Create("triad.use_night_vision_color", false, CVar.CLIENTONLY | CVar.ARCHIVE, "If a custom night vision color should be used instead of the default.");
+
+    public static readonly CVarDef<string> NightVisionColor =
+        CVarDef.Create("triad.night_vision_color", "#00FF00", CVar.CLIENTONLY | CVar.ARCHIVE, "The tint/phosphor color of night vision.");
 }

@@ -1,0 +1,16 @@
+- type: vendingMachineInventory
+  id: TfaCommandDrobeInventory
+  startingInventory:
+    ClothingShoesBootsLaceup: 3
+    ClothingShoesBootsJack: 3
+    ClothingHandsGlovesCombat: 3
+    ClothingHandsGlovesHeavyGoldenTrim: 1
+    ClothingHandsGlovesGoldenTrim: 3
+    ClothingEyesGlassesCommand: 3
+    ClothingEyesHudCommand: 3
+    ClothingUniformJumpsuitTfaHighCommand: 3
+    ClothingUniformJumpskirtTfaHighCommand: 3
+    ClothingHeadHatTfaHighCommand: 3
+    ClothingHeadHatBeretTfaHighCommand: 3
+    ClothingHeadsetHighCommand: 3
+    ClothingOuterWinterTfaHighCommand: 3

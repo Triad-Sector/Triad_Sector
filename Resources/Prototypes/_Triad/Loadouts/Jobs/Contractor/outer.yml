@@ -1,0 +1,17 @@
+- type: loadout
+  id: ClothingOuterCoatMNKBlackJacket
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatMNKBlackJacket
+
+- type: loadout
+  id: ClothingOuterCoatMNKWhiteHoodie
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatMNKWhiteHoodie
+
+- type: loadout
+  id: ClothingOuterCoatMNKBlackTopCoat
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatMNKBlackTopCoat

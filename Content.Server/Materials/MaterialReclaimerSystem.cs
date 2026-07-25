@@ -13,12 +13,12 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.Emag.Components;
+using Content.Shared.Gibbing;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Materials;
 using Content.Shared.Mind;
-using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Power;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
@@ -35,7 +35,6 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly GhostSystem _ghostSystem = default!;
     [Dependency] private readonly MaterialStorageSystem _materialStorage = default!;
-    [Dependency] private readonly OpenableSystem _openable = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly SharedBodySystem _body = default!; //bobby
@@ -52,8 +51,6 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         SubscribeLocalEvent<MaterialReclaimerComponent, RefreshPartsEvent>(OnRefreshParts); // Frontier: machine components
         SubscribeLocalEvent<MaterialReclaimerComponent, UpgradeExamineEvent>(OnUpgradeExamine); // Frontier: machine components
         SubscribeLocalEvent<MaterialReclaimerComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<MaterialReclaimerComponent, InteractUsingEvent>(OnInteractUsing,
-            before: [typeof(WiresSystem), typeof(SolutionTransferSystem)]);
         SubscribeLocalEvent<MaterialReclaimerComponent, SuicideByEnvironmentEvent>(OnSuicideByEnvironment);
         SubscribeLocalEvent<ActiveMaterialReclaimerComponent, PowerChangedEvent>(OnActivePowerChanged);
 
@@ -78,30 +75,6 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         AmbientSound.SetAmbience(entity.Owner, entity.Comp.Enabled && args.Powered);
         entity.Comp.Powered = args.Powered;
         Dirty(entity);
-    }
-
-    private void OnInteractUsing(Entity<MaterialReclaimerComponent> entity, ref InteractUsingEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        // if we're trying to get a solution out of the reclaimer, don't destroy it
-        // if (_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.SolutionContainerId, out _, out var outputSolution) && outputSolution.Contents.Any()) // Frontier: previous implementation
-        if (_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.SolutionContainerId, out _, out var outputSolution)) // Frontier: do not trash solution containers if the reclaimer is empty
-        {
-            if (TryComp<SolutionContainerManagerComponent>(args.Used, out var managerComponent) &&
-                _solutionContainer.EnumerateSolutions((args.Used, managerComponent)).Any(s => s.Solution.Comp.Solution.AvailableVolume > 0))
-            {
-                if (_openable.IsClosed(args.Used))
-                    return;
-
-                if (TryComp<SolutionTransferComponent>(args.Used, out var transfer) &&
-                    transfer.CanReceive)
-                    return;
-            }
-        }
-
-        args.Handled = TryStartProcessItem(entity.Owner, args.Used, entity.Comp, args.User, predictSound: false); // Frontier: add predictSound: false
     }
 
     private void OnSuicideByEnvironment(Entity<MaterialReclaimerComponent> entity, ref SuicideByEnvironmentEvent args)

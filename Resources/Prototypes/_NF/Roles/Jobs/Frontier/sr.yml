@@ -5,18 +5,21 @@
   playTimeTracker: JobHeadOfPersonnel
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 # triad 10 hours
+      time: 108000 # Triad - 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # Triad - 5 hours
     - !type:RoleTimeRequirement
       role: JobSecurityGuard
-      time: 28800 # triad 8 hours
+      time: 18000 # Triad - 5 hours
     - !type:RoleTimeRequirement
       role: JobStc
-      time: 18000 # triad 5 hours
+      time: 18000 # Triad - 5 hours
   whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true
   assignedCompany: Colonial
-  icon: "JobIconHeadOfSecurity" # Mono
+  icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   weight: 170
@@ -24,15 +27,22 @@
   canBeAntag: false
   accessGroups:
   - AllAccessSR
+  ranks: # Triad, ranks
+    RankOverseer: []
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Mono - remove TSFMC implant
+    implants: [ MindShieldImplant, TrackingImplant ] # Triad - re-add sec implant
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      #- type: NpcFactionMember - Commented out to seperate them from TSFMC.
-      #  factions:
-      #  - TSFMC
+      - type: ShipSavingBlacklist # Triad - can't save ships
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Nfsd # TDF radio
+        - Service # Colonial Staff radio
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
@@ -40,14 +50,13 @@
 - type: startingGear
   id: SrGear
   equipment:
-    pocket1: WeaponEnergyGunLawbringer
+    pocket1: WeaponEnergyGunMultiphase # Triad
   storage:
     back:
     - Flash
     - RubberStampSr
     - DoorRemoteCommand
-    - EncryptionKeyCentCom
+    # - EncryptionKeyCentCom Triad
     - EncryptionKeyStationMasterSR #Mono start
     - EncryptionKeyDiplomacy
-    - ShipVoucherFrontierGuard
     - PhoneInstrumentHigh

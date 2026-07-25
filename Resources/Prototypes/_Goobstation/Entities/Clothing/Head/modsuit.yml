@@ -32,6 +32,8 @@
       - state: equipped-HEAD
       head-vox:
       - state: equipped-HEAD-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-vulpkanin
   - type: SealableClothingVisuals
     spriteLayer: sealed
     clothingVisuals:
@@ -39,6 +41,8 @@
       - state: equipped-HEAD-sealed
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: ComponentToggler
     components:
     - type: BreathMask
@@ -62,6 +66,7 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 2
+
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -101,6 +106,8 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:
@@ -155,6 +162,8 @@
       - state: equipped-HEAD
       head-vox:
       - state: equipped-HEAD-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-vulpkanin
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Modsuits/security.rsi
   - type: SealableClothingVisuals
@@ -166,6 +175,8 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:
@@ -222,6 +233,8 @@
       - state: equipped-HEAD-resomi
       head-vox:
       - state: equipped-HEAD-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-vulpkanin
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Modsuits/headofsecurity.rsi
   - type: SealableClothingVisuals
@@ -233,6 +246,8 @@
       - state: equipped-HEAD-sealed-resomi
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:
@@ -389,6 +404,8 @@
       - state: equipped-HEAD
       head-vox:
       - state: equipped-HEAD-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-vulpkanin
   - type: SealableClothingVisuals
     spriteLayer: sealed
     clothingVisuals:
@@ -396,6 +413,8 @@
       - state: equipped-HEAD-sealed
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:
@@ -509,6 +528,8 @@
       - state: equipped-HEAD-sealed
       head-vox:
       - state: equipped-HEAD-sealed-vox
+      head-vulpkanin:
+      - state: equipped-HEAD-sealed-vulpkanin
   - type: Armor
     modifiers:
       coefficients:

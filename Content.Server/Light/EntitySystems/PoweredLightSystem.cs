@@ -23,6 +23,7 @@ using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
 using Robust.Shared.Random; // Frontier
+using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -325,8 +326,12 @@ namespace Content.Server.Light.EntitySystems
             light.LastGhostBlink = time;
 
             ToggleBlinkingLight(uid, light, true);
-            uid.SpawnTimer(light.GhostBlinkingTime, () =>
+            // Triad: engine v275 removed the SpawnTimer extension; static Timer + deletion guard keeps the old semantics
+            Timer.Spawn(light.GhostBlinkingTime, () =>
             {
+                if (Deleted(uid))
+                    return;
+
                 ToggleBlinkingLight(uid, light, false);
             });
 

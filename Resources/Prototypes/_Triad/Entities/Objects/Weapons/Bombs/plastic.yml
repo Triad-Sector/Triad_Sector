@@ -1,0 +1,10 @@
+- type: entity
+  name: modified composition C-4
+  description: This one's been modified.. it's been forcefully set to have a 5 second timer. Dangerous.
+  parent: C4
+  id: C4FiveSecond
+  suffix: Trap Only, 5 second timer
+  components:
+  - type: OnUseTimerTrigger
+    delay: 5
+    delayOptions: [5]

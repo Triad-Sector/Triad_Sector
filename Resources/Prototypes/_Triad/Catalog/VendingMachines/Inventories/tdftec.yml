@@ -1,0 +1,33 @@
+- type: vendingMachineInventory
+  id: TdfTechInventory
+  startingInventory:
+    BookTriadLaw: 20
+    BookTdfSop: 20
+    Handcuffs: 10
+    Zipties: 10
+    GrenadeFlashBang: 10
+    SecurityWhistle: 5
+    TearGasGrenade: 4
+    ClusterBangFull: 2
+    GrenadeStinger: 4
+    Flash: 10
+    FlashlightSeclite: 10
+    HoloprojectorNfsd: 4
+    Tourniquet: 8
+    RiotShield: 3
+    RiotLaserShield: 3
+    RiotBulletShield: 3
+    Stunbaton: 8
+    WeaponDisabler: 8
+    WeaponCapacitorRechargerFlatpack: 10
+    Multitool: 8
+    ContrabandAppraisalTool: 5
+    CrowbarRed: 10
+    ForensicScanner: 8
+    BoxForensicPad: 5
+    LogProbeCartridge: 5
+    TrackingImplanter: 5
+    Binoculars: 5
+  contrabandInventory:
+    FoodDonutHomer: 3
+    FoodBoxDonut: 3

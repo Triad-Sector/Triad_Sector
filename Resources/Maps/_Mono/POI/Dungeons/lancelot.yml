@@ -34732,7 +34732,7 @@ entities:
     - type: Transform
       pos: -13.5,-41.5
       parent: 1
-- proto: WallRockBluespace
+- proto: NFWallRockBluespace
   entities:
   - uid: 6013
     components:

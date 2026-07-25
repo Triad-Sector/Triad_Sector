@@ -77,39 +77,6 @@
     Silver: 10000
     Gold: 7000
 
-#Tsfmc
-- type: latheRecipe
-  parent: BaseVoucherRecipe
-  id: FlyssaVoucherTSF
-  result: ShipVoucherFlyssa
-  completetime: 10
-  materials:
-    Steel: 40000
-    Plasteel: 55000
-    Plastic: 50000
-    Glass: 9000
-    Plasma: 500
-    UraniumFissile: 1000
-    UraniumDepleted: 5000
-    Silver: 5000
-    Gold: 5000
-
-- type: latheRecipe
-  parent: BaseVoucherRecipe
-  id: AltairVoucherTSF
-  result: ShipVoucherAltair
-  completetime: 6
-  materials:
-    Steel: 40000
-    Plasteel: 20000
-    Plastic: 30000
-    Glass: 10000
-    Plasma: 5000
-    UraniumFissile: 600
-    UraniumDepleted: 4000
-    Silver: 10000
-    Gold: 5000
-
 - type: latheRecipe
   parent: BaseVoucherRecipe
   id: TaserVoucherCC

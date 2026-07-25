@@ -1,0 +1,210 @@
+# These forms should be kept up-to-date with changes to Sector Law and SOP.
+
+# Filled Folder
+- type: entity
+  id: FillTdfForms
+  abstract: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: PaperWrittenTdfAfterActionReport
+    - id: PaperWrittenTdfDnr
+    - id: PaperWrittenTdfInvestigatorReport
+    - id: PaperWrittenTdfShipSearchWarrant
+    - id: PaperWrittenTdfContrabandPermit
+    - id: Paper
+      prob: 0.5
+    - id: Paper
+      prob: 0.5
+
+- type: entity
+  parent: [FillTdfForms, BoxFolderTdf]
+  id: BoxFolderTdfForms
+  name: TDF form folder
+  description: A folder filled with TDF paperwork templates.
+  suffix: Forms, Normal
+
+- type: entity
+  parent: [FillTdfForms, BoxFolderTdfInvert]
+  id: BoxFolderTdfFormsInvert
+  name: TDF form folder
+  description: A folder filled with TDF paperwork templates.
+  suffix: Forms, Invert
+
+# Forms
+- type: entity # Creator: Aqualious (discord)
+  id: PaperWrittenTdfDnr
+  name: do not resuscitate order
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]Do Not Resuscitate Order[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      The subject of this DNR (Do Not Resuscitate) has either requested, or been ordered, not to be resuscitated, cloned or anything that would bring them back to life.
+
+      Subject: [color=gray][italic][form][color=black][/italic]
+      Requested/Ordered by: [color=gray][italic][form][color=black][/italic]
+      Approved by: [color=gray][italic][signature][color=black][/italic]
+      Note(s):
+
+      [color=gray][italic]
+      [color=#725B24]Only with the approval of both DoC and Chief Enforcer, or the Overseer, or someone with a higher standing than Chief Enforcer, can they be allowed to be brought back to life.[/color]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+- type: entity # Creator: Aqualious (discord)
+  id: PaperWrittenTdfInvestigatorReport
+  name: investigator report
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]Investigator Forensic Case File[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      [bold]Investigator's Name:[/bold] [signature]
+      [bold]Current Case Name/Summary:[/bold]
+      [color=Red][form][/color]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [head=3]Evidence Logs[/head]
+
+      [bold]Door Log Notes:[/bold]
+      - [form]
+      - [form]
+      - [form]
+
+      [bold]Forensic Evidence:[/bold]
+      - [form]
+      - [form]
+      - [form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      [bold]Witness Statements:[/bold]
+      [italic][form][/italic]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Conclusions At Present:[/bold]
+      [form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+- type: entity # Creator: Aqualious (discord)
+  id: PaperWrittenTdfAfterActionReport
+  name: after action report
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]After-Action Report[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      [bold]Reporting Enforcer: [/bold] [color=#494016][form][/color]
+      [bold]Rank: [/bold] [color=#494016][form][/color]
+
+      [bold]Date and Time of Incident: [/bold][form]
+      [bold]Current Shift Time: [/bold][form]
+
+      [color=#725B24]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
+      [bold]Critical Context: [/bold][form]
+
+      [head=3][bold]Event Details:[/bold][/head]
+      [form]
+
+      [color=#725B24]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
+      [head=3][bold]Conclusions:[/bold][/head]
+      [form]
+
+      [head=3][bold]Contraband Seized and Filed:[/bold][/head]
+      [form]
+
+      [bold]Signature:[/bold] [signature]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+- type: entity # Creator: Aqualious (discord)
+  id: PaperWrittenTdfContrabandPermit
+  name: contraband permit
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]Contraband Permit[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      [bold]This Document is a sworn declaration of contraband permitted to be used and carried on a Triad citizen, henceforth known as the Carrier.[/bold]
+
+      [italic]The Carrier of this permit is safe from any legal action while carrying this permit, so long as they are acting in a reasonable way in accordance with the law and public decency. While the TDF may not arrest the holder of this permit for possession, they may still ask that storable gear be moved out of sight if they believe a code violation may occur.[/italic]
+
+      [color=red]Only Class 2 and below Contraband permits may be issued. Class 3 Contraband is not permitted to be carried by any citizen, regardless of permit.[/color]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Carrier Information [/bold]
+
+      [bold]Name: [/bold][form]
+      [bold]Species: [/bold][form]
+      [bold]Sex: [/bold][form]
+      [bold]Affiliated Company: [/bold][form]
+      [bold]Reason For Permit: [/bold]
+      [form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Carried Equipment (Firearms, Tools, etc)[/bold]
+      • [form]
+      • [form]
+      • [form]
+      • [form]
+      • [form]
+
+      [bold]Worn Equipment (Armor and Clothes)[/bold]
+      • [form]
+      • [form]
+      • [form]
+      • [form]
+      • [form]
+
+      [bold]Chief Enforcer Signature: [/bold][signature]
+      [bold]Carrier Signature: [/bold][signature]
+
+      [color=gray][italic]
+      [color=#725B24]Only with the signature and stamp of the Chief Enforcer, is this permit valid. Permit may be revoked at any time if the Carrier violates the terms of the permit or Triad sector law.[/color]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+- type: entity # Creator: Aqualious (discord)
+  id: PaperWrittenTdfShipSearchWarrant
+  name: ship search warrant
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]Ship Search Warrant[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+      [italic] This warrant - legally authorized by powers at hand - grants the TDF the lawful right to exhort their authority and conduct a lawful ship search.[/italic]
+
+      [color=red][bold]This warrant must be signed and stamped by the Warden or Chief Enforcer. If requested by one, another must be the one to approve the warrant.[/bold][/color]
+
+      [bold]Requesting Enforcer: [/bold][color=#AD8B37][signature][/color]
+      [bold]Warrant Target: [/bold][color=#AD8B37][form][/color]
+      [bold]Warrant Reason: [/bold][color=#AD8B37][form][/color]
+
+      [italic]If illegal items are found in the searched department, they will be confiscated, and the owner of these items may be detained at the officer's discretion. [bold]Legal items may not be taken in a search.[/bold][/italic]
+
+      [bold]Warden or Chief Enforcer Signature: [/bold][signature]
+
+      [color=#aaaaaa]This document is not valid unless stamped by at least one of the listed required personnel. This Warrant is not required on Red Alert; however, given the scope, justifications to High Command should be reported before the search is conducted.[/color]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]

@@ -67,7 +67,11 @@ public abstract partial class SharedSericultureSystem : EntitySystem
             BreakOnMove = true,
             BlockDuplicate = true,
             BreakOnDamage = true,
-            CancelDuplicate = true,
+            // Triad: don't cancel an in-progress weave when the action is re-triggered. The action
+            // re-lights (useDelay 1s) before the weave finishes (productionLength 2s), so re-clicking
+            // would self-cancel the weave every time and produce no silk. BlockDuplicate already
+            // stops a second weave from stacking; CancelDuplicate would additionally kill the first.
+            CancelDuplicate = false,
         };
 
         _doAfterSystem.TryStartDoAfter(doAfter);

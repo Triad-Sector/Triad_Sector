@@ -86,13 +86,15 @@
     layers:
     - state: crypt_gold
     - state: cap_label
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeyCommand
-  name: TSF command encryption key # mono
+  name: triad sector command encryption key # Triad
   categories: [ DoNotMap ] # Frontier
-  description: An encryption key used by TSF Command.
+  description: An encryption key used by the Triad sector's main leaders. # Triad
   components:
   - type: EncryptionKey
     channels:
@@ -200,6 +202,8 @@
     layers:
     - state: crypt_gray
     - state: sec_label
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: [EncryptionKey, RecyclableItemDeviceTiny]
@@ -216,6 +220,8 @@
     layers:
     - state: crypt_gray
     - state: service_label
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: EncryptionKey

@@ -1,5 +1,5 @@
 ## UI
-bank-atm-menu-title = TSF Central Bank
+bank-atm-menu-title = Andromeda Central Bank
 bank-atm-menu-balance-label = Balance:{" "}
 bank-atm-menu-no-bank = No Bank Account!
 bank-atm-menu-withdraw-button = Withdraw

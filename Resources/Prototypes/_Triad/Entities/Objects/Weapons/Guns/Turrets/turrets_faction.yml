@@ -1,0 +1,299 @@
+# TDF Turrets
+# Ballistics
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretMediumRange
+  id: WeaponTurretTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretLongRange
+  id: WeaponTurretTDFLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+# Heavy Ballistic
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: WeaponTurretHeavyTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretHeavyMediumRange
+  id: WeaponTurretHeavyTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+- type: entity
+  parent: BallisticTurretHeavyLongRange
+  id: BallisticTurretHeavyTDFLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+
+# Energy
+- type: entity
+  parent: BaseWeaponTurretEnergyTriad
+  id: EnergyTurretTDF
+  suffix: Triad, TDF
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser # Deals 18 Heat damage
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretMediumRange
+  id: EnergyTurretTDFMediumRange
+  suffix: Triad, TDF, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretLongRange
+  id: EnergyTurretTDFLongRange
+  suffix: Triad, TDF, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TDFTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+# SD Turrets
+# Ballistics
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretSD
+  suffix: Triad, SD
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+- type: entity
+  parent: BallisticTurretMediumRange
+  id: WeaponTurretSDMediumRange
+  suffix: Triad, SD, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+- type: entity
+  parent: BallisticTurretLongRange
+  id: WeaponTurretSDLongRange
+  suffix: Triad, SD, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+# Heavy Ballistic
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: WeaponTurretHeavySD
+  suffix: Triad, SD
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+- type: entity
+  parent: BallisticTurretHeavyMediumRange
+  id: WeaponTurretHeavySDMediumRange
+  suffix: Triad, SD, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+- type: entity
+  parent: BallisticTurretHeavyLongRange
+  id: BallisticTurretHeavySDLongRange
+  suffix: Triad, SD, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+
+# Energy
+- type: entity
+  parent: BaseWeaponTurretEnergyTriad
+  id: EnergyTurretSD
+  suffix: Triad, SD
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretMediumRange
+  id: EnergyTurretSDMediumRange
+  suffix: Triad, SD, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretLongRange
+  id: EnergyTurretSDLongRange
+  suffix: Triad, SD, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SDTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+# TIC Turrets
+# Ballistics
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretTIC
+  suffix: Triad, TIC
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+- type: entity
+  parent: BallisticTurretMediumRange
+  id: WeaponTurretTICMediumRange
+  suffix: Triad, TIC, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+- type: entity
+  parent: BallisticTurretLongRange
+  id: WeaponTurretTICLongRange
+  suffix: Triad, TIC, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+# Heavy Ballistic
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: WeaponTurretHeavyTIC
+  suffix: Triad, TIC
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+- type: entity
+  parent: BallisticTurretHeavyMediumRange
+  id: WeaponTurretHeavyTICMediumRange
+  suffix: Triad, TIC, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+- type: entity
+  parent: BallisticTurretHeavyLongRange
+  id: BallisticTurretHeavyTICLongRange
+  suffix: Triad, TIC, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+
+# Energy
+- type: entity
+  parent: BaseWeaponTurretEnergyTriad
+  id: EnergyTurretTIC
+  suffix: Triad, TIC
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretMediumRange
+  id: EnergyTurretTICMediumRange
+  suffix: Triad, TIC, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10
+
+- type: entity
+  parent: EnergyTurretLongRange
+  id: EnergyTurretTICLongRange
+  suffix: Triad, TIC, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - TICTurret
+  - type: Gun
+    fireRate: 2
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 10

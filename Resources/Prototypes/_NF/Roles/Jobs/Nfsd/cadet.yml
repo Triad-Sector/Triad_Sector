@@ -45,6 +45,6 @@
   storage:
     back:
     - Magazine45_ACPPistolFMJ
-    - FederationMilitaryCredit50
-    - BaseSecurityUplinkRadio
+    #- FederationMilitaryCredit50
+    #- BaseSecurityUplinkRadio
     - RadioHandheldNF # Mono

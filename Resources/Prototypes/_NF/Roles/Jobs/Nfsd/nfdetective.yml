@@ -53,8 +53,8 @@
     - SpeedLoader45_magnumFMJ
     - SpeedLoader45_magnumRubber
     - ForensicPad
-    - ForensicScanner
-    - FederationMilitaryCredit50
+    #- ForensicScanner
+    #- FederationMilitaryCredit50
     - LogProbeCartridge
     - RubberStampDetective
-    - ContrabandForensicsModule
+    #- ContrabandForensicsModule

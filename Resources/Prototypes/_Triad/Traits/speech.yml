@@ -1,0 +1,33 @@
+# Triad - This file is licensed under AGPLv3
+# Copyright (c) 2025 Triad Contributors
+# See AGPLv3.txt for details.
+
+# New Brooklyn: Triad-original wiseguy borough accent. Replaces the retired upstream Mobster trait as
+# the player-selectable choice (the Mobster component still backs the regal rat mob + its role/items).
+- type: trait
+  id: NewBrooklynAccent
+  name: trait-newbrooklyn-accent-name
+  description: trait-newbrooklyn-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: NewBrooklynAccent
+
+# Neanderthal: player-selectable trait for the enriched upstream CavemanAccent (previously only on a pet
+# mob + an admin smite, never pickable). Keeps the upstream CavemanAccent id/component for portability.
+- type: trait
+  id: NeanderthalAccent
+  name: trait-neanderthal-accent-name
+  description: trait-neanderthal-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: CavemanAccent

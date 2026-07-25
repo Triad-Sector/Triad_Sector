@@ -8,7 +8,7 @@
     <GuideEntityEmbed Entity="ClothingOuterHardsuitPirateScaf"/>
   </Box>
 
-  Most armor found in the Colossus sector protects the wearer by reducing incoming damage through multiplying the damage by a [color=orange]coefficient[/color].
+  Most armor found in the Triad sector protects the wearer by reducing incoming damage through multiplying the damage by a [color=orange]coefficient[/color].
 
 
     Example: a [color=red]30[/color] pierce damage bullet hits a player wearing armor with a [color=cyan]0.6[/color] pierce coefficient (which the armor displays in game as "Reduces damage by 40%")

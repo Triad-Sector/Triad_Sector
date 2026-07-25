@@ -1,0 +1,46 @@
+- type: entity
+  id: SuitStorageTdf
+  parent: SuitStorageBase
+  suffix: TDF Hardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitTdf
+    - id: JetpackNfsdFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: SuitStorageTdfMedic
+  parent: SuitStorageBase
+  suffix: TDF Medic Hardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitTdfMedic
+    - id: JetpackNfsdFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Security"]]
+
+# TDF CE hardsuit
+- type: entity
+  id: SuitStorageChiefEnforcer
+  parent: SuitStorageBase
+  suffix: TDF Chief Enforcer
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: NitrogenTankFilled
+        - id: ClothingOuterHardsuitTdfChiefEnforcer
+        - id: ClothingMaskGasSwatTdf
+        - id: JetpackNfsdFilled
+        - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"]]

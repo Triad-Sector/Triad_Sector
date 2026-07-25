@@ -1,7 +1,7 @@
 - type: guideEntry
   id: NewPlayer
   name: guide-entry-newplayer
-  priority: -3 # Frontier: 0<-3
+  priority: -4 # Triad: 0<-4
   text: "/ServerInfo/Guidebook/NewPlayer/NewPlayer.xml"
   children:
   - Controls

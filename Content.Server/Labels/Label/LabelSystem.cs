@@ -46,12 +46,18 @@ namespace Content.Server.Labels
         /// <param name="metadata">metadata component for resolve</param>
         public override void Label(EntityUid uid, string? text, MetaDataComponent? metadata = null, LabelComponent? label = null)
         {
-            if (!Resolve(uid, ref label, false))
-                label = EnsureComp<LabelComponent>(uid);
+            // (#44022) removing a label removes the component entirely; the shutdown handler reverts the name
+            if (string.IsNullOrEmpty(text))
+            {
+                RemComp<LabelComponent>(uid);
+                return;
+            }
+
             if (_tagSystem.HasTag(uid, PreventTag)) // DeltaV - Prevent labels on certain items
                 return; // DeltaV
 
-            label.CurrentLabel = text == null ? null : FormattedMessage.EscapeText(text);
+            label = EnsureComp<LabelComponent>(uid);
+            label.CurrentLabel = FormattedMessage.EscapeText(text);
             NameMod.RefreshNameModifiers(uid);
 
             Dirty(uid, label);
