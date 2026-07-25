@@ -3096,3 +3096,30 @@ Entries:
   id: 2447
   time: '2026-07-24T16:48:03.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/402
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed EMU power loaders not spawning on Auric Outpost
+  id: 2448
+  time: '2026-07-24T23:03:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/416
+- author: leafybonsai
+  changes:
+    - type: Fix
+      message: adjust the knight and fix it issues
+  id: 2449
+  time: '2026-07-25T00:15:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/418
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed NPCs (laser turrets) not shooting through windows.
+    - type: Tweak
+      message: >-
+        Changed the depleted uranium crate in the syndicate cache into a
+        syndicate crate
+    - type: Tweak
+      message: Tweaked the traps in the syndicate cache. Watch your step!
+  id: 2450
+  time: '2026-07-25T00:22:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/417
