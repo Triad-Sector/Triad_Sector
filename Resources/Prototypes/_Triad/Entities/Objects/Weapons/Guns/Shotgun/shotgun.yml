@@ -2,7 +2,7 @@
   name: Bastion double-barreled shotgun (4 gauge)
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseClass2AShipContraband]
   id: WeaponShotgunDoubleBarreledTdfBastion
-  description: An immortal classic. A civilian grade shotgun. Uses 12 gauge shotgun shells.
+  description: A doom-slaying classic. A military grade double barrel shotgun chambered in 4 gauge. Not attachments, no crutches, all skill. Suitable for breaching.
   components:
   - type: Sprite
     sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel.rsi
