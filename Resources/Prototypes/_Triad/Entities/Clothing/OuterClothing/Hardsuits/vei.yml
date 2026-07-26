@@ -3,6 +3,7 @@
   id: ClothingOuterHardsuitVeiExplorer
   name: VEX MK4 'Explorer' hardsuit
   description: An incredibly rare exploration and salvager hardsuit, seemingly produced by the Void Enigma Institute.. It has plastitanium armor, a reinforced plasma glass visor, and an unknown alloy that resists genetic and radiation damage very well. Very expensive and sought after.
+  suffix: Do not give this suit to anyone PLEASE PLEASE PLEASE PLEASE PLEASE, the only reason this item exists is for mapping in the future # REMOVE THIS WHEN WE ACTUALLY ADD IT
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Hardsuits/vei-explorer.rsi
