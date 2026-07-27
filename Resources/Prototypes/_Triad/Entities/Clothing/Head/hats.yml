@@ -8,6 +8,9 @@
     sprite: _Triad/Clothing/Head/Hats/beret_tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/beret_tdf.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -19,6 +22,9 @@
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_medic.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_medic.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -30,6 +36,9 @@
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_warden.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_warden.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -41,6 +50,9 @@
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_ce.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_ce.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -52,6 +64,9 @@
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_high_command.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_high_command.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -65,6 +80,9 @@
     sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
   - type: StealTarget
     stealGroup: ClothingHeadHatWarden
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -76,3 +94,6 @@
     sprite: _Triad/Clothing/Head/Hats/cap_tdf_high_command.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hats/cap_tdf_high_command.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

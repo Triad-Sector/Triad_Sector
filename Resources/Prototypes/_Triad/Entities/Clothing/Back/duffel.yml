@@ -4,5 +4,7 @@
   name: TDF duffel bag
   description: A large duffel bag for holding extra militia related goods.
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Back/Duffels/tdf.rsi

@@ -3,6 +3,9 @@
   parent: BaseClass2AShipContrabandSilent
   id: BaseTDFHeadset
   abstract: true
+  components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]

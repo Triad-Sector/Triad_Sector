@@ -3,6 +3,8 @@
   id: ClothingEyesGlassesSecurityTdf
   suffix: TDF
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Eyes/Glasses/tdfglasses.rsi
   - type: Clothing
