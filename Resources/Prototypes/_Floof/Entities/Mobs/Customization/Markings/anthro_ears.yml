@@ -9,7 +9,7 @@
   id: EarsRaccoon
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia, SlimePerson] # Triad - Limited species
   colorLinks:
     m_ears_raccoon_ADJ_primary: m_ears_raccoon_FRONT_primary
     m_ears_raccoon_ADJ_secondary: m_ears_raccoon_FRONT_secondary
@@ -29,7 +29,7 @@
   id: EarsSquirrel
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia, SlimePerson] # Triad - Limited species
   colorLinks:
     m_ears_squirrel_ADJ_primary: m_ears_squirrel_FRONT_primary
     m_ears_squirrel_ADJ_secondary: m_ears_squirrel_FRONT_secondary

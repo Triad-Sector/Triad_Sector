@@ -5,7 +5,7 @@
   id: KitsuneTailDefault
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] #triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -23,7 +23,7 @@
   id: KitsuneTailsNine
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Human, Vulpkanin, Felinid] # triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] # triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -41,7 +41,7 @@
   id: KitsuneTailsThree
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] #triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -59,7 +59,7 @@
   id: KitsuneTailsTwo
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] #triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -79,7 +79,7 @@
   id: KitsuneEarsDefault
   bodyPart: Head
   markingCategory: HeadTop
-  speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] #triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -97,7 +97,7 @@
   id: KitsuneEarsFox
   bodyPart: Head
   markingCategory: HeadTop
-  speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  speciesRestriction: [Human, Vulpkanin, Felinid, SlimePerson] #triad
   coloring:
     default:
       type: !type:CategoryColoring
