@@ -472,6 +472,8 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -764,7 +766,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader # Triad, added CMO/DOC (in case AA removal) & STC access
-    access: [["HeadOfPersonnel"], ["HeadOfSecurity"], ["ChiefMedicalOfficer"],["StationTrafficController"]]
+    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["ChiefMedicalOfficer"],["StationTrafficController"],["TdfWarden"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
     global: true #SR WILL NOT BE IGNORED
@@ -866,7 +868,7 @@
 - type: entity
   parent: ComputerComms
   id: CentcommComputerComms
-  name: central command communications computer
+  name: high command communications computer # Triad - name change
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
   - type: Sprite
@@ -1067,7 +1069,7 @@
   - type: CargoOrderConsole
     taxAccounts: # Frontier
       Frontier: 0.25 # Frontier
-      Nfsd: 0.15 # Frontier
+      TDF: 0.15 # Frontier
       Medical: 0.1 # Mono
   - type: BankClient
 #  - type: ActiveRadio # Frontier

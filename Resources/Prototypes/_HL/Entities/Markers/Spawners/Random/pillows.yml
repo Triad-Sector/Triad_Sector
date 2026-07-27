@@ -1,0 +1,34 @@
+- type: entityTable
+  id: PillowTableCommon
+  table: !type:GroupSelector
+    children:
+    - id: PillowLongWhite
+    - id: PillowLumpBlue
+    - id: PillowLumpRed
+    - id: PillowSmallBlue
+    - id: PillowSmallRed
+    - id: PillowSmallWhite
+    - id: PillowSquareBlue
+    - id: PillowSquareRed
+    - id: PillowSquareWhite
+
+- type: entityTable
+  id: PillowTableUncommon
+  table: !type:GroupSelector
+    children:
+    - id: PillowLove
+    - id: PillowPawPrint
+    - id: PillowRegalRed #Triad grammar reigal>regal
+    - id: PillowStarburst  #Triad Grammar starbirst>starburst
+    - id: PillowStiff
+    - id: PillowStiffLong
+    - id: PillowStiffGreen
+    - id: PillowStiffLongGreen
+
+- type: entityTable
+  id: PillowTableRare
+  table: !type:GroupSelector
+    children:
+    - id: PillowBodyWeh
+    - id: PillowBodyUrist
+    - id: PillowBodyMiku

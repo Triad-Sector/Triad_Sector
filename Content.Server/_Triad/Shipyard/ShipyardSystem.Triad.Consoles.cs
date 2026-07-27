@@ -27,12 +27,14 @@ using Content.Shared.Radio;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
+using Content.Shared.Whitelist;
 using Robust.Shared.Player;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ShuttleConsoleSystem _shuttleConsole = default!;
     [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!;
 
@@ -47,6 +49,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, uid, component);
             return;
         }
+
+        if (!IsShipSaveWhitelistValid(player, component))
+            return;
 
         if (!TryComp<IdCardComponent>(targetId, out var idCard))
         {
@@ -84,6 +89,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (shuttleUid == null)
         {
             ConsolePopup(player, "Unable to save ship - grid not found");
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        // do not.
+        if (HasComp<ShipSavingBlacklistComponent>(shuttleUid))
+        {
+            ConsolePopup(player, $"ERROR! UNAUTHORIZED DEED DETECTED.");
             PlayDenySound(player, uid, component);
             return;
         }
@@ -149,6 +162,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, uid, component);
             return;
         }
+
+        if (!IsShipSaveWhitelistValid(player, component))
+            return;
 
         if (HasComp<ShipyardVoucherComponent>(targetId))
         {
@@ -342,29 +358,17 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        var currentBalance = bankAccount.Balance;
-        var newBalance = currentBalance - appraisalCost;
-
-        // Force charge the player - allow going into debt
-        if (!_bank.TryBankWithdrawAllowDebt(player, appraisalCost))
+        if (!_bank.TryBankWithdraw(player, appraisalCost))
         {
-            // This should rarely happen (only if no session/prefs/etc)
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-failed"));
+            Del(shuttleUid);
+            ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", appraisalCost)));
             PlayDenySound(player, uid, component);
             return;
         }
 
         // Notify player of the charge and their new balance
-        if (newBalance < 0)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-success-debt",
-                ("ship", name), ("cost", appraisalCost), ("debt", -newBalance)));
-        }
-        else
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-load-success-charged",
+        ConsolePopup(player, Loc.GetString("shipyard-console-load-success-charged",
                 ("ship", name), ("cost", appraisalCost)));
-        }
 
         // Add company information to the shuttle from the ID card or voucher
         AddCompanyInformation(targetId, shuttleUid); // Triad, generic method for adding company info
@@ -627,5 +631,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var newAccess = newCap.Tags.ToList();
         newAccess.AddRange(console.NewAccessLevels);
         _accessSystem.TrySetTags(targetId, newAccess, newCap);
+    }
+
+    /// <summary>
+    /// Checks if a player is valid for saving a ship based on the entity whitelist and blacklist of the shipyard console.
+    /// </summary>
+    private bool IsShipSaveWhitelistValid(EntityUid user, ShipyardConsoleComponent console)
+    {
+        return _whitelist.CheckBoth(user, console.ShipSaveBlacklist, console.ShipSaveWhitelist);
     }
 }

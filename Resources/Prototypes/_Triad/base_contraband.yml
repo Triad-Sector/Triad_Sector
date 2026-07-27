@@ -1,0 +1,13 @@
+# Ship Saving Contraband
+- type: entity
+  id: BaseClass2AShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2a-text
+
+- type: entity
+  id: BaseClass2AShipContrabandSilent
+  abstract: true
+  components:
+  - type: SavingContraband

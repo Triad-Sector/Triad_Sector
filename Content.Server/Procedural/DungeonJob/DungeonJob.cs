@@ -29,6 +29,18 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
 {
     public bool TimeSlice = true;
 
+    // Triad: how many grid chunks' worth of tiles to commit per SetTiles call in SetTilesChunked. A single bulk
+    // commit of a whole noise floor measured ~125ms locally: SetTiles regenerates fixtures + broadphase proxies for
+    // every touched chunk in one un-yieldable call (worst-cased on shuttle grids, where the fixture density diff
+    // always misses and forces a full destroy+recreate). Batching by a few chunks with a yield between keeps each
+    // commit well under a frame at the cost of a little wall-clock.
+    private const int TileCommitChunkBatch = 4;
+
+    // Triad: cell size used to group tiles before committing. Mirrors the engine's default MapGridComponent.ChunkSize
+    // (internal, so not readable from content); dungeon grids are created with the default, so 16 keeps each batch
+    // aligned to whole grid chunks and avoids regenerating a chunk's collision in two separate commits.
+    private const int TileCommitCellSize = 16;
+
     private readonly IEntityManager _entManager;
     private readonly IPrototypeManager _prototype;
     private readonly ITileDefinitionManager _tileDefManager;
@@ -318,9 +330,64 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     /// </summary>
     private async Task SuspendDungeon()
     {
-        if (!TimeSlice)
+        if (TimeSlice)
+            await SuspendIfOutOfTime();
+    }
+
+    /// <summary>
+    /// Triad: commits tiles to the grid in chunk-aligned batches, yielding between batches, so the per-chunk
+    /// fixture/broadphase rebuild inside <see cref="SharedMapSystem.SetTiles(EntityUid, MapGridComponent, List{ValueTuple{Vector2i, Tile}})"/>
+    /// can't stall a single tick. Tiles are grouped by grid chunk so no chunk is split across two commits (which
+    /// would regenerate that chunk's collision twice).
+    /// </summary>
+    private async Task SetTilesChunked(List<(Vector2i Index, Tile Tile)> tiles)
+    {
+        if (tiles.Count == 0)
             return;
 
-        await SuspendIfOutOfTime();
+        // Group tiles by chunk without allocating a dictionary + a list per chunk: sort in place so same-chunk tiles
+        // are contiguous, then slice. The sort only reorders the commit (contents and final grid are unchanged), and
+        // callers must not depend on the input order after calling this.
+        tiles.Sort(static (a, b) =>
+        {
+            var ca = SharedMapSystem.GetChunkIndices(a.Index, TileCommitCellSize);
+            var cb = SharedMapSystem.GetChunkIndices(b.Index, TileCommitCellSize);
+            var cmp = ca.Y.CompareTo(cb.Y);
+            return cmp != 0 ? cmp : ca.X.CompareTo(cb.X);
+        });
+
+        var batch = new List<(Vector2i, Tile)>();
+        var chunksInBatch = 0;
+        var haveLast = false;
+        var lastChunk = Vector2i.Zero;
+
+        foreach (var entry in tiles)
+        {
+            var chunk = SharedMapSystem.GetChunkIndices(entry.Index, TileCommitCellSize);
+
+            // Crossed into a new chunk: the previous one is complete. Flush once the batch holds enough whole chunks.
+            if (haveLast && chunk != lastChunk && ++chunksInBatch >= TileCommitChunkBatch)
+            {
+                _maps.SetTiles(_gridUid, _grid, batch);
+                batch.Clear();
+                chunksInBatch = 0;
+                await SuspendDungeon();
+
+                // The original single SetTiles couldn't be interrupted; batching adds yields, so guard against the grid
+                // being deleted (round restart / cancellation) mid-commit before touching it again, like GetDungeons does.
+                if (!ValidateResume())
+                    return;
+            }
+
+            batch.Add((entry.Index, entry.Tile));
+            lastChunk = chunk;
+            haveLast = true;
+        }
+
+        if (batch.Count > 0)
+        {
+            _maps.SetTiles(_gridUid, _grid, batch);
+            await SuspendDungeon();
+        }
     }
 }

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/Baystation12/Baystation12/blob/e213b9ac5eb6f383913970d552486f4b8601cfa8/maps/torch/icons/mob/onmob_suit_solgov.dmi and https://github.com/Baystation12/Baystation12/blob/e213b9ac5eb6f383913970d552486f4b8601cfa8/maps/torch/icons/obj/obj_suit_solgov.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-reptilian",
+      "directions": 4
+    }
+  ]
+}

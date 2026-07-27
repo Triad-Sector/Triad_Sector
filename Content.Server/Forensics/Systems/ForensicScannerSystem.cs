@@ -102,7 +102,7 @@ namespace Content.Server.Forensics
             _audioSystem.PlayPvs(_audioSystem.GetSound(confirmSound), uidOrigin);
 
             if (spesoAmount > 0)
-                _bank.TrySectorDeposit(SectorBankAccount.Nfsd, spesoAmount, LedgerEntryType.AntiSmugglingBonus);
+                _bank.TrySectorDeposit(SectorBankAccount.TDF, spesoAmount, LedgerEntryType.AntiSmugglingBonus);
             else
                 spesoAmount = 0;
 
@@ -118,7 +118,7 @@ namespace Content.Server.Forensics
                         int payout = sectorDD.FMCAccumulator.Int();
                         sectorDD.FMCAccumulator -= payout;
 
-                        var stackPrototype = _prototypeManager.Index<StackPrototype>("FederationMilitaryCredit");
+                        var stackPrototype = _prototypeManager.Index<StackPrototype>("TriadCommerceCredit");
                         _stackSystem.Spawn(payout, stackPrototype, Transform(target).Coordinates);
                     }
                 }
@@ -261,7 +261,9 @@ namespace Content.Server.Forensics
                 Act = () => StartScan(uid, component, args.User, args.Target),
                 IconEntity = GetNetEntity(uid),
                 Text = Loc.GetString("forensic-scanner-verb-text"),
-                Message = Loc.GetString("forensic-scanner-verb-message")
+                Message = Loc.GetString("forensic-scanner-verb-message"),
+                // This is important because if its true using the scanner will count as touching the object.
+                DoContactInteraction = false
             };
 
             args.Verbs.Add(verb);

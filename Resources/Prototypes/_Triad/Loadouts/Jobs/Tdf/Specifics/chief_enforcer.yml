@@ -1,0 +1,45 @@
+- type: loadout
+  id: ClothingUniformJumpsuitTdfChiefEnforcer
+  name: chief enforcer's turtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfChiefEnforcerFormal
+
+- type: loadout
+  id: TdfChiefPda
+  equipment:
+    id: TdfChiefPda
+
+- type: loadout
+  id: ClothingMaskGasSwatTdf
+  equipment:
+    mask: ClothingMaskGasSwatTdf
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfChiefEnforcer
+  equipment:
+    head: ClothingHeadHatBeretTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingOuterCoatTdfChiefEnforcerTrench
+  equipment:
+    outerClothing: ClothingOuterCoatTdfChiefEnforcerTrench
+
+- type: loadout
+  id: ClothingOuterWinterTdfChiefEnforcer
+  equipment:
+    outerClothing: ClothingOuterWinterTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingNeckMantleTdfChiefEnforcer
+  equipment:
+    neck: ClothingNeckMantleTdfChiefEnforcer
+
+- type: loadout
+  id: ClothingNeckCloakTdfChiefEnforcer
+  equipment:
+    neck: ClothingNeckCloakTdfChiefEnforcer

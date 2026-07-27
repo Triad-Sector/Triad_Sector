@@ -13,7 +13,7 @@
   - CrowbarPocketTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
-  position: 12, -1
+  position: 26, -1
 
 - type: technology
   id: TsfmcMopp
@@ -27,7 +27,7 @@
   - ClothingHandsGlovesMoppTsf
   technologyPrerequisites:
   - TsfmcAdvancedEquipment
-  position: 13, 6
+  position: 27, 6
 
 - type: technology
   id: TsfEshield
@@ -40,33 +40,33 @@
   - EnergyShieldTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT2
-  position: 13, 7
+  position: 27, 7
 
-- type: technology
-  id: TsfAltair
-  name: research-technology-tsfmc-altair-voucher
-  entityIcon: ShipVoucherAltair
-  discipline: TsfmcShipyard
-  tier: 2
-  cost: 60000
-  recipeUnlocks:
-  - AltairVoucherTSF
-  technologyPrerequisites:
-  - UniversalMaterialResearchT2
-  position: 11, 9
+#- type: technology
+#  id: TsfAltair
+#  name: research-technology-tsfmc-altair-voucher
+#  entityIcon: ShipVoucherAltair
+#  discipline: TsfmcShipyard
+#  tier: 2
+#  cost: 60000
+#  recipeUnlocks:
+#  - AltairVoucherTSF
+#  technologyPrerequisites:
+#  - UniversalMaterialResearchT2
+#  position: 11, 9
 
-- type: technology
-  id: TsfFlyssa
-  name: research-technology-tsfmc-flyssa-voucher
-  entityIcon: ShipVoucherFlyssa
-  discipline: TsfmcShipyard
-  tier: 3
-  cost: 100000
-  recipeUnlocks:
-  - FlyssaVoucherTSF
-  technologyPrerequisites:
-  - TsfAltair
-  position: 13, 14
+#- type: technology
+#  id: TsfFlyssa
+#  name: research-technology-tsfmc-flyssa-voucher
+#  entityIcon: ShipVoucherFlyssa
+#  discipline: TsfmcShipyard
+#  tier: 3
+#  cost: 100000
+#  recipeUnlocks:
+#  - FlyssaVoucherTSF
+#  technologyPrerequisites:
+#  - TsfAltair
+#  position: 27, 14
 
 - type: technology
   id: TsfMeds
@@ -80,7 +80,7 @@
   - MeshTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
-  position: 12, -2
+  position: 26, -2
 
 - type: technology
   id: TsfNanofoam
@@ -93,7 +93,7 @@
   - NanolaminateFoamGrenadeTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT2
-  position: 12, 4
+  position: 26, 4
 
 - type: technology
   id: TsfPortableRecharger
@@ -106,7 +106,7 @@
     - PortableRecharger
   technologyPrerequisites:
   - UniversalMaterialResearchT1
-  position: 12, -3
+  position: 26, -3
 
 - type: technology
   id: TSFBasicBorgModule
@@ -119,7 +119,7 @@
   - BasicBorgCombatModuleTSF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
-  position: 12, -4
+  position: 26, -4
 
 - type: technology
   id: TSFAdvancedBorgModule
@@ -133,4 +133,4 @@
   technologyPrerequisites:
   - UniversalMaterialResearchT3
   - TSFBasicBorgModule
-  position: 14, 11
+  position: 28, 11

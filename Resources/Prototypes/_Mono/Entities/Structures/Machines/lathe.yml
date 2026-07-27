@@ -23,6 +23,7 @@
     idleState: icon
     runningState: icon
     staticPacks:
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - NFMercenaryTechfabDeprecatedStatic
     - RoundstartShipgunAmmo
@@ -37,7 +38,7 @@
     # TSF start
     - MonoTSFWeaponsDynamicMelee
     - MonoTSFWeaponsDynamicRanged
-    - MonoTSFVouchersDynamic
+    #- MonoTSFVouchersDynamic Triad
     - MonoTSFMiscDynamic
     - MonoTSFGearDynamic
     # USSP start
@@ -46,7 +47,7 @@
     - MonoUSSPMiscDynamic
     - MonoUSSPWeaponsDynamicRanged
     # Viper Group start
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -58,6 +59,13 @@
     - ResearchedExplosives
     - SecurityEquipment
     - SmartGun
+    # Triad start
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
+    # Triad end
   - type: MaterialStorage
     whitelist:
       tags:
@@ -65,6 +73,8 @@
       - RawMaterial
       - Ingot
   - type: RequireProjectileTarget
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: FactionLatheImmmovable

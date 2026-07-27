@@ -179,7 +179,7 @@
 - type: entity
   id: NFPouchSr
   parent: NFPouchUtility
-  name: colonial liaison's pouch
+  name: overseer's pouch
   components:
   - type: Sprite
     layers:
@@ -1020,17 +1020,17 @@
 - type: entity
   id: NFPouchNfsd
   parent: NFPouchUtility
-  name: TSFMC pouch
+  name: TDF pouch
   components:
   - type: Sprite
     layers:
     - state: base
-      color: "#373a45"
+      color: "#292a31"
     - state: closed
       map: ["closeLayer"]
-      color: "#7d94a9"
+      color: "#817d60"
     - state: open
-      color: "#7d94a9"
+      color: "#817d60"
       map: ["openLayer"]
       visible: false
     - state: inside
@@ -1050,23 +1050,23 @@
       visible: false
     - state: decal-line-01
       map: [ "decal1" ]
-      color: "#316294"
+      color: "#f0e49b"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#7d94a9"
+        color: "#817d60"
       right:
       - state: inhand-right
-        color: "#7d94a9"
+        color: "#817d60"
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
-        color: "#7d94a9"
+        color: "#817d60"
       pocket:
       - state: equipped-BELT
-        color: "#7d94a9"
+        color: "#817d60"
 
 - type: entity
   id: NFPouchPirate

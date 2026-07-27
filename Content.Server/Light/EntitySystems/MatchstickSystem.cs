@@ -9,6 +9,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -86,8 +87,12 @@ namespace Content.Server.Light.EntitySystems
             // Change state
             SetState(matchstick, component, SmokableState.Lit);
             _litMatches.Add(matchstick);
-            matchstick.Owner.SpawnTimer(component.Duration * 1000, delegate
+            // Triad: engine v275 removed the SpawnTimer extension; static Timer + deletion guard keeps the old semantics
+            Timer.Spawn(component.Duration * 1000, delegate
             {
+                if (Deleted(matchstick))
+                    return;
+
                 SetState(matchstick, component, SmokableState.Burnt);
                 _litMatches.Remove(matchstick);
             });

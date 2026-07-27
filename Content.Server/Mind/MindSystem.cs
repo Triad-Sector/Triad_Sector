@@ -292,8 +292,10 @@ public sealed class MindSystem : SharedMindSystem
             return;
 
         Dirty(mindId, mind);
-        var netMind = GetNetEntity(mindId);
-        _pvsOverride.ClearOverride(netMind);
+        // Triad: engine v275 removed ClearOverride(NetEntity); minds only ever get session overrides, so
+        // removing the current session's override is equivalent (matches upstream MindSystem).
+        if (mind.Session != null)
+            _pvsOverride.RemoveSessionOverride(mindId, mind.Session);
         if (userId != null && !_players.TryGetPlayerData(userId.Value, out _))
         {
             Log.Error($"Attempted to set mind user to invalid value {userId}");

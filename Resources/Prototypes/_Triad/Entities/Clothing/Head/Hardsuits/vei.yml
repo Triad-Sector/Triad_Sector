@@ -1,0 +1,38 @@
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitVeiExplorer
+  name: VEX MK4 'Explorer' helmet
+  description: Quite an expensive piece of hardware. Has an advanced night-vision optic, in purple.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/vei-explorer.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/vei-explorer.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    heatingCoefficient: 0.01
+    coolingCoefficient: 0.01
+  - type: NightVision # Gen 3 wide-quadtube
+    relayOverlay: true
+    goggleEffect: true
+    viewCircleRadius: 450
+    viewCircleCount: 4
+    viewCircleSpacing: 280
+    action: ActionToggleNightVision
+    phosphorColor: "#a955ca" #purpl night vision
+    lightingColor: "#FFFFFF32"
+  - type: FireProtection
+    reduction: 0.9
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.95
+        Heat: 0.95
+        Cellular: 0.9
+        Caustic: 0.9
+        Radiation: 0.9

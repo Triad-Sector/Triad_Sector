@@ -1,0 +1,267 @@
+# Base prototypes
+- type: latheRecipe
+  abstract: true
+  id: BaseBureaucracyRecipe
+  categories: [ Bureaucracy ]
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BasePaperRecipe
+  completetime: 1
+  materials:
+    Paper: 10
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BaseStickyNoteStackRecipe
+  completetime: 2
+  materials:
+    Paper: 100
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BaseBoxFolderRecipe
+  completetime: 2
+  materials:
+    Plastic: 100
+    Paper: 100 # TODO: Remove when folders refactored to have empty variants.
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BasePenRecipe
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BaseEnvelopeRecipe
+  completetime: 1
+  materials:
+    Paper: 100
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseBureaucracyRecipe
+  id: BaseRubberStampRecipe
+  completetime: 2
+  materials:
+    Plastic: 100
+
+# Recipes
+## Paper
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: Paper
+  result: Paper
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperOffice
+  result: PaperOffice
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperCaptainsThoughts
+  result: PaperCaptainsThoughts
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: NFBusinessCardBlank
+  result: NFBusinessCardBlank
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedPink
+  result: PaperDyedPink
+  name: lathe-recipe-PaperDyedPink-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedRed
+  result: PaperDyedRed
+  name: lathe-recipe-PaperDyedRed-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedOrange
+  result: PaperDyedOrange
+  name: lathe-recipe-PaperDyedOrange-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedYellow
+  result: PaperDyedYellow
+  name: lathe-recipe-PaperDyedYellow-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedGrass
+  result: PaperDyedGrass
+  name: lathe-recipe-PaperDyedGrass-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedGreen
+  result: PaperDyedGreen
+  name: lathe-recipe-PaperDyedGreen-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedOcean
+  result: PaperDyedOcean
+  name: lathe-recipe-PaperDyedOcean-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedSky
+  result: PaperDyedSky
+  name: lathe-recipe-PaperDyedSky-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedPurple
+  result: PaperDyedPurple
+  name: lathe-recipe-PaperDyedPurple-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedTan
+  result: PaperDyedTan
+  name: lathe-recipe-PaperDyedTan-name
+
+- type: latheRecipe
+  parent: BasePaperRecipe
+  id: PaperDyedBrown
+  result: PaperDyedBrown
+  name: lathe-recipe-PaperDyedBrown-name
+
+- type: latheRecipe
+  parent: BaseStickyNoteStackRecipe
+  id: PaperStickyNoteStackFilled
+  result: PaperStickyNoteStackFilled
+  name: lathe-recipe-PaperStickyNoteStackFilled-name
+
+- type: latheRecipe
+  parent: BaseStickyNoteStackRecipe
+  id: PaperStickyNoteStackFilledPink
+  result: PaperStickyNoteStackFilledPink
+  name: lathe-recipe-PaperStickyNoteStackFilledPink-name
+
+- type: latheRecipe
+  parent: BaseStickyNoteStackRecipe
+  id: PaperStickyNoteStackFilledGreen
+  result: PaperStickyNoteStackFilledGreen
+  name: lathe-recipe-PaperStickyNoteStackFilledGreen-name
+
+- type: latheRecipe
+  parent: BaseStickyNoteStackRecipe
+  id: PaperStickyNoteStackFilledBlue
+  result: PaperStickyNoteStackFilledBlue
+  name: lathe-recipe-PaperStickyNoteStackFilledBlue-name
+
+## Folders
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderRed
+  result: BoxFolderRed
+  name: lathe-recipe-BoxFolderRed-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderBlue
+  result: BoxFolderBlue
+  name: lathe-recipe-BoxFolderBlue-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderYellow
+  result: BoxFolderYellow
+  name: lathe-recipe-BoxFolderYellow-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderWhite
+  result: BoxFolderWhite
+  name: lathe-recipe-BoxFolderWhite-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderGrey
+  result: BoxFolderGrey
+  name: lathe-recipe-BoxFolderGrey-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderBlack
+  result: BoxFolderBlack
+  name: lathe-recipe-BoxFolderBlack-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderGreen
+  result: BoxFolderGreen
+  name: lathe-recipe-BoxFolderGreen-name
+
+- type: latheRecipe
+  parent: BaseBoxFolderRecipe
+  id: BoxFolderClipboard
+  result: BoxFolderClipboard
+  materials:
+    Wood: 100
+    Paper: 100 # TODO: Refactor clipboards upstream to have a filled variant instead of starting filled.
+
+## Pens
+- type: latheRecipe
+  parent: BasePenRecipe
+  id: Pen
+  result: Pen
+
+- type: latheRecipe
+  parent: BasePenRecipe
+  id: LuxuryPen
+  result: LuxuryPen
+
+- type: latheRecipe
+  parent: BasePenRecipe
+  id: PenCap
+  result: PenCap
+
+- type: latheRecipe
+  parent: BasePenRecipe
+  id: PenHop
+  result: PenHop
+
+## Misc
+- type: latheRecipe
+  parent: BaseEnvelopeRecipe
+  id: Envelope
+  result: Envelope
+
+- type: latheRecipe
+  parent: BaseEnvelopeRecipe
+  id: EnvelopeManila
+  result: EnvelopeManila
+
+- type: latheRecipe
+  parent: BaseBureaucracyRecipe
+  id: BriefcaseBrown
+  result: BriefcaseBrown
+  completetime: 4
+  materials:
+    Wood: 500
+
+- type: latheRecipe
+  parent: BaseRubberStampRecipe
+  id: RubberStampApproved
+  result: RubberStampApproved
+
+- type: latheRecipe
+  parent: BaseRubberStampRecipe
+  id: RubberStampDenied
+  result: RubberStampDenied

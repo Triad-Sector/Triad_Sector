@@ -27,6 +27,7 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Physics;
 using Content.Shared.Tools.Systems;
+using Content.Shared.Turrets;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -45,28 +46,29 @@ namespace Content.Server.NPC.Systems;
 /// <summary>
 /// Handles utility queries for NPCs.
 /// </summary>
-public sealed class NPCUtilitySystem : EntitySystem
+public sealed partial class NPCUtilitySystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly DrinkSystem _drink = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly FoodSystem _food = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-    [Dependency] private readonly OpenableSystem _openable = default!;
-    [Dependency] private readonly PuddleSystem _puddle = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
-    [Dependency] private readonly WeldableSystem _weldable = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly MobThresholdSystem _thresholdSystem = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!; // Frontier
-    [Dependency] private readonly DestructibleSystem _destructible = default!; // Mono
-    [Dependency] private readonly GunSystem _gun = default!; // Mono
-    [Dependency] private readonly NPCCombatSystem _npcCombat = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private DrinkSystem _drink = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private FoodSystem _food = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private NpcFactionSystem _npcFaction = default!;
+    [Dependency] private OpenableSystem _openable = default!;
+    [Dependency] private PuddleSystem _puddle = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private WeldableSystem _weldable = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private MobThresholdSystem _thresholdSystem = default!;
+    [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!; // Frontier
+    [Dependency] private DestructibleSystem _destructible = default!; // Mono
+    [Dependency] private GunSystem _gun = default!; // Mono
+    [Dependency] private NPCCombatSystem _npcCombat = default!;
+    [Dependency] private TurretTargetSettingsSystem _turretTargetSettings = default!;
 
     private EntityQuery<PuddleComponent> _puddleQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -400,6 +402,14 @@ public sealed class NPCUtilitySystem : EntitySystem
 
                 return 0f;
             }
+            case TurretTargetingCon:
+            {
+                if (!TryComp<TurretTargetSettingsComponent>(owner, out var turretTargetSettings) ||
+                    _turretTargetSettings.EntityIsTargetForTurret((owner, turretTargetSettings), targetUid))
+                    return 1f;
+
+                return 0f;
+            }
             case TargetOnFireCon:
                 {
                     if (TryComp(targetUid, out FlammableComponent? fire) && fire.OnFire)
@@ -519,7 +529,6 @@ public sealed class NPCUtilitySystem : EntitySystem
                 }
                 break;
             }
-            // Mono - TODO: consider factions
             case NearbyNpcTargetsQuery shuttlesQuery:
             {
                 var xform = Transform(owner);
@@ -535,6 +544,16 @@ public sealed class NPCUtilitySystem : EntitySystem
                         || (_transform.GetWorldPosition(target) - _transform.GetWorldPosition(xform)).Length() > shuttlesQuery.Range
                         || targetComp.NeedPower && !this.IsPowered(target, EntityManager)
                         || targetGrid != null && _whitelistSystem.IsBlacklistPass(shuttlesQuery.Blacklist, targetGrid.Value))
+                    {
+                        continue;
+                    }
+
+                    // Triad: IFF. Skip targets friendly to us (shared faction or declared friendly),
+                    // checking the target itself and then its grid so a faction stamped on the hull
+                    // covers everything aboard. Hostile, neutral, and factionless targets all remain
+                    // valid, so behavior is unchanged wherever no factions are authored.
+                    if (_npcFaction.IsEntityFriendly(owner, target)
+                        || targetGrid != null && _npcFaction.IsEntityFriendly(owner, targetGrid.Value))
                     {
                         continue;
                     }

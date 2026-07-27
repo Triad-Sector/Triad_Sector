@@ -48,7 +48,7 @@
       points: 1
       required: false
     Head:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: true
     Snout:
       points: 1
@@ -63,13 +63,13 @@
       required: true
       defaultMarkings: [ VoxLLegScales, VoxRLegScales, VoxRFootScales, VoxLFootScales ]
     UndergarmentTop:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Chest:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Overlay: # imp
       points: 4

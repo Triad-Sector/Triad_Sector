@@ -181,3 +181,21 @@
     state: nfmsdoc
   jobName: job-name-doc
 #  allowSelection: false # Frontier: no impersonating command staff, literally 1984 - Mono Revert
+
+# Triad: plant role icons ported from coyote-frontier (Edison rework)
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconPlantManager
+  icon:
+    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
+    state: plantmanager
+  jobName: job-name-plant-manager
+  allowSelection: false # Frontier: no impersonating command staff, literally 1984
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconPlantTechnician
+  icon:
+    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
+    state: planttechnician
+  jobName: job-name-plant-technician

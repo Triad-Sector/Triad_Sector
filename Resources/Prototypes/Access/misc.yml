@@ -26,8 +26,8 @@
   - Research
   - Service
   - StationTrafficController # Frontier
-  - Sergeant # Frontier
-  - Bailiff # Frontier
+  - TdfPatrolTeamLeader # Triad
+  - TdfWarden # Triad
   - Maintenance
   - External
   - Janitor

@@ -1,0 +1,4 @@
+- type: latheRecipe
+  id: ClothingEyesHudSecurityTdf
+  parent: ClothingEyesHudSecurity
+  result: ClothingEyesHudSecurityTdf

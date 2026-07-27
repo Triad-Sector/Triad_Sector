@@ -146,8 +146,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretHoS
-  name: head of security's beret
-  description: A black beret with a commander's rank emblem. For officers that are more inclined towards style than safety.
+  name: pre-war head of security's beret
+  description: An archaic pre-corporate war black beret with a commander's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hats/beret_hos.rsi
@@ -162,8 +162,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretWarden
-  name: warden's beret
-  description: A corporate blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety.
+  name: pre-war warden's beret
+  description: An archaic pre-corporate war blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hats/beret_warden.rsi

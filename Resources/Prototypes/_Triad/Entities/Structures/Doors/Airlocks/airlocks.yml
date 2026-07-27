@@ -1,0 +1,36 @@
+# TDF
+- type: entity
+  parent: Airlock
+  id: AirlockTdf
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Standard/tdf.rsi
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockTdfGlass
+  suffix: TDF
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Glass/tdf.rsi
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockTfaHighCommand
+  suffix: TFA High Command
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Standard/tdfhighcom.rsi
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockTfaHighCommandGlass
+  suffix: TFA High Command
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Glass/tdfhighcom.rsi

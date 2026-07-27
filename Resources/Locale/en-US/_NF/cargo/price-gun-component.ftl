@@ -1,7 +1,7 @@
 contraband-price-gun-pricing-result = The device deems {THE($object)} to be worth {$price ->
-    [0] no FMCs.
-    [one] {$price} FMC.
-    *[other] {$price} FMCs.
+    [0] no TCCs.
+    [one] {$price} TCCs.
+    *[other] {$price} TCCs.
 }
 
 contraband-price-gun-verb-text = Appraisal

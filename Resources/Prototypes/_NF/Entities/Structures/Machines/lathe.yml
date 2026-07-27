@@ -42,6 +42,7 @@
     runningState: icon
     staticPacks:
     - NFServiceTechfabDeprecatedStatic
+    - TriadBureaucracyStatic # Triad
     dynamicPacks:
     - NFServiceTechfabDeprecated
   - type: EmagLatheRecipes
@@ -124,9 +125,9 @@
 
 - type: entity
   id: NfsdTechFab
-  parent: [ BlueprintReceiverBase, SecurityTechFab ]
-  name: TSFMC techfab
-  description: Prints equipment for use by TSFMC.
+  parent: [ BlueprintReceiverBase, SecurityTechFab, BaseClass2AShipContraband ]
+  name: TDF techfab
+  description: Prints equipment for use by TDF.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/techfab.rsi
@@ -147,27 +148,33 @@
     idleState: icon
     runningState: icon
     staticPacks:
-    - NFNfsdTechfabDeprecatedStatic
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
     dynamicPacks:
-    - NFNfsdTechfabDeprecated
     - DynamicAmmoRecipePack
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
     # Mono end
+    # Triad start
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
+    # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
   - type: PirateBountyItem # Mono
     id: Techfab
+  - type: CompanyAccessReader
+    requiredCompany: TDF # Triad
+    popupMessage: company-access-denied-tdf # Triad
 
 - type: entity
   id: MercenaryTechFab
@@ -212,7 +219,7 @@
     - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
     - MonoUSSPWeaponsDynamicRanged
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -283,7 +290,7 @@
     - MonoUSSPVouchersDynamic
     - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
-    - MonoViperGroupDynamic
+    #- MonoViperGroupDynamic
     - MonoUSSPWeaponsDynamicRanged
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo

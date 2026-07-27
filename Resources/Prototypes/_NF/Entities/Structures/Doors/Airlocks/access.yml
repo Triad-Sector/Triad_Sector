@@ -51,7 +51,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: HighSecDoor
@@ -214,7 +214,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: [ AirlockAtmosphericsGlass, AirlockFrontierCommandGlassLocked]
@@ -223,7 +223,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: AirlockGlass
@@ -255,7 +255,7 @@
 - type: entity
   parent: AirlockExternalGlassNfsd
   id: AirlockExternalGlassNfsdLocked
-  suffix: TSFMC, Glass, Locked
+  suffix: TDF, Glass, Locked
   components:
   - type: ContainerFill
     containers:
@@ -264,7 +264,7 @@
 - type: entity
   parent: AirlockShuttleNfsd
   id: AirlockShuttleNfsdLocked
-  suffix: TSFMC, Docking, Locked
+  suffix: TDF, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -273,7 +273,7 @@
 - type: entity
   parent: AirlockGlassShuttleNfsd
   id: AirlockGlassShuttleNfsdLocked
-  suffix: TSFMC, Glass, Docking, Locked
+  suffix: TDF, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:

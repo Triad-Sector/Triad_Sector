@@ -24,12 +24,12 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using YamlDotNet.Core;
 using YamlDotNet.RepresentationModel;
-using Content.Server.Lathe.Components; // Triad
+using Content.Server.Lathe.Components;
 using Content.Server.Light.Components;
-using Content.Shared._Triad.Shipyard.Save; // Triad
-using Content.Shared.Lathe; // Triad
-using Content.Shared._Triad.Shipyard.Load; // Triad
-using Content.Shared._Triad.Shipyard.Save.Contraband; // Triad
+using Content.Shared._Triad.Shipyard.Save;
+using Content.Shared.Lathe;
+using Content.Shared._Triad.Shipyard.Load;
+using Content.Shared._Triad.Shipyard.Save.Contraband;
 using System.Linq;
 using Content.Shared.Containers;
 using Content.Shared.Doors.Components;
@@ -41,6 +41,8 @@ using Content.Server.Cargo.Systems;
 using Content.Shared._Triad.CCVar;
 using Robust.Shared.Configuration;
 using Content.Server.GameTicking;
+using Content.Server.StationRecords.Components;
+using Content.Server.StationRecords.Systems;
 
 namespace Content.Server._Triad.Shipyard;
 
@@ -49,21 +51,21 @@ namespace Content.Server._Triad.Shipyard;
 /// Saves ships as complete YAML files similar to savegrid command,
 /// after cleaning them of problematic components and moving to exports folder.
 /// </summary>
-public sealed class ShipyardGridSaveSystem : EntitySystem
+public sealed partial class ShipyardGridSaveSystem : EntitySystem
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] private readonly PricingSystem _pricing = default!; // Triad
-    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // HardLight
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
-    [Dependency] private readonly StationSystem _station = default!; // Triad
-    [Dependency] private readonly ShuttleRecordsSystem _shuttleRecords = default!; // Triad
-    [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!; // Triad: tamper protection
-    [Dependency] private readonly GameTicker _gameTicker = default!; // Triad: stamp audit rows with the round id
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private PricingSystem _pricing = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!; // HardLight
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ShuttleRecordsSystem _shuttleRecords = default!;
+    [Dependency] private TriadTamperPolicyService _tamperPolicy = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
 
     public List<ShipSaveLimitsPrototype> ShipSaveEntityLimits { get; private set; } = new();
 
@@ -124,7 +126,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // Also remove any other shuttle deeds that reference this shuttle
             RemoveAllShuttleDeeds(grid);
 
-            // Destroy the station on the shuttle
+            // Destroy the station entity hooked to the shuttle
             if (_station.GetOwningStation(grid) is { Valid: true } shuttleStationUid)
                 _station.DeleteStation(shuttleStationUid);
 
@@ -269,10 +271,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
     public bool TrySaveGridAsShip(EntityUid gridUid, string shipName, string playerUserId, ICommonSession playerSession)
     {
         if (!_gridQuery.HasComp(gridUid))
-        {
-            //_sawmill.Error($"Entity {gridUid} is not a valid grid");
             return false;
-        }
 
         try
         {
@@ -282,12 +281,14 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             // Purge invalid entities
             PurgeInvalidEntities(gridUid);
 
-            // Triad: remove any edge spreaders, we cannot save these
+            // remove any edge spreaders, we cannot save these
             RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
 
-            // Triad
             // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
             ResetFabricatorsOnGrid(gridUid);
+
+            // reset station records computers to prevent errors with StationRecordsFilter
+            ResetGeneralRecordsConsolesOnGrid(gridUid);
 
             // Remove repair data, it is re-added on load
             RemComp<ShipRepairDataComponent>(gridUid);
@@ -391,7 +392,6 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
         }
     }
 
-    // Triad
     /// <summary>
     /// Resets all fabricators on the grid before saving: disables loop mode, disables skip mode,
     /// clears the queue, and cancels any active production job.
@@ -410,6 +410,22 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             lathe.Queue.Clear();
             lathe.CurrentRecipe = null;
             RemComp<LatheProducingComponent>(uid);
+        }
+    }
+
+    /// <summary>
+    /// Resets station records consoles on the grid to prevent serialization issues.
+    /// </summary>
+    private void ResetGeneralRecordsConsolesOnGrid(EntityUid gridUid)
+    {
+        var consoleQuery = _entityManager.EntityQueryEnumerator<GeneralStationRecordConsoleComponent, TransformComponent>();
+        while (consoleQuery.MoveNext(out var uid, out var console, out var xform))
+        {
+            if (xform.GridUid != gridUid)
+                continue;
+
+            GeneralStationRecordConsoleSystem.SetActiveKey((uid, console), null);
+            GeneralStationRecordConsoleSystem.SetFilter((uid, console), null);
         }
     }
 
@@ -567,7 +583,7 @@ public sealed class ShipyardGridSaveSystem : EntitySystem
             if (!Exists(owner))
                 return false;
             // Also treat persistent entities as a preservation root.
-            if (_persistOnSaveQuery.HasComp(owner))
+            if (_persistOnSaveQuery.TryComp(owner, out var persist) && persist.SaveContents)
                 return true; // Found stash root above.
             if (HasComp<MachineComponent>(owner))
                 return true; // This is so machines keep their upgraded parts.

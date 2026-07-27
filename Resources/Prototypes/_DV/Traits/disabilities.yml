@@ -5,7 +5,7 @@
   name: trait-blindness-name
   description: trait-blindness-desc
   category: Disabilities
-  cost: -1
+  cost: 0 # Triad: disabilities are an RP choice, not a point economy. No drawback points to spend on boons.
   conditions:
   - !type:HasTraitCondition
     trait: PoorVision
@@ -16,9 +16,9 @@
   - !type:HasTraitCondition
     trait: UltraVision
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasCompCondition
     component: Blindable
   effects:
@@ -33,7 +33,7 @@
   name: trait-poor-vision-name
   description: trait-poor-vision-desc
   category: Disabilities
-  cost: -1
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   conditions:
   - !type:HasTraitCondition
     trait: Blindness
@@ -48,41 +48,40 @@
   - !type:SpawnItemInHandEffect
     item: ClothingEyesGlasses
 
-# Mono - not implemented
-# - type: trait
-#   id: Monochromacy
-#   name: trait-monochromacy-name
-#   description: trait-monochromacy-desc
-#   category: Disabilities
-#   cost: -1
-#   conditions:
-#   - !type:HasTraitCondition
-#     trait: Blindness
-#     invert: true
-#   - !type:HasTraitCondition
-#     trait: Deuteranopia
-#     invert: true
-#   - !type:HasTraitCondition
-#     trait: UltraVision
-#     invert: true
-#   effects:
-#   - !type:AddCompsEffect
-#     components:
-#     - type: BlackAndWhiteOverlay
+- type: trait
+  id: Monochromacy
+  name: trait-monochromacy-name
+  description: trait-monochromacy-desc
+  category: Disabilities
+  cost: 0 # Triad: disabilities are RP, not a point economy.
+  conditions:
+  - !type:HasTraitCondition
+    trait: Blindness
+    invert: true
+  - !type:HasTraitCondition
+    trait: Deuteranopia
+    invert: true
+  - !type:HasTraitCondition
+    trait: UltraVision
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: BlackAndWhiteOverlay
 
 - type: trait
   id: Deuteranopia
   name: trait-deuteranopia-name
   description: trait-deuteranopia-desc
   category: Disabilities
-  cost: -1
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   conditions:
   - !type:HasTraitCondition
     trait: Blindness
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasTraitCondition
     trait: UltraVision
     invert: true
@@ -99,14 +98,14 @@
   name: trait-ultravision-name
   description: trait-ultravision-desc
   category: Disabilities
-  cost: -1
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   conditions:
   - !type:HasTraitCondition
     trait: Blindness
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasTraitCondition
     trait: Deuteranopia
     invert: true
@@ -137,7 +136,7 @@
   name: trait-amputee-left-arm-name
   description: trait-amputee-left-arm-desc
   category: Disabilities
-  cost: -1
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   effects:
   - !type:RemoveBodyPartEffect
     part: Arm
@@ -148,7 +147,7 @@
   name: trait-amputee-right-arm-name
   description: trait-amputee-right-arm-desc
   category: Disabilities
-  cost: -2
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   effects:
   - !type:RemoveBodyPartEffect
     part: Arm
@@ -159,7 +158,7 @@
   name: trait-amputee-left-leg-name
   description: trait-amputee-left-leg-desc
   category: Disabilities
-  cost: -2
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   effects:
   - !type:RemoveBodyPartEffect
     part: Leg
@@ -170,7 +169,7 @@
   name: trait-amputee-right-leg-name
   description: trait-amputee-right-leg-desc
   category: Disabilities
-  cost: -2
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   effects:
   - !type:RemoveBodyPartEffect
     part: Leg
@@ -181,7 +180,7 @@
   name: trait-dysgraphia-name
   description: trait-dysgraphia-desc
   category: Disabilities
-  cost: -2
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   effects:
   - !type:AddCompsEffect
     components:
@@ -192,10 +191,15 @@
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
   category: Disabilities
-  cost: -2
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   conditions:
   - !type:IsSpeciesCondition
     species: IPC
+    invert: true
+  # Triad: contradicts SelfAware (precise self-damage readout). Being numb to your injuries can't coexist
+  # with an in-head health analyzer.
+  - !type:HasTraitCondition
+    trait: SelfAware
     invert: true
   effects:
   - !type:AddCompsEffect

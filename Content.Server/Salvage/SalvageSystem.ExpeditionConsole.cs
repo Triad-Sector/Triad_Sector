@@ -164,6 +164,18 @@ public sealed partial class SalvageSystem
             return;
         }
 
+        // Triad: refuse the early return while the ship's FTL drive is still on cooldown from
+        // arriving. The expedition teardown auto-FTLs out shuttles that have no FTLComponent; a
+        // grid still in FTL cooldown is skipped and then deleted with the map, taking the crew
+        // with it. Block the return until the drive is ready so the ship can actually be evacuated.
+        if (xform.GridUid is { } shuttleGrid && HasComp<FTLComponent>(shuttleGrid))
+        {
+            PlayDenySound(entity, component);
+            _popupSystem.PopupEntity(Loc.GetString("salvage-expedition-ftl-cooldown"), entity, PopupType.MediumCaution);
+            UpdateConsoles(station.Value, data);
+            return;
+        }
+
         // Frontier: check if any player characters or friendly ghost roles are outside
         var query = EntityQueryEnumerator<MindContainerComponent, MobStateComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var mindContainer, out var _, out var mobXform))

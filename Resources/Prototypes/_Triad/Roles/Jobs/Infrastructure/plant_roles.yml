@@ -1,0 +1,87 @@
+- type: job
+  id: PlantManager
+  name: job-name-plant-manager
+  description: job-description-plant-manager
+  playTimeTracker: JobPlantManager
+  startingGear: PlantManagerGear
+  alwaysUseSpawner: true
+  icon: "JobIconPlantManager"
+  supervisors: job-supervisors-sr
+  assignedCompany: Colonial
+  canBeAntag: false
+  setPreference: true
+  weight: 100
+  displayWeight: 40
+  # The Director of Infrastructure is the plant's chief engineer. Command covers the manager-only
+  # fixtures (gun safe, request computer, admin bank terminal) and the office/quarters + vault;
+  # Engineering/Atmospherics cover the rest of the plant. (ChiefEngineer retired - it isn't
+  # console-grantable and nothing plant-side needs it anymore.)
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  - Command
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - not TDF, but friendly and works with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Engineering
+
+- type: startingGear
+  id: PlantManagerGear
+  equipment:
+    id: PlantManagerPDA
+    belt: ClothingBeltChiefEngineerFilled # Triad: fixed CE toolbelt (no belt choice), lives in gear not a loadout category
+  storage:
+    back:
+    - EncryptionKeyService # Colonial Staff
+    - EncryptionKeyCommand # Triad Command
+
+- type: job
+  id: PlantTechnician
+  name: job-name-plant-technician
+  description: job-description-plant-technician
+  playTimeTracker: JobPlantTechnician
+  startingGear: PlantTechnicianGear
+  alwaysUseSpawner: true
+  icon: "JobIconPlantTechnician"
+  supervisors: job-supervisors-plant-manager
+  assignedCompany: Colonial
+  canBeAntag: false
+  setPreference: true
+  weight: 80
+  displayWeight: 30
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - not TDF, but friendly and works with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Engineering
+
+- type: startingGear
+  id: PlantTechnicianGear
+  equipment:
+    id: PlantTechnicianPDA
+  storage:
+    back:
+    - EncryptionKeyService # Colonial Staff

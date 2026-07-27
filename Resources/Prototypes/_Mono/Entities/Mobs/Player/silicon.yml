@@ -433,6 +433,8 @@
   - type: Construction
     graph: AiVessel
     node: end
+  - type: SpawnOnShipLoad # Triad
+    spawn: PlayerStationAiVessel
 
 - type: entity
   id: StationAiBrainVessel

@@ -40,11 +40,6 @@ public sealed class RPDDeconstructLayerGuideOverlay : Overlay
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transform;
 
-    // Mirror the construct guide's geometry and color (AlignRPDAtmosPipeLayers) so both previews read identically.
-    private const float GuideRadius = 0.1f;
-    private const float GuideOffsetInTileUnits = 7f / 32f;
-    private readonly Color _guideColor = new(0, 0, 0.5785f);
-
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     public RPDDeconstructLayerGuideOverlay()
@@ -99,15 +94,8 @@ public sealed class RPDDeconstructLayerGuideOverlay : Overlay
         var tileCenterLocal = new Vector2((indices.X + 0.5f) * tileSize, (indices.Y + 0.5f) * tileSize);
         var worldPosition = _mapSystem.LocalToWorld(gridUid, grid, tileCenterLocal);
 
-        // Flank the center dot along a screen-relative axis, flipping with grid rotation so the dots stay put on
-        // screen as the grid turns (identical math to AlignRPDAtmosPipeLayers.Render).
+        // Three guide dots showing the cursor-quadrant layer aim; see RPDLayerGuide.
         var gridRotation = _transform.GetWorldRotation(gridUid);
-        var direction = (_eye.CurrentEye.Rotation + gridRotation + Math.PI / 2).GetCardinalDir();
-        var multi = (direction == Direction.North || direction == Direction.South) ? -1f : 1f;
-        var offset = gridRotation.RotateVec(new Vector2(multi * GuideOffsetInTileUnits, GuideOffsetInTileUnits));
-
-        args.WorldHandle.DrawCircle(worldPosition, GuideRadius, _guideColor);
-        args.WorldHandle.DrawCircle(worldPosition + offset, GuideRadius, _guideColor);
-        args.WorldHandle.DrawCircle(worldPosition - offset, GuideRadius, _guideColor);
+        RPDLayerGuide.Draw(args.WorldHandle, worldPosition, gridRotation, _eye.CurrentEye.Rotation);
     }
 }

@@ -35,6 +35,11 @@ public sealed class CleanupHelperSystem : EntitySystem
     /// </summary>
     public bool HasNearbyPlayers(EntityCoordinates coord, float radius)
     {
+        // Triad: v277 lookup asserts on non-positive range; callers scale radius by
+        // sqrt(price/maxPrice), which is 0 for worthless debris. Nothing is within 0m.
+        if (radius <= 0f)
+            return false;
+
         var minds = _lookup.GetEntitiesInRange<MindContainerComponent>(coord, radius);
 
         foreach (var (uid, comp) in minds)

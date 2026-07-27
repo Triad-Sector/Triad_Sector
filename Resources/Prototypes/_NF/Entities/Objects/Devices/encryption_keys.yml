@@ -36,6 +36,8 @@
     - state: nfsd_label
   - type: PirateBountyItem # Mono
     id: EncryptionKeyFaction
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: EncryptionKey
@@ -49,7 +51,7 @@
     - Common
     - Medical
     - Service # Mono
-    #- Command # Mono
+    - Command # Triad, re-add
     defaultChannel: Common
   - type: Item
     sprite: _NF/Objects/Devices/encryption_keys.rsi
@@ -58,3 +60,5 @@
     layers:
     - state: crypt_silver
     - state: cmo_label
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text

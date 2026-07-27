@@ -1,9 +1,9 @@
 {
   "version": 1,
   "license": "CC-BY-NC-SA-3.0",
-  "copyright": "Made by _starch_ (discord), detailing by onezero00 (discord).",
+  "copyright": "Made by _starch_ (discord), detailing by onezero00 (discord), Sprite Size readjusted by Wuffindy",
   "size": {
-    "x": 48,
+    "x": 32,
     "y": 32
   },
   "states": [
@@ -33,6 +33,30 @@
     },
     {
       "name": "mag-5"
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    },
+    {
+      "name": "equipped-SUITSTORAGE",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
     }
   ]
 }

@@ -47,6 +47,7 @@ public sealed class HTNSystem : EntitySystem
         _loadedQuery = GetEntityQuery<LoadedChunkComponent>(); // Frontier
         SubscribeLocalEvent<HTNComponent, MobStateChangedEvent>(_npc.OnMobStateChange);
         SubscribeLocalEvent<HTNComponent, MapInitEvent>(_npc.OnNPCMapInit);
+        SubscribeLocalEvent<HTNComponent, ComponentStartup>(_npc.OnNPCStartup); // Triad: port of Wizden #40244, blackboard Owner must exist before MapInit
         SubscribeLocalEvent<HTNComponent, PlayerAttachedEvent>(_npc.OnPlayerNPCAttach);
         SubscribeLocalEvent<HTNComponent, PlayerDetachedEvent>(_npc.OnPlayerNPCDetach);
         SubscribeLocalEvent<HTNComponent, ComponentShutdown>(OnHTNShutdown);
@@ -148,6 +149,39 @@ public sealed class HTNSystem : EntitySystem
     }
 
     /// <summary>
+    /// Enable / disable the hierarchical task network of an entity
+    /// </summary>
+    /// <param name="ent">The entity and its <see cref="HTNComponent"/></param>
+    /// <param name="state">Set 'true' to enable, or 'false' to disable, the HTN</param>
+    /// <param name="planCooldown">Specifies a time in seconds before the entity can start planning a new action (only takes effect when the HTN is enabled)</param>
+    // ReSharper disable once InconsistentNaming
+    [PublicAPI]
+    public void SetHTNEnabled(Entity<HTNComponent> ent, bool state, float planCooldown = 0f)
+     {
+        if (ent.Comp.Enabled == state)
+            return;
+
+        ent.Comp.Enabled = state;
+        ent.Comp.PlanAccumulator = planCooldown;
+
+        ent.Comp.PlanningToken?.Cancel();
+        ent.Comp.PlanningToken = null;
+
+        if (ent.Comp.Plan != null)
+        {
+            var currentOperator = ent.Comp.Plan.CurrentOperator;
+
+            ShutdownTask(currentOperator, ent.Comp.Blackboard, HTNOperatorStatus.Failed);
+            ShutdownPlan(ent.Comp);
+
+            ent.Comp.Plan = null;
+        }
+
+        if (ent.Comp.Enabled && ent.Comp.PlanAccumulator <= 0)
+            RequestPlan(ent.Comp);
+    }
+
+    /// <summary>
     /// Forces the NPC to replan.
     /// </summary>
     [PublicAPI]
@@ -180,15 +214,30 @@ public sealed class HTNSystem : EntitySystem
                 return;
             }
 
+            if (!comp.Enabled)
+                continue;
+
             if (comp.PlanningJob != null)
             {
                 if (comp.PlanningJob.Exception != null)
                 {
-                    Log.Fatal($"Received exception on planning job for {uid}!");
-                    _npc.SleepNPC(uid);
+                    // Triad: contain the failure to this NPC instead of rethrowing into the tick.
+                    // Upstream rethrows, which aborts every remaining NPC's update this frame and can
+                    // take the server down over one malformed domain. Quarantine: log loudly, strip
+                    // the brain, keep everyone else running. DebugTools.Assert preserves the
+                    // crash-loudly-in-dev property so bad domains still get fixed.
                     var exc = comp.PlanningJob.Exception;
+                    Log.Error($"Received exception on planning job for {ToPrettyString(uid)}, root task {comp.RootTask}, quarantining NPC:\n{exc}");
+                    _npc.SleepNPC(uid);
                     RemComp<HTNComponent>(uid);
-                    throw exc;
+                    DebugTools.Assert(false, $"HTN planning job threw for {ToPrettyString(uid)}: {exc.Message}");
+                    continue;
+                    // Triad: end of quarantine block; upstream code below was:
+                    // Log.Fatal($"Received exception on planning job for {uid}!");
+                    // _npc.SleepNPC(uid);
+                    // var exc = comp.PlanningJob.Exception;
+                    // RemComp<HTNComponent>(uid);
+                    // throw exc;
                 }
 
                 // If a new planning job has finished then handle it.

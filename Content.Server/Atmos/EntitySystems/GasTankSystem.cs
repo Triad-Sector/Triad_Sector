@@ -88,7 +88,7 @@ namespace Content.Server.Atmos.EntitySystems
                     comp.CheckUser = false;
                     if (Transform(uid).ParentUid != comp.User)
                     {
-                        DisconnectFromInternals(gasTank);
+                        DisconnectFromInternals(gasTank, forced: true); // (#44126) bypass toggle cooldown when tank left the user
                         continue;
                     }
                 }

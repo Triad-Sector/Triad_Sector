@@ -4,9 +4,11 @@
   name: radiation barrier projector
   description: Stop the deadly radiation from a delamination or meltdown, at least for a little while.
   components:
-  - type: HolosignProjector
+  - type: ChargeHolosignProjector
     signProto: HolosignRadiationBlocking
-    chargeUse: 60
+    signComponentName: HolosignRadiationBlocking
+  - type: LimitedCharges
+    maxCharges: 12 # Triad
   - type: Sprite
     sprite: _FarHorizons/Objects/Devices/Holoprojectors/radiation.rsi
     state: icon

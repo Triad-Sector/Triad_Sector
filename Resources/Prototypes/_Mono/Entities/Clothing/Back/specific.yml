@@ -27,12 +27,12 @@
   - type: Sprite
     sprite: _Mono/Clothing/Back/Satchels/ussp.rsi
 
-# TSFMC bags
+# solarian directive bags
 
 - type: entity
   parent: NFClothingBackpack
   id: ClothingBackpackTsfmc
-  name: TSFMC backpack
+  name: solarian PMC backpack
   description: Part of a standard marine load bearing system.
   components:
   - type: Sprite
@@ -41,7 +41,7 @@
 - type: entity
   parent: NFClothingDuffel # Frontier: ClothingBackpackDuffelNFClothingDuffel
   id: ClothingBackpackDuffelTsfmc
-  name: TSFMC duffel bag
+  name: solarian PMC duffel bag
   description: Part of a standard marine load bearing system.
   components:
   - type: Sprite
@@ -50,7 +50,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelTsfmc
-  name: TSFMC satchel
+  name: solarian PMC satchel
   description: Part of a standard marine load bearing system.
   components:
   - type: Sprite

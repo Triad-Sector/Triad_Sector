@@ -83,8 +83,8 @@ guide-entry-traversal-distorter = Traversal Distorter
 guide-entry-machine-upgrading = Machine Upgrading
 guide-entry-robotics = Robotics
 guide-entry-cyborgs = Cyborgs
-# Frontier: Security<TSFMC
-guide-entry-security = TSFMC
+# Frontier: Security<TDF
+guide-entry-security = TDF
 guide-entry-forensics = Forensics
 guide-entry-defusal = Large Bomb Defusal
 guide-entry-criminal-records = Criminal Records

@@ -16,7 +16,7 @@ spray-painter-style-locker-nfsd-silver = NFSD (silver)
 spray-painter-style-locker-nfsd-brigmedic = NFSD (brigmedic)
 spray-painter-style-locker-nfsd-gold = NFSD (gold)
 spray-painter-style-locker-nfsd-sheriff = NFSD (sheriff)
-spray-painter-style-locker-station-representative = Station representative
+spray-painter-style-locker-station-representative = Overseer
 spray-painter-style-locker-fsb = FSB
 
 spray-painter-style-closet-internals = Internals (universal)

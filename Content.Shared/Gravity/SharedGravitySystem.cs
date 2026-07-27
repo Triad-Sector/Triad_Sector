@@ -1,4 +1,6 @@
+using Content.Shared._NF.Clothing.Components; // Triad
 using Content.Shared.Alert;
+using Content.Shared.Clothing; // Triad
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
 using Robust.Shared.GameStates;
@@ -19,6 +21,12 @@ namespace Content.Shared.Gravity
 
         private EntityQuery<GravityComponent> _gravityQuery;
 
+        // Triad: queries for the IsWeightless raw-event subscriber set (see IsWeightless guard)
+        private EntityQuery<InventoryComponent> _inventoryQuery;
+        private EntityQuery<MagbootsComponent> _magbootsQuery;
+        private EntityQuery<NFMoonBootsComponent> _moonBootsQuery;
+        // End Triad
+
         public bool IsWeightless(EntityUid uid, PhysicsComponent? body = null, TransformComponent? xform = null)
         {
             Resolve(uid, ref body, false);
@@ -28,6 +36,27 @@ namespace Content.Shared.Gravity
 
             if (TryComp<MovementIgnoreGravityComponent>(uid, out var ignoreGravityComponent))
                 return ignoreGravityComponent.Weightless;
+
+            // Triad: skip the IInventoryRelayEvent raise when no subscriber exists.
+            // The raw IsWeightlessEvent has exactly three direct subscribers: InventoryComponent
+            // (the relay), MagbootsComponent, and NFMoonBootsComponent (verified via the event
+            // index). For inventory-less mobs (carp, wildlife, projectile debris) the raise
+            // dispatches to zero handlers but still pays the directed event-bus lookup per moving
+            // body per tick (~9% of PhysicsSystem.Update under mob-heavy load). Skipping the raise
+            // here is bit-equivalent to raising it with no handler (the struct stays Handled=false,
+            // so the method falls through to the grid/map gravity check below regardless).
+            // If a future component subscribes to the RAW IsWeightlessEvent it MUST be added here,
+            // or weightlessness silently breaks for entities carrying only that component.
+            if (!_inventoryQuery.HasComp(uid)
+                && !_magbootsQuery.HasComp(uid)
+                && !_moonBootsQuery.HasComp(uid))
+            {
+                if (!Resolve(uid, ref xform))
+                    return true;
+
+                return !EntityGridOrMapHaveGravity((uid, xform));
+            }
+            // End Triad
 
             var ev = new IsWeightlessEvent(uid);
             RaiseLocalEvent(uid, ref ev);
@@ -78,6 +107,12 @@ namespace Content.Shared.Gravity
             SubscribeLocalEvent<GravityComponent, ComponentHandleState>(OnHandleState);
 
             _gravityQuery = GetEntityQuery<GravityComponent>();
+
+            // Triad: populate IsWeightless guard queries
+            _inventoryQuery = GetEntityQuery<InventoryComponent>();
+            _magbootsQuery = GetEntityQuery<MagbootsComponent>();
+            _moonBootsQuery = GetEntityQuery<NFMoonBootsComponent>();
+            // End Triad
         }
 
         public override void Update(float frameTime)

@@ -256,6 +256,9 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
+  # Radiators are numberOfPipeLayers: 1 by design (they exchange with the environment, not a layer),
+  # so the layer guide dots would promise a choice the entity can't honor.
+  noLayers: true
 
 - type: rcd
   id: RadiatorBend
@@ -270,6 +273,7 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
+  noLayers: true # single-layer by design, same as Radiator above
 
 - type: rcd
   id: MixerGas

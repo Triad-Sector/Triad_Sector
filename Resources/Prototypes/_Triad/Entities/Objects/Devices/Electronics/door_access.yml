@@ -1,0 +1,52 @@
+# TDF
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfWarden
+  suffix: TDF Warden, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfWarden"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfPatrolTeamLeader
+  suffix: TDF Patrol Team Leader, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfPatrolTeamLeader"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTdfChiefEnforcer
+  suffix: TDF Chief Enforcer, Locked
+  components:
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"]]
+
+# SD
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSD
+  suffix: SD, Locked
+  components:
+  - type: AccessReader
+    access: [["Solarian"]]
+
+# TIC
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsTIC
+  suffix: TIC, Locked
+  components:
+  - type: AccessReader
+    access: [["Coalition"]]
+
+# Triad: command-or-engineering board for the FrontierCommand engineering/atmos doors on the
+# outpost stations - command members OR engineering staff can open (was command-only HoS/HoP).
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsFrontierCommandEngineering
+  suffix: Command/Engineering, Locked
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Engineering"]]

@@ -43,4 +43,4 @@
 - type: latheRecipe
   id: HoloprojectorNfsd
   parent: ClothingEyesHudSecurity
-  result: HoloprojectorNfsdEmpty
+  result: HoloprojectorNfsd

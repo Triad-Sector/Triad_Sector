@@ -1,0 +1,42 @@
+# Triad: Edison POI port. Tile ids/names from ARF-SS13/coyote-frontier @ 2f30035e (AGPLv3).
+# The upstream turf textures were not vendored; these approximate them with existing
+# this fork's wood tiles so the Edison map's tilemap resolves. Retexture during refit.
+- type: tile
+  id: FloorFancyWood
+  name: tiles-fancy-wood
+  sprite: /Textures/Tiles/wood_large.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWood
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorVersaillesWood
+  name: tiles-versailles-wood
+  sprite: /Textures/Tiles/wood_tile.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWood
+  heatCapacity: 10000

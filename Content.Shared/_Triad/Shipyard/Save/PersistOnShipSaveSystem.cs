@@ -18,7 +18,7 @@ public sealed class PersistOnShipSaveSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        var examineText = HasComp<StorageComponent>(ent.Owner)
+        var examineText = ent.Comp.SaveContents
             ? "persistonshipsave-component-examine-storage" : "persistonshipsave-component-examine";
 
         args.PushMarkup(Loc.GetString(examineText), ExaminePriority);

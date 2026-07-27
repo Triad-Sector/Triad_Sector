@@ -34,6 +34,8 @@
         Quantity: 1
   - type: DrainableSolution
     solution: tank
+  - type: Transform # Triad, movable sinks
+    anchored: true
   - type: ReagentTank
   - type: Drain
     autoDrain: false
@@ -65,9 +67,21 @@
     range: 8
     sound:
       path: /Audio/Ambience/Objects/drain.ogg
+  - type: Anchorable # Triad: can move
+    delay: 3
+  - type: Pullable # Triad: can move
+  - type: Rotatable # Triad
   - type: Physics # Hardlight
     bodyType: Static
-    canCollide: false
+  - type: Fixtures # Triad
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 75
+        mask:
+        - ItemMask
   - type: ShipRepairable # Triad: Make sinks SRD repairable
     repairTime: 4
     repairCost: 15
@@ -86,6 +100,9 @@
         reagents:
         - ReagentId: Water
           Quantity: 500
+  - type: Construction # Triad
+    graph: sinkstemlesswater
+    node: finish
 
 - type: entity
   name: wide sink
@@ -103,6 +120,9 @@
       maxFillLevels: 1
       fillBaseName: sink_wide-fill-
       solutionName: drainBuffer
+    - type: Construction # Triad
+      graph: widesink
+      node: finish
 
 #Stemless Sink
 
@@ -133,3 +153,6 @@
         reagents:
         - ReagentId: Water
           Quantity: 500
+  - type: Construction # Triad
+    graph: sinkstemlesswater
+    node: finish

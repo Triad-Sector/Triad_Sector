@@ -1,8 +1,8 @@
 - type: entity
   parent: ComputerComms
   id: TSFComputerComms
-  name: TSFMC communications computer
-  description: A communications console used by Trans-Solar installations to make sector-wide announcements.
+  name: TDF communications computer
+  description: A communications console used by TDF installations to make sector-wide announcements.
   components:
   - type: Sprite
     layers:
@@ -16,8 +16,8 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: AccessReader
-    access: [["HeadOfPersonnel"], ["HeadOfSecurity"]]
+  - type: AccessReader # Triad
+    access: [["TdfPatrolTeamLeader"],["TdfChiefEnforcer"],["TdfWarden"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
     canShuttle: false

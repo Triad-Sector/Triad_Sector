@@ -1,0 +1,41 @@
+﻿# Author Info
+# Mage Arcana
+# Discord sirarcana
+
+# Shuttle Notes: molecule c:
+#
+
+- type: vessel
+  id: Molecule
+  parent: BaseVessel
+  name: DRD Molecule
+  description: A small and oddly shaped research vessel, built with space and power efficiency in mind. Comes with a Z-pinch fusion generator.
+  price: 42000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/molecule.yml
+  #guidebookPage: ShipyardMolecule
+  class:
+  - Science
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Molecule
+  mapName: 'Molecule'
+  mapPath: /Maps/_Triad/Shuttles/CIV/molecule.yml
+  minPlayers: 0
+  stations:
+    Molecule:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Molecule SCI{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]

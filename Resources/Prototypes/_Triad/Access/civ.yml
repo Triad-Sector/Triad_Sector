@@ -1,0 +1,26 @@
+- type: accessGroup
+  id: TFA
+  tags:
+  - HeadOfPersonnel
+  - ChiefMedicalOfficer
+  - StationTrafficController
+  - Command
+  - Mail
+  - Janitor
+  - Medical
+  - Chemistry
+
+- type: accessGroup
+  id: Civilian
+  tags:
+  - Mercenary
+  - Pilot
+  - Maintenance
+
+- type: accessGroup
+  id: AllAccessColonial # No brig access
+  tags:
+  - Service
+  - Mercenary
+  - Captain
+  - Frontier

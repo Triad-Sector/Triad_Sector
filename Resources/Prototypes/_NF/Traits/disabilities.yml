@@ -3,6 +3,7 @@
   name: trait-stinky-name
   description: trait-stinky-desc
   category: Disabilities
+  cost: 0 # Triad: disabilities are RP, not a point economy. (Default cost is 1, so omitting it CHARGED players to be disabled.)
   effects:
   - !type:AddCompsEffect
     components:
@@ -13,6 +14,12 @@
   name: trait-clumsy-name
   description: trait-clumsy-desc
   category: Disabilities
+  cost: 0 # Triad: disabilities are RP, not a point economy.
+  conditions:
+  # Triad: opposite of Thieving's "deft with your hands"; they cancel thematically.
+  - !type:HasTraitCondition
+    trait: Thieving
+    invert: true
   effects:
   - !type:AddCompsEffect
     components:
@@ -30,10 +37,15 @@
   name: trait-wheelchair-bound-name
   description: trait-wheelchair-bound-desc
   category: Disabilities
+  cost: 0 # Triad: disabilities are RP, not a point economy.
   conditions:
   # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
   - !type:HasCompCondition
     component: BorgChassis
+    invert: true
+  # Triad: paralyzed legs can't also "move faster on foot"; BionicLegs would be an inert, wasted pick.
+  - !type:HasTraitCondition
+    trait: BionicLegs
     invert: true
   effects:
   - !type:AddCompsEffect

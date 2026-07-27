@@ -1,9 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using Content.Server._Triad.Shipyard;
+using Content.Server._Triad.Shipyard.Persistence;
 using Content.Server.Database;
 using Content.Shared._Triad.CCVar;
 using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
 using Robust.Shared.Network;
 
 namespace Content.IntegrationTests.Tests._Triad.Shipyard.TamperProtection;
@@ -23,6 +25,17 @@ public sealed class SaveLoadRoundTripTests
 
         var player = new NetUserId(Guid.Parse("33333333-4444-5555-6666-777777777777"));
         string envelopeStr = "";
+
+        // Pooled servers share the process-global signing key while each keeps its own DB-backed
+        // own-key set, so boot ordering can leave SignSave signing with a key this server has never
+        // seen. Re-align before signing; full rationale on PolicyServiceTests.AlignStaticSigningKeyToServer.
+        await server.WaitPost(() =>
+        {
+            var keyStore = IoCManager.Resolve<ITriadShipyardKeyStore>();
+            var priv = keyStore.GetOrCreateActivePrivateKeyAsync(default).GetAwaiter().GetResult();
+            AuthenticatedShipFile.SetStaticKeyInfo(priv);
+            keyStore.PopulateOwnKeysAsync(default).GetAwaiter().GetResult();
+        });
 
         await server.WaitPost(() =>
         {
