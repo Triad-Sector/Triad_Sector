@@ -17,15 +17,26 @@
       state: permits
     - map: ["computerLayerKeys"]
       state: security_key
-  #- type: ActivatableUI
-  #  key: TODO
-  #- type: UserInterface
-  #  interfaces:
-  #    enum.TODO.ATM:
-  #      type: StationAdminConsoleBoundUserInterface
-  #- type: ActivatableUIRequiresAccess
+  - type: ActivatableUI
+    key: enum.ContrabandPermitConsoleUi.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ContrabandPermitConsoleUi.Key:
+        type: ContrabandPermitConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
   - type: ItemSlots
+    slots:
+      permit_slot:
+        name: Permit
+        ejectSound: /Audio/Machines/id_swipe.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        priority: 1
+        whitelist:
+          tags:
+          #- Magazine9x19mmSubMachineGunFMJ todo components
   - type: ContainerContainer
     containers:
       board: !type:Container
-      atm: !type:ContainerSlot
+      permit_slot: !type:ContainerSlot
