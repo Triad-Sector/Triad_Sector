@@ -71,7 +71,7 @@
                       Orientation="Horizontal"
                       Name="PermitGranterContainer">
 
-            <!-- No item inside of slot screen -->
+            <!-- No item inside of slot/no access screen -->
             <BoxContainer Name="NoItemInsertedScreen"
                           VerticalExpand="True"
                           HorizontalExpand="True"
@@ -97,7 +97,8 @@
                             <Label Text="{Loc 'contraband-permit-console-window-permit-grant-no-item'}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Margin="0 5 0 0"/>
+                                   Margin="0 5 0 0"
+                                   Name="NoItemInsertedLabel"/>
                             <Control VerticalExpand="True"/>
                         </BoxContainer>
                     </PanelContainer>
