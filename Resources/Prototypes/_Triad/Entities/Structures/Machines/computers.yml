@@ -1,0 +1,31 @@
+- type: entity
+  parent: [BaseStructureIndestructible, BaseComputerAiAccess, BaseStructureAccessReaderImmuneToEmag]
+  id: ComputerContrabandPermit
+  name: contraband permit manager
+  description: Used to manage, grant, and revoke TDF contraband permits to Triad sector citizens.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      sprite: _Triad/Structure/Machines/computers.rsi
+      state: permits
+    - map: ["computerLayerKeys"]
+      state: security_key
+  #- type: ActivatableUI
+  #  key: TODO
+  #- type: UserInterface
+  #  interfaces:
+  #    enum.TODO.ATM:
+  #      type: StationAdminConsoleBoundUserInterface
+  #- type: ActivatableUIRequiresAccess
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      atm: !type:ContainerSlot
