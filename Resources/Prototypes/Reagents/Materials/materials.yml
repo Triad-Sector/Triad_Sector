@@ -148,6 +148,7 @@
 
 - type: material
   id: Meaterial # you can't take this pun from me
+  stackEntity: MaterialSheetMeat1
   name: materials-meat
   unit: materials-unit-slab
   icon: { sprite: Objects/Materials/Sheets/meaterial.rsi, state: meat }
@@ -161,6 +162,7 @@
 
 - type: material
   id: WebSilk
+  stackEntity: MaterialWebSilk1
   name: materials-web
   unit: materials-unit-web
   icon: { sprite: Objects/Materials/silk.rsi, state: icon }
@@ -175,6 +177,7 @@
 
 - type: material
   id: Cotton
+  stackEntity: MaterialCotton1
   name: materials-cotton
   unit: materials-unit-roll
   icon: { sprite: Objects/Materials/materials.rsi, state: cotton }
@@ -216,6 +219,7 @@
 
 - type: material
   id: Gunpowder
+  stackEntity: MaterialGunpowder
   name: materials-gunpowder
   unit: materials-unit-piece
   icon: { sprite: Objects/Misc/reagent_fillings.rsi, state: powderpile }

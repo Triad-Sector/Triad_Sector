@@ -598,6 +598,7 @@
   suffix: Full
   components:
   - type: ConstructionMaterials # Frontier
+  - type: Material
   - type: PhysicalComposition
     materialComposition:
       WebSilk: 100
