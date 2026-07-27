@@ -10,6 +10,8 @@
       tags:
       - Meat
       - Pill
+      # - Crayon # Triad: kept commented per review rather than deleted
+      # - Paper  # Triad: kept commented per review rather than deleted
       - AvianFood
   - type: SolutionContainerManager
     solutions:
