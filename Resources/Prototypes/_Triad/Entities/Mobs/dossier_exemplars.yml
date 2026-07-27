@@ -125,6 +125,12 @@
   categories: [ HideSpawnMenu ]
 
 - type: entity
+  parent: [ MobShadekin, BaseMobDossierExemplar ]
+  id: MobShadekinDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ MobSlimePerson, BaseMobDossierExemplar ]
   id: MobSlimePersonDossierExemplar
   suffix: BuPers Dossier
