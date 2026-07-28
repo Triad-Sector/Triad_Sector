@@ -66,8 +66,8 @@
     # Triad: wild-tesla economy, capacitor model. One strike fills the bank; the full coil's strike
     # bid floors (see TeslaCoilSystem) so the next bolt round-robins to a drained coil, and the bank
     # trickles out through the throttled supply below. Tower count is therefore the throughput knob:
-    # Monte Carlo at a hacked Level-3 PA gives ~3.5 MW with 12 towers, ~6 MW with 24, ~7 MW asymptote
-    # (~2.5 MW at stock Level 2 with 12).
+    # Monte Carlo at a hacked Level-3 PA: ~5.3 MW with 12 towers, peaking at ~7 MW with 24; towers
+    # beyond 24 add no output, only spread wear (~2.6 MW at stock Level 2 with 12).
     maxCharge: 2000000
     startingCharge: 0
   - type: BatteryDischarger
@@ -78,16 +78,16 @@
     hitProbability: 0.5 # Triad: fallback only; with a working battery the coil bids by charge headroom (see TeslaCoilSystem)
     lightningResistance: 10
     lightningExplode: false
-    # Triad: durability for 9-hour rounds under the mote-heavy strike economy: 4500 strikes to
-    # destruction. Simulated with a 12-coil ring: first coil death ~11h at PA Level 2, ~4h at a
-    # hacked Level 3. Stretch service intervals by welding (Repairable) or adding coils.
-    damageFromLightning: 0.05
+    # Triad: 1500 strikes to destruction. Simulated: first tower death ~2h on a max-output 24-tower
+    # array at a hacked Level 3, ~3.4h at stock Level 2 with 12 towers. Weld (Repairable) on a
+    # service rotation, or add towers beyond 24 to spread wear.
+    damageFromLightning: 0.15
   - type: PowerNetworkBattery
     # Triad: throttled discharge is what makes tower count matter — each tower trickles its bank at
-    # 300 kW, so full harvest at a hacked Level-3 PA needs a ~24-tower array. The ~7s per-tower
-    # buffer also smooths the strike lumps into near-constant grid supply.
-    maxSupply: 300000
-    supplyRampTolerance: 300000
+    # 500 kW (4s recovery), sized so harvest at a hacked Level-3 PA peaks at a 24-tower array. The
+    # per-tower buffer also smooths the strike lumps into near-constant grid supply.
+    maxSupply: 500000
+    supplyRampTolerance: 500000
   - type: Anchorable
   - type: Rotatable
   - type: Pullable
