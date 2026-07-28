@@ -73,6 +73,12 @@
     consumeEntities: false
   - type: TeslaEnergyBall
     spawnProto: TeslaMiniEnergyBall
+    # Triad: wild-tesla economy. Decay pinned to the Level-1 PA feed (3 emitters * 20 energy / 6s = 10/s)
+    # so Level 1 is break-even (alive, no motes), Standby/Level 0 starves the ball, Level 2+ makes motes.
+    # The deep despawn floor gives ~60s of grace under full starvation before collapse, since feed lands
+    # in 6-second lumps and the stock -100 floor would kill it after barely two missed waves.
+    passiveEnergyDecay: 10
+    energyToDespawn: -600
     soundCollapse:
       path: /Audio/Effects/tesla_collapse.ogg
       params:
