@@ -65,11 +65,13 @@
   - type: Battery
     # Triad: wild-tesla economy. A strike banks maxCharge/6, so the charge-headroom routing has a
     # real gradient instead of one strike pegging the coil (upstream: 2M strike into a 1M bank).
-    maxCharge: 3000000
+    # Sized from Monte Carlo for ~7 MW sustained at a hacked Level-3 PA with a 12-coil ring
+    # (~2.6 MW at stock Level 2).
+    maxCharge: 12000000
     startingCharge: 0
   - type: BatteryDischarger
   - type: TeslaCoil
-    chargeFromLightning: 500000 # Triad: was 2000000, see Battery note
+    chargeFromLightning: 2000000 # Triad: upstream value, but into a 12M bank instead of 1M — see Battery note
   - type: LightningTarget
     priority: 4
     hitProbability: 0.5 # Triad: fallback only; with a working battery the coil bids by charge headroom (see TeslaCoilSystem)
