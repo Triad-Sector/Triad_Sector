@@ -73,15 +73,16 @@
     consumeEntities: false
   - type: TeslaEnergyBall
     spawnProto: TeslaMiniEnergyBall
-    # Triad: wild-tesla economy. Decay pinned to the Level-1 PA feed (3 emitters * 20 energy / 6s = 10/s)
-    # so Level 1 is break-even (alive, no motes), Standby/Level 0 starves the ball, Level 2+ makes motes.
-    # The deep despawn floor gives ~60s of grace under full starvation before collapse, since feed lands
-    # in 6-second lumps and the stock -100 floor would kill it after barely two missed waves.
-    passiveEnergyDecay: 10
+    # Triad: wild-tesla economy. Decay pinned to the EFFECTIVE Level-1 PA feed (~7.3/s from Monte
+    # Carlo, not the ideal 3 lanes * 20 / 6s = 10/s: the ball's wander in a 3-wide cage drops the far
+    # side lane about a third of the time). Level 1 idles the ball (alive, a stray mote every few
+    # minutes), Standby/Level 0 starves it, Level 2+ makes motes. The deep despawn floor gives ~85s
+    # of grace under full starvation, since feed lands in 6-second lumps.
+    passiveEnergyDecay: 7
     energyToDespawn: -600
-    # Mote count self-regulates: spawn rate = net feed / needEnergyToSpawn, motes live 120s, so
-    # Level 3 (net +20/s) sustains 20*120/120 = 20 motes and Level 2 (net +5/s) sustains 5.
-    needEnergyToSpawn: 120
+    # Mote count self-regulates: spawn rate = net feed / needEnergyToSpawn, motes live 120s.
+    # Simulated ladder at these numbers: Level 1 ~0.5 motes, Level 2 ~6, Level 3 ~22 sustained.
+    needEnergyToSpawn: 80
     soundCollapse:
       path: /Audio/Effects/tesla_collapse.ogg
       params:

@@ -75,9 +75,9 @@
     hitProbability: 0.5 # Triad: fallback only; with a working battery the coil bids by charge headroom (see TeslaCoilSystem)
     lightningResistance: 10
     lightningExplode: false
-    # Triad: durability for 9-hour rounds under the mote-heavy strike economy: ~4500 strikes to
-    # destruction (~7h at a moderate PA level per coil). Stretch service intervals by welding
-    # (Repairable) or spreading load across more coils.
+    # Triad: durability for 9-hour rounds under the mote-heavy strike economy: 4500 strikes to
+    # destruction. Simulated with a 12-coil ring: first coil death ~11h at PA Level 2, ~4h at a
+    # hacked Level 3. Stretch service intervals by welding (Repairable) or adding coils.
     damageFromLightning: 0.05
   - type: PowerNetworkBattery
     maxSupply: 1000000
