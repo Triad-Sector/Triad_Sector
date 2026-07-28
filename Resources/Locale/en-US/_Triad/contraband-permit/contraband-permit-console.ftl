@@ -6,6 +6,9 @@ contraband-permit-no-permits = [font size=16][color=white]No active permits dete
 contraband-permit-console-search-bar-placeholder = Input text and press "Enter"
 contraband-permit-console-print-chip = Print Permit Chip
 
+contraband-permit-console-window-permit-owner-entries-placeholder = Permits on file: N/A
+contraband-permit-console-window-permit-owner-entries = Permit(s) on file: {$number}
+
 contraband-permit-console-window-permit-grant-no-item = No permit chip inserted into console
 contraband-permit-console-window-permit-grant-no-access = Unauthorized access
 

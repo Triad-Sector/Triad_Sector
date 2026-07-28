@@ -28,15 +28,15 @@
         type: WiresBoundUserInterface
   - type: ItemSlots
     slots:
-      permit_slot:
-        name: Permit
+      chip_slot:
+        name: Chip
         ejectSound: /Audio/Machines/id_swipe.ogg
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         priority: 1
         whitelist:
-          tags:
-          #- Magazine9x19mmSubMachineGunFMJ todo components
+          components:
+          - ContrabandPermitChip
   - type: ContainerContainer
     containers:
       board: !type:Container
-      permit_slot: !type:ContainerSlot
+      chip_slot: !type:ContainerSlot

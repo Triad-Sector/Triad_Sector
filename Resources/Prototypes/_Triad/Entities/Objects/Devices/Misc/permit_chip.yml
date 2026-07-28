@@ -2,7 +2,7 @@
   parent: BaseItem
   id: PermitChip
   name: TDF permit chip
-  description: A small chip used to store the serial number of a controlled item. Hold against controlled item to scan its serial number.
+  description: A small chip used to store the serial number of a controlled item, along with the permit carrier's DNA signature for use in a permit manager console.
   components:
   - type: Item
     size: Small
@@ -26,3 +26,7 @@
       params:
         volume: -5
   - type: SavingContraband
+  - type: ContrabandPermitChip
+    prickDamage:
+      types:
+        Piercing: 1

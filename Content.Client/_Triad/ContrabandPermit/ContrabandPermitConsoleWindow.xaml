@@ -219,15 +219,6 @@
                                     Scale="4 4"/>
                             </BoxContainer>
                         </PanelContainer>
-                        <BoxContainer Orientation="Horizontal">
-                            <Label HorizontalAlignment="Left"
-                                   Margin="0 0 0 0"
-                                   Text="Permit Owner:"/>
-                            <OptionButton Name="OwnerSelectButton"
-                                          HorizontalAlignment="Right"
-                                          MinSize="125 25"
-                                          Margin="15 0 0 0"/>
-                        </BoxContainer>
                     </BoxContainer>
 
                     <!-- Button list -->

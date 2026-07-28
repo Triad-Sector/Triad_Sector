@@ -1,0 +1,71 @@
+<BoxContainer
+    HorizontalExpand="True"
+    Margin="0,0,0,3"
+    Orientation="Vertical"
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Button
+        Access="Public"
+        Name="FocusButton"
+        StyleClasses="OpenLeft">
+        <BoxContainer
+            HorizontalExpand="True"
+            Orientation="Horizontal"
+            VerticalExpand="True">
+            <!--  Owner sprite  -->
+            <SpriteView
+                Name="PermitOwnerSprite"
+                Margin="6,2"
+                Scale="4 4"/>
+
+            <!--  Owner name  -->
+            <Label
+                HorizontalExpand="True"
+                Margin="5,0"
+                Name="PermitOwnerNameLabel" />
+
+            <!--  Amount of permits  -->
+            <Label
+                HorizontalAlignment="Right"
+                Margin="5,0"
+                Name="PermitAmountLabel"
+                Text="{Loc 'contraband-permit-console-window-permit-owner-entries-placeholder'}" />
+        </BoxContainer>
+    </Button>
+
+    <!--  Panel that appears on selecting the file  -->
+    <PanelContainer
+        Access="Public"
+        Margin="1,-1,1,0"
+        Name="FocusContainer"
+        ReservesSpace="False"
+        Visible="False">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#25252a" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Margin="6,3" Orientation="Horizontal">
+            <!--  Permit list  -->
+            <BoxContainer
+                HorizontalExpand="True"
+                Margin="0,0,6,0"
+                Orientation="Vertical">
+                <!--  Scroll container containing the permit selectors  -->
+                <ScrollContainer Margin="0,1" MinSize="150 50" VerticalExpand="True">
+
+                </ScrollContainer>
+            </BoxContainer>
+
+            <!-- Viewing the permit itself  -->
+            <BoxContainer
+                HorizontalExpand="True"
+                Margin="6,0,0,0"
+                Name="PermitViewContainer"
+                Orientation="Vertical"
+                VerticalExpand="True" />
+        </BoxContainer>
+    </PanelContainer>
+
+</BoxContainer>
