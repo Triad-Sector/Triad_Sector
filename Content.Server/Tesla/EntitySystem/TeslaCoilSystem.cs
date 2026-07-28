@@ -2,6 +2,7 @@ using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Tesla.Components;
 using Content.Server.Lightning;
+using Content.Shared.Power; // Triad
 
 namespace Content.Server.Tesla.EntitySystems;
 
@@ -11,6 +12,7 @@ namespace Content.Server.Tesla.EntitySystems;
 public sealed class TeslaCoilSystem : EntitySystem
 {
     [Dependency] private readonly BatterySystem _battery = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Triad
 
     public override void Initialize()
     {
@@ -18,6 +20,7 @@ public sealed class TeslaCoilSystem : EntitySystem
 
         SubscribeLocalEvent<TeslaCoilComponent, HitByLightningEvent>(OnHitByLightning);
         SubscribeLocalEvent<TeslaCoilComponent, LightningStrikeAttemptEvent>(OnLightningStrikeAttempt); // Triad
+        SubscribeLocalEvent<TeslaCoilComponent, ChargeChangedEvent>(OnChargeChanged); // Triad
     }
 
     //When struck by lightning, charge the internal battery
@@ -46,5 +49,13 @@ public sealed class TeslaCoilSystem : EntitySystem
 
         var headroom = 1f - battery.CurrentCharge / battery.MaxCharge;
         args.HitProbability = MathHelper.Lerp(coil.Comp.SaturatedHitProbability, 1f, headroom);
+    }
+
+    // Triad: hold the arcing indicator while the coil can't bank a full strike, so engineers can see
+    // saturation at a glance. Drains through the power net raise ChargeChangedEvent too, so the
+    // indicator clears on its own as the coil pushes charge into the grid.
+    private void OnChargeChanged(Entity<TeslaCoilComponent> coil, ref ChargeChangedEvent args)
+    {
+        _appearance.SetData(coil, TeslaCoilVisuals.Charged, args.Charge + coil.Comp.ChargeFromLightning > args.MaxCharge);
     }
 }

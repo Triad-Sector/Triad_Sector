@@ -30,6 +30,9 @@
       - state: coilhit
         visible: false
         map: ["hit"]
+      - state: coilhit # Triad: persistent arc while saturated; own layer so the strike flash can't clobber it
+        visible: false
+        map: ["charged"]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -39,6 +42,10 @@
           False: { state: coil }
       enum.TeslaCoilVisuals.Lightning:
         hit:
+          True: { visible: true }
+          False: { visible: false }
+      enum.TeslaCoilVisuals.Charged: # Triad
+        charged:
           True: { visible: true }
           False: { visible: false }
   - type: LightningSparking
