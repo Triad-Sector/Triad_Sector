@@ -63,16 +63,22 @@
     sprite: Structures/Power/Generation/Tesla/coil.rsi
     state: coil
   - type: Battery
-    maxCharge: 1000000
+    # Triad: wild-tesla economy. A strike banks maxCharge/6, so the charge-headroom routing has a
+    # real gradient instead of one strike pegging the coil (upstream: 2M strike into a 1M bank).
+    maxCharge: 3000000
     startingCharge: 0
   - type: BatteryDischarger
   - type: TeslaCoil
-    chargeFromLightning: 2000000
+    chargeFromLightning: 500000 # Triad: was 2000000, see Battery note
   - type: LightningTarget
     priority: 4
     hitProbability: 0.5 # Triad: fallback only; with a working battery the coil bids by charge headroom (see TeslaCoilSystem)
     lightningResistance: 10
     lightningExplode: false
+    # Triad: durability for 9-hour rounds under the mote-heavy strike economy: ~4500 strikes to
+    # destruction (~7h at a moderate PA level per coil). Stretch service intervals by welding
+    # (Repairable) or spreading load across more coils.
+    damageFromLightning: 0.05
   - type: PowerNetworkBattery
     maxSupply: 1000000
     supplyRampTolerance: 1000000
