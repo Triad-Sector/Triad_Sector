@@ -14,7 +14,6 @@ using Content.Server.Salvage.Expeditions;
 using Content.Server.Salvage.Expeditions.Structure;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Atmos;
@@ -30,8 +29,6 @@ using Content.Shared.Salvage.Expeditions;
 using Content.Shared.Salvage.Expeditions.Modifiers;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Storage;
-using Content.Server.Weather;
-using Content.Shared.Weather;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -51,7 +48,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     private readonly IPrototypeManager _prototypeManager;
     private readonly AnchorableSystem _anchorable;
     private readonly BiomeSystem _biome;
-    private readonly WeatherSystem _weather;
     private readonly DungeonSystem _dungeon;
     private readonly MetaDataSystem _metaData;
     private readonly ShuttleSystem _shuttle;
@@ -85,7 +81,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         IPrototypeManager protoManager,
         AnchorableSystem anchorable,
         BiomeSystem biome,
-        WeatherSystem weather,
         DungeonSystem dungeon,
         ShuttleSystem shuttle,
         StationSystem stationSystem,
@@ -104,7 +99,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         _prototypeManager = protoManager;
         _anchorable = anchorable;
         _biome = biome;
-        _weather = weather;
         _dungeon = dungeon;
         _shuttle = shuttle;
         _stationSystem = stationSystem;
@@ -176,8 +170,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         var mission = _entManager.System<SharedSalvageSystem>()
             .GetMission(_missionParams.MissionType, _missionParams.Difficulty, _missionParams.Seed);
 
-        var missionWeather = _prototypeManager.Index<SalvageWeatherMod>(mission.Weather);
-        var missionBiome = _prototypeManager.Index<SalvageBiomeModPrototype>(mission.Biome);
+        var missionBiome = _prototypeManager.Index<SalvageBiomeMod>(mission.Biome);
         BiomeComponent? biome = null;
 
         if (missionBiome.BiomePrototype != null)
@@ -201,13 +194,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             var atmos = _entManager.EnsureComponent<MapAtmosphereComponent>(mapUid);
             _entManager.System<AtmosphereSystem>().SetMapSpace(mapUid, air.Space, atmos);
             _entManager.System<AtmosphereSystem>().SetMapGasMixture(mapUid, new GasMixture(moles, mission.Temperature), atmos);
-
-            if (!air.Space)
-            {
-                var weather = _entManager.EnsureComponent<WeatherComponent>(mapUid);
-                _entManager.System<WeatherSystem>().SetWeather(mapId, _prototypeManager.Index<WeatherPrototype>(missionWeather.WeatherPrototype), null);
-                _entManager.Dirty(mapUid, weather);
-            }
 
             if (mission.Color != null)
             {

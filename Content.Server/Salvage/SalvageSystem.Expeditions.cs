@@ -20,8 +20,6 @@ using Content.Shared.Coordinates;
 using Content.Shared.Procedural;
 using Content.Shared.Salvage;
 using Robust.Shared.GameStates;
-using Content.Server.Weather;
-using Content.Shared.Weather;
 using Robust.Shared.Random;
 using Robust.Shared.Map;
 using Content.Shared.Shuttles.Components; // Frontier
@@ -323,7 +321,6 @@ public sealed partial class SalvageSystem
             _prototypeManager,
             _anchorable,
             _biome,
-            _weather,
             _dungeon,
             _shuttle,
             _station,

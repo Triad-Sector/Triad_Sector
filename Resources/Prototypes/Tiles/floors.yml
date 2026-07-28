@@ -1843,7 +1843,6 @@
   - 1.0
   baseTurf: Space
   isSubfloor: true
-  weather: true # Mono
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000

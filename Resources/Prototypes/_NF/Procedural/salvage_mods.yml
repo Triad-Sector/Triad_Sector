@@ -121,122 +121,16 @@
   cost: 1
 
 # Weather mods
-
-- type: salvageWeatherMod
-  id: Hail
-  desc: salvage-weather-mod-hail
-  weather: Hail
-  cost: 2
-  biomes:
-  - Snow
-
 - type: salvageWeatherMod
   id: SnowfallHeavy
   desc: salvage-weather-mod-heavy-snowfall
   weather: MonoBlizzard
   cost: 1
-  biomes:
-  - Snow
-
-- type: salvageWeatherMod
-  id: SnowfallMedium
-  desc: salvage-weather-mod-medium-snowfall
-  weather: MonoSnow
-  cost: 1
-  biomes:
-  - Grasslands
-  - Snow
-
-- type: salvageWeatherMod
-  id: SnowfallLight
-  desc: salvage-weather-mod-light-snowfall
-  weather: MonoSnowLight
-  cost: 1
-  biomes:
-  - Grasslands
-  - Snow
-
-- type: salvageWeatherMod
-  id: AshfallHeavy
-  desc: salvage-weather-mod-heavy-ashfall
-  weather: AshfallHeavy
-  cost: 5
-  biomes:
-  - Lava
-
-- type: salvageWeatherMod
-  id: Ashfall
-  desc: salvage-weather-mod-medium-ashfall
-  weather: Ashfall
-  cost: 2
-  biomes:
-  - Lava
-  - Shadow
-
-- type: salvageWeatherMod
-  id: AshfallLight
-  desc: salvage-weather-mod-light-ashfall
-  weather: AshfallLight
-  cost: 1
-  biomes:
-  - Lava
-  - Shadow
-  - Caves
-  - Desert
-
-- type: salvageWeatherMod
-  id: Fallout
-  desc: salvage-weather-mod-fallout
-  weather: Fallout
-  cost: 1
-  biomes:
-  - Lava
-  - Shadow
-
-- type: salvageWeatherMod
-  id: SandstormHeavy
-  desc: salvage-weather-mod-heavy-sandstorm
-  weather: SandstormHeavy
-  cost: 1
-  biomes:
-  - Caves
-  - Desert
-
-- type: salvageWeatherMod
-  id: Sandstorm
-  desc: salvage-weather-mod-sandstorm
-  weather: Sandstorm
-  biomes:
-  - Caves
-  - Lava
-  - Desert
-
-- type: salvageWeatherMod
-  id: LightRain
-  desc: salvage-weather-mod-rain-light
-  weather: MonoLightRain
-  biomes:
-  - Grasslands
-  - Lava # primordial planet or something idk
 
 - type: salvageWeatherMod
   id: Rain
   desc: salvage-weather-mod-rain
-  weather: MonoRain
-  biomes:
-  - Grasslands
-
-- type: salvageWeatherMod
-  id: Storm
-  desc: salvage-weather-mod-storm
-  weather: MonoStorm
-  biomes:
-  - Grasslands
-
-- type: salvageWeatherMod
-  id: ClearWeather
-  desc: salvage-weather-mod-none
-  weather: ClearWeather
+  weather: Rain
 
 # Air mixtures
 - type: salvageAirMod
