@@ -79,6 +79,9 @@
     # in 6-second lumps and the stock -100 floor would kill it after barely two missed waves.
     passiveEnergyDecay: 10
     energyToDespawn: -600
+    # Mote count self-regulates: spawn rate = net feed / needEnergyToSpawn, motes live 120s, so
+    # Level 3 (net +20/s) sustains 20*120/120 = 20 motes and Level 2 (net +5/s) sustains 5.
+    needEnergyToSpawn: 120
     soundCollapse:
       path: /Audio/Effects/tesla_collapse.ogg
       params:
