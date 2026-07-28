@@ -196,12 +196,12 @@
   id: CrateEngineeringTeslaCoilBulk
   parent: CrateEngineeringSecure
   name: bulk tesla coil crate
-  description: A collection of six tesla coils. Attracts lightning and generates energy from it.
+  description: A dozen flatpacked tesla coils. Attract lightning and generate energy from it.
   components:
   - type: StorageFill
     contents:
       - id: TeslaCoilFlatpack
-        amount: 6
+        amount: 12 # Triad: one crate = a starter array; two = the 24-tower max-output build
 
 - type: entity
   id: CrateEngineeringSingularityCollectorBulk
