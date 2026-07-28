@@ -69,4 +69,26 @@ public sealed partial class LightningTargetComponent : Component
     /// </summary>
     [DataField]
     public FixedPoint2 DamageFromLightning = 1;
+
+    // Triad: electrocution path. The Structural damage above no-ops on Biological damage containers,
+    // so mobs on the strike table took nothing. These make a strike electrocute the target instead;
+    // insulated gloves apply through the normal electrocution attempt.
+
+    /// <summary>
+    /// Triad: whether a lightning strike electrocutes this target (stun + shock damage).
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool ElectrocuteOnStrike;
+
+    /// <summary>
+    /// Triad: shock damage dealt by the electrocution.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public int ElectrocutionShockDamage = 15;
+
+    /// <summary>
+    /// Triad: how long the electrocution lasts.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan ElectrocutionTime = TimeSpan.FromSeconds(5);
 }

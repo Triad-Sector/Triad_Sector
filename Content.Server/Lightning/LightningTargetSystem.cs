@@ -1,3 +1,4 @@
+using Content.Server.Electrocution; // Triad
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Lightning;
 using Content.Server.Lightning.Components;
@@ -12,6 +13,7 @@ namespace Content.Server.Tesla.EntitySystems;
 public sealed class LightningTargetSystem : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly ElectrocutionSystem _electrocution = default!; // Triad
     [Dependency] private readonly ExplosionSystem _explosionSystem = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
@@ -24,6 +26,10 @@ public sealed class LightningTargetSystem : EntitySystem
 
     private void OnHitByLightning(Entity<LightningTargetComponent> uid, ref HitByLightningEvent args)
     {
+        // Triad: electrocution path for biological targets, which the Structural damage below no-ops on.
+        if (uid.Comp.ElectrocuteOnStrike)
+            _electrocution.TryDoElectrocution(uid, args.Source, uid.Comp.ElectrocutionShockDamage, uid.Comp.ElectrocutionTime, refresh: true);
+
         DamageSpecifier damage = new();
         damage.DamageDict.Add("Structural", uid.Comp.DamageFromLightning);
         _damageable.TryChangeDamage(uid, damage, true);
