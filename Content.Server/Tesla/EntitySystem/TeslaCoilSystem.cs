@@ -17,6 +17,7 @@ public sealed class TeslaCoilSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<TeslaCoilComponent, HitByLightningEvent>(OnHitByLightning);
+        SubscribeLocalEvent<TeslaCoilComponent, LightningStrikeAttemptEvent>(OnLightningStrikeAttempt); // Triad
     }
 
     //When struck by lightning, charge the internal battery
@@ -26,5 +27,24 @@ public sealed class TeslaCoilSystem : EntitySystem
         {
             _battery.SetCharge(coil, batteryComponent.CurrentCharge + coil.Comp.ChargeFromLightning);
         }
+    }
+
+    // Triad: bid for the strike by charge headroom. An empty coil is a guaranteed catch and outbids
+    // every static target; a full coil floors at SaturatedHitProbability so bolts fall through to
+    // the grounding rods. At half charge the effective chance is ~0.52, close to the old static 0.5.
+    private void OnLightningStrikeAttempt(Entity<TeslaCoilComponent> coil, ref LightningStrikeAttemptEvent args)
+    {
+        if (!TryComp<BatteryComponent>(coil, out var battery) || battery.MaxCharge <= 0f)
+            return;
+
+        if (battery.CurrentCharge <= 0f)
+        {
+            args.Priority += coil.Comp.EmptyPriorityBonus;
+            args.HitProbability = 1f;
+            return;
+        }
+
+        var headroom = 1f - battery.CurrentCharge / battery.MaxCharge;
+        args.HitProbability = MathHelper.Lerp(coil.Comp.SaturatedHitProbability, 1f, headroom);
     }
 }
