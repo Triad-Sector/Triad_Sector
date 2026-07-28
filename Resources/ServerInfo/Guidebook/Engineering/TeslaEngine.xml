@@ -102,16 +102,6 @@
     <GuideEntityEmbed Entity="ClothingHandsGlovesColorYellow"/>
   </Box>
 
-  Remember that the ball starves without its accelerator. An escaped ball has left the particle stream behind, so it is already dying: expect it to collapse on its own within a few minutes. Evacuate its path and let it burn itself out.
-
-  To end it faster, fire antiparticles at it using a Portable Particle Decelerator, however, the Tesla is much more powerful than the Singularity, and it will take a lot of antiparticles to destroy it.
-  A group of people using decelerators is recommended to destroy a tesloose.
-
-  Portable Particle Decelerators can be either researched and made by the Research Department, or they can be bought from Cargo.
-
-  <Box>
-    <GuideEntityEmbed Entity="WeaponParticleDecelerator"/>
-  </Box>
-
+  Remember that the ball starves without its accelerator. An escaped ball has left the particle stream behind, so it is already dying: expect it to collapse on its own within a few minutes. Evacuate its path, keep your distance, and let it burn itself out.
 
 </Document>
