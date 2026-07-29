@@ -120,12 +120,13 @@
   equipment:
     back: ClothingBackpackSatchelHolding
     id: AdminPDA
-    belt: AdminToolbelt
   storage:
     back:
     - AdminMaterialBox
-    - PowerCellMicroreactor
-    - PowerCellMicroreactor
+    - GasAnalyzer
+    - trayScanner
+    - AccessConfiguratorUniversal
+    - Multitool
 
 #Gladiator with spear
 - type: startingGear
