@@ -24,9 +24,9 @@ grid_splitting = false
 preload = false
 
 [salvage]
-expedition_cooldown = 30.0
-# Frontier: shorter expeditions
-expedition_duration = 180.0
+expedition_cooldown = 60.0
+# Triad: Base 15m
+expedition_duration = 900.0
 
 [shuttle]
 grid_fill = false
@@ -41,7 +41,7 @@ see_own_notes = true
 
 # Frontier: expedition params
 [nf14.salvage]
-expedition_failed_cooldown = 10.0
-expedition_travel_time = 5.0
-expedition_proximity_check = false
+expedition_failed_cooldown = 180.0
+expedition_travel_time = 30.0
+expedition_proximity_check = true
 # End Frontier: expedition params
