@@ -67,3 +67,16 @@
   - ContractorWallet
   - ContractorTrinkets
   - NFSpeciesSpecific
+
+# These are admin only roles, but they need a rudimentary loadout so that they do not spawn naked if the jobs are spawned by admins
+- type: roleLoadout
+  id: JobTfaHighCommandIntern
+  groups:
+  - ContractorBoxSurvival
+  - NFSpeciesSpecific
+
+- type: roleLoadout
+  id: JobTfaHighCommandRep
+  groups:
+  - ContractorBoxSurvival
+  - NFSpeciesSpecific
