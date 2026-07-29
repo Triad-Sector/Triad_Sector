@@ -2,6 +2,7 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Forensics.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -40,6 +41,10 @@ public sealed partial class ContrabandPermitSystem : EntitySystem
 
         var user = args.User;
 
+        // Only mobs that are humanoid!
+        if (!HasComp<HumanoidAppearanceComponent>(user))
+            return;
+
         var ev = new ContrabandPermitChipScanIdentityDoAfterEvent();
         var doAfter = new DoAfterArgs(EntityManager, user, ent.Comp.ScanIdDelay, ev, ent.Owner, user)
         {
@@ -64,9 +69,10 @@ public sealed partial class ContrabandPermitSystem : EntitySystem
 
         var user = args.User;
 
+        // Your finger gets pricked if you're not a robot
         if (HasComp<DnaComponent>(user))
         {
-            _damageable.TryChangeDamage(ent.Owner, ent.Comp.PrickDamage, true, false);
+            _damageable.TryChangeDamage(user, ent.Comp.PrickDamage, true, false);
             _popup.PopupClient(Loc.GetString("contraband-permit-chip-scan-id-dna-end"), user, user);
         }
         else
@@ -159,8 +165,6 @@ public sealed partial class ContrabandPermitSystem : EntitySystem
     private void ClearScannedItem(Entity<ContrabandPermitChipComponent> ent, EntityUid user)
     {
         ent.Comp.ScannedItem = null;
-        Dirty(ent);
-
         ent.Comp.ScannedPermitCarrier = null;
         Dirty(ent);
 

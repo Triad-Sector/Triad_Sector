@@ -36,6 +36,9 @@
         whitelist:
           components:
           - ContrabandPermitChip
+  - type: ContrabandPermitConsole
+    grantPermitRestrictedJobs:
+    - TdfChiefEnforcer
   - type: ContainerContainer
     containers:
       board: !type:Container

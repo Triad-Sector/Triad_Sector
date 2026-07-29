@@ -24,5 +24,5 @@ public sealed partial class ContrabandPermitItemComponent : Component
     /// Flavor RP date of whenever the contraband permit was granted.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public string DateGranted;
+    public string DateGranted = string.Empty;
 }
