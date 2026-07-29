@@ -7,19 +7,20 @@ using Content.Server.Station.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 // This literally only exists because haha felinid oni
-namespace Content.Server.DeltaV.Administration.Commands;
+namespace Content.Server._DV.Administration.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class LoadCharacter : IConsoleCommand
 {
-    [Dependency] private readonly IEntitySystemManager _entitySys = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IServerPreferencesManager _prefs = default!;
@@ -30,7 +31,7 @@ public sealed class LoadCharacter : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (shell.Player is not IPlayerSession player)
+        if (shell.Player is not ICommonSession player)
         {
             shell.WriteError(Loc.GetString("shell-only-players-can-run-this-command"));
             return;
@@ -59,7 +60,7 @@ public sealed class LoadCharacter : IConsoleCommand
         else
         {
             if (player.AttachedEntity == null ||
-                !_entityManager.HasComponent<HumanoidAppearanceComponent>(player.AttachedEntity.Value))
+                !_entityManager.HasComponent<HumanoidProfileComponent>(player.AttachedEntity.Value))
             {
                 shell.WriteError(Loc.GetString("shell-must-be-attached-to-entity"));
                 return;
@@ -74,10 +75,10 @@ public sealed class LoadCharacter : IConsoleCommand
             return;
         }
 
-        if (!_entityManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var humanoidAppearance))
+        if (!_entityManager.TryGetComponent<HumanoidProfileComponent>(target, out var humanoidAppearance))
         {
             shell.WriteError(Loc.GetString("shell-entity-with-uid-lacks-component", ("uid", target.ToString()),
-                ("componentName", nameof(HumanoidAppearanceComponent))));
+                ("componentName", nameof(HumanoidProfileComponent))));
             return;
         }
 
@@ -118,7 +119,7 @@ public sealed class LoadCharacter : IConsoleCommand
 
         var coordinates = player.AttachedEntity != null
             ? _entityManager.GetComponent<TransformComponent>(player.AttachedEntity.Value).Coordinates
-            : _entitySys.GetEntitySystem<GameTicker>().GetObserverSpawnPoint();
+            : _entityManager.System<GameTicker>().GetObserverSpawnPoint();
 
         _entityManager.System<StationSpawningSystem>()
             .SpawnPlayerMob(coordinates, profile: character, entity: target, job: null, station: null);
@@ -133,21 +134,20 @@ public sealed class LoadCharacter : IConsoleCommand
             case 1:
                 return CompletionResult.FromHint(Loc.GetString("shell-argument-uid"));
             case 2:
-            {
-                var player = shell.Player as IPlayerSession;
-                if (player == null)
-                    return CompletionResult.Empty;
+                {
+                    if (shell.Player is not ICommonSession player)
+                        return CompletionResult.Empty;
 
-                var data = player.ContentData();
-                var mind = data?.Mind;
+                    var data = player.ContentData();
+                    var mind = data?.Mind;
 
-                if (mind == null || data == null)
-                    return CompletionResult.Empty;
+                    if (mind == null || data == null)
+                        return CompletionResult.Empty;
 
-                return FetchCharacters(data.UserId, out var characters)
-                    ? CompletionResult.FromOptions(characters.Select(c => c.Name))
-                    : CompletionResult.Empty;
-            }
+                    return FetchCharacters(data.UserId, out var characters)
+                        ? CompletionResult.FromOptions(characters.Select(c => c.Name))
+                        : CompletionResult.Empty;
+                }
             default:
                 return CompletionResult.Empty;
         }
