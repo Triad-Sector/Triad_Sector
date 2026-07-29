@@ -137,7 +137,7 @@ public sealed partial class ContrabandPermitSystem : EntitySystem
         }
         else if (ent.Comp.ScannedItem != null)
         {
-            args.PushMarkup(Loc.GetString("contraband-permit-chip-examine-help-id"));
+            args.PushMarkup(Loc.GetString("contraband-permit-chip-examine-help-id"), -1);
         }
     }
 
