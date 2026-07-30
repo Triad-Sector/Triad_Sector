@@ -14,7 +14,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: RedRegaliaHat
-  name: red regalia Hat
+  name: red regalia hat
   description: A fancy red hat like a mafioso would wear. # Triad - typo
   components:
     - type: Sprite
