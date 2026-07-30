@@ -1,5 +1,5 @@
-﻿- type: loadout
-  id: WFClothingShoesColorBlack
+- type: loadout
+  id: SLClothingShoesColorBlack
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -9,7 +9,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesClothwrap
+  id: SLClothingShoesClothwrap
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -18,13 +18,13 @@
     shoes: ClothingShoesClothwrap
 
 - type: loadout
-  id: WFClothingShoesBootsClear
+  id: SLClothingShoesBootsClear
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
   price: 0
   equipment:
-    shoes: WFClothingShoesBootsClear
+    shoes: SLClothingShoesBootsClear
 
 # Socks
 
@@ -352,7 +352,7 @@
 
 
 - type: loadout
-  id: WFClothingShoesTourist
+  id: SLClothingShoesTourist
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -361,7 +361,7 @@
     shoes: ClothingShoesTourist
 
 - type: loadout
-  id: WFClothingShoesBootsCombat
+  id: SLClothingShoesBootsCombat
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -370,7 +370,7 @@
     shoes: ClothingShoesBootsCombat
 
 - type: loadout
-  id: WFClothingShoesBootsMercenary
+  id: SLClothingShoesBootsMercenary
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -379,7 +379,7 @@
     shoes: ClothingShoesBootsMercenary
 
 - type: loadout
-  id: WFClothingShoesBootsSalvage
+  id: SLClothingShoesBootsSalvage
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -388,7 +388,7 @@
     shoes: ClothingShoesBootsSalvage
 
 - type: loadout
-  id: WFClothingShoesChef
+  id: SLClothingShoesChef
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -397,7 +397,7 @@
     shoes: ClothingShoesChef
 
 - type: loadout
-  id: WFClothingShoesColorBlue
+  id: SLClothingShoesColorBlue
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -407,7 +407,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorOrange
+  id: SLClothingShoesColorOrange
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -417,7 +417,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorPurple
+  id: SLClothingShoesColorPurple
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -427,7 +427,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorRed
+  id: SLClothingShoesColorRed
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -437,7 +437,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorBrown
+  id: SLClothingShoesColorBrown
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -447,7 +447,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorGreen
+  id: SLClothingShoesColorGreen
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -457,7 +457,7 @@
   groupBy: "basicshoes"
 
 - type: loadout
-  id: WFClothingShoesColorYellow
+  id: SLClothingShoesColorYellow
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -465,9 +465,8 @@
   equipment:
     shoes: ClothingShoesColorYellow
   groupBy: "basicshoes"
-#T1
 - type: loadout
-  id: WFClothingShoesColorWhite
+  id: SLClothingShoesColorWhite
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -480,7 +479,7 @@
 
 # Magboots
 - type: loadout
-  id: WFClothingShoesBootsMag
+  id: SLClothingShoesBootsMag
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -489,7 +488,7 @@
     shoes: ClothingShoesBootsMag
 
 - type: loadout
-  id: WFClothingShoesMagMercenary
+  id: SLClothingShoesMagMercenary
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -498,7 +497,7 @@
     shoes: ClothingShoesBootsMagMercenary
 
 - type: loadout
-  id: WFClothingShoesMagSecurity
+  id: SLClothingShoesMagSecurity
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -507,7 +506,7 @@
     shoes: ClothingShoesBootsMagSecurity
 
 - type: loadout
-  id: WFClothingShoesBootsWinter
+  id: SLClothingShoesBootsWinter
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -517,7 +516,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterAtmos
+  id: SLClothingShoesBootsWinterAtmos
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -527,7 +526,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterHydro
+  id: SLClothingShoesBootsWinterHydro
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -537,7 +536,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterCap
+  id: SLClothingShoesBootsWinterCap
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -547,7 +546,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterCargo
+  id: SLClothingShoesBootsWinterCargo
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -557,7 +556,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterChef
+  id: SLClothingShoesBootsWinterChef
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -567,7 +566,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterChem
+  id: SLClothingShoesBootsWinterChem
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -577,7 +576,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterEngi
+  id: SLClothingShoesBootsWinterEngi
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -587,7 +586,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterGenetics
+  id: SLClothingShoesBootsWinterGenetics
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -597,7 +596,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterMiner
+  id: SLClothingShoesBootsWinterMiner
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -607,7 +606,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterParamedic
+  id: SLClothingShoesBootsWinterParamedic
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -617,7 +616,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterRobo
+  id: SLClothingShoesBootsWinterRobo
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -627,7 +626,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterSci
+  id: SLClothingShoesBootsWinterSci
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -637,7 +636,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterViro
+  id: SLClothingShoesBootsWinterViro
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -647,7 +646,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterHoS
+  id: SLClothingShoesBootsWinterHoS
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -657,7 +656,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterWarden
+  id: SLClothingShoesBootsWinterWarden
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -667,7 +666,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsJack
+  id: SLClothingShoesBootsJack
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -676,7 +675,7 @@
     shoes: ClothingShoesBootsJack
 
 - type: loadout
-  id: WFClothingShoesLeather
+  id: SLClothingShoesLeather
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -685,7 +684,7 @@
     shoes: ClothingShoesLeather
 
 - type: loadout
-  id: WFClothingShoesBootsLaceup
+  id: SLClothingShoesBootsLaceup
   effects:
   - !type:GroupLoadoutEffect
     proto: NFNotDocOrStc
@@ -696,7 +695,7 @@
     shoes: ClothingShoesBootsLaceup
 
 - type: loadout
-  id: WFClothingShoesSlippers
+  id: SLClothingShoesSlippers
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -705,7 +704,7 @@
     shoes: ClothingShoesSlippers
 
 - type: loadout
-  id: WFClothingShoeSlippersDuck
+  id: SLClothingShoeSlippersDuck
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -714,7 +713,7 @@
     shoes: ClothingShoeSlippersDuck
 
 - type: loadout
-  id: WFClothingShoesFlippers
+  id: SLClothingShoesFlippers
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -723,7 +722,7 @@
     shoes: ClothingShoesFlippers
 
 - type: loadout
-  id: WFClothingShoesBootsPunkRandomized
+  id: SLClothingShoesBootsPunkRandomized
   name: punk boots (random)
   effects:
   - !type:GroupLoadoutEffect
@@ -732,9 +731,8 @@
   equipment:
     shoes: ClothingShoesBootsPunkRandomized
 
-#T2
 - type: loadout
-  id: WFClothingShoesDameDane
+  id: SLClothingShoesDameDane
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -743,7 +741,7 @@
     shoes: ClothingShoesDameDane
 
 - type: loadout
-  id: WFClothingShoesBootsWork
+  id: SLClothingShoesBootsWork
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -752,7 +750,7 @@
     shoes: ClothingShoesBootsWork
 
 - type: loadout
-  id: WFClothingShoesBootsCowboyBlack
+  id: SLClothingShoesBootsCowboyBlack
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -761,7 +759,7 @@
     shoes: ClothingShoesBootsCowboyBlack
 
 - type: loadout
-  id: WFClothingShoesBootsCowboyBrown
+  id: SLClothingShoesBootsCowboyBrown
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -770,7 +768,7 @@
     shoes: ClothingShoesBootsCowboyBrown
 
 - type: loadout
-  id: WFClothingShoesBootsCowboyWhite
+  id: SLClothingShoesBootsCowboyWhite
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -779,7 +777,7 @@
     shoes: ClothingShoesBootsCowboyWhite
 
 - type: loadout
-  id: WFClothingShoesSnakeskinBoots
+  id: SLClothingShoesSnakeskinBoots
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -788,7 +786,7 @@
     shoes: ClothingShoesSnakeskinBoots
 
 - type: loadout
-  id: WFClothingShoesHighheelBoots
+  id: SLClothingShoesHighheelBoots
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -797,7 +795,7 @@
     shoes: ClothingShoesHighheelBoots
 
 - type: loadout
-  id: WFClothingShoesBootsCowboyFancy
+  id: SLClothingShoesBootsCowboyFancy
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -806,7 +804,7 @@
     shoes: ClothingShoesBootsCowboyFancy
 
 - type: loadout
-  id: WFClothingShoesBootsWinterChiefEngineer
+  id: SLClothingShoesBootsWinterChiefEngineer
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -816,7 +814,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterCMO
+  id: SLClothingShoesBootsWinterCMO
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -826,7 +824,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterQM
+  id: SLClothingShoesBootsWinterQM
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -836,7 +834,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterRD
+  id: SLClothingShoesBootsWinterRD
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -846,7 +844,7 @@
   groupBy: "winterboots"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterClown
+  id: SLClothingShoesBootsWinterClown
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -856,7 +854,7 @@
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingShoesBootsWinterMime
+  id: SLClothingShoesBootsWinterMime
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -866,7 +864,7 @@
   groupBy: "mime"
 
 - type: loadout
-  id: WFClothingShoesClown
+  id: SLClothingShoesClown
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -876,7 +874,7 @@
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingShoesJester
+  id: SLClothingShoesJester
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -886,7 +884,7 @@
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingShoesJesterALT
+  id: SLClothingShoesJesterALT
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -896,7 +894,7 @@
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingShoesBootsPerformer
+  id: SLClothingShoesBootsPerformer
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -905,7 +903,7 @@
     shoes: ClothingShoesBootsPerformer
 
 - type: loadout
-  id: WFClothingShoesSkates
+  id: SLClothingShoesSkates
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -915,7 +913,7 @@
 
 #T3 for lols
 - type: loadout
-  id: WFClothingShoesClownLarge
+  id: SLClothingShoesClownLarge
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -925,7 +923,7 @@
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingShoesBling
+  id: SLClothingShoesBling
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
@@ -935,19 +933,20 @@
 
 # Starlight clothing
 - type: loadout
-  id: WFSLClothingShoesHighheelShoes
+  id: ClothingShoesHighheelShoes
   price: 0
   equipment:
-    shoes: SLClothingShoesHighheelShoes
+    shoes: ClothingShoesHighheelShoes
 
 - type: loadout
-  id: WFSLClothingUniformBootsVampir
+  id: ClothingShoesBloodstainedAristocratBoots
   price: 0
   equipment:
-    shoes: SLClothingUniformBootsVampir
+    shoes: ClothingShoesBloodstainedAristocratBoots
 
 - type: loadout
-  id: WFSLClothingShoesBootsSalvage1208134
+  id: ClothingShoesTallBlackFurBoots
   price: 0
   equipment:
-    shoes: SLClothingShoesBootsSalvage1208134
+    shoes: ClothingShoesTallBlackFurBoots
+

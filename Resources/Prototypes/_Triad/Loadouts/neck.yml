@@ -1,27 +1,27 @@
-﻿#T1
+
 - type: loadout
-  id: WFClothingNeckScarfStripedBlack
+  id: SLClothingNeckScarfStripedBlack
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBlack
   groupBy: "scarf"
 
 - type: loadout
-  id: WFClothingNeckScarfStripedBlue
+  id: SLClothingNeckScarfStripedBlue
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBlue
   groupBy: "scarf"
 
 - type: loadout
-  id: WFClothingNeckScarfStripedBrown
+  id: SLClothingNeckScarfStripedBrown
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBrown
   groupBy: "scarf"
 
 - type: loadout
-  id: WFClothingNeckScarfStripedGreen
+  id: SLClothingNeckScarfStripedGreen
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedGreen
@@ -42,165 +42,164 @@
   groupBy: "scarf"
 
 - type: loadout
-  id: WFClothingNeckTieBH
+  id: SLClothingNeckTieBH
   price: 0
   equipment:
     neck: ClothingNeckTieBH
   groupBy: "tie"
 
 - type: loadout
-  id: WFClothingNeckTieRed
+  id: SLClothingNeckTieRed
   price: 0
   equipment:
     neck: ClothingNeckTieRed
   groupBy: "tie"
 
 - type: loadout
-  id: WFClothingNeckTieSci
+  id: SLClothingNeckTieSci
   price: 0
   equipment:
     neck: ClothingNeckTieSci
   groupBy: "tie"
 
 - type: loadout
-  id: WFClothingNeckLawyerbadge
+  id: SLClothingNeckLawyerbadge
   price: 0
   equipment:
     neck: ClothingNeckLawyerbadge
 
 - type: loadout
-  id: WFClothingNeckCrucifix
+  id: SLClothingNeckCrucifix
   price: 0
   equipment:
     neck: ClothingNeckCrucifix
 
 - type: loadout
-  id: WFCDDogtags
+  id: SLCDDogtags
   price: 0
   equipment:
     neck: CDDogtags
 
 - type: loadout
-  id: WFClothingNeckStethoscope
+  id: SLClothingNeckStethoscope
   price: 0
   equipment:
     neck: ClothingNeckStethoscope
 
 - type: loadout
-  id: WFClothingOuterPoncho
+  id: SLClothingOuterPoncho
   price: 0
   equipment:
     neck: ClothingOuterPoncho
 
 - type: loadout
-  id: WFClothingOuterPonchoClassic
+  id: SLClothingOuterPonchoClassic
   price: 0
   equipment:
     neck: ClothingOuterPonchoClassic
 
-#T2
 - type: loadout
-  id: WFClothingNeckCloakCap
+  id: SLClothingNeckCloakCap
   price: 0
   equipment:
     neck: ClothingNeckCloakCap
 
 - type: loadout
-  id: WFClothingNeckCloakMiner
+  id: SLClothingNeckCloakMiner
   price: 0
   equipment:
     neck: ClothingNeckCloakMiner
 
 - type: loadout
-  id: WFClothingNeckCloakMoth
+  id: SLClothingNeckCloakMoth
   price: 0
   equipment:
     neck: ClothingNeckCloakMoth
 
 - type: loadout
-  id: WFClothingNeckScarfChaplainStole
+  id: SLClothingNeckScarfChaplainStole
   price: 0
   equipment:
     neck: ClothingNeckScarfChaplainStole
 
 - type: loadout
-  id: WFClothingNeckStoleChaplain
+  id: SLClothingNeckStoleChaplain
   price: 0
   equipment:
     neck: ClothingNeckStoleChaplain
 
 - type: loadout
-  id: WFClothingNeckCloakTrans
+  id: SLClothingNeckCloakTrans
   price: 0
   equipment:
     neck: ClothingNeckCloakTrans
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakAro
+  id: SLClothingNeckCloakAro
   price: 0
   equipment:
     neck: ClothingNeckCloakAro
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakAce
+  id: SLClothingNeckCloakAce
   price: 0
   equipment:
     neck: ClothingNeckCloakAce
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakAroace
+  id: SLClothingNeckCloakAroace
   price: 0
   equipment:
     neck: ClothingNeckCloakAroace
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakBi
+  id: SLClothingNeckCloakBi
   price: 0
   equipment:
     neck: ClothingNeckCloakBi
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakIntersex
+  id: SLClothingNeckCloakIntersex
   price: 0
   equipment:
     neck: ClothingNeckCloakIntersex
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakEnby
+  id: SLClothingNeckCloakEnby
   price: 0
   equipment:
     neck: ClothingNeckCloakEnby
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakPan
+  id: SLClothingNeckCloakPan
   price: 0
   equipment:
     neck: ClothingNeckCloakPan
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakGay
+  id: SLClothingNeckCloakGay
   price: 0
   equipment:
     neck: ClothingNeckCloakGay
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakLesbian
+  id: SLClothingNeckCloakLesbian
   price: 0
   equipment:
     neck: ClothingNeckCloakLesbian
   groupBy: "flagCloaks"
 
 - type: loadout
-  id: WFClothingNeckCloakPoly
+  id: SLClothingNeckCloakPoly
   price: 0
   equipment:
     neck: ClothingNeckCloakPoly
@@ -219,155 +218,154 @@
     neck: ClothingNeckCloakHos
 
 - type: loadout
-  id: WFBedsheetRainbow
+  id: SLBedsheetRainbow
   price: 0
   equipment:
     neck: BedsheetRainbow
 
 - type: loadout
-  id: WFClothingNeckIFFNeutral
+  id: SLClothingNeckIFFNeutral
   price: 0
   equipment:
     neck: ClothingNeckIFFNeutral
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFGreen
+  id: SLClothingNeckIFFGreen
   price: 0
   equipment:
     neck: ClothingNeckIFFGreen
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFRed
+  id: SLClothingNeckIFFRed
   price: 0
   equipment:
     neck: ClothingNeckIFFRed
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFBlue
+  id: SLClothingNeckIFFBlue
   price: 0
   equipment:
     neck: ClothingNeckIFFBlue
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFCyan
+  id: SLClothingNeckIFFCyan
   price: 0
   equipment:
     neck: ClothingNeckIFFCyan
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFOrange
+  id: SLClothingNeckIFFOrange
   price: 0
   equipment:
     neck: ClothingNeckIFFOrange
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckIFFPurple
+  id: SLClothingNeckIFFPurple
   price: 0
   equipment:
     neck: ClothingNeckIFFPurple
   groupBy: "IFFstrobe"
 
 - type: loadout
-  id: WFClothingNeckMantleCap
+  id: SLClothingNeckMantleCap
   price: 0
   equipment:
     neck: ClothingNeckMantleCap
 
-#T3 for lols
 - type: loadout
-  id: WFClothingNeckCloakCapFormal
+  id: SLClothingNeckCloakCapFormal
   price: 0
   equipment:
     neck: ClothingNeckCloakCapFormal
 
 - type: loadout
-  id: WFClothingNeckCloakQm
+  id: SLClothingNeckCloakQm
   price: 0
   equipment:
     neck: ClothingNeckCloakQm
 
 - type: loadout
-  id: WFClothingNeckMantleQM
+  id: SLClothingNeckMantleQM
   price: 0
   equipment:
     neck: ClothingNeckMantleQM
 
 - type: loadout
-  id: WFClothingCloakCmo
+  id: SLClothingCloakCmo
   price: 0
   equipment:
     neck: ClothingCloakCmo
 
 - type: loadout
-  id: WFClothingNeckMantleCMO
+  id: SLClothingNeckMantleCMO
   price: 0
   equipment:
     neck: ClothingNeckMantleCMO
 
 - type: loadout
-  id: WFClothingNeckCloakRd
+  id: SLClothingNeckCloakRd
   price: 0
   equipment:
     neck: ClothingNeckCloakRd
 
 - type: loadout
-  id: WFClothingNeckMantleRD
+  id: SLClothingNeckMantleRD
   price: 0
   equipment:
     neck: ClothingNeckMantleRD
 
 - type: loadout
-  id: WFClothingNeckCloakCe
+  id: SLClothingNeckCloakCe
   price: 0
   equipment:
     neck: ClothingNeckCloakCe
 
 - type: loadout
-  id: WFClothingNeckMantleCE
+  id: SLClothingNeckMantleCE
   price: 0
   equipment:
     neck: ClothingNeckMantleCE
 
 - type: loadout
-  id: WFClothingNeckCloakVoid
+  id: SLClothingNeckCloakVoid
   price: 0
   equipment:
     neck: ClothingNeckCloakVoid
 
 - type: loadout
-  id: WFClothingNeckBling
+  id: SLClothingNeckBling
   price: 0
   equipment:
     neck: ClothingNeckBling
 
-# Starlight clothing
 - type: loadout
-  id: WFSLClothingUniformDama0965
+  id: ClothingNeckBlackFurCloak
   price: 0
   equipment:
-    neck: SLClothingUniformDama0965
+    neck: ClothingNeckBlackFurCloak
 
 - type: loadout
-  id: WFSLClothingUniformShinelVampir
+  id: ClothingNeckBloodstainedAristocratCloak
   price: 0
   equipment:
-    neck: SLClothingUniformShinelVampir
+    neck: ClothingNeckBloodstainedAristocratCloak
 
 - type: loadout
-  id: WFSLClothingNeckTieGeoffroyblack12
+  id: ClothingNeckNobleMantle
   price: 0
   equipment:
-    neck: SLClothingNeckTieGeoffroyblack12
+    neck: ClothingNeckNobleMantle
   groupBy: "tie"
 
 - type: loadout
-  id: WFSLRedRegaliaCloak
+  id: RedRegaliaCloak
   price: 0
   equipment:
-    neck: SLRedRegaliaCloak
+    neck: RedRegaliaCloak
+

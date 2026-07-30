@@ -1,730 +1,730 @@
-﻿# == JUMPSUITS
+# == JUMPSUITS
 - type: loadout
-  id: WFClothingUniformJumpsuitAtmos
+  id: SLClothingUniformJumpsuitAtmos
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitAtmos
   groupBy: "jumpsuitAtmos"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtAtmos
+  id: SLClothingUniformJumpskirtAtmos
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtAtmos
   groupBy: "jumpsuitAtmos"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitBartender
+  id: SLClothingUniformJumpsuitBartender
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartender
   groupBy: "jumpsuitBartender"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBartender
+  id: SLClothingUniformJumpskirtBartender
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtBartender
   groupBy: "jumpsuitBartender"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCargo
+  id: SLClothingUniformJumpsuitCargo
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCargo
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCargo
+  id: SLClothingUniformJumpskirtCargo
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargo
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitSalvageSpecialist
+  id: SLClothingUniformJumpsuitSalvageSpecialist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChef
+  id: SLClothingUniformJumpsuitChef
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChef
   groupBy: "jumpsuitChef"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtChef
+  id: SLClothingUniformJumpskirtChef
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtChef
   groupBy: "jumpsuitChef"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitEngineering
+  id: SLClothingUniformJumpsuitEngineering
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitEngineering
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtEngineering
+  id: SLClothingUniformJumpskirtEngineering
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtEngineering
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitHydroponics
+  id: SLClothingUniformJumpsuitHydroponics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitHydroponics
   groupBy: "jumpsuitHydro"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtHydroponics
+  id: SLClothingUniformJumpskirtHydroponics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtHydroponics
   groupBy: "jumpsuitHydro"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMedicalDoctor
+  id: SLClothingUniformJumpsuitMedicalDoctor
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtMedicalDoctor
+  id: SLClothingUniformJumpskirtMedicalDoctor
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtMedicalDoctor
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitScientist
+  id: SLClothingUniformJumpsuitScientist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitScientist
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtScientist
+  id: SLClothingUniformJumpskirtScientist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtScientist
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorGrey
+  id: SLClothingUniformJumpsuitColorGrey
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorGrey
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorGrey
+  id: SLClothingUniformJumpskirtColorGrey
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorGrey
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitClear
+  id: SLClothingUniformJumpsuitClear
   price: 0
   equipment:
-    jumpsuit: WFClothingUniformJumpsuitClear
+    jumpsuit: SLClothingUniformJumpsuitClear
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorWhite
+  id: SLClothingUniformJumpsuitColorWhite
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorWhite
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorWhite
+  id: SLClothingUniformJumpskirtColorWhite
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorWhite
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorBlack
+  id: SLClothingUniformJumpsuitColorBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorBlack
+  id: SLClothingUniformJumpskirtColorBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorBlack
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorBlue
+  id: SLClothingUniformJumpsuitColorBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlue
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorBlue
+  id: SLClothingUniformJumpskirtColorBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorBlue
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorYellow
+  id: SLClothingUniformJumpsuitColorYellow
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorYellow
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorYellow
+  id: SLClothingUniformJumpskirtColorYellow
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorYellow
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorGreen
+  id: SLClothingUniformJumpsuitColorGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorGreen
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorGreen
+  id: SLClothingUniformJumpskirtColorGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorGreen
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorOrange
+  id: SLClothingUniformJumpsuitColorOrange
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorOrange
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorOrange
+  id: SLClothingUniformJumpskirtColorOrange
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorOrange
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorRed
+  id: SLClothingUniformJumpsuitColorRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorRed
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorRed
+  id: SLClothingUniformJumpskirtColorRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorRed
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorMaroon
+  id: SLClothingUniformJumpsuitColorMaroon
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorMaroon
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorMaroon
+  id: SLClothingUniformJumpskirtColorMaroon
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorMaroon
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorPurple
+  id: SLClothingUniformJumpsuitColorPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorPurple
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorPurple
+  id: SLClothingUniformJumpskirtColorPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorPurple
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorLightBrown
+  id: SLClothingUniformJumpsuitColorLightBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorLightBrown
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorLightBrown
+  id: SLClothingUniformJumpskirtColorLightBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorLightBrown
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorBrown
+  id: SLClothingUniformJumpsuitColorBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBrown
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorBrown
+  id: SLClothingUniformJumpskirtColorBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorBrown
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorPink
+  id: SLClothingUniformJumpsuitColorPink
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorPink
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorPink
+  id: SLClothingUniformJumpskirtColorPink
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorPink
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorDarkBlue
+  id: SLClothingUniformJumpsuitColorDarkBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorDarkBlue
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorDarkBlue
+  id: SLClothingUniformJumpskirtColorDarkBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorDarkBlue
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorDarkGreen
+  id: SLClothingUniformJumpsuitColorDarkGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorDarkGreen
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorDarkGreen
+  id: SLClothingUniformJumpskirtColorDarkGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorDarkGreen
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitColorTeal
+  id: SLClothingUniformJumpsuitColorTeal
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorTeal
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorTeal
+  id: SLClothingUniformJumpskirtColorTeal
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorTeal
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformColorRainbow
+  id: SLClothingUniformColorRainbow
   price: 0
   equipment:
     jumpsuit: ClothingUniformColorRainbow
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtColorRainbow
+  id: SLClothingUniformJumpskirtColorRainbow
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorRainbow
   groupBy: "basicJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitHawaiBlack
+  id: SLClothingUniformJumpsuitHawaiBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiBlack
   groupBy: "hawaiJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitHawaiBlue
+  id: SLClothingUniformJumpsuitHawaiBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiBlue
   groupBy: "hawaiJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitHawaiRed
+  id: SLClothingUniformJumpsuitHawaiRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiRed
   groupBy: "hawaiJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitHawaiYellow
+  id: SLClothingUniformJumpsuitHawaiYellow
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitHawaiYellow
   groupBy: "hawaiJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitFlannel
+  id: SLClothingUniformJumpsuitFlannel
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitFlannel
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCasualBlue
+  id: SLClothingUniformJumpsuitCasualBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCasualBlue
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCasualBlue
+  id: SLClothingUniformJumpskirtCasualBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCasualBlue
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCasualPurple
+  id: SLClothingUniformJumpsuitCasualPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCasualPurple
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCasualPurple
+  id: SLClothingUniformJumpskirtCasualPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCasualPurple
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCasualRed
+  id: SLClothingUniformJumpsuitCasualRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCasualRed
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCasualRed
+  id: SLClothingUniformJumpskirtCasualRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCasualRed
   groupBy: "casualJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitBartenderPurple
+  id: SLClothingUniformJumpsuitBartenderPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartenderPurple
   groupBy: "jumpsuitBartender"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitEngineeringHazard
+  id: SLClothingUniformJumpsuitEngineeringHazard
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitEngineeringHazard
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitAtmosCasual
+  id: SLClothingUniformJumpsuitAtmosCasual
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitAtmosCasual
   groupBy: "jumpsuitAtmos"
 
 - type: loadout
-  id: WFClothingUniformOveralls
+  id: SLClothingUniformOveralls
   price: 0
   equipment:
     jumpsuit: ClothingUniformOveralls
   groupBy: "jumpsuitHydro"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChaplain
+  id: SLClothingUniformJumpsuitChaplain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChaplain
   groupBy: "jumpsuitChaplain"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtChaplain
+  id: SLClothingUniformJumpskirtChaplain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtChaplain
   groupBy: "jumpsuitChaplain"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCurator
+  id: SLClothingUniformJumpsuitCurator
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCurator
   groupBy: "jumpsuitCurator"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCurator
+  id: SLClothingUniformJumpskirtCurator
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCurator
   groupBy: "jumpsuitCurator"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLibrarian
+  id: SLClothingUniformJumpsuitLibrarian
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLibrarian
   groupBy: "jumpsuitLibrarian"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLibrarian
+  id: SLClothingUniformJumpskirtLibrarian
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLibrarian
   groupBy: "jumpsuitLibrarian"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitReporter
+  id: SLClothingUniformJumpsuitReporter
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitReporter
 
 - type: loadout
-  id: WFClothingUniformJumpsuitBH
+  id: SLClothingUniformJumpsuitBH
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitBH
   groupBy: "jumpsuitBH"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBH
+  id: SLClothingUniformJumpskirtBH
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtBH
   groupBy: "jumpsuitBH"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitBHGrey
+  id: SLClothingUniformJumpsuitBHGrey
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitBHGrey
   groupBy: "jumpsuitBH"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBHGrey
+  id: SLClothingUniformJumpskirtBHGrey
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtBHGrey
   groupBy: "jumpsuitBH"
 
 - type: loadout
-  id: WFUniformScrubsColorGreen
+  id: SLUniformScrubsColorGreen
   price: 0
   equipment:
     jumpsuit: UniformScrubsColorGreen
   groupBy: "scrubs"
 
 - type: loadout
-  id: WFUniformScrubsColorBlue
+  id: SLUniformScrubsColorBlue
   price: 0
   equipment:
     jumpsuit: UniformScrubsColorBlue
   groupBy: "scrubs"
 
 - type: loadout
-  id: WFUniformScrubsColorPurple
+  id: SLUniformScrubsColorPurple
   price: 0
   equipment:
     jumpsuit: UniformScrubsColorPurple
   groupBy: "scrubs"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitParamedic
+  id: SLClothingUniformJumpsuitParamedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitParamedic
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtParamedic
+  id: SLClothingUniformJumpskirtParamedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtParamedic
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitVirology
+  id: SLClothingUniformJumpsuitVirology
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitVirology
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtVirology
+  id: SLClothingUniformJumpskirtVirology
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtVirology
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChemistry
+  id: SLClothingUniformJumpsuitChemistry
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChemistry
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtChemistry
+  id: SLClothingUniformJumpskirtChemistry
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtChemistry
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitGenetics
+  id: SLClothingUniformJumpsuitGenetics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitGenetics
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtGenetics
+  id: SLClothingUniformJumpskirtGenetics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtGenetics
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitPsychologist
+  id: SLClothingUniformJumpsuitPsychologist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitPsychologist
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPsychologist
+  id: SLClothingUniformJumpskirtPsychologist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtPsychologist
 
 - type: loadout
-  id: WFClothingUniformJumpsuitScientistFormal
+  id: SLClothingUniformJumpsuitScientistFormal
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitScientistFormal
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitRoboticist
+  id: SLClothingUniformJumpsuitRoboticist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitRoboticist
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtRoboticist
+  id: SLClothingUniformJumpskirtRoboticist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtRoboticist
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLawyerBlue
+  id: SLClothingUniformJumpsuitLawyerBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlue
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLawyerBlue
+  id: SLClothingUniformJumpskirtLawyerBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerBlue
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLawyerPurple
+  id: SLClothingUniformJumpsuitLawyerPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerPurple
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLawyerPurple
+  id: SLClothingUniformJumpskirtLawyerPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerPurple
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLawyerRed
+  id: SLClothingUniformJumpsuitLawyerRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerRed
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLawyerRed
+  id: SLClothingUniformJumpskirtLawyerRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerRed
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLawyerBlack
+  id: SLClothingUniformJumpsuitLawyerBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLawyerBlack
+  id: SLClothingUniformJumpskirtLawyerBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerBlack
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitLawyerGood
+  id: SLClothingUniformJumpsuitLawyerGood
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerGood
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtLawyerGood
+  id: SLClothingUniformJumpskirtLawyerGood
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerGood
   groupBy: "jumpsuitLawyer"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBlackElegantDress
+  id: SLClothingUniformJumpskirtBlackElegantDress
   name: black elegant dress
   price: 0
   equipment:
@@ -732,7 +732,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtRedElegantDress
+  id: SLClothingUniformJumpskirtRedElegantDress
   name: red elegant dress
   price: 0
   equipment:
@@ -740,7 +740,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtGreenElegantDress
+  id: SLClothingUniformJumpskirtGreenElegantDress
   name: green elegant dress
   price: 0
   equipment:
@@ -748,7 +748,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBlueElegantDress
+  id: SLClothingUniformJumpskirtBlueElegantDress
   name: blue elegant dress
   price: 0
   equipment:
@@ -756,7 +756,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPurpleElegantDress
+  id: SLClothingUniformJumpskirtPurpleElegantDress
   name: purple elegant dress
   price: 0
   equipment:
@@ -764,7 +764,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCyanStripedDress
+  id: SLClothingUniformJumpskirtCyanStripedDress
   name: cyan striped dress
   price: 0
   equipment:
@@ -772,7 +772,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtRedStripedDress
+  id: SLClothingUniformJumpskirtRedStripedDress
   name: red striped dress
   price: 0
   equipment:
@@ -780,7 +780,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtGreenStripedDress
+  id: SLClothingUniformJumpskirtGreenStripedDress
   name: green striped dress
   price: 0
   equipment:
@@ -788,7 +788,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPinkStripedDress
+  id: SLClothingUniformJumpskirtPinkStripedDress
   name: pink striped dress
   price: 0
   equipment:
@@ -796,7 +796,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtOrangeStripedDress
+  id: SLClothingUniformJumpskirtOrangeStripedDress
   name: orange striped dress
   price: 0
   equipment:
@@ -804,7 +804,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPurpleTurtleneckDress
+  id: SLClothingUniformJumpskirtPurpleTurtleneckDress
   name: purple turtleneck dress
   price: 0
   equipment:
@@ -812,7 +812,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtRedTurtleneckDress
+  id: SLClothingUniformJumpskirtRedTurtleneckDress
   name: red turtleneck dress
   price: 0
   equipment:
@@ -820,7 +820,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtGreenTurtleneckDress
+  id: SLClothingUniformJumpskirtGreenTurtleneckDress
   name: green turtleneck dress
   price: 0
   equipment:
@@ -828,7 +828,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBlueTurtleneckDress
+  id: SLClothingUniformJumpskirtBlueTurtleneckDress
   name: blue turtleneck dress
   price: 0
   equipment:
@@ -836,7 +836,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtYellowTurtleneckDress
+  id: SLClothingUniformJumpskirtYellowTurtleneckDress
   name: yellow turtleneck dress
   price: 0
   equipment:
@@ -844,7 +844,7 @@
   groupBy: "dresses"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtYellowOldDress
+  id: SLClothingUniformJumpskirtYellowOldDress
   name: yellow old dress
   price: 0
   equipment:
@@ -853,7 +853,7 @@
 
 # Punk stuff
 - type: loadout
-  id: WFClothingUniformRandomPunkCroptop
+  id: SLClothingUniformRandomPunkCroptop
   name: punk croptop jumpsuit (random)
   price: 0
   equipment:
@@ -861,7 +861,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomPunkTanktop
+  id: SLClothingUniformRandomPunkTanktop
   name: punk tanktop jumpsuit (random)
   price: 0
   equipment:
@@ -869,7 +869,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomPunkCroptopShorts
+  id: SLClothingUniformRandomPunkCroptopShorts
   name: punk croptop with shorts (random)
   price: 0
   equipment:
@@ -877,7 +877,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomPunkTanktopShorts
+  id: SLClothingUniformRandomPunkTanktopShorts
   name: punk tanktop with shorts (random)
   price: 0
   equipment:
@@ -885,7 +885,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomPunkPantsOnly
+  id: SLClothingUniformRandomPunkPantsOnly
   name: punk pants (random)
   price: 0
   equipment:
@@ -893,7 +893,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomPunkShortsOnly
+  id: SLClothingUniformRandomPunkShortsOnly
   name: punk shorts (random)
   price: 0
   equipment:
@@ -901,7 +901,7 @@
   groupBy: "punkJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomArmlessNoSkirt
+  id: SLClothingUniformRandomArmlessNoSkirt
   name: sleeveless jumpsuit (random)
   price: 0
   equipment:
@@ -909,7 +909,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomArmless
+  id: SLClothingUniformRandomArmless
   name: colorful sleeveless top and pants (random)
   price: 0
   equipment:
@@ -917,7 +917,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomStandard
+  id: SLClothingUniformRandomStandard
   name: colorful top and pants (random)
   price: 0
   equipment:
@@ -925,7 +925,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomShorts
+  id: SLClothingUniformRandomShorts
   name: colorful pants (random)
   price: 0
   equipment:
@@ -933,7 +933,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformRandomShirt
+  id: SLClothingUniformRandomShirt
   name: colorful patterned top and pants (random)
   price: 0
   equipment:
@@ -941,7 +941,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingSkirtUniformRandomArmless
+  id: SLClothingSkirtUniformRandomArmless
   name: colorful sleeveless top and skirt (random)
   price: 0
   equipment:
@@ -949,7 +949,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingSkirtUniformRandomStandard
+  id: SLClothingSkirtUniformRandomStandard
   name: colorful top and skirt (random)
   price: 0
   equipment:
@@ -957,7 +957,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingSkirtUniformRandomBra
+  id: SLClothingSkirtUniformRandomBra
   name: colorful bra and skirt (random)
   price: 0
   equipment:
@@ -965,7 +965,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingSkirtUniformRandomShorts
+  id: SLClothingSkirtUniformRandomShorts
   name: colorful skirt (random)
   price: 0
   equipment:
@@ -973,7 +973,7 @@
   groupBy: "colorfulJumpsuit"
 
 - type: loadout
-  id: WFClothingSkirtUniformRandomShirt
+  id: SLClothingSkirtUniformRandomShirt
   name: colorful patterned top and skirt (random)
   price: 0
   equipment:
@@ -982,77 +982,77 @@
 
 #Merc
 - type: loadout
-  id: WFClothingUniformJumpsuitMercenary
+  id: SLClothingUniformJumpsuitMercenary
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMercenary
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtMercenary
+  id: SLClothingUniformJumpskirtMercenary
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtMercenary
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitPrivateSec
+  id: SLClothingUniformJumpsuitPrivateSec
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitPrivateSec
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPrivateSec
+  id: SLClothingUniformJumpskirtPrivateSec
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtPrivateSec
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckMercenary
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckMercenary
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+  id: SLClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
   groupBy: "mercjumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryPilot
+  id: SLClothingUniformJumpsuitMilitaryPilot
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryPilot
@@ -1086,278 +1086,276 @@
     jumpsuit: ClothingUniformJumpskirtTacticalMaid
   groupBy: "maid"
 
-#
-
-#T2 Head and Senior drip, theater and elite service drip
+# Trioa
 - type: loadout
-  id: WFClothingUniformJumpsuitMonasticRobeDark
+  id: SLClothingUniformJumpsuitMonasticRobeDark
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMonasticRobeDark
   groupBy: "jumpsuitChaplain"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMonasticRobeLight
+  id: SLClothingUniformJumpsuitMonasticRobeLight
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMonasticRobeLight
   groupBy: "jumpsuitChaplain"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChaplainPilgrimVest
+  id: SLClothingUniformJumpsuitChaplainPilgrimVest
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChaplainPilgrimVest
   groupBy: "jumpsuitChaplain"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitQMTurtleneck
+  id: SLClothingUniformJumpsuitQMTurtleneck
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitQMTurtleneck
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtQMTurtleneck
+  id: SLClothingUniformJumpskirtQMTurtleneck
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtQMTurtleneck
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitSeniorPhysician
+  id: SLClothingUniformJumpsuitSeniorPhysician
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtSeniorPhysician
+  id: SLClothingUniformJumpskirtSeniorPhysician
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCMO
+  id: SLClothingUniformJumpsuitCMO
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCMO
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCMO
+  id: SLClothingUniformJumpskirtCMO
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCMO
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformTurtleneckCMO
+  id: SLClothingUniformTurtleneckCMO
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCMOTurtle
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformTurtleskirtCMO
+  id: SLClothingUniformTurtleskirtCMO
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCMOTurtle
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitSeniorResearcher
+  id: SLClothingUniformJumpsuitSeniorResearcher
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtSeniorResearcher
+  id: SLClothingUniformJumpskirtSeniorResearcher
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitResearchDirector
+  id: SLClothingUniformJumpsuitResearchDirector
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitResearchDirector
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtResearchDirector
+  id: SLClothingUniformJumpskirtResearchDirector
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtResearchDirector
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitSeniorEngineer
+  id: SLClothingUniformJumpsuitSeniorEngineer
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtSeniorEngineer
+  id: SLClothingUniformJumpskirtSeniorEngineer
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChiefEngineer
+  id: SLClothingUniformJumpsuitChiefEngineer
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtChiefEngineer
+  id: SLClothingUniformJumpskirtChiefEngineer
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtChiefEngineer
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitChiefEngineerTurtle
+  id: SLClothingUniformJumpsuitChiefEngineerTurtle
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtChiefEngineerTurtle
+  id: SLClothingUniformJumpskirtChiefEngineerTurtle
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtChiefEngineerTurtle
   groupBy: "engineerJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitJester
+  id: SLClothingUniformJumpsuitJester
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitJester
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitJesterAlt
+  id: SLClothingUniformJumpsuitJesterAlt
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitJesterAlt
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitKilt
+  id: SLClothingUniformJumpsuitKilt
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitKilt
 
 - type: loadout
-  id: WFClothingUniformJumpsuitDameDane
+  id: SLClothingUniformJumpsuitDameDane
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitDameDane
 
 - type: loadout
-  id: WFClothingUniformJumpsuitKimono
+  id: SLClothingUniformJumpsuitKimono
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitKimono
   groupBy: "kimono"
 
 - type: loadout
-  id: WFClothingKimonoPink
+  id: SLClothingKimonoPink
   price: 0
   equipment:
     jumpsuit: ClothingKimonoPink
   groupBy: "kimono"
 
 - type: loadout
-  id: WFClothingKimonoBlue
+  id: SLClothingKimonoBlue
   price: 0
   equipment:
     jumpsuit: ClothingKimonoBlue
   groupBy: "kimono"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitGladiator
+  id: SLClothingUniformJumpsuitGladiator
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitGladiator
 
 - type: loadout
-  id: WFClothingUniformJumpskirtPerformer
+  id: SLClothingUniformJumpskirtPerformer
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtPerformer
 
 - type: loadout
-  id: WFClothingUniformSkirtDruid
+  id: SLClothingUniformSkirtDruid
   price: 0
   equipment:
     jumpsuit: ClothingUniformSkirtDruid
 
 - type: loadout
-  id: WFClothingUniformJumpsuitSafari
+  id: SLClothingUniformJumpsuitSafari
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSafari
 
 - type: loadout
-  id: WFUniformShortsRed
+  id: SLUniformShortsRed
   price: 0
   equipment:
     jumpsuit: UniformShortsRed
   groupBy: "shortsRed"
 
 - type: loadout
-  id: WFUniformShortsRedWithTop
+  id: SLUniformShortsRedWithTop
   price: 0
   equipment:
     jumpsuit: UniformShortsRedWithTop
   groupBy: "shortsRed"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitClown
+  id: SLClothingUniformJumpsuitClown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitClown
   groupBy: "clown"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMime
+  id: SLClothingUniformJumpsuitMime
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMime
   groupBy: "mime"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtMime
+  id: SLClothingUniformJumpskirtMime
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtMime
   groupBy: "mime"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitTshirtJeans
+  id: SLClothingUniformJumpsuitTshirtJeans
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitTshirtJeans
   groupBy: "jeans"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitTshirtJeansGray
+  id: SLClothingUniformJumpsuitTshirtJeansGray
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitTshirtJeansGray
   groupBy: "jeans"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitTshirtJeansPeach
+  id: SLClothingUniformJumpsuitTshirtJeansPeach
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitTshirtJeansPeach
@@ -1365,28 +1363,28 @@
 
 # T3
 - type: loadout
-  id: WFClothingUniformJumpsuitCaptain
+  id: SLClothingUniformJumpsuitCaptain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptain
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCaptain
+  id: SLClothingUniformJumpskirtCaptain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptain
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitCapFormal
+  id: SLClothingUniformJumpsuitCapFormal
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapFormal
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtCapFormalDress
+  id: SLClothingUniformJumpskirtCapFormalDress
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtCapFormalDress
@@ -1394,238 +1392,238 @@
 
 # T3 "Military"
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryContractor
+  id: SLClothingUniformJumpsuitMilitaryContractor
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryContractor
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryContractorTac
+  id: SLClothingUniformJumpsuitMilitaryContractorTac
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryCaptain
+  id: SLClothingUniformJumpsuitMilitaryCaptain
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryCaptain
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryAtmospherics
+  id: SLClothingUniformJumpsuitMilitaryAtmospherics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryAtmospherics
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryEngineering
+  id: SLClothingUniformJumpsuitMilitaryEngineering
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryEngineering
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryEngineeringChief
+  id: SLClothingUniformJumpsuitMilitaryEngineeringChief
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryEngineeringChief
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitarySalvageSpecialist
+  id: SLClothingUniformJumpsuitMilitarySalvageSpecialist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitarySalvageSpecialist
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryCargo
+  id: SLClothingUniformJumpsuitMilitaryCargo
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryCargo
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryQM
+  id: SLClothingUniformJumpsuitMilitaryQM
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryQM
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryParamedic
+  id: SLClothingUniformJumpsuitMilitaryParamedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryParamedic
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryMedicalDoctor
+  id: SLClothingUniformJumpsuitMilitaryMedicalDoctor
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryMedicalDoctor
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryChemistry
+  id: SLClothingUniformJumpsuitMilitaryChemistry
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryChemistry
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryVirology
+  id: SLClothingUniformJumpsuitMilitaryVirology
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryVirology
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryGenetics
+  id: SLClothingUniformJumpsuitMilitaryGenetics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryGenetics
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryCMO
+  id: SLClothingUniformJumpsuitMilitaryCMO
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryCMO
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryScientist
+  id: SLClothingUniformJumpsuitMilitaryScientist
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryScientist
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryResearchDirector
+  id: SLClothingUniformJumpsuitMilitaryResearchDirector
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryResearchDirector
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryService
+  id: SLClothingUniformJumpsuitMilitaryService
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryService
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryHydroponics
+  id: SLClothingUniformJumpsuitMilitaryHydroponics
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryHydroponics
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorGrey
+  id: SLClothingUniformJumpsuitMilitaryColorGrey
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorGrey
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorBlack
+  id: SLClothingUniformJumpsuitMilitaryColorBlack
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBlack
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorBlue
+  id: SLClothingUniformJumpsuitMilitaryColorBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBlue
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorDarkBlue
+  id: SLClothingUniformJumpsuitMilitaryColorDarkBlue
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkBlue
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorTeal
+  id: SLClothingUniformJumpsuitMilitaryColorTeal
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorTeal
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorGreen
+  id: SLClothingUniformJumpsuitMilitaryColorGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorGreen
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorDarkGreen
+  id: SLClothingUniformJumpsuitMilitaryColorDarkGreen
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorOrange
+  id: SLClothingUniformJumpsuitMilitaryColorOrange
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorOrange
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorPink
+  id: SLClothingUniformJumpsuitMilitaryColorPink
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorPink
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorRed
+  id: SLClothingUniformJumpsuitMilitaryColorRed
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorRed
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorYellow
+  id: SLClothingUniformJumpsuitMilitaryColorYellow
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorYellow
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorPurple
+  id: SLClothingUniformJumpsuitMilitaryColorPurple
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorPurple
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorLightBrown
+  id: SLClothingUniformJumpsuitMilitaryColorLightBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorLightBrown
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorBrown
+  id: SLClothingUniformJumpsuitMilitaryColorBrown
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBrown
   groupBy: "militaryJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitMilitaryColorMaroon
+  id: SLClothingUniformJumpsuitMilitaryColorMaroon
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryColorMaroon
@@ -1793,14 +1791,14 @@
   groupBy: "secJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpsuitBrigmedic
+  id: SLClothingUniformJumpsuitBrigmedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitBrigmedic
   groupBy: "secJumpsuit"
 
 - type: loadout
-  id: WFClothingUniformJumpskirtBrigmedic
+  id: SLClothingUniformJumpskirtBrigmedic
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtBrigmedic
@@ -1808,539 +1806,538 @@
 
 # Starlight clothing
 - type: loadout
-  id: WFSLClothingUniformJumpskirtGothic
+  id: ClothingUniformJumpskirtGothic
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtGothic
+    jumpsuit: ClothingUniformJumpskirtGothic
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtMaid
+  id: ClothingUniformJumpskirtMaid
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtMaid
+    jumpsuit: ClothingUniformJumpskirtMaid
   groupBy: "maid"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtDressRed
+  id: ClothingUniformJumpskirtDressRed
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtDressRed
+    jumpsuit: ClothingUniformJumpskirtDressRed
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtTango
+  id: ClothingUniformJumpskirtTango
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtTango
+    jumpsuit: ClothingUniformJumpskirtTango
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtVictorianBlack
+  id: ClothingUniformJumpskirtVictorianBlack
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtVictorianBlack
+    jumpsuit: ClothingUniformJumpskirtVictorianBlack
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtReporter
+  id: ClothingUniformJumpskirtReporter
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtReporter
+    jumpsuit: ClothingUniformJumpskirtReporter
   groupBy: "journalist"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtJournalist
+  id: ClothingUniformJumpskirtJournalist
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtJournalist
+    jumpsuit: ClothingUniformJumpskirtJournalist
   groupBy: "journalist"
 
 - type: loadout
-# Triad Start - ID Change
-  id: WFSLClothingUniformJumpskirtVictorianRed
+  id: ClothingUniformJumpskirtVictorianRed
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtVictorianRed
-# End Triad 
+    jumpsuit: ClothingUniformJumpskirtVictorianRed
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtSuitNurse
+  id: ClothingUniformJumpskirtSuitNurse
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtSuitNurse
+    jumpsuit: ClothingUniformJumpskirtSuitNurse
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtPencilTan
+  id: ClothingUniformJumpskirtPencilTan
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtPencilTan
+    jumpsuit: ClothingUniformJumpskirtPencilTan
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtCargoSalvage
+  id: ClothingUniformJumpskirtCargoSalvage
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtCargoSalvage
+    jumpsuit: ClothingUniformJumpskirtCargoSalvage
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtCargoSalvageFormal
+  id: ClothingUniformJumpskirtCargoSalvageFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtCargoSalvageFormal
+    jumpsuit: ClothingUniformJumpskirtCargoSalvageFormal
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtSalvageLead
+  id: ClothingUniformJumpskirtSalvageLead
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtSalvageLead
+    jumpsuit: ClothingUniformJumpskirtSalvageLead
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtMiningSpecialist
+  id: ClothingUniformJumpskirtMiningSpecialist
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtMiningSpecialist
+    jumpsuit: ClothingUniformJumpskirtMiningSpecialist
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtCargoFormal
+  id: ClothingUniformJumpskirtCargoFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtCargoFormal
+    jumpsuit: ClothingUniformJumpskirtCargoFormal
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtScientistFormal
+  id: ClothingUniformJumpskirtScientistFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtScientistFormal
+    jumpsuit: ClothingUniformJumpskirtScientistFormal
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtCoroner
+  id: ClothingUniformJumpskirtCoroner
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtCoroner
+    jumpsuit: ClothingUniformJumpskirtCoroner
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtElegantMaid
+  id: ClothingUniformJumpskirtElegantMaid
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtElegantMaid
+    jumpsuit: ClothingUniformJumpskirtElegantMaid
   groupBy: "maid"
 
 - type: loadout
-  id: WFSLClothingUniformColorJumpskirtRainbow
+  id: ClothingUniformColorJumpskirtRainbow
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformColorJumpskirtRainbow
+    jumpsuit: ClothingUniformColorJumpskirtRainbow
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtSchool
+  id: ClothingUniformJumpskirtSchool
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtSchool
+    jumpsuit: ClothingUniformJumpskirtSchool
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtCapTurtleneck
+  id: ClothingUniformJumpskirtCapTurtleneck
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtCapTurtleneck
+    jumpsuit: ClothingUniformJumpskirtCapTurtleneck
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtHoPTurtleneck
+  id: ClothingUniformJumpskirtHoPTurtleneck
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtHoPTurtleneck
+    jumpsuit: ClothingUniformJumpskirtHoPTurtleneck
   groupBy: "jumpsuitHop"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtHoSBlack
+  id: ClothingUniformJumpskirtHoSBlack
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtHoSBlack
+    jumpsuit: ClothingUniformJumpskirtHoSBlack
   groupBy: "secJumpsuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtRDClassical
+  id: ClothingUniformJumpskirtRDClassical
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtRDClassical
+    jumpsuit: ClothingUniformJumpskirtRDClassical
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFSLClothingUniformJulianneVA11HALLA
+  id: ClothingUniformJulianneVA11HALLA
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJulianneVA11HALLA
+    jumpsuit: ClothingUniformJulianneVA11HALLA
   groupBy: "jumpsuitBartender"
 
 - type: loadout
-  id: WFSLClothingUniformElegantLadyDress
+  id: ClothingUniformElegantLadyDress
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformElegantLadyDress
+    jumpsuit: ClothingUniformElegantLadyDress
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformPastryDress
+  id: ClothingUniformPastryDress
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformPastryDress
+    jumpsuit: ClothingUniformPastryDress
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitSuitCheckered
+  id: ClothingUniformJumpsuitSuitCheckered
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitSuitCheckered
+    jumpsuit: ClothingUniformJumpsuitSuitCheckered
   groupBy: "fancySuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitSuitTan
+  id: ClothingUniformJumpsuitSuitTan
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitSuitTan
+    jumpsuit: ClothingUniformJumpsuitSuitTan
   groupBy: "fancySuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitSuitWaiter
+  id: ClothingUniformJumpsuitSuitWaiter
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitSuitWaiter
+    jumpsuit: ClothingUniformJumpsuitSuitWaiter
   groupBy: "fancySuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCargoAlt
+  id: ClothingUniformJumpsuitCargoAlt
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCargoAlt
+    jumpsuit: ClothingUniformJumpsuitCargoAlt
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCargoFormal
+  id: ClothingUniformJumpsuitCargoFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCargoFormal
+    jumpsuit: ClothingUniformJumpsuitCargoFormal
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitSalvageFormal
+  id: ClothingUniformJumpsuitSalvageFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitSalvageFormal
+    jumpsuit: ClothingUniformJumpsuitSalvageFormal
   groupBy: "jumpsuitCargo"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCoroner
+  id: ClothingUniformJumpsuitCoroner
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCoroner
+    jumpsuit: ClothingUniformJumpsuitCoroner
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCoronerAlt
+  id: ClothingUniformJumpsuitCoronerAlt
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCoronerAlt
+    jumpsuit: ClothingUniformJumpsuitCoronerAlt
   groupBy: "jumpsuitMedical"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitSuperstarCop
+  id: ClothingUniformJumpsuitSuperstarCop
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitSuperstarCop
+    jumpsuit: ClothingUniformJumpsuitSuperstarCop
   groupBy: "secJumpsuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitAerostatic
+  id: ClothingUniformJumpsuitAerostatic
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitAerostatic
+    jumpsuit: ClothingUniformJumpsuitAerostatic
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCapTurtleneck
+  id: ClothingUniformJumpsuitCapTurtleneck
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCapTurtleneck
+    jumpsuit: ClothingUniformJumpsuitCapTurtleneck
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitCaptainNoble
+  id: ClothingUniformJumpsuitCaptainNoble
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitCaptainNoble
+    jumpsuit: ClothingUniformJumpsuitCaptainNoble
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitHoPTurtleneck
+  id: ClothingUniformJumpsuitHoPTurtleneck
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitHoPTurtleneck
+    jumpsuit: ClothingUniformJumpsuitHoPTurtleneck
   groupBy: "jumpsuitHop"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitHoSBlack
+  id: ClothingUniformJumpsuitHoSBlack
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitHoSBlack
+    jumpsuit: ClothingUniformJumpsuitHoSBlack
   groupBy: "secJumpsuit"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitRDClassical
+  id: ClothingUniformJumpsuitRDClassical
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitRDClassical
+    jumpsuit: ClothingUniformJumpsuitRDClassical
   groupBy: "jumpsuitSci"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitVampir
+  id: ClothingUniformJumpsuitVampir
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitVampir
+    jumpsuit: ClothingUniformJumpsuitVampir
 
 - type: loadout
-  id: WFSLClothingUniformDama235123
+  id: ClothingUniformNobleSuit
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformDama235123
+    jumpsuit: ClothingUniformNobleSuit
   groupBy: "jumpsuitCaptain"
 
 - type: loadout
-  id: WFSLBodysuitJeansUniformSuit
+  id: BodysuitJeansUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLBodysuitJeansUniformSuit
+    jumpsuit: BodysuitJeansUniformSuit
 
 - type: loadout
-  id: WFSLCamoUniformSuit
+  id: CamoUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLCamoUniformSuit
+    jumpsuit: CamoUniformSuit
 
 - type: loadout
-  id: WFSLCandyClownUniformSuit
+  id: CandyClownUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLCandyClownUniformSuit
+    jumpsuit: CandyClownUniformSuit
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLCoolTanktopUniformSuit
+  id: CoolTanktopUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLCoolTanktopUniformSuit
+    jumpsuit: CoolTanktopUniformSuit
 
 - type: loadout
-  id: WFSLDruidRobesUniformSuit
+  id: DruidRobesUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLDruidRobesUniformSuit
+    jumpsuit: DruidRobesUniformSuit
 
 - type: loadout
-  id: WFSLFlamboyantUniformSuit
+  id: FlamboyantUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLFlamboyantUniformSuit
+    jumpsuit: FlamboyantUniformSuit
 
 - type: loadout
-  id: WFSLFlamencoUniformSuit
+  id: FlamencoUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLFlamencoUniformSuit
+    jumpsuit: FlamencoUniformSuit
 
 - type: loadout
-  id: WFSLFlyCaptainUniformSuit
+  id: FlyCaptainUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLFlyCaptainUniformSuit
+    jumpsuit: FlyCaptainUniformSuit
 
 - type: loadout
-  id: WFSLKiltUniformSuit
+  id: KiltUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLKiltUniformSuit
+    jumpsuit: KiltUniformSuit
 
 - type: loadout
-  id: WFSLLilacDressUniformSuit
+  id: LilacDressUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLLilacDressUniformSuit
+    jumpsuit: LilacDressUniformSuit
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLLittleBlackDressUniformSuit
+  id: LittleBlackDressUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLLittleBlackDressUniformSuit
+    jumpsuit: LittleBlackDressUniformSuit
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLLumberjackOverallsUniformSuit
+  id: LumberjackOverallsUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLLumberjackOverallsUniformSuit
+    jumpsuit: LumberjackOverallsUniformSuit
   groupBy: "overalls"
 
 - type: loadout
-  id: WFSLMechanicOverallsUniformSuit
+  id: MechanicOverallsUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLMechanicOverallsUniformSuit
+    jumpsuit: MechanicOverallsUniformSuit
   groupBy: "overalls"
 
 - type: loadout
-  id: WFSLMessyDressShirtUniformSuit
+  id: MessyDressShirtUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLMessyDressShirtUniformSuit
+    jumpsuit: MessyDressShirtUniformSuit
 
 - type: loadout
-  id: WFSLMimeFrillsUniformSuit
+  id: MimeFrillsUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLMimeFrillsUniformSuit
+    jumpsuit: MimeFrillsUniformSuit
   groupBy: "mime"
 
 - type: loadout
-  id: WFSLOldWomanUniformSuit
+  id: OldWomanUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLOldWomanUniformSuit
+    jumpsuit: OldWomanUniformSuit
 
 - type: loadout
-  id: WFSLPunkJeansUniformSuit
+  id: PunkJeansUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLPunkJeansUniformSuit
+    jumpsuit: PunkJeansUniformSuit
 
 - type: loadout
-  id: WFSLRefereeUniformSuit
+  id: RefereeUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLRefereeUniformSuit
+    jumpsuit: RefereeUniformSuit
 
 - type: loadout
-  id: WFSLSailorUniformSuit
+  id: SailorUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLSailorUniformSuit
+    jumpsuit: SailorUniformSuit
 
 - type: loadout
-  id: WFSLStripedClownUniformSuit
+  id: StripedClownUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLStripedClownUniformSuit
+    jumpsuit: StripedClownUniformSuit
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLSundressUniformSuit
+  id: SundressUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLSundressUniformSuit
+    jumpsuit: SundressUniformSuit
   groupBy: "dresses"
 
 - type: loadout
-  id: WFSLTatteredClothesUniformSuit
+  id: TatteredClothesUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLTatteredClothesUniformSuit
+    jumpsuit: TatteredClothesUniformSuit
 
 - type: loadout
-  id: WFSLTieDyeUniformSuit
+  id: TieDyeUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLTieDyeUniformSuit
+    jumpsuit: TieDyeUniformSuit
 
 - type: loadout
-  id: WFSLTogaUniformSuit
+  id: TogaUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLTogaUniformSuit
+    jumpsuit: TogaUniformSuit
 
 - type: loadout
-  id: WFSLVintageUniformSuit
+  id: VintageUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLVintageUniformSuit
+    jumpsuit: VintageUniformSuit
 
 - type: loadout
-  id: WFSLCargoOverallsUniformSuit
+  id: CargoOverallsUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLCargoOverallsUniformSuit
+    jumpsuit: CargoOverallsUniformSuit
   groupBy: "overalls"
 
 - type: loadout
-  id: WFSLRedRegaliaSuit
+  id: RedRegaliaSuit
   price: 0
   equipment:
-    jumpsuit: SLRedRegaliaSuit
+    jumpsuit: RedRegaliaSuit
 
 # == Starlight clown/mime additions
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitPerformerClown
+  id: ClothingUniformJumpsuitPerformerClown
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitPerformerClown
+    jumpsuit: ClothingUniformJumpsuitPerformerClown
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitClownFormal
+  id: ClothingUniformJumpsuitClownFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitClownFormal
+    jumpsuit: ClothingUniformJumpsuitClownFormal
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtPerformerClown
+  id: ClothingUniformJumpskirtPerformerClown
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtPerformerClown
+    jumpsuit: ClothingUniformJumpskirtPerformerClown
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtClownFormal
+  id: ClothingUniformJumpskirtClownFormal
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtClownFormal
+    jumpsuit: ClothingUniformJumpskirtClownFormal
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLSpottedClownUniformSuit
+  id: SpottedClownUniformSuit
   price: 0
   equipment:
-    jumpsuit: SLSpottedClownUniformSuit
+    jumpsuit: SpottedClownUniformSuit
   groupBy: "clown"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitPerformerMime
+  id: ClothingUniformJumpsuitPerformerMime
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitPerformerMime
+    jumpsuit: ClothingUniformJumpsuitPerformerMime
   groupBy: "mime"
 
 - type: loadout
-  id: WFSLClothingUniformJumpskirtPerformerMime
+  id: ClothingUniformJumpskirtPerformerMime
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpskirtPerformerMime
+    jumpsuit: ClothingUniformJumpskirtPerformerMime
   groupBy: "mime"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitMimeSuaveWhite
+  id: ClothingUniformJumpsuitMimeSuaveWhite
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitMimeSuaveWhite
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveWhite
   groupBy: "mime"
 
 - type: loadout
-  id: WFSLClothingUniformJumpsuitMimeSuaveBlack
+  id: ClothingUniformJumpsuitMimeSuaveBlack
   price: 0
   equipment:
-    jumpsuit: SLClothingUniformJumpsuitMimeSuaveBlack
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveBlack
   groupBy: "mime"
+

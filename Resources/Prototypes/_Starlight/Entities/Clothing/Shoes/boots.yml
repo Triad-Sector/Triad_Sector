@@ -2,7 +2,7 @@
 
 - type: entity
   parent: ClothingShoesBaseButcherable
-  id: SLClothingUniformBootsVampir
+  id: ClothingShoesBloodstainedAristocratBoots
   name: bloodstained aristocrat boots
   description: Old boots with a gray sole, faint bloodstains are visible.
   components:
@@ -13,7 +13,7 @@
 
 - type: entity
   parent: ClothingShoesBaseButcherable
-  id: SLClothingShoesBootsSalvage1208134
+  id: ClothingShoesTallBlackFurBoots
   name: tall black fur boots
   description: Tall black thigh-high boots with fur, golden accents, and straps.
   components:

@@ -2,11 +2,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtGothic
+  id: ClothingUniformJumpskirtGothic
   name: gothic dress
-# Triad Start - Reword
-  description: A blue dress adorned with lace and white frills.
-# End Triad
+  description: A blue dress adorned with lace and white frills. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_gothic.rsi
@@ -15,11 +13,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtMaid
+  id: ClothingUniformJumpskirtMaid
   name: evening maid dress
-# Triad Start - Reword
-  description: A classic maid dress complete with a white apron.
-# End Triad
+  description: A classic maid dress complete with a white apron. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_maid.rsi
@@ -28,11 +24,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtDressRed
+  id: ClothingUniformJumpskirtDressRed
   name: evening red dress
-# Triad Start - Reword
-  description: An elegant red dress that never goes out of style.
-# End Triad
+  description: An elegant red dress that never goes out of style. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_red.rsi
@@ -41,11 +35,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtTango
+  id: ClothingUniformJumpskirtTango
   name: tango dress
-# Triad Start - Reword
-  description: A flowing dress made for the dance floor.
-# End Triad
+  description: A flowing dress made for the dance floor. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_tango.rsi
@@ -54,11 +46,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtVictorianBlack
+  id: ClothingUniformJumpskirtVictorianBlack
   name: victorian black dress
-# Triad Start - Reword
-  description: A formal Victorian-style dress in black.
-# End Triad
+  description: A formal Victorian-style dress in black. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_victorian_black.rsi
@@ -67,7 +57,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtReporter
+  id: ClothingUniformJumpskirtReporter
   name: reporter jumpskirt
   description: A good reporter remains a skeptic for life.
   components:
@@ -78,7 +68,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtJournalist
+  id: ClothingUniformJumpskirtJournalist
   name: journalist jumpskirt
   description: If journalism is good, it is contradictory by nature.
   components:
@@ -89,11 +79,9 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-# Triad Start - Reword, ID change
-  id: SLClothingUniformJumpskirtVictorianRed
+  id: ClothingUniformJumpskirtVictorianRed # Triad - reworded
   name: victorian red dress
   description: A red Victorian-style dress with elegant detailing.
-# End Triad
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_victorian_red.rsi
@@ -102,7 +90,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtSuitNurse
+  id: ClothingUniformJumpskirtSuitNurse
   name: nurse's uniform
   description: This nurse uniform combines functionality and style. Durable, comfortable pants paired with a blouse and signature cap create a professional and neat look, making it an ideal choice for healthcare staff.
   components:
@@ -113,7 +101,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtPencilTan
+  id: ClothingUniformJumpskirtPencilTan
   name: beige "pencil" style skirt
   description: The beige "pencil" style skirt exudes softness and elegance. The fitted blazer and straight skirt create a refined silhouette, making it suitable for various occasions, from business meetings to evening dinners.
   components:
@@ -124,7 +112,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtPencilCentcomOfficial
+  id: ClothingUniformJumpskirtPencilCentcomOfficial
   name: CentComm "pencil" style skirt
   description: A strict green "pencil" skirt exudes authority and poise. The fitted blazer and straight skirt form an elegant silhouette, suitable for various occasions, from business meetings to a captain's dismissal.
   components:
@@ -135,7 +123,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtPencilSpecialOperationsOfficer
+  id: ClothingUniformJumpskirtPencilSpecialOperationsOfficer
   name: SOC officer "pencil" skirt
   description: A formal black Special Operations Corps officer's "pencil" skirt embodies authority and sophistication. The tailored blazer and straight skirt create a refined silhouette, suitable for various occasions, from strategic meetings to... well, less conventional operations.
   components:
@@ -146,7 +134,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCargoSalvage
+  id: ClothingUniformJumpskirtCargoSalvage
   name: salvage specialist jumpskirt
   description: Perfectly pairs with a pickaxe, this versatile and durable skirt jumpsuit is designed for tough work, offering both practicality and a rugged, stylish appearance.
   components:
@@ -157,7 +145,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCargoSalvageFormal
+  id: ClothingUniformJumpskirtCargoSalvageFormal
   name: formal salvage jumpskirt
   description: Perfectly pairs with a pickaxe, this rugged yet stylish skirt jumpsuit combines functionality and toughness, ideal for salvaging work with a practical, efficient design.
   components:
@@ -168,7 +156,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtSalvageLead
+  id: ClothingUniformJumpskirtSalvageLead
   name: salvage leads's jumpskirt
   description: It's a snappy jumpskirt with a sturdy set of overalls. It's very dirty.
   components:
@@ -179,11 +167,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtMiningSpecialist
+  id: ClothingUniformJumpskirtMiningSpecialist
   name: mining specialist's jumpskirt
-# Triad Start - Fixed casing
-  description: A suit passed down through many generations. A fine layer of dust trails behind it.
-# End Triad
+  description: A suit passed down through many generations. A fine layer of dust trails behind it. # Triad - fixed casing
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/mining.rsi
@@ -192,7 +178,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCargoFormal
+  id: ClothingUniformJumpskirtCargoFormal
   name: formal cargo jumpskirt
   description: An official jumpsuit skirt combines practicality with a professional appearance. The tailored design offers comfort and mobility, while maintaining a structured look suitable for work settings requiring efficiency and formality.
   components:
@@ -203,7 +189,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtScientistFormal
+  id: ClothingUniformJumpskirtScientistFormal
   name: formal scientist jumpskirt
   description: A uniform for discerning scientists, best paired with a matching tie, offering a blend of professionalism and intellectual flair. Perfect for prestigious events or high-level research settings.
   components:
@@ -214,7 +200,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCoroner
+  id: ClothingUniformJumpskirtCoroner
   name: coroner jumpskirt
   description: Made from specialized fibers offering minimal protection against biological hazards, this jumpsuit proves that style doesn’t have to die with the patients. Perfect for the professional with a sense of dark humor.
   components:
@@ -225,7 +211,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCentcomOfficial
+  id: ClothingUniformJumpskirtCentcomOfficial
   name: CentComm officer's suitskirt
   description: It's a suitskirt worn by CentComm's highest-tier Commanders.
   components:
@@ -236,7 +222,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtCentcomOfficer
+  id: ClothingUniformJumpskirtCentcomOfficer
   name: CentComm turtleneck skirt
   description: A skirt version of the CentComm turtleneck, rarer and more sought after than the original.
   components:
@@ -247,7 +233,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtElegantMaid
+  id: ClothingUniformJumpskirtElegantMaid
   name: elegant maid uniform
   description: Call me master and bring me some beer.
   components:
@@ -258,7 +244,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformColorJumpskirtRainbow
+  id: ClothingUniformColorJumpskirtRainbow
   name: rainbow jumpskirt
   description: A multi-colored jumpskirt!
   components:
@@ -269,7 +255,7 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: SLClothingUniformJumpskirtSchool
+  id: ClothingUniformJumpskirtSchool
   name: school skirt
   description: Stylish and comfortable school skirt.
   components:
@@ -280,7 +266,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtCapTurtleneck
+  id: ClothingUniformJumpskirtCapTurtleneck
   name: captain's turtleneck
   description: True captain's turtleneck.
   components:
@@ -291,11 +277,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtHoPTurtleneck
-# Triad Start - Typo, reword
+  id: ClothingUniformJumpskirtHoPTurtleneck
   name: head of personnel's turtleneck
-  description: A turtleneck tailored for the Head of Personnel.
-# End Triad
+  description: A turtleneck tailored for the Head of Personnel. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/hop_turtleneck.rsi
@@ -304,11 +288,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtHoSBlack
+  id: ClothingUniformJumpskirtHoSBlack
   name: head of security's black skirt
-# Triad Start - Reword
-  description: A formal black uniform for the Head of Security.
-# End Triad
+  description: A formal black uniform for the Head of Security. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/hos_black.rsi
@@ -317,11 +299,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtRDClassical
+  id: ClothingUniformJumpskirtRDClassical
   name: research director's classical skirt
-# Triad Start - Reword
-  description:  A refined uniform skirt befitting the Research Director.
-# End Triad
+  description:  A refined uniform skirt befitting the Research Director. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/rd_classical.rsi
@@ -330,7 +310,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJulianneVA11HALLA
+  id: ClothingUniformJulianneVA11HALLA
   name: smoke-scented bartender uniform
   description: Smoke clings to it, heavy and suffocating. Somehow, it makes you want to cry. Care for another round, sir?
   components:
@@ -341,11 +321,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformElegantLadyDress
+  id: ClothingUniformElegantLadyDress
   name: elegant lady's dress
-# Triad Start - Reword
-  description: "A voluminous white blouse with a black skirt. Perfect for highlighting your beauty, darling!"
-# End Triad
+  description: A voluminous white blouse with a black skirt. Perfect for highlighting your beauty, darling! # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/lady.rsi
@@ -354,7 +332,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformPastryDress
+  id: ClothingUniformPastryDress
   name: sweet pastry dress
   description: A delicate pastry dress made from light, comfortable fabric with an elegant cut.
   components:
@@ -365,7 +343,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtPerformerClown
+  id: ClothingUniformJumpskirtPerformerClown
   name: assistant clown jumpskirt
   description: Yet to be worthy of honking.
   components:
@@ -376,7 +354,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtPerformerMime
+  id: ClothingUniformJumpskirtPerformerMime
   name: mime apprentice jumpskirt
   description: Still have to learn how to be quiet...
   components:
@@ -387,7 +365,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLClothingUniformJumpskirtClownFormal
+  id: ClothingUniformJumpskirtClownFormal
   name: distinguished clown skirt
   description: Why, I daresay, HONK!
   components:

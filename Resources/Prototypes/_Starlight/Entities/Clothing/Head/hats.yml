@@ -2,7 +2,7 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: SLClothingHeadBase0121
+  id: ClothingHeadWideBrimGildedHat
   name: wide-brimmed gilded hat
   description: A cream-white wide-brimmed hat with large white feathers and golden trim.
   components:
@@ -13,11 +13,9 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: SLRedRegaliaHat
+  id: RedRegaliaHat
   name: red regalia Hat
-# Triad Start - Fixed Typo
-  description: A fancy red hat like a mafioso would wear.
-# End Triad
+  description: A fancy red hat like a mafioso would wear. # Triad - typo
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/red_regalia.rsi

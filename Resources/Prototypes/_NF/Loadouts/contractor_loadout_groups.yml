@@ -217,87 +217,85 @@
   - ClothingUniformMNKTracksuitBlack
   # End Triad
   # Triad start - Ported Starlight clothes
-  - WFSLBodysuitJeansUniformSuit
-  - WFSLCamoUniformSuit
-  - WFSLCandyClownUniformSuit
-  - WFSLCargoOverallsUniformSuit
-  - WFSLClothingUniformBootsVampir
-  - WFSLClothingUniformColorJumpskirtRainbow
-  - WFSLClothingUniformDama0965
-  - WFSLClothingUniformDama235123
-  - WFSLClothingUniformElegantLadyDress
-  - WFSLClothingUniformJulianneVA11HALLA
-  - WFSLClothingUniformJumpskirtCapTurtleneck
-  - WFSLClothingUniformJumpskirtCargoFormal
-  - WFSLClothingUniformJumpskirtCargoSalvage
-  - WFSLClothingUniformJumpskirtCargoSalvageFormal
-  - WFSLClothingUniformJumpskirtClownFormal
-  - WFSLClothingUniformJumpskirtDressRed
-  - WFSLClothingUniformJumpskirtElegantMaid
-  - WFSLClothingUniformJumpskirtGothic
-  - WFSLClothingUniformJumpskirtHoPTurtleneck
-  - WFSLClothingUniformJumpskirtHoSBlack
-  - WFSLClothingUniformJumpskirtJournalist
-  - WFSLClothingUniformJumpskirtMaid
-  - WFSLClothingUniformJumpskirtMiningSpecialist
-  - WFSLClothingUniformJumpskirtPencilTan
-  - WFSLClothingUniformJumpskirtPerformerClown
-  - WFSLClothingUniformJumpskirtPerformerMime
-  - WFSLClothingUniformJumpskirtRDClassical
-  - WFSLClothingUniformJumpskirtReporter
-  - WFSLClothingUniformJumpskirtSalvageLead
-  - WFSLClothingUniformJumpskirtSchool
-  - WFSLClothingUniformJumpskirtScientistFormal
-  - WFSLClothingUniformJumpskirtTango
-  - WFSLClothingUniformJumpskirtVictorianBlack
-# Triad Start - Change ID
-  - WFSLClothingUniformJumpskirtVictorianRed
-# End Triad
-  - WFSLClothingUniformJumpsuitAerostatic
-  - WFSLClothingUniformJumpsuitCaptainNoble
-  - WFSLClothingUniformJumpsuitCapTurtleneck
-  - WFSLClothingUniformJumpsuitCargoAlt
-  - WFSLClothingUniformJumpsuitCargoFormal
-  - WFSLClothingUniformJumpsuitClownFormal
-  - WFSLClothingUniformJumpsuitHoPTurtleneck
-  - WFSLClothingUniformJumpsuitHoSBlack
-  - WFSLClothingUniformJumpsuitMimeSuaveBlack
-  - WFSLClothingUniformJumpsuitMimeSuaveWhite
-  - WFSLClothingUniformJumpsuitPerformerClown
-  - WFSLClothingUniformJumpsuitPerformerMime
-  - WFSLClothingUniformJumpsuitRDClassical
-  - WFSLClothingUniformJumpsuitSalvageFormal
-  - WFSLClothingUniformJumpsuitSuitCheckered
-  - WFSLClothingUniformJumpsuitSuitTan
-  - WFSLClothingUniformJumpsuitSuitWaiter
-  - WFSLClothingUniformJumpsuitSuperstarCop
-  - WFSLClothingUniformJumpsuitVampir
-  - WFSLClothingUniformPastryDress
-  - WFSLClothingUniformShinelVampir
-  - WFSLCoolTanktopUniformSuit
-  - WFSLDruidRobesUniformSuit
-  - WFSLFlamboyantUniformSuit
-  - WFSLFlamencoUniformSuit
-  - WFSLFlyCaptainUniformSuit
-  - WFSLKiltUniformSuit
-  - WFSLLilacDressUniformSuit
-  - WFSLLittleBlackDressUniformSuit
-  - WFSLLumberjackOverallsUniformSuit
-  - WFSLMechanicOverallsUniformSuit
-  - WFSLMessyDressShirtUniformSuit
-  - WFSLMimeFrillsUniformSuit
-  - WFSLOldWomanUniformSuit
-  - WFSLPunkJeansUniformSuit
-  - WFSLRedRegaliaSuit
-  - WFSLRefereeUniformSuit
-  - WFSLSailorUniformSuit
-  - WFSLSpottedClownUniformSuit
-  - WFSLStripedClownUniformSuit
-  - WFSLSundressUniformSuit
-  - WFSLTatteredClothesUniformSuit
-  - WFSLTieDyeUniformSuit
-  - WFSLTogaUniformSuit
-  - WFSLVintageUniformSuit
+  - BodysuitJeansUniformSuit
+  - CamoUniformSuit
+  - CandyClownUniformSuit
+  - CargoOverallsUniformSuit
+  - ClothingShoesBloodstainedAristocratBoots
+  - ClothingUniformColorJumpskirtRainbow
+  - ClothingNeckBlackFurCloak
+  - ClothingUniformNobleSuit
+  - ClothingUniformElegantLadyDress
+  - ClothingUniformJulianneVA11HALLA
+  - ClothingUniformJumpskirtCapTurtleneck
+  - ClothingUniformJumpskirtCargoFormal
+  - ClothingUniformJumpskirtCargoSalvage
+  - ClothingUniformJumpskirtCargoSalvageFormal
+  - ClothingUniformJumpskirtClownFormal
+  - ClothingUniformJumpskirtDressRed
+  - ClothingUniformJumpskirtElegantMaid
+  - ClothingUniformJumpskirtGothic
+  - ClothingUniformJumpskirtHoPTurtleneck
+  - ClothingUniformJumpskirtHoSBlack
+  - ClothingUniformJumpskirtJournalist
+  - ClothingUniformJumpskirtMaid
+  - ClothingUniformJumpskirtMiningSpecialist
+  - ClothingUniformJumpskirtPencilTan
+  - ClothingUniformJumpskirtPerformerClown
+  - ClothingUniformJumpskirtPerformerMime
+  - ClothingUniformJumpskirtRDClassical
+  - ClothingUniformJumpskirtReporter
+  - ClothingUniformJumpskirtSalvageLead
+  - ClothingUniformJumpskirtSchool
+  - ClothingUniformJumpskirtScientistFormal
+  - ClothingUniformJumpskirtTango
+  - ClothingUniformJumpskirtVictorianBlack
+  - ClothingUniformJumpskirtVictorianRed
+  - ClothingUniformJumpsuitAerostatic
+  - ClothingUniformJumpsuitCaptainNoble
+  - ClothingUniformJumpsuitCapTurtleneck
+  - ClothingUniformJumpsuitCargoAlt
+  - ClothingUniformJumpsuitCargoFormal
+  - ClothingUniformJumpsuitClownFormal
+  - ClothingUniformJumpsuitHoPTurtleneck
+  - ClothingUniformJumpsuitHoSBlack
+  - ClothingUniformJumpsuitMimeSuaveBlack
+  - ClothingUniformJumpsuitMimeSuaveWhite
+  - ClothingUniformJumpsuitPerformerClown
+  - ClothingUniformJumpsuitPerformerMime
+  - ClothingUniformJumpsuitRDClassical
+  - ClothingUniformJumpsuitSalvageFormal
+  - ClothingUniformJumpsuitSuitCheckered
+  - ClothingUniformJumpsuitSuitTan
+  - ClothingUniformJumpsuitSuitWaiter
+  - ClothingUniformJumpsuitSuperstarCop
+  - ClothingUniformJumpsuitVampir
+  - ClothingUniformPastryDress
+  - ClothingNeckBloodstainedAristocratCloak
+  - CoolTanktopUniformSuit
+  - DruidRobesUniformSuit
+  - FlamboyantUniformSuit
+  - FlamencoUniformSuit
+  - FlyCaptainUniformSuit
+  - KiltUniformSuit
+  - LilacDressUniformSuit
+  - LittleBlackDressUniformSuit
+  - LumberjackOverallsUniformSuit
+  - MechanicOverallsUniformSuit
+  - MessyDressShirtUniformSuit
+  - MimeFrillsUniformSuit
+  - OldWomanUniformSuit
+  - PunkJeansUniformSuit
+  - RedRegaliaSuit
+  - RefereeUniformSuit
+  - SailorUniformSuit
+  - SpottedClownUniformSuit
+  - StripedClownUniformSuit
+  - SundressUniformSuit
+  - TatteredClothesUniformSuit
+  - TieDyeUniformSuit
+  - TogaUniformSuit
+  - VintageUniformSuit
   # End Triad
 
   fallbacks:
@@ -588,8 +586,8 @@
   - ContractorClothingShoesClownLarge
   - ContractorClothingShoesBling
   # Triad start - Ported Starlight
-  - WFSLClothingShoesBootsSalvage1208134
-  - WFSLClothingShoesHighheelShoes
+  - ClothingShoesTallBlackFurBoots
+  - ClothingShoesHighheelShoes
   # End Triad
   fallbacks:
   - ContractorClothingShoesColorBlack
@@ -681,8 +679,8 @@
   - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
   # Triad start - Ported Starlight
-  - WFSLClothingHeadBase0121
-  - WFSLRedRegaliaHat
+  - ClothingHeadWideBrimGildedHat
+  - RedRegaliaHat
   # End Triad
 
 - type: loadoutGroup
@@ -806,8 +804,8 @@
   - ContractorClothingNeckCloakSanabi # Mono
   - ContractorClothingNeckUIOvercoat # Mono
   # Triad start - Ported Starlight
-  - WFSLClothingNeckTieGeoffroyblack12
-  - WFSLRedRegaliaCloak
+  - ClothingNeckNobleMantle
+  - RedRegaliaCloak
   # End Triad
 
 - type: loadoutGroup
@@ -1101,3 +1099,4 @@
   loadouts:
   - ContractorArmorPlateBlunt_Slash
   - ContractorArmorPlatePierce
+

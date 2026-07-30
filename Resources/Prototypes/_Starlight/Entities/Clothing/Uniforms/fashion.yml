@@ -2,11 +2,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLBodysuitJeansUniformSuit
+  id: BodysuitJeansUniformSuit
   name: bodysuit and jeans
-# Triad Start - Typo
-  description: Fashionable and practical. You could fight someone in this.
-# End Triad
+  description: Fashionable and practical. You could fight someone in this. # Triad - typo
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/bodysuit_jeans.rsi
@@ -15,11 +13,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLCamoUniformSuit
+  id: CamoUniformSuit
   name: camo jumpsuit
-# Triad Start - Typo
-  description: You blend in as if this was a forest.
-# End Triad
+  description: You blend in as if this was a forest. # Triad - typo
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/camo_jumpsuit.rsi
@@ -28,10 +24,8 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLCandyClownUniformSuit
-# Triad Start -Changed to 'cotton candy clown jumpsuit'
-  name: cotton candy clown jumpsuit
-# End Triad
+  id: CandyClownUniformSuit
+  name: cotton candy clown jumpsuit # Triad - renamed
   description: Oh god this makes your eyes hurt!
   components:
   - type: Sprite
@@ -45,11 +39,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLCoolTanktopUniformSuit
+  id: CoolTanktopUniformSuit
   name: cool tanktop
-# Triad Start - Removed Xeno Mention
-  description: The kind of outfit heroes wear when they go fight the bad guys.
-# End Triad
+  description: The kind of outfit heroes wear when they go fight the bad guys. # Triad - Removed Xeno Mention
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/cool_tanktop.rsi
@@ -58,7 +50,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLDruidRobesUniformSuit
+  id: DruidRobesUniformSuit
   name: druid robes
   description: A humble robe, for a humble druid.
   components:
@@ -69,7 +61,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLFlamboyantUniformSuit
+  id: FlamboyantUniformSuit
   name: flamboyant outfit
   description: You must really like vampires.
   components:
@@ -80,7 +72,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLFlamencoUniformSuit
+  id: FlamencoUniformSuit
   name: flamenco dress
   description: Very festive!
   components:
@@ -91,7 +83,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLFlyCaptainUniformSuit
+  id: FlyCaptainUniformSuit
   name: fly captains uniform
   description: People born in the 2480s think this is really cool. It has a certain retro appeal.
   components:
@@ -102,7 +94,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLKiltUniformSuit
+  id: KiltUniformSuit
   name: kilt
   description: SCOOOOOOTLAAAANDDDDD!!!
   components:
@@ -113,7 +105,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLLilacDressUniformSuit
+  id: LilacDressUniformSuit
   name: lilac dress
   description: An elaborate dress that seems woven from lilac petals at a glance.
   components:
@@ -124,7 +116,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLLittleBlackDressUniformSuit
+  id: LittleBlackDressUniformSuit
   name: little black dress
   description: Just a little too short, only worn by the brave.
   components:
@@ -135,7 +127,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLLumberjackOverallsUniformSuit
+  id: LumberjackOverallsUniformSuit
   name: lumberjack overalls
   description: Worn by real hard people who hate trees. Smells like pine.
   components:
@@ -146,7 +138,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLMechanicOverallsUniformSuit
+  id: MechanicOverallsUniformSuit
   name: mechanic overalls
   description: A durable set of threads for hard working mechanics. Smells like oil.
   components:
@@ -157,11 +149,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLMessyDressShirtUniformSuit
+  id: MessyDressShirtUniformSuit
   name: messy dress shirt
-# Triad Start - Punctuation typo
-  description: Thrown on in a hurry, probably hasn't been washed in a few days.
-# End Triad
+  description: Thrown on in a hurry, probably hasn't been washed in a few days. # Triad - punctuation
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/messy_dress_shirt.rsi
@@ -170,7 +160,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLMimeFrillsUniformSuit
+  id: MimeFrillsUniformSuit
   name: frilly mime dress
   description: How do they move so silently in these things?
   components:
@@ -181,11 +171,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLOldWomanUniformSuit
+  id: OldWomanUniformSuit
   name: old womans clothes
-# Triad Start - Typo, reworded
-  description: Makes anyone look like they're over the age of 65.
-# End Triad
+  description: Makes anyone look like they're over the age of 65. # Triad - reworded
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/old_woman.rsi
@@ -194,7 +182,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLPunkJeansUniformSuit
+  id: PunkJeansUniformSuit
   name: punk jeans
   description: Slightly goth, very metal.
   components:
@@ -205,11 +193,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLRefereeUniformSuit
+  id: RefereeUniformSuit
   name: referee uniform
-# Triad Start - Typo, added TDF mention
-  description: If they're holding a red card, you might as well shoot them. The time in the TDF jail cells would be less painful.
-# End Triad
+  description: If they're holding a red card, you might as well shoot them. The time in the TDF jail cells would be less painful. # Triad - Typo, added TDF mention
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/referee.rsi
@@ -218,7 +204,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLSailorUniformSuit
+  id: SailorUniformSuit
   name: sailor uniform
   description: Worn by the saltiest seamen. Wait, what?
   components:
@@ -229,11 +215,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLStripedClownUniformSuit
+  id: StripedClownUniformSuit
   name: striped clown uniform
-# Triad Start - Punctuation errors
-  description: Somehow it's brighter than anything you've ever seen.
-# End Triad
+  description: Somehow it's brighter than anything you've ever seen. # Triad - Punctuation errors
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/striped_clown.rsi
@@ -246,7 +230,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLSundressUniformSuit
+  id: SundressUniformSuit
   name: sundress
   description: A lovely sundress, perfect for any summer stroll.
   components:
@@ -257,7 +241,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLTatteredClothesUniformSuit
+  id: TatteredClothesUniformSuit
   name: tattered clothes
   description: What one shift as Head of Personnel does to a motherfucker.
   components:
@@ -268,7 +252,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLTieDyeUniformSuit
+  id: TieDyeUniformSuit
   name: tie dye shirt
   description: Straight out of the 2470s, or the 1970s. You get those two confused a lot.
   components:
@@ -279,7 +263,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLTogaUniformSuit
+  id: TogaUniformSuit
   name: toga
   description: TO-GA TO-GA TO-GA!
   components:
@@ -290,7 +274,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLVintageUniformSuit
+  id: VintageUniformSuit
   name: vintage clothes
   description: Very retro.
   components:
@@ -301,7 +285,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLCargoOverallsUniformSuit
+  id: CargoOverallsUniformSuit
   name: cargo overalls
   description: A durable set of overalls that smell like cardboard.
   components:
@@ -312,11 +296,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLRedRegaliaSuit
+  id: RedRegaliaSuit
   name: red regalia suit
-# Triad Start - Typo
-  description: A fancy red suit like a mafioso would wear.
-# End Triad
+  description: A fancy red suit like a mafioso would wear. # Triad - typo
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/red_regalia.rsi
@@ -326,7 +308,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: SLSpottedClownUniformSuit
+  id: SpottedClownUniformSuit
   name: spotted clown
   description: An older clown suit from a more civilized time.
   components:

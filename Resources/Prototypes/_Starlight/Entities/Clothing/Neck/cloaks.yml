@@ -2,7 +2,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: SLClothingUniformDama0965
+  id: ClothingNeckBlackFurCloak
   name: black fur cloak
   description: Neat cloak with fur around the neck and hem.
   components:
@@ -13,7 +13,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: SLClothingUniformShinelVampir
+  id: ClothingNeckBloodstainedAristocratCloak
   name: bloodstained aristocrat cloak
   description: A dark leather greatcoat soaked in blood.
   components:
@@ -24,7 +24,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: SLClothingNeckTieGeoffroyblack12
+  id: ClothingNeckNobleMantle
   name:  noble mantle
   description: A light-colored cloak with golden patterns and lush white fur on the shoulders.
   components:
@@ -35,9 +35,9 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: SLRedRegaliaCloak
+  id: RedRegaliaCloak
   name: red regalia cloak
-  description: A fancy red cloak like a mafiaoso would wear.
+  description: A fancy red cloak like a mafioso would wear. # Triad - typo
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Neck/Cloaks/red_regalia.rsi
