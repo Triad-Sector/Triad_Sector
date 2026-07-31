@@ -275,7 +275,7 @@ namespace Content.Server.Explosion.EntitySystems
             if (component.DeathTime != TimeSpan.Zero)
             {
                 var deltaTime = _timing.CurTime - component.DeathTime;
-                deathTime = deltaTime.ToString("%m' minutes.'");
+                deathTime = deltaTime.ToString("%m' minute'");
             }
 
             var stillDeathMessage = Loc.GetString(component.StillDeadMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText), ("deathTime", deathTime));
