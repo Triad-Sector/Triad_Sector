@@ -221,9 +221,7 @@
   - CamoUniformSuit
   - CandyClownUniformSuit
   - CargoOverallsUniformSuit
-  - ClothingShoesBloodstainedAristocratBoots
   - ClothingUniformColorJumpskirtRainbow
-  - ClothingNeckBlackFurCloak
   - ClothingUniformNobleSuit
   - ClothingUniformElegantLadyDress
   - ClothingUniformJulianneVA11HALLA
@@ -271,7 +269,6 @@
   - ClothingUniformJumpsuitSuperstarCop
   - ClothingUniformJumpsuitVampir
   - ClothingUniformPastryDress
-  - ClothingNeckBloodstainedAristocratCloak
   - CoolTanktopUniformSuit
   - DruidRobesUniformSuit
   - FlamboyantUniformSuit
@@ -588,6 +585,7 @@
   # Triad start - Ported Starlight
   - ClothingShoesTallBlackFurBoots
   - ClothingShoesHighheelShoes
+  - ClothingShoesBloodstainedAristocratBoots
   # End Triad
   fallbacks:
   - ContractorClothingShoesColorBlack
@@ -806,6 +804,8 @@
   # Triad start - Ported Starlight
   - ClothingNeckNobleMantle
   - RedRegaliaCloak
+  - ClothingNeckBloodstainedAristocratCloak
+  - ClothingNeckBlackFurCloak
   # End Triad
 
 - type: loadoutGroup

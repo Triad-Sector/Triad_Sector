@@ -7,10 +7,10 @@
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
   # Triad Start - Ported Starlight Clothing
-  - WFSLClothingUniformJumpskirtSuitNurse
-  - WFSLClothingUniformJumpskirtCoroner
-  - WFSLClothingUniformJumpsuitCoroner
-  - WFSLClothingUniformJumpsuitCoronerAlt
+  - ClothingUniformJumpskirtSuitNurse
+  - ClothingUniformJumpskirtCoroner
+  - ClothingUniformJumpsuitCoroner
+  - ClothingUniformJumpsuitCoronerAlt
   # End Triad
   fallbacks:
   - ChiefMedicalOfficerJumpsuit

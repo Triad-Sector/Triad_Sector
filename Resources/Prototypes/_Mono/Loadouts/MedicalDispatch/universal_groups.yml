@@ -21,10 +21,10 @@
   - ContractorClothingUniformJumpsuitPsychologist
   - ContractorClothingUniformJumpskirtPsychologist
   # Triad Start
-  - WFSLClothingUniformJumpskirtSuitNurse
-  - WFSLClothingUniformJumpskirtCoroner
-  - WFSLClothingUniformJumpsuitCoroner
-  - WFSLClothingUniformJumpsuitCoronerAlt
+  - ClothingUniformJumpskirtSuitNurse
+  - ClothingUniformJumpskirtCoroner
+  - ClothingUniformJumpsuitCoroner
+  - ClothingUniformJumpsuitCoronerAlt
   # End Triad
   fallbacks:
   - MedicalDoctorJumpsuit
