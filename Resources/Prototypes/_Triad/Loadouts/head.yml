@@ -3,112 +3,96 @@
   price: 0
   equipment:
     head: ClothingHeadBandBlack
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadBandBlue
   price: 0
   equipment:
     head: ClothingHeadBandBlue
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadBandGreen
   price: 0
   equipment:
     head: ClothingHeadBandGreen
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadBandRed
   price: 0
   equipment:
     head: ClothingHeadBandRed
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadBandSkull
   price: 0
   equipment:
     head: ClothingHeadBandSkull
-  groupBy: "headbands"
 
 - type: loadout
   id: ClothingHeadHatTacticalMaidHeadband
   price: 0
   equipment:
     head: ClothingHeadHatTacticalMaidHeadband
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadHatGreysoft
   price: 0
   equipment:
     head: ClothingHeadHatGreysoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatBluesoft
   price: 0
   equipment:
     head: ClothingHeadHatBluesoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatYellowsoft
   price: 0
   equipment:
     head: ClothingHeadHatYellowsoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatGreensoft
   price: 0
   equipment:
     head: ClothingHeadHatGreensoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatOrangesoft
   price: 0
   equipment:
     head: ClothingHeadHatOrangesoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatRedsoft
   price: 0
   equipment:
     head: ClothingHeadHatRedsoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatBlacksoft
   price: 0
   equipment:
     head: ClothingHeadHatBlacksoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatPurplesoft
   price: 0
   equipment:
     head: ClothingHeadHatPurplesoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatCorpsoft
   price: 0
   equipment:
     head: ClothingHeadHatCorpsoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadBandGrey
   price: 0
   equipment:
     head: ClothingHeadBandGrey
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadHatUshanka
@@ -133,21 +117,18 @@
   price: 0
   equipment:
     head: ClothingHeadHatCargosoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadBandBotany
   price: 0
   equipment:
     head: ClothingHeadBandBotany
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadBandMercenary
   price: 0
   equipment:
     head: ClothingHeadBandMercenary
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadHatHoodBioScientist
@@ -196,21 +177,18 @@
   price: 0
   equipment:
     head: ClothingHeadHatGreyFlatcap
-  groupBy: "flatcaps"
 
 - type: loadout
   id: SLClothingHeadHatBrownFlatcap
   price: 0
   equipment:
     head: ClothingHeadHatBrownFlatcap
-  groupBy: "flatcaps"
 
 - type: loadout
   id: SLClothingHeadHatParamedicsoft
   price: 0
   equipment:
     head: ClothingHeadHatParamedicsoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadNurseHat
@@ -223,42 +201,36 @@
   price: 0
   equipment:
     head: ClothingHeadHatBeretMedic
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatSurgcapGreen
   price: 0
   equipment:
     head: ClothingHeadHatSurgcapGreen
-  groupBy: "surgical"
 
 - type: loadout
   id: SLClothingHeadHatSurgcapBlue
   price: 0
   equipment:
     head: ClothingHeadHatSurgcapBlue
-  groupBy: "surgical"
 
 - type: loadout
   id: SLClothingHeadHatSurgcapPurple
   price: 0
   equipment:
     head: ClothingHeadHatSurgcapPurple
-  groupBy: "surgical"
 
 - type: loadout
   id: SLClothingHeadHatFedoraGrey
   price: 0
   equipment:
     head: ClothingHeadHatFedoraGrey
-  groupBy: "ferdora"
 
 - type: loadout
   id: SLClothingHeadHatFedoraBrown
   price: 0
   equipment:
     head: ClothingHeadHatFedoraBrown
-  groupBy: "ferdora"
 
 - type: loadout
   id: FoodPoppy
@@ -313,56 +285,48 @@
   price: 0
   equipment:
     head: ClothingHeadHatBeretRND
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretMercenary
   price: 0
   equipment:
     head: ClothingHeadHatBeretMercenary
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretCommander
   price: 0
   equipment:
     head: ClothingHeadHatBeretCommander
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretEngineering
   price: 0
   equipment:
     head: ClothingHeadHatBeretEngineering
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretSeniorPhysician
   price: 0
   equipment:
     head: ClothingHeadHatBeretSeniorPhysician
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretCmo
   price: 0
   equipment:
     head: ClothingHeadHatBeretCmo
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretQM
   price: 0
   equipment:
     head: ClothingHeadHatBeretQM
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatQMsoft
   price: 0
   equipment:
     head: ClothingHeadHatQMsoft
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatCardinal
@@ -387,35 +351,30 @@
   price: 0
   equipment:
     head: ClothingHeadHatJester
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingHeadHatJesterAlt
   price: 0
   equipment:
     head: ClothingHeadHatJesterAlt
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingHeadHatBeret
   price: 0
   equipment:
     head: ClothingHeadHatBeret
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatBeretFrench
   price: 0
   equipment:
     head: ClothingHeadHatBeretFrench
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatMimesoft
   price: 0
   equipment:
     head: ClothingHeadHatMimesoft
-  groupBy: "mime"
 
 - type: loadout
   id: SLClothingHeadHatPilgrim
@@ -434,49 +393,42 @@
   price: 0
   equipment:
     head: ClothingHeadHatCowboyBlack
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatCowboyBrown
   price: 0
   equipment:
     head: ClothingHeadHatCowboyBrown
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatCowboyGrey
   price: 0
   equipment:
     head: ClothingHeadHatCowboyGrey
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatCowboyBountyHunter
   price: 0
   equipment:
     head: ClothingHeadHatCowboyBountyHunter
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatBH
   price: 0
   equipment:
     head: ClothingHeadHatBH
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatCowboyRed
   price: 0
   equipment:
     head: ClothingHeadHatCowboyRed
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatCowboyWhite
   price: 0
   equipment:
     head: ClothingHeadHatCowboyWhite
-  groupBy: "cowboy"
 
 - type: loadout
   id: SLClothingHeadHatWideBrimmed
@@ -531,7 +483,6 @@
   price: 0
   equipment:
     head: ClothingHeadBandGold
-  groupBy: "headbands"
 
 - type: loadout
   id: SLClothingHeadHatTophat
@@ -544,42 +495,36 @@
   price: 0
   equipment:
     head: ClothingHeadHelmetBasic
-  groupBy: "helmets"
 
 - type: loadout
   id: SLClothingHeadHelmetMercenary
   price: 0
   equipment:
     head: ClothingHeadHelmetMercenary
-  groupBy: "helmets"
 
 - type: loadout
   id: SLClothingHeadHelmetMercenaryBlack
   price: 0
   equipment:
     head: ClothingHeadHelmetMercenaryBlack
-  groupBy: "helmets"
 
 - type: loadout
   id: SLClothingHeadHatSecsoft
   price: 0
   equipment:
     head: ClothingHeadHatSecsoft
-  groupBy: "caps"
 
 - type: loadout
   id: ClothingHeadHatSyndie
   price: 0
   equipment:
     head: ClothingHeadHatSyndie
-  groupBy: "caps"
 
 - type: loadout
   id: SLClothingHeadHatBeretSecurity
   price: 0
   equipment:
     head: ClothingHeadHatBeretSecurity
-  groupBy: "berets"
 
 - type: loadout
   id: SLClothingHeadHatSecurityTrooper
@@ -604,14 +549,12 @@
   price: 0
   equipment:
     head: ClothingHeadHatBeretWarden
-  groupBy: "berets"
 
 - type: loadout
   id: ClothingHeadHatBeretHoS
   price: 0
   equipment:
     head: ClothingHeadHatBeretHoS
-  groupBy: "berets"
 
 - type: loadout
   id: ClothingHeadHatWarden

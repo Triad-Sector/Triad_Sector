@@ -58,6 +58,7 @@
     sprite: _Starlight/Clothing/Uniforms/druid_robes.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/druid_robes.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -80,6 +81,7 @@
     sprite: _Starlight/Clothing/Uniforms/flamenco.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/flamenco.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -102,6 +104,7 @@
     sprite: _Starlight/Clothing/Uniforms/kilt.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/kilt.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -113,6 +116,7 @@
     sprite: _Starlight/Clothing/Uniforms/lilac_dress.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/lilac_dress.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -124,6 +128,7 @@
     sprite: _Starlight/Clothing/Uniforms/little_black_dress.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/little_black_dress.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -168,6 +173,7 @@
     sprite: _Starlight/Clothing/Uniforms/mime_frills.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/mime_frills.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -179,6 +185,7 @@
     sprite: _Starlight/Clothing/Uniforms/old_woman.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/old_woman.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -238,6 +245,7 @@
     sprite: _Starlight/Clothing/Uniforms/sundress.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/sundress.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase
@@ -271,6 +279,7 @@
     sprite: _Starlight/Clothing/Uniforms/toga.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/toga.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformBase

@@ -6,7 +6,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorBlack
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesClothwrap
@@ -36,7 +35,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksPlain
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksBartender
@@ -46,7 +44,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksBartender
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksMusician
@@ -56,7 +53,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksMusician
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksMerc
@@ -66,7 +62,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksMerc
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksPrivSec
@@ -76,7 +71,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksPrivSec
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksPilot
@@ -86,7 +80,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksPilot
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksLogis
@@ -96,7 +89,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksLogis
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksCourier
@@ -106,7 +98,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksCourier
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksLOLogis
@@ -116,7 +107,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksLOLogis
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksChaplain
@@ -126,7 +116,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksChaplain
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksChef
@@ -136,7 +125,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksChef
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksChemists
@@ -146,7 +134,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksChemists
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksDetective
@@ -156,7 +143,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksDetective
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksEngi
@@ -166,7 +152,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksEngi
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksChiefEngi
@@ -176,7 +161,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksChiefEngi
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksJanitor
@@ -186,7 +170,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksJanitor
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksMedic
@@ -196,7 +179,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksMedic
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksParaMedic
@@ -206,7 +188,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksParaMedic
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksCMO
@@ -216,7 +197,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksCMO
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksCoder
@@ -226,7 +206,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksCoder
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksBee
@@ -236,7 +215,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksBee
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksPlainWhite
@@ -246,7 +224,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksPlainWhite
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksStripedPurple
@@ -256,7 +233,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksStripedPurple
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksStripedRainbow
@@ -266,7 +242,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksStripedRainbow
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksStripedWhite
@@ -276,7 +251,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksStripedWhite
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksEpi
@@ -286,7 +260,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksEpi
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksEpiHead
@@ -296,7 +269,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksEpiHead
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksMantisEpi
@@ -306,7 +278,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksMantisEpi
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksCC
@@ -316,7 +287,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksCC
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksSecurity
@@ -326,7 +296,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksSecurity
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksHeadSecurity
@@ -336,7 +305,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksHeadSecurity
-  groupBy: "socks"
 
 - type: loadout
   id: ClothingUnderSocksCoderValid
@@ -346,7 +314,6 @@
   price: 0
   equipment:
     shoes: ClothingUnderSocksCoderValid
-  groupBy: "socks"
 
 # ==
 
@@ -404,7 +371,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorBlue
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorOrange
@@ -414,7 +380,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorOrange
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorPurple
@@ -424,7 +389,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorPurple
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorRed
@@ -434,7 +398,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorRed
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorBrown
@@ -444,7 +407,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorBrown
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorGreen
@@ -454,7 +416,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorGreen
-  groupBy: "basicshoes"
 
 - type: loadout
   id: SLClothingShoesColorYellow
@@ -464,7 +425,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorYellow
-  groupBy: "basicshoes"
 - type: loadout
   id: SLClothingShoesColorWhite
   effects:
@@ -475,7 +435,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesColorWhite
-  groupBy: "basicshoes"
 
 # Magboots
 - type: loadout
@@ -513,7 +472,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinter
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterAtmos
@@ -523,7 +481,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterAtmos
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterHydro
@@ -533,7 +490,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterHydro
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterCap
@@ -543,7 +499,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterCap
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterCargo
@@ -553,7 +508,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterCargo
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterChef
@@ -563,7 +517,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterChef
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterChem
@@ -573,7 +526,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterChem
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterEngi
@@ -583,7 +535,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterEngi
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterGenetics
@@ -593,7 +544,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterGenetics
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterMiner
@@ -603,7 +553,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterMiner
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterParamedic
@@ -613,7 +562,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterParamedic
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterRobo
@@ -623,7 +571,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterRobo
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterSci
@@ -633,7 +580,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterSci
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterViro
@@ -643,7 +589,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterViro
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterHoS
@@ -653,7 +598,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterHoS
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterWarden
@@ -663,7 +607,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterWarden
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsJack
@@ -811,7 +754,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterChiefEngineer
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterCMO
@@ -821,7 +763,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterCMO
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterQM
@@ -831,7 +772,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterQM
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterRD
@@ -841,7 +781,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterRD
-  groupBy: "winterboots"
 
 - type: loadout
   id: SLClothingShoesBootsWinterClown
@@ -851,7 +790,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterClown
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingShoesBootsWinterMime
@@ -861,7 +799,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesBootsWinterMime
-  groupBy: "mime"
 
 - type: loadout
   id: SLClothingShoesClown
@@ -871,7 +808,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesClown
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingShoesJester
@@ -881,7 +817,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesJester
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingShoesJesterALT
@@ -891,7 +826,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesJesterALT
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingShoesBootsPerformer
@@ -920,7 +854,6 @@
   price: 0
   equipment:
     shoes: ClothingShoesClownLarge
-  groupBy: "clown"
 
 - type: loadout
   id: SLClothingShoesBling

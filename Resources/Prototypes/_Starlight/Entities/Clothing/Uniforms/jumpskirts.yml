@@ -32,6 +32,7 @@
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_red.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/dress_red.rsi
+  - type: SkirtDisplacement
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -307,6 +308,7 @@
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/rd_classical.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/rd_classical.rsi
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformBase
@@ -340,6 +342,7 @@
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/pastry.rsi
     - type: Clothing
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/pastry.rsi
+    - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformBase
@@ -351,6 +354,7 @@
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/performer_clown.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/performer_clown.rsi
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformBase
@@ -362,6 +366,7 @@
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/performer_mime.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/performer_mime.rsi
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformBase
@@ -373,3 +378,4 @@
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/clown_distinguished.rsi
   - type: Clothing
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/clown_distinguished.rsi
+  - type: SkirtDisplacement # Triad

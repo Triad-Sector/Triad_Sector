@@ -4,63 +4,54 @@
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBlack
-  groupBy: "scarf"
 
 - type: loadout
   id: SLClothingNeckScarfStripedBlue
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBlue
-  groupBy: "scarf"
 
 - type: loadout
   id: SLClothingNeckScarfStripedBrown
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedBrown
-  groupBy: "scarf"
 
 - type: loadout
   id: SLClothingNeckScarfStripedGreen
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedGreen
-  groupBy: "scarf"
 
 - type: loadout
   id: ClothingNeckScarfStripedSyndieGreen
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedSyndieGreen
-  groupBy: "scarf"
 
 - type: loadout
   id: ClothingNeckScarfStripedSyndieRed
   price: 0
   equipment:
     neck: ClothingNeckScarfStripedSyndieRed
-  groupBy: "scarf"
 
 - type: loadout
   id: SLClothingNeckTieBH
   price: 0
   equipment:
     neck: ClothingNeckTieBH
-  groupBy: "tie"
 
 - type: loadout
   id: SLClothingNeckTieRed
   price: 0
   equipment:
     neck: ClothingNeckTieRed
-  groupBy: "tie"
 
 - type: loadout
   id: SLClothingNeckTieSci
   price: 0
   equipment:
     neck: ClothingNeckTieSci
-  groupBy: "tie"
 
 - type: loadout
   id: SLClothingNeckLawyerbadge
@@ -133,77 +124,66 @@
   price: 0
   equipment:
     neck: ClothingNeckCloakTrans
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakAro
   price: 0
   equipment:
     neck: ClothingNeckCloakAro
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakAce
   price: 0
   equipment:
     neck: ClothingNeckCloakAce
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakAroace
   price: 0
   equipment:
     neck: ClothingNeckCloakAroace
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakBi
   price: 0
   equipment:
     neck: ClothingNeckCloakBi
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakIntersex
   price: 0
   equipment:
     neck: ClothingNeckCloakIntersex
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakEnby
   price: 0
   equipment:
     neck: ClothingNeckCloakEnby
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakPan
   price: 0
   equipment:
     neck: ClothingNeckCloakPan
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakGay
   price: 0
   equipment:
     neck: ClothingNeckCloakGay
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakLesbian
   price: 0
   equipment:
     neck: ClothingNeckCloakLesbian
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: SLClothingNeckCloakPoly
   price: 0
   equipment:
     neck: ClothingNeckCloakPoly
-  groupBy: "flagCloaks"
 
 - type: loadout
   id: ClothingNeckMantleHOS
@@ -228,49 +208,42 @@
   price: 0
   equipment:
     neck: ClothingNeckIFFNeutral
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFGreen
   price: 0
   equipment:
     neck: ClothingNeckIFFGreen
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFRed
   price: 0
   equipment:
     neck: ClothingNeckIFFRed
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFBlue
   price: 0
   equipment:
     neck: ClothingNeckIFFBlue
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFCyan
   price: 0
   equipment:
     neck: ClothingNeckIFFCyan
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFOrange
   price: 0
   equipment:
     neck: ClothingNeckIFFOrange
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckIFFPurple
   price: 0
   equipment:
     neck: ClothingNeckIFFPurple
-  groupBy: "IFFstrobe"
 
 - type: loadout
   id: SLClothingNeckMantleCap
@@ -361,7 +334,6 @@
   price: 0
   equipment:
     neck: ClothingNeckNobleMantle
-  groupBy: "tie"
 
 - type: loadout
   id: RedRegaliaCloak
