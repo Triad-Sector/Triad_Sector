@@ -106,7 +106,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         if (HasComp<ContrabandPermitItemComponent>(scannedItem))
         {
             PlayDenySound(ent, user);
-            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-already-permit", ("item", scannedItem), ("item", scannedItem)), PopupType.SmallCaution);
+            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-already-permit"), PopupType.SmallCaution);
             return;
         }
 

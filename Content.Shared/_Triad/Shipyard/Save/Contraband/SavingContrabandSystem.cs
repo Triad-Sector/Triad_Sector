@@ -4,9 +4,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Triad.Shipyard.Save.Contraband;
 
-public sealed class SavingContrabandSystem : EntitySystem
+public sealed partial class SavingContrabandSystem : EntitySystem
 {
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
 
     public override void Initialize()
     {

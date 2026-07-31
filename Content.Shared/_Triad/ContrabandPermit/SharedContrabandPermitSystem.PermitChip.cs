@@ -43,6 +43,12 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(user))
             return;
 
+        if (!_whitelist.CheckBoth(ent.Owner, ent.Comp.PermitCarrierBlacklist, ent.Comp.PermitCarrierWhitelist))
+        {
+            _popup.PopupClient(Loc.GetString("contraband-permit-chip-scan-error"), user, user);
+            return;
+        }
+
         var ev = new ContrabandPermitChipScanIdentityDoAfterEvent();
         var doAfter = new DoAfterArgs(EntityManager, user, ent.Comp.ScanIdDelay, ev, ent.Owner, user)
         {

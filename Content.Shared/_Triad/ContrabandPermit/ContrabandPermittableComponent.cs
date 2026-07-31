@@ -13,4 +13,7 @@ public sealed partial class ContrabandPermittableComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Permittable = true;
+
+    [DataField, AutoNetworkedField]
+    public LocId ExamineText = "contraband-permittable-examine-default";
 }

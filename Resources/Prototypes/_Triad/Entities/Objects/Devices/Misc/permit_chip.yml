@@ -29,3 +29,6 @@
     prickDamage:
       types:
         Piercing: 1
+    permitCarrierBlacklist:
+      components:
+      - PermitCarrierBlacklist

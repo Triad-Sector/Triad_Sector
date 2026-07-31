@@ -1,5 +1,6 @@
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -20,6 +21,12 @@ public sealed partial class ContrabandPermitChipComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public NetEntity? ScannedPermitCarrier;
+
+    [DataField, AutoNetworkedField]
+    public EntityWhitelist? PermitCarrierWhitelist;
+
+    [DataField, AutoNetworkedField]
+    public EntityWhitelist? PermitCarrierBlacklist;
 
     [DataField, AutoNetworkedField]
     public TimeSpan ScanIdDelay = TimeSpan.FromSeconds(5);

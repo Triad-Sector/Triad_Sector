@@ -12,3 +12,4 @@ contraband-permit-chip-cleared = Cleared data
 contraband-permit-chip-scan-id-start = You put your finger on the chip...
 contraband-permit-chip-scan-id-dna-end = A small needle pricked your finger! Ow!
 contraband-permit-chip-scan-id-no-dna-end = A small blue glow shined over your finger as the chip scanned you.
+contraband-permit-chip-scan-error = Error. Cannot scan identity.

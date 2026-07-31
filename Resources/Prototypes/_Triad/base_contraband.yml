@@ -12,6 +12,7 @@
   components:
   - type: SavingContraband
 
+# Contraband permit bases
 - type: entity
   id: BaseContrabandPermittable # Use for things that are permittable, but shouldn't be seized on save. Like access breakers.
   abstract: true
@@ -20,9 +21,18 @@
     permittable: true # This value exists purely for parenting
 
 - type: entity
-  parent: BaseContrabandPermittable
-  id: BaseShipContrabandPermittable
+  id: BaseShipContrabandPermittable # This one is different than BaseContrabandPermittable, since it is deleted on ship save.
   abstract: true
   components:
   - type: SavingContraband
     examineText: null # ContrabandPermittable gives the examine text
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-no-save
+
+- type: entity
+  parent: BaseShipContrabandPermittable # TDF variant
+  id: BaseShipContrabandPermittableTdf
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-tdf
