@@ -76,7 +76,7 @@
                           VerticalExpand="True"
                           HorizontalExpand="True"
                           Orientation="Vertical"
-                          Visible="False"
+                          Visible="True"
                           ReservesSpace="False">
 
                 <controls:StripeBack VerticalExpand="True"
@@ -110,7 +110,9 @@
                           HorizontalExpand="True"
                           Orientation="Vertical"
                           MinWidth="225"
-                          Margin="20 15 20 20">
+                          Margin="20 15 20 20"
+                          Name="PermitGranterLeft"
+                          Visible="False">
 
                 <!-- labels -->
                 <PanelContainer>
@@ -122,7 +124,7 @@
                         <!-- Permit item info -->
                         <Label HorizontalAlignment="Center"
                                Margin="0 0 0 0"
-                               Text="Permit Information"
+                               Text="Item Information"
                                StyleClasses="LabelHeading"/>
                         <PanelContainer StyleClasses="LowDivider"/>
                         <Label Name="ItemNameLabel"
@@ -186,15 +188,15 @@
                           Orientation="Vertical"
                           HorizontalAlignment="Center"
                           MinWidth="225"
-                          Margin="10 10 10 10">
+                          Margin="10 10 10 10"
+                          Name="PermitGranterRight"
+                          Visible="False">
 
                 <!-- Visible controls -->
-                <BoxContainer Name="PermitGranter"
-                              VerticalExpand="True"
+                <BoxContainer VerticalExpand="True"
                               HorizontalExpand="True"
                               Orientation="Vertical"
-                              ReservesSpace="False"
-                              Visible="True">
+                              ReservesSpace="False">
 
                     <!-- Permit owner selector and picture -->
                     <BoxContainer Orientation="Vertical"
@@ -216,7 +218,8 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     MinSize="192 192"
-                                    Scale="4 4"/>
+                                    Scale="4 4"
+                                    Stretch="Fill"/>
                             </BoxContainer>
                         </PanelContainer>
                     </BoxContainer>
@@ -249,7 +252,8 @@
                                 HorizontalExpand="True"
                                 Margin="0 10 0 0"
                                 SetHeight="40"
-                                Text="{Loc 'contraband-permit-console-window-permit-eject'}">
+                                Text="{Loc 'contraband-permit-console-window-permit-eject'}"
+                                Access="Public">
                             <TextureRect HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          SetSize="32 32"

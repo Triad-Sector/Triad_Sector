@@ -1,19 +1,22 @@
 using Content.Shared.GameTicking;
-using Content.Server.Station.Systems;
-using Content.Shared.Coordinates;
-using Content.Shared._Mono.Pvs;
 using Content.Shared._Triad.Humanoid;
 using Content.Shared.Humanoid;
+using Robust.Shared.Prototypes;
+using Content.Server.Chat.Managers;
 
 namespace Content.Server._Triad.Humanoid;
 
 public sealed partial class ClientHumanoidViewerSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private StationSpawningSystem _spawning = default!;
+    [Dependency] private IChatManager _admin = default!;
 
-    public EntityUid? PausedMap { get; private set; }
+    private static readonly EntProtoId HumanoidViewerMobProto = "MobTriadHumanoidViewer";
+
+    public EntityUid? BlankMap { get; private set; }
 
     private EntityQuery<HumanoidAppearanceComponent> _humanoidQuery;
 
@@ -29,39 +32,45 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
 
     private void OnRoundRestart(RoundRestartCleanupEvent _)
     {
-        if (PausedMap == null || !Exists(PausedMap))
+        if (BlankMap == null || !Exists(BlankMap))
             return;
 
-        Del(PausedMap.Value);
+        Del(BlankMap.Value);
     }
 
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
     {
-        EnsurePausedMap();
+        EnsureBlankMap();
 
-        if (PausedMap == null || !Exists(PausedMap))
+        if (BlankMap == null || !Exists(BlankMap))
             return;
 
         var mob = ev.Mob;
 
         EntityUid? viewerMob = null;
 
-        var query = EntityQueryEnumerator<ClientHumanoidViewerComponent>();
+        var query = EntityQueryEnumerator<HumanoidViewerEntityComponent>();
         while (query.MoveNext(out var uid, out var otherViewer))
         {
             // Cryoing and respawning shouldn't make duplicates
-            if (ev.Player != otherViewer.Session)
+            if (otherViewer.Session == null)
                 continue;
 
+            if (ev.Player.UserId != otherViewer.Session.UserId)
+                continue;
+
+            // Same session and name? Don't make a new viewer mob
             if (Name(uid) == ev.Profile.Name)
             {
                 viewerMob = uid;
                 break;
             }
 
+            // Name different, but age and species is the same? Likely the same character, use as viewer
+            // There is a case where someone changes their character name, gender, and age but it doesn't matter too much
             if (_humanoidQuery.TryComp(uid, out var humanoid))
             {
-                if (humanoid.Age == ev.Profile.Age || humanoid.Gender == ev.Profile.Gender)
+                if (humanoid.Age == ev.Profile.Age && humanoid.Gender == ev.Profile.Gender)
                 {
                     viewerMob = uid;
                     break;
@@ -71,14 +80,14 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
 
         if (viewerMob == null)
         {
-            viewerMob = _spawning.SpawnPlayerMob(mob.ToCoordinates(), null, ev.Profile, null, session: ev.Player);
-            _transform.SetParent(viewerMob.Value, PausedMap.Value);
+            viewerMob = Spawn(HumanoidViewerMobProto);
+            _transform.SetParent(viewerMob.Value, BlankMap.Value);
+            _humanoid.LoadProfile(viewerMob.Value, ev.Profile); // Copy humanoid appearance
+            _metaData.SetEntityName(viewerMob.Value, ev.Profile.Name);
 
-            var viewer = EnsureComp<ClientHumanoidViewerComponent>(viewerMob.Value);
-            viewer.Session = ev.Player;
-            Dirty(viewerMob.Value, viewer);
-
-            EnsureComp<GlobalPvsComponent>(viewerMob.Value);
+            var viewerComp = EnsureComp<HumanoidViewerEntityComponent>(viewerMob.Value);
+            viewerComp.Session = ev.Player;
+            Dirty(viewerMob.Value, viewerComp);
         }
 
         var humanoidView = EnsureComp<HumanoidViewComponent>(mob);
@@ -86,13 +95,12 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
         Dirty(mob, humanoidView);
     }
 
-    private void EnsurePausedMap()
+    private void EnsureBlankMap()
     {
-        if (PausedMap != null && Exists(PausedMap))
+        if (BlankMap != null && Exists(BlankMap))
             return;
 
         var newmap = _map.CreateMap();
-        _map.SetPaused(newmap, true);
-        PausedMap = newmap;
+        BlankMap = newmap;
     }
 }

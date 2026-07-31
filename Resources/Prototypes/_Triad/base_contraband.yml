@@ -11,3 +11,18 @@
   abstract: true
   components:
   - type: SavingContraband
+
+- type: entity
+  id: BaseContrabandPermittable # Use for things that are permittable, but shouldn't be seized on save. Like access breakers.
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    permittable: true # This value exists purely for parenting
+
+- type: entity
+  parent: BaseContrabandPermittable
+  id: BaseShipContrabandPermittable
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: null # ContrabandPermittable gives the examine text

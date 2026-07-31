@@ -3,8 +3,21 @@ contraband-permit-station-name = [color=white][font size=14]{$stationName}[/font
 contraband-permit-unknown-location = Unknown location
 contraband-permit-no-permits = [font size=16][color=white]No active permits detected[/font]
 
+contraband-permit-console-item-slot-name = Chip
+
+contraband-permit-console-pda-message-header = TDF Contraband Permit Network
+contraband-permit-console-pda-message-permit-granted = Your permit for {$item} has been granted for reason "{$reason}". Please note that this can be revoked at any time.
+contraband-permit-console-pda-message-permit-revoked = Your permit for {$item} has been revoked for reason "{$reason}".
+
+contraband-permit-console-popup-success = Permit for {$item} granted for {$owner} successfully! Ejecting and destroying chip.
+contraband-permit-console-popup-error-access-denied = Access denied. Alarm sounded.
+contraband-permit-console-popup-reason-too-short = Enter a valid permit reason
+contraband-permit-console-popup-error-no-data = Chip lacking data, needs both permit owner identity and permit item scanned.
+contraband-permit-console-popup-error-already-permit = This item already has a valid permit.
+
 contraband-permit-console-search-bar-placeholder = Input text and press "Enter"
 contraband-permit-console-print-chip = Print Permit Chip
+contraband-permit-console-print-chip-cooldown = Printing on cooldown. Time remaining: {$time} seconds.
 
 contraband-permit-console-window-permit-owner-entries-placeholder = Permits on file: N/A
 contraband-permit-console-window-permit-owner-entries = Permit(s) on file: {$number}

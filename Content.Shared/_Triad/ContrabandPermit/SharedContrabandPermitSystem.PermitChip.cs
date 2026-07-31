@@ -12,17 +12,15 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Triad.ContrabandPermit;
 
-public sealed partial class ContrabandPermitSystem : EntitySystem
+public abstract partial class SharedContrabandPermitSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
-    public override void Initialize()
+    private void InitializePermitChip()
     {
-        base.Initialize();
-
         SubscribeLocalEvent<ContrabandPermitChipComponent, ActivateInWorldEvent>(OnPermitChipActivate);
         SubscribeLocalEvent<ContrabandPermitChipComponent, ContrabandPermitChipScanIdentityDoAfterEvent>(OnPermitChipScanDoAfter);
         SubscribeLocalEvent<ContrabandPermitChipComponent, AfterInteractEvent>(OnPermitChipInteract);

@@ -116,6 +116,7 @@
     - Biological
     - Inorganic
   - type: ShowSyndicateIcons # Monolith
+  - type: ContrabandPermitGranter # Triad
 
 - type: entity
   id: ActionAGhostShowSolar

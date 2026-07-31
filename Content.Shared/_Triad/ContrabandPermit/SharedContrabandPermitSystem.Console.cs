@@ -1,0 +1,200 @@
+using Content.Shared._DV.CCVars;
+using Content.Shared.Access.Systems;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Coordinates;
+using Content.Shared.Mind;
+using Content.Shared.Popups;
+using Content.Shared.Whitelist;
+using Robust.Shared.Configuration;
+using Robust.Shared.Containers;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Timing;
+
+namespace Content.Shared._Triad.ContrabandPermit;
+
+public abstract partial class SharedContrabandPermitSystem : EntitySystem
+{
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private ItemSlotsSystem _itemSlot = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+
+    private static readonly int MinimumPermitReasonLength = 5; // characters
+
+    private static DateTime _serverDate;
+
+    private void InitializeConsole()
+    {
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntInsertedIntoContainerMessage>(UpdateUserInterface);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntRemovedFromContainerMessage>(UpdateUserInterface);
+
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleReasonUpdatedMessage>(OnConsoleReasonChanged);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleGrantButtonPressedMessage>(OnConsoleGrantPressed);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsolePrintButtonPressedMessage>(OnConsolePrintPressed);
+
+        Subs.CVar(_config, DCCVars.YearOffset, value => _serverDate = DateTime.Today.AddYears(value), true);
+    }
+
+    private void UpdateUserInterface(EntityUid uid, ContrabandPermitConsoleComponent component, EntityEventArgs args)
+    {
+        if (!component.Initialized)
+            return;
+
+        if (!_itemSlot.TryGetSlot(uid, component.ChipSlotContainerId, out var itemSlot))
+            return;
+
+        ContrabandPermitConsoleBuiState? newState = null;
+
+        var dateString = _serverDate.ToString("dd MMMM yyyy");
+
+        if (itemSlot.Item is { } targetChip)
+        {
+            var chipNetEnt = GetNetEntity(targetChip);
+            newState = new ContrabandPermitConsoleBuiState(chipNetEnt, dateString);
+        }
+        else
+        {
+            newState = new ContrabandPermitConsoleBuiState(null, null);
+        }
+
+        _userInterface.SetUiState(uid, ContrabandPermitConsoleUi.Key, newState);
+    }
+
+    private void OnConsoleReasonChanged(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsoleReasonUpdatedMessage args)
+    {
+        var finalReason = args.Reason.Trim();
+        SetConsolePermitReason(ent, finalReason);
+    }
+
+    private void OnConsoleGrantPressed(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsoleGrantButtonPressedMessage args)
+    {
+        if (!_itemSlot.TryGetSlot(ent.Owner, ent.Comp.ChipSlotContainerId, out var itemSlot))
+            return;
+
+        if (itemSlot.Item is not { } insertedChip)
+            return;
+
+        if (!TryComp<ContrabandPermitChipComponent>(insertedChip, out var chipComp))
+            return;
+
+        var user = args.Actor;
+
+        if (!_whitelist.CheckBoth(user, ent.Comp.GrantPermitBlacklist, ent.Comp.GrantPermitWhitelist))
+        {
+            PlayDenySound(ent, user);
+            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-access-denied"), PopupType.SmallCaution);
+            return;
+        }
+
+        var scannedItem = GetEntity(chipComp.ScannedItem);
+        var scannedPermitCarrier = GetEntity(chipComp.ScannedPermitCarrier);
+
+        if (scannedItem == null || scannedPermitCarrier == null)
+        {
+            PlayDenySound(ent, user);
+            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-no-data"), PopupType.SmallCaution);
+            return;
+        }
+
+        if (HasComp<ContrabandPermitItemComponent>(scannedItem))
+        {
+            PlayDenySound(ent, user);
+            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-already-permit", ("item", scannedItem), ("item", scannedItem)), PopupType.SmallCaution);
+            return;
+        }
+
+        if (!TryComp<ContrabandPermittableComponent>(scannedItem, out var permittable) || !permittable.Permittable)
+            return;
+
+        var permitReason = ent.Comp.CurrentPermitReason;
+
+        if (permitReason == string.Empty || permitReason.Length < MinimumPermitReasonLength)
+        {
+            PlayDenySound(ent, user);
+            ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-reason-too-short"), PopupType.SmallCaution);
+            return;
+        }
+
+        var dateString = _serverDate.ToString("dd MMMM yyyy");
+
+        var permit = EnsureComp<ContrabandPermitItemComponent>(scannedItem.Value);
+        permit.PermitReason = permitReason;
+        permit.DateGranted = dateString;
+        permit.PermitOwnerName = Name(scannedPermitCarrier.Value);
+        permit.PermitOwner = scannedPermitCarrier;
+
+        if (TryComp<ActorComponent>(scannedPermitCarrier, out var actor)
+            && _mind.TryGetMind(actor.PlayerSession, out var mindId, out _))
+        {
+            permit.PermitOwnerMind = mindId;
+        }
+
+        Dirty(scannedItem.Value, permit);
+
+        PlayConfirmSound(ent, user);
+        ConsolePopup(user,
+            Loc.GetString("contraband-permit-console-popup-success", ("item", scannedItem), ("owner", permit.PermitOwnerName)),
+            PopupType.Medium);
+
+        if (_itemSlot.TryEject(ent.Owner, ent.Comp.ChipSlotContainerId, user, out var ejected))
+            PredictedQueueDel(ejected);
+
+        var ev = new ContrabandPermitGrantedEvent(scannedItem.Value, scannedPermitCarrier.Value, ent.Owner, user, ent.Comp.CurrentPermitReason);
+        RaiseLocalEvent(scannedItem.Value, ev, true); // Raised on the projector
+
+        SetConsolePermitReason(ent, string.Empty);
+    }
+
+    private void OnConsolePrintPressed(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsolePrintButtonPressedMessage args)
+    {
+        var curTime = _timing.CurTime;
+        var user = args.Actor;
+
+        if (curTime < ent.Comp.PrintChipTimeoutEnd)
+        {
+            var timeRemaining = (ent.Comp.PrintChipTimeoutEnd - curTime).Seconds;
+            _popup.PopupClient(Loc.GetString("contraband-permit-console-print-chip-cooldown", ("time", timeRemaining)), user, PopupType.MediumCaution);
+            return;
+        }
+
+        PredictedSpawnAtPosition(ent.Comp.ChipPrototype, ent.Owner.ToCoordinates());
+        _audio.PlayPredicted(ent.Comp.ChipPrintSound, ent.Owner, user);
+
+        ent.Comp.PrintChipTimeoutEnd = curTime + ent.Comp.PrintChipTimeout;
+        Dirty(ent);
+    }
+
+    private void PlayConfirmSound(Entity<ContrabandPermitConsoleComponent> ent, EntityUid? user)
+    {
+        _audio.PlayPredicted(ent.Comp.ConfirmSound, ent.Owner, user);
+    }
+
+    private void PlayDenySound(Entity<ContrabandPermitConsoleComponent> ent, EntityUid? user)
+    {
+        _audio.PlayPredicted(ent.Comp.ErrorSound, ent.Owner, user);
+    }
+
+    private void ConsolePopup(EntityUid actor, string text, PopupType type = PopupType.Small)
+    {
+        if (_net.IsClient)
+            return;
+
+        if (actor is { Valid: true } player)
+            _popup.PopupEntity(text, player, type);
+    }
+
+    private void SetConsolePermitReason(Entity<ContrabandPermitConsoleComponent> ent, string reason)
+    {
+        ent.Comp.CurrentPermitReason = reason;
+        Dirty(ent);
+    }
+
+    public record struct ContrabandPermitGrantedEvent(EntityUid PermitEntity, EntityUid PermitOwner, EntityUid? Console, EntityUid? PermitGranter, string Reason);
+}

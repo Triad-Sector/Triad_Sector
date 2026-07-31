@@ -21,6 +21,12 @@ public sealed partial class ContrabandPermitItemComponent : Component
     public EntityUid? PermitOwner;
 
     /// <summary>
+    /// The mind of the permit owner. Used for checking if a permitted item should stay or be seized on a saved ship.
+    /// </summary>
+    [DataField]
+    public EntityUid? PermitOwnerMind;
+
+    /// <summary>
     /// Flavor RP date of whenever the contraband permit was granted.
     /// </summary>
     [DataField, AutoNetworkedField]

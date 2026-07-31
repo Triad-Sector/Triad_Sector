@@ -43,6 +43,7 @@
       - type: CryoSleepRadioOverride
         overrides:
         - Nfsd # TDF radio
+      - type: ContrabandPermitGranter
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

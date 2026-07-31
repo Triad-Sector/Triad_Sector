@@ -1,5 +1,9 @@
 - type: entity
-  parent: [BaseStructureIndestructible, BaseComputerAiAccess, BaseStructureAccessReaderImmuneToEmag]
+  parent:
+  - BaseStructureIndestructible
+  - BaseComputerAiAccess
+  - BaseStructureAccessReaderImmuneToEmag
+  - BaseClass2AShipContrabandSilent
   id: ComputerContrabandPermit
   name: contraband permit manager
   description: Used to manage, grant, and revoke TDF contraband permits to Triad sector citizens.
@@ -29,7 +33,7 @@
   - type: ItemSlots
     slots:
       chip_slot:
-        name: Chip
+        name: contraband-permit-console-item-slot-name
         ejectSound: /Audio/Machines/id_swipe.ogg
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         priority: 1
@@ -37,8 +41,9 @@
           components:
           - ContrabandPermitChip
   - type: ContrabandPermitConsole
-    grantPermitRestrictedJobs:
-    - TdfChiefEnforcer
+    grantPermitWhitelist:
+      components:
+      - ContrabandPermitGranter
   - type: ContainerContainer
     containers:
       board: !type:Container

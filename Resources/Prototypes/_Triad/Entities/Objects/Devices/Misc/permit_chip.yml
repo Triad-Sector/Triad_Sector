@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, BaseClass2AShipContrabandSilent]
   id: PermitChip
   name: TDF permit chip
   description: A small chip used to store the serial number of a controlled item, along with the permit carrier's DNA signature for use in a permit manager console.
@@ -25,7 +25,6 @@
       path: /Audio/_Goobstation/Items/handling/card_drop.ogg
       params:
         volume: -5
-  - type: SavingContraband
   - type: ContrabandPermitChip
     prickDamage:
       types:
