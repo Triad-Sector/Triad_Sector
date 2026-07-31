@@ -2,7 +2,6 @@ using Content.Shared.GameTicking;
 using Content.Shared._Triad.Humanoid;
 using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
-using Content.Server.Chat.Managers;
 
 namespace Content.Server._Triad.Humanoid;
 
@@ -12,7 +11,6 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private IChatManager _admin = default!;
 
     private static readonly EntProtoId HumanoidViewerMobProto = "MobTriadHumanoidViewer";
 
