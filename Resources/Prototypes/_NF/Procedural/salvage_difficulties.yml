@@ -20,7 +20,7 @@
   color: "#DE3A3A96"
   recommendedPlayers: 3
   destructionStructures: 7
-  expeditionReward: SpaceCashExpeditionT1
+  expeditionReward: SpaceCashExpeditionT2
 
 - type: salvageDifficulty
   id: NFExtreme
@@ -31,4 +31,4 @@
   color: "#D381C996"
   recommendedPlayers: 4
   destructionStructures: 9
-  expeditionReward: SpaceCashExpeditionT1
+  expeditionReward: SpaceCashExpeditionT3

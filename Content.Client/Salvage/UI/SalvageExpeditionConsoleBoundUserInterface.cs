@@ -173,6 +173,22 @@ public sealed class SalvageExpeditionConsoleBoundUserInterface : BoundUserInterf
                 Margin = new Thickness(0f, 0f, 0f, 5f),
             });
 
+            // Rewards
+            offering.AddContent(new Label
+            {
+                Text = Loc.GetString("salvage-expedition-window-rewards")
+            });
+
+            var rewards = mission.ExpeditionRewards;
+
+            offering.AddContent(new Label
+            {
+                Text = string.Join("\n", rewards.Select(o => "- " + o)).TrimEnd(),
+                FontColorOverride = StyleNano.ConcerningOrangeFore,
+                HorizontalAlignment = Control.HAlignment.Left,
+                Margin = new Thickness(0f, 0f, 0f, 5f)
+            });
+
             offering.ClaimPressed += args =>
             {
                 SendMessage(new ClaimSalvageMessage()
