@@ -138,12 +138,6 @@
     neck: ClothingNeckCloakAce
 
 - type: loadout
-  id: ClothingNeckCloakAroace
-  price: 0
-  equipment:
-    neck: ClothingNeckCloakAroace
-
-- type: loadout
   id: ClothingNeckCloakBi
   price: 0
   equipment:
@@ -178,12 +172,6 @@
   price: 0
   equipment:
     neck: ClothingNeckCloakLesbian
-
-- type: loadout
-  id: ClothingNeckCloakPoly
-  price: 0
-  equipment:
-    neck: ClothingNeckCloakPoly
 
 - type: loadout
   id: ClothingNeckMantleHOS

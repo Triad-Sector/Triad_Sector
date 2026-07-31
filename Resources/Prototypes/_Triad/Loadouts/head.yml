@@ -257,12 +257,6 @@
     head: FoodAmbrosiaVulgaris
 
 - type: loadout
-  id: ClothingHeadHatDruid
-  price: 0
-  equipment:
-    head: ClothingHeadHatDruid
-
-- type: loadout
   id: ClothingHeadHatCaptain
   price: 0
   equipment:

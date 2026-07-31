@@ -114,12 +114,6 @@
     jumpsuit: ClothingUniformJumpskirtColorGrey
 
 - type: loadout
-  id: ClothingUniformJumpsuitClear
-  price: 0
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitClear
-
-- type: loadout
   id: ClothingUniformJumpsuitColorWhite
   price: 0
   equipment:
@@ -304,12 +298,6 @@
   price: 0
   equipment:
     jumpsuit: ClothingUniformColorRainbow
-
-- type: loadout
-  id: ClothingUniformJumpskirtColorRainbow
-  price: 0
-  equipment:
-    jumpsuit: ClothingUniformJumpskirtColorRainbow
 
 - type: loadout
   id: ClothingUniformJumpsuitHawaiBlack
@@ -765,20 +753,6 @@
     jumpsuit: ClothingUniformRandomPunkTanktopShorts
 
 - type: loadout
-  id: ClothingUniformRandomPunkPantsOnly
-  name: punk pants (random)
-  price: 0
-  equipment:
-    jumpsuit: ClothingUniformRandomPunkPantsOnly
-
-- type: loadout
-  id: ClothingUniformRandomPunkShortsOnly
-  name: punk shorts (random)
-  price: 0
-  equipment:
-    jumpsuit: ClothingUniformRandomPunkShortsOnly
-
-- type: loadout
   id: ClothingUniformRandomArmlessNoSkirt
   name: sleeveless jumpsuit (random)
   price: 0
@@ -1119,12 +1093,6 @@
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpskirtPerformer
-
-- type: loadout
-  id: ClothingUniformSkirtDruid
-  price: 0
-  equipment:
-    jumpsuit: ClothingUniformSkirtDruid
 
 - type: loadout
   id: ClothingUniformJumpsuitSafari

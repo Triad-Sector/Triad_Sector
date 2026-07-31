@@ -64,7 +64,7 @@
   - DocClothingCloakCmo
   - DocClothingNeckMantleCMO
   # Triad Start - Ported Starlight Clothing
-  - WFClothingNeckStethoscope
+  - ClothingNeckStethoscope
   # End Triad
 
 - type: loadoutGroup
