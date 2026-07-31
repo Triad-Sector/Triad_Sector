@@ -33,7 +33,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         }
         else if (permit.PermitOwner != null)
         {
-            var permitMsg = Loc.GetString("contraband-permittable-examine-permit-format", ("name", permit.PermitOwner), ("date", permit.DateGranted));
+            var permitMsg = Loc.GetString("contraband-permittable-examine-permit-format", ("name", permit.PermitOwnerName), ("date", permit.DateGranted));
             msg.AddMarkupOrThrow(permitMsg);
         }
 

@@ -44,6 +44,7 @@
         overrides:
         - Nfsd # TDF radio
       - type: ContrabandPermitGranter
+      - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

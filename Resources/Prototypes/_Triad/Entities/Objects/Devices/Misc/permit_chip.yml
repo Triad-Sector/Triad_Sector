@@ -31,4 +31,4 @@
         Piercing: 1
     permitCarrierBlacklist:
       components:
-      - PermitCarrierBlacklist
+      - ContrabandPermitOwnerBlacklist
