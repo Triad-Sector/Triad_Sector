@@ -22,7 +22,7 @@
 - type: guideEntry
   id: ShipyardBehir
   name: guide-entry-shipyard-behir
-  text: "/ServerInfo/_Mono/Guidebook/Shipyard/behir.xml"
+  text: "/ServerInfo/_Mono/Guidebook/Shipyard/Behir.xml"
 
 - type: guideEntry
   id: ShipyardJudiciary
