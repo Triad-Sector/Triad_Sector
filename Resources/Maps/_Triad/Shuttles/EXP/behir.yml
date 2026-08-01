@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/31/2026 05:49:06
-  entityCount: 1442
+  time: 08/01/2026 06:35:48
+  entityCount: 1443
 maps: []
 grids:
 - 1
@@ -89,10 +89,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
+        Smoke: []
         MetalFoam: []
         Kudzu: []
         Puddle: []
-        Smoke: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1691,6 +1691,8 @@ entities:
       - 934
       - 925
       - 748
+      - 935
+      - 926
 - proto: AirGrenade
   entities:
   - uid: 24
@@ -4686,6 +4688,13 @@ entities:
     - type: Transform
       pos: 9.331838,-12.060157
       parent: 1
+- proto: CigCartonMixed
+  entities:
+  - uid: 802
+    components:
+    - type: Transform
+      pos: 5.2184267,6.5649977
+      parent: 1
 - proto: ClothingHandsGlovesCombat
   entities:
   - uid: 200
@@ -4874,28 +4883,8 @@ entities:
     - type: Transform
       pos: -2.75,-2.25
       parent: 1
-- proto: ComputerTabletopAdvancedRadar
+- proto: ComputerTabletopAlert
   entities:
-  - uid: 601
-    components:
-    - type: Transform
-      pos: 2.5,-5.5
-      parent: 1
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
-- proto: ComputerTabletopGunneryConsole
-  entities:
-  - uid: 602
-    components:
-    - type: Transform
-      pos: 4.5,-5.5
-      parent: 1
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
   - uid: 603
     components:
     - type: Transform
@@ -4906,13 +4895,35 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: ComputerTabletopSalvageExpedition
+- proto: ComputerTabletopGunneryConsole
+  entities:
+  - uid: 601
+    components:
+    - type: Transform
+      pos: 2.5,-5.5
+      parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 604
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.5,-7.5
+      parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerTabletopSalvageExpedition
+  entities:
+  - uid: 602
+    components:
+    - type: Transform
+      pos: 4.5,-5.5
       parent: 1
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -6384,12 +6395,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#947507FF'
-  - uid: 802
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,-10.5
-      parent: 1
   - uid: 803
     components:
     - type: Transform
@@ -7354,6 +7359,9 @@ entities:
     - type: Transform
       pos: 3.5,-9.5
       parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 23
     - type: AtmosPipeColor
       color: '#0055CCFF'
     - type: AtmosPipeLayers
@@ -7468,6 +7476,9 @@ entities:
     - type: Transform
       pos: 2.5,-9.5
       parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 23
     - type: AtmosPipeColor
       color: '#990000FF'
     - type: AtmosPipeLayers
@@ -8139,6 +8150,11 @@ entities:
     components:
     - type: Transform
       pos: -0.6775489,-11.148664
+      parent: 1
+  - uid: 1443
+    components:
+    - type: Transform
+      pos: 5.7080097,6.429581
       parent: 1
 - proto: NFBedrollAlt
   entities:
