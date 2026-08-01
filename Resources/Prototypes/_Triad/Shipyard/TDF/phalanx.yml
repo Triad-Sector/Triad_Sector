@@ -1,0 +1,40 @@
+# Author: Eillyrea
+# Discord: eillyrea
+
+- type: vessel
+  id: Phalanx
+  parent: BaseVessel
+  name: TDF Phalanx
+  description: Mechcarrier of the Triad Defence Force, short range lasers, a strong shield and deployment of armoured forces.  The Phalanx will chose a point, then defend it.
+  price: 305000
+  purchasable: false # voucher only
+  category: Large
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/phalanx.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Phalanx
+  mapName: 'Phalanx'
+  mapPath: /Maps/_Triad/Shuttles/TDF/phalanx.yml
+  minPlayers: 0
+  stations:
+    Phalanx:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Phalanx TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+          Borg: [ 0, 0 ]
+
+
