@@ -8,22 +8,22 @@
   },
   "states": [
     {
-      "name": "MS_100_base"
+      "name": "ms_100_base"
     },
     {
-      "name": "MS_100_emissive"
+      "name": "ms_100_emissive"
     },
     {
-      "name": "MS_250_base"
+      "name": "ms_250_base"
     },
     {
-      "name": "MS_250_emissive"
+      "name": "ms_250_emissive"
     },
     {
-      "name": "MS_500_base"
+      "name": "ms_500_base"
     },
     {
-      "name": "MS_500_emissive"
+      "name": "ms_500_emissive"
     }
   ]
 }
