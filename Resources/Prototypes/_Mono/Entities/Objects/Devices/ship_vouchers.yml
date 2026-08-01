@@ -268,8 +268,8 @@
 - type: entity
   parent: BaseShipLPC
   id: ShipVoucherRavager # Triad - modified this voucher
-  name: ravager LPC
-  description: A small card that contains the data for the procurement of a Ravager-class mothership from the flagship's reserves.
+  name: Ravager - Phalanx LPC
+  description: A small card that contains the data for the procurement of a Ravager-class mothership or Phalanx Mechcarrier from the flagship's reserves.
   components:
   - type: Sprite
     layers:
@@ -282,6 +282,7 @@
     companyName: TDF
     vessels:
     - Ravager
+    - Phalanx
   - type: StaticPrice
     vendPrice: 325000
 
