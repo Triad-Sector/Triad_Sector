@@ -235,6 +235,8 @@
           True: { visible: True }
           False: { visible: False }
   - type: Sprite
+    noRot: true
+    sprite: /Textures/_Triad/Structure/Storage/magnetbox.rsi
     layers:
     - state: treasurebox-closed
       map: [ closed ]
