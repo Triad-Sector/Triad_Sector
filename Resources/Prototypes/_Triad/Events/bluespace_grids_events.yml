@@ -33,6 +33,7 @@
         - type: ForceAnchor
         paths:
         - /Maps/_Triad/Bluespace/tdfvault.yml
+    extendIfPopulated: false # vaults should always be a set time
     rewardAccounts:
       TDF: 0.7 # TDF, 70% of the appraised grid
       Frontier: 0.1 # 10% of the appraised grid to colonial outpost
@@ -74,6 +75,7 @@
         - type: ForceAnchor
         paths:
         - /Maps/_Triad/Bluespace/tdfvaultsmall.yml
+    extendIfPopulated: false # vaults should always be a set time
     rewardAccounts:
       TDF: 0.9 # TDF
       Frontier: 0.1

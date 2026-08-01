@@ -81,6 +81,7 @@
   - TdfChiefEnforcer  # Triad
   - StationTrafficController # Frontier
   - DirectorOfCare # Mono
+  - PlantManager # Triad
   primary: false
   weight: 100
 

@@ -1,5 +1,12 @@
 # Ship Saving Contraband
 - type: entity
+  id: BaseClass1ShipContraband # Legal to own, but seized. Typically for things that cannot serialize.
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
+
+- type: entity
   id: BaseClass2AShipContraband
   abstract: true
   components:

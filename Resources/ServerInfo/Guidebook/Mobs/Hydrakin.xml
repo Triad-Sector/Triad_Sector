@@ -1,38 +1,93 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Hydrakin
-
-  <Box>
-    <GuideEntityEmbed Entity="MobHydrakin" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  ## Lore
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  Hydrakin are avian creatures with an odd appearance and an extreme tolerance for cold. Fluffy, exceptionally warm, and notoriously noisy, these birds originate from a desolate iceworld far beyond the normal limits of habitable space. Their home planet is locked in perpetual ice storms, dimly lit, and surrounded by liquid oxygen oceans beneath a frezon-heavy atmosphere—once thought entirely lifeless.
+  [color=#999999][italic]“Cold-zone rotation, every time. They prefer it, you save on heating, and they'll notice if you got the phonetic right on the intake form. Iceworld biology. Don't read into the name; they're not snakes.”[/italic][/color]
 
-  Previously not meeting qualifications for sentience, the species was uplifted by Ullman Industries. Instead of being uplifted for integration or labor, Ullman pursued uplift as a proof-of-concept experiment to demonstrate its technological capability to investors. Once sapience and communication benchmarks were met, the project was declared a success, but the uplifted species itself was considered uneconomical to corporate interests.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  Transport disruptions, bluespace storms, and corporate negligence scattered Hydrakin shipments and colonies across the Triad, leaving many outside Ullman control. Today, the Hydrakin exist as a partially uplifted, displaced species, struggling to adapt to a sector they were never meant to inhabit.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-HDK[/mono]
 
-  ## Food
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  - Hydrakins mostly prefer raw food. Onions and theobromine-containing food are [color=#FFA500]highly toxic to them[/color].
+      [mono][color=#897236]ORIGIN     [/color]  Ullman uplift, displaced[/mono]
 
-  ## Physical properties
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — self-heating[/mono]
 
-  - They are [color=#4169E1]10% more resistant to piercing and blunt damage[/color].
-  - They take [color=#FFA500]25% more heat damage and 15% more slash damage[/color].
-  - Wearing glasses is [color=#FFA500]not possible[/color] due to the head anatomy.
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved, Conditional[/color][/mono]
+    </Box>
 
-  ## Temperature
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobHydrakinDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  - Hydrakin bodies are [color=#FFA500]constantly heating up[/color]. They can tolerate heat without any insulation, but wearing hardsuits or coats will immediatly start [color=#FFA500]heating them up to 67C[/color].
-  - Leporazine and Peranol have [color=#4169E1]amplified[/color] cooling effect on their body.
-  - However, using any type of cryo chemicals will make hydrakins [color=#FFA500]fall asleep[/color] if their body temperature is low enough to activate it.
-  - As well, Hydrakin's thermal regulation entirely fails in critical condition as while as being dead.
+  Subject: Avian beings with continuously self-heating bodies and an extreme tolerance for cold.
 
-  ## Atmospherics
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  - Hydrakins are capable of breathing all gases, with carbon dioxide and water vapor being an exception.
-  - Unique gases (Such as Plasma, Tritium, Frezon, Nitrium, Healium and etc.) have mostly [color=#4169E1]positive[/color] effect on them, described in the "Chemicals" guideebook entry.
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -25% vulnerable, self-overheats[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■■[/color]  iceworld-native, immune below baseline[/mono]
+
+  [mono]  Pressure  [color=#cc3333]■■[/color][color=#555555]□□□[/color]  -20% to vacuum exposure[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, prefers raw food and additionally tolerates raw meat.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) are toxic. Both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes [color=#1e90ff][bold]most atmospheric gases[/bold][/color]. Carbon Dioxide is inert (cannot draw Oxygen from it, no damage). Water Vapor is non-respirable.
+  - Exotic gases (Plasma, Tritium, Frezon, Nitrium, Healium, etc.) have [color=#1e90ff][bold]mostly positive effects[/bold][/color]. See Chemicals reference for specifics.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color] with [color=#ffa500][bold]20% amplified damage[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]10% less Piercing and Blunt damage[/bold][/color]. Cleared for hazardous-environment rotations.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - Continuously [color=#1e90ff][bold]self-heating[/bold][/color]. Hardsuits and winter coats trap excess heat; body temperature can climb to [color=#ffa500][bold]67°C[/bold][/color]. PPE waiver filed automatically at intake.
+  - Cryogenic agents may [color=#1e90ff][bold]induce sleep[/bold][/color] at sufficient dose. Leporazine and Peranol have [color=#1e90ff][bold]amplified[/bold][/color] cooling effect.
+  - Thermal self-regulation fails on critical condition or death.
+  - Cannot wear standard eyewear due to head anatomy. Vision-correction waiver issued at intake.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]25% more Heat damage[/bold][/color] and [color=#ffa500][bold]15% more Slash damage[/bold][/color] than baseline. Insurance Tier A near welding stations, plasma fires, and burn chambers.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]20% more vacuum damage[/bold][/color]. EVA rotations require Tier-2 hardsuit signoff.
+
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[2 entries on file\][/color]
+
+  [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  Subject species descends from a [color=#a4885c][bold]Ullman Industries[/bold][/color] uplift program, discontinued upon completion of investor demonstration. Ancestral population was scattered across the [color=#a4885c][bold]Triad[/bold][/color] sector during program discontinuation; modern Hydrakin present as a stable refugee-descended polity. The corporation remains in operation but has relinquished all proprietary claims to the population; free-agent terms apply by default.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

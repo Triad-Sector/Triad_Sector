@@ -29,13 +29,13 @@
 - type: dataset
   id: TSFMCCoreNameset
   values:
-  - TSFMC Watcher
-  - TSFMC Upholder
-  - TSFMC Robocop
-  - TSFMC Silicon
-  - TSFMCAI.exe
-  - TSFMC Dog
-  - TSFMC Unit
+  - TDF Watcher
+  - TDF Upholder
+  - TDF Protector
+  - TDF Silicon
+  - TDFAI.exe
+  - TDF Dog
+  - TDF Unit
 
 - type: dataset
   id: PDVCoreNameset

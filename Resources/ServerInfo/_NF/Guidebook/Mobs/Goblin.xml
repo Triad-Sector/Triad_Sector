@@ -1,31 +1,90 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Goblins
-
-  <Box>
-    <GuideEntityEmbed Entity="MobGoblin" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  Goblins are a race of humanoid beings. They tend to be small, very loud and fragile.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  ## Benefits
+  [color=#999999][italic]“Loud. Fragile. Resilient enough to be productive regardless. Mousetrap maintenance has been re-routed away from Goblin personnel by standing order.”[/italic][/color]
 
-  - Due to their unusual dietary choices goblins take [color=lime]25% less Toxin damage[/color],
-  - When unarmed, their claws deal [color=red]Slash[/color] damage instead of Blunt.
-  - Smaller than humans.
-  - Can fit in duffelbags.
-  - Their resilient goblinly nature makes them take 10% less blunt damage.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  ## Special
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-GBL[/mono]
 
-  - Can rummage in disposal chutes to dig up trash.
-  - Can dive into toilets and mailing units because of their small size.
-  - Unique chants.
-  - Inherently speak in Goblin Cant.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Goblin[/mono]
 
-  ## Drawbacks
+      [mono][color=#897236]ORIGIN     [/color]  Goblin homeworld[/mono]
 
-  - Because of their small size they take [color=#ffa500]10% more Piercing damage[/color].
-  - Always triggers mousetraps, even when wearing shoes.
-  - They don't like to be sprayed with water or space cleaner.
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobGoblinDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Small, loud, and fragile humanoids with a resilient digestive system and unusual dietary tolerances.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous. Resilient digestive system tolerates substances baseline cannot.
+  - Take [color=#1e90ff][bold]25% less Toxin damage[/bold][/color] due to unusual dietary tolerance.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - Take [color=#1e90ff][bold]10% less Blunt and Caustic damage[/bold][/color] than baseline.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+  - [color=#1e90ff][bold]Reduced fall and impact damage[/bold][/color]: tumbling off ladders or being thrown hurts them less.
+  - [color=#1e90ff][bold]Maintains near-full speed when injured[/bold][/color]: damage slows them down less than baseline.
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] due to small stature.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - Can [color=#ffdd33][bold]rummage in disposal chutes[/bold][/color] to retrieve discarded items. Recognised as an approved task, not misuse of facilities.
+  - Can [color=#ffdd33][bold]dive into toilets and mailing units[/bold][/color] due to small stature. Plumbing has been notified.
+  - Innately speaks [color=#a4885c][bold]Goblin Cant[/bold][/color]. Translation is the listener's responsibility, not Goblin personnel's.
+  - Unique chants; supervisors are advised to permit them on shift.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Piercing damage[/bold][/color] due to small frame.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Always triggers mousetraps[/bold][/color], even when wearing shoes. Custodial duty re-routed.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Strong aversion to being sprayed[/bold][/color] with water or space cleaner. Mark relevant interactions in shift logs.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

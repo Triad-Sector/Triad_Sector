@@ -1,24 +1,87 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Tajaran
-
-  <Box>
-    <GuideEntityEmbed Entity="MobTajaran" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  Tajara are a species of omnivorous, bipedal humanoids with features strongly resembling Terran felines.
-  Their most distinguishing traits include a layer of fur, large ears atop their heads, and a tail that aids in balance.
-  They hail from the icy moon of [color=turquoise]Ahdomai[/color], only relatively recently making their debut on the galactic stage.
-  Originally a clan-centric society, Tajara endured centuries of dictatorial rule.
-  Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  ## Mechanics
+  [color=#999999][italic]“Sleep cycle. Roughly 36 hours up, 20-some down. I asked once; they were polite about it. Schedule the long shift around them and they'll outwork you.”[/italic][/color]
 
-  Due to their [color=yellow]small stature[/color], Tajara [color=#ec3a3a]take 15% more Brute damage[/color], but they can also [color=#1e90ff]fit into duffel bags[/color].
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  Their layer of fur gives them some [color=#1e90ff]resistance to Cold[/color], at the cost of [color=#ec3a3a]taking more Heat damage[/color]
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-TJR[/mono]
 
-  They use their claws for unarmed attacks, dealing [color=#ec3a3a]Slashing[/color] and [color=#ec3a3a]Piercing[/color] damage.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Feline[/mono]
 
-  Thanks to their innate agility, they [color=#1e90ff]take reduced damage from impacts or falls[/color], and their soft feet allow them to [color=#1e90ff]walk shoeless without making noise[/color].
+      [mono][color=#897236]ORIGIN     [/color]  Ahdomai, S'rand'marr binary[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobTajaranDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Digitigrade, fur-insulated felines from the icy moon Ahdomai. Long-recognized civil society predating the corporate era; clan affiliations persist culturally though no longer dictate work assignment.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■■[/color][color=#555555]□□□[/color]  vulnerable — fur traps body heat[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  resistant — natural fur insulation[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, eats what humans eat. No Mess Hall accommodations required.
+  - Hunger rate runs [color=#ffa500][bold]~16% faster[/bold][/color] than baseline. Supplemental rations for long deployments.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Night Vision[/bold][/color]: operates in low-light without aid.
+  - [color=#1e90ff][bold]Reduced impact/fall damage[/bold][/color] from innate agility.
+  - [color=#1e90ff][bold]Walks shoeless without making noise[/bold][/color] thanks to soft feet. Cite Subsection 4.b before assigning to roles requiring audible approach.
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] due to small stature.
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash and Piercing damage[/bold][/color] via claws.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#999999][italic]“Adhomai politics are settled history at this point. Cultural identity stays in section four; nothing else needs to travel with the file.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]15% more Brute damage[/bold][/color] due to smaller stature.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Reduced stamina[/bold][/color] compared to baseline humanoids.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

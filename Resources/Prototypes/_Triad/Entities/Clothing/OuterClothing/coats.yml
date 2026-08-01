@@ -31,6 +31,9 @@
     sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseClass2AShipContrabandSilent]
@@ -42,6 +45,9 @@
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseClass2AShipContrabandSilent]
@@ -60,6 +66,9 @@
       Plasteel: 125
   - type: StaticPrice
     price: 180
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingOuterCoatTdfChiefEnforcerTrench
@@ -72,3 +81,6 @@
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
   - type: SavingContraband
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

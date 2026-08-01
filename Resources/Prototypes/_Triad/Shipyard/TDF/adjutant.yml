@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Adjutant:
-      stationProto: StandardFrontierSecurityVessel
+      stationProto: StandardTriadTdfVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Adjutant TDF{1}'

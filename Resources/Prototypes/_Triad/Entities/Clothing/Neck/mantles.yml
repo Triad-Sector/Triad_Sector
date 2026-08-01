@@ -6,3 +6,6 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Neck/Mantles/tdfchief.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
