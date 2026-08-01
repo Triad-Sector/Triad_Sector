@@ -8,5 +8,5 @@ public sealed partial class SectorContrabandPermitsComponent : Component
     /// Key is the permit owner, the list is the permitted items.
     /// </summary>
     [DataField]
-    public Dictionary<EntityUid, List<EntityUid>> Records = new();
+    public Dictionary<NetEntity, List<NetEntity>> Records = new();
 }

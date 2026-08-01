@@ -1,5 +1,4 @@
 using Content.Shared.Radio;
-using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -34,7 +33,7 @@ public sealed partial class ContrabandPermitConsoleComponent : Component
     /// The current selected permit
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public PermitFocusData? FocusPermit;
+    public PermitEntryFocusData? FocusedEntry;
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier ErrorSound =
@@ -67,26 +66,21 @@ public sealed partial class ContrabandPermitConsoleComponent : Component
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan PrintChipTimeoutEnd;
+
+    [DataField, AutoNetworkedField]
+    public ContrabandPermitConsoleEntry[] Entries = Array.Empty<ContrabandPermitConsoleEntry>();
 }
 
 [Serializable, NetSerializable]
-public struct PermitFocusData(
-    NetEntity permitOwner,
-    EntProtoId itemEntProtoId,
-    NetEntity itemNetEntity)
+public struct PermitEntryFocusData(NetEntity permitOwner, NetEntity? selectedItem = null)
 {
     /// <summary>
-    /// permit owner
+    /// The permit owner's net entity that the console is currently focused on
     /// </summary>
     public NetEntity PermitOwner = permitOwner;
 
     /// <summary>
-    /// Entity prototype of the permitted item
+    /// Net entity of the selected permit item. Can be null.
     /// </summary>
-    public EntProtoId ItemEntProtoId = itemEntProtoId;
-
-    /// <summary>
-    /// Net entity of the permitted item
-    /// </summary>
-    public NetEntity ItemNetEntity = itemNetEntity;
+    public NetEntity? SelectedItem = selectedItem;
 }

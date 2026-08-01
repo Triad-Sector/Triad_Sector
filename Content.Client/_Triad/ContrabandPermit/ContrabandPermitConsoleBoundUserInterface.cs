@@ -18,16 +18,18 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
         _menu = new(_playerManager);
         _menu.SetOwner(Owner);
         _menu.OpenCentered();
-        _menu.UpdateUI();
+
+        _menu.OnClose += Close;
 
         if (!EntMan.TryGetComponent<ContrabandPermitConsoleComponent>(Owner, out var consoleComp))
             return;
 
         _menu.EjectButton.OnPressed += _ => SendPredictedMessage(new ItemSlotButtonPressedEvent(consoleComp.ChipSlotContainerId));
 
-        _menu.OnReasonChanged += OnJobChanged;
+        _menu.OnReasonChanged += OnReasonChanged;
         _menu.OnGrantButtonPressed += OnGrantButtonPressed;
         _menu.OnPrintButtonPressed += OnPrintButtonPressed;
+        _menu.SendFocusChangeMessage += OnSendFocusChangeMessage;
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -37,7 +39,7 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
         _menu?.UpdateState(castState);
     }
 
-    private void OnJobChanged(string reason)
+    private void OnReasonChanged(string reason)
     {
         SendPredictedMessage(new ContrabandPermitConsoleReasonUpdatedMessage(reason));
     }
@@ -50,6 +52,11 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
     private void OnPrintButtonPressed()
     {
         SendPredictedMessage(new ContrabandPermitConsolePrintButtonPressedMessage());
+    }
+
+    private void OnSendFocusChangeMessage(NetEntity? owner, NetEntity? item)
+    {
+        SendPredictedMessage(new ContrabandPermitConsoleFocusChangeMessage(owner, item));
     }
 
     protected override void Dispose(bool disposing)

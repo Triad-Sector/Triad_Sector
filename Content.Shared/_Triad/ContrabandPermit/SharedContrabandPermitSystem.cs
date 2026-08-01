@@ -23,6 +23,9 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         if (!args.CanInteract)
             return;
 
+        if (!ent.Comp.Permittable)
+            return;
+
         var defaultText = Loc.GetString(ent.Comp.ExamineText);
 
         var msg = new FormattedMessage();

@@ -22,6 +22,9 @@ contraband-permit-console-print-chip-cooldown = Printing on cooldown. Time remai
 contraband-permit-console-window-permit-owner-entries-placeholder = Permits on file: N/A
 contraband-permit-console-window-permit-owner-entries = Permit(s) on file: {$number}
 
+contraband-permit-console-window-permit-entries-list = Active permits:
+contraband-permit-console-window-permit-entries-select-entry = Please select entry
+
 contraband-permit-console-window-permit-grant-no-item = No permit chip inserted into console
 contraband-permit-console-window-permit-grant-no-access = Unauthorized access
 

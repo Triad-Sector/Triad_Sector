@@ -41,9 +41,9 @@
           components:
           - ContrabandPermitChip
   - type: ContrabandPermitConsole
-    grantPermitWhitelist:
-      components:
-      - ContrabandPermitGranter
+    #grantPermitWhitelist:
+    #  components:
+    #  - ContrabandPermitGranter
   - type: ContainerContainer
     containers:
       board: !type:Container

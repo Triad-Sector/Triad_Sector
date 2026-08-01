@@ -24,7 +24,6 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private IConfigurationManager _config = default!;
-    [Dependency] private ISharedAdminLogManager _adminLog = default!;
 
     private static readonly int MinimumPermitReasonLength = 5; // characters
 
@@ -32,17 +31,29 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
 
     private void InitializeConsole()
     {
-        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntInsertedIntoContainerMessage>(UpdateUserInterface);
-        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntRemovedFromContainerMessage>(UpdateUserInterface);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, MapInitEvent>(OnConsoleMapInit);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntInsertedIntoContainerMessage>(OnConsoleContainerUpdated);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, EntRemovedFromContainerMessage>(OnConsoleContainerUpdated);
 
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleReasonUpdatedMessage>(OnConsoleReasonChanged);
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleGrantButtonPressedMessage>(OnConsoleGrantPressed);
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsolePrintButtonPressedMessage>(OnConsolePrintPressed);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleFocusChangeMessage>(OnConsoleFocusChanged);
 
         Subs.CVar(_config, DCCVars.YearOffset, value => _serverDate = DateTime.Today.AddYears(value), true);
     }
 
-    private void UpdateUserInterface(EntityUid uid, ContrabandPermitConsoleComponent component, EntityEventArgs args)
+    private void OnConsoleMapInit(Entity<ContrabandPermitConsoleComponent> ent, ref MapInitEvent args)
+    {
+        UpdateUserInterface(ent.Owner, ent.Comp);
+    }
+
+    private void OnConsoleContainerUpdated(EntityUid uid, ContrabandPermitConsoleComponent component, EntityEventArgs args)
+    {
+        UpdateUserInterface(uid, component);
+    }
+
+    protected void UpdateUserInterface(EntityUid uid, ContrabandPermitConsoleComponent component)
     {
         if (!component.Initialized)
             return;
@@ -57,11 +68,11 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         if (itemSlot.Item is { } targetChip)
         {
             var chipNetEnt = GetNetEntity(targetChip);
-            newState = new ContrabandPermitConsoleBuiState(chipNetEnt, dateString);
+            newState = new ContrabandPermitConsoleBuiState(chipNetEnt, dateString, component.Entries, component.FocusedEntry);
         }
         else
         {
-            newState = new ContrabandPermitConsoleBuiState(null, null);
+            newState = new ContrabandPermitConsoleBuiState(null, null, component.Entries, component.FocusedEntry);
         }
 
         _userInterface.SetUiState(uid, ContrabandPermitConsoleUi.Key, newState);
@@ -147,7 +158,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
             PredictedQueueDel(ejected);
 
         var ev = new ContrabandPermitGrantedEvent(scannedItem.Value, scannedPermitCarrier.Value, ent.Owner, user, ent.Comp.CurrentPermitReason);
-        RaiseLocalEvent(scannedItem.Value, ev, true); // Raised on the projector
+        RaiseLocalEvent(scannedItem.Value, ev, true);
 
         SetConsolePermitReason(ent, string.Empty);
     }
@@ -169,6 +180,21 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
 
         ent.Comp.PrintChipTimeoutEnd = curTime + ent.Comp.PrintChipTimeout;
         Dirty(ent);
+    }
+
+    private void OnConsoleFocusChanged(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsoleFocusChangeMessage args)
+    {
+        if (args.FocusedOwner == null)
+        {
+            ent.Comp.FocusedEntry = null;
+        }
+        else
+        {
+            ent.Comp.FocusedEntry = new PermitEntryFocusData(args.FocusedOwner.Value, args.FocusedItem);
+        }
+
+        Dirty(ent);
+        UpdateUserInterface(ent.Owner, ent.Comp);
     }
 
     private void PlayConfirmSound(Entity<ContrabandPermitConsoleComponent> ent, EntityUid? user)

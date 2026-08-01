@@ -52,17 +52,19 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             return;
 
         // The 'permit owner'. This is the Global PVS humanoid view of the owner so the picture works outside of PVS range, or the entity itself if it doesn't exist
-        var entryEntity = permitOwner;
+        var entryEntity = GetNetEntity(permitOwner);
         if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.PvsView != null)
-            entryEntity = humanoidView.PvsView.Value;
+            entryEntity = GetNetEntity(humanoidView.PvsView.Value);
 
         // Initalize the key if it doesn't exist, get the list of permits that the owner has or add one if it doesn't exist, then add the new permit item under the record
         ref var permitList = ref CollectionsMarshal.GetValueRefOrAddDefault(contrabandPermitNet.Records, entryEntity, out var exists);
 
         if (!exists || permitList == null)
-            permitList = new List<EntityUid>();
+            permitList = new List<NetEntity>();
 
-        permitList.Add(permitItem);
+        permitList.Add(GetNetEntity(permitItem));
+
+        UpdatePermitConsoles();
     }
 
     public void RemovePermitRecordToSectorService(EntityUid permitOwner, EntityUid permitItem)
@@ -70,12 +72,14 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         if (!TryComp(_sectorService.GetServiceEntity(), out SectorContrabandPermitsComponent? contrabandPermitNet))
             return;
 
-        var entryEntity = permitOwner;
+        var entryEntity = GetNetEntity(permitOwner);
         if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.PvsView != null)
-            entryEntity = humanoidView.PvsView.Value;
+            entryEntity = GetNetEntity(humanoidView.PvsView.Value);
 
         if (contrabandPermitNet.Records.ContainsKey(entryEntity) && contrabandPermitNet.Records.TryGetValue(entryEntity, out var list))
-            list.Remove(permitItem);
+            list.Remove(GetNetEntity(permitItem));
+
+        UpdatePermitConsoles();
     }
 
     private void SendPermitOwnerPdaMessage(EntityUid permitOwner, string header, string message)
@@ -90,5 +94,40 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             _cartridgeLoader.SendNotification(uid, header, message, cartridgeComp);
             break; // PDA found, break
         }
+    }
+
+    private void UpdatePermitConsoles()
+    {
+        if (!TryComp(_sectorService.GetServiceEntity(), out SectorContrabandPermitsComponent? contrabandPermitNet))
+            return;
+
+        var query = EntityQueryEnumerator<ContrabandPermitConsoleComponent>();
+        while (query.MoveNext(out var uid, out var console))
+        {
+            var permitEntries = GetAllPermitEntryData(contrabandPermitNet);
+            var permitEntryArray = permitEntries.ToArray();
+
+            console.Entries = permitEntryArray;
+            Dirty(uid, console);
+
+            UpdateUserInterface(uid, console);
+        }
+    }
+
+    private static List<ContrabandPermitConsoleEntry> GetAllPermitEntryData(SectorContrabandPermitsComponent contrabandPermitNet)
+    {
+        var permitRecords = contrabandPermitNet.Records;
+
+        var data = new List<ContrabandPermitConsoleEntry>();
+
+        foreach (var record in permitRecords)
+        {
+            var owner = record.Key;
+            var items = record.Value;
+
+            data.Add(new ContrabandPermitConsoleEntry(owner, items));
+        }
+
+        return data;
     }
 }
