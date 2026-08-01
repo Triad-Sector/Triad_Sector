@@ -1,4 +1,5 @@
 guide-entry-shipyard-gondola = Gondola
+guide-entry-shipyard-behir = Behir
 
 guide-entry-section1 = Use of Language and Respect Section
 guide-entry-section2 = Game Server Section
