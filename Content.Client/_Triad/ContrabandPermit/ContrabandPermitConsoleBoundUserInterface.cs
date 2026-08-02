@@ -28,6 +28,7 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
 
         _menu.OnReasonChanged += OnReasonChanged;
         _menu.OnGrantButtonPressed += OnGrantButtonPressed;
+        _menu.OnRevokeButtonPressed += OnRevokeButtonPressed;
         _menu.OnPrintButtonPressed += OnPrintButtonPressed;
         _menu.SendFocusChangeMessage += OnSendFocusChangeMessage;
     }
@@ -47,6 +48,11 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
     private void OnGrantButtonPressed()
     {
         SendPredictedMessage(new ContrabandPermitConsoleGrantButtonPressedMessage());
+    }
+
+    private void OnRevokeButtonPressed(string reason)
+    {
+        SendPredictedMessage(new ContrabandPermitConsoleRevokeButtonPressedMessage(reason));
     }
 
     private void OnPrintButtonPressed()

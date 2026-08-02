@@ -26,6 +26,7 @@
   - TdfChiefEnforcer
   - TdfWarden
   - TdfPatrolTeamLeader
+  - TdfPermitControl
   ranks:
     RankChiefEnforcer: []
   special:

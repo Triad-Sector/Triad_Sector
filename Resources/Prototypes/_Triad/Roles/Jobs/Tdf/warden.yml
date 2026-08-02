@@ -27,6 +27,7 @@
   - Chemistry
   - TdfWarden
   - TdfPatrolTeamLeader
+  - TdfPermitControl
   ranks:
     RankWarden: []
   special:

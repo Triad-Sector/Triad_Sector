@@ -37,6 +37,7 @@
       - Frontier # Frontier
       - HeadOfPersonnel
       - TdfChiefEnforcer # Triad
+      - TdfPermitControl # Triad
       - Hydroponics
       - Janitor
       - Kitchen
@@ -139,6 +140,7 @@
     - Wizard
     - Solarian # Triad
     - Coalition # Triad
+    - TdfPermitControl # Triad
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg

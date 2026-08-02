@@ -41,6 +41,12 @@ public sealed class ContrabandPermitConsoleReasonUpdatedMessage(string reason) :
 public sealed class ContrabandPermitConsoleGrantButtonPressedMessage() : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
+public sealed class ContrabandPermitConsoleRevokeButtonPressedMessage(string reason) : BoundUserInterfaceMessage
+{
+    public string Reason = reason;
+}
+
+[Serializable, NetSerializable]
 public sealed class ContrabandPermitConsolePrintButtonPressedMessage() : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]

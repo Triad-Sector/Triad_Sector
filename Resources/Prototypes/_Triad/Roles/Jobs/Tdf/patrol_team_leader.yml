@@ -28,8 +28,10 @@
   - GeneralTdfAccessBrig
   access:
   - TdfPatrolTeamLeader
+  - Command
   - Medical
   - Chemistry
+  - TdfPermitControl
   ranks:
     RankSeniorEnforcer: []
   special:

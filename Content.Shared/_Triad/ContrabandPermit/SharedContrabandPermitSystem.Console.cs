@@ -1,6 +1,5 @@
 using Content.Shared._DV.CCVars;
 using Content.Shared.Access.Systems;
-using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates;
 using Content.Shared.Mind;
@@ -25,7 +24,8 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private IConfigurationManager _config = default!;
 
-    private static readonly int MinimumPermitReasonLength = 5; // characters
+    private static readonly int MinimumPermitReasonLength = 5;
+    private static readonly int MinimumRevokeReasonLength = 5;
 
     private static DateTime _serverDate;
 
@@ -37,6 +37,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
 
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleReasonUpdatedMessage>(OnConsoleReasonChanged);
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleGrantButtonPressedMessage>(OnConsoleGrantPressed);
+        SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleRevokeButtonPressedMessage>(OnConsoleRevokePressed);
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsolePrintButtonPressedMessage>(OnConsolePrintPressed);
         SubscribeLocalEvent<ContrabandPermitConsoleComponent, ContrabandPermitConsoleFocusChangeMessage>(OnConsoleFocusChanged);
 
@@ -163,6 +164,80 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         SetConsolePermitReason(ent, string.Empty);
     }
 
+    private void OnConsoleRevokePressed(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsoleRevokeButtonPressedMessage args)
+    {
+        var user = args.Actor;
+
+        if (!_accessReader.IsAllowed(ent.Owner, user))
+        {
+            PlayDenySound(ent, args.Actor);
+            ConsolePopup(args.Actor, Loc.GetString("contraband-permit-console-popup-error-access-denied"), PopupType.SmallCaution);
+            return;
+        }
+
+        var reason = args.Reason.Trim();
+
+        if (reason.Length < MinimumRevokeReasonLength)
+        {
+            PlayDenySound(ent, args.Actor);
+            ConsolePopup(args.Actor, Loc.GetString("contraband-permit-console-popup-revoke-reason-too-short"), PopupType.SmallCaution);
+            return;
+        }
+
+        if (ent.Comp.FocusedEntry == null || ent.Comp.FocusedEntry.Value.SelectedItem is not { } selectedNetItem)
+        {
+            PlayDenySound(ent, args.Actor);
+            ConsolePopup(args.Actor, Loc.GetString("contraband-permit-console-popup-revoke-no-focus"), PopupType.SmallCaution);
+            return;
+        }
+
+        var selectedItem = GetEntity(selectedNetItem);
+
+        if (!TryComp<ContrabandPermitItemComponent>(selectedItem, out var permitInfo) || permitInfo.PermitOwner == null)
+            return;
+
+        var permitOwner = permitInfo.PermitOwner.Value;
+        var permitOwnerName = permitInfo.PermitOwnerName;
+
+        RemComp(selectedItem, permitInfo);
+
+        PlayConfirmSound(ent, user);
+        ConsolePopup(user,
+            Loc.GetString("contraband-permit-console-popup-success-revoke", ("item", selectedItem), ("owner", permitOwnerName)),
+            PopupType.Medium);
+
+        // Update the focus
+        if (ent.Comp.FocusedEntry is { } focusedEntry)
+        {
+            var lastEntry = false;
+
+            foreach (var entry in ent.Comp.Entries)
+            {
+                if (entry.Owner != focusedEntry.PermitOwner)
+                    continue;
+
+                if (entry.Items.Count <= 1)
+                    lastEntry = true;
+
+                break;
+            }
+
+            // If there's more than one entry left by this owner
+            if (!lastEntry)
+            {
+                var focusData = new PermitEntryFocusData(focusedEntry.PermitOwner, null);
+                UpdateFocusData(ent, focusData);
+            }
+            else
+            {
+                UpdateFocusData(ent, null);
+            }
+        }
+
+        var ev = new ContrabandPermitRevokedEvent(selectedItem, permitOwner, ent.Owner, user, reason);
+        RaiseLocalEvent(selectedItem, ev, true);
+    }
+
     private void OnConsolePrintPressed(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsolePrintButtonPressedMessage args)
     {
         var curTime = _timing.CurTime;
@@ -186,13 +261,18 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
     {
         if (args.FocusedOwner == null)
         {
-            ent.Comp.FocusedEntry = null;
+            UpdateFocusData(ent, null);
         }
         else
         {
-            ent.Comp.FocusedEntry = new PermitEntryFocusData(args.FocusedOwner.Value, args.FocusedItem);
+            var focusData = new PermitEntryFocusData(args.FocusedOwner.Value, args.FocusedItem);
+            UpdateFocusData(ent, focusData);
         }
+    }
 
+    private void UpdateFocusData(Entity<ContrabandPermitConsoleComponent> ent, PermitEntryFocusData? entry)
+    {
+        ent.Comp.FocusedEntry = entry;
         Dirty(ent);
         UpdateUserInterface(ent.Owner, ent.Comp);
     }
@@ -223,4 +303,5 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
     }
 
     public record struct ContrabandPermitGrantedEvent(EntityUid PermitEntity, EntityUid PermitOwner, EntityUid? Console, EntityUid? PermitGranter, string Reason);
+    public record struct ContrabandPermitRevokedEvent(EntityUid PermitEntity, EntityUid PermitOwner, EntityUid? Console, EntityUid? PermitRevoker, string Reason);
 }

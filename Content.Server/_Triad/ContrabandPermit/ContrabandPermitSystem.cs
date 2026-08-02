@@ -8,6 +8,7 @@ using Content.Shared.PDA;
 using Content.Server._NF.SectorServices;
 using Content.Shared._Triad.Humanoid;
 using System.Runtime.InteropServices;
+using Content.Server.Radio.EntitySystems;
 
 namespace Content.Server._Triad.ContrabandPermit;
 
@@ -16,6 +17,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private CartridgeLoaderSystem _cartridgeLoader = default!;
+    [Dependency] private RadioSystem _radio = default!;
     [Dependency] private SectorServiceSystem _sectorService = default!;
 
     public override void Initialize()
@@ -23,6 +25,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         base.Initialize();
 
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitGrantedEvent>(OnPermitGranted);
+        SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitRevokedEvent>(OnPermitRevoked);
     }
 
     private void OnPermitGranted(Entity<ContrabandPermittableComponent> ent, ref ContrabandPermitGrantedEvent args)
@@ -42,8 +45,49 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         var pdaMsg = Loc.GetString("contraband-permit-console-pda-message-permit-granted", ("item", permitItem), ("reason", permitReason));
         SendPermitOwnerPdaMessage(permitOwner, header, pdaMsg);
 
+        if (args.Console != null && permitGranter != null)
+        {
+            var consoleMessage = Loc.GetString("contraband-permit-console-radio-message-permit-granted",
+                ("item", permitItem),
+                ("user", permitGranter),
+                ("owner", permitOwner),
+                ("reason", permitReason));
+            SendConsoleRadioMessage(args.Console.Value, consoleMessage);
+        }
+
         // Now, add the permit record to the sector service
         AddPermitRecordToSectorService(permitOwner, permitItem);
+    }
+
+    private void OnPermitRevoked(Entity<ContrabandPermittableComponent> ent, ref ContrabandPermitRevokedEvent args)
+    {
+        var permitItem = args.PermitEntity;
+        var permitOwner = args.PermitOwner;
+        var permitRevoker = args.PermitRevoker;
+        var permitReason = args.Reason;
+
+        var message = $"{ToPrettyString(permitRevoker):player} revoked contraband permit from {ToPrettyString(permitOwner)} with reason {permitReason} " +
+            $"for the item {ToPrettyString(permitItem)}";
+
+        _chat.SendAdminAlert(message);
+        _adminLog.Add(LogType.Action, LogImpact.High, $"{message}");
+
+        var header = Loc.GetString("contraband-permit-console-pda-message-header");
+        var pdaMsg = Loc.GetString("contraband-permit-console-pda-message-permit-revoked", ("item", permitItem), ("reason", permitReason));
+        SendPermitOwnerPdaMessage(permitOwner, header, pdaMsg);
+
+        if (args.Console != null && permitRevoker != null)
+        {
+            var consoleMessage = Loc.GetString("contraband-permit-console-radio-message-permit-revoked",
+                ("item", permitItem),
+                ("user", permitRevoker),
+                ("owner", permitOwner),
+                ("reason", permitReason));
+            SendConsoleRadioMessage(args.Console.Value, consoleMessage);
+        }
+
+        // Goodbye
+        RemovePermitRecordToSectorService(permitOwner, permitItem);
     }
 
     public void AddPermitRecordToSectorService(EntityUid permitOwner, EntityUid permitItem)
@@ -77,9 +121,22 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             entryEntity = GetNetEntity(humanoidView.PvsView.Value);
 
         if (contrabandPermitNet.Records.ContainsKey(entryEntity) && contrabandPermitNet.Records.TryGetValue(entryEntity, out var list))
+        {
             list.Remove(GetNetEntity(permitItem));
 
+            if (list.Count == 0)
+                contrabandPermitNet.Records.Remove(entryEntity);
+        }
+
         UpdatePermitConsoles();
+    }
+
+    private void SendConsoleRadioMessage(EntityUid console, string message)
+    {
+        if (!TryComp<ContrabandPermitConsoleComponent>(console, out var consoleComp))
+            return;
+
+        _radio.SendRadioMessage(console, message, consoleComp.RadioChannel, console);
     }
 
     private void SendPermitOwnerPdaMessage(EntityUid permitOwner, string header, string message)

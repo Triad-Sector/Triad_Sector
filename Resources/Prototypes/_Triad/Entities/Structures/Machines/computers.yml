@@ -41,9 +41,14 @@
           components:
           - ContrabandPermitChip
   - type: ContrabandPermitConsole
-    #grantPermitWhitelist:
-    #  components:
-    #  - ContrabandPermitGranter
+    grantPermitWhitelist:
+      components:
+      - ContrabandPermitGranter
+  - type: CompanyAccessReader
+    requiredCompany: TDF
+    popupMessage: company-access-denied-tdf
+  - type: AccessReader
+    access: [["TdfPermitControl"]] # The ability to revoke permits
   - type: ContainerContainer
     containers:
       board: !type:Container
