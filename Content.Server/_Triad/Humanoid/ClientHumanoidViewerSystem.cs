@@ -2,19 +2,27 @@ using Content.Shared.GameTicking;
 using Content.Shared._Triad.Humanoid;
 using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
+using Content.Shared.Roles;
+using Content.Shared.Clothing;
+using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Station;
+using System.Linq;
 
 namespace Content.Server._Triad.Humanoid;
 
 public sealed partial class ClientHumanoidViewerSystem : EntitySystem
 {
+    [Dependency] private IPrototypeManager _prototypes = default!;
+    [Dependency] private IDependencyCollection _dependencyCollection = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private SharedStationSpawningSystem _stationSpawning = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     private static readonly EntProtoId HumanoidViewerMobProto = "MobTriadHumanoidViewer";
 
-    public EntityUid? BlankMap { get; private set; }
+    public EntityUid? PausedMap { get; private set; }
 
     private EntityQuery<HumanoidAppearanceComponent> _humanoidQuery;
 
@@ -30,24 +38,24 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
 
     private void OnRoundRestart(RoundRestartCleanupEvent _)
     {
-        if (BlankMap == null || !Exists(BlankMap))
+        if (PausedMap == null || !Exists(PausedMap))
             return;
 
-        Del(BlankMap.Value);
+        Del(PausedMap.Value);
     }
 
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
     {
-        EnsureBlankMap();
+        EnsurePausedMap();
 
-        if (BlankMap == null || !Exists(BlankMap))
+        if (PausedMap == null || !Exists(PausedMap))
             return;
 
         var mob = ev.Mob;
 
         EntityUid? viewerMob = null;
 
-        var query = EntityQueryEnumerator<HumanoidViewerEntityComponent>();
+        var query = AllEntityQuery<HumanoidViewerEntityComponent>();
         while (query.MoveNext(out var uid, out var otherViewer))
         {
             // Cryoing and respawning shouldn't make duplicates
@@ -79,9 +87,34 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
         if (viewerMob == null)
         {
             viewerMob = Spawn(HumanoidViewerMobProto);
-            _transform.SetParent(viewerMob.Value, BlankMap.Value);
             _humanoid.LoadProfile(viewerMob.Value, ev.Profile); // Copy humanoid appearance
             _metaData.SetEntityName(viewerMob.Value, ev.Profile.Name);
+
+            // Give the dummy a starting gear as well
+            if (ev.JobId != null && _prototypes.TryIndex<JobPrototype>(ev.JobId, out var jobPrototype))
+            {
+                var jobLoadout = LoadoutSystem.GetJobPrototype(ev.JobId);
+
+                if (_prototypes.TryIndex<RoleLoadoutPrototype>(jobLoadout, out var roleProto))
+                {
+                    ev.Profile.Loadouts.TryGetValue(jobLoadout, out var loadout);
+
+                    // Set to default if not present
+                    if (loadout == null)
+                    {
+                        loadout = new RoleLoadout(jobLoadout);
+                        loadout.SetDefault(ev.Profile, ev.Player, _prototypes);
+                        loadout.EnsureValid(ev.Profile, ev.Player, _dependencyCollection);
+                    }
+
+                    _stationSpawning.EquipRoleLoadout(viewerMob.Value, loadout, roleProto);
+                }
+
+                if (jobPrototype.StartingGear != null)
+                    _stationSpawning.EquipStartingGear(viewerMob.Value, jobPrototype.StartingGear, raiseEvent: false);
+            }
+
+            _transform.SetParent(viewerMob.Value, PausedMap.Value);
 
             var viewerComp = EnsureComp<HumanoidViewerEntityComponent>(viewerMob.Value);
             viewerComp.Session = ev.Player;
@@ -93,12 +126,13 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
         Dirty(mob, humanoidView);
     }
 
-    private void EnsureBlankMap()
+    private void EnsurePausedMap()
     {
-        if (BlankMap != null && Exists(BlankMap))
+        if (PausedMap != null && Exists(PausedMap))
             return;
 
         var newmap = _map.CreateMap();
-        BlankMap = newmap;
+        _map.SetPaused(newmap, true);
+        PausedMap = newmap;
     }
 }

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using Content.Server.Radio.EntitySystems;
 using Robust.Shared.Map.Components;
 using Content.Server.Mind;
+using Robust.Server.GameStates;
 
 namespace Content.Server._Triad.ContrabandPermit;
 
@@ -22,6 +23,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
     [Dependency] private RadioSystem _radio = default!;
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private PvsOverrideSystem _pvs = default!;
     [Dependency] private SectorServiceSystem _sectorService = default!;
 
     private readonly HashSet<Entity<ContrabandPermitItemComponent>> _newPermitItems = new();
@@ -39,6 +41,8 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitGrantedEvent>(OnPermitGranted);
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitRevokedEvent>(OnPermitRevoked);
 
+        SubscribeLocalEvent<ContrabandPermitItemComponent, ComponentStartup>(OnPermitItemStartup);
+        SubscribeLocalEvent<ContrabandPermitItemComponent, ComponentShutdown>(OnPermitItemShutdown);
         SubscribeLocalEvent<ContrabandPermitItemComponent, EntityTerminatingEvent>(OnPermitItemTerminating);
     }
 
@@ -102,6 +106,17 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
 
         // Goodbye
         RemovePermitRecordToSectorService(permitOwner, permitItem);
+    }
+
+    private void OnPermitItemStartup(Entity<ContrabandPermitItemComponent> ent, ref ComponentStartup args)
+    {
+        // So that permit items outside of PVS range can still be viewed
+        _pvs.AddGlobalOverride(ent.Owner);
+    }
+
+    private void OnPermitItemShutdown(Entity<ContrabandPermitItemComponent> ent, ref ComponentShutdown args)
+    {
+        _pvs.RemoveGlobalOverride(ent.Owner);
     }
 
     private void OnPermitItemTerminating(Entity<ContrabandPermitItemComponent> ent, ref EntityTerminatingEvent args)

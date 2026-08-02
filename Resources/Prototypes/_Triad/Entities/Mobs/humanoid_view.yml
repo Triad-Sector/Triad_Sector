@@ -3,6 +3,7 @@
 # The humanoid view will always stay static (doesn't show clothing or damage states) and has global PVS so the client can always see it
 - type: entity
   save: false
+  parent: InventoryBase
   id: MobTriadHumanoidViewer
   components:
   - type: Sprite
@@ -21,6 +22,7 @@
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
     - map: ["jumpsuit"]
+    - map: [ "balaclava" ]
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]
     - map: ["enum.HumanoidVisualLayers.LHand"]
@@ -28,21 +30,28 @@
     - map: [ "gloves" ]
     - map: [ "shoes" ]
     - map: [ "ears" ]
-    - map: [ "id" ] # Mono - move from between belt and back
     - map: [ "outerClothing" ] # mono - i hate you upstream
-    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
     - map: [ "eyes" ]
     - map: [ "belt" ]
+    - map: [ "id" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
+    - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
-    - map: [ "enum.HumanoidVisualLayers.Wings" ] # For IPC wings porting from SimpleStation
+    - map: [ "helmetcover" ]
+    - map: [ "helmetattachment" ]
     - map: [ "mask" ]
     - map: [ "head" ]
-    - map: [ "neck" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+  - type: Inventory
+    templateId: humanoidviewer
+  - type: ContainerContainer
+  - type: Hands
   - type: HumanoidAppearance
     species: Human
   - type: Appearance
