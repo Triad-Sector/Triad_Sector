@@ -9,6 +9,8 @@ using Content.Server._NF.SectorServices;
 using Content.Shared._Triad.Humanoid;
 using System.Runtime.InteropServices;
 using Content.Server.Radio.EntitySystems;
+using Robust.Shared.Map.Components;
+using Content.Server.Mind;
 
 namespace Content.Server._Triad.ContrabandPermit;
 
@@ -18,14 +20,26 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private CartridgeLoaderSystem _cartridgeLoader = default!;
     [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SectorServiceSystem _sectorService = default!;
+
+    private readonly HashSet<Entity<ContrabandPermitItemComponent>> _newPermitItems = new();
+
+    private EntityQuery<MapGridComponent> _gridQuery;
+    private EntityQuery<TransformComponent> _transformQuery;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        _gridQuery = GetEntityQuery<MapGridComponent>();
+        _transformQuery = GetEntityQuery<TransformComponent>();
+
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitGrantedEvent>(OnPermitGranted);
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitRevokedEvent>(OnPermitRevoked);
+
+        SubscribeLocalEvent<ContrabandPermitItemComponent, EntityTerminatingEvent>(OnPermitItemTerminating);
     }
 
     private void OnPermitGranted(Entity<ContrabandPermittableComponent> ent, ref ContrabandPermitGrantedEvent args)
@@ -90,6 +104,15 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         RemovePermitRecordToSectorService(permitOwner, permitItem);
     }
 
+    private void OnPermitItemTerminating(Entity<ContrabandPermitItemComponent> ent, ref EntityTerminatingEvent args)
+    {
+        if (ent.Comp.PermitOwner == null)
+            return;
+
+        // Delete permit records of entities about to be terminated
+        RemovePermitRecordToSectorService(ent.Comp.PermitOwner.Value, ent.Owner);
+    }
+
     public void AddPermitRecordToSectorService(EntityUid permitOwner, EntityUid permitItem)
     {
         if (!TryComp(_sectorService.GetServiceEntity(), out SectorContrabandPermitsComponent? contrabandPermitNet))
@@ -129,6 +152,99 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         }
 
         UpdatePermitConsoles();
+    }
+
+    public void InitializePermitItemsOnGrid(EntityUid gridUid, EntityUid user)
+    {
+        if (!_gridQuery.HasComp(gridUid))
+            return;
+
+        _newPermitItems.Clear();
+
+        var gridTransform = _transformQuery.GetComponent(gridUid);
+        var worldAABB = _lookup.GetWorldAABB(gridUid, gridTransform);
+        _lookup.GetEntitiesIntersecting(gridTransform.MapID, worldAABB, _newPermitItems);
+
+        foreach ((var ent, var comp) in _newPermitItems)
+        {
+            if (ent == gridUid)
+                continue;
+
+            if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
+                continue;
+
+            comp.PermitOwner = user;
+
+            if (_mind.TryGetMind(user, out var mindId, out var mindComp))
+            {
+                comp.PermitOwnerMind = mindId;
+
+                // Log if the names are different
+                if (mindComp.CharacterName != comp.PermitOwnerName)
+                {
+                    var message = $"{ToPrettyString(user):player} owns a contraband permit with a different logged name." +
+                        $" (Permit Owner Name: {comp.PermitOwnerName}, Player Name: {mindComp.CharacterName})"
+                        + " Possible abuse of the ship saving system may be at play here.";
+
+                    _chat.SendAdminAlert(message);
+                    _adminLog.Add(LogType.EntitySpawn, LogImpact.Medium, $"{message}");
+                }
+            }
+
+            Dirty(ent, comp);
+        }
+    }
+
+    public void ClearPermitItemsOnGrid(EntityUid gridUid, EntityUid user)
+    {
+        if (!_gridQuery.HasComp(gridUid))
+            return;
+
+        var toDelete = new HashSet<EntityUid>();
+
+        _newPermitItems.Clear();
+
+        var gridTransform = _transformQuery.GetComponent(gridUid);
+        var worldAABB = _lookup.GetWorldAABB(gridUid, gridTransform);
+        _lookup.GetEntitiesIntersecting(gridTransform.MapID, worldAABB, _newPermitItems);
+
+        foreach ((var ent, var comp) in _newPermitItems)
+        {
+            if (ent == gridUid)
+                continue;
+
+            if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
+                continue;
+
+            if (comp.PermitOwnerMind != null && _mind.TryGetMind(user, out var userMindId, out _))
+            {
+                if (userMindId != comp.PermitOwnerMind)
+                {
+                    toDelete.Add(ent);
+                    continue;
+                }
+            }
+            else if (user != comp.PermitOwner)
+            {
+                toDelete.Add(ent);
+                continue;
+            }
+
+            // If the permit item somehow doesn't have permittable or it was set to false
+            if (!TryComp<ContrabandPermittableComponent>(ent, out var permittable) || !permittable.Permittable)
+            {
+                toDelete.Add(ent);
+                continue;
+            }
+
+            comp.PermitOwner = null;
+            comp.PermitOwnerMind = null;
+        }
+
+        foreach (var uid in toDelete)
+        {
+            Del(uid);
+        }
     }
 
     private void SendConsoleRadioMessage(EntityUid console, string message)
