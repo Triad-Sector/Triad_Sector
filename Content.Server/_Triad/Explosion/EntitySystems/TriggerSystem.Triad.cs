@@ -1,6 +1,7 @@
 using Content.Shared.Implants.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Morgue.Components;
 
 namespace Content.Server.Explosion.EntitySystems;
 
@@ -10,7 +11,7 @@ public sealed partial class TriggerSystem : EntitySystem
     {
         var query = EntityQueryEnumerator<ImplantedComponent, MobStateComponent>();
 
-        while (query.MoveNext(out var implantedComponent, out var mobState))
+        while (query.MoveNext(out var uid, out var implantedComponent, out var mobState))
         {
             foreach (var entityUid in implantedComponent.ImplantContainer.ContainedEntities)
             {
@@ -27,7 +28,14 @@ public sealed partial class TriggerSystem : EntitySystem
 
                 if (component.NextTrigger != TimeSpan.Zero && _timing.CurTime >= component.NextTrigger)
                 {
-                    Trigger(entityUid);
+                    if (!_container.TryGetContainingContainer(uid, out var container) || !HasComp<MorgueComponent>(container.Owner))
+                    {
+                        Trigger(entityUid);
+                    }
+                    else
+                    {
+                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+                    }
                 }
             }
         }
