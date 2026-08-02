@@ -1,23 +1,84 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Resomi
-
-  <Box>
-    <GuideEntityEmbed Entity="MobResomiDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  Resomi are a small avian-like species that hail from an icy world.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  While their wings do not grant them complete flight, they are able to use them to maneuver better while in zero-gravity.
+  [color=#999999][italic]“Their grandparents fled an empire. Several of them, in sequence. They've earned the calm rotation if they want it.”[/italic][/color]
 
-  Like most other non-human species, Resomi are capable of digesting raw meat and other uncooked animal proteins.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  As a result of the conditions of their home planet and ammonia-based blood, Resomi are considerably more tolerant of the cold, able to withstand temperatures as low as -77°C.
-  Consequently, they find temperatures that most other species find comfortable to be unbearably hot, finding themselves suffering starting at just 30°C.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-RSM[/mono]
 
-  Along with their temperature tolerances, they also take less cold damage and more heat damage, similar to Moth People, as well as being more susceptible to blunt damage.
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  Due to their small size, they can fit in duffelbags.
+      [mono][color=#897236]ORIGIN     [/color]  Sirisai, diaspora-descended[/mono]
 
-  Their unarmed attack deals Slash damage.
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Ammonia Blood[/bold][/color] — cryogenic[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobResomiDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Diminutive saurian-avian colonists descended from the diaspora populations that left the post-Fall Resomi Empire generations ago. Sub-baseline mass; ammonia-based circulation. Collectivist work-tradition translates well into rotation-team structures.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  vulnerable; slowed above 30°C[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■■[/color]  tolerates down to -77°C[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Fits in duffelbags[/bold][/color] thanks to sub-baseline mass. Useful for stealth and unconventional logistics.
+  - Wings assist [color=#1e90ff][bold]zero-gravity maneuvering[/bold][/color] (not full flight).
+  - Unarmed attacks deal [color=#1e90ff][bold]Slash damage[/bold][/color] via claws.
+
+  [color=#999999][italic]“Yes, they fit in a duffel. They are not luggage. Don't joke about it; it stops being funny by the third intake.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]significantly more Heat damage[/bold][/color] than baseline. Insurance Tier B for warm rotations.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]increased Blunt damage[/bold][/color] susceptibility due to small frame.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

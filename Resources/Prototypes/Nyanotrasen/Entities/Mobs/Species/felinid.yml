@@ -59,6 +59,8 @@
       types:
         Blunt: 1
   - type: Stamina
+    critThreshold: 85   # slightly less stamina than humans (default 100), per guidebook
+    decay: 2.55         # recovers slower than humans (default 5)
   - type: TypingIndicator
     proto: felinid
   - type: PseudoItem

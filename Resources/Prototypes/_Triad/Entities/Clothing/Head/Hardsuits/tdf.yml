@@ -5,6 +5,8 @@
   description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic, compared to NanoTrasen's original N-20 design.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21.rsi
   - type: Clothing

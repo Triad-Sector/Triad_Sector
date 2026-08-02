@@ -1,0 +1,42 @@
+# Author Info
+# Sketchii
+# Discord etch_sketch
+# GitHub https://github.com/SketchiiArtist
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Ruchka
+  parent: BaseVessel
+  name: PDM Ruchka
+  description: A small sized shuttle fit with an office, waiting room, and personal bedroom. Perfect for on-the-go attorneys!
+  price: 35640
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/ruchka.yml
+  #guidebookPage: null
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Ruchka
+  mapName: 'PDM Ruchka'
+  mapPath: /Maps/_Triad/Shuttles/ruchka.yml
+  minPlayers: 0
+  stations:
+    Ruchka:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Ruchka CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

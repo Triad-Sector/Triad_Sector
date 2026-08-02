@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Grunder:
-      stationProto: StandardFrontierSecurityVessel
+      stationProto: StandardTriadTdfVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Grunder TDF{1}'

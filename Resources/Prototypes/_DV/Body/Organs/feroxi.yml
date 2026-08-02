@@ -4,14 +4,7 @@
   name: feroxian stomach
   categories: [ HideSpawnMenu ]
   components:
-  - type: Stomach
-    specialDigestible:
-      tags:
-      - ReptilianFood
-      - Meat
-      - Pill
-      - Crayon
-      - Paper
+  - type: Stomach # Triad: dietary whitelist removed per review; feroxi digests unrestricted like humans
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [ Feroxi, Animal ]

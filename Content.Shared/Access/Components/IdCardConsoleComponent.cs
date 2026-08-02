@@ -46,7 +46,7 @@ public sealed partial class IdCardConsoleComponent : Component
     public List<ProtoId<AccessLevelPrototype>> AccessLevels = new()
     {
         "Armory",
-        //"Atmospherics",
+        "Atmospherics", // Triad, restored this
         "TdfWarden", // Triad
         //"Bar",
         "Brig",

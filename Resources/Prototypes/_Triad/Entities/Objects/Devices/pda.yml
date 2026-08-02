@@ -19,6 +19,9 @@
   - type: Icon
     sprite: _Triad/Objects/Devices/pda.rsi
     state: pda
+  - type: Tag # Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
 
 - type: entity
   parent: TriadBasePDA

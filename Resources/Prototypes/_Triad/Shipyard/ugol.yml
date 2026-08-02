@@ -1,0 +1,42 @@
+# Author Info
+# Sketchii
+# Discord etch_sketch
+# GitHub https://github.com/SketchiiArtist
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Ugol
+  parent: BaseVessel
+  name: PDM Ugol
+  description: A personal small sized shuttle. Personal space has a price tag.
+  price: 12700
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/ugol.yml
+  #guidebookPage: null
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Ugol
+  mapName: 'PDM Ugol'
+  mapPath: /Maps/_Triad/Shuttles/ugol.yml
+  minPlayers: 0
+  stations:
+    Ugol:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Ugol CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

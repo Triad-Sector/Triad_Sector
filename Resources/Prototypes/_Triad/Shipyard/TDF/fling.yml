@@ -23,7 +23,7 @@
   minPlayers: 0
   stations:
     Fling:
-      stationProto: StandardFrontierSecurityVessel
+      stationProto: StandardTriadTdfVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Fling TDF{1}'

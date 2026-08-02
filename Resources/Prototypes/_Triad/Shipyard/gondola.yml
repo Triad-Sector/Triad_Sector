@@ -28,7 +28,7 @@
   minPlayers: 0
   stations:
     gondola:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardTriadExpedVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Gondola CIV{1}'

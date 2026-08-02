@@ -9,3 +9,5 @@
     sprite: _Triad/Clothing/Head/Hoods/Coat/high_com.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hoods/Coat/high_com.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []

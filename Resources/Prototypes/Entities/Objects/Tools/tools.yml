@@ -392,6 +392,13 @@
     - PlatingHalfTiltLowerAlt
     - PlatingHalfTiltUpper
     - PlatingHalfTiltUpperAlt
+    - LatticeDiagonal
+    - LatticeHalf
+    - LatticeWedge
+    - LatticeHalfTiltLower
+    - LatticeHalfTiltLowerAlt
+    - LatticeHalfTiltUpper
+    - LatticeHalfTiltUpperAlt
     - WindowDirectionalShuttle
     - WindowShuttle
     - WallShuttleDiagonal

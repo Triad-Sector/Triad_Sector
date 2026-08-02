@@ -23,7 +23,7 @@
   minPlayers: 0
   stations:
     Mercy:
-      stationProto: StandardFrontierSecurityVessel
+      stationProto: StandardTriadTdfVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Mercy TDF{1}'
