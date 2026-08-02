@@ -1,4 +1,6 @@
 ﻿AdminOnly: true
+Name: Admin
+Order: 4 # Mono
 Entries:
 - author: DrSmugleaf
   changes:
@@ -835,5 +837,8 @@ Entries:
   id: 104
   time: '2025-02-26T22:32:43.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/35543
-Name: Admin
-Order: 4 # Mono
+- author: DebugOk
+  changes:
+    - {message: 'Add back the loadcharacter and spawncharacter commands.', type: Add}
+  id: 6
+  time: '2023-10-19T00:00:00.0000000+00:00'

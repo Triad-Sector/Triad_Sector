@@ -43,6 +43,8 @@
     vendPrice: 7500
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuit
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: ClothingOuterHardsuitTdf

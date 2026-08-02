@@ -45,6 +45,7 @@
     back:
     - EncryptionKeyService # Colonial Staff
     - EncryptionKeyCommand # Triad Command
+    - DoorRemoteEngineering
 
 - type: job
   id: PlantTechnician

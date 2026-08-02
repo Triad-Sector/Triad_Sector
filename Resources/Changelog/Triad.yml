@@ -3192,3 +3192,163 @@ Entries:
   id: 2457
   time: '2026-07-27T12:22:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/428
+- author: PhosphateWithManyOs
+  changes:
+    - type: Fix
+      message: Feroxi sound being broken
+  id: 2458
+  time: '2026-07-27T22:26:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/432
+- author: Voronetz318
+  changes:
+    - type: Add
+      message: Added new RCD options for diagonal lattice tiles
+  id: 2459
+  time: '2026-07-27T22:46:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/302
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: TDF & TFA gears are now unchameleonable
+  id: 2460
+  time: '2026-07-28T00:22:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/429
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Combat drones no longer chase ships across the sector after they FTL
+        away, and disabled drones brake to a stop instead of drifting forever.
+  id: 2461
+  time: '2026-07-28T02:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/434
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: All ship exped capable
+  id: 2462
+  time: '2026-07-28T14:36:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/394
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added Slimy equivalents of Reptilian markings to slime person!
+  id: 2463
+  time: '2026-07-28T14:44:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/436
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Mute Command to Admin perms
+  id: 2464
+  time: '2026-07-28T21:09:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/435
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        The tesla can no longer chaotic-jump its way out of an intact
+        containment cage.
+  id: 2465
+  time: '2026-07-28T23:13:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/433
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: 'Added new science ship: Goida'
+    - type: Add
+      message: 'Added new Taxi ship: Marshrutka'
+    - type: Add
+      message: 'Added new Library ship: Povest'
+    - type: Add
+      message: 'Added new Attorney ship: Ruchka'
+    - type: Add
+      message: 'Added new Livery ship: Ugol'
+  id: 2466
+  time: '2026-07-29T01:46:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/258
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Admin Logs now show in an admins local time instead of UTC
+    - type: Tweak
+      message: Tips are now be more relevant and accurate to Triad
+  id: 2467
+  time: '2026-07-31T14:00:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/444
+- author: Khaomi
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the medical implanter to send a recurring message every 5
+        minutes after someone is dead
+  id: 2468
+  time: '2026-07-31T22:34:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/445
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Every species guidebook page has been rewritten as a TDF Bureau of
+        Personnel dossier with a randomized paper-doll preview. Same mechanics,
+        more paperwork.
+    - type: Tweak
+      message: The species sidebar in the guidebook is now alphabetized.
+    - type: Tweak
+      message: Arachnid suffocate 50% faster than baseline once oxygen runs out.
+    - type: Tweak
+      message: Protogen take 30% more cold damage.
+    - type: Tweak
+      message: Reptilian heat-boost threshold raised to 47°C ambient.
+    - type: Tweak
+      message: Resomi slow down at temperatures above 30°C.
+    - type: Tweak
+      message: Feroxi get thirsty roughly twice as fast.
+    - type: Tweak
+      message: >-
+        Avali and Feroxi are no longer restricted to a meat-only diet and can
+        eat all food.
+    - type: Tweak
+      message: >-
+        Oni hit harder in melee (+35% Blunt/Asphyxiation, +20% Slash/Piercing)
+        and pry doors open in about half the time.
+    - type: Tweak
+      message: Felinid stamina reduced.
+    - type: Fix
+      message: Hydrakin no longer extract oxygen from carbon dioxide.
+    - type: Remove
+      message: >-
+        Felinid OwOnavirus immunity removed (the disease system itself is
+        unimplemented in this fork).
+  id: 2469
+  time: '2026-08-01T01:00:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/112
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: 'Added new Expedition ship: the DIRE Behir.'
+    - type: Add
+      message: Added Guidebook for the DIRE Behir.
+  id: 2470
+  time: '2026-08-01T06:56:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/446
+- author: Khaomi
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the recurring medical alert to only alert while outside the
+        morgue
+  id: 2471
+  time: '2026-08-02T17:26:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/452
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Portable scrubbers and space heaters now persist through ship saves even
+        when unanchored.
+    - type: Tweak
+      message: Desk bells now persist through ship saves.
+  id: 2472
+  time: '2026-08-02T17:28:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/451

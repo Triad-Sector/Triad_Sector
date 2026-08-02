@@ -1,0 +1,42 @@
+# Author Info
+# Sketchii
+# Discord etch_sketch
+# GitHub https://github.com/SketchiiArtist
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Marshrutka
+  parent: BaseVessel
+  name: PDM Marshrutka
+  description: A small sized taxi shuttle. Zippy with a great acceleration, but be careful slowing down.
+  price: 16560
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/marshrutka.yml
+  #guidebookPage: null
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Marshrutka
+  mapName: 'PDM Marshrutka'
+  mapPath: /Maps/_Triad/Shuttles/marshrutka.yml
+  minPlayers: 0
+  stations:
+    Marshrutka:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Marshrutka CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

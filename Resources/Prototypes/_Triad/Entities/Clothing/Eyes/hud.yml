@@ -3,6 +3,8 @@
   id: ClothingEyesHudSecurityTdf
   suffix: TDF
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Eyes/Hud/tdf.rsi
   - type: Clothing

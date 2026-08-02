@@ -5,6 +5,7 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mobs;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
@@ -56,7 +57,9 @@ public sealed class SharedArmorPlateSystem : EntitySystem
         if (!_inventory.TryGetSlots(ent, out var slots))
             return;
 
-        if (args.Origin == null && args.OriginFlag != DamageableSystem.DamageOriginFlag.Explosion)
+        // Triad - conditional for radiation damage
+        if (args.Origin == null && args.OriginFlag is not DamageableSystem.DamageOriginFlag.Explosion
+                and not DamageableSystem.DamageOriginFlag.Radiation)
             return;
 
         foreach (var slot in slots)

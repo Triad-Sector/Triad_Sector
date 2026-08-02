@@ -145,7 +145,7 @@
         time: 2
         type: Add
         refresh: true
-    - minimumTemperature: 322
+    - minimumTemperature: 320.15 # Triad: match guidebook "above 47C" claim
       effects:
       - !type:MovespeedModifier
         walkSpeedModifier: 1.10
