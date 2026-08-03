@@ -84,7 +84,7 @@
   - type: Contraband
     severity: Class2
     turnInValues:
-      TriadCommerceCredit: 5
+      TriadCommerceCredit: 15
 
 # Class 3 Contraband
 - type: entity
@@ -94,7 +94,7 @@
   - type: Contraband
     severity: Class3General
     turnInValues:
-      TriadCommerceCredit: 15
+      TriadCommerceCredit: 25
   - type: ItemTax
     taxAccounts:
       TDF: -0.05 # TDF account
