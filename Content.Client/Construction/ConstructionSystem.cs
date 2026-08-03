@@ -29,6 +29,7 @@ namespace Content.Client.Construction
         [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
+        [Dependency] private readonly SpriteSystem _spriteSystem = default!; // Triad
 
         private readonly Dictionary<int, EntityUid> _ghosts = new();
         private readonly Dictionary<string, ConstructionGuide> _guideCache = new();
@@ -216,6 +217,7 @@ namespace Content.Client.Construction
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
             sprite.Color = new Color(48, 255, 48, 128);
+            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {

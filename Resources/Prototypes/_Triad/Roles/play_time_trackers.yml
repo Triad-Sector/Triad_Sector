@@ -15,3 +15,15 @@
 
 - type: playTimeTracker
   id: JobTdfCadet
+
+- type: playTimeTracker
+  id: JobPlantManager
+
+- type: playTimeTracker
+  id: JobPlantTechnician
+
+- type: playTimeTracker
+  id: JobTfaHighCommandRep
+
+- type: playTimeTracker
+  id: JobTfaHighCommandIntern

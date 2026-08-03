@@ -18,7 +18,7 @@
   - type: Inventory
     speciesId: feroxi
   - type: Thirst
-    baseDecayRate: 0.2
+    baseDecayRate: 0.15
   - type: Icon
     sprite: _DV/Mobs/Species/Feroxi/parts.rsi
     state: full
@@ -100,6 +100,11 @@
     hydratedMetabolizer: Feroxi
     dehydratedMetabolizer: FeroxiDehydrated
     dehydrationThreshold: 150
+  - type: Vocal
+    sounds:
+      Male: MaleFeroxi
+      Female: FemaleFeroxi
+      Unsexed: MaleFeroxi
 
 - type: entity
   parent: MobHumanDummy

@@ -46,7 +46,7 @@ public sealed partial class IdCardConsoleComponent : Component
     public List<ProtoId<AccessLevelPrototype>> AccessLevels = new()
     {
         "Armory",
-        //"Atmospherics",
+        "Atmospherics", // Triad, restored this
         "TdfWarden", // Triad
         //"Bar",
         "Brig",
@@ -59,8 +59,8 @@ public sealed partial class IdCardConsoleComponent : Component
         //"ChiefMedicalOfficer",
         "Command",
         //"Cryogenics",
-        //"Engineering",
-        "External",
+        "Engineering", // Triad: restored - engineering is a player-delegatable role on Triad (plant + ship engineers)
+        //"External", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
         "Frontier", // Frontier
         "HeadOfPersonnel",
         "TdfChiefEnforcer", // Triad
@@ -72,7 +72,7 @@ public sealed partial class IdCardConsoleComponent : Component
         //"Quartermaster",
         //"Research",
         "Lawyer",
-        "Maintenance",
+        //"Maintenance", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
         "Medical", // Frontier
         //"Quartermaster",
         //"Research",

@@ -28,3 +28,57 @@ NFVendingMachineCartNfsd: VendingMachineCartTdf
 # 2026-06-28
 HyperlinkBookSpaceLaw: BookTriadLaw
 HyperlinkBookNfsdSop: BookTdfSop
+
+# 2026-07-13
+ToggleNightVision: null
+
+# 2026-07-14
+HoloprojectorNfsdEmpty: HoloprojectorNfsd
+
+# 2026-07-16
+ClothingOuterHardsuitViperGroupStandard: ClothingOuterHardsuitSyndie
+ClothingOuterHardsuitViperGroupMedic: ClothingOuterHardsuitSyndieMedic
+ClothingOuterHardsuitViperGroupJuggernaut: ClothingOuterHardsuitSyndieElite
+ClothingHeadHelmetHardsuitViperGroupStandard: ClothingHeadHelmetHardsuitSyndie
+ClothingHeadHelmetHardsuitViperGroupMedic: ClothingHeadHelmetHardsuitSyndieMedic
+ClothingHeadHelmetHardsuitViperGroupJuggernaut: ClothingHeadHelmetHardsuitSyndieElite
+
+# 2026-07-19
+RubberStampTdfHighComm: RubberStampTfaHighComm
+AirlockTdfHighCommandGlass: AirlockTfaHighCommandGlass
+AirlockTdfHighCommandGlassLocked: AirlockTfaHighCommandGlassLocked
+AirlockTdfHighCommand: AirlockTfaHighCommand
+AirlockTdfHighCommandLocked: AirlockTfaHighCommandLocked
+VendingMachineTdfHighCommandDrobe: VendingMachineTfaHighCommandDrobe
+
+# 2026-07-21
+ColoredLightTubeUltraviolet: LightTubeUltraviolet
+SalvageTankSpawnerHighCapacity: NFSalvageTankSpawnerHighCapacity
+WallRockSandBananiumCrabNF: NFWallRockSandBananiumCrab
+WallRockSandBananiumGolem: NFWallRockSandBananiumGolem
+WallRockSandBluespace: NFWallRockSandBluespace
+WallRockSandGoldCrabNF: NFWallRockSandGoldCrab
+WallRockSandGoldGolem: NFWallRockSandGoldGolem
+WallRockSandIronGolem: NFWallRockSandIronGolem
+WallRockSandPlasmaCrabNF: NFWallRockSandPlasmaCrab
+WallRockSandQuartzCrabNF: NFWallRockSandQuartzCrab
+WallRockSandQuartzGolem: NFWallRockSandQuartzGolem
+WallRockSandSaltCrabNF: NFWallRockSandSaltCrab
+WallRockSandSaltGolem: NFWallRockSandSaltGolem
+WallRockSandSilverCrabNF: NFWallRockSandSilverCrab
+WallRockSandSilverGolem: NFWallRockSandSilverGolem
+WallRockSandUraniumCrabNF: NFWallRockSandUraniumCrab
+WallRockSandUraniumGolem: NFWallRockSandUraniumGolem
+WallRockCoalGolem: NFWallRockCoalGolem
+WallRockGoldGolem: NFWallRockGoldGolem
+WallRockIronCrabNF: NFWallRockIronCrab
+WallRockIronGolem: NFWallRockIronGolem
+WallRockPlasmaCrabNF: NFWallRockPlasmaCrab
+WallRockPlasmaGolem: NFWallRockPlasmaGolem
+WallRockUraniumGolem: NFWallRockUraniumGolem
+
+# 2026-07-27
+PlushieFlick: null
+
+# 2026-08-03
+WeaponLMGGrizzly: null

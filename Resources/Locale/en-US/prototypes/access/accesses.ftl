@@ -4,20 +4,20 @@ id-card-access-level-cryogenics = Cryogenics
 id-card-access-level-emergency-shuttle-repeal = E.Shuttle Repeal All
 
 id-card-access-level-head-of-personnel = Overseer
-id-card-access-level-head-of-security = Colonel
+id-card-access-level-head-of-security = Head of Security
 # moved to Triad namespace id-card-access-level-security = Security
 id-card-access-level-armory = Armory
 id-card-access-level-brig = Brig
 id-card-access-level-detective = Detective
 
-id-card-access-level-chief-engineer = Chief Engineer
+id-card-access-level-chief-engineer = Director of Infrastructure
 id-card-access-level-engineering = Engineering
 id-card-access-level-atmospherics = Atmospherics
 
 id-card-access-level-research-director = Research Director
 id-card-access-level-research = Research
 
-id-card-access-level-chief-medical-officer = Chief Medical Officer
+id-card-access-level-chief-medical-officer = Director of Care
 id-card-access-level-medical = Medical
 id-card-access-level-chemistry = Chemistry
 id-card-access-level-paramedic = Paramedic
@@ -45,3 +45,7 @@ id-card-access-level-syndicate-agent = Syndicate Agent
 id-card-access-level-central-command = Central Command
 
 id-card-access-level-wizard = Wizard
+
+id-card-access-level-station-ai = Artifical Intelligence
+id-card-access-level-borg = Cyborg
+id-card-access-level-basic-silicon = Robot

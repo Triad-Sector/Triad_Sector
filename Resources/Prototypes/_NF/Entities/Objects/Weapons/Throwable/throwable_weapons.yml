@@ -29,6 +29,7 @@
   - type: SolutionTransfer
     maxTransferAmount: 4
   - type: SolutionInjectOnEmbed
+    blockSlots: NONE # So it doesn't get blocked
     transferAmount: 2
     solution: ammo
   - type: InjectableSolution

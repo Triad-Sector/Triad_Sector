@@ -84,6 +84,9 @@
   - type: Tag
     tags:
     - SecurityUplink
+  - type: CompanyAccessReader
+    requiredCompany: TDF
+    popupMessage: company-access-denied-tdf
 
 - type: entity
   parent: BaseSecurityUplinkRadio

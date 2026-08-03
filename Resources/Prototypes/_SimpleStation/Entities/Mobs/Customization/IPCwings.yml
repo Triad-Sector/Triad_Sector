@@ -3,6 +3,15 @@
   bodyPart: Wings
   markingCategory: Wings
   speciesRestriction: [IPC]
+  # Triad: dual-layer wings (see WingsRoboticMerciful). robotic = low Wings (front + sides behind body);
+  # robotic_over = North (back-facing) frame on the high WingsOversuit layer, over the body/arms.
+  layering:
+    robotic: Wings
+    robotic_over: WingsOversuit
+  colorLinks:
+    robotic_over: robotic
   sprites:
     - sprite: _SimpleStation/Mobs/Customization/wings96x34.rsi
       state: robotic
+    - sprite: _SimpleStation/Mobs/Customization/wings96x34.rsi
+      state: robotic_over

@@ -47,6 +47,7 @@
     LFoot: MobIPCLFoot
     RFoot: MobIPCRFoot
     Wings: MobHumanoidAnyMarking
+    WingsOversuit: MobHumanoidAnyMarking # Triad: over-body wing layer (companion to Wings)
 
 - type: markingPoints
   id: MobIPCMarkingLimits
@@ -57,10 +58,10 @@
       defaultMarkings: [ MobIPCHeadDefault ]
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:

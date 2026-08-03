@@ -90,6 +90,7 @@
   - type: ChaoticJump
     jumpMinInterval: 8
     jumpMaxInterval: 15
+    sweepRadius: 0.55 # Triad: match the ball's collider so the jump can't teleport where the ball couldn't fit
   - type: WarpPoint
     follow: true
     location: tesla ball

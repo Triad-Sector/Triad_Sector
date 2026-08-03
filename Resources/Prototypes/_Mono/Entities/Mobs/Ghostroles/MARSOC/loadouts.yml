@@ -237,8 +237,6 @@
     belt: ClothingBeltWebbingsNormalTSFMC
     neck: ClothingNeckIFFCyan
     suitStorage: OxygenTankFilled
-  inhand:
-  - WeaponLMGGrizzly
   storage:
     back:
     - RadioHandheldNF

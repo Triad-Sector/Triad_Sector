@@ -48,8 +48,8 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckViperGroupMantle
-  name: viper group mantle
-  description: A mantle bearing the colours and mark of a viper.
+  name: elite syndicate mantle # Triad - name
+  description: A mantle bearing the colours and mark of high-ranking Spinward Syndicate member. This thing must be old! # Triad - description
   categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: Sprite

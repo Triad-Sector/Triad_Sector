@@ -1,7 +1,7 @@
 department-Cargo = Cargo
 department-Civilian = Civilian
 # department-Command = Command # Frontier: redefined in _NF
-department-CentralCommand = Central Command
+department-CentralCommand = TDF High Command
 department-Engineering = Engineering
 # department-Medical = Medical # Mono: redefined in _NF
 # department-Security = Security # Frontier: redefined in _NF

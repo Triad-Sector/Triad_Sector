@@ -1,0 +1,155 @@
+# Triad: TDF BuPers dossier paper-doll exemplars.
+# Each entity parents the playable mob of the species and adds:
+#   - DossierExemplar (Triad)   : on MapInit, randomizes HumanoidAppearance (skin/hair/markings)
+#                                 and applies random species-appropriate gender-aware
+#                                 undergarment markings. No jumpsuit, no shoes — uniform
+#                                 look across all species, decoupled from clothing-displacement
+#                                 rendering quirks per species.
+#                                 Lives in Content.Shared so it fires client-side, where the
+#                                 guidebook spawns its embedded entities.
+# Used as the Entity= reference in Resources/ServerInfo/.../Guidebook/Mobs/<Species>.xml.
+
+- type: entity
+  abstract: true
+  id: BaseMobDossierExemplar
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DossierExemplar
+
+- type: entity
+  parent: [ MobArachnid, BaseMobDossierExemplar ]
+  id: MobArachnidDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobAvali, BaseMobDossierExemplar ]
+  id: MobAvaliDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobChitinid, BaseMobDossierExemplar ]
+  id: MobChitinidDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobDiona, BaseMobDossierExemplar ]
+  id: MobDionaDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobDwarf, BaseMobDossierExemplar ]
+  id: MobDwarfDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobFelinid, BaseMobDossierExemplar ]
+  id: MobFelinidDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobFeroxi, BaseMobDossierExemplar ]
+  id: MobFeroxiDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobGoblin, BaseMobDossierExemplar ]
+  id: MobGoblinDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobHarpy, BaseMobDossierExemplar ]
+  id: MobHarpyDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobHuman, BaseMobDossierExemplar ]
+  id: MobHumanDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobHydrakin, BaseMobDossierExemplar ]
+  id: MobHydrakinDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobIPC, BaseMobDossierExemplar ]
+  id: MobIPCDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobMoth, BaseMobDossierExemplar ]
+  id: MobMothDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobOni, BaseMobDossierExemplar ]
+  id: MobOniDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobProtogen, BaseMobDossierExemplar ]
+  id: MobProtogenDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobReptilian, BaseMobDossierExemplar ]
+  id: MobReptilianDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobResomi, BaseMobDossierExemplar ]
+  id: MobResomiDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobRodentia, BaseMobDossierExemplar ]
+  id: MobRodentiaDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobShadekin, BaseMobDossierExemplar ]
+  id: MobShadekinDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobSlimePerson, BaseMobDossierExemplar ]
+  id: MobSlimePersonDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobTajaran, BaseMobDossierExemplar ]
+  id: MobTajaranDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobVox, BaseMobDossierExemplar ]
+  id: MobVoxDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ MobVulpkanin, BaseMobDossierExemplar ]
+  id: MobVulpkaninDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]

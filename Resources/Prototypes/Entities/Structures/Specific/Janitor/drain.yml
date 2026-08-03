@@ -17,8 +17,6 @@
     - type: Clickable
     - type: Transform
       anchored: true
-    - type: Anchorable # Triad: can move
-    - type: Pullable # Triad: can move
     - type: Physics
       bodyType: Static
       canCollide: false
@@ -65,3 +63,6 @@
     - type: ShipRepairable # Triad: Make drains SRD repairable
       repairTime: 5
       repairCost: 20
+    - type: Construction # Triad
+      graph: floordrain
+      node: finish

@@ -42,6 +42,7 @@
     runningState: icon
     staticPacks:
     - NFServiceTechfabDeprecatedStatic
+    - TriadBureaucracyStatic # Triad
     dynamicPacks:
     - NFServiceTechfabDeprecated
   - type: EmagLatheRecipes
@@ -124,7 +125,7 @@
 
 - type: entity
   id: NfsdTechFab
-  parent: [ BlueprintReceiverBase, SecurityTechFab ]
+  parent: [ BlueprintReceiverBase, SecurityTechFab, BaseClass2AShipContraband ]
   name: TDF techfab
   description: Prints equipment for use by TDF.
   components:
@@ -151,22 +152,29 @@
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
     dynamicPacks:
-    - TdfTechfabDynamic
     - DynamicAmmoRecipePack
-    # Triad start
+    # Mono start
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
+    # Mono end
+    # Triad start
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
     # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
   - type: PirateBountyItem # Mono
     id: Techfab
-  - type: SavingContraband # Triad
-    examineText: ship-saving-contraband-2-text
+  - type: CompanyAccessReader
+    requiredCompany: TDF # Triad
+    popupMessage: company-access-denied-tdf # Triad
 
 - type: entity
   id: MercenaryTechFab

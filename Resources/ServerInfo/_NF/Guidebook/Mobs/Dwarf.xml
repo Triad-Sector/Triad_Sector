@@ -1,18 +1,79 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Dwarves
-
-  <Box>
-    <GuideEntityEmbed Entity="MobDwarf" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  An industrious species, dwarves are similar to humans in most respect, but tolerate alcohol better and are healed by it.
-
-  <Box>
-    <GuideEntityEmbed Entity="WallRockChromiteDiamond" Caption=""/>
-    <GuideEntityEmbed Entity="WallRockBasaltBananium" Caption=""/>
-    <GuideEntityEmbed Entity="WallRockBluespace" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
   </Box>
 
-  A dwarf instinctively knows where the choice ore veins are, and can sense the presence of ore up to 5 meters away.
+  [color=#999999][italic]“Punctual. Stays through end of shift. Quartermaster has expressed strong preference for Mining assignment.”[/italic][/color]
+
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
+
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-DWF[/mono]
+
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Stout[/mono]
+
+      [mono][color=#897236]ORIGIN     [/color]  Dwarf homeworld[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobDwarfDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Industrious humanoids similar to baseline with a knack for ore detection and a fondness for drink.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, standard food groups digest normally.
+  - [color=#1e90ff][bold]Heals from alcohol[/bold][/color] rather than suffering from it. Beverage rations may be redirected as field medicine.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Innate ore sense[/bold][/color]: detects ore veins up to 5 meters away. Mining rotations are an obvious assignment.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Suffocates roughly twice as fast as baseline[/bold][/color]; goes down quickly without air. EVA rotations require an attentive partner and a second tank.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

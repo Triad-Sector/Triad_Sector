@@ -20,11 +20,10 @@
             - TableMask
           layer:
             - TableLayer
-    - type: TimedDespawn
-      lifetime: 180
     - type: PointLight
       enabled: true
       radius: 3
       color: red
     - type: Climbable
     - type: Clickable
+    - type: Holobarrier

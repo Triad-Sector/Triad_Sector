@@ -1,15 +1,87 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Moth People
-
-  <Box>
-    <GuideEntityEmbed Entity="MobMoth" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  They can eat cotton, fabrics and clothing, but virtually none of the food that others would consider "edible". They prefer a somewhat lower temperature range than humans.
-  Their Insect Blood can't be metabolised from Iron like normal blood.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  Their wings give them better acceleration if there is no gravity on the station, but they still can't move without equipment when floating out in space.
+  [color=#999999][italic]“Please relocate all decorative wall-hangings before subject's first shift. Subject's ration card will include cotton bolts; do not flag as theft.”[/italic][/color]
 
-  They take [color=#1e90ff]30% less Cold damage[/color] but [color=#ffa500]15% more Heat damage, and catch on fire more easily[/color].
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
+
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-MTH[/mono]
+
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Insectoid[/mono]
+
+      [mono][color=#897236]ORIGIN     [/color]  Grand Nomad Fleet[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Insect Blood[/bold][/color] — hemolymph-based[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobMothDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Winged humanoids who eat cloth and prefer cool environments. Modern Mothkind lives aboard the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color], a heterogeneous flotilla of ships of every make. Centuries of piracy built the fleet's strength; the population pivoted to engineering and salvage commerce once self-sufficient.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -15% vulnerable, flammable[/mono]
+
+  [mono]  Cold      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  +30% resistant[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: specialized. Can eat [color=#a4885c][bold]cotton, fabrics, and clothing[/bold][/color]; most standard rations are non-nutritive. Mess Hall has been advised to stock a textile shelf.
+
+  [color=#999999][italic]“Yes, your scarf is in scope. Lock your locker.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - Wings provide [color=#1e90ff][bold]better acceleration in zero gravity[/bold][/color], though equipment is still required to move in open space.
+  - Take [color=#1e90ff][bold]30% less Cold damage[/bold][/color]. Cleared for cold-environment rotations.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [color=#555555][italic]None on file.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]15% more Heat damage, and catch on fire more easily[/bold][/color]. Insurance Tier A near welding stations and the burn chamber.
+
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[2 entries on file\][/color]
+
+  [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  Subject species' ancestral homeworld (recorded as [color=#a4885c][bold]Lümla[/bold][/color], tidally locked, bifurcated climate) is [color=#a4885c][bold]considered lost[/bold][/color]. No contemporary navigational record of its location survives, and historians have been unable to reconstruct how the species lost track of it. Modern Mothkind is fleet-based, organized around the [color=#a4885c][bold]Grand Nomad Fleet[/bold][/color]. Historical piracy era is well-documented but commercially superseded; modern Moth populations enter TDF service as free agents.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

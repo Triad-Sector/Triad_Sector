@@ -82,19 +82,19 @@
 
 # TSF Heavy Weapons
 
-- type: latheRecipe
-  parent: BaseWeaponRecipeLong
-  id: WeaponLMGGrizzlyTSF
-  result: WeaponLMGGrizzly
-  categories:
-  - GPMGs
-  - MGs
-  - Ballistic
-  - Weapons
-  materials:
-    Steel: 3500
-    Plasteel: 2000
-    Plastic: 1200
+#- type: latheRecipe
+#  parent: BaseWeaponRecipeLong
+#  id: WeaponLMGGrizzlyTSF
+#  result: WeaponLMGGrizzly
+#  categories:
+#  - GPMGs
+#  - MGs
+#  - Ballistic
+#  - Weapons
+#  materials:
+#    Steel: 3500
+#    Plasteel: 2000
+#    Plastic: 1200
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong

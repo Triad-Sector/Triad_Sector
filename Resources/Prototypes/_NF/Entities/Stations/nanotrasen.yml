@@ -93,6 +93,7 @@
   - BaseStationRenameWarpPoints
   - BaseStationSiliconLawFrontierShips
   - BaseStationDeadDropHintExempt # No hints on ship generation
+  - BaseStationExpeditions # triad - moved this here so that non-exped ships can still go on exped
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
@@ -101,7 +102,7 @@
 - type: entity
   id: StandardFrontierAntagVessel
   parent:
-  - StandardFrontierVessel
+  - StandardTriadVessel # Triad change
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
@@ -111,10 +112,11 @@
 - type: entity
   id: StandardFrontierSecurityVessel
   parent:
-  - StandardFrontierVessel
+  - StandardTriadVessel # Triad change
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
+  - type: StationFaxDeadDropHintExempt # Triad
 
 # region Expedition Shuttles
 - type: entity
@@ -128,5 +130,4 @@
   id: StandardFrontierExpeditionVessel
   parent:
   - StandardFrontierVessel
-  - BaseStationExpeditions
   categories: [ HideSpawnMenu ]
