@@ -141,6 +141,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
+  layering: # Triad
+    tail_smooth_primary: TailBehind # Triad
+    tail_smooth_secondary: TailBehind # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_smooth_primary
@@ -152,6 +155,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
+  layering: # Triad
+    tail_large: TailBehind # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_large
@@ -161,6 +166,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
+  layering: # Triad
+    tail_spikes: TailBehind # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_spikes
@@ -169,6 +176,8 @@
   id: LizardTailLTiger
   bodyPart: Tail
   markingCategory: Tail
+  layering: # Triad
+    tail_ltiger: TailBehind # Triad
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -179,6 +188,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
+  layering: # Triad
+    tail_dtiger: TailBehind # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_dtiger
@@ -363,6 +374,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_smooth_wagging_primary: TailBehind # Triad
+    tail_smooth_wagging_secondary: TailBehind # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_smooth_wagging_primary
@@ -374,6 +388,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_spikes_wagging: TailBehind # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_spikes_wagging
@@ -383,6 +399,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering:
+    tail_ltiger_wagging: TailBehind
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_ltiger_wagging
@@ -392,6 +410,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_dtiger_wagging: TailBehind # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_dtiger_wagging

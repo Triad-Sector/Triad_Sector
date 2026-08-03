@@ -273,6 +273,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp: TailBehind # Triad
+    vulp-fade: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
@@ -284,6 +287,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp: TailBehind # Triad
+    vulp-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
@@ -295,6 +301,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp_wag: TailBehind # Triad
+    vulp_wag-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag
@@ -306,6 +315,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp_wag: TailBehind # Triad
+    vulp_wag-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag
@@ -317,6 +329,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp_alt: TailBehind # Triad
+    vulp_alt-fade: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt
@@ -328,6 +343,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    vulp_alt: TailBehind # Triad
+    vulp_alt-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt
@@ -339,6 +357,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    long: TailBehind # Triad
+    long-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: long
@@ -350,6 +371,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox: TailBehind # Triad
+    fox-fade: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox
@@ -361,6 +385,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox: TailBehind # Triad
+    fox-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox
@@ -372,6 +399,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox_wag: TailBehind # Triad
+    fox_wag-fade: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox_wag
@@ -383,6 +413,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox_wag: TailBehind # Triad
+    fox_wag-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox_wag
@@ -394,6 +427,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
+  layering: # Triad
+    bushfluff: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: bushfluff
@@ -403,6 +438,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
+  layering: # Triad
+    bushfluff_wag: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: bushfluff_wag
@@ -412,6 +449,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    coyote: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: coyote
@@ -421,6 +460,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    coyote_wag: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: coyote_wag
@@ -430,6 +471,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
+  layering: # Triad
+    corgi_wag: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: corgi_wag
@@ -439,6 +482,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    husky-inner: TailBehind # Triad
+    husky-outer: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: husky-inner
@@ -450,6 +496,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    husky: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: husky
@@ -459,6 +507,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox2: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox2
@@ -468,6 +518,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fox3: TailBehind # Triad
+    fox3-tip: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fox3
@@ -479,6 +532,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fennec: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fennec
@@ -488,6 +543,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    otie: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: otie
@@ -497,6 +554,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Felinid]
+  layering: # Triad
+    fluffy: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: fluffy
@@ -506,6 +565,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
+  layering: # Triad
+    dalmatian_wag: TailBehind # Triad
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: dalmatian_wag

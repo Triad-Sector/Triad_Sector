@@ -6,6 +6,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  layering: # Triad
+    kitsune_primary: TailBehind # Triad
+    kitsune_secondary: TailBehind # Triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -24,6 +27,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Human, Vulpkanin, Felinid] # triad
+  layering: # Triad
+    foxninetailstone1: TailBehind # Triad
+    foxninetailstone2: TailBehind # Triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -42,6 +48,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  layering: # Triad
+    foxthreetailstone1: TailBehind # Triad
+    foxthreetailstone2: TailBehind # Triad
   coloring:
     default:
       type: !type:CategoryColoring
@@ -60,6 +69,9 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Human, Vulpkanin, Felinid] #triad
+  layering: # Triad
+    foxtwotailstone1: TailBehind # Triad
+    foxtwotailstone2: TailBehind # Triad
   coloring:
     default:
       type: !type:CategoryColoring
