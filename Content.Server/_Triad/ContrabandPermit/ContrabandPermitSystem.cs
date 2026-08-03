@@ -207,6 +207,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             }
 
             Dirty(ent, comp);
+            AddPermitRecordToSectorService(user, ent);
         }
     }
 
@@ -251,9 +252,6 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
                 toDelete.Add(ent);
                 continue;
             }
-
-            comp.PermitOwner = null;
-            comp.PermitOwnerMind = null;
         }
 
         foreach (var uid in toDelete)

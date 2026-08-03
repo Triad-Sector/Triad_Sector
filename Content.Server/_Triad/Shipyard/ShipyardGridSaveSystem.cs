@@ -43,7 +43,6 @@ using Robust.Shared.Configuration;
 using Content.Server.GameTicking;
 using Content.Server.StationRecords.Components;
 using Content.Server.StationRecords.Systems;
-using Content.Server._Triad.ContrabandPermit;
 using Content.Shared._Triad.ContrabandPermit;
 
 namespace Content.Server._Triad.Shipyard;
@@ -59,7 +58,6 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private IEntitySystemManager _entitySystemManager = default!;
     [Dependency] private PricingSystem _pricing = default!;
     [Dependency] private IConfigurationManager _configManager = default!;
-    [Dependency] private ContrabandPermitSystem _contrbandPermit = default!;
     [Dependency] private SharedContainerSystem _containerSystem = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
@@ -298,10 +296,6 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
 
             // Remove SpreaderGrid component from grid;
             RemComp<SpreaderGridComponent>(gridUid);
-
-            // Clear out any invalid permits (players trying to save their own permits on someone else's ship)
-            if (playerSession.AttachedEntity != null)
-                _contrbandPermit.ClearPermitItemsOnGrid(gridUid, playerSession.AttachedEntity.Value);
 
             //_sawmill.Info($"Serializing ship grid {gridUid} as '{shipName}' after transient purge using direct serialization");
 

@@ -129,6 +129,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
+        // Clear out any invalid permits (players trying to save their own permits on someone else's ship)
+        _contrabandPermit.ClearPermitItemsOnGrid(shuttleUid.Value, player);
+
         // Attempt to save the ship
         if (!_shipyardGridSave.TrySaveShip(shuttleUid.Value, targetId, playerSession))
         {
