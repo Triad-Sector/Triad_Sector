@@ -9,7 +9,7 @@ contraband-permit-console-pda-message-header = TDF Contraband Permit Network
 contraband-permit-console-pda-message-permit-granted = Your permit for {$item} has been granted for reason "{$reason}". Please note that this can be revoked at any time.
 contraband-permit-console-pda-message-permit-revoked = Your permit for {$item} has been revoked for reason "{$reason}".
 
-contraband-permit-console-radio-message-permit-granted = {$user} has granted a contraband permit for {$item} to for "{$reason}" to {$owner}.
+contraband-permit-console-radio-message-permit-granted = {$user} has granted a contraband permit for {$item} for "{$reason}" to {$owner}.
 contraband-permit-console-radio-message-permit-revoked = {$user} has revoked {$owner}'s contraband permit for {$item} for "{$reason}".
 
 contraband-permit-console-popup-success = Permit for {$item} granted for {$owner} successfully! Ejecting and destroying chip.
