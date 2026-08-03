@@ -342,7 +342,6 @@
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/pastry.rsi
     - type: Clothing
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/pastry.rsi
-    - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformBase
