@@ -124,8 +124,7 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
                 if (slot.ContainedEntity is not { } item)
                     continue;
 
-                if (_inventory.TryUnequip(viewerMob.Value, slot.ID, true, true, checkDoafter: false))
-                    QueueDel(item);
+                QueueDel(item);
             }
 
             _transform.SetParent(viewerMob.Value, PausedMap.Value);

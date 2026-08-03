@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/24/2026 22:07:54
-  entityCount: 9633
+  time: 08/03/2026 16:18:33
+  entityCount: 9578
 maps: []
 grids:
 - 1
@@ -322,10 +322,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Smoke: []
         Puddle: []
-        Kudzu: []
         MetalFoam: []
+        Smoke: []
+        Kudzu: []
       updateAccumulator: 0.6666002
     - type: Shuttle
       dampingModifier: 0.25
@@ -8623,227 +8623,6 @@ entities:
     - type: ContainedSolution
       containerName: food
       container: 20
-  - uid: 24
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 23
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 23
-  - uid: 26
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 25
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 25
-  - uid: 28
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 27
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 27
-  - uid: 30
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 29
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 29
-  - uid: 32
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 31
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 31
-  - uid: 34
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 33
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 33
-  - uid: 37
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 36
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 36
-  - uid: 39
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 38
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 38
-  - uid: 41
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 40
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 40
-  - uid: 43
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 42
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 42
-  - uid: 45
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 44
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 44
-  - uid: 47
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 46
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 46
-  - uid: 49
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 48
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 48
   - uid: 52
     components:
     - type: MetaData
@@ -9048,193 +8827,6 @@ entities:
     - type: ContainedSolution
       containerName: food
       container: 74
-  - uid: 78
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 77
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 77
-  - uid: 80
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 79
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 79
-  - uid: 82
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 81
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 81
-  - uid: 84
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 83
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 83
-  - uid: 86
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 85
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 85
-  - uid: 89
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 88
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 88
-  - uid: 91
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 90
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 90
-  - uid: 93
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 92
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 92
-  - uid: 95
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 94
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 94
-  - uid: 97
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 96
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 96
-  - uid: 99
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 98
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 98
   - uid: 102
     components:
     - type: MetaData
@@ -13119,142 +12711,6 @@ entities:
     - type: ContainedSolution
       containerName: food
       container: 730
-  - uid: 733
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 732
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 732
-  - uid: 735
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 734
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 734
-  - uid: 737
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 736
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 736
-  - uid: 739
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 738
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 738
-  - uid: 741
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 740
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 740
-  - uid: 743
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 742
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 742
-  - uid: 745
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 744
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 744
-  - uid: 747
-    components:
-    - type: MetaData
-      name: solution - food
-    - type: Transform
-      parent: 746
-    - type: Solution
-      solution:
-        maxVol: 1
-        name: food
-        reagents:
-        - data: []
-          ReagentId: Fiber
-          Quantity: 1
-    - type: ContainedSolution
-      containerName: food
-      container: 746
   - uid: 749
     components:
     - type: MetaData
@@ -26875,112 +26331,32 @@ entities:
         quickInsert:
           length: 0.5
         storage: {}
-- proto: BoxFolderTdfForms
+- proto: BoxFolderTdf
   entities:
   - uid: 22
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.531857,-31.289026
+      pos: -6.490563,-31.079119
       parent: 1
-    - type: Storage
-      storedItems:
-        23:
-          position: 0,0
-          _rotation: South
-        25:
-          position: 1,0
-          _rotation: South
-        27:
-          position: 2,0
-          _rotation: South
-        29:
-          position: 3,0
-          _rotation: South
-        31:
-          position: 4,0
-          _rotation: South
-        33:
-          position: 0,1
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 23
-          - 25
-          - 27
-          - 29
-          - 31
-          - 33
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 106.3589167
-          length: 1
-        quickInsert:
-          endTime: 106.3589167
-          length: 0.5
-        storage:
-          endTime: 106.3589167
-  - uid: 35
+  - uid: 23
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.3705816,-31.146463
+      pos: -6.675748,-31.44023
       parent: 1
-    - type: Storage
-      storedItems:
-        36:
-          position: 0,0
-          _rotation: South
-        38:
-          position: 1,0
-          _rotation: South
-        40:
-          position: 2,0
-          _rotation: South
-        42:
-          position: 3,0
-          _rotation: South
-        44:
-          position: 4,0
-          _rotation: South
-        46:
-          position: 0,1
-          _rotation: South
-        48:
-          position: 1,1
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 36
-          - 38
-          - 40
-          - 42
-          - 44
-          - 46
-          - 48
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 106.3589167
-          length: 1
-        quickInsert:
-          endTime: 106.3589167
-          length: 0.5
-        storage:
-          endTime: 106.3589167
+  - uid: 24
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.3150997,-2.4283137
+      parent: 1
+  - uid: 25
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.6113963,-2.261647
+      parent: 1
+- proto: BoxFolderTdfForms
+  entities:
   - uid: 50
     components:
     - type: Transform
@@ -27067,102 +26443,6 @@ entities:
           - 70
           - 72
           - 74
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 106.3589167
-          length: 1
-        quickInsert:
-          endTime: 106.3589167
-          length: 0.5
-        storage:
-          endTime: 106.3589167
-  - uid: 76
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.6440287,-2.3937345
-      parent: 1
-    - type: Storage
-      storedItems:
-        77:
-          position: 0,0
-          _rotation: South
-        79:
-          position: 1,0
-          _rotation: South
-        81:
-          position: 2,0
-          _rotation: South
-        83:
-          position: 3,0
-          _rotation: South
-        85:
-          position: 4,0
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 77
-          - 79
-          - 81
-          - 83
-          - 85
-    - type: Physics
-      canCollide: False
-    - type: UseDelay
-      delays:
-        default:
-          endTime: 106.3589167
-          length: 1
-        quickInsert:
-          endTime: 106.3589167
-          length: 0.5
-        storage:
-          endTime: 106.3589167
-  - uid: 87
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.4524393,-2.7286344
-      parent: 1
-    - type: Storage
-      storedItems:
-        88:
-          position: 0,0
-          _rotation: South
-        90:
-          position: 1,0
-          _rotation: South
-        92:
-          position: 2,0
-          _rotation: South
-        94:
-          position: 3,0
-          _rotation: South
-        96:
-          position: 4,0
-          _rotation: South
-        98:
-          position: 0,1
-          _rotation: South
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 88
-          - 90
-          - 92
-          - 94
-          - 96
-          - 98
     - type: Physics
       canCollide: False
     - type: UseDelay
@@ -38984,35 +38264,20 @@ entities:
       nextSound: 21659.1399414
     - type: ApcPowerReceiver
       powerLoad: 5
-- proto: ComputerCriminalRecords
+- proto: ComputerContrabandPermit
   entities:
-  - uid: 4213
+  - uid: 34
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-33.5
       parent: 1
-    - type: Battery
-      startingCharge: 0
-    - type: PointLight
-      enabled: True
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 4214
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      spokenLanguages:
-      - TauCetiBasic
-      currentLanguage: TauCetiBasic
-    - type: SpamEmitSound
-      nextSound: 21633.3824458
     - type: ApcPowerReceiver
       powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerCriminalRecords
+  entities:
   - uid: 4215
     components:
     - type: Transform
@@ -39293,6 +38558,16 @@ entities:
       powerLoad: 5
 - proto: ComputerShuttleRecords
   entities:
+  - uid: 35
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,-33.5
+      parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 4232
     components:
     - type: Transform
@@ -39344,33 +38619,6 @@ entities:
       powerLoad: 5
 - proto: ComputerStationRecords
   entities:
-  - uid: 4235
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-33.5
-      parent: 1
-    - type: Battery
-      startingCharge: 0
-    - type: PointLight
-      enabled: True
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 4236
-    - type: LanguageSpeaker
-      understoodLanguages:
-      - TauCetiBasic
-      spokenLanguages:
-      - TauCetiBasic
-      currentLanguage: TauCetiBasic
-    - type: SpamEmitSound
-      nextSound: 21646.3082254
-    - type: ApcPowerReceiver
-      powerLoad: 5
   - uid: 4237
     components:
     - type: Transform
@@ -39559,6 +38807,18 @@ entities:
       nextSound: 21628.2086625
     - type: ApcPowerReceiver
       powerLoad: 5
+- proto: ComputerTabletopContrabandPermit
+  entities:
+  - uid: 33
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,-3.5
+      parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ComputerTabletopCrewMonitoring
   entities:
   - uid: 4243
@@ -39572,6 +38832,16 @@ entities:
       startingCharge: 0
 - proto: ComputerTabletopCriminalRecords
   entities:
+  - uid: 36
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,-31.5
+      parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 4244
     components:
     - type: Transform
@@ -41684,12 +40954,6 @@ entities:
       parent: 1
 - proto: CriminalRecordsComputerCircuitboard
   entities:
-  - uid: 4214
-    components:
-    - type: Transform
-      parent: 4213
-    - type: Physics
-      canCollide: False
   - uid: 4216
     components:
     - type: Transform
@@ -46115,7 +45379,7 @@ entities:
     - type: Label
       currentLabel: Astrotame
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.56822014
+      sprayFizzinessThresholdRoll: 0.7313005
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46251,7 +45515,7 @@ entities:
     - type: Label
       currentLabel: BBQ sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.9672415
+      sprayFizzinessThresholdRoll: 0.23824058
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46581,7 +45845,7 @@ entities:
     - type: Label
       currentLabel: coconut water
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.88705283
+      sprayFizzinessThresholdRoll: 0.12702285
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46605,7 +45869,7 @@ entities:
     - type: Label
       currentLabel: coffee
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.9829515
+      sprayFizzinessThresholdRoll: 0.06896283
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46653,7 +45917,7 @@ entities:
     - type: Label
       currentLabel: coldsauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.0680465
+      sprayFizzinessThresholdRoll: 0.11766104
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46677,7 +45941,7 @@ entities:
     - type: Label
       currentLabel: cream
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.86512333
+      sprayFizzinessThresholdRoll: 0.91006887
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46891,7 +46155,7 @@ entities:
     - type: Label
       currentLabel: green tea
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.094226584
+      sprayFizzinessThresholdRoll: 0.886561
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46915,7 +46179,7 @@ entities:
     - type: Label
       currentLabel: horseradish sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.8288235
+      sprayFizzinessThresholdRoll: 0.78507745
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46939,7 +46203,7 @@ entities:
     - type: Label
       currentLabel: hotsauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.14806867
+      sprayFizzinessThresholdRoll: 0.8617372
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -46980,7 +46244,7 @@ entities:
     - type: Label
       currentLabel: ice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.5963224
+      sprayFizzinessThresholdRoll: 0.21809724
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47004,7 +46268,7 @@ entities:
     - type: Label
       currentLabel: lime juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.7598539
+      sprayFizzinessThresholdRoll: 0.34254462
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47028,7 +46292,7 @@ entities:
     - type: Label
       currentLabel: orange juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.6565924
+      sprayFizzinessThresholdRoll: 0.22410251
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47052,7 +46316,7 @@ entities:
     - type: Label
       currentLabel: ketchup
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.35162577
+      sprayFizzinessThresholdRoll: 0.8807438
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47100,7 +46364,7 @@ entities:
     - type: Label
       currentLabel: mayonnaise
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.78293544
+      sprayFizzinessThresholdRoll: 0.103291675
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47141,7 +46405,7 @@ entities:
     - type: Label
       currentLabel: mustard
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.77159667
+      sprayFizzinessThresholdRoll: 0.9530113
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47357,7 +46621,7 @@ entities:
     - type: Label
       currentLabel: soy sauce
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.39695448
+      sprayFizzinessThresholdRoll: 0.24296445
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47429,7 +46693,7 @@ entities:
     - type: Label
       currentLabel: sugar
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.44466186
+      sprayFizzinessThresholdRoll: 0.41351593
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47470,7 +46734,7 @@ entities:
     - type: Label
       currentLabel: black tea
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.41685376
+      sprayFizzinessThresholdRoll: 0.49854642
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -47800,7 +47064,7 @@ entities:
     - type: Label
       currentLabel: watermelon juice
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.9604254
+      sprayFizzinessThresholdRoll: 0.2693596
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -51067,8 +50331,6 @@ entities:
       solutions: null
       containers:
       - drainBuffer
-    - type: Physics
-      canCollide: False
     - type: Fixtures
       fixtures: {}
     - type: ContainerContainer
@@ -51084,8 +50346,6 @@ entities:
       solutions: null
       containers:
       - drainBuffer
-    - type: Physics
-      canCollide: False
     - type: Fixtures
       fixtures: {}
     - type: ContainerContainer
@@ -51101,8 +50361,6 @@ entities:
       solutions: null
       containers:
       - drainBuffer
-    - type: Physics
-      canCollide: False
     - type: Fixtures
       fixtures: {}
     - type: ContainerContainer
@@ -51118,8 +50376,6 @@ entities:
       solutions: null
       containers:
       - drainBuffer
-    - type: Physics
-      canCollide: False
     - type: Fixtures
       fixtures: {}
     - type: ContainerContainer
@@ -51139,6 +50395,8 @@ entities:
       containers:
         solution@drainBuffer: !type:ContainerSlot
           ent: 462
+    - type: Fixtures
+      fixtures: {}
   - uid: 463
     components:
     - type: Transform
@@ -51152,6 +50410,8 @@ entities:
       containers:
         solution@drainBuffer: !type:ContainerSlot
           ent: 464
+    - type: Fixtures
+      fixtures: {}
   - uid: 465
     components:
     - type: Transform
@@ -51165,6 +50425,8 @@ entities:
       containers:
         solution@drainBuffer: !type:ContainerSlot
           ent: 466
+    - type: Fixtures
+      fixtures: {}
   - uid: 467
     components:
     - type: Transform
@@ -51178,11 +50440,15 @@ entities:
       containers:
         solution@drainBuffer: !type:ContainerSlot
           ent: 468
+    - type: Fixtures
+      fixtures: {}
   - uid: 5144
     components:
     - type: Transform
       pos: -14.5,27.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: FloorWaterEntity
   entities:
   - uid: 469
@@ -88208,7 +87474,7 @@ entities:
     - type: Label
       currentLabel: caramexinin
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.46188444
+      sprayFizzinessThresholdRoll: 0.866679
     - type: Physics
       canCollide: False
     - type: NameModifier
@@ -89299,7 +88565,7 @@ entities:
   - uid: 6656
     components:
     - type: Transform
-      pos: -6.2866936,-31.41888
+      pos: -6.4072294,-31.19023
       parent: 1
     - type: UseDelay
       delays:
@@ -89311,8 +88577,6 @@ entities:
           endTime: 106.3589167
           startTime: 0
           length: 1.5
-    - type: Physics
-      canCollide: False
 - proto: MachineAnomalyVessel
   entities:
   - uid: 612
@@ -91735,150 +90999,42 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 21
-  - uid: 33
+  - uid: 26
     components:
     - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 34
-  - uid: 46
+      rot: -1.5707963267948966 rad
+      pos: 6.658175,-2.6196716
+      parent: 1
+  - uid: 27
     components:
     - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 47
-  - uid: 48
+      rot: -1.5707963267948966 rad
+      pos: 6.3310146,-2.7863383
+      parent: 1
+  - uid: 28
     components:
     - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 49
+      rot: -1.5707963267948966 rad
+      pos: 6.676694,-2.7739928
+      parent: 1
+  - uid: 30
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.398916,-2.841894
+      parent: 1
+  - uid: 31
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.769286,-2.5764618
+      parent: 1
+  - uid: 32
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.324842,-2.9283137
+      parent: 1
   - uid: 61
     components:
     - type: Transform
@@ -91975,54 +91131,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 64
-  - uid: 98
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 99
   - uid: 111
     components:
     - type: Transform
@@ -93029,390 +92137,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 731
-  - uid: 732
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.4817734,-3.4606457
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 733
-  - uid: 734
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5027966,-3.6009722
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 735
-  - uid: 736
-    components:
-    - type: Transform
-      rot: -1.5707486430790762 rad
-      pos: 6.7352366,-3.4248924
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 737
-  - uid: 738
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.669979,-3.5100708
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 739
-  - uid: 740
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.72057,-3.1933389
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 741
-  - uid: 742
-    components:
-    - type: Transform
-      rot: -1.5708860913899283 rad
-      pos: 6.7362294,-3.2346299
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 743
-  - uid: 744
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.4819365,-3.2837522
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 745
-  - uid: 746
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.494306,-3.1599188
-      parent: 1
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 747
   - uid: 748
     components:
     - type: Transform
@@ -95204,102 +93928,6 @@ entities:
           ent: 757
 - proto: PaperWrittenTdfAfterActionReport
   entities:
-  - uid: 23
-    components:
-    - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 24
-  - uid: 36
-    components:
-    - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 37
   - uid: 51
     components:
     - type: Transform
@@ -95396,102 +94024,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 67
-  - uid: 77
-    components:
-    - type: Transform
-      parent: 76
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 78
-  - uid: 88
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 89
   - uid: 101
     components:
     - type: Transform
@@ -95734,102 +94266,6 @@ entities:
           ent: 152
 - proto: PaperWrittenTdfContrabandPermit
   entities:
-  - uid: 31
-    components:
-    - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 32
-  - uid: 44
-    components:
-    - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 45
   - uid: 59
     components:
     - type: Transform
@@ -95926,102 +94362,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 75
-  - uid: 85
-    components:
-    - type: Transform
-      parent: 76
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 86
-  - uid: 96
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 97
   - uid: 109
     components:
     - type: Transform
@@ -96264,102 +94604,6 @@ entities:
           ent: 160
 - proto: PaperWrittenTdfDnr
   entities:
-  - uid: 25
-    components:
-    - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 26
-  - uid: 38
-    components:
-    - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 39
   - uid: 53
     components:
     - type: Transform
@@ -96456,102 +94700,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 69
-  - uid: 79
-    components:
-    - type: Transform
-      parent: 76
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 80
-  - uid: 90
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 91
   - uid: 103
     components:
     - type: Transform
@@ -96794,102 +94942,6 @@ entities:
           ent: 154
 - proto: PaperWrittenTdfInvestigatorReport
   entities:
-  - uid: 27
-    components:
-    - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 28
-  - uid: 40
-    components:
-    - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 41
   - uid: 55
     components:
     - type: Transform
@@ -96986,102 +95038,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 71
-  - uid: 81
-    components:
-    - type: Transform
-      parent: 76
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 82
-  - uid: 92
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 93
   - uid: 105
     components:
     - type: Transform
@@ -97324,102 +95280,6 @@ entities:
           ent: 156
 - proto: PaperWrittenTdfShipSearchWarrant
   entities:
-  - uid: 29
-    components:
-    - type: Transform
-      parent: 22
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 30
-  - uid: 42
-    components:
-    - type: Transform
-      parent: 35
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 43
   - uid: 57
     components:
     - type: Transform
@@ -97516,102 +95376,6 @@ entities:
       containers:
         solution@food: !type:ContainerSlot
           ent: 73
-  - uid: 83
-    components:
-    - type: Transform
-      parent: 76
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 84
-  - uid: 94
-    components:
-    - type: Transform
-      parent: 87
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          layer: []
-          density: 20
-          hard: True
-          restitution: 0.3
-          friction: 0.2
-        flammable:
-          shape: !type:PhysShapeCircle
-            radius: 0.35
-            position: 0,0
-          mask:
-          - TableLayer
-          - HighImpassable
-          - LowImpassable
-          - BulletImpassable
-          - InteractImpassable
-          - Opaque
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 95
   - uid: 107
     components:
     - type: Transform
@@ -141412,10 +139176,15 @@ entities:
       canCollide: False
 - proto: RubberStampApproved
   entities:
+  - uid: 37
+    components:
+    - type: Transform
+      pos: -6.3424144,-31.468008
+      parent: 1
   - uid: 7196
     components:
     - type: Transform
-      pos: 6.3666425,-3.7446904
+      pos: 6.2585545,-3.9069881
       parent: 1
     - type: UseDelay
       delays:
@@ -141427,14 +139196,17 @@ entities:
           endTime: 106.3589167
           startTime: 0
           length: 1
-    - type: Physics
-      canCollide: False
 - proto: RubberStampDenied
   entities:
+  - uid: 38
+    components:
+    - type: Transform
+      pos: -6.101674,-31.403193
+      parent: 1
   - uid: 7197
     components:
     - type: Transform
-      pos: 6.659313,-3.7525845
+      pos: 6.5857153,-3.8205686
       parent: 1
     - type: UseDelay
       delays:
@@ -141446,8 +139218,6 @@ entities:
           endTime: 106.3589167
           startTime: 0
           length: 1
-    - type: Physics
-      canCollide: False
 - proto: ScreenTimer
   entities:
   - uid: 7198
@@ -144886,12 +142656,6 @@ entities:
       canCollide: False
 - proto: StationRecordsComputerCircuitboard
   entities:
-  - uid: 4236
-    components:
-    - type: Transform
-      parent: 4235
-    - type: Physics
-      canCollide: False
   - uid: 4238
     components:
     - type: Transform
@@ -145882,6 +143646,12 @@ entities:
       parent: 1
 - proto: TableReinforced
   entities:
+  - uid: 29
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,-31.5
+      parent: 1
   - uid: 7444
     components:
     - type: Transform
@@ -158113,7 +155883,7 @@ entities:
     - type: UseDelay
       delays:
         RMCWieldDelay:
-          endTime: 536.2664398
+          endTime: 536.2664397
           startTime: 535.6327977
           length: 1.2
     - type: Physics
