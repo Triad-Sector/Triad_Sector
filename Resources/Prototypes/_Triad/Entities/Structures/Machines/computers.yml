@@ -3,6 +3,7 @@
   - BaseStructureIndestructible
   - BaseComputerAiAccess
   - BaseStructureAccessReaderImmuneToEmag
+  - BaseStructureDisableScrewing
   - BaseClass2AShipContrabandSilent
   id: ComputerContrabandPermit
   name: contraband permit manager
@@ -28,8 +29,6 @@
     interfaces:
       enum.ContrabandPermitConsoleUi.Key:
         type: ContrabandPermitConsoleBoundUserInterface
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
   - type: ItemSlots
     slots:
       chip_slot:
