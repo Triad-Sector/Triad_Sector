@@ -175,7 +175,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         var user = args.User;
         var item = args.Target;
 
-        if (!TryComp<ContrabandPermittableComponent>(ent.Owner, out var permittable) || permittable.Permittable)
+        if (!TryComp<ContrabandPermittableComponent>(item, out var permittable) || permittable.Permittable)
             return;
 
         var verb = new UtilityVerb()
