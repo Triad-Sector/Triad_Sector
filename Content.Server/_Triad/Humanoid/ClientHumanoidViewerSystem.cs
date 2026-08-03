@@ -6,7 +6,8 @@ using Content.Shared.Roles;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Station;
-using System.Linq;
+using Content.Shared.Inventory;
+using Content.Shared._Mono.Pvs;
 
 namespace Content.Server._Triad.Humanoid;
 
@@ -16,11 +17,13 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
     [Dependency] private IDependencyCollection _dependencyCollection = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private SharedStationSpawningSystem _stationSpawning = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
-    private static readonly EntProtoId HumanoidViewerMobProto = "MobTriadHumanoidViewer";
+    private static readonly SlotFlags RemoveDummyClothingFlags =
+        SlotFlags.OUTERCLOTHING | SlotFlags.HEAD | SlotFlags.SUITSTORAGE | SlotFlags.MASK | SlotFlags.BACK | SlotFlags.EYES;
 
     public EntityUid? PausedMap { get; private set; }
 
@@ -84,9 +87,9 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
             }
         }
 
-        if (viewerMob == null)
+        if (viewerMob == null && _prototypes.TryIndex(ev.Profile.Species, out var speciesProto))
         {
-            viewerMob = Spawn(HumanoidViewerMobProto);
+            viewerMob = Spawn(speciesProto.DollPrototype);
             _humanoid.LoadProfile(viewerMob.Value, ev.Profile); // Copy humanoid appearance
             _metaData.SetEntityName(viewerMob.Value, ev.Profile.Name);
 
@@ -114,11 +117,24 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
                     _stationSpawning.EquipStartingGear(viewerMob.Value, jobPrototype.StartingGear, raiseEvent: false);
             }
 
+            // Unequip items that wouldn't make sense in a photograph of the dummy, like hardsuits and masks
+            var enumerator = _inventory.GetSlotEnumerator(viewerMob.Value, RemoveDummyClothingFlags);
+            while (enumerator.MoveNext(out var slot))
+            {
+                if (slot.ContainedEntity is not { } item)
+                    continue;
+
+                if (_inventory.TryUnequip(viewerMob.Value, slot.ID, true, true, checkDoafter: false))
+                    QueueDel(item);
+            }
+
             _transform.SetParent(viewerMob.Value, PausedMap.Value);
 
             var viewerComp = EnsureComp<HumanoidViewerEntityComponent>(viewerMob.Value);
             viewerComp.Session = ev.Player;
             Dirty(viewerMob.Value, viewerComp);
+
+            EnsureComp<GlobalPvsComponent>(viewerMob.Value);
         }
 
         var humanoidView = EnsureComp<HumanoidViewComponent>(mob);
