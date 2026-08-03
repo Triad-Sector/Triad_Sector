@@ -3352,3 +3352,10 @@ Entries:
   id: 2472
   time: '2026-08-02T17:28:34.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/451
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed people appearing naked when you examine them.
+  id: 2473
+  time: '2026-08-03T14:31:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/457
