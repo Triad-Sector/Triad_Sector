@@ -316,7 +316,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 var type = ProcessEmoteMessage(source, message, out var modMessage);
                 if (type == EmoteType.Audible || type == EmoteType.AudiblePossessive)
                 {
-                    if (checkRadioPrefix && TryProcessRadioMessage(source, modMessage, out var outputMessage, out var channel, capitalize: false))
+                    if (checkRadioPrefix && TryProccessRadioMessage(source, modMessage, out var outputMessage, out var channel, capitalize: false))
                         SendAudibleEntityEmote(source, outputMessage, range, nameOverride, channel, type, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
                     else
                         SendAudibleEntityEmote(source, modMessage, range, nameOverride, null, type, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
@@ -912,7 +912,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             !TryEmoteChatInput(source, action))
             return;
 
-        SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
+        SendInVoiceRange(ChatChannel.Emotes, name, action, wrappedMessage, obfuscated: "", obfuscatedWrappedMessage: "", source, range, author);
 
         var ev = new EntityAudiblyEmotedEvent(source, action, channel, type);
         RaiseLocalEvent(source, ref ev, true);

@@ -62,12 +62,12 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             && TryComp(headset.Headset, out EncryptionKeyHolderComponent? keys)
             && keys.Channels.Contains(channel.ID))
         {
-            if (!TryComp<HandsComponent>(uid, out var hands) || hands.Count < 1 ||
-                TryComp<CuffableComponent>(uid, out var cuffable) && _cuffable.IsCuffed((uid, cuffable)))
-            {
-                _popup.PopupEntity(Loc.GetString("headset-cant-reach"), uid, uid, PopupType.SmallCaution);
-                return false;
-            }
+            // if (!TryComp<HandsComponent>(uid, out var hands) || hands.Count < 1 ||
+            //     TryComp<CuffableComponent>(uid, out var cuffable) && _cuffable.IsCuffed((uid, cuffable)))
+            // {
+            //     _popup.PopupEntity(Loc.GetString("headset-cant-reach"), uid, uid, PopupType.SmallCaution);
+            //     return false;
+            // }
 
             return true;
         }

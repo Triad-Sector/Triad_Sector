@@ -200,7 +200,7 @@ public sealed class RadioSystem : EntitySystem
 
         // Einstein Engines - Language begin
         var obfuscated = _language.ObfuscateSpeech(content, language);
-        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language);
+        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, emType);
         var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, NetEntity.Invalid, null);
         var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource);
         // Einstein Engines - Language end
@@ -277,7 +277,7 @@ public sealed class RadioSystem : EntitySystem
         string name,
         string message,
         LanguagePrototype language,
-        EmoteType emType)
+        EmoteType? emType)
     {
         // TODO: code duplication with ChatSystem.WrapMessage
         var speech = _chat.GetSpeechVerb(source, message);
@@ -292,19 +292,19 @@ public sealed class RadioSystem : EntitySystem
 
         //Moved from SendRadioMessage
         if (emType == EmoteType.Audible)
-            Loc.GetString("chat-radio-message-audible-emote-wrap",
+            return Loc.GetString("chat-radio-message-audible-emote-wrap",
                 ("color", channel.Color),
                 ("channel", $"\\[{channel.LocalizedName}\\]"),
                 ("name", name),
                 ("message", message));
         else if (emType == EmoteType.AudiblePossessive)
-            Loc.GetString("chat-radio-message-audible-possessive-emote-wrap",
+            return Loc.GetString("chat-radio-message-audible-possessive-emote-wrap",
                 ("color", channel.Color),
                 ("channel", $"\\[{channel.LocalizedName}\\]"),
                 ("name", name),
                 ("message", message));
         else
-            Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
+            return Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
                 ("color", channel.Color),
                 ("languageColor", languageColor),
                 ("fontType", language.SpeechOverride.FontId ?? speech.FontId),
