@@ -11,6 +11,7 @@ using Content.Shared.StationRecords;
 using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Timing; // Triad
 
 namespace Content.Server._Mono.MonoCoins;
 
@@ -25,8 +26,16 @@ public sealed class MonoCoinsSystem : EntitySystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!; // Triad
 
-    private const int RoundEndReward = 10;
+    private const int RoundEndReward = 1; // Triad - 1<10. Name is inaccurate; pay is hourly instead of at round-end.
+
+    // Triad - Hourly instead of round-end.
+    private static readonly TimeSpan PayoutDelay = TimeSpan.FromSeconds(3600);
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan NextPayoutTime;
+    // End Triad
 
     public override void Initialize()
     {
@@ -40,8 +49,23 @@ public sealed class MonoCoinsSystem : EntitySystem
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
 
         // Subscribe to round end events
-        SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
+        //SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd); // Triad removal - Hourly instead of round-end.
     }
+
+    // Triad - Hourly instead of round-end.
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var curTime = _gameTiming.CurTime;
+
+        if (curTime < NextPayoutTime)
+            return;
+
+        OnRoundEnd();
+        NextPayoutTime = curTime + PayoutDelay;
+    }
+    // End Triad
 
     /// <summary>
     /// Handles requests for MonoCoins balance from clients.
@@ -116,7 +140,7 @@ public sealed class MonoCoinsSystem : EntitySystem
     /// <summary>
     /// Called when a round ends. Awards MonoCoins to players who appear in the station manifest.
     /// </summary>
-    private async void OnRoundEnd(RoundEndMessageEvent args)
+    private async void OnRoundEnd() // Triad - Removed argument. This is now called by Update.
     {
         // Award MonoCoins to players who appear in the station manifest
         var tasks = new List<Task>();
@@ -130,7 +154,7 @@ public sealed class MonoCoinsSystem : EntitySystem
             }
             else
             {
-                Logger.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
+                Logger.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping TriToken reward"); // Triad - MonoCoin rename.
             }
         }
 
@@ -180,10 +204,10 @@ public sealed class MonoCoinsSystem : EntitySystem
         try
         {
             var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Logger.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
+            Logger.Info($"Awarded {RoundEndReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - TriToken rename.
 
             // Notify the player via chat
-            var notificationMessage = $"Round ended! You earned {RoundEndReward} MonoCoins. Your new balance: {newBalance}";
+            var notificationMessage = $"You earned {RoundEndReward} hourly TriToken. Your new balance: {newBalance}."; // Triad - TriToken rename.
             _chatManager.ChatMessageToOne(
                 ChatChannel.Notifications,
                 notificationMessage,
@@ -194,7 +218,7 @@ public sealed class MonoCoinsSystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
+            Logger.Error($"Failed to award hourly TriToken to player {session.Name} ({session.UserId}): {ex.Message}"); // Triad - Hourly instead of round-end. TriToken rename.
         }
     }
 }
