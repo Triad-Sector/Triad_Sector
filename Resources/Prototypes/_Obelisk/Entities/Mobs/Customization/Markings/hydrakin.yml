@@ -74,8 +74,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_default: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_default
@@ -85,9 +83,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_nub: TailBehind # Triad
-    tail_nub_overlay: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_nub
@@ -99,8 +94,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_feathers: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_feathers
@@ -110,9 +103,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_feathers: TailBehind # Triad
-    tail_feathers_overlay: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_feathers
@@ -124,8 +114,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_spiny: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_spiny
@@ -135,9 +123,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_spiny: TailBehind # Triad
-    tail_spiny_overlay: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_spiny
@@ -149,8 +134,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_fins: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_fins
@@ -160,9 +143,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_fins: TailBehind # Triad
-    tail_fins_overlay: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_fins
@@ -174,9 +154,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_feathers_seer: TailBehind # Triad
-    tail_feathers_seer_overlay: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_feathers_seer
@@ -188,8 +165,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Hydrakin]
-  layering: # Triad
-    tail_feathers_seer: TailBehind # Triad
   sprites:
   - sprite: _Obelisk/Mobs/Customization/hydrakin_parts.rsi
     state: tail_feathers_seer
