@@ -8,6 +8,8 @@ contraband-permit-chip-examine-owner = Scanned owner: {$owner}
 
 contraband-permit-chip-clear-verb = Clear data
 contraband-permit-chip-cleared = Cleared data
+contraband-permit-scan-verb-text = Scan
+contraband-permit-scan-verb-message = Perform a chip scan
 
 contraband-permit-chip-scan-id-start = You put your finger on the chip...
 contraband-permit-chip-scan-id-dna-end = A small needle pricked your finger! Ow!

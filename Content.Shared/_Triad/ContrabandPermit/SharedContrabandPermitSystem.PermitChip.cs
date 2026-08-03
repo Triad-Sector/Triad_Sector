@@ -26,6 +26,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         SubscribeLocalEvent<ContrabandPermitChipComponent, AfterInteractEvent>(OnPermitChipInteract);
         SubscribeLocalEvent<ContrabandPermitChipComponent, ExaminedEvent>(OnPermitChipExamine);
         SubscribeLocalEvent<ContrabandPermitChipComponent, GetVerbsEvent<Verb>>(OnPermitChipGetVerbs);
+        SubscribeLocalEvent<ContrabandPermitChipComponent, GetVerbsEvent<UtilityVerb>>(OnPermitChipGetUtilityVerbs);
     }
 
     private void OnPermitChipActivate(Entity<ContrabandPermitChipComponent> ent, ref ActivateInWorldEvent args)
@@ -164,6 +165,29 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
             };
             args.Verbs.Add(verb);
         }
+    }
+
+    private void OnPermitChipGetUtilityVerbs(Entity<ContrabandPermitChipComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
+    {
+        if (!args.CanInteract || !args.CanAccess)
+            return;
+
+        var user = args.User;
+        var item = args.Target;
+
+        if (!TryComp<ContrabandPermittableComponent>(ent.Owner, out var permittable) || permittable.Permittable)
+            return;
+
+        var verb = new UtilityVerb()
+        {
+            Act = () => TryScan(ent, item, user),
+            IconEntity = GetNetEntity(ent.Owner),
+            Text = Loc.GetString("contraband-permit-scan-verb-text"),
+            Message = Loc.GetString("contraband-permit-scan-verb-message"),
+            DoContactInteraction = true
+        };
+
+        args.Verbs.Add(verb);
     }
 
     private void ClearScannedItem(Entity<ContrabandPermitChipComponent> ent, EntityUid user)
