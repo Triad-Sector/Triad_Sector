@@ -78,7 +78,6 @@
 
 # Class 2 Contraband
 - type: entity
-  parent: BaseC2ContrabandUnredeemable
   id: BaseTriadC2Contraband
   abstract: true
   components:
@@ -89,7 +88,6 @@
 
 # Class 3 Contraband
 - type: entity
-  parent: BaseC3ContrabandUnredeemable
   id: BaseTriadC3Contraband
   abstract: true
   components:
