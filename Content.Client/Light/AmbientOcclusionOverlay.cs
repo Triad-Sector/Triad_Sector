@@ -20,7 +20,8 @@ public sealed class AmbientOcclusionOverlay : Overlay
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
+
+    private readonly TurfSystem _turf;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
@@ -32,6 +33,7 @@ public sealed class AmbientOcclusionOverlay : Overlay
     public AmbientOcclusionOverlay()
     {
         IoCManager.InjectDependencies(this);
+        _turf = _entManager.System<TurfSystem>();
         ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
     }
 
@@ -113,7 +115,7 @@ public sealed class AmbientOcclusionOverlay : Overlay
                     worldHandle.SetTransform(worldToTextureMatrix);
                     while (tiles.MoveNext(out var tileRef))
                     {
-                        if (tileRef.IsSpace(_tileDefManager))
+                        if (_turf.IsSpace(tileRef))
                             continue;
 
                         var bounds = lookups.GetLocalBounds(tileRef, grid.TileSize);

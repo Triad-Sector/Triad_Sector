@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared.Conveyor;
 using Content.Shared.Gravity;
+using Content.Shared.Maps;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -17,10 +18,10 @@ namespace Content.Shared.Physics.Controllers;
 
 public abstract class SharedConveyorController : VirtualController
 {
-    [Dependency] protected readonly IMapManager MapManager = default!;
     [Dependency] private   readonly IParallelManager _parallel = default!;
     [Dependency] private   readonly CollisionWakeSystem _wake = default!;
     [Dependency] protected readonly EntityLookupSystem Lookup = default!;
+    [Dependency] protected readonly TurfSystem Turf = default!;
     [Dependency] private   readonly FixtureSystem _fixtures = default!;
     [Dependency] private   readonly SharedGravitySystem _gravity = default!;
     [Dependency] private   readonly SharedMoverController _mover = default!;

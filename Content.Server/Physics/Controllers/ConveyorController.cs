@@ -123,7 +123,7 @@ public sealed class ConveyorController : SharedConveyorController
 
         var xform = ent.Comp;
 
-        var beltTileRef = xform.Coordinates.GetTileRef(EntityManager, MapManager);
+        var beltTileRef = Turf.GetTileRef(xform.Coordinates);
 
         if (beltTileRef != null)
         {

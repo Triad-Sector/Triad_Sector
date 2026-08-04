@@ -29,7 +29,7 @@ public sealed class FloorTileSystem : EntitySystem
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStackSystem _stackSystem = default!;
@@ -106,7 +106,7 @@ public sealed class FloorTileSystem : EntitySystem
         // otherwise check it isn't blocked by a wall
         if (!canAccessCenter)
         {
-            foreach (var ent in location.GetEntitiesInTile(lookupSystem: _lookup))
+            foreach (var ent in _turf.GetEntitiesInTile(location))
             {
                 if (physicQuery.TryGetComponent(ent, out var phys) &&
                     phys.BodyType == BodyType.Static &&

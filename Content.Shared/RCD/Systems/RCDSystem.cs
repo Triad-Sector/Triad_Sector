@@ -236,7 +236,7 @@ public class RCDSystem : EntitySystem
                 else
                 {
                     var deconstructedTile = _mapSystem.GetTileRef(mapGridData.Value.GridUid, mapGridData.Value.Component, mapGridData.Value.Location);
-                    var protoName = !deconstructedTile.IsSpace() ? _deconstructTileProto : _deconstructLatticeProto;
+                    var protoName = !_turf.IsSpace(deconstructedTile) ? _deconstructTileProto : _deconstructLatticeProto;
 
                     if (_protoManager.TryIndex(protoName, out var deconProto))
                     {
@@ -452,7 +452,7 @@ public class RCDSystem : EntitySystem
         }
 
         // Check rule: Must place on subfloor
-        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !mapGridData.Tile.Tile.GetContentTileDefinition().IsSubFloor)
+        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !_turf.GetContentTileDefinition(mapGridData.Tile.Tile).IsSubFloor)
         {
             if (popMsgs)
                 _popup.PopupClient(Loc.GetString("rcd-component-must-build-on-subfloor-message"), uid, user);
@@ -474,7 +474,7 @@ public class RCDSystem : EntitySystem
 
             // Check rule: Tiles can't be identical
             var placeTileId = GetConstructTileTypeId(prototype, tilePlacementDirection ?? component.ConstructionDirection);
-            if (mapGridData.Tile.Tile.GetContentTileDefinition().ID == placeTileId)
+            if (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID == placeTileId)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-tile"), uid, user);
@@ -719,7 +719,7 @@ public class RCDSystem : EntitySystem
                 if (target == null)
                 {
                     // Deconstruct tile (either converts the tile to lattice, or removes lattice)
-                    var tile = (mapGridData.Tile.Tile.GetContentTileDefinition().ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
+                    var tile = (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
                     _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, tile);
                     _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} tile: {mapGridData.Position} open to space");
                 }

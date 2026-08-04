@@ -36,6 +36,7 @@ public sealed partial class RevenantSystem : EntitySystem
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedEyeSystem _eye = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
@@ -164,7 +165,7 @@ public sealed partial class RevenantSystem : EntitySystem
             return false;
         }
 
-        var tileref = Transform(uid).Coordinates.GetTileRef();
+        var tileref = _turf.GetTileRef(Transform(uid).Coordinates);
         if (tileref != null)
         {
             if(_physics.GetEntitiesIntersectingBody(uid, (int) CollisionGroup.Impassable).Count > 0)

@@ -14,10 +14,12 @@ namespace Content.Shared.Construction.Conditions
         public bool Condition(EntityUid user, EntityCoordinates location, Direction direction)
         {
             var result = false;
+            var entManager = IoCManager.Resolve<IEntityManager>();
+            var turfSystem = entManager.System<TurfSystem>();
 
-            foreach (var entity in location.GetEntitiesInTile(LookupFlags.Approximate | LookupFlags.Static))
+            foreach (var entity in turfSystem.GetEntitiesInTile(location, LookupFlags.Approximate | LookupFlags.Static))
             {
-                if (IoCManager.Resolve<IEntityManager>().HasComponent<SharedCanBuildWindowOnTopComponent>(entity))
+                if (entManager.HasComponent<SharedCanBuildWindowOnTopComponent>(entity))
                     result = true;
             }
 

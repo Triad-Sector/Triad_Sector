@@ -39,6 +39,7 @@ public sealed partial class BlockingSystem : SharedBlockingSystem // Mono
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -235,7 +236,7 @@ public sealed partial class BlockingSystem : SharedBlockingSystem // Mono
             }
 
             //Don't allow someone to block if someone else is on the same tile
-            var playerTileRef = xform.Coordinates.GetTileRef();
+            var playerTileRef = _turf.GetTileRef(xform.Coordinates);
             if (playerTileRef != null)
             {
                 var intersecting = _lookup.GetLocalEntitiesIntersecting(playerTileRef.Value, 0f);

@@ -46,6 +46,7 @@ public abstract class SharedMagicSystem : EntitySystem
     [Dependency] private readonly ISerializationManager _seriMan = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedGunSystem _gunSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
@@ -158,7 +159,7 @@ public abstract class SharedMagicSystem : EntitySystem
 
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!_turf.TryGetTileRef(directionPos, out var tileReference))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;
@@ -171,7 +172,7 @@ public abstract class SharedMagicSystem : EntitySystem
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
 
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!_turf.TryGetTileRef(directionPos, out var tileReference))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;

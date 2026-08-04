@@ -28,7 +28,7 @@ namespace Content.Server.Shuttles.Systems;
 public sealed class ThrusterSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
     [Dependency] private readonly FixtureSystem _fixtureSystem = default!;
@@ -130,7 +130,7 @@ public sealed class ThrusterSystem : EntitySystem
         foreach (var change in args.Changes)
         {
             // If the old tile was space but the new one isn't then disable all adjacent thrusters
-            if (change.NewTile.IsSpace(_tileDefManager) || !change.OldTile.IsSpace(_tileDefManager))
+            if (_turf.IsSpace(change.NewTile) || !_turf.IsSpace(change.OldTile))
                 continue;
 
             var tilePos = change.GridIndices;
@@ -505,7 +505,7 @@ public sealed class ThrusterSystem : EntitySystem
         var mapGrid = Comp<MapGridComponent>(xform.GridUid.Value);
         var tile = _mapSystem.GetTileRef(xform.GridUid.Value, mapGrid, new Vector2i((int)Math.Floor(x), (int)Math.Floor(y)));
 
-        return tile.Tile.IsSpace();
+        return _turf.IsSpace(tile.Tile);
     }
 
     #region Burning

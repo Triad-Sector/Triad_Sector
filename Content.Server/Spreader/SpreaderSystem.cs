@@ -26,6 +26,7 @@ public sealed class SpreaderSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly TagSystem _tag = default!;
 
     /// <summary>
@@ -265,7 +266,7 @@ public sealed class SpreaderSystem : EntitySystem
             if (!_map.TryGetTileRef(neighborEnt, neighborGrid, neighborPos, out var tileRef) || tileRef.Tile.IsEmpty)
                 continue;
 
-            if (!spreadSpaced && tileRef.Tile.IsSpace())
+            if (!spreadSpaced && _turf.IsSpace(tileRef.Tile))
                 continue;
 
             var directionEnumerator = _map.GetAnchoredEntitiesEnumerator(neighborEnt, neighborGrid, neighborPos);

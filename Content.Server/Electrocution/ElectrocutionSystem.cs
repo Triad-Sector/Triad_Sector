@@ -40,11 +40,11 @@ namespace Content.Server.Electrocution;
 public sealed class ElectrocutionSystem : SharedElectrocutionSystem
 {
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly MeleeWeaponSystem _meleeWeapon = default!;
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
@@ -136,7 +136,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
             return false;
         if (electrified.NoWindowInTile)
         {
-            var tileRef = transform.Coordinates.GetTileRef(EntityManager, _mapManager);
+            var tileRef = _turf.GetTileRef(transform.Coordinates);
 
             if (tileRef != null)
             {

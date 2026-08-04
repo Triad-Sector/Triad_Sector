@@ -12,8 +12,8 @@ namespace Content.Server.Atmos.EntitySystems;
 /// </summary>
 public sealed class AutomaticAtmosSystem : EntitySystem
 {
-    [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
 
     public override void Initialize()
     {
@@ -33,8 +33,8 @@ public sealed class AutomaticAtmosSystem : EntitySystem
             // TODO: Make tiledefmanager cache the IsSpace property, and turn this lookup-through-two-interfaces into
             // TODO: a simple array lookup, as tile IDs are likely contiguous, and there's at most 2^16 possibilities anyway.
 
-            var oldSpace = change.OldTile.IsSpace(_tileDefinitionManager);
-            var newSpace = change.NewTile.IsSpace(_tileDefinitionManager);
+            var oldSpace = _turf.IsSpace(change.OldTile);
+            var newSpace = _turf.IsSpace(change.NewTile);
 
             if (!(oldSpace && !newSpace ||
                   !oldSpace && newSpace))
