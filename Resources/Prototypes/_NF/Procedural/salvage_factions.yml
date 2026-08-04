@@ -25,7 +25,7 @@
   configs:
     DefenseStructure: XenoWardingTower
     Megafauna: NFMobXenoQueen
-    Difficulties: NFModerate
+    # Difficulties: NFModerate #Triad commented out so it shows up on all difficulties
 
 - type: salvageFaction
   id: NFCarps
@@ -119,8 +119,6 @@
     Difficulties: NFModerate
 
 # region Hazardous
-
-
 
 - type: salvageFaction
   id: NFPunks

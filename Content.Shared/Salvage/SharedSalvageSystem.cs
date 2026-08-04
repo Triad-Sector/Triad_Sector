@@ -29,7 +29,7 @@ public abstract partial class SharedSalvageSystem : EntitySystem
     public string GetFTLName(LocalizedDatasetPrototype dataset, int seed)
     {
         var random = new System.Random(seed);
-        return $"{Loc.GetString(dataset.Values[random.Next(dataset.Values.Count)])}-{random.Next(10, 100)}-{(char) (65 + random.Next(26))}";
+        return $"{Loc.GetString(dataset.Values[random.Next(dataset.Values.Count)])}-{random.Next(10, 100)}-{(char)(65 + random.Next(26))}";
     }
 
     public SalvageMission GetMission(SalvageMissionType config, SalvageDifficultyPrototype difficulty, int seed) // Frontier: add config
@@ -47,8 +47,8 @@ public abstract partial class SharedSalvageSystem : EntitySystem
         var temp = GetBiomeMod<SalvageTemperatureMod>(biome.ID, rand, ref modifierBudget);
         var air = GetBiomeMod<SalvageAirMod>(biome.ID, rand, ref modifierBudget);
         var dungeon = GetBiomeMod<SalvageDungeonModPrototype>(biome.ID, rand, ref modifierBudget);
+        // var factionProtos = _proto.EnumeratePrototypes<SalvageFactionPrototype>().ToList(); //Triad: older version for all mob all difficulty
         // Frontier: restrict factions per difficulty
-        // var factionProtos = _proto.EnumeratePrototypes<SalvageFactionPrototype>().ToList();
         var factionProtos = _proto.EnumeratePrototypes<SalvageFactionPrototype>()
             .Where(x =>
                 {
