@@ -865,7 +865,7 @@ public sealed partial class ShuttleSystem
             dest.Enabled = true;
         }
 
-        _mapManager.SetMapPaused(mapId, false);
+        Maps.SetPaused(mapId, false);
         Smimsh(uid, xform: xform);
 
         // Add cooldown before removing the FTL component

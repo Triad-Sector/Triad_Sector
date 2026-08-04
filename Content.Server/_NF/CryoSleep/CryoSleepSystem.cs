@@ -51,7 +51,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly ClimbSystem _climb = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly EuiManager _euiManager = null!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
@@ -95,9 +95,8 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     {
         if (Deleted(_storageMap))
         {
-            var map = _mapManager.CreateMap();
-            _storageMap = _mapManager.GetMapEntityId(map);
-            _mapManager.SetMapPaused(map, true);
+            _storageMap = _map.CreateMap(out var map);
+            _map.SetPaused(map, true);
         }
 
         return _storageMap.Value;
