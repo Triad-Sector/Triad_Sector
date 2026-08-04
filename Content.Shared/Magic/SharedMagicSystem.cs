@@ -44,7 +44,6 @@ namespace Content.Shared.Magic;
 public abstract class SharedMagicSystem : EntitySystem
 {
     [Dependency] private readonly ISerializationManager _seriMan = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -278,7 +277,7 @@ public abstract class SharedMagicSystem : EntitySystem
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
         var fromMap = fromCoords.ToMap(EntityManager, _transform);
-        var spawnCoords = _mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var spawnCoords = _mapSystem.TryFindGridAt(fromMap, out var gridUid, out _)
             ? fromCoords.WithEntityId(gridUid, EntityManager)
             : new(_mapSystem.GetMapOrInvalid(fromMap.MapId), fromMap.Position);
 

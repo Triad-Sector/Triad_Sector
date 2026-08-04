@@ -16,9 +16,6 @@ public sealed partial class TurfSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitions = default!;
-    // Triad: SharedMapSystem.TryFindGridAt does not exist until engine 280. Drop this dependency and
-    // switch GetTileRef over to _mapSystem.TryFindGridAt as part of the IMapManager removal.
-    [Dependency] private IMapManager _mapManager = default!;
 
     [Dependency] private EntityQuery<FixturesComponent> _fixtureQuery = default!;
 
@@ -33,8 +30,7 @@ public sealed partial class TurfSystem : EntitySystem
             return null;
 
         var pos = _transform.ToMapCoordinates(coordinates);
-        // Triad: _mapSystem.TryFindGridAt once the engine is on 280+, see the dependency above.
-        if (!_mapManager.TryFindGridAt(pos, out var gridUid, out var gridComp))
+        if (!_mapSystem.TryFindGridAt(pos, out var gridUid, out var gridComp))
             return null;
 
         if (!_mapSystem.TryGetTileRef(gridUid, gridComp, coordinates, out var tile))

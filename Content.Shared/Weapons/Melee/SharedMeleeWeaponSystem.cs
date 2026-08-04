@@ -39,7 +39,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected readonly SharedCombatModeSystem   CombatMode      = default!;
     [Dependency] protected readonly DamageableSystem         Damageable      = default!;
     [Dependency] protected readonly SharedInteractionSystem  Interaction     = default!;
-    [Dependency] protected readonly IMapManager              MapManager      = default!;
     [Dependency] protected readonly SharedPopupSystem        PopupSystem     = default!;
     [Dependency] protected readonly IGameTiming              Timing          = default!;
     [Dependency] protected readonly SharedTransformSystem    TransformSystem = default!;
