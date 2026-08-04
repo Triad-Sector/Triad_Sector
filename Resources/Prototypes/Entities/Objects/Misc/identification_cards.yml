@@ -25,6 +25,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: NanoChatCard # Triad: TriTalk, every ID card carries a number
   - type: StaticPrice # Frontier
     price: 5 # Frontier The card need to cost less then the PDA that comes with a card and a pen in it.
   - type: CargoSellBlacklist # Frontier
@@ -624,6 +625,8 @@
     - state: idcontractor # Frontier: idpassenger<idcontractor
       sprite: _NF/Objects/Misc/id_cards.rsi # Frontier
   - type: AgentIDCard
+  - type: NanoChatCard # Triad: TriTalk, keep covert cards out of the public number lookup
+    listNumber: false
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
     inHandsOnly: true
@@ -677,6 +680,8 @@
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: NanoChatCard # Triad: TriTalk, keep covert cards out of the public number lookup
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -691,6 +696,8 @@
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: NanoChatCard # Triad: TriTalk, keep covert cards out of the public number lookup
+    listNumber: false
   - type: SavingContraband
 
 - type: entity
@@ -880,6 +887,9 @@
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
+  - type: NanoChatCard # Triad: TriTalk, admin card stays silent and unlisted
+    notificationsMuted: true
+    listNumber: false
   - type: AgentIDCard
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key

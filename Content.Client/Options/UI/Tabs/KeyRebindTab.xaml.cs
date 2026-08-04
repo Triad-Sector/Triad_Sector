@@ -283,6 +283,14 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.TargetRightFoot);
             // Shitmed Change End
 
+            // Triad: TriTalk keybinds
+            AddHeader("ui-options-header-nano-chat");
+            AddButton(ContentKeyFunctions.NanoChatNavigateUp);
+            AddButton(ContentKeyFunctions.NanoChatNavigateDown);
+            AddButton(ContentKeyFunctions.NanoChatNavigateUpUnread);
+            AddButton(ContentKeyFunctions.NanoChatNavigateDownUnread);
+            // End Triad
+
             AddHeader("ui-options-header-misc");
             AddButton(ContentKeyFunctions.TakeScreenshot);
             AddButton(ContentKeyFunctions.TakeScreenshotNoUI);

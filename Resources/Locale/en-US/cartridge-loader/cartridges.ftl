@@ -24,6 +24,16 @@ log-probe-printout-device = Scanned Device: {$name}
 log-probe-printout-header = Latest logs:
 log-probe-printout-entry = #{$number} / {$time} / {$accessor}
 
+# Triad: TriTalk card scanning
+log-probe-scan-nanochat = Downloaded message history from {$card}!
+log-probe-header-access = Access Logs
+log-probe-header-nanochat = TriTalk Message History
+log-probe-label-message = Message
+log-probe-card-number = Card {$number}
+log-probe-recipients = {$count} contacts
+log-probe-recipient-list = Known contacts:
+log-probe-message-format = {$sender} -> {$recipient}: {$content}
+
 astro-nav-program-name = AstroNav
 
 med-tek-program-name = MedTek

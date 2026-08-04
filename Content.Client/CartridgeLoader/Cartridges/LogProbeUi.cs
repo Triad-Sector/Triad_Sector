@@ -31,6 +31,6 @@ public sealed partial class LogProbeUi : UIFragment
         if (state is not LogProbeUiState cast)
             return;
 
-        _fragment?.UpdateState(cast.EntityName, cast.PulledLogs);
+        _fragment?.UpdateState(cast); // Triad: pass the whole state so the fragment can render TriTalk scans too
     }
 }
