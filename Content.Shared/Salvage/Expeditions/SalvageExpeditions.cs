@@ -147,7 +147,6 @@ public sealed record SalvageMission(
     Color? Color,
     TimeSpan Duration,
     List<string> Modifiers,
-    List<string> Rewards,
     ProtoId<SalvageDifficultyPrototype> Difficulty, // Frontier
     SalvageMissionType MissionType) // Frontier
 {
@@ -195,11 +194,6 @@ public sealed record SalvageMission(
     /// Modifiers (outside of the above) applied to the mission.
     /// </summary>
     public List<string> Modifiers = Modifiers;
-
-    /// <summary>
-    /// The list of items to order on mission completion.
-    /// </summary>
-    public List<string> Rewards = Rewards;
 
     // Frontier: additional parameters
     /// <summary>
