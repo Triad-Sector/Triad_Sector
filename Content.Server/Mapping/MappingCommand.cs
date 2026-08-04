@@ -18,7 +18,6 @@ namespace Content.Server.Mapping
     sealed class MappingCommand : IConsoleCommand
     {
         [Dependency] private readonly IEntityManager _entities = default!;
-        [Dependency] private readonly IMapManager _map = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         public string Command => "mapping";
