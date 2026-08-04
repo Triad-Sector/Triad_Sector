@@ -32,7 +32,6 @@ public sealed class AreaEchoSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly AudioEffectSystem _audioEffectSystem = default!;
@@ -411,7 +410,7 @@ public sealed class AreaEchoSystem : EntitySystem
                     break;
             } // if we're not checking roofs, end this ray if this tile is empty/space
             else if (!_mapSystem.TryGetTileRef(gridRoofEntity, gridRoofEntity, nextCheckedTilePosition, out var tile) ||
-                _turf.IsSpace(tile))
+                _turfSystem.IsSpace(tile))
                 break;
 
             nextCheckedPosition += directionFidelityStep;
