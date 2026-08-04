@@ -2,6 +2,8 @@ using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.NameIdentifier;
+using Content.Shared.GameTicking; // Triad: PlayerSpawnCompleteEvent
+using Content.Shared.Inventory; // Triad
 using Content.Shared.Database;
 using Content.Shared._DV.CartridgeLoader.Cartridges;
 using Content.Shared._DV.NanoChat;
@@ -22,6 +24,7 @@ public sealed class NanoChatSystem : SharedNanoChatSystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly NameIdentifierSystem _name = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!; // Triad
 
     private readonly ProtoId<NameIdentifierGroupPrototype> _nameIdentifierGroup = "NanoChat";
 
@@ -35,7 +38,35 @@ public sealed class NanoChatSystem : SharedNanoChatSystem
         SubscribeLocalEvent<NanoChatCardComponent, MapInitEvent>(OnCardInit);
         SubscribeLocalEvent<NanoChatCardComponent, ComponentShutdown>(OnCardShutdown); // Triad
         SubscribeLocalEvent<NanoChatCardComponent, BeingMicrowavedEvent>(OnMicrowaved, after: [typeof(IdCardSystem)]);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn); // Triad
     }
+
+    // Triad begin
+    /// <summary>
+    ///     Marks the ID a player spawns with as a legally issued card, which is what makes it eligible for the
+    ///     directory. Everything else (spares in lockers, console printouts, agent IDs) stays off the books.
+    /// </summary>
+    /// <remarks>
+    ///     Deliberately not keyed off station records. A card carries exactly one StationRecordKey and three
+    ///     different writers stamp it (station spawn, sector spawn, and the shipyard purchase fallback in
+    ///     ShipyardSystem.Consoles), so record keying is too unstable to hang a player-visible directory on.
+    /// </remarks>
+    private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
+    {
+        if (!_inventory.TryGetSlotEntity(args.Mob, "id", out var idUid))
+            return;
+
+        // The id slot usually holds a PDA rather than the card itself.
+        var cardUid = idUid.Value;
+        if (TryComp<PdaComponent>(cardUid, out var pda) && pda.ContainedId is { } containedId)
+            cardUid = containedId;
+
+        if (!TryComp<NanoChatCardComponent>(cardUid, out var card))
+            return;
+
+        SetRegistered((cardUid, card), true);
+    }
+    // Triad end
 
     // Triad: hand the number back when the card dies. Upstream never does this because Delta-V is a station round
     // where ID cards persist; here ships are bought and sold all round and each sale deletes its cards, so without

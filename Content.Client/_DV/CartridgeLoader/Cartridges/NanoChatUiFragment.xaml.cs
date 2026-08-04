@@ -29,6 +29,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private uint _ownNumber;
     private bool _notificationsMuted;
     private bool _listNumber = true;
+    private bool _canList; // Triad: false unless this is a legally issued ID
     private Dictionary<uint, NanoChatRecipient> _recipients = [];
     private Dictionary<uint, List<NanoChatMessage>> _messages = [];
     private HashSet<uint> _mutedChats = [];
@@ -126,6 +127,13 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         };
         ListNumberButton.OnPressed += _ =>
         {
+            // Triad: the server refuses this for unregistered cards anyway, this just keeps the button honest.
+            if (!_canList)
+            {
+                UpdateListNumber();
+                return;
+            }
+
             _listNumber = !_listNumber;
             UpdateListNumber();
             OnMessageSent?.Invoke(NanoChatUiMessageType.ToggleListNumber, null, null, null);
@@ -352,8 +360,16 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
     private void UpdateListNumber()
     {
-        if (ListNumberButton != null)
-            ListNumberButton.Pressed = _listNumber;
+        if (ListNumberButton == null)
+            return;
+
+        ListNumberButton.Pressed = _listNumber && _canList;
+
+        // Triad: an unregistered card can never be listed, so grey the toggle out rather than let it lie.
+        ListNumberButton.Disabled = !_canList;
+        ListNumberButton.ToolTip = _canList
+            ? null
+            : Loc.GetString("nano-chat-list-number-unregistered");
     }
 
     public void UpdateState(NanoChatUiState state)
@@ -361,6 +377,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         _ownNumber = state.OwnNumber;
         _notificationsMuted = state.NotificationsMuted;
         _listNumber = state.ListNumber;
+        _canList = state.CanList; // Triad
         _mutedChats = state.MutedChats;
         OwnNumberLabel.Text = $"#{state.OwnNumber:D4}";
         UpdateMuteButton();

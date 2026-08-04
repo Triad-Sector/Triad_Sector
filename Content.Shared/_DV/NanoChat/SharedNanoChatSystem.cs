@@ -230,9 +230,39 @@ public abstract class SharedNanoChatSystem : EntitySystem
         if (!Resolve(card, ref card.Comp) || card.Comp.ListNumber == listNumber)
             return;
 
+        // Triad: an unregistered card cannot put itself on the books. Forged and printed IDs are
+        // permanently unlisted rather than merely defaulted to unlisted.
+        if (!card.Comp.Registered)
+            return;
+
         card.Comp.ListNumber = listNumber;
         Dirty(card);
     }
+
+    // Triad begin
+    /// <summary>
+    ///     Gets whether this card is a legally issued ID.
+    /// </summary>
+    public bool GetRegistered(Entity<NanoChatCardComponent?> card)
+    {
+        if (!Resolve(card, ref card.Comp))
+            return false;
+
+        return card.Comp.Registered;
+    }
+
+    /// <summary>
+    ///     Marks a card as a legally issued ID. Called when a card is handed to a player at spawn.
+    /// </summary>
+    public void SetRegistered(Entity<NanoChatCardComponent?> card, bool registered)
+    {
+        if (!Resolve(card, ref card.Comp) || card.Comp.Registered == registered)
+            return;
+
+        card.Comp.Registered = registered;
+        Dirty(card);
+    }
+    // Triad end
 
     /// <summary>
     ///     Gets the time of the last message.

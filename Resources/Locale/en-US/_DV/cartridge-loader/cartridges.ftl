@@ -35,6 +35,7 @@ nano-chat-delivery-failed = Failed to deliver
 nano-chat-look-up-no-server = No telecomms relay in range
 nano-chat-look-up = Look up numbers
 nano-chat-list-number = List number
+nano-chat-list-number-unregistered = This card is not a registered ID and cannot be listed in the directory.
 nano-chat-new-title = Add a new chat
 nano-chat-number-label = Number
 nano-chat-name-label = Name

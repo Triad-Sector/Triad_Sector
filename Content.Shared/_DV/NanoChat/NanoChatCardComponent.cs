@@ -69,6 +69,17 @@ public sealed partial class NanoChatCardComponent : Component
     [DataField]
     public bool ListNumber = true;
 
+    // Triad begin
+    /// <summary>
+    ///     Whether this card is a legally issued ID, i.e. one handed to a player at spawn.
+    ///     Only registered cards may appear in the directory, and only registered cards may
+    ///     change <see cref="ListNumber"/>. Forged, printed and spare cards stay off the books
+    ///     permanently and cannot opt themselves in.
+    /// </summary>
+    [DataField]
+    public bool Registered;
+    // Triad end
+
     /// <summary>
     ///     The PDA that this card is currently inserted to.
     /// </summary>

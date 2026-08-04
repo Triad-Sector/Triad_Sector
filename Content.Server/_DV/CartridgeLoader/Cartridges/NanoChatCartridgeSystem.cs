@@ -705,29 +705,34 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             var query = AllEntityQuery<NanoChatCardComponent, IdCardComponent>();
             while (query.MoveNext(out var entityId, out var nanoChatCard, out var idCardComponent))
             {
-                if (nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName)
+                // Triad: Registered gate added. The directory is a register of legally issued IDs, so a card only
+                // appears if it was handed to a player at spawn. Spares, console printouts and forged cards are out.
+                if (nanoChatCard.Registered && nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName)
                 {
                     contacts.Add(new NanoChatRecipient(nanoChatNumber, fullName));
                 }
             }
 
-            var borgQuery = AllEntityQuery<NanoChatCardComponent, BorgChassisComponent>();
-            while (borgQuery.MoveNext(out var borgId, out var borgChatCard, out var _))
-            {
-                if (borgChatCard.ListNumber && borgChatCard.Number is uint nanoChatNumber)
-                {
-                    contacts.Add(new NanoChatRecipient(nanoChatNumber, MetaData(borgId).EntityName));
-                }
-            }
-
-            var aiQuery = AllEntityQuery<NanoChatCardComponent, StationAiHeldComponent>();
-            while (aiQuery.MoveNext(out var aiId, out var aiChatCard, out var _))
-            {
-                if (aiChatCard.ListNumber && aiChatCard.Number is uint nanoChatNumber)
-                {
-                    contacts.Add(new NanoChatRecipient(nanoChatNumber, MetaData(aiId).EntityName));
-                }
-            }
+            // Triad: removed upstream Delta-V borg and station AI directory sweeps. Silicons here carry no
+            // CartridgeLoader (it exists only on PDA entities in this fork), so they cannot run the program at all
+            // and these queries never matched anything. Restore alongside an intrinsic loader if that ever changes.
+            // var borgQuery = AllEntityQuery<NanoChatCardComponent, BorgChassisComponent>();
+            // while (borgQuery.MoveNext(out var borgId, out var borgChatCard, out var _))
+            // {
+            //     if (borgChatCard.ListNumber && borgChatCard.Number is uint nanoChatNumber)
+            //     {
+            //         contacts.Add(new NanoChatRecipient(nanoChatNumber, MetaData(borgId).EntityName));
+            //     }
+            // }
+            //
+            // var aiQuery = AllEntityQuery<NanoChatCardComponent, StationAiHeldComponent>();
+            // while (aiQuery.MoveNext(out var aiId, out var aiChatCard, out var _))
+            // {
+            //     if (aiChatCard.ListNumber && aiChatCard.Number is uint nanoChatNumber)
+            //     {
+            //         contacts.Add(new NanoChatRecipient(nanoChatNumber, MetaData(aiId).EntityName));
+            //     }
+            // }
 
             contacts.Sort((contactA, contactB) => string.CompareOrdinal(contactA.Name, contactB.Name));
         }
@@ -744,6 +749,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         var maxRecipients = 50;
         var notificationsMuted = false;
         var listNumber = false;
+        var canList = false; // Triad
 
         if (ent.Comp.Card != null && _cardQuery.TryComp(ent.Comp.Card, out var card))
         {
@@ -755,6 +761,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             maxRecipients = card.MaxRecipients;
             notificationsMuted = card.NotificationsMuted;
             listNumber = card.ListNumber;
+            canList = card.Registered; // Triad
         }
 
         var state = new NanoChatUiState(recipients,
@@ -765,7 +772,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             ownNumber,
             maxRecipients,
             notificationsMuted,
-            listNumber);
+            listNumber,
+            canList); // Triad
         _cartridge.UpdateCartridgeUiState(loader, state);
     }
 }
