@@ -63,14 +63,13 @@ public sealed partial class AreaReactionEffect : EntityEffect
             var spreadAmount = (int) Math.Max(0, Math.Ceiling((reagentArgs.Quantity / OverflowThreshold).Float()));
             var splitSolution = reagentArgs.Source.SplitSolution(reagentArgs.Source.Volume);
             var transform = reagentArgs.EntityManager.GetComponent<TransformComponent>(reagentArgs.TargetEntity);
-            var mapManager = IoCManager.Resolve<IMapManager>();
             var mapSys = reagentArgs.EntityManager.System<MapSystem>();
             var spreaderSys = args.EntityManager.System<SpreaderSystem>();
             var turfSys = args.EntityManager.System<TurfSystem>();
             var sys = args.EntityManager.System<TransformSystem>();
             var mapCoords = sys.GetMapCoordinates(reagentArgs.TargetEntity, xform: transform);
 
-            if (!mapManager.TryFindGridAt(mapCoords, out var gridUid, out var grid) ||
+            if (!mapSys.TryFindGridAt(mapCoords, out var gridUid, out var grid) ||
                 !mapSys.TryGetTileRef(gridUid, grid, transform.Coordinates, out var tileRef))
             {
                 return;

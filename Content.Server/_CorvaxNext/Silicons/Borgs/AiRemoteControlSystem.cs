@@ -32,7 +32,7 @@ public sealed class AiRemoteControlSystem : SharedAiRemoteControlSystem
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
 
-    [Dependency] private readonly IMapManager _map = default!; // Mono
+    [Dependency] private readonly SharedMapSystem _map = default!; // Mono
 
     public override void Initialize()
     {

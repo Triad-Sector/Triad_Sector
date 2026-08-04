@@ -28,7 +28,6 @@ internal sealed class NFPowerSolarSystem : EntitySystem
     [Dependency] private readonly SharedRoofSystem _roof = default!; // Mono
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!; // Frontier
-    [Dependency] private readonly IMapManager _mapMan = default!; // Mono
 
     /// <summary>
     /// Maximum panel angular velocity range - used to stop people rotating panels fast enough that the lag prevention becomes noticable
@@ -187,7 +186,7 @@ internal sealed class NFPowerSolarSystem : EntitySystem
         {
             var gridCoords = _transformSystem.WithEntityId(xform.Coordinates, gridUid.Value);
             // drop coverage to 0 if the solar panel is roofed
-            if (_roof.IsRooved((gridUid.Value, gridComp, roofComp), gridCoords.ToVector2i(EntityManager, _mapMan, _transformSystem)))
+            if (_roof.IsRooved((gridUid.Value, gridComp, roofComp), gridCoords.ToVector2i(EntityManager, _transformSystem)))
                 coverage = 0f;
         }
 

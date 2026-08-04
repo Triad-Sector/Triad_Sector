@@ -27,7 +27,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 {
     [Dependency] private readonly IConfigurationManager _configManager = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IParallelManager _parallel = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
