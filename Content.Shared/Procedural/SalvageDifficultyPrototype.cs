@@ -56,5 +56,5 @@ public sealed partial class SalvageDifficultyPrototype : IPrototype
     /// List of entities that will beconsidered as rewards for completing mission.
     /// </summary>
     [DataField("expeditionReward")]
-    public List<EntProtoId> ExpeditionRewards = [];
+    public List<EntProtoId> Rewards = [];
 }
