@@ -66,9 +66,22 @@ public sealed partial class SupermatterComponent : Component
     [DataField]
     public EntProtoId TeslaSpawnPrototype = "TeslaEnergyBall";
 
-    // one day...
-    // [DataField]
-    // public EntProtoId KudzuSpawnPrototype = "SupermatterKudzu";
+    // Triad: cascade delamination is real now, see ChooseDelamType.
+    [DataField]
+    public EntProtoId KudzuSpawnPrototype = "SupermatterKudzu";
+
+    /// <summary>
+    /// Game rule started on delamination to give everyone on the crystal's map hallucinations.
+    /// Null skips it.
+    /// </summary>
+    /// <remarks>
+    /// Triad: this used to be a hardcoded "CSSupermatterHallucination" that was never ported
+    /// alongside the code referencing it, so starting it threw and ate the delamination payload
+    /// below it. Data-driven and existence-checked now.
+    /// </remarks>
+    [DataField]
+    public EntProtoId? HallucinationRulePrototype = "SupermatterHallucination";
+    // End Triad
 
     [DataField]
     public EntProtoId AnomalyBluespaceSpawnPrototype = "AnomalyBluespace";
