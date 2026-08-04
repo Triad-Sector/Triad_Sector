@@ -13,6 +13,7 @@ using Content.Server._EinsteinEngines.Language;
 using Content.Shared.Power;
 using Content.Shared.Radio;
 using Content.Shared.Chat;
+using Content.Shared._DV.Chat; //Delta-V
 using Content.Shared.UserInterface; // Nuclear-14
 using Content.Shared._NC.Radio; // Nuclear-14
 using Robust.Server.GameObjects; // Nuclear-14
@@ -207,6 +208,13 @@ public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
 
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         var message = args.OriginalChatMsg.Message; // The chat system will handle the rest and re-obfuscate if needed.
+
+        // Triad please dont speak emotes thanks
+        if (args.emType == EmoteType.Audible || args.emType == EmoteType.AudiblePossessive)
+            {_chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
+            nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language);
+            return;}
+
         _chat.TrySendInGameICMessage(uid, message, component.OutputChatType, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
             nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language); // Einstein Engines - Languages  / Frontier: GhostRangeLimit<GhostRangeLimitNoAdminCheck, InGameICChatType.Whisper<component.OutputChatType
     }
