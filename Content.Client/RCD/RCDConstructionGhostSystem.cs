@@ -36,7 +36,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
     // Triad: deconstruct mode computes its own cursor-aimed layer (no placement mode runs), so it needs cursor +
     // grid access the construct placement mode gets for free.
     [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
@@ -230,7 +230,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             return;
 
         var mouseMap = _eyeManager.PixelToMap(mouseScreen.Position);
-        if (!_mapManager.TryFindGridAt(mouseMap, out var gridUid, out var grid))
+        if (!_mapSystem.TryFindGridAt(mouseMap, out var gridUid, out var grid))
             return;
 
         var localPos = System.Numerics.Vector2.Transform(mouseMap.Position, _transformSystem.GetInvWorldMatrix(gridUid));

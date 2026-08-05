@@ -34,7 +34,6 @@ public sealed class RPDDeconstructLayerGuideOverlay : Overlay
     private readonly IEntityManager _entMan;
     private readonly IInputManager _input;
     private readonly IEyeManager _eye;
-    private readonly IMapManager _mapManager;
     private readonly IPlayerManager _player;
     private readonly IPrototypeManager _proto;
     private readonly SharedMapSystem _mapSystem;
@@ -47,7 +46,6 @@ public sealed class RPDDeconstructLayerGuideOverlay : Overlay
         _entMan = IoCManager.Resolve<IEntityManager>();
         _input = IoCManager.Resolve<IInputManager>();
         _eye = IoCManager.Resolve<IEyeManager>();
-        _mapManager = IoCManager.Resolve<IMapManager>();
         _player = IoCManager.Resolve<IPlayerManager>();
         _proto = IoCManager.Resolve<IPrototypeManager>();
         _mapSystem = _entMan.System<SharedMapSystem>();
@@ -79,7 +77,7 @@ public sealed class RPDDeconstructLayerGuideOverlay : Overlay
         if (mouseMap.MapId != args.MapId)
             return;
 
-        if (!_mapManager.TryFindGridAt(mouseMap, out var gridUid, out var grid))
+        if (!_mapSystem.TryFindGridAt(mouseMap, out var gridUid, out var grid))
             return;
 
         // Hide the guide when the cursor is out of reach, matching the construct preview's range gate.

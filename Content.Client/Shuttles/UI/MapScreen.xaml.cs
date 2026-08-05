@@ -30,7 +30,6 @@ public sealed partial class MapScreen : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     private readonly DetectionSystem _detection; // Mono
     private readonly SharedAudioSystem _audio;
@@ -377,7 +376,7 @@ public sealed partial class MapScreen : BoxContainer
             };
 
             _mapHeadings.Add(mapComp.MapId, gridContents);
-            foreach (var grid in _mapManager.GetAllGrids(mapComp.MapId))
+            foreach (var grid in _maps.GetAllGrids(mapComp.MapId))
             {
                 _entManager.TryGetComponent(grid.Owner, out IFFComponent? iffComp);
 
