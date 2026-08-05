@@ -22,14 +22,13 @@ public sealed class RPDCoexistenceTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
         var overlap = entMan.System<PipeRestrictOverlapSystem>();
 
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // Primary, anchored
 
@@ -58,7 +57,6 @@ public sealed class RPDCoexistenceTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
         var layers = entMan.System<AtmosPipeLayersSystem>();
         var overlap = entMan.System<PipeRestrictOverlapSystem>();
@@ -66,7 +64,7 @@ public sealed class RPDCoexistenceTest
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             var pipe = entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // Primary
 
@@ -94,7 +92,6 @@ public sealed class RPDCoexistenceTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
         var layers = entMan.System<AtmosPipeLayersSystem>();
         var rcd = entMan.System<Content.Shared.RCD.Systems.RCDSystem>();
@@ -102,7 +99,7 @@ public sealed class RPDCoexistenceTest
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             var existing = entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // Primary
 

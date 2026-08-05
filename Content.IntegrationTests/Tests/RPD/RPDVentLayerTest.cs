@@ -86,13 +86,12 @@ public sealed class RPDVentLayerTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
 
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // North|South @ Primary
 
@@ -123,13 +122,12 @@ public sealed class RPDVentLayerTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
 
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // North|South @ Primary
 
@@ -149,13 +147,12 @@ public sealed class RPDVentLayerTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
 
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             entMan.SpawnEntity(Straight, grid.Owner.ToCoordinates(0, 0)); // North|South @ Primary
 

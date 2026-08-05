@@ -21,7 +21,6 @@ public sealed class RPDDeconstructTargetTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
         var rcd = entMan.System<Content.Shared.RCD.Systems.RCDSystem>();
         var rpd = entMan.System<RPDSystem>();
@@ -29,7 +28,7 @@ public sealed class RPDDeconstructTargetTest
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
 
             // Two coexisting pipes on the same tile: Primary and Secondary (alt-layer prototype on layer 1).
@@ -63,13 +62,12 @@ public sealed class RPDDeconstructTargetTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
 
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             var pipe = entMan.SpawnEntity("GasPipeStraight", grid.Owner.ToCoordinates(0, 0));
             var rpdTool = entMan.SpawnEntity("RPD", grid.Owner.ToCoordinates(0, 0));
@@ -96,7 +94,6 @@ public sealed class RPDDeconstructTargetTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entMan = server.ResolveDependency<IEntityManager>();
-        var mapMan = server.ResolveDependency<IMapManager>();
         var mapSys = entMan.System<SharedMapSystem>();
         var rcd = entMan.System<Content.Shared.RCD.Systems.RCDSystem>();
         var rpd = entMan.System<RPDSystem>();
@@ -104,7 +101,7 @@ public sealed class RPDDeconstructTargetTest
         await server.WaitAssertion(() =>
         {
             mapSys.CreateMap(out var mapId);
-            var grid = mapMan.CreateGridEntity(mapId);
+            var grid = mapSys.CreateGridEntity(mapId);
             mapSys.SetTile(grid, new Vector2i(0, 0), new Tile(1));
             var primary = entMan.SpawnEntity("GasPipeStraight", grid.Owner.ToCoordinates(0, 0));
             var secondary = entMan.SpawnEntity("GasPipeStraightAlt1", grid.Owner.ToCoordinates(0, 0));
