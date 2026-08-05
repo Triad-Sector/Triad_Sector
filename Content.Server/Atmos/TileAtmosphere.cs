@@ -97,7 +97,9 @@ namespace Content.Server.Atmos
         [ViewVariables]
         public GasMixture? AirArchived;
 
-        [DataField("lastShare")]
+        // Runtime-only LINDA sharing state, reset every tick by AtmosphereSystem. TileAtmosphere is not a
+        // data definition, so the DataField this used to carry was never read by the serializer; engine 286's
+        // serv5 (RA0057) makes that an error rather than a silent no-op.
         public float LastShare;
 
         GasMixture IGasMixtureHolder.Air
