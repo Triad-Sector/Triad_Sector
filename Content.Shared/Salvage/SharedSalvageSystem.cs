@@ -47,6 +47,8 @@ public abstract partial class SharedSalvageSystem : EntitySystem
         var temp = GetBiomeMod<SalvageTemperatureMod>(biome.ID, rand, ref modifierBudget);
         var air = GetBiomeMod<SalvageAirMod>(biome.ID, rand, ref modifierBudget);
         var dungeon = GetBiomeMod<SalvageDungeonModPrototype>(biome.ID, rand, ref modifierBudget);
+        // var rewards = 
+        var rewards = difficulty.ExpeditionReward; //Triad: adds reward
         // var factionProtos = _proto.EnumeratePrototypes<SalvageFactionPrototype>().ToList(); //Triad: older version for all mob all difficulty
         // Frontier: restrict factions per difficulty
         var factionProtos = _proto.EnumeratePrototypes<SalvageFactionPrototype>()
@@ -81,7 +83,7 @@ public abstract partial class SharedSalvageSystem : EntitySystem
 
         var duration = TimeSpan.FromSeconds(CfgManager.GetCVar(CCVars.SalvageExpeditionDuration));
 
-        return new SalvageMission(seed, dungeon.ID, faction.ID, biome.ID, air.ID, temp.Temperature, light.Color, duration, mods, difficulty.ID, config); // Frontier: add difficulty.ID, config
+        return new SalvageMission(seed, dungeon.ID, faction.ID, biome.ID, air.ID, temp.Temperature, light.Color, duration, mods, difficulty.ID, difficulty.ExpeditionReward, config); // Frontier: add difficulty.ID, config
     }
 
     public T GetBiomeMod<T>(string biome, System.Random rand, ref float rating) where T : class, IPrototype, IBiomeSpecificMod

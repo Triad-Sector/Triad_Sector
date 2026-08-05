@@ -148,6 +148,7 @@ public sealed record SalvageMission(
     TimeSpan Duration,
     List<string> Modifiers,
     ProtoId<SalvageDifficultyPrototype> Difficulty, // Frontier
+    string ExpeditionReward, //Triad
     SalvageMissionType MissionType) // Frontier
 {
     /// <summary>
