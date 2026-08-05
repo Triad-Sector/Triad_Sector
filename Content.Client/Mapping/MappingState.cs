@@ -42,7 +42,6 @@ public sealed class MappingState : GameplayStateBase
     [Dependency] private readonly IEntityNetworkManager _entityNetwork = default!;
     [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
     [Dependency] private readonly MappingManager _mapping = default!;
     [Dependency] private readonly IOverlayManager _overlays = default!;
     [Dependency] private readonly IPlacementManager _placement = default!;
@@ -791,8 +790,10 @@ public sealed class MappingState : GameplayStateBase
         {
             var mapPos = _transform.ToMapCoordinates(coords);
 
-            if (_mapMan.TryFindGridAt(mapPos, out var gridUid, out var grid) &&
-                _entityManager.System<SharedMapSystem>().TryGetTileRef(gridUid, grid, coords, out var tileRef) &&
+            var mapSystem = _entityManager.System<SharedMapSystem>();
+
+            if (mapSystem.TryFindGridAt(mapPos, out var gridUid, out var grid) &&
+                mapSystem.TryGetTileRef(gridUid, grid, coords, out var tileRef) &&
                 _allPrototypesDict.TryGetValue(_entityManager.System<TurfSystem>().GetContentTileDefinition(tileRef), out button))
             {
                 OnSelected(button);
