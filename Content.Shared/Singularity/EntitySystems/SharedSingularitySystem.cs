@@ -193,8 +193,12 @@ public abstract class SharedSingularitySystem : EntitySystem
     /// </summary>
     /// <param name="singulo">A singularity.</param>
     /// <returns>The event horizon radius the singularity should have given its state.</returns>
+    // Triad: clamp at zero. Level is a byte, so a level-0 singularity gave a radius of -0.5, and a negative
+    // radius makes PhysShapeCircle.ComputeAABB produce an inverted box. That was silent until engine 286 added
+    // Box2 bounds validation; now it asserts out of the broadphase whenever one is spawned at level 0.
+    // Still present upstream as of 2026-08-04, so this is a candidate to report rather than a missed harvest.
     public float EventHorizonRadius(SingularityComponent singulo)
-        => singulo.Level - 0.5f;
+        => MathF.Max(0f, singulo.Level - 0.5f);
 
     /// <summary>
     /// Derives whether a singularity should be able to breach containment from its state.
