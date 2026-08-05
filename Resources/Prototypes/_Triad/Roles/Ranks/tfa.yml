@@ -28,3 +28,14 @@
   id: RankStationGuardJunior
   name: Junior Security Officer
   prefix: Jr. Off.
+
+# High Command
+- type: rank
+  id: RankHighCommandIntern
+  name: TFA High Command Intern
+  prefix: Intern
+
+- type: rank
+  id: RankHighCommandRepresentative
+  name: TFA High Command Official
+  prefix: Representative

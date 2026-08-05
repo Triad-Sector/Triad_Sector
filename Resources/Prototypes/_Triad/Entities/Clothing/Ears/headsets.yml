@@ -1,10 +1,11 @@
 # TDF
 - type: entity
+  parent: BaseClass2AShipContrabandSilent
   id: BaseTDFHeadset
   abstract: true
   components:
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
@@ -20,6 +21,8 @@
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseTDFHeadset]
@@ -35,6 +38,8 @@
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: ClothingHeadsetTdf
@@ -62,8 +67,8 @@
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
-  id: ClothingHeadsetTdfHighCommand
-  name: TDF high command headset
+  id: ClothingHeadsetHighCommand
+  name: TFA high command headset
   components:
   - type: ContainerFill
     containers:
@@ -78,8 +83,8 @@
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseTDFHeadset]
-  id: ClothingHeadsetAltTdfHighCommand
-  name: TDF high command over-ear headset
+  id: ClothingHeadsetAltHighCommand
+  name: TFA high command over-ear headset
   components:
   - type: ContainerFill
     containers:

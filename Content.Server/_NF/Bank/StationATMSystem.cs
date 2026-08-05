@@ -16,14 +16,16 @@ using Content.Shared.Database;
 using Robust.Shared.Containers;
 using System.Linq;
 using Content.Shared._NF.Bank.BUI;
+using Content.Server.Chat.Managers;
 
 namespace Content.Server._NF.Bank;
 
 public sealed partial class BankSystem
 {
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly CargoSystem _cargo = default!;
-    [Dependency] private readonly AccessReaderSystem _access = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private CargoSystem _cargo = default!;
+    [Dependency] private AccessReaderSystem _access = default!;
+    [Dependency] private IChatManager _chat = default!; // Triad
 
     private void InitializeStationATM()
     {
@@ -96,7 +98,11 @@ public sealed partial class BankSystem
         PlayConfirmSound(uid, component);
         _log.Info($"{args.Actor} withdrew {args.Amount}, '{args.Reason}': {args.Description}");
 
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} withdrew {args.Amount} from {component.Account} station bank account. '{args.Reason}': {args.Description}");
+        // Triad Start - increased logging for station administration consoles
+        var logMsg = $"{ToPrettyString(player):actor} withdrew {args.Amount} from {component.Account} station bank account. '{args.Reason}': {args.Description}";
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{logMsg}");
+        _chat.SendAdminAlert(logMsg);
+        // Triad end
         //spawn the cash stack of whatever cash type the ATM is configured to.
         var stackPrototype = _prototypeManager.Index<StackPrototype>(component.CashType);
         _stackSystem.Spawn(args.Amount, stackPrototype, uid.ToCoordinates());
@@ -209,7 +215,11 @@ public sealed partial class BankSystem
         PlayConfirmSound(uid, component);
         _log.Info($"{args.Actor} deposited {args.Amount}, '{args.Reason}': {args.Description}");
 
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} deposited {args.Amount} to {component.Account} station bank account. '{args.Reason}': {args.Description}");
+        // Triad Start - increased logging for station administration consoles
+        var logMsg = $"{ToPrettyString(player):actor} deposited {args.Amount} to {component.Account} station bank account. '{args.Reason}': {args.Description}";
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{logMsg}");
+        _chat.SendAdminAlert(logMsg);
+        // Triad end
 
         SetInsertedCashAmount(component, args.Amount, out int leftAmount, out bool empty);
 

@@ -1,0 +1,51 @@
+- type: techDiscipline
+  id: TdfWeaponry
+  name: research-discipline-tdf-weaponry
+  color: "#f10945"
+  icon:
+    sprite: _Triad/Interface/Misc/research_disciplines_tdf.rsi
+    state: weaponry
+  tierPrerequisites:
+    1: 0
+    2: 0.75
+    3: 0.75
+  uiName: TDF-WP
+
+- type: techDiscipline
+  id: TdfGear
+  name: research-discipline-tdf-gear
+  color: "#f0ad00"
+  icon:
+    sprite: _Triad/Interface/Misc/research_disciplines_tdf.rsi
+    state: gear
+  tierPrerequisites:
+    1: 0
+    2: 0.5
+    3: 0.5
+  uiName: TDF-GR
+
+- type: techDiscipline
+  id: TdfEquipment
+  name: research-discipline-tdf-equipment
+  color: "#00c3ed"
+  icon:
+    sprite: _Triad/Interface/Misc/research_disciplines_tdf.rsi
+    state: equipment
+  tierPrerequisites:
+    1: 0
+    2: 0.5
+    3: 0.5
+  uiName: TDF-EQ
+
+- type: techDiscipline
+  id: TdfShipyard
+  name: research-discipline-tdf-shipyard
+  color: "#00ea5d"
+  icon:
+    sprite: _Triad/Interface/Misc/research_disciplines_tdf.rsi
+    state: shipyard
+  tierPrerequisites:
+    1: 0
+    2: 0.5
+    3: 0.5
+  uiName: TDF-HI

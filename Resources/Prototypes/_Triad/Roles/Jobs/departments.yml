@@ -1,4 +1,14 @@
 - type: department
+  id: Infrastructure
+  name: department-Infrastructure
+  description: department-Infrastructure-description
+  color: "#c59a3b"
+  weight: 100
+  roles:
+  - PlantManager
+  - PlantTechnician
+
+- type: department
   id: Security
   name: department-TriadDefenseForce
   description: department-TriadDefenseForce-description

@@ -1,5 +1,28 @@
 - type: entity
-  parent: ClothingOuterCoatHoSTrench
+  parent: [ ClothingOuterStorageBase, ClothingFoldableBase ]
+  id: ClothingOuterCoatRedSpotsJacket
+  name: red spots bomber jacket
+  description: A lightweight bomber jacket with spots on it to deter predators. Cute!
+  components:
+  - type: Sprite
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_red.rsi
+  - type: Clothing
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_red.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageBase, ClothingFoldableBase ]
+  id: ClothingOuterCoatBlueSpotsJacket
+  name: blue spots bomber jacket
+  description: A lightweight bomber jacket with spots on it to deter predators. Cute!
+  components:
+  - type: Sprite
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_blue.rsi
+  - type: Clothing
+    sprite: _DEN/Clothing/OuterClothing/Coats/spots_jacket_blue.rsi
+
+
+- type: entity
+  parent: [ClothingOuterCoatHoSTrench, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfChiefEnforcerTrench
   name: chief enforcer's armored trenchcoat
   description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence. Has a nice and gold TDF stripe around the coat.
@@ -8,9 +31,12 @@
     sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase]
+  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfWarden
   name: TDF warden's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
@@ -19,9 +45,12 @@
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat]
+  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfWardenAlt
   name: TDF warden's armored coat
   description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
@@ -37,15 +66,21 @@
       Plasteel: 125
   - type: StaticPrice
     price: 180
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
 
 - type: entity
   parent: ClothingOuterCoatTdfChiefEnforcerTrench
-  id: ClothingOuterCoatTdfHighCommand
-  name: TDF high command armored dress coat
-  description: A dress coat enhanced with a special alloy for some extra protection and style for TDF high commanders.
+  id: ClothingOuterCoatTfaHighCommand
+  name: TFA high command armored dress coat
+  description: A dress coat enhanced with a special alloy for some extra protection and style for Triad Frontier Association high command members.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
   - type: Clothing
     sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
   - type: SavingContraband
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon

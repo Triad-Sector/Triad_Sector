@@ -2498,3 +2498,934 @@ Entries:
   id: 2387
   time: '2026-07-11T22:05:23.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/335
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added Designated Ship ID Framework and it's assets
+  id: 2388
+  time: '2026-07-12T13:17:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/345
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: NSC Horizon Cargo Freighter.
+  id: 2389
+  time: '2026-07-13T08:22:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/308
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        New spawn location (Dorms) to Venmar, instrument vends, MNK vends, an
+        outhouse, small QOL changes
+  id: 2390
+  time: '2026-07-13T16:17:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/349
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        NVGs have been changed. Being in high-illumination areas will be harder
+        to see in with NVGs. They have a nice green filter now, as well.
+  id: 2391
+  time: '2026-07-13T18:23:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/350
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Mercenary fabricators now have the following items available roundstart:
+        disablers, disabler SMGs, and stun batons.
+  id: 2392
+  time: '2026-07-13T21:47:14.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/336
+- author: HameyTychol
+  changes:
+    - type: Fix
+      message: Avalis should be able to get drunk now!
+  id: 2393
+  time: '2026-07-13T21:49:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/316
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Marking points have been increased for all species, with a few
+        exclusions for categories. Have fun!
+  id: 2394
+  time: '2026-07-13T22:20:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/348
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Warden now requires 20 hours of TDF time, rather than 25.
+    - type: Tweak
+      message: >-
+        Loosened patrol team leader requirements, now requires 15 hours of TDF
+        and 30 hours of overall playtime.
+  id: 2395
+  time: '2026-07-13T22:22:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/351
+- author: Fasuh
+  changes:
+    - type: Add
+      message: >-
+        Added Shadekin; A species of 4 eared felines with bright, monocolored
+        eyes. They may or may not be from an adjacent plane and are drawn to
+        realspace and especially anomalous zones (i.e. the Monolith) to sate
+        their own curiosity. Think kind of like Vortigaunts. They are hemophilic
+        and due to sheer complexity of their own bloods composition have issues
+        regenerating it (170% more bleed and 1/4th of normal blood regen). They
+        take more damage from the common damage types Radiation, Shock and Heat
+        but less from cold and the rare cellular. Their hyper-evolved eyes grant
+        them intrinsic nightvision if unobstructed by flash protective gear. Any
+        sort of flashes last longer and are more intense. The guidebook entry
+        provides more details on them and their lore.
+  id: 2396
+  time: '2026-07-13T22:45:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/96
+- author: pandoraberry
+  changes:
+    - type: Add
+      message: >-
+        Added new Slime Person customization, including new chest, head, tail
+        and snout markings
+    - type: Tweak
+      message: Slimes can now use compatible Reptilian, Vulpkanin, and Tajaran markings
+  id: 2397
+  time: '2026-07-14T00:04:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/342
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: New TDF medical ship, Mercy
+  id: 2398
+  time: '2026-07-14T06:17:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/344
+- author: satirically
+  changes:
+    - type: Add
+      message: Nosske-Eien is starting to make a presence again.
+  id: 2399
+  time: '2026-07-14T14:34:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/354
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Auric to version 1.2
+    - type: Fix
+      message: Ivy burning to death on Venmar
+  id: 2400
+  time: '2026-07-14T15:21:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/357
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: TDF Ships, Folder Structure.
+  id: 2401
+  time: '2026-07-14T16:23:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/358
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed station records computer filters causing your ship to be unable to
+        be saved.
+  id: 2402
+  time: '2026-07-14T19:58:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/361
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added night vision options under the accessibility tab. You can now
+        change the color of the night vision tint.
+    - type: Tweak
+      message: >-
+        Made tajaran night vision grey, and removed the circle radius around the
+        screen.
+    - type: Tweak
+      message: >-
+        Made shadekin vision slightly brighter, removed the circle radius around
+        the screen.
+    - type: Remove
+      message: Removed the stupid ass night vision blur.
+    - type: Add
+      message: Added back the sound for toggling Night vision goggles.
+  id: 2403
+  time: '2026-07-14T22:46:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/359
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship saving contraband proto for TDF and and it's silent one
+  id: 2404
+  time: '2026-07-16T12:45:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/322
+- author: DDrakov
+  changes:
+    - type: Add
+      message: TDF RnD and it's Tech
+    - type: Add
+      message: TDF Designated Ship ID Tier 0, Tier 1 and Tier 2
+    - type: Add
+      message: 'TDF LMG '
+    - type: Tweak
+      message: Moved Adjutant into Tier 2
+    - type: Add
+      message: Add Jester, Fling, and Mercy to TDF shipyard
+  id: 2405
+  time: '2026-07-16T13:58:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/346
+- author: satirically
+  changes:
+    - type: Remove
+      message: Removed Emu fork from tech tree and its respective fab
+  id: 2406
+  time: '2026-07-16T15:14:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/367
+- author: satirically
+  changes:
+    - type: Fix
+      message: Power forks not being able to be put in mechs.
+  id: 2407
+  time: '2026-07-16T19:44:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/369
+- author: Khaomi
+  changes:
+    - type: Remove
+      message: Removed Lone Digger by Caravan Palace from Jukebox for copyright reason
+  id: 2408
+  time: '2026-07-17T07:03:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/372
+- author: Minerva
+  changes:
+    - type: Fix
+      message: >-
+        Decorative greeble (antenna, ELINT, radar) construction ghosts have been
+        partially fixed. When placed as contruction ghosts, they now display
+        properly. Placement previews have not been fixed yet.
+  id: 2409
+  time: '2026-07-17T20:01:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/323
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Edison Power Plant has been reworked into a full industrial station:
+        supermatter engine, radiation collectors, TEG, AME fuel fabricator, and
+        an energy-to-plasma converter.
+    - type: Add
+      message: >-
+        New Industrial department jobs at Edison: Plant Manager and Plant
+        Technician, with their own loadouts, spawns, and PDAs. Spacers, Pilots,
+        and Mercenaries can also join there.
+    - type: Add
+      message: >-
+        Edison now has its own sector bank account. Selling power pays the
+        plant, purchases at the plant's request computer kick back a cut, and
+        the Plant Manager pays wages from the office terminal.
+    - type: Add
+      message: >-
+        The CreditFlow Lite app shows an Edison ledger tab, and the plant's
+        machines now have working power-draw controls.
+    - type: Fix
+      message: >-
+        Supermatter tesla delaminations no longer spawn infinite tesla balls,
+        and a delamination can no longer detonate after announcing it was
+        averted.
+    - type: Fix
+      message: >-
+        The supermatter monitoring console no longer refreshes every tick, and
+        its gas readouts no longer break on gases the crystal ignores.
+    - type: Fix
+      message: >-
+        The ledger PDA cartridge is now named CreditFlow Lite to match its
+        program.
+    - type: Tweak
+      message: >-
+        Edison's shutter buttons are labeled and no longer overlap, and civilian
+        late-join spawns moved to the bus stop hall.
+  id: 2410
+  time: '2026-07-17T20:26:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/339
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: TDF Ships
+  id: 2411
+  time: '2026-07-17T20:37:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/375
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Added more turrets for TDF, Future Factions and Syndicate
+    - type: Tweak
+      message: Changed the laser type of TDF Laser turret into something stronger
+    - type: Tweak
+      message: >-
+        All default turret range has been increased to 12 tiles, about the same
+        range as your peek/zoom view
+  id: 2412
+  time: '2026-07-17T22:52:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/256
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed sinks and drains not being able to be pulled.
+  id: 2413
+  time: '2026-07-17T22:58:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/377
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Made Tajaran Night vision a bit brighter.
+  id: 2414
+  time: '2026-07-17T23:01:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/374
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: The Warden and Patrol Team Leaders now have access to the TDF funding.
+  id: 2415
+  time: '2026-07-18T00:18:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/376
+- author: Delta-V
+  changes:
+    - type: Remove
+      message: Removed the battery requirement from holofan projectors.
+    - type: Tweak
+      message: >-
+        Holoprojectors now work like in SS13, you can place up to 6 at once with
+        charges reclaimed by removing unused holoprojectors.
+  id: 2416
+  time: '2026-07-18T00:31:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/363
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        TDF Data Farm now generates 45 research points a second, from 200 points
+        a second.
+  id: 2417
+  time: '2026-07-18T00:56:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/378
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Increase RP for Voucher
+    - type: Tweak
+      message: Decrease voucher crafting time by 40%
+    - type: Tweak
+      message: >-
+        Increase Riot MMG recoil and decrease it's recoil decay, it's nerf or
+        nothing.
+  id: 2418
+  time: '2026-07-18T00:57:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/379
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added Spots Jackets (Red, Blue)
+    - type: Add
+      message: Added Strained Shorts
+    - type: Add
+      message: Added Hightops
+  id: 2419
+  time: '2026-07-18T08:57:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/211
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        IPC wings now render in the correct layer from every direction instead
+        of drawing over everything.
+    - type: Fix
+      message: Balaclavas, helmet covers, and helmet attachments now render on IPCs.
+    - type: Fix
+      message: Fixed the draw order of IPC ID cards and neck-slot items.
+  id: 2420
+  time: '2026-07-19T19:40:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/381
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The Edison is now run by the Director of Infrastructure and Sector
+        Technician (the Infrastructure department).
+    - type: Add
+      message: Shielded light fixtures can now be constructed.
+    - type: Tweak
+      message: >-
+        Reworked Edison and outpost access so infrastructure staff can reach
+        their areas, consoles, and the material vault.
+    - type: Fix
+      message: Plant roles no longer drop duplicate equipment when spawning.
+    - type: Fix
+      message: Plant roles can save and load ships again.
+  id: 2421
+  time: '2026-07-19T19:59:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/383
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: Added new merc only ship, the Palisade
+  id: 2422
+  time: '2026-07-20T11:34:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/380
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: 'Added new expedition ship, The Prospector '
+  id: 2423
+  time: '2026-07-20T11:42:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/366
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Service techfab and Autolathes now have access to a large assortment of
+        bureaucratically-adjacent items under the new Bureaucracy lathe pack.
+        This includes paper, colored paper, business cards, pens, clipboards, a
+        briefcase, folders, and envelopes.
+  id: 2424
+  time: '2026-07-20T13:12:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/370
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reptilian sprites for the syndicate hardsuits have been redone, and
+        should look a lot better and not like a completely different suit!
+    - type: Tweak
+      message: Resprited humans to be inline with the art direction.
+  id: 2425
+  time: '2026-07-20T13:35:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/384
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed TDF ships getting syndicate smuggler faxes
+    - type: Fix
+      message: >-
+        Fixed ship vouchers mispredicting when you put them into the console
+        (being laggy and making no sound)
+  id: 2426
+  time: '2026-07-20T15:03:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/386
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: Added yellow and black crystals, crystal shards, and light tubes.
+    - type: Fix
+      message: Fixed an issue where small lights are too hard to shoot.
+    - type: Fix
+      message: >-
+        Fixed a bug where dragged objects would collide with wall mounted lights
+        and cameras.
+  id: 2427
+  time: '2026-07-20T15:04:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/365
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed LPB's third AI Core not receiving power due to not having any
+        reachable wire
+  id: 2428
+  time: '2026-07-20T16:02:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/390
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Huge Auric visual overhaul, nearly done I promise
+  id: 2429
+  time: '2026-07-20T20:14:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/391
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Thrusters, Atmos, Wiring Visuals, a lot a lot a lot a lot
+  id: 2430
+  time: '2026-07-21T13:41:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/393
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added ability to construct sinks!
+    - type: Add
+      message: Added ability to construct drains!
+    - type: Add
+      message: >-
+        Added ability to construct extinguisher, defibrillator, and fire axe
+        cabinets!
+  id: 2431
+  time: '2026-07-21T17:50:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/278
+- author: HameyTychol
+  changes:
+    - type: Remove
+      message: Removed the ability to self execute
+  id: 2432
+  time: '2026-07-21T18:36:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/397
+- author: HameyTychol
+  changes:
+    - type: Add
+      message: Defibrillator cabinets recharge defibrillators now!
+  id: 2433
+  time: '2026-07-21T19:07:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/398
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Scrubbers can be set to scrub when above a certain percentage of a gas
+  id: 2434
+  time: '2026-07-21T22:17:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/399
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: Alive icon on the medhud
+  id: 2435
+  time: '2026-07-21T22:17:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/400
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed blast doors not closing on-top of airlocks
+  id: 2436
+  time: '2026-07-22T19:11:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/405
+- author: satirically
+  changes:
+    - type: Tweak
+      message: Knallstock can take extendeds now
+  id: 2437
+  time: '2026-07-23T01:50:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/409
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added Science Vessel to the shipyard, the Molecule.
+  id: 2438
+  time: '2026-07-23T03:43:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/403
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added privacy holoprojectors, available in loadouts under the fun
+        category and at an autolathe and service techfab. You can press Z to
+        access its interface, where you'll be able to give a description of the
+        events happening past the privacy holoprojectors. 
+  id: 2439
+  time: '2026-07-23T03:58:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/408
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        Rules 1.7, 1.7A, 1.7B, 1.7C, 5.4, 9.4A, 9.7, 10.2D (Please see PR for
+        more details)
+    - type: Remove
+      message: Removed fun. I hate fun.
+    - type: Tweak
+      message: >-
+        Rules: 2.3, 8.8, 9.1, 9.3, 9.3A, 10.2, 10.3 (Please see PR for more
+        details)
+  id: 2440
+  time: '2026-07-23T05:24:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/395
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited the emergency EVA, EVA, prisoner EVA, and syndicate EVA to be
+        in-line with the art-style!
+  id: 2441
+  time: '2026-07-23T22:54:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/412
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: >-
+        Shielded lights can now be built, or upgraded from existing lights with
+        plasteel (remove the bulb first). These are much more resistant to solar
+        flares.
+  id: 2442
+  time: '2026-07-24T12:03:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/401
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Auric finalised until updates require changes
+  id: 2443
+  time: '2026-07-24T12:18:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/407
+- author: PhosphateWithManyOs
+  changes:
+    - type: Add
+      message: >-
+        You can now put circuit boards and tiles into construction bags and
+        boxes.
+  id: 2444
+  time: '2026-07-24T12:45:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/413
+- author: leafybonsai
+  changes:
+    - type: Add
+      message: TDF-Knight patrol ship
+  id: 2445
+  time: '2026-07-24T15:31:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/387
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Added fun!
+  id: 2446
+  time: '2026-07-24T16:39:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/414
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        The Syndicate Weapons cache has been reworked; it has a completely new
+        dungeon-like design, TDF are not paid to guard it. Work with eachother
+        to clear it out!
+  id: 2447
+  time: '2026-07-24T16:48:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/402
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed EMU power loaders not spawning on Auric Outpost
+  id: 2448
+  time: '2026-07-24T23:03:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/416
+- author: leafybonsai
+  changes:
+    - type: Fix
+      message: adjust the knight and fix it issues
+  id: 2449
+  time: '2026-07-25T00:15:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/418
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed NPCs (laser turrets) not shooting through windows.
+    - type: Tweak
+      message: >-
+        Changed the depleted uranium crate in the syndicate cache into a
+        syndicate crate
+    - type: Tweak
+      message: Tweaked the traps in the syndicate cache. Watch your step!
+  id: 2450
+  time: '2026-07-25T00:22:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/417
+- author: leafybonsai
+  changes:
+    - type: Fix
+      message: added the correct up to date knight
+  id: 2451
+  time: '2026-07-25T11:40:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/421
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Most suits with 100% rad immunity is at most 99% now
+  id: 2452
+  time: '2026-07-25T16:18:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/419
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added the TA-29 hardsuit, a tier 2 suit for TDF. Sprite by Wuffindy
+    - type: Add
+      message: Added the Bastion, double barrel 4gauge shotgun. Sprite by Wuffindy
+    - type: Add
+      message: >-
+        Added TDF Tech to multipurpose assembly. Now TDF can trade their tech
+        with the lathe they can buy on the uplink
+    - type: Add
+      message: Added Tier 3 voucher for TDF on tech tree.
+    - type: Tweak
+      message: Made the multipurpose assembly ship save contraband
+    - type: Tweak
+      message: Made criminal records console ship saving contraband
+    - type: Remove
+      message: Removed all criminal records from expeds
+    - type: Tweak
+      message: The TDF Techfab and Uplink is now bio-locked, need TDF job to do so
+  id: 2453
+  time: '2026-07-26T04:40:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/422
+- author: IrkallaEpsilon
+  changes:
+    - type: Fix
+      message: >-
+        Bastion Description more badass and now correctly lists that its 4
+        gauge.
+  id: 2454
+  time: '2026-07-26T13:27:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/424
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added a new scrapyard ship, the Sleipnir.
+    - type: Add
+      message: Added Scrapyard ship file structure.
+  id: 2455
+  time: '2026-07-26T13:40:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/423
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Cherrypicked craftable Pride Flags! <3
+  id: 2456
+  time: '2026-07-27T01:51:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/426
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: Fixed CMO suit speeding up character on held
+  id: 2457
+  time: '2026-07-27T12:22:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/428
+- author: PhosphateWithManyOs
+  changes:
+    - type: Fix
+      message: Feroxi sound being broken
+  id: 2458
+  time: '2026-07-27T22:26:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/432
+- author: Voronetz318
+  changes:
+    - type: Add
+      message: Added new RCD options for diagonal lattice tiles
+  id: 2459
+  time: '2026-07-27T22:46:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/302
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: TDF & TFA gears are now unchameleonable
+  id: 2460
+  time: '2026-07-28T00:22:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/429
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Combat drones no longer chase ships across the sector after they FTL
+        away, and disabled drones brake to a stop instead of drifting forever.
+  id: 2461
+  time: '2026-07-28T02:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/434
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: All ship exped capable
+  id: 2462
+  time: '2026-07-28T14:36:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/394
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added Slimy equivalents of Reptilian markings to slime person!
+  id: 2463
+  time: '2026-07-28T14:44:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/436
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Mute Command to Admin perms
+  id: 2464
+  time: '2026-07-28T21:09:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/435
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        The tesla can no longer chaotic-jump its way out of an intact
+        containment cage.
+  id: 2465
+  time: '2026-07-28T23:13:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/433
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: 'Added new science ship: Goida'
+    - type: Add
+      message: 'Added new Taxi ship: Marshrutka'
+    - type: Add
+      message: 'Added new Library ship: Povest'
+    - type: Add
+      message: 'Added new Attorney ship: Ruchka'
+    - type: Add
+      message: 'Added new Livery ship: Ugol'
+  id: 2466
+  time: '2026-07-29T01:46:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/258
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Admin Logs now show in an admins local time instead of UTC
+    - type: Tweak
+      message: Tips are now be more relevant and accurate to Triad
+  id: 2467
+  time: '2026-07-31T14:00:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/444
+- author: Khaomi
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the medical implanter to send a recurring message every 5
+        minutes after someone is dead
+  id: 2468
+  time: '2026-07-31T22:34:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/445
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Every species guidebook page has been rewritten as a TDF Bureau of
+        Personnel dossier with a randomized paper-doll preview. Same mechanics,
+        more paperwork.
+    - type: Tweak
+      message: The species sidebar in the guidebook is now alphabetized.
+    - type: Tweak
+      message: Arachnid suffocate 50% faster than baseline once oxygen runs out.
+    - type: Tweak
+      message: Protogen take 30% more cold damage.
+    - type: Tweak
+      message: Reptilian heat-boost threshold raised to 47°C ambient.
+    - type: Tweak
+      message: Resomi slow down at temperatures above 30°C.
+    - type: Tweak
+      message: Feroxi get thirsty roughly twice as fast.
+    - type: Tweak
+      message: >-
+        Avali and Feroxi are no longer restricted to a meat-only diet and can
+        eat all food.
+    - type: Tweak
+      message: >-
+        Oni hit harder in melee (+35% Blunt/Asphyxiation, +20% Slash/Piercing)
+        and pry doors open in about half the time.
+    - type: Tweak
+      message: Felinid stamina reduced.
+    - type: Fix
+      message: Hydrakin no longer extract oxygen from carbon dioxide.
+    - type: Remove
+      message: >-
+        Felinid OwOnavirus immunity removed (the disease system itself is
+        unimplemented in this fork).
+  id: 2469
+  time: '2026-08-01T01:00:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/112
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: 'Added new Expedition ship: the DIRE Behir.'
+    - type: Add
+      message: Added Guidebook for the DIRE Behir.
+  id: 2470
+  time: '2026-08-01T06:56:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/446
+- author: Khaomi
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the recurring medical alert to only alert while outside the
+        morgue
+  id: 2471
+  time: '2026-08-02T17:26:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/452
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Portable scrubbers and space heaters now persist through ship saves even
+        when unanchored.
+    - type: Tweak
+      message: Desk bells now persist through ship saves.
+  id: 2472
+  time: '2026-08-02T17:28:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/451
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed people appearing naked when you examine them.
+  id: 2473
+  time: '2026-08-03T14:31:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/457
+- author: BoiWab
+  changes:
+    - type: Add
+      message: 3 new sprites for shield generators
+    - type: Add
+      message: Shield generators now function as power monitoring consoles.
+  id: 2474
+  time: '2026-08-03T15:39:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/450
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: Phalanx, Mech Carrier capitol ship to the TDF fleet
+    - type: Remove
+      message: Ravager
+  id: 2475
+  time: '2026-08-03T15:51:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/449
+- author: IrkallaEpsilon
+  changes:
+    - type: Tweak
+      message: >-
+        AME is now more efficient at multiple cores like it used to be. However
+        a maximum power output of 20 cores is implemented to prevent antimatter
+        tumors at Edison
+    - type: Tweak
+      message: DDrakov Marr Pass retained (For now)
+  id: 2476
+  time: '2026-08-03T16:46:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/438
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: Added Edison AME fuel canister with 4x the capacity
+    - type: Tweak
+      message: AME production energy cost reduced by half
+  id: 2477
+  time: '2026-08-03T16:56:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/439
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed the TDF riot MMG having the wrong sprite.
+  id: 2478
+  time: '2026-08-03T20:22:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/459
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        The supermatter crystal now actually delaminates. It has been announcing
+        the countdown and then doing nothing.
+    - type: Add
+      message: >-
+        Supermatter delaminations cause hallucinations for everyone on the
+        crystal's map.
+    - type: Add
+      message: >-
+        A supermatter that is both over-pressured and over-powered now suffers a
+        resonance cascade, collapsing into a spreading crystalline growth.
+  id: 2479
+  time: '2026-08-04T12:37:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/462
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: The Engineering techfab(s) can now print maintenance jacks.
+  id: 2480
+  time: '2026-08-04T13:08:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/460

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "SigmundDoppler",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "tier_0"
+    },
+    {
+      "name": "tier_1"
+    },
+    {
+      "name": "tier_2"
+    },
+    {
+      "name": "tier_3"
+    },
+    {
+      "name": "tier_4"
+    }
+  ]
+}

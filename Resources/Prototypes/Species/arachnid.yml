@@ -65,7 +65,7 @@
       required: true
       defaultMarkings: [ ArachnidCheliceraeDownwards ]
     Chest:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
       points: 8 # imp 2<8

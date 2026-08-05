@@ -16,7 +16,6 @@
     <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="MobResomi" Caption="Resomi"/>
     <GuideEntityEmbed Entity="MobIPCDummy" Caption="I.P.C."/>
-    <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/>
   </Box>
 
   # Frontier specific species
@@ -43,5 +42,11 @@
     <GuideEntityEmbed Entity="MobTajaran" Caption="Tajaran"/>
     <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/>
   </Box>
+    
+  # Starlight specific species
+    <Box>
+        <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/>
+        <GuideEntityEmbed Entity="MobShadekin" Caption="Shadekin"/>
+    </Box>
 
 </Document>

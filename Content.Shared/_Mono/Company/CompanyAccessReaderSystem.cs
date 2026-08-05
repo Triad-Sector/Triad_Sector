@@ -1,3 +1,4 @@
+using Content.Shared.Administration.Managers; // Triad
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 
@@ -7,9 +8,10 @@ namespace Content.Shared._Mono.Company;
 /// This system handles checking if a user belongs to the required company
 /// before granting access to an entity.
 /// </summary>
-public sealed class CompanyAccessReaderSystem : EntitySystem
+public sealed partial class CompanyAccessReaderSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ISharedAdminManager _admin = default!; // Triad
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -21,6 +23,9 @@ public sealed class CompanyAccessReaderSystem : EntitySystem
     private void OnUIOpenAttempt(Entity<CompanyAccessReaderComponent> entity, ref ActivatableUIOpenAttemptEvent args)
     {
         if (args.Cancelled)
+            return;
+
+        if (_admin.IsAdmin(args.User)) // Triad - Admins ignore this
             return;
 
         // Get user's company

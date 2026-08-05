@@ -1,0 +1,136 @@
+- type: entity
+  parent: BallisticTurretHeavyBase
+  id: BallisticTurretHeavyAIBase
+  name: heavy remote sentry turret
+  abstract: true
+  components:
+  - type: AccessReader
+    access: [["Security"]]
+  - type: DeployableTurret
+    retractedDamageModifierSetId: Metallic
+    deployedDamageModifierSetId: Metallic
+    deploymentSound:
+      path: /Audio/_Mono/Effects/Machines/twobeep_high.ogg
+    retractionSound:
+      path: /Audio/_Mono/Effects/Machines/triple_beep.ogg
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - Security
+    - Borg
+    - BasicSilicon
+  - type: ProjectileBatteryAmmoProvider
+    proto: Bullet762x51mmRubber
+    fireCost: 25
+  - type: DeviceNetworkRequiresPower
+  - type: WiredNetworkConnection
+  - type: UserInterface
+    interfaces:
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Wires
+    boardName: wires-board-name-weapon-energy-turret
+    layoutId: WeaponEnergyTurret
+  - type: Lock
+    locked: true
+    unlockOnClick: false
+  - type: LockedWiresPanel
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: Bullet762x51mmRubber
+      fireCost: 25
+    - proto: Bullet762x51mmAntiMaterial
+      fireCost: 40
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    sendBroadcastAttemptEvent: true
+    prefix: device-address-prefix-turret
+    examinableAddress: true
+    receiveFrequencyId: TurretControlAI
+    transmitFrequencyId: TurretAI
+  - type: HTN
+    enabled: false
+  - type: StationAiWhitelist
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+
+- type: entity
+  parent: WeaponEnergyTurretStationControlPanel
+  id: WeaponEnergyTurretTDFControlPanel
+  name: sentry turret control panel
+  description: A wall-mounted interface that allows personnel to adjust the operational parameters of linked TDF sentry turrets.
+  suffix: TDF
+  components:
+  - type: AccessReader
+    access: [["Security"]]
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - TdfChiefEnforcer
+    - TdfWarden
+    - TdfPatrolTeamLeader
+    - Security
+    - Brig
+  - type: DeviceNetwork
+    receiveFrequencyId: TurretAITDF
+    transmitFrequencyId: TurretControlAITDF
+
+- type: entity
+  parent: BallisticTurretHeavyAIBase
+  id: BallisticTurretHeavyAITDF
+  name: TDF heavy remote sentry turret
+  components:
+  - type: AccessReader
+    access: [["Security"]]
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - TdfChiefEnforcer
+    - TdfWarden
+    - TdfPatrolTeamLeader
+    - Security
+    - Brig
+  - type: DeviceNetwork
+    receiveFrequencyId: TurretControlAITDF
+    transmitFrequencyId: TurretAITDF
+
+- type: deviceFrequency
+  id: TurretControlAITDF
+  name: device-frequency-prototype-name-turret-control
+  frequency: 1681
+
+- type: deviceFrequency
+  id: TurretAITDF
+  name: device-frequency-prototype-name-turret
+  frequency: 1682
+
+# For future implementation
+- type: deviceFrequency
+  id: TurretControlAICoalition
+  name: device-frequency-prototype-name-turret-control
+  frequency: 1683
+
+- type: deviceFrequency
+  id: TurretAICoalition
+  name: device-frequency-prototype-name-turret
+  frequency: 1684
+
+- type: deviceFrequency
+  id: TurretControlAISolarian
+  name: device-frequency-prototype-name-turret-control
+  frequency: 1685
+
+- type: deviceFrequency
+  id: TurretAISolarian
+  name: device-frequency-prototype-name-turret
+  frequency: 1686
+
+- type: deviceFrequency
+  id: TurretControlAITFA
+  name: device-frequency-prototype-name-turret-control
+  frequency: 1687
+
+- type: deviceFrequency
+  id: TurretAITFA
+  name: device-frequency-prototype-name-turret
+  frequency: 1688

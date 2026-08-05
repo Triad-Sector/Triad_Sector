@@ -1,0 +1,23 @@
+# Triad: Edison POI port. Decal ids from ARF-SS13/coyote-frontier @ 2f30035e (AGPLv3).
+# Upstream sprite (_HL/Effects/HL-AnimalSilenceAlphaNumericDecals.rsi) was not vendored and
+# This fork has no alphanumeric-decal sheet, so these alias an existing marking so the map's
+# two decal placements resolve on load. Cosmetic placeholder: swap for real letters during refit.
+- type: decal
+  id: LetterMAnimalSilence
+  tags: ["markings"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Decals/markings.rsi
+    state: bot
+
+- type: decal
+  id: LetterSAnimalSilence
+  tags: ["markings"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Decals/markings.rsi
+    state: bot

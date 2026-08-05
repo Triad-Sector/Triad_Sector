@@ -24,10 +24,10 @@
         !type:SectorBankAccountInfo
         balance: 8000
         increasePerSecond: 14 # ~50K per hour, minimum wage employees!
-      Nfsd:
+      TDF:
         !type:SectorBankAccountInfo
         balance: 8000
-        increasePerSecond: 65 # ~234K per hour, about enough for minimum wage for the default TSFMC size
+        increasePerSecond: 50 # ~180K per hour, about enough for minimum wage for the default TDF size
       Medical:
         !type:SectorBankAccountInfo
         balance: 8000
@@ -36,6 +36,10 @@
         !type:SectorBankAccountInfo
         balance: 8000
         increasePerSecond: 18 # ~65K per hour, they get ALOT just from people smuggling anyways.
+      Edison: # Triad: coyote's power plant account; a trickle - the plant earns by selling power
+        !type:SectorBankAccountInfo
+        balance: 8000
+        increasePerSecond: 1
 # mono edit end
 
  # A global source of character records (DNA, fingerprints, criminal records, etc.)

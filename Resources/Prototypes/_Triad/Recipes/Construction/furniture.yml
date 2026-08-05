@@ -48,3 +48,126 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+### Plumbing
+
+- type: construction
+  id: FloorDrain
+  name: floor drain
+  description: Drains puddles around it. Useful for dumping mop buckets or keeping certain rooms clean.
+  graph: floordrain
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Specific/Janitorial/drain.rsi
+    state: icon
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: Sink
+  name: sink
+  description: The faucets have been tightened to the maximum possible torque but are still known to drip.
+  graph: sinkstemmed
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink_stem
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SinkStemless
+  name: sink
+  description: The faucets have been tightened to the maximum possible torque but are still known to drip.
+  graph: sinkstemlesswater
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SinkWide
+  name: wide sink
+  description: The faucets have been tightened to the maximum possible torque but are still known to drip.
+  graph: widesink
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/sink.rsi
+    state: sink_wide
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+### Cabinets
+
+- type: construction
+  id: DefibrillatorCabinet
+  name: defibrillator cabinet
+  description: A small wall mounted cabinet designed to hold a defibrillator.
+  graph: defibrillatorcabinet
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Wallmounts/defib_cabinet.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition {}
+
+- type: construction
+  id: ExtinguisherCabinet
+  name: extinguisher cabinet
+  description: A small wall mounted cabinet designed to hold a fire extinguisher.
+  graph: extinguishercabinet
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Wallmounts/extinguisher_cabinet.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition {}
+
+- type: construction
+  id: FireAxeCabinet
+  name: fire axe cabinet
+  description: There is a small label that reads "For Emergency use only" along with details for safe use of the axe. As if.
+  graph: fireaxecabinet
+  startNode: start
+  targetNode: finish
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Wallmounts/fireaxe_cabinet.rsi
+    state: cabinet
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition {}

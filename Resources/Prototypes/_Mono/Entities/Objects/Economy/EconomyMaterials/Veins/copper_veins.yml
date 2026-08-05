@@ -190,7 +190,7 @@
 
 - type: entity
   id: WallRockScrapPileCopper
-  parent: WallRockScrapPile
+  parent: NFWallRockScrapPile
   description: An ore vein with copper.
   suffix: Copper
   components:

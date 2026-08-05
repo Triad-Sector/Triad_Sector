@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.2.1
   forkId: ""
   forkVersion: ""
-  time: 07/01/2026 18:18:41
-  entityCount: 1568
+  time: 07/20/2026 14:53:35
+  entityCount: 1574
 maps: []
 grids:
 - 1
@@ -89,10 +89,10 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        Puddle: []
-        MetalFoam: []
         Smoke: []
         Kudzu: []
+        MetalFoam: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -5515,6 +5515,24 @@ entities:
     - type: Transform
       pos: -2.5,12.5
       parent: 1
+- proto: ClothingBeltMilitaryWebbingTdf
+  entities:
+  - uid: 1422
+    components:
+    - type: Transform
+      parent: 501
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingBeltTdf
+  entities:
+  - uid: 1274
+    components:
+    - type: Transform
+      parent: 501
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingHeadHatBeretTdf
   entities:
   - uid: 307
@@ -5522,6 +5540,13 @@ entities:
     - type: Transform
       pos: -4.3550634,-13.498849
       parent: 1
+  - uid: 1405
+    components:
+    - type: Transform
+      parent: 501
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingHeadHatTdfWarden
   entities:
   - uid: 1143
@@ -5597,6 +5622,29 @@ entities:
     components:
     - type: Transform
       parent: 991
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingUniformJumpsuitTdfJunior
+  entities:
+  - uid: 1406
+    components:
+    - type: Transform
+      parent: 501
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1407
+    components:
+    - type: Transform
+      parent: 501
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1414
+    components:
+    - type: Transform
+      parent: 501
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -5740,6 +5788,8 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,14.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
 - proto: FloorTileItemGCircuit
@@ -6403,6 +6453,27 @@ entities:
       parent: 1
 - proto: LockerTdf
   entities:
+  - uid: 501
+    components:
+    - type: Transform
+      pos: 1.5,-0.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 1414
+          - 1274
+          - 1405
+          - 1406
+          - 1407
+          - 1422
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 991
     components:
     - type: Transform
@@ -6414,8 +6485,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1293
           - 1292
+          - 1293
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6492,13 +6563,6 @@ entities:
     components:
     - type: Transform
       pos: 4.528255,14.64331
-      parent: 1
-- proto: NfsdTechFab
-  entities:
-  - uid: 501
-    components:
-    - type: Transform
-      pos: 1.5,-0.5
       parent: 1
 - proto: OrganArachnidStomach
   entities:

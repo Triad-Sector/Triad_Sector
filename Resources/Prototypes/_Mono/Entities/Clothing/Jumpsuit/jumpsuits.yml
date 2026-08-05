@@ -339,8 +339,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitViperGroupUniform
-  name: viper group uniform
-  description: A uniform bearing the colours of the vipers.
+  name: elite syndicate uniform # Triad - name
+  description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
   categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice
@@ -357,8 +357,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitViperGroupTurtleneck
-  name: viper group turtleneck
-  description: A turtleneck bearing the colours of the vipers.
+  name: elite syndicate turtleneck # Triad - name
+  description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
   categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice

@@ -19,6 +19,7 @@
   displayWeight: 50 # Second from the top
   setPreference: true
   access:
+  - Command
   - Service
   - Maintenance
   - External

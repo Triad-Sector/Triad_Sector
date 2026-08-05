@@ -1,3 +1,4 @@
+# TDF
 - type: npcFaction
   id: TDF
   neutral:
@@ -13,6 +14,35 @@
   - CC
   - SimpleNeutral
   defaultHostile: true
+
+# SD
+- type: npcFaction
+  id: SD
+  neutral:
+  - CC
+  - SimpleNeutral
+  defaultHostile: true
+
+- type: npcFaction
+  id: SDTurret
+  friendly:
+  - SD
+  defaultHostile: true
+
+# TIC
+- type: npcFaction
+  id: TIC
+  neutral:
+  - CC
+  - SimpleNeutral
+  defaultHostile: true
+
+- type: npcFaction
+  id: TICTurret
+  friendly:
+  - TIC
+  defaultHostile: true
+
 
 # Identity faction for autonomous NPC combat drones. Relations are deliberately empty:
 # the ship-targeting IFF only skips FRIENDLY targets, so an empty-relations faction changes

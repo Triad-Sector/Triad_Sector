@@ -1,3 +1,4 @@
+using System.Numerics; // Triad
 using Content.Shared.Construction.Conditions;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
@@ -103,6 +104,11 @@ public sealed partial class ConstructionPrototype : IPrototype
 
     public IReadOnlyList<IConstructionCondition> Conditions => _conditions;
     public IReadOnlyList<SpriteSpecifier> Layers => _layers ?? new List<SpriteSpecifier> { Icon };
+
+    // Triad changes
+    [DataField]
+    public Vector2 GhostOffset = Vector2.Zero;
+    // End Triad
 }
 
 public enum ConstructionType

@@ -1,0 +1,18 @@
+- type: entity
+  parent: AmeJar
+  id: AmeJarExtended
+  name: Edison AME fuel jar
+  description: A hermetically sealed jar containing antimatter for use in an antimatter reactor, created by Edison's finest.
+  components:
+  - type: Item
+    size: Normal
+    sprite: _Triad/Objects/Power/edison_ame_jar.rsi
+  - type: Sprite
+    sprite: _Triad/Objects/Power/edison_ame_jar.rsi
+    state: jar
+  - type: AmeFuelContainer
+    fuelAmount: 6400
+    fuelCapacity: 6400
+  - type: StaticPrice
+    price: 2000
+    vendPrice: 20000

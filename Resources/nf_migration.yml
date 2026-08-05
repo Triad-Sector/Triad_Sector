@@ -196,11 +196,11 @@ CrateMaterials: CrateMaterialsBasicFilled
 ColoredLightTubeRed: LightTubeCrystalRed
 ColoredBlueLightTube: LightTubeCrystalBlue
 ColoredLightTubeCyan: LightTubeCrystalCyan
-ColoredLightTubeBlackLight: LightTubeCrystalBlack
+ColoredLightTubeBlackLight: LightTubeUltraviolet
 PoweredlightColoredRed: PoweredlightRed
 PoweredlightBlueInterior: PoweredlightBlue
 PoweredlightColoredFrostyBlue: PoweredlightCyan
-PoweredlightColoredBlack: PoweredlightBlack
+PoweredlightColoredBlack: PoweredlightUltraviolet
 
 # 2025-02-14 Magboots
 ClothingShoesBootsMagCombat: ClothingShoesBootsMagSecurity
@@ -224,6 +224,30 @@ VendingMachineChefvendDungeon: Biogenerator
 
 # 2025-03-01 SVT
 WeaponRifleSVT: WeaponRifleSVS
+
+# 2025-03-26 Upstream merge
+# 2025-03-26 Upstream merge
+AsteroidRockCoalCrab: NFAsteroidRockCoalCrab
+AsteroidRockGoldCrab: NFAsteroidRockGoldCrab
+AsteroidRockTinCrab: NFAsteroidRockIronCrab
+AsteroidRockPlasmaCrab: NFAsteroidRockPlasmaCrab
+AsteroidRockQuartzCrab: NFAsteroidRockQuartzCrab
+AsteroidRockSilverCrab: NFAsteroidRockSilverCrab
+AsteroidRockUraniumCrab: NFAsteroidRockUraniumCrab
+MobCoalCrab: NFMobCoalCrab
+MobGoldCrab: NFMobGoldCrab
+MobIronCrab: NFMobIronCrab
+MobPlasmaCrab: NFMobPlasmaCrab
+MobQuartzCrab: NFMobQuartzCrab
+MobSilverCrab: NFMobSilverCrab
+MobUraniumCrab: NFMobUraniumCrab
+WallSpawnAsteroidCoalCrab: NFWallSpawnAsteroidCoalCrab
+WallSpawnAsteroidGoldCrab: NFWallSpawnAsteroidGoldCrab
+WallSpawnAsteroidIronCrab: NFWallSpawnAsteroidIronCrab
+WallSpawnAsteroidPlasmaCrab: NFWallSpawnAsteroidPlasmaCrab
+WallSpawnAsteroidQuartzCrab: NFWallSpawnAsteroidQuartzCrab
+WallSpawnAsteroidSilverCrab: NFWallSpawnAsteroidSilverCrab
+WallSpawnAsteroidUraniumCrab: NFWallSpawnAsteroidUraniumCrab
 
 # 2025-04-19 Material Magnet Boxes (Frontier #3269)
 OreBox: NFMagnetBoxOre

@@ -13,7 +13,7 @@
 - type: entity
   abstract: true
   id: MobSpawnOreCrabDocileBase
-  parent: MobSpawnCrabNFQuartz
+  parent: NFMobSpawnCrabQuartz
   suffix: Docile
   components:
   - type: Sprite
@@ -25,7 +25,7 @@
 # uranium is already docile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobQuartzCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobQuartzCrab]
   id: MobQuartzCrabDocile
   components:
   - type: Construction
@@ -44,7 +44,7 @@
     prototype: MobQuartzCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobIronCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobIronCrab]
   id: MobIronCrabDocile
   components:
   - type: Construction
@@ -63,7 +63,7 @@
     prototype: MobIronCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobUraniumCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobUraniumCrab]
   id: MobUraniumCrabDocile
   components:
   - type: Construction
@@ -82,7 +82,7 @@
     prototype: MobUraniumCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobSilverCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobSilverCrab]
   id: MobSilverCrabDocile
   components:
   - type: Construction
@@ -101,7 +101,7 @@
     prototype: MobSilverCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobBananiumCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobBananiumCrab]
   id: MobBananiumCrabDocile
   components:
   - type: Construction
@@ -119,7 +119,7 @@
     prototype: MobBananiumCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobCoalCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobCoalCrab]
   id: MobCoalCrabDocile
   components:
   - type: Construction
@@ -137,7 +137,7 @@
     prototype: MobCoalCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobGoldCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobGoldCrab]
   id: MobGoldCrabDocile
   components:
   - type: Construction
@@ -155,7 +155,7 @@
     prototype: MobGoldCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobPlasmaCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobPlasmaCrab]
   id: MobPlasmaCrabDocile
   components:
   - type: Construction
@@ -173,7 +173,7 @@
     prototype: MobPlasmaCrabDocile
 
 - type: entity
-  parent: [MobOreCrabDocileBase, MobSaltCrabNF]
+  parent: [MobOreCrabDocileBase, NFMobSaltCrab]
   id: MobSaltCrabDocile
   components:
   - type: Construction

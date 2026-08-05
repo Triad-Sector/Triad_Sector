@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseFactionGearTDFT1, EncryptionKey ]
+  parent: [ BaseFactionGearTDFT1, EncryptionKey, BaseClass2AShipContrabandSilent ]
   id: EncryptionKeyTdf
   name: TDF encryption key
   categories: [ DoNotMap ]

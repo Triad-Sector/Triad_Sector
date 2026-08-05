@@ -22,6 +22,7 @@
   - MopItem
   - Holoprojector
   - WetFloorSign
+  - HoloprojectorPrivate # Triad
 
 - type: latheRecipePack
   id: ServiceBoardsStatic

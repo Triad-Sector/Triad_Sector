@@ -99,4 +99,4 @@
       TriadCommerceCredit: 15
   - type: ItemTax
     taxAccounts:
-      nfsd: -0.05 # TDF account
+      TDF: -0.05 # TDF account

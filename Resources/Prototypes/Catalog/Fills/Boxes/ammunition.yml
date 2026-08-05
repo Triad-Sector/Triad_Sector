@@ -142,7 +142,7 @@
   name: box of 6.8x52mm magazines
   parent: BoxMagazine
   id: BoxMagazine68x52mmFMJ
-  description: A box full of standard TSF 6.8x52mm magazines.
+  description: A box full of standard 6.8x52mm magazines. # Triad, description
   components:
   - type: StorageFill
     contents:

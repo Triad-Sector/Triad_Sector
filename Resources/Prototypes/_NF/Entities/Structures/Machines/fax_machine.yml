@@ -199,7 +199,7 @@
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Auric Outpost Chief Enforcer"
+    name: "TDF - Auric Outpost"
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
@@ -208,7 +208,7 @@
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "TDF Outpost Lawyer"
+    name: "TDF - Lawyer Outpost"
 
 - type: entity
   parent: FaxMachineBase

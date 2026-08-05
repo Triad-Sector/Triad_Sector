@@ -5,6 +5,7 @@
   "copyright": "spirit by iNoahGuy/actualcatmoment (discord/github).",
   "copyright": "apothecary, charon, stasis by dustylens (discord/github).",
   "copyright": "barge, eagle, hauler, phoenix, placebo, skipper, sparrow by Mygnol (discord/github)",
+  "copyright": "behir, direlogo by mauve (@mauvelikeroses on discord)",
   "metaAtlas": false,
   "size": {
     "x": 128,
@@ -27,6 +28,9 @@
       "name": "bocadillo"
     },
     {
+      "name": "behir"
+    },
+    {
       "name": "brigand"
     },
     {
@@ -46,6 +50,9 @@
     },
     {
       "name": "construct"
+    },
+    {
+      "name": "direlogo"
     },
     {
       "name": "eagle"

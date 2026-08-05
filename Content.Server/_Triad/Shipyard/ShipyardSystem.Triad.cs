@@ -14,8 +14,8 @@ namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
-    [Dependency] private readonly ShipyardGridSaveSystem _shipyardGridSave = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private ShipyardGridSaveSystem _shipyardGridSave = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     /// <summary>
     /// Writes YAML data to a temporary file and attempts the same initial strict load path as purchase-from-file.

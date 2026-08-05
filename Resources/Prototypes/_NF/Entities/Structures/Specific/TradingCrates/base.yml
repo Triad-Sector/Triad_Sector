@@ -133,7 +133,7 @@
   - type: ItemTax # Mono
     taxAccounts:
       BlackMarket: 0.3
-      nfsd: -0.075
+      TDF: -0.075
   - type: RadarBlip # Triad, no immidiate visibility
     radarColor: "#FFCCCB"
     scale: 1.5

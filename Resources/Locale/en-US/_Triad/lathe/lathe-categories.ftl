@@ -1,0 +1,1 @@
+lathe-category-bureaucracy = Bureaucracy

@@ -47,7 +47,7 @@
       points: 1
       required: false
     Head:
-      points: 3
+      points: 8 # Triad - Increased to 8.
       required: false
     HeadTop:
       points: 1
@@ -59,20 +59,20 @@
       defaultMarkings: [ FeroxiSnout ]
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:
-      points: 3
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Tail:
       points: 1

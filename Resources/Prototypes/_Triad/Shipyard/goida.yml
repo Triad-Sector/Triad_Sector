@@ -1,0 +1,42 @@
+# Author Info
+# Sketchii
+# Discord etch_sketch
+# GitHub https://github.com/SketchiiArtist
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Goida
+  parent: BaseVessel
+  name: PDM Goida
+  description: A medium sized armored science shuttle. What once was a strong combat vessel has now been refitted for recovering lost technologies.
+  price: 55320
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/goida.yml
+  #guidebookPage: null
+  class:
+  - Science
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Goida
+  mapName: 'PDM Goida'
+  mapPath: /Maps/_Triad/Shuttles/goida.yml
+  minPlayers: 0
+  stations:
+    Goida:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Goida CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

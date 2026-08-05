@@ -1,0 +1,5 @@
+- type: loadout
+  id: StrainedShorts
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformStrainedShorts

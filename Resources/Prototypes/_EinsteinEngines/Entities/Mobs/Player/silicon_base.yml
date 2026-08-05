@@ -102,6 +102,7 @@
     drawdepth: Mobs
     layers:
     - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
+    - map: [ "enum.HumanoidVisualLayers.Wings" ] # Triad: low/behind wing layer (front + side facings). Pairs with WingsOversuit (added below, over-body) which carries the back facing — mirrors TailBehind/TailOversuit. Was unmapped before, so wing markings appended on top of everything.
     - map: ["enum.HumanoidVisualLayers.Chest"]
     - map: ["enum.HumanoidVisualLayers.Head"]
     - map: ["enum.HumanoidVisualLayers.Snout"]
@@ -110,14 +111,15 @@
     - map: ["enum.HumanoidVisualLayers.LArm"]
     - map: ["enum.HumanoidVisualLayers.RLeg"]
     - map: ["enum.HumanoidVisualLayers.LLeg"]
-    - shader: StencilClear
-      sprite: Mobs/Species/Human/parts.rsi
-      state: l_leg
-    - shader: StencilMask
-      map: ["enum.HumanoidVisualLayers.StencilMask"]
-      sprite: Mobs/Customization/masking_helpers.rsi
-      state: female_full
-      visible: false
+    # Triad: dead digitigrade stencil layers removed. The StencilClear/StencilMask pipeline is inert fork-wide (no clothing consumes StencilDraw; the StencilMask layer is only ever force-hidden by ClientClothingSystem, and stencil_clear.swsl outputs a transparent quad). Non-human leg fitting is displacement-only. Left commented so a future merge surfaces the conflict.
+    #- shader: StencilClear
+    #  sprite: Mobs/Species/Human/parts.rsi
+    #  state: l_leg
+    #- shader: StencilMask
+    #  map: ["enum.HumanoidVisualLayers.StencilMask"]
+    #  sprite: Mobs/Customization/masking_helpers.rsi
+    #  state: female_full
+    #  visible: false
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]
     - map: ["socks"]
@@ -133,22 +135,26 @@
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
       visible: false
-    - map: ["id"]
     - map: ["gloves"]
     - map: ["shoes"]
     - map: ["ears"]
+    - map: ["id"] # Triad: moved to canonical order (after ears, before outerClothing) to match BaseMobSpecies
     - map: ["outerClothing"]
     - map: ["eyes"]
     - map: ["belt"]
-    - map: ["neck"]
     - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
+    - map: [ "enum.HumanoidVisualLayers.WingsOversuit" ] # Triad: over-body wing layer (mirrors TailBehind/TailOversuit, under the back slot). Only the back-facing (North) wing frame renders here, over the body/clothing/arms; front and side frames stay behind on the low Wings layer.
     - map: ["back"]
     - map: ["enum.HumanoidVisualLayers.FacialHair"]
     - map: ["enum.HumanoidVisualLayers.Hair"]
     - map: ["enum.HumanoidVisualLayers.HeadSide"]
     - map: ["enum.HumanoidVisualLayers.HeadTop"]
+    - map: [ "balaclava" ] # Triad: add missing clothing bookmark (was absent -> balaclavas did not render on IPC)
     - map: ["mask"]
     - map: ["head"]
+    - map: ["neck"] # Triad: moved to canonical order (after head) to match BaseMobSpecies
+    - map: [ "helmetcover" ] # Triad: add missing clothing bookmark (helmet covers did not render on IPC)
+    - map: [ "helmetattachment" ] # Triad: add missing clothing bookmark (helmet attachments did not render on IPC)
     - map: ["pocket1"]
     - map: ["pocket2"]
     - map: ["enum.HumanoidVisualLayers.Tail"]

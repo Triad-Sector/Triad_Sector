@@ -13,8 +13,9 @@
         shape:
           !type:PhysShapeAabb
             bounds: "-0.5,-0.5,0.5,0.5"
-  - type: TimedDespawn
-    lifetime: 180
+  #- type: TimedDespawn Triad - improved holofans
+  #  lifetime: 180
   - type: Occluder
+  - type: HolosignRadiationBlocking # Triad
   - type: RadiationBlocker
     resistance: 50

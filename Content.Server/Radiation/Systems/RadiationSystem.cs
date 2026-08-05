@@ -49,9 +49,9 @@ public sealed partial class RadiationSystem : EntitySystem
         _accumulator = 0f;
     }
 
-    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time) // Triad: no origin arg - our OnIrradiatedEvent predates wizden's origin field
+    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time, EntityUid? origin = null)
     {
-        var msg = new OnIrradiatedEvent(time, radsPerSecond);
+        var msg = new OnIrradiatedEvent(time, radsPerSecond, origin);
         RaiseLocalEvent(uid, msg);
     }
 

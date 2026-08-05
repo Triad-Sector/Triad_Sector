@@ -65,6 +65,14 @@
     rootTask:
       task: TurretCompound
     blackboard:
+    # Triad Start
+      AggroVisionRadius: !type:Single
+        12
+      VisionRadius: !type:Single
+        12
+      RangedRange: !type:Single
+        12
+    # Triad End
       RotateSpeed: !type:Single
         3.141
       SoundTargetInLOS: !type:SoundPathSpecifier
@@ -93,7 +101,7 @@
     enabled: true
     autoRot: true
     netsync: false
-    radius: 16
+    radius: 20 # Triad 20 < 16
     energy: 8
     mask: /Textures/_NF/Effects/LightMasks/beam.png
     color: "#990000"

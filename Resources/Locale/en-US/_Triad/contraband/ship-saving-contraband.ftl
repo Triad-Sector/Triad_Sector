@@ -4,3 +4,5 @@ ship-saving-contraband-examine-verb-message = Check if this item is eligible to 
 ship-saving-contraband-1-text = [color=green]This is listed as Class 1 Ship Contraband. Legal to own, but will be seized upon storing to the shipyard.[/color]
 ship-saving-contraband-2-text = [color=yellow]This is listed as Class 2 Ship Contraband. Civilian possession is illegal and will be seized upon storing to the shipyard.[/color]
 ship-saving-contraband-3-text = [color=red]This is listed as Class 3 Ship Contraband. Posession of this item is illegal and will be seized upon storing to the shipyard.[/color]
+
+ship-saving-contraband-2a-text = [color=yellow]This is listed as Class 2A Ship Contraband. Property of TDF Faction.[/color]

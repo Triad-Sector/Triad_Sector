@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
+# SPDX-FileCopyrightText: 2025 corresp0nd <46357632+corresp0nd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 taydeo <td12233a@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+
+# Triad: Supermatter speech verb, recovered from coyote-frontier @ 2f30035e
+# (_DV/Voice/speech_verbs.yml). Used for the crystal's damage/delam warnings.
+- type: speechVerb
+  id: Supermatter
+  name: chat-speech-verb-name-supermatter
+  speechVerbStrings:
+  - chat-speech-verb-supermatter-1
+  - chat-speech-verb-supermatter-2
+  - chat-speech-verb-supermatter-3

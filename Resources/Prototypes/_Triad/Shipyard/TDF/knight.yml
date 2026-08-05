@@ -1,0 +1,38 @@
+# Author: lobo
+# Discord: leafybonsai
+
+- type: vessel
+  id: Knight
+  parent: BaseVessel
+  name: TDF Knight
+  description: Workhorse of the TDF, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
+  price: 165000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Knight
+  mapName: 'Knight'
+  mapPath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  minPlayers: 0
+  stations:
+    Knight:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Knight TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+
+

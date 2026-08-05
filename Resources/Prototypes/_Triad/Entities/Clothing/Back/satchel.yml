@@ -4,5 +4,7 @@
   name: TDF satchel
   description: A robust satchel for holding militia stuff.
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Back/Satchels/tdf.rsi

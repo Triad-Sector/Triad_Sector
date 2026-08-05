@@ -110,8 +110,8 @@ public sealed class ExecutionSystem : EntitySystem
         if (victim != attacker && _actionBlockerSystem.CanInteract(victim, null))
             return false;
 
-        //if (victim == attacker)
-        //    return false; // DeltaV - Fucking seriously? // Mono - Yes, seriously
+        if (victim == attacker)
+            return false; // DeltaV - Fucking seriously? // Mono - Yes, seriously // Triad - Seriously? Removed again
 
         // All checks passed
         return true;

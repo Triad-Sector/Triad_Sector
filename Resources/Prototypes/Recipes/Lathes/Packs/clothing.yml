@@ -67,6 +67,7 @@
   - ClothingUniformJumpsuitParamedic
   - ClothingUniformJumpskirtParamedic
   - ClothingHeadHatParamedicsoft
+  - ClothingOuterHospitalGown # Triad
 
 - type: latheRecipePack
   id: ClothingScience

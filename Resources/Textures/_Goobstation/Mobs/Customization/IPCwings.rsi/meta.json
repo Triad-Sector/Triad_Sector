@@ -11,6 +11,14 @@
         {
             "name": "merciful_light",
             "directions": 4
+        },
+        {
+            "name": "merciful_base_over",
+            "directions": 4
+        },
+        {
+            "name": "merciful_light_over",
+            "directions": 4
         }
     ]
 }

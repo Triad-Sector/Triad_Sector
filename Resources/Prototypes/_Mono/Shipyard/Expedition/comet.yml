@@ -2,7 +2,7 @@
   id: Comet
   parent: BaseVessel
   name: CDF Comet # Triad, name and description change
-  description: An old de-militarized, jack-of-all-trades, utility vessel that saw service when the Civilian Defense Militia was still around.
+  description: An old de-militarized, jack-of-all-trades, utility vessel that saw service when the Civilian Defense Force was still around.
   price: 120000
   category: Large
   group: Expedition

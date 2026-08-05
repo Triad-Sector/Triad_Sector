@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprite edited by Flareguy for SS14, original unedited sprite can be found in https://github.com/tgstation/tgstation/commit/40d89d11ea4a5cb81d61dc1018b46f4e7d32c62a, Vulp helmet taken from DeltaV https://github.com/DeltaV-Station/Delta-v/pull/517, Avali state by DocMoth (Github).",
+  "copyright": "Sprite edited by TheRealMasterChief117 for SS14, original unedited sprite can be found from tgstation at https://github.com/tgstation/tgstation/blob/ae0b1131c061923d81c63b2fae2ce3f75d4d7c74/icons/mob/clothing/head/spacehelm.dmi and at https://github.com/tgstation/tgstation/blob/ae0b1131c061923d81c63b2fae2ce3f75d4d7c74/icons/obj/clothing/head/spacehelm.dmi",
   "size": {
     "x": 32,
     "y": 32

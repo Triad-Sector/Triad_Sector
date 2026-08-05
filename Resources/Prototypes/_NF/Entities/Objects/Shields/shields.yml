@@ -1,5 +1,5 @@
 - type: entity
-  name: TDF energy shield
+  name: TDF energy shield # Triad
   parent: [ BaseFactionGearTDFT2, EnergyShield ]
   id: EnergyShieldNfsd
   components:

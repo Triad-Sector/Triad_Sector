@@ -15,3 +15,5 @@
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text

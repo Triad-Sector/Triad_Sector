@@ -65,6 +65,7 @@ namespace Content.Shared.Humanoid
                     yield return HumanoidVisualLayers.TailBehind; // DEN
                     yield return HumanoidVisualLayers.TailOversuit; //DEN
                     yield return HumanoidVisualLayers.Wings; // for IPC wings port from SimpleStation
+                    yield return HumanoidVisualLayers.WingsOversuit; // Triad: over-body wing layer
                     yield return HumanoidVisualLayers.Tail;
                     break;
                 // Shitmed Change Start

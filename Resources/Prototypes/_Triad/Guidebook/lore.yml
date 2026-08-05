@@ -59,7 +59,7 @@
 # Factions
 - type: guideEntry
   id: TriadFactions
-  name: Factions
+  name: Major Factions
   text: "/ServerInfo/Guidebook/Lore/Factions.xml"
   children:
   - TriadDefenseForce

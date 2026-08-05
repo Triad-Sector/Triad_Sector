@@ -1,6 +1,7 @@
 using Content.Server.StationEvents.Events;
 using Content.Shared.Fax.Components;
 using Content.Shared.Paper;
+using Content.Shared.Whitelist; // Triad
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.StationEvents.Components;
@@ -41,7 +42,7 @@ public sealed partial class RandomFaxRuleComponent : Component
     [DataField]
     public string? FromAddress;
 
-    // TODO: run arbitrary functions 
+    // TODO: run arbitrary functions
 
     /// <summary>
     ///     All the valid IWireActions currently in this layout.
@@ -66,6 +67,18 @@ public sealed partial class RandomFaxRuleComponent : Component
     /// </summary>
     [DataField]
     public int MaxFaxes { get; private set; } = 1;
+
+    /// <summary>
+    ///     Triad - Whitelist for station entities that are eligible to be faxed to.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? Whitelist;
+
+    /// <summary>
+    ///     Triad - Blacklist for station entities that are NOT eligible to be faxed to.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? Blacklist;
 }
 
 // TODO: relocate these definitions.

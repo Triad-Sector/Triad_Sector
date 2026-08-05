@@ -1,4 +1,4 @@
-- type: loadout 
+- type: loadout
   id: ContractorSprayPainter
   effects:
   - !type:GroupLoadoutEffect

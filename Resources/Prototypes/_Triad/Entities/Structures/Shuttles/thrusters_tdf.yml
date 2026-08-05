@@ -1,5 +1,5 @@
 - type: entity
-  parent: ThrusterLargeNfsd
+  parent: [ThrusterLargeNfsd, BaseClass2AShipContrabandSilent]
   id: ThrusterLargeTdf
   suffix: TDF
   components:
@@ -7,7 +7,7 @@
     sprite: _Triad/Structure/Shuttles/thrustertdf_large.rsi
 
 - type: entity
-  parent: ThrusterNfsd
+  parent: [ThrusterNfsd, BaseClass2AShipContrabandSilent]
   id: ThrusterTdf
   suffix: TDF
   components:
@@ -25,7 +25,7 @@
     board: ThrusterNfsdMachineCircuitboard
 
 - type: entity
-  parent: GyroscopeNfsd
+  parent: [GyroscopeNfsd, BaseClass2AShipContrabandSilent]
   id: GyroscopeTdf
   suffix: TDF
   components:
@@ -41,7 +41,7 @@
     sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
 
 - type: entity
-  parent: SmallGyroscopeNfsd
+  parent: [SmallGyroscopeNfsd, BaseClass2AShipContrabandSilent]
   id: SmallGyroscopeTdf
   name: small gyroscope
   suffix: TDF

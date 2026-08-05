@@ -93,6 +93,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
+        // do not.
+        if (HasComp<ShipSavingBlacklistComponent>(shuttleUid))
+        {
+            ConsolePopup(player, $"ERROR! UNAUTHORIZED DEED DETECTED.");
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
         // Ensure the limits for limited entites doesn't exceed while saving
         if (!_shipyardGridSave.CheckGridEntityLimits(shuttleUid.Value, out var message))
         {

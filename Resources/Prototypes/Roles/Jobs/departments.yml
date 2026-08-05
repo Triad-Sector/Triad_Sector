@@ -41,7 +41,8 @@
   description: department-NFCentralCommand-description # Frontier
   color: "#0c344d"
   roles:
-  - TdfHighCommander # Triad
+  - TfaHighCommandRep # Triad
+  - TfaHighCommandIntern # Triad
 #  - CBURN # Frontier
   - ERTLeader
   - ERTChaplain
@@ -80,6 +81,7 @@
   - TdfChiefEnforcer  # Triad
   - StationTrafficController # Frontier
   - DirectorOfCare # Mono
+  - PlantManager # Triad
   primary: false
   weight: 100
 

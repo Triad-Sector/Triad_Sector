@@ -123,7 +123,7 @@
     pack: EmptyVendingMachineInventory # Mandatory, use empty inventory
     taxAccounts:
       Frontier: 0.25
-      Nfsd: 0.15
+      TDF: 0.15
       Medical: 0.1 # Mono
     cashSlot:
       whitelist:

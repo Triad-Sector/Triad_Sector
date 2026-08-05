@@ -7,6 +7,10 @@
         {
             "name": "robotic",
             "directions": 4
+        },
+        {
+            "name": "robotic_over",
+            "directions": 4
         }
     ]
 }

@@ -251,7 +251,7 @@ namespace Content.IntegrationTests.Tests
                 "TimedDespawn",
                 "TransferMindOnDespawn", // Frontier
                 "BluespaceErrorRule", // Frontier
-
+                "TimedDespawnDetailed", // DeltaV
                 // makes an announcement on mapInit.
                 "AnnounceOnSpawn",
             };

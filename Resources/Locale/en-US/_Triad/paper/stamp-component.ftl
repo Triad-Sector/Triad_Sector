@@ -1,4 +1,4 @@
 ## Components
 
 stamp-component-stamped-name-chief-enforcer = Chief Enforcer
-stamp-component-stamped-name-highcomm = TDF High Command
+stamp-component-stamped-name-highcomm = TFA High Command

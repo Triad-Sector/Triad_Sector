@@ -1,8 +1,8 @@
-# TDF High-Command
+# Triad frontier association High-Command
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpskirtTdfHighCommand
-  name: TDF high command jumpskirt
+  id: ClothingUniformJumpskirtTfaHighCommand
+  name: TFA high command jumpskirt
   description: Paper-pusher.
   components:
   - type: Sprite

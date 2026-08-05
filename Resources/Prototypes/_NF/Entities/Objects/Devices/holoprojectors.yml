@@ -7,26 +7,12 @@
   - type: Sprite
     sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi
     state: icon
-  - type: HolosignProjector
+  - type: ChargeHolosignProjector
     signProto: HolosignNfsd
+    signComponentName: Holobarrier
 
 - type: entity
-  parent: HoloprojectorSecurityEmpty
-  id: HoloprojectorNfsdEmpty
-  suffix: Empty
-  components:
-  - type: Sprite
-    sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi
-    state: icon
-  - type: HolosignProjector
-    signProto: HolosignNfsd
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-
-- type: entity
-  parent: Holoprojector
+  parent: [BaseItem, RecyclableItemDeviceSmall] # Frontier: added RecyclableItemDeviceSmall
   id: HoloGraffitiProjector
   name: holograffiti projector
   description: Tag up the sharp end, let 'em know you were here.
@@ -37,6 +23,19 @@
   - type: Sprite
     sprite: _NF/Objects/Devices/Holoprojectors/graffiti.rsi
     state: icon
+  - type: Item
+    storedRotation: -90
+  - type: UseDelay
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot {}
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
   - type: Tag
     tags:
     - HolofanProjector

@@ -102,7 +102,7 @@ namespace Content.Server.Forensics
             _audioSystem.PlayPvs(_audioSystem.GetSound(confirmSound), uidOrigin);
 
             if (spesoAmount > 0)
-                _bank.TrySectorDeposit(SectorBankAccount.Nfsd, spesoAmount, LedgerEntryType.AntiSmugglingBonus);
+                _bank.TrySectorDeposit(SectorBankAccount.TDF, spesoAmount, LedgerEntryType.AntiSmugglingBonus);
             else
                 spesoAmount = 0;
 

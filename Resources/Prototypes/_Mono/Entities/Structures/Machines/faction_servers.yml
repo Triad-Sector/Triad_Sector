@@ -162,6 +162,9 @@
     - TsfmcGear
     - TsfmcEquipment
     - TsfmcShipyard
+    - TdfWeaponry
+    - TdfEquipment
+    - TdfShipyard
     - RogueWeaponry
     - RogueGear
     - RogueEquipment

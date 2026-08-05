@@ -35,6 +35,7 @@
   - type: Access
     groups:
     - AllAccess
+    - Silicon
     tags:
     - NuclearOperative
     - SyndicateAgent
@@ -85,7 +86,7 @@
   - type: CargoOrderConsole
     taxAccounts: # Frontier
       Frontier: 0 # Mono - Tax Removed
-      Nfsd: 0 # Mono - Tax removed
+      TDF: 0 # Mono - Tax removed
   - type: BankClient
   - type: CrewMonitoringConsole
   - type: GeneralStationRecordConsole

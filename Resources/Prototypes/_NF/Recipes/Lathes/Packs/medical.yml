@@ -13,6 +13,7 @@
   - BeltMedical
   - CraftMedicalBag
   - BoneGel # Shitmed Change
+  - ClothingOuterHospitalGown # Triad
 
 - type: latheRecipePack
   id: SM

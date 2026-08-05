@@ -16,9 +16,9 @@
   - !type:HasTraitCondition
     trait: UltraVision
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasCompCondition
     component: Blindable
   effects:
@@ -48,27 +48,26 @@
   - !type:SpawnItemInHandEffect
     item: ClothingEyesGlasses
 
-# Mono - not implemented
-# - type: trait
-#   id: Monochromacy
-#   name: trait-monochromacy-name
-#   description: trait-monochromacy-desc
-#   category: Disabilities
-#   cost: -1
-#   conditions:
-#   - !type:HasTraitCondition
-#     trait: Blindness
-#     invert: true
-#   - !type:HasTraitCondition
-#     trait: Deuteranopia
-#     invert: true
-#   - !type:HasTraitCondition
-#     trait: UltraVision
-#     invert: true
-#   effects:
-#   - !type:AddCompsEffect
-#     components:
-#     - type: BlackAndWhiteOverlay
+- type: trait
+  id: Monochromacy
+  name: trait-monochromacy-name
+  description: trait-monochromacy-desc
+  category: Disabilities
+  cost: 0 # Triad: disabilities are RP, not a point economy.
+  conditions:
+  - !type:HasTraitCondition
+    trait: Blindness
+    invert: true
+  - !type:HasTraitCondition
+    trait: Deuteranopia
+    invert: true
+  - !type:HasTraitCondition
+    trait: UltraVision
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: BlackAndWhiteOverlay
 
 - type: trait
   id: Deuteranopia
@@ -80,9 +79,9 @@
   - !type:HasTraitCondition
     trait: Blindness
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasTraitCondition
     trait: UltraVision
     invert: true
@@ -104,9 +103,9 @@
   - !type:HasTraitCondition
     trait: Blindness
     invert: true
-  # - !type:HasTraitCondition
-  #   trait: Monochromacy
-  #   invert: true
+  - !type:HasTraitCondition
+    trait: Monochromacy
+    invert: true
   - !type:HasTraitCondition
     trait: Deuteranopia
     invert: true

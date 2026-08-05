@@ -1,0 +1,9 @@
+- files: ["toggle_nv1.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "The CM-SS13 development team"
+  source: "https://github.com/cmss13-devs/cmss13/blob/d3d6bb77f88d63c4fbac64596f154306cd099b1f/sound/handling/toggle_nv1.ogg"
+
+- files: ["toggle_nv2.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "The CM-SS13 development team"
+  source: "https://github.com/cmss13-devs/cmss13/blob/d3d6bb77f88d63c4fbac64596f154306cd099b1f/sound/handling/toggle_nv2.ogg"

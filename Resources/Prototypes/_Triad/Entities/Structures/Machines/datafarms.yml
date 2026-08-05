@@ -1,0 +1,13 @@
+- type: entity
+  id: DatafarmResearchTDF
+  parent: BaseDataFarmIndestructible
+  name: bolted data farm (Research)
+  description: A power-hungry TDF server dedicated towards scraping data from... somewhere. This one generates research points at a rate of 45 per second. It seems to be bolted to the floor.
+  suffix: TDF
+  components:
+  - type: ResearchClient
+  - type: ResearchPointSource
+    pointsPerSecond: 45
+    active: true
+  - type: ApcPowerReceiver
+    powerLoad: 10000

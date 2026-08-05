@@ -43,6 +43,9 @@ public enum LedgerEntryType : byte
     StationDepositDonation,
     StationDepositAssetsSold,
     StationDepositOther,
+    // Triad: income from selling power to the sector via a PowerTransmissionPoint (ported from
+    // coyote-frontier for the Edison POI). Placed before FirstExpense so it classifies as income.
+    PowerTransmission,
     // Expense entries
     MailPenalty,
     // Mono Begin

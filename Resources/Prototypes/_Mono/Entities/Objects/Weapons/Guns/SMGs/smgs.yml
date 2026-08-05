@@ -324,7 +324,9 @@
         whitelist:
           tags:
           - Magazine45_ACPPistolFMJ
+          - Magazine45_ACPPistolHighCapacityFMJ
           - Magazine9x19mmPistolFMJ
+          - Magazine9x19mmPistolHighCapacityFMJ
       gun_chamber:
         name: Chamber
         startingItem: Cartridge45_ACPFMJ

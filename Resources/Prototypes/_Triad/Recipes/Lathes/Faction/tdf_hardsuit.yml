@@ -1,0 +1,14 @@
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdfMedic
+  parent: MonoHardsuitT1Recipe # Use MonoHardsuitT1Recipe
+  result: ClothingOuterHardsuitTdfMedic
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdf
+  parent: MonoHardsuitT1Recipe # Use MonoHardsuitT1Recipe
+  result: ClothingOuterHardsuitTdf
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdfTA29
+  parent: MonoHardsuitT2Recipe
+  result: ClothingOuterHardsuitTdfTA29
