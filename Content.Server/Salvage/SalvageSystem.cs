@@ -26,7 +26,6 @@ namespace Content.Server.Salvage
     {
         [Dependency] private readonly IChatManager _chat = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly IMapManager _mapManager = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly AnchorableSystem _anchorable = default!;

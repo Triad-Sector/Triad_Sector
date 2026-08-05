@@ -1253,7 +1253,7 @@ public sealed partial class ShuttleSystem
         while (iteration < FTLProximityIterations)
         {
             grids.Clear();
-            _mapManager.FindGridsIntersecting(targetXform.MapID, targetAABB, ref grids);
+            _mapSystem.FindGridsIntersecting(targetXform.MapID, targetAABB, ref grids);
             if (grids.Count == 0)
                 break;
 

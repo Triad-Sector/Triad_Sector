@@ -27,7 +27,6 @@ namespace Content.Server._NF.StationEvents.Events;
 public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleComponent>
 {
     NanotrasenNameGenerator _nameGenerator = new();
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
@@ -156,7 +155,7 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
 
         _mapSystem.CreateMap(out var mapId);
 
-        var spawnedGrid = _mapManager.CreateGridEntity(mapId);
+        var spawnedGrid = _mapSystem.CreateGridEntity(mapId);
 
         _transform.SetMapCoordinates(spawnedGrid, new MapCoordinates(Vector2.Zero, mapId));
         _dungeon.GenerateDungeon(dungeonProto, dungeonProto.ID, spawnedGrid.Owner, spawnedGrid.Comp, Vector2i.Zero, _random.Next(), spawnCoords); // Frontier: add dungeonProto.ID

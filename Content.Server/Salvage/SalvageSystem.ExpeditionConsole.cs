@@ -115,7 +115,9 @@ public sealed partial class SalvageSystem
                 }
             }
 
-            foreach (var other in _mapManager.FindGridsIntersecting(xform.MapID, bounds))
+            var intersecting = new List<Entity<MapGridComponent>>();
+            _mapSystem.FindGridsIntersecting(xform.MapID, bounds, ref intersecting);
+            foreach (var other in intersecting)
             {
                 if (other.Owner == grid ||
                     dockedGrids.Contains(other.Owner) || // Skip grids that are docked to us or to the same parent grid
