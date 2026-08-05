@@ -1,5 +1,4 @@
-<Control xmlns="https://spacestation14.io"
-    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+<Control xmlns="https://spacestation14.io">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
         <BoxContainer Orientation = "Vertical" HorizontalExpand="True">
             <Label Name="TrackName" HorizontalExpand="True" />
@@ -21,11 +20,7 @@
             Name="Delete"
             Margin="0"
             Text="✖"
-            ToolTip="{Loc 'jukebox-menu-delete-item-tooltip'}">
-            <Button.StyleClasses>
-                <system:String>Caution</system:String>
-                <system:String>OpenLeft</system:String>
-            </Button.StyleClasses>
-        </Button>
+            StyleClasses="Caution OpenLeft"
+            ToolTip="{Loc 'jukebox-menu-delete-item-tooltip'}"/>
     </BoxContainer>
 </Control>
