@@ -34,6 +34,7 @@ public abstract class SharedFlatpackSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly AnchorableSystem _anchorable = default!; // Mono
 
     /// <inheritdoc/>
@@ -100,7 +101,7 @@ public abstract class SharedFlatpackSystem : EntitySystem
         {
             var spawn = Spawn(flatpackEntity, _map.GridTileToLocal(grid, gridComp, buildPos));
             if (TryComp(spawn, out TransformComponent? spawnXform)) // Frontier: rotatable flatpacks
-                spawnXform.LocalRotation = xform.LocalRotation.GetCardinalDir().ToAngle(); // Frontier: rotatable flatpacks
+                _transform.SetLocalRotation(spawn, xform.LocalRotation.GetCardinalDir().ToAngle(), spawnXform); // Frontier: rotatable flatpacks
             _adminLogger.Add(LogType.Construction,
                 LogImpact.Low,
                 $"{ToPrettyString(args.User):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");

@@ -27,6 +27,8 @@ public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleCo
     /// </summary>
     private readonly Queue<(string, EntityCoordinates, Angle)> _queuedSpawns = new();
 
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
     protected override void ApplyVariation(Entity<TGameRuleComp> ent, ref StationVariationPassEvent args)
     {
         if (!TryComp<EntityReplaceVariationPassComponent>(ent, out var pass))
@@ -55,7 +57,7 @@ public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleCo
         {
             var (spawn, coords, rot) = tup;
             var newEnt = Spawn(spawn, coords);
-            Transform(newEnt).LocalRotation = rot;
+            _transform.SetLocalRotation(newEnt, rot);
         }
 
         Log.Debug($"Entity replacement took {stopwatch.Elapsed} with {Stations.GetTileCount(args.Station)} tiles");

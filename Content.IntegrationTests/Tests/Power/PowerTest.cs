@@ -647,7 +647,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -724,7 +724,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -808,7 +808,7 @@ namespace Content.IntegrationTests.Tests.Power
 
                 entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt1 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 1));
                 var batteryEnt2 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 3));
@@ -1002,7 +1002,7 @@ namespace Content.IntegrationTests.Tests.Power
 
                 entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt1 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 1));
                 var batteryEnt2 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 3));
@@ -1080,7 +1080,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -1169,7 +1169,7 @@ namespace Content.IntegrationTests.Tests.Power
                 var rightEnt = entityManager.SpawnEntity("CableHV", grid.Owner.ToCoordinates(0, 3));
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var battery = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var batteryNodeContainer = entityManager.GetComponent<NodeContainerComponent>(battery);

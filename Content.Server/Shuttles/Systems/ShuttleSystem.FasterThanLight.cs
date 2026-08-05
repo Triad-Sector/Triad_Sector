@@ -1549,7 +1549,7 @@ public sealed partial class ShuttleSystem
         LeaveNoFTLBehind((entity.Owner, xform), oldGridMatrix, oldMapUid);
 
         // Reset rotation so they always face the same direction.
-        xform.LocalRotation = Angle.Zero;
+        _transform.SetLocalRotation(entity.Owner, Angle.Zero, xform);
         _index += width + Buffer;
 
         // Frontier: rollover coordinates

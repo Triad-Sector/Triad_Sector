@@ -23,6 +23,9 @@ public sealed class FixRotationsCommand : IConsoleCommand
         var player = shell.Player;
         EntityUid? gridId;
         var xformQuery = _entManager.GetEntityQuery<TransformComponent>();
+        // Console commands resolve against IoC, which has no entity systems, so the system comes off the
+        // entity manager rather than a [Dependency].
+        var xformSystem = _entManager.System<SharedTransformSystem>();
 
         switch (args.Length)
         {
@@ -99,7 +102,7 @@ public sealed class FixRotationsCommand : IConsoleCommand
 
             if (childXform.LocalRotation != Angle.Zero)
             {
-                childXform.LocalRotation = Angle.Zero;
+                xformSystem.SetLocalRotation(child, Angle.Zero, childXform);
                 changed++;
             }
         }
