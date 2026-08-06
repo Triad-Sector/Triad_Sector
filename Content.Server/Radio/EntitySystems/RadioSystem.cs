@@ -314,7 +314,7 @@ public sealed class RadioSystem : EntitySystem
                 ("name", name),
                 ("message", message),
                 ("language", languageDisplay));
-        // Traid - End
+        // Triad - End
     }
     // Einstein Engines - Language end
 
