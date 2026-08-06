@@ -209,7 +209,7 @@ public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         var message = args.OriginalChatMsg.Message; // The chat system will handle the rest and re-obfuscate if needed.
 
-        // Triad please dont speak emotes thanks
+        // Triad - Prevent speaking emotes
         if (args.emType == EmoteType.Audible || args.emType == EmoteType.AudiblePossessive)
             {_chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
             nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language);

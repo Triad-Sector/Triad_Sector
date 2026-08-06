@@ -290,7 +290,7 @@ public sealed class RadioSystem : EntitySystem
             ? Loc.GetString("chat-manager-language-prefix", ("language", language.ChatName))
             : "";
 
-        // Triad Moved from SendRadioMessage
+        // Triad - Integrated from SendRadioMessage
         if (emType == EmoteType.Audible)
             return Loc.GetString("chat-radio-message-audible-emote-wrap",
                 ("color", channel.Color),
@@ -314,6 +314,7 @@ public sealed class RadioSystem : EntitySystem
                 ("name", name),
                 ("message", message),
                 ("language", languageDisplay));
+        // Traid - End
     }
     // Einstein Engines - Language end
 
