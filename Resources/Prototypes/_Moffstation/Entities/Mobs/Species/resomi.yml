@@ -100,6 +100,7 @@
     normalBodyTemperature: 285 # Triad - lowered base body temp as a quick fix to prevent chickens cooking themselves
     thermalRegulationTemperatureThreshold: 20
   - type: TemperatureSpeed # You're supposed to be used to the cold why are you so slow
+    baseTemperature: 285
     thresholds: # Calculated based on UI alert thresholds, rounded up
       253: 0.8
       231: 0.6
