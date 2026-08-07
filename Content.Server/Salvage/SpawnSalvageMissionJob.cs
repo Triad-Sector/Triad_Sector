@@ -439,7 +439,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 var spawnTile = validSpawns[^1];
                 validSpawns.RemoveAt(validSpawns.Count - 1);
 
-                if (!_anchorable.TileFree(grid, spawnTile, (int) CollisionGroup.MachineLayer,
+                if (!_anchorable.TileFree((gridUid, grid), spawnTile, (int) CollisionGroup.MachineLayer,
                         (int) CollisionGroup.MachineMask)) // Frontier: MachineLayer<MachineMask
                 {
                     continue;
@@ -513,7 +513,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                         var spawnTile = validSpawns[^1];
                         validSpawns.RemoveAt(validSpawns.Count - 1);
 
-                        if (!_anchorable.TileFree(grid, spawnTile, (int)CollisionGroup.MachineLayer,
+                        if (!_anchorable.TileFree((mapUid, grid), spawnTile, (int)CollisionGroup.MachineLayer,
                                 (int)CollisionGroup.MachineLayer))
                         {
                             continue;

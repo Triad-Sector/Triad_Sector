@@ -91,7 +91,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
         var (layer, mask) = SharedPhysicsSystem.GetHardCollision(fixture);
         var buildPos = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
 
-        if (!_anchorable.TileFree(gridComp, buildPos, layer, mask))
+        if (!_anchorable.TileFree((grid, gridComp), buildPos, layer, mask))
         {
             _popup.PopupPredicted(Loc.GetString("flatpack-unpack-no-room"), uid, args.User);
             return;
