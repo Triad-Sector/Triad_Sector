@@ -1277,8 +1277,7 @@ public sealed partial class ShuttleSystem
                 else
                 {
                     var margin = _random.NextFloat(-maxMargin, maxMargin);
-                    targetAABB.Left += margin;
-                    targetAABB.Right += margin;
+                    targetAABB = targetAABB.Translated(new Vector2(margin, 0f)); // Triad: edge-wise setters transiently invert the box when margin exceeds its size, which asserts under box validation
                 }
 
                 if (positiveY == true)
@@ -1296,8 +1295,7 @@ public sealed partial class ShuttleSystem
                 else
                 {
                     var margin = _random.NextFloat(-maxMargin, maxMargin);
-                    targetAABB.Bottom += margin;
-                    targetAABB.Top += margin;
+                    targetAABB = targetAABB.Translated(new Vector2(0f, margin)); // Triad: same transient inversion as the X branch above
                 }
             }
             iteration++;
