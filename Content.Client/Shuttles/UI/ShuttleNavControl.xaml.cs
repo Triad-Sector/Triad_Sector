@@ -1190,17 +1190,17 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
         while (shields.MoveNext(out var uid, out var visuals, out var fixtures, out var xform))
         {
-            if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
+            if (xform.GridUid is not { } gridUid || !EntManager.TryGetComponent<TransformComponent>(gridUid, out var parentXform))
                 continue;
 
             if (xform.MapID != consoleXform.MapID)
                 continue;
 
             // Don't draw shields when in FTL
-            if (EntManager.HasComponent<FTLComponent>(parentXform.Owner))
+            if (EntManager.HasComponent<FTLComponent>(gridUid))
                 continue;
 
-            var detectionLevel = _consoleEntity == null ? DetectionLevel.Detected : GetGridDetected(parentXform.Owner);
+            var detectionLevel = _consoleEntity == null ? DetectionLevel.Detected : GetGridDetected(gridUid);
             if (detectionLevel != DetectionLevel.Detected)
                 continue;
 

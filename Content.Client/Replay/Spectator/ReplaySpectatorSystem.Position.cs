@@ -128,17 +128,17 @@ public sealed partial class ReplaySpectatorSystem
         if (data.Local != null && data.Local.Value.Coords.IsValid(EntityManager))
         {
             var newXform = SpawnSpectatorGhost(data.Local.Value.Coords, false);
-            _transform.SetLocalRotation(newXform.Owner, data.Local.Value.Rot, newXform);
+            _transform.SetLocalRotation(newXform.Comp, data.Local.Value.Rot);
         }
         else if (data.World != null && data.World.Value.Coords.IsValid(EntityManager))
         {
             var newXform = SpawnSpectatorGhost(data.World.Value.Coords, true);
-            _transform.SetLocalRotation(newXform.Owner, data.World.Value.Rot, newXform);
+            _transform.SetLocalRotation(newXform.Comp, data.World.Value.Rot);
         }
         else if (TryFindFallbackSpawn(out var coords))
         {
             var newXform = SpawnSpectatorGhost(coords, true);
-            _transform.SetLocalRotation(newXform.Owner, 0, newXform);
+            _transform.SetLocalRotation(newXform.Comp, 0);
         }
         else
         {
