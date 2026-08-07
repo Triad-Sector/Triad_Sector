@@ -47,7 +47,7 @@ public sealed partial class SurgeryBui : BoundUserInterface
     {
         base.Dispose(disposing);
         if (disposing)
-            _window?.Dispose();
+            _window?.Close();
     }
 
     private void Update(SurgeryBuiState state)
