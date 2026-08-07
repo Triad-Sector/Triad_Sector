@@ -8,12 +8,12 @@ namespace Content.Server.Speech.EntitySystems;
 // Triad: enriched the Pirate accent (display name "Freeport Corsair") onto the shared AccentHelpers --
 // word swaps + the salty g-drop (sailin', fightin'), "Arrr" prefix interjections, and pirate suffix tics.
 // Replaces the upstream prefix-only "Yarr" implementation. Kept the PirateAccent name for portability.
-public sealed class PirateAccentSystem : EntitySystem
+public sealed partial class PirateAccentSystem : EntitySystem
 {
     private static readonly Regex RegexOf = new(@"\b(o)f\b", RegexOptions.IgnoreCase); // of -> o'
 
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

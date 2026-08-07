@@ -13,11 +13,11 @@ namespace Content.Server._Mono.MonoCoins;
 /// Player command for transferring MonoCoins to other players.
 /// </summary>
 [AnyCommand]
-public sealed class CurrencyTransferCommand : LocalizedCommands
+public sealed partial class CurrencyTransferCommand : LocalizedCommands
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IChatManager _chatManager = default!;
 
     public override string Command => "currency:transfer";
 

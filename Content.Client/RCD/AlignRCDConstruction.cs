@@ -20,17 +20,17 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.RCD;
 
-public sealed class AlignRCDConstruction : PlacementMode
+public sealed partial class AlignRCDConstruction : PlacementMode
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefs = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private ITileDefinitionManager _tileDefs = default!;
     private readonly SharedMapSystem _mapSystem;
     private readonly RCDSystem _rcdSystem;
     private readonly SpriteSystem _sprite;
     private readonly SharedTransformSystem _transformSystem;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IStateManager _stateManager = default!;
 
     private const float SearchBoxSize = 2f;
     private const float PlaceColorBaseAlpha = 0.5f;

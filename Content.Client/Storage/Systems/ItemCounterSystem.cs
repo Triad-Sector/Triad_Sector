@@ -7,9 +7,9 @@ using Robust.Shared.Containers;
 
 namespace Content.Client.Storage.Systems;
 
-public sealed class ItemCounterSystem : SharedItemCounterSystem
+public sealed partial class ItemCounterSystem : SharedItemCounterSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
+    [Dependency] private AppearanceSystem _appearanceSystem = default!;
 
     public override void Initialize()
     {

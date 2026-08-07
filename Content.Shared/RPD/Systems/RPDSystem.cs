@@ -20,12 +20,12 @@ namespace Content.Shared.RPD.Systems;
 /// pipe-layer alternative chosen by cursor quadrant. The operator's pipe-color stain lives server-side in
 /// <c>RPDPipeColorSystem</c>, which owns the canonical <c>AtmosPipeColorComponent</c>.
 /// </summary>
-public sealed class RPDSystem : EntitySystem
+public sealed partial class RPDSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedAtmosPipeLayersSystem _pipeLayers = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private SharedAtmosPipeLayersSystem _pipeLayers = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

@@ -7,12 +7,12 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Botany.Systems;
 
-public sealed class LogSystem : EntitySystem
+public sealed partial class LogSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private RandomHelperSystem _randomHelper = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {

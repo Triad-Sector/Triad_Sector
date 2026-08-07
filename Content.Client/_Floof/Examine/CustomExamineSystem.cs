@@ -13,7 +13,7 @@ using Robust.Shared.Utility;
 namespace Content.Client._Floof.Examine;
 
 
-public sealed class CustomExamineSystem : SharedCustomExamineSystem
+public sealed partial class CustomExamineSystem : SharedCustomExamineSystem
 {
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IGameTiming _timing = default!;

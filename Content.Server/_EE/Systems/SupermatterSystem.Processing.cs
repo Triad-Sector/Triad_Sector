@@ -57,8 +57,8 @@ public sealed partial class SupermatterSystem
     // instead, which needs to seed the target map between AddGameRule and StartGameRule.
     // [Dependency] private readonly GameTicker _gameTicker = default!; // Coyote
     // End Triad
-    [Dependency] private readonly SupermatterHallucinationRuleSystem _hallucinationRule = default!; // Triad
-    [Dependency] private readonly IPrototypeManager _prototype = default!; // Triad
+    [Dependency] private SupermatterHallucinationRuleSystem _hallucinationRule = default!; // Triad
+    [Dependency] private IPrototypeManager _prototype = default!; // Triad
     /// <summary>
     /// Handle power and radiation output depending on atmospheric things.
     /// </summary>

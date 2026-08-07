@@ -20,11 +20,11 @@ namespace Content.Shared._Triad.Dossier;
 ///     is no subsequent state sync to re-trigger sprite layer rebuild — anything added
 ///     to the MarkingSet after LoadProfile would never render.
 /// </remarks>
-public sealed class DossierExemplarSystem : EntitySystem
+public sealed partial class DossierExemplarSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
-    [Dependency] private readonly MarkingManager _markingManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private MarkingManager _markingManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {

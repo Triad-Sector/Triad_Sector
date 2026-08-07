@@ -17,14 +17,14 @@ namespace Content.Server._Mono.MonoCoins;
 /// <summary>
 /// System that handles MonoCoins balance for players.
 /// </summary>
-public sealed class MonoCoinsSystem : EntitySystem
+public sealed partial class MonoCoinsSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
 
     private const int RoundEndReward = 10;
 

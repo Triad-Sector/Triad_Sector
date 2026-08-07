@@ -32,14 +32,14 @@ namespace Content.Client.RPD;
 /// streamed eye rotation when the player commits. Three guide circles render on the cursor tile so the operator
 /// can see which layer they're aiming at.
 /// </summary>
-public sealed class AlignRPDAtmosPipeLayers : PlacementMode
+public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetwork = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transformSystem;

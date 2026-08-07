@@ -8,9 +8,9 @@ namespace Content.Client.Movement.Systems;
 /// <summary>
 /// Controls the switching of motion and standing still animation
 /// </summary>
-public sealed class ClientSpriteMovementSystem : SharedSpriteMovementSystem
+public sealed partial class ClientSpriteMovementSystem : SharedSpriteMovementSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private EntityQuery<SpriteComponent> _spriteQuery;
 

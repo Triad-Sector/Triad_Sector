@@ -6,10 +6,10 @@ using Robust.Shared.Console;
 namespace Content.Server._Triad.Shipyard;
 
 [AdminCommand(AdminFlags.Debug)]
-public sealed class SaveShipCommand : IConsoleCommand
+public sealed partial class SaveShipCommand : IConsoleCommand
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
 
     public string Command => "saveship";
     public string Description => "Save a ship from a shuttle deed";

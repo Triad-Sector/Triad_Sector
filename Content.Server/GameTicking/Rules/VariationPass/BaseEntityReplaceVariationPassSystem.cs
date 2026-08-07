@@ -15,7 +15,7 @@ namespace Content.Server.GameTicking.Rules.VariationPass;
 ///     This means a bit more boilerplate for each one, but significantly faster to actually execute.
 ///     See <see cref="WallReplaceVariationPassSystem"/>
 /// </summary>
-public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleComp> : VariationPassSystem<TGameRuleComp>
+public abstract partial class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleComp> : VariationPassSystem<TGameRuleComp>
     where TEntComp: IComponent
     where TGameRuleComp: IComponent
 {
@@ -27,7 +27,7 @@ public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleCo
     /// </summary>
     private readonly Queue<(string, EntityCoordinates, Angle)> _queuedSpawns = new();
 
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     protected override void ApplyVariation(Entity<TGameRuleComp> ent, ref StationVariationPassEvent args)
     {

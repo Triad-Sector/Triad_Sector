@@ -17,10 +17,10 @@ namespace Content.Server.Speech.EntitySystems;
 /// <summary>
 /// System that gives the speaker a faux-Gallic accent.
 /// </summary>
-public sealed class FrenchAccentSystem : EntitySystem
+public sealed partial class FrenchAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     private static readonly Regex RegexTh = new("th", RegexOptions.IgnoreCase);
     private static readonly Regex RegexJ = new("j", RegexOptions.IgnoreCase);

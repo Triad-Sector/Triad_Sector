@@ -14,9 +14,9 @@ namespace Content.Server._Triad.Supermatter;
 /// Runs <see cref="SupermatterHallucinationRuleComponent"/>: paracusia for everyone on the
 /// crystal's map, cleaned up when the rule's duration expires.
 /// </summary>
-public sealed class SupermatterHallucinationRuleSystem : GameRuleSystem<SupermatterHallucinationRuleComponent>
+public sealed partial class SupermatterHallucinationRuleSystem : GameRuleSystem<SupermatterHallucinationRuleComponent>
 {
-    [Dependency] private readonly ParacusiaSystem _paracusia = default!;
+    [Dependency] private ParacusiaSystem _paracusia = default!;
 
     /// <summary>
     /// Starts the rule scoped to <paramref name="map"/>. Use this rather than

@@ -14,7 +14,7 @@ namespace Content.Client._Crescent.DroneControl;
 [GenerateTypedNameReferences]
 public sealed partial class DroneConsoleWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IEntityManager _entity = default!;
     private readonly SharedMapSystem _maps;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _xform;

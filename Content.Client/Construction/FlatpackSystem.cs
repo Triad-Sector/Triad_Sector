@@ -6,9 +6,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Client.Construction;
 
 /// <inheritdoc/>
-public sealed class FlatpackSystem : SharedFlatpackSystem
+public sealed partial class FlatpackSystem : SharedFlatpackSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
