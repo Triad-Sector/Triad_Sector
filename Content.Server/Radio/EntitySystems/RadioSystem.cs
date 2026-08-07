@@ -75,7 +75,7 @@ public sealed partial class RadioSystem : EntitySystem
         if (TryComp(uid, out ActorComponent? actor))
         {
             // Einstein Engines - Languages begin
-            var listener = component.Owner;
+            var listener = uid;
             var msg = args.OriginalChatMsg;
 
             if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))

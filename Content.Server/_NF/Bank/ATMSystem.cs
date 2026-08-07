@@ -82,7 +82,7 @@ public sealed partial class BankSystem
 
         ConsolePopup(args.Actor, Loc.GetString("bank-atm-menu-withdraw-successful"));
         PlayConfirmSound(uid, component);
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} withdrew {args.Amount} from {ToPrettyString(component.Owner)}");
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} withdrew {args.Amount} from {ToPrettyString(uid)}");
 
         //spawn the cash stack of whatever cash type the ATM is configured to.
         var stackPrototype = _prototypeManager.Index<StackPrototype>(component.CashType);
@@ -169,7 +169,7 @@ public sealed partial class BankSystem
 
         ConsolePopup(args.Actor, Loc.GetString("bank-atm-menu-deposit-successful"));
         PlayConfirmSound(uid, component);
-        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} deposited {deposit} into {ToPrettyString(component.Owner)}");
+        _adminLogger.Add(LogType.ATMUsage, LogImpact.Low, $"{ToPrettyString(player):actor} deposited {deposit} into {ToPrettyString(uid)}");
 
         // yeet and delete the stack in the cash slot after success
         _containerSystem.CleanContainer(cashSlot);

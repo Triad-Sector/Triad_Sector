@@ -363,7 +363,7 @@ namespace Content.Server.Cargo.Systems
 
             var data = GetOrderData(EntityManager.GetNetEntity(uid), args, product, GenerateOrderId(orderDatabase));
 
-            if (!TryAddOrder(orderDatabase.Owner, data, orderDatabase))
+            if (!TryAddOrder(dbUid.Value, data, orderDatabase))
             {
                 PlayDenySound(uid, component);
                 return;
@@ -630,7 +630,7 @@ namespace Content.Server.Cargo.Systems
             return bankComponent;
         }
 
-        private bool TryGetOrderDatabase(EntityUid uid, [MaybeNullWhen(false)] out EntityUid? dbUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp, CargoOrderConsoleComponent _)
+        private bool TryGetOrderDatabase(EntityUid uid, [NotNullWhen(true)] out EntityUid? dbUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp, CargoOrderConsoleComponent _)
         {
             dbUid = _station.GetOwningStation(uid);
             return TryComp(dbUid, out dbComp);

@@ -332,9 +332,9 @@ namespace Content.Server.Kitchen.EntitySystems
             if (storage.StoredItems.Count == 0)
                 return;
 			
-			_audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/_Goobstation/Items/handling/backpack_equip.ogg"), comp.Owner, AudioParams.Default.WithVolume(-6f)); //Mono: Edited, not from port
+			_audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/_Goobstation/Items/handling/backpack_equip.ogg"), uid, AudioParams.Default.WithVolume(-6f)); //Mono: Edited, not from port
 
-            var inputContainer = _containerSystem.EnsureContainer<Container>(comp.Owner, SharedReagentGrinder.InputContainerId);
+            var inputContainer = _containerSystem.EnsureContainer<Container>(uid, SharedReagentGrinder.InputContainerId);
 
             // Find every Extractable item and put it into the grinder
             foreach (var (item, _location) in storage.StoredItems)
@@ -342,7 +342,7 @@ namespace Content.Server.Kitchen.EntitySystems
                 // If the grinder is full, leave
                 if (inputContainer.ContainedEntities.Count >= comp.StorageMaxEntities)
                 {
-                    _popupSystem.PopupEntity(Loc.GetString("reagent-grinder-component-storage-full-message"), comp.Owner, args.User);
+                    _popupSystem.PopupEntity(Loc.GetString("reagent-grinder-component-storage-full-message"), uid, args.User);
                     return;
                 }
 

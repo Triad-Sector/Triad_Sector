@@ -63,15 +63,16 @@ public sealed partial class FelinidSystem : EntitySystem
         }
         RemQueue.Clear();
 
-        foreach (var (hairballComp, catComp) in EntityQuery<CoughingUpHairballComponent, FelinidComponent>())
+        var query = EntityQueryEnumerator<CoughingUpHairballComponent, FelinidComponent>();
+        while (query.MoveNext(out var uid, out var hairballComp, out var catComp))
         {
             hairballComp.Accumulator += frameTime;
             if (hairballComp.Accumulator < hairballComp.CoughUpTime.TotalSeconds)
                 continue;
 
             hairballComp.Accumulator = 0;
-            SpawnHairball(hairballComp.Owner, catComp);
-            RemQueue.Enqueue(hairballComp.Owner);
+            SpawnHairball(uid, catComp);
+            RemQueue.Enqueue(uid);
         }
     }
 

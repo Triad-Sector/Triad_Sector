@@ -125,7 +125,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
             InteractionVerb verb = new()
             {
-                Act = () => InsertBody(@using, component, false),
+                Act = () => InsertBody(@using, (uid, component), false),
                 Category = VerbCategory.Insert,
                 Text = name
             };
@@ -156,7 +156,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         {
             AlternativeVerb verb = new()
             {
-                Act = () => InsertBody(args.User, component, false),
+                Act = () => InsertBody(args.User, (uid, component), false),
                 Category = VerbCategory.Insert,
                 Text = Loc.GetString("medical-scanner-verb-enter")
             };
@@ -202,15 +202,16 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
     private void OnEntityDragDropped(EntityUid uid, CryoSleepComponent component, DragDropTargetEvent args)
     {
-        if (InsertBody(args.Dragged, component, false))
+        if (InsertBody(args.Dragged, (uid, component), false))
         {
             args.Handled = true;
         }
     }
 
-    public bool InsertBody(EntityUid? toInsert, CryoSleepComponent component, bool force)
+    public bool InsertBody(EntityUid? toInsert, Entity<CryoSleepComponent> pod, bool force)
     {
-        var cryopod = component.Owner;
+        var cryopod = pod.Owner;
+        var component = pod.Comp;
         if (toInsert == null)
             return false;
         if (IsOccupied(component) && !force)

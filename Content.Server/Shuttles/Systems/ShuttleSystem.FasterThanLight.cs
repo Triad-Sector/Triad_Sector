@@ -409,7 +409,7 @@ public sealed partial class ShuttleSystem
         }
 
         var hyperspace = EnsureComp<FTLComponent>(shuttleUid);
-        SetupFTL(hyperspace, startupTime, hyperspaceTime, priorityTag);
+        SetupFTL((shuttleUid, hyperspace), startupTime, hyperspaceTime, priorityTag);
 
         if (TryComp<DockingComponent>(target, out var dock) && dock.Docked && dock.DockedWith != null)
         {
@@ -437,17 +437,17 @@ public sealed partial class ShuttleSystem
     /// <summary>
     /// Sets up the FTL component with startup and travel times and priority tag.
     /// </summary>
-    private void SetupFTL(FTLComponent hyperspace, float? startupTime, float? hyperspaceTime, string? priorityTag)
+    private void SetupFTL(Entity<FTLComponent> hyperspace, float? startupTime, float? hyperspaceTime, string? priorityTag)
     {
         startupTime ??= DefaultStartupTime;
         hyperspaceTime ??= DefaultTravelTime;
 
-        hyperspace.StartupTime = startupTime.Value;
-        hyperspace.TravelTime = hyperspaceTime.Value;
-        hyperspace.StateTime = StartEndTime.FromStartDuration(
+        hyperspace.Comp.StartupTime = startupTime.Value;
+        hyperspace.Comp.TravelTime = hyperspaceTime.Value;
+        hyperspace.Comp.StateTime = StartEndTime.FromStartDuration(
             _gameTiming.CurTime,
-            TimeSpan.FromSeconds(hyperspace.StartupTime));
-        hyperspace.PriorityTag = priorityTag;
+            TimeSpan.FromSeconds(hyperspace.Comp.StartupTime));
+        hyperspace.Comp.PriorityTag = priorityTag;
 
         _console.RefreshShuttleConsoles(hyperspace.Owner);
     }

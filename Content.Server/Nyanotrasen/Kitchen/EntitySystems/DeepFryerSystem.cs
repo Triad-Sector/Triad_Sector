@@ -601,7 +601,7 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
 
             _audioSystem.PlayPvs(component.SoundRemoveItem, uid, AudioParamsInsertRemove);
 
-            UpdateUserInterface(component.Owner, component);
+            UpdateUserInterface(uid, component);
         }
     }
 
@@ -652,7 +652,7 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
                 out var transferAmount))
             return;
 
-        if (!_solutionContainerSystem.TryGetSolution(component.Owner, component.Solution.Name, out var solution))
+        if (!_solutionContainerSystem.TryGetSolution(uid, component.Solution.Name, out var solution))
             return;
 
         _solutionTransferSystem.Transfer(user,
@@ -715,7 +715,7 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
 
         _audioSystem.PlayPvs(component.SoundRemoveItem, uid, AudioParamsInsertRemove);
 
-        UpdateUserInterface(component.Owner, component);
+        UpdateUserInterface(uid, component);
     }
 
     private void OnClearSlag(EntityUid uid, DeepFryerComponent component, ClearSlagDoAfterEvent args)
