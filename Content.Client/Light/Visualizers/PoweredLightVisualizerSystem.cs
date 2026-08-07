@@ -28,16 +28,16 @@ public sealed partial class PoweredLightVisualizerSystem : VisualizerSystem<Powe
             return;
 
         if (comp.SpriteStateMap.TryGetValue(state, out var spriteState))
-            args.Sprite.LayerSetState(PoweredLightLayers.Base, spriteState);
+            SpriteSystem.LayerSetRsiState((uid, args.Sprite), PoweredLightLayers.Base, spriteState);
 
-        if (args.Sprite.LayerExists(PoweredLightLayers.Glow))
+        if (SpriteSystem.LayerExists((uid, args.Sprite), PoweredLightLayers.Glow))
         {
             if (TryComp<PointLightComponent>(uid, out var light))
             {
-                args.Sprite.LayerSetColor(PoweredLightLayers.Glow, light.Color);
+                SpriteSystem.LayerSetColor((uid, args.Sprite), PoweredLightLayers.Glow, light.Color);
             }
 
-            args.Sprite.LayerSetVisible(PoweredLightLayers.Glow, state == PoweredLightState.On);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), PoweredLightLayers.Glow, state == PoweredLightState.On);
         }
 
         SetBlinkingAnimation(

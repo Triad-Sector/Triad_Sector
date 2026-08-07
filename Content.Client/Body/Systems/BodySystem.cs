@@ -14,6 +14,7 @@ public sealed partial class BodySystem : SharedBodySystem
 {
     // Shitmed Change Start
     [Dependency] private MarkingManager _markingManager = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private void ApplyMarkingToPart(MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
@@ -56,7 +57,7 @@ public sealed partial class BodySystem : SharedBodySystem
             return;
 
         if (component.Color != null)
-            sprite.Color = component.Color.Value;
+            _sprite.SetColor((target, sprite), component.Color.Value);
 
         foreach (var (visualLayer, markingList) in component.Markings)
             foreach (var marking in markingList)

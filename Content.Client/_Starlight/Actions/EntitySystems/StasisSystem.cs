@@ -17,6 +17,7 @@ public sealed partial class StasisSystem : SharedStasisSystem
     [Dependency] private SharedAudioSystem _audioSystem = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -121,10 +122,10 @@ public sealed partial class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Play the sound effect.
@@ -167,10 +168,10 @@ public sealed partial class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Play the sound effect.
@@ -202,11 +203,11 @@ public sealed partial class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
             // Make it visible if the parent entity is visible.
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Store the continuous effect in the component
@@ -261,12 +262,12 @@ public sealed partial class StasisSystem : SharedStasisSystem
         if (comp.IsVisible)
         {
             // Entity should be visible
-            sprite.Color = sprite.Color.WithAlpha(1f);
+            _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(1f));
         }
         else
         {
             // Entity should be invisible
-            sprite.Color = sprite.Color.WithAlpha(0f);
+            _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(0f));
         }
     }
 

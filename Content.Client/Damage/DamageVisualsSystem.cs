@@ -228,7 +228,7 @@ public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisuals
             // the layer key just doesn't exist, we skip it.
             foreach (var key in damageVisComp.TargetLayers)
             {
-                if (!spriteComponent.LayerMapTryGet(key, out var index))
+                if (!SpriteSystem.LayerMapTryGet((entity, spriteComponent), key, out var index, false))
                 {
                     Log.Warning($"Layer at key {key} was invalid for entity {entity}.");
                     continue;
@@ -253,7 +253,7 @@ public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisuals
             foreach (var layer in damageVisComp.TargetLayerMapKeys)
             {
                 var layerCount = spriteComponent.AllLayers.Count();
-                var index = spriteComponent.LayerMapGet(layer);
+                var index = SpriteSystem.LayerMapGet((entity, spriteComponent), layer);
                 // var layerState = spriteComponent.LayerGetState(index).ToString()!;
 
                 if (index + 1 != layerCount)
@@ -406,7 +406,7 @@ public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisuals
             damageVisComp.DisabledLayers[layer] = disabled;
             if (damageVisComp.TrackAllDamage)
             {
-                spriteComponent.LayerSetVisible($"{layer}trackDamage", !disabled);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", !disabled);
                 continue;
             }
 
@@ -415,7 +415,7 @@ public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisuals
 
             foreach (var damageGroup in damageVisComp.DamageOverlayGroups.Keys)
             {
-                spriteComponent.LayerSetVisible($"{layer}{damageGroup}", !disabled);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", !disabled);
             }
         }
     }

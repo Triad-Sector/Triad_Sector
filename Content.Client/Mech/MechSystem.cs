@@ -10,6 +10,7 @@ namespace Content.Client.Mech;
 public sealed partial class MechSystem : SharedMechSystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -24,7 +25,7 @@ public sealed partial class MechSystem : SharedMechSystem
         if (args.Sprite == null)
             return;
 
-        if (!args.Sprite.TryGetLayer((int) MechVisualLayers.Base, out var layer))
+        if (!_sprite.TryGetLayer((uid, args.Sprite), (int) MechVisualLayers.Base, out var layer, false))
             return;
 
         var state = component.BaseState;
@@ -40,7 +41,7 @@ public sealed partial class MechSystem : SharedMechSystem
             drawDepth = DrawDepth.SmallMobs;
         }
 
-        layer.SetState(state);
-        args.Sprite.DrawDepth = (int) drawDepth;
+        _sprite.LayerSetRsiState(layer, state);
+        _sprite.SetDrawDepth((uid, args.Sprite), (int) drawDepth);
     }
 }

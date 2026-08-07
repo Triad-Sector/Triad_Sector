@@ -12,6 +12,7 @@ namespace Content.Client.Clothing.Systems;
 public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private static readonly SlotFlags[] IgnoredSlots =
     {
@@ -49,7 +50,7 @@ public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSys
         if (TryComp(uid, out SpriteComponent? sprite)
             && proto.TryGetComponent(out SpriteComponent? otherSprite, Factory))
         {
-            sprite.CopyFrom(otherSprite);
+            _sprite.CopySprite((uid, otherSprite), (uid, sprite));
         }
 
         // Edgecase for PDAs to include visuals when UI is open

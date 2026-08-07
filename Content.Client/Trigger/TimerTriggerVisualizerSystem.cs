@@ -55,7 +55,7 @@ public sealed partial class TimerTriggerVisualizerSystem : VisualizerSystem<Time
                     AnimationSystem.Play((uid, animPlayer), comp.PrimingAnimation, TimerTriggerVisualsComponent.AnimationKey);
                 break;
             case TriggerVisualState.Unprimed:
-                args.Sprite.LayerSetState(TriggerVisualLayers.Base, comp.UnprimedSprite);
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), TriggerVisualLayers.Base, comp.UnprimedSprite);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

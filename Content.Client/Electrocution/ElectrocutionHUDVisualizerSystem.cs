@@ -59,9 +59,9 @@ public sealed partial class ElectrocutionHUDVisualizerSystem : VisualizerSystem<
                 continue;
 
             if (electrified)
-                spriteComp.LayerSetVisible(ElectrifiedLayers.HUD, true);
+                SpriteSystem.LayerSetVisible((uid, spriteComp), ElectrifiedLayers.HUD, true);
             else
-                spriteComp.LayerSetVisible(ElectrifiedLayers.HUD, false);
+                SpriteSystem.LayerSetVisible((uid, spriteComp), ElectrifiedLayers.HUD, false);
         }
     }
 
@@ -73,7 +73,7 @@ public sealed partial class ElectrocutionHUDVisualizerSystem : VisualizerSystem<
         while (electrifiedQuery.MoveNext(out var uid, out var _, out var appearanceComp, out var spriteComp))
         {
 
-            spriteComp.LayerSetVisible(ElectrifiedLayers.HUD, false);
+            SpriteSystem.LayerSetVisible((uid, spriteComp), ElectrifiedLayers.HUD, false);
         }
     }
 
@@ -88,8 +88,8 @@ public sealed partial class ElectrocutionHUDVisualizerSystem : VisualizerSystem<
 
         var player = _playerMan.LocalEntity;
         if (electrified && HasComp<ShowElectrocutionHUDComponent>(player))
-            args.Sprite.LayerSetVisible(ElectrifiedLayers.HUD, true);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), ElectrifiedLayers.HUD, true);
         else
-            args.Sprite.LayerSetVisible(ElectrifiedLayers.HUD, false);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), ElectrifiedLayers.HUD, false);
     }
 }

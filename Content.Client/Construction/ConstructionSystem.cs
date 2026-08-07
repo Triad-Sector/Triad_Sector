@@ -216,15 +216,15 @@ namespace Content.Client.Construction
             _transformSystem.SetLocalRotation(ghost.Value, dir.ToAngle());
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
-            sprite.Color = new Color(48, 255, 48, 128);
+            _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));
             _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {
-                sprite.AddBlankLayer(i); // There is no way to actually check if this already exists, so we blindly insert a new one
-                sprite.LayerSetSprite(i, prototype.Layers[i]);
+                _spriteSystem.AddBlankLayer((ghost.Value, sprite), i); // There is no way to actually check if this already exists, so we blindly insert a new one
+                _spriteSystem.LayerSetSprite((ghost.Value, sprite), i, prototype.Layers[i]);
                 sprite.LayerSetShader(i, "unshaded");
-                sprite.LayerSetVisible(i, true);
+                _spriteSystem.LayerSetVisible((ghost.Value, sprite), i, true);
             }
 
             if (prototype.CanBuildInImpassable)

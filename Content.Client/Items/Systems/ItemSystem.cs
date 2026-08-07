@@ -13,6 +13,7 @@ namespace Content.Client.Items.Systems;
 public sealed partial class ItemSystem : SharedItemSystem
 {
     [Dependency] private IResourceCache _resCache = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -27,12 +28,12 @@ public sealed partial class ItemSystem : SharedItemSystem
 
     private void OnUnequipped(EntityUid uid, SpriteComponent component, GotUnequippedEvent args)
     {
-        component.Visible = true;
+        _sprite.SetVisible((uid, component), true);
     }
 
     private void OnEquipped(EntityUid uid, SpriteComponent component, GotEquippedEvent args)
     {
-        component.Visible = false;
+        _sprite.SetVisible((uid, component), false);
     }
 
     #region InhandVisuals

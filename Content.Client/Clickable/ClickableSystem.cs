@@ -66,10 +66,10 @@ public sealed partial class ClickableSystem : EntitySystem
         drawDepth = sprite.DrawDepth;
         renderOrder = sprite.RenderOrder;
         var (spritePos, spriteRot) = _transforms.GetWorldPositionRotation(transform);
-        var spriteBB = sprite.CalculateRotatedBoundingBox(spritePos, spriteRot, eye.Rotation);
+        var spriteBB = _sprites.CalculateBounds((entity.Owner, sprite), spritePos, spriteRot, eye.Rotation);
         bottom = Matrix3Helpers.CreateRotation(eye.Rotation).TransformBox(spriteBB).Bottom;
 
-        Matrix3x2.Invert(sprite.GetLocalMatrix(), out var invSpriteMatrix);
+        Matrix3x2.Invert(sprite.LocalMatrix, out var invSpriteMatrix);
 
         // This should have been the rotation of the sprite relative to the screen, but this is not the case with no-rot or directional sprites.
         var relativeRotation = (spriteRot + eye.Rotation).Reduced().FlipPositive();

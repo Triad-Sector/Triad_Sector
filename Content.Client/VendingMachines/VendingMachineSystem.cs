@@ -10,6 +10,7 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
     [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
     [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -130,7 +131,7 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
         if (!_animationPlayer.HasRunningAnimation(uid, state))
         {
             var animation = GetAnimation(layer, state, animationTime);
-            sprite.LayerSetVisible(layer, true);
+            _sprite.LayerSetVisible((uid, sprite), layer, true);
             _animationPlayer.Play(uid, animation, state);
         }
     }

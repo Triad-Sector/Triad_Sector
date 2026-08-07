@@ -14,6 +14,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
 {
     private readonly IEntityManager _entManager;
     private readonly SharedTransformSystem _transform;
+    private readonly SpriteSystem _sprite;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
     private Dictionary<EntityUid, EntityUid> _effectList = new();
@@ -22,6 +23,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
     {
         _entManager = entManager;
         _transform = _entManager.EntitySysManager.GetEntitySystem<SharedTransformSystem>();
+        _sprite = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>();
     }
 
     /// <summary>
@@ -47,7 +49,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
 
             if (sprite.Visible && !_effectList.ContainsKey(humanoid.Owner))
             {
-                sprite.Visible = false;
+                _sprite.SetVisible((humanoid.Owner, sprite), false);
                 var effect = _entManager.SpawnEntity("EffectUnknownHumanoid", xform.Coordinates);
                 _effectList.Add(humanoid.Owner, effect);
             }
@@ -81,7 +83,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
             _effectList.Remove(underlying);
 
             if (_entManager.TryGetComponent<SpriteComponent>(underlying, out var sprite))
-                sprite.Visible = true;
+                _sprite.SetVisible((underlying, sprite), true);
         }
     }
 }

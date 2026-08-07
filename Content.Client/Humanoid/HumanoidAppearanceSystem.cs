@@ -17,6 +17,7 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private MarkingManager _markingManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -223,7 +224,7 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         // Check to prevent sprite scale errors for old profiles
         var width = profile.Appearance.Width <= 0.005f ? 1.0f : profile.Appearance.Width;
         var height = profile.Appearance.Height <= 0.005f ? 1.0f : profile.Appearance.Height;
-        sprite.Scale = new Vector2(width, height);
+        _sprite.SetScale((uid, sprite), new Vector2(width, height));
 
         UpdateSprite(humanoid, Comp<SpriteComponent>(uid));
     }
@@ -476,7 +477,7 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
             if (!spriteInfo.MatchSkin)
                 continue;
 
-            var index = sprite.LayerMapReserveBlank(layer);
+            var index = _sprite.LayerMapReserve((uid, sprite), layer);
             sprite[index].Color = skinColor.WithAlpha(spriteInfo.LayerAlpha);
         }
     }
@@ -491,11 +492,11 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         base.SetLayerVisibility(ent, layer, visible, slot, ref dirty);
 
         var sprite = Comp<SpriteComponent>(ent);
-        if (!sprite.LayerMapTryGet(layer, out var index))
+        if (!_sprite.LayerMapTryGet((ent.Owner, sprite), layer, out var index, false))
         {
             if (!visible)
                 return;
-            index = sprite.LayerMapReserveBlank(layer);
+            index = _sprite.LayerMapReserve((ent.Owner, sprite), layer);
         }
 
         var spriteLayer = sprite[index];

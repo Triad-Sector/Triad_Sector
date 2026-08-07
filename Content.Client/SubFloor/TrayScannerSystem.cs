@@ -22,6 +22,7 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TrayScanRevealSystem _trayScanReveal = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad: reveal-filter check.
+    [Dependency] private SpriteSystem _sprite = default!;
 
     // Triad: reused each Update so the per-frame reveal-filter pass doesn't allocate a list.
     private readonly List<EntityWhitelist> _activeWhitelists = new();
@@ -120,7 +121,7 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
                 if ((!_appearance.TryGetData(uid, SubFloorVisuals.ScannerRevealed, out bool value) || !value) &&
                     sprite.Color.A > SubfloorRevealAlpha)
                 {
-                    sprite.Color = sprite.Color.WithAlpha(0f);
+                    _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(0f));
                 }
 
                 SetRevealed(uid, true);
@@ -154,7 +155,7 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
                 {
                     SetRevealed(uid, false);
                     RemCompDeferred<TrayRevealedComponent>(uid);
-                    sprite.Color = sprite.Color.WithAlpha(1f);
+                    _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(1f));
                     continue;
                 }
 

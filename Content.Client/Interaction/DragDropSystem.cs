@@ -43,6 +43,7 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     // how often to recheck possible targets (prevents calling expensive
     // check logic each update)
@@ -58,6 +59,8 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
 
     [ValidatePrototypeId<ShaderPrototype>]
     private const string ShaderDropTargetOutOfRange = "SelectionOutline";
+
+    private const string PostShaderId = "dragdrop-highlight";
 
     /// <summary>
     /// Current entity being dragged around.
@@ -249,11 +252,11 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
             var mousePos = _eyeManager.PixelToMap(screenPos);
             _dragShadow = EntityManager.SpawnEntity("dragshadow", mousePos);
             var dragSprite = Comp<SpriteComponent>(_dragShadow.Value);
-            dragSprite.CopyFrom(draggedSprite);
+            _sprite.CopySprite((_draggedEntity.Value, draggedSprite), (_dragShadow.Value, dragSprite));
             dragSprite.RenderOrder = EntityManager.CurrentTick.Value;
-            dragSprite.Color = dragSprite.Color.WithAlpha(0.7f);
+            _sprite.SetColor((_dragShadow.Value, dragSprite), dragSprite.Color.WithAlpha(0.7f));
             // keep it on top of everything
-            dragSprite.DrawDepth = (int) DrawDepth.Overlays;
+            _sprite.SetDrawDepth((_dragShadow.Value, dragSprite), (int) DrawDepth.Overlays);
             if (!dragSprite.NoRotation)
             {
                 _transformSystem.SetWorldRotationNoLerp(_dragShadow.Value, _transformSystem.GetWorldRotation(_draggedEntity.Value));
@@ -420,6 +423,9 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
         if (user == null)
             return;
 
+        if (_dropTargetInRangeShader == null || _dropTargetOutOfRangeShader == null)
+            return;
+
         // highlights the possible targets which are visible
         // and able to be dropped on by the current dragged entity
 
@@ -466,7 +472,7 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
             }
 
             // highlight depending on whether its in or out of range
-            inRangeSprite.PostShader = valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader;
+            _sprite.SetPostShader((entity, inRangeSprite), new SpriteComponent.PostShaderArgs(PostShaderId, valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader));
             inRangeSprite.RenderOrder = EntityManager.CurrentTick.Value;
             _highlightedSprites.Add(inRangeSprite);
         }

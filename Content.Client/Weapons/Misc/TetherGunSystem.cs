@@ -16,6 +16,7 @@ public sealed partial class TetherGunSystem : SharedTetherGunSystem
     [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private MapSystem _mapSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -32,7 +33,7 @@ public sealed partial class TetherGunSystem : SharedTetherGunSystem
         if (!TryComp<SpriteComponent>(component.Tethered, out var sprite))
             return;
 
-        sprite.Color = component.LineColor;
+        _sprite.SetColor((component.Tethered.Value, sprite), component.LineColor);
     }
 
     public override void Shutdown()
@@ -104,11 +105,11 @@ public sealed partial class TetherGunSystem : SharedTetherGunSystem
 
         if (TryComp<ForceGunComponent>(component.Tetherer, out var force))
         {
-            sprite.Color = force.LineColor;
+            _sprite.SetColor((uid, sprite), force.LineColor);
         }
         else if (TryComp<TetherGunComponent>(component.Tetherer, out var tether))
         {
-            sprite.Color = tether.LineColor;
+            _sprite.SetColor((uid, sprite), tether.LineColor);
         }
     }
 
@@ -117,6 +118,6 @@ public sealed partial class TetherGunSystem : SharedTetherGunSystem
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
 
-        sprite.Color = Color.White;
+        _sprite.SetColor((uid, sprite), Color.White);
     }
 }

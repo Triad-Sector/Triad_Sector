@@ -9,6 +9,9 @@ namespace Content.Client.Movement.Systems;
 public sealed partial class FloorOcclusionSystem : SharedFloorOcclusionSystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+
+    private const string PostShaderId = "floor-occlusion";
 
     private EntityQuery<SpriteComponent> _spriteQuery;
 
@@ -55,11 +58,11 @@ public sealed partial class FloorOcclusionSystem : SharedFloorOcclusionSystem
 
         if (enabled)
         {
-            sprite.Comp.PostShader = shader;
+            _sprite.SetPostShader(sprite, new SpriteComponent.PostShaderArgs(PostShaderId, shader));
         }
         else
         {
-            sprite.Comp.PostShader = null;
+            _sprite.RemovePostShader(sprite, PostShaderId);
         }
     }
 }

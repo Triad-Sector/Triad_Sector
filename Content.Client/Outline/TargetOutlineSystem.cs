@@ -24,6 +24,7 @@ public sealed partial class TargetOutlineSystem : EntitySystem
     [Dependency] private SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private bool _enabled = false;
 
@@ -75,6 +76,8 @@ public sealed partial class TargetOutlineSystem : EntitySystem
 
     [ValidatePrototypeId<ShaderPrototype>]
     private const string ShaderTargetInvalid = "SelectionOutline";
+
+    private const string PostShaderId = "target-outline";
 
     private ShaderInstance? _shaderTargetValid;
     private ShaderInstance? _shaderTargetInvalid;
@@ -158,9 +161,9 @@ public sealed partial class TargetOutlineSystem : EntitySystem
             if (!valid)
             {
                 // was this previously valid?
-                if (_highlightedSprites.Remove(sprite) && (sprite.PostShader == _shaderTargetValid || sprite.PostShader == _shaderTargetInvalid))
+                if (_highlightedSprites.Remove(sprite) && _sprite.HasPostShader((entity, sprite), PostShaderId))
                 {
-                    sprite.PostShader = null;
+                    _sprite.RemovePostShader((entity, sprite), PostShaderId);
                     sprite.RenderOrder = 0;
                 }
 
@@ -183,7 +186,7 @@ public sealed partial class TargetOutlineSystem : EntitySystem
                 return;
 
             // highlight depending on whether its in or out of range
-            sprite.PostShader = valid ? _shaderTargetValid : _shaderTargetInvalid;
+            _sprite.SetPostShader((entity, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, (valid ? _shaderTargetValid : _shaderTargetInvalid)!));
             sprite.RenderOrder = EntityManager.CurrentTick.Value;
             _highlightedSprites.Add(sprite);
         }

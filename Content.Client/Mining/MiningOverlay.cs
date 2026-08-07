@@ -62,7 +62,7 @@ public sealed partial class MiningOverlay : Overlay
             if (xform.MapID != args.MapId || !sprite.Visible)
                 continue;
 
-            if (!sprite.LayerMapTryGet(MiningScannerVisualLayers.Overlay, out var idx))
+            if (!_sprite.LayerMapTryGet((ore.Owner, sprite), MiningScannerVisualLayers.Overlay, out var idx, false))
                 continue;
             var layer = sprite[idx];
 

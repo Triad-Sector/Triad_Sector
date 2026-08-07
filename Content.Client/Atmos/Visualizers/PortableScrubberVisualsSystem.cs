@@ -18,15 +18,15 @@ namespace Content.Client.Atmos.Visualizers
                 && AppearanceSystem.TryGetData<bool>(uid, PortableScrubberVisuals.IsRunning, out var isRunning, args.Component))
             {
                 var runningState = isRunning ? component.RunningState : component.IdleState;
-                args.Sprite.LayerSetState(PortableScrubberVisualLayers.IsRunning, runningState);
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), PortableScrubberVisualLayers.IsRunning, runningState);
 
                 var fullState = isFull ? component.FullState : component.ReadyState;
-                args.Sprite.LayerSetState(PowerDeviceVisualLayers.Powered, fullState);
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), PowerDeviceVisualLayers.Powered, fullState);
             }
 
             if (AppearanceSystem.TryGetData<bool>(uid, PortableScrubberVisuals.IsDraining, out var isDraining, args.Component))
             {
-                args.Sprite.LayerSetVisible(PortableScrubberVisualLayers.IsDraining, isDraining);
+                SpriteSystem.LayerSetVisible((uid, args.Sprite), PortableScrubberVisualLayers.IsDraining, isDraining);
             }
         }
     }

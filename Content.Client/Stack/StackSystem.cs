@@ -12,6 +12,7 @@ namespace Content.Client.Stack
     {
         [Dependency] private AppearanceSystem _appearanceSystem = default!;
         [Dependency] private ItemCounterSystem _counterSystem = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
 
         public override void Initialize()
         {
@@ -37,7 +38,7 @@ namespace Content.Client.Stack
 
                 for (var i = 0; i < sprite.AllLayers.Count(); i++)
                 {
-                    sprite.LayerSetColor(i, color);
+                    _sprite.LayerSetColor((uid, sprite), i, color);
                 }
             }
 
