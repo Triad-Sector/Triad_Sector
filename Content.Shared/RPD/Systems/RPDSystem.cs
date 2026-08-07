@@ -80,7 +80,7 @@ public sealed partial class RPDSystem : EntitySystem
         if (!_protoManager.TryIndex<EntityPrototype>(args.SpawnProto, out var entityProto))
             return;
 
-        if (!entityProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, EntityManager.ComponentFactory))
+        if (!entityProto.TryComp<AtmosPipeLayersComponent>(out var atmosPipeLayers, EntityManager.ComponentFactory))
             return;
 
         if (_pipeLayers.TryGetAlternativePrototype(atmosPipeLayers, ent.Comp.CurrentLayer, out var layerProto))

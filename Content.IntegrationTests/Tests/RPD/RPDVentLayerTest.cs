@@ -53,7 +53,7 @@ public sealed class RPDVentLayerTest
                 foreach (var (baseId, alt1, alt2) in Devices)
                 {
                     Assert.That(protoMan.TryIndex<EntityPrototype>(baseId, out var baseProto), Is.True, $"{baseId} missing");
-                    Assert.That(baseProto!.TryGetComponent<AtmosPipeLayersComponent>(out var comp, compFactory), Is.True,
+                    Assert.That(baseProto!.TryComp<AtmosPipeLayersComponent>(out var comp, compFactory), Is.True,
                         $"{baseId} has no AtmosPipeLayersComponent");
 
                     Assert.That(layers.TryGetAlternativePrototype(comp!, AtmosPipeLayer.Secondary, out var secondary), Is.True,
@@ -67,11 +67,11 @@ public sealed class RPDVentLayerTest
                     // The alt proto must carry its layer as prototype data: the layer has to be live before the
                     // anchor-time overlap check at spawn, which is the whole reason these are separate prototypes.
                     Assert.That(protoMan.TryIndex<EntityPrototype>(alt1, out var alt1Proto), Is.True, $"{alt1} missing");
-                    Assert.That(alt1Proto!.TryGetComponent<AtmosPipeLayersComponent>(out var alt1Comp, compFactory), Is.True);
+                    Assert.That(alt1Proto!.TryComp<AtmosPipeLayersComponent>(out var alt1Comp, compFactory), Is.True);
                     Assert.That(alt1Comp!.CurrentPipeLayer, Is.EqualTo(AtmosPipeLayer.Secondary), $"{alt1} pipeLayer");
 
                     Assert.That(protoMan.TryIndex<EntityPrototype>(alt2, out var alt2Proto), Is.True, $"{alt2} missing");
-                    Assert.That(alt2Proto!.TryGetComponent<AtmosPipeLayersComponent>(out var alt2Comp, compFactory), Is.True);
+                    Assert.That(alt2Proto!.TryComp<AtmosPipeLayersComponent>(out var alt2Comp, compFactory), Is.True);
                     Assert.That(alt2Comp!.CurrentPipeLayer, Is.EqualTo(AtmosPipeLayer.Tertiary), $"{alt2} pipeLayer");
                 }
             });

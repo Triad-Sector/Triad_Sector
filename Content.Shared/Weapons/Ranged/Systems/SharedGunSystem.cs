@@ -591,7 +591,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     // Mono
     public EntityPrototype GetBulletPrototype(EntityPrototype cartridge)
     {
-        if (cartridge.TryGetComponent<CartridgeAmmoComponent>(out var cartComp, Factory))
+        if (cartridge.TryComp<CartridgeAmmoComponent>(out var cartComp, Factory))
         {
             return ProtoManager.Index(cartComp.Prototype);
         }
@@ -611,9 +611,9 @@ public abstract partial class SharedGunSystem : EntitySystem
     public DamageSpecifier GetBulletDamage(EntityPrototype bullet)
     {
         var shoot = GetBulletPrototype(bullet);
-        if (shoot.TryGetComponent<HitscanBasicDamageComponent>(out var hitscan, Factory))
+        if (shoot.TryComp<HitscanBasicDamageComponent>(out var hitscan, Factory))
             return hitscan.Damage;
-        if (shoot.TryGetComponent<ProjectileComponent>(out var proj, Factory))
+        if (shoot.TryComp<ProjectileComponent>(out var proj, Factory))
             return proj.Damage;
         return new();
     }

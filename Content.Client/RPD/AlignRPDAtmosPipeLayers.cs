@@ -156,7 +156,7 @@ public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
         if (!_protoManager.TryIndex<EntityPrototype>(pManager.CurrentPermission.EntityType, out var currentProto))
             return;
 
-        if (!currentProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
+        if (!currentProto.TryComp<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
             return;
 
         if (!_pipeLayersSystem.TryGetAlternativePrototype(atmosPipeLayers, layer, out var newProtoId))
@@ -167,7 +167,7 @@ public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
 
         pManager.CurrentPermission.EntityType = newProtoId;
 
-        if (!newProto.TryGetComponent<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
+        if (!newProto.TryComp<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
             return;
 
         var textures = new List<IDirectionalTextureProvider>();

@@ -83,7 +83,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
         }
 
         if (!PrototypeManager.Resolve(comp.Entity, out var proto) ||
-            !proto.TryGetComponent<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
+            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
         {
             return;
         }

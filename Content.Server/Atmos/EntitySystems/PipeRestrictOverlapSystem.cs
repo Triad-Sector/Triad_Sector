@@ -136,7 +136,7 @@ public sealed partial class PipeRestrictOverlapSystem : EntitySystem
     public bool WouldPlacementOverlap(Entity<MapGridComponent> grid, Vector2i tile, EntProtoId proto, Angle rotation, AtmosPipeLayer layer)
     {
         if (!_proto.TryIndex(proto, out var entProto)
-            || !entProto.TryGetComponent<NodeContainerComponent>(out var nodes, EntityManager.ComponentFactory))
+            || !entProto.TryComp<NodeContainerComponent>(out var nodes, EntityManager.ComponentFactory))
             return false;
 
         // Directions the would-be pipe occupies, in grid frame.

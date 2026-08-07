@@ -504,7 +504,7 @@ public partial class RCDSystem : EntitySystem
         var layerCapable = !prototype.NoLayers
             && prototype.Prototype != null
             && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
-            && baseProto.TryGetComponent<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+            && baseProto.TryComp<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
         // End Triad
 
         foreach (var ent in _intersectingEntities)

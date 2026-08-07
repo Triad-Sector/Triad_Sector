@@ -48,14 +48,14 @@ public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSys
     {
         base.UpdateSprite(uid, proto);
         if (TryComp(uid, out SpriteComponent? sprite)
-            && proto.TryGetComponent(out SpriteComponent? otherSprite, Factory))
+            && proto.TryComp(out SpriteComponent? otherSprite, Factory))
         {
             _sprite.CopySprite((uid, otherSprite), (uid, sprite));
         }
 
         // Edgecase for PDAs to include visuals when UI is open
         if (TryComp(uid, out PdaBorderColorComponent? borderColor)
-            && proto.TryGetComponent(out PdaBorderColorComponent? otherBorderColor, Factory))
+            && proto.TryComp(out PdaBorderColorComponent? otherBorderColor, Factory))
         {
             borderColor.BorderColor = otherBorderColor.BorderColor;
             borderColor.AccentHColor = otherBorderColor.AccentHColor;
@@ -89,7 +89,7 @@ public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSys
             // check if this is valid clothing
             if (!IsValidTarget(proto))
                 continue;
-            if (!proto.TryGetComponent(out ClothingComponent? item, Factory))
+            if (!proto.TryComp(out ClothingComponent? item, Factory))
                 continue;
 
             // sort item by their slot flags

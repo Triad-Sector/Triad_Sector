@@ -192,7 +192,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
     private void SpawnEntityGhost(GhostPosData key, ShipRepairEntitySpecifier spec, EntProtoId protoId)
     {
         if (_proto.TryIndex(protoId, out var proto)
-            && proto.TryGetComponent<SpriteComponent>(out var specSprite, Factory))
+            && proto.TryComp<SpriteComponent>(out var specSprite, Factory))
         {
             // needed so it doesn't fall off if offgrid
             var ghost = Spawn(RepairGhostId, new EntityCoordinates(key.Grid, Vector2.Zero));
@@ -209,7 +209,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
             _sprite.CopySprite((ghost, specSprite), ent);
             specSprite.Owner = old;
 
-            if (proto.TryGetComponent<IconSmoothComponent>(out var specSmooth, Factory))
+            if (proto.TryComp<IconSmoothComponent>(out var specSmooth, Factory))
             {
                 var smooth = _serialization.CreateCopy(specSmooth, notNullableOverride: true);
                 AddComp(ghost, smooth);

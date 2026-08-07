@@ -76,8 +76,8 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
             {
                 // just fail the repair if it doesn't have the comp
                 if (!_proto.TryIndex(repairData.EntityPalette[spec.ProtoIndex], out var entProto)
-                    || !entProto.TryGetComponent<ShipRepairableComponent>(out var repairable, Factory)
-                    || entProto.TryGetComponent<ShipRepairableRestrictComponent>(out var entRestrict, Factory)
+                    || !entProto.TryComp<ShipRepairableComponent>(out var repairable, Factory)
+                    || entProto.TryComp<ShipRepairableRestrictComponent>(out var entRestrict, Factory)
                         && _whitelist.IsWhitelistFail(entRestrict.ToolWhitelist, ent)
                 )
                     continue;

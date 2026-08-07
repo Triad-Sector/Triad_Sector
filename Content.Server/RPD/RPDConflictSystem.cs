@@ -34,7 +34,7 @@ public sealed partial class RPDConflictSystem : EntitySystem
             return;
 
         if (!_proto.TryIndex<EntityPrototype>(args.Recipe.Prototype, out var baseProto)
-            || !baseProto.TryGetComponent<AtmosPipeLayersComponent>(out var pipeLayers, EntityManager.ComponentFactory))
+            || !baseProto.TryComp<AtmosPipeLayersComponent>(out var pipeLayers, EntityManager.ComponentFactory))
             return;
 
         // Resolve the layer-specific prototype (base proto IS the Primary variant).

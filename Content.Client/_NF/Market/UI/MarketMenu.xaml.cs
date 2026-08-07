@@ -15,6 +15,7 @@ namespace Content.Client._NF.Market.UI;
 public sealed partial class MarketMenu : FancyWindow
 {
     [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IComponentFactory _compFactory = default!;
     [Dependency] private ILocalizationManager _loc = default!;
 
     public event Action<BaseButton.ButtonEventArgs>? OnAddToCart1;
@@ -102,7 +103,7 @@ public sealed partial class MarketMenu : FancyWindow
             if (!IsWithinSearchQuery(prototype))
                 continue;
 
-            if (!prototype.TryGetComponent<SpriteComponent>(out var sprite))
+            if (!prototype.TryComp<SpriteComponent>(out var sprite, _compFactory))
             {
                 continue; // Skip this iteration if the prototype was not found
             }

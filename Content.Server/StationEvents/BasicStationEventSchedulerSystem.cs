@@ -111,7 +111,7 @@ namespace Content.Server.StationEvents
                 occurrences.Add(ev.Key.ID, 0);
             }
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
             {
                 return occurrences.Select(p => (p.Key, (float)p.Value)).OrderByDescending(p => p.Item2);
             }
@@ -156,7 +156,7 @@ namespace Content.Server.StationEvents
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
             var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var events))
@@ -178,7 +178,7 @@ namespace Content.Server.StationEvents
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
             var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var untimedEvents))
@@ -202,7 +202,7 @@ namespace Content.Server.StationEvents
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
             var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 return 0f;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var events))
