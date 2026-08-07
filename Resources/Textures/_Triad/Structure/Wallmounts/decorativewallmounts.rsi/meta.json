@@ -16,6 +16,10 @@
             "directions": 4
         },
         {
+            "name": "toiletrolloffset",
+            "directions": 4
+        },
+        {
             "name": "handsanitiser",
             "directions": 4
         }
