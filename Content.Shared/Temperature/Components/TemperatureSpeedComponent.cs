@@ -9,6 +9,12 @@ namespace Content.Shared.Temperature.Components;
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedTemperatureSystem)), AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class TemperatureSpeedComponent : Component
 {
+    /// <summary> Triad
+    /// Sets the baseline temperature to compare with thresholds to know when to stop applying a slowdown
+    /// </summary>
+    [DataField]
+    public float? baseTemperature;
+
     /// <summary>
     /// Pairs of temperature thresholds to applied slowdown values.
     /// </summary>

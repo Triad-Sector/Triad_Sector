@@ -278,6 +278,7 @@
       types:
         Heat: 1.5 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
+    baseTemperature: 310.15 # Triad- Added to allow "too hot" slowdown thresholds. Should be set to a speices' normalBodyTemperature
     thresholds:
       293: 0.8
       280: 0.6
