@@ -79,48 +79,48 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
 
     private void UpdateAppearance(EntityUid uid, VendingMachineVisualState visualState, VendingMachineComponent component, SpriteComponent sprite)
     {
-        SetLayerState(VendingMachineVisualLayers.Base, component.OffState, sprite);
+        SetLayerState(uid, VendingMachineVisualLayers.Base, component.OffState, sprite);
 
         switch (visualState)
         {
             case VendingMachineVisualState.Normal:
-                SetLayerState(VendingMachineVisualLayers.BaseUnshaded, component.NormalState, sprite);
-                SetLayerState(VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
+                SetLayerState(uid, VendingMachineVisualLayers.BaseUnshaded, component.NormalState, sprite);
+                SetLayerState(uid, VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
                 break;
 
             case VendingMachineVisualState.Deny:
                 if (component.LoopDenyAnimation)
-                    SetLayerState(VendingMachineVisualLayers.BaseUnshaded, component.DenyState, sprite);
+                    SetLayerState(uid, VendingMachineVisualLayers.BaseUnshaded, component.DenyState, sprite);
                 else
                     PlayAnimation(uid, VendingMachineVisualLayers.BaseUnshaded, component.DenyState, component.DenyDelay, sprite);
 
-                SetLayerState(VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
+                SetLayerState(uid, VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
                 break;
 
             case VendingMachineVisualState.Eject:
                 PlayAnimation(uid, VendingMachineVisualLayers.BaseUnshaded, component.EjectState, component.EjectDelay, sprite);
-                SetLayerState(VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
+                SetLayerState(uid, VendingMachineVisualLayers.Screen, component.ScreenState, sprite);
                 break;
 
             case VendingMachineVisualState.Broken:
-                HideLayers(sprite);
-                SetLayerState(VendingMachineVisualLayers.Base, component.BrokenState, sprite);
+                HideLayers(uid, sprite);
+                SetLayerState(uid, VendingMachineVisualLayers.Base, component.BrokenState, sprite);
                 break;
 
             case VendingMachineVisualState.Off:
-                HideLayers(sprite);
+                HideLayers(uid, sprite);
                 break;
         }
     }
 
-    private static void SetLayerState(VendingMachineVisualLayers layer, string? state, SpriteComponent sprite)
+    private void SetLayerState(EntityUid uid, VendingMachineVisualLayers layer, string? state, SpriteComponent sprite)
     {
         if (string.IsNullOrEmpty(state))
             return;
 
-        sprite.LayerSetVisible(layer, true);
-        sprite.LayerSetAutoAnimated(layer, true);
-        sprite.LayerSetState(layer, state);
+        _sprite.LayerSetVisible((uid, sprite), layer, true);
+        _sprite.LayerSetAutoAnimated((uid, sprite), layer, true);
+        _sprite.LayerSetRsiState((uid, sprite), layer, state);
     }
 
     private void PlayAnimation(EntityUid uid, VendingMachineVisualLayers layer, string? state, float animationTime, SpriteComponent sprite)
@@ -155,17 +155,17 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
         };
     }
 
-    private static void HideLayers(SpriteComponent sprite)
+    private void HideLayers(EntityUid uid, SpriteComponent sprite)
     {
-        HideLayer(VendingMachineVisualLayers.BaseUnshaded, sprite);
-        HideLayer(VendingMachineVisualLayers.Screen, sprite);
+        HideLayer(uid, VendingMachineVisualLayers.BaseUnshaded, sprite);
+        HideLayer(uid, VendingMachineVisualLayers.Screen, sprite);
     }
 
-    private static void HideLayer(VendingMachineVisualLayers layer, SpriteComponent sprite)
+    private void HideLayer(EntityUid uid, VendingMachineVisualLayers layer, SpriteComponent sprite)
     {
-        if (!sprite.LayerMapTryGet(layer, out var actualLayer))
+        if (!_sprite.LayerMapTryGet((uid, sprite), layer, out var actualLayer, false))
             return;
 
-        sprite.LayerSetVisible(actualLayer, false);
+        _sprite.LayerSetVisible((uid, sprite), actualLayer, false);
     }
 }

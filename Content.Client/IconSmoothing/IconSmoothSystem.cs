@@ -97,7 +97,7 @@ namespace Content.Client.IconSmoothing
             if (_sprite.LayerMapTryGet((uid, sprite), corner, out var layer, false))
                 _sprite.LayerSetRsiState((uid, sprite), layer, state);
             else
-                _sprite.LayerMapSet((uid, sprite), corner, sprite.AddLayerState(state));
+                _sprite.LayerMapSet((uid, sprite), corner, _sprite.AddRsiLayer((uid, sprite), state));
             _sprite.LayerSetDirOffset((uid, sprite), corner, offset);
         }
         // End Frontier: set layer function to remove redundancy

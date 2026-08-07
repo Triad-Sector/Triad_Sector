@@ -385,7 +385,7 @@ namespace Content.Client.Hands.Systems
 
                 //Add displacement maps
                 if (handComp.HandDisplacement is not null)
-                    _displacement.TryAddDisplacement(handComp.HandDisplacement, sprite, index, key, revealedLayers);
+                    _displacement.TryAddDisplacement(handComp.HandDisplacement, uid, sprite, index, key, revealedLayers);
             }
 
             RaiseLocalEvent(held, new HeldVisualsUpdatedEvent(uid, revealedLayers), true);

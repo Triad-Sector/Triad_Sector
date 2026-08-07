@@ -8,8 +8,9 @@ namespace Content.Client.DisplacementMap;
 public sealed partial class DisplacementMapSystem : EntitySystem
 {
     [Dependency] private ISerializationManager _serialization = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
-    public bool TryAddDisplacement(DisplacementData data, SpriteComponent sprite, int index, string key, HashSet<string> revealedLayers)
+    public bool TryAddDisplacement(DisplacementData data, EntityUid uid, SpriteComponent sprite, int index, string key, HashSet<string> revealedLayers)
     {
         if (data.ShaderOverride != null)
             sprite.LayerSetShader(index, data.ShaderOverride);
@@ -41,7 +42,7 @@ public sealed partial class DisplacementMapSystem : EntitySystem
         // We choose a displacement map from the possible ones, matching the size with the original layer size.
         // If there is no such a map, we use a standard 32 by 32 one
         var displacementDataLayer = data.SizeMaps[EyeManager.PixelsPerMeter];
-        var actualRSI = sprite.LayerGetActualRSI(index);
+        var actualRSI = _sprite.LayerGetEffectiveRsi((uid, sprite), index);
         if (actualRSI is not null)
         {
             if (actualRSI.Size.X != actualRSI.Size.Y)
@@ -55,8 +56,8 @@ public sealed partial class DisplacementMapSystem : EntitySystem
         var displacementLayer = _serialization.CreateCopy(displacementDataLayer, notNullableOverride: true);
         displacementLayer.CopyToShaderParameters!.LayerKey = key;
 
-        sprite.AddLayer(displacementLayer, index);
-        sprite.LayerMapSet(displacementKey, index);
+        _sprite.AddLayer((uid, sprite), displacementLayer, index);
+        _sprite.LayerMapSet((uid, sprite), displacementKey, index);
 
         revealedLayers.Add(displacementKey);
 

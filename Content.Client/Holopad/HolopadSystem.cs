@@ -32,7 +32,7 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
 
     private void OnShaderRender(Entity<HolopadHologramComponent> entity, ref BeforePostShaderRenderEvent ev)
     {
-        if (ev.Sprite.PostShader == null)
+        if (!_sprite.HasPostShader(ev.Sprite, "hologram"))
             return;
 
         UpdateHologramSprite(entity, entity.Comp.LinkedEntity);

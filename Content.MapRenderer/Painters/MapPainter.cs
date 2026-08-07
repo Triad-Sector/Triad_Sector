@@ -122,9 +122,10 @@ namespace Content.MapRenderer.Painters
 
             await client.WaitPost(() =>
             {
-                if (cEntityManager.TryGetComponent(cPlayerManager.LocalEntity, out SpriteComponent? sprite))
+                var localPlayer = cPlayerManager.LocalEntity;
+                if (cEntityManager.TryGetComponent(localPlayer, out SpriteComponent? sprite))
                 {
-                    sprite.Visible = false;
+                    cEntityManager.System<SpriteSystem>().SetVisible((localPlayer!.Value, sprite), false);
                 }
             });
 

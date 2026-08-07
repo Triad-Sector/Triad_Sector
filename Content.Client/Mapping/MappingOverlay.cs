@@ -36,13 +36,15 @@ public sealed partial class MappingOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
+        var spriteSystem = _entities.System<SpriteSystem>();
+
         foreach (var (id, color) in _oldColors)
         {
             if (!_entities.TryGetComponent(id, out SpriteComponent? sprite))
                 continue;
 
             if (sprite.Color == DeleteColor || sprite.Color == PickColor)
-                sprite.Color = color;
+                spriteSystem.SetColor((id, sprite), color);
         }
 
         _oldColors.Clear();
@@ -61,7 +63,7 @@ public sealed partial class MappingOverlay : Overlay
                     _entities.TryGetComponent(entity, out SpriteComponent? sprite))
                 {
                     _oldColors[entity] = sprite.Color;
-                    sprite.Color = PickColor;
+                    spriteSystem.SetColor((entity, sprite), PickColor);
                 }
 
                 break;
@@ -72,7 +74,7 @@ public sealed partial class MappingOverlay : Overlay
                     _entities.TryGetComponent(entity, out SpriteComponent? sprite))
                 {
                     _oldColors[entity] = sprite.Color;
-                    sprite.Color = DeleteColor;
+                    spriteSystem.SetColor((entity, sprite), DeleteColor);
                 }
 
                 break;

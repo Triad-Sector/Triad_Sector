@@ -53,9 +53,6 @@ public sealed partial class FloorOcclusionSystem : SharedFloorOcclusionSystem
 
         var shader = _proto.Index<ShaderPrototype>("HorizontalCut").Instance();
 
-        if (sprite.Comp.PostShader is not null && sprite.Comp.PostShader != shader)
-            return;
-
         if (enabled)
         {
             _sprite.SetPostShader(sprite, new SpriteComponent.PostShaderArgs(PostShaderId, shader));

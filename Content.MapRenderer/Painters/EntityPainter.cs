@@ -56,6 +56,8 @@ public sealed class EntityPainter
             return;
         }
 
+        var spriteSystem = _sEntityManager.System<SpriteSystem>();
+
         var worldRotation = xformSystem.GetWorldRotation(entity.Owner);
         foreach (var layer in entity.Sprite.AllLayers)
         {
@@ -91,7 +93,7 @@ public sealed class EntityPainter
 
             image = image.CloneAs<Rgba32>();
 
-            static (int, int, int, int) GetRsiFrame(RSI? rsi, Image image, EntityData entity, ISpriteLayer layer, int direction)
+            (int, int, int, int) GetRsiFrame(RSI? rsi, Image image, EntityData entity, ISpriteLayer layer, int direction)
             {
                 if (rsi is null)
                     return (0, 0, EyeManager.PixelsPerMeter, EyeManager.PixelsPerMeter);
@@ -99,14 +101,14 @@ public sealed class EntityPainter
                 var statesX = image.Width / rsi.Size.X;
                 var statesY = image.Height / rsi.Size.Y;
                 var stateCount = statesX * statesY;
-                var frames = stateCount / entity.Sprite.GetLayerDirectionCount(layer);
+                var frames = stateCount / spriteSystem.LayerGetDirectionCount((SpriteComponent.Layer) layer);
                 var target = direction * frames;
                 var targetY = target / statesX;
                 var targetX = target % statesY;
                 return (targetX * rsi.Size.X, targetY * rsi.Size.Y, rsi.Size.X, rsi.Size.Y);
             }
 
-            var dir = entity.Sprite.GetLayerDirectionCount(layer) switch
+            var dir = spriteSystem.LayerGetDirectionCount((SpriteComponent.Layer) layer) switch
             {
                 0 => 0,
                 _ => (int) layer.EffectiveDirection(worldRotation)
@@ -124,7 +126,7 @@ public sealed class EntityPainter
             image.Mutate(o => o.Crop(rect));
 
             var spriteRotation = 0f;
-            if (!entity.Sprite.NoRotation && !entity.Sprite.SnapCardinals && entity.Sprite.GetLayerDirectionCount(layer) == 1)
+            if (!entity.Sprite.NoRotation && !entity.Sprite.SnapCardinals && spriteSystem.LayerGetDirectionCount((SpriteComponent.Layer) layer) == 1)
             {
                 spriteRotation = (float) worldRotation.Degrees;
             }

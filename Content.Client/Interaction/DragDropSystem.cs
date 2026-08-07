@@ -464,13 +464,6 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
                         && _interactionSystem.InRangeUnobstructed(user.Value, entity);
             }
 
-            if (inRangeSprite.PostShader != null &&
-                inRangeSprite.PostShader != _dropTargetInRangeShader &&
-                inRangeSprite.PostShader != _dropTargetOutOfRangeShader)
-            {
-                continue;
-            }
-
             // highlight depending on whether its in or out of range
             _sprite.SetPostShader((entity, inRangeSprite), new SpriteComponent.PostShaderArgs(PostShaderId, valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader));
             inRangeSprite.RenderOrder = EntityManager.CurrentTick.Value;
@@ -482,10 +475,10 @@ public sealed partial class DragDropSystem : SharedDragDropSystem
     {
         foreach (var highlightedSprite in _highlightedSprites)
         {
-            if (highlightedSprite.PostShader != _dropTargetInRangeShader && highlightedSprite.PostShader != _dropTargetOutOfRangeShader)
+            if (!_sprite.HasPostShader(highlightedSprite, PostShaderId))
                 continue;
 
-            highlightedSprite.PostShader = null;
+            _sprite.RemovePostShader(highlightedSprite, PostShaderId);
             highlightedSprite.RenderOrder = 0;
         }
 

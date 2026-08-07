@@ -180,11 +180,6 @@ public sealed partial class TargetOutlineSystem : EntitySystem
                 valid = (origin - target).LengthSquared() <= Range;
             }
 
-            if (sprite.PostShader != null &&
-                sprite.PostShader != _shaderTargetValid &&
-                sprite.PostShader != _shaderTargetInvalid)
-                return;
-
             // highlight depending on whether its in or out of range
             _sprite.SetPostShader((entity, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, (valid ? _shaderTargetValid : _shaderTargetInvalid)!));
             sprite.RenderOrder = EntityManager.CurrentTick.Value;
@@ -196,10 +191,10 @@ public sealed partial class TargetOutlineSystem : EntitySystem
     {
         foreach (var sprite in _highlightedSprites)
         {
-            if (sprite.PostShader != _shaderTargetValid && sprite.PostShader != _shaderTargetInvalid)
+            if (!_sprite.HasPostShader(sprite, PostShaderId))
                 continue;
 
-            sprite.PostShader = null;
+            _sprite.RemovePostShader(sprite, PostShaderId);
             sprite.RenderOrder = 0;
         }
 
