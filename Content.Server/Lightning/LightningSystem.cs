@@ -25,6 +25,18 @@ public sealed partial class LightningSystem : SharedLightningSystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private TransformSystem _transform = default!;
 
+    /// <summary>
+    /// Hard ceiling on how deeply lightning may re-enter itself before a cascade is abandoned.
+    /// </summary>
+    // Triad: arcDepth bounds a single call chain, but it is a parameter, so anything that shoots
+    // lightning in response to being hit by lightning starts a fresh budget and the cascade never has
+    // to end. Two such entities in range of each other ping-pong until the stack runs out, which took
+    // the server down in prod on 2026-08-06 ("Stack overflow.", then a fresh boot). This counter spans
+    // the whole re-entrant chain rather than one call, so it closes the loop wherever it is closed.
+    private const int MaxLightningRecursion = 16;
+
+    private int _lightningRecursion;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -105,28 +117,47 @@ public sealed partial class LightningSystem : SharedLightningSystem
         //TODO: This is still pretty bad for perf but better than before and at least it doesn't re-allocate
         // several hashsets every time
 
-        var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
-        _random.Shuffle(targets);
-        targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
-
-        int shootedCount = 0;
-        int count = -1;
-        while (shootedCount < boltCount)
+        // Triad: see MaxLightningRecursion. Bail before doing any work so a runaway cascade stops
+        // cheaply, and warn once per cascade rather than once per bolt.
+        if (_lightningRecursion >= MaxLightningRecursion)
         {
-            count++;
+            if (_lightningRecursion == MaxLightningRecursion)
+                Log.Warning($"Lightning from {ToPrettyString(user)} exceeded {MaxLightningRecursion} levels of recursion, abandoning the cascade.");
 
-            if (count >= targets.Count) { break; }
+            return;
+        }
 
-            var curTarget = targets[count];
-            if (!_random.Prob(curTarget.Comp.HitProbability)) //Chance to ignore target
-                continue;
+        _lightningRecursion++;
 
-            ShootLightning(user, targets[count].Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
-            if (arcDepth - targets[count].Comp.LightningResistance > 0)
+        try
+        {
+            var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
+            _random.Shuffle(targets);
+            targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
+
+            int shootedCount = 0;
+            int count = -1;
+            while (shootedCount < boltCount)
             {
-                ShootRandomLightnings(targets[count].Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - targets[count].Comp.LightningResistance, triggerLightningEvents);
+                count++;
+
+                if (count >= targets.Count) { break; }
+
+                var curTarget = targets[count];
+                if (!_random.Prob(curTarget.Comp.HitProbability)) //Chance to ignore target
+                    continue;
+
+                ShootLightning(user, targets[count].Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
+                if (arcDepth - targets[count].Comp.LightningResistance > 0)
+                {
+                    ShootRandomLightnings(targets[count].Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - targets[count].Comp.LightningResistance, triggerLightningEvents);
+                }
+                shootedCount++;
             }
-            shootedCount++;
+        }
+        finally
+        {
+            _lightningRecursion--;
         }
     }
 }
