@@ -11,6 +11,8 @@ using Content.Shared._NF.PublicTransit;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
@@ -37,6 +39,7 @@ public sealed partial class PublicTransitSystem : EntitySystem
     [Dependency] private StationRenameWarpsSystems _renameWarps = default!;
     [Dependency] private DockingSystem _dockSystem = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     /// <summary>
     /// If enabled then spawns the bus and sets up the bus line.
@@ -230,7 +233,8 @@ public sealed partial class PublicTransitSystem : EntitySystem
                 {
                     comp.DepartureAnnounced = true;
                     AnnounceToBus(uid, Loc.GetString("public-transit-departure-warning",
-                        ("destination", upcoming.EntityName), ("time", (int) DepartureWarning.TotalSeconds)));
+                        ("destination", upcoming.EntityName), ("time", (int) DepartureWarning.TotalSeconds)),
+                        chime: true);
                 }
 
                 continue;
@@ -294,18 +298,29 @@ public sealed partial class PublicTransitSystem : EntitySystem
     }
 
     /// <summary>
-    /// Speaks a line over every shuttle console aboard the given bus.
+    /// Speaks a line over every shuttle console aboard the given bus, optionally with a chime.
     /// </summary>
     // Triad: both callers walked every shuttle console in the sector and filtered by grid, once per
     // bus per announcement. Same walk, but in one place and only when there is something to say.
-    private void AnnounceToBus(EntityUid busUid, string message)
+    private void AnnounceToBus(EntityUid busUid, string message, bool chime = false)
     {
         var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent>();
+        var chimed = false;
 
         while (consoleQuery.MoveNext(out var consoleUid, out _))
         {
             if (Transform(consoleUid).GridUid != busUid)
                 continue;
+
+            // Triad: the station announcement chime, but PlayPvs off the console rather than the
+            // PlayGlobal that ChatSystem uses, so it is heard aboard the bus instead of sector-wide.
+            // Once per call: a bus with two consoles should not double up the sound on itself.
+            if (chime && !chimed)
+            {
+                chimed = true;
+                _audio.PlayPvs(ChatSystem.DefaultAnnouncementSound, consoleUid,
+                    AudioParams.Default.WithVolume(-2f));
+            }
 
             // Triad: HideChat keeps these out of the chat window. They still speak over the console, so
             // the bubble is there for anyone stood on the shuttle, but a bus running a loop all round
