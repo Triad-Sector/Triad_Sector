@@ -580,9 +580,11 @@
     layers:
     - state: body
     - state: top_greyscale
+      map: [ "Livery" ]
       color: "#aaaaaa"
-  # Triad: dropped BusSchedule + PublicTransitVisuals components (Frontier PublicTransit
-  # system not ported); the sign is a static prop. our StationTransit still handles routes.
+  # Triad: live again. The panel is tinted to the IFF colour of the stop the bus is heading for,
+  # driven by PublicTransitSystem and painted by BusScheduleVisualizerSystem.
+  - type: BusSchedule
   - type: Appearance
 
 # Triad: ClothingNeckCollarBase dropped as duplicate of canonical Floof/Entities/Clothing/Neck/collars.yml

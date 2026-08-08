@@ -7,6 +7,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Shared.Chat; // Einstein Engines - Languages
 using Content.Shared.GameTicking;
 using Content.Shared._NF.CCVar;
+using Content.Shared._NF.PublicTransit;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
 using Robust.Server.GameObjects;
@@ -35,6 +36,7 @@ public sealed partial class PublicTransitSystem : EntitySystem
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private StationRenameWarpsSystems _renameWarps = default!;
     [Dependency] private DockingSystem _dockSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     /// <summary>
     /// If enabled then spawns the bus and sets up the bus line.
@@ -263,7 +265,29 @@ public sealed partial class PublicTransitSystem : EntitySystem
             if (TryGetNextStation(out var nextStation) && nextStation is { Valid: true } next)
                 comp.NextStation = next;
 
+            // Triad: the signs advertise where the bus is going, so they update once it is under way.
+            UpdateScheduleSigns(comp.NextStation);
+
             comp.NextTransfer = curTime + TimeSpan.FromSeconds(FlyTime + waitTime);
+        }
+    }
+
+    /// <summary>
+    /// Repaints every bus schedule sign in the sector to the colour of the given destination.
+    /// </summary>
+    // Triad: there is one bus, so every sign shows the same next stop. The colour comes off the
+    // destination's IFF component, which is what gives each POI its identity on the console already.
+    private void UpdateScheduleSigns(EntityUid destination)
+    {
+        var color = TryComp<IFFComponent>(destination, out var iff) && iff.Color != default
+            ? iff.Color
+            : (Color?) null;
+
+        var signs = EntityQueryEnumerator<BusScheduleComponent, AppearanceComponent>();
+
+        while (signs.MoveNext(out var signUid, out var sign, out var appearance))
+        {
+            _appearance.SetData(signUid, PublicTransitVisuals.Livery, color ?? sign.IdleColor, appearance);
         }
     }
 
