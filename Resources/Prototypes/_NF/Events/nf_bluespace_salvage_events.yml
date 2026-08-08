@@ -47,6 +47,7 @@
         - /Maps/_NF/Shuttles/Scrap/scrap-courserx.yml
         - /Maps/_NF/Shuttles/Scrap/scrap-comet.yml
         - /Maps/_NF/Shuttles/Scrap/scrap-sprinter.yml
+        - /Maps/_Triad/Shuttles/DERELICT/derelict-behir.yml
   - type: ActiveRadio
     channels:
     - Engineering
