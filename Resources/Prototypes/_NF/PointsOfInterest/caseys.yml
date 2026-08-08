@@ -15,8 +15,8 @@
   minimumDistance: 4250
   maximumDistance: 5600
   gridPath: /Maps/_NF/POI/caseyscasino.yml
-  # Triad: added to the bus route. NOTE: caseyscasino.yml has no DockTransit berth yet, so until one
-  # is mapped the bus will dock at whatever airlock sorts first here.
+  # Triad: added to the bus route. Its berth is the front-centre pair on the south face, uids 58 and
+  # 147 in the map, tagged DockTransit.
   addComponents:
   - type: StationTransit
 
