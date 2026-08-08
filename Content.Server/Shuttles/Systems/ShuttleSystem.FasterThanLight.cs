@@ -491,6 +491,10 @@ public sealed partial class ShuttleSystem
         if (!dockedShuttles.Add(shuttleUid))
             return;  // Already processed this shuttle
 
+        // Triad: a solo grid is the whole travel group, so stop before walking its docks at all.
+        if (HasComp<FTLSoloComponent>(shuttleUid))
+            return;
+
         var docks = _dockSystem.GetDocks(shuttleUid);
         foreach (var dock in docks)
         {

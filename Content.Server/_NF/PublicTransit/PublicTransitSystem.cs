@@ -121,6 +121,9 @@ public sealed partial class PublicTransitSystem : EntitySystem
     private void OnShuttleStartup(EntityUid uid, TransitShuttleComponent component, ComponentStartup args)
     {
         EnsureComp<PreventPilotComponent>(uid);
+        // Triad: the bus leaves on its clock, not on anyone's say-so, so nothing docked to it at that
+        // moment can have agreed to come along. It travels alone.
+        EnsureComp<FTLSoloComponent>(uid);
         var prot = EnsureComp<ProtectedGridComponent>(uid);
         prot.PreventArtifactTriggers = true;
         prot.PreventEmpEvents = true;
