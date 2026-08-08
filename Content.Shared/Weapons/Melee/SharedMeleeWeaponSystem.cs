@@ -637,6 +637,15 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         // Validate client
         for (var i = entities.Count - 1; i >= 0; i--)
         {
+            // Triad: the target list comes straight off the wire, so a net entity the server does not
+            // know resolves to entity 0 and reaches the transform lookups in the arc check, which logs
+            // an error with a full stack trace per bad uid per swing. Drop them before anything reads them.
+            if (!Exists(entities[i]))
+            {
+                entities.RemoveAt(i);
+                continue;
+            }
+
             if (ArcRaySuccessful(entities[i],
                     userPos,
                     direction.ToWorldAngle(),
