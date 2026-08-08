@@ -3429,3 +3429,77 @@ Entries:
   id: 2480
   time: '2026-08-04T13:08:23.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/460
+- author: nanbyt
+  changes:
+    - type: Tweak
+      message: Resomi base temp is now 285k
+  id: 2481
+  time: '2026-08-05T12:48:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/467
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        The tesla ball now starves without a running particle accelerator, and
+        sheds miniature ball lightning when fed hard. A loose tesla burns itself
+        out in minutes.
+    - type: Tweak
+      message: >-
+        Tesla coils are now single-strike capacitors: lightning favors empty
+        coils, charged coils arc visibly while discharging, and total output
+        scales with how many towers you build.
+    - type: Tweak
+      message: >-
+        Tesla coils wear out under sustained load. Weld them on a service
+        rotation or stock spares.
+    - type: Tweak
+      message: >-
+        Lightning strikes now electrocute crew and mobs. Wear insulated gloves
+        around the engine.
+    - type: Add
+      message: >-
+        Bulk tesla coil crates (a dozen flatpacks) can be bought from the cargo
+        console.
+    - type: Tweak
+      message: Rewrote the Tesla Engine guidebook entry.
+  id: 2482
+  time: '2026-08-05T22:42:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/437
+- author: pandoraberry
+  changes:
+    - type: Fix
+      message: Fixed visual glitch for Reptilian tails rendering over clothing.
+  id: 2483
+  time: '2026-08-06T13:04:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/455
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Minor venmar adjustments
+  id: 2484
+  time: '2026-08-06T13:20:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/466
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Removed Overseer whitelist.
+    - type: Tweak
+      message: >-
+        The Bulwark 4G shotgun gloves have been swapped for laser shotgun
+        gloves.
+    - type: Tweak
+      message: Increased Bulwark Modsuit speed penalty.
+    - type: Tweak
+      message: Minor armor increase for Bulwark Modsuit.
+  id: 2485
+  time: '2026-08-07T12:10:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/461
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: 'Added a new Science Vessel to CIV Shipyard: Erudite.'
+    - type: Tweak
+      message: Added Ultra-Violet lights to Molecules Engine Bays!
+  id: 2486
+  time: '2026-08-08T07:32:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/447

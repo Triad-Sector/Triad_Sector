@@ -1,7 +1,7 @@
 - type: marking
   id: HumanTattooArmImheartmomL
   bodyPart: LArm
-  markingCategory: Arms # Triad #Traid
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -64,7 +64,7 @@
 - type: marking
   id: HumanTattooLineArmL
   bodyPart: LArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -73,7 +73,7 @@
 - type: marking
   id: HumanTattooLineArmR
   bodyPart: RArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -109,7 +109,7 @@
 - type: marking
   id: HumanTattooSkeletarmL
   bodyPart: LArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -118,7 +118,7 @@
 - type: marking
   id: HumanTattooSkeletarmR
   bodyPart: RArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -199,7 +199,7 @@
 - type: marking
   id: HumanTattooArmlazaL
   bodyPart: LArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi
@@ -208,7 +208,7 @@
 - type: marking
   id: HumanTattooArmlazaR
   bodyPart: RArm
-  markingCategory: Arms # Triad #Triad
+  markingCategory: Arms # Triad
   speciesRestriction: [Human, Oni, Reptilian, SlimePerson, Arachnid, Tajaran, Felinid, Arachne, Shadowkin, Moth, Vulpkanin]
   sprites:
   - sprite: _ADT/Mobs/Customization/Human/custom.rsi

@@ -26,6 +26,22 @@ public sealed partial class TeslaEnergyBallSystem : EntitySystem
         SubscribeLocalEvent<TeslaEnergyBallComponent, EntityConsumedByEventHorizonEvent>(OnConsumed);
     }
 
+    // Triad: passive energy decay. The ball bleeds energy continuously so it needs a running PA to
+    // sustain it; with no feed it drains to EnergyToDespawn and collapses.
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<TeslaEnergyBallComponent>();
+        while (query.MoveNext(out var uid, out var teslaEnergyBall))
+        {
+            if (teslaEnergyBall.PassiveEnergyDecay <= 0f)
+                continue;
+
+            AdjustEnergy(uid, teslaEnergyBall, -teslaEnergyBall.PassiveEnergyDecay * frameTime);
+        }
+    }
+
     private void OnConsumed(Entity<TeslaEnergyBallComponent> tesla, ref EntityConsumedByEventHorizonEvent args)
     {
         Spawn(tesla.Comp.ConsumeEffectProto, Transform(args.Entity).Coordinates);

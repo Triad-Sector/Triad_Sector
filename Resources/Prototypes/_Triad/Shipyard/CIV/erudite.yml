@@ -1,0 +1,41 @@
+﻿# Author Info
+# Mage Arcana
+# Discord sirarcana
+
+# Shuttle Notes: erudite c:
+#
+
+- type: vessel
+  id: Erudite
+  parent: BaseVessel
+  name: DRD Erudite
+  description: A high-tech research platform by DRD. Originally designed as a Shipmind vessel, each Erudite includes an AI core, the experimental CTLA-160 Bluespace FTL drive, and a lightly over-taxed Z-Pinch reactor.
+  price: 94000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/erudite.yml
+  #guidebookPage: ShipyardErudite
+  class:
+  - Science
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Erudite
+  mapName: 'Erudite'
+  mapPath: /Maps/_Triad/Shuttles/CIV/erudite.yml
+  minPlayers: 0
+  stations:
+    Erudite:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Erudite SCI{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]

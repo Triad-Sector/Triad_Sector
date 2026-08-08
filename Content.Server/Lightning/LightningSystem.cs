@@ -132,8 +132,20 @@ public sealed partial class LightningSystem : SharedLightningSystem
         try
         {
             var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
-            _random.Shuffle(targets);
-            targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
+            // Triad: strike-attempt hook. Each candidate may adjust its effective priority and hit chance
+            // from live state (tesla coils bid by charge headroom) before the volley is sorted and rolled.
+            // Targets with no subscriber keep their static values, so behavior is unchanged for them.
+            // _random.Shuffle(targets);
+            // targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
+            var candidates = new List<(Entity<LightningTargetComponent> Target, int Priority, float HitProbability)>(targets.Count);
+            foreach (var target in targets)
+            {
+                var attempt = new LightningStrikeAttemptEvent(user, target.Comp.Priority, target.Comp.HitProbability);
+                RaiseLocalEvent(target, ref attempt);
+                candidates.Add((target, attempt.Priority, Math.Clamp(attempt.HitProbability, 0f, 1f)));
+            }
+            _random.Shuffle(candidates);
+            candidates.Sort((x, y) => y.Priority.CompareTo(x.Priority));
 
             int shootedCount = 0;
             int count = -1;
@@ -141,16 +153,16 @@ public sealed partial class LightningSystem : SharedLightningSystem
             {
                 count++;
 
-                if (count >= targets.Count) { break; }
+                if (count >= candidates.Count) { break; }
 
-                var curTarget = targets[count];
-                if (!_random.Prob(curTarget.Comp.HitProbability)) //Chance to ignore target
+                var curTarget = candidates[count];
+                if (!_random.Prob(curTarget.HitProbability)) //Chance to ignore target
                     continue;
 
-                ShootLightning(user, targets[count].Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
-                if (arcDepth - targets[count].Comp.LightningResistance > 0)
+                ShootLightning(user, curTarget.Target.Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
+                if (arcDepth - curTarget.Target.Comp.LightningResistance > 0)
                 {
-                    ShootRandomLightnings(targets[count].Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - targets[count].Comp.LightningResistance, triggerLightningEvents);
+                    ShootRandomLightnings(curTarget.Target.Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - curTarget.Target.Comp.LightningResistance, triggerLightningEvents);
                 }
                 shootedCount++;
             }
@@ -169,3 +181,15 @@ public sealed partial class LightningSystem : SharedLightningSystem
 /// <param name="Target">The entity that was struck by lightning.</param>
 [ByRefEvent]
 public readonly record struct HitByLightningEvent(EntityUid Source, EntityUid Target);
+
+/// <summary>
+/// Triad: raised directed on each candidate target before a lightning volley is sorted and rolled.
+/// Subscribers may adjust <see cref="Priority"/> and <see cref="HitProbability"/> from live state
+/// (e.g. a tesla coil bidding by charge headroom). Both start at the target's static
+/// LightningTargetComponent values; HitProbability is clamped to [0, 1] after the event.
+/// </summary>
+/// <param name="Source">The entity shooting the lightning volley</param>
+/// <param name="Priority">Effective sort priority for this volley; higher is struck first</param>
+/// <param name="HitProbability">Effective chance this target is not skipped by the roll</param>
+[ByRefEvent]
+public record struct LightningStrikeAttemptEvent(EntityUid Source, int Priority, float HitProbability);

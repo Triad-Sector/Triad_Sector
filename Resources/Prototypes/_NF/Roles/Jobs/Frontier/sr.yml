@@ -15,7 +15,7 @@
     - !type:RoleTimeRequirement
       role: JobStc
       time: 18000 # Triad - 5 hours
-  whitelisted: true
+  whitelisted: false # Triad true -> false
   startingGear: SrGear
   alwaysUseSpawner: true
   assignedCompany: Colonial
