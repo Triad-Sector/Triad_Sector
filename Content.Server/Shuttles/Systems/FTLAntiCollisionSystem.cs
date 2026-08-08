@@ -77,6 +77,19 @@ public sealed partial class FTLAntiCollisionSystem : EntitySystem
         if (TryComp<FTLComponent>(shuttle, out var ftlComp) && ftlComp.LinkedShuttle.HasValue)
             return;
 
+        // Triad: a ship that arrived docked is exactly where it asked to be, and the grid it welded to
+        // always sits within MinimumSafeDistance of it. GetAllDockedShuttles does not vouch for that
+        // grid (an FTLSolo shuttle's set is just itself, and stations carry no FTLLock), so the berth
+        // read as a collision and FindSafePosition, with the station blocking every candidate spot,
+        // fell through to its unchecked last resort: the docked bus teleported a few hundred metres in
+        // a random direction with the weld joint still attached. Separation is for proximity arrivals;
+        // a docked arrival is never a collision.
+        foreach (var dock in _dockingSystem.GetDocks(shuttle))
+        {
+            if (dock.Comp.Docked)
+                return;
+        }
+
         // Get all docked ships to this shuttle to ignore them in collision checks
         var dockedShips = new HashSet<EntityUid>();
         _shuttle.GetAllDockedShuttles(shuttle, dockedShips);
@@ -188,6 +201,10 @@ public sealed partial class FTLAntiCollisionSystem : EntitySystem
         var lastResortDistance = MinimumSafeDistance + (MaxRepositionAttempts * 30f);
         var lastResortAngle = _random.NextAngle();
         var lastResortOffset = lastResortAngle.ToVec() * lastResortDistance;
+
+        // Triad: unlike every attempt above, this position is never checked for clearance. If a ship
+        // ends up inside a hull after FTL, this line is the receipt.
+        Log.Warning($"FTL Anti-Collision: no clear position found for {ToPrettyString(shuttle)}; using unchecked last-resort offset of {lastResortDistance}m.");
 
         return originalPosition + lastResortOffset;
     }
