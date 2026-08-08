@@ -305,8 +305,12 @@ public sealed partial class PublicTransitSystem : EntitySystem
             if (Transform(consoleUid).GridUid != busUid)
                 continue;
 
+            // Triad: this was HideChat, which is documented as "hidden from the chat window", so every
+            // arrival and departure call was being spoken and then suppressed before any passenger
+            // could read it. GhostRangeLimit is the normal local-speech behaviour with ghosts held to
+            // the same range. hideLog stays on; these are ambient and do not belong in admin logs.
             _chat.TrySendInGameICMessage(consoleUid, message,
-                InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true, checkRadioPrefix: false,
+                InGameICChatType.Speak, ChatTransmitRange.GhostRangeLimit, hideLog: true, checkRadioPrefix: false,
                 ignoreActionBlocker: true);
         }
     }

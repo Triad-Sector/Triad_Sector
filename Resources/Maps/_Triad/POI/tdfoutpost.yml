@@ -16865,8 +16865,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-62.5
       parent: 1
-    - type: PriorityDock
-      tag: DockTransit
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -17047,8 +17045,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,-62.5
       parent: 1
-    - type: PriorityDock
-      tag: DockTransit
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -17753,6 +17749,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 2-A
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1395
     components:
     - type: Transform
@@ -17874,6 +17872,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 1-A
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1407
     components:
     - type: Transform
@@ -17954,6 +17954,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 1-B
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1415
     components:
     - type: Transform
@@ -18015,6 +18017,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 2-B
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1421
     components:
     - type: Transform
