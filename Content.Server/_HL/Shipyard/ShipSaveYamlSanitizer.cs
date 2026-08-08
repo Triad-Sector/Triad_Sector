@@ -136,6 +136,32 @@ public static class ShipSaveYamlSanitizer
         ["ShipyardConsole"] = "ShipyardListing",
     };
 
+    // Triad: serialized entity references outside ContainerContainer and Storage, which are the only
+    // two the prune below originally knew about. Anything dropped during sanitation, such as a mob
+    // filtered out by HumanoidAppearance while still buckled to a chair, left its uid behind in these
+    // fields and the loader then reported an invalid EntityUid reference for that component.
+    //
+    // Unordered sets: the entry is removed outright.
+    private static readonly Dictionary<string, string> UidSetFields = new(StringComparer.Ordinal)
+    {
+        ["EmbeddedContainer"] = "embeddedObjects",
+        ["Strap"] = "buckledEntities",
+    };
+
+    // Positional sequences: the entry is nulled in place, never removed. A revolver's ammo slots are
+    // indexed by cylinder position and the component asserts the count matches its capacity on init,
+    // so shortening the sequence would rotate every remaining round onto the wrong chamber.
+    private static readonly Dictionary<string, string> UidSlotFields = new(StringComparer.Ordinal)
+    {
+        ["RevolverAmmoProvider"] = "ammoSlots",
+    };
+
+    // Single optional references: the field is nulled.
+    private static readonly Dictionary<string, string> UidScalarFields = new(StringComparer.Ordinal)
+    {
+        ["EmbeddableProjectile"] = "embeddedIntoUid",
+    };
+
     public static void SanitizeShipSaveNode(MappingDataNode root, IPrototypeManager prototypeManager)
     {
         // Keep serialized nullspace empty so ship exports stay scoped to the grid payload.
@@ -693,6 +719,44 @@ public static class ShipSaveYamlSanitizer
 
                         foreach (var key in removeKeys)
                             storedItemsMap.Remove(key);
+
+                        continue;
+                    }
+
+                    // Triad: the three reference shapes described above the field tables.
+                    if (UidSetFields.TryGetValue(componentType, out var setField)
+                        && compMap.TryGet(setField, out SequenceDataNode? setSeq)
+                        && setSeq != null)
+                    {
+                        for (var idx = setSeq.Count - 1; idx >= 0; idx--)
+                        {
+                            if (setSeq[idx] is ValueDataNode entry && !entry.IsNull && removedEntityUids.Contains(entry.Value))
+                                setSeq.RemoveAt(idx);
+                        }
+
+                        continue;
+                    }
+
+                    if (UidSlotFields.TryGetValue(componentType, out var slotField)
+                        && compMap.TryGet(slotField, out SequenceDataNode? slotSeq)
+                        && slotSeq != null)
+                    {
+                        for (var idx = 0; idx < slotSeq.Count; idx++)
+                        {
+                            if (slotSeq[idx] is ValueDataNode entry && !entry.IsNull && removedEntityUids.Contains(entry.Value))
+                                slotSeq[idx] = ValueDataNode.Null();
+                        }
+
+                        continue;
+                    }
+
+                    if (UidScalarFields.TryGetValue(componentType, out var scalarField)
+                        && compMap.TryGet(scalarField, out ValueDataNode? scalarNode)
+                        && scalarNode != null
+                        && !scalarNode.IsNull
+                        && removedEntityUids.Contains(scalarNode.Value))
+                    {
+                        compMap[scalarField] = ValueDataNode.Null();
                     }
                 }
             }

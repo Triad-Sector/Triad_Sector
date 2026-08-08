@@ -85,6 +85,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, RemoveEmbeddedProjectileEvent>(OnEmbedRemove);
 
         SubscribeLocalEvent<EmbeddedContainerComponent, EntityTerminatingEvent>(OnEmbeddableTermination);
+        SubscribeLocalEvent<EmbeddableProjectileComponent, EntityTerminatingEvent>(OnEmbeddedTermination); // Triad: the other half, see the handler
         // Subscribe to initialize the origin grid on ProjectileGridPhaseComponent
         SubscribeLocalEvent<ProjectileGridPhaseComponent, ComponentStartup>(OnProjectileGridPhaseStartup);
         // Subscribe to ensure MetaDataComponent on projectile entities for networking
@@ -499,6 +500,26 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     private void OnEmbeddableTermination(Entity<EmbeddedContainerComponent> container, ref EntityTerminatingEvent args)
     {
         DetachAllEmbedded(container);
+    }
+
+    /// <summary>
+    /// Drops a deleted embedded entity from whatever it was stuck in.
+    /// </summary>
+    // Triad: only the container side of this pair was handled. EmbedDetach is the sole path that
+    // removes an entry from EmbeddedObjects, and deleting the embedded entity outright never runs it,
+    // so the target kept a dead uid indefinitely. EmbeddedObjects is a DataField, which is how those
+    // uids reached ship saves and made EmbeddedContainer the largest source of invalid-reference
+    // errors on load. The networked state was already hand-written to filter dead uids, which treated
+    // the symptom on the wire but left the set itself, and therefore the save, wrong.
+    private void OnEmbeddedTermination(Entity<EmbeddableProjectileComponent> embedded, ref EntityTerminatingEvent args)
+    {
+        if (embedded.Comp.EmbeddedIntoUid is not { } target)
+            return;
+
+        if (TryComp<EmbeddedContainerComponent>(target, out var container))
+            container.EmbeddedObjects.Remove(embedded.Owner);
+
+        embedded.Comp.EmbeddedIntoUid = null;
     }
 
     public void DetachAllEmbedded(Entity<EmbeddedContainerComponent> container)
