@@ -41,6 +41,12 @@ public sealed partial class PublicTransitSystem : EntitySystem
     /// </summary>
     public bool Enabled { get; private set; }
     public float FlyTime = 50f;
+
+    /// <summary>
+    /// How long before departure the boarding call goes out.
+    /// </summary>
+    // Triad: wait_time defaults to 40s, so this leaves a reasonable window to actually get aboard.
+    private static readonly TimeSpan DepartureWarning = TimeSpan.FromSeconds(20);
     public int Counter = 0;
     public List<EntityUid> StationList = new();
 
@@ -150,11 +156,19 @@ public sealed partial class PublicTransitSystem : EntitySystem
 
     private void OnShuttleArrival(EntityUid uid, TransitShuttleComponent comp, ref FTLCompletedEvent args)
     {
+        // Triad: the dwell clock starts here, on arrival, not back when we left. It used to be
+        // departure + FlyTime + WaitTime, so every second the trip ran over its estimate came out of
+        // the stop instead, and once the overrun exceeded the wait the bus left the moment it docked.
+        // Measuring from arrival means a stop is a stop regardless of what the trip did.
+        var waitTime = _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime);
+        comp.NextTransfer = _timing.CurTime + TimeSpan.FromSeconds(waitTime);
+        comp.DepartureAnnounced = false;
+
         if (!TryComp(comp.NextStation, out MetaDataComponent? metadata))
             return;
 
         AnnounceToBus(uid, Loc.GetString("public-transit-arrival",
-            ("destination", metadata.EntityName), ("waittime", _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime))));
+            ("destination", metadata.EntityName), ("waittime", waitTime)));
     }
 
     /// <summary>
@@ -200,13 +214,27 @@ public sealed partial class PublicTransitSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var comp, out var shuttle))
         {
-            if (comp.NextTransfer > curTime)
-                continue;
-
             // Triad: never stack a departure on top of a trip that is still running. This used to be
             // impossible to hit because the bus never actually left, so nothing noticed.
             if (HasComp<FTLComponent>(uid))
                 continue;
+
+            if (comp.NextTransfer > curTime)
+            {
+                // Triad: give passengers a boarding call before the doors go. One per stop.
+                if (!comp.DepartureAnnounced
+                    && comp.NextTransfer - curTime <= DepartureWarning
+                    && TryComp(comp.NextStation, out MetaDataComponent? upcoming))
+                {
+                    comp.DepartureAnnounced = true;
+                    AnnounceToBus(uid, Loc.GetString("public-transit-departure-warning",
+                        ("destination", upcoming.EntityName), ("time", (int) DepartureWarning.TotalSeconds)));
+                }
+
+                continue;
+            }
+
+            comp.DepartureAnnounced = false;
 
             // Triad: the cached destination can be deleted while it waits its turn, and Valid only
             // says the uid was once well formed, not that the stop is still there. Re-roll instead of
@@ -326,7 +354,10 @@ public sealed partial class PublicTransitSystem : EntitySystem
 
                 // Ensure the shuttle is undocked before initiating FTL travel
                 _dockSystem.UndockDocks(shuttle);
-                _shuttles.FTLToDock(shuttle, shuttleComp, destination, hyperspaceTime: 5f);
+                // Triad: the Update loop asks for the DockTransit berth and this path did not, so the
+                // bus's opening trip of the round always berthed wherever sorted first regardless of
+                // how the stop was mapped. Same tag both places.
+                _shuttles.FTLToDock(shuttle, shuttleComp, destination, hyperspaceTime: 5f, priorityTag: "DockTransit");
                 transitComp.NextTransfer = _timing.CurTime + TimeSpan.FromSeconds(_cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime));
 
                 //since the initial cached value of the next station is actually the one we are 'starting' from, we need to run the
