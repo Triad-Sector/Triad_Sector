@@ -252,11 +252,13 @@ public sealed partial class PublicTransitSystem : EntitySystem
                 comp.NextStation = newStop;
             }
 
-            //public-transit-arrival >> public-transit-instant, use waittime arg instead of flytime arg: The system is currently bugged
-            //_shuttles.FTLToDock is calling TryFTLDock, which bypasses the FTL delay and breaks OnShuttleArrival
-            //Standard FTL also occasionally overlaps the bus into stations so I have resorted to just reappropriating the message
-            AnnounceToBus(uid, Loc.GetString("public-transit-instant",
-                ("destination", destination.EntityName), /*("flytime", FlyTime),*/ ("waittime", waitTime)));
+            // Triad: the note that used to sit here said FTLToDock called TryFTLDock, which bypassed the
+            // FTL delay and broke OnShuttleArrival, and worked around it by announcing the arrival
+            // string on departure. That bypass is fixed at the source now: FTLToDock reads its docking
+            // config without teleporting the shuttle, so the trip actually takes FlyTime and the
+            // departure line can say so honestly.
+            AnnounceToBus(uid, Loc.GetString("public-transit-departure",
+                ("destination", destination.EntityName), ("flytime", (int) FlyTime)));
 
             // Ensure the shuttle is undocked before initiating FTL travel
             _dockSystem.UndockDocks(uid);

@@ -417,10 +417,15 @@ public sealed partial class ShuttleSystem
             hyperspace.TargetCoordinates = new EntityCoordinates(dock.DockedWith.Value, Vector2.Zero);
             hyperspace.TargetAngle = _transform.GetWorldRotation(dock.DockedWith.Value) + Math.PI;
         }
-        // Triad: the caller's priority tag was stored on the component and then never handed to dock
-        // selection, so "prefer the DockTransit berth" did nothing and the bus took whatever airlock
-        // sorted first. TryFTLDock has taken a tag all along; pass it.
-        else if (TryFTLDock(shuttleUid, component, target, out var config, priorityTag))
+        // Triad: this used to call TryFTLDock purely to read config.Coordinates, but that method is not
+        // a query. Its own summary says it "bypasses FTL travel time": it runs GetDockingConfig and
+        // then FTLDock, which SetCoordinates the shuttle straight onto the target, and on failure falls
+        // back to TryFTLProximity, which also moves it. So every FTLToDock teleported the shuttle to
+        // its destination during setup and only then ran the travel sequence that moved it again.
+        // That is the instant-arrival-then-FTL behaviour, and it is why arrival timing never lined up.
+        // GetDockingConfig on its own answers the same question without touching the shuttle; the real
+        // docking still happens in UpdateFTLArriving where it belongs.
+        else if (_dockSystem.GetDockingConfig(shuttleUid, target, priorityTag) is { } config)
         {
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
