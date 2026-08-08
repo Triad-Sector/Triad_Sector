@@ -4328,7 +4328,20 @@ entities:
       access:
       - - Armory
       - - Medical
-- proto: AirlockExternalGlassShuttleTransit
+- proto: AirlockGlass
+  entities:
+  - uid: 102
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -17.5,11.5
+      parent: 1
+  - uid: 103
+    components:
+    - type: Transform
+      pos: -17.5,10.5
+      parent: 1
+- proto: AirlockGlassShuttle
   entities:
   - uid: 99
     components:
@@ -4350,21 +4363,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 10.5,8.5
       parent: 1
-- proto: AirlockGlass
-  entities:
-  - uid: 102
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -17.5,11.5
-      parent: 1
-  - uid: 103
-    components:
-    - type: Transform
-      pos: -17.5,10.5
-      parent: 1
-- proto: AirlockGlassShuttle
-  entities:
   - uid: 104
     components:
     - type: Transform
@@ -4536,11 +4534,15 @@ entities:
     - type: Transform
       pos: 10.5,0.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 129
     components:
     - type: Transform
       pos: 11.5,0.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
     - type: Docking
       name: C1
   - uid: 130
@@ -4548,18 +4550,24 @@ entities:
     - type: Transform
       pos: 12.5,0.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 131
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 15.5,3.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 132
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 15.5,4.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
     - type: Docking
       name: C2
   - uid: 133
@@ -4568,6 +4576,8 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 15.5,5.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 134
     components:
     - type: Transform
