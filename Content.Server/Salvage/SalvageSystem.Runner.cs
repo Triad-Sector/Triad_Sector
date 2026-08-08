@@ -130,7 +130,7 @@ public sealed partial class SalvageSystem
     {
         // Started a mining mission so work out exempt entities
         if (TryComp<SalvageMiningExpeditionComponent>(
-                _mapSystem.GetMapOrInvalid(ev.TargetCoordinates.ToMap(EntityManager, _transform).MapId),
+                _mapSystem.GetMapOrInvalid(_transform.ToMapCoordinates(ev.TargetCoordinates).MapId),
                 out var mining))
         {
             var ents = new List<EntityUid>();

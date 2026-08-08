@@ -398,7 +398,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         string message;
         var podTransform = Transform(cryopod);
         var coordinates = _entityManager.GetComponent<TransformComponent>(cryopod).Coordinates;
-        var mapPos = coordinates.ToMap(_entityManager, EntityManager.System<SharedTransformSystem>());
+        var mapPos = EntityManager.System<SharedTransformSystem>().ToMapCoordinates(coordinates);
 
         // Check if it's at a named location (like a station or outpost)
         if (podTransform.GridUid != null && _entityManager.TryGetComponent<MetaDataComponent>(podTransform.GridUid.Value, out var gridMetadata))

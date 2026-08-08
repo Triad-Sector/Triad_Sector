@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared.Ghost;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -235,7 +235,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
         {
             var randVector = _random.NextVector2(component.MaxRandomRadius);
             newCoords = coords.Offset(randVector);
-            if (!_lookup.GetEntitiesIntersecting(newCoords.ToMap(EntityManager, _transform), LookupFlags.Static).Any())
+            if (!_lookup.GetEntitiesIntersecting(_transform.ToMapCoordinates(newCoords), LookupFlags.Static).Any())
             {
                 break;
             }

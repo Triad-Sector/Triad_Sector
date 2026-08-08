@@ -248,7 +248,7 @@ public sealed partial class PullController : VirtualController
             var pullerXform = _xformQuery.Get(puller);
             var pullerPosition = TransformSystem.GetMapCoordinates(pullerXform);
 
-            var movingTo = mover.MovingTo.ToMap(EntityManager, TransformSystem);
+            var movingTo = TransformSystem.ToMapCoordinates(mover.MovingTo);
 
             if (movingTo.MapId != pullerPosition.MapId)
             {

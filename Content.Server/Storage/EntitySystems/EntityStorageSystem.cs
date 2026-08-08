@@ -138,7 +138,7 @@ public sealed partial class EntityStorageSystem : SharedEntityStorageSystem
 
     private TileRef? GetOffsetTileRef(EntityUid uid, EntityStorageComponent component)
     {
-        var targetCoordinates = new EntityCoordinates(uid, component.EnteringOffset).ToMap(EntityManager, TransformSystem);
+        var targetCoordinates = TransformSystem.ToMapCoordinates(new EntityCoordinates(uid, component.EnteringOffset));
 
         if (_mapSystem.TryFindGridAt(targetCoordinates, out var gridId, out var grid))
         {

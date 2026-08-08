@@ -392,7 +392,7 @@ public sealed partial class BluespaceLockerSystem : EntitySystem
         switch (component.BehaviorProperties.DestroyType)
         {
             case BluespaceLockerDestroyType.Explode:
-                _explosionSystem.QueueExplosion(uid.ToCoordinates().ToMap(EntityManager, _transformSystem),
+                _explosionSystem.QueueExplosion(_transformSystem.ToMapCoordinates(uid.ToCoordinates()),
                     ExplosionSystem.DefaultExplosionPrototypeId, 4, 1, 2, uid, maxTileBreak: 0);
                 goto case BluespaceLockerDestroyType.Delete;
             case BluespaceLockerDestroyType.Delete:
