@@ -810,10 +810,17 @@ public sealed partial class ShuttleSystem
             // Couldn't dock somehow so just fallback to regular position FTL.
             if (config == null)
             {
+                // Triad: this is the one placement path with no overlap validation behind it, so it
+                // must never fire silently. If a shuttle ends up crooked inside a hull, this line is
+                // the receipt.
+                Log.Warning($"FTL arrival: no docking config for {ToPrettyString(uid)} at {ToPrettyString(target.EntityId)} (tag: {comp.PriorityTag ?? "none"}); falling back to unvalidated proximity placement.");
                 TryFTLProximity(uid, target.EntityId);
             }
             else
             {
+                // Triad: receipt for the docked path; pairs chosen at arrival time. Info on purpose:
+                // sawmill debug is suppressed by default and this is once per arrival.
+                Log.Info($"FTL arrival: docking {ToPrettyString(uid)} at {ToPrettyString(target.EntityId)} via {config.Docks.Count} pair(s): {string.Join(", ", config.Docks.Select(d => $"{d.DockAUid}->{d.DockBUid}"))}");
                 FTLDock((uid, xform), config);
             }
 
@@ -1175,6 +1182,13 @@ public sealed partial class ShuttleSystem
                 var bWorldPos = _transform.GetWorldPosition(dockBXform) + dockBXform.WorldRotation.ToWorldVec() / 2f;
 
                 var delta = bWorldPos - aWorldPos;
+
+                // Triad: this snap-translation happens AFTER the config's coordinates were validated
+                // for overlap, and nothing re-validates the shifted position. For a well-formed config
+                // it is millimetres; anything tile-scale means the shuttle is being moved somewhere
+                // nothing approved, so leave a receipt.
+                if (delta.LengthSquared() > 0.25f)
+                    Log.Warning($"FTLDock snap-translation moved {ToPrettyString(shuttle.Owner)} by {delta.Length():F2}m off its validated position (pair {config.Docks[0].DockAUid}->{config.Docks[0].DockBUid}).");
 
                 // Translate the entire shuttle grid by delta so the first pair coincides exactly.
                 // Important: only adjust position (not rotation) to avoid drifting post-dock.
