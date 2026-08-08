@@ -7,6 +7,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -87,7 +88,7 @@ public sealed partial class ChitinidSystem : EntitySystem
         }
 
         _popup.PopupEntity(Loc.GetString("chitzite-cough", ("name", Identity.Entity(ent, EntityManager))), ent);
-        _audio.PlayPvs("/Audio/Animals/cat_hiss.ogg", ent, AudioHelpers.WithVariation(0.15f));
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Animals/cat_hiss.ogg"), ent, AudioHelpers.WithVariation(0.15f));
 
         var chitzite = EnsureComp<CoughingUpChitziteComponent>(ent);
         chitzite.NextCough = _timing.CurTime + chitzite.CoughUpTime;

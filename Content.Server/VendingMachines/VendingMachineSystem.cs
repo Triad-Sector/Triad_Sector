@@ -529,7 +529,7 @@ namespace Content.Server.VendingMachines
 
             if (vendComponent.EjectRandomCounter < 1)
             {
-                _audioSystem.PlayPvs(_audioSystem.GetSound(vendComponent.SoundDeny), uid);
+                _audioSystem.PlayPvs(vendComponent.SoundDeny, uid);
                 _popupSystem.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-abused"), uid, PopupType.MediumCaution);
                 return;
             }

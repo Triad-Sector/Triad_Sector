@@ -377,7 +377,7 @@ namespace Content.Server._NF.M_Emp
         }
         private void PlayActivatedSound(EntityUid uid, SharedM_EmpGeneratorComponent component)
         {
-            _audio.PlayPvs(_audio.GetSound(component.ActivatedSound), uid);
+            _audio.PlayPvs(component.ActivatedSound, uid);
         }
     }
 

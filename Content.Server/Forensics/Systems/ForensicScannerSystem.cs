@@ -99,7 +99,7 @@ namespace Content.Server.Forensics
         private void GiveReward(EntityUid uidOrigin, EntityUid target, int spesoAmount, FixedPoint2 fmcAmount, string msg)
         {
             SoundSpecifier confirmSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
-            _audioSystem.PlayPvs(_audioSystem.GetSound(confirmSound), uidOrigin);
+            _audioSystem.PlayPvs(confirmSound, uidOrigin);
 
             if (spesoAmount > 0)
                 _bank.TrySectorDeposit(SectorBankAccount.TDF, spesoAmount, LedgerEntryType.AntiSmugglingBonus);

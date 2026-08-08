@@ -296,6 +296,6 @@ public sealed partial class SalvageSystem
 
     private void PlayDenySound(EntityUid uid, SalvageExpeditionConsoleComponent component)
     {
-        _audio.PlayPvs(_audio.GetSound(component.ErrorSound), uid);
+        _audio.PlayPvs(component.ErrorSound, uid);
     }
 }

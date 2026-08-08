@@ -242,9 +242,9 @@ namespace Content.Server.PDA.Ringer
             }
         }
 
-        private static string GetSound(Note note)
+        private static ResolvedSoundSpecifier GetSound(Note note)
         {
-            return new ResPath("/Audio/Effects/RingtoneNotes/" + note.ToString().ToLower()) + ".ogg";
+            return new ResolvedPathSpecifier(new ResPath("/Audio/Effects/RingtoneNotes/" + note.ToString().ToLower()) + ".ogg");
         }
     }
 

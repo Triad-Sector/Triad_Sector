@@ -1,4 +1,5 @@
 using Content.Shared.Popups;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
@@ -129,7 +130,7 @@ public sealed partial class StasisSystem : SharedStasisSystem
         }
 
         // Play the sound effect.
-        _audioSystem.PlayPvs(comp.StasisEnterSound, effectEnt);
+        _audioSystem.PlayPvs(new SoundPathSpecifier(comp.StasisEnterSound), effectEnt);
         comp.ClientEnterEffectEntity = effectEnt;
         Dirty(uid, comp);
     }
@@ -175,7 +176,7 @@ public sealed partial class StasisSystem : SharedStasisSystem
         }
 
         // Play the sound effect.
-        _audioSystem.PlayPvs(comp.StasisExitSound, effectEnt);
+        _audioSystem.PlayPvs(new SoundPathSpecifier(comp.StasisExitSound), effectEnt);
 
         // End the continuous animation.
         EndStasisContinuousAnimation(uid, comp);

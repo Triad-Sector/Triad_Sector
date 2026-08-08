@@ -20,7 +20,7 @@ namespace Content.Server.Atmos.EntitySystems
         private int _spaceWindSoundCooldown = 0;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        public string? SpaceWindSound { get; private set; } = "/Audio/Effects/space_wind.ogg";
+        public SoundSpecifier? SpaceWindSound { get; private set; } = new SoundPathSpecifier("/Audio/Effects/space_wind.ogg");
 
         private readonly HashSet<Entity<MovedByPressureComponent>> _activePressures = new(8);
 
@@ -98,7 +98,7 @@ namespace Content.Server.Atmos.EntitySystems
             // Don't play the space wind sound on tiles that are on fire...
             if (tile.PressureDifference > 15 && !tile.Hotspot.Valid)
             {
-                if (_spaceWindSoundCooldown == 0 && !string.IsNullOrEmpty(SpaceWindSound))
+                if (_spaceWindSoundCooldown == 0 && SpaceWindSound != null)
                 {
                     var coordinates = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
                     _audio.PlayPvs(SpaceWindSound, coordinates, AudioParams.Default.WithVariation(0.125f).WithVolume(MathHelper.Clamp(tile.PressureDifference / 10, 10, 100)));

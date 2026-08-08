@@ -117,7 +117,7 @@ public sealed partial class FelinidSystem : EntitySystem
         }
 
         _popupSystem.PopupEntity(Loc.GetString("hairball-cough", ("name", Identity.Entity(uid, EntityManager))), uid);
-        _audio.PlayPvs("/Audio/Nyanotrasen/Effects/Species/hairball.ogg", uid, AudioHelpers.WithVariation(0.15f));
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Nyanotrasen/Effects/Species/hairball.ogg"), uid, AudioHelpers.WithVariation(0.15f));
 
         EnsureComp<CoughingUpHairballComponent>(uid);
         args.Handled = true;
@@ -152,7 +152,7 @@ public sealed partial class FelinidSystem : EntitySystem
         Del(component.EatActionTarget.Value);
         component.EatActionTarget = null;
 
-        _audio.PlayPvs("/Audio/_DV/Items/eatfood.ogg", uid, AudioHelpers.WithVariation(0.15f));
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_DV/Items/eatfood.ogg"), uid, AudioHelpers.WithVariation(0.15f));
 
         _hungerSystem.ModifyHunger(uid, 50f, hunger);
 

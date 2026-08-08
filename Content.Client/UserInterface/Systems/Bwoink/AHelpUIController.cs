@@ -20,6 +20,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Audio;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Input.Binding;
@@ -138,7 +139,7 @@ public sealed partial class AHelpUIController: UIController, IOnSystemChanged<Bw
         if (message.PlaySound && localPlayer.UserId != message.TrueSender)
         {
             if (_aHelpSound != null && (_bwoinkSoundEnabled || !_adminManager.IsActive()))
-                _audio.PlayGlobal(_aHelpSound, Filter.Local(), false);
+                _audio.PlayGlobal(new ResolvedPathSpecifier(_aHelpSound), Filter.Local(), false);
             _clyde.RequestWindowAttention();
         }
 

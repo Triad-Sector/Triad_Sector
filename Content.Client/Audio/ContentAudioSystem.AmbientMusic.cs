@@ -434,7 +434,7 @@ public sealed partial class ContentAudioSystem
         }
 
         var strim = _audio.PlayGlobal(
-            path,
+            new ResolvedPathSpecifier(path),
             Filter.Local(),
             false,
             AudioParams.Default.WithVolume(volume))!;
@@ -444,7 +444,7 @@ public sealed partial class ContentAudioSystem
         if (fadein != 0)
             FadeIn(_ambientMusicStream, strim.Value.Component, fadein);
 
-        _timeUntilNextAmbientTrack = (float)_audio.GetAudioLength(path).TotalSeconds;
+        _timeUntilNextAmbientTrack = (float)_audio.GetAudioLength(new ResolvedPathSpecifier(path)).TotalSeconds;
     }
 
     /// <summary>

@@ -84,7 +84,7 @@ public sealed partial class CrateMachineSystem : SharedCrateMachineSystem
                     {
                         KeyFrames =
                         {
-                            new AnimationTrackPlaySound.KeyFrame(_audioSystem.GetSound(component.OpeningSound), 0),
+                            new AnimationTrackPlaySound.KeyFrame(_audioSystem.ResolveSound(component.OpeningSound), 0),
                         }
                     }
                 );
@@ -122,7 +122,7 @@ public sealed partial class CrateMachineSystem : SharedCrateMachineSystem
                     {
                         KeyFrames =
                         {
-                            new AnimationTrackPlaySound.KeyFrame(_audioSystem.GetSound(component.ClosingSound), 0.5f),
+                            new AnimationTrackPlaySound.KeyFrame(_audioSystem.ResolveSound(component.ClosingSound), 0.5f),
                         }
                     }
                 );
