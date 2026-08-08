@@ -1,3 +1,4 @@
+using Content.Client.UserInterface.Controls;
 using Content.Shared._Goobstation.Weapons.AmmoSelector;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
@@ -10,10 +11,9 @@ namespace Content.Client._Goobstation.AmmoSelector;
 [UsedImplicitly]
 public sealed class AmmoSelectorMenuBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IClyde _displayManager = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
+    [Dependency] private readonly IPrototypeManager _protoMan = default!;
 
-    private AmmoSelectorMenu? _menu;
+    private SimpleRadialMenu? _menu;
 
     public AmmoSelectorMenuBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -24,16 +24,37 @@ public sealed class AmmoSelectorMenuBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _menu = this.CreateWindow<AmmoSelectorMenu>();
-        _menu.SetEntity(Owner);
-        _menu.SendAmmoSelectorSystemMessageAction += SendAmmoSelectorSystemMessage;
+        if (!EntMan.TryGetComponent<AmmoSelectorComponent>(Owner, out var ammoSelector))
+            return;
 
-        var vpSize = _displayManager.ScreenSize;
-        _menu.OpenCenteredAt(_inputManager.MouseScreenPosition.Position / vpSize);
+        var actions = GetAmmoSelectorActions(ammoSelector.Prototypes);
+
+        _menu = this.CreateWindow<SimpleRadialMenu>();
+        _menu.Track(Owner);
+        _menu.SetButtons(actions);
+        _menu.OpenOverMouseScreenPosition();
     }
 
-    public void SendAmmoSelectorSystemMessage(ProtoId<SelectableAmmoPrototype> protoId)
+    private IEnumerable<RadialMenuActionOption<ProtoId<SelectableAmmoPrototype>>> GetAmmoSelectorActions(HashSet<ProtoId<SelectableAmmoPrototype>> protoIds)
     {
-        SendPredictedMessage(new AmmoSelectedMessage(protoId));
+        var actions = new List<RadialMenuActionOption<ProtoId<SelectableAmmoPrototype>>>();
+
+        foreach (var selectableAmmoId in protoIds)
+        {
+            if (!_protoMan.TryIndex(selectableAmmoId, out var selectableAmmo))
+                continue;
+
+            var action = new RadialMenuActionOption<ProtoId<SelectableAmmoPrototype>>(OnAmmoSelected, selectableAmmoId)
+            {
+                ToolTip = selectableAmmo.Desc,
+                IconSpecifier = RadialMenuIconSpecifier.With(selectableAmmo.Icon)
+            };
+
+            actions.Add(action);
+        }
+
+        return actions;
     }
+
+    private void OnAmmoSelected(ProtoId<SelectableAmmoPrototype> protoId) => SendPredictedMessage(new AmmoSelectedMessage(protoId));
 }
