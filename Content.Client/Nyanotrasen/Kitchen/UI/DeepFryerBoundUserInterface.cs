@@ -58,7 +58,7 @@ namespace Content.Client.Nyanotrasen.Kitchen.UI
             if (!disposing)
                 return;
 
-            _window?.Dispose();
+            _window?.Close();
         }
     }
 }

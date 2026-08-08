@@ -43,21 +43,21 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 {
     public const string ProjectileFixture = "projectile";
 
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedGunSystem _guns = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedCameraRecoilSystem _sharedCameraRecoil = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IParallelManager _parallel = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!; // Mono
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private DamageableSystem _damageableSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedGunSystem _guns = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedCameraRecoilSystem _sharedCameraRecoil = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private IParallelManager _parallel = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IConfigurationManager _cfg = default!; // Mono
 
     // Cache of projectiles waiting for collision checks
     private readonly ConcurrentQueue<(EntityUid Uid, ProjectileComponent Component, EntityUid Target)> _pendingCollisionChecks = new();
@@ -85,6 +85,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, RemoveEmbeddedProjectileEvent>(OnEmbedRemove);
 
         SubscribeLocalEvent<EmbeddedContainerComponent, EntityTerminatingEvent>(OnEmbeddableTermination);
+        SubscribeLocalEvent<EmbeddableProjectileComponent, EntityTerminatingEvent>(OnEmbeddedTermination); // Triad: the other half, see the handler
         // Subscribe to initialize the origin grid on ProjectileGridPhaseComponent
         SubscribeLocalEvent<ProjectileGridPhaseComponent, ComponentStartup>(OnProjectileGridPhaseStartup);
         // Subscribe to ensure MetaDataComponent on projectile entities for networking
@@ -499,6 +500,26 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     private void OnEmbeddableTermination(Entity<EmbeddedContainerComponent> container, ref EntityTerminatingEvent args)
     {
         DetachAllEmbedded(container);
+    }
+
+    /// <summary>
+    /// Drops a deleted embedded entity from whatever it was stuck in.
+    /// </summary>
+    // Triad: only the container side of this pair was handled. EmbedDetach is the sole path that
+    // removes an entry from EmbeddedObjects, and deleting the embedded entity outright never runs it,
+    // so the target kept a dead uid indefinitely. EmbeddedObjects is a DataField, which is how those
+    // uids reached ship saves and made EmbeddedContainer the largest source of invalid-reference
+    // errors on load. The networked state was already hand-written to filter dead uids, which treated
+    // the symptom on the wire but left the set itself, and therefore the save, wrong.
+    private void OnEmbeddedTermination(Entity<EmbeddableProjectileComponent> embedded, ref EntityTerminatingEvent args)
+    {
+        if (embedded.Comp.EmbeddedIntoUid is not { } target)
+            return;
+
+        if (TryComp<EmbeddedContainerComponent>(target, out var container))
+            container.EmbeddedObjects.Remove(embedded.Owner);
+
+        embedded.Comp.EmbeddedIntoUid = null;
     }
 
     public void DetachAllEmbedded(Entity<EmbeddedContainerComponent> container)

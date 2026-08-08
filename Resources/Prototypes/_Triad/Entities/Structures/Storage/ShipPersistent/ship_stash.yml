@@ -1,9 +1,7 @@
 - type: entity
-  id: BasePersistentStorage
   abstract: true
+  id: BasePersistentStorage
   components:
-  - type: HLPersistOnShipSave
-    saveContents: true
   - type: Appearance
   - type: Storage
     maxItemSize: Large
@@ -21,45 +19,47 @@
     scale: 1.5
     requireNoGrid: true
     shape: square
+  - type: HLPersistOnShipSave
+    saveContents: true
 
 - type: entity
-  parent: [BaseStorageStructure, BasePersistentStorage]
-  id: BasePersistentShipStorageStash
   abstract: true
+  parent: [ BaseStorageStructure, BasePersistentStorage ]
+  id: BasePersistentShipStorageStash
   components:
   - type: Sprite
     noRot: true
 
 - type: entity
+  abstract: true
   parent: BasePersistentStorage
   id: BasePersistentShipStorageStashWallmount
-  abstract: true
   placement:
     mode: SnapgridCenter
   components:
-    - type: Transform
-      noRot: false
-    - type: Sprite
-      drawdepth: WallMountedItems
-      noRot: false
-    - type: InteractionOutline
-    - type: Clickable
-    - type: WallMount
-      arc: 175
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          ents: []
-    - type: UserInterface
-      interfaces:
-        enum.StorageUiKey.Key:
-          type: StorageBoundUserInterface
-    - type: Storage
-      grid:
-      - 0,0,0,0
-    - type: PlaceableSurface
-      placeCentered: true
-      isPlaceable: false
+  - type: Transform
+    noRot: false
+  - type: Sprite
+    drawdepth: WallMountedItems
+    noRot: false
+  - type: InteractionOutline
+  - type: Clickable
+  - type: WallMount
+    arc: 175
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Storage
+    grid:
+    - 0,0,0,0
+  - type: PlaceableSurface
+    placeCentered: true
+    isPlaceable: false
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -67,18 +67,18 @@
   name: civilian storage stash
   description: Miscellaneous everyday supplies and personal items. Preserves stored items across ship deployments.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/civilian_storage_stash.rsi
-      state: civilian_storage_stash
-    - type: Storage
-      grid:
-      - 0,0,3,7
-      - 5,0,11,7
-    - type: Construction
-      graph: CivilianStorageStashGraph
-      node: CivilianStorageStashNode
-    - type: ShipSaveLimit
-      limitId: CivilianStash
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/ShipStashes/civilian_storage_stash.rsi
+    state: civilian_storage_stash
+  - type: Storage
+    grid:
+    - 0,0,3,7
+    - 5,0,11,7
+  - type: Construction
+    graph: CivilianStorageStashGraph
+    node: CivilianStorageStashNode
+  - type: ShipSaveLimit
+    limitId: CivilianStash
 
 - type: entity
   parent: CivilianStorageStash
@@ -86,23 +86,23 @@
   name: military storage stash
   description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/military_storage_stash.rsi
-      state: military_storage_rsi
-    - type: Storage
-      maxItemSize: Ginormous
-    - type: Construction
-      graph: MilitaryStorageStashGraph
-      node: MilitaryStorageStashNode
-    - type: ShipSaveLimit
-      limitId: MilitaryStash
-    - type: LimitedStorage
-      limits:
-      - popup: triad-storage-limit-too-many-advanced-backpacks
-        count: 1
-        whitelist:
-          tags:
-          - AdvancedTacticalBackpack
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/ShipStashes/military_storage_stash.rsi
+    state: military_storage_rsi
+  - type: Storage
+    maxItemSize: Ginormous
+  - type: Construction
+    graph: MilitaryStorageStashGraph
+    node: MilitaryStorageStashNode
+  - type: ShipSaveLimit
+    limitId: MilitaryStash
+  - type: LimitedStorage
+    limits:
+    - popup: triad-storage-limit-too-many-advanced-backpacks
+      count: 1
+      whitelist:
+        tags:
+        - AdvancedTacticalBackpack
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -110,39 +110,39 @@
   name: medical sanitized stash
   description: Sterile stash of clean medical supplies. Preserves stored items across ship deployments.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/medical_secure_storage.rsi
-      state: medical_secure_storage
-    - type: Storage
-      grid:
-      - 0,0,2,1
-      - 0,3,2,6
-      - 4,0,9,6
-      maxItemSize: Ginormous
-      whitelist:
-        components:
-          - Pill
-          - Hypospray
-          - HandLabeler
-        tags:
-          - FitsInMedicalStash
-          - PillCanister
-          - CentrifugeCompatible
-          - Syringe
-          - Ointment
-          - Brutepack
-          - Bloodpack
-          - Gauze
-          - Bottle
-          - GlassBeaker
-          - ChemDispensable
-          - CigPack
-          - Medkit
-    - type: Construction
-      graph: MedicalSecureStorageGraph
-      node: MedicalSecureStorageNode
-    - type: ShipSaveLimit
-      limitId: MedicalStash
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/ShipStashes/medical_secure_storage.rsi
+    state: medical_secure_storage
+  - type: Storage
+    grid:
+    - 0,0,2,1
+    - 0,3,2,6
+    - 4,0,9,6
+    maxItemSize: Ginormous
+    whitelist:
+      components:
+      - Pill
+      - Hypospray
+      - HandLabeler
+      tags:
+      - FitsInMedicalStash
+      - PillCanister
+      - CentrifugeCompatible
+      - Syringe
+      - Ointment
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Bottle
+      - GlassBeaker
+      - ChemDispensable
+      - CigPack
+      - Medkit
+  - type: Construction
+    graph: MedicalSecureStorageGraph
+    node: MedicalSecureStorageNode
+  - type: ShipSaveLimit
+    limitId: MedicalStash
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -150,64 +150,64 @@
   name: botanical greenhouse stash
   description: Assorted seeds, plants, and gardening gear stash. Contents are securely preserved across ship operations.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/botany_storage_unit.rsi
-      state: botany_storage_unit
-    - type: Storage
-      grid:
-      - 0,0,0,0
-      - 0,2,0,2
-      - 2,0,2,0
-      - 2,2,2,2
-      - 4,0,4,0
-      - 4,2,4,2
-      - 0,4,4,6
-      - 6,0,9,6
-      maxItemSize: Ginormous
-      whitelist:
-        components:
-        - Produce
-        - Seed
-        - HandLabeler
-        tags:
-        - FitsInBotanicalStash
-        - BotanyShovel
-        - BotanyHatchet
-        - PlantSampleTaker
-        - Hoe
-        - BotanyHoe
-        - PlantAnalyzer
-    - type: Construction
-      graph: BotanicalStorageUnitGraph
-      node: BotanicalStorageUnitNode
-    - type: ShipSaveLimit
-      limitId: HydroponicsStash
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/ShipStashes/botany_storage_unit.rsi
+    state: botany_storage_unit
+  - type: Storage
+    grid:
+    - 0,0,0,0
+    - 0,2,0,2
+    - 2,0,2,0
+    - 2,2,2,2
+    - 4,0,4,0
+    - 4,2,4,2
+    - 0,4,4,6
+    - 6,0,9,6
+    maxItemSize: Ginormous
+    whitelist:
+      components:
+      - Produce
+      - Seed
+      - HandLabeler
+      tags:
+      - FitsInBotanicalStash
+      - BotanyShovel
+      - BotanyHatchet
+      - PlantSampleTaker
+      - Hoe
+      - BotanyHoe
+      - PlantAnalyzer
+  - type: Construction
+    graph: BotanicalStorageUnitGraph
+    node: BotanicalStorageUnitNode
+  - type: ShipSaveLimit
+    limitId: HydroponicsStash
 
 - type: entity
-  id: FuelStorageStash
   parent: BasePersistentShipStorageStashWallmount
+  id: FuelStorageStash
   name: fuel stash
   description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
   components:
-    - type: Sprite
-      sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
-      layers:
-      - state: fuel
-        map: ["enum.StorageVisualLayers.Base"]
-      - state: fuel_door
-        map: ["enum.StorageVisualLayers.Door"]
-    - type: Storage
-      grid:
-      - 0,0,7,3
-      whitelist:
-        tags:
-        - FitsInFuelStash
-    - type: Construction
-      graph: FuelStorageStashGraph
-      node: FuelStorageStashNode
-    - type: ShipSaveLimit
-      limitId: FuelStash
-    - type: EntityStorageVisuals
-      stateBaseClosed: fuel
-      stateDoorOpen: fuel_open
-      stateDoorClosed: fuel_door
+  - type: Sprite
+    sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
+    layers:
+    - state: fuel
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: fuel_door
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    whitelist:
+      tags:
+      - FitsInFuelStash
+  - type: EntityStorageVisuals
+    stateBaseClosed: fuel
+    stateDoorOpen: fuel_open
+    stateDoorClosed: fuel_door
+  - type: Construction
+    graph: FuelStorageStashGraph
+    node: FuelStorageStashNode
+  - type: ShipSaveLimit
+    limitId: FuelStash

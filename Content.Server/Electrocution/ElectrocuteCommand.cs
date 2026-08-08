@@ -2,20 +2,20 @@ using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Console;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Electrocution
 {
     [AdminCommand(AdminFlags.Fun)]
-    public sealed class ElectrocuteCommand : IConsoleCommand
+    public sealed partial class ElectrocuteCommand : IConsoleCommand
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
+        [Dependency] private IEntityManager _entManager = default!;
 
         public string Command => "electrocute";
         public string Description => Loc.GetString("electrocute-command-description");
         public string Help => $"{Command} <uid> <seconds> <damage>";
 
-        [ValidatePrototypeId<StatusEffectPrototype>]
-        public const string ElectrocutionStatusEffect = "Electrocution";
+        public static readonly ProtoId<StatusEffectPrototype> ElectrocutionStatusEffect = "Electrocution";
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {

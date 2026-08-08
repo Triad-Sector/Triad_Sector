@@ -17,7 +17,7 @@ namespace Content.Server._Triad.Speech.EntitySystems;
 // this system adds the drawl-specific phonetics and the data-driven per-flavor word list + tic pools
 // (IDrawlAccentComponent). Renamed from SouthernAccentSystem so the shared role is obvious; a future
 // upstream edit to that file will surface here as a rename/modify conflict.
-public sealed class DrawlAccentSystem : EntitySystem
+public sealed partial class DrawlAccentSystem : EntitySystem
 {
     // Drawl-specific phonetics (not shared): "and" -> "an'", "would've" -> "woulda", standalone "I" -> "Ah".
     // The and/d've regexes are IgnoreCase (case-preserving via the capture / MatchCase) so a sentence-initial
@@ -28,8 +28,8 @@ public sealed class DrawlAccentSystem : EntitySystem
     // contractions ("I'm"/"I'll") so they don't collide with the prefix's capital-handling.
     private static readonly Regex RegexI = new(@"\bI\b(?!')");
 
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

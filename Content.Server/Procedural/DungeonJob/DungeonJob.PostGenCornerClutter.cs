@@ -22,7 +22,7 @@ public sealed partial class DungeonJob
 
         foreach (var tile in dungeon.CorridorTiles)
         {
-            var blocked = _anchorable.TileFree(_grid, tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask);
+            var blocked = _anchorable.TileFree((_gridUid, _grid), tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask);
 
             if (blocked)
                 continue;

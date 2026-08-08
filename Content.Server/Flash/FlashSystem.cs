@@ -26,20 +26,20 @@ using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Flash
 {
-    internal sealed class FlashSystem : SharedFlashSystem
+    internal sealed partial class FlashSystem : SharedFlashSystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly AudioSystem _audio = default!;
-        [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
-        [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly ExamineSystemShared _examine = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly PopupSystem _popup = default!;
-        [Dependency] private readonly StunSystem _stun = default!;
-        [Dependency] private readonly TagSystem _tag = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
+        [Dependency] private AppearanceSystem _appearance = default!;
+        [Dependency] private AudioSystem _audio = default!;
+        [Dependency] private SharedChargesSystem _sharedCharges = default!;
+        [Dependency] private EntityLookupSystem _entityLookup = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private ExamineSystemShared _examine = default!;
+        [Dependency] private InventorySystem _inventory = default!;
+        [Dependency] private PopupSystem _popup = default!;
+        [Dependency] private StunSystem _stun = default!;
+        [Dependency] private TagSystem _tag = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
 
         public override void Initialize()
         {

@@ -20,8 +20,8 @@ namespace Content.Client.VendingMachines.UI
     [GenerateTypedNameReferences]
     public sealed partial class VendingMachineMenu : FancyWindow
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IEntityManager _entityManager = default!;
         private readonly Dictionary<EntProtoId, EntityUid> _dummies = [];
 
         public event Action<GUIBoundKeyEventArgs, ListData>? OnItemSelected;
@@ -163,7 +163,7 @@ namespace Content.Client.VendingMachines.UI
             // determined dynamically by their contents/inventory), it then falls back to the default mystery
             // hardcoded value of 20xMarketModifier.
             var cost = 20;
-            if (prototype != null && prototype.TryGetComponent<StaticPriceComponent>(out var priceComponent, _entityManager.ComponentFactory))
+            if (prototype != null && prototype.TryComp<StaticPriceComponent>(out var priceComponent, _entityManager.ComponentFactory))
             {
                 if (priceComponent.Price != 0)
                 {
@@ -172,8 +172,8 @@ namespace Content.Client.VendingMachines.UI
                 }
                 else
                 {
-                    if (prototype.TryGetComponent<StackPriceComponent>(out var stackPrice, _entityManager.ComponentFactory)
-                        && prototype.TryGetComponent<StackComponent>(out var stack, _entityManager.ComponentFactory))
+                    if (prototype.TryComp<StackPriceComponent>(out var stackPrice, _entityManager.ComponentFactory)
+                        && prototype.TryComp<StackComponent>(out var stack, _entityManager.ComponentFactory))
                     {
                         var price = stackPrice.Price * stack.Count;
                         cost = (int)(price * priceModifier);
@@ -185,7 +185,7 @@ namespace Content.Client.VendingMachines.UI
             else
                 cost = (int)(cost * priceModifier);
 
-            if (prototype != null && prototype.TryGetComponent<SolutionContainerManagerComponent>(out var priceSolutions, _entityManager.ComponentFactory))
+            if (prototype != null && prototype.TryComp<SolutionContainerManagerComponent>(out var priceSolutions, _entityManager.ComponentFactory))
             {
                 if (priceSolutions.Solutions != null)
                 {
@@ -211,11 +211,11 @@ namespace Content.Client.VendingMachines.UI
             {
                 var price = 0.0;
 
-                if (prototype.TryGetComponent<StaticPriceComponent>(out var staticComp, _entityManager.ComponentFactory) && staticComp.VendPrice > 0.0)
+                if (prototype.TryComp<StaticPriceComponent>(out var staticComp, _entityManager.ComponentFactory) && staticComp.VendPrice > 0.0)
                 {
                     price += staticComp.VendPrice;
                 }
-                else if (prototype.TryGetComponent<StackPriceComponent>(out var stackComp, _entityManager.ComponentFactory) && stackComp.VendPrice > 0.0)
+                else if (prototype.TryComp<StackPriceComponent>(out var stackComp, _entityManager.ComponentFactory) && stackComp.VendPrice > 0.0)
                 {
                     price += stackComp.VendPrice;
                 }

@@ -19,22 +19,23 @@ using Robust.Shared.Physics;
 
 namespace Content.Shared.Construction;
 
-public abstract class SharedFlatpackSystem : EntitySystem
+public abstract partial class SharedFlatpackSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
-    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] protected readonly MachinePartSystem MachinePart = default!;
-    [Dependency] protected readonly SharedMaterialStorageSystem MaterialStorage = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly AnchorableSystem _anchorable = default!; // Mono
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] protected IPrototypeManager PrototypeManager = default!;
+    [Dependency] protected SharedAppearanceSystem Appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] protected MachinePartSystem MachinePart = default!;
+    [Dependency] protected SharedMaterialStorageSystem MaterialStorage = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private AnchorableSystem _anchorable = default!; // Mono
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -82,7 +83,7 @@ public abstract class SharedFlatpackSystem : EntitySystem
         }
 
         if (!PrototypeManager.Resolve(comp.Entity, out var proto) ||
-            !proto.TryGetComponent<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
+            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
         {
             return;
         }
@@ -90,7 +91,7 @@ public abstract class SharedFlatpackSystem : EntitySystem
         var (layer, mask) = SharedPhysicsSystem.GetHardCollision(fixture);
         var buildPos = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
 
-        if (!_anchorable.TileFree(gridComp, buildPos, layer, mask))
+        if (!_anchorable.TileFree((grid, gridComp), buildPos, layer, mask))
         {
             _popup.PopupPredicted(Loc.GetString("flatpack-unpack-no-room"), uid, args.User);
             return;
@@ -100,7 +101,7 @@ public abstract class SharedFlatpackSystem : EntitySystem
         {
             var spawn = Spawn(flatpackEntity, _map.GridTileToLocal(grid, gridComp, buildPos));
             if (TryComp(spawn, out TransformComponent? spawnXform)) // Frontier: rotatable flatpacks
-                spawnXform.LocalRotation = xform.LocalRotation.GetCardinalDir().ToAngle(); // Frontier: rotatable flatpacks
+                _transform.SetLocalRotation(spawn, xform.LocalRotation.GetCardinalDir().ToAngle(), spawnXform); // Frontier: rotatable flatpacks
             _adminLogger.Add(LogType.Construction,
                 LogImpact.Low,
                 $"{ToPrettyString(args.User):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");

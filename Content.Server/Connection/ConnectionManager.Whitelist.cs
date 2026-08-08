@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Connection.Whitelist;
 using Content.Server.Connection.Whitelist.Conditions;
@@ -7,6 +7,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players.PlayTimeTracking;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Connection;
 

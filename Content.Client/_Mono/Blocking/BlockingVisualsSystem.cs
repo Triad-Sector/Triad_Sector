@@ -6,9 +6,10 @@ using Robust.Client.Graphics;
 
 namespace Content.Client._Mono.Blocking;
 
-public sealed class BlockingVisualsSystem : SharedBlockingSystem
+public sealed partial class BlockingVisualsSystem : SharedBlockingSystem
 {
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private ShaderInstance _shader = default!;
 
@@ -36,9 +37,18 @@ public sealed class BlockingVisualsSystem : SharedBlockingSystem
         if (!Resolve(uid, ref component, ref sprite, false))
             return;
 
-        sprite.PostShader = enabled ? _shader : null;
-        sprite.GetScreenTexture = enabled;
-        sprite.RaiseShaderEvent = enabled;
+        if (enabled)
+        {
+            _sprite.SetPostShader((uid, sprite), new SpriteComponent.PostShaderArgs("Blocking", _shader)
+            {
+                GetScreenTexture = true,
+                RaiseShaderEvent = true,
+            });
+        }
+        else
+        {
+            _sprite.RemovePostShader((uid, sprite), "Blocking");
+        }
     }
     private void OnStartup(EntityUid uid, BlockingVisualsComponent component, ComponentStartup args)
     {

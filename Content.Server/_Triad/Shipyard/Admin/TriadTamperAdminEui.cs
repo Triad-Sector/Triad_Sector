@@ -16,15 +16,15 @@ using Robust.Shared.Network;
 
 namespace Content.Server._Triad.Shipyard.Admin;
 
-public sealed class TriadTamperAdminEui : BaseEui, ITriadTamperAuditObserver
+public sealed partial class TriadTamperAdminEui : BaseEui, ITriadTamperAuditObserver
 {
-    [Dependency] private readonly ITriadShipyardKeyStore _keyStore = default!;
-    [Dependency] private readonly ITriadShipyardAuditLog _auditLog = default!;
-    [Dependency] private readonly ITriadShipyardPermitStore _permitStore = default!;
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly TriadTamperAdminEuiRegistry _registry = default!;
+    [Dependency] private ITriadShipyardKeyStore _keyStore = default!;
+    [Dependency] private ITriadShipyardAuditLog _auditLog = default!;
+    [Dependency] private ITriadShipyardPermitStore _permitStore = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private TriadTamperAdminEuiRegistry _registry = default!;
 
     private int _currentPage;
     private int _currentPageSize = 50;

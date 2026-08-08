@@ -2653,11 +2653,15 @@ entities:
     - type: Transform
       pos: -10.5,-29.5
       parent: 2
+    - type: PriorityDock # Triad: bus berth; debris east of the frontage filters the swing to westward
+      tag: DockTransit
   - uid: 3018
     components:
     - type: Transform
       pos: -11.5,-29.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 3053
     components:
     - type: Transform
@@ -2668,6 +2672,8 @@ entities:
     - type: Transform
       pos: -9.5,-29.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
 - proto: AltarConvertBlue
   entities:
   - uid: 1737

@@ -24,20 +24,20 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.RCD;
 
-public sealed class RCDConstructionGhostSystem : EntitySystem
+public sealed partial class RCDConstructionGhostSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IPlacementManager _placementManager = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefs = default!;
-    [Dependency] private readonly RCDSystem _rcdSystem = default!;
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IPlacementManager _placementManager = default!;
+    [Dependency] private ITileDefinitionManager _tileDefs = default!;
+    [Dependency] private RCDSystem _rcdSystem = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
     // Triad: deconstruct mode computes its own cursor-aimed layer (no placement mode runs), so it needs cursor +
     // grid access the construct placement mode gets for free.
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private IInputManager _inputManager = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
 
     private string _placementMode = typeof(AlignRCDConstruction).Name;
     // Triad: RPD port from funky-station — pipe-layer-aware ghost for RPDs + mirror-prototype flip toggle.
@@ -230,7 +230,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             return;
 
         var mouseMap = _eyeManager.PixelToMap(mouseScreen.Position);
-        if (!_mapManager.TryFindGridAt(mouseMap, out var gridUid, out var grid))
+        if (!_mapSystem.TryFindGridAt(mouseMap, out var gridUid, out var grid))
             return;
 
         var localPos = System.Numerics.Vector2.Transform(mouseMap.Position, _transformSystem.GetInvWorldMatrix(gridUid));

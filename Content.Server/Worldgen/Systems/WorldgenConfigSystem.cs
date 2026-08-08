@@ -17,14 +17,14 @@ namespace Content.Server.Worldgen.Systems;
 /// <summary>
 ///     This handles configuring world generation during round start.
 /// </summary>
-public sealed class WorldgenConfigSystem : EntitySystem
+public sealed partial class WorldgenConfigSystem : EntitySystem
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IConsoleHost _conHost = default!;
-    [Dependency] private readonly IMapManager _map = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ISerializationManager _ser = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IConsoleHost _conHost = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private ISerializationManager _ser = default!;
 
     private bool _enabled;
     private string _worldgenConfig = default!;
@@ -53,7 +53,7 @@ public sealed class WorldgenConfigSystem : EntitySystem
             return;
         }
 
-        var map = _map.GetMapEntityId(new MapId(mapInt));
+        var map = _map.GetMapOrInvalid(new MapId(mapInt));
 
         if (!_proto.TryIndex<WorldgenConfigPrototype>(args[1], out var proto))
         {
@@ -73,7 +73,7 @@ public sealed class WorldgenConfigSystem : EntitySystem
         if (_enabled == false)
             return;
 
-        var target = _map.GetMapEntityId(_gameTicker.DefaultMap);
+        var target = _map.GetMapOrInvalid(_gameTicker.DefaultMap);
         Log.Debug($"Trying to configure {_gameTicker.DefaultMap}, aka {ToPrettyString(target)} aka {target}");
         var cfg = _proto.Index<WorldgenConfigPrototype>(_worldgenConfig);
 

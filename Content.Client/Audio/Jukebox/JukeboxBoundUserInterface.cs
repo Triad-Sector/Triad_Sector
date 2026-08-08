@@ -1,14 +1,15 @@
 using Content.Shared.Audio.Jukebox;
 using Robust.Client.Audio;
 using Robust.Client.UserInterface;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Audio.Jukebox;
 
-public sealed class JukeboxBoundUserInterface : BoundUserInterface
+public sealed partial class JukeboxBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
 
     private readonly SharedJukeboxSystem _sharedJukeboxSystem = default!; // wizden#42210
 
@@ -81,7 +82,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
 
         if (_protoManager.Resolve(jukebox.SelectedSongId, out var songProto)) // wizden#42210
         {
-            var length = EntMan.System<AudioSystem>().GetAudioLength(songProto.Path.Path.ToString());
+            var length = EntMan.System<AudioSystem>().GetAudioLength(new ResolvedPathSpecifier(songProto.Path.Path.ToString()));
             _menu.SetSelectedSong(songProto, (float)length.TotalSeconds); // wizden#42210
         }
         else

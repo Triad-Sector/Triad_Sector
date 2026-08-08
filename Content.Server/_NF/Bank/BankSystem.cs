@@ -17,9 +17,9 @@ namespace Content.Server._NF.Bank;
 
 public sealed partial class BankSystem : SharedBankSystem
 {
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerPreferencesManager _prefsManager = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     private ISawmill _log = default!;
 

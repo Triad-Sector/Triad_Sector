@@ -17,9 +17,9 @@ namespace Content.Client.RCD;
 [GenerateTypedNameReferences]
 public sealed partial class RCDMenu : RadialMenu
 {
-    [Dependency] private readonly EntityManager _entManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private EntityManager _entManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
     private SharedPopupSystem _popup;
     private SpriteSystem _sprites;
@@ -113,7 +113,7 @@ public sealed partial class RCDMenu : RadialMenu
             var tooltip = Loc.GetString(proto.SetName);
 
             if ((proto.Mode == RcdMode.ConstructTile || proto.Mode == RcdMode.ConstructObject) &&
-                proto.Prototype != null && _protoManager.TryIndex(proto.Prototype, out var entProto, logError: false))
+                proto.Prototype != null && _protoManager.TryIndex(proto.Prototype, out var entProto))
             {
                 tooltip = Loc.GetString(entProto.Name);
             }
@@ -198,7 +198,7 @@ public sealed partial class RCDMenu : RadialMenu
                         var name = Loc.GetString(proto.SetName);
 
                         if (proto.Prototype != null &&
-                            _protoManager.TryIndex(proto.Prototype, out var entProto, logError: false))
+                            _protoManager.TryIndex(proto.Prototype, out var entProto))
                             name = entProto.Name;
 
                         msg = Loc.GetString("rcd-component-change-build-mode", ("name", name));

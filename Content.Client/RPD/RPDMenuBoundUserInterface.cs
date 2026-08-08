@@ -17,11 +17,11 @@ namespace Content.Client.RPD;
 /// Opens an <see cref="RPDMenu"/> populated with the shared <see cref="RPDPalette"/>. Color selection is
 /// forwarded to the server via <see cref="RPDColorChangeMessage"/>.
 /// </summary>
-public sealed class RPDMenuBoundUserInterface : BoundUserInterface
+public sealed partial class RPDMenuBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IClyde _displayManager = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IClyde _displayManager = default!;
+    [Dependency] private IInputManager _inputManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     private RPDMenu? _menu;
 

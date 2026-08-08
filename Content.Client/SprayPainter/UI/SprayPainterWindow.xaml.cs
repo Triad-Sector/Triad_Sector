@@ -19,7 +19,7 @@ namespace Content.Client.SprayPainter.UI;
 [GenerateTypedNameReferences]
 public sealed partial class SprayPainterWindow : DefaultWindow
 {
-    [Dependency] private readonly IEntitySystemManager _sysMan = default!;
+    [Dependency] private IEntitySystemManager _sysMan = default!;
     private readonly SpriteSystem _spriteSystem;
 
     // Events

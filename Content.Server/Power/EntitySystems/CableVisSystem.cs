@@ -9,11 +9,11 @@ using Robust.Shared.Map.Components;
 namespace Content.Server.Power.EntitySystems
 {
     [UsedImplicitly]
-    public sealed class CableVisSystem : EntitySystem
+    public sealed partial class CableVisSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
-        [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private NodeContainerSystem _nodeContainer = default!;
+        [Dependency] private SharedMapSystem _mapSystem = default!;
 
         public override void Initialize()
         {

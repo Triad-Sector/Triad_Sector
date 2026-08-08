@@ -11,11 +11,14 @@ public sealed partial class GunSystem
         base.InitializeRevolver();
         SubscribeLocalEvent<RevolverAmmoProviderComponent, AmmoCounterControlEvent>(OnRevolverCounter);
         SubscribeLocalEvent<RevolverAmmoProviderComponent, UpdateAmmoCounterEvent>(OnRevolverAmmoUpdate);
-        SubscribeLocalEvent<RevolverAmmoProviderComponent, EntRemovedFromContainerMessage>(OnRevolverEntRemove);
     }
 
-    private void OnRevolverEntRemove(EntityUid uid, RevolverAmmoProviderComponent component, EntRemovedFromContainerMessage args)
+    // Triad: the subscription moved to SharedGunSystem so the slot bookkeeping runs on the server too.
+    // Subscribing here as well would be a duplicate subscription, since this is the same system instance.
+    protected override void OnRevolverEntRemove(EntityUid uid, RevolverAmmoProviderComponent component, EntRemovedFromContainerMessage args)
     {
+        base.OnRevolverEntRemove(uid, component, args);
+
         if (args.Container.ID != RevolverContainer)
             return;
 

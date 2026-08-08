@@ -31,20 +31,20 @@ using Content.Shared.Storage; // Mono
 namespace Content.Server.Kitchen.EntitySystems
 {
     [UsedImplicitly]
-    internal sealed class ReagentGrinderSystem : EntitySystem
+    internal sealed partial class ReagentGrinderSystem : EntitySystem
     {
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainersSystem = default!;
-        [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-        [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-        [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
-        [Dependency] private readonly StackSystem _stackSystem = default!;
-        [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-        [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!; // Mono
-        [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
-        [Dependency] private readonly JitteringSystem _jitter = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainersSystem = default!;
+        [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
+        [Dependency] private SharedPopupSystem _popupSystem = default!;
+        [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
+        [Dependency] private StackSystem _stackSystem = default!;
+        [Dependency] private SharedAudioSystem _audioSystem = default!;
+        [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
+        [Dependency] private SharedContainerSystem _containerSystem = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!; // Mono
+        [Dependency] private RandomHelperSystem _randomHelper = default!;
+        [Dependency] private JitteringSystem _jitter = default!;
 
         public override void Initialize()
         {
@@ -332,9 +332,9 @@ namespace Content.Server.Kitchen.EntitySystems
             if (storage.StoredItems.Count == 0)
                 return;
 			
-			_audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/_Goobstation/Items/handling/backpack_equip.ogg"), comp.Owner, AudioParams.Default.WithVolume(-6f)); //Mono: Edited, not from port
+			_audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/_Goobstation/Items/handling/backpack_equip.ogg"), uid, AudioParams.Default.WithVolume(-6f)); //Mono: Edited, not from port
 
-            var inputContainer = _containerSystem.EnsureContainer<Container>(comp.Owner, SharedReagentGrinder.InputContainerId);
+            var inputContainer = _containerSystem.EnsureContainer<Container>(uid, SharedReagentGrinder.InputContainerId);
 
             // Find every Extractable item and put it into the grinder
             foreach (var (item, _location) in storage.StoredItems)
@@ -342,7 +342,7 @@ namespace Content.Server.Kitchen.EntitySystems
                 // If the grinder is full, leave
                 if (inputContainer.ContainedEntities.Count >= comp.StorageMaxEntities)
                 {
-                    _popupSystem.PopupEntity(Loc.GetString("reagent-grinder-component-storage-full-message"), comp.Owner, args.User);
+                    _popupSystem.PopupEntity(Loc.GetString("reagent-grinder-component-storage-full-message"), uid, args.User);
                     return;
                 }
 

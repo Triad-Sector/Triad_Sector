@@ -5,19 +5,19 @@ using Content.Shared.Speech.EntitySystems;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class SlurredSystem : SharedSlurredSystem
+public sealed partial class SlurredSystem : SharedSlurredSystem
 {
-    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
 
 
-    [ValidatePrototypeId<StatusEffectPrototype>]
-    private const string SlurKey = "SlurredSpeech";
+    private static readonly ProtoId<StatusEffectPrototype> SlurKey = "SlurredSpeech";
 
     public override void Initialize()
     {

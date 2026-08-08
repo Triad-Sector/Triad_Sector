@@ -17205,6 +17205,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 2-A
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1395
     components:
     - type: Transform
@@ -17326,6 +17328,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 1-A
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1407
     components:
     - type: Transform
@@ -17406,6 +17410,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 1-B
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1415
     components:
     - type: Transform
@@ -17467,6 +17473,8 @@ entities:
       receiveFrequency: 1280
     - type: Docking
       name: CIV 2-B
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 1421
     components:
     - type: Transform

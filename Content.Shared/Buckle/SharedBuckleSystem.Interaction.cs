@@ -141,7 +141,11 @@ public abstract partial class SharedBuckleSystem
         // Add unstrap verbs for every strapped entity.
         foreach (var entity in component.BuckledEntities)
         {
-            var buckledComp = Comp<BuckleComponent>(entity);
+            // Triad: BuckledEntities is a DataField, so a strap saved without its occupant comes back
+            // holding a dangling uid that reads as entity 0. Comp<T> on that threw KeyNotFound out of
+            // the verb request and cost the player every other verb on the target, not just unbuckle.
+            if (!TryComp<BuckleComponent>(entity, out var buckledComp))
+                continue;
 
             if (!_interaction.InRangeUnobstructed(args.User, args.Target, range: buckledComp.Range))
                 continue;

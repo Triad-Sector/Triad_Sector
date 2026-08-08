@@ -17,14 +17,14 @@ namespace Content.Server._Mono.MonoCoins;
 /// <summary>
 /// System that handles MonoCoins balance for players.
 /// </summary>
-public sealed class MonoCoinsSystem : EntitySystem
+public sealed partial class MonoCoinsSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
 
     private const int RoundEndReward = 10;
 
@@ -130,7 +130,7 @@ public sealed class MonoCoinsSystem : EntitySystem
             }
             else
             {
-                Logger.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
+                Log.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
             }
         }
 
@@ -180,7 +180,7 @@ public sealed class MonoCoinsSystem : EntitySystem
         try
         {
             var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Logger.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
+            Log.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
 
             // Notify the player via chat
             var notificationMessage = $"Round ended! You earned {RoundEndReward} MonoCoins. Your new balance: {newBalance}";
@@ -194,7 +194,7 @@ public sealed class MonoCoinsSystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
+            Log.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
         }
     }
 }

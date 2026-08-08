@@ -1,5 +1,6 @@
 using System.Numerics;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 
 namespace Content.Server.NPC.Pathfinding;
 
@@ -55,7 +56,7 @@ public sealed partial class PathfindingSystem
                 }
             }
 
-            variance += random.NextFloat(-args.Variance * args.TileSkip, args.Variance * args.TileSkip);
+            variance += random.NextFloatValue(-args.Variance * args.TileSkip, args.Variance * args.TileSkip);
             variance = Math.Clamp(variance, args.MinWiden, args.MaxWiden);
         }
 

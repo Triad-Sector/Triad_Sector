@@ -11,9 +11,9 @@ using Robust.Shared.Console;
 namespace Content.Server.Sandbox.Commands
 {
     [AnyCommand]
-    public sealed class ColorNetworkCommand : LocalizedCommands
+    public sealed partial class ColorNetworkCommand : LocalizedCommands
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
+        [Dependency] private IEntityManager _entManager = default!;
 
         public override string Command => "colornetwork";
 
@@ -58,14 +58,13 @@ namespace Content.Server.Sandbox.Commands
                 return;
             }
 
-            var color = Color.TryFromHex(args[2]);
-            if (!color.HasValue)
+            if (!Color.TryFromHex(args[2], out var color))
             {
                 shell.WriteError(Loc.GetString("shell-invalid-color-hex"));
                 return;
             }
 
-            PaintNodes(nodeContainerComponent, nodeGroupId, color.Value);
+            PaintNodes(nodeContainerComponent, nodeGroupId, color);
         }
 
         private void PaintNodes(NodeContainerComponent nodeContainerComponent, NodeGroupID nodeGroupId, Color color)

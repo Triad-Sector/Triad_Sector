@@ -133,7 +133,8 @@ public sealed partial class DockingSystem
         EntityCoordinates coordinates,
         Angle angle,
         bool fallback = true,
-        DockType dockType = DockType.Airlock) // Frontier
+        DockType dockType = DockType.Airlock, // Frontier
+        string? priorityTag = null) // Triad: prefer a berth flagged for this traffic, see the fallback
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
@@ -150,7 +151,11 @@ public sealed partial class DockingSystem
 
         if (fallback && configs.Count > 0)
         {
-            return configs.First();
+            // Triad: the exact requested berth was not free, so rank the rest rather than grabbing
+            // whatever enumerated first out of a HashSet. Same comparison departure used, so the
+            // fallback lands on the berth and the approach side that were planned for. With no tag this
+            // is the old behaviour, since neither tag predicate matches null.
+            return SortDockingConfigs(configs, targetGrid, priorityTag).First();
         }
 
         return null;
@@ -201,6 +206,10 @@ public sealed partial class DockingSystem
                         continue;
                     // End Frontier
 
+                    // Triad: a berth may demand a specific shuttle side; see RequiredShuttleTag.
+                    if (!ShuttleSideAllowed(dockUid, gridDockUid))
+                        continue;
+
                     if (!CanDock(
                             shuttleDock, shuttleDockXform,
                             gridDock, gridXform,
@@ -226,7 +235,7 @@ public sealed partial class DockingSystem
 
                     // Check if there's no intersecting grids (AKA oh god it's docking at cargo).
                     grids.Clear();
-                    _mapManager.FindGridsIntersecting(targetGridXform.MapID, dockedBounds, ref grids, includeMap: false);
+                    _mapSystem.FindGridsIntersecting(targetGridXform.MapID, dockedBounds, ref grids, includeMap: false);
                     if (grids.Any(o => o.Owner != targetGrid && o.Owner != targetGridXform.MapUid))
                     {
                         continue;
@@ -262,6 +271,10 @@ public sealed partial class DockingSystem
                             if ((otherGrid.DockType & dockType) == DockType.None)
                                 continue;
                             // End Frontier
+
+                            // Triad: side requirement applies to aggregated pairs too.
+                            if (!ShuttleSideAllowed(otherUid, otherGridUid))
+                                continue;
 
                             if (!CanDock(
                                     other,
@@ -328,13 +341,7 @@ public sealed partial class DockingSystem
         if (validDockConfigs.Count <= 0)
             return null;
 
-        var targetGridAngle = _transform.GetWorldRotation(targetGrid).Reduced();
-
-        // Prioritise by priority docks, then by maximum connected ports, then by most similar angle.
-        validDockConfigs = validDockConfigs
-           .OrderByDescending(x => IsConfigPriority(x, priorityTag))
-           .ThenByDescending(x => x.Docks.Count)
-           .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta)).ToList();
+        validDockConfigs = SortDockingConfigs(validDockConfigs, targetGrid, priorityTag);
 
         var location = validDockConfigs.First();
         location.TargetGrid = targetGrid;
@@ -348,6 +355,42 @@ public sealed partial class DockingSystem
         return config.Docks.Any(docks =>
             TryComp<PriorityDockComponent>(docks.DockBUid, out var priority)
             && priority.Tag?.Equals(priorityTag) == true);
+    }
+
+    /// <summary>
+    /// Whether this shuttle port satisfies the station dock's side requirement, if it declares one.
+    /// </summary>
+    // Triad: hard filter, not a preference. A berth with RequiredShuttleTag set never pairs with an
+    // untagged or wrong-side port, so the shuttle presents the declared side or the config never forms
+    // and the trip is refused upstream. Berths with no requirement behave exactly as before.
+    private bool ShuttleSideAllowed(EntityUid shuttleDockUid, EntityUid gridDockUid)
+    {
+        if (!TryComp<PriorityDockComponent>(gridDockUid, out var gridPriority)
+            || gridPriority.RequiredShuttleTag is not { } required)
+        {
+            return true;
+        }
+
+        return TryComp<PriorityDockComponent>(shuttleDockUid, out var shuttlePriority)
+               && shuttlePriority.Tag?.Equals(required) == true;
+    }
+
+    /// <summary>
+    /// Ranks candidate configs best-first.
+    /// </summary>
+    // Triad: departure and arrival used to rank differently, so a shuttle could plan one berth and take
+    // another. One comparison, used by both. Which face the shuttle presents is not a criterion on
+    // purpose: where a berth is tight only one orientation survives CanDock/ValidSpawn at all, and where
+    // it is open either face docks port-to-port equally well.
+    private List<DockingConfig> SortDockingConfigs(List<DockingConfig> configs, EntityUid targetGrid, string? priorityTag)
+    {
+        var targetGridAngle = _transform.GetWorldRotation(targetGrid).Reduced();
+
+        return configs
+            .OrderByDescending(x => IsConfigPriority(x, priorityTag))
+            .ThenByDescending(x => x.Docks.Count)
+            .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta))
+            .ToList();
     }
 
     /// <summary>

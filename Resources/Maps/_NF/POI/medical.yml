@@ -4336,6 +4336,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: 12.5,8.5
       parent: 1
+    - type: PriorityDock # Triad: dispatch arm frontage; the bus berths here starboard-to
+      requiredShuttleTag: DockTransitPort
   - uid: 100
     components:
     - type: Transform
@@ -4344,12 +4346,16 @@ entities:
       parent: 1
     - type: Docking
       name: BUS
+    - type: PriorityDock # Triad: see above
+      requiredShuttleTag: DockTransitPort
   - uid: 101
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,8.5
       parent: 1
+    - type: PriorityDock # Triad: see above
+      requiredShuttleTag: DockTransitPort
 - proto: AirlockGlass
   entities:
   - uid: 102

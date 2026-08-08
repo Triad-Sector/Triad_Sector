@@ -5,14 +5,14 @@ using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers reloca
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class BoganAccentSystem : EntitySystem
+public sealed partial class BoganAccentSystem : EntitySystem
 {
     // Non-rhotic Aussie -er -> -a (water -> wata, better -> betta). Two word chars before "er" keeps it
     // off short words like "her"/"per". Shorter "-a" than the cockney "-ah" keeps bogan distinct.
     private static readonly Regex RegexEr = new(@"(?<=\w\w)er\b", RegexOptions.IgnoreCase);
 
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

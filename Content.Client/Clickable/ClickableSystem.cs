@@ -9,11 +9,11 @@ namespace Content.Client.Clickable;
 /// <summary>
 /// Handles click detection for sprites.
 /// </summary>
-public sealed class ClickableSystem : EntitySystem
+public sealed partial class ClickableSystem : EntitySystem
 {
-    [Dependency] private readonly IClickMapManager _clickMapManager = default!;
-    [Dependency] private readonly SharedTransformSystem _transforms = default!;
-    [Dependency] private readonly SpriteSystem _sprites = default!;
+    [Dependency] private IClickMapManager _clickMapManager = default!;
+    [Dependency] private SharedTransformSystem _transforms = default!;
+    [Dependency] private SpriteSystem _sprites = default!;
 
     private EntityQuery<ClickableComponent> _clickableQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -66,10 +66,10 @@ public sealed class ClickableSystem : EntitySystem
         drawDepth = sprite.DrawDepth;
         renderOrder = sprite.RenderOrder;
         var (spritePos, spriteRot) = _transforms.GetWorldPositionRotation(transform);
-        var spriteBB = sprite.CalculateRotatedBoundingBox(spritePos, spriteRot, eye.Rotation);
+        var spriteBB = _sprites.CalculateBounds((entity.Owner, sprite), spritePos, spriteRot, eye.Rotation);
         bottom = Matrix3Helpers.CreateRotation(eye.Rotation).TransformBox(spriteBB).Bottom;
 
-        Matrix3x2.Invert(sprite.GetLocalMatrix(), out var invSpriteMatrix);
+        Matrix3x2.Invert(sprite.LocalMatrix, out var invSpriteMatrix);
 
         // This should have been the rotation of the sprite relative to the screen, but this is not the case with no-rot or directional sprites.
         var relativeRotation = (spriteRot + eye.Rotation).Reduced().FlipPositive();

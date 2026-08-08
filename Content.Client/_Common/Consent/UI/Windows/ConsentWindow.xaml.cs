@@ -18,9 +18,9 @@ namespace Content.Client._Common.Consent.UI.Windows;
 [GenerateTypedNameReferences]
 public sealed partial class ConsentWindow : FancyWindow
 {
-    [Dependency] private readonly IClientConsentManager _consentManager = default!;
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IClientConsentManager _consentManager = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private List<ConsentToggleControl> _consentToggles = new();
 

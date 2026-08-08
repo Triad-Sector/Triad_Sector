@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Client.Administration.Managers;
 using Content.Client.ContextMenu.UI;
@@ -35,20 +35,19 @@ using static Robust.Shared.Input.Binding.PointerInputCmdHandler;
 
 namespace Content.Client.Mapping;
 
-public sealed class MappingState : GameplayStateBase
+public sealed partial class MappingState : GameplayStateBase
 {
-    [Dependency] private readonly IClientAdminManager _admin = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetwork = default!;
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly MappingManager _mapping = default!;
-    [Dependency] private readonly IOverlayManager _overlays = default!;
-    [Dependency] private readonly IPlacementManager _placement = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IResourceCache _resources = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private MappingManager _mapping = default!;
+    [Dependency] private IOverlayManager _overlays = default!;
+    [Dependency] private IPlacementManager _placement = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IResourceCache _resources = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private EntityMenuUIController _entityMenuController = default!;
 
@@ -149,7 +148,7 @@ public sealed class MappingState : GameplayStateBase
     {
         Deselect();
 
-        var coords = args.Coordinates.ToMap(_entityManager, _transform);
+        var coords = _transform.ToMapCoordinates(args.Coordinates);
         if (_verbs.TryGetEntityMenuEntities(coords, out var entities))
             _entityMenuController.OpenRootMenu(entities);
 
@@ -454,7 +453,7 @@ public sealed class MappingState : GameplayStateBase
         switch (prototype)
         {
             case EntityPrototype entity:
-                textures.AddRange(SpriteComponent.GetPrototypeTextures(entity, _resources).Select(t => t.Default));
+                textures.AddRange(_sprite.GetPrototypeTextures(entity).Select(t => t.Default));
                 break;
             case DecalPrototype decal:
                 textures.Add(_sprite.Frame0(decal.Sprite));
@@ -791,9 +790,11 @@ public sealed class MappingState : GameplayStateBase
         {
             var mapPos = _transform.ToMapCoordinates(coords);
 
-            if (_mapMan.TryFindGridAt(mapPos, out var gridUid, out var grid) &&
-                _entityManager.System<SharedMapSystem>().TryGetTileRef(gridUid, grid, coords, out var tileRef) &&
-                _allPrototypesDict.TryGetValue(tileRef.GetContentTileDefinition(), out button))
+            var mapSystem = _entityManager.System<SharedMapSystem>();
+
+            if (mapSystem.TryFindGridAt(mapPos, out var gridUid, out var grid) &&
+                mapSystem.TryGetTileRef(gridUid, grid, coords, out var tileRef) &&
+                _allPrototypesDict.TryGetValue(_entityManager.System<TurfSystem>().GetContentTileDefinition(tileRef), out button))
             {
                 OnSelected(button);
                 return true;

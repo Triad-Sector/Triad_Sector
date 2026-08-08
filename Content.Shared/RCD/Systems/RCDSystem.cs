@@ -41,24 +41,24 @@ namespace Content.Shared.RCD.Systems;
 /// space-wizards#42556 (<see cref="RCDPrototype"/> <c>AllowMultiDirection</c>). See Resources/Prototypes/_Mono/RCD/README.md.
 /// </summary>
 [Virtual]
-public class RCDSystem : EntitySystem
+public partial class RCDSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefMan = default!;
-    [Dependency] private readonly FloorTileSystem _floors = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private ITileDefinitionManager _tileDefMan = default!;
+    [Dependency] private FloorTileSystem _floors = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedChargesSystem _sharedCharges = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TagSystem _tags = default!;
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -236,7 +236,7 @@ public class RCDSystem : EntitySystem
                 else
                 {
                     var deconstructedTile = _mapSystem.GetTileRef(mapGridData.Value.GridUid, mapGridData.Value.Component, mapGridData.Value.Location);
-                    var protoName = !deconstructedTile.IsSpace() ? _deconstructTileProto : _deconstructLatticeProto;
+                    var protoName = !_turf.IsSpace(deconstructedTile) ? _deconstructTileProto : _deconstructLatticeProto;
 
                     if (_protoManager.TryIndex(protoName, out var deconProto))
                     {
@@ -452,7 +452,7 @@ public class RCDSystem : EntitySystem
         }
 
         // Check rule: Must place on subfloor
-        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !mapGridData.Tile.Tile.GetContentTileDefinition().IsSubFloor)
+        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !_turf.GetContentTileDefinition(mapGridData.Tile.Tile).IsSubFloor)
         {
             if (popMsgs)
                 _popup.PopupClient(Loc.GetString("rcd-component-must-build-on-subfloor-message"), uid, user);
@@ -474,7 +474,7 @@ public class RCDSystem : EntitySystem
 
             // Check rule: Tiles can't be identical
             var placeTileId = GetConstructTileTypeId(prototype, tilePlacementDirection ?? component.ConstructionDirection);
-            if (mapGridData.Tile.Tile.GetContentTileDefinition().ID == placeTileId)
+            if (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID == placeTileId)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-tile"), uid, user);
@@ -504,7 +504,7 @@ public class RCDSystem : EntitySystem
         var layerCapable = !prototype.NoLayers
             && prototype.Prototype != null
             && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
-            && baseProto.TryGetComponent<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+            && baseProto.TryComp<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
         // End Triad
 
         foreach (var ent in _intersectingEntities)
@@ -719,7 +719,7 @@ public class RCDSystem : EntitySystem
                 if (target == null)
                 {
                     // Deconstruct tile (either converts the tile to lattice, or removes lattice)
-                    var tile = (mapGridData.Tile.Tile.GetContentTileDefinition().ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
+                    var tile = (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
                     _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, tile);
                     _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} tile: {mapGridData.Position} open to space");
                 }

@@ -35,6 +35,14 @@ public sealed partial class TeslaEnergyBallComponent : Component
     public float EnergyToDespawn = -100f;
 
     /// <summary>
+    /// Triad: energy bled passively per second while the ball exists. 0 disables decay (upstream
+    /// behavior, the default). The tesla prototype pins this to the effective Level-1 PA feed rate
+    /// so Level 1 idles the ball: alive, essentially no motes. See energyball.yml for the tuning.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float PassiveEnergyDecay;
+
+    /// <summary>
     /// Played when energy reaches the lower limit (and entity destroyed)
     /// </summary>
     [DataField]

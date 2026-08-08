@@ -13,13 +13,13 @@ using SharedToolSystem = Content.Shared.Tools.Systems.SharedToolSystem;
 
 namespace Content.Server._EinsteinEngines.Silicon.WeldingHealable;
 
-public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
+public sealed partial class WeldingHealableSystem : SharedWeldingHealableSystem
 {
-    [Dependency] private readonly SharedToolSystem _toolSystem = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
+    [Dependency] private SharedToolSystem _toolSystem = default!;
+    [Dependency] private DamageableSystem _damageableSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedBodySystem _bodySystem = default!;
     public override void Initialize()
     {
         SubscribeLocalEvent<WeldingHealableComponent, InteractUsingEvent>(Repair);
@@ -97,8 +97,12 @@ public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
         if (healable.Damage.DamageDict is null)
             return false;
 
+        // Triad: this indexes the target's damage by keys taken from the healing spec, and a target
+        // whose damage container does not carry one of them threw KeyNotFound out of the repair
+        // do-after. Silicon containers are the usual mismatch, since they omit types like Radiation
+        // that the welder heal lists. A damage type the target cannot take is simply not damage.
         foreach (var type in healable.Damage.DamageDict)
-            if (damageable.Comp.Damage.DamageDict[type.Key].Value > 0)
+            if (damageable.Comp.Damage.DamageDict.TryGetValue(type.Key, out var current) && current.Value > 0)
                 return true;
 
         // In case the healer is a humanoid entity with targeting, we run the check on the targeted parts.

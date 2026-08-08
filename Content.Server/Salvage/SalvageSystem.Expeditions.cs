@@ -36,7 +36,7 @@ public sealed partial class SalvageSystem
      */
 
     private const int MissionLimit = 5;
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!; // Frontier
+    [Dependency] private IConfigurationManager _cfgManager = default!; // Frontier
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
@@ -319,7 +319,6 @@ public sealed partial class SalvageSystem
             SalvageJobTime,
             EntityManager,
             _timing,
-            _mapManager,
             _prototypeManager,
             _anchorable,
             _biome,

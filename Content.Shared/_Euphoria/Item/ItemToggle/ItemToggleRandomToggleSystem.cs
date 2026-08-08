@@ -3,10 +3,10 @@ using Robust.Shared.Random;
 
 namespace Content.Shared._Euphoria.Item.ItemToggle;
 
-public sealed class ItemToggleRandomToggleSystem : EntitySystem
+public sealed partial class ItemToggleRandomToggleSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ItemToggleSystem _itemToggle = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ItemToggleSystem _itemToggle = default!;
 
     public override void Initialize()
     {
