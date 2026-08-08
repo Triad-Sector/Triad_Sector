@@ -147,20 +147,11 @@ public sealed partial class PublicTransitSystem : EntitySystem
 
     private void OnShuttleArrival(EntityUid uid, TransitShuttleComponent comp, ref FTLCompletedEvent args)
     {
-        var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent>();
+        if (!TryComp(comp.NextStation, out MetaDataComponent? metadata))
+            return;
 
-        while (consoleQuery.MoveNext(out var consoleUid, out _))
-        {
-            if (Transform(consoleUid).GridUid == uid && TryComp(comp.NextStation, out MetaDataComponent? metadata))
-            {
-                var destinationString = metadata.EntityName;
-
-                _chat.TrySendInGameICMessage(consoleUid, Loc.GetString("public-transit-arrival",
-                        ("destination", destinationString), ("waittime", _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime))),
-                    InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true, checkRadioPrefix: false,
-                    ignoreActionBlocker: true);
-            }
-        }
+        AnnounceToBus(uid, Loc.GetString("public-transit-arrival",
+            ("destination", metadata.EntityName), ("waittime", _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime))));
     }
 
     /// <summary>
@@ -202,41 +193,66 @@ public sealed partial class PublicTransitSystem : EntitySystem
         var query = EntityQueryEnumerator<TransitShuttleComponent, ShuttleComponent>();
         var curTime = _timing.CurTime;
 
+        var waitTime = _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime);
+
         while (query.MoveNext(out var uid, out var comp, out var shuttle))
         {
             if (comp.NextTransfer > curTime)
                 continue;
 
-            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent>();
+            // Triad: never stack a departure on top of a trip that is still running. This used to be
+            // impossible to hit because the bus never actually left, so nothing noticed.
+            if (HasComp<FTLComponent>(uid))
+                continue;
 
-            while (consoleQuery.MoveNext(out var consoleUid, out _))
+            // Triad: the cached destination can be deleted while it waits its turn, and Valid only
+            // says the uid was once well formed, not that the stop is still there. Re-roll instead of
+            // jumping at nothing, and if the whole route is gone just wait rather than burning a trip.
+            if (!TryComp(comp.NextStation, out MetaDataComponent? destination))
             {
-                if (Transform(consoleUid).GridUid == uid && TryComp(comp.NextStation, out MetaDataComponent? metadata))
+                if (!TryGetNextStation(out var replacement) || replacement is not { } newStop || !TryComp(newStop, out destination))
                 {
-                    var destinationString = metadata.EntityName;
-
-                    //public-transit-arrival >> public-transit-instant, use waittime arg instead of flytime arg: The system is currently bugged
-                    //_shuttles.FTLToDock is calling TryFTLDock, which bypasses the FTL delay and breaks OnShuttleArrival
-                    //Standard FTL also occasionally overlaps the bus into stations so I have resorted to just reappropriating the message
-                    _chat.TrySendInGameICMessage(consoleUid, Loc.GetString("public-transit-instant",
-                        ("destination", destinationString), /*("flytime", FlyTime),*/ ("waittime", _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime))),
-                        InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true, checkRadioPrefix: false,
-                        ignoreActionBlocker: true);
+                    comp.NextTransfer = curTime + TimeSpan.FromSeconds(waitTime);
+                    continue;
                 }
+
+                comp.NextStation = newStop;
             }
 
-            // FTL to next station, but only if it exists.
-            if (comp.NextStation.Valid)
-            {
-                // Ensure the shuttle is undocked before initiating FTL travel
-                _dockSystem.UndockDocks(uid);
-                _shuttles.FTLToDock(uid, shuttle, comp.NextStation, hyperspaceTime: FlyTime, priorityTag: "DockTransit");
-            }
+            //public-transit-arrival >> public-transit-instant, use waittime arg instead of flytime arg: The system is currently bugged
+            //_shuttles.FTLToDock is calling TryFTLDock, which bypasses the FTL delay and breaks OnShuttleArrival
+            //Standard FTL also occasionally overlaps the bus into stations so I have resorted to just reappropriating the message
+            AnnounceToBus(uid, Loc.GetString("public-transit-instant",
+                ("destination", destination.EntityName), /*("flytime", FlyTime),*/ ("waittime", waitTime)));
 
-            if (TryGetNextStation(out var nextStation) && nextStation is { Valid: true } destination)
-                comp.NextStation = destination;
+            // Ensure the shuttle is undocked before initiating FTL travel
+            _dockSystem.UndockDocks(uid);
+            _shuttles.FTLToDock(uid, shuttle, comp.NextStation, hyperspaceTime: FlyTime, priorityTag: "DockTransit");
 
-            comp.NextTransfer = curTime + TimeSpan.FromSeconds(FlyTime + _cfgManager.GetCVar(NFCCVars.PublicTransitWaitTime));
+            if (TryGetNextStation(out var nextStation) && nextStation is { Valid: true } next)
+                comp.NextStation = next;
+
+            comp.NextTransfer = curTime + TimeSpan.FromSeconds(FlyTime + waitTime);
+        }
+    }
+
+    /// <summary>
+    /// Speaks a line over every shuttle console aboard the given bus.
+    /// </summary>
+    // Triad: both callers walked every shuttle console in the sector and filtered by grid, once per
+    // bus per announcement. Same walk, but in one place and only when there is something to say.
+    private void AnnounceToBus(EntityUid busUid, string message)
+    {
+        var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent>();
+
+        while (consoleQuery.MoveNext(out var consoleUid, out _))
+        {
+            if (Transform(consoleUid).GridUid != busUid)
+                continue;
+
+            _chat.TrySendInGameICMessage(consoleUid, message,
+                InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true, checkRadioPrefix: false,
+                ignoreActionBlocker: true);
         }
     }
 

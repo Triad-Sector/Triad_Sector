@@ -133,7 +133,8 @@ public sealed partial class DockingSystem
         EntityCoordinates coordinates,
         Angle angle,
         bool fallback = true,
-        DockType dockType = DockType.Airlock) // Frontier
+        DockType dockType = DockType.Airlock, // Frontier
+        string? priorityTag = null) // Triad: prefer a berth flagged for this traffic, see the fallback
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
@@ -150,7 +151,11 @@ public sealed partial class DockingSystem
 
         if (fallback && configs.Count > 0)
         {
-            return configs.First();
+            // Triad: the exact requested berth was not free, so before grabbing whatever sorted first,
+            // take one carrying the caller's tag. That is how a bus ends up in the bus bay rather than
+            // whichever airlock happened to come out on top. With no tag this is the old behaviour,
+            // since IsConfigPriority never matches null.
+            return configs.FirstOrDefault(x => IsConfigPriority(x, priorityTag)) ?? configs.First();
         }
 
         return null;

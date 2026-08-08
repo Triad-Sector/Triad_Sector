@@ -417,7 +417,10 @@ public sealed partial class ShuttleSystem
             hyperspace.TargetCoordinates = new EntityCoordinates(dock.DockedWith.Value, Vector2.Zero);
             hyperspace.TargetAngle = _transform.GetWorldRotation(dock.DockedWith.Value) + Math.PI;
         }
-        else if (TryFTLDock(shuttleUid, component, target, out var config))
+        // Triad: the caller's priority tag was stored on the component and then never handed to dock
+        // selection, so "prefer the DockTransit berth" did nothing and the bus took whatever airlock
+        // sorted first. TryFTLDock has taken a tag all along; pass it.
+        else if (TryFTLDock(shuttleUid, component, target, out var config, priorityTag))
         {
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
@@ -501,8 +504,12 @@ public sealed partial class ShuttleSystem
 
             // If the docked shuttle has no FTLLockComponent or has it but it's disabled, skip adding it
             // to the FTL travel group, but still check its connections for potential conflicts
-            EnsureComp<FTLLockComponent>(dockedGridUid, out var ftlLock);
-            if (!ftlLock.Enabled)
+            // Triad: this used to EnsureComp, which made the "has no FTLLockComponent" half of the
+            // comment above unreachable: it created the component on whatever was docked and then read
+            // its own default of Enabled = true as permission to drag that grid along. Only ships get a
+            // lock for real, from the shipyard and the console toggle, so POIs and stations were being
+            // hauled across the sector by anything that undocked and jumped. Ask, do not fabricate.
+            if (!TryComp<FTLLockComponent>(dockedGridUid, out var ftlLock) || !ftlLock.Enabled)
             {
                 // Still check this shuttle's connections without adding it to dockedShuttles
                 var nestedDocks = _dockSystem.GetDocks(dockedGridUid);
@@ -521,8 +528,8 @@ public sealed partial class ShuttleSystem
                         continue;
 
                     // Check if this grid should be added to the FTL travel group
-                    EnsureComp<FTLLockComponent>(nestedDockedGridUid, out var nestedFtlLock);
-                    if (nestedFtlLock.Enabled)
+                    // Triad: same fabricated-consent bug as above, see the comment there.
+                    if (TryComp<FTLLockComponent>(nestedDockedGridUid, out var nestedFtlLock) && nestedFtlLock.Enabled)
                     {
                         GetAllDockedShuttles(nestedDockedGridUid, dockedShuttles);
                     }
@@ -798,7 +805,9 @@ public sealed partial class ShuttleSystem
         // Docking FTL
         else if (HasComp<MapGridComponent>(target.EntityId) && !HasComp<MapComponent>(target.EntityId))
         {
-            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, comp.TargetAngle);
+            // Triad: carry the priority tag through to arrival too, otherwise a bus that picked its
+            // designated berth on departure still lands in an arbitrary airlock when it gets there.
+            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, comp.TargetAngle, priorityTag: comp.PriorityTag);
             var mapCoordinates = _transform.ToMapCoordinates(target);
 
             // Couldn't dock somehow so just fallback to regular position FTL.
