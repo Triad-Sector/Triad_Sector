@@ -8,8 +8,8 @@
   spawnGroup: Required
   gridPath: /Maps/_Triad/POI/tdfoutpost.yml
   addComponents:
-  # Triad: added to the bus route. NOTE: tdfoutpost.yml has no DockTransit berth yet, so until one is
-  # mapped the bus will dock at whatever airlock sorts first here.
+  # Triad: added to the bus route. Its berth is the pair of lobby-frontage docks on the south face,
+  # uids 1303 and 1321 in the map, tagged DockTransit.
   - type: StationTransit
   - type: IFF
     color: "#FFD580"
