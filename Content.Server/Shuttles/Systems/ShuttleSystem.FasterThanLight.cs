@@ -409,7 +409,8 @@ public sealed partial class ShuttleSystem
         }
 
         var hyperspace = EnsureComp<FTLComponent>(shuttleUid);
-        SetupFTL((shuttleUid, hyperspace), startupTime, hyperspaceTime, priorityTag);
+        if (!SetupFTL((shuttleUid, hyperspace), component, startupTime, hyperspaceTime, priorityTag)) // Triad: bail instead of stomping a trip in progress
+            return;
 
         if (TryComp<DockingComponent>(target, out var dock) && dock.Docked && dock.DockedWith != null)
         {
@@ -436,9 +437,18 @@ public sealed partial class ShuttleSystem
 
     /// <summary>
     /// Sets up the FTL component with startup and travel times and priority tag.
+    /// Returns false if the shuttle is already in flight and was left alone.
     /// </summary>
-    private void SetupFTL(Entity<FTLComponent> hyperspace, float? startupTime, float? hyperspaceTime, string? priorityTag)
+    private bool SetupFTL(Entity<FTLComponent> hyperspace, ShuttleComponent shuttle, float? startupTime, float? hyperspaceTime, string? priorityTag)
     {
+        // Triad: callers reach this through EnsureComp, so a shuttle mid-trip would get its travel
+        // restarted from the top. Mirror the TrySetupFTL guard and leave the existing trip running.
+        if (hyperspace.Comp.State is FTLState.Starting or FTLState.Travelling or FTLState.Arriving)
+        {
+            Log.Warning($"Tried queuing {ToPrettyString(hyperspace.Owner)} which is already in FTL state {hyperspace.Comp.State}?");
+            return false;
+        }
+
         startupTime ??= DefaultStartupTime;
         hyperspaceTime ??= DefaultTravelTime;
 
@@ -449,7 +459,25 @@ public sealed partial class ShuttleSystem
             TimeSpan.FromSeconds(hyperspace.Comp.StartupTime));
         hyperspace.Comp.PriorityTag = priorityTag;
 
+        // Triad: this path never set State, so a freshly ensured component sat at Available,
+        // UpdateHyperspace took its default arm, logged an invalid state and stripped the component.
+        // The shuttle never actually travelled and the caller re-queued it on its own timer. The rest
+        // of this block is the startup work TrySetupFTL does that this path was also missing.
+        hyperspace.Comp.State = FTLState.Starting;
+
+        _thruster.DisableLinearThrusters(shuttle);
+        _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.North);
+        _thruster.SetAngularThrust(shuttle, false);
+
+        var audio = _audio.PlayPvs(_startupSound, hyperspace.Owner);
+        _audio.SetGridAudio(audio);
+        hyperspace.Comp.StartupStream = audio?.Entity;
+
+        // Make sure the map is setup before we leave to avoid pop-in (e.g. parallax).
+        EnsureFTLMap();
+
         _console.RefreshShuttleConsoles(hyperspace.Owner);
+        return true;
     }
 
     /// <summary>
