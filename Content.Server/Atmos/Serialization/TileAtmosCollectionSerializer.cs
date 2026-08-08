@@ -14,8 +14,6 @@ namespace Content.Server.Atmos.Serialization;
 
 public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dictionary<Vector2i, TileAtmosphere>, MappingDataNode>, ITypeCopier<Dictionary<Vector2i, TileAtmosphere>>
 {
-    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().RootSawmill;
-
     public ValidationNode Validate(ISerializationManager serializationManager, MappingDataNode node,
         IDependencyCollection dependencies, ISerializationContext? context = null)
     {
@@ -30,6 +28,10 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
         node.TryGetValue("version", out var versionNode);
         var version = ((ValueDataNode?) versionNode)?.AsInt() ?? 1;
         Dictionary<Vector2i, TileAtmosphere> tiles = new();
+
+        // Resolved off the passed-in collection rather than IoCManager: serializers are constructed
+        // during SerializationManager.Initialize, where IoC has no context on the worker thread.
+        var sawmill = dependencies.Resolve<ILogManager>().RootSawmill;
 
         // Backwards compatability
         if (version == 1)
@@ -50,7 +52,7 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        _sawmill.Error(
+                        sawmill.Error(
                             $"Error during atmos serialization! Tile at {indices} points to an unique mix ({mix}) out of range!");
                     }
                 }
@@ -93,7 +95,7 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
                                 }
                                 catch (ArgumentOutOfRangeException)
                                 {
-                                    _sawmill.Error(
+                                    sawmill.Error(
                                         $"Error during atmos serialization! Tile at {indices} points to an unique mix ({mix}) out of range!");
                                 }
                             }
