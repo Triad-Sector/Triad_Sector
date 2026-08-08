@@ -1,0 +1,9 @@
+- type: loadout
+  id: PlantHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: PlantEngineeringBeret
+  equipment:
+    head: ClothingHeadHatBeretEngineering
