@@ -130,7 +130,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
             }
             else
             {
-                Logger.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
+                Log.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
             }
         }
 
@@ -180,7 +180,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
         try
         {
             var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Logger.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
+            Log.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
 
             // Notify the player via chat
             var notificationMessage = $"Round ended! You earned {RoundEndReward} MonoCoins. Your new balance: {newBalance}";
@@ -194,7 +194,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
+            Log.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
         }
     }
 }

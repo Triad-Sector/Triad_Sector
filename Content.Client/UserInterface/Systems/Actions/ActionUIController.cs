@@ -193,7 +193,7 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
                 return TryTargetEntityWorld(args, actionId, entMapTarget, user, comp) || !entMapTarget.InteractOnMiss;
 
             default:
-                Logger.Error($"Unknown targeting action: {actionId.GetType()}");
+                Log.Error($"Unknown targeting action: {actionId.GetType()}");
                 return false;
         }
     }

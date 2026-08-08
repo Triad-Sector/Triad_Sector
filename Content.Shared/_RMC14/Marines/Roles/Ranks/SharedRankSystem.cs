@@ -156,7 +156,7 @@ public abstract partial class SharedRankSystem : EntitySystem
         if (rankOrder.Count == 0)
         {
             // The dataset cannot be empty, the person forgot to add values ​​to it
-            Logger.Error($"The rank hierarchy dataset '{rankHierarchyId}' has an invalid value: empty. The highest rank cannot be determined.");
+            Log.Error($"The rank hierarchy dataset '{rankHierarchyId}' has an invalid value: empty. The highest rank cannot be determined.");
             return null;
         }
 

@@ -73,6 +73,7 @@ namespace Content.MapRenderer.Painters
             var sEntityManager = server.ResolveDependency<IServerEntityManager>();
             var mapLoader = sEntityManager.System<MapLoaderSystem>();
             var sMaps = sEntityManager.System<SharedMapSystem>();
+            var sawmill = server.ResolveDependency<ILogManager>().RootSawmill;
 
             await server.WaitPost(() =>
             {
@@ -95,7 +96,7 @@ namespace Content.MapRenderer.Painters
                 }
                 catch (Exception e) // we probably tried to load a map
                 {
-                    Logger.Info($"Failed to load as grid, rendering as map...");
+                    sawmill.Info($"Failed to load as grid, rendering as map...");
                     sMaps.DeleteMap(mapId);
                     var opts = new DeserializationOptions();
                     opts.InitializeMaps = true;

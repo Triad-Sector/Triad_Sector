@@ -116,6 +116,8 @@ public sealed partial class ExplosionPrototype : IPrototype
     [DataField]
     public bool ThrowEntitiesOnExplosion = true;
 
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().RootSawmill;
+
     /// <summary>
     ///     Basic function for linear interpolation of the _tileBreakChance and _tileBreakIntensity arrays
     /// </summary>
@@ -123,7 +125,7 @@ public sealed partial class ExplosionPrototype : IPrototype
     {
         if (_tileBreakChance.Length == 0 || _tileBreakChance.Length != _tileBreakIntensity.Length)
         {
-            Logger.Error($"Malformed tile break chance definitions for explosion prototype: {ID}");
+            _sawmill.Error($"Malformed tile break chance definitions for explosion prototype: {ID}");
             return 0;
         }
 

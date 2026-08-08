@@ -271,12 +271,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var consoleXform = Transform(uid);
         var shuttleGrid = consoleXform.GridUid;
 
-        Logger.DebugS("shuttle", $"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
+        Log.Debug($"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
 
         // If the shuttleGrid is null, we can't do anything
         if (shuttleGrid == null)
         {
-            Logger.DebugS("shuttle", $"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
+            Log.Debug($"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
             return;
         }
 
@@ -294,14 +294,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             }
 
             SetFTLLock(dockedEntity, args.Enabled);
-            Logger.DebugS("shuttle", $"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
+            Log.Debug($"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
         }
 
         // If we didn't process the main grid yet, do it now
         if (!processedMainGrid && shuttleGrid != null)
         {
             SetFTLLock(shuttleGrid.Value, args.Enabled);
-            Logger.DebugS("shuttle", $"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
+            Log.Debug($"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
         }
     }
 

@@ -21,6 +21,8 @@ namespace Content.Client.Launcher
         [Dependency] private IConfigurationManager _cfg = default!;
         [Dependency] private IClipboardManager _clipboard = default!;
 
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("launcher-ui");
+
         private LauncherConnectingGui? _control;
 
         private Page _currentPage;
@@ -115,12 +117,12 @@ namespace Content.Client.Launcher
                 }
                 else
                 {
-                    Logger.InfoS("launcher-ui", $"Redial not possible, no Ss14Address");
+                    _sawmill.Info($"Redial not possible, no Ss14Address");
                 }
             }
             catch (Exception ex)
             {
-                Logger.ErrorS("launcher-ui", $"Redial exception: {ex}");
+                _sawmill.Error($"Redial exception: {ex}");
             }
             return false;
         }

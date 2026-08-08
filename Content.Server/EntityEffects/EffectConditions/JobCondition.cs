@@ -13,6 +13,8 @@ public sealed partial class JobCondition : EntityEffectCondition
 {
     [DataField(required: true)] public List<ProtoId<JobPrototype>> Job;
 
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().RootSawmill;
+
     public override bool Condition(EntityEffectBaseArgs args)
     {
         args.EntityManager.TryGetComponent<MindContainerComponent>(args.TargetEntity, out var mindContainer);
@@ -28,13 +30,13 @@ public sealed partial class JobCondition : EntityEffectCondition
 
             if (!args.EntityManager.TryGetComponent<MindRoleComponent>(roleId, out var mindRole))
             {
-                Logger.Error($"Encountered job mind role entity {roleId} without a {nameof(MindRoleComponent)}");
+                _sawmill.Error($"Encountered job mind role entity {roleId} without a {nameof(MindRoleComponent)}");
                 continue;
             }
 
             if (mindRole.JobPrototype == null)
             {
-                Logger.Error($"Encountered job mind role entity {roleId} without a {nameof(JobPrototype)}");
+                _sawmill.Error($"Encountered job mind role entity {roleId} without a {nameof(JobPrototype)}");
                 continue;
             }
 

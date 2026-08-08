@@ -61,13 +61,13 @@ public sealed partial class GuideTechnologyEmbed : BoxContainer, IDocumentTag, I
         control = null;
         if (!args.TryGetValue("Technology", out var id))
         {
-            Logger.Error("Technology embed tag is missing technology prototype argument");
+            Log.Error("Technology embed tag is missing technology prototype argument");
             return false;
         }
 
         if (!_prototype.TryIndex<TechnologyPrototype>(id, out var technology))
         {
-            Logger.Error($"Specified technology prototype \"{id}\" is not a valid technology prototype");
+            Log.Error($"Specified technology prototype \"{id}\" is not a valid technology prototype");
             return false;
         }
 

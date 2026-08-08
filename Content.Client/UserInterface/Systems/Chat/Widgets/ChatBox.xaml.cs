@@ -24,6 +24,7 @@ public partial class ChatBox : UIWidget
     private readonly IEntityManager _entManager;
     private readonly IConfigurationManager _cfg; // WD EDIT
     private readonly ILocalizationManager _loc; // WD EDIT
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("chat");
 
     public bool Main { get; set; }
 
@@ -71,7 +72,7 @@ public partial class ChatBox : UIWidget
 
     private void OnMessageAdded(ChatMessage msg)
     {
-        Logger.DebugS("chat", $"{msg.Channel}: {msg.Message}");
+        _sawmill.Debug($"{msg.Channel}: {msg.Message}");
         if (!ChatInput.FilterButton.Popup.IsActive(msg.Channel))
         {
             return;

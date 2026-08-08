@@ -49,6 +49,8 @@ public sealed partial class AHelpUIController: UIController, IOnSystemChanged<Bw
     private bool _bwoinkSoundEnabled;
     private string? _aHelpSound;
 
+    protected override string SawmillName => "c.s.go.es.bwoink";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -130,7 +132,7 @@ public sealed partial class AHelpUIController: UIController, IOnSystemChanged<Bw
 
     private void ReceivedBwoink(object? sender, SharedBwoinkSystem.BwoinkTextMessage message)
     {
-        Logger.InfoS("c.s.go.es.bwoink", $"@{message.UserId}: {message.Text}");
+        Log.Info($"@{message.UserId}: {message.Text}");
         var localPlayer = _playerManager.LocalSession;
         if (localPlayer == null)
         {

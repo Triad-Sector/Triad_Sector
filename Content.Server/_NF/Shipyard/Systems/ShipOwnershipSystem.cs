@@ -53,7 +53,7 @@ public sealed partial class ShipOwnershipSystem : EntitySystem
         Dirty(gridUid, comp);
 
         // Log ship registration
-        Logger.InfoS("shipOwnership", $"Registered ship {ToPrettyString(gridUid)} to player {owningPlayer.Name} ({owningPlayer.UserId})");
+        Log.Info($"Registered ship {ToPrettyString(gridUid)} to player {owningPlayer.Name} ({owningPlayer.UserId})");
     }
 
     private void OnShipOwnershipStartup(EntityUid uid, ShipOwnershipComponent component, ComponentStartup args)
@@ -88,14 +88,14 @@ public sealed partial class ShipOwnershipSystem : EntitySystem
                     // Player has connected, update ownership
                     ownership.IsOwnerOnline = true;
                     ownership.LastStatusChangeTime = _gameTiming.CurTime;
-                    Logger.DebugS("shipOwnership", $"Owner of ship {ToPrettyString(shipUid)} has connected");
+                    Log.Debug($"Owner of ship {ToPrettyString(shipUid)} has connected");
                     break;
 
                 case SessionStatus.Disconnected:
                     // Player has disconnected, update ownership
                     ownership.IsOwnerOnline = false;
                     ownership.LastStatusChangeTime = _gameTiming.CurTime;
-                    Logger.DebugS("shipOwnership", $"Owner of ship {ToPrettyString(shipUid)} has disconnected");
+                    Log.Debug($"Owner of ship {ToPrettyString(shipUid)} has disconnected");
                     break;
             }
 
