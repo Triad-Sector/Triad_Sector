@@ -5,6 +5,7 @@ using Content.Shared.Decals;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Utility;
 using Content.Shared.Tiles; // Frontier
 
@@ -48,7 +49,7 @@ public sealed partial class TileSystem : EntitySystem
 
         var sum = variants.Sum();
         var accumulated = 0f;
-        var rand = random.NextFloat() * sum;
+        var rand = random.NextFloatValue() * sum;
 
         for (byte i = 0; i < variants.Length; ++i)
         {

@@ -36,6 +36,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 using Robust.Shared.GameObjects;
 using Content.Shared._Crescent.SpaceBiomes;
@@ -252,7 +253,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         if (config != SalvageMissionType.Mining) // Frontier: why?
         {
             var maxDungeonOffset = minDungeonOffset + 12;
-            var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloat();
+            var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloatValue();
             dungeonOffset = new Vector2(0f, dungeonOffsetDistance);
             dungeonOffset = dungeonRotation.RotateVec(dungeonOffset);
             var dungeonMod = _prototypeManager.Index<SalvageDungeonModPrototype>(mission.Dungeon);
@@ -488,7 +489,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 
         for (var i = 0; i < groupSpawns; i++)
         {
-            var roll = random.NextFloat() * groupSum;
+            var roll = random.NextFloatValue() * groupSum;
             var value = 0f;
 
             foreach (var group in faction.MobGroups)

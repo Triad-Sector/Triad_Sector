@@ -8,6 +8,7 @@ using BenchmarkDotNet.Attributes;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Maths;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using SysVector4 = System.Numerics.Vector4;
 
 namespace Content.Benchmarks
@@ -37,15 +38,15 @@ namespace Content.Benchmarks
 
             for (var i = 0; i < N; i++)
             {
-                var r1 = random.NextFloat();
-                var g1 = random.NextFloat();
-                var b1 = random.NextFloat();
-                var a1 = random.NextFloat();
+                var r1 = random.NextFloatValue();
+                var g1 = random.NextFloatValue();
+                var b1 = random.NextFloatValue();
+                var a1 = random.NextFloatValue();
 
-                var r2 = random.NextFloat();
-                var g2 = random.NextFloat();
-                var b2 = random.NextFloat();
-                var a2 = random.NextFloat();
+                var r2 = random.NextFloatValue();
+                var g2 = random.NextFloatValue();
+                var b2 = random.NextFloatValue();
+                var a2 = random.NextFloatValue();
 
                 _colors[i] = (new Color(r1, g1, b1, a1), new Color(r2, g2, b2, a2));
             }
