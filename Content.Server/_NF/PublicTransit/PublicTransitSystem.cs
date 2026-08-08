@@ -1,6 +1,7 @@
 using Content.Server._NF.PublicTransit.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
+using Content.Server.Power.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
@@ -268,7 +269,7 @@ public sealed partial class PublicTransitSystem : EntitySystem
             // despawn, but Edison in particular gets wrecked often enough that its docks can be gone
             // while the stop itself still exists. GetDockingConfig returning null means no usable dock
             // pair, so skip the stop and tell the passengers why rather than flying there to find out.
-            if (_dockSystem.GetDockingConfig(uid, comp.NextStation, "DockTransit") is null)
+            if (!BerthIsServiceable(uid, comp.NextStation))
             {
                 var skipped = destination.EntityName;
 
@@ -297,6 +298,30 @@ public sealed partial class PublicTransitSystem : EntitySystem
 
             comp.NextTransfer = curTime + TimeSpan.FromSeconds(FlyTime + waitTime);
         }
+    }
+
+    /// <summary>
+    /// Whether the bus can actually be served at the given stop right now.
+    /// </summary>
+    // Triad: two ways a stop stops being serviceable. The berth can be destroyed outright, which shows
+    // up as no docking config at all. Or the station can be dying, and an unpowered docking airlock is
+    // a good tell for that: a stop dark enough that its own dock has no power is not somewhere to be
+    // dropping passengers off. Docks with no power receiver at all are treated as fine, since plenty of
+    // dock ports are not powered devices and absence of a receiver is not a fault.
+    private bool BerthIsServiceable(EntityUid busUid, EntityUid station)
+    {
+        var config = _dockSystem.GetDockingConfig(busUid, station, "DockTransit");
+
+        if (config is null)
+            return false;
+
+        foreach (var (_, stationDock, _, _) in config.Docks)
+        {
+            if (!TryComp<ApcPowerReceiverComponent>(stationDock, out var power) || power.Powered)
+                return true;
+        }
+
+        return false;
     }
 
     /// <summary>
