@@ -10,6 +10,10 @@
     Venmar:
       stationProto: StandardFrontierStation # Using this temporarily
       gridComponents:
+      # Triad: Venmar is a gameMap, not a PointOfInterest, and the transit system only ever learned
+      # about POIs. So the bus bay at -42.5,-1.5, its NFSignBus and its "Transit Shuttle" beacon sat
+      # there the whole time with nothing routed to them. This puts the home station on the line.
+      - type: StationTransit
       - type: VesselMusic
         ambientMusicPrototype: ColossusCentralMusic
       - type: VesselInfo
