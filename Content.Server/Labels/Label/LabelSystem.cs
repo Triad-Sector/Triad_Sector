@@ -9,6 +9,7 @@ using Content.Shared.Paper;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Labels
 {
@@ -23,8 +24,8 @@ namespace Content.Server.Labels
         [Dependency] private TagSystem _tagSystem = default!; // Frontier
 
         public const string ContainerName = "paper_label";
-        [ValidatePrototypeId<TagPrototype>] // Frontier: label prevention
-        private const string PreventTag = "PreventLabel"; // Frontier: label prevention
+         // Frontier: label prevention
+        private static readonly ProtoId<TagPrototype> PreventTag = "PreventLabel"; // Frontier: label prevention
 
         public override void Initialize()
         {

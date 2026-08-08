@@ -12,6 +12,7 @@ using Content.Shared.Players.PlayTimeTracking;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Administration.Notes;
 

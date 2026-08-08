@@ -83,8 +83,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
     ///     find errors. However some components, like rogue arrows, or some commands like the admin-smite need to have
     ///     a "default" option specified outside of yaml data-fields. Hence this const string.
     /// </remarks>
-    [ValidatePrototypeId<ExplosionPrototype>]
-    public const string DefaultExplosionPrototypeId = "Default";
+    public static readonly ProtoId<ExplosionPrototype> DefaultExplosionPrototypeId = "Default";
     private static readonly TimeSpan AlertCooldown = TimeSpan.FromSeconds(60); // Mono: Explosion Admin Alert Cooldown
     public TimeSpan NextAlertTime; // Mono
 

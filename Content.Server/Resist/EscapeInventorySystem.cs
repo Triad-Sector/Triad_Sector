@@ -35,8 +35,7 @@ public sealed partial class EscapeInventorySystem : EntitySystem
     [Dependency] private  EntityManager _entityManager = default!;
 
     // Frontier - cancel inventory escape
-    [ValidatePrototypeId<EntityPrototype>]
-    private readonly string _escapeCancelAction = "ActionCancelEscape";
+    private readonly EntProtoId _escapeCancelAction = "ActionCancelEscape";
 
     /// <summary>
     /// You can't escape the hands of an entity this many times more massive than you.

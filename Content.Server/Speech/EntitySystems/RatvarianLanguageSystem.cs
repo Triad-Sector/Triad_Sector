@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using Content.Shared.Speech.Components;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.StatusEffect;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -11,8 +12,7 @@ public sealed partial class RatvarianLanguageSystem : SharedRatvarianLanguageSys
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
 
-    [ValidatePrototypeId<StatusEffectPrototype>]
-    private const string RatvarianKey = "RatvarianLanguage";
+    private static readonly ProtoId<StatusEffectPrototype> RatvarianKey = "RatvarianLanguage";
 
     // This is the word of Ratvar and those who speak it shall abide by His rules:
     /*

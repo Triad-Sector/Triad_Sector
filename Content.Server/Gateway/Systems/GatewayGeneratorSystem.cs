@@ -36,8 +36,7 @@ public sealed partial class GatewayGeneratorSystem : EntitySystem
     [Dependency] private SharedSalvageSystem _salvage = default!;
     [Dependency] private TileSystem _tile = default!;
 
-    [ValidatePrototypeId<LocalizedDatasetPrototype>]
-    private const string PlanetNames = "NamesBorer";
+    private static readonly ProtoId<LocalizedDatasetPrototype> PlanetNames = "NamesBorer";
 
     // TODO:
     // Fix shader some more

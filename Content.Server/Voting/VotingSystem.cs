@@ -14,6 +14,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using System.Threading.Tasks;
 using Content.Shared.Players.PlayTimeTracking;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Voting;
 

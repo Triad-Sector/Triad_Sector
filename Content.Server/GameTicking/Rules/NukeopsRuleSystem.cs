@@ -25,6 +25,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Store.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -38,11 +39,9 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
     [Dependency] private StoreSystem _store = default!;
     [Dependency] private TagSystem _tag = default!;
 
-    [ValidatePrototypeId<CurrencyPrototype>]
-    private const string TelecrystalCurrencyPrototype = "Telecrystal";
+    private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
 
-    [ValidatePrototypeId<TagPrototype>]
-    private const string NukeOpsUplinkTagPrototype = "NukeOpsUplink";
+    private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
 
     public override void Initialize()
     {
