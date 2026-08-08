@@ -22,6 +22,15 @@ public sealed partial class AdvertiseSystem : EntitySystem
     // Mono
     private PriorityQueue<EntityUid, TimeSpan> _advertQueue = new();
 
+    /// <summary>
+    /// How many advertisements may actually be spoken in one tick.
+    /// </summary>
+    // Triad: SayAdvertisement runs a full IC chat send, which the TODO below already flags as costing
+    // whole milliseconds each. Speaking every due advert in one tick meant the cost scaled with however
+    // many happened to come due together, and a Tracy capture caught it stalling a tick for 128ms.
+    // The queue is ordered by due time, so anything over the cap just speaks on a following tick.
+    private const int MaxAdvertsPerTick = 4;
+
     // Mono - cache dataset protos for performance reasons
     private Dictionary<ProtoId<LocalizedDatasetPrototype>, LocalizedDatasetPrototype> _cachedDatasets = new();
 
@@ -90,6 +99,7 @@ public sealed partial class AdvertiseSystem : EntitySystem
     public override void Update(float frameTime)
     {
         var i = 0;
+        var spoken = 0;
         while (true)
         {
             i++;
@@ -110,9 +120,16 @@ public sealed partial class AdvertiseSystem : EntitySystem
             if (advertise.NextAdvertisementTime > _gameTiming.CurTime)
                 break;
 
+            // Triad: leave the backlog queued at its existing due time so it comes back up next tick,
+            // still in order. See MaxAdvertsPerTick. Note this deliberately sits after the cleanup
+            // branch above, so dropping stale entries is never rate limited, only speaking is.
+            if (spoken >= MaxAdvertsPerTick)
+                break;
+
             _advertQueue.Dequeue();
             SayAdvertisement(uid, advertise);
             RandomizeNextAdvertTime(uid, advertise);
+            spoken++;
         }
     }
 
