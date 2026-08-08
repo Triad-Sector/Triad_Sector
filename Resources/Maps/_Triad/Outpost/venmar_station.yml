@@ -17863,12 +17863,16 @@ entities:
       rot: 3.141592653589793 rad
       pos: -42.5,-1.5
       parent: 2
+    - type: PriorityDock # Triad: the bay only fits the bus one way round; demand its port side
+      requiredShuttleTag: DockTransitPort
   - uid: 102
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -43.5,-1.5
       parent: 2
+    - type: PriorityDock # Triad: see above
+      requiredShuttleTag: DockTransitPort
 - proto: AirlockFreezer
   entities:
   - uid: 103
