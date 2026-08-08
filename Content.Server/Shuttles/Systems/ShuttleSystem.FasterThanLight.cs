@@ -712,18 +712,6 @@ public sealed partial class ShuttleSystem
         comp.StateTime = StartEndTime.FromCurTime(_gameTiming, DefaultArrivalTime);
         comp.State = FTLState.Arriving;
 
-        // Create visualizer if it doesn't exist
-        if (comp.VisualizerProto != null && comp.VisualizerEntity == null)
-        {
-            comp.VisualizerEntity = SpawnAttachedTo(entity.Comp1.VisualizerProto, entity.Comp1.TargetCoordinates);
-            DebugTools.Assert(Transform(comp.VisualizerEntity.Value).ParentUid == entity.Comp1.TargetCoordinates.EntityId);
-            var visuals = Comp<FtlVisualizerComponent>(comp.VisualizerEntity.Value);
-            visuals.Grid = entity.Owner;
-            Dirty(comp.VisualizerEntity.Value, visuals);
-            _transform.SetLocalRotation(comp.VisualizerEntity.Value, comp.TargetAngle);
-            _pvs.AddGlobalOverride(comp.VisualizerEntity.Value);
-        }
-
         _thruster.DisableLinearThrusters(shuttle);
         _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.South);
 
@@ -1651,6 +1639,23 @@ public sealed partial class ShuttleSystem
 
         var ev = new FTLStartedEvent(uid, comp.TargetCoordinates, fromMapUid, fromMatrix, fromRotation);
         RaiseLocalEvent(uid, ref ev, true);
+
+        // Triad: the landing marker used to spawn at the Travelling -> Arriving transition, which gave
+        // anyone standing on the target only shuttle.arrival_time to move, 5 seconds by default. A
+        // shuttle on the FTL map is already committed, there is no way to abort a jump once it is under
+        // way, so the destination is known and final from here. Spawning the marker now warns for the
+        // whole travel leg instead of the last few seconds of it.
+        if (comp.VisualizerProto != null && comp.VisualizerEntity == null)
+        {
+            comp.VisualizerEntity = SpawnAttachedTo(entity.Comp1.VisualizerProto, entity.Comp1.TargetCoordinates);
+            DebugTools.Assert(Transform(comp.VisualizerEntity.Value).ParentUid == entity.Comp1.TargetCoordinates.EntityId);
+            var visuals = Comp<FtlVisualizerComponent>(comp.VisualizerEntity.Value);
+            visuals.Grid = entity.Owner;
+            Dirty(comp.VisualizerEntity.Value, visuals);
+            _transform.SetLocalRotation(comp.VisualizerEntity.Value, comp.TargetAngle);
+            _pvs.AddGlobalOverride(comp.VisualizerEntity.Value);
+        }
+
 
         // Audio
         var wowdio = _audio.PlayPvs(comp.TravelSound, uid);
