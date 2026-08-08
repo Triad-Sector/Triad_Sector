@@ -264,6 +264,27 @@ public sealed partial class PublicTransitSystem : EntitySystem
             AnnounceToBus(uid, Loc.GetString("public-transit-departure",
                 ("destination", destination.EntityName), ("flytime", (int) FlyTime)));
 
+            // Triad: check there is somewhere to berth before committing to the trip. Stations do not
+            // despawn, but Edison in particular gets wrecked often enough that its docks can be gone
+            // while the stop itself still exists. GetDockingConfig returning null means no usable dock
+            // pair, so skip the stop and tell the passengers why rather than flying there to find out.
+            if (_dockSystem.GetDockingConfig(uid, comp.NextStation, "DockTransit") is null)
+            {
+                var skipped = destination.EntityName;
+
+                if (TryGetNextStation(out var afterSkip) && afterSkip is { Valid: true } replacement)
+                    comp.NextStation = replacement;
+
+                AnnounceToBus(uid, Loc.GetString("public-transit-skipped",
+                    ("destination", skipped),
+                    ("next", TryComp(comp.NextStation, out MetaDataComponent? nextMeta) ? nextMeta.EntityName : skipped)),
+                    chime: true);
+
+                // Retry on the normal cadence instead of hammering the dock check every tick.
+                comp.NextTransfer = curTime + TimeSpan.FromSeconds(waitTime);
+                continue;
+            }
+
             // Ensure the shuttle is undocked before initiating FTL travel
             _dockSystem.UndockDocks(uid);
             _shuttles.FTLToDock(uid, shuttle, comp.NextStation, hyperspaceTime: FlyTime, priorityTag: "DockTransit");
