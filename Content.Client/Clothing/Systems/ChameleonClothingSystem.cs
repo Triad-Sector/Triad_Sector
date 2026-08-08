@@ -50,7 +50,12 @@ public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSys
         if (TryComp(uid, out SpriteComponent? sprite)
             && proto.TryComp(out SpriteComponent? otherSprite, Factory))
         {
-            _sprite.CopySprite((uid, otherSprite), (uid, sprite));
+            // The source is the prototype's own component, so it is not owned by uid and pairing the
+            // two trips Entity<T>'s owner assert. Carry the component's real owner, exactly as the
+            // engine's own CopyFrom shim does; CopySprite never reads it once Comp is non-null.
+#pragma warning disable CS0618
+            _sprite.CopySprite((otherSprite.Owner, otherSprite), (uid, sprite));
+#pragma warning restore CS0618
         }
 
         // Edgecase for PDAs to include visuals when UI is open
