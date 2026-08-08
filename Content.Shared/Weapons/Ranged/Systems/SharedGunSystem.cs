@@ -622,6 +622,25 @@ public abstract partial class SharedGunSystem : EntitySystem
     public override void Update(float frameTime)
     {
         _lastFrameTime = frameTime;
+
+        // Triad: a projectile routinely outlives the thing it was aimed at, most often because a grid
+        // cleanup deletes the target ship while rounds are still in the air. The dead uid stays in the
+        // networked Target field, so PvsSystem's serializer logs a resolve error carrying a full stack
+        // trace on every state send, per player, for the rest of the projectile's life. The component
+        // only ever answers "is this projectile aimed at me", which a deleted target can never satisfy,
+        // so drop it. Server only: on the client an out-of-PVS target legitimately reads as deleted, and
+        // removing it there would just fight the next state.
+        if (_netManager.IsServer)
+        {
+            var targetedQuery = EntityQueryEnumerator<TargetedProjectileComponent>();
+            while (targetedQuery.MoveNext(out var uid, out var targeted))
+            {
+                if (!TerminatingOrDeleted(targeted.Target))
+                    continue;
+
+                RemCompDeferred<TargetedProjectileComponent>(uid);
+            }
+        }
     }
 
     protected abstract void Popup(string message, EntityUid? uid, EntityUid? user);
