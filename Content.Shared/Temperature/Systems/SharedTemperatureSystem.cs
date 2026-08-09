@@ -46,7 +46,7 @@ public sealed class SharedTemperatureSystem : EntitySystem
         float minHotThreshold = 0;
         foreach (var (threshold, modifier) in ent.Comp.Thresholds) // Find the thresholds that are closest to the normal body temperature se we can detect when to stop applying slowdowns
         {
-            var difference = threshold - ent.Comp.baseTemperature; // Hot thresholds are pos, cold thresholds are neg
+            var difference = threshold - ent.Comp.BaseTemperature; // Hot thresholds are pos, cold thresholds are neg
             if ((maxColdThreshold == 0 || threshold > maxColdThreshold) &&  difference < 0) //Set cold modifier
             {
                 maxColdThreshold = threshold;
