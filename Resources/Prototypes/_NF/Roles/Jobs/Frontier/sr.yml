@@ -5,12 +5,9 @@
   playTimeTracker: JobHeadOfPersonnel
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 108000 # Triad - 30 hours
+      time: 126000 # Triad - 35 hours
     - !type:DepartmentTimeRequirement
-      department: Security
-      time: 18000 # Triad - 5 hours
-    - !type:RoleTimeRequirement
-      role: JobSecurityGuard
+      department: Security # TDF playtime
       time: 18000 # Triad - 5 hours
     - !type:RoleTimeRequirement
       role: JobStc

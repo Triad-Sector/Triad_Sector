@@ -19,6 +19,7 @@
   - GeneralTdfAccess
   - AllAccessColonial
   # Triad End
+  setPreference: false # Triad - disabled this
   ranks: # Triad, ranks
     RankStationGuardSenior:
     - !type:RoleTimeRequirement
