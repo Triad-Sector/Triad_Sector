@@ -87,6 +87,13 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
             }
         }
 
+        // Reused doll: refresh to the current profile in case the character changed
+        if (viewerMob != null)
+        {
+            _humanoid.LoadProfile(viewerMob.Value, ev.Profile);
+            _metaData.SetEntityName(viewerMob.Value, ev.Profile.Name);
+        }
+
         if (viewerMob == null && _prototypes.TryIndex(ev.Profile.Species, out var speciesProto))
         {
             viewerMob = Spawn(speciesProto.DollPrototype);
