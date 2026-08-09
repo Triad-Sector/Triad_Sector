@@ -108,7 +108,8 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         var scannedItem = GetEntity(chipComp.ScannedItem);
         var scannedPermitCarrier = GetEntity(chipComp.ScannedPermitCarrier);
 
-        if (scannedItem == null || scannedPermitCarrier == null)
+        if (scannedItem == null || scannedPermitCarrier == null
+            || TerminatingOrDeleted(scannedItem.Value) || TerminatingOrDeleted(scannedPermitCarrier.Value))
         {
             PlayDenySound(ent, user);
             ConsolePopup(user, Loc.GetString("contraband-permit-console-popup-error-no-data"), PopupType.SmallCaution);
