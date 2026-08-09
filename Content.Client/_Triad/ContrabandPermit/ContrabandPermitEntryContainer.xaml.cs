@@ -138,21 +138,28 @@ public sealed partial class ContrabandPermitEntryContainer : BoxContainer
         // Make new buttons if needed
         if (index >= table.ChildCount)
         {
+            var itemIndex = index;
             var newButton = new Button
             {
-                Text = itemMeta.EntityName,
                 ToggleMode = true,
                 HorizontalExpand = true,
-                Pressed = isSelectedItem,
                 Group = _permitItemButtons
             };
 
             newButton.OnPressed += args =>
             {
-                _window?.UpdateFocus(PermitOwner, item);
+                if (itemIndex < PermitItems.Count)
+                    _window?.UpdateFocus(PermitOwner, PermitItems[itemIndex]);
             };
 
             table.AddChild(newButton);
+        }
+
+        // Keep reused buttons in sync with the current item list
+        if (table.GetChild(index) is Button button)
+        {
+            button.Text = itemMeta.EntityName;
+            button.Pressed = isSelectedItem;
         }
     }
 }
