@@ -206,7 +206,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
                 }
 
                 // Re-stamp so a transferred ship only alerts once, not on every future load
-                comp.PermitOwnerName = mindComp.CharacterName;
+                comp.PermitOwnerName = mindComp.CharacterName ?? comp.PermitOwnerName;
             }
 
             Dirty(ent, comp);
