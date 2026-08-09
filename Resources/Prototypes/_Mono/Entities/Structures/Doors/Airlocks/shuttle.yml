@@ -69,6 +69,8 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
+  - type: PriorityDock # Triad, dock priority
+    requiredShuttleTag: DockTdf # Outpost doors cannot have purchased CIVILIAN shuttles dock
 
 - type: entity
   id: AirlockShuttleNfsdOutpost
@@ -87,6 +89,8 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
+  - type: PriorityDock # Triad, dock priority
+    requiredShuttleTag: DockTdf # Outpost doors cannot have purchased CIVILIAN shuttles dock
 
 - type: entity
   parent: AirlockShuttle
