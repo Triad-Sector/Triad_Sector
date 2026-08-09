@@ -11,6 +11,8 @@
     - belt
     equipSound:
       path: /Audio/Items/belt_equip.ogg
+  - type: Item
+    size: Large
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/handling/toolbelt_pickup.ogg
