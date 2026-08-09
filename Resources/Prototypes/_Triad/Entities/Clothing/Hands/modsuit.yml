@@ -64,8 +64,8 @@
   - type: ComponentToggler
     components:
     - type: StaminaDamageOnHit
-      damage: 20
-      overtime: 60
+      damage: 25
+      overtime: 45
       sound: /Audio/Weapons/egloves.ogg
   - type: GenericVisualizer
     visuals:
