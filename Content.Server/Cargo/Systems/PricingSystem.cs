@@ -245,6 +245,8 @@ public sealed partial class PricingSystem : EntitySystem
     /// <remarks>
     /// This fires off an event to calculate the price.
     /// Calculating the price of an entity that somehow contains itself will likely hang.
+    ///
+    /// Returns 0 if it would otherwise have returned NaN
     /// </remarks>
     public double GetPrice(EntityUid uid, bool includeContents = true)
     {
@@ -253,21 +255,23 @@ public sealed partial class PricingSystem : EntitySystem
         RaiseLocalEvent(uid, ref ev);
 
         if (ev.Handled)
-            return ev.Price;
+        {
+            return FiniteOr(ev.Price, 0);
+        }
 
-        var price = ev.Price;
+        var price = FiniteOr(ev.Price, 0);
         //TODO: Add an OpaqueToAppraisal component or similar for blocking the recursive descent into containers, or preventing material pricing.
         // DO NOT FORGET TO UPDATE ESTIMATED PRICING
-        price += GetMaterialsPrice(uid);
-        price += GetSolutionsPrice(uid);
+        price += FiniteOr(GetMaterialsPrice(uid), 0);
+        price += FiniteOr(GetSolutionsPrice(uid), 0);
 
         // Can't use static price with stackprice
         var oldPrice = price;
-        price += GetStackPrice(uid);
+        price += FiniteOr(GetStackPrice(uid), 0);
 
         if (oldPrice.Equals(price))
         {
-            price += GetStaticPrice(uid);
+            price += FiniteOr(GetStaticPrice(uid), 0);
         }
 
         if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
@@ -281,7 +285,20 @@ public sealed partial class PricingSystem : EntitySystem
             }
         }
 
-        return price;
+        return FiniteOr(price, 0);
+
+        double FiniteOr(double d, double fallback)
+        {
+            if (double.IsFinite(d))
+            {
+                return d;
+            }
+            else
+            {
+                // LOG THE NaN PRICE SO WE CAN FIX IT!!!
+                return fallback;
+            }
+        }
     }
 
     /// <summary>
