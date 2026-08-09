@@ -15,15 +15,16 @@ public sealed partial class ContrabandPermitItemComponent : Component
     public string PermitReason = string.Empty;
 
     /// <summary>
-    /// The UID of the permit owner.
+    /// The UID of the permit owner. Session-local, re-stamped on ship load; never serialized.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [AutoNetworkedField]
     public EntityUid? PermitOwner;
 
     /// <summary>
     /// The mind of the permit owner. Used for checking if a permitted item should stay or be seized on a saved ship.
+    /// Session-local, re-stamped on ship load; never serialized.
     /// </summary>
-    [DataField]
+    [ViewVariables]
     public EntityUid? PermitOwnerMind;
 
     /// <summary>
