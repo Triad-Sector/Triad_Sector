@@ -295,7 +295,7 @@ public sealed partial class PricingSystem : EntitySystem
             }
             else
             {
-                // LOG THE NaN PRICE SO WE CAN FIX IT!!!
+                Log.Error($"Appraised value of {ToPrettyString(uid)} was not finite, set fallback to zero");
                 return fallback;
             }
         }
