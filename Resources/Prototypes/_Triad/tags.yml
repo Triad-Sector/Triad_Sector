@@ -41,3 +41,7 @@
 
 - type: Tag
   id: DockTransitStarboard
+
+# So TDF vessels prioritize TDF docks on Venmar and civilian vessels do not dock to them
+- type: Tag
+  id: DockTdf
