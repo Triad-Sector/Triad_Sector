@@ -166,10 +166,10 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
             label.SetMarkup(Loc.GetString("contraband-permit-no-permits"));
 
             ActivePermitsTable.AddChild(label);
-
-            if (consoleComp.CurrentPermitReason != string.Empty && !PermitReasonTextBox.HasKeyboardFocus())
-                PermitReasonTextBox.Text = consoleComp.CurrentPermitReason;
         }
+
+        if (consoleComp.CurrentPermitReason != string.Empty && !PermitReasonTextBox.HasKeyboardFocus())
+            PermitReasonTextBox.Text = consoleComp.CurrentPermitReason;
     }
 
     private void UpdateUIEntry(ContrabandPermitConsoleEntry entry, int index, Control table, ContrabandPermitConsoleComponent console, PermitEntryFocusData? focusData)
