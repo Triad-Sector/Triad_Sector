@@ -161,7 +161,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!TryPurchaseShuttle(station, vessel.ShuttlePath, out var shuttleUidOut))
+        if (!TryPurchaseShuttle(station, vessel.ShuttlePath, out var shuttleUidOut, vessel.PriorityDockTag))
         {
             PlayDenySound(player, shipyardConsoleUid, component);
             return;

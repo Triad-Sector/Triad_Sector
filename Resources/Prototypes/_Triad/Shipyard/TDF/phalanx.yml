@@ -4,7 +4,7 @@
 
 - type: vessel
   id: Phalanx
-  parent: BaseVessel
+  parent: BaseVesselTdf
   name: TDF Phalanx
   description: A relic of the UCA fleet, updated for the modern age to serve as a Mech Carrier for the TDF. The Phalanx will arrive at a point, and ensure the point remains within TDF control.
   price: 405000
