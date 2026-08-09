@@ -163,8 +163,10 @@ public sealed class ItemGridPiece : Control, IEntityControl
         }
 
         // typically you'd divide by two, but since the textures are half a tile, this is done implicitly
-        var iconPosition = new Vector2((boundingGrid.Width + 1) * size.X + itemComponent.StoredOffset.X * 2,
-            (boundingGrid.Height + 1) * size.Y + itemComponent.StoredOffset.Y * 2);
+        var iconOffset = Location.Rotation.RotateVec(itemComponent.StoredOffset) * 2 * UIScale;
+        var iconPosition = new Vector2(
+            (boundingGrid.Width + 1) * size.X + iconOffset.X,
+            (boundingGrid.Height + 1) * size.Y + iconOffset.Y);
         var iconRotation = Location.Rotation + Angle.FromDegrees(itemComponent.StoredRotation);
 
         if (itemComponent.StoredSprite is { } storageSprite)
