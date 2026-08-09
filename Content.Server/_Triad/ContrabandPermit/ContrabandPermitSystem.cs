@@ -204,6 +204,9 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
                     _chat.SendAdminAlert(message);
                     _adminLog.Add(LogType.EntitySpawn, LogImpact.Medium, $"{message}");
                 }
+
+                // Re-stamp so a transferred ship only alerts once, not on every future load
+                comp.PermitOwnerName = mindComp.CharacterName;
             }
 
             Dirty(ent, comp);
