@@ -196,15 +196,16 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
             // On click
             newEntryContainer.FocusButton.OnButtonUp += args =>
             {
-                if (_trackedFocusOwner == owner)
+                var currentOwner = newEntryContainer.PermitOwner;
+                if (_trackedFocusOwner == currentOwner)
                 {
                     _trackedFocusOwner = null;
                     UpdateFocus(null, null);
                 }
                 else
                 {
-                    _trackedFocusOwner = owner;
-                    UpdateFocus(owner, null);
+                    _trackedFocusOwner = currentOwner;
+                    UpdateFocus(currentOwner, null);
                 }
             };
 
