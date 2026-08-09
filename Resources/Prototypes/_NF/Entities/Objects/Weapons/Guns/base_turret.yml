@@ -103,7 +103,7 @@
     netsync: false
     radius: 20 # Triad 20 < 16
     energy: 8
-    mask: /Textures/_NF/Effects/LightMasks/beam.png
+    lightMask: Beam
     color: "#990000"
 
 - type: entity # Basic ballistic turret
