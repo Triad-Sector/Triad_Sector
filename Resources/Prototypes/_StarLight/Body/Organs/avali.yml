@@ -29,6 +29,7 @@
     metabolizerTypes: [Avali]
     groups:
     - id: Medicine
+    - id: Cryogenic # Triad
     - id: Poison
     - id: Narcotic
   - type: Sprite

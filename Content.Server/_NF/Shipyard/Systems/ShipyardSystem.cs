@@ -137,11 +137,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
     /// <summary>
     /// Adds a ship to the shipyard, calculates its price, and attempts to ftl-dock it to the given station
+    /// Triad - added dockTag
     /// </summary>
     /// <param name="stationUid">The ID of the station to dock the shuttle to</param>
     /// <param name="shuttlePath">The path to the shuttle file to load. Must be a grid file!</param>
+    /// <param name="dockTag">The priority tag to use when choosing a valid dock the shuttle.</param>
     /// <param name="shuttleEntityUid">The EntityUid of the shuttle that was purchased</param>
-    public bool TryPurchaseShuttle(EntityUid stationUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
+    public bool TryPurchaseShuttle(EntityUid stationUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid, string? dockTag = null)
     {
         if (!TryComp<StationDataComponent>(stationUid, out var stationData)
             || !TryAddShuttle(shuttlePath, out var shuttleGrid)
@@ -165,7 +167,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var ev = new ShipBoughtEvent();
         RaiseLocalEvent(shuttleGrid.Value, ev);
         //can do TryFTLDock later instead if we need to keep the shipyard map paused
-        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value);
+        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value, priorityTag: dockTag); // Triad, dock tag
         shuttleEntityUid = shuttleGrid;
         return true;
     }

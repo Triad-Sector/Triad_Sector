@@ -55,7 +55,7 @@
 - type: entity
   id: AirlockGlassShuttleNfsdOutpost
   parent: AirlockGlassShuttleNfsd
-  suffix: OUTPOST ONLY, TSFMC, Glass, Docking
+  suffix: OUTPOST ONLY, TDF, Glass, Docking
   components:
   - type: Destructible # Mono - buff docking port health
     thresholds:
@@ -69,11 +69,13 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
+  - type: PriorityDock # Triad, dock priority
+    requiredShuttleTag: DockTdf # Outpost doors cannot have purchased CIVILIAN shuttles dock
 
 - type: entity
   id: AirlockShuttleNfsdOutpost
   parent: AirlockShuttleNfsd
-  suffix: OUTPOST ONLY, TSFMC, Docking
+  suffix: OUTPOST ONLY, TDF, Docking
   components:
   - type: Destructible # Mono - buff docking port health
     thresholds:
@@ -87,6 +89,8 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
+  - type: PriorityDock # Triad, dock priority
+    requiredShuttleTag: DockTdf # Outpost doors cannot have purchased CIVILIAN shuttles dock
 
 - type: entity
   parent: AirlockShuttle

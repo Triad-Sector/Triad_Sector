@@ -3524,3 +3524,97 @@ Entries:
   id: 2487
   time: '2026-08-08T23:36:20.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/476
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Infrastructure roles having inaccessible loadout items with
+        station server role requirements.
+    - type: Add
+      message: Added playtime requirements for Infrastructure roles.
+  id: 2488
+  time: '2026-08-09T01:58:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/475
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: Fixed a client crash when a shuttle radar came into range of a VGRoid.
+  id: 2489
+  time: '2026-08-09T06:23:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/477
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Directional lights point in a direction again. Flashlights, hardhats,
+        modsuits, helmets, mech and borg headlights, thrusters and strobes were
+        all casting light evenly in every direction.
+  id: 2490
+  time: '2026-08-09T06:36:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/478
+- author: nanbyt
+  changes:
+    - type: Fix
+      message: Fixed Resomi's temperature regulation threshold.
+  id: 2491
+  time: '2026-08-09T13:31:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/471
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed items in backpack storage icons' appearing offset
+    - type: Fix
+      message: Fixed anomaly cores having the potential to brick ship saves.
+  id: 2492
+  time: '2026-08-09T16:33:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/480
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: Fixed Avalis can't process cryogenic meds
+  id: 2493
+  time: '2026-08-09T16:33:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/468
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: 'Rules: 3.4, 3.4A, 3.4B, 9.1A, 9.1B, 10.5, 10.5A, 10.5B, 10.5C'
+    - type: Remove
+      message: 'Rules: 9.4, 11.4C'
+    - type: Tweak
+      message: 'Rules: 1.7D, 7.5. 6.3'
+    - type: Tweak
+      message: >-
+        Guidebook Tutorial, "New? Start here!", "Radio and Speech" and "Your
+        Fist Character" sections updated to be more in line with Triad
+    - type: Tweak
+      message: Drop pod locations now say smuggle into TFA territory instead of NT
+  id: 2494
+  time: '2026-08-09T19:34:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/465
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        You can now engrave medals and badges. For example, you could write down
+        the recipient, in-character date, and reason as an engraving on medals.
+  id: 2495
+  time: '2026-08-09T20:09:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/304
+- author: TheRealMasterChief117
+  changes:
+    - type: Remove
+      message: Removed station guard.
+    - type: Tweak
+      message: Overseer and STC no longer require station guard playtime.
+    - type: Tweak
+      message: TDF SOP Page 1, Jurisdictional Authority, has been rewritten.
+    - type: Tweak
+      message: >-
+        Venmar Station now has 2 combat medic slots, 4 enforcer slots, 1 junior
+        enforcer slot, and 1 patrol team leader slot.
+    - type: Tweak
+      message: Resprited the TFA colonial staff shipyard console.
+  id: 2496
+  time: '2026-08-09T21:14:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/482

@@ -30,6 +30,18 @@ public sealed partial class AnomalyCoreSystem : EntitySystem
         var lerp = timeLeft.TotalSeconds / core.Comp.TimeToDecay;
         lerp = Math.Clamp(lerp, 0, 1);
 
+        // triad under some conditions this calculation can be NaN
+        if (!double.IsFinite(lerp))
+        {
+            lerp = 0;
+        }
+
         args.Price = MathHelper.Lerp(core.Comp.EndPrice, core.Comp.StartPrice, lerp);
+
+        // triad under some conditions this calculation can be NaN
+        if (!double.IsFinite(args.Price))
+        {
+            args.Price = 0;
+        }
     }
 }
