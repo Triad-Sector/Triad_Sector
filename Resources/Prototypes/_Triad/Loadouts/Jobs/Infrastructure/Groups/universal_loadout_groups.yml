@@ -1,3 +1,6 @@
+# Loadout groups for the infrastructure roles. The Contractor* groups carry every department's
+# kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
+# from the same loadout prototypes, plus a few plant-specific additions defined below.
 - type: loadoutGroup
   id: PlantTools
   name: loadout-group-plant-tools
@@ -13,20 +16,6 @@
   - PlantRPD
   - PlantRCD
   - PlantRCDAmmo
-
-- type: loadoutGroup
-  id: PlantBelt
-  name: loadout-group-plant-belt
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - ContractorClothingBeltUtility
-  - ContractorClothingBeltUtilityFilled
-  - ContractorClothingBeltStorageWaistbag
-  - ContractorClothingBeltSalvageWebbingFilledNF
-  - ContractorBoxFolderClipboard
-  fallbacks:
-  - ContractorClothingBeltUtilityFilled
 
 - type: loadoutGroup
   id: PlantFace

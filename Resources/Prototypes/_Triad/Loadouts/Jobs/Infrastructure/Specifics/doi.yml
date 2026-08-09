@@ -27,3 +27,21 @@
     proto: SeniorDirectorOfInfrastructure
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
+
+- type: loadout
+  id: PlantManagerMessengerBag
+  equipment:
+    back: ClothingBackpackMessengerChiefEngineer
+
+- type: loadout
+  id: DoICloak
+  equipment:
+    neck: ClothingNeckCloakCe
+
+- type: loadout
+  id: DoIMantle
+  equipment:
+    neck: ClothingNeckMantleCE
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorDirectorOfInfrastructure

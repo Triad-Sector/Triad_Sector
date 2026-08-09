@@ -1,3 +1,4 @@
+# New IDs should be SectorTechnician, not PlantTechnician.
 - type: loadoutGroup
   id: PlantTechnicianHead
   name: loadout-group-plant-technician-head
@@ -8,6 +9,20 @@
   - StationEngineerHardhatRed
   - PlantHardhatBlue
   - PlantEngineeringBeret
+
+- type: loadoutGroup
+  id: PlantBelt
+  name: loadout-group-plant-belt
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingBeltUtility
+  - ContractorClothingBeltUtilityFilled
+  - ContractorClothingBeltStorageWaistbag
+  - ContractorClothingBeltSalvageWebbingFilledNF
+  - ContractorBoxFolderClipboard
+  fallbacks:
+  - ContractorClothingBeltUtilityFilled
 
 - type: loadoutGroup
   id: PlantTechnicianNeck

@@ -1,3 +1,21 @@
+- type: loadoutEffectGroup
+  id: InfrastructureT1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Infrastructure
+      time: 43200 # 12 hrs
+
+- type: loadoutEffectGroup
+  id: InfrastructureT2
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Infrastructure
+      time: 108000 # 30 hrs
+
 - type: loadout
   id: PlantGasAnalyzer
   inhand:
@@ -12,7 +30,7 @@
   id: PlantHolofanProjector
   effects:
   - !type:GroupLoadoutEffect
-    proto: ContractorT1
+    proto: InfrastructureT1
   price: 750
   inhand:
     - HolofanProjector
@@ -24,7 +42,7 @@
   id: PlantRPD
   effects:
   - !type:GroupLoadoutEffect
-    proto: ContractorT1
+    proto: InfrastructureT1
   price: 800
   inhand:
     - RPD
@@ -33,7 +51,7 @@
   id: PlantRCD
   effects:
   - !type:GroupLoadoutEffect
-    proto: ContractorT2
+    proto: InfrastructureT2
   price: 1200
   inhand:
     - RCD
@@ -42,7 +60,7 @@
   id: PlantRCDAmmo
   effects:
   - !type:GroupLoadoutEffect
-    proto: ContractorT2
+    proto: InfrastructureT2
   price: 400
   inhand:
     - RCDAmmo

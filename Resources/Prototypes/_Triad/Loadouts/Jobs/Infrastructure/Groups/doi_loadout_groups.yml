@@ -1,3 +1,4 @@
+# New IDs should be DoI, not PlantManager.
 - type: loadoutGroup
   id: PlantManagerJumpsuit
   name: loadout-group-plant-manager-jumpsuit
@@ -12,6 +13,14 @@
   - SeniorDoIJumpskirt
   fallbacks:
   - ChiefEngineerJumpsuit
+
+- type: loadoutGroup
+  id: DoINeck
+  name: loadout-group-chief-engineer-neck
+  minLimit: 0
+  loadouts:
+  - DoICloak
+  - DoIMantle
 
 - type: loadoutGroup
   id: PlantManagerBackpack
