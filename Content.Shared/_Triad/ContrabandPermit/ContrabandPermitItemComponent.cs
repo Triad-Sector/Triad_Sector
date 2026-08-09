@@ -17,8 +17,15 @@ public sealed partial class ContrabandPermitItemComponent : Component
     /// <summary>
     /// The UID of the permit owner. Session-local, re-stamped on ship load; never serialized.
     /// </summary>
-    [AutoNetworkedField]
+    [AutoNetworkedField, ViewVariables]
     public EntityUid? PermitOwner;
+
+    /// <summary>
+    /// The sector service record key of the permit item. Will almost always be the humanoid view of the permit owner, unless the permit owner doesn't have a humanoid view.
+    /// Not serialized.
+    /// </summary>
+    [ViewVariables]
+    public NetEntity? PermitRecordKey;
 
     /// <summary>
     /// The mind of the permit owner. Used for checking if a permitted item should stay or be seized on a saved ship.

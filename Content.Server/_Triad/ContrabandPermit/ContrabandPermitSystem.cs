@@ -41,8 +41,6 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitGrantedEvent>(OnPermitGranted);
         SubscribeLocalEvent<ContrabandPermittableComponent, ContrabandPermitRevokedEvent>(OnPermitRevoked);
 
-        SubscribeLocalEvent<ContrabandPermitItemComponent, ComponentStartup>(OnPermitItemStartup);
-        SubscribeLocalEvent<ContrabandPermitItemComponent, ComponentShutdown>(OnPermitItemShutdown);
         SubscribeLocalEvent<ContrabandPermitItemComponent, EntityTerminatingEvent>(OnPermitItemTerminating);
     }
 
@@ -73,8 +71,11 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             SendConsoleRadioMessage(args.Console.Value, consoleMessage);
         }
 
+        if (!TryComp<ContrabandPermitItemComponent>(permitItem, out var permitItemComp))
+            return;
+
         // Now, add the permit record to the sector service
-        AddPermitRecordToSectorService(permitOwner, permitItem);
+        AddPermitRecordToSectorService(permitOwner, (permitItem, permitItemComp));
     }
 
     private void OnPermitRevoked(Entity<ContrabandPermittableComponent> ent, ref ContrabandPermitRevokedEvent args)
@@ -104,36 +105,28 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             SendConsoleRadioMessage(args.Console.Value, consoleMessage);
         }
 
+        if (!TryComp<ContrabandPermitItemComponent>(permitItem, out var permitItemComp) || permitItemComp.PermitRecordKey == null)
+            return;
+
         // Goodbye
-        RemovePermitRecordToSectorService(permitOwner, permitItem);
-    }
-
-    private void OnPermitItemStartup(Entity<ContrabandPermitItemComponent> ent, ref ComponentStartup args)
-    {
-        // So that permit items outside of PVS range can still be viewed
-        _pvs.AddGlobalOverride(ent.Owner);
-    }
-
-    private void OnPermitItemShutdown(Entity<ContrabandPermitItemComponent> ent, ref ComponentShutdown args)
-    {
-        _pvs.RemoveGlobalOverride(ent.Owner);
+        RemovePermitRecordToSectorService(permitItemComp.PermitRecordKey.Value, (permitItem, permitItemComp));
     }
 
     private void OnPermitItemTerminating(Entity<ContrabandPermitItemComponent> ent, ref EntityTerminatingEvent args)
     {
-        if (ent.Comp.PermitOwner == null)
+        if (ent.Comp.PermitRecordKey == null)
             return;
 
         // Delete permit records of entities about to be terminated
-        RemovePermitRecordToSectorService(ent.Comp.PermitOwner.Value, ent.Owner);
+        RemovePermitRecordToSectorService(ent.Comp.PermitRecordKey.Value, ent);
     }
 
-    public void AddPermitRecordToSectorService(EntityUid permitOwner, EntityUid permitItem)
+    public void AddPermitRecordToSectorService(EntityUid permitOwner, Entity<ContrabandPermitItemComponent> permitItem)
     {
         if (!TryComp(_sectorService.GetServiceEntity(), out SectorContrabandPermitsComponent? contrabandPermitNet))
             return;
 
-        // The 'permit owner'. This is the Global PVS humanoid view of the owner so the picture works outside of PVS range, or the entity itself if it doesn't exist
+        // The 'permit owner'. This humanoid view of the owner so the info stays static, and covers in cases where the original permit owner's body gets destroyed
         var entryEntity = GetNetEntity(permitOwner);
         if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.PvsView != null)
             entryEntity = GetNetEntity(humanoidView.PvsView.Value);
@@ -145,27 +138,25 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             permitList = new List<NetEntity>();
 
         permitList.Add(GetNetEntity(permitItem));
+        permitItem.Comp.PermitRecordKey = entryEntity; // Store the key so we know what to remove if the permit is ever revoked
 
         UpdatePermitConsoles();
     }
 
-    public void RemovePermitRecordToSectorService(EntityUid permitOwner, EntityUid permitItem)
+    public void RemovePermitRecordToSectorService(NetEntity recordKey, Entity<ContrabandPermitItemComponent> permitItem)
     {
         if (!TryComp(_sectorService.GetServiceEntity(), out SectorContrabandPermitsComponent? contrabandPermitNet))
             return;
 
-        var entryEntity = GetNetEntity(permitOwner);
-        if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.PvsView != null)
-            entryEntity = GetNetEntity(humanoidView.PvsView.Value);
-
-        if (contrabandPermitNet.Records.ContainsKey(entryEntity) && contrabandPermitNet.Records.TryGetValue(entryEntity, out var list))
+        if (contrabandPermitNet.Records.ContainsKey(recordKey) && contrabandPermitNet.Records.TryGetValue(recordKey, out var list))
         {
             list.Remove(GetNetEntity(permitItem));
 
             if (list.Count == 0)
-                contrabandPermitNet.Records.Remove(entryEntity);
+                contrabandPermitNet.Records.Remove(recordKey);
         }
 
+        RemComp(permitItem.Owner, permitItem.Comp);
         UpdatePermitConsoles();
     }
 
@@ -210,7 +201,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             }
 
             Dirty(ent, comp);
-            AddPermitRecordToSectorService(user, ent);
+            AddPermitRecordToSectorService(user, (ent, comp));
         }
     }
 

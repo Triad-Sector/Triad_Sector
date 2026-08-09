@@ -200,8 +200,6 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         var permitOwner = permitInfo.PermitOwner.Value;
         var permitOwnerName = permitInfo.PermitOwnerName;
 
-        RemComp(selectedItem, permitInfo);
-
         PlayConfirmSound(ent, user);
         ConsolePopup(user,
             Loc.GetString("contraband-permit-console-popup-success-revoke", ("item", selectedItem), ("owner", permitOwnerName)),
