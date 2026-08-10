@@ -33,7 +33,7 @@ public sealed partial class CompanyAccessReaderSystem : EntitySystem
         if (_admin.IsAdmin(user))
             return;
 
-        if (entity.Comp.IgnoreWhitelist is { } whitelist && !_whitelist.IsValid(whitelist, user))
+        if (entity.Comp.IgnoreWhitelist is { } whitelist && _whitelist.IsValid(whitelist, user))
             return;
         // Triad end
 
