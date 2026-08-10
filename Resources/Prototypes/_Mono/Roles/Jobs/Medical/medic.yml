@@ -17,6 +17,7 @@
   accessGroups:
   - GeneralAccess
   - Medical
+  - AllAccessColonial
   ranks: # Triad, ranks
     RankEmergencyResponder: []
   special:
