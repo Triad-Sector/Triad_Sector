@@ -7,15 +7,18 @@ on:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
 
+# Triad: key PR runs on PR number; never cancel a merge_group run, which fails the queue.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
 
 jobs:
   build:
     name: YAML Linter
-    if: github.event.pull_request.draft == false
+    # Triad: skip the changelog bot's Resources/Changelog-only pushes to main.
+    if: github.event.pull_request.draft == false && github.actor != 'Triad-Sector'
     runs-on: ubuntu-latest
+    timeout-minutes: 20 # Triad: job takes ~6m.
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Setup submodule

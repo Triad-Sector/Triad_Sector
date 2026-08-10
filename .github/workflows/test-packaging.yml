@@ -26,15 +26,18 @@ on:
       - 'RobustToolbox'
       - 'RobustToolbox/**'
 
+# Triad: key PR runs on PR number; never cancel a merge_group run, which fails the queue.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
 
 jobs:
   build:
     name: Test Packaging
-    if: github.event.pull_request.draft == false
+    # Triad: skip the changelog bot's Resources/Changelog-only pushes to main.
+    if: github.event.pull_request.draft == false && github.actor != 'Triad-Sector'
     runs-on: ubuntu-latest
+    timeout-minutes: 30 # Triad: job takes ~10m.
 
     steps:
       - name: Checkout Master
