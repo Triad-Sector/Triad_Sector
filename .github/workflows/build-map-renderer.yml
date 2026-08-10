@@ -52,7 +52,13 @@ jobs:
         run: dotnet run --project Content.MapRenderer Dev
 
   ci-success:
-    name: Build & Test Debug
+    # Triad: this aggregator was named after a different workflow. GitHub matches required
+    # status checks by name, so two workflows publishing "Build & Test Debug" means the
+    # requirement can be satisfied by whichever reports first, and a genuine test failure
+    # can be masked by the map renderer passing. Still wrong in wizden, frontier and
+    # monolith as of 2026-08-10, so expect this line to conflict on merges.
+    #name: Build & Test Debug # Triad: removed, collided with build-test-debug.yml
+    name: Build & Test Map Renderer
     needs:
       - build
     runs-on: ubuntu-latest
