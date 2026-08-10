@@ -18,7 +18,8 @@ namespace Content.Client.IconSmoothing
     [UsedImplicitly]
     public sealed partial class IconSmoothSystem : EntitySystem
     {
-        [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+        [Dependency] private SharedMapSystem _mapSystem = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
 
         private readonly Queue<EntityUid> _dirtyEntities = new();
         private readonly Queue<EntityUid> _anchorChangedEntities = new();
@@ -59,7 +60,7 @@ namespace Content.Client.IconSmoothing
             if (component.Mode != IconSmoothingMode.Corners || !TryComp(uid, out SpriteComponent? sprite))
                 return;
 
-            SetCornerLayers(sprite, component);
+            SetCornerLayers(uid, sprite, component);
 
             if (component.Shader != null)
             {
@@ -76,28 +77,28 @@ namespace Content.Client.IconSmoothing
                 return;
 
             component.StateBase = newState;
-            SetCornerLayers(sprite, component);
+            SetCornerLayers(uid, sprite, component);
         }
 
-        private void SetCornerLayers(SpriteComponent sprite, IconSmoothComponent component)
+        private void SetCornerLayers(EntityUid uid, SpriteComponent sprite, IconSmoothComponent component)
         {
             // Frontier: Allow overlays on entities using CornerLayers smoothing - don't remove layers, adjust existing ones or create new ones.
             var state0 = $"{component.StateBase}0";
-            SetCornerLayerState(sprite, CornerLayers.SE, DirectionOffset.None, state0);
-            SetCornerLayerState(sprite, CornerLayers.NE, DirectionOffset.CounterClockwise, state0);
-            SetCornerLayerState(sprite, CornerLayers.NW, DirectionOffset.Flip, state0);
-            SetCornerLayerState(sprite, CornerLayers.SW, DirectionOffset.Clockwise, state0);
+            SetCornerLayerState(uid, sprite, CornerLayers.SE, DirectionOffset.None, state0);
+            SetCornerLayerState(uid, sprite, CornerLayers.NE, DirectionOffset.CounterClockwise, state0);
+            SetCornerLayerState(uid, sprite, CornerLayers.NW, DirectionOffset.Flip, state0);
+            SetCornerLayerState(uid, sprite, CornerLayers.SW, DirectionOffset.Clockwise, state0);
             // End Frontier: Allow overlays on entities using CornerLayers smoothing - don't remove layers, adjust existing ones or create new ones.
         }
 
         // Frontier: set layer function to remove redundancy
-        private void SetCornerLayerState(SpriteComponent sprite, CornerLayers corner, DirectionOffset offset, string state)
+        private void SetCornerLayerState(EntityUid uid, SpriteComponent sprite, CornerLayers corner, DirectionOffset offset, string state)
         {
-            if (sprite.LayerMapTryGet(corner, out var layer))
-                sprite.LayerSetState(layer, state);
+            if (_sprite.LayerMapTryGet((uid, sprite), corner, out var layer, false))
+                _sprite.LayerSetRsiState((uid, sprite), layer, state);
             else
-                sprite.LayerMapSet(corner, sprite.AddLayerState(state));
-            sprite.LayerSetDirOffset(corner, offset);
+                _sprite.LayerMapSet((uid, sprite), corner, _sprite.AddRsiLayer((uid, sprite), state));
+            _sprite.LayerSetDirOffset((uid, sprite), corner, offset);
         }
         // End Frontier: set layer function to remove redundancy
 
@@ -307,7 +308,7 @@ namespace Content.Client.IconSmoothing
         {
             if (gridEntity == null)
             {
-                sprite.Comp.LayerSetState(0, $"{smooth.StateBase}0");
+                _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}0");
                 return;
             }
 
@@ -333,11 +334,11 @@ namespace Content.Client.IconSmoothing
 
             if (matching)
             {
-                sprite.Comp.LayerSetState(0, $"{smooth.StateBase}1");
+                _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}1");
             }
             else
             {
-                sprite.Comp.LayerSetState(0, $"{smooth.StateBase}0");
+                _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}0");
             }
         }
 
@@ -351,7 +352,7 @@ namespace Content.Client.IconSmoothing
         {
             if (gridEntity == null)
             {
-                sprite.Comp.LayerSetState(0, $"{smooth.StateBase}0");
+                _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}0");
                 return;
             }
 
@@ -383,7 +384,7 @@ namespace Content.Client.IconSmoothing
                     value = 4;
             }
 
-            sprite.Comp.LayerSetState(0, $"{smooth.StateBase}{value}");
+            _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}{value}");
         }
 
         // Check if a particular window/wall allows smoothing on a given edge
@@ -412,7 +413,7 @@ namespace Content.Client.IconSmoothing
 
             if (gridEntity == null)
             {
-                sprite.Comp.LayerSetState(0, $"{smooth.StateBase}{(int)dirs}");
+                _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}{(int)dirs}");
                 return;
             }
 
@@ -429,7 +430,7 @@ namespace Content.Client.IconSmoothing
             if (MatchingEntity(smooth, _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, pos.Offset(Direction.West)), smoothQuery, new(-1, 0))) // Frontier: add vector
                 dirs |= CardinalConnectDirs.West;
 
-            sprite.Comp.LayerSetState(0, $"{smooth.StateBase}{(int)dirs}");
+            _sprite.LayerSetRsiState(sprite.AsNullable(), 0, $"{smooth.StateBase}{(int)dirs}");
 
             var directions = DirectionFlag.None;
 
@@ -473,10 +474,10 @@ namespace Content.Client.IconSmoothing
             // At the very least each event currently only queues a sprite for updating.
             // Oh god sprite component is a mess.
             var sprite = spriteEnt.Comp;
-            sprite.LayerSetState(CornerLayers.NE, $"{smooth.StateBase}{(int)cornerNE}");
-            sprite.LayerSetState(CornerLayers.SE, $"{smooth.StateBase}{(int)cornerSE}");
-            sprite.LayerSetState(CornerLayers.SW, $"{smooth.StateBase}{(int)cornerSW}");
-            sprite.LayerSetState(CornerLayers.NW, $"{smooth.StateBase}{(int)cornerNW}");
+            _sprite.LayerSetRsiState(spriteEnt.AsNullable(), CornerLayers.NE, $"{smooth.StateBase}{(int)cornerNE}");
+            _sprite.LayerSetRsiState(spriteEnt.AsNullable(), CornerLayers.SE, $"{smooth.StateBase}{(int)cornerSE}");
+            _sprite.LayerSetRsiState(spriteEnt.AsNullable(), CornerLayers.SW, $"{smooth.StateBase}{(int)cornerSW}");
+            _sprite.LayerSetRsiState(spriteEnt.AsNullable(), CornerLayers.NW, $"{smooth.StateBase}{(int)cornerNW}");
 
             var directions = DirectionFlag.None;
 

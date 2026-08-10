@@ -72,13 +72,14 @@ namespace Content.MapRenderer.Painters
             var client = pair.Client;
             var sEntityManager = server.ResolveDependency<IServerEntityManager>();
             var mapLoader = sEntityManager.System<MapLoaderSystem>();
-            var sMapManager = server.ResolveDependency<IMapManager>();
+            var sMaps = sEntityManager.System<SharedMapSystem>();
+            var sawmill = server.ResolveDependency<ILogManager>().RootSawmill;
 
             await server.WaitPost(() =>
             {
                 var mapId = sEntityManager.System<GameTicker>().DefaultMap;
 
-                foreach (var grid in sMapManager.GetAllGrids(mapId))
+                foreach (var grid in sMaps.GetAllGrids(mapId))
                     sEntityManager.QueueDeleteEntity(grid);
             });
 
@@ -95,8 +96,8 @@ namespace Content.MapRenderer.Painters
                 }
                 catch (Exception e) // we probably tried to load a map
                 {
-                    Logger.Info($"Failed to load as grid, rendering as map...");
-                    sMapManager.DeleteMap(mapId);
+                    sawmill.Info($"Failed to load as grid, rendering as map...");
+                    sMaps.DeleteMap(mapId);
                     var opts = new DeserializationOptions();
                     opts.InitializeMaps = true;
                     mapLoader.TryLoadMapWithId(mapId, new(path), out _, out _, opts);
@@ -122,9 +123,10 @@ namespace Content.MapRenderer.Painters
 
             await client.WaitPost(() =>
             {
-                if (cEntityManager.TryGetComponent(cPlayerManager.LocalEntity, out SpriteComponent? sprite))
+                var localPlayer = cPlayerManager.LocalEntity;
+                if (cEntityManager.TryGetComponent(localPlayer, out SpriteComponent? sprite))
                 {
-                    sprite.Visible = false;
+                    cEntityManager.System<SpriteSystem>().SetVisible((localPlayer!.Value, sprite), false);
                 }
             });
 
@@ -134,7 +136,7 @@ namespace Content.MapRenderer.Painters
             await pair.RunTicksSync(10);
             await Task.WhenAll(client.WaitIdleAsync(), server.WaitIdleAsync());
 
-            var sMapManager = server.ResolveDependency<IMapManager>();
+            var sMaps = sEntityManager.System<SharedMapSystem>();
 
             var tilePainter = new TilePainter(client, server);
             var entityPainter = new GridPainter(client, server);
@@ -152,7 +154,7 @@ namespace Content.MapRenderer.Painters
                 }
 
                 var mapId = sEntityManager.System<GameTicker>().DefaultMap;
-                grids = sMapManager.GetAllGrids(mapId).ToArray();
+                grids = sMaps.GetAllGrids(mapId).ToArray();
 
                 foreach (var (uid, _) in grids)
                 {

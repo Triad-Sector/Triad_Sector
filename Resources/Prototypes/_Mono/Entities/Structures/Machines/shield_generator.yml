@@ -13,11 +13,11 @@
     sound:
       path: /Audio/Ambience/Objects/anomaly_generator.ogg
   - type: Sprite
-    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    sprite: _Triad/Structure/Shuttles/shield.rsi
     snapCardinals: true
     layers:
-    - state: control
-    - state: control_on
+    - state: ms_100_base # Triad
+    - state: ms_100_emissive # Triad
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
@@ -113,6 +113,42 @@
       machine_parts: !type:Container
   - type: PirateBountyItem
     id: ShipShield
+  - type: PowerMonitoringConsole # Triad, make all shield generators function as power monitoring consoles
+  - type: PowerMonitoringCableNetworks
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      hv:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.PowerMonitoringConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PowerMonitoringConsoleUiKey.Key:
+        type: PowerMonitoringConsoleBoundUserInterface
+  - type: StationAiWhitelist
+  - type: EmitSoundOnUIOpen
+    sound:
+      collection: Keyboard
+      params:
+        volume: -1
+        variation: 0.10
+        pitch: 1.10  # low pitch keyboard sounds feel kinda weird
+    blacklist:
+      tags:
+      - NoConsoleSound
+  - type: SpamEmitSoundRequirePower
+  - type: SpamEmitSound
+    minInterval: 12
+    maxInterval: 20
+    sound:
+      collection: MonoComputerSFX
+      params:
+        volume: -6
+        maxDistance: 4
+        variation: 0.1
 
 # POI
 - type: entity
@@ -286,6 +322,15 @@
     unpoweredBonus: 6 # Base is 6
     shieldColor: "#FF3333"
     collisionResistanceMultiplier: 0.05
+  - type: Sprite
+    sprite: _Triad/Structure/Shuttles/shield.rsi
+    snapCardinals: true
+    layers:
+    - state: ms_500_base
+    - state: ms_500_emissive
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
   - type: ShipRepairable
     repairTime: 30
     repairCost: 300
@@ -293,6 +338,7 @@
     toolWhitelist:
       tags:
       - ADSRepairTool
+
 
 # Medium-End
 - type: entity
@@ -313,15 +359,14 @@
     shieldColor: "#9933FF"
     collisionResistanceMultiplier: 0.6
   - type: Sprite
-    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    sprite: _Triad/Structure/Shuttles/shield.rsi # Triad
     snapCardinals: true
     layers:
-    - state: control
-    - state: control_on
+    - state: ms_250_base # Triad
+    - state: ms_250_emissive # Triad
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-      color: "#9933FF"
   - type: Destructible
     thresholds:
     - trigger:
@@ -400,15 +445,14 @@
     shieldColor: "#3399FF"
     collisionResistanceMultiplier: 0.5
   - type: Sprite
-    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    sprite: _Triad/Structure/Shuttles/shield.rsi # Triad
     snapCardinals: true
     layers:
-    - state: control
-    - state: control_on
+    - state: ms_100_base # Triad
+    - state: ms_100_emissive # Triad
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-      color: "#3399FF"
   - type: Destructible
     thresholds:
     - trigger:

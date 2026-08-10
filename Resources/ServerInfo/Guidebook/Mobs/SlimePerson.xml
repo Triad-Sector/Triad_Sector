@@ -1,25 +1,96 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Slime People
-
-  <Box>
-    <GuideEntityEmbed Entity="MobSlimePerson" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  They breathe nitrogen instead of oxygen, which is abundant in the station air, but harder to find compressed into gas tanks. They take significant damage if they are sprayed or splashed with water, but can
-  (and like other species, need to) drink it safely to stay hydrated.
-  They exhale nitrous oxide and are unaffected by it.
-  Their body can process 6 reagents at the same time instead of just 2.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  Slimepeople have an [bold]internal 2x3 storage inventory[/bold] inside of their slime membrane. Anyone can see what's inside and take it out of you without asking,
-  so be careful.
+  [color=#999999][italic]“They breathe nitrogen. Same internals supplier as the Vox. The bulk-procurement line is consolidated.”[/italic][/color]
 
-  Slimepeople have slight accelerated regeneration compared to other humanoids. They're also capable of hardening their fists, and as such have stronger punches,
-  although they punch a little slower.
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  Their slime "blood" can not be regenerated from Iron. Slime Blood is technically a source of
-  moderately filling food for other species, although drinking the blood of your coworkers is usually frowned upon.
-  They suffocate 80% slower, but take pressure damage 9% faster. This makes them by far the species most capable to survive in hard vacuum. For a while.
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-SLM[/mono]
 
-  They take [color=#1e90ff]80% less Cellular damage, 40% less Blunt damage and 20% less Poison damage[/color], but [color=#ffa500]50% more Cold damage, 20% more Slash damage and 20% more Piercing damage[/color].
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Translucent[/mono]
+
+      [mono][color=#897236]ORIGIN     [/color]  Diaspora-descended[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Slime Blood[/bold][/color] — gelatin matrix[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobSlimePersonDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Translucent gelatinous sapients with nitrogen-based biology. Biologically distinct from the feral xenobiology slime cultures station labs continue to study. Strange but resilient; the most vacuum-capable personnel on file.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  -50% vulnerable[/mono]
+
+  [mono]  Pressure  [color=#1e90ff]■■■■■[/color]  vacuum-tolerant via slow suffocation[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: indiscriminate. Standard food groups digest normally; the gelatin matrix additionally breaks down [color=#a4885c][bold]cloth, paper, pills, and refuse[/bold][/color] for nutrition.
+  - [color=#ffa500][bold]Digestive tolerance[/bold][/color]: raw matter and foodstuffs keyed to other physiologies are processed cleanly, with normal nutrition and none of the usual nausea.
+  - Hydration must come from [color=#a4885c][bold]ingested water only[/bold][/color]. See Liabilities for splash exposure caveats.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes [color=#1e90ff][bold]Nitrogen[/bold][/color], which is abundant in station air. Internals optional; harder to source compressed Nitrogen tanks for EVA.
+  - Exhales [color=#1e90ff][bold]Nitrous Oxide[/bold][/color]; subject is unaffected by their own exhalation.
+  - [color=#1e90ff][bold]Suffocates 80% slower[/bold][/color] than baseline. Cleared for prolonged EVA without supervisor signoff.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]2×3 internal storage[/bold][/color] inside the slime membrane. Visible to all personnel; items can be removed without consent. Subject acknowledges this at intake.
+  - Metabolises [color=#1e90ff][bold]6 reagents simultaneously[/bold][/color] instead of the standard 2. Cleared for Medical and Chemistry rotations.
+  - [color=#1e90ff][bold]Slight accelerated regeneration[/bold][/color] over other humanoids.
+  - Take [color=#1e90ff][bold]80% less Cellular, 40% less Blunt, and 20% less Poison damage[/bold][/color].
+  - Can [color=#1e90ff][bold]harden fists[/bold][/color] for stronger unarmed strikes at the cost of attack speed.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - [color=#a4885c][bold]Slime Blood[/bold][/color] is a moderately filling food source for other species, though sampling a coworker's circulation is generally frowned upon.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Significant damage from water exposure[/bold][/color] (splashing, sprinklers, decontamination spray). Subject must ingest water to stay hydrated but not contact it externally.
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]50% more Cold, 20% more Slash, and 20% more Piercing damage[/bold][/color] than baseline.
+
+  - Slime Blood cannot be regenerated from Iron. Medical-handling waiver issued at intake.
+
+  [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
+
+  Subject species' historical record includes corporate-era industrial harvesting of biological kin for chemical extract, particularly by predecessor entities operating under the [color=#a4885c][bold]NanoTrasen[/bold][/color] and [color=#a4885c][bold]Hephaestus[/bold][/color] banners (both defunct). Modern SlimePerson populations are settled and self-determining; no surviving entity maintains a claim or program of that nature. TDF medical and chemical-supply chains are publicly administered and historically distinct from corporate-era extract trades.
+
+  [color=#999999][italic]“Not pretty. Don't bring it up unless they do; they know it better than you.”  — J.[/italic][/color]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

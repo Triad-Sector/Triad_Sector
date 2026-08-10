@@ -9,10 +9,11 @@ using Robust.Shared.Configuration;
 
 namespace Content.Server.Administration.Notes;
 
-public sealed class UserNotesEui : BaseEui
+public sealed partial class UserNotesEui : BaseEui
 {
-    [Dependency] private readonly IAdminNotesManager _notesMan = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IAdminNotesManager _notesMan = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("admin.notes");
     private readonly bool _seeOwnNotes;
 
     public UserNotesEui()
@@ -22,7 +23,7 @@ public sealed class UserNotesEui : BaseEui
 
         if (!_seeOwnNotes)
         {
-            Logger.WarningS("admin.notes", "User notes initialized when see_own_notes set to false");
+            _sawmill.Warning("User notes initialized when see_own_notes set to false");
         }
     }
 
@@ -39,7 +40,7 @@ public sealed class UserNotesEui : BaseEui
     {
         if (!_seeOwnNotes)
         {
-            Logger.WarningS("admin.notes", $"User {Player.Name} with ID {Player.UserId} tried to update their own user notes when see_own_notes was set to false");
+            _sawmill.Warning($"User {Player.Name} with ID {Player.UserId} tried to update their own user notes when see_own_notes was set to false");
             return;
         }
 

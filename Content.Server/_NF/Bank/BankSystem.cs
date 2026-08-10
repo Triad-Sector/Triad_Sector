@@ -17,9 +17,9 @@ namespace Content.Server._NF.Bank;
 
 public sealed partial class BankSystem : SharedBankSystem
 {
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerPreferencesManager _prefsManager = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     private ISawmill _log = default!;
 
@@ -61,7 +61,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <returns>true if the transaction was successful, false if it was not</returns>
     public bool TryBankWithdraw(EntityUid mobUid, int amount)
     {
-        if (amount <= 0)
+        if (amount < 0)
         {
             _log.Info($"TryBankWithdraw: {amount} is invalid from Uid {mobUid}");
             return false;
@@ -170,7 +170,7 @@ public sealed partial class BankSystem : SharedBankSystem
     public bool TryBankWithdraw(ICommonSession session, PlayerPreferences prefs, HumanoidCharacterProfile profile, int amount, [NotNullWhen(true)] out int? newBalance)
     {
         newBalance = null; // Default return
-        if (amount <= 0)
+        if (amount < 0)
         {
             _log.Info($"TryBankWithdraw: {amount} is invalid. Admin remove money variation.");
             return false;

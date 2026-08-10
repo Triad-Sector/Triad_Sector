@@ -489,7 +489,7 @@
 - type: entity
   id: PlayerStationAiTSFMC
   parent: PlayerStationAiEmpty
-  suffix: Ghost Role, TSFMC
+  suffix: Ghost Role, TDF
   components:
   - type: ContainerComp
     proto: AiHeldTSFMC

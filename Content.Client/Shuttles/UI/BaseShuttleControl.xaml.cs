@@ -24,8 +24,8 @@ namespace Content.Client.Shuttles.UI;
 [Virtual]
 public partial class BaseShuttleControl : MapGridControl
 {
-    [Dependency] private readonly IParallelManager _parallel = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDef = default!; // Mono
+    [Dependency] private IParallelManager _parallel = default!;
+    [Dependency] private ITileDefinitionManager _tileDef = default!; // Mono
     protected readonly EntityLookupSystem _lookup; // Mono
     protected readonly SharedMapSystem Maps;
 
@@ -47,6 +47,10 @@ public partial class BaseShuttleControl : MapGridControl
     private EntityQuery<TransformComponent> _xformQuery; // Mono
 
     private Vector2[] _allVertices = Array.Empty<Vector2>();
+
+    // Triad: max vertices per DrawPrimitives call. The engine stackallocs 40 bytes per vertex,
+    // so this keeps each call under ~500 KiB of stack. Same batch upstream used for triangles.
+    private const int BatchVertices = 3 * 4096;
 
     private (DirectionFlag, Vector2i)[] _neighborDirections;
 
@@ -670,18 +674,48 @@ public partial class BaseShuttleControl : MapGridControl
 
         _parallel.ProcessNow(_drawJob, totalData);
 
-        const float BatchSize = 3f * 4096;
-
-        for (var i = 0; i < Math.Ceiling(triCount / BatchSize); i++)
-        {
-            var start = (int) (i * BatchSize);
-            var end = (int) Math.Min(triCount, start + BatchSize);
-            var count = end - start;
-            handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, new Span<Vector2>(_allVertices, start, count), color.WithAlpha(alpha));
-        }
-
-        handle.DrawPrimitives(DrawPrimitiveTopology.LineList, new Span<Vector2>(_allVertices, gridData.EdgeIndex, edgeCount), color);
+        // Triad: batch the edge draw too. DrawPrimitives stackallocs 40 bytes per vertex with no
+        // size cap (the engine's own TODO flags it), and upstream hands the whole edge span over
+        // in one call. Survivable for a shuttle, fatal for a VGRoid: its fractal outline is ~209k
+        // vertices, an 8 MiB stackalloc that blows the game thread's stack and CTDs with an empty
+        // log, since the access violation surfaces in coreclr rather than as a managed exception.
+        // const float BatchSize = 3f * 4096;
+        //
+        // for (var i = 0; i < Math.Ceiling(triCount / BatchSize); i++)
+        // {
+        //     var start = (int) (i * BatchSize);
+        //     var end = (int) Math.Min(triCount, start + BatchSize);
+        //     var count = end - start;
+        //     handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, new Span<Vector2>(_allVertices, start, count), color.WithAlpha(alpha));
+        // }
+        //
+        // handle.DrawPrimitives(DrawPrimitiveTopology.LineList, new Span<Vector2>(_allVertices, gridData.EdgeIndex, edgeCount), color);
+        DrawBatched(handle, DrawPrimitiveTopology.TriangleList, 0, triCount, color.WithAlpha(alpha));
+        DrawBatched(handle, DrawPrimitiveTopology.LineList, gridData.EdgeIndex, edgeCount, color);
+        // End Triad
     }
+
+    // Triad: draws a range of _allVertices in batches of at most BatchVertices, aligned to whole
+    // primitives. Only list topologies can be split like this; strips, fans and loops share
+    // vertices across primitives and are rejected.
+    private void DrawBatched(DrawingHandleScreen handle, DrawPrimitiveTopology topology, int offset, int count, Color color)
+    {
+        var stride = topology switch
+        {
+            DrawPrimitiveTopology.TriangleList => 3,
+            DrawPrimitiveTopology.LineList => 2,
+            _ => throw new ArgumentOutOfRangeException(nameof(topology), topology, "Only list topologies can be batched."),
+        };
+
+        var batchSize = BatchVertices - BatchVertices % stride;
+
+        for (var start = 0; start < count; start += batchSize)
+        {
+            var batch = Math.Min(batchSize, count - start);
+            handle.DrawPrimitives(topology, _allVertices.AsSpan(offset + start, batch), color);
+        }
+    }
+    // End Triad
 
     private static int GetDirIndex(Vector2i dir)
     {

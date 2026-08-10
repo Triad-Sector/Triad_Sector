@@ -14,8 +14,9 @@ namespace Content.Shared.Construction.Conditions
             var entManager = IoCManager.Resolve<IEntityManager>();
             var sysMan = entManager.EntitySysManager;
             var tagSystem = sysMan.GetEntitySystem<TagSystem>();
+            var turfSystem = sysMan.GetEntitySystem<TurfSystem>();
 
-            foreach (var entity in location.GetEntitiesInTile(LookupFlags.Static))
+            foreach (var entity in turfSystem.GetEntitiesInTile(location, LookupFlags.Static))
             {
                 if (tagSystem.HasTag(entity, "Window"))
                     return false;

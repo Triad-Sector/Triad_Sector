@@ -12,9 +12,9 @@ namespace Content.Server.RPD;
 /// the server; setting it is what makes the color real, it serializes with the ship save and drives the atmos
 /// monitoring console, where an appearance-only write would be lost on reload and read white on consoles.
 /// </summary>
-public sealed class RPDPipeColorSystem : EntitySystem
+public sealed partial class RPDPipeColorSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosPipeColorSystem _pipeColor = default!;
+    [Dependency] private AtmosPipeColorSystem _pipeColor = default!;
 
     public override void Initialize()
     {

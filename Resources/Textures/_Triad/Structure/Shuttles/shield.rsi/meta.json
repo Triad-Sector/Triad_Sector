@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by BoiWab for Triad",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "ms_100_base"
+    },
+    {
+      "name": "ms_100_emissive"
+    },
+    {
+      "name": "ms_250_base"
+    },
+    {
+      "name": "ms_250_emissive"
+    },
+    {
+      "name": "ms_500_base"
+    },
+    {
+      "name": "ms_500_emissive"
+    }
+  ]
+}

@@ -16,11 +16,11 @@ namespace Content.Server._Triad.NPC;
 /// core) the moment the target's map matched again. Killing the plan and the steering/targeting
 /// components here leaves the hull decelerating in place, where grid cleanup despawns it.
 /// </summary>
-public sealed class ShipNpcSleepSystem : EntitySystem
+public sealed partial class ShipNpcSleepSystem : EntitySystem
 {
-    [Dependency] private readonly HTNSystem _htn = default!;
-    [Dependency] private readonly ShipSteeringSystem _steering = default!;
-    [Dependency] private readonly ShipTargetingSystem _targeting = default!;
+    [Dependency] private HTNSystem _htn = default!;
+    [Dependency] private ShipSteeringSystem _steering = default!;
+    [Dependency] private ShipTargetingSystem _targeting = default!;
 
     public override void Initialize()
     {

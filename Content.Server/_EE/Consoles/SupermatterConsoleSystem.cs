@@ -15,11 +15,11 @@ using System.Linq;
 
 namespace Content.Server._EE.Supermatter.Console.Systems;
 
-public sealed class SupermatterConsoleSystem : SharedSupermatterConsoleSystem
+public sealed partial class SupermatterConsoleSystem : SharedSupermatterConsoleSystem
 {
-    [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IConfigurationManager _config = default!;
 
     // Triad: gate the console refresh to 1 Hz. Upstream EE ran this Update() every
     // server tick, pushing a full BUI state (supermatter list + a whole GasMixture) to

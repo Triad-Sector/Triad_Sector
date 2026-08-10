@@ -16,12 +16,12 @@ namespace Content.Server._Mono.Company;
 /// TODO: remove hardcoded slop.
 /// whoever hardcoded ts is getting slimed out no joke.
 /// </summary>
-public sealed class CompanySystem : EntitySystem
+public sealed partial class CompanySystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedJobSystem _job = default!;
+    [Dependency] private SharedIdCardSystem _idCardSystem = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
 
 
     // Dictionary to store original company preferences for players

@@ -16,16 +16,15 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Teleportation;
 
-public sealed class TeleportSystem : EntitySystem
+public sealed partial class TeleportSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly PullingSystem _pullingSystem = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private PullingSystem _pullingSystem = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -96,7 +95,7 @@ public sealed class TeleportSystem : EntitySystem
             targetCoords = entityCoords.Offset(_random.NextAngle().ToVec() * atRadius);
 
             // Prefer teleporting to grids
-            if (!_mapManager.TryFindGridAt(targetCoords, out var gridUid, out var grid))
+            if (!_map.TryFindGridAt(targetCoords, out var gridUid, out var grid))
             {
                 if (avoidSpace)
                     continue;

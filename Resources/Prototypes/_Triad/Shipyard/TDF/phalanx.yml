@@ -1,0 +1,41 @@
+# # Author Info
+# # GitHub: Eillyrea
+# # Discord: Eillyrea
+
+- type: vessel
+  id: Phalanx
+  parent: BaseVesselTdf
+  name: TDF Phalanx
+  description: A relic of the UCA fleet, updated for the modern age to serve as a Mech Carrier for the TDF. The Phalanx will arrive at a point, and ensure the point remains within TDF control.
+  price: 405000
+  purchasable: false # voucher only
+  category: Large
+  group: Security
+  access: Security # Shouldn't be buyable with sec voucher.
+  mapchecker_group_override: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/phalanx.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - Plasma
+  addComponents:
+  - type: ShipSavingBlacklist
+
+- type: gameMap
+  id: Phalanx
+  mapName: 'Phalanx'
+  mapPath: /Maps/_Triad/Shuttles/TDF/phalanx.yml
+  minPlayers: 0
+  stations:
+    Phalanx:
+      stationProto: StandardTriadTdfVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Phalanx TDF{1}'
+        nameGenerator: !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+          Borg: [ 0, 0 ]

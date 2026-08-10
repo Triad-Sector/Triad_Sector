@@ -1,0 +1,35 @@
+# Separating this for ease of visualization
+- type: vessel
+  id: BaseVessel
+  abstract: true
+  name: AAA Bikeshed
+  description: Questionably spaceworthy.
+  price: 50000
+  category: Medium
+  group: Shipyard
+  addComponents:
+  - type: IFF
+    color: '#FFFFFFFF'
+    flags: [IsPlayerShuttle]
+
+- type: vessel
+  parent: BaseVessel
+  id: BaseVesselFaction
+  abstract: true
+  addComponents:
+  - type: ShipSavingBlacklist
+
+- type: vessel
+  parent: BaseVesselFaction
+  id: BaseVesselTdf
+  abstract: true
+  description: Hell yeah.
+  priorityDockTag: DockTdf
+
+- type: vessel
+  parent: BaseVessel
+  id: BaseVesselAntag
+  abstract: true
+  addComponents:
+  - type: IFF
+    flags: [IsPlayerShuttle, HideLabel]

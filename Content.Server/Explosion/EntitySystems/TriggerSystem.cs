@@ -68,24 +68,24 @@ namespace Content.Server.Explosion.EntitySystems
     [UsedImplicitly]
     public sealed partial class TriggerSystem : EntitySystem
     {
-        [Dependency] private readonly ExplosionSystem _explosions = default!;
-        [Dependency] private readonly FixtureSystem _fixtures = default!;
-        [Dependency] private readonly FlashSystem _flashSystem = default!;
-        [Dependency] private readonly SharedBroadphaseSystem _broadphase = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly BodySystem _body = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly NavMapSystem _navMap = default!;
-        [Dependency] private readonly RadioSystem _radioSystem = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly ElectrocutionSystem _electrocution = default!;
-        [Dependency] private readonly StationSystem _station = default!; // Frontier: medical insurance
-        [Dependency] private readonly SharedMapSystem _map = default!; // Frontier: medical insurance
+        [Dependency] private ExplosionSystem _explosions = default!;
+        [Dependency] private FixtureSystem _fixtures = default!;
+        [Dependency] private FlashSystem _flashSystem = default!;
+        [Dependency] private SharedBroadphaseSystem _broadphase = default!;
+        [Dependency] private IAdminLogManager _adminLogger = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private BodySystem _body = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private NavMapSystem _navMap = default!;
+        [Dependency] private RadioSystem _radioSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+        [Dependency] private InventorySystem _inventory = default!;
+        [Dependency] private ElectrocutionSystem _electrocution = default!;
+        [Dependency] private StationSystem _station = default!; // Frontier: medical insurance
+        [Dependency] private SharedMapSystem _map = default!; // Frontier: medical insurance
 
         public override void Initialize()
         {
@@ -269,6 +269,18 @@ namespace Content.Server.Explosion.EntitySystems
             var critMessage = Loc.GetString(component.CritMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText));
             var deathMessage = Loc.GetString(component.DeathMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText));
 
+            // Triad: Add time since death
+            var deathTime = "";
+
+            if (component.DeathTime != TimeSpan.Zero)
+            {
+                var deltaTime = _timing.CurTime - component.DeathTime;
+                deathTime = deltaTime.ToString("%m' minutes'");
+            }
+
+            var stillDeathMessage = Loc.GetString(component.StillDeadMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText), ("deathTime", deathTime));
+            // End Triad
+
             if (!TryComp<MobStateComponent>(implanted.ImplantedEntity, out var mobstate))
                 return;
 
@@ -285,7 +297,12 @@ namespace Content.Server.Explosion.EntitySystems
                     }
                     case MobState.Dead:
                     {
-                        _radioSystem.SendRadioMessage(uid, deathMessage, radioChannel, uid, null, language);
+                        _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, radioChannel, uid, null, language); // Triad
+                        // Triad: Set information on initial rattle
+                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+                        if (component.DeathTime == TimeSpan.Zero)
+                            component.DeathTime = _timing.CurTime;
+                        // End Triad
                         break;
                     }
                 }
@@ -445,6 +462,7 @@ namespace Content.Server.Explosion.EntitySystems
             UpdateTimer(frameTime);
             UpdateTimedCollide(frameTime);
             UpdateRepeat();
+            UpdateRattleTimer(); // Triad
         }
 
         private void UpdateTimer(float frameTime)

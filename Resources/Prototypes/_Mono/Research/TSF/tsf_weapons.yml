@@ -23,7 +23,7 @@
   cost: 30000
   recipeUnlocks:
   - WeaponRifleAnnieTSF
-  - WeaponLMGGrizzlyTSF
+  #- WeaponLMGGrizzlyTSF
   - WeaponDEWCalico
   - Magazine700Thz
   - AmmoBox700Thz

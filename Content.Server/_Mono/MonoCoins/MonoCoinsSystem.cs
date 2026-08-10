@@ -18,15 +18,15 @@ namespace Content.Server._Mono.MonoCoins;
 /// <summary>
 /// System that handles MonoCoins balance for players.
 /// </summary>
-public sealed class MonoCoinsSystem : EntitySystem
+public sealed partial class MonoCoinsSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!; // Triad
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
+    [Dependency] private IGameTiming _gameTiming = default!; // Triad
 
     private const int RoundEndReward = 1; // Triad - 1<10. Name is inaccurate; pay is hourly instead of at round-end.
 
@@ -154,7 +154,7 @@ public sealed class MonoCoinsSystem : EntitySystem
             }
             else
             {
-                Logger.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping TriToken reward"); // Triad - MonoCoin rename.
+                Log.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping TriToken reward"); // Triad - MonoCoin rename.
             }
         }
 
@@ -204,7 +204,7 @@ public sealed class MonoCoinsSystem : EntitySystem
         try
         {
             var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Logger.Info($"Awarded {RoundEndReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - TriToken rename.
+            Log.Info($"Awarded {RoundEndReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - TriToken rename.
 
             // Notify the player via chat
             var notificationMessage = $"You earned {RoundEndReward} hourly TriToken. Your new balance: {newBalance}."; // Triad - TriToken rename.
@@ -218,7 +218,7 @@ public sealed class MonoCoinsSystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to award hourly TriToken to player {session.Name} ({session.UserId}): {ex.Message}"); // Triad - Hourly instead of round-end. TriToken rename.
+            Log.Error($"Failed to award hourly TriToken to player {session.Name} ({session.UserId}): {ex.Message}"); // Triad - Hourly instead of round-end. TriToken rename.
         }
     }
 }

@@ -20,9 +20,9 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 namespace Content.Client._Common.Consent.UI;
 
 [UsedImplicitly]
-public sealed class ConsentUiController : UIController, IOnStateChanged<GameplayState>
+public sealed partial class ConsentUiController : UIController, IOnStateChanged<GameplayState>
 {
-    [Dependency] private readonly IInputManager _input = default!;
+    [Dependency] private IInputManager _input = default!;
 
     private ConsentWindow? _window;
 

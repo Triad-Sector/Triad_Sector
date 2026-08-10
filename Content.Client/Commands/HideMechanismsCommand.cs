@@ -5,9 +5,9 @@ using Robust.Shared.Containers;
 
 namespace Content.Client.Commands;
 
-public sealed class HideMechanismsCommand : LocalizedCommands
+public sealed partial class HideMechanismsCommand : LocalizedCommands
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public override string Command => "hidemechanisms";
 
@@ -18,6 +18,7 @@ public sealed class HideMechanismsCommand : LocalizedCommands
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         var containerSys = _entityManager.System<SharedContainerSystem>();
+        var spriteSys = _entityManager.System<SpriteSystem>();
         var query = _entityManager.AllEntityQueryEnumerator<OrganComponent>();
 
         while (query.MoveNext(out var uid, out _))
@@ -27,14 +28,14 @@ public sealed class HideMechanismsCommand : LocalizedCommands
                 continue;
             }
 
-            sprite.ContainerOccluded = false;
+            spriteSys.SetContainerOccluded((uid, sprite), false);
 
             var tempParent = uid;
             while (containerSys.TryGetContainingContainer((tempParent, null, null), out var container))
             {
                 if (!container.ShowContents)
                 {
-                    sprite.ContainerOccluded = true;
+                    spriteSys.SetContainerOccluded((uid, sprite), true);
                     break;
                 }
 

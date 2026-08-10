@@ -11,10 +11,10 @@ using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers reloca
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class SpanishAccentSystem : EntitySystem
+public sealed partial class SpanishAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

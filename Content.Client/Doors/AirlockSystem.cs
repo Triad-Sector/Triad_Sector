@@ -7,9 +7,10 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Doors;
 
-public sealed class AirlockSystem : SharedAirlockSystem
+public sealed partial class AirlockSystem : SharedAirlockSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
+    [Dependency] private AppearanceSystem _appearanceSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -101,11 +102,12 @@ public sealed class AirlockSystem : SharedAirlockSystem
                     && !boltedVisible && !emergencyLightsVisible;
         }
 
-        args.Sprite.LayerSetVisible(DoorVisualLayers.BaseUnlit, unlitVisible);
-        args.Sprite.LayerSetVisible(DoorVisualLayers.BaseBolted, boltedVisible);
+        _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseUnlit, unlitVisible);
+        _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseBolted, boltedVisible);
         if (comp.EmergencyAccessLayer)
         {
-            args.Sprite.LayerSetVisible(
+            _sprite.LayerSetVisible(
+                (uid, args.Sprite),
                 DoorVisualLayers.BaseEmergencyAccess,
                     emergencyLightsVisible
                 &&  state != DoorState.Open
@@ -118,12 +120,12 @@ public sealed class AirlockSystem : SharedAirlockSystem
         switch (state)
         {
             case DoorState.Open:
-                args.Sprite.LayerSetState(DoorVisualLayers.BaseUnlit, comp.ClosingSpriteState);
-                args.Sprite.LayerSetAnimationTime(DoorVisualLayers.BaseUnlit, 0);
+                _sprite.LayerSetRsiState((uid, args.Sprite), DoorVisualLayers.BaseUnlit, comp.ClosingSpriteState);
+                _sprite.LayerSetAnimationTime((uid, args.Sprite), DoorVisualLayers.BaseUnlit, 0);
                 break;
             case DoorState.Closed:
-                args.Sprite.LayerSetState(DoorVisualLayers.BaseUnlit, comp.OpeningSpriteState);
-                args.Sprite.LayerSetAnimationTime(DoorVisualLayers.BaseUnlit, 0);
+                _sprite.LayerSetRsiState((uid, args.Sprite), DoorVisualLayers.BaseUnlit, comp.OpeningSpriteState);
+                _sprite.LayerSetAnimationTime((uid, args.Sprite), DoorVisualLayers.BaseUnlit, 0);
                 break;
         }
     }

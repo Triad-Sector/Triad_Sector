@@ -36,20 +36,20 @@ namespace Content.Server._Mono.CorticalBorer;
 
 public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly BloodstreamSystem _blood = default!;
-    [Dependency] private readonly HealthAnalyzerSystem _analyzer = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private readonly ISharedAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly GhostRoleSystem _ghost  = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly CollectiveMindUpdateSystem _collective = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private BloodstreamSystem _blood = default!;
+    [Dependency] private HealthAnalyzerSystem _analyzer = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
+    [Dependency] private ISharedAdminLogManager _admin = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private GhostRoleSystem _ghost  = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private CollectiveMindUpdateSystem _collective = default!;
 
     public override void Initialize()
     {
@@ -84,7 +84,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     {
         base.Update(frameTime);
 
-        foreach (var comp in EntityManager.EntityQuery<CorticalBorerComponent>())
+        var borers = EntityQueryEnumerator<CorticalBorerComponent>();
+        while (borers.MoveNext(out var uid, out var comp))
         {
             if (_timing.CurTime < comp.UpdateTimer)
                 continue;
@@ -92,7 +93,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             comp.UpdateTimer = _timing.CurTime + TimeSpan.FromSeconds(comp.UpdateCooldown);
 
             if (comp.Host != null)
-                UpdateChems((comp.Owner, comp), comp.ChemicalGenerationRate);
+                UpdateChems((uid, comp), comp.ChemicalGenerationRate);
         }
 
         foreach (var comp in EntityManager.EntityQuery<CorticalBorerInfestedComponent>())

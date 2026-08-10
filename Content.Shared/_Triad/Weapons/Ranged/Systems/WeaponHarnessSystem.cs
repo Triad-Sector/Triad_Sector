@@ -23,14 +23,14 @@ namespace Content.Shared._Triad.Weapons.Ranged.Systems;
 /// Matching harnesses are found by <see cref="WeapHarnComponent.SupportKey"/> and must be equipped in their configured
 /// <see cref="WeapHarnComponent.HarnessSlot"/>. Supported weapons count when held or stored in the harness-configured
 /// <see cref="WeapHarnComponent.RetrievalSlot"/>.
-public sealed class WeaponHarnessSystem : EntitySystem
+public sealed partial class WeaponHarnessSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly SharedPowerCellSystem _powerCell = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private SharedPowerCellSystem _powerCell = default!;
 
     public override void Initialize()
     {

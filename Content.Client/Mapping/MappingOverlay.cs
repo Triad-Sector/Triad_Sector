@@ -9,11 +9,11 @@ using static Content.Client.Mapping.MappingState;
 
 namespace Content.Client.Mapping;
 
-public sealed class MappingOverlay : Overlay
+public sealed partial class MappingOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private IEntityManager _entities = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototypes = default!;
 
     // 1 off in case something else uses these colors since we use them to compare
     private static readonly Color PickColor = new(1, 255, 0);
@@ -36,13 +36,15 @@ public sealed class MappingOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
+        var spriteSystem = _entities.System<SpriteSystem>();
+
         foreach (var (id, color) in _oldColors)
         {
             if (!_entities.TryGetComponent(id, out SpriteComponent? sprite))
                 continue;
 
             if (sprite.Color == DeleteColor || sprite.Color == PickColor)
-                sprite.Color = color;
+                spriteSystem.SetColor((id, sprite), color);
         }
 
         _oldColors.Clear();
@@ -61,7 +63,7 @@ public sealed class MappingOverlay : Overlay
                     _entities.TryGetComponent(entity, out SpriteComponent? sprite))
                 {
                     _oldColors[entity] = sprite.Color;
-                    sprite.Color = PickColor;
+                    spriteSystem.SetColor((entity, sprite), PickColor);
                 }
 
                 break;
@@ -72,7 +74,7 @@ public sealed class MappingOverlay : Overlay
                     _entities.TryGetComponent(entity, out SpriteComponent? sprite))
                 {
                     _oldColors[entity] = sprite.Color;
-                    sprite.Color = DeleteColor;
+                    spriteSystem.SetColor((entity, sprite), DeleteColor);
                 }
 
                 break;

@@ -136,6 +136,60 @@ public static class ShipSaveYamlSanitizer
         ["ShipyardConsole"] = "ShipyardListing",
     };
 
+    // Triad: serialized entity references outside ContainerContainer and Storage, which are the only
+    // two the prune below originally knew about. Anything dropped during sanitation, such as a mob
+    // filtered out by HumanoidAppearance while still buckled to a chair, left its uid behind in these
+    // fields and the loader then reported an invalid EntityUid reference for that component.
+    //
+    // Unordered sets and lists: the entry is removed outright.
+    private static readonly Dictionary<string, string> UidSetFields = new(StringComparer.Ordinal)
+    {
+        ["EmbeddedContainer"] = "embeddedObjects",
+        ["Strap"] = "buckledEntities",
+        ["ShipGuestAccess"] = "guestIdCards",
+        ["FactionException"] = "ignored",
+        ["TargetSeekerAlertGrid"] = "alerters",
+    };
+
+    // Components carrying a second uid collection, since the table above is keyed by component name.
+    private static readonly Dictionary<string, string> UidSetFieldsSecondary = new(StringComparer.Ordinal)
+    {
+        ["ShipGuestAccess"] = "guestCyborgs",
+        ["FactionException"] = "hostiles",
+    };
+
+    // Positional sequences: the entry is nulled in place, never removed. A revolver's ammo slots are
+    // indexed by cylinder position and the component asserts the count matches its capacity on init,
+    // so shortening the sequence would rotate every remaining round onto the wrong chamber.
+    private static readonly Dictionary<string, string> UidSlotFields = new(StringComparer.Ordinal)
+    {
+        ["RevolverAmmoProvider"] = "ammoSlots",
+    };
+
+    // Single optional references: the field is nulled. Only nullable fields belong here.
+    // Action entities live in the acting mob's container, and the mob is not what gets saved, so these
+    // are dangling by construction on any ship that had someone holding the item when it was saved.
+    private static readonly Dictionary<string, string[]> UidScalarFields = new(StringComparer.Ordinal)
+    {
+        ["EmbeddableProjectile"] = ["embeddedIntoUid"],
+        ["CombatMode"] = ["combatToggleActionEntity"],
+        ["HealOnBuckle"] = ["sleepAction"],
+        ["HandheldLight"] = ["toggleActionEntity", "selfToggleActionEntity"],
+        ["ShuttleConsoleJobSlots"] = ["owningStation"],
+        ["StoreRefund"] = ["storeEntity"],
+        ["Jukebox"] = ["audioStream"],
+        ["Organ"] = ["body", "originalBody"],
+    };
+
+    // Non-nullable references, where nulling the field would just trade one load error for another.
+    // The reference is the component's whole reason to exist, so if it points at nothing the component
+    // is meaningless and goes with it. VendingMachinePurchase records which grid bought from a machine;
+    // a purchase belonging to a grid that is not in the save cannot be acted on.
+    private static readonly Dictionary<string, string> UidRequiredFieldsDropComponent = new(StringComparer.Ordinal)
+    {
+        ["VendingMachinePurchase"] = "purchaseGrid",
+    };
+
     public static void SanitizeShipSaveNode(MappingDataNode root, IPrototypeManager prototypeManager)
     {
         // Keep serialized nullspace empty so ship exports stay scoped to the grid payload.
@@ -618,10 +672,64 @@ public static class ShipSaveYamlSanitizer
         return false;
     }
 
+    /// <summary>
+    /// Drops dangling entries from a serialized sequence of entity uids.
+    /// </summary>
+    private static void PruneUidSequence(MappingDataNode compMap, string field, Func<string, bool> isDangling)
+    {
+        if (!compMap.TryGet(field, out SequenceDataNode? seq) || seq == null)
+            return;
+
+        for (var idx = seq.Count - 1; idx >= 0; idx--)
+        {
+            if (seq[idx] is ValueDataNode entry && !entry.IsNull && isDangling(entry.Value))
+                seq.RemoveAt(idx);
+        }
+    }
+
+    /// <summary>
+    /// Collects every entity uid that actually survives into the exported file.
+    /// </summary>
+    private static HashSet<string> CollectPresentEntityUids(SequenceDataNode protoSeq)
+    {
+        var present = new HashSet<string>(StringComparer.Ordinal);
+
+        foreach (var protoNode in protoSeq)
+        {
+            if (protoNode is not MappingDataNode protoMap)
+                continue;
+
+            if (!protoMap.TryGet("entities", out SequenceDataNode? entitiesSeq) || entitiesSeq == null)
+                continue;
+
+            foreach (var entityNode in entitiesSeq)
+            {
+                if (entityNode is MappingDataNode entMap
+                    && entMap.TryGet("uid", out ValueDataNode? uidNode)
+                    && uidNode != null
+                    && !uidNode.IsNull)
+                {
+                    present.Add(uidNode.Value);
+                }
+            }
+        }
+
+        return present;
+    }
+
     private static void PruneContainerReferencesToRemovedEntities(SequenceDataNode protoSeq, HashSet<string> removedEntityUids)
     {
-        if (removedEntityUids.Count == 0)
-            return;
+        // Triad: this used to prune only what the sanitizer itself dropped, which missed the larger
+        // half of the problem. Most dangling references point at something that was never a candidate
+        // for the file at all: the station a console is registered to, the mob whose container held an
+        // action entity, an audio stream, a grid on the other side of the sector. Asking "is this uid
+        // in the finished file" covers both cases at once, and the removed set is a subset of it.
+        var presentUids = CollectPresentEntityUids(protoSeq);
+
+        // The removed set is already a subset of "not present", since dropping an entity takes its uid
+        // entry with it. It stays in the check so the sanitizer's own removals remain explicit rather
+        // than depending on that reasoning holding for every future removal path.
+        bool IsDangling(string uid) => removedEntityUids.Contains(uid) || !presentUids.Contains(uid);
 
         // Remove dangling references from both ContainerContainer and Storage serialized structures.
         foreach (var protoNode in protoSeq)
@@ -640,9 +748,10 @@ public static class ShipSaveYamlSanitizer
                 if (!entMap.TryGet("components", out SequenceDataNode? comps) || comps == null)
                     continue;
 
-                foreach (var compNode in comps)
+                // Triad: descending, because the required-reference case removes the component itself.
+                for (var compIdx = comps.Count - 1; compIdx >= 0; compIdx--)
                 {
-                    if (compNode is not MappingDataNode compMap)
+                    if (comps[compIdx] is not MappingDataNode compMap)
                         continue;
 
                     if (!compMap.TryGet("type", out ValueDataNode? typeNode) || typeNode == null)
@@ -667,14 +776,14 @@ public static class ShipSaveYamlSanitizer
                                     if (entsNode[idx] is not ValueDataNode entValue || entValue.IsNull)
                                         continue;
 
-                                    if (removedEntityUids.Contains(entValue.Value))
+                                    if (IsDangling(entValue.Value))
                                         entsNode.RemoveAt(idx);
                                 }
                             }
 
                             if (containerMap.TryGet("ent", out ValueDataNode? entNode) && entNode != null && !entNode.IsNull)
                             {
-                                if (removedEntityUids.Contains(entNode.Value))
+                                if (IsDangling(entNode.Value))
                                     containerMap["ent"] = ValueDataNode.Null();
                             }
                         }
@@ -687,12 +796,56 @@ public static class ShipSaveYamlSanitizer
                         var removeKeys = new List<string>();
                         foreach (var (itemUid, _) in storedItemsMap)
                         {
-                            if (removedEntityUids.Contains(itemUid))
+                            if (IsDangling(itemUid))
                                 removeKeys.Add(itemUid);
                         }
 
                         foreach (var key in removeKeys)
                             storedItemsMap.Remove(key);
+
+                        continue;
+                    }
+
+                    // Triad: the reference shapes described above the field tables.
+                    if (UidRequiredFieldsDropComponent.TryGetValue(componentType, out var requiredField)
+                        && compMap.TryGet(requiredField, out ValueDataNode? requiredNode)
+                        && requiredNode != null
+                        && !requiredNode.IsNull
+                        && IsDangling(requiredNode.Value))
+                    {
+                        comps.RemoveAt(compIdx);
+                        continue;
+                    }
+
+                    if (UidSetFields.TryGetValue(componentType, out var setField))
+                        PruneUidSequence(compMap, setField, IsDangling);
+
+                    if (UidSetFieldsSecondary.TryGetValue(componentType, out var setField2))
+                        PruneUidSequence(compMap, setField2, IsDangling);
+
+                    if (UidSlotFields.TryGetValue(componentType, out var slotField)
+                        && compMap.TryGet(slotField, out SequenceDataNode? slotSeq)
+                        && slotSeq != null)
+                    {
+                        for (var idx = 0; idx < slotSeq.Count; idx++)
+                        {
+                            if (slotSeq[idx] is ValueDataNode entry && !entry.IsNull && IsDangling(entry.Value))
+                                slotSeq[idx] = ValueDataNode.Null();
+                        }
+                    }
+
+                    if (!UidScalarFields.TryGetValue(componentType, out var scalarFields))
+                        continue;
+
+                    foreach (var scalarField in scalarFields)
+                    {
+                        if (compMap.TryGet(scalarField, out ValueDataNode? scalarNode)
+                            && scalarNode != null
+                            && !scalarNode.IsNull
+                            && IsDangling(scalarNode.Value))
+                        {
+                            compMap[scalarField] = ValueDataNode.Null();
+                        }
                     }
                 }
             }

@@ -16,7 +16,7 @@ namespace Content.Server._Triad.Speech.EntitySystems;
 ///     AccentHelpers, with a generalized NYC working-class vocabulary (the pizzeria/garage/corner guy,
 ///     not the wiseguy).
 /// </summary>
-public sealed class NewBrooklynAccentSystem : EntitySystem
+public sealed partial class NewBrooklynAccentSystem : EntitySystem
 {
     // Non-rhotic coda r: "or"/"ar" drop the r ONLY before a consonant or word-end (work -> wuhk, car ->
     // cah). The (?![aeiour]) lookahead spares both a following vowel (intervocalic r: "sorry", "care")
@@ -29,8 +29,8 @@ public sealed class NewBrooklynAccentSystem : EntitySystem
     private static readonly Regex RegexThVoiced = new(@"([aeiou])th([aeiou])", RegexOptions.IgnoreCase);
     private static readonly Regex RegexThVoiceless = new("th", RegexOptions.IgnoreCase);
 
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {
