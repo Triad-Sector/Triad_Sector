@@ -92,7 +92,9 @@ public sealed partial class WeldingHealableSystem : SharedWeldingHealableSystem
             });
     }
 
-    private bool HasDamage(Entity<DamageableComponent> damageable, WeldingHealingComponent healable, EntityUid user)
+    // Triad: internal rather than private so the container-mismatch regression can be tested directly.
+    // Content.Server already grants InternalsVisibleTo to the test assemblies.
+    internal bool HasDamage(Entity<DamageableComponent> damageable, WeldingHealingComponent healable, EntityUid user)
     {
         if (healable.Damage.DamageDict is null)
             return false;
