@@ -17,5 +17,5 @@ triad-lobby-triad-description = Awaken from cryosleep here to:
    - Find a crew to join
    - Purchase ships
    - Socialize with other pioneers
-   - Work under the TFA as a service worker, guard, or mail carrier
+   - Work under the TFA as a service worker or mail carrier
  Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.

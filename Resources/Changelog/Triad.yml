@@ -3575,3 +3575,46 @@ Entries:
   id: 2493
   time: '2026-08-09T16:33:28.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/468
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: 'Rules: 3.4, 3.4A, 3.4B, 9.1A, 9.1B, 10.5, 10.5A, 10.5B, 10.5C'
+    - type: Remove
+      message: 'Rules: 9.4, 11.4C'
+    - type: Tweak
+      message: 'Rules: 1.7D, 7.5. 6.3'
+    - type: Tweak
+      message: >-
+        Guidebook Tutorial, "New? Start here!", "Radio and Speech" and "Your
+        Fist Character" sections updated to be more in line with Triad
+    - type: Tweak
+      message: Drop pod locations now say smuggle into TFA territory instead of NT
+  id: 2494
+  time: '2026-08-09T19:34:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/465
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        You can now engrave medals and badges. For example, you could write down
+        the recipient, in-character date, and reason as an engraving on medals.
+  id: 2495
+  time: '2026-08-09T20:09:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/304
+- author: TheRealMasterChief117
+  changes:
+    - type: Remove
+      message: Removed station guard.
+    - type: Tweak
+      message: Overseer and STC no longer require station guard playtime.
+    - type: Tweak
+      message: TDF SOP Page 1, Jurisdictional Authority, has been rewritten.
+    - type: Tweak
+      message: >-
+        Venmar Station now has 2 combat medic slots, 4 enforcer slots, 1 junior
+        enforcer slot, and 1 patrol team leader slot.
+    - type: Tweak
+      message: Resprited the TFA colonial staff shipyard console.
+  id: 2496
+  time: '2026-08-09T21:14:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/482
