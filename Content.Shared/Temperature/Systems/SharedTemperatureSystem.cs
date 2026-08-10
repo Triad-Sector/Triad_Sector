@@ -67,8 +67,8 @@ public sealed class SharedTemperatureSystem : EntitySystem
             ent.Comp.CurrentSpeedModifier = null;
             Dirty(ent);
         }
-        // Triad - End
         if (args.CurrentTemperature < minHotThreshold && args.LastTemperature > minHotThreshold) // We cooled down beyond the lowest heat threshold
+        // Triad - End
         {
             ent.Comp.NextSlowdownUpdate = _timing.CurTime + SlowdownApplicationDelay;
             ent.Comp.CurrentSpeedModifier = null;
