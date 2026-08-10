@@ -42,4 +42,6 @@ jobs:
       run: Tools/publish_multi_request.py --fork-id wizards-testing
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+        # Triad: dropped, same reason as publish.yml. The GITHUB_ prefix is reserved for
+        # variable names, so this expression is always empty.
+        #GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }} # Triad: removed

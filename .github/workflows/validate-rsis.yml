@@ -27,7 +27,7 @@ jobs:
       - name: Pull engine updates
         uses: space-wizards/submodule-dependency@v0.1.5
       - name: Set up Python 3.10 # Frontier
-        uses: actions/setup-python@v5 # Frontier
+        uses: actions/setup-python@v6 # Frontier
         with: # Frontier
           python-version: "3.10" # Frontier
       - name: Install Python dependencies

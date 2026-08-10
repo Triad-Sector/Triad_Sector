@@ -68,7 +68,7 @@ jobs:
     # Triad: `if: always()` on purpose. The failing run is the one whose results we want.
     - name: Archive NUnit3 test results.
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: nunit3-results-${{ matrix.os }}
         path: test_results/*

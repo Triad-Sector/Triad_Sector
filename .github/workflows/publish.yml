@@ -95,7 +95,12 @@ jobs:
       run: Tools/publish_multi_request.py
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+        # Triad: dropped. GitHub reserves the GITHUB_ prefix for variable names, so
+        # vars.GITHUB_REPOSITORY can never be set and this only ever shadowed the built-in
+        # with an empty string. Harmless here because publish_multi_request.py does not read
+        # it, but Tools/actions_changelogs_since_last_run.py does, and one copy-paste onto
+        # that step would break the Discord changelog silently.
+        #GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }} # Triad: removed, see above
 
     - name: Publish changelog (Discord)
       continue-on-error: true
