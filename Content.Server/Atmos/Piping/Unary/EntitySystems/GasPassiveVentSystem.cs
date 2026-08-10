@@ -24,6 +24,11 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
         private void OnPassiveVentUpdated(EntityUid uid, GasPassiveVentComponent vent, ref AtmosDeviceUpdateEvent args)
         {
+            // Triad: no gas extraction off the sector map
+            if (!_atmosphereSystem.AtmosInputCanRunOnMap(args.Map))
+                return;
+            // End Triad
+
             var environment = _atmosphereSystem.GetContainingMixture(uid, args.Grid, args.Map, true, true);
 
             if (environment == null)

@@ -85,6 +85,11 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
                 return;
             }
 
+            // Triad: no gas extraction off the sector map
+            if (!_atmosphereSystem.AtmosInputCanRunOnMap(args.Map))
+                return;
+            // End Triad
+
             var environment = _atmosphereSystem.GetContainingMixture(uid, args.Grid, args.Map, true, true);
 
             // We're in an air-blocked tile... Do nothing.

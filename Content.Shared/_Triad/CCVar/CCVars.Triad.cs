@@ -45,4 +45,13 @@ public sealed class TriadCCVars
 
     public static readonly CVarDef<string> NightVisionColor =
         CVarDef.Create("triad.night_vision_color", "#00FF00", CVar.CLIENTONLY | CVar.ARCHIVE, "The tint/phosphor color of night vision.");
+
+    // Triad: atmos
+    /// <summary>
+    /// Whether atmos input devices (scrubbers, siphoning vents, passive vents, intakes) may pull gas
+    /// out of a map's own atmosphere. Off by default, which limits them to the sector map and ships
+    /// in FTL, so expedition planets can no longer be drained for free gas.
+    /// </summary>
+    public static readonly CVarDef<bool> AllowMapGasExtraction =
+        CVarDef.Create("triad.atmos.allow_map_gas_extraction", false, CVar.SERVER | CVar.REPLICATED);
 }

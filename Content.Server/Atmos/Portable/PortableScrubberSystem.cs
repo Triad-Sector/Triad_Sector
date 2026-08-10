@@ -75,6 +75,15 @@ namespace Content.Server.Atmos.Portable
             if (args.Grid is not {} grid)
                 return;
 
+            // Triad: no gas extraction off the sector map. Sits below the connector-port block on
+            // purpose, so a full scrubber can still be drained into a pipe net while planetside.
+            if (!_atmosphereSystem.AtmosInputCanRunOnMap(args.Map))
+            {
+                UpdateAppearance(uid, false, false);
+                return;
+            }
+            // End Triad
+
             var position = _transformSystem.GetGridTilePositionOrDefault(uid);
             var environment = _atmosphereSystem.GetTileMixture(grid, args.Map, position, true);
 
