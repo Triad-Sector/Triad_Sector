@@ -41,7 +41,12 @@ public sealed class SharedTemperatureSystem : EntitySystem
                 break;
             }
         }
+
         // Triad - Adjusted to allow too hot speed modifiers.
+
+        //var maxThreshold = ent.Comp.Thresholds.Max(p => p.Key);
+        //if (args.CurrentTemperature > maxThreshold && args.LastTemperature < maxThreshold)
+
         float maxColdThreshold = 0;
         float minHotThreshold = 0;
         foreach (var (threshold, modifier) in ent.Comp.Thresholds) // Find the thresholds that are closest to the normal body temperature se we can detect when to stop applying slowdowns
@@ -62,13 +67,14 @@ public sealed class SharedTemperatureSystem : EntitySystem
             ent.Comp.CurrentSpeedModifier = null;
             Dirty(ent);
         }
+        // Triad - End
         if (args.CurrentTemperature < minHotThreshold && args.LastTemperature > minHotThreshold) // We cooled down beyond the lowest heat threshold
         {
             ent.Comp.NextSlowdownUpdate = _timing.CurTime + SlowdownApplicationDelay;
             ent.Comp.CurrentSpeedModifier = null;
             Dirty(ent);
         }
-        // Triad - End
+
     }
 
     private void OnRefreshMovementSpeedModifiers(Entity<TemperatureSpeedComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
