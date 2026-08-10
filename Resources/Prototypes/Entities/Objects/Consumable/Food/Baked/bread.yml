@@ -2,7 +2,7 @@
 # Base
 
 - type: entity
-  parent: [ FoodInjectableBase, LaunchableProjectileBase ] # Frontier: added LaunchableProjectileBase, located in \Resources\Prototypes\_NF\Entities\Objects\Weapons\Guns\Projectiles\base_projectiles.yml
+  parent: [ FoodInjectableBase ] # Triad Removed LaunchableProjectileBase as this applies antigravity to bread slices
   id: FoodBreadBase
   abstract: true
   components:
