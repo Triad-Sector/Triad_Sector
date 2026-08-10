@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Serialization.Markdown.Sequence;
 using Robust.Shared.Serialization.Markdown.Value;
+using YamlDotNet.Core;
+using YamlDotNet.RepresentationModel;
 
 namespace Content.Server._HL.Shipyard;
 
@@ -179,6 +184,9 @@ public static class ShipSaveYamlSanitizer
         ["StoreRefund"] = ["storeEntity"],
         ["Jukebox"] = ["audioStream"],
         ["Organ"] = ["body", "originalBody"],
+        // Triad: an ore silo is station infrastructure, so a lathe saved with a ship always points at
+        // a silo that stays behind. Nullable, so the client just loads unlinked and re-links on use.
+        ["OreSiloClient"] = ["silo"],
     };
 
     // Non-nullable references, where nulling the field would just trade one load error for another.
@@ -557,6 +565,71 @@ public static class ShipSaveYamlSanitizer
         PruneContainerReferencesToRemovedEntities(protoSeq, removedEntityUids);
     }
 
+    /// <summary>
+    /// Strips dangling entity references from a ship file on its way in. Returns how many were removed.
+    /// </summary>
+    // Triad: the save-side prune only protects ships saved after it shipped, and there is no backlog we
+    // can migrate: ship files live on the player's machine and are handed back to us at load time, so a
+    // ship last saved before that fix keeps its dead uids until its owner saves it again. Files months
+    // old are still being loaded. Running the same prune inbound covers them, and a file saved by the
+    // current build has nothing left to remove, so this returns 0 and changes nothing.
+    //
+    // The prune's dangling test is "uid is not present in this file", which already covers the literal
+    // 'invalid' the writer emits for a reference it could not resolve, since that is never a uid the
+    // file defines. Nothing removed here was reachable: the deserializer resolves both cases to
+    // EntityUid.Invalid regardless, it just logs an error per occurrence on the way.
+    public static int ScrubShipLoadNode(MappingDataNode root)
+    {
+        if (!root.TryGet("entities", out SequenceDataNode? protoSeq) || protoSeq == null)
+            return 0;
+
+        return PruneContainerReferencesToRemovedEntities(protoSeq, new HashSet<string>(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    /// Parses a ship file, strips dangling entity references, and re-emits it. Returns the text
+    /// unchanged when there is nothing to remove or when it cannot be parsed.
+    /// </summary>
+    public static string ScrubShipLoadYaml(string yaml, out int scrubbed)
+    {
+        scrubbed = 0;
+
+        try
+        {
+            using var reader = new StringReader(yaml);
+
+            DataNode? parsed = null;
+            var documents = 0;
+            foreach (var document in DataNodeParser.ParseYamlStream(reader))
+            {
+                parsed = document.Root;
+                // Ship files are single-document. Anything else is a shape this never produced, so
+                // leave it for the loader to deal with rather than re-emitting a guess at it.
+                if (++documents > 1)
+                    return yaml;
+            }
+
+            if (documents != 1 || parsed is not MappingDataNode root)
+                return yaml;
+
+            scrubbed = ScrubShipLoadNode(root);
+            if (scrubbed == 0)
+                return yaml;
+
+            using var writer = new StringWriter();
+            var stream = new YamlStream { new YamlDocument(root.ToYaml()) };
+            stream.Save(new YamlMappingFix(new Emitter(writer)), false);
+            return writer.ToString();
+        }
+        catch
+        {
+            // A ship the owner cannot load is far worse than the log noise this removes, so any parse
+            // or emit failure hands the loader the original text and gives up on the scrub.
+            scrubbed = 0;
+            return yaml;
+        }
+    }
+
     private static string? GetPaintStylePrototype(SequenceDataNode components)
     {
         foreach (var compNode in components)
@@ -673,18 +746,24 @@ public static class ShipSaveYamlSanitizer
     }
 
     /// <summary>
-    /// Drops dangling entries from a serialized sequence of entity uids.
+    /// Drops dangling entries from a serialized sequence of entity uids. Returns how many were dropped.
     /// </summary>
-    private static void PruneUidSequence(MappingDataNode compMap, string field, Func<string, bool> isDangling)
+    private static int PruneUidSequence(MappingDataNode compMap, string field, Func<string, bool> isDangling)
     {
         if (!compMap.TryGet(field, out SequenceDataNode? seq) || seq == null)
-            return;
+            return 0;
 
+        var pruned = 0;
         for (var idx = seq.Count - 1; idx >= 0; idx--)
         {
             if (seq[idx] is ValueDataNode entry && !entry.IsNull && isDangling(entry.Value))
+            {
                 seq.RemoveAt(idx);
+                pruned++;
+            }
         }
+
+        return pruned;
     }
 
     /// <summary>
@@ -717,8 +796,10 @@ public static class ShipSaveYamlSanitizer
         return present;
     }
 
-    private static void PruneContainerReferencesToRemovedEntities(SequenceDataNode protoSeq, HashSet<string> removedEntityUids)
+    private static int PruneContainerReferencesToRemovedEntities(SequenceDataNode protoSeq, HashSet<string> removedEntityUids)
     {
+        var scrubbed = 0;
+
         // Triad: this used to prune only what the sanitizer itself dropped, which missed the larger
         // half of the problem. Most dangling references point at something that was never a candidate
         // for the file at all: the station a console is registered to, the mob whose container held an
@@ -777,14 +858,20 @@ public static class ShipSaveYamlSanitizer
                                         continue;
 
                                     if (IsDangling(entValue.Value))
+                                    {
                                         entsNode.RemoveAt(idx);
+                                        scrubbed++;
+                                    }
                                 }
                             }
 
                             if (containerMap.TryGet("ent", out ValueDataNode? entNode) && entNode != null && !entNode.IsNull)
                             {
                                 if (IsDangling(entNode.Value))
+                                {
                                     containerMap["ent"] = ValueDataNode.Null();
+                                    scrubbed++;
+                                }
                             }
                         }
 
@@ -801,7 +888,10 @@ public static class ShipSaveYamlSanitizer
                         }
 
                         foreach (var key in removeKeys)
+                        {
                             storedItemsMap.Remove(key);
+                            scrubbed++;
+                        }
 
                         continue;
                     }
@@ -814,14 +904,15 @@ public static class ShipSaveYamlSanitizer
                         && IsDangling(requiredNode.Value))
                     {
                         comps.RemoveAt(compIdx);
+                        scrubbed++;
                         continue;
                     }
 
                     if (UidSetFields.TryGetValue(componentType, out var setField))
-                        PruneUidSequence(compMap, setField, IsDangling);
+                        scrubbed += PruneUidSequence(compMap, setField, IsDangling);
 
                     if (UidSetFieldsSecondary.TryGetValue(componentType, out var setField2))
-                        PruneUidSequence(compMap, setField2, IsDangling);
+                        scrubbed += PruneUidSequence(compMap, setField2, IsDangling);
 
                     if (UidSlotFields.TryGetValue(componentType, out var slotField)
                         && compMap.TryGet(slotField, out SequenceDataNode? slotSeq)
@@ -830,7 +921,10 @@ public static class ShipSaveYamlSanitizer
                         for (var idx = 0; idx < slotSeq.Count; idx++)
                         {
                             if (slotSeq[idx] is ValueDataNode entry && !entry.IsNull && IsDangling(entry.Value))
+                            {
                                 slotSeq[idx] = ValueDataNode.Null();
+                                scrubbed++;
+                            }
                         }
                     }
 
@@ -845,11 +939,14 @@ public static class ShipSaveYamlSanitizer
                             && IsDangling(scalarNode.Value))
                         {
                             compMap[scalarField] = ValueDataNode.Null();
+                            scrubbed++;
                         }
                     }
                 }
             }
         }
+
+        return scrubbed;
     }
 
     private static void ApplyPaintStyleToAppearance(MappingDataNode appearanceComp, string stylePrototype)
