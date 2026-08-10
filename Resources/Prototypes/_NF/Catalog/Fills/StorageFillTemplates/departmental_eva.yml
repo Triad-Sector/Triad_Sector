@@ -34,7 +34,6 @@
     contents:
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
-    - id: ClothingModsuitOverseerPowerCell # Triad
     - id: ClothingMaskBreath
     - id: JetpackMiniFilled
 
