@@ -93,7 +93,7 @@ public sealed class RadioSystem : EntitySystem
     }
 
     // DeltaV
-    private void OnIntrinsicAudibleEmote(EntityUid uid, IntrinsicRadioTransmitterComponent component, EntityAudiblyEmotedEvent args)
+    private void OnIntrinsicAudibleEmote(EntityUid uid, IntrinsicRadioTransmitterComponent component, ref EntityAudiblyEmotedEvent args)
     {
         if (args.Channel != null && component.Channels.Contains(args.Channel.ID))
         {

@@ -233,7 +233,10 @@ public abstract partial class SharedChatSystem
 
         if (emoteType == AudibleEmotePrefix)
         {
-            emoteType = input[1]; // Check for if we want AudiblePossessiveEmote
+            if (input.Length > 1) // Check for if we want AudiblePossessiveEmote
+            {
+                emoteType = input[1];
+            }
             type = EmoteType.Audible;
         }
 

@@ -210,10 +210,12 @@ public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
         var message = args.OriginalChatMsg.Message; // The chat system will handle the rest and re-obfuscate if needed.
 
         // Triad - Prevent speaking emotes
-        if (args.emType == EmoteType.Audible || args.emType == EmoteType.AudiblePossessive)
-            {_chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
-            nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language);
-            return;}
+        if (args.EmType == EmoteType.Audible || args.EmType == EmoteType.AudiblePossessive)
+            {
+                _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
+                nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language);
+                return;
+            }
 
         _chat.TrySendInGameICMessage(uid, message, component.OutputChatType, ChatTransmitRange.GhostRangeLimitNoAdminCheck,
             nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language); // Einstein Engines - Languages  / Frontier: GhostRangeLimit<GhostRangeLimitNoAdminCheck, InGameICChatType.Whisper<component.OutputChatType

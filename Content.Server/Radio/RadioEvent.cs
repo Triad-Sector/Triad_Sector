@@ -18,7 +18,7 @@ public readonly record struct RadioReceiveEvent(
     ChatMessage LanguageObfuscatedChatMsg,
     LanguagePrototype Language,
     EntityUid RadioSource,
-    EmoteType? emType //Triad
+    EmoteType? EmType //Triad
 );
 // Einstein Engines - Language end
 
