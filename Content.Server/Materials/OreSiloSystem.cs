@@ -7,12 +7,12 @@ using Robust.Shared.Player;
 namespace Content.Server.Materials;
 
 /// <inheritdoc/>
-public sealed class OreSiloSystem : SharedOreSiloSystem
+public sealed partial class OreSiloSystem : SharedOreSiloSystem
 {
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
-    [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private PvsOverrideSystem _pvsOverride = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
 
     private const float OreSiloPreloadRangeSquared = 225f; // ~1 screen
 
@@ -67,6 +67,12 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
         // Get all clients of this silo, including those out of range.
         foreach (var client in ent.Comp.Clients)
         {
+            // Triad: a client that did not survive a ship load sits in this set as entity 0, and every
+            // lookup below (net entity, identity, beacon, range) logs a resolve error with a full stack
+            // trace each time the window refreshes. Map init prunes these; skip anything that slips past.
+            if (!Exists(client))
+                continue;
+
             var netEnt = GetNetEntity(client);
             var name = Identity.Name(client, EntityManager);
             var beacon = _navMap.GetNearestBeaconString(client, onlyName: true);

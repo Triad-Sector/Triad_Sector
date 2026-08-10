@@ -7,10 +7,10 @@ using Content.Shared.Wieldable.Components;
 
 namespace Content.Shared._Triad.Weapons.Ranged.Systems;
 
-public sealed class BlockWieldOnUntoggledSystem : EntitySystem
+public sealed partial class BlockWieldOnUntoggledSystem : EntitySystem
 {
-    [Dependency] private readonly ItemToggleSystem _itemToggle = default!;
-    [Dependency] private readonly SharedWieldableSystem _wieldable = default!;
+    [Dependency] private ItemToggleSystem _itemToggle = default!;
+    [Dependency] private SharedWieldableSystem _wieldable = default!;
 
     public override void Initialize()
     {

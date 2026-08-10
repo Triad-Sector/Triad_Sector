@@ -12,15 +12,24 @@ using Robust.Shared.Timing;
 namespace Content.Server.Advertise.EntitySystems;
 
 // Mono - update delay replaced with priority queue
-public sealed class AdvertiseSystem : EntitySystem
+public sealed partial class AdvertiseSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     // Mono
     private PriorityQueue<EntityUid, TimeSpan> _advertQueue = new();
+
+    /// <summary>
+    /// How many advertisements may actually be spoken in one tick.
+    /// </summary>
+    // Triad: SayAdvertisement runs a full IC chat send, which the TODO below already flags as costing
+    // whole milliseconds each. Speaking every due advert in one tick meant the cost scaled with however
+    // many happened to come due together, and a Tracy capture caught it stalling a tick for 128ms.
+    // The queue is ordered by due time, so anything over the cap just speaks on a following tick.
+    private const int MaxAdvertsPerTick = 4;
 
     // Mono - cache dataset protos for performance reasons
     private Dictionary<ProtoId<LocalizedDatasetPrototype>, LocalizedDatasetPrototype> _cachedDatasets = new();
@@ -90,6 +99,7 @@ public sealed class AdvertiseSystem : EntitySystem
     public override void Update(float frameTime)
     {
         var i = 0;
+        var spoken = 0;
         while (true)
         {
             i++;
@@ -110,9 +120,16 @@ public sealed class AdvertiseSystem : EntitySystem
             if (advertise.NextAdvertisementTime > _gameTiming.CurTime)
                 break;
 
+            // Triad: leave the backlog queued at its existing due time so it comes back up next tick,
+            // still in order. See MaxAdvertsPerTick. Note this deliberately sits after the cleanup
+            // branch above, so dropping stale entries is never rate limited, only speaking is.
+            if (spoken >= MaxAdvertsPerTick)
+                break;
+
             _advertQueue.Dequeue();
             SayAdvertisement(uid, advertise);
             RandomizeNextAdvertTime(uid, advertise);
+            spoken++;
         }
     }
 

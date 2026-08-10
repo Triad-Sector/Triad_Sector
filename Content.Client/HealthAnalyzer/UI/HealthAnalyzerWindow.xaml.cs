@@ -41,7 +41,6 @@ namespace Content.Client.HealthAnalyzer.UI
         public event Action<TargetBodyPart?, EntityUid>? OnBodyPartSelected;
         private EntityUid _spriteViewEntity;
 
-        [ValidatePrototypeId<EntityPrototype>]
         private readonly EntProtoId _bodyView = "AlertSpriteView";
 
         private readonly Dictionary<TargetBodyPart, TextureButton> _bodyPartControls;
@@ -353,11 +352,11 @@ namespace Content.Client.HealthAnalyzer.UI
                 int enumValue = (int) integrity;
                 var rsi = new SpriteSpecifier.Rsi(new ResPath($"/Textures/_Shitmed/Interface/Targeting/Status/{enumName.ToLowerInvariant()}.rsi"), $"{enumName.ToLowerInvariant()}_{enumValue}");
                 // Shitcode with love from Russia :)
-                if (!sprite.TryGetLayer(layer, out _))
-                    sprite.AddLayer(_spriteSystem.Frame0(rsi));
+                if (!_spriteSystem.TryGetLayer((_spriteViewEntity, sprite), layer, out _, false))
+                    _spriteSystem.AddTextureLayer((_spriteViewEntity, sprite), _spriteSystem.Frame0(rsi));
                 else
-                    sprite.LayerSetTexture(layer, _spriteSystem.Frame0(rsi));
-                sprite.LayerSetScale(layer, new Vector2(3f, 3f));
+                    _spriteSystem.LayerSetTexture((_spriteViewEntity, sprite), layer, _spriteSystem.Frame0(rsi));
+                _spriteSystem.LayerSetScale((_spriteViewEntity, sprite), layer, new Vector2(3f, 3f));
                 layer++;
             }
             return _spriteViewEntity;

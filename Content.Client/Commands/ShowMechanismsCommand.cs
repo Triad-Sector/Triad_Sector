@@ -4,9 +4,9 @@ using Robust.Shared.Console;
 
 namespace Content.Client.Commands;
 
-public sealed class ShowMechanismsCommand : LocalizedCommands
+public sealed partial class ShowMechanismsCommand : LocalizedCommands
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     public const string CommandName = "showmechanisms";
 
@@ -16,11 +16,12 @@ public sealed class ShowMechanismsCommand : LocalizedCommands
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        var spriteSystem = _entManager.System<SpriteSystem>();
         var query = _entManager.AllEntityQueryEnumerator<OrganComponent, SpriteComponent>();
 
-        while (query.MoveNext(out _, out var sprite))
+        while (query.MoveNext(out var uid, out _, out var sprite))
         {
-            sprite.ContainerOccluded = false;
+            spriteSystem.SetContainerOccluded((uid, sprite), false);
         }
     }
 }

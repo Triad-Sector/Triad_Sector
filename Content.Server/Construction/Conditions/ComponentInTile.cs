@@ -48,7 +48,7 @@ namespace Content.Server.Construction.Conditions
                 return false;
 
             var transformSys = entityManager.System<SharedTransformSystem>();
-            var indices = transform.Coordinates.ToVector2i(entityManager, IoCManager.Resolve<IMapManager>(), transformSys);
+            var indices = transform.Coordinates.ToVector2i(entityManager, transformSys);
             var lookup = entityManager.EntitySysManager.GetEntitySystem<EntityLookupSystem>();
 
 
@@ -58,7 +58,7 @@ namespace Content.Server.Construction.Conditions
             if (!entityManager.System<SharedMapSystem>().TryGetTileRef(transform.GridUid.Value, grid, indices, out var tile))
                 return !HasEntity;
 
-            var entities = tile.GetEntitiesInTile(LookupFlags.Approximate | LookupFlags.Static, lookup);
+            var entities = lookup.GetEntitiesInTile(tile, LookupFlags.Approximate | LookupFlags.Static);
 
             foreach (var ent in entities)
             {

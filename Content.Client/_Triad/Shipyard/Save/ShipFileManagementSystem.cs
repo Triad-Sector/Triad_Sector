@@ -6,10 +6,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._Triad.Shipyard.Save;
 
-public sealed class ShipFileManagementSystem : EntitySystem
+public sealed partial class ShipFileManagementSystem : EntitySystem
 {
-    [Dependency] private readonly IResourceManager _resourceManager = default!;
-    [Dependency] private readonly ILogManager _log = default!;
+    [Dependency] private IResourceManager _resourceManager = default!;
+    [Dependency] private ILogManager _log = default!;
 
     // Static data shared across all instances to handle multiple system instances
     private static readonly Dictionary<string, string> CachedShipData = new();

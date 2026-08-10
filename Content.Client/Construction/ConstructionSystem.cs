@@ -22,14 +22,14 @@ namespace Content.Client.Construction
     /// The client-side implementation of the construction system, which is used for constructing entities in game.
     /// </summary>
     [UsedImplicitly]
-    public sealed class ConstructionSystem : SharedConstructionSystem
+    public sealed partial class ConstructionSystem : SharedConstructionSystem
     {
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly SpriteSystem _spriteSystem = default!; // Triad
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private ExamineSystemShared _examineSystem = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SpriteSystem _spriteSystem = default!; // Triad
 
         private readonly Dictionary<int, EntityUid> _ghosts = new();
         private readonly Dictionary<string, ConstructionGuide> _guideCache = new();
@@ -213,18 +213,18 @@ namespace Content.Client.Construction
             var comp = EntityManager.GetComponent<ConstructionGhostComponent>(ghost.Value);
             comp.Prototype = prototype;
             comp.GhostId = ghost.GetHashCode();
-            EntityManager.GetComponent<TransformComponent>(ghost.Value).LocalRotation = dir.ToAngle();
+            _transformSystem.SetLocalRotation(ghost.Value, dir.ToAngle());
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
-            sprite.Color = new Color(48, 255, 48, 128);
+            _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));
             _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {
-                sprite.AddBlankLayer(i); // There is no way to actually check if this already exists, so we blindly insert a new one
-                sprite.LayerSetSprite(i, prototype.Layers[i]);
+                _spriteSystem.AddBlankLayer((ghost.Value, sprite), i); // There is no way to actually check if this already exists, so we blindly insert a new one
+                _spriteSystem.LayerSetSprite((ghost.Value, sprite), i, prototype.Layers[i]);
                 sprite.LayerSetShader(i, "unshaded");
-                sprite.LayerSetVisible(i, true);
+                _spriteSystem.LayerSetVisible((ghost.Value, sprite), i, true);
             }
 
             if (prototype.CanBuildInImpassable)

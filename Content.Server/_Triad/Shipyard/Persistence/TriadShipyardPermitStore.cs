@@ -10,9 +10,9 @@ using Robust.Shared.IoC;
 
 namespace Content.Server._Triad.Shipyard.Persistence;
 
-public sealed class TriadShipyardPermitStore : ITriadShipyardPermitStore
+public sealed partial class TriadShipyardPermitStore : ITriadShipyardPermitStore
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     // Per-player permit cache. Presence of a key = an active permit. No expiry: a permit ends only
     // on admin revoke or session-end clear (both call RevokeAsync). Not authoritative until populated.

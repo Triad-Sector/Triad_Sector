@@ -1,6 +1,7 @@
 using Content.Shared.Implants.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Morgue.Components;
 
 namespace Content.Server.Explosion.EntitySystems;
 
@@ -10,11 +11,11 @@ public sealed partial class TriggerSystem : EntitySystem
     {
         var query = EntityQueryEnumerator<ImplantedComponent, MobStateComponent>();
 
-        while (query.MoveNext(out var implantedComponent, out var mobState))
+        while (query.MoveNext(out var entityUid, out var implantedComponent, out var mobState))
         {
-            foreach (var entityUid in implantedComponent.ImplantContainer.ContainedEntities)
+            foreach (var containerUid in implantedComponent.ImplantContainer.ContainedEntities)
             {
-                if (!TryComp<RattleComponent>(entityUid, out var component))
+                if (!TryComp<RattleComponent>(containerUid, out var component))
                     continue;
 
                 // This is our reset state
@@ -27,7 +28,14 @@ public sealed partial class TriggerSystem : EntitySystem
 
                 if (component.NextTrigger != TimeSpan.Zero && _timing.CurTime >= component.NextTrigger)
                 {
-                    Trigger(entityUid);
+                    if (!_container.TryGetContainingContainer(entityUid, out var container) || !HasComp<MorgueComponent>(container.Owner))
+                    {
+                        Trigger(containerUid);
+                    }
+                    else
+                    {
+                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+                    }
                 }
             }
         }

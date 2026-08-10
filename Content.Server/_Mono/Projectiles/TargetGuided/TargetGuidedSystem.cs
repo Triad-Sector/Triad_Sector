@@ -11,12 +11,12 @@ namespace Content.Server._Mono.Projectiles.TargetGuided;
 /// <summary>
 /// Handles the logic for cursor-guided projectiles.
 /// </summary>
-public sealed class TargetGuidedSystem : EntitySystem
+public sealed partial class TargetGuidedSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = null!;
-    [Dependency] private readonly RotateToFaceSystem _rotateToFace = null!;
-    [Dependency] private readonly PhysicsSystem _physics = null!;
-    [Dependency] private readonly FireControlSystem _fireControl = null!;
+    [Dependency] private SharedTransformSystem _transform = null!;
+    [Dependency] private RotateToFaceSystem _rotateToFace = null!;
+    [Dependency] private PhysicsSystem _physics = null!;
+    [Dependency] private FireControlSystem _fireControl = null!;
 
     public override void Initialize()
     {
@@ -124,8 +124,8 @@ public sealed class TargetGuidedSystem : EntitySystem
         if (component.TargetPosition.HasValue)
         {
             // Convert both coordinates to map positions to compare them
-            var currentMapPos = coordinates.ToMap(EntityManager, _transform);
-            var previousMapPos = component.TargetPosition.Value.ToMap(EntityManager, _transform);
+            var currentMapPos = _transform.ToMapCoordinates(coordinates);
+            var previousMapPos = _transform.ToMapCoordinates(component.TargetPosition.Value);
 
             // Check if they're on the same map and calculate distance
             if (currentMapPos.MapId == previousMapPos.MapId)
@@ -158,7 +158,7 @@ public sealed class TargetGuidedSystem : EntitySystem
             return;
 
         // Get the positions in map coordinates
-        var targetPos = guidedComp.TargetPosition.Value.ToMap(EntityManager, _transform);
+        var targetPos = _transform.ToMapCoordinates(guidedComp.TargetPosition.Value);
         var missilePos = _transform.ToMapCoordinates(xform.Coordinates);
 
         // Skip if on different maps

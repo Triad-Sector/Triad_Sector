@@ -14,8 +14,8 @@ namespace Content.Client._Crescent.DroneControl;
 [GenerateTypedNameReferences]
 public sealed partial class DroneConsoleWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    private readonly SharedMapSystem _maps;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _xform;
 
@@ -33,6 +33,7 @@ public sealed partial class DroneConsoleWindow : FancyWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        _maps = _entity.System<SharedMapSystem>();
         _shuttles = _entity.System<SharedShuttleSystem>();
         _xform = _entity.System<SharedTransformSystem>();
 
@@ -60,7 +61,7 @@ public sealed partial class DroneConsoleWindow : FancyWindow
 
         var box = Box2.FromDimensions(worldCoord.Position, new Vector2(0.5f, 0.5f));
         EntityUid? foundGrid = null;
-        _mapManager.FindGridsIntersecting(mapId, box, (uid, _) =>
+        _maps.FindGridsIntersecting(mapId, box, (uid, _) =>
         {
             foundGrid = uid;
             return false; // stop when we find one

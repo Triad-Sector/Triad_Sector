@@ -84,6 +84,24 @@ public sealed partial class ECCVars
     public static readonly CVarDef<float> SupermatterAmmoniaPowerGain =
         CVarDef.Create("supermatter.ammonia_power_gain", 10f, CVar.SERVER);
 
+    // Triad: resonance cascade delamination.
+    /// <summary>
+    ///     Toggles whether or not Cascade delaminations can occur. A cascade outranks both Singuloose and Tesloose,
+    ///     and needs the conditions for both to be met at once: the chamber is over the mole penalty threshold
+    ///     AND the core is over the power penalty threshold. Instead of a singularity or a tesla, the crystal
+    ///     collapses into a spreading crystalline growth.
+    /// </summary>
+    public static readonly CVarDef<bool> SupermatterDoCascadeDelam =
+        CVarDef.Create("supermatter.do_cascade", true, CVar.SERVER);
+
+    /// <summary>
+    ///     Multiplies both the mole and power thresholds for the purpose of determining if a delam is a Cascade.
+    ///     Above 1 makes cascades rarer than the singuloose/tesloose they would otherwise outrank.
+    /// </summary>
+    public static readonly CVarDef<float> SupermatterCascadeThresholdModifier =
+        CVarDef.Create("supermatter.cascade_threshold_modifier", 1.25f, CVar.SERVER);
+    // End Triad
+
     /// <summary>
     ///     When true, bypass the normal checks to determine delam type, and instead use the type chosen by supermatter.forced_delam_type
     /// </summary>

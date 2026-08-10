@@ -22,16 +22,16 @@ using static Content.Shared.Damage.DamageableSystem;
 
 namespace Content.Shared.Damage
 {
-    public sealed class DamageableSystem : EntitySystem
+    public sealed partial class DamageableSystem : EntitySystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly INetManager _netMan = default!;
-        [Dependency] private readonly SharedBodySystem _body = default!; // Shitmed Change
-        [Dependency] private readonly IRobustRandom _random = default!; // Shitmed Change
-        [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-        [Dependency] private readonly IConfigurationManager _config = default!;
-        [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private INetManager _netMan = default!;
+        [Dependency] private SharedBodySystem _body = default!; // Shitmed Change
+        [Dependency] private IRobustRandom _random = default!; // Shitmed Change
+        [Dependency] private MobThresholdSystem _mobThreshold = default!;
+        [Dependency] private IConfigurationManager _config = default!;
+        [Dependency] private SharedChemistryGuideDataSystem _chemistryGuideData = default!;
 
         private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<DamageableComponent> _damageableQuery;
@@ -168,7 +168,8 @@ namespace Content.Shared.Damage
         public enum DamageOriginFlag
         {
             Explosion, // flag set by ExplosionSystem.Processing
-            Barotrauma // flag set by BarotraumaSystem
+            Barotrauma, // flag set by BarotraumaSystem
+            Radiation // Triad, flag set by DamageableSystem.OnIrradiated
         }
 
         /// <summary>
@@ -392,18 +393,18 @@ namespace Content.Shared.Damage
             }
         }
 
-        private void OnIrradiated(EntityUid uid, DamageableComponent component, OnIrradiatedEvent args)
+        private void OnIrradiated(Entity<DamageableComponent> ent, ref OnIrradiatedEvent args)
         {
             var damageValue = FixedPoint2.New(args.TotalRads);
 
             // Radiation should really just be a damage group instead of a list of types.
             DamageSpecifier damage = new();
-            foreach (var typeId in component.RadiationDamageTypeIDs)
+            foreach (var typeId in ent.Comp.RadiationDamageTypeIDs)
             {
                 damage.DamageDict.Add(typeId, damageValue);
             }
 
-            TryChangeDamage(uid, damage, interruptsDoAfters: false);
+            TryChangeDamage(ent.Owner, damage, interruptsDoAfters: false, origin: args.Origin, originFlag: DamageOriginFlag.Radiation); // Triad - origin flag
         }
 
         private void OnRejuvenate(EntityUid uid, DamageableComponent component, RejuvenateEvent args)
@@ -460,7 +461,7 @@ namespace Content.Shared.Damage
         }
     }
 
-    
+
     /// <summary>
     ///     Raised before damage is done, so stuff can cancel it if necessary.
     /// </summary>

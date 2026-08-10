@@ -21,12 +21,11 @@ namespace Content.Server.Salvage;
 
 public sealed partial class SalvageSystem
 {
-    [ValidatePrototypeId<EntityPrototype>]
-    public const string CoordinatesDisk = "CoordinatesDisk";
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!; // Frontier
-    [Dependency] private readonly SalvageSystem _salvage = default!; // Frontier
+    public static readonly EntProtoId CoordinatesDisk = "CoordinatesDisk";
     private const float ShuttleFTLRange = 256f;
     private const float ShuttleFTLMassThreshold = 100f;
+
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
 
     private void OnSalvageClaimMessage(EntityUid uid, SalvageExpeditionConsoleComponent component, ClaimSalvageMessage args)
     {
@@ -121,7 +120,9 @@ public sealed partial class SalvageSystem
                 }
             }
 
-            foreach (var otherGrid in otherGrids)
+            var intersecting = new List<Entity<MapGridComponent>>();
+            _mapSystem.FindGridsIntersecting(xform.MapID, bounds, ref intersecting);
+            foreach (var other in intersecting)
             {
                 if (ourGrid == otherGrid.Owner ||
                     dockedGrids.Contains(otherGrid.Owner) || // Skip grids that are docked to us or to the same parent grid
@@ -292,7 +293,7 @@ public sealed partial class SalvageSystem
     // Frontier: deny sound
     private void PlayDenySound(Entity<SalvageExpeditionConsoleComponent> ent)
     {
-        _audio.PlayPvs(_audio.ResolveSound(ent.Comp.ErrorSound), ent);
+        _audio.PlayPvs(component.ErrorSound, uid);
     }
     // End Frontier
 }

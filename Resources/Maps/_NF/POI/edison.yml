@@ -36438,23 +36438,6 @@ entities:
     - type: Transform
       pos: 33.5,-24.5
       parent: 1
-- proto: CrateEngineeringTeslaCoil
-  entities:
-  - uid: 6050
-    components:
-    - type: Transform
-      pos: 43.5,-23.5
-      parent: 1
-  - uid: 6051
-    components:
-    - type: Transform
-      pos: 42.5,-23.5
-      parent: 1
-  - uid: 6052
-    components:
-    - type: Transform
-      pos: 44.5,-23.5
-      parent: 1
 - proto: CrateEngineeringTeslaCoilBulk
   entities:
   - uid: 6053
@@ -80497,28 +80480,6 @@ entities:
     components:
     - type: Transform
       pos: 25.5,17.5
-      parent: 1
-- proto: TeslaCoilFlatpack
-  entities:
-  - uid: 12219
-    components:
-    - type: Transform
-      pos: 46.438305,-23.349659
-      parent: 1
-  - uid: 12220
-    components:
-    - type: Transform
-      pos: 46.713493,-23.386375
-      parent: 1
-  - uid: 12221
-    components:
-    - type: Transform
-      pos: 46.493343,-23.569962
-      parent: 1
-  - uid: 12222
-    components:
-    - type: Transform
-      pos: 46.823566,-23.569962
       parent: 1
 - proto: TeslaGenerator
   entities:

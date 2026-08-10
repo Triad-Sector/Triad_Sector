@@ -64,12 +64,5 @@ namespace Content.Client.Atmos.UI
             _window.SetFilteredGases(cast.FilterGases ?? new HashSet<Gas>());
             // Funky Station - UI updated using hashset of gases
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (!disposing) return;
-            _window?.Dispose();
-        }
     }
 }

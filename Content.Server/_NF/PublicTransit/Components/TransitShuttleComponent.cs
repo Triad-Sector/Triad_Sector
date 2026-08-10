@@ -21,4 +21,11 @@ public sealed partial class TransitShuttleComponent : Component
 
     [DataField(customTypeSerializer:typeof(TimeOffsetSerializer))]
     public TimeSpan NextTransfer;
+
+    /// <summary>
+    ///     Whether the "departing shortly" call has already gone out for the current stop.
+    /// </summary>
+    // Triad: reset on departure so each stop gets exactly one warning.
+    [DataField]
+    public bool DepartureAnnounced;
 }

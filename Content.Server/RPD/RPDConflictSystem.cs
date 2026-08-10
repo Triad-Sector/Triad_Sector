@@ -15,12 +15,12 @@ namespace Content.Server.RPD;
 /// (<see cref="PipeRestrictOverlapSystem.WouldPlacementOverlap"/>), so a same-(direction, layer) placement is
 /// rejected before spawn. Server-side because the overlap query reads server pipe-node data.
 /// </summary>
-public sealed class RPDConflictSystem : EntitySystem
+public sealed partial class RPDConflictSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PipeRestrictOverlapSystem _overlap = default!;
-    [Dependency] private readonly SharedAtmosPipeLayersSystem _pipeLayers = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PipeRestrictOverlapSystem _overlap = default!;
+    [Dependency] private SharedAtmosPipeLayersSystem _pipeLayers = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -34,7 +34,7 @@ public sealed class RPDConflictSystem : EntitySystem
             return;
 
         if (!_proto.TryIndex<EntityPrototype>(args.Recipe.Prototype, out var baseProto)
-            || !baseProto.TryGetComponent<AtmosPipeLayersComponent>(out var pipeLayers, EntityManager.ComponentFactory))
+            || !baseProto.TryComp<AtmosPipeLayersComponent>(out var pipeLayers, EntityManager.ComponentFactory))
             return;
 
         // Resolve the layer-specific prototype (base proto IS the Primary variant).

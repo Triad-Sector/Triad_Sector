@@ -32,3 +32,16 @@
 # Clothing
 - type: Tag
   id: AdvancedTacticalBackpack
+
+# Docking. Shuttle-side tags: a berth that sets PriorityDock.requiredShuttleTag to one of these only
+# forms docking configs against shuttle ports carrying that tag, which is how a tight berth states
+# "the bus docks here with this side" instead of trusting collision checks to pick for it.
+- type: Tag
+  id: DockTransitPort
+
+- type: Tag
+  id: DockTransitStarboard
+
+# So TDF vessels prioritize TDF docks on Venmar and civilian vessels do not dock to them
+- type: Tag
+  id: DockTdf

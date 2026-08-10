@@ -14,13 +14,13 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server.Payload.EntitySystems;
 
-public sealed class PayloadSystem : EntitySystem
+public sealed partial class PayloadSystem : EntitySystem
 {
-    [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ISerializationManager _serializationManager = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ISerializationManager _serializationManager = default!;
 
     public override void Initialize()
     {

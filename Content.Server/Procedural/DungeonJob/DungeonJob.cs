@@ -53,6 +53,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     private readonly TileSystem _tile;
     private readonly SharedMapSystem _maps;
     private readonly SharedTransformSystem _transform;
+    private readonly TurfSystem _turf;
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -102,6 +103,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
         _tile = tile;
         _tags = _entManager.System<TagSystem>();
         _maps = _entManager.System<SharedMapSystem>();
+        _turf = _entManager.System<TurfSystem>();
         _transform = transform;
 
         _physicsQuery = _entManager.GetEntityQuery<PhysicsComponent>();

@@ -37,13 +37,5 @@ namespace Content.Client.Atmos.UI
             SendMessage(new GasAnalyzerDisableMessage());
             Close();
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-
-            if (disposing)
-                _window?.Dispose();
-        }
     }
 }

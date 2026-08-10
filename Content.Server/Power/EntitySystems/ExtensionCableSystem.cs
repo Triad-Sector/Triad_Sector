@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Server.Power.Components;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -6,9 +5,9 @@ using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Power.EntitySystems
 {
-    public sealed class ExtensionCableSystem : EntitySystem
+    public sealed partial class ExtensionCableSystem : EntitySystem
     {
-        [Dependency] private readonly SharedMapSystem _map = default!;
+        [Dependency] private SharedMapSystem _map = default!;
 
         public override void Initialize()
         {
@@ -36,12 +35,12 @@ namespace Content.Server.Power.EntitySystems
                 return;
 
             provider.TransferRange = range;
-            ResetReceivers(provider);
+            ResetReceivers((uid, provider));
         }
 
         private void OnProviderStarted(EntityUid uid, ExtensionCableProviderComponent provider, ComponentStartup args)
         {
-            Connect(uid, provider);
+            Connect((uid, provider));
         }
 
         private void OnProviderShutdown(EntityUid uid, ExtensionCableProviderComponent provider, ComponentShutdown args)
@@ -55,65 +54,62 @@ namespace Content.Server.Power.EntitySystems
                 return;
             }
 
-            Disconnect(uid, provider);
+            Disconnect((uid, provider));
         }
 
         private void OnProviderAnchorStateChanged(EntityUid uid, ExtensionCableProviderComponent provider, ref AnchorStateChangedEvent args)
         {
             if (args.Anchored)
-                Connect(uid, provider);
+                Connect((uid, provider));
             else
-                Disconnect(uid, provider);
+                Disconnect((uid, provider));
         }
 
-        private void Connect(EntityUid uid, ExtensionCableProviderComponent provider)
+        private void Connect(Entity<ExtensionCableProviderComponent> provider)
         {
-            provider.Connectable = true;
+            provider.Comp.Connectable = true;
 
-            foreach (var receiver in FindAvailableReceivers(uid, provider.TransferRange))
+            foreach (var receiver in FindAvailableReceivers(provider.Owner, provider.Comp.TransferRange))
             {
-                receiver.Comp.Provider?.LinkedReceivers.Remove(receiver);
+                receiver.Comp.Provider?.Comp.LinkedReceivers.Remove(receiver);
                 receiver.Comp.Provider = provider;
-                provider.LinkedReceivers.Add(receiver);
-                RaiseLocalEvent(receiver, new ProviderConnectedEvent(provider), broadcast: false);
-                RaiseLocalEvent(uid, new ReceiverConnectedEvent(receiver), broadcast: false);
+                provider.Comp.LinkedReceivers.Add(receiver);
+                RaiseLocalEvent(receiver.Owner, new ProviderConnectedEvent(provider), broadcast: false);
+                RaiseLocalEvent(provider.Owner, new ReceiverConnectedEvent(receiver), broadcast: false);
             }
         }
 
-        private void Disconnect(EntityUid uid, ExtensionCableProviderComponent provider)
+        private void Disconnect(Entity<ExtensionCableProviderComponent> provider)
         {
             // same as OnProviderShutdown
-            provider.Connectable = false;
+            provider.Comp.Connectable = false;
             ResetReceivers(provider);
         }
 
         private void OnProviderReAnchor(EntityUid uid, ExtensionCableProviderComponent component, ref ReAnchorEvent args)
         {
-            Disconnect(uid, component);
-            Connect(uid, component);
+            Disconnect((uid, component));
+            Connect((uid, component));
         }
 
-        private void ResetReceivers(ExtensionCableProviderComponent provider)
+        private void ResetReceivers(Entity<ExtensionCableProviderComponent> provider)
         {
-            var providerId = provider.Owner;
-            var receivers = provider.LinkedReceivers.ToArray();
-            provider.LinkedReceivers.Clear();
+            var receivers = provider.Comp.LinkedReceivers.ToArray();
+            provider.Comp.LinkedReceivers.Clear();
 
             foreach (var receiver in receivers)
             {
-                var receiverId = receiver.Owner;
-                receiver.Provider = null;
-                RaiseLocalEvent(receiverId, new ProviderDisconnectedEvent(provider), broadcast: false);
-                RaiseLocalEvent(providerId, new ReceiverDisconnectedEvent((receiverId, receiver)), broadcast: false);
+                receiver.Comp.Provider = null;
+                RaiseLocalEvent(receiver.Owner, new ProviderDisconnectedEvent(provider), broadcast: false);
+                RaiseLocalEvent(provider.Owner, new ReceiverDisconnectedEvent(receiver), broadcast: false);
             }
 
             foreach (var receiver in receivers)
             {
                 // No point resetting what the receiver is doing if it's deleting, plus significant perf savings
                 // in not doing needless lookups
-                var receiverId = receiver.Owner;
-                if (!EntityManager.IsQueuedForDeletion(receiverId)
-                    && MetaData(receiverId).EntityLifeStage <= EntityLifeStage.MapInitialized)
+                if (!EntityManager.IsQueuedForDeletion(receiver.Owner)
+                    && MetaData(receiver.Owner).EntityLifeStage <= EntityLifeStage.MapInitialized)
                 {
                     TryFindAndSetProvider(receiver);
                 }
@@ -164,94 +160,92 @@ namespace Content.Server.Power.EntitySystems
 
             if (provider != null)
             {
-                RaiseLocalEvent(provider.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
-                provider.LinkedReceivers.Remove(receiver);
+                RaiseLocalEvent(provider.Value.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
+                provider.Value.Comp.LinkedReceivers.Remove((uid, receiver));
             }
 
             receiver.ReceptionRange = range;
-            TryFindAndSetProvider(receiver);
+            TryFindAndSetProvider((uid, receiver));
         }
 
         private void OnReceiverStarted(EntityUid uid, ExtensionCableReceiverComponent receiver, ComponentStartup args)
         {
-            if (EntityManager.TryGetComponent(receiver.Owner, out PhysicsComponent? physicsComponent))
+            if (EntityManager.TryGetComponent(uid, out PhysicsComponent? physicsComponent))
             {
                 receiver.Connectable = physicsComponent.BodyType == BodyType.Static;
             }
 
             if (receiver.Provider == null)
             {
-                TryFindAndSetProvider(receiver);
+                TryFindAndSetProvider((uid, receiver));
             }
         }
 
         private void OnReceiverShutdown(EntityUid uid, ExtensionCableReceiverComponent receiver, ComponentShutdown args)
         {
-            Disconnect(uid, receiver);
+            Disconnect((uid, receiver));
         }
 
         private void OnReceiverAnchorStateChanged(EntityUid uid, ExtensionCableReceiverComponent receiver, ref AnchorStateChangedEvent args)
         {
             if (args.Anchored)
             {
-                Connect(uid, receiver);
+                Connect((uid, receiver));
             }
             else
             {
-                Disconnect(uid, receiver);
+                Disconnect((uid, receiver));
             }
         }
 
         private void OnReceiverReAnchor(EntityUid uid, ExtensionCableReceiverComponent receiver, ref ReAnchorEvent args)
         {
-            Disconnect(uid, receiver);
-            Connect(uid, receiver);
+            Disconnect((uid, receiver));
+            Connect((uid, receiver));
         }
 
-        private void Connect(EntityUid uid, ExtensionCableReceiverComponent receiver)
+        private void Connect(Entity<ExtensionCableReceiverComponent> receiver)
         {
-            receiver.Connectable = true;
-            if (receiver.Provider == null)
+            receiver.Comp.Connectable = true;
+            if (receiver.Comp.Provider == null)
             {
                 TryFindAndSetProvider(receiver);
             }
         }
 
-        private void Disconnect(EntityUid uid, ExtensionCableReceiverComponent receiver)
+        private void Disconnect(Entity<ExtensionCableReceiverComponent> receiver)
         {
-            receiver.Connectable = false;
-            RaiseLocalEvent(uid, new ProviderDisconnectedEvent(receiver.Provider), broadcast: false);
-            if (receiver.Provider != null)
+            receiver.Comp.Connectable = false;
+            RaiseLocalEvent(receiver.Owner, new ProviderDisconnectedEvent(receiver.Comp.Provider), broadcast: false);
+            if (receiver.Comp.Provider != null)
             {
-                RaiseLocalEvent(receiver.Provider.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
-                receiver.Provider.LinkedReceivers.Remove(receiver);
+                RaiseLocalEvent(receiver.Comp.Provider.Value.Owner, new ReceiverDisconnectedEvent(receiver), broadcast: false);
+                receiver.Comp.Provider.Value.Comp.LinkedReceivers.Remove(receiver);
             }
 
-            receiver.Provider = null;
+            receiver.Comp.Provider = null;
         }
 
-        private void TryFindAndSetProvider(ExtensionCableReceiverComponent receiver, TransformComponent? xform = null)
+        private void TryFindAndSetProvider(Entity<ExtensionCableReceiverComponent> receiver, TransformComponent? xform = null)
         {
-            var uid = receiver.Owner;
-            if (!receiver.Connectable)
+            if (!receiver.Comp.Connectable)
                 return;
 
-            if (!TryFindAvailableProvider(uid, receiver.ReceptionRange, out var provider, xform))
+            if (!TryFindAvailableProvider(receiver.Owner, receiver.Comp.ReceptionRange, out var provider, xform))
                 return;
 
-            receiver.Provider = provider;
-            provider.LinkedReceivers.Add(receiver);
-            RaiseLocalEvent(uid, new ProviderConnectedEvent(provider), broadcast: false);
-            RaiseLocalEvent(provider.Owner, new ReceiverConnectedEvent((uid, receiver)), broadcast: false);
+            receiver.Comp.Provider = provider;
+            provider.Comp.LinkedReceivers.Add(receiver);
+            RaiseLocalEvent(receiver.Owner, new ProviderConnectedEvent(provider), broadcast: false);
+            RaiseLocalEvent(provider.Owner, new ReceiverConnectedEvent(receiver), broadcast: false);
         }
 
-        private bool TryFindAvailableProvider(EntityUid owner, float range, [NotNullWhen(true)] out ExtensionCableProviderComponent? foundProvider, TransformComponent? xform = null)
+        private bool TryFindAvailableProvider(EntityUid owner, float range, out Entity<ExtensionCableProviderComponent> foundProvider, TransformComponent? xform = null)
         {
+            foundProvider = default;
+
             if (!Resolve(owner, ref xform) || !TryComp(xform.GridUid, out MapGridComponent? grid))
-            {
-                foundProvider = null;
                 return false;
-            }
 
             var coordinates = xform.Coordinates;
             var nearbyEntities = _map.GetCellsInSquareArea(xform.GridUid.Value, grid, coordinates, (int) Math.Ceiling(range / grid.TileSize));
@@ -259,7 +253,7 @@ namespace Content.Server.Power.EntitySystems
             var metaQuery = GetEntityQuery<MetaDataComponent>();
             var xformQuery = GetEntityQuery<TransformComponent>();
 
-            ExtensionCableProviderComponent? closestCandidate = null;
+            Entity<ExtensionCableProviderComponent>? closestCandidate = null;
             var closestDistanceFound = float.MaxValue;
             foreach (var entity in nearbyEntities)
             {
@@ -279,18 +273,17 @@ namespace Content.Server.Power.EntitySystems
                 if (distance >= closestDistanceFound)
                     continue;
 
-                closestCandidate = provider;
+                closestCandidate = (entity, provider);
                 closestDistanceFound = distance;
             }
 
             // Make sure the provider is in range before claiming success
-            if (closestCandidate != null && closestDistanceFound <= Math.Min(range, closestCandidate.TransferRange))
+            if (closestCandidate != null && closestDistanceFound <= Math.Min(range, closestCandidate.Value.Comp.TransferRange))
             {
-                foundProvider = closestCandidate;
+                foundProvider = closestCandidate.Value;
                 return true;
             }
 
-            foundProvider = null;
             return false;
         }
 
@@ -304,11 +297,11 @@ namespace Content.Server.Power.EntitySystems
         public sealed class ProviderConnectedEvent : EntityEventArgs
         {
             /// <summary>
-            /// The <see cref="ExtensionCableProviderComponent"/> that connected.
+            /// The entity carrying the <see cref="ExtensionCableProviderComponent"/> that connected.
             /// </summary>
-            public ExtensionCableProviderComponent Provider;
+            public Entity<ExtensionCableProviderComponent> Provider;
 
-            public ProviderConnectedEvent(ExtensionCableProviderComponent provider)
+            public ProviderConnectedEvent(Entity<ExtensionCableProviderComponent> provider)
             {
                 Provider = provider;
             }
@@ -319,11 +312,12 @@ namespace Content.Server.Power.EntitySystems
         public sealed class ProviderDisconnectedEvent : EntityEventArgs
         {
             /// <summary>
-            /// The <see cref="ExtensionCableProviderComponent"/> that disconnected.
+            /// The entity carrying the <see cref="ExtensionCableProviderComponent"/> that disconnected, if there
+            /// was one. Null when the receiver had no provider to begin with.
             /// </summary>
-            public ExtensionCableProviderComponent? Provider;
+            public Entity<ExtensionCableProviderComponent>? Provider;
 
-            public ProviderDisconnectedEvent(ExtensionCableProviderComponent? provider)
+            public ProviderDisconnectedEvent(Entity<ExtensionCableProviderComponent>? provider)
             {
                 Provider = provider;
             }

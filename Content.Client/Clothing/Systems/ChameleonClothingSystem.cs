@@ -9,9 +9,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Client.Clothing.Systems;
 
 // All valid items for chameleon are calculated on client startup and stored in dictionary.
-public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
+public sealed partial class ChameleonClothingSystem : SharedChameleonClothingSystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private static readonly SlotFlags[] IgnoredSlots =
     {
@@ -47,14 +48,19 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
     {
         base.UpdateSprite(uid, proto);
         if (TryComp(uid, out SpriteComponent? sprite)
-            && proto.TryGetComponent(out SpriteComponent? otherSprite, Factory))
+            && proto.TryComp(out SpriteComponent? otherSprite, Factory))
         {
-            sprite.CopyFrom(otherSprite);
+            // The source is the prototype's own component, so it is not owned by uid and pairing the
+            // two trips Entity<T>'s owner assert. Carry the component's real owner, exactly as the
+            // engine's own CopyFrom shim does; CopySprite never reads it once Comp is non-null.
+#pragma warning disable CS0618
+            _sprite.CopySprite((otherSprite.Owner, otherSprite), (uid, sprite));
+#pragma warning restore CS0618
         }
 
         // Edgecase for PDAs to include visuals when UI is open
         if (TryComp(uid, out PdaBorderColorComponent? borderColor)
-            && proto.TryGetComponent(out PdaBorderColorComponent? otherBorderColor, Factory))
+            && proto.TryComp(out PdaBorderColorComponent? otherBorderColor, Factory))
         {
             borderColor.BorderColor = otherBorderColor.BorderColor;
             borderColor.AccentHColor = otherBorderColor.AccentHColor;
@@ -88,7 +94,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
             // check if this is valid clothing
             if (!IsValidTarget(proto))
                 continue;
-            if (!proto.TryGetComponent(out ClothingComponent? item, Factory))
+            if (!proto.TryComp(out ClothingComponent? item, Factory))
                 continue;
 
             // sort item by their slot flags

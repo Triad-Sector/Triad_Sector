@@ -32,6 +32,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 using Robust.Shared.GameObjects;
 using Content.Shared._Crescent.SpaceBiomes;
@@ -58,6 +59,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     private readonly StationSystem _station; // Frontier
     private readonly ShuttleSystem _shuttle; // Frontier
     private readonly SalvageSystem _salvage; // Frontier
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("salvage");
 
     public readonly EntityUid Station;
     public readonly EntityUid? CoordinatesDisk;
@@ -149,7 +151,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     private async Task<bool> InternalProcess() // Frontier: make process an internal function (for a try block indenting an entire), add "out EntityUid mapUid" param
     {
         _sawmill.Debug("salvage", $"Spawning salvage mission with seed {_missionParams.Seed}");
-        mapUid = _map.CreateMap(out var mapId, runMapInit: false); // Frontier: remove var
+        var config = _missionParams.MissionType;
+        mapUid = _map.CreateMap(out var mapId, runMapInit: false); // Frontier: remove "var"
         MetaDataComponent? metadata = null;
         var grid = _entManager.EnsureComponent<MapGridComponent>(mapUid);
         var random = new Random(_missionParams.Seed);
@@ -212,8 +215,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             }
         }
 
-        _map.InitializeMap(mapId);
-        _map.SetPaused(mapUid, true);
+        _map.InitializeMap(mapId, unpause: true);
+        _map.SetPaused(mapId, true);
 
         // Setup expedition
         var expedition = _entManager.AddComponent<SalvageExpeditionComponent>(mapUid);
@@ -227,22 +230,25 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         // We'll use the dungeon rotation as the spawn angle
         var dungeonRotation = _dungeon.GetDungeonRotation(_missionParams.Seed);
 
-        var maxDungeonOffset = minDungeonOffset + 12;
-        var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloat();
-        var dungeonOffset = new Vector2(0f, dungeonOffsetDistance);
-        dungeonOffset = dungeonRotation.RotateVec(dungeonOffset);
-        var dungeonMod = _prototypeManager.Index<SalvageDungeonModPrototype>(mission.Dungeon);
-        var dungeonConfig = _prototypeManager.Index(dungeonMod.Proto);
-        var dungeons = await WaitAsyncTask(_dungeon.GenerateDungeonAsync(dungeonConfig, dungeonMod.Proto, mapUid, grid, (Vector2i)dungeonOffset, // Frontier: add dungeonMod.Proto
-            _missionParams.Seed));
-
-        var dungeon = dungeons.First();
-
-        // Aborty
-        if (dungeon.Rooms.Count == 0)
+        Vector2 dungeonOffset = new Vector2(); // Frontier: needed for dungeon offset
+        if (config != SalvageMissionType.Mining) // Frontier: why?
         {
-            return false;
-        }
+            var maxDungeonOffset = minDungeonOffset + 12;
+            var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloatValue();
+            dungeonOffset = new Vector2(0f, dungeonOffsetDistance);
+            dungeonOffset = dungeonRotation.RotateVec(dungeonOffset);
+            var dungeonMod = _prototypeManager.Index<SalvageDungeonModPrototype>(mission.Dungeon);
+            var dungeonConfig = _prototypeManager.Index(dungeonMod.Proto);
+            var dungeons = await WaitAsyncTask(_dungeon.GenerateDungeonAsync(dungeonConfig, dungeonConfig.ID, mapUid, grid, (Vector2i) dungeonOffset, // Frontier: add dungeonConfig.ID
+                    _missionParams.Seed));
+
+            dungeon = dungeons.First();
+
+            // Aborty
+            if (dungeon.Rooms.Count == 0)
+            {
+                return false;
+            }
 
         expedition.DungeonLocation = dungeonOffset;
 
@@ -512,8 +518,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             {
                 var tile = availableTiles.RemoveSwap(random.Next(availableTiles.Count));
 
-                if (!_anchorable.TileFree(grid, tile, (int)CollisionGroup.MachineLayer,
-                        (int)CollisionGroup.MachineLayer))
+                if (!_anchorable.TileFree((gridUid, grid), spawnTile, (int) CollisionGroup.MachineLayer,
+                        (int) CollisionGroup.MachineMask)) // Frontier: MachineLayer<MachineMask
                 {
                     continue;
                 }
@@ -544,10 +550,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         var uid = EntityUid.Invalid;
         while (availableRooms.Count > 0 && uid == EntityUid.Invalid)
         {
-            availableTiles.Clear();
-            var roomIndex = random.Next(availableRooms.Count);
-            var room = availableRooms.RemoveSwap(roomIndex);
-            availableTiles.AddRange(room.Tiles);
+            var roll = random.NextFloatValue() * groupSum;
+            var value = 0f;
 
             while (availableTiles.Count > 0)
             {
@@ -556,7 +560,26 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 if (!_anchorable.TileFree(grid, tile, (int)CollisionGroup.MachineLayer,
                         (int)CollisionGroup.MachineLayer))
                 {
-                    continue;
+                    while (validSpawns.Count > 0)
+                    {
+                        var spawnTile = validSpawns[^1];
+                        validSpawns.RemoveAt(validSpawns.Count - 1);
+
+                        if (!_anchorable.TileFree((mapUid, grid), spawnTile, (int)CollisionGroup.MachineLayer,
+                                (int)CollisionGroup.MachineLayer))
+                        {
+                            continue;
+                        }
+
+                        var spawnPosition = _map.GridTileToLocal(mapUid, grid, spawnTile); // Frontier: grid<_map
+
+                        var uid = _entManager.CreateEntityUninitialized(entry, spawnPosition);
+                        _entManager.RemoveComponent<GhostTakeoverAvailableComponent>(uid);
+                        _entManager.RemoveComponent<GhostRoleComponent>(uid);
+                        _entManager.InitializeAndStartEntity(uid);
+
+                        break;
+                    }
                 }
 
                 uid = _entManager.SpawnAtPosition(prototype, _map.GridTileToLocal(mapUid, grid, tile));

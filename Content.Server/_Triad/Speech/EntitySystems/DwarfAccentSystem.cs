@@ -15,7 +15,7 @@ namespace Content.Server._Triad.Speech.EntitySystems;
 // word lists onto the shared AccentHelpers, plus the signature Scots phonetics. Deliberately does NOT
 // touch "th" -- that keeps the brogue distinct from the German/French accents, which both front th->z.
 // Trilled 'r' is intentionally not modelled -- it does not survive as text.
-public sealed class DwarfAccentSystem : EntitySystem
+public sealed partial class DwarfAccentSystem : EntitySystem
 {
     // Glottal stop on intervocalic t/tt: water -> wa'er, butter -> bu'er. Only fire before a/e/o/y, never
     // i/u, so "nation"/"nature"/"situation" (where t is a /sh/-/ch/ sound) are left alone.
@@ -25,8 +25,8 @@ public sealed class DwarfAccentSystem : EntitySystem
     // Scots vocalised L: word-final "-all" becomes "-aw" (all -> aw, call -> caw, wall -> waw, small -> smaw).
     private static readonly Regex RegexAll = new(@"all\b", RegexOptions.IgnoreCase);
 
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

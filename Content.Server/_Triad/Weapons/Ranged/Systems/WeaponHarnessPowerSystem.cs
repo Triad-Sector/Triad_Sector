@@ -24,21 +24,21 @@ namespace Content.Server._Triad.Weapons.Ranged.Systems;
 /// Handles powered harness charge use, alerts, link feedback, magnetic retrieval, and retrieval toggle verbs.
 /// Magnetic retrieval stores supported weapons in the harness-configured <see cref="WeapHarnComponent.RetrievalSlot"/>
 /// when dropped or when the wearer becomes critical or dead.
-public sealed class WeaponHarnessPowerSystem : EntitySystem
+public sealed partial class WeaponHarnessPowerSystem : EntitySystem
 {
     private static readonly ProtoId<TagPrototype> HeavyWeaponTag = "TriadHeavyWeapon";
 
     private readonly HashSet<EntityUid> _suppressNextLinkFeedback = new();
 
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly WeaponHarnessSystem _harnessSupport = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private WeaponHarnessSystem _harnessSupport = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

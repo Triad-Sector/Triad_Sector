@@ -11,6 +11,8 @@ namespace Content.Client.Weapons.Melee;
 
 public sealed partial class MeleeWeaponSystem
 {
+    [Dependency] private SpriteSystem _sprite = default!;
+
     private const string FadeAnimationKey = "melee-fade";
     private const string SlashAnimationKey = "melee-slash";
     private const string ThrustAnimationKey = "melee-thrust";
@@ -49,14 +51,14 @@ public sealed partial class MeleeWeaponSystem
         {
             if (user != weapon
                 && TryComp(weapon, out SpriteComponent? weaponSpriteComponent))
-                sprite.CopyFrom(weaponSpriteComponent);
+                _sprite.CopySprite((weapon, weaponSpriteComponent), (animationUid, sprite));
 
             spriteRotation = meleeWeaponComponent.WideAnimationRotation;
 
             if (meleeWeaponComponent.SwingLeft)
                 angle *= -1;
         }
-        sprite.Rotation = localPos.ToWorldAngle();
+        _sprite.SetRotation((animationUid, sprite), localPos.ToWorldAngle());
         var distance = Math.Clamp(localPos.Length() / 2f, 0.2f, 1f);
 
         var xform = _xformQuery.GetComponent(animationUid);
@@ -74,7 +76,7 @@ public sealed partial class MeleeWeaponSystem
             case WeaponArcAnimation.Thrust:
                 track = EnsureComp<TrackUserComponent>(animationUid);
                 track.User = user;
-                _animation.Play(animationUid, GetThrustAnimation(sprite, distance, spriteRotation), ThrustAnimationKey);
+                _animation.Play(animationUid, GetThrustAnimation(animationUid, sprite, distance, spriteRotation), ThrustAnimationKey);
                 if (arcComponent.Fadeout)
                     _animation.Play(animationUid, GetFadeAnimation(sprite, 0.05f, 0.15f), FadeAnimationKey);
                 break;
@@ -132,13 +134,13 @@ public sealed partial class MeleeWeaponSystem
         };
     }
 
-    private Animation GetThrustAnimation(SpriteComponent sprite, float distance, Angle spriteRotation)
+    private Animation GetThrustAnimation(EntityUid uid, SpriteComponent sprite, float distance, Angle spriteRotation)
     {
         const float thrustEnd = 0.05f;
         const float length = 0.15f;
         var startOffset = sprite.Rotation.RotateVec(new Vector2(0f, -distance / 5f));
         var endOffset = sprite.Rotation.RotateVec(new Vector2(0f, -distance));
-        sprite.Rotation += spriteRotation;
+        _sprite.SetRotation((uid, sprite), sprite.Rotation + spriteRotation);
 
         return new Animation()
         {

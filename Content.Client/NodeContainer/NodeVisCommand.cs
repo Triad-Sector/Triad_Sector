@@ -6,9 +6,9 @@ using Robust.Shared.IoC;
 
 namespace Content.Client.NodeContainer
 {
-    public sealed class NodeVisCommand : IConsoleCommand
+    public sealed partial class NodeVisCommand : IConsoleCommand
     {
-        [Dependency] private readonly IEntityManager _e = default!;
+        [Dependency] private IEntityManager _e = default!;
 
         public string Command => "nodevis";
         public string Description => "Toggles node group visualization";
@@ -28,9 +28,9 @@ namespace Content.Client.NodeContainer
         }
     }
 
-    public sealed class NodeVisFilterCommand : IConsoleCommand
+    public sealed partial class NodeVisFilterCommand : IConsoleCommand
     {
-        [Dependency] private readonly IEntityManager _e = default!;
+        [Dependency] private IEntityManager _e = default!;
 
         public string Command => "nodevisfilter";
         public string Description => "Toggles showing a specific group on nodevis";

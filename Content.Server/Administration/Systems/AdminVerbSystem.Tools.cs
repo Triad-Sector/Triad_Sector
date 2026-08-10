@@ -43,18 +43,18 @@ namespace Content.Server.Administration.Systems;
 
 public sealed partial class AdminVerbSystem
 {
-    [Dependency] private readonly DoorSystem _door = default!;
-    [Dependency] private readonly AirlockSystem _airlockSystem = default!;
-    [Dependency] private readonly StackSystem _stackSystem = default!;
-    [Dependency] private readonly SharedAccessSystem _accessSystem = default!;
-    [Dependency] private readonly HandsSystem _handsSystem = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-    [Dependency] private readonly AdminTestArenaSystem _adminTestArenaSystem = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobsSystem = default!;
-    [Dependency] private readonly JointSystem _jointSystem = default!;
-    [Dependency] private readonly BatterySystem _batterySystem = default!;
-    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
-    [Dependency] private readonly GunSystem _gun = default!;
+    [Dependency] private DoorSystem _door = default!;
+    [Dependency] private AirlockSystem _airlockSystem = default!;
+    [Dependency] private StackSystem _stackSystem = default!;
+    [Dependency] private SharedAccessSystem _accessSystem = default!;
+    [Dependency] private HandsSystem _handsSystem = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
+    [Dependency] private AdminTestArenaSystem _adminTestArenaSystem = default!;
+    [Dependency] private StationJobsSystem _stationJobsSystem = default!;
+    [Dependency] private JointSystem _jointSystem = default!;
+    [Dependency] private BatterySystem _batterySystem = default!;
+    [Dependency] private MetaDataSystem _metaSystem = default!;
+    [Dependency] private GunSystem _gun = default!;
 
     private void AddTricksVerbs(GetVerbsEvent<Verb> args)
     {
@@ -638,7 +638,7 @@ public sealed partial class AdminVerbSystem
         {
             if (_adminManager.HasAdminFlag(player, AdminFlags.Mapping))
             {
-                if (_mapManager.IsMapPaused(map.MapId))
+                if (_map.IsPaused(map.MapId))
                 {
                     Verb unpauseMap = new()
                     {
@@ -647,7 +647,7 @@ public sealed partial class AdminVerbSystem
                         Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/AdminActions/play.png")),
                         Act = () =>
                         {
-                            _mapManager.SetMapPaused(map.MapId, false);
+                            _map.SetPaused(map.MapId, false);
                         },
                         Impact = LogImpact.Extreme,
                         Message = Loc.GetString("admin-trick-unpause-map-description"),
@@ -664,7 +664,7 @@ public sealed partial class AdminVerbSystem
                         Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/AdminActions/pause.png")),
                         Act = () =>
                         {
-                            _mapManager.SetMapPaused(map.MapId, true);
+                            _map.SetPaused(map.MapId, true);
                         },
                         Impact = LogImpact.Extreme,
                         Message = Loc.GetString("admin-trick-pause-map-description"),

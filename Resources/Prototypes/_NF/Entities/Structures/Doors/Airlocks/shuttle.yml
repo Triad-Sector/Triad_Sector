@@ -24,6 +24,8 @@
   - type: Construction
     graph: AirlockShuttleNfsd
     node: airlockGlass
+  - type: PriorityDock # Triad, dock priority
+    tag: DockTdf
 
 - type: entity
   id: AirlockShuttleNfsd
@@ -37,3 +39,5 @@
   - type: Construction
     graph: AirlockShuttleNfsd
     node: airlock
+  - type: PriorityDock # Triad, dock priority
+    tag: DockTdf
