@@ -21,13 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15 # Triad: job takes ~1m.
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7
       - name: Setup Submodule
         run: git submodule update --init
       - name: Pull engine updates
         uses: space-wizards/submodule-dependency@v0.1.5
       - name: Set up Python 3.10 # Frontier
-        uses: actions/setup-python@v3 # Frontier
+        uses: actions/setup-python@v5 # Frontier
         with: # Frontier
           python-version: "3.10" # Frontier
       - name: Install Python dependencies

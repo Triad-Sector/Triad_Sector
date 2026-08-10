@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15 # Triad: job takes ~3m.
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v7
     - name: Setup Submodule
       run: git submodule update --init
     - name: Pull engine updates

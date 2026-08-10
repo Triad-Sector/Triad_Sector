@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20 # Triad: job takes ~6m.
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7
       - name: Setup submodule
         run: |
           git submodule update --init --recursive
@@ -31,7 +31,7 @@ jobs:
           cd RobustToolbox/
           git submodule update --init --recursive
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4.1.0
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
       - name: Install dependencies
