@@ -101,6 +101,7 @@ public sealed partial class ShuttleSystem
     {
         SubscribeLocalEvent<StationPostInitEvent>(OnStationPostInit);
         SubscribeLocalEvent<FTLComponent, ComponentShutdown>(OnFtlShutdown);
+        SubscribeLocalEvent<FtlVisualizerComponent, EntityTerminatingEvent>(OnVisualizerTermination); // Triad
 
         _bodyQuery = GetEntityQuery<BodyComponent>();
         _immuneQuery = GetEntityQuery<FTLSmashImmuneComponent>();
@@ -119,6 +120,26 @@ public sealed partial class ShuttleSystem
     {
         QueueDel(ent.Comp.VisualizerEntity);
         ent.Comp.VisualizerEntity = null;
+    }
+
+    /// <summary>
+    /// Clears a shuttle's visualizer reference when the visualizer dies on its own.
+    /// </summary>
+    // Triad: only the shuttle side of this pair was handled. The visualizer is spawned attached to
+    // TargetCoordinates, so when that target grid is removed mid-flight the visualizer is deleted as
+    // its child and none of the three QueueDel/null sites run. FTLComponent then kept a dead uid in
+    // VisualizerEntity, which is an AutoNetworkedField, so every PVS serialization of the shuttle
+    // called GetNetEntity on it and logged a resolve error with a full stack capture, on the game
+    // state hot path, for the rest of the FTL.
+    private void OnVisualizerTermination(Entity<FtlVisualizerComponent> ent, ref EntityTerminatingEvent args)
+    {
+        // Grid is the shuttle this visualizer was spawned for. Guard the uid match so a stale
+        // visualizer cannot clear the reference to whatever replaced it.
+        if (!TryComp<FTLComponent>(ent.Comp.Grid, out var ftl) || ftl.VisualizerEntity != ent.Owner)
+            return;
+
+        ftl.VisualizerEntity = null;
+        Dirty(ent.Comp.Grid, ftl);
     }
 
     private void OnStationPostInit(ref StationPostInitEvent ev)
