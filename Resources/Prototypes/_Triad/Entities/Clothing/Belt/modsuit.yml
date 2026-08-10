@@ -13,8 +13,6 @@
       path: /Audio/Items/belt_equip.ogg
   - type: Item
     size: Normal
-    shape:
-    - 0,0,2,1 # So it can fit in bags
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/handling/toolbelt_pickup.ogg
