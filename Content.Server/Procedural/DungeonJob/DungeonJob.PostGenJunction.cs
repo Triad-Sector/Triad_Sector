@@ -17,7 +17,10 @@ public sealed partial class DungeonJob
         if (!data.Tiles.TryGetValue(DungeonDataKey.FallbackTile, out var tileProto) ||
             !data.SpawnGroups.TryGetValue(DungeonDataKey.Junction, out var junctionProto))
         {
-            _sawmill.Error($"Dungeon data keys are missing for {nameof(gen)}");
+            // Triad: nameof(gen) is the parameter name, so every one of these logged the literal
+            // string "gen" and named neither the generator nor the config that failed. The type name
+            // plus the keys actually checked is what makes the line actionable.
+            _sawmill.Error($"Dungeon data keys are missing for {gen.GetType().Name}: needs Tiles[FallbackTile] and SpawnGroups[Junction]");
             return;
         }
 
