@@ -679,7 +679,7 @@
   - type: StationBankATM
     account: Medical
   - type: AccessReader
-    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["ChiefMedicalOfficer"]] # Triad
+    access: [["HeadOfPersonnel"], ["Command"], ["ChiefMedicalOfficer"]] # Triad
   - type: CompanyAccessReader
     requiredCompany: MD
     popupMessage: company-access-denied-md # Triad

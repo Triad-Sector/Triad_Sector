@@ -14,9 +14,11 @@
   displayWeight: 55 # Second from the top
   assignedCompany: MD
   canBeAntag: false
+  access:
+  - Medical
+  - Chemistry
   accessGroups:
   - GeneralAccess
-  - Medical
   - AllAccessColonial
   ranks: # Triad, ranks
     RankEmergencyResponder: []
