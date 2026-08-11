@@ -8,9 +8,13 @@ on:
     # commit's run. Keep this off `pull_request`, where a required check that never runs pends.
     paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
+  # Triad: the `paths` filter is commented out rather than deleted. `Validate RSIs` is a
+  # required check, and a required check that never runs sits as "expected" and blocks the
+  # merge forever. The job is ~1m and runs concurrently with Build & Test Debug (~10m), so
+  # always running it costs no wall-clock.
   pull_request:
-    paths:
-      - '**.rsi/**'
+    # paths:
+    #   - '**.rsi/**'
 
 # Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
 # fails the queue, and cancelling a push run abandons main's only test coverage.

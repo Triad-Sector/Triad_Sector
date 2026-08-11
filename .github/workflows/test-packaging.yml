@@ -19,17 +19,23 @@ on:
       # concurrency is per run, so a run whose jobs all skip still cancels the merge run.
       - '!Resources/Changelog/**'
   merge_group:
+  # Triad: the `paths` filter is commented out rather than deleted. `Test Packaging` is a
+  # required check, and a required check that never runs sits as "expected" and blocks the
+  # merge forever, so a docs-only or sprite-only PR could never merge. The job is ~10m and
+  # runs concurrently with Build & Test Debug (~10m), which has no filter, so always running
+  # it does not move the critical path. The push filter above is kept: push runs are not
+  # required checks.
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ main, staging, stable ]
-    paths:
-      - '**.cs'
-      - '**.csproj'
-      - '**.sln'
-      - '**.git**'
-      - '**.yml'
-      - 'RobustToolbox'
-      - 'RobustToolbox/**'
+    # paths:
+    #   - '**.cs'
+    #   - '**.csproj'
+    #   - '**.sln'
+    #   - '**.git**'
+    #   - '**.yml'
+    #   - 'RobustToolbox'
+    #   - 'RobustToolbox/**'
 
 # Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
 # fails the queue, and cancelling a push run abandons main's only test coverage.
