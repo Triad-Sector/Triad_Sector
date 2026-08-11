@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
+using Content.Server.GameTicking; // Triad
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Decals;
@@ -36,6 +37,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private MapSystem _map = default!;
     [Dependency] public PuddleSystem Puddle = default!;
+    [Dependency] private GameTicker _gameTicker = default!; // Triad: sector map lookup for AtmosInputCanRunOnMap
 
     private const float ExposedUpdateDelay = 1f;
     private float _exposedTimer = 0f;

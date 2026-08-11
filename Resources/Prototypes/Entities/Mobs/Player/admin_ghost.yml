@@ -19,6 +19,7 @@
     context: "aghost"
   - type: Ghost
     canInteract: true
+  - type: AdminGhost
   - type: GhostHearing
   - type: Hands
   - type: ComplexInteraction

@@ -169,7 +169,7 @@
     account: Edison # Triad: restored coyote's Edison sector account
   # Triad: the plant's chief engineer (Director of Infrastructure) runs the terminal alongside the HoP/Chief Enforcer
   - type: AccessReader
-    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["Command"]] # Triad: retired ChiefEngineer (Director via Command)
+    access: [["HeadOfPersonnel"], ["Command"]] # Triad: retired ChiefEngineer (Director via Command)
 
 # --- AntiMatterFabricator  (coyote: _NF/Entities/Structures/Machines/ame_fab.yml) ---
 - type: entity

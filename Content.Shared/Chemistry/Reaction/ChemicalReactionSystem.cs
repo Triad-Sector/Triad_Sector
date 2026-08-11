@@ -285,7 +285,12 @@ namespace Content.Shared.Chemistry.Reaction
                     return;
             }
 
-            Log.Error($"{nameof(Solution)} {soln.Owner} could not finish reacting in under {MaxReactionIterations} loops.");
+            // Triad: hitting the cap means the solution never settled, which is usually a cycle in
+            // the reaction set rather than a merely long chain. The entity uid alone cannot be acted
+            // on: by the time anyone reads the log the solution is gone, and nothing records what was
+            // in it. Naming the contents is what makes the next occurrence reproducible.
+            var contents = string.Join(", ", soln.Comp.Solution.Contents.Select(r => $"{r.Reagent.Prototype}={r.Quantity}"));
+            Log.Error($"{nameof(Solution)} {ToPrettyString(soln.Owner)} could not finish reacting in under {MaxReactionIterations} loops. Contents: [{contents}]");
         }
     }
 

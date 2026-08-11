@@ -13,6 +13,11 @@ on:
       # why not just do both
       - 'RobustToolbox'
       - 'RobustToolbox/**'
+      # Triad: '**.yml' above matches Resources/Changelog/Triad.yml, so the changelog bot's
+      # post-merge commit was triggering this workflow. Negate it here: `paths` and
+      # `paths-ignore` cannot both be set for one event, and a job `if` cannot help because
+      # concurrency is per run, so a run whose jobs all skip still cancels the merge run.
+      - '!Resources/Changelog/**'
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
@@ -26,19 +31,22 @@ on:
       - 'RobustToolbox'
       - 'RobustToolbox/**'
 
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: Test Packaging
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 30 # Triad: job takes ~10m.
 
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7
 
       - name: Setup Submodule
         run: |
@@ -53,7 +61,7 @@ jobs:
           git submodule update --init --recursive
 
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4.1.0
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
 

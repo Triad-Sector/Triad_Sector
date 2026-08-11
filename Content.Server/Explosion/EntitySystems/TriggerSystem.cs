@@ -1,4 +1,6 @@
 using Content.Server._Mono.Planets;
+using System.Linq;
+using System.Threading;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Explosion.Components;
@@ -35,6 +37,8 @@ using Content.Shared._EinsteinEngines.Language;
 using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 using Content.Shared.Body.Components; // Frontier: Gib organs
 using Content.Shared.Projectiles; // Frontier: embed triggers
 using Content.Shared.Mind;
@@ -51,11 +55,17 @@ namespace Content.Server.Explosion.EntitySystems
     {
         public EntityUid Triggered { get; }
         public EntityUid? User { get; }
+        public Dictionary<string, object> Extras { get; } = new();
 
         public TriggerEvent(EntityUid triggered, EntityUid? user = null)
         {
             Triggered = triggered;
             User = user;
+        }
+
+        public void AddExtra(string extra, object value)
+        {
+            Extras[extra] = value;
         }
     }
 
@@ -250,8 +260,8 @@ namespace Content.Server.Explosion.EntitySystems
             // Gets location of the implant
             var ownerXform = Transform(uid);
             var pos = ownerXform.MapPosition;
-            var x = (int) pos.X;
-            var y = (int) pos.Y;
+            var x = (int)pos.X;
+            var y = (int)pos.Y;
             var posText = $"({x}, {y})";
 
             // Frontier: Gets station location of the implant
@@ -367,9 +377,16 @@ namespace Content.Server.Explosion.EntitySystems
             ent.Comp.NextTrigger = _timing.CurTime + ent.Comp.Delay;
         }
 
-        public bool Trigger(EntityUid trigger, EntityUid? user = null)
+        public bool Trigger(EntityUid trigger, EntityUid? user = null, Dictionary<string, object>? extras = null)
         {
             var triggerEvent = new TriggerEvent(trigger, user);
+            if (extras != null)
+            {
+                foreach (var (key, value) in extras)
+                {
+                    triggerEvent.AddExtra(key, value);
+                }
+            }
             EntityManager.EventBus.RaiseLocalEvent(trigger, triggerEvent, true);
             return triggerEvent.Handled;
         }

@@ -471,6 +471,14 @@ namespace Content.Server.Kitchen.EntitySystems
 
         private void OnAnchorChanged(EntityUid uid, MicrowaveComponent component, ref AnchorStateChangedEvent args)
         {
+            // Triad: this exists so wrenching a microwave loose dumps what is inside it. Deleting one
+            // also detaches its transform, which raises this same event, so teardown was dumping the
+            // contents too and the container system logged a remove-while-terminating for every item
+            // still in the drum. Detaching is the engine's own flag for that case, and the terminating
+            // check covers a deletion that reaches here without it.
+            if (args.Detaching || TerminatingOrDeleted(uid))
+                return;
+
             if (!args.Anchored)
                 _container.EmptyContainer(component.Storage);
         }

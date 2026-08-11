@@ -104,6 +104,11 @@ public sealed partial class MagicMirrorSystem : SharedMagicMirrorSystem
 
     private void OnSelectSlotDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorSelectDoAfterEvent args)
     {
+        // Triad: the do-after has resolved either way, so the stored handle is dead. Upstream only
+        // cleared it when the next attempt started, leaving a stale id on the entity indefinitely.
+        component.DoAfter = null;
+        // End Triad
+
         if (args.Handled || args.Target == null || args.Cancelled)
             return;
 
@@ -182,6 +187,10 @@ public sealed partial class MagicMirrorSystem : SharedMagicMirrorSystem
     }
     private void OnChangeColorDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorChangeColorDoAfterEvent args)
     {
+        // Triad: the do-after has resolved either way, so the stored handle is dead.
+        component.DoAfter = null;
+        // End Triad
+
         if (args.Handled || args.Target == null || args.Cancelled)
             return;
 
@@ -262,6 +271,10 @@ public sealed partial class MagicMirrorSystem : SharedMagicMirrorSystem
 
     private void OnRemoveSlotDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorRemoveSlotDoAfterEvent args)
     {
+        // Triad: the do-after has resolved either way, so the stored handle is dead.
+        component.DoAfter = null;
+        // End Triad
+
         if (args.Handled || args.Target == null || args.Cancelled)
             return;
 
@@ -339,6 +352,10 @@ public sealed partial class MagicMirrorSystem : SharedMagicMirrorSystem
     }
     private void OnAddSlotDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorAddSlotDoAfterEvent args)
     {
+        // Triad: the do-after has resolved either way, so the stored handle is dead.
+        component.DoAfter = null;
+        // End Triad
+
         if (args.Handled || args.Target == null || args.Cancelled || !TryComp(component.Target, out HumanoidAppearanceComponent? humanoid))
             return;
 

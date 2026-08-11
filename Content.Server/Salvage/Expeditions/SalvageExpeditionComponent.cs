@@ -57,5 +57,11 @@ public sealed partial class SalvageExpeditionComponent : SharedSalvageExpedition
     /// </summary>
     [DataField]
     public ResolvedSoundSpecifier SelectedSong;
-    // End Frontier: moved to Shared
+    // End Frontier: moved difficulty and reward to Shared
+
+    /// <summary>
+    /// next time to check for autoabort
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public TimeSpan NextAutoAbortCheck = TimeSpan.Zero;
 }

@@ -31,6 +31,11 @@ public sealed partial class AirFilterSystem : EntitySystem
         if (air.Pressure >= intake.Pressure)
             return;
 
+        // Triad: no gas extraction off the sector map
+        if (!_atmosphere.AtmosInputCanRunOnMap(args.Map))
+            return;
+        // End Triad
+
         var environment = _atmosphere.GetContainingMixture(uid, args.Grid, args.Map, true, true);
         // nothing to intake from
         if (environment == null)

@@ -175,6 +175,9 @@
   - type: CompanyAccessReader
     requiredCompany: TDF # Triad
     popupMessage: company-access-denied-tdf # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   id: MercenaryTechFab

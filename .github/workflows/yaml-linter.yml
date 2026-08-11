@@ -3,21 +3,28 @@ name: YAML Linter
 on:
   push:
     branches: [ main, staging, stable ]
+    # Triad: changelog-bot commits touch only Resources/Changelog. Filter here rather than in
+    # a job `if`: concurrency is per run, so a run whose jobs all skip still cancels the merge
+    # commit's run. Keep this off `pull_request`, where a required check that never runs pends.
+    paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
 
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: YAML Linter
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 20 # Triad: job takes ~6m.
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7
       - name: Setup submodule
         run: |
           git submodule update --init --recursive
@@ -28,7 +35,7 @@ jobs:
           cd RobustToolbox/
           git submodule update --init --recursive
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4.1.0
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
       - name: Install dependencies

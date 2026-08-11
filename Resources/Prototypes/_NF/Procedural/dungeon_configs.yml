@@ -384,6 +384,10 @@
       CornerClutter: NFBaseClutter
       Entrance: NFMiningAirlock
       EntranceFlank: NFMiningWindow
+      # Triad: this borrows NFPlanetBase, which runs JunctionDunGen twice, so the missing Junction
+      # key failed both layers on every spawn and the outpost generated with no junction airlocks.
+      # Matches Entrance, as every other themed config here does.
+      Junction: NFMiningAirlock
       WallMounts: NFBaseWallMounts
       Window: NFMiningWindow
     tiles:

@@ -284,6 +284,13 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         if (!TryComp(comp.AttachedUid, out ToggleableClothingComponent? toggleableComp))
             return;
 
+        // Triad: every lifecycle guard here is component-level, and a terminating entity still holds
+        // its components at Running while its clothing is unequipped as part of teardown. That let
+        // this re-insert a helmet into a hardsuit that was already dying, which the container system
+        // rejects and logs. There is nothing left to put the attachment back into, so stop.
+        if (TerminatingOrDeleted(comp.AttachedUid))
+            return;
+
         if (toggleableComp.LifeStage > ComponentLifeStage.Running)
             return;
 

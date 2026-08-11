@@ -10,6 +10,7 @@ salvage-expedition-announcement-elimination = { $count ->
 }
 salvage-expedition-announcement-destruction-entity-fallback = structure
 salvage-expedition-announcement-elimination-entity-fallback = target
+salvage-expedition-abort-wipe = [color=Red]No life signs detected[/color]. Expedition aborted. Commencing personnel recovery. Shuttle departure in {$departTime} seconds.
 
 salvage-expedition-shuttle-not-found = Cannot locate shuttle.
 salvage-expedition-not-everyone-aboard = Not all crew aboard! {CAPITALIZE(THE($target))} is still out there!
