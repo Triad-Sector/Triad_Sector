@@ -1,14 +1,20 @@
 name: Build & Test Debug
 
-# Triad: key PR runs on the PR number rather than the ref, and never cancel a merge_group
-# run. Cancelling a merge queue entry fails the queue rather than superseding it.
+# Triad: key PR runs on the PR number rather than the ref, and only ever cancel PR runs.
+# Cancelling a merge_group entry fails the queue rather than superseding it, and cancelling a
+# push run abandons the only test coverage main/staging/stable ever get.
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 on:
   push:
     branches: [ main, staging, stable ]
+    # Triad: changelog-bot commits touch only Resources/Changelog. Filter here rather than in
+    # a job `if`: concurrency is evaluated per run, so a run whose jobs all skip still cancels
+    # the merge commit's in-flight run. Keep this off `pull_request`, where a required check
+    # that never runs sits pending forever.
+    paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
@@ -16,10 +22,7 @@ on:
 
 jobs:
   build:
-    # Triad: skip the changelog bot. It pushes a Resources/Changelog-only commit straight to
-    # main after every merge, which was firing all seven push-triggered workflows for a file
-    # no test reads. Same shape as the inherited PJBot/FrontierATC guard in validate-rgas.yml.
-    if: github.event.pull_request.draft == false && github.actor != 'Triad-Sector'
+    if: github.event.pull_request.draft == false
     strategy:
       matrix:
         os: [ubuntu-latest]

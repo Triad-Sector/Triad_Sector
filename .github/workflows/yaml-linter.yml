@@ -3,20 +3,24 @@ name: YAML Linter
 on:
   push:
     branches: [ main, staging, stable ]
+    # Triad: changelog-bot commits touch only Resources/Changelog. Filter here rather than in
+    # a job `if`: concurrency is per run, so a run whose jobs all skip still cancels the merge
+    # commit's run. Keep this off `pull_request`, where a required check that never runs pends.
+    paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
 
-# Triad: key PR runs on PR number; never cancel a merge_group run, which fails the queue.
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: YAML Linter
-    # Triad: skip the changelog bot's Resources/Changelog-only pushes to main.
-    if: github.event.pull_request.draft == false && github.actor != 'Triad-Sector'
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 20 # Triad: job takes ~6m.
     steps:

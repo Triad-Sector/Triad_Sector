@@ -13,6 +13,11 @@ on:
       # why not just do both
       - 'RobustToolbox'
       - 'RobustToolbox/**'
+      # Triad: '**.yml' above matches Resources/Changelog/Triad.yml, so the changelog bot's
+      # post-merge commit was triggering this workflow. Negate it here: `paths` and
+      # `paths-ignore` cannot both be set for one event, and a job `if` cannot help because
+      # concurrency is per run, so a run whose jobs all skip still cancels the merge run.
+      - '!Resources/Changelog/**'
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
@@ -26,16 +31,16 @@ on:
       - 'RobustToolbox'
       - 'RobustToolbox/**'
 
-# Triad: key PR runs on PR number; never cancel a merge_group run, which fails the queue.
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: Test Packaging
-    # Triad: skip the changelog bot's Resources/Changelog-only pushes to main.
-    if: github.event.pull_request.draft == false && github.actor != 'Triad-Sector'
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 30 # Triad: job takes ~10m.
 

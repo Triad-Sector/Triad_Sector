@@ -17,6 +17,12 @@ on:
   # and keeps the newest main staged for the next boundary.
   push:
     branches: [ main ]
+    # Triad: skip the changelog bot's Resources/Changelog-only commit. It lands ~30s after
+    # every merge, and because this group never cancels, the two publishes serialized: ~21m of
+    # packaging and two CDN versions per PR. Tradeoff accepted deliberately: Triad.yml is
+    # shipped content, so a PR's in-game changelog entry now ships with the NEXT merge's
+    # publish rather than its own.
+    paths-ignore: [ 'Resources/Changelog/**' ]
 
 # Triad: no cancel-in-progress on purpose, though upstream sets it. Cancelling between
 # publish/start and publish/finish strands a half-open version on Robust.Cdn that 409s
