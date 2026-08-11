@@ -2,7 +2,7 @@
 - type: entity
   id: BlastDoorIndestructibleTDF
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible, TDF, Locked
+  suffix: indestructible, TDF, Locked
   components:
   - type: ContainerFill
     containers:
@@ -11,7 +11,7 @@
 - type: entity
   id: BlastDoorIndestructibleSyndicate
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible, Syndicate, Locked
+  suffix: indestructible, Syndicate, Locked
   components:
   - type: ContainerFill
     containers:
@@ -20,7 +20,7 @@
 - type: entity
   id: BlastDoorIndestructibleSD
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible, SD, Locked
+  suffix: indestructible, SD, Locked
   components:
   - type: ContainerFill
     containers:
@@ -29,7 +29,7 @@
 - type: entity
   id: BlastDoorIndestructibleTIC
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible, TIC, Locked
+  suffix: indestructible, TIC, Locked
   components:
   - type: ContainerFill
     containers:
@@ -39,7 +39,7 @@
 - type: entity
   id: ShutterIndestructibleTDF
   parent: ShutterNormalIndestructible
-  suffix: Indestructible, TDF, Locked
+  suffix: indestructible, TDF, Locked
   components:
   - type: ContainerFill
     containers:
@@ -48,7 +48,7 @@
 - type: entity
   id: ShutterIndestructibleSyndicate
   parent: ShutterNormalIndestructible
-  suffix: Indestructible, Syndicate, Locked
+  suffix: indestructible, Syndicate, Locked
   components:
   - type: ContainerFill
     containers:
@@ -57,7 +57,7 @@
 - type: entity
   id: ShutterIndestructibleSD
   parent: ShutterNormalIndestructible
-  suffix: Indestructible, SD, Locked
+  suffix: indestructible, SD, Locked
   components:
   - type: ContainerFill
     containers:
@@ -66,7 +66,7 @@
 - type: entity
   id: ShutterIndestructibleTIC
   parent: ShutterNormalIndestructible
-  suffix: Indestructible, TIC, Locked
+  suffix: indestructible, TIC, Locked
   components:
   - type: ContainerFill
     containers:
@@ -76,7 +76,7 @@
 - type: entity
   id: ShutterWindowIndestructibleTDF
   parent: ShutterWindowIndestructible
-  suffix: Indestructible, TDF, Locked
+  suffix: indestructible, TDF, Locked
   components:
   - type: ContainerFill
     containers:
@@ -85,7 +85,7 @@
 - type: entity
   id: ShutterWindowIndestructibleSyndicate
   parent: ShutterWindowIndestructible
-  suffix: Indestructible, Syndicate, Locked
+  suffix: indestructible, Syndicate, Locked
   components:
   - type: ContainerFill
     containers:
@@ -94,7 +94,7 @@
 - type: entity
   id: ShutterWindowIndestructibleSD
   parent: ShutterWindowIndestructible
-  suffix: Indestructible, SD, Locked
+  suffix: indestructible, SD, Locked
   components:
   - type: ContainerFill
     containers:
@@ -103,7 +103,7 @@
 - type: entity
   id: ShutterWindowIndestructibleTIC
   parent: ShutterWindowIndestructible
-  suffix: Indestructible, TIC, Locked
+  suffix: indestructible, TIC, Locked
   components:
   - type: ContainerFill
     containers:

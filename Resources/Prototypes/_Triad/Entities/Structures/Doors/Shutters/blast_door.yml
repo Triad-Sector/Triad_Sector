@@ -46,14 +46,14 @@
 - type: entity
   id: BlastDoorIndestructible
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible
+  suffix: indestructible
   components:
   - type: Occluder
 
 - type: entity
   id: BlastDoorIndestructibleOpen
   parent: BaseBlastDoorIndestructible
-  suffix: Indestructible, Open
+  suffix: indestructible, Open
   components:
   - type: Door
     state: Open

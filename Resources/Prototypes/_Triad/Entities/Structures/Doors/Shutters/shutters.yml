@@ -102,7 +102,7 @@
 - type: entity
   id: ShutterNormalIndestructible
   parent: BaseShutterIndestructible
-  suffix: Indestructible
+  suffix: indestructible
   components:
   - type: Occluder
 
@@ -124,7 +124,7 @@
   id: ShutterWindowIndestructible
   parent: BaseShutterIndestructible
   name: window shutter
-  suffix: Indestructible
+  suffix: indestructible
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_window.rsi
@@ -137,7 +137,7 @@
 - type: entity
   id: ShutterWindowIndestructibleOpen
   parent: ShutterWindowIndestructible
-  suffix: Indestructible, Open
+  suffix: indestructible, Open
   components:
   - type: Door
     state: Open
