@@ -13,10 +13,15 @@ namespace Content.IntegrationTests.Tests.Construction;
 /// Players on rotated ship grids reported structures being built skewed, or losing their rotation entirely,
 /// across pipes, conveyors, tube light fixtures and wall buttons.
 ///
-/// Engine 287's <c>AnchorEntity</c> rewrites an entity's local rotation to preserve its WORLD rotation whenever
-/// anchoring also reparents it, skewing the result by exactly the grid's rotation. That difference is zero on a
-/// station and visible on any rotated ship, which is why it is invisible upstream. Until the engine carries the
-/// fix, content re-asserts the grid-local rotation across its own anchor calls.
+/// These are pins, not a fix. Both server-side rotation paths below test clean on a rotated grid, patched or not,
+/// which is what ruled the server out and sent the search to the client; the cause turned out to be the screen-vs
+/// -grid frame mix-up covered by <c>ConstructionGhostRotationTest</c>.
+///
+/// They are kept because engine 287's <c>AnchorEntity</c> genuinely does rewrite local rotation to preserve WORLD
+/// rotation when anchoring also reparents, which would skew the result by exactly the grid's rotation. Content
+/// cannot reach that branch today: anchoring refuses any grid other than the entity's own <c>GridUid</c>, and
+/// <c>GridUid</c> is inherited down the transform tree, so the delta is always zero. These tests fail the day that
+/// stops being true.
 /// </summary>
 [TestFixture]
 public sealed class AnchorRotationRotatedGridTest
@@ -67,8 +72,9 @@ public sealed class AnchorRotationRotatedGridTest
 
     /// <summary>
     /// The construction-graph path: <see cref="SetAnchor"/> is the completion action that anchors a finished
-    /// structure, and it is how conveyors and most built structures end up anchored. If the entity is not already
-    /// grid-parented, anchoring reparents it and the engine rewrite fires.
+    /// structure, and it is how conveyors and most built structures end up anchored. This is the reparenting case,
+    /// held out of hands rather than already grid-parented, so it is the closest content gets to the engine
+    /// rewrite. The rotation survives, because the holder is on the grid and the rotation delta is therefore zero.
     /// </summary>
     [Test]
     [TestCase(Pipe)]
