@@ -276,7 +276,7 @@
                                 Margin="0,0,0,0"
                                 Text="{Loc 'contraband-permit-console-window-permit-revoke'}"
                                 ConfirmationText="{Loc 'contraband-permit-console-window-permit-revoke-confirmation'}"
-                                StyleClasses="OpenBoth ButtonCaution"
+                                StyleClasses="OpenBoth"
                                 Access="Public">
                             <TextureRect HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
