@@ -135,8 +135,8 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
 
         // The 'permit owner'. This humanoid view of the owner so the info stays static, and covers in cases where the original permit owner's body gets destroyed
         var entryEntity = GetNetEntity(permitOwner);
-        if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.PvsView != null)
-            entryEntity = GetNetEntity(humanoidView.PvsView.Value);
+        if (TryComp<HumanoidViewComponent>(permitOwner, out var humanoidView) && humanoidView.ViewEntity != null)
+            entryEntity = GetNetEntity(humanoidView.ViewEntity.Value);
 
         // Initalize the key if it doesn't exist, get the list of permits that the owner has or add one if it doesn't exist, then add the new permit item under the record
         ref var permitList = ref CollectionsMarshal.GetValueRefOrAddDefault(contrabandPermitNet.Records, entryEntity, out var exists);

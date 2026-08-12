@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Shared._Triad.ContrabandPermit;
-using Content.Shared.Clothing.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;

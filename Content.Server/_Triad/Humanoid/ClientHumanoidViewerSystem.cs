@@ -7,7 +7,6 @@ using Content.Shared.Clothing;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Station;
 using Content.Shared.Inventory;
-using Content.Shared._Mono.Pvs;
 
 namespace Content.Server._Triad.Humanoid;
 
@@ -142,7 +141,7 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
         }
 
         var humanoidView = EnsureComp<HumanoidViewComponent>(mob);
-        humanoidView.PvsView = viewerMob;
+        humanoidView.ViewEntity = viewerMob;
         Dirty(mob, humanoidView);
     }
 

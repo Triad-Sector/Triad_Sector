@@ -6,5 +6,5 @@ namespace Content.Shared._Triad.Humanoid;
 public sealed partial class HumanoidViewComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public EntityUid? PvsView;
+    public EntityUid? ViewEntity;
 }
