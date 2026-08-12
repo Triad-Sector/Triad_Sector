@@ -17,6 +17,7 @@
     - NewsReaderCartridge
     - LedgerCartridge
     - BountyContractsCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: EngineerPDA

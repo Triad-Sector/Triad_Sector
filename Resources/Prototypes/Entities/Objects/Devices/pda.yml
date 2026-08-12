@@ -174,6 +174,7 @@
     - BountyContractsCartridge # Frontier
     - AstroNavCartridge # Frontier
     - WantedListCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BasePDA
@@ -189,6 +190,7 @@
     - BountyContractsCartridge # Frontier
     - AstroNavCartridge # Frontier
     - MedTekCartridge
+    - TriTalkCartridge # Triad
   # End Frontier
 
 - type: entity
@@ -902,6 +904,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BaseSecurityPDA
@@ -972,6 +975,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - TriTalkCartridge # Triad
 
 - type: entity
   parent: CentcomPDA
@@ -1003,6 +1007,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
+      - TriTalkCartridge # Triad
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1154,6 +1159,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - MailMetricsCartridge # Frontier
+      - TriTalkCartridge # Triad
   - type: Geiger # Mono
     showExamine: true
     showControl: true
@@ -1333,6 +1339,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1360,6 +1367,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: ClownPDA
