@@ -28,13 +28,22 @@ nano-chat-message-too-long = Message too long ({$current}/{$max} characters)
 nano-chat-max-recipients = Maximum number of chats reached
 nano-chat-new-message-title = Message from {$sender}
 nano-chat-new-message-title-recipient = {$sender} ({$jobTitle})
-nano-chat-new-message-body = {$message}
+nano-chat-new-message-body = { $count ->
+        [one] {$count} unread chat.
+       *[other] {$count} unread chats.
+    }
+nano-chat-typing-indicator = {$name} is typing...
 nano-chat-toggle-mute = Mute notifications
 nano-chat-toggle-mute-chat = Mute chat
 nano-chat-delivery-failed = Failed to deliver
 nano-chat-look-up-no-server = No telecomms relay in range
 nano-chat-look-up = Look up numbers
 nano-chat-list-number = List number
+nano-chat-list-number-tooltip = Phonebook Listing Toggle
+    Status: { $status ->
+        [shown] Shown
+       *[hidden] Hidden
+    }
 nano-chat-list-number-unregistered = This card is not a registered ID and cannot be listed in the directory.
 nano-chat-new-title = Add a new chat
 nano-chat-number-label = Number

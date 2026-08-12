@@ -7,12 +7,15 @@ using Content.Server.Radio.EntitySystems;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared._DV.CartridgeLoader.Cartridges;
 using Content.Shared._DV.NanoChat;
 using Content.Shared.PDA;
 using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.StationAi;
+using Robust.Server.Containers;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -27,9 +30,16 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     [Dependency] private readonly SharedNanoChatSystem _nanoChat = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly ContainerSystem _container = default!; // Triad: typing indicator session lookup
 
     private EntityQuery<PdaComponent> _pdaQuery;
     private EntityQuery<NanoChatCardComponent> _cardQuery;
+
+    // Triad: last typing state sent per (sender card, recipient number), so held-down typing doesn't spam
+    // a network event every keystroke. Kept just under the client's 0.5s resend cadence so a legitimate
+    // repeat pulse is never the one that gets swallowed.
+    private readonly Dictionary<(EntityUid Card, uint Recipient), (TimeSpan Timestamp, bool Typing)> _typingTimestamps = new();
+    private static readonly TimeSpan TypingUpdateInterval = TimeSpan.FromSeconds(0.4);
 
     // Messages in notifications get cut off after this point
     // no point in storing it on the comp
@@ -56,6 +66,10 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         SubscribeLocalEvent<CartridgeLoaderComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<CartridgeLoaderComponent, BoundUIClosedEvent>(OnUiClosed);
+
+        // Triad: EntityUids get reused across rounds, so stale entries could otherwise throttle a fresh round's
+        // typing pulses against a completely unrelated card.
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _typingTimestamps.Clear());
 
         SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
         SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeMessageEvent>(OnMessage);
@@ -137,6 +151,14 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         if (!GetCardEntity(GetEntity(args.LoaderUid), out var card))
             return;
+
+        // Triad: typing pulses never touch card data, so they skip the UpdateUI resync below entirely --
+        // pushing the full recipients/messages state on every keystroke would be needless.
+        if (msg.Type is NanoChatUiMessageType.TypingStarted or NanoChatUiMessageType.TypingStopped)
+        {
+            HandleTyping(ent, card.Value, msg);
+            return;
+        }
 
         switch (msg.Type)
         {
@@ -384,6 +406,62 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         UpdateUIForAllCards();
     }
 
+    // Triad begin: typing indicator
+    /// <summary>
+    ///     Relays a typing-started/stopped pulse to whichever of the recipient's cartridges can currently
+    ///     receive from us. Uses the same range/telecomms gating as an actual message, so a typing
+    ///     indicator can never leak through a dead radio channel a real message wouldn't cross either.
+    /// </summary>
+    private void HandleTyping(Entity<NanoChatCartridgeComponent> sender,
+        Entity<NanoChatCardComponent> card,
+        NanoChatUiMessageEvent msg)
+    {
+        if (msg.RecipientNumber is not uint recipientNumber || card.Comp.Number is not uint senderNumber)
+            return;
+
+        var typing = msg.Type == NanoChatUiMessageType.TypingStarted;
+
+        // Collapse repeats of the same state and cap the rate either way, mirroring Bwoink's typing relay.
+        var key = (card.Owner, recipientNumber);
+        if (_typingTimestamps.TryGetValue(key, out var last) &&
+            last.Typing == typing &&
+            last.Timestamp + TypingUpdateInterval > _timing.CurTime)
+            return;
+        _typingTimestamps[key] = (_timing.CurTime, typing);
+
+        if (!CanSend(sender) || !_radio.HasActiveServer(Transform(sender).MapID, sender.Comp.RadioChannel))
+            return;
+
+        var channel = _prototype.Index(sender.Comp.RadioChannel);
+        var senderMapId = Transform(sender).MapID;
+
+        var cartridgeQuery = EntityQueryEnumerator<NanoChatCartridgeComponent, ActiveRadioComponent>();
+        while (cartridgeQuery.MoveNext(out var receiverUid, out var receiverCart, out _))
+        {
+            if (receiverCart.Card is not { } receiverCardUid ||
+                !_cardQuery.TryComp(receiverCardUid, out var receiverCard) ||
+                receiverCard.Number != recipientNumber)
+                continue;
+
+            var receiverMapId = Transform(receiverUid).MapID;
+            if (!channel.LongRange && receiverMapId != senderMapId)
+                continue;
+
+            if (!_radio.HasActiveServer(receiverMapId, receiverCart.RadioChannel) || !CanReceive(sender, receiverUid))
+                continue;
+
+            if (!GetCartridgeLoader((receiverCardUid, receiverCard), out var loader) ||
+                !_container.TryGetContainingContainer((loader.Value.Owner, null, null), out var container) ||
+                !TryComp<ActorComponent>(container.Owner, out var actor))
+                continue;
+
+            var ev = new NanoChatTypingIndicatorEvent(senderNumber, typing);
+            RaiseNetworkEvent(ev, actor.PlayerSession);
+            break; // Only one cartridge needs telling, same as delivery only needing one valid receiver.
+        }
+    }
+    // Triad end
+
     /// <summary>
     ///     Handles sending a new message in a chat conversation.
     /// </summary>
@@ -613,10 +691,14 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         else
             title = Loc.GetString("nano-chat-new-message-title", ("sender", senderName));
 
+        // Triad: only the sender shows in the chat-box popup, never the content. Tell them how many chats
+        // have something waiting instead, same as a phone lock screen badge.
+        var unreadCount = recipients.Values.Count(r => r.HasUnread);
         _cartridge.SendNotification(loader.Value,
             title,
-            Loc.GetString("nano-chat-new-message-body", ("message", SharedNanoChatSystem.Truncate(message.Content, NotificationMaxLength, " [...]"))),
+            Loc.GetString("nano-chat-new-message-body", ("count", unreadCount)),
             loader.Value);
+        // End Triad
     }
 
     /// <summary>

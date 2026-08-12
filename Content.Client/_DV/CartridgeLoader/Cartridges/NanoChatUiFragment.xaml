@@ -150,6 +150,13 @@
                            StyleClasses="LabelSubText"
                            Margin="0 0 4 2"
                            Visible="False" />
+                    <!-- Triad: typing indicator, shown just above the input row -->
+                    <Label Name="TypingIndicatorLabel"
+                           HorizontalAlignment="Left"
+                           StyleClasses="LabelSubText"
+                           FontColorOverride="#a0a0a0"
+                           Margin="4 0 4 2"
+                           Visible="False" />
                     <!-- Message input -->
                     <BoxContainer Name="MessageInputContainer"
                                   Orientation="Horizontal"

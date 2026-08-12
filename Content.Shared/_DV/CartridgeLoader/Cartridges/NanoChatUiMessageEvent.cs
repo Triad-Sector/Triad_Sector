@@ -57,6 +57,10 @@ public enum NanoChatUiMessageType : byte
     ToggleMute,
     ToggleMuteChat,
     ToggleListNumber,
+    // Triad: composing state for the recipient's typing indicator, keyed by RecipientNumber. Two discrete
+    // values rather than a bool field so the existing (type, number, content, job) event shape needs no changes.
+    TypingStarted,
+    TypingStopped,
 }
 
 // putting this here because i can
