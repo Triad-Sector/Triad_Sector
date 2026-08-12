@@ -12,6 +12,12 @@ using Content.Server.Radio.EntitySystems;
 using Robust.Shared.Map.Components;
 using Content.Server.Mind;
 using Robust.Server.GameStates;
+using Content.Shared.Humanoid;
+using Content.Server.Preferences.Managers;
+using Robust.Shared.Player;
+using Content.Shared.Preferences;
+using Content.Shared.Inventory;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Triad.ContrabandPermit;
 
@@ -19,11 +25,12 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
 {
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private IServerPreferencesManager _pref = default!;
     [Dependency] private CartridgeLoaderSystem _cartridgeLoader = default!;
     [Dependency] private RadioSystem _radio = default!;
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private PvsOverrideSystem _pvs = default!;
+    [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private SectorServiceSystem _sectorService = default!;
 
     private readonly HashSet<Entity<ContrabandPermitItemComponent>> _newPermitItems = new();
@@ -294,7 +301,7 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         }
     }
 
-    private static List<ContrabandPermitConsoleEntry> GetAllPermitEntryData(SectorContrabandPermitsComponent contrabandPermitNet)
+    private List<ContrabandPermitConsoleEntry> GetAllPermitEntryData(SectorContrabandPermitsComponent contrabandPermitNet)
     {
         var permitRecords = contrabandPermitNet.Records;
 
@@ -305,7 +312,69 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             var owner = record.Key;
             var items = record.Value;
 
-            data.Add(new ContrabandPermitConsoleEntry(owner, items));
+            // Grab character appearance to send it to the client
+            var ownerEnt = GetEntity(owner);
+
+            ICommonSession? playerSession = null;
+            if (TryComp<ActorComponent>(ownerEnt, out var actor))
+                playerSession = actor.PlayerSession;
+            else if (TryComp<HumanoidViewerEntityComponent>(ownerEnt, out var humanoidViewerEnt))
+                playerSession = humanoidViewerEnt.Session;
+
+            if (playerSession == null)
+                continue;
+
+            var preferences = _pref.GetPreferences(playerSession.UserId);
+
+            if (preferences == null)
+                continue;
+
+            if (preferences.SelectedCharacter is not HumanoidCharacterProfile profile)
+                continue;
+
+            var appearance = (HumanoidCharacterAppearance) profile.CharacterAppearance;
+
+            // This is for the dummy entity so they do not appear naked
+            var itemsToEquip = new List<EntProtoId>();
+
+            var invEnumerator = _inventory.GetSlotEnumerator(ownerEnt, SlotFlags.WITHOUT_POCKET);
+            while (invEnumerator.MoveNext(out var slot))
+            {
+                if (slot.ContainedEntity is not { } item)
+                    continue;
+
+                var itemMeta = MetaData(item);
+                if (itemMeta.EntityPrototype is not { } proto)
+                    continue;
+
+                itemsToEquip.Add(proto.ID);
+            }
+
+            var newOwner = new ContrabandPermitConsoleOwner(owner, profile.Name, appearance, profile.Age, profile.Gender, profile.Sex, profile.Species, itemsToEquip);
+
+            // Now, get the list of permit items that the permit carrier owns
+            var newConsoleItemList = new List<ContrabandPermitConsoleItem>();
+
+            foreach (var netEnt in items)
+            {
+                var item = GetEntity(netEnt);
+
+                if (!TryComp<ContrabandPermitItemComponent>(item, out var permitComp))
+                    continue;
+
+                var meta = MetaData(item);
+
+                if (meta == null || meta.EntityPrototype == null)
+                    continue;
+
+                var consoleItem = new ContrabandPermitConsoleItem(netEnt, permitComp.PermitReason, permitComp.DateGranted, meta.EntityPrototype.ID);
+                newConsoleItemList.Add(consoleItem);
+            }
+
+            if (newConsoleItemList.Count == 0)
+                continue;
+
+            data.Add(new ContrabandPermitConsoleEntry(newOwner, newConsoleItemList));
         }
 
         return data;

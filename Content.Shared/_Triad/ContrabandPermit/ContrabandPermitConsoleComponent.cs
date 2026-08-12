@@ -72,15 +72,15 @@ public sealed partial class ContrabandPermitConsoleComponent : Component
 }
 
 [Serializable, NetSerializable]
-public struct PermitEntryFocusData(NetEntity permitOwner, NetEntity? selectedItem = null)
+public struct PermitEntryFocusData(ContrabandPermitConsoleOwner permitOwner, ContrabandPermitConsoleItem? selectedItem = null)
 {
     /// <summary>
     /// The permit owner's net entity that the console is currently focused on
     /// </summary>
-    public NetEntity PermitOwner = permitOwner;
+    public ContrabandPermitConsoleOwner PermitOwner = permitOwner;
 
     /// <summary>
     /// Net entity of the selected permit item. Can be null.
     /// </summary>
-    public NetEntity? SelectedItem = selectedItem;
+    public ContrabandPermitConsoleItem? SelectedItem = selectedItem;
 }

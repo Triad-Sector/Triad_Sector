@@ -139,8 +139,6 @@ public sealed partial class ClientHumanoidViewerSystem : EntitySystem
             var viewerComp = EnsureComp<HumanoidViewerEntityComponent>(viewerMob.Value);
             viewerComp.Session = ev.Player;
             Dirty(viewerMob.Value, viewerComp);
-
-            EnsureComp<GlobalPvsComponent>(viewerMob.Value);
         }
 
         var humanoidView = EnsureComp<HumanoidViewComponent>(mob);

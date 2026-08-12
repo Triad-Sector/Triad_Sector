@@ -198,7 +198,7 @@
                               Orientation="Vertical"
                               ReservesSpace="False">
 
-                    <!-- Permit owner selector and picture -->
+                    <!-- Permit item selector and picture -->
                     <BoxContainer Orientation="Vertical"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center">
@@ -212,8 +212,8 @@
                             <BoxContainer HorizontalAlignment="Center"
                                           VerticalAlignment="Center"
                                           Margin="4">
-                                <SpriteView
-                                    Name="PermitOwnerView"
+                                <EntityPrototypeView
+                                    Name="PermitItemView"
                                     Margin="10 10 10 10"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"

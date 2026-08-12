@@ -36,13 +36,13 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
     private EntityUid? _owner;
     private ContrabandPermitConsoleTab _currentTab = ContrabandPermitConsoleTab.PermitList;
     private ContrabandPermitConsoleEntry[]? _entries = null;
-    private NetEntity? _trackedFocusOwner;
+    private ContrabandPermitConsoleOwner? _trackedFocusOwner;
 
     public event Action<string>? OnReasonChanged;
     public event Action? OnGrantButtonPressed;
     public event Action<string>? OnRevokeButtonPressed;
     public event Action? OnPrintButtonPressed;
-    public event Action<NetEntity?, NetEntity?>? SendFocusChangeMessage;
+    public event Action<ContrabandPermitConsoleOwner?, ContrabandPermitConsoleItem?>? SendFocusChangeMessage;
 
     public ContrabandPermitConsoleWindow(IPlayerManager playerManager)
     {
@@ -135,7 +135,7 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
         if (!_entManager.TryGetComponent<ContrabandPermitConsoleComponent>(_owner.Value, out var consoleComp))
             return;
 
-        if (_trackedFocusOwner != focusData?.PermitOwner)
+        if (_trackedFocusOwner?.Owner != focusData?.PermitOwner.Owner)
             focusData = null;
 
         _entries = entries;
@@ -183,10 +183,6 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
         var items = entry.Items;
 
         var owner = entry.Owner;
-        var ownerEnt = _entManager.GetEntity(entry.Owner);
-
-        if (_entManager.TryGetComponent<HumanoidViewComponent>(ownerEnt, out var humanoid) && humanoid.PvsView is { } pvsView)
-            owner = _entManager.GetNetEntity(pvsView);
 
         // Make new UI entry if required
         if (index >= table.ChildCount)
@@ -196,16 +192,16 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
             // On click
             newEntryContainer.FocusButton.OnButtonUp += args =>
             {
-                var currentOwner = newEntryContainer.PermitOwner;
-                if (_trackedFocusOwner == currentOwner)
+                var currentOwner = newEntryContainer.PermitOwner.Owner;
+                if (_trackedFocusOwner?.Owner == currentOwner)
                 {
                     _trackedFocusOwner = null;
                     UpdateFocus(null, null);
                 }
                 else
                 {
-                    _trackedFocusOwner = currentOwner;
-                    UpdateFocus(currentOwner, null);
+                    _trackedFocusOwner = newEntryContainer.PermitOwner;
+                    UpdateFocus(newEntryContainer.PermitOwner, null);
                 }
             };
 
@@ -241,7 +237,7 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
         entryContainer.UpdateEntry(focusData);
     }
 
-    public void UpdateFocus(NetEntity? owner, NetEntity? item)
+    public void UpdateFocus(ContrabandPermitConsoleOwner? owner, ContrabandPermitConsoleItem? item)
     {
         SendFocusChangeMessage?.Invoke(owner, item);
     }
@@ -301,13 +297,13 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
         if (!_entManager.TryGetComponent<ContrabandPermitChipComponent>(insertedChip, out var chip))
             return;
 
-        var carrier = _entManager.GetEntity(chip.ScannedPermitCarrier);
-        var scannedItem = _entManager.GetEntity(chip.ScannedItem);
+        var carrier = chip.ScannedPermitCarrier;
+        var scannedItem = chip.ScannedItem;
 
         if (carrier == null || scannedItem == null)
         {
             // Reset info
-            PermitOwnerView.SetEntity(null);
+            PermitItemView.SetEntity(null);
             OwnerNameLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-name", ("name", string.Empty));
             OwnerSpeciesLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-species", ("species", string.Empty));
             OwnerAgeLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-age", ("age", string.Empty));
@@ -319,35 +315,21 @@ public sealed partial class ContrabandPermitConsoleWindow : FancyWindow
             return;
         }
 
-        if (_entManager.TryGetComponent<HumanoidViewComponent>(carrier, out var view)
-            && view.PvsView is { } pvsView
-            && _entManager.TryGetComponent<HumanoidAppearanceComponent>(pvsView, out var appearance))
+        if (state.OwnerInfo is { } info)
         {
-            PermitOwnerView.SetEntity(pvsView);
-
-            OwnerNameLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-name", ("name", Identity.Name(pvsView, _entManager)));
-
-            var species = _prototype.Index(appearance.Species);
-            var speciesName = Loc.GetString(species.Name);
-            OwnerSpeciesLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-species", ("species", speciesName));
-
-            OwnerAgeLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-age", ("age", appearance.Age));
-
-            OwnerGenderLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-gender", ("gender", appearance.Gender.ToString()));
-
-            var colorName = ColorNaming.Describe(appearance.EyeColor, _localization);
-            OwnerEyeColorLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-eye-color", ("color", colorName));
+            OwnerNameLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-name", ("name", info.ScannedOwnerName));
+            OwnerSpeciesLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-species", ("species", info.ScannedOwnerSpecies));
+            OwnerAgeLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-age", ("age", info.ScannedOwnerAge));
+            OwnerGenderLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-gender", ("gender", info.ScannedOwnerGender.ToString()));
+            OwnerEyeColorLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-owner-eye-color", ("color", info.ScannedOwnerEyeColor));
         }
 
-        if (_entManager.TryGetComponent<MetaDataComponent>(scannedItem, out var meta))
+        if (_prototype.TryIndex(state.ScannedItemProtoId, out var prototype))
         {
-            var itemPrototype = meta.EntityPrototype;
+            PermitItemView.SetPrototype(prototype);
 
-            if (itemPrototype != null)
-            {
-                ItemNameLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-item-name", ("name", itemPrototype.Name));
-                DateGrantedLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-date", ("date", state.DateTime ?? string.Empty));
-            }
+            ItemNameLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-item-name", ("name", prototype.Name));
+            DateGrantedLabel.Text = Loc.GetString("contraband-permit-console-window-label-grant-tab-date", ("date", state.DateTime ?? string.Empty));
         }
     }
 }

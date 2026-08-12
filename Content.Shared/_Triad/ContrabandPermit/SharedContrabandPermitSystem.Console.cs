@@ -2,19 +2,24 @@ using Content.Shared._DV.CCVars;
 using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates;
+using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
+using Robust.Shared.ColorNaming;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Triad.ContrabandPermit;
 
 public abstract partial class SharedContrabandPermitSystem : EntitySystem
 {
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private ILocalizationManager _localization = default!;
     [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
     [Dependency] private ItemSlotsSystem _itemSlot = default!;
     [Dependency] private INetManager _net = default!;
@@ -62,18 +67,48 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
         if (!_itemSlot.TryGetSlot(uid, component.ChipSlotContainerId, out var itemSlot))
             return;
 
-        ContrabandPermitConsoleBuiState? newState = null;
+        ContrabandPermitConsoleBuiState? newState;
 
         var dateString = _serverDate.ToString("dd MMMM yyyy");
 
-        if (itemSlot.Item is { } targetChip)
+        if (itemSlot.Item is { } targetChip && TryComp<ContrabandPermitChipComponent>(targetChip, out var chipComp))
         {
+            var permitOwner = GetEntity(chipComp.ScannedPermitCarrier);
+            var permitItem = GetEntity(chipComp.ScannedItem);
+
+            ContrabandPermitConsoleBuiStateOwnerInfo? ownerInfo = null;
+
+            // Get permit owner information
+            if (permitOwner != null && TryComp<HumanoidAppearanceComponent>(permitOwner, out var appearanceComp))
+            {
+                var ownerMeta = MetaData(permitOwner.Value);
+
+                var species = _prototype.Index(appearanceComp.Species);
+                var speciesName = Loc.GetString(species.Name);
+
+                var colorName = ColorNaming.Describe(appearanceComp.EyeColor, _localization);
+
+                if (ownerMeta != null)
+                    ownerInfo = new(ownerMeta.EntityName, speciesName, appearanceComp.Age, appearanceComp.Gender, colorName);
+            }
+
+            EntProtoId? itemProtoId = null;
+
+            // Get permit metadata so we know which prototype to show in the console UI
+            if (permitItem != null)
+            {
+                var itemMeta = MetaData(permitItem.Value);
+
+                if (itemMeta != null)
+                    itemProtoId = itemMeta.EntityPrototype?.ID;
+            }
+
             var chipNetEnt = GetNetEntity(targetChip);
-            newState = new ContrabandPermitConsoleBuiState(chipNetEnt, dateString, component.Entries, component.FocusedEntry);
+            newState = new ContrabandPermitConsoleBuiState(chipNetEnt, dateString, itemProtoId, ownerInfo, component.Entries, component.FocusedEntry);
         }
         else
         {
-            newState = new ContrabandPermitConsoleBuiState(null, null, component.Entries, component.FocusedEntry);
+            newState = new ContrabandPermitConsoleBuiState(null, null, null, null, component.Entries, component.FocusedEntry);
         }
 
         _userInterface.SetUiState(uid, ContrabandPermitConsoleUi.Key, newState);
@@ -185,16 +220,16 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
             return;
         }
 
-        if (ent.Comp.FocusedEntry == null || ent.Comp.FocusedEntry.Value.SelectedItem is not { } selectedNetItem)
+        if (ent.Comp.FocusedEntry == null || ent.Comp.FocusedEntry.Value.SelectedItem is not { } selectedItem)
         {
             PlayDenySound(ent, args.Actor);
             ConsolePopup(args.Actor, Loc.GetString("contraband-permit-console-popup-revoke-no-focus"), PopupType.SmallCaution);
             return;
         }
 
-        var selectedItem = GetEntity(selectedNetItem);
+        var selectedEnt = GetEntity(selectedItem.Item);
 
-        if (!TryComp<ContrabandPermitItemComponent>(selectedItem, out var permitInfo) || permitInfo.PermitOwner == null)
+        if (!TryComp<ContrabandPermitItemComponent>(selectedEnt, out var permitInfo) || permitInfo.PermitOwner == null)
             return;
 
         var permitOwner = permitInfo.PermitOwner.Value;
@@ -202,7 +237,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
 
         PlayConfirmSound(ent, user);
         ConsolePopup(user,
-            Loc.GetString("contraband-permit-console-popup-success-revoke", ("item", selectedItem), ("owner", permitOwnerName)),
+            Loc.GetString("contraband-permit-console-popup-success-revoke", ("item", selectedEnt), ("owner", permitOwnerName)),
             PopupType.Medium);
 
         // Update the focus
@@ -212,7 +247,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
 
             foreach (var entry in ent.Comp.Entries)
             {
-                if (entry.Owner != focusedEntry.PermitOwner)
+                if (entry.Owner.Owner != focusedEntry.PermitOwner.Owner)
                     continue;
 
                 if (entry.Items.Count <= 1)
@@ -233,8 +268,8 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
             }
         }
 
-        var ev = new ContrabandPermitRevokedEvent(selectedItem, permitOwner, ent.Owner, user, reason);
-        RaiseLocalEvent(selectedItem, ev, true);
+        var ev = new ContrabandPermitRevokedEvent(selectedEnt, permitOwner, ent.Owner, user, reason);
+        RaiseLocalEvent(selectedEnt, ev, true);
     }
 
     private void OnConsolePrintPressed(Entity<ContrabandPermitConsoleComponent> ent, ref ContrabandPermitConsolePrintButtonPressedMessage args)

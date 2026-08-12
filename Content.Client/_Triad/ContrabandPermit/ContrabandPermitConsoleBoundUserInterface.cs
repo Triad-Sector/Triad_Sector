@@ -60,7 +60,7 @@ public sealed partial class ContrabandPermitConsoleBoundUserInterface(EntityUid 
         SendPredictedMessage(new ContrabandPermitConsolePrintButtonPressedMessage());
     }
 
-    private void OnSendFocusChangeMessage(NetEntity? owner, NetEntity? item)
+    private void OnSendFocusChangeMessage(ContrabandPermitConsoleOwner? owner, ContrabandPermitConsoleItem? item)
     {
         SendPredictedMessage(new ContrabandPermitConsoleFocusChangeMessage(owner, item));
     }
