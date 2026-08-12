@@ -60,7 +60,12 @@ public sealed partial class SalvageMobRestrictionsSystem : EntitySystem
         foreach (EntityUid target in component.MobsToKill)
         {
             // Don't destroy yourself, don't destroy things being destroyed.
-            if (uid == target || MetaData(target).EntityLifeStage >= EntityLifeStage.Terminating)
+            // Triad: MetaData throws outright on an entity that no longer exists, and MobsToKill can
+            // hold a stale uid because OnRemove only drops an entry while the mob's LinkedGridEntity
+            // still resolves. The throw escaped the loop, so every mob after the stale one was skipped
+            // and never gibbed. Terminating is this system's own TryComp-based check and already
+            // covers both the missing and the terminating case.
+            if (uid == target || Terminating(target))
                 continue;
 
             // Mono - fix

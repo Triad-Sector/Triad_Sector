@@ -3,27 +3,38 @@ name: RSI Validator
 on:
   push:
     branches: [ main, staging, stable ]
+    # Triad: changelog-bot commits touch only Resources/Changelog. Filter here rather than in
+    # a job `if`: concurrency is per run, so a run whose jobs all skip still cancels the merge
+    # commit's run. Keep this off `pull_request`, where a required check that never runs pends.
+    paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
+  # Triad: the `paths` filter is commented out rather than deleted. `Validate RSIs` is a
+  # required check, and a required check that never runs sits as "expected" and blocks the
+  # merge forever. The job is ~1m and runs concurrently with Build & Test Debug (~10m), so
+  # always running it costs no wall-clock.
   pull_request:
-    paths:
-      - '**.rsi/**'
+    # paths:
+    #   - '**.rsi/**'
 
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   validate_rsis:
     name: Validate RSIs
     runs-on: ubuntu-latest
+    timeout-minutes: 15 # Triad: job takes ~1m.
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7
       - name: Setup Submodule
         run: git submodule update --init
       - name: Pull engine updates
         uses: space-wizards/submodule-dependency@v0.1.5
       - name: Set up Python 3.10 # Frontier
-        uses: actions/setup-python@v3 # Frontier
+        uses: actions/setup-python@v6 # Frontier
         with: # Frontier
           python-version: "3.10" # Frontier
       - name: Install Python dependencies

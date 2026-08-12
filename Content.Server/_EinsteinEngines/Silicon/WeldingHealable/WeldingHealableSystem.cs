@@ -92,7 +92,9 @@ public sealed partial class WeldingHealableSystem : SharedWeldingHealableSystem
             });
     }
 
-    private bool HasDamage(Entity<DamageableComponent> damageable, WeldingHealingComponent healable, EntityUid user)
+    // Triad: internal rather than private so the container-mismatch regression can be tested directly.
+    // Content.Server already grants InternalsVisibleTo to the test assemblies.
+    internal bool HasDamage(Entity<DamageableComponent> damageable, WeldingHealingComponent healable, EntityUid user)
     {
         if (healable.Damage.DamageDict is null)
             return false;
@@ -101,6 +103,9 @@ public sealed partial class WeldingHealableSystem : SharedWeldingHealableSystem
         // whose damage container does not carry one of them threw KeyNotFound out of the repair
         // do-after. Silicon containers are the usual mismatch, since they omit types like Radiation
         // that the welder heal lists. A damage type the target cannot take is simply not damage.
+        // Both loops below need this: the body-part pass repeats the same lookup against a part's
+        // own container, which is a narrower set again, and it was still throwing after the whole-
+        // entity pass was fixed.
         foreach (var type in healable.Damage.DamageDict)
             if (damageable.Comp.Damage.DamageDict.TryGetValue(type.Key, out var current) && current.Value > 0)
                 return true;
@@ -113,7 +118,7 @@ public sealed partial class WeldingHealableSystem : SharedWeldingHealableSystem
         foreach (var part in _bodySystem.GetBodyChildrenOfType(damageable, targetType, symmetry: targetSymmetry))
             if (TryComp<DamageableComponent>(part.Id, out var damageablePart))
                 foreach (var type in healable.Damage.DamageDict)
-                    if (damageablePart.Damage.DamageDict[type.Key].Value > 0)
+                    if (damageablePart.Damage.DamageDict.TryGetValue(type.Key, out var partCurrent) && partCurrent.Value > 0)
                         return true;
 
         return false;

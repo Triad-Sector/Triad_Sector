@@ -9,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Wall;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
@@ -30,6 +31,7 @@ namespace Content.Client.Construction
         [Dependency] private SharedTransformSystem _transformSystem = default!;
         [Dependency] private PopupSystem _popupSystem = default!;
         [Dependency] private SpriteSystem _spriteSystem = default!; // Triad
+        [Dependency] private IEyeManager _eyeManager = default!; // Triad: screen-space dir -> world rotation
 
         private readonly Dictionary<int, EntityUid> _ghosts = new();
         private readonly Dictionary<string, ConstructionGuide> _guideCache = new();
@@ -213,7 +215,14 @@ namespace Content.Client.Construction
             var comp = EntityManager.GetComponent<ConstructionGhostComponent>(ghost.Value);
             comp.Prototype = prototype;
             comp.GhostId = ghost.GetHashCode();
-            _transformSystem.SetLocalRotation(ghost.Value, dir.ToAngle());
+            // Triad: `dir` comes from the placement manager and is a cardinal in SCREEN space, but LocalRotation is
+            // relative to the ghost's parent. An entity renders at worldRotation + eyeRotation (same identity used
+            // in BuckleSystem and ClickableSystem), so storing the screen angle as a local rotation only lines up
+            // when the camera exactly cancels the parent grid's rotation. On a rotated ship it does not, and the
+            // ghost is drawn skewed — then built skewed, because TryStartConstruction sends this very value.
+            // Setting the WORLD rotation instead is correct for any parent, and reduces to the old behaviour when
+            // the camera is aligned to the grid.
+            _transformSystem.SetWorldRotation(ghost.Value, dir.ToAngle() - _eyeManager.CurrentEye.Rotation);
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
             _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));

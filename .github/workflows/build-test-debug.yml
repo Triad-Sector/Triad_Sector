@@ -1,12 +1,20 @@
 name: Build & Test Debug
 
+# Triad: key PR runs on the PR number rather than the ref, and only ever cancel PR runs.
+# Cancelling a merge_group entry fails the queue rather than superseding it, and cancelling a
+# push run abandons the only test coverage main/staging/stable ever get.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 on:
   push:
     branches: [ main, staging, stable ]
+    # Triad: changelog-bot commits touch only Resources/Changelog. Filter here rather than in
+    # a job `if`: concurrency is evaluated per run, so a run whose jobs all skip still cancels
+    # the merge commit's in-flight run. Keep this off `pull_request`, where a required check
+    # that never runs sits pending forever.
+    paths-ignore: [ 'Resources/Changelog/**' ]
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
@@ -20,10 +28,11 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30 # Triad: this job takes ~10m; without a cap a hung test burns the 6h runner ceiling.
 
     steps:
     - name: Checkout Master
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v7
 
     - name: Setup Submodule
       run: |
@@ -38,7 +47,7 @@ jobs:
         git submodule update --init --recursive
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 
@@ -48,14 +57,26 @@ jobs:
     - name: Build Project
       run: dotnet build --configuration DebugOpt --no-restore /p:WarningsAsErrors=nullable /m
 
+    # Triad: NUnit.TestOutputXml/WorkDirectory restored (upstream has them, we had dropped
+    # them). With NUnit.ConsoleOut=0 and no XML, a failed CI run left nothing to triage from.
     - name: Run Content.Tests
-      run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0
+      run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0 NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
 
     - name: Run Content.IntegrationTests
       shell: pwsh
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --filter "FullyQualifiedName!~ShipyardTest" -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --filter "FullyQualifiedName!~ShipyardTest" -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
+
+    # Triad: `if: always()` on purpose. The failing run is the one whose results we want.
+    - name: Archive NUnit3 test results.
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: nunit3-results-${{ matrix.os }}
+        path: test_results/*
+        retention-days: 7
+        compression-level: 9
   ci-success:
     name: Build & Test Debug
     needs:

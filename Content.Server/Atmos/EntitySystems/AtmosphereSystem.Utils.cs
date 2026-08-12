@@ -3,6 +3,7 @@ using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Components;
+using Content.Shared.Shuttles.Components; // Triad
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -143,4 +144,20 @@ public partial class AtmosphereSystem
             RaiseLocalEvent(uid, ref ev);
         }
     }
+
+    // Triad: cherry-pick of NF PR #3061 — no atmos extraction off the sector map
+    /// <summary>
+    /// Checks whether atmos devices that pull gas out of their surroundings are allowed to run on
+    /// the given map. Expedition and other side maps are off limits, because their atmosphere is
+    /// an infinite source: a ship parked on a planet could siphon gas forever for free.
+    /// </summary>
+    /// <param name="mapUid">The map the device is on, from <see cref="AtmosDeviceUpdateEvent.Map"/>.</param>
+    public bool AtmosInputCanRunOnMap(EntityUid? mapUid)
+    {
+        if (!TryComp<MapComponent>(mapUid, out var mapComp))
+            return false;
+
+        return AllowMapGasExtraction || HasComp<FTLMapComponent>(mapUid) || mapComp.MapId == _gameTicker.DefaultMap;
+    }
+    // End Triad
 }

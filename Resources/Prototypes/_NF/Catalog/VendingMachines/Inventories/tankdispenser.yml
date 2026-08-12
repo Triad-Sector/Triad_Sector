@@ -11,3 +11,7 @@
 #    ExtendedEmergencyNitrogenTankFilled: 5 # Frontier
     NitrogenTankFilled: 4294967295 # Frontier: 10<Infinite
     DoubleEmergencyNitrogenTankFilled: 4294967295 # Frontier: 10<Infinite
+    # Triad changes - Feroxi use water vapor.
+    WaterVaporTankFilled: 10
+    DoubleEmergencyWaterVaporTankFilled: 10
+    # End Triad

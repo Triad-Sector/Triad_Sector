@@ -3625,3 +3625,117 @@ Entries:
   id: 2497
   time: '2026-08-10T04:12:01.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/484
+- author: rebaserHEAD
+  changes:
+    - type: Remove
+      message: >-
+        Atmos devices can no longer siphon gas out of an expedition planet's
+        atmosphere. Asteroid gas deposits are unaffected.
+  id: 2498
+  time: '2026-08-10T04:58:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/486
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added the TA-6 Prosper, a belt modsuit for the TFA's overseer.
+  id: 2499
+  time: '2026-08-10T14:10:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/483
+- author: IrkallaEpsilon
+  changes:
+    - type: Fix
+      message: >-
+        Bread is no longer made from ingredients coming from Kur/The Dark/Xen
+        and thus no longer levitates when cut. In other words bread slices dont
+        float down here.
+  id: 2500
+  time: '2026-08-10T15:04:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/487
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Salvage outposts now generate with their junction airlocks instead of
+        skipping them.
+    - type: Fix
+      message: >-
+        Welding-repairing a silicon no longer fails when the welder's heal list
+        includes a damage type that silicon cannot take.
+  id: 2501
+  time: '2026-08-10T15:24:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/485
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Port Coyote Expedition Retrieval
+    - type: Tweak
+      message: >-
+        Tweak upon dying instead of round force player(s) to teleport into their
+        ship and removed their outer clothing, back, and suit storage
+    - type: Tweak
+      message: >-
+        Tweak marooned player got forced to teleport and removed their
+        suitstorage
+  id: 2502
+  time: '2026-08-10T15:35:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/288
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed the Overseer not being able to access medical dispatch admin
+        console.
+    - type: Fix
+      message: Fixed Director of Care having Overseer-level access.
+    - type: Fix
+      message: Fixed the station administration console on MD requiring 'HoS' access.
+    - type: Fix
+      message: Fixed emergency responders having DoC access.
+  id: 2503
+  time: '2026-08-10T15:42:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/488
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Structures built from the construction menu on a rotated ship now face
+        the direction you picked, instead of a quarter turn off.
+  id: 2504
+  time: '2026-08-11T00:38:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/493
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Ships carrying a used mirror or pair of barber scissors can be saved
+        again.
+  id: 2505
+  time: '2026-08-11T01:45:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/495
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Removed Erudite Indestructible shutters
+  id: 2506
+  time: '2026-08-11T10:11:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/497
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Gave Behir the appropriate ATM type.
+  id: 2507
+  time: '2026-08-11T10:12:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/499
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        TriTalk, a PDA messaging app. Examine an ID card to see its number.
+        Needs a powered telecomms server in range, same as your headset.
+    - type: Add
+      message: TriTalk lists issued IDs in a directory. You can unlist your own number.
+    - type: Add
+      message: LogProbe can pull message history off a TriTalk card.
+  id: 2508
+  time: '2026-08-12T18:51:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/464

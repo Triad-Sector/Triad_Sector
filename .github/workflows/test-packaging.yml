@@ -13,32 +13,57 @@ on:
       # why not just do both
       - 'RobustToolbox'
       - 'RobustToolbox/**'
+      # Triad: '**.yml' above matches Resources/Changelog/Triad.yml, so the changelog bot's
+      # post-merge commit was triggering this workflow. Negate it here: `paths` and
+      # `paths-ignore` cannot both be set for one event, and a job `if` cannot help because
+      # concurrency is per run, so a run whose jobs all skip still cancels the merge run.
+      - '!Resources/Changelog/**'
   merge_group:
+  # Triad: the `paths` filter is commented out rather than deleted. `Test Packaging` is a
+  # required check, and a required check that never runs sits as "expected" and blocks the
+  # merge forever, so a docs-only or sprite-only PR could never merge. The job is ~10m and
+  # runs concurrently with Build & Test Debug (~10m), which has no filter, so always running
+  # it does not move the critical path. The push filter above is kept: push runs are not
+  # required checks.
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ main, staging, stable ]
-    paths:
-      - '**.cs'
-      - '**.csproj'
-      - '**.sln'
-      - '**.git**'
-      - '**.yml'
-      - 'RobustToolbox'
-      - 'RobustToolbox/**'
+    # paths:
+    #   - '**.cs'
+    #   - '**.csproj'
+    #   - '**.sln'
+    #   - '**.git**'
+    #   - '**.yml'
+    #   - 'RobustToolbox'
+    #   - 'RobustToolbox/**'
 
+# Triad: key PR runs on PR number; only ever cancel PR runs. Cancelling a merge_group entry
+# fails the queue, and cancelling a push run abandons main's only test coverage.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: Test Packaging
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 30 # Triad: job takes ~10m.
+    env:
+      # Triad: this job packages and then throws the output away; it exists to prove the
+      # packaging path still works. Measured at 439s of a 608s run for all four platforms,
+      # which is the single largest cost in PR CI. One platform proves the same path, so
+      # pull requests build linux-x64 only. Pushes and merge_group keep all four, because a
+      # platform-specific break (an osx-only runtime identifier, say) would otherwise not
+      # surface until Publish, and publish.yml packages all four for real.
+      SERVER_PLATFORMS: >-
+        ${{ github.event_name == 'pull_request'
+        && '--platform linux-x64'
+        || '--platform win-x64 --platform linux-x64 --platform osx-x64 --platform linux-arm64' }}
 
     steps:
       - name: Checkout Master
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7
 
       - name: Setup Submodule
         run: |
@@ -53,7 +78,7 @@ jobs:
           git submodule update --init --recursive
 
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4.1.0
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
 
@@ -64,7 +89,8 @@ jobs:
         run: dotnet build Content.Packaging --configuration Release --no-restore /m
 
       - name: Package server
-        run: dotnet run --project Content.Packaging server --platform win-x64 --platform linux-x64 --platform osx-x64 --platform linux-arm64
+        # Triad: unquoted on purpose, SERVER_PLATFORMS carries multiple arguments.
+        run: dotnet run --project Content.Packaging server $SERVER_PLATFORMS
 
       - name: Package client
         run: dotnet run --project Content.Packaging client --no-wipe-release

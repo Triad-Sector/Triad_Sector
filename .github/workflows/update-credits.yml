@@ -13,7 +13,7 @@ jobs:
     if: github.repository == 'Monolith-Station/Monolith' # Mono: space-wizards/space-station-14 > Monolith-Station/Monolith
 
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7
         with:
           ref: main
 

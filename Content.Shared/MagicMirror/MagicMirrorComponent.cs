@@ -10,8 +10,15 @@ namespace Content.Shared.MagicMirror;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class MagicMirrorComponent : Component
 {
+    // Triad: DoAfterId is a runtime handle (user + index into their live do-after list) with no type
+    // serializer, so persisting it throws "No type serializer or data definition found" and kills the
+    // whole ship-grid save once it goes non-null. Runtime-only state now.
+    /*
     [DataField]
+    */
+    [ViewVariables]
     public DoAfterId? DoAfter;
+    // End Triad
 
     /// <summary>
     /// Magic mirror target, used for validating UI messages.

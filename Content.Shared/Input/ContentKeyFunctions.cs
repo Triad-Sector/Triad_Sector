@@ -162,5 +162,12 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction MappingRemoveDecal = "MappingRemoveDecal";
         public static readonly BoundKeyFunction MappingCancelEraseDecal = "MappingCancelEraseDecal";
         public static readonly BoundKeyFunction MappingOpenContextMenu = "MappingOpenContextMenu";
+
+        // Triad: TriTalk conversation cycling, ported from Delta-V
+        public static readonly BoundKeyFunction NanoChatNavigateUp = "NanoChatNavigateUp";
+        public static readonly BoundKeyFunction NanoChatNavigateDown = "NanoChatNavigateDown";
+        public static readonly BoundKeyFunction NanoChatNavigateUpUnread = "NanoChatNavigateUpUnread";
+        public static readonly BoundKeyFunction NanoChatNavigateDownUnread = "NanoChatNavigateDownUnread";
+        // End Triad
     }
 }

@@ -39,3 +39,30 @@
       sprite: Nyanotrasen/Objects/Specific/Mail/mail.rsi
       state: icon
     readonly: true # Frontier
+
+# Triad: TriTalk, ported from Delta-V's NanoChat. Component and program names stay NanoChat* so future
+# Delta-V merges land mechanically; everything the player sees is rebranded in locale.
+- type: entity
+  parent: NFBasePDACartridge
+  id: TriTalkCartridge
+  name: TriTalk cartridge
+  description: Lets you message other people across the sector, so long as there's a telecomms relay in range.
+  components:
+  - type: Sprite
+    sprite: _DV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: Icon
+    sprite: _DV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: UIFragment
+    ui: !type:NanoChatUi
+  - type: NanoChatCartridge
+  - type: Cartridge
+    programName: nano-chat-program-name
+    icon:
+      sprite: _DV/Misc/program_icons.rsi
+      state: nanochat
+    readonly: true # Frontier
+  - type: ActiveRadio
+    channels:
+    - Common

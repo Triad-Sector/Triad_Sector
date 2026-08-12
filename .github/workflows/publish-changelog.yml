@@ -1,5 +1,14 @@
 name: Publish Changelog
 
+# Triad: this workflow is NOT the live Discord changelog poster, despite the name. The one that
+# runs is the `Publish changelog (Discord)` step in publish.yml, which fires on every publish.
+# This one is a dormant duplicate; its cron was commented out in 6554b7a808 and again in
+# de4d30e5cb, and its last run was 2026-05-15.
+#
+# Do not re-enable the cron. Both paths run Tools/actions_changelogs_since_last_run.py, which
+# diffs against the last successful run of whichever workflow it is running under, so enabling
+# this one would double-post every future changelog and, on its first run, post every entry
+# accumulated since 2026-05-15.
 on:
   workflow_dispatch:
   # schedule:
@@ -12,7 +21,7 @@ jobs:
     steps:
 
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
       with:
         token: ${{secrets.GITHUB_TOKEN}}
         ref: main

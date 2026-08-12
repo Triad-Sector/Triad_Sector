@@ -1,5 +1,7 @@
 salvage-expedition-window-finish = Finish expedition
 salvage-expedition-announcement-early-finish = The expedition was completed ahead of schedule. Shuttle will depart in {$departTime} seconds.
+salvage-expedition-abort-wipe = [color=Red]No life signs detected[/color]. Expedition aborted. Commencing personnel recovery. Shuttle departure in {$departTime} seconds.
+
 salvage-expedition-shuttle-not-found = Cannot locate shuttle.
 salvage-expedition-not-everyone-aboard = Not all crew aboard! {CAPITALIZE(THE($target))} is still out there!
 salvage-expedition-ftl-cooldown = The FTL drive is still spooling down from the jump in. Wait for it to cool down before returning.
@@ -51,3 +53,7 @@ salvage-air-mod-16 = 34 CO2, 34 NH3, 34 N2O
 salvage-air-mod-17 = 34 H2O, 34 NH3, 34 N2O
 salvage-air-mod-18 = 34 H2O, 34 N2O, 17 NH3, 17 CO2
 salvage-air-mod-unknown = Unknown atmosphere
+
+salvage-expedition-difficulty-NFModerate = Moderate
+salvage-expedition-difficulty-NFHazardous = Hazardous
+salvage-expedition-difficulty-NFExtreme = Extreme
