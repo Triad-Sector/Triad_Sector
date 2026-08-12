@@ -9,13 +9,13 @@ using Robust.Shared.Prototypes; // Upstream#37341
 
 namespace Content.Client.Doors;
 
-public sealed class DoorSystem : SharedDoorSystem
+public sealed partial class DoorSystem : SharedDoorSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animationSystem = default!;
+    [Dependency] private AnimationPlayerSystem _animationSystem = default!;
     // [Dependency] private readonly IResourceCache _resourceCache = default!; // Upstream#37341
-    [Dependency] private readonly IComponentFactory _componentFactory = default!; // Upstream#37341
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Upstream#37341
-    [Dependency] private readonly SpriteSystem _sprite = default!; // Upstream#37341
+    [Dependency] private IComponentFactory _componentFactory = default!; // Upstream#37341
+    [Dependency] private IPrototypeManager _prototypeManager = default!; // Upstream#37341
+    [Dependency] private SpriteSystem _sprite = default!; // Upstream#37341
 
     public override void Initialize()
     {
@@ -102,21 +102,21 @@ public sealed class DoorSystem : SharedDoorSystem
 
     private void UpdateAppearanceForDoorState(Entity<DoorComponent> entity, SpriteComponent sprite, DoorState state)
     {
-        sprite.DrawDepth = state is DoorState.Open ? entity.Comp.OpenDrawDepth : entity.Comp.ClosedDrawDepth;
+        _sprite.SetDrawDepth((entity.Owner, sprite), state is DoorState.Open ? entity.Comp.OpenDrawDepth : entity.Comp.ClosedDrawDepth);
 
         switch (state)
         {
             case DoorState.Open:
                 foreach (var (layer, layerState) in entity.Comp.OpenSpriteStates)
                 {
-                    sprite.LayerSetState(layer, layerState);
+                    _sprite.LayerSetRsiState((entity.Owner, sprite), layer, layerState);
                 }
 
                 return;
             case DoorState.Closed:
                 foreach (var (layer, layerState) in entity.Comp.ClosedSpriteStates)
                 {
-                    sprite.LayerSetState(layer, layerState);
+                    _sprite.LayerSetRsiState((entity.Owner, sprite), layer, layerState);
                 }
 
                 return;
@@ -151,10 +151,10 @@ public sealed class DoorSystem : SharedDoorSystem
         if (!_prototypeManager.TryIndex(targetProto, out var target))
             return;
 
-        if (!target.TryGetComponent(out SpriteComponent? targetSprite, _componentFactory))
+        if (!target.TryComp(out SpriteComponent? targetSprite, _componentFactory))
             return;
 
-        sprite.Comp.BaseRSI = targetSprite.BaseRSI;
+        _sprite.SetBaseRsi(sprite.AsNullable(), targetSprite.BaseRSI);
     }
     // End Upstream#37341
 }

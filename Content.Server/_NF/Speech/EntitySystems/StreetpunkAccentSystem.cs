@@ -7,13 +7,13 @@ using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers reloca
 
 namespace Content.Server._NF.Speech.EntitySystems;
 
-public sealed class StreetpunkAccentSystem : EntitySystem
+public sealed partial class StreetpunkAccentSystem : EntitySystem
 {
     private static readonly Regex RegexAnd = new(@"\b(an)d\b", RegexOptions.IgnoreCase); // case-preserving via $1
     private static readonly Regex RegexDve = new("d've");
 
-    [Dependency] private readonly IRobustRandom _random = default!; // Triad: tic pools
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!; // Triad: tic pools
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {

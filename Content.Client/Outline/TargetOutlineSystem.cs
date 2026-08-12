@@ -13,17 +13,18 @@ namespace Content.Client.Outline;
 /// <summary>
 ///     System used to indicate whether an entity is a valid target based on some criteria.
 /// </summary>
-public sealed class TargetOutlineSystem : EntitySystem
+public sealed partial class TargetOutlineSystem : EntitySystem
 {
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IInputManager _inputManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private bool _enabled = false;
 
@@ -70,11 +71,11 @@ public sealed class TargetOutlineSystem : EntitySystem
 
     private Vector2 LookupVector => new(LookupSize, LookupSize);
 
-    [ValidatePrototypeId<ShaderPrototype>]
-    private const string ShaderTargetValid = "SelectionOutlineInrange";
+    private static readonly ProtoId<ShaderPrototype> ShaderTargetValid = "SelectionOutlineInrange";
 
-    [ValidatePrototypeId<ShaderPrototype>]
-    private const string ShaderTargetInvalid = "SelectionOutline";
+    private static readonly ProtoId<ShaderPrototype> ShaderTargetInvalid = "SelectionOutline";
+
+    private const string PostShaderId = "target-outline";
 
     private ShaderInstance? _shaderTargetValid;
     private ShaderInstance? _shaderTargetInvalid;
@@ -158,9 +159,9 @@ public sealed class TargetOutlineSystem : EntitySystem
             if (!valid)
             {
                 // was this previously valid?
-                if (_highlightedSprites.Remove(sprite) && (sprite.PostShader == _shaderTargetValid || sprite.PostShader == _shaderTargetInvalid))
+                if (_highlightedSprites.Remove(sprite) && _sprite.HasPostShader((entity, sprite), PostShaderId))
                 {
-                    sprite.PostShader = null;
+                    _sprite.RemovePostShader((entity, sprite), PostShaderId);
                     sprite.RenderOrder = 0;
                 }
 
@@ -177,13 +178,8 @@ public sealed class TargetOutlineSystem : EntitySystem
                 valid = (origin - target).LengthSquared() <= Range;
             }
 
-            if (sprite.PostShader != null &&
-                sprite.PostShader != _shaderTargetValid &&
-                sprite.PostShader != _shaderTargetInvalid)
-                return;
-
             // highlight depending on whether its in or out of range
-            sprite.PostShader = valid ? _shaderTargetValid : _shaderTargetInvalid;
+            _sprite.SetPostShader((entity, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, (valid ? _shaderTargetValid : _shaderTargetInvalid)!));
             sprite.RenderOrder = EntityManager.CurrentTick.Value;
             _highlightedSprites.Add(sprite);
         }
@@ -193,10 +189,10 @@ public sealed class TargetOutlineSystem : EntitySystem
     {
         foreach (var sprite in _highlightedSprites)
         {
-            if (sprite.PostShader != _shaderTargetValid && sprite.PostShader != _shaderTargetInvalid)
+            if (!_sprite.HasPostShader(sprite, PostShaderId))
                 continue;
 
-            sprite.PostShader = null;
+            _sprite.RemovePostShader(sprite, PostShaderId);
             sprite.RenderOrder = 0;
         }
 

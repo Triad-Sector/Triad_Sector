@@ -41,5 +41,7 @@ multiauth-already-connected = Already connected to Monolith Official servers.
 
 public-transit-shuttle-name = Bus
 public-transit-departure = Now departing for {$destination}. Estimated travel time: {$flytime} seconds.
-public-transit-arrival = Thank you for choosing NT Public Transit. Next transfer to {$destination} departs in {$waittime} seconds.
+public-transit-arrival = Thank you for choosing the TTA. Next transfer to {$destination} departs in {$waittime} seconds.
+public-transit-departure-warning = Departing for {$destination} in {$time} seconds. Please board now.
+public-transit-skipped = Service interruption: no berth available at {$destination}. Skipping to {$next}.
 public-transit-instant = Arrived at {$destination}. Next destination in {$waittime} seconds.

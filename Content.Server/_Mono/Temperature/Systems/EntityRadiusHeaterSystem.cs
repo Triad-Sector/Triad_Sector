@@ -11,10 +11,10 @@ namespace Content.Server._Mono.Temperature.Systems;
 /// <summary>
 /// Gives thermal energy to nearby entities.
 /// </summary>
-public sealed class EntityRadiusHeaterSystem : EntitySystem
+public sealed partial class EntityRadiusHeaterSystem : EntitySystem
 {
-    [Dependency] private readonly TemperatureSystem _temp = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private TemperatureSystem _temp = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
 
     private float _updateCooldown = 1f;
     private TimeSpan _updateTimer = TimeSpan.Zero;

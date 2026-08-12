@@ -16,17 +16,22 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Client.Screenshot
 {
-    internal sealed class ScreenshotHook : IScreenshotHook
+    internal sealed partial class ScreenshotHook : IScreenshotHook
     {
         private static readonly ResPath BaseScreenshotPath = new("/Screenshots");
 
-        [Dependency] private readonly IInputManager _inputManager = default!;
-        [Dependency] private readonly IClyde _clyde = default!;
-        [Dependency] private readonly IResourceManager _resourceManager = default!;
-        [Dependency] private readonly IStateManager _stateManager = default!;
+        [Dependency] private IInputManager _inputManager = default!;
+        [Dependency] private IClyde _clyde = default!;
+        [Dependency] private IResourceManager _resourceManager = default!;
+        [Dependency] private IStateManager _stateManager = default!;
+        [Dependency] private ILogManager _logManager = default!;
+
+        private ISawmill _sawmill = default!;
 
         public void Initialize()
         {
+            _sawmill = _logManager.GetSawmill("screenshot");
+
             _inputManager.SetInputCommand(ContentKeyFunctions.TakeScreenshot, InputCmdHandler.FromDelegate(_ =>
             {
                 _clyde.Screenshot(ScreenshotType.Final, Take);
@@ -40,7 +45,7 @@ namespace Content.Client.Screenshot
                 }
                 else
                 {
-                    Logger.InfoS("screenshot", "Can't take no-UI screenshot: current state is not GameScreen");
+                    _sawmill.Info("Can't take no-UI screenshot: current state is not GameScreen");
                 }
             }));
         }
@@ -74,16 +79,16 @@ namespace Content.Client.Screenshot
                         screenshot.SaveAsPng(file);
                     });
 
-                    Logger.InfoS("screenshot", "Screenshot taken as {0}.png", filename);
+                    _sawmill.Info("Screenshot taken as {0}.png", filename);
                     return;
                 }
                 catch (IOException e)
                 {
-                    Logger.WarningS("screenshot", "Failed to save screenshot, retrying?:\n{0}", e);
+                    _sawmill.Warning("Failed to save screenshot, retrying?:\n{0}", e);
                 }
             }
 
-            Logger.ErrorS("screenshot", "Unable to save screenshot.");
+            _sawmill.Error("Unable to save screenshot.");
         }
     }
 

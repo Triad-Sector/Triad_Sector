@@ -17,13 +17,25 @@ namespace Content.Server.Lightning;
 
 //I redesigned so that lightning branches can only be created from the point where the lightning struck, no more collide checks
 //and the number of these branches is explicitly controlled in the new function.
-public sealed class LightningSystem : SharedLightningSystem
+public sealed partial class LightningSystem : SharedLightningSystem
 {
-    [Dependency] private readonly BeamSystem _beam = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!; // Mono
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private BeamSystem _beam = default!;
+    [Dependency] private IPrototypeManager _proto = default!; // Mono
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private TransformSystem _transform = default!;
+
+    /// <summary>
+    /// Hard ceiling on how deeply lightning may re-enter itself before a cascade is abandoned.
+    /// </summary>
+    // Triad: arcDepth bounds a single call chain, but it is a parameter, so anything that shoots
+    // lightning in response to being hit by lightning starts a fresh budget and the cascade never has
+    // to end. Two such entities in range of each other ping-pong until the stack runs out, which took
+    // the server down in prod on 2026-08-06 ("Stack overflow.", then a fresh boot). This counter spans
+    // the whole re-entrant chain rather than one call, so it closes the loop wherever it is closed.
+    private const int MaxLightningRecursion = 16;
+
+    private int _lightningRecursion;
 
     public override void Initialize()
     {
@@ -54,7 +66,7 @@ public sealed class LightningSystem : SharedLightningSystem
         // Mono
         EntProtoId? spawnOnHit = null;
         var proto = _proto.Index(lightningPrototype);
-        if (proto.TryGetComponent<LightningComponent>(out var lightningComp, EntityManager.ComponentFactory))
+        if (proto.TryComp<LightningComponent>(out var lightningComp, EntityManager.ComponentFactory))
             spawnOnHit = lightningComp.SpawnOnHit;
 
         ShootLightning(user, target, lightningPrototype, triggerLightningEvents);
@@ -91,7 +103,7 @@ public sealed class LightningSystem : SharedLightningSystem
         // Mono
         EntProtoId? spawnOnHit = null;
         var proto = _proto.Index(lightningPrototype);
-        if (proto.TryGetComponent<LightningComponent>(out var lightningComp, EntityManager.ComponentFactory))
+        if (proto.TryComp<LightningComponent>(out var lightningComp, EntityManager.ComponentFactory))
             spawnOnHit = lightningComp.SpawnOnHit;
 
         ShootRandomLightnings(user, range, boltCount, spawnOnHit, lightningPrototype, arcDepth, triggerLightningEvents);
@@ -105,28 +117,59 @@ public sealed class LightningSystem : SharedLightningSystem
         //TODO: This is still pretty bad for perf but better than before and at least it doesn't re-allocate
         // several hashsets every time
 
-        var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
-        _random.Shuffle(targets);
-        targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
-
-        int shootedCount = 0;
-        int count = -1;
-        while (shootedCount < boltCount)
+        // Triad: see MaxLightningRecursion. Bail before doing any work so a runaway cascade stops
+        // cheaply, and warn once per cascade rather than once per bolt.
+        if (_lightningRecursion >= MaxLightningRecursion)
         {
-            count++;
+            if (_lightningRecursion == MaxLightningRecursion)
+                Log.Warning($"Lightning from {ToPrettyString(user)} exceeded {MaxLightningRecursion} levels of recursion, abandoning the cascade.");
 
-            if (count >= targets.Count) { break; }
+            return;
+        }
 
-            var curTarget = targets[count];
-            if (!_random.Prob(curTarget.Comp.HitProbability)) //Chance to ignore target
-                continue;
+        _lightningRecursion++;
 
-            ShootLightning(user, targets[count].Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
-            if (arcDepth - targets[count].Comp.LightningResistance > 0)
+        try
+        {
+            var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
+            // Triad: strike-attempt hook. Each candidate may adjust its effective priority and hit chance
+            // from live state (tesla coils bid by charge headroom) before the volley is sorted and rolled.
+            // Targets with no subscriber keep their static values, so behavior is unchanged for them.
+            // _random.Shuffle(targets);
+            // targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
+            var candidates = new List<(Entity<LightningTargetComponent> Target, int Priority, float HitProbability)>(targets.Count);
+            foreach (var target in targets)
             {
-                ShootRandomLightnings(targets[count].Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - targets[count].Comp.LightningResistance, triggerLightningEvents);
+                var attempt = new LightningStrikeAttemptEvent(user, target.Comp.Priority, target.Comp.HitProbability);
+                RaiseLocalEvent(target, ref attempt);
+                candidates.Add((target, attempt.Priority, Math.Clamp(attempt.HitProbability, 0f, 1f)));
             }
-            shootedCount++;
+            _random.Shuffle(candidates);
+            candidates.Sort((x, y) => y.Priority.CompareTo(x.Priority));
+
+            int shootedCount = 0;
+            int count = -1;
+            while (shootedCount < boltCount)
+            {
+                count++;
+
+                if (count >= candidates.Count) { break; }
+
+                var curTarget = candidates[count];
+                if (!_random.Prob(curTarget.HitProbability)) //Chance to ignore target
+                    continue;
+
+                ShootLightning(user, curTarget.Target.Owner, spawnOnHit, lightningPrototype, triggerLightningEvents);
+                if (arcDepth - curTarget.Target.Comp.LightningResistance > 0)
+                {
+                    ShootRandomLightnings(curTarget.Target.Owner, range, 1, spawnOnHit, lightningPrototype, arcDepth - curTarget.Target.Comp.LightningResistance, triggerLightningEvents);
+                }
+                shootedCount++;
+            }
+        }
+        finally
+        {
+            _lightningRecursion--;
         }
     }
 }
@@ -138,3 +181,15 @@ public sealed class LightningSystem : SharedLightningSystem
 /// <param name="Target">The entity that was struck by lightning.</param>
 [ByRefEvent]
 public readonly record struct HitByLightningEvent(EntityUid Source, EntityUid Target);
+
+/// <summary>
+/// Triad: raised directed on each candidate target before a lightning volley is sorted and rolled.
+/// Subscribers may adjust <see cref="Priority"/> and <see cref="HitProbability"/> from live state
+/// (e.g. a tesla coil bidding by charge headroom). Both start at the target's static
+/// LightningTargetComponent values; HitProbability is clamped to [0, 1] after the event.
+/// </summary>
+/// <param name="Source">The entity shooting the lightning volley</param>
+/// <param name="Priority">Effective sort priority for this volley; higher is struck first</param>
+/// <param name="HitProbability">Effective chance this target is not skipped by the roll</param>
+[ByRefEvent]
+public record struct LightningStrikeAttemptEvent(EntityUid Source, int Priority, float HitProbability);

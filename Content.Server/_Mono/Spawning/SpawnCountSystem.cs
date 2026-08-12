@@ -9,11 +9,11 @@ namespace Content.Server._Mono.Spawning;
 /// <summary>
 /// This system handles spawning both stacked entities by consolidating them and non-stacked entities.
 /// </summary>
-public sealed class SpawnCountSystem : EntitySystem
+public sealed partial class SpawnCountSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StackSystem _stack = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -37,7 +37,7 @@ public sealed class SpawnCountSystem : EntitySystem
         var bound = 1;
         var stackCount = count;
 
-        if (entProto.TryGetComponent<StackComponent>(out var stack))
+        if (entProto.TryComp<StackComponent>(out var stack, Factory))
         {
             stackCount = stack.Count * count;
             var stackPrototype = _proto.Index<StackPrototype>(stack.StackTypeId);

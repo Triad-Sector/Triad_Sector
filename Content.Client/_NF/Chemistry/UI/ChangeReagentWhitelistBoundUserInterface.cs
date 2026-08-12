@@ -26,7 +26,7 @@ namespace Content.Client._NF.Chemistry.UI
         {
             base.Dispose(disposing);
             if (!disposing) return;
-            _window?.Dispose();
+            _window?.Close();
         }
         public void ChangeReagentWhitelist(ProtoId<ReagentPrototype> newReagentProto)
         {

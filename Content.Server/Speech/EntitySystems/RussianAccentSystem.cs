@@ -12,10 +12,10 @@ using Content.Server._Triad.Speech.EntitySystems; // Triad: AccentHelpers reloca
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class RussianAccentSystem : EntitySystem
+public sealed partial class RussianAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     // Slavic English drops articles: "pass me the wrench" -> "pass me wrench". Match a standalone
     // the/a/an as a whole word (with its following space) and strip it. Sentence-initial capital is

@@ -4,11 +4,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Materials.OreSilo;
 
-public abstract class SharedOreSiloSystem : EntitySystem
+public abstract partial class SharedOreSiloSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMaterialStorageSystem _materialStorage = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMaterialStorageSystem _materialStorage = default!;
+    [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private EntityQuery<OreSiloClientComponent> _clientQuery;
 
@@ -17,6 +17,7 @@ public abstract class SharedOreSiloSystem : EntitySystem
     {
         SubscribeLocalEvent<OreSiloComponent, ToggleOreSiloClientMessage>(OnToggleOreSiloClient);
         SubscribeLocalEvent<OreSiloComponent, ComponentShutdown>(OnSiloShutdown);
+        SubscribeLocalEvent<OreSiloComponent, MapInitEvent>(OnSiloMapInit); // Triad: drop links that did not survive the load
         Subs.BuiEvents<OreSiloComponent>(OreSiloUiKey.Key,
             subs =>
         {
@@ -27,8 +28,30 @@ public abstract class SharedOreSiloSystem : EntitySystem
         SubscribeLocalEvent<OreSiloClientComponent, GetStoredMaterialsEvent>(OnGetStoredMaterials);
         SubscribeLocalEvent<OreSiloClientComponent, ConsumeStoredMaterialsEvent>(OnConsumeStoredMaterials);
         SubscribeLocalEvent<OreSiloClientComponent, ComponentShutdown>(OnClientShutdown);
+        SubscribeLocalEvent<OreSiloClientComponent, MapInitEvent>(OnClientMapInit); // Triad: drop links that did not survive the load
 
         _clientQuery = GetEntityQuery<OreSiloClientComponent>();
+    }
+
+    // Triad: both sides of the link are DataFields, so a silo/client pair that sits on one grid is
+    // saved and restored intact, which is what we want. When only one side is in the save, though, the
+    // other side deserializes as a dangling reference and lands as entity 0. Prod shows the deserializer
+    // reporting exactly that ("invalid EntityUid reference ... component: OreSilo"), and the entity 0
+    // then reaches the transform and metadata lookups downstream, where each call logs an error with a
+    // full stack trace. Prune what did not come back rather than carrying a link to nothing.
+    private void OnSiloMapInit(Entity<OreSiloComponent> ent, ref MapInitEvent args)
+    {
+        if (ent.Comp.Clients.RemoveWhere(client => !Exists(client)) > 0)
+            Dirty(ent);
+    }
+
+    private void OnClientMapInit(Entity<OreSiloClientComponent> ent, ref MapInitEvent args)
+    {
+        if (ent.Comp.Silo is not { } silo || Exists(silo))
+            return;
+
+        ent.Comp.Silo = null;
+        Dirty(ent);
     }
 
     private void OnToggleOreSiloClient(Entity<OreSiloComponent> ent, ref ToggleOreSiloClientMessage args)
@@ -97,7 +120,7 @@ public abstract class SharedOreSiloSystem : EntitySystem
         if (args.LocalOnly)
             return;
 
-        if (ent.Comp.Silo is not { } silo)
+        if (!TryGetLinkedSilo(ent, out var silo))
             return;
 
         if (!CanTransmitMaterials(silo, ent))
@@ -121,7 +144,7 @@ public abstract class SharedOreSiloSystem : EntitySystem
         if (args.LocalOnly)
             return;
 
-        if (ent.Comp.Silo is not { } silo || !TryComp<MaterialStorageComponent>(silo, out var materialStorage))
+        if (!TryGetLinkedSilo(ent, out var silo) || !TryComp<MaterialStorageComponent>(silo, out var materialStorage))
             return;
 
         if (!CanTransmitMaterials(silo, ent))
@@ -146,11 +169,40 @@ public abstract class SharedOreSiloSystem : EntitySystem
     }
 
     /// <summary>
+    /// Resolves a client's linked silo, clearing the link if it points at something that no longer exists.
+    /// </summary>
+    // Triad: catches links that got past the map-init prune, such as a silo deleted while its client
+    // was out of scope. Clearing on the way through means one warning-free pass instead of a repeat
+    // every time something asks the client what materials it can see.
+    private bool TryGetLinkedSilo(Entity<OreSiloClientComponent> ent, out EntityUid silo)
+    {
+        silo = default;
+
+        if (ent.Comp.Silo is not { } linked)
+            return false;
+
+        if (!Exists(linked))
+        {
+            ent.Comp.Silo = null;
+            Dirty(ent);
+            return false;
+        }
+
+        silo = linked;
+        return true;
+    }
+
+    /// <summary>
     /// Checks if a given client fulfills the criteria to link/receive materials from an ore silo.
     /// </summary>
     [PublicAPI]
     public bool CanTransmitMaterials(Entity<OreSiloComponent?, TransformComponent?> silo, EntityUid client)
     {
+        // Triad: this is the funnel every link check goes through, so a dead uid on either side would
+        // otherwise reach Resolve and the transform lookups below and log there instead of failing quietly.
+        if (!Exists(silo.Owner) || !Exists(client))
+            return false;
+
         if (!Resolve(silo, ref silo.Comp1, ref silo.Comp2))
             return false;
 

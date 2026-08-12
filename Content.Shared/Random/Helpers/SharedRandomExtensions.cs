@@ -8,6 +8,37 @@ namespace Content.Shared.Random.Helpers
 {
     public static class SharedRandomExtensions
     {
+        // Triad: replacement for the engine's obsolete System.Random.NextFloat() extension.
+        // The obsoletion asks callers to move to IRobustRandom, but these call sites need a
+        // standalone seeded stream (salvage missions, dungeon gen, worldgen debris, parallax,
+        // tile variants) and are pinned to System.Random by signatures such as
+        // NumberSelector.Get, IWeightedRandomPrototype.Pick and TileSystem.PickVariant.
+        // TileSystem itself unwraps IRobustRandom via GetRandom() to feed them, so migrating
+        // the signatures would fight the design rather than follow it.
+        //
+        // The derivation below is the engine's, verbatim, so seeded sequences are bit-for-bit
+        // unchanged. Named distinctly because the engine extension stays in scope wherever
+        // Robust.Shared.Random is imported, and a matching signature would be ambiguous.
+        // Only for a System.Random receiver: an IRobustRandom has NextFloat() of its own.
+
+        /// <summary>
+        /// Returns a random float in [0, 1), matching the engine's obsolete
+        /// <c>System.Random.NextFloat()</c> derivation exactly.
+        /// </summary>
+        public static float NextFloatValue(this System.Random random)
+        {
+            return random.Next() * 4.6566128752458E-10f;
+        }
+
+        /// <summary>
+        /// Returns a random float in [<paramref name="minValue"/>, <paramref name="maxValue"/>),
+        /// matching the engine's obsolete <c>System.Random.NextFloat(float, float)</c> derivation.
+        /// </summary>
+        public static float NextFloatValue(this System.Random random, float minValue, float maxValue)
+        {
+            return random.NextFloatValue() * (maxValue - minValue) + minValue;
+        }
+
         public static string Pick(this IRobustRandom random, DatasetPrototype prototype)
         {
             return random.Pick(prototype.Values);
@@ -28,7 +59,7 @@ namespace Content.Shared.Random.Helpers
             var sum = picks.Values.Sum();
             var accumulated = 0f;
 
-            var rand = random.NextFloat() * sum;
+            var rand = random.NextFloatValue() * sum;
 
             foreach (var (key, weight) in picks)
             {
@@ -114,7 +145,7 @@ namespace Content.Shared.Random.Helpers
             var sum = weights.Values.Sum();
             var accumulated = 0f;
 
-            var rand = random.NextFloat() * sum;
+            var rand = random.NextFloatValue() * sum;
 
             foreach (var (key, weight) in weights)
             {

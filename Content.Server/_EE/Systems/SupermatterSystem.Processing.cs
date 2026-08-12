@@ -46,12 +46,19 @@ using Content.Shared.DeviceLinking;
 using Robust.Shared.Timing;
 using System.ComponentModel;
 using Content.Server.GameTicking; // Coyote
+using Content.Server._Triad.Supermatter; // Triad
+using Robust.Shared.Prototypes; // Triad
 
 namespace Content.Server._EE.Supermatter.Systems;
 
 public sealed partial class SupermatterSystem
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!; // Coyote
+    // Triad: removed — the only StartGameRule call went through SupermatterHallucinationRuleSystem
+    // instead, which needs to seed the target map between AddGameRule and StartGameRule.
+    // [Dependency] private readonly GameTicker _gameTicker = default!; // Coyote
+    // End Triad
+    [Dependency] private SupermatterHallucinationRuleSystem _hallucinationRule = default!; // Triad
+    [Dependency] private IPrototypeManager _prototype = default!; // Triad
     /// <summary>
     /// Handle power and radiation output depending on atmospheric things.
     /// </summary>
@@ -657,23 +664,32 @@ public sealed partial class SupermatterSystem
 
         var mix = _atmosphere.GetContainingMixture(uid, true, true);
 
-        if (mix is { })
-        {
-            // Triad: was mix.Remove(...) to measure the absorbed share, which permanently deleted
-            // 15% of the chamber gas per call; this runs every atmos tick while damage is past the
-            // delam point, so a 60s countdown vacuumed the chamber. Same value, no mutation.
-            var moles = mix.TotalMoles * sm.GasEfficiency;
+        // Triad: was mix.Remove(...) to measure the absorbed share, which permanently deleted
+        // 15% of the chamber gas per call; this runs every atmos tick while damage is past the
+        // delam point, so a 60s countdown vacuumed the chamber. Same value, no mutation.
+        var moles = mix is { } ? mix.TotalMoles * sm.GasEfficiency : 0f;
 
-            if (_config.GetCVar(ECCVars.SupermatterDoSingulooseDelam)
-                && moles >= _config.GetCVar(ECCVars.SupermatterMolePenaltyThreshold) * _config.GetCVar(ECCVars.SupermatterSingulooseMolesModifier))
-                return DelamType.Singulo;
-        }
+        var molePenalty = _config.GetCVar(ECCVars.SupermatterMolePenaltyThreshold);
+        var powerPenalty = _config.GetCVar(ECCVars.SupermatterPowerPenaltyThreshold);
+
+        // Triad: resonance cascade. This is the old "crazy conditions" TODO: the crystal is
+        // simultaneously over-pressured and over-powered, i.e. you managed to set up both a
+        // singuloose and a tesloose at once. Checked first because it outranks both.
+        var cascadeModifier = _config.GetCVar(ECCVars.SupermatterCascadeThresholdModifier);
+
+        if (_config.GetCVar(ECCVars.SupermatterDoCascadeDelam)
+            && moles >= molePenalty * cascadeModifier
+            && sm.Power >= powerPenalty * cascadeModifier)
+            return DelamType.Cascade;
+        // End Triad
+
+        if (_config.GetCVar(ECCVars.SupermatterDoSingulooseDelam)
+            && moles >= molePenalty * _config.GetCVar(ECCVars.SupermatterSingulooseMolesModifier))
+            return DelamType.Singulo;
 
         if (_config.GetCVar(ECCVars.SupermatterDoTeslooseDelam)
-            && sm.Power >= _config.GetCVar(ECCVars.SupermatterPowerPenaltyThreshold) * _config.GetCVar(ECCVars.SupermatterTesloosePowerModifier))
+            && sm.Power >= powerPenalty * _config.GetCVar(ECCVars.SupermatterTesloosePowerModifier))
             return DelamType.Tesla;
-
-        //TODO: Add resonance cascade when there's crazy conditions or a destabilizing crystal
 
         return DelamType.Explosion;
     }
@@ -734,38 +750,25 @@ public sealed partial class SupermatterSystem
         // Add hallucinations to every player on the map
         // TODO: change this from paracusia to actual hallucinations whenever those are real
         // Coyote: Removes checks, instead starts a hallucination gamerule, which theoretically ensures the comp is deleted once it's over.
-        _gameTicker.StartGameRule("CSSupermatterHallucination");
-        /*
-        var mobLookup = new HashSet<Entity<MobStateComponent>>();
-        _entityLookup.GetEntitiesOnMap<MobStateComponent>(mapId, mobLookup);
-
-        // These values match the paracusia disability, since we can't double up on paracusia
-        var paracusiaSounds = new SoundCollectionSpecifier("Paracusia");
-        var paracusiaMinTime = 0.1f;
-        var paracusiaMaxTime = 300f;
-        var paracusiaDistance = 7f;
-
-        foreach (var mob in mobLookup)
-        {
-            // Ignore silicons
-            if (HasComp<SiliconLawBoundComponent>(uid))
-                continue;
-
-            if (!EnsureComp<ParacusiaComponent>(mob, out var paracusia))
-            {
-                _paracusia.SetSounds(mob, paracusiaSounds, paracusia);
-                _paracusia.SetTime(mob, paracusiaMinTime, paracusiaMaxTime, paracusia);
-                _paracusia.SetDistance(mob, paracusiaDistance, paracusia);
-            }
-        }*/
+        // Triad: the rule id is data-driven and existence-checked. The Coyote code hardcoded
+        // "CSSupermatterHallucination", a prototype that was never ported into this fork, so
+        // StartGameRule threw here and the delamination payload below never ran at all.
+        // Also removed the ~20 line paracusia loop that used to sit here. It was already commented
+        // out upstream when Coyote swapped this to a game rule, so it was dead twice over; its
+        // behaviour now lives in SupermatterHallucinationRuleSystem, map-scoped and self-cleaning.
+        StartHallucinations(sm, mapId);
+        // End Triad
         // Coyote End.
 
         switch (sm.PreferredDelamType)
         {
+            // Triad: resonance cascade. The crystal collapses into a spreading crystalline growth
+            // instead of leaving a singularity or a tesla behind. Was an empty "one day..." stub.
             case DelamType.Cascade:
-                // one day...
-                // Spawn(sm.KudzuSpawnPrototype, xform.Coordinates);
+                Spawn(sm.KudzuSpawnPrototype, xform.Coordinates);
+                QueueDel(uid);
                 break;
+            // End Triad
 
             case DelamType.Singulo:
                 Spawn(sm.SingularitySpawnPrototype, Transform(uid).Coordinates);
@@ -782,6 +785,37 @@ public sealed partial class SupermatterSystem
             default:
                 _explosion.TriggerExplosive(uid);
                 break;
+        }
+    }
+
+    /// <summary>
+    /// Triad: starts the crystal's hallucination game rule, scoped to the map it delaminated on.
+    /// </summary>
+    /// <remarks>
+    /// This must not throw, ever. It runs immediately before the delamination payload, and the
+    /// payload only gets one shot at firing - <see cref="SupermatterComponent.Delaminated"/> is
+    /// already set by this point. Anything that escapes here silently disarms the crystal, which
+    /// is exactly what the missing "CSSupermatterHallucination" prototype did. Hallucinations are
+    /// flavor; the delamination is the point, so it wins any argument between the two.
+    /// </remarks>
+    private void StartHallucinations(SupermatterComponent sm, MapId mapId)
+    {
+        if (sm.HallucinationRulePrototype is not { } ruleId)
+            return;
+
+        if (!_prototype.HasIndex<EntityPrototype>(ruleId))
+        {
+            Log.Error($"Supermatter hallucination rule prototype '{ruleId}' does not exist; skipping hallucinations.");
+            return;
+        }
+
+        try
+        {
+            _hallucinationRule.StartOnMap(ruleId, mapId);
+        }
+        catch (Exception e)
+        {
+            Log.Error($"Failed to start supermatter hallucination rule '{ruleId}': {e}");
         }
     }
 

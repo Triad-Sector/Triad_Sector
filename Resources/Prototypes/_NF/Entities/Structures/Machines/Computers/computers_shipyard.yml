@@ -246,7 +246,7 @@
   id: ComputerShipyardSr
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: colonial staff shipyard console
-  description: Used to buy vessels exclusive to Colonial Outpost personnel.
+  description: Used to buy vessels exclusive to TFA personnel.
   components:
   - type: ActivatableUI
     key: enum.ShipyardConsoleUiKey.Sr

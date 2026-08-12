@@ -1,6 +1,6 @@
 - type: vessel
   id: Jester
-  parent: BaseVessel
+  parent: BaseVesselTdf
   name: TDF Jester
   description: A small cheap ship with salvaging equipment competent enough to do space mining alongside protecting itself from small incursion from light interceptor and boarder, named jester due to its crew jokingly said this ship look big enough for two people only to find out its only enough for one people.
   price: 63000

@@ -60,8 +60,8 @@ humanoid-profile-editor-markings-tab = Markings
 humanoid-profile-editor-flavortext-tab = Description
 
 # Company
-humanoid-profile-editor-company-tab = Company
-humanoid-profile-editor-company-label = Company:
+humanoid-profile-editor-company-tab = Minor Factions
+humanoid-profile-editor-company-label = Minor Faction:
 
 # Traits
 humanoid-profile-editor-traits-tab = Traits

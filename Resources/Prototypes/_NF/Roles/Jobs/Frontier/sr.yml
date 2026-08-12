@@ -5,17 +5,14 @@
   playTimeTracker: JobHeadOfPersonnel
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 108000 # Triad - 30 hours
+      time: 126000 # Triad - 35 hours
     - !type:DepartmentTimeRequirement
-      department: Security
-      time: 18000 # Triad - 5 hours
-    - !type:RoleTimeRequirement
-      role: JobSecurityGuard
+      department: Security # TDF playtime
       time: 18000 # Triad - 5 hours
     - !type:RoleTimeRequirement
       role: JobStc
       time: 18000 # Triad - 5 hours
-  whitelisted: true
+  whitelisted: false # Triad true -> false
   startingGear: SrGear
   alwaysUseSpawner: true
   assignedCompany: Colonial
@@ -43,6 +40,7 @@
         overrides:
         - Nfsd # TDF radio
         - Service # Colonial Staff radio
+      - type: IgnoreCommandCompanyAccessReader # So the overseer can access TDF and MD admin
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

@@ -11,6 +11,12 @@
     shape:
     - 0,0,4,0
     sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel_inhand_32x.rsi
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel_inhand_32x.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
   - type: GunSpreadModifier #Mono
     spread: 0.4
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed

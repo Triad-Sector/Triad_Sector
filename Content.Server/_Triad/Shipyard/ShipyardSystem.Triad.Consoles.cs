@@ -34,9 +34,9 @@ namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly ShuttleConsoleSystem _shuttleConsole = default!;
-    [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private ShuttleConsoleSystem _shuttleConsole = default!;
+    [Dependency] private TriadTamperPolicyService _tamperPolicy = default!;
 
     public void OnSaveMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSaveMessage args)
     {
@@ -496,8 +496,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 }
             }
         }
-        _records.Synchronize(shuttleStation!.Value);
-        _records.Synchronize(station);
+        // Triad: Synchronize resolves StationRecordsComponent and logs an error when it is missing.
+        // Not every station keeps records: the POI outposts a shipyard console can sit on, such as
+        // MarketFrontierOutpost, have none, so an unguarded call logged once per ship load there.
+        if (HasComp<StationRecordsComponent>(shuttleStation!.Value))
+            _records.Synchronize(shuttleStation!.Value);
+        if (HasComp<StationRecordsComponent>(station))
+            _records.Synchronize(station);
 
         // If we infer a vessel prototype, add any extra components it specifies.
         if (_prototypeManager.TryIndex(vessel, out var vesselProto))

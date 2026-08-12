@@ -29,7 +29,7 @@
   id: JobPlantManager
   groups:
   - ChiefEngineerHead
-  - ChiefEngineerNeck
+  - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
   - PlantManagerBackpack

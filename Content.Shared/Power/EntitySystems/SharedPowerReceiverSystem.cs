@@ -7,10 +7,10 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared.Power.EntitySystems;
 
-public abstract class SharedPowerReceiverSystem : EntitySystem
+public abstract partial class SharedPowerReceiverSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public abstract bool ResolveApc(EntityUid entity, [NotNullWhen(true)] ref SharedApcPowerReceiverComponent? component);
 

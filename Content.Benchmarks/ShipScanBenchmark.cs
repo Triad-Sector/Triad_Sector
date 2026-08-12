@@ -36,7 +36,7 @@ public class ShipScanBenchmark
 
     private TestPair _pair = default!;
     private IEntityManager _entMan = default!;
-    private IMapManager _mapMan = default!;
+    private SharedMapSystem _maps = default!;
     private MapId _mapId;
     private Box2Rotated _queryBounds;
     private List<Entity<MapGridComponent>> _grids = new();
@@ -50,8 +50,7 @@ public class ShipScanBenchmark
         _pair = PoolManager.GetServerClient(testContext: new ExternalTestContext(nameof(ShipScanBenchmark), TextWriter.Null))
             .GetAwaiter().GetResult();
         _entMan = _pair.Server.ResolveDependency<IEntityManager>();
-        _mapMan = _pair.Server.ResolveDependency<IMapManager>();
-        var mapSys = _entMan.System<SharedMapSystem>();
+        _maps = _entMan.System<SharedMapSystem>();
         var xformSys = _entMan.System<SharedTransformSystem>();
 
         var map = _pair.CreateTestMap().GetAwaiter().GetResult();
@@ -75,8 +74,8 @@ public class ShipScanBenchmark
             const float spacing = 40f;
             for (var i = 0; i < GridCount; i++)
             {
-                var grid = _mapMan.CreateGridEntity(_mapId);
-                mapSys.SetTiles(grid.Owner, grid.Comp, tiles);
+                var grid = _maps.CreateGridEntity(_mapId);
+                _maps.SetTiles(grid.Owner, grid.Comp, tiles);
                 var pos = new Vector2((i % perRow) * spacing, (i / perRow) * spacing);
                 xformSys.SetWorldPosition(grid.Owner, pos);
             }
@@ -102,7 +101,7 @@ public class ShipScanBenchmark
     public int FindGrids()
     {
         _grids.Clear();
-        _mapMan.FindGridsIntersecting(_mapId, _queryBounds, ref _grids, approx: true, includeMap: false);
+        _maps.FindGridsIntersecting(_mapId, _queryBounds, ref _grids, approx: true, includeMap: false);
         return _grids.Count;
     }
 }

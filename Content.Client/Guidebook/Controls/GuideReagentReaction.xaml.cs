@@ -21,8 +21,7 @@ namespace Content.Client.Guidebook.Controls;
 [UsedImplicitly, GenerateTypedNameReferences]
 public sealed partial class GuideReagentReaction : BoxContainer, ISearchableControl
 {
-    [ValidatePrototypeId<MixingCategoryPrototype>]
-    private const string DefaultMixingCategory = "DummyMix";
+    private static readonly ProtoId<MixingCategoryPrototype> DefaultMixingCategory = "DummyMix";
 
     private readonly IPrototypeManager _protoMan;
 

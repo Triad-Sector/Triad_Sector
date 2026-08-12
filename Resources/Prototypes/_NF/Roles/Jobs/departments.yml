@@ -19,7 +19,7 @@
   roles:
   - StationRepresentative
   - StationTrafficController
-  - SecurityGuard
+  # - SecurityGuard # Triad
   - CCServiceWorker # nyano
   - NFJanitor
   - MailCarrier # nyano

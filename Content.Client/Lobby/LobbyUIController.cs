@@ -29,18 +29,18 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby;
 
-public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>
+public sealed partial class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>
 {
-    [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IFileDialogManager _dialogManager = default!;
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly JobRequirementsManager _requirements = default!;
-    [Dependency] private readonly MarkingManager _markings = default!;
+    [Dependency] private IClientPreferencesManager _preferencesManager = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private IFileDialogManager _dialogManager = default!;
+    [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private JobRequirementsManager _requirements = default!;
+    [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
     [UISystemDependency] private readonly ClientInventorySystem _inventory = default!;
     [UISystemDependency] private readonly StationSpawningSystem _spawn = default!;
@@ -226,7 +226,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
             PreviewPanel.SetSprite(EntityUid.Invalid);
             PreviewPanel.SetSummaryText(string.Empty);
             PreviewPanel.SetBankBalanceText(string.Empty); // Frontier
-            PreviewPanel.SetCompanyText(string.Empty); // Company Display
+            PreviewPanel.SetCompanyText(string.Empty); // Minor Faction Display
             PreviewPanel.SetMonoCoinsText("MonoCoins: -1"); // MonoCoins Display
             return;
         }
@@ -251,15 +251,15 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         PreviewPanel.SetSummaryText(humanoid.Summary);
         PreviewPanel.SetBankBalanceText(humanoid.BankBalanceText); // Frontier
 
-        // Company Display
+        // Minor Faction Display
         var companyId = humanoid.Company;
         if (_prototypeManager.TryIndex<CompanyPrototype>(companyId, out var company))
         {
-            PreviewPanel.SetCompanyText($"[color=white]Company:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
         }
         else
         {
-            PreviewPanel.SetCompanyText($"[color=white]Company:[/color] [color=yellow]{companyId}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color=yellow]{companyId}[/color]");
         }
 
         // MonoCoins Display - Request balance from server and update display

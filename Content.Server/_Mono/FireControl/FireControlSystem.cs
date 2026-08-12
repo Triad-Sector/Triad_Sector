@@ -25,12 +25,12 @@ namespace Content.Server._Mono.FireControl;
 
 public sealed partial class FireControlSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly GunSystem _gun = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PowerReceiverSystem _power = default!;
-    [Dependency] private readonly RotateToFaceSystem _rotateToFace = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private GunSystem _gun = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PowerReceiverSystem _power = default!;
+    [Dependency] private RotateToFaceSystem _rotateToFace = default!;
     /// <summary>
     /// Dictionary of entities that have visualization enabled
     /// </summary>
@@ -485,7 +485,7 @@ public sealed partial class FireControlSystem : EntitySystem
         var weaponXform = Transform(weapon);
         var weaponCoords = _xform.GetMapCoordinates(weaponXform);
         var weaponPos = weaponCoords.Position;
-        var targetCoords = coords.ToMap(EntityManager, _xform);
+        var targetCoords = _xform.ToMapCoordinates(coords);
         var targetPos = targetCoords.Position;
 
         // Calculate direction

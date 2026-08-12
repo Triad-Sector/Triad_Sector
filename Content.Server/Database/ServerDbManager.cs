@@ -390,7 +390,7 @@ namespace Content.Server.Database
         public string? Payload { get; set; }
     }
 
-    public sealed class ServerDbManager : IServerDbManager
+    public sealed partial class ServerDbManager : IServerDbManager
     {
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",
@@ -404,11 +404,12 @@ namespace Content.Server.Database
             "db_executing_ops",
             "Amount of active database operations. Note that some operations may be waiting for a database connection.");
 
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IResourceManager _res = default!;
-        [Dependency] private readonly ILogManager _logMgr = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private IResourceManager _res = default!;
+        [Dependency] private ILogManager _logMgr = default!;
 
         private ServerDbBase _db = default!;
+        private ISawmill _sawmill = default!;
         private LoggingProvider _msLogProvider = default!;
         private ILoggerFactory _msLoggerFactory = default!;
 
@@ -421,6 +422,7 @@ namespace Content.Server.Database
 
         public void Init()
         {
+            _sawmill = _logMgr.GetSawmill("db.manager");
             _msLogProvider = new LoggingProvider(_logMgr);
             _msLoggerFactory = LoggerFactory.Create(builder =>
             {
@@ -1183,7 +1185,7 @@ namespace Content.Server.Database
                 Password = pass
             }.ConnectionString;
 
-            Logger.DebugS("db.manager", $"Using Postgres \"{host}:{port}/{db}\"");
+            _sawmill.Debug($"Using Postgres \"{host}:{port}/{db}\"");
 
             builder.UseNpgsql(connectionString);
             SetupLogging(builder);
@@ -1206,12 +1208,12 @@ namespace Content.Server.Database
             if (!inMemory)
             {
                 var finalPreferencesDbPath = Path.Combine(_res.UserData.RootDir!, configPreferencesDbPath);
-                Logger.DebugS("db.manager", $"Using SQLite DB \"{finalPreferencesDbPath}\"");
+                _sawmill.Debug($"Using SQLite DB \"{finalPreferencesDbPath}\"");
                 getConnection = () => new SqliteConnection($"Data Source={finalPreferencesDbPath}");
             }
             else
             {
-                Logger.DebugS("db.manager", "Using in-memory SQLite DB");
+                _sawmill.Debug("Using in-memory SQLite DB");
                 _sqliteInMemoryConnection = new SqliteConnection("Data Source=:memory:");
                 // When using an in-memory DB we have to open it manually
                 // so EFCore doesn't open, close and wipe it every operation.

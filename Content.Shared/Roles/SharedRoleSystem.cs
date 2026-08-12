@@ -17,14 +17,14 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Roles;
 
-public abstract class SharedRoleSystem : EntitySystem
+public abstract partial class SharedRoleSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedMindSystem _minds = default!;
-    [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private SharedMindSystem _minds = default!;
+    [Dependency] private IPrototypeManager _prototypes = default!;
 
     private JobRequirementOverridePrototype? _requirementOverride;
 
@@ -183,7 +183,13 @@ public abstract class SharedRoleSystem : EntitySystem
         {
             //TODO: This is not tied to the player on the Admin Log filters.
             //Probably only happens when Job Role is added on initial spawn, before the mind entity is put in a mob
-            Log.Error($"{ToPrettyString(mindId)} does not have an OwnedEntity!");
+            // Triad: production confirms the guess above. Over four days this fired for four minds,
+            // three of them StationAiBrainVessel takeovers that each also logged a GhostRoleRaffle
+            // teardown, and one MobObserver ghost. So it is the documented spawn ordering, roles
+            // landing on a mind before it is put in a body, and not a leak or an orphaned mind.
+            // Downgraded to Warning because it stays worth seeing: the admin log line below loses
+            // player attribution, which is what the TODO above is about. It is not an error.
+            Log.Warning($"{ToPrettyString(mindId)} does not have an OwnedEntity! Role added before the mind was attached to a body; the admin log entry below is not tied to the player.");
             _adminLogger.Add(LogType.Mind,
                 LogImpact.Low,
                 $"{name} added to {ToPrettyString(mindId)}");
@@ -256,7 +262,9 @@ public abstract class SharedRoleSystem : EntitySystem
 
         if (comp.OwnedEntity is null)
         {
-            Log.Error($"{ToPrettyString(mind)} does not have an OwnedEntity!");
+            // Triad: same spawn-ordering case as MindAddRoleDo above, reached through
+            // MindRolesUpdate when the role set changes on a mind that is not in a body yet.
+            Log.Warning($"{ToPrettyString(mind)} does not have an OwnedEntity! Role type changed before the mind was attached to a body; the admin log entry below is not tied to the player.");
             _adminLogger.Add(LogType.Mind,
                 LogImpact.High,
                 $"Role Type of {ToPrettyString(mind)} changed to {roleTypeId}");

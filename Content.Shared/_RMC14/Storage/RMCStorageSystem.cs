@@ -3,9 +3,9 @@ using Content.Shared.Whitelist;
 
 namespace Content.Shared._RMC14.Storage;
 
-public sealed class RMCStorageSystem : EntitySystem
+public sealed partial class RMCStorageSystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
 
     private EntityQuery<StorageComponent> _storageQuery;
 

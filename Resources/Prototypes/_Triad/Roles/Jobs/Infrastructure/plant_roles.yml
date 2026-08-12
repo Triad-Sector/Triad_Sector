@@ -3,6 +3,10 @@
   name: job-name-plant-manager
   description: job-description-plant-manager
   playTimeTracker: JobPlantManager
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Infrastructure
+      time: 90000 # 25 hrs
   startingGear: PlantManagerGear
   alwaysUseSpawner: true
   icon: "JobIconPlantManager"
@@ -52,6 +56,9 @@
   name: job-name-plant-technician
   description: job-description-plant-technician
   playTimeTracker: JobPlantTechnician
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 16200 # 4.5 hours
   startingGear: PlantTechnicianGear
   alwaysUseSpawner: true
   icon: "JobIconPlantTechnician"

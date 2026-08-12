@@ -1,4 +1,4 @@
-﻿using Content.Server.Actions;
+using Content.Server.Actions;
 using Content.Server.Popups;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Shared.Prototypes;
@@ -7,10 +7,10 @@ namespace Content.Server.Xenoarchaeology.XenoArtifacts;
 
 public partial class ArtifactSystem
 {
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private PopupSystem _popup = default!;
 
-    [ValidatePrototypeId<EntityPrototype>] private const string ArtifactActivateActionId = "ActionArtifactActivate";
+    private static readonly EntProtoId ArtifactActivateActionId = "ActionArtifactActivate";
 
     /// <summary>
     ///     Used to add the artifact activation action (hehe), which lets sentient artifacts activate themselves,

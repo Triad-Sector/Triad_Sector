@@ -16,8 +16,9 @@ public sealed class MagazineVisualsSpriteTest
     [Test]
     public async Task MagazineVisualsSpritesExist()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
         var client = pair.Client;
+        var spriteSystem = client.System<SpriteSystem>();
         var toTest = new List<(int, string)>();
         var protos = pair.GetPrototypesWithComponent<MagazineVisualsComponent>();
 
@@ -36,9 +37,9 @@ public sealed class MagazineVisualsSpriteTest
                         @$"{proto.ID} has MagazineVisualsComponent but no AppearanceComponent.");
 
                     toTest.Clear();
-                    if (sprite.LayerMapTryGet(GunVisualLayers.Mag, out var magLayerId))
+                    if (spriteSystem.LayerMapTryGet((uid, sprite), GunVisualLayers.Mag, out var magLayerId, false))
                         toTest.Add((magLayerId, ""));
-                    if (sprite.LayerMapTryGet(GunVisualLayers.MagUnshaded, out var magUnshadedLayerId))
+                    if (spriteSystem.LayerMapTryGet((uid, sprite), GunVisualLayers.MagUnshaded, out var magUnshadedLayerId, false))
                         toTest.Add((magUnshadedLayerId, "-unshaded"));
 
                     Assert.That(
@@ -49,7 +50,7 @@ public sealed class MagazineVisualsSpriteTest
                     var start = visuals.ZeroVisible ? 0 : 1;
                     foreach (var (id, midfix) in toTest)
                     {
-                        Assert.That(sprite.TryGetLayer(id, out var layer));
+                        Assert.That(spriteSystem.TryGetLayer((uid, sprite), id, out var layer, false));
                         var rsi = layer.ActualRsi;
                         for (var i = start; i < visuals.MagSteps; i++)
                         {

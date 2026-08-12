@@ -71,4 +71,10 @@ public sealed partial class SalvageExpeditionComponent : SharedSalvageExpedition
     [ViewVariables(VVAccess.ReadWrite), DataField("rewards", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
     public List<string> Rewards = default!;
     // End Frontier: expedition difficulty and rewards
+
+    /// <summary>
+    /// next time to check for autoabort
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public TimeSpan NextAutoAbortCheck = TimeSpan.Zero;
 }

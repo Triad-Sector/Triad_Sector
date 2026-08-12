@@ -9,7 +9,10 @@ using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Ghost;
+using Content.Shared.Implants;
+using Content.Shared.Implants.Components;
 using Content.Shared.Maps;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Parallax;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -101,6 +104,7 @@ public sealed partial class ShuttleSystem
     {
         SubscribeLocalEvent<StationPostInitEvent>(OnStationPostInit);
         SubscribeLocalEvent<FTLComponent, ComponentShutdown>(OnFtlShutdown);
+        SubscribeLocalEvent<FtlVisualizerComponent, EntityTerminatingEvent>(OnVisualizerTermination); // Triad
 
         _bodyQuery = GetEntityQuery<BodyComponent>();
         _immuneQuery = GetEntityQuery<FTLSmashImmuneComponent>();
@@ -119,6 +123,26 @@ public sealed partial class ShuttleSystem
     {
         QueueDel(ent.Comp.VisualizerEntity);
         ent.Comp.VisualizerEntity = null;
+    }
+
+    /// <summary>
+    /// Clears a shuttle's visualizer reference when the visualizer dies on its own.
+    /// </summary>
+    // Triad: only the shuttle side of this pair was handled. The visualizer is spawned attached to
+    // TargetCoordinates, so when that target grid is removed mid-flight the visualizer is deleted as
+    // its child and none of the three QueueDel/null sites run. FTLComponent then kept a dead uid in
+    // VisualizerEntity, which is an AutoNetworkedField, so every PVS serialization of the shuttle
+    // called GetNetEntity on it and logged a resolve error with a full stack capture, on the game
+    // state hot path, for the rest of the FTL.
+    private void OnVisualizerTermination(Entity<FtlVisualizerComponent> ent, ref EntityTerminatingEvent args)
+    {
+        // Grid is the shuttle this visualizer was spawned for. Guard the uid match so a stale
+        // visualizer cannot clear the reference to whatever replaced it.
+        if (!TryComp<FTLComponent>(ent.Comp.Grid, out var ftl) || ftl.VisualizerEntity != ent.Owner)
+            return;
+
+        ftl.VisualizerEntity = null;
+        Dirty(ent.Comp.Grid, ftl);
     }
 
     private void OnStationPostInit(ref StationPostInitEvent ev)
@@ -367,7 +391,7 @@ public sealed partial class ShuttleSystem
         string? priorityTag = null)
     {
         // TODO: Validation
-        if (!TryComp<FTLDestinationComponent>(_mapManager.GetMapEntityId(_transform.GetMapId(target)), out var dest))
+        if (!TryComp<FTLDestinationComponent>(Maps.GetMapOrInvalid(_transform.GetMapId(target)), out var dest))
         {
             return;
         }
@@ -409,14 +433,23 @@ public sealed partial class ShuttleSystem
         }
 
         var hyperspace = EnsureComp<FTLComponent>(shuttleUid);
-        SetupFTL(hyperspace, startupTime, hyperspaceTime, priorityTag);
+        if (!SetupFTL((shuttleUid, hyperspace), component, startupTime, hyperspaceTime, priorityTag)) // Triad: bail instead of stomping a trip in progress
+            return;
 
         if (TryComp<DockingComponent>(target, out var dock) && dock.Docked && dock.DockedWith != null)
         {
             hyperspace.TargetCoordinates = new EntityCoordinates(dock.DockedWith.Value, Vector2.Zero);
             hyperspace.TargetAngle = _transform.GetWorldRotation(dock.DockedWith.Value) + Math.PI;
         }
-        else if (TryFTLDock(shuttleUid, component, target, out var config))
+        // Triad: this used to call TryFTLDock purely to read config.Coordinates, but that method is not
+        // a query. Its own summary says it "bypasses FTL travel time": it runs GetDockingConfig and
+        // then FTLDock, which SetCoordinates the shuttle straight onto the target, and on failure falls
+        // back to TryFTLProximity, which also moves it. So every FTLToDock teleported the shuttle to
+        // its destination during setup and only then ran the travel sequence that moved it again.
+        // That is the instant-arrival-then-FTL behaviour, and it is why arrival timing never lined up.
+        // GetDockingConfig on its own answers the same question without touching the shuttle; the real
+        // docking still happens in UpdateFTLArriving where it belongs.
+        else if (_dockSystem.GetDockingConfig(shuttleUid, target, priorityTag) is { } config)
         {
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
@@ -436,20 +469,47 @@ public sealed partial class ShuttleSystem
 
     /// <summary>
     /// Sets up the FTL component with startup and travel times and priority tag.
+    /// Returns false if the shuttle is already in flight and was left alone.
     /// </summary>
-    private void SetupFTL(FTLComponent hyperspace, float? startupTime, float? hyperspaceTime, string? priorityTag)
+    private bool SetupFTL(Entity<FTLComponent> hyperspace, ShuttleComponent shuttle, float? startupTime, float? hyperspaceTime, string? priorityTag)
     {
+        // Triad: callers reach this through EnsureComp, so a shuttle mid-trip would get its travel
+        // restarted from the top. Mirror the TrySetupFTL guard and leave the existing trip running.
+        if (hyperspace.Comp.State is FTLState.Starting or FTLState.Travelling or FTLState.Arriving)
+        {
+            Log.Warning($"Tried queuing {ToPrettyString(hyperspace.Owner)} which is already in FTL state {hyperspace.Comp.State}?");
+            return false;
+        }
+
         startupTime ??= DefaultStartupTime;
         hyperspaceTime ??= DefaultTravelTime;
 
-        hyperspace.StartupTime = startupTime.Value;
-        hyperspace.TravelTime = hyperspaceTime.Value;
-        hyperspace.StateTime = StartEndTime.FromStartDuration(
+        hyperspace.Comp.StartupTime = startupTime.Value;
+        hyperspace.Comp.TravelTime = hyperspaceTime.Value;
+        hyperspace.Comp.StateTime = StartEndTime.FromStartDuration(
             _gameTiming.CurTime,
-            TimeSpan.FromSeconds(hyperspace.StartupTime));
-        hyperspace.PriorityTag = priorityTag;
+            TimeSpan.FromSeconds(hyperspace.Comp.StartupTime));
+        hyperspace.Comp.PriorityTag = priorityTag;
+
+        // Triad: this path never set State, so a freshly ensured component sat at Available,
+        // UpdateHyperspace took its default arm, logged an invalid state and stripped the component.
+        // The shuttle never actually travelled and the caller re-queued it on its own timer. The rest
+        // of this block is the startup work TrySetupFTL does that this path was also missing.
+        hyperspace.Comp.State = FTLState.Starting;
+
+        _thruster.DisableLinearThrusters(shuttle);
+        _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.North);
+        _thruster.SetAngularThrust(shuttle, false);
+
+        var audio = _audio.PlayPvs(_startupSound, hyperspace.Owner);
+        _audio.SetGridAudio(audio);
+        hyperspace.Comp.StartupStream = audio?.Entity;
+
+        // Make sure the map is setup before we leave to avoid pop-in (e.g. parallax).
+        EnsureFTLMap();
 
         _console.RefreshShuttleConsoles(hyperspace.Owner);
+        return true;
     }
 
     /// <summary>
@@ -459,6 +519,10 @@ public sealed partial class ShuttleSystem
     {
         if (!dockedShuttles.Add(shuttleUid))
             return;  // Already processed this shuttle
+
+        // Triad: a solo grid is the whole travel group, so stop before walking its docks at all.
+        if (HasComp<FTLSoloComponent>(shuttleUid))
+            return;
 
         var docks = _dockSystem.GetDocks(shuttleUid);
         foreach (var dock in docks)
@@ -473,8 +537,12 @@ public sealed partial class ShuttleSystem
 
             // If the docked shuttle has no FTLLockComponent or has it but it's disabled, skip adding it
             // to the FTL travel group, but still check its connections for potential conflicts
-            EnsureComp<FTLLockComponent>(dockedGridUid, out var ftlLock);
-            if (!ftlLock.Enabled)
+            // Triad: this used to EnsureComp, which made the "has no FTLLockComponent" half of the
+            // comment above unreachable: it created the component on whatever was docked and then read
+            // its own default of Enabled = true as permission to drag that grid along. Only ships get a
+            // lock for real, from the shipyard and the console toggle, so POIs and stations were being
+            // hauled across the sector by anything that undocked and jumped. Ask, do not fabricate.
+            if (!TryComp<FTLLockComponent>(dockedGridUid, out var ftlLock) || !ftlLock.Enabled)
             {
                 // Still check this shuttle's connections without adding it to dockedShuttles
                 var nestedDocks = _dockSystem.GetDocks(dockedGridUid);
@@ -493,8 +561,8 @@ public sealed partial class ShuttleSystem
                         continue;
 
                     // Check if this grid should be added to the FTL travel group
-                    EnsureComp<FTLLockComponent>(nestedDockedGridUid, out var nestedFtlLock);
-                    if (nestedFtlLock.Enabled)
+                    // Triad: same fabricated-consent bug as above, see the comment there.
+                    if (TryComp<FTLLockComponent>(nestedDockedGridUid, out var nestedFtlLock) && nestedFtlLock.Enabled)
                     {
                         GetAllDockedShuttles(nestedDockedGridUid, dockedShuttles);
                     }
@@ -668,18 +736,6 @@ public sealed partial class ShuttleSystem
         comp.StateTime = StartEndTime.FromCurTime(_gameTiming, DefaultArrivalTime);
         comp.State = FTLState.Arriving;
 
-        // Create visualizer if it doesn't exist
-        if (comp.VisualizerProto != null && comp.VisualizerEntity == null)
-        {
-            comp.VisualizerEntity = SpawnAttachedTo(entity.Comp1.VisualizerProto, entity.Comp1.TargetCoordinates);
-            DebugTools.Assert(Transform(comp.VisualizerEntity.Value).ParentUid == entity.Comp1.TargetCoordinates.EntityId);
-            var visuals = Comp<FtlVisualizerComponent>(comp.VisualizerEntity.Value);
-            visuals.Grid = entity.Owner;
-            Dirty(comp.VisualizerEntity.Value, visuals);
-            _transform.SetLocalRotation(comp.VisualizerEntity.Value, comp.TargetAngle);
-            _pvs.AddGlobalOverride(comp.VisualizerEntity.Value);
-        }
-
         _thruster.DisableLinearThrusters(shuttle);
         _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.South);
 
@@ -770,16 +826,25 @@ public sealed partial class ShuttleSystem
         // Docking FTL
         else if (HasComp<MapGridComponent>(target.EntityId) && !HasComp<MapComponent>(target.EntityId))
         {
-            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, comp.TargetAngle);
+            // Triad: carry the priority tag through to arrival too, otherwise a bus that picked its
+            // designated berth on departure still lands in an arbitrary airlock when it gets there.
+            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, comp.TargetAngle, priorityTag: comp.PriorityTag);
             var mapCoordinates = _transform.ToMapCoordinates(target);
 
             // Couldn't dock somehow so just fallback to regular position FTL.
             if (config == null)
             {
+                // Triad: this is the one placement path with no overlap validation behind it, so it
+                // must never fire silently. If a shuttle ends up crooked inside a hull, this line is
+                // the receipt.
+                Log.Warning($"FTL arrival: no docking config for {ToPrettyString(uid)} at {ToPrettyString(target.EntityId)} (tag: {comp.PriorityTag ?? "none"}); falling back to unvalidated proximity placement.");
                 TryFTLProximity(uid, target.EntityId);
             }
             else
             {
+                // Triad: receipt for the docked path; pairs chosen at arrival time. Info on purpose:
+                // sawmill debug is suppressed by default and this is once per arrival.
+                Log.Info($"FTL arrival: docking {ToPrettyString(uid)} at {ToPrettyString(target.EntityId)} via {config.Docks.Count} pair(s): {string.Join(", ", config.Docks.Select(d => $"{d.DockAUid}->{d.DockBUid}"))}");
                 FTLDock((uid, xform), config);
             }
 
@@ -860,12 +925,12 @@ public sealed partial class ShuttleSystem
         _audio.SetGridAudio(audio);
 
         // Re-enable map if it was paused.
-        if (TryComp<FTLDestinationComponent>(_mapManager.GetMapEntityId(mapId), out var dest))
+        if (TryComp<FTLDestinationComponent>(Maps.GetMapOrInvalid(mapId), out var dest))
         {
             dest.Enabled = true;
         }
 
-        _mapManager.SetMapPaused(mapId, false);
+        Maps.SetPaused(mapId, false);
         Smimsh(uid, xform: xform);
 
         // Add cooldown before removing the FTL component
@@ -898,6 +963,23 @@ public sealed partial class ShuttleSystem
             {
                 Enable(uid, component: body, shuttle: entity.Comp2);
             }
+        }
+
+        // COYOTE: when the shuttle arrives, go through all the mobs on the grid
+        // and attempt to set off their deathrattle implants
+        var shuttleGridId = xform.GridUid;
+        var implantedQuery = EntityQueryEnumerator<ImplantedComponent, MobStateComponent, TransformComponent>();
+        while (implantedQuery.MoveNext(
+           out var mobUid,
+           out var implanted,
+           out var mobState,
+           out var mobXform))
+        {
+            if (mobXform.GridUid != shuttleGridId)
+                continue;
+
+            var deathrattleEvent = new ReTriggerRattleImplantEvent(mobUid, mobState.CurrentState);
+            RaiseLocalEvent(mobUid, deathrattleEvent);
         }
     }
 
@@ -1055,7 +1137,7 @@ public sealed partial class ShuttleSystem
         // only toss if its on lattice/space
         var tile = _mapSystem.GetTileRef(shuttleEntity, shuttleGrid, childXform.Coordinates);
 
-        if (!tile.IsSpace(_tileDefManager))
+        if (!_turf.IsSpace(tile))
             return;
 
         var throwDirection = childXform.LocalPosition - shuttleBody.LocalCenter;
@@ -1141,6 +1223,13 @@ public sealed partial class ShuttleSystem
                 var bWorldPos = _transform.GetWorldPosition(dockBXform) + dockBXform.WorldRotation.ToWorldVec() / 2f;
 
                 var delta = bWorldPos - aWorldPos;
+
+                // Triad: this snap-translation happens AFTER the config's coordinates were validated
+                // for overlap, and nothing re-validates the shifted position. For a well-formed config
+                // it is millimetres; anything tile-scale means the shuttle is being moved somewhere
+                // nothing approved, so leave a receipt.
+                if (delta.LengthSquared() > 0.25f)
+                    Log.Warning($"FTLDock snap-translation moved {ToPrettyString(shuttle.Owner)} by {delta.Length():F2}m off its validated position (pair {config.Docks[0].DockAUid}->{config.Docks[0].DockBUid}).");
 
                 // Translate the entire shuttle grid by delta so the first pair coincides exactly.
                 // Important: only adjust position (not rotation) to avoid drifting post-dock.
@@ -1253,7 +1342,7 @@ public sealed partial class ShuttleSystem
         while (iteration < FTLProximityIterations)
         {
             grids.Clear();
-            _mapManager.FindGridsIntersecting(targetXform.MapID, targetAABB, ref grids);
+            _mapSystem.FindGridsIntersecting(targetXform.MapID, targetAABB, ref grids);
             if (grids.Count == 0)
                 break;
 
@@ -1277,8 +1366,7 @@ public sealed partial class ShuttleSystem
                 else
                 {
                     var margin = _random.NextFloat(-maxMargin, maxMargin);
-                    targetAABB.Left += margin;
-                    targetAABB.Right += margin;
+                    targetAABB = targetAABB.Translated(new Vector2(margin, 0f)); // Triad: edge-wise setters transiently invert the box when margin exceeds its size, which asserts under box validation
                 }
 
                 if (positiveY == true)
@@ -1296,8 +1384,7 @@ public sealed partial class ShuttleSystem
                 else
                 {
                     var margin = _random.NextFloat(-maxMargin, maxMargin);
-                    targetAABB.Bottom += margin;
-                    targetAABB.Top += margin;
+                    targetAABB = targetAABB.Translated(new Vector2(0f, margin)); // Triad: same transient inversion as the X branch above
                 }
             }
             iteration++;
@@ -1549,7 +1636,7 @@ public sealed partial class ShuttleSystem
         LeaveNoFTLBehind((entity.Owner, xform), oldGridMatrix, oldMapUid);
 
         // Reset rotation so they always face the same direction.
-        xform.LocalRotation = Angle.Zero;
+        _transform.SetLocalRotation(entity.Owner, Angle.Zero, xform);
         _index += width + Buffer;
 
         // Frontier: rollover coordinates
@@ -1607,6 +1694,23 @@ public sealed partial class ShuttleSystem
 
         var ev = new FTLStartedEvent(uid, comp.TargetCoordinates, fromMapUid, fromMatrix, fromRotation);
         RaiseLocalEvent(uid, ref ev, true);
+
+        // Triad: the landing marker used to spawn at the Travelling -> Arriving transition, which gave
+        // anyone standing on the target only shuttle.arrival_time to move, 5 seconds by default. A
+        // shuttle on the FTL map is already committed, there is no way to abort a jump once it is under
+        // way, so the destination is known and final from here. Spawning the marker now warns for the
+        // whole travel leg instead of the last few seconds of it.
+        if (comp.VisualizerProto != null && comp.VisualizerEntity == null)
+        {
+            comp.VisualizerEntity = SpawnAttachedTo(entity.Comp1.VisualizerProto, entity.Comp1.TargetCoordinates);
+            DebugTools.Assert(Transform(comp.VisualizerEntity.Value).ParentUid == entity.Comp1.TargetCoordinates.EntityId);
+            var visuals = Comp<FtlVisualizerComponent>(comp.VisualizerEntity.Value);
+            visuals.Grid = entity.Owner;
+            Dirty(comp.VisualizerEntity.Value, visuals);
+            _transform.SetLocalRotation(comp.VisualizerEntity.Value, comp.TargetAngle);
+            _pvs.AddGlobalOverride(comp.VisualizerEntity.Value);
+        }
+
 
         // Audio
         var wowdio = _audio.PlayPvs(comp.TravelSound, uid);

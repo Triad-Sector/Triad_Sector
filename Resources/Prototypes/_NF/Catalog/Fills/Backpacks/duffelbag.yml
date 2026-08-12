@@ -74,11 +74,11 @@
   name: pilot EVA bundle
   suffix: Filled
 
-- type: entity
-  parent: [ ClothingBackpackDuffelCaptain, StorageFillEVASuitSr ]
-  id: ClothingBackpackDuffelEVABundleSr
-  name: overseer EVA bundle
-  suffix: Filled
+#- type: entity
+#  parent: [ ClothingBackpackDuffelCaptain, StorageFillEVASuitSr ]
+#  id: ClothingBackpackDuffelEVABundleSr
+#  name: overseer EVA bundle
+#  suffix: Filled
 
 - type: entity
   parent: [ ClothingBackpackDuffelCaptain, StorageFillEVASuitCaptain ]

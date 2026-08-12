@@ -6,11 +6,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Clothing.EntitySystems;
 
-public sealed class HideLayerClothingSystem : EntitySystem
+public sealed partial class HideLayerClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!; // Triad - fix modsuit hide layers not updating
+    [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private InventorySystem _inventory = default!; // Triad - fix modsuit hide layers not updating
 
     public override void Initialize()
     {

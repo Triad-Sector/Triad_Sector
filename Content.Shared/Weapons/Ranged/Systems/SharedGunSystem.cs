@@ -46,33 +46,32 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem : EntitySystem
 {
-    [Dependency] private   readonly ActionBlockerSystem _actionBlockerSystem = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly IMapManager MapManager = default!;
-    [Dependency] private   readonly INetManager _netManager = default!;
-    [Dependency] protected readonly IPrototypeManager ProtoManager = default!;
-    [Dependency] protected readonly IRobustRandom Random = default!;
-    [Dependency] protected readonly ISharedAdminLogManager Logs = default!;
-    [Dependency] protected readonly DamageableSystem Damageable = default!;
-    [Dependency] protected readonly ExamineSystemShared Examine = default!;
-    [Dependency] private   readonly ItemSlotsSystem _slots = default!;
-    [Dependency] private   readonly RechargeBasicEntityAmmoSystem _recharge = default!;
-    [Dependency] protected readonly SharedActionsSystem Actions = default!;
-    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] protected readonly SharedAudioSystem Audio = default!;
-    [Dependency] private   readonly SharedCombatModeSystem _combatMode = default!;
-    [Dependency] protected readonly SharedContainerSystem Containers = default!;
-    [Dependency] private   readonly SharedGravitySystem _gravity = default!;
-    [Dependency] protected readonly SharedPointLightSystem Lights = default!;
-    [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
-    [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
-    [Dependency] protected readonly SharedProjectileSystem Projectiles = default!;
-    [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] protected readonly TagSystem TagSystem = default!;
-    [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
-    [Dependency] private   readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] protected readonly SharedGunPredictionSystem? _gunPrediction = default!;
+    [Dependency] private   ActionBlockerSystem _actionBlockerSystem = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] private   INetManager _netManager = default!;
+    [Dependency] protected IPrototypeManager ProtoManager = default!;
+    [Dependency] protected IRobustRandom Random = default!;
+    [Dependency] protected ISharedAdminLogManager Logs = default!;
+    [Dependency] protected DamageableSystem Damageable = default!;
+    [Dependency] protected ExamineSystemShared Examine = default!;
+    [Dependency] private   ItemSlotsSystem _slots = default!;
+    [Dependency] private   RechargeBasicEntityAmmoSystem _recharge = default!;
+    [Dependency] protected SharedActionsSystem Actions = default!;
+    [Dependency] protected SharedAppearanceSystem Appearance = default!;
+    [Dependency] protected SharedAudioSystem Audio = default!;
+    [Dependency] private   SharedCombatModeSystem _combatMode = default!;
+    [Dependency] protected SharedContainerSystem Containers = default!;
+    [Dependency] private   SharedGravitySystem _gravity = default!;
+    [Dependency] protected SharedPointLightSystem Lights = default!;
+    [Dependency] protected SharedPopupSystem PopupSystem = default!;
+    [Dependency] protected SharedPhysicsSystem Physics = default!;
+    [Dependency] protected SharedProjectileSystem Projectiles = default!;
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
+    [Dependency] protected TagSystem TagSystem = default!;
+    [Dependency] protected ThrowingSystem ThrowingSystem = default!;
+    [Dependency] private   UseDelaySystem _useDelay = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] protected SharedGunPredictionSystem? _gunPrediction = default!;
 
     protected EntityQuery<PhysicsComponent> _physQuery; // Mono
     protected EntityQuery<ProjectileComponent> _projQuery; // Mono
@@ -592,7 +591,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     // Mono
     public EntityPrototype GetBulletPrototype(EntityPrototype cartridge)
     {
-        if (cartridge.TryGetComponent<CartridgeAmmoComponent>(out var cartComp, Factory))
+        if (cartridge.TryComp<CartridgeAmmoComponent>(out var cartComp, Factory))
         {
             return ProtoManager.Index(cartComp.Prototype);
         }
@@ -612,9 +611,9 @@ public abstract partial class SharedGunSystem : EntitySystem
     public DamageSpecifier GetBulletDamage(EntityPrototype bullet)
     {
         var shoot = GetBulletPrototype(bullet);
-        if (shoot.TryGetComponent<HitscanBasicDamageComponent>(out var hitscan, Factory))
+        if (shoot.TryComp<HitscanBasicDamageComponent>(out var hitscan, Factory))
             return hitscan.Damage;
-        if (shoot.TryGetComponent<ProjectileComponent>(out var proj, Factory))
+        if (shoot.TryComp<ProjectileComponent>(out var proj, Factory))
             return proj.Damage;
         return new();
     }
@@ -623,6 +622,25 @@ public abstract partial class SharedGunSystem : EntitySystem
     public override void Update(float frameTime)
     {
         _lastFrameTime = frameTime;
+
+        // Triad: a projectile routinely outlives the thing it was aimed at, most often because a grid
+        // cleanup deletes the target ship while rounds are still in the air. The dead uid stays in the
+        // networked Target field, so PvsSystem's serializer logs a resolve error carrying a full stack
+        // trace on every state send, per player, for the rest of the projectile's life. The component
+        // only ever answers "is this projectile aimed at me", which a deleted target can never satisfy,
+        // so drop it. Server only: on the client an out-of-PVS target legitimately reads as deleted, and
+        // removing it there would just fight the next state.
+        if (_netManager.IsServer)
+        {
+            var targetedQuery = EntityQueryEnumerator<TargetedProjectileComponent>();
+            while (targetedQuery.MoveNext(out var uid, out var targeted))
+            {
+                if (!TerminatingOrDeleted(targeted.Target))
+                    continue;
+
+                RemCompDeferred<TargetedProjectileComponent>(uid);
+            }
+        }
     }
 
     protected abstract void Popup(string message, EntityUid? uid, EntityUid? user);

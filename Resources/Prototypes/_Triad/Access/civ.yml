@@ -11,6 +11,30 @@
   - Chemistry
 
 - type: accessGroup
+  id: DirectorOfCare
+  tags:
+  - ChiefMedicalOfficer
+  - Captain
+  - Frontier
+  - Command
+  - Cryogenics
+  - Security
+  - Engineering
+  - Medical
+  - Mercenary
+  - Cargo
+  - Service
+  - Maintenance
+  - External
+  - Janitor
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Hydroponics
+  - Atmospherics
+  - Pilot
+
+- type: accessGroup
   id: Civilian
   tags:
   - Mercenary

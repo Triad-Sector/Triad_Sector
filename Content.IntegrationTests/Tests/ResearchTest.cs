@@ -72,12 +72,12 @@ public sealed class ResearchTest
                 if (pair.IsTestPrototype(proto))
                     continue;
 
-                if (!proto.TryGetComponent<LatheComponent>(out var lathe, compFact))
+                if (!proto.TryComp<LatheComponent>(out var lathe, compFact))
                     continue;
 
                 latheSys.AddRecipesFromPacks(latheTechs, lathe.DynamicPacks);
 
-                if (proto.TryGetComponent<EmagLatheRecipesComponent>(out var emag, compFact))
+                if (proto.TryComp<EmagLatheRecipesComponent>(out var emag, compFact))
                     latheSys.AddRecipesFromPacks(latheTechs, emag.EmagDynamicPacks);
             }
 
@@ -103,10 +103,10 @@ public sealed class ResearchTest
                     if (pair.IsTestPrototype(proto))
                         continue;
 
-                    if (proto.TryGetComponent<TechnologyDiskComponent>(out var techDisk, compFact) && techDisk.Recipes != null)
+                    if (proto.TryComp<TechnologyDiskComponent>(out var techDisk, compFact) && techDisk.Recipes != null)
                         techDiskRecipes.UnionWith(techDisk.Recipes);
 
-                    if (proto.TryGetComponent<BlueprintComponent>(out var blueprint, compFact) && blueprint.ProvidedRecipes != null)
+                    if (proto.TryComp<BlueprintComponent>(out var blueprint, compFact) && blueprint.ProvidedRecipes != null)
                         techDiskRecipes.UnionWith(blueprint.ProvidedRecipes);
 
                 }

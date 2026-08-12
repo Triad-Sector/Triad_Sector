@@ -73,12 +73,4 @@ public sealed class SpaceHeaterBoundUserInterface : BoundUserInterface
         _window.MaxTemp = cast.MaxTemperature;
         _window.SetTemperature(cast.TargetTemperature);
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
-            return;
-        _window?.Dispose();
-    }
 }

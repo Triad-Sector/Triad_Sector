@@ -30,19 +30,19 @@ namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly DockingSystem _docking = default!;
-    [Dependency] private readonly PricingSystem _pricing = default!;
-    [Dependency] private readonly ShuttleSystem _shuttle = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ShipOwnershipSystem _shipOwnership = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IResourceManager _resources = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!; // For safe container removal before deletion
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private DockingSystem _docking = default!;
+    [Dependency] private PricingSystem _pricing = default!;
+    [Dependency] private ShuttleSystem _shuttle = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private MapLoaderSystem _mapLoader = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ShipOwnershipSystem _shipOwnership = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IResourceManager _resources = default!;
+    [Dependency] private SharedContainerSystem _container = default!; // For safe container removal before deletion
 
     private EntityQuery<TransformComponent> _transformQuery;
 
@@ -137,11 +137,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
     /// <summary>
     /// Adds a ship to the shipyard, calculates its price, and attempts to ftl-dock it to the given station
+    /// Triad - added dockTag
     /// </summary>
     /// <param name="stationUid">The ID of the station to dock the shuttle to</param>
     /// <param name="shuttlePath">The path to the shuttle file to load. Must be a grid file!</param>
+    /// <param name="dockTag">The priority tag to use when choosing a valid dock the shuttle.</param>
     /// <param name="shuttleEntityUid">The EntityUid of the shuttle that was purchased</param>
-    public bool TryPurchaseShuttle(EntityUid stationUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid)
+    public bool TryPurchaseShuttle(EntityUid stationUid, ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleEntityUid, string? dockTag = null)
     {
         if (!TryComp<StationDataComponent>(stationUid, out var stationData)
             || !TryAddShuttle(shuttlePath, out var shuttleGrid)
@@ -165,7 +167,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var ev = new ShipBoughtEvent();
         RaiseLocalEvent(shuttleGrid.Value, ev);
         //can do TryFTLDock later instead if we need to keep the shipyard map paused
-        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value);
+        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value, priorityTag: dockTag); // Triad, dock tag
         shuttleEntityUid = shuttleGrid;
         return true;
     }

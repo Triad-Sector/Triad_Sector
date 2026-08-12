@@ -17,7 +17,8 @@ public sealed partial class DungeonJob
         if (!data.Tiles.TryGetValue(DungeonDataKey.FallbackTile, out var tileProto) ||
             !data.SpawnGroups.TryGetValue(DungeonDataKey.Window, out var windowGroup))
         {
-            _sawmill.Error($"Unable to find dungeon data keys for {nameof(gen)}");
+            // Triad: nameof(gen) logged the literal string "gen" rather than the generator type.
+            _sawmill.Error($"Unable to find dungeon data keys for {gen.GetType().Name}: needs Tiles[FallbackTile] and SpawnGroups[Window]");
             return;
         }
 
@@ -76,7 +77,7 @@ public sealed partial class DungeonJob
                     if (reservedTiles.Contains(windowTile))
                         continue;
 
-                    if (!_anchorable.TileFree(_grid, windowTile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+                    if (!_anchorable.TileFree((_gridUid, _grid), windowTile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                         continue;
 
                     validTiles.Add(windowTile);

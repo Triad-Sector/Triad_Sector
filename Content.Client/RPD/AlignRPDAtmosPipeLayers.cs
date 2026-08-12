@@ -32,15 +32,14 @@ namespace Content.Client.RPD;
 /// streamed eye rotation when the player commits. Three guide circles render on the cursor tile so the operator
 /// can see which layer they're aiming at.
 /// </summary>
-public sealed class AlignRPDAtmosPipeLayers : PlacementMode
+public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetwork = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transformSystem;
@@ -95,7 +94,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
     public override void AlignPlacementMode(ScreenCoordinates mouseScreen)
     {
         _mouseCoordsRaw = ScreenToCursorGrid(mouseScreen);
-        MouseCoords = _mouseCoordsRaw.AlignWithClosestGridTile(SearchBoxSize, _entityManager, _mapManager);
+        MouseCoords = _mouseCoordsRaw.AlignWithClosestGridTile(SearchBoxSize, _entityManager);
 
         var gridId = _transformSystem.GetGrid(MouseCoords);
         if (!_entityManager.TryGetComponent<MapGridComponent>(gridId, out var mapGrid))
@@ -157,7 +156,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
         if (!_protoManager.TryIndex<EntityPrototype>(pManager.CurrentPermission.EntityType, out var currentProto))
             return;
 
-        if (!currentProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
+        if (!currentProto.TryComp<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
             return;
 
         if (!_pipeLayersSystem.TryGetAlternativePrototype(atmosPipeLayers, layer, out var newProtoId))
@@ -168,7 +167,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
         pManager.CurrentPermission.EntityType = newProtoId;
 
-        if (!newProto.TryGetComponent<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
+        if (!newProto.TryComp<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
             return;
 
         var textures = new List<IDirectionalTextureProvider>();

@@ -17,13 +17,13 @@ using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Shared.Stacks;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Cargo.Systems; // Needs to collide with base namespace
 
 public sealed partial class CargoSystem
 {
-    [ValidatePrototypeId<NameIdentifierGroupPrototype>]
-    private const string PirateBountyNameIdentifierGroup = "Bounty"; // Use the bounty name ID group (0-999) for now.
+    private static readonly ProtoId<NameIdentifierGroupPrototype> PirateBountyNameIdentifierGroup = "Bounty"; // Use the bounty name ID group (0-999) for now.
 
     private EntityQuery<PirateBountyLabelComponent> _pirateBountyLabelQuery;
 

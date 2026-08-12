@@ -12,7 +12,7 @@ Small fixes/refactors are exempt. Media may be used in SS14 progress reports wit
 
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets [X]: -->
-- [ ] I have read relevant guidelines/documentation to this PR found on [our devwiki](https://monolith-station.github.io/mono-docs/).
+- [ ] I have read the guidelines and documentation relevant to this PR.
 - [ ] I have added media to this PR or it does not require an ingame showcase.
 - [ ] I can confirm this PR contains either no AI-generated content, or AI-generated content that meets our guidelines.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->

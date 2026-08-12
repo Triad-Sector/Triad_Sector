@@ -26,14 +26,14 @@ namespace Content.Server.Cargo.Systems;
 /// <summary>
 /// This handles calculating the price of items, and implements two basic methods of pricing materials.
 /// </summary>
-public sealed class PricingSystem : EntitySystem
+public sealed partial class PricingSystem : EntitySystem
 {
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly BodySystem _bodySystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
+    [Dependency] private IConsoleHost _consoleHost = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private BodySystem _bodySystem = default!;
+    [Dependency] private MobStateSystem _mobStateSystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -245,6 +245,8 @@ public sealed class PricingSystem : EntitySystem
     /// <remarks>
     /// This fires off an event to calculate the price.
     /// Calculating the price of an entity that somehow contains itself will likely hang.
+    ///
+    /// Returns 0 if it would otherwise have returned NaN
     /// </remarks>
     public double GetPrice(EntityUid uid, bool includeContents = true)
     {
@@ -253,21 +255,23 @@ public sealed class PricingSystem : EntitySystem
         RaiseLocalEvent(uid, ref ev);
 
         if (ev.Handled)
-            return ev.Price;
+        {
+            return FiniteOr(ev.Price, 0);
+        }
 
-        var price = ev.Price;
+        var price = FiniteOr(ev.Price, 0);
         //TODO: Add an OpaqueToAppraisal component or similar for blocking the recursive descent into containers, or preventing material pricing.
         // DO NOT FORGET TO UPDATE ESTIMATED PRICING
-        price += GetMaterialsPrice(uid);
-        price += GetSolutionsPrice(uid);
+        price += FiniteOr(GetMaterialsPrice(uid), 0);
+        price += FiniteOr(GetSolutionsPrice(uid), 0);
 
         // Can't use static price with stackprice
         var oldPrice = price;
-        price += GetStackPrice(uid);
+        price += FiniteOr(GetStackPrice(uid), 0);
 
         if (oldPrice.Equals(price))
         {
-            price += GetStaticPrice(uid);
+            price += FiniteOr(GetStaticPrice(uid), 0);
         }
 
         if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
@@ -281,7 +285,20 @@ public sealed class PricingSystem : EntitySystem
             }
         }
 
-        return price;
+        return FiniteOr(price, 0);
+
+        double FiniteOr(double d, double fallback)
+        {
+            if (double.IsFinite(d))
+            {
+                return d;
+            }
+            else
+            {
+                Log.Error($"Appraised value of {ToPrettyString(uid)} was not finite, set fallback to zero");
+                return fallback;
+            }
+        }
     }
 
     /// <summary>

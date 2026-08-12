@@ -11,12 +11,12 @@ using Content.Shared.Inventory; // Goobstaiton
 
 namespace Content.Server.Body.Systems;
 
-public sealed class LungSystem : EntitySystem
+public sealed partial class LungSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!; // Goobstaiton
-    [Dependency] private readonly InternalsSystem _internals = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
+    [Dependency] private InventorySystem _inventory = default!; // Goobstaiton
+    [Dependency] private InternalsSystem _internals = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
 
     public static string LungSolutionName = "Lung";
 

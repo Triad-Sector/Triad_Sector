@@ -11,11 +11,11 @@ namespace Content.Server.Shuttles.Systems;
 /// including those inside containers) are also deleted.
 /// This fixes an issue where entities inside containers were left behind in space after grid deletion.
 /// </summary>
-public sealed class GridDeletionContainerSystem : EntitySystem
+public sealed partial class GridDeletionContainerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     // Track grids currently being processed to prevent re-entrancy issues.
     private readonly HashSet<EntityUid> _gridsBeingDeleted = new();
@@ -39,7 +39,7 @@ public sealed class GridDeletionContainerSystem : EntitySystem
             // to avoid cycles and redundant work within the recursive calls.
             var processedEntities = new HashSet<EntityUid>();
 
-            Logger.Debug($"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
+            Log.Debug($"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
 
             // Start the recursive deletion process for all direct transform children of the grid.
             // We don't process the grid itself (uid) initially because it's already terminating.
@@ -62,7 +62,7 @@ public sealed class GridDeletionContainerSystem : EntitySystem
                 }
             }
 
-            Logger.Debug($"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
+            Log.Debug($"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
         }
         finally
         {

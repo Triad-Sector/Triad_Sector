@@ -13,10 +13,10 @@ using Robust.Shared.IoC;
 
 namespace Content.Server._Triad.Shipyard.Persistence;
 
-public sealed class TriadShipyardKeyStore : ITriadShipyardKeyStore
+public sealed partial class TriadShipyardKeyStore : ITriadShipyardKeyStore
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     // Triad: in-memory set of our own signing-key hashes (hex of SHA-256(PublicKey)), active and
     // retired. null until PopulateOwnKeysAsync runs at bootstrap. Guarded because rotation (admin

@@ -1,6 +1,6 @@
 - type: vessel
   id: Mercy
-  parent: BaseVessel
+  parent: BaseVesselTdf
   name: TDF Mercy
   description: Born in the need of sufficient armed medical ship for extraction of civilian from contested space, Mercy is armed with modest weapons and 2 Tovek to deter any assailant against it's precious patient cargo. It has increased armor to withstand direct attacks, but cannot survive without proper escort due to it's heavy mass and thrust to weight ratio.
   price: 135000

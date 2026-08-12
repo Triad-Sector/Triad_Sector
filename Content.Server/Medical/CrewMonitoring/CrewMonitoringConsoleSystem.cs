@@ -19,14 +19,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
-public sealed class CrewMonitoringConsoleSystem : EntitySystem
+public sealed partial class CrewMonitoringConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly PowerCellSystem _cell = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!; // Triad
-    [Dependency] private readonly InventorySystem _inventory = default!; // Triad
-    [Dependency] private readonly IGameTiming _timing = default!; // Triad
-    [Dependency] private readonly ChatSystem _chat = default!; // Triad
+    [Dependency] private PowerCellSystem _cell = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!; // Triad
+    [Dependency] private InventorySystem _inventory = default!; // Triad
+    [Dependency] private IGameTiming _timing = default!; // Triad
+    [Dependency] private ChatSystem _chat = default!; // Triad
 
     private readonly List<EntityCoordinates> _coords = new();
 

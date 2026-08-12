@@ -1,0 +1,66 @@
+# Loadout groups for the infrastructure roles. The Contractor* groups carry every department's
+# kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
+# from the same loadout prototypes, plus a few plant-specific additions defined below.
+- type: loadoutGroup
+  id: PlantTools
+  name: loadout-group-plant-tools
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - PlantGasAnalyzer
+  - PlantWelder
+  - ContractorNetworkConfigurator
+  - ContractorGeigerCounter
+  - ContractorRadioHandheld
+  - PlantHolofanProjector
+  - PlantRPD
+  - PlantRCD
+  - PlantRCDAmmo
+
+- type: loadoutGroup
+  id: PlantFace
+  name: loadout-group-plant-face
+  minLimit: 0
+  loadouts:
+  - ContractorClothingMaskBreath
+  - ContractorClothingMaskGas
+  - ContractorClothingMaskGasAtmos
+  - ContractorClothingMaskNeckGaiter
+  - ContractorClothingMaskNeckGaiterRed
+
+- type: loadoutGroup
+  id: PlantGloves
+  name: loadout-group-plant-gloves
+  minLimit: 0
+  loadouts:
+  - ContractorClothingHandsGlovesColorYellow
+  - ContractorClothingHandsGlovesLeather
+  - ContractorClothingHandsGlovesFingerless
+  - ContractorClothingHandsGlovesRobohands
+  - ContractorClothingHandsGlovesColorBlack
+  - ContractorClothingHandsGlovesColorBrown
+  - ContractorClothingHandsGlovesColorGray
+  - ContractorClothingHandsGlovesColorWhite
+
+- type: loadoutGroup
+  id: PlantGlasses
+  name: loadout-group-plant-glasses
+  minLimit: 0
+  loadouts:
+  - ContractorClothingEyesGlassesMeson
+  - ContractorClothingEyesHudDiagnostic
+  - ContractorClothingEyesGlassesChemical
+  - ContractorClothingEyesGlasses
+  - ContractorClothingEyesGlassesCheapSunglasses
+
+- type: loadoutGroup
+  id: PlantEars
+  name: loadout-group-plant-ears
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingHeadsetEngineeringCommon
+  - ContractorClothingHeadsetAltEngineeringCommon
+  - ContractorClothingHeadsetGreyCommon
+  fallbacks:
+  - ContractorClothingHeadsetEngineeringCommon

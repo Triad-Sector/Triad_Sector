@@ -60,15 +60,5 @@ public sealed class AnalysisConsoleBoundUserInterface : BoundUserInterface
                 break;
         }
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (!disposing)
-            return;
-
-        _consoleMenu?.Dispose();
-    }
 }
 
