@@ -28,12 +28,12 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     [Dependency] private StationRecordsSystem _stationRecords = default!;
     [Dependency] private IGameTiming _gameTiming = default!; // Triad
 
-    private const int RoundEndReward = 1; // Triad - 1<10. Name is inaccurate; pay is hourly instead of at round-end.
+    private const int HourlyReward = 1; // Triad - 1<10. Hourly instead of round-end.
 
     // Triad - Hourly instead of round-end.
-    private static readonly TimeSpan PayoutDelay = TimeSpan.FromSeconds(3600);
+    private static readonly TimeSpan PayoutDelay = TimeSpan.FromHours(1);
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan NextPayoutTime;
     // End Triad
 
@@ -62,7 +62,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
         if (curTime < NextPayoutTime)
             return;
 
-        OnRoundEnd();
+        HourlyPayout();
         NextPayoutTime = curTime + PayoutDelay;
     }
     // End Triad
@@ -138,9 +138,9 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     }
 
     /// <summary>
-    /// Called when a round ends. Awards MonoCoins to players who appear in the station manifest.
+    /// Called hourly. Awards MonoCoins to players who appear in the station manifest.
     /// </summary>
-    private async void OnRoundEnd() // Triad - Removed argument. This is now called by Update.
+    private async void HourlyPayout() // Triad - Removed argument. Hourly instead of round-end.
     {
         // Award MonoCoins to players who appear in the station manifest
         var tasks = new List<Task>();
@@ -203,11 +203,11 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     {
         try
         {
-            var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Log.Info($"Awarded {RoundEndReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - TriToken rename.
+            var newBalance = await _db.AddMonoCoinsAsync(session.UserId, HourlyReward); // Triad - Hourly instead of round-end.
+            Log.Info($"Awarded {HourlyReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - Hourly instead of round-end. TriToken rename.
 
             // Notify the player via chat
-            var notificationMessage = $"You earned {RoundEndReward} hourly TriToken. Your new balance: {newBalance}."; // Triad - TriToken rename.
+            var notificationMessage = $"You earned {HourlyReward} hourly TriToken. Your new balance: {newBalance}."; // Triad - Hourly instead of round-end. TriToken rename.
             _chatManager.ChatMessageToOne(
                 ChatChannel.Notifications,
                 notificationMessage,
