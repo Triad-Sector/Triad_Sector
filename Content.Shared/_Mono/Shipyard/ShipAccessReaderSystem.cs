@@ -121,11 +121,11 @@ public sealed partial class ShipAccessReaderSystem : EntitySystem
         // Find all accessible ID cards for the user
         var accessibleCards = FindAccessibleIdCards(user);
 
-        // Check for company-based access (USSP, Rogue, TSF) using ID card company
+        // Check for company-based access (TDF, TFA, TIC, SD) using ID card company
         if (TryComp<CompanyComponent>(gridUid, out var shipCompany))
         {
             // Check if ship has one of the special company designations
-            if (shipCompany.CompanyName == "Rogue" || shipCompany.CompanyName == "TSF")
+            if (shipCompany.CompanyName == "TDF")
             {
                 // Check each accessible ID card for matching company
                 foreach (var cardUid in accessibleCards)

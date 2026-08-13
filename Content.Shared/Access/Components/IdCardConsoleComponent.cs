@@ -83,9 +83,6 @@ public sealed partial class IdCardConsoleComponent : Component
         "TdfPermitControl", // Triad
         "Service",
         "StationTrafficController", // Frontier
-        //"USSP", // Mono
-        //"USSPHigh", // Mono
-        //"USSPCommand", // Mono
         //"Theatre",
     };
 

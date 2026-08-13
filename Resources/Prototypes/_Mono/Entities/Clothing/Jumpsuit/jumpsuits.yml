@@ -115,17 +115,14 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformUSSP
-  name: USSP uniform
-  description: Standard fatigues of the USSP military.
+  id: ClothingUniformIndustrialWorker # Triad
+  name: industrial worker uniform # Triad
+  description: Standard fatigues of a hard worker, fit with kevlar to protect from accidents. # Triad
   components:
   - type: Sprite
-    sprite: _Mono/Clothing/Uniforms/Jumpsuit/ussp.rsi
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/worker_wear.rsi # Triad
   - type: Clothing
-    sprite: _Mono/Clothing/Uniforms/Jumpsuit/ussp.rsi
-  - type: SuitSensor
-    randomMode: false
-    mode: SensorVitals
+    sprite: _Triad/Clothing/Uniforms/Jumpsuit/worker_wear.rsi # Triad
 
 - type: entity
   parent: ClothingUniformBase

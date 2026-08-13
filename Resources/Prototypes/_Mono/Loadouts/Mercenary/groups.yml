@@ -118,21 +118,6 @@
   - USSPClothingJumpsuit
 
 - type: loadoutGroup
-  id: MonoUSSPHead
-  name: loadout-group-ussp-head
-  loadouts:
-  - USSPOfficerCap
-  - USSPCommissarCap
-
-- type: loadoutGroup
-  id: MonoUSSPOuterClothing
-  name: loadout-group-ussp-outerclothing
-  loadouts:
-  - USSPClothingL10
-  - USSPClothingL10A
-  - USSPClothingCoat
-
-- type: loadoutGroup
   id: MonoUSSPBackpack
   name: loadout-group-ussp-backpack
   loadouts:
