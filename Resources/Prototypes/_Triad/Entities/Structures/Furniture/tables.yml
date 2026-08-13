@@ -1,0 +1,31 @@
+- type: entity
+  parent: TableFolding
+  id: TriIroningboard
+  name: ironing board
+  description: "An ironing board for smoothing out the wrinkles of recently washed clothes."
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Furniture/tables.rsi
+      layers:
+      - state: ironingboard
+        map: ["unfoldedLayer"]
+      - state: ironingboard-folded
+        map: ["foldedLayer"]
+        visible: false
+      noRot: true
+
+- type: entity
+  parent: TriIroningboard
+  id: TriIroningboardIron
+  name: ironing board
+  description: "An ironing board for smoothing out the wrinkles of recently washed clothes. There's an iron on the edge of it."
+  components:
+    - type: Sprite
+      sprite: _Triad/Structure/Furniture/tables.rsi
+      layers:
+      - state: ironingboard-iron
+        map: ["unfoldedLayer"]
+      - state: ironingboard-folded
+        map: ["foldedLayer"]
+        visible: false
+      noRot: true
