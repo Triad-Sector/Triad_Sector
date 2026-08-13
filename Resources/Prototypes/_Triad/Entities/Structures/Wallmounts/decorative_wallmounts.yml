@@ -5,7 +5,7 @@
   id: TriadDecorativeWallmountBase
   components:
   - type: Sprite
-    sprite: _Triad/Structure/Wallmounts/decorativewallmounts.rsi
+    sprite: _Triad/Structure/Wallmounts/DecorativeWallmounts.rsi
 
 - type: entity
   parent: TriadDecorativeWallmountBase
@@ -39,5 +39,5 @@
   description: "A wall-mounted dispenser for hand sanitatiser. Rub it into your paws."
   components:
   - type: Sprite
-    sprite: _Triad/Structure/Wallmounts/decorativewallmounts.rsi
+    sprite: _Triad/Structure/Wallmounts/DecorativeWallmounts.rsi
     state: handsanitiser
