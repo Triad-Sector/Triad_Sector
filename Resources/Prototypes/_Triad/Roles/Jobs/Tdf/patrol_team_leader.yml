@@ -28,8 +28,10 @@
   - GeneralTdfAccessBrig
   access:
   - TdfPatrolTeamLeader
+  - Command
   - Medical
   - Chemistry
+  - TdfPermitControl
   ranks:
     RankSeniorEnforcer: []
   special:
@@ -42,6 +44,7 @@
     - type: CryoSleepRadioOverride
       overrides:
       - Nfsd # TDF radio
+    - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial

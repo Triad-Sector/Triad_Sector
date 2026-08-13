@@ -3712,3 +3712,52 @@ Entries:
   id: 2505
   time: '2026-08-11T01:45:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/495
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Removed Erudite Indestructible shutters
+  id: 2506
+  time: '2026-08-11T10:11:51.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/497
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Gave Behir the appropriate ATM type.
+  id: 2507
+  time: '2026-08-11T10:12:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/499
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        TriTalk, a PDA messaging app. Examine an ID card to see its number.
+        Needs a powered telecomms server in range, same as your headset.
+    - type: Add
+      message: TriTalk lists issued IDs in a directory. You can unlist your own number.
+    - type: Add
+      message: LogProbe can pull message history off a TriTalk card.
+  id: 2508
+  time: '2026-08-12T18:51:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/464
+- author: rebaserHEAD
+  changes:
+    - type: Remove
+      message: >-
+        Removed oxygen, liquid oxygen, liquid nitrogen, carbon dioxide, liquid
+        carbon dioxide, storage, plasma, and BZ canisters from the trade
+        terminal. Air, nitrogen, and water vapor canisters remain purchasable.
+  id: 2509
+  time: '2026-08-12T21:24:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/501
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the TDF contraband permit console, used for granting permits to
+        Triad sector citizens. It prints out permit chips. From there, you scan
+        the item then the permit owner will scan themselves with the chip, which
+        allows you to insert it into the console to grant it. It also allows you
+        revoke permits remotely. Contraband permits will persist on ship save.
+  id: 2510
+  time: '2026-08-12T23:28:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/454

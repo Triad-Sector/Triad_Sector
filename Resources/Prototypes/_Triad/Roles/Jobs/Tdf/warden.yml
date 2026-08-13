@@ -27,6 +27,7 @@
   - Chemistry
   - TdfWarden
   - TdfPatrolTeamLeader
+  - TdfPermitControl
   ranks:
     RankWarden: []
   special:
@@ -39,6 +40,7 @@
     - type: CryoSleepRadioOverride
       overrides:
       - Nfsd # TDF radio
+    - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial

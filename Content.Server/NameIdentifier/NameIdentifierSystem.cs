@@ -80,6 +80,32 @@ public sealed partial class NameIdentifierSystem : EntitySystem
             : $"{randomVal}";
     }
 
+    // Triad begin: consumers that call GenerateUniqueName directly (without a NameIdentifierComponent) never get
+    // the OnComponentShutdown release above, so their numbers leak out of the pool permanently. That is fine on a
+    // station where entities live for the round, but this fork buys and sells ships all round long, and every sold
+    // ship takes its ID card numbers to the grave. Give those consumers a way to hand the number back.
+    /// <summary>
+    ///     Returns a previously generated identifier to the pool so it can be handed out again.
+    /// </summary>
+    public void ReleaseUniqueName(ProtoId<NameIdentifierGroupPrototype> proto, int value)
+    {
+        if (!CurrentIds.TryGetValue(proto, out var ids))
+            return;
+
+        // Mirror OnComponentShutdown: drop it in at a random spot rather than always at the end,
+        // so released numbers do not come straight back out on the next request.
+        if (ids.Count == 0)
+        {
+            ids.Add(value);
+            return;
+        }
+
+        var randomIndex = _robustRandom.Next(ids.Count);
+        ids.Add(ids[randomIndex]);
+        ids[randomIndex] = value;
+    }
+    // Triad end
+
     private void OnMapInit(EntityUid uid, NameIdentifierComponent component, MapInitEvent args)
     {
         if (!_prototypeManager.TryIndex<NameIdentifierGroupPrototype>(component.Group, out var group))

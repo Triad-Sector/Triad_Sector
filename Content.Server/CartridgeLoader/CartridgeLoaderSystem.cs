@@ -272,6 +272,11 @@ public sealed partial class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
         if (!loader.BackgroundPrograms.Contains(programUid))
             RaiseLocalEvent(programUid, new CartridgeActivatedEvent(loaderUid));
 
+        // Triad: notify background programs that the foreground changed, ported from Delta-V for TriTalk
+        var ev = new ActiveProgramChangedEvent(loaderUid, loader.ActiveProgram, programUid);
+        RaiseLocalEvent(loaderUid, ref ev);
+        // End Triad
+
         loader.ActiveProgram = programUid;
         UpdateUserInterfaceState(loaderUid, loader);
     }
@@ -291,6 +296,12 @@ public sealed partial class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
             RaiseLocalEvent(programUid, new CartridgeDeactivatedEvent(programUid));
 
         loader.ActiveProgram = default;
+
+        // Triad: notify background programs that the foreground changed, ported from Delta-V for TriTalk
+        var ev = new ActiveProgramChangedEvent(loaderUid, programUid, loader.ActiveProgram);
+        RaiseLocalEvent(loaderUid, ref ev);
+        // End Triad
+
         UpdateUserInterfaceState(loaderUid, loader);
     }
 
@@ -531,3 +542,11 @@ public sealed class CartridgeAfterInteractEvent : EntityEventArgs
 /// </summary>
 [ByRefEvent]
 public record struct ProgramInstallationAttempt(EntityUid LoaderUid, string Prototype, bool Cancelled = false);
+
+// Triad: ported from Delta-V, lets background programs (TriTalk) track whether they are the visible one
+/// <summary>
+/// Raised on the loader whenever the currently open program changes.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ActiveProgramChangedEvent(EntityUid LoaderUid, EntityUid? OldActiveProgram, EntityUid? NewActiveProgram);
+// End Triad

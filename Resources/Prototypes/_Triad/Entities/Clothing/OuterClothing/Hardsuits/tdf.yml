@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseClass2AShipContraband]
+  parent: [ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
   id: ClothingOuterHardsuitTdf
   name: TA-21 hardsuit
   description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
@@ -149,3 +149,5 @@
     coefficient: 0.35
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuitHighValue
+  - type: ContrabandPermittable
+    permittable: false # Hell no

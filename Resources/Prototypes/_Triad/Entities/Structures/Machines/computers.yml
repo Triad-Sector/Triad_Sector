@@ -1,0 +1,54 @@
+- type: entity
+  parent:
+  - BaseStructureIndestructible
+  - BaseComputerAiAccess
+  - BaseStructureAccessReaderImmuneToEmag
+  - BaseStructureDisableScrewing
+  - BaseClass2AShipContrabandSilent
+  id: ComputerContrabandPermit
+  name: contraband permit manager
+  description: Used to manage, grant, and revoke TDF contraband permits to Triad sector citizens.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      sprite: _Triad/Structure/Machines/computers.rsi
+      state: permits
+    - map: ["computerLayerKeys"]
+      state: security_key
+  - type: ActivatableUI
+    key: enum.ContrabandPermitConsoleUi.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ContrabandPermitConsoleUi.Key:
+        type: ContrabandPermitConsoleBoundUserInterface
+  - type: ItemSlots
+    slots:
+      chip_slot:
+        name: contraband-permit-console-item-slot-name
+        ejectSound: /Audio/Machines/id_swipe.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        priority: 1
+        whitelist:
+          components:
+          - ContrabandPermitChip
+  - type: ContrabandPermitConsole
+    grantPermitWhitelist:
+      components:
+      - ContrabandPermitGranter
+  - type: CompanyAccessReader
+    requiredCompany: TDF
+    popupMessage: company-access-denied-tdf
+  - type: AccessReader
+    access: [["TdfPermitControl"]] # The ability to revoke permits
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      chip_slot: !type:ContainerSlot

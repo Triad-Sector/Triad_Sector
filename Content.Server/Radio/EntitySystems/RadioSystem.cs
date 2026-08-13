@@ -289,7 +289,7 @@ public sealed partial class RadioSystem : EntitySystem
     // Einstein Engines - Language end
 
     /// <inheritdoc cref="TelecomServerComponent"/>
-    private bool HasActiveServer(MapId mapId, string channelId)
+    public bool HasActiveServer(MapId mapId, string channelId) // Triad: private<public, TriTalk needs the same relay check as headsets
     {
         var servers = EntityQuery<TelecomServerComponent, EncryptionKeyHolderComponent, ApcPowerReceiverComponent, TransformComponent>();
         foreach (var (_, keys, power, transform) in servers)

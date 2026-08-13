@@ -1,19 +1,23 @@
 name: Build & Run Shipyard Tests
 
 on:
+  # Triad: the `paths` filter is commented out rather than deleted. `Build & Run Shipyard
+  # Tests` is a required check, and a required check that never runs sits as "expected" and
+  # blocks the merge forever. The job is ~6m and runs concurrently with Build & Test Debug
+  # (~10m), so always running it costs no wall-clock.
   pull_request:
     branches: [ "main" ]
-    paths:
-      - "Resources/Maps/_Mono/Shuttles/**/*.yml" # Ship grids, Mono - set to mono files
-      - "Resources/Prototypes/_Mono/Shipyard/**/*.yml" # Shipyard prototypes, Mono - set to mono files
-      - "Content.IntegrationTests/Tests/_NF/ShipyardTests.cs" # Shipyard tests
-      - "Resources/Prototypes/Entities/**/*.yml" # Mono Change, run when an entity may have changed price
+    # paths:
+    #   - "Resources/Maps/_Mono/Shuttles/**/*.yml" # Ship grids, Mono - set to mono files
+    #   - "Resources/Prototypes/_Mono/Shipyard/**/*.yml" # Shipyard prototypes, Mono - set to mono files
+    #   - "Content.IntegrationTests/Tests/_NF/ShipyardTests.cs" # Shipyard tests
+    #   - "Resources/Prototypes/Entities/**/*.yml" # Mono Change, run when an entity may have changed price
 
 # Triad: this workflow had no concurrency group, so pushing twice to a PR ran both to
-# completion. PR-triggered only, so no merge_group case to worry about here.
+# completion. Only ever cancel PR runs, matching the other validators.
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:

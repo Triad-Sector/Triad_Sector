@@ -1,3 +1,4 @@
+using Content.Shared._DV.CartridgeLoader.Cartridges; // Triad: NanoChatData for TriTalk card scanning
 using Content.Shared.CartridgeLoader.Cartridges;
 ﻿using Content.Shared.Paper;
 using Robust.Shared.Audio;
@@ -21,6 +22,14 @@ public sealed partial class LogProbeCartridgeComponent : Component
     /// </summary>
     [DataField, ViewVariables]
     public List<PulledAccessLog> PulledAccessLogs = new();
+
+    // Triad begin: TriTalk card scanning
+    /// <summary>
+    /// The last scanned TriTalk card data, if any.
+    /// </summary>
+    [DataField]
+    public NanoChatData? ScannedNanoChatData;
+    // Triad end
 
     /// <summary>
     /// The sound to make when we scan something with access

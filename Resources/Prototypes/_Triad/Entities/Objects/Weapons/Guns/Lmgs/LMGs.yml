@@ -1,6 +1,6 @@
 - type: entity
   name: TDF MMG-38 "Riot" (6.8x52mm caseless)
-  parent: [BaseWeaponLightMachineGun, BaseGunWieldable, BaseClass2AShipContraband]
+  parent: [BaseWeaponLightMachineGun, BaseGunWieldable, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
   id: WeaponLMGRiot
   description: A reverse-engineered medium machine gun developed by the TDF from captured enemy technology. Designed to provide sustained suppressive fire, it is chambered in 6.8x52mm caseless and accepts both box and standard magazines. It is also compatible with 5.56x45mm and 7.62x39mm ammunition to simplify logistics. A label on the receiver reads "TRIAD DEFENSE FORCE."
   components:

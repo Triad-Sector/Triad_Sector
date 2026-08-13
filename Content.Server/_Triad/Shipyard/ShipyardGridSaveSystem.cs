@@ -1,17 +1,17 @@
 using System.IO;
 using Content.Server.Construction.Components;
 using Content.Server.Spreader;
-using Content.Server._HL.Shipyard; // HardLight
-using Content.Shared._Common.Consent; // HardLight
-using Content.Shared._HL.Shipyard; // HardLight
+using Content.Server._HL.Shipyard;
+using Content.Shared._Common.Consent;
+using Content.Shared._HL.Shipyard;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared._NF.Shipyard.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
-using Content.Shared.Mind.Components; // HardLight
-using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
+using Content.Shared.Mind.Components;
+using Content.Shared.Wall;
 using Robust.Shared.Containers;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
@@ -19,7 +19,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes; // HardLight
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using YamlDotNet.Core;
@@ -43,6 +43,7 @@ using Robust.Shared.Configuration;
 using Content.Server.GameTicking;
 using Content.Server.StationRecords.Components;
 using Content.Server.StationRecords.Systems;
+using Content.Shared._Triad.ContrabandPermit;
 
 namespace Content.Server._Triad.Shipyard;
 
@@ -60,7 +61,7 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private SharedContainerSystem _containerSystem = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!; // HardLight
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private ShuttleRecordsSystem _shuttleRecords = default!;
@@ -532,8 +533,8 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             return false;
         if (HasComp<ConsentComponent>(uid) || HasComp<MindContainerComponent>(uid))
             return true; // do not save things with minds
-        if (HasComp<SavingContrabandComponent>(uid))
-            return true; // no contra
+        if (HasComp<SavingContrabandComponent>(uid) && !HasComp<ContrabandPermitItemComponent>(uid))
+            return true; // No contra, but a permit will allow it
         if (_persistOnSaveQuery.HasComp(uid))
             return false; // preserve stash root outright
         if (_gridQuery.HasComp(uid))

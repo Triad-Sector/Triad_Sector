@@ -1,3 +1,4 @@
+using Content.Shared._DV.NanoChat; // Triad: TriTalk card scanning
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CartridgeLoader;
@@ -15,7 +16,7 @@ using System.Text;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 
-public sealed partial class LogProbeCartridgeSystem : EntitySystem
+public sealed partial class LogProbeCartridgeSystem : EntitySystem // Triad: made partial, TriTalk half lives in LogProbeCartridgeSystem.NanoChat.cs
 {
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -35,6 +36,8 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem
         SubscribeLocalEvent<LogProbeCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
         SubscribeLocalEvent<LogProbeCartridgeComponent, CartridgeAfterInteractEvent>(AfterInteract);
         SubscribeLocalEvent<LogProbeCartridgeComponent, CartridgeMessageEvent>(OnMessage);
+
+        InitializeNanoChat(); // Triad
     }
 
     /// <summary>
@@ -48,6 +51,15 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem
         if (args.InteractEvent.Handled || !args.InteractEvent.CanReach || args.InteractEvent.Target is not { } target)
             return;
 
+        // Triad begin: probing a TriTalk card pulls its message history instead of access logs
+        if (TryComp<NanoChatCardComponent>(target, out var nanoChatCard))
+        {
+            ScanNanoChatCard(ent, args, target, nanoChatCard);
+            args.InteractEvent.Handled = true;
+            return;
+        }
+        // Triad end
+
         if (!TryComp(target, out AccessReaderComponent? accessReaderComponent))
             return;
 
@@ -57,6 +69,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem
 
         ent.Comp.EntityName = Name(target);
         ent.Comp.PulledAccessLogs.Clear();
+        ent.Comp.ScannedNanoChatData = null; // Triad: clear any previous TriTalk scan
 
         foreach (var accessRecord in accessReaderComponent.AccessLog)
         {
@@ -124,7 +137,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem
 
     private void UpdateUiState(Entity<LogProbeCartridgeComponent> ent, EntityUid loaderUid)
     {
-        var state = new LogProbeUiState(ent.Comp.EntityName, ent.Comp.PulledAccessLogs);
+        var state = new LogProbeUiState(ent.Comp.EntityName, ent.Comp.PulledAccessLogs, ent.Comp.ScannedNanoChatData); // Triad: TriTalk support
         _cartridge.UpdateCartridgeUiState(loaderUid, state);
     }
 }

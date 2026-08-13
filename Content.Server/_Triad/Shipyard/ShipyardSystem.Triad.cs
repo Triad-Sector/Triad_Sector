@@ -163,7 +163,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// </summary>
     private void TryResetUseDelays(EntityUid shuttleGrid)
     {
-        var useDelayQuery = EntityManager.EntityQueryEnumerator<UseDelayComponent, TransformComponent>();
+        var useDelayQuery = EntityQueryEnumerator<UseDelayComponent, TransformComponent>();
 
         while (useDelayQuery.MoveNext(out var uid, out var comp, out var xform))
         {

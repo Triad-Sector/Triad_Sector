@@ -11,6 +11,7 @@
     - NewsReaderCartridge
     - BountyContractsCartridge
     - AstroNavCartridge
+    - TriTalkCartridge # Triad
   - type: Sprite
     sprite: Objects/Devices/pda.rsi
     layers:
@@ -42,6 +43,7 @@
     - BountyContractsCartridge
     - AstroNavCartridge
     - MedTekCartridge
+    - TriTalkCartridge # Triad
   - type: Sprite
     sprite: Objects/Devices/pda.rsi
     layers:
@@ -201,6 +203,7 @@
     - LogProbeCartridge
     - AstroNavCartridge
     - MailMetricsCartridge # Frontier
+    - TriTalkCartridge # Triad
   - type: Geiger # Mono
     showExamine: true
     showControl: true
@@ -226,6 +229,7 @@
     - LogProbeCartridge
     - AstroNavCartridge
     - MailMetricsCartridge # Frontier
+    - TriTalkCartridge # Triad
   - type: Geiger # Mono
     showExamine: true
     showControl: true
@@ -245,6 +249,7 @@
     - NewsReaderCartridge
     - BountyContractsCartridge
     - AstroNavCartridge
+    - TriTalkCartridge # Triad
   - type: Sprite
     sprite: _Mono/Objects/Devices/pda.rsi
     layers:
@@ -307,6 +312,7 @@
     - NewsReaderCartridge
     - BountyContractsCartridge
     - AstroNavCartridge
+    - TriTalkCartridge # Triad
   - type: PdaBorderColor
     borderColor: "#533980"
 
