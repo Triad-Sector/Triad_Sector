@@ -13,14 +13,6 @@
   - type: PacifiedZoneGenerator
     radius: 10
     immuneRoles:
-      - Bailiff
-      - Brigmedic
-      - Cadet
-      - Deputy
-      - NFDetective
-      - SeniorOfficer
-      - Sheriff
-      - SecurityGuard
       - StationRepresentative
       - StationTrafficController
 

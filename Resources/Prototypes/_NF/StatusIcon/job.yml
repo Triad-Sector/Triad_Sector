@@ -105,23 +105,6 @@
   jobName: job-name-valet
 
 # NFSD positions
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconCadetNF
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdcadet
-  jobName: job-name-cadet-nf
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconDeputy
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsddeputy
-  jobName: job-name-deputy
-
 - type: jobIcon
   parent: JobIcon
   id: JobIconPublicAffairsLiaison
@@ -129,47 +112,6 @@
     sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
     state: publicaffairsliaison
   jobName: job-name-pal
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconNFDetective
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsddetective
-  jobName: job-name-detective-nf
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconBrigmedicNF
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdbrigmed
-  jobName: job-name-brigmedic
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconSergeant
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdsergeant
-  jobName: job-name-senior-officer
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconBailiff
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdbailiff
-  jobName: job-name-bailiff
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconSheriff
-  icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdsheriff
-  jobName: job-name-sheriff
-#  allowSelection: false # Frontier: no impersonating command staff, literally 1984 - Mono Revert
 
   # Medical positions
 
