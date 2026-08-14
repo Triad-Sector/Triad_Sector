@@ -1,5 +1,5 @@
 - type: entity
-  name: Big Leady (4 gauge)
+  name: RMT Big Leady (4 gauge)
   parent: [BaseWeaponShotgun, BaseGunWieldable]
   id: WeaponShotgunBigLeady
   description: A large 4 gauge (23x75mm) shotgun made to kill what any caliber below an autocannon cant.
