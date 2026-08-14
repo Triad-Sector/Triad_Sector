@@ -132,34 +132,6 @@
 
 - type: entity
   parent: BaseNFFlatpack
-  id: RDServerRogueFlatpack
-  name: rogue research and development server flatpack
-  description: A flatpack used for constructing a Rogue research and development server.
-  components:
-  - type: Flatpack
-    entity: ResearchAndDevelopmentServerRogues
-  - type: StaticPrice
-    price: 1500
-  - type: Sprite
-    layers:
-    - state: science_server
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: RDServerTSFFlatpack
-  name: TSF research and development server flatpack
-  description: A flatpack used for constructing a TSF research and development server.
-  components:
-  - type: Flatpack
-    entity: ResearchAndDevelopmentServerTSFMC
-  - type: StaticPrice
-    price: 1500
-  - type: Sprite
-    layers:
-    - state: science_server
-
-- type: entity
-  parent: BaseNFFlatpack
   id: FactionLatheFlatpack
   name: military multipurpose assembler flatpack
   description: A flatpack used for constructing a techfab for manufacturing faction-specific recipes.
