@@ -169,7 +169,7 @@
     name: Clarpy
 
 - type: entity
-  parent: DeputyIDCard
+  parent: CourierIDCard
   id: CappyIDCard
   name: cappy ID card
   components:
