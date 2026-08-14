@@ -212,8 +212,6 @@
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
     # Mono start
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
     - MonoUSSPWeaponsDynamicRanged
     #- MonoViperGroupDynamic Triad, removed
@@ -278,14 +276,6 @@
     - DynamicAmmoRecipePack
     - SmartGun # Goobstation
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
     - MonoUSSPMiscDynamic
     #- MonoViperGroupDynamic
     - MonoUSSPWeaponsDynamicRanged
