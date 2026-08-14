@@ -61,7 +61,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 22
+        Piercing: 22 #Triad Reduction in ap and damage
     armorPenetration: -0.6
 
 - type: entity
