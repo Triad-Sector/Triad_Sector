@@ -29,26 +29,6 @@
 
 - type: entity
   parent: BaseShipLPC
-  id: ShipVoucherSaintie
-  name: PDV saintie LPC
-  description: A small card that authorizes the procurement of a Saintie.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripepdv
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: BlackMarket
-    companyName: PDV
-    vessels:
-    - Saintie
-  - type: StaticPrice
-    vendPrice: 325000
-
-- type: entity
-  parent: BaseShipLPC
   id: ShipVoucherMock
   name: PDV mock LPC
   description: A small card that authorizes the procurement of a Mock aboard the Motley Anne.
@@ -106,26 +86,6 @@
     - Snakelet
   - type: StaticPrice
     vendPrice: 30000
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherSaturn
-  name: PDV saturn LPC
-  description: A small card that authorizes the procurement of the Saturn.
-  components:
-  - type: Sprite
-    layers:
-    - state: htech
-    - state: stripepdv
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: BlackMarket
-    companyName: PDV
-    vessels:
-    - Saturn
-  - type: StaticPrice
-    vendPrice: 1555000
 # CC
 
 - type: entity
