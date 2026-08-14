@@ -212,9 +212,6 @@
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
     # Mono start
-    - MonoUSSPMiscDynamic
-    - MonoUSSPWeaponsDynamicRanged
-    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -276,9 +273,6 @@
     - DynamicAmmoRecipePack
     - SmartGun # Goobstation
     # Mono start
-    - MonoUSSPMiscDynamic
-    #- MonoViperGroupDynamic
-    - MonoUSSPWeaponsDynamicRanged
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo

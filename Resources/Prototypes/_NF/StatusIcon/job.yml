@@ -35,46 +35,6 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconPirate
-  icon:
-    sprite: /Textures/_Mono/Interface/Misc/job_icons.rsi
-    state: PDVRakhshan
-  jobName: job-name-pirate
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconPDVDenasvar
-  icon:
-    sprite: /Textures/_Mono/Interface/Misc/job_icons.rsi
-    state: PDVDenasvar
-  jobName: job-name-pdv-denasvar
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconPirateCaptain
-  icon:
-    sprite: /Textures/_Mono/Interface/Misc/job_icons.rsi
-    state: PDVVizier
-  jobName: job-name-pirate-captain
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconPirateFirstMate
-  icon:
-    sprite: /Textures/_Mono/Interface/Misc/job_icons.rsi
-    state: PDVAsvaran
-  jobName: job-name-pirate-first-mate
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconPDVInfiltrator
-  icon:
-    sprite: /Textures/_Mono/Interface/Misc/job_icons.rsi
-    state: PDVInfiltrator
-  jobName: job-name-pdv-infiltrator
-
-- type: jobIcon
-  parent: JobIcon
   id: JobIconSecurityGuard
   icon:
     sprite: /Textures/Interface/Misc/job_icons.rsi
