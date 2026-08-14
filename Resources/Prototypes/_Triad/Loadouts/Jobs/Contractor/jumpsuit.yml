@@ -45,11 +45,3 @@
   price: 0
   loadouts:
   - ClothingUniformIndustrialWorker
-
-- type: loadoutGroup
-  id: MonoUSSPBackpack
-  price: 0
-  loadouts:
-  - USSPBackpack
-  - USSPDuffel
-  - USSPSatchel

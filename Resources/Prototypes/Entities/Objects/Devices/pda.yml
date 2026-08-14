@@ -1465,9 +1465,10 @@
   id: SeniorOfficerPDA
   name: senior officer PDA
   description: Beaten, battered and broken, but just barely useable.
+  categories: [ HideSpawnMenu ] # Triad
   components:
-  - type: Pda
-    id: SeniorOfficerIDCard
+  #- type: Pda
+  #  id: SeniorOfficerIDCard
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1486,8 +1487,8 @@
   description: Yargh!
   categories: [ HideSpawnMenu ] # Frontier
   components:
-  - type: Pda
-    id: PirateIDCard
+  #- type: Pda
+  #  id: PirateIDCard
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

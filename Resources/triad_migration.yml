@@ -273,3 +273,6 @@ SpawnPointSheriff: null
 SpawnPointPirate: null
 SpawnPointPirateFirstMate: null
 SpawnPointPirateCaptain: null
+PiratePDA: null
+SeniorOfficerPDA: null
+SpawnPointBrigmedic: null
