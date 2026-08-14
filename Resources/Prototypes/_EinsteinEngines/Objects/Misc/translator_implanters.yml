@@ -129,7 +129,7 @@
 - type: entity # Mono
   id: TerraSlavicTranslatorImplanter
   parent: [ BaseTranslatorImplanter ]
-  name: Terra slavic translator implant
+  name: Terra Slavic translator implant
   components:
   - type: Implanter
     implant: TerraSlavicTranslatorImplant

@@ -1,5 +1,5 @@
-language-TerraSlavic-name = Terra slavic
-chat-language-TerraSlavic-name = Terra slavic
+language-TerraSlavic-name = Terra Slavic
+chat-language-TerraSlavic-name = Terra Slavic
 language-TerraSlavic-description =
     A long split dialect of Sol Common, sounding similar to the many Slavic languages on Terra in the Sol system.
     Over the years, it has turned into the language of many Sol residents and space drifters.
