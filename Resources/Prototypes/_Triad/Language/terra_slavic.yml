@@ -4,7 +4,7 @@
   id: TerraSlavic
   isVisibleLanguage: true
   speech:
-    color: "#9e4337dd"
+    color: "#b94256dd"
     fontId: NotoSansSC # Goob Edit - Chinese Characters Font
   obfuscation:
     !type:SyllableObfuscation
