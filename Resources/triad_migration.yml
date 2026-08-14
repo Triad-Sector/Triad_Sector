@@ -281,3 +281,7 @@ RDServerRogueFlatpack: null
 BrigmedicIDCard: null
 SeniorOfficerIDCard: null
 SpawnPointCadet: null
+NovaCygniTranslatorImplanter: TerraSlavicTranslatorImplanter
+NovaCygniTranslatorImplant: TerraSlavicTranslatorImplant
+NovaCygniTranslator: TerraSlavicTranslator
+SpawnPointDeputy: null

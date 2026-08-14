@@ -1,10 +1,10 @@
 # I really dont know what these mean. I just took these from https://en.wikipedia.org/wiki/Cyrillization_of_Chinese
 
 - type: language
-  id: NovaCygniBasic
+  id: TerraSlavic
   isVisibleLanguage: true
   speech:
-    color: "#a13a2ddd"
+    color: "#9e4337dd"
     fontId: NotoSansSC # Goob Edit - Chinese Characters Font
   obfuscation:
     !type:SyllableObfuscation
