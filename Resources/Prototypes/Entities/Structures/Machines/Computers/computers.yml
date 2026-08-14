@@ -1146,8 +1146,7 @@
     energy: 1.6
     color: "#b89f25"
   - type: AccessReader
-    #access: [["Quartermaster"]] #Monolith Change: Allows Serzhants and Kommissars to skip bounties
-    access: [["USSPHigh"]]
+    access: [["Quartermaster"]] # TODO triad
   # - type: GuideHelp # Frontier
   #   guides: # Frontier
   #   - CargoBounties # Frontier
