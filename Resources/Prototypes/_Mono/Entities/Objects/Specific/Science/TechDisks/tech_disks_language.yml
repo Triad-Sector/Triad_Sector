@@ -74,7 +74,7 @@
     - ValyrianStandardTranslatorImplanter
     - ChittinTranslatorImplanter
     - GaryTranslatorImplanter # Trait language
-    - TerraSlavicTranslatorImplant # Trait language
+    - TerraSlavicTranslatorImplanter # Trait language
     #- SiikMaasTranslatorImplanter # No tajara here
     #- MarishTranslatorImplanter # No shadowkin here
     - AnimalTranslator
