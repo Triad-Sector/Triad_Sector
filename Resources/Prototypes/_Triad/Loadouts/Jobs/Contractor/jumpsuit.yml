@@ -43,5 +43,5 @@
 - type: loadout
   id: ClothingUniformIndustrialWorker
   price: 0
-  loadouts:
-  - ClothingUniformIndustrialWorker
+  equipment:
+    jumpsuit: ClothingUniformIndustrialWorker
