@@ -271,7 +271,7 @@
     name: Clippy
 
 - type: entity
-  parent: PDVAsvaranIDCard
+  parent: CourierIDCard
   id: ClarpyIDCard
   name: clarpy ID card
   components:
