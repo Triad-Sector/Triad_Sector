@@ -115,17 +115,6 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformIndustrialWorker # Triad
-  name: industrial worker uniform # Triad
-  description: Standard fatigues of a hard worker, fit with kevlar to protect from accidents. # Triad
-  components:
-  - type: Sprite
-    sprite: _Triad/Clothing/Uniforms/Jumpsuit/worker_wear.rsi # Triad
-  - type: Clothing
-    sprite: _Triad/Clothing/Uniforms/Jumpsuit/worker_wear.rsi # Triad
-
-- type: entity
-  parent: ClothingUniformBase
   id: ClothingUniformRogue
   name: rogue field suit
   description: A matte black tactical outfit worn by independent agents working on contracts. The red armband marks affiliation—loose as it may be.
