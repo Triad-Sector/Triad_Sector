@@ -17,7 +17,7 @@
         acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialPlastic1:
+          SheetPlastic1:
             min: 1
             max: 2
           SheetSteel1:
