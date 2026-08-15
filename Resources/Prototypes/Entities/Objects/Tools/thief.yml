@@ -77,4 +77,4 @@
   - type: Item
     storedRotation: 90
   - type: ThiefUndeterminedBackpack
-    spawnedStoragePrototype: ClothingBackpackSatchelSmugglerUnanchored
+    spawnedStoragePrototype: ClothingBackpackSatchel # Triad

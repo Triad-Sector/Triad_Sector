@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 thief-backpack-window-title = undetermined kit
-=======
-thief-backpack-window-title = thieving kit
->>>>>>> 115313ddedf (Undetermined thieving satchel (#36201))
 
 thief-backpack-window-description =
     Inside are your tools of the trade, which will dissolve when you're ready.
