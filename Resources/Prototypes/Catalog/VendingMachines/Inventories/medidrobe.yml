@@ -20,7 +20,7 @@
     ClothingEyesHudMedical: 4
     ClothingEyesEyepatchHudMedical: 4 # Frontier
     ClothingHeadsetMedical: 4
-    EncryptionKeyMedical: 10
+#    EncryptionKeyMedical: 10 # Triad
     ClothingMaskBreathMedical: 4
     ClothingOuterHospitalGown: 5
     UniformScrubsColorGreen: 4

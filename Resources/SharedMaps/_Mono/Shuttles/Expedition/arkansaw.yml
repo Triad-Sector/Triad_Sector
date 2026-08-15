@@ -11194,14 +11194,6 @@ entities:
       parent: 1770
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 1772
-    components:
-    - type: Transform
-      parent: 1770
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyTraffic
   entities:
   - uid: 1773

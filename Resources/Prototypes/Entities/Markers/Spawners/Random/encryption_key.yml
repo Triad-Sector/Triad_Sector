@@ -21,7 +21,7 @@
         - EncryptionKeyEngineering
         - EncryptionKeyScience
         - EncryptionKeyService
-        - EncryptionKeyMedical
+#        - EncryptionKeyMedical #triad
         - EncryptionKeyCargo
       chance: 0.9
       offset: 0.0

@@ -32142,14 +32142,6 @@ entities:
     - type: Transform
       pos: 48.936653,-5.4514256
       parent: 31
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 8122
-    components:
-    - type: Transform
-      parent: 8120
-    - type: Physics
-      canCollide: False
   - uid: 10894
     components:
     - type: Transform

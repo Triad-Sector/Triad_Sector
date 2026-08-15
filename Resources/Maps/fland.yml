@@ -111201,14 +111201,6 @@ entities:
       parent: 35417
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 35421
-    components:
-    - type: Transform
-      parent: 35420
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyRobo
   entities:
   - uid: 10270

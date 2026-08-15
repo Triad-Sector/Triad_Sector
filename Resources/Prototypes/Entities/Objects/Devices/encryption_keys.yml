@@ -137,6 +137,10 @@
     layers:
     - state: crypt_gray
     - state: med_label
+  # Triad Start
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+  # Triad End
 
 - type: entity
   parent: [EncryptionKey, RecyclableItemDeviceTiny]

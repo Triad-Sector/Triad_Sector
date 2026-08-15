@@ -1163,13 +1163,6 @@ entities:
     - type: Transform
       pos: -4.6811705,5.7660027
       parent: 1
-- proto: BoxEncryptionKeyMedical
-  entities:
-  - uid: 975
-    components:
-    - type: Transform
-      pos: -4.4936705,5.6566277
-      parent: 1
 - proto: BoxEncryptionKeySecurity
   entities:
   - uid: 981

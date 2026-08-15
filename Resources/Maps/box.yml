@@ -85268,14 +85268,6 @@ entities:
       parent: 27348
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 27343
-    components:
-    - type: Transform
-      parent: 27342
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyScience
   entities:
   - uid: 27345

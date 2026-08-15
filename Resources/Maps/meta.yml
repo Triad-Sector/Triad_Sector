@@ -81860,20 +81860,6 @@ entities:
       parent: 26444
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 147
-    components:
-    - type: Transform
-      parent: 124
-    - type: Physics
-      canCollide: False
-  - uid: 26548
-    components:
-    - type: Transform
-      parent: 26547
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyScience
   entities:
   - uid: 26463

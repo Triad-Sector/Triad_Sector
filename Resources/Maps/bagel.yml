@@ -69722,14 +69722,6 @@ entities:
       parent: 18909
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 19041
-    components:
-    - type: Transform
-      parent: 19040
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyRobo
   entities:
   - uid: 9482

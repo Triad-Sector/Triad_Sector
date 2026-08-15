@@ -39027,14 +39027,6 @@ entities:
       parent: 7290
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedicalScience
-  entities:
-  - uid: 331
-    components:
-    - type: Transform
-      parent: 330
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeySecurity
   entities:
   - uid: 7248

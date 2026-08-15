@@ -44762,14 +44762,6 @@ entities:
       parent: 533
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 421
-    components:
-    - type: Transform
-      parent: 12112
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyScience
   entities:
   - uid: 422

@@ -93313,14 +93313,6 @@ entities:
       parent: 9541
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 9538
-    components:
-    - type: Transform
-      parent: 9537
-    - type: Physics
-      canCollide: False
 - proto: EncryptionKeyScience
   entities:
   - uid: 9546

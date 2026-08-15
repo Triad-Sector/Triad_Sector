@@ -47070,21 +47070,6 @@ entities:
       parent: 7263
     - type: Physics
       canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 7266
-    components:
-    - type: Transform
-      parent: 7265
-    - type: Physics
-      canCollide: False
-- proto: EncryptionKeyMedicalScience
-  entities:
-  - uid: 7267
-    components:
-    - type: Transform
-      pos: 21.672514,-299.37094
-      parent: 2
 - proto: EncryptionKeyRobo
   entities:
   - uid: 7268
