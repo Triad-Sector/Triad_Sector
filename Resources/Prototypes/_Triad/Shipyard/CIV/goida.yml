@@ -7,31 +7,31 @@
 #
 
 - type: vessel
-  id: Povest
+  id: Goida
   parent: BaseVessel
-  name: PDM Povest
-  description: A medium sized library shuttle, some books included.
-  price: 49920
+  name: PDM Goida
+  description: A medium sized armored science shuttle. What once was a strong combat vessel has now been refitted for recovering lost technologies.
+  price: 55320
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/povest.yml
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/goida.yml
   #guidebookPage: null
   class:
-  - Civilian
+  - Science
   engine:
   - Uranium
 
 - type: gameMap
-  id: Povest
-  mapName: 'PDM Povest'
-  mapPath: /Maps/_Triad/Shuttles/povest.yml
+  id: Goida
+  mapName: 'PDM Goida'
+  mapPath: /Maps/_Triad/Shuttles/CIV/goida.yml
   minPlayers: 0
   stations:
-    Povest:
+    Goida:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Povest CIV{1}'
+          mapNameTemplate: 'Goida CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

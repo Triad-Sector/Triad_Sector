@@ -7,14 +7,14 @@
 #
 
 - type: vessel
-  id: Marshrutka
+  id: Ugol
   parent: BaseVessel
-  name: PDM Marshrutka
-  description: A small sized taxi shuttle. Zippy with a great acceleration, but be careful slowing down.
-  price: 16560
+  name: PDM Ugol
+  description: A personal small sized shuttle. Personal space has a price tag.
+  price: 12700
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/marshrutka.yml
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/ugol.yml
   #guidebookPage: null
   class:
   - Civilian
@@ -22,16 +22,16 @@
   - Plasma
 
 - type: gameMap
-  id: Marshrutka
-  mapName: 'PDM Marshrutka'
-  mapPath: /Maps/_Triad/Shuttles/marshrutka.yml
+  id: Ugol
+  mapName: 'PDM Ugol'
+  mapPath: /Maps/_Triad/Shuttles/CIV/ugol.yml
   minPlayers: 0
   stations:
-    Marshrutka:
+    Ugol:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Marshrutka CIV{1}'
+          mapNameTemplate: 'Ugol CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

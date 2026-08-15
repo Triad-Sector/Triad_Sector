@@ -1,0 +1,37 @@
+- type: entity
+  id: MedicalDerelicts
+  parent: BaseStationEventNFModerateDelay # Triad
+  name: Triad Sector Bluespace Monitoring # This name shows up in the radio messages.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startRadioAnnouncement: station-event-bluespace-medicalderelict-start-announcement
+    startRadioAnnouncementChannel: Medical
+    warningRadioAnnouncement: station-event-bluespace-medicalderelict-warning-announcement
+    warningRadioAnnouncementChannel: Medical
+    endRadioAnnouncement: station-event-bluespace-medicalderelict-end-announcement
+    endRadioAnnouncementChannel: Medical
+    weight: 5
+    duration: 1800 # 15 minutes
+    maxDuration: 1800 # 15 minutes
+  - type: BluespaceErrorRule
+    groups:
+      grid: !type:GridSpawnGroup
+        nameDataset: NamesScrap
+        nameDatasetType: FTL # they're shuttles
+        minCount: 2
+        maxCount: 4
+        minimumDistance: 4000
+        maximumDistance: 15000
+        addComponents:
+        - type: IFF
+          color: "#AAAAAA"
+        - type: LinkedLifecycleGridParent
+        - type: ClaimableGrid
+        paths:
+        - /Maps/_Triad/Shuttles/DERELICT/derelict-behir.yml
+        - /Maps/_Triad/Shuttles/DERELICT/derelict-goida.yml
+        - /Maps/_Triad/Shuttles/DERELICT/derelict-arkansaw.yml
+  - type: ActiveRadio
+    channels:
+    - Medical

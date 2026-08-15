@@ -7,14 +7,14 @@
 #
 
 - type: vessel
-  id: Ruchka
+  id: Marshrutka
   parent: BaseVessel
-  name: PDM Ruchka
-  description: A small sized shuttle fit with an office, waiting room, and personal bedroom. Perfect for on-the-go attorneys!
-  price: 35640
+  name: PDM Marshrutka
+  description: A small sized taxi shuttle. Zippy with a great acceleration, but be careful slowing down.
+  price: 16560
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/ruchka.yml
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/marshrutka.yml
   #guidebookPage: null
   class:
   - Civilian
@@ -22,16 +22,16 @@
   - Plasma
 
 - type: gameMap
-  id: Ruchka
-  mapName: 'PDM Ruchka'
-  mapPath: /Maps/_Triad/Shuttles/ruchka.yml
+  id: Marshrutka
+  mapName: 'PDM Marshrutka'
+  mapPath: /Maps/_Triad/Shuttles/CIV/marshrutka.yml
   minPlayers: 0
   stations:
-    Ruchka:
+    Marshrutka:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Ruchka CIV{1}'
+          mapNameTemplate: 'Marshrutka CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
