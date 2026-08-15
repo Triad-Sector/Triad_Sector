@@ -161,6 +161,7 @@
     - ResearchedExplosives
     # Mono end
     # Triad start
+    - GenericFaction
     - TdfTechfabDynamic
     - TdfDynamicMelee
     - TdfDynamicGun
@@ -211,6 +212,9 @@
     dynamicPacks:
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
+    # Triad start
+    - GenericFaction
+    # Triad end
     # Mono start
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
