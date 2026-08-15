@@ -1,8 +1,8 @@
 - type: entity
-  id: IVDripDeco
   parent: BannerBase
+  id: IVDripDeco
   name: IV drip
-  description: A stand with a bag attached for injecting fluids intravenously.
+  description: A stand with a bag attached for injecting fluids intravenously. It appears to be broken and non-functional.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Decoration/banner.rsi
@@ -25,10 +25,10 @@
             max: 2
 
 - type: entity
-  id: N2OMachineDeco
   parent: IVDripDeco
+  id: N2OMachineDeco
   name: nitrous-oxide sedation machine
-  description: A stand with a breath mask and a canister of air and nitrous oxide, used to sedate patients.
+  description: A stand with a breath mask and a canister of air and nitrous oxide, used to sedate patients. It appears to be broken and non-functional.
   components:
   - type: Sprite
     state: breath-machine

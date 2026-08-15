@@ -1,4 +1,4 @@
-# These are effecitvely duplicated signs.
+# These are effectively duplicated signs.
 - type: entity
   abstract: true
   parent: BaseSignDirectional
@@ -11,7 +11,7 @@
   parent: TriadDecorativeWallmountBase
   id: TriHandDryer
   name: hand dryer
-  description: "A wall-mounted hand dryer. For drying your hands."
+  description: A wall-mounted hand dryer. For drying your hands.
   components:
   - type: Sprite
     state: handdryer
@@ -20,7 +20,7 @@
   parent: TriadDecorativeWallmountBase
   id: TriToiletRoll
   name: toilet roll
-  description: "Remember to wipe."
+  description: Remember to wipe.
   components:
   - type: Sprite
     state: toiletroll
@@ -28,6 +28,7 @@
 - type: entity
   parent: TriToiletRoll
   id: TriToiletRollOffset
+  suffix: offset
   components:
   - type: Sprite
     state: toiletrolloffset
@@ -36,7 +37,7 @@
   parent: CleanerDispenser
   id: TriHandSanitiserDispenser
   name: hand sanitiser dispenser
-  description: "A wall-mounted dispenser for hand sanitatiser. Rub it into your paws."
+  description: A wall-mounted dispenser for hand sanitiser. Rub it into your paws.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Decoration/wallmount.rsi
