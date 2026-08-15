@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "folder-base, folder-overlay-paper taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432. TDF folders made by TheRealMasterChief117.",
+  "copyright": "folder-base, folder-overlay-paper taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432. TDF folders and sol_paper made by TheRealMasterChief117.",
   "size": {
     "x": 32,
     "y": 32
@@ -18,6 +18,26 @@
     },
     {
       "name": "folder-base"
+    },
+    {
+      "name": "sol_paper"
+    },
+    {
+      "name": "sol_paper_words",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
     }
   ]
 }
