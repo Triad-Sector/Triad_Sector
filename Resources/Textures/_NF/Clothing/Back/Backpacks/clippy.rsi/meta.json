@@ -11,9 +11,6 @@
             "name": "icon"
         },
         {
-            "name": "folded"
-        },
-        {
             "name": "equipped-BACKPACK",
             "directions": 4
         },
