@@ -72,8 +72,8 @@
   parent: ToolboxThief
   components:
   - type: Sprite
-    sprite: Clothing/Back/Satchels/smuggler.rsi
-    state: folded
+    sprite: Clothing/Back/Satchels/leather.rsi
+    state: icon
   - type: Item
     storedRotation: 90
   - type: ThiefUndeterminedBackpack
