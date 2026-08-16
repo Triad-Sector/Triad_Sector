@@ -9,35 +9,42 @@ public sealed partial class TriggerSystem : EntitySystem
 {
     public void UpdateRattleTimer()
     {
-        var query = EntityQueryEnumerator<ImplantedComponent, MobStateComponent>();
+        var query = EntityQueryEnumerator<SubdermalImplantComponent, RattleComponent>();
 
-        while (query.MoveNext(out var entityUid, out var implantedComponent, out var mobState))
+        while (query.MoveNext(out var implantUid, out var implant, out var rattle))
         {
-            foreach (var containerUid in implantedComponent.ImplantContainer.ContainedEntities)
+            if (implant.ImplantedEntity is not { } host)
+                continue;
+
+            if (!TryComp<MobStateComponent>(host, out var mobState))
+                return;
+
+            var shouldReset =
+                mobState.CurrentState != MobState.Dead &&
+                (rattle.DeathTime != TimeSpan.Zero ||
+                rattle.NextTrigger != TimeSpan.Zero);
+
+            if (shouldReset)
             {
-                if (!TryComp<RattleComponent>(containerUid, out var component))
-                    continue;
-
-                // This is our reset state
-                if (mobState.CurrentState != MobState.Dead && (component.DeathTime != TimeSpan.Zero || component.NextTrigger != TimeSpan.Zero))
-                {
-                    component.DeathTime = TimeSpan.Zero;
-                    component.NextTrigger = TimeSpan.Zero;
-                    continue;
-                }
-
-                if (component.NextTrigger != TimeSpan.Zero && _timing.CurTime >= component.NextTrigger)
-                {
-                    if (!_container.TryGetContainingContainer(entityUid, out var container) || !HasComp<MorgueComponent>(container.Owner))
-                    {
-                        Trigger(containerUid);
-                    }
-                    else
-                    {
-                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
-                    }
-                }
+                rattle.DeathTime = TimeSpan.Zero;
+                rattle.NextTrigger = TimeSpan.Zero;
+                continue;
             }
+
+            var waitingForNextTrigger = rattle.NextTrigger == TimeSpan.Zero || rattle.NextTrigger > _timing.CurTime;
+
+            if (waitingForNextTrigger)
+                continue;
+
+            var isInMorgue = _container.TryGetContainingContainer(implantUid, out var container) && HasComp<MorgueComponent>(container.Owner);
+            // In-case we want to add other checks
+            var shouldAlert = isInMorgue;
+
+            if (shouldAlert)
+                Trigger(implantUid);
+            else
+                rattle.NextTrigger = _timing.CurTime + rattle.RetriggerDelay;
+
         }
     }
 }
