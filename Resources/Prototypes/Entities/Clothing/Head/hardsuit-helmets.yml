@@ -466,6 +466,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: NightVision # Gen 2 monotubee # Triad: Improve blood-red night vision.
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 400
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 #Blood-red Medic Hardsuit
 - type: entity
@@ -491,6 +500,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: NightVision # Gen 2 monotubee # Triad: Improve blood-red night vision.
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 400
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 #Syndicate Elite Hardsuit
 - type: entity
@@ -521,6 +539,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: NightVision # Gen 2 monotubee # Triad: Improve blood-red night vision.
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 400
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -546,6 +573,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: NightVision # Gen 2 monotubee # Triad: Improve blood-red night vision.
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 400
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
@@ -568,6 +604,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: NightVision # Gen 2 monotubee # Triad: Improve blood-red night vision.
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 400
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 #Wizard Hardsuit
 - type: entity

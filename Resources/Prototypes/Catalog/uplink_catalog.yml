@@ -1624,6 +1624,22 @@
   categories:
   - UplinkWearables
 
+  # Triad: Domesticated PDV equipment.
+
+- type: listing
+  id: UplinkHardsuitSyndieBlack
+  name: uplink-hardsuit-syndie-black-name
+  description: uplink-hardsuit-syndie-black-desc
+  icon: { sprite: _Mono/Clothing/OuterClothing/Hardsuits/syndicate.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelClothingOuterHardsuitAshenBundle
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 30 # Mono
+  cost:
+    Telecrystal: 50 # Mono
+  categories:
+  - UplinkWearables
+
 - type: listing
   id: UplinkClothingOuterArmorRaid
   name: uplink-syndie-raid-name

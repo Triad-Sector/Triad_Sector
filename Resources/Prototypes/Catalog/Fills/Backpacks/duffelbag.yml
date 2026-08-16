@@ -350,3 +350,19 @@
         amount: 2
       - id: SyndieTrickyBomb
         amount: 2
+
+# Triad : Domesticated PDV gear
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelClothingOuterHardsuitAshenBundle
+  name: syndicate hardsuit bundle
+  description: "Contains the Syndicate's signature blood red hardsuit. Uh... wait.. where's the red?"
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitAshen
+    - id: ClothingMaskGasSyndicate
+    - id: ClothingHandsGlovesCombat
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled

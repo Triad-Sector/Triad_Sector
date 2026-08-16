@@ -3828,3 +3828,20 @@ Entries:
   id: 2516
   time: '2026-08-15T16:25:26.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/508
+- author: BoiWab
+  changes:
+    - type: Add
+      message: >-
+        Added the SCRUFF hardsuit, a lighter version of the SCAF suit in desert
+        camo. It has less protection, but is much faster
+    - type: Tweak
+      message: >-
+        Blood-red and related suit night vision upgraded to binocular, to be
+        more in-line with similar tiered combat suits.
+    - type: Add
+      message: >-
+        Added the midnight operator tacticool suit to the uplink. Reskin of the
+        bloodred hardsuit.
+  id: 2517
+  time: '2026-08-16T14:01:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/509
