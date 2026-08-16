@@ -1,0 +1,71 @@
+## Mob base
+- type: entity
+  abstract: true
+  id: MobSolarianSiliconBase
+  name: solarian silicon unit
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SD
+
+- type: entity
+  parent:
+  - MobSolarianSiliconBase
+  - MobRogueSiliconDroneBase
+  - MobRogueSiliconHitscanBatteryAmmo
+  - RogueSiliconT1LootLoadout
+  id: MobSolarianSiliconDrone
+  name: terralith security drone
+  description: A drone produced by Terralith R&M, used by the Solarian Directive force for combat and security use.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department
+      color: "#292b41"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department_accent
+      color: "#CC8A45"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base_eyes
+      shader: unshaded
+      color: "#ABF8FF"
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
+  - type: HitscanBatteryAmmoProvider
+    proto: TerralithDronePulse
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      90: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      25: 0.7
+      50: 0.5
+      75: 0.1
+
+- type: entity
+  parent: Pulse
+  id: TerralithDronePulse
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 10
+        Shock: 15
+        Structural: 50
+
+- type: entity
+  parent:
+  - MobSolarianSiliconBase
+  - MobRogueSiliconBoss
+  id: MobSolarianSiliconBoss
+  name: terralith one star unit
+  description: A combat-grade remote mech. This one star has been clearly modified and branded with the Terralith R&M logo, and is used by the local Solarian Directive.
+  categories: [ HideSpawnMenu ]

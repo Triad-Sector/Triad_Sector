@@ -1,0 +1,60 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSolarianSiliconBoss
+  name: terralith one star unit spawner
+  suffix: AI, Hostile, SD
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - state: ai
+      - sprite: Mobs/Silicon/onestar.rsi
+        state: onestar_boss
+      - sprite: Mobs/Silicon/onestar.rsi
+        state: onestar_boss_screen
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSolarianSiliconBoss
+
+- type: entity
+  parent: MarkerBase
+  id: MobSolarianSiliconDrone
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, Guaranteed
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department
+      color: "#292b41"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department_accent
+      color: "#CC8A45"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base_eyes
+      shader: unshaded
+      color: "#ABF8FF"
+  - type: RandomSpawner
+    prototypes:
+    - MobSolarianSiliconDrone
+    chance: 1
+
+- type: entity
+  parent: MobSolarianSiliconDrone
+  id: MobSolarianSiliconDroneFiftyChance
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, 50% Chance
+  components:
+  - type: RandomSpawner
+    chance: 0.5
+
+- type: entity
+  parent: MobSolarianSiliconDrone
+  id: MobSolarianSiliconDroneTenChance
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, 10% Chance
+  components:
+  - type: RandomSpawner
+    chance: 0.1
