@@ -8,10 +8,6 @@
   },
   "states": [
     {
-      "name": "empty",
-      "directions": 4
-    },
-    {
       "name": "empty_l",
       "directions": 4
     },
@@ -24,15 +20,7 @@
       "directions": 4
     },
     {
-      "name": "engineer",
-      "directions": 4
-    },
-    {
       "name": "engineer_l",
-      "directions": 4
-    },
-    {
-      "name": "medical",
       "directions": 4
     },
     {
