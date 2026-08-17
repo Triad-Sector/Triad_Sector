@@ -2516,78 +2516,106 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -13.5,42.5
       parent: 2
+  # Triad: the four hull berths on the arms are the only docks on this grid that put you inside.
+  # Each is three ports deep behind an AirlockExternalGlass, and each opens straight into a
+  # bench-lined lounge on the arm. All four carry DockTransit so the bus takes whichever one is
+  # free: a player ship in one berth no longer pushes it back out onto the gantry.
   - uid: 1558
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,10.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1559
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,11.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1560
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,12.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1561
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,12.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1562
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,11.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1563
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,10.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1564
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,-10.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1565
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,-11.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1566
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 23.5,-12.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1567
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,-12.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1568
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,-11.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1569
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,-10.5
       parent: 2
+    - type: PriorityDock # Triad
+      tag: DockTransit
 - proto: AirlockMaint
   entities:
   - uid: 1766
@@ -2648,20 +2676,20 @@ entities:
     - type: Transform
       pos: 14.5,-29.5
       parent: 2
+  # Triad: this southern row is the far end of the solar gantry, thirteen tiles of open catwalk
+  # away from the nearest external airlock. It was the bus berth and it should not have been: the
+  # stop dropped passengers in vacuum and asked them to walk the gantry in. The berth moved to the
+  # hull docks on the arms (uids 1558-1569). These stay as ordinary shuttle docks.
   - uid: 3017
     components:
     - type: Transform
       pos: -10.5,-29.5
       parent: 2
-    - type: PriorityDock # Triad: bus berth; debris east of the frontage filters the swing to westward
-      tag: DockTransit
   - uid: 3018
     components:
     - type: Transform
       pos: -11.5,-29.5
       parent: 2
-    - type: PriorityDock # Triad
-      tag: DockTransit
   - uid: 3053
     components:
     - type: Transform
@@ -2672,8 +2700,6 @@ entities:
     - type: Transform
       pos: -9.5,-29.5
       parent: 2
-    - type: PriorityDock # Triad
-      tag: DockTransit
 - proto: AltarConvertBlue
   entities:
   - uid: 1737

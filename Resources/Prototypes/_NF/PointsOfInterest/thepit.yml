@@ -17,8 +17,9 @@
   spawnGroup: Arena
   gridPath: /Maps/_NF/POI/arena.yml
   addComponents:
-  # Triad: on the bus route. Berth is the west triple on the south face, uids 3017/3018/3054 in the
-  # map, tagged DockTransit.
+  # Triad: on the bus route. Berth is any of the four hull docks on the arms, uids 1558-1569 in the
+  # map, all tagged DockTransit. They open through an external airlock into the arm lounges. The
+  # south gantry row used to carry the tag and dropped passengers in vacuum.
   - type: StationTransit
   - type: SolarPoweredGrid
     trackOnInit: true
