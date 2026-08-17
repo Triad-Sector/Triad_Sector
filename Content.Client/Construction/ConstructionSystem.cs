@@ -223,6 +223,18 @@ namespace Content.Client.Construction
             // Setting the WORLD rotation instead is correct for any parent, and reduces to the old behaviour when
             // the camera is aligned to the grid.
             _transformSystem.SetWorldRotation(ghost.Value, dir.ToAngle() - _eyeManager.CurrentEye.Rotation);
+
+            // Triad: the eye term above is only a whole number of quarter turns once InputMoverComponent's
+            // RelativeRotation has finished lerping towards TargetRelativeRotation (LerpTime is 1s, re-armed every
+            // time the player traverses on or off a grid). Placed mid-lerp, the line above leaves a fraction of a
+            // turn in the ghost's LocalRotation, and nothing downstream removes it: TryStartConstruction puts that
+            // value on the wire and the server passes it to SpawnAttachedTo verbatim, so the fraction is baked into
+            // the finished structure permanently. Snap to the parent's nearest cardinal, which is the only thing
+            // the placement manager can produce anyway (Rotate() cycles East/South/West/North) and what the server's
+            // own placement conditions already assume when they call GetCardinalDir().
+            var ghostXform = EntityManager.GetComponent<TransformComponent>(ghost.Value);
+            _transformSystem.SetLocalRotation(ghost.Value, ghostXform.LocalRotation.GetCardinalDir().ToAngle(), ghostXform);
+
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
             _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));

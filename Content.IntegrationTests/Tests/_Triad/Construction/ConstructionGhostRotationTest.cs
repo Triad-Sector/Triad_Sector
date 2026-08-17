@@ -148,16 +148,17 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
     /// <summary>
     /// The camera offset is only a cardinal once its lerp settles, so mid-lerp the ghost's local rotation carries
     /// a fraction of a turn. Building during that window bakes the fraction into the structure permanently, where
-    /// the pre-fix code always wrote an exact cardinal. Nothing snaps the angle between the ghost and the spawn:
-    /// the server passes it to <c>SpawnAttachedTo</c> as-is and only the placement <c>conditions</c> ever call
-    /// <c>GetCardinalDir</c>.
+    /// the pre-fix code always wrote an exact cardinal. Nothing used to snap the angle between the ghost and the
+    /// spawn: the server passed it to <c>SpawnAttachedTo</c> as-is, and the placement <c>conditions</c> were the
+    /// only thing that ever called <c>GetCardinalDir</c>.
     ///
-    /// Known to fail, and deliberately kept: it reproduces at 3° off the nearest cardinal. Closing it means
-    /// snapping the angle before it goes on the wire, which belongs in the follow-up patch rather than in a triage
-    /// change. Un-ignore it there; it is the acceptance test for that fix.
+    /// This is the acceptance test for the snap that closes that gap, and it reproduces at 3° off the nearest
+    /// cardinal. <c>TrySpawnGhost</c> now reduces the ghost's <c>LocalRotation</c> to the parent's nearest cardinal
+    /// after setting its world rotation, and <c>TryStartStructureConstruction</c> reduces the angle again before it
+    /// reaches <c>SpawnAttachedTo</c>, so neither a camera caught mid-lerp nor a modified client can write a
+    /// fraction of a turn onto a permanent structure.
     /// </summary>
     [Test]
-    [Ignore("Known gap, fails at 3° off cardinal. Fix is the cardinal snap in the follow-up patch; un-ignore then.")]
     public async Task GhostStaysCardinalWhileTheCameraIsStillLerping()
     {
         var proto = ProtoMan.Index<ConstructionPrototype>(DiagonalWall);

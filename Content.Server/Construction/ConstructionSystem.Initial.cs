@@ -600,13 +600,18 @@ namespace Content.Server.Construction
             }
 
 
+            // Triad: `angle` is the client ghost's LocalRotation and reaches SpawnAttachedTo unmodified, which writes
+            // it straight to the structure's LocalRotation. Construction is tile-aligned and the conditions checked
+            // above already reduce this value with GetCardinalDir(), so snap here too rather than trusting the wire:
+            // it keeps a mid-lerp camera from baking a fraction of a turn into a permanent structure, and stops a
+            // modified client sending an arbitrary angle.
             if (await Construct(user,
                     (ack + constructionPrototype.GetHashCode()).ToString(),
                     constructionGraph,
                     edge,
                     targetNode,
                     location,
-                    constructionPrototype.CanRotate ? angle : Angle.Zero) is not {Valid: true} structure)
+                    constructionPrototype.CanRotate ? angle.GetCardinalDir().ToAngle() : Angle.Zero) is not {Valid: true} structure)
             {
                 Cleanup();
                 return false;
