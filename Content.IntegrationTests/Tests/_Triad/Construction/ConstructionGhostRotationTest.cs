@@ -12,19 +12,27 @@ using Robust.Shared.Maths;
 namespace Content.IntegrationTests.Tests._Triad.Construction;
 
 /// <summary>
-/// Players on rotated ship grids reported building structures a quarter turn away from the direction they
-/// picked. <c>ConstructionSystem.TrySpawnGhost</c> wrote the placement manager's direction, which is a cardinal
-/// in SCREEN space, straight into the ghost's <c>LocalRotation</c>, which is relative to the parent grid; the
-/// value the ghost then sends to the server becomes the built structure's local rotation.
+/// Pins the construction ghost rotation contract: the placement direction is GRID-LOCAL, stored verbatim, and
+/// nothing about the camera may leak into it.
 ///
-/// The two frames differ by the eye. <c>EyeLerpingSystem.GetRotation</c> ties the camera to
-/// <c>-(gridWorldRotation + InputMoverComponent.RelativeRotation)</c>, and <c>RelativeRotation</c> snaps to the
-/// nearest cardinal when a player walks onto a grid, so boarding an 85° ship parks it at -90°. On a station both
-/// terms are zero and the bug cannot be seen, which is why it survived upstream.
+/// The engine's placement preview (<c>PlacementMode.Render</c>) draws at
+/// <c>gridWorldRotation + Direction.ToAngle()</c>, which makes Direction grid-local by definition.
+/// <c>ConstructionSystem.TrySpawnGhost</c> must store plain <c>dir</c> as the ghost's <c>LocalRotation</c> so the
+/// placed ghost and the preview the player aims by agree in every camera state; that value then rides the wire in
+/// <c>TryStartConstruction</c> and becomes the built structure's local rotation, cardinal in the ship's frame by
+/// construction. An earlier fix pair (#493/#516) treated Direction as screen-space and mixed the eye rotation in,
+/// which made placed ghosts disagree with the preview by the camera's <c>RelativeRotation</c>; the previous
+/// revision of this file asserted that behaviour, and these tests replace it with the preview's convention.
 ///
-/// The eye these tests set is <c>IEyeManager.CurrentEye</c>, the same eye the production code reads. Nothing
-/// drives it on a headless client (see <c>ClickableTest</c>, which sets it the same way), so each case states the
-/// value <c>EyeLerpingSystem</c> would have produced for that grid and camera offset.
+/// The set must also stay on the non-animating setter: the client <c>TransformSystem</c> override of
+/// <c>SetLocalRotation</c> schedules a render lerp whose frame loop rewrites <c>LocalRotation</c> with samples
+/// that never reach the target, and a client-only ghost never receives a server state to correct it, so the last
+/// sample would be its rotation forever (observed live as a 180° ghost frozen at 175.69°, built into structures
+/// as the reported ~85° skew). <c>SetLocalRotationNoLerp</c> is the path that writes once, exactly.
+///
+/// The eye these tests set is <c>IEyeManager.CurrentEye</c>, the same eye the old code read. Nothing drives it on
+/// a headless client (see <c>ClickableTest</c>), so each case states the value <c>EyeLerpingSystem</c> would have
+/// produced for that grid and camera offset, and the contract is that it must not matter.
 /// </summary>
 public sealed class ConstructionGhostRotationTest : InteractionTest
 {
@@ -101,19 +109,24 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
     }
 
     /// <summary>
-    /// A ghost must be drawn facing the cardinal the player picked, whatever the ship is doing underneath it.
+    /// A ghost stores the cardinal the player cycled, in the ship's own frame, and its world rotation lands on
+    /// <c>grid + dir</c>: the exact quantity the placement preview draws, which is what keeps the placed ghost and
+    /// the preview visually identical. The camera term is deliberately absent from both expectations, whatever the
+    /// eye is doing.
     /// </summary>
     /// <param name="gridDegrees">World rotation of the ship the player is standing on.</param>
     /// <param name="relativeDegrees">
-    /// <c>InputMoverComponent.RelativeRotation</c>, the camera's offset from the grid. Zero means the camera
-    /// exactly cancels the ship's rotation; -90 is where it parks after boarding a ship at any odd angle.
+    /// <c>InputMoverComponent.RelativeRotation</c>, the camera's offset from the grid. Zero is a freshly spawned
+    /// player; -90 is where the camera parks after boarding a rotated ship; 270 is the same quarter turn as the
+    /// mover's <c>FlipPositive()</c> leaves it, which puts an un-normalized value like -323° on the eye.
     /// </param>
     [Test]
-    [TestCase(0, 0)] // Station. Control: nothing rotated, so old and new behaviour must agree.
-    [TestCase(85, 0)] // Ship, camera exactly cancelling the grid. Also a no-op.
-    [TestCase(85, -90)] // Ship, camera parked a quarter turn off. This is the reported case.
+    [TestCase(0, 0)] // Station. Control: every convention agrees here.
+    [TestCase(85, 0)] // Ship, camera exactly cancelling the grid.
+    [TestCase(85, -90)] // Ship, camera parked a quarter turn off. The originally reported case.
     [TestCase(85, 180)]
-    public async Task GhostFacesWhereThePlayerPointed(double gridDegrees, double relativeDegrees)
+    [TestCase(85, 270)] // FlipPositive flavour: same quarter turn as -90, un-normalized eye.
+    public async Task GhostRotationIsTheDirectionThePlayerCycled(double gridDegrees, double relativeDegrees)
     {
         var proto = ProtoMan.Index<ConstructionPrototype>(DiagonalWall);
 
@@ -132,55 +145,63 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
 
             Assert.Multiple(() =>
             {
-                // An entity is drawn at worldRotation + eyeRotation (ClickableSystem uses the same identity).
-                AssertAngle(ghost.World + eye, dir.ToAngle(),
-                    $"a {dir} ghost on a {gridDegrees}° grid is not drawn facing {dir}");
-
                 // This is the value TryStartConstruction puts on the wire, and the server writes it to the
-                // structure verbatim. Off-cardinal here means a permanently skewed structure.
-                AssertAngle(ghost.Local, dir.ToAngle() + relative,
-                    $"a {dir} ghost should sit at {dir} + the camera offset in the ship's own frame");
+                // structure verbatim. It must be the picked cardinal, untouched by the camera.
+                AssertAngle(ghost.Local, dir.ToAngle(),
+                    $"a {dir} ghost on a {gridDegrees}° grid with the camera {relativeDegrees}° off did not " +
+                    "store the picked direction in the ship's frame");
+
+                // The preview draws at grid + Direction (PlacementMode.Render); matching it here is what makes
+                // the placed ghost look identical to the preview the player aimed with.
+                AssertAngle(ghost.World, grid + dir.ToAngle(),
+                    $"a {dir} ghost does not sit where the placement preview draws");
+
                 AssertCardinal(ghost.Local, $"a {dir} ghost is not aligned to the ship's tiles");
             });
         }
     }
 
     /// <summary>
-    /// The camera offset is only a cardinal once its lerp settles, so mid-lerp the ghost's local rotation carries
-    /// a fraction of a turn. Building during that window bakes the fraction into the structure permanently, where
-    /// the pre-fix code always wrote an exact cardinal. Nothing used to snap the angle between the ghost and the
-    /// spawn: the server passed it to <c>SpawnAttachedTo</c> as-is, and the placement <c>conditions</c> were the
-    /// only thing that ever called <c>GetCardinalDir</c>.
-    ///
-    /// This is the acceptance test for the snap that closes that gap, and it reproduces at 3° off the nearest
-    /// cardinal. <c>TrySpawnGhost</c> now reduces the ghost's <c>LocalRotation</c> to the parent's nearest cardinal
-    /// after setting its world rotation, and <c>TryStartStructureConstruction</c> reduces the angle again before it
-    /// reaches <c>SpawnAttachedTo</c>, so neither a camera caught mid-lerp nor a modified client can write a
-    /// fraction of a turn onto a permanent structure.
+    /// The stored rotation is a pure function of the picked direction: a camera caught mid-lerp at some fractional
+    /// angle must produce the identical ghost as a settled one. Under the old screen-space code this exact eye put
+    /// a fraction of a turn into <c>LocalRotation</c> and needed a snap to paper over; under the grid-local
+    /// convention the eye never enters the calculation at all.
     /// </summary>
     [Test]
-    public async Task GhostStaysCardinalWhileTheCameraIsStillLerping()
+    public async Task GhostRotationDoesNotDependOnTheCamera()
     {
         var proto = ProtoMan.Index<ConstructionPrototype>(DiagonalWall);
 
         var grid = Angle.FromDegrees(85);
-        // Three degrees short of the -90 it is heading for.
-        var eye = -(grid + Angle.FromDegrees(-93));
+        // Three degrees short of the -90 the camera is heading for: mid-lerp, nothing cardinal about it.
+        var midLerpEye = -(grid + Angle.FromDegrees(-93));
+        var settledEye = -(grid + Angle.FromDegrees(-90));
 
         await BoardRotatedShip(grid);
 
-        var ghost = await PlaceGhost(proto, Direction.East, eye);
+        var midLerp = await PlaceGhost(proto, Direction.East, midLerpEye);
+        var settled = await PlaceGhost(proto, Direction.East, settledEye);
 
-        Assert.That(ghost.Spawned, Is.True, "failed to place the ghost");
-        AssertCardinal(ghost.Local,
-            "a ghost placed mid-camera-lerp would build a structure that is permanently off-grid");
+        Assert.Multiple(() =>
+        {
+            Assert.That(midLerp.Spawned && settled.Spawned, Is.True, "failed to place a ghost");
+            AssertAngle(midLerp.Local, Direction.East.ToAngle(),
+                "a ghost placed under a mid-lerp camera did not store the picked direction");
+            AssertAngle(midLerp.Local, settled.Local,
+                "the same placement under two camera states produced two different rotations");
+            AssertCardinal(midLerp.Local,
+                "a ghost placed mid-camera-lerp would build a structure that is permanently off-grid");
+        });
     }
 
     /// <summary>
-    /// End to end: the rotation the player saw on the ghost is the rotation the spawned structure keeps in the
-    /// ship's frame. This is what the player-facing bug is actually about. The angle rides the wire as the ghost's
-    /// <c>LocalRotation</c> and reaches <c>SpawnAttachedTo(..., rotation: angle)</c>, so the entity the graph's
-    /// first edge creates is where it lands.
+    /// End to end: the cardinal the player picked is the rotation the built structure keeps in the ship's frame.
+    /// The angle rides the wire as the ghost's <c>LocalRotation</c> and reaches
+    /// <c>SpawnAttachedTo(..., rotation: angle)</c>, so the entity the graph's first edge creates is where it
+    /// lands. The read after <see cref="InteractionTest.RunTicks"/> doubles as the regression guard for the render
+    /// lerp: with the animating setter the client frame loop rewrites a client-only ghost's rotation to a
+    /// permanently-short sample within its first tick, so an exact cardinal surviving to the build proves the
+    /// NoLerp path held.
     /// </summary>
     [Test]
     public async Task BuiltStructureKeepsTheRotationTheGhostShowed()
@@ -189,8 +210,7 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
         var eyeMan = Client.ResolveDependency<IEyeManager>();
 
         var grid = Angle.FromDegrees(85);
-        var relative = Angle.FromDegrees(-90);
-        var eye = -(grid + relative);
+        var eye = -(grid + Angle.FromDegrees(-90));
         const Direction dir = Direction.East;
 
         await BoardRotatedShip(grid);
@@ -209,8 +229,13 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
             ConstructionGhostId = ghost.Value.GetHashCode();
         });
 
-        await RunTicks(1);
+        await RunTicks(5);
         Assert.That(spawned, Is.True, $"failed to place a {dir} ghost");
+
+        // Several ticks of client frame updates have run; an animating setter would have eaten the exact value.
+        var ghostLocal = CEntMan.GetComponent<TransformComponent>(CEntMan.GetEntity(Target!.Value)).LocalRotation;
+        AssertAngle(ghostLocal, dir.ToAngle(),
+            "the ghost's rotation did not survive to the build, so something re-animated it after spawn");
 
         // The first edge of the graph is what carries the rotation, and it spawns the girder.
         await InteractUsing(Steel, 2);
@@ -223,8 +248,8 @@ public sealed class ConstructionGhostRotationTest : InteractionTest
         var xform = SEntMan.GetComponent<TransformComponent>(built!.Value);
         Assert.Multiple(() =>
         {
-            AssertAngle(xform.LocalRotation, dir.ToAngle() + relative,
-                $"a structure built facing {dir} on screen did not keep that facing on the ship");
+            AssertAngle(xform.LocalRotation, dir.ToAngle(),
+                $"a structure built facing {dir} did not keep that facing in the ship's frame");
             AssertCardinal(xform.LocalRotation, "the spawned structure is not aligned to the ship's tiles");
         });
     }
