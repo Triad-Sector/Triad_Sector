@@ -16,7 +16,7 @@
             - material: Cloth
               amount: 2
               doAfter: 1
-        - to: BannerTDFNode
+        - to: BannerTFANode
           completed:
             - !type:SnapToGrid { }
           steps:
