@@ -11,6 +11,7 @@ public sealed partial class TemperatureSpeedComponent : Component
 {
     /// <summary> Triad
     /// Sets the baseline temperature to compare with thresholds to know when to stop applying a slowdown
+    /// TODO: Remove this once base temp is not server only
     /// </summary>
     [DataField]
     public float? BaseTemperature;
