@@ -17111,7 +17111,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 11.722592,2.9743285
-- proto: BusScheduleRoute1
+- proto: BusSchedule
   entities:
   - uid: 2316
     components:
