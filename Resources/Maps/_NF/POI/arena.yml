@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/17/2026 21:29:32
-  entityCount: 3251
+  entityCount: 3249
 maps: []
 grids:
 - 2
@@ -18195,20 +18195,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 4.5,-17.5
-- proto: SmallLight
-  entities:
-  - uid: 3250
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: 27.5,2.5
-  - uid: 3251
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: 27.5,-2.5
 - proto: SMESBasic
   entities:
   - uid: 706
