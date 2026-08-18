@@ -28,7 +28,7 @@
 - type: entity
   parent: TriToiletRoll
   id: TriToiletRollOffset
-  suffix: offset
+  suffix: Offset
   components:
   - type: Sprite
     state: toiletrolloffset

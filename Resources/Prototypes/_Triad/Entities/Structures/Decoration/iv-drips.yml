@@ -5,7 +5,7 @@
   description: A stand with a bag attached for injecting fluids intravenously. It appears to be broken and non-functional.
   components:
   - type: Sprite
-    sprite: _Triad/Structure/Decoration/banner.rsi
+    sprite: _Triad/Structure/Decoration/medical.rsi
     state: iv-drip
   - type: Destructible #Section copied from bannerbase
     thresholds:
