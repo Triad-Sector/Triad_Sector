@@ -45,3 +45,16 @@
 # So TDF vessels prioritize TDF docks on Venmar and civilian vessels do not dock to them
 - type: Tag
   id: DockTdf
+
+# Borg stuff
+- type: Tag
+  id: BorgModuleSolarian
+
+- type: Tag
+  id: BorgModuleSolarianAssault
+
+- type: Tag
+  id: BorgModuleSolarianMedical
+
+- type: Tag
+  id: BorgModuleSolarianEngineering

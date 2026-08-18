@@ -26,6 +26,10 @@
     {
       "name": "medical_l",
       "directions": 4
+    },
+    {
+      "name": "assault_no_mind",
+      "directions": 4
     }
   ]
 }
