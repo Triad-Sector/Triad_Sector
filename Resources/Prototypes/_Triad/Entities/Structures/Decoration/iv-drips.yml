@@ -27,7 +27,7 @@
 - type: entity
   parent: IVDripDeco
   id: N2OMachineDeco
-  name: nitrous-oxide sedation machine
+  name: nitrous oxide sedation machine
   description: A stand with a breath mask and a canister of air and nitrous oxide, used to sedate patients. It appears to be broken and non-functional.
   components:
   - type: Sprite
