@@ -11,3 +11,4 @@
   keycode: 'k'
   frequency: 1568
   color: "#6a6ad8aa"
+  longRange: true # Temporary until there's an SD base with a telecomms console
