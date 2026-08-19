@@ -27,7 +27,7 @@ namespace Content.Shared.PDA
         [DataField("bookSlot")]
         public ItemSlot BookSlot = new();
 
-        [DataField("projectorSlot")]     // Triad Edit
+        [DataField]     // Triad Edit
         public ItemSlot ProjectorSlot = new();
 
         // Really this should just be using ItemSlot.StartingItem. However, seeing as we have so many different starting
