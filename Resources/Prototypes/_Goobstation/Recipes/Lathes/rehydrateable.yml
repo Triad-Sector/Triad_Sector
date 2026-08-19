@@ -108,15 +108,15 @@
     Biomass: 80
     Plasma: 250
 
-- type: latheRecipe
-  id: YowieCube
-  result: YowieCube
-  categories: # Mono
-  - Species
-  completetime: 30
-  materials:
-    Biomass: 80
-    Plasma: 250
+#- type: latheRecipe
+#  id: YowieCube
+#  result: YowieCube
+#  categories: # Mono
+#  - Species
+#  completetime: 30
+#  materials:
+#    Biomass: 80
+#    Plasma: 250
 
 - type: latheRecipe
   id: VoxCube

@@ -20,7 +20,7 @@
   parent: NFClothingBackpack
   id: ClothingBackpackBlueDiamond
   name: blue diamond PMC backpack # SD backpack
-  description: Part of the load bearing system that the BDMC of the Solarian Directive uses.
+  description: Part of the load bearing system that Blue Diamond Military Contracting of the Solarian Directive uses.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Back/Backpacks/blue_diamond.rsi

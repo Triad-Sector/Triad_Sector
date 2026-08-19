@@ -26,10 +26,10 @@ language-Azaziba-name = Azaziba
 language-Azaziba-description =
     A native language of Asakims consisting of a combination of spoken word and gesticulation.
 
-language-SolCommon-name = Sol common
+language-SolCommon-name = Sol Common
 language-SolCommon-description =
     With its roots in Mandarin Chinese - Common evolved as the official language of the Federated Solarian Republic - with officials working to tie it together with a common tongue.
-    It's spoken by state officials, the armed forces, by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.
+    It's spoken by state officials, the armed forces, and by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.
 
 language-NovuNederic-name = Novu-Nederic
 language-NovuNederic-description =

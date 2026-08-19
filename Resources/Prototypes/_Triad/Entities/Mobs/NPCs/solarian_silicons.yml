@@ -1,0 +1,175 @@
+## AI
+- type: entity
+  id: MobSolarianSiliconAISimpleMelee
+  abstract: true
+  components:
+  - type: HTN
+    rootTask:
+       task: SimpleHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        false
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      SoundTargetInLOS: !type:SoundPathSpecifier
+        path: /Audio/Voice/Talk/Silicon/syndieborg_exclaim.ogg
+
+- type: entity
+  id: MobSolarianSiliconAISimpleRanged
+  abstract: true
+  components:
+  - type: HTN
+    rootTask:
+       task: SimpleRangedHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        false
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      SoundTargetInLOS: !type:SoundPathSpecifier
+        path: /Audio/Voice/Talk/Silicon/syndieborg_exclaim.ogg
+
+## Mob base
+- type: entity
+  abstract: true
+  id: MobSolarianSiliconBase
+  name: solarian silicon unit
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SD
+
+- type: entity
+  parent:
+  - MobSolarianSiliconBase
+  - MobRogueSiliconDroneBase
+  - MobRogueSiliconHitscanBatteryAmmo
+  - RogueSiliconT1LootLoadout
+  id: MobSolarianSiliconDrone
+  name: terralith security drone
+  description: A drone produced by Terralith R&M, used by the Solarian Directive force for combat and security use.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department
+      color: "#292b41"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department_accent
+      color: "#CC8A45"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base_eyes
+      shader: unshaded
+      color: "#ABF8FF"
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
+  - type: HitscanBatteryAmmoProvider
+    proto: TerralithDronePulse
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      90: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      25: 0.7
+      50: 0.5
+      75: 0.1
+
+- type: entity
+  parent: Pulse
+  id: TerralithDronePulse
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 10
+        Shock: 15
+        Structural: 50
+
+- type: entity
+  parent:
+  - MobSolarianSiliconBase
+  - MobRogueSiliconBoss
+  id: MobSolarianSiliconBoss
+  name: terralith one star unit
+  description: A combat-grade remote mech. This one star has been clearly modified and branded with the Terralith R&M logo, and is used by the local Solarian Directive.
+  categories: [ HideSpawnMenu ] # TODO sprites!
+
+- type: entity
+  parent:
+  - BorgChassisSolarianDirectiveAssault
+  - MobSolarianSiliconAISimpleRanged
+  id: MobSolarianSiliconAssaultCyborg
+  suffix: NPC, Ranged
+  components:
+  - type: InputMover
+  - type: MobMover
+  - type: NPCRetaliation
+    attackMemoryLength: 30
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellCombat
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Traffic
+    - SolarianDirective
+  - type: Prying
+  - type: NFSalvageMobRestrictions
+    removeComponentsOnDeath:
+    - type: Prying
+    - type: Access
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.2 # Slower than normal
+    baseSprintSpeed: 2.8
+  - type: SiliconLawProvider
+    laws: SolarianDirectiveVesselProtection
+  - type: RandomMetadata
+    nameSegments: [SDBorgNameset]
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleSDAdvancedAssaultNpc
+  - type: BorgChassis
+    maxModules: 2
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSolarian
+      - BorgModuleSolarianAssault
+    hasMindState: assault_l # a NPC won't have a mind
+    noMindState: assault_l
+
+- type: entity
+  parent:
+  - MobSolarianSiliconAISimpleMelee
+  - MobSolarianSiliconAssaultCyborg
+  id: MobSolarianSiliconAssaultCyborgMelee
+  suffix: NPC, Melee
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleSDAdvancedAssaultMeleeNpc
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5 # default borg speed
+    baseSprintSpeed : 4.5

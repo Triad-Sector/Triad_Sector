@@ -3936,3 +3936,48 @@ Entries:
   id: 2526
   time: '2026-08-18T13:21:20.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/507
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added load bearing fixes to the Behir
+  id: 2527
+  time: '2026-08-19T01:49:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/524
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added two new Reptilian HeadSide markings, Tongue Flick and Tongue Weh.
+    - type: Fix
+      message: Fixed Reptilian Tails while wagging having incorrect colors.
+  id: 2528
+  time: '2026-08-19T03:11:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/525
+- author: gaywolfgirl6
+  changes:
+    - type: Tweak
+      message: Removed the movement speed debuff given upon wielding a Breaching Hammer
+  id: 2529
+  time: '2026-08-19T13:14:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/526
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added Solarian Directive Silicon NPCS for admins. You'll be seeing these
+        in dungeons in the future.
+    - type: Tweak
+      message: The Syndicate Weapons Cache's lockers now has random contents.
+    - type: Tweak
+      message: The Syndicate Weapon Cache now has a random gunnery server spawner.
+  id: 2530
+  time: '2026-08-19T20:06:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/523
+- author: nanbyt
+  changes:
+    - type: Fix
+      message: >-
+        Temperature slowdowns now correctly work for thresholds above normal
+        body temperatures.
+  id: 2531
+  time: '2026-08-19T20:07:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/470

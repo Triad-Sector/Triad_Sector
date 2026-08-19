@@ -52,6 +52,7 @@
       types:
         Cold : 0.01 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
+    baseTemperature: 210.15 # Triad
     thresholds:
       90: 0.9
       40: 0.75

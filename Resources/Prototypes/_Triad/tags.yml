@@ -49,3 +49,16 @@
 #For privacy projectors to fit in PDAs
 - type: Tag
   id: CivilianHoloprojector
+
+# Borg stuff
+- type: Tag
+  id: BorgModuleSolarian
+
+- type: Tag
+  id: BorgModuleSolarianAssault
+
+- type: Tag
+  id: BorgModuleSolarianMedical
+
+- type: Tag
+  id: BorgModuleSolarianEngineering

@@ -85,6 +85,7 @@
     - type: Sprite
       scale: 0.91, 0.91
     - type: TemperatureSpeed
+      baseTemperature: 261 # Triad
       thresholds:
         250: 0.9
         230: 0.8
