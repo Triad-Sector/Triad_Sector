@@ -68,7 +68,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         return false;
     }
 
-    private void OnAudibleEmote(EntityUid uid, WearingHeadsetComponent component, EntityAudiblyEmotedEvent args)
+    private void OnAudibleEmote(EntityUid uid, WearingHeadsetComponent component, ref EntityAudiblyEmotedEvent args)
     {
         if (CheckRadioCapable(uid, component, args.Channel))
         {
