@@ -107,23 +107,21 @@
       - id: StimkitFilled
       # Suits
       - !type:GroupSelector
-        weight: 0.06
+        weight: 0.15
         children:
         - id: ClothingBackpackDuffelSyndicateRaidBundle
           weight: 0.75
         - id: ClothingBackpackDuffelSyndicateBundleSamurai
           weight: 0.75
         - id: ClothingBackpackDuffelSyndicateHardsuitBundle
-          weight: 0.2
         - id: ClothingBackpackDuffelSyndicateEliteHardsuitBundle
           weight: 0.2
         - id: ClothingBackpackDuffelSyndicateMedicHardsuitBundle
-          weight: 0.2
         - id: ClothingBackpackDuffelSyndicateStealthHardsuitBundle
-          weight: 0.2
+          weight: 0.5
         - id: ClothingBackpackDuffelClothingOuterHardsuitAshenBundle
-          weight: 0.2
         - id: ClothingBackpackDuffelSyndicateEVABundle
+          weight: 0.5
 
 - type: entityTable
   id: SyndicateTelecrystalLowTierTable
@@ -208,7 +206,7 @@
       - id: Type35Flatpack
 
 - type: entity
-  parent: LockerSyndicate
+  parent: LockerSyndicatePersonal
   id: LockerSyndicateFilledHighTier
   suffix: Filled, Random Syndicate Gear, High Tier
   components:
@@ -300,7 +298,6 @@
     - id: ClothingBackpackDuffelSyndicateC4tBundle
     - id: BriefcaseSyndieLobbyingBundleFilled
     - id: ChemicalSynthesisKit
-    - id: ClothingBackpackDuffelSyndicateHardsuitExtrasBundle
     - id: ClothingBackpackDuffelSyndicateMedicalBundleFilled
     - id: ElectricalDisruptionKit
     - id: MedkitCombatFilled
@@ -308,7 +305,7 @@
         range: 1, 3
     # Suits
     - !type:GroupSelector
-      weight: 0.1
+      weight: 0.15
       children:
       - id: ClothingBackpackDuffelSyndicateRaidBundle
         weight: 0.25
@@ -332,14 +329,15 @@
       weight: 98
       children:
       - id: Telecrystal5
-        amount: 2
+        amount: !type:RangeNumberSelector
+          range: 2, 3
     # Rare Group
     - !type:GroupSelector
       weight: 2
       children:
       - id: Telecrystal5
         amount: !type:RangeNumberSelector
-          range: 1, 3
+          range: 2, 3
       - id: Telecrystal25
 
 - type: entityTable
