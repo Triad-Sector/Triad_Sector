@@ -143,11 +143,9 @@
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_smooth_behind_primary
+    state: tail_smooth_primary
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_smooth_behind_secondary
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_smooth_front
+    state: tail_smooth_secondary
 
 - type: marking
   id: LizardTailLarge
@@ -156,9 +154,7 @@
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_large_behind
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_large_front
+    state: tail_large
 
 - type: marking
   id: LizardTailSpikes
@@ -167,9 +163,7 @@
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_spikes_behind
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_spikes_front
+    state: tail_spikes
 
 - type: marking
   id: LizardTailLTiger
@@ -178,9 +172,7 @@
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_ltiger_behind
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_ltiger_front
+    state: tail_ltiger
 
 - type: marking
   id: LizardTailDTiger
@@ -189,9 +181,7 @@
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_dtiger_behind
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: tail_dtiger_front
+    state: tail_dtiger
 
 - type: marking
   id: LizardSnoutRound
