@@ -18,12 +18,14 @@
     laws: SolarianDirective
   - type: IntrinsicRadioTransmitter
     channels:
-    - Traffic
     - Common
+    - Traffic
+    - SolarianDirective
   - type: ActiveRadio
     channels:
     - Common
     - Traffic
+    - SolarianDirective
   - type: CollectiveMind
     channels:
     - Binary

@@ -22,7 +22,7 @@
   parent: NFClothingDuffel
   id: ClothingBackpackDuffelBlueDiamond
   name: blue diamond PMC duffel bag
-  description: Part of the load bearing system that the BDMC of the Solarian Directive uses. Heavy!
+  description: Part of the load bearing system that Blue Diamond Military Contracting of the Solarian Directive uses. Heavy!
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Back/Duffels/blue_diamond.rsi

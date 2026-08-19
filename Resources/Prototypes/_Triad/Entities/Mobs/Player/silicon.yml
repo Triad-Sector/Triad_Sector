@@ -63,3 +63,4 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Traffic # Can't talk on broadband, but can hear it
+    - SolarianDirective

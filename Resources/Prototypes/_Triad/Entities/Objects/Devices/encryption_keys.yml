@@ -19,3 +19,25 @@
       state: hos_label
   - type: PirateBountyItem
     id: EncryptionKeyFaction
+
+- type: entity
+  parent: [ BaseFactionGearSDT1, EncryptionKey, BaseClass2AShipContrabandSilent ]
+  id: EncryptionKeySolarianDirective
+  name: SD encryption key
+  categories: [ DoNotMap ]
+  description: An encryption key for the Solarian Directive channel. Terralith corpos, Blue Diamond, Helios corpos, etc..
+  components:
+  - type: EncryptionKey
+    channels:
+    - SolarianDirective
+    defaultChannel: SolarianDirective
+  - type: Item
+    sprite: Objects/Devices/encryption_keys.rsi
+  - type: Sprite
+    sprite: Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_blue
+    - sprite: _NF/Objects/Devices/encryption_keys.rsi
+      state: nfsd_label
+  - type: PirateBountyItem
+    id: EncryptionKeyFaction
