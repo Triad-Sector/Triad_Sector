@@ -26,6 +26,15 @@
     - Common
     - Traffic
     - SolarianDirective
+  - type: LanguageKnowledge
+    speaks:
+    - SolCommon
+    - TauCetiBasic
+    - RobotTalk
+    understands:
+    - SolCommon
+    - TauCetiBasic
+    - RobotTalk
   - type: CollectiveMind
     channels:
     - Binary
