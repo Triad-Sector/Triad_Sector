@@ -192,8 +192,10 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         };
         MessageInput.OnTextChanged += args =>
         {
-            var length = args.Text.Length;
-            var isValid = !string.IsNullOrWhiteSpace(args.Text) &&
+            // Triad: measure what would actually be sent, so the button state and the character count agree with
+            // SendMessage's own limit check instead of counting whitespace SendMessage trims away.
+            var length = args.Text.Trim().Length;
+            var isValid = length > 0 &&
                           length <= NanoChatMessage.MaxContentLength &&
                           ActiveChat != null;
 
@@ -305,13 +307,13 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         if (activeChat == null || string.IsNullOrWhiteSpace(MessageInput.Text))
             return;
 
-        var messageContent = MessageInput.Text;
-        if (!string.IsNullOrWhiteSpace(messageContent))
-        {
-            messageContent = messageContent.Trim();
-            if (messageContent.Length > NanoChatMessage.MaxContentLength)
-                messageContent = messageContent[..NanoChatMessage.MaxContentLength];
-        }
+        // Triad: refuse an over-long message rather than silently truncating it. SendButton is disabled past the
+        // limit, but MessageInput.OnTextEntered calls straight in here, so pressing Enter sent a quietly clipped
+        // message while the UI was saying it was too long. The server truncates too, as the backstop for input it
+        // cannot trust; this is the half that has to agree with what the player is being shown.
+        var messageContent = MessageInput.Text.Trim();
+        if (messageContent.Length > NanoChatMessage.MaxContentLength)
+            return;
 
         // Add predicted message
         var predictedMessage = new NanoChatMessage(
