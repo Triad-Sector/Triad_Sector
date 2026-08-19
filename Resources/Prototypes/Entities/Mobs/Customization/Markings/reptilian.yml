@@ -141,12 +141,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
-  layering: # Triad
-    tail_smooth_behind_primary: TailBehind # Triad
-    tail_smooth_behind_secondary: TailBehind # Triad
-    tail_smooth_front: Tail # Triad
-  colorLinks: # Triad
-    tail_smooth_behind_primary: tail_smooth_front # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_smooth_behind_primary
@@ -160,11 +154,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
-  layering: # Triad
-    tail_large_behind: TailBehind # Triad
-    tail_large_front: Tail # Triad
-  colorLinks: # Triad
-    tail_large_behind: tail_large_front # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_large_behind
@@ -176,11 +165,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
-  layering: # Triad
-    tail_spikes_behind: TailBehind # Triad
-    tail_spikes_front: Tail # Triad
-  colorLinks: # Triad
-    tail_spikes_behind: tail_spikes_front # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_spikes_behind
@@ -192,11 +176,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
-  layering: # Triad
-    tail_ltiger_behind: TailBehind # Triad
-    tail_ltiger_front: Tail # Triad
-  colorLinks: # Triad
-    tail_ltiger_behind: tail_ltiger_front # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_ltiger_behind
@@ -208,11 +187,6 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Reptilian]
-  layering: # Triad
-    tail_dtiger_behind: TailBehind # Triad
-    tail_dtiger_front: Tail # Triad
-  colorLinks: # Triad
-    tail_dtiger_behind: tail_dtiger_front # Triad
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_dtiger_behind
