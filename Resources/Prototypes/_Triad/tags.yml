@@ -45,3 +45,7 @@
 # So TDF vessels prioritize TDF docks on Venmar and civilian vessels do not dock to them
 - type: Tag
   id: DockTdf
+
+#For privacy projectors to fit in PDAs
+- type: Tag
+  id: CivilianHoloprojector
