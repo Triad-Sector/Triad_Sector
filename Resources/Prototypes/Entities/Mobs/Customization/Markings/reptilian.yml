@@ -399,6 +399,14 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_smooth_wagging_primary: TailBehind # Triad
+    tail_smooth_wagging_primary: Tail # Triad
+    tail_smooth_wagging_secondary: TailBehind # Triad
+    tail_smooth_wagging_secondary: Tail # Triad
+  colorLinks: # Triad
+    tail_smooth_wagging_primary: tail_smooth_wagging_primary # Triad
+    tail_smooth_wagging_secondary: tail_smooth_wagging_secondary # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_smooth_wagging_primary
@@ -410,6 +418,11 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_spikes_wagging: TailBehind # Triad
+    tail_spikes_wagging: Tail # Triad
+  colorLinks: # Triad
+    tail_spikes_wagging: tail_spikes_wagging # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_spikes_wagging
@@ -419,6 +432,11 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_ltiger_wagging: TailBehind # Triad
+    tail_ltiger_wagging: Tail # Triad
+  colorLinks: # Triad
+    tail_ltiger_wagging: tail_ltiger_wagging # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_ltiger_wagging
@@ -428,6 +446,11 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
+  layering: # Triad
+    tail_dtiger_wagging: TailBehind # Triad
+    tail_dtiger_wagging: Tail # Triad
+  colorLinks: # Triad
+    tail_dtiger_wagging: tail_dtiger_wagging # Triad
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_dtiger_wagging
