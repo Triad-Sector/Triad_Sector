@@ -1,5 +1,8 @@
 using System.Linq;
 using System.Numerics;
+// Triad: aliased rather than a plain `using System.Threading`, which would make `Timer` ambiguous against
+// Robust.Shared.Timing.Timer.
+using CancellationTokenSource = System.Threading.CancellationTokenSource;
 using Content.Client._DV.NanoChat;
 using Content.Shared._DV.CartridgeLoader.Cartridges;
 using Content.Shared.Access.Components; // Triad: CCVars.MaxNameLength/MaxIdJobLength do not exist here
@@ -44,6 +47,25 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private int _typingGeneration; // invalidates stale auto-clear timers when a fresher pulse arrives
     // Triad end
 
+    /// <summary>
+    ///     Triad: cancels work scheduled through Timer.Spawn when this fragment leaves the screen. Those callbacks
+    ///     capture the fragment and touch its controls, so without this a PDA closed inside the delay window ends
+    ///     up poking disposed controls.
+    /// </summary>
+    private CancellationTokenSource _deferredCts = new();
+
+    /// <summary>
+    ///     The chat the player is looking at: an unconfirmed selection if one is outstanding, otherwise the one
+    ///     the server says is current.
+    /// </summary>
+    /// <remarks>
+    ///     Triad: this was spelled out as <c>_pendingChat ?? _currentChat</c> at six call sites, and three others
+    ///     (mute, edit, the send-button enable) read <see cref="_currentChat"/> on its own. Those three acted on
+    ///     the previously selected chat when used in the window between clicking a contact and the server
+    ///     confirming it, so muting or renaming right after a click hit the wrong conversation.
+    /// </remarks>
+    private uint? ActiveChat => _pendingChat ?? _currentChat;
+
     public event Action<NanoChatUiMessageType, uint?, string?, string?>? OnMessageSent;
 
     public NanoChatUiFragment()
@@ -55,9 +77,25 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         _editChatPopup = new(MaxNameLength, MaxIdJobLength);
         SetupEventHandlers();
 
-        // Triad: register so the client-side NanoChatSystem can hand us typing-indicator pushes
+        // Triad: held here, but we only hand ourselves to it once we are actually on screen. See EnteredTree.
         _nanoChatSystem = EntitySystem.Get<NanoChatSystem>();
+    }
+
+    // Triad begin: tie the typing-indicator registration and every escapable resource to time-on-screen rather
+    // than to construction. A fragment that is built and never attached must not capture the registration, and one
+    // that leaves the screen must not keep a floating popup, a pending timer, or an unsent "still typing" state.
+    protected override void EnteredTree()
+    {
+        base.EnteredTree();
+
         _nanoChatSystem.RegisterFragment(this);
+    }
+
+    protected override void ExitedTree()
+    {
+        base.ExitedTree();
+
+        Teardown();
     }
 
     protected override void Dispose(bool disposing)
@@ -67,10 +105,29 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         if (!disposing)
             return;
 
-        // Triad: typing indicator cleanup
+        Teardown();
+    }
+
+    /// <summary>
+    ///     Releases everything that can outlive the control: the typing state the server still thinks we are in,
+    ///     our typing-push registration, any deferred callback, and the popup windows. The popups are top-level
+    ///     controls rather than children of this fragment, so nothing else would ever close them.
+    ///     Safe to call more than once, since a detach is normally followed by a dispose.
+    /// </summary>
+    private void Teardown()
+    {
         StopTyping();
         _nanoChatSystem.UnregisterFragment(this);
+
+        // Cancel pending deferred work and arm a fresh token, so a fragment that gets re-attached still works.
+        _deferredCts.Cancel();
+        _deferredCts.Dispose();
+        _deferredCts = new CancellationTokenSource();
+
+        _newChatPopup.Close();
+        _editChatPopup.Close();
     }
+    // Triad end
 
     private void SetupEventHandlers()
     {
@@ -92,15 +149,15 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
         MuteChatButton.OnPressed += _ =>
         {
-            if (_currentChat is not uint currentChat)
+            if (ActiveChat is not uint activeChat) // Triad: was _currentChat, see ActiveChat
                 return;
 
             // Remove if muted, otherwise add
-            if (!_mutedChats.Remove(currentChat))
-                _mutedChats.Add(currentChat);
+            if (!_mutedChats.Remove(activeChat))
+                _mutedChats.Add(activeChat);
 
             UpdateMuteChatButton();
-            OnMessageSent?.Invoke(NanoChatUiMessageType.ToggleMuteChat, currentChat, null, null);
+            OnMessageSent?.Invoke(NanoChatUiMessageType.ToggleMuteChat, activeChat, null, null);
         };
 
         MuteButton.OnPressed += _ =>
@@ -126,7 +183,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             var length = args.Text.Length;
             var isValid = !string.IsNullOrWhiteSpace(args.Text) &&
                           length <= NanoChatMessage.MaxContentLength &&
-                          (_currentChat != null || _pendingChat != null);
+                          ActiveChat != null;
 
             SendButton.Disabled = !isValid;
 
@@ -143,7 +200,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             // Triad: typing indicator
             if (string.IsNullOrEmpty(args.Text))
                 StopTyping();
-            else if ((_pendingChat ?? _currentChat) is uint activeChat)
+            else if (ActiveChat is uint activeChat)
                 SendTypingPulse(activeChat);
             // End Triad
         };
@@ -191,41 +248,48 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         Down,
     };
 
+    /// <summary>
+    ///     Moves the selection one contact along, optionally skipping to the next one with unread messages.
+    /// </summary>
+    /// <remarks>
+    ///     Triad: rewritten as a bounded walk. Upstream looped until the index came back around to its starting
+    ///     value, but that starting value was <c>Count</c> when no chat was selected and <c>-1</c> when the
+    ///     selected chat was not in the contact list, and a wrapped index can never equal either. So
+    ///     "cycle to next unread" with nothing unread never terminated and hung the client outright. Easy to hit:
+    ///     a PDA with no conversation selected and the unread keybind pressed.
+    /// </remarks>
     private void CycleChannel(CycleDirection direction, bool onlyUnread)
     {
         if (_recipients.Count == 0)
             return;
 
-        var orderedRecipients = _recipients.OrderBy(r => r.Value.Name).Select(r => r.Key).ToArray();
-        var currentChatIndex = (direction, _currentChat) switch
-        {
-            (CycleDirection.Up, null) => _recipients.Count,
-            (CycleDirection.Down, null) => 0,
-            (_, uint currentChat) => Array.IndexOf(orderedRecipients, currentChat),
-            _ => 0
-        };
-        var newChatIndex = currentChatIndex;
+        var ordered = _recipients.OrderBy(r => r.Value.Name).Select(r => r.Key).ToArray();
 
-        do
+        // -1 when nothing is selected, so the first step lands on either end of the list depending on direction.
+        var index = ActiveChat is uint activeChat ? Array.IndexOf(ordered, activeChat) : -1;
+        var step = direction == CycleDirection.Up ? -1 : 1;
+
+        // At most one full lap: every contact gets considered exactly once, then we stop.
+        for (var i = 0; i < ordered.Length; i++)
         {
-            newChatIndex = direction switch
+            index += step;
+
+            if (index < 0)
+                index = ordered.Length - 1;
+            else if (index >= ordered.Length)
+                index = 0;
+
+            if (!onlyUnread || _recipients[ordered[index]].HasUnread)
             {
-                CycleDirection.Up => newChatIndex - 1,
-                CycleDirection.Down => newChatIndex + 1,
-                _ => currentChatIndex,
-            };
-            if (newChatIndex < 0)
-                newChatIndex = _recipients.Count - 1;
-            else if (newChatIndex >= _recipients.Count)
-                newChatIndex = 0;
-        } while (onlyUnread && newChatIndex != currentChatIndex && !_recipients[orderedRecipients[newChatIndex]].HasUnread);
-
-        SelectChat(orderedRecipients[newChatIndex]);
+                SelectChat(ordered[index]);
+                return;
+            }
+        }
     }
 
     private void SendMessage()
     {
-        var activeChat = _pendingChat ?? _currentChat;
+        var activeChat = ActiveChat;
         if (activeChat == null || string.IsNullOrWhiteSpace(MessageInput.Text))
             return;
 
@@ -253,7 +317,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         value.Add(predictedMessage);
 
         // Update UI with predicted message
-        UpdateMessages(_messages);
+        UpdateMessages();
 
         // Triad: a sent message ends our own typing state
         StopTyping();
@@ -268,8 +332,9 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
     private void SelectChat(uint number)
     {
-        // Don't reselect the same chat
-        if (_currentChat == number && _pendingChat == null)
+        // Don't reselect the chat we are already on. Triad: compares against ActiveChat, so clicking a chat whose
+        // selection is still in flight no longer re-sends the same request.
+        if (ActiveChat == number)
             return;
 
         // Triad: switching threads stops any typing signal we were sending to the old one
@@ -282,7 +347,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         {
             recipient.HasUnread = false;
             _recipients[number] = recipient;
-            UpdateChatList(_recipients);
+            UpdateChatList();
         }
 
         OnMessageSent?.Invoke(NanoChatUiMessageType.SelectChat, number, null, null);
@@ -291,7 +356,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
     private void DeleteCurrentChat()
     {
-        var activeChat = _pendingChat ?? _currentChat;
+        var activeChat = ActiveChat;
         if (activeChat == null)
             return;
 
@@ -301,10 +366,10 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
     private void BeginEditChat()
     {
-        if (_currentChat is not uint currentChat)
+        // Triad: was keyed on _currentChat (see ActiveChat) and indexed _recipients directly, which threw
+        // KeyNotFoundException for a selected chat that is not in the contact list.
+        if (ActiveChat is not uint activeChat || !_recipients.TryGetValue(activeChat, out var recipient))
             return;
-
-        var recipient = _recipients[currentChat];
 
         _editChatPopup.ClearInputs();
         _editChatPopup.SetNumberInput(recipient.Number.ToString());
@@ -313,19 +378,26 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         _editChatPopup.OpenCentered();
     }
 
-    private void UpdateChatList(Dictionary<uint, NanoChatRecipient> recipients)
+    /// <summary>
+    ///     Rebuilds the contact list from <see cref="_recipients"/>.
+    /// </summary>
+    /// <remarks>
+    ///     Triad: took the dictionary as a parameter and assigned it to the field, which is how the fragment ended
+    ///     up holding (and predicting onto) the networked state's own collection. The field is now the single
+    ///     source and <see cref="UpdateState"/> owns filling it.
+    /// </remarks>
+    private void UpdateChatList()
     {
         ChatList.RemoveAllChildren();
-        _recipients = recipients;
 
-        NoChatsLabel.Visible = recipients.Count == 0;
+        NoChatsLabel.Visible = _recipients.Count == 0;
         if (NoChatsLabel.Parent != ChatList)
         {
             NoChatsLabel.Parent?.RemoveChild(NoChatsLabel);
             ChatList.AddChild(NoChatsLabel);
         }
 
-        foreach (var (number, recipient) in recipients.OrderBy(r => r.Value.Name))
+        foreach (var (number, recipient) in _recipients.OrderBy(r => r.Value.Name))
         {
             var entry = new NanoChatEntry(MaxNameLength, MaxIdJobLength);
             // For pending chat selection, always show it as selected even if unconfirmed
@@ -338,7 +410,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
     private void UpdateCurrentChat()
     {
-        var activeChat = _pendingChat ?? _currentChat;
+        var activeChat = ActiveChat;
         var hasActiveChat = activeChat != null;
 
         // Triad: a stale indicator from the previous thread shouldn't follow us to this one
@@ -367,13 +439,15 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         }
     }
 
-    private void UpdateMessages(Dictionary<uint, List<NanoChatMessage>> messages)
+    /// <summary>
+    ///     Rebuilds the message view from <see cref="_messages"/>. See <see cref="UpdateChatList"/> for why this
+    ///     no longer takes the collection as a parameter.
+    /// </summary>
+    private void UpdateMessages()
     {
-        _messages = messages;
         MessageList.RemoveAllChildren();
 
-        var activeChat = _pendingChat ?? _currentChat;
-        if (activeChat == null || !messages.TryGetValue(activeChat.Value, out var chatMessages))
+        if (ActiveChat is not uint activeChat || !_messages.TryGetValue(activeChat, out var chatMessages))
             return;
 
         foreach (var message in chatMessages)
@@ -400,7 +474,15 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     /// </summary>
     private void ScrollToBottom()
     {
-        Timer.Spawn(TimeSpan.Zero, () => MessagesScroll.SetScrollValue(new Vector2(0, float.MaxValue)));
+        Timer.Spawn(TimeSpan.Zero,
+            () =>
+            {
+                if (Disposed)
+                    return;
+
+                MessagesScroll.SetScrollValue(new Vector2(0, float.MaxValue));
+            },
+            _deferredCts.Token);
     }
 
     // Triad begin: typing indicator
@@ -440,8 +522,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     /// </summary>
     public void SetTyping(uint senderNumber, bool typing)
     {
-        var activeChat = _pendingChat ?? _currentChat;
-        if (activeChat != senderNumber)
+        if (ActiveChat != senderNumber)
             return;
 
         _typingGeneration++;
@@ -459,14 +540,16 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         var generation = _typingGeneration;
         // Triad: 2x the sender's resend interval -- tolerates one dropped pulse before clearing, without
         // lingering long enough to look stale once they've actually stopped.
-        Timer.Spawn(TimeSpan.FromSeconds(1), () =>
-        {
-            if (generation != _typingGeneration)
-                return; // A fresher pulse (or an explicit stop) already landed; don't clobber it.
+        Timer.Spawn(TimeSpan.FromSeconds(1),
+            () =>
+            {
+                if (Disposed || generation != _typingGeneration)
+                    return; // A fresher pulse (or an explicit stop) already landed; don't clobber it.
 
-            _typingFrom = null;
-            UpdateTypingIndicator();
-        });
+                _typingFrom = null;
+                UpdateTypingIndicator();
+            },
+            _deferredCts.Token);
     }
 
     private void UpdateTypingIndicator()
@@ -492,7 +575,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private void UpdateMuteChatButton()
     {
         if (BellMutedIconContact != null)
-            BellMutedIconContact.Visible = _currentChat is uint currentChat && _mutedChats.Contains(currentChat);
+            BellMutedIconContact.Visible = ActiveChat is uint activeChat && _mutedChats.Contains(activeChat); // Triad: was _currentChat
     }
 
     private void UpdateListNumber()
@@ -515,7 +598,14 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         _notificationsMuted = state.NotificationsMuted;
         _listNumber = state.ListNumber;
         _canList = state.CanList; // Triad
-        _mutedChats = state.MutedChats;
+
+        // Triad: copy out of the state rather than aliasing it. This fragment predicts into these collections
+        // (sent messages, read flags, mute toggles) and the engine caches the state object it handed us, replaying
+        // it into the next BUI -- so predicting onto it wrote fiction into what the client later treats as truth.
+        _mutedChats = new HashSet<uint>(state.MutedChats);
+        _recipients = new Dictionary<uint, NanoChatRecipient>(state.Recipients);
+        _messages = state.Messages.ToDictionary(chat => chat.Key, chat => new List<NanoChatMessage>(chat.Value));
+
         OwnNumberLabel.Text = $"#{state.OwnNumber:D4}";
         UpdateMuteButton();
         UpdateListNumber();
@@ -527,23 +617,18 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             ? Loc.GetString("nano-chat-max-recipients")
             : Loc.GetString("nano-chat-new-chat");
 
-        // First handle pending chat resolution if we have one
-        if (_pendingChat != null)
-        {
-            if (_pendingChat == state.CurrentChat)
-                _currentChat = _pendingChat; // Server confirmed our selection
+        // Triad: hold a pending selection until the server actually confirms it, or until the chat stops existing.
+        // Upstream cleared it on the very next state whatever that state said, so any unrelated update landing in
+        // the gap (an incoming message, a mute toggle) snapped the view back to the previously selected chat.
+        if (_pendingChat is { } pendingChat && (state.CurrentChat == pendingChat || !_recipients.ContainsKey(pendingChat)))
+            _pendingChat = null;
 
-            _pendingChat = null; // Clear pending either way
-        }
-
-        // No pending chat or it was just cleared, update current directly
-        if (_pendingChat == null)
-            _currentChat = state.CurrentChat;
+        _currentChat = state.CurrentChat;
 
         UpdateCurrentChat();
         UpdateMuteChatButton();
-        UpdateChatList(state.Recipients);
-        UpdateMessages(state.Messages);
+        UpdateChatList();
+        UpdateMessages();
         LookupView.UpdateContactList(state);
     }
 }
