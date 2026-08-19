@@ -80,7 +80,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         if (!GetCardEntity(ent, out var nanoChatCard))
             return;
 
-        _nanoChat.SetClosed(nanoChatCard.Value.AsNullable(), !HasComp<NanoChatCartridgeComponent>(args.NewActiveProgram));
+        SetVisible(nanoChatCard.Value, HasComp<NanoChatCartridgeComponent>(args.NewActiveProgram));
     }
 
     private void OnUiOpened(Entity<CartridgeLoaderComponent> ent, ref BoundUIOpenedEvent args)
@@ -92,8 +92,36 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             return;
 
         if (nanoChatCard.Value.Comp.IsClosed)
-            _nanoChat.SetClosed(nanoChatCard.Value.AsNullable(), !HasComp<NanoChatCartridgeComponent>(ent.Comp.ActiveProgram));
+            SetVisible(nanoChatCard.Value, HasComp<NanoChatCartridgeComponent>(ent.Comp.ActiveProgram));
+    }
 
+    /// <summary>
+    ///     Triad: records whether TriTalk is the program the player can currently see, and marks the thread on
+    ///     screen as read when it becomes visible.
+    /// </summary>
+    /// <remarks>
+    ///     Messages arriving while the PDA is shut now flag the selected chat as unread as well (see
+    ///     <see cref="HandleUnreadNotification"/>), so without clearing it here the badge would survive being
+    ///     looked at. The client cannot do this for us: its SelectChat early-returns on the already-selected chat,
+    ///     so reopening straight into that thread sends no read marker.
+    /// </remarks>
+    private void SetVisible(Entity<NanoChatCardComponent> card, bool visible)
+    {
+        _nanoChat.SetClosed(card.AsNullable(), !visible);
+
+        if (!visible)
+            return;
+
+        if (_nanoChat.GetCurrentChat(card.AsNullable()) is not uint currentChat)
+            return;
+
+        if (_nanoChat.GetRecipient(card.AsNullable(), currentChat) is not { } recipient || !recipient.HasUnread)
+            return;
+
+        // Deliberately no UpdateUIForCard here. Both callers are followed by the loader publishing its own state,
+        // the client rebuilding the fragment and answering with CartridgeUiReadyEvent, which pushes this state
+        // anyway. Writing one here would race the loader's state for the single slot they share under PdaUiKey.
+        _nanoChat.SetRecipient(card.AsNullable(), currentChat, recipient with { HasUnread = false });
     }
 
     private void OnUiClosed(Entity<CartridgeLoaderComponent> ent, ref BoundUIClosedEvent args)
@@ -659,16 +687,23 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     {
         // Get sender name from contacts or fall back to number
         var recipients = _nanoChat.GetRecipients((recipient, recipient.Comp));
-        var senderName = recipients.TryGetValue(message.SenderId, out var senderRecipient)
-            ? senderRecipient.Name
-            : $"#{message.SenderId:D4}";
+        var hasSenderContact = recipients.TryGetValue(message.SenderId, out var senderRecipient);
+        var senderName = hasSenderContact ? senderRecipient.Name : $"#{message.SenderId:D4}";
         var hasSelectedCurrentChat = _nanoChat.GetCurrentChat((recipient, recipient.Comp)) == senderNumber;
 
-        // Update unread status
-        if (!hasSelectedCurrentChat)
+        // Triad: flag the unread regardless of which chat is selected. CurrentChat is never cleared when the PDA
+        // closes (the client never sends CloseChat, so whoever you last spoke to stays "selected" all round), and
+        // DeliverMessageToRecipient only calls this method when the card is closed OR the thread is not selected.
+        // So the one case upstream's !hasSelectedCurrentChat guard skipped was exactly "a reply from the person you
+        // were last talking to, while the PDA is shut" -- the single most common message in the game. This flag
+        // drives the contact badge, the unread-cycling keybind and the unread count in the notification body, all
+        // three of which read empty because of it.
+        if (hasSenderContact)
+        {
             _nanoChat.SetRecipient((recipient, recipient.Comp),
                 message.SenderId,
                 senderRecipient with { HasUnread = true });
+        }
 
         // Temporary local to avoid trouble with read-only access; Contains doesn't modify the collection
         HashSet<uint> mutedChats = recipient.Comp.MutedChats;
