@@ -130,6 +130,14 @@
                                   VerticalExpand="True"
                                   HorizontalExpand="True"
                                   Margin="0 0 0 4">
+                        <!-- Triad: names the contact whose thread is open. The contact name used to be written
+                             into CurrentChatName below, which is only visible when NO chat is selected, so it
+                             was never actually on screen. -->
+                        <Label Name="ChatHeaderLabel"
+                               HorizontalAlignment="Center"
+                               StyleClasses="LabelSubText"
+                               Margin="0 0 0 3"
+                               Visible="False" />
                         <Label Name="CurrentChatName"
                                Text="{Loc nano-chat-select-chat}"
                                HorizontalAlignment="Center"
@@ -139,8 +147,11 @@
                                          VerticalExpand="True"
                                          HorizontalExpand="True"
                                          Visible="False">
+                            <!-- Triad: SeparationOverride replaces the spacer Control that used to be appended
+                                 after every bubble, which also left a stray gap below the last one. -->
                             <BoxContainer Name="MessageList"
                                           Orientation="Vertical"
+                                          SeparationOverride="4"
                                           VerticalExpand="True"
                                           HorizontalExpand="True" />
                         </ScrollContainer>

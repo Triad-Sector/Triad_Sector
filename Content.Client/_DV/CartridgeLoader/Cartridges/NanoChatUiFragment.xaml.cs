@@ -55,6 +55,18 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private CancellationTokenSource _deferredCts = new();
 
     /// <summary>
+    ///     Triad: how close to the end still counts as "reading the tail", in pixels, when deciding whether new
+    ///     messages should keep scrolling the view down.
+    /// </summary>
+    private const float ScrollBottomTolerance = 8f;
+
+    /// <summary>
+    ///     Triad: which chat the message list currently has bubbles for, so a rebuild can tell "same conversation,
+    ///     keep the player's place" from "different conversation, start at the newest message".
+    /// </summary>
+    private uint? _renderedChat;
+
+    /// <summary>
     ///     The chat the player is looking at: an unconfirmed selection if one is outstanding, otherwise the one
     ///     the server says is current.
     /// </summary>
@@ -316,8 +328,9 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
         value.Add(predictedMessage);
 
-        // Update UI with predicted message
-        UpdateMessages();
+        // Update UI with predicted message. Triad: sending always jumps to the newest message, even if the player
+        // was reading further up when they hit send.
+        UpdateMessages(forceScrollToBottom: true);
 
         // Triad: a sent message ends our own typing state
         StopTyping();
@@ -429,13 +442,21 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         EditChatButton.Visible = hasActiveChat;
         DeleteChatButton.Disabled = !hasActiveChat;
 
+        // Triad: the placeholder and the header are two different things and upstream conflated them. It wrote the
+        // contact's name into CurrentChatName, which is visible only when NO chat is selected, so the name it went
+        // to the trouble of formatting could never appear on screen. CurrentChatName is the empty-state message
+        // now; ChatHeaderLabel names whoever you are reading.
+        CurrentChatName.Text = Loc.GetString("nano-chat-select-chat");
+
         if (activeChat != null && _recipients.TryGetValue(activeChat.Value, out var recipient))
         {
-            CurrentChatName.Text = recipient.Name + (string.IsNullOrEmpty(recipient.JobTitle) ? "" : $" ({recipient.JobTitle})");
+            ChatHeaderLabel.Text = recipient.Name +
+                                   (string.IsNullOrEmpty(recipient.JobTitle) ? "" : $" ({recipient.JobTitle})");
+            ChatHeaderLabel.Visible = true;
         }
         else
         {
-            CurrentChatName.Text = Loc.GetString("nano-chat-select-chat");
+            ChatHeaderLabel.Visible = false;
         }
     }
 
@@ -443,9 +464,18 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     ///     Rebuilds the message view from <see cref="_messages"/>. See <see cref="UpdateChatList"/> for why this
     ///     no longer takes the collection as a parameter.
     /// </summary>
-    private void UpdateMessages()
+    private void UpdateMessages(bool forceScrollToBottom = false)
     {
+        // Triad: work out where we are BEFORE tearing the list down, while the old layout is still measurable.
+        // Rebuilding resets the scroll, and this method runs on every state -- a mute toggle, a contact rename, a
+        // message in some other conversation -- so unconditionally scrolling to the bottom yanked you out of the
+        // backlog whenever anything at all happened. Follow the tail only if you were already reading the tail.
+        var chatChanged = ActiveChat != _renderedChat;
+        var stickToBottom = forceScrollToBottom || chatChanged || IsScrolledToBottom();
+        var previousScroll = MessagesScroll.GetScrollValue();
+
         MessageList.RemoveAllChildren();
+        _renderedChat = ActiveChat;
 
         if (ActiveChat is not uint activeChat || !_messages.TryGetValue(activeChat, out var chatMessages))
             return;
@@ -454,25 +484,33 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         {
             var messageBubble = new NanoChatMessageBubble();
             messageBubble.SetMessage(message, message.SenderId == _ownNumber);
-            MessageList.AddChild(messageBubble);
-
-            // Add spacing between messages
-            MessageList.AddChild(new Control { MinSize = new Vector2(0, 4) });
+            MessageList.AddChild(messageBubble); // Spacing comes from MessageList's SeparationOverride.
         }
 
         MessageList.InvalidateMeasure();
         MessagesScroll.InvalidateMeasure();
 
-        ScrollToBottom();
+        RestoreScroll(previousScroll, stickToBottom);
     }
 
     /// <summary>
-    ///     Triad: pins the message view to the bottom. Deferred a frame because setting the scroll value
-    ///     right after InvalidateMeasure() reads against the OLD (pre-layout) content height -- most visibly
-    ///     wrong when the typing indicator label above the input box is also changing visibility at the same
-    ///     moment, which shrinks/grows the scroll viewport out from under an immediate scroll call.
+    ///     Triad: whether the message view is scrolled to (or within a few pixels of) the end.
     /// </summary>
-    private void ScrollToBottom()
+    private bool IsScrolledToBottom()
+    {
+        // The furthest we can scroll is however much taller the content is than the window onto it.
+        var maxScroll = MathF.Max(0f, MessageList.Height - MessagesScroll.Height);
+        return MessagesScroll.GetScrollValue().Y >= maxScroll - ScrollBottomTolerance;
+    }
+
+    /// <summary>
+    ///     Triad: re-applies the reading position after the message list is rebuilt, either pinned to the end or
+    ///     back where the player had it. Deferred a frame because setting the scroll value right after
+    ///     InvalidateMeasure() reads against the OLD (pre-layout) content height -- most visibly wrong when the
+    ///     typing indicator label above the input box is also changing visibility at the same moment, which
+    ///     shrinks/grows the scroll viewport out from under an immediate scroll call.
+    /// </summary>
+    private void RestoreScroll(Vector2 previous, bool toBottom)
     {
         Timer.Spawn(TimeSpan.Zero,
             () =>
@@ -480,7 +518,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
                 if (Disposed)
                     return;
 
-                MessagesScroll.SetScrollValue(new Vector2(0, float.MaxValue));
+                MessagesScroll.SetScrollValue(toBottom ? new Vector2(previous.X, float.MaxValue) : previous);
             },
             _deferredCts.Token);
     }
