@@ -16,6 +16,11 @@ public sealed partial class NanoChatUi : UIFragment
 
     public override void Setup(BoundUserInterface userInterface, EntityUid? fragmentOwner)
     {
+        // Triad: this UIFragment lives on the cartridge's client component, so it outlives the BoundUserInterface
+        // and Setup runs again on every reopen, binding to the new BUI. Tear the previous fragment down first so it
+        // cannot linger holding its typing-indicator registration or its popup windows.
+        _fragment?.Dispose();
+
         _fragment = new NanoChatUiFragment();
 
         _fragment.OnMessageSent += (type, number, content, job) =>
