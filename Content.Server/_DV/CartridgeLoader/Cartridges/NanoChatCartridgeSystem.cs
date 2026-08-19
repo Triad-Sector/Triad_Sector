@@ -15,6 +15,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.StationAi;
 using Robust.Server.Containers;
+using Robust.Shared.Audio.Systems; // Triad: send tones
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -31,6 +32,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ContainerSystem _container = default!; // Triad: typing indicator session lookup
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // Triad: send tones
 
     private EntityQuery<PdaComponent> _pdaQuery;
     private EntityQuery<NanoChatCardComponent> _cardQuery;
@@ -523,6 +525,11 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         // Update delivery status
         message = message with { DeliveryFailed = deliveryFailed };
+
+        // Triad: tell the sender, and only the sender, how that went. See the fields for why it stays local.
+        _audio.PlayEntity(deliveryFailed ? cartridge.Comp.SendFailedSound : cartridge.Comp.SendSound,
+            msg.Actor,
+            GetEntity(msg.LoaderUid));
 
         // Store message in sender's outbox under recipient's number
         _nanoChat.AddMessage((card, card.Comp), msg.RecipientNumber.Value, message);
