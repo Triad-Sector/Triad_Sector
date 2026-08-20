@@ -17,7 +17,7 @@
   parent: ClothingEyesBase
   id: ClothingEyesGlassesPilot
   name: pilot goggles
-  description: I'm sorry, but you can't pilot a ship without cool glasses. Those are the Rules. Has a GPS built in them too.
+  description: I'm sorry, but you can't pilot a ship without cool glasses. Those are the Rules. Has a GPS and Mass Scanner built in them too.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Glasses/pilot.rsi
@@ -25,6 +25,16 @@
     sprite: _NF/Clothing/Eyes/Glasses/pilot.rsi
   - type: HandheldGPS
   - type: VisionCorrection
+  - type: RadarConsole
+    followEntity: true
+    noRotate: true
+  - type: ActivatableUI
+    key: enum.RadarConsoleUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
 
 - type: entity
   parent: ClothingEyesGlassesSecurity
