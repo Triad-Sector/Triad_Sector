@@ -2,6 +2,8 @@ device-pda-slot-component-slot-name-cartridge = Cartridge
 
 default-program-name = Program
 notekeeper-program-name = Notekeeper
+notekeeper-input-placeholder = Write a note...
+notekeeper-add-note = Add note
 news-read-program-name = Station news
 
 crew-manifest-program-name = Crew manifest
