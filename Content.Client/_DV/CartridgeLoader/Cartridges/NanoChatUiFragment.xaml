@@ -26,11 +26,16 @@
                              MinSize="32 32"
                              Margin="8 0 0 0" />
                 -->
+                <!-- Triad: removed the TRITALK heading; the PDA program tab already names the app. The label
+                     also doubled as the flexible spacer pushing the number and buttons to the right edge, so a
+                     bare spacer stands in for it.
                 <Label Text="{Loc nano-chat-title}"
                        StyleClasses="LabelHeading"
                        HorizontalExpand="True"
                        Margin="8 0"
                        VerticalAlignment="Center" />
+                -->
+                <Control HorizontalExpand="True" />
                 <Label Name="OwnNumberLabel"
                        Text="#0000"
                        StyleClasses="LabelSubText"
