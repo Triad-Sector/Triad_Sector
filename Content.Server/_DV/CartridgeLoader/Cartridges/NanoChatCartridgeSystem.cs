@@ -322,7 +322,9 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     /// </summary>
     private void HandleSelectChat(Entity<NanoChatCardComponent> card, NanoChatUiMessageEvent msg)
     {
-        if (msg.RecipientNumber == null)
+        // Triad: HandleNewChat already refused your own number, but selecting and sending did not, so a thread
+        // with yourself could still be opened and written to. The UI is not the guard; the client picks the number.
+        if (msg.RecipientNumber == null || msg.RecipientNumber == card.Comp.Number)
             return;
 
         _nanoChat.SetCurrentChat((card, card.Comp), msg.RecipientNumber);
@@ -499,7 +501,10 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         Entity<NanoChatCardComponent> card,
         NanoChatUiMessageEvent msg)
     {
-        if (msg.RecipientNumber == null || msg.Content == null || card.Comp.Number == null)
+        // Triad: refuse messaging your own number, same reason as HandleSelectChat. Without this the delivery
+        // sweep happily found your own card and posted the message straight back to you.
+        if (msg.RecipientNumber == null || msg.Content == null || card.Comp.Number == null ||
+            msg.RecipientNumber == card.Comp.Number)
             return;
 
         if (!EnsureRecipientExists(card, msg.RecipientNumber.Value))
@@ -822,6 +827,10 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     {
         List<NanoChatRecipient>? contacts;
 
+        // Triad: the directory should not list the card doing the looking. Upstream swept every registered card
+        // including your own, so you could pick yourself out of the lookup and open a thread with yourself.
+        var selfNumber = _cardQuery.TryComp(ent.Comp.Card, out var ownCard) ? ownCard.Number : null;
+
         if (CanSend(ent) && _radio.HasActiveServer(Transform(ent).MapID, ent.Comp.RadioChannel))
         {
             contacts = [];
@@ -831,7 +840,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             {
                 // Triad: Registered gate added. The directory is a register of legally issued IDs, so a card only
                 // appears if it was handed to a player at spawn. Spares, console printouts and forged cards are out.
-                if (nanoChatCard.Registered && nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName)
+                if (nanoChatCard.Registered && nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName
+                    && nanoChatNumber != selfNumber) // Triad: never list yourself
                 {
                     contacts.Add(new NanoChatRecipient(nanoChatNumber, fullName));
                 }
