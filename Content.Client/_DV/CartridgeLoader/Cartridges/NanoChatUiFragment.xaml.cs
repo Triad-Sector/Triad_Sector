@@ -440,6 +440,9 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         MessagesScroll.Visible = hasActiveChat;
         CurrentChatName.Visible = !hasActiveChat;
         MessageInputContainer.Visible = hasActiveChat;
+        // Triad: the slot reserves a constant-height row while a conversation is open; only the label inside
+        // toggles with actual typing. See the note in the XAML for why the height must not wobble.
+        TypingIndicatorSlot.Visible = hasActiveChat;
         DeleteChatButton.Visible = hasActiveChat;
         EditChatButton.Visible = hasActiveChat;
         DeleteChatButton.Disabled = !hasActiveChat;

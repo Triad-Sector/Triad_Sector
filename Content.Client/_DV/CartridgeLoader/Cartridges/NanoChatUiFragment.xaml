@@ -163,13 +163,23 @@
                            StyleClasses="LabelSubText"
                            Margin="0 0 4 2"
                            Visible="False" />
-                    <!-- Triad: typing indicator, shown just above the input row -->
-                    <Label Name="TypingIndicatorLabel"
-                           HorizontalAlignment="Left"
-                           StyleClasses="LabelSubText"
-                           FontColorOverride="#a0a0a0"
-                           Margin="4 0 4 2"
-                           Visible="False" />
+                    <!-- Triad: typing indicator, shown just above the input row. The slot holds its height whether
+                         or not anyone is typing: when the bare label toggled Visible it resized the message
+                         viewport, and since typing always precedes receiving, the shrink landed right before every
+                         incoming message and made the am-I-at-the-bottom check conclude the reader had scrolled
+                         up, so the view never followed received messages. A fixed slot keeps the viewport stable
+                         (and stops the message area jumping when someone starts typing). -->
+                    <Control Name="TypingIndicatorSlot"
+                             MinHeight="20"
+                             Visible="False">
+                        <Label Name="TypingIndicatorLabel"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               StyleClasses="LabelSubText"
+                               FontColorOverride="#a0a0a0"
+                               Margin="4 0 4 2"
+                               Visible="False" />
+                    </Control>
                     <!-- Message input -->
                     <BoxContainer Name="MessageInputContainer"
                                   Orientation="Horizontal"
