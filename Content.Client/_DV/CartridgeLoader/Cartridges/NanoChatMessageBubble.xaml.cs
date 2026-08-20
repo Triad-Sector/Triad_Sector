@@ -23,13 +23,14 @@ public sealed partial class NanoChatMessageBubble : BoxContainer
 
     public void SetMessage(NanoChatMessage message, bool isOwnMessage)
     {
-        if (MessagePanel.PanelOverride is not StyleBoxFlat)
-            return;
-
-        // Configure message appearance
-        var style = (StyleBoxFlat)MessagePanel.PanelOverride;
-        style.BackgroundColor = isOwnMessage ? OwnMessageColor : OtherMessageColor;
-        style.BorderColor = BorderColor;
+        // Triad: this was a bail-out for the whole method, so a panel style that was not a StyleBoxFlat produced a
+        // blank bubble with no text and no alignment rather than an unstyled one. Only the tint depends on the
+        // cast, so only the tint is conditional on it.
+        if (MessagePanel.PanelOverride is StyleBoxFlat style)
+        {
+            style.BackgroundColor = isOwnMessage ? OwnMessageColor : OtherMessageColor;
+            style.BorderColor = BorderColor;
+        }
 
         // Set message content
         MessageText.Text = FormattedMessage.EscapeText(message.Content);

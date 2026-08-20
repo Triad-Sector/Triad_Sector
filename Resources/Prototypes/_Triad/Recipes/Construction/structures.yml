@@ -1,0 +1,36 @@
+- type: construction
+  name: plastitanium window
+  id: plastitaniumWindow
+  graph: Plastitanium
+  startNode: start
+  targetNode: plastitaniumWindow
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: One of the most robust window options out there, expensive but worth the price.
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/plastitanium_window.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: diagonal plastitanium window
+  id: plastitaniumWindowDiagonal
+  graph: plastitaniumWindowDiagonal
+  startNode: start
+  targetNode: plastitaniumWindowDiagonal
+  category: construction-category-structures
+  description: Clear but tough.
+  canBuildInImpassable: true
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/plastitanium_window_diagonal.rsi
+    state: state1
+  objectType: Structure
+  placementMode: SnapgridCenter

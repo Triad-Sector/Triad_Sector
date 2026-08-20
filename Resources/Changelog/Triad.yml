@@ -3999,3 +3999,52 @@ Entries:
   id: 2533
   time: '2026-08-19T22:48:48.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/529
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        TriTalk no longer comes up blank or frozen after you close and reopen
+        your PDA.
+    - type: Fix
+      message: >-
+        TriTalk's unread badge counts messages that arrived while the app was
+        closed, instead of always showing zero.
+    - type: Fix
+      message: >-
+        The message view follows messages you receive, not just ones you send,
+        and no longer yanks you out of the backlog when something unrelated
+        updates.
+    - type: Fix
+      message: TriTalk names the contact whose conversation you have open.
+    - type: Fix
+      message: You can no longer add yourself as a TriTalk contact or message yourself.
+    - type: Fix
+      message: >-
+        Pressing Enter on an over-long TriTalk message no longer sends a
+        silently truncated version.
+    - type: Fix
+      message: >-
+        Using the TriTalk unread-cycle keybind with no conversation open no
+        longer freezes the game.
+    - type: Add
+      message: >-
+        TriTalk plays a tone when a message sends, and a different one if
+        delivery fails.
+    - type: Fix
+      message: PDA app buttons draw their icons at the same size.
+    - type: Tweak
+      message: >-
+        The Notekeeper's note box has placeholder text and an add button, so it
+        actually looks like somewhere you can type.
+  id: 2534
+  time: '2026-08-20T02:08:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/530
+- author: Stedar111
+  changes:
+    - type: Add
+      message: >-
+        Added plastitanium windows to the construction menu, shipwrights
+        rejoice! :D
+  id: 2535
+  time: '2026-08-20T02:11:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/527

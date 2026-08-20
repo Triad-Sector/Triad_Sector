@@ -84,7 +84,7 @@
   - type: Flatpack
     entity: MachineFTLDrive
   - type: StaticPrice
-    price: 1700
+    price: 1900 # Triad - 1700 -> 1900
 
 - type: entity
   parent: BaseFlatpack
@@ -95,7 +95,7 @@
   - type: Flatpack
     entity: MachineFTLDrive50
   - type: StaticPrice
-    price: 3000
+    price: 5000 # Triad - 3000 -> 5000
 
 - type: entity
   parent: BaseFlatpack
@@ -106,7 +106,7 @@
   - type: Flatpack
     entity: MachineFTLDrive25S
   - type: StaticPrice
-    price: 5000
+    price: 4500 # Triad - 5000 -> 4500
 
 - type: entity
   parent: BaseFlatpack

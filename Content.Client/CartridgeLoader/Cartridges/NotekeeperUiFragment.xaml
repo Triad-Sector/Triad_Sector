@@ -5,6 +5,28 @@
         <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
             <BoxContainer Orientation="Vertical" Name="MessageContainer" HorizontalExpand="True" VerticalExpand="True"/>
         </ScrollContainer>
-        <LineEdit Name="Input" HorizontalExpand="True" SetHeight="32"/>
+        <!-- Triad: this was a bare, unstyled LineEdit with no placeholder, sitting against the dark panel with
+             nothing to say it was an input at all. On an empty notes list the whole app read as a blank screen,
+             so people reasonably assumed the program was broken. Placeholder text plus a submit button on the
+             end, matching TriTalk's message row, so the affordance is visible before you have any notes. -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 2 0 0">
+            <LineEdit Name="Input"
+                      HorizontalExpand="True"
+                      SetHeight="32"
+                      PlaceHolder="{Loc notekeeper-input-placeholder}"
+                      StyleClasses="OpenRight"/>
+            <Button Name="AddNoteButton"
+                    MinSize="32 32"
+                    SetHeight="32"
+                    Disabled="True"
+                    StyleClasses="OpenLeft"
+                    ToolTip="{Loc notekeeper-add-note}">
+                <!-- plus.svg is 186x186 at 100% ink, so a 16px box renders a 16px glyph. -->
+                <TextureRect StyleClasses="ButtonSquare"
+                             TexturePath="/Textures/Interface/VerbIcons/plus.svg.192dpi.png"
+                             Stretch="KeepAspectCentered"
+                             SetSize="16 16"/>
+            </Button>
+        </BoxContainer>
     </BoxContainer>
 </cartridges:NotekeeperUiFragment>
