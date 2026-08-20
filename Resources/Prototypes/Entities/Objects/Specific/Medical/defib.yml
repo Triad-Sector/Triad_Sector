@@ -48,9 +48,9 @@
       - TauCetiBasic
     - type: PirateBountyItem # Frontier
       id: Defibrillator # Frontier
-    - type: Tag
-      tags:
-      - FitsInMedicalStash
+    - type: Tag #triad stash
+      tags: #triad stash
+      - FitsInMedicalStash #triad stash
 
 - type: entity
   id: Defibrillator
