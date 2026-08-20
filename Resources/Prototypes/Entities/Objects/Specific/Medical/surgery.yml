@@ -13,10 +13,12 @@
   - type: Tag
     tags:
     - SurgeryTool
+    - FitsInMedicalStash
   - type: SurgeryTool
   - type: ItemTax # Mono
     taxAccounts:
       Medical: 0.5
+      
 
 # Cautery
 
