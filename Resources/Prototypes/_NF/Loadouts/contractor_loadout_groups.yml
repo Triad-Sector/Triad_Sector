@@ -799,6 +799,7 @@
   - ContractorBucket
   - ContractorGeigerCounter
   - ContractorBinoculars
+  - ContractorTapeRecorder # Mono - Moved from ContractorTrinkets.
   - ContractorWeaponProtoKineticAccelerator
   - ContractorPinpointerUniversal
   - ContractorShipyardRCD
@@ -889,6 +890,7 @@
   - ContractorCigPackGreen
   - ContractorCigarCase
   - ContractorNFAshtray
+  #- ContractorTapeRecorder # Mono - Moved to ContractorUtility.
   - ContractorSmokingPipeFilledTobacco
   - ContractorTobaccoPouchBrownFilled
   - ContractorTobaccoPouchBlueFilled

@@ -175,6 +175,7 @@
     - NFServiceStatic # Frontier
     - MonoRestraintsStatic # Mono
     - TriadBureaucracyStatic # Triad
+    - ReportingStatic # DeltaV
   - type: EmagLatheRecipes
     emagStaticPacks:
     - StaticAmmoRecipePack
