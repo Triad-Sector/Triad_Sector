@@ -1,0 +1,35 @@
+- type: vessel
+  id: Jack
+  parent: BaseVessel
+  name: TDF Jack
+  description: A solar powered salvage vessel used by the TDF for cargo transport and salvage operation. It is armed with a array of laser for point defense, an autocannon and missiles as well as a mining pulsar array
+  price: 75000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/jack.yml
+  guidebookPage: Null
+  class:
+  - Salvage
+  engine:
+  - Plasma
+  addComponents:
+  - type: ShipSavingBlacklist
+
+- type: gameMap
+  id: Jack
+  mapName:  Jack'
+  mapPath: /Maps/_Triad/Shuttles/TDF/jack.yml
+  minPlayers: 0
+  stations:
+   Jack:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate:  Jack TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
