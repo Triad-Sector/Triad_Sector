@@ -56,6 +56,7 @@ namespace Content.Client.Shuttles.UI
             ServiceFlagSocial.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Social);
             // Triad Begin
             ServiceFlagFood.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Food);
+            ServiceFlagPeace.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Peace);
             ServiceFlagPrivate.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Private);
             //Triad End
         }
@@ -159,6 +160,7 @@ namespace Content.Client.Shuttles.UI
             ServiceFlagSocial.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Social);
             //Triad Begin
             ServiceFlagFood.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Food);
+            ServiceFlagPeace.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Peace);
             ServiceFlagPrivate.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Private);
             //Triad End
         }

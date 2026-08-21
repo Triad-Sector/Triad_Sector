@@ -236,6 +236,14 @@
                                                  StyleClasses="ButtonSquare"
                                                  HorizontalExpand="True"
                                                  MinWidth="60"/>
+                                 <controls:Button Name="ServiceFlagPeace"
+                                                 Text="{controls:Loc 'shuttle-console-service-flag-Peace-label'}"
+                                                 TextAlign="Center"
+                                                 ToggleMode="True"
+                                                 ToolTip="{controls:Loc 'shuttle-console-service-flag-Peace-description'}"
+                                                 StyleClasses="ButtonSquare"
+                                                 HorizontalExpand="True"
+                                                 MinWidth="60"/>
                                 <controls:Button Name="ServiceFlagPrivate"
                                                  Text="{controls:Loc 'shuttle-console-service-flag-Private-label'}"
                                                  TextAlign="Center"
