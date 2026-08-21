@@ -1,0 +1,93 @@
+#Ghostlight Spector helmet
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
+  id: ClothingHeadHelmetHardsuitGhostlightSpector
+  name: G-500 Spector Helmet
+  description: No. Regrets.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/specter.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/specter.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: EyeProtection
+    protectionTime: 15
+  - type: NightVision 
+    relayOverlay: true
+    goggleEffect: true
+    viewCircleRadius: 450
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+    action: ActionToggleNightVision
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.95
+  - type: PointLight
+    radius: 6
+    color: "#ffd502"
+
+#Ghostlight wraith helmet
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ShowMedicalIcons, ClothingHeadSuitWithLightBase, HandHeldMassScanner]
+  id: ClothingHeadHelmetHardsuitGhostlightWraith
+  name: G-27 Wraith Helmet
+  description: We watched it burn. We knew it was our fault.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/wraith.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/wraith.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: EyeProtection
+    protectionTime: 15
+  - type: ThermalVision
+    isEquipment: true
+    color: "#00b6ff"
+    lightRadius: 45
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Biological
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+        disableEject: true
+        swap: false
+  - type: NightVision 
+    relayOverlay: true
+    goggleEffect: true
+    viewCircleRadius: 450
+    viewCircleCount: 4
+    viewCircleSpacing: 280
+    action: ActionToggleNightVision
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.95
+  - type: PointLight
+    radius: 6
+    color: "#ff2121"

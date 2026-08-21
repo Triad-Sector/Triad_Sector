@@ -143,7 +143,6 @@
   - ClothingOuterHardsuitMercenary
   - ClothingOuterHardsuitPrivateSecurity
   - ClothingOuterHardsuitScaf
-  - ClothingOuterHardsuitPirateScaf # Triad : PDV scafsuit now normal tech
   - ClothingModsuitMercenaryPowerCell # Mono edit
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
@@ -213,6 +212,10 @@
   - WeaponPistolStiletto
   - WeaponRiflePike
 #Triad End
+#Ghostlights Start
+  - GhostlightHardsuitSpector
+  - GhostlightHardsuitWraith
+#Ghostlights End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag
   recipes:
