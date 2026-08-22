@@ -524,7 +524,6 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
         }
     }
 
-    // Triad start
     /// <summary>
     /// Clears ore-silo links whose silo is not on the grid being saved, so the save never writes a
     /// reference it cannot resolve.
