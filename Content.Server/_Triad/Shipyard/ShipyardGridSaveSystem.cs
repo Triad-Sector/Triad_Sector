@@ -276,66 +276,11 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
 
         try
         {
-            // Purge invalid entities
-            PurgeInvalidEntities(gridUid);
-
-            // Triad: runs AFTER the purge so it sees the final entity set. In practice the engine
-            // already drops links to purged sinks (SharedDeviceLinkSystem.OnSinkRemoved fires on
-            // ComponentRemove during Del), so this ordering is defensive rather than load-bearing;
-            // the fix that matters is the off-grid test inside CleanupBrokenDeviceLinks.
-            // Clean up broken device links before serialization
-            CleanupBrokenDeviceLinks(gridUid);
+            // Triad: the part of a save that can actually fail lives in TryBuildShipSaveYaml, so it
+            // can be exercised without a session, a signing key or a client to deliver to.
+            if (!TryBuildShipSaveYaml(gridUid, out var yaml, out var appraisalCost))
+                return false;
             // End Triad
-
-            // remove any edge spreaders, we cannot save these
-            RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
-
-            // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
-            ResetFabricatorsOnGrid(gridUid);
-
-            // reset station records computers to prevent errors with StationRecordsFilter
-            ResetGeneralRecordsConsolesOnGrid(gridUid);
-
-            // Remove repair data, it is re-added on load
-            RemComp<ShipRepairDataComponent>(gridUid);
-
-            // Remove SpreaderGrid component from grid;
-            RemComp<SpreaderGridComponent>(gridUid);
-
-            //_sawmill.Info($"Serializing ship grid {gridUid} as '{shipName}' after transient purge using direct serialization");
-
-            // 1) Serialize the grid and its children to a MappingDataNode (engine-standard format)
-            var entities = new HashSet<EntityUid> { gridUid };
-            // Prefer AutoInclude to pull in dependent entities; we'll sanitize nullspace and parents out below
-            var opts = SerializationOptions.Default with
-            {
-                // Do NOT auto-include referenced entities (players/admin observers/etc.).
-                // This prevents exceptions when encountering unserializable entities and keeps saves scoped to the grid.
-                MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
-                ErrorOnOrphan = false,
-                // Disable auto-include logging to avoid excessive log spam/lag during saves.
-                LogAutoInclude = null
-            };
-
-
-            // triad start
-            // these three lines were lifted from the loading code, and should be refactored into a function at some point
-            var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
-            var fullAppraisal = _pricing.AppraiseGrid(gridUid, null);
-            var appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
-            // triad end
-
-            var (node, category) = _mapLoader.SerializeEntitiesRecursive(entities, opts);
-            /* if (category != FileCategory.Grid)
-            {
-                _sawmill.Warning($"Expected FileCategory.Grid but got {category}; continuing with sanitation");
-            } */
-
-            // 2) Sanitize the node to match blueprint conventions
-            SanitizeShipSaveNode(node);
-
-            // 3) Convert MappingDataNode to YAML text without touching disk
-            var yaml = WriteYamlToString(node);
 
             // Triad ship anti-tamper start
             var shipFileBox = _tamperPolicy.SignSave(yaml, appraisalCost);
@@ -379,6 +324,89 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             return false;
         }
     }
+
+    // Triad start: the save body, split out of TrySaveGridAsShip so it is testable.
+    /// <summary>
+    /// The serialization options every ship save runs with. Exposed so tests exercise the options the
+    /// live save uses rather than a copy that can drift from them.
+    /// </summary>
+    internal static readonly SerializationOptions ShipSaveSerializationOptions = SerializationOptions.Default with
+    {
+        // Do NOT auto-include referenced entities (players/admin observers/etc.).
+        // This prevents exceptions when encountering unserializable entities and keeps saves scoped to the grid.
+        MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
+        ErrorOnOrphan = false,
+        // Disable auto-include logging to avoid excessive log spam/lag during saves.
+        LogAutoInclude = null
+    };
+
+    /// <summary>
+    /// Runs the pre-save passes over the live grid, serializes it, sanitizes the node and renders the
+    /// YAML. This is everything in a ship save that can throw; signing and delivery stay in
+    /// <see cref="TrySaveGridAsShip"/>. Mutates the grid: the purge and the link cleanup are permanent.
+    /// </summary>
+    /// <returns>False only when <paramref name="gridUid"/> is not a grid. Serialization failures throw.</returns>
+    internal bool TryBuildShipSaveYaml(
+        EntityUid gridUid,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? yaml,
+        out int appraisalCost)
+    {
+        yaml = null;
+        appraisalCost = 0;
+
+        if (!_gridQuery.HasComp(gridUid))
+            return false;
+
+        // Purge invalid entities
+        PurgeInvalidEntities(gridUid);
+
+        // Triad: runs AFTER the purge so it sees the final entity set. In practice the engine
+        // already drops links to purged sinks (SharedDeviceLinkSystem.OnSinkRemoved fires on
+        // ComponentRemove during Del), so this ordering is defensive rather than load-bearing;
+        // the fix that matters is the off-grid test inside CleanupBrokenDeviceLinks.
+        // Clean up broken device links before serialization
+        CleanupBrokenDeviceLinks(gridUid);
+        // End Triad
+
+        // remove any edge spreaders, we cannot save these
+        RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
+
+        // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
+        ResetFabricatorsOnGrid(gridUid);
+
+        // reset station records computers to prevent errors with StationRecordsFilter
+        ResetGeneralRecordsConsolesOnGrid(gridUid);
+
+        // Remove repair data, it is re-added on load
+        RemComp<ShipRepairDataComponent>(gridUid);
+
+        // Remove SpreaderGrid component from grid;
+        RemComp<SpreaderGridComponent>(gridUid);
+
+        // 1) Serialize the grid and its children to a MappingDataNode (engine-standard format)
+        var entities = new HashSet<EntityUid> { gridUid };
+
+        // triad start
+        // these three lines were lifted from the loading code, and should be refactored into a function at some point
+        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
+        var fullAppraisal = _pricing.AppraiseGrid(gridUid, null);
+        appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
+        // triad end
+
+        var (node, category) = _mapLoader.SerializeEntitiesRecursive(entities, ShipSaveSerializationOptions);
+        /* if (category != FileCategory.Grid)
+        {
+            _sawmill.Warning($"Expected FileCategory.Grid but got {category}; continuing with sanitation");
+        } */
+
+        // 2) Sanitize the node to match blueprint conventions
+        SanitizeShipSaveNode(node);
+
+        // 3) Convert MappingDataNode to YAML text without touching disk
+        yaml = WriteYamlToString(node);
+        return true;
+    }
+    // Triad end
 
     private void RemoveEdgeSpreaderComponentComponentsOnGrid(EntityUid gridUid)
     {
