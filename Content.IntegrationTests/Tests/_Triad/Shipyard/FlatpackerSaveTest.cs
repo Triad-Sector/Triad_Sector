@@ -14,21 +14,21 @@ using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._Triad.Shipyard;
 
 /// <summary>
-/// Establishes whether the flatpacker is actually unsaveable, or merely listed as unsaveable.
+/// Guards the flatpacker's re-enablement for ship saving.
 ///
-/// It carries SavingContraband, so the ship save deletes it before serializing. It has carried some
-/// form of that exclusion since HardLight PR #876 (2026-04-07), where it was added to a list captioned
-/// "obvious non-ship entities" under the heading "Uplinks and bundled items", inside a commit about an
-/// unrelated MindContainer bug. It was migrated to the component by 227d5f6ab5, whose own comment says
-/// the list mixes entries that are "illegal to own" with entries "causing problems with ship saving"
-/// and does not say which any given entry is. No technical reason is recorded anywhere.
+/// It was excluded with no technical justification on record. It entered the exclusion list in
+/// HardLight PR #876 (2e07876006, 2026-04-07) captioned "obvious non-ship entities", under the heading
+/// "Uplinks and bundled items", next to mercenary uplinks and criminal-records computers, inside a
+/// commit about an unrelated MindContainer bug. 227d5f6ab5 migrated it to the SavingContraband
+/// component, and that commit's own comment concedes the list mixes entries that are "illegal to own"
+/// with entries "causing problems with ship saving" without recording which any entry is.
 ///
-/// So this asks the machine directly: strip the marker, put the thing in the messiest realistic state
-/// it can reach, and run the real save path over it.
+/// Asking the machine settled it: it saves and loads fine. These tests keep it that way.
 /// </summary>
 [TestFixture]
 [TestOf(typeof(ShipyardGridSaveSystem))]
@@ -39,43 +39,30 @@ public sealed class FlatpackerSaveTest
     private const string SiloProtoId = "MachineMaterialSilo";
 
     /// <summary>
-    /// The flatpacker is deleted by the purge before serialization even starts, and this pins the
-    /// mechanism: the SavingContraband test in IsInvalidEntity runs BEFORE the anchored and
-    /// static-body checks that would otherwise preserve a machine, so being anchored does not save it.
+    /// The machine and its board must BOTH stay un-marked. The board carried its own SavingContraband
+    /// from the same commit, and because the contraband test in IsInvalidEntity precedes the
+    /// IsInsidePersistentStorage check that preserves a machine's slot contents, re-marking only the
+    /// board is enough to bring back a flatpacker that saves and loads with an empty slot.
+    ///
+    /// That ordering is deliberate and correct, not a defect: a deny rule has to beat the keep rules,
+    /// or contraband could be smuggled by anchoring it or dropping it in a machine. Which is exactly
+    /// why the marker must not be on things that are not contraband.
     /// </summary>
     [Test]
-    public async Task FlatpackerIsPurgedFromShipSavesToday()
+    public async Task NeitherFlatpackerNorItsBoardIsSaveContraband()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
-        var entMan = server.EntMan;
-        var saveSystem = entMan.System<ShipyardGridSaveSystem>();
-
-        var map = await pair.CreateTestMap();
-
-        EntityUid flatpacker = default;
-        await server.WaitPost(() => flatpacker = SpawnAnchored(entMan, FlatpackerProtoId, map));
+        var protoMan = server.ResolveDependency<IPrototypeManager>();
 
         await server.WaitAssertion(() =>
         {
             Assert.Multiple(() =>
             {
-                Assert.That(entMan.HasComponent<SavingContrabandComponent>(flatpacker), Is.True,
-                    "Fixture: the flatpacker is expected to carry the marker. If this fails it has already been re-enabled.");
-                Assert.That(entMan.GetComponent<TransformComponent>(flatpacker).Anchored, Is.True,
-                    "Fixture: anchored, which is what would normally preserve a machine through the purge.");
-            });
-        });
-
-        await server.WaitAssertion(() =>
-        {
-            Assert.That(saveSystem.TryBuildShipSaveYaml(map.Grid.Owner, out var yaml, out _), Is.True);
-            Assert.Multiple(() =>
-            {
-                Assert.That(entMan.Deleted(flatpacker), Is.True,
-                    "The marker should delete it despite being anchored: the contraband test precedes the anchor test.");
-                Assert.That(yaml, Does.Not.Contain(FlatpackerProtoId),
-                    "A purged flatpacker must not appear in the save.");
+                Assert.That(HasContraband(protoMan, FlatpackerProtoId), Is.False,
+                    $"{FlatpackerProtoId} is marked SavingContraband again, so it is purged from every ship save.");
+                Assert.That(HasContraband(protoMan, BoardProtoId), Is.False,
+                    $"{BoardProtoId} is marked SavingContraband again, so a saved flatpacker loads with an empty board slot.");
             });
         });
 
@@ -83,14 +70,12 @@ public sealed class FlatpackerSaveTest
     }
 
     /// <summary>
-    /// The actual question. With the marker removed, a flatpacker holding a board, carrying stored
-    /// materials, mid-pack, and pointed at an ore silo on another grid is saved and loaded back. Every
-    /// one of those is a state the machine reaches in normal play, and the ore silo link is the one
-    /// with real teeth: it is an EntityUid DataField that can point off the grid, the same shape that
-    /// made DeviceLinkSource the top cause of failed saves.
+    /// The round trip, in the messiest realistic state the machine reaches: a board in the slot, stored
+    /// materials, mid-pack, and an ore silo link pointing off the grid. Every one of those is normal
+    /// play. The silo link is the one with teeth, and it is covered in its own right by OreSiloSaveTest.
     /// </summary>
     [Test]
-    public async Task FlatpackerSavesCleanlyOnceTheMarkerIsRemoved()
+    public async Task LoadedFlatpackerSurvivesSaveAndLoad()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
@@ -107,31 +92,19 @@ public sealed class FlatpackerSaveTest
         {
             flatpacker = SpawnAnchored(entMan, FlatpackerProtoId, map);
 
-            // Re-enabling the flatpacker means deleting the SavingContraband lines from its prototype.
-            // Doing it at runtime keeps the test honest about what the change would actually be.
-            entMan.RemoveComponent<SavingContrabandComponent>(flatpacker);
-
-            // A board sitting in the slot, which is how the machine spends most of its working life.
-            // The board carries its OWN marker and needs its own removal; see the test below.
             board = entMan.SpawnEntity(BoardProtoId, map.GridCoords);
-            entMan.RemoveComponent<SavingContrabandComponent>(board);
-            var slot = containers.GetContainer(flatpacker, "board_slot");
-            containers.Insert(board, slot);
+            containers.Insert(board, containers.GetContainer(flatpacker, "board_slot"));
 
-            // Stored materials.
             materials.TryChangeMaterialAmount(flatpacker, "Steel", 900);
             materials.TryChangeMaterialAmount(flatpacker, "Glass", 300);
 
-            // Mid-pack, so the runtime packing state is non-default when the writer sees it.
-            var creator = entMan.GetComponent<FlatpackCreatorComponent>(flatpacker);
-
-            // An ore silo on the map rather than the grid: a live EntityUid the save set cannot contain.
             silo = entMan.SpawnEntity(SiloProtoId, new MapCoordinates(new Vector2(6, 6), map.MapId));
 
-            // These four members are [Access]-restricted to their owning systems. Reaching past that is
-            // the point here: the test has to put the component into a state the writer will see, and
-            // going through the systems would mean driving a real pack job and a real silo link.
+            // Packing state and the silo link are [Access]-restricted to their owning systems. Driving
+            // them through those systems would mean running a real pack job and a real link handshake;
+            // the state is what matters here, not how it got there.
 #pragma warning disable RA0002
+            var creator = entMan.GetComponent<FlatpackCreatorComponent>(flatpacker);
             creator.Packing = true;
             creator.PackEndTime = System.TimeSpan.FromMinutes(5);
             entMan.EnsureComponent<OreSiloClientComponent>(flatpacker).Silo = silo;
@@ -143,12 +116,11 @@ public sealed class FlatpackerSaveTest
         {
             Assert.Multiple(() =>
             {
-                Assert.That(entMan.GetComponent<TransformComponent>(silo).GridUid, Is.Not.EqualTo(map.Grid.Owner),
-                    "Fixture: the silo must be off the grid for the reference to be the interesting kind.");
+                Assert.That(entMan.Deleted(flatpacker), Is.False, "Fixture: the flatpacker was already gone.");
                 Assert.That(containers.GetContainer(flatpacker, "board_slot").ContainedEntities, Is.Not.Empty,
                     "Fixture: the board did not go into the slot.");
-                Assert.That(entMan.GetComponent<MaterialStorageComponent>(flatpacker).Storage, Is.Not.Empty,
-                    "Fixture: no materials were stored.");
+                Assert.That(entMan.GetComponent<TransformComponent>(silo).GridUid, Is.Not.EqualTo(map.Grid.Owner),
+                    "Fixture: the silo must be off-grid for the link to be the interesting kind.");
             });
         });
 
@@ -157,10 +129,14 @@ public sealed class FlatpackerSaveTest
         {
             Assert.That(saveSystem.TryBuildShipSaveYaml(map.Grid.Owner, out yaml, out _), Is.True,
                 "The save refused the grid outright.");
-            Assert.That(entMan.Deleted(flatpacker), Is.False,
-                "Without the marker the flatpacker should survive the purge: it is anchored and static-bodied.");
-            Assert.That(yaml, Does.Contain(FlatpackerProtoId),
-                "The flatpacker should be present in the save now that it is not contraband.");
+            Assert.Multiple(() =>
+            {
+                Assert.That(entMan.Deleted(flatpacker), Is.False,
+                    "The flatpacker should survive the purge: it is anchored, static-bodied and no longer contraband.");
+                Assert.That(entMan.Deleted(board), Is.False,
+                    "The board should survive inside the machine slot.");
+                Assert.That(yaml, Does.Contain(FlatpackerProtoId), "The flatpacker should be in the save.");
+            });
         });
 
         await server.WaitAssertion(() =>
@@ -188,55 +164,12 @@ public sealed class FlatpackerSaveTest
         await pair.CleanReturnAsync();
     }
 
-    /// <summary>
-    /// The gotcha for anyone re-enabling this: FlatpackerMachineCircuitboard carries its own
-    /// SavingContraband, declared in the same commit with the same examine text. Un-marking only the
-    /// machine gets you a flatpacker that saves and loads with an empty board slot, because the
-    /// contraband test in IsInvalidEntity precedes the IsInsidePersistentStorage check that would
-    /// otherwise preserve a machine's slot contents. Re-enabling the flatpacker means un-marking both.
-    /// </summary>
-    [Test]
-    public async Task BoardIsPurgedSeparatelyWhenOnlyTheMachineIsUnmarked()
+    private static bool HasContraband(IPrototypeManager protoMan, string protoId)
     {
-        await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
-        var entMan = server.EntMan;
-        var saveSystem = entMan.System<ShipyardGridSaveSystem>();
-        var containers = entMan.System<SharedContainerSystem>();
+        Assert.That(protoMan.TryIndex<EntityPrototype>(protoId, out var proto), Is.True,
+            $"Prototype {protoId} does not exist, so this guard is testing nothing.");
 
-        var map = await pair.CreateTestMap();
-
-        EntityUid flatpacker = default, board = default;
-        await server.WaitPost(() =>
-        {
-            flatpacker = SpawnAnchored(entMan, FlatpackerProtoId, map);
-            entMan.RemoveComponent<SavingContrabandComponent>(flatpacker);
-
-            // Deliberately left marked.
-            board = entMan.SpawnEntity(BoardProtoId, map.GridCoords);
-            containers.Insert(board, containers.GetContainer(flatpacker, "board_slot"));
-        });
-
-        await server.WaitAssertion(() =>
-        {
-            Assert.That(entMan.HasComponent<SavingContrabandComponent>(board), Is.True,
-                "Fixture: the board is expected to carry its own marker.");
-        });
-
-        await server.WaitAssertion(() =>
-        {
-            Assert.That(saveSystem.TryBuildShipSaveYaml(map.Grid.Owner, out _, out _), Is.True);
-            Assert.Multiple(() =>
-            {
-                Assert.That(entMan.Deleted(flatpacker), Is.False, "The un-marked machine should survive.");
-                Assert.That(entMan.Deleted(board), Is.True,
-                    "The board should still be purged out of the slot on its own marker.");
-                Assert.That(containers.GetContainer(flatpacker, "board_slot").ContainedEntities, Is.Empty,
-                    "Which leaves the surviving flatpacker with an empty slot.");
-            });
-        });
-
-        await pair.CleanReturnAsync();
+        return proto!.Components.ContainsKey("SavingContraband");
     }
 
     /// <summary>
