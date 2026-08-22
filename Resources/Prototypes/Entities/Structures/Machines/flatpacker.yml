@@ -97,14 +97,6 @@
     - board_slot
   - type: MaterialStorageMagnetPickup # Frontier
     range: 0.30 # Frontier
-# Triad: re-enabled for ship saving. This was excluded with no technical justification on record: it
-# entered the exclusion list in a batch captioned "obvious non-ship entities", under the heading
-# "Uplinks and bundled items", alongside mercenary uplinks and criminal-records computers. A
-# flatpacker holding a board, carrying stored materials, mid-pack and linked to an off-grid ore silo
-# saves and loads back intact; see FlatpackerSaveTest. Its machine board carried a separate marker
-# and is re-enabled with it. Restore both lines together if this is ever reverted.
-#  - type: SavingContraband
-#    examineText: ship-saving-contraband-1-text
 #  - type: StaticPrice # Frontier
 #    price: 2000
 
