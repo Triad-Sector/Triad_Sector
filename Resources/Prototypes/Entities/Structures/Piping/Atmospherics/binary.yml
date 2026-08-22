@@ -639,10 +639,11 @@
       state: blank
   # Triad: contact-hazard sensor. Non-hard fixture so mobs overlap without
   # being blocked; step-trigger events maintain the standers set, and the
-  # attempt gate means a neutral radiator never triggers at all.
-  - type: Physics
-    canCollide: true
-    bodyType: static
+  # attempt gate means a neutral radiator never triggers at all. Physics is
+  # inherited (static, canCollide false): CollideOnAnchor switches collision
+  # on at anchor time, and an unanchored radiator has nothing to sense.
+  # Forcing canCollide true here fails PrototypeSaveTest, since CollisionWake
+  # clears it on spawn for any asleep static body on a grid.
   - type: Fixtures
     fixtures:
       contact_hazard:
