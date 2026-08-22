@@ -1142,11 +1142,6 @@
       MatterBin: 1 # Frontier stackRequirements<requirements
     stackRequirements:
       Steel: 1
-# Triad: re-enabled alongside MachineFlatpacker. The board carried its own marker, and because the
-# contraband check in IsInvalidEntity runs before the IsInsidePersistentStorage check, un-marking only
-# the machine left a flatpacker that saved and loaded with an empty board slot.
-#  - type: SavingContraband
-#    examineText: ship-saving-contraband-1-text
 
 - type: entity
   id: EmitterCircuitboard
