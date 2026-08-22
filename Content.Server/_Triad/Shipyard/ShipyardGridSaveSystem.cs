@@ -568,7 +568,6 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             _sawmill.Warning($"CleanupOffGridOreSiloLinks: Exception while clearing silo links on grid {gridUid}: {e.Message}");
         }
     }
-    // Triad end
 
     /// <summary>
     /// Deletes entities on the grid that should not be persisted with the ship, such as unanchored objects or items not inside of a stash.
