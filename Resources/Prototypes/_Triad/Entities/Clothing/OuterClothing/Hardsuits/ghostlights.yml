@@ -2,7 +2,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitGhostlightWraith
-  name: G-27 Wraith techsuit
+  name: G-27 Wraith tacsuit
   description: A Ghostlight-designed softsuit. A non-combat suit made for pilots. Its helmet is heavy and full of sensors used in mech operation, including thermals, NVGs, and a mass scanner. The orange vests mark them as non-combatants when they leave their mechs, like that stopped anyone...
   components:
   - type: Sprite
@@ -54,7 +54,7 @@
     highPressureMultiplier: 0.7
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier
-    walkModifier: 0.95 # Mono
+    walkModifier: 0.85 # Mono
     sprintModifier: 0.95 # Mono
   - type: ExplosionResistance
     damageCoefficient: 0.90
@@ -71,14 +71,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
-        Piercing: 0.5
-        Heat: 0.4
-        Cold: 0.4
-        Shock: 0.4
-        Radiation: 0.4
-        Caustic: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.55
+        Heat: 0.7
+        Shock: 0.5
+        Radiation: 0.8
+        Caustic: 0.8
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.6
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
