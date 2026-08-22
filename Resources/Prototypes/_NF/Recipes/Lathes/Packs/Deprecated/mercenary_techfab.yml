@@ -212,10 +212,6 @@
   - WeaponPistolStiletto
   - WeaponRiflePike
 #Triad End
-#Ghostlights Start
-  - GhostlightHardsuitSpector
-  - GhostlightHardsuitWraith
-#Ghostlights End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag
   recipes:
