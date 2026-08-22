@@ -276,11 +276,16 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
 
         try
         {
-            // Clean up broken device links before serialization
-            CleanupBrokenDeviceLinks(gridUid);
-
             // Purge invalid entities
             PurgeInvalidEntities(gridUid);
+
+            // Triad: runs AFTER the purge so it sees the final entity set. In practice the engine
+            // already drops links to purged sinks (SharedDeviceLinkSystem.OnSinkRemoved fires on
+            // ComponentRemove during Del), so this ordering is defensive rather than load-bearing;
+            // the fix that matters is the off-grid test inside CleanupBrokenDeviceLinks.
+            // Clean up broken device links before serialization
+            CleanupBrokenDeviceLinks(gridUid);
+            // End Triad
 
             // remove any edge spreaders, we cannot save these
             RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
@@ -431,16 +436,27 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     }
 
     /// <summary>
-    /// Cleans up broken device links where one or both linked entities no longer exist.
-    /// Preserves valid links where both source and sink entities are still present.
+    /// Cleans up device links that cannot be serialized: links whose sink no longer exists, and links
+    /// whose sink is not on this grid. Preserves links whose sink is on the grid being saved.
     /// </summary>
+    /// <remarks>
+    /// Triad: entity existence is NOT the right test here, which is why this ran for months while
+    /// DeviceLinkSource stayed the top cause of failed ship saves. The save runs with
+    /// <see cref="MissingEntityBehaviour.Ignore"/>, and EntitySerializer.Write returns the literal
+    /// string "invalid" for ANY EntityUid outside the set being serialized, alive or not. Because
+    /// DeviceLinkSourceComponent.LinkedPorts is keyed by EntityUid, a link to a live off-grid entity
+    /// writes "invalid" exactly like a dead one does, and two such links collide as a duplicate
+    /// dictionary key: ArgumentException, and the entire save dies.
+    ///
+    /// Off-grid links are cleared for good rather than restored after serializing. Their sinks are
+    /// round scoped for our purposes, typically remote triggers, so a link that cannot be carried
+    /// into the save is not worth carrying on the live ship either -- and clearing it leaves the ship
+    /// in the state that was actually saved.
+    /// </remarks>
     private void CleanupBrokenDeviceLinks(EntityUid gridUid)
     {
         try
         {
-            var linksRemoved = 0;
-            var sourcesProcessed = 0;
-
             // Collect all entities on the grid with device link source components
             var sourceQuery = _entityManager.EntityQueryEnumerator<DeviceLinkSourceComponent, TransformComponent>();
             while (sourceQuery.MoveNext(out var sourceEnt, out var sourceComp, out var xform))
@@ -448,28 +464,26 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
                 if (xform.GridUid != gridUid)
                     continue;
 
-                sourcesProcessed++;
-
-                // Check LinkedPorts and remove links to entities that no longer exist
-                var brokenSinks = new List<EntityUid>();
+                // Anything that will not serialize to a real uid: the sink is gone, or it is off-grid.
+                var unserializableSinks = new List<EntityUid>();
                 foreach (var sinkEnt in sourceComp.LinkedPorts.Keys)
                 {
                     if (!_entityManager.EntityExists(sinkEnt) || _entityManager.IsQueuedForDeletion(sinkEnt))
                     {
-                        brokenSinks.Add(sinkEnt);
+                        unserializableSinks.Add(sinkEnt);
+                        continue;
                     }
+
+                    if (!_transformQuery.TryComp(sinkEnt, out var sinkXform) || sinkXform.GridUid != gridUid)
+                        unserializableSinks.Add(sinkEnt);
                 }
 
                 // Use the DeviceLinkSystem to properly remove broken links
-                foreach (var brokenSink in brokenSinks)
+                foreach (var sinkEnt in unserializableSinks)
                 {
-                    _deviceLink.RemoveSinkFromSource(sourceEnt, brokenSink, sourceComp);
-                    linksRemoved++;
+                    _deviceLink.RemoveSinkFromSource(sourceEnt, sinkEnt, sourceComp);
                 }
             }
-
-            /* if (linksRemoved > 0)
-                _sawmill.Info($"CleanupBrokenDeviceLinks: Removed {linksRemoved} broken device link(s) from {sourcesProcessed} source(s) on grid {gridUid}"); */
         }
         catch (Exception e)
         {
