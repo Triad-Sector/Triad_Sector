@@ -40,6 +40,17 @@ public sealed class TriadCCVars
     public static readonly CVarDef<string> TamperSigningKeysDir =
         CVarDef.Create("triad.tamper_signing_keys_dir", "./triad-signing-keys", CVar.SERVERONLY);
 
+    // Triad: radiator overhaul
+    /// <summary>
+    /// Whether radiators pushed into the top thermal bucket (white-hot) slowly
+    /// take structural damage until they rupture. Off by default: the glow ramp
+    /// and the contact burn already telegraph an overloaded fin, so losing the
+    /// hardware on top of that is punishment rather than feedback. Turn it on
+    /// to force players to spread load across an array.
+    /// </summary>
+    public static readonly CVarDef<bool> RadiatorOverheatDamage =
+        CVarDef.Create("triad.radiator_overheat_damage", false, CVar.SERVERONLY);
+
     public static readonly CVarDef<bool> UseNightVisionColor =
         CVarDef.Create("triad.use_night_vision_color", false, CVar.CLIENTONLY | CVar.ARCHIVE, "If a custom night vision color should be used instead of the default.");
 
