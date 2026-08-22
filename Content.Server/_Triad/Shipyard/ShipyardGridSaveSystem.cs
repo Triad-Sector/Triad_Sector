@@ -473,7 +473,7 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     /// whose sink is not on this grid. Preserves links whose sink is on the grid being saved.
     /// </summary>
     /// <remarks>
-    /// Triad: entity existence is NOT the right test here, which is why this ran for months while
+    /// Entity existence is NOT the right test here, which is why this ran for months while
     /// DeviceLinkSource stayed the top cause of failed ship saves. The save runs with
     /// <see cref="MissingEntityBehaviour.Ignore"/>, and EntitySerializer.Write returns the literal
     /// string "invalid" for ANY EntityUid outside the set being serialized, alive or not. Because
