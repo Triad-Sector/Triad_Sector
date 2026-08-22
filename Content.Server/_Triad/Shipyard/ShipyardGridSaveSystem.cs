@@ -10,6 +10,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
+using Content.Shared.Materials.OreSilo; // Triad: clearing off-grid silo links
 using Content.Shared.Mind.Components;
 using Content.Shared.Wall;
 using Robust.Shared.Containers;
@@ -61,6 +62,7 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private SharedContainerSystem _containerSystem = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
+    [Dependency] private SharedOreSiloSystem _oreSilo = default!; // Triad: clearing off-grid silo links
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private StationSystem _station = default!;
@@ -366,6 +368,9 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
         // the fix that matters is the off-grid test inside CleanupBrokenDeviceLinks.
         // Clean up broken device links before serialization
         CleanupBrokenDeviceLinks(gridUid);
+
+        // Same treatment for ore-silo links, which are the other two-way EntityUid link on a ship.
+        CleanupOffGridOreSiloLinks(gridUid);
         // End Triad
 
         // remove any edge spreaders, we cannot save these
@@ -518,6 +523,52 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             _sawmill.Warning($"CleanupBrokenDeviceLinks: Exception while cleaning device links on grid {gridUid}: {e.Message}");
         }
     }
+
+    // Triad start
+    /// <summary>
+    /// Clears ore-silo links whose silo is not on the grid being saved, so the save never writes a
+    /// reference it cannot resolve.
+    /// </summary>
+    /// <remarks>
+    /// A cross-grid silo link is already dead weight: SharedOreSiloSystem.CanTransmitMaterials refuses
+    /// any pair whose grids differ, so a link to a silo on another grid transmits nothing even before
+    /// the ship is saved. Carrying it into the save only produces the literal string "invalid" in the
+    /// YAML, one deserializer error per load, and a uid that resolves to entity 0 downstream.
+    ///
+    /// Only the client half needs clearing: OreSiloComponent.Clients is no longer persisted and is
+    /// rebuilt from the surviving clients on startup.
+    /// </remarks>
+    private void CleanupOffGridOreSiloLinks(EntityUid gridUid)
+    {
+        try
+        {
+            var query = _entityManager.EntityQueryEnumerator<OreSiloClientComponent, TransformComponent>();
+            while (query.MoveNext(out var uid, out var client, out var xform))
+            {
+                if (xform.GridUid != gridUid)
+                    continue;
+
+                if (client.Silo is not { } silo)
+                    continue;
+
+                // Keep links whose silo rides along in this same save.
+                if (_entityManager.EntityExists(silo)
+                    && !_entityManager.IsQueuedForDeletion(silo)
+                    && _transformQuery.TryComp(silo, out var siloXform)
+                    && siloXform.GridUid == gridUid)
+                {
+                    continue;
+                }
+
+                _oreSilo.ClearSiloLink((uid, client));
+            }
+        }
+        catch (Exception e)
+        {
+            _sawmill.Warning($"CleanupOffGridOreSiloLinks: Exception while clearing silo links on grid {gridUid}: {e.Message}");
+        }
+    }
+    // Triad end
 
     /// <summary>
     /// Deletes entities on the grid that should not be persisted with the ship, such as unanchored objects or items not inside of a stash.
