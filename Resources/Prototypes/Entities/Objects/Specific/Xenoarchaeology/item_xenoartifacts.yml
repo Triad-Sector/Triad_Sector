@@ -123,11 +123,12 @@
   - type: Tag
     tags:
     - ArtifactFragment
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: Artifexium
-        Quantity: 2 # Frontier 10<2
+  # Triad: artifexium removed, fragments are for crafting and sale only
+  #- type: Extractable
+  #  juiceSolution:
+  #    reagents:
+  #    - ReagentId: Artifexium
+  #      Quantity: 2 # Frontier 10<2
   - type: StaticPrice
     price: 0
   - type: StackPrice # Frontier

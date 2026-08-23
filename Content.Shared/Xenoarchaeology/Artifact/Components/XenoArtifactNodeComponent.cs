@@ -78,14 +78,6 @@ public sealed partial class XenoArtifactNodeComponent : Component
     [DataField, AutoNetworkedField]
     public int ConsumedResearchValue;
 
-    // Frontier: reduce value if artifexium used
-    /// <summary>
-    /// True if the node was unlocked using artifexium.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool ArtifexiumUsed;
-    // End Frontier: reduce value if artifexium used
-
     // Triad: difficulty axes, see SharedXenoArtifactSystem.Triad
     /// <summary>
     /// Triad: how dangerous this node's effect is to the crew, 1 (inert) to 5 (lethal).

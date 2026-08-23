@@ -48,14 +48,6 @@ On top of that, the whole artifact carries a [color=#a4885c]completion multiplie
 
 This applies to Research Points and to the sale price alike, and the two do not cancel each other out, so a full solve pays twice. It also means [color=#a4885c]points you extract early are banked at the low multiplier and cannot be reclaimed later[/color]. If you can finish the artifact, hold the extraction until you do.
 
-## Artifexium and You
-
-Some nodes can be particularly difficult to reach. One way to mitigate this is with [color=#a4885c]artifexium[/color]. When [color=#a4885c]sprayed[/color] or [color=#a4885c]splashed[/color] on an artifact. This will start unlocking nodes if the artifact isn't already doing it, and it will count as a wildcard stimulus for the triggers.
-
-In order to get artifexium, artifact fragments can be [color=#a4885c]ground[/color] in a [color=#a4885c]reagent grinder[/color].
-
-It is worth note that using artifexium taints the observation process, resulting in fewer research points and value generated in the artifacts. Still, it is a useful tool in a pinch.
-
 ## Assembling Artifacts
 <GuideEntityEmbed Entity="ArtifactFragment" Caption="Artifact Fragment"/>
 

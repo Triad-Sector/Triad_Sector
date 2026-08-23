@@ -409,11 +409,6 @@ public abstract partial class SharedXenoArtifactSystem
         var predecessorNodes = GetPredecessorNodes((artifact, artifact), node);
         var difficultyScale = GetNodeDifficultyScale(nodeComponent); // Triad: trigger difficulty compounded with effect danger
         nodeComponent.ResearchValue = (int)(Math.Pow(1.4, Math.Pow(predecessorNodes.Count + 1, 1.2f)) * nodeComponent.BasePointValue * durabilityMultiplier * difficultyScale); // Frontier: add one to count, 1.25<1.4, 1.5<1.2 // Triad: * difficultyScale
-        // Frontier: remove value from using artifexium, different value sets
-        if (node.Comp.ArtifexiumUsed)
-            nodeComponent.ResearchValue = (int)Math.Pow(nodeComponent.ResearchValue - 700, 0.9);
-        // End Frontier: remove value from using artifexium, different value sets
-
     }
 
     // Frontier: ensure single use nodes

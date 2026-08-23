@@ -87,15 +87,6 @@ public abstract partial class SharedXenoArtifactSystem
         if (!gridProtected && TryGetNodeFromUnlockState(ent, out node))
         // End Frontier: Disable activations on protected grids
         {
-            // Frontier: remove value if artifexium used
-            if (ent.Comp1.ArtifexiumApplied)
-            {
-                node.Value.Comp.ArtifexiumUsed = true;
-                UpdateNodeResearchValue(node.Value);
-                Dirty(node.Value);
-            }
-            // End Frontier
-
             SetNodeUnlocked((ent, artifactComponent), node.Value);
             ActivateNode((ent, ent), (node.Value, node.Value), null, null, Transform(ent).Coordinates, true); // Frontier: false<true
             unlockAttemptResultMsg = "artifact-unlock-state-end-success";
@@ -150,54 +141,17 @@ public abstract partial class SharedXenoArtifactSystem
             var requiredIndices = GetPredecessorNodes((ent, artifactComponent), nodeIndex);
             requiredIndices.Add(nodeIndex);
 
-            if (!ent.Comp1.ArtifexiumApplied)
-            {
-                // Frontier: allow supersets, fix
-                // Make sure the two sets are identical
-                // if (requiredIndices.Count != artifactUnlockingComponent.TriggeredNodeIndexes.Count
-                //     || !artifactUnlockingComponent.TriggeredNodeIndexes.All(requiredIndices.Contains))
-                //     continue;
-
-                if (requiredIndices.Count > artifactUnlockingComponent.TriggeredNodeIndexes.Count
-                    || !requiredIndices.All(artifactUnlockingComponent.TriggeredNodeIndexes.Contains))
-                    continue;
-
-                if (requiredIndices.Count == artifactUnlockingComponent.TriggeredNodeIndexes.Count)
-                {
-                    node = curNode;
-                    return true; // exit early
-                }
-                else
-                {
-                    potentialNodes.Add(curNode);
-                }
-                // End Frontier: allow supersets
-            }
-
-            // Frontier: fast path the count check, allow supersets
-
-            // If we apply artifexium, check that the sets are identical EXCEPT for one extra node.
-            // This node is a "wildcard" and we'll make a pool so we can pick one to actually unlock.
-            // if (!artifactUnlockingComponent.TriggeredNodeIndexes.All(requiredIndices.Contains) ||
-            //     requiredIndices.Count - 1 != artifactUnlockingComponent.TriggeredNodeIndexes.Count)
-            //     continue;
-
-            if (requiredIndices.Count - 1 > artifactUnlockingComponent.TriggeredNodeIndexes.Count)
+            // Triad: the artifexium wildcard branch is gone with the reagent. Every required node
+            // has to have been triggered; a superset of triggers still counts (Frontier's fix).
+            if (requiredIndices.Count > artifactUnlockingComponent.TriggeredNodeIndexes.Count
+                || !requiredIndices.All(artifactUnlockingComponent.TriggeredNodeIndexes.Contains))
                 continue;
 
-            int missingCount = 0;
-            foreach (var index in requiredIndices)
+            if (requiredIndices.Count == artifactUnlockingComponent.TriggeredNodeIndexes.Count)
             {
-                if (!artifactUnlockingComponent.TriggeredNodeIndexes.Contains(index))
-                {
-                    missingCount++;
-                    if (missingCount > 1)
-                        break;
-                }
+                node = curNode;
+                return true; // exit early
             }
-            if (missingCount > 1)
-                continue;
-            // End Frontier: fast path the count check, allow supersets
 
             potentialNodes.Add(curNode);
         }

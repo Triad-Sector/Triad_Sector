@@ -88,12 +88,14 @@
       weight: 2.0
     - id: XenoArtifactEmp
       weight: 2.0
-    - id: XenoArtifactPolyMonkey
-      weight: 2.0
-    - id: XenoArtifactPolyLuminous
-      weight: 2.0
-    - id: XenoArtifactPolyLizard
-      weight: 2.0
+    # Triad: removed. Forced polymorph of every humanoid in range with no timer, only crit or death
+    # reverts it. Not a puzzle hazard, a griefing tool.
+    #- id: XenoArtifactPolyMonkey
+    #  weight: 2.0
+    #- id: XenoArtifactPolyLuminous
+    #  weight: 2.0
+    #- id: XenoArtifactPolyLizard
+    #  weight: 2.0
     - id: XenoArtifactRadioactiveStrong
       weight: 3.0
     - id: XenoArtifactMaterialSpawnGlass
@@ -132,8 +134,10 @@
       weight: 4.0
     - id: NFXenoArtifactEffectSpawnGrimforgedConstruct # Frontier
       weight: 1.5 # Frontier
-    - id: NFXenoArtifactEffectAnomaliteSpawn # Frontier
-      weight: 6.0 # Frontier
+    # Triad: removed. MaterialAnomalite1 and the Anomalite stack do not exist on this tree, the
+    # spawner would throw on every activation and drop nothing.
+    #- id: NFXenoArtifactEffectAnomaliteSpawn # Frontier
+    #  weight: 6.0 # Frontier
 
 - type: entityTable
   id: XenoArtifactEffectsHandheldOnlyTable

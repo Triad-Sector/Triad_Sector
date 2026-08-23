@@ -108,12 +108,6 @@ public abstract partial class SharedXenoArtifactSystem
             Dirty(ent, unlockingComp);
         }
     }
-
-    public void SetArtifexiumApplied(Entity<XenoArtifactUnlockingComponent> ent, bool val)
-    {
-        ent.Comp.ArtifexiumApplied = val;
-        Dirty(ent);
-    }
 }
 
 /// <summary>

@@ -141,9 +141,6 @@ public abstract partial class SharedXenoArtifactSystem
             AdjustNodeDurability((node, node.Comp), -1);
         }
 
-        if (node.Comp.ArtifexiumUsed) // Frontier
-            return true; // Frontier
-
         var ev = new XenoArtifactNodeActivatedEvent(artifact, node, user, target, coordinates);
         RaiseLocalEvent(node, ref ev);
         return true;

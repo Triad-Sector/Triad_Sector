@@ -1348,8 +1348,3 @@
   id: bacchusblessing
   flavorType: Complex
   description: flavor-complex-bacchus-blessing
-
-- type: flavor
-  id: artifactglue
-  flavorType: Complex
-  description: flavor-complex-artifact-glue
