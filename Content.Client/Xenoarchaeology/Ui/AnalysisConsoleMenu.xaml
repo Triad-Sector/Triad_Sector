@@ -60,25 +60,20 @@
                             <RichTextLabel Name="TriggerLabel" Text="{Loc 'analysis-console-info-trigger'}"/>
                             <RichTextLabel Name="TriggerValueLabel" HorizontalExpand="True"/>
                         </BoxContainer>
+                        <!-- Triad: the artifact-wide readout, same style as Effect/Triggers above.
+                             Extraction bonus is always live; profile and peak start hidden and reveal
+                             as solved nodes give the console data to extrapolate from. -->
+                        <BoxContainer Name="ArtifactInfoContainer" Orientation="Vertical" HorizontalExpand="True" Visible="False">
+                            <Control MinHeight="20"/>
+                            <RichTextLabel Name="PayoutLabel" Text="{Loc 'analysis-console-info-extraction'}"/>
+                            <RichTextLabel Name="PayoutValueLabel" HorizontalExpand="True"/>
+                            <RichTextLabel Name="ProfileLabel" Text="{Loc 'analysis-console-info-profile'}"/>
+                            <RichTextLabel Name="ProfileValueLabel" HorizontalExpand="True"/>
+                            <RichTextLabel Name="PeakLabel" Text="{Loc 'analysis-console-info-peak'}"/>
+                            <RichTextLabel Name="PeakValueLabel" HorizontalExpand="True"/>
+                        </BoxContainer>
                     </BoxContainer>
                 </ScrollContainer>
-                <Control MinHeight="5"/>
-                <!-- Triad: the artifact-wide readout. Extraction bonus is always live; profile and peak
-                     start hidden and reveal as solved nodes give the console data to extrapolate from. -->
-                <BoxContainer Name="ArtifactInfoContainer" Orientation="Vertical" HorizontalExpand="True" Visible="False">
-                    <BoxContainer HorizontalExpand="True">
-                        <RichTextLabel Name="PayoutLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-extraction'}"/>
-                        <RichTextLabel Name="PayoutValueLabel" HorizontalAlignment="Right"/>
-                    </BoxContainer>
-                    <BoxContainer HorizontalExpand="True">
-                        <RichTextLabel Name="ProfileLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-profile'}"/>
-                        <RichTextLabel Name="ProfileValueLabel" HorizontalAlignment="Right"/>
-                    </BoxContainer>
-                    <BoxContainer HorizontalExpand="True">
-                        <RichTextLabel Name="PeakLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-peak'}"/>
-                        <RichTextLabel Name="PeakValueLabel" HorizontalAlignment="Right"/>
-                    </BoxContainer>
-                </BoxContainer>
                 <Control MinHeight="5"/>
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
                     <Button Name="ServerButton" Text="{Loc 'analysis-console-server-list-button'}" StyleClasses="OpenRight" HorizontalExpand="True" MinHeight="35"/>
