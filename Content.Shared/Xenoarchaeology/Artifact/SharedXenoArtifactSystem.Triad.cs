@@ -122,22 +122,22 @@ public abstract partial class SharedXenoArtifactSystem
     }
 
     /// <summary>
-    /// Whether enough of the graph is solved to name the severity profile's shape. Three depth
-    /// samples pin a curve's curvature, so the shape reveals once unlocked nodes span three
-    /// distinct depths (or every depth the artifact has, on a shallow one).
+    /// Whether enough of the graph is solved to name the severity profile's shape: any three nodes
+    /// unlocked (or the whole artifact, on a tiny one). Depth deliberately does not matter, so a
+    /// crew can go wide across cheap roots to scout the profile before deciding whether to go deep.
     /// </summary>
     public bool IsSeverityProfileRevealed(Entity<XenoArtifactComponent> ent)
     {
-        var allDepths = new HashSet<int>();
-        var unlockedDepths = new HashSet<int>();
+        var total = 0;
+        var unlocked = 0;
         foreach (var node in GetAllNodes(ent))
         {
-            allDepths.Add(node.Comp.Depth);
+            total++;
             if (!node.Comp.Locked)
-                unlockedDepths.Add(node.Comp.Depth);
+                unlocked++;
         }
 
-        return unlockedDepths.Count >= Math.Min(3, allDepths.Count);
+        return unlocked >= Math.Min(3, total);
     }
 
     /// <summary>
