@@ -20,8 +20,8 @@ namespace Content.Shared.Xenoarchaeology.Artifact;
 /// Per node: trigger difficulty (three authored axes on the trigger prototype) compounds with effect
 /// danger (authored on the effect prototype) into a scale on the node's research value.
 /// Per artifact: a severity profile (shape and cap) decides how danger climbs with depth, and a
-/// completion multiplier ramps gently while solving and snaps hard on the final node, applying to
-/// credits and research points alike.
+/// completion multiplier compounds exponentially with every unlock toward the full-solve payout,
+/// applying to credits and research points alike.
 ///
 /// Seeds below are analytical. WS8 of the rework plan fits them against sampled generations so an
 /// easy full solve lands near 150k credits and a nasty one near 500k.
@@ -351,20 +351,15 @@ public abstract partial class SharedXenoArtifactSystem
     #region Completion multiplier
 
     /// <summary>
-    /// Payout multiplier on a full solve. The payday, not a rounding bonus.
+    /// Payout multiplier on a full solve, and the base of the exponential ramp toward it.
     /// </summary>
     public const float FullSolveMultiplier = 5.0f;
 
     /// <summary>
-    /// Exponent on the partial-progress ramp. 3 keeps partial progress cheap and back-loads the
-    /// reward: f=0.5 gives 1.13x, f=0.9 gives 1.73x, f->1 gives 2.0x, then the final node snaps to
-    /// <see cref="FullSolveMultiplier"/>. That last node is worth about 2.5x everything before it.
-    /// </summary>
-    public const float CompletionCurvePower = 3.0f;
-
-    /// <summary>
-    /// Whole-artifact payout multiplier from how much of the graph is unlocked. Shared between the
-    /// price handler and the analyzer extract path so credits and research points cannot drift apart.
+    /// Whole-artifact payout multiplier from how much of the graph is unlocked: FullSolve^f, so
+    /// every unlock compounds the payout by the same factor. x1 at nothing, x2.24 at half, exactly
+    /// x5 on the last node, no snap. Shared between the price handler and the analyzer extract path
+    /// so credits and research points cannot drift apart.
     /// </summary>
     public float GetCompletionMultiplier(Entity<XenoArtifactComponent> ent)
     {
@@ -377,7 +372,7 @@ public abstract partial class SharedXenoArtifactSystem
             return FullSolveMultiplier;
 
         var f = (float)unlocked / all.Count;
-        return 1f + MathF.Pow(f, CompletionCurvePower);
+        return MathF.Pow(FullSolveMultiplier, f);
     }
 
     /// <summary>
