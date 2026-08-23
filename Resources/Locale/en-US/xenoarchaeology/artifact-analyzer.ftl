@@ -36,12 +36,21 @@ analysis-console-progress-text = {$seconds ->
 analysis-console-extract-value = [font="Monospace" size=11][color=orange]Node {$id} (+{$value})[/color][/font]
 analysis-console-extract-none = [font="Monospace" size=11][color=orange] No unlocked nodes have any points left to extract [/color][/font]
 analysis-console-extract-sum = [font="Monospace" size=11][color=orange]Total Research: {$value}[/color][/font]
-# Triad: pending payout multiplier
-analysis-console-info-payout = [font="Monospace" size=11]Payout multiplier: [color=orange]x{$current}[/color] now, [color=lime]x{$full}[/color] on a full solve[/font]
-# Triad: severity profile
-analysis-console-info-profile = [font="Monospace" size=11]Severity profile: {$shape}, peaking at [color=orange]class {$cap}[/color][/font]
-analysis-console-info-profile-linear = [color=lime]steady climb[/color]
-analysis-console-info-profile-log = [color=yellow]early spike[/color]
-analysis-console-info-profile-exp = [color=red]late cliff[/color]
+# Triad: artifact-wide readout. The extraction bonus is always live; the severity rows reveal as
+# solved nodes give the console data to extrapolate from.
+analysis-console-info-extraction = [font="Monospace" size=11]Extraction Bonus:[/font]
+analysis-console-info-extraction-value = [font="Monospace" size=11][color=orange]x{$current}[/color][/font]
+analysis-console-info-profile = [font="Monospace" size=11]Severity Profile:[/font]
+analysis-console-info-profile-linear = [font="Monospace" size=11][color=lime]Steady Climb[/color][/font]
+analysis-console-info-profile-log = [font="Monospace" size=11][color=yellow]Early Spike[/color][/font]
+analysis-console-info-profile-exp = [font="Monospace" size=11][color=red]Late Cliff[/color][/font]
+analysis-console-info-peak = [font="Monospace" size=11]Severity Peak:[/font]
+analysis-console-info-peak-value = [font="Monospace" size=11][color={ $cap ->
+    [2] lime]Class 2
+    [3] yellow]Class 3
+    [4] orange]Class 4
+    *[other] red]Class {$cap}
+}[/color][/font]
+analysis-console-info-unknown-value = [font="Monospace" size=11][color=gray]Insufficient data[/color][/font]
 
 analyzer-artifact-extract-popup = Energy shimmers on the artifact's surface!

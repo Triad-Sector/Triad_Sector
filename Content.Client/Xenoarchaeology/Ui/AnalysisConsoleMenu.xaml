@@ -63,10 +63,23 @@
                     </BoxContainer>
                 </ScrollContainer>
                 <Control MinHeight="5"/>
-                <!-- Triad: pending payout multiplier, so holding for the full solve reads as a choice rather than a trap -->
-                <RichTextLabel Name="PayoutValueLabel" HorizontalAlignment="Center" Visible="False"/>
-                <!-- Triad: severity profile, so pressing deeper reads as a gamble the player chose -->
-                <RichTextLabel Name="ProfileValueLabel" HorizontalAlignment="Center" Visible="False"/>
+                <!-- Triad: the artifact-wide readout. Extraction bonus is always live; profile and peak
+                     start hidden and reveal as solved nodes give the console data to extrapolate from. -->
+                <BoxContainer Name="ArtifactInfoContainer" Orientation="Vertical" HorizontalExpand="True" Visible="False">
+                    <BoxContainer HorizontalExpand="True">
+                        <RichTextLabel Name="PayoutLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-extraction'}"/>
+                        <RichTextLabel Name="PayoutValueLabel" HorizontalAlignment="Right"/>
+                    </BoxContainer>
+                    <BoxContainer HorizontalExpand="True">
+                        <RichTextLabel Name="ProfileLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-profile'}"/>
+                        <RichTextLabel Name="ProfileValueLabel" HorizontalAlignment="Right"/>
+                    </BoxContainer>
+                    <BoxContainer HorizontalExpand="True">
+                        <RichTextLabel Name="PeakLabel" HorizontalExpand="True" Text="{Loc 'analysis-console-info-peak'}"/>
+                        <RichTextLabel Name="PeakValueLabel" HorizontalAlignment="Right"/>
+                    </BoxContainer>
+                </BoxContainer>
+                <Control MinHeight="5"/>
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
                     <Button Name="ServerButton" Text="{Loc 'analysis-console-server-list-button'}" StyleClasses="OpenRight" HorizontalExpand="True" MinHeight="35"/>
                     <Button Name="ExtractButton" Text="{Loc 'analysis-console-extract-button'}" StyleClasses="OpenLeft" HorizontalExpand="True" MinHeight="35"/>

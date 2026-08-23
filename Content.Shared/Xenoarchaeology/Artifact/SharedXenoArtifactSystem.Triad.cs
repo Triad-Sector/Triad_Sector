@@ -100,6 +100,47 @@ public abstract partial class SharedXenoArtifactSystem
     }
 
     /// <summary>
+    /// Whether enough of the graph is solved to name the severity peak: the player has reached the
+    /// deepest layer of some segment, where the cap actually lives.
+    /// </summary>
+    public bool IsSeverityPeakRevealed(Entity<XenoArtifactComponent> ent)
+    {
+        foreach (var segment in GetSegments(ent))
+        {
+            var maxDepth = 0;
+            foreach (var node in segment)
+                maxDepth = Math.Max(maxDepth, node.Comp.Depth);
+
+            foreach (var node in segment)
+            {
+                if (!node.Comp.Locked && node.Comp.Depth == maxDepth)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Whether enough of the graph is solved to name the severity profile's shape. Three depth
+    /// samples pin a curve's curvature, so the shape reveals once unlocked nodes span three
+    /// distinct depths (or every depth the artifact has, on a shallow one).
+    /// </summary>
+    public bool IsSeverityProfileRevealed(Entity<XenoArtifactComponent> ent)
+    {
+        var allDepths = new HashSet<int>();
+        var unlockedDepths = new HashSet<int>();
+        foreach (var node in GetAllNodes(ent))
+        {
+            allDepths.Add(node.Comp.Depth);
+            if (!node.Comp.Locked)
+                unlockedDepths.Add(node.Comp.Depth);
+        }
+
+        return unlockedDepths.Count >= Math.Min(3, allDepths.Count);
+    }
+
+    /// <summary>
     /// Rolls the shape and cap for a freshly generated artifact.
     /// </summary>
     public void RollSeverityProfile(Entity<XenoArtifactComponent> ent)
