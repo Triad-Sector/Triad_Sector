@@ -44,6 +44,8 @@ Once you've discovered a new node, you can extract points from the artifact usin
 
 Every node is worth more the harder it was to solve. A node's value comes from how difficult its [color=#a4885c]stimulus[/color] is to set up and land inside an unlock window, compounded with how dangerous its [color=#a4885c]reaction[/color] is to a crew in a sealed hull. A node that makes you vent a compartment while the artifact breaks windows is worth far more than one you examine while it glows.
 
+Danger is not spread evenly. Every artifact carries a [color=#a4885c]severity profile[/color]: its reactions start gentle at the first nodes and climb toward a peak class as you go deeper. The analysis console shows the profile. Some artifacts climb steadily, some spike early then level off, and some stay quiet almost to the end before turning vicious. A low peak is a safe dig that pays modestly; a high peak is a gamble, and the deepest nodes are where it pays.
+
 On top of that, the whole artifact carries a [color=#a4885c]completion multiplier[/color]. It climbs slowly while you work through the graph and then jumps hard on the final node: a fully solved artifact pays out [color=#a4885c]five times[/color] what the same nodes were worth the moment before. The console shows the current multiplier and what a full solve would pay.
 
 This applies to Research Points and to the sale price alike, and the two do not cancel each other out, so a full solve pays twice. It also means [color=#a4885c]points you extract early are banked at the low multiplier and cannot be reclaimed later[/color]. If you can finish the artifact, hold the extraction until you do.

@@ -38,5 +38,10 @@ analysis-console-extract-none = [font="Monospace" size=11][color=orange] No unlo
 analysis-console-extract-sum = [font="Monospace" size=11][color=orange]Total Research: {$value}[/color][/font]
 # Triad: pending payout multiplier
 analysis-console-info-payout = [font="Monospace" size=11]Payout multiplier: [color=orange]x{$current}[/color] now, [color=lime]x{$full}[/color] on a full solve[/font]
+# Triad: severity profile
+analysis-console-info-profile = [font="Monospace" size=11]Severity profile: {$shape}, peaking at [color=orange]class {$cap}[/color][/font]
+analysis-console-info-profile-linear = [color=lime]steady climb[/color]
+analysis-console-info-profile-log = [color=yellow]early spike[/color]
+analysis-console-info-profile-exp = [color=red]late cliff[/color]
 
 analyzer-artifact-extract-popup = Energy shimmers on the artifact's surface!

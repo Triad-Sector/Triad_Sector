@@ -115,7 +115,16 @@ public abstract partial class SharedXenoArtifactSystem
         var entProtoId = _entityTable.GetSpawns(ent.Comp.EffectsTable)
                                      .First();
 
-        AddNode((ent, ent), entProtoId, out var nodeEnt, dirty: false);
+        return CreateNode(ent, trigger, entProtoId, depth);
+    }
+
+    /// <summary>
+    /// Triad: as above, but the caller has already chosen the effect prototype. The severity-curve
+    /// generator picks effects against a depth target rather than letting the table roll blind.
+    /// </summary>
+    public Entity<XenoArtifactNodeComponent> CreateNode(Entity<XenoArtifactComponent> ent, XenoArchTriggerPrototype trigger, EntProtoId effect, int depth = 0)
+    {
+        AddNode((ent, ent), effect, out var nodeEnt, dirty: false);
         DebugTools.Assert(nodeEnt.HasValue, "Failed to create node on artifact.");
 
         var nodeComponent = nodeEnt.Value.Comp;
@@ -408,7 +417,7 @@ public abstract partial class SharedXenoArtifactSystem
 
         var predecessorNodes = GetPredecessorNodes((artifact, artifact), node);
         var difficultyScale = GetNodeDifficultyScale(nodeComponent); // Triad: trigger difficulty compounded with effect danger
-        nodeComponent.ResearchValue = (int)(Math.Pow(1.4, Math.Pow(predecessorNodes.Count + 1, 1.2f)) * nodeComponent.BasePointValue * durabilityMultiplier * difficultyScale); // Frontier: add one to count, 1.25<1.4, 1.5<1.2 // Triad: * difficultyScale
+        nodeComponent.ResearchValue = (int)(Math.Pow(DepthValueBase, Math.Pow(predecessorNodes.Count + 1, 1.2f)) * nodeComponent.BasePointValue * durabilityMultiplier * difficultyScale); // Frontier: add one to count, 1.25<1.4, 1.5<1.2 // Triad: * difficultyScale; 1.4<DepthValueBase, danger now climbs with depth so the old base double-dipped
     }
 
     // Frontier: ensure single use nodes

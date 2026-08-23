@@ -155,12 +155,26 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
 
         // Triad: show the pending payout multiplier and what a full solve would pay
         PayoutValueLabel.Visible = arti != null;
+        ProfileValueLabel.Visible = arti != null;
         if (arti != null)
         {
             var current = _xenoArtifact.GetCompletionMultiplier(arti.Value);
             PayoutValueLabel.SetMarkup(Loc.GetString("analysis-console-info-payout",
                 ("current", current.ToString("0.00")),
                 ("full", SharedXenoArtifactSystem.FullSolveMultiplier.ToString("0"))));
+
+            // Triad: the severity profile is the gamble; players need to see it to take it
+            var shape = arti.Value.Comp.SeverityShape;
+            var cap = arti.Value.Comp.SeverityCap;
+            var shapeLoc = shape switch
+            {
+                XenoArtifactSeverityShape.Log => "analysis-console-info-profile-log",
+                XenoArtifactSeverityShape.Exp => "analysis-console-info-profile-exp",
+                _ => "analysis-console-info-profile-linear",
+            };
+            ProfileValueLabel.SetMarkup(Loc.GetString("analysis-console-info-profile",
+                ("shape", Loc.GetString(shapeLoc)),
+                ("cap", cap.ToString("0"))));
         }
 
         if (arti == null)

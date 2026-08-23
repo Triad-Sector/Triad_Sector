@@ -13,6 +13,7 @@ public sealed partial class XenoArtifactSystem
 
     private void GenerateArtifactStructure(Entity<XenoArtifactComponent> ent)
     {
+        RollSeverityProfile(ent); // Triad: shape and cap, before any node exists
         var nodeCount = ent.Comp.NodeCount.Next(RobustRandom);
         var triggerPool = CreateTriggerPool(ent, nodeCount);
         // trigger pool could be smaller, then requested node count
@@ -74,7 +75,10 @@ public sealed partial class XenoArtifactSystem
     {
         var segmentSize = GetArtifactSegmentSize(ent, nodeCount);
         nodeCount -= segmentSize;
-        var populatedNodes = PopulateArtifactSegmentRecursive(ent, triggerPool, ref segmentSize);
+        // Triad: the layer widths are rolled before anything spawns so every node knows its
+        // normalised depth, which the severity curve needs. Same distribution as the old recursion.
+        var layerPlan = RollSegmentLayerPlan(ent, segmentSize);
+        var populatedNodes = PopulateArtifactSegment(ent, triggerPool, layerPlan);
 
         var segments = GetSegmentsFromNodes(ent, populatedNodes).ToList();
 
@@ -132,66 +136,94 @@ public sealed partial class XenoArtifactSystem
         }
     }
 
+    // Triad: this replaces upstream's PopulateArtifactSegmentRecursive. The recursion created each
+    // layer before knowing how many layers the segment would have, and the severity curve needs
+    // normalised depth at spawn time, so the layer widths are now rolled up front (same
+    // distribution, see RollSegmentLayerPlan) and the build is a plain loop.
+
     /// <summary>
-    /// Recursively populate layers of artifact segment - isolated graph, nodes inside which are interconnected.
-    /// Each next iteration is going to have more chances to have more nodes (so it goes 'from top to bottom' of
-    /// the tree, creating its peak nodes first, and then making layers with more and more branches).
+    /// Triad: rolls the width of each layer in a segment before anything spawns. Layer widths tend to
+    /// grow with depth, exactly as upstream's recursion rolled them: the mod term widens the roll
+    /// range as the iteration climbs, which prevents excessive layer counts.
     /// </summary>
-    private List<Entity<XenoArtifactNodeComponent>> PopulateArtifactSegmentRecursive(
+    private List<int> RollSegmentLayerPlan(Entity<XenoArtifactComponent> ent, int segmentSize)
+    {
+        var plan = new List<int>();
+        var iteration = 0;
+        while (segmentSize > 0)
+        {
+            var mod = RobustRandom.Next((int) (iteration / 1.5f), iteration + 1);
+
+            var layerMin = Math.Min(ent.Comp.NodesPerSegmentLayer.Min + mod, segmentSize);
+            var layerMax = Math.Min(ent.Comp.NodesPerSegmentLayer.Max + mod, segmentSize);
+
+            // Default to one node if we had shenanigans and ended up with weird layer counts.
+            var nodeCount = 1;
+            if (layerMax >= layerMin)
+                nodeCount = RobustRandom.Next(layerMin, layerMax + 1); // account for non-inclusive max
+
+            segmentSize -= nodeCount;
+            plan.Add(nodeCount);
+            iteration++;
+        }
+
+        return plan;
+    }
+
+    /// <summary>
+    /// Populates the layers of an artifact segment - an isolated graph whose nodes are interconnected.
+    /// Triad: each node's trigger and effect are picked against the artifact's severity profile at
+    /// that node's normalised depth, so danger and trigger difficulty climb from the segment's roots
+    /// to its leaves along the rolled curve.
+    /// </summary>
+    private List<Entity<XenoArtifactNodeComponent>> PopulateArtifactSegment(
         Entity<XenoArtifactComponent> ent,
         List<XenoArchTriggerPrototype> triggerPool,
-        ref int segmentSize,
-        int iteration = 0
+        List<int> layerPlan
     )
     {
-        if (segmentSize == 0)
-            return new();
+        var allNodes = new List<Entity<XenoArtifactNodeComponent>>();
+        var previousLayer = new List<Entity<XenoArtifactNodeComponent>>();
+        var maxDepth = layerPlan.Count - 1;
 
-        // Try and get larger as we create more layers. Prevents excessive layers.
-        var mod = RobustRandom.Next((int) (iteration / 1.5f), iteration + 1);
-
-        var layerMin = Math.Min(ent.Comp.NodesPerSegmentLayer.Min + mod, segmentSize);
-        var layerMax = Math.Min(ent.Comp.NodesPerSegmentLayer.Max + mod, segmentSize);
-
-        // Default to one node if we had shenanigans and ended up with weird layer counts.
-        var nodeCount = 1;
-        if (layerMax >= layerMin)
-            nodeCount = RobustRandom.Next(layerMin, layerMax + 1); // account for non-inclusive max
-
-        segmentSize -= nodeCount;
-        var nodes = new List<Entity<XenoArtifactNodeComponent>>();
-        for (var i = 0; i < nodeCount; i++)
+        for (var depth = 0; depth <= maxDepth; depth++)
         {
-            var trigger = RobustRandom.PickAndTake(triggerPool);
-            nodes.Add(CreateNode(ent, trigger, iteration));
+            var t = maxDepth == 0 ? 0f : (float) depth / maxDepth;
+            var targetDifficulty = GetTargetTriggerDifficulty(ent.Comp, t);
+            var targetDanger = GetTargetDanger(ent.Comp, t);
+
+            var layer = new List<Entity<XenoArtifactNodeComponent>>();
+            for (var i = 0; i < layerPlan[depth]; i++)
+            {
+                var trigger = PickTriggerForTarget(triggerPool, targetDifficulty);
+                var effect = PickEffectForTarget(ent.Comp.EffectsTable, targetDanger);
+                layer.Add(CreateNode(ent, trigger, effect, depth));
+            }
+
+            if (previousLayer.Count != 0)
+            {
+                // every node gets at least one parent in the layer above
+                foreach (var node in layer)
+                {
+                    var parent = RobustRandom.Pick(previousLayer);
+                    AddEdge((ent, ent), parent, node, dirty: false);
+                }
+
+                // randomly add in some extra edges for variance.
+                var scatterCount = ent.Comp.ScatterPerLayer.Next(RobustRandom);
+                for (var i = 0; i < scatterCount; i++)
+                {
+                    var parent = RobustRandom.Pick(previousLayer);
+                    var child = RobustRandom.Pick(layer);
+                    AddEdge((ent, ent), parent, child, dirty: false);
+                }
+            }
+
+            allNodes.AddRange(layer);
+            previousLayer = layer;
         }
 
-        var successors = PopulateArtifactSegmentRecursive(
-            ent,
-            triggerPool,
-            ref segmentSize,
-            iteration: iteration + 1
-        );
-
-        if (successors.Count == 0)
-            return nodes;
-
-        foreach (var successor in successors)
-        {
-            var node = RobustRandom.Pick(nodes);
-            AddEdge((ent, ent), node, successor, dirty: false);
-        }
-
-        // randomly add in some extra edges for variance.
-        var scatterCount = ent.Comp.ScatterPerLayer.Next(RobustRandom);
-        for (var i = 0; i < scatterCount; i++)
-        {
-            var node = RobustRandom.Pick(nodes);
-            var successor = RobustRandom.Pick(successors);
-            AddEdge((ent, ent), node, successor, dirty: false);
-        }
-
-        return nodes;
+        return allNodes;
     }
 
     /// <summary>

@@ -157,6 +157,46 @@ public sealed partial class XenoArtifactComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<WeightedRandomXenoArchTriggerPrototype> TriggerWeights = "DefaultTriggers";
+
+    // Triad: severity profile, see SharedXenoArtifactSystem.Triad
+    /// <summary>
+    /// Triad: how node danger climbs with depth on this artifact. Rolled once at generation from
+    /// <see cref="SeverityShapeWeights"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public XenoArtifactSeverityShape SeverityShape = XenoArtifactSeverityShape.Linear;
+
+    /// <summary>
+    /// Triad: the danger the deepest nodes of each segment aim for, 1..5. Every segment climbs from 1
+    /// at its roots to this at its leaves. Rolled once at generation from <see cref="SeverityCapWeights"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float SeverityCap = 5f;
+
+    /// <summary>
+    /// Triad: weights for rolling <see cref="SeverityShape"/>.
+    /// </summary>
+    [DataField]
+    public Dictionary<XenoArtifactSeverityShape, float> SeverityShapeWeights = new()
+    {
+        { XenoArtifactSeverityShape.Linear, 1f },
+        { XenoArtifactSeverityShape.Log, 1f },
+        { XenoArtifactSeverityShape.Exp, 1f },
+    };
+
+    /// <summary>
+    /// Triad: weights for rolling <see cref="SeverityCap"/>. Higher caps are more common so the
+    /// median artifact still has a real payday at the end.
+    /// </summary>
+    [DataField]
+    public Dictionary<int, float> SeverityCapWeights = new()
+    {
+        { 2, 1f },
+        { 3, 2f },
+        { 4, 3f },
+        { 5, 4f },
+    };
+    // End Triad
     #endregion
 
     /// <summary>

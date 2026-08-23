@@ -3,8 +3,12 @@
 // SPDX-License-Identifier: MPL-2.0
 
 using System.Linq;
+using Content.Shared.EntityTable.EntitySelectors;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.Prototypes;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Xenoarchaeology.Artifact;
 
@@ -15,14 +19,194 @@ namespace Content.Shared.Xenoarchaeology.Artifact;
 ///
 /// Per node: trigger difficulty (three authored axes on the trigger prototype) compounds with effect
 /// danger (authored on the effect prototype) into a scale on the node's research value.
-/// Per artifact: a completion multiplier ramps gently while solving and snaps hard on the final
-/// node, and applies to credits and research points alike.
+/// Per artifact: a severity profile (shape and cap) decides how danger climbs with depth, and a
+/// completion multiplier ramps gently while solving and snaps hard on the final node, applying to
+/// credits and research points alike.
 ///
 /// Seeds below are analytical. WS8 of the rework plan fits them against sampled generations so an
 /// easy full solve lands near 150k credits and a nasty one near 500k.
 /// </summary>
 public abstract partial class SharedXenoArtifactSystem
 {
+    #region Severity profile
+
+    /// <summary>
+    /// Steepness of the log shape. Higher front-loads the climb harder: most of the danger arrives
+    /// in the first third of the graph, then a long plateau near the cap.
+    /// </summary>
+    public const float SeverityLogSteepness = 8f;
+
+    /// <summary>
+    /// Steepness of the exp shape. Higher back-loads the climb harder: safe for most of the graph,
+    /// then a cliff on the last layers.
+    /// </summary>
+    public const float SeverityExpSteepness = 3f;
+
+    /// <summary>
+    /// Width of the Gaussian that reweights a table entry by how far its rating sits from the
+    /// depth target. At 0.6 a target of 3 still reaches 2 and 4 at about 6% of their author weight
+    /// and 1 and 5 at essentially nothing, so the curve reads in play without being a hard tier.
+    /// </summary>
+    public const float SeverityKernelSigma = 0.6f;
+
+    /// <summary>
+    /// Entries the kernel pushes below this fraction of their author weight are dropped from the
+    /// roll entirely. If that empties the roll, the pick falls back to the author weights alone.
+    /// </summary>
+    public const float SeverityKernelFloor = 0.01f;
+
+    /// <summary>
+    /// Curve from normalised depth to normalised danger, both in [0, 1]. Every shape starts at 0
+    /// and ends at 1; the shape decides where in between the climb happens.
+    /// </summary>
+    public static float GetSeverityCurve(XenoArtifactSeverityShape shape, float t)
+    {
+        t = Math.Clamp(t, 0f, 1f);
+        return shape switch
+        {
+            XenoArtifactSeverityShape.Log => MathF.Log(1f + SeverityLogSteepness * t) / MathF.Log(1f + SeverityLogSteepness),
+            XenoArtifactSeverityShape.Exp => (MathF.Exp(SeverityExpSteepness * t) - 1f) / (MathF.Exp(SeverityExpSteepness) - 1f),
+            _ => t,
+        };
+    }
+
+    /// <summary>
+    /// The danger a node at normalised depth <paramref name="t"/> aims for on this artifact: 1 at the
+    /// roots, <see cref="XenoArtifactComponent.SeverityCap"/> at the leaves.
+    /// </summary>
+    public static float GetTargetDanger(XenoArtifactComponent artifact, float t)
+    {
+        return 1f + (artifact.SeverityCap - 1f) * GetSeverityCurve(artifact.SeverityShape, t);
+    }
+
+    /// <summary>
+    /// The trigger difficulty a node at normalised depth <paramref name="t"/> aims for. Triggers ride
+    /// the same curve as effects so the hard-to-stage ones cluster on the dangerous leaves, but they
+    /// always run the full 1..5 regardless of cap: a gentle artifact is gentle in what it does to
+    /// you, not in what it asks of you.
+    /// </summary>
+    public static float GetTargetTriggerDifficulty(XenoArtifactComponent artifact, float t)
+    {
+        return 1f + 4f * GetSeverityCurve(artifact.SeverityShape, t);
+    }
+
+    /// <summary>
+    /// Gaussian reweighting of an entry rated <paramref name="value"/> against <paramref name="target"/>.
+    /// </summary>
+    public static float GetSeverityKernel(float value, float target)
+    {
+        var d = (value - target) / SeverityKernelSigma;
+        return MathF.Exp(-d * d);
+    }
+
+    /// <summary>
+    /// Rolls the shape and cap for a freshly generated artifact.
+    /// </summary>
+    public void RollSeverityProfile(Entity<XenoArtifactComponent> ent)
+    {
+        ent.Comp.SeverityShape = RobustRandom.Pick(ent.Comp.SeverityShapeWeights);
+        ent.Comp.SeverityCap = RobustRandom.Pick(ent.Comp.SeverityCapWeights);
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Picks a trigger from what is left in the pool, weighted toward <paramref name="targetDifficulty"/>
+    /// and removed from the pool. The pool is already a without-replacement draw from the weighted
+    /// roster, so this only decides the order triggers are handed out in; it can never starve a node.
+    /// </summary>
+    public XenoArchTriggerPrototype PickTriggerForTarget(List<XenoArchTriggerPrototype> pool, float targetDifficulty)
+    {
+        var weights = new Dictionary<XenoArchTriggerPrototype, float>(pool.Count);
+        foreach (var trigger in pool)
+        {
+            var k = GetSeverityKernel(GetTriggerDifficulty(trigger), targetDifficulty);
+            if (k >= SeverityKernelFloor)
+                weights[trigger] = k;
+        }
+
+        if (weights.Count == 0)
+        {
+            foreach (var trigger in pool)
+                weights[trigger] = 1f;
+        }
+
+        var pick = RobustRandom.Pick(weights);
+        pool.Remove(pick);
+        return pick;
+    }
+
+    /// <summary>
+    /// Picks an effect prototype from <paramref name="table"/>, author weights multiplied by how close
+    /// each entry's danger sits to <paramref name="targetDanger"/>. Walks the selector tree rather than
+    /// calling it, so the form-specific sub-tables and their weights are honoured without a second
+    /// copy of the roster split by tier.
+    /// </summary>
+    public EntProtoId PickEffectForTarget(EntityTableSelector table, float targetDanger)
+    {
+        var flat = new List<(EntProtoId Id, float Weight)>();
+        FlattenEffectTable(table, 1f, flat);
+
+        var weights = new Dictionary<EntProtoId, float>(flat.Count);
+        foreach (var (id, weight) in flat)
+        {
+            var k = GetSeverityKernel(GetEffectDanger(id), targetDanger);
+            if (k < SeverityKernelFloor)
+                continue;
+
+            weights[id] = weights.GetValueOrDefault(id) + weight * k;
+        }
+
+        if (weights.Count == 0)
+        {
+            foreach (var (id, weight) in flat)
+                weights[id] = weights.GetValueOrDefault(id) + weight;
+        }
+
+        return RobustRandom.Pick(weights);
+    }
+
+    /// <summary>
+    /// Reads the authored danger off an effect prototype, or the component default if it has none.
+    /// </summary>
+    public float GetEffectDanger(EntProtoId id)
+    {
+        if (PrototypeManager.TryIndex(id, out var proto)
+            && proto.TryGetComponent<XenoArtifactNodeComponent>(out var node, EntityManager.ComponentFactory))
+            return node.Danger;
+
+        return new XenoArtifactNodeComponent().Danger;
+    }
+
+    /// <summary>
+    /// Flattens an entity table into (prototype, probability mass) pairs. Group weights are
+    /// normalised per level so the mass matches what <c>GetSpawns</c> would have rolled.
+    /// </summary>
+    private void FlattenEffectTable(EntityTableSelector selector, float scale, List<(EntProtoId Id, float Weight)> output)
+    {
+        switch (selector)
+        {
+            case EntSelector ent:
+                output.Add((ent.Id, scale));
+                break;
+            case NestedSelector nested:
+                FlattenEffectTable(PrototypeManager.Index(nested.TableId).Table, scale, output);
+                break;
+            case GroupSelector group:
+                var total = group.Children.Sum(c => c.Weight);
+                if (total <= 0f)
+                    break;
+                foreach (var child in group.Children)
+                    FlattenEffectTable(child, scale * child.Weight / total, output);
+                break;
+            case AllSelector all:
+                foreach (var child in all.Children)
+                    FlattenEffectTable(child, scale, output);
+                break;
+        }
+    }
+
+    #endregion
+
     #region Trigger difficulty
 
     /// <summary>
@@ -75,7 +259,7 @@ public abstract partial class SharedXenoArtifactSystem
     /// all-easy and an all-hard artifact, which the flat blend left narrower than the 150k-to-500k target
     /// (sampled 2.5x between p10 and p90 at exponent 1).
     /// </summary>
-    public const float NodeDifficultyExponent = 1.3f;
+    public const float NodeDifficultyExponent = 1.7f; // Triad: 1.3 pre-curve; raised so the severity cap is worth gambling for (cap-5 vs cap-2 spread)
 
     /// <summary>
     /// Compounds trigger difficulty and effect danger into one number, roughly [1.04, 6.0].
@@ -96,6 +280,18 @@ public abstract partial class SharedXenoArtifactSystem
     {
         return NodeDifficultyFloor + NodeDifficultyWeight * MathF.Pow(GetNodeDifficulty(node), NodeDifficultyExponent);
     }
+
+    #endregion
+
+    #region Depth term
+
+    /// <summary>
+    /// Base of the predecessor-count term in node research value, upstream's 1.4. With the severity
+    /// curve on, danger already climbs with depth, so this term at 1.4 double-dips: a leaf paid the
+    /// 1.4^((n+1)^1.2) ramp AND the difficulty scale its curve-assigned danger earns. Re-fitted by
+    /// the sampler with the curve enabled.
+    /// </summary>
+    public const float DepthValueBase = 1.25f; // Frontier: 1.4
 
     #endregion
 
@@ -151,4 +347,18 @@ public abstract partial class SharedXenoArtifactSystem
     }
 
     #endregion
+}
+
+/// <summary>
+/// Triad: how an artifact's danger climbs from its roots to its leaves.
+/// </summary>
+[Serializable, NetSerializable]
+public enum XenoArtifactSeverityShape : byte
+{
+    /// <summary> Even climb, one tier every few layers. </summary>
+    Linear,
+    /// <summary> Front-loaded: gets dangerous early, then plateaus near the cap. </summary>
+    Log,
+    /// <summary> Back-loaded: safe for most of the graph, then a cliff on the last layers. </summary>
+    Exp,
 }
