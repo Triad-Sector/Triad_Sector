@@ -54,6 +54,13 @@
         occludes: True
         ents: []
   # These components are needed for certain triggers to work.
+  # Triad: Stamina harvested from Wizden's base. TriggerAttackStaminaDamage listens for
+  # BeforeStaminaDamageEvent, which only ever fires on an entity with a stamina pool; the
+  # thousand-point threshold and instant decay mean the artifact never actually stam-crits.
+  - type: Stamina
+    critThreshold: 1000 # Triad: this tree predates Wizden's baseCritThreshold rename
+    decay: 1000
+    cooldown: 0.1
   - type: RadiationReceiver
   - type: Reactive
     groups:
