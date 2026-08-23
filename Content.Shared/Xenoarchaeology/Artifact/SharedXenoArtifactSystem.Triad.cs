@@ -221,8 +221,9 @@ public abstract partial class SharedXenoArtifactSystem
     /// <summary>
     /// Flattens an entity table into (prototype, probability mass) pairs. Group weights are
     /// normalised per level so the mass matches what <c>GetSpawns</c> would have rolled.
+    /// Public so the integration tests can enumerate exactly what the tables can roll.
     /// </summary>
-    private void FlattenEffectTable(EntityTableSelector selector, float scale, List<(EntProtoId Id, float Weight)> output)
+    public void FlattenEffectTable(EntityTableSelector selector, float scale, List<(EntProtoId Id, float Weight)> output)
     {
         switch (selector)
         {
