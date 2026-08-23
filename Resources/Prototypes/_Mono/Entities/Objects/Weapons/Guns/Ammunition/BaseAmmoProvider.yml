@@ -32,7 +32,7 @@
       whitelist:
         tags:
         - ShellShotgun12_gaugeBuckshot
-      capacity: 16 # Triad 32 -> 16
+      capacity: 32
     - type: MagazineVisuals
       magState: mag
       steps: 5
