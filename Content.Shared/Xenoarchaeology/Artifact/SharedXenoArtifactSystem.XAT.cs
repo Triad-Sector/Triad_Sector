@@ -1,14 +1,18 @@
 using System.Linq;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems; // Triad: BeforeStaminaDamageEvent
+using Content.Shared.Electrocution; // Triad
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Throwing;
+using Content.Shared.Weapons.Hitscan.Events; // Triad
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.XAT.Components;
 using Content.Shared.Tiles; // Frontier
+using Robust.Shared.Physics.Events; // Triad: StartCollideEvent
 
 namespace Content.Shared.Xenoarchaeology.Artifact;
 
@@ -24,6 +28,15 @@ public abstract partial class SharedXenoArtifactSystem
         XATRelayLocalEvent<InteractHandEvent>();
         XATRelayLocalEvent<ReactionEntityEvent>();
         XATRelayLocalEvent<LandEvent>();
+        // Triad: the wizard-harvest triggers arrived without their relay plumbing, and a trigger whose
+        // event never reaches the node is unsolvable no matter what the prototype says. One line here
+        // per delivery path; BeingMicrowavedEvent is relayed server-side because it is a server class
+        // event on this tree.
+        XATRelayLocalEvent<XATInteractWithDoAfterEvent>();
+        XATRelayLocalEvent<ElectrocutionAttemptEvent>();
+        XATRelayLocalEvent<StartCollideEvent>();
+        XATRelayLocalEvent<HitscanRaycastStrikeEvent>();
+        XATRelayLocalEvent<BeforeStaminaDamageEvent>();
 
         // special case this one because we need to order the messages
         SubscribeLocalEvent<XenoArtifactComponent, ExaminedEvent>(OnExamined);
