@@ -1,5 +1,4 @@
 ussp-bounty-name-bread = Bread
-ussp-bounty-name-artifact = Alien Artifact
 ussp-bounty-name-soup = Soup
 ussp-bounty-name-pizza = Pizza
 ussp-bounty-name-radio = Handicomms
@@ -16,7 +15,6 @@ ussp-bounty-name-military-mech = Military Mech
 
 ussp-bounty-desc-generic = USSP needs this for the fight!
 ussp-bounty-desc-nova = Nova Cygni command needs this!
-ussp-bounty-desc-artifact = Sell in a artifact container.
 ussp-bounty-desc-bread = Cannot be sliced!
 ussp-bounty-desc-food-warm = Soldiers are hungry for warm food.
 ussp-bounty-desc-rogue-hardsuit = Viper Group hardsuits and PDV SCAF suits count to this.
