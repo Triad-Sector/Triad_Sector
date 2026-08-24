@@ -1,4 +1,3 @@
-using Content.Shared.Actions; // Triad: InstantActionComponent has not moved to Actions.Components on this tree
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Xenoarchaeology.Artifact.Prototypes;
@@ -211,14 +210,6 @@ public sealed partial class XenoArtifactComponent : Component
         }
     };
 
-    /// <summary>
-    /// Action that allows the artifact to self activate.
-    /// </summary>
-    [DataField]
-    public EntProtoId<InstantActionComponent> SelfActivateAction = "ActionArtifactActivate";
+    // Triad: SelfActivateAction and ArtifactSelfActivateEvent removed with the sentient artifact;
+    // nothing on this tree can attach a mind to press them.
 }
-
-/// <summary>
-/// Event raised by sentient artifact to activate itself at no durability cost.
-/// </summary>
-public sealed partial class ArtifactSelfActivateEvent : InstantActionEvent;

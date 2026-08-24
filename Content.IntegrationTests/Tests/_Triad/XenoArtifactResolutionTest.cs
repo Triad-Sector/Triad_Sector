@@ -230,9 +230,17 @@ public sealed class XenoArtifactResolutionTest
                 Assert.That(found, Is.True,
                     $"no unlockable node left after {solved}/{nodeCount} solves -- graph has an unreachable node");
 
-                // window is 0.5s (15 ticks at 30tps); run well past it, then require the
-                // session to be over. A surviving unlocking component is the runaway loop.
-                await server.WaitRunTicks(25);
+                // The window is 0.5 seconds; poll until the session ends rather than assuming a
+                // tickrate, then require it to be over. A session that survives the whole bound
+                // is the runaway finish loop.
+                for (var tick = 0; tick < 120; tick += 5)
+                {
+                    await server.WaitRunTicks(5);
+                    var open = false;
+                    await server.WaitPost(() => open = entManager.HasComponent<XenoArtifactUnlockingComponent>(artifact));
+                    if (!open)
+                        break;
+                }
 
                 await server.WaitPost(() =>
                 {

@@ -38,7 +38,6 @@
     effectsTable: !type:NestedSelector
       tableId: XenoArtifactEffectsDefaultTable
   - type: Damageable
-  - type: Actions
   - type: Physics
     bodyType: Dynamic
   - type: MovementSpeedModifier
@@ -67,16 +66,3 @@
       Flammable: [Touch]
       Extinguish: [Touch]
       Acidic: [Touch]
-
-# Triad: written against this tree's action API, Frontier's BaseAction/Action split has not landed here
-- type: entity
-  id: ActionArtifactActivate
-  name: Activate Artifact
-  description: Activate yourself, causing chaos to those near you.
-  components:
-  - type: InstantAction
-    icon:
-      sprite: Objects/Specific/Xenoarchaeology/xeno_artifacts.rsi
-      state: ano29
-    useDelay: 300
-    event: !type:ArtifactSelfActivateEvent
