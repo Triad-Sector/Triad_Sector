@@ -286,3 +286,14 @@ NovaCygniTranslatorImplant: TerraSlavicTranslatorImplant
 NovaCygniTranslator: TerraSlavicTranslator
 SpawnPointDeputy: null
 JupiterCarrierComputer: null
+
+# 2026-08-24 xenoarchaeology rework: the legacy artifact entities no longer exist, but ship saves
+# live on the player's machine and can still carry them, and one missing prototype fails the whole
+# ship load. Bodies map to their node-graph replacements (a fresh graph rolls on load); the legacy
+# grant action has no replacement. The ship-load scrub strips the matching legacy component nodes.
+SimpleXenoArtifactItem: ComplexXenoArtifactItem
+MediumXenoArtifactItem: ComplexXenoArtifactItem
+VariedXenoArtifactItem: ComplexXenoArtifactItem
+SimpleXenoArtifact: ComplexXenoArtifact
+MediumXenoArtifact: ComplexXenoArtifact
+ActionArtifactActivate: null
