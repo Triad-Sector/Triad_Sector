@@ -10,6 +10,10 @@
     Venmar:
       stationProto: StandardFrontierStation # Using this temporarily
       gridComponents:
+      # Triad: Venmar is a gameMap, not a PointOfInterest, and the transit system only ever learned
+      # about POIs. So the bus bay at -42.5,-1.5, its NFSignBus and its "Transit Shuttle" beacon sat
+      # there the whole time with nothing routed to them. This puts the home station on the line.
+      - type: StationTransit
       - type: VesselMusic
         ambientMusicPrototype: ColossusCentralMusic
       - type: VesselInfo
@@ -36,12 +40,13 @@
             Borg: [ -1, -1 ]
             StationRepresentative: [ 1, 1 ]
             StationTrafficController: [ 2, 2 ]
-            SecurityGuard: [ 3, 3 ]
             CCServiceWorker: [ 2, 2 ]
             NFJanitor: [ 2, 2 ]
             MailCarrier: [ 2, 2 ]
             TdfPatrolTeamLeader: [ 1, 1 ]
-            TdfEnforcer: [ 2, 2 ]
+            TdfMedic: [ 2, 2 ]
+            TdfEnforcer: [ 4, 4 ]
+            TdfCadet: [ 1, 1 ]
           tags:
           - HeadOfPersonnel
           - HeadOfSecurity

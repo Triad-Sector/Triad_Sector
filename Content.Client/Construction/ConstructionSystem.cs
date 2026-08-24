@@ -9,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Wall;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
@@ -22,14 +23,14 @@ namespace Content.Client.Construction
     /// The client-side implementation of the construction system, which is used for constructing entities in game.
     /// </summary>
     [UsedImplicitly]
-    public sealed class ConstructionSystem : SharedConstructionSystem
+    public sealed partial class ConstructionSystem : SharedConstructionSystem
     {
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly SpriteSystem _spriteSystem = default!; // Triad
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private ExamineSystemShared _examineSystem = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SpriteSystem _spriteSystem = default!; // Triad
 
         private readonly Dictionary<int, EntityUid> _ghosts = new();
         private readonly Dictionary<string, ConstructionGuide> _guideCache = new();
@@ -213,18 +214,42 @@ namespace Content.Client.Construction
             var comp = EntityManager.GetComponent<ConstructionGhostComponent>(ghost.Value);
             comp.Prototype = prototype;
             comp.GhostId = ghost.GetHashCode();
-            EntityManager.GetComponent<TransformComponent>(ghost.Value).LocalRotation = dir.ToAngle();
+            // Triad: NoLerp is the whole fix here; the frame convention next to it matters just as much (#80).
+            //
+            // NoLerp, or the value set here does not survive the tick. The client TransformSystem overrides
+            // SetLocalRotation to schedule a render smoothing lerp, and its frame loop then overwrites
+            // LocalRotation with Lerp(prev, target, step) samples in which step never reaches 1 - there is no
+            // completion snap. A networked entity gets re-stamped exact by the next server state; a ghost is
+            // client-only, so the last frame sample is its rotation forever, a few percent short of the target
+            // (measured: a 180 deg ghost frozen at 175.69). TryStartConstruction then sends
+            // that value on the wire and the server bakes it into the finished structure, which is how players
+            // got ~85 deg buildings out of a 90 deg turn. The pre-287 code assigned the obsolete
+            // `xform.LocalRotation` property, which does not animate; the 287 bump's API migration (#476) moved
+            // this onto the animating setter, which is when the crooked ghosts started. NoLerp is the
+            // non-animating path, and a client-only UI phantom has no business animating anyway.
+            //
+            // Plain grid-local `dir`, deliberately. The engine's own placement preview draws at
+            // gridWorldRotation + Direction (PlacementMode.Render), so Direction is grid-local by definition and
+            // this line uses the identical formula: preview and ghost then agree in every camera state, settled
+            // or mid-RelativeRotation-lerp, and the stored angle is cardinal-in-grid by construction, which is
+            // what the server's placement conditions assume and what keeps built structures hull-aligned. Two
+            // earlier fixes (#493 world-frame set, #516 cardinal snap) treated Direction as SCREEN-space; that
+            // made the ghost correct in the screen frame and 90 deg off the preview the player aims by whenever
+            // RelativeRotation is nonzero. Do not reintroduce an eye term here without also changing the
+            // preview's convention in the engine.
+            _transformSystem.SetLocalRotationNoLerp(ghost.Value, dir.ToAngle());
+
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
-            sprite.Color = new Color(48, 255, 48, 128);
-            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad
+            _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));
+            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad: greeble ghost offset (#323)
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {
-                sprite.AddBlankLayer(i); // There is no way to actually check if this already exists, so we blindly insert a new one
-                sprite.LayerSetSprite(i, prototype.Layers[i]);
+                _spriteSystem.AddBlankLayer((ghost.Value, sprite), i); // There is no way to actually check if this already exists, so we blindly insert a new one
+                _spriteSystem.LayerSetSprite((ghost.Value, sprite), i, prototype.Layers[i]);
                 sprite.LayerSetShader(i, "unshaded");
-                sprite.LayerSetVisible(i, true);
+                _spriteSystem.LayerSetVisible((ghost.Value, sprite), i, true);
             }
 
             if (prototype.CanBuildInImpassable)

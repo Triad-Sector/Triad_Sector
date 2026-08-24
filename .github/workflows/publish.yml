@@ -1,25 +1,103 @@
 name: Publish
 
+# Triad: this workflow uploads build artifacts to Robust.Cdn and does nothing else.
+# It MUST NOT call the SS14.Watchdog API (/instances/*/update, /instances/*/restart).
+# Deploy timing belongs to the server: the CDN notifies the watchdog, the watchdog
+# notifies the game, and ServerUpdateManager only shuts down from inside
+# GameTicker.RestartRound (Content.Server/GameTicking/GameTicker.RoundFlow.cs). That is
+# what guarantees a published build lands at a round boundary and never mid-round.
+# A watchdog call added here would cut a live round short.
+
 on:
   workflow_dispatch:
   # Frontier: re-enabled autopublish bawk
+  # Triad: Frontier's autopublish is a daily cron; Monolith dropped the cron and kept only
+  # the comment, which is what we inherited. We tried push-triggered publish next (one
+  # build per merge), but restart cadence is capped by round end regardless of how often
+  # we publish, so the extra builds bought nothing except runner time and a race: the
+  # changelog bot's trailing commit had to be path-ignored to stop it queuing a second
+  # publish, which meant a changelog entry with no code merge after it just sat unpublished
+  # until someone remembered to dispatch this manually. Back to a cron: one build a day
+  # picks up everything merged since the last tick, atomically, no race to reason about.
+  # Cron is UTC-only with no DST awareness, so two entries cover 5PM Eastern year-round;
+  # the "Skip if wrong DST cron entry" step below picks the correct one and no-ops the other.
+  schedule:
+    - cron: '0 21 * * *' # 5PM EDT (UTC-4), roughly second Sunday in March - first Sunday in November
+    - cron: '0 22 * * *' # 5PM EST (UTC-5), the rest of the year
 
+# Triad: no cancel-in-progress on purpose, though upstream sets it. Cancelling between
+# publish/start and publish/finish strands a half-open version on Robust.Cdn that 409s
+# on every later attempt at that SHA. A queued run is cheap; a poisoned version is not.
 concurrency:
   group: publish
 
 jobs:
+  # Triad: Robust.Cdn answers 409 for a version it already holds, so a re-run on an
+  # unchanged SHA fails the whole workflow. Check first and skip cleanly: a pipeline that
+  # goes red on a routine no-op teaches us to ignore red.
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      should_publish: ${{ steps.check.outputs.should_publish }}
+
+    steps:
+    - name: Skip if wrong DST cron entry
+      id: season
+      run: |
+        # Only the schedule entry matching today's actual Eastern offset should proceed;
+        # the other is a deliberate no-op. workflow_dispatch always proceeds.
+        if [ "${{ github.event_name }}" != "schedule" ]; then
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        offset=$(TZ="America/New_York" date +%z)
+        if { [ "${{ github.event.schedule }}" = "0 21 * * *" ] && [ "$offset" = "-0400" ]; } \
+          || { [ "${{ github.event.schedule }}" = "0 22 * * *" ] && [ "$offset" = "-0500" ]; }; then
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "proceed=false" >> "$GITHUB_OUTPUT"
+          echo "::notice::Skipping: '${{ github.event.schedule }}' is the wrong DST cron entry for today (current Eastern offset $offset)."
+        fi
+      shell: bash
+
+    # Keep this URL in step with ROBUST_CDN_URL/FORK_ID in Tools/publish_multi_request.py.
+    - name: Check whether this commit is already published
+      id: check
+      if: steps.season.outputs.proceed == 'true'
+      run: |
+        # Assign-then-override rather than `|| echo`: curl emits %{http_code} once per
+        # retry attempt, so a fallback inside the substitution concatenates onto it.
+        code=$(curl -sS -o /dev/null -w '%{http_code}' \
+          --retry 3 --retry-delay 5 --max-time 30 \
+          "https://cdn.triad-sector.com/fork/Triad/version/${GITHUB_SHA}/manifest") || code="000"
+        case "$code" in
+          404)
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            ;;
+          200)
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::${GITHUB_SHA} is already on the CDN; skipping publish."
+            ;;
+          *)
+            echo "::error::Unexpected HTTP ${code} from Robust.Cdn. Refusing to guess whether this version exists."
+            exit 1
+            ;;
+        esac
+
   build:
+    needs: preflight
+    if: needs.preflight.outputs.should_publish == 'true'
     runs-on: ubuntu-latest
 
     steps:
     - name: Install dependencies
       run: sudo apt-get install -y python3-paramiko python3-lxml
 
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v7
       with:
         submodules: 'recursive'
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 
@@ -44,7 +122,12 @@ jobs:
       run: Tools/publish_multi_request.py
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+        # Triad: dropped. GitHub reserves the GITHUB_ prefix for variable names, so
+        # vars.GITHUB_REPOSITORY can never be set and this only ever shadowed the built-in
+        # with an empty string. Harmless here because publish_multi_request.py does not read
+        # it, but Tools/actions_changelogs_since_last_run.py does, and one copy-paste onto
+        # that step would break the Discord changelog silently.
+        #GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }} # Triad: removed, see above
 
     - name: Publish changelog (Discord)
       continue-on-error: true

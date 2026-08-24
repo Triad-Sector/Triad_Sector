@@ -13,6 +13,14 @@
   - LoadoutSpeciesBreathTool
   - LoadoutSpeciesVoxNitrogen
 
+- type: loadout
+  id: NfsdVoxClothingMaskGasNfsd
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesVox
+  equipment:
+    mask: ClothingMaskGasSecurity
+
 - type: loadoutGroup
   id: NfsdSpeciesSpecific
   name: loadout-group-breath-tool # if visible, rename

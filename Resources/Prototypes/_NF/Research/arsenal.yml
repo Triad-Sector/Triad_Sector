@@ -120,6 +120,7 @@
   recipeUnlocks:
   - ClothingModsuitMercenaryPowerCell # Mono edit
   - ClothingOuterHardsuitScaf
+  - ClothingOuterHardsuitPirateScaf
   - BlueprintClothingOuterHardsuitScaf
   technologyPrerequisites:
   - HardsuitsArmored

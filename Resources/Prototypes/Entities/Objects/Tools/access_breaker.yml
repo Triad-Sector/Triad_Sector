@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseTriadC2Contraband, BaseItem ] # Triad
+  parent: [ BaseTriadC2Contraband, BaseItem, BaseContrabandPermittable ] # Triad
   id: AccessBreakerUnlimited
   suffix: Unlimited
   name: authentication disruptor

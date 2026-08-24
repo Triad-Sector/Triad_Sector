@@ -37,3 +37,17 @@
   id: Bounty
   minValue: 0
   maxValue: 999
+
+# Triad: TriTalk card numbers.
+# minValue is 1, not the default 0, so that GenerateUniqueName's silent "0" pool-exhausted return
+# cannot be confused with a legitimately issued number. See NanoChatSystem.OnCardInit.
+- type: nameIdentifierGroup
+  id: NanoChat
+  minValue: 1
+  maxValue: 9999
+
+# Xenoarch rework: node ids shown on the analysis console
+- type: nameIdentifierGroup
+  id: XenoArtifactNode
+  minValue: 0
+  maxValue: 999

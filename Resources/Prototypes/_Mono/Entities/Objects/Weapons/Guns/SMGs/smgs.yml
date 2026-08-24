@@ -53,10 +53,10 @@
   - type: Appearance
 
 - type: entity
-  name: NCI AK-220 (9x19mm)
+  name: RMT AK-220 (9x19mm)
   parent: [BaseWeaponSubMachineGun, BaseGunWieldable]
   id: WeaponSubMachineGunAK220
-  description: A mass produced 9x19mm bullpup SMG. The design originates from the USSP, but various Sol and TIC manufacturers produce it via licenses or suspiciously similar "original" designs.
+  description: A mass produced 9x19mm bullpup SMG. The design originates from Reznichenko Military Technologies, but various Sol and TIC manufacturers produce it via licenses or suspiciously similar "original" designs.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/SMGs/ak220.rsi

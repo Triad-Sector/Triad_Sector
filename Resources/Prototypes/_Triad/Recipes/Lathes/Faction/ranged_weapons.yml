@@ -27,6 +27,19 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
+  id: WeaponShotgunDoubleBarreledTdfBastion
+  result: WeaponShotgunDoubleBarreledTdfBastion
+  categories:
+  - Shotguns
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 2500
+    Plasteel: 1500
+    Plastic: 500
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
   id: WeaponLMGRiotTdf
   result: WeaponLMGRiot
   categories:

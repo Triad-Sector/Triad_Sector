@@ -15,15 +15,15 @@
 
 - type: entity
   parent: BaseSubdermalImplant
-  id: NovaCygniTranslatorImplant
-  name: NovaCygni translator implant
-  description: An implant that helps you speak and understand the language of the USSP.
+  id: TerraSlavicTranslatorImplant
+  name: Terra Slavic translator implant
+  description: An implant that helps you speak and understand an old split dialect of Sol Common turned language, known as Terra Slavic.
   categories: [ HideSpawnMenu ]
   components:
   - type: TranslatorImplant
     understood:
-    - NovaCygniBasic
+    - TerraSlavic
     spoken:
-    - NovaCygniBasic
+    - TerraSlavic
     requires:
     - TauCetiBasic

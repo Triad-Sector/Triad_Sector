@@ -69,12 +69,4 @@ public sealed class AirAlarmBoundUserInterface : BoundUserInterface
 
         _window.UpdateState(cast);
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (disposing)
-            _window?.Dispose();
-    }
 }

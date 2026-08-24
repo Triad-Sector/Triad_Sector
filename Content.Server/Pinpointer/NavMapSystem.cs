@@ -21,13 +21,12 @@ namespace Content.Server.Pinpointer;
 /// </summary>
 public sealed partial class NavMapSystem : SharedNavMapSystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     public const float CloseDistance = 15f;
     public const float FarDistance = 30f;
@@ -117,7 +116,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
             var relative = SharedMapSystem.GetChunkRelative(tile, ChunkSize);
             ref var tileData = ref chunk.TileData[GetTileIndex(relative)];
 
-            if (change.NewTile.IsSpace(_tileDefManager))
+            if (_turf.IsSpace(change.NewTile))
             {
                 tileData = 0;
                 if (PruneEmpty((ev.Entity, navMap), chunk))
@@ -464,7 +463,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
             return beacon.Value.Comp.Text!;
 
         var gridOffset = Angle.Zero;
-        if (_mapManager.TryFindGridAt(pos.Value, out var grid, out _))
+        if (_mapSystem.TryFindGridAt(pos.Value, out var grid, out _))
             gridOffset = Transform(grid).LocalRotation;
 
         // get the angle between the two positions, adjusted for the grid rotation so that

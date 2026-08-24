@@ -321,7 +321,7 @@
 
 - type: entity
   parent: BaseAnomalyInertCore
-  id: AnomalyCoreFloraInert #Turns into a seed that grows into artifexium
+  id: AnomalyCoreFloraInert #Turns into a seed that grows anomaly berries # Triad: artifexium removed
   suffix: Flora, Inert
   components:
   - type: Seed

@@ -9,11 +9,11 @@ namespace Content.Server.NameIdentifier;
 /// <summary>
 ///     Handles unique name identifiers for entities e.g. `monkey (MK-912)`
 /// </summary>
-public sealed class NameIdentifierSystem : EntitySystem
+public sealed partial class NameIdentifierSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _robustRandom = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
 
     /// <summary>
     /// Free IDs available per <see cref="NameIdentifierGroupPrototype"/>.
@@ -79,6 +79,32 @@ public sealed class NameIdentifierSystem : EntitySystem
             ? $"{proto.Prefix}-{randomVal}"
             : $"{randomVal}";
     }
+
+    // Triad begin: consumers that call GenerateUniqueName directly (without a NameIdentifierComponent) never get
+    // the OnComponentShutdown release above, so their numbers leak out of the pool permanently. That is fine on a
+    // station where entities live for the round, but this fork buys and sells ships all round long, and every sold
+    // ship takes its ID card numbers to the grave. Give those consumers a way to hand the number back.
+    /// <summary>
+    ///     Returns a previously generated identifier to the pool so it can be handed out again.
+    /// </summary>
+    public void ReleaseUniqueName(ProtoId<NameIdentifierGroupPrototype> proto, int value)
+    {
+        if (!CurrentIds.TryGetValue(proto, out var ids))
+            return;
+
+        // Mirror OnComponentShutdown: drop it in at a random spot rather than always at the end,
+        // so released numbers do not come straight back out on the next request.
+        if (ids.Count == 0)
+        {
+            ids.Add(value);
+            return;
+        }
+
+        var randomIndex = _robustRandom.Next(ids.Count);
+        ids.Add(ids[randomIndex]);
+        ids[randomIndex] = value;
+    }
+    // Triad end
 
     private void OnMapInit(EntityUid uid, NameIdentifierComponent component, MapInitEvent args)
     {

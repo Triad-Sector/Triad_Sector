@@ -1,0 +1,22 @@
+- type: entity
+  id: NFXenoArtifactEffectSpawnGrimforgedConstruct
+  parent: BaseXenoArtifactEffect
+  description: Create grimforged construct
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: XenoArtifactNode
+    danger: 4 # Triad
+    maxDurability: 1
+    maxDurabilityCanDecreaseBy:
+      min: 0
+      max: 0
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: EntityTableSpawner
+      deleteSpawnerAfterSpawn: false
+      table: !type:GroupSelector
+        children:
+        - id: MobGrimForged
+          weight: 1.0

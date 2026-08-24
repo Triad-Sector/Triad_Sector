@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Server._HL.Shipyard;
 using Content.Server._Triad.Shipyard;
 using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent.ShipShields;
@@ -26,6 +27,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         ResPath tempPath = default;
         try
         {
+            // Triad: strip dangling entity references before the loader sees them. The save path has
+            // pruned these since the engine 287 bump, but ship files live on the player's machine, so
+            // anything saved before that still carries them and there is no backlog we can migrate.
+            // A file written by the current build has nothing to remove and comes back byte-identical.
+            yamlData = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yamlData, out var scrubbed);
+            if (scrubbed > 0)
+                _sawmill.Info($"Scrubbed {scrubbed} dangling entity reference(s) from a pre-287 ship file on load");
+
             // Create a temp path under UserData/ShipyardTemp
             var fileName = $"shipyard_load_{DateTime.UtcNow:yyyyMMdd_HHmmss_fff}_{Guid.NewGuid():N}.yml";
             var dir = new ResPath("/") / "UserData" / "ShipyardTemp";
@@ -154,7 +163,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// </summary>
     private void TryResetUseDelays(EntityUid shuttleGrid)
     {
-        var useDelayQuery = EntityManager.EntityQueryEnumerator<UseDelayComponent, TransformComponent>();
+        var useDelayQuery = EntityQueryEnumerator<UseDelayComponent, TransformComponent>();
 
         while (useDelayQuery.MoveNext(out var uid, out var comp, out var xform))
         {

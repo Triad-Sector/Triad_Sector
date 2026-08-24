@@ -21,7 +21,7 @@
         Peckish: 150
         Starving: 100
         Dead: 0
-      baseDecayRate: 0.03
+      baseDecayRate: 0.03 # Triad: baseline held; declined the 0.036 bump per Irkella balance note (Mono hunger randomizer amplifies drain)
     - type: Thirst
     - type: PseudoItem
       storedOffset: 0,17
@@ -85,6 +85,7 @@
     - type: Sprite
       scale: 0.91, 0.91
     - type: TemperatureSpeed
+      baseTemperature: 261 # Triad
       thresholds:
         250: 0.9
         230: 0.8

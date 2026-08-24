@@ -58,6 +58,7 @@
   - WeaponRifleLecterRecipeTdf
   - WeaponRifleMR8TRecipeTdf
   - WeaponLMGRiotTdf
+  - WeaponShotgunDoubleBarreledTdfBastion
   - AmmoBox68x52mmCaselessBig
 
 - type: latheRecipePack
@@ -65,9 +66,11 @@
   recipes:
   - BasicVoucherTDF
   - IntermediateVoucherTDF
+  - AdvancedVoucherTDF
 
 - type: latheRecipePack
   id: TDFGearDynamic
   recipes:
   - ClothingOuterHardsuitTdf
   - ClothingOuterHardsuitTdfMedic
+  - ClothingOuterHardsuitTdfTA29

@@ -62,8 +62,10 @@ public sealed class NFCCVars
 
     /// <summary>
     /// The amount of time the bus flies through FTL space.
-    /// This does nothing because the transit system is bugged in our favor (instant travel)
     /// </summary>
+    // Triad: this used to say the value did nothing because travel was instant. That was true, and the
+    // cause was FTLToDock calling TryFTLDock to read a docking config, which teleported the shuttle
+    // during setup. Travel time is honoured now, so this knob does what it says.
     public static readonly CVarDef<float> PublicTransitFlyTime =
         CVarDef.Create("nf14.publictransit.fly_time", 15f, CVar.SERVERONLY);
 
@@ -233,6 +235,16 @@ public sealed class NFCCVars
 
     public static readonly CVarDef<bool> AllowMultiConnect =
         CVarDef.Create("frontier.allow_multi_connect", true, CVar.CONFIDENTIAL | CVar.SERVERONLY);
+
+    /*
+     * Xenoarchaeology
+     */
+
+    /// <summary>
+    /// If true, artifact nodes can only be triggered once per unlock window.
+    /// </summary>
+    public static readonly CVarDef<bool> XenoarchSingleUseNodes =
+        CVarDef.Create("nf14.xenoarch.single_use_nodes", true, CVar.REPLICATED);
 
     /*
      * Events

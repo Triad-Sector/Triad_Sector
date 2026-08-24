@@ -84,15 +84,5 @@ namespace Content.Client.PDA.Ringer
 
             _menu.TestRingerButton.Disabled = msg.IsPlaying;
         }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (!disposing)
-                return;
-
-            _menu?.Dispose();
-        }
     }
 }

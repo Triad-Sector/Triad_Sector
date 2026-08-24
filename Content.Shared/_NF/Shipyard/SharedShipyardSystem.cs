@@ -19,17 +19,17 @@ public enum ShipyardConsoleUiKey : byte
     Scrap,
     Sr,
     Medical,
-    // Mono start
-    Ussp,
+    // Triad start
+    Coalition,
     SHM,
     DrakeIndustries,
     // Add ships to this key if they are only available from mothership consoles. Shipyards using it are inherently empty and are populated using the ShipyardListingComponent.
     Custom
 }
 
-public abstract class SharedShipyardSystem : EntitySystem
+public abstract partial class SharedShipyardSystem : EntitySystem
 {
-    [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
 
     public override void Initialize()
     {

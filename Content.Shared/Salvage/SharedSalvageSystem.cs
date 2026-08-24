@@ -12,8 +12,8 @@ namespace Content.Shared.Salvage;
 
 public abstract partial class SharedSalvageSystem : EntitySystem
 {
-    [Dependency] private readonly ILocalizationManager _loc = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private ILocalizationManager _loc = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     #region Descriptions
 
@@ -133,7 +133,7 @@ public abstract partial class SharedSalvageSystem : EntitySystem
 
         var time = GetMod<SalvageTimeMod>(rand, ref rating);
         // Round the duration to nearest 15 seconds.
-        var exactDuration = MathHelper.Lerp(time.MinDuration, time.MaxDuration, rand.NextFloat());
+        var exactDuration = MathHelper.Lerp(time.MinDuration, time.MaxDuration, rand.NextFloatValue());
         exactDuration = MathF.Round(exactDuration / 15f) * 15f;
         var duration = TimeSpan.FromSeconds(exactDuration);
 

@@ -1,39 +1,89 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # Harpies
-
-  <Box>
-    <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  An avian humanoid species that features colorful feathered wings and tails that can mimic almost any sound.
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  They are quite sensitive to the air quality, and when exposed to low quality air, they will begin to visibly gasp, and eventually start choking.
-  When this happens, a Harpy should either move away from sources of bad air, stand on top of a scrubber for a few seconds, or take a few breaths from a pure oxygen tank in order to restore their blood-oxygen levels. Only three seconds of being on pure oxygen is enough to completely restore a Harpy's blood oxygen saturation.
+  [color=#999999][italic]“If it sounds like a sixty-piece band in the cafeteria, that'll be Harpies. Their mimicry is uncanny; they know it. It is not a discipline issue.”[/italic][/color]
 
-  ## Diet
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
 
-  - Can eat raw meat.
-  - Will get poisoned by Theobromine (Chocolate, Tea, Coffee) and Allicin (Onion, Garlic).
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-HRP[/mono]
 
-  ## Benefits
+      [mono][color=#897236]CLASS      [/color]  Humanoid // Avian[/mono]
 
-  - Somewhat smaller than Humans, although not as small as Felinids
-  - Uses their talons to deal Piercing damage
-  - Can imitate around 70% of the game's sound library through a huge list of voice emotes
-  - They can "Sing" midis by imitating instruments. Right click yourself to select an instrument
+      [mono][color=#897236]ORIGIN     [/color]  Harpy homeworld[/mono]
 
-  ## Special
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]Iron Blood[/bold][/color] — standard baseline[/mono]
 
-  - Comes with the Ultraviolet Vision trait by default. This can be disabled via accessibility options.
-  - Cannot wear Jumpsuits, and will automatically start with a Jumpskirt instead.
-  - While singing, musical notes appear floating around their head.
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
+    </Box>
 
-  ## Drawbacks
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobHarpyDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
 
-  - Takes 10% more Blunt and Slash damage.
-  - Extreme low density, Harpies are lighter than even Felinids, and weigh half as much as a Human.
-  - A Harpy breathes in air twice as often as Humans, inhaling and exhaling every 3 seconds.
-  - - Air tanks last half as long and Harpies are more susceptible than usual to low air quality.
-  - - If a Harpy is exposed to at least 0.2 moles of combined CO2 and/or Miasma, they start struggling to take in oxygen.
+  Subject: Avian humanoids with colorful feathered wings and tails. Can mimic almost any sound.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous, additionally tolerates [color=#a4885c][bold]raw meat[/bold][/color] without ill effects.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#a4885c][bold]Theobromine[/bold][/color] (chocolate, tea, coffee) and [color=#a4885c][bold]Allicin[/bold][/color] (onion, garlic) are toxic. Both induce poison damage in the bloodstream.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - Breathes Oxygen [color=#ffa500][bold]twice as often as baseline[/bold][/color] (every ~3 seconds). Air tanks last roughly half as long.
+  - [color=#ffa500][bold]Air-quality sensitive[/bold][/color]: bad air causes visible gasping and eventual choking. 0.2+ moles of combined Carbon Dioxide and Miasma triggers oxygen-uptake difficulty.
+  - Recovery: clear bad air, stand on a scrubber, or take three seconds of pure Oxygen for full restoration.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#999999][italic]“Air tanks last half as long for them. Plan the EVA rotation accordingly. Don't make them ask twice.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - Unarmed attacks deal [color=#1e90ff][bold]Piercing damage[/bold][/color] via talons.
+  - [color=#1e90ff][bold]Vocal mimicry[/bold][/color]: can reproduce a wide range of station sounds, environmental noises, and voices.
+  - Can [color=#1e90ff][bold]sing instrumentally[/bold][/color], producing MIDI-equivalent tones across a broad selection of instruments.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - Filed with the [color=#ffdd33][bold]Ultraviolet Vision[/bold][/color] trait by default. Accessibility waiver via Form HR-09c.
+  - [color=#ffdd33][bold]Cannot wear jumpsuits[/bold][/color] due to wing/tail anatomy. Auto-issued a jumpskirt at intake.
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]10% more Blunt and Slash damage[/bold][/color] than baseline.
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]Extreme low density[/bold][/color], roughly half baseline mass. Easily moved by ambient turbulence and shoves.
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
+  </Box>
 
 </Document>

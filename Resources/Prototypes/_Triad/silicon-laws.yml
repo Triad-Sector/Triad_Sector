@@ -1,0 +1,52 @@
+﻿# Solarian Directive
+- type: siliconLaw
+  id: Solarian1
+  order: 1
+  lawString: law-solarian-1
+
+- type: siliconLaw
+  id: Solarian2
+  order: 2
+  lawString: law-solarian-2
+
+- type: siliconLaw
+  id: Solarian3
+  order: 3
+  lawString: law-solarian-3
+
+- type: siliconLaw
+  id: Solarian4
+  order: 4
+  lawString: law-solarian-4
+
+- type: siliconLawset
+  id: SolarianDirective
+  laws:
+  - Solarian1
+  - Solarian2
+  - Solarian3
+  - Solarian4
+  obeysTo: laws-owner-sd
+
+- type: siliconLaw
+  id: SolarianVesselProtection1
+  order: 1
+  lawString: law-solarian-vessel-protection-1
+
+- type: siliconLaw
+  id: SolarianVesselProtection2
+  order: 2
+  lawString: law-solarian-vessel-protection-2
+
+- type: siliconLaw
+  id: SolarianVesselProtection3
+  order: 3
+  lawString: law-solarian-vessel-protection-3
+
+- type: siliconLawset
+  id: SolarianDirectiveVesselProtection
+  laws:
+  - SolarianVesselProtection1
+  - SolarianVesselProtection2
+  - SolarianVesselProtection3
+  obeysTo: laws-owner-sd

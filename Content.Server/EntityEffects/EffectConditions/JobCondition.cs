@@ -13,6 +13,11 @@ public sealed partial class JobCondition : EntityEffectCondition
 {
     [DataField(required: true)] public List<ProtoId<JobPrototype>> Job;
 
+    // Resolved lazily, not in a field initializer: SerializationManager.Initialize instantiates
+    // data definitions from a Parallel.ForEach, and IoC has no context on those worker threads.
+    private ISawmill? _sawmill;
+    private ISawmill Sawmill => _sawmill ??= IoCManager.Resolve<ILogManager>().RootSawmill;
+
     public override bool Condition(EntityEffectBaseArgs args)
     {
         args.EntityManager.TryGetComponent<MindContainerComponent>(args.TargetEntity, out var mindContainer);
@@ -28,13 +33,13 @@ public sealed partial class JobCondition : EntityEffectCondition
 
             if (!args.EntityManager.TryGetComponent<MindRoleComponent>(roleId, out var mindRole))
             {
-                Logger.Error($"Encountered job mind role entity {roleId} without a {nameof(MindRoleComponent)}");
+                Sawmill.Error($"Encountered job mind role entity {roleId} without a {nameof(MindRoleComponent)}");
                 continue;
             }
 
             if (mindRole.JobPrototype == null)
             {
-                Logger.Error($"Encountered job mind role entity {roleId} without a {nameof(JobPrototype)}");
+                Sawmill.Error($"Encountered job mind role entity {roleId} without a {nameof(JobPrototype)}");
                 continue;
             }
 

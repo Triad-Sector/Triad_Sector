@@ -1,0 +1,38 @@
+﻿# Author Info
+# mauve
+# Discord mauvelikeroses
+# Shuttle Notes: designed with the guidance of @demontopphat (discord)
+- type: vessel
+  id: Sleipnir
+  parent: BaseVessel
+  name: JH-DIRE Sleipnir
+  description: A Goblin, one day, handed a blueprint to a DIRE engineer. This is the result.
+  price: 20000
+  category: Small
+  group: Scrap
+  shuttlePath: /Maps/_Triad/Shuttles/SCRAP/sleipnir.yml
+# guidebookPage: Null
+  class:
+  - Scrapyard
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Sleipnir
+  mapName: 'JH-DIRE Sleipnir'
+  mapPath: /Maps/_Triad/Shuttles/SCRAP/sleipnir.yml
+  minPlayers: 0
+  stations:
+    Sleipnir:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Sleipnir SCAV{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]

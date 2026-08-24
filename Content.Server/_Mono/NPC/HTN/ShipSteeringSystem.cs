@@ -23,7 +23,7 @@ namespace Content.Server._Mono.NPC.HTN;
 public sealed partial class ShipSteeringSystem : EntitySystem
 {
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _mapMan = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MoverController _mover = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
@@ -752,6 +752,20 @@ public sealed partial class ShipSteeringSystem : EntitySystem
             return;
 
         RemComp<ShipSteererComponent>(ent);
+
+        // Triad: steering leaves dampening Off while thrusting, so a teardown mid-flight
+        // (target FTL'd away, brain slept, operator failed) left NPC hulls ballistic at combat
+        // speed, migrating across the sector. Restore Dampen so they bleed off velocity and
+        // park for grid cleanup. Consoles keep the pilot's Drive/Cruise/Park selection (#4064).
+        if (TerminatingOrDeleted(ent)
+            || _consoleQuery.HasComp(ent)
+            || Transform(ent).GridUid is not { } grid
+            || TerminatingOrDeleted(grid)
+            || !_physQuery.TryComp(grid, out var body)
+            || !_shuttleQuery.TryComp(grid, out var shuttle))
+            return;
+
+        _shuttle.SetInertiaDampening(grid, body, shuttle, Transform(grid), InertiaDampeningMode.Dampen);
     }
 
     private ref struct SteeringContext

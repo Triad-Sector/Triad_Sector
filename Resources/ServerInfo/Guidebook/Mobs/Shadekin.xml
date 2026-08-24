@@ -1,3 +1,4 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
 
   <Box HorizontalAlignment="Center">
@@ -24,41 +25,35 @@
 
       [mono][color=#897236]ORIGIN     [/color]  Exodimension “Kur”[/mono]
 
-      [mono][color=#897236]METABOLIC  [/color]  [color=#808080 ][bold]Shadekin Blood[/bold][/color] — High-Entropy Hem-Analogues (HEHAs)[/mono]
+      [mono][color=#897236]METABOLIC  [/color]  [color=#808080][bold]Shadekin Blood[/bold][/color] — hem-analogue[/mono]
 
       [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved[/color][/mono]
     </Box>
 
     <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
-        <GuideEntityEmbed Entity="MobShadekin" Caption="" Scale="3.5"/>
+        <GuideEntityEmbed Entity="MobShadekinDossierExemplar" Caption="" Scale="3.5"/>
       </Box>
     </ColorBox>
   </Box>
 
-  Subject: Exodimensional, four eared, furred, clawed cat-like sapients with intrinsic night vision and high sensitivity to light. Complex, highly conductive blood composition, low bloodclotting, exceptionally durable genetics.
+  Subject: Exodimensional, four-eared, furred, clawed cat-like sapients with intrinsic night vision and high sensitivity to light. Complex, highly conductive blood built on high-entropy hem-analogues (HEHAs), low bloodclotting, exceptionally durable genetics.
 
   [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
 
-  [mono]  Heat      [color=#cc3333]■■[/color][color=#555555]□□□□[/color]  20% vulnerable[/mono]
+  [mono]  Heat      [color=#cc3333]■■[/color][color=#555555]□□□[/color]  vulnerable — 20% more heat damage[/mono]
 
-  [mono]  Cold      [color=#897236]■■■■[/color][color=#555555]□□[/color] 25% resistant[/mono]
+  [mono]  Cold      [color=#1e90ff]■■■■[/color][color=#555555]□[/color]  resistant — 25% less cold damage[/mono]
 
   [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
-  [mono]  Bloodloss     [color=#ffa500]■[/color][color=#555555]□□□[/color]  100% higher bleedrate, 75% slower blood regeneration[/mono]
-
-  [mono]  Genetic     [color=#1e90ff]■■■■■■■[/color][color=#555555]□[/color]  90% resistance
-
-  [mono]  Radiation    [color=#ffa500]■■■[/color][color=#555555]□□[/color]  65% resistance
+  [mono]  Shock     [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
 
   [color=#999999][italic]“Their blood is nothing like anything we have seen before, yet it works similar to iron based blood. It's needlessly complex. Nightvision that outperforms anything we have made and strangely resilient genomes. Yet quite fragile. Weird cats. ”  — J.[/italic][/color]
 
   [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
   - [color=#ffa500][bold]Dietary range[/bold][/color]: omnivorous
-
-  [color=red][bold]▲ Warning:[/bold][/color] [color=#9fe0ed][bold]Flashes and bright lights[/bold][/color] will confer significant sight impairment, roughly double of baseline in magnitude and recovery time.
 
   [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
 
@@ -68,6 +63,8 @@
   [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
 
   - [color=#1e90ff][bold]Powerful intrinsic Nightvision[/bold][/color] even in near lightless conditions.
+  - Take [color=#1e90ff][bold]90% less Genetic damage[/bold][/color]; exceptionally resilient genome.
+  - Take [color=#1e90ff][bold]65% less Radiation damage[/bold][/color].
   - Unarmed attacks deal [color=#1e90ff][bold]Slash Damage[/bold][/color] via claws.
 
   [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
@@ -79,11 +76,13 @@
 
   [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
 
-  [color=red][bold]▲ Warning:[/bold][/color] Takes [color=#ffa500][bold]20% more Heat damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]. Insurance Tier A near nuclear reactors.
+  [color=red][bold]▲ Warning:[/bold][/color] Takes [color=#ffa500][bold]20% more Heat damage[/bold][/color] than baseline. [color=#ffa500][bold]Naturally hemophilic[/bold][/color]: bleeds at roughly double baseline rate and regenerates blood ~75% slower. Insurance Tier A near nuclear reactors.
+
+  [color=red][bold]▲ Warning:[/bold][/color] Acute [color=#ffa500][bold]light sensitivity[/bold][/color]. Flashes and bright lights impair sight for roughly double baseline in magnitude and recovery time.
 
   [color=#897236][mono]──── [color=#aa88cc][bold]PROVENANCE NOTE[/bold][/color] ─────────────────────────────────[/mono][/color]
 
-  Subject species originates from an exodimensional plane a long deprecated corporation, ([color=#893BFF][bold]Void Enigma Institute (VEI)[/bold][/color]), accessed by means of teleporation experiments. Most information on VEI and their research in [color=#a4885c][bold]Triad sector[/bold][/color] has been lost. What little is known is that VEI managed to repeatedly translocate and perforate into an adjacent exodimension referred to as “Kur” or “The Dark”, as subject species calls it, which is underlying vastly altered laws of physics when compared to our own universe, such as vastly different behavior of visible light and an absence of nuclear fusion. The subject species supposedly is one of the sapient inhabitants of “Kur”. According to some members of the subject species, they have been infrequent visitors to our universe, similar to how VEI seemingly was visiting theirs, driven by curiosity. Allegedly, at some point, VEI lost control over one of their experiments and the resulting resonance cascade event resulting in many of the subject species to now be stranded in our world, seeking a way home.
+  Subject species originates from an exodimensional plane that a long-deprecated corporation, the [color=#a4885c][bold]Void Enigma Institute (VEI)[/bold][/color], accessed by means of teleportation experiments. Most information on VEI and its research in the [color=#a4885c][bold]Triad sector[/bold][/color] has been lost. What little survives indicates VEI repeatedly translocated and perforated into an adjacent exodimension, referred to as “Kur” or “The Dark” by the subject species, one governed by vastly altered laws of physics: markedly different behavior of visible light and an absence of nuclear fusion. The subject species is supposedly one of the sapient inhabitants of “Kur”. By some of their own accounts, they have been infrequent visitors to our universe, much as VEI seems to have visited theirs, driven by curiosity. Allegedly VEI lost control of one of its experiments, and the resulting resonance cascade stranded many of the subject species in our world, where they now seek a way home.
 
 
   <Box HorizontalAlignment="Center">

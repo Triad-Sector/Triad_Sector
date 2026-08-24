@@ -1,0 +1,42 @@
+# 'Companies', better known as minor factions.
+# I can't be assed to go through every mention of companies in the codebase and database just to make it say minor factions.
+# Playable, player-owned factions should always be whitelisted. Faction leaders of considerably larger minor factions should not be actual in-game characters.
+
+# "None" - DO NOT REMOVE!
+- type: company
+  id: None
+  name: None
+  color: "#FFFFFF"
+
+# ====DO NOT TOUCH - MAJOR FACTIONS====
+# On a less serious note, these are just factions that are auto-assigned to jobs or represent a major faction.
+# You can add to this in CompanySystem.cs in Content.Server
+
+- type: company
+  id: TDF
+  name: TDF
+  color: "#FFD580"
+  disabled: true
+  companyUplinkCurrency: TriadCommerceCredit
+
+- type: company
+  id: MD
+  name: MED
+  color: "#3B8EEA"
+  disabled: true
+
+- type: company
+  id: Colonial
+  name: Colonial Staff
+  color: "#279659"
+  disabled: true
+
+# ====Other minor factions====
+# All of these should be whitelisted and controlled by a faction owner.
+- type: company
+  id: NosskeEienResearchandDevelopment
+  name: Nosske-Eien Research and Development
+  description: nosske-eien-rnd-description
+  color: "#9573AF"
+  image: /Textures/_Triad/PlayerFactions/ne_rd.png
+  whitelisted: true

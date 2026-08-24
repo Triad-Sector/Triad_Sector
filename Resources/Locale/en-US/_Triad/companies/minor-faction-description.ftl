@@ -1,0 +1,3 @@
+# Minor factions desc
+
+nosske-eien-rnd-description = Founded after the Corporate War as a collaborate effort between former NanoTrasen and Syndicate employees, Nosske-Eien is renowned for their technological advancements that revolutionized space mining capabilities, and known for their experimental Hexagonal Matrix Shielding Systems (HMSS), the precursor to today's standard shuttle shields. The Research and Development corporation shares interests in xenoarchaeology and xenobiology, and now with the discovery of the monolithic fragments, they are starting to make a presence here, offering job contracts to local spacefarers.

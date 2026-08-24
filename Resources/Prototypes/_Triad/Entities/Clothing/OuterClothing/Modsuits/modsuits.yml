@@ -1,0 +1,36 @@
+- type: entity
+  parent: ClothingModsuitChestplateBase
+  id: ClothingModsuitChestplateOverseer
+  name: prosper modsuit chestplate
+  description: Expensive.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Modsuits/overseer.rsi
+    layers:
+    - state: chestplate
+    - state: chestplate-sealed
+      visible: false
+      map: [ "sealed" ]
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING-sealed
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: FireProtection
+    reduction: 0.8
+  - type: Armor
+    modifiers:
+      coefficients: # Piercing and heat emphasis for personal protection, also decent protection from hazards
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.4
+        Heat: 0.35
+        Shock: 0.6
+        Poison: 0.6
+        Caustic: 0.6
+        Radiation: 0.6
+  - type: StaminaDamageResistance
+    coefficient: 0.5

@@ -5,7 +5,7 @@
   playTimeTracker: JobWardenOld
   requirements:
     - !type:RoleTimeRequirement
-      role: JobSecurityOfficer
+      role: JobSecurityOfficerOld # Triad: JobSecurityOfficer<JobSecurityOfficerOld, the NFSD deputy that claimed it was deleted in #504
       time: 36000 #10 hrs
   startingGear: WardenGear
   icon: "JobIconWarden"

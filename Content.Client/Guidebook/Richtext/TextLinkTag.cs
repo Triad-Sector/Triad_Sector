@@ -14,6 +14,8 @@ public sealed class TextLinkTag : IMarkupTagHandler
 {
     public static Color LinkColor => Color.CornflowerBlue;
 
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().RootSawmill;
+
     public string Name => "textlink";
 
     /// <inheritdoc/>
@@ -53,7 +55,7 @@ public sealed class TextLinkTag : IMarkupTagHandler
         if (control.TryGetParentHandler<ILinkClickHandler>(out var handler))
             handler.HandleClick(link);
         else
-            Logger.Warning("Warning! No valid ILinkClickHandler found.");
+            _sawmill.Warning("Warning! No valid ILinkClickHandler found.");
     }
 }
 

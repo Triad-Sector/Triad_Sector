@@ -1,120 +1,9 @@
-# TSFMC
-
-- type: entity
-  parent: AirlockHeavy
-  id: AirlockHeavyTSFMC
-  suffix: TSFMC
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/tsfmc.rsi
-
-- type: entity
-  parent: AirlockHeavyTSFMC
-  id: AirlockHeavyTSFMCLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockHeavyTSFMC
-  id: AirlockHeavyTSFMCArmoryLocked
-  suffix: TSFMC Armory, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsArmory ]
-
-- type: entity
-  parent: AirlockHeavyTSFMC
-  id: AirlockHeavyTsfEngineeringLocked
-  suffix: TSF Engineering, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsTsfEngineer ]
-
-# PDV
-
-- type: entity
-  parent: AirlockHeavy
-  id: AirlockHeavyPDV
-  suffix: PDV
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/pdv.rsi
-
-- type: entity
-  parent: AirlockHeavyPDV
-  id: AirlockHeavyPDVLocked
-  suffix: PDV, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsPirate ]
-
-- type: entity
-  parent: AirlockHeavyPDV
-  id: AirlockHeavyPDVCommandLocked
-  suffix: PDV Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsPdvCommand ]
-
-- type: entity
-  parent: AirlockHeavyPDV
-  id: AirlockHeavyGrandVizierLocked
-  suffix: Grand Vizier, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsGrandVizier ]
-
-# USSP
-
-- type: entity
-  parent: AirlockHeavy
-  id: AirlockHeavyUSSP
-  suffix: USSP
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/ussp.rsi
-
-- type: entity
-  parent: AirlockHeavyUSSP
-  id: AirlockHeavyUSSPLocked
-  suffix: USSP, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsUSSP ]
-
-- type: entity
-  parent: AirlockHeavyUSSP
-  id: AirlockHeavyUSSPSecureLocked
-  suffix: USSP Secure, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsUSSPHigh ]
-
-- type: entity
-  parent: AirlockHeavyUSSP
-  id: AirlockHeavyUSSPCommandLocked
-  suffix: USSP Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsUSSPCommand ]
-
-# CC
+# TFA
 
 - type: entity
   parent: AirlockHeavy
   id: AirlockHeavySecurity
-  suffix: Frontier
+  suffix: TFA
   components:
   - type: Sprite
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/security.rsi
@@ -125,7 +14,7 @@
 - type: entity
   parent: AirlockHeavySecurity
   id: AirlockHeavySecurityFrontierLocked
-  suffix: Frontier, Locked
+  suffix: TFA, Locked
   components:
   - type: ContainerFill
     containers:
@@ -134,7 +23,7 @@
 - type: entity
   parent: AirlockHeavySecurity
   id: AirlockHeavySecurityFrontierBridgeLocked
-  suffix: Frontier Bridge, Locked
+  suffix: TFA Bridge, Locked
   components:
   - type: ContainerFill
     containers:
@@ -143,13 +32,13 @@
 - type: entity
   parent: AirlockHeavySecurity
   id: AirlockHeavySecurityFrontierCommandLocked
-  suffix: Frontier Command, Locked
+  suffix: TFA, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsFrontierCommand ]
 
-# Command (CC)
+# Command (TFA)
 
 - type: entity
   parent: AirlockHeavy
@@ -165,7 +54,7 @@
 - type: entity
   parent: AirlockHeavyCommand
   id: AirlockHeavyCommandFrontierBridgeLocked
-  suffix: Frontier Bridge, Locked
+  suffix: TFA Bridge, Locked
   components:
   - type: ContainerFill
     containers:
@@ -174,7 +63,7 @@
 - type: entity
   parent: AirlockHeavyCommand
   id: AirlockHeavyCommandFrontierCommandLocked
-  suffix: Frontier Command, Locked
+  suffix: TFA, Locked
   components:
   - type: ContainerFill
     containers:

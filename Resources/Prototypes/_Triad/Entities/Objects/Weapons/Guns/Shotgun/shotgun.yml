@@ -1,0 +1,43 @@
+- type: entity
+  name: Bastion double-barreled shotgun (4 gauge)
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseFactionGearTDFT3, BaseShipContrabandPermittableTdf]
+  id: WeaponShotgunDoubleBarreledTdfBastion
+  description: A doom-slaying classic. A military grade double barrel shotgun chambered in 4 gauge. No attachments, no crutches, all skill. Suitable for breaching.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel.rsi
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,4,0
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel_inhand_32x.rsi
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel_inhand_32x.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: GunSpreadModifier #Mono
+    spread: 0.4
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/bigshotgun_fire.ogg
+    #fireRate: 1 # Goobstation
+  - type: Tag
+    tags:
+    - WeaponShotgunBigBuddy
+  - type: BallisticAmmoProvider # Goobstation
+    whitelist:
+      tags:
+      - ShellShotgun23x75mmBuckshot
+    proto: ShellShotgun23x75mmBuckshot
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
+    capacity: 2
+  - type: Construction
+    graph: ShotgunSawn
+    node: start
+    deconstructionTarget: null
+  - type: StaticPrice
+    price: 5000

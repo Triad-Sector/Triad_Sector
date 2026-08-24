@@ -288,6 +288,9 @@
   - type: CompanyAccessReader
     requiredCompany: TDF # Triad
     popupMessage: company-access-denied-tdf # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   parent: BaseStationAdminBankATM
@@ -297,9 +300,14 @@
   components:
   - type: StationBankATM
     account: Medical
+  - type: AccessReader
+    access: [["Command"], ["ChiefMedicalOfficer"]] # Triad
   - type: CompanyAccessReader
     requiredCompany: MD
     popupMessage: company-access-denied-md # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   parent: BaseStationAdminBankATM
@@ -327,5 +335,5 @@
     account: BlackMarket
   - type: AccessReader
     access: [["Pirate"]]
-  - type: CompanyAccessReader
-    requiredCompany: PDV
+  #- type: CompanyAccessReader
+  #  requiredCompany: PDV

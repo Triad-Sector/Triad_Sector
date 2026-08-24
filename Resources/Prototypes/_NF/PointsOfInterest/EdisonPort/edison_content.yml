@@ -100,12 +100,10 @@
         state: pink
   # Triad: dropped DangerTether component (DangerTether system not ported); static marker.
 
-# --- BusScheduleRoute1  (coyote: _NF/Entities/Structures/Wallmounts/bus_schedule.yml) ---
-- type: entity
-  parent: BusSchedule
-  id: BusScheduleRoute1
-  suffix: Route 1, Spawn Points
-  # Triad: BusSchedule component dropped (see parent); inherits the static sign.
+# Triad: BusScheduleRoute1 dropped. It was ours (#339) and overrode nothing but its own spawn-menu
+# suffix, so it was a second name for BusSchedule rather than a second sign. "Route 1" never meant
+# anything here either: there is one bus running one loop, so every sign in the sector shows the
+# same next stop. Placements repointed at BusSchedule.
 
 # --- JukeboxPOI  (coyote: _NF/Entities/Structures/Machines/jukebox.yml) ---
 - type: entity
@@ -169,7 +167,7 @@
     account: Edison # Triad: restored coyote's Edison sector account
   # Triad: the plant's chief engineer (Director of Infrastructure) runs the terminal alongside the HoP/Chief Enforcer
   - type: AccessReader
-    access: [["HeadOfPersonnel"], ["TdfChiefEnforcer"], ["Command"]] # Triad: retired ChiefEngineer (Director via Command)
+    access: [["HeadOfPersonnel"], ["Command"]] # Triad: retired ChiefEngineer (Director via Command)
 
 # --- AntiMatterFabricator  (coyote: _NF/Entities/Structures/Machines/ame_fab.yml) ---
 - type: entity
@@ -290,8 +288,8 @@
   - type: ActivatableUI
     key: enum.AdjustablePowerDrawUiKey.Key
   - type: EntitySpawnPowerConsumer
-    spawn: AmeJar
-    energyPerSpawn: 6000000000 # 1.2 GJ (75% base eff.) multiplied by 5 to compensate for AmeJarBig buff
+    spawn: AmeJarExtended
+    energyPerSpawn: 3000000000 # 1.2 GJ (75% base eff.) multiplied by 5 to compensate for AmeJarBig buff
     material: Plasteel
     materialAmount: 500
   - type: ItemSlots
@@ -580,9 +578,11 @@
     layers:
     - state: body
     - state: top_greyscale
+      map: [ "Livery" ]
       color: "#aaaaaa"
-  # Triad: dropped BusSchedule + PublicTransitVisuals components (Frontier PublicTransit
-  # system not ported); the sign is a static prop. our StationTransit still handles routes.
+  # Triad: live again. The panel is tinted to the IFF colour of the stop the bus is heading for,
+  # driven by PublicTransitSystem and painted by BusScheduleVisualizerSystem.
+  - type: BusSchedule
   - type: Appearance
 
 # Triad: ClothingNeckCollarBase dropped as duplicate of canonical Floof/Entities/Clothing/Neck/collars.yml

@@ -317,7 +317,7 @@
 - type: entity
   name: modular grenade
   description: A grenade casing. Requires a trigger and a payload.
-  parent: BaseItem
+  parent: [BaseItem, BaseClass1ShipContraband] # Triad - save contraband FIX ME!!
   id: ModularGrenade
   components:
   - type: WeaponCaseInsertable # Frontier

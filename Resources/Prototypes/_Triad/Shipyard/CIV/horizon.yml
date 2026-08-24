@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Horizon:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardTriadExpedVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Horizon CIV{1}'

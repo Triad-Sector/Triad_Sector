@@ -15,7 +15,6 @@
   - MercenaryClothingUniformJumpsitDrakeIndustriesWatchdog
   subgroups:
   - MonoMercenaryJumpsuit # Mono
-  - MonoUSSPJumpsuit # Mono
   - PilotJumpsuit
   - ContractorJumpsuit
   fallbacks:
@@ -35,7 +34,6 @@
   - SecurityDuffel
   subgroups:
   - MonoMercenaryBackpack # Mono
-  - MonoUSSPBackpack # Mono
   - PilotBackpack
   - ContractorBackpack
   fallbacks:
@@ -55,7 +53,6 @@
   - MercenaryClothingOuterArmorCaptainCarapace
   subgroups:
   - MonoMercenaryOuterClothing # Mono
-  - MonoUSSPOuterClothing # Mono
   - PilotOuterClothing
   - ContractorOuterClothing
 
@@ -87,7 +84,6 @@
   - SecurityHelmet
   - SecurityBeret
   subgroups:
-  - MonoUSSPHead # Mono
   - PilotHead
   - ContractorHead
   - MonoMercenaryHead

@@ -4,11 +4,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Materials.OreSilo;
 
-public abstract class SharedOreSiloSystem : EntitySystem
+public abstract partial class SharedOreSiloSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMaterialStorageSystem _materialStorage = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMaterialStorageSystem _materialStorage = default!;
+    [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private EntityQuery<OreSiloClientComponent> _clientQuery;
 
@@ -27,8 +27,35 @@ public abstract class SharedOreSiloSystem : EntitySystem
         SubscribeLocalEvent<OreSiloClientComponent, GetStoredMaterialsEvent>(OnGetStoredMaterials);
         SubscribeLocalEvent<OreSiloClientComponent, ConsumeStoredMaterialsEvent>(OnConsumeStoredMaterials);
         SubscribeLocalEvent<OreSiloClientComponent, ComponentShutdown>(OnClientShutdown);
+        SubscribeLocalEvent<OreSiloClientComponent, ComponentStartup>(OnClientStartup); // Triad: rebuild the silo's client set
 
         _clientQuery = GetEntityQuery<OreSiloClientComponent>();
+    }
+
+    // Triad: the client half is the only half that is persisted, so it is also the only half that can
+    // arrive pointing at nothing. Validate it once here and rebuild the silo's client set from it.
+    //
+    // This replaces a pair of MapInitEvent handlers that pruned dead uids out of both halves after the
+    // fact. ComponentStartup is the better hook for two reasons: it fires for every entity on every
+    // load path, where MapInit only fires for pre-init content, and the deserializer allocates every
+    // entity before starting any of them, so the silo is guaranteed to exist by the time its clients
+    // start. It is also the hook SharedDeviceLinkSystem.OnSourceStartup already uses to do exactly
+    // this job for device links.
+    private void OnClientStartup(Entity<OreSiloClientComponent> ent, ref ComponentStartup args)
+    {
+        if (ent.Comp.Silo is not { } silo)
+            return;
+
+        // A link saved without the other end, or a silo deleted while this client was not loaded.
+        if (!TryComp<OreSiloComponent>(silo, out var siloComp))
+        {
+            ent.Comp.Silo = null;
+            Dirty(ent);
+            return;
+        }
+
+        if (siloComp.Clients.Add(ent))
+            Dirty(silo, siloComp);
     }
 
     private void OnToggleOreSiloClient(Entity<OreSiloComponent> ent, ref ToggleOreSiloClientMessage args)
@@ -97,7 +124,7 @@ public abstract class SharedOreSiloSystem : EntitySystem
         if (args.LocalOnly)
             return;
 
-        if (ent.Comp.Silo is not { } silo)
+        if (!TryGetLinkedSilo(ent, out var silo))
             return;
 
         if (!CanTransmitMaterials(silo, ent))
@@ -121,7 +148,7 @@ public abstract class SharedOreSiloSystem : EntitySystem
         if (args.LocalOnly)
             return;
 
-        if (ent.Comp.Silo is not { } silo || !TryComp<MaterialStorageComponent>(silo, out var materialStorage))
+        if (!TryGetLinkedSilo(ent, out var silo) || !TryComp<MaterialStorageComponent>(silo, out var materialStorage))
             return;
 
         if (!CanTransmitMaterials(silo, ent))
@@ -146,11 +173,69 @@ public abstract class SharedOreSiloSystem : EntitySystem
     }
 
     /// <summary>
+    /// Resolves a client's linked silo, clearing the link if it points at something that no longer exists.
+    /// </summary>
+    // Triad: catches links that got past the map-init prune, such as a silo deleted while its client
+    // was out of scope. Clearing on the way through means one warning-free pass instead of a repeat
+    // every time something asks the client what materials it can see.
+    private bool TryGetLinkedSilo(Entity<OreSiloClientComponent> ent, out EntityUid silo)
+    {
+        silo = default;
+
+        if (ent.Comp.Silo is not { } linked)
+            return false;
+
+        if (!Exists(linked))
+        {
+            ent.Comp.Silo = null;
+            Dirty(ent);
+            return false;
+        }
+
+        silo = linked;
+        return true;
+    }
+
+    // Triad start
+    /// <summary>
+    /// Breaks a client's link to its silo, from both halves. Safe to call when the silo is already
+    /// gone, and a no-op when the client has no link.
+    /// </summary>
+    /// <remarks>
+    /// Exists so callers outside this system can drop a link without writing to the [Access]-restricted
+    /// members themselves. The ship save uses it to clear links whose silo is not coming along.
+    /// </remarks>
+    [PublicAPI]
+    public void ClearSiloLink(Entity<OreSiloClientComponent?> client)
+    {
+        if (!Resolve(client, ref client.Comp, false))
+            return;
+
+        if (client.Comp.Silo is not { } silo)
+            return;
+
+        client.Comp.Silo = null;
+        Dirty(client, client.Comp);
+
+        if (!TryComp<OreSiloComponent>(silo, out var siloComp))
+            return;
+
+        if (siloComp.Clients.Remove(client))
+            Dirty(silo, siloComp);
+    }
+    // Triad end
+
+    /// <summary>
     /// Checks if a given client fulfills the criteria to link/receive materials from an ore silo.
     /// </summary>
     [PublicAPI]
     public bool CanTransmitMaterials(Entity<OreSiloComponent?, TransformComponent?> silo, EntityUid client)
     {
+        // Triad: this is the funnel every link check goes through, so a dead uid on either side would
+        // otherwise reach Resolve and the transform lookups below and log there instead of failing quietly.
+        if (!Exists(silo.Owner) || !Exists(client))
+            return false;
+
         if (!Resolve(silo, ref silo.Comp1, ref silo.Comp2))
             return false;
 

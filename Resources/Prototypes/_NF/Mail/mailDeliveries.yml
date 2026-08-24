@@ -90,7 +90,7 @@
     # Pranks
     MailNFBuildABuddy: 0.5
     MailNFCritter: 1
-    MailNFEMP: 0.5
+    # MailNFEMP: 0.5 - Triad, comment out
     MailRestraints: 1 # TODO: figure out what to do with this.
     MailNFSmoke: 0.5
     MailNFVagueThreat: 0.4

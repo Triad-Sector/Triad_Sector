@@ -1,24 +1,21 @@
 - type: entity
-  parent: [ClothingHeadHardsuitBase, BaseFactionGearPDVT2, ShowSecurityIcons, ClothingHeadSuitWithLightBase]
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
   id: ClothingHeadHelmetHardsuitPirateScaf
-  name: PDV SCAF hardsuit helmet
-  description: An old SCAF suit painted in an PDV tan color scheme. Has been outfitted with a thermal pulse scanner.
+  name: SCRUFF hardsuit helmet
+  description: Easier on the neck than a standard SCAF suit, but less protective.
   categories: [ HideSpawnMenu ]
   components:
+  - type: BreathMask
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/scaf_pirate.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Head/Hardsuits/scaf_pirate.rsi
-  - type: ThermalVision
-    flashDurationMultiplier: 2
-    pulseTime: 3
-    isEquipment: true
-    toggleAction: PulseThermalVision
+  # Triad : thermal vision removed, no longer faction-locked
   - type: PointLight
-    radius: 5
+    radius: 8 # Triad : pairity with SCAF
     color: green
   - type: PressureProtection
-    highPressureMultiplier: 0.08
+    highPressureMultiplier: 0.525 # Triad : pairity with SCAF
     lowPressureMultiplier: 1000
   - type: Armor
     modifiers:

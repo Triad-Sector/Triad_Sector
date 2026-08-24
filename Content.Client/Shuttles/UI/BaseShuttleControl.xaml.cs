@@ -24,31 +24,100 @@ namespace Content.Client.Shuttles.UI;
 [Virtual]
 public partial class BaseShuttleControl : MapGridControl
 {
-    [Dependency] private readonly IParallelManager _parallel = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDef = default!; // Mono
+    // Triad: removed — vertices are cached in grid-local space and transformed by the draw handle, so
+    // there is no per-frame vertex pass left for the parallel manager to run.
+    /*
+    [Dependency] private IParallelManager _parallel = default!;
+    */
+    // End Triad
+    [Dependency] private ITileDefinitionManager _tileDef = default!; // Mono
     protected readonly EntityLookupSystem _lookup; // Mono
     protected readonly SharedMapSystem Maps;
 
     protected readonly Font Font;
 
+    // Triad: removed — superseded by the cached grid-local vertex buffers below.
+    /*
     private GridDrawJob _drawJob;
+    */
+    // End Triad
 
     // Cache grid drawing data as it can be expensive to build
     public readonly Dictionary<EntityUid, GridDrawData> GridData = new();
 
     // Per-draw caching
-    private readonly Dictionary<Vector2i, ContentTileDefinition> _gridTileList = new(); // Mono
+    private readonly Dictionary<Vector2i, IReadOnlyList<Vector2>> _gridTileList = new(); // Mono // Triad: stores the vertex loop rather than the whole tile definition
+    // Triad: removed — the per-direction edge table moved into RadarGridGeometry, which stores
+    // directed segments instead of Box2. See that file for why the Box2 form was wrong.
+    /*
     // Mono - tile mapped to vector lying along each of 4 directions, if any
     private readonly Dictionary<Vector2i, Box2?[]> _gridDirEdges = new();
+    */
+    // End Triad
     // stores inward directions of borders
-    private readonly List<(Vector2 Start, Vector2 End)> _edges = new();
+    private readonly List<RadarGridGeometry.Segment> _edges = new(); // Triad: tuple -> Segment
     private readonly HashSet<Entity<GridEdgeMarkerComponent>> _edgeMarkers = new();
 
     private EntityQuery<TransformComponent> _xformQuery; // Mono
 
+    // Triad: scratch buffer for the tile triangles, reused across rebuilds.
+    private readonly List<Vector2> _triangles = new();
+
+    /// <summary>
+    /// Grids retained before <see cref="PruneGridData"/> starts releasing stale ones. Comfortably above
+    /// what any one view holds, so the common case never walks the dictionary.
+    /// </summary>
+    private const int GridDataSoftCap = 64;
+
+    /// <summary>
+    /// How long a grid's geometry survives after it was last drawn.
+    /// </summary>
+    private static readonly TimeSpan GridDataRetention = TimeSpan.FromSeconds(15);
+
+    /// <summary>
+    /// How often the retention sweep is allowed to run.
+    /// </summary>
+    private static readonly TimeSpan GridDataPruneInterval = TimeSpan.FromSeconds(5);
+
+    /// <summary>
+    /// Shortest gap between two rebuilds of the same grid. INTERIM: this exists only because a rebuild
+    /// currently costs the whole grid; per-chunk geometry should shrink or remove it. See DrawGrid.
+    /// </summary>
+    private static readonly TimeSpan RebuildCoalesceInterval = TimeSpan.FromMilliseconds(250);
+
+    private TimeSpan _nextPrune;
+
+    /// <summary>
+    /// Stock white texture for the untextured primitive draws. Held because the static accessor goes
+    /// through IoC on every read, and this sits in the per-frame path.
+    /// </summary>
+    private readonly Texture _white;
+
+    /// <summary>
+    /// Most vertices handed to a single DrawPrimitives call. Clyde copies each call into one batch vertex
+    /// buffer of MaxBatchQuads * 4 = 65,532 entries, and a span that does not fit throws out of the copy,
+    /// killing the rest of the control's draw. A VGRoid's buffer alone is several times that. Chosen as a
+    /// clean multiple of both primitive strides (2 and 3) with headroom below the real cap.
+    /// </summary>
+    private const int BatchVertices = 60_000;
+    // End Triad
+
+    // Triad: removed — _allVertices held the per-frame transformed copy of the geometry, which the
+    // grid-local caching makes unnecessary. Its BatchVertices sized batches against the flat-colour
+    // overload's stackalloc; the replacement constant below is sized against Clyde's batch buffer,
+    // which is the cap that binds on the DrawVertexUV2DColor path.
+    /*
     private Vector2[] _allVertices = Array.Empty<Vector2>();
 
+    private const int BatchVertices = 3 * 4096;
+    */
+    // End Triad
+
+    // Triad: removed — written in the constructor and never read.
+    /*
     private (DirectionFlag, Vector2i)[] _neighborDirections;
+    */
+    // End Triad
 
     public BaseShuttleControl() : this(32f, 32f, 32f)
     {
@@ -62,6 +131,11 @@ public partial class BaseShuttleControl : MapGridControl
         _xformQuery = EntManager.GetEntityQuery<TransformComponent>(); // Mono
         Font = new VectorFont(IoCManager.Resolve<IResourceCache>().GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 12);
 
+        _white = Texture.White; // Triad
+
+        // Triad: removed — _drawJob fed the per-frame transform pass, and _neighborDirections was
+        // populated here and never read.
+        /*
         _drawJob = new GridDrawJob()
         {
             ScaledVertices = _allVertices,
@@ -75,6 +149,8 @@ public partial class BaseShuttleControl : MapGridControl
             var dirVec = dir.AsDir().ToIntVec();
             _neighborDirections[i] = (dir, dirVec);
         }
+        */
+        // End Triad
     }
 
     protected void DrawData(DrawingHandleScreen handle, string text)
@@ -425,7 +501,219 @@ public partial class BaseShuttleControl : MapGridControl
     }
     // End Mono
 
+    // Triad: the geometry is cached in GRID-LOCAL space and the grid-to-view matrix is pushed onto the
+    // draw handle, so the vertices themselves never move. That removes the per-frame transform pass, and
+    // the cached buffers go to the DrawVertexUV2DColor overload, which does not stackalloc. It is NOT
+    // size-unlimited though: each call is copied into Clyde's fixed batch vertex buffer, so the draw is
+    // still sliced by DrawBatched to stay under that cap.
     protected void DrawGrid(DrawingHandleScreen handle, Matrix3x2 gridToView, Entity<MapGridComponent> grid, Color color, float alpha = 0.01f)
+    {
+        var gridData = GridData.GetOrNew(grid.Owner);
+        gridData.LastDrawn = Timing.RealTime;
+
+        // Built is checked separately from the tick: a grid whose tiles have not changed since it was
+        // created reports tick zero, which never compares as newer, and keying off an empty vertex buffer
+        // instead would rebuild a genuinely empty grid on every single frame.
+        var stale = gridData.LastBuild < grid.Comp.LastTileModifiedTick;
+
+        // Triad: INTERIM MITIGATION — supersede with chunked geometry, do not treat as the fix.
+        //
+        // A rebuild re-decomposes the WHOLE grid, measured at ~110 ms for a 33k-tile VGRoid, and the
+        // trigger is "any tile changed since last time". Tile changes arrive spread across ticks rather
+        // than in one batch: dungeon generation runs on a job queue budgeted at 2 ms per tick, and sustained
+        // hull damage looks the same from here. So the client is asked for a ~110 ms rebuild in response to
+        // every ~2 ms of server work, roughly 55:1, and it simply cannot keep up. That is why a generating
+        // asteroid's outline trails the terrain by seconds.
+        //
+        // Coalescing bounds the damage without deciding anything structural: a grid that is actively
+        // changing rebuilds at most ~4x/sec instead of ~30x, and a static grid is unaffected because it
+        // rebuilds once and never goes stale again. The cost is that the outline can lag reality by up to
+        // the interval while tiles are in flux, which is not perceptible during generation or a firefight.
+        // Nothing is dropped: stale stays true until a rebuild actually happens, so the final state is
+        // always picked up on the first draw past the interval.
+        //
+        // The real fix is per-chunk geometry, so a tile edit re-decomposes ~256 tiles instead of 33,069.
+        // Once that lands this interval should shrink or go away entirely.
+        if (!gridData.Built || (stale && Timing.RealTime >= gridData.NextRebuild))
+        {
+            RebuildGridGeometry(grid, gridData);
+            gridData.LastBuild = grid.Comp.LastTileModifiedTick;
+            gridData.Built = true;
+            gridData.NextRebuild = Timing.RealTime + RebuildCoalesceInterval;
+        }
+        // End Triad
+
+        if (gridData.VertexCount == 0)
+        {
+            PruneGridData();
+            return;
+        }
+
+        // The flat-colour overloads fold Modulate in for us; this one does not, so bake it.
+        var fill = color.WithAlpha(alpha) * handle.Modulate;
+        var line = color * handle.Modulate;
+
+        if (gridData.CachedFill != fill || gridData.CachedLine != line)
+            Recolor(gridData, fill, line);
+
+        var previous = handle.GetTransform();
+        handle.SetTransform(gridToView * previous);
+
+        DrawBatched(handle, DrawPrimitiveTopology.TriangleList, gridData.Vertices, 0, gridData.EdgeIndex);
+        DrawBatched(handle, DrawPrimitiveTopology.LineList, gridData.Vertices, gridData.EdgeIndex, gridData.VertexCount - gridData.EdgeIndex);
+
+        handle.SetTransform(previous);
+
+        PruneGridData();
+    }
+
+    /// <summary>
+    /// Rewrites a grid's cached vertex buffer. Only runs when the grid's tiles have changed.
+    /// </summary>
+    private void RebuildGridGeometry(Entity<MapGridComponent> grid, GridDrawData gridData)
+    {
+        var tileSize = grid.Comp.TileSize;
+
+        _gridTileList.Clear();
+
+        var rator = Maps.GetAllTilesEnumerator(grid.Owner, grid.Comp);
+        while (rator.MoveNext(out var tileRef))
+        {
+            var def = (ContentTileDefinition)_tileDef[tileRef.Value.Tile.TypeId];
+            _gridTileList[tileRef.Value.GridIndices] = def.Vertices;
+        }
+
+        RadarGridGeometry.Build(_gridTileList, tileSize, _triangles, _edges);
+
+        // Mono - grid edge markers are entities rather than tiles, so they join the outline afterwards.
+        _edgeMarkers.Clear();
+        _lookup.GetLocalEntitiesIntersecting(grid, grid.Comp.LocalAABB, _edgeMarkers);
+        foreach (var edge in _edgeMarkers)
+        {
+            if (!_xformQuery.TryComp(edge, out var xform))
+                continue;
+
+            var coord = xform.Coordinates.Position;
+            var rotation = xform.LocalRotation;
+            var begin = rotation.RotateVec(edge.Comp.Begin);
+            var end = rotation.RotateVec(edge.Comp.End);
+            _edges.Add(new RadarGridGeometry.Segment(coord + begin * tileSize, coord + end * tileSize));
+        }
+
+        RadarGridGeometry.MergeCollinear(_edges);
+
+        // Grow-only. A full VGRoid buffer is ~8 MB, which is well past the Large Object Heap threshold, and
+        // a grid whose tiles are actively changing rebuilds on every tick that touches it: reallocating on
+        // every size change turns tile edits into a stream of LOH garbage and the gen2 collections that
+        // follow. VertexCount carries the live length instead of the array's own.
+        var total = _triangles.Count + _edges.Count * 2;
+        if (gridData.Vertices.Length < total)
+            gridData.Vertices = new DrawVertexUV2DColor[total];
+
+        gridData.VertexCount = total;
+        var verts = gridData.Vertices;
+
+        for (var i = 0; i < _triangles.Count; i++)
+        {
+            verts[i] = new DrawVertexUV2DColor(_triangles[i], Color.White);
+        }
+
+        gridData.EdgeIndex = _triangles.Count;
+
+        var write = gridData.EdgeIndex;
+        foreach (var edge in _edges)
+        {
+            verts[write++] = new DrawVertexUV2DColor(edge.Start, Color.White);
+            verts[write++] = new DrawVertexUV2DColor(edge.End, Color.White);
+        }
+
+        // Force the next draw to write real colours over the placeholders.
+        gridData.CachedFill = null;
+        gridData.CachedLine = null;
+    }
+
+    /// <summary>
+    /// Rewrites the colour on a cached buffer. Only runs when the grid's IFF colour actually changes.
+    /// </summary>
+    private static void Recolor(GridDrawData gridData, Color fill, Color line)
+    {
+        // DrawVertexUV2DColor holds a linear colour, which is what the flat-colour path converts to.
+        var fillLinear = Color.FromSrgb(fill);
+        var lineLinear = Color.FromSrgb(line);
+        var verts = gridData.Vertices;
+
+        for (var i = 0; i < gridData.EdgeIndex; i++)
+        {
+            verts[i].Color = fillLinear;
+        }
+
+        for (var i = gridData.EdgeIndex; i < gridData.VertexCount; i++)
+        {
+            verts[i].Color = lineLinear;
+        }
+
+        gridData.CachedFill = fill;
+        gridData.CachedLine = line;
+    }
+
+    /// <summary>
+    /// Draws a range of a cached buffer in slices of at most <see cref="BatchVertices"/>, aligned to whole
+    /// primitives. Only list topologies split like this; strips, fans and loops share vertices across
+    /// primitives and are rejected.
+    /// </summary>
+    private void DrawBatched(DrawingHandleScreen handle, DrawPrimitiveTopology topology, DrawVertexUV2DColor[] vertices, int offset, int count)
+    {
+        if (count <= 0)
+            return;
+
+        var stride = topology switch
+        {
+            DrawPrimitiveTopology.TriangleList => 3,
+            DrawPrimitiveTopology.LineList => 2,
+            _ => throw new ArgumentOutOfRangeException(nameof(topology), topology, "Only list topologies can be batched."),
+        };
+
+        var batchSize = BatchVertices - BatchVertices % stride;
+
+        for (var start = 0; start < count; start += batchSize)
+        {
+            var batch = Math.Min(batchSize, count - start);
+            handle.DrawPrimitives(topology, _white, vertices.AsSpan(offset + start, batch));
+        }
+    }
+
+    /// <summary>
+    /// Drops geometry for grids this control has not drawn recently. Upstream never released these, so a
+    /// radar panned across a sector retained every grid it had ever seen for the life of the control.
+    /// </summary>
+    private void PruneGridData()
+    {
+        // DrawGrid runs once per visible grid, so this is gated on an interval rather than run per call.
+        // Walking the dictionary on every grid every frame would reintroduce the quadratic cost this
+        // whole pass exists to remove.
+        if (Timing.RealTime < _nextPrune)
+            return;
+
+        _nextPrune = Timing.RealTime + GridDataPruneInterval;
+
+        if (GridData.Count <= GridDataSoftCap)
+            return;
+
+        var cutoff = Timing.RealTime - GridDataRetention;
+
+        // Removing during enumeration is supported on Dictionary<,> as of .NET Core 3.0.
+        foreach (var (uid, data) in GridData)
+        {
+            if (data.LastDrawn < cutoff)
+                GridData.Remove(uid);
+        }
+    }
+    // End Triad
+
+    // Triad: removed — replaced by RadarGridGeometry.Build, which stores tile edges as directed segments
+    // rather than Box2. The original is preserved here because the fork chain still carries this method.
+    /*
+    protected void DrawGridOriginal(DrawingHandleScreen handle, Matrix3x2 gridToView, Entity<MapGridComponent> grid, Color color, float alpha = 0.01f)
     {
         var rator = Maps.GetAllTilesEnumerator(grid.Owner, grid.Comp);
         var minimapScale = MinimapScale;
@@ -670,17 +958,24 @@ public partial class BaseShuttleControl : MapGridControl
 
         _parallel.ProcessNow(_drawJob, totalData);
 
-        const float BatchSize = 3f * 4096;
-
-        for (var i = 0; i < Math.Ceiling(triCount / BatchSize); i++)
-        {
-            var start = (int) (i * BatchSize);
-            var end = (int) Math.Min(triCount, start + BatchSize);
-            var count = end - start;
-            handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, new Span<Vector2>(_allVertices, start, count), color.WithAlpha(alpha));
-        }
-
-        handle.DrawPrimitives(DrawPrimitiveTopology.LineList, new Span<Vector2>(_allVertices, gridData.EdgeIndex, edgeCount), color);
+        // Triad: batch the edge draw too. DrawPrimitives stackallocs 40 bytes per vertex with no
+        // size cap (the engine's own TODO flags it), and upstream hands the whole edge span over
+        // in one call. Survivable for a shuttle, fatal for a VGRoid: its fractal outline is ~209k
+        // vertices, an 8 MiB stackalloc that blows the game thread's stack and CTDs with an empty
+        // log, since the access violation surfaces in coreclr rather than as a managed exception.
+        // const float BatchSize = 3f * 4096;
+        //
+        // for (var i = 0; i < Math.Ceiling(triCount / BatchSize); i++)
+        // {
+        //     var start = (int) (i * BatchSize);
+        //     var end = (int) Math.Min(triCount, start + BatchSize);
+        //     var count = end - start;
+        //     handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, new Span<Vector2>(_allVertices, start, count), color.WithAlpha(alpha));
+        // }
+        //
+        // handle.DrawPrimitives(DrawPrimitiveTopology.LineList, new Span<Vector2>(_allVertices, gridData.EdgeIndex, edgeCount), color);
+        DrawBatched(handle, DrawPrimitiveTopology.TriangleList, 0, triCount, color.WithAlpha(alpha));
+        DrawBatched(handle, DrawPrimitiveTopology.LineList, gridData.EdgeIndex, edgeCount, color);
     }
 
     private static int GetDirIndex(Vector2i dir)
@@ -708,15 +1003,22 @@ public partial class BaseShuttleControl : MapGridControl
             ScaledVertices[index] = Vector2.Transform(Vertices[index], Matrix);
         }
     }
+    */
+    // End Triad
 }
 
 public sealed class GridDrawData
 {
-    /*
-     * List of lists because we use LineStrip and TriangleStrip respectively (less data to pass to the GPU).
-     */
+    // Triad: grid-LOCAL vertices, coloured and ready to hand to DrawPrimitives. Previously a
+    // List<Vector2> of untransformed positions that was copied and transformed every frame.
+    public DrawVertexUV2DColor[] Vertices = Array.Empty<DrawVertexUV2DColor>();
 
-    public List<Vector2> Vertices = new();
+    /// <summary>
+    /// How much of <see cref="Vertices"/> is live. The array only ever grows, so its own length is not the
+    /// answer: reallocating it on every size change would put an ~8 MB buffer on the Large Object Heap
+    /// each time a grid's tiles are edited.
+    /// </summary>
+    public int VertexCount;
 
     /// <summary>
     /// Vertices index from when edges start.
@@ -724,4 +1026,29 @@ public sealed class GridDrawData
     public int EdgeIndex;
 
     public GameTick LastBuild;
+
+    /// <summary>
+    /// Whether <see cref="Vertices"/> has ever been filled. Tracked separately from
+    /// <see cref="LastBuild"/> because a grid untouched since creation reports tick zero, which never
+    /// compares as newer than the last build.
+    /// </summary>
+    public bool Built;
+
+    /// <summary>
+    /// Colours currently baked into <see cref="Vertices"/>, so a redraw only rewrites them on a change.
+    /// </summary>
+    public Color? CachedFill;
+    public Color? CachedLine;
+
+    /// <summary>
+    /// When this grid was last drawn, used to release geometry for grids that have left the view.
+    /// </summary>
+    public TimeSpan LastDrawn;
+
+    /// <summary>
+    /// Earliest time this grid may be rebuilt again. INTERIM, part of the rebuild coalescing in DrawGrid;
+    /// remove alongside it once geometry is per-chunk.
+    /// </summary>
+    public TimeSpan NextRebuild;
+    // End Triad
 }

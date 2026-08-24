@@ -27,7 +27,7 @@
   minPlayers: 0
   stations:
     Prospector:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardTriadExpedVessel
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Prospector EXP{1}'

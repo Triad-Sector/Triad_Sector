@@ -8,25 +8,27 @@
   category: cargoproduct-category-name-atmospherics
   group: market
 
-- type: cargoProduct
-  id: AtmosphericsOxygen
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: oxygen # Frontier blue<oxygen
-  product: OxygenCanister
-  cost: 1100
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsOxygen
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: oxygen # Frontier blue<oxygen
+#  product: OxygenCanister
+#  cost: 1100
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
-- type: cargoProduct
-  id: AtmosphericsLiquidOxygen
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: oxygen_liquid # Frontier blue<oxygen_liquid
-  product: LiquidOxygenCanister
-  cost: 15000 # Mono - re-enable liquid gasses
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsLiquidOxygen
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: oxygen_liquid # Frontier blue<oxygen_liquid
+#  product: LiquidOxygenCanister
+#  cost: 15000 # Mono - re-enable liquid gasses
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
 - type: cargoProduct
   id: AtmosphericsNitrogen
@@ -38,35 +40,38 @@
   category: cargoproduct-category-name-atmospherics
   group: market
 
-- type: cargoProduct
-  id: AtmosphericsLiquidNitrogen
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: nitrogen_liquid # Frontier red<nitrogen_liquid
-  product: LiquidNitrogenCanister
-  cost: 12500 # Mono - re-enable liquid gasses
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsLiquidNitrogen
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: nitrogen_liquid # Frontier red<nitrogen_liquid
+#  product: LiquidNitrogenCanister
+#  cost: 12500 # Mono - re-enable liquid gasses
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
-- type: cargoProduct
-  id: AtmosphericsCarbonDioxide
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: carbon # Frontier black<carbon
-  product: CarbonDioxideCanister
-  cost: 8000
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsCarbonDioxide
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: carbon # Frontier black<carbon
+#  product: CarbonDioxideCanister
+#  cost: 8000
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
-- type: cargoProduct
-  id: AtmosphericsLiquidCarbonDioxide
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: carbon_liquid # Frontier black<carbon_liquid
-  product: LiquidCarbonDioxideCanister
-  cost: 16000 # Mono - re-enable liquid gasses
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsLiquidCarbonDioxide
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: carbon_liquid # Frontier black<carbon_liquid
+#  product: LiquidCarbonDioxideCanister
+#  cost: 16000 # Mono - re-enable liquid gasses
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
 - type: cargoProduct
   id: AtmosphericsStorage
@@ -90,15 +95,16 @@
   group: market
 # End Triad
 
-- type: cargoProduct
-  id: AtmosphericsPlasma # Mono - Make plasma canisters buyable again
-  icon:
-    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
-    state: plasma # Frontier orange<plasma
-  product: PlasmaCanister
-  cost: 7000 # Mono - Gas sell prices
-  category: cargoproduct-category-name-atmospherics
-  group: market
+# Triad: removed - trade terminal canister purge, only water vapor/air/nitrogen kept buyable
+#- type: cargoProduct
+#  id: AtmosphericsPlasma # Mono - Make plasma canisters buyable again
+#  icon:
+#    sprite: _NF/Structures/Storage/canister.rsi # Frontier: _NF
+#    state: plasma # Frontier orange<plasma
+#  product: PlasmaCanister
+#  cost: 7000 # Mono - Gas sell prices
+#  category: cargoproduct-category-name-atmospherics
+#  group: market
 
 #- type: cargoProduct
 #  name: "tritium canister"

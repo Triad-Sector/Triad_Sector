@@ -16,6 +16,23 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: BannerTfa
+  name: TFA banner
+  description: A banner proudly displaying the logo of the Triad Frontier Association. May Triad prosper.
+  graph: TriadBannersGraph
+  startNode: start
+  targetNode: BannerTFANode
+  category: construction-category-furniture
+  icon:
+    sprite: _Triad/Structure/Decoration/banner.rsi
+    state: tfa-banner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: Handrail
   name: handrail
   graph: TriadSeat

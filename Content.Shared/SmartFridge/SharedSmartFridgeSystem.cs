@@ -14,15 +14,15 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.SmartFridge;
 
-public abstract class SharedSmartFridgeSystem : EntitySystem
+public abstract partial class SharedSmartFridgeSystem : EntitySystem
 {
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -32,6 +32,9 @@ public abstract class SharedSmartFridgeSystem : EntitySystem
         SubscribeLocalEvent<SmartFridgeComponent, EntInsertedIntoContainerMessage>(OnItemInserted);
         SubscribeLocalEvent<SmartFridgeComponent, EntRemovedFromContainerMessage>(OnItemRemoved);
         SubscribeLocalEvent<SmartFridgeComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
+        // Triad: rebuild the stock listing from the container on load, see OnMapInit
+        SubscribeLocalEvent<SmartFridgeComponent, MapInitEvent>(OnMapInit);
+        // End Triad
 
         SubscribeLocalEvent<SmartFridgeComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerb);
         SubscribeLocalEvent<SmartFridgeComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
@@ -78,6 +81,33 @@ public abstract class SharedSmartFridgeSystem : EntitySystem
 
         args.Handled = DoInsert(ent, args.User, [args.Used], true);
     }
+
+    // Triad: ContainedEntries is no longer a DataField (see SmartFridgeComponent), because a
+    // SmartFridgeEntry key cannot be written as a YAML mapping key and killed the whole ship save.
+    // It is derived state over the container, so rebuild it once the fridge is loaded -- otherwise a
+    // saved ship comes back with a stocked fridge that reports itself empty. Entries is still
+    // persisted and is deliberately NOT cleared here: it is the fridge's menu and outlives its stock.
+    private void OnMapInit(Entity<SmartFridgeComponent> ent, ref MapInitEvent args)
+    {
+        if (!_container.TryGetContainer(ent, ent.Comp.Container, out var container))
+            return;
+
+        ent.Comp.ContainedEntries.Clear();
+
+        foreach (var contained in container.ContainedEntities)
+        {
+            var key = new SmartFridgeEntry(Identity.Name(contained, EntityManager));
+            if (!ent.Comp.Entries.Contains(key))
+                ent.Comp.Entries.Add(key);
+
+            ent.Comp.ContainedEntries.TryAdd(key, new());
+            ent.Comp.ContainedEntries[key].Add(GetNetEntity(contained));
+        }
+
+        Dirty(ent);
+        UpdateUI(ent);
+    }
+    // End Triad
 
     private void OnItemInserted(Entity<SmartFridgeComponent> ent, ref EntInsertedIntoContainerMessage args)
     {

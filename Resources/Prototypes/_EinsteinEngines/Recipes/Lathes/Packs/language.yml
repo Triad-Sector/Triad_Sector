@@ -13,7 +13,7 @@
   - ValyrianStandardTranslator
   - ChittinTranslator
   - GaryTranslator # Mono
-  - NovaCygniTranslator # Mono
+  - TerraSlavicTranslator # Mono
   # - SiikMaasTranslator
   # - MarishTranslator
   - NewKinPidginTranslator
@@ -33,7 +33,7 @@
   - ValyrianStandardTranslatorImplanter
   - ChittinTranslatorImplanter
   - GaryTranslatorImplanter # Mono
-  - NovaCygniTranslatorImplanter # Mono
+  - TerraSlavicTranslatorImplanter # Triad
 #  - SiikMaasTranslatorImplanter
 #  - MarishTranslatorImplanter
   - NewKinPidginTranslatorImplanter

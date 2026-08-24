@@ -25,164 +25,7 @@
     - Framework
     consoleType: Shipyard
 
-
-#Ussp
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPBasic
-  name: USSP basic shuttle LPC
-  description: A small card that authorizes the acquisition of a basic USSP shuttle.
-  components:
-  - type: Sprite
-    layers:
-    - state: ltech
-    - state: stripeussp
-    - state: icon1
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: USSP
-    companyName: USSP
-    vessels:
-    - Svinya
-    - Gruznyk
-    - Natisk
-    - Strayk
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPIntermediate
-  name: USSP intermediate shuttle LPC
-  description: A small card that authorizes the acquisition of an intermediate USSP shuttle.
-  components:
-  - type: Sprite
-    layers:
-    - state: ltech
-    - state: stripeussp
-    - state: icon2
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: USSP
-    companyName: USSP
-    vessels:
-    - Akula
-    - Drakon
-    - Tayfun
-    - Sekunda
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPAdvanced
-  name: USSP advanced shuttle LPC
-  description: A small card that authorizes the acquisition of an advanced USSP shuttle.
-  components:
-  - type: Sprite
-    layers:
-    - state: ltech
-    - state: stripeussp
-    - state: icon3
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: USSP
-    companyName: USSP
-    vessels:
-    - Sulak
-    - Buran
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPLedokol
-  name: USSP ledokol LPC
-  description: A small card that authorizes the acquisition of a Ledokol.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripeussp
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: USSP
-    companyName: USSP
-    vessels:
-    - Ledokol
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPLedokolRam
-  name: USSP ledokol ram LPC
-  description: A small card that authorizes the acquisition of a Ledokol ram.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripeussp
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Custom
-    companyName: USSP
-    vessels:
-    - Kopye
-    - Molotok
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherUSSPLedokolAttatchment
-  name: USSP ledokol attatchment LPC
-  description: A small card that authorizes the acquisition of a Ledokol attatchment.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripeussp
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: Custom
-    companyName: USSP
-    vessels:
-    - Kupol
-
 # PDV
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherSaintie
-  name: PDV saintie LPC
-  description: A small card that authorizes the procurement of a Saintie.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripepdv
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: BlackMarket
-    companyName: PDV
-    vessels:
-    - Saintie
-  - type: StaticPrice
-    vendPrice: 325000
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherMotleyAnne
-  name: PDV motley anne LPC
-  description: A small card that authorizes the procurement of a Motley Anne.
-  components:
-  - type: Sprite
-    layers:
-    - state: mtech
-    - state: stripepdv
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: BlackMarket
-    companyName: PDV
-    vessels:
-    - MotleyAnne
-  - type: StaticPrice
-    vendPrice: 195000
 
 - type: entity
   parent: BaseShipLPC
@@ -243,33 +86,13 @@
     - Snakelet
   - type: StaticPrice
     vendPrice: 30000
-
-- type: entity
-  parent: BaseShipLPC
-  id: ShipVoucherSaturn
-  name: PDV saturn LPC
-  description: A small card that authorizes the procurement of the Saturn.
-  components:
-  - type: Sprite
-    layers:
-    - state: htech
-    - state: stripepdv
-    - state: vouchermilitary
-  - type: ShipyardVoucher
-    destroyOnEmpty: true
-    consoleType: BlackMarket
-    companyName: PDV
-    vessels:
-    - Saturn
-  - type: StaticPrice
-    vendPrice: 1555000
 # CC
 
 - type: entity
   parent: BaseShipLPC
   id: ShipVoucherRavager # Triad - modified this voucher
-  name: ravager LPC
-  description: A small card that contains the data for the procurement of a Ravager-class mothership from the flagship's reserves.
+  name: Phalanx LPC
+  description: A small card that contains the data for the procurement of a Phalanx Mechcarrier from the flagship's reserves. # Triad - modified this voucher
   components:
   - type: Sprite
     layers:
@@ -281,7 +104,7 @@
     consoleType: Security
     companyName: TDF
     vessels:
-    - Ravager
+    - Phalanx # Triad - modified this voucher
   - type: StaticPrice
     vendPrice: 325000
 

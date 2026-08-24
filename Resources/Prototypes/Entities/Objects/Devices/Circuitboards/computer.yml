@@ -83,6 +83,8 @@
       prototype: ComputerCriminalRecords
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopCriminalRecords # Frontier
+    - type: SavingContraband
+      examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: BaseComputerCircuitboard

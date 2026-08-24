@@ -455,6 +455,11 @@ public enum LogType
     /// </summary>
     AdminCommands = 98,
 
+    /// <summary>
+    /// Artifact node got activated.
+    /// </summary>
+    ArtifactNode = 101, // Triad: ported with the xenoarch rework, upstream value
+
     // Frontier Station Specific
     ATMUsage = 200,
     ShipYardUsage = 201,
@@ -491,4 +496,12 @@ public enum LogType
     /// </summary>
     Instrument = 103,
     Consent = 12489, // Floofstation - random high number to avoid conflict when upstream adds new log types
+
+    // <Triad>
+    /// <summary>
+    /// A TriTalk message was sent from a PDA. Kept off <see cref="Chat"/> so admins can filter
+    /// PDA messages without wading through every say/whisper/radio line in the round.
+    /// </summary>
+    TriTalk = 12500,
+    // </Triad>
 }

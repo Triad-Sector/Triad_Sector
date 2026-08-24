@@ -129,8 +129,13 @@ public sealed partial class NPCSteeringComponent : Component
     /// <summary>
     /// If the NPC is using a do_after to clear an obstacle.
     /// </summary>
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField("doAfterId")]
+    */
+    [ViewVariables]
     public DoAfterId? DoAfterId = null;
+    // End Triad
 }
 
 public enum SteeringStatus : byte

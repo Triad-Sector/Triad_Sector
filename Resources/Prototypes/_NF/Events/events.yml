@@ -384,8 +384,6 @@
     - Nfsd # Frontier
     - Syndicate # Mono
     - Freelance # Mono
-    - Ussp # Mono
-    # - UsspCommand # Mono
     extraCount: 6
     lightBreakChancePerSecond: 0.0001 #Triad - reduce the chance of breaking even more
     doorToggleChancePerSecond: 0 # Mono

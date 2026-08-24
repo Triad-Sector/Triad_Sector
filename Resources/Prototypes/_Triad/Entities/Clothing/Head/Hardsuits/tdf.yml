@@ -5,10 +5,12 @@
   description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic, compared to NanoTrasen's original N-20 design.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21.rsi
   - type: Clothing
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -39,13 +41,33 @@
 - type: entity
   parent: ClothingHeadHelmetHardsuitTdf
   id: ClothingHeadHelmetHardsuitTdfMedic
-  name: TA-21 medic helmet
+  name: TA-21M medic helmet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf-medic.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21m.rsi
   - type: Clothing
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf-medic.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21m.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitTdf
+  id: ClothingHeadHelmetHardsuitTdfTA29
+  name: TA-29 helmet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta29.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta29.rsi
+  - type: NightVision # Gen 1 monotube
+    relayOverlay: true
+    goggleEffect: true
+    action: ActionToggleNightVision
+    viewCircleRadius: 500
+    viewCircleCount: 2
+    viewCircleSpacing: 200
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
 
 - type: entity
   parent: [ClothingHeadHelmetHardsuitTdf, ShowMedicalIcons, ShowSecurityIcons]
@@ -55,9 +77,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf-chief.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta35.rsi
   - type: Clothing
-    sprite: _Triad/Clothing/Head/Hardsuits/tdf-chief.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta35.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000

@@ -37,6 +37,7 @@
       - Frontier # Frontier
       - HeadOfPersonnel
       - TdfChiefEnforcer # Triad
+      - TdfPermitControl # Triad
       - Hydroponics
       - Janitor
       - Kitchen
@@ -112,7 +113,9 @@
     - External
     - Frontier # Frontier
     - HeadOfPersonnel
-    - HeadOfSecurity
+    - TdfWarden # Triad
+    - TdfPatrolTeamLeader # Triad
+    - TdfChiefEnforcer # Triad
     - Hydroponics
     - Janitor
     - Kitchen
@@ -135,9 +138,9 @@
     - NuclearOperative
     - SyndicateAgent
     - Wizard
-    - USSPCommand # Mono
-    - USSPHigh # Mono
-    - USSP # Mono
+    - Solarian # Triad
+    - Coalition # Triad
+    - TdfPermitControl # Triad
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg

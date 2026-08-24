@@ -16,10 +16,11 @@
   name: research-technology-tdf-guns-advance
   entityIcon: WeaponRifleMR8T
   discipline: TdfWeaponry
-  tier: 1
+  tier: 2
   cost: 35000
   recipeUnlocks:
   - WeaponRifleMR8TRecipeTdf
+  - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponLMGRiotTdf
   - AmmoBox68x52mmCaselessBig
   technologyPrerequisites:
@@ -40,4 +41,4 @@
   technologyPrerequisites:
   - TdfBasicGuns
   - UniversalMaterialResearchT2
-  position: 13, 4
+  position: 13, 5

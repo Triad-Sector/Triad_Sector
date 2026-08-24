@@ -108,7 +108,53 @@
     containers:
       board: [ DoorElectronicsCentralCommand ]
 
+# Hatch
+- type: entity
+  parent: AirlockHatch
+  id: AirlockHatchSDLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  parent: AirlockHatch
+  id: AirlockHatchTICLocked
+  suffix: TIC, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]
+
 # High security doors
+- type: entity
+  parent: HighSecDoor
+  id: HighSecTDFLocked
+  suffix: TDF, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecSDLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecTICLocked
+  suffix: TIC, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]
+
 - type: entity
   parent: HighSecDoor
   id: HighSecTriadMedicalLocked

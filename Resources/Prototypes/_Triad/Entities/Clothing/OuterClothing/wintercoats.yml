@@ -4,6 +4,8 @@
   name: chief enforcer's winter trenchcoat
   description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat.
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/WinterCoats/coatcearmored.rsi
   - type: Clothing

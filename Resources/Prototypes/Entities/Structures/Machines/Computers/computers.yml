@@ -472,6 +472,8 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -625,7 +627,6 @@
       state: generic_panel_open
   - type: ResearchClient
   - type: AnalysisConsole
-    reportEntityId: PaperArtifactAnalyzer
   - type: DeviceList
   - type: DeviceNetwork
     deviceNetId: Wired
@@ -634,10 +635,10 @@
     ports:
       - ArtifactAnalyzerSender
   - type: ActivatableUI
-    key: enum.ArtifactAnalzyerUiKey.Key
+    key: enum.ArtifactAnalyzerUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.ArtifactAnalzyerUiKey.Key:
+      enum.ArtifactAnalyzerUiKey.Key:
         type: AnalysisConsoleBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
@@ -1144,8 +1145,7 @@
     energy: 1.6
     color: "#b89f25"
   - type: AccessReader
-    #access: [["Quartermaster"]] #Monolith Change: Allows Serzhants and Kommissars to skip bounties
-    access: [["USSPHigh"]]
+    access: [["Quartermaster"]] # TODO triad
   # - type: GuideHelp # Frontier
   #   guides: # Frontier
   #   - CargoBounties # Frontier

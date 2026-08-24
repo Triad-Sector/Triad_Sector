@@ -125,7 +125,7 @@
 
 - type: entity
   id: NfsdTechFab
-  parent: [ BlueprintReceiverBase, SecurityTechFab ]
+  parent: [ BlueprintReceiverBase, SecurityTechFab, BaseClass2AShipContraband ]
   name: TDF techfab
   description: Prints equipment for use by TDF.
   components:
@@ -161,6 +161,7 @@
     - ResearchedExplosives
     # Mono end
     # Triad start
+    - GenericFaction
     - TdfTechfabDynamic
     - TdfDynamicMelee
     - TdfDynamicGun
@@ -172,8 +173,12 @@
     - NFNfsdTechfabDeprecatedEmag
   - type: PirateBountyItem # Mono
     id: Techfab
-  - type: SavingContraband # Triad
-    examineText: ship-saving-contraband-2-text
+  - type: CompanyAccessReader
+    requiredCompany: TDF # Triad
+    popupMessage: company-access-denied-tdf # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   id: MercenaryTechFab
@@ -207,18 +212,10 @@
     dynamicPacks:
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
+    # Triad start
+    - GenericFaction
+    # Triad end
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
-    - MonoUSSPMiscDynamic
-    - MonoUSSPWeaponsDynamicRanged
-    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -280,17 +277,6 @@
     - DynamicAmmoRecipePack
     - SmartGun # Goobstation
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
-    - MonoUSSPMiscDynamic
-    #- MonoViperGroupDynamic
-    - MonoUSSPWeaponsDynamicRanged
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo

@@ -218,3 +218,6 @@ uplink-security-tier-0-voucher-desc = A single use TDF DSID for any tier 0 vesse
 
 uplink-security-tier-1-voucher-name = Tier 1 Dedicated Ship ID
 uplink-security-tier-1-voucher-desc = A single use TDF DSID for any tier 1 vessel.
+
+uplink-security-tier-2-voucher-name = Tier 2 Dedicated Ship ID
+uplink-security-tier-2-voucher-desc = A single use TDF DSID for any tier 2 vessel.

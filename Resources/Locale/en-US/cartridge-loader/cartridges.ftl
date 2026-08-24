@@ -2,6 +2,8 @@ device-pda-slot-component-slot-name-cartridge = Cartridge
 
 default-program-name = Program
 notekeeper-program-name = Notekeeper
+notekeeper-input-placeholder = Write a note...
+notekeeper-add-note = Add note
 news-read-program-name = Station news
 
 crew-manifest-program-name = Crew manifest
@@ -23,6 +25,16 @@ log-probe-print-button = Print Logs
 log-probe-printout-device = Scanned Device: {$name}
 log-probe-printout-header = Latest logs:
 log-probe-printout-entry = #{$number} / {$time} / {$accessor}
+
+# Triad: TriTalk card scanning
+log-probe-scan-nanochat = Downloaded message history from {$card}!
+log-probe-header-access = Access Logs
+log-probe-header-nanochat = TriTalk Message History
+log-probe-label-message = Message
+log-probe-card-number = Card {$number}
+log-probe-recipients = {$count} contacts
+log-probe-recipient-list = Known contacts:
+log-probe-message-format = {$sender} -> {$recipient}: {$content}
 
 astro-nav-program-name = AstroNav
 

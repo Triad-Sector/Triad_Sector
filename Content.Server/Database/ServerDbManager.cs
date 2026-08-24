@@ -24,6 +24,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using LogLevel = Robust.Shared.Log.LogLevel;
 using MSLogLevel = Microsoft.Extensions.Logging.LogLevel;
+using Content.Shared._Mono.Company;
+using Content.Server._Mono.Company; // Mono
 
 namespace Content.Server.Database
 {
@@ -328,6 +330,19 @@ namespace Content.Server.Database
 
         #endregion
 
+        // Mono
+        #region Company
+        Task AddCompanyMember(Guid player, ProtoId<CompanyPrototype> company);
+
+        Task<List<string>> GetPlayerCompanies(Guid player, CancellationToken cancel = default);
+        Task<IEnumerable<CompanyMemberRecord>> GetCompanyMembers(ProtoId<CompanyPrototype> company, CancellationToken cancel = default);
+        Task<IEnumerable<CompanyMemberRecord>> GetAllCompanyMembers(CancellationToken cancel = default);
+        Task<CompanyMemberRecord?> GetCompanyMember(ProtoId<CompanyPrototype> company, Guid player, CancellationToken cancel = default);
+        Task SetCompanyOwner(ProtoId<CompanyPrototype> company, Guid player, bool owner);
+        Task<bool> RemoveCompanyMember(Guid player, ProtoId<CompanyPrototype> company);
+
+        #endregion
+
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -390,7 +405,7 @@ namespace Content.Server.Database
         public string? Payload { get; set; }
     }
 
-    public sealed class ServerDbManager : IServerDbManager
+    public sealed partial class ServerDbManager : IServerDbManager
     {
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",
@@ -404,11 +419,12 @@ namespace Content.Server.Database
             "db_executing_ops",
             "Amount of active database operations. Note that some operations may be waiting for a database connection.");
 
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IResourceManager _res = default!;
-        [Dependency] private readonly ILogManager _logMgr = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private IResourceManager _res = default!;
+        [Dependency] private ILogManager _logMgr = default!;
 
         private ServerDbBase _db = default!;
+        private ISawmill _sawmill = default!;
         private LoggingProvider _msLogProvider = default!;
         private ILoggerFactory _msLoggerFactory = default!;
 
@@ -421,6 +437,7 @@ namespace Content.Server.Database
 
         public void Init()
         {
+            _sawmill = _logMgr.GetSawmill("db.manager");
             _msLogProvider = new LoggingProvider(_logMgr);
             _msLoggerFactory = LoggerFactory.Create(builder =>
             {
@@ -1040,6 +1057,50 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.CleanIPIntelCache(range));
         }
 
+        // Mono-Start
+        public Task AddCompanyMember(Guid player, ProtoId<CompanyPrototype> company)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddCompanyMember(player, company));
+        }
+
+        public Task<List<string>> GetPlayerCompanies(Guid player, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerCompanies(player, cancel));
+        }
+
+        public Task<IEnumerable<CompanyMemberRecord>> GetCompanyMembers(ProtoId<CompanyPrototype> company, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetCompanyMembers(company, cancel));
+        }
+
+        public Task<IEnumerable<CompanyMemberRecord>> GetAllCompanyMembers(CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllCompanyMembers(cancel));
+        }
+
+        public Task<CompanyMemberRecord?> GetCompanyMember(ProtoId<CompanyPrototype> company, Guid player, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetCompanyMember(company, player, cancel));
+        }
+
+        public Task SetCompanyOwner(ProtoId<CompanyPrototype> company, Guid player, bool owner)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetCompanyOwner(company, player, owner));
+        }
+
+        public Task<bool> RemoveCompanyMember(Guid player, ProtoId<CompanyPrototype> company)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveCompanyMember(player, company));
+        }
+        // Mono-End
+
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {
             lock (_notificationHandlers)
@@ -1183,7 +1244,7 @@ namespace Content.Server.Database
                 Password = pass
             }.ConnectionString;
 
-            Logger.DebugS("db.manager", $"Using Postgres \"{host}:{port}/{db}\"");
+            _sawmill.Debug($"Using Postgres \"{host}:{port}/{db}\"");
 
             builder.UseNpgsql(connectionString);
             SetupLogging(builder);
@@ -1206,12 +1267,12 @@ namespace Content.Server.Database
             if (!inMemory)
             {
                 var finalPreferencesDbPath = Path.Combine(_res.UserData.RootDir!, configPreferencesDbPath);
-                Logger.DebugS("db.manager", $"Using SQLite DB \"{finalPreferencesDbPath}\"");
+                _sawmill.Debug($"Using SQLite DB \"{finalPreferencesDbPath}\"");
                 getConnection = () => new SqliteConnection($"Data Source={finalPreferencesDbPath}");
             }
             else
             {
-                Logger.DebugS("db.manager", "Using in-memory SQLite DB");
+                _sawmill.Debug("Using in-memory SQLite DB");
                 _sqliteInMemoryConnection = new SqliteConnection("Data Source=:memory:");
                 // When using an in-memory DB we have to open it manually
                 // so EFCore doesn't open, close and wipe it every operation.

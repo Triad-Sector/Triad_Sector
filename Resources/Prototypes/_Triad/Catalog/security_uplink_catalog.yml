@@ -212,7 +212,7 @@
     sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
     state: tier_0 }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
   categories:
   - UplinkSecurityVouchers
   conditions:
@@ -222,7 +222,7 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityTier1Voucher
+  id: UplinkSecurityTierVoucher
   name:  uplink-security-tier-1-voucher-name
   description: uplink-security-tier-1-voucher-desc
   productEntity: ShipVoucherTdfTier1
@@ -230,7 +230,7 @@
     sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
     state: tier_1 }
   cost:
-    TriadCommerceCredit: 20
+    TriadCommerceCredit: 25
   categories:
   - UplinkSecurityVouchers
   conditions:
@@ -239,80 +239,39 @@
         tags:
           - SecurityUplink
 
-#- type: listing TODO
-#  id: UplinkSecurityMediumVoucher
-#  name:  uplink-security-medium-voucher-name
-#  description: uplink-security-medium-voucher-desc
-#  productEntity: ShipVoucherNfsdSergeant
-#  cost:
-#    TriadCommerceCredit: 25
-#  categories:
-#  - UplinkSecurityVouchers
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfPatrolTeamLeader
-    #   - TdfChiefEnforcer
-
-#- type: listing
-#  id: UplinkSecurityCapitalVoucher
-#  name:  uplink-security-capital-voucher-name
-#  description: uplink-security-capital-voucher-desc
-#  productEntity: ShipVoucherNfsdBailiff
-#  cost:
-#    TriadCommerceCredit: 125
-#  categories:
-#  - UplinkSecurityVouchers
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - SecurityUplink
-    #- !type:BuyerJobCondition
-    #  whitelist:
-    #   - TdfWarden
-    #   - TdfChiefEnforcer
+- type: listing
+  id: UplinkSecurityTier2Voucher
+  name:  uplink-security-tier-2-voucher-name
+  description: uplink-security-tier-2-voucher-desc
+  productEntity: ShipVoucherTdfTier2
+  icon: {
+    sprite: _Triad/Objects/Misc/tdf_dsid_icon.rsi,
+    state: tier_2 }
+  cost:
+    TriadCommerceCredit: 40
+  categories:
+  - UplinkSecurityVouchers
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
 
 # Misc
-
-#- type: listing
-#  id: UplinkSecurityFlyssaVoucher
-#  name:  uplink-security-flyssa-voucher-name
-#  description: uplink-security-flyssa-voucher-desc
-#  productEntity: ShipVoucherFlyssa
-#  cost:
-#    TriadCommerceCredit: 750
-#  categories:
-#  - UplinkSecurityVouchers
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - SecurityUplink
-#    #- !type:BuyerJobCondition
-#    #  whitelist:
-#    #   - TdfWarden
-#    #   - TdfChiefEnforcer
-
-#- type: listing | TODO
-#  id: UplinkSecurityFactionRDServer
-#  name:  uplink-faction-server-name
-#  description: uplink-faction-server-desc
-#  productEntity: RDServerTSFFlatpack
-#  cost:
-#    TriadCommerceCredit: 100
-#  categories:
-#  - UplinkSecurityUtility
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#   whitelist:
-#      tags:
-#      - SecurityUplink
+- type: listing
+  id: UplinkSecurityFactionRDServer
+  name:  uplink-faction-server-name
+  description: uplink-faction-server-desc
+  productEntity: RDServerTDFFlatpack
+  cost:
+    TriadCommerceCredit: 75
+  categories:
+  - UplinkSecurityUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
 
 - type: listing
   id: UplinkSecurityFactionLathe
@@ -349,7 +308,7 @@
   name: uplink-security-hardsuit-tdf-name
   description: uplink-security-hardsuit-tdf-desc
   productEntity: ClothingOuterHardsuitTdf
-  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi, state: icon }
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -365,7 +324,7 @@
   name: uplink-security-hardsuit-tdf-medic-name
   description: uplink-security-hardsuit-tdf-medic-desc
   productEntity: ClothingOuterHardsuitTdfMedic
-  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi, state: icon }
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -711,7 +670,7 @@
   description: uplink-security-syringe-case-desc
   productEntity: SyringeCaseAltFilled
   cost:
-    TriadCommerceCredit: 50
+    TriadCommerceCredit: 25
   categories:
     - UplinkSecurityUtility
   conditions:

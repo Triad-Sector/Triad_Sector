@@ -1,8 +1,8 @@
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearPDVT2 ]
+  parent: [ ClothingOuterHardsuitBase] # Triad - removed PDV ties
   id: ClothingOuterHardsuitPirateScaf
-  name: PDV SCAF hardsuit
-  description: An old SCAF suit painted in an PDV tan color scheme. The armor feels degraded, but lighter.
+  name: SCRUFF hardsuit
+  description: A variant of the classic SCAF suit designed for arid climates. Lighter and more comfortable, but less protective.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/scaf_pirate.rsi
@@ -14,7 +14,7 @@
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
-    damageCoefficient: 0.45
+    damageCoefficient: 0.35
   - type: Armor
     modifiers:
       coefficients:
@@ -23,9 +23,10 @@
         Piercing: 0.55
         Heat: 0.7
         Radiation: 0.5
-        Caustic: 0.9
+        Caustic: 0.8 # Triad
+        Shock: 0.9 # Triad
   - type: StaminaDamageResistance # Mono - Stamres
-    coefficient: 0.3
+    coefficient: 0.45 # Triad
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
@@ -46,10 +47,10 @@
     - RogueHardsuit
 
 - type: entity
-  parent: [ ClothingOuterHardsuitSyndie, BaseFactionGearPDVT2 ]
+  parent: [ ClothingOuterHardsuitSyndie] # Triad - domesticated PDV
   id: ClothingOuterHardsuitAshen
-  name: PDV CV-32 combat hardsuit
-  description: A combat hardsuit designed by the Phaethon Dynasty. A heavier but still general-purpose hardsuit, effective but not stellar against most damage types.
+  name: midnight operative special tacticool suit
+  description: Following a crippling strike on Gorlex paint factories, their supply of signature blood-red ran dry. This was a last-ditch rebrand attempt.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/syndicate.rsi

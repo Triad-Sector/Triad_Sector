@@ -17,6 +17,8 @@
   spawnGroup: Arena
   gridPath: /Maps/_NF/POI/arena.yml
   addComponents:
+  # Triad: on the bus route. Berth is the east-face bay, uids 1084/1761, reserved to the bus.
+  - type: StationTransit
   - type: SolarPoweredGrid
     trackOnInit: true
     doNotCull: true

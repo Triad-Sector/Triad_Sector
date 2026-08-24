@@ -50,6 +50,15 @@
         - BookSpaceLaw
         - BookNfsdSop
     # End Frontier: space law slot
+    # Begin Triad Changes
+    projectorSlot:
+      startingItem: HoloprojectorPrivate
+      priority: -4
+      whitelist:
+        tags:
+        - CivilianHoloprojector
+    # End Triad Changes
+
     idSlot:
       name: access-id-card-component-default
       ejectSound: /Audio/Machines/id_swipe.ogg
@@ -68,6 +77,7 @@
       PDA-book: !type:ContainerSlot {} # Frontier
       Cartridge-Slot: !type:ContainerSlot {}
       program-container: !type:Container
+      PDA-projector: !type:ContainerSlot {} # Triad
   - type: ItemSlots
   - type: Clothing
     quickEquip: false
@@ -96,6 +106,7 @@
       - NewsReaderCartridge
       - BountyContractsCartridge # Frontier
       - AstroNavCartridge # Frontier
+      - TriTalkCartridge # Triad
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -173,6 +184,7 @@
     - BountyContractsCartridge # Frontier
     - AstroNavCartridge # Frontier
     - WantedListCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BasePDA
@@ -188,6 +200,7 @@
     - BountyContractsCartridge # Frontier
     - AstroNavCartridge # Frontier
     - MedTekCartridge
+    - TriTalkCartridge # Triad
   # End Frontier
 
 - type: entity
@@ -901,6 +914,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BaseSecurityPDA
@@ -971,6 +985,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - TriTalkCartridge # Triad
 
 - type: entity
   parent: CentcomPDA
@@ -1002,6 +1017,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
+      - TriTalkCartridge # Triad
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1153,6 +1169,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - MailMetricsCartridge # Frontier
+      - TriTalkCartridge # Triad
   - type: Geiger # Mono
     showExamine: true
     showControl: true
@@ -1332,6 +1349,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1340,7 +1358,7 @@
   description: I wonder whose pulse is on the screen? I hope it doesn't stop...
   components:
   - type: Pda
-    id: BrigmedicIDCard
+    id: DetectiveIDCard # Triad, migration
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1359,6 +1377,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: ClownPDA
@@ -1456,9 +1475,10 @@
   id: SeniorOfficerPDA
   name: senior officer PDA
   description: Beaten, battered and broken, but just barely useable.
+  categories: [ HideSpawnMenu ] # Triad
   components:
-  - type: Pda
-    id: SeniorOfficerIDCard
+  #- type: Pda
+  #  id: SeniorOfficerIDCard
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1477,8 +1497,8 @@
   description: Yargh!
   categories: [ HideSpawnMenu ] # Frontier
   components:
-  - type: Pda
-    id: PirateIDCard
+  #- type: Pda
+  #  id: PirateIDCard
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

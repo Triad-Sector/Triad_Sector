@@ -17,6 +17,9 @@
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/edison.yml
   addComponents:
+  # Triad: Edison already has a DockTransit berth and the bus schedule sign, it was just never put on
+  # the route. spawnGroup is Required, so it is the one stop guaranteed to exist every round.
+  - type: StationTransit
   - type: IFF
     color: "#3737F8"
   - type: SolarPoweredGrid

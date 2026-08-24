@@ -7,7 +7,7 @@
 - type: contrabandSeverity
   id: Class2
   examineText: contraband-examine-text-Class2
-  showDepartmentsAndJobs: true
+  #showDepartmentsAndJobs: true Triad
 
 - type: contrabandSeverity
   id: Class2Expedition

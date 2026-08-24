@@ -16,9 +16,34 @@
             - material: Cloth
               amount: 2
               doAfter: 1
+        - to: BannerTFANode
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+            - material: Cloth
+              amount: 2
+              doAfter: 1
 
     - node: BannerTDFNode
       entity: BannerTdf
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        - !type:SpawnPrototype
+          prototype: MaterialCloth1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+
+    - node: BannerTFANode
+      entity: BannerTfa
       edges:
       - to: start
         completed:

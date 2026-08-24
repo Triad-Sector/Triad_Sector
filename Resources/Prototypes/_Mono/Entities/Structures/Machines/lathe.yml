@@ -23,30 +23,11 @@
     idleState: icon
     runningState: icon
     staticPacks:
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - NFMercenaryTechfabDeprecatedStatic
     - RoundstartShipgunAmmo
     dynamicPacks:
-    # rogue start
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueVouchersDynamic
-    - MonoRogueMiscDynamic
-    - MonoRogueGearDynamic
-    - MonoRogueGearProDynamic
-    # TSF start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    #- MonoTSFVouchersDynamic Triad
-    - MonoTSFMiscDynamic
-    - MonoTSFGearDynamic
-    # USSP start
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
-    - MonoUSSPMiscDynamic
-    - MonoUSSPWeaponsDynamicRanged
-    # Viper Group start
-    #- MonoViperGroupDynamic Triad, removed
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -58,6 +39,14 @@
     - ResearchedExplosives
     - SecurityEquipment
     - SmartGun
+    # Triad start
+    - GenericFaction
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
+    # Triad end
   - type: MaterialStorage
     whitelist:
       tags:
@@ -65,6 +54,8 @@
       - RawMaterial
       - Ingot
   - type: RequireProjectileTarget
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: FactionLatheImmmovable

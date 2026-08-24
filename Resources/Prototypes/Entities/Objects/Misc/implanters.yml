@@ -4,7 +4,7 @@
   name: implanter
   description: A syringe exclusively designed for the injection and extraction of subdermal implants. Use care when extracting implants, as incorrect draw settings may injure the user.
   id: BaseImplanter
-  parent: BaseItem
+  parent: [BaseItem, BaseClass2AShipContrabandSilent] # Triad
   abstract: true
   components:
     - type: ItemSlots
@@ -48,7 +48,6 @@
       - RadioImplantFreelance # Mono
       - TrackingImplant # Moved Down, This is the TSFMC Tracker - Mono
       - FreelanceTrackingImplant # Mono
-      - UsspTrackingImplant # Mono
       deimplantFailureDamage:
         types:
 #          Cellular: 5 # 50->5 - Mono

@@ -6,3 +6,21 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Back/Backpacks/tdf.rsi
+
+- type: entity
+  parent: NFClothingBackpack
+  id: ClothingBackpackMilitary # generic military-esque satchel
+  name: militarized backpack
+  description: This is evidently repurposed from some industrial use.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Backpacks/generic_military.rsi
+
+- type: entity
+  parent: NFClothingBackpack
+  id: ClothingBackpackBlueDiamond
+  name: blue diamond PMC backpack # SD backpack
+  description: Part of the load bearing system that Blue Diamond Military Contracting of the Solarian Directive uses.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Backpacks/blue_diamond.rsi

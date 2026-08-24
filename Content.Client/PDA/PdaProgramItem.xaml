@@ -4,10 +4,17 @@
     <PanelContainer Name="Panel"/>
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" VerticalExpand="True" MinWidth="60">
-            <AnimatedTextureRect HorizontalAlignment="Center" VerticalAlignment="Center" VerticalExpand="True" Name="Icon" Access="Public"/>
+            <!-- Triad: pinned to 32x32. This drew each program's icon at whatever its source RSI happened to be,
+                 and cartridge icons are borrowed from all over: Interface/Misc/program_icons.rsi and
+                 _DV/Misc/program_icons.rsi are 48x48, while the ones pointed at an object or a structure sprite
+                 (books, gps, health analyzer, mail, a server, an NFSD airlock) are 32x32. So the program list
+                 rendered some entries half again as large as the others. The list should not depend on every
+                 content author picking a matching RSI size, so the box is fixed here and the texture is scaled
+                 to fit it in PdaProgramItem's constructor. 32 keeps 9 of the 11 current icons pixel-perfect. -->
+            <AnimatedTextureRect HorizontalAlignment="Center" VerticalAlignment="Center" VerticalExpand="True" Name="Icon" Access="Public" SetSize="32 32"/>
         </BoxContainer>
-        <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
-            <Label Name="ProgramName" Access="Public" VerticalExpand="True"/>
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="3 0 0 0">
+            <Label Name="ProgramName" Access="Public" VerticalExpand="True" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <BoxContainer HorizontalExpand="True" SetHeight="28" Margin="0 0 4 4">
                 <BoxContainer HorizontalExpand="True"/>
                 <Button Name="InstallButton" Access="Public" Visible="False" SetWidth="90" HorizontalAlignment="Right" VerticalExpand="True"></Button>

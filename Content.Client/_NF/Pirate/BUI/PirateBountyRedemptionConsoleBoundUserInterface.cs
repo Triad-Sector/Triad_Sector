@@ -2,6 +2,7 @@ using Content.Client._NF.Pirate.UI;
 using Content.Shared._NF.Pirate.BUI;
 using Content.Shared._NF.Pirate.Components;
 using Content.Shared._NF.Pirate.Events;
+using Robust.Client.UserInterface;
 
 namespace Content.Client._NF.Pirate.BUI;
 
@@ -22,20 +23,8 @@ public sealed class PirateBountyRedemptionConsoleBoundUserInterface : BoundUserI
     {
         base.Open();
 
-        _menu = new PirateBountyRedemptionMenu();
+        _menu = this.CreateWindow<PirateBountyRedemptionMenu>();
         _menu.SellRequested += OnSell;
-        _menu.OnClose += Close;
-
-        _menu.OpenCentered();
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (disposing)
-        {
-            _menu?.Dispose();
-        }
     }
 
     private void OnSell()

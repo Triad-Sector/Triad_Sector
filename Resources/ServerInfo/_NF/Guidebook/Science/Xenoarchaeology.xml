@@ -1,55 +1,56 @@
 <Document>
 # Xenoarchaeology
-Xenoarchaeology is a field of science focused on researching and experimenting on alien artifacts.
 
-Artifacts can be found by mining asteroids found around the sector, or you can buy some from miners or salvagers.
+Xenoarchaeology is a field of science focused on researching alien [bold]artifacts[/bold].
 
-By researching the unique things each artifact can do, you gain Research Points, increase the artifact's sale value, and potentially discover a useful ability or two!
+Unlocking their secrets grants research points, raises the artifact's sale value, and reveals strange, potentially useful, or dangerous effects.
 
-## Artifact Nodes
+Artifacts can be:
+- Found by mining asteroids around the sector
+- Bought from miners and salvagers
+- Assembled from [bold]fragments[/bold]
+
+## Artifacts
 <Box>
 <GuideEntityEmbed Entity="ComplexXenoArtifact" Caption=""/>
-<GuideEntityEmbed Entity="SimpleXenoArtifactItem" Caption=""/>
+<GuideEntityEmbed Entity="ComplexXenoArtifactItem" Caption=""/>
 </Box>
-Artifacts consist of a randomly-generated tree of nodes. These nodes have a "[color=#a4885c]depth[/color]", representing how dangerous the node is, and the number of other nodes connected to it, called "[color=#a4885c]edges[/color]",
 
-Artifacts always start at depth zero, the root of the tree. Travelling the tree to find as many nodes as possible is the main goal of the scientists working on them. Knowledge is extracted from nodes to gain Research Points and increase the artifact's sale value.
+Artifacts contain [bold]nodes[/bold] arranged in [bold]layers[/bold], usually in two or three separate clusters.
+- Each node has [bold]triggers[/bold], actions that must be performed on or near the artifact, and an [bold]effect[/bold].
+- Performing a trigger wakes the artifact for a short window. To unlock a node, land [bold]its trigger and the triggers of every node above it[/bold] inside one window. First-layer nodes need only their own.
+- When a node unlocks, its effect fires [bold]once[/bold].
+- Deeper nodes have harder triggers, nastier effects, and are worth more.
+- Every artifact carries a [color=#a4885c]severity profile[/color]: effects start gentle at the first layer and climb toward a peak class. Some artifacts climb steadily, some spike early then level off, and some stay quiet almost to the end before turning vicious.
 
-Each node has two components: its [color=#a4885c]stimulus[/color] and a [color=#a4885c]reaction[/color].
-
-A stimulus is the external behavior that triggers the reaction. There's a variety of these, and higher depth nodes have more difficult to accomplish stimuli. Some stimuli will need improvisation to trigger, and you may need special materials or resources to get everything you need.
-
-Some reactions are instantaneous effects while others are permanent changes. Once an artifact is triggered, the reaction causes the artifact to randomly move to another node it is linked to.
-
-With some experimental science, you can begin to grasp how the different nodes of an artifact are connected, and how to move between them by repeatedly activating nodes.
-
-All non-zero-depth nodes will have exactly one edge that leads up to its parent node. All other edges a node has lead down to the next depth.
-
-## Artifact Analyzer and Analysis Console
+## Equipment
 <Box>
-<GuideEntityEmbed Entity="MachineArtifactAnalyzer"/>
-<GuideEntityEmbed Entity="ComputerAnalysisConsole"/>
+<GuideEntityEmbed Entity="MachineArtifactAnalyzer" Caption="Analyzer"/>
+<GuideEntityEmbed Entity="ComputerAnalysisConsole" Caption="Analysis Console"/>
+<GuideEntityEmbed Entity="NodeScanner" Caption="Node Scanner"/>
 </Box>
-The main equipment that you'll be using for Xenoarchaeology is the [color=#a4885c]artifact analyzer[/color] and the [color=#a4885c]analysis console[/color]. You can use these to create reports that contain valuable information about an artifact.
+- [bold]Artifact Analyzer:[/bold] Stationary pad that scans the artifact resting on it, sending data to the console.
+- [bold]Analysis Console:[/bold] Displays the node graph, per-node details, and the artifact-wide readout. Must be linked to an analyzer with a network configurator. The [color=#a4885c]Extract[/color] button drains research points from every unlocked node.
+- [bold]Node Scanner:[/bold] Hand-held device that shows which triggers the artifact has registered while it is awake, so a scientist can work deep chains away from the console.
 
-To set them up, simply link them with a network configurator and set an artifact on top of the analyzer. Every science vessel has at least one of these machines already set up.
-
-Use the console's [color=#a4885c]scan[/color] button to discover what stimulus the artifact needs and what its reaction will do. Scanning takes thirty seconds.
-
-Use the [color=#a4885c]print[/color] button to save the scan result, so you can refer to it later.
-
-Once you've discovered a new node, you can extract points from the artifact using the [color=#a4885c]Extract[/color] button.
-
-## Artifexium and You
-
-With difficult to trigger stimuli, one risky alternative is the use of [color=#a4885c]artifexium[/color]. In order to get artifexium, artifact fragments can be [color=#a4885c]ground[/color] in a [color=#a4885c]reagent grinder[/color]. This artifexium can then be [color=#a4885c]sprayed[/color] or [color=#a4885c]splashed[/color] on an artifact to cause a trigger.
-
-It is worth note that artifexium can cause unwanted reactions and reduced yield when interacting with alien artifacts. Use it sparingly, and it can be a useful tool.
-
-For reasons yet understood by science, use of artifexium is more stable when performed in laboratories than on rocks in the void. Our xenoarchaeologists suggest that these artifacts may exhibit sentient properties and be more stable in social settings.
-
-## Assembling Artifacts
+<Box>
+<GuideEntityEmbed Entity="CrateArtifactContainer" Caption="Artifact Container"/>
+</Box>
+- [bold]Artifact Container:[/bold] Safely stores and transports artifacts and prevents nodes from triggering.
+<Box>
+<GuideEntityEmbed Entity="MachineArtifactCrusher" Caption="Crusher"/>
 <GuideEntityEmbed Entity="ArtifactFragment" Caption="Artifact Fragment"/>
+</Box>
+- [bold]Artifact Crusher:[/bold] Crushes artifacts into fragments.
+- [bold]Artifact Fragment:[/bold] Pieces of destroyed artifacts. Ten fragments can be rebuilt into a new artifact using the craft menu.
 
-It is possible to gather multiple artifact fragments and assemble them into a working artifact. You can ask for these from mining ships, who usually find these while mining asteroids or on Expeditions.
+## What an Artifact Is Worth
+
+Every node is worth more the harder it was to solve. A node's value comes from how difficult its trigger is to set up and land inside an unlock window, compounded with how dangerous its effect is to a crew in a sealed hull. A node that makes you vent a compartment while the artifact breaks windows is worth far more than one you examine while it glows.
+
+The console learns its severity readout from your work: unlocking [color=#a4885c]any three nodes[/color] reveals the profile's shape, and reaching a [color=#a4885c]deepest node[/color] reveals the peak severity class.
+
+On top of that, the whole artifact carries an [color=#a4885c]Extraction Bonus[/color]. Every node you unlock compounds it, climbing faster and faster until a fully solved artifact pays out [color=#a4885c]five times[/color] its base worth. The console shows the current bonus.
+
+This applies to Research Points and to the sale price alike. It also means [color=#a4885c]points you extract early are banked at the low bonus and cannot be reclaimed later at the higher rate[/color].
 </Document>

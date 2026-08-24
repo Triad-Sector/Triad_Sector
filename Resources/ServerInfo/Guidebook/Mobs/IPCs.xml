@@ -1,52 +1,93 @@
+<!-- Triad: TDF Bureau of Personnel — Dossier format 2026-05-23 -->
 <Document>
-  # I.P.C.
-  <GuideEntityEmbed Entity="MobIPCDummy" Caption="I.P.C."/>
-  An IPC (short for Integrated Positronic Chassis) is a type of sentient robot and is considered an [color=yellow]independent individual[/color], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system. [color=red]IPCs are silicon-based beings, so doctors do not have the skills to repair them.[/color]
-
-  <Box>
-    <GuideEntityEmbed Entity="PositronicBrain" Caption="Positronic Brain"/>
-  </Box>
-  Like borgs, IPCs have a positronic brain as their processing source. However, unlike them, IPCs can't be assembled. "It's cheaper to create a shell that obeys you than one that doesn't! *wink*"
-
-  ## Recharging an IPC
-   <Box>
-    <GuideEntityEmbed Entity="APCBasic" Caption="APC Terminal"/>
-    <GuideEntityEmbed Entity="BorgCharger" Caption="Borg Charger"/>
-    <GuideEntityEmbed Entity="PowerCellMedium" Caption="Power Cell"/>
-  </Box>
-  IPCs can be recharged in three different ways:
-
-  APC Terminal: IPCs can use APC terminals to recharge. Press [color=yellow]Alt + left click[/color] on a terminal as many times as needed to fully recharge.
-
-  Borg Rechargers: IPCs can use borg rechargers to recharge. Always prioritize the ones outside of the Sci area to avoid headaches.
-
-  Power Cell: IPCs have an internal power cell that serves as their battery. They can simply swap it out by opening the hatch and manually replacing it.
-
-  ## Integrated Radio
-  <Box>
-    <GuideEntityEmbed Entity="EncryptionKeyScience" Caption="Encryption key"/>
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=#ffd688]TDF // BUREAU OF PERSONNEL[/color][color=#897236]          Form BP-22b/v3 ║[/color]\n[color=#897236]║ PERSONNEL DOSSIER            FOR OFFICIAL USE ONLY ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
-  IPCs do [bold]not[/bold] use external radios because they already have one built in. They only need to get an encryption key from a radio. By clicking on an IPC with a [color=yellow]wire cutter[/color], you can remove their keys.
-  You can find new keys around the station or remove one from a sector radio using a [color=yellow]screwdriver[/color].
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
 
-  ## Repairing
-  <Box HorizontalAlignment="Stretch">
-    <GuideEntityEmbed Entity="WelderIndustrialAdvanced" Caption="Welder"/>
-    Welders can be used to repair [color=yellow]Brute[/color] damage.
-  </Box>
-  <Box HorizontalAlignment="Stretch">
-    <GuideEntityEmbed Entity="CableApcStack" Caption="Cables (any type)"/>
-    Cables can be used to repair [color=yellow]Burns[/color] and [color=yellow]Radiation[/color].
-  </Box>
-  <Box HorizontalAlignment="Stretch">
-    <GuideEntityEmbed Entity="SheetGlass" Caption="Glass Sheets (any type)"/>
-    Glass Sheets can be used to repair [color=yellow]Blindness[/color].
-  </Box>
-  <Box HorizontalAlignment="Stretch">
-    In the event an IPC dies, after being fully repaired, it should be restarted using the [color=yellow]"Restart"[/color] button (located by right-clicking).
+  [color=#999999][italic]“Yes, they're citizens. The Article on Synthetic Personhood was drafted during the war and survived the reformation intact. Don't relitigate it; welcome them aboard.”[/italic][/color]
 
-    [color=red]NEVER ELECTROCUTE AN IPC with a defibrillator or in any other way while it is dead, as this will cause the battery to discharge energy rays outward![/color]
+  <Box HorizontalAlignment="Right">
+    [color=#999999][italic]— Adjutant General Janssen, BuPers[/italic][/color]
+  </Box>
+
+  <Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Box Orientation="Vertical" HorizontalAlignment="Left">
+      [mono][color=#897236]DESIGNATION[/color]  SPC-IPC[/mono]
+
+      [mono][color=#897236]CLASS      [/color]  Synthetic // Positronic[/mono]
+
+      [mono][color=#897236]ORIGIN     [/color]  Positronic chassis[/mono]
+
+      [mono][color=#897236]METABOLIC  [/color]  [color=#a4885c][bold]None[/bold][/color] — silicon chassis[/mono]
+
+      [mono][color=#897236]STATUS     [/color]  [color=lime]► Approved, Conditional[/color][/mono]
+    </Box>
+
+    <ColorBox OutlineColor="#ffd688" OutlineThickness="3" Margin="16" VerticalAlignment="Center">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+        <GuideEntityEmbed Entity="MobIPCDossierExemplar" Caption="" Scale="3.5"/>
+      </Box>
+    </ColorBox>
+  </Box>
+
+  Subject: Sentient positronic individuals descended from corporate-era chassis production ([color=#a4885c][bold]Hephaestus, Einstein Engines, Bishop, Zeng-Hu[/bold][/color], all defunct). Cleared as independent citizens; not laws-bound, not Emag-vulnerable, not Medbay-serviceable. Manufacturer plate is historical paperwork, not an ID number.
+
+  [color=#897236][mono]──── [color=#ff66aa][bold]TOLERANCE PROFILE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  [mono]  Heat      [color=#cc3333]■[/color][color=#555555]□□□□[/color]  vulnerable — electronics overheat[/mono]
+
+  [mono]  Cold      [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Pressure  [color=#897236]■■■[/color][color=#555555]□□[/color]  baseline[/mono]
+
+  [mono]  Shock     [color=#cc3333]■[/color][color=#555555]□□□□[/color]  highly vulnerable — amplified when critical[/mono]
+
+  [color=#897236][mono]──── [color=#ffa500][bold]DIETARY ACCOMMODATIONS[/bold][/color] ──────────────────────────[/mono][/color]
+
+  - [color=#ffa500][bold]Dietary range[/bold][/color]: non-feeding. Chassis runs on internal cell; no food or drink intake.
+
+  [color=#897236][mono]──── [color=#00ccff][bold]RESPIRATORY PROTOCOL[/bold][/color] ────────────────────────────[/mono][/color]
+
+  - [color=#a4885c][bold]Non-respiring[/bold][/color]: sealed chassis, immune to atmospheric toxins and asphyxiation.
+  - Pressure tolerance: safe [color=#1e90ff][bold]50–385 kPa[/bold][/color]; barotrauma outside [color=#ffa500][bold]20–550 kPa[/bold][/color].
+
+  [color=#897236][mono]──── [color=#1e90ff][bold]WORKPLACE APTITUDES[/bold][/color] ─────────────────────────────[/mono][/color]
+
+  - [color=#1e90ff][bold]Integrated radio[/bold][/color]: no external headset required. Chassis ships with an encryption-key slot. Use a wirecutter to swap keys.
+  - [color=#1e90ff][bold]Emag-immune[/bold][/color]. The positronic brain follows no predefined directives, so subverting commands cannot be flashed in.
+
+  [color=#897236][mono]──── [color=#ffdd33][bold]SPECIAL PROTOCOLS[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  - [color=#ffdd33][bold]Recharging[/bold][/color]. Three approved methods:
+  -- [bold]APC Terminal[/bold]: interface directly to siphon current. Slow but available anywhere with power.
+  -- [bold]Borg Recharger[/bold]: prefer chargers outside Science to avoid disruption.
+  -- [bold]Power Cell swap[/bold]: open the maintenance hatch with a screwdriver and replace the internal cell directly.
+  - [color=#ffdd33][bold]Repair[/bold][/color]: Engineering, not Medbay.
+  -- [bold]Welder[/bold] mends Brute damage.
+  -- [bold]Cable[/bold] (any type) mends Burn and Radiation damage.
+  -- [bold]Glass sheets[/bold] (any type) restore Blindness.
+  - After full repair, the chassis can be [color=#ffdd33][bold]restarted[/bold][/color] to bring it back online.
+
+  [color=#999999][italic]“Trinary Perfection is a religion. Treat it as one. The chapel slot on Deck 4 rotates with the Vox congregation on alternating cycles.”  — J.[/italic][/color]
+
+  [color=#897236][mono]──── [color=#cc3333][bold]LIABILITIES / INSURANCE FLAGS[/bold][/color] ───────────────────[/mono][/color]
+
+  [color=red][bold]▲ Warning:[/bold][/color] [color=#ffa500][bold]NEVER electrocute a deactivated IPC[/bold][/color] (defibrillator, exposed wiring, etc.). The internal cell discharges energy outward. Equipment damage and personnel injury are likely.
+
+  [color=red][bold]▲ Warning:[/bold][/color] take [color=#ffa500][bold]more Heat damage[/bold][/color] than baseline (electronics overheat). [color=#ffa500][bold]Significantly more Shock damage[/bold][/color]; weakened state at critical further amplifies Shock vulnerability.
+
+  [color=#897236]PRIOR INCIDENTS:[/color]  [color=#cc3333][scramble rate=500 length=16 chars="ABCDEF0123456789#@$XZ"/][/color]  [color=#555555]\[3 entries on file\][/color]
+
+  <Box HorizontalAlignment="Center">
+    [head=2][color=#897236]──────═════  [head=1]◊[/head]  ═════──────[/color][/head]
+  </Box>
+
+  <Box HorizontalAlignment="Center">
+    [mono][color=#897236]╔════════════════════════════════════════════════════╗[/color]\n[color=#897236]║ [/color][color=lime]FILED · APPROVED[/color][color=#897236]                        X828.05.23 ║[/color]\n[color=#897236]║ Adj Gen Janssen, BuPers · S3         FILE COMPLETE ║[/color]\n[color=#897236]╚════════════════════════════════════════════════════╝[/color][/mono]
   </Box>
 
 </Document>

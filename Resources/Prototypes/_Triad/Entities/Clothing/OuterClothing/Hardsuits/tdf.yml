@@ -1,15 +1,15 @@
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseClass2AShipContraband]
+  parent: [ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
   id: ClothingOuterHardsuitTdf
   name: TA-21 hardsuit
   description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
   components:
   - type: Sprite
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -43,17 +43,19 @@
     vendPrice: 7500
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuit
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
-  parent: [ClothingOuterHardsuitTdf, BaseClass2AShipContraband]
+  parent: ClothingOuterHardsuitTdf
   id: ClothingOuterHardsuitTdfMedic
-  name: TA-21 medic hardsuit
+  name: TA-21M medic hardsuit
   description: Medic variant of the TA-21 outfitted with caustic and radiological shielding. Some of the blunt-absorbent gel layer is sacrificed for the NBC protection.
   components:
   - type: Sprite
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi
   - type: Clothing
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.65
   - type: Armor
@@ -66,6 +68,9 @@
         Radiation: 0.2
         Caustic: 0.5
         Poison: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
   - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfMedic
@@ -73,15 +78,48 @@
       helmetattachment: ClothingHeadHelmetAttachmentBlock
 
 - type: entity
-  parent: [ClothingOuterHardsuitTdf, BaseClass2AShipContraband]
+  parent: ClothingOuterHardsuitTdf
+  id: ClothingOuterHardsuitTdfTA29
+  name: TA-29 hardsuit
+  description: An upgraded TA-21 variant. Reinforced armor and advanced protection systems provide greater durability and survivability at the cost of reduced mobility.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta29.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta29.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor #Same value as TSF T2 armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Shock: 0.8
+        Heat: 0.5
+        Radiation: 0.65
+        Caustic: 0.8
+  - type: StaminaDamageResistance
+    coefficient: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfTA29
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+
+- type: entity
+  parent: ClothingOuterHardsuitTdf
   id: ClothingOuterHardsuitTdfChiefEnforcer
-  name: TDF TA-35 'gilded' chief enforcer tacsuit
+  name: TA-35 'gilded' chief enforcer tacsuit
   description: A powerful tacsuit made from remains of a NT bulwark modsuit. Lightweight and capable of taking a lot of physical damage. A premium tacsuit for only the most prestiged of TDF enforcers.
   components:
   - type: Sprite
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-chief.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta35.rsi
   - type: Clothing
-    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-chief.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta35.rsi
   - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfChiefEnforcer
@@ -111,3 +149,5 @@
     coefficient: 0.35
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuitHighValue
+  - type: ContrabandPermittable
+    permittable: false # Hell no

@@ -4,5 +4,25 @@
   name: TDF duffel bag
   description: A large duffel bag for holding extra militia related goods.
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Back/Duffels/tdf.rsi
+
+- type: entity
+  parent: NFClothingDuffel
+  id: ClothingBackpackDuffelMilitary
+  name: militarized duffel bag
+  description: This is evidently repurposed from some industrial use.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Duffels/generic_military.rsi
+
+- type: entity
+  parent: NFClothingDuffel
+  id: ClothingBackpackDuffelBlueDiamond
+  name: blue diamond PMC duffel bag
+  description: Part of the load bearing system that Blue Diamond Military Contracting of the Solarian Directive uses. Heavy!
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Duffels/blue_diamond.rsi

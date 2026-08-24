@@ -4,10 +4,24 @@
   entityIcon: ClothingOuterHardsuitTdf
   discipline: TdfEquipment
   tier: 1
-  cost: 15000
+  cost: 20000
   recipeUnlocks:
   - ClothingOuterHardsuitTdfMedic
   - ClothingOuterHardsuitTdf
   technologyPrerequisites:
   - UniversalMaterialResearchT1
   position: 12, 1
+
+- type: technology
+  id: TdfAdvancedEquipment
+  name: research-technology-Tdf-advanced-equipment
+  entityIcon: ClothingOuterHardsuitTdfTA29
+  discipline: TdfEquipment
+  tier: 2
+  cost: 35000
+  recipeUnlocks:
+  - ClothingOuterHardsuitTdfTA29
+  technologyPrerequisites:
+  - TdfBasicEquipment
+  - UniversalMaterialResearchT2
+  position: 12, 3

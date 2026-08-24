@@ -1,13 +1,23 @@
 name: Build & Run Shipyard Tests
 
 on:
+  # Triad: the `paths` filter is commented out rather than deleted. `Build & Run Shipyard
+  # Tests` is a required check, and a required check that never runs sits as "expected" and
+  # blocks the merge forever. The job is ~6m and runs concurrently with Build & Test Debug
+  # (~10m), so always running it costs no wall-clock.
   pull_request:
     branches: [ "main" ]
-    paths:
-      - "Resources/Maps/_Mono/Shuttles/**/*.yml" # Ship grids, Mono - set to mono files
-      - "Resources/Prototypes/_Mono/Shipyard/**/*.yml" # Shipyard prototypes, Mono - set to mono files
-      - "Content.IntegrationTests/Tests/_NF/ShipyardTests.cs" # Shipyard tests
-      - "Resources/Prototypes/Entities/**/*.yml" # Mono Change, run when an entity may have changed price
+    # paths:
+    #   - "Resources/Maps/_Mono/Shuttles/**/*.yml" # Ship grids, Mono - set to mono files
+    #   - "Resources/Prototypes/_Mono/Shipyard/**/*.yml" # Shipyard prototypes, Mono - set to mono files
+    #   - "Content.IntegrationTests/Tests/_NF/ShipyardTests.cs" # Shipyard tests
+    #   - "Resources/Prototypes/Entities/**/*.yml" # Mono Change, run when an entity may have changed price
+
+# Triad: this workflow had no concurrency group, so pushing twice to a PR ran both to
+# completion. Only ever cancel PR runs, matching the other validators.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -17,10 +27,11 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30 # Triad: builds the whole project before testing.
 
     steps:
     - name: Checkout Master
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v7
 
     - name: Setup Submodule
       run: |
@@ -35,7 +46,7 @@ jobs:
         git submodule update --init --recursive
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 
@@ -49,7 +60,18 @@ jobs:
       shell: pwsh
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --filter FullyQualifiedName~ShipyardTest -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --filter FullyQualifiedName~ShipyardTest -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
+
+    # Triad: shipyard failures are usually a per-ship price mismatch, which is unreadable
+    # without the per-test XML.
+    - name: Archive NUnit3 test results.
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: nunit3-results-shipyard-${{ matrix.os }}
+        path: test_results/*
+        retention-days: 7
+        compression-level: 9
   ci-success:
     name: Build & Run Shipyard Tests
     needs:

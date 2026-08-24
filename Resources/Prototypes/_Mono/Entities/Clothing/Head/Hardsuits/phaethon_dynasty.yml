@@ -1,8 +1,8 @@
 - type: entity
-  parent: [ClothingHeadHelmetHardsuitSyndie, ShowSecurityIcons]
+  parent: [ClothingHeadHelmetHardsuitSyndie]
   id: ClothingHeadHelmetHardsuitAshen
-  name: PDV CV-32 combat hardsuit helmet
-  description: A combat hardsuit helmet designed by the Phaethon Dynasty. A basic monotube night vision system is installed.
+  name: midnight operative special tacticool helmet
+  description: Man, it doesn't even have the signature eye placement.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

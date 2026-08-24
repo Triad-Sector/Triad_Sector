@@ -2,7 +2,8 @@
   parent: HeatExchanger
   id: HeatExchangerInline
   name: inline radiator
-  description: Transfers heat between the pipe and its surroundings. Doesn't need gas flow.
+  suffix: DEPRECATED # Triad: uncraftable legacy; zero-flow device only gets the static conductance floor
+  description: An obsolete radiator design with no flow path. Transfers a trickle of heat between the pipe and its surroundings. A standard radiator with proper coolant flow far outperforms it.
   components:
   - type: Sprite
     sprite: _Goobstation/Structures/Piping/inlineradiator.rsi
@@ -12,6 +13,10 @@
       map: [ "enum.PipeVisualLayers.Pipe" ]
     - state: heInlineStraight
       map: [ "enum.SubfloorLayers.FirstLayer" ]
+    - state: heInlineStraight # Triad: glow overlay (visualizer inherited from HeatExchanger)
+      map: [ "enum.RadiatorVisualLayers.Glow" ]
+      shader: unshaded
+      visible: false
   - type: HeatExchanger
     inlet: pipe
     outlet: pipe
@@ -36,6 +41,10 @@
         map: [ "enum.PipeVisualLayers.Pipe" ]
       - state: heInlineBend
         map: [ "enum.SubfloorLayers.FirstLayer" ]
+      - state: heInlineBend # Triad: glow overlay
+        map: [ "enum.RadiatorVisualLayers.Glow" ]
+        shader: unshaded
+        visible: false
     - type: HeatExchanger
       inlet: pipe
       outlet: pipe

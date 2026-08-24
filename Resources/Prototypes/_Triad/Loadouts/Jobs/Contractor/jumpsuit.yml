@@ -39,3 +39,9 @@
   price: 0
   equipment:
     jumpsuit: ClothingUniformMNKTracksuitBlack
+
+- type: loadout
+  id: ClothingUniformIndustrialWorker
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformIndustrialWorker

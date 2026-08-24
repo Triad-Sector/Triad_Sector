@@ -14,9 +14,9 @@ namespace Content.Client._DV.Traits.UI;
 [GenerateTypedNameReferences]
 public sealed partial class TraitsTab : BoxContainer
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IStylesheetManager _stylesheet = default!; // Mono - Backport of Sheetlet to stylesheet
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IStylesheetManager _stylesheet = default!; // Mono - Backport of Sheetlet to stylesheet
 
     /// <summary>
     /// Event fired when trait selection changes.

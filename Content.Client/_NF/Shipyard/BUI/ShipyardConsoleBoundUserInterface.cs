@@ -14,11 +14,11 @@ using Robust.Client.Player; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
-public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
+public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPlayerManager _player = default!; // Triad
-    [Dependency] private readonly ShipFileManagementSystem _shipFileManagementSystem = default!;
-    [Dependency] private readonly IConfigurationManager _configManager = default!; // Triad
+    [Dependency] private IPlayerManager _player = default!; // Triad
+    [Dependency] private ShipFileManagementSystem _shipFileManagementSystem = default!;
+    [Dependency] private IConfigurationManager _configManager = default!; // Triad
 
     private ISawmill _sawmill = default!;
 

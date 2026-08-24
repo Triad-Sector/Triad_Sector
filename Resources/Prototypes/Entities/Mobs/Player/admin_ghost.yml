@@ -19,6 +19,7 @@
     context: "aghost"
   - type: Ghost
     canInteract: true
+  - type: AdminGhost
   - type: GhostHearing
   - type: Hands
   - type: ComplexInteraction
@@ -116,6 +117,7 @@
     - Biological
     - Inorganic
   - type: ShowSyndicateIcons # Monolith
+  - type: ContrabandPermitGranter # Triad
 
 - type: entity
   id: ActionAGhostShowSolar

@@ -22,3 +22,6 @@
     rechargeDuration: 60
   - type: LimitedCharges
     maxCharges: 12
+  - type: Tag
+    tags:
+    - CivilianHoloprojector

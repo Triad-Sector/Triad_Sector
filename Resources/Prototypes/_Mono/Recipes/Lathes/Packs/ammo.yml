@@ -109,7 +109,6 @@
   - Magazine762x39mmPractice
   - Magazine762x39mmEmpty
   - Magazine762x39mmUranium
-  - MagazineDP29
   - Magazine762x39mmSubsonic
   - Magazine762x39mmHP
   - Magazine762x39mmRIP
@@ -781,8 +780,8 @@
   - AmmoBox68x52mmHP
 
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
 
@@ -949,16 +948,13 @@
   - AmmoBox145x114mm
   - AmmoBox145x114mmBig
 
-#DP
-  - MagazineDP29
-
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+#  - LargePowerCell400Thz
+#  - LargePowerCell700Thz
 
 #Big Ammo Boxes
   - AmmoBox762x39mmBigFMJ
@@ -969,7 +965,7 @@
   - AmmoBox45_magnumBigFMJ
   - AmmoBox46x30mmBigFMJ
   - AmmoBox556x45mmBigFMJ
-  - AmmoBox57x28mmBigFMJ
+#  - AmmoBox57x28mmBigFMJ
   - AmmoBox635x40mmCaselessBig #PDV
   - AmmoBox68x52mmCaselessBig #TSF
 
@@ -980,9 +976,9 @@
   id: EnergyAmmo # All energy ammo (which isn't a lot.)
   recipes:
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+#  - LargePowerCell400Thz
+#  - LargePowerCell700Thz

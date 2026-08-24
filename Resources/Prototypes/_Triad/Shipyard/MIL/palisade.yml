@@ -26,7 +26,7 @@
   minPlayers: 0
   stations:
     Palisade:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardTriadExpedVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Palisade MIL{1}'

@@ -1,0 +1,38 @@
+﻿# Author Info
+# by mauve <3 (@mauvelikeroses on discord)
+
+- type: vessel
+  id: Behir
+  parent: BaseVessel
+  name: DIRE Behir
+  description: What was once, an abandoned cargo shuttle, crashed and left for nothing, now the Serpentine beast that flies before you.
+  price: 112000
+  category: Medium
+  group: Expedition
+  shuttlePath: /Maps/_Triad/Shuttles/EXP/behir.yml
+  guidebookPage: ShipyardBehir
+  class:
+  - Expedition
+  - Salvage
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Behir
+  mapName: 'Behir'
+  mapPath: /Maps/_Triad/Shuttles/EXP/behir.yml
+  minPlayers: 0
+  stations:
+    Behir:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Behir EXP{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]

@@ -26,9 +26,9 @@ namespace Content.Client.Guidebook.Controls;
 [GenerateTypedNameReferences]
 public sealed partial class GuideEntityEmbed : BoxContainer, IDocumentTag
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntitySystemManager _systemManager = default!;
-    [Dependency] private readonly IUserInterfaceManager _ui = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntitySystemManager _systemManager = default!;
+    [Dependency] private IUserInterfaceManager _ui = default!;
 
     private readonly TagSystem _tagSystem;
     private readonly ExamineSystem _examineSystem;
@@ -135,7 +135,7 @@ public sealed partial class GuideEntityEmbed : BoxContainer, IDocumentTag
     {
         if (!args.TryGetValue("Entity", out var proto))
         {
-            Logger.Error("Entity embed tag is missing entity prototype argument");
+            Log.Error("Entity embed tag is missing entity prototype argument");
             control = null;
             return false;
         }

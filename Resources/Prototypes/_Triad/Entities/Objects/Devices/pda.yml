@@ -19,6 +19,9 @@
   - type: Icon
     sprite: _Triad/Objects/Devices/pda.rsi
     state: pda
+  - type: Tag # Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
 
 - type: entity
   parent: TriadBasePDA
@@ -41,6 +44,7 @@
     - BountyContractsCartridge
     - AstroNavCartridge
     - WantedListCartridge
+    - TriTalkCartridge # Triad
   - type: PdaBorderColor
     borderColor: "#515151"
     accentVColor: "#858321"
@@ -102,6 +106,7 @@
     - AstroNavCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - TriTalkCartridge # Triad
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -171,6 +176,7 @@
     - AstroNavCartridge
     - WantedListCartridge
     - LedgerCartridge
+    - TriTalkCartridge # Triad
 
 - type: entity
   parent: TdfChiefPda

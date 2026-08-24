@@ -22,6 +22,10 @@ max_connections = 256
 tickrate = 30
 port = 25663
 bindto = "::,0.0.0.0"
+# Triad: clients on a slow link routinely land an input a tick or two late, which is normal and not
+# actionable, but the engine warns per message. It was the single largest line source in our logs.
+# Monolith turns it off in its own preset for the same reason.
+log_late_msg = false
 # Automatic port forwarding!
 # Disabled by default because you may not want to do this.
 # upnp = true

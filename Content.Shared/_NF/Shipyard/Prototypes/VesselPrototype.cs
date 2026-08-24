@@ -134,6 +134,12 @@ public sealed partial class VesselPrototype : IPrototype, IInheritingPrototype
     /// </summary>
     [DataField]
     public List<string> Company = new();
+
+    /// <summary>
+    ///     Triad - The tag used for priority docks when buying the ship. Set to null to have no priority dock tag.
+    /// </summary>
+    [DataField]
+    public string? PriorityDockTag;
 }
 
 public enum VesselSize : byte

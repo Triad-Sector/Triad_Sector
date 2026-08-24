@@ -14,6 +14,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
 {
     private readonly IEntityManager _entManager;
     private readonly SharedTransformSystem _transform;
+    private readonly SpriteSystem _sprite;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
     private Dictionary<EntityUid, EntityUid> _effectList = new();
@@ -22,6 +23,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
     {
         _entManager = entManager;
         _transform = _entManager.EntitySysManager.GetEntitySystem<SharedTransformSystem>();
+        _sprite = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>();
     }
 
     /// <summary>
@@ -33,23 +35,24 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
         var spriteQuery = _entManager.GetEntityQuery<SpriteComponent>();
         var xformQuery = _entManager.GetEntityQuery<TransformComponent>();
 
-        foreach (var humanoid in _entManager.EntityQuery<HumanoidAppearanceComponent>(true))
+        var humanoids = _entManager.AllEntityQueryEnumerator<HumanoidAppearanceComponent>();
+        while (humanoids.MoveNext(out var uid, out _))
         {
-            if (!spriteQuery.TryGetComponent(humanoid.Owner, out var sprite))
+            if (!spriteQuery.TryGetComponent(uid, out var sprite))
             {
                 continue;
             }
 
-            if (!xformQuery.TryGetComponent(humanoid.Owner, out var xform))
+            if (!xformQuery.TryGetComponent(uid, out var xform))
             {
                 continue;
             }
 
-            if (sprite.Visible && !_effectList.ContainsKey(humanoid.Owner))
+            if (sprite.Visible && !_effectList.ContainsKey(uid))
             {
-                sprite.Visible = false;
+                _sprite.SetVisible((uid, sprite), false);
                 var effect = _entManager.SpawnEntity("EffectUnknownHumanoid", xform.Coordinates);
-                _effectList.Add(humanoid.Owner, effect);
+                _effectList.Add(uid, effect);
             }
         }
 
@@ -81,7 +84,7 @@ public sealed class IgnoreHumanoidsOverlay : Overlay
             _effectList.Remove(underlying);
 
             if (_entManager.TryGetComponent<SpriteComponent>(underlying, out var sprite))
-                sprite.Visible = true;
+                _sprite.SetVisible((underlying, sprite), true);
         }
     }
 }

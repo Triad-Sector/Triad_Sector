@@ -1,6 +1,7 @@
 using Content.Shared.Administration.Managers; // Triad
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
+using Content.Shared.Whitelist;
 
 namespace Content.Shared._Mono.Company;
 
@@ -11,6 +12,7 @@ namespace Content.Shared._Mono.Company;
 public sealed partial class CompanyAccessReaderSystem : EntitySystem
 {
     [Dependency] private ISharedAdminManager _admin = default!; // Triad
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
     [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -25,15 +27,22 @@ public sealed partial class CompanyAccessReaderSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        if (_admin.IsAdmin(args.User)) // Triad - Admins ignore this
+        var user = args.User;
+
+        // Triad start
+        if (_admin.IsAdmin(user))
             return;
 
+        if (entity.Comp.IgnoreWhitelist is { } whitelist && _whitelist.IsValid(whitelist, user))
+            return;
+        // Triad end
+
         // Get user's company
-        if (!TryComp<CompanyComponent>(args.User, out var userCompany))
+        if (!TryComp<CompanyComponent>(user, out var userCompany))
         {
             args.Cancel();
             if (entity.Comp.PopupMessage != null)
-                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, args.User);
+                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, user);
             return;
         }
 
@@ -42,7 +51,7 @@ public sealed partial class CompanyAccessReaderSystem : EntitySystem
         {
             args.Cancel();
             if (entity.Comp.PopupMessage != null)
-                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, args.User);
+                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, user);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Content.Shared.PDA
         public const string PdaPenSlotId = "PDA-pen";
         public const string PdaPaiSlotId = "PDA-pai";
         public const string PdaBookSlotId = "PDA-book";
+        public const string PdaProjectorSlotId = "PDA-projector"; //Triad Edit
 
         [DataField("idSlot")]
         public ItemSlot IdSlot = new();
@@ -25,6 +26,9 @@ namespace Content.Shared.PDA
 
         [DataField("bookSlot")]
         public ItemSlot BookSlot = new();
+
+        [DataField]     // Triad Edit
+        public ItemSlot ProjectorSlot = new();
 
         // Really this should just be using ItemSlot.StartingItem. However, seeing as we have so many different starting
         // PDA's and no nice way to inherit the other fields from the ItemSlot data definition, this makes the yaml much

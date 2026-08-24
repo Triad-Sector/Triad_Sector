@@ -26,8 +26,8 @@ namespace Content.Client.Options.UI.Tabs
             EngineKeyFunctions.HideUI,
         };
 
-        [Dependency] private readonly IInputManager _inputManager = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private IInputManager _inputManager = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
 
         private BindButton? _currentlyRebinding;
 
@@ -282,6 +282,14 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.TargetRightLeg);
             AddButton(ContentKeyFunctions.TargetRightFoot);
             // Shitmed Change End
+
+            // Triad: TriTalk keybinds
+            AddHeader("ui-options-header-nano-chat");
+            AddButton(ContentKeyFunctions.NanoChatNavigateUp);
+            AddButton(ContentKeyFunctions.NanoChatNavigateDown);
+            AddButton(ContentKeyFunctions.NanoChatNavigateUpUnread);
+            AddButton(ContentKeyFunctions.NanoChatNavigateDownUnread);
+            // End Triad
 
             AddHeader("ui-options-header-misc");
             AddButton(ContentKeyFunctions.TakeScreenshot);

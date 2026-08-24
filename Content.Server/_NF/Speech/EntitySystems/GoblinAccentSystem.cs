@@ -14,10 +14,10 @@ namespace Content.Server._NF.Speech.EntitySystems;
 // (the/this/that/them/with...) are handled earlier by the word list (da/dis/dat/dem/wiv) and the
 // "the -> da" pass, so they never reach the f/v rule. -er is a clean non-rhotic -ah (water -> watah),
 // and g-dropping goes through the shared keep-list so king/ring survive.
-public sealed class GoblinAccentSystem : EntitySystem
+public sealed partial class GoblinAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     private static readonly Regex RegexThe = new(@"\bthe\b", RegexOptions.IgnoreCase);
     // Voiced th between vowels -> v (mother -> mover, weather -> weaver). Keeps the flanking vowels.

@@ -928,18 +928,24 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,23.5
       parent: 1
+    - type: PriorityDock # Triad: bus berth; open space north, no side preference needed
+      tag: DockTransit
   - uid: 1149
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,23.5
       parent: 1
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1150
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,23.5
       parent: 1
+    - type: PriorityDock # Triad
+      tag: DockTransit
   - uid: 1151
     components:
     - type: Transform

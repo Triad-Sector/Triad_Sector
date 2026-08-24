@@ -23,7 +23,7 @@
     brokenState: broken
     normalState: normal-unshaded
   - type: MarketModifier
-    mod: 15 # for the love of god don't ever set this to 1 again
+    mod: 25 # Triad - 15 -> 25 | You could make infinite money because the drive had fissile in it worth 50k
   - type: Sprite
     sprite: _Mono/Structures/Machines/VendingMachines/drivevend.rsi
     layers:
@@ -34,33 +34,6 @@
       shader: unshaded
     - state: panel
       map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-
-- type: entity
-  parent: [VendingMachineAstroVend, BaseStructureDisableAnchoring]
-  id: VendingMachineUSSP
-  name: USSP Automated Requisition Vendor
-  description: Sells various USSP equipment.
-  suffix: POI
-  components:
-  - type: VendingMachine
-    pack: USSPVendInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-  - type: MarketModifier
-    mod: 8
-  - type: Sprite
-    sprite: _Mono/Structures/Machines/VendingMachines/usspvend.rsi
-    layers:
-    - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.Base" ]
-    - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-    - state: panel
-      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-  - type: AccessReader
-    access: [["Mercenary"], ["Security"]]
 
 - type: entity
   parent: [BaseStructureDisableToolUse, VendingMachineSyndieContraband]

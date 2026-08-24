@@ -4,5 +4,25 @@
   name: TDF satchel
   description: A robust satchel for holding militia stuff.
   components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
   - type: Sprite
     sprite: _Triad/Clothing/Back/Satchels/tdf.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelMilitary
+  name: militarized satchel
+  description: This is evidently repurposed from some industrial use.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Satchels/generic_military.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelBlueDiamond
+  name: blue diamond PMC satchel
+  description: Part of the load bearing system that Blue Diamond Military Contracting of the Solarian Directive uses.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Satchels/blue_diamond.rsi

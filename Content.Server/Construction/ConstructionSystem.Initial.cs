@@ -26,14 +26,14 @@ namespace Content.Server.Construction
 {
     public sealed partial class ConstructionSystem
     {
-        [Dependency] private readonly IComponentFactory _factory = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-        [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-        [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-        [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+        [Dependency] private IComponentFactory _factory = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+        [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+        [Dependency] private SharedHandsSystem _handsSystem = default!;
+        [Dependency] private EntityLookupSystem _lookupSystem = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
         // --- WARNING! LEGACY CODE AHEAD! ---
         // This entire file contains the legacy code for initial construction.
@@ -266,20 +266,29 @@ namespace Content.Server.Construction
                 return null;
             }
 
-            var doAfterArgs = new DoAfterArgs(EntityManager, user, doAfterTime, new AwaitedDoAfterEvent(), null)
+            // Triad: doAfterTime is summed from the graph steps and most initial constructions have no
+            // timed step at all, so it lands on zero. WaitDoAfter starts the DoAfter, then notices the
+            // delay is not positive, warns and returns Finished without ever awaiting it, which both
+            // orphans the DoAfter it just created and logs. That was ~21k warnings a week in prod, since
+            // this runs for every girder and machine frame anyone puts down. Skip the wait entirely when
+            // there is nothing to wait for, matching what SpawnAfterInteractSystem already does.
+            if (doAfterTime > 0)
             {
-                BreakOnDamage = true,
-                BreakOnMove = true,
-                NeedHand = false,
-                // allow simultaneously starting several construction jobs using the same stack of materials.
-                CancelDuplicate = false,
-                BlockDuplicate = false,
-            };
+                var doAfterArgs = new DoAfterArgs(EntityManager, user, doAfterTime, new AwaitedDoAfterEvent(), null)
+                {
+                    BreakOnDamage = true,
+                    BreakOnMove = true,
+                    NeedHand = false,
+                    // allow simultaneously starting several construction jobs using the same stack of materials.
+                    CancelDuplicate = false,
+                    BlockDuplicate = false,
+                };
 
-            if (await _doAfterSystem.WaitDoAfter(doAfterArgs) == DoAfterStatus.Cancelled)
-            {
-                FailCleanup();
-                return null;
+                if (await _doAfterSystem.WaitDoAfter(doAfterArgs) == DoAfterStatus.Cancelled)
+                {
+                    FailCleanup();
+                    return null;
+                }
             }
 
             var newEntityProto = graph.Nodes[edge.Target].Entity.GetId(null, user, new(EntityManager));
@@ -539,7 +548,7 @@ namespace Content.Server.Construction
                 return false;
             }
 
-            var mapPos = location.ToMap(EntityManager, _transformSystem);
+            var mapPos = _transformSystem.ToMapCoordinates(location);
             var predicate = GetPredicate(constructionPrototype.CanBuildInImpassable, mapPos);
 
             if (!_interactionSystem.InRangeUnobstructed(user, mapPos, predicate: predicate))
@@ -591,13 +600,18 @@ namespace Content.Server.Construction
             }
 
 
+            // Triad: `angle` is the client ghost's LocalRotation and reaches SpawnAttachedTo unmodified, which writes
+            // it straight to the structure's LocalRotation. Construction is tile-aligned and the conditions checked
+            // above already reduce this value with GetCardinalDir(), so snap here too rather than trusting the wire:
+            // it keeps a mid-lerp camera from baking a fraction of a turn into a permanent structure, and stops a
+            // modified client sending an arbitrary angle.
             if (await Construct(user,
                     (ack + constructionPrototype.GetHashCode()).ToString(),
                     constructionGraph,
                     edge,
                     targetNode,
                     location,
-                    constructionPrototype.CanRotate ? angle : Angle.Zero) is not {Valid: true} structure)
+                    constructionPrototype.CanRotate ? angle.GetCardinalDir().ToAngle() : Angle.Zero) is not {Valid: true} structure)
             {
                 Cleanup();
                 return false;

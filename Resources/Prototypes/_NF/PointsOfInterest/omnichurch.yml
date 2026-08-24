@@ -16,6 +16,9 @@
   maximumDistance: 6900
   gridPath: /Maps/_NF/POI/beacon.yml
   addComponents:
+  # Triad: on the bus route. Berth is the north-face door triple on the dock structure, uids
+  # 1148-1150 in the map, tagged DockTransit.
+  - type: StationTransit
   - type: SolarPoweredGrid
     trackOnInit: true
     doNotCull: true

@@ -9,9 +9,9 @@ using Robust.Shared.IoC;
 
 namespace Content.Server._Triad.Shipyard.Persistence;
 
-public sealed class TriadShipyardAuditLogStore : ITriadShipyardAuditLog
+public sealed partial class TriadShipyardAuditLogStore : ITriadShipyardAuditLog
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public Task RecordAsync(TriadShipyardAuditEvent ev, CancellationToken ct)
     {

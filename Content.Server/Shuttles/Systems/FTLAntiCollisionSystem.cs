@@ -21,15 +21,15 @@ namespace Content.Server.Shuttles.Systems;
 /// This solves the problem of ships "merging" together when they FTL to the same destination
 /// coordinates, which can cause visual glitches, physics issues, and gameplay problems.
 /// </summary>
-public sealed class FTLAntiCollisionSystem : EntitySystem
+public sealed partial class FTLAntiCollisionSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ShuttleSystem _shuttle = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly DockingSystem _dockingSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ShuttleSystem _shuttle = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private DockingSystem _dockingSystem = default!;
+    [Dependency] private EntityLookupSystem _lookupSystem = default!;
 
     // How far to check for other ships
     private const float CollisionCheckRange = 30f;
@@ -77,6 +77,19 @@ public sealed class FTLAntiCollisionSystem : EntitySystem
         if (TryComp<FTLComponent>(shuttle, out var ftlComp) && ftlComp.LinkedShuttle.HasValue)
             return;
 
+        // Triad: a ship that arrived docked is exactly where it asked to be, and the grid it welded to
+        // always sits within MinimumSafeDistance of it. GetAllDockedShuttles does not vouch for that
+        // grid (an FTLSolo shuttle's set is just itself, and stations carry no FTLLock), so the berth
+        // read as a collision and FindSafePosition, with the station blocking every candidate spot,
+        // fell through to its unchecked last resort: the docked bus teleported a few hundred metres in
+        // a random direction with the weld joint still attached. Separation is for proximity arrivals;
+        // a docked arrival is never a collision.
+        foreach (var dock in _dockingSystem.GetDocks(shuttle))
+        {
+            if (dock.Comp.Docked)
+                return;
+        }
+
         // Get all docked ships to this shuttle to ignore them in collision checks
         var dockedShips = new HashSet<EntityUid>();
         _shuttle.GetAllDockedShuttles(shuttle, dockedShips);
@@ -88,9 +101,11 @@ public sealed class FTLAntiCollisionSystem : EntitySystem
 
         // Find nearby grids
         var nearbyGrids = new List<(EntityUid Entity, float Distance)>();
-        foreach (var otherGrid in _mapManager.FindGridsIntersecting(mapId, new Box2(
+        var intersecting = new List<Entity<MapGridComponent>>();
+        _map.FindGridsIntersecting(mapId, new Box2(
             shuttlePosition - new Vector2(range, range),
-            shuttlePosition + new Vector2(range, range))))
+            shuttlePosition + new Vector2(range, range)), ref intersecting);
+        foreach (var otherGrid in intersecting)
         {
             // Skip self
             if (otherGrid.Owner == shuttle)
@@ -187,6 +202,10 @@ public sealed class FTLAntiCollisionSystem : EntitySystem
         var lastResortAngle = _random.NextAngle();
         var lastResortOffset = lastResortAngle.ToVec() * lastResortDistance;
 
+        // Triad: unlike every attempt above, this position is never checked for clearance. If a ship
+        // ends up inside a hull after FTL, this line is the receipt.
+        Log.Warning($"FTL Anti-Collision: no clear position found for {ToPrettyString(shuttle)}; using unchecked last-resort offset of {lastResortDistance}m.");
+
         return originalPosition + lastResortOffset;
     }
 
@@ -205,9 +224,11 @@ public sealed class FTLAntiCollisionSystem : EntitySystem
         var checkSize = shipSize + MinimumSafeDistance;
 
         // Check for grids in the area
-        foreach (var otherGrid in _mapManager.FindGridsIntersecting(mapId, new Box2(
+        var intersecting = new List<Entity<MapGridComponent>>();
+        _map.FindGridsIntersecting(mapId, new Box2(
             position - new Vector2(checkSize, checkSize),
-            position + new Vector2(checkSize, checkSize))))
+            position + new Vector2(checkSize, checkSize)), ref intersecting);
+        foreach (var otherGrid in intersecting)
         {
             // Skip self
             if (otherGrid.Owner == shuttle)

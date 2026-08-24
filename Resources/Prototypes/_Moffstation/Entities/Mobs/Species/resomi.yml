@@ -50,7 +50,7 @@
     prototype: Resomi
     requiredLegs: 2
   # Monolith - Start - MEAT
-  - type: Butcherable 
+  - type: Butcherable
     butcheringType: Spike
     spawned:
     - id: FoodMeatResomi
@@ -84,17 +84,29 @@
   - type: Temperature
     coldDamageThreshold: 195.4 # Freezing point of ammonia is -77.75°C
     heatDamageThreshold: 320.15 # Space chickens can't tolerate reasonable temperatures, but requiring them to stay icy would be cringe, so instead make their heat damage threshold dangerously close to standard atmos, at 47°C
+    currentTemperature: 285 # Triad - lowered base body temp as a quick fix to prevent chickens cooking themselves
     coldDamage:
       types:
         Cold : 0.05 #per second, scales with temperature & other constants
     heatDamage:
       types:
         Heat : 3 #per second, scales with temperature & other constants
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 285 # Triad - lowered base body temp as a quick fix to prevent chickens cooking themselves
+    thermalRegulationTemperatureThreshold: 2
   - type: TemperatureSpeed # You're supposed to be used to the cold why are you so slow
+    baseTemperature: 285 # Triad
     thresholds: # Calculated based on UI alert thresholds, rounded up
       272: 0.8
       242: 0.6
       196: 0.4
+      303: 0.8   # Triad - ~30C, heat-side slowdown
+      310: 0.6   # Triad - ~37C, deeper heat slowdown before damage threshold at 320.15
   - type: MovementSpeedModifier
     weightlessAcceleration: 2.5 # Birb move fast in zero-g
   - type: PseudoItem # Baggable; certified smol ops

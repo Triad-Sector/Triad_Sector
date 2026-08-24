@@ -1,17 +1,18 @@
 using System.IO;
 using Content.Server.Construction.Components;
 using Content.Server.Spreader;
-using Content.Server._HL.Shipyard; // HardLight
-using Content.Shared._Common.Consent; // HardLight
-using Content.Shared._HL.Shipyard; // HardLight
+using Content.Server._HL.Shipyard;
+using Content.Shared._Common.Consent;
+using Content.Shared._HL.Shipyard;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared._NF.Shipyard.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Components;
-using Content.Shared.Mind.Components; // HardLight
-using Content.Shared.Wall; // WallMountComponent for preserving wall-mounted fixtures
+using Content.Shared.Materials.OreSilo;
+using Content.Shared.Mind.Components;
+using Content.Shared.Wall;
 using Robust.Shared.Containers;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
@@ -19,7 +20,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes; // HardLight
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using YamlDotNet.Core;
@@ -43,6 +44,7 @@ using Robust.Shared.Configuration;
 using Content.Server.GameTicking;
 using Content.Server.StationRecords.Components;
 using Content.Server.StationRecords.Systems;
+using Content.Shared._Triad.ContrabandPermit;
 
 namespace Content.Server._Triad.Shipyard;
 
@@ -60,7 +62,8 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     [Dependency] private SharedContainerSystem _containerSystem = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!; // HardLight
+    [Dependency] private SharedOreSiloSystem _oreSilo = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private ShuttleRecordsSystem _shuttleRecords = default!;
@@ -275,61 +278,10 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
 
         try
         {
-            // Clean up broken device links before serialization
-            CleanupBrokenDeviceLinks(gridUid);
-
-            // Purge invalid entities
-            PurgeInvalidEntities(gridUid);
-
-            // remove any edge spreaders, we cannot save these
-            RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
-
-            // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
-            ResetFabricatorsOnGrid(gridUid);
-
-            // reset station records computers to prevent errors with StationRecordsFilter
-            ResetGeneralRecordsConsolesOnGrid(gridUid);
-
-            // Remove repair data, it is re-added on load
-            RemComp<ShipRepairDataComponent>(gridUid);
-
-            // Remove SpreaderGrid component from grid;
-            RemComp<SpreaderGridComponent>(gridUid);
-
-            //_sawmill.Info($"Serializing ship grid {gridUid} as '{shipName}' after transient purge using direct serialization");
-
-            // 1) Serialize the grid and its children to a MappingDataNode (engine-standard format)
-            var entities = new HashSet<EntityUid> { gridUid };
-            // Prefer AutoInclude to pull in dependent entities; we'll sanitize nullspace and parents out below
-            var opts = SerializationOptions.Default with
-            {
-                // Do NOT auto-include referenced entities (players/admin observers/etc.).
-                // This prevents exceptions when encountering unserializable entities and keeps saves scoped to the grid.
-                MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
-                ErrorOnOrphan = false,
-                // Disable auto-include logging to avoid excessive log spam/lag during saves.
-                LogAutoInclude = null
-            };
-
-
-            // triad start
-            // these three lines were lifted from the loading code, and should be refactored into a function at some point
-            var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
-            var fullAppraisal = _pricing.AppraiseGrid(gridUid, null);
-            var appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
-            // triad end
-
-            var (node, category) = _mapLoader.SerializeEntitiesRecursive(entities, opts);
-            /* if (category != FileCategory.Grid)
-            {
-                _sawmill.Warning($"Expected FileCategory.Grid but got {category}; continuing with sanitation");
-            } */
-
-            // 2) Sanitize the node to match blueprint conventions
-            SanitizeShipSaveNode(node);
-
-            // 3) Convert MappingDataNode to YAML text without touching disk
-            var yaml = WriteYamlToString(node);
+            // The part of a save that can actually fail lives in TryBuildShipSaveYaml, so it can be
+            // exercised without a session, a signing key or a client to deliver to.
+            if (!TryBuildShipSaveYaml(gridUid, out var yaml, out var appraisalCost))
+                return false;
 
             // Triad ship anti-tamper start
             var shipFileBox = _tamperPolicy.SignSave(yaml, appraisalCost);
@@ -372,6 +324,88 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             Logger.GetSawmill("hardlight").Error($"Ship save failed for '{shipName}' on grid {gridUid}: {ex}");
             return false;
         }
+    }
+
+    // The save body, split out of TrySaveGridAsShip so it is testable.
+    /// <summary>
+    /// The serialization options every ship save runs with. Exposed so tests exercise the options the
+    /// live save uses rather than a copy that can drift from them.
+    /// </summary>
+    internal static readonly SerializationOptions ShipSaveSerializationOptions = SerializationOptions.Default with
+    {
+        // Do NOT auto-include referenced entities (players/admin observers/etc.).
+        // This prevents exceptions when encountering unserializable entities and keeps saves scoped to the grid.
+        MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
+        ErrorOnOrphan = false,
+        // Disable auto-include logging to avoid excessive log spam/lag during saves.
+        LogAutoInclude = null
+    };
+
+    /// <summary>
+    /// Runs the pre-save passes over the live grid, serializes it, sanitizes the node and renders the
+    /// YAML. This is everything in a ship save that can throw; signing and delivery stay in
+    /// <see cref="TrySaveGridAsShip"/>. Mutates the grid: the purge and the link cleanup are permanent.
+    /// </summary>
+    /// <returns>False only when <paramref name="gridUid"/> is not a grid. Serialization failures throw.</returns>
+    internal bool TryBuildShipSaveYaml(
+        EntityUid gridUid,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? yaml,
+        out int appraisalCost)
+    {
+        yaml = null;
+        appraisalCost = 0;
+
+        if (!_gridQuery.HasComp(gridUid))
+            return false;
+
+        // Purge invalid entities
+        PurgeInvalidEntities(gridUid);
+
+        // Runs AFTER the purge so it sees the final entity set. In practice the engine already drops
+        // links to purged sinks (SharedDeviceLinkSystem.OnSinkRemoved fires on ComponentRemove during
+        // Del), so this ordering is defensive rather than load-bearing; the fix that matters is the
+        // off-grid test inside CleanupBrokenDeviceLinks.
+        // Clean up broken device links before serialization
+        CleanupBrokenDeviceLinks(gridUid);
+
+        // Same treatment for ore-silo links, which are the other two-way EntityUid link on a ship.
+        CleanupOffGridOreSiloLinks(gridUid);
+
+        // remove any edge spreaders, we cannot save these
+        RemoveEdgeSpreaderComponentComponentsOnGrid(gridUid);
+
+        // Reset fabricators: disable loop/skip and cancel active jobs to prevent mid-save exceptions
+        ResetFabricatorsOnGrid(gridUid);
+
+        // reset station records computers to prevent errors with StationRecordsFilter
+        ResetGeneralRecordsConsolesOnGrid(gridUid);
+
+        // Remove repair data, it is re-added on load
+        RemComp<ShipRepairDataComponent>(gridUid);
+
+        // Remove SpreaderGrid component from grid;
+        RemComp<SpreaderGridComponent>(gridUid);
+
+        // 1) Serialize the grid and its children to a MappingDataNode (engine-standard format)
+        var entities = new HashSet<EntityUid> { gridUid };
+
+        // these three lines were lifted from the loading code, and should be refactored into a function at some point
+        var loadShipPrice = _configManager.GetCVar(TriadCCVars.LoadShipPrice);
+        var fullAppraisal = _pricing.AppraiseGrid(gridUid, null);
+        appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
+
+        var (node, category) = _mapLoader.SerializeEntitiesRecursive(entities, ShipSaveSerializationOptions);
+        /* if (category != FileCategory.Grid)
+        {
+            _sawmill.Warning($"Expected FileCategory.Grid but got {category}; continuing with sanitation");
+        } */
+
+        // 2) Sanitize the node to match blueprint conventions
+        SanitizeShipSaveNode(node);
+
+        // 3) Convert MappingDataNode to YAML text without touching disk
+        yaml = WriteYamlToString(node);
+        return true;
     }
 
     private void RemoveEdgeSpreaderComponentComponentsOnGrid(EntityUid gridUid)
@@ -430,16 +464,27 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
     }
 
     /// <summary>
-    /// Cleans up broken device links where one or both linked entities no longer exist.
-    /// Preserves valid links where both source and sink entities are still present.
+    /// Cleans up device links that cannot be serialized: links whose sink no longer exists, and links
+    /// whose sink is not on this grid. Preserves links whose sink is on the grid being saved.
     /// </summary>
+    /// <remarks>
+    /// Entity existence is NOT the right test here, which is why this ran for months while
+    /// DeviceLinkSource stayed the top cause of failed ship saves. The save runs with
+    /// <see cref="MissingEntityBehaviour.Ignore"/>, and EntitySerializer.Write returns the literal
+    /// string "invalid" for ANY EntityUid outside the set being serialized, alive or not. Because
+    /// DeviceLinkSourceComponent.LinkedPorts is keyed by EntityUid, a link to a live off-grid entity
+    /// writes "invalid" exactly like a dead one does, and two such links collide as a duplicate
+    /// dictionary key: ArgumentException, and the entire save dies.
+    ///
+    /// Off-grid links are cleared for good rather than restored after serializing. Their sinks are
+    /// round scoped for our purposes, typically remote triggers, so a link that cannot be carried
+    /// into the save is not worth carrying on the live ship either -- and clearing it leaves the ship
+    /// in the state that was actually saved.
+    /// </remarks>
     private void CleanupBrokenDeviceLinks(EntityUid gridUid)
     {
         try
         {
-            var linksRemoved = 0;
-            var sourcesProcessed = 0;
-
             // Collect all entities on the grid with device link source components
             var sourceQuery = _entityManager.EntityQueryEnumerator<DeviceLinkSourceComponent, TransformComponent>();
             while (sourceQuery.MoveNext(out var sourceEnt, out var sourceComp, out var xform))
@@ -447,32 +492,74 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
                 if (xform.GridUid != gridUid)
                     continue;
 
-                sourcesProcessed++;
-
-                // Check LinkedPorts and remove links to entities that no longer exist
-                var brokenSinks = new List<EntityUid>();
+                // Anything that will not serialize to a real uid: the sink is gone, or it is off-grid.
+                var unserializableSinks = new List<EntityUid>();
                 foreach (var sinkEnt in sourceComp.LinkedPorts.Keys)
                 {
                     if (!_entityManager.EntityExists(sinkEnt) || _entityManager.IsQueuedForDeletion(sinkEnt))
                     {
-                        brokenSinks.Add(sinkEnt);
+                        unserializableSinks.Add(sinkEnt);
+                        continue;
                     }
+
+                    if (!_transformQuery.TryComp(sinkEnt, out var sinkXform) || sinkXform.GridUid != gridUid)
+                        unserializableSinks.Add(sinkEnt);
                 }
 
                 // Use the DeviceLinkSystem to properly remove broken links
-                foreach (var brokenSink in brokenSinks)
+                foreach (var sinkEnt in unserializableSinks)
                 {
-                    _deviceLink.RemoveSinkFromSource(sourceEnt, brokenSink, sourceComp);
-                    linksRemoved++;
+                    _deviceLink.RemoveSinkFromSource(sourceEnt, sinkEnt, sourceComp);
                 }
             }
-
-            /* if (linksRemoved > 0)
-                _sawmill.Info($"CleanupBrokenDeviceLinks: Removed {linksRemoved} broken device link(s) from {sourcesProcessed} source(s) on grid {gridUid}"); */
         }
         catch (Exception e)
         {
             _sawmill.Warning($"CleanupBrokenDeviceLinks: Exception while cleaning device links on grid {gridUid}: {e.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Clears ore-silo links whose silo is not on the grid being saved, so the save never writes a
+    /// reference it cannot resolve.
+    /// </summary>
+    /// <remarks>
+    /// A cross-grid silo link is already dead weight: SharedOreSiloSystem.CanTransmitMaterials refuses
+    /// any pair whose grids differ, so a link to a silo on another grid transmits nothing even before
+    /// the ship is saved. Carrying it into the save only produces the literal string "invalid" in the
+    /// YAML, one deserializer error per load, and a uid that resolves to entity 0 downstream.
+    ///
+    /// Only the client half needs clearing: OreSiloComponent.Clients is no longer persisted and is
+    /// rebuilt from the surviving clients on startup.
+    /// </remarks>
+    private void CleanupOffGridOreSiloLinks(EntityUid gridUid)
+    {
+        try
+        {
+            var query = _entityManager.EntityQueryEnumerator<OreSiloClientComponent, TransformComponent>();
+            while (query.MoveNext(out var uid, out var client, out var xform))
+            {
+                if (xform.GridUid != gridUid)
+                    continue;
+
+                if (client.Silo is not { } silo)
+                    continue;
+
+                // Keep links whose silo rides along in this same save.
+                if (_entityManager.EntityExists(silo)
+                    && !_entityManager.IsQueuedForDeletion(silo)
+                    && _transformQuery.TryComp(silo, out var siloXform)
+                    && siloXform.GridUid == gridUid)
+                {
+                    continue;
+                }
+
+                _oreSilo.ClearSiloLink((uid, client));
+            }
+        }
+        catch (Exception e)
+        {
+            _sawmill.Warning($"CleanupOffGridOreSiloLinks: Exception while clearing silo links on grid {gridUid}: {e.Message}");
         }
     }
 
@@ -532,8 +619,8 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             return false;
         if (HasComp<ConsentComponent>(uid) || HasComp<MindContainerComponent>(uid))
             return true; // do not save things with minds
-        if (HasComp<SavingContrabandComponent>(uid))
-            return true; // no contra
+        if (HasComp<SavingContrabandComponent>(uid) && !HasComp<ContrabandPermitItemComponent>(uid))
+            return true; // No contra, but a permit will allow it
         if (_persistOnSaveQuery.HasComp(uid))
             return false; // preserve stash root outright
         if (_gridQuery.HasComp(uid))

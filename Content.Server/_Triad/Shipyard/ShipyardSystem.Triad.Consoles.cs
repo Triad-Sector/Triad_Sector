@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._NF.Shipyard.Components;
 using Content.Server._NF.Station.Components;
+using Content.Server._Triad.ContrabandPermit;
 using Content.Server._Triad.Shipyard;
 using Content.Server.Database;
 using Content.Server.Maps;
@@ -34,9 +35,10 @@ namespace Content.Server._NF.Shipyard.Systems;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly ShuttleConsoleSystem _shuttleConsole = default!;
-    [Dependency] private readonly TriadTamperPolicyService _tamperPolicy = default!;
+    [Dependency] private ContrabandPermitSystem _contrabandPermit = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private ShuttleConsoleSystem _shuttleConsole = default!;
+    [Dependency] private TriadTamperPolicyService _tamperPolicy = default!;
 
     public void OnSaveMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSaveMessage args)
     {
@@ -126,6 +128,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, uid, component);
             return;
         }
+
+        // Clear out any invalid permits (players trying to save their own permits on someone else's ship)
+        _contrabandPermit.ClearPermitItemsOnGrid(shuttleUid.Value, player);
 
         // Attempt to save the ship
         if (!_shipyardGridSave.TrySaveShip(shuttleUid.Value, targetId, playerSession))
@@ -301,16 +306,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             deedHolderEntity: null);
 
         var shipYaml = authShip.ShipYamlString();
-        // End Triad
 
-
-
-        // Triad: reuse the name resolved up front (above) so the audit row and the spawned ship
+        // Reuse the name resolved up front (above) so the audit row and the spawned ship
         // share one name instead of recomputing (which could diverge on the generated fallback).
         var name = loadShipName;
 
         // Attempt to load the shuttle from the in-message YAML only.
-        // Triad: F1 fix - removed the SourceFilePath disk-load fallback, which bypassed
+        // F1 fix - removed the SourceFilePath disk-load fallback, which bypassed
         // tamper protection by loading whatever path the client named under /UserData.
         // The YAML path above already runs through compatibility recovery; if it fails,
         // the load fails. SourceFilePath stays in scope only as audit-row / migration metadata.
@@ -350,7 +352,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var appraisalCost = (int)MathF.Round((float)fullAppraisal * loadShipPrice);
 
         // Check if player has a bank account and session to charge them
-        // Triad: playerSession is captured earlier (above tamper-protection block)
+        // playerSession is captured earlier (above tamper-protection block)
         if (!TryComp<BankAccountComponent>(player, out var bankAccount))
         {
             ConsolePopup(player, Loc.GetString("shipyard-console-no-bank"));
@@ -371,7 +373,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 ("ship", name), ("cost", appraisalCost)));
 
         // Add company information to the shuttle from the ID card or voucher
-        AddCompanyInformation(targetId, shuttleUid); // Triad, generic method for adding company info
+        AddCompanyInformation(targetId, shuttleUid); // generic method for adding company info
 
         var boughtEv = new ShipBoughtEvent();
         RaiseLocalEvent(shuttleUid, boughtEv);
@@ -496,8 +498,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 }
             }
         }
-        _records.Synchronize(shuttleStation!.Value);
-        _records.Synchronize(station);
+        // Triad: Synchronize resolves StationRecordsComponent and logs an error when it is missing.
+        // Not every station keeps records: the POI outposts a shipyard console can sit on, such as
+        // MarketFrontierOutpost, have none, so an unguarded call logged once per ship load there.
+        if (HasComp<StationRecordsComponent>(shuttleStation!.Value))
+            _records.Synchronize(shuttleStation!.Value);
+        if (HasComp<StationRecordsComponent>(station))
+            _records.Synchronize(station);
 
         // If we infer a vessel prototype, add any extra components it specifies.
         if (_prototypeManager.TryIndex(vessel, out var vesselProto))
@@ -509,6 +516,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         EnsureComp<LinkedLifecycleGridParentComponent>(shuttleUid);
 
         _shipyardDirection.SendShipDirectionMessage(player, shuttleUid);
+
+        // Change permit info data to the character info of the player that loaded the ship
+        _contrabandPermit.InitializePermitItemsOnGrid(shuttleUid, player);
 
         // Send radio messages and update UI
         SendPurchaseMessage(uid, player, name, component.ShipyardChannel, secret: false);
@@ -578,7 +588,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     /// <summary>
-    /// Triad - Adds company information from a given id card or voucher onto a shuttle grid entity.
+    /// Adds company information from a given id card or voucher onto a shuttle grid entity.
     /// </summary>
     private void AddCompanyInformation(EntityUid idCard, EntityUid shuttleUid)
     {
@@ -608,7 +618,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     /// <summary>
-    /// Triad - Adds the <see cref="FTLLockComponent"/> to a shuttle grid and sets it to enabled
+    /// Adds the <see cref="FTLLockComponent"/> to a shuttle grid and sets it to enabled
     /// </summary>
     private void SetFtlLockEnabled(EntityUid shuttleUid)
     {
@@ -621,7 +631,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     /// <summary>
-    /// Triad - Adds new access levels to a shuttle deed from a <see cref="ShipyardConsoleComponent"/>
+    /// Adds new access levels to a shuttle deed from a <see cref="ShipyardConsoleComponent"/>
     /// </summary>
     private void AddNewShuttleDeedAccessLevels(EntityUid targetId, ShipyardConsoleComponent console)
     {

@@ -8,8 +8,11 @@ namespace Content.Server.Worldgen.Prototypes;
 /// <summary>
 ///     This is a config for noise channels, used by worldgen.
 /// </summary>
+// Triad: engine 286 serv5 (RA0057) — NoiseChannelPrototype being a prototype does not make its base a data
+// definition, so the base has to declare itself one for its own fields to be read.
+[DataDefinition]
 [Virtual]
-public class NoiseChannelConfig
+public partial class NoiseChannelConfig
 {
     /// <summary>
     ///     The noise type used by the noise generator.

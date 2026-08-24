@@ -122,6 +122,14 @@ ui-options-header-camera = Camera
 ui-options-header-interaction-basic = Basic Interaction
 ui-options-header-interaction-adv = Advanced Interaction
 ui-options-header-ui = User Interface
+# Triad: TriTalk keybinds
+ui-options-header-nano-chat = TriTalk
+ui-options-function-nano-chat-navigate-up = Navigate up
+ui-options-function-nano-chat-navigate-down = Navigate down
+ui-options-function-nano-chat-navigate-up-unread = Navigate up to next unread
+ui-options-function-nano-chat-navigate-down-unread = Navigate down to next unread
+# End Triad
+
 ui-options-header-misc = Miscellaneous
 ui-options-header-hotbar = Hotbar
 ui-options-header-shuttle = Shuttle

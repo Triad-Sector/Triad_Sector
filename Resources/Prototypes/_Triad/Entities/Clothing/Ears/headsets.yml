@@ -3,6 +3,9 @@
   parent: BaseClass2AShipContrabandSilent
   id: BaseTDFHeadset
   abstract: true
+  components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
@@ -18,6 +21,8 @@
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseTDFHeadset]
@@ -33,6 +38,8 @@
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
 
 - type: entity
   parent: ClothingHeadsetTdf

@@ -1,0 +1,60 @@
+﻿- type: entity
+  parent: [BaseStructureDynamic, BaseXenoArtifact]
+  id: BaseXenoArtifactStructure
+  name: artifact
+  abstract: true
+  noSpawn: true
+  components:
+  # Visual
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: Objects/Specific/Xenoarchaeology/xeno_artifacts.rsi
+    noRot: true
+    layers:
+    - state: ano30
+      map: [ "enum.ArtifactsVisualLayers.Base" ]
+    - state: ano30_on
+      map: [ "enum.ArtifactsVisualLayers.UnlockingEffect" ]
+      visible: false
+    - state: artifact-activation
+      map: [ "enum.ArtifactsVisualLayers.ActivationEffect" ]
+      visible: false
+  - type: RandomArtifactSprite
+    maxSprite: 36
+  - type: RandomSprite
+    available:
+    - enum.ArtifactsVisualLayers.UnlockingEffect:
+        ano01_on: Rainbow
+  # Triad: mirror the handheld's split so a structure gets its own structure-shaped node
+  - type: XenoArtifact
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: XenoArtifactEffectsDefaultTable
+        weight: 54
+      - !type:NestedSelector
+        tableId: XenoArtifactEffectsStructureOnlyTable
+        weight: 6
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 75
+        layer: # doesn't collide with artifact storage
+        - Opaque
+        mask:
+        - CrateMask # Frontier: MachineMask<CrateMask this is so they can go under plastic flaps
+
+- type: entity
+  parent: BaseXenoArtifactStructure
+  id: ComplexXenoArtifact
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 9
+      max: 13
+

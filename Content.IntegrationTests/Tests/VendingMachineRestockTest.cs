@@ -135,7 +135,7 @@ namespace Content.IntegrationTests.Tests
                 // Collect all the prototypes with StorageFills referencing those entities.
                 foreach (var proto in prototypeManager.EnumeratePrototypes<EntityPrototype>())
                 {
-                    if (!proto.TryGetComponent<StorageFillComponent>(out var storage, compFact))
+                    if (!proto.TryComp<StorageFillComponent>(out var storage, compFact))
                         continue;
 
                     List<string> restockStore = new();
@@ -183,9 +183,9 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
             await server.WaitIdleAsync();
 
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var entitySystemManager = server.ResolveDependency<IEntitySystemManager>();
+            var mapSystem = entityManager.System<SharedMapSystem>();
 
             EntityUid packageRight;
             EntityUid packageWrong;
@@ -257,7 +257,7 @@ namespace Content.IntegrationTests.Tests
                 Assert.That(systemMachine.GetAvailableInventory(machine, machineComponent), Has.Count.GreaterThan(0),
                     "Machine available inventory count is not greater than zero after restock.");
                 */
-                mapManager.DeleteMap(testMap.MapId);
+                mapSystem.DeleteMap(testMap.MapId);
             });
 
             await pair.CleanReturnAsync();
@@ -271,9 +271,9 @@ namespace Content.IntegrationTests.Tests
             await server.WaitIdleAsync();
 
             var prototypeManager = server.ResolveDependency<IPrototypeManager>();
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var entitySystemManager = server.ResolveDependency<IEntitySystemManager>();
+            var mapSystem = entityManager.System<SharedMapSystem>();
 
             var damageableSystem = entitySystemManager.GetEntitySystem<DamageableSystem>();
 
@@ -321,7 +321,7 @@ namespace Content.IntegrationTests.Tests
                 Assert.That(totalRamen, Is.EqualTo(2),
                     "Did not find enough ramen after destroying restock box.");
 
-                mapManager.DeleteMap(testMap.MapId);
+                mapSystem.DeleteMap(testMap.MapId);
             });
 
             await pair.CleanReturnAsync();
@@ -334,7 +334,6 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
             await server.WaitIdleAsync();
 
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var entitySystemManager = server.ResolveDependency<IEntitySystemManager>();
 
