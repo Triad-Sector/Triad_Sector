@@ -10,7 +10,7 @@
       - CartridgeCap
   - type: CartridgeAmmo
   - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/pistol_casing.rsi # Triad new sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/capgun_casing.rsi # Triad new sprite
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
