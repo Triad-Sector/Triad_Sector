@@ -11,7 +11,7 @@
   - type: CartridgeAmmo
     proto: Bullet127x99mm
   - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Cartridge/heavy_casing.rsi # Triad new sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/heavy_casing.rsi # Triad new sprite
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
