@@ -228,7 +228,7 @@
       # - Security # Frontier
       # - Service # Frontier
       - Supply
-      - Binary # Frontier
+      # - Binary # Frontier # Triad: Binary is a collective mind on this tree, not a radio channel
 
 - type: entity
   id: XenoArtifactBecomeRandomInstrument
@@ -388,9 +388,9 @@
     - type: RevolverAmmoProvider
       whitelist:
         tags:
-        - NFCartridgePistol45 # Frontier: CartridgeMagnum<NFCartridgePistol45
-        - NFSpeedLoaderPistol45 # Frontier: SpeedLoaderMagnum<NFSpeedLoaderPistol45
-      proto: NFCartridgePistol45 # Frontier: CartridgeMagnum<NFCartridgePistol45
+        - Cartridge45_magnumFMJ # Triad: this tree's .45 magnum lives in _Mono; Frontier's NF ids do not exist here
+        - SpeedLoader45_magnumFMJ # Triad
+      proto: Cartridge45_magnumFMJ # Triad
       capacity: 7
       chambers: [ True, True, True, True, True, True, True ]
       ammoSlots: [ null, null, null, null, null, null, null ]
