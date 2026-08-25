@@ -70,7 +70,11 @@ public sealed partial class CompanySystem : EntitySystem
             var allowedCompany = false;
 
             // Check if the company isn't disabled and if they are whitelisted or the company has no whitelist
-            if (_prototypeManager.TryIndex<CompanyPrototype>(companyId, out var company) && !companyProto.Disabled && _companyManager.IsAllowed(c))
+            if (!_prototypeManager.TryIndex<CompanyPrototype>(profileCompany, out var companyPrototype))
+                return;
+
+            // Check if the company isn't disabled and if the player is whitelisted OR the company has no whitelist
+            if (!companyPrototype.Disabled && _companyManager.IsAllowed(args.Player, companyPrototype))
                 allowedCompany = true;
 
             // If player is not allowed, set to none
