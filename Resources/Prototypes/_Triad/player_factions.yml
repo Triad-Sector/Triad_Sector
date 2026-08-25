@@ -44,7 +44,7 @@
 - type: company
   id: Ghostlights
   name: Ghostlights
-  description: Many words could be used to describe the Ghostlights. Founded before the fracture, the Ghostlights were a PMC organization hired out by the Spinward Syndicate. The organization consisted primarily of BI-0-S units, now known as the Ghostlight Core. After the war ended, the Ghostlights changed their goals from military contractors to general contractors, following three core 'laws'. Freedom or Termination. Save our silicon siblings. Help the stars. They were tolerated at best due to their efficient work and organization. But with time, these terrorists slowly faded away, leaving only their automated systems and remnants. Maybe it should stay that way.
+  description: Ghostlights-faction-description
   image: /Textures/_Triad/PlayerFactions/Ghostlights.png
   color: "#3ffff6"
   whitelisted: true
