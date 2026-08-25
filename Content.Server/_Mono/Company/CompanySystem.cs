@@ -69,10 +69,9 @@ public sealed partial class CompanySystem : EntitySystem
             // Check if the company isn't disabled and if the player is whitelisted OR the company has no whitelist
             // If it's not allowed, set the company to 'None'
             if (companyPrototype.Disabled || !_manager.IsAllowed(args.Player, companyPrototype))
-            {
                 profileCompany = "None";
-                companyComp.CompanyName = profileCompany;
-            }
+
+            companyComp.CompanyName = profileCompany;
         }
 
         // Ensure the component is networked to clients
