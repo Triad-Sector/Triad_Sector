@@ -62,7 +62,7 @@ humanoid-profile-editor-flavortext-tab = Description
 # Company
 humanoid-profile-editor-company-tab = Player Factions
 humanoid-profile-editor-company-label = Player Faction:
-humanoid-profile-editor-company-warning = Notice: These are player factions. Functionally, these player factions simply give you access to a ship IFF tag and a badge on your ID card. If none appear here, you are not in any player factions. All player factions are operated ICly, so if you wish to join one, get recruited in-game! Player factions do not get any benefits besides from the ship IFF tag, it is purely to denote that your character is apart of a guild.
+humanoid-profile-editor-company-warning = Notice: This tab is for selecting player-owned factions/guilds. Functionally, these player factions simply give you access to a ship IFF tag and a badge on your ID card. If none appear here, you are not in any player factions. All player factions are operated ICly, so if you wish to join one, get recruited in-game! Player factions do not get any benefits besides from the ship IFF tag, it is purely to denote that your character is apart of a guild.
 
 # Traits
 humanoid-profile-editor-traits-tab = Traits
