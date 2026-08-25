@@ -9,7 +9,7 @@ using Robust.Shared.Toolshed.TypeParsers;
 
 namespace Content.Server._Mono.Company;
 
-[ToolshedCommand(Name = "company"), AnyCommand]
+[ToolshedCommand(Name = "faction"), AnyCommand]
 public sealed partial class CompanyCommand : ToolshedCommand
 {
     [Dependency] private CompanyManager _company = default!;
