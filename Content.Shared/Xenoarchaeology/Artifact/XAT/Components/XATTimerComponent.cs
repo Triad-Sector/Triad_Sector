@@ -1,5 +1,6 @@
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad: TimeOffsetSerializer
 
 namespace Content.Shared.Xenoarchaeology.Artifact.XAT.Components;
 
@@ -12,7 +13,10 @@ public sealed partial class XATTimerComponent : Component
     /// <summary>
     /// Next time timer going to activate.
     /// </summary>
-    [DataField, AutoNetworkedField, AutoPausedField]
+    // Triad: absolute CurTime, same defect as NextUnlockTime on XenoArtifactComponent. Dormant while
+    // TriggerTimer stays commented out in triggers.yml, but the field would go stale on a ship save
+    // the moment anyone re-enables it.
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan NextActivation;
 
     /// <summary>

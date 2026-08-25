@@ -33,9 +33,18 @@ public sealed class NodeScannerSystem : EntitySystem
 
             connected.NextUpdate = _timing.CurTime + connected.LinkUpdateInterval;
 
+            // Triad: AttachedTo is a raw uid with nothing watching the artifact's lifetime, and it is a
+            // DataField, so it also comes back out of a ship file pointing at an artifact that was
+            // never in the file. Transform() throws on both, once per scanner per second, forever.
+            // Drop the link instead.
             var attachedArtifact = connected.AttachedTo;
-            var artifactCoordinates = Transform(attachedArtifact).Coordinates;
-            if (!_transform.InRange(artifactCoordinates, transform.Coordinates, scanner.MaxLinkedRange))
+            if (!TryComp<TransformComponent>(attachedArtifact, out var artifactTransform))
+            {
+                RemCompDeferred(uid, connected);
+                continue;
+            }
+
+            if (!_transform.InRange(artifactTransform.Coordinates, transform.Coordinates, scanner.MaxLinkedRange))
             {
                 //scanner is too far, disconnect
                 RemCompDeferred(uid, connected);
