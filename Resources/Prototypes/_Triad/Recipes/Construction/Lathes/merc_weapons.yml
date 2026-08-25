@@ -17,7 +17,7 @@
     Silver: 500
 
 - type: latheRecipe
-  id: ?WeaponRiflePike
+  id: WeaponRiflePike
   parent: BaseWeaponRecipeLong
   result: WeaponRiflePike
   categories:

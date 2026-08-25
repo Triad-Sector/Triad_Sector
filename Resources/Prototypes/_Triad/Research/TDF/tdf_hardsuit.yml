@@ -21,6 +21,7 @@
   cost: 35000
   recipeUnlocks:
   - ClothingOuterHardsuitTdfTA29
+  - ClothingOuterHardsuitPDVMedic
   technologyPrerequisites:
   - TdfBasicEquipment
   - UniversalMaterialResearchT2
@@ -36,7 +37,6 @@
   recipeUnlocks:
   - ClothingOuterHardsuitVizier
   - ClothingOuterHardsuitAshenElite
-  - ClothingOuterHardsuitPDVMedic
   technologyPrerequisites:
   - TdfAdvancedEquipment
   - UniversalMaterialResearchT3

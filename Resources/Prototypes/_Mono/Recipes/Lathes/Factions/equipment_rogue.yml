@@ -6,11 +6,12 @@
   result: ClothingOuterHardsuitPirateScaf
 
 # T2 medic
+# Triad: Moved to TDF tech tree
 
-- type: latheRecipe
-  id: ClothingOuterHardsuitPDVMedic
-  parent: MonoHardsuitT2Recipe
-  result: ClothingOuterHardsuitPDVMedic
+#- type: latheRecipe
+#  id: ClothingOuterHardsuitPDVMedic
+#  parent: MonoHardsuitT2Recipe
+#  result: ClothingOuterHardsuitPDVMedic
 
 # T2 syndie
 
