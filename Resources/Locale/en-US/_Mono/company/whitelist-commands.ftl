@@ -22,7 +22,7 @@ cmd-company-members-whitelisted-for = Company {$company} is whitelisted for:
 command-description-faction-setowner = Set owner status of a player in company. Note: Add member to company before this command!
 cmd-company-setowner-success = Successfully changed owner status of {$player} to {$status}
 
-command-description-company-removemember = Removes a player's ability to play a whitelisted company.
+command-description-faction-removemember = Removes a player's ability to play a whitelisted company.
 cmd-company-memberremove-removed = Removed {$player} from the whitelist for {$companyId} ({$companyName}).
 
 cmd-company-was-not-whitelisted = {$player} was not whitelisted to play as {$companyId} ({$companyName}).
