@@ -26,8 +26,13 @@ public sealed class XAETelepathicSystem : BaseXAESystem<XAETelepathicComponent>
         // try to find victims nearby
         _entities.Clear();
         _lookup.GetEntitiesInRange(ent, component.Range, _entities);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var victimUid in _entities)
         {
+            if (!XenoArtifact.IsGridLocal(xform, victimUid)) // Triad: whispers stay on our hull
+                continue;
+
             if (!HasComp<ActorComponent>(victimUid))
                 continue;
 

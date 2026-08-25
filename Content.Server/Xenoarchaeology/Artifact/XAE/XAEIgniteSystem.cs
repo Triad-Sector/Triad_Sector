@@ -35,8 +35,13 @@ public sealed class XAEIgniteSystem : BaseXAESystem<XAEIgniteComponent>
         var component = ent.Comp;
         _entities.Clear();
         _lookup.GetEntitiesInRange(ent.Owner, component.Range, _entities);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var target in _entities)
         {
+            if (!XenoArtifact.IsGridLocal(xform, target)) // Triad: don't set the neighbours on fire
+                continue;
+
             if (!_flammables.TryGetComponent(target, out var fl))
                 continue;
 

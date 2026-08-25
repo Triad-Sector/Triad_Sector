@@ -422,6 +422,10 @@ public abstract partial class SharedMagicSystem : EntitySystem
         // Look for doors and lockers, and don't open/unlock them if they're already opened/unlocked.
         foreach (var target in _lookup.GetEntitiesInRange(_transform.GetMapCoordinates(args.Performer, transform), args.Range, flags: LookupFlags.Dynamic | LookupFlags.Static))
         {
+            // Triad: grid fence for grid-local casters, see KnockSpellEvent.OnlyGrid
+            if (args.OnlyGrid != null && Transform(target).GridUid != args.OnlyGrid)
+                continue;
+
             if (!_interaction.InRangeUnobstructed(args.Performer, target, range: 0, collisionMask: CollisionGroup.Opaque))
                 continue;
 

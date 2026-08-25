@@ -48,6 +48,13 @@ public sealed class XAEPortalSystem : BaseXAESystem<XAEPortalComponent>
                     continue;
                 // End Frontier: ensure range check (don't teleport people from across the map or off of protected grids)
 
+                // Triad: same map is not a fence on a sector where every ship shares one. The
+                // candidate has to be standing on the artifact's own grid, so a portal is a hazard
+                // for the crew running the artifact and never a way to reach into someone else's
+                // hull. Same-map-no-grid still works for an artifact taken EVA.
+                if (!XenoArtifact.IsGridLocal(entXform, uid))
+                    continue;
+
                 validMinds.Add(uid);
             }
         }

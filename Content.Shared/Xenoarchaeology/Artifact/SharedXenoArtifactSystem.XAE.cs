@@ -79,6 +79,13 @@ public abstract partial class SharedXenoArtifactSystem
         if (TryComp<UseDelayComponent>(artifact, out var delay) && !_useDelay.TryResetDelay((artifact, delay), true))
             return false;
 
+        // Triad: the guard above asks where the ARTIFACT is, but the effects land wherever the player
+        // clicked, and AfterInteract will happily hand us a tile on the grid next door. Reel the
+        // landing spot back onto the artifact's own hull so a docked shuttle cannot be used to lob gas
+        // or an EMP onto a depot, and so no effect ever lands on a grid the artifact is not aboard.
+        if (!IsGridLocal(artifact.Owner, coordinates))
+            coordinates = Transform(artifact).Coordinates;
+
         var success = false;
         foreach (var node in GetActiveNodes(artifact))
         {

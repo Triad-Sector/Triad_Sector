@@ -59,6 +59,9 @@ public sealed class XAEThrowThingsAroundSystem : BaseXAESystem<XAEThrowThingsAro
         _lookup.GetEntitiesInRange(ent, component.Range, _entities, LookupFlags.Dynamic | LookupFlags.Sundries);
         foreach (var entity in _entities)
         {
+            if (!XenoArtifact.IsGridLocal(xform, entity)) // Triad: don't yeet the dock's cargo
+                continue;
+
             if (_physQuery.TryGetComponent(entity, out var phys)
                 && (phys.CollisionMask & (int)CollisionGroup.GhostImpassable) != 0)
                 continue;

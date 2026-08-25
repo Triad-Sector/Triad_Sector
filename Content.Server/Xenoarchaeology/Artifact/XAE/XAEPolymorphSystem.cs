@@ -26,9 +26,14 @@ public sealed class XAEPolymorphSystem : BaseXAESystem<XAEPolymorphComponent>
     {
         _humanoids.Clear();
         _lookup.GetEntitiesInRange(args.Coordinates, ent.Comp.Range, _humanoids);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var comp in _humanoids)
         {
             var target = comp.Owner;
+            if (!XenoArtifact.IsGridLocal(xform, target)) // Triad: only our own crew
+                continue;
+
             if (!_mob.IsAlive(target))
                 continue;
 

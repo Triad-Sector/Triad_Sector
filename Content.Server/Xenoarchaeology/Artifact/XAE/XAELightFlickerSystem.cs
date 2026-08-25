@@ -34,8 +34,13 @@ public sealed class XAELightFlickerSystem : BaseXAESystem<XAELightFlickerCompone
     {
         _entities.Clear();
         _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.Radius, _entities, LookupFlags.StaticSundries);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var light in _entities)
         {
+            if (!XenoArtifact.IsGridLocal(xform, light)) // Triad: only our own lights flicker
+                continue;
+
             if (!_lights.HasComponent(light))
                 continue;
 
