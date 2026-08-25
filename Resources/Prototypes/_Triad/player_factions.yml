@@ -44,7 +44,7 @@
 - type: company
   id: Ghostlights
   name: Ghostlights
-  description: Ghostlights-faction-description
+  description: ghostlights-description
   image: /Textures/_Triad/PlayerFactions/Ghostlights.png
   color: "#3ffff6"
   whitelisted: true
