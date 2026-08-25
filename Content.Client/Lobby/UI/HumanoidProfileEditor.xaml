@@ -179,6 +179,10 @@
                                              MinHeight="400" MaxHeight="400"
                                              Visible="False"/>
                             </BoxContainer>
+                            <RichTextLabel Name="CompanyWarningLabel"
+                                    HorizontalExpand="False"
+                                    VerticalExpand="True" MaxWidth="400"
+                                    HorizontalAlignment="Left" />
                         </BoxContainer>
                     </ScrollContainer>
                 </BoxContainer>

@@ -475,6 +475,8 @@ namespace Content.Client.Lobby.UI
                 //Logger.Debug($"Added company to dropdown: {i} - {companies[i].ID} - {companies[i].Name}");
             }
 
+            CompanyWarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-company-warning")}[/color]");
+
             CompanyButton.OnItemSelected += args =>
             {
                 CompanyButton.SelectId(args.Id);
