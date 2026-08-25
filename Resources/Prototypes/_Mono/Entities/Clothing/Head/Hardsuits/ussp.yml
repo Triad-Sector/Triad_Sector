@@ -32,8 +32,8 @@
 - type: entity
   parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons]
   id: ClothingHeadHelmetHardsuitUsspL10
-  name: USSP L-10 lightsuit helmet
-  description: An old USSP model of combat suit that is still in use in the frontlines.
+  name: '"Alexi" L-10 lightsuit helmet'
+  description: A general-purpose hardsuit prioritizing ergonomics above all else. Ideal for light industrial work in safe harbors.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -62,8 +62,8 @@
 - type: entity
   parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons]
   id: ClothingHeadHelmetHardsuitUsspL10A
-  name: USSP L-10-A lightsuit helmet
-  description: An old USSP model of combat suit that is still in use in the frontlines.
+  name: '"Mikhail" L-15-A lightsuit helmet'
+  description: A slightly more protective, premium variant of the Alexi lightsuit, preferred by those who value their fingers over their comfort.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -92,8 +92,8 @@
 - type: entity
   parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase,]
   id: ClothingHeadHelmetHardsuitUsspM10
-  name: USSP M-10 scoutsuit helmet
-  description: A new prototype of combat suit using the old L-10 as a baseline. It has a integrated mass scanner in his helmet.
+  name: '"Tupolev" Object-220 lightsuit helmet'
+  description: A new prototype of suit based on the L-series. It features improved composites and a helmet-mounted mass scanner.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
