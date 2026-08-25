@@ -53,8 +53,11 @@ public abstract partial class SharedXenoArtifactSystem
     /// <exception cref="ArgumentException">Throws if requested index doesn't exist on artifact. </exception>
     public Entity<XenoArtifactNodeComponent> GetNode(Entity<XenoArtifactComponent> ent, int index)
     {
-        if (ent.Comp.NodeVertices[index] is { } netUid && GetEntity(netUid) is var uid)
-            return (uid, XenoArtifactNode(uid));
+        // Triad: was indexing NodeVertices raw, so an out-of-range index threw IndexOutOfRange rather
+        // than the ArgumentException this documents. Going through TryGetNode bounds-checks it and
+        // gives the caller the exception the summary promises.
+        if (TryGetNode((ent.Owner, ent.Comp), index, out var node))
+            return node.Value;
 
         throw new ArgumentException($"index {index} does not correspond to an existing node in {ToPrettyString(ent)}");
     }
@@ -71,8 +74,18 @@ public abstract partial class SharedXenoArtifactSystem
         if (index < 0 || index >= ent.Comp.NodeVertices.Length)
             return false;
 
-        if (ent.Comp.NodeVertices[index] is { } netUid && GetEntity(netUid) is var uid)
-            node = (uid, XenoArtifactNode(uid));
+        // Triad: `GetEntity(netUid) is var uid` is a var pattern, which always matches, so an
+        // unresolvable NetEntity fell straight through to XenoArtifactNode() and threw out of a
+        // method named Try. NodeVertices is an AutoNetworkedField of NetEntities: the client can
+        // hold the artifact's state a tick before the node entities themselves land, and TryGetIndex,
+        // GetDirectPredecessorNodes and GetDirectSuccessorNodes all route through here. Resolve for
+        // real and report a miss as a miss.
+        if (ent.Comp.NodeVertices[index] is { } netUid
+            && TryGetEntity(netUid, out var uid)
+            && _nodeQuery.TryComp(uid, out var nodeComp))
+        {
+            node = (uid.Value, nodeComp);
+        }
 
         return node != null;
     }

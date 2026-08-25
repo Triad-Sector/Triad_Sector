@@ -168,9 +168,16 @@ public abstract partial class SharedXenoArtifactSystem
     /// </summary>
     public List<Entity<XenoArtifactNodeComponent>> GetActiveNodes(Entity<XenoArtifactComponent> ent)
     {
-        return ent.Comp.CachedActiveNodes
-                  .Select(activeNode => _nodeQuery.Get(GetEntity(activeNode)))
-                  .ToList();
+        // Triad: CachedActiveNodes is networked NetEntities, and _nodeQuery.Get throws on anything it
+        // cannot resolve. GetAllNodes right above already skips those; these did not. Skip to match.
+        var output = new List<Entity<XenoArtifactNodeComponent>>(ent.Comp.CachedActiveNodes.Count);
+        foreach (var activeNode in ent.Comp.CachedActiveNodes)
+        {
+            if (TryGetEntity(activeNode, out var node) && _nodeQuery.TryComp(node, out var nodeComp))
+                output.Add((node.Value, nodeComp));
+        }
+
+        return output;
     }
 
     /// <summary>
@@ -216,8 +223,10 @@ public abstract partial class SharedXenoArtifactSystem
             var outSegment = new List<Entity<XenoArtifactNodeComponent>>();
             foreach (var netNode in segment)
             {
-                var node = GetEntity(netNode);
-                outSegment.Add((node, XenoArtifactNode(node)));
+                // Triad: same unresolvable-NetEntity throw as GetActiveNodes, and this one runs from
+                // the analysis console's Draw every frame.
+                if (TryGetEntity(netNode, out var node) && _nodeQuery.TryComp(node, out var nodeComp))
+                    outSegment.Add((node.Value, nodeComp));
             }
 
             output.Add(outSegment);

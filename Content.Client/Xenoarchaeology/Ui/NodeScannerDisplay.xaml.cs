@@ -84,8 +84,14 @@ public sealed partial class NodeScannerDisplay : FancyWindow
 
             foreach (var triggeredIndex in triggeredIndexes)
             {
-                var node = _artifact.GetNode((attachedArtifactEnt, artifactComponent), triggeredIndex);
-                var triggeredNodeName = (_ent.GetComponentOrNull<NameIdentifierComponent>(node)?.Identifier ?? 0).ToString("D3");
+                // Triad: GetNode throws on an index it cannot resolve, and this loop runs on a timer
+                // over two separately networked collections: the triggered indexes come off the
+                // unlocking component, the slots they point at off the artifact's NodeVertices. A
+                // node the client has not received yet took the whole scanner window down with it.
+                if (!_artifact.TryGetNode((attachedArtifactEnt, artifactComponent), triggeredIndex, out var node))
+                    continue;
+
+                var triggeredNodeName = (_ent.GetComponentOrNull<NameIdentifierComponent>(node.Value)?.Identifier ?? 0).ToString("D3");
                 _triggeredNodeNames.Add(triggeredNodeName);
             }
 

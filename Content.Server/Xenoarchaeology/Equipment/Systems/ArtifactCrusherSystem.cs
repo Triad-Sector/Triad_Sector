@@ -104,8 +104,15 @@ public sealed class ArtifactCrusherSystem : SharedArtifactCrusherSystem
                 }
             }
 
+            // Triad: this was missing its continue, so every non-body item, which is to say every
+            // artifact this machine exists to crush, got deleted and then passed to GibBody anyway.
+            // Harmless today only because GibBody's Resolve bails first; it is one refactor away
+            // from being a crash on the crusher's main path.
             if (!TryComp<BodyComponent>(contained, out var body))
+            {
                 Del(contained);
+                continue;
+            }
 
             var gibs = _body.GibBody(contained, body: body, gibOrgans: true);
             foreach (var gib in gibs)

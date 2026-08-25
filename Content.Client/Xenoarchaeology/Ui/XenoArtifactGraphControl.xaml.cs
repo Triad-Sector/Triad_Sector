@@ -85,9 +85,17 @@ public sealed partial class XenoArtifactGraphControl : BoxContainer
             return;
         var artifact = _artifact.Value;
 
-        var maxDepth = _artifactSystem.GetAllNodes(artifact)
-                                      .Max(s => s.Comp.Depth);
+        // Triad: Max() throws on an empty sequence, and this runs every frame the console is open.
+        // GetAllNodes skips node NetEntities the client cannot resolve yet, so an artifact whose
+        // nodes have not landed reads as empty here, as does one whose graph generation is still
+        // pending a tick. Draw nothing rather than throwing sixty times a second.
+        var maxDepth = 0;
+        foreach (var node in _artifactSystem.GetAllNodes(artifact))
+            maxDepth = Math.Max(maxDepth, node.Comp.Depth);
+
         var segments = _artifactSystem.GetSegments(artifact);
+        if (segments.Count == 0)
+            return;
 
         var bottomLeft = Position // the position
                          + new Vector2(0, Size.Y * UIScale) // the scaled height of the control
