@@ -5,7 +5,7 @@ cmd-faction-player-not-found = Player {$player} not found.
 cmd-faction-hint-player = [player]
 cmd-faction-hint-company = [company]
 
-command-faction-company-addmember = Lets a player play a whitelisted company.
+command-faction-faction-addmember = Lets a player play a whitelisted company.
 cmd-company-memberadd-already-whitelisted = {$player} is already whitelisted to play as {$companyId} .({$companyName}).
 cmd-company-memberadd-added = Added {$player} to the {$companyId} ({$companyName}) whitelist.
 
