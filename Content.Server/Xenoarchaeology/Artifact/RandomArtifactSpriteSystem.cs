@@ -19,6 +19,9 @@ public sealed class RandomArtifactSpriteSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<RandomArtifactSpriteComponent, MapInitEvent>(OnMapInit);
+        // Triad: ComponentStartup runs for a file-restored artifact, MapInitEvent does not. See
+        // EnsureSprite.
+        SubscribeLocalEvent<RandomArtifactSpriteComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<RandomArtifactSpriteComponent, ArtifactUnlockingStartedEvent>(UnlockingStageStarted);
         SubscribeLocalEvent<RandomArtifactSpriteComponent, ArtifactUnlockingFinishedEvent>(UnlockingStageFinished);
         SubscribeLocalEvent<RandomArtifactSpriteComponent, XenoArtifactActivatedEvent>(ArtifactActivated);
@@ -35,7 +38,10 @@ public sealed class RandomArtifactSpriteSystem : EntitySystem
                 continue;
 
             var timeDif = _time.CurTime - component.ActivationStart.Value;
-            if (timeDif.Seconds >= component.ActivationTime)
+            // Triad: TimeSpan.Seconds is the seconds COMPONENT of the span, not its length, so with
+            // the default 0.4s activation this stayed 0 for a whole second and only cleared when it
+            // ticked over to 1. The flash ran two and a half times as long as authored.
+            if (timeDif.TotalSeconds >= component.ActivationTime)
             {
                 _appearance.SetData(uid, SharedArtifactsVisuals.IsActivated, false, appearance);
                 component.ActivationStart = null;
@@ -45,9 +51,29 @@ public sealed class RandomArtifactSpriteSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, RandomArtifactSpriteComponent component, MapInitEvent args)
     {
-        var randomSprite = _random.Next(component.MinSprite, component.MaxSprite + 1);
-        _appearance.SetData(uid, SharedArtifactsVisuals.SpriteIndex, randomSprite);
-        _item.SetHeldPrefix(uid, "ano" + randomSprite.ToString("D2")); //set item artifact inhands
+        EnsureSprite((uid, component));
+    }
+
+    private void OnStartup(Entity<RandomArtifactSpriteComponent> ent, ref ComponentStartup args)
+    {
+        EnsureSprite(ent);
+    }
+
+    /// <summary>
+    /// Triad: rolls the sprite index once and pushes it into appearance. This has to run on startup
+    /// rather than only on MapInit: appearance data does not serialise, and an artifact loaded from a
+    /// ship file onto a running map never receives MapInitEvent, so the index was gone and the
+    /// artifact rendered as its bare prototype sprite. The held prefix survived on its own because
+    /// ItemComponent.HeldPrefix is a real DataField, which is why a restored artifact looked correct
+    /// in hand and wrong on the floor.
+    /// </summary>
+    private void EnsureSprite(Entity<RandomArtifactSpriteComponent> ent)
+    {
+        ent.Comp.SpriteIndex ??= _random.Next(ent.Comp.MinSprite, ent.Comp.MaxSprite + 1);
+
+        var index = ent.Comp.SpriteIndex.Value;
+        _appearance.SetData(ent, SharedArtifactsVisuals.SpriteIndex, index);
+        _item.SetHeldPrefix(ent, "ano" + index.ToString("D2")); //set item artifact inhands
     }
 
     private void UnlockingStageStarted(Entity<RandomArtifactSpriteComponent> ent, ref ArtifactUnlockingStartedEvent args)
