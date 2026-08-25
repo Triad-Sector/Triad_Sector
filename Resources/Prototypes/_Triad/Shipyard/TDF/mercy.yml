@@ -23,10 +23,10 @@
   minPlayers: 0
   stations:
     Mercy:
-      stationProto: StandardTrfVessel2
+      stationProto: StandardTriadTdfVessel
       components:
       - type: StationNameSetup
-        mapNameTemplatiadTde: 'Mercy TDF{1}'
+        mapNameTemplate: 'Mercy TDF{1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
