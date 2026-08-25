@@ -28,8 +28,14 @@ public sealed class ArtifactAnalyzerSystem : SharedArtifactAnalyzerSystem
         if (!TryGetArtifactFromConsole(ent, out var artifact))
             return;
 
+        // Triad: the client renders the whole breakdown and a total the moment the button is pressed,
+        // so bailing quietly here told the crew they had banked points they never got. Ships carry
+        // consoles far more often than they carry a research server, so say so out loud.
         if (!_research.TryGetClientServer(ent, out var server, out var serverComponent))
+        {
+            _popup.PopupEntity(Loc.GetString("analyzer-artifact-extract-no-server"), ent, PopupType.MediumCaution);
             return;
+        }
 
         var sumResearch = 0;
         foreach (var node in _xenoArtifact.GetAllNodes(artifact.Value))

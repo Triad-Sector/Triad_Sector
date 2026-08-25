@@ -14,12 +14,17 @@ public sealed class XAERemoveCollisionSystem : BaseXAESystem<XAERemoveCollisionC
     /// <inheritdoc />
     protected override void OnActivated(Entity<XAERemoveCollisionComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
-        if (!TryComp<FixturesComponent>(ent.Owner, out var fixtures))
+        // Triad: ent.Owner is the NODE, an effect-only entity with no Fixtures, so this bailed every
+        // time and the phasing effect burned its one durability on nothing. The artifact is the thing
+        // that phases.
+        var artifact = args.Artifact.Owner;
+
+        if (!TryComp<FixturesComponent>(artifact, out var fixtures))
             return;
 
         foreach (var fixture in fixtures.Fixtures.Values)
         {
-            _physics.SetHard(ent.Owner, fixture, false, fixtures);
+            _physics.SetHard(artifact, fixture, false, fixtures);
         }
     }
 }

@@ -66,12 +66,20 @@ public sealed class XAECreatePuddleSystem: BaseXAESystem<XAECreatePuddleComponen
         if (component.SelectedChemicals == null)
             return;
 
-        var amountPerChem = component.ChemicalSolution.MaxVolume / component.SelectedChemicals.Count;
+        // Triad: TrySpillAt does not drain the solution you hand it, and AddReagent does not clamp at
+        // MaxVolume, so filling the component's own solution on every activation left the previous
+        // fill sitting in it and the puddle grew by a full charge each use. Mix the spill fresh and
+        // leave the authored solution as the template it reads like. Clone carries maxVol and
+        // canReact across; the authored one holds no reagents.
+        var spill = component.ChemicalSolution.Clone();
+        var amountPerChem = spill.MaxVolume / component.SelectedChemicals.Count;
         foreach (var reagent in component.SelectedChemicals)
         {
-            component.ChemicalSolution.AddReagent(reagent, amountPerChem);
+            spill.AddReagent(reagent, amountPerChem);
         }
 
-        _puddle.TrySpillAt(ent, component.ChemicalSolution, out _);
+        // Triad: spill under the artifact, not under the node. The node lives in the artifact's
+        // container so this resolved to the same tile by accident; say what we mean.
+        _puddle.TrySpillAt(args.Artifact.Owner, spill, out _);
     }
 }

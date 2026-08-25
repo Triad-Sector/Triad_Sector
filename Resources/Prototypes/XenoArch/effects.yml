@@ -1038,15 +1038,12 @@
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
-        - id: MobAdultSlimesYellowAngry
-        - id: MobAngryBee
-        - id: MobBearSpace
-        - id: MobXenoRavager
-        - id: MobTick
-        - id: MobSpiderSpace
-        - id: MobPurpleSnake
+        # Triad: this table used to open with the whole hostile roster, so "friendly fauna" at
+        # danger 2 could deal you a space bear, a xeno ravager or an angry bee. That is what the
+        # hostile table at danger 4 is for; the severity curve cannot rate a node whose outcome
+        # ranges from a kitten to a ravager. Removed: MobAdultSlimesYellowAngry, MobAngryBee,
+        # MobBearSpace, MobXenoRavager, MobTick, MobSpiderSpace, MobPurpleSnake, MobKangarooSpace.
         - id: MobMouse
-        - id: MobKangarooSpace
         - id: MobPig
         - id: MobParrot
         - id: MobKangaroo
