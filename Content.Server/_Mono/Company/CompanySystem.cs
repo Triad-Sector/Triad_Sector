@@ -64,21 +64,11 @@ public sealed partial class CompanySystem : EntitySystem
             assigned = companyComp.CompanyName != "None";
         }
 
-        if (!assigned)
+        if (!assigned && _prototypeManager.TryIndex<CompanyPrototype>(profileCompany, out var companyPrototype))
         {
-            // Check for other companies if one wasn't assigned by the job
-            var allowedCompany = false;
-
-            // Check if the company isn't disabled and if they are whitelisted or the company has no whitelist
-            if (!_prototypeManager.TryIndex<CompanyPrototype>(profileCompany, out var companyPrototype))
-                return;
-
             // Check if the company isn't disabled and if the player is whitelisted OR the company has no whitelist
-            if (!companyPrototype.Disabled && _companyManager.IsAllowed(args.Player, companyPrototype))
-                allowedCompany = true;
-
-            // If player is not allowed, set to none
-            if (!allowedCompany)
+            // If it's not allowed, set the company to 'None'
+            if (companyPrototype.Disabled || !_manager.IsAllowed(args.Player, companyPrototype);)
             {
                 profileCompany = "None";
                 companyComp.CompanyName = profileCompany;
