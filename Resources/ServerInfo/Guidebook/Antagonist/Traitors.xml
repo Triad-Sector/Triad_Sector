@@ -32,7 +32,7 @@
 
   <Box>
     <GuideEntityEmbed Entity="WeaponPistolCobra" Caption="Weaponry"/>
-    <GuideEntityEmbed Entity="AmmoBox7.62x39mmFMJ" State="icon" Caption="Ammo"/>
+    <GuideEntityEmbed Entity="AmmoBox762x39mmFMJ" State="icon" Caption="Ammo"/>
     <GuideEntityEmbed Entity="C4" Caption="Explosives"/>
     <GuideEntityEmbed Entity="ClothingOuterHardsuitSyndie" Caption="Wearables"/>
     <GuideEntityEmbed Entity="Stimpack" Caption="Chemicals"/>
