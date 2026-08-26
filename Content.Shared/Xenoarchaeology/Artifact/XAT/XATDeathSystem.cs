@@ -41,6 +41,11 @@ public sealed class XATDeathSystem : BaseXATSystem<XATDeathComponent>
             if (!CanTrigger(artifact, (uid, node)))
                 continue;
 
+            // Triad: fifteen metres crosses a dock. Someone dying aboard the ship moored next to
+            // yours is not your artifact's doing, and should not solve your node.
+            if (!XenoArtifact.IsGridLocal(artifact.Owner, args.Target))
+                continue;
+
             var artifactCoords = Transform(artifact).Coordinates;
             if (_transform.InRange(targetCoords, artifactCoords, comp.Range))
                 Trigger(artifact, (uid, comp, node));

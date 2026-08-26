@@ -29,8 +29,13 @@ public sealed class XAEDamageInAreaSystem : BaseXAESystem<XAEDamageInAreaCompone
         var damageInAreaComponent = ent.Comp;
         _entitiesInRange.Clear();
         _lookup.GetEntitiesInRange(ent.Owner, damageInAreaComponent.Radius, _entitiesInRange);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var entityInRange in _entitiesInRange)
         {
+            if (!XenoArtifact.IsGridLocal(xform, entityInRange)) // Triad: our hull takes the hit, not theirs
+                continue;
+
             if (!_random.Prob(damageInAreaComponent.DamageChance))
                 continue;
 

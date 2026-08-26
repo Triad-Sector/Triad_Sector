@@ -46,6 +46,16 @@ public abstract partial class SharedXenoArtifactSystem : EntitySystem
     private void OnStartup(Entity<XenoArtifactComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.NodeContainer = _container.EnsureContainer<Container>(ent, XenoArtifactComponent.NodeContainerId);
+        AfterArtifactStartup(ent);
+    }
+
+    /// <summary>
+    /// Triad: startup hook for the server half. ComponentStartup is already taken here and the bus
+    /// refuses a second subscription for the same component and event, so the server gets a call
+    /// rather than its own subscription.
+    /// </summary>
+    protected virtual void AfterArtifactStartup(Entity<XenoArtifactComponent> ent)
+    {
     }
 
     public void SetSuppressed(Entity<XenoArtifactComponent> ent, bool val)

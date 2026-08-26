@@ -34,3 +34,31 @@
         Radiation: 0.6
   - type: StaminaDamageResistance
     coefficient: 0.5
+
+- type: entity
+  parent: ClothingModsuitChestplateBase
+  id: ClothingModsuitChestplateHZDBesieger
+  name: HZD Cuirass
+  description: A heavy set of plastitanium alloy plates surrounding specialized padding designed to dull the force of shockwaves, one of HZD's most advanced systems.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Modsuits/HZDBesieger.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.83
+    sprintModifier: 0.83
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: StaminaDamageResistance
+    coefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.35
+        Caustic: 0.6
+        Radiation: 0.35
+  - type: FireProtection
+    reduction: 0.65

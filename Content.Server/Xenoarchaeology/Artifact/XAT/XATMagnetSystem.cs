@@ -30,12 +30,18 @@ public sealed class XATMagnetSystem : BaseQueryUpdateXATSystem<XATMagnetComponen
     /// <inheritdoc />
     protected override void UpdateXAT(Entity<XenoArtifactComponent> artifact, Entity<XATMagnetComponent, XenoArtifactNodeComponent> node, float frameTime)
     {
-        var coords = Transform(artifact.Owner).Coordinates;
+        var xform = Transform(artifact.Owner);
+        var coords = xform.Coordinates;
 
         _magbootEntities.Clear();
         _lookup.GetEntitiesInRange(coords, node.Comp1.MagbootsRange, _magbootEntities);
         foreach (var ent in _magbootEntities)
         {
+            // Triad: two metres reaches straight through a docking wall, so someone in magboots
+            // standing on the ship next door used to solve your node. Same fence the effects use.
+            if (!XenoArtifact.IsGridLocal(xform, ent))
+                continue;
+
             if(!TryComp<ItemToggleComponent>(ent, out var itemToggle) || !itemToggle.Activated)
                 continue;
 
@@ -57,6 +63,12 @@ public sealed class XATMagnetSystem : BaseQueryUpdateXATSystem<XATMagnetComponen
             var artifact = _xenoArtifactQuery.Get(GetEntity(node.Attached.Value));
 
             if (!CanTrigger(artifact, (uid, node)))
+                continue;
+
+            // Triad: forty metres is most of a sector berth. A depot's salvage magnet, or the ship
+            // moored alongside pulsing theirs, used to solve a node for a crew who did nothing.
+            // The magnet has to be on the artifact's own hull.
+            if (!XenoArtifact.IsGridLocal(artifact.Owner, args.Magnet))
                 continue;
 
             var artifactCoordinates = Transform(artifact).Coordinates;

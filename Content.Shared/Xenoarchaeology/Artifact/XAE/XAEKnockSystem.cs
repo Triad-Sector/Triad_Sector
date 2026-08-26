@@ -20,7 +20,9 @@ public sealed class XAEKnockSystem : BaseXAESystem<XAEKnockComponent>
         var ev = new KnockSpellEvent
         {
             Performer = ent.Owner,
-            Range = ent.Comp.KnockRange
+            Range = ent.Comp.KnockRange,
+            // Triad: keep the doors we pop to our own hull, see KnockSpellEvent.OnlyGrid
+            OnlyGrid = Transform(ent.Owner).GridUid
         };
         RaiseLocalEvent(ev);
     }

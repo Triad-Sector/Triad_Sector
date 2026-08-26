@@ -1,11 +1,17 @@
 namespace Content.Shared.Xenoarchaeology.Artifact.XAE;
 
 /// <summary>
-/// Base class for 
+/// Base class for
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public abstract class BaseXAESystem<T> : EntitySystem where T : Component
 {
+    /// <summary>
+    /// Triad: effect systems reach for this to keep themselves grid-local. See
+    /// <see cref="SharedXenoArtifactSystem.IsGridLocal(Robust.Shared.GameObjects.EntityUid,Robust.Shared.GameObjects.EntityUid)"/>.
+    /// </summary>
+    [Dependency] protected readonly SharedXenoArtifactSystem XenoArtifact = default!;
+
     /// <inheritdoc/>
     public override void Initialize()
     {

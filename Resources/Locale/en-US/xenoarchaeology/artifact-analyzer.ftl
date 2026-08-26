@@ -54,3 +54,5 @@ analysis-console-info-peak-value = [font="Monospace" size=11][color={ $cap ->
 analysis-console-info-unknown-value = [font="Monospace" size=11][color=gray]Insufficient data[/color][/font]
 
 analyzer-artifact-extract-popup = Energy shimmers on the artifact's surface!
+# Triad: the console will happily total up points with no research server on the other end.
+analyzer-artifact-extract-no-server = The console has no research server to bank the data to.

@@ -4158,3 +4158,57 @@ Entries:
   id: 2544
   time: '2026-08-24T19:09:39.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/545
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Artifacts stored on a ship no longer come back inert, unsolvable, or
+        wearing the wrong sprite.
+    - type: Fix
+      message: >-
+        Artifact effects and triggers are now local to the ship running the
+        artifact. Docking next to someone no longer lets their artifact gas your
+        hull, and their salvage magnet no longer solves your nodes.
+    - type: Fix
+      message: The blink and phasing artifact effects now actually do something.
+    - type: Fix
+      message: >-
+        The analysis console says so when there is no research server to bank
+        points to, instead of quietly banking nothing.
+    - type: Fix
+      message: Artifact "friendly fauna" no longer spawns angry bees and space bears.
+  id: 2545
+  time: '2026-08-25T07:01:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/546
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Changed Most if not all ballistic bullet to new sprites
+  id: 2546
+  time: '2026-08-25T12:06:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/543
+- author: Stedar111
+  changes:
+    - type: Add
+      message: Added the HZD Besieger, a high-end, researchable, and stompy modsuit!
+  id: 2547
+  time: '2026-08-25T12:13:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/505
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed some technology disks not giving you the recipes on the disk.
+  id: 2548
+  time: '2026-08-25T14:02:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/548
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added a notice label to the player factions tab in the character profile
+        editor to clear up any confusion
+    - type: Tweak
+      message: (ADMIN) Company toolshed command renamed to Faction toolshed commands
+  id: 2549
+  time: '2026-08-25T19:29:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/549

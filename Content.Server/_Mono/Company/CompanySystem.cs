@@ -63,36 +63,15 @@ public sealed partial class CompanySystem : EntitySystem
             companyComp.CompanyName = job.AssignedCompany;
             assigned = companyComp.CompanyName != "None";
         }
-        if (!assigned)
+
+        if (!assigned && _prototypeManager.TryIndex<CompanyPrototype>(profileCompany, out var companyPrototype))
         {
-            // Only consider whitelist if the player has NO specific company preference
-            bool loginFound = false;
+            // Check if the company isn't disabled and if the player is whitelisted OR the company has no whitelist
+            // If it's not allowed, set the company to 'None'
+            if (companyPrototype.Disabled || !_manager.IsAllowed(args.Player, companyPrototype))
+                profileCompany = "None";
 
-            // Only check logins if the player hasn't explicitly set a company preference
-            // or if their preference is "None"
-            if (string.IsNullOrEmpty(profileCompany))
-            {
-                foreach (var companyProto in _prototypeManager.EnumeratePrototypes<CompanyPrototype>())
-                {
-                    if (_manager.IsAllowed(args.Player, companyProto))
-                    {
-                        companyComp.CompanyName = companyProto.ID;
-                        loginFound = true;
-                        break;
-                    }
-                }
-            }
-
-            // If no login was found or login check was skipped due to player preference, use the player's preference
-            if (!loginFound)
-            {
-                // Use "None" as fallback for empty company
-                if (string.IsNullOrEmpty(profileCompany))
-                    profileCompany = "None";
-
-                // Restore the player's original company preference
-                companyComp.CompanyName = profileCompany;
-            }
+            companyComp.CompanyName = profileCompany;
         }
 
         // Ensure the component is networked to clients

@@ -173,7 +173,11 @@ public sealed partial class TileSystem : EntitySystem
 
         // Frontier
         var ev = new FloorTileAttemptEvent();
-        RaiseLocalEvent(mapGrid);
+        // Triad: was RaiseLocalEvent(mapGrid), which broadcasts the grid COMPONENT as an event object
+        // and never raises ev, so ev.Cancelled below was dead. Nothing subscribes today, so nothing
+        // changes yet; it is the artifact tile-pry path's only cancel hook and it should work when
+        // something does. Matches the sibling raise in FloorTileSystem.CanPlaceTile.
+        RaiseLocalEvent(gridUid, ref ev);
 
         if (((TryComp<ProtectedGridComponent>(gridUid, out var prot) && prot.PreventFloorRemoval) || ev.Cancelled) && tileDef.ID == "Plating")
             return false;

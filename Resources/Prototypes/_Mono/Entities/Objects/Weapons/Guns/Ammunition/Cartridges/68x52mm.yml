@@ -13,7 +13,7 @@
     deleteOnSpawn: true
   - type: Sprite
     noRot: false
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Casings/caseless_ammo_casing.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/caseless_casing.rsi # Triad new sprite
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]

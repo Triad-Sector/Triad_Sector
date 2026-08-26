@@ -160,7 +160,7 @@
       sprite: Clothing/Back/Satchels/salvage.rsi
 
 - type: entity
-  parent: ClothingBackpackSatchel
+  parent: [ClothingBackpackSatchel, BaseClass2AShipContrabandSilent] # Triad
   id: ClothingBackpackSatchelHolding
   name: satchel of holding
   description: A satchel that opens into a localized pocket of bluespace.

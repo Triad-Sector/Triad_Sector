@@ -37,8 +37,15 @@ public sealed class XAEShuffleSystem : BaseXAESystem<XAEShuffleComponent>
         List<Entity<TransformComponent>> toShuffle = new();
         _entities.Clear();
         _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.Radius, _entities, LookupFlags.Dynamic | LookupFlags.Sundries);
+
+        var artifactXform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var entity in _entities)
         {
+            // Triad: shuffling has to stay on one hull. Swapping someone across a dock drops them
+            // through a wall on a grid they were never on.
+            if (!XenoArtifact.IsGridLocal(artifactXform, entity))
+                continue;
+
             if (!_mobState.HasComponent(entity))
                 continue;
 

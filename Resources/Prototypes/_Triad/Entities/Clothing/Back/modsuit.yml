@@ -1,0 +1,39 @@
+- type: entity
+  parent: ClothingModsuitBase
+  id: ClothingModsuitHZDBesieger
+  name: HZD Besieger Modsuit Core
+  description: The backpack unit for the HZD modsuit used by their elite breaching teams. Its storage compartments are all reinforced to protect its contents.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Back/Modsuits/HZDBesieger.rsi
+  - type: Storage
+    grid:
+    - 0,0,5,4
+    - 7,0,7,1
+    - 9,0,9,1
+    - 7,3,9,4
+  - type: ExplosionResistance
+    damageCoefficient: 0.20
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingModsuitHelmetHZDBesieger
+      gloves: ClothingModsuitGauntletsHZDBesieger
+      outerClothing: ClothingModsuitChestplateHZDBesieger
+      shoes: ClothingModsuitBootsHZDBesieger
+  - type: Tag
+    tags:
+    - HZDModsuitCore
+
+- type: entity
+  parent: ClothingModsuitHZDBesieger
+  id: ClothingModsuitHZDBesiegerPowerCell
+  suffix: High-Capacity Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+        whitelist:
+          components:
+            - PowerCell

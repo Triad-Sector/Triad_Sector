@@ -28,7 +28,18 @@ public sealed class XATCompNearbySystem : BaseQueryUpdateXATSystem<XATCompNearby
 
         _entities.Clear();
         _entityLookup.GetEntitiesInRange(comp.Type, pos, compNearbyComponent.Radius, _entities);
-        if (_entities.Count >= compNearbyComponent.Count)
+
+        // Triad: the lookup is a circle on the map, so a docked neighbour's cargo counts toward the
+        // required tally. Only what is aboard the artifact's own hull should.
+        var xform = Transform(artifact.Owner);
+        var count = 0;
+        foreach (var candidate in _entities)
+        {
+            if (XenoArtifact.IsGridLocal(xform, candidate))
+                count++;
+        }
+
+        if (count >= compNearbyComponent.Count)
             Trigger(artifact, node);
     }
 }

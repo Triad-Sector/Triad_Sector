@@ -1,6 +1,6 @@
 # 'Companies', better known as minor factions.
 # I can't be assed to go through every mention of companies in the codebase and database just to make it say minor factions.
-# Playable, player-owned factions should always be whitelisted. Faction leaders of considerably larger minor factions should not be actual in-game characters.
+# Playable, player-owned factions should always be whitelisted. Faction leaders of considerably larger factions should not be actual in-game characters.
 
 # "None" - DO NOT REMOVE!
 - type: company
@@ -31,7 +31,7 @@
   color: "#279659"
   disabled: true
 
-# ====Other minor factions====
+# ====Player factions====
 # All of these should be whitelisted and controlled by a faction owner.
 - type: company
   id: NosskeEienResearchandDevelopment

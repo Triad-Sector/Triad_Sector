@@ -18,7 +18,11 @@ public sealed partial class XAEPortalComponent : Component
     /// <summary>
     /// Maximum range that the target entity should be from the portal, in meters.
     /// </summary>
+    // Triad: 1000<100. Frontier added this as a fence against cross-map yanks, but on a sector
+    // where every ship shares one map 1000m reaches most of the neighbourhood, so it fenced
+    // nothing. The grid gate in XAEPortalSystem is the real limit now; this only keeps the pick
+    // to somewhere on the hull you could plausibly have walked to.
     [DataField, AutoNetworkedField]
-    public float MaxRange = 1000f;
+    public float MaxRange = 100f; // Frontier: 1000f
     // End Frontier
 }

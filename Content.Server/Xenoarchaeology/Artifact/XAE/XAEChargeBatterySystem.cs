@@ -23,8 +23,13 @@ public sealed class XAEChargeBatterySystem : BaseXAESystem<XAEChargeBatteryCompo
         var chargeBatteryComponent = ent.Comp;
         _batteryEntities.Clear();
         _lookup.GetEntitiesInRange(args.Coordinates, chargeBatteryComponent.Radius, _batteryEntities);
+
+        var xform = Transform(ent.Owner); // Triad: the node inherits the artifact's grid
         foreach (var battery in _batteryEntities)
         {
+            if (!XenoArtifact.IsGridLocal(xform, battery)) // Triad: no charging the ship next door
+                continue;
+
             _battery.SetCharge(battery, battery.Comp.MaxCharge, battery);
         }
     }

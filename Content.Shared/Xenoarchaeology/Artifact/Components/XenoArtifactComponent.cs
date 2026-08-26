@@ -5,6 +5,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad: TimeOffsetSerializer
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Xenoarchaeology.Artifact.Components;
@@ -90,7 +91,11 @@ public sealed partial class XenoArtifactComponent : Component
     /// <summary>
     /// When next unlock session can be triggered.
     /// </summary>
-    [DataField, AutoPausedField]
+    // Triad: this is an absolute CurTime, and CurTime restarts from zero every time the server does.
+    // Written raw, a ship file carries the deadline the previous server stamped, so an artifact stored
+    // aboard restored onto a fresher server and refused every trigger until the new uptime caught up
+    // with the old one. TimeOffsetSerializer writes it as an offset from now and re-bases it on load.
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextUnlockTime;
     #endregion
 

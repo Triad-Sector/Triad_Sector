@@ -4,6 +4,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.XAT.Components;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
 
@@ -15,9 +16,10 @@ namespace Content.Shared.Xenoarchaeology.Artifact.XAT;
 /// </summary>
 public sealed partial class XATInteractAttackSystem : BaseXATSystem<XATInteractAttackComponent>
 {
-    [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -75,6 +77,13 @@ public sealed partial class XATInteractAttackSystem : BaseXATSystem<XATInteractA
     /// <returns>True if enough interactions have been made, False if not.</returns>
     private bool DoTriggerCountdown(Entity<XATInteractAttackComponent> ent, EntityUid artifact, EntityUid? user)
     {
+        // Triad: all three feeding events are raised on both sides, and StartCollideEvent re-fires on
+        // every client prediction pass, so the countdown was decremented several times per real hit
+        // and the popup fired once per pass on top of the server's. Trigger() already refuses to run
+        // outside the first predicted pass, so returning false here costs nothing.
+        if (!Timing.IsFirstTimePredicted)
+            return false;
+
         if (ent.Comp.MaxCount == null || ent.Comp.Count == null) //ensure countdown isn't null
             SetMaxCount(ent);
 
@@ -82,7 +91,7 @@ public sealed partial class XATInteractAttackSystem : BaseXATSystem<XATInteractA
 
         if (ent.Comp.Count > 0)
         {
-            if (ent.Comp.InsufficientInteractionPopup != null && user != null) // Triad: no nullable-recipient overload here
+            if (ent.Comp.InsufficientInteractionPopup != null && user != null && _net.IsServer) // Triad: no nullable-recipient overload here
                 _popup.PopupEntity(Loc.GetString(ent.Comp.InsufficientInteractionPopup), artifact, user.Value); //tell user they need to interact in the same way more times
 
             Dirty(ent);

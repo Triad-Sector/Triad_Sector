@@ -7,6 +7,7 @@ using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.Prototypes;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -28,6 +29,54 @@ namespace Content.Shared.Xenoarchaeology.Artifact;
 /// </summary>
 public abstract partial class SharedXenoArtifactSystem
 {
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    #region Grid locality
+
+    /// <summary>
+    /// Triad: artifact effects are grid-local. An artifact belongs to the ship carrying it, so every
+    /// area effect filters its candidates through this before touching them. Docking two hulls no
+    /// longer lets a node reach across the airlock, and nothing an artifact does can land on another
+    /// crew's ship.
+    ///
+    /// An artifact with no grid under it (EVA, drifting in a debris field) is local to nothing, so it
+    /// reaches only other gridless entities on the same map rather than reaching into every hull
+    /// within range.
+    /// </summary>
+    /// <param name="artifact">The artifact the effect is firing from. The node entity works too: it
+    /// lives in the artifact's container and inherits its grid.</param>
+    /// <param name="target">Candidate the effect wants to touch.</param>
+    public bool IsGridLocal(EntityUid artifact, EntityUid target)
+    {
+        return IsGridLocal(Transform(artifact), target);
+    }
+
+    /// <inheritdoc cref="IsGridLocal(EntityUid,EntityUid)"/>
+    /// <remarks>
+    /// Overload for effect loops, which resolve the artifact's transform once and then test many
+    /// candidates against it.
+    /// </remarks>
+    public bool IsGridLocal(TransformComponent artifactXform, EntityUid target)
+    {
+        var targetXform = Transform(target);
+        return artifactXform.MapUid == targetXform.MapUid
+               && artifactXform.GridUid == targetXform.GridUid;
+    }
+
+    /// <summary>
+    /// Triad: as <see cref="IsGridLocal(EntityUid,EntityUid)"/>, but for the effects that land on a
+    /// clicked location rather than on an entity. Stops an artifact held on a docked shuttle from
+    /// dropping gas, foam or an EMP onto the grid next door.
+    /// </summary>
+    public bool IsGridLocal(EntityUid artifact, EntityCoordinates coordinates)
+    {
+        var artifactXform = Transform(artifact);
+        return artifactXform.MapUid == _transform.GetMap(coordinates)
+               && artifactXform.GridUid == _transform.GetGrid(coordinates);
+    }
+
+    #endregion
+
     #region Severity profile
 
     /// <summary>

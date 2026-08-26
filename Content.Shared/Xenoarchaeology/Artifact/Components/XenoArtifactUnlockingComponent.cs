@@ -1,5 +1,6 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad: TimeOffsetSerializer
 
 namespace Content.Shared.Xenoarchaeology.Artifact.Components;
 
@@ -18,7 +19,10 @@ public sealed partial class XenoArtifactUnlockingComponent : Component
     /// <summary>
     /// The time at which the unlocking state ends.
     /// </summary>
-    [DataField, AutoNetworkedField, AutoPausedField]
+    // Triad: absolute CurTime, so a ship saved mid-session used to restore with a window that had
+    // already expired on a fresher server, or one that never closed. See NextUnlockTime on
+    // XenoArtifactComponent for the same fix and the reasoning.
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan EndTime;
 
     // Triad: ArtifexiumApplied removed with the reagent
