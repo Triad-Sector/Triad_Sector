@@ -1,0 +1,102 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSolarianSiliconBoss
+  name: terralith one star unit spawner
+  suffix: AI, Hostile, SD
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - state: ai
+      - sprite: Mobs/Silicon/onestar.rsi
+        state: onestar_boss
+      - sprite: Mobs/Silicon/onestar.rsi
+        state: onestar_boss_screen
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSolarianSiliconBoss
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSolarianSiliconDrone
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, Guaranteed
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department
+      color: "#292b41"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: decor_department_accent
+      color: "#CC8A45"
+    - sprite: _NF/Mobs/RogueSilicons/drones.rsi
+      state: base_eyes
+      shader: unshaded
+      color: "#ABF8FF"
+  - type: RandomSpawner
+    prototypes:
+    - MobSolarianSiliconDrone
+    chance: 1
+
+- type: entity
+  parent: SpawnMobSolarianSiliconDrone
+  id: SpawnMobSolarianSiliconDroneFiftyChance
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, 50% Chance
+  components:
+  - type: RandomSpawner
+    chance: 0.5
+
+- type: entity
+  parent: SpawnMobSolarianSiliconDrone
+  id: SpawnMobSolarianSiliconDroneTenChance
+  name: terralith drone spawner
+  suffix: AI, Hostile, SD, 10% Chance
+  components:
+  - type: RandomSpawner
+    chance: 0.1
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSolarianSiliconAssaultCyborg
+  name: SD assault cyborg spawner
+  suffix: AI, Hostile, SD, Guaranteed
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Triad/Mobs/Silicon/SolDirective/assault_cyborg.rsi
+      state: assault
+    - sprite: _Triad/Mobs/Silicon/SolDirective/assault_cyborg.rsi
+      state: assault_l
+  - type: RandomSpawner
+    prototypes:
+    - MobSolarianSiliconAssaultCyborg
+    - MobSolarianSiliconAssaultCyborgMelee
+    chance: 1
+    rarePrototypes:
+    - PlayerBorgSolarianDirectiveAssaultGhostRoleCache
+    rareChance: 0.1 # 10% chance for a ghostrole
+
+- type: entity
+  parent: SpawnMobSolarianSiliconAssaultCyborg
+  id: SpawnMobSolarianSiliconAssaultCyborgFiftyChance
+  name: SD assault cyborg spawner
+  suffix: AI, Hostile, SD, 50% chance
+  components:
+  - type: RandomSpawner
+    chance: 0.5
+
+- type: entity
+  parent: SpawnMobSolarianSiliconAssaultCyborg
+  id: SpawnMobSolarianSiliconAssaultCyborgTenChance
+  name: SD assault cyborg spawner
+  suffix: AI, Hostile, SD, 10% chance
+  components:
+  - type: RandomSpawner
+    chance: 0.1
+    rareChance: 0.01 # 1% so the odds match up

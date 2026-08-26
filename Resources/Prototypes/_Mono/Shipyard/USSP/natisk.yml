@@ -7,7 +7,7 @@
   description: A tank with a layer of reinforced walls under its exterior hull, ensuring its able to send out obscene amounts of firepower.
   price: 53500
   category: Medium
-  group: Ussp
+  group: BlackMarket
   access: Mercenary
   shuttlePath: /Maps/_Mono/Shuttles/USSP/natisk.yml
   guidebookPage: Null

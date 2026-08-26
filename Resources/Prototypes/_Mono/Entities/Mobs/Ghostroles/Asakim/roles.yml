@@ -38,3 +38,8 @@
   - type: ActiveRadio
     channels:
     - Remnants
+
+- type: roleLoadout
+  id: RoleSurvivalTankOnly
+  groups:
+  - GroupEVATank

@@ -339,6 +339,9 @@ uplink-hardsuit-carp-desc = Looks like an ordinary carp suit, except fully space
 uplink-hardsuit-syndie-name = Syndicate Hardsuit
 uplink-hardsuit-syndie-desc = The Syndicate's well known armored blood red hardsuit, capable of space walks and taking bullets.
 
+uplink-hardsuit-syndie-black-name = Midnight Operative Special Tacticool Suit
+uplink-hardsuit-syndie-black-desc = Following a crippling strike on Gorlex paint factories, their supply of signature blood-red ran dry. This was a last-ditch rebrand attempt.
+
 uplink-syndie-raid-name = Syndicate Raid Suit
 uplink-syndie-raid-desc = A very durable and reasonably flexible suit of blood-red armor, reinforced against all common forms of damage but not capable of space walks. Comes with a sick helmet.
 

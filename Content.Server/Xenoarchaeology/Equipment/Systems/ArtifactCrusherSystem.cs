@@ -1,16 +1,16 @@
 using Content.Server.Body.Systems;
 using Content.Server.Popups;
-using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
-using Content.Server.Storage.Components;
-using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Power;
+using Content.Server.Storage.Components; // Triad: EntityStorageComponent is still server-side here
+using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
 using Content.Shared.Xenoarchaeology.Equipment;
+using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Shared.Collections;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -18,16 +18,15 @@ using Robust.Shared.Timing;
 namespace Content.Server.Xenoarchaeology.Equipment.Systems;
 
 /// <inheritdoc/>
-public sealed partial class ArtifactCrusherSystem : SharedArtifactCrusherSystem
+public sealed class ArtifactCrusherSystem : SharedArtifactCrusherSystem
 {
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private ArtifactSystem _artifact = default!;
-    [Dependency] private BodySystem _body = default!;
-    [Dependency] private DamageableSystem _damageable = default!;
-    [Dependency] private StackSystem _stack = default!;
-    [Dependency] private PopupSystem _popup = default!;
-    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -103,7 +102,6 @@ public sealed partial class ArtifactCrusherSystem : SharedArtifactCrusherSystem
                 {
                     ContainerSystem.Insert((stack, null, null, null), crusher.OutputContainer);
                 }
-                _artifact.ForceActivateArtifact(contained);
             }
 
             if (!TryComp<BodyComponent>(contained, out var body))

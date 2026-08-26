@@ -501,27 +501,6 @@
     - SecurityWeapons
     - SecurityDisablers
     - SMCybernetics
-    # Mono - Mechs
-    - WeaponMechCombatArsenal
-    - SmartGun # Goobstation
-    # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPMiscDynamic
-    #- MonoViperGroupDynamic, Triad, removed
-    - MonoUSSPWeaponsDynamicRanged
-    - UniversalShellAmmo
-    - ResearchedExplosives
-    - UniversalRailgunAmmo
-    - UniversalMissileAmmo
-    - UniversalOrdinance
-    - SmartGun #Smart SMG
-    - NFMercenaryTechfabDeprecated
-    # Mono end
   - type: MaterialStorage
     whitelist:
       tags:

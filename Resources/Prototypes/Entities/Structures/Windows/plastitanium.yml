@@ -172,6 +172,10 @@
     airBlockedDirection:
     - South
     - East
+  - type: Construction #Triad
+    graph: plastitaniumWindowDiagonal #Triad
+    node: plastitaniumWindowDiagonal #Triad
+
 
 - type: entity
   id: PlastitaniumWindowDiagonalIndestructible

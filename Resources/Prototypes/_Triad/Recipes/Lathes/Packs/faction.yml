@@ -1,0 +1,20 @@
+- type: latheRecipePack
+  id: GenericFaction # Stuff available from tech disks
+  recipes:
+  - EnergySwordRogue
+  - EnergyShieldRogue
+  - EnergyDaggerRogue
+  - WeaponRifleWSPRRogue
+  - WeaponSubMachineGunMla73Rogue
+  - HFSwordVT7
+  - WeaponSniperHristovRogue
+  - WeaponDEWBasilisk
+  - WeaponSubMachineGunWt550Rogue
+  - WeaponShotgunBulldogRogue
+  - WeaponLauncherPanzeroRogue
+  - WeaponSubMachineGunC20rRogue
+  - WeaponRevolverPythonRogue
+  - WeaponRifleM90Rogue
+  - WeaponShotgunSultanPulsar
+  - PrintableDirtyBomb
+  - WeaponSubMachineGunAtreidesRogue

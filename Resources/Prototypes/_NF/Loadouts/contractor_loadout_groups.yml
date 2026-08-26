@@ -207,7 +207,6 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
-  - StrainedShorts # Triad
   # Triad start - Ported MNK clothes.
   - ClothingUniformMNKOfficeSkirt
   - ClothingUniformMNKUnderGarment
@@ -216,6 +215,8 @@
   - ClothingUniformMNKBlackOveralls
   - ClothingUniformMNKBlackShoulder
   - ClothingUniformMNKTracksuitBlack
+  - ClothingUniformIndustrialWorker
+  - StrainedShorts
   # End Triad
 
   fallbacks:
@@ -231,6 +232,11 @@
   - ContractorClothingModsuitCaptainPowerCell
   - ContractorClothingModsuitEngineerPowerCell
   ## Mono end
+  # Triad start
+  - ClothingBackpackMilitary
+  - ClothingBackpackSatchelMilitary
+  - ClothingBackpackDuffelMilitary
+  # Triad end
   - ContractorClothingBackpack
   - ContractorClothingBackpackDuffel
   - ContractorClothingBackpackSatchel
@@ -619,7 +625,6 @@
   - ContractorClothingHeadsetAltEngineeringCommon
   - ContractorClothingHeadsetAltMedicalCommon
   - ContractorClothingHeadsetAltScienceCommon
-  - USSPHeadset # Mono
   fallbacks:
   - ContractorClothingHeadsetGreyCommon
 

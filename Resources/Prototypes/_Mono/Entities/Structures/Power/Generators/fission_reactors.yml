@@ -36,19 +36,6 @@
 
 # No use really, but just in case.
 - type: entity
-  id: NuclearReactorUSSP
-  parent: NuclearReactorCrew
-  suffix: USSP Serzhant Locked
-  components:
-  - type: NuclearReactor
-    prefab: ReactorPrefab7x7Normal
-  - type: NameIdentifier
-    group: NuclearReactorUSSP
-  - type: AccessReader
-    access: [["USSPHigh"]]
-
-# No use really, but just in case.
-- type: entity
   id: NuclearReactorCC
   parent: NuclearReactorCrew
   suffix: Overseer Locked
@@ -99,19 +86,6 @@
     group: NuclearReactorPDVSmall
   - type: AccessReader
     access: [["PDVCommand"]]
-
-# No use really, but just in case.
-- type: entity
-  id: NuclearReactorUSSPSmall
-  parent: NuclearReactorSmall
-  suffix: USSP Serzhant Locked
-  components:
-  - type: NuclearReactor
-    prefab: ReactorPrefab5x5Normal
-  - type: NameIdentifier
-    group: NuclearReactorUSSPSmall
-  - type: AccessReader
-    access: [["USSPHigh"]]
 
 # No use really, but just in case.
 - type: entity

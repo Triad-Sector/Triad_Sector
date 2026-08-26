@@ -83,19 +83,3 @@
     spoken: true
     languages:
     - Gary
-
-- type: trait
-  id: MonoNovaCygniBasic
-  name: trait-language-NovaCygni-name
-  description: trait-language-NovaCygni-desc
-  category: LanguageTraits
-  cost: 0 # Triad: accents/languages are cosmetic RP, not a point cost.
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: LanguageSpeaker
-  - !type:AddLanguagesEffect
-    understood: true
-    spoken: true
-    languages:
-    - NovaCygniBasic

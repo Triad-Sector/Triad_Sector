@@ -8,18 +8,3 @@
   - Mercenary
   primary: false
   editorHidden: true
-
-- type: department
-  id: UnionOfSovietSocialistPlanets
-  name: department-UnionOfSovietSocialistPlanets
-  description: department-UnionOfSovietSocialistPlanets-description
-  color: "#b2224b"
-  weight: 117 # Master Chief!
-  # roles:
-  # - USSPCommissar
-  # - USSPSergeant
-  # - USSPCorporal
-  # - USSPMedic
-  # - USSPRifleman
-  primary: false
-  editorHidden: true

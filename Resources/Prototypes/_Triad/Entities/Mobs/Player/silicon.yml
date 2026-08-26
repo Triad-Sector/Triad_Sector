@@ -1,0 +1,70 @@
+# Borgs
+- type: dataset
+  id: SDBorgNameset
+  values:
+  - Solary
+  - Directive's Will
+  - SD Operator
+  - SD Protectronic
+  - SD Guardian
+  - SD Minimizer
+  - SD Dispatcher
+  - DiamondBot
+  - Directive's Rifle
+
+- type: entity
+  parent: BorgChassisSolarianDirectiveAssault
+  id: PlayerBorgSolarianDirectiveAssaultBattery
+  suffix: Battery, Module
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleTool
+        - BorgModuleSDStandardWeapon
+        - BorgModuleSDAdvancedAssault
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellCombat
+  - type: RandomMetadata
+    nameSegments: [SDBorgNameset]
+
+- type: entity
+  parent: PlayerBorgSolarianDirectiveAssaultBattery
+  id: PlayerBorgSolarianDirectiveAssaultGhostRole
+  suffix: Ghost Role
+  components:
+  - type: GhostRole
+    name: ghost-role-information-solarian-cyborg-assault-name
+    description: ghost-role-information-solarian-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: PlayerBorgSolarianDirectiveAssaultBattery
+  id: PlayerBorgSolarianDirectiveAssaultGhostRoleCache
+  suffix: Ghost Role, Solarian Cache
+  components:
+  - type: GhostRole
+    name: ghost-role-information-solarian-cyborg-assault-name
+    description: ghost-role-information-solarian-cyborg-cache-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: NFSalvageMobRestrictions
+    removeComponentsOnDeath:
+    - type: Prying
+    - type: Access
+  - type: SiliconLawProvider
+    laws: SolarianDirectiveVesselProtection
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Traffic # Can't talk on broadband, but can hear it
+    - SolarianDirective

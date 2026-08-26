@@ -13,7 +13,7 @@
   # - ContractorSpecialGunVector9mm
   # - ContractorSpecialGunVector45Acp
   # - ContractorSpecialGunBandit
-  # USSP -> MERC/CIV playtime guns
+  # MERC/CIV playtime guns
   - ContractorSpecialGunAk502
   - ContractorSpecialGunBigLeady
   # Rogue playtime guns
@@ -26,7 +26,7 @@
   - ContractorSpecialGunMla79
   - ContractorSpecialGunMalandro
   - ContractorSpecialGunSquire # Triad
-# TSF playtime weapons
+
 
 - type: loadout
   id: ContractorSpecialGunEg4
@@ -98,7 +98,7 @@
   inhand:
   - WeaponCaseLongMR3CRegistered
 
-# USSP -> MERC/CIV playtime weapons
+# MERC/CIV playtime weapons
 
 - type: loadout
   id: ContractorSpecialGunAk502

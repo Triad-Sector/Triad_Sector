@@ -262,7 +262,7 @@
   id: UplinkSecurityFactionRDServer
   name:  uplink-faction-server-name
   description: uplink-faction-server-desc
-  productEntity: RDServerTSFFlatpack
+  productEntity: RDServerTDFFlatpack
   cost:
     TriadCommerceCredit: 75
   categories:

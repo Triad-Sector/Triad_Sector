@@ -27,16 +27,6 @@
 
 # No use really, but just in case.
 - type: entity
-  id: TurbineUSSP
-  parent: Turbine
-  suffix: USSP Serzhant Locked
-  description: A large turbine used for generating power using hot gas. Locked to the USSP Serzhants.
-  components:
-  - type: AccessReader
-    access: [["USSPHigh"]]
-
-# No use really, but just in case.
-- type: entity
   id: TurbineCC
   parent: Turbine
   suffix: Overseer Locked
@@ -75,16 +65,6 @@
   components:
   - type: AccessReader
     access: [["PDVCommand"]]
-
-# No use really, but just in case.
-- type: entity
-  id: TurbineUSSPSmall
-  parent: TurbineSmall
-  suffix: USSP Serzhant Locked
-  description: A large turbine used for generating power using hot gas. Locked to the USSP Serzhants.
-  components:
-  - type: AccessReader
-    access: [["USSPHigh"]]
 
 # No use really, but just in case.
 - type: entity

@@ -17,8 +17,7 @@
   spawnGroup: Arena
   gridPath: /Maps/_NF/POI/arena.yml
   addComponents:
-  # Triad: on the bus route. Berth is the west triple on the south face, uids 3017/3018/3054 in the
-  # map, tagged DockTransit.
+  # Triad: on the bus route. Berth is the east-face bay, uids 1084/1761, reserved to the bus.
   - type: StationTransit
   - type: SolarPoweredGrid
     trackOnInit: true

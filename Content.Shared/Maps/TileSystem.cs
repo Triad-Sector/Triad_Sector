@@ -59,8 +59,18 @@ public sealed partial class TileSystem : EntitySystem
                 return i;
         }
 
-        // Shouldn't happen
-        throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
+        // Triad: this does happen. Same arithmetic as the weighted picks in SharedRandomExtensions,
+        // whose WeightedPickFallThrough carries the full explanation: Sum() accumulates floats in a
+        // double and casts back while `accumulated` is a running float, and `rand` is a float multiply
+        // that can round up onto the gap between them. This is the highest-volume weighted pick in the
+        // game and it runs inside BiomeSystem's chunk loader, so a throw here took biome loading down
+        // for the rest of the round until that loader was made exception safe. The variant the loop was
+        // reaching for is the last one.
+        // throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
+        if (variants.Length == 0)
+            throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}: no placement variants!");
+
+        return (byte)(variants.Length - 1);
     }
 
     /// <summary>

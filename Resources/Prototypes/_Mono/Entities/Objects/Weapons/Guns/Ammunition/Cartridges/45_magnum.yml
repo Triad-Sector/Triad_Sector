@@ -61,7 +61,8 @@
 
 - type: entity
   id: Cartridge45_magnumAP
-  name: cartridge (.45 magnum armor-piercing)
+  name: cartridge (.45 magnum extreme AP) # Triad
+  description: Heavy magnum round, usually only seen in magnums or manually-cycled rifles. Top of the line when it comes to armor penetration. # Triad 
   parent: BaseCartridge45_magnum
   components:
   - type: CartridgeAmmo

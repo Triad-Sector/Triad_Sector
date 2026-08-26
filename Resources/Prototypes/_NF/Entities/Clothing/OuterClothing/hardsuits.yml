@@ -6,9 +6,9 @@
   description: A special suit that protects from the danger of space, employed by mercenary forces. Certified to be blunderbuss-resistant.
   components:
   - type: Sprite
-    sprite: _NF/Clothing/OuterClothing/Hardsuits/mercenary.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/mercenary.rsi # Triad resprite
   - type: Clothing
-    sprite: _NF/Clothing/OuterClothing/Hardsuits/mercenary.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/mercenary.rsi # Triad resprite
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000

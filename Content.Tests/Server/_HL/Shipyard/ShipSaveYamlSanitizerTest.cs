@@ -93,4 +93,84 @@ entities:
         Assert.That(scrubbed, Is.EqualTo(0));
         Assert.That(result, Is.EqualTo(garbage), "a parse failure must hand the loader the original text");
     }
+
+    // The shape a pre-rework ship save carries: a legacy artifact whose grant action sits in its
+    // 'actions' container, with the legacy component nodes real map files serialized (Artifact with
+    // isSuppressed, BiasedArtifact). uid 2 is the artifact, uid 3 the action.
+    private const string ShipWithLegacyArtifact = @"meta:
+  format: 7
+entities:
+- proto: WallSolid
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+- proto: VariedXenoArtifactItem
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+    - type: Artifact
+      isSuppressed: True
+    - type: BiasedArtifact
+    - type: ContainerContainer
+      containers:
+        actions: !type:Container
+          ents:
+          - 3
+- proto: ActionArtifactActivate
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      parent: 2
+";
+
+    [Test]
+    public void ScrubDropsLegacyActionEntityAndItsContainerSlot()
+    {
+        var result = ShipSaveYamlSanitizer.ScrubShipLoadYaml(ShipWithLegacyArtifact, out var scrubbed);
+
+        // One action entity, two legacy component nodes, one container slot.
+        Assert.That(scrubbed, Is.EqualTo(4));
+        Assert.That(result, Does.Not.Contain("ActionArtifactActivate"),
+            "the legacy grant action has no replacement and must not reach the loader");
+        Assert.That(result, Does.Not.Contain("- 3"),
+            "the dropped action's container slot must be pruned with it");
+    }
+
+    [Test]
+    public void ScrubStripsLegacyComponentNodesButLeavesTheRenameToTheMigration()
+    {
+        var result = ShipSaveYamlSanitizer.ScrubShipLoadYaml(ShipWithLegacyArtifact, out _);
+
+        Assert.That(result, Does.Not.Contain("BiasedArtifact"));
+        Assert.That(result, Does.Not.Contain("isSuppressed"),
+            "the legacy Artifact node goes whole, its fields with it");
+        // Renaming the body is triad_migration.yml's job, applied inside the engine's deserializer.
+        // The scrub touching prototype ids would hide a broken migration entry instead of failing on it.
+        Assert.That(result, Does.Contain("VariedXenoArtifactItem"));
+    }
+
+    [Test]
+    public void ScrubKeepsLiveComponentsWhoseNamesTheReworkReused()
+    {
+        // ArtifactAnalyzer was deleted by the rework and re-registered with a new data shape; a save
+        // written by the current build legitimately carries it, so the scrub must not eat it.
+        const string ship = @"meta:
+  format: 7
+entities:
+- proto: MachineArtifactAnalyzer
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+    - type: ArtifactAnalyzer
+";
+
+        var result = ShipSaveYamlSanitizer.ScrubShipLoadYaml(ship, out var scrubbed);
+
+        Assert.That(scrubbed, Is.EqualTo(0));
+        Assert.That(result, Is.EqualTo(ship));
+    }
 }

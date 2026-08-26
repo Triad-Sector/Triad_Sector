@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "tongue_weh and tongue_flick by https://github.com/The3rdsideofthings",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "tongue_weh",
+      "directions": 4
+    },
+    {
+      "name": "tongue_flick",
+      "directions": 4,
+      "delays": [
+      [
+        2,
+        0.01,
+        0.01,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      [
+        2,
+        0.01,
+        0.01,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      [
+        2,
+        0.01,
+        0.01,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      [
+        2,
+        0.01,
+        0.01,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ]
+      ]
+    }
+  ]
+}

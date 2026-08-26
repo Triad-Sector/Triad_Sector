@@ -482,18 +482,6 @@
 
 - type: entity
   parent: IDCardStandard
-  id: BrigmedicIDCard
-  name: brigmedic ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: idbrigmedic
-  - type: PresetIdCard # Frontier
-    job: Brigmedic # Frontier
-
-- type: entity
-  parent: IDCardStandard
   id: CentcomIDCard
   name: command officer ID card
   components:
@@ -823,18 +811,6 @@
     - state: idseniorphysician
 
 - type: entity
-  parent: SecurityIDCard
-  id: SeniorOfficerIDCard
-  name: senior officer ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: idseniorofficer
-  - type: PresetIdCard
-    job: SeniorOfficer
-
-- type: entity
   parent: IDCardStandard
   id: WizardIDCard
   name: wizard ID card
@@ -871,19 +847,17 @@
   - type: Access
     groups:
     - AllAccess
-    - USSPAA # Mono
     tags:
     - CentralCommand
     - NuclearOperative
     - SyndicateAgent
     - Wizard
-    - Pirate # Mono
-    - TsfmcEngineering # Mono
-    - GrandVizier
-    - PDVCommand # Mono
+    - Solarian # Triad
+    - Coalition # Triad
     - TdfChiefEnforcer # Triad
     - TdfPatrolTeamLeader # Triad
     - TdfWarden # Triad
+    - TdfPermitControl # Triad
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

@@ -84,7 +84,7 @@
   - type: Flatpack
     entity: MachineFTLDrive
   - type: StaticPrice
-    price: 1700
+    price: 1900 # Triad - 1700 -> 1900
 
 - type: entity
   parent: BaseFlatpack
@@ -95,7 +95,7 @@
   - type: Flatpack
     entity: MachineFTLDrive50
   - type: StaticPrice
-    price: 3000
+    price: 5000 # Triad - 3000 -> 5000
 
 - type: entity
   parent: BaseFlatpack
@@ -106,7 +106,7 @@
   - type: Flatpack
     entity: MachineFTLDrive25S
   - type: StaticPrice
-    price: 5000
+    price: 4500 # Triad - 5000 -> 4500
 
 - type: entity
   parent: BaseFlatpack
@@ -129,48 +129,6 @@
     entity: AtmosDeviceFanDirectional
   - type: StaticPrice
     price: 400
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: RDServerUSSPFlatpack
-  name: ussp research and development server flatpack
-  description: A flatpack used for constructing a USSP research and development server.
-  components:
-  - type: Flatpack
-    entity: ResearchAndDevelopmentServerUssp
-  - type: StaticPrice
-    vendPrice: 105000 #Faction token + 5%
-  - type: Sprite
-    layers:
-    - state: science_server
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: RDServerRogueFlatpack
-  name: rogue research and development server flatpack
-  description: A flatpack used for constructing a Rogue research and development server.
-  components:
-  - type: Flatpack
-    entity: ResearchAndDevelopmentServerRogues
-  - type: StaticPrice
-    price: 1500
-  - type: Sprite
-    layers:
-    - state: science_server
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: RDServerTSFFlatpack
-  name: TSF research and development server flatpack
-  description: A flatpack used for constructing a TSF research and development server.
-  components:
-  - type: Flatpack
-    entity: ResearchAndDevelopmentServerTSFMC
-  - type: StaticPrice
-    price: 1500
-  - type: Sprite
-    layers:
-    - state: science_server
 
 - type: entity
   parent: BaseNFFlatpack

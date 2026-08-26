@@ -1,0 +1,44 @@
+#T1
+- type: loadout
+  id: NfsdBoxSurvivalNfsdOxygen
+  name: extended-oxygen survival box
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreatherNF
+  storage:
+    back:
+    - BoxSurvivalMonoOxygenExtended
+
+- type: loadout
+  id: NfsdBoxSurvivalNfsdNitrogen
+  name: extended-nitrogen survival box
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreatherNF
+  storage:
+    back:
+    - BoxSurvivalMonoNitrogenExtended
+
+- type: loadoutGroup
+  id: NfsdBoxSurvival
+  name: loadout-group-contractor-survival-box
+  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 1
+  loadouts:
+  - NfsdBoxSurvivalNfsdOxygen
+  - NfsdBoxSurvivalNfsdNitrogen
+  - ContractorBoxSurvivalTriadWaterVaporExtended # Triad
+  fallbacks:
+  - NfsdBoxSurvivalNfsdOxygen
+  - NfsdBoxSurvivalNfsdNitrogen
+  - ContractorBoxSurvivalTriadWaterVaporExtended # Triad
+
+- type: loadout
+  id: NfsdClothingHandsGlovesCombatNfsdBrown
+  equipment:
+    gloves: ClothingHandsGlovesCombatNfsdBrown
+
+- type: loadout
+  id: NfsdClothingHandsGlovesCombatNfsdCream
+  equipment:
+    gloves: ClothingHandsGlovesCombatNfsdCream

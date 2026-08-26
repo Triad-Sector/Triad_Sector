@@ -1,6 +1,6 @@
 - type: entity
   name: Bastion double-barreled shotgun (4 gauge)
-  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseClass2AShipContraband]
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseFactionGearTDFT3, BaseShipContrabandPermittableTdf]
   id: WeaponShotgunDoubleBarreledTdfBastion
   description: A doom-slaying classic. A military grade double barrel shotgun chambered in 4 gauge. No attachments, no crutches, all skill. Suitable for breaching.
   components:

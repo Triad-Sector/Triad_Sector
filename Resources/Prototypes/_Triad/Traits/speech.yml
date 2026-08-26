@@ -9,9 +9,9 @@
   name: trait-newbrooklyn-accent-name
   description: trait-newbrooklyn-accent-desc
   category: Accents
-  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  cost: 1 # dialect accent; 1 from the Accents point pool (one dialect max).
   conditions:
-  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  - !type:HasFreeAccentSlotCondition # Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
@@ -24,10 +24,29 @@
   name: trait-neanderthal-accent-name
   description: trait-neanderthal-accent-desc
   category: Accents
-  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  cost: 1 # dialect accent; 1 from the Accents point pool (one dialect max).
   conditions:
-  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  - !type:HasFreeAccentSlotCondition # Dwarf/Goblin must clear their native accent (Accentless) first
   effects:
   - !type:AddCompsEffect
     components:
     - type: CavemanAccent
+
+# Languages
+
+# Terra Slavic, a derived version of Sol common, inspired by Slavic languages of Earth.
+- type: trait
+  id: TerraSlavic
+  name: trait-language-TerraSlavic-name
+  description: trait-language-TerraSlavic-desc
+  category: LanguageTraits
+  cost: 0 # accents/languages are cosmetic RP, not a point cost.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - TerraSlavic

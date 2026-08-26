@@ -1,6 +1,6 @@
 - type: entity
-  id: BannerTdf
   parent: BannerBase
+  id: BannerTdf
   name: TDF banner
   description: A banner displaying the shield of the Triad Defense Force. For Triad!
   components:
@@ -12,11 +12,14 @@
     node: BannerTDFNode
 
 - type: entity
-  id: BannerTfa
   parent: BannerBase
+  id: BannerTfa
   name: TFA banner
   description: A banner proudly displaying the logo of the Triad Frontier Association. May Triad prosper.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Decoration/banner.rsi
     state: tfa-banner
+  - type: Construction
+    graph: TriadBannersGraph
+    node: BannerTFANode

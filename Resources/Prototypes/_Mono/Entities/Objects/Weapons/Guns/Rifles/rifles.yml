@@ -71,10 +71,10 @@
     pvsIncrease: 1
 
 - type: entity
-  name: NCI AK-502 (7.62x39mm)
+  name: RMT AK-502 (7.62x39mm)
   parent: BaseWeaponRifle
   id: WeaponRifleAK502
-  description: A standard-issue USSP combat rifle. Uses 7.62x39mm ammo.
+  description: A combat rifle produced by Reznichenko Military Technologies, an arms contractor. Uses 7.62x39mm ammo.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Rifles/ak502.rsi

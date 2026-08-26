@@ -100,12 +100,10 @@
         state: pink
   # Triad: dropped DangerTether component (DangerTether system not ported); static marker.
 
-# --- BusScheduleRoute1  (coyote: _NF/Entities/Structures/Wallmounts/bus_schedule.yml) ---
-- type: entity
-  parent: BusSchedule
-  id: BusScheduleRoute1
-  suffix: Route 1, Spawn Points
-  # Triad: live again, inherited from the parent along with the rest of the sign.
+# Triad: BusScheduleRoute1 dropped. It was ours (#339) and overrode nothing but its own spawn-menu
+# suffix, so it was a second name for BusSchedule rather than a second sign. "Route 1" never meant
+# anything here either: there is one bus running one loop, so every sign in the sector shows the
+# same next stop. Placements repointed at BusSchedule.
 
 # --- JukeboxPOI  (coyote: _NF/Entities/Structures/Machines/jukebox.yml) ---
 - type: entity

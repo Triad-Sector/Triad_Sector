@@ -1,3 +1,4 @@
+using System.Linq;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._DV.CartridgeLoader.Cartridges;
@@ -32,9 +33,13 @@ public sealed class NanoChatUiState : BoundUserInterfaceState
         bool listNumber,
         bool canList = false) // Triad
     {
-        Recipients = recipients;
-        Messages = messages;
-        MutedChats = mutedChats;
+        // Triad: snapshot the collections instead of aliasing them. Callers hand us the card component's live
+        // dictionaries, and this state object outlives the call: the UI system retains it, replays it into the
+        // next BoundUserInterface, and compares it against the following state to decide whether anything
+        // changed. Sharing the references let later card mutations rewrite a state that had already been sent.
+        Recipients = new Dictionary<uint, NanoChatRecipient>(recipients);
+        Messages = messages.ToDictionary(chat => chat.Key, chat => new List<NanoChatMessage>(chat.Value));
+        MutedChats = new HashSet<uint>(mutedChats);
         Contacts = contacts;
         CurrentChat = currentChat;
         OwnNumber = ownNumber;

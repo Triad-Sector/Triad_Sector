@@ -335,5 +335,5 @@
     account: BlackMarket
   - type: AccessReader
     access: [["Pirate"]]
-  - type: CompanyAccessReader
-    requiredCompany: PDV
+  #- type: CompanyAccessReader
+  #  requiredCompany: PDV

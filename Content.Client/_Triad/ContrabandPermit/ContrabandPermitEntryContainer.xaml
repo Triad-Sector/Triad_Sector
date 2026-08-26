@@ -1,0 +1,319 @@
+<BoxContainer
+    HorizontalExpand="True"
+    Margin="0,0,0,3"
+    Orientation="Vertical"
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Button
+        Access="Public"
+        Name="FocusButton"
+        StyleClasses="OpenLeft">
+        <BoxContainer
+            HorizontalExpand="True"
+            Orientation="Horizontal"
+            VerticalExpand="True">
+            <!--  Owner sprite  -->
+            <SpriteView
+                Name="PermitOwnerSprite"
+                Margin="6,2"
+                Scale="2 2"/>
+
+            <!--  Owner name  -->
+            <Label
+                HorizontalExpand="True"
+                Margin="5,0"
+                Name="PermitOwnerNameLabel"/>
+
+            <!--  Amount of permits  -->
+            <Label
+                HorizontalAlignment="Right"
+                Margin="5,0"
+                Name="PermitAmountLabel"
+                Text="{Loc 'contraband-permit-console-window-permit-owner-entries-placeholder'}"/>
+        </BoxContainer>
+    </Button>
+
+    <!--  Panel that appears on selecting the file  -->
+    <PanelContainer
+        Access="Public"
+        Margin="1,-1,1,0"
+        Name="FocusContainer"
+        ReservesSpace="False"
+        Visible="False">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#25252a"/>
+        </PanelContainer.PanelOverride>
+        <BoxContainer Margin="6,3"
+                Orientation="Horizontal">
+            <!--  Permit list  -->
+            <BoxContainer
+                Margin="0,6,0,6"
+                Orientation="Vertical"
+                MinSize="250 30">
+                <Label HorizontalExpand="True"
+                        HorizontalAlignment="Center"
+                        Text="{Loc 'contraband-permit-console-window-permit-entries-list'}"/>
+                <!--  Scroll container containing the permit selectors  -->
+                <ScrollContainer HorizontalAlignment="Left"
+                                 Margin="4"
+                                 MinWidth="250"
+                                 MinHeight="30"
+                                 VerticalExpand="True">
+                    <BoxContainer Orientation="Vertical"
+                                  VerticalExpand="True"
+                                  HorizontalExpand="True"
+                                  MinSize="50 50"
+                                  Name="PermitScrollContainer"
+                                  Margin="4"/>
+                </ScrollContainer>
+            </BoxContainer>
+
+            <PanelContainer StyleClasses="LowDivider"
+                            VerticalExpand="True"
+                            Margin="6 0 0 0"
+                            SetWidth="2"/>
+
+            <!-- No item selected screen -->
+            <BoxContainer Name="NoItemSelectedScreen"
+                          VerticalExpand="True"
+                          HorizontalExpand="True"
+                          Orientation="Vertical"
+                          Visible="True"
+                          ReservesSpace="False">
+
+                <controls:StripeBack VerticalExpand="True"
+                                     HorizontalExpand="True"
+                                     Margin="0 0 0 5">
+                    <PanelContainer VerticalExpand="True"
+                                    HorizontalExpand="True">
+                        <BoxContainer VerticalExpand="True"
+                                      HorizontalExpand="True"
+                                      Orientation="Vertical">
+                            <Control VerticalExpand="True"/>
+                            <TextureRect VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"
+                                         SetSize="64 64"
+                                         Stretch="KeepAspectCentered"
+                                         TexturePath="/Textures/Interface/VerbIcons/information.svg.192dpi.png">
+                            </TextureRect>
+                            <Label Text="{Loc 'contraband-permit-console-window-permit-entries-select-entry'}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 5 0 0"/>
+                            <Control VerticalExpand="True"/>
+                        </BoxContainer>
+                    </PanelContainer>
+                </controls:StripeBack>
+            </BoxContainer>
+
+            <!-- Viewing the permit itself  -->
+            <BoxContainer
+                HorizontalExpand="True"
+                Margin="6,0,0,0"
+                Name="PermitViewContainer"
+                Orientation="Horizontal"
+                VerticalExpand="True"
+                Visible="False">
+
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+
+                    <!-- Item info -->
+                    <BoxContainer Orientation="Vertical"
+                            Margin="6,0,0,14">
+                        <BoxContainer Margin="0,1"
+                                Orientation="Vertical">
+                            <Label
+                                HorizontalExpand="True"
+                                Margin="15,0"
+                                Text="Item Information"
+                                StyleClasses="LabelKeyText"/>
+                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="LowDivider"
+                                        Margin="6 0 0 0"
+                                        SetHeight="2"
+                                        HorizontalExpand="True"/>
+
+                        <!-- item name -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="ItemLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- date granted -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="DateLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- item reason -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="ReasonLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </BoxContainer>
+
+                    <!-- Owner info -->
+                    <BoxContainer Orientation="Vertical"
+                            Margin="6,0,0,14">
+                        <BoxContainer Margin="0,1"
+                                Orientation="Vertical">
+                            <Label
+                                HorizontalExpand="True"
+                                Margin="15,0"
+                                Text="Owner Information"
+                                StyleClasses="LabelKeyText"/>
+                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="LowDivider"
+                                        Margin="6 0 0 0"
+                                        SetHeight="2"
+                                        HorizontalExpand="True"/>
+
+                        <!-- Owner name -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="OwnerNameLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- Owner species -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="OwnerSpeciesLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- Owner gender -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="OwnerGenderLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- Owner age -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="OwnerAgeLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+
+                        <!-- Owner eye color -->
+                        <BoxContainer Margin="0,1"
+                                      Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal"
+                                          HorizontalAlignment="Left">
+                                <Label
+                                    HorizontalExpand="True"
+                                    Margin="15,0"
+                                    Name="OwnerEyeColorLabel"
+                                    Text="Example"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </BoxContainer>
+
+                    <!-- Revoke reason text box -->
+                    <BoxContainer Orientation="Horizontal">
+                        <LineEdit Name="RevokeReasonTextBox"
+                                  HorizontalAlignment="Left"
+                                  MinSize="190 32"
+                                  HorizontalExpand="True"
+                                  Margin="12,0,0,0"
+                                  PlaceHolder="{Loc 'contraband-permit-console-window-label-permit-tab-revoke-reason-placeholder'}"
+                                  Access="Public"/>
+                        <controls:ConfirmButton Name="RevokeButton"
+                                VerticalExpand="True"
+                                HorizontalAlignment="Right"
+                                HorizontalExpand="True"
+                                MinSize="195 32"
+                                Margin="0,0,0,0"
+                                Text="{Loc 'contraband-permit-console-window-permit-revoke'}"
+                                ConfirmationText="{Loc 'contraband-permit-console-window-permit-revoke-confirmation'}"
+                                StyleClasses="OpenBoth"
+                                Access="Public">
+                            <TextureRect HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         SetSize="32 32"
+                                         Stretch="KeepAspectCentered"
+                                         TexturePath="/Textures/Interface/VerbIcons/delete_transparent.svg.192dpi.png">
+                            </TextureRect>
+                        </controls:ConfirmButton>
+                    </BoxContainer>
+                </BoxContainer>
+
+                <!-- Prototype view of the permit item  -->
+                <PanelContainer Margin="32 5 5 5"
+                        VerticalExpand="True"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BorderThickness="2"
+                                          BorderColor="#ffd688"
+                                          BackgroundColor="#000000FF"/>
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="4"
+                                  Orientation="Vertical">
+                        <EntityPrototypeView
+                            Name="ItemPrototype"
+                            Margin="4 0 0 0"
+                            MinSize="128 128"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Stretch="Fill"/>
+                    </BoxContainer>
+                </PanelContainer>
+
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+
+</BoxContainer>

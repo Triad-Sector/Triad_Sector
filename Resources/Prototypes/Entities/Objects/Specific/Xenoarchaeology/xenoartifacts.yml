@@ -1,0 +1,68 @@
+- type: entity
+  id: BaseXenoArtifact
+  # Triad: removed the BaseMob parent. Its stated reason was "can technically get inhabited" and the
+  # Ghost effect was the only inhabitant; nothing on a ship should attach a mind to a non-mob entity
+  # because the ship-save pipeline strips Mind/MindContainer but not GhostRole, so the halves disagree
+  # across a save. The load-bearing pieces BaseMob provided are re-declared below.
+  # parent: BaseMob # we use this since it can technically get inhabited
+  name: artifact
+  # description: A strange artifact from time unknown. Looks like a good time. # Frontier
+  description: A strange artifact of unknown origin. Its shape is bizarre and alien. # Frontier
+  abstract: true
+  noSpawn: true
+  components:
+  # Visual
+  - type: Appearance
+  - type: InteractionOutline
+  - type: UserInterface #needs to be here for certain effects
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.IntercomUiKey.Key:
+        type: IntercomBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - Xenoarchaeology
+  # Triad: what BaseMob used to supply. Clickable and DoAfter back tool-use and consume triggers;
+  # RequireProjectileTarget off so an untargeted shot still counts as an attack on the artifact.
+  - type: Clickable
+  - type: DoAfter
+  - type: RequireProjectileTarget
+    active: false
+  # gameplay interactions
+  - type: XenoArtifact
+    effectsTable: !type:NestedSelector
+      tableId: XenoArtifactEffectsDefaultTable
+  - type: Damageable
+  - type: Physics
+    bodyType: Dynamic
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.25
+    baseSprintSpeed: 0.5
+  - type: UseDelay
+  - type: StealTarget
+    stealGroup: XenoArtifact
+  - type: ContainerContainer
+    containers:
+      node-container: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+  # These components are needed for certain triggers to work.
+  # Triad: Stamina harvested from Wizden's base. TriggerAttackStaminaDamage listens for
+  # BeforeStaminaDamageEvent, which only ever fires on an entity with a stamina pool; the
+  # thousand-point threshold and instant decay mean the artifact never actually stam-crits.
+  - type: Stamina
+    critThreshold: 1000 # Triad: this tree predates Wizden's baseCritThreshold rename
+    decay: 1000
+    cooldown: 0.1
+  - type: RadiationReceiver
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+      Acidic: [Touch]

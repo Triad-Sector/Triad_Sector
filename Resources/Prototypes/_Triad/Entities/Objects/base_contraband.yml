@@ -78,25 +78,83 @@
 
 # Class 2 Contraband
 - type: entity
-  parent: BaseC2ContrabandUnredeemable
-  id: BaseTriadC2Contraband
+  id: BaseTriadC2ContrabandUnredeemable
   abstract: true
   components:
   - type: Contraband
     severity: Class2
+
+- type: entity
+  parent: BaseTriadC2ContrabandUnredeemable
+  id: BaseTriadC2Contraband
+  abstract: true
+  components:
+  - type: Contraband
     turnInValues:
-      TriadCommerceCredit: 5
+      TriadCommerceCredit: 15
 
 # Class 3 Contraband
 - type: entity
-  parent: BaseC3ContrabandUnredeemable
-  id: BaseTriadC3Contraband
+  id: BaseTriadC3ContrabandUnredeemable
   abstract: true
   components:
   - type: Contraband
     severity: Class3General
-    turnInValues:
-      TriadCommerceCredit: 15
   - type: ItemTax
     taxAccounts:
       TDF: -0.05 # TDF account
+
+- type: entity
+  parent: BaseTriadC3ContrabandUnredeemable
+  id: BaseTriadC3Contraband
+  abstract: true
+  components:
+  - type: Contraband
+    turnInValues:
+      TriadCommerceCredit: 25
+
+# Ship Saving Contraband
+- type: entity
+  id: BaseClass1ShipContraband # Legal to own, but seized. Typically for things that cannot serialize.
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
+
+- type: entity
+  id: BaseClass2AShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2a-text
+
+- type: entity
+  id: BaseClass2AShipContrabandSilent
+  abstract: true
+  components:
+  - type: SavingContraband
+
+# Contraband permit bases
+- type: entity
+  id: BaseContrabandPermittable # Use for things that are permittable, but shouldn't be seized on save. Like access breakers.
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    permittable: true # This value exists purely for parenting
+
+- type: entity
+  id: BaseShipContrabandPermittable # This one is different than BaseContrabandPermittable, since it is deleted on ship save.
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: null # ContrabandPermittable gives the examine text
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-no-save
+
+- type: entity
+  parent: BaseShipContrabandPermittable # TDF variant
+  id: BaseShipContrabandPermittableTdf
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-tdf

@@ -117,6 +117,8 @@
       - !type:Emote
         emote: Scream
         probability: 0.2
+  - type: TemperatureSpeed # Triad
+    baseTemperature: 311.76
 
 - type: entity
   save: false

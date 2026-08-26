@@ -11,7 +11,6 @@
     tags:
     - ClothMade # No chameleon
 
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfCombatMedic
@@ -23,7 +22,6 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
-
 
 - type: entity
   parent: ClothingUniformBase
@@ -37,7 +35,6 @@
     tags:
     - ClothMade # No chameleon
 
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfPatrolTeamLeader
@@ -49,7 +46,6 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
-
 
 - type: entity
   parent: ClothingUniformBase
@@ -63,7 +59,6 @@
     tags:
     - ClothMade # No chameleon
 
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfChiefEnforcer
@@ -76,7 +71,6 @@
     tags:
     - ClothMade # No chameleon
 
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfChiefEnforcerFormal
@@ -88,7 +82,6 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
-
 
 # Triad frontier association High-Command
 - type: entity
@@ -115,3 +108,14 @@
     sprite: _DEN/Clothing/Uniforms/Jumpsuit/strainedshorts.rsi
   - type: Clothing
     sprite: _DEN/Clothing/Uniforms/Jumpsuit/strainedshorts.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformIndustrialWorker
+  name: industrial worker uniform
+  description: Standard fatigues of a hard worker, fit with kevlar to protect from accidents.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi

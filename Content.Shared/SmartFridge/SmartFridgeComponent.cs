@@ -45,7 +45,15 @@ public sealed partial class SmartFridgeComponent : Component
     /// <summary>
     /// A mapping of smart fridge entries to the actual contained contents
     /// </summary>
+    // Triad: SmartFridgeEntry is a data definition, so it serializes to a MappingDataNode and cannot
+    // be a YAML mapping key -- persisting this threw "Yaml mapping keys must serialize to a
+    // ValueDataNode" and killed the whole ship-grid save. This is a UI index over live container
+    // contents, so it is runtime-only now and rebuilt from the container on MapInit.
+    /*
     [DataField, AutoNetworkedField]
+    */
+    [AutoNetworkedField]
+    // End Triad
     [Access(typeof(SharedSmartFridgeSystem), Other = AccessPermissions.ReadExecute)]
     public Dictionary<SmartFridgeEntry, HashSet<NetEntity>> ContainedEntries = new();
 
