@@ -250,8 +250,10 @@ public class MarketTransactionSplit
 ///
 /// <para>Lines form a tree. A root line (null <see cref="ParentLineIndex"/>) is something that sat
 /// on the pad; child lines are the contents of a container, captured so the breakdown reaches leaf
-/// items rather than stopping at "one crate, 1200". <b>Only root lines sum to the payout.</b>
-/// Summing every line double-counts anything containerized.</para>
+/// items rather than stopping at "one crate, 1200". <b>Every line carries only its own value, and
+/// all lines of a transaction sum to its gross.</b> A crate line is the shell and its contents are
+/// lines beside it, so the parent link says where a thing sat rather than what it contributes.
+/// There is no subset to filter on and nothing to double-count.</para>
 ///
 /// <para><b>A refused transaction writes a header and no lines.</b> Nothing changed hands, so there
 /// is nothing to price, and that invariant is what lets the pricing index stay unfiltered: it

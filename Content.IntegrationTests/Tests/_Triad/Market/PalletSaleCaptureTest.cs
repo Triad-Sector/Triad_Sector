@@ -55,15 +55,6 @@ public sealed class PalletSaleCaptureTest
     }
 
     [Test]
-    [Ignore("Unfinished, and it is red for a real reason. It drove a sale end to end and refuted the "
-        + "line model the rest of the branch documents: it asserts roots alone equal the payout and "
-        + "got 55000 against a 64900 payout. The collector reports each node's OWN value, so a crate "
-        + "line is the shell and its contents are separate lines, and ALL lines sum to the gross. "
-        + "That model is the better one. Finishing this means renaming MarketRecord.RootLineTotal to "
-        + "LineTotal, correcting the invariant comments in Model.Market.cs and MarketRecord.cs, "
-        + "fixing the two assertions below plus the equivalents in MarketRecordTreeTest and "
-        + "MarketDataStoreTest, and correcting the same claim on the Market Data Schema Design wiki "
-        + "page. Then drop this attribute.")]
     public async Task PalletSaleCapturesItsTreeSplitsAndPayout()
     {
         await using var pair = await PoolManager.GetServerClient();
@@ -193,11 +184,13 @@ public sealed class PalletSaleCaptureTest
                 foreach (var proto in SiloContents)
                     Assert.That(protos, Does.Contain(proto));
 
-                // Roots reconcile against what was paid. Every line summed would exceed it.
-                Assert.That(roots.Sum(r => r.LineTotal), Is.EqualTo(tx.Net),
-                    "roots alone equal the payout");
-                Assert.That(tx.Lines.Sum(l => l.LineTotal), Is.GreaterThan(tx.Net),
-                    "and the children are a breakdown on top of that, not extra money");
+                // Every line reconciles against what was appraised, because each carries only its
+                // own value. Against Gross rather than Net: the payout is cast to an int before the
+                // cash spawns, and Gross is what was captured ahead of that rounding.
+                Assert.That(tx.Lines.Sum(l => l.LineTotal), Is.EqualTo(tx.Gross),
+                    "every line of a transaction sums to its gross");
+                Assert.That(roots.Sum(r => r.LineTotal), Is.LessThan(tx.Gross),
+                    "and the roots are the two container shells, which is not the whole sale");
 
                 // Every child resolves to a root that exists in this transaction.
                 var indices = tx.Lines.Select(l => l.LineIndex).ToHashSet();

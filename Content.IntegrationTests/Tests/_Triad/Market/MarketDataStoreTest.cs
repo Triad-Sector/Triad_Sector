@@ -34,9 +34,9 @@ public sealed class MarketDataStoreTest
             Kind = MarketTransactionKind.PalletSale,
             Currency = "Speso",
             Rail = MarketRail.Cash,
-            Gross = 20000,
+            Gross = 27000,
             Tax = 2000,
-            Net = 18000,
+            Net = 25000,
             LocationName = RoundTripMarker,
             ConsoleProto = "ComputerPalletConsoleNFHighMarket",
             MarketMod = 1.25f,
@@ -87,8 +87,8 @@ public sealed class MarketDataStoreTest
                 Assert.That(tx.Kind, Is.EqualTo(MarketTransactionKind.PalletSale));
                 Assert.That(tx.Rail, Is.EqualTo(MarketRail.Cash));
 
-                Assert.That(tx.Gross, Is.EqualTo(20000), "minor units survive the write unscaled");
-                Assert.That(tx.Net, Is.EqualTo(18000));
+                Assert.That(tx.Gross, Is.EqualTo(27000), "minor units survive the write unscaled");
+                Assert.That(tx.Net, Is.EqualTo(25000));
                 Assert.That(tx.LocationName, Is.EqualTo(RoundTripMarker));
                 Assert.That(tx.ConsoleProto, Is.EqualTo("ComputerPalletConsoleNFHighMarket"));
                 Assert.That(tx.Succeeded, Is.True);
@@ -103,11 +103,11 @@ public sealed class MarketDataStoreTest
             Assert.Multiple(() =>
             {
                 Assert.That(root.EntityProto, Is.EqualTo("CrateGeneric"));
-                Assert.That(root.LineTotal, Is.EqualTo(20000));
+                Assert.That(root.LineTotal, Is.EqualTo(20000), "the crate line is the shell alone");
 
-                // The invariant the whole design rests on. Summing every line gives 27000 here.
-                Assert.That(tx.Lines.Where(l => l.ParentLineIndex == null).Sum(l => l.LineTotal),
-                    Is.EqualTo(20000), "roots alone equal the payout");
+                // The invariant the whole design rests on. The roots alone give 20000 here.
+                Assert.That(tx.Lines.Sum(l => l.LineTotal), Is.EqualTo(tx.Gross),
+                    "every line of a transaction sums to its gross");
 
                 Assert.That(children, Has.Count.EqualTo(2));
                 Assert.That(children.All(c => c.ParentLineIndex == root.LineIndex), Is.True,

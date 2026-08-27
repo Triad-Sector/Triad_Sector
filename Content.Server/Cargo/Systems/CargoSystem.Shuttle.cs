@@ -509,12 +509,12 @@ public sealed partial class CargoSystem
         capture.AddSplit("Player", "PalletSale", capture.Net);
 
         // The payout trace. Only the parts that are not already columns: what was rounded away, and
-        // whether the root lines actually reconcile against what was paid.
-        var rootTotal = capture.RootLineTotal();
+        // whether the lines actually reconcile against what was paid.
+        var lineTotal = capture.LineTotal();
         capture.Calc =
             $"{{\"exactPayout\":{exactPayout:0.####},\"paidPayout\":{paidPayout}," +
             $"\"roundingLoss\":{exactPayout - paidPayout:0.####}," +
-            $"\"rootLineTotalMinor\":{rootTotal},\"lineCount\":{capture.Lines.Count}}}";
+            $"\"lineTotalMinor\":{lineTotal},\"lineCount\":{capture.Lines.Count}}}";
 
         _market.Record(capture);
     }
@@ -543,7 +543,8 @@ public sealed partial class CargoSystem
 
     /// <summary>
     /// Turns one entity's priced tree into line rows. The node the traversal started from becomes a
-    /// root line; everything it contained hangs off it, so summing roots still equals the payout.
+    /// root line and everything it contained hangs off it, each line carrying only what that entity
+    /// was worth on its own, so every line of the sale sums to the payout.
     /// </summary>
     private void CaptureSaleLines(MarketRecord capture, List<PricedNode> nodes, double multiplier)
     {

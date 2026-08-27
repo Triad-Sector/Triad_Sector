@@ -80,8 +80,9 @@ public sealed class MarketRecord
     }
 
     /// <summary>
-    /// Adds a line for something priced inside a container. Child lines are breakdown only and must
-    /// never be summed with roots; see the invariant on <see cref="MarketTransactionLine"/>.
+    /// Adds a line for something priced inside a container. A child carries its own value like any
+    /// other line; the parent link records where it sat, not what it contributes. See the invariant
+    /// on <see cref="MarketTransactionLine"/>.
     /// </summary>
     public int AddChildLine(int parentIndex, string entityProto, MarketDirection direction, int quantity,
         long unitPrice, long lineTotal, MarketPriceSource priceSource, float? multiplier = null)
@@ -109,17 +110,18 @@ public sealed class MarketRecord
     }
 
     /// <summary>
-    /// The sum of root lines, which by the tree invariant is what the payout should equal. Exists
-    /// so tests and the sell path can assert that rather than hope for it.
+    /// The sum of every line, which by the tree invariant is the transaction's gross. Exists so
+    /// tests and the sell path can assert that rather than hope for it.
+    ///
+    /// <para>Every line, not the roots alone. The collector reports each entity its own value, so a
+    /// crate line is the shell and its contents are lines beside it rather than underneath it.
+    /// There is no subset to filter on and nothing to double-count.</para>
     /// </summary>
-    public long RootLineTotal()
+    public long LineTotal()
     {
         long total = 0;
         foreach (var line in Lines)
-        {
-            if (line.ParentLineIndex == null)
-                total += line.LineTotal;
-        }
+            total += line.LineTotal;
         return total;
     }
 }
