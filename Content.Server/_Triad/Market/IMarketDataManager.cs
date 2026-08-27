@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Content.Server._Triad.Market;
@@ -35,6 +36,12 @@ public interface IMarketDataManager
 
     /// <summary>Stamps held pre-round records with the round that just started.</summary>
     void RoundStarting(int roundId);
+
+    /// <summary>
+    /// Records a periodic snapshot of sector account balances. Low frequency by design, so it goes
+    /// straight to the writer rather than through the transaction queue.
+    /// </summary>
+    void RecordAccountSamples(IReadOnlyList<(string Account, long Balance)> samples);
 
     /// <summary>
     /// Flushes everything still queued and waits for it. Called at round restart, where there is

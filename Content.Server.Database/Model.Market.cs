@@ -389,6 +389,14 @@ public enum MarketTransactionKind
     ShuttleRecordFee,
     LoadoutSpawn,
     AdminAdjust,
+
+    /// <summary>
+    /// A sector account movement captured at the ledger chokepoint rather than at a site that knew
+    /// what was happening. The <c>LedgerEntryType</c> carries the real taxonomy for these; this kind
+    /// says only how the row arrived, which is what distinguishes it from a rich capture site that
+    /// also knows the actor, the items, and the payout inputs.
+    /// </summary>
+    SectorLedger,
 }
 
 /// <summary>

@@ -179,6 +179,31 @@ public sealed class MarketDataManager : IMarketDataManager
         _ = WriteBatch();
     }
 
+    public void RecordAccountSamples(IReadOnlyList<(string Account, long Balance)> samples)
+    {
+        if (!_enabled || _currentRoundId <= 0 || samples.Count == 0)
+            return;
+
+        // Copied because the caller reuses its buffer between samples, and this outlives the call.
+        var copy = new List<(string, long)>(samples);
+        var roundId = _currentRoundId;
+        var at = DateTime.UtcNow;
+
+        _ = SampleAsync(roundId, at, copy);
+    }
+
+    private async Task SampleAsync(int roundId, DateTime at, IReadOnlyList<(string, long)> samples)
+    {
+        try
+        {
+            await _store.WriteAccountSamples(roundId, at, samples);
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Failed to write sector account samples: {e}");
+        }
+    }
+
     public async Task Flush()
     {
         // Wait out an in-flight batch rather than racing it.

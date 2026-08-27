@@ -3,6 +3,8 @@ using Content.Shared._NF.Bank;
 using Content.Shared._NF.Bank.BUI;
 using Content.Shared._NF.Bank;
 using Content.Shared._NF.Bank.Components;
+using Content.Server.Database; // Triad: market data
+using Content.Server._Triad.Market; // Triad: market data
 
 namespace Content.Server._NF.Bank;
 
@@ -17,7 +19,14 @@ public sealed partial class BankSystem : SharedBankSystem
 
     // Adds an entry to the ledger.
     // Only positive amounts are added.
-    public void AddLedgerEntry(SectorBankAccount account, LedgerEntryType entryType, int amount)
+    /// <param name="capture">
+    /// Triad: whether to also record this as a standalone market transaction. True for the ordinary
+    /// case, where this call is the only record of the money moving. False where a caller is
+    /// building a richer transaction of its own and will attach this as a split: a pallet sale fires
+    /// up to eight of these, and emitting eight standalone rows would both multiply the row count
+    /// and destroy the link back to the sale that produced them.
+    /// </param>
+    public void AddLedgerEntry(SectorBankAccount account, LedgerEntryType entryType, int amount, bool capture = true)
     {
         if (amount <= 0)
             return;
@@ -30,7 +39,41 @@ public sealed partial class BankSystem : SharedBankSystem
         else
             ledger.AccountLedgerEntries[tuple] = amount;
         RaiseLocalEvent(new SectorLedgerUpdatedEvent());
+
+        // Triad: the in-memory ledger above is an aggregate cleared at round restart. This makes the
+        // same movement durable, with a timestamp and a round, without touching any of the twenty
+        // one call sites that reach here.
+        if (capture)
+            CaptureLedgerEntry(account, entryType, amount, isExpense: entryType >= LedgerEntryType.FirstExpense);
     }
+
+    // Triad: begin
+    private void CaptureLedgerEntry(SectorBankAccount account, LedgerEntryType entryType, int amount, bool isExpense)
+    {
+        if (!_market.Enabled)
+            return;
+
+        // Expenses leave the account, so they are recorded as a negative movement. Summing splits
+        // for an account over a window then gives its net change rather than its turnover.
+        var signed = isExpense ? -amount : amount;
+
+        var record = new MarketRecord
+        {
+            // The ledger entry type is the real taxonomy for these, and it is carried verbatim.
+            // Kind says only how the row arrived, which is what separates a ledger movement from a
+            // capture site that knows who did it and what changed hands.
+            Kind = MarketTransactionKind.SectorLedger,
+            LedgerEntryType = entryType.ToString(),
+            Rail = MarketRail.Bank,
+            Gross = signed,
+            Net = signed,
+        };
+
+        record.AddSplit(account.ToString(), entryType.ToString(), signed);
+
+        _market.Record(record);
+    }
+    // Triad: end
 
     sealed class AccountInfo
     {
