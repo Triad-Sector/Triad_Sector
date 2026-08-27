@@ -547,25 +547,50 @@ public sealed partial class CargoSystem
     /// </summary>
     private void CaptureSaleLines(MarketRecord capture, List<PricedNode> nodes, double multiplier)
     {
-        // Node index to line index. The record's line list spans every entity on the pallet, so a
-        // node's own index is not its line index.
-        var lineIndices = new int[nodes.Count];
+        // Node index to line index, or null where a node was skipped. The record's line list spans
+        // every entity on the pallet, so a node's own index is not its line index.
+        var lineIndices = new int?[nodes.Count];
 
         for (var i = 0; i < nodes.Count; i++)
         {
             var node = nodes[i];
-            var proto = MetaData(node.Uid).EntityPrototype?.ID ?? "unknown";
-            var quantity = TryComp<StackComponent>(node.Uid, out var stack) ? stack.Count : 1;
 
             // Minor units, and the multiplier is applied because that is what the seller was
             // actually paid for this item.
             var lineTotal = (long) Math.Round(node.OwnPrice * multiplier * 100);
-            var unitPrice = quantity > 0 ? lineTotal / quantity : lineTotal;
 
+            // Skip worthless nodes, except the one the traversal started from, which anchors the
+            // tree. The pricing recursion descends into every container an entity has, and solutions
+            // are entities in containers, so a steel sheet alone yields a node for its own steel
+            // solution. Those are not traded goods and a corpus full of them teaches nothing. The
+            // sale itself already refuses zero-priced entities at the top level, so this matches.
+            if (lineTotal == 0 && node.ParentIndex != null)
+            {
+                lineIndices[i] = null;
+                continue;
+            }
+
+            var proto = MetaData(node.Uid).EntityPrototype?.ID ?? "unknown";
+            var quantity = TryComp<StackComponent>(node.Uid, out var stack) ? stack.Count : 1;
+            var unitPrice = quantity > 0 ? lineTotal / quantity : lineTotal;
             var source = InferPriceSource(node.Uid);
 
-            lineIndices[i] = node.ParentIndex is { } parent
-                ? capture.AddChildLine(lineIndices[parent], proto, MarketDirection.Sale, quantity, unitPrice, lineTotal, source, (float) multiplier)
+            // A skipped parent re-parents its children onto the nearest ancestor that was kept, so
+            // dropping a solution entity never orphans anything hanging off it.
+            int? parentLine = null;
+            var walk = node.ParentIndex;
+            while (walk is { } w)
+            {
+                if (lineIndices[w] is { } kept)
+                {
+                    parentLine = kept;
+                    break;
+                }
+                walk = nodes[w].ParentIndex;
+            }
+
+            lineIndices[i] = parentLine is { } p
+                ? capture.AddChildLine(p, proto, MarketDirection.Sale, quantity, unitPrice, lineTotal, source, (float) multiplier)
                 : capture.AddLine(proto, MarketDirection.Sale, quantity, unitPrice, lineTotal, source, (float) multiplier);
         }
     }
