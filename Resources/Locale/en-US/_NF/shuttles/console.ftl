@@ -52,7 +52,7 @@ shuttle-console-service-flag-Trade-shortform = $
 shuttle-console-service-flag-Social-shortform = ☺
 # Triad Begin
 shuttle-console-service-flag-Food-shortform = f
-shuttle-console-service-flag-Peace-shortform = Ø
+shuttle-console-service-flag-Peace-shortform = ØpacifistØ
 shuttle-console-service-flag-Private-shortform =  ◄PRIVATE►
 # Triad End
 
