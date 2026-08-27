@@ -283,9 +283,17 @@ public sealed class MarketDataManager : IMarketDataManager
     {
         try
         {
-            var batch = new List<PendingMarketRecord>(_queue.Count);
+            var batch = new List<PendingMarketRecord>(_queue.Count + _preRoundQueue.Count);
             while (_queue.TryDequeue(out var pending))
                 batch.Add(pending);
+
+            // Pre-round records go out too, still carrying no round. Holding them back would lose
+            // them entirely if the server never reaches RoundStarting before it stops, and a row
+            // with a null round is a fact with a gap in it rather than no fact at all. Records held
+            // here are stamped and moved to the main queue the moment a round starts, so this only
+            // ever picks up what a round start did not.
+            while (_preRoundQueue.TryDequeue(out var held))
+                batch.Add(held);
 
             if (batch.Count == 0)
                 return;
