@@ -12,6 +12,9 @@
       types:
         Blunt: 15 #Triad 20 < 10, low damage cause it would be too heavy to swing
         Structural: 40 #Triad 40 < 10
+  - type: MeleeThrowOnHit # Triad
+    speed: 30
+    distance: 50
   - type: SpeedModifiedOnWield # Mono
     walkModifier: 0.9
     sprintModifier: 0.7

@@ -29,6 +29,9 @@
       types:
         Blunt: 50
         Structural: 250 # takes about 1 minute to breach a plastitanium wall
+  - type: MeleeThrowOnHit # Triad
+    speed: 30
+    distance: 50
   - type: Tool
     qualities:
       - Prying

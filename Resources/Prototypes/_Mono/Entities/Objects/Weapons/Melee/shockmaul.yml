@@ -25,6 +25,9 @@
         Blunt: 50
         Shock: 10
         Structural: 250 
+  - type: MeleeThrowOnHit # Triad
+    speed: 30
+    distance: 50
   - type: Defibrillator # "OH NO...*I* SAY WHEN I SAY WE'RE DONE"
     zapHeal:
        types:
