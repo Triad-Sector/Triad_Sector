@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server._NF.Bank;
 using System.Numerics;
 using Content.Server.Advertise;
@@ -38,6 +38,9 @@ using Content.Server.Stack;
 using Content.Server._Mono.VendingMachine;
 using Content.Shared._Mono.Traits.Physical;
 using Robust.Shared.Containers; // Frontier
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server.VendingMachines
 {
@@ -450,7 +453,7 @@ namespace Content.Server.VendingMachines
                         paidFully = true; // Either we paid fully with cash, or we need to withdraw the remainder
                     }
                     if (totalPrice > cashSlotBalance && !HasComp<Content.Shared._Mono.Traits.Physical.IronmanComponent>(sender))
-                        paidFully = _bankSystem.TryBankWithdraw(sender, totalPrice - cashSlotBalance);
+                        paidFully = _bankSystem.TryBankWithdraw(sender, totalPrice - cashSlotBalance, new MarketRecord { Kind = MarketTransactionKind.VendorSale }); // Triad: market data
 
                     // If we paid completely, pay our station taxes
                     if (paidFully)

@@ -38,10 +38,22 @@ public interface IMarketDataManager
     void RoundStarting(int roundId);
 
     /// <summary>
+    /// Notes that a player used a character this round. Deduplicated in memory and written once at
+    /// round end rather than on every transaction, which is the whole point of the participant table.
+    /// </summary>
+    void RecordParticipant(Guid userId, string characterName);
+
+    /// <summary>
     /// Records a periodic snapshot of sector account balances. Low frequency by design, so it goes
     /// straight to the writer rather than through the transaction queue.
     /// </summary>
     void RecordAccountSamples(IReadOnlyList<(string Account, long Balance)> samples);
+
+    /// <summary>
+    /// Deletes raw rows past the retention window. Splits and lines go with them by cascade; the
+    /// price rollup is permanent and untouched.
+    /// </summary>
+    void PurgeExpired();
 
     /// <summary>
     /// Flushes everything still queued and waits for it. Called at round restart, where there is

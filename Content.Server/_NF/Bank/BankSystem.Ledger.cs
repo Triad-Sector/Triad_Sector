@@ -1,10 +1,12 @@
-using System.Text;
+﻿using System.Text;
 using Content.Shared._NF.Bank;
 using Content.Shared._NF.Bank.BUI;
 using Content.Shared._NF.Bank;
 using Content.Shared._NF.Bank.Components;
 using Content.Server.Database; // Triad: market data
 using Content.Server._Triad.Market; // Triad: market data
+using Content.Shared.Preferences; // Triad: market data
+using Robust.Shared.Player; // Triad: market data
 
 namespace Content.Server._NF.Bank;
 
@@ -55,7 +57,8 @@ public sealed partial class BankSystem : SharedBankSystem
 
         // Expenses leave the account, so they are recorded as a negative movement. Summing splits
         // for an account over a window then gives its net change rather than its turnover.
-        var signed = isExpense ? -amount : amount;
+        // Minor units, like every other amount column. Sector amounts are whole spesos.
+        var signed = (isExpense ? -amount : amount) * 100L;
 
         var record = new MarketRecord
         {
@@ -74,6 +77,42 @@ public sealed partial class BankSystem : SharedBankSystem
         _market.Record(record);
     }
     // Triad: end
+
+
+    /// <summary>
+    /// Triad: records a player bank movement. Called from both session overloads, which is the true
+    /// chokepoint: it is where the balance actually changes and where BalanceChangedEvent is raised.
+    ///
+    /// <para>A caller that knows more than "money moved" passes a part-filled record and this fills
+    /// in the money and the actor. A caller that passes nothing gets a minimal row rather than no
+    /// row, because an unattributed movement is still a movement and its absence would make the
+    /// totals wrong.</para>
+    /// </summary>
+    /// <param name="signedAmount">Negative for a withdrawal, positive for a deposit.</param>
+    private void CaptureBankMovement(ICommonSession session, HumanoidCharacterProfile profile,
+        int signedAmount, MarketRecord? capture)
+    {
+        if (!_market.Enabled)
+            return;
+
+        var record = capture ?? new MarketRecord { Kind = MarketTransactionKind.Unknown };
+
+        record.ActorUserId = session.UserId;
+        record.ActorCharacterName = profile.Name;
+        record.Rail = MarketRail.Bank;
+
+        // Only fill money the caller did not already state. A site that knows its gross and tax
+        // has said something this method cannot work out from a balance delta.
+        if (record.Gross == 0)
+            record.Gross = signedAmount * 100L;
+        if (record.Net == 0)
+            record.Net = signedAmount * 100L;
+
+        _market.Record(record);
+
+        // The character name is written once per round rather than on every transaction.
+        _market.RecordParticipant(session.UserId, profile.Name);
+    }
 
     sealed class AccountInfo
     {

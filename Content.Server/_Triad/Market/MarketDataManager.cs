@@ -58,6 +58,7 @@ public sealed class MarketDataManager : IMarketDataManager
     private int _queueMax;
     private int _preRoundQueueMax;
     private int _dropThreshold;
+    private int _retentionDays;
 
     private readonly ConcurrentQueue<PendingMarketRecord> _queue = new();
     private readonly ConcurrentQueue<PendingMarketRecord> _preRoundQueue = new();
@@ -83,6 +84,7 @@ public sealed class MarketDataManager : IMarketDataManager
         _cfg.OnValueChanged(TriadCCVars.MarketDataQueueMax, v => _queueMax = v, true);
         _cfg.OnValueChanged(TriadCCVars.MarketDataPreRoundQueueMax, v => _preRoundQueueMax = v, true);
         _cfg.OnValueChanged(TriadCCVars.MarketDataDropThreshold, v => _dropThreshold = v, true);
+        _cfg.OnValueChanged(TriadCCVars.MarketDataRetentionDays, v => _retentionDays = v, true);
     }
 
     public void Record(MarketRecord record)
@@ -179,6 +181,65 @@ public sealed class MarketDataManager : IMarketDataManager
         _ = WriteBatch();
     }
 
+    private readonly HashSet<(Guid, string)> _participants = new();
+
+    public void RecordParticipant(Guid userId, string characterName)
+    {
+        if (!_enabled || string.IsNullOrEmpty(characterName))
+            return;
+
+        lock (_participants)
+        {
+            _participants.Add((userId, characterName));
+        }
+    }
+
+    private async Task WriteParticipants(int roundId)
+    {
+        List<(Guid, string)> copy;
+        lock (_participants)
+        {
+            if (_participants.Count == 0)
+                return;
+            copy = new List<(Guid, string)>(_participants);
+            _participants.Clear();
+        }
+
+        try
+        {
+            await _store.RecordParticipants(roundId, copy);
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Failed to write market round participants: {e}");
+        }
+    }
+
+    public void PurgeExpired()
+    {
+        // Zero or less keeps everything, which is the escape hatch for anyone who wants the full
+        // history and has the disk for it.
+        if (!_enabled || _retentionDays <= 0)
+            return;
+
+        var cutoff = DateTime.UtcNow.AddDays(-_retentionDays);
+        _ = PurgeAsync(cutoff);
+    }
+
+    private async Task PurgeAsync(DateTime cutoff)
+    {
+        try
+        {
+            var removed = await _store.PurgeOlderThan(cutoff);
+            if (removed > 0)
+                _sawmill.Info($"Purged {removed} market transactions older than {cutoff:O}.");
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Failed to purge expired market data: {e}");
+        }
+    }
+
     public void RecordAccountSamples(IReadOnlyList<(string Account, long Balance)> samples)
     {
         if (!_enabled || _currentRoundId <= 0 || samples.Count == 0)
@@ -207,10 +268,15 @@ public sealed class MarketDataManager : IMarketDataManager
     public async Task Flush()
     {
         // Wait out an in-flight batch rather than racing it.
+        var roundId = _currentRoundId;
+
         while (Interlocked.CompareExchange(ref _writing, 1, 0) != 0)
             await Task.Delay(10);
 
         await WriteBatch();
+
+        if (roundId > 0)
+            await WriteParticipants(roundId);
     }
 
     private async Task WriteBatch()

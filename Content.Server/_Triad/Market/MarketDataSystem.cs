@@ -22,6 +22,10 @@ public sealed class MarketDataSystem : EntitySystem
     private void OnRoundStarting(RoundStartingEvent ev)
     {
         _market.RoundStarting(ev.Id);
+
+        // Purge here rather than on a timer. Round start is the quietest moment the server has and
+        // the delete is a bounded range scan on an indexed column, so it costs nothing anyone feels.
+        _market.PurgeExpired();
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
