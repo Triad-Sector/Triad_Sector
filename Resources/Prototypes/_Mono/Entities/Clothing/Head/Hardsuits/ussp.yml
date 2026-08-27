@@ -1,7 +1,7 @@
 - type: entity
   parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ] # Triad : at some point, give engi helmets t-ray scanners
   id: ClothingHeadHelmetHardsuitUsspL27
-  name: '"Korolev" Industrial engineering hardsuit helmet'
+  name: '"Korolev" industrial engineering hardsuit helmet'
   description: A heavy helmet fitted with a thick uranium glass visor.
   categories: [ HideSpawnMenu ]
   components:
