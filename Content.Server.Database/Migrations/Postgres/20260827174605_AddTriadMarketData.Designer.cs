@@ -16,7 +16,7 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20260827173044_AddTriadMarketData")]
+    [Migration("20260827174605_AddTriadMarketData")]
     partial class AddTriadMarketData
     {
         /// <inheritdoc />
@@ -1231,6 +1231,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("entity_proto");
 
+                    b.Property<int>("LineIndex")
+                        .HasColumnType("integer")
+                        .HasColumnName("line_index");
+
                     b.Property<long>("LineTotal")
                         .HasColumnType("bigint")
                         .HasColumnName("line_total");
@@ -1243,9 +1247,9 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("occurred_at");
 
-                    b.Property<long?>("ParentLineId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("parent_line_id");
+                    b.Property<int?>("ParentLineIndex")
+                        .HasColumnType("integer")
+                        .HasColumnName("parent_line_index");
 
                     b.Property<string>("PriceSource")
                         .IsRequired()
@@ -1271,10 +1275,11 @@ namespace Content.Server.Database.Migrations.Postgres
 
                     NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex("OccurredAt"), "BRIN");
 
-                    b.HasIndex("ParentLineId");
-
                     b.HasIndex("TransactionId")
                         .HasDatabaseName("IX_market_transaction_line_transaction_id");
+
+                    b.HasIndex("TransactionId", "LineIndex")
+                        .IsUnique();
 
                     b.HasIndex("EntityProto", "Direction", "OccurredAt");
 

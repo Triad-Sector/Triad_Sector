@@ -1161,6 +1161,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("entity_proto");
 
+                    b.Property<int>("LineIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("line_index");
+
                     b.Property<long>("LineTotal")
                         .HasColumnType("INTEGER")
                         .HasColumnName("line_total");
@@ -1173,9 +1177,9 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("occurred_at");
 
-                    b.Property<long?>("ParentLineId")
+                    b.Property<int?>("ParentLineIndex")
                         .HasColumnType("INTEGER")
-                        .HasColumnName("parent_line_id");
+                        .HasColumnName("parent_line_index");
 
                     b.Property<string>("PriceSource")
                         .IsRequired()
@@ -1197,10 +1201,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.HasKey("Id")
                         .HasName("PK_market_transaction_line");
 
-                    b.HasIndex("ParentLineId");
-
                     b.HasIndex("TransactionId")
                         .HasDatabaseName("IX_market_transaction_line_transaction_id");
+
+                    b.HasIndex("TransactionId", "LineIndex")
+                        .IsUnique();
 
                     b.HasIndex("EntityProto", "Direction", "OccurredAt");
 

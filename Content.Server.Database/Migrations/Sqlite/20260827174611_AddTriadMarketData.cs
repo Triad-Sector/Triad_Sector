@@ -121,7 +121,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .Annotation("Sqlite:Autoincrement", true),
                     transaction_id = table.Column<long>(type: "INTEGER", nullable: false),
                     occurred_at = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    parent_line_id = table.Column<long>(type: "INTEGER", nullable: true),
+                    line_index = table.Column<int>(type: "INTEGER", nullable: false),
+                    parent_line_index = table.Column<int>(type: "INTEGER", nullable: true),
                     entity_proto = table.Column<string>(type: "TEXT", nullable: false),
                     direction = table.Column<string>(type: "TEXT", nullable: false),
                     quantity = table.Column<int>(type: "INTEGER", nullable: false),
@@ -182,14 +183,15 @@ namespace Content.Server.Database.Migrations.Sqlite
                 columns: new[] { "entity_proto", "direction", "occurred_at" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_market_transaction_line_parent_line_id",
-                table: "market_transaction_line",
-                column: "parent_line_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_market_transaction_line_transaction_id",
                 table: "market_transaction_line",
                 column: "transaction_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_market_transaction_line_transaction_id_line_index",
+                table: "market_transaction_line",
+                columns: new[] { "transaction_id", "line_index" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_sector_account_sample_account_sampled_at",

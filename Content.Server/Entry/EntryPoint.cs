@@ -135,6 +135,10 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ServerApi>().Initialize();
                 IoCManager.Resolve<MiniAuthManager>();
                 IoCManager.Resolve<ServerIdentityService>().Initialize();
+                // Triad: market data. After _dbManager.Init() above, because the writer resolves
+                // the database manager; before any system ticks, because capture sites call it.
+                IoCManager.Resolve<Content.Server._Triad.Market.IMarketDataManager>().Initialize();
+                // End Triad
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();

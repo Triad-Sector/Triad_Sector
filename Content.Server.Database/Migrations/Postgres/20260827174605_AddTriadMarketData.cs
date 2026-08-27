@@ -122,7 +122,8 @@ namespace Content.Server.Database.Migrations.Postgres
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     transaction_id = table.Column<long>(type: "bigint", nullable: false),
                     occurred_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    parent_line_id = table.Column<long>(type: "bigint", nullable: true),
+                    line_index = table.Column<int>(type: "integer", nullable: false),
+                    parent_line_index = table.Column<int>(type: "integer", nullable: true),
                     entity_proto = table.Column<string>(type: "text", nullable: false),
                     direction = table.Column<string>(type: "text", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
@@ -197,14 +198,15 @@ namespace Content.Server.Database.Migrations.Postgres
                 .Annotation("Npgsql:IndexMethod", "BRIN");
 
             migrationBuilder.CreateIndex(
-                name: "IX_market_transaction_line_parent_line_id",
-                table: "market_transaction_line",
-                column: "parent_line_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_market_transaction_line_transaction_id",
                 table: "market_transaction_line",
                 column: "transaction_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_market_transaction_line_transaction_id_line_index",
+                table: "market_transaction_line",
+                columns: new[] { "transaction_id", "line_index" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_sector_account_sample_account_sampled_at",

@@ -65,4 +65,58 @@ public sealed class TriadCCVars
     /// </summary>
     public static readonly CVarDef<bool> AllowMapGasExtraction =
         CVarDef.Create("triad.atmos.allow_map_gas_extraction", false, CVar.SERVER | CVar.REPLICATED);
+
+    // Triad: market data
+    // The queue knobs mirror the admin log ones, which solve the same problem at production volume
+    // on this server: adminlogs.queue_send_delay_seconds, queue_max, pre_round_queue_max and
+    // drop_threshold. Defaults are deliberately identical so the two behave alike under load.
+
+    /// <summary>
+    /// Master switch. Off means nothing is recorded and no database work happens at all. On its own
+    /// this does not create the tables; the migration does that whether or not this is set.
+    /// </summary>
+    public static readonly CVarDef<bool> MarketDataEnabled =
+        CVarDef.Create("triad.market.enabled", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether to record per-item line rows as well as transaction headers. Lines are the entire
+    /// input to the price rollup, so turning this off leaves a Grafana-only feature with no in-game
+    /// consumer. Separate from the master switch because line capture is the expensive half and
+    /// wants to be disableable on its own if a sale on a full pallet ever costs real frame time.
+    /// </summary>
+    public static readonly CVarDef<bool> MarketDataLinesEnabled =
+        CVarDef.Create("triad.market.lines_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How long the writer waits between flushes.
+    /// </summary>
+    public static readonly CVarDef<float> MarketDataQueueSendDelay =
+        CVarDef.Create("triad.market.queue_send_delay_seconds", 5f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Queue depth that forces a flush before the delay elapses.
+    /// </summary>
+    public static readonly CVarDef<int> MarketDataQueueMax =
+        CVarDef.Create("triad.market.queue_max", 5000, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Cap on the separate pre-round queue. Rows can be created before a round has an id, so they
+    /// are held and stamped once it exists; character spawn sits exactly on that boundary.
+    /// </summary>
+    public static readonly CVarDef<int> MarketDataPreRoundQueueMax =
+        CVarDef.Create("triad.market.pre_round_queue_max", 5000, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Depth past which rows are dropped rather than queued. Dropping is the correct behaviour for
+    /// telemetry: the tick must never stall for it. Drops are counted and logged, never silent.
+    /// </summary>
+    public static readonly CVarDef<int> MarketDataDropThreshold =
+        CVarDef.Create("triad.market.drop_threshold", 20000, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How long raw transactions, splits and lines are kept. The daily price rollup is permanent and
+    /// unaffected. Zero or less disables the purge entirely and keeps everything.
+    /// </summary>
+    public static readonly CVarDef<int> MarketDataRetentionDays =
+        CVarDef.Create("triad.market.retention_days", 90, CVar.SERVERONLY);
 }

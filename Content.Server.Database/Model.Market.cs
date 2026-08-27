@@ -128,9 +128,11 @@ internal static class ModelMarket
         modelBuilder.Entity<MarketTransactionLine>()
             .HasIndex(l => new { l.EntityProto, l.Direction, l.OccurredAt });
 
-        // Walking one transaction's container breakdown.
+        // One line per index per transaction. Unique because the writer assigns these and a
+        // duplicate would silently corrupt the container tree rather than failing.
         modelBuilder.Entity<MarketTransactionLine>()
-            .HasIndex(l => l.ParentLineId);
+            .HasIndex(l => new { l.TransactionId, l.LineIndex })
+            .IsUnique();
 
         modelBuilder.Entity<SectorAccountSample>()
             .HasIndex(s => new { s.Account, s.SampledAt });
@@ -246,8 +248,8 @@ public class MarketTransactionSplit
 /// <summary>
 /// One priced item within a transaction. This is the corpus everything downstream learns from.
 ///
-/// <para>Lines form a tree. A root line (null <see cref="ParentLineId"/>) is something that sat on
-/// the pad; child lines are the contents of a container, captured so the breakdown reaches leaf
+/// <para>Lines form a tree. A root line (null <see cref="ParentLineIndex"/>) is something that sat
+/// on the pad; child lines are the contents of a container, captured so the breakdown reaches leaf
 /// items rather than stopping at "one crate, 1200". <b>Only root lines sum to the payout.</b>
 /// Summing every line double-counts anything containerized.</para>
 ///
@@ -269,12 +271,20 @@ public class MarketTransactionLine
     public DateTime OccurredAt { get; set; }
 
     /// <summary>
-    /// The containing line, for an item priced inside a container. Loose reference rather than a
-    /// self foreign key, following the same reasoning as the shipyard audit's key reference: it
-    /// avoids a second cascade path into a table the transaction cascade already clears, and
-    /// nothing ever deletes an individual line.
+    /// This line's position within its transaction, assigned by the writer. Unique per transaction.
     /// </summary>
-    public long? ParentLineId { get; set; }
+    public int LineIndex { get; set; }
+
+    /// <summary>
+    /// The <see cref="LineIndex"/> of the containing line, for an item priced inside a container.
+    /// Null on a root line.
+    ///
+    /// <para>Transaction-local rather than a global line id, and deliberately not a foreign key.
+    /// A global reference would force the writer to insert parents, round-trip for their generated
+    /// ids, then insert children, turning one batched insert into a per-depth sequence. Indices are
+    /// known before anything is written, so the whole tree inserts in one pass.</para>
+    /// </summary>
+    public int? ParentLineIndex { get; set; }
 
     public string EntityProto { get; set; } = null!;
 
