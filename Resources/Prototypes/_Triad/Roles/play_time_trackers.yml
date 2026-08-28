@@ -2,7 +2,7 @@
   id: JobTdfChiefEnforcer
 
 - type: playTimeTracker
-  id: JobTdfLieutenant
+  id: JobTdfWarden
 
 - type: playTimeTracker
   id: JobTdfPatrolTeamLeader

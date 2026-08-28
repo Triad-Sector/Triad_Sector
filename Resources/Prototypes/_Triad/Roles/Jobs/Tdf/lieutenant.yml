@@ -2,7 +2,7 @@
   id: TdfLieutenant
   name: job-name-tdf-lieutenant
   description: job-description-tdf-lieutenant
-  playTimeTracker: JobTdfLieutenant # Old job name. Playtime tracker stays the same so folk don't lose their playtime
+  playTimeTracker: JobTdfWarden # Old job name. Playtime tracker stays the same so folk don't lose their playtime
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
