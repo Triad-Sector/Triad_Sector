@@ -5,6 +5,10 @@
 # Fractional cost (cost: 0.5) was rounded to 1 because RCDPrototype.Cost is int upstream; RPD maxCharges
 # was halved to 45 to preserve effective build count (90 pipe segments per charge after halving).
 # HeatPump and GasTemperatureGate omitted because their prototypes aren't in this fork yet.
+#
+# The construction menu is the canon for placement rules. Every recipe names its hand twin in constructionRecipe and
+# RCDSystem holds the placement to that twin's conditions and canBuildInImpassable (which is why no recipe here
+# carries a collisionMask). If the menu lets you place it, the RPD lets you place it; nothing more, nothing less.
 
 - type: rcd
   id: PipeFourway
@@ -14,6 +18,7 @@
     state: pipeFourway
   mode: ConstructObject
   prototype: GasPipeFourway
+  constructionRecipe: GasPipeFourway
   cost: 1
   delay: 0
   rotation: User
@@ -27,6 +32,7 @@
     state: pipeStraight
   mode: ConstructObject
   prototype: GasPipeStraight
+  constructionRecipe: GasPipeStraight
   cost: 1
   delay: 0
   rotation: User
@@ -40,6 +46,7 @@
     state: pipeBend
   mode: ConstructObject
   prototype: GasPipeBend
+  constructionRecipe: GasPipeBend
   cost: 1
   delay: 0
   rotation: User
@@ -53,9 +60,9 @@
     state: pipeTJunction
   mode: ConstructObject
   prototype: GasPipeTJunction
+  constructionRecipe: GasPipeTJunction
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -67,9 +74,9 @@
     state: pipeHalf
   mode: ConstructObject
   prototype: GasPipeHalf
+  constructionRecipe: GasPipeHalf
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -82,9 +89,9 @@
     state: pipeManifold
   mode: ConstructObject
   prototype: GasPipeManifold
+  constructionRecipe: GasPipeManifold
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
   noLayers: true
@@ -97,9 +104,9 @@
     state: pumpPressure
   mode: ConstructObject
   prototype: GasPressurePump
+  constructionRecipe: GasPressurePump
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -111,9 +118,9 @@
     state: pumpVolume
   mode: ConstructObject
   prototype: GasVolumePump
+  constructionRecipe: GasVolumePump
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -125,9 +132,9 @@
     state: pumpManualValve
   mode: ConstructObject
   prototype: GasValve
+  constructionRecipe: GasValve
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -139,9 +146,9 @@
     state: pumpSignalValve
   mode: ConstructObject
   prototype: SignalControlledValve
+  constructionRecipe: SignalControlledValve
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -153,9 +160,9 @@
     state: "off"
   mode: ConstructObject
   prototype: PressureControlledValve
+  constructionRecipe: PressureControlledValve
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -167,9 +174,9 @@
     state: pumpPressureRegulator
   mode: ConstructObject
   prototype: GasPressureRegulator
+  constructionRecipe: GasPressureRegulator
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -181,9 +188,9 @@
     state: injector
   mode: ConstructObject
   prototype: GasOutletInjector
+  constructionRecipe: GasOutletInjector
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -195,9 +202,9 @@
     state: scrub_off
   mode: ConstructObject
   prototype: GasVentScrubber
+  constructionRecipe: GasVentScrubber
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -209,9 +216,9 @@
     state: vent_off
   mode: ConstructObject
   prototype: GasVentPump
+  constructionRecipe: GasVentPump
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -223,9 +230,9 @@
     state: vent_off
   mode: ConstructObject
   prototype: GasDualPortVentPump
+  constructionRecipe: GasDualPortVentPump
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -237,9 +244,9 @@
     state: vent_passive
   mode: ConstructObject
   prototype: GasPassiveVent
+  constructionRecipe: GasPassiveVent
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -251,9 +258,9 @@
     state: heStraight
   mode: ConstructObject
   prototype: HeatExchanger
+  constructionRecipe: HeatExchanger
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
   # Radiators are numberOfPipeLayers: 1 by design (they exchange with the environment, not a layer),
@@ -268,9 +275,9 @@
     state: heBend
   mode: ConstructObject
   prototype: HeatExchangerBend
+  constructionRecipe: HeatExchangerBend
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
   noLayers: true # single-layer by design, same as Radiator above
@@ -283,10 +290,10 @@
     state: gasMixer
   mode: ConstructObject
   prototype: GasMixer
+  constructionRecipe: GasMixer
   mirrorPrototype: GasMixerFlipped
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -298,10 +305,10 @@
     state: gasFilterF
   mode: ConstructObject
   prototype: GasFilter
+  constructionRecipe: GasFilter
   mirrorPrototype: GasFilterFlipped
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -313,9 +320,9 @@
     state: gasCanisterPort
   mode: ConstructObject
   prototype: GasPort
+  constructionRecipe: GasPort
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
 
@@ -327,6 +334,7 @@
     state: alarm0
   mode: ConstructObject
   prototype: AirAlarm
+  constructionRecipe: AirAlarmFixture
   cost: 2
   delay: 1
   rotation: User
@@ -341,9 +349,9 @@
     state: gsensor1
   mode: ConstructObject
   prototype: AirSensor
+  constructionRecipe: AirSensor
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
   noLayers: true
@@ -356,8 +364,8 @@
     state: base
   mode: ConstructObject
   prototype: GasPipeSensor
+  constructionRecipe: GasPipeSensor
   cost: 1
   delay: 0
-  collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
