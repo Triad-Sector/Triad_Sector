@@ -8,7 +8,7 @@
       department: Security
       time: 126000 # 35 hours
     - !type:RoleTimeRequirement
-      role: JobTdfLieutenant # Lieutenant
+      role: JobTdfWarden # Lieutenant
       time: 18000 # 5 hours
   whitelisted: true
   startingGear: TdfChiefEnforcerGear
