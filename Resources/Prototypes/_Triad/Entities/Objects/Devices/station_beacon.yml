@@ -10,7 +10,7 @@
 - type: entity
   parent: DefaultStationBeacon
   id: DefaultStationBeaconTdfLieutenant
-  suffix: TDF Warden
+  suffix: TDF Lieutenant
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-warden

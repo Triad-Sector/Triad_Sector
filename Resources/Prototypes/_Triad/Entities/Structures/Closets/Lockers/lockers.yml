@@ -81,12 +81,12 @@
   - type: AccessReader
     access: [["TdfPatrolTeamLeader"]]
 
-# TDF Warden
+# TDF Lieutenant
 - type: entity
   parent: LockerTdf
   id: LockerTdfLieutenant
-  name: warden's locker
-  suffix: Warden
+  name: lieutenant's locker
+  suffix: TDF Lieutenant
   components:
   - type: EntityStorageVisuals
     stateBaseClosed: tdf
