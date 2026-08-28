@@ -10,7 +10,7 @@
   subgroups:
   - ContractorJumpsuit
   fallbacks:
-  #- PilotClothingUniformJumpsuitPilot # Triad removal - The military variant looks better.
+  #- PilotClothingUniformJumpsuitPilot # Triad removal - The military variant is higher quality.
   - PilotClothingUniformJumpsuitMilitaryPilot # Triad
   - ContractorClothingUniformJumpskirtColorGrey # Sorry harpies, no pilot skirt for you.
 
