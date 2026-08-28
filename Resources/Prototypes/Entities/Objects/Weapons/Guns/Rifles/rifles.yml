@@ -71,10 +71,10 @@
   # Goobstation edit end
 
 - type: entity
-  name: LWC AKM (7.62x39mm)
+  name: RMT "Kalash" AKM (7.62x39mm) # Triad: LWC AKM -> RMT "Kalash" AKM. Russians make AK.
   parent: BaseWeaponRifle
   id: WeaponRifleAk
-  description: An old Pre-Fracture Era rifle. Uses 7.62x39mm ammo. When the Fracture began to spread across the Old Earth territories, few weapons were as reliable as the AKM
+  description: An old Pre-Fracture Era rifle. Uses 7.62x39mm ammo. When the Fracture began to spread across the Old Earth territories, few weapons were as reliable as the AKM. The AKM has been Reznichenko Military Technologies' best-selling product for more than 300 years. # Triad: Added line about Reznichenko military technologies
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Rifles/akm.rsi # Mono

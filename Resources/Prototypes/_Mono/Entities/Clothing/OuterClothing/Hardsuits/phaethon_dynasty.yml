@@ -69,7 +69,7 @@
     - RogueHardsuit
 
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearPDVT2 ]
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf] # Triad : TDF rebrand
   id: ClothingOuterHardsuitPDVMedic
   name: TA-82 hazmat hardsuit # Triad : TDF rebrand
   description: An advanced combat hardsuit designed to combat extreme NBC threats. The armor is reinforced against claws and talons, keeping your limbs attached during animal control.
@@ -114,9 +114,11 @@
   - type: Tag  # Mono
     tags:
     - RogueHardsuit
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
 
 - type: entity
-  parent: ClothingOuterHardsuitSyndieCommander
+  parent: [ClothingOuterHardsuitSyndieCommander, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf ] #Triad : TDF rebrand
   id: ClothingOuterHardsuitVizier #TDF rebrand, stat changes to be similar to jugsuit
   name: 'TA-67 "The Brick" superheavy riot casket'
   description: You are against the wall, and I am the wall.
@@ -159,9 +161,13 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepThud
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
+  - type: ContrabandPermittable
+    permittable: true # I mean, it can be taken away at any time, right?
 
 - type: entity
-  parent: [ ClothingOuterHardsuitSyndieElite, EnergyShieldClothing ]
+  parent: [ ClothingOuterHardsuitSyndieElite, EnergyShieldClothing, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf ]
   id: ClothingOuterHardsuitAshenElite
   name: TA-99X experimental tacsuit # TDF rebrand, light nerfs to heat and rad res : Triad
   description: A specialized combat tacsuit that sacrifices ballistic protection in favor of advanced mirrored composites and a rechargable hard-shield. Incredibly laser-resistant.
@@ -236,3 +242,5 @@
     radius: 1.4
     energy: 2
     color: "#5dd439"
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
