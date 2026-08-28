@@ -151,6 +151,11 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
             _lastHeldRcd = heldEntity;
             _useMirrorPrototype = rcd.UseMirrorPrototype;
             _lastSentLayer = null; // Triad: force a fresh layer send for the newly held tool.
+            // Triad: seed the direction cache from the tool's networked state, not from whatever the previous tool
+            // (or a construction-menu ghost) left in the placement manager. ConstructionDirection is per-tool and
+            // defaults South, so without this a freshly held tool spawned South-facing while the ghost showed the
+            // old direction until the operator rotated once.
+            _placementDirection = rcd.ConstructionDirection;
         }
         // End Triad
 
