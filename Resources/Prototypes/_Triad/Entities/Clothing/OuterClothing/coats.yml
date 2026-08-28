@@ -38,8 +38,8 @@
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfLieutenant
-  name: TDF warden's armored jacket
-  description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
+  name: TDF lieutenant's armored jacket
+  description: A sturdy, utilitarian jacket designed to protect a lieutenant from any threats in the Triad Sector.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
@@ -52,8 +52,8 @@
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseClass2AShipContrabandSilent]
   id: ClothingOuterCoatTdfLieutenantAlt
-  name: TDF warden's armored coat
-  description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
+  name: TDF lieutenant's armored coat
+  description: A sturdy, utilitarian coat designed to protect a lieutenant from any threats and hypothermic events.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden.rsi

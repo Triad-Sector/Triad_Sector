@@ -29,8 +29,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretTdfLieutenant
-  name: TDF warden's beret
-  description: A repurposed corporate blue beret, now sewn with the TDF symbol and warden's stripe.
+  name: TDF lieutenant's beret
+  description: A repurposed corporate blue beret, now sewn with the TDF symbol and lieutenant's stripe.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/beret_tdf_warden.rsi
@@ -71,8 +71,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatTdfLieutenant
-  name: TDF warden's cap
-  description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you are THE LAW!
+  name: TDF lieutenant's cap
+  description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you have AUTHORITY!
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
