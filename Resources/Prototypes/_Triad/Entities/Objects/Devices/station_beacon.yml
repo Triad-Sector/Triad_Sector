@@ -13,7 +13,7 @@
   suffix: TDF Lieutenant
   components:
   - type: NavMapBeacon
-    defaultText: station-beacon-warden
+    defaultText: station-beacon-tdf-lieutenant
     color: "#ccb586"
 
 - type: entity
