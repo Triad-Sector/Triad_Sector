@@ -1,7 +1,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitIndustrialEngi
-  name: 'RMT "Korolev" industrial engineering hardsuit' # Renamed suit and rebalanced to be heavy high tier engi/atmos suit With decent protection. Worse than SCAF, CE, or Atmos at any one thing.
+  name: RMT "Korolev" industrial engineering hardsuit # Renamed suit and rebalanced to be heavy high tier engi/atmos suit With decent protection. Worse than SCAF, CE, or Atmos at any one thing.
   description: A heavy-duty engineering suit designed to protect the modern shipwright from occupational hazards. Includes an asbestos lining to moderately improve fire survivability. Named in honor of the engineer who carried the first human into space.
   components:
   - type: Sprite
@@ -53,7 +53,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitRmtL10
-  name: 'RMT "Alexi" L-10 lightsuit'
+  name: RMT "Alexi" L-10 lightsuit
   description: A general-purpose hardsuit prioritizing ergonomics above all else. Ideal for light industrial work in safe harbors.
   components:
   - type: Sprite
@@ -99,7 +99,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitRmtL10A
-  name: 'RMT "Mikhail" L-15-A lightsuit'
+  name: RMT "Mikhail" L-15-A lightsuit
   description: A slightly more protective, premium variant of the Alexi lightsuit, preferred by those who value their fingers over their comfort.
   components:
   - type: Sprite
@@ -145,7 +145,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitRmtM10
-  name: 'RMT "Tupolev" Object-220 lightsuit'
+  name: RMT "Tupolev" Object-220 lightsuit
   description: A new prototype of suit based on the L-series. It features improved composites and a helmet-mounted mass scanner.
   components:
   - type: Sprite
