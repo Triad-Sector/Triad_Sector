@@ -2,8 +2,8 @@
   id: Mercy
   parent: BaseVesselTdf
   name: TDF Mercy
-  description: Born in the need of sufficient armed medical ship for extraction of civilians from contested space, Mercy is armed with heavy point defense and 2 TOVEK missile pods to deter any would-be assailant against it's precious cargo of patients. It has increased armor to withstand direct attacks, coming at the cost of maneuverability.
-  price: 158000
+  description: Born in the need of sufficient armed medical ship for extraction of civilians from contested space, the Mercy is armed with heavy point defense and 2 TOVEK missile pods to deter any would-be assailant against it's precious cargo of patients. It has increased armor to withstand direct attacks, coming at the cost of maneuverability.
+  price: 219000
   category: Medium
   group: Security
   access: Security
