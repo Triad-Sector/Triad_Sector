@@ -13,7 +13,8 @@ namespace Content.Server.RPD;
 /// <summary>
 /// Server-side RPD half: answers <see cref="RCDConstructionAttemptEvent"/> with the layer-aware pipe overlap rule
 /// (<see cref="PipeRestrictOverlapSystem.WouldPlacementOverlap"/>), so a same-(direction, layer) placement is
-/// rejected before spawn. Server-side because the overlap query reads server pipe-node data.
+/// rejected before spawn. Server-side because the overlap query reads server pipe-node data. The layer comes from
+/// the event (captured at commit), not from <c>RPDComponent.CurrentLayer</c>.
 /// </summary>
 public sealed partial class RPDConflictSystem : EntitySystem
 {
@@ -37,12 +38,13 @@ public sealed partial class RPDConflictSystem : EntitySystem
             || !baseProto.TryComp<AtmosPipeLayersComponent>(out var pipeLayers, EntityManager.ComponentFactory))
             return;
 
-        // Resolve the layer-specific prototype (base proto IS the Primary variant).
+        // Resolve the layer-specific prototype (base proto IS the Primary variant). args.Layer is the layer captured
+        // at the commit click, so every re-validation during the do-after judges the same placement the click did.
         var proto = args.Recipe.Prototype!;
-        if (_pipeLayers.TryGetAlternativePrototype(pipeLayers, ent.Comp.CurrentLayer, out var alt))
+        if (_pipeLayers.TryGetAlternativePrototype(pipeLayers, args.Layer, out var alt))
             proto = alt.Id;
 
-        if (_overlap.WouldPlacementOverlap((args.MapGridData.GridUid, args.MapGridData.Component), args.MapGridData.Position, proto, args.Direction.ToAngle(), ent.Comp.CurrentLayer))
+        if (_overlap.WouldPlacementOverlap((args.MapGridData.GridUid, args.MapGridData.Component), args.MapGridData.Position, proto, args.Direction.ToAngle(), args.Layer))
         {
             if (args.ShowPopups)
                 _popup.PopupEntity(Loc.GetString("rcd-component-cannot-build-on-occupied-tile-message"), ent, args.User);
