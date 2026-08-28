@@ -40,7 +40,7 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconTdfWarden
+  id: JobIconTdfLieutenant
   icon:
     sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
     state: tdfwarden

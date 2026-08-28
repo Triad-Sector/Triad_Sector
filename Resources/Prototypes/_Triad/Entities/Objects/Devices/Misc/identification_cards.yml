@@ -53,11 +53,11 @@
 
 - type: entity
   parent: TdfJuniorEnforcerIdCard
-  id: TdfWardenIDCard
-  name: TDF warden ID card
+  id: TdfLieutenantIDCard
+  name: TDF lieutenant ID card
   components:
   - type: PresetIdCard
-    job: TdfWarden
+    job: TdfLieutenant
   - type: Sprite
     layers:
     - state: tdf

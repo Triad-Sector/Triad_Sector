@@ -1,38 +1,38 @@
 - type: loadoutGroup
-  id: TdfWardenJumpsuit
+  id: TdfLieutenantJumpsuit
   name: loadout-group-contractor-jumpsuit
   minLimit: 1
   loadouts:
-  - ClothingUniformJumpsuitTdfWarden
+  - ClothingUniformJumpsuitTdfLieutenant
   fallbacks:
-  - ClothingUniformJumpsuitTdfWarden
+  - ClothingUniformJumpsuitTdfLieutenant
 
 - type: loadoutGroup
-  id: TdfWardenPda
+  id: TdfLieutenantPda
   name: loadout-group-contractor-id
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
-  - TdfWardenPda
+  - TdfLieutenantPda
   fallbacks:
-  - TdfWardenPda
+  - TdfLieutenantPda
 
 - type: loadoutGroup
-  id: TdfWardenHead
+  id: TdfLieutenantHead
   name: loadout-group-contractor-head
   minLimit: 0
   loadouts:
-  - ClothingHeadHatBeretTdfWarden
-  - ClothingHeadHatTdfWarden
+  - ClothingHeadHatBeretTdfLieutenant
+  - ClothingHeadHatTdfLieutenant
   - TdfHelmet
 
 - type: loadoutGroup
-  id: TdfWardenOuterClothing
+  id: TdfLieutenantOuterClothing
   name: loadout-group-contractor-outerclothing
   minLimit: 1
   loadouts:
-  - ClothingOuterCoatTdfWarden
-  - ClothingOuterCoatTdfWardenAlt
+  - ClothingOuterCoatTdfLieutenant
+  - ClothingOuterCoatTdfLieutenantAlt
   fallbacks:
-  - ClothingOuterCoatTdfWarden
+  - ClothingOuterCoatTdfLieutenant
   subgroups:
   - TdfOuterClothing

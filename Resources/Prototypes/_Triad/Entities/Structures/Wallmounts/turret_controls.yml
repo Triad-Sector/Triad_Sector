@@ -68,7 +68,7 @@
   - type: TurretTargetSettings
     exemptAccessLevels:
     - TdfChiefEnforcer
-    - TdfWarden
+    - TdfLieutenant
     - TdfPatrolTeamLeader
     - Security
     - Brig
@@ -86,7 +86,7 @@
   - type: TurretTargetSettings
     exemptAccessLevels:
     - TdfChiefEnforcer
-    - TdfWarden
+    - TdfLieutenant
     - TdfPatrolTeamLeader
     - Security
     - Brig

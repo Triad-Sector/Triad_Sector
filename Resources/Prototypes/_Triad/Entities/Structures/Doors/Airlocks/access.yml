@@ -28,12 +28,12 @@
 
 - type: entity
   parent: AirlockTdf
-  id: AirlockTdfWardenLocked
-  suffix: TDF Warden, Locked
+  id: AirlockTdfLieutenantLocked
+  suffix: TDF Lieutenant, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTdfWarden ]
+      board: [ DoorElectronicsTdfLieutenant ]
 
 - type: entity
   parent: AirlockCommandLocked
@@ -83,12 +83,12 @@
 
 - type: entity
   parent: AirlockTdfGlass
-  id: AirlockTdfGlassWardenLocked
-  suffix: TDF Warden, Locked
+  id: AirlockTdfGlassLieutenantLocked
+  suffix: TDF Lieutenant, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTdfWarden ]
+      board: [ DoorElectronicsTdfLieutenant ]
 
 - type: entity
   parent: AirlockCommandGlassLocked

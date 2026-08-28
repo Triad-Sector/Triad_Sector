@@ -84,7 +84,7 @@
 # TDF Warden
 - type: entity
   parent: LockerTdf
-  id: LockerTdfWarden
+  id: LockerTdfLieutenant
   name: warden's locker
   suffix: Warden
   components:
@@ -93,7 +93,7 @@
     stateDoorOpen: tdf_open
     stateDoorClosed: tdf_warden_door
   - type: AccessReader
-    access: [["TdfWarden"]]
+    access: [["TdfLieutenant"]]
 
 # TDF Chief Enforcer
 - type: entity

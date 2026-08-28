@@ -37,7 +37,7 @@
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseClass2AShipContrabandSilent]
-  id: ClothingOuterCoatTdfWarden
+  id: ClothingOuterCoatTdfLieutenant
   name: TDF warden's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
   components:
@@ -51,7 +51,7 @@
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseClass2AShipContrabandSilent]
-  id: ClothingOuterCoatTdfWardenAlt
+  id: ClothingOuterCoatTdfLieutenantAlt
   name: TDF warden's armored coat
   description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:

@@ -19,7 +19,7 @@
   startingGear: TdfLeaderGear
   alwaysUseSpawner: true
   icon: JobIconTdfPatrolTeamLeader
-  supervisors: job-supervisors-tdf-enforcer
+  supervisors: job-supervisors-tdf-lieutenant
   weight: 140
   displayWeight: 50
   assignedCompany: TDF

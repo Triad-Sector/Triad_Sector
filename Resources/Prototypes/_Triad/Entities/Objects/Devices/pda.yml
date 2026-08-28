@@ -117,12 +117,12 @@
 
 - type: entity
   parent: TdfMedicPda
-  id: TdfWardenPda
-  name: TDF warden PDA
-  description: The OS appears to be jailbroken.
+  id: TdfLieutenantPda
+  name: TDF lieutenant PDA
+  description: It has a star on it! Awesome.
   components:
   - type: Pda
-    id: TdfWardenIDCard
+    id: TdfLieutenantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

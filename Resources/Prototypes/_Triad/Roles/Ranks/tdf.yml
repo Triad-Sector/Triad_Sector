@@ -18,9 +18,9 @@
   paygrade: TDF-3
 
 - type: rank
-  id: RankWarden
-  name: Warden
-  prefix: Warden
+  id: RankLieutenant
+  name: Lieutenant
+  prefix: Lt.
   paygrade: TDF-4
 
 - type: rank

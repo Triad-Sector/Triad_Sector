@@ -20,12 +20,12 @@
       - state: tdf-chief
 
 - type: entity
-  id: SpawnPointTdfWarden
+  id: SpawnPointTdfLieutenant
   parent: SpawnPointJobTriadBase
-  name: TDF warden
+  name: TDF lieutenant
   components:
   - type: SpawnPoint
-    job_id: TdfWarden
+    job_id: TdfLieutenant
   - type: Sprite
     layers:
       - sprite: _NF/Markers/jobs.rsi

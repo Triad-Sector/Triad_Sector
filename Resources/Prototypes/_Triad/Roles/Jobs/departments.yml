@@ -16,7 +16,7 @@
   weight: 120
   roles:
   - TdfChiefEnforcer
-  - TdfWarden
+  - TdfLieutenant
   - TdfPatrolTeamLeader
   - TdfEnforcer
   - TdfMedic

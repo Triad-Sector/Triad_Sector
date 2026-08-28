@@ -1,8 +1,8 @@
 - type: job
-  id: TdfWarden
-  name: job-name-tdf-warden
-  description: job-description-tdf-warden
-  playTimeTracker: JobTdfWarden
+  id: TdfLieutenant
+  name: job-name-tdf-lieutenant
+  description: job-description-tdf-lieutenant
+  playTimeTracker: JobTdfLieutenant # Old job name. Playtime tracker stays the same so folk don't lose their playtime
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
@@ -10,9 +10,9 @@
     - !type:RoleTimeRequirement
       role: JobTdfPatrolTeamLeader
       time: 7200 # 2 hours
-  startingGear: TdfWardenGear
+  startingGear: TdfLieutenantGear
   alwaysUseSpawner: true
-  icon: JobIconTdfWarden
+  icon: JobIconTdfLieutenant
   supervisors: job-supervisors-tdf-enforcer
   weight: 150
   displayWeight: 60
@@ -25,11 +25,11 @@
   - Armory
   - Medical
   - Chemistry
-  - TdfWarden
+  - TdfLieutenant
   - TdfPatrolTeamLeader
   - TdfPermitControl
   ranks:
-    RankWarden: []
+    RankLieutenant: []
   special:
   - !type:AddComponentSpecial
     components:
@@ -48,7 +48,7 @@
     prototype: FrontierBirthdayGift
 
 - type: startingGear
-  id: TdfWardenGear
+  id: TdfLieutenantGear
   equipment:
     pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
   storage:
