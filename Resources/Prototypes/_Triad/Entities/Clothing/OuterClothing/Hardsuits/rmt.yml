@@ -1,7 +1,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitIndustrialEngi
-  name: 'RMT "Korolev" Industrial engineering hardsuit' # Renamed suit and rebalanced to be heavy high tier engi/atmos suit With decent protection. Worse than SCAF, CE, or Atmos at any one thing.
+  name: 'RMT "Korolev" industrial engineering hardsuit' # Renamed suit and rebalanced to be heavy high tier engi/atmos suit With decent protection. Worse than SCAF, CE, or Atmos at any one thing.
   description: A heavy-duty engineering suit designed to protect the modern shipwright from occupational hazards. Includes an asbestos lining to moderately improve fire survivability. Named in honor of the engineer who carried the first human into space.
   components:
   - type: Sprite
