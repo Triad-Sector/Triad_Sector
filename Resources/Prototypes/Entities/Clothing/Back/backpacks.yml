@@ -307,7 +307,7 @@
 
 #Special
 - type: entity
-  parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpack
+  parent: [NFClothingBackpack, BaseClass2AShipContrabandSilent] # Frontier: ClothingBackpack<NFClothingBackpack | Triad: ship save contraband status
   id: ClothingBackpackHolding
   name: bag of holding
   description: A backpack that opens into a localized pocket of bluespace.

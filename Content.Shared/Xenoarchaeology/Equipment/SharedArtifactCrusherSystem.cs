@@ -3,18 +3,19 @@ using Content.Shared.Storage.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Content.Shared.Emag.Systems;
+using Content.Shared.Xenoarchaeology.Equipment.Components;
 
 namespace Content.Shared.Xenoarchaeology.Equipment;
 
 /// <summary>
 /// This handles logic relating to <see cref="ArtifactCrusherComponent"/>
 /// </summary>
-public abstract partial class SharedArtifactCrusherSystem : EntitySystem
+public abstract class SharedArtifactCrusherSystem : EntitySystem
 {
-    [Dependency] protected SharedAppearanceSystem Appearance = default!;
-    [Dependency] protected SharedAudioSystem AudioSystem = default!;
-    [Dependency] protected SharedContainerSystem ContainerSystem = default!;
-    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
+    [Dependency] protected readonly SharedAudioSystem AudioSystem = default!;
+    [Dependency] protected readonly SharedContainerSystem ContainerSystem = default!;
+    [Dependency] private readonly EmagSystem _emag = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -64,8 +65,10 @@ public abstract partial class SharedArtifactCrusherSystem : EntitySystem
         if (!_emag.CheckFlag(ent, EmagType.Interaction))
             return;
 
-        if (ent.Comp.AutoLock)
-            ent.Comp.AutoLock = false;
+        if (!ent.Comp.AutoLock)
+            return;
+
+        ent.Comp.AutoLock = false;
         args.Handled = true;
     }
     // End Frontier

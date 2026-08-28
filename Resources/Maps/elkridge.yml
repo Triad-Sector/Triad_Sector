@@ -81533,14 +81533,13 @@ entities:
     - type: Transform
       pos: 40.5,20.5
       parent: 2
-- proto: MediumXenoArtifact
+- proto: ComplexXenoArtifact
   entities:
   - uid: 5291
     components:
     - type: Transform
       pos: -28.5,12.5
       parent: 2
-    - type: BiasedArtifact
 - proto: MedkitAdvancedFilled
   entities:
   - uid: 4057
@@ -90766,7 +90765,7 @@ entities:
     - type: Transform
       pos: -13.509577,-5.578573
       parent: 2
-- proto: SimpleXenoArtifactItem
+- proto: ComplexXenoArtifactItem
   entities:
   - uid: 12908
     components:

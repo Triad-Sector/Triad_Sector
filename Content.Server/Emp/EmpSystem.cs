@@ -53,10 +53,17 @@ public sealed partial class EmpSystem : SharedEmpSystem
     /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
     /// <param name="duration">The duration of the EMP effects.</param>
     /// <param name="immuneGrids">Frontier: a list of the grids that should not be affected by the pulse.</param>
-    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration, List<EntityUid>? immuneGrids = null)
+    /// <param name="onlyGrid">Triad: when set, only entities standing on this grid are affected. Lets a
+    /// grid-local source (an artifact firing on its own ship) pulse without reaching a docked neighbour.
+    /// Pass the source's own grid; null keeps the old behaviour of hitting everything in range.</param>
+    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration, List<EntityUid>? immuneGrids = null, EntityUid? onlyGrid = null)
     {
         foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
         {
+            // Triad: grid-local pulse
+            if (onlyGrid != null && Transform(uid).GridUid != onlyGrid)
+                continue;
+
             // Frontier: Block EMP on grid
             var gridUid = Transform(uid).GridUid;
             if (gridUid != null &&

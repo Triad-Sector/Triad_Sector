@@ -1,0 +1,188 @@
+- type: entity
+  parent: [ ClothingOuterHardsuitBase ]
+  id: ClothingOuterHardsuitIndustrialEngi
+  name: '"Korolev" Industrial engineering hardsuit' # Renamed suit and rebalanced to be heavy high tier engi/atmos suit With decent protection. Worse than SCAF, CE, or Atmos at any one thing.
+  description: A heavy-duty engineering suit designed to protect the modern shipwright from occupational hazards. Includes an asbestos lining to moderately improve fire survivability. Named in honor of the engineer who carried the first human into space.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.03 # 0.05 -> 0.03. Slightly better than engi suit : Triad
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection # Added atmos temperature protection, 10x weaker than atmos suit: Triad
+    heatingCoefficient: 0.010
+    coolingCoefficient: 0.010
+  - type: FireProtection # Added fire protection, 2x weaker than atmos suit.
+    reduction: 0.4
+  - type: ExplosionResistance
+    damageCoefficient: 0.35 # 0.65 -> 0.35 Slightly better than engi suit : Triad
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.7
+        Piercing: 0.45
+        Heat: 0.65
+        Radiation: 0.2 # 0.8 -> 0.2 Equivalent to engi suit : Triad
+        Caustic: 0.4 # 0.6 -> 0.4 : Triad
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.3
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitRmtL27
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 1250
+    vendPrice: 7500
+  - type: PirateBountyItem # Mono
+    id: ClothingOuterHardsuitTacsuit
+
+
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearOtherFactionT0 ]
+  id: ClothingOuterHardsuitRmtL10
+  name: '"Alexi" L-10 lightsuit'
+  description: A general-purpose hardsuit prioritizing ergonomics above all else. Ideal for light industrial work in safe harbors.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_light.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_light.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.75
+        Radiation: 0.7
+        Caustic: 0.7
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitRmtL10
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 420
+    vendPrice: 2500
+  - type: PirateBountyItem # Mono
+    id: ClothingOuterHardsuitTacsuit
+
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearOtherFactionT0 ]
+  id: ClothingOuterHardsuitRmtL10A
+  name: '"Mikhail" L-15-A lightsuit'
+  description: A slightly more protective, premium variant of the Alexi lightsuit, preferred by those who value their fingers over their comfort.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_light_officer.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_light_officer.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.7
+        Radiation: 0.7
+        Caustic: 0.7
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitRmtL10A
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 500
+    vendPrice: 3000
+  - type: PirateBountyItem # Mono
+    id: ClothingOuterHardsuitTacsuit
+
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearOtherFactionT0 ]
+  id: ClothingOuterHardsuitRmtM10
+  name: '"Tupolev" Object-220 lightsuit'
+  description: A new prototype of suit based on the L-series. It features improved composites and a helmet-mounted mass scanner.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_lightmk2.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat_lightmk2.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.7
+        Caustic: 0.7
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitRmtM10
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 1350
+    vendPrice: 8000
+  - type: PirateBountyItem # Mono
+    id: ClothingOuterHardsuitTacsuitHighValue

@@ -1,0 +1,19 @@
+- type: latheRecipe
+  abstract: true
+  id: HZDModsuitRecipe
+  parent: MonoHardsuitT3Recipe
+  completetime: 40
+  materials:
+    Glass: 1000
+    Steel: 3000
+    Plastic: 4000
+    Plasteel: 3000
+    Plastitanium: 2500
+    Durathread: 5000
+    Silver: 1000
+    Gold: 1000
+
+- type: latheRecipe
+  id: ClothingModsuitHZDBesieger
+  parent: HZDModsuitRecipe
+  result: ClothingModsuitHZDBesieger

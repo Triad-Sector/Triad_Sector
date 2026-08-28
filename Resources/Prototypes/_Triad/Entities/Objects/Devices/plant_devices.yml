@@ -3,7 +3,7 @@
 - type: entity
   parent: EngineerPDA
   id: PlantManagerPDA
-  name: Director of Infrastructure PDA
+  name: director of infrastructure PDA
   description: Tracks reactor output and the plant's account balance.
   components:
   - type: Pda
@@ -22,7 +22,7 @@
 - type: entity
   parent: EngineerPDA
   id: PlantTechnicianPDA
-  name: Sector Technician PDA
+  name: sector technician PDA
   description: Rugged, and smells faintly of coolant.
   components:
   - type: Pda
@@ -35,7 +35,7 @@
 - type: entity
   parent: IDCardStandard
   id: PlantManagerIDCard
-  name: Director of Infrastructure ID card
+  name: director of infrastructure ID card
   components:
   - type: PresetIdCard
     job: PlantManager
@@ -52,7 +52,7 @@
 - type: entity
   parent: IDCardStandard
   id: PlantTechnicianIDCard
-  name: Sector Technician ID card
+  name: sector technician ID card
   components:
   - type: PresetIdCard
     job: PlantTechnician

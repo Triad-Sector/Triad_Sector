@@ -82,3 +82,20 @@
   - type: InstantAction
     itemIconStyle: BigItem
     event: !type:ToggleActionEvent
+
+- type: entity
+  parent: ClothingModsuitGauntletsBase
+  id: ClothingModsuitGauntletsHZDBesieger
+  name: HZD Gauntlets
+  description: After extensive testing and RnD, loss of fingers in explosions have been reduced by 82%!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Hands/Modsuits/HZDBesieger.rsi
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND-sealed
+      gloves-vox:
+      - state: equipped-HAND-sealed-vox

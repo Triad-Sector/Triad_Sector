@@ -1,0 +1,97 @@
+# SD Modules
+- type: entity
+  parent: [BaseBorgModule, BaseClass2AShipContrabandSilent]
+  id: BaseBorgModuleSolarian
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: tsf
+    - state: icon-tsf
+  - type: BorgModuleIcon
+    icon: { sprite: _Mono/Interface/Action/actions_borg.rsi, state: tsfstandard-weapon-module }
+  - type: ItemBorgModule
+    moduleId: SolarianDirective
+  - type: Tag
+    tags:
+    - BorgModuleSolarian
+
+- type: entity
+  parent: BaseBorgModuleSolarian
+  id: BaseBorgModuleSolarianAssault
+  abstract: true
+  components:
+    - type: Tag
+      tags:
+        - BorgModuleSolarianAssault
+
+- type: entity
+  parent: BaseBorgModuleSolarian
+  id: BaseBorgModuleSolarianMedical
+  abstract: true
+  components:
+    - type: Tag
+      tags:
+        - BorgModuleSolarianMedical
+
+- type: entity
+  parent: BaseBorgModuleSolarian
+  id: BaseBorgModuleSolarianEngineering
+  abstract: true
+  components:
+    - type: Tag
+      tags:
+        - BorgModuleSolarianEngineering
+
+- type: entity
+  parent: [ BaseBorgModuleSolarian, BaseProviderBorgModule, BaseFactionGearSDT2 ]
+  id: BorgModuleSDStandardWeapon
+  name: solarian directive standard weapon cyborg module
+  components:
+  - type: ItemBorgModule
+    items:
+    - WeaponPulsePistol
+    - NavyOfficerSabre
+
+- type: entity
+  parent: [ BaseBorgModuleSolarianAssault, BaseProviderBorgModule, BaseFactionGearSDT2 ]
+  id: BorgModuleSDStandardAssault
+  name: solarian directive basic assault cyborg module
+  components:
+  - type: ItemBorgModule
+    items:
+    - WeaponPulsePistol # todo ? Probably port borg hands from wizden
+
+- type: entity
+  parent: [ BaseBorgModuleSolarianAssault, BaseProviderBorgModule, BaseFactionGearSDT3 ]
+  id: BorgModuleSDAdvancedAssault
+  name: solarian directive advanced assault cyborg module
+  components:
+  - type: ItemBorgModule
+    items:
+    - WeaponBorgPulseRifle
+    - WeaponHFKatana
+    - EnergyShield
+    - JawsOfLife
+  - type: BorgModuleIcon
+    icon: { sprite: _Mono/Interface/Action/actions_borg.rsi, state: tsfadvanced-weapon-module }
+
+- type: entity
+  parent: BorgModuleSDAdvancedAssault
+  id: BorgModuleSDAdvancedAssaultNpc
+  suffix: NPC, Ranged
+  components:
+  - type: ItemBorgModule
+    items:
+    - WeaponBorgPulseRifle
+
+- type: entity
+  parent: BorgModuleSDAdvancedAssault
+  id: BorgModuleSDAdvancedAssaultMeleeNpc
+  suffix: NPC, Melee
+  components:
+  - type: ItemBorgModule
+    items:
+    - WeaponHFKatana
+    - EnergyShieldBorgOn

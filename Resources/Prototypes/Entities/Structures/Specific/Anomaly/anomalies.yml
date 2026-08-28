@@ -885,7 +885,7 @@
     - Leporazine
     - Ambuzol
     - Tricordrazine
-    - Artifexium
+    #- Artifexium # Triad: removed
     - Ethylredoxrazine
     funChemicals:
     - Desoxyephedrine

@@ -17,12 +17,6 @@
   maxValue: 99
 
 - type: nameIdentifierGroup
-  id: NuclearReactorUSSP
-  prefix: USSP-NFR
-  minValue: 10
-  maxValue: 99
-
-- type: nameIdentifierGroup
   id: NuclearReactorCC
   prefix: CC-NFR
   minValue: 10
@@ -45,12 +39,6 @@
 - type: nameIdentifierGroup
   id: NuclearReactorPDVSmall
   prefix: PDV-NFR-S
-  minValue: 10
-  maxValue: 99
-
-- type: nameIdentifierGroup
-  id: NuclearReactorUSSPSmall
-  prefix: USSP-NFR-S
   minValue: 10
   maxValue: 99
 

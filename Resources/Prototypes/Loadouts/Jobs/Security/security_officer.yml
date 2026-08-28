@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobWarden
+      role: JobWardenOld # Triad: JobWarden<JobWardenOld, the NFSD bailiff that claimed JobWarden was deleted in #504
       time: 21600 #6 hrs
   - !type:JobRequirementLoadoutEffect
     requirement:

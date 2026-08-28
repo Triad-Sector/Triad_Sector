@@ -143,14 +143,17 @@
   - ClothingOuterHardsuitMercenary
   - ClothingOuterHardsuitPrivateSecurity
   - ClothingOuterHardsuitScaf
+  - ClothingOuterHardsuitPirateScaf # Triad : PDV scafsuit now normal tech
   - ClothingModsuitMercenaryPowerCell # Mono edit
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
-  - ClothingOuterHardsuitPirateScaf # Triad : faction gear domestication
-  - ClothingOuterHardsuitUsspL10
-  - ClothingOuterHardsuitUsspM10
+# Triad Start
+  - ClothingOuterHardsuitRmtL10
+  - ClothingOuterHardsuitRmtM10
   - ClothingOuterHardsuitIndustrialEngi
-  - ClothingOuterHardsuitUsspL10A # Triad : End
+  - ClothingOuterHardsuitRmtL10A
+  - ClothingModsuitHZDBesieger
+# Triad End
 ## Utilities
   - ForensicPad
   - ClothingEyesHudBountyHunter

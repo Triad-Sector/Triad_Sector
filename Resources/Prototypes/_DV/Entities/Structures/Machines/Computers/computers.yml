@@ -15,9 +15,11 @@
   - type: Sprite
     sprite: _EE/Structures/Machines/computers.rsi
     layers:
-    - map: ["computerLayerBody"]
+    - sprite: _NF/Structures/Machines/computers.rsi # Triad
+      map: ["computerLayerBody"]
       state: computer
-    - map: ["computerLayerKeyboard"]
+    - sprite: _NF/Structures/Machines/computers.rsi # Triad
+      map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
       state: supermatter-0

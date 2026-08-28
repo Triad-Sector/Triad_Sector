@@ -71,10 +71,10 @@
     pvsIncrease: 1
 
 - type: entity
-  name: NCI AK-502 (7.62x39mm)
+  name: RMT AK-502 (7.62x39mm)
   parent: BaseWeaponRifle
   id: WeaponRifleAK502
-  description: A standard-issue USSP combat rifle. Uses 7.62x39mm ammo.
+  description: A combat rifle produced by Reznichenko Military Technologies, an arms contractor. Uses 7.62x39mm ammo.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Rifles/ak502.rsi
@@ -136,7 +136,7 @@
   name: VFD XLR-556 ICWS (5.56x45mm)
   parent: [BaseWeaponRifle, BaseGunWieldable, BaseFactionGearSDT2]
   id: WeaponRifleXlr556
-  description: A proposed next-gen "rifle" for FSR standard infantry, currently field tested by solarian PMC groups such as the local Solarian Directive. Chambered in 5.56x45mm rifle rounds, its RPM is incredible - but with great firerate comes great fire control...
+  description: A proposed next-gen "rifle" for FSR standard infantry, currently field tested by solarian PMC groups such as Blue Diamond Military Contracting. Chambered in 5.56x45mm rifle rounds, its RPM is incredible - but with great firerate comes great fire control...
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Rifles/xlr556.rsi

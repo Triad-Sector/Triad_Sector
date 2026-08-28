@@ -10,8 +10,8 @@
     Gold: 50
 
 - type: latheRecipe
-  id: NovaCygniTranslator
-  result: NovaCygniTranslator
+  id: TerraSlavicTranslator
+  result: TerraSlavicTranslator
   completetime: 2
   materials:
     Steel: 500
@@ -32,8 +32,8 @@
     Silver: 50
 
 - type: latheRecipe
-  id: NovaCygniTranslatorImplanter
-  result: NovaCygniTranslatorImplant
+  id: TerraSlavicTranslatorImplanter
+  result: TerraSlavicTranslatorImplant
   completetime: 2
   materials:
     Steel: 500

@@ -1,0 +1,32 @@
+- type: entity
+  parent: BaseBorgChassisSolarianDirective
+  id: BorgChassisSolarianDirectiveAssault
+  name: BDMC assault cyborg
+  description: A killing machine with access to a variety of deadly modules. Property of Blue Diamond Military Contracting, one of those groups apart of the Solarian Directive.
+  components:
+  - type: Sprite
+    sprite: _Triad/Mobs/Silicon/SolDirective/assault_cyborg.rsi
+    layers:
+    - state: assault
+    - state: assault_l
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+  - type: BorgChassis
+    maxModules: 6
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSolarian
+      - BorgModuleSolarianAssault
+    hasMindState: assault_l
+    noMindState: assault_no_mind
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg # Fits well enough!
+    interactFailureString: petting-failure-syndicate-cyborg # Fits well enough!
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: FactionBorgChassisAssault
+# TODO selectable faction borg types. Move all the module whitelists to the borg type rather than here.

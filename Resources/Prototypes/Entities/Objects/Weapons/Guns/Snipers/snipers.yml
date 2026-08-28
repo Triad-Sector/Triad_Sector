@@ -58,7 +58,7 @@
   # Goobstation edit end
 
 - type: entity
-  name: NCI Kardashev-Mosin (7.62x54mmR)
+  name: RMT Kardashev-Mosin (7.62x54mmR)
   parent: [BaseWeaponSniper, BaseGunWieldable, BaseGunMelee] # added BaseGunMelee
   id: WeaponSniperMosin
   description: A weapon for hunting, or endless trench warfare. Uses 762x54mmR ammo. Equipped with bayonet. # Frontier: bayonet

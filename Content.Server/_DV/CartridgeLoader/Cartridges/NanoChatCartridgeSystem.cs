@@ -15,6 +15,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.StationAi;
 using Robust.Server.Containers;
+using Robust.Shared.Audio.Systems; // Triad: send tones
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -31,6 +32,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ContainerSystem _container = default!; // Triad: typing indicator session lookup
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // Triad: send tones
 
     private EntityQuery<PdaComponent> _pdaQuery;
     private EntityQuery<NanoChatCardComponent> _cardQuery;
@@ -80,7 +82,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         if (!GetCardEntity(ent, out var nanoChatCard))
             return;
 
-        _nanoChat.SetClosed(nanoChatCard.Value.AsNullable(), !HasComp<NanoChatCartridgeComponent>(args.NewActiveProgram));
+        SetVisible(nanoChatCard.Value, HasComp<NanoChatCartridgeComponent>(args.NewActiveProgram));
     }
 
     private void OnUiOpened(Entity<CartridgeLoaderComponent> ent, ref BoundUIOpenedEvent args)
@@ -92,8 +94,36 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             return;
 
         if (nanoChatCard.Value.Comp.IsClosed)
-            _nanoChat.SetClosed(nanoChatCard.Value.AsNullable(), !HasComp<NanoChatCartridgeComponent>(ent.Comp.ActiveProgram));
+            SetVisible(nanoChatCard.Value, HasComp<NanoChatCartridgeComponent>(ent.Comp.ActiveProgram));
+    }
 
+    /// <summary>
+    ///     Triad: records whether TriTalk is the program the player can currently see, and marks the thread on
+    ///     screen as read when it becomes visible.
+    /// </summary>
+    /// <remarks>
+    ///     Messages arriving while the PDA is shut now flag the selected chat as unread as well (see
+    ///     <see cref="HandleUnreadNotification"/>), so without clearing it here the badge would survive being
+    ///     looked at. The client cannot do this for us: its SelectChat early-returns on the already-selected chat,
+    ///     so reopening straight into that thread sends no read marker.
+    /// </remarks>
+    private void SetVisible(Entity<NanoChatCardComponent> card, bool visible)
+    {
+        _nanoChat.SetClosed(card.AsNullable(), !visible);
+
+        if (!visible)
+            return;
+
+        if (_nanoChat.GetCurrentChat(card.AsNullable()) is not uint currentChat)
+            return;
+
+        if (_nanoChat.GetRecipient(card.AsNullable(), currentChat) is not { } recipient || !recipient.HasUnread)
+            return;
+
+        // Deliberately no UpdateUIForCard here. Both callers are followed by the loader publishing its own state,
+        // the client rebuilding the fragment and answering with CartridgeUiReadyEvent, which pushes this state
+        // anyway. Writing one here would race the loader's state for the single slot they share under PdaUiKey.
+        _nanoChat.SetRecipient(card.AsNullable(), currentChat, recipient with { HasUnread = false });
     }
 
     private void OnUiClosed(Entity<CartridgeLoaderComponent> ent, ref BoundUIClosedEvent args)
@@ -292,7 +322,9 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     /// </summary>
     private void HandleSelectChat(Entity<NanoChatCardComponent> card, NanoChatUiMessageEvent msg)
     {
-        if (msg.RecipientNumber == null)
+        // Triad: HandleNewChat already refused your own number, but selecting and sending did not, so a thread
+        // with yourself could still be opened and written to. The UI is not the guard; the client picks the number.
+        if (msg.RecipientNumber == null || msg.RecipientNumber == card.Comp.Number)
             return;
 
         _nanoChat.SetCurrentChat((card, card.Comp), msg.RecipientNumber);
@@ -469,7 +501,10 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         Entity<NanoChatCardComponent> card,
         NanoChatUiMessageEvent msg)
     {
-        if (msg.RecipientNumber == null || msg.Content == null || card.Comp.Number == null)
+        // Triad: refuse messaging your own number, same reason as HandleSelectChat. Without this the delivery
+        // sweep happily found your own card and posted the message straight back to you.
+        if (msg.RecipientNumber == null || msg.Content == null || card.Comp.Number == null ||
+            msg.RecipientNumber == card.Comp.Number)
             return;
 
         if (!EnsureRecipientExists(card, msg.RecipientNumber.Value))
@@ -495,6 +530,11 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         // Update delivery status
         message = message with { DeliveryFailed = deliveryFailed };
+
+        // Triad: tell the sender, and only the sender, how that went. See the fields for why it stays local.
+        _audio.PlayEntity(deliveryFailed ? cartridge.Comp.SendFailedSound : cartridge.Comp.SendSound,
+            msg.Actor,
+            GetEntity(msg.LoaderUid));
 
         // Store message in sender's outbox under recipient's number
         _nanoChat.AddMessage((card, card.Comp), msg.RecipientNumber.Value, message);
@@ -659,16 +699,23 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     {
         // Get sender name from contacts or fall back to number
         var recipients = _nanoChat.GetRecipients((recipient, recipient.Comp));
-        var senderName = recipients.TryGetValue(message.SenderId, out var senderRecipient)
-            ? senderRecipient.Name
-            : $"#{message.SenderId:D4}";
+        var hasSenderContact = recipients.TryGetValue(message.SenderId, out var senderRecipient);
+        var senderName = hasSenderContact ? senderRecipient.Name : $"#{message.SenderId:D4}";
         var hasSelectedCurrentChat = _nanoChat.GetCurrentChat((recipient, recipient.Comp)) == senderNumber;
 
-        // Update unread status
-        if (!hasSelectedCurrentChat)
+        // Triad: flag the unread regardless of which chat is selected. CurrentChat is never cleared when the PDA
+        // closes (the client never sends CloseChat, so whoever you last spoke to stays "selected" all round), and
+        // DeliverMessageToRecipient only calls this method when the card is closed OR the thread is not selected.
+        // So the one case upstream's !hasSelectedCurrentChat guard skipped was exactly "a reply from the person you
+        // were last talking to, while the PDA is shut" -- the single most common message in the game. This flag
+        // drives the contact badge, the unread-cycling keybind and the unread count in the notification body, all
+        // three of which read empty because of it.
+        if (hasSenderContact)
+        {
             _nanoChat.SetRecipient((recipient, recipient.Comp),
                 message.SenderId,
                 senderRecipient with { HasUnread = true });
+        }
 
         // Temporary local to avoid trouble with read-only access; Contains doesn't modify the collection
         HashSet<uint> mutedChats = recipient.Comp.MutedChats;
@@ -780,6 +827,10 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     {
         List<NanoChatRecipient>? contacts;
 
+        // Triad: the directory should not list the card doing the looking. Upstream swept every registered card
+        // including your own, so you could pick yourself out of the lookup and open a thread with yourself.
+        var selfNumber = _cardQuery.TryComp(ent.Comp.Card, out var ownCard) ? ownCard.Number : null;
+
         if (CanSend(ent) && _radio.HasActiveServer(Transform(ent).MapID, ent.Comp.RadioChannel))
         {
             contacts = [];
@@ -789,7 +840,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             {
                 // Triad: Registered gate added. The directory is a register of legally issued IDs, so a card only
                 // appears if it was handed to a player at spawn. Spares, console printouts and forged cards are out.
-                if (nanoChatCard.Registered && nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName)
+                if (nanoChatCard.Registered && nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName
+                    && nanoChatNumber != selfNumber) // Triad: never list yourself
                 {
                     contacts.Add(new NanoChatRecipient(nanoChatNumber, fullName));
                 }

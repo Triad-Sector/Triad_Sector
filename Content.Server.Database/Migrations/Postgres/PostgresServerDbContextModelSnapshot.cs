@@ -797,6 +797,26 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("blacklist", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CompanyMember", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("text")
+                        .HasColumnName("company_id");
+
+                    b.Property<bool>("Owner")
+                        .HasColumnType("boolean")
+                        .HasColumnName("owner");
+
+                    b.HasKey("PlayerUserId", "CompanyId")
+                        .HasName("PK_company_members");
+
+                    b.ToTable("company_members", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -1021,6 +1041,272 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasFilter("priority = 3");
 
                     b.ToTable("job", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketPriceStat", b =>
+                {
+                    b.Property<string>("EntityProto")
+                        .HasColumnType("text")
+                        .HasColumnName("entity_proto");
+
+                    b.Property<string>("Currency")
+                        .HasColumnType("text")
+                        .HasColumnName("currency");
+
+                    b.Property<string>("Direction")
+                        .HasColumnType("text")
+                        .HasColumnName("direction");
+
+                    b.Property<DateOnly>("Day")
+                        .HasColumnType("date")
+                        .HasColumnName("day");
+
+                    b.Property<long>("MaxUnit")
+                        .HasColumnType("bigint")
+                        .HasColumnName("max_unit");
+
+                    b.Property<long>("MinUnit")
+                        .HasColumnType("bigint")
+                        .HasColumnName("min_unit");
+
+                    b.Property<long>("TotalValue")
+                        .HasColumnType("bigint")
+                        .HasColumnName("total_value");
+
+                    b.Property<int>("TradeCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("trade_count");
+
+                    b.Property<long>("Units")
+                        .HasColumnType("bigint")
+                        .HasColumnName("units");
+
+                    b.HasKey("EntityProto", "Currency", "Direction", "Day")
+                        .HasName("PK_market_price_stat");
+
+                    b.ToTable("market_price_stat", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketRoundParticipant", b =>
+                {
+                    b.Property<int>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("character_name");
+
+                    b.HasKey("RoundId", "UserId", "CharacterName")
+                        .HasName("PK_market_round_participant");
+
+                    b.ToTable("market_round_participant", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("market_transaction_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid?>("ActorUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<string>("Calc")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("calc");
+
+                    b.Property<string>("ConsoleProto")
+                        .HasColumnType("text")
+                        .HasColumnName("console_proto");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("currency");
+
+                    b.Property<string>("FailReason")
+                        .HasColumnType("text")
+                        .HasColumnName("fail_reason");
+
+                    b.Property<long>("Gross")
+                        .HasColumnType("bigint")
+                        .HasColumnName("gross");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<string>("LedgerEntryType")
+                        .HasColumnType("text")
+                        .HasColumnName("ledger_entry_type");
+
+                    b.Property<long?>("ListPrice")
+                        .HasColumnType("bigint")
+                        .HasColumnName("list_price");
+
+                    b.Property<string>("LocationName")
+                        .HasColumnType("text")
+                        .HasColumnName("location_name");
+
+                    b.Property<float?>("MarketMod")
+                        .HasColumnType("real")
+                        .HasColumnName("market_mod");
+
+                    b.Property<long>("Net")
+                        .HasColumnType("bigint")
+                        .HasColumnName("net");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<string>("Rail")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("rail");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid?>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<bool>("Succeeded")
+                        .HasColumnType("boolean")
+                        .HasColumnName("succeeded");
+
+                    b.Property<long>("Tax")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tax");
+
+                    b.HasKey("Id")
+                        .HasName("PK_market_transaction");
+
+                    b.HasIndex("OccurredAt");
+
+                    NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex("OccurredAt"), "BRIN");
+
+                    b.HasIndex("RoundId")
+                        .HasDatabaseName("IX_market_transaction_round_id");
+
+                    b.HasIndex("ActorUserId", "OccurredAt")
+                        .HasFilter("actor_user_id IS NOT NULL");
+
+                    b.HasIndex("Kind", "OccurredAt");
+
+                    b.ToTable("market_transaction", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionLine", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("market_transaction_line_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Direction")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("direction");
+
+                    b.Property<string>("EntityProto")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("entity_proto");
+
+                    b.Property<int>("LineIndex")
+                        .HasColumnType("integer")
+                        .HasColumnName("line_index");
+
+                    b.Property<long>("LineTotal")
+                        .HasColumnType("bigint")
+                        .HasColumnName("line_total");
+
+                    b.Property<float?>("Multiplier")
+                        .HasColumnType("real")
+                        .HasColumnName("multiplier");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<int?>("ParentLineIndex")
+                        .HasColumnType("integer")
+                        .HasColumnName("parent_line_index");
+
+                    b.Property<string>("PriceSource")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("price_source");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer")
+                        .HasColumnName("quantity");
+
+                    b.Property<long>("TransactionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("transaction_id");
+
+                    b.Property<long>("UnitPrice")
+                        .HasColumnType("bigint")
+                        .HasColumnName("unit_price");
+
+                    b.HasKey("Id")
+                        .HasName("PK_market_transaction_line");
+
+                    b.HasIndex("OccurredAt");
+
+                    NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex("OccurredAt"), "BRIN");
+
+                    b.HasIndex("TransactionId")
+                        .HasDatabaseName("IX_market_transaction_line_transaction_id");
+
+                    b.HasIndex("TransactionId", "LineIndex")
+                        .IsUnique();
+
+                    b.HasIndex("EntityProto", "Direction", "OccurredAt");
+
+                    NpgsqlIndexBuilderExtensions.IncludeProperties(b.HasIndex("EntityProto", "Direction", "OccurredAt"), new[] { "UnitPrice", "Quantity" });
+
+                    b.ToTable("market_transaction_line", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionSplit", b =>
+                {
+                    b.Property<long>("TransactionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("transaction_id");
+
+                    b.Property<string>("Account")
+                        .HasColumnType("text")
+                        .HasColumnName("account");
+
+                    b.Property<string>("EntryType")
+                        .HasColumnType("text")
+                        .HasColumnName("entry_type");
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint")
+                        .HasColumnName("amount");
+
+                    b.HasKey("TransactionId", "Account", "EntryType")
+                        .HasName("PK_market_transaction_split");
+
+                    b.ToTable("market_transaction_split", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
@@ -1388,6 +1674,43 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.HasIndex("StartDate");
 
                     b.ToTable("round", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.SectorAccountSample", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("sector_account_sample_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Account")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("account");
+
+                    b.Property<long>("Balance")
+                        .HasColumnType("bigint")
+                        .HasColumnName("balance");
+
+                    b.Property<int>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<DateTime>("SampledAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("sampled_at");
+
+                    b.HasKey("Id")
+                        .HasName("PK_sector_account_sample");
+
+                    b.HasIndex("RoundId")
+                        .HasDatabaseName("IX_sector_account_sample_round_id");
+
+                    b.HasIndex("Account", "SampledAt");
+
+                    b.ToTable("sector_account_sample", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.Server", b =>
@@ -2077,6 +2400,19 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Round");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CompanyMember", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("CompanyMembers")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_company_members_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -2161,6 +2497,62 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasConstraintName("FK_job_profile_profile_id");
 
                     b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketRoundParticipant", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_round_participant_round_round_id");
+
+                    b.Navigation("Round");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Actor")
+                        .WithMany()
+                        .HasForeignKey("ActorUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_market_transaction_player_actor_id");
+
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_market_transaction_round_round_id");
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Round");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionLine", b =>
+                {
+                    b.HasOne("Content.Server.Database.MarketTransaction", "Transaction")
+                        .WithMany("Lines")
+                        .HasForeignKey("TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_transaction_line_market_transaction_transaction_id");
+
+                    b.Navigation("Transaction");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionSplit", b =>
+                {
+                    b.HasOne("Content.Server.Database.MarketTransaction", "Transaction")
+                        .WithMany("Splits")
+                        .HasForeignKey("TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_transaction_split_market_transaction_transaction_id");
+
+                    b.Navigation("Transaction");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2265,6 +2657,18 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasConstraintName("FK_round_server_server_id");
 
                     b.Navigation("Server");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.SectorAccountSample", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_sector_account_sample_round_round_id");
+
+                    b.Navigation("Round");
                 });
 
             modelBuilder.Entity("Content.Server.Database.ServerBanHit", b =>
@@ -2375,6 +2779,13 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("ReadReceipts");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.Navigation("Lines");
+
+                    b.Navigation("Splits");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Player", b =>
                 {
                     b.Navigation("AdminLogs");
@@ -2406,6 +2817,8 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("AdminWatchlistsLastEdited");
 
                     b.Navigation("AdminWatchlistsReceived");
+
+                    b.Navigation("CompanyMembers");
 
                     b.Navigation("JobWhitelists");
                 });

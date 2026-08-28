@@ -118,6 +118,7 @@
     - Inorganic
   - type: ShowSyndicateIcons # Monolith
   - type: ContrabandPermitGranter # Triad
+  - type: SupermatterImmune # Triad
 
 - type: entity
   id: ActionAGhostShowSolar

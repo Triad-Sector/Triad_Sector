@@ -27,13 +27,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         ResPath tempPath = default;
         try
         {
-            // Triad: strip dangling entity references before the loader sees them. The save path has
-            // pruned these since the engine 287 bump, but ship files live on the player's machine, so
-            // anything saved before that still carries them and there is no backlog we can migrate.
-            // A file written by the current build has nothing to remove and comes back byte-identical.
+            // Triad: strip stale nodes before the loader sees them: dangling entity references from
+            // pre-287 saves, and legacy xenoarch entities/components from pre-rework saves. Ship files
+            // live on the player's machine, so there is no backlog we can migrate; a file written by
+            // the current build has nothing to remove and comes back byte-identical.
             yamlData = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yamlData, out var scrubbed);
             if (scrubbed > 0)
-                _sawmill.Info($"Scrubbed {scrubbed} dangling entity reference(s) from a pre-287 ship file on load");
+                _sawmill.Info($"Scrubbed {scrubbed} stale node(s) (dangling references / legacy entities) from an older ship file on load");
 
             // Create a temp path under UserData/ShipyardTemp
             var fileName = $"shipyard_load_{DateTime.UtcNow:yyyyMMdd_HHmmss_fff}_{Guid.NewGuid():N}.yml";

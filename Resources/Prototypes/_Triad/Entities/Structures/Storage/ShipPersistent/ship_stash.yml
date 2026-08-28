@@ -103,6 +103,11 @@
       whitelist:
         tags:
         - AdvancedTacticalBackpack
+    - popup: triad-storage-limit-too-many-hzdmodsuits
+      count: 1
+      whitelist:
+        tags:
+        - HZDModsuitCore
 
 - type: entity
   parent: BasePersistentShipStorageStash

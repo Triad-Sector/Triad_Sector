@@ -24,6 +24,8 @@ public sealed partial class StoreSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private Content.Server._Triad.Market.IMarketDataManager _market = default!; // Triad: market data
+    [Dependency] private Robust.Server.Player.IPlayerManager _playerMan = default!; // Triad: market data
 
     public override void Initialize()
     {

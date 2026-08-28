@@ -1,0 +1,14 @@
+- type: technology
+  id: HardsuitsArmoredSpecialized
+  name: research-technology-specialized-armored-hardsuits
+  entityIcon: ClothingModsuitHZDBesieger
+  discipline: Arsenal
+  tier: 3
+  cost: 75000
+  recipeUnlocks:
+  - ClothingModsuitHZDBesieger
+  technologyPrerequisites:
+  - HardsuitsArmoredAdvanced
+  - MagnetsTechAdvanced
+  - UniversalMaterialResearchT3
+  position: 4, 7

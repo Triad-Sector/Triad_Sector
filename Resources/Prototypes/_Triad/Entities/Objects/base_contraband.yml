@@ -129,10 +129,24 @@
     examineText: ship-saving-contraband-2a-text
 
 - type: entity
+  id: BaseClass2ShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+
+- type: entity
   id: BaseClass2AShipContrabandSilent
   abstract: true
   components:
   - type: SavingContraband
+
+- type: entity
+  id: BaseClass3ShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
 
 # Contraband permit bases
 - type: entity

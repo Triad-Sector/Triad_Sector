@@ -24,3 +24,28 @@
     clothingVisuals:
       shoes:
       - state: equipped-FEET-sealed
+
+- type: entity
+  parent: ClothingModsuitBootsBase
+  id: ClothingModsuitBootsHZDBesieger
+  name: HZD Sabatons
+  description: Advanced servos and motors whirr with each step as you stomp along, assisting with the weight of the Besieger's systems and armor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Shoes/Modsuits/HZDBesieger.rsi
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET-sealed
+      shoes-vox:
+      - state: equipped-FEET-sealed-vox
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHeavySuit
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1

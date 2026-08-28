@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._Mono.Company; // Mono
 using Content.Client._Mono.MonoCoins;
 using Content.Client.Guidebook;
 using Content.Client.Humanoid;
@@ -41,6 +42,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private IStateManager _stateManager = default!;
     [Dependency] private JobRequirementsManager _requirements = default!;
     [Dependency] private MarkingManager _markings = default!;
+    [Dependency] private CompanyManager _companyManager = default!; // Mono
     [UISystemDependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
     [UISystemDependency] private readonly ClientInventorySystem _inventory = default!;
     [UISystemDependency] private readonly StationSpawningSystem _spawn = default!;
@@ -226,7 +228,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             PreviewPanel.SetSprite(EntityUid.Invalid);
             PreviewPanel.SetSummaryText(string.Empty);
             PreviewPanel.SetBankBalanceText(string.Empty); // Frontier
-            PreviewPanel.SetCompanyText(string.Empty); // Minor Faction Display
+            PreviewPanel.SetCompanyText(string.Empty); // Player Faction Display
             PreviewPanel.SetMonoCoinsText("MonoCoins: -1"); // MonoCoins Display
             return;
         }
@@ -251,15 +253,15 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         PreviewPanel.SetSummaryText(humanoid.Summary);
         PreviewPanel.SetBankBalanceText(humanoid.BankBalanceText); // Frontier
 
-        // Minor Faction Display
+        // Player Faction Display
         var companyId = humanoid.Company;
         if (_prototypeManager.TryIndex<CompanyPrototype>(companyId, out var company))
         {
-            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Player Faction:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
         }
         else
         {
-            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color=yellow]{companyId}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Player Faction:[/color] [color=yellow]{companyId}[/color]");
         }
 
         // MonoCoins Display - Request balance from server and update display
@@ -350,7 +352,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             _prototypeManager,
             _resourceCache,
             _requirements,
-            _markings);
+            _markings,
+            _companyManager); // Mono
 
         _profileEditor.OnOpenGuidebook += _guide.OpenHelp;
 

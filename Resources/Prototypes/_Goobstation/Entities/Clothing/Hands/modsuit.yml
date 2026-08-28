@@ -36,6 +36,9 @@
     clothingVisuals:
       gloves:
       - state: equipped-HAND-sealed
+  - type: Tag
+    tags:
+    - WhitelistChameleon # No more clothmode
 
 - type: entity
   parent: ClothingModsuitGauntletsBase

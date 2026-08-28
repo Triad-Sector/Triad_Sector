@@ -4,8 +4,8 @@ meta:
   engineVersion: 287.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/11/2026 09:23:26
-  entityCount: 1443
+  time: 08/19/2026 01:05:35
+  entityCount: 1452
 maps: []
 grids:
 - 1
@@ -89,9 +89,9 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
         Smoke: []
         Puddle: []
+        MetalFoam: []
         Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
@@ -4999,7 +4999,7 @@ entities:
       startingCharge: 0
 - proto: ComputerWallmountRadar
   entities:
-  - uid: 611
+  - uid: 610
     components:
     - type: Transform
       parent: 1
@@ -5008,7 +5008,7 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-  - uid: 612
+  - uid: 611
     components:
     - type: Transform
       parent: 1
@@ -5019,7 +5019,7 @@ entities:
       startingCharge: 0
 - proto: ComputerWallmountWithdrawBankATM
   entities:
-  - uid: 610
+  - uid: 612
     components:
     - type: Transform
       parent: 1
@@ -5634,6 +5634,23 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 6.5,2.5
+- proto: DogBed
+  entities:
+  - uid: 1444
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,7.5
+  - uid: 1445
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,-6.5
+  - uid: 1446
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-9.5
 - proto: DoubleEmergencyNitrogenTankFilled
   entities:
   - uid: 4
@@ -5697,7 +5714,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 2.1394455,-6.5471344
+      pos: 1.868367,-6.8318415
   - uid: 711
     components:
     - type: Transform
@@ -6006,6 +6023,23 @@ entities:
       pos: -1.5,-12.5
     - type: Fixtures
       fixtures: {}
+- proto: FoodBowlBig
+  entities:
+  - uid: 1447
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.1352226,-9.721968
+  - uid: 1448
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.0084567,-7.150106
+  - uid: 1449
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.8580585,7.1784577
 - proto: FoodBoxDonkpocket
   entities:
   - uid: 753
@@ -8420,6 +8454,13 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 0.5,-15.5
+- proto: PlushieArachind
+  entities:
+  - uid: 1452
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.564686,7.584346
 - proto: PlushieCarp
   entities:
   - uid: 1037
@@ -8441,6 +8482,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 8.555305,-11.2257595
+- proto: PlushieHampter
+  entities:
+  - uid: 1450
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.4858503,-9.535532
 - proto: PlushieLizard
   entities:
   - uid: 1040
@@ -8455,6 +8503,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 2.3009794,12.575991
+- proto: PlushieMoffRandom
+  entities:
+  - uid: 1451
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.0040615,-6.4673424
 - proto: PlushiePinkFox
   entities:
   - uid: 1042

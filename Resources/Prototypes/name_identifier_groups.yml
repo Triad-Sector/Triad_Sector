@@ -45,3 +45,9 @@
   id: NanoChat
   minValue: 1
   maxValue: 9999
+
+# Xenoarch rework: node ids shown on the analysis console
+- type: nameIdentifierGroup
+  id: XenoArtifactNode
+  minValue: 0
+  maxValue: 999

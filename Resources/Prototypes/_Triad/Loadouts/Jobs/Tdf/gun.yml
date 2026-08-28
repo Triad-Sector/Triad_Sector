@@ -5,3 +5,10 @@
   price: 0
   equipment:
     suitstorage: WeaponRifleLecterTdf
+
+- type: loadout # Lecter ammo - putting it here because other factions shouldnt be using this
+  id: TdfCaselessAmmoBoxLoadout
+  price: 0
+  storage:
+    back:
+    - BoxMagazine68x52mmFMJ

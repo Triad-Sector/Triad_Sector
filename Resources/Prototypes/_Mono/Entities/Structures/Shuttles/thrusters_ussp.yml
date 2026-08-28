@@ -1,7 +1,7 @@
 - type: entity
   id: ThrusterUSSP
   parent: ThrusterSecurity
-  suffix: USSP
+  suffix: Military
   components:
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thrusterussp.rsi
@@ -11,7 +11,7 @@
 - type: entity
   id: DebugThrusterUSSP
   parent: DebugThrusterSecurity
-  suffix: DEBUG, USSP
+  suffix: DEBUG, Military
   components:
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thrusterussp.rsi
@@ -21,7 +21,7 @@
 - type: entity
   id: ThrusterLargeUSSP
   parent: ThrusterLarge
-  suffix: USSP
+  suffix: Military
   components:
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thrusterussp_large.rsi

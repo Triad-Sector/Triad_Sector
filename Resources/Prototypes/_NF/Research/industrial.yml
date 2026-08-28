@@ -51,8 +51,8 @@
   - ModsuitShell
   - ModsuitPlatingExternal
   - ModsuitCoreStandard
-  - ClothingOuterHardsuitUsspL10 # Triad
-  - ClothingOuterHardsuitUsspL10A # Triad
+  - ClothingOuterHardsuitRmtL10 # Triad
+  - ClothingOuterHardsuitRmtL10A # Triad
   technologyPrerequisites:
   - AdvancedParts
   position: 1, 8
@@ -90,7 +90,7 @@
   - ClothingOuterHardsuitMaximPrototype
   - NFBlueprintClothingOuterHardsuitMaximPrototype
   - ClothingOuterHardsuitRd
-  - ClothingOuterHardsuitUsspM10 # Triad
+  - ClothingOuterHardsuitRmtM10 # Triad
   technologyPrerequisites:
   - HardsuitsSpecialized
   position: 1, 7

@@ -127,12 +127,12 @@
     implant: MarishTranslatorImplant
 
 - type: entity # Mono
-  id: NovaCygniTranslatorImplanter
+  id: TerraSlavicTranslatorImplanter
   parent: [ BaseTranslatorImplanter ]
-  name: Nova Cygni translator implant
+  name: Terra Slavic translator implant
   components:
   - type: Implanter
-    implant: NovaCygniTranslatorImplant
+    implant: TerraSlavicTranslatorImplant
 
 - type: entity
   id: NewKinPidginTranslatorImplanter

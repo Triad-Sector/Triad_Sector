@@ -331,34 +331,12 @@
   parent: NFBaseHardSuitArmoredRecipe
   result: ClothingOuterHardsuitScaf
 
-# Triad : Faction gear domestication
+# Triad : Make pdv scafsuit generic and accessible
 
 - type: latheRecipe
   id: ClothingOuterHardsuitPirateScaf
   parent: NFBaseHardSuitArmoredRecipe
   result: ClothingOuterHardsuitPirateScaf
-
-- type: latheRecipe
-  id: ClothingOuterHardsuitIndustrialEngi
-  parent: NFBaseHardSuitArmoredRecipe
-  result: ClothingOuterHardsuitIndustrialEngi
-
-- type: latheRecipe
-  id: ClothingOuterHardsuitUsspL10A
-  parent: NFBaseHardSuitRecipe
-  result: ClothingOuterHardsuitUsspL10A
-
-- type: latheRecipe
-  id: ClothingOuterHardsuitUsspL10
-  parent: NFBaseHardSuitRecipe
-  result: ClothingOuterHardsuitUsspL10
-
-- type: latheRecipe
-  id: ClothingOuterHardsuitUsspM10
-  parent: NFBaseHardSuitArmoredRecipe
-  result: ClothingOuterHardsuitUsspM10
-
-# End Triad
 
 - type: latheRecipe
   id: ClothingOuterHardsuitEngineeringWhite

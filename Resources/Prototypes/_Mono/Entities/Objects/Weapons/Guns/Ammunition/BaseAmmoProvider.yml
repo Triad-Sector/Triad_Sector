@@ -32,7 +32,7 @@
       whitelist:
         tags:
         - ShellShotgun12_gaugeBuckshot
-      capacity: 32 # Mono 16->32
+      capacity: 32
     - type: MagazineVisuals
       magState: mag
       steps: 5
@@ -51,7 +51,7 @@
       whitelist:
         tags:
         - ShellShotgun23x75mmBuckshot
-      capacity: 32 # Mono 16->32
+      capacity: 16 # Triad 32 -> 16
     - type: MagazineVisuals
       magState: mag
       steps: 5

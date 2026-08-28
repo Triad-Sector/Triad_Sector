@@ -128,14 +128,6 @@
 /Resources/Prototypes/_Mono/Shipyard/taichi.yml @starch70
 /Resources/Maps/_Mono/Shuttles/tzipora.yml @starch70
 /Resources/Prototypes/_Mono/Shipyard/tzipora.yml @starch70
-/Resources/Maps/_Mono/Shuttles/USSP/drakon.yml @starch70
-/Resources/Prototypes/_Mono/Shipyard/USSP/drakon.yml @starch70
-/Resources/Maps/_Mono/Shuttles/USSP/gadyuka.yml @starch70
-/Resources/Prototypes/_Mono/Shipyard/USSP/gadyuka.yml @starch70
-/Resources/Maps/_Mono/Shuttles/USSP/natisk.yml @starch70
-/Resources/Prototypes/_Mono/Shipyard/USSP/natisk.yml @starch70
-/Resources/Maps/_Mono/Shuttles/USSP/tunguska.yml @starch70
-/Resources/Prototypes/_Mono/Shipyard/USSP/tunguska.yml @starch70
 /Resources/Maps/_Mono/Shuttles/Nfsd/calypso.yml @starch70
 /Resources/Prototypes/_Mono/Shipyard/Nfsd/calypso.yml @starch70
 /Resources/Maps/_Mono/Shuttles/Nfsd/dagger.yml @starch70

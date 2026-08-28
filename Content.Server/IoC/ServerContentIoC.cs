@@ -1,7 +1,11 @@
+using Content.Server._Mono.Company; // Mono
 using Content.Server._NF.Auth;
 // Triad: tamper protection
 using Content.Server._Triad.Shipyard.Admin;
 using Content.Server._Triad.Shipyard.Persistence;
+// End Triad
+// Triad: market data
+using Content.Server._Triad.Market;
 // End Triad
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -85,6 +89,7 @@ namespace Content.Server.IoC
             IoCManager.Register<MultiServerKickManager>();
             IoCManager.Register<CVarControlManager>();
             IoCManager.Register<MiniAuthManager>(); //Frontier
+            IoCManager.Register<CompanyManager>(); // Mono
 
             IoCManager.Register<DiscordLink>();
             IoCManager.Register<DiscordChatLink>();
@@ -97,6 +102,10 @@ namespace Content.Server.IoC
             // Tracks open tamper admin panels so a single audit-write signal updates every one,
             // letting multiple admins watch the live feed without re-opening it.
             IoCManager.Register<TriadTamperAdminEuiRegistry>();
+            // End Triad
+            // Triad: market data
+            IoCManager.Register<MarketDataStore>();
+            IoCManager.Register<IMarketDataManager, MarketDataManager>();
             // End Triad
         }
     }

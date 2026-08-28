@@ -319,10 +319,13 @@ public sealed partial class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
         if (!HasProgram(loaderUid, cartridgeUid, loader))
             return;
 
+        // Triad: registration is re-run on every PDA reopen (via CartridgeUiReadyEvent), so bail if we already
+        // hold it. Upstream re-raised CartridgeActivatedEvent and appended a duplicate entry each time.
+        if (!loader.BackgroundPrograms.Add(cartridgeUid))
+            return;
+
         if (loader.ActiveProgram != cartridgeUid)
             RaiseLocalEvent(cartridgeUid, new CartridgeActivatedEvent(loaderUid));
-
-        loader.BackgroundPrograms.Add(cartridgeUid);
     }
 
     /// <summary>
@@ -336,10 +339,13 @@ public sealed partial class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
         if (!HasProgram(loaderUid, cartridgeUid, loader))
             return;
 
+        // Triad: mirror of RegisterBackgroundProgram, so an unregister for something never registered is a no-op
+        // rather than a stray CartridgeDeactivatedEvent.
+        if (!loader.BackgroundPrograms.Remove(cartridgeUid))
+            return;
+
         if (loader.ActiveProgram != cartridgeUid)
             RaiseLocalEvent(cartridgeUid, new CartridgeDeactivatedEvent(loaderUid));
-
-        loader.BackgroundPrograms.Remove(cartridgeUid);
     }
 
     public void SendNotification(EntityUid loaderUid, string header, string message, CartridgeLoaderComponent? loader = default!)

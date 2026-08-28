@@ -56,36 +56,6 @@
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Glass/standard.rsi
     state: "assembly"
 
-#TSFMC
-- type: entity
-  parent: AirlockHeavyAssembly
-  id: AirlockHeavyAssemblyTSFMC
-  suffix: TSFMC
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/tsfmc.rsi
-    state: "assembly"
-
-#PDV
-- type: entity
-  parent: AirlockHeavyAssembly
-  id: AirlockHeavyAssemblyPDV
-  suffix: PDV
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/pdv.rsi
-    state: "assembly"
-
-#USSP
-- type: entity
-  parent: AirlockHeavyAssembly
-  id: AirlockHeavyAssemblyUSSP
-  suffix: USSP
-  components:
-  - type: Sprite
-    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/ussp.rsi
-    state: "assembly"
-
 #Security
 - type: entity
   parent: AirlockHeavyAssembly

@@ -56,6 +56,15 @@ namespace Content.Server.Database
         public DbSet<TriadShipyardAuditEvent>       TriadShipyardAuditEvents        { get; set; } = default!;
         public DbSet<TriadShipyardMigrationPermit>  TriadShipyardMigrationPermits   { get; set; } = default!;
         // End Triad
+        // Triad: market data. Shapes and reasoning live in Model.Market.cs.
+        public DbSet<MarketTransaction>         MarketTransaction       { get; set; } = default!;
+        public DbSet<MarketTransactionSplit>    MarketTransactionSplit  { get; set; } = default!;
+        public DbSet<MarketTransactionLine>     MarketTransactionLine   { get; set; } = default!;
+        public DbSet<MarketPriceStat>           MarketPriceStat         { get; set; } = default!;
+        public DbSet<MarketRoundParticipant>    MarketRoundParticipant  { get; set; } = default!;
+        public DbSet<SectorAccountSample>       SectorAccountSample     { get; set; } = default!;
+        // End Triad
+        public DbSet<CompanyMember> CompanyMembers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -348,6 +357,16 @@ namespace Content.Server.Database
                 .HasIndex(p => p.PlayerUserId)
                 .IsUnique();
             // End Triad
+            // Triad: market data
+            ModelMarket.OnModelCreating(modelBuilder);
+            // End Triad
+            // Mono
+            modelBuilder.Entity<CompanyMember>()
+                .HasOne(w => w.Player)
+                .WithMany(p => p.CompanyMembers)
+                .HasForeignKey(w => w.PlayerUserId)
+                .HasPrincipalKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -633,6 +652,7 @@ namespace Content.Server.Database
         public List<Ban> AdminServerBansCreated { get; set; } = null!;
         public List<Ban> AdminServerBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
+        public List<CompanyMember> CompanyMembers { get; set; } = null!; // Mono
     }
 
     [Table("whitelist")]
@@ -1268,4 +1288,17 @@ namespace Content.Server.Database
         public Guid? AdminUserId { get; set; }
     }
     // End Triad
+    // Mono-Start
+    [PrimaryKey(nameof(PlayerUserId), nameof(CompanyId))]
+    public class CompanyMember
+    {
+        [Required, ForeignKey("Player")]
+        public Guid PlayerUserId { get; set; }
+        public Player Player { get; set; } = default!;
+        public bool Owner { get; set; } = false;
+
+        [Required]
+        public string CompanyId { get; set; } = default!;
+    }
+    // Mono-End
 }

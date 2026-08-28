@@ -5,6 +5,7 @@ using Content.Client.Markers;
 using Content.Client.Sandbox;
 using Content.Client.SubFloor;
 using Content.Client.UserInterface.Controls;
+using Content.Client._Triad.UserInterface.Systems.Sandbox; // Triad
 using Content.Client.UserInterface.Systems.DecalPlacer;
 using Content.Client.UserInterface.Systems.Sandbox.Windows;
 using Content.Shared.Input;
@@ -44,7 +45,11 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
 
     // TODO hud refactor cache
     private EntitySpawningUIController EntitySpawningController => UIManager.GetUIController<EntitySpawningUIController>();
-    private TileSpawningUIController TileSpawningController => UIManager.GetUIController<TileSpawningUIController>();
+    // Triad: the engine controller passes ItemList a tile's whole variant strip, which draws every variant
+    // at once and inflates IconSize until the label's box is built inverted and asserts. Ours crops to one
+    // variant cell. See _Triad/UserInterface/Systems/Sandbox/TileSpawnUIController.cs.
+    private TileSpawnUIController TileSpawningController => UIManager.GetUIController<TileSpawnUIController>();
+    // End Triad
     private DecalPlacerUIController DecalPlacerController => UIManager.GetUIController<DecalPlacerUIController>();
 
     private MenuButton? SandboxButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.SandboxButton;

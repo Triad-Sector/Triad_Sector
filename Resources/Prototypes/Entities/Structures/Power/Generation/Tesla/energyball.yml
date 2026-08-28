@@ -32,6 +32,7 @@
     shootMaxInterval: 10
     shootRange: 3
     lightningPrototype: Lightning
+  - type: SupermatterImmune # Triad
 
 - type: entity
   id: TeslaEnergyBall
@@ -73,12 +74,6 @@
     consumeEntities: false
   - type: TeslaEnergyBall
     spawnProto: TeslaMiniEnergyBall
-    # Triad: wild-tesla economy. Decay pinned to the EFFECTIVE Level-1 PA feed (~7.3/s from Monte
-    # Carlo, not the ideal 3 lanes * 20 / 6s = 10/s: the ball's wander in a 3-wide cage drops the far
-    # side lane about a third of the time). Level 1 idles the ball (alive, a stray mote every few
-    # minutes), Standby/Level 0 starves it, Level 2+ makes motes. The deep despawn floor gives ~85s
-    # of grace under full starvation, since feed lands in 6-second lumps.
-    passiveEnergyDecay: 7
     energyToDespawn: -600
     # Mote count self-regulates: spawn rate = net feed / needEnergyToSpawn, motes live 120s.
     # Simulated ladder at these numbers: Level 1 ~0.5 motes, Level 2 ~6, Level 3 ~22 sustained.
@@ -100,7 +95,6 @@
   - type: ChaoticJump
     jumpMinInterval: 8
     jumpMaxInterval: 15
-    sweepRadius: 0.55 # Triad: match the ball's collider so the jump can't teleport where the ball couldn't fit
   - type: WarpPoint
     follow: true
     location: tesla ball

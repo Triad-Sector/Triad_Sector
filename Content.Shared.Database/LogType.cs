@@ -455,6 +455,11 @@ public enum LogType
     /// </summary>
     AdminCommands = 98,
 
+    /// <summary>
+    /// Artifact node got activated.
+    /// </summary>
+    ArtifactNode = 101, // Triad: ported with the xenoarch rework, upstream value
+
     // Frontier Station Specific
     ATMUsage = 200,
     ShipYardUsage = 201,

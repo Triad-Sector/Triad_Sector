@@ -1,6 +1,14 @@
 - type: radioChannel
-  id: Nfsd
+  id: Nfsd # TDF channel
   name: chat-radio-tdf
-  keycode: "s" # Triad
+  keycode: 's'
   frequency: 1459
   color: "#FFD580"
+
+- type: radioChannel
+  id: SolarianDirective
+  name: chat-radio-sd
+  keycode: 'k'
+  frequency: 1568
+  color: "#6a6ad8aa"
+  longRange: true # Temporary until there's an SD base with a telecomms console

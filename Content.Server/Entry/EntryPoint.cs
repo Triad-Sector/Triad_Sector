@@ -1,3 +1,4 @@
+using Content.Server._Mono.Company; // Mono
 using Content.Server._NF.Auth;
 using Content.Server.Acz;
 using Content.Server.Administration;
@@ -134,6 +135,10 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ServerApi>().Initialize();
                 IoCManager.Resolve<MiniAuthManager>();
                 IoCManager.Resolve<ServerIdentityService>().Initialize();
+                // Triad: market data. After _dbManager.Init() above, because the writer resolves
+                // the database manager; before any system ticks, because capture sites call it.
+                IoCManager.Resolve<Content.Server._Triad.Market.IMarketDataManager>().Initialize();
+                // End Triad
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();
@@ -176,6 +181,7 @@ namespace Content.Server.Entry
 
                 _euiManager.Initialize();
 
+                IoCManager.Resolve<CompanyManager>().Initialize(); // Mono
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();

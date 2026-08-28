@@ -1,4 +1,4 @@
-/*
+﻿/*
  * New Frontiers - This file is licensed under AGPLv3
  * Copyright (c) 2024 New Frontiers Contributors
  * See AGPLv3.txt for details.
@@ -18,6 +18,9 @@ using Content.Server.Administration.Logs;
 using Content.Shared.Database;
 using Robust.Shared.Audio.Systems;
 using Content.Shared._NF.Bank.BUI;
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server._NF.Bank;
 
@@ -71,7 +74,7 @@ public sealed partial class BankSystem
         }
 
         // try to actually withdraw from the bank. Validation happens on the banking system but we still indicate error.
-        if (!TryBankWithdraw(player, args.Amount))
+        if (!TryBankWithdraw(player, args.Amount, new MarketRecord { Kind = MarketTransactionKind.AtmWithdraw })) // Triad: market data
         {
             ConsolePopup(args.Actor, Loc.GetString("bank-atm-menu-transaction-denied"));
             PlayDenySound(uid, component);
@@ -158,7 +161,7 @@ public sealed partial class BankSystem
         deposit = int.Max(0, deposit);
 
         // try to deposit the inserted cash into a player's bank acount. Validation happens on the banking system but we still indicate error.
-        if (!TryBankDeposit(player, deposit))
+        if (!TryBankDeposit(player, deposit, new MarketRecord { Kind = MarketTransactionKind.AtmDeposit })) // Triad: market data
         {
             ConsolePopup(args.Actor, Loc.GetString("bank-atm-menu-transaction-denied"));
             PlayDenySound(uid, component);

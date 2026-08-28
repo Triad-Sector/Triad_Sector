@@ -16,19 +16,18 @@
     - Gary
 
 - type: entity
-  id: NovaCygniTranslator
+  id: TerraSlavicTranslator
   parent: [ TranslatorPoweredBase ]
-  name: Nova Cygni translator
-  description: Translates speech between Nova Cygni and Andromeda Standard.  
-    Find out that all the average Radnik says is comrade and glory to the USSP.
+  name: Terra Slavic translator
+  description: Translates speech between Terra Slavic and Andromeda Standard.
   components:
   - type: HandheldTranslator
     spoken:
     - TauCetiBasic
-    - NovaCygniBasic
+    - TerraSlavic
     understood:
     - TauCetiBasic
-    - NovaCygniBasic
+    - TerraSlavic
     requires:
     - TauCetiBasic
-    - NovaCygniBasic
+    - TerraSlavic

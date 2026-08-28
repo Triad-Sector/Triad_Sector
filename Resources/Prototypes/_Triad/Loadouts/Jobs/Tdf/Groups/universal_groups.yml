@@ -155,11 +155,11 @@
   name: loadout-group-magazine
   minLimit: 1
   loadouts:
-  - TSFCaselessAmmoBoxLoadout # Lecter
+  - TdfCaselessAmmoBoxLoadout # Lecter
   - FactionAcpSmgAmmoLoadout #Drozd
   - FactionAcpSmgEmpAmmoLoadout #Drozd EMP
   - Faction762x51mmAmmoLoadout #Vulcan
   - FactionRechargerLoadout #Energy
   - FactionAcpPistolAmmoLoadout #MK58
   fallbacks:
-  - TSFCaselessAmmoBoxLoadout #Lecter
+  - TdfCaselessAmmoBoxLoadout #Lecter

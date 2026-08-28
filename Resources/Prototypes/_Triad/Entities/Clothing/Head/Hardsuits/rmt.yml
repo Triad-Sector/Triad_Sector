@@ -1,0 +1,132 @@
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ] # Triad : at some point, give engi helmets t-ray scanners
+  id: ClothingHeadHelmetHardsuitRmtL27
+  name: '"Korolev" Industrial engineering hardsuit helmet'
+  description: A heavy helmet fitted with a thick uranium glass visor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat.rsi
+  - type: Clothing
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat.rsi
+  - type: PointLight
+    color: "#4e88a6"
+  - type: PressureProtection
+    highPressureMultiplier: 0.03 # 0.08 - > 0.03 : Triad
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.2 # Triad
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons]
+  id: ClothingHeadHelmetHardsuitRmtL10
+  name: '"Alexi" L-10 lightsuit helmet'
+  description: A general-purpose hardsuit prioritizing ergonomics above all else. Ideal for light industrial work in safe harbors.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_light.rsi
+  - type: Clothing
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_light.rsi
+  - type: PointLight
+    color: "#4e88a6"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons]
+  id: ClothingHeadHelmetHardsuitRmtL10A
+  name: '"Mikhail" L-15-A lightsuit helmet'
+  description: A slightly more protective, premium variant of the Alexi lightsuit, preferred by those who value their fingers over their comfort.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_light_officer.rsi
+  - type: Clothing
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_light_officer.rsi
+  - type: PointLight
+    color: "#4e88a6"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase,]
+  id: ClothingHeadHelmetHardsuitRmtM10
+  name: '"Tupolev" Object-220 lightsuit helmet'
+  description: A new prototype of suit based on the L-series. It features improved composites and a helmet-mounted mass scanner.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_lightmk2.rsi
+  - type: Clothing
+    sprite: _Mono/Clothing/Head/Hardsuits/ussp_combat_lightmk2.rsi
+  - type: PointLight
+    color: "#4ea64e"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: RadarConsole
+    followEntity: true
+    noRotate: true
+  - type: ActivatableUI
+    key: enum.RadarConsoleUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+  - type: HandheldLight
+    toggleOnInteract: false # Triad, fixes radar not being activatable with E
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.90
+        Heat: 0.90
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide

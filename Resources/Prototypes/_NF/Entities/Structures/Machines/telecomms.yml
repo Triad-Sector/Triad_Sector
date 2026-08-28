@@ -67,4 +67,3 @@
     containers:
       key_slots:
       - EncryptionKeyFreelance
-      - EncryptionKeyVanguardCommand

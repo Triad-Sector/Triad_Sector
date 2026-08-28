@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server._NF.Shipyard.Components;
 using Content.Server._NF.Station.Components;
 using Content.Server._Triad.ContrabandPermit;
@@ -30,6 +30,9 @@ using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
 using Content.Shared.Whitelist;
 using Robust.Shared.Player;
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -360,7 +363,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!_bank.TryBankWithdraw(player, appraisalCost))
+        if (!_bank.TryBankWithdraw(player, appraisalCost, new MarketRecord { Kind = MarketTransactionKind.ShipLoadAppraisal })) // Triad: market data
         {
             Del(shuttleUid);
             ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", appraisalCost)));

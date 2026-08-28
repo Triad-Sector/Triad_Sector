@@ -61,8 +61,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 24
-    armorPenetration: -0.2
+        Piercing: 22 #Triad Reduction in ap and damage
+    armorPenetration: -0.6
 
 - type: entity
   id: Pellet23x75mmBuckshotSpread

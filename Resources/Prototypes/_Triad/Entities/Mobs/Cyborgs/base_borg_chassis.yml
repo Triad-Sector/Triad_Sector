@@ -1,0 +1,61 @@
+- type: entity
+  parent: BaseBorgChassis
+  id: BaseBorgChassisSolarianDirective
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SD
+  - type: Access
+    tags:
+    - Solarian
+    - Maintenance
+    - External
+    - Mercenary
+  - type: AccessReader
+    access: [["Solarian"]]
+  - type: SiliconLawProvider
+    laws: SolarianDirective
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Common
+    - Traffic
+    - SolarianDirective
+  - type: ActiveRadio
+    channels:
+    - Common
+    - Traffic
+    - SolarianDirective
+  - type: LanguageKnowledge
+    speaks:
+    - SolCommon
+    - TauCetiBasic
+    - RobotTalk
+    understands:
+    - SolCommon
+    - TauCetiBasic
+    - RobotTalk
+  - type: CollectiveMind
+    channels:
+    - Binary
+    defaultChannel: Binary
+  - type: NightVision # Same as default borg vision but blue
+    phosphorColor: "#41D7D9"
+    lightingColor: "#FFFFFF32"
+  - type: ShowJobIcons
+  - type: MovementAlwaysTouching
+  - type: Speech
+    speechSounds: SyndieBorg
+    allowedEmotes:
+    - Laugh
+    - Sigh
+    - Crying
+    - Whistle
+  - type: Vocal
+    sounds:
+      Unsexed: UnisexSiliconSyndicate # Fits them well enough
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: FactionBorgChassis

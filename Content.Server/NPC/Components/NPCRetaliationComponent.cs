@@ -19,6 +19,14 @@ public sealed partial class NPCRetaliationComponent : Component
     /// A dictionary that stores an entity and the time at which they will no longer be considered hostile.
     /// </summary>
     /// todo: this needs to support timeoffsetserializer at some point
+    // Triad: keys are arbitrary attackers anywhere in the world, not entities co-located with this
+    // NPC, so on a ship-grid save any attacker outside the save set serializes as the literal string
+    // "invalid". Two of them collide as a duplicate dictionary key and kill the whole save. Combat
+    // memory is runtime state that expires on AttackMemoryLength anyway, so it is no longer persisted.
+    /*
     [DataField("attackMemories")]
+    */
+    [ViewVariables]
+    // End Triad
     public Dictionary<EntityUid, TimeSpan> AttackMemories = new();
 }
