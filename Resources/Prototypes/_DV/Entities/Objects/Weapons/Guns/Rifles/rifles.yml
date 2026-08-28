@@ -19,7 +19,8 @@
     maxAngle: 20
     angleIncrease: 5
     angleDecay: 25
-    fireRate: 3
+    #fireRate: 3
+    fireRate: 4 # Triad: Make this weapon have the same DPS as its semi-auto only counterpart!
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
