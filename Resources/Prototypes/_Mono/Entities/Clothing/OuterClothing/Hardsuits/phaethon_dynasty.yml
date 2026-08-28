@@ -164,7 +164,7 @@
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuitHighValue
   - type: ContrabandPermittable
-    permittable: true # I mean, it can be taken away at any time, right?
+    permittable: true # I mean, it can be taken away at any time, right? .
 
 - type: entity
   parent: [ ClothingOuterHardsuitSyndieElite, EnergyShieldClothing, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf ]
