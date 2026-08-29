@@ -86,7 +86,7 @@ public abstract partial class SharedDiceSystem : EntitySystem
 
         var popupString = Loc.GetString("dice-component-on-roll-land",
             ("die", entity),
-            ("currentSide", entity.Comp.CurrentValue));
+            ("currentSide", GetRolledValueString(entity)));
         _popup.PopupPredicted(popupString, entity, user);
         _audio.PlayPredicted(entity.Comp.Sound, entity, user);
     }

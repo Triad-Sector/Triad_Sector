@@ -182,7 +182,7 @@
   id: TreasureCoinSilver
   components:
   - type: Sprite
-    state: coin_silver
+    state: coinSilver_1
   - type: PhysicalComposition
     materialComposition:
       Steel: 100 # coins are fake on the inside
@@ -198,7 +198,7 @@
   id: TreasureCoinGold
   components:
   - type: Sprite
-    state: coin_gold
+    state: coinGold_1
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -214,7 +214,7 @@
   id: TreasureCoinAdamantine
   components:
   - type: Sprite
-    state: coin_adamantine
+    state: coinAdamantine_1
   - type: PhysicalComposition
     materialComposition:
       Steel: 400
@@ -230,7 +230,7 @@
   id: TreasureCoinDiamond
   components:
   - type: Sprite
-    state: coin_diamond
+    state: coinDiamond_1
   - type: PhysicalComposition
     materialComposition:
       Steel: 300
