@@ -20,3 +20,40 @@
       - id: WeaponLauncherNfsdLake
       - id: 40mmGrenadeEMP
         amount: 12
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfToolBundle
+  name: TDF tool bundle
+  description: A duffel bag pre-stocked with all the tools a enforcer could need to keep their ship running.
+  components:
+  - type: StorageFill
+    contents:
+    - id: CrowbarOrange
+      amount: 1
+    - id: Wrench
+      amount: 1
+    - id: Screwdriver
+      amount: 1
+    - id: Wirecutter
+      amount: 1
+    - id: WelderIndustrialAdvanced
+      amount: 1
+    - id: Multitool
+      amount: 1
+    - id: ShipRepairDevice
+      amount: 1
+    - id: NaniteApplicator
+      amount: 1
+    - id: JerryCanNaniteFuel
+      amount: 1
+    - id: JerryCanWeldingFuel
+      amount: 1
+    - id: RCD
+      amount: 1
+    - id: ClothingEyesGlassesMeson
+      amount: 1
+    - id: ShipRepairDeviceAmmo
+      amount: 2
+    - id: AirGrenade
+      amount: 2

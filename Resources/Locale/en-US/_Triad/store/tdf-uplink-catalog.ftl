@@ -221,3 +221,9 @@ uplink-security-tier-1-voucher-desc = A single use TDF DSID for any tier 1 vesse
 
 uplink-security-tier-2-voucher-name = Tier 2 Dedicated Ship ID
 uplink-security-tier-2-voucher-desc = A single use TDF DSID for any tier 2 vessel.
+
+uplink-security-tools-name = Tool Bundle
+uplink-security-tools-desc = A duffel bag loaded with tools for repair and maintenance.
+
+uplink-security-capacitors-name = Super Capacitor box
+uplink-security-capacitors-desc = A box containing 25 super capacitors for upgrading your shuttle's thrusters.

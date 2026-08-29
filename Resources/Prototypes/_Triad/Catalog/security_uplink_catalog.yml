@@ -1163,27 +1163,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecuritySwat
-  name:  uplink-security-swat-name
-  description: uplink-security-swat-desc
-  productEntity: ClothingMaskGasSwatTdf
-  icon: { sprite: _Triad/Clothing/Mask/tdf_swat_mask.rsi, state: icon}
-  cost:
-    TriadCommerceCredit: 5 #Mono: From 3 to 1
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    - !type:BuyerJobCondition
-      whitelist:
-       - TdfWarden
-       - TdfPatrolTeamLeader
-       - TdfChiefEnforcer
-
-- type: listing
   id: UplinkSecuritySpeedloader
   name:  uplink-security-speedloader-name
   description: uplink-security-speedloader-desc
@@ -1518,6 +1497,38 @@
       whitelist:
         tags:
           - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityToolBundle
+  name:  uplink-security-tools-name
+  description: uplink-security-tools-desc
+  productEntity: ClothingBackpackDuffelTdfFilledTools
+  icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityCapacitorBox
+  name:  uplink-security-capacitors-name
+  description: uplink-security-capacitors-desc
+  productEntity: BoxSuperCapacitors
+  icon: { sprite: Objects/Misc/stock_parts.rsi, state: super_capacitor }
+  cost:
+    TriadCommerceCredit: 60
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
 
 - type: listing
   id: UplinkSecurityEmpGrenadeAmmo
