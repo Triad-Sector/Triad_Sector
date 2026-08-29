@@ -19,8 +19,8 @@
 
 - type: rank
   id: RankLieutenant
-  name: Lieutenant
-  prefix: Lt.
+  name: Lieutenant Enforcer
+  prefix: Lt. Enf.
   paygrade: TDF-4
 
 - type: rank
