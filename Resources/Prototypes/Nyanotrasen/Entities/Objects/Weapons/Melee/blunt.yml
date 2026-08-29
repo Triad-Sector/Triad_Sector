@@ -12,10 +12,10 @@
     shape:
     - 0,0,3,3 # Triad Glaive & Kanobou Shape
   - type: MeleeWeapon
-    heavyStaminaCost: 11 # Triad, should give you 9 swings till you stamcrit instead of 6
-    attackRate: 0.7
+    heavyStaminaCost: 10 # Triad, should give you 9 swings till you stamcrit instead of 6
+    attackRate: 0.8
     wideAnimationRotation: -135 # Triad, hopefully fixes weird sprite swinging
-    range: 2.25 # Triad, tried to give it a unique trait since Tintreach has Defib and Breaching Hammer has prying.
+    range: 2.50 # Triad, tried to give it a unique trait since Tintreach has Defib and Breaching Hammer has prying.
     damage:
       types:
         Blunt: 15 # Triad changed to be like Breaching Hammer as it's just as slow, and in the same loot pool
