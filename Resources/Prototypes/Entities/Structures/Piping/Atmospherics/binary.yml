@@ -599,9 +599,8 @@
   id: HeatExchanger
   name: radiator
   # Triad: copper-cored by default. Copper fin core spreads heat along the
-  # array and doubles the effective fin area, at the cost of a lower melting
-  # point than the old all-steel unit.
-  description: Transfers heat between the pipe and its surroundings. A copper core carries heat along the fins fast, but it melts long before steel does.
+  # array and doubles the effective fin area.
+  description: Transfers heat between the pipe and its surroundings. A copper core carries heat along the fins fast.
   placement:
     mode: SnapgridCenter
   components:
@@ -679,16 +678,14 @@
   - type: AtmosDevice
   # Triad: copper-cored tuning (2 Steel + 2 Copper). Component defaults are the
   # old all-steel numbers: alpha 140 (~10 m2 blackbody per tile), link 800 W/K,
-  # pipe 8000 W/K, ceiling at the White bucket floor 1588 K.
+  # pipe 8000 W/K.
   #   radiationCoefficient: ~2x fin area from the copper core
   #   bodyLinkConductance:  k 400 copper vs k 50 steel along the array
   #   pipeConductance:      better gas-to-fin coupling through the core
-  #   overheatTemperature:  copper melts at 1358 K
   - type: HeatExchanger
     radiationCoefficient: 250
     bodyLinkConductance: 6000
     pipeConductance: 12000
-    overheatTemperature: 1300
   # Triad: incandescent spill light. Starts off; HeatExchangerSystem drives
   # colour/energy/radius on bucket transitions only, so the networked light
   # fields never dirty per tick. SubFloorHide masks sprite layers, not lights,

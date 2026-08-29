@@ -266,8 +266,8 @@ public sealed partial class HeatExchangerSystem : EntitySystem
         UpdateBucket(uid, comp);
 
         // Triad: contact heat/chill for anyone standing on the fins, and the
-        // cvar-gated overheat ceiling. Contact gates on the bucket and overheat
-        // on the material ceiling, so neutral radiators cost nothing here.
+        // cvar-gated overheat ceiling. Both gate on the bucket, so neutral
+        // radiators cost nothing here.
         ContactHazard(comp, dt);
         OverheatDamage(uid, comp, dt);
     }
@@ -361,14 +361,12 @@ public sealed partial class HeatExchangerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Triad: sustained operation above the body's material ceiling slowly
-    /// destroys the radiator (rupture via the normal pipe destruction path).
-    /// Cvar-gated. Gates on temperature, not the glow bucket, so a lower-melting
-    /// core (copper) can fail below white heat.
+    /// Triad: sustained white-hot operation slowly destroys the radiator
+    /// (rupture via the normal pipe destruction path). Cvar-gated.
     /// </summary>
     private void OverheatDamage(EntityUid uid, HeatExchangerComponent comp, float dt)
     {
-        if (!_overheatDamage || comp.BodyTemperature < comp.OverheatTemperature)
+        if (!_overheatDamage || comp.Bucket < RadiatorThermalBucket.White)
             return;
 
         var damage = new DamageSpecifier(_proto.Index<DamageTypePrototype>("Structural"),

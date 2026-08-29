@@ -6,7 +6,7 @@
     <GuideEntityEmbed Entity="HeatExchanger"/>
   </Box>
 
-  Radiators are built from 2 steel and 2 copper: the copper core carries heat along a connected run of radiators, so a long array heats and cools as one unit. The trade is a lower melting point: keep the fins out of white heat, or the copper gives out and the radiator ruptures.
+  Radiators are built from 2 steel and 2 copper: the copper core carries heat along a connected run of radiators, so a long array heats and cools as one unit.
 
   Radiators are completely passive: they do not require power to function.
   They will always equalize the temperature of the gas in the [textlink="pipenet" link="PipeNetworks"] with the environment.
