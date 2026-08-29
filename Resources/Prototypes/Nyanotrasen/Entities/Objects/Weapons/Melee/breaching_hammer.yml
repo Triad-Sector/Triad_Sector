@@ -48,8 +48,6 @@
     slots:
     - back
     - suitStorage # Frontier - Same as axe
-  - type: StaminaDamageResistance
-    coefficient: 0.2
 #mono edit end
 # Triad Start - Audio
   - type: EmitSoundOnPickup

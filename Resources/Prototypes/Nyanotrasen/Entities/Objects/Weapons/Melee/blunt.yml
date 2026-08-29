@@ -38,8 +38,6 @@
     slots:
     - back
     - suitStorage
-  - type: StaminaDamageResistance
-    coefficient: 0.2
 # Triad Start - Audio
   - type: EmitSoundOnPickup
     sound:
