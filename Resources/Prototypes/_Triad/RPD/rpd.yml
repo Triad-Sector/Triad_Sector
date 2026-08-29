@@ -259,7 +259,7 @@
   mode: ConstructObject
   prototype: HeatExchanger
   constructionRecipe: HeatExchanger
-  cost: 1
+  cost: 2 # copper core: the hand recipe bills 2 Steel + 2 Copper, so two charges instead of one
   delay: 0
   rotation: User
   fx: EffectRCDConstruct0
@@ -276,7 +276,7 @@
   mode: ConstructObject
   prototype: HeatExchangerBend
   constructionRecipe: HeatExchangerBend
-  cost: 1
+  cost: 2 # copper core: the hand recipe bills 2 Steel + 2 Copper, so two charges instead of one
   delay: 0
   rotation: User
   fx: EffectRCDConstruct0

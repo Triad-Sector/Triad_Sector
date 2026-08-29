@@ -154,8 +154,18 @@ public sealed partial class HeatExchangerComponent : Component
     public float ContactConductance = 30f;
 
     /// <summary>
-    /// Triad: structural damage per second while white-hot, when the overheat
-    /// cvar is enabled.
+    /// Triad: body temperature (K) above which the overheat cvar starts
+    /// dealing structural damage. A material ceiling, not a glow bucket: the
+    /// default is the White bucket floor (steel), the copper-cored radiator
+    /// prototype sets ~1300 K (copper melts at 1358 K).
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("overheatTemperature")]
+    public float OverheatTemperature = 1588f;
+
+    /// <summary>
+    /// Triad: structural damage per second above
+    /// <see cref="OverheatTemperature"/>, when the overheat cvar is enabled.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("overheatDamagePerSecond")]

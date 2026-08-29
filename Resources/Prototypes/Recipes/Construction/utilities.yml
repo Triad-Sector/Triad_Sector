@@ -1280,7 +1280,7 @@
 - type: construction
   id: HeatExchanger
   name: radiator
-  description: Transfers heat between the pipe and its surroundings.
+  description: Transfers heat between the pipe and its surroundings. Copper-cored. # Triad
   graph: GasBinary
   startNode: start
   targetNode: radiator
@@ -1294,7 +1294,7 @@
 - type: construction
   id: HeatExchangerBend
   name: radiator bend
-  description: Transfers heat between the pipe and its surroundings.
+  description: Transfers heat between the pipe and its surroundings. Copper-cored. # Triad
   graph: GasBinary
   startNode: start
   targetNode: bendradiator
