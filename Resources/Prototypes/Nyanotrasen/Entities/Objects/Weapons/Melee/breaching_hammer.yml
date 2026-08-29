@@ -8,27 +8,30 @@
     sprite: Nyanotrasen/Objects/Weapons/Melee/breaching_hammer.rsi
     state: icon
   - type: Item
-    size: Ginormous # Triad, Ginormous < Huge
+    size: Large # Triad, changed to be same size as the other hammers of its class.
     shape:
-    - 0,0,4,5 # Triad
+    - 0,0,3,3
   - type: MeleeWeapon
-    heavyStaminaCost: 15 # Triad
-    attackRate: 0.5
+    heavyStaminaCost: 11 # Triad should give you 9 swings till you stamcrit instead of 6
+    attackRate: 0.7
     wideAnimationRotation: -135 # Triad
-    range: 1.70
+    range: 1.75
     damage:
       types:
         Blunt: 15
         Structural: 50
     bluntStaminaDamageFactor: 1.30 # Triad decrease to 1.3
     soundHit:
-      collection: MetalThud
+      path: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
         Blunt: 50
         Structural: 250 # takes about 1 minute to breach a plastitanium wall
+  - type: MeleeThrowOnHit # Triad. Less distance than Tintreach but more than the smaller faster hammers.
+    speed: 6
+    distance: 2.5
   - type: Tool
     qualities:
       - Prying
@@ -45,6 +48,8 @@
     slots:
     - back
     - suitStorage # Frontier - Same as axe
+  - type: StaminaDamageResistance
+    coefficient: 0.2
 #mono edit end
 # Triad Start - Audio
   - type: EmitSoundOnPickup
