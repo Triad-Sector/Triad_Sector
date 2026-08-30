@@ -149,10 +149,7 @@ public abstract partial class SharedLaserPointerSystem : EntitySystem
                 !requiresTargetQuery.TryComp(x.HitEntity, out var requiresTarget) || !requiresTarget.Active);
 
         if (hit != null)
-        {
             rayLength = hit.Value.Distance;
-            Log.Debug($"Hit entity: ${ToPrettyString(hit.Value.HitEntity)}");
-        }
 
         var end = pos + normalized * rayLength;
 
