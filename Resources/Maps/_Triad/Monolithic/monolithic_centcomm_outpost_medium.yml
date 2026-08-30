@@ -4,8 +4,8 @@ meta:
   engineVersion: 287.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 20:40:09
-  entityCount: 1253
+  time: 08/30/2026 21:07:07
+  entityCount: 1256
 maps: []
 grids:
 - 1668
@@ -3355,6 +3355,13 @@ entities:
     - type: Transform
       parent: 1668
       pos: 16.880571,-11.648763
+- proto: ClothingHeadHelmetERTEngineer
+  entities:
+  - uid: 379
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 28.49021,-14.48154
 - proto: ClothingNeckCloakNanotrasen
   entities:
   - uid: 708
@@ -3469,20 +3476,8 @@ entities:
       parent: 1668
       rot: 1.5707963267948966 rad
       pos: 7.5,-2.5
-- proto: CrateFilledSpawner
-  entities:
-  - uid: 1020
-    components:
-    - type: Transform
-      parent: 1668
-      pos: 26.5,3.5
 - proto: CrateNanotrasenLootFilledT1
   entities:
-  - uid: 1176
-    components:
-    - type: Transform
-      parent: 1668
-      pos: 26.5,-11.5
   - uid: 1177
     components:
     - type: Transform
@@ -3490,6 +3485,11 @@ entities:
       pos: 26.5,-11.5
 - proto: CrateNanotrasenLootFilledT2
   entities:
+  - uid: 106
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 26.5,3.5
   - uid: 318
     components:
     - type: Transform
@@ -3552,12 +3552,6 @@ entities:
       parent: 1668
       rot: 1.5707963267948966 rad
       pos: 22.5,-6.5
-  - uid: 106
-    components:
-    - type: Transform
-      parent: 1668
-      rot: 3.141592653589793 rad
-      pos: 3.5,7.5
   - uid: 360
     components:
     - type: Transform
@@ -3579,11 +3573,6 @@ entities:
       parent: 1668
       rot: 1.5707963267948966 rad
       pos: 15.5,10.5
-  - uid: 539
-    components:
-    - type: Transform
-      parent: 1668
-      pos: 10.5,16.5
   - uid: 828
     components:
     - type: Transform
@@ -4878,6 +4867,11 @@ entities:
     - type: Transform
       parent: 1668
       pos: 10.5,1.5
+  - uid: 732
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 25.5,3.5
   - uid: 970
     components:
     - type: Transform
@@ -4910,11 +4904,21 @@ entities:
     - type: Transform
       parent: 1668
       pos: 10.5,-8.5
+  - uid: 539
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 16.5,5.5
   - uid: 540
     components:
     - type: Transform
       parent: 1668
       pos: 5.5,10.5
+  - uid: 641
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 3.5,8.5
   - uid: 1175
     components:
     - type: Transform
@@ -4927,31 +4931,24 @@ entities:
     - type: Transform
       parent: 1668
       pos: 14.5,9.5
-  - uid: 516
-    components:
-    - type: Transform
-      parent: 1668
-      pos: 16.5,5.5
   - uid: 626
     components:
     - type: Transform
       parent: 1668
       pos: 9.5,14.5
-  - uid: 835
-    components:
-    - type: Transform
-      parent: 1668
-      pos: 6.5,8.5
   - uid: 837
     components:
     - type: Transform
       parent: 1668
       pos: 10.5,8.5
-  - uid: 845
+- proto: MonolithicCrystalMedium
+  entities:
+  - uid: 516
     components:
     - type: Transform
       parent: 1668
-      pos: 3.5,9.5
+      rot: -1.5707963267948966 rad
+      pos: 14.465752,-13.218039
 - proto: MonolithicCrystalSmall
   entities:
   - uid: 105
@@ -4962,6 +4959,8 @@ entities:
       pos: 4.0532403,7.60717
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 412
     components:
@@ -4970,6 +4969,8 @@ entities:
       pos: 3.1001153,8.13842
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 487
     components:
@@ -4978,6 +4979,8 @@ entities:
       pos: 3.1001153,7.79467
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 625
     components:
@@ -4987,6 +4990,8 @@ entities:
       pos: 3.2876153,8.38842
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 1049
     components:
@@ -4995,6 +5000,8 @@ entities:
       pos: 4.1313653,7.747795
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 1056
     components:
@@ -5003,6 +5010,8 @@ entities:
       pos: 4.2876153,8.07592
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
   - uid: 1059
     components:
@@ -5011,6 +5020,8 @@ entities:
       pos: 4.4438653,8.41967
     missingComponents:
     - Item
+    - StaticPrice
+    - Pullable
     - Contraband
 - proto: NFSalvageMaterialCrateSpawner
   entities:
@@ -5660,6 +5671,13 @@ entities:
     - type: Transform
       parent: 1668
       pos: 12.5,7.5
+- proto: SpawnDungeonLootToolsAdvancedEngineering
+  entities:
+  - uid: 1176
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 8.479241,4.5202513
 - proto: SpawnDungeonRandomHumanCorpse
   entities:
   - uid: 222
@@ -5684,37 +5702,58 @@ entities:
       pos: 30.5,2.5
 - proto: SpawnLootTechDisksPrinterT1
   entities:
+  - uid: 1181
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 6.5905914,16.456245
+- proto: SpawnLootTechDisksPrinterT2
+  entities:
+  - uid: 1179
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 6.1374664,16.44062
+- proto: SpawnLootTechDisksPrinterT4
+  entities:
+  - uid: 1180
+    components:
+    - type: Transform
+      parent: 1668
+      pos: 6.7312164,15.737495
+- proto: SpawnLootTechDisksT1
+  entities:
   - uid: 739
     components:
     - type: Transform
       parent: 1668
-      pos: 6.5,15.5
-- proto: SpawnLootTechDisksPrinterT4
-  entities:
-  - uid: 379
+      pos: 6.1687164,16.75312
+  - uid: 835
     components:
     - type: Transform
       parent: 1668
-      pos: 6.5,16.5
-- proto: SpawnLootTechDisksT1
+      pos: 6.7155914,16.72187
+- proto: SpawnLootTechDisksT2Faction
   entities:
-  - uid: 641
+  - uid: 1020
     components:
     - type: Transform
       parent: 1668
-      pos: 6.5,16.5
+      pos: 6.2312164,15.37812
+- proto: SpawnLootTechDisksT3Fracture
+  entities:
   - uid: 733
     components:
     - type: Transform
       parent: 1668
-      pos: 6.5,15.5
-- proto: SpawnLootTechDisksT3Fracture
+      pos: 6.7155914,15.37812
+- proto: SpawnLootTechDisksT3Mech
   entities:
-  - uid: 732
+  - uid: 845
     components:
     - type: Transform
       parent: 1668
-      pos: 6.5,16.5
+      pos: 6.2468414,15.768745
 - proto: SpawnRandomGunneryServerHighTier
   entities:
   - uid: 749
