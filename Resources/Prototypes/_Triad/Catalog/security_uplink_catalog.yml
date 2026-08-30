@@ -1,42 +1,12 @@
 # FMC->TCC. TCC cost 5x - Triad
 
 - type: listing
-  id: UplinkSecurityAnnie
-  name:  uplink-security-annie-name
-  description: uplink-security-annie-desc
-  productEntity: WeaponRifleAnnie
-  cost:
-    TriadCommerceCredit: 75
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityEg4
   name:  uplink-security-eg4-name
   description: uplink-security-eg4-desc
   productEntity: WeaponEnergyRevolver
   cost:
     TriadCommerceCredit: 35
-  categories:
-  - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityMR8T
-  name:  uplink-security-mr8t-name
-  description: uplink-security-mr8t-desc
-  productEntity: WeaponRifleMR8T
-  cost:
-    TriadCommerceCredit: 125
   categories:
   - UplinkSecurityWeapons
   conditions:
@@ -336,43 +306,11 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMK58
-  name:  uplink-security-mk58-name
-  description: uplink-security-mk58-desc
-  productEntity: WeaponPistolMk58
-  icon: { sprite: Objects/Weapons/Guns/Pistols/mk58.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 10
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityDisabler
   name:  uplink-security-disabler-name
   description: uplink-security-disabler-desc
   productEntity: WeaponDisabler
   icon: { sprite: Objects/Weapons/Guns/Battery/disabler.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityStunbaton
-  name:  uplink-security-stunbaton-name
-  description: uplink-security-stunbaton-desc
-  productEntity: Stunbaton
-  icon: { sprite: Objects/Weapons/Melee/stunbaton.rsi, state: stunbaton_off }
   cost:
     TriadCommerceCredit: 5
   categories:
@@ -405,22 +343,6 @@
   description: uplink-security-enforcer-desc
   productEntity: WeaponShotgunEnforcer
   icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityLecter
-  name:  uplink-security-lecter-name
-  description: uplink-security-lecter-desc
-  productEntity: WeaponRifleLecterTdf
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi, state: icon }
   cost:
     TriadCommerceCredit: 15
   categories:
@@ -487,22 +409,6 @@
   icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
   cost:
     TriadCommerceCredit: 20
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityEnergyGun
-  name:  uplink-security-energygun-name
-  description: uplink-security-energygun-desc
-  productEntity: WeaponEnergyGun
-  icon: { sprite: _DV/Objects/Weapons/Guns/Battery/energygun.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -1030,22 +936,6 @@
        - TdfWarden
 
 - type: listing
-  id: UplinkSecurityInspector
-  name:  uplink-security-inspector-name
-  description: uplink-security-inspector-desc
-  productEntity: WeaponRevolverInspector
-  icon: { sprite: Objects/Weapons/Guns/Revolvers/inspector.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityMateba
   name:  uplink-security-mateba-name
   description: uplink-security-mateba-desc
@@ -1435,22 +1325,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityLethalArmory
-  name:  uplink-security-lethalarmory-name
-  description: uplink-security-lethalarmory-desc
-  productEntity: CrateTdfArmoryLethal
-  icon: { sprite: _Triad/Structure/Storage/Crates/tdf_secure2.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 75
-  categories:
-    - UplinkSecurityBundles
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityTrackingBundle
   name: uplink-security-trackingdart-bundle-name
   description: uplink-security-trackingdart-bundle-desc
@@ -1483,26 +1357,10 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityNonLethalArmory
-  name:  uplink-security-nonlethalarmory-name
-  description: uplink-security-nonlethalarmory-desc
-  productEntity: CrateTdfNonLethal
-  icon: { sprite: _Triad/Structure/Storage/Crates/tdf_secure1.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 50
-  categories:
-    - UplinkSecurityBundles
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityToolBundle
-  name:  uplink-security-tools-name
+  name: uplink-security-tools-name
   description: uplink-security-tools-desc
-  productEntity: ClothingBackpackDuffelTdfFilledTools
+  productEntity: ClothingBackpackDuffelTdfToolBundle
   icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
@@ -1515,10 +1373,106 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityCapacitorBox
-  name:  uplink-security-capacitors-name
-  description: uplink-security-capacitors-desc
-  productEntity: BoxSuperCapacitors
+  id: UplinkSecurityMK58Bundle
+  name: uplink-security-mk58-name
+  description: uplink-security-mk58-desc
+  productEntity: ClothingBackpackDuffelTdfMK58Bundle
+  icon: { sprite: Objects/Weapons/Guns/Pistols/mk58.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityLecterBundle
+  name: uplink-security-lecter-name
+  description: uplink-security-lecter-desc
+  productEntity: ClothingBackpackDuffelTdfLecterBundle
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityVulcanBundle
+  name: uplink-security-vulcan-name
+  description: uplink-security-vulcan-desc
+  productEntity: ClothingBackpackDuffelTdfVulcanBundle
+  icon: { sprite: _DV/Objects/Weapons/Guns/Rifles/vulcan.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 15
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBastionBundle
+  name: uplink-security-bastion-name
+  description: uplink-security-bastion-desc
+  productEntity: ClothingBackpackDuffelTdfVulcanBundle
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Shotgun/tdf_doublebarrel.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 100
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMR8TBundle
+  name: uplink-security-mr8t-name
+  description: uplink-security-mr8t-desc
+  productEntity: ClothingBackpackDuffelTdfMR8TBundle
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 125
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMMGBundle
+  name: uplink-security-mmg-name
+  description: uplink-security-mmg-desc
+  productEntity: ClothingBackpackDuffelTdfMMGBundle
+  icon: { sprite: _Triad/Objects/Weapons/Guns/LMGs/tdf_riot/riot-icon.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 150
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityPartBox
+  name: uplink-security-components-name
+  description: uplink-security-components-desc
+  productEntity: BoxSuperComponents
   icon: { sprite: Objects/Misc/stock_parts.rsi, state: super_capacitor }
   cost:
     TriadCommerceCredit: 60

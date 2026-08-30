@@ -24,12 +24,12 @@
 - type: entity
   parent: ClothingBackpackDuffelTdf
   id: ClothingBackpackDuffelTdfToolBundle
-  name: TDF tool bundle
+  name: TDF emergency repair bundle
   description: A duffel bag pre-stocked with all the tools a enforcer could need to keep their ship running.
   components:
   - type: StorageFill
     contents:
-    - id: CrowbarOrange
+    - id: CrowbarRed
       amount: 1
     - id: Wrench
       amount: 1
@@ -37,23 +37,95 @@
       amount: 1
     - id: Wirecutter
       amount: 1
-    - id: WelderIndustrialAdvanced
-      amount: 1
-    - id: Multitool
-      amount: 1
     - id: ShipRepairDevice
       amount: 1
     - id: NaniteApplicator
       amount: 1
     - id: JerryCanNaniteFuel
       amount: 1
-    - id: JerryCanWeldingFuel
-      amount: 1
-    - id: RCD
-      amount: 1
-    - id: ClothingEyesGlassesMeson
-      amount: 1
     - id: ShipRepairDeviceAmmo
-      amount: 2
+      amount: 1
     - id: AirGrenade
+      amount: 1
+    - id: CableHVStack
+      amount: 1
+    - id: CableMVStack
+      amount: 1
+    - id: CableApcStack
+      amount: 1
+    - id: PartRodMetal
+      amount: 1
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfMK58Bundle
+  name: "TDF MA Mk-58 bundle"
+  description: Duffel bag containing a standard-issue pistol and four spare magazines.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolMk58
+    - id: Magazine45_ACPPistolFMJ
+      amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfLecterBundle
+  name: "TDF M-7 'Lecter' bundle"
+  description: Duffel bag containing a standard-issue assault rifle and four spare magazines.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleLecterTdf
+    - id: Magazine68x52mmCaseless
+      amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfVulcanBundle
+  name: "TDF HWM FCM 'Vulcan' bundle"
+  description: Duffel bag containing a high-power battle rifle and four spare magazines.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleVulcan
+    - id: Magazine762x51mmFMJ
+      amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfVulcanBundle
+  name: "Bastion shotgun bundle"
+  description: Duffel bag containing a exceptionally powerful four gauge shotgun and four spare shell boxes.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunDoubleBarreledTdfBastion
+    - id: AmmoBox23x75mmBuckshot
+      amount: 2
+    - id: AmmoBox23x75mmOOBuckshot
+      amount: 2
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfMR8TBundle
+  name: TDF MR-8T DMR Bundle
+  description: Duffel bag containing a high-accuracy dedicated marksman rifle and four spare magazines.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleMR8T
+    - id: Magazine8x65mmSKR
+      amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfMMGBundle
+  name: "TDF MMG-38 'Riot' bundle"
+  description: Duffel bag containing a high-capacity medium machine gun and two spare belt boxes.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLMGRiot
+    - id: AmmoBox68x52mmCaselessBig
       amount: 2

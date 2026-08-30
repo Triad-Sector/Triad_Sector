@@ -1,7 +1,7 @@
 - type: entity
   parent: BoxBundleNfsd
-  id: BoxSuperParts
-  name: Super component box
+  id: BoxSuperComponents
+  name: Super Component box
   description: A box full of super components for upgrading machines and lathes.
   components:
   - type: StorageFill
@@ -9,6 +9,6 @@
     - id: PicoManipulatorStockPart
       amount: 5
     - id: SuperMatterBinStockPart
-      amount: 10
+      amount: 5
     - id: SuperCapacitorStockPart
-      amount: 15
+      amount: 20

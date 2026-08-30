@@ -26,8 +26,6 @@ uplink-security-lethalarmory-name = Lethal Armory Stock Crate
 uplink-security-lethalarmory-desc = A crate containing weapons necessary to fill an armory.
 uplink-security-nonlethalarmory-name = Non-lethal Armory Stock Crate
 uplink-security-nonlethalarmory-desc = A crate containing non-lethal weapons necessary to fill an armory.
-uplink-security-mk58-name = MK58
-uplink-security-mk58-desc = Cheap, standard issue sidearm. Uses .45 ACP.
 uplink-security-disabler-name = Disabler
 uplink-security-disabler-desc = Standard issue non-lethal stun gun. Has an internal battery, but requires using a security charging dock.
 uplink-security-stunbaton-name = Stun Baton
@@ -36,15 +34,6 @@ uplink-security-emitter-name = EMP Emitter
 uplink-security-emitter-desc = A high-energy pulse emitter tuned to disrupt electronics and power systems. Harmless to living things. Projectiles pass through glass. Has an internal battery, but requires using a security charging dock.
 uplink-security-enforcer-name = Enforcer
 uplink-security-enforcer-desc = An updated model of the Kammerer, boasts a 7 shell magazine. Uses 12 gauge shotgun shells.
-
-uplink-security-mr8t-name = MR-8T BR
-uplink-security-mr8t-desc = A semi-auto rifle firing 8x65mm SKR rounds, modified from the original Federated Solarian Republic version. You're one lucky enforcer, these things are expensive.
-
-uplink-security-lecter-name = Lecter
-uplink-security-lecter-desc = Standard issue fully automatic rifle. Uses 6.8x52mm Caseless.
-
-uplink-security-vulcan-name = Vulcan
-uplink-security-vulcan-desc = Heavy duty, select fire battle rifle. Uses 7.62x51mm.
 
 uplink-security-lasercarbine-name = Laser Rifle
 uplink-security-lasercarbine-desc = Standard issue laser carbine. Has an internal battery, but requires using a security charging dock. Fires through glass.
@@ -222,8 +211,26 @@ uplink-security-tier-1-voucher-desc = A single use TDF DSID for any tier 1 vesse
 uplink-security-tier-2-voucher-name = Tier 2 Dedicated Ship ID
 uplink-security-tier-2-voucher-desc = A single use TDF DSID for any tier 2 vessel.
 
-uplink-security-tools-name = Tool Bundle
+uplink-security-tools-name = Emergency Repair Bundle
 uplink-security-tools-desc = A duffel bag loaded with tools for repair and maintenance.
 
-uplink-security-capacitors-name = Super Capacitor box
-uplink-security-capacitors-desc = A box containing 25 super capacitors for upgrading your shuttle's thrusters.
+uplink-security-components-name = Super Components box
+uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
+
+uplink-security-mk58-name = MA Mk-58 Bundle
+uplink-security-mk58-desc = Duffel bag containing a standard-issue pistol and four spare magazines.
+
+uplink-security-lecter-name = M-7 "Lecter" Bundle
+uplink-security-lecter-desc = Duffel bag containing a standard-issue assault rifle and four spare magazines.
+
+uplink-security-vulcan-name = HWM FCM "Vulcan" Bundle
+uplink-security-vulcan-desc = Duffel bag containing a powerful battle rifle and four spare magazines.
+
+uplink-security-bastion-name = "Bastion" Shotgun Bundle
+uplink-security-bastion-desc = Duffel bag containing a exceptionally powerful four gauge shotgun and two spare shell boxes.
+
+uplink-security-dmr-name = MR-8T DMR Bundle
+uplink-security-dmr-desc = Duffel bag containing a high-accuracy dedicated marksman rifle and four spare magazines.
+
+uplink-security-mmg-name = MMG-38 "Riot" Bundle
+uplink-security-mmg-desc = Duffel bag containing a high-capacity medium machine gun and two spare belt boxes.
