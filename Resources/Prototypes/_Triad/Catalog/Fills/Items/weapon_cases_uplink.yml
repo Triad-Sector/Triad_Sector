@@ -1,0 +1,86 @@
+# Ranged
+- type: entity
+  parent: WeaponCaseShort
+  id: WeaponCaseTDFShortMk58
+  suffix: TDF, Mk58
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolMk58
+    - id: Magazine45_ACPPistolFMJ
+      amount: 4
+    - id: AmmoBox45_ACPFMJ
+      amount: 2
+
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongLecter
+  suffix: TDF, Lecter
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleLecterTdf
+    - id: Magazine68x52mmCaseless
+      amount: 4
+    - id: AmmoBox68x52mmCaseless
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongVulcan
+  suffix: TDF, Vulcan
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleVulcan
+    - id: Magazine762x51mmFMJ
+      amount: 4
+    - id: AmmoBox762x51mmFMJ
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongBastion
+  suffix: TDF, Bastion
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunDoubleBarreledTdfBastion
+    - id: AmmoBox23x75mmBuckshot
+      amount: 2
+    - id: AmmoBox23x75mmOOBuckshot
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongMR8T
+  suffix: TDF, MR-8T
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleMR8T
+    - id: Magazine8x65mmSKR
+      amount: 6 # No ammo box exists for 8x65 that isn't 100 rounds, so just mags.
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongRiot
+  suffix: TDF, Riot
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLMGRiot
+    - id: AmmoBox68x52mmCaselessBig
+      amount: 2
+
+# Melee
+- type: entity
+  parent: WeaponCaseShort
+  id: WeaponCaseShortEnergyDaggerLoudExpedition
+  suffix: Dungeon, Energy Dagger
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyDaggerLoud
+      amount: 1
