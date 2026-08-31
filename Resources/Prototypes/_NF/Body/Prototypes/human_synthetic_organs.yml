@@ -1,7 +1,6 @@
-﻿# DIE SNAKE CASE
-- type: body
+﻿- type: body
   id: HumanSyntheticOrgans
-  name: "human"
+  name: "human synthetic"
   root: torso
   slots:
     head:

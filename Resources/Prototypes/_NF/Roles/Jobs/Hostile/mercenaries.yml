@@ -1,12 +1,3 @@
-- type: entity
-  parent: ClothingHeadHelmetAttachmentBlock
-  id: NPCHandBlocker
-  name: Blocked
-  description: Can't fit anything there.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Unremoveable
-
 # Tier 1
 - type: startingGear
   id: MobHumanoidMercenaryGearMeleeT1
