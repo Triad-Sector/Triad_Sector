@@ -13,7 +13,7 @@
 #  description: A large medical vessel with a lobby, bar, food, and medical care facilities, Capable of saving lives and then saving appetites all in one go.
 #  price: 134750
 #  category: Large
-#  group: # Medical
+#  group: Medical
 #  shuttlePath: /Maps/_Mono/Shuttles/intermission.yml
 #  guidebookPage: null
 #  class:

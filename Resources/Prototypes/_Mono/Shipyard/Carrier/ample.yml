@@ -19,7 +19,7 @@
   mapName: 'Ample'
   mapPath: /Maps/_Mono/Shuttles/Carrier/ample.yml
   minPlayers: 0
- stations:
+  stations:
     Ample:
       stationProto: StandardFrontierVessel
       components:

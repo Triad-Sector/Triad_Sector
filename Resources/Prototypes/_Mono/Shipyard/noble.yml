@@ -10,7 +10,7 @@
 #  description: A salvage vessel outfitted with both a scrap and ore processor, plus 4 mining pulsers. Outside of that, its quite lacking, outside of a highly efficient pinch-fusion generator.
 #  price: 52100
 #  category: Medium
-#  group: # Shipyard
+#  group: Shipyard
 #  shuttlePath: /Maps/_Mono/Shuttles/noble.yml
 #  guidebookPage: Null
 #  class:

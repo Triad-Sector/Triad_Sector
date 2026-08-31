@@ -10,7 +10,7 @@
 #  description: A science vessel shaped like a butterfly. Comes facilities to accomodate botany and artifact research, as well as chemistry. Comes with a pool & bar.
 #  price: 120000
 #  category: Large
-#  group: # Shipyard
+#  group: Shipyard
 #  shuttlePath: /Maps/_Mono/Shuttles/ethereal.yml
 #  guidebookPage: null
 #  class:
