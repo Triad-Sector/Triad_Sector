@@ -9,7 +9,7 @@
   description: Unique-shaped medical vessel with two protective shieldings. Comes with basic medbay, chemistry and cloning installation.
   price: 64300
   category: Small
-  group: Medical
+  group: # Medical
   shuttlePath: /Maps/_Mono/Shuttles/dervi.yml
   guidebookPage: null
   class:

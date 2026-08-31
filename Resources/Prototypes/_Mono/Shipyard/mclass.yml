@@ -11,7 +11,7 @@
   description: A large salvage carrier with space for 2 salvage microshuttles to dock.
   price: 155000
   category: Large
-  group: Shipyard
+  group: # Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/mclass.yml
   guidebookPage: Null
   class:

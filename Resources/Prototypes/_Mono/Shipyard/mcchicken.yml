@@ -10,7 +10,7 @@
   description: A cheap, fried food ship. For those who enjoy ungodly ammounts of calories, now made on the go!.
   price: 28875
   category: Medium
-  group: Shipyard
+  group: # Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/mcchicken.yml
   guidebookPage: Null
   class:

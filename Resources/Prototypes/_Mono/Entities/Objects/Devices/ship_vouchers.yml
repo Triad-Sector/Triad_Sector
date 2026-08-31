@@ -14,14 +14,13 @@
   parent: BaseShipVoucher
   id: ShipVoucherFrontierIronMan
   name: Ironman Voucher
-  description: Allows purchase of one free Baeg or Framework from the Shipyard. Destroyed on sale.
+  description: Allows purchase of one free Framework from the Shipyard. Destroyed on sale.
   components:
   - type: Sprite
     layers:
     - state: blue
   - type: ShipyardVoucher
     vessels:
-    - Baeg
     - Framework
     consoleType: Shipyard
 
