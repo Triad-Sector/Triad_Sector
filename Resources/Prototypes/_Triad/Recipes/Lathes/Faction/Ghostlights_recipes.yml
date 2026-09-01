@@ -1,14 +1,14 @@
 # Coffee spelt backwards is eeffoc
 
 - type: latheRecipe
-  id: GhostlightHardsuitSpector
+  id: GhostlightHardsuitSpecter
   parent: NFBaseEVASuitRecipe
   completetime: 20
   categories:
   - CombatEva
   - EVASuits
   - ArmorNF
-  result: ClothingOuterHardsuitGhostSpector
+  result: ClothingOuterHardsuitGhostSpecter
   materials:
     Steel: 5000
     Plastitanium: 1500

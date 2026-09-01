@@ -1,9 +1,9 @@
-#Ghostlight Spector helmet
+#Ghostlight Specter helmet
 
 - type: entity
   parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
-  id: ClothingHeadHelmetHardsuitGhostlightSpector
-  name: G-500 Spector Helmet
+  id: ClothingHeadHelmetHardsuitGhostlightSpecter
+  name: G-500 Specter Helmet
   description: No. Regrets.
   categories: [ HideSpawnMenu ]
   components:

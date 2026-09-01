@@ -1,15 +1,15 @@
 # callbacks keep branding; names front end updated to no longer be branded.
 
 - type: technology
-  id: GhostlightHardsuitsResearchStuffYeahhhhh
+  id: GhostlightHardsuitsResearch
   name: Advanced Tacsuits
-  entityIcon: ClothingOuterHardsuitGhostSpector
+  entityIcon: ClothingOuterHardsuitGhostSpecter
   discipline: Arsenal
   tier: 3
   cost: 50000
   recipeUnlocks:
   - GhostlightHardsuitWraith
-  - GhostlightHardsuitSpector
+  - GhostlightHardsuitSpecter
   technologyPrerequisites:
   - SuperParts
   - HardsuitsArmoredAdvanced

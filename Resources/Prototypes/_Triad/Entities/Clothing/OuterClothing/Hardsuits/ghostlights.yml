@@ -26,8 +26,8 @@
         Radiation: 0.8
         Caustic: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.99
-    sprintModifier: 0.99
+    walkModifier: 1.00
+    sprintModifier: 1.00
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
@@ -40,7 +40,7 @@
 #Ghostlight Specter hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseJetpack ]
-  id: ClothingOuterHardsuitGhostSpector
+  id: ClothingOuterHardsuitGhostSpecter
   name: G-500 Specter hardsuit
   description: A Ghostlight-designed combat hardsuit. There are conflicting stories about it; some describe the suit as a symbol of hope in times of need. Others see its blood-soaked past under its ornate silver plating. Its history matters little; now it's just another tool of conflict. It's equipped with rear-mounted atmospheric thrusters.
   components:
@@ -74,6 +74,6 @@
     blockUnequipWhenAttached: false
     replaceCurrentClothing: true
     clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitGhostlightSpector
+      head: ClothingHeadHelmetHardsuitGhostlightSpecter
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
