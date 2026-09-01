@@ -13,7 +13,7 @@
   price: 95400
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/CIV/Bies.yml
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/bies.yml
   #guidebookPage: ShipyardBies
   class:
   - Salvage
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Bies
   mapName: 'Bies'
-  mapPath: /Maps/_Triad/Shuttles/CIV/Bies.yml
+  mapPath: /Maps/_Triad/Shuttles/CIV/bies.yml
   minPlayers: 0
   stations:
     Erudite:
