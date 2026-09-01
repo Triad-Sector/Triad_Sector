@@ -60,9 +60,10 @@
   - type: SpeechSoundsReplacer
     speechSounds: Ghost2
   - type: ThermalVision
+    flashDurationMultiplier: 5
+    pulseTime: 1
     isEquipment: true
-    color: "#00b6ff"
-    lightRadius: 45
+    toggleAction: PulseThermalVision
   - type: ShowHealthBars
     damageContainers:
     - Inorganic

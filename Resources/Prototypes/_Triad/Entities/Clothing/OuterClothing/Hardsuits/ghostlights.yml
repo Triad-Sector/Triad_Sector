@@ -15,7 +15,7 @@
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
-    damageCoefficient: 0.50
+    damageCoefficient: 0.80
   - type: Armor
     modifiers:
       coefficients:
@@ -39,7 +39,7 @@
 
 #Ghostlight Specter hardsuit
 - type: entity
-  parent: [ ClothingOuterHardsuitBase ]
+  parent: [ ClothingOuterHardsuitBase, BaseJetpack ]
   id: ClothingOuterHardsuitGhostSpector
   name: G-500 Specter hardsuit
   description: A Ghostlight-designed combat hardsuit. There are conflicting stories about it; some describe the suit as a symbol of hope in times of need. Others see its blood-soaked past under its ornate silver plating. Its history matters little; now it's just another tool of conflict. It's equipped with rear-mounted atmospheric thrusters.
@@ -54,20 +54,10 @@
     highPressureMultiplier: 0.7
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier
-    walkModifier: 0.95 # Mono
-    sprintModifier: 0.95 # Mono
+    walkModifier: 0.80 # Mono
+    sprintModifier: 0.80 # Mono
   - type: ExplosionResistance
     damageCoefficient: 0.90
-  - type: JumpAbility
-    jumpDistance: 5
-    jumpSound: /Audio/Effects/Footsteps/suitstep2.ogg
-  - type: ActionGrant
-    actions:
-    - ActionGravityJump 
-  - type: ItemActionGrant
-    actions:
-    - ActionGravityJump
-    activeIfWorn: true
   - type: Armor
     modifiers:
       coefficients:

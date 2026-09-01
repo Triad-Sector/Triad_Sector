@@ -10,6 +10,9 @@
         {
             "name": "icon"
         },
+   	{
+    	  "name": "icon-on"
+    	},
         {
             "name": "equipped-OUTERCLOTHING",
             "directions": 4
