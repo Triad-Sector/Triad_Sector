@@ -38,6 +38,7 @@
   - type: Explosive
     explosionType: Default
     maxIntensity: 20
+  - type: SafeCanLabel # Triad: SafeCan examine label
   - type: MeleeWeapon
     wideAnimationRotation: 45
     attackRate: 0.8

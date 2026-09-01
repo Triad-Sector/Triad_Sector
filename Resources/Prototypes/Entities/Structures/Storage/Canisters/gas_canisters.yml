@@ -6,6 +6,7 @@
   description: A canister that can contain any type of gas. It can be attached to connector ports using a wrench.
   components:
     - type: Animateable
+    - type: SafeCanLabel # Triad: SafeCan examine label
     - type: InteractionOutline
     - type: Transform
       noRot: true

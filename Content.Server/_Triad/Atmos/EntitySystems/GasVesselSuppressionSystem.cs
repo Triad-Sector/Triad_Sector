@@ -1,6 +1,5 @@
+using Content.Server._Triad.Atmos.Components;
 using Content.Server.Administration.Logs;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.Atmos.Piping.Unary.EntitySystems;
 using Content.Server.Popups;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
@@ -40,8 +39,7 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
     // N2, ...) must survive external fires untouched.
     public const float FlammableMoleThreshold = 0.1f;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string FoamPrototype = "FoamedIronMetal";
+    private static readonly EntProtoId FoamPrototype = "FoamedIronMetal";
 
     private static readonly SoundPathSpecifier SuppressionSound = new("/Audio/Effects/extinguish.ogg");
 
@@ -52,19 +50,18 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<GasCanisterComponent, AtmosDeviceUpdateEvent>(OnCanisterUpdated,
-            after: new[] { typeof(GasCanisterSystem) });
-
-        SubscribeLocalEvent<GasCanisterComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<GasTankComponent, ExaminedEvent>(OnExamined);
+        // The directed event bus allows one subscription per (component, event) pair, and both AtmosDeviceUpdateEvent
+        // on GasCanisterComponent and ExaminedEvent on GasTankComponent are taken by upstream systems. So vessels are
+        // swept from Update, and the examine label rides its own marker component.
+        SubscribeLocalEvent<SafeCanLabelComponent, ExaminedEvent>(OnExamined);
     }
 
-    private void OnExamined<T>(EntityUid uid, T component, ExaminedEvent args) where T : IComponent
+    private void OnExamined(EntityUid uid, SafeCanLabelComponent component, ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
             return;
 
-        args.PushMarkup(Loc.GetString("gas-vessel-suppression-examine"));
+        args.PushMarkup(Loc.GetString(component.Label));
     }
 
     public override void Update(float frameTime)
@@ -76,8 +73,8 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
             return;
         _timer -= TankCheckDelay;
 
-        var query = EntityQueryEnumerator<GasTankComponent>();
-        while (query.MoveNext(out var uid, out var tank))
+        var tankQuery = EntityQueryEnumerator<GasTankComponent>();
+        while (tankQuery.MoveNext(out var uid, out var tank))
         {
             // A tank docked in a canister is handled by the canister pass, which also fuses the slot.
             if (_containers.TryGetContainingContainer((uid, null, null), out var container)
@@ -91,9 +88,15 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
             tank.IsValveOpen = false;
             AnnounceSuppression(uid);
         }
+
+        var canisterQuery = EntityQueryEnumerator<GasCanisterComponent>();
+        while (canisterQuery.MoveNext(out var uid, out var canister))
+        {
+            CheckCanister(uid, canister);
+        }
     }
 
-    private void OnCanisterUpdated(EntityUid uid, GasCanisterComponent canister, ref AtmosDeviceUpdateEvent args)
+    private void CheckCanister(EntityUid uid, GasCanisterComponent canister)
     {
         GasMixture? tankAir = null;
         GasTankComponent? dockedTank = null;
