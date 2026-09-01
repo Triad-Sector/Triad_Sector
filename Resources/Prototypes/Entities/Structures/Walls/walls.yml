@@ -308,6 +308,7 @@
   parent: BaseWall
   id: WallPlastitaniumIndestructible
   name: plastitanium wall
+  description: Far too tough to destroy. # Triad
   suffix: indestructible
   components:
   - type: Tag
@@ -376,6 +377,7 @@
 - type: entity
   id: WallPlastitaniumDiagonalIndestructible
   name: plastitanium wall
+  description: Far too tough to destroy. # Triad
   suffix: diagonal, indestructible
   placement:
     mode: SnapgridCenter
