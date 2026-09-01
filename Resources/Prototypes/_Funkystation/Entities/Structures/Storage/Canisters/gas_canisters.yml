@@ -43,9 +43,9 @@
           BZCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: Lock
     locked: true
@@ -94,9 +94,9 @@
           HealiumCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: Lock
     locked: true
@@ -146,9 +146,9 @@
           NitriumCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: Lock
     locked: true
@@ -199,9 +199,9 @@
           PluoxiumCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: Lock
     locked: true

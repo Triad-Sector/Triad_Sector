@@ -163,10 +163,11 @@ namespace Content.Server.Atmos.EntitySystems
 
             var pressure = component.Air.Pressure;
 
-            if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
+            if (pressure > component.TankFragmentPressure /* Triad: && _maxExplosionRange > 0 */)
             {
                 // Triad: fragmenting tanks foam over instead of exploding; the contents are consumed with the
                 // entity. Flammable mixes are normally neutralized before this by GasVesselSuppressionSystem.
+                // The explosion-range cvar no longer gates this branch: zeroing it must not make tanks unbreakable.
                 // // Give the gas a chance to build up more pressure.
                 // for (var i = 0; i < 3; i++)
                 // {

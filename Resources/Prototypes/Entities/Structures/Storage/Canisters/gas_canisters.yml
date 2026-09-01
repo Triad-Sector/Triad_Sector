@@ -177,9 +177,9 @@
             StorageCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 # Filled canisters, contain 1871.71051 moles each
@@ -220,9 +220,9 @@
           AirCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: PirateBountyItem # Mono
     id: LifeSupportCan
@@ -262,9 +262,9 @@
           OxygenCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
   - type: PirateBountyItem # Mono
     id: LifeSupportCan
@@ -306,9 +306,9 @@
           LiquidOxygenCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 - type: entity
@@ -347,9 +347,9 @@
             NitrogenCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
     - type: PirateBountyItem # Mono
       id: LifeSupportCan
@@ -392,9 +392,9 @@
           LiquidNitrogenCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 - type: entity
@@ -434,9 +434,9 @@
             CarbonDioxideCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 #    - type: Lock # Frontier
 #      locked: true # Frontier
@@ -480,9 +480,9 @@
           LiquidCarbonDioxideCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 - type: entity
@@ -523,9 +523,9 @@
             PlasmaCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 #    - type: Lock # Frontier
 #      locked: true # Frontier
@@ -571,9 +571,9 @@
             TritiumCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 #    - type: Lock
 #      locked: true
@@ -618,9 +618,9 @@
             WaterVaporCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 - type: entity
@@ -664,9 +664,9 @@
             AmmoniaCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 #    - type: Lock
 #      locked: true
@@ -713,9 +713,9 @@
             NitrousOxideCanisterBroken:
               min: 1
               max: 1
+        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-        - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
         # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 
 - type: entity
@@ -761,9 +761,9 @@
           FrezonCanisterBroken:
             min: 1
             max: 1
+      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:FoamIfContentsBehavior # Triad: charged canisters foam over on destruction, contents consumed
       # - !type:DumpCanisterBehavior # Triad: removed - destroyed canisters no longer vent their contents
 #  - type: Lock
 #    locked: true

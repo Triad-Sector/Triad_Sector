@@ -1,11 +1,15 @@
 using Content.Server._Triad.Atmos.Components;
 using Content.Server.Administration.Logs;
+using Content.Server.NodeContainer.EntitySystems;
+using Content.Server.NodeContainer.NodeGroups;
+using Content.Server.NodeContainer.Nodes;
 using Content.Server.Popups;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.NodeContainer;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -23,13 +27,14 @@ namespace Content.Server._Triad.Atmos.EntitySystems;
 /// </summary>
 public sealed class GasVesselSuppressionSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _containers = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private NodeContainerSystem _nodeContainer = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _containers = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     // Trips just below Atmospherics.PlasmaMinimumBurnTemperature so a burn can never start inside a vessel. The
     // classic bomb recipes hold their fuel mix above ignition temperature, so this fires during assembly.
@@ -106,6 +111,7 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
         if (!NeedsSuppression(canister.Air) && (tankAir == null || !NeedsSuppression(tankAir)))
             return;
 
+        var disconnected = EmergencyDisconnect(uid, canister);
         SuppressMixture(canister.Air);
         canister.ReleaseValve = false;
 
@@ -117,7 +123,23 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
             _itemSlots.SetLock(uid, canister.GasTankSlot, true);
         }
 
-        AnnounceSuppression(uid);
+        AnnounceSuppression(uid, disconnected);
+    }
+
+    /// <summary>
+    /// Kicks a canister off its connector port. A ported canister equalizes with its pipe net every atmos tick, so
+    /// suppressing it in place would scrub the whole net one canister-volume at a time; unanchoring drops the node
+    /// out of the net so only the canister's own slug is neutralized.
+    /// </summary>
+    private bool EmergencyDisconnect(EntityUid uid, GasCanisterComponent canister)
+    {
+        if (!TryComp<NodeContainerComponent>(uid, out var nodeContainer)
+            || !_nodeContainer.TryGetNode(nodeContainer, canister.PortName, out PortablePipeNode? portNode)
+            || portNode.NodeGroup is not PipeNet { NodeCount: > 1 })
+            return false;
+
+        _transform.Unanchor(uid, Transform(uid));
+        return true;
     }
 
     /// <summary>
@@ -168,11 +190,12 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
         Spawn(FoamPrototype, _map.GridTileToLocal(gridUid, grid, tile));
     }
 
-    private void AnnounceSuppression(EntityUid vessel)
+    private void AnnounceSuppression(EntityUid vessel, bool disconnected = false)
     {
         _audio.PlayPvs(SuppressionSound, vessel);
-        _popup.PopupEntity(Loc.GetString("gas-vessel-suppression-triggered", ("vessel", vessel)), vessel);
+        var message = disconnected ? "gas-vessel-suppression-disconnected" : "gas-vessel-suppression-triggered";
+        _popup.PopupEntity(Loc.GetString(message, ("vessel", vessel)), vessel);
         _adminLogger.Add(LogType.Explosion, LogImpact.High,
-            $"Internal fire suppression neutralized flammable contents of {ToPrettyString(vessel):entity} at {_transform.GetMapCoordinates(vessel):coordinates}");
+            $"Internal fire suppression neutralized flammable contents of {ToPrettyString(vessel):entity} at {_transform.GetMapCoordinates(vessel):coordinates}{(disconnected ? " after an emergency disconnect from its port" : "")}");
     }
 }
