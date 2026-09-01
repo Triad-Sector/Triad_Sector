@@ -81,27 +81,10 @@
       board: [ DoorElectronicsMercenary ]
 
 - type: entity
-  parent: AirlockNfsdGlass
-  id: AirlockNfsdGlassLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockNfsd
-  id: AirlockNfsdLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
   parent: AirlockNfsd
   id: AirlockNfsdBrigLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -111,6 +94,7 @@
   parent: AirlockNfsdGlass
   id: AirlockNfsdBrigGlassLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -120,6 +104,7 @@
   parent: AirlockNfsd
   id: AirlockNfsdDetectiveLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -129,6 +114,7 @@
   parent: AirlockNfsdGlass
   id: AirlockNfsdDetectiveGlassLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -138,6 +124,7 @@
   parent: AirlockNfsd
   id: AirlockNfsdLawyerLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -147,6 +134,7 @@
   parent: AirlockNfsdGlass
   id: AirlockNfsdLawyerGlassLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -156,6 +144,7 @@
   parent: AirlockNfsd
   id: AirlockNfsdArmoryLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -165,6 +154,7 @@
   parent: AirlockNfsdGlass
   id: AirlockNfsdArmoryGlassLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
