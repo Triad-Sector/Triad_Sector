@@ -5,7 +5,7 @@ using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._Mono.FireControl;
 using Content.Shared.Power;
 using Content.Shared.Weapons.Ranged.Components;
-using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Weapons.Ranged.Events; // Triad
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -52,7 +52,6 @@ public sealed partial class FireControlSystem : EntitySystem
         SubscribeLocalEvent<FireControllableComponent, PowerChangedEvent>(OnControllablePowerChanged);
         SubscribeLocalEvent<FireControllableComponent, ComponentShutdown>(OnControllableShutdown);
         SubscribeLocalEvent<FireControllableComponent, EntParentChangedMessage>(OnControllableParentChanged);
-        SubscribeLocalEvent<FireControllableComponent, ShotAttemptedEvent>(OnShotAttempted); // Triad
 
         // Subscribe to grid split events to ensure we update when grids change
         SubscribeLocalEvent<GridSplitEvent>(OnGridSplit);
@@ -98,6 +97,7 @@ public sealed partial class FireControlSystem : EntitySystem
     }
 
     // Triad - Prevent firing guns unless controlled.
+    [SubscribeLocalEvent]
     private void OnShotAttempted(EntityUid uid, FireControllableComponent component, ref ShotAttemptedEvent args)
     {
         if (component.ControllingServer == null)
