@@ -5,7 +5,7 @@
   startNode: start
   targetNode: wallSolidDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/solid_diagonal.rsi
     state: state0
@@ -23,7 +23,7 @@
   startNode: start
   targetNode: wallReinforcedDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/reinforced_diagonal.rsi
     state: state0
@@ -41,7 +41,7 @@
   startNode: start
   targetNode: wallPlastitaniumDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
@@ -59,7 +59,7 @@
   startNode: start
   targetNode: plastitaniumWall
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/plastitanium.rsi
     state: full
