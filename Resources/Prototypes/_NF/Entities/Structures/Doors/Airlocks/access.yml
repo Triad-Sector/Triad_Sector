@@ -91,7 +91,7 @@
       board: [ DoorElectronicsBrig ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdBrigGlassLocked
   suffix: TSFMC Brig, Locked
   categories: [ HideSpawnMenu ] # Triad
@@ -111,7 +111,7 @@
       board: [ DoorElectronicsDetective ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdDetectiveGlassLocked
   suffix: TSFMC Detective, Locked
   categories: [ HideSpawnMenu ] # Triad
@@ -131,7 +131,7 @@
       board: [ DoorElectronicsSecurityLawyer ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdLawyerGlassLocked
   suffix: TSFMC Lawyer, Locked
   categories: [ HideSpawnMenu ] # Triad
@@ -151,7 +151,7 @@
       board: [ DoorElectronicsArmory ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdArmoryGlassLocked
   suffix: TSFMC Armory, Locked
   categories: [ HideSpawnMenu ] # Triad
