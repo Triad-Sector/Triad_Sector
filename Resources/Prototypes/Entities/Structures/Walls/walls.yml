@@ -308,7 +308,6 @@
   parent: BaseWall
   id: WallPlastitaniumIndestructible
   name: plastitanium wall
-  description: Skub knows this wall is too hard to destroy. # Frontier
   suffix: indestructible
   components:
   - type: Tag
@@ -346,7 +345,6 @@
   parent: [ WallPlastitaniumIndestructible, BaseWallTierThree ]
   id: WallPlastitanium
   name: plastitanium wall
-  description: Keeps the air in and the chimera out. # Frontier: restore base value
   suffix: ""
   components:
   - type: Construction # Mono
@@ -361,7 +359,6 @@
   parent: [ WallPlastitaniumDiagonalIndestructible, BaseWallTierTwo ] # Mono
   id: WallPlastitaniumDiagonal
   name: plastitanium wall
-  description: Keeps the air in and the chimera out. #Mono
   suffix: diagonal
   placement:
     mode: SnapgridCenter
@@ -380,7 +377,6 @@
   id: WallPlastitaniumDiagonalIndestructible
   name: plastitanium wall
   suffix: diagonal, indestructible
-  description: Skub knows this wall is too hard to destroy. # Frontier
   placement:
     mode: SnapgridCenter
     snap:
@@ -624,7 +620,6 @@
   name: shuttle wall
   parent: BaseWallTierOne
   suffix: Diagonal
-  description: Keeps the air in and the greytide out.
   placement:
     mode: SnapgridCenter
     snap:
@@ -969,7 +964,7 @@
   parent: BaseWallTierOne
   id: WallWeb
   name: web wall
-  description: Keeps the spiders in and the chimera out.
+  description: Keeps the spiders in and the greytide out.
   components:
   - type: Clickable
   - type: MeleeSound
