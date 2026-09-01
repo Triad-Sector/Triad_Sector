@@ -17,6 +17,6 @@ public abstract partial class SharedGasVesselSuppressionSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        args.PushMarkup(Loc.GetString(ent.Comp.Label));
+        args.PushMarkup(Loc.GetString(ent.Comp.Label), ent.Comp.ExaminePriority);
     }
 }
