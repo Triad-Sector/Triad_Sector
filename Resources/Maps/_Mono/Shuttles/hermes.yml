@@ -575,9 +575,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 4.5,-8.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
 - proto: APCBasic
   entities:
   - uid: 20
@@ -1902,9 +1899,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 4.5,-9.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 240
@@ -1963,9 +1957,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 4.5,-7.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
