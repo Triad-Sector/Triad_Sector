@@ -8,6 +8,7 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
+using Content.Shared._Triad.Atmos.Components;
 using Content.Shared._Triad.Atmos.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -58,9 +59,12 @@ public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppress
             return;
         _timer -= TankCheckDelay;
 
-        var tankQuery = EntityQueryEnumerator<GasTankComponent>();
-        while (tankQuery.MoveNext(out var uid, out var tank))
+        var tankQuery = EntityQueryEnumerator<GasTankComponent, SafeGasCanComponent>();
+        while (tankQuery.MoveNext(out var uid, out var tank, out var safety))
         {
+            if (!safety.Enabled)
+                continue;
+
             // A tank docked in a canister is handled by the canister pass, which also fuses the slot.
             if (_containers.TryGetContainingContainer((uid, null, null), out var container)
                 && HasComp<GasCanisterComponent>(container.Owner))
@@ -74,9 +78,12 @@ public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppress
             AnnounceSuppression(uid);
         }
 
-        var canisterQuery = EntityQueryEnumerator<GasCanisterComponent>();
-        while (canisterQuery.MoveNext(out var uid, out var canister))
+        var canisterQuery = EntityQueryEnumerator<GasCanisterComponent, SafeGasCanComponent>();
+        while (canisterQuery.MoveNext(out var uid, out var canister, out var safety))
         {
+            if (!safety.Enabled)
+                continue;
+
             CheckCanister(uid, canister);
         }
     }
@@ -85,7 +92,7 @@ public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppress
     {
         GasMixture? tankAir = null;
         GasTankComponent? dockedTank = null;
-        if (canister.GasTankSlot.Item is { } tankUid && TryComp<GasTankComponent>(tankUid, out dockedTank))
+        if (canister.GasTankSlot.Item is { } tankUid && TryComp(tankUid, out dockedTank))
             tankAir = dockedTank.Air;
 
         if (!NeedsSuppression(canister.Air) && (tankAir == null || !NeedsSuppression(tankAir)))
@@ -98,8 +105,7 @@ public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppress
         if (tankAir != null)
         {
             SuppressMixture(tankAir);
-            if (dockedTank != null)
-                dockedTank.IsValveOpen = false;
+            dockedTank?.IsValveOpen = false;
             _itemSlots.SetLock(uid, canister.GasTankSlot, true);
         }
 

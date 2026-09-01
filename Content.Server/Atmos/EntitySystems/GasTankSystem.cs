@@ -13,6 +13,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Content.Shared._Triad.Atmos.Components; // Triad
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -163,33 +164,37 @@ namespace Content.Server.Atmos.EntitySystems
 
             var pressure = component.Air.Pressure;
 
-            if (pressure > component.TankFragmentPressure /* Triad: && _maxExplosionRange > 0 */)
+            if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
             {
-                // Triad: fragmenting tanks foam over instead of exploding; the contents are consumed with the
-                // entity. Flammable mixes are normally neutralized before this by GasVesselSuppressionSystem.
-                // The explosion-range cvar no longer gates this branch: zeroing it must not make tanks unbreakable.
-                // // Give the gas a chance to build up more pressure.
-                // for (var i = 0; i < 3; i++)
-                // {
-                //     _atmosphereSystem.React(component.Air, component);
-                // }
-                //
-                // pressure = component.Air.Pressure;
-                // var range = MathF.Sqrt((pressure - component.TankFragmentPressure) / component.TankFragmentScale);
-                //
-                // if (TryComp<ExplosiveComponent>(owner, out var explosive)) // Monolith - pressure wave scaling
-                // {
-                //     explosive.MaxIntensity *= MathF.Sqrt(range); // technically pointless but guarantees it's a full cone instead of an octagonal frustum
-                //     explosive.IntensitySlope *= MathF.Sqrt(range);
-                // }
-                //
-                // // Let's cap the explosion, yeah?
-                // // !1984
-                // range = Math.Min(Math.Min(range, GasTankComponent.MaxExplosionRange), _maxExplosionRange);
-                //
-                // _explosions.TriggerExplosive(owner, radius: range);
-                _suppression.FoamOver(owner);
-                QueueDel(owner);
+                // Triad Start - gas can safety
+                if (HasComp<SafeGasCanComponent>(owner))
+                {
+                    _suppression.FoamOver(owner);
+                    QueueDel(owner);
+                    return;
+                }
+                // Triad end
+
+                // Give the gas a chance to build up more pressure.
+                for (var i = 0; i < 3; i++)
+                {
+                    _atmosphereSystem.React(component.Air, component);
+                }
+
+                pressure = component.Air.Pressure;
+                var range = MathF.Sqrt((pressure - component.TankFragmentPressure) / component.TankFragmentScale);
+
+                if (TryComp<ExplosiveComponent>(owner, out var explosive)) // Monolith - pressure wave scaling
+                {
+                    explosive.MaxIntensity *= MathF.Sqrt(range); // technically pointless but guarantees it's a full cone instead of an octagonal frustum
+                    explosive.IntensitySlope *= MathF.Sqrt(range);
+                }
+
+                // Let's cap the explosion, yeah?
+                // !1984
+                range = Math.Min(Math.Min(range, GasTankComponent.MaxExplosionRange), _maxExplosionRange);
+
+                _explosions.TriggerExplosive(owner, radius: range);
 
                 return;
             }
