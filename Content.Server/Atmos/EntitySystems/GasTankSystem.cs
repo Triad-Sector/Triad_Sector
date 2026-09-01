@@ -1,3 +1,4 @@
+using Content.Server._Triad.Atmos.EntitySystems; // Triad
 using Content.Server.Cargo.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Atmos;
@@ -20,6 +21,7 @@ namespace Content.Server.Atmos.EntitySystems
     {
         [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
         [Dependency] private ExplosionSystem _explosions = default!;
+        [Dependency] private GasVesselSuppressionSystem _suppression = default!; // Triad
         [Dependency] private SharedAudioSystem _audioSys = default!;
         [Dependency] private UserInterfaceSystem _ui = default!;
         [Dependency] private IRobustRandom _random = default!;
@@ -163,26 +165,30 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
             {
-                // Give the gas a chance to build up more pressure.
-                for (var i = 0; i < 3; i++)
-                {
-                    _atmosphereSystem.React(component.Air, component);
-                }
-
-                pressure = component.Air.Pressure;
-                var range = MathF.Sqrt((pressure - component.TankFragmentPressure) / component.TankFragmentScale);
-
-                if (TryComp<ExplosiveComponent>(owner, out var explosive)) // Monolith - pressure wave scaling
-                {
-                    explosive.MaxIntensity *= MathF.Sqrt(range); // technically pointless but guarantees it's a full cone instead of an octagonal frustum
-                    explosive.IntensitySlope *= MathF.Sqrt(range);
-                }
-
-                // Let's cap the explosion, yeah?
-                // !1984
-                range = Math.Min(Math.Min(range, GasTankComponent.MaxExplosionRange), _maxExplosionRange);
-
-                _explosions.TriggerExplosive(owner, radius: range);
+                // Triad: fragmenting tanks foam over instead of exploding; the contents are consumed with the
+                // entity. Flammable mixes are normally neutralized before this by GasVesselSuppressionSystem.
+                // // Give the gas a chance to build up more pressure.
+                // for (var i = 0; i < 3; i++)
+                // {
+                //     _atmosphereSystem.React(component.Air, component);
+                // }
+                //
+                // pressure = component.Air.Pressure;
+                // var range = MathF.Sqrt((pressure - component.TankFragmentPressure) / component.TankFragmentScale);
+                //
+                // if (TryComp<ExplosiveComponent>(owner, out var explosive)) // Monolith - pressure wave scaling
+                // {
+                //     explosive.MaxIntensity *= MathF.Sqrt(range); // technically pointless but guarantees it's a full cone instead of an octagonal frustum
+                //     explosive.IntensitySlope *= MathF.Sqrt(range);
+                // }
+                //
+                // // Let's cap the explosion, yeah?
+                // // !1984
+                // range = Math.Min(Math.Min(range, GasTankComponent.MaxExplosionRange), _maxExplosionRange);
+                //
+                // _explosions.TriggerExplosive(owner, radius: range);
+                _suppression.FoamOver(owner);
+                QueueDel(owner);
 
                 return;
             }
