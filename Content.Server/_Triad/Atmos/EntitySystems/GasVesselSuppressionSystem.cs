@@ -8,7 +8,6 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
-using Content.Shared._Triad.Atmos.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -23,7 +22,7 @@ namespace Content.Server._Triad.Atmos.EntitySystems;
 /// fused into the canister. Vessels that fail anyway (fragmentation, destruction while charged) foam over into a
 /// solid metal-foam block via <see cref="FoamOver"/> instead of exploding or venting, consuming their contents.
 /// </summary>
-public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppressionSystem
+public sealed partial class GasVesselSuppressionSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
@@ -85,7 +84,7 @@ public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppress
     {
         GasMixture? tankAir = null;
         GasTankComponent? dockedTank = null;
-        if (canister.GasTankSlot.Item is { } tankUid && TryComp<GasTankComponent>(tankUid, out dockedTank))
+        if (canister.GasTankSlot.Item is { } tankUid && TryComp(tankUid, out dockedTank))
             tankAir = dockedTank.Air;
 
         if (!NeedsSuppression(canister.Air) && (tankAir == null || !NeedsSuppression(tankAir)))
