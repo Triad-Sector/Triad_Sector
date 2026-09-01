@@ -1,4 +1,3 @@
-using Content.Server._Triad.Atmos.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
@@ -6,16 +5,15 @@ using Content.Server.NodeContainer.Nodes;
 using Content.Server.Popups;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
-using Content.Shared.Examine;
-using Content.Shared.NodeContainer;
+using Content.Shared._Triad.Atmos.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
-using GasCanisterComponent = Content.Shared.Atmos.Piping.Unary.Components.GasCanisterComponent;
+using Content.Shared.NodeContainer;
 
 namespace Content.Server._Triad.Atmos.EntitySystems;
 
@@ -25,7 +23,7 @@ namespace Content.Server._Triad.Atmos.EntitySystems;
 /// fused into the canister. Vessels that fail anyway (fragmentation, destruction while charged) foam over into a
 /// solid metal-foam block via <see cref="FoamOver"/> instead of exploding or venting, consuming their contents.
 /// </summary>
-public sealed class GasVesselSuppressionSystem : EntitySystem
+public sealed partial class GasVesselSuppressionSystem : SharedGasVesselSuppressionSystem
 {
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
@@ -50,24 +48,6 @@ public sealed class GasVesselSuppressionSystem : EntitySystem
 
     private const float TankCheckDelay = 0.5f;
     private float _timer;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        // The directed event bus allows one subscription per (component, event) pair, and both AtmosDeviceUpdateEvent
-        // on GasCanisterComponent and ExaminedEvent on GasTankComponent are taken by upstream systems. So vessels are
-        // swept from Update, and the examine label rides its own marker component.
-        SubscribeLocalEvent<SafeCanLabelComponent, ExaminedEvent>(OnExamined);
-    }
-
-    private void OnExamined(EntityUid uid, SafeCanLabelComponent component, ExaminedEvent args)
-    {
-        if (!args.IsInDetailsRange)
-            return;
-
-        args.PushMarkup(Loc.GetString(component.Label));
-    }
 
     public override void Update(float frameTime)
     {
