@@ -44,6 +44,7 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
         SubscribeLocalEvent<TapeRecorderComponent, ChangeModeTapeRecorderMessage>(OnChangeModeMessage);
         SubscribeLocalEvent<TapeRecorderComponent, AfterActivatableUIOpenEvent>(OnUIOpened);
         SubscribeLocalEvent<TapeRecorderComponent, SignalReceivedEvent>(OnSignalReceived);
+        SubscribeLocalEvent<TapeRecorderComponent, ComponentStartup>(OnStartup); // Triad - Shipsaving compatibility.
 
         SubscribeLocalEvent<TapeCassetteComponent, ExaminedEvent>(OnTapeExamined);
         SubscribeLocalEvent<TapeCassetteComponent, DamageChangedEvent>(OnDamagedChanged);
@@ -83,6 +84,18 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
             Dirty(tape); // make sure clients have the right value once it's stopped
         }
     }
+
+    // Triad - Shipsaving compatibility.
+    /// <summary>
+    /// Resets mode and updates appearance on startup. Otherwise, these persist strangely.
+    /// </summary>
+    private void OnStartup(Entity<TapeRecorderComponent> ent, ref ComponentStartup args)
+    {
+        SetMode(ent, TapeRecorderMode.Stopped);
+        UpdateAppearance(ent);
+
+    }
+    // End Triad
 
     private void OnUIOpened(Entity<TapeRecorderComponent> ent, ref AfterActivatableUIOpenEvent args)
     {
