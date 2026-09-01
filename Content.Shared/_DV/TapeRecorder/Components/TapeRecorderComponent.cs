@@ -87,7 +87,7 @@ public sealed partial class TapeRecorderComponent : Component
     /// Ports for signal control
     /// </summary>
     [DataField, AutoNetworkedField]
-    public ProtoId<SinkPortPrototype> PausePort = "Pause";
+    public ProtoId<SinkPortPrototype> PausePort = "TapePause"; // Triad - Cherrypicking tape recorders from Monolith from Frontier. Pause was renamed to TapePause.
 
     [DataField, AutoNetworkedField]
     public ProtoId<SinkPortPrototype> RecordPort = "Record";
