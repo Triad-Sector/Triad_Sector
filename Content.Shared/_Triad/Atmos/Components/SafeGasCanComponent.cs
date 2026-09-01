@@ -17,9 +17,6 @@ public sealed partial class SafeGasCanComponent : Component
     [DataField, AutoNetworkedField]
     public LocId DisabledLabel = "gas-vessel-suppression-examine-disabled";
 
-    [DataField]
-    public string DisabledLabelPostfix = "disabled";
-
     [DataField, AutoNetworkedField]
     public int ExaminePriority = 0;
 }

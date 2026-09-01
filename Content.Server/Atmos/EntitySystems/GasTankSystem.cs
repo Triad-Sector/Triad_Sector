@@ -167,7 +167,7 @@ namespace Content.Server.Atmos.EntitySystems
             if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
             {
                 // Triad Start - gas can safety
-                if (HasComp<SafeGasCanComponent>(owner))
+                if (TryComp<SafeGasCanComponent>(owner, out var safety) && safety.Enabled)
                 {
                     _suppression.FoamOver(owner);
                     QueueDel(owner);
