@@ -28,19 +28,6 @@
 
 - type: entity
   parent: WeaponCaseLong
-  id: WeaponCaseTDFLongVulcan
-  suffix: TDF, Vulcan
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponRifleVulcan
-    - id: Magazine762x51mmFMJ
-      amount: 4
-    - id: AmmoBox762x51mmFMJ
-      amount: 2
-
-- type: entity
-  parent: WeaponCaseLong
   id: WeaponCaseTDFLongDrozd
   suffix: TDF, Drozd
   components:

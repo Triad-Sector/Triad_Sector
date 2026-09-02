@@ -1,6 +1,21 @@
 # FMC->TCC. TCC cost 5x - Triad
 
 - type: listing
+  id: UplinkSecurityLake
+  name: uplink-security-lake-name
+  description: uplink-security-lake-desc
+  productEntity: WeaponLauncherNfsdLake
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
   id: UplinkSecurityEg4
   name:  uplink-security-eg4-name
   description: uplink-security-eg4-desc
@@ -67,43 +82,15 @@
         tags:
           - SecurityUplink
 
-#- type: listing
-#  id: UplinkSecurityMagazineSubsonic
-#  name:  uplink-subsonic-mag-name
-#  description: uplink-subsonic-mag-desc
-#  productEntity: Magazine762x39mmSubsonic
-#  cost:
-#    TriadCommerceCredit: 3
-#  categories:
-#  - UplinkSecurityAmmo
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - SecurityUplink
-
-#- type: listing
-#  id: UplinkSecurityBoxSubsonic
-#  name:  uplink-subsonic-box-name
-#  description: uplink-subsonic-box-desc
-#  productEntity: AmmoBox762x39mmSubsonic
-#  cost:
-#    TriadCommerceCredit: 10
-#  categories:
-#  - UplinkSecurityAmmo
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - SecurityUplink
-
+# Bulk ammo boxes
 - type: listing
-  id: UplinkSecurityMagazine8x65mm
-  name:  uplink-security-8x65mm-magazine-name
-  description: uplink-security-8x65mm-magazine-desc
-  productEntity: Magazine8x65mmSKR
+  id: UplinkSecurityShotLethal
+  name:  uplink-security-shotlethal-name
+  description: uplink-security-shotlethal-desc
+  productEntity: AmmoBox12_gaugeBuckshot
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Boxes/12_gauge.rsi, state: lethal }
   cost:
-    TriadCommerceCredit: 5
+    TriadCommerceCredit: 1
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -113,12 +100,13 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityBoxSKR
-  name:  uplink-security-8x65mm-box-name
-  description: uplink-security-8x65mm-box-desc
-  productEntity: AmmoBox8x65mmSKR
+  id: UplinkSecurityShotBeanbag
+  name:  uplink-security-shotbeanbag-name
+  description: uplink-security-shotbeanbag-desc
+  productEntity: AmmoBox12_gaugeBeanbag
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Boxes/12_gauge.rsi, state: beanbag }
   cost:
-    TriadCommerceCredit: 12
+    TriadCommerceCredit: 1
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -128,10 +116,26 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMagazine68x52mm
-  name:  uplink-security-68x52mm-magazine-name
-  description: uplink-security-68x52mm-magazine-desc
-  productEntity: Magazine68x52mmCaseless
+  id: UplinkSecurityShotSlug
+  name:  uplink-security-shotslug-name
+  description: uplink-security-shotslug-desc
+  productEntity: AmmoBox12_gaugeSlug
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Boxes/12_gauge.rsi, state: slug }
+  cost:
+    TriadCommerceCredit: 1
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBox46x30mm
+  name:  uplink-security-4-6x30mm-box-name
+  description: uplink-security-4-6x30mm-box-desc
+  productEntity: AmmoBox46x30mmBigFMJ
   cost:
     TriadCommerceCredit: 2
   categories:
@@ -144,11 +148,187 @@
 
 - type: listing
   id: UplinkSecurityBox68x52mm
-  name:  uplink-security-68x52mm-box-name
-  description: uplink-security-68x52mm-box-desc
+  name:  uplink-security-6-8x52mm-box-name
+  description: uplink-security-6-8x52mm-box-desc
   productEntity: AmmoBox68x52mmCaselessBig
   cost:
-    TriadCommerceCredit: 8
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBox8x65mmFMJ
+  name:  uplink-security-8x65mm-box-name
+  description: uplink-security-8x65mm-box-desc
+  productEntity: AmmoBox8x65mmSKR
+  cost:
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+# Magazine boxes
+- type: listing
+  id: UplinkSecurity45ACPPistolMagazine
+  name: uplink-security-Magazine45ACPPistolFMJ-name
+  description: uplink-security-Magazine45ACPPistolFMJ-desc
+  productEntity: BoxMagazine45_ACPFMJ
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_mag.rsi, state: base }
+  cost:
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurity45ACPPistolMagazineRubber
+  name: uplink-security-Magazine45ACPPistolFMJ-rubber-name
+  description: uplink-security-Magazine45ACPPistolFMJ-rubber-desc
+  productEntity: BoxMagazine45_ACPRubber
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_mag.rsi, state: rubber }
+  cost:
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityWT550Magazine
+  name:  uplink-security-wt550-magazine-name
+  description: uplink-security-wt550-magazine-desc
+  productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurity45ACPSMGMagazine
+  name: uplink-security-Magazine45ACPPistolFMJ-smg-name
+  description: uplink-security-Magazine45ACPPistolFMJ-smg-desc
+  productEntity: BoxMagazine45_ACPSubMachineGunFMJ
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_smg_mag.rsi, state: base }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurity45ACPSMGMagazineRubber
+  name: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-name
+  description: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-desc
+  productEntity: BoxMagazine45_ACPSubMachineGunRubber
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_smg_mag.rsi, state: rubber }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMagazine68x52mm
+  name:  uplink-security-6-8x52mmMagazine-name
+  description: uplink-security-6-8x52mmMagazine-desc
+  productEntity: BoxMagazine68x52mmFMJ
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/6.35x40mm_caseless/6.35x40mm_caseless_rifle_mag.rsi, state: red }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurity68x52MagazineRubber
+  name:  uplink-security-6-8x52mmMagazine-rubber-name
+  description: uplink-security-6-8x52mmMagazine-rubber-desc
+  productEntity: BoxMagazine68x52mmRubber
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/6.35x40mm_caseless/6.35x40mm_caseless_rifle_mag.rsi, state: base }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMagazine8x65mmFMJ
+  name:  uplink-security-8x65mm-magazine-name
+  description: uplink-security-8x65mm-magazine-desc
+  productEntity: BoxMagazine8x65mmFMJ
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/8x65mm/8x65mm.rsi, state: base }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityEmpGrenadeAmmo
+  name:  uplink-security-emp-ammo-name
+  description: uplink-security-emp-ammo-desc
+  productEntity: BoxEmpGrenadesAmmo
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityTrackingDartsAmmo
+  name:  uplink-security-trackingdart-ammo-name
+  description: uplink-security-trackingdart-ammo-desc
+  productEntity: NFBoxDartsTracking
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    TriadCommerceCredit: 5
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -312,7 +492,7 @@
   productEntity: WeaponDisabler
   icon: { sprite: Objects/Weapons/Guns/Battery/disabler.rsi, state: base }
   cost:
-    TriadCommerceCredit: 5
+    TriadCommerceCredit: 2
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -360,7 +540,7 @@
   productEntity: WeaponLaserCarbine
   icon: { sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 5 # GARBAGE!!!
+    TriadCommerceCredit: 2 # GARBAGE!!!
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -377,22 +557,6 @@
   icon: { sprite: Objects/Weapons/Guns/Battery/disabler_smg.rsi, state: base }
   cost:
     TriadCommerceCredit: 25 # STUNMETA!!!
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityWT550
-  name:  uplink-security-wt550-name
-  description: uplink-security-wt550-desc
-  productEntity: WeaponSubMachineGunWt550
-  icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 20
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -499,6 +663,8 @@
     - !type:BuyerJobCondition
       whitelist:
        - TdfChiefEnforcer
+       - TdfWarden
+       - TdfPatrolTeamLeader
 
 - type: listing
   id: UplinkSecurityMedicalAssembler
@@ -600,11 +766,6 @@
       whitelist:
         tags:
           - SecurityUplink
-    - !type:BuyerJobCondition
-      whitelist:
-       - TdfWarden
-       - TdfPatrolTeamLeader
-       - TdfChiefEnforcer
 
 #- type: listing
 #  id: UplinkSecurityThrusterKit
@@ -621,214 +782,6 @@
 #      whitelist:
 #        tags:
 #          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityPistolMagazine
-  name:  uplink-security-Magazine9x19mmPistolFMJ-name
-  description: uplink-security-Magazine9x19mmPistolFMJ-desc
-  productEntity: BoxMagazine9x19mmFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity45ACPMagazine
-  name: uplink-security-Magazine45ACPPistolFMJ-name
-  description: uplink-security-Magazine45ACPPistolFMJ-desc
-  productEntity: BoxMagazine45_ACPFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity45ACPSMGMagazine
-  name: uplink-security-Magazine45ACPPistolFMJ-smg-name
-  description: uplink-security-Magazine45ACPPistolFMJ-smg-desc
-  productEntity: BoxMagazine45_ACPSubMachineGunFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity556x45mmMagazine
-  name:  uplink-security-5-56x45mmMagazine-name
-  description: uplink-security-5-56x45mmMagazine-desc
-  productEntity: BoxMagazine556x45mmFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity762x51mmMagazine
-  name:  uplink-security-7-62x51mmMagazine-name
-  description: uplink-security-7-62x51mmMagazine-desc
-  productEntity: BoxMagazine762x51mmFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity762x51mmMagazineRubber
-  name: uplink-security-7-62x51mmMagazine-rubber-name
-  description: uplink-security-7-62x51mmMagazine-rubber-desc
-  productEntity: BoxMagazine762x51mmRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity762x39mmMagazine
-  name:  uplink-security-7-62x39mmMagazine-name
-  description: uplink-security-7-62x39mmMagazine-desc
-  productEntity: BoxMagazine762x39mmFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityWT550Magazine
-  name:  uplink-security-wt550magazine-name
-  description: uplink-security-wt550magazine-desc
-  productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityPistolMagazineRubber
-  name:  uplink-security-Magazine9x19mmPistolFMJ-rubber-name
-  description: uplink-security-Magazine9x19mmPistolFMJ-rubber-desc
-  productEntity: BoxMagazine9x19mmRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity45ACPMagazineRubber
-  name: uplink-security-Magazine45ACPPistolFMJ-rubber-name
-  description: uplink-security-Magazine45ACPPistolFMJ-rubber-desc
-  productEntity: BoxMagazine45_ACPRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity45ACPSMGMagazineRubber
-  name: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-name
-  description: uplink-security-Magazine45ACPPistolFMJ-smg-rubber-desc
-  productEntity: BoxMagazine45_ACPSubMachineGunRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity556x45mmMagazineRubber
-  name: uplink-security-5-56x45mmMagazine-rubber-name
-  description: uplink-security-5-56x45mmMagazine-rubber-desc
-  productEntity: BoxMagazine556x45mmRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurity762x39mmMagazineRubber
-  name: uplink-security-7-62x39mmMagazine-rubber-name
-  description: uplink-security-7-62x39mmMagazine-rubber-desc
-  productEntity: BoxMagazine762x39mmRubber
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-        - SecurityUplink
 
 - type: listing
   id: UplinkSecurityHypo
@@ -886,27 +839,6 @@
        - TdfChiefEnforcer
        - TdfMedic
        - TdfWarden
-
-- type: listing
-  id: UplinkSecurityMateba
-  name:  uplink-security-mateba-name
-  description: uplink-security-mateba-desc
-  productEntity: WeaponRevolverMateba
-  icon: { sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    - !type:BuyerJobCondition
-      whitelist:
-       - TdfWarden
-       - TdfPatrolTeamLeader
-       - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityTruncheon
@@ -990,102 +922,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecuritySpeedloader
-  name:  uplink-security-speedloader-name
-  description: uplink-security-speedloader-desc
-  productEntity: SpeedLoader45_magnumFMJ
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/SpeedLoaders/45_magnum/45_magnum_speed_loader.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecuritySpeedloaderRubber
-  name:  uplink-security-speedloaderrubber-name
-  description: uplink-security-speedloaderrubber-desc
-  productEntity: SpeedLoader45_magnumRubber
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/SpeedLoaders/45_magnum/45_magnum_speed_loader.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityShotLethal
-  name:  uplink-security-shotlethal-name
-  description: uplink-security-shotlethal-desc
-  productEntity: AmmoBox12_gaugeBuckshot
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityShotBeanbag
-  name:  uplink-security-shotbeanbag-name
-  description: uplink-security-shotbeanbag-desc
-  productEntity: AmmoBox12_gaugeBeanbag
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityShotIncend
-  name:  uplink-security-shotincend-name
-  description: uplink-security-shotincend-desc
-  productEntity: AmmoBox12_gaugeIncendiary
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 10
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityShotSlug
-  name:  uplink-security-shotslug-name
-  description: uplink-security-shotslug-desc
-  productEntity: AmmoBox12_gaugeSlug
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityCash7500
   name: uplink-security-cash7500-name
   description: uplink-security-cash7500-desc
@@ -1156,7 +992,7 @@
   productEntity: BoxStingerGrenadesNfsd
   icon: { sprite: Objects/Weapons/Grenades/stingergrenade.rsi, state: icon}
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 5
   categories:
     - UplinkSecurityExplosives # Moved to Explosives - Mono
   conditions:
@@ -1172,7 +1008,7 @@
   productEntity: BoxEMPGrenadesNfsd
   icon: { sprite: Objects/Weapons/Grenades/empgrenade.rsi, state: icon}
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 5
   categories:
     - UplinkSecurityExplosives
   conditions:
@@ -1262,38 +1098,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityTrackingBundle
-  name: uplink-security-trackingdart-bundle-name
-  description: uplink-security-trackingdart-bundle-desc
-  productEntity: ClothingBackpackDuffelTdfTrackingBundle
-  icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 20
-  categories:
-    - UplinkSecurityBundles
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityEmpBundle
-  name: uplink-security-emp-bundle-name
-  description: uplink-security-emp-bundle-desc
-  productEntity: ClothingBackpackDuffelTdfEmpBundle
-  icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 20
-  categories:
-    - UplinkSecurityBundles
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityToolBundle
   name: uplink-security-tools-name
   description: uplink-security-tools-desc
@@ -1342,22 +1146,6 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityVulcanBundle
-  name: uplink-security-gun-vulcan-name
-  description: uplink-security-gun-vulcan-desc
-  productEntity: WeaponCaseTDFLongVulcan
-  icon: { sprite: _DV/Objects/Weapons/Guns/Rifles/vulcan.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 10
-  categories:
-  - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
   id: UplinkSecurityDrozdBundle
   name: uplink-security-gun-drozd-name
   description: uplink-security-gun-drozd-desc
@@ -1378,7 +1166,7 @@
   name: uplink-security-gun-wt550-name
   description: uplink-security-gun-wt550-desc
   productEntity: WeaponCaseTDFLongWt550
-  icon: { sprite: _Mono/Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
+  icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
   cost:
     TriadCommerceCredit: 15
   categories:
@@ -1468,38 +1256,6 @@
     whitelist:
       tags:
       - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityEmpGrenadeAmmo
-  name:  uplink-security-emp-ammo-name
-  description: uplink-security-emp-ammo-desc
-  productEntity: BoxEmpGrenadesAmmo
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityTrackingDartsAmmo
-  name:  uplink-security-trackingdart-ammo-name
-  description: uplink-security-trackingdart-ammo-desc
-  productEntity: NFBoxDartsTracking
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
 
 - type: listing
   id: UplinkSecuritySpaceBladeSec

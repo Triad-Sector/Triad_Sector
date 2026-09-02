@@ -74,14 +74,17 @@ uplink-security-techfab-desc = A circuit board for a TDF Techfab. Allows the pro
 uplink-security-key-name = TDF Encryption Keys
 uplink-security-key-desc = A box of 4 encryption keys that give access to the TDF radio channel.
 
-uplink-security-emprocket-name = EMP Rocket
-uplink-security-emprocket-desc = An EMP rocket for the RPG-7.
+uplink-security-4-6x30mm-box-name = 4.6x30mm FMJ Ammo Box
+uplink-security-4-6x30mm-box-desc = A box containing 240 rounds of 4.6x30mm FMJ.
 
-uplink-security-Magazine9x19mmPistolFMJ-name = 9x19mm Pistol Magazines
-uplink-security-Magazine9x19mmPistolFMJ-desc = A box containing 4 filled 9x19mm magazines.
+uplink-security-45ACP-box-name = 45 ACP FMJ Ammo Box
+uplink-security-45ACP-box-desc = A box containing 240 rounds of 45 ACP FMJ.
 
-uplink-security-Magazine9x19mmPistolFMJ-rubber-name = 9x19mm Pistol Rubber Magazines
-uplink-security-Magazine9x19mmPistolFMJ-rubber-desc = A box containing 4 filled 9x19mm (rubber) magazines.
+uplink-security-6-8x52mm-box-name = 6.8x52mm FMJ Ammo Box
+uplink-security-6-8x52mm-box-desc = A box containing 240 rounds of 6.8x52 caseless FMJ. Can be loaded directly into the Riot MMG.
+
+uplink-security-8x65mm-box-name = 8x65mm SKR Ammo Box
+uplink-security-8x65mm-box-description = A box containing 100 rounds of 8x65mm SKR FMJ.
 
 uplink-security-Magazine45ACPPistolFMJ-name = .45 ACP Pistol Magazines
 uplink-security-Magazine45ACPPistolFMJ-desc = A box containing 4 filled .45 ACP magazines.
@@ -95,26 +98,17 @@ uplink-security-Magazine45ACPPistolFMJ-smg-desc = A box containing 4 filled .45 
 uplink-security-Magazine45ACPPistolFMJ-smg-rubber-name = .45 ACP SMG Rubber Magazines
 uplink-security-Magazine45ACPPistolFMJ-smg-rubber-desc = A box containing 4 filled .45 ACP (rubber) SMG magazines.
 
-uplink-security-5-56x45mmMagazine-name = 5.56x45mm Magazines
-uplink-security-5-56x45mmMagazine-desc = A box containing 4 filled 5.56x45mm magazines.
+uplink-security-6-8x52mmMagazine-name = 6.8x52mm STANAG Magazines
+uplink-security-6-8x52mmMagazine-desc = A box containing 4 filled 6.8x52mm caseless magazines.
 
-uplink-security-5-56x45mmMagazine-rubber-name = 5.56x45mm Rubber Magazines
-uplink-security-5-56x45mmMagazine-rubber-desc = A box containing 4 filled 5.56x45mm (rubber) magazines.
+uplink-security-6-8x52mmMagazine-rubber-name = 6.8x52mm STANAG Rubber Magazines
+uplink-security-6-8x52mmMagazine-rubber-desc = A box containing 4 filled 6.8x52mm caseless (rubber) magazines.
 
-uplink-security-7-62x39mmMagazine-name = 7.62x39mm Magazines
-uplink-security-7-62x39mmMagazine-desc = A box containing 4 filled 7.62x39mm magazines.
+uplink-security-8x65mm-magazine-name = 8x65mm SKR FMJ Magazines
+uplink-security-8x65mm-magazine-desc = A box containing 4 8x65mm SKR FMJ magazines.
 
-uplink-security-7-62x39mmMagazine-rubber-name = 7.62x39mm Rubber Magazines
-uplink-security-7-62x39mmMagazine-rubber-desc = a Box containing 4 filled 7.62x39mm (rubber) magazines.
-
-uplink-security-7-62x51mmMagazine-name = 7.62x51mm Magazines
-uplink-security-7-62x51mmMagazine-desc = A box containing 4 filled 7.62x51mm magazines.
-
-uplink-security-7-62x51mmMagazine-rubber-name = 7.62x51mm Rubber Magazines
-uplink-security-7-62x51mmMagazine-rubber-desc = a Box containing 4 filled 7.62x51mm (rubber) magazines.
-
-uplink-security-wt550magazine-name = 4.6x30mm Top-mounted Magazines
-uplink-security-wt550magazine-desc = A box containing 4 filled 4.6x30mm top-mounted magazines.
+uplink-security-wt550-magazine-name = 4.6x30mm Top-mounted Magazines
+uplink-security-wt550-magazine-desc = A box containing 4 filled 4.6x30mm top-mounted magazines.
 
 uplink-security-hypo-name = Hypospray
 uplink-security-hypo-desc = A sterile medical injector for instant delivery of medications.
@@ -122,40 +116,20 @@ uplink-security-ambuzol-name = Ambuzol Syringe
 uplink-security-ambuzol-desc = 15u of anti-viral medication to halt the progress of the highly contagious zombie virus.
 uplink-security-medkit-name = Combat Medkit
 uplink-security-medkit-desc = A kit containing advanced medical supplies suitable for use in the field.
-uplink-security-inspector-name = Inspector
-uplink-security-inspector-desc = Standard issue revolver. Cheaply mass produced and found in all corners of the known universe. Uses .45 magnum.
-uplink-security-mateba-name = Mateba
-uplink-security-mateba-desc = The Mateba Autorevolver's unique barrel alignment and recoil driven cylinder and hammer allow for unparalleled fire rate and accuracy.
 uplink-security-truncheon-name = Truncheon
 uplink-security-truncheon-desc = Standard issue blunt object. Excellent for cracking windows and skulls alike.
-uplink-security-armingsword-name = Plasteel Arming Sword
-uplink-security-armingsword-desc = Ancient design meets modern materials.
-uplink-security-captainsword-name = Captain's Sabre
-uplink-security-captainsword-desc = A sword normally reserved for captains, admiralty, and other high command. Has a small chance to reflect incoming projectiles.
-uplink-security-navyofficersword-name = Navy Officer Sabre
-uplink-security-navyofficersword-desc = A sword normally reserved for navy officers, admiralty, and other high command of the solarian naval forces. Has a small chance to reflect incoming projectiles.
 uplink-security-pulsepistol-name = Pulse Pistol
 uplink-security-pulsepistol-desc = A high powered laser pistol normally reserved for elite ERT units. Has an internal battery, but requires using a security charging dock.
-uplink-security-pulsecarbine-name = Pulse Carbine
-uplink-security-pulsecarbine-desc = A high powered laser carbine normally reserved for elite ERT and combat units. Has an internal battery, but requires using a security charging dock.
 uplink-security-hammer-name = Breaching Hammer
 uplink-security-hammer-desc = A large, two-handed hammer that is perfect for breaking down doors, or breaching through hull plating.
 uplink-security-teleshield-name = Telescopic Shield
 uplink-security-teleshield-desc = An expandable handheld shield offering excellent protection.
 uplink-security-energyshield-name = Energy Shield
 uplink-security-energyshield-desc = An exotic energy shield that blocks most incoming damage.
-uplink-security-swat-name = Swat Gas Mask
-uplink-security-swat-desc = A full-face, TDF-branded version of the standard issue security gas mask.
-uplink-security-speedloader-name = .45 Magnum Speed Loader
-uplink-security-speedloader-desc = A revolver speed loader that comes pre-loaded with .45 magnum cartridges.
-uplink-security-speedloaderrubber-name = .45 magnum Rubber Speed Loader
-uplink-security-speedloaderrubber-desc = A revolver speed loader that comes pre-loaded with .45 rubber cartridges.
 uplink-security-shotlethal-name = Lethal Shotgun Shells
 uplink-security-shotlethal-desc = A box of lethal 12 gauge buckshot shotgun shells.
 uplink-security-shotbeanbag-name = Beanbag Shotgun Shells
 uplink-security-shotbeanbag-desc = A box of non-lethal 12 gauge beanbag shotgun shells.
-uplink-security-shotincend-name = Incendiary Shotgun Shells
-uplink-security-shotincend-desc = A box of lethal 12 gauge incendiary shotgun shells.
 uplink-security-shotslug-name = Lethal Shotgun Slug Shells
 uplink-security-shotslug-desc = A box of lethal 12 gauge slug shotgun shells.
 uplink-security-empgrenade-box-name = EMP Grenade Box
@@ -216,6 +190,9 @@ uplink-security-tools-desc = A duffel bag loaded with tools for repair and maint
 
 uplink-security-components-name = Super Components box
 uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
+
+uplink-security-lake-name = Non-lethal grenade launcher
+uplink-security-lake-desc = A China Lake pattern grenade launcher modified to only fire non-lethal grenades.
 
 uplink-security-gun-mk58-name = MA Mk-58 Bundle
 uplink-security-gun-mk58-desc = Case containing a standard-issue pistol and reserve ammunition.
