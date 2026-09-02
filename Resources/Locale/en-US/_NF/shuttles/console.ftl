@@ -62,5 +62,5 @@ shuttle-console-service-flag-Social-description = A social space to gather and h
 # Triad Begin
 shuttle-console-service-flag-Food-description = Food and drink sold onboard.
 shuttle-console-service-flag-Peace-description = This vessel is pacifistic and has opted out of combat.
-shuttle-console-service-flag-Private-description = Private activities requiring OOC consent to view are taking place onboard.
+shuttle-console-service-flag-Private-description = Private shuttle, requiring explicit permission from the owner to board.
 # Triad End
