@@ -41,6 +41,44 @@
 
 - type: entity
   parent: WeaponCaseLong
+  id: WeaponCaseTDFLongDrozd
+  suffix: TDF, Drozd
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunDrozd
+    - id: Magazine45_ACPSubMachineGunFMJ
+      amount: 4
+    - id: AmmoBox45_ACPFMJ
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongWt550
+  suffix: TDF, WT550
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunWt550
+    - id: Magazine46x30mmSubMachineGunTopMountedFMJ
+      amount: 4
+    - id: AmmoBox46x30mmFMJ
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongEnforcer
+  suffix: TDF, Enforcer
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunEnforcer
+    - id: AmmoBox12_gaugeBuckshot
+      amount: 3
+    - id: AmmoBox12_gaugeSlug
+
+- type: entity
+  parent: WeaponCaseLong
   id: WeaponCaseTDFLongBastion
   suffix: TDF, Bastion
   components:

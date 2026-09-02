@@ -217,20 +217,29 @@ uplink-security-tools-desc = A duffel bag loaded with tools for repair and maint
 uplink-security-components-name = Super Components box
 uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
 
-uplink-security-mk58-name = MA Mk-58 Bundle
-uplink-security-mk58-desc = Duffel bag containing a standard-issue pistol and four spare magazines.
+uplink-security-gun-mk58-name = MA Mk-58 Bundle
+uplink-security-gun-mk58-desc = Case containing a standard-issue pistol and reserve ammunition.
 
-uplink-security-lecter-name = M-7 "Lecter" Bundle
-uplink-security-lecter-desc = Duffel bag containing a standard-issue assault rifle and four spare magazines.
+uplink-security-gun-lecter-name = M-7 "Lecter" Bundle
+uplink-security-gun-lecter-desc = Case containing a standard-issue assault rifle and reserve ammunition.
 
-uplink-security-vulcan-name = HWM FCM "Vulcan" Bundle
-uplink-security-vulcan-desc = Duffel bag containing a powerful battle rifle and four spare magazines.
+uplink-security-gun-vulcan-name = HWM FCM "Vulcan" Bundle
+uplink-security-gun-vulcan-desc = Case containing a powerful battle rifle and reserve ammunition.
 
-uplink-security-bastion-name = "Bastion" Shotgun Bundle
-uplink-security-bastion-desc = Duffel bag containing a exceptionally powerful four gauge shotgun and two spare shell boxes.
+uplink-security-gun-drozd-name = TCA M-5 "Drozd" Bundle
+uplink-security-gun-drozd-desc = Case containing a high-caliber submachine gun and reserve ammunition.
 
-uplink-security-dmr-name = MR-8T DMR Bundle
-uplink-security-dmr-desc = Duffel bag containing a high-accuracy dedicated marksman rifle and four spare magazines.
+uplink-security-gun-wt550-name = UI WT550 Bundle
+uplink-security-gun-wt550-desc = Case containing a one-handed submachine gun and reserve ammunition.
 
-uplink-security-mmg-name = MMG-38 "Riot" Bundle
-uplink-security-mmg-desc = Duffel bag containing a high-capacity medium machine gun and two spare belt boxes.
+uplink-security-gun-enforcer-name = Enforcer Bundle
+uplink-security-gun-enforcer-desc = Case containing a semi-automatic shotgun and reserve ammunition.
+
+uplink-security-gun-bastion-name = "Bastion" Shotgun Bundle
+uplink-security-gun-bastion-desc = Case containing a high-caliber shotgun and reserve ammunition.
+
+uplink-security-gun-mr8t-name = MR-8T DMR Bundle
+uplink-security-gun-mr8t-desc = Case containing an accurate dedicated marskman rifle and reserve ammunition.
+
+uplink-security-gun-riot-name = MMG-38 "Riot" Bundle
+uplink-security-gun-riot-desc = Case containing a high-capacity medium machine gun and reserve ammunition.

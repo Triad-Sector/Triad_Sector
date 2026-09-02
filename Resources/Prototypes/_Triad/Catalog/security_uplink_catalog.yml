@@ -354,22 +354,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityVulcan
-  name:  uplink-security-vulcan-name
-  description: uplink-security-vulcan-desc
-  productEntity: WeaponRifleVulcan
-  icon: { sprite: _DV/Objects/Weapons/Guns/Rifles/vulcan.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityLaserCarbine
   name:  uplink-security-lasercarbine-name
   description: uplink-security-lasercarbine-desc
@@ -1364,6 +1348,54 @@
   productEntity: WeaponCaseTDFLongVulcan
   icon: { sprite: _DV/Objects/Weapons/Guns/Rifles/vulcan.rsi, state: icon }
   cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityDrozdBundle
+  name: uplink-security-gun-drozd-name
+  description: uplink-security-gun-drozd-desc
+  productEntity: WeaponCaseTDFLongDrozd
+  icon: { sprite: _Mono/Objects/Weapons/Guns/SMGs/drozd.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityWt550Bundle
+  name: uplink-security-gun-wt550-name
+  description: uplink-security-gun-wt550-desc
+  productEntity: WeaponCaseTDFLongWt550
+  icon: { sprite: _Mono/Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 15
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityEnforcerBundle
+  name: uplink-security-gun-enforcer-name
+  description: uplink-security-gun-enforcer-desc
+  productEntity: WeaponCaseTDFLongEnforcer
+  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
+  cost:
     TriadCommerceCredit: 15
   categories:
   - UplinkSecurityWeapons
@@ -1406,7 +1438,7 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMMGBundle
+  id: UplinkSecurityRiotBundle # The gun, not... an actual riot.
   name: uplink-security-gun-riot-name
   description: uplink-security-gun-riot-desc
   productEntity: WeaponCaseTDFLongRiot
