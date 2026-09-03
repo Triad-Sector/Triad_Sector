@@ -346,6 +346,7 @@
   parent: [ WallPlastitaniumIndestructible, BaseWallTierThree ]
   id: WallPlastitanium
   name: plastitanium wall
+  description: Keeps the air in and space out. # Triad
   suffix: ""
   components:
   - type: Construction # Mono
@@ -360,6 +361,7 @@
   parent: [ WallPlastitaniumDiagonalIndestructible, BaseWallTierTwo ] # Mono
   id: WallPlastitaniumDiagonal
   name: plastitanium wall
+  description: Keeps the air in and space out. # Triad
   suffix: diagonal
   placement:
     mode: SnapgridCenter
