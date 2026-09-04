@@ -50,6 +50,7 @@ public sealed partial class GasTurbineComponent : Component
     /// Most efficient power generation at this value, overspeed at 1.2*this
     /// </summary>
     [DataField]
+    [GuidebookData] // Triad: quoted on the turbine page
     public float BestRPM = 600;
 
     /// <summary>
@@ -68,6 +69,7 @@ public sealed partial class GasTurbineComponent : Component
     /// Maximum volume of gas to process per tick
     /// </summary>
     [DataField]
+    [GuidebookData] // Triad
     public float FlowRateMax = Atmospherics.MaxTransferRate * 5;
 
     [DataField]
@@ -93,6 +95,7 @@ public sealed partial class GasTurbineComponent : Component
     /// Maximum health of the turbine
     /// </summary>
     [DataField, AutoNetworkedField]
+    [GuidebookData] // Triad
     public int BladeHealthMax = 15;
 
     /// <summary>

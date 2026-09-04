@@ -1,170 +1,132 @@
+<!-- Triad: rewritten as an operator's manual in the dossier visual grammar; alarms, automation, meltdown and the containment failsafe were undocumented. -->
 <Document>
-	# The Nuclear Reactor
-	<Box>
-		<GuideEntityEmbed Entity="NuclearReactorNormal" Scale="1.5"/>
+	# Nuclear Reactor
+
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="NuclearReactorNormal" Caption="" Scale="1"/>
+			</Box>
+		</ColorBox>
+
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]ROD GRID   [/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridHeight"/] full, [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridHeight"/] small[/mono]
+
+			[mono][color=#897236]OVERHEAT   [/color]  [color=#ffa500][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]FIRE       [/color]  [color=#ffa500][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorFireTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]MELTDOWN   [/color]  [color=#cc3333][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]LEAKAGE    [/color]  design limit [protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumRadiation"/] rads[/mono]
+
+			[mono][color=#897236]HEAT       [/color]  design limit [protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumThermalPower" format="N0"/] W[/mono]
+		</Box>
 	</Box>
 
-	The Nuclear Reactor is the primary source of heat the generator uses to make power.
+	The Nuclear Reactor is the heat source of the [textlink="Nuclear Generator" link="NuclearGenerator"]. Fission inside its fuel rods heats a coolant gas flowing through it, and the [textlink="Gas Turbine" link="GasTurbine"] turns that heat into power.
 
-	It is represented as a grid of Reactor Rod ports, which engineers can insert different fabricated rods into.
+	[color=#897236][mono]──── [color=#ffdd33][bold]THE GRID[/bold][/color] ────────────────────────────────────────[/mono][/color]
 
-	Heat is generated through fission reactions inside fuel rods and transferred into the coolant gas by gas channels.
+	The reactor is a grid of [color=#a4885c][bold]rod ports[/bold][/color], and what you put in each port, and where, is the whole craft of running it.
 
-	## Reactor Rods
+	- Neutrons wander from port to port.
+	- One that reaches a [color=#a4885c][bold]fuel rod[/bold][/color] can split an atom and release heat and more neutrons.
+	- One that reaches the edge of the grid escapes as [color=#ffa500][bold]radiation[/bold][/color].
+	- Everything else in the grid either soaks neutrons up, bounces them back, or carries heat away.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]REACTOR RODS[/bold][/color] ────────────────────────────────────[/mono][/color]
+
 	<Box>
-		<GuideEntityEmbed Entity="NuclearFabricator"/>
-	</Box>
-	<Box>
+		<GuideEntityEmbed Entity="NuclearFabricator" Caption="nuclear fabricator"/>
 		<GuideEntityEmbed Entity="CerenkiteReactorFuelRod" Caption="fuel rod"/>
 		<GuideEntityEmbed Entity="BohrumReactorControlRod" Caption="control rod"/>
 		<GuideEntityEmbed Entity="SteelReactorGasChannel" Caption="gas channel"/>
 		<GuideEntityEmbed Entity="SteelReactorHeatExchanger" Caption="heat exchanger"/>
 	</Box>
 
-	Reactor Rods are the parts that go into the Reactor grid and cause it to function.
+	Every rod is printed at the nuclear fabricator in a choice of [textlink="materials" link="NuclearMaterials"]. Four kinds go in the grid.
 
-	They transfer heat and interact with neutrons within the Reactor.
+	- [color=#a4885c][bold]Fuel rods[/bold][/color] are the source of neutrons and heat. Neutron radioactivity throws off hot, fast neutrons and decays into ordinary radioactivity, which decays into spent fuel. Spent fuel does not slow a rod down; it tells you the rod is due for replacement.
+	- [color=#a4885c][bold]Control rods[/bold][/color] soak up neutrons before they reach the next fuel rod. They are the only rod you adjust while running: 100% inserted is as effective as they get, 0% switches them off.
+	- [color=#a4885c][bold]Gas channels[/bold][/color] hand their heat to the coolant flowing through them. Each one adds [protodata="SteelReactorGasChannel" comp="ReactorPart" member="GasVolume"/] L/s to the flow the reactor can take.
+	- [color=#a4885c][bold]Heat exchangers[/bold][/color] move heat sideways across the grid and ignore neutrons. Put them between a fuel rod and a gas channel.
 
-	If a Reactor Rod's [color=#a4885c]Temperature[/color] reaches [color=orange][protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="MeltingPoint"/]k[/color], it will begin to melt.
-
-	Once melted it will become much more active and able to transfer heat into the Reactor, which may cause a total meltdown.
-
-	Handling hot Reactor Rods can cause serious burns.
-
-	If it is hotter than [color=orange][protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookHotTemp"/]C[/color] you'll need gloves to be able to handle them. At [color=orange][protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookBurnTemp"/]C[/color], not even gloves will protect you.
-
-	There are four different types of Reactor Rods that can be manufactured from a variety of [textlink="materials" link="NuclearMaterials"] and placed into the Reactor grid: Fuel Rods, Control Rods, Gas Channels, and Heat Exchangers.
-
-	### Fuel Rods
-	Fuel Rods are the source of neutrons and heat within the Reactor.
-
-	They can emit neutrons through spontaneous decay or from interacting with existing neutrons, creating heat.
-
-	They have two statistics that determine their effectiveness and volatility:
-	- [color=#a4885c]Neutron Radioactivity[/color]: Creates high-energy neutrons and large amounts of heat. Decays into Radioactivity.
-	- [color=#a4885c]Radioactivity[/color]: Creates neutrons and heat. Decays into Spent Fuel.
-
-	They also keep track of how much [color=#a4885c]Spent Fuel[/color] they contain, which does not affect the Fuel Rod's performance, but can indicate when it is time to replace it.
+	[color=lime][bold]► A working layout:[/bold][/color] each fuel rod beside a control rod, ringed by heat exchangers, gas channels where the exchangers end. Fuel rods that touch each other feed each other, which is fast, hot and hard to stop.
 
 	<Box>
-		<GuideEntityEmbed Entity="NuclearCentrifuge"/>
-		<GuideEntityEmbed Entity="IngotPlutonium"/>
+		<GuideEntityEmbed Entity="NuclearCentrifuge" Caption="nuclear centrifuge"/>
+		<GuideEntityEmbed Entity="IngotPlutonium" Caption="plutonium"/>
 	</Box>
 
-	Once a Fuel Rod contains enough [color=#a4885c]Spent Fuel[/color], it can be reprocessed by a nuclear centrifuge to create plutonium, which can be used to make plutonium fuel rods.
+	A rod full of spent fuel goes into a [color=#a4885c][bold]nuclear centrifuge[/bold][/color], which recovers plutonium for the strongest fuel rods you can print.
 
-	### Control Rods
-	Control rods control the flow of neutrons within the Reactor.
+	[color=#897236][mono]──── [color=#00ccff][bold]CONTROL PANEL[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-	They have the unique property of being able to be adjusted, which changes how effective they are.
+	Everything is done from the reactor's panel, or from a [color=#00ccff]reactor monitor[/color] linked to it. The panel has three parts.
 
-	They can control the power output of a reactor by limiting the number of neutrons that go through them and into a Fuel Rod.
+	- [color=#a4885c][bold]Targeting[/bold][/color]: the arrows pick a grid position, and Insert and Remove moves a rod between that port and the reactor's rod slot. The readout shows the rod at that port: name, temperature (T), neutron radioactivity (N), radioactivity (R), spent fuel (S). The bottom line names whatever is waiting in the slot.
+	- [color=#a4885c][bold]Grid view[/bold][/color]: a picture of the grid, switchable between temperature, neutrons and fuel. Watch the temperature view for a hot spot forming.
+	- [color=#a4885c][bold]Status panel[/bold][/color]: the temperature gauge runs to the meltdown point, the radiation gauge to the design leakage limit, and the thermal power gauge to the design heat output. The control rod gauges show set and actual insertion, with buttons to move them.
 
-	### Gas Channels
-	Gas Channels transfer heat from themselves into the coolant gas that flows through them.
+	[color=#999999][italic]Thermal power is a fair guess at what the turbine can pull out of the gas. It rises and falls as the reactor breathes and is rarely steady.[/italic][/color]
 
-	Each Gas Channel will increase the flow rate by [color=orange][protodata="SteelReactorGasChannel" comp="ReactorPart" member="GasVolume"/] L/s[/color], allowing the Reactor to process more gas at once.
+	[color=#897236][mono]──── [color=#1e90ff][bold]AUTOMATION[/bold][/color] ──────────────────────────────────────[/mono][/color]
 
-	### Heat Exchangers
-	Heat Exchangers guide the spread of heat within the Reactor.
+	- The reactor takes two signals: [color=#1e90ff][bold]Insert control rods[/bold][/color] and [color=#1e90ff][bold]Retract control rods[/bold][/color].
+	- Each pulse moves the rods by 5%. A held signal keeps them moving.
+	- Wire the turbine's speed signals to them and the reactor throttles itself to hold the turbine at its best speed. A signaller or a logic circuit works too.
 
-	They are exceptionally good at transferring heat and don't interact with neutrons, making them ideal for getting heat from a Fuel Rod into a Gas Channel without interfering with the fission process.
-
-	## Controlling the Reactor
-	The Reactor is controlled and modified through its UI, which also provides information on the Reactor's status.
-
-	The Reactor UI has three major panels: Targeting, Grid View, Status Panel
-
-	### Targeting
-	The targeting panel has controls for inserting and removing rods into and out of the Reactor grid.
-
-	The position of the target are adjusted through the arrow buttons, with the exact coordinate shown in the center.
-
-	Reactor Rods can be inserted or removed through the Insert/Remove button below the position buttons.
-
-	If there is a Reactor Rod at the target position, it will show information on that Reactor Rod, including its:
-	- Name
-	- Temperature (T)
-	- Neutron Radioactivity (N)
-	- Radioactivity (R)
-	- Spent Fuel (S)
-
-	The bottom of the panel displays the name of the part that in the Reactor's inventory, which is ready to be inserted into the grid or taken out of the Reactor.
-
-	### Grid View
-	The grid view gives a graphic visualization of the status of the Reactor grid.
-
-	The Change View button can be used to alternate between the different views:
-	- Temperature View: shows the temperature of the components
-	- Neutron View: shows the number of neutrons at any given position
-	- Fuel View: shows the fuel level of the components
-
-	### Status Panel
-	The status panel gives information on the Reactor as a whole and provides control of the control rods.
-
-	The [color=#a4885c]Temperature Gauge[/color] shows the current temperature of the Reactor, in a range between [color=orange]0k[/color] and [color=orange][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/]k[/color].
-
-	If the Reactor ever reaches [color=orange][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/]k[/color], it will [color=red]meltdown[/color].
-
-	<!-- Triad: the blast is confined to the reactor's own grid; see gridOnly in ExplosionSystem -->
-	A meltdown trips the Reactor's containment failsafe, which projects a barrier along the hull for the instant of the blast. Everything inside the hull takes the full force of it. Nothing beyond the hull, docked ships included, takes any.
-
-	The Reactor calls its warnings on the shortband, so only ships within range hear it in trouble.
-
-	The [color=#a4885c]Radiation Gauge[/color] shows the current radiation being emitted by the Reactor, in a range between [color=orange]0[/color] and [color=orange][protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumRadiation"/][/color] rads.
-
-	The [color=#a4885c]Thermal Power Gauge[/color] shows an estimation of the amount of thermal power being made by the Reactor, in a range between [color=orange]0[/color] and [color=orange][protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumThermalPower" format="N0"/][/color] thermal watts (Wt).
-
-	Thermal Power is a decent estimation of how much power can be extracted from the gas by the [textlink="Gas Turbine" link="GasTurbine"].
-
-	Thermal Power has a tendency to increase and decrease as the Reactor runs, rarely remaining stable.
-
-	The [color=#a4885c]Control Rod Gauges[/color] show the actual and set insertion levels of the control rods within the Reactor, and provide buttons to change the insertion level.
-
-	100% insertion means the control rods are as effective as possible and 0% insertion means the control rods are functionally disabled.
-
-	## Cooling the Reactor
-	The Reactor is cooled through the use of gasses, but some gasses have effects on the Reactor when in sufficient quantities:
+	[color=#897236][mono]──── [color=#ffdd33][bold]COOLANT GASES[/bold][/color] ───────────────────────────────────[/mono][/color]
 
 	<Box>
-		<GuideEntityEmbed Entity="PlasmaCanister" Caption=""/>
+		<GuideEntityEmbed Entity="PlasmaCanister" Caption="plasma"/>
+		<GuideEntityEmbed Entity="CarbonDioxideCanister" Caption="carbon dioxide"/>
+		<GuideEntityEmbed Entity="TritiumCanister" Caption="tritium"/>
 	</Box>
-	[color=#ff3300][bold]Plasma[/bold][/color] has a reactive effect, creating more neutrons and decaying into [color=#13ff4b][bold]Tritium[/bold][/color].
 
-	If there is enough plasma within the Reactor, it may end up going into a runaway reaction and [color=red]melting down[/color].
+	Any gas carries heat, but three of them do more than that inside the reactor.
 
-	<Box>
-		<GuideEntityEmbed Entity="CarbonDioxideCanister" Caption=""/>
-	</Box>
-	[color=#4e4e4e][bold]Carbon Dioxide[/bold][/color] has a moderative effect, removing neutrons that come into contact with it.
+	- [color=#ff3300][bold]Plasma[/bold][/color] breeds neutrons and decays into tritium. Enough plasma in the loop and the reactor runs away from you.
+	- [color=#4e4e4e][bold]Carbon dioxide[/bold][/color] swallows neutrons it meets. Use it to tame a plasma loop or to slow the reactor down.
+	- [color=#13ff4b][bold]Tritium[/bold][/color] falls apart inside the reactor into a random mix of oxygen, nitrogen, ammonia, nitrous oxide and frezon. With oxygen present it burns at reactor temperatures, and that heat goes straight into the casing.
 
-	This can be used to regulate a plasma reaction or slow down the Reactor.
+	[color=#897236][mono]──── [color=#ffa500][bold]WARNINGS AND ALARMS[/bold][/color] ─────────────────────────────[/mono][/color]
 
-	<Box>
-		<GuideEntityEmbed Entity="TritiumCanister" Caption=""/>
-	</Box>
-	[color=#13ff4b][bold]Tritium[/bold][/color] transmutes within a Reactor, randomly decaying into a wide variety of gasses:
-	- [color=#2887e8][bold]Oxygen[/bold][/color]
-	- [color=#FF0000][bold]Nitrogen[/bold][/color]
-	- [color=#56941e][bold]Ammonia[/bold][/color]
-	- [color=#8f00ff][bold]Nitrous Oxide[/bold][/color]
-	- [color=#3a758c][bold]Frezon[/bold][/color]
+	[mono]  Normal     [color=lime]■■■■■[/color][color=#555555]□□□□□[/color]  below [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K[/mono]
 
-	In the presence of [color=#2887e8][bold]Oxygen[/bold][/color] and at the temperatures of the Reactor, [color=#13ff4b][bold]Tritium[/bold][/color] will begin to burn, [color=red]creating large amounts of heat[/color].
+	[mono]  Overheat   [color=#ffa500]■■■■■■[/color][color=#555555]□□□□[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K   smoke, amber lights, klaxon, shortband warning[/mono]
 
-	## Reactor Radiation
+	[mono]  Fire       [color=#cc3333]■■■■■■■■[/color][color=#555555]□□[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorFireTemp"/] K   flames, red lights, second warning[/mono]
+
+	[mono]  Imminent   [color=#cc3333]■■■■■■■■■[/color][color=#555555]□[/color]  halfway  station-wide meltdown announcement[/mono]
+
+	[mono]  Meltdown   [color=#cc3333]■■■■■■■■■■[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K   siren, yellow alert, the blast[/mono]
+
+	- Two more klaxons watch other limits: the [color=#a4885c][bold]thermal alarm[/bold][/color] when heat output passes the gauge's top, and the [color=#a4885c][bold]radiation alarm[/bold][/color] when leakage passes half the radiation gauge.
+	- The [color=lime]Acknowledge[/color] button silences a klaxon until its condition clears and comes back.
+	- Warnings go out on the shortband because a reactor in trouble is a problem for the ships around it, not for a department a sector away.
+
+	[color=#897236][mono]──── [color=#cc3333][bold]MELTDOWN[/bold][/color] ────────────────────────────────────────[/mono][/color]
+
+	[color=red][bold]▲ Warning:[/bold][/color] a meltdown guts the ship. Every rod is destroyed, their heat and a cloud of tritium go into the room, burning debris flies across the deck, and the blast follows. What is left stays radioactive.
+
+	The blast is the one part that is contained. The reactor's [color=#a4885c][bold]containment failsafe[/bold][/color] throws a barrier along the hull for the instant of the explosion. Everything inside the hull takes the full force. Nothing beyond it, docked ships included, takes any.
+
+	[color=#897236][mono]──── [color=#ffa500][bold]RADIATION[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
 	<Box>
 		<GuideEntityEmbed Entity="SignRadiation" Caption=""/>
-	</Box>
-	The Reactor sometimes allows some radiation to leak out, which can pose a danger to unprotected crew.
-
-	The radiation level of the Reactor is determined by how many neutrons are escaping the Reactor grid.
-
-	<Box>
-		<GuideEntityEmbed Entity="ClosetRadiationSuit"/>
-		<GuideEntityEmbed Entity="ClothingOuterSuitRad"/>
-		<GuideEntityEmbed Entity="GeigerCounter"/>
+		<GuideEntityEmbed Entity="ClosetRadiationSuit" Caption=""/>
+		<GuideEntityEmbed Entity="ClothingOuterSuitRad" Caption=""/>
+		<GuideEntityEmbed Entity="GeigerCounter" Caption=""/>
 	</Box>
 
-	Proper protection and shielding are highly recommended when working near the Reactor.
+	Neutrons that escape the grid leak out as radiation, and a badly packed grid leaks more. Shielding around the reactor room, a suit for whoever works beside it, and a geiger counter on the wall are not optional.
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- A rod above [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookHotTemp"/] C needs gloves. Above [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookBurnTemp"/] C gloves will not save your hands either.
+	- A rod that reaches [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="MeltingPoint"/] K melts inside the grid, gets far more active, and drags the reactor toward meltdown with it.
+	- Fuel rods are, technically, edible. Eating one irradiates you from the inside.
 </Document>

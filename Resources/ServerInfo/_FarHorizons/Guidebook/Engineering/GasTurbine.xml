@@ -1,90 +1,87 @@
+<!-- Triad: rewritten as an operator's manual in the dossier visual grammar; automation, repair and failure were undocumented. -->
 <Document>
-	# The Gas Turbine
-	<Box>
-		<GuideEntityEmbed Entity="GasTurbineNormal" Scale="1.5"/>
+	# Gas Turbine
+
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="GasTurbineNormal" Caption="" Scale="1"/>
+			</Box>
+		</ColorBox>
+
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]BEST SPEED [/color]  [color=lime][protodata="GasTurbineNormal" comp="GasTurbine" member="BestRPM" format="N0"/] RPM[/color][/mono]
+
+			[mono][color=#897236]FLOW       [/color]  0 to [protodata="GasTurbineNormal" comp="GasTurbine" member="FlowRateMax" format="N0"/] L/s[/mono]
+
+			[mono][color=#897236]INLET      [/color]  [protodata="GasTurbineNormal" comp="GasTurbine" member="MinTemp" format="N0"/] K to [color=#ffa500][protodata="GasTurbineNormal" comp="GasTurbine" member="MaxTemp" format="N0"/] K[/color][/mono]
+
+			[mono][color=#897236]BLADES     [/color]  [protodata="GasTurbineNormal" comp="GasTurbine" member="BladeHealthMax"/] points of health[/mono]
+
+			[mono][color=#897236]OUTPUT     [/color]  HV cable under the turbine[/mono]
+
+			[mono][color=#897236]REPAIR     [/color]  [color=lime]► welder[/color][/mono]
+		</Box>
 	</Box>
 
-	The Gas Turbine is where the power actually gets made.
+	The Gas Turbine is where the [textlink="Nuclear Generator" link="NuclearGenerator"] actually makes power. Hot gas from the [textlink="Nuclear Reactor" link="NuclearReactor"] spins it, electricity comes out of the cable beneath it, and cooler gas goes back to the reactor.
 
-	It takes in hot gas from the [textlink="Nuclear Reactor" link="NuclearReactor"] and outputs electricity and sends colder gas back to the Reactor.
+	[color=#897236][mono]──── [color=#ffdd33][bold]HOW IT SPINS[/bold][/color] ────────────────────────────────────[/mono][/color]
 
-	The amount of energy made by the Turbine is affected by its RPM, which is adjusted through Flow Rate and Stator Load.
+	Three numbers describe the turbine, and you only set two of them.
 
-	### Flow Rate
-	The Flow Rate determines how much gas goes through the Turbine every second.
+	- [color=#a4885c][bold]Flow rate[/bold][/color] is how much gas the turbine pulls through itself each second. More flow means more heat per second and a faster turbine.
+	- [color=#a4885c][bold]Stator load[/bold][/color] is how much power the turbine draws off each revolution. Raising it makes more power per turn and drags the speed down; lowering it lets the turbine spin up. It cannot go below 1,000.
+	- [color=#a4885c][bold]Speed[/bold][/color] follows from the other two. The turbine makes the most power at its best speed, shown as a [color=lime]green mark[/color] on its gauge. Faster or slower, and the same gas makes less power.
 
-	The higher the Flow Rate, the higher the RPM of the Turbine.
+	Tuning the turbine is a matter of moving the stator load until the needle sits on the mark. The reactor can only pass so much gas, so match the flow to it:
 
-	Flow Rate is usually set to allow maximum flow through the Reactor core, which can be found by the following equation: 
-    <Box>
-        [italic][protodata="SteelReactorGasChannel" comp="ReactorPart" member="GasVolume"/] * number of gas channels + [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorVesselGasVolume"/] L/s[/italic]
-    </Box>
+	[color=#999999][italic][protodata="SteelReactorGasChannel" comp="ReactorPart" member="GasVolume"/] L/s per gas channel, plus [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorVesselGasVolume"/] L/s for the vessel itself.[/italic][/color]
 
-	### Stator Load
-	The Stator Load determines how much power is made by each revolution of the Turbine.
+	[color=#897236][mono]──── [color=#ffa500][bold]STATUS INDICATORS[/bold][/color] ───────────────────────────────[/mono][/color]
 
-	The higher the Stator Load, the lower the RPM of the Turbine.
+	[mono]  [color=#ffa500]Overspeed[/color]  above 120% of best speed    blades take damage[/mono]
 
-	Stator Load is usually adjusted to ensure the Turbine stays at optimal RPM.
+	[mono]  [color=#ffa500]Overtemp [/color]  within 500 K of the limit   purge at the limit[/mono]
 
-	### RPM
-	The RPM (Rotations Per Minute) represents how fast the Turbine is spinning.
+	[mono]  [color=#ffa500]Stalling [/color]  load too high for the gas   turbine stops[/mono]
 
-	The Turbine has an optimal RPM, where it will produce the most power.
+	[mono]  [color=#ffa500]Undertemp[/color]  gas too cold to work        no heat to take[/mono]
 
-	Going faster or slower than optimal will result in poor performance.
+	- [color=#a4885c][bold]Overspeed[/bold][/color]: the faster it runs past the mark, the more often the blades chip. At four times best speed, or once the blades are gone, the turbine [color=red][bold]tears itself apart[/bold][/color] and throws its blades across the room as shrapnel.
+	- [color=#a4885c][bold]Overtemp[/bold][/color]: at the inlet limit the turbine opens its emergency purge and dumps the gas into the room instead of running on it. That gas is hot enough to burn and, if flammable, to set the room alight.
+	- [color=#a4885c][bold]Stalling[/bold][/color]: the gas is not pushing hard enough to beat the stator load. Lower the load or get the reactor hotter. A stalled turbine beeps at you.
+	- [color=#a4885c][bold]Undertemp[/bold][/color]: the gas is at room temperature or below, and there is no heat in it to take. The reactor is not doing its job.
 
-	## Turbine Status Indicators
-	The Turbine has a set of status indicators to warn operators of dangerous conditions or faults.
+	[color=#897236][mono]──── [color=#ffdd33][bold]TURBINE PARTS[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-	### Overspeed
-	The Turbine RPM is too high.
-
-	If the Turbine RPM gets too high, it will start to take damage.
-
-	Prolonged time spent at overspeed or excessive overspeed will cause the Turbine to [color=red]tear itself apart[/color].
-
-	Damage to the Turbine can be repaired with a [color=yellow]welder[/color], though it will likely take multiple attempts to fully repair it.
-
-	### Overtemp
-	The gas going into the Turbine is too hot.
-
-	If the gas coming into the Turbine is hotter than [color=orange][protodata="GasTurbineNormal" comp="GasTurbine" member="MaxTemp"/]k[/color], it will trigger an emergency purge valve and dump the gas into the room.
-
-	This hot gas can cause serious burns to personnel or even a fire, if the gas is flammable.
-
-	### Stalling
-	The gas is not hot enough for the set stator load.
-
-	Stalling is where the gas going into the Turbine isn't "pushing" hard enough to overcome the stator load's resistance.
-
-	### Undertemp
-	The gas going into the Turbine is too cold.
-
-	If the gas is at or below [color=orange][protodata="GasTurbineNormal" comp="GasTurbine" member="MinTemp"/]k[/color], there is no energy for the Turbine to take out of it.
-
-	## Turbine Parts
 	<Box>
-		<GuideEntityEmbed Entity="NuclearFabricator"/>
-	</Box>
-	<Box>
+		<GuideEntityEmbed Entity="NuclearFabricator" Caption="nuclear fabricator"/>
 		<GuideEntityEmbed Entity="SteelGasTurbineBlade" Caption="turbine blade"/>
 		<GuideEntityEmbed Entity="SteelGasTurbineStator" Caption="stator"/>
 	</Box>
 
-	Turbine parts are what define how well the turbine functions.
+	The turbine holds one [color=#a4885c][bold]blade[/bold][/color] and one [color=#a4885c][bold]stator[/bold][/color], both printed at the nuclear fabricator in a choice of [textlink="materials" link="NuclearMaterials"]. It comes out of the frame with a steel pair fitted.
 
-	Turbine parts are made in the Nuclear Fabricator from a set of [textlink="materials" link="NuclearMaterials"].
+	- The blade sets integrity, how much punishment it takes before failing, and inertia, how much energy it takes to change speed. A heavy blade is a smooth, forgiving turbine.
+	- The stator sets efficiency, how much of the spin becomes electricity.
+	- Parts only come out while the turbine is [color=lime]stopped[/color]. A turbine missing either part is ruined until one is fitted.
 
-	The Turbine is capable of accepting two different types of parts: Blades and Stators
+	[color=#897236][mono]──── [color=#1e90ff][bold]AUTOMATION[/bold][/color] ──────────────────────────────────────[/mono][/color]
 
-	### Turbine Blades
-	Turbine blades govern the integrity and inertia of the turbine.
+	- The turbine signals [color=#1e90ff][bold]Speed: High[/bold][/color] above 105% of best speed and [color=#1e90ff][bold]Speed: Low[/bold][/color] below 95%. Link them with a network configurator to the reactor's insert and retract control rod ports, and the reactor feeds the turbine exactly as much heat as it wants.
+	- It listens for [color=#1e90ff][bold]Increase stator load[/bold][/color] and [color=#1e90ff][bold]Decrease stator load[/bold][/color] signals, each pulse worth 1,000 and a held signal ramping steadily.
+	- Its data port links to a [color=#00ccff]turbine monitor[/color] computer, which opens this same panel from anywhere within link range.
 
-	Higher integrity means it can take more damage before failing, making it generally safer.
+	[color=#897236][mono]──── [color=#cc3333][bold]DAMAGE AND REPAIR[/bold][/color] ───────────────────────────────[/mono][/color]
 
-	Higher inertia means it will take more energy to change the RPM, which leads to smoother operation.
-	
-	### Stators
-	Stators affect the power efficiency and output of the Turbine.
+	- Overspeed chips the blades, and any hit to the casing does too. Worn blades grind audibly as they spin.
+	- Repair with a [color=lime]welder[/color], a few seconds and a little fuel per pass. Expect several passes for a badly worn set.
+	- A heavy enough blow ruins the turbine outright, destroys the blade, and can take the stator with it.
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- The turbine will not let you unanchor it while it is turning. Stop the flow first.
+	- A gas analyzer on the turbine reads both its inlet and its outlet, the quickest way to see how much heat it is actually pulling out.
+	- The turbine's own explosion, if it comes to that, is contained to the ship the same way the reactor's is.
 </Document>

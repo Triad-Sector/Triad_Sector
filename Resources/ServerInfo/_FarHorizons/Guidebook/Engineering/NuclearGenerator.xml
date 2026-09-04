@@ -1,24 +1,101 @@
+<!-- Triad: rewritten as an operator's walkthrough in the dossier visual grammar (mono rules, stat block, bars). Upstream maps these onto stations; ours are researched, built and run by ship crews. -->
 <Document>
 	# Nuclear Generator
-    <Box>
-	  <GuideEntityEmbed Entity="NuclearReactorNormal" Caption="" Scale="1.5"/>
-	  <GuideEntityEmbed Entity="GasTurbineNormal" Caption="" Scale="1.5"/>
-    </Box>
 
-	The Nuclear Generator generates power by heating a gas through fission reactions in a [textlink="Nuclear Reactor" link="NuclearReactor"], which then spins a [textlink="Gas Turbine" link="GasTurbine"].
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="NuclearReactorNormal" Caption="" Scale="1"/>
+				<GuideEntityEmbed Entity="GasTurbineNormal" Caption="" Scale="1"/>
+			</Box>
+		</ColorBox>
 
-	<!-- Triad: upstream maps these onto stations; ships research and build theirs -->
-	## Building one
-	Research Nuclear Power Generation in the Industrial tree to print the small reactor and small turbine boards at a circuit imprinter, and Nuclear Power Recycling for the full-size boards. Build a centered machine frame from the construction menu, 5x5 for the reactor, 3x3 for the small reactor, 3x5 for the gas turbine and 3x2 for the small turbine, then fit the board and its parts. The reactor comes out empty: fuel rods, control rods, gas channels and heat exchangers are printed at a Nuclear Fabricator, whose board comes with the same research. The turbine comes out with a steel blade and stator fitted.
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]SOURCE     [/color]  Science. No cargo, no vendor.[/mono]
 
-    ## Starting the Nuclear Generator
-	To start the Nuclear Generator, engineers must follow these steps:
-	- Fill the coolant loop with a gas. For basic setups, filling the loop with a single room temperature Nitrogen gas cannister is sufficient.
-	- Set the Gas Turbine's Flow Rate to 200. As the temperature in the Nuclear Reactor increases, increasing the Flow Rate might be recommended to let the coolant gasses give away more heat in the Gas Turbine.
-	- Insert the Fuel Rods into the empty spots in the Nuclear Reactor grid, typically by a control rod(s) and surrounded by heat exchangers and gas channels.
-	- Retract the Control Rods to 80% to start warming up the Nuclear Reactor. As the time period during which the fission process is maintained increases, Control Rods might need to be retracted or inserted to modulate the reaction.
-	- As the Nuclear Reactor warms up, engineers will want to keep adjusting the Gas Turbine's Stator Load to maintain optimal RPM. Optimal RPM is indicated on the turbine as a green node.
-	- Once the Gas Turbine is making enough power for the station, the Control Rods should be inserted to the point of maintaining Nuclear Reactor temperature.
+			[mono][color=#897236]FOOTPRINT  [/color]  5x5 and 3x5, or 3x3 and 3x2[/mono]
 
-	Over time, the Fuel Rods will lose radioactivity, meaning the Control Rods should be retracted further or the Fuel Rods replaced. If the choice to replace Fuel Rods is made, engineers should keep in mind that the Stator Load will require adjustment.
+			[mono][color=#897236]HEAT       [/color]  up to [protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumThermalPower" format="N0"/] W per reactor[/mono]
+
+			[mono][color=#897236]OUTPUT     [/color]  HV cable under the turbine[/mono]
+
+			[mono][color=#897236]ACCESS     [/color]  [color=lime]► none required[/color][/mono]
+
+			[mono][color=#897236]FAILURE    [/color]  [color=#cc3333]meltdown, contained to your hull[/color][/mono]
+		</Box>
+	</Box>
+
+	The Nuclear Generator is a two-machine power plant. A [textlink="Nuclear Reactor" link="NuclearReactor"] heats a coolant gas through fission, and a [textlink="Gas Turbine" link="GasTurbine"] spins on that gas to make electricity. It is the largest power source a ship can carry, and the only one that can take the ship with it.
+
+	[color=red][bold]▲ Warning:[/bold][/color] the control rods are the brakes. Nobody leaves a running reactor with the rods out and the turbine unattended.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]TWO SIZES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	<Box>
+		<GuideEntityEmbed Entity="NuclearReactorSmall" Caption="small reactor" Scale="1"/>
+		<GuideEntityEmbed Entity="GasTurbineSmall" Caption="small turbine" Scale="1"/>
+	</Box>
+
+	- The [color=#a4885c][bold]full reactor[/bold][/color] holds a [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridHeight"/] grid of rod ports.
+	- The [color=#a4885c][bold]small reactor[/bold][/color] holds [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridHeight"/], and its lighter casing heats and cools faster.
+	- The [color=#a4885c][bold]small turbine[/bold][/color] performs exactly like the full one. Only the footprint and the pipe positions differ.
+
+	[color=#897236][mono]──── [color=#00ccff][bold]ACQUISITION[/bold][/color] ─────────────────────────────────────[/mono][/color]
+
+	- Research [color=#a4885c][bold]Nuclear Power Generation[/bold][/color] in the Industrial tree. It unlocks the nuclear fabricator, the small reactor and small turbine boards, both monitors, and the mid-grade rods and turbine parts.
+	- Research [color=#a4885c][bold]Nuclear Power Recycling[/bold][/color] behind it for the full-size boards, the centrifuge, and the gold, diamond and plutonium parts.
+	- Print the boards at a [color=#00ccff]circuit imprinter[/color].
+	- Build a [color=#a4885c][bold]nuclear fabricator[/bold][/color] first. It prints every rod, blade and stator from ordinary sheets, and nothing else does.
+
+	[color=#897236][mono]──── [color=lime][bold]CONSTRUCTION[/bold][/color] ────────────────────────────────────[/mono][/color]
+
+	<Box>
+		<GuideEntityEmbed Entity="TriadMachineFrame5x5" Caption="5x5" Scale="0.5"/>
+		<GuideEntityEmbed Entity="TriadMachineFrame3x3" Caption="3x3" Scale="0.5"/>
+		<GuideEntityEmbed Entity="TriadMachineFrame3x5" Caption="3x5" Scale="0.5"/>
+		<GuideEntityEmbed Entity="TriadMachineFrame3x2" Caption="3x2" Scale="0.5"/>
+	</Box>
+
+	Each machine goes up on a [color=#a4885c][bold]machine frame[/bold][/color] of its size from the Machines tab of the construction menu. The frame builds around the tile you stand the ghost on and reserves every tile the machine needs, so leave the whole footprint clear.
+
+	[mono][color=#897236]  MACHINE       FRAME  STEEL  PARTS WITH THE BOARD[/color]\n  Reactor       5x5    125    10 manipulators, 10 capacitors, 20 plasteel\n  Small reactor 3x3    45     5 manipulators, 5 capacitors, 10 plasteel\n  Gas turbine   3x5    75     10 manipulators, 20 steel\n  Small turbine 3x2    30     5 manipulators, 10 steel[/mono]
+
+	- Anchor the frame, add a cable, slot the board, fill the parts, close it with a [color=lime]screwdriver[/color].
+	- A board only fits the frame it was made for.
+	- A finished reactor does not come back apart. Place it where it will stay.
+	- The reactor comes out [color=#ffa500][bold]empty[/bold][/color]. Rods go in afterwards through its panel. The turbine comes out with a steel blade and stator fitted.
+
+	[color=#897236][mono]──── [color=#00ccff][bold]PLUMBING AND POWER[/bold][/color] ──────────────────────────────[/mono][/color]
+
+	- Examine either machine to see [color=#a4885c][bold]flow arrows[/bold][/color] marking its inlet and outlet.
+	- Pipe the reactor's outlet to the turbine's inlet and the turbine's outlet back to the reactor's inlet.
+	- Fill the loop from a canister. One canister of room-temperature [color=lime]nitrogen[/color] is enough for a first start.
+	- Run high-voltage cable from under the turbine to your substation. The reactor draws no power.
+
+	[color=#897236][mono]──── [color=#1e90ff][bold]CONSOLES AND AUTOMATION[/bold][/color] ─────────────────────────[/mono][/color]
+
+	<Box>
+		<GuideEntityEmbed Entity="NuclearReactorMonitor" Caption="reactor monitor"/>
+		<GuideEntityEmbed Entity="GasTurbineMonitor" Caption="turbine monitor"/>
+	</Box>
+
+	- A [color=#a4885c][bold]reactor monitor[/bold][/color] or [color=#a4885c][bold]turbine monitor[/bold][/color] is a computer built from its board. Link the machine's data port to it with a [color=#00ccff]network configurator[/color] and it opens the machine's full panel from anywhere within link range.
+	- The turbine signals [color=#1e90ff][bold]Speed: High[/bold][/color] above its best speed and [color=#1e90ff][bold]Speed: Low[/bold][/color] below it. Link those to the reactor's insert and retract control rod ports and the plant trims itself.
+	- The turbine also takes increase and decrease stator load signals, for a button panel or a logic circuit.
+
+	[color=#897236][mono]──── [color=lime][bold]FIRST START[/bold][/color] ─────────────────────────────────────[/mono][/color]
+
+	- Seat fuel rods next to control rods, and ring them with heat exchangers ending in gas channels.
+	- Set the turbine's flow rate to [color=#ffa500][bold]200[/bold][/color]. Raise it as the reactor gets hotter.
+	- Retract the control rods to about [color=#ffa500][bold]80%[/bold][/color] and watch the temperature climb.
+	- Move the stator load until the turbine sits on its [color=lime]green mark[/color].
+	- Once the ship has what it needs, push the rods back in until the temperature holds.
+
+	[color=#999999][italic]Fuel rods lose their radioactivity over time, so the rods come out a little further each shift until the fuel is replaced. Fresh fuel changes the balance; expect to reset the stator load.[/italic][/color]
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- The frame reserves every tile the machine needs before it appears, which is why these boards are the one kind a flatpacker refuses.
+	- Both machines take damage like any structure and are welded back to health.
+	- Lock the reactor room if you want to keep the tourists out. The machines themselves check nobody's ID.
 </Document>

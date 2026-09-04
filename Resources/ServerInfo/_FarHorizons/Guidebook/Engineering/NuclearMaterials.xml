@@ -1,12 +1,28 @@
+<!-- Triad: picking guide added above upstream's reference tables, in the dossier visual grammar -->
 <Document>
-    # Reactor Rod Material Effects
-    This table lists the effects of each material within the reactor.
+    # Reactor and turbine materials
 
-    Values for Neutron Stimulated Emmission Chance, Stimulated Emmission Chance, Neutron Decay Chance, and Decay Chance assume the material is fresh and has not undergone any interactions. These values will change as the material is used.
+    Every rod, blade and stator is printed at the nuclear fabricator in a choice of material, and the material is the whole difference between two rods of the same kind. The short version comes first; the reference tables follow.
 
-    Neutron Stimulated Emmission Chance, Stimulated Emmission Chance, and Reflection Chance require that it passes the Neutron Interact Chance first.
+    [color=#897236][mono]──── [color=#ffdd33][bold]CHOOSING RODS[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-    (*) means the statistic is multiplied by Neutron Cross Section, which changes based on rod type. Those statistics are written assuming Neutron Cross Section = 1.
+    - [color=#a4885c][bold]Fuel rods[/bold][/color] want a high decay chance for heat and a high stimulated emission chance for a reaction that feeds itself. Cerenkite is the gentle starter fuel, uranium the workhorse, plutonium the hottest thing you can print.
+    - [color=#a4885c][bold]Control rods[/bold][/color] want a high interact chance with low emission and low reflection, so neutrons go in and do not come out. Bohrum is the purpose-made choice; steel is the cheap one.
+    - [color=#a4885c][bold]Gas channels[/bold][/color] and [color=#a4885c][bold]heat exchangers[/bold][/color] want thermal transfer above all. The higher the number, the faster heat leaves the fuel, which is the difference between a hot reactor and a melting one.
+    - A high [color=#a4885c][bold]reflection chance[/bold][/color] bounces neutrons back where they came from, which keeps them in the core and out of the room.
+
+    [color=#897236][mono]──── [color=#ffdd33][bold]CHOOSING TURBINE PARTS[/bold][/color] ──────────────────────────[/mono][/color]
+
+    - A heavier [color=#a4885c][bold]blade[/bold][/color] takes more damage before failing and changes speed more slowly, which makes the turbine easier to hold on its mark.
+    - A better [color=#a4885c][bold]stator[/bold][/color] turns more of the spin into power. It is the single cheapest upgrade to a running plant.
+
+    [color=#897236][mono]──── [color=#aa88cc][bold]ROD MATERIAL REFERENCE[/bold][/color] ──────────────────────────[/mono][/color]
+
+    Emission and decay chances are for a fresh rod. They drift as the rod is used.
+
+    Stimulated emission, decay and reflection only happen to a neutron that first passes the interact chance.
+
+    (*) means the value is multiplied by the rod type's neutron cross section, listed under the table; the numbers here assume a cross section of 1.
     <Table Columns="8">
         <ColorBox>
             <Box>
@@ -25,12 +41,12 @@
         </ColorBox>
         <ColorBox>
             <Box>
-                Neutron Stimulated Emmission Chance 
+                Neutron Stimulated Emission Chance
             </Box>
         </ColorBox>
         <ColorBox>
             <Box>
-                Stimulated Emmission Chance
+                Stimulated Emission Chance
             </Box>
         </ColorBox>
         <ColorBox>
@@ -665,16 +681,16 @@
         </ColorBox>
     </Table>
 
-	## Neutron Cross Sections
-	- Fuel Rod: 1
-	- Control Rod: 0-2 (depending on insertion level)
-	- Gas Channel: 0.5
-	- Heat Exhanger: 0.1
+	[color=#897236][mono]──── [color=#aa88cc][bold]NEUTRON CROSS SECTIONS[/bold][/color] ──────────────────────────[/mono][/color]
 
-	# Turbine Part Material Effects
-	These tables list the effects of each material within the turbine.
-	
-	## Blades
+	- Fuel rod: 1
+	- Control rod: 0 to 2, set by its insertion
+	- Gas channel: 0.5
+	- Heat exchanger: 0.1
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]TURBINE PART REFERENCE[/bold][/color] ──────────────────────────[/mono][/color]
+
+	### Blades
 	<Table Columns="3">
 		<ColorBox>
 			<Box>
@@ -773,7 +789,7 @@
 		</ColorBox>
     </Table>
 
-	## Stators
+	### Stators
 	<Table Columns="2">
 		<ColorBox>
 			<Box>

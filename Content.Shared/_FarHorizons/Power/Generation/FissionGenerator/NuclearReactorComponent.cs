@@ -25,15 +25,19 @@ public sealed partial class NuclearReactorComponent : Component
     /// Width of the reactor grid
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    [GuidebookData] // Triad: the guidebook quotes the grid size per reactor
     public int ReactorGridWidth = 7;
 
     /// <summary>
     /// Height of the reactor grid
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    [GuidebookData] // Triad
     public int ReactorGridHeight = 7;
 
+    [GuidebookData] // Triad: the alarm thresholds are quoted too
     public readonly int ReactorOverheatTemp = 1200;
+    [GuidebookData] // Triad
     public readonly int ReactorFireTemp = 1500;
     [GuidebookData]
     public readonly int ReactorMeltdownTemp = 2000;
