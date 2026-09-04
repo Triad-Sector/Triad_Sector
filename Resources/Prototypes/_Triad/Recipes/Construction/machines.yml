@@ -1,3 +1,34 @@
+# The construction ghost is drawn from the recipe icon, so each icon is the frame's own box_1
+# state, centered like the frame; Mono's icon RSIs draw the box a tile off for its corner-origin
+# frames. ghostOffset matches the 3x2's half-tile sprite offset.
+- type: construction
+  id: TriadMachineFrame5x5
+  graph: TriadMachine5x5
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (5x5, centered)
+  description: A huge machine frame built around its center tile. Takes the nuclear reactor board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
+    state: box_1
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: TriadMachineFrame3x5
+  graph: TriadMachine3x5
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x5, centered)
+  description: A tall machine frame built around its center tile. Takes the gas turbine board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
+    state: box_1
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
 - type: construction
   id: TriadMachineFrame3x3
   graph: TriadMachine3x3
@@ -5,10 +36,10 @@
   targetNode: machine
   category: construction-category-machines
   name: machine frame (3x3, centered)
-  description: A large machine frame built around its center tile. Takes reactor and turbine boards.
+  description: A large machine frame built around its center tile. Takes the small nuclear reactor board.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x3_icon.rsi
-    state: icon
+    sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: box_1
   placementMode: SnapgridCenter
   canBuildInImpassable: false
 
@@ -21,7 +52,8 @@
   name: machine frame (3x2, centered)
   description: A machine frame built around its center tile. Takes the small gas turbine board.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x2_icon.rsi
-    state: icon
+    sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: box_1
+  ghostOffset: 0,-0.5
   placementMode: SnapgridCenter
   canBuildInImpassable: false

@@ -284,7 +284,7 @@
   suffix: "Salvage, Empty"
   components:
   - type: Construction # Triad: what NuclearReactorMachineCircuitboard builds; one-way, the graph has no deconstruct edge
-    graph: TriadMachine3x3
+    graph: TriadMachine5x5
     node: machine
 
 - type: entity

@@ -9,7 +9,7 @@
 
 	<!-- Triad: upstream maps these onto stations; ships research and build theirs -->
 	## Building one
-	Research Nuclear Power Generation in the Industrial tree to print the small reactor and small turbine boards at a circuit imprinter, and Nuclear Power Recycling for the full-size boards. Build a centered machine frame from the construction menu, 3x3 for the reactors and the full-size turbine, 3x2 for the small turbine, then fit the board and its parts. The reactor comes out empty: fuel rods, control rods, gas channels and heat exchangers come from a Nuclear Fabricator or the cargo parts crates. The turbine comes out with a steel blade and stator fitted.
+	Research Nuclear Power Generation in the Industrial tree to print the small reactor and small turbine boards at a circuit imprinter, and Nuclear Power Recycling for the full-size boards. Build a centered machine frame from the construction menu, 5x5 for the reactor, 3x3 for the small reactor, 3x5 for the gas turbine and 3x2 for the small turbine, then fit the board and its parts. The reactor comes out empty: fuel rods, control rods, gas channels and heat exchangers come from a Nuclear Fabricator or the cargo parts crates. The turbine comes out with a steel blade and stator fitted.
 
     ## Starting the Nuclear Generator
 	To start the Nuclear Generator, engineers must follow these steps:

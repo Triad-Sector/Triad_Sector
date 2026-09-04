@@ -22,13 +22,13 @@
   id: NuclearReactorMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: nuclear reactor machine board
-  description: A machine printed circuit board for a nuclear reactor. Uses a centered 3x3 machine frame.
+  description: A machine printed circuit board for a nuclear reactor. Uses a centered 5x5 machine frame.
   components:
   - type: Sprite
     state: engineering
   - type: MachineBoard
     prototype: NuclearReactorEmptySalvage
-    frameSize: Triad3x3
+    frameSize: Triad5x5
     requirements:
       Manipulator: 10
       Capacitor: 10
@@ -55,13 +55,13 @@
   id: GasTurbineMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: gas turbine machine board
-  description: A machine printed circuit board for a gas turbine. Uses a centered 3x3 machine frame.
+  description: A machine printed circuit board for a gas turbine. Uses a centered 3x5 machine frame.
   components:
   - type: Sprite
     state: engineering
   - type: MachineBoard
     prototype: GasTurbineNormalSalvage
-    frameSize: Triad3x3
+    frameSize: Triad3x5
     requirements:
       Manipulator: 10
     stackRequirements:

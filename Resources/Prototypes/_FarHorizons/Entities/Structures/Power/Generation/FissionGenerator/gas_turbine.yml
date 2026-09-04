@@ -181,7 +181,7 @@
   suffix: "Salvage"
   components:
   - type: Construction # Triad: what GasTurbineMachineCircuitboard builds; one-way, the graph has no deconstruct edge
-    graph: TriadMachine3x3
+    graph: TriadMachine3x5
     node: machine
 
 - type: entity
