@@ -3,13 +3,13 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._FarHorizons.Power.Generation.FissionGenerator;
 
 [Serializable, NetSerializable]
-public enum TurbineUiKey : byte
+public enum GasTurbineUiKey : byte
 {
     Key,
 }
 
 [Serializable, NetSerializable]
-public sealed class TurbineBuiState : BoundUserInterfaceState
+public sealed class GasTurbineBuiState : BoundUserInterfaceState
 {
     // Indicator Lights
     public bool Overspeed;
@@ -28,7 +28,6 @@ public sealed class TurbineBuiState : BoundUserInterfaceState
 
     // Stator load
     public float StatorLoadMin;
-    public float StatorLoadMax;
     public float StatorLoad;
 
     // Power generation
@@ -38,16 +37,20 @@ public sealed class TurbineBuiState : BoundUserInterfaceState
     // Health
     public float Health;
     public float HealthMax;
+
+    // Parts
+    public NetEntity? Blade;
+    public NetEntity? Stator;
 }
 
 [Serializable, NetSerializable]
-public sealed class TurbineChangeFlowRateMessage(float flowRate) : BoundUserInterfaceMessage
+public sealed class GasTurbineChangeFlowRateMessage(float flowRate) : BoundUserInterfaceMessage
 {
     public float FlowRate { get; } = flowRate;
 }
 
 [Serializable, NetSerializable]
-public sealed class TurbineChangeStatorLoadMessage(float statorLoad) : BoundUserInterfaceMessage
+public sealed class GasTurbineChangeStatorLoadMessage(float statorLoad) : BoundUserInterfaceMessage
 {
     public float StatorLoad { get; } = statorLoad;
 }
