@@ -6,7 +6,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Tools.Components;
 using Content.Shared.Coordinates;
-using Robust.Shared.Network;
 
 namespace Content.Shared._Triad.CollapsibleItem;
 
