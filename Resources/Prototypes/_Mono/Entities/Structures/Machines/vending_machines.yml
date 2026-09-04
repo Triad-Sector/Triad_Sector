@@ -23,7 +23,7 @@
     brokenState: broken
     normalState: normal-unshaded
   - type: MarketModifier
-    mod: 15 # for the love of god don't ever set this to 1 again
+    mod: 25 # Triad - 15 -> 25 | You could make infinite money because the drive had fissile in it worth 50k
   - type: Sprite
     sprite: _Mono/Structures/Machines/VendingMachines/drivevend.rsi
     layers:

@@ -779,7 +779,7 @@ public sealed partial class SupermatterSystem
                 // Triad: wizden's TeslaEnergyBall has consumeEntities: false and its fixtures
                 // (Opaque/GlassLayer) never intersect the crystal's, so unlike the singularity it
                 // cannot consume the crystal. The crystal converts into the ball instead.
-                QueueDel(uid);
+                // QueueDel(uid); // Triad - Were not EE. Welcome to hell.
                 break;
 
             default:

@@ -1,0 +1,107 @@
+name: Hunt for Heisentests
+
+# Triad: ported from Wizden. Runs the full suite against an unchanged main on a schedule;
+# the code is identical run to run, so any failure is a nondeterministic test by
+# construction. Failures are filed as issues, one per test, deduped by open-issue title,
+# from .github/ISSUE_TEMPLATE/heisentest_template.md.
+on:
+  workflow_dispatch:
+  # Triad: every 6 hours, not Wizden's 15 minutes. Four full-suite samples a day is enough
+  # statistical power at our flake rate and keeps the Actions tab readable.
+  schedule:
+    - cron: "17 */6 * * *"
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      matrix: ${{ steps.get_fails.outputs.matrix }}
+      count: ${{ steps.get_fails.outputs.count }}
+
+    steps:
+    - name: Checkout Main
+      uses: actions/checkout@v7
+
+    # Triad: the submodule steps mirror Build & Test Debug; the engine pin needs the
+    # dependency action, and a plain recursive checkout can boot a stale engine.
+    - name: Setup Submodule
+      run: |
+        git submodule update --init --recursive
+
+    - name: Pull engine updates
+      uses: space-wizards/submodule-dependency@v0.1.5
+
+    - name: Update Engine Submodules
+      run: |
+        cd RobustToolbox/
+        git submodule update --init --recursive
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build Project
+      run: dotnet build --configuration DebugOpt --no-restore /p:WarningsAsErrors=nullable /m
+
+    - name: Run Content.Tests
+      run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0 NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
+
+    # Triad: no ShipyardTest filter here, unlike Build & Test Debug. Shipyard runs only as a
+    # PR check, so this is the one place its behavior on main gets sampled at all, and on an
+    # unchanged main a shipyard failure is signal like any other.
+    - name: Run Content.IntegrationTests
+      shell: pwsh
+      run: |
+        $env:DOTNET_gcServer=1
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
+
+    - name: Archive NUnit3 test results.
+      if: failure()
+      uses: actions/upload-artifact@v7
+      with:
+        name: nunit3-results
+        path: test_results/*
+        retention-days: 7
+        compression-level: 9
+
+    - name: Extract Failures
+      if: failure()
+      id: get_fails
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict
+        python Tools/actions_extract_failures.py
+
+  report:
+    needs: [ hunt ]
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    strategy:
+      matrix:
+        value: ${{ fromJSON(needs.hunt.outputs.matrix) }}
+    # Triad: five or more distinct failures means the run broke systemically, not flakily;
+    # a human reads the run instead of the tracker getting a page of issues.
+    if: ${{ always() && failure() && (needs.hunt.outputs.count < 5) }}
+    name: Error for ${{ matrix.value.name }}
+    steps:
+      - name: Checkout Main
+        uses: actions/checkout@v7
+
+      - name: Create Issue
+        uses: dblock/create-a-github-issue@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NAME: ${{ matrix.value.name }}
+          FULLNAME: ${{ matrix.value.fullname }}
+          OUTPUT: ${{ matrix.value.output }}
+          FAILURE: ${{ matrix.value.failure }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/heisentest_template.md
+          update_existing: true
+          search_existing: open

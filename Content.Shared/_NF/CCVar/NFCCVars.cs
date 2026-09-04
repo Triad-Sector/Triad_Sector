@@ -237,6 +237,16 @@ public sealed class NFCCVars
         CVarDef.Create("frontier.allow_multi_connect", true, CVar.CONFIDENTIAL | CVar.SERVERONLY);
 
     /*
+     * Xenoarchaeology
+     */
+
+    /// <summary>
+    /// If true, artifact nodes can only be triggered once per unlock window.
+    /// </summary>
+    public static readonly CVarDef<bool> XenoarchSingleUseNodes =
+        CVarDef.Create("nf14.xenoarch.single_use_nodes", true, CVar.REPLICATED);
+
+    /*
      * Events
      */
     /// <summary>

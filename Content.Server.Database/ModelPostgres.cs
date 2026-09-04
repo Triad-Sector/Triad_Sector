@@ -57,6 +57,42 @@ namespace Content.Server.Database
                 .HasMethod("GIN")
                 .IsTsVectorExpressionIndex("english");
 
+            // Triad: market data, the parts of the schema that only Postgres can express.
+            // Declared on the model rather than as migration SQL, so the snapshot carries them and
+            // a later migration cannot silently drop them. Filters name the physical column, which
+            // is why these cannot live in the shared model: SQLite spells them differently.
+
+            // The payout trace. Queryable and indexable here, plain text on SQLite.
+            modelBuilder.Entity<MarketTransaction>()
+                .Property(t => t.Calc)
+                .HasColumnType("jsonb");
+
+            // The table is append-only in timestamp order, which is the case BRIN exists for, and
+            // every Grafana panel over it is a range scan. On tens of millions of rows this is
+            // kilobytes of index where a BTREE would be hundreds of megabytes. Nothing does a point
+            // lookup on a timestamp here.
+            modelBuilder.Entity<MarketTransaction>()
+                .HasIndex(t => t.OccurredAt)
+                .HasMethod("BRIN");
+
+            modelBuilder.Entity<MarketTransactionLine>()
+                .HasIndex(l => l.OccurredAt)
+                .HasMethod("BRIN");
+
+            // Machine-driven income has no actor and is the majority of rows, so keep it out.
+            modelBuilder.Entity<MarketTransaction>()
+                .HasIndex(t => new { t.ActorUserId, t.OccurredAt })
+                .HasFilter("actor_user_id IS NOT NULL");
+
+            // The pricing lookup and the rollup's driving scan, made covering so the rollup never
+            // touches the heap. No partial filter: a refused transaction writes a header and no
+            // lines, so this index cannot contain one by construction. Filtering on the header's
+            // succeeded column from here is not possible anyway, it lives on another table.
+            modelBuilder.Entity<MarketTransactionLine>()
+                .HasIndex(l => new { l.EntityProto, l.Direction, l.OccurredAt })
+                .IncludeProperties(l => new { l.UnitPrice, l.Quantity });
+            // End Triad
+
             foreach(var entity in modelBuilder.Model.GetEntityTypes())
             {
                 foreach(var property in entity.GetProperties())

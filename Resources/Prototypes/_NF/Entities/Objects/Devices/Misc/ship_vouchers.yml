@@ -78,9 +78,9 @@
   - type: ShipyardVoucher
     consoleType: Shipyard
     vessels:
-    - Jitterbug
-    - McChicken
-    - McChilly
+  #  - Jitterbug
+  #  - McChicken
+  #  - McChilly
     - Spessbite
 
 # Frontier vouchers

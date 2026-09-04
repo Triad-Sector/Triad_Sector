@@ -42,7 +42,7 @@
             NFJanitor: [ -1, -1 ]
             MailCarrier: [ -1, -1 ]
             TdfChiefEnforcer: [ -1, -1]
-            TdfWarden: [ -1, -1]
+            TdfLieutenant: [ -1, -1]
             TdfPatrolTeamLeader: [ -1, -1]
             TdfMedic: [ -1, -1]
             # NFDetective: [ -1, -1] Mono

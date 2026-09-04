@@ -110,14 +110,14 @@
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobTdfWarden
+  id: JobTdfLieutenant
   groups:
-  - TdfWardenHead
+  - TdfLieutenantHead
   - TdfNeck
-  - TdfWardenJumpsuit
+  - TdfLieutenantJumpsuit
   - TdfGloves
   - TdfBackpack
-  - TdfWardenOuterClothing
+  - TdfLieutenantOuterClothing
   - TdfShoes
   - TdfFace
   - TdfBalaclava
@@ -125,7 +125,7 @@
   - TdfBelt
   - TdfEarsSenior
   - NfsdBoxSurvival
-  - TdfWardenPda
+  - TdfLieutenantPda
   - ContractorWallet
   - ContractorCartridge
   - ContractorEncryptionKey

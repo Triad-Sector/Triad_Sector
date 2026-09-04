@@ -26,11 +26,16 @@
                              MinSize="32 32"
                              Margin="8 0 0 0" />
                 -->
+                <!-- Triad: removed the TRITALK heading; the PDA program tab already names the app. The label
+                     also doubled as the flexible spacer pushing the number and buttons to the right edge, so a
+                     bare spacer stands in for it.
                 <Label Text="{Loc nano-chat-title}"
                        StyleClasses="LabelHeading"
                        HorizontalExpand="True"
                        Margin="8 0"
                        VerticalAlignment="Center" />
+                -->
+                <Control HorizontalExpand="True" />
                 <Label Name="OwnNumberLabel"
                        Text="#0000"
                        StyleClasses="LabelSubText"
@@ -130,6 +135,14 @@
                                   VerticalExpand="True"
                                   HorizontalExpand="True"
                                   Margin="0 0 0 4">
+                        <!-- Triad: names the contact whose thread is open. The contact name used to be written
+                             into CurrentChatName below, which is only visible when NO chat is selected, so it
+                             was never actually on screen. -->
+                        <Label Name="ChatHeaderLabel"
+                               HorizontalAlignment="Center"
+                               StyleClasses="LabelSubText"
+                               Margin="0 0 0 3"
+                               Visible="False" />
                         <Label Name="CurrentChatName"
                                Text="{Loc nano-chat-select-chat}"
                                HorizontalAlignment="Center"
@@ -139,8 +152,11 @@
                                          VerticalExpand="True"
                                          HorizontalExpand="True"
                                          Visible="False">
+                            <!-- Triad: SeparationOverride replaces the spacer Control that used to be appended
+                                 after every bubble, which also left a stray gap below the last one. -->
                             <BoxContainer Name="MessageList"
                                           Orientation="Vertical"
+                                          SeparationOverride="4"
                                           VerticalExpand="True"
                                           HorizontalExpand="True" />
                         </ScrollContainer>
@@ -152,13 +168,23 @@
                            StyleClasses="LabelSubText"
                            Margin="0 0 4 2"
                            Visible="False" />
-                    <!-- Triad: typing indicator, shown just above the input row -->
-                    <Label Name="TypingIndicatorLabel"
-                           HorizontalAlignment="Left"
-                           StyleClasses="LabelSubText"
-                           FontColorOverride="#a0a0a0"
-                           Margin="4 0 4 2"
-                           Visible="False" />
+                    <!-- Triad: typing indicator, shown just above the input row. The slot holds its height whether
+                         or not anyone is typing: when the bare label toggled Visible it resized the message
+                         viewport, and since typing always precedes receiving, the shrink landed right before every
+                         incoming message and made the am-I-at-the-bottom check conclude the reader had scrolled
+                         up, so the view never followed received messages. A fixed slot keeps the viewport stable
+                         (and stops the message area jumping when someone starts typing). -->
+                    <Control Name="TypingIndicatorSlot"
+                             MinHeight="20"
+                             Visible="False">
+                        <Label Name="TypingIndicatorLabel"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               StyleClasses="LabelSubText"
+                               FontColorOverride="#a0a0a0"
+                               Margin="4 0 4 2"
+                               Visible="False" />
+                    </Control>
                     <!-- Message input -->
                     <BoxContainer Name="MessageInputContainer"
                                   Orientation="Horizontal"

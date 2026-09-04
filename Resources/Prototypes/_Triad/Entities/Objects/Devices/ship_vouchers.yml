@@ -88,6 +88,7 @@
     companyName: TDF
     vessels:
     - Knight
+    - Arbalest
 
 - type: entity
   parent: [BaseShipDSID, BaseClass2AShipContraband]

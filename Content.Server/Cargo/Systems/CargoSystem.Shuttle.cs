@@ -1,4 +1,4 @@
-using Content.Server.Cargo.Components;
+﻿using Content.Server.Cargo.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -20,6 +20,11 @@ using Content.Shared._NF.Trade;
 using Content.Shared.Mech.Components;
 using Robust.Shared.Toolshed.Commands.Math; // Mono
 
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Shared.Materials; // Triad: market data
+using Content.Shared.Chemistry.Components.SolutionManager; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server.Cargo.Systems;
 
@@ -284,9 +289,9 @@ public sealed partial class CargoSystem
 
     #region Station
 
-    private bool SellPallets(Entity<CargoPalletConsoleComponent> consoleUid, EntityUid gridUid, out double amount, out double noMultiplierAmount, out double blackMarketTaxAmount, out double frontierTaxAmount, out double nfsdTaxAmount, out double medicalTaxAmount) // Frontier: first arg to Entity, add noMultiplierAmount
+    private bool SellPallets(Entity<CargoPalletConsoleComponent> consoleUid, EntityUid gridUid, out double amount, out double noMultiplierAmount, out double blackMarketTaxAmount, out double frontierTaxAmount, out double nfsdTaxAmount, out double medicalTaxAmount, MarketRecord? capture = null) // Frontier: first arg to Entity, add noMultiplierAmount. Triad: add capture
     {
-        GetPalletGoods(consoleUid, gridUid, out var toSell, out amount, out noMultiplierAmount, out blackMarketTaxAmount, out frontierTaxAmount, out nfsdTaxAmount, out medicalTaxAmount); // Frontier: add noMultiplierAmount
+        GetPalletGoods(consoleUid, gridUid, out var toSell, out amount, out noMultiplierAmount, out blackMarketTaxAmount, out frontierTaxAmount, out nfsdTaxAmount, out medicalTaxAmount, capture); // Frontier: add noMultiplierAmount. Triad: add capture
 
         Log.Debug($"Cargo sold {toSell.Count} entities for {amount} (plus {noMultiplierAmount} without mods). (Taxes: Black Market: {blackMarketTaxAmount}, CO: {frontierTaxAmount}, TSFMC: {nfsdTaxAmount}, MD: {medicalTaxAmount})"); // Frontier: add section in parentheses
 
@@ -339,8 +344,10 @@ public sealed partial class CargoSystem
         }
     }
 
-    private void GetPalletGoods(Entity<CargoPalletConsoleComponent> consoleUid, EntityUid gridUid, out HashSet<EntityUid> toSell, out double amount, out double noMultiplierAmount, out double blackMarketTaxAmount, out double frontierTaxAmount, out double nfsdTaxAmount, out double medicalTaxAmount) // Frontier: first arg to Entity, add noMultiplierAmount
+    private void GetPalletGoods(Entity<CargoPalletConsoleComponent> consoleUid, EntityUid gridUid, out HashSet<EntityUid> toSell, out double amount, out double noMultiplierAmount, out double blackMarketTaxAmount, out double frontierTaxAmount, out double nfsdTaxAmount, out double medicalTaxAmount, MarketRecord? capture = null) // Frontier: first arg to Entity, add noMultiplierAmount. Triad: add capture
     {
+        // Triad: reused across entities so a full pallet does not allocate a list per item.
+        var pricedNodes = capture != null ? new List<PricedNode>() : null;
         amount = 0;
         noMultiplierAmount = 0;
         blackMarketTaxAmount = 0;
@@ -379,7 +386,20 @@ public sealed partial class CargoSystem
                     continue;
 
                 // Mono: Use vending machine discount pricing for cargo sales
-                var price = _pricing.GetPriceWithVendingDiscount(ent, gridUid);
+                // Triad: the collecting variant returns the same total and additionally reports what
+                // each contained entity contributed, so a crate breaks down to its contents instead
+                // of recording as one aggregate price.
+                double price;
+                if (pricedNodes != null)
+                {
+                    pricedNodes.Clear();
+                    price = _pricing.GetPriceWithVendingDiscountCollecting(ent, gridUid, pricedNodes);
+                }
+                else
+                {
+                    price = _pricing.GetPriceWithVendingDiscount(ent, gridUid);
+                }
+
                 if (price == 0)
                     continue;
                 toSell.Add(ent);
@@ -412,6 +432,13 @@ public sealed partial class CargoSystem
 
 
                 // End Frontier: check for items that are immune to market modifiers
+                // Triad: record what this entity and its contents were each worth. The effective
+                // multiplier is known here and nowhere later, so the lines are emitted here.
+                if (capture != null && pricedNodes != null)
+                {
+                    var effectiveMultiplier = HasComp<IgnoreMarketModifierComponent>(ent) ? 1.0 : multiplier;
+                    CaptureSaleLines(capture, pricedNodes, effectiveMultiplier);
+                }
                 // Mono: ItemTaxs to budgets.
                 if (TryComp<ItemTaxComponent>(ent, out var itemTax))
                 {
@@ -440,6 +467,159 @@ public sealed partial class CargoSystem
             }
         }
     }
+
+    // Triad: begin, market data capture for pallet sales.
+    /// <summary>
+    /// Files the completed sale: the header, the four sector taxes as splits, and the payout trace.
+    /// Lines were already attached during pricing, where the multipliers were known.
+    /// </summary>
+    private void CapturePalletSale(EntityUid consoleUid, CargoPalletConsoleComponent component,
+        MarketRecord? capture, EntityUid actor, double exactPayout, int paidPayout,
+        double blackMarketTax, double frontierTax, double nfsdTax, double medicalTax)
+    {
+        if (capture == null)
+            return;
+
+        var taxTotal = blackMarketTax + frontierTax + nfsdTax + medicalTax;
+
+        capture.Kind = MarketTransactionKind.PalletSale;
+        capture.LedgerEntryType = null;
+        // The seller is paid in physical cash, not into a bank. Without this the row cannot be
+        // reconciled against any balance, because no balance moved.
+        capture.Rail = MarketRail.Cash;
+        capture.Gross = (long) Math.Round(exactPayout * 100);
+        capture.Tax = (long) Math.Round(taxTotal * 100);
+        capture.Net = paidPayout * 100L;
+        capture.Succeeded = true;
+        capture.ConsoleProto = MetaData(consoleUid).EntityPrototype?.ID;
+        capture.LocationName = GetCaptureLocationName(consoleUid);
+
+        if (TryComp<MarketModifierComponent>(consoleUid, out var mod))
+            capture.MarketMod = mod.Mod;
+
+        if (_playerManager.TryGetSessionByEntity(actor, out var session))
+            capture.ActorUserId = session.UserId;
+
+        AddTaxSplit(capture, SectorBankAccount.BlackMarket, LedgerEntryType.BlackMarketSales, LedgerEntryType.BlackMarketPenalties, blackMarketTax);
+        AddTaxSplit(capture, SectorBankAccount.Frontier, LedgerEntryType.ColonialOutpostSales, LedgerEntryType.ColonialOutpostPenalties, frontierTax);
+        AddTaxSplit(capture, SectorBankAccount.TDF, LedgerEntryType.TSFMCSales, LedgerEntryType.TSFMCPenalties, nfsdTax);
+        AddTaxSplit(capture, SectorBankAccount.Medical, LedgerEntryType.MedicalSales, LedgerEntryType.MedicalPenalties, medicalTax);
+
+        // The seller's own share, so splits over one transaction sum to its gross.
+        capture.AddSplit("Player", "PalletSale", capture.Net);
+
+        // The payout trace. Only the parts that are not already columns: what was rounded away, and
+        // whether the lines actually reconcile against what was paid.
+        var lineTotal = capture.LineTotal();
+        capture.Calc =
+            $"{{\"exactPayout\":{exactPayout:0.####},\"paidPayout\":{paidPayout}," +
+            $"\"roundingLoss\":{exactPayout - paidPayout:0.####}," +
+            $"\"lineTotalMinor\":{lineTotal},\"lineCount\":{capture.Lines.Count}}}";
+
+        _market.Record(capture);
+    }
+
+    private void AddTaxSplit(MarketRecord capture, SectorBankAccount account,
+        LedgerEntryType income, LedgerEntryType penalty, double amount)
+    {
+        if (amount == 0)
+            return;
+
+        // Negative tax is a penalty withdrawn from the account, which the sale path handles as a
+        // separate ledger type. Same split, opposite sign, so summing an account still nets out.
+        var entryType = amount > 0 ? income : penalty;
+        capture.AddSplit(account.ToString(), entryType.ToString(), (long) Math.Round(amount * 100));
+    }
+
+    /// <summary>
+    /// The station name for a console, which is copied from the point of interest prototype at
+    /// spawn and is therefore stable across rounds. Null off-station.
+    /// </summary>
+    private string? GetCaptureLocationName(EntityUid uid)
+    {
+        var station = _station.GetOwningStation(uid);
+        return station == null ? null : MetaData(station.Value).EntityName;
+    }
+
+    /// <summary>
+    /// Turns one entity's priced tree into line rows. The node the traversal started from becomes a
+    /// root line and everything it contained hangs off it, each line carrying only what that entity
+    /// was worth on its own, so every line of the sale sums to the payout.
+    /// </summary>
+    private void CaptureSaleLines(MarketRecord capture, List<PricedNode> nodes, double multiplier)
+    {
+        // Node index to line index, or null where a node was skipped. The record's line list spans
+        // every entity on the pallet, so a node's own index is not its line index.
+        var lineIndices = new int?[nodes.Count];
+
+        for (var i = 0; i < nodes.Count; i++)
+        {
+            var node = nodes[i];
+
+            // Minor units, and the multiplier is applied because that is what the seller was
+            // actually paid for this item.
+            var lineTotal = (long) Math.Round(node.OwnPrice * multiplier * 100);
+
+            // Skip worthless nodes, except the one the traversal started from, which anchors the
+            // tree. The pricing recursion descends into every container an entity has, and solutions
+            // are entities in containers, so a steel sheet alone yields a node for its own steel
+            // solution. Those are not traded goods and a corpus full of them teaches nothing. The
+            // sale itself already refuses zero-priced entities at the top level, so this matches.
+            if (lineTotal == 0 && node.ParentIndex != null)
+            {
+                lineIndices[i] = null;
+                continue;
+            }
+
+            var proto = MetaData(node.Uid).EntityPrototype?.ID ?? "unknown";
+            var quantity = TryComp<StackComponent>(node.Uid, out var stack) ? stack.Count : 1;
+            var unitPrice = quantity > 0 ? lineTotal / quantity : lineTotal;
+            var source = InferPriceSource(node.Uid);
+
+            // A skipped parent re-parents its children onto the nearest ancestor that was kept, so
+            // dropping a solution entity never orphans anything hanging off it.
+            int? parentLine = null;
+            var walk = node.ParentIndex;
+            while (walk is { } w)
+            {
+                if (lineIndices[w] is { } kept)
+                {
+                    parentLine = kept;
+                    break;
+                }
+                walk = nodes[w].ParentIndex;
+            }
+
+            lineIndices[i] = parentLine is { } p
+                ? capture.AddChildLine(p, proto, MarketDirection.Sale, quantity, unitPrice, lineTotal, source, (float) multiplier)
+                : capture.AddLine(proto, MarketDirection.Sale, quantity, unitPrice, lineTotal, source, (float) multiplier);
+        }
+    }
+
+    /// <summary>
+    /// Which price provider most likely produced an entity's price.
+    ///
+    /// <para>This is an inference from which components the entity carries, not a fact reported by
+    /// the pricing system, because <c>PriceCalculationEvent</c> does not say who answered it. It is
+    /// right for the ordinary cases and exists so a model can exclude the ones that are not real
+    /// valuations. Treat a disagreement between this and the price as the inference being wrong.</para>
+    /// </summary>
+    private MarketPriceSource InferPriceSource(EntityUid uid)
+    {
+        if (HasComp<MobPriceComponent>(uid))
+            return MarketPriceSource.Mob;
+        if (HasComp<StackPriceComponent>(uid))
+            return MarketPriceSource.Stack;
+        if (HasComp<StaticPriceComponent>(uid))
+            return MarketPriceSource.Static;
+        if (HasComp<MaterialComponent>(uid))
+            return MarketPriceSource.Material;
+        if (HasComp<SolutionContainerManagerComponent>(uid))
+            return MarketPriceSource.Solution;
+
+        return MarketPriceSource.Unknown;
+    }
+    // Triad: end
 
     private bool CanSell(EntityUid uid, TransformComponent xform)
     {
@@ -479,7 +659,12 @@ public sealed partial class CargoSystem
             return;
         }
 
-        if (!SellPallets((uid, component), gridUid, out var price, out var noMultiplierPrice, out var blackMarketTaxAmount, out var frontierTaxAmount, out var nfsdTaxAmount, out var medicalTaxAmount)) // Frontier: convert first arg to Entity, add noMultiplierPrice
+        // Triad: build the record before the sale so lines can be collected during pricing. Null
+        // when capture is off, which keeps the collecting price path and its allocations out of the
+        // loop entirely rather than building a record nobody reads.
+        var capture = _market.LinesEnabled ? new MarketRecord() : null;
+
+        if (!SellPallets((uid, component), gridUid, out var price, out var noMultiplierPrice, out var blackMarketTaxAmount, out var frontierTaxAmount, out var nfsdTaxAmount, out var medicalTaxAmount, capture)) // Frontier: convert first arg to Entity, add noMultiplierPrice. Triad: add capture
             return;
 
         price += noMultiplierPrice;
@@ -487,35 +672,38 @@ public sealed partial class CargoSystem
         // End Frontier: market modifiers & immune objects
         // Mono Begin
         if (blackMarketTaxAmount > 0)
-            _bank.TrySectorDeposit(SectorBankAccount.BlackMarket, (int)blackMarketTaxAmount, LedgerEntryType.BlackMarketSales);
+            _bank.TrySectorDeposit(SectorBankAccount.BlackMarket, (int)blackMarketTaxAmount, LedgerEntryType.BlackMarketSales, captureStandalone: false); // Triad: attached as a split of the sale
         if (frontierTaxAmount > 0)
-            _bank.TrySectorDeposit(SectorBankAccount.Frontier, (int)frontierTaxAmount, LedgerEntryType.ColonialOutpostSales);
+            _bank.TrySectorDeposit(SectorBankAccount.Frontier, (int)frontierTaxAmount, LedgerEntryType.ColonialOutpostSales, captureStandalone: false); // Triad: attached as a split of the sale
         if (nfsdTaxAmount > 0)
-            _bank.TrySectorDeposit(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCSales);
+            _bank.TrySectorDeposit(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCSales, captureStandalone: false); // Triad: attached as a split of the sale
         if (medicalTaxAmount > 0)
-            _bank.TrySectorDeposit(SectorBankAccount.Medical, (int)medicalTaxAmount, LedgerEntryType.MedicalSales);
+            _bank.TrySectorDeposit(SectorBankAccount.Medical, (int)medicalTaxAmount, LedgerEntryType.MedicalSales, captureStandalone: false); // Triad: attached as a split of the sale
         if (blackMarketTaxAmount < 0)
         {
             blackMarketTaxAmount = -blackMarketTaxAmount;
-            _bank.TrySectorWithdraw(SectorBankAccount.BlackMarket, (int)blackMarketTaxAmount, LedgerEntryType.BlackMarketPenalties);
+            _bank.TrySectorWithdraw(SectorBankAccount.BlackMarket, (int)blackMarketTaxAmount, LedgerEntryType.BlackMarketPenalties, captureStandalone: false); // Triad: attached as a split of the sale
         }
         if (frontierTaxAmount < 0)
         {
             frontierTaxAmount = -frontierTaxAmount;
-            _bank.TrySectorWithdraw(SectorBankAccount.Frontier, (int)frontierTaxAmount, LedgerEntryType.ColonialOutpostPenalties);
+            _bank.TrySectorWithdraw(SectorBankAccount.Frontier, (int)frontierTaxAmount, LedgerEntryType.ColonialOutpostPenalties, captureStandalone: false); // Triad: attached as a split of the sale
         }
         if (nfsdTaxAmount < 0)
         {
             nfsdTaxAmount = -nfsdTaxAmount;
-            _bank.TrySectorWithdraw(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCPenalties);
+            _bank.TrySectorWithdraw(SectorBankAccount.TDF, (int)nfsdTaxAmount, LedgerEntryType.TSFMCPenalties, captureStandalone: false); // Triad: attached as a split of the sale
         }
         if (medicalTaxAmount < 0)
         {
             medicalTaxAmount = -medicalTaxAmount;
-            _bank.TrySectorWithdraw(SectorBankAccount.Medical, (int)medicalTaxAmount, LedgerEntryType.MedicalPenalties);
+            _bank.TrySectorWithdraw(SectorBankAccount.Medical, (int)medicalTaxAmount, LedgerEntryType.MedicalPenalties, captureStandalone: false); // Triad: attached as a split of the sale
         }
         // Mono End
         var stackPrototype = _protoMan.Index<StackPrototype>(component.CashType);
+        // Triad: capture before the cast, so the rounding loss is visible rather than inferred.
+        CapturePalletSale(uid, component, capture, args.Actor, price, (int) price,
+            blackMarketTaxAmount, frontierTaxAmount, nfsdTaxAmount, medicalTaxAmount);
         _stack.Spawn((int)price, stackPrototype, xform.Coordinates);
         _audio.PlayPvs(ApproveSound, uid);
         UpdatePalletConsoleInterface((uid, component)); // Frontier: EntityUid<Entity

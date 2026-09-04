@@ -475,6 +475,8 @@ namespace Content.Client.Lobby.UI
                 //Logger.Debug($"Added company to dropdown: {i} - {companies[i].ID} - {companies[i].Name}");
             }
 
+            CompanyWarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-company-warning")}[/color]");
+
             CompanyButton.OnItemSelected += args =>
             {
                 CompanyButton.SelectId(args.Id);
@@ -1971,11 +1973,12 @@ namespace Content.Client.Lobby.UI
                 CompanyButton.SelectId(0);
                 CompanyImage.Visible = false;
 
-                // Also reset the profile's company to None if the current one is disabled
-                if (_prototypeManager.TryIndex<CompanyPrototype>(Profile.Company, out var companyProto) && companyProto.Disabled)
-                {
+                // Also reset the profile's company to None if the current one is disabled, or they aren't whitelisted for it
+                if (!_prototypeManager.TryIndex<CompanyPrototype>(Profile.Company, out var companyProto))
+                    return;
+
+                if (companyProto.Disabled || !_companyManager.IsAllowed(companyProto))
                     Profile = Profile.WithCompany("None");
-                }
             }
         }
     }

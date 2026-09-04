@@ -17,7 +17,7 @@ public sealed partial class TriggerSystem : EntitySystem
                 continue;
 
             if (!TryComp<MobStateComponent>(host, out var mobState))
-                return;
+                continue;
 
             var shouldReset =
                 mobState.CurrentState != MobState.Dead &&
@@ -31,20 +31,24 @@ public sealed partial class TriggerSystem : EntitySystem
                 continue;
             }
 
-            var waitingForNextTrigger = rattle.NextTrigger == TimeSpan.Zero || rattle.NextTrigger > _timing.CurTime;
-
-            if (waitingForNextTrigger)
+            if (rattle.NextTrigger == TimeSpan.Zero)
                 continue;
 
-            var isInMorgue = _container.TryGetContainingContainer(implantUid, out var container) && HasComp<MorgueComponent>(container.Owner);
+            // Check the time then trigger the implant again
+            if (rattle.NextTrigger > _timing.CurTime)
+                continue;
+
+            var isInMorgue = _container.TryGetContainingContainer(host, out var container) && HasComp<MorgueComponent>(container.Owner);
             // In-case we want to add other checks
-            var shouldAlert = isInMorgue;
+            var shouldAlert = !isInMorgue;
 
-            if (shouldAlert)
-                Trigger(implantUid);
-            else
+            if (!shouldAlert)
+            {
                 rattle.NextTrigger = _timing.CurTime + rattle.RetriggerDelay;
+                continue;
+            }
 
+            Trigger(implantUid);
         }
     }
 }

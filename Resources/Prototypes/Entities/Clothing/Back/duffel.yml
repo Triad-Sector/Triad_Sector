@@ -223,7 +223,7 @@
       tags: [] # ignore "WhitelistChameleon" tag
 
 - type: entity
-  parent: NFClothingDuffel # Frontier: ClothingBackpackDuffelNFClothingDuffel
+  parent: [NFClothingDuffel, BaseClass2AShipContrabandSilent] # Frontier: ClothingBackpackDuffelNFClothingDuffel | Triad: ship save contraband status
   id: ClothingBackpackDuffelHolding
   name: duffelbag of holding
   description: A duffelbag that opens into a localized pocket of bluespace.

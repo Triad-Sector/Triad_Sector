@@ -1,4 +1,5 @@
 station-beacon-tdf-chief = CE
+station-beacon-tdf-lieutenant = Lieutenant
 station-beacon-tdf-patrol-lead = PTL quarters
 station-beacon-overseer = Overseer
 station-beacon-briefing = Briefing

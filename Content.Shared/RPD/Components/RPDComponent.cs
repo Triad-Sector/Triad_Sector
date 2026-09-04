@@ -23,9 +23,9 @@ public sealed partial class RPDComponent : Component
     public string PipeColor { get; set; } = RPDPalette.DefaultKey;
 
     /// <summary>
-    /// Pipe layer chosen at the last <see cref="Robust.Shared.GameObjects.AfterInteractEvent"/>. Per-entity so
-    /// concurrent users with their own RPDs don't trample each other's selection between click and do-after
-    /// completion. Server-only state.
+    /// The operator's cursor-aimed pipe layer, streamed by the client on change. Read at the commit click (stamped
+    /// onto the do-after via <c>RCDPlacementCommitEvent</c>) and for deconstruct targeting; a placement in flight
+    /// never reads it again, so moving the cursor during the do-after cannot move the pipe. Server-only state.
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public AtmosPipeLayer CurrentLayer { get; set; } = AtmosPipeLayer.Primary;

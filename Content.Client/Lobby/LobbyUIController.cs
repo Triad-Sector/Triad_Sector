@@ -228,7 +228,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             PreviewPanel.SetSprite(EntityUid.Invalid);
             PreviewPanel.SetSummaryText(string.Empty);
             PreviewPanel.SetBankBalanceText(string.Empty); // Frontier
-            PreviewPanel.SetCompanyText(string.Empty); // Minor Faction Display
+            PreviewPanel.SetCompanyText(string.Empty); // Player Faction Display
             PreviewPanel.SetMonoCoinsText("MonoCoins: -1"); // MonoCoins Display
             return;
         }
@@ -253,15 +253,15 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         PreviewPanel.SetSummaryText(humanoid.Summary);
         PreviewPanel.SetBankBalanceText(humanoid.BankBalanceText); // Frontier
 
-        // Minor Faction Display
+        // Player Faction Display
         var companyId = humanoid.Company;
         if (_prototypeManager.TryIndex<CompanyPrototype>(companyId, out var company))
         {
-            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Player Faction:[/color] [color={company.Color.ToHex()}]{company.Name}[/color]");
         }
         else
         {
-            PreviewPanel.SetCompanyText($"[color=white]Minor Faction:[/color] [color=yellow]{companyId}[/color]");
+            PreviewPanel.SetCompanyText($"[color=white]Player Faction:[/color] [color=yellow]{companyId}[/color]");
         }
 
         // MonoCoins Display - Request balance from server and update display

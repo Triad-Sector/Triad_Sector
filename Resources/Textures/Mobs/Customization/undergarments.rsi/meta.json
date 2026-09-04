@@ -36,6 +36,10 @@
       "directions": 4
     },
     {
+      "name": "messy_tube_top",
+      "directions": 4
+    },
+    {
       "name": "briefs_vox",
       "directions": 4
     },
@@ -73,6 +77,10 @@
     },
     {
       "name": "boxers_reptilian",
+      "directions": 4
+    },
+    {
+      "name": "messy_tube_top_vox",
       "directions": 4
     }
   ]

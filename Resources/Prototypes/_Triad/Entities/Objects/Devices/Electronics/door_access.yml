@@ -1,11 +1,11 @@
 # TDF
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsTdfWarden
-  suffix: TDF Warden, Locked
+  id: DoorElectronicsTdfLieutenant
+  suffix: TDF Lieutenant, Locked
   components:
   - type: AccessReader
-    access: [["TdfWarden"]]
+    access: [["TdfLieutenant"]]
 
 - type: entity
   parent: DoorElectronics

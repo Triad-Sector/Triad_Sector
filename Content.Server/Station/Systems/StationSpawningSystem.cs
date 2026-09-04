@@ -1,4 +1,4 @@
-using Content.Server.Access.Systems;
+﻿using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
 using Content.Server.Mind.Commands;
@@ -33,6 +33,9 @@ using System.Linq;
 using Content.Shared.NameIdentifier; // Frontier
 using Content.Server._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Radio.Components; // Goobstation
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server.Station.Systems;
 
@@ -290,7 +293,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
 
             if (hasBalance)
             {
-                _bank.TryBankWithdraw(session!, prefs!, profile!, initialBankBalance - bankBalance, out var newBalance);
+                _bank.TryBankWithdraw(session!, prefs!, profile!, initialBankBalance - bankBalance, out var newBalance, new MarketRecord { Kind = MarketTransactionKind.LoadoutSpawn }); // Triad: market data
             }
             /// End Frontier: overwriting EquipRoleLoadout
         }

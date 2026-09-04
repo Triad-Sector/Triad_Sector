@@ -4,6 +4,7 @@ using Content.Shared.Atmos.Components; // Triad
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
+using Content.Shared.Construction.Prototypes; // Triad
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
@@ -202,8 +203,15 @@ public partial class RCDSystem : EntitySystem
         }
         // End Triad
 
+        // Triad: capture per-placement state a sibling system owns (the RPD's cursor-aimed pipe layer) once, here,
+        // and carry it through the do-after. Reading it live at completion let cursor movement after the click move
+        // the pipe onto another layer.
+        var commit = new RCDPlacementCommitEvent();
+        RaiseLocalEvent(uid, ref commit);
+        // End Triad
+
         if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
-                tilePlacementDirection: component.ConstructionDirection))
+                tilePlacementDirection: component.ConstructionDirection, layer: commit.Layer))
             return;
 
         if (!_net.IsServer)
@@ -277,7 +285,8 @@ public partial class RCDSystem : EntitySystem
             component.ConstructionDirection,
             component.ProtoId,
             cost,
-            EntityManager.GetNetEntity(effect));
+            EntityManager.GetNetEntity(effect),
+            commit.Layer); // Triad
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: target, used: uid) // Mono - add delay multiplier.
         {
@@ -322,7 +331,7 @@ public partial class RCDSystem : EntitySystem
         var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
 
         if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Event.Target, args.Event.User,
-                tilePlacementDirection: args.Event.Direction))
+                tilePlacementDirection: args.Event.Direction, layer: args.Event.Layer)) // Triad: captured layer
             args.Cancel();
     }
 
@@ -348,11 +357,11 @@ public partial class RCDSystem : EntitySystem
 
         // Ensure the RCD operation is still valid
         if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Target, args.User,
-                tilePlacementDirection: args.Direction))
+                tilePlacementDirection: args.Direction, layer: args.Layer)) // Triad: captured layer
             return;
 
         // Finalize the operation
-        FinalizeRCDOperation(uid, component, mapGridData, args.Direction, args.Target, args.User);
+        FinalizeRCDOperation(uid, component, mapGridData, args.Direction, args.Target, args.User, args.Layer); // Triad: captured layer
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -384,7 +393,7 @@ public partial class RCDSystem : EntitySystem
     #region Entity construction/deconstruction rule checks
 
     public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid? target, EntityUid user, bool popMsgs = true,
-        Direction? tilePlacementDirection = null)
+        Direction? tilePlacementDirection = null, AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad: layer
     {
         var prototype = _protoManager.Index(component.ProtoId);
         var tileDir = tilePlacementDirection ?? component.ConstructionDirection;
@@ -421,7 +430,7 @@ public partial class RCDSystem : EntitySystem
         switch (prototype.Mode)
         {
             case RcdMode.ConstructTile: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs, tileDir);
-            case RcdMode.ConstructObject: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs);
+            case RcdMode.ConstructObject: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs, layer: layer); // Triad: layer
             case RcdMode.Deconstruct: return IsDeconstructionStillValid(uid, component, mapGridData, target, user, popMsgs);
         }
 
@@ -429,7 +438,7 @@ public partial class RCDSystem : EntitySystem
     }
 
     public bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
-        Direction? tilePlacementDirection = null)
+        Direction? tilePlacementDirection = null, AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad: layer
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
@@ -505,6 +514,19 @@ public partial class RCDSystem : EntitySystem
             && prototype.Prototype != null
             && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
             && baseProto.TryComp<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+
+        // Triad: the construction menu is the canon for what may be placed where. A recipe that names its hand twin
+        // inherits the twin's wall rule here (canBuildInImpassable: false means the Impassable mask) and runs the
+        // twin's conditions below (NoUnstackableInTile, WallmountCondition, ...), so the RCD cannot drift from the
+        // menu. Nothing in the mask loop sees stacked atmos devices on its own: their fixtures carry no collision
+        // layer, and the identity guard is bypassed for layer-capable recipes.
+        ConstructionPrototype? twin = null;
+        if (prototype.ConstructionRecipe is { } twinId && !_protoManager.TryIndex(twinId, out twin))
+            Log.Error($"RCD recipe {prototype.ID} names construction recipe {twinId}, which does not exist.");
+
+        var collisionMask = prototype.CollisionMask;
+        if (twin is { CanBuildInImpassable: false })
+            collisionMask |= CollisionGroup.Impassable;
         // End Triad
 
         foreach (var ent in _intersectingEntities)
@@ -541,12 +563,12 @@ public partial class RCDSystem : EntitySystem
                 return false;
             }
 
-            if (prototype.CollisionMask != CollisionGroup.None && TryComp<FixturesComponent>(ent, out var fixtures))
+            if (collisionMask != CollisionGroup.None && TryComp<FixturesComponent>(ent, out var fixtures)) // Triad: twin-derived mask
             {
                 foreach (var fixture in fixtures.Fixtures.Values)
                 {
                     // Continue if no collision is possible
-                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int)prototype.CollisionMask) == 0)
+                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int)collisionMask) == 0) // Triad: twin-derived mask
                         continue;
 
                     // Continue if our custom collision bounds are not intersected
@@ -563,9 +585,25 @@ public partial class RCDSystem : EntitySystem
             }
         }
 
+        // Triad: the hand twin's own placement conditions, evaluated exactly as the construction menu evaluates them.
+        if (twin != null)
+        {
+            var dir = tilePlacementDirection ?? component.ConstructionDirection;
+            foreach (var condition in twin.Conditions)
+            {
+                if (condition.Condition(user, mapGridData.Location, dir))
+                    continue;
+
+                if (popMsgs && condition.GenerateGuideEntry()?.Localization is { } message)
+                    _popup.PopupClient(Loc.GetString(message), uid, user);
+
+                return false;
+            }
+        }
+
         // Triad: let a sibling system (RPD) apply layer-aware conflict rules RCD does not own. Plain RCD has no
         // handler, so this is a no-op for non-RPD tools.
-        var constructAttempt = new RCDConstructionAttemptEvent(mapGridData, prototype, tilePlacementDirection ?? component.ConstructionDirection, user, popMsgs);
+        var constructAttempt = new RCDConstructionAttemptEvent(mapGridData, prototype, tilePlacementDirection ?? component.ConstructionDirection, layer, user, popMsgs);
         RaiseLocalEvent(uid, ref constructAttempt);
         if (constructAttempt.Cancelled)
             return false;
@@ -640,7 +678,7 @@ public partial class RCDSystem : EntitySystem
 
     #region Entity construction/deconstruction
 
-    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, MapGridData mapGridData, Direction direction, EntityUid? target, EntityUid user)
+    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, MapGridData mapGridData, Direction direction, EntityUid? target, EntityUid user, AtmosPipeLayer layer) // Triad: layer
     {
         if (!_net.IsServer)
             return;
@@ -671,7 +709,7 @@ public partial class RCDSystem : EntitySystem
                     ? mirror.Id
                     : prototype.Prototype;
 
-                var spawnAttempt = new RCDObjectSpawnAttemptEvent(prototype, spawnProto);
+                var spawnAttempt = new RCDObjectSpawnAttemptEvent(prototype, spawnProto, layer);
                 RaiseLocalEvent(uid, ref spawnAttempt);
                 spawnProto = spawnAttempt.SpawnProto;
 
@@ -846,6 +884,10 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
     [DataField("fx")]
     public NetEntity? Effect { get; private set; } = null;
 
+    // Triad: the pipe layer the placement was committed on, captured at the click like Location and Direction.
+    [DataField]
+    public AtmosPipeLayer Layer { get; private set; } = AtmosPipeLayer.Primary;
+
     private RCDDoAfterEvent() { }
 
     public RCDDoAfterEvent(
@@ -854,7 +896,8 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
         Direction direction,
         ProtoId<RCDPrototype> startingProtoId,
         int cost,
-        NetEntity? effect = null)
+        NetEntity? effect = null,
+        AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad
     {
         Location = location;
         TargetGridId = targetGridId;
@@ -862,6 +905,7 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
         StartingProtoId = startingProtoId;
         Cost = cost;
         Effect = effect;
+        Layer = layer; // Triad
     }
 
     public override DoAfterEvent Clone() => this;

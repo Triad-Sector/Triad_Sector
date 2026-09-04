@@ -196,12 +196,12 @@
   - MGs
   - Energy
   - Weapons
-  materials:
-    Steel: 500
-    Plasteel: 2500
-    Silver: 500
-    Gold: 500
-    Plasma: 1000
+  materials: # Triad: scaled up from a 1,040-credit bill to match the 5,000-credit sale price
+    Steel: 2500
+    Plasteel: 12000
+    Silver: 2500
+    Gold: 2500
+    Plasma: 5000
 
 # PDV energy
 
@@ -460,11 +460,11 @@
   - Shotguns
   - Ballistic
   - Weapons
-  materials:
-    Steel: 2500
-    Plasteel: 2000
-    Plastic: 1500
-    Wood: 1000
+  materials: # Triad: scaled up from a 906-credit bill to match the 5,000-credit sale price
+    Steel: 14000
+    Plasteel: 11000
+    Plastic: 8500
+    Wood: 6000
 
 #Blueprints
 - type: latheRecipe

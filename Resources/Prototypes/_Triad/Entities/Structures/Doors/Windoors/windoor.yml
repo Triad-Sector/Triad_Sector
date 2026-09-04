@@ -1,18 +1,18 @@
 - type: entity
   parent: WindoorSecurePlasma
-  id: PlasmaWindoorSecureWardenLocked
-  suffix: Warden, Locked
+  id: PlasmaWindoorSecureTdfLieutenantLocked
+  suffix: TDF Lieutenant, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTdfWarden ]
+      board: [ DoorElectronicsTdfLieutenant ]
   - type: Wires
     layoutId: AirlockService
 
 - type: entity
   parent: WindoorSecurePlasma
   id: PlasmaWindoorSecureChiefEnforcerLocked
-  suffix: ChiefEnforcer, Locked
+  suffix: Chief Enforcer, Locked
   components:
   - type: ContainerFill
     containers:

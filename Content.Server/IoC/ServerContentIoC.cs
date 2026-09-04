@@ -4,6 +4,9 @@ using Content.Server._NF.Auth;
 using Content.Server._Triad.Shipyard.Admin;
 using Content.Server._Triad.Shipyard.Persistence;
 // End Triad
+// Triad: market data
+using Content.Server._Triad.Market;
+// End Triad
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -99,6 +102,10 @@ namespace Content.Server.IoC
             // Tracks open tamper admin panels so a single audit-write signal updates every one,
             // letting multiple admins watch the live feed without re-opening it.
             IoCManager.Register<TriadTamperAdminEuiRegistry>();
+            // End Triad
+            // Triad: market data
+            IoCManager.Register<MarketDataStore>();
+            IoCManager.Register<IMarketDataManager, MarketDataManager>();
             // End Triad
         }
     }

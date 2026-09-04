@@ -1,0 +1,90 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnRandomGunneryServer
+  name: random gunnery server spawn
+  suffix: All Servers, Guaranteed
+  components:
+  - type: Sprite
+    layers:
+      - state: blue
+      - sprite: Structures/Machines/telecomms.rsi
+        state: icon
+      - sprite: Structures/Machines/telecomms.rsi
+        state: unlit
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: GunneryServerAllTable
+      prob: 1
+
+- type: entityTable
+  id: GunneryServerAllTable
+  table: !type:GroupSelector
+    children:
+    - id: GunneryServerLow
+      weight: 2
+    - id: GunneryServerMedium
+      weight: 1.5
+    - id: GunneryServerHigh
+      weight: 0.45
+    - id: GunneryServerUltra
+      weight: 0.1
+
+- type: entity
+  parent: SpawnRandomGunneryServer
+  id: SpawnRandomGunneryServerLowTier
+  name: random gunnery server spawn
+  suffix: Low-Tier Servers, Guaranteed
+  components:
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: GunneryServerLowTierTable
+      prob: 1
+
+- type: entityTable
+  id: GunneryServerLowTierTable
+  table: !type:GroupSelector
+    children:
+    - id: GunneryServerLow
+    - id: GunneryServerMedium
+
+- type: entity
+  parent: SpawnRandomGunneryServer
+  id: SpawnRandomGunneryServerMidTier
+  name: random gunnery server spawn
+  suffix: Mid-Tier Servers, Guaranteed
+  components:
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: GunneryServerMidTierTable
+      prob: 1
+
+- type: entityTable
+  id: GunneryServerMidTierTable
+  table: !type:GroupSelector
+    children:
+    - id: GunneryServerMedium
+      weight: 1
+    - id: GunneryServerHigh
+      weight: 0.75
+    - id: GunneryServerUltra
+      weight: 0.2 # Rare
+
+- type: entity
+  parent: SpawnRandomGunneryServer
+  id: SpawnRandomGunneryServerHighTier
+  name: random gunnery server spawn
+  suffix: High-Tier Servers, Guaranteed
+  components:
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: GunneryServerHighTierTable
+      prob: 1
+
+- type: entityTable
+  id: GunneryServerHighTierTable
+  table: !type:GroupSelector
+    children:
+    - id: GunneryServerHigh
+      weight: 1
+    - id: GunneryServerUltra
+      weight: 0.75

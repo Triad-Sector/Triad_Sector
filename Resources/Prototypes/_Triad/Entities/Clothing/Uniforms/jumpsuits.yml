@@ -49,9 +49,9 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitTdfWarden
-  name: TDF warden tactical jumpsuit
-  description: A tactical jumpsuit for the dude who sits in the brig all the time.
+  id: ClothingUniformJumpsuitTdfLieutenant
+  name: TDF lieutenant tactical jumpsuit
+  description: A tactical jumpsuit for the second in command of the Triad Defense Force.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/warden.rsi

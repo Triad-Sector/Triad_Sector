@@ -27,7 +27,7 @@
       TDF:
         !type:SectorBankAccountInfo
         balance: 8000
-        increasePerSecond: 50 # ~180K per hour, about enough for minimum wage for the default TDF size
+        increasePerSecond: 42 # ~150K per hour, about enough for minimum wage for the default TDF size
       Medical:
         !type:SectorBankAccountInfo
         balance: 8000

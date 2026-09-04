@@ -20,11 +20,11 @@
       params:
         variation: 0.06
   - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Casings/12_gauge_shell.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/12_gauge_shell.rsi # Triad
     layers:
       - state: base
         map: [ "enum.AmmoVisualLayers.Base" ]
-    scale: 0.6, 0.6
+    scale: 0.8, 0.8 # Triad
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: StaticPrice
@@ -180,12 +180,12 @@
   components:
     - type: Sprite
       layers:
-        - state: depleted-uranium
+        - state: uranium # Triad
           map: [ "enum.AmmoVisualLayers.Base" ]
     - type: CartridgeAmmo
       proto: Pellet12_gaugeUraniumSpread
     - type: SpentAmmoVisuals
-      state: "depleted-uranium"
+      state: "uranium" # Triad
 
 # Mono AP syst
 #anti-flesh:

@@ -198,6 +198,65 @@ public static class ShipSaveYamlSanitizer
         ["VendingMachinePurchase"] = "purchaseGrid",
     };
 
+    // Entity prototypes removed by the 2026-08 xenoarchaeology rework whose entities are dropped from
+    // a ship file on load. Only the legacy grant action lives here: the artifact bodies themselves are
+    // renamed to their node-graph replacements by triad_migration.yml instead, which this scrub must
+    // not duplicate. Dropping the group here (rather than leaving it to the migration's null entry)
+    // lets the reference prune below clean up the container slots that pointed at it.
+    private static readonly HashSet<string> LegacyRemovedEntityPrototypes = new(StringComparer.Ordinal)
+    {
+        "ActionArtifactActivate",
+    };
+
+    // Component types the 2026-08 xenoarchaeology rework deleted from the codebase. A ship saved on
+    // the legacy build can carry these nodes on its (now renamed) artifacts; the deserializer skips an
+    // unregistered component anyway, this just does it without an error line per node. Four legacy
+    // names were re-registered by the rework with new data shapes (AnalysisConsole, ArtifactAnalyzer,
+    // NodeScanner, SuppressArtifactContainer) and are deliberately absent: those are live components
+    // on current saves and their nodes must reach the loader.
+    private static readonly HashSet<string> LegacyRemovedComponentTypes = new(StringComparer.Ordinal)
+    {
+        "ActiveArtifactAnalyzer",
+        "ActiveScannedArtifact",
+        "Artifact",
+        "ArtifactAnchorTrigger",
+        "ArtifactDamageTrigger",
+        "ArtifactDeathTrigger",
+        "ArtifactElectricityTrigger",
+        "ArtifactExamineTrigger",
+        "ArtifactGasTrigger",
+        "ArtifactHeatTrigger",
+        "ArtifactInteractionTrigger",
+        "ArtifactLandTrigger",
+        "ArtifactMagnetTrigger",
+        "ArtifactMicrowaveTrigger",
+        "ArtifactMusicTrigger",
+        "ArtifactPressureTrigger",
+        "ArtifactTimerTrigger",
+        "BiasedArtifact",
+        "ChargeBatteryArtifact",
+        "ChemicalPuddleArtifact",
+        "DamageNearbyArtifact",
+        "EmpArtifact",
+        "FoamArtifact",
+        "GasArtifact",
+        "IgniteArtifact",
+        "KnockArtifact",
+        "LightFlickerArtifact",
+        "PhasingArtifact",
+        "PolyOthersArtifact",
+        "PortalArtifact",
+        "RandomInstrumentArtifact",
+        "RandomTeleportArtifact",
+        "ShuffleArtifact",
+        "SpawnArtifact",
+        "TelepathicArtifact",
+        "TemperatureArtifact",
+        "ThrowArtifact",
+        "TraversalDistorter",
+        "TriggerArtifact",
+    };
+
     public static void SanitizeShipSaveNode(MappingDataNode root, IPrototypeManager prototypeManager)
     {
         // Keep serialized nullspace empty so ship exports stay scoped to the grid payload.
@@ -566,7 +625,9 @@ public static class ShipSaveYamlSanitizer
     }
 
     /// <summary>
-    /// Strips dangling entity references from a ship file on its way in. Returns how many were removed.
+    /// Strips stale nodes from a ship file on its way in: entities of removed legacy prototypes,
+    /// component nodes of removed legacy component types, and dangling entity references. Returns how
+    /// many nodes were removed.
     /// </summary>
     // Triad: the save-side prune only protects ships saved after it shipped, and there is no backlog we
     // can migrate: ship files live on the player's machine and are handed back to us at load time, so a
@@ -578,17 +639,92 @@ public static class ShipSaveYamlSanitizer
     // 'invalid' the writer emits for a reference it could not resolve, since that is never a uid the
     // file defines. Nothing removed here was reachable: the deserializer resolves both cases to
     // EntityUid.Invalid regardless, it just logs an error per occurrence on the way.
+    //
+    // The legacy strip runs first so the uids of dropped legacy entities feed the same prune, clearing
+    // the container slots that held them (a legacy artifact's grant action sits in its 'actions'
+    // container). Prototype RENAMES are deliberately not handled here: triad_migration.yml applies
+    // them inside the engine's deserializer, for this path and every other map load alike.
     public static int ScrubShipLoadNode(MappingDataNode root)
     {
         if (!root.TryGet("entities", out SequenceDataNode? protoSeq) || protoSeq == null)
             return 0;
 
-        return PruneContainerReferencesToRemovedEntities(protoSeq, new HashSet<string>(StringComparer.Ordinal));
+        var removedEntityUids = new HashSet<string>(StringComparer.Ordinal);
+        var scrubbed = StripLegacyRemovedNodes(protoSeq, removedEntityUids);
+        return scrubbed + PruneContainerReferencesToRemovedEntities(protoSeq, removedEntityUids);
     }
 
     /// <summary>
-    /// Parses a ship file, strips dangling entity references, and re-emits it. Returns the text
-    /// unchanged when there is nothing to remove or when it cannot be parsed.
+    /// Removes whole entity groups whose prototype no longer exists and component nodes whose type no
+    /// longer exists, collecting the removed entities' uids so the caller can prune references to
+    /// them. Returns how many nodes were removed.
+    /// </summary>
+    private static int StripLegacyRemovedNodes(SequenceDataNode protoSeq, HashSet<string> removedEntityUids)
+    {
+        var scrubbed = 0;
+
+        for (var protoIdx = protoSeq.Count - 1; protoIdx >= 0; protoIdx--)
+        {
+            if (protoSeq[protoIdx] is not MappingDataNode protoMap)
+                continue;
+
+            if (!protoMap.TryGet("entities", out SequenceDataNode? entitiesSeq) || entitiesSeq == null)
+                continue;
+
+            if (protoMap.TryGet("proto", out ValueDataNode? protoIdNode)
+                && protoIdNode != null
+                && !protoIdNode.IsNull
+                && LegacyRemovedEntityPrototypes.Contains(protoIdNode.Value))
+            {
+                foreach (var entityNode in entitiesSeq)
+                {
+                    if (entityNode is MappingDataNode entMap
+                        && entMap.TryGet("uid", out ValueDataNode? uidNode)
+                        && uidNode != null
+                        && !uidNode.IsNull)
+                    {
+                        removedEntityUids.Add(uidNode.Value);
+                    }
+
+                    scrubbed++;
+                }
+
+                protoSeq.RemoveAt(protoIdx);
+                continue;
+            }
+
+            foreach (var entityNode in entitiesSeq)
+            {
+                if (entityNode is not MappingDataNode entMap)
+                    continue;
+
+                if (!entMap.TryGet("components", out SequenceDataNode? comps) || comps == null)
+                    continue;
+
+                for (var compIdx = comps.Count - 1; compIdx >= 0; compIdx--)
+                {
+                    if (comps[compIdx] is not MappingDataNode compMap)
+                        continue;
+
+                    if (!compMap.TryGet("type", out ValueDataNode? typeNode) || typeNode == null)
+                        continue;
+
+                    if (!LegacyRemovedComponentTypes.Contains(typeNode.Value))
+                        continue;
+
+                    comps.RemoveAt(compIdx);
+                    scrubbed++;
+                }
+            }
+        }
+
+        return scrubbed;
+    }
+
+    /// <summary>
+    /// Parses a ship file, strips removed legacy entities and components plus dangling entity
+    /// references, and re-emits it. Returns the text unchanged when there is nothing to remove or
+    /// when it cannot be parsed.
     /// </summary>
     public static string ScrubShipLoadYaml(string yaml, out int scrubbed)
     {

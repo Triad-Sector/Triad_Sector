@@ -18,7 +18,7 @@ public sealed partial class LastWordsSystem : EntitySystem
     {
         _mindSystem.TryGetMind(uid, out var mindId, out var _);
 
-        if (TryComp<LastWordsComponent>(mindId, out var lastWordsComp))
+        if (TryComp<LastWordsComponent>(mindId, out var lastWordsComp) && !args.IsWhisper) // Triad - Whisper check
             lastWordsComp.LastWords = args.Message;
     }
 }

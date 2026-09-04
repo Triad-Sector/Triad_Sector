@@ -6,38 +6,38 @@
 #
 #
 
-- type: vessel
-  id: Jitterbug
-  parent: BaseVessel
-  name: SE Jitterbug
-  description: A Botanical shuttle, comes with ten trays and some supplies to get you going. Comes in the unique shape of a bug, how cute.
-  price: 36050
-  category: Small
-  group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/jitterbug.yml
-  guidebookPage: null
-  class:
-  - Civilian
-  - Botany
-  engine:
-  - Uranium
+#- type: vessel
+#  id: Jitterbug
+#  parent: BaseVessel
+#  name: SE Jitterbug
+#  description: A Botanical shuttle, comes with ten trays and some supplies to get you going. Comes in the unique shape of a bug, how cute.
+#  price: 36050
+#  category: Small
+#  group: Shipyard
+#  shuttlePath: /Maps/_Mono/Shuttles/jitterbug.yml
+#  guidebookPage: null
+#  class:
+#  - Civilian
+#  - Botany
+#  engine:
+#  - Uranium
 
-- type: gameMap
-  id: Jitterbug
-  mapName: 'SE Jitterbug'
-  mapPath: /Maps/_Mono/Shuttles/jitterbug.yml
-  minPlayers: 0
-  stations:
-    Jitterbug:
-      stationProto: StandardFrontierVessel
-      components:
-        - type: StationNameSetup
-          mapNameTemplate: 'Jitterbug CIV{1}'
-          nameGenerator:
-            !type:NanotrasenNameGenerator
-            prefixCreator: '14'
-        - type: StationJobs
-          availableJobs:
-            Contractor: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
-            Mercenary: [ 0, 0 ]
+#- type: gameMap
+#  id: Jitterbug
+#  mapName: 'SE Jitterbug'
+#  mapPath: /Maps/_Mono/Shuttles/jitterbug.yml
+#  minPlayers: 0
+#  stations:
+#    Jitterbug:
+#      stationProto: StandardFrontierVessel
+#      components:
+#        - type: StationNameSetup
+#          mapNameTemplate: 'Jitterbug CIV{1}'
+#          nameGenerator:
+#            !type:NanotrasenNameGenerator
+#            prefixCreator: '14'
+#        - type: StationJobs
+#          availableJobs:
+#            Contractor: [ 0, 0 ]
+#            Pilot: [ 0, 0 ]
+#            Mercenary: [ 0, 0 ]

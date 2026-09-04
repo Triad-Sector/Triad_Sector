@@ -27,7 +27,7 @@
   - Service
   - StationTrafficController # Frontier
   - TdfPatrolTeamLeader # Triad
-  - TdfWarden # Triad
+  - TdfLieutenant # Triad
   - Maintenance
   - External
   - Janitor

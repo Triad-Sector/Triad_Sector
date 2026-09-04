@@ -1,11 +1,11 @@
-<p align="center"> <img alt="Frontier Station 14" width="880" height="400" src="https://raw.githubusercontent.com/Triad-Sector/Triad-Sector/refs/heads/main/Resources/Textures/_Triad/Logo/logo.png" /></p>
+<p align="center"> <img alt="Triad Sector" width="880" height="400" src="Resources/Textures/_Triad/Logo/logo.png" /></p>
 
 
 Triad is a fork of [Monolith](https://github.com/Monolith-Station/Monolith) that runs on the [Robust Toolbox](https://github.com/space-wizards/RobustToolbox) engine written in C#.
 
 This is the primary repo for Triad.
 
-If you want to host or create content for Monolith, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
+If you want to host or create content for Triad, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
 
 ## Links
 
@@ -15,11 +15,13 @@ If you want to host or create content for Monolith, this is the repo you need. I
 
 We are happy to accept contributions from anybody. Get in Discord if you want to help. Don't be afraid to ask for help either!
 
+Read [Attributing Your Changes](https://github.com/Triad-Sector/Triad_Sector/wiki/Attributing-Your-Changes) before opening a PR; it covers how to license and mark your work.
+
 We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language consider creating a fork or contributing to a fork.
 
 ## Building
 
-Refer to [the Space Wizards' guide](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html) on setting up a development environment for general information, but keep in mind that Einstein Engines is not the same and many things may not apply.
+Refer to [the Space Wizards' guide](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html) on setting up a development environment for general information, but keep in mind that Triad is not vanilla Space Station 14 and many things may not apply.
 We provide some scripts shown below to make the job easier.
 
 ### Build dependencies
@@ -54,13 +56,13 @@ We provide some scripts shown below to make the job easier.
 
 ## License
 
-See the REUSE headers for detailed licensing information for each file for the specific licenses contributions are made under. The work as a whole is licensed under GNU Affero General Public License version 3.0.
+The work as a whole is licensed under the GNU Affero General Public License version 3.0. See `LEGAL.md` for the full picture; license texts live in `LICENSES/`.
 
-By default, original code contributed to the Monolith codebase after 04d8ce483f638320d1b85a7aaacdf01442757363 is under Mozilla Public License version 2.0 with Exhibit B removed. See `LICENSE-MPL.txt`.
+Content contributed to this repository after commit 2fca06eaba205ae6fe3aceb8ae2a0594f0effee0 is licensed under the GNU Affero General Public License version 3.0, unless otherwise stated. See `LICENSES/AGPL-3.0-or-later.txt`.
 
-Content contributed to this repository after commit 2fca06eaba205ae6fe3aceb8ae2a0594f0effee0 is licensed under the GNU Affero General Public License version 3.0, unless otherwise stated. See `LICENSE-AGPLv3.txt`.
+Content contributed to this repository before commit 2fca06eaba205ae6fe3aceb8ae2a0594f0effee0 is licensed under the MIT license, unless otherwise stated. See `LICENSES/MIT.txt`.
 
-Content contributed to this repository before commit 2fca06eaba205ae6fe3aceb8ae2a0594f0effee0 is licensed under the MIT license, unless otherwise stated. See `LICENSE-MIT.txt`.
+Some files inherited from Monolith are licensed under Mozilla Public License version 2.0 with Exhibit B removed and keep that license. See `LICENSES/MPL-2.0.txt`. A file that declares its own license in a header keeps it.
 
 
 [2fca06eaba205ae6fe3aceb8ae2a0594f0effee0](https://github.com/new-frontiers-14/frontier-station-14/commit/2fca06eaba205ae6fe3aceb8ae2a0594f0effee0) was pushed on July 1, 2024 at 16:04 UTC

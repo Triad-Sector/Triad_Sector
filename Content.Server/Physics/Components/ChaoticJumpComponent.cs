@@ -51,17 +51,4 @@ public sealed partial class ChaoticJumpComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public EntProtoId Effect = "EffectEmpPulse";
-
-    /// <summary>
-    /// Triad: radius of the footprint swept along the jump path. The jump cannot land the entity past a
-    /// gap narrower than this, which is what stops it teleporting through containment-field corner slots.
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float SweepRadius = 0.35f;
-
-    /// <summary>
-    /// Triad: how far short of a swept contact the entity lands, so it does not end up flush against the obstacle.
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float SweepSkin = 0.1f;
 }

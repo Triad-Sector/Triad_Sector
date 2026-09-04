@@ -1,0 +1,34 @@
+- type: entity
+  parent: BannerBase
+  id: IVDripDeco
+  name: IV drip
+  description: A stand with a bag attached for injecting fluids intravenously. It appears to be broken and non-functional.
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Decoration/medical.rsi
+    state: iv-drip
+  - type: Destructible #Section copied from bannerbase
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 2
+          SheetSteel1:
+            min: 1
+            max: 2
+
+- type: entity
+  parent: IVDripDeco
+  id: N2OMachineDeco
+  name: nitrous oxide sedation machine
+  description: A stand with a breath mask and a canister of air and nitrous oxide, used to sedate patients. It appears to be broken and non-functional.
+  components:
+  - type: Sprite
+    state: breath-machine

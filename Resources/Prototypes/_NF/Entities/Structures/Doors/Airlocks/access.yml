@@ -81,90 +81,80 @@
       board: [ DoorElectronicsMercenary ]
 
 - type: entity
-  parent: AirlockNfsdGlass
-  id: AirlockNfsdGlassLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockNfsd
-  id: AirlockNfsdLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdBrigLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBrig ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdBrigGlassLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBrig ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdDetectiveLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdDetectiveGlassLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdLawyerLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurityLawyer ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdLawyerGlassLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurityLawyer ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdArmoryLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsArmory ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdArmoryGlassLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:

@@ -63,7 +63,7 @@
     - !type:BuyerJobCondition
       whitelist:
        - TdfMedic
-       - TdfWarden
+       - TdfLieutenant
        - TdfChiefEnforcer
 
 - type: listing
@@ -728,7 +728,7 @@
           - SecurityUplink
     - !type:BuyerJobCondition
       whitelist:
-       - TdfWarden
+       - TdfLieutenant
        - TdfPatrolTeamLeader
        - TdfChiefEnforcer
 
@@ -1027,7 +1027,7 @@
       whitelist:
        - TdfChiefEnforcer
        - TdfMedic
-       - TdfWarden
+       - TdfLieutenant
 
 - type: listing
   id: UplinkSecurityInspector
@@ -1062,7 +1062,7 @@
           - SecurityUplink
     - !type:BuyerJobCondition
       whitelist:
-       - TdfWarden
+       - TdfLieutenant
        - TdfPatrolTeamLeader
        - TdfChiefEnforcer
 
@@ -1179,7 +1179,7 @@
           - SecurityUplink
     - !type:BuyerJobCondition
       whitelist:
-       - TdfWarden
+       - TdfLieutenant
        - TdfPatrolTeamLeader
        - TdfChiefEnforcer
 

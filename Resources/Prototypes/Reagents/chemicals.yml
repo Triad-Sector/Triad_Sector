@@ -63,28 +63,30 @@
   physicalDesc: reagent-physical-desc-powdery
   color: white
 
-- type: reagent
-  id: Artifexium
-  name: reagent-name-artifexium
-  desc: reagent-desc-artifexium
-  flavor: metallic
-  physicalDesc: reagent-physical-desc-crystalline
-  color: "#776291"
-  metabolisms:
-    Poison:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Caustic: 2
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:NFActivateArtifact # Frontier: ActivateArtifact<NFActivateArtifact
-        conditions:
-        - !type:ReagentThreshold
-          min: 5
+# Triad: artifexium removed. A splash that satisfies any trigger bypasses the difficulty the node is
+# priced on, and without that there is nothing left for it to do.
+#- type: reagent
+#  id: Artifexium
+#  name: reagent-name-artifexium
+#  desc: reagent-desc-artifexium
+#  flavor: metallic
+#  physicalDesc: reagent-physical-desc-crystalline
+#  color: "#776291"
+#  metabolisms:
+#    Poison:
+#      effects:
+#      - !type:HealthChange
+#        damage:
+#          types:
+#            Caustic: 2
+#  reactiveEffects:
+#    Acidic:
+#      methods: [ Touch ]
+#      effects:
+#      - !type:NFActivateArtifact # Frontier: ActivateArtifact<NFActivateArtifact
+#        conditions:
+#        - !type:ReagentThreshold
+#          min: 5
 
 - type: reagent
   id: Benzene

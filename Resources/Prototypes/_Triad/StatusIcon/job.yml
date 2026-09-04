@@ -2,8 +2,8 @@
   parent: JobIcon
   id: JobIconTdfChiefEnforcer
   icon:
-    sprite: /Textures/_NF/Interface/Misc/job_icons.rsi
-    state: nfsdsheriff
+    sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
+    state: tdfchief
   jobName: job-name-tdf-chief-enforcer
 
 - type: jobIcon
@@ -40,7 +40,7 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconTdfWarden
+  id: JobIconTdfLieutenant
   icon:
     sprite: /Textures/_Triad/Interface/Misc/job_icons.rsi
     state: tdfwarden

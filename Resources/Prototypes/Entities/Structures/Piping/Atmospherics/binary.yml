@@ -598,13 +598,17 @@
   parent: GasBinaryBase
   id: HeatExchanger
   name: radiator
-  description: Transfers heat between the pipe and its surroundings.
+  # Triad: copper-cored by default. Copper fin core spreads heat along the
+  # array and doubles the effective fin area.
+  description: Transfers heat between the pipe and its surroundings. A copper core carries heat along the fins fast.
   placement:
     mode: SnapgridCenter
   components:
   - type: Rotatable
   - type: Transform
     noRot: false
+  - type: StaticPrice # Triad: the copper core deconstructs to 2 steel + 2 copper sheets (31.8), which the inherited 12 sat under
+    price: 32
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
     layers:
@@ -613,16 +617,88 @@
       map: [ "enum.PipeVisualLayers.Pipe" ]
     - state: heStraight
       map: [ "enum.SubfloorLayers.FirstLayer" ]
+    # Triad: incandescence overlay; unshaded copy of the fins tinted by the
+    # thermal bucket. Must stay in SubFloorHide visibleLayers or it only shows
+    # on exposed tiles.
+    - state: heStraight
+      map: [ "enum.RadiatorVisualLayers.Glow" ]
+      shader: unshaded
+      visible: false
   - type: AtmosPipeLayers
     spriteRsiPaths: {}
     numberOfPipeLayers: 1
   - type: SubFloorHide
     visibleLayers:
     - enum.SubfloorLayers.FirstLayer
+    - enum.RadiatorVisualLayers.Glow # Triad
   - type: Appearance
   - type: PipeColorVisuals
+  # Triad: blank out the pipe-connector overlay. Its layers are appended after
+  # the fin layers, so they draw on top; a linked run has no stub art for the
+  # connector to align with, and it printed a bare pipe chunk over every joint.
+  # The sprite's own end stubs carry the connection read at capped ends.
+  - type: PipeAppearance
+    sprite:
+    - sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+      state: blank
+  # Triad: contact-hazard sensor. Non-hard fixture so mobs overlap without
+  # being blocked; step-trigger events maintain the standers set, and the
+  # attempt gate means a neutral radiator never triggers at all. Physics is
+  # inherited (static, canCollide false): CollideOnAnchor switches collision
+  # on at anchor time, and an unanchored radiator has nothing to sense.
+  # Forcing canCollide true here fails PrototypeSaveTest, since CollisionWake
+  # clears it on spawn for any asleep static body on a grid.
+  - type: Fixtures
+    fixtures:
+      contact_hazard:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false
+        layer:
+        - SlipLayer
+  - type: StepTrigger
+    intersectRatio: 0.1
+    requiredTriggeredSpeed: 0
+  # Triad: the blackbody glow ramp is NOT wired here. RadiatorGlowSystem
+  # (client) owns the glow layer's colour and the spill light so it can
+  # cross-fade between buckets; a visualizer entry would snap them instead.
+  - type: RadiatorGlow
+  - type: GenericVisualizer
+    visuals:
+      enum.RadiatorVisuals.Connections: # Triad: AME-style array extension
+        enum.SubfloorLayers.FirstLayer:
+          Isolated: { state: heStraight }
+          CapIn: { state: heStraightCapIn }
+          CapOut: { state: heStraightCapOut }
+          Middle: { state: heStraightMid }
+        enum.RadiatorVisualLayers.Glow:
+          Isolated: { state: heStraight }
+          CapIn: { state: heStraightCapIn }
+          CapOut: { state: heStraightCapOut }
+          Middle: { state: heStraightMid }
   - type: AtmosDevice
+  # Triad: copper-cored tuning (2 Steel + 2 Copper). Component defaults are the
+  # old all-steel numbers: alpha 140 (~10 m2 blackbody per tile), link 800 W/K,
+  # pipe 8000 W/K.
+  #   radiationCoefficient: ~2x fin area from the copper core
+  #   bodyLinkConductance:  k 400 copper vs k 50 steel along the array
+  #   pipeConductance:      better gas-to-fin coupling through the core
   - type: HeatExchanger
+    radiationCoefficient: 250
+    bodyLinkConductance: 6000
+    pipeConductance: 12000
+  # Triad: incandescent spill light. Starts off; HeatExchangerSystem drives
+  # colour/energy/radius on bucket transitions only, so the networked light
+  # fields never dirty per tick. SubFloorHide masks sprite layers, not lights,
+  # so a tiled-over radiator still spills light; that reads as heat bleeding
+  # through the plating and matches the contact burn firing through floors.
+  - type: PointLight
+    enabled: false
+    radius: 2.0
+    energy: 0.6
+    color: "#E64019"
+    castShadows: false
   - type: NodeContainer
     nodes:
       inlet:
@@ -650,6 +726,7 @@
     - type: SubFloorHide
       visibleLayers:
       - enum.SubfloorLayers.FirstLayer
+      - enum.RadiatorVisualLayers.Glow # Triad
     - type: Sprite
       layers:
       - sprite: Structures/Piping/Atmospherics/pipe.rsi
@@ -657,6 +734,10 @@
         map: [ "enum.PipeVisualLayers.Pipe" ]
       - state: heBend
         map: [ "enum.SubfloorLayers.FirstLayer" ]
+      - state: heBend # Triad: glow overlay
+        map: [ "enum.RadiatorVisualLayers.Glow" ]
+        shader: unshaded
+        visible: false
     - type: NodeContainer
       nodes:
         inlet:
@@ -670,3 +751,19 @@
     - type: Construction
       graph: GasBinary
       node: bendradiator
+    # Triad: full override (component overrides replace wholesale). Only the
+    # Connections map lives here; the glow ramp is RadiatorGlowSystem's, and
+    # the RadiatorGlow component is inherited from HeatExchanger.
+    - type: GenericVisualizer
+      visuals:
+        enum.RadiatorVisuals.Connections:
+          enum.SubfloorLayers.FirstLayer:
+            Isolated: { state: heBend }
+            CapIn: { state: heBendCapIn }
+            CapOut: { state: heBendCapOut }
+            Middle: { state: heBendMid }
+          enum.RadiatorVisualLayers.Glow:
+            Isolated: { state: heBend }
+            CapIn: { state: heBendCapIn }
+            CapOut: { state: heBendCapOut }
+            Middle: { state: heBendMid }

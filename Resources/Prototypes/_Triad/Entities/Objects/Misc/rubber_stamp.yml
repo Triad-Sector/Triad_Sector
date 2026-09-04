@@ -1,7 +1,7 @@
 - type: entity
-  name: chief enforcer's rubber stamp
-  parent: RubberStampBase
+  parent: [RubberStampBase, BaseClass2AShipContrabandSilent]
   id: RubberStampChiefEnforcer
+  name: chief enforcer's rubber stamp
   categories: [ DoNotMap ]
   components:
   - type: Stamp
@@ -11,13 +11,27 @@
     stampState: "paper_stamp-hos"
   - type: Sprite
     state: stamp-hos
-  - type: SavingContraband
   # TODO: Sprite and color?
 
 - type: entity
-  name: TFA HighComm rubber stamp
-  parent: RubberStampBase
+  parent: [RubberStampBase, BaseClass2AShipContrabandSilent]
+  id: RubberStampLieutenant
+  name: lieutenant's rubber stamp
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-lieutenant
+    stampedColor: "#c5a847"
+    protected: true
+    stampState: "paper_stamp-warden"
+  - type: Sprite
+    state: stamp-warden
+  # TODO: Sprite and color?
+
+- type: entity
+  parent: [RubberStampBase, BaseClass2AShipContrabandSilent]
   id: RubberStampTfaHighComm
+  name: TFA HighComm rubber stamp
   categories: [ DoNotMap ]
   components:
   - type: Sprite
@@ -28,4 +42,3 @@
     stampedColor: "#293A68"
     stampState: "paper_stamp-tdf-highcomm"
     protected: true
-  - type: SavingContraband

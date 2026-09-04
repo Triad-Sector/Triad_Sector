@@ -4,7 +4,7 @@ meta:
   engineVersion: 287.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/14/2026 22:00:50
+  time: 08/28/2026 21:13:26
   entityCount: 1687
 maps:
 - 1
@@ -400,10 +400,10 @@ entities:
     - type: StationTransit
     - type: SpreaderGrid
       spreadQueues:
-        Puddle: []
         Smoke: []
         Kudzu: []
         MetalFoam: []
+        Puddle: []
     - type: GridPathfinding
     - type: NavMap
     - type: ShipGridLock
@@ -7852,6 +7852,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -4.5,2.5
+- proto: SpawnPointTdfLieutenant
+  entities:
+  - uid: 1120
+    components:
+    - type: Transform
+      parent: 2
+      pos: -4.5,2.5
 - proto: SpawnPointTdfMedic
   entities:
   - uid: 1122
@@ -7862,13 +7869,6 @@ entities:
 - proto: SpawnPointTdfPatrolTeamLeader
   entities:
   - uid: 917
-    components:
-    - type: Transform
-      parent: 2
-      pos: -4.5,2.5
-- proto: SpawnPointTdfWarden
-  entities:
-  - uid: 1120
     components:
     - type: Transform
       parent: 2

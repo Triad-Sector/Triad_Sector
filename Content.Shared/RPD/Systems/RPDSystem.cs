@@ -32,6 +32,7 @@ public sealed partial class RPDSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<RPDComponent, RCDDeconstructAttemptEvent>(OnDeconstructAttempt);
+        SubscribeLocalEvent<RPDComponent, RCDPlacementCommitEvent>(OnPlacementCommit);
         SubscribeLocalEvent<RPDComponent, RCDObjectSpawnAttemptEvent>(OnObjectSpawnAttempt);
         SubscribeLocalEvent<RPDComponent, RCDDeconstructTargetResolveEvent>(OnDeconstructTargetResolve);
         SubscribeLocalEvent<RPDComponent, RPDColorChangeMessage>(OnColorChange);
@@ -69,8 +70,19 @@ public sealed partial class RPDSystem : EntitySystem
     }
 
     /// <summary>
+    /// Stamps the cursor-aimed layer onto the placement at the commit click. From here on the RCD pipeline carries
+    /// it in the do-after; <see cref="RPDComponent.CurrentLayer"/> keeps streaming for the next click and for
+    /// deconstruct targeting, but this placement no longer reads it.
+    /// </summary>
+    private void OnPlacementCommit(Entity<RPDComponent> ent, ref RCDPlacementCommitEvent args)
+    {
+        args.Layer = ent.Comp.CurrentLayer;
+    }
+
+    /// <summary>
     /// Rewrites the spawn prototype to the AtmosPipeLayer alternative when the recipe is layer-capable and the
-    /// target entity defines pipe-layer variants. Falls through to the original prototype otherwise.
+    /// target entity defines pipe-layer variants. Falls through to the original prototype otherwise. Reads the
+    /// layer captured at commit (<see cref="RCDObjectSpawnAttemptEvent.Layer"/>), never the live cursor state.
     /// </summary>
     private void OnObjectSpawnAttempt(Entity<RPDComponent> ent, ref RCDObjectSpawnAttemptEvent args)
     {
@@ -83,7 +95,7 @@ public sealed partial class RPDSystem : EntitySystem
         if (!entityProto.TryComp<AtmosPipeLayersComponent>(out var atmosPipeLayers, EntityManager.ComponentFactory))
             return;
 
-        if (_pipeLayers.TryGetAlternativePrototype(atmosPipeLayers, ent.Comp.CurrentLayer, out var layerProto))
+        if (_pipeLayers.TryGetAlternativePrototype(atmosPipeLayers, args.Layer, out var layerProto))
             args.SpawnProto = layerProto.Id;
     }
 

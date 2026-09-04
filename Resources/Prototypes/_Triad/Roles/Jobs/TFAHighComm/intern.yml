@@ -13,7 +13,7 @@
   access:
   - CentralCommand
   - TdfChiefEnforcer
-  - TdfWarden
+  - TdfLieutenant
   - TdfPatrolTeamLeader
   ranks:
     RankHighCommandIntern: []

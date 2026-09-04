@@ -21,47 +21,47 @@
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
   id: FaxMachineNFOutpostSTC
-  suffix: Outpost, STC
+  suffix: Venmar, STC
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Colonial Outpost STC"
+    name: "Venmar - STC"
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
   id: FaxMachineNFOutpostSR
-  suffix: Outpost, SR
+  suffix: Venmar, Overseer
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Colonial Outpost SR"
+    name: "Venmar - Overseer"
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
   id: FaxMachineNFOutpostGuard
-  suffix: Outpost, Guard
+  suffix: Venmar, TDF Outpost
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Colonial Outpost Guard"
+    name: "Venmar - TDF Outpost"
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
   id: FaxMachineNFOutpostReception
-  suffix: Outpost, Reception
+  suffix: Venmar, Reception
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Colonial Outpost Reception"
+    name: "Venmar - Reception"
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineCaptain]
   id: FaxMachineNFOutpostAdministration
-  suffix: Outpost, Administration
+  suffix: Venmar, Administration
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Colonial Outpost Administration"
+    name: "Venmar - Administration"
 
 # POI
 - type: entity

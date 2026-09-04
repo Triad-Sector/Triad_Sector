@@ -26,10 +26,10 @@ language-Azaziba-name = Azaziba
 language-Azaziba-description =
     A native language of Asakims consisting of a combination of spoken word and gesticulation.
 
-language-SolCommon-name = Sol common
+language-SolCommon-name = Sol Common
 language-SolCommon-description =
     With its roots in Mandarin Chinese - Common evolved as the official language of the Federated Solarian Republic - with officials working to tie it together with a common tongue.
-    It's spoken by state officials, the armed forces, by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.
+    It's spoken by state officials, the armed forces, and by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.
 
 language-NovuNederic-name = Novu-Nederic
 language-NovuNederic-description =
@@ -78,11 +78,11 @@ language-RobotTalk-description = A language consisting of harsh binary chirps, w
 language-Calcic-name = Calcic
 language-Calcic-description = The bone-rattling language of Skeletons and Plasmamen. It sounds like a harmonic trousle of bones with a humerus tone, sans any off-tune ribbing.
 
-# Tau-Ceti Basic Sign Language - Removed prefix for better readability.
+# Andromeda Standard Sign Language - Removed prefix for better readability.
 language-Sign-name = Sign Language
 language-Sign-description =
-    Tau-Ceti Basic Sign Language.
-    TCB-SL for short, this sign language is prevalent among mute and deaf people.
+    Andromeda Standard Sign Language.
+    AS-SL for short, this sign language is prevalent among mute and deaf people.
 
 language-Marish-name = Marish
 language-Marish-description =  A language spoken only by Shadowkin, one that is unable to be replicated by normal tongues.

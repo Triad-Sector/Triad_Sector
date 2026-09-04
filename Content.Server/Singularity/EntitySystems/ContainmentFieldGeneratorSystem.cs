@@ -12,6 +12,8 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Content.Shared.Tools.Components; // Triad
+using System.Linq; // Triad
 
 namespace Content.Server.Singularity.EntitySystems;
 
@@ -38,6 +40,7 @@ public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, EventHorizonAttemptConsumeEntityEvent>(PreventBreach);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ToolUseAttemptEvent>(OnToolUseAttempt); // Triad
     }
 
     public override void Update(float frameTime)
@@ -130,6 +133,20 @@ public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem
             args.Cancel();
         }
     }
+    // Triad Begin
+    private void OnToolUseAttempt(Entity<ContainmentFieldGeneratorComponent> generator, ref ToolUseAttemptEvent args)
+    {
+        // Prevent only if tool has prying ability (crowbars, etc), so nanites arent blocked
+        if (!args.Qualities.Contains("Prying"))
+            return;
+
+        if (generator.Comp.Enabled || generator.Comp.IsConnected)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("comp-containment-deconstruct-warning"), args.User, args.User, PopupType.LargeCaution);
+            args.Cancel();
+        }
+    }
+    // Triad End
 
     private void TurnOn(Entity<ContainmentFieldGeneratorComponent> generator)
     {

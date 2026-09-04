@@ -1,0 +1,29 @@
+- type: loadout
+  id: ClothingUniformJumpsuitTdfLieutenant
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfLieutenant
+
+- type: loadout
+  id: TdfLieutenantPda
+  equipment:
+    id: TdfLieutenantPda
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfLieutenant
+  equipment:
+    head: ClothingHeadHatBeretTdfLieutenant
+
+- type: loadout
+  id: ClothingHeadHatTdfLieutenant
+  equipment:
+    head: ClothingHeadHatTdfLieutenant
+
+- type: loadout
+  id: ClothingOuterCoatTdfLieutenant
+  equipment:
+    outerClothing: ClothingOuterCoatTdfLieutenant
+
+- type: loadout
+  id: ClothingOuterCoatTdfLieutenantAlt
+  equipment:
+    outerClothing: ClothingOuterCoatTdfLieutenantAlt
