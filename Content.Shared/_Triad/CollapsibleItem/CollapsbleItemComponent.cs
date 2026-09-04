@@ -23,5 +23,5 @@ public sealed partial class CollapsibleItemComponent : Component
     public int FuelCost = 5;
 
     [DataField, AutoNetworkedField]
-    public TimeSpan DoAfter = TimeSpan.FromSeconds(2);
+    public TimeSpan DoAfter = TimeSpan.FromSeconds(1);
 }

@@ -6,6 +6,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Tools.Components;
 using Content.Shared.Coordinates;
+using Robust.Shared.Network;
 
 namespace Content.Shared._Triad.CollapsibleItem;
 
@@ -46,7 +47,7 @@ public sealed partial class CollapsibleItemSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        SpawnAtPosition(ent.Comp.CollapseInto, ent.Owner.ToCoordinates());
+        PredictedSpawnAtPosition(ent.Comp.CollapseInto, ent.Owner.ToCoordinates());
         args.Handled = true;
 
         PredictedQueueDel(ent.Owner);
