@@ -4504,3 +4504,20 @@ Entries:
   id: 2578
   time: '2026-09-03T11:11:21.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/588
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Portable gaslocks and gas mining drills can now be collapsed into
+        flatpacks with a welder
+    - type: Tweak
+      message: >-
+        Portable gaslocks and gas mining drills now have an internal battery
+        that charges while they're connected to a low voltage network! You will
+        no longer need to use a generator to gas mine, as long as you keep them
+        charged.
+    - type: Remove
+      message: Removed the lewd crate and all lewd items.
+  id: 2579
+  time: '2026-09-04T14:12:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/606
