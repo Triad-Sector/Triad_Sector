@@ -92,6 +92,8 @@
     idleLoad: 5
     batteryRechargeRate: 175
     batteryRechargeEfficiency: 1.2
+  - type: CollapsibleItem
+    collapseInto: GasMiningDrillFlatpack
   # Triad End
   - type: Machine
     board: GasMiningDrillMachineCircuitboard

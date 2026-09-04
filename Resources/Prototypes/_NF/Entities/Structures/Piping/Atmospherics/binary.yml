@@ -254,6 +254,8 @@
     idleLoad: 5
     batteryRechargeRate: 175
     batteryRechargeEfficiency: 1.5
+  - type: CollapsibleItem
+    collapseInto: GaslockFrameFlatpack
   # Triad End
   - type: Fixtures
     fixtures:
