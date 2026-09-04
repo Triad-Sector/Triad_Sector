@@ -5,6 +5,10 @@
   - NuclearCentrifugeMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
+  - NuclearReactorSmallMachineCircuitboard # Triad: upstream maps its reactors in; ours are built
+  - NuclearReactorMachineCircuitboard
+  - GasTurbineSmallMachineCircuitboard
+  - GasTurbineMachineCircuitboard
 
 - type: latheRecipePack
   id: ReactorPartsBasic

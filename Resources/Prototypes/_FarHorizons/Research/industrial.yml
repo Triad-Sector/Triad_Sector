@@ -9,6 +9,8 @@
   - NuclearFabricatorMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
+  - NuclearReactorSmallMachineCircuitboard # Triad: the small plant at tier 1, the full-size one at tier 2
+  - GasTurbineSmallMachineCircuitboard
   - UraniumReactorFuelRod
   - PlasmaReactorFuelRod
   - UraniumGlassReactorFuelRod
@@ -40,6 +42,8 @@
   cost: 12500
   recipeUnlocks:
   - NuclearCentrifugeMachineCircuitboard
+  - NuclearReactorMachineCircuitboard # Triad: see NuclearPowerGeneration
+  - GasTurbineMachineCircuitboard
   - PlutoniumReactorFuelRod
   - BananiumReactorFuelRod
   - GoldReactorControlRod

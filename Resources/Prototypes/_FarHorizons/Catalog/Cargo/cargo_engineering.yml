@@ -1,45 +1,24 @@
-# Triad: Mono had commented these two out, which left no way to obtain a reactor or turbine at all.
-# Re-enabled at 10x upstream's price, the same scaling Mono applied to the parts below.
-- type: cargoProduct
-  id: NuclearReactorFlatpackPurchase
-  icon:
-    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
-    state: reactor
-  product: NuclearReactorFlatpack
-  cost: 150000 # Triad - 10x
-  category: cargoproduct-category-name-engineering
-  group: market
+# Triad: upstream sells the reactor and turbine as flatpacks here; ours are researched and built on
+# machine frames instead, so the two purchases stay off. The flatpack entities are not carried.
+#- type: cargoProduct
+#  id: NuclearReactorFlatpackPurchase
+#  icon:
+#    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
+#    state: reactor
+#  product: NuclearReactorFlatpack
+#  cost: 15000
+#  category: cargoproduct-category-name-engineering
+#  group: market
 
-- type: cargoProduct
-  id: GasTurbineFlatpackPurchase
-  icon:
-    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
-    state: turbine
-  product: GasTurbineFlatpack
-  cost: 100000 # Triad - 10x
-  category: cargoproduct-category-name-engineering
-  group: market
-
-# Triad: small variants, no upstream equivalent
-- type: cargoProduct
-  id: NuclearReactorSmallFlatpackPurchase
-  icon:
-    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
-    state: reactor
-  product: NuclearReactorSmallFlatpack
-  cost: 100000
-  category: cargoproduct-category-name-engineering
-  group: market
-
-- type: cargoProduct
-  id: GasTurbineSmallFlatpackPurchase
-  icon:
-    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
-    state: turbine
-  product: GasTurbineSmallFlatpack
-  cost: 60000
-  category: cargoproduct-category-name-engineering
-  group: market
+#- type: cargoProduct
+#  id: GasTurbineFlatpackPurchase
+#  icon:
+#    sprite: _FarHorizons/Interface/FissionGenerator/cargo_icons.rsi
+#    state: turbine
+#  product: GasTurbineFlatpack
+#  cost: 10000
+#  category: cargoproduct-category-name-engineering
+#  group: market
 
 - type: cargoProduct
   id: CerenkiteFuelRodPurchase

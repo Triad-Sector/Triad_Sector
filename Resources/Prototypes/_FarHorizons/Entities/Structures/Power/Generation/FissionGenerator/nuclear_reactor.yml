@@ -282,6 +282,10 @@
   id: NuclearReactorEmptySalvage
   parent: [BaseNuclearReactor, NuclearReactorSalvage, ReactorPrefabEmpty]
   suffix: "Salvage, Empty"
+  components:
+  - type: Construction # Triad: what NuclearReactorMachineCircuitboard builds; one-way, the graph has no deconstruct edge
+    graph: TriadMachine3x3
+    node: machine
 
 - type: entity
   id: NuclearReactorRandomSalvage
@@ -304,6 +308,10 @@
   id: NuclearReactorSmallEmptySalvage
   parent: [BaseNuclearReactorSmall, NuclearReactorSalvage, ReactorPrefabEmpty]
   suffix: "Salvage, Empty"
+  components:
+  - type: Construction # Triad: what NuclearReactorSmallMachineCircuitboard builds
+    graph: TriadMachine3x3
+    node: machine
 #endregion
 
 #region Melted Reactors

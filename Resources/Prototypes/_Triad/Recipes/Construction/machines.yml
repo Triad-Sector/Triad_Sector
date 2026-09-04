@@ -1,0 +1,27 @@
+- type: construction
+  id: TriadMachineFrame3x3
+  graph: TriadMachine3x3
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x3, centered)
+  description: A large machine frame built around its center tile. Takes reactor and turbine boards.
+  icon:
+    sprite: _Mono/Structures/Machines/frames/frame_3x3_icon.rsi
+    state: icon
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: TriadMachineFrame3x2
+  graph: TriadMachine3x2
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x2, centered)
+  description: A machine frame built around its center tile. Takes the small gas turbine board.
+  icon:
+    sprite: _Mono/Structures/Machines/frames/frame_3x2_icon.rsi
+    state: icon
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false

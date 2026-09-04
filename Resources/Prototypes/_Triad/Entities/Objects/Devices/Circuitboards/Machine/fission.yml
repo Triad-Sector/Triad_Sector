@@ -1,0 +1,68 @@
+# Boards for the Far Horizons reactors and turbines. Upstream has none: its stations map them in
+# and its cargo sells flatpacks. These build the Salvage variants, which carry no access lock, on
+# the centered Triad machine frames.
+- type: entity
+  id: NuclearReactorSmallMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: small nuclear reactor machine board
+  description: A machine printed circuit board for a small nuclear reactor. Uses a centered 3x3 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: NuclearReactorSmallEmptySalvage
+    frameSize: Triad3x3
+    requirements:
+      Manipulator: 5
+      Capacitor: 5
+    stackRequirements:
+      Plasteel: 10
+
+- type: entity
+  id: NuclearReactorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: nuclear reactor machine board
+  description: A machine printed circuit board for a nuclear reactor. Uses a centered 3x3 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: NuclearReactorEmptySalvage
+    frameSize: Triad3x3
+    requirements:
+      Manipulator: 10
+      Capacitor: 10
+    stackRequirements:
+      Plasteel: 20
+
+- type: entity
+  id: GasTurbineSmallMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: small gas turbine machine board
+  description: A machine printed circuit board for a small gas turbine. Uses a centered 3x2 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: GasTurbineSmallSalvage
+    frameSize: Triad3x2
+    requirements:
+      Manipulator: 5
+    stackRequirements:
+      Steel: 10
+
+- type: entity
+  id: GasTurbineMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: gas turbine machine board
+  description: A machine printed circuit board for a gas turbine. Uses a centered 3x3 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: GasTurbineNormalSalvage
+    frameSize: Triad3x3
+    requirements:
+      Manipulator: 10
+    stackRequirements:
+      Steel: 20

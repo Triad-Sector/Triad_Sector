@@ -1,0 +1,172 @@
+# Centered variants of Mono's multi-tile machine frames. Mono's anchor on a corner tile and offset
+# the sprite into the box, which matches Mono's corner-origin machines; the Far Horizons reactors
+# and turbines are centered on their origin, so building one on a Mono frame lands it a tile off.
+# These frames put the origin in the middle of the box. Boards target them by frameSize.
+
+#region 3x3
+- type: entity
+  parent: UnfinishedMachineFrame3x3
+  id: TriadUnfinishedMachineFrame3x3
+  name: machine frame (3x3, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: box_0
+    offset: 0,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,1.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x3
+    node: missingWires
+    containers:
+    - machine_board
+    - machine_parts
+
+- type: entity
+  parent: MachineFrame3x3
+  id: TriadMachineFrame3x3
+  name: machine frame (3x3, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: box_1
+    offset: 0,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,1.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x3
+    node: machineFrame
+    defaultTarget: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: MachineFrame
+    frameSize: Triad3x3
+
+- type: entity
+  parent: MachineFrameDestroyed3x3
+  id: TriadMachineFrameDestroyed3x3
+  name: destroyed machine frame (3x3, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: destroyed
+    offset: 0,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,1.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x3
+    node: destroyedMachineFrame
+#endregion
+
+#region 3x2
+# The small gas turbine occupies its origin tile and the tile below it (bounds -1.5,-1.5,1.5,0.5),
+# so the centered 3x2 box sits the same way.
+- type: entity
+  parent: UnfinishedMachineFrame3x2
+  id: TriadUnfinishedMachineFrame3x2
+  name: machine frame (3x2, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: box_0
+    offset: 0,-0.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,0.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x2
+    node: missingWires
+    containers:
+    - machine_board
+    - machine_parts
+
+- type: entity
+  parent: MachineFrame3x2
+  id: TriadMachineFrame3x2
+  name: machine frame (3x2, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: box_1
+    offset: 0,-0.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,0.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x2
+    node: machineFrame
+    defaultTarget: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: MachineFrame
+    frameSize: Triad3x2
+
+- type: entity
+  parent: MachineFrameDestroyed3x2
+  id: TriadMachineFrameDestroyed3x2
+  name: destroyed machine frame (3x2, centered)
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: destroyed
+    offset: 0,-0.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,0.25"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Construction
+    graph: TriadMachine3x2
+    node: destroyedMachineFrame
+#endregion

@@ -179,11 +179,19 @@
   id: GasTurbineNormalSalvage
   parent: [BaseGasTurbine, GasTurbineSalvage]
   suffix: "Salvage"
+  components:
+  - type: Construction # Triad: what GasTurbineMachineCircuitboard builds; one-way, the graph has no deconstruct edge
+    graph: TriadMachine3x3
+    node: machine
 
 - type: entity
   id: GasTurbineSmallSalvage
   parent: [BaseGasTurbineSmall, GasTurbineSalvage]
   suffix: "Salvage"
+  components:
+  - type: Construction # Triad: what GasTurbineSmallMachineCircuitboard builds
+    graph: TriadMachine3x2
+    node: machine
 #endregion
   
 #region Support Entities
