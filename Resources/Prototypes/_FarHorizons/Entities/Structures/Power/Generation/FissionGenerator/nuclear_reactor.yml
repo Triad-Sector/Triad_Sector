@@ -200,9 +200,10 @@
     unlockOnClick: false
   - type: WarpPoint
     location: Nuclear Reactor
-    blacklist:
-      tags:
-      - GhostOnlyWarp
+    # Triad: upstream blacklists GhostOnlyWarp here; our WarpPointComponent has no blacklist field
+    # blacklist:
+    #   tags:
+    #   - GhostOnlyWarp
 
 - type: entity
   id: NuclearReactorSalvage # Kind of an empty shell, but if there's something special about salvage reactors, put it here

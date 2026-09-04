@@ -63,10 +63,10 @@
       state: turbinecomp
   - type: GasTurbineMonitor
   - type: ActivatableUI
-    key: enum.TurbineUiKey.Key
+    key: enum.GasTurbineUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TurbineUiKey.Key:
+      enum.GasTurbineUiKey.Key:
         type: TurbineBoundUserInterface
   #- type: AccessReader # Keeps some random tider from blowing up the turbine
   #  access: [["Engineering"]]

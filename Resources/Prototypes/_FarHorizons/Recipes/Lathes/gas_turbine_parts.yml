@@ -4,7 +4,7 @@
   abstract: true
   id: BaseGasTurbinePartRecipe
   categories:
-  - Engineering
+  - NuclearFission # Triad: upstream files these under a lathe category we lack; keep Mono's, which main already used
   completetime: 10
 
 ## Recipes
