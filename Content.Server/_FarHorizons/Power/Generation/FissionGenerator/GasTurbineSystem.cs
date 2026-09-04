@@ -16,6 +16,7 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Audio;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage; // Triad: upstream splits Damage into .Components/.Systems; ours still declares the types here
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -110,7 +111,7 @@ public sealed partial class GasTurbineSystem : EntitySystem
         SubscribeLocalEvent<GasTurbineComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
         
         SubscribeLocalEvent<GasTurbineComponent, InteractUsingEvent>(RepairTurbine);
-        SubscribeLocalEvent<GasTurbineComponent, RepairDoAfterEvent>(OnRepairTurbineFinished);
+        SubscribeLocalEvent<GasTurbineComponent, RepairFinishedEvent>(OnRepairTurbineFinished);
     }
 
     private const string BladeContainer = "blade_slot";
@@ -802,11 +803,11 @@ public sealed partial class GasTurbineSystem : EntitySystem
             if (comp.BladeHealth >= comp.BladeHealthMax && !comp.Ruined)
                 return;
 
-            args.Handled = _toolSystem.UseTool(args.Used, args.User, uid, comp.RepairDelay, comp.RepairTool, new RepairDoAfterEvent(), comp.RepairFuelCost);
+            args.Handled = _toolSystem.UseTool(args.Used, args.User, uid, comp.RepairDelay, comp.RepairTool, new RepairFinishedEvent(), comp.RepairFuelCost);
         }
     }
 
-    private void OnRepairTurbineFinished(EntityUid uid, GasTurbineComponent comp, ref RepairDoAfterEvent args)
+    private void OnRepairTurbineFinished(EntityUid uid, GasTurbineComponent comp, ref RepairFinishedEvent args)
     {
         if (args.Cancelled)
             return;
@@ -844,7 +845,7 @@ public sealed partial class GasTurbineSystem : EntitySystem
         if (!_entityManager.TryGetComponent<DamageableComponent>(uid, out var damageableComponent))
             return;
 
-        _damageableSystem.SetAllDamage((uid, damageableComponent), 0);
+        _damageableSystem.SetAllDamage(uid, damageableComponent, 0); // Triad: ours predates the Entity<T> overload
     }
 
     private void UpdateHealthIndicators(EntityUid uid, GasTurbineComponent comp)

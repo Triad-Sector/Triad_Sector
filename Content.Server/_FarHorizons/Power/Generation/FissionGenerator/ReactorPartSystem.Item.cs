@@ -25,7 +25,7 @@ public sealed partial class ReactorPartSystem
 
         SubscribeLocalEvent<ReactorPartComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<ReactorPartComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<ReactorPartComponent, IngestedEvent>(OnIngest);
+        SubscribeLocalEvent<ReactorPartComponent, AfterFullyEatenEvent>(OnIngest); // Triad: our ingestion pipeline raises this instead of IngestedEvent
 
         SubscribeLocalEvent<ReactorPartComponent, AtmosExposedUpdateEvent>(OnAtmosExposed);
     }
@@ -107,28 +107,26 @@ public sealed partial class ReactorPartSystem
         }
     }
 
-    private void OnIngest(Entity<ReactorPartComponent> ent, ref IngestedEvent args)
+    // Triad: reworked from upstream. Two reasons it could not come across verbatim:
+    // our ingestion pipeline raises AfterFullyEatenEvent (eater in User) rather than IngestedEvent,
+    // and DamageableSystem.GetPositiveDamage does not exist on our engine generation. Upstream also
+    // only mutates the dictionary that call returns, which is a detached copy, so eating a fuel rod
+    // irradiates nobody there. Apply the dose through TryChangeDamage so it actually lands.
+    private void OnIngest(Entity<ReactorPartComponent> ent, ref AfterFullyEatenEvent args)
     {
-        var comp = ent.Comp;
-        if (comp.Properties == null)
+        if (ent.Comp.Properties is not { } properties)
             return;
 
-        var properties = comp.Properties;
-
-        if (!_entityManager.TryGetComponent<DamageableComponent>(args.Target, out var damageable))
+        if (!HasComp<DamageableComponent>(args.User))
             return;
 
-        var dict = _damageable.GetPositiveDamage((args.Target, damageable)).DamageDict;
-
-        var dmgKey = "Radiation";
         var dmg = (properties.NeutronRadioactivity * 20) + (properties.Radioactivity * 10) + (properties.FissileIsotopes * 5);
+        if (dmg <= 0)
+            return;
 
-        if (!dict.TryAdd(dmgKey, dmg))
-        {
-            var prev = dict[dmgKey];
-            dict.Remove(dmgKey);
-            dict.Add(dmgKey, prev + dmg);
-        }
+        var specifier = new DamageSpecifier();
+        specifier.DamageDict.Add("Radiation", dmg);
+        _damageable.TryChangeDamage(args.User, specifier);
     }
 
     private void OnAtmosExposed(EntityUid uid, ReactorPartComponent component, ref AtmosExposedUpdateEvent args)

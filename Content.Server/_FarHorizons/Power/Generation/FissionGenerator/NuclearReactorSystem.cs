@@ -17,6 +17,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage; // Triad: upstream splits Damage into .Components/.Systems; ours still declares the types here
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
@@ -934,7 +935,7 @@ public sealed partial class NuclearReactorSystem : EntitySystem
 
             var item = part.Value.Owner;
             _containerSystem.Remove(item, comp.PartStorage);
-            _slotsSystem.TryInsert(uid, comp.PartSlot, item, null, suppressSound: true);
+            _slotsSystem.TryInsert(uid, comp.PartSlot, item, null, excludeUserAudio: true);
 
             _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} removed {ToPrettyString(item):item} from position {pos.Y},{pos.X} in {ToPrettyString(uid):target}");
             comp.ComponentGrid[pos.X, pos.Y] = null;
