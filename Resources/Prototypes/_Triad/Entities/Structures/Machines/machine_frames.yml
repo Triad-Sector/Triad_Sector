@@ -8,7 +8,7 @@
 - type: entity
   parent: UnfinishedMachineFrame3x3
   id: TriadUnfinishedMachineFrame5x5
-  name: machine frame (5x5, centered)
+  name: machine frame (5x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
@@ -35,7 +35,7 @@
 - type: entity
   parent: MachineFrame3x3
   id: TriadMachineFrame5x5
-  name: machine frame (5x5, centered)
+  name: machine frame (5x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
@@ -65,7 +65,7 @@
 - type: entity
   parent: MachineFrameDestroyed3x3
   id: TriadMachineFrameDestroyed5x5
-  name: destroyed machine frame (5x5, centered)
+  name: destroyed machine frame (5x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
@@ -91,7 +91,7 @@
 - type: entity
   parent: UnfinishedMachineFrame3x3
   id: TriadUnfinishedMachineFrame3x5
-  name: machine frame (3x5, centered)
+  name: machine frame (3x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
@@ -118,7 +118,7 @@
 - type: entity
   parent: MachineFrame3x3
   id: TriadMachineFrame3x5
-  name: machine frame (3x5, centered)
+  name: machine frame (3x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
@@ -148,7 +148,7 @@
 - type: entity
   parent: MachineFrameDestroyed3x3
   id: TriadMachineFrameDestroyed3x5
-  name: destroyed machine frame (3x5, centered)
+  name: destroyed machine frame (3x5)
   components:
   - type: Sprite
     sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
@@ -174,7 +174,7 @@
 - type: entity
   parent: UnfinishedMachineFrame3x3
   id: TriadUnfinishedMachineFrame3x3
-  name: machine frame (3x3, centered)
+  name: machine frame (3x3)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
@@ -201,7 +201,7 @@
 - type: entity
   parent: MachineFrame3x3
   id: TriadMachineFrame3x3
-  name: machine frame (3x3, centered)
+  name: machine frame (3x3)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
@@ -231,7 +231,7 @@
 - type: entity
   parent: MachineFrameDestroyed3x3
   id: TriadMachineFrameDestroyed3x3
-  name: destroyed machine frame (3x3, centered)
+  name: destroyed machine frame (3x3)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
@@ -259,7 +259,7 @@
 - type: entity
   parent: UnfinishedMachineFrame3x2
   id: TriadUnfinishedMachineFrame3x2
-  name: machine frame (3x2, centered)
+  name: machine frame (3x2)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
@@ -286,7 +286,7 @@
 - type: entity
   parent: MachineFrame3x2
   id: TriadMachineFrame3x2
-  name: machine frame (3x2, centered)
+  name: machine frame (3x2)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
@@ -316,7 +316,7 @@
 - type: entity
   parent: MachineFrameDestroyed3x2
   id: TriadMachineFrameDestroyed3x2
-  name: destroyed machine frame (3x2, centered)
+  name: destroyed machine frame (3x2)
   components:
   - type: Sprite
     sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi

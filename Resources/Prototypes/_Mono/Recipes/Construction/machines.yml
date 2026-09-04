@@ -8,8 +8,15 @@
   category: construction-category-machines
   placementMode: SnapgridCenter
   canBuildInImpassable: false
+  # Triad: a third-scale menu icon; the 96x32 icon canvas moved to `layers`, which the ghost draws.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_2x1_icon.rsi
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 2x1
+  # icon:
+  #   sprite: _Mono/Structures/Machines/frames/frame_2x1_icon.rsi
+  #   state: "icon"
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_2x1_icon.rsi
     state: "icon"
 
 - type: construction
@@ -22,34 +29,45 @@
   category: construction-category-machines
   placementMode: SnapgridCenter
   canBuildInImpassable: false
+  # Triad: same split as the 2x1.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_2x2_icon.rsi
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 2x2
+  # icon:
+  #   sprite: _Mono/Structures/Machines/frames/frame_2x2_icon.rsi
+  #   state: "icon"
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_2x2_icon.rsi
     state: "icon"
 
-- type: construction
-  name: machine frame (3x2)
-  description: A machine under construction. Needs more parts.
-  id: MachineFrame3x2
-  graph: Machine3x2
-  startNode: start
-  targetNode: machine
-  category: construction-category-machines
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x2_icon.rsi
-    state: "icon"
+# Triad: removed the 3x2 and 3x3 recipes from the build menu. No board declares either frame
+# size (the fission boards take the centered Triad frames), so both were dead ends: buildable,
+# nothing fits. The entities and graphs stay, since the Triad frames inherit from them and a
+# ship save can hold a half-built one.
+# - type: construction
+#   name: machine frame (3x2)
+#   description: A machine under construction. Needs more parts.
+#   id: MachineFrame3x2
+#   graph: Machine3x2
+#   startNode: start
+#   targetNode: machine
+#   category: construction-category-machines
+#   placementMode: SnapgridCenter
+#   canBuildInImpassable: false
+#   icon:
+#     sprite: _Mono/Structures/Machines/frames/frame_3x2_icon.rsi
+#     state: "icon"
     
-- type: construction
-  name: machine frame (3x3)
-  description: A machine under construction. Needs more parts.
-  id: MachineFrame3x3
-  graph: Machine3x3
-  startNode: start
-  targetNode: machine
-  category: construction-category-machines
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x3_icon.rsi
-    state: "icon"
+# - type: construction
+#   name: machine frame (3x3)
+#   description: A machine under construction. Needs more parts.
+#   id: MachineFrame3x3
+#   graph: Machine3x3
+#   startNode: start
+#   targetNode: machine
+#   category: construction-category-machines
+#   placementMode: SnapgridCenter
+#   canBuildInImpassable: false
+#   icon:
+#     sprite: _Mono/Structures/Machines/frames/frame_3x3_icon.rsi
+#     state: "icon"

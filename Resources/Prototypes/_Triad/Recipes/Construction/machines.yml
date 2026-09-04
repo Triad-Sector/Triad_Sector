@@ -1,17 +1,22 @@
-# The construction ghost is drawn from the recipe icon, so each icon is the frame's own box_1
-# state, centered like the frame; Mono's icon RSIs draw the box a tile off for its corner-origin
-# frames. ghostOffset matches the 3x2's half-tile sprite offset.
+# The construction menu draws `icon` at native pixel size, so it is a third-scale icon of the
+# frame (frame_icons.rsi, one 54 px canvas so the footprints stay proportional). The ghost draws
+# `layers`, so that is the frame's own box_0 state, centered like the frame; Mono's icon RSIs draw
+# the box a tile off for its corner-origin frames. ghostOffset matches the 3x2's half-tile sprite
+# offset.
 - type: construction
   id: TriadMachineFrame5x5
   graph: TriadMachine5x5
   startNode: start
   targetNode: machine
   category: construction-category-machines
-  name: machine frame (5x5, centered)
+  name: machine frame (5x5)
   description: A huge machine frame built around its center tile. Takes the nuclear reactor board.
   icon:
-    sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
-    state: box_1
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 5x5
+  layers:
+  - sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
+    state: box_0
   placementMode: SnapgridCenter
   canBuildInImpassable: false
 
@@ -21,11 +26,14 @@
   startNode: start
   targetNode: machine
   category: construction-category-machines
-  name: machine frame (3x5, centered)
+  name: machine frame (3x5)
   description: A tall machine frame built around its center tile. Takes the gas turbine board.
   icon:
-    sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
-    state: box_1
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x5
+  layers:
+  - sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
+    state: box_0
   placementMode: SnapgridCenter
   canBuildInImpassable: false
 
@@ -35,11 +43,14 @@
   startNode: start
   targetNode: machine
   category: construction-category-machines
-  name: machine frame (3x3, centered)
+  name: machine frame (3x3)
   description: A large machine frame built around its center tile. Takes the small nuclear reactor board.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
-    state: box_1
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x3
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: box_0
   placementMode: SnapgridCenter
   canBuildInImpassable: false
 
@@ -49,11 +60,14 @@
   startNode: start
   targetNode: machine
   category: construction-category-machines
-  name: machine frame (3x2, centered)
+  name: machine frame (3x2)
   description: A machine frame built around its center tile. Takes the small gas turbine board.
   icon:
-    sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
-    state: box_1
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x2
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: box_0
   ghostOffset: 0,-0.5
   placementMode: SnapgridCenter
   canBuildInImpassable: false

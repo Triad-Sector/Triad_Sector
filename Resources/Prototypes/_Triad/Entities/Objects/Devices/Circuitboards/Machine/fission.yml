@@ -7,7 +7,7 @@
   id: NuclearReactorSmallMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: small nuclear reactor machine board
-  description: A machine printed circuit board for a small nuclear reactor. Uses a centered 3x3 machine frame.
+  description: A machine printed circuit board for a small nuclear reactor. Uses a 3x3 machine frame.
   components:
   - type: Sprite
     state: engineering
@@ -25,7 +25,7 @@
   id: NuclearReactorMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: nuclear reactor machine board
-  description: A machine printed circuit board for a nuclear reactor. Uses a centered 5x5 machine frame.
+  description: A machine printed circuit board for a nuclear reactor. Uses a 5x5 machine frame.
   components:
   - type: Sprite
     state: engineering
@@ -43,7 +43,7 @@
   id: GasTurbineSmallMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: small gas turbine machine board
-  description: A machine printed circuit board for a small gas turbine. Uses a centered 3x2 machine frame.
+  description: A machine printed circuit board for a small gas turbine. Uses a 3x2 machine frame.
   components:
   - type: Sprite
     state: engineering
@@ -60,7 +60,7 @@
   id: GasTurbineMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: gas turbine machine board
-  description: A machine printed circuit board for a gas turbine. Uses a centered 3x5 machine frame.
+  description: A machine printed circuit board for a gas turbine. Uses a 3x5 machine frame.
   components:
   - type: Sprite
     state: engineering
