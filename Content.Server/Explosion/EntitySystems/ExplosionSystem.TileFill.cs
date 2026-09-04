@@ -25,13 +25,17 @@ public sealed partial class ExplosionSystem
     /// <param name="slope">How quickly does the intensity decrease when moving away from the epicenter.</param>
     /// <param name="maxIntensity">The maximum intensity that the explosion can have at any given tile. This
     /// effectively caps the damage that this explosion can do.</param>
+    /// <param name="gridOnly">Triad: when the epicenter is on a grid, the flood never jumps into space, so it
+    /// cannot reach other grids and the grid's own edge is its boundary. The whole intensity budget then lands
+    /// on the tiles it can reach, so a confined blast runs hotter inside than the same call unconfined.</param>
     /// <returns>A list of tile-sets and a list of intensity values which describe the explosion.</returns>
     private (int, List<float>, ExplosionSpaceTileFlood?, Dictionary<EntityUid, ExplosionGridTileFlood>, Matrix3x2)? GetExplosionTiles(
         MapCoordinates epicenter,
         string typeID,
         float totalIntensity,
         float slope,
-        float maxIntensity)
+        float maxIntensity,
+        bool gridOnly = false) // Triad
     {
         if (totalIntensity <= 0 || slope <= 0)
             return null;
@@ -206,7 +210,9 @@ public sealed partial class ExplosionSystem
 
                 // get the new neighbours, and populate gridToSpaceTiles in the process.
                 newTileCount += data.AddNewTiles(iteration, previousGridJump?.GetValueOrDefault(grid));
-                spaceJump.UnionWith(data.SpaceJump);
+                // Triad: a grid-only blast drops its space jumps here, which is the only way tiles leave a grid.
+                if (!gridOnly || epicentreGrid == null)
+                    spaceJump.UnionWith(data.SpaceJump);
             }
 
             // if space-data is null, but some grid-based explosion reached space, we need to initialize it.

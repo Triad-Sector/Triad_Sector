@@ -930,4 +930,5 @@ public sealed class QueuedExplosion
     public int MaxTileBreak;
     public bool CanCreateVacuum;
     public EntityUid? Cause; // The entity that exploded, for logging purposes.
+    public bool GridOnly; // Triad: the tile flood never leaves the epicenter grid; see GetExplosionTiles.
 }

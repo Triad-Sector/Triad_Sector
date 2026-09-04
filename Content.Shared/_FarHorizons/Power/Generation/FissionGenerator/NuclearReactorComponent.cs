@@ -130,7 +130,7 @@ public sealed partial class NuclearReactorComponent : Component
     /// Radio channel to send alerts to
     /// </summary>
     [DataField]
-    public string EngineeringChannel = "Engineering"; // Triad: upstream's channel, not Mono's Traffic
+    public string EngineeringChannel = "Traffic"; // Triad: Frontier's shortband, range-limited, so only ships nearby hear a reactor in trouble. Upstream uses Engineering.
 
     /// <summary>
     /// Last reported temperature during overheat events

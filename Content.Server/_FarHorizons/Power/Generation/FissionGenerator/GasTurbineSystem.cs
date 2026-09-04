@@ -364,7 +364,7 @@ public sealed partial class GasTurbineSystem : EntitySystem
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/metal_break5.ogg"), uid, AudioParams.Default);
         _popupSystem.PopupEntity(Loc.GetString("gas-turbine-explode", ("owner", uid)), uid, PopupType.LargeCaution);
 
-        _explosion.QueueExplosion(uid, "Default", comp.RPM / 10, 15, 5, 0, canCreateVacuum: false);
+        _explosion.QueueExplosion(uid, "Default", comp.RPM / 10, 15, 5, 0, canCreateVacuum: false, gridOnly: true); // Triad: same containment as the reactor
 
         if (comp.RPM > comp.BestRPM / 6) // If it's barely moving then there's not really reason it would throw shrapnel
             ShootShrapnel(uid);
