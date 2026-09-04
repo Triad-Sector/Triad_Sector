@@ -34,8 +34,14 @@ public sealed partial class ReactorPartSystem : EntitySystem
 
         _sprite.LayerSetColor((uid, args.Sprite), 0, _proto.Index(component.Material).Color);
 
+        // Triad: SpriteComponent.PostShader is obsolete on our engine, go through SpriteSystem.
         if (args.AppearanceData.TryGetValue(ReactorPartVisuals.HeatDistort, out var value) && value is bool enabled)
-            args.Sprite.PostShader = enabled ? _heatShader : null;
+        {
+            if (enabled)
+                _sprite.SetPostShader((uid, args.Sprite), new SpriteComponent.PostShaderArgs(_shaderID.Id, _heatShader));
+            else
+                _sprite.ClearPostShaders((uid, args.Sprite));
+        }
     }
 
     private void OnComponentInit(Entity<ReactorPartComponent> ent, ref ComponentInit args)
