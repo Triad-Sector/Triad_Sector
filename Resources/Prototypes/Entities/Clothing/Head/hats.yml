@@ -146,7 +146,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretHoS
-  name: pre-war head of security's beret
+  name: pre-fracture head of security's beret # Triad name
   description: An archaic pre-corporate war black beret with a commander's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
@@ -162,7 +162,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretWarden
-  name: pre-war warden's beret
+  name: pre-fracture warden's beret # Triad name
   description: An archaic pre-corporate war blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite

@@ -116,13 +116,24 @@
     state: pda-medic
 
 - type: entity
-  parent: TdfMedicPda
-  id: TdfWardenPda
-  name: TDF warden PDA
-  description: The OS appears to be jailbroken.
+  parent: BaseTdfPDA
+  id: TdfLieutenantPda
+  name: TDF lieutenant PDA
+  description: It has a star on it! Awesome.
   components:
   - type: Pda
-    id: TdfWardenIDCard
+    id: TdfLieutenantIDCard
+  - type: CartridgeLoader # Extended with the ledger
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - BountyContractsCartridge
+    - AstroNavCartridge
+    - WantedListCartridge
+    - LedgerCartridge
+    - MedTekCartridge
+    - TriTalkCartridge # Triad
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

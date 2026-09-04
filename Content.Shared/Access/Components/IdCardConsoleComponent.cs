@@ -47,7 +47,7 @@ public sealed partial class IdCardConsoleComponent : Component
     {
         "Armory",
         "Atmospherics", // Triad, restored this
-        "TdfWarden", // Triad
+        "TdfLieutenant", // Triad
         //"Bar",
         "Brig",
         "Detective",

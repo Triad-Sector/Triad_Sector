@@ -1,6 +1,6 @@
 # SD Modules
 - type: entity
-  parent: BaseBorgModule
+  parent: [BaseBorgModule, BaseClass2AShipContrabandSilent]
   id: BaseBorgModuleSolarian
   abstract: true
   components:

@@ -62,7 +62,7 @@
   - type: VendingMachine
     pack: PTechTdfInventory
   - type: AccessReader
-    access: [["TdfChiefEnforcer"], ["TdfWarden"]]
+    access: [["TdfChiefEnforcer"], ["TdfLieutenant"]]
 
 - type: entity
   parent: [BaseStructureDisableAnchoring, VendingMachine]

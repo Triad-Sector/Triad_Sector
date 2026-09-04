@@ -8,14 +8,14 @@
       department: Security
       time: 126000 # 35 hours
     - !type:RoleTimeRequirement
-      role: JobTdfWarden
+      role: JobTdfWarden # Lieutenant
       time: 18000 # 5 hours
   whitelisted: true
   startingGear: TdfChiefEnforcerGear
   alwaysUseSpawner: true
   icon: JobIconTdfChiefEnforcer
   requireAdminNotify: true
-  supervisors: job-supervisors-centcom
+  supervisors: job-supervisors-high-command
   weight: 180
   displayWeight: 70
   assignedCompany: TDF
@@ -24,7 +24,7 @@
   - AllAccess
   access:
   - TdfChiefEnforcer
-  - TdfWarden
+  - TdfLieutenant
   - TdfPatrolTeamLeader
   - TdfPermitControl
   ranks:

@@ -47,6 +47,8 @@ public sealed partial class CargoSystem : SharedCargoSystem
     [Dependency] private SectorServiceSystem _sectorService = default!; // Frontier
     [Dependency] private EntityWhitelistSystem _whitelist = default!; // Frontier
     [Dependency] private BankSystem _bank = default!;
+    [Dependency] private Content.Server._Triad.Market.IMarketDataManager _market = default!; // Triad: market data
+    [Dependency] private Robust.Server.Player.IPlayerManager _playerManager = default!; // Triad: market data
 
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;

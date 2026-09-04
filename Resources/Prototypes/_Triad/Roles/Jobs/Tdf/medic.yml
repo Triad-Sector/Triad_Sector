@@ -20,7 +20,7 @@
   startingGear: TdfMedicGear
   alwaysUseSpawner: true
   icon: JobIconTdfMedic
-  supervisors: job-supervisors-tdf-warden
+  supervisors: job-supervisors-tdf-lieutenant
   weight: 125
   displayWeight: 35
   assignedCompany: TDF

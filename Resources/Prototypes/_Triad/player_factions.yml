@@ -40,3 +40,11 @@
   color: "#9573AF"
   image: /Textures/_Triad/PlayerFactions/ne_rd.png
   whitelisted: true
+
+- type: company
+  id: Ghostlights
+  name: Ghostlights
+  description: ghostlights-description
+  image: /Textures/_Triad/PlayerFactions/Ghostlights.png
+  color: "#3ffff6"
+  whitelisted: true

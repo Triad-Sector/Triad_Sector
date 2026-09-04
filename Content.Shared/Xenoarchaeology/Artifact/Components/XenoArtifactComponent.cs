@@ -56,10 +56,11 @@ public sealed partial class XenoArtifactComponent : Component
     /// to determine the monetary value of the artifact.
     /// </summary>
     [DataField]
-    // Triad: 0.40<1.60. Fitted against 300 sampled full solves with the difficulty scale and completion
-    // multiplier on: p10 ~167k, median ~280k, p90 ~465k credits. The credit lift lives here rather than on
+    // Triad: 0.40<1.60<1.07. The 1.60 fit (300 sampled full solves: p10 ~167k, median ~280k, p90 ~465k
+    // credits) let artifacts carry 56% of all sale value on prod in a day, so the first live season cut
+    // it by a third: expect p10 ~111k, median ~187k, p90 ~310k. The credit knob lives here rather than on
     // BasePointValue so research points stay at roughly five times Frontier's scale instead of twenty.
-    public float PriceMultiplier = 1.60f; // Frontier: 0.10f<0.40f
+    public float PriceMultiplier = 1.07f; // Frontier: 0.10f<0.40f
 
     /// <summary>
     /// Triad: per-form payout scalar. A handheld can be carried to its own trigger conditions, so the

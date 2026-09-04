@@ -4244,3 +4244,315 @@ Entries:
   id: 2552
   time: '2026-08-27T02:36:47.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/474
+- author: nitrous-heart
+  changes:
+    - type: Add
+      message: Added Ghostlight player faction. Glory Glory Glory.
+  id: 2553
+  time: '2026-08-28T01:50:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/536
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        Decorative ELINT greebles can now be built everywhere an antenna can be
+        built. Including on walls.
+  id: 2554
+  time: '2026-08-28T15:02:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/566
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: >-
+        The default Pilot jumpsuit has been swapped to the darker military
+        variant. If you haven't explicitly set a jumpsuit on existing
+        characters, it will be changed to the military variant. If you wish to
+        continue using the lighter-colored jumpsuit, just switch back to it in
+        loadout.
+  id: 2555
+  time: '2026-08-28T15:03:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/564
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Leather satchels have been added to the general backpack loadout.
+  id: 2556
+  time: '2026-08-28T15:03:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/563
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        The RPD now follows the same placement rules as the construction menu:
+        no more stacking devices on one tile, air alarms need a wall, and
+        T-junctions, half pipes and manifolds fit under walls.
+    - type: Fix
+      message: A freshly picked-up RPD places pipes facing the way its ghost shows.
+    - type: Fix
+      message: >-
+        Moving the cursor during an RPD placement no longer changes which layer
+        the pipe lands on.
+  id: 2557
+  time: '2026-08-28T19:19:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/568
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Renamed TDF warden into 'Lieutenant'!
+    - type: Tweak
+      message: Tweaked TDF combat medic's PDA sprite.
+    - type: Add
+      message: Added new job icons for the Lieutenant and Chief Enforcer.
+    - type: Tweak
+      message: Resprited TDF energy shield
+    - type: Tweak
+      message: >-
+        TDF SOP - Changed mentions of 'Warden' to 'Lieutenant'. Brig sentences
+        should be done by the Commander, if possible.
+  id: 2558
+  time: '2026-08-29T02:27:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/567
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Radiators are now copper-cored: they cost 2 steel + 2 copper, shed more
+        heat per tile, and spread heat along a connected array much faster.
+  id: 2559
+  time: '2026-08-29T03:11:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/570
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Rules 1.4.  Please reread the rules next time you join a round.
+  id: 2560
+  time: '2026-08-29T14:37:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/553
+- author: mirrorcult
+  changes:
+    - type: Tweak
+      message: Made do-after animations smoother.
+  id: 2561
+  time: '2026-08-29T17:33:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/572
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added coin tossing (coins can now land on heads or tails), ported from
+        wizden!
+  id: 2562
+  time: '2026-08-29T19:05:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/574
+- author: Wizden
+  changes:
+    - type: Add
+      message: >-
+        Ghosts can now click a follow button next to chat messages to jump there
+        immediately! Can be turned off in settings.
+  id: 2563
+  time: '2026-08-29T19:12:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/573
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: Minor fixes for the TDF Phalanx.
+  id: 2564
+  time: '2026-08-29T21:27:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/554
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Laser pointers on guns and the like are no longer blocked by ship
+        shields, so they should be useable on grids with shields.
+  id: 2565
+  time: '2026-08-30T01:13:14.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/577
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: 'Added new Undergarment: Messy Tube Top! Be the mess you''re meant to be!'
+  id: 2566
+  time: '2026-08-30T12:21:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/579
+- author: Eillyrea
+  changes:
+    - type: Remove
+      message: Shipyard consoles saving on Ships
+  id: 2567
+  time: '2026-08-30T13:16:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/575
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added a new m̵̹̎o̷̝̒n̸̬̑o̸͋͜l̸̟̃i̵̬͌t̵̥́h̵̗̕ic fragment.. NT Central
+        Command Outpost. A remnant of the past.
+  id: 2568
+  time: '2026-08-30T23:41:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/582
+- author: gaywolfgirl6
+  changes:
+    - type: Add
+      message: Added a new successful melee hit sound to the Tintreach
+    - type: Tweak
+      message: >-
+        Gave the Tintreach, Breaching Hammer, and Kanabou knockback and tuned
+        down their stamina damage done to self on wide swing slightly.
+  id: 2569
+  time: '2026-08-31T02:18:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/571
+- author: Minerva
+  changes:
+    - type: Fix
+      message: Melee self-executions are no longer possible.
+  id: 2570
+  time: '2026-09-01T15:43:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/589
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed mercenary NPCs not being able to be seen with thermal vision
+        goggles.
+    - type: Tweak
+      message: Gave mercenary NPCs a fresh new look.
+    - type: Tweak
+      message: >-
+        Some human NPCs now have a singular hand slot to grab items that they
+        can use alongside their default attacks.
+    - type: Fix
+      message: >-
+        Fixed human NPCs with a melee weapon like the syndicate captain dropping
+        it on the floor on spawn
+  id: 2571
+  time: '2026-09-01T17:37:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/587
+- author: Minerva
+  changes:
+    - type: Fix
+      message: >-
+        Ship guns no longer bypass gunnery restrictions when firing via signals.
+        If you have signal-linked guns, they will not fire unless connected to a
+        gunnery server. You can check if your gun is connected by using a
+        gunnery console.
+  id: 2572
+  time: '2026-09-01T18:44:01.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/592
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Gas tanks and canisters are now equipped with SafeCan™ internal fire
+        suppression, neutralizing flammable contents that approach ignition
+        temperature. Now with MORE used coffee grounds and Giant Space Bat
+        saliva!
+    - type: Tweak
+      message: >-
+        Overpressurized or destroyed gas vessels turn into a block of metal foam
+        instead of exploding or venting their contents. Keep your Spacers safe
+        from shrapnel! It's SHARP!
+  id: 2573
+  time: '2026-09-01T21:44:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/594
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Radiator heat exchange now scales with how much gas actually flows
+        through the device instead of saturating at a trickle. Pumped loops
+        behave as before.
+  id: 2574
+  time: '2026-09-02T00:29:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/596
+- author: gaywolfgirl6
+  changes:
+    - type: Remove
+      message: >-
+        Removed a few ships from the Shipyard Console, including: Baeg,
+        McChicken, Olympus, Shareholder, Gondola, Ethereal, Jitterbug, Noble,
+        Archer, M-CLass Salvage Carrior, Antlion, Ample, Claymore, Fortunate,
+        Sabine MkII, Hydra, Phantom, Dervi, and Intermission.
+    - type: Tweak
+      message: >-
+        Tweaked illegal thruster placement on affected ships, including: Femur,
+        Rig, Praetorian, Sellsword, Takeaway, Tiger, Bratan, Zeros, Erudite,
+        Comet, Siebel, Prospector, Adjutant, Phalanx, Mite, Tzipora, Hermes, and
+        SolarSail.
+  id: 2575
+  time: '2026-09-02T10:15:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/584
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed drone cores not shooting.
+  id: 2576
+  time: '2026-09-02T16:46:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/598
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: 'Added TDF support ship: Arbalest'
+  id: 2577
+  time: '2026-09-02T16:59:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/580
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed TDF door sprites
+  id: 2578
+  time: '2026-09-03T11:11:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/588
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Portable gaslocks and gas mining drills can now be collapsed into
+        flatpacks with a welder
+    - type: Tweak
+      message: >-
+        Portable gaslocks and gas mining drills now have an internal battery
+        that charges while they're connected to a low voltage network! You will
+        no longer need to use a generator to gas mine, as long as you keep them
+        charged.
+    - type: Remove
+      message: Removed the lewd crate and all lewd items.
+  id: 2579
+  time: '2026-09-04T14:12:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/606
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited all handheld gas tanks. (oxygen, nitrogen, water vapor,
+        plasma, etc).
+    - type: Tweak
+      message: >-
+        Drone cores can now no longer be re-anchored. You can unanchor them from
+        cores, but you will not be able to re-anchor.
+  id: 2580
+  time: '2026-09-04T15:49:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/607
+- author: Eillyrea
+  changes:
+    - type: Tweak
+      message: Ironman voucher can now purchase a Sleipnir at the scrapyard console
+  id: 2581
+  time: '2026-09-04T16:16:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/603
+- author: Eillyrea
+  changes:
+    - type: Add
+      message: >-
+        Venmar mining and improvement department has expanded the park
+        recreation area with a new pool.  Tax payers are required to take breaks
+        to optimise workflow performances.  Swimming has been shown to improve
+        happiness.
+    - type: Fix
+      message: >-
+        Pilots/Mercs/Spacers should no longer spawn in areas they shouldn't when
+        spawning at Edison roundstart
+  id: 2582
+  time: '2026-09-04T16:25:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/602

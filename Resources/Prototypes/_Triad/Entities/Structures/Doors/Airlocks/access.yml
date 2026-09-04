@@ -28,12 +28,12 @@
 
 - type: entity
   parent: AirlockTdf
-  id: AirlockTdfWardenLocked
-  suffix: TDF Warden, Locked
+  id: AirlockTdfLieutenantLocked
+  suffix: TDF Lieutenant, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTdfWarden ]
+      board: [ DoorElectronicsTdfLieutenant ]
 
 - type: entity
   parent: AirlockCommandLocked
@@ -52,6 +52,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  parent: AirlockSD
+  id: AirlockSDLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
 
 # Glass Airlocks
 - type: entity
@@ -83,12 +92,12 @@
 
 - type: entity
   parent: AirlockTdfGlass
-  id: AirlockTdfGlassWardenLocked
-  suffix: TDF Warden, Locked
+  id: AirlockTdfGlassLieutenantLocked
+  suffix: TDF Lieutenant, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTdfWarden ]
+      board: [ DoorElectronicsTdfLieutenant ]
 
 - type: entity
   parent: AirlockCommandGlassLocked
@@ -107,6 +116,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  parent: AirlockSDGlass
+  id: AirlockSDGlassLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
 
 # Hatch
 - type: entity

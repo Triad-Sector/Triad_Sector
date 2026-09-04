@@ -17,7 +17,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader # Triad
-    access: [["TdfPatrolTeamLeader"],["TdfChiefEnforcer"],["TdfWarden"]]
+    access: [["TdfPatrolTeamLeader"],["TdfChiefEnforcer"],["TdfLieutenant"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
     canShuttle: false

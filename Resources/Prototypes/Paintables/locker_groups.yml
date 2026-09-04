@@ -38,10 +38,10 @@
     tdf-evidence: LockerTdfEvidence # Triad
     tdf-medic: LockerTdfMedic # Triad
     tdf-leader: LockerTdfPatrolTeamLeader # Triad
-    tdf-warden: LockerTdfWarden # Triad
+    tdf-warden: LockerTdfLieutenant # Triad
     tdf-chief: LockerTdfChiefEnforcer # Triad
     station-representative: LockerStationRepresentative # Frontier
-    fsb: ClosetFsbEva # Frontier
+    #fsb: ClosetFsbEva # Frontier | Triad - comment out
 
 - type: paintableGroup
   id: Closet

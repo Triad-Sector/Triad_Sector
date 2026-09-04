@@ -42,7 +42,7 @@
         - type: StationJobs
           availableJobs:
             TdfChiefEnforcer: [ 1, 1 ]
-            TdfWarden: [1, 1 ]
+            TdfLieutenant: [1, 1 ]
             TdfPatrolTeamLeader: [ 2, 2 ]
             TdfMedic: [ 2, 2 ]
             TdfEnforcer: [ 5, 5 ]

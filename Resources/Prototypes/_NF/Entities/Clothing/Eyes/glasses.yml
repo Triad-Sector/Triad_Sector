@@ -29,8 +29,8 @@
 - type: entity
   parent: ClothingEyesGlassesSecurity
   id: ClothingEyesGlassesNfsd
-  name: TSFMC glasses
-  description: Upgraded sunglasses that provide flash immunity and a security HUD.
+  name: high-tech glasses
+  description: Upgraded sunglasses that provide flash immunity and a security HUD. They feel lightweight. There appears to be a small Terralith R&M logo on the left lens.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Glasses/nfsd_glasses.rsi

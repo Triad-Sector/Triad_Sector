@@ -23,7 +23,7 @@
       - Atmospherics
       - Bar
       - Brig
-      - TdfWarden # Triad
+      - TdfLieutenant # Triad
       - TdfPatrolTeamLeader # Triad
       - Captain
       - Cargo
@@ -113,7 +113,7 @@
     - External
     - Frontier # Frontier
     - HeadOfPersonnel
-    - TdfWarden # Triad
+    - TdfLieutenant # Triad
     - TdfPatrolTeamLeader # Triad
     - TdfChiefEnforcer # Triad
     - Hydroponics

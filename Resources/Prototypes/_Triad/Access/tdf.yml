@@ -3,8 +3,8 @@
   name: id-card-access-level-tdf-chief-enforcer
 
 - type: accessLevel
-  id: TdfWarden
-  name: id-card-access-level-tdf-warden
+  id: TdfLieutenant
+  name: id-card-access-level-tdf-lieutenant
 
 - type: accessLevel
   id: TdfPatrolTeamLeader
@@ -55,7 +55,7 @@
   id: TDF
   tags:
   - TdfChiefEnforcer
-  - TdfWarden
+  - TdfLieutenant
   - TdfPatrolTeamLeader
   - Security
   - Brig

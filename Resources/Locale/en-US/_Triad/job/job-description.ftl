@@ -1,5 +1,5 @@
 # TDF
-job-description-tdf-warden = You are the second in command of the local TDF team. Ensure order in the sector and within your TDF team.
+job-description-tdf-lieutenant = You are the second in command of the local TDF team. Ensure order in the sector and within the TDF.
 job-description-tdf-medic = Fight in the rear of the Chief Enforcer's service, for the lives of your comrades! You are the first and last hope of your team. Hippocrates bless you.
 job-description-tdf-cadet = Serve as the main protection force in the Triad sector. Listen to your supervisors and feel free to ask them for any help.
 job-description-tdf-enforcer = Stop smugglers and protect the residents of the Triad sector.

@@ -1,5 +1,7 @@
+job-supervisors-high-command = High Command
+
 job-supervisors-tdf-enforcer = the Chief Enforcer
-job-supervisors-tdf-warden = the Warden
+job-supervisors-tdf-lieutenant = the Lieutenant
 job-supervisors-tdf-patrol-team-leader = your assigned patrol team leader
 job-supervisors-tdf-cadet = all higher ranking TDF members
 job-supervisors-tdf-prisoner = all TDF personnel

@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server._NF.Shipyard.Components;
 using Content.Server._NF.Station.Components;
 using Content.Server._Triad.ContrabandPermit;
@@ -15,6 +15,7 @@ using Content.Shared._NF.Bank.Components;
 using Content.Shared._NF.Shipyard;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared._NF.Shipyard.Events;
+using Content.Shared._NF.Shipyard.Prototypes;
 using Content.Shared._NF.ShuttleRecords;
 using Content.Shared._Triad.CCVar;
 using Content.Shared._Triad.Shipyard.Save;
@@ -30,6 +31,9 @@ using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
 using Content.Shared.Whitelist;
 using Robust.Shared.Player;
+﻿using Robust.Shared.Prototypes;
+using Content.Server._Triad.Market;
+using Content.Server.Database;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -39,6 +43,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private ShuttleConsoleSystem _shuttleConsole = default!;
     [Dependency] private TriadTamperPolicyService _tamperPolicy = default!;
+
+    private static readonly ProtoId<VesselPrototype> DefaultVesselFallbackId = "Framework";
 
     public void OnSaveMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSaveMessage args)
     {
@@ -360,7 +366,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!_bank.TryBankWithdraw(player, appraisalCost))
+        if (!_bank.TryBankWithdraw(player, appraisalCost, new MarketRecord { Kind = MarketTransactionKind.ShipLoadAppraisal })) // Triad: market data
         {
             Del(shuttleUid);
             ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", appraisalCost)));
@@ -398,6 +404,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         // For loaded ships, we don't spawn a new station via a GameMap prototype unless we can infer the vessel ID.
         var vesselComp = EnsureComp<VesselComponent>(shuttleUid);
+
+        if (!_prototypeManager.TryIndex<VesselPrototype>(vesselComp.VesselId, out _))
+            vesselComp.VesselId = DefaultVesselFallbackId; // Set to fallback if it can't index a ProtoId
+
         var vessel = vesselComp.VesselId;
 
         EntityUid? shuttleStation = null;

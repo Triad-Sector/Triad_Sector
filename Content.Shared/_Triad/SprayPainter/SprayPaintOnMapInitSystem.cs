@@ -11,7 +11,7 @@ namespace Content.Shared._Triad.SprayPainter;
 ///       This handles a system where spray paintable entities are auto-painted on map init.
 ///       We do this so spray paintable entities during ship save keep their paint.
 /// </summary>
-public sealed partial class SharedSprayPainterSystem : EntitySystem
+public sealed partial class SprayPaintOnMapInitSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 

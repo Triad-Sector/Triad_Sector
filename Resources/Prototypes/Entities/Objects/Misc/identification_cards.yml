@@ -856,7 +856,7 @@
     - Coalition # Triad
     - TdfChiefEnforcer # Triad
     - TdfPatrolTeamLeader # Triad
-    - TdfWarden # Triad
+    - TdfLieutenant # Triad
     - TdfPermitControl # Triad
   - type: Tag #  Ignore Chameleon tags
     tags:

@@ -741,9 +741,15 @@
     components:
     - type: EntityTableSpawner
       deleteSpawnerAfterSpawn: false
-      table: !type:AllSelector
-        children:
-        - id: RandomInstruments
+      # Triad: spawn from the instrument table directly (#586). RandomInstruments is a
+      # mapping marker with anchored: true; when a prior effect has knocked the artifact
+      # off-grid (eating the tile under it), the marker's anchor-on-spawn errors against
+      # the grid it is no longer on.
+      # table: !type:AllSelector
+      #   children:
+      #   - id: RandomInstruments
+      table: !type:NestedSelector
+        tableId: RandomInstrumentTable
 
 - type: entity
   id: XenoArtifactMonkeySpawn

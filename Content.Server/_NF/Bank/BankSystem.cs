@@ -1,4 +1,4 @@
-using System.Threading;
+﻿using System.Threading;
 using Content.Server.Database;
 using Content.Server.Preferences.Managers;
 using Content.Server.GameTicking;
@@ -12,6 +12,9 @@ using Content.Shared._Mono.Traits.Physical;
 using Content.Shared._NF.Bank.Events;
 using Content.Shared.GameTicking;
 using Robust.Shared.Network;
+
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
 
 namespace Content.Server._NF.Bank;
 
@@ -59,7 +62,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="mobUid">The UID that the bank account is attached to, typically the player controlled mob</param>
     /// <param name="amount">The integer amount of which to decrease the bank account</param>
     /// <returns>true if the transaction was successful, false if it was not</returns>
-    public bool TryBankWithdraw(EntityUid mobUid, int amount)
+    public bool TryBankWithdraw(EntityUid mobUid, int amount, MarketRecord? capture = null) // Triad: add capture
     {
         if (amount < 0)
         {
@@ -98,7 +101,7 @@ public sealed partial class BankSystem : SharedBankSystem
             return false;
         }
 
-        if (TryBankWithdraw(session, prefs, profile, amount, out var newBalance))
+        if (TryBankWithdraw(session, prefs, profile, amount, out var newBalance, capture))
         {
             bank.Balance = newBalance.Value;
             Dirty(mobUid, bank);
@@ -114,7 +117,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="mobUid">The UID that the bank account is connected to, typically the player controlled mob</param>
     /// <param name="amount">The amount of spesos to remove from the bank account</param>
     /// <returns>true if the transaction was successful, false if it was not</returns>
-    public bool TryBankDeposit(EntityUid mobUid, int amount)
+    public bool TryBankDeposit(EntityUid mobUid, int amount, MarketRecord? capture = null) // Triad: add capture
     {
         if (amount <= 0)
         {
@@ -146,7 +149,7 @@ public sealed partial class BankSystem : SharedBankSystem
             return false;
         }
 
-        if (TryBankDeposit(session, prefs, profile, amount, out var newBalance))
+        if (TryBankDeposit(session, prefs, profile, amount, out var newBalance, capture))
         {
             bank.Balance = newBalance.Value;
             Dirty(mobUid, bank);
@@ -167,7 +170,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="amount">The number of spesos to be withdrawn.</param>
     /// <param name="newBalance">The new value of the bank account.</param>
     /// <returns>true if the transaction was successful, false if it was not.  When successful, newBalance contains the character's new balance.</returns>
-    public bool TryBankWithdraw(ICommonSession session, PlayerPreferences prefs, HumanoidCharacterProfile profile, int amount, [NotNullWhen(true)] out int? newBalance)
+    public bool TryBankWithdraw(ICommonSession session, PlayerPreferences prefs, HumanoidCharacterProfile profile, int amount, [NotNullWhen(true)] out int? newBalance, MarketRecord? capture = null) // Triad: add capture
     {
         newBalance = null; // Default return
         if (amount < 0)
@@ -197,6 +200,7 @@ public sealed partial class BankSystem : SharedBankSystem
         newBalance = balance;
         // Update any active admin UI with new balance
         RaiseLocalEvent(new BalanceChangedEvent(session, newBalance.Value));
+        CaptureBankMovement(session, profile, -amount, capture); // Triad
         return true;
     }
 
@@ -210,7 +214,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="amount">The number of spesos to be deposited.</param>
     /// <param name="newBalance">The new value of the bank account.</param>
     /// <returns>true if the transaction was successful, false if it was not.  When successful, newBalance contains the character's new balance.</returns>
-    public bool TryBankDeposit(ICommonSession session, PlayerPreferences prefs, HumanoidCharacterProfile profile, int amount, [NotNullWhen(true)] out int? newBalance)
+    public bool TryBankDeposit(ICommonSession session, PlayerPreferences prefs, HumanoidCharacterProfile profile, int amount, [NotNullWhen(true)] out int? newBalance, MarketRecord? capture = null) // Triad: add capture
     {
         newBalance = null; // Default return
         if (amount <= 0)
@@ -231,6 +235,7 @@ public sealed partial class BankSystem : SharedBankSystem
         _prefsManager.SetProfile(session.UserId, index, newProfile);
         // Update any active admin UI with new balance
         RaiseLocalEvent(new BalanceChangedEvent(session, newBalance.Value));
+        CaptureBankMovement(session, profile, amount, capture); // Triad
         return true;
     }
 

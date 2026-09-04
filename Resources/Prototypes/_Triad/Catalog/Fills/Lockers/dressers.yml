@@ -13,13 +13,13 @@
       - id: ClothingNeckCloakTdfChiefEnforcer
 
 - type: entity
-  id: DresserTdfWardenFilled
+  id: DresserTdfLieutenantFilled
   parent: Dresser
-  suffix: Filled, TDF Warden
+  suffix: Filled, TDF Lieutenant
   components:
   - type: StorageFill
     contents:
-      - id: ClothingHeadHatTdfWarden
-      - id: ClothingHeadHatBeretTdfWarden
+      - id: ClothingHeadHatTdfLieutenant
+      - id: ClothingHeadHatBeretTdfLieutenant
       - id: ClothingHeadHatBeretWarden
-      - id: ClothingUniformJumpsuitTdfWarden
+      - id: ClothingUniformJumpsuitTdfLieutenant

@@ -190,11 +190,19 @@ public sealed partial class HeatExchangerSystem : EntitySystem
             }
         }
 
-        // Triad: forced vs natural convection. Conductance scales from the
-        // static floor up to full strength with flow through the device.
-        var flowFactor = comp.RatedFlow > 0f
-            ? Math.Clamp(MathF.Abs(n) / (comp.RatedFlow * dt), 0f, 1f)
-            : 1f;
+        // Triad: forced vs natural convection as a mass-flux law. The gas-side
+        // film coefficient of a real exchanger goes as (mass flux)^0.8, so the
+        // conductance multiplier is (moles per second / RatedFlow)^FlowExponent,
+        // capped at MaxFlowFactor, rather than a clamp that saturated at ~1 kPa
+        // of ΔP. Absolute pressure enters through the moles: at the same pump
+        // setting a high-pressure loop moves more gas per pass, and that buys
+        // it more wall conductance. Zero flow still lands on the static floor.
+        var flowFactor = 1f;
+        if (comp.RatedFlow > 0f && dt > 0f)
+        {
+            var rate = MathF.Abs(n) / dt;
+            flowFactor = MathF.Min(MathF.Pow(rate / comp.RatedFlow, comp.FlowExponent), comp.MaxFlowFactor);
+        }
         var pipeConductance = comp.PipeConductance *
             (comp.StaticConductanceFloor + (1f - comp.StaticConductanceFloor) * flowFactor);
 

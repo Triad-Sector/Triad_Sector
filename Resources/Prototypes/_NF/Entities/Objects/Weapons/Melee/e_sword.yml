@@ -1,6 +1,6 @@
 - type: entity
   name: TDF energy sword # Triad - rename
-  parent: [ BaseFactionGearTDFT2, EnergySword ]
+  parent: [ BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf, EnergySword  ] # Triad
   id: EnergySwordNfsd
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter. This one has been hacked to make the beam the primary color of the TDF.
   components:
@@ -8,8 +8,6 @@
     colorOptions:
       - "#ffd580" # Triad
     blockHacking: true
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: NFEnergyPickaxe

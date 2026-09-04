@@ -69,10 +69,10 @@
   - Shotguns
   - Ballistic
   - Weapons
-  materials:
-    Steel: 1800
-    Plasteel: 1000
-    Plastic: 400
+  materials: # Triad: scaled up from a 400-credit bill to match the 5,000-credit sale price
+    Steel: 22500
+    Plasteel: 12500
+    Plastic: 5000
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
@@ -82,10 +82,10 @@
   - Shotguns
   - Ballistic
   - Weapons
-  materials:
-    Steel: 2500
-    Plasteel: 1500
-    Plastic: 500
+  materials: # Triad: scaled up from a 579-credit bill to match the 5,000-credit sale price
+    Steel: 22000
+    Plasteel: 13000
+    Plastic: 4500
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong

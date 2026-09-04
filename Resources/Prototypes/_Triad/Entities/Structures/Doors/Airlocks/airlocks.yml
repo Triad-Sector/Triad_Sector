@@ -34,3 +34,20 @@
   components:
   - type: Sprite
     sprite: _Triad/Structure/Doors/Airlocks/Glass/tdfhighcom.rsi
+
+# SD
+- type: entity
+  parent: Airlock
+  id: AirlockSD
+  suffix: SD
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Standard/sd.rsi
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockSDGlass
+  suffix: SD
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Doors/Airlocks/Glass/sd.rsi

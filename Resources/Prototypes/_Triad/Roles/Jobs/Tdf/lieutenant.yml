@@ -1,0 +1,60 @@
+- type: job
+  id: TdfLieutenant
+  name: job-name-tdf-lieutenant
+  description: job-description-tdf-lieutenant
+  playTimeTracker: JobTdfWarden # Old job name. Playtime tracker stays the same so folk don't lose their playtime
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hours
+    - !type:RoleTimeRequirement
+      role: JobTdfPatrolTeamLeader
+      time: 7200 # 2 hours
+  startingGear: TdfLieutenantGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfLieutenant
+  supervisors: job-supervisors-tdf-enforcer
+  weight: 150
+  displayWeight: 60
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - GeneralTdfAccessBrig
+  access:
+  - Command
+  - Armory
+  - Medical
+  - Chemistry
+  - TdfLieutenant
+  - TdfPatrolTeamLeader
+  - TdfPermitControl
+  ranks:
+    RankLieutenant: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+    - type: ShipSavingBlacklist # TDF can't save ships
+    - type: CryoSleepRadioOverride
+      overrides:
+      - Nfsd # TDF radio
+    - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfLieutenantGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+  storage:
+    back:
+    - Magazine45_ACPPistolFMJ
+    - BaseSecurityUplinkRadioWarden
+    - RubberStampLieutenant
+    - RadioHandheldNF
+    - ShipVoucherTdfTier0

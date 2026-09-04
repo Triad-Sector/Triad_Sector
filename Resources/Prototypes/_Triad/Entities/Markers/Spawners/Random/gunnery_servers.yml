@@ -87,4 +87,4 @@
     - id: GunneryServerHigh
       weight: 1
     - id: GunneryServerUltra
-      weight: 0.9
+      weight: 0.75

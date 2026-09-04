@@ -44,10 +44,7 @@
     state: elint1
   objectType: Structure
   placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-    failIfSpace: false
+  canBuildInImpassable: true
   ghostOffset: 0,1
 
 - type: construction
