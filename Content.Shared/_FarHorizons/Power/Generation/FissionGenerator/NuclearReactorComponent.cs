@@ -130,7 +130,7 @@ public sealed partial class NuclearReactorComponent : Component
     /// Radio channel to send alerts to
     /// </summary>
     [DataField]
-    public string EngineeringChannel = "Traffic"; // Mono
+    public string EngineeringChannel = "Engineering"; // Triad: upstream's channel, not Mono's Traffic
 
     /// <summary>
     /// Last reported temperature during overheat events
