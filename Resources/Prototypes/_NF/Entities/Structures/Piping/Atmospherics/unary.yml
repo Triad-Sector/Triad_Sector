@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseStructureDynamic, BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseStructureDynamic, BaseMachinePowered, ConstructibleMachine]
   id: GasMiningDrill
   name: gas mining drill
   description: A powerful, luggable drill for mining gas deposits on asteroids. Outputs gas through a pipe.
@@ -82,11 +82,22 @@
           On: { state: drill-on-unlit, visible: true }
   - type: ApcPowerReceiver
     powerLoad: 1000
+  # Triad - Battery-powered gas drill
+  - type: Battery
+    maxCharge: 3500
+    startingCharge: 0
+  - type: ExaminableBattery
+  - type: BatterySelfRecharger
+  - type: ApcPowerReceiverBattery
+    idleLoad: 5
+    batteryRechargeRate: 175
+    batteryRechargeEfficiency: 1.2
+  # Triad End
   - type: Machine
     board: GasMiningDrillMachineCircuitboard
   - type: GasDepositExtractor
     baseExtractionRate: 50 # 50 mol/s => 20 kmol in ~6.6 min
-    extractionRate: 50 
+    extractionRate: 50
     extractionRateMultiplier: 1.2 # max rate: 86.4 mol/s => 20 kmol in ~3.9 min
     port: outlet
   - type: Fixtures
