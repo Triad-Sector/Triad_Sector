@@ -200,18 +200,20 @@
   components:
   - type: ReactorPart
     material: Plutonium
-  - type: GhostRole
-    makeSentient: true
-    allowSpeech: true
-    allowMovement: false
-    name: ghost-role-information-plutonium-rod-name
-    description: ghost-role-information-plutonium-rod-description
-    rules: ghost-role-information-plutonium-rod-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
-  - type: GhostTakeoverAvailable
-  - type: SentienceTarget
-    weight: 2
+  # Triad: no ghost role on a fuel rod. A mind riding a rod inside a reactor is a mind the ship
+  # save has to scrub, and it stalls the save until it is (user, 2026-09-04).
+  #- type: GhostRole
+  #  makeSentient: true
+  #  allowSpeech: true
+  #  allowMovement: false
+  #  name: ghost-role-information-plutonium-rod-name
+  #  description: ghost-role-information-plutonium-rod-description
+  #  rules: ghost-role-information-plutonium-rod-rules
+  #  mindRoles:
+  #  - MindRoleGhostRoleFreeAgentHarmless
+  #- type: GhostTakeoverAvailable
+  #- type: SentienceTarget
+  #  weight: 2
 
 - type: entity
   id: BananiumReactorFuelRod
