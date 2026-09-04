@@ -288,8 +288,8 @@ public sealed partial class NuclearReactorSystem : EntitySystem
             comp.ApplyPrefab = false;
         }
 
-        _appearance.SetData(uid, ReactorVisuals.Input, inlet.Air.Moles.Sum() > 20);
-        _appearance.SetData(uid, ReactorVisuals.Output, outlet.Air.Moles.Sum() > 20);
+        _appearance.SetData(uid, ReactorVisuals.Input, inlet.Air.TotalMoles > 20); // Mono - change to total moles
+        _appearance.SetData(uid, ReactorVisuals.Output, outlet.Air.TotalMoles > 20); // Mono - change to total moles
 
         var TempRads = 0;
         var ControlRods = 0;
@@ -569,7 +569,7 @@ public sealed partial class NuclearReactorSystem : EntitySystem
             _throwingSystem.TryThrow(Spawn("NuclearDebrisChunk", _transformSystem.GetMapCoordinates(uid)), _random.NextAngle().ToVec().Normalized(), _random.NextFloat(8, 16), uid);
 
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/metal_break5.ogg"), uid);
-        _explosionSystem.QueueExplosion(uid, "Radioactive", Math.Max(100, MeltdownBadness * 5), 1, 5, 0, canCreateVacuum: false);
+        _explosionSystem.QueueExplosion(uid, "HardBombShipGun", Math.Max(1000, MeltdownBadness * 35), 1, 500, 1, canCreateVacuum: true); // Mono - buff size
 
         var lightcomp = _lightSystem.EnsureLight(uid);
         _lightSystem.SetEnergy(uid, 0.1f, lightcomp);
