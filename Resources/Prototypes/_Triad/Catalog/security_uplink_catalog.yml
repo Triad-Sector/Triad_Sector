@@ -31,6 +31,21 @@
       - SecurityUplink
 
 - type: listing
+  id: UplinkSecurityEnergySword
+  name:  uplink-security-energysword-name
+  description: uplink-security-energysword-desc
+  productEntity: EnergySwordNfsd
+  cost:
+    TriadCommerceCredit: 40
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
   id: UplinkSecuritySurgeryDuffel
   name:  uplink-security-surgery-duffel-name
   description: uplink-security-surgery-duffel-desc
@@ -163,8 +178,8 @@
 
 - type: listing
   id: UplinkSecurityBox8x65mmFMJ
-  name:  uplink-security-8x65mm-box-name
-  description: uplink-security-8x65mm-box-desc
+  name:  uplink-security-8x65mm-skr-box-name
+  description: uplink-security-8x65mm-skr-box-desc
   productEntity: AmmoBox8x65mmSKR
   cost:
     TriadCommerceCredit: 2
@@ -214,7 +229,7 @@
   name:  uplink-security-wt550-magazine-name
   description: uplink-security-wt550-magazine-desc
   productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag_top_mounted.rsi, state: base }
   cost:
     TriadCommerceCredit: 5
   categories:
@@ -291,8 +306,8 @@
 
 - type: listing
   id: UplinkSecurityMagazine8x65mmFMJ
-  name:  uplink-security-8x65mm-magazine-name
-  description: uplink-security-8x65mm-magazine-desc
+  name:  uplink-security-8x65mm-skr-magazine-name
+  description: uplink-security-8x65mm-skr-magazine-desc
   productEntity: BoxMagazine8x65mmFMJ
   icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/8x65mm/8x65mm.rsi, state: base }
   cost:
@@ -326,7 +341,7 @@
   name:  uplink-security-trackingdart-ammo-name
   description: uplink-security-trackingdart-ammo-desc
   productEntity: NFBoxDartsTracking
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/tracking_dart.rsi, state: icon }
   cost:
     TriadCommerceCredit: 5
   categories:
@@ -457,7 +472,7 @@
   id: UplinkClothingOuterHardsuitTdf
   name: uplink-security-hardsuit-tdf-name
   description: uplink-security-hardsuit-tdf-desc
-  productEntity: ClothingOuterHardsuitTdf
+  productEntity: ClothingBackpackDuffelTdfHardsuitTdf
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
@@ -473,28 +488,12 @@
   id: UplinkClothingOuterHardsuitTdfMedic
   name: uplink-security-hardsuit-tdf-medic-name
   description: uplink-security-hardsuit-tdf-medic-desc
-  productEntity: ClothingOuterHardsuitTdfMedic
+  productEntity: ClothingBackpackDuffelTdfHardsuitTdfMedic
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
     - UplinkSecurityHardsuits
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityDisabler
-  name:  uplink-security-disabler-name
-  description: uplink-security-disabler-desc
-  productEntity: WeaponDisabler
-  icon: { sprite: Objects/Weapons/Guns/Battery/disabler.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 2
-  categories:
-    - UplinkSecurityWeapons
   conditions:
     - !type:StoreWhitelistCondition
       whitelist:
@@ -572,7 +571,7 @@
   productEntity: HoloprojectorNfsd
   icon: { sprite: _NF/Objects/Devices/Holoprojectors/nfsd.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 5
+    TriadCommerceCredit: 1
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -598,29 +597,13 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityJetpack
-  name:  uplink-security-jetpack-name
-  description: uplink-security-jetpack-desc
-  productEntity: JetpackNfsdFilled
-  icon: { sprite: _NF/Objects/Tanks/Jetpacks/nfsd.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
   id: UplinkSecurityMagboots
   name:  uplink-security-magboots-name
   description: uplink-security-magboots-desc
   productEntity: ClothingShoesBootsMagSecurityFilled # Mono
   icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-security.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 5
+    TriadCommerceCredit: 2
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -1114,11 +1097,43 @@
       - SecurityUplink
 
 - type: listing
+  id: UplinkSecurityPartBox
+  name: uplink-security-components-name
+  description: uplink-security-components-desc
+  productEntity: BoxSuperComponents
+  icon: { sprite: Objects/Misc/stock_parts.rsi, state: super_capacitor }
+  cost:
+    TriadCommerceCredit: 60
+  categories:
+  - UplinkSecurityBundles
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
   id: UplinkSecurityMK58Bundle
   name: uplink-security-gun-mk58-name
   description: uplink-security-gun-mk58-desc
   productEntity: WeaponCaseTDFShortMk58
   icon: { sprite: Objects/Weapons/Guns/Pistols/mk58.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 2
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityStunBundle
+  name:  uplink-security-stun-bundle-name
+  description: uplink-security-stun-bundle-desc
+  productEntity: WeaponCaseTDFShortStun
+  icon: { sprite: Objects/Weapons/Guns/Battery/disabler.rsi, state: base }
   cost:
     TriadCommerceCredit: 2
   categories:
@@ -1235,22 +1250,6 @@
     TriadCommerceCredit: 150
   categories:
   - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityPartBox
-  name: uplink-security-components-name
-  description: uplink-security-components-desc
-  productEntity: BoxSuperComponents
-  icon: { sprite: Objects/Misc/stock_parts.rsi, state: super_capacitor }
-  cost:
-    TriadCommerceCredit: 60
-  categories:
-  - UplinkSecurityBundles
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:

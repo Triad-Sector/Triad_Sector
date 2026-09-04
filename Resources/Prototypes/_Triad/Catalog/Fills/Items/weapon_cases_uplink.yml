@@ -99,13 +99,14 @@
     - id: AmmoBox68x52mmCaselessBig
       amount: 2
 
-# Melee
 - type: entity
   parent: WeaponCaseShort
-  id: WeaponCaseShortEnergyDaggerLoudExpedition
-  suffix: Dungeon, Energy Dagger
+  id: WeaponCaseTDFShortStun
+  suffix: TDF, Stuns
   components:
   - type: StorageFill
     contents:
-    - id: EnergyDaggerLoud
-      amount: 1
+    - id: Stunbaton
+    - id: WeaponDisabler
+    - id: Handcuffs
+      amount: 2
