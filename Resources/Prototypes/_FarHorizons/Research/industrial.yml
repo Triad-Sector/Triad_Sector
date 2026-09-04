@@ -21,6 +21,9 @@
   - SilverReactorHeatExchanger
   - PlasteelReactorHeatExchanger
   - PlasmaGlassReactorHeatExchanger
+  - PlasteelGasTurbineBlade # Triad: upstream unlocks the turbine parts from its own research tree; these follow its tiering
+  - BrassGasTurbineBlade
+  - SilverGasTurbineStator
   technologyPrerequisites:
   - PowerGeneration
   - AdvancedParts # Mono
@@ -45,6 +48,9 @@
   - DiamondReactorGasChannel
   - GoldReactorHeatExchanger
   - DiamondReactorHeatExchanger
+  - GoldGasTurbineBlade # Triad: see NuclearPowerGeneration
+  - DiamondGasTurbineBlade
+  - GoldGasTurbineStator
   technologyPrerequisites:
   - NuclearPowerGeneration
   #radioChannels:

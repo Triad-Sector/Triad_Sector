@@ -6,7 +6,11 @@
     </Box>
 
 	The Nuclear Generator generates power by heating a gas through fission reactions in a [textlink="Nuclear Reactor" link="NuclearReactor"], which then spins a [textlink="Gas Turbine" link="GasTurbine"].
-    
+
+	<!-- Triad: upstream maps these onto stations; ships buy theirs -->
+	## Getting one
+	Reactor and gas turbine flatpacks, in full and small sizes, are sold on the cargo market. The reactor arrives empty: fuel rods, control rods, gas channels and heat exchangers come from a Nuclear Fabricator or the cargo parts crates. The turbine arrives with a steel blade and stator fitted.
+
     ## Starting the Nuclear Generator
 	To start the Nuclear Generator, engineers must follow these steps:
 	- Fill the coolant loop with a gas. For basic setups, filling the loop with a single room temperature Nitrogen gas cannister is sufficient.

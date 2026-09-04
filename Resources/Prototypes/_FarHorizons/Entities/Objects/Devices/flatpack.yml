@@ -1,0 +1,63 @@
+# Triad: upstream parents these on BaseStructureFlatpack + BaseEngineeringContraband, neither of which
+# we carry, and deploys the Engineering-locked crew variants. Ours parent BaseFlatpack and deploy the
+# Salvage variants, which carry no AccessReader or Lock, so any crew can run the plant they bought.
+- type: entity
+  parent: BaseFlatpack
+  id: NuclearReactorFlatpack
+  name: Nuclear Reactor Flatpack
+  description: A flatpack used for constructing a nuclear reactor. Parts sold separately.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+    - state: icon-default
+  - type: Flatpack
+    entity: NuclearReactorEmptySalvage # Triad: upstream deploys NuclearReactorEmpty
+
+- type: entity
+  parent: BaseFlatpack
+  id: GasTurbineFlatpack
+  name: Gas Turbine Flatpack
+  description: A flatpack used for constructing a gas turbine.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+    - state: icon-default
+  - type: Flatpack
+    entity: GasTurbineNormalSalvage # Triad: upstream deploys GasTurbineNormal
+
+# Triad: the small variants have no upstream flatpack; they are map-placed on stations.
+- type: entity
+  parent: BaseFlatpack
+  id: NuclearReactorSmallFlatpack
+  name: Small Nuclear Reactor Flatpack
+  description: A flatpack used for constructing a small nuclear reactor. Parts sold separately.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+    - state: icon-default
+  - type: Flatpack
+    entity: NuclearReactorSmallEmptySalvage
+
+- type: entity
+  parent: BaseFlatpack
+  id: GasTurbineSmallFlatpack
+  name: Small Gas Turbine Flatpack
+  description: A flatpack used for constructing a small gas turbine.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+    - state: icon-default
+  - type: Flatpack
+    entity: GasTurbineSmallSalvage
