@@ -404,6 +404,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         // For loaded ships, we don't spawn a new station via a GameMap prototype unless we can infer the vessel ID.
         var vesselComp = EnsureComp<VesselComponent>(shuttleUid);
+
+        if (!_prototypeManager.TryIndex<VesselPrototype>(vesselComp.VesselId, out _))
+            vesselComp.VesselId = DefaultVesselFallbackId; // Set to fallback if it can't index a ProtoId
+
         var vessel = vesselComp.VesselId;
 
         EntityUid? shuttleStation = null;
@@ -418,10 +422,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
             var vesselInfo = EnsureComp<ExtraShuttleInformationComponent>(shuttleStation.Value);
             vesselInfo.Vessel = vessel;
-        }
-        else
-        {
-            vesselComp.VesselId = DefaultVesselFallbackId; // Set to fallback if it couldn't find a gamemap prototype
         }
 
         SetFtlLockEnabled(shuttleUid);

@@ -53,6 +53,15 @@
     containers:
       board: [ DoorElectronicsCentralCommand ]
 
+- type: entity
+  parent: AirlockSD
+  id: AirlockSDLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
 # Glass Airlocks
 - type: entity
   parent: AirlockTdfGlass
@@ -107,6 +116,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  parent: AirlockSDGlass
+  id: AirlockSDGlassLocked
+  suffix: SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
 
 # Hatch
 - type: entity
