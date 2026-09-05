@@ -12,7 +12,6 @@
   price: 120000 # 89K base x 1.35 -> 120K (35% markup).
   category: medium
   group: Scrap
-  access: Mercenary
   shuttlePath: /Maps/_Mono/Shuttles/Scrap/scallywag.yml
   guidebookPage: Null
   class:

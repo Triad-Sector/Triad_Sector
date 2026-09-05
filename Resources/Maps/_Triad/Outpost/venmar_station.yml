@@ -45563,7 +45563,7 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: ComputerShipyardExpedition
+- proto: ComputerShipyardMilitary
   entities:
   - uid: 4801
     components:

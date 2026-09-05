@@ -66,6 +66,7 @@
   - ContractorBoxSurvival
   - ContractorWallet
   - ContractorTrinkets
+  - ContractorBureaucracy
   - NFSpeciesSpecific
 
 # These are admin only roles, but they need a rudimentary loadout so that they do not spawn naked if the jobs are spawned by admins

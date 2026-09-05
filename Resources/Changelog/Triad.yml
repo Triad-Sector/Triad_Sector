@@ -4556,3 +4556,81 @@ Entries:
   id: 2582
   time: '2026-09-04T16:25:36.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/602
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        The nuclear reactor and gas turbine can be researched and built, on 5x5,
+        3x5, 3x3 and 3x2 machine frames.
+    - type: Add
+      message: >-
+        Reactor and turbine monitor computers, and a nuclear fabricator for rods
+        and turbine parts.
+    - type: Tweak
+      message: >-
+        A reactor meltdown is contained to the hull it starts on, and reactor
+        warnings go out on the shortband only.
+    - type: Tweak
+      message: >-
+        The nuclear reactor guidebook pages were rewritten, and the reactor
+        panel shows which slot is selected.
+    - type: Remove
+      message: Reactor and turbine parts crates are no longer sold by cargo.
+    - type: Fix
+      message: Plutonium fuel rods can no longer be taken over by ghosts.
+  id: 2583
+  time: '2026-09-05T05:17:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/608
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited the captain jetpack, the blue jetpack, the black jetpack, the
+        mini jetpack, and the security jetpack
+    - type: Fix
+      message: >-
+        Fixed jetpack 'turned on' clothing sprites not working. You should see a
+        little green light on a clothing jetpack now!
+  id: 2584
+  time: '2026-09-05T17:22:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/609
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: The Expedition Shipyard has been reworked into the Military Shipyard.
+    - type: Tweak
+      message: >-
+        All Civilian Expedition Vessels have been moved to the normal shipyard,
+        while all vessels with 'MIL' IFF have been moved to the military
+        shipyard.
+    - type: Remove
+      message: >-
+        There is no longer a mercenary access requirement for purchasing some
+        ships on the shipyard consoles.
+    - type: Add
+      message: >-
+        Added salvage expedition console flatpack to the expeditionary flatpack
+        vendor.
+  id: 2585
+  time: '2026-09-05T19:05:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/610
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        The Offshore gas mining guidebook under Engineering/Atmospherics has
+        been improved, mentioning gases such as Healium and Nitrium. It talks
+        about portable gaslock and gas drills' internal batteries, and also
+        includes a chart about which gases are the most dense on each asteroid
+        type. It no longer mentions gas purity, as you impure gases do not sell
+        for any less.
+  id: 2586
+  time: '2026-09-05T19:58:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/611
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Every job now has the Bureaucracy loadout, including TDF roles.
+  id: 2587
+  time: '2026-09-05T20:04:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/559
