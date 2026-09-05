@@ -49,4 +49,4 @@
       sprite: _Triad/Structure/Machines/computers.rsi
       state: shipyard_military
     - map: ["computerLayerKeys"]
-      state: blackmarket_key
+      state: telesci_key

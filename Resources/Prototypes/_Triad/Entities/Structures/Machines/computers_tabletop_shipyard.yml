@@ -16,4 +16,4 @@
       state: shipyard_military
     - map: ["computerLayerKeys"]
       sprite: _NF/Structures/Machines/computers.rsi
-      state: blackmarket_key
+      state: telesci_key

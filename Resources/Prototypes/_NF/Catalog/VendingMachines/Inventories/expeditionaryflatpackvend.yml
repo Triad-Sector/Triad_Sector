@@ -1,6 +1,7 @@
 - type: vendingMachineInventory
   id: ExpeditionaryFlatpackVendInventory
   startingInventory:
+    SalvageExpeditionsComputerCircuitboard: 4294967295 # Infinite | Triad - Added this board
     ComputerCrewMonitoringFlatpack: 4294967295 # Infinite
     TelecomServerFlatpack: 4294967295 # Infinite
     PowerCellRechargerFlatpack: 4294967295 # Infinite
