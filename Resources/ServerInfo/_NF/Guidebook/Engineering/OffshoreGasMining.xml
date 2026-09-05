@@ -1,6 +1,6 @@
 <Document>
 # Offshore Gas Mining
-Asteroids in the Frontier sector are a reliable source of large amounts of normally gaseous elements in the form of [color=gold]solidified deposits[/color].
+Asteroids in the Triad Sector are a reliable source of large amounts of normally gaseous elements in the form of [color=gold]solidified deposits[/color].
 
 <Box>
 <GuideEntityEmbed Entity="GasDepositOxygen" Caption="oxygen deposit"/>
@@ -8,7 +8,7 @@ Asteroids in the Frontier sector are a reliable source of large amounts of norma
 <GuideEntityEmbed Entity="GasDepositPlasma" Caption="plasma deposit"/>
 </Box>
 
-Atmospheric ships, for example, the [color=yellow]Gasbender[/color] and [color=yellow]Ambition[/color], come equipped with the equipment needed to extract from these deposits. Check for the [color=cyan]Atmospherics[/color] category at the [color=steelblue]shipyard console[/color] when buying ships.
+Atmospheric ships, for example, the [color=yellow]Arribane[/color] and [color=yellow]Ambition[/color], come equipped with the equipment needed to extract from these deposits. Check for the [color=cyan]Atmospherics[/color] category at the [color=steelblue]shipyard console[/color] when buying ships.
 
 ## Needed Equipment
 
@@ -16,7 +16,7 @@ The equipment you'll need:
 - A mining drill
 - A portable gaslock
 - Steel for pipes
-- A source of power (J.R.P.A.C.M.A.N. recommended)
+- A source of power (J.R.P.A.C.M.A.N. or use of internal battery recommended)
 - LV cable
 - A gas deposit scanner (optional)
 
@@ -49,28 +49,143 @@ Standard procedure for drilling for gas is as follows:
 
 9. Anchor a [color=orange]portable generator[/color] on the asteroid, turn it on, and set up [color=limegreen]cables[/color] so both the [color=khaki]mining drill[/color] and [color=mediumspringgreen]portable gaslock[/color] are powered.
 
-10. Set the target pressure on your [color=khaki]drill[/color].
+10. Alternatively, you can anchor the [color=mediumspringgreen]portable gaslock[/color] and [color=khaki]mining drill[/color] to your ship temporarily to power their internal batteries, if you would rather not use a [color=orange]portable generator[/color].
 
-11. Set the pressure and direction on both the [color=mediumspringgreen]portable gaslock[/color] and [color=cyan]your shuttle's gaslock[/color].
+11. Set the target pressure on your [color=khaki]drill[/color].
 
-12. Note that the [color=mediumspringgreen]gaslocks[/color] are [bold]bidirectional[/bold], and the direction the lights are moving is the direction the gas will flow. [bold]Both should point in the same direction to pump gas.[/bold]
+12. Set the pressure and direction on both the [color=mediumspringgreen]portable gaslock[/color] and [color=cyan]your shuttle's gaslock[/color].
 
-13. Wait until the [color=lightpink]gas deposit[/color] is depleted - the light on the miner should glow [color=yellow]yellow[/color] when low, and [color=red]red[/color] when empty. If you find other deposits on the same asteroid, [bold]it is efficient to pump multiple deposits at the same time![/bold]
+13. Note that the [color=mediumspringgreen]gaslocks[/color] are [bold]bidirectional[/bold], and the direction the lights are moving is the direction the gas will flow. [bold]Both should point in the same direction to pump gas.[/bold]
 
-14. If the miner glows [color=orange]orange[/color], your pipe network is backed up. Double check your pressures and pump directions!
+14. Wait until the [color=lightpink]gas deposit[/color] is depleted - the light on the miner should glow [color=yellow]yellow[/color] when low, and [color=red]red[/color] when empty. If you find other deposits on the same asteroid, [bold]it is efficient to pump multiple deposits at the same time![/bold]
+
+15. If the miner glows [color=orange]orange[/color], your pipe network is backed up. Double check your pressures and pump directions!
+
+16. Once you're finished mining the deposit(s), [color=orange]weld[/color] your [color=mediumspringgreen]portable gaslock(s)[/color] and [color=khaki]mining drill(s)[/color] back into flatpacks for easy carry. You can also unanchor them and drag them yourself.
 
 ## Gas Filtering and Processing
 
 Gas deposits are impure, and [bold]should be filtered before selling[/bold]. [color=turquoise]Gas filters[/color] can help extract one gas at a time through their side port.
 
-Different gases have different values. The most valuable gases are [color=lightskyblue]frezon[/color] followed by [color=limegreen]tritium[/color]. Ask someone who knows more about atmospherics about how to process plasma into tritium, and tritium into frezon.
+Different gases have different values. The most valuable gases are [color=#0FFF50]healium[/color], [color=#F1DD38]nitrium[/color], [color=lightskyblue]frezon[/color] and [color=limegreen]tritium[/color]. Ask someone who knows more about atmospherics about how to synthesize these valuable gases.
 
 Selling gas can be done through canisters, which can be crafted from plasteel, or in bulk at a [color=lightgreen]gas sale point[/color], e.g. at Edison Power Plant.
 
 - Canisters can be sold using cargo pallets and cargo sales consoles, like any other good.
 - [color=lightgreen]Gas sale points[/color] can accept massive amounts of gas at a time, and require gas to be pumped in through a gaslock.
+- Gas purity does not affect the price of selling gases, but it does matter for processing them into [bold]more valuable gases[/bold].
 
-Both sales methods pay according to the [bold]purity[/bold] of your mix. [bold]Be sure to filter your gas![/bold] The easier it is for NT to separate your gases out, the better the pay.
+Below is a chart of which asteroids have most dense deposits of a specific gas, ranked from most dense to second-most dense.
+
+<Table Columns="7">
+  <ColorBox Color="#6966FD">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Chromite[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#FF6700">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Basic[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#9A6302">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Rock[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#9B9B9B">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Basalt[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#67FDFF">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Ice[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#00CB00">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Andesite[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#FCFF63">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Sand[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#67FDFF">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Ice[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#6966FD">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Chromite[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#FF6700">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Basic[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#00CB00">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Andesite[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#9A6302">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Rock[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#9B9B9B">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Basalt[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#00CB00">
+    <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Andesite[/color]
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#0335FCFF">
+    <Box>
+        O2
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#ba0000">
+    <Box>
+        N2
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#525252">
+    <Box>
+        CO2
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#FF00FF">
+    <Box>
+        Plasma
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#e49ad7">
+    <Box>
+        Water Vapor
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#800080">
+    <Box>
+        Ammonia
+    </Box>
+  </ColorBox>
+  <ColorBox Color="#FF4040">
+    <Box>
+        N2O
+    </Box>
+  </ColorBox>
+</Table>
+
+\n
 
 Best of luck out there, greenhorn, and keep at it.
 
