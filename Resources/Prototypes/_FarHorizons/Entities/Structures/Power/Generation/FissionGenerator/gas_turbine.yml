@@ -183,6 +183,8 @@
   - type: Construction # Triad: one-way build
     graph: TriadMachine3x5
     node: machine
+  - type: Machine # Triad
+    board: GasTurbineMachineCircuitboard
 
 - type: entity
   id: GasTurbineSmallSalvage
@@ -192,6 +194,8 @@
   - type: Construction # Triad: one-way build
     graph: TriadMachine3x2
     node: machine
+  - type: Machine # Triad
+    board: GasTurbineSmallMachineCircuitboard
 #endregion
   
 #region Support Entities

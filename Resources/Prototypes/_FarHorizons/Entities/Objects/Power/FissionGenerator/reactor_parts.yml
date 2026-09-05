@@ -274,7 +274,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 1500
+      Steel: 750 # Triad: was 1500, the recipe cost; the other steel parts sit at half
 
 - type: entity
   id: GoldReactorControlRod

@@ -286,6 +286,8 @@
   - type: Construction # Triad: one-way build
     graph: TriadMachine5x5
     node: machine
+  - type: Machine # Triad
+    board: NuclearReactorMachineCircuitboard
 
 - type: entity
   id: NuclearReactorRandomSalvage
@@ -312,6 +314,8 @@
   - type: Construction # Triad: one-way build
     graph: TriadMachine3x3
     node: machine
+  - type: Machine # Triad
+    board: NuclearReactorSmallMachineCircuitboard
 #endregion
 
 #region Melted Reactors
