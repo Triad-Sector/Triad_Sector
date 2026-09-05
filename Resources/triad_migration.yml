@@ -223,7 +223,7 @@ HolopadCommissarBaikal: null
 HolopadJupiter: null
 ComputerShipyardUSSP: ComputerShipyardTIC
 VendingMachineUSSP: null
-TurbineUSSP: GasTurbineNormalSalvage # Triad: migrations do not chain; Turbine itself migrated 2026-09-04, see below
+TurbineUSSP: GasTurbineNormalSalvage # Triad: migrations do not chain
 TurbineUSSPSmall: GasTurbineSmallSalvage # Triad: same
 LockableButtonUSSP: null
 SuitStorageWallmountUsspL10: null

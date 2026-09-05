@@ -17,7 +17,7 @@
 
   <Box>
 	  <GuideEntityEmbed Entity="NuclearReactorNormal" Caption=""/>
-	  <GuideEntityEmbed Entity="GasTurbineNormal" Caption=""/> <!-- Triad: was Turbine; Far Horizons renamed it 2026-09-04, see triad_migration.yml -->
+	  <GuideEntityEmbed Entity="GasTurbineNormal" Caption=""/> <!-- Triad: renamed -->
   </Box>
   <Box>
     ## Nuclear Generator

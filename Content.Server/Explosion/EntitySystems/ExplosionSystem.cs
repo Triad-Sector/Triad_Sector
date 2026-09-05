@@ -255,7 +255,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         bool canCreateVacuum = true,
         EntityUid? user = null,
         bool addLog = true,
-        bool gridOnly = false) // Triad: confine the blast to the grid it starts on
+        bool gridOnly = false) // Triad
     {
         var pos = Transform(uid);
 
@@ -325,7 +325,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
         bool addLog = true,
-        bool gridOnly = false) // Triad: see QueuedExplosion.GridOnly
+        bool gridOnly = false) // Triad
     {
         if (totalIntensity <= 0 || slope <= 0)
             return;

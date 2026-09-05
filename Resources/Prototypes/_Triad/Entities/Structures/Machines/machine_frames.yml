@@ -1,8 +1,5 @@
-# Centered variants of Mono's multi-tile machine frames. Mono's anchor on a corner tile and offset
-# the sprite into the box, which matches Mono's corner-origin machines; the Far Horizons reactors
-# and turbines are centered on their origin, so building one on a Mono frame lands it a tile off.
-# These frames put the origin in the middle of the box. Boards target them by frameSize.
-# The 5x5 and 3x5 art is Mono's 3x3 box with its slat, crossbar and lattice bands repeated.
+# Centered variants of Mono's corner-anchored frames, for the Far Horizons reactors and turbines,
+# which are centered on their origin. Boards target them by frameSize. 5x5/3x5 art is Mono's 3x3 extended.
 
 #region 5x5
 - type: entity

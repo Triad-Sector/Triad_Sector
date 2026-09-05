@@ -9,7 +9,7 @@
   - NuclearFabricatorMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
-  - NuclearReactorSmallMachineCircuitboard # Triad: the small plant at tier 1, the full-size one at tier 2
+  - NuclearReactorSmallMachineCircuitboard # Triad
   - GasTurbineSmallMachineCircuitboard
   - UraniumReactorFuelRod
   - PlasmaReactorFuelRod
@@ -23,7 +23,7 @@
   - SilverReactorHeatExchanger
   - PlasteelReactorHeatExchanger
   - PlasmaGlassReactorHeatExchanger
-  - PlasteelGasTurbineBlade # Triad: upstream unlocks the turbine parts from its own research tree; these follow its tiering
+  - PlasteelGasTurbineBlade # Triad: FH's tiering
   - BrassGasTurbineBlade
   - SilverGasTurbineStator
   technologyPrerequisites:
@@ -42,7 +42,7 @@
   cost: 12500
   recipeUnlocks:
   - NuclearCentrifugeMachineCircuitboard
-  - NuclearReactorMachineCircuitboard # Triad: see NuclearPowerGeneration
+  - NuclearReactorMachineCircuitboard # Triad
   - GasTurbineMachineCircuitboard
   - PlutoniumReactorFuelRod
   - BananiumReactorFuelRod
@@ -52,7 +52,7 @@
   - DiamondReactorGasChannel
   - GoldReactorHeatExchanger
   - DiamondReactorHeatExchanger
-  - GoldGasTurbineBlade # Triad: see NuclearPowerGeneration
+  - GoldGasTurbineBlade # Triad
   - DiamondGasTurbineBlade
   - GoldGasTurbineStator
   technologyPrerequisites:

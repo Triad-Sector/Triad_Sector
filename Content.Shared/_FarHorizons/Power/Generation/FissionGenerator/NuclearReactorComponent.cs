@@ -25,7 +25,7 @@ public sealed partial class NuclearReactorComponent : Component
     /// Width of the reactor grid
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
-    [GuidebookData] // Triad: the guidebook quotes the grid size per reactor
+    [GuidebookData] // Triad
     public int ReactorGridWidth = 7;
 
     /// <summary>
@@ -35,7 +35,7 @@ public sealed partial class NuclearReactorComponent : Component
     [GuidebookData] // Triad
     public int ReactorGridHeight = 7;
 
-    [GuidebookData] // Triad: the alarm thresholds are quoted too
+    [GuidebookData] // Triad
     public readonly int ReactorOverheatTemp = 1200;
     [GuidebookData] // Triad
     public readonly int ReactorFireTemp = 1500;
@@ -134,7 +134,7 @@ public sealed partial class NuclearReactorComponent : Component
     /// Radio channel to send alerts to
     /// </summary>
     [DataField]
-    public string EngineeringChannel = "Traffic"; // Triad: Frontier's shortband, range-limited, so only ships nearby hear a reactor in trouble. Upstream uses Engineering.
+    public string EngineeringChannel = "Traffic"; // Triad: shortband; upstream uses Engineering
 
     /// <summary>
     /// Last reported temperature during overheat events

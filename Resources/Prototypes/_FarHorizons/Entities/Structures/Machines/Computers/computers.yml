@@ -67,7 +67,7 @@
   - type: UserInterface
     interfaces:
       enum.GasTurbineUiKey.Key:
-        type: GasTurbineBoundUserInterface # Triad: the class followed the Turbine to GasTurbine rename; the old name resolves to nothing
+        type: GasTurbineBoundUserInterface # Triad: renamed with the turbine
   #- type: AccessReader # Keeps some random tider from blowing up the turbine
   #  access: [["Engineering"]]
   - type: Lock

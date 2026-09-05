@@ -20,7 +20,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     private readonly LockSystem _lock;
 
     private readonly Dictionary<Vector2i, StyleBoxFlat> _reactorGrid = [];
-    private readonly Dictionary<Vector2i, StyleBoxFlat> _reactorInner = []; // Triad: the black inner ring of the selection outline
+    private readonly Dictionary<Vector2i, StyleBoxFlat> _reactorInner = []; // Triad: selection outline
     private readonly Dictionary<Vector2i, TextureRect> _reactorRect = [];
     private readonly Dictionary<Vector2i, Button> _reactorButton = [];
 
@@ -181,9 +181,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
             for (var y = 0; y < _gridHeight; y++)
             {
                 var styleBox = new StyleBoxFlat();
-                // Triad: the selection outline is a 2 px ring on this box and a 1 px black ring on the button inside
-                // it. A StyleBoxFlat's default content margin is its border thickness, so both get a fixed margin and
-                // the cell keeps its size whether or not the selection is on it.
+                // Triad: fixed margins so the selection outline does not resize the cell
                 styleBox.SetContentMarginOverride(StyleBox.Margin.All, 3f);
                 var inner = new StyleBoxFlat(Color.Transparent) { BorderColor = Color.Black };
                 inner.SetContentMarginOverride(StyleBox.Margin.All, 1f);
@@ -195,7 +193,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
                 var button = new Button
                 {
                     Margin = new(0),
-                    StyleBoxOverride = inner, // Triad: was a bare transparent StyleBoxFlat
+                    StyleBoxOverride = inner, // Triad
                     ToolTip = "",
                     TooltipDelay = 0.5f
                 };
@@ -254,9 +252,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
 
                 var icon = exists ? _data[vect].IconName : "base";
                 _reactorRect[vect].TexturePath = "/Textures/_FarHorizons/Interface/FissionGenerator/reactor_part_inserted/" +  icon + ".png";
-                // Triad: the selected slot used to be a slightly greyer silhouette, near invisible on a lit grid. It now
-                // wears a pulsing white-to-gold ring with a black ring inside it, which reads on any grid colour; the
-                // silhouette stays black.
+                // Triad: selection outline; upstream pulsed the silhouette grey:
                 var selected = y == _targetX && x == _targetY;
                 box.BorderThickness = selected ? new Thickness(2) : default;
                 box.BorderColor = Color.InterpolateBetween(Color.White, Color.FromHex("#ffd23f"), ((float)Math.Sin(_targetPulse) + 1f) / 2f);

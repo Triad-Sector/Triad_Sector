@@ -23,7 +23,7 @@
 
 - type: entity
   id: BaseReactorFuelRod
-  parent: BaseReactorPart # Triad: upstream also parents BaseEngineeringContraband, which Frontier removed in favor of the NF contraband classes
+  parent: BaseReactorPart # Triad: no BaseEngineeringContraband here
   abstract: true
   name: Fuel Rod
   description: A fuel rod for a nuclear reactor.
@@ -35,7 +35,7 @@
     neutronCrossSection: 1.0
     thermalCrossSection: 10
     thermalMass: 420000 # specific heat capacity of steel (420 J/KgK) * mass of component (1000Kg)
-  - type: Food # Blame Abby for making them edible. Triad: upstream's Edible component postdates our ingestion pipeline; Food carries the same three fields.
+  - type: Food # Blame Abby for making them edible. Triad: Food instead of upstream's Edible
     transferAmount: null
     delay: 30
     forceFeedDelay: 60
@@ -200,8 +200,7 @@
   components:
   - type: ReactorPart
     material: Plutonium
-  # Triad: no ghost role on a fuel rod. A mind riding a rod inside a reactor is a mind the ship
-  # save has to scrub, and it stalls the save until it is (user, 2026-09-04).
+  # Triad: no ghost role; a mind on a rod stalls the ship save.
   #- type: GhostRole
   #  makeSentient: true
   #  allowSpeech: true

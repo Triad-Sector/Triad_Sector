@@ -21,5 +21,4 @@
   id: NuclearMaterials
   name: guide-entry-nuclear-materials
   text: "/ServerInfo/_FarHorizons/Guidebook/Engineering/NuclearMaterials.xml"
-# Triad: upstream also declares HolographicGenerator here. Left out; it documents a generator we
-# do not carry, and a guide entry pointing at absent prototypes is a live hole in the book.
+# Triad: HolographicGenerator not ported.

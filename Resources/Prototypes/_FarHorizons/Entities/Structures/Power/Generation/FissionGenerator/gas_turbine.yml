@@ -180,7 +180,7 @@
   parent: [BaseGasTurbine, GasTurbineSalvage]
   suffix: "Salvage"
   components:
-  - type: Construction # Triad: what GasTurbineMachineCircuitboard builds; one-way, the graph has no deconstruct edge
+  - type: Construction # Triad: one-way build
     graph: TriadMachine3x5
     node: machine
 
@@ -189,7 +189,7 @@
   parent: [BaseGasTurbineSmall, GasTurbineSalvage]
   suffix: "Salvage"
   components:
-  - type: Construction # Triad: what GasTurbineSmallMachineCircuitboard builds
+  - type: Construction # Triad: one-way build
     graph: TriadMachine3x2
     node: machine
 #endregion

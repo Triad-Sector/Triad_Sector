@@ -107,11 +107,7 @@ public sealed partial class ReactorPartSystem
         }
     }
 
-    // Triad: reworked from upstream. Two reasons it could not come across verbatim:
-    // our ingestion pipeline raises AfterFullyEatenEvent (eater in User) rather than IngestedEvent,
-    // and DamageableSystem.GetPositiveDamage does not exist on our engine generation. Upstream also
-    // only mutates the dictionary that call returns, which is a detached copy, so eating a fuel rod
-    // irradiates nobody there. Apply the dose through TryChangeDamage so it actually lands.
+    // Triad: reworked; our ingestion raises AfterFullyEatenEvent and GetPositiveDamage does not exist here, so the dose goes through TryChangeDamage.
     private void OnIngest(Entity<ReactorPartComponent> ent, ref AfterFullyEatenEvent args)
     {
         if (ent.Comp.Properties is not { } properties)

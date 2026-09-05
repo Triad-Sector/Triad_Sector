@@ -5,7 +5,7 @@
   - NuclearCentrifugeMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
-  - NuclearReactorSmallMachineCircuitboard # Triad: upstream maps its reactors in; ours are built
+  - NuclearReactorSmallMachineCircuitboard # Triad
   - NuclearReactorMachineCircuitboard
   - GasTurbineSmallMachineCircuitboard
   - GasTurbineMachineCircuitboard

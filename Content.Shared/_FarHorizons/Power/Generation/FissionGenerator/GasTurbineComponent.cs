@@ -50,7 +50,7 @@ public sealed partial class GasTurbineComponent : Component
     /// Most efficient power generation at this value, overspeed at 1.2*this
     /// </summary>
     [DataField]
-    [GuidebookData] // Triad: quoted on the turbine page
+    [GuidebookData] // Triad
     public float BestRPM = 600;
 
     /// <summary>

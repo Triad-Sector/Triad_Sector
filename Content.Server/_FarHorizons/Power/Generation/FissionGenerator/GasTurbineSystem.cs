@@ -16,7 +16,7 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Audio;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Damage; // Triad: upstream splits Damage into .Components/.Systems; ours still declares the types here
+using Content.Shared.Damage; // Triad: our namespace
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;

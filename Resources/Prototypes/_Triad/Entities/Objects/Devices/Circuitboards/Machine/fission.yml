@@ -1,8 +1,5 @@
-# Boards for the Far Horizons reactors and turbines. Upstream has none: its stations map them in
-# and its cargo sells flatpacks. These build the Salvage variants, which carry no access lock, on
-# the centered Triad machine frames. None of them can go through a flatpacker: unpacking only
-# checks the one tile under the pack, so a packed reactor would land through whatever stood
-# beside it, which the frames exist to prevent.
+# Boards for the Far Horizons reactors and turbines. They build the Salvage variants on the centered
+# Triad frames. Not flatpackable: unpacking checks one tile only.
 - type: entity
   id: NuclearReactorSmallMachineCircuitboard
   parent: BaseMachineCircuitboard

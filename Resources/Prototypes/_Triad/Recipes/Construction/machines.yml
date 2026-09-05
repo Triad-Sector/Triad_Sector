@@ -1,8 +1,5 @@
-# The construction menu draws `icon` at native pixel size, so it is a third-scale icon of the
-# frame (frame_icons.rsi, one 54 px canvas so the footprints stay proportional). The ghost draws
-# `layers`, so that is the frame's own box_0 state, centered like the frame; Mono's icon RSIs draw
-# the box a tile off for its corner-origin frames. ghostOffset matches the 3x2's half-tile sprite
-# offset.
+# icon is the menu icon (third-scale, frame_icons.rsi); layers is the construction ghost, the
+# frame's own box_0. ghostOffset matches the 3x2's sprite offset.
 - type: construction
   id: TriadMachineFrame5x5
   graph: TriadMachine5x5

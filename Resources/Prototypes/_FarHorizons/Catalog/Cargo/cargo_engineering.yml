@@ -1,7 +1,4 @@
-# Triad: upstream sells the reactor and turbine as flatpacks and the basic parts as crates here.
-# Ours are researched and built on machine frames, and the parts come off a researched Nuclear
-# Fabricator, so every purchase stays off (user, 2026-09-04). The flatpack entities are not carried;
-# the crate entities are, unlisted.
+# Triad: reactor and turbine come from research, not cargo. The crate entities stay.
 #- type: cargoProduct
 #  id: NuclearReactorFlatpackPurchase
 #  icon:

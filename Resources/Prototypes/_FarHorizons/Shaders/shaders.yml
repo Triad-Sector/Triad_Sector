@@ -1,5 +1,4 @@
-# Triad: only the reactor's heat distortion shader is ported here. Upstream declares several more
-# in this file for content we do not carry.
+# Triad: only the heat distortion shader is ported.
 - type: shader
   id: HeatDistortionFH # stuck the "FH" on the end in case upstream decides to make a HeatDistortion shader
   kind: source
