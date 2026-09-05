@@ -203,11 +203,12 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
             AddComp(ghost, sprite);
             var ent = (ghost, sprite);
 
-            // evil hacks to not trip debug asserts
-            var old = specSprite.Owner;
-            specSprite.Owner = ghost;
-            _sprite.CopySprite((ghost, specSprite), ent);
-            specSprite.Owner = old;
+            // The source is the prototype's own component, so it is not owned by the ghost and pairing
+            // the two trips Entity<T>'s owner assert. Carry the component's real owner, exactly as the
+            // engine's own CopyFrom shim does; CopySprite never reads it once Comp is non-null.
+#pragma warning disable CS0618
+            _sprite.CopySprite((specSprite.Owner, specSprite), ent);
+#pragma warning restore CS0618
 
             if (proto.TryComp<IconSmoothComponent>(out var specSmooth, Factory))
             {
