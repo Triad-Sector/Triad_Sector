@@ -288,6 +288,12 @@
     node: machine
   - type: Machine # Triad
     board: NuclearReactorMachineCircuitboard
+  - type: ContainerContainer # Triad: a child block replaces the base's, so its containers repeat here
+    containers:
+      part_slot: !type:ContainerSlot {}
+      part_storage: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
 
 - type: entity
   id: NuclearReactorRandomSalvage
@@ -316,6 +322,12 @@
     node: machine
   - type: Machine # Triad
     board: NuclearReactorSmallMachineCircuitboard
+  - type: ContainerContainer # Triad: as above
+    containers:
+      part_slot: !type:ContainerSlot {}
+      part_storage: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
 #endregion
 
 #region Melted Reactors
