@@ -517,16 +517,19 @@ public sealed partial class NuclearReactorSystem : EntitySystem
 
     private void CatastrophicOverload(EntityUid uid, NuclearReactorComponent comp)
     {
-        var stationUid = _station.GetOwningStation(uid);
-        // Triad: no alert level change
+        // Triad: shortband and a siren at the reactor instead of an alert level, a station announcement and a global sound
+        // var stationUid = _station.GetOwningStation(uid);
         // if (stationUid != null)
         //     _alertLevel.SetLevel(stationUid.Value, comp.MeltdownAlertLevel, true, true, true);
-
-        var announcement = Loc.GetString("reactor-meltdown-announcement");
-        var sender = Loc.GetString("reactor-meltdown-announcement-sender");
-        _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Orange);
-
-        _soundSystem.PlayGlobalOnStation(uid, _audio.ResolveSound(comp.MeltdownSound));
+        //
+        // var announcement = Loc.GetString("reactor-meltdown-announcement");
+        // var sender = Loc.GetString("reactor-meltdown-announcement-sender");
+        // _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Orange);
+        //
+        // _soundSystem.PlayGlobalOnStation(uid, _audio.ResolveSound(comp.MeltdownSound));
+        var engi = _protoMan.Index<RadioChannelPrototype>(comp.EngineeringChannel);
+        _radioSystem.SendRadioMessage(uid, Loc.GetString("reactor-meltdown-message", ("owner", uid)), engi, uid);
+        _audio.PlayPvs(comp.MeltdownSound, uid, AudioParams.Default.WithMaxDistance(30f));
 
         comp.Melted = true;
         var MeltdownBadness = 0f;
