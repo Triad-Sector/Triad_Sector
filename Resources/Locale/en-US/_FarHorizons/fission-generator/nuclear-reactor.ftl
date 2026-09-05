@@ -17,6 +17,8 @@ reactor-fire-stop-message = {CAPITALIZE(THE($owner))} has cooled below critical 
 reactor-temperature-dangerous-message = {CAPITALIZE(THE($owner))} is at dangerous temperature: {$temperature}K.
 reactor-temperature-critical-message = {CAPITALIZE(THE($owner))} is at critical temperature: {$temperature}K.
 reactor-temperature-cooling-message = {CAPITALIZE(THE($owner))} is cooling: {$temperature}K.
+# Triad
+reactor-melting-message = EMERGENCY: {CAPITALIZE(THE($owner))} is at {$temperature}K and is beginning to melt down. Clear the reactor compartment and the hull around it.
 
 reactor-melting-announcement = A nuclear reactor aboard the station is beginning to meltdown. Evacuation of the surrounding area is advised.
 reactor-melting-announcement-sender = Nuclear Emergency

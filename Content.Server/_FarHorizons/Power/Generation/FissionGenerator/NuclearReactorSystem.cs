@@ -17,7 +17,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Damage; // Triad: upstream splits Damage into .Components/.Systems; ours still declares the types here
+using Content.Shared.Damage; // Triad: our namespace
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
@@ -569,8 +569,7 @@ public sealed partial class NuclearReactorSystem : EntitySystem
             _throwingSystem.TryThrow(Spawn("NuclearDebrisChunk", _transformSystem.GetMapCoordinates(uid)), _random.NextAngle().ToVec().Normalized(), _random.NextFloat(8, 16), uid);
 
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/metal_break5.ogg"), uid);
-        // Triad: gridOnly is the containment failsafe. The blast stays inside the hull it starts on: docked
-        // ships and anything in space beside it take nothing, and the ship itself takes all of it.
+        // Triad: gridOnly keeps the blast on this grid
         _explosionSystem.QueueExplosion(uid, "HardBombShipGun", Math.Max(1000, MeltdownBadness * 35), 1, 500, 1, canCreateVacuum: true, gridOnly: true); // Mono - buff size
 
         var lightcomp = _lightSystem.EnsureLight(uid);
@@ -755,11 +754,14 @@ public sealed partial class NuclearReactorSystem : EntitySystem
 
         if (comp.Temperature >= (comp.ReactorFireTemp + comp.ReactorMeltdownTemp) >> 1 && !comp.HasSentWarning)
         {
-            var stationUid = _station.GetStationInMap(Transform(uid).MapID);
-            var announcement = Loc.GetString("reactor-melting-announcement");
-            var sender = Loc.GetString("reactor-melting-announcement-sender");
-            _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Orange);
-            _soundSystem.PlayGlobalOnStation(uid, _audio.ResolveSound(new SoundPathSpecifier("/Audio/Misc/delta_alt.ogg")));
+            // Triad: shortband instead of a station announcement. Upstream:
+            // var stationUid = _station.GetStationInMap(Transform(uid).MapID);
+            // var announcement = Loc.GetString("reactor-melting-announcement");
+            // var sender = Loc.GetString("reactor-melting-announcement-sender");
+            // _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Orange);
+            // _soundSystem.PlayGlobalOnStation(uid, _audio.ResolveSound(new SoundPathSpecifier("/Audio/Misc/delta_alt.ogg")));
+            _adminLog.Add(LogType.Damaged, $"{ToPrettyString(uid):reactor} is at {comp.Temperature}K and meltdown is imminent");
+            _radioSystem.SendRadioMessage(uid, Loc.GetString("reactor-melting-message", ("owner", uid), ("temperature", Math.Round(comp.Temperature))), engi, uid);
             comp.HasSentWarning = true;
         }
 

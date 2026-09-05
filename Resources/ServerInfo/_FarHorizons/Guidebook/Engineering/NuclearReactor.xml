@@ -1,4 +1,4 @@
-<!-- Triad: rewritten as an operator's manual in the dossier visual grammar; alarms, automation, meltdown and the containment failsafe were undocumented. -->
+<!-- Triad: rewritten -->
 <Document>
 	# Nuclear Reactor
 
@@ -99,7 +99,7 @@
 
 	[mono]  Fire       [color=#cc3333]■■■■■■■■[/color][color=#555555]□□[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorFireTemp"/] K   flames, red lights, second warning[/mono]
 
-	[mono]  Imminent   [color=#cc3333]■■■■■■■■■[/color][color=#555555]□[/color]  halfway  station-wide meltdown announcement[/mono]
+	[mono]  Imminent   [color=#cc3333]■■■■■■■■■[/color][color=#555555]□[/color]  halfway  final shortband warning: meltdown imminent[/mono]
 
 	[mono]  Meltdown   [color=#cc3333]■■■■■■■■■■[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K   siren, yellow alert, the blast[/mono]
 
