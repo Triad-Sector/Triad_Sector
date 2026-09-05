@@ -174,8 +174,6 @@
       stealGroup: SalvageExpeditionsComputerCircuitboard
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopSalvageExpedition # Frontier
-    - type: StaticPrice # Triad
-      vendPrice: 20000 # Triad
 
 - type: entity
   parent: BaseComputerCircuitboard
