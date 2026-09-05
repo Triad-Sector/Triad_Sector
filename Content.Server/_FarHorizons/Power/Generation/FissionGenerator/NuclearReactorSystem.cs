@@ -518,8 +518,9 @@ public sealed partial class NuclearReactorSystem : EntitySystem
     private void CatastrophicOverload(EntityUid uid, NuclearReactorComponent comp)
     {
         var stationUid = _station.GetOwningStation(uid);
-        if (stationUid != null)
-            _alertLevel.SetLevel(stationUid.Value, comp.MeltdownAlertLevel, true, true, true);
+        // Triad: no alert level change
+        // if (stationUid != null)
+        //     _alertLevel.SetLevel(stationUid.Value, comp.MeltdownAlertLevel, true, true, true);
 
         var announcement = Loc.GetString("reactor-meltdown-announcement");
         var sender = Loc.GetString("reactor-meltdown-announcement-sender");

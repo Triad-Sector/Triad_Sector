@@ -101,7 +101,7 @@
 
 	[mono]  Imminent   [color=#cc3333]■■■■■■■■■[/color][color=#555555]□[/color]  halfway  final shortband warning: meltdown imminent[/mono]
 
-	[mono]  Meltdown   [color=#cc3333]■■■■■■■■■■[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K   siren, yellow alert, the blast[/mono]
+	[mono]  Meltdown   [color=#cc3333]■■■■■■■■■■[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K   siren, the blast[/mono]
 
 	- Two more klaxons watch other limits: the [color=#a4885c][bold]thermal alarm[/bold][/color] when heat output passes the gauge's top, and the [color=#a4885c][bold]radiation alarm[/bold][/color] when leakage passes half the radiation gauge.
 	- The [color=lime]Acknowledge[/color] button silences a klaxon until its condition clears and comes back.
