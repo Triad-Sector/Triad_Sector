@@ -379,3 +379,7 @@ TurbineFlowArrow: GasTurbineFlowArrow
 TurbineSmallFlowArrow: GasTurbineSmallFlowArrow
 TurbineGasPipe: GasTurbineGasPipe
 TurbineBladeShrapnel: GasTurbineBladeShrapnel
+
+# 2026-09-05
+ComputerShipyardExpedition: ComputerShipyardMilitary
+ComputerTabletopShipyardExpedition: ComputerTabletopShipyardMilitary

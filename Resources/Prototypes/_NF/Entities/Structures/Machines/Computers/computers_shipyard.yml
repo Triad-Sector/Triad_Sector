@@ -170,29 +170,29 @@
     ignoreBaseSaleRate: true # Fixed 70% sale rate.
     canTransferDeed: false
 
-- type: entity
-  id: ComputerShipyardExpedition
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
-  name: expedition shipyard console
-  description: Used to buy ships outfitted for planetary expeditions
-  components:
-  - type: ActivatableUI
-    key: enum.ShipyardConsoleUiKey.Expedition
-  - type: UserInterface
-    interfaces:
-      enum.ShipyardConsoleUiKey.Expedition:
-       type: ShipyardConsoleBoundUserInterface
-  - type: Sprite
-    sprite: _NF/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_blackmarket
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shipyard_blackmarket
-    - map: ["computerLayerKeys"]
-      state: blackmarket_key
+#- type: entity | Triad - comment out for military shipyard
+#  id: ComputerShipyardExpedition
+#  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
+#  name: expedition shipyard console
+#  description: Used to buy ships outfitted for planetary expeditions
+#  components:
+#  - type: ActivatableUI
+#    key: enum.ShipyardConsoleUiKey.Expedition
+#  - type: UserInterface
+#    interfaces:
+#      enum.ShipyardConsoleUiKey.Expedition:
+#       type: ShipyardConsoleBoundUserInterface
+#  - type: Sprite
+#    sprite: _NF/Structures/Machines/computers.rsi
+#    layers:
+#    - map: ["computerLayerBody"]
+#      state: computer_blackmarket
+#    - map: ["computerLayerKeyboard"]
+#      state: generic_keyboard
+#    - map: ["computerLayerScreen"]
+#      state: shipyard_blackmarket
+#    - map: ["computerLayerKeys"]
+#      state: blackmarket_key
 
 - type: entity
   id: ComputerShipyardScrap

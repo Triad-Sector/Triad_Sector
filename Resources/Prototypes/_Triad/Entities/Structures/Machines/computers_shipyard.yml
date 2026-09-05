@@ -1,0 +1,52 @@
+- type: entity
+  id: ComputerShipyardTIC
+  parent: ComputerShipyardBase
+  name: coalition shipyard console
+  description: Used to buy ships from The Imperial Coalition naval reserves.
+  components:
+  - type: ActivatableUI
+    key: enum.ShipyardConsoleUiKey.Coalition
+  - type: UserInterface
+    interfaces:
+      enum.ShipyardConsoleUiKey.Coalition:
+        type: ShipyardConsoleBoundUserInterface
+  - type: Sprite
+    sprite: _NF/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_blackmarket
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: shipyard_blackmarket
+    - map: ["computerLayerKeys"]
+      state: blackmarket_key
+  - type: ShipyardConsole
+    # shipyardChannel: Coalition - TODO
+    ignoreBaseSaleRate: true # Fixed 70% sale rate.
+    canTransferDeed: false
+
+- type: entity
+  id: ComputerShipyardMilitary
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
+  name: military shipyard console
+  description: Used to buy military-grade combat ships.
+  components:
+  - type: ActivatableUI
+    key: enum.ShipyardConsoleUiKey.Military
+  - type: UserInterface
+    interfaces:
+      enum.ShipyardConsoleUiKey.Military:
+       type: ShipyardConsoleBoundUserInterface
+  - type: Sprite
+    sprite: _NF/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_blackmarket
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      sprite: _Triad/Structure/Machines/computers.rsi
+      state: shipyard_military
+    - map: ["computerLayerKeys"]
+      state: blackmarket_key

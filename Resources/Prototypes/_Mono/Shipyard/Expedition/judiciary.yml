@@ -11,7 +11,7 @@
   description: A refitted research vessel armed with expedition-rated combat equipment.
   price: 70001 # ~20,000$ markup
   category: Medium
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/judiciary.yml
   guidebookPage: ShipyardJudiciary
   class:
