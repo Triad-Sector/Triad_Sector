@@ -10,8 +10,8 @@ namespace Content.Server.Xenoarchaeology.Artifact.XAE;
 /// </summary>
 public sealed class XAEEmpInAreaSystem : BaseXAESystem<XAEEmpInAreaComponent>
 {
-    [Dependency] private readonly EmpSystem _emp = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Triad
+    [Dependency] private EmpSystem _emp = default!;
+    [Dependency] private SharedTransformSystem _transform = default!; // Triad
 
     /// <inheritdoc />
     protected override void OnActivated(Entity<XAEEmpInAreaComponent> ent, ref XenoArtifactNodeActivatedEvent args)
