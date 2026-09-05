@@ -75,6 +75,7 @@ Selling gas can be done through canisters, which can be crafted from plasteel, o
 - [color=lightgreen]Gas sale points[/color] can accept massive amounts of gas at a time, and require gas to be pumped in through a gaslock.
 - Gas purity does not affect the price of selling gases, but it does matter for processing them into [bold]more valuable gases[/bold].
 
+Each deposit contains trace amounts of almost every natural gas, but some deposits have higher concentrations of a specific gas.
 Below is a chart of which asteroids have most dense deposits of a specific gas, ranked from most dense to second-most dense.
 
 <Table Columns="7">
