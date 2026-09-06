@@ -9,7 +9,7 @@ store-category-secvouchers = Vouchers
 uplink-security-stun-bundle-name = Stuns Bundle
 uplink-security-stun-bundle-desc = Contains a disabler pistol, stun baton, and handcuffs for non-lethal incapacitation.
 uplink-security-emitter-name = EMP Emitter
-uplink-security-emitter-desc = A high-energy pulse emitter tuned to disrupt electronics and power systems. Harmless to living things. Projectiles pass through glass. Has an internal battery, but requires using a security charging dock.
+uplink-security-emitter-desc = A high-energy pulse emitter tuned to disrupt electronics and power systems. Harmless to living things. Projectiles pass through glass. Has an internal battery, but requires using a charging dock.
 uplink-security-enforcer-name = Enforcer
 uplink-security-enforcer-desc = A upgraded semi-automatic shotgun, boasting a 7-shell internal magazine. Uses 12 gauge shotgun shells.
 
