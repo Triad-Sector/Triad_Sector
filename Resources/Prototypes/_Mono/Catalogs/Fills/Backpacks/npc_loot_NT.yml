@@ -160,7 +160,7 @@
     - id: AmmoBox9x19mmPlasteelAP
       amount: 2
       prob: 0.2
-    #- id: AmmoBox9x19mmEmp Triad - This shit is unrealistic and unfair, commenting it out.
+    #- id: AmmoBox9x19mmEmp Triad - Needs a major rebalancing
       #prob: 0.1
     - id: AmmoBox9x19mmBigFMJ
       prob: 0.08
