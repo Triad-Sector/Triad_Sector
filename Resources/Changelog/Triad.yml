@@ -4694,3 +4694,25 @@ Entries:
   id: 2590
   time: '2026-09-06T13:44:59.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/565
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        LORE: Added faction relation charts to each major faction page, showing
+        you their relationship with every other faction in an organized way to
+        the guidebook.
+    - type: Add
+      message: >-
+        LORE: Added minor faction pages to the lore in the guidebook. Current
+        written minor factions are HZD, Holks and Zis Dynamics.
+    - type: Add
+      message: 'LORE: Added a rank structure table to the TDF page.'
+    - type: Add
+      message: 'LORE: Added the TFA logo to the Triad Frontier Association page'
+    - type: Tweak
+      message: >-
+        LORE: Venmar-7C is now the capital planet of the Triad Sector, in the
+        TFA page.
+  id: 2591
+  time: '2026-09-06T19:48:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/613
