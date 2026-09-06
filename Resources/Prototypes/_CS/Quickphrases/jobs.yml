@@ -27,10 +27,10 @@
   text: job-name-plant-manager
 
 # Civilian Jobs
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: ValetPhrase
-  text: job-name-valet
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: ValetPhrase
+#   text: job-name-valet
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
@@ -42,40 +42,40 @@
   id: ContractorPhrase
   text: job-name-contractor
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: ContractorInterviewPhrase
-  text: job-name-contractor-interview
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: ContractorInterviewPhrase
+#   text: job-name-contractor-interview
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
   id: PilotPhrase
   text: job-name-pilot
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: PilotInterviewPhrase
-  text: job-name-pilot-interview
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: PilotInterviewPhrase
+#   text: job-name-pilot-interview
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
   id: MercPhrase
   text: job-name-mercenary
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: MercInterviewPhrase
-  text: job-name-mercenary-interview
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: MercInterviewPhrase
+#   text: job-name-mercenary-interview
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: CuratorPhrase
-  text: job-name-curator
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: CuratorPhrase
+#   text: job-name-curator
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: MassageTherapistPhrase
-  text: job-name-massage-therapist
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: MassageTherapistPhrase
+#   text: job-name-massage-therapist
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
@@ -131,43 +131,43 @@
   text: job-name-plant-technician
 
 # Medical Jobs
-- type: quickPhrase
-  parent: BaseMedicalJobPhrase
-  id: MedicalNursePhrase
-  text: job-name-medical-nurse
+# - type: quickPhrase
+#   parent: BaseMedicalJobPhrase
+#   id: MedicalNursePhrase
+#   text: job-name-medical-nurse
 
 # Criminal Jobs
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: SmugglerPhrase
-  text: job-name-smuggler
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: SmugglerPhrase
+#   text: job-name-smuggler
 
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: NFPiratePhrase
-  text: job-name-nf-pirate
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: NFPiratePhrase
+#   text: job-name-nf-pirate
 
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: NFPirateCaptainPhrase
-  text: job-name-nf-pirate-captain
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: NFPirateCaptainPhrase
+#   text: job-name-nf-pirate-captain
 
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: NFPirateFirstMatePhrase
-  text: job-name-nf-pirate-first-mate
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: NFPirateFirstMatePhrase
+#   text: job-name-nf-pirate-first-mate
 
 - type: quickPhrase
   parent: BasePiratePhrase
   id: PrisonerPhrase
   text: job-name-prisoner
 
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: EscortPhrase
-  text: job-name-escort
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: EscortPhrase
+#   text: job-name-escort
 
-- type: quickPhrase
-  parent: BasePiratePhrase
-  id: RipperPhrase
-  text: job-name-ripper
+# - type: quickPhrase
+#   parent: BasePiratePhrase
+#   id: RipperPhrase
+#   text: job-name-ripper
