@@ -147,7 +147,7 @@ uplink-security-components-name = Super Components box
 uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
 
 uplink-security-lake-name = Non-lethal grenade launcher
-uplink-security-lake-desc = A China Lake pattern grenade launcher modified to only fire non-lethal grenades.
+uplink-security-lake-desc = A China Lake pattern grenade launcher modified to only fire non-lethal grenades and tracking darts. Ammunition sold separately.
 
 uplink-security-gun-mk58-name = MA Mk-58 Bundle
 uplink-security-gun-mk58-desc = Case containing a standard-issue pistol and reserve ammunition.
