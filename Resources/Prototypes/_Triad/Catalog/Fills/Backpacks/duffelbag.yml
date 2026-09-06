@@ -17,6 +17,69 @@
   components:
   - type: StorageFill
     contents:
-      - id: WeaponLauncherNfsdLake
-      - id: 40mmGrenadeEMP
-        amount: 12
+    - id: WeaponLauncherNfsdLake
+    - id: 40mmGrenadeEMP
+      amount: 12
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfToolBundle
+  name: TDF emergency repair bundle
+  description: A duffel bag pre-stocked with all the tools a enforcer could need to keep their ship running.
+  components:
+  - type: StorageFill
+    contents:
+    - id: CrowbarRed
+      amount: 1
+    - id: Wrench
+      amount: 1
+    - id: Screwdriver
+      amount: 1
+    - id: Wirecutter
+      amount: 1
+    - id: ShipRepairDevice
+      amount: 1
+    - id: NaniteApplicator
+      amount: 1
+    - id: JerryCanNaniteFuel
+      amount: 1
+    - id: ShipRepairDeviceAmmo
+      amount: 1
+    - id: AirGrenade
+      amount: 1
+    - id: CableHVStack
+      amount: 1
+    - id: CableMVStack
+      amount: 1
+    - id: CableApcStack
+      amount: 1
+    - id: PartRodMetal
+      amount: 1
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfHardsuitTdf
+  name: TDF TA-21 Hardsuit Bundle
+  description: Duffel bag containing a lightweight TA-21 hardsuit and a full sized jetpack.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitTdf
+    - id: JetpackNfsdFilled
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled
+    - id: DoubleEmergencyWaterVaporTankFilled
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfHardsuitTdfMedic
+  name: TDF TA-21 Medic Hardsuit Bundle
+  description: Duffel bag containing a lightweight TA-21M hardsuit and a full-sized jetpack.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitTdfMedic
+    - id: JetpackNfsdFilled
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled
+    - id: DoubleEmergencyWaterVaporTankFilled
