@@ -1183,7 +1183,7 @@
   productEntity: WeaponCaseTDFLongWt550
   icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 15
+    TriadCommerceCredit: 20
   categories:
   - UplinkSecurityWeapons
   conditions:
