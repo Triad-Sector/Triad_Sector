@@ -14,13 +14,16 @@ phrase-location-nautical-cargo-bay = cargo bay
 phrase-location-nautical-docking-to = docking to
 
 # Station names
-phrase-location-nash = Nash
-phrase-location-nfsd-outpost = NFSD Outpost
+phrase-location-venmar = Venmar Station
+phrase-location-tdf-outpost = Auric Outpost
 phrase-location-frontier-outpost = Frontier outpost
 phrase-location-power-plant = Power Plant
 phrase-location-barrier = Barrier Station
-phrase-location-hospital = Saint michael's hospital
+phrase-location-hospital = Medical Dispatch
 phrase-location-casino = Crazy Caseys' Casino
 phrase-location-grifty = Grifty's Gas & Grub
 phrase-location-lodge = Expeditionary Lodge
-phrase-location-cove = the Den
+phrase-location-cove = Derlict Digsite
+phrase-location-omnichurch = omnichurch
+phrase-location-trademall = Trade Mall
+phrase-location-cargodepot = Cargo Depot

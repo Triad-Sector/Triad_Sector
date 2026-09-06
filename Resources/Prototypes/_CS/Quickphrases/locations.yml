@@ -77,13 +77,13 @@
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
-  id: LocationNashPhrase
-  text: phrase-location-nash
+  id: LocationVenmarhPhrase
+  text: phrase-location-venmar
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
-  id: LocationNFSDOutpostPhrase
-  text: phrase-location-nfsd-outpost
+  id: LocationTDFOutpost
+  text: phrase-location-tdf-outpost
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
@@ -124,3 +124,18 @@
   parent: BaseStationLocationPhrase
   id: LocationCovePhrase
   text: phrase-location-cove
+
+- type: quickPhrase
+  parent: BaseStationLocationPhrase
+  id: LocationOmnichurchPhrase
+  text: phrase-location-omnichurch
+
+- type: quickPhrase
+  parent: BaseLocationPhrase
+  id: LocationTradeMall
+  text: phrase-location-trademall
+
+- type: quickPhrase
+  parent: BaseLocationPhrase
+  id: LocationCargoDepot
+  text: phrase-location-cargodepot
