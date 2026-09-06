@@ -53,6 +53,6 @@
   id: Bloodstone
   name: Bloodstone Strategic Solutions
   description: bss-description
-  image: /Textures/_Triad/PlayerFactions/TrinityCrest.png
+  image: /Textures/_Triad/PlayerFactions/Bloodstone.png
   color: "#5d0505"
   whitelisted: true
