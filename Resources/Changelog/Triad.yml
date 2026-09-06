@@ -4676,3 +4676,10 @@ Entries:
   id: 2588
   time: '2026-09-05T21:03:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/612
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Recolored TDF airlock sprites
+  id: 2589
+  time: '2026-09-06T13:41:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/614
