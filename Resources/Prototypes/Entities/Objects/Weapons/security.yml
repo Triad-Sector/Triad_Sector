@@ -226,7 +226,7 @@
   name: flash
   parent: BaseItem
   id: Flash
-  description: An ultrabright flashbulb with a trigger, which causes the victim to be dazed and lose their eyesight for a moment. Useless when burnt out. Considered a pre-fracture novelty and not a serious tool, due to the chances of blinding yourself when using it. # Triad - Gut Flash Protection.
+  description: An ultrabright flashbulb with a trigger, which causes the victim to be dazed and lose their eyesight for a moment. Useless when burnt out. Considered a pre-fracture novelty and not a serious tool, due to the chances of blinding yourself when using it. # Triad - Remove Flash Protection.
   components:
   # Goobstation edit start
   - type: EmitSoundOnPickup
