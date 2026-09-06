@@ -14,6 +14,40 @@
   Despite this, they have an interesting look on advanced technology such as lasers and plasma weapons, believing that over-reliance on technology like this will make them weak as a nation and military. Plasma and laser weapons are only usually seen on higher-ranking Coalition military members or those who have proved themselves to the Coalition.
   They have a number of companies under their name, serving the Coalition through material acquisition, weapons manufacturing, or even research of new technology, though their techniques are out-of-date and usually technologically outclassed by the [textlink="SD" link="SolarianDirective"] or [textlink="TDF" link="TriadDefenseForce"], but that does not make them any less of a force to be reckoned with.
 
-  They currently are in a cold-war with the nearby [textlink="Solarian Directive" link="SolarianDirective"], the Coalition waiting for the perfect moment to strike the [textlink="SD" link="SolarianDirective"], then the [textlink="TDF" link="TriadDefenseForce"], to finally bring the Triad sector back into the Coalition's hands.
+  ## Faction relations:
+  They currently are in a cold-war with the local [textlink="Solarian Directive" link="SolarianDirective"], the Coalition waiting for the perfect moment to strike the [textlink="SD" link="SolarianDirective"], then the [textlink="TDF" link="TriadDefenseForce"], to finally bring the Triad sector back into the Coalition's hands.
+
+  <Table Columns="2" MinForcedColumnWidth="25">
+    <ColorBox Color="#FF7D45">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Triad Frontier Association
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#e62121">
+      <Box>
+        Hostile Government
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFD580">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Triad Defense Force[/color]
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#e62121">
+      <Box>
+        Bitter Rivals
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8282fbaa">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Solarian Directive
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#ee6515">
+      <Box>
+        Cold-War Hostilities
+      </Box>
+    </ColorBox>
+  </Table>
 
 </Document>

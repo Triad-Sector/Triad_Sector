@@ -1,0 +1,149 @@
+<Document>
+
+  # Triad Defense Force (TDF)
+
+  <Box>
+    [color=#999999][italic]"We're here to protect the innocent lives of this sector, no matter the cost."[/italic][/color]
+    [color=#999999][italic]- Senior Enforcer Karis, TDF Patrol Team Leader[/italic][/color]
+  </Box>
+
+  Once known as the Civilian Defense Force (CDF), the TDF is a powerful militia force within the Triad sector, serving as its primary law enforcement and defense organization.
+  Born from the remains of the CDF after the 50-year war, the TDF has a fanatical view on military actors, doing their best to keep major military powers out of the sector, and to keep sector commerce legal.
+
+  High-ranking members of the TDF eventually formed the [textlink="Triad Frontier Association" link="TriadFrontierAssociation"] in an attempt to bolster the economy of the sector, the TFA providing facilities for freelancers and colonists to easily do business and thrive within the rebuilding sector.
+  As a result, the TDF has a very close relationship with the TFA, the TDF providing security for the TFA and its stations while the TFA provides economic growth, further colonization, and humanitarian aid.
+
+  ## Rank Structure:
+
+  <Table Columns="2">
+    <ColorBox Color="#18292e">
+      <Box>
+        ### Rank
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#2b2519">
+      <Box>
+        ### Paygrade
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Admiral
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-8
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Captain
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-7
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Vice Captain
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-6
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Chief Enforcer
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-5
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Lieutenant Enforcer
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-4
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Senior Enforcer
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-3
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Enforcer
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-2
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        Junior Enforcer
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left">
+        TDF-1
+      </Box>
+    </ColorBox>
+  </Table>
+
+  <Box Margin="10"/>
+
+  ## Faction relations:
+  The TDF is currently weary of the return of the Solarian Directive and The Imperial Coalition due to reports of drones and scout vessels being seen in the outer ring, and thus their security and vigilance has been abnormally hightened in response.
+
+  <Table Columns="2" MinForcedColumnWidth="25">
+    <ColorBox Color="#FF7D45">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Triad Frontier Association
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3daf3d">
+      <Box>
+        Friendly Governmental Partners
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8282fbaa">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Solarian Directive
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#ee6515">
+      <Box>
+        Uneasy Hostilities
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7e3834">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        The Imperial Coalition
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#e62121">
+      <Box>
+        Bitter Rivals
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

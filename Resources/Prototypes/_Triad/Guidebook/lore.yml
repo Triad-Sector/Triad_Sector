@@ -6,7 +6,8 @@
   priority: -2
   children:
   - Timeline
-  - TriadFactions
+  - TriadMajorFactions
+  - TriadMinorFactions
 
 - type: guideEntry
   id: Timeline
@@ -56,11 +57,11 @@
   name: Present Day
   text: "/ServerInfo/Guidebook/Lore/Timeline/PresentDay.xml"
 
-# Factions
+# Major Factions
 - type: guideEntry
-  id: TriadFactions
+  id: TriadMajorFactions
   name: Major Factions
-  text: "/ServerInfo/Guidebook/Lore/Factions.xml"
+  text: "/ServerInfo/Guidebook/Lore/MajorFactions.xml"
   children:
   - TriadDefenseForce
   - TriadFrontierAssociation
@@ -70,19 +71,43 @@
 - type: guideEntry
   id: TriadDefenseForce
   name: Triad Defense Force
-  text: "/ServerInfo/Guidebook/Lore/Factions/TriadDefenseForce.xml"
+  text: "/ServerInfo/Guidebook/Lore/MajorFactions/TriadDefenseForce.xml"
 
 - type: guideEntry
   id: TriadFrontierAssociation
   name: Triad Frontier Association
-  text: "/ServerInfo/Guidebook/Lore/Factions/TriadFrontierAssociation.xml"
+  text: "/ServerInfo/Guidebook/Lore/MajorFactions/TriadFrontierAssociation.xml"
 
 - type: guideEntry
   id: SolarianDirective
   name: Solarian Directives
-  text: "/ServerInfo/Guidebook/Lore/Factions/SolarianDirective.xml"
+  text: "/ServerInfo/Guidebook/Lore/MajorFactions/SolarianDirective.xml"
 
 - type: guideEntry
   id: ImperialCoalition
   name: The Imperial Coalition
-  text: "/ServerInfo/Guidebook/Lore/Factions/ImperialCoalition.xml"
+  text: "/ServerInfo/Guidebook/Lore/MajorFactions/ImperialCoalition.xml"
+
+# Minor Factions
+- type: guideEntry
+  id: TriadMinorFactions
+  name: Minor Factions
+  text: "/ServerInfo/Guidebook/Lore/MinorFactions.xml"
+  children:
+  - HZD
+
+- type: guideEntry
+  id: HZD
+  name: Holk and Zis Dynamics
+  text: "/ServerInfo/Guidebook/Lore/MinorFactions/HZD.xml"
+
+# Logos
+- type: entity
+  parent: PosterBase
+  id: TFALogo
+  name: TFA logo
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Guidebook/large_icons/128x128.rsi
+    state: tfa
