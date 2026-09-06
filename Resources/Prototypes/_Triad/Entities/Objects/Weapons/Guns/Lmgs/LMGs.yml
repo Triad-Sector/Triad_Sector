@@ -35,8 +35,6 @@
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_open.ogg
   - type: Item
     sprite: _Triad/Objects/Weapons/Guns/LMGs/tdf_riot/riot-inhands.rsi
-    shape:
-    - 0,0,7,4
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/LMGs/tdf_riot/riot-inhands.rsi
     unequipDelay: 0.5
