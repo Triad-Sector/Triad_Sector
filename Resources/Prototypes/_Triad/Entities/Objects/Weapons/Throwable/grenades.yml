@@ -1,0 +1,6 @@
+# Parent this to make a grenade explosion proof, preventing accidental detonations.
+- type: entity
+  id: BaseSafeGrenade
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0

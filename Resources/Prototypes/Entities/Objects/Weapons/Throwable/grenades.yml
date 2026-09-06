@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [BaseItem, RecyclableItemSteelSmall] # Frontier: added RecyclableItemSteelSmall
+  parent: [BaseItem, RecyclableItemSteelSmall, BaseSafeGrenade] # Frontier: added RecyclableItemSteelSmall, Triad: Added BaseSafeGrenade to avoid chain reaction.
   id: GrenadeBase
   components:
   - type: WeaponCaseInsertable # Frontier
@@ -23,17 +23,15 @@
       - Timer
   - type: Damageable
     damageContainer: Inorganic
-  # Triad - Begin (Remove Sympathetic Detonation)
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 10
-  #    behaviors:
-  #    - !type:TriggerBehavior
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  # Triad - End
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   - type: Appearance
   - type: AnimationPlayer
   - type: GenericVisualizer
@@ -128,22 +126,20 @@
     sprite: Objects/Weapons/Grenades/syndgrenade.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.1
-  # Triad - Begin (Remove Sympathetic Detonation)
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 10
-  #    behaviors:
-  #    - !type:TimerStartBehavior
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 45
-  #    behaviors:
-  #    - !type:TriggerBehavior
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  # Triad - End
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:TimerStartBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 45
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   - type: OnUseTimerTrigger
     delay: 5
   - type: ExplodeOnTrigger
