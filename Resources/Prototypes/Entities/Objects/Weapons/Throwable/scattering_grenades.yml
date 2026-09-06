@@ -8,15 +8,17 @@
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
-  - type: Damageable
-    damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:TriggerBehavior
+  # Triad - Begin (Remove Sympathetic Detonation)
+  #- type: Damageable
+  #  damageContainer: Inorganic
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 10
+  #    behaviors:
+  #    - !type:TriggerBehavior
+  # Triad - End
   - type: ScatteringGrenade
 
 - type: entity

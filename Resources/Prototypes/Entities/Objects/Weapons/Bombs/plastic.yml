@@ -16,17 +16,18 @@
     blacklist: # can't stick it to other items
       components:
       - Item
-  - type: Damageable
-    damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 50
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:ExplodeBehavior
+  # Triad - Begin (Remove Sympathetic Detonation)
+  #- type: Damageable
+  #  damageContainer: Inorganic
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 50
+  #    behaviors:
+  #    - !type:DoActsBehavior
+  #      acts: ["Destruction"]
+  #    - !type:ExplodeBehavior
   - type: StickyVisualizer
   - type: Appearance
   - type: GenericVisualizer

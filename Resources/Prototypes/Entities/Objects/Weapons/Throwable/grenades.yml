@@ -23,15 +23,17 @@
       - Timer
   - type: Damageable
     damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:TriggerBehavior
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+  # Triad - Begin (Remove Sympathetic Detonation)
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 10
+  #    behaviors:
+  #    - !type:TriggerBehavior
+  #    - !type:DoActsBehavior
+  #      acts: ["Destruction"]
+  # Triad - End
   - type: Appearance
   - type: AnimationPlayer
   - type: GenericVisualizer
@@ -126,20 +128,22 @@
     sprite: Objects/Weapons/Grenades/syndgrenade.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.1
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:TimerStartBehavior
-    - trigger:
-        !type:DamageTrigger
-        damage: 45
-      behaviors:
-      - !type:TriggerBehavior
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+  # Triad - Begin (Remove Sympathetic Detonation)
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 10
+  #    behaviors:
+  #    - !type:TimerStartBehavior
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 45
+  #    behaviors:
+  #    - !type:TriggerBehavior
+  #    - !type:DoActsBehavior
+  #      acts: ["Destruction"]
+  # Triad - End
   - type: OnUseTimerTrigger
     delay: 5
   - type: ExplodeOnTrigger
@@ -334,15 +338,17 @@
     node: emptyCase
   - type: Damageable
     damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 50
-      behaviors:
-      - !type:TriggerBehavior
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+  # Triad - Begin (Remove Sympathetic Detonation)
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 50
+  #    behaviors:
+  #    - !type:TriggerBehavior
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
+  # Triad - End
   - type: Appearance
   - type: GenericVisualizer
     visuals:
