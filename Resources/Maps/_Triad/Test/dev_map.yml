@@ -4304,7 +4304,7 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: ComputerShipyardExpedition
+- proto: ComputerShipyardMilitary
   entities:
   - uid: 669
     components:

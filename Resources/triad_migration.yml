@@ -223,8 +223,8 @@ HolopadCommissarBaikal: null
 HolopadJupiter: null
 ComputerShipyardUSSP: ComputerShipyardTIC
 VendingMachineUSSP: null
-TurbineUSSP: Turbine
-TurbineUSSPSmall: TurbineSmall
+TurbineUSSP: GasTurbineNormalSalvage # Triad: migrations do not chain
+TurbineUSSPSmall: GasTurbineSmallSalvage # Triad: same
 LockableButtonUSSP: null
 SuitStorageWallmountUsspL10: null
 SuitStorageWallmountUssp: null
@@ -314,3 +314,72 @@ PlasmaWindoorSecureWardenLocked: PlasmaWindoorSecureTdfLieutenantLocked
 DefaultStationBeaconTdfWarden: DefaultStationBeaconTdfLieutenant
 SpawnPointTdfWarden: SpawnPointTdfLieutenant
 DresserTdfWardenFilled: DresserTdfLieutenantFilled
+
+# 2026-09-01
+AirlockNfsdGlass: AirlockSDGlass
+AirlockNfsd: AirlockSD
+AirlockNfsdGlassLocked: AirlockSDGlassLocked
+AirlockNfsdLocked: AirlockSDLocked
+
+# 2026-09-04
+AvianDildo: null
+SAvianDildo: null
+MAvianDildo: null
+CanineDildo: null
+SCanineDildo: null
+MCanineDildo: null
+CanineDildoRed: null
+SCanineDildoRed: null
+MCanineDildoRed: null
+HorseDildo: null
+SHorseDildo: null
+MHorseDildo: null
+DragonDildo: null
+SDragonDildo: null
+MDragonDildo: null
+NormalDildo: null
+SNormalDildo: null
+MNormalDildo: null
+TentacleDildo: null
+STentacleDildo: null
+MTentacleDildo: null
+DoubleDildo: null
+SDoubleDildo: null
+MDoubleDildo: null
+LewdFleshlightYellow: null
+LewdFleshlightRed: null
+LewdFleshlightPink: null
+LewdFleshlightTeal: null
+LewdFleshlightGreen: null
+LewdWand: null
+LewdVibeGreen: null
+LewdVibeTeal: null
+LewdVibePink: null
+LewdVibeRed: null
+LewdVibeYellow: null
+WhipPink: null
+WhipTeal: null
+WhipPinkCrotch: null
+WhipTealCrotch: null
+SpankPinkPaddle: null
+SpankTealPaddle: null
+CrateLewd: null
+CrateLewdPartial: null
+CrateLewdToys: null
+
+# 2026-09-04
+# Far Horizons renamed Turbine to GasTurbine and split the concrete entity into an abstract base
+# plus access mixins. Nothing in the tree places the old ids, but ship saves in the database can
+# still hold them. Point the two placeable ones at the variants that carry NO AccessReader: Mono
+# had commented the Engineering reader off the old base, so mapping onto GasTurbineNormal instead
+# would lock a stored ship's turbine against a crew that never needed Engineering access.
+Turbine: GasTurbineNormalSalvage
+TurbineSmall: GasTurbineSmallSalvage
+TurbineFlowArrow: GasTurbineFlowArrow
+TurbineSmallFlowArrow: GasTurbineSmallFlowArrow
+TurbineGasPipe: GasTurbineGasPipe
+TurbineBladeShrapnel: GasTurbineBladeShrapnel
+
+# 2026-09-05
+ComputerShipyardExpedition: ComputerShipyardMilitary
+ComputerTabletopShipyardExpedition: ComputerTabletopShipyardMilitary

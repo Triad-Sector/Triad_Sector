@@ -459,7 +459,7 @@ public sealed partial class PricingSystem : EntitySystem
     {
         double price = 0;
 
-        if (prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()) &&
+        if (prototype.HasComp<MaterialComponent>(Factory) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<PhysicalCompositionComponent>(), out var composition))
         {
             var compositionComp = (PhysicalCompositionComponent) composition.Component;
@@ -521,7 +521,7 @@ public sealed partial class PricingSystem : EntitySystem
 
         if (prototype.Components.TryGetValue(Factory.GetComponentName<StackPriceComponent>(), out var stackpriceProto) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<StackComponent>(), out var stackProto) &&
-            !prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()))
+            !prototype.HasComp<MaterialComponent>(Factory))
         {
             var stackPrice = (StackPriceComponent) stackpriceProto.Component;
             var stack = (StackComponent) stackProto.Component;

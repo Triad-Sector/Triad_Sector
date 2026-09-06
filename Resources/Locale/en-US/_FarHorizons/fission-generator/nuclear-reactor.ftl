@@ -1,46 +1,49 @@
 ### Popups
-reactor-smoke-start = The {$owner} begins to smoke!
-reactor-smoke-stop = The {$owner} stops smoking.
-reactor-fire-start = The {$owner} begins to burn!
-reactor-fire-stop = The {$owner} stops burning.
+reactor-smoke-start = {CAPITALIZE(THE($owner))} begins to smoke!
+reactor-smoke-stop = {CAPITALIZE(THE($owner))} stops smoking.
+reactor-fire-start = {CAPITALIZE(THE($owner))} begins to burn!
+reactor-fire-stop = {CAPITALIZE(THE($owner))} stops burning.
 
-reactor-unanchor-melted = You cannot unanchor the nuclear reactor, it's melted into the hull!
-reactor-unanchor-warning = You cannot unanchor the nuclear reactor while it's not empty or hotter than 80C!
+reactor-unanchor-melted = You cannot unanchor {THE($owner)}, it's melted into the hull!
+reactor-unanchor-warning = You cannot unanchor {THE($owner)} while it's not empty or hotter than 80C!
 reactor-anchor-warning = Invalid anchor position.
 
 ### Messages
-reactor-smoke-start-message = DANGER!: {$owner} AT DANGEROUS OPERATING TEMPERATURE! OPERATING TEMPERATURE: {$temperature}K. IMMEDIATE INTERVENTION RECOMMENDED!
-reactor-smoke-stop-message = {$owner} has returned to nominal operating temperature.
-reactor-fire-start-message = WARNING! WARNING!: {$owner} AT CRITICAL OPERATING! OPERATING TEMPERATURE: {$temperature}K. REACTOR MELTDOWN IMMINENT!
-reactor-fire-stop-message = {$owner} has returned to nominal operating temperature. Core meltdown averted.
+reactor-smoke-start-message = ALERT: {CAPITALIZE(THE($owner))} has reached a dangerous temperature: {$temperature}K. Intervene immediately to prevent meltdown.
+reactor-smoke-stop-message = {CAPITALIZE(THE($owner))} has cooled below dangerous temperature. Have a nice day.
+reactor-fire-start-message = ALERT: {CAPITALIZE(THE($owner))} has reached CRITICAL temperature: {$temperature}K. MELTDOWN IMMINENT.
+reactor-fire-stop-message = {CAPITALIZE(THE($owner))} has cooled below critical temperature. Meltdown averted.
 
-reactor-temperature-dangerous-message = The {$owner} is at dangerous temperature: {$temperature}K.
-reactor-temperature-critical-message = The {$owner} is at critical temperature: {$temperature}K.
-reactor-temperature-cooling-message = The {$owner} is cooling: {$temperature}K.
+reactor-temperature-dangerous-message = {CAPITALIZE(THE($owner))} is at dangerous temperature: {$temperature}K.
+reactor-temperature-critical-message = {CAPITALIZE(THE($owner))} is at critical temperature: {$temperature}K.
+reactor-temperature-cooling-message = {CAPITALIZE(THE($owner))} is cooling: {$temperature}K.
+# Triad
+reactor-melting-message = EMERGENCY: {CAPITALIZE(THE($owner))} is at {$temperature}K and is beginning to melt down. Clear the reactor compartment and the hull around it.
+reactor-meltdown-message = {CAPITALIZE(THE($owner))} has catastrophically overloaded. Radioactive debris, fallout and coolant fires are likely. Clear the surrounding area.
 
-reactor-melting-announcement = NUCLEAR REACTOR MELTDOWN IMMINENT! IMMEDIATE EVACUATION RECOMMENDED!
-reactor-melting-announcement-sender = NUCLEAR EMERGENCY
+reactor-melting-announcement = A nuclear reactor aboard the station is beginning to meltdown. Evacuation of the surrounding area is advised.
+reactor-melting-announcement-sender = Nuclear Emergency
 
-reactor-meltdown-announcement = NUCLEAR REACTOR MELTDOWN HAS BEGUN! IMMEDIATE EVACUATION REQUIRED!
-reactor-meltdown-announcement-sender = NUCLEAR MELTDOWN
+reactor-meltdown-announcement = A nuclear reactor aboard the station has catastrophically overloaded. Radioactive debris, nuclear fallout, and coolant fires are likely. Immediate evacuation of the surrounding area is strongly advised.
+reactor-meltdown-announcement-sender = Nuclear Meltdown
 
 ### UI
-comp-nuclear-reactor-ui-locked = LOCKED
-comp-nuclear-reactor-ui-insert-button = INSERT
-comp-nuclear-reactor-ui-remove-button = REMOVE
-comp-nuclear-reactor-ui-eject-button = EJECT
+comp-nuclear-reactor-ui-locked = Locked
+comp-nuclear-reactor-ui-insert-button = Insert
+comp-nuclear-reactor-ui-remove-button = Remove
+comp-nuclear-reactor-ui-eject-button = Eject
 
-comp-nuclear-reactor-ui-view-change = CHANGE VIEW
-comp-nuclear-reactor-ui-view-temp = VIEWING TEMPERATURE
-comp-nuclear-reactor-ui-view-neutron = VIEWING NEUTRONS
-comp-nuclear-reactor-ui-view-target = VIEWING TARGETING
+comp-nuclear-reactor-ui-view-change = Change View
+comp-nuclear-reactor-ui-view-temp = Temperature View
+comp-nuclear-reactor-ui-view-neutron = Neutron View
+comp-nuclear-reactor-ui-view-fuel = Fuel View
 
-comp-nuclear-reactor-ui-status-panel = REACTOR STATUS:
-comp-nuclear-reactor-ui-reactor-temp = INTRNL. TEMP.
-comp-nuclear-reactor-ui-reactor-rads = AMB. RADIATION
-comp-nuclear-reactor-ui-reactor-therm = THRML. ENERGY
-comp-nuclear-reactor-ui-reactor-control = CONTROL RODS
+comp-nuclear-reactor-ui-status-panel = Reactor Status
+comp-nuclear-reactor-ui-reactor-temp = Temperature
+comp-nuclear-reactor-ui-reactor-rads = Radiation
+comp-nuclear-reactor-ui-reactor-therm = Thermal Power
+comp-nuclear-reactor-ui-reactor-control = Control Rods
 comp-nuclear-reactor-ui-therm-format = { POWERWATTS($power) }t
 
 comp-nuclear-reactor-ui-footer-left = Danger: high radiation.
-comp-nuclear-reactor-ui-footer-right = 0.8 REV 3
+comp-nuclear-reactor-ui-footer-right = 1.0 REV 1

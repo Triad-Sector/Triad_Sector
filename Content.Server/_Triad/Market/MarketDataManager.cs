@@ -22,10 +22,10 @@ namespace Content.Server._Triad.Market;
 /// </summary>
 public sealed class MarketDataManager : IMarketDataManager
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MarketDataStore _store = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MarketDataStore _store = default!;
 
     public const string SawmillId = "triad.market";
 

@@ -91,7 +91,7 @@ public sealed partial class AutomationSystem : EntitySystem
         var factory = EntityManager.ComponentFactory;
         foreach (var proto in _proto.EnumeratePrototypes<EntityPrototype>())
         {
-            if (proto.HasComponent<AutomationSlotsComponent>(factory))
+            if (proto.HasComp<AutomationSlotsComponent>(factory))
                 _automatable.Add(proto.ID);
         }
 

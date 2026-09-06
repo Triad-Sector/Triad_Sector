@@ -74,7 +74,7 @@ public abstract partial class SharedGasDepositSystem : EntitySystem
         }
 
         var indices = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
-        var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, gridComp, indices);
+        var enumerator = _map.GetAnchoredEntities(grid, gridComp, indices);
 
         while (enumerator.MoveNext(out var otherEnt))
         {

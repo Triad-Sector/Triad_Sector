@@ -41,7 +41,7 @@ namespace Content.Server.Administration.Commands
 
                 foreach (var component in entityManager.GetComponents(entity))
                 {
-                    if (metaData.EntityPrototype.Components.ContainsKey(fac.GetComponentName(component.GetType())))
+                    if (metaData.EntityPrototype.HasComp(component.GetType(), fac))
                         continue;
 
                     entityManager.RemoveComponent(entity, component);

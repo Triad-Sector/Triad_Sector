@@ -176,6 +176,7 @@
     - MonoRestraintsStatic # Mono
     - TriadBureaucracyStatic # Triad
     - AACTableStatic # DeltaV - AAC Tablets
+    - ReportingStatic # DeltaV
   - type: EmagLatheRecipes
     emagStaticPacks:
     - StaticAmmoRecipePack

@@ -38,7 +38,7 @@
     heldPrefix: nfsd
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TSF
     access:
     - Sergeant # Frontier
@@ -76,11 +76,11 @@
     - state: blue
     - state: voucherservice
   - type: ShipyardVoucher
-    consoleType: Shipyard
+    consoleTypes: [Shipyard]
     vessels:
-    - Jitterbug
-    - McChicken
-    - McChilly
+  #  - Jitterbug
+  #  - McChicken
+  #  - McChilly
     - Spessbite
 
 # Frontier vouchers
@@ -99,7 +99,7 @@
   - type: ShipyardVoucher
     destroyOnEmpty: true
     companyName: Colonial
-    consoleType: Sr
+    consoleTypes: [Sr]
     access:
     - Janitor
 

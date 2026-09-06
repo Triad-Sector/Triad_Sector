@@ -23,7 +23,7 @@
     - state: tdf_logo
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TDF
     vessels:
     - Jester
@@ -43,7 +43,7 @@
     - state: tdf_logo
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TDF
     vessels:
     - Grunder
@@ -64,7 +64,7 @@
     - state: tdf_logo
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TDF
     vessels:
     - Mercy
@@ -84,10 +84,11 @@
     - state: tdf_logo
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TDF
     vessels:
     - Knight
+    - Arbalest
 
 - type: entity
   parent: [BaseShipDSID, BaseClass2AShipContraband]
@@ -103,5 +104,5 @@
     - state: tdf_logo
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TDF
