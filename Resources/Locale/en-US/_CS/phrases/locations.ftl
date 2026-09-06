@@ -24,6 +24,6 @@ phrase-location-casino = Crazy Caseys' Casino
 phrase-location-grifty = Grifty's Gas & Grub
 phrase-location-lodge = Expeditionary Lodge
 phrase-location-cove = Derlict Digsite
-phrase-location-omnichurch = omnichurch
+phrase-location-omnichurch = Omnichurch
 phrase-location-trademall = Trade Mall
 phrase-location-cargodepot = Cargo Depot

@@ -132,11 +132,11 @@
   text: phrase-location-omnichurch
 
 - type: quickPhrase
-  parent: BaseLocationPhrase
+  parent: BaseStationLocationPhrase
   id: LocationTradeMall
   text: phrase-location-trademall
 
 - type: quickPhrase
-  parent: BaseLocationPhrase
+  parent: BaseStationLocationPhrase
   id: LocationCargoDepot
   text: phrase-location-cargodepot
