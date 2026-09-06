@@ -4729,3 +4729,10 @@ Entries:
   id: 2592
   time: '2026-09-06T20:22:54.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/600
+- author: nanbyt
+  changes:
+    - type: Add
+      message: Added the Bloodstone Strategic Solutions as a player faction.
+  id: 2593
+  time: '2026-09-06T21:17:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/620
