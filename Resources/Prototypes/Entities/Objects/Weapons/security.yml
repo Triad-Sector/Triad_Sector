@@ -251,7 +251,7 @@
   - type: Flash
   - type: LimitedCharges
     maxCharges: 5
-  #- type: MeleeWeapon Triad - Gut Flash Protection.
+  #- type: MeleeWeapon Triad - Removed Flash Protection.
   #  wideAnimationRotation: 180
   #  damage:
   #    types:
