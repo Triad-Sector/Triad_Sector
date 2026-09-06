@@ -77,12 +77,12 @@
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
-  id: LocationVenmarhPhrase
+  id: LocationVenmarPhrase # Triad
   text: phrase-location-venmar
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
-  id: LocationTDFOutpost
+  id: LocationTDFOutpost # Triad
   text: phrase-location-tdf-outpost
 
 - type: quickPhrase
@@ -125,6 +125,7 @@
   id: LocationCovePhrase
   text: phrase-location-cove
 
+# Added for Triad
 - type: quickPhrase
   parent: BaseStationLocationPhrase
   id: LocationOmnichurchPhrase
