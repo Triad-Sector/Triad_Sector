@@ -1,3 +1,37 @@
+# RMT
+
+- type: entity
+  id: SuitStorageUssp
+  parent: SuitStorageBase
+  suffix: RMT L-27
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: NitrogenTankFilled
+        - id: ClothingOuterHardsuitIndustrialEngi
+        - id: ClothingMaskGasSecurity
+        - id: JetpackVoidFilled
+        - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Mercenary"]]
+
+- type: entity
+  id: SuitStorageUsspL10
+  parent: SuitStorageBase
+  suffix: RMT L-10
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: NitrogenTankFilled
+        - id: ClothingOuterHardsuitRmtL10
+        - id: ClothingMaskGasSecurity
+        - id: JetpackMiniFilled
+        - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader #RMT Access currently unused
+    access: [["Mercenary"]]
+
 # Syndicate
 
 #Commander Blood-red hardsuit

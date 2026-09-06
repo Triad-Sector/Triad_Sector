@@ -87,9 +87,10 @@ WeaponLMGGrizzly: null
 PaperWrittenNoticeSr: null
 ClothingBackpackDuffelEVABundleSr: null
 
+# 2026-08-16
+ClothingBackpackDuffelClothingOuterHardsuitAshenBundle : ClothingBackpackDuffelOuterHardsuitTacticoolBundle
+
 # 2026-08-13 (The purge)
-SuitStorageUssp: null
-SuitStorageUsspL10: null
 SuitStorageCommissar: null
 ClothingBackpackUSSP: ClothingBackpackMilitary
 ClothingBackpackDuffelUSSP: ClothingBackpackDuffelMilitary
@@ -120,10 +121,10 @@ ClothingModsuitGauntletsUSSPVaryag: null
 ClothingModsuitGauntletsUSSPZastavnik: null
 ClothingModsuitGauntletsRogue: null
 ClothingModsuitGauntletsVolta: null
-ClothingHeadHelmetHardsuitUsspL27: null
-ClothingHeadHelmetHardsuitUsspL10: null
-ClothingHeadHelmetHardsuitUsspL10A: null
-ClothingHeadHelmetHardsuitUsspM10: null
+ClothingHeadHelmetHardsuitUsspL27: ClothingHeadHelmetHardsuitRmtL27
+ClothingHeadHelmetHardsuitUsspL10: ClothingHeadHelmetHardsuitRmtL10
+ClothingHeadHelmetHardsuitUsspL10A: ClothingHeadHelmetHardsuitRmtL10A
+ClothingHeadHelmetHardsuitUsspM10: ClothingHeadHelmetHardsuitRmtM10
 ClothingHeadHelmetHardsuitUsspL30: null
 ClothingHeadHelmetHardsuitOfficerCombat: null
 ClothingHeadHatUSSPOfficerCap: null
@@ -136,10 +137,10 @@ ClothingModsuitChestplateUSSPZastavnik: null
 ClothingModsuitChestplateRogue: null
 ClothingModsuitChestplateVolta: null
 ClothingOuterCoatUSSP: null
-ClothingOuterHardsuitUsspL27: null
-ClothingOuterHardsuitUsspL10: null
-ClothingOuterHardsuitUsspL10A: null
-ClothingOuterHardsuitUsspM10: null
+ClothingOuterHardsuitUsspL27: ClothingOuterHardsuitIndustrialEngi
+ClothingOuterHardsuitUsspL10: ClothingOuterHardsuitRmtL10
+ClothingOuterHardsuitUsspL10A: ClothingOuterHardsuitRmtL10A
+ClothingOuterHardsuitUsspM10: ClothingOuterHardsuitRmtM10
 ClothingOuterHardsuitUsspL30: null
 ClothingOuterHardsuitOfficerCombat: null
 ClothingModsuitBootsUSSPVaryag: null

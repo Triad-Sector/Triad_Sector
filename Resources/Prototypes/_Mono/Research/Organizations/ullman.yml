@@ -41,6 +41,7 @@
   recipeUnlocks:
   - UllmanHardsuitPilot
   - UllmanHardsuitEngineer
+  - ClothingOuterHardsuitIndustrialEngi # Triad : Domesticate faction gear, placeholder position within Ullman tree.
   technologyPrerequisites:
   - AdvancedParts
   - HardsuitsSpecialized

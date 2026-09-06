@@ -69,10 +69,10 @@
     - RogueHardsuit
 
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseFactionGearPDVT2 ]
+  parent: [ ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf] # Triad : TDF rebrand
   id: ClothingOuterHardsuitPDVMedic
-  name: PDV CV-82 combat tacsuit
-  description: A field medic combat hardsuit designed by the Phaethon Dynasty. The armor features various reinforced plating in vital areas.
+  name: TA-82 hazmat hardsuit # Triad : TDF rebrand
+  description: An advanced combat hardsuit designed to combat extreme NBC threats. The armor is reinforced against claws and talons, keeping your limbs attached during animal control.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/pdv_medic.rsi
@@ -114,17 +114,39 @@
   - type: Tag  # Mono
     tags:
     - RogueHardsuit
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
 
 - type: entity
-  parent: ClothingOuterHardsuitSyndieCommander
-  id: ClothingOuterHardsuitVizier
-  name: PDV CV-67 combat tacsuit
-  description: An adorned tacsuit designed with an imperfect nanolaminate composition. High maneuverability, sturdy armor.
+  parent: [ClothingOuterHardsuitSyndieCommander, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf ] #Triad : TDF rebrand
+  id: ClothingOuterHardsuitVizier #TDF rebrand, stat changes to be similar to jugsuit
+  name: 'TA-67 "The Brick" superheavy riot casket'
+  description: You are against the wall, and I am the wall.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/pdv_vizier.rsi
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/pdv_vizier.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.20
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.2
+        Slash: 0.2
+        Piercing: 0.2
+        Heat: 0.2
+        Radiation: 0.2
+        Caustic: 0.2
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.2
+  - type: ClothingSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.6
+  - type: HeldSpeedModifier
   - type: ToggleableClothing
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
@@ -136,12 +158,19 @@
   - type: Tag
     tags:
     - RogueHardsuit
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
+  - type: ContrabandPermittable
+    permittable: true # I mean, it can be taken away at any time, right? .
 
 - type: entity
-  parent: [ ClothingOuterHardsuitSyndieElite, EnergyShieldClothing ]
+  parent: [ ClothingOuterHardsuitSyndieElite, EnergyShieldClothing, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf ]
   id: ClothingOuterHardsuitAshenElite
-  name: PDV CV-53 combat tacsuit
-  description: Originally based off of the CV-32 hardsuit, the CV-53 tacsuit sacrifices conventional armor plating for environmental protection, and a rechargeable hard-shield.
+  name: TA-99X experimental tacsuit # TDF rebrand, light nerfs to heat and rad res : Triad
+  description: A specialized combat tacsuit that sacrifices ballistic protection in favor of advanced mirrored composites and a rechargable hard-shield. Incredibly laser-resistant.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/syndieelite.rsi
@@ -165,8 +194,8 @@
         Blunt: 0.75
         Slash: 0.75
         Piercing: 0.7
-        Heat: 0.2
-        Radiation: 0.01
+        Heat: 0.3 # 0.2 -> 0.3 Triad
+        Radiation: 0.4 # 0.01 -> 0.4 Triad
         Caustic: 0.5
   - type: Item
     size: Huge
@@ -213,3 +242,5 @@
     radius: 1.4
     energy: 2
     color: "#5dd439"
+  - type: PirateBountyItem
+    id: ClothingOuterHardsuitTacsuitHighValue
