@@ -1087,7 +1087,7 @@
   productEntity: ClothingBackpackDuffelTdfToolBundle
   icon: { sprite: _Triad/Clothing/Back/Duffels/tdf.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
   categories:
   - UplinkSecurityBundles
   conditions:
