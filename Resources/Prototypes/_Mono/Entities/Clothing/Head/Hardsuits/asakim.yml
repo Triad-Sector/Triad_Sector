@@ -19,7 +19,7 @@
         Slash: 0.8
         Piercing: 0.85
         Heat: 0.8
-  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
+  - type: FlashImmunity
   - type: EyeProtection
     protectionTime: 15
   - type: ThermalVision
