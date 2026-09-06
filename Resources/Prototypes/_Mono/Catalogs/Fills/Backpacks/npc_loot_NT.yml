@@ -160,8 +160,8 @@
     - id: AmmoBox9x19mmPlasteelAP
       amount: 2
       prob: 0.2
-    - id: AmmoBox9x19mmEmp
-      prob: 0.1
+    #- id: AmmoBox9x19mmEmp Triad - This shit is unrealistic and unfair, commenting it out.
+      #prob: 0.1
     - id: AmmoBox9x19mmBigFMJ
       prob: 0.08
     - id: WeaponLauncherMPSSM

@@ -1,0 +1,5 @@
+- type: loadout # Laser cannon, stand in for dedicated TDF energy weapons.
+  id: FactionLaserCannonLoadout
+  price: 0
+  equipment:
+    suitstorage: WeaponLaserCannon
