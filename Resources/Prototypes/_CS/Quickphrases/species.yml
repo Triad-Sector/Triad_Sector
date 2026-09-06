@@ -3,10 +3,10 @@
   id: SpeciesGoblinPhrase
   text: species-name-goblin
 
-- type: quickPhrase
-  parent: BaseCrewSpeciesPhrase
-  id: SpeciesShelegPhrase
-  text: species-name-sheleg
+# - type: quickPhrase
+#   parent: BaseCrewSpeciesPhrase
+#   id: SpeciesShelegPhrase
+#   text: species-name-sheleg
 
 - type: quickPhrase
   parent: BaseCrewSpeciesPhrase
