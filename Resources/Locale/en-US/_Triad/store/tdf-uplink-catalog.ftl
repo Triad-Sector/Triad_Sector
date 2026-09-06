@@ -158,7 +158,7 @@ uplink-security-gun-lecter-desc = Case containing a standard-issue assault rifle
 uplink-security-gun-drozd-name = TCA M-5 "Drozd" Bundle
 uplink-security-gun-drozd-desc = Case containing a high-caliber submachine gun and reserve ammunition.
 
-uplink-security-gun-wt550-name = UI WT550 Bundle
+uplink-security-gun-wt550-name = WT550 Bundle
 uplink-security-gun-wt550-desc = Case containing a one-handed submachine gun and reserve ammunition.
 
 uplink-security-gun-enforcer-name = Enforcer Bundle
