@@ -4683,3 +4683,14 @@ Entries:
   id: 2589
   time: '2026-09-06T13:41:13.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/614
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Tape recorders have been ported from Frontier for recording speech. They
+        can be printed in Autolathes or selected in loadout under Tools. They
+        can also be signal-controlled by using four signal ports corresponding
+        to their buttons.
+  id: 2590
+  time: '2026-09-06T13:44:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/565
