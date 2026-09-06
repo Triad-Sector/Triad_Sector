@@ -4716,3 +4716,16 @@ Entries:
   id: 2591
   time: '2026-09-06T19:48:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/613
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        TDF high command has updated the TDF uplink inventory to contain much
+        more useful items!
+    - type: Remove
+      message: >-
+        TDF high command has conducted an audit, removing most of the non-TDF
+        equipment from TDF uplinks.
+  id: 2592
+  time: '2026-09-06T20:22:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/600
