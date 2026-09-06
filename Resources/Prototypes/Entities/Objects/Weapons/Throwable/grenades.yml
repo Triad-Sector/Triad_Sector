@@ -334,17 +334,15 @@
     node: emptyCase
   - type: Damageable
     damageContainer: Inorganic
-  # Triad - Begin (Remove Sympathetic Detonation)
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 50
-  #    behaviors:
-  #    - !type:TriggerBehavior
-  #    - !type:DoActsBehavior
-  #      acts: [ "Destruction" ]
-  # Triad - End
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
