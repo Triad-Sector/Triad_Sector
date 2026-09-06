@@ -11,7 +11,7 @@
   description: An armed, PMC-rated medical lighter designed for planetary expeditions.
   price: 69420 # ~20,000$ markup
   category: Medium
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/magus.yml
   guidebookPage: null
   class:

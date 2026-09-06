@@ -7,7 +7,7 @@
   description: The Sagittarius is the sirius' big brother, heavier firepower and more space while maintaing its chemistry bay.
   price: 165000
   category: Large
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/sagittarius.yml
   guidebookPage: null
   class:

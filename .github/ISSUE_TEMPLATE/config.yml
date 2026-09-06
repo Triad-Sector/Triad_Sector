@@ -1,7 +1,7 @@
 contact_links:
   - name: Report a Security Vulnerability
-    url: https://github.com/space-wizards/space-station-14/blob/master/SECURITY.md
+    url: https://github.com/Triad-Sector/Triad_Sector/blob/main/SECURITY.md # Triad: was space-wizards
     about: Please report security vulnerabilities privately so we can fix them before they are publicly disclosed.
   - name: Request a Feature
-    url: https://discord.gg/rGvu9hKffJ
-    about: Submit feature requests on our Discord server (https://discord.gg/rGvu9hKffJ).
+    url: https://discord.gg/J9Rn76nKbz # Triad: our Discord
+    about: Submit feature requests on our Discord server.

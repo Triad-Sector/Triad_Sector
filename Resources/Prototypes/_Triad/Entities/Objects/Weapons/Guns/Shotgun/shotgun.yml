@@ -23,11 +23,11 @@
   - type: Gun
     soundGunshot:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/bigshotgun_fire.ogg
-    #fireRate: 1 # Goobstation
+    fireRate: 3 # High firerate, but you only get two shells
   - type: Tag
     tags:
     - WeaponShotgunBigBuddy
-  - type: BallisticAmmoProvider # Goobstation
+  - type: BallisticAmmoProvider
     whitelist:
       tags:
       - ShellShotgun23x75mmBuckshot

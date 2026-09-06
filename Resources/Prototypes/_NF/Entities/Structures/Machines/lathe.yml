@@ -43,6 +43,7 @@
     staticPacks:
     - NFServiceTechfabDeprecatedStatic
     - TriadBureaucracyStatic # Triad
+    - ReportingStatic # DeltaV
     dynamicPacks:
     - NFServiceTechfabDeprecated
   - type: EmagLatheRecipes
@@ -151,6 +152,7 @@
     - TdfTechfabStatic
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
+    - ReportingStatic # DeltaV
     dynamicPacks:
     - DynamicAmmoRecipePack
     # Mono start

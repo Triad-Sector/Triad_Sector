@@ -40,4 +40,12 @@ public sealed partial class AutoShootGunComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan RemainingTime = TimeSpan.FromSeconds(0);
+
+    /// <summary>
+    /// Triad - Optional user of the gun, so we can detect what the 'user' of this gun is.
+    /// Useful for ship NPCs so we can check where the gun is being fired from.
+    /// Not networked.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? User = null;
 }

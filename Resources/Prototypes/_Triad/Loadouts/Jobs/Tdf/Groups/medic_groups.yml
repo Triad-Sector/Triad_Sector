@@ -31,11 +31,10 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - ContractorClothingNeckIFFRed
   - ContractorClothingNeckIFFOrange
   - ContractorClothingNeckIFFNeutral
   fallbacks:
-  - ContractorClothingNeckIFFRed
+  - ContractorClothingNeckIFFNeutral
 
 - type: loadoutGroup
   id: TdfMedicGlasses

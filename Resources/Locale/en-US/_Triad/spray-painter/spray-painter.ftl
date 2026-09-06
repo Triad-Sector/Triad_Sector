@@ -4,8 +4,10 @@
 
 # Airlocks
 spray-painter-style-airlockstandard-tdf = TDF
+spray-painter-style-airlockstandard-sd = SD
 
 spray-painter-style-airlockglass-tdf = TDF
+spray-painter-style-airlockglass-sd = SD
 
 # Lockers
 spray-painter-style-locker-tdf = TDF

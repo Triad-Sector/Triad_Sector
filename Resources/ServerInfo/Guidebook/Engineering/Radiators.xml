@@ -25,6 +25,6 @@
 
   Gas will flow naturally through the radiator via differences in pressure, but you can use a gas pump to increase the flow rate.
 
-  Increasing the flow rate of gas through the radiator will increase the rate of heat exchange.
+  Increasing the flow rate of gas through the radiator will increase the rate of heat exchange. Flow is measured in gas moved, not pump setting: a loop running at high pressure pushes more gas through each pass, so it exchanges heat faster than a thin loop on the same pump. The gain tapers off, and a loop with no flow at all still exchanges a little.
 
   </Document>

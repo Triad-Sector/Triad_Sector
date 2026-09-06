@@ -230,7 +230,7 @@ public sealed partial class FireControlWindow : FancyWindow
         if (state.FireControllables == null)
         {
             WeaponsList.Clear();
-            ControllablesBox.DisposeAllChildren();
+            ControllablesBox.RemoveAllChildren();
             _weaponNameToEntity.Clear();
             _weaponTypes.Clear();
             return;

@@ -77,7 +77,7 @@ public sealed partial class DroneConsoleWindow : FancyWindow
     {
         NavRadar.UpdateState(state.NavState);
 
-        DroneListContainer.DisposeAllChildren();
+        DroneListContainer.RemoveAllChildren();
         _droneButtons.Clear();
 
         NavRadar.Detectors = new();

@@ -47,6 +47,6 @@ public sealed partial class DogVisionOverlay : Overlay
         worldHandle.SetTransform(Matrix3x2.Identity);
         worldHandle.UseShader(_dogVisionShader);
         worldHandle.DrawRect(viewport, Color.White);
-        worldHandle.UseShader(null); // important - as of writing, construction overlay breaks without this
+        worldHandle.UseShader(null); // Triad: the engine resets shader state after every overlay since #6508; kept as belt and braces
     }
 }

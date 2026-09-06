@@ -1,0 +1,38 @@
+# Author: Deox
+# Discord: deoxnirvislyfer_
+
+- type: vessel
+  id: Arbalest
+  parent: BaseVessel
+  name: TDF Arbalest
+  description: To answer the need of firepower, the Arbalest brings heavy fire support into TDF combat operations. Equipped with Charon and Dravon, it houses an ample amount of empty space due to the hull being refit from a civilian vessel.
+  price: 118000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/arbalest.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Corvette
+  engine:
+  - AME
+
+- type: gameMap
+  id: Arbalest
+  mapName: 'Arbalest'
+  mapPath: /Maps/_Triad/Shuttles/TDF/arbalest.yml
+  minPlayers: 0
+  stations:
+    Arbalest:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Arbalest TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+

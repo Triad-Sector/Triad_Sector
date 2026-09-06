@@ -1,242 +1,132 @@
+<!-- Triad: rewritten -->
 <Document>
-	# Nuclear Generator
+	# Nuclear Reactor
 
-	The [color=GreenYellow]Nuclear Generator[/color] generates [color=gold]power[/color] by heating a gas through fission reactions in a  [color=GreenYellow]Nuclear Reactor[/color] , which then spins a Gas [color=DarkOrange]Turbine[/color].
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="NuclearReactorNormal" Caption="" Scale="1"/>
+			</Box>
+		</ColorBox>
 
-	## The Nuclear Reactor
-	<Box>
-		<GuideEntityEmbed Entity="NuclearReactorNormal"/>
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]ROD GRID   [/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorGridHeight"/] full, [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridWidth"/] by [protodata="NuclearReactorSmall" comp="NuclearReactor" member="ReactorGridHeight"/] small[/mono]
+
+			[mono][color=#897236]OVERHEAT   [/color]  [color=#ffa500][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]FIRE       [/color]  [color=#ffa500][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorFireTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]MELTDOWN   [/color]  [color=#cc3333][protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K[/color][/mono]
+
+			[mono][color=#897236]LEAKAGE    [/color]  design limit [protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumRadiation"/] rads[/mono]
+
+			[mono][color=#897236]HEAT       [/color]  design limit [protodata="NuclearReactorNormal" comp="NuclearReactor" member="MaximumThermalPower" format="N0"/] W[/mono]
+		</Box>
 	</Box>
 
-	The [color=GreenYellow]Nuclear Reactor[/color] is the primary source of [color=OrangeRed]heat[/color] the generator uses to make [color=gold]power[/color].
+	The Nuclear Reactor is the heat source of the [textlink="Nuclear Generator" link="NuclearGenerator"]. Fission inside its fuel rods heats a coolant gas flowing through it, and the [textlink="Gas Turbine" link="GasTurbine"] turns that heat into power.
 
-	It is represented as a 7x7 grid of [color=gold]Reactor Rod[/color] ports, which engineers can insert different fabricated rods into.
+	[color=#897236][mono]──── [color=#ffdd33][bold]THE GRID[/bold][/color] ────────────────────────────────────────[/mono][/color]
 
-	Heat is generated through fission reactions inside [color=MediumVioletRed]fuel rods[/color] and transferred into the [color=SkyBlue]coolant gas[/color] by [color=PaleVioletRed]gas channels[/color].
+	The reactor is a grid of [color=#a4885c][bold]rod ports[/bold][/color], and what you put in each port, and where, is the whole craft of running it.
 
-	## Reactor Rods
+	- Neutrons wander from port to port.
+	- One that reaches a [color=#a4885c][bold]fuel rod[/bold][/color] can split an atom and release heat and more neutrons.
+	- One that reaches the edge of the grid escapes as [color=#ffa500][bold]radiation[/bold][/color].
+	- Everything else in the grid either soaks neutrons up, bounces them back, or carries heat away.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]REACTOR RODS[/bold][/color] ────────────────────────────────────[/mono][/color]
+
 	<Box>
-		<GuideEntityEmbed Entity="NuclearFabricator"/>
-	</Box>
-	<Box>
+		<GuideEntityEmbed Entity="NuclearFabricator" Caption="nuclear fabricator"/>
 		<GuideEntityEmbed Entity="CerenkiteReactorFuelRod" Caption="fuel rod"/>
 		<GuideEntityEmbed Entity="BohrumReactorControlRod" Caption="control rod"/>
 		<GuideEntityEmbed Entity="SteelReactorGasChannel" Caption="gas channel"/>
 		<GuideEntityEmbed Entity="SteelReactorHeatExchanger" Caption="heat exchanger"/>
 	</Box>
 
-  [color=gold]Reactor Rod[/color] are the parts that go into the [color=GreenYellow]Reactor[/color] grid and cause it to function.
+	Every rod is printed at the nuclear fabricator in a choice of [textlink="materials" link="NuclearMaterials"]. Four kinds go in the grid.
 
-	They transfer [color=OrangeRed]heat[/color] and interact with [color=DarkTurquoise]neutrons[/color] within the [color=GreenYellow]Reactor[/color].
+	- [color=#a4885c][bold]Fuel rods[/bold][/color] are the source of neutrons and heat. Neutron radioactivity throws off hot, fast neutrons and decays into ordinary radioactivity, which decays into spent fuel. Spent fuel does not slow a rod down; it tells you the rod is due for replacement.
+	- [color=#a4885c][bold]Control rods[/bold][/color] soak up neutrons before they reach the next fuel rod. They are the only rod you adjust while running: 100% inserted is as effective as they get, 0% switches them off.
+	- [color=#a4885c][bold]Gas channels[/bold][/color] hand their heat to the coolant flowing through them. Each one adds [protodata="SteelReactorGasChannel" comp="ReactorPart" member="GasVolume"/] L/s to the flow the reactor can take.
+	- [color=#a4885c][bold]Heat exchangers[/bold][/color] move heat sideways across the grid and ignore neutrons. Put them between a fuel rod and a gas channel.
 
-	If a [color=gold]Reactor Rod[/color]'s [bold]Temperature[/bold] reaches 1700 kelvin, it will begin to [color=Crimson]melt[/color].
-
-	Once melted it will become much more active and able to transfer [color=OrangeRed]heat[/color] into the [color=GreenYellow]Reactor[/color], which may cause a total [color=OrangeRed]meltdown[/color].
-
-	Handling hot [color=gold]Reactor Rods[/color] can cause serious [color=OrangeRed]burns[/color].
-
-	If it is hotter than [color=OrangeRed]80C[/color] you'll need gloves to be able to handle them. At [color=MediumVioletRed]500C[/color], not even gloves will protect you.
-
-	There are four different types of [color=gold]Reactor Rods[/color] that can be manufactured from a variety of materials and placed into the [color=GreenYellow]Reactor[/color] grid: [color=Chartreuse]Fuel Rods[/color], [color=LightSkyBlue]Control Rods[/color], [color=PaleVioletRed]Gas Channels[/color], and [color=Crimson]Heat Exchangers[/color].
-
-	### Fuel Rods
-  [color=Chartreuse]Fuel Rods[/color] are the source of [color=DarkTurquoise]neutrons[/color] and [color=OrangeRed]heat[/color] within the [color=GreenYellow]Reactor[/color].
-
-	They can emit [color=DarkTurquoise]neutrons[/color] through spontaneous decay and from interacting with existing [color=DarkTurquoise]neutrons[/color], which also creates [color=OrangeRed]heat[/color].
-
-	They have two statistics that determine their effectiveness and volatility:
-	- [bold]Neutron Radioactivity[/bold]: Creates [color=cyan]high-energy neutrons[/color] and large amounts of [color=OrangeRed]heat[/color]. Decays into Radioactivity.
-	- [bold]Radioactivity[/bold]: Creates [color=DarkTurquoise]neutrons[/color] and [color=OrangeRed]heat[/color]. Decays into [color=LightSteelBlue]Spent Fuel[/color].
-
-	They also keep track of how much [bold][color=LightSteelBlue]Spent Fuel[/color][/bold] they contain, which does not affect the [color=Chartreuse]Fuel Rod[/color]'s performance, but can indicate when it is time to replace it.
+	[color=lime][bold]► A working layout:[/bold][/color] each fuel rod beside a control rod, ringed by heat exchangers, gas channels where the exchangers end. Fuel rods that touch each other feed each other, which is fast, hot and hard to stop.
 
 	<Box>
-		<GuideEntityEmbed Entity="NuclearCentrifuge"/>
-		<GuideEntityEmbed Entity="IngotPlutonium"/>
+		<GuideEntityEmbed Entity="NuclearCentrifuge" Caption="nuclear centrifuge"/>
+		<GuideEntityEmbed Entity="IngotPlutonium" Caption="plutonium"/>
 	</Box>
 
-	Once a [color=Chartreuse]Fuel Rod[/color] contains enough [bold][color=LightSteelBlue]Spent Fuel[/color][/bold], it can be reprocessed by a nuclear centrifuge to create [color=Magenta]plutonium[/color], which can be used to make [color=Magenta]plutonium fuel rods[/color].
+	A rod full of spent fuel goes into a [color=#a4885c][bold]nuclear centrifuge[/bold][/color], which recovers plutonium for the strongest fuel rods you can print.
 
-	### Control Rods
-  [color=LightSkyBlue]Control rods[/color] control the flow of [color=DarkTurquoise]neutrons[/color] within the [color=GreenYellow]Reactor[/color].
+	[color=#897236][mono]──── [color=#00ccff][bold]CONTROL PANEL[/bold][/color] ───────────────────────────────────[/mono][/color]
 
-	They have the unique property of being able to be adjusted, which changes how effective they are.
+	Everything is done from the reactor's panel, or from a [color=#00ccff]reactor monitor[/color] linked to it. The panel has three parts.
 
-	They control the reaction by limiting the number of [color=DarkTurquoise]neutrons[/color] that go through them and into a [color=Chartreuse]Fuel Rod[/color].
+	- [color=#a4885c][bold]Targeting[/bold][/color]: the arrows pick a grid position, and Insert and Remove moves a rod between that port and the reactor's rod slot. The readout shows the rod at that port: name, temperature (T), neutron radioactivity (N), radioactivity (R), spent fuel (S). The bottom line names whatever is waiting in the slot.
+	- [color=#a4885c][bold]Grid view[/bold][/color]: a picture of the grid, switchable between temperature, neutrons and fuel. Watch the temperature view for a hot spot forming.
+	- [color=#a4885c][bold]Status panel[/bold][/color]: the temperature gauge runs to the meltdown point, the radiation gauge to the design leakage limit, and the thermal power gauge to the design heat output. The control rod gauges show set and actual insertion, with buttons to move them.
 
-	### Gas Channels
-  [color=PaleVioletRed]Gas Channels[/color] transfer [color=OrangeRed]heat[/color] from themselves into the [color=SkyBlue]coolant gas[/color] that flows through them.
+	[color=#999999][italic]Thermal power is a fair guess at what the turbine can pull out of the gas. It rises and falls as the reactor breathes and is rarely steady.[/italic][/color]
 
-	Each [color=PaleVioletRed]Gas Channel[/color] will increase the flow rate by [bold]100 L/s[/bold], allowing the [color=GreenYellow]Reactor[/color] to process more gas at once.
+	[color=#897236][mono]──── [color=#1e90ff][bold]AUTOMATION[/bold][/color] ──────────────────────────────────────[/mono][/color]
 
-	### Heat Exchangers
-  [color=Crimson]Heat Exchangers[/color] guide the spread of [color=OrangeRed]heat[/color] within the [color=GreenYellow]Reactor[/color].
+	- The reactor takes two signals: [color=#1e90ff][bold]Insert control rods[/bold][/color] and [color=#1e90ff][bold]Retract control rods[/bold][/color].
+	- Each pulse moves the rods by 5%. A held signal keeps them moving.
+	- Wire the turbine's speed signals to them and the reactor throttles itself to hold the turbine at its best speed. A signaller or a logic circuit works too.
 
-	They are exceptionally good at transferring [color=OrangeRed]heat[/color] and don't interact with [color=DarkTurquoise]neutrons[/color], making them ideal for getting [color=OrangeRed]heat[/color] from a [color=Chartreuse]Fuel Rod[/color] into a [color=PaleVioletRed]Gas Channel[/color] without interfering with the fission process.
-
-	## Controlling the Reactor
-	The [color=GreenYellow]Reactor[/color] is controlled and modified through its UI, which also provides information on the [color=GreenYellow]Reactor[/color]'s status.
-
-	The [color=GreenYellow]Reactor[/color] UI has three major panels: Targeting, Grid View, Status Panel
-
-	### Targeting
-	The targeting panel has controls for inserting and removing rods into and out of the [color=GreenYellow]Reactor[/color] grid.
-
-	The X and Y position of the target are adjusted through the +X, -X and +Y, -Y buttons.
-
-  [color=gold]Reactor Rods[/color] can be inserted or removed through the Insert/Remove button below the position buttons.
-
-	If there is a [color=gold]Reactor Rod[/color] at the target position, it will show information on that [color=gold]Reactor Rod[/color], including its:
-	- Name
-	- Temperature ([color=OrangeRed]T[/color])
-	- Neutron Radioactivity ([color=Cyan]N[/color])
-	- Radioactivity ([color=MediumSpringGreen]R[/color])
-	- Spent Fuel ([color=LightSteelBlue]S[/color])
-
-	The bottom of the panel displays the name of the part that has been removed from the [color=GreenYellow]Reactor[/color] or is ready to be inserted.
-
-	### Grid View
-	The grid view gives a graphic visualization of the status of the [color=GreenYellow]Reactor[/color] grid.
-
-	The Change View button can be used to alternate between the different views:
-	- Temperature View: shows the [color=OrangeRed]temperature[/color] of the components
-	- Neutron View: shows the number of [color=DarkTurquoise]neutrons[/color] at any given position
-	- Target View: shows the current [color=Gold]target location[/color]
-
-	### Status Panel
-	The status panel gives information on the [color=GreenYellow]Reactor[/color] as a whole and provides control of the [color=LightSkyBlue]control rods[/color].
-
-	The [color=Red][bold]Temperature Gauge[/bold][/color] shows the current temperature of the [color=GreenYellow]Reactor[/color], in a range between 0 and 2000 kelvin.
-
-	If the [color=GreenYellow]Reactor[/color] ever reaches 2000 kelvin, it will [color=red]meltdown[/color].
-
-	The [color=MediumSpringGreen][bold]Radiation Gauge[/bold][/color] shows the current [color=MediumSpringGreen]radiation[/color] being emitted by the [color=GreenYellow]Reactor[/color], in a range between 0 and 50 rads.
-
-	The [color=OrangeRed][bold]Thermal Power Gauge[/bold][/color] shows an estimation of the amount of [color=OrangeRed]thermal power[/color] being made by the [color=GreenYellow]Reactor[/color], in a range between 0 and 10 000 000 thermal watts (Wt).
-
-  [color=OrangeRed]Thermal Power[/color] is a decent estimation of how much [color=gold]power[/color] can be extracted from the gas by the [bold][color=DarkOrange]Turbine[/color][/bold].
-
-  [color=OrangeRed]Thermal Power[/color] has a tendency to increase and decrease as the [color=GreenYellow]Reactor[/color] runs, rarely remaining stable.
-
-	The [bold][color=LightSkyBlue]Control Rod Gauges[/color][/bold] show the actual and set insertion levels of the [color=LightSkyBlue]control rods[/color] within the [color=GreenYellow]Reactor[/color], and provide buttons to change the insertion level.
-
-	## Cooling the Reactor
-	The [color=GreenYellow]Reactor[/color] is cooled through the use of gasses, but some gasses have effects on the [color=GreenYellow]Reactor[/color] when in sufficient quantities:
+	[color=#897236][mono]──── [color=#ffdd33][bold]COOLANT GASES[/bold][/color] ───────────────────────────────────[/mono][/color]
 
 	<Box>
-		<GuideEntityEmbed Entity="PlasmaCanister" Caption=""/>
+		<GuideEntityEmbed Entity="PlasmaCanister" Caption="plasma"/>
+		<GuideEntityEmbed Entity="CarbonDioxideCanister" Caption="carbon dioxide"/>
+		<GuideEntityEmbed Entity="TritiumCanister" Caption="tritium"/>
 	</Box>
-	[color=#ff3300][bold]Plasma[/bold][/color] has a reactive effect, creating more [color=DarkTurquoise]neutrons[/color] and decaying into [color=#13ff4b][bold]Tritium[/bold][/color].
 
-	If there is enough plasma within the [color=GreenYellow]Reactor[/color], it may end up going into a runaway reaction and [color=red]melting down[/color].
+	Any gas carries heat, but three of them do more than that inside the reactor.
 
-	<Box>
-		<GuideEntityEmbed Entity="CarbonDioxideCanister" Caption=""/>
-	</Box>
-	[color=#4e4e4e][bold]Carbon Dioxide[/bold][/color] has a moderative effect, removing [color=DarkTurquoise]neutrons[/color] that come into contact with it.
+	- [color=#ff3300][bold]Plasma[/bold][/color] breeds neutrons and decays into tritium. Enough plasma in the loop and the reactor runs away from you.
+	- [color=#4e4e4e][bold]Carbon dioxide[/bold][/color] swallows neutrons it meets. Use it to tame a plasma loop or to slow the reactor down.
+	- [color=#13ff4b][bold]Tritium[/bold][/color] falls apart inside the reactor into a random mix of oxygen, nitrogen, ammonia, nitrous oxide and frezon. With oxygen present it burns at reactor temperatures, and that heat goes straight into the casing.
 
-	This can be used to regulate a plasma reaction or slow down the [color=GreenYellow]Reactor[/color].
+	[color=#897236][mono]──── [color=#ffa500][bold]WARNINGS AND ALARMS[/bold][/color] ─────────────────────────────[/mono][/color]
 
-	<Box>
-		<GuideEntityEmbed Entity="TritiumCanister" Caption=""/>
-	</Box>
-	[color=#13ff4b][bold]Tritium[/bold][/color] transmutes within a [color=GreenYellow]Reactor[/color], randomly decaying into a wide variety of gasses:
-	- [color=#2887e8][bold]Oxygen[/bold][/color]
-	- [color=#FF0000][bold]Nitrogen[/bold][/color]
-	- [color=#56941e][bold]Ammonia[/bold][/color]
-	- [color=#8f00ff][bold]Nitrous Oxide[/bold][/color]
-	- [color=#3a758c][bold]Frezon[/bold][/color]
+	[mono]  Normal     [color=lime]■■■■■[/color][color=#555555]□□□□□[/color]  below [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K[/mono]
 
-	In the presence of [color=#2887e8][bold]Oxygen[/bold][/color] and at the temperatures of the [color=GreenYellow]Reactor[/color], [color=#13ff4b][bold]Tritium[/bold][/color] will begin to burn, [color=red]creating large amounts of heat[/color].
+	[mono]  Overheat   [color=#ffa500]■■■■■■[/color][color=#555555]□□□□[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorOverheatTemp"/] K   smoke, amber lights, klaxon, shortband warning[/mono]
 
-	## Reactor Radiation
+	[mono]  Fire       [color=#cc3333]■■■■■■■■[/color][color=#555555]□□[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorFireTemp"/] K   flames, red lights, second warning[/mono]
+
+	[mono]  Imminent   [color=#cc3333]■■■■■■■■■[/color][color=#555555]□[/color]  halfway  final shortband warning: meltdown imminent[/mono]
+
+	[mono]  Meltdown   [color=#cc3333]■■■■■■■■■■[/color]  [protodata="NuclearReactorNormal" comp="NuclearReactor" member="ReactorMeltdownTemp"/] K   siren, the blast[/mono]
+
+	- Two more klaxons watch other limits: the [color=#a4885c][bold]thermal alarm[/bold][/color] when heat output passes the gauge's top, and the [color=#a4885c][bold]radiation alarm[/bold][/color] when leakage passes half the radiation gauge.
+	- The [color=lime]Acknowledge[/color] button silences a klaxon until its condition clears and comes back.
+	- Warnings go out on the shortband because a reactor in trouble is a problem for the ships around it, not for a department a sector away.
+
+	[color=#897236][mono]──── [color=#cc3333][bold]MELTDOWN[/bold][/color] ────────────────────────────────────────[/mono][/color]
+
+	[color=red][bold]▲ Warning:[/bold][/color] a meltdown guts the ship. Every rod is destroyed, their heat and a cloud of tritium go into the room, burning debris flies across the deck, and the blast follows. What is left stays radioactive.
+
+	The blast is the one part that is contained. The reactor's [color=#a4885c][bold]containment failsafe[/bold][/color] throws a barrier along the hull for the instant of the explosion. Everything inside the hull takes the full force. Nothing beyond it, docked ships included, takes any.
+
+	[color=#897236][mono]──── [color=#ffa500][bold]RADIATION[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
 	<Box>
 		<GuideEntityEmbed Entity="SignRadiation" Caption=""/>
-	</Box>
-	The [color=GreenYellow]Reactor[/color] sometimes allows some radiation to leak out, which can pose a danger to unprotected crew.
-
-	The radiation level of the [color=GreenYellow]Reactor[/color] is determined by how many [color=DarkTurquoise]neutrons[/color] are escaping the [color=GreenYellow]Reactor[/color] grid.
-
-	<Box>
-		<GuideEntityEmbed Entity="ClosetRadiationSuit"/>
-		<GuideEntityEmbed Entity="ClothingOuterSuitRad"/>
-		<GuideEntityEmbed Entity="GeigerCounter"/>
+		<GuideEntityEmbed Entity="ClosetRadiationSuit" Caption=""/>
+		<GuideEntityEmbed Entity="ClothingOuterSuitRad" Caption=""/>
+		<GuideEntityEmbed Entity="GeigerCounter" Caption=""/>
 	</Box>
 
-	Proper protection and shielding are highly recommended when working near the [color=GreenYellow]Reactor[/color].
+	Neutrons that escape the grid leak out as radiation, and a badly packed grid leaks more. Shielding around the reactor room, a suit for whoever works beside it, and a geiger counter on the wall are not optional.
 
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
 
-	## The Gas Turbine
-	<Box>
-		<GuideEntityEmbed Entity="Turbine"/>
-	</Box>
-
-	The Gas [color=DarkOrange]Turbine[/color] is where the power actually gets made.
-
-	It takes in hot gas from the [color=GreenYellow]Reactor[/color] and outputs electricity and sends colder gas back to the [color=GreenYellow]Reactor[/color].
-
-	The amount of energy made by the [color=DarkOrange]Turbine[/color] is affected by its set Flow Rate and [color=Goldenrod]Stator[/color] Load, and by its [color=MediumTurquoise]RPM[/color].
-
-	### Flow Rate
-	The Flow Rate determines how much gas goes through the [color=DarkOrange]Turbine[/color] every second.
-
-	The higher the Flow Rate, the higher the [color=MediumTurquoise]RPM[/color] of the [color=DarkOrange]Turbine[/color].
-
-	Flow Rate is usually set to allow maximum flow through the [color=GreenYellow]Reactor[/color] core, which can be found by the following equation: 100 * number of [color=PaleVioletRed]gas channels[/color] + 200.
-
-	### Stator Load
-	The [color=Goldenrod]Stator[/color] Load determines how much power is made by each revolution of the [color=DarkOrange]Turbine[/color].
-
-	The higher the [color=Goldenrod]Stator[/color] Load, the lower the [color=MediumTurquoise]RPM[/color] of the [color=DarkOrange]Turbine[/color].
-
-	[color=Goldenrod]Stator[/color] Load is usually adjusted to ensure the [color=DarkOrange]Turbine[/color] stays at optimal [color=MediumTurquoise]RPM[/color].
-
-	### RPM
-	The [color=MediumTurquoise]RPM[/color] (Rotations Per Minute) represents how fast the [color=DarkOrange]Turbine[/color] is spinning.
-
-	The [color=DarkOrange]Turbine[/color] has an optimal [color=MediumTurquoise]RPM[/color], where it will produce the most power.
-
-	Going faster or slower than optimal will result in poor performance.
-
-	## Turbine Status Indicators
-	The [color=DarkOrange]Turbine[/color] has a set of status indicators to warn operators of dangerous conditions or faults.
-
-	### Overspeed
-	The [color=DarkOrange]Turbine[/color] [color=MediumTurquoise]RPM[/color] is too high.
-
-	If the [color=DarkOrange]Turbine[/color] [color=MediumTurquoise]RPM[/color] gets too high, it will start to take damage.
-
-	Prolonged time spent at [color=red]overspeed[/color] or [bold][color=crimson]excessive overspeed[/color][/color] will cause the [color=DarkOrange]Turbine[/color] to [color=red]tear itself apart[/color].
-
-	Damage to the [color=DarkOrange]Turbine[/color] can be repaired with a [color=yellow]welder[/color], though it will likely take multiple attempts to fully repair it.
-
-	### Overtemp
-	The gas going into the [color=DarkOrange]Turbine[/color] is too hot.
-
-	If the gas coming into the [color=DarkOrange]Turbine[/color] is hotter than [color=red]3000 kelvin[/color], it will trigger an [bold][color=red]emergency purge valve[/color][/bold] and dump the gas into the room.
-
-	This hot gas can cause [color=red]serious burns[/color] to personnel or even a [color=OrangeRed]fire[/color], if the gas is flammable.
-
-	### Stalling
-	The stator load is too high or the gas is not hot enough.
-
-	[color=Orchid]Stalling[/color] is where the gas going into the [color=DarkOrange]Turbine[/color] isn't "pushing" hard enough to overcome the stator load's resistance.
-
-	### Undertemp
-	The gas going into the [color=DarkOrange]Turbine[/color] is too cold.
-
-	If the gas is at or below room temperature (20C), there is no energy for the [color=DarkOrange]Turbine[/color] to take out of it.
-
-
-	# Starting the Nuclear Generator
-	To start the [color=GreenYellow]Nuclear Generator[/color], engineers must follow these steps:
-	- Fill the coolant loop with a gas.
-	- Set the [color=DarkOrange]Turbine[/color]'s Flow Rate according to the [color=GreenYellow]Reactor[/color] setup.
-	- Insert the [color=Chartreuse]Fuel Rods[/color] into the empty spots in the [color=GreenYellow]Reactor[/color] grid, typically by a [color=LightSkyBlue]control rod(s)[/color] and surrounded by [color=Crimson]heat exchangers[/color] and [color=PaleVioletRed]gas channels[/color].
-	- Retract the [color=LightSkyBlue]Control Rods[/color] to start warming up the [color=GreenYellow]Reactor[/color].
-	- As the [color=GreenYellow]Reactor[/color] warms up, engineers will want to keep adjusting the [color=DarkOrange]Turbine[/color]'s [color=Goldenrod]Stator[/color] Load to maintain optimal [color=MediumTurquoise]RPM[/color].
-	- Once the [color=DarkOrange]Turbine[/color] is making enough power for the station, the [color=LightSkyBlue]Control Rods[/color] should be inserted to the point of maintaining [color=GreenYellow]Reactor[/color] temperature.
-
-	Over time, the [color=Chartreuse]Fuel Rods[/color] will lose radioactivity, meaning the [color=LightSkyBlue]Control Rods[/color] should be retracted further or the [color=Chartreuse]fuel rods[/color] replaced.
-
+	- A rod above [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookHotTemp"/] C needs gloves. Above [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookBurnTemp"/] C gloves will not save your hands either.
+	- A rod that reaches [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="MeltingPoint"/] K melts inside the grid, gets far more active, and drags the reactor toward meltdown with it.
+	- Fuel rods are, technically, edible. Eating one irradiates you from the inside.
 </Document>

@@ -573,7 +573,7 @@ public sealed partial class ModernChemMasterWindow : FancyWindow
             var lowerFilter = filter.Trim().ToLowerInvariant();
             reagentList = reagentList
                 .Where(r => r.name.ToLowerInvariant().Contains(lowerFilter)
-                            || r.reagentId.Prototype.ToLowerInvariant().Contains(lowerFilter))
+                            || r.reagentId.Prototype.Id.ToLowerInvariant().Contains(lowerFilter))
                 .ToList();
         }
 

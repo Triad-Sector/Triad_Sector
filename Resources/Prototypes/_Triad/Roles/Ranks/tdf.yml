@@ -28,3 +28,22 @@
   name: Chief Enforcer
   prefix: Chief Enf.
   paygrade: TDF-5
+
+# Unplayable ranks (admin TDF members)
+- type: rank
+  id: RankViceCaptain
+  name: Vice Captain
+  prefix: V. Capt.
+  paygrade: TDF-6
+
+- type: rank
+  id: RankCaptain
+  name: Captain
+  prefix: Capt.
+  paygrade: TDF-7
+
+- type: rank
+  id: RankAdmiral
+  name: Admiral
+  prefix: Admiral
+  paygrade: TDF-8
