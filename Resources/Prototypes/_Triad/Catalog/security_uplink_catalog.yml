@@ -390,7 +390,7 @@
   productEntity: WeaponEmpEmitter
   icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/emp.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 15 #Mono Emmiter price: From 1 to 3
+    TriadCommerceCredit: 40 #Mono Emmiter price: From 1 to 3
   categories:
     - UplinkSecurityWeapons
   conditions:
