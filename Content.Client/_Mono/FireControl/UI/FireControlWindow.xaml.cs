@@ -104,7 +104,7 @@ public sealed partial class FireControlWindow : FancyWindow
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Energy)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse)
             {
                 button.Pressed = true;
             }
@@ -128,7 +128,7 @@ public sealed partial class FireControlWindow : FancyWindow
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Missile)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Limited)
             {
                 button.Pressed = true;
             }
@@ -211,9 +211,9 @@ public sealed partial class FireControlWindow : FancyWindow
 
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
-            else if (type == ShipGunType.Energy)
+            else if (type == ShipGunType.Impulse)
                 hasEnergyWeapons = true;
-            else if (type == ShipGunType.Missile)
+            else if (type == ShipGunType.Limited)
                 hasMissileWeapons = true;
 
             if (hasBallisticWeapons && hasEnergyWeapons && hasMissileWeapons)
