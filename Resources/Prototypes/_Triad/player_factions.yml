@@ -48,3 +48,11 @@
   image: /Textures/_Triad/PlayerFactions/Ghostlights.png
   color: "#3ffff6"
   whitelisted: true
+
+- type: company
+  id: Bloodstone
+  name: Bloodstone Strategic Solutions
+  description: bss-description
+  image: /Textures/_Triad/PlayerFactions/Bloodstone.png
+  color: "#5d0505"
+  whitelisted: true
