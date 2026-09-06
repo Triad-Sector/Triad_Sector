@@ -18,7 +18,7 @@
   components:
   - type: Organ
     onAdd:
-    - type: FlashImmunity
+    #- type: FlashImmunity Triad - Removed most sources of flash immunity.
     - type: EyeProtection
 
 - type: entity
@@ -29,7 +29,7 @@
   components:
   - type: Organ
     onAdd:
-    - type: FlashImmunity
+    #- type: FlashImmunity Triad - Removed most sources of flash immunity.
     - type: EyeProtection
     - type: ShowJobIcons
     - type: ShowMindShieldIcons
@@ -43,7 +43,7 @@
   components:
   - type: Organ
     onAdd:
-    - type: FlashImmunity
+    #- type: FlashImmunity Triad - Removed most sources of flash immunity.
     - type: EyeProtection
     - type: ShowHealthBars
       damageContainers:

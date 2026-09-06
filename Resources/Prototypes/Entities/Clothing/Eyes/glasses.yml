@@ -150,7 +150,7 @@
   name: sun glasses
   description: A pair of black sunglasses.
   components:
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
     protectionTime: 5
   - type: Tag
@@ -169,7 +169,7 @@
     sprite: Clothing/Eyes/Glasses/secglasses.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/secglasses.rsi
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
     protectionTime: 5
   - type: Construction
@@ -196,7 +196,7 @@
     sprite: Clothing/Eyes/Glasses/commandglasses.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/commandglasses.rsi
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
     protectionTime: 5
   - type: Tag
@@ -217,7 +217,7 @@
     sprite: Clothing/Eyes/Glasses/mercglasses.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/mercglasses.rsi
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
     protectionTime: 5
   - type: IdentityBlocker

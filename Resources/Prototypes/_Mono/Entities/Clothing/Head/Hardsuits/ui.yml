@@ -12,7 +12,7 @@
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: NightVision # Gen 2
     relayOverlay: true
     goggleEffect: true
@@ -63,7 +63,7 @@
     interfaces:
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: NightVision # Gen 2 quadtube
     relayOverlay: true
     goggleEffect: true
@@ -197,7 +197,7 @@
     interfaces:
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: NightVision # Gen 4
     relayOverlay: true
     goggleEffect: true

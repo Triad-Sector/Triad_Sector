@@ -50,7 +50,7 @@
     sprite: Clothing/Mask/gassyndicate.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassyndicate.rsi
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
   - type: Armor
     modifiers:
@@ -424,7 +424,7 @@
     - Hair
     - Snout
     hideOnToggle: true
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
   - type: Armor
     modifiers:
@@ -709,7 +709,7 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
   - type: PhysicalComposition
     materialComposition:
