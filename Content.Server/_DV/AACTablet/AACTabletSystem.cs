@@ -1,11 +1,13 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
-using Content.Server.Radio.Components;
+using Content.Shared.Radio.Components;
 using Content.Shared._DV.AACTablet;
 using Content.Shared.IdentityManagement;
 using Robust.Shared.Prototypes;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
+using Content.Shared.Radio;
+using Content.Shared.Chat;
 
 namespace Content.Server._DV.AACTablet;
 
@@ -44,7 +46,7 @@ public sealed class AACTabletSystem : EntitySystem
         _localisedPhrases.Clear();
         foreach (var phraseProto in message.PhraseIds)
         {
-            if (_prototype.TryIndex(phraseProto, out var phrase))
+        if (_prototype.TryIndex(phraseProto, out var phrase))
             {
                 // Ensures each phrase is capitalised to maintain common AAC styling
                 _localisedPhrases.Add(_chat.SanitizeMessageCapital(Loc.GetString(phrase.Text)));
@@ -70,9 +72,9 @@ public sealed class AACTabletSystem : EntitySystem
         ent.Comp.NextPhrase = curTime + ent.Comp.Cooldown;
     }
 
-    private HashSet<string> GetAvailableChannels(EntityUid entity)
+    private HashSet<ProtoId<RadioChannelPrototype>> GetAvailableChannels(EntityUid entity)
     {
-        var channels = new HashSet<string>();
+        var channels = new HashSet<ProtoId<RadioChannelPrototype>>();
 
         // Get all the intrinsic radio channels (IPCs, implants)
         if (TryComp(entity, out ActiveRadioComponent? intrinsicRadio))
