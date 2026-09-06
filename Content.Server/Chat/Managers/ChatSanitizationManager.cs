@@ -91,6 +91,7 @@ public sealed partial class ChatSanitizationManager : IChatSanitizationManager
         Entry("[':", "chatsan-tearfully-smiles"),
         Entry("('=", "chatsan-tearfully-smiles"),
         Entry("['=", "chatsan-tearfully-smiles"),
+        Entry("?", "chatsan-confused"), //DeltaV
     ];
 
     [Dependency] private IConfigurationManager _configurationManager = default!;

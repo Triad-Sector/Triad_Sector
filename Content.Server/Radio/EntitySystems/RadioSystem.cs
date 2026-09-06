@@ -4,6 +4,7 @@ using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.Power.Components;
 using Content.Shared._Mono.Radio;
+using Content.Shared._DV.Chat;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared._EinsteinEngines.Language;
@@ -45,6 +46,7 @@ public sealed partial class RadioSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<IntrinsicRadioReceiverComponent, RadioReceiveEvent>(OnIntrinsicReceive);
         SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeEvent>(OnIntrinsicSpeak);
+        SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntityAudiblyEmotedEvent>(OnIntrinsicAudibleEmote); // DeltaV - Robots should be allowed to emote over radio.
 
         _exemptQuery = GetEntityQuery<TelecomExemptComponent>();
     }
@@ -90,6 +92,16 @@ public sealed partial class RadioSystem : EntitySystem
         }
     }
 
+    // DeltaV
+    private void OnIntrinsicAudibleEmote(EntityUid uid, IntrinsicRadioTransmitterComponent component, ref EntityAudiblyEmotedEvent args)
+    {
+        if (args.Channel != null && component.Channels.Contains(args.Channel.ID))
+        {
+            SendRadioMessage(uid, args.Message, args.Channel, uid, emType: args.Type);
+        }
+    }
+    // DeltaV - End
+
     /// <summary>
     /// Send radio message to all active radio listeners
     /// </summary>
@@ -100,9 +112,10 @@ public sealed partial class RadioSystem : EntitySystem
         EntityUid radioSource,
         int? frequency = null,
         LanguagePrototype? language = null,
-        bool escapeMarkup = true) // Frontier: added frequency
+        bool escapeMarkup = true,
+        EmoteType? emType = null) // Frontier: added frequency // DeltaV - EmoteType? added.
     {
-        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, frequency: frequency, escapeMarkup: escapeMarkup, language: language); // Frontier: added frequency / Einstein Engines - Language
+        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, frequency: frequency, escapeMarkup: escapeMarkup, language: language, emType: emType); // Frontier: added frequency / Einstein Engines - Language
     }
 
     /// <summary>
@@ -117,7 +130,8 @@ public sealed partial class RadioSystem : EntitySystem
         EntityUid radioSource,
         int? frequency = null,
         LanguagePrototype? language = null,
-        bool escapeMarkup = true) // Nuclear-14: add frequency
+        bool escapeMarkup = true,
+        EmoteType? emType = null) // DeltaV - EmoteType? added. // Nuclear-14: add frequency
     {
         // Einstein Engines - Language begin
         if (language == null)
@@ -170,7 +184,7 @@ public sealed partial class RadioSystem : EntitySystem
         //     ("channel", channelText), // Frontier: $"\\[{channel.LocalizedName}\\]"<channelText
         //     ("name", name),
         //     ("message", content));
-        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, content, language); // Einstein Engines - Language
+        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, content, language, emType); // Einstein Engines - Language
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
         // var chat = new ChatMessage(
@@ -186,9 +200,9 @@ public sealed partial class RadioSystem : EntitySystem
 
         // Einstein Engines - Language begin
         var obfuscated = _language.ObfuscateSpeech(content, language);
-        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language);
+        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, emType);
         var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, NetEntity.Invalid, null);
-        var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource);
+        var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource, emType);
         // Einstein Engines - Language end
 
         var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
@@ -262,7 +276,8 @@ public sealed partial class RadioSystem : EntitySystem
         RadioChannelPrototype channel,
         string name,
         string message,
-        LanguagePrototype language)
+        LanguagePrototype language,
+        EmoteType? emType)
     {
         // TODO: code duplication with ChatSystem.WrapMessage
         var speech = _chat.GetSpeechVerb(source, message);
@@ -275,16 +290,31 @@ public sealed partial class RadioSystem : EntitySystem
             ? Loc.GetString("chat-manager-language-prefix", ("language", language.ChatName))
             : "";
 
-        return Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
-            ("color", channel.Color),
-            ("languageColor", languageColor),
-            ("fontType", language.SpeechOverride.FontId ?? speech.FontId),
-            ("fontSize", language.SpeechOverride.FontSize ?? speech.FontSize),
-            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
-            ("message", message),
-            ("language", languageDisplay));
+        // Triad - Integrated from SendRadioMessage
+        if (emType == EmoteType.Audible)
+            return Loc.GetString("chat-radio-message-audible-emote-wrap",
+                ("color", channel.Color),
+                ("channel", $"\\[{channel.LocalizedName}\\]"),
+                ("name", name),
+                ("message", message));
+        else if (emType == EmoteType.AudiblePossessive)
+            return Loc.GetString("chat-radio-message-audible-possessive-emote-wrap",
+                ("color", channel.Color),
+                ("channel", $"\\[{channel.LocalizedName}\\]"),
+                ("name", name),
+                ("message", message));
+        else
+            return Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
+                ("color", channel.Color),
+                ("languageColor", languageColor),
+                ("fontType", language.SpeechOverride.FontId ?? speech.FontId),
+                ("fontSize", language.SpeechOverride.FontSize ?? speech.FontSize),
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+                ("channel", $"\\[{channel.LocalizedName}\\]"),
+                ("name", name),
+                ("message", message),
+                ("language", languageDisplay));
+        // Triad - End
     }
     // Einstein Engines - Language end
 

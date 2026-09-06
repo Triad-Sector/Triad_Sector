@@ -10,6 +10,7 @@ using Content.Shared.Chat;
 using Content.Shared.Radio.EntitySystems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Content.Shared._DV.Chat;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -27,6 +28,7 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+        SubscribeLocalEvent<WearingHeadsetComponent, EntityAudiblyEmotedEvent>(OnAudibleEmote); // DeltaV
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
     }
@@ -51,13 +53,36 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
             EnsureComp<ActiveRadioComponent>(uid).Channels = new(keyHolder.Channels);
     }
 
+    // DeltaV
+    // WARNING - Be very careful when modifying this method.
+    // The implementation right now has null forgiving operatiors in OnSpeak() and OnAudibleEmote() since this only returns true if channel is not null
+    private bool CheckRadioCapable(EntityUid uid, WearingHeadsetComponent headset, RadioChannelPrototype? channel)
+    {
+        if (channel != null
+            && TryComp(headset.Headset, out EncryptionKeyHolderComponent? keys)
+            && keys.Channels.Contains(channel.ID))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnAudibleEmote(EntityUid uid, WearingHeadsetComponent component, ref EntityAudiblyEmotedEvent args)
+    {
+        if (CheckRadioCapable(uid, component, args.Channel))
+        {
+            _radio.SendRadioMessage(uid, args.Message, args.Channel!, component.Headset, emType: args.Type);
+            args.Channel = null;
+        }
+    }
+    // DeltaV - End
+
     private void OnSpeak(EntityUid uid, WearingHeadsetComponent component, EntitySpokeEvent args)
     {
-        if (args.Channel != null
-            && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
-            && keys.Channels.Contains(args.Channel.ID))
+        if (CheckRadioCapable(uid, component, args.Channel)) // DeltaV - Put all the radio checks into the CheckRadioCapable() method.
         {
-            _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
+            _radio.SendRadioMessage(uid, args.Message, args.Channel!, component.Headset); // DeltaV - Made the args.Channel null ignorant as CheckRadioCapable() guarantees it not null.
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
