@@ -1,4 +1,5 @@
 - type: entity
+  parent: ClothingBackpackDuffelTdf
   id: ClothingBackpackDuffelTdfTrackingBundle
   name: TDF tracking bundle
   description: All the equipment needed to track almost anything.
