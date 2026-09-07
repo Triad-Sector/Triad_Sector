@@ -4736,3 +4736,10 @@ Entries:
   id: 2593
   time: '2026-09-06T21:17:22.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/620
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: The militarized backpacks are now lower in the loadout list.
+  id: 2594
+  time: '2026-09-07T03:59:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/623
