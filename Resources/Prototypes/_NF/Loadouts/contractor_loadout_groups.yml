@@ -232,11 +232,6 @@
   - ContractorClothingModsuitCaptainPowerCell
   - ContractorClothingModsuitEngineerPowerCell
   ## Mono end
-  # Triad start
-  - ClothingBackpackMilitary
-  - ClothingBackpackSatchelMilitary
-  - ClothingBackpackDuffelMilitary
-  # Triad end
   - ContractorClothingBackpack
   - ContractorClothingBackpackDuffel
   - ContractorClothingBackpackSatchel
@@ -300,6 +295,11 @@
   - ContractorClothingBackpackDrakeIndustries
   - ContractorClothingBackpackDuffelDrakeIndustries
   - ContractorClothingBackpackSatchelDrakeIndustries
+  # Triad start
+  - ClothingBackpackMilitary
+  - ClothingBackpackSatchelMilitary
+  - ClothingBackpackDuffelMilitary
+  # Triad end
   - ContractorClothingBackpackClown
   - ContractorClothingBackpackDuffelClown
   - ContractorClothingBackpackSatchelClown
