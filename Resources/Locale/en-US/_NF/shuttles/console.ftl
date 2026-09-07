@@ -41,11 +41,26 @@ shuttle-console-service-flags = Advertise Features
 shuttle-console-service-flag-Services-label = Services
 shuttle-console-service-flag-Trade-label = Shopping
 shuttle-console-service-flag-Social-label = Social
+# Triad Begin
+shuttle-console-service-flag-Food-label = Food
+shuttle-console-service-flag-Peace-label = Pacifist
+shuttle-console-service-flag-Private-label = Private
+# Triad End
 
 shuttle-console-service-flag-Services-shortform = ♫
 shuttle-console-service-flag-Trade-shortform = $
 shuttle-console-service-flag-Social-shortform = ☺
+# Triad Begin
+shuttle-console-service-flag-Food-shortform = f
+shuttle-console-service-flag-Peace-shortform = ØpacifistØ
+shuttle-console-service-flag-Private-shortform =  ◄PRIVATE►
+# Triad End
 
 shuttle-console-service-flag-Services-description = Services (e.g. medical, dining, engineering) offered onboard.
 shuttle-console-service-flag-Trade-description = Goods sold onboard.
 shuttle-console-service-flag-Social-description = A social space to gather and hang out.
+# Triad Begin
+shuttle-console-service-flag-Food-description = Food and drink sold onboard.
+shuttle-console-service-flag-Peace-description = This vessel is pacifistic and has opted out of combat.
+shuttle-console-service-flag-Private-description = Private shuttle, requiring explicit permission from the owner to board.
+# Triad End

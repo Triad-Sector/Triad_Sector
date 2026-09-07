@@ -226,6 +226,34 @@
                                                  HorizontalExpand="True"
                                                  MinWidth="60"/>
                             </controls:BoxContainer>
+                            <!--Triad Begin-->
+                            <controls:BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="2 0 2 2">
+                                <controls:Button Name="ServiceFlagFood"
+                                                 Text="{controls:Loc 'shuttle-console-service-flag-Food-label'}"
+                                                 TextAlign="Center"
+                                                 ToggleMode="True"
+                                                 ToolTip="{controls:Loc 'shuttle-console-service-flag-Food-description'}"
+                                                 StyleClasses="ButtonSquare"
+                                                 HorizontalExpand="True"
+                                                 MinWidth="60"/>
+                                 <controls:Button Name="ServiceFlagPeace"
+                                                 Text="{controls:Loc 'shuttle-console-service-flag-Peace-label'}"
+                                                 TextAlign="Center"
+                                                 ToggleMode="True"
+                                                 ToolTip="{controls:Loc 'shuttle-console-service-flag-Peace-description'}"
+                                                 StyleClasses="ButtonSquare"
+                                                 HorizontalExpand="True"
+                                                 MinWidth="60"/>
+                                <controls:Button Name="ServiceFlagPrivate"
+                                                 Text="{controls:Loc 'shuttle-console-service-flag-Private-label'}"
+                                                 TextAlign="Center"
+                                                 ToggleMode="True"
+                                                 ToolTip="{controls:Loc 'shuttle-console-service-flag-Private-description'}"
+                                                 StyleClasses="ButtonSquare"
+                                                 HorizontalExpand="True"
+                                                 MinWidth="60"/>
+                            </controls:BoxContainer>
+                            <!--Triad End-->
                         </controls:BoxContainer>
                     </controls:PanelContainer>
                     <!-- End Frontier - Service Flags -->

@@ -54,6 +54,11 @@ namespace Content.Client.Shuttles.UI
             ServiceFlagServices.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Services);
             ServiceFlagTrade.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Trade);
             ServiceFlagSocial.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Social);
+            // Triad Begin
+            ServiceFlagFood.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Food);
+            ServiceFlagPeace.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Peace);
+            ServiceFlagPrivate.OnPressed += _ => ToggleServiceFlags(ServiceFlags.Private);
+            //Triad End
         }
 
         private void OnPortButtonPressed(string sourcePort, string targetPort)
@@ -153,6 +158,11 @@ namespace Content.Client.Shuttles.UI
             ServiceFlagServices.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Services);
             ServiceFlagTrade.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Trade);
             ServiceFlagSocial.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Social);
+            //Triad Begin
+            ServiceFlagFood.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Food);
+            ServiceFlagPeace.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Peace);
+            ServiceFlagPrivate.Pressed = NavRadar.ServiceFlags.HasFlag(ServiceFlags.Private);
+            //Triad End
         }
 
         private void NfAddShuttleDesignation(EntityUid? shuttle)

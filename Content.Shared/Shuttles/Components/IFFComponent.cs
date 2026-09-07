@@ -88,4 +88,9 @@ public enum ServiceFlags : byte
     Services = 1,
     Trade = 2,
     Social = 4,
+    //Triad Begin
+    Food = 8,
+    Peace = 16,
+    Private = 32,
+    //Triad End
 }
