@@ -1,0 +1,570 @@
+- type: loadout
+  id: ClothingHeadBandBlack
+  price: 0
+  equipment:
+    head: ClothingHeadBandBlack
+
+- type: loadout
+  id: ClothingHeadBandBlue
+  price: 0
+  equipment:
+    head: ClothingHeadBandBlue
+
+- type: loadout
+  id: ClothingHeadBandGreen
+  price: 0
+  equipment:
+    head: ClothingHeadBandGreen
+
+- type: loadout
+  id: ClothingHeadBandRed
+  price: 0
+  equipment:
+    head: ClothingHeadBandRed
+
+- type: loadout
+  id: ClothingHeadBandSkull
+  price: 0
+  equipment:
+    head: ClothingHeadBandSkull
+
+- type: loadout
+  id: ClothingHeadHatTacticalMaidHeadband
+  price: 0
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+
+- type: loadout
+  id: ClothingHeadHatGreysoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreysoft
+
+- type: loadout
+  id: ClothingHeadHatBluesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatBluesoft
+
+- type: loadout
+  id: ClothingHeadHatYellowsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatYellowsoft
+
+- type: loadout
+  id: ClothingHeadHatGreensoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreensoft
+
+- type: loadout
+  id: ClothingHeadHatOrangesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatOrangesoft
+
+- type: loadout
+  id: ClothingHeadHatRedsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatRedsoft
+
+- type: loadout
+  id: ClothingHeadHatBlacksoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatBlacksoft
+
+- type: loadout
+  id: ClothingHeadHatPurplesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatPurplesoft
+
+- type: loadout
+  id: ClothingHeadHatCorpsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatCorpsoft
+
+- type: loadout
+  id: ClothingHeadBandGrey
+  price: 0
+  equipment:
+    head: ClothingHeadBandGrey
+
+- type: loadout
+  id: ClothingHeadHatUshanka
+  price: 0
+  equipment:
+    head: ClothingHeadHatUshanka
+
+- type: loadout
+  id: ClothingHeadHatHardhatYellow
+  price: 0
+  equipment:
+    head: ClothingHeadHatHardhatYellow
+
+- type: loadout
+  id: ClothingHeadHatChef
+  price: 0
+  equipment:
+    head: ClothingHeadHatChef
+
+- type: loadout
+  id: ClothingHeadHatCargosoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatCargosoft
+
+- type: loadout
+  id: ClothingHeadBandBotany
+  price: 0
+  equipment:
+    head: ClothingHeadBandBotany
+
+- type: loadout
+  id: ClothingHeadBandMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadBandMercenary
+
+- type: loadout
+  id: ClothingHeadHatHoodBioScientist
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoodBioScientist
+
+- type: loadout
+  id: ClothingHeadRastaHat
+  price: 0
+  equipment:
+    head: ClothingHeadRastaHat
+
+- type: loadout
+  id: ClothingHeadHatSombrero
+  price: 0
+  equipment:
+    head: ClothingHeadHatSombrero
+
+- type: loadout
+  id: ClothingHeadFishCap
+  price: 0
+  equipment:
+    head: ClothingHeadFishCap
+
+- type: loadout
+  id: ClothingHeadHatTrucker
+  price: 0
+  equipment:
+    head: ClothingHeadHatTrucker
+
+- type: loadout
+  id: ClothingHeadHatCasa
+  price: 0
+  equipment:
+    head: ClothingHeadHatCasa
+
+- type: loadout
+  id: ClothingHeadHatBowlerHat
+  price: 0
+  equipment:
+    head: ClothingHeadHatBowlerHat
+
+- type: loadout
+  id: ClothingHeadHatGreyFlatcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatGreyFlatcap
+
+- type: loadout
+  id: ClothingHeadHatBrownFlatcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatBrownFlatcap
+
+- type: loadout
+  id: ClothingHeadHatParamedicsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatParamedicsoft
+
+- type: loadout
+  id: ClothingHeadNurseHat
+  price: 0
+  equipment:
+    head: ClothingHeadNurseHat
+
+- type: loadout
+  id: ClothingHeadHatBeretMedic
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretMedic
+
+- type: loadout
+  id: ClothingHeadHatSurgcapGreen
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapGreen
+
+- type: loadout
+  id: ClothingHeadHatSurgcapBlue
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapBlue
+
+- type: loadout
+  id: ClothingHeadHatSurgcapPurple
+  price: 0
+  equipment:
+    head: ClothingHeadHatSurgcapPurple
+
+- type: loadout
+  id: ClothingHeadHatFedoraGrey
+  price: 0
+  equipment:
+    head: ClothingHeadHatFedoraGrey
+
+- type: loadout
+  id: ClothingHeadHatFedoraBrown
+  price: 0
+  equipment:
+    head: ClothingHeadHatFedoraBrown
+
+- type: loadout
+  id: FoodPoppy
+  price: 0
+  equipment:
+    head: FoodPoppy
+
+- type: loadout
+  id: FoodLily
+  price: 0
+  equipment:
+    head: FoodLily
+
+- type: loadout
+  id: ClothingHeadHatFlowerWreath
+  price: 0
+  equipment:
+    head: ClothingHeadHatFlowerWreath
+
+- type: loadout
+  id: FoodAmbrosiaVulgaris
+  price: 0
+  equipment:
+    head: FoodAmbrosiaVulgaris
+
+- type: loadout
+  id: ClothingHeadHatCaptain
+  price: 0
+  equipment:
+    head: ClothingHeadHatCaptain
+
+- type: loadout
+  id: ClothingHeadHatCapcap
+  price: 0
+  equipment:
+    head: ClothingHeadHatCapcap
+
+- type: loadout
+  id: ClothingHeadTinfoil
+  price: 0
+  equipment:
+    head: ClothingHeadTinfoil
+
+- type: loadout
+  id: ClothingHeadHatBeretRND
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretRND
+
+- type: loadout
+  id: ClothingHeadHatBeretMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretMercenary
+
+- type: loadout
+  id: ClothingHeadHatBeretCommander
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretCommander
+
+- type: loadout
+  id: ClothingHeadHatBeretEngineering
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretEngineering
+
+- type: loadout
+  id: ClothingHeadHatBeretSeniorPhysician
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretSeniorPhysician
+
+- type: loadout
+  id: ClothingHeadHatBeretCmo
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretCmo
+
+- type: loadout
+  id: ClothingHeadHatBeretQM
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretQM
+
+- type: loadout
+  id: ClothingHeadHatQMsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatQMsoft
+
+- type: loadout
+  id: ClothingHeadHatCardinal
+  price: 0
+  equipment:
+    head: ClothingHeadHatCardinal
+
+- type: loadout
+  id: ClothingHeadHatHoodNunHood
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoodNunHood
+
+- type: loadout
+  id: ClothingHeadSafari
+  price: 0
+  equipment:
+    head: ClothingHeadSafari
+
+- type: loadout
+  id: ClothingHeadHatJester
+  price: 0
+  equipment:
+    head: ClothingHeadHatJester
+
+- type: loadout
+  id: ClothingHeadHatJesterAlt
+  price: 0
+  equipment:
+    head: ClothingHeadHatJesterAlt
+
+- type: loadout
+  id: ClothingHeadHatBeret
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeret
+
+- type: loadout
+  id: ClothingHeadHatBeretFrench
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretFrench
+
+- type: loadout
+  id: ClothingHeadHatMimesoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatMimesoft
+
+- type: loadout
+  id: ClothingHeadHatPilgrim
+  price: 0
+  equipment:
+    head: ClothingHeadHatPilgrim
+
+- type: loadout
+  id: ClothingHeadHatStrawHat
+  price: 0
+  equipment:
+    head: ClothingHeadHatStrawHat
+
+- type: loadout
+  id: ClothingHeadHatCowboyBlack
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBlack
+
+- type: loadout
+  id: ClothingHeadHatCowboyBrown
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBrown
+
+- type: loadout
+  id: ClothingHeadHatCowboyGrey
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyGrey
+
+- type: loadout
+  id: ClothingHeadHatCowboyBountyHunter
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyBountyHunter
+
+- type: loadout
+  id: ClothingHeadHatBH
+  price: 0
+  equipment:
+    head: ClothingHeadHatBH
+
+- type: loadout
+  id: ClothingHeadHatCowboyRed
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyRed
+
+- type: loadout
+  id: ClothingHeadHatCowboyWhite
+  price: 0
+  equipment:
+    head: ClothingHeadHatCowboyWhite
+
+- type: loadout
+  id: ClothingHeadHatWideBrimmed
+  price: 0
+  equipment:
+    head: ClothingHeadHatWideBrimmed
+
+- type: loadout
+  id: ClothingHeadHatWitchhunter
+  price: 0
+  equipment:
+    head: ClothingHeadHatWitchhunter
+
+- type: loadout
+  id: ClothingHeadHatWitch1
+  price: 0
+  equipment:
+    head: ClothingHeadHatWitch1
+
+- type: loadout
+  id: ClothingHeadHatBishopMitre
+  price: 0
+  equipment:
+    head: ClothingHeadHatBishopMitre
+
+- type: loadout
+  id: ClothingHeadHatKippah
+  price: 0
+  equipment:
+    head: ClothingHeadHatKippah
+
+- type: loadout
+  id: ClothingHeadHatPlaguedoctor
+  price: 0
+  equipment:
+    head: ClothingHeadHatPlaguedoctor
+
+- type: loadout
+  id: SLPlunger
+  price: 0
+  equipment:
+    head: Plunger
+
+- type: loadout
+  id: ClothingHeadHatCone
+  price: 0
+  equipment:
+    head: ClothingHeadHatCone
+
+- type: loadout
+  id: ClothingHeadBandGold
+  price: 0
+  equipment:
+    head: ClothingHeadBandGold
+
+- type: loadout
+  id: ClothingHeadHatTophat
+  price: 0
+  equipment:
+    head: ClothingHeadHatTophat
+
+- type: loadout
+  id: ClothingHeadHelmetBasic
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetBasic
+
+- type: loadout
+  id: ClothingHeadHelmetMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenary
+
+- type: loadout
+  id: ClothingHeadHelmetMercenaryBlack
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenaryBlack
+
+- type: loadout
+  id: ClothingHeadHatSecsoft
+  price: 0
+  equipment:
+    head: ClothingHeadHatSecsoft
+
+- type: loadout
+  id: ClothingHeadHatSyndie
+  price: 0
+  equipment:
+    head: ClothingHeadHatSyndie
+
+- type: loadout
+  id: ClothingHeadHatBeretSecurity
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+
+- type: loadout
+  id: ClothingHeadHatSecurityTrooper
+  price: 0
+  equipment:
+    head: ClothingHeadHatSecurityTrooper
+
+- type: loadout
+  id: ClothingHeadHatHoshat
+  price: 0
+  equipment:
+    head: ClothingHeadHatHoshat
+
+- type: loadout
+  id: ClothingHeadHatSyndieMAA
+  price: 0
+  equipment:
+    head: ClothingHeadHatSyndieMAA
+
+- type: loadout
+  id: ClothingHeadHatBeretWarden
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretWarden
+
+- type: loadout
+  id: ClothingHeadHatBeretHoS
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretHoS
+
+- type: loadout
+  id: ClothingHeadHatWarden
+  price: 0
+  equipment:
+    head: ClothingHeadHatWarden
+
+- type: loadout
+  id: ClothingHeadWideBrimGildedHat
+  price: 0
+  equipment:
+    head: ClothingHeadWideBrimGildedHat
+
+- type: loadout
+  id: RedRegaliaHat
+  price: 0
+  equipment:
+    head: RedRegaliaHat
+

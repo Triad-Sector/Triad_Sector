@@ -1,0 +1,574 @@
+- type: loadout
+  id: ClothingShoesColorBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorBlack
+
+- type: loadout
+  id: ClothingShoesClothwrap
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesClothwrap
+
+- type: loadout
+  id: ClothingShoesTourist
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesTourist
+
+- type: loadout
+  id: ClothingShoesBootsCombat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsCombat
+
+- type: loadout
+  id: ClothingShoesBootsMercenary
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsMercenary
+
+- type: loadout
+  id: ClothingShoesBootsSalvage
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsSalvage
+
+- type: loadout
+  id: ClothingShoesChef
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesChef
+
+- type: loadout
+  id: ClothingShoesColorBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorBlue
+
+- type: loadout
+  id: ClothingShoesColorOrange
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorOrange
+
+- type: loadout
+  id: ClothingShoesColorPurple
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorPurple
+
+- type: loadout
+  id: ClothingShoesColorRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorRed
+
+- type: loadout
+  id: ClothingShoesColorBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorBrown
+
+- type: loadout
+  id: ClothingShoesColorGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorGreen
+
+- type: loadout
+  id: ClothingShoesColorYellow
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorYellow
+- type: loadout
+  id: ClothingShoesColorWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  - !type:GroupLoadoutEffect
+    proto: NFNotDoc
+  price: 0
+  equipment:
+    shoes: ClothingShoesColorWhite
+
+# Magboots
+- type: loadout
+  id: ClothingShoesBootsMag
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsMag
+
+- type: loadout
+  id: ClothingShoesMagMercenary
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsMagMercenary
+
+- type: loadout
+  id: ClothingShoesMagSecurity
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsMagSecurity
+
+- type: loadout
+  id: ClothingShoesBootsWinter
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinter
+
+- type: loadout
+  id: ClothingShoesBootsWinterAtmos
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterAtmos
+
+- type: loadout
+  id: ClothingShoesBootsWinterHydro
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterHydro
+
+- type: loadout
+  id: ClothingShoesBootsWinterCap
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterCap
+
+- type: loadout
+  id: ClothingShoesBootsWinterCargo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterCargo
+
+- type: loadout
+  id: ClothingShoesBootsWinterChef
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterChef
+
+- type: loadout
+  id: ClothingShoesBootsWinterChem
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterChem
+
+- type: loadout
+  id: ClothingShoesBootsWinterEngi
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterEngi
+
+- type: loadout
+  id: ClothingShoesBootsWinterGenetics
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterGenetics
+
+- type: loadout
+  id: ClothingShoesBootsWinterMiner
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterMiner
+
+- type: loadout
+  id: ClothingShoesBootsWinterParamedic
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterParamedic
+
+- type: loadout
+  id: ClothingShoesBootsWinterRobo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterRobo
+
+- type: loadout
+  id: ClothingShoesBootsWinterSci
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterSci
+
+- type: loadout
+  id: ClothingShoesBootsWinterViro
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterViro
+
+- type: loadout
+  id: ClothingShoesBootsWinterHoS
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterHoS
+
+- type: loadout
+  id: ClothingShoesBootsWinterWarden
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterWarden
+
+- type: loadout
+  id: ClothingShoesBootsJack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsJack
+
+- type: loadout
+  id: ClothingShoesLeather
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesLeather
+
+- type: loadout
+  id: ClothingShoesBootsLaceup
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NFNotDocOrStc
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+
+- type: loadout
+  id: ClothingShoesSlippers
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesSlippers
+
+- type: loadout
+  id: ClothingShoeslippersDuck
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoeSlippersDuck
+
+- type: loadout
+  id: ClothingShoesFlippers
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesFlippers
+
+- type: loadout
+  id: ClothingShoesBootsPunkRandomized
+  name: punk boots (random)
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsPunkRandomized
+
+- type: loadout
+  id: ClothingShoesDameDane
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesDameDane
+
+- type: loadout
+  id: ClothingShoesBootsWork
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWork
+
+- type: loadout
+  id: ClothingShoesBootsCowboyBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsCowboyBlack
+
+- type: loadout
+  id: ClothingShoesBootsCowboyBrown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsCowboyBrown
+
+- type: loadout
+  id: ClothingShoesBootsCowboyWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsCowboyWhite
+
+- type: loadout
+  id: ClothingShoesSnakeskinBoots
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesSnakeskinBoots
+
+- type: loadout
+  id: ClothingShoesHighheelBoots
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesHighheelBoots
+
+- type: loadout
+  id: ClothingShoesBootsCowboyFancy
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsCowboyFancy
+
+- type: loadout
+  id: ClothingShoesBootsWinterChiefEngineer
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterChiefEngineer
+
+- type: loadout
+  id: ClothingShoesBootsWinterCMO
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterCMO
+
+- type: loadout
+  id: ClothingShoesBootsWinterQM
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterQM
+
+- type: loadout
+  id: ClothingShoesBootsWinterRD
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterRD
+
+- type: loadout
+  id: ClothingShoesBootsWinterClown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterClown
+
+- type: loadout
+  id: ClothingShoesBootsWinterMime
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsWinterMime
+
+- type: loadout
+  id: ClothingShoesClown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesClown
+
+- type: loadout
+  id: ClothingShoesJester
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesJester
+
+- type: loadout
+  id: ClothingShoesBootsPerformer
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBootsPerformer
+
+- type: loadout
+  id: ClothingShoesSkates
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesSkates
+
+#T3 for lols
+- type: loadout
+  id: ClothingShoesClownLarge
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesClownLarge
+
+- type: loadout
+  id: ClothingShoesBling
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+    shoes: ClothingShoesBling
+
+# Starlight clothing
+- type: loadout
+  id: ClothingShoesHighheelShoes
+  price: 0
+  equipment:
+    shoes: ClothingShoesHighheelShoes
+
+- type: loadout
+  id: ClothingShoesBloodstainedAristocratBoots
+  price: 0
+  equipment:
+    shoes: ClothingShoesBloodstainedAristocratBoots
+
+- type: loadout
+  id: ClothingShoesTallBlackFurBoots
+  price: 0
+  equipment:
+    shoes: ClothingShoesTallBlackFurBoots
+

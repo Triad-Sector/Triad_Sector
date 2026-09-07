@@ -1,0 +1,331 @@
+
+- type: loadout
+  id: ClothingNeckScarfStripedBlack
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedBlack
+
+- type: loadout
+  id: ClothingNeckScarfStripedBlue
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedBlue
+
+- type: loadout
+  id: ClothingNeckScarfStripedBrown
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedBrown
+
+- type: loadout
+  id: ClothingNeckScarfStripedGreen
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedGreen
+
+- type: loadout
+  id: ClothingNeckScarfStripedSyndieGreen
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedSyndieGreen
+
+- type: loadout
+  id: ClothingNeckScarfStripedSyndieRed
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfStripedSyndieRed
+
+- type: loadout
+  id: ClothingNeckTieBH
+  price: 0
+  equipment:
+    neck: ClothingNeckTieBH
+
+- type: loadout
+  id: ClothingNeckTieRed
+  price: 0
+  equipment:
+    neck: ClothingNeckTieRed
+
+- type: loadout
+  id: ClothingNeckTieSci
+  price: 0
+  equipment:
+    neck: ClothingNeckTieSci
+
+- type: loadout
+  id: ClothingNeckLawyerbadge
+  price: 0
+  equipment:
+    neck: ClothingNeckLawyerbadge
+
+- type: loadout
+  id: ClothingNeckCrucifix
+  price: 0
+  equipment:
+    neck: ClothingNeckCrucifix
+
+- type: loadout
+  id: SLCDDogtags
+  price: 0
+  equipment:
+    neck: CDDogtags
+
+- type: loadout
+  id: ClothingNeckStethoscope
+  price: 0
+  equipment:
+    neck: ClothingNeckStethoscope
+
+- type: loadout
+  id: ClothingOuterPoncho
+  price: 0
+  equipment:
+    neck: ClothingOuterPoncho
+
+- type: loadout
+  id: ClothingOuterPonchoClassic
+  price: 0
+  equipment:
+    neck: ClothingOuterPonchoClassic
+
+- type: loadout
+  id: ClothingNeckCloakCap
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakCap
+
+- type: loadout
+  id: ClothingNeckCloakMiner
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakMiner
+
+- type: loadout
+  id: ClothingNeckCloakMoth
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakMoth
+
+- type: loadout
+  id: ClothingNeckScarfChaplainStole
+  price: 0
+  equipment:
+    neck: ClothingNeckScarfChaplainStole
+
+- type: loadout
+  id: ClothingNeckStoleChaplain
+  price: 0
+  equipment:
+    neck: ClothingNeckStoleChaplain
+
+- type: loadout
+  id: ClothingNeckCloakTrans
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakTrans
+
+- type: loadout
+  id: ClothingNeckCloakAro
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakAro
+
+- type: loadout
+  id: ClothingNeckCloakAce
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakAce
+
+- type: loadout
+  id: ClothingNeckCloakBi
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakBi
+
+- type: loadout
+  id: ClothingNeckCloakIntersex
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakIntersex
+
+- type: loadout
+  id: ClothingNeckCloakEnby
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakEnby
+
+- type: loadout
+  id: ClothingNeckCloakPan
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakPan
+
+- type: loadout
+  id: ClothingNeckCloakGay
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakGay
+
+- type: loadout
+  id: ClothingNeckCloakLesbian
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakLesbian
+
+- type: loadout
+  id: ClothingNeckMantleHOS
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleHOS
+
+- type: loadout
+  id: ClothingNeckCloakHos
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakHos
+
+- type: loadout
+  id: SLBedsheetRainbow
+  price: 0
+  equipment:
+    neck: BedsheetRainbow
+
+- type: loadout
+  id: ClothingNeckIFFNeutral
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFNeutral
+
+- type: loadout
+  id: ClothingNeckIFFGreen
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFGreen
+
+- type: loadout
+  id: ClothingNeckIFFRed
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFRed
+
+- type: loadout
+  id: ClothingNeckIFFBlue
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFBlue
+
+- type: loadout
+  id: ClothingNeckIFFCyan
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFCyan
+
+- type: loadout
+  id: ClothingNeckIFFOrange
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFOrange
+
+- type: loadout
+  id: ClothingNeckIFFPurple
+  price: 0
+  equipment:
+    neck: ClothingNeckIFFPurple
+
+- type: loadout
+  id: ClothingNeckMantleCap
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleCap
+
+- type: loadout
+  id: ClothingNeckCloakCapFormal
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakCapFormal
+
+- type: loadout
+  id: ClothingNeckCloakQm
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakQm
+
+- type: loadout
+  id: ClothingNeckMantleQM
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleQM
+
+- type: loadout
+  id: ClothingCloakCmo
+  price: 0
+  equipment:
+    neck: ClothingCloakCmo
+
+- type: loadout
+  id: ClothingNeckMantleCMO
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleCMO
+
+- type: loadout
+  id: ClothingNeckCloakRd
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakRd
+
+- type: loadout
+  id: ClothingNeckMantleRD
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleRD
+
+- type: loadout
+  id: ClothingNeckCloakCe
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakCe
+
+- type: loadout
+  id: ClothingNeckMantleCE
+  price: 0
+  equipment:
+    neck: ClothingNeckMantleCE
+
+- type: loadout
+  id: ClothingNeckCloakVoid
+  price: 0
+  equipment:
+    neck: ClothingNeckCloakVoid
+
+- type: loadout
+  id: ClothingNeckBling
+  price: 0
+  equipment:
+    neck: ClothingNeckBling
+
+- type: loadout
+  id: ClothingNeckBlackFurCloak
+  price: 0
+  equipment:
+    neck: ClothingNeckBlackFurCloak
+
+- type: loadout
+  id: ClothingNeckBloodstainedAristocratCloak
+  price: 0
+  equipment:
+    neck: ClothingNeckBloodstainedAristocratCloak
+
+- type: loadout
+  id: ClothingNeckNobleMantle
+  price: 0
+  equipment:
+    neck: ClothingNeckNobleMantle
+
+- type: loadout
+  id: RedRegaliaCloak
+  price: 0
+  equipment:
+    neck: RedRegaliaCloak
+

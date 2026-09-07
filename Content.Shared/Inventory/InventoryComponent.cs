@@ -39,6 +39,13 @@ public sealed partial class InventoryComponent : Component
     /// </summary>
     [DataField]
     public List<string> RelayBlockedSlots = new();
+
+    /// <summary>
+    /// Triad - Alternate displacement maps used by clothing marked as requiring
+    /// skirt-specific displacement.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, DisplacementData> SkirtDisplacements = new();
 }
 
 /// <summary>

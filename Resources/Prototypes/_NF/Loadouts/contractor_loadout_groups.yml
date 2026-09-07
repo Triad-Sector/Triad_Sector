@@ -218,6 +218,84 @@
   - ClothingUniformIndustrialWorker
   - StrainedShorts
   # End Triad
+  # Triad start - Ported Starlight clothes
+  - BodysuitJeansUniformSuit
+  - CamoUniformSuit
+  - CandyClownUniformSuit
+  - CargoOverallsUniformSuit
+  - ClothingUniformColorJumpskirtRainbow
+  - ClothingUniformNobleSuit
+  - ClothingUniformElegantLadyDress
+  - ClothingUniformJulianneVA11HALLA
+  - ClothingUniformJumpskirtCapTurtleneck
+  - ClothingUniformJumpskirtCargoFormal
+  - ClothingUniformJumpskirtCargoSalvage
+  - ClothingUniformJumpskirtCargoSalvageFormal
+  - ClothingUniformJumpskirtClownFormal
+  - ClothingUniformJumpskirtDressRed
+  - ClothingUniformJumpskirtElegantMaid
+  - ClothingUniformJumpskirtGothic
+  - ClothingUniformJumpskirtHoPTurtleneck
+  - ClothingUniformJumpskirtHoSBlack
+  - ClothingUniformJumpskirtJournalist
+  - ClothingUniformJumpskirtMaid
+  - ClothingUniformJumpskirtMiningSpecialist
+  - ClothingUniformJumpskirtPencilTan
+  - ClothingUniformJumpskirtPerformerClown
+  - ClothingUniformJumpskirtPerformerMime
+  - ClothingUniformJumpskirtRDClassical
+  - ClothingUniformJumpskirtReporter
+  - ClothingUniformJumpskirtSalvageLead
+  - ClothingUniformJumpskirtSchool
+  - ClothingUniformJumpskirtScientistFormal
+  - ClothingUniformJumpskirtTango
+  - ClothingUniformJumpskirtVictorianBlack
+  - ClothingUniformJumpskirtVictorianRed
+  - ClothingUniformJumpsuitAerostatic
+  - ClothingUniformJumpsuitCaptainNoble
+  - ClothingUniformJumpsuitCapTurtleneck
+  - ClothingUniformJumpsuitCargoAlt
+  - ClothingUniformJumpsuitCargoFormal
+  - ClothingUniformJumpsuitClownFormal
+  - ClothingUniformJumpsuitHoPTurtleneck
+  - ClothingUniformJumpsuitHoSBlack
+  - ClothingUniformJumpsuitMimeSuaveBlack
+  - ClothingUniformJumpsuitMimeSuaveWhite
+  - ClothingUniformJumpsuitPerformerClown
+  - ClothingUniformJumpsuitPerformerMime
+  - ClothingUniformJumpsuitRDClassical
+  - ClothingUniformJumpsuitSalvageFormal
+  - ClothingUniformJumpsuitSuitCheckered
+  - ClothingUniformJumpsuitSuitTan
+  - ClothingUniformJumpsuitSuitWaiter
+  - ClothingUniformJumpsuitSuperstarCop
+  - ClothingUniformJumpsuitVampir
+  - ClothingUniformPastryDress
+  - CoolTanktopUniformSuit
+  - DruidRobesUniformSuit
+  - FlamboyantUniformSuit
+  - FlamencoUniformSuit
+  - FlyCaptainUniformSuit
+  - KiltUniformSuit
+  - LilacDressUniformSuit
+  - LittleBlackDressUniformSuit
+  - LumberjackOverallsUniformSuit
+  - MechanicOverallsUniformSuit
+  - MessyDressShirtUniformSuit
+  - MimeFrillsUniformSuit
+  - OldWomanUniformSuit
+  - PunkJeansUniformSuit
+  - RedRegaliaSuit
+  - RefereeUniformSuit
+  - SailorUniformSuit
+  - SpottedClownUniformSuit
+  - StripedClownUniformSuit
+  - SundressUniformSuit
+  - TatteredClothesUniformSuit
+  - TieDyeUniformSuit
+  - TogaUniformSuit
+  - VintageUniformSuit
+  # End Triad
 
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
@@ -515,6 +593,11 @@
   - ContractorClothingShoesSkates
   - ContractorClothingShoesClownLarge
   - ContractorClothingShoesBling
+  # Triad start - Ported Starlight
+  - ClothingShoesTallBlackFurBoots
+  - ClothingShoesHighheelShoes
+  - ClothingShoesBloodstainedAristocratBoots
+  # End Triad
   fallbacks:
   - ContractorClothingShoesColorBlack
 
@@ -604,6 +687,10 @@
   - ContractorClothingHeadHatTophat
   - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
+  # Triad start - Ported Starlight
+  - ClothingHeadWideBrimGildedHat
+  - RedRegaliaHat
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorEars
@@ -724,6 +811,12 @@
   - ContractorClothingNeckMantleBH # Mono
   - ContractorClothingNeckCloakSanabi # Mono
   - ContractorClothingNeckUIOvercoat # Mono
+  # Triad start - Ported Starlight
+  - ClothingNeckNobleMantle
+  - RedRegaliaCloak
+  - ClothingNeckBloodstainedAristocratCloak
+  - ClothingNeckBlackFurCloak
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorPDA
@@ -1027,3 +1120,4 @@
   loadouts:
   - ContractorArmorPlateBlunt_Slash
   - ContractorArmorPlatePierce
+

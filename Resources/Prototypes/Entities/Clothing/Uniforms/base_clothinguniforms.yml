@@ -53,6 +53,7 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   abstract: true
@@ -80,6 +81,7 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   abstract: true
