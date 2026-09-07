@@ -37,6 +37,7 @@
   # Triad: Foreigners can have more languages than standard
   grantsCategorySlots:
     LanguageTraits: 2
+  priority: -2 # Triad - Lower priority so language traits are applied first
   effects:
   - !type:AddCompsEffect
     components:
