@@ -51,7 +51,7 @@
   id: JobPlantTechnician
   groups:
   - PlantTechnicianHead
-  - PlantTechnicianNeck
+  - ContractorNeck
   - PlantTechnicianJumpsuit
   - PlantGloves
   - PlantTechnicianBackpack

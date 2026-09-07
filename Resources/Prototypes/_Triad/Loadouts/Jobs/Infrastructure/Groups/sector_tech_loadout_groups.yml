@@ -25,13 +25,6 @@
   - ContractorClothingBeltUtilityFilled
 
 - type: loadoutGroup
-  id: PlantTechnicianNeck
-  name: loadout-group-plant-technician-neck
-  minLimit: 0
-  loadouts:
-  - ClothingNeckScarfStripedOrange
-
-- type: loadoutGroup
   id: PlantTechnicianJumpsuit
   name: loadout-group-plant-technician-jumpsuit
   minLimit: 1

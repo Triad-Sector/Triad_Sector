@@ -7,6 +7,5 @@ loadout-group-plant-ears = headset
 loadout-group-plant-manager-jumpsuit = jumpsuit
 loadout-group-plant-manager-backpack = backpack
 loadout-group-plant-technician-head = head
-loadout-group-plant-technician-neck = neck
 loadout-group-plant-technician-jumpsuit = jumpsuit
 loadout-group-plant-technician-backpack = backpack
