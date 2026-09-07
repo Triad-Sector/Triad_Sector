@@ -2,6 +2,18 @@
 # Copyright (c) 2025 Triad Contributors
 # See AGPLv3.txt for details.
 
+trait-linguist-name = Linguist
+trait-linguist-desc = [italic]You are capable of speaking and understanding more languages.[/italic]
+
+    • 2 additional language trait points.
+
+trait-polyglot-name = Polyglot
+trait-polyglot-desc = [italic]You can speak and understand many languages.[/italic]
+
+    • 4 additional language trait points.
+
+## Accents
+
 trait-newbrooklyn-accent-name = New Brooklyn
 trait-newbrooklyn-accent-desc = Ey, yous talk like da old borough back on Earth. Pizza, da garage, walkin' heeyah, ya know?
 
