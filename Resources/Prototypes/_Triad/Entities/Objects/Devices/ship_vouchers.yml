@@ -27,7 +27,7 @@
     companyName: TDF
     vessels:
     - Jester
-    - Fling
+    - Shepherd
 
 - type: entity
   parent: [BaseShipDSID, BaseClass2AShipContraband]
@@ -48,7 +48,7 @@
     vessels:
     - Grunder
     - Jester
-    - Fling
+    - Shepherd
 
 - type: entity
   parent: [BaseShipDSID, BaseClass2AShipContraband]
