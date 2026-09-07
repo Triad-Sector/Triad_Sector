@@ -35,11 +35,13 @@ namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem : SharedGunSystem
 {
+    [Dependency] private IComponentFactory _factory = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
     [Dependency] private PricingSystem _pricing = default!;
     [Dependency] private SharedColorFlashEffectSystem _color = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private StaminaSystem _stamina = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private RequireProjectileTargetSystem _requireProjectileTarget = default!;

@@ -27,7 +27,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Damage.Systems;
 
-public sealed partial class StaminaSystem : EntitySystem
+public abstract partial class SharedStaminaSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
@@ -118,7 +118,7 @@ public sealed partial class StaminaSystem : EntitySystem
         Dirty(uid, component);
     }
 
-    private void OnDisarmed(EntityUid uid, StaminaComponent component, DisarmedEvent args)
+    private void OnDisarmed(EntityUid uid, StaminaComponent component, ref DisarmedEvent args)
     {
         if (args.Handled)
             return;
