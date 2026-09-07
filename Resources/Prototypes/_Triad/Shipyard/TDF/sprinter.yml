@@ -1,0 +1,38 @@
+# Author: SUI
+# Discord: SUI
+
+- type: vessel
+  id: Sprinter
+  parent: BaseVessel
+  name: TDF Sprinter
+  description: TDF's medium sized cargo vessel designed for high speed maneuvers. This ship is often used to transport contraband and TDF equipment between outposts. Its low-power gunnery make it a poor choice for ship combat, but its ability to move at high speed makes it excel at pursuing criminals.
+  price: 73000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/sprinter.yml
+  guidebookPage: Null
+  class:
+  - Cargo
+  - Corvette
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Sprinter
+  mapName: 'Sprinter'
+  mapPath: /Maps/_Triad/Shuttles/TDF/sprinter.yml
+  minPlayers: 0
+  stations:
+    Sprinter:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Sprinter TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+
