@@ -1,0 +1,38 @@
+# Author: Deox
+# Discord: deoxnirvislyfer_
+
+- type: vessel
+  id: Basilisk
+  parent: BaseVesselTdf
+  name: TDF Basilisk
+  description: Created during the highest fervor of liberation, basilisk are designed to be the main battleline of CDF, now TDF fleet composition. It's armaments of 4 CYREXA and 4 AK570 are aimed to punish those who enter it's line of sight, but it will struggle to maintain it's flank security.
+  price: 192000
+  category: Medium
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_Triad/Shuttles/TDF/basilisk.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  engine:
+  - AME
+
+- type: gameMap
+  id: basilisk
+  mapName: 'basilisk'
+  mapPath: /Maps/_Triad/Shuttles/TDF/basilisk.yml
+  minPlayers: 0
+  stations:
+    basilisk:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Basilisk TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]
+
+
