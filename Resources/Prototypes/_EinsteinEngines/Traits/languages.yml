@@ -33,9 +33,8 @@
   name: trait-language-foreigner-name
   description: trait-language-foreigner-desc
   category: LanguageTraits
-  cost: 0 # Triad: languages are free; Foreigner pays its way by granting extra language slots, not points.
-  # Triad: Foreigner is "you're from elsewhere, so you know other tongues". It raises the LanguageTraits
-  # cap by 2 (tune this dial), so a foreigner can pick more languages than a local would.
+  cost: 0
+  # Triad: Foreigners can have more languages than standard
   grantsCategorySlots:
     LanguageTraits: 2
   effects:
