@@ -1,0 +1,41 @@
+﻿# Author Info
+# Meli Klepka
+# Discord Szneks
+
+# Shuttle Notes: KFU Bies
+#
+
+- type: vessel
+  id: Bies
+  parent: BaseVessel
+  name: KFU Bies
+  description: Bulky first prototype model from Klepka Freelance Union Shipyard equipped with six M25 Mining cannons,small cargo space, medbay, crew quarters, all powered by stock Z-Pinch reactor.
+  price: 95400
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/CIV/bies.yml
+  #guidebookPage: ShipyardBies
+  class:
+  - Salvage
+  engine:
+  - plasma
+
+- type: gameMap
+  id: Bies
+  mapName: 'Bies'
+  mapPath: /Maps/_Triad/Shuttles/CIV/bies.yml
+  minPlayers: 0
+  stations:
+    Erudite:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Bies CIV{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Contractor: [ 0, 0 ]
+          Pilot: [ 0, 0 ]
+          Mercenary: [ 0, 0 ]
