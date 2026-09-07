@@ -29,7 +29,7 @@
   name: loadout-group-plant-technician-neck
   minLimit: 0
   loadouts:
-  - PlantScarfStripedOrange
+  - ClothingNeckScarfStripedOrange
 
 - type: loadoutGroup
   id: PlantTechnicianJumpsuit
