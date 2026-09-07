@@ -1,0 +1,29 @@
+- type: loadout
+  id: MimePerformerSuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPerformerMime
+
+- type: loadout
+  id: MimePerformerSkirt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformerMime
+
+- type: loadout
+  id: MimeSuaveWhite
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveWhite
+
+- type: loadout
+  id: MimeSuaveBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveBlack
+
+- type: loadout
+  id: MimeFrillsDress
+  price: 0
+  equipment:
+    jumpsuit: MimeFrillsUniformSuit

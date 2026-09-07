@@ -1,0 +1,11 @@
+- type: loadout
+  id: CircusClownHat
+  price: 0
+  equipment:
+    head: ClothingHeadHatCircusClown
+
+- type: loadout
+  id: CircusClownSuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformCircusClown
