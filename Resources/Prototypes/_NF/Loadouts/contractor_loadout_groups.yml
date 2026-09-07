@@ -297,8 +297,8 @@
   - ContractorClothingBackpackSatchelDrakeIndustries
   # Triad start
   - ClothingBackpackMilitary
-  - ClothingBackpackSatchelMilitary
   - ClothingBackpackDuffelMilitary
+  - ClothingBackpackSatchelMilitary
   # Triad end
   - ContractorClothingBackpackClown
   - ContractorClothingBackpackDuffelClown
