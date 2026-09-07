@@ -1,0 +1,192 @@
+<!-- Triad : This whole view is edited and modified for server needs. -->
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      MinSize="900 850"
+                      SetSize="900 600"
+                      Resizable="false"
+                      Title="{Loc 'safety-deposit-console-title'}">
+    <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 8 0 2">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderThickness="7" BorderColor="#252525" BackgroundColor="#3d474d"/>
+        </PanelContainer.PanelOverride>
+        <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="4 4 4 4">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#181818"/>
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" Margin="5 0 5 0">
+                <!-- Main purchase area: Left grid + Right detail (styled like ContrabandPermitConsoleWindow) -->
+                <BoxContainer Orientation="Horizontal"
+                              VerticalExpand="True"
+                              HorizontalExpand="True">
+                    <!-- Left: Available boxes -->
+                    <BoxContainer Orientation="Vertical"
+                                  VerticalExpand="True"
+                                  HorizontalExpand="True"
+                                  Margin="10 10 10 10">
+                        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#181818"/>
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Vertical" Margin="10" VerticalExpand="True" HorizontalExpand="True">
+                                <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                                    <PanelContainer.PanelOverride>
+                                        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
+                                    </PanelContainer.PanelOverride>
+                                    <PanelContainer Margin="1 1 1 1">
+                                        <PanelContainer.PanelOverride>
+                                            <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
+                                        </PanelContainer.PanelOverride>
+                                        <BoxContainer Orientation="Horizontal" Margin="1 1">
+                                            <GridContainer Name="AvailableBoxesGrid"
+                                                           Columns="2"
+                                                           HorizontalExpand="True"
+                                                           HSeparationOverride="8"
+                                                           VSeparationOverride="8"/>
+                                        </BoxContainer>
+                                    </PanelContainer>
+                                </PanelContainer>
+                            </BoxContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" Margin="0 10 0 10"/>
+
+                    <!-- Right: Detail panel + sprite -->
+                    <BoxContainer Orientation="Vertical"
+                                  VerticalExpand="True"
+                                  HorizontalExpand="True"
+                                  Margin="10 10 10 10"
+                                  HorizontalAlignment="Center">
+                        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#181818"/>
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Vertical" Margin="10" VerticalExpand="True" HorizontalExpand="True">
+                                <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                                    <PanelContainer.PanelOverride>
+                                        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
+                                    </PanelContainer.PanelOverride>
+                                    <PanelContainer Margin="1 1 1 1">
+                                        <PanelContainer.PanelOverride>
+                                            <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
+                                        </PanelContainer.PanelOverride>
+                                        <BoxContainer Orientation="Vertical" Margin="10" VerticalExpand="True" HorizontalExpand="True">
+                                            <RichTextLabel Name="SelectedBoxNameLabel"
+                                                HorizontalExpand="True"
+                                                HorizontalAlignment="Center"
+                                                StyleClasses="LabelHeading"
+                                                MaxWidth="320"
+                                                Margin="5 0 2 0"/>
+                                            <RichTextLabel Name="SelectedBoxDescriptionLabel"
+                                                HorizontalExpand="True"
+                                                HorizontalAlignment="Center"
+                                                MinWidth="400"
+                                                MaxWidth="400"
+                                                Margin="0 2 0 10"/>
+                                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 10">
+                                                <Label Text="{Loc 'safety-deposit-console-price-label'}"
+                                                    StyleClasses="LabelHeading"
+                                                    VerticalAlignment="Center"/>
+                                                <Control HorizontalExpand="True"/>
+                                                <Label Name="SelectedBoxPriceLabel"
+                                                    Text="-"
+                                                    StyleClasses="LabelHeading"
+                                                    VerticalAlignment="Center"/>
+                                            </BoxContainer>
+                                            <PanelContainer StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 4">
+                                                <Label Text="{Loc 'safety-deposit-console-your-balance'}"
+                                                    StyleClasses="LabelSubText"
+                                                    VerticalAlignment="Center"/>
+                                                <Control HorizontalExpand="True"/>
+                                                <Label Name="BankBalanceLabel"
+                                                    Text="$0"
+                                                    StyleClasses="LabelHeading"
+                                                    VerticalAlignment="Center"/>
+                                            </BoxContainer>
+                                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 5">
+                                                <Label Text="{Loc 'safety-deposit-console-after-purchase'}"
+                                                    StyleClasses="LabelSecondaryColor"
+                                                    VerticalAlignment="Center"/>
+                                                <Control HorizontalExpand="True"/>
+                                                <Label Name="BalanceAfterLabel"
+                                                    Text="-"
+                                                    VerticalAlignment="Center"/>
+                                            </BoxContainer>
+                                            <Label Name="InsufficientFundsLabel"
+                                                Text="{Loc 'safety-deposit-console-insufficient-funds'}"
+                                                FontColorOverride="Red"
+                                                Visible="False"
+                                                HorizontalAlignment="Center"
+                                                Margin="0 0 0 5"
+                                                StyleClasses="LabelSubText"/>
+                                            <Control VerticalExpand="True"/>
+                                            <Button Name="BuyButton"
+                                                    HorizontalExpand="True"
+                                                    Margin="0 10 0 0"
+                                                    SetHeight="40"
+                                                    Text="{Loc 'safety-deposit-console-buy-button'}">
+                                            </Button>
+                                        </BoxContainer>
+                                    </PanelContainer>
+                                </PanelContainer>
+                            </BoxContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+                </BoxContainer>
+
+                <PanelContainer StyleClasses="LowDivider" Margin="0 5 0 5"/>
+
+                <!-- Deposit Box Section (same #1B1B1E panel as ContrabandPermit left panel) -->
+                <PanelContainer Margin="5 5 5 5">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Orientation="Horizontal" Margin="10" HorizontalExpand="True">
+                        <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalExpand="True">
+                            <Label Text="{Loc 'safety-deposit-console-deposit-section'}"
+                                   StyleClasses="LabelHeading"
+                                   Margin="0 0 0 4"/>
+                            <PanelContainer StyleClasses="LowDivider" Margin="0 2 0 4"/>
+                            <Label Name="BoxSlotLabel"
+                                   Text="{Loc 'safety-deposit-console-no-box-in-slot'}"
+                                   StyleClasses="LabelSecondaryColor"/>
+                        </BoxContainer>
+                        <Button Name="DepositButton"
+                                Text="{Loc 'safety-deposit-console-deposit-button'}"
+                                VerticalAlignment="Center"
+                                MinSize="140 35"
+                                StyleClasses="OpenBoth"
+                                Margin="10 0 0 0">
+                        </Button>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- Owned Boxes List -->
+                <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="5 5 5 0">
+                    <Label Text="{Loc 'safety-deposit-console-owned-boxes'}"
+                           StyleClasses="LabelHeading"
+                           Margin="0 0 0 5"/>
+                    <PanelContainer StyleClasses="LowDivider" Margin="0 0 0 5"/>
+                    <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                        <BoxContainer Name="OwnedBoxesContainer"
+                                      Orientation="Vertical"
+                                      VerticalExpand="True"
+                                      SeparationOverride="2"/>
+                    </ScrollContainer>
+                </BoxContainer>
+
+                <!-- Footer (like ContrabandPermit) -->
+                <BoxContainer Orientation="Vertical" Margin="0 5 0 0">
+                    <PanelContainer StyleClasses="LowDivider"/>
+                    <BoxContainer Margin="10,2,5,0" Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Label StyleClasses="WindowFooterText" Text="{Loc 'safety-deposit-console-header'}"/>
+                        <Control HorizontalExpand="True"/>
+                        <Label StyleClasses="WindowFooterText" Text="{Loc 'safety-deposit-console-bank-payment-note'}"/>
+                    </BoxContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+    </PanelContainer>
+</controls:FancyWindow>
