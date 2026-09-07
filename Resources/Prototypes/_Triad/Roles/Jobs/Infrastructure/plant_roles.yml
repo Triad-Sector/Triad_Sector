@@ -10,7 +10,7 @@
   startingGear: PlantManagerGear
   alwaysUseSpawner: true
   icon: "JobIconPlantManager"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   assignedCompany: Colonial
   canBeAntag: false
   setPreference: true
