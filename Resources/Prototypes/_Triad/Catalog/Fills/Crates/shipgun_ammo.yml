@@ -1,0 +1,10 @@
+- type: entity
+  parent: CrateAmmoSecureMercenary
+  id: CrateAmmoBox35mm
+  name: AC-35 35mm solid drum box
+  description: Contains one box of 35mm solid ammunition. Provides an artillery piece with infinite solid rounds. Buy in case you lost the ammo it came with.
+  components:
+  - type: StorageFill
+    contents:
+    - id: Magazine35mm
+      amount: 1

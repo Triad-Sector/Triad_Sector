@@ -1,0 +1,21 @@
+# 35mm - Chaingun
+
+- type: entity
+  id: 35mmBulletAP
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 270
+  - type: ShipWeaponProjectile
+  - type: TimedDespawn
+    lifetime: 2.2
+  - type: PointLight
+    radius: 3.5
+    energy: 0.5
+  - type: RadarBlip
+    scale: 1.15
+    shape: arrow
+    radarColor: "#1df1f5"
