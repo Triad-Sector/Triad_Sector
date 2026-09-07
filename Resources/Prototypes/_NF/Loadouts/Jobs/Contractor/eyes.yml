@@ -29,7 +29,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT1
-  price: 500
+  #price: 500 # Triad removal
   equipment:
     eyes: ClothingEyesGlassesJamjar
 
