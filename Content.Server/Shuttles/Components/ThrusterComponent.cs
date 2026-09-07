@@ -4,6 +4,8 @@ using Content.Server.Shuttles.Systems;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking; // Frontier
+using Content.Shared.Whitelist; // Triad
+using Robust.Shared.Audio; // Triad
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Prototypes;
@@ -53,7 +55,34 @@ namespace Content.Server.Shuttles.Components
 
         // Used for burns
 
-        public List<EntityUid> Colliding = new();
+        // Triad start
+        [ViewVariables]
+        public HashSet<EntityUid> Colliding = new();
+
+        [DataField]
+        public LocId BurnPopupOther = "thruster-comp-burn-others";
+
+        [DataField]
+        public LocId BurnPopupSelf = "thruster-comp-burn-self";
+
+        [DataField]
+        public SoundSpecifier? BurnSound = new SoundPathSpecifier("/Audio/Effects/lightburn.ogg");
+
+        [DataField]
+        public float MaximumThrusterBurnRange = 5.5f;
+
+        [DataField]
+        public float MaximumMobThrusterBurnRange = 2.0f;
+
+        [DataField]
+        public float MobBurnDamageMultiplier = 0.3f;
+
+        [DataField]
+        public float DistanceBurnDamageMultiplier = 0.85f;
+
+        [DataField]
+        public List<ThrusterBlockRay> BlockCheckRays = new();
+        // Triad end
 
         public bool Firing = false;
 
@@ -97,6 +126,24 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         [DataField]
         public float HeatSignatureRatio = 40f;
+
+        /// <summary>
+        ///     Triad - Which type of entities block thruster paths?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BlockThrusterWhitelist;
+
+        /// <summary>
+        ///     Triad - Which type of entities can be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnWhitelist;
+
+        /// <summary>
+        ///     Triad - Which type of entities cannot be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnBlacklist;
     }
 
     public enum ThrusterType
@@ -105,4 +152,24 @@ namespace Content.Server.Shuttles.Components
         // Angular meaning rotational.
         Angular,
     }
+
+    // Triad Start
+    [DataDefinition]
+    public sealed partial class ThrusterBlockRay
+    {
+        /// </summary>
+        /// The direction/angle the raycast goes, relative to the entity's rotation.
+        /// Remember that a standard thruster's fire faces "south"
+        /// </summary>
+        [DataField]
+        public Direction Angle = Direction.Invalid;
+
+        /// <summary>
+        /// How much is the ray offset from the 'origin' of the entity's position?
+        /// Useful for large thrusters where their 'origin' is on the tile they rotate by.
+        /// </summary>
+        [DataField]
+        public Vector2 OriginOffset = Vector2.Zero;
+    }
+    // Triad end
 }
