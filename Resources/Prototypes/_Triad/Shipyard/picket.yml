@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: starch70
+# Discord: _starch_
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Picket
+  parent: BaseVessel
+  name: WF Picket
+  description: First in line for rescue operation within the outer reach of the sector. Equipped with 3 Marauders, it designed to disable drone and extract stranded spacer with mobility to minimize damage. This adhoc solution come at a cost of durability and space due to hasty construction.
+  price: 45500
+  category: Small
+  group: Medical
+  shuttlePath: /Maps/_Triad/Shuttles/Medical/picket.yml
+  guidebookPage: null
+  class:
+  - Medical
+  engine:
+  - Bananium
+
+- type: gameMap
+  id: Picket
+  mapName: 'WF Picket'
+  mapPath: /Maps/_Triad/Shuttles/Medical/picket.yml
+  minPlayers: 0
+  stations:
+    Picket:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Picket MED{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            MdMedic: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
