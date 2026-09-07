@@ -1,0 +1,17 @@
+- type: speechSounds
+  id: Ghost
+  saySound:
+    path: /Audio/_Triad/Hardsuits/GhostlightVoiceSynth.ogg
+  askSound:
+    path: /Audio/_Triad/Hardsuits/GhostlightVoiceSynth.ogg
+  exclaimSound:
+    path: /Audio/_Triad/Hardsuits/GhostlightVoiceSynth.ogg
+
+- type: speechSounds
+  id: Ghost2
+  saySound:
+    path: /Audio/_Triad/Hardsuits/PilotHelm.ogg
+  askSound:
+    path: /Audio/_Triad/Hardsuits/PilotHelm.ogg
+  exclaimSound:
+    path: /Audio/_Triad/Hardsuits/PilotHelm.ogg
