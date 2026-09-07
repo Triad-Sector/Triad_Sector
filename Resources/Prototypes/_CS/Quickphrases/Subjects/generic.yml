@@ -160,25 +160,25 @@
 
 # Lewd Phrases
 
-- type: quickPhrase
-  id: ButtPhrase
-  parent: BaseSubjectPhrase
-  text: phrase-butt
+# - type: quickPhrase
+#   id: ButtPhrase
+#   parent: BaseSubjectPhrase
+#   text: phrase-butt
 
-- type: quickPhrase
-  id: WeinerPhrase
-  parent: BaseSubjectPhrase
-  text: phrase-weiner
+# - type: quickPhrase
+#   id: WeinerPhrase
+#   parent: BaseSubjectPhrase
+#   text: phrase-weiner
 
-- type: quickPhrase
-  id: BallsPhrase
-  parent: BaseSubjectPhrase
-  text: phrase-balls
+# - type: quickPhrase
+#   id: BallsPhrase
+#   parent: BaseSubjectPhrase
+#   text: phrase-balls
 
-- type: quickPhrase
-  id: AssPhrase
-  parent: BaseSubjectPhrase
-  text: phrase-ass
+# - type: quickPhrase
+#   id: AssPhrase
+#   parent: BaseSubjectPhrase
+#   text: phrase-ass
 
 # Phonetic Alphabet
 
@@ -960,30 +960,30 @@
   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
   text: phrase-girlstink
 
-- type: quickPhrase
-  id: HeatPhrase
-  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
-  text: phrase-heat
+# - type: quickPhrase
+#   id: HeatPhrase
+#   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+#   text: phrase-heat
 
-- type: quickPhrase
-  id: InHeatPhrase
-  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
-  text: phrase-inheat
+# - type: quickPhrase
+#   id: InHeatPhrase
+#   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+#   text: phrase-inheat
 
-- type: quickPhrase
-  id: LatexPhrase
-  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
-  text: phrase-latex
+# - type: quickPhrase
+#   id: LatexPhrase
+#   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+#   text: phrase-latex
 
-- type: quickPhrase
-  id: MuskPhrase
-  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
-  text: phrase-musk
+# - type: quickPhrase
+#   id: MuskPhrase
+#   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+#   text: phrase-musk
 
-- type: quickPhrase
-  id: SkunkPhrase
-  parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
-  text: phrase-skunk
+# - type: quickPhrase
+#   id: SkunkPhrase
+#   parent: [BaseSubjectPhrase, BaseSmellLewdPhrase]
+#   text: phrase-skunk
 
 - type: quickPhrase
   id: SpaceweedPhrase
