@@ -4743,3 +4743,13 @@ Entries:
   id: 2594
   time: '2026-09-07T03:59:16.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/623
+- author: Nox38
+  changes:
+    - type: Remove
+      message: >-
+        A new motion by Triad Command requires safety fuses on hand grenades,
+        preventing chain reactions. Fragile canister gas grenades and EMP
+        grenades can still chain react.
+  id: 2595
+  time: '2026-09-07T04:07:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/615
