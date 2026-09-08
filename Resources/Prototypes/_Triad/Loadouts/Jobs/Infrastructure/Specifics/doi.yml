@@ -1,30 +1,10 @@
-- type: loadoutEffectGroup
-  id: SeniorDirectorOfInfrastructure
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobPlantManager
-      time: 36000 # 10 hrs
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Infrastructure
-      time: 216000 # 60 hrs
-
 - type: loadout
   id: SeniorDoIJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorDirectorOfInfrastructure
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
 
 - type: loadout
   id: SeniorDoIJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorDirectorOfInfrastructure
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
 
@@ -42,6 +22,3 @@
   id: DoIMantle
   equipment:
     neck: ClothingNeckMantleCE
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorDirectorOfInfrastructure
