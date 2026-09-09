@@ -118,7 +118,7 @@
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta82.rsi
   - type: PointLight
-    color: "#eb772a"
+    color: "#EACB67"
   - type: ThermalVision
     flashDurationMultiplier: 2
     pulseTime: 4
@@ -153,6 +153,8 @@
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta99x.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta99x.rsi
+  - type: PointLight
+    color: "#EACB67"
   - type: NightVision # Gen 4 quadtube
     relayOverlay: true
     goggleEffect: true
@@ -164,7 +166,7 @@
     lightingColor: "#FFFFFF32"
 
 - type: entity
-  parent: [ClothingHeadHelmetHardsuitSyndieElite, ShowSecurityIcons]
+  parent: [ClothingHeadHelmetHardsuitCybersun, ShowSecurityIcons]
   id: ClothingHeadHelmetHardsuitTdfCasket
   name: 'TA-67 "The Brick" helmet'
   description: The forehead reads, "STRIKE FACE."

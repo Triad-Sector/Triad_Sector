@@ -181,7 +181,7 @@ phrase-vanilla = vanilla
 phrase-warmhoney = warm honey
 phrase-weldingfuel = welding fuel
 phrase-wildflowers = wildflowers
-phrase-spaceweed = Spaceweed
+phrase-spaceweed = spaceweed
 
 # pride
 
