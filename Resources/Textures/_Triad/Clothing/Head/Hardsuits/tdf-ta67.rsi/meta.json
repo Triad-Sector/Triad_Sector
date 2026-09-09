@@ -1,7 +1,7 @@
 {
     "version": 2,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprited by @thoughtlessuser (Discord), on/off-equipped-HELMET-hydrakin sprite by Zethine / @synthetic_086 (discord), Vox modifications by 10KE | Vulp sprite by LexaSvarshik (github)",
+    "copyright": "Sprited by @thoughtlessuser (Discord), equipped-HELMET-hydrakin sprite by Zethine / @synthetic_086 (discord), Vox modifications by 10KE | Vulp sprite by LexaSvarshik (github)",
     "size": {
         "x": 32,
         "y": 32
@@ -14,43 +14,23 @@
             "name": "icon-flash"
         },
         {
-            "name": "off-equipped-HELMET-reptilian",
+            "name": "equipped-HELMET-reptilian",
             "directions": 4
         },
         {
-            "name": "on-equipped-HELMET-reptilian",
+            "name": "equipped-HELMET-hydrakin",
             "directions": 4
         },
         {
-            "name": "off-equipped-HELMET-hydrakin",
+            "name": "equipped-HELMET",
             "directions": 4
         },
         {
-            "name": "on-equipped-HELMET-hydrakin",
+            "name": "equipped-HELMET-vox",
             "directions": 4
         },
         {
-            "name": "off-equipped-HELMET",
-            "directions": 4
-        },
-        {
-            "name": "on-equipped-HELMET",
-            "directions": 4
-        },
-        {
-            "name": "off-equipped-HELMET-vox",
-            "directions": 4
-        },
-        {
-            "name": "on-equipped-HELMET-vox",
-            "directions": 4
-        },
-        {
-            "name": "off-equipped-HELMET-vulpkanin",
-            "directions": 4
-        },
-        {
-            "name": "on-equipped-HELMET-vulpkanin",
+            "name": "equipped-HELMET-vulpkanin",
             "directions": 4
         }
     ]
