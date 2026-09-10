@@ -28,13 +28,13 @@
 - type: roleLoadout
   id: JobPlantManager
   groups:
-  - ChiefEngineerHead
+  - ContractorHead
   - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
   - PlantManagerBackpack
-  - ChiefEngineerOuterClothing
-  - ChiefEngineerShoes
+  - DoIOuterClothing
+  - ContractorShoes
   - PlantFace
   - PlantGlasses
   - PlantEars
@@ -56,8 +56,8 @@
   - PlantTechnicianJumpsuit
   - PlantGloves
   - PlantTechnicianBackpack
-  - StationEngineerOuterClothing
-  - StationEngineerShoes
+  - ContractorOuterClothing
+  - ContractorShoes
   - PlantFace
   - PlantGlasses
   - PlantBelt

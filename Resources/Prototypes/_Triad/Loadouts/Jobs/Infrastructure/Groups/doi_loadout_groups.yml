@@ -34,3 +34,13 @@
   - PlantManagerMessengerBag
   fallbacks:
   - StationEngineerBackpack
+
+- type: loadoutGroup
+  id: DoIOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingOuterWinterCE
+  subgroups:
+  - ContractorOuterClothing

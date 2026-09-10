@@ -22,3 +22,8 @@
   id: DoIMantle
   equipment:
     neck: ClothingNeckMantleCE
+
+- type: loadout
+  id: ClothingOuterWinterCE
+  equipment:
+    neck: ClothingOuterWinterCE
