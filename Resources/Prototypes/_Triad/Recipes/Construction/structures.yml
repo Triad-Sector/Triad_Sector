@@ -42,7 +42,7 @@
   startNode: start
   targetNode: stairSteel
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_steel
@@ -59,7 +59,7 @@
   startNode: start
   targetNode: stairStageSteel
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_stage_steel
@@ -76,7 +76,7 @@
   startNode: start
   targetNode: stairWhite
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_white
@@ -93,7 +93,7 @@
   startNode: start
   targetNode: stairStageWhite
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_stage_white
@@ -110,7 +110,7 @@
   startNode: start
   targetNode: stairDark
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_dark
@@ -127,7 +127,7 @@
   startNode: start
   targetNode: stairStageDark
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_stage_dark
@@ -144,7 +144,7 @@
   startNode: start
   targetNode: stairWood
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_wood
@@ -161,7 +161,7 @@
   startNode: start
   targetNode: stairStageWood
   category: construction-category-structures
-  description: Ascend to new heights!
+  description: The greatest invention since rocket-propelled grenades.
   icon:
     sprite: Structures/stairs.rsi
     state: stairs_stage_wood
