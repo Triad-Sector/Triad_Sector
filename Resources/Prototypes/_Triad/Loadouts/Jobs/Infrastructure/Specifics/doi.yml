@@ -9,6 +9,11 @@
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
 
 - type: loadout
+  id: ClothingHeadHatHardhatWhite
+  equipment:
+    head: ClothingHeadHatHardhatWhite
+
+- type: loadout
   id: PlantManagerMessengerBag
   equipment:
     back: ClothingBackpackMessengerChiefEngineer

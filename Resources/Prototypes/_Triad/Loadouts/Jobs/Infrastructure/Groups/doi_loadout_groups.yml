@@ -15,6 +15,16 @@
   - ChiefEngineerJumpsuit
 
 - type: loadoutGroup
+  id: DoIHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatHardhatWhite
+  subgroups:
+  - PlantHead
+  - ContractorHead
+
+- type: loadoutGroup
   id: DoINeck
   name: loadout-group-contractor-neck
   minLimit: 0

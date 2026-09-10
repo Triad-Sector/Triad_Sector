@@ -28,7 +28,7 @@
 - type: roleLoadout
   id: JobPlantManager
   groups:
-  - ContractorHead
+  - DoIHead
   - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
@@ -51,7 +51,7 @@
 - type: roleLoadout
   id: JobPlantTechnician
   groups:
-  - PlantTechnicianHead
+  - PlantHead
   - ContractorNeck
   - PlantTechnicianJumpsuit
   - PlantGloves

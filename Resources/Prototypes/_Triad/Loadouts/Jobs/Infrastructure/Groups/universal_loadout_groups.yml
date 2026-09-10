@@ -2,6 +2,19 @@
 # kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
 # from the same loadout prototypes, plus a few plant-specific additions defined below.
 - type: loadoutGroup
+  id: PlantHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - StationEngineerHardhatOrange
+  - StationEngineerHardhatRed
+  - PlantHardhatBlue
+  - PlantEngineeringBeret
+  subgroups:
+  - ContractorHead
+
+- type: loadoutGroup
   id: PlantTools
   name: loadout-group-contractor-utility
   minLimit: 0
