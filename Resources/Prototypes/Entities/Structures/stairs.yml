@@ -35,6 +35,11 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairSteel
+# End of Triad Change
 
 - type: entity
   id: StairStage
@@ -45,6 +50,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_steel
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairStageSteel
+# End of Triad Change
 
 - type: entity
   id: StairWhite
@@ -55,6 +65,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_white
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairWhite
+# End of Triad Change
 
 - type: entity
   id: StairStageWhite
@@ -65,6 +80,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_white
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairStageWhite
+# End of Triad Change
 
 - type: entity
   id: StairDark
@@ -75,6 +95,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_dark
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairDark
+# End of Triad Change
 
 - type: entity
   id: StairStageDark
@@ -85,6 +110,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_dark
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairStageDark
+# End of Triad Change
 
 - type: entity
   id: StairWood
@@ -95,6 +125,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_wood
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairWood
+# End of Triad Change
 
 - type: entity
   id: StairStageWood
@@ -105,3 +140,8 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_wood
     drawdepth: FloorTiles
+# Start of Triad Change: Makes stairs constructible
+  - type: Construction
+    graph: StairsGraph
+    node: stairStageWood
+# End of Triad Change
