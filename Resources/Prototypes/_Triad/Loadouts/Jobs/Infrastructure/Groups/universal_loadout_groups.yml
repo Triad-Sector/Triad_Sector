@@ -62,11 +62,13 @@
   - ContractorClothingModsuitAtmostechPowerCell
   - ContractorClothingModsuitEngineerPowerCell
   - StationEngineerBackpack
-  - StationEngineerSatchel
   - StationEngineerDuffel
+  - StationEngineerSatchel
+  - ContractorClothingBackpackMessengerEngineering
   - AtmosphericTechnicianBackpack
-  - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
+  - AtmosphericTechnicianSatchel
+  - ContractorClothingBackpackMessengerAtmospherics
   fallbacks:
   - StationEngineerBackpack
 
