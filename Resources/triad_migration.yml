@@ -314,3 +314,9 @@ PlasmaWindoorSecureWardenLocked: PlasmaWindoorSecureTdfLieutenantLocked
 DefaultStationBeaconTdfWarden: DefaultStationBeaconTdfLieutenant
 SpawnPointTdfWarden: SpawnPointTdfLieutenant
 DresserTdfWardenFilled: DresserTdfLieutenantFilled
+
+# 2026-09-01
+AirlockNfsdGlass: AirlockSDGlass
+AirlockNfsd: AirlockSD
+AirlockNfsdGlassLocked: AirlockSDGlassLocked
+AirlockNfsdLocked: AirlockSDLocked

@@ -72,7 +72,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatTdfLieutenant
   name: TDF lieutenant's cap
-  description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you have AUTHORITY!
+  description: A grey lieutenant's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you have AUTHORITY!
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi

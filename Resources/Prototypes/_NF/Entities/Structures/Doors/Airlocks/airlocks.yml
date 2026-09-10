@@ -8,14 +8,6 @@
     sprite: _NF/Structures/Doors/Airlocks/Standard/mercenary.rsi
   - type: Wires
     layoutId: AirlockSecurity
-
-- type: entity
-  parent: Airlock
-  id: AirlockNfsd
-  suffix: SD
-  components:
-  - type: Sprite
-    sprite: _NF/Structures/Doors/Airlocks/Standard/nfsd.rsi
 # endregion
 
 # region Glass
@@ -26,17 +18,6 @@
   components:
   - type: Sprite
     sprite: _NF/Structures/Doors/Airlocks/Glass/mercenary.rsi
-  - type: Wires
-    layoutId: AirlockSecurity
-
-- type: entity
-  parent: AirlockGlass
-  id: AirlockNfsdGlass
-  suffix: SD
-  components:
-  - type: Sprite
-    sprite: _NF/Structures/Doors/Airlocks/Glass/nfsd.rsi
-    group: Glass
   - type: Wires
     layoutId: AirlockSecurity
 

@@ -2,73 +2,136 @@
 - type: startingGear
   id: MobHumanoidMercenaryGearMeleeT1
   equipment:
-    gloves: ClothingHandsGlovesColorMercHatchet
+    gloves: ClothingHandsMercenaryGlovesCombat
+    head: ClothingHeadHelmetMercenary
+    mask: ClothingMaskGasMercenary
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckMercenary
+    outerClothing: ClothingOuterVestWebMercenary
+    neck: ClothingNeckIFFNeutral
     pocket1: SpaceCash500
-    pocket2: HydroponicsToolHatchet
     shoes: ClothingShoesBootsMercenary
+  inhand:
+    - HydroponicsToolHatchet
 
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedT1
   equipment:
     gloves: ClothingHandsGlovesColorMercPistol
+    head: ClothingHeadHelmetMercenary
+    mask: ClothingMaskGasMercenary
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckMercenary
     back: ClothingBackpackDuffelMecranaryTier1Pistol
+    outerClothing: ClothingOuterVestWebMercenary
+    neck: ClothingNeckIFFNeutral
     belt: ClothingBeltWebbingMecranaryTier1Pistol
     shoes: ClothingShoesBootsMercenary
+  inhand:
+    - NPCHandBlocker
 
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedAltT1
   equipment:
     gloves: ClothingHandsGlovesColorMercNovalite
+    head: ClothingHeadHelmetMercenary
+    mask: ClothingMaskGasMercenary
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckMercenary
     back: ClothingBackpackDuffelMecranaryTier1Novalite
+    outerClothing: ClothingOuterVestWebMercenary
+    neck: ClothingNeckIFFNeutral
     belt: ClothingBeltWebbingMecranaryTier1Novalite
     shoes: ClothingShoesBootsMercenary
+  inhand:
+    - NPCHandBlocker
 
 # Tier 2
 - type: startingGear
   id: MobHumanoidMercenaryGearMeleeT2
   equipment:
-    gloves: ClothingHandsGlovesColorMercMachete
+    gloves: ClothingHandsGlovesFingerless
+    head: ClothingHeadHelmetMercenaryBlack
+    mask: ClothingMaskGas
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+    outerClothing: ClothingOuterArmorBasicSlim
+    neck: ClothingNeckIFFNeutral
+    belt: ClothingBeltMilitaryWebbing
     pocket1: Machete
     pocket2: SpaceCash1000
     shoes: ClothingShoesBootsCombat
+  inhand:
+    - Machete
 
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedT2
   equipment:
     gloves: ClothingHandsGlovesColorMercRevolvers
+    head: ClothingHeadHatHoshat
+    mask: ClothingMaskNeckGaiter
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+    outerClothing: ClothingOuterCoatHoSTrench
     back: ClothingBackpackDuffelMecranaryTier2Revolver
+    neck: ClothingNeckIFFNeutral
+    eyes: ClothingEyesGlassesSunglasses
     belt: ClothingBeltWebbingMecranaryTier2Revolver
     shoes: ClothingShoesBootsCombat
+  inhand:
+    - NPCHandBlocker
 
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedAltT2
   equipment:
     gloves: ClothingHandsGlovesColorMercShotgun
+    head: ClothingHeadHelmetMercenaryBlack
+    mask: ClothingMaskGas
     back: ClothingBackpackDuffelMecranaryTier2Shotgun
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+    outerClothing: ClothingOuterArmorBasicSlim
+    neck: ClothingNeckIFFNeutral
     belt: ClothingBeltWebbingMecranaryTier2Shotgun
     shoes: ClothingShoesBootsCombat
+  inhand:
+    - NPCHandBlocker
 
 # Tier 3
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedT3
   equipment:
     gloves: ClothingHandsGlovesColorMercLaserNSaw
+    head: ClothingHeadHelmetRiot
+    mask: ClothingMaskBreathMedicalSecurity
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+    outerClothing: ClothingOuterArmorBasicSlim
     back: ClothingBackpackDuffelMecranaryTier3Medic
+    neck: ClothingNeckIFFNeutral
     belt: ClothingBeltMecranaryTier3Medic
     shoes: ClothingShoesBootsCombat
+  inhand:
+    - NPCHandBlocker
 
 - type: startingGear
   id: MobHumanoidMercenaryGearRangedT3Alt
   equipment:
     gloves: ClothingHandsGlovesColorMercGestio
+    head: ClothingHeadHatNfsdBeretGreen
+    mask: ClothingMaskGasSecurity
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+    outerClothing: ClothingOuterArmorBasicSlim
     back: ClothingBackpackDuffelMecranaryTier3Assault
+    neck: ClothingNeckIFFNeutral
     belt: ClothingBeltMecranaryTier3Assault
     shoes: ClothingShoesBootsCombat
+  inhand:
+    - NPCHandBlocker
 
 # Tier 4
 - type: startingGear
   id: MobHumanoidMercenaryGearTier4Captain
   equipment:
     gloves: ClothingHandsGlovesColorMercRepeater
+    head: ClothingHeadHelmetMercenaryBlack
+    mask: ClothingMaskGasSecurity
+    jumpsuit: PirateClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+    outerClothing: ClothingOuterArmorBulletproof
     back: ClothingBackpackDuffelMecranaryTier4Captain
+    neck: ClothingNeckMantleQM
+    belt: ClothingBeltMilitaryWebbing
     shoes: ClothingShoesBootsCombat

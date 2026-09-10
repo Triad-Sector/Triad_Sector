@@ -1,6 +1,6 @@
 - type: entity
   id: BaseCarrierComputer
-  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, ComputerShipyard, BaseClass1ShipContraband] # Triad - save contra
+  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, ComputerShipyard]
   suffix: Carrier
   description: Used on carriers to purchase and sell ships without returning to a station.
   abstract: true

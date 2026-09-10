@@ -21,8 +21,8 @@
     security: AirlockSecurity
     virology: AirlockVirology
     mercenary: AirlockMercenary # Frontier
-    # nfsd: AirlockNfsd # Triad: comment out
-    tdf: AirlockTdf
+    sd: AirlockSD # Triad
+    tdf: AirlockTdf # Triad
 
 - type: paintableGroup
   id: AirlockGlass
@@ -44,7 +44,8 @@
     security: AirlockSecurityGlass
     virology: AirlockVirologyGlass
     mercenary: AirlockMercenaryGlass # Frontier
-    tdf: AirlockTdfGlass
+    sd: AirlockSDGlass # Triad
+    tdf: AirlockTdfGlass # Triad
 
 # Triad Change : Heavy-Duty Airlock paintable groups
 - type: paintableGroup

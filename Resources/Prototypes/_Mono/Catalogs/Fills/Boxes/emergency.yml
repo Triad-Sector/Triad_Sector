@@ -2,7 +2,7 @@
   parent: BoxCardboard
   id: BoxBaseSurvivalMono
   name: Emergency Survival Box
-  description: A dedicated, standard issue survival box for the Colossus sector. Holds utility tools to keep you alive in an emergency.
+  description: A dedicated, standard issue survival box for the Triad sector space. Holds utility tools to keep you alive in an emergency.
   suffix: Oxygen
   components:
   - type: StorageFill
