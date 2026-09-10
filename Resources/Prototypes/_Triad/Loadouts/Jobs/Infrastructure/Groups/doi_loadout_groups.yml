@@ -28,10 +28,9 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - StationEngineerBackpack
-  - StationEngineerSatchel
-  - StationEngineerDuffel
   - PlantManagerMessengerBag
+  subgroups:
+  - PlantBackpack
   fallbacks:
   - StationEngineerBackpack
 

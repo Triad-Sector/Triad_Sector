@@ -54,6 +54,23 @@
   - ContractorClothingEyesGlassesCheapSunglasses
 
 - type: loadoutGroup
+  id: PlantBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingModsuitAtmostechPowerCell
+  - ContractorClothingModsuitEngineerPowerCell
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  fallbacks:
+  - StationEngineerBackpack
+
+- type: loadoutGroup
   id: PlantEars
   name: loadout-group-contractor-ears
   minLimit: 1

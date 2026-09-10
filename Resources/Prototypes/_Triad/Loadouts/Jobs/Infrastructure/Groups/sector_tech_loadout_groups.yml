@@ -38,18 +38,3 @@
   - AtmosphericTechnicianJumpsuitCasual
   fallbacks:
   - StationEngineerJumpsuit
-
-- type: loadoutGroup
-  id: PlantTechnicianBackpack
-  name: loadout-group-contractor-backpack
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - StationEngineerBackpack
-  - StationEngineerSatchel
-  - StationEngineerDuffel
-  - AtmosphericTechnicianBackpack
-  - AtmosphericTechnicianSatchel
-  - AtmosphericTechnicianDuffel
-  fallbacks:
-  - StationEngineerBackpack
