@@ -11,7 +11,7 @@
   description: Made by a forgotten cult; it is a Capital sized mech carrier with a dedicated science and mining bay with mining pulsars. Relatively thin armor and runs on 2 Z-Pinches wired together.
   price: 246000 # appraisegrid at 204788 times 1.2 rounded up by the nearest thousandth
   category: Large
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/arkansaw.yml
   guidebookPage: Null
   class:

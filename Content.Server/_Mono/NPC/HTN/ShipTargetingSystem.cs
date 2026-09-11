@@ -87,11 +87,13 @@ public sealed partial class ShipTargetingSystem : EntitySystem
                 comp.WeaponCheckAccum += comp.WeaponCheckSpacing;
             }
 
-            FireWeapons(shipUid.Value, comp.Cannons, mapTarget, linVel, comp.CurrentLeadingVelocity);
+            // Triad - added shipTargeter argument for OnAttemptFire
+            FireWeapons(shipUid.Value, comp.Cannons, uid, mapTarget, linVel, comp.CurrentLeadingVelocity);
         }
     }
 
-    private void FireWeapons(EntityUid shipUid, List<EntityUid> cannons, MapCoordinates destMapPos, Vector2 ourVel, Vector2 otherVel)
+    // Triad - added shipTargeter argument for OnAttemptFire
+    private void FireWeapons(EntityUid shipUid, List<EntityUid> cannons, EntityUid shipTargeter, MapCoordinates destMapPos, Vector2 ourVel, Vector2 otherVel)
     {
         var shipXform = Transform(shipUid);
         if (!_physQuery.TryComp(shipUid, out var shipBody))
@@ -168,7 +170,7 @@ public sealed partial class ShipTargetingSystem : EntitySystem
 
             var targetMapPos = destMapPos.Offset(leadBy * hitTime);
 
-            _cannon.AttemptFire(uid, uid, _transform.ToCoordinates(targetMapPos), noServer: true);
+            _cannon.AttemptFire(uid, shipTargeter, _transform.ToCoordinates(targetMapPos), noServer: true); // Triad - Ship targeter
         }
     }
 

@@ -122,6 +122,7 @@
   - ClothingOuterHardsuitScaf
   - ClothingOuterHardsuitPirateScaf
   - BlueprintClothingOuterHardsuitScaf
+  - ClothingOuterHardsuitIndustrialEngi # Triad
   technologyPrerequisites:
   - HardsuitsArmored
   - SuperParts

@@ -7,6 +7,8 @@
   cost: 75000
   recipeUnlocks:
   - ClothingModsuitHZDBesieger
+  - UllmanHardsuitEnforcer
+  - UllmanHardsuitEnforcerMKII
   technologyPrerequisites:
   - HardsuitsArmoredAdvanced
   - MagnetsTechAdvanced

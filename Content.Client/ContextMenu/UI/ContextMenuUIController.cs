@@ -91,11 +91,11 @@ namespace Content.Client.ContextMenu.UI
         }
 
         /// <summary>
-        ///     Close and clear the root menu. This will also dispose any sub-menus.
+        ///     Close and clear the root menu. This also orphans every sub-menu nested below it.
         /// </summary>
         public void Close()
         {
-            RootMenu.MenuBody.DisposeAllChildren();
+            RootMenu.MenuBody.RemoveAllChildren();
             CancelOpen?.Cancel();
             CancelClose?.Cancel();
             OnContextClosed?.Invoke();
@@ -240,6 +240,21 @@ namespace Content.Client.ContextMenu.UI
             element.OnMouseEntered -= _ => OnMouseEntered(element);
             element.OnMouseExited -= _ => OnMouseExited(element);
             element.OnKeyBindDown -= args => OnKeyBindDown(element, args);
+
+            // Triad: a sub-menu parents itself to ModalRoot, not to its element
+            // (ContextMenuPopup.xaml.cs:53), so taking the element out of the menu body leaves the
+            // pop-up in the UI tree with nothing left to reach it. Orphan it here, which is the one
+            // path every removal goes through: RemoveChild raises OnChildRemoved, so clearing the
+            // sub-menu's own body re-enters this method for anything nested under it.
+            if (element.SubMenu is { } subMenu)
+            {
+                element.SubMenu = null;
+                subMenu.ParentElement = null;
+                subMenu.MenuBody.RemoveAllChildren();
+                subMenu.Orphan();
+            }
+
+            element.ParentMenu = null;
 
             menu.InvalidateMeasure();
         }

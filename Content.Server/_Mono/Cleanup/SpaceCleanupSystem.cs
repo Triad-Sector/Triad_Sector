@@ -27,6 +27,13 @@ public sealed partial class SpaceCleanupSystem : BaseCleanupSystem<PhysicsCompon
     [Dependency] private IGameTiming _timing = default!;
     private object _manifold = default!;
     private MethodInfo _testOverlap = default!;
+
+    /// <summary>
+    ///     How many arguments <see cref="GetWallStuck"/> supplies to TestOverlap itself.
+    /// </summary>
+    private const int OverlapFixedArgs = 6;
+
+    private object?[] _overlapArgs = [];
     [Dependency] private PricingSystem _pricing = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
@@ -72,6 +79,42 @@ public sealed partial class SpaceCleanupSystem : BaseCleanupSystem<PhysicsCompon
             if (testOverlapMethod != null)
                 _testOverlap = testOverlapMethod.MakeGenericMethod(typeof(IPhysShape), typeof(PhysShapeCircle));
         }
+
+        // Triad: IManifoldManager is internal, so TestOverlap is bound by name and no compiler checks
+        // its arity. Invoke supplies no optional defaults, so the argument array must be exactly as
+        // long as the live signature with every trailing optional filled here; engine 289.0.2 takes
+        // seven (RobustToolbox/Robust.Shared/Physics/Collision/IManifoldManager.cs:15). A mismatch
+        // throws TargetParameterCountException out of Update on every tick, so a signature we cannot
+        // call leaves _overlapArgs empty and GetWallStuck declines instead.
+        _overlapArgs = TryBuildOverlapArgs(_testOverlap);
+        if (_overlapArgs.Length == 0)
+            Log.Error("IManifoldManager.TestOverlap did not bind; wall-stuck entities will not be cleaned up.");
+    }
+
+    /// <summary>
+    ///     Sizes the reflection argument array against TestOverlap's live signature, filling every
+    ///     parameter past the <see cref="OverlapFixedArgs"/> this system supplies with its default.
+    ///     Empty when the signature is one we cannot call.
+    /// </summary>
+    private static object?[] TryBuildOverlapArgs(MethodInfo? method)
+    {
+        if (method == null)
+            return [];
+
+        var parameters = method.GetParameters();
+        if (parameters.Length < OverlapFixedArgs)
+            return [];
+
+        var args = new object?[parameters.Length];
+        for (var i = OverlapFixedArgs; i < parameters.Length; i++)
+        {
+            if (!parameters[i].HasDefaultValue)
+                return [];
+
+            args[i] = parameters[i].DefaultValue;
+        }
+
+        return args;
     }
 
     protected override bool ShouldEntityCleanup(EntityUid uid)
@@ -101,6 +144,9 @@ public sealed partial class SpaceCleanupSystem : BaseCleanupSystem<PhysicsCompon
 
     private bool GetWallStuck(Entity<TransformComponent> ent)
     {
+        if (_overlapArgs.Length == 0) // Triad: TestOverlap is unusable, see Initialize
+            return false;
+
         if (ent.Comp.GridUid is not { } gridUid
             || ent.Comp.Anchored
             || ent.Comp.ParentUid != gridUid // ignore if not directly parented to grid
@@ -141,7 +187,16 @@ public sealed partial class SpaceCleanupSystem : BaseCleanupSystem<PhysicsCompon
             var xf = _physics.GetLocalPhysicsTransform(anch, xform);
             var shape = fix.Shape;
 
-            if ((bool?)_testOverlap.Invoke(_manifold, [shape, 0, shapeB, 0, xf, xfB]) ?? false)
+            _overlapArgs[0] = shape;
+            _overlapArgs[1] = 0;
+            _overlapArgs[2] = shapeB;
+            _overlapArgs[3] = 0;
+            _overlapArgs[4] = xf;
+            _overlapArgs[5] = xfB;
+
+            // Triad: the array is sized to the live signature in Initialize, trailing optionals included.
+            // if ((bool?)_testOverlap.Invoke(_manifold, [shape, 0, shapeB, 0, xf, xfB]) ?? false)
+            if ((bool?)_testOverlap.Invoke(_manifold, _overlapArgs) ?? false)
                 return true;
         }
 

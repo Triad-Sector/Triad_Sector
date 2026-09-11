@@ -9,8 +9,7 @@
   description: A freighter escort ship, armed with 4 AK570, 4 L85 and 2 Sunny flare system. The palisade is made to take heavy hits with it's heavy frontal armor, do keep in mind lack of armored thruster in the back section.
   price: 78000
   category: Medium
-  group: Shipyard
-  access: Mercenary
+  group: Military
   shuttlePath: /Maps/_Triad/Shuttles/MIL/palisade.yml
   guidebookPage: Null
   class:

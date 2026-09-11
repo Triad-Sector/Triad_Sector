@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
+using System.IO;
+using Robust.UnitTesting.Pool;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -33,7 +35,7 @@ public class SpawnEquipDeleteBenchmark
     {
         ProgramShared.PathOffset = "../../../../";
         PoolManager.Startup();
-        _pair = await PoolManager.GetServerClient();
+        _pair = await PoolManager.GetServerClient(testContext: new ExternalTestContext(nameof(SpawnEquipDeleteBenchmark), TextWriter.Null));
         var server = _pair.Server;
 
         var mapData = await _pair.CreateTestMap();

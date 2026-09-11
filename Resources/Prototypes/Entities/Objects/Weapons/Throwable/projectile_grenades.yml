@@ -1,6 +1,6 @@
 ﻿- type: entity
   abstract: true
-  parent: BaseItem
+  parent: [BaseItem, BaseSafeGrenade] # Triad: Added BaseSafeGrenade to avoid chain reaction.
   id: ProjectileGrenadeBase
   components:
   - type: Appearance

@@ -23,10 +23,12 @@ public sealed partial class RPDComponent : Component
     public string PipeColor { get; set; } = RPDPalette.DefaultKey;
 
     /// <summary>
-    /// The operator's cursor-aimed pipe layer, streamed by the client on change. Read at the commit click (stamped
-    /// onto the do-after via <c>RCDPlacementCommitEvent</c>) and for deconstruct targeting; a placement in flight
-    /// never reads it again, so moving the cursor during the do-after cannot move the pipe. Server-only state.
+    /// The operator's cursor-aimed pipe layer, streamed by the client. Read at the commit click (stamped onto the
+    /// do-after via <c>RCDPlacementCommitEvent</c>) and for deconstruct targeting; a placement in flight never reads
+    /// it again, so moving the cursor during the do-after cannot move the pipe. Networked so the client can see when
+    /// its aimed layer has actually landed and resend while it has not (a dropped select used to stick until the
+    /// cursor changed quadrant); only the server ever writes it.
     /// </summary>
-    [ViewVariables(VVAccess.ReadOnly)]
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public AtmosPipeLayer CurrentLayer { get; set; } = AtmosPipeLayer.Primary;
 }

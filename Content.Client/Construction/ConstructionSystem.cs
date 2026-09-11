@@ -210,34 +210,18 @@ namespace Content.Client.Construction
             if (!CheckConstructionConditions(prototype, loc, dir, user, showPopup: true))
                 return false;
 
-            ghost = EntityManager.SpawnEntity("constructionghost", loc);
+            // Triad: the rotation goes in at spawn time (wizden #44494), before the entity initialises, so it
+            // never passes through the client TransformSystem's animating setter. That setter schedules a
+            // render lerp whose samples never reach the target, and a client-only ghost is never re-stamped
+            // by a server state, which is how a 90 deg turn produced ~85 deg buildings after the 287 bump (#80,
+            // #520). Plain grid-local `dir`, deliberately: the engine's placement preview draws at
+            // gridWorldRotation + Direction, so this matches it in every camera state and the stored angle is
+            // cardinal-in-grid, which the server's placement conditions assume. Do not reintroduce an eye
+            // term here without also changing the preview's convention in the engine (#493, #516 tried).
+            ghost = SpawnAttachedTo("constructionghost", loc, rotation: dir.ToAngle());
             var comp = EntityManager.GetComponent<ConstructionGhostComponent>(ghost.Value);
             comp.Prototype = prototype;
             comp.GhostId = ghost.GetHashCode();
-            // Triad: NoLerp is the whole fix here; the frame convention next to it matters just as much (#80).
-            //
-            // NoLerp, or the value set here does not survive the tick. The client TransformSystem overrides
-            // SetLocalRotation to schedule a render smoothing lerp, and its frame loop then overwrites
-            // LocalRotation with Lerp(prev, target, step) samples in which step never reaches 1 - there is no
-            // completion snap. A networked entity gets re-stamped exact by the next server state; a ghost is
-            // client-only, so the last frame sample is its rotation forever, a few percent short of the target
-            // (measured: a 180 deg ghost frozen at 175.69). TryStartConstruction then sends
-            // that value on the wire and the server bakes it into the finished structure, which is how players
-            // got ~85 deg buildings out of a 90 deg turn. The pre-287 code assigned the obsolete
-            // `xform.LocalRotation` property, which does not animate; the 287 bump's API migration (#476) moved
-            // this onto the animating setter, which is when the crooked ghosts started. NoLerp is the
-            // non-animating path, and a client-only UI phantom has no business animating anyway.
-            //
-            // Plain grid-local `dir`, deliberately. The engine's own placement preview draws at
-            // gridWorldRotation + Direction (PlacementMode.Render), so Direction is grid-local by definition and
-            // this line uses the identical formula: preview and ghost then agree in every camera state, settled
-            // or mid-RelativeRotation-lerp, and the stored angle is cardinal-in-grid by construction, which is
-            // what the server's placement conditions assume and what keeps built structures hull-aligned. Two
-            // earlier fixes (#493 world-frame set, #516 cardinal snap) treated Direction as SCREEN-space; that
-            // made the ghost correct in the screen frame and 90 deg off the preview the player aims by whenever
-            // RelativeRotation is nonzero. Do not reintroduce an eye term here without also changing the
-            // preview's convention in the engine.
-            _transformSystem.SetLocalRotationNoLerp(ghost.Value, dir.ToAngle());
 
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);

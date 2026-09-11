@@ -1,0 +1,57 @@
+<Document>
+
+  # Triad Frontier Association (TFA)
+
+  <Box Margin="0">
+    <GuideEntityEmbed Entity="TFALogo" Caption="" Margin="10"/>
+  </Box>
+
+  <Box>
+    [color=#999999][italic]"Our association works to bring this sector back to its former glory, and we are making ample progress."[/italic][/color]
+    [color=#999999][italic]- Harissa Gertrude, Venmar Station Overseer of 2823[/italic][/color]
+  </Box>
+
+  The Triad Frontier Association is the space operations arm of the government and main driving force behind the economic recovery of Triad as well as the provider of facilities for freelancers, corporations, and colonists to do business and live about the sector, taking care of Venmar Station Station and Medical Dispatch.
+  The [textlink="TDF" link="TriadDefenseForce"] provides security for the TFA and its stations alongside the entire sector.
+
+  Medical Dispatch provides medical aid in the sector to those in need, both supply-wise and personnel-wise. Venmar Station, named after the Triad Sector's [bold]capital planet[/bold] [textlink="Venmar-7C" link="TheGreatTurnover"], is the main hub for freelancers, colonists, and corporations to do business, find work, purchase ships, or simply relax in the many lounges and bars.
+
+  The TFA stations are led by an elected overseer, elections are held every 2 years, with ballots available at Venmar Station. The overseer primarily runs Venmar Station and its staff, but they do also oversee Medical Dispatch.
+  Medical Dispatch is ran by a Director of Care, who handles the medical staff and facilities of MD, answering to the overseer.
+
+  ## Faction relations:
+
+  <Table Columns="2" MinForcedColumnWidth="25">
+    <ColorBox Color="#FFD580">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        [color=black]Triad Defense Force[/color]
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3daf3d">
+      <Box>
+        Friendly Governmental Partners
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#8282fbaa">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Solarian Directive
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#eeea15">
+      <Box>
+        [color=black]Uneasy Hostilities, Looking to Negotiate[/color]
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7e3834">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        The Imperial Coalition
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#e62121">
+      <Box>
+        Bitter Rivals
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

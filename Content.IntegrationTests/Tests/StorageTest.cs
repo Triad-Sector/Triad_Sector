@@ -99,7 +99,7 @@ namespace Content.IntegrationTests.Tests
             {
                 foreach (var (proto, fill) in pair.GetPrototypesWithComponent<StorageFillComponent>())
                 {
-                    if (proto.HasComponent<EntityStorageComponent>(compFact))
+                    if (proto.HasComp<EntityStorageComponent>(compFact))
                         continue;
 
                     StorageComponent? storage = null;
@@ -182,7 +182,7 @@ namespace Content.IntegrationTests.Tests
 
             foreach (var (proto, fill) in pair.GetPrototypesWithComponent<StorageFillComponent>())
             {
-                if (proto.HasComponent<StorageComponent>(compFact))
+                if (proto.HasComp<StorageComponent>(compFact))
                     continue;
 
                 await server.WaitAssertion(() =>

@@ -15,6 +15,7 @@ public sealed partial class AddObjectiveCommand : LocalizedEntityCommands
 {
     [Dependency] private IPlayerManager _players = default!;
     [Dependency] private IPrototypeManager _prototypes = default!;
+    [Dependency] private IComponentFactory _factory = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private ObjectivesSystem _objectives = default!;
 
@@ -41,7 +42,7 @@ public sealed partial class AddObjectiveCommand : LocalizedEntityCommands
         }
 
         if (!_prototypes.TryIndex<EntityPrototype>(args[1], out var proto) ||
-            !proto.HasComponent<ObjectiveComponent>())
+            !proto.HasComp<ObjectiveComponent>(_factory))
         {
             shell.WriteError(Loc.GetString("cmd-addobjective-objective-not-found", ("obj", args[1])));
             return;

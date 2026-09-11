@@ -1,0 +1,19 @@
+- type: latheRecipe
+  id: ClothingOuterHardsuitIndustrialEngi
+  parent: NFBaseHardSuitArmoredRecipe
+  result: ClothingOuterHardsuitIndustrialEngi
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitRmtL10A
+  parent: NFBaseHardSuitRecipe
+  result: ClothingOuterHardsuitRmtL10A
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitRmtL10
+  parent: NFBaseHardSuitRecipe
+  result: ClothingOuterHardsuitRmtL10
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitRmtM10
+  parent: NFBaseHardSuitArmoredRecipe
+  result: ClothingOuterHardsuitRmtM10

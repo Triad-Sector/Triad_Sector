@@ -1,0 +1,29 @@
+# Ship locations
+phrase-location-nautical-ship = ship
+phrase-location-nautical-dock = dock
+phrase-location-nautical-fore = fore
+phrase-location-nautical-aft = aft
+phrase-location-nautical-port = port
+phrase-location-nautical-starboard = starboard
+phrase-location-nautical-amidships = amidships
+phrase-location-nautical-bridge = bridge
+phrase-location-nautical-engine-room = engine room
+phrase-location-nautical-crew-quarters = crew quarters
+phrase-location-nautical-med-bay = medbay
+phrase-location-nautical-cargo-bay = cargo bay
+phrase-location-nautical-docking-to = docking to
+
+# Station names
+phrase-location-venmar = Venmar Station
+phrase-location-tdf-outpost = Auric Outpost
+phrase-location-frontier-outpost = Frontier outpost
+phrase-location-power-plant = Power Plant
+phrase-location-barrier = Barrier Station
+phrase-location-hospital = Medical Dispatch
+phrase-location-casino = Crazy Caseys' Casino
+phrase-location-grifty = Grifty's Gas & Grub
+phrase-location-lodge = Expeditionary Lodge
+phrase-location-cove = Derlict Digsite
+phrase-location-omnichurch = Omnichurch
+phrase-location-trademall = Trade Mall
+phrase-location-cargodepot = Cargo Depot

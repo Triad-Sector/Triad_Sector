@@ -186,7 +186,7 @@ public sealed partial class SurgerySystem : SharedSurgerySystem
     {
         _surgeries.Clear();
         foreach (var entity in _prototypes.EnumeratePrototypes<EntityPrototype>())
-            if (entity.HasComponent<SurgeryComponent>())
+            if (entity.HasComp<SurgeryComponent>(Factory))
                 _surgeries.Add(new EntProtoId(entity.ID));
     }
 }

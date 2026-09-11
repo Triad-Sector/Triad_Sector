@@ -34,3 +34,139 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+
+- type: construction
+  id: StairSteel
+  name: steel stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairSteel
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_steel
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairStageSteel
+  name: steel stage stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairStageSteel
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_stage_steel
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairWhite
+  name: white stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairWhite
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_white
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairStageWhite
+  name: white stage stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairStageWhite
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_stage_white
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairDark
+  name: dark stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairDark
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_dark
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairStageDark
+  name: dark stage stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairStageDark
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_stage_dark
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairWood
+  name: wood stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairWood
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_wood
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairStageWood
+  name: wood stage stairs
+  graph: StairsGraph
+  startNode: start
+  targetNode: stairStageWood
+  category: construction-category-structures
+  description: The greatest invention since rocket-propelled grenades.
+  icon:
+    sprite: Structures/stairs.rsi
+    state: stairs_stage_wood
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

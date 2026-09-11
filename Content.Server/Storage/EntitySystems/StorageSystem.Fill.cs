@@ -50,7 +50,7 @@ public sealed partial class StorageSystem
 
             // No, you are not allowed to fill a container with entity spawners.
             DebugTools.Assert(!_prototype.Index<EntityPrototype>(spawnPrototype)
-                .HasComponent(typeof(RandomSpawnerComponent)));
+                .HasComp<RandomSpawnerComponent>(Factory));
 
             if (!TryComp<ItemComponent>(ent, out var itemComp))
             {
@@ -101,7 +101,7 @@ public sealed partial class StorageSystem
         {
             // No, you are not allowed to fill a container with entity spawners.
             DebugTools.Assert(!_prototype.Index<EntityPrototype>(item)
-                .HasComponent(typeof(RandomSpawnerComponent)));
+                .HasComp<RandomSpawnerComponent>(Factory));
             var ent = Spawn(item, coordinates);
 
             // Frontier: handle humanoid spawner cases

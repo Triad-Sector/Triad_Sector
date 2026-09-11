@@ -9,7 +9,7 @@ namespace Content.Server._Triad.Market;
 /// </summary>
 public sealed class MarketDataSystem : EntitySystem
 {
-    [Dependency] private readonly IMarketDataManager _market = default!;
+    [Dependency] private IMarketDataManager _market = default!;
 
     public override void Initialize()
     {

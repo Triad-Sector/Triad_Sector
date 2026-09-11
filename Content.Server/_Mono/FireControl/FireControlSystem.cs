@@ -5,6 +5,7 @@ using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._Mono.FireControl;
 using Content.Shared.Power;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Events; // Triad
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -20,6 +21,7 @@ using Content.Shared.Interaction;
 using Content.Shared._Mono.ShipGuns;
 using Content.Shared.Examine;
 using Content.Server.Salvage.Expeditions;
+using Content.Server._Mono.NPC.HTN; // Triad
 
 namespace Content.Server._Mono.FireControl;
 
@@ -94,6 +96,21 @@ public sealed partial class FireControlSystem : EntitySystem
             )
         );
     }
+
+    // Triad - Prevent firing guns unless controlled.
+    [SubscribeLocalEvent]
+    private void OnShotAttempted(EntityUid uid, FireControllableComponent component, ref ShotAttemptedEvent args)
+    {
+        if (component.ControllingServer != null)
+            return;
+
+        // Drones can ignore having a gunnery server
+        if (HasComp<ShipTargetingComponent>(args.User))
+            return;
+
+        args.Cancel();
+    }
+    // End Triad
 
     private void OnControllablePowerChanged(EntityUid uid, FireControllableComponent component, PowerChangedEvent args)
     {

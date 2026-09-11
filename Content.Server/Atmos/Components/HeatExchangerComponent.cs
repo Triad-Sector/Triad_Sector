@@ -59,8 +59,10 @@ public sealed partial class HeatExchangerComponent : Component
 
     /// <summary>
     /// Triad: gas-to-body conductance at rated flow (J/K/sec). Forced
-    /// convection: actual conductance scales between
-    /// <see cref="StaticConductanceFloor"/> and 1x with flow through the device.
+    /// convection: actual conductance scales from
+    /// <see cref="StaticConductanceFloor"/> at zero flow, through 1x at
+    /// <see cref="RatedFlow"/>, up to <see cref="MaxFlowFactor"/> as a
+    /// mass-flux power law (<see cref="FlowExponent"/>).
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("pipeConductance")]
@@ -76,12 +78,33 @@ public sealed partial class HeatExchangerComponent : Component
     public float StaticConductanceFloor = 0.1f;
 
     /// <summary>
-    /// Triad: flow (mol/sec) at which gas-to-body conductance reaches full
-    /// strength.
+    /// Triad: flow (mol/sec) at which gas-to-body conductance equals
+    /// <see cref="PipeConductance"/>. Flow is moles moved through the device
+    /// per second, so at a given pump setting a high-pressure loop rates
+    /// higher than a thin one: absolute pressure enters here.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("ratedFlow")]
-    public float RatedFlow = 10f;
+    public float RatedFlow = 100f;
+
+    /// <summary>
+    /// Triad: exponent of the mass-flux law. Real gas-side film coefficients
+    /// go as mass flux^0.8 in turbulent flow (Dittus-Boelter), so doubling
+    /// the flow buys ~1.74x conductance, not 2x.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("flowExponent")]
+    public float FlowExponent = 0.8f;
+
+    /// <summary>
+    /// Triad: cap on the flow multiplier applied to
+    /// <see cref="PipeConductance"/>, so a pressure pump at its ceiling
+    /// cannot scale the wall conductance without bound. 3x is reached at
+    /// roughly four times <see cref="RatedFlow"/>.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("maxFlowFactor")]
+    public float MaxFlowFactor = 3f;
 
     /// <summary>
     /// Triad: cap on the environment-density multiplier applied to the

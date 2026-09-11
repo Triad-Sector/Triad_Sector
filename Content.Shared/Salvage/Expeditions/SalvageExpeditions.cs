@@ -3,6 +3,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Salvage.Expeditions;
 
@@ -142,7 +143,7 @@ public sealed record SalvageMission(
     float Temperature,
     Color? Color,
     TimeSpan Duration,
-    List<string> Rewards,
+    List<EntProtoId> Rewards,
     List<string> Modifiers)
 {
     /// <summary>
@@ -203,7 +204,7 @@ public sealed record SalvageMission(
     /// <summary>
     /// The list of items to order on mission completion.
     /// </summary>
-    public List<string> Rewards = Rewards;
+    public List<EntProtoId> Rewards = Rewards;
 
     /// <summary>
     /// Modifiers (outside of the above) applied to the mission.

@@ -11,7 +11,7 @@
   description: A compact but capable expedition ship, with durable hull plating too. This ship has a military IFF designation.
   price: 77150
   category: Medium
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/picses.yml
   guidebookPage: null
   class:

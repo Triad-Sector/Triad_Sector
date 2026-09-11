@@ -38,8 +38,9 @@ public sealed partial class JetpackSystem : SharedJetpackSystem
         if (args.Sprite != null)
             _sprite.LayerSetRsiState((uid, args.Sprite), 0, state);
 
-        if (TryComp<ClothingComponent>(uid, out var clothing))
-            _clothing.SetEquippedPrefix(uid, enabled ? "on" : null, clothing);
+        // Triad - Fixed this code. Moved to shared.
+        //if (TryComp<ClothingComponent>(uid, out var clothing))
+        //    _clothing.SetEquippedPrefix(uid, enabled ? "on" : null, clothing);
     }
 
     public override void Update(float frameTime)

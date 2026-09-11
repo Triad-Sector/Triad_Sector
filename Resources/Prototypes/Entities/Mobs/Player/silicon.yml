@@ -302,8 +302,8 @@
 - type: entity
   id: TSFMCCircuitBoard
   parent: BaseElectronics
-  name: law board (TSFMC)
-  description: An electronics board containing the TSFMC lawset.
+  name: law board (TDF)
+  description: An electronics board containing the TDF lawset.
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi

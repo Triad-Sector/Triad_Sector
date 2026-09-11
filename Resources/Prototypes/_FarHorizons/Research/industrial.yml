@@ -9,6 +9,8 @@
   - NuclearFabricatorMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
+  - NuclearReactorSmallMachineCircuitboard # Triad
+  - GasTurbineSmallMachineCircuitboard
   - UraniumReactorFuelRod
   - PlasmaReactorFuelRod
   - UraniumGlassReactorFuelRod
@@ -21,6 +23,9 @@
   - SilverReactorHeatExchanger
   - PlasteelReactorHeatExchanger
   - PlasmaGlassReactorHeatExchanger
+  - PlasteelGasTurbineBlade # Triad: FH's tiering
+  - BrassGasTurbineBlade
+  - SilverGasTurbineStator
   technologyPrerequisites:
   - PowerGeneration
   - AdvancedParts # Mono
@@ -37,6 +42,8 @@
   cost: 12500
   recipeUnlocks:
   - NuclearCentrifugeMachineCircuitboard
+  - NuclearReactorMachineCircuitboard # Triad
+  - GasTurbineMachineCircuitboard
   - PlutoniumReactorFuelRod
   - BananiumReactorFuelRod
   - GoldReactorControlRod
@@ -45,6 +52,9 @@
   - DiamondReactorGasChannel
   - GoldReactorHeatExchanger
   - DiamondReactorHeatExchanger
+  - GoldGasTurbineBlade # Triad
+  - DiamondGasTurbineBlade
+  - GoldGasTurbineStator
   technologyPrerequisites:
   - NuclearPowerGeneration
   #radioChannels:

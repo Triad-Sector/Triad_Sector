@@ -21,7 +21,23 @@
   cost: 35000
   recipeUnlocks:
   - ClothingOuterHardsuitTdfTA29
+  - ClothingOuterHardsuitTdfHazmat
   technologyPrerequisites:
   - TdfBasicEquipment
   - UniversalMaterialResearchT2
   position: 12, 3
+
+- type: technology
+  id: TdfSpecOpsEquipment
+  name: research-technology-tdf-specops-equipment
+  entityIcon: ClothingOuterHardsuitTdfCasket
+  discipline: TdfEquipment
+  tier: 3
+  cost: 120000
+  recipeUnlocks:
+  - ClothingOuterHardsuitTdfCasket
+  - ClothingOuterHardsuitTdfExperimental
+  technologyPrerequisites:
+  - TdfAdvancedEquipment
+  - UniversalMaterialResearchT3
+  position: 12, 5

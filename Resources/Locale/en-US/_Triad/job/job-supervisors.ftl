@@ -1,4 +1,5 @@
 job-supervisors-high-command = High Command
+job-supervisors-overseer = the Overseer
 
 job-supervisors-tdf-enforcer = the Chief Enforcer
 job-supervisors-tdf-lieutenant = the Lieutenant

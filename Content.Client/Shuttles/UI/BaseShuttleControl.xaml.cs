@@ -576,7 +576,7 @@ public partial class BaseShuttleControl : MapGridControl
 
         _gridTileList.Clear();
 
-        var rator = Maps.GetAllTilesEnumerator(grid.Owner, grid.Comp);
+        var rator = Maps.GetAllTiles(grid.Owner, grid.Comp);
         while (rator.MoveNext(out var tileRef))
         {
             var def = (ContentTileDefinition)_tileDef[tileRef.Value.Tile.TypeId];
@@ -715,7 +715,7 @@ public partial class BaseShuttleControl : MapGridControl
     /*
     protected void DrawGridOriginal(DrawingHandleScreen handle, Matrix3x2 gridToView, Entity<MapGridComponent> grid, Color color, float alpha = 0.01f)
     {
-        var rator = Maps.GetAllTilesEnumerator(grid.Owner, grid.Comp);
+        var rator = Maps.GetAllTiles(grid.Owner, grid.Comp);
         var minimapScale = MinimapScale;
         var midpoint = new Vector2(MidPoint, MidPoint);
         var tileSize = grid.Comp.TileSize;

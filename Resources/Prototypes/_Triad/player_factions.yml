@@ -1,6 +1,6 @@
-# 'Companies', better known as minor factions.
-# I can't be assed to go through every mention of companies in the codebase and database just to make it say minor factions.
-# Playable, player-owned factions should always be whitelisted. Faction leaders of considerably larger factions should not be actual in-game characters.
+# 'Companies', better known as factions.
+# I can't be assed to go through every mention of companies in the codebase and database just to make it say factions.
+# Playable, player-owned factions should always be whitelisted. Faction leaders of considerably larger player factions should not be actual in-game characters.
 
 # "None" - DO NOT REMOVE!
 - type: company
@@ -47,4 +47,12 @@
   description: ghostlights-description
   image: /Textures/_Triad/PlayerFactions/Ghostlights.png
   color: "#3ffff6"
+  whitelisted: true
+
+- type: company
+  id: Bloodstone
+  name: Bloodstone Strategic Solutions
+  description: bss-description
+  image: /Textures/_Triad/PlayerFactions/Bloodstone.png
+  color: "#5d0505"
   whitelisted: true

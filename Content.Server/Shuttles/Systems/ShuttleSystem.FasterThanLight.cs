@@ -925,12 +925,18 @@ public sealed partial class ShuttleSystem
         _audio.SetGridAudio(audio);
 
         // Re-enable map if it was paused.
-        if (TryComp<FTLDestinationComponent>(Maps.GetMapOrInvalid(mapId), out var dest))
+        // Triad: one tolerant lookup for the whole arrival. The destination can be deleted between
+        // ticks, and SetPaused(MapId) and GetMap(MapId) both throw on a missing map, which only
+        // EXCEPTION_TOLERANCE hid in Release builds.
+        var mapUid = Maps.GetMapOrInvalid(mapId);
+        if (TryComp<FTLDestinationComponent>(mapUid, out var dest))
         {
             dest.Enabled = true;
         }
 
-        Maps.SetPaused(mapId, false);
+        if (mapUid.IsValid())
+            Maps.SetPaused(mapUid, false);
+
         Smimsh(uid, xform: xform);
 
         // Add cooldown before removing the FTL component
@@ -944,7 +950,7 @@ public sealed partial class ShuttleSystem
             RemComp(uid, comp);
         }
 
-        var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
+        var ftlEvent = new FTLCompletedEvent(uid, mapUid);
         RaiseLocalEvent(uid, ref ftlEvent, true);
         _console.RefreshShuttleConsoles(uid);
 

@@ -1,0 +1,8 @@
+- type: entity
+  parent: MindRoleGhostRoleNeutral
+  id: MindRoleGhostRoleFreeAgentHarmless
+  name: Ghost Role (Free Agent)
+  components:
+  - type: MindRole
+    roleType: FreeAgent
+    # Triad: upstream also sets sortWeight: 0, a field our MindRoleComponent does not have

@@ -94,11 +94,11 @@ public sealed partial class ChemistryGuideDataSystem : SharedChemistryGuideDataS
                 continue;
 
             //these bloat the hell out of blood/fat
-            if (entProto.HasComponent<BodyPartComponent>())
+            if (entProto.HasComp<BodyPartComponent>(Factory))
                 continue;
 
             //these feel obvious...
-            if (entProto.HasComponent<PillComponent>())
+            if (entProto.HasComp<PillComponent>(Factory))
                 continue;
 
             if (extractableComponent.JuiceSolution is { } juiceSolution)

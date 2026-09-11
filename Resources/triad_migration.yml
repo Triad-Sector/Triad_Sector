@@ -120,10 +120,10 @@ ClothingModsuitGauntletsUSSPVaryag: null
 ClothingModsuitGauntletsUSSPZastavnik: null
 ClothingModsuitGauntletsRogue: null
 ClothingModsuitGauntletsVolta: null
-ClothingHeadHelmetHardsuitUsspL27: null
-ClothingHeadHelmetHardsuitUsspL10: null
-ClothingHeadHelmetHardsuitUsspL10A: null
-ClothingHeadHelmetHardsuitUsspM10: null
+ClothingHeadHelmetHardsuitUsspL27: ClothingHeadHelmetHardsuitRmtL27
+ClothingHeadHelmetHardsuitUsspL10: ClothingHeadHelmetHardsuitRmtL10
+ClothingHeadHelmetHardsuitUsspL10A: ClothingHeadHelmetHardsuitRmtL10A
+ClothingHeadHelmetHardsuitUsspM10: ClothingHeadHelmetHardsuitRmtM10
 ClothingHeadHelmetHardsuitUsspL30: null
 ClothingHeadHelmetHardsuitOfficerCombat: null
 ClothingHeadHatUSSPOfficerCap: null
@@ -136,10 +136,10 @@ ClothingModsuitChestplateUSSPZastavnik: null
 ClothingModsuitChestplateRogue: null
 ClothingModsuitChestplateVolta: null
 ClothingOuterCoatUSSP: null
-ClothingOuterHardsuitUsspL27: null
-ClothingOuterHardsuitUsspL10: null
-ClothingOuterHardsuitUsspL10A: null
-ClothingOuterHardsuitUsspM10: null
+ClothingOuterHardsuitUsspL27: ClothingOuterHardsuitIndustrialEngi
+ClothingOuterHardsuitUsspL10: ClothingOuterHardsuitRmtL10
+ClothingOuterHardsuitUsspL10A: ClothingOuterHardsuitRmtL10A
+ClothingOuterHardsuitUsspM10: ClothingOuterHardsuitRmtM10
 ClothingOuterHardsuitUsspL30: null
 ClothingOuterHardsuitOfficerCombat: null
 ClothingModsuitBootsUSSPVaryag: null
@@ -223,8 +223,8 @@ HolopadCommissarBaikal: null
 HolopadJupiter: null
 ComputerShipyardUSSP: ComputerShipyardTIC
 VendingMachineUSSP: null
-TurbineUSSP: Turbine
-TurbineUSSPSmall: TurbineSmall
+TurbineUSSP: GasTurbineNormalSalvage # Triad: migrations do not chain
+TurbineUSSPSmall: GasTurbineSmallSalvage # Triad: same
 LockableButtonUSSP: null
 SuitStorageWallmountUsspL10: null
 SuitStorageWallmountUssp: null
@@ -287,6 +287,9 @@ NovaCygniTranslator: TerraSlavicTranslator
 SpawnPointDeputy: null
 JupiterCarrierComputer: null
 
+# 2026-08-16
+ClothingBackpackDuffelClothingOuterHardsuitAshenBundle: ClothingBackpackDuffelOuterHardsuitTacticoolBundle
+
 # 2026-08-24 xenoarchaeology rework: the legacy artifact entities no longer exist, but ship saves
 # live on the player's machine and can still carry them, and one missing prototype fails the whole
 # ship load. Bodies map to their node-graph replacements (a fresh graph rolls on load); the legacy
@@ -314,3 +317,80 @@ PlasmaWindoorSecureWardenLocked: PlasmaWindoorSecureTdfLieutenantLocked
 DefaultStationBeaconTdfWarden: DefaultStationBeaconTdfLieutenant
 SpawnPointTdfWarden: SpawnPointTdfLieutenant
 DresserTdfWardenFilled: DresserTdfLieutenantFilled
+
+# 2026-09-01
+AirlockNfsdGlass: AirlockSDGlass
+AirlockNfsd: AirlockSD
+AirlockNfsdGlassLocked: AirlockSDGlassLocked
+AirlockNfsdLocked: AirlockSDLocked
+
+# 2026-09-04
+AvianDildo: null
+SAvianDildo: null
+MAvianDildo: null
+CanineDildo: null
+SCanineDildo: null
+MCanineDildo: null
+CanineDildoRed: null
+SCanineDildoRed: null
+MCanineDildoRed: null
+HorseDildo: null
+SHorseDildo: null
+MHorseDildo: null
+DragonDildo: null
+SDragonDildo: null
+MDragonDildo: null
+NormalDildo: null
+SNormalDildo: null
+MNormalDildo: null
+TentacleDildo: null
+STentacleDildo: null
+MTentacleDildo: null
+DoubleDildo: null
+SDoubleDildo: null
+MDoubleDildo: null
+LewdFleshlightYellow: null
+LewdFleshlightRed: null
+LewdFleshlightPink: null
+LewdFleshlightTeal: null
+LewdFleshlightGreen: null
+LewdWand: null
+LewdVibeGreen: null
+LewdVibeTeal: null
+LewdVibePink: null
+LewdVibeRed: null
+LewdVibeYellow: null
+WhipPink: null
+WhipTeal: null
+WhipPinkCrotch: null
+WhipTealCrotch: null
+SpankPinkPaddle: null
+SpankTealPaddle: null
+CrateLewd: null
+CrateLewdPartial: null
+CrateLewdToys: null
+
+# 2026-09-04
+# Far Horizons renamed Turbine to GasTurbine and split the concrete entity into an abstract base
+# plus access mixins. Nothing in the tree places the old ids, but ship saves in the database can
+# still hold them. Point the two placeable ones at the variants that carry NO AccessReader: Mono
+# had commented the Engineering reader off the old base, so mapping onto GasTurbineNormal instead
+# would lock a stored ship's turbine against a crew that never needed Engineering access.
+Turbine: GasTurbineNormalSalvage
+TurbineSmall: GasTurbineSmallSalvage
+TurbineFlowArrow: GasTurbineFlowArrow
+TurbineSmallFlowArrow: GasTurbineSmallFlowArrow
+TurbineGasPipe: GasTurbineGasPipe
+TurbineBladeShrapnel: GasTurbineBladeShrapnel
+
+# 2026-09-05
+ComputerShipyardExpedition: ComputerShipyardMilitary
+ComputerTabletopShipyardExpedition: ComputerTabletopShipyardMilitary
+
+# 2026-09-08
+ClothingOuterHardsuitPDVMedic: ClothingOuterHardsuitTdfHazmat
+ClothingHeadHelmetHardsuitPDVMedic: ClothingHeadHelmetHardsuitTdfHazmat
+ClothingOuterHardsuitAshenElite: ClothingOuterHardsuitTdfExperimental
+ClothingHeadHelmetHardsuitAshenElite: ClothingHeadHelmetHardsuitTdfExperimental
+ClothingOuterHardsuitVizier: ClothingOuterHardsuitTdfCasket
+ClothingHeadHelmetHardsuitVizier: ClothingHeadHelmetHardsuitTdfCasket

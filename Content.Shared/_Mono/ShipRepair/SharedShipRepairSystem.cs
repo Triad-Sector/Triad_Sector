@@ -51,7 +51,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
         var chunkSize = repairData.ChunkSize;
 
         // tile snapshot
-        var tiles = _map.GetAllTilesEnumerator(gridUid, grid);
+        var tiles = _map.GetAllTiles(gridUid, grid);
         while (tiles.MoveNext(out var mTileRef))
         {
             if (mTileRef == null)

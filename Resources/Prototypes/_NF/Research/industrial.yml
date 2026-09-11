@@ -44,6 +44,10 @@
   - ClothingOuterHardsuitClown
   - ClothingOuterHardsuitMime
   - ClothingOuterHardsuitPilot
+  - ClothingOuterHardsuitRmtL10 # Triad
+  - ClothingOuterHardsuitRmtL10A # Triad
+  - UllmanHardsuitPilot # Triad
+  - UllmanHardsuitEngineer # Triad
   - ModsuitChestplate
   - ModsuitBoots
   - ModsuitHelmet
@@ -88,6 +92,7 @@
   - ClothingOuterHardsuitMaximPrototype
   - NFBlueprintClothingOuterHardsuitMaximPrototype
   - ClothingOuterHardsuitRd
+  - ClothingOuterHardsuitRmtM10 # Triad
   technologyPrerequisites:
   - HardsuitsSpecialized
   position: 1, 7

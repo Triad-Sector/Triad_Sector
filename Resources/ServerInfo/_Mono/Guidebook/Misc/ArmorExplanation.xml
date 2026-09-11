@@ -68,7 +68,7 @@
   ## Shielded Armor
 
   <Box>
-    <GuideEntityEmbed Entity="ClothingOuterHardsuitAshenElite"/>
+    <GuideEntityEmbed Entity="ClothingOuterHardsuitUIEnforcerMKII"/>
     <GuideEntityEmbed Entity="ClothingOuterHardsuitNfsdExperimental"/>
   </Box>
 

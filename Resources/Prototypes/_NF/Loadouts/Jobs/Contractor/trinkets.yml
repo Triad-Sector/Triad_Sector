@@ -225,6 +225,13 @@
     back:
     - Wristwatch
 
+- type: loadout
+  id: ContractorAACTablet
+  price: 500
+  storage:
+    back:
+    - AACTablet
+
 #T1
 - type: loadout
   id: ContractorBasketball

@@ -153,10 +153,10 @@ public sealed partial class ContrabandTurnInSystem : SharedContrabandTurnInSyste
 
                 if (TryComp<ContrabandComponent>(ent, out var comp))
                 {
-                    if (!comp.TurnInValues.ContainsKey(console.RewardType))
+                    if (!comp.TurnInValues.ContainsKey(console.RewardType.Id))
                         continue;
 
-                    var value = comp.TurnInValues[console.RewardType];
+                    var value = comp.TurnInValues[console.RewardType.Id];
                     // Mono Begin - Accounting for stacks of contraband
                     if (TryComp<StackComponent>(ent, out var stackcomp))
                         value *= stackcomp.Count;

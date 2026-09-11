@@ -37,11 +37,10 @@ public sealed partial class ShipyardVoucherComponent : Component
     public HashSet<ProtoId<VesselPrototype>> Vessels = new();
 
     /// <summary>
-    ///  The type of console where this voucher can be used.
-    ///  Should not be ShipyardConsoleUiKey.Custom.  Note: currently cannot be used for mothership consoles.
+    ///  Triad - A hashset of console types where this voucher can be used.
     /// </summary>
     [DataField(required: true)]
-    public ShipyardConsoleUiKey ConsoleType;
+    public HashSet<ShipyardConsoleUiKey> ConsoleTypes = new();
 
     /// <summary>
     ///  The company name associated with this voucher. Used to transfer company information to purchased ships.

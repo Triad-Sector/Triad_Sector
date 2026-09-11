@@ -244,6 +244,19 @@
     receiveOnly: true
   - type: DeviceNetwork
     prefix: device-address-prefix-portable-gaslock
+  # Triad - Battery-powered gas drill
+  - type: Battery
+    maxCharge: 9500
+    startingCharge: 0
+  - type: ExaminableBattery
+  - type: BatterySelfRecharger
+  - type: ApcPowerReceiverBattery
+    idleLoad: 5
+    batteryRechargeRate: 220
+    batteryRechargeEfficiency: 1.5
+  - type: CollapsibleItem
+    collapseInto: GaslockFrameFlatpack
+  # Triad End
   - type: Fixtures
     fixtures:
       fix1:

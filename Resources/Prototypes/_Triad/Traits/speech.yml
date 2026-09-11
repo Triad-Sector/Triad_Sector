@@ -40,7 +40,7 @@
   name: trait-language-TerraSlavic-name
   description: trait-language-TerraSlavic-desc
   category: LanguageTraits
-  cost: 0 # accents/languages are cosmetic RP, not a point cost.
+  cost: 0 # accents/languages are cosmetic RP
   effects:
   - !type:AddCompsEffect
     components:
@@ -50,3 +50,20 @@
     spoken: true
     languages:
     - TerraSlavic
+
+# Sol Common, the language of the Federated Solarian Republic. Spoken by SD members and residents of Sol.
+- type: trait
+  id: SolCommon
+  name: trait-language-solcommon-name
+  description: trait-language-solcommon-desc
+  category: LanguageTraits
+  cost: 0 # accents/languages are cosmetic RP
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - SolCommon

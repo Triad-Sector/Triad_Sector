@@ -1,0 +1,19 @@
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: NuclearReactorSmallMachineCircuitboard
+  result: NuclearReactorSmallMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: NuclearReactorMachineCircuitboard
+  result: NuclearReactorMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: GasTurbineSmallMachineCircuitboard
+  result: GasTurbineSmallMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: GasTurbineMachineCircuitboard
+  result: GasTurbineMachineCircuitboard

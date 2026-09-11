@@ -74,7 +74,10 @@
       selectedMode: SemiAuto
       availableModes:
       - SemiAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/revolver.ogg
+      soundGunshot:
+        path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/python_fire.ogg
+        params:
+          volume: 2.25
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -453,7 +456,8 @@
       selectedMode: FullAuto
       availableModes:
       - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      soundGunshot:
+        path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/viper_fire.ogg
 
 - type: entity
   parent: MobSyndicateNavalSaboteurA
@@ -614,7 +618,8 @@
       selectedMode: FullAuto
       availableModes:
       - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      soundGunshot:
+        path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/viper_fire.ogg
 
 - type: entity
   parent: MobSyndicateNavalDeckhandA

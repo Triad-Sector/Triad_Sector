@@ -30,7 +30,7 @@ public sealed class AddAccentPickupSystem : EntitySystem
 
         // snowflake case for replacement accent
         if (accentComponent is ReplacementAccentComponent rep)
-            rep.Accent = component.ReplacementPrototype!;
+            rep.Accent = component.ReplacementPrototype!.Value;
 
         component.IsActive = true;
         component.Holder = args.User;
@@ -88,7 +88,7 @@ public sealed class AddAccentPickupSystem : EntitySystem
 
             // snowflake case for replacement accent
             if (accentComponent is ReplacementAccentComponent rep)
-                rep.Accent = component.ReplacementPrototype!;
+                rep.Accent = component.ReplacementPrototype!.Value;
 
             component.IsActive = true;
         }

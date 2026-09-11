@@ -9,7 +9,7 @@
   startingGear: NFJanitorGear
   alwaysUseSpawner: true
   icon: "JobIconJanitor"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 100
   displayWeight: 40
   assignedCompany: Colonial

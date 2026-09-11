@@ -19,6 +19,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfFirearm
   - TdfMag
@@ -47,6 +48,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfFirearm
   - TdfMag
@@ -75,6 +77,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfFirearm
   - TdfMag
@@ -103,6 +106,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - SeniorOfficerTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfFirearm
   - TdfMag
@@ -131,6 +135,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - SeniorOfficerTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfFirearm
   - TdfMag
@@ -159,6 +164,7 @@
   - ContractorFun
   - ContractorEncryptionKey
   - SeniorOfficerTrinkets
+  - ContractorBureaucracy
   - NfsdSpeciesSpecific
   - TdfChiefEnforcerFirearm
   - TdfChiefEnforcerMag

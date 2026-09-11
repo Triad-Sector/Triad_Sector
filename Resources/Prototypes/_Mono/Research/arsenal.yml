@@ -1,4 +1,37 @@
 - type: technology
+  id: MercArmementHighEnd
+  name: research-technology-ullmanpulse-high-end
+  entityIcon: UllmanWeaponPulseSniper
+  discipline: Arsenal
+  tier: 3
+  cost: 50000
+  recipeUnlocks:
+  - UllmanWeaponPulseSniper
+  - UllmanWeaponPulseRifle
+  - UllmanMeleePlasmaBlade
+  - UllmanWeaponSmartMagnum
+  - MagazineSmartMagnum
+  - MagazineSmartMagnumExt
+  technologyPrerequisites:
+  - SuperParts
+  - MercArmementAdvancedEnergy
+  position: 5, 1
+
+- type: technology
+  id: MercArmementAdvancedEnergy
+  name: research-technology-ullmanpulse-adv
+  entityIcon: UllmanWeaponPulsePistol
+  discipline: Arsenal
+  tier: 2
+  cost: 25000
+  recipeUnlocks:
+  - UllmanWeaponPulsePistol
+  technologyPrerequisites:
+  - AdvancedParts
+  - MercArmementAdvanced
+  position: 4, 1
+
+- type: technology
   id: MercArmementAdvanced
   name: research-technology-merc-armement-advanced
   entityIcon: WeaponLMGRatel

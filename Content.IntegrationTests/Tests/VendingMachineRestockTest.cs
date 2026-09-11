@@ -124,7 +124,7 @@ namespace Content.IntegrationTests.Tests
                 {
                     if (proto.Abstract
                         || pair.IsTestPrototype(proto)
-                        || !proto.HasComponent<VendingMachineRestockComponent>())
+                        || !proto.HasComp<VendingMachineRestockComponent>(compFact))
                     {
                         continue;
                     }

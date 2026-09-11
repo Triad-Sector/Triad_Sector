@@ -9,7 +9,7 @@
   startingGear: CCServiceWorkerGear
   alwaysUseSpawner: true
   icon: "JobIconValet" # Frontier: JobIconServiceWorker<JobIconValet
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 60 # Frontier
   displayWeight: 10 # Frontier
   assignedCompany: Colonial

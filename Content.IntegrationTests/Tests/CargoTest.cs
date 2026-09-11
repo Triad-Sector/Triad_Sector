@@ -127,7 +127,7 @@ public sealed class CargoTest
                         $"The prototype {proto} has a StackPriceComponent and StaticPriceComponent whose values are not compatible with each other.");
                 }
 
-                if (proto.HasComponent<StackComponent>(compFact))
+                if (proto.HasComp<StackComponent>(compFact))
                 {
                     Assert.That(staticPriceComp.Price, Is.EqualTo(0),
                         $"The prototype {proto} has a StackComponent and StaticPriceComponent whose values are not compatible with each other.");

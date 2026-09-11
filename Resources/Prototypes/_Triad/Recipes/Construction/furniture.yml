@@ -104,7 +104,7 @@
 
 - type: construction
   id: SinkStemless
-  name: sink
+  name: wall sink
   description: The faucets have been tightened to the maximum possible torque but are still known to drip.
   graph: sinkstemlesswater
   startNode: start

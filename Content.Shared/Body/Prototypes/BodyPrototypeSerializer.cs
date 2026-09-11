@@ -52,7 +52,7 @@ public sealed class BodyPrototypeSerializer : ITypeReader<BodyPrototype, Mapping
                     continue;
                 }
 
-                if (!organPrototype.HasComponent<OrganComponent>(factory))
+                if (!organPrototype.HasComp<OrganComponent>(factory))
                 {
                     nodes.Add(new ErrorNode(value, $"Organ {organ.Value} does not have a body component"));
                 }

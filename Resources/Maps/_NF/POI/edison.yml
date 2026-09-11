@@ -4,8 +4,8 @@ meta:
   engineVersion: 287.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/14/2026 17:01:06
-  entityCount: 13867
+  time: 09/04/2026 08:16:13
+  entityCount: 13885
 maps: []
 grids:
 - 1
@@ -312,9 +312,9 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
         Smoke: []
         Puddle: []
+        MetalFoam: []
         Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
@@ -5502,7 +5502,7 @@ entities:
       pos: -2.5,29.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -82911.53
+      secondsUntilStateChange: -82982.29
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -15877,295 +15877,295 @@ entities:
     - type: Transform
       parent: 1
       pos: -11.5,15.5
-  - uid: 2099
+  - uid: 2096
     components:
     - type: Transform
       parent: 1
       pos: -9.5,28.5
-  - uid: 2100
+  - uid: 2097
     components:
     - type: Transform
       parent: 1
       pos: -9.5,27.5
-  - uid: 2101
+  - uid: 2098
     components:
     - type: Transform
       parent: 1
       pos: -9.5,26.5
-  - uid: 2102
+  - uid: 2099
     components:
     - type: Transform
       parent: 1
       pos: -8.5,28.5
-  - uid: 2103
+  - uid: 2100
     components:
     - type: Transform
       parent: 1
       pos: -8.5,27.5
-  - uid: 2104
+  - uid: 2101
     components:
     - type: Transform
       parent: 1
       pos: -8.5,26.5
-  - uid: 2105
+  - uid: 2102
     components:
     - type: Transform
       parent: 1
       pos: -12.5,28.5
-  - uid: 2106
+  - uid: 2103
     components:
     - type: Transform
       parent: 1
       pos: -12.5,27.5
-  - uid: 2107
+  - uid: 2104
     components:
     - type: Transform
       parent: 1
       pos: -12.5,26.5
-  - uid: 2108
+  - uid: 2105
     components:
     - type: Transform
       parent: 1
       pos: -11.5,28.5
-  - uid: 2109
+  - uid: 2106
     components:
     - type: Transform
       parent: 1
       pos: -11.5,27.5
-  - uid: 2110
+  - uid: 2107
     components:
     - type: Transform
       parent: 1
       pos: -11.5,26.5
-  - uid: 2111
+  - uid: 2108
     components:
     - type: Transform
       parent: 1
       pos: -18.5,28.5
-  - uid: 2112
+  - uid: 2109
     components:
     - type: Transform
       parent: 1
       pos: -18.5,27.5
-  - uid: 2113
+  - uid: 2110
     components:
     - type: Transform
       parent: 1
       pos: -18.5,26.5
-  - uid: 2114
+  - uid: 2111
     components:
     - type: Transform
       parent: 1
       pos: -17.5,28.5
-  - uid: 2115
+  - uid: 2112
     components:
     - type: Transform
       parent: 1
       pos: -17.5,27.5
-  - uid: 2116
+  - uid: 2113
     components:
     - type: Transform
       parent: 1
       pos: -17.5,26.5
-  - uid: 2117
+  - uid: 2114
     components:
     - type: Transform
       parent: 1
       pos: -21.5,28.5
-  - uid: 2118
+  - uid: 2115
     components:
     - type: Transform
       parent: 1
       pos: -21.5,27.5
-  - uid: 2119
+  - uid: 2116
     components:
     - type: Transform
       parent: 1
       pos: -21.5,26.5
-  - uid: 2120
+  - uid: 2117
     components:
     - type: Transform
       parent: 1
       pos: -20.5,28.5
-  - uid: 2121
+  - uid: 2118
     components:
     - type: Transform
       parent: 1
       pos: -20.5,27.5
-  - uid: 2122
+  - uid: 2119
     components:
     - type: Transform
       parent: 1
       pos: -20.5,26.5
 - proto: AtmosFixFreezerMarker
   entities:
-  - uid: 2126
+  - uid: 2120
     components:
     - type: Transform
       parent: 1
       pos: 14.5,13.5
-  - uid: 2127
+  - uid: 2121
     components:
     - type: Transform
       parent: 1
       pos: 14.5,11.5
-  - uid: 2128
+  - uid: 2122
     components:
     - type: Transform
       parent: 1
       pos: 14.5,12.5
-  - uid: 2129
+  - uid: 2123
     components:
     - type: Transform
       parent: 1
       pos: 13.5,12.5
-  - uid: 2130
+  - uid: 2124
     components:
     - type: Transform
       parent: 1
       pos: 13.5,11.5
-  - uid: 2131
+  - uid: 2125
     components:
     - type: Transform
       parent: 1
       pos: 13.5,13.5
 - proto: AtmosFixNitrogenMarker
   entities:
-  - uid: 2132
+  - uid: 2126
     components:
     - type: Transform
       parent: 1
       pos: -27.5,27.5
-  - uid: 2133
+  - uid: 2127
     components:
     - type: Transform
       parent: 1
       pos: -27.5,26.5
-  - uid: 2134
+  - uid: 2128
     components:
     - type: Transform
       parent: 1
       pos: -26.5,27.5
-  - uid: 2135
+  - uid: 2129
     components:
     - type: Transform
       parent: 1
       pos: -26.5,26.5
-  - uid: 2136
+  - uid: 2130
     components:
     - type: Transform
       parent: 1
       pos: -26.5,28.5
-  - uid: 2137
+  - uid: 2131
     components:
     - type: Transform
       parent: 1
       pos: -27.5,28.5
-  - uid: 2138
+  - uid: 2132
     components:
     - type: Transform
       parent: 1
       pos: -37.5,-28.5
-  - uid: 2139
+  - uid: 2133
     components:
     - type: Transform
       parent: 1
       pos: -37.5,-27.5
-  - uid: 2140
+  - uid: 2134
     components:
     - type: Transform
       parent: 1
       pos: -37.5,-26.5
-  - uid: 2141
+  - uid: 2135
     components:
     - type: Transform
       parent: 1
       pos: -36.5,-28.5
-  - uid: 2142
+  - uid: 2136
     components:
     - type: Transform
       parent: 1
       pos: -36.5,-27.5
-  - uid: 2143
+  - uid: 2137
     components:
     - type: Transform
       parent: 1
       pos: -36.5,-26.5
-  - uid: 2144
+  - uid: 2138
     components:
     - type: Transform
       parent: 1
       pos: -35.5,-28.5
-  - uid: 2145
+  - uid: 2139
     components:
     - type: Transform
       parent: 1
       pos: -35.5,-26.5
-  - uid: 2146
+  - uid: 2140
     components:
     - type: Transform
       parent: 1
       pos: -35.5,-27.5
 - proto: AtmosFixOxygenMarker
   entities:
-  - uid: 2147
+  - uid: 2141
     components:
     - type: Transform
       parent: 1
       pos: -24.5,28.5
-  - uid: 2148
+  - uid: 2142
     components:
     - type: Transform
       parent: 1
       pos: -24.5,26.5
-  - uid: 2149
+  - uid: 2143
     components:
     - type: Transform
       parent: 1
       pos: -23.5,26.5
-  - uid: 2150
+  - uid: 2144
     components:
     - type: Transform
       parent: 1
       pos: -23.5,27.5
-  - uid: 2151
+  - uid: 2145
     components:
     - type: Transform
       parent: 1
       pos: -23.5,28.5
-  - uid: 2152
+  - uid: 2146
     components:
     - type: Transform
       parent: 1
       pos: -24.5,27.5
 - proto: AtmosFixPlasmaMarker
   entities:
-  - uid: 2096
+  - uid: 2147
     components:
     - type: Transform
       parent: 1
       pos: -15.5,26.5
-  - uid: 2097
+  - uid: 2148
     components:
     - type: Transform
       parent: 1
       pos: -14.5,26.5
-  - uid: 2098
+  - uid: 2149
     components:
     - type: Transform
       parent: 1
       pos: -14.5,27.5
-  - uid: 2123
+  - uid: 2150
     components:
     - type: Transform
       parent: 1
       pos: -14.5,28.5
-  - uid: 2124
+  - uid: 2151
     components:
     - type: Transform
       parent: 1
       pos: -15.5,27.5
-  - uid: 2125
+  - uid: 2152
     components:
     - type: Transform
       parent: 1
@@ -79567,6 +79567,38 @@ entities:
     - type: Transform
       parent: 1
       pos: 10.5,36.5
+- proto: SpawnPointContractor
+  entities:
+  - uid: 13874
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,52.5
+  - uid: 13875
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,51.5
+  - uid: 13876
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,51.5
+  - uid: 13877
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,53.5
+  - uid: 13878
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,52.5
+  - uid: 13879
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,53.5
 - proto: SpawnPointLatejoin
   entities:
   - uid: 12065
@@ -79589,6 +79621,70 @@ entities:
     - type: Transform
       parent: 1
       pos: 2.5,56.5
+- proto: SpawnPointMercenary
+  entities:
+  - uid: 13880
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,53.5
+  - uid: 13881
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,52.5
+  - uid: 13882
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,51.5
+  - uid: 13883
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,53.5
+  - uid: 13884
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,52.5
+  - uid: 13885
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,51.5
+- proto: SpawnPointPilot
+  entities:
+  - uid: 13868
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,53.5
+  - uid: 13869
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,52.5
+  - uid: 13870
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,51.5
+  - uid: 13871
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,53.5
+  - uid: 13872
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,52.5
+  - uid: 13873
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,51.5
 - proto: SpawnPointPlantManager
   entities:
   - uid: 12069

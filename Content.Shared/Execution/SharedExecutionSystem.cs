@@ -98,6 +98,11 @@ public sealed partial class SharedExecutionSystem : EntitySystem
 
     public bool CanBeExecuted(EntityUid victim, EntityUid attacker)
     {
+        // Triad - No self-executions.
+        if (victim == attacker)
+            return false;
+        // End Triad
+
         // No point executing someone if they can't take damage
         if (!HasComp<DamageableComponent>(victim))
             return false;
