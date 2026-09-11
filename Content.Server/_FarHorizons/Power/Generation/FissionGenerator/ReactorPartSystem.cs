@@ -148,7 +148,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             reactorPart.MeltHealth -= _random.Next(10, 50 + 1);
         if (reactorPart.MeltHealth <= 0)
             Melt(reactorPart, reactorEnt, reactorSystem);
-        
+
         return;
 
         // I would really like for these to be defined by the MaterialPrototype, like GasReactionPrototype, but it caused the client and server to fight when I tried
@@ -172,7 +172,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 return;
 
             var molesPerUnit = 100f; // Arbitrary value for how much gaseous plasma is in each unit of active plasma
-            
+
             var payload = new GasMixture();
             payload.SetMoles(Gas.Plasma, (float)Math.Min(part.Properties.ActivePlasma * molesPerUnit, Math.Log(((part.Temperature - temperatureThreshold) / 100) + 1)));
             payload.Temperature = part.Temperature;
@@ -182,7 +182,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             _atmosphereSystem.Merge(reactor.AirContents, payload);
         }
     }
-    
+
     /// <summary>
     /// Melts the related ReactorPart.
     /// </summary>
@@ -270,7 +270,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             }
             reactorPart.Properties.NeutronRadioactivity -= ReactionReactant * SpontaneousReactionConsumptionMultiplier;
             reactorPart.Properties.Radioactivity += ReactionProduct * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Temperature += 20f * SpontaneousHeatingFactor; 
+            reactorPart.Temperature += 20f * SpontaneousHeatingFactor;
         }
         if (Prob(reactorPart.Properties.Radioactivity * ReactionRate * reactorPart.NeutronCrossSection))
         {
@@ -345,20 +345,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
         var neutronCount = 1;
         var gas = reactorPart.AirContents;
 
-        if (gas.GetMoles(Gas.Plasma) > 1)
-        {
-            var reactMolPerLiter = 0.25;
-            var reactMol = reactMolPerLiter * gas.Volume;
-
-            var plasma = gas.GetMoles(Gas.Plasma);
-            var plasmaReactCount = (int)Math.Round((plasma - (plasma % reactMol)) / reactMol) + (Prob(plasma - (plasma % reactMol)) ? 1 : 0);
-            plasmaReactCount = _random.Next(0, plasmaReactCount + 1);
-            gas.AdjustMoles(Gas.Plasma, plasmaReactCount * -0.5f);
-            gas.AdjustMoles(Gas.Tritium, plasmaReactCount * 2);
-            neutronCount += plasmaReactCount;
-        }
-
-        if (gas.GetMoles(Gas.CarbonDioxide) > 1)
+        if (gas.GetMoles(Gas.CarbonDioxide) > 1) //process co2 before the moderator gasses, so it can actually, y'know. Reduce the neutron levels.
         {
             var reactMolPerLiter = 0.4;
             var reactMol = reactMolPerLiter * gas.Volume;
@@ -370,7 +357,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             neutronCount -= Math.Min(co2ReactCount, neutronCount);
         }
 
-        if (gas.GetMoles(Gas.Tritium) > 1)
+        if (gas.GetMoles(Gas.Tritium) > 1) //Process trit before plasma, since plasma makes it
         {
             var reactMolPerLiter = 0.5;
             var reactMol = reactMolPerLiter * gas.Volume;
@@ -404,6 +391,20 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 }
             }
         }
+
+        if (gas.GetMoles(Gas.Plasma) > 1) //process plasma last
+        {
+            var reactMolPerLiter = 0.25;
+            var reactMol = reactMolPerLiter * gas.Volume;
+
+            var plasma = gas.GetMoles(Gas.Plasma);
+            var plasmaReactCount = (int)Math.Round((plasma - (plasma % reactMol)) / reactMol) + (Prob(plasma - (plasma % reactMol)) ? 1 : 0);
+            plasmaReactCount = _random.Next(0, plasmaReactCount + 1);
+            gas.AdjustMoles(Gas.Plasma, plasmaReactCount * -0.5f);
+            gas.AdjustMoles(Gas.Tritium, plasmaReactCount * 2);
+            neutronCount += plasmaReactCount;
+        }
+
 
         return neutronCount;
     }
