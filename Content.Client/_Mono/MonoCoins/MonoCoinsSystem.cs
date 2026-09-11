@@ -6,9 +6,9 @@ namespace Content.Client._Mono.MonoCoins;
 /// <summary>
 /// Client-side system for handling MonoCoins balance requests and responses.
 /// </summary>
-public sealed class MonoCoinsSystem : EntitySystem
+public sealed partial class MonoCoinsSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] private INetManager _netManager = default!;
 
     /// <summary>
     /// The last known MonoCoins balance. -1 indicates balance hasn't been fetched yet.

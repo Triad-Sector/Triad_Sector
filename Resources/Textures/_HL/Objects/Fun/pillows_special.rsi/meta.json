@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "The mage of Microsoft paint",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    { "name": "pillow_love" },
+    { "name": "pillow_paw_print" },
+    { "name": "pillow_reigal_red" },
+    { "name": "pillow_starbirst" },
+    { "name": "pillow_stiff_green" },
+    { "name": "pillow_stiff_long_green" },
+    { "name": "pillow_stiff" },
+    { "name": "pillow_stiff_long" },
+    { "name": "pillow_weh" },
+    { "name": "bluepillow-inhand-left", "directions": 4 },
+    { "name": "bluepillow-inhand-right", "directions": 4 },
+    { "name": "greenpillow-inhand-left", "directions": 4 },
+    { "name": "greenpillow-inhand-right", "directions": 4 },
+    { "name": "redpillow-inhand-left", "directions": 4 },
+    { "name": "redpillow-inhand-right", "directions": 4 },
+    { "name": "whitepillow-inhand-left", "directions": 4 },
+    { "name": "whitepillow-inhand-right", "directions": 4 }
+  ]
+}

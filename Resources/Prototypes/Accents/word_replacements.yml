@@ -227,43 +227,102 @@
     accent-dwarf-words-146: accent-dwarf-words-replace-146
     accent-dwarf-words-147: accent-dwarf-words-replace-147
     accent-dwarf-words-148: accent-dwarf-words-replace-148
+    accent-dwarf-words-149: accent-dwarf-words-replace-149
+    accent-dwarf-words-150: accent-dwarf-words-replace-150
+    accent-dwarf-words-151: accent-dwarf-words-replace-151
+    accent-dwarf-words-152: accent-dwarf-words-replace-152
+    accent-dwarf-words-153: accent-dwarf-words-replace-153
+    accent-dwarf-words-154: accent-dwarf-words-replace-154
+    accent-dwarf-words-155: accent-dwarf-words-replace-155
+    accent-dwarf-words-156: accent-dwarf-words-replace-156
+    accent-dwarf-words-157: accent-dwarf-words-replace-157
+    accent-dwarf-words-158: accent-dwarf-words-replace-158
+    accent-dwarf-words-159: accent-dwarf-words-replace-159
+    accent-dwarf-words-160: accent-dwarf-words-replace-160
+    accent-dwarf-words-161: accent-dwarf-words-replace-161
+    accent-dwarf-words-162: accent-dwarf-words-replace-162
+    accent-dwarf-words-163: accent-dwarf-words-replace-163
+    accent-dwarf-words-164: accent-dwarf-words-replace-164
+    accent-dwarf-words-165: accent-dwarf-words-replace-165
+    accent-dwarf-words-166: accent-dwarf-words-replace-166
+    accent-dwarf-words-167: accent-dwarf-words-replace-167
+    accent-dwarf-words-168: accent-dwarf-words-replace-168
+    accent-dwarf-words-169: accent-dwarf-words-replace-169
+    accent-dwarf-words-170: accent-dwarf-words-replace-170
+    accent-dwarf-words-171: accent-dwarf-words-replace-171
+    accent-dwarf-words-172: accent-dwarf-words-replace-172
+    accent-dwarf-words-173: accent-dwarf-words-replace-173
+    accent-dwarf-words-174: accent-dwarf-words-replace-174
+    accent-dwarf-words-175: accent-dwarf-words-replace-175
+    accent-dwarf-words-176: accent-dwarf-words-replace-176
+
+# Triad: slim iconic-only list for the Slight Dwarf variant. Reuses existing dwarf loc keys.
+# Keeps the recognizable Scots markers (aye/ye/wee/nae/lass/lad), drops the 100+ vowel-shift entries.
+- type: accent
+  id: dwarf_slight
+  wordReplacements:
+    accent-dwarf-words-30: accent-dwarf-words-replace-30   # yes -> aye
+    accent-dwarf-words-28: accent-dwarf-words-replace-28   # yeah -> aye
+    accent-dwarf-words-15: accent-dwarf-words-replace-15   # you -> ye
+    accent-dwarf-words-25: accent-dwarf-words-replace-25   # little -> wee
+    accent-dwarf-words-58: accent-dwarf-words-replace-58   # no -> nae
+    accent-dwarf-words-4: accent-dwarf-words-replace-4     # woman -> lass
+    accent-dwarf-words-3: accent-dwarf-words-replace-3     # man -> lad
+    accent-dwarf-words-67: accent-dwarf-words-replace-67   # hey -> oi
 
 - type: accent
   id: pirate
   wordReplacements:
-    accent-pirate-replaced-1: accent-pirate-replacement-1
-    accent-pirate-replaced-2: accent-pirate-replacement-2
-    accent-pirate-replaced-3: accent-pirate-replacement-3
-    accent-pirate-replaced-4: accent-pirate-replacement-4
-    accent-pirate-replaced-5: accent-pirate-replacement-5
-    accent-pirate-replaced-6: accent-pirate-replacement-6
-    accent-pirate-replaced-7: accent-pirate-replacement-7
-    accent-pirate-replaced-8: accent-pirate-replacement-8
-    accent-pirate-replaced-9: accent-pirate-replacement-9
-    accent-pirate-replaced-10: accent-pirate-replacement-10
-    accent-pirate-replaced-11: accent-pirate-replacement-11
-    accent-pirate-replaced-12: accent-pirate-replacement-12
-    accent-pirate-replaced-13: accent-pirate-replacement-13
-    accent-pirate-replaced-14: accent-pirate-replacement-14
-    accent-pirate-replaced-15: accent-pirate-replacement-15
-    accent-pirate-replaced-16: accent-pirate-replacement-16
-    accent-pirate-replaced-17: accent-pirate-replacement-17
-    accent-pirate-replaced-18: accent-pirate-replacement-18
-    accent-pirate-replaced-19: accent-pirate-replacement-19
-    accent-pirate-replaced-20: accent-pirate-replacement-20
-    accent-pirate-replaced-21: accent-pirate-replacement-21
-    accent-pirate-replaced-22: accent-pirate-replacement-22
-    accent-pirate-replaced-23: accent-pirate-replacement-23
-    accent-pirate-replaced-24: accent-pirate-replacement-24
-    accent-pirate-replaced-25: accent-pirate-replacement-25
-    accent-pirate-replaced-26: accent-pirate-replacement-26
-    accent-pirate-replaced-27: accent-pirate-replacement-27
-    accent-pirate-replaced-28: accent-pirate-replacement-28
-    accent-pirate-replaced-29: accent-pirate-replacement-29
-    accent-pirate-replaced-30: accent-pirate-replacement-30
-    accent-pirate-replaced-31: accent-pirate-replacement-31
-    accent-pirate-replaced-32: accent-pirate-replacement-32
-
+    accent-pirate-words-1: accent-pirate-words-replace-1
+    accent-pirate-words-2: accent-pirate-words-replace-2
+    accent-pirate-words-3: accent-pirate-words-replace-3
+    accent-pirate-words-4: accent-pirate-words-replace-4
+    accent-pirate-words-5: accent-pirate-words-replace-5
+    accent-pirate-words-6: accent-pirate-words-replace-6
+    accent-pirate-words-7: accent-pirate-words-replace-7
+    accent-pirate-words-8: accent-pirate-words-replace-8
+    accent-pirate-words-9: accent-pirate-words-replace-9
+    accent-pirate-words-10: accent-pirate-words-replace-10
+    accent-pirate-words-10-2: accent-pirate-words-replace-10
+    accent-pirate-words-11: accent-pirate-words-replace-11
+    accent-pirate-words-12: accent-pirate-words-replace-12
+    accent-pirate-words-12-2: accent-pirate-words-replace-12
+    accent-pirate-words-12-3: accent-pirate-words-replace-12
+    accent-pirate-words-13: accent-pirate-words-replace-13
+    accent-pirate-words-14: accent-pirate-words-replace-14
+    accent-pirate-words-14-2: accent-pirate-words-replace-14
+    accent-pirate-words-15: accent-pirate-words-replace-15
+    accent-pirate-words-16: accent-pirate-words-replace-16
+    accent-pirate-words-17: accent-pirate-words-replace-17
+    accent-pirate-words-18: accent-pirate-words-replace-18
+    accent-pirate-words-19: accent-pirate-words-replace-19
+    accent-pirate-words-20: accent-pirate-words-replace-20
+    accent-pirate-words-20-2: accent-pirate-words-replace-20
+    accent-pirate-words-21: accent-pirate-words-replace-21
+    accent-pirate-words-22: accent-pirate-words-replace-22
+    accent-pirate-words-23: accent-pirate-words-replace-23
+    accent-pirate-words-24: accent-pirate-words-replace-24
+    accent-pirate-words-24-2: accent-pirate-words-replace-24
+    accent-pirate-words-25: accent-pirate-words-replace-25
+    accent-pirate-words-26: accent-pirate-words-replace-26
+    accent-pirate-words-27: accent-pirate-words-replace-27
+    accent-pirate-words-28: accent-pirate-words-replace-28
+    accent-pirate-words-28-2: accent-pirate-words-replace-28
+    accent-pirate-words-29: accent-pirate-words-replace-29
+    accent-pirate-words-30: accent-pirate-words-replace-30
+    accent-pirate-words-30-2: accent-pirate-words-replace-30
+    accent-pirate-words-31: accent-pirate-words-replace-31
+    accent-pirate-words-31-2: accent-pirate-words-replace-31
+    accent-pirate-words-32: accent-pirate-words-replace-32
+    accent-pirate-words-33: accent-pirate-words-replace-33
+    accent-pirate-words-34: accent-pirate-words-replace-34
+    accent-pirate-words-34-2: accent-pirate-words-replace-34
+    accent-pirate-words-35: accent-pirate-words-replace-35
+    accent-pirate-words-36: accent-pirate-words-replace-36
+    accent-pirate-words-37: accent-pirate-words-replace-37
+    accent-pirate-words-38: accent-pirate-words-replace-38
+    accent-pirate-words-39: accent-pirate-words-replace-39
+    accent-pirate-words-39-2: accent-pirate-words-replace-39
 - type: accent
   id: cowboy
   wordReplacements:
@@ -366,6 +425,96 @@
     accent-cowboy-words-97: accent-cowboy-replacement-97
     accent-cowboy-words-98: accent-cowboy-replacement-98
     accent-cowboy-words-99: accent-cowboy-replacement-99
+    accent-cowboy-words-100: accent-cowboy-replacement-100
+    accent-cowboy-words-101: accent-cowboy-replacement-101
+    accent-cowboy-words-102: accent-cowboy-replacement-102
+    accent-cowboy-words-103: accent-cowboy-replacement-103
+    accent-cowboy-words-104: accent-cowboy-replacement-104
+    accent-cowboy-words-105: accent-cowboy-replacement-105
+    accent-cowboy-words-106: accent-cowboy-replacement-106
+    accent-cowboy-words-107: accent-cowboy-replacement-107
+    accent-cowboy-words-108: accent-cowboy-replacement-108
+    accent-cowboy-words-109: accent-cowboy-replacement-109
+    accent-cowboy-words-110: accent-cowboy-replacement-110
+    accent-cowboy-words-111: accent-cowboy-replacement-111
+    accent-cowboy-words-112: accent-cowboy-replacement-112
+    accent-cowboy-words-113: accent-cowboy-replacement-113
+    accent-cowboy-words-114: accent-cowboy-replacement-114
+    accent-cowboy-words-115: accent-cowboy-replacement-115
+    accent-cowboy-words-116: accent-cowboy-replacement-116
+    accent-cowboy-words-117: accent-cowboy-replacement-117
+    accent-cowboy-words-118: accent-cowboy-replacement-118
+    accent-cowboy-words-119: accent-cowboy-replacement-119
+    accent-cowboy-words-120: accent-cowboy-replacement-120
+    accent-cowboy-words-121: accent-cowboy-replacement-121
+    accent-cowboy-words-122: accent-cowboy-replacement-122
+    accent-cowboy-words-123: accent-cowboy-replacement-123
+    accent-cowboy-words-124: accent-cowboy-replacement-124
+    accent-cowboy-words-125: accent-cowboy-replacement-125
+    accent-cowboy-words-126: accent-cowboy-replacement-126
+    accent-cowboy-words-127: accent-cowboy-replacement-127
+    accent-cowboy-words-128: accent-cowboy-replacement-128
+    accent-cowboy-words-129: accent-cowboy-replacement-129
+    accent-cowboy-words-130: accent-cowboy-replacement-130
+    accent-cowboy-words-131: accent-cowboy-replacement-131
+    accent-cowboy-words-132: accent-cowboy-replacement-132
+    accent-cowboy-words-133: accent-cowboy-replacement-133
+    accent-cowboy-words-134: accent-cowboy-replacement-134
+    accent-cowboy-words-135: accent-cowboy-replacement-135
+    accent-cowboy-words-136: accent-cowboy-replacement-136
+    accent-cowboy-words-137: accent-cowboy-replacement-137
+    accent-cowboy-words-138: accent-cowboy-replacement-138
+    accent-cowboy-words-139: accent-cowboy-replacement-139
+    accent-cowboy-words-140: accent-cowboy-replacement-140
+    accent-cowboy-words-141: accent-cowboy-replacement-141
+    accent-cowboy-words-142: accent-cowboy-replacement-142
+    accent-cowboy-words-143: accent-cowboy-replacement-143
+    accent-cowboy-words-144: accent-cowboy-replacement-144
+    accent-cowboy-words-145: accent-cowboy-replacement-145
+    accent-cowboy-words-146: accent-cowboy-replacement-146
+    accent-cowboy-words-147: accent-cowboy-replacement-147
+    accent-cowboy-words-148: accent-cowboy-replacement-148
+    accent-cowboy-words-149: accent-cowboy-replacement-149
+    accent-cowboy-words-150: accent-cowboy-replacement-150
+    accent-cowboy-words-151: accent-cowboy-replacement-151
+    accent-cowboy-words-152: accent-cowboy-replacement-152
+    accent-cowboy-words-153: accent-cowboy-replacement-153
+    accent-cowboy-words-154: accent-cowboy-replacement-154
+    accent-cowboy-words-155: accent-cowboy-replacement-155
+    accent-cowboy-words-156: accent-cowboy-replacement-156
+    accent-cowboy-words-157: accent-cowboy-replacement-157
+    accent-cowboy-words-158: accent-cowboy-replacement-158
+    accent-cowboy-words-159: accent-cowboy-replacement-159
+    accent-cowboy-words-160: accent-cowboy-replacement-160
+    accent-cowboy-words-161: accent-cowboy-replacement-161
+    accent-cowboy-words-162: accent-cowboy-replacement-162
+    accent-cowboy-words-163: accent-cowboy-replacement-163
+    accent-cowboy-words-164: accent-cowboy-replacement-164
+    accent-cowboy-words-165: accent-cowboy-replacement-165
+    accent-cowboy-words-166: accent-cowboy-replacement-166
+    accent-cowboy-words-167: accent-cowboy-replacement-167
+    accent-cowboy-words-168: accent-cowboy-replacement-168
+    accent-cowboy-words-169: accent-cowboy-replacement-169
+    accent-cowboy-words-170: accent-cowboy-replacement-170
+    accent-cowboy-words-171: accent-cowboy-replacement-171
+    accent-cowboy-words-172: accent-cowboy-replacement-172
+    accent-cowboy-words-173: accent-cowboy-replacement-173
+    accent-cowboy-words-174: accent-cowboy-replacement-174
+    accent-cowboy-words-175: accent-cowboy-replacement-175
+    accent-cowboy-words-176: accent-cowboy-replacement-176
+    accent-cowboy-words-177: accent-cowboy-replacement-177
+    accent-cowboy-words-178: accent-cowboy-replacement-178
+    accent-cowboy-words-179: accent-cowboy-replacement-179
+    accent-cowboy-words-180: accent-cowboy-replacement-180
+    accent-cowboy-words-181: accent-cowboy-replacement-181
+    accent-cowboy-words-182: accent-cowboy-replacement-182
+    accent-cowboy-words-182-2: accent-cowboy-replacement-182
+    accent-cowboy-words-183: accent-cowboy-replacement-183
+    accent-cowboy-words-183-2: accent-cowboy-replacement-183
+    accent-cowboy-words-184: accent-cowboy-replacement-184
+    accent-cowboy-words-185: accent-cowboy-replacement-185
+    accent-cowboy-words-185-2: accent-cowboy-replacement-185
+    accent-cowboy-words-186: accent-cowboy-replacement-186
 
 - type: accent
   id: southern
@@ -376,6 +525,27 @@
     accent-southern-words-4: accent-southern-words-replace-4
     accent-southern-words-5: accent-southern-words-replace-5
     accent-southern-words-6: accent-southern-words-replace-6
+    accent-southern-words-7: accent-southern-words-replace-7
+    accent-southern-words-8: accent-southern-words-replace-8
+    accent-southern-words-9: accent-southern-words-replace-9
+    accent-southern-words-10: accent-southern-words-replace-10
+    accent-southern-words-11: accent-southern-words-replace-11
+    accent-southern-words-12: accent-southern-words-replace-12
+    accent-southern-words-12-2: accent-southern-words-replace-12
+    accent-southern-words-12-3: accent-southern-words-replace-12
+    accent-southern-words-13: accent-southern-words-replace-13
+    accent-southern-words-13-2: accent-southern-words-replace-13
+    accent-southern-words-14: accent-southern-words-replace-14
+    accent-southern-words-15: accent-southern-words-replace-15
+    accent-southern-words-16: accent-southern-words-replace-16
+    accent-southern-words-17: accent-southern-words-replace-17
+    accent-southern-words-17-2: accent-southern-words-replace-17
+    accent-southern-words-18: accent-southern-words-replace-18
+    accent-southern-words-18-2: accent-southern-words-replace-18
+    accent-southern-words-19: accent-southern-words-replace-19
+    accent-southern-words-20: accent-southern-words-replace-20
+    accent-southern-words-21: accent-southern-words-replace-21
+    accent-southern-words-21-2: accent-southern-words-replace-21
 
 # For the chat sanitization system
 - type: accent
@@ -528,7 +698,6 @@
     accent-german-words-23: accent-german-words-replace-23
     accent-german-words-24: accent-german-words-replace-24
     accent-german-words-25: accent-german-words-replace-25
-    accent-german-words-26: accent-german-words-replace-26
     accent-german-words-27: accent-german-words-replace-27
     accent-german-words-28: accent-german-words-replace-28
     accent-german-words-29: accent-german-words-replace-29
@@ -574,7 +743,29 @@
     accent-german-words-61-2: accent-german-words-replace-61
     accent-german-words-61-3: accent-german-words-replace-61
     accent-german-words-61-4: accent-german-words-replace-61
+    accent-german-words-61-5: accent-german-words-replace-61
     accent-german-words-62: accent-german-words-replace-62
+    accent-german-words-63: accent-german-words-replace-63
+    accent-german-words-64: accent-german-words-replace-64
+    accent-german-words-65: accent-german-words-replace-65
+    accent-german-words-66: accent-german-words-replace-66
+    accent-german-words-67: accent-german-words-replace-67
+    accent-german-words-68: accent-german-words-replace-68
+    accent-german-words-69: accent-german-words-replace-69
+
+# Triad: slim iconic-only list for the Slight German variant (greetings + yes/no + thanks, no
+# function-word swaps). Reuses the existing german loc keys.
+- type: accent
+  id: german_slight
+  wordReplacements:
+    accent-german-words-1: accent-german-words-replace-1     # yes -> ja
+    accent-german-words-1-2: accent-german-words-replace-1   # yea -> ja
+    accent-german-words-2: accent-german-words-replace-2     # no -> nein
+    accent-german-words-13: accent-german-words-replace-13   # my god -> mein gott
+    accent-german-words-27: accent-german-words-replace-27   # thank you -> dankeschoen
+    accent-german-words-28: accent-german-words-replace-28   # thanks -> danke
+    accent-german-words-48: accent-german-words-replace-48   # hi -> hallo
+    accent-german-words-49: accent-german-words-replace-49   # hello -> guten Tag
 
 - type: accent
   id: russian
@@ -587,6 +778,198 @@
     accent-russian-words-4: accent-russian-words-replace-4
     accent-russian-words-5: accent-russian-words-replace-5
     accent-russian-words-6: accent-russian-words-replace-6
+    accent-russian-words-7: accent-russian-words-replace-7
+    accent-russian-words-8: accent-russian-words-replace-8
+    accent-russian-words-9: accent-russian-words-replace-9
+    accent-russian-words-10: accent-russian-words-replace-10
+    accent-russian-words-11: accent-russian-words-replace-11
+    accent-russian-words-12: accent-russian-words-replace-12
+    accent-russian-words-13: accent-russian-words-replace-13
+    accent-russian-words-14: accent-russian-words-replace-14
+    accent-russian-words-15: accent-russian-words-replace-15
+    accent-russian-words-16: accent-russian-words-replace-16
+    accent-russian-words-16-2: accent-russian-words-replace-16
+    accent-russian-words-17: accent-russian-words-replace-17
+    accent-russian-words-17-2: accent-russian-words-replace-17
+    accent-russian-words-18: accent-russian-words-replace-18
+    accent-russian-words-19: accent-russian-words-replace-19
+    accent-russian-words-20: accent-russian-words-replace-20
+    accent-russian-words-21: accent-russian-words-replace-21
+    accent-russian-words-22: accent-russian-words-replace-22
+    accent-russian-words-23: accent-russian-words-replace-23
+    accent-russian-words-24: accent-russian-words-replace-24
+    accent-russian-words-25: accent-russian-words-replace-25
+    accent-russian-words-25-2: accent-russian-words-replace-25
+    accent-russian-words-26: accent-russian-words-replace-26
+    accent-russian-words-27: accent-russian-words-replace-27
+    accent-russian-words-27-2: accent-russian-words-replace-27
+    accent-russian-words-28: accent-russian-words-replace-28
+    accent-russian-words-28-2: accent-russian-words-replace-28
+    accent-russian-words-29: accent-russian-words-replace-29
+    accent-russian-words-30: accent-russian-words-replace-30
+    accent-russian-words-31: accent-russian-words-replace-31
+    accent-russian-words-32: accent-russian-words-replace-32
+    accent-russian-words-33: accent-russian-words-replace-33
+    accent-russian-words-33-2: accent-russian-words-replace-33
+    accent-russian-words-34: accent-russian-words-replace-34
+    accent-russian-words-34-2: accent-russian-words-replace-34
+    accent-russian-words-35: accent-russian-words-replace-35
+    accent-russian-words-35-2: accent-russian-words-replace-35
+    accent-russian-words-35-3: accent-russian-words-replace-35
+    accent-russian-words-36: accent-russian-words-replace-36
+    accent-russian-words-36-2: accent-russian-words-replace-36
+    accent-russian-words-37: accent-russian-words-replace-37
+    accent-russian-words-38: accent-russian-words-replace-38
+    accent-russian-words-39: accent-russian-words-replace-39
+    accent-russian-words-40: accent-russian-words-replace-40
+    accent-russian-words-41: accent-russian-words-replace-41
+    accent-russian-words-42: accent-russian-words-replace-42
+
+# Triad: slim iconic-only list for the Slight Russian variant. Reuses existing russian loc keys.
+- type: accent
+  id: russian_slight
+  wordReplacements:
+    accent-russian-words-1: accent-russian-words-replace-1   # yes -> da
+    accent-russian-words-2: accent-russian-words-replace-2   # no -> nyet
+    accent-russian-words-7: accent-russian-words-replace-7   # yeah -> da
+    accent-russian-words-13: accent-russian-words-replace-13 # hello -> privyet
+    accent-russian-words-14: accent-russian-words-replace-14 # hi -> privyet
+    accent-russian-words-17: accent-russian-words-replace-17 # thanks -> spasibo
+    accent-russian-words-17-2: accent-russian-words-replace-17 # thank you -> spasibo
+    accent-russian-words-4: accent-russian-words-replace-4   # friend -> comrade
+
+- type: accent
+  id: spanish
+  wordReplacements:
+    accent-spanish-words-1: accent-spanish-words-replace-1
+    accent-spanish-words-2: accent-spanish-words-replace-2
+    accent-spanish-words-2-2: accent-spanish-words-replace-2
+    accent-spanish-words-3: accent-spanish-words-replace-3
+    accent-spanish-words-3-2: accent-spanish-words-replace-3
+    accent-spanish-words-4: accent-spanish-words-replace-4
+    accent-spanish-words-5: accent-spanish-words-replace-5
+    accent-spanish-words-5-2: accent-spanish-words-replace-5
+    accent-spanish-words-6: accent-spanish-words-replace-6
+    accent-spanish-words-6-2: accent-spanish-words-replace-6
+    accent-spanish-words-7: accent-spanish-words-replace-7
+    accent-spanish-words-8: accent-spanish-words-replace-8
+    accent-spanish-words-9: accent-spanish-words-replace-9
+    accent-spanish-words-10: accent-spanish-words-replace-10
+    accent-spanish-words-11: accent-spanish-words-replace-11
+    accent-spanish-words-12: accent-spanish-words-replace-12
+    accent-spanish-words-13: accent-spanish-words-replace-13
+    accent-spanish-words-14: accent-spanish-words-replace-14
+    accent-spanish-words-15: accent-spanish-words-replace-15
+    accent-spanish-words-15-2: accent-spanish-words-replace-15
+    accent-spanish-words-16: accent-spanish-words-replace-16
+    accent-spanish-words-17: accent-spanish-words-replace-17
+    accent-spanish-words-18: accent-spanish-words-replace-18
+    accent-spanish-words-19: accent-spanish-words-replace-19
+    accent-spanish-words-20: accent-spanish-words-replace-20
+    accent-spanish-words-21: accent-spanish-words-replace-21
+    accent-spanish-words-22: accent-spanish-words-replace-22
+    accent-spanish-words-22-2: accent-spanish-words-replace-22
+    accent-spanish-words-23: accent-spanish-words-replace-23
+    accent-spanish-words-24: accent-spanish-words-replace-24
+    accent-spanish-words-24-2: accent-spanish-words-replace-24
+    accent-spanish-words-25: accent-spanish-words-replace-25
+    accent-spanish-words-25-2: accent-spanish-words-replace-25
+    accent-spanish-words-26: accent-spanish-words-replace-26
+    accent-spanish-words-27: accent-spanish-words-replace-27
+    accent-spanish-words-28: accent-spanish-words-replace-28
+    accent-spanish-words-29: accent-spanish-words-replace-29
+    accent-spanish-words-30: accent-spanish-words-replace-30
+    accent-spanish-words-31: accent-spanish-words-replace-31
+    accent-spanish-words-32: accent-spanish-words-replace-32
+    accent-spanish-words-32-2: accent-spanish-words-replace-32
+    accent-spanish-words-33: accent-spanish-words-replace-33
+    accent-spanish-words-34: accent-spanish-words-replace-34
+    accent-spanish-words-35: accent-spanish-words-replace-35
+    accent-spanish-words-36: accent-spanish-words-replace-36
+    accent-spanish-words-37: accent-spanish-words-replace-37
+    accent-spanish-words-38: accent-spanish-words-replace-38
+    accent-spanish-words-39: accent-spanish-words-replace-39
+    accent-spanish-words-40: accent-spanish-words-replace-40
+    accent-spanish-words-41: accent-spanish-words-replace-41
+    accent-spanish-words-42: accent-spanish-words-replace-42
+    accent-spanish-words-43: accent-spanish-words-replace-43
+    accent-spanish-words-44: accent-spanish-words-replace-44
+    accent-spanish-words-45: accent-spanish-words-replace-45
+    accent-spanish-words-46: accent-spanish-words-replace-46
+
+# Triad: slim iconic-only list for the Slight Spanish variant. Reuses existing spanish loc keys.
+- type: accent
+  id: spanish_slight
+  wordReplacements:
+    accent-spanish-words-1: accent-spanish-words-replace-1   # yes -> si
+    accent-spanish-words-3: accent-spanish-words-replace-3   # hello -> hola
+    accent-spanish-words-3-2: accent-spanish-words-replace-3 # hi -> hola
+    accent-spanish-words-6: accent-spanish-words-replace-6   # thanks -> gracias
+    accent-spanish-words-6-2: accent-spanish-words-replace-6 # thank you -> gracias
+    accent-spanish-words-5: accent-spanish-words-replace-5   # goodbye -> adios
+    accent-spanish-words-9: accent-spanish-words-replace-9   # friend -> amigo
+    accent-spanish-words-4: accent-spanish-words-replace-4   # hey -> oye
+
+- type: accent
+  id: french
+  wordReplacements:
+    accent-french-words-1: accent-french-words-replace-1
+    accent-french-words-2: accent-french-words-replace-2
+    accent-french-words-3: accent-french-words-replace-3
+    accent-french-words-3-2: accent-french-words-replace-3
+    accent-french-words-4: accent-french-words-replace-4
+    accent-french-words-4-2: accent-french-words-replace-4
+    accent-french-words-5: accent-french-words-replace-5
+    accent-french-words-6: accent-french-words-replace-6
+    accent-french-words-7: accent-french-words-replace-7
+    accent-french-words-8: accent-french-words-replace-8
+    accent-french-words-9: accent-french-words-replace-9
+    accent-french-words-9-2: accent-french-words-replace-9
+    accent-french-words-10: accent-french-words-replace-10
+    accent-french-words-11: accent-french-words-replace-11
+    accent-french-words-12: accent-french-words-replace-12
+    accent-french-words-12-2: accent-french-words-replace-12
+    accent-french-words-13: accent-french-words-replace-13
+    accent-french-words-13-2: accent-french-words-replace-13
+    accent-french-words-14: accent-french-words-replace-14
+    accent-french-words-15: accent-french-words-replace-15
+    accent-french-words-16: accent-french-words-replace-16
+    accent-french-words-17: accent-french-words-replace-17
+    accent-french-words-18: accent-french-words-replace-18
+    accent-french-words-19: accent-french-words-replace-19
+    accent-french-words-20: accent-french-words-replace-20
+    accent-french-words-20-2: accent-french-words-replace-20
+    accent-french-words-21: accent-french-words-replace-21
+    accent-french-words-22: accent-french-words-replace-22
+    accent-french-words-22-2: accent-french-words-replace-22
+    accent-french-words-23: accent-french-words-replace-23
+    accent-french-words-24: accent-french-words-replace-24
+    accent-french-words-25: accent-french-words-replace-25
+    accent-french-words-26: accent-french-words-replace-26
+    accent-french-words-27: accent-french-words-replace-27
+    accent-french-words-28: accent-french-words-replace-28
+    accent-french-words-29: accent-french-words-replace-29
+    accent-french-words-30: accent-french-words-replace-30
+    accent-french-words-31: accent-french-words-replace-31
+    accent-french-words-32: accent-french-words-replace-32
+    accent-french-words-32-2: accent-french-words-replace-32
+    accent-french-words-32-3: accent-french-words-replace-32
+    accent-french-words-33: accent-french-words-replace-33
+    accent-french-words-34: accent-french-words-replace-34
+    accent-french-words-35: accent-french-words-replace-35
+
+# Triad: slim iconic-only list for the Slight French variant. Reuses existing french loc keys.
+- type: accent
+  id: french_slight
+  wordReplacements:
+    accent-french-words-1: accent-french-words-replace-1   # yes -> oui
+    accent-french-words-2: accent-french-words-replace-2   # no -> non
+    accent-french-words-4: accent-french-words-replace-4   # thanks -> merci
+    accent-french-words-4-2: accent-french-words-replace-4 # thank you -> merci
+    accent-french-words-7: accent-french-words-replace-7   # hello -> bonjour
+    accent-french-words-8: accent-french-words-replace-8   # hi -> salut
+    accent-french-words-6: accent-french-words-replace-6   # sorry -> pardon
+    accent-french-words-10: accent-french-words-replace-10 # friend -> ami
 
 - type: accent
   id: skeleton

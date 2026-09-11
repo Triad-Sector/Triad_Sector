@@ -68,3 +68,8 @@
 - type: latheCategory
   id: Neck
   name: lathe-category-neck
+
+- type: latheCategory # HL
+  id: Pillows
+  name: lathe-category-pillows
+

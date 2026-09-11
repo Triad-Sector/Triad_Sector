@@ -1,21 +1,33 @@
 # 1 Cost
 
+# Triad: Streetpunk accent, display name overridden to "Edgerunner" (trait-edgerunner-accent-name); vocab enriched
 - type: trait
   id: StreetpunkAccent
-  name: trait-streetpunk-accent-name
-  description: trait-streetpunk-accent-desc
-  category: SpeechTraits
-  cost: 1
-  components:
+  name: trait-edgerunner-accent-name
+  description: trait-edgerunner-accent-desc
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Triad: Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
     - type: StreetpunkAccent
-
-# 2 Cost
+# End Triad
 
 - type: trait
   id: GoblinAccent
   name: trait-goblin-accent-name
   description: trait-goblin-accent-desc
-  category: SpeechTraits
-  cost: 2
-  components:
+  category: Accents
+  cost: 1 # Triad: dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  # Triad: Goblins speak the cant natively (MobGoblinBase carries GoblinAccent), so taking it as a trait is redundant.
+  - !type:IsSpeciesCondition
+    species: Goblin
+    invert: true
+  - !type:HasFreeAccentSlotCondition # Triad: a non-Goblin heavy-native species (Dwarf) must clear its native accent first
+  effects:
+  - !type:AddCompsEffect
+    components:
     - type: GoblinAccent

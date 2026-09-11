@@ -2,6 +2,7 @@
   parent: BaseWeaponBallisticTurret
   id: WeaponTurretSyndicate
   suffix: Syndicate
+  categories: [ HideSpawnMenu ] # Triad, hidden
   components:
   - type: NpcFactionMember
     factions:
@@ -12,6 +13,7 @@
   id: WeaponTurretSyndicateDisposable
   name: disposable ballistic turret
   suffix: Syndicate, Disposable
+  categories: [ HideSpawnMenu ] # Triad, hidden
   components:
   - type: NpcFactionMember
     factions:

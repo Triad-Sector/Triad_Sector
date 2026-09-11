@@ -98,7 +98,7 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-  - DataFarmResearchCircuitboard
+  # - DataFarmResearchCircuitboard
 
 - type: latheRecipePack
   id: CameraBoards

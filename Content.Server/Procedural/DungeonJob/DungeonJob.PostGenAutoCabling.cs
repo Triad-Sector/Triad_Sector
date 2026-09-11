@@ -33,7 +33,7 @@ public sealed partial class DungeonJob
         // Gather existing nodes
         foreach (var tile in allTiles)
         {
-            var anchored = _maps.GetAnchoredEntitiesEnumerator(_gridUid, _grid, tile);
+            var anchored = _maps.GetAnchoredEntities(_gridUid, _grid, tile);
 
             while (anchored.MoveNext(out var anc))
             {
@@ -71,6 +71,13 @@ public sealed partial class DungeonJob
 
         while (remaining.Count > 0)
         {
+            // Triad: the cable A* search ran in one un-yielded span (~59ms); yield every iteration so even the
+            // empty-tile continue path below can't burst un-sliced.
+            await SuspendDungeon();
+
+            if (!ValidateResume())
+                return;
+
             if (frontier.Count == 0)
             {
                 var newStart = remaining.First();
@@ -142,7 +149,7 @@ public sealed partial class DungeonJob
             if (reservedTiles.Contains(tile))
                 continue;
 
-            var anchored = _maps.GetAnchoredEntitiesEnumerator(_gridUid, _grid, tile);
+            var anchored = _maps.GetAnchoredEntities(_gridUid, _grid, tile);
             var found = false;
 
             while (anchored.MoveNext(out var anc))
@@ -161,6 +168,12 @@ public sealed partial class DungeonJob
                 continue;
 
             _entManager.SpawnEntity(ent, _maps.GridTileToLocal(_gridUid, _grid, tile));
+
+            // Triad: slice the cable spawn pass so a fully-cabled dungeon doesn't spawn every cable in one block.
+            await SuspendDungeon();
+
+            if (!ValidateResume())
+                return;
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Content.Shared.Humanoid
         Snout,
         HeadSide, // side parts (i.e., frills)
         HeadTop,  // top parts (i.e., ears)
+        TailBehind, // DEN
+        TailOversuit, // DEN
         Eyes,
         RArm,
         LArm,
@@ -34,6 +36,7 @@ namespace Content.Shared.Humanoid
         Fire,
         LArmExtension, // Frontier: a species-specific extension layer, e.g. for harpy wings
         RArmExtension, // Frontier: a species-specific extension layer, e.g. for harpy wings
+        WingsOversuit, // Triad: over-body companion to Wings (mirrors TailBehind/TailOversuit) so back-facing wings draw over the body while front-facing wings stay behind it
 
     }
 }

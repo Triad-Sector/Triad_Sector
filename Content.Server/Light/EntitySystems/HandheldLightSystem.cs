@@ -16,19 +16,22 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
+using Content.Server._NF.Power.Components; // Frontier
+using Content.Server.Power.Components; // Frontier
 
 namespace Content.Server.Light.EntitySystems
 {
-    public sealed class HandheldLightSystem : SharedHandheldLightSystem
+    public sealed partial class HandheldLightSystem : SharedHandheldLightSystem
     {
-        [Dependency] private readonly ActionsSystem _actions = default!;
-        [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-        [Dependency] private readonly PopupSystem _popup = default!;
-        [Dependency] private readonly PowerCellSystem _powerCell = default!;
-        [Dependency] private readonly BatterySystem _battery = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedPointLightSystem _lights = default!;
+        [Dependency] private ActionsSystem _actions = default!;
+        [Dependency] private ActionContainerSystem _actionContainer = default!;
+        [Dependency] private PopupSystem _popup = default!;
+        [Dependency] private PowerCellSystem _powerCell = default!;
+        [Dependency] private BatterySystem _battery = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedPointLightSystem _lights = default!;
+        [Dependency] private PowerReceiverSystem _powerSystem = default!; // Frontier
 
         // TODO: Ideally you'd be able to subscribe to power stuff to get events at certain percentages.. or something?
         // But for now this will be better anyway.
@@ -114,7 +117,7 @@ namespace Content.Server.Light.EntitySystems
             if (MathHelper.CloseToPercent(battery.CurrentCharge, 0) || ent.Comp.Wattage > battery.CurrentCharge)
                 return 0;
 
-            return (byte?) ContentHelpers.RoundToNearestLevels(battery.CurrentCharge / battery.MaxCharge * 255, 255, HandheldLightComponent.StatusLevels);
+            return (byte?)ContentHelpers.RoundToNearestLevels(battery.CurrentCharge / battery.MaxCharge * 255, 255, HandheldLightComponent.StatusLevels);
         }
 
         private void OnRemove(Entity<HandheldLightComponent> ent, ref ComponentRemove args)
@@ -199,6 +202,17 @@ namespace Content.Server.Light.EntitySystems
                 return false;
             }
 
+            // Frontier start - Mixed Power Recievers
+            if (HasComp<MixedPowerReceiverComponent>(uid) &&
+                TryComp<ApcPowerReceiverComponent>(uid, out var apcPowerComp) &&
+                _powerSystem.IsPowered(uid, apcPowerComp))
+            {
+                _lights.SetEnabled(uid, true, pointLightComponent);
+                SetActivated(uid, true, component, true);
+                _activeLights.Add(uid);
+            }
+            // Frontier end - Mixed Power Recievers
+
             if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery) &&
                 !TryComp(uid, out battery))
             {
@@ -227,6 +241,18 @@ namespace Content.Server.Light.EntitySystems
         public void TryUpdate(Entity<HandheldLightComponent> uid, float frameTime)
         {
             var component = uid.Comp;
+
+            // Frontier start - Mixed Power Recievers
+            if (HasComp<MixedPowerReceiverComponent>(uid) &&
+                TryComp<ApcPowerReceiverComponent>(uid, out var apcPowerComp) &&
+                _powerSystem.IsPowered(uid, apcPowerComp))
+            {
+                _appearance.SetData(uid, HandheldLightVisuals.Power, HandheldLightPowerStates.FullPower, EntityManager.GetComponentOrNull<AppearanceComponent>(uid));
+                UpdateLevel(uid);
+                return;
+            }
+            // Frontier end - Mixed Power Recievers
+
             if (!_powerCell.TryGetBatteryFromSlot(uid, out var batteryUid, out var battery, null) &&
                 !TryComp(uid, out battery))
             {

@@ -1,4 +1,5 @@
 using Content.Shared.ActionBlocker;
+using Content.Shared.Chat;
 using Content.Shared.Emoting;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
@@ -12,10 +13,10 @@ using Content.Shared.Throwing;
 namespace Content.Shared.Administration;
 
 // TODO deduplicate with BlockMovementComponent
-public abstract class SharedAdminFrozenSystem : EntitySystem
+public abstract partial class SharedAdminFrozenSystem : EntitySystem
 {
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private PullingSystem _pulling = default!;
 
     public override void Initialize()
     {
@@ -33,6 +34,8 @@ public abstract class SharedAdminFrozenSystem : EntitySystem
         SubscribeLocalEvent<AdminFrozenComponent, ChangeDirectionAttemptEvent>(OnAttempt);
         SubscribeLocalEvent<AdminFrozenComponent, EmoteAttemptEvent>(OnEmoteAttempt);
         SubscribeLocalEvent<AdminFrozenComponent, SpeakAttemptEvent>(OnSpeakAttempt);
+        SubscribeLocalEvent<AdminFrozenComponent, InGameOocMessageAttemptEvent>(OnInGameOocMessageAttempt);
+        SubscribeLocalEvent<InGameOocMessageAttemptEvent>(OnInGameOocMessageAttemptBroadcast);
     }
 
     private void OnInteractAttempt(Entity<AdminFrozenComponent> ent, ref InteractionAttemptEvent args)
@@ -46,6 +49,20 @@ public abstract class SharedAdminFrozenSystem : EntitySystem
             return;
 
         args.Cancel();
+    }
+
+    private void OnInGameOocMessageAttempt(Entity<AdminFrozenComponent> ent, ref InGameOocMessageAttemptEvent args)
+    {
+        if (!ent.Comp.Muted)
+            return;
+
+        // Despite Type being available, Admin Mute does not care to differentiate. If you are out, you are out.
+        args.Cancelled = true;
+    }
+
+    private void OnInGameOocMessageAttemptBroadcast(ref InGameOocMessageAttemptEvent args)
+    {
+        //TODO Player LOOC mute/ban. Session is in the  args, but where to store/check the muted state?
     }
 
     private void OnAttempt(EntityUid uid, AdminFrozenComponent component, CancellableEntityEventArgs args)

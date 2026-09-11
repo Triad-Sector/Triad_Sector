@@ -890,7 +890,7 @@ entities:
     - type: Transform
       pos: -4.542039,3.5048573
       parent: 1
-- proto: SimpleXenoArtifactItem
+- proto: ComplexXenoArtifactItem
   entities:
   - uid: 172
     components:

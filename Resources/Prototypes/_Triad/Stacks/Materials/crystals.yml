@@ -1,0 +1,5 @@
+- type: stack
+  id: TriadCommerceCredit
+  name: triad commerce credit
+  icon: _NF/Objects/Specific/Security/frontieruplinkcoin.rsi
+  spawn: TriadCommerceCredit1

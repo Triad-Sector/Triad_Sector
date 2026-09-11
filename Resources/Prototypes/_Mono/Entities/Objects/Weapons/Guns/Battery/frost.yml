@@ -64,3 +64,5 @@
     autoRechargeRate: 125
   - type: PirateBountyItem # Mono
     id: ExperimentalFactionWeapon
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text

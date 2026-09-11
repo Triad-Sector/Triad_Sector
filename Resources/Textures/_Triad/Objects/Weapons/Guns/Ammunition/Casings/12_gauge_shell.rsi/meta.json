@@ -1,0 +1,89 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Sprite taken from https://github.com/ParadiseSS13/Paradise, Modified by Wuffindy for Triad",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "base-spent"
+        },
+        {
+            "name": "beanbag"
+        },
+        {
+            "name": "beanbag-spent"
+        },
+        {
+            "name": "blank"
+        },
+        {
+            "name": "blank-spent"
+        },
+        {
+            "name": "flare"
+        },
+        {
+            "name": "flare-spent"
+        },
+        {
+            "name": "improvised"
+        },
+        {
+            "name": "improvised-spent"
+        },
+        {
+            "name": "incendiary"
+        },
+        {
+            "name": "incendiary-spent"
+        },
+        {
+            "name": "practice"
+        },
+        {
+            "name": "practice-spent"
+        },
+        {
+            "name": "slug"
+        },
+        {
+            "name": "slug-spent"
+        },
+        {
+            "name": "slug-AP"
+        },
+        {
+            "name": "slug-AP-spent"
+        },
+        {
+            "name": "uranium"
+        },
+        {
+            "name": "uranium-spent"
+        },
+        {
+            "name": "RIP"
+        },
+        {
+            "name": "RIP-spent"
+        },
+        {
+            "name": "flechette"
+        },
+        {
+            "name": "flechette-spent"
+        },
+        {
+            "name": "tranquilizer"
+        },
+        {
+            "name": "tranquilizer-spent"
+        }
+    ]
+}

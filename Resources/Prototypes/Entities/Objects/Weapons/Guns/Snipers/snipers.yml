@@ -40,7 +40,7 @@
     price: 500
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: 0.2
+      TDF: 0.2
   - type: WieldedCrosshair
     rsi:
       sprite: _RMC14/Interface/MousePointer/sniper_mouse.rsi
@@ -58,7 +58,7 @@
   # Goobstation edit end
 
 - type: entity
-  name: NCI Kardashev-Mosin (7.62x54mmR)
+  name: RMT Kardashev-Mosin (7.62x54mmR)
   parent: [BaseWeaponSniper, BaseGunWieldable, BaseGunMelee] # added BaseGunMelee
   id: WeaponSniperMosin
   description: A weapon for hunting, or endless trench warfare. Uses 762x54mmR ammo. Equipped with bayonet. # Frontier: bayonet

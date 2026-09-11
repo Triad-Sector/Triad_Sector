@@ -1,0 +1,8 @@
+- type: latheRecipe
+  parent: Holoprojector
+  id: HoloprojectorPrivate
+  result: HoloprojectorPrivate
+  completetime: 3
+  materials:
+    Plastic: 250
+    Glass: 150

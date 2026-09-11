@@ -168,3 +168,45 @@
           amount: 8
         - !type:EmptyAllContainers
         - !type:DeleteEntity
+
+- type: constructionGraph
+  id: FuelStorageStashGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: FuelStorageStashNode
+      completed:
+        - !type:SetAnchor
+          value: true 
+      steps:
+        - material: Steel
+          amount: 20
+          doAfter: 1
+        - material: Plasteel
+          amount: 10
+          doAfter: 2
+        - material: Cable
+          amount: 5
+          doAfter: 3
+
+  - node: FuelStorageStashNode
+    entity: FuelStorageStash
+    edges:
+    - to: start
+      steps:
+        - tool: Screwing
+          doAfter: 3
+        - tool: Welding
+          doAfter: 10
+        - tool: Prying
+          doAfter: 5
+      completed:
+        - !type:SpawnPrototype
+          prototype: SheetPlasteel1
+          amount: 10
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 20
+        - !type:EmptyAllContainers
+        - !type:DeleteEntity

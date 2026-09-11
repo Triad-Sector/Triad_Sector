@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +9,7 @@ using Robust.Shared.Log;
 using Robust.Shared.Maths;
 using Robust.Shared.Noise;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Color = Robust.Shared.Maths.Color;
@@ -419,7 +420,7 @@ namespace Content.Client.Parallax
                     var x = random.Next(0, buffer.Width);
                     var y = random.Next(0, buffer.Height);
 
-                    var dist = random.NextFloat();
+                    var dist = random.NextFloatValue();
 
                     for (var oy = y - o; oy <= y + o; oy++)
                     {
@@ -468,7 +469,7 @@ namespace Content.Client.Parallax
                     noiseVal *= threshVal;
                     noiseVal = MathF.Pow(noiseVal, powFactor);
 
-                    var randomThresh = random.NextFloat();
+                    var randomThresh = random.NextFloatValue();
                     if (randomThresh > noiseVal)
                     {
                         if (++pointAttemptCount <= maxPointAttemptCount)
@@ -479,7 +480,7 @@ namespace Content.Client.Parallax
                         continue;
                     }
 
-                    var dist = random.NextFloat();
+                    var dist = random.NextFloatValue();
 
                     for (var oy = y - o; oy <= y + o; oy++)
                     {

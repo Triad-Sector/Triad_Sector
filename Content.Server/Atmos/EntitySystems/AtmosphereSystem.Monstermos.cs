@@ -14,7 +14,7 @@ namespace Content.Server.Atmos.EntitySystems
 {
     public sealed partial class AtmosphereSystem
     {
-        [Dependency] private readonly FirelockSystem _firelockSystem = default!;
+        [Dependency] private FirelockSystem _firelockSystem = default!;
 
         private readonly TileAtmosphereComparer _monstermosComparer = new();
 
@@ -690,7 +690,7 @@ namespace Content.Server.Atmos.EntitySystems
             var chance = MathHelper.Clamp(0.01f + (sum / SpacingMaxWind) * 0.3f, 0.003f, 0.3f);
 
             if (sum > 20 && _random.Prob(chance))
-                PryTile(mapGrid, tile.GridIndices);
+                PryTile((tile.GridIndex, mapGrid), tile.GridIndices);
         }
 
         private sealed class TileAtmosphereComparer : IComparer<TileAtmosphere?>

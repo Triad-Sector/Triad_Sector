@@ -5,6 +5,7 @@ using Content.Client.Markers;
 using Content.Client.Sandbox;
 using Content.Client.SubFloor;
 using Content.Client.UserInterface.Controls;
+using Content.Client._Triad.UserInterface.Systems.Sandbox; // Triad
 using Content.Client.UserInterface.Systems.DecalPlacer;
 using Content.Client.UserInterface.Systems.Sandbox.Windows;
 using Content.Shared.Input;
@@ -27,14 +28,14 @@ namespace Content.Client.UserInterface.Systems.Sandbox;
 
 // TODO hud refactor should part of this be in engine?
 [UsedImplicitly]
-public sealed class SandboxUIController : UIController, IOnStateChanged<GameplayState>, IOnSystemChanged<SandboxSystem>
+public sealed partial class SandboxUIController : UIController, IOnStateChanged<GameplayState>, IOnSystemChanged<SandboxSystem>
 {
-    [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly ILightManager _light = default!;
-    [Dependency] private readonly IClientAdminManager _admin = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private IConsoleHost _console = default!;
+    [Dependency] private IEyeManager _eye = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private ILightManager _light = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     [UISystemDependency] private readonly DebugPhysicsSystem _debugPhysics = default!;
     [UISystemDependency] private readonly MarkerSystem _marker = default!;
@@ -44,7 +45,11 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
 
     // TODO hud refactor cache
     private EntitySpawningUIController EntitySpawningController => UIManager.GetUIController<EntitySpawningUIController>();
-    private TileSpawningUIController TileSpawningController => UIManager.GetUIController<TileSpawningUIController>();
+    // Triad: the engine controller passes ItemList a tile's whole variant strip, which draws every variant
+    // at once and inflates IconSize until the label's box is built inverted and asserts. Ours crops to one
+    // variant cell. See _Triad/UserInterface/Systems/Sandbox/TileSpawnUIController.cs.
+    private TileSpawnUIController TileSpawningController => UIManager.GetUIController<TileSpawnUIController>();
+    // End Triad
     private DecalPlacerUIController DecalPlacerController => UIManager.GetUIController<DecalPlacerUIController>();
 
     private MenuButton? SandboxButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.SandboxButton;

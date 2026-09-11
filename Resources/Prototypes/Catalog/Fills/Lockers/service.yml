@@ -103,7 +103,7 @@
 #      - id: HydroponicsToolClippers # Frontier
 #      - id: HydroponicsToolSpade # Frontier
 #      - id: HydroponicsToolMiniHoe # Frontier
-#      - id: RobustHarvestChemistryBottle # Frontier
+#      - id: ChemistryBottleRobustHarvest # Frontier
 #      - id: ClothingBeltPlant # Frontier
       - id: ClothingBeltPlantFilled # Frontier
       - id: PlantBag ##Some maps don't have nutrivend

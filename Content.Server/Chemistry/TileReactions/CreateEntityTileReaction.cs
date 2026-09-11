@@ -6,7 +6,6 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using System.Numerics;
 
 namespace Content.Server.Chemistry.TileReactions;
@@ -14,8 +13,8 @@ namespace Content.Server.Chemistry.TileReactions;
 [DataDefinition]
 public sealed partial class CreateEntityTileReaction : ITileReaction
 {
-    [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string Entity = default!;
+    [DataField(required: true)]
+    public EntProtoId Entity = default!;
 
     [DataField]
     public FixedPoint2 Usage = FixedPoint2.New(1);
@@ -46,7 +45,8 @@ public sealed partial class CreateEntityTileReaction : ITileReaction
             if (Whitelist != null)
             {
                 int acc = 0;
-                foreach (var ent in tile.GetEntitiesInTile())
+                var lookupSystem = entityManager.System<EntityLookupSystem>();
+                foreach (var ent in lookupSystem.GetEntitiesInTile(tile))
                 {
                     var whitelistSystem = entityManager.System<EntityWhitelistSystem>();
                     if (whitelistSystem.IsWhitelistPass(Whitelist, ent))

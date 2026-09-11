@@ -6,11 +6,11 @@
     #  baseOdds: 0.036
     #  appliesToPlant: false
     #  effect: !type:Glow
-    - name: Sentient
-      baseOdds: 0.0072
-      appliesToProduce: false
-      persists: false
-      effect: !type:MakeSentient # existing effect.
+    #- name: Sentient #Triad Edit begin -- Disabled due to causing issues with shipsaving
+    #  baseOdds: 0.0072
+    #  appliesToProduce: false
+    #  persists: false
+    #  effect: !type:MakeSentient # existing effect. #Triad Edit End
     - name: Slippery
       baseOdds: 0.036
       appliesToPlant: false

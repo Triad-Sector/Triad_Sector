@@ -7,11 +7,11 @@ using Content.Shared._Crescent.Vessel;
 
 namespace Content.Client._Crescent.SpaceBiomes;
 
-public sealed class SpaceTextDisplaySystem : EntitySystem
+public sealed partial class SpaceTextDisplaySystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _protMan = default!;
-    [Dependency] private readonly IOverlayManager _overMan = default!;
-    [Dependency] private readonly ContentAudioSystem _audioSys = default!;
+    [Dependency] private IPrototypeManager _protMan = default!;
+    [Dependency] private IOverlayManager _overMan = default!;
+    [Dependency] private ContentAudioSystem _audioSys = default!;
 
     private SpaceBiomeTextOverlay _overlay = default!;
 
@@ -58,7 +58,13 @@ public sealed class SpaceTextDisplaySystem : EntitySystem
 
         _overlay.Text = name;
         _overlay.TextDescription = description; // fallback is "" if no description is found.
-        _overlay.CharInterval = TimeSpan.FromSeconds(2f / _overlay.Text.Length);
+
+        // Triad - fix divide by 0 error
+        if (_overlay.Text == "")
+            _overlay.CharInterval = TimeSpan.Zero;
+        else
+            _overlay.CharInterval = TimeSpan.FromSeconds(2f / _overlay.Text.Length);
+        // Triad end
 
         if (_overlay.TextDescription == "")
             _overlay.CharIntervalDescription = TimeSpan.Zero; //if this is not done it tries dividing by 0 in the "else" clause

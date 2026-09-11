@@ -11,8 +11,7 @@
   description: An ancient phaethon dynasty interceptor. It's instruments are outdated and it's hull is rusted. However the Valkyrie still contends with vessels of similar class.
   price: 93950
   category: Medium
-  group: Shipyard
-  access: Mercenary
+  group: Military
   shuttlePath: /Maps/_Mono/Shuttles/valkyrie.yml
   guidebookPage: Null
   class:

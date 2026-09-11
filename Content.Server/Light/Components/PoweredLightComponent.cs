@@ -5,8 +5,7 @@ using Content.Shared.Light.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Server._NF.Shipyard.Systems; // Triad
+using Content.Server._Triad.Shipyard; // Triad
 
 namespace Content.Server.Light.Components
 {
@@ -22,8 +21,8 @@ namespace Content.Server.Light.Components
         [DataField("turnOnSound")]
         public SoundSpecifier TurnOnSound = new SoundPathSpecifier("/Audio/Machines/light_tube_on.ogg");
 
-        [DataField("hasLampOnSpawn", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? HasLampOnSpawn = null;
+        [DataField("hasLampOnSpawn")]
+        public EntProtoId? HasLampOnSpawn = null;
 
         [DataField("bulb")]
         public LightBulbType BulbType;
@@ -51,14 +50,14 @@ namespace Content.Server.Light.Components
         [ViewVariables]
         public TimeSpan? LastGhostBlink;
 
-        [DataField("onPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
-        public string OnPort = "On";
+        [DataField("onPort")]
+        public ProtoId<SinkPortPrototype> OnPort = "On";
 
-        [DataField("offPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
-        public string OffPort = "Off";
+        [DataField("offPort")]
+        public ProtoId<SinkPortPrototype> OffPort = "Off";
 
-        [DataField("togglePort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
-        public string TogglePort = "Toggle";
+        [DataField("togglePort")]
+        public ProtoId<SinkPortPrototype> TogglePort = "Toggle";
 
         /// <summary>
         /// How long it takes to eject a bulb from this
@@ -80,5 +79,15 @@ namespace Content.Server.Light.Components
 
         [DataField("lightBreakChance")]
         public float LightBreakChance = 0.1f;
+
+        // Frontier: shielded lights
+        /// <summary>
+        /// Coefficient multiplied with the solar flare's LightBreakChancePerSecond.
+        /// Higher value means more likely to break, lower value means less likely.
+        /// 0 is totally immune to solar flares.
+        /// </summary>
+        [DataField]
+        public float SolarFlareShieldingCoefficient = 1.0f;
+        // End Frontier: shielded lights
     }
 }

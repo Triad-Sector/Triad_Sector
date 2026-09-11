@@ -55,8 +55,8 @@
 - type: entity
   parent: BaseSignDirectionalNF
   id: SignDirectionalNfsd
-  name: TSFMC outpost sign
-  description: A direction sign, pointing out which way an TSFMC outpost is.
+  name: TDF outpost sign
+  description: A direction sign, pointing out which way a TDF outpost is.
   components:
   - type: Sprite
     state: direction_nfsd
@@ -91,8 +91,8 @@
 - type: entity
   parent: NFBaseSign
   id: SignNfsd
-  name: TSFMC sign
-  description: A sign that marks the area beyond as an TSFMC area.
+  name: TDF sign
+  description: A sign that marks the area beyond as a TDF area.
   components:
   - type: Sprite
     state: nfsd
@@ -101,7 +101,7 @@
   parent: NFBaseSign
   id: SignNfsdArmoury
   name: armory sign
-  description: A sign that marks the area beyond as an TSFMC armory.
+  description: A sign that marks the area beyond as a TDF armory.
   components:
   - type: Sprite
     state: armoury
@@ -110,7 +110,7 @@
   parent: NFBaseSign
   id: SignNfsdBrief
   name: briefing sign
-  description: A sign that marks the area beyond as an TSFMC briefing room.
+  description: A sign that marks the area beyond as a TDF briefing room.
   components:
   - type: Sprite
     state: brief
@@ -119,7 +119,7 @@
   parent: NFBaseSign
   id: SignNfsdBrig
   name: brig sign
-  description: A sign that marks the area beyond as an TSFMC brig.
+  description: A sign that marks the area beyond as a TDF brig.
   components:
   - type: Sprite
     state: brig
@@ -128,7 +128,7 @@
   parent: NFBaseSign
   id: SignNfsdBrigmed
   name: medbay sign
-  description: A sign that marks the area beyond as an TSFMC medbay.
+  description: A sign that marks the area beyond as a TDF medbay.
   components:
   - type: Sprite
     state: brigmed
@@ -137,7 +137,7 @@
   parent: NFBaseSign
   id: SignNfsdDetective
   name: detective sign
-  description: A sign that marks the area beyond as an TSFMC detective's office.
+  description: A sign that marks the area beyond as a TDF detective's office.
   components:
   - type: Sprite
     state: detective
@@ -146,7 +146,7 @@
   parent: NFBaseSign
   id: SignNfsdLaw
   name: lawyer sign
-  description: A sign that marks the area beyond as an TSFMC lawyer's office.
+  description: A sign that marks the area beyond as a TDF lawyer's office.
   components:
   - type: Sprite
     state: law
@@ -155,7 +155,7 @@
   parent: NFBaseSign
   id: SignNfsdRange
   name: shooting range sign
-  description: A sign that marks the area beyond as an TSFMC shooting range.
+  description: A sign that marks the area beyond as a TDF shooting range.
   components:
   - type: Sprite
     state: range
@@ -164,7 +164,7 @@
   parent: NFBaseSign
   id: SignNfsdEvidence
   name: evidence sign
-  description: A sign that marks the area beyond as an TSFMC evidence room.
+  description: A sign that marks the area beyond as a TDF evidence room.
   components:
   - type: Sprite
     state: evidence

@@ -1,9 +1,9 @@
 ## UI
-adventure-list-start = [color=gold]TSF Central Bank[/color]
+adventure-list-start = [color=gold]Andromeda Central Bank[/color]
 adventure-list-profit = made a total profit of [color=#d19e5e]{$amount}[/color].
 adventure-list-loss = lost a total of [color=#659cc9]{$amount}[/color].
 
-adventure-webhook-list-start = TSF Central Bank
+adventure-webhook-list-start = Andromeda Central Bank
 adventure-webhook-list-high = This Shift's Top Earners:
 adventure-webhook-list-low = This Shift's Biggest Spenders:
 adventure-webhook-list-no-entries = No entries found.
@@ -41,5 +41,7 @@ multiauth-already-connected = Already connected to Monolith Official servers.
 
 public-transit-shuttle-name = Bus
 public-transit-departure = Now departing for {$destination}. Estimated travel time: {$flytime} seconds.
-public-transit-arrival = Thank you for choosing NT Public Transit. Next transfer to {$destination} departs in {$waittime} seconds.
+public-transit-arrival = Thank you for choosing the TTA. Next transfer to {$destination} departs in {$waittime} seconds.
+public-transit-departure-warning = Departing for {$destination} in {$time} seconds. Please board now.
+public-transit-skipped = Service interruption: no berth available at {$destination}. Skipping to {$next}.
 public-transit-instant = Arrived at {$destination}. Next destination in {$waittime} seconds.

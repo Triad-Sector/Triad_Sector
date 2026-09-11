@@ -8,6 +8,7 @@
     bodyStatus: InAir
     sleepingAllowed: false
   - type: CanMoveInAir
+  - type: TileFrictionModifier
   - type: ChasingWalk
     minSpeed: 1
     maxSpeed: 3
@@ -31,6 +32,7 @@
     shootMaxInterval: 10
     shootRange: 3
     lightningPrototype: Lightning
+  - type: SupermatterImmune # Triad
 
 - type: entity
   id: TeslaEnergyBall
@@ -72,6 +74,10 @@
     consumeEntities: false
   - type: TeslaEnergyBall
     spawnProto: TeslaMiniEnergyBall
+    energyToDespawn: -600
+    # Mote count self-regulates: spawn rate = net feed / needEnergyToSpawn, motes live 120s.
+    # Simulated ladder at these numbers: Level 1 ~0.5 motes, Level 2 ~6, Level 3 ~22 sustained.
+    needEnergyToSpawn: 80
     soundCollapse:
       path: /Audio/Effects/tesla_collapse.ogg
       params:

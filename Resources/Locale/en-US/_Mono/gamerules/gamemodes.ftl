@@ -10,8 +10,8 @@ mono-tsfussp-description = TSF colonization efforts are threatened by USSP expan
 mono-standard-title = Standard (TSF|PDV)
 mono-standard-description = Native PDV imperials threaten TSF colonial expansion into the sector.
 
-mono-ads-title = Remnants (TSF|PDV)
-mono-ads-description = Native PD imperials threaten TSF colonial expansion into the sector. A tense cold war between the TSF Marine Corps detachment. Pre-fracture warriors and defense systems threaten their plans.
+mono-ads-title = Standard (TDF)
+mono-ads-description = A somewhat calm day in the Triad sector. The TDF is active, and there seems to be no sign of the Coalition or Solarians.
 
 mono-chimera-title = Biothreat (TSF|PDV)
 mono-chimera-description = Native PDV imperials threaten TSF colonial expansion into the sector. The effects of a far away letoferol outbreak seep in.

@@ -1,0 +1,98 @@
+﻿<Document>
+  [color=#897236][mono]──── [color=#FFA500][bold]CITIZEN RIGHTS CODE[/bold][/color] ───────────────────────────────[/mono][/color]
+
+  Citizens of the Triad sector have certain rights that must be upheld by law enforcement:
+
+  <Table Columns="3">
+    <ColorBox>
+      <Box>
+        Code
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Right
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box>
+        Protection
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3b6b92">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        CR-01
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Due Process
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Citizens have the right to a fair hearing before being sentenced.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3b6b92">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        CR-02
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Legal Counsel
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Citizens have the right to legal representation during proceedings, if available.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3b6b92">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        CR-03
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Medical Care
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Citizens have the right to proper medical care while detained.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3b6b92">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        CR-04
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Right to Appeal
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Citizens have the right to appeal unlawful convictions and sentences.
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#3b6b92">
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        CR-05
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Property Protection
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
+        Citizens may not have their property unlawfully seized.
+      </Box>
+    </ColorBox>
+  </Table>
+</Document>

@@ -4,7 +4,7 @@ public sealed class FrontierConstants
 {
     public static readonly string[] GameMapPrototypes =
     {
-        "Frontier",
+        "Venmar",
         "NFDev"
     };
 }

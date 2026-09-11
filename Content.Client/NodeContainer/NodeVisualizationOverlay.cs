@@ -17,10 +17,10 @@ namespace Content.Client.NodeContainer
     {
         private readonly NodeGroupSystem _system;
         private readonly EntityLookupSystem _lookup;
-        private readonly IMapManager _mapManager;
         private readonly IInputManager _inputManager;
         private readonly IEntityManager _entityManager;
         private readonly SharedTransformSystem _transformSystem;
+        private readonly SharedMapSystem _mapSystem;
 
         private readonly Dictionary<(int, int), NodeRenderData> _nodeIndex = new();
         private readonly Dictionary<EntityUid, Dictionary<Vector2i, List<(GroupData, NodeDatum)>>> _gridIndex = new ();
@@ -37,17 +37,16 @@ namespace Content.Client.NodeContainer
         public NodeVisualizationOverlay(
             NodeGroupSystem system,
             EntityLookupSystem lookup,
-            IMapManager mapManager,
             IInputManager inputManager,
             IResourceCache cache,
             IEntityManager entityManager)
         {
             _system = system;
             _lookup = lookup;
-            _mapManager = mapManager;
             _inputManager = inputManager;
             _entityManager = entityManager;
             _transformSystem = _entityManager.System<SharedTransformSystem>();
+            _mapSystem = _entityManager.System<SharedMapSystem>();
 
             _font = cache.GetFont("/Fonts/NotoSans/NotoSans-Regular.ttf", 12);
         }
@@ -84,7 +83,7 @@ namespace Content.Client.NodeContainer
             var xform = _entityManager.GetComponent<TransformComponent>(_entityManager.GetEntity(node.Entity));
             if (!_entityManager.TryGetComponent<MapGridComponent>(xform.GridUid, out var grid))
                 return;
-            var gridTile = grid.TileIndicesFor(xform.Coordinates);
+            var gridTile = _mapSystem.TileIndicesFor(xform.GridUid.Value, grid, xform.Coordinates);
 
             var sb = new StringBuilder();
             sb.Append($"entity: {node.Entity}\n");
@@ -117,7 +116,7 @@ namespace Content.Client.NodeContainer
             var xformQuery = _entityManager.GetEntityQuery<TransformComponent>();
 
             _grids.Clear();
-            _mapManager.FindGridsIntersecting(map, worldAABB, ref _grids);
+            _mapSystem.FindGridsIntersecting(map, worldAABB, ref _grids);
 
             foreach (var grid in _grids)
             {
@@ -133,7 +132,7 @@ namespace Content.Client.NodeContainer
                     if (float.IsNaN(coords.Position.X) || float.IsNaN(coords.Position.Y))
                         continue;
 
-                    var tile = gridDict.GetOrNew(grid.Comp.TileIndicesFor(coords));
+                    var tile = gridDict.GetOrNew(_mapSystem.TileIndicesFor(grid.Owner, grid.Comp, coords));
 
                     foreach (var (group, nodeDatum) in nodeData)
                     {

@@ -7,11 +7,11 @@ using Content.Server.Chat.Systems;
 
 namespace Content.Server._NF.Speech.EntitySystems;
 
-public sealed class CavemanAccentSystem : EntitySystem
+public sealed partial class CavemanAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public readonly string[] PunctuationStringsToRemove = { "'", "\"", ".", ",", "!", "?", ";", ":" }; // Leave hyphens
 
@@ -25,6 +25,9 @@ public sealed class CavemanAccentSystem : EntitySystem
     private string Convert(string message, CavemanAccentComponent component)
     {
         string msg = _replacement.ApplyReplacements(message, "caveman");
+
+        // Triad: resolve the filler words a caveman drops (the, is, to, a, am, are, was, do...).
+        var forbidden = new HashSet<string>(CavemanAccentComponent.ForbiddenWords.Select(Loc.GetString), StringComparer.OrdinalIgnoreCase);
 
         string[] words = msg.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         List<string> modifiedWords = new List<string>();
@@ -61,6 +64,15 @@ public sealed class CavemanAccentSystem : EntitySystem
             }
 
             modifiedWord = TryRemovePunctuation(modifiedWord);
+
+            // Triad: drop caveman filler words so speech reads "me go store", not "me is go to the store".
+            // Carry any trailing punctuation onto the previous word, like the all-punctuation case below.
+            if (forbidden.Contains(modifiedWord))
+            {
+                if (modifiedWords.Count > 0)
+                    modifiedWords[^1] += endPunctuation;
+                continue;
+            }
 
             modifiedWord = TryConvertNumbers(modifiedWord);
 
@@ -100,7 +112,7 @@ public sealed class CavemanAccentSystem : EntitySystem
     {
         var grunt = Loc.GetString(_random.Pick(CavemanAccentComponent.Grunts));
 
-        if (_random.Prob(0.5f))
+        if (_random.Prob(0.25f)) // Triad: was 0.5 -- double-grunts added a lot of noise
         {
             grunt += "-";
             grunt += Loc.GetString(_random.Pick(CavemanAccentComponent.Grunts));

@@ -20,7 +20,7 @@ namespace Content.Server._NF.Market.Systems;
 public sealed partial class MarketSystem
 {
 
-    [Dependency] private readonly SharedMaterialStorageSystem _sharedMaterialStorageSystem = default!;
+    [Dependency] private SharedMaterialStorageSystem _sharedMaterialStorageSystem = default!;
     private void InitializeConsole()
     {
         SubscribeLocalEvent<EntitySoldEvent>(OnEntitySoldEvent);
@@ -185,7 +185,7 @@ public sealed partial class MarketSystem
                 continue;
 
             var entProto = _prototypeManager.Index<EntityPrototype>(material.StackEntity);
-            if (!entProto.TryGetComponent<PhysicalCompositionComponent>(out var composition))
+            if (!entProto.TryComp<PhysicalCompositionComponent>(out var composition, Factory))
                 continue;
 
             var materialPerStack = composition.MaterialComposition[material.ID];

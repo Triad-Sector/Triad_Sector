@@ -10,8 +10,9 @@ namespace Content.Client.Stack
     [UsedImplicitly]
     public sealed partial class StackSystem : SharedStackSystem // Frontier: add partial to class definition
     {
-        [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
-        [Dependency] private readonly ItemCounterSystem _counterSystem = default!;
+        [Dependency] private AppearanceSystem _appearanceSystem = default!;
+        [Dependency] private ItemCounterSystem _counterSystem = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
 
         public override void Initialize()
         {
@@ -37,7 +38,7 @@ namespace Content.Client.Stack
 
                 for (var i = 0; i < sprite.AllLayers.Count(); i++)
                 {
-                    sprite.LayerSetColor(i, color);
+                    _sprite.LayerSetColor((uid, sprite), i, color);
                 }
             }
 

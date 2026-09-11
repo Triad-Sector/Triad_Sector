@@ -15,8 +15,8 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab;
 [GenerateTypedNameReferences]
 public sealed partial class PlayerTab : Control
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IPlayerManager _playerMan = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IPlayerManager _playerMan = default!;
 
     private const string ArrowUp = "↑";
     private const string ArrowDown = "↓";

@@ -46,18 +46,18 @@ namespace Content.Client.UserInterface.Systems.Chat;
 
 public sealed partial class ChatUIController : UIController
 {
-    [Dependency] private readonly IClientAdminManager _admin = default!;
-    [Dependency] private readonly IChatManager _manager = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly IEntityManager _ent = default!;
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IClientNetManager _net = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IStateManager _state = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
+    [Dependency] private IChatManager _manager = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private IEyeManager _eye = default!;
+    [Dependency] private IEntityManager _ent = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private IClientNetManager _net = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IStateManager _state = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IReplayRecordingManager _replayRecording = default!;
 
     [UISystemDependency] private readonly ExamineSystem? _examine = default;
     [UISystemDependency] private readonly GhostSystem? _ghost = default;
@@ -68,8 +68,7 @@ public sealed partial class ChatUIController : UIController
     [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
     [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
 
-    [ValidatePrototypeId<ColorPalettePrototype>]
-    private const string ChatNamePalette = "ChatNames";
+    private static readonly ProtoId<ColorPalettePrototype> ChatNamePalette = "ChatNames";
     private string[] _chatNameColors = default!;
     private bool _chatNameColorsEnabled;
 
@@ -550,19 +549,19 @@ public sealed partial class ChatUIController : UIController
         {
             // can always hear local / radio / emote / notifications when in the game
             FilterableChannels |= ChatChannel.Local;
-            FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
             FilterableChannels |= ChatChannel.Notifications;
-            // Floofstation section
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
-            // Floofstation section end
 
             // Can only send local / radio / emote when attached to a non-ghost entity.
             // TODO: this logic is iffy (checking if controlling something that's NOT a ghost), is there a better way to check this?
             if (_ghost is not {IsGhost: true})
             {
+                // Triad start - only non-ghosts can see subtle, whisper, and subtle OOC
+                FilterableChannels |= ChatChannel.Subtle;
+                FilterableChannels |= ChatChannel.SubtleOOC;
+                FilterableChannels |= ChatChannel.Whisper;
+                // Triad end
                 CanSendChannels |= ChatSelectChannel.Local;
                 CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
@@ -581,10 +580,9 @@ public sealed partial class ChatUIController : UIController
             CanSendChannels |= ChatSelectChannel.Dead;
         }
 
-        if (_admin.HasFlag(AdminFlags.Pii) && _ghost is { IsGhost: true })
+        if (_admin.HasFlag(AdminFlags.Admin) && _ghost is { IsGhost: true })
         {
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
+            FilterableChannels |= ChatChannel.Whisper;
         }
 
         // only admins can see / filter asay

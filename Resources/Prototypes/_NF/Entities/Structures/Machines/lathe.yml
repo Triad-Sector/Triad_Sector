@@ -42,6 +42,8 @@
     runningState: icon
     staticPacks:
     - NFServiceTechfabDeprecatedStatic
+    - TriadBureaucracyStatic # Triad
+    - ReportingStatic # DeltaV
     dynamicPacks:
     - NFServiceTechfabDeprecated
   - type: EmagLatheRecipes
@@ -124,9 +126,9 @@
 
 - type: entity
   id: NfsdTechFab
-  parent: [ BlueprintReceiverBase, SecurityTechFab ]
-  name: TSFMC techfab
-  description: Prints equipment for use by TSFMC.
+  parent: [ BlueprintReceiverBase, SecurityTechFab, BaseClass2AShipContraband ]
+  name: TDF techfab
+  description: Prints equipment for use by TDF.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/techfab.rsi
@@ -147,27 +149,38 @@
     idleState: icon
     runningState: icon
     staticPacks:
-    - NFNfsdTechfabDeprecatedStatic
+    - TdfTechfabStatic
     - StaticAmmoRecipePack
     - RoundstartShipgunAmmo # Mono
+    - ReportingStatic # DeltaV
     dynamicPacks:
-    - NFNfsdTechfabDeprecated
     - DynamicAmmoRecipePack
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
     - UniversalShellAmmo
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
     - UniversalOrdinance
     - ResearchedExplosives
     # Mono end
+    # Triad start
+    - GenericFaction
+    - TdfTechfabDynamic
+    - TdfDynamicMelee
+    - TdfDynamicGun
+    - TDFGearDynamic
+    - TDFDynamicVoucher
+    # Triad end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
   - type: PirateBountyItem # Mono
     id: Techfab
+  - type: CompanyAccessReader
+    requiredCompany: TDF # Triad
+    popupMessage: company-access-denied-tdf # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   id: MercenaryTechFab
@@ -201,18 +214,10 @@
     dynamicPacks:
     - NFMercenaryTechfabDeprecated
     - DynamicAmmoRecipePack
+    # Triad start
+    - GenericFaction
+    # Triad end
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
-    - MonoUSSPMiscDynamic
-    - MonoUSSPWeaponsDynamicRanged
-    - MonoViperGroupDynamic
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo
@@ -274,17 +279,6 @@
     - DynamicAmmoRecipePack
     - SmartGun # Goobstation
     # Mono start
-    - MonoTSFWeaponsDynamicMelee
-    - MonoTSFWeaponsDynamicRanged
-    - MonoTSFMiscDynamic
-    - MonoRogueWeaponsDynamicMelee
-    - MonoRogueWeaponsDynamicRanged
-    - MonoRogueMiscDynamic
-    - MonoUSSPVouchersDynamic
-    - MonoUSSPArmorDynamic
-    - MonoUSSPMiscDynamic
-    - MonoViperGroupDynamic
-    - MonoUSSPWeaponsDynamicRanged
     # Universal shit (stuff like shipgun ammo)
     - UniversalRailgunAmmo
     - UniversalMissileAmmo

@@ -15,14 +15,14 @@ namespace Content.Shared.Sericulture;
 public abstract partial class SharedSericultureSystem : EntitySystem
 {
     // Managers
-    [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] private INetManager _netManager = default!;
 
     // Systems
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly HungerSystem _hungerSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedStackSystem _stackSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private HungerSystem _hungerSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedStackSystem _stackSystem = default!;
 
     public override void Initialize()
     {
@@ -67,7 +67,11 @@ public abstract partial class SharedSericultureSystem : EntitySystem
             BreakOnMove = true,
             BlockDuplicate = true,
             BreakOnDamage = true,
-            CancelDuplicate = true,
+            // Triad: don't cancel an in-progress weave when the action is re-triggered. The action
+            // re-lights (useDelay 1s) before the weave finishes (productionLength 2s), so re-clicking
+            // would self-cancel the weave every time and produce no silk. BlockDuplicate already
+            // stops a second weave from stacking; CancelDuplicate would additionally kill the first.
+            CancelDuplicate = false,
         };
 
         _doAfterSystem.TryStartDoAfter(doAfter);

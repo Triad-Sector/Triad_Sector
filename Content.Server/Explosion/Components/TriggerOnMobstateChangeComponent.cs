@@ -1,4 +1,5 @@
-﻿using Content.Shared.Mobs;
+﻿using System.Threading;
+using Content.Shared.Mobs;
 
 namespace Content.Server.Explosion.Components;
 
@@ -21,4 +22,12 @@ public sealed partial class TriggerOnMobstateChangeComponent : Component
     [ViewVariables]
     [DataField("preventSuicide")]
     public bool PreventSuicide = false;
+
+    // the timer cancel token
+    [ViewVariables]
+    public CancellationTokenSource RattleCancelToken = new();
+
+    // The delay before the implant sends the message again
+    [DataField]
+    public TimeSpan RattleRefireDelay = TimeSpan.FromMinutes(20);
 }

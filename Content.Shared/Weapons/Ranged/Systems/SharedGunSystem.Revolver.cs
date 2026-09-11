@@ -34,6 +34,31 @@ public partial class SharedGunSystem
         SubscribeLocalEvent<RevolverAmmoProviderComponent, AmmoFillDoAfterEvent>(OnRevolverAmmoFillDoAfter); // Frontier: better revolver reloading
         SubscribeLocalEvent<RevolverAmmoProviderComponent, GetAmmoCountEvent>(OnRevolverGetAmmoCount);
         SubscribeLocalEvent<RevolverAmmoProviderComponent, UseInHandEvent>(OnRevolverUse);
+        SubscribeLocalEvent<RevolverAmmoProviderComponent, EntRemovedFromContainerMessage>(OnRevolverEntRemove); // Triad: was client-only, see the override
+    }
+
+    /// <summary>
+    /// Keeps <see cref="RevolverAmmoProviderComponent.AmmoSlots"/> in step with the ammo container.
+    /// </summary>
+    // Triad: the slots were only ever cleared by the code paths that eject rounds deliberately. A
+    // cartridge deleted while still in the cylinder left its uid behind, and OnRevolverGetState then
+    // threw KeyNotFound out of GetNetEntityList, which takes the whole component state down with it.
+    // Container removal also fires on the detach-to-nullspace just before deletion, so this catches it.
+    protected virtual void OnRevolverEntRemove(EntityUid uid, RevolverAmmoProviderComponent component, EntRemovedFromContainerMessage args)
+    {
+        if (args.Container.ID != RevolverContainer)
+            return;
+
+        // Slots are rebuilt wholesale from the component state; clearing one mid-apply would fight it.
+        if (Timing.ApplyingState)
+            return;
+
+        var index = component.AmmoSlots.IndexOf(args.Entity);
+
+        if (index < 0)
+            return;
+
+        component.AmmoSlots[index] = null;
     }
 
     private void OnRevolverUse(EntityUid uid, RevolverAmmoProviderComponent component, UseInHandEvent args)
@@ -200,6 +225,19 @@ public partial class SharedGunSystem
 
     private void OnRevolverGetState(EntityUid uid, RevolverAmmoProviderComponent component, ref ComponentGetState args)
     {
+        // Triad: backstop for slots OnRevolverEntRemove did not catch. Nulling the slot here is
+        // self-healing, so a given revolver warns once instead of throwing on every state send.
+        for (var i = 0; i < component.AmmoSlots.Count; i++)
+        {
+            var slot = component.AmmoSlots[i];
+
+            if (slot is null || !TerminatingOrDeleted(slot.Value))
+                continue;
+
+            Log.Warning($"Revolver {ToPrettyString(uid)} still held deleted cartridge {slot.Value} in slot {i}, clearing it.");
+            component.AmmoSlots[i] = null;
+        }
+
         args.State = new RevolverAmmoProviderComponentState
         {
             CurrentIndex = component.CurrentIndex,
@@ -442,6 +480,15 @@ public partial class SharedGunSystem
                     EjectCartridge(uid);
                 }
 
+                component.Chambers[i] = null;
+                anyEmpty = true;
+            }
+            // Triad: a slot pointing at a deleted cartridge used to reach EjectCartridge, which does a
+            // hard Transform() lookup and threw KeyNotFound out of the whole empty-the-cylinder verb.
+            // Drop the slot and carry on so the rest of the cylinder still empties.
+            else if (TerminatingOrDeleted(slot.Value))
+            {
+                component.AmmoSlots[i] = null;
                 component.Chambers[i] = null;
                 anyEmpty = true;
             }

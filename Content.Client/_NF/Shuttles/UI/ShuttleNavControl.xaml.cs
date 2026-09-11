@@ -16,6 +16,7 @@ namespace Content.Client.Shuttles.UI
     public partial class ShuttleNavControl // Mono
     {
         public InertiaDampeningMode DampeningMode { get; set; }
+        public ServiceFlags ServiceFlags { get; set; } = ServiceFlags.None; // Frontier
 
         /// <summary>
         /// Whether the shuttle is currently in FTL. This is used to disable the Park button
@@ -34,6 +35,7 @@ namespace Content.Client.Shuttles.UI
             }
 
             DampeningMode = state.DampeningMode;
+            ServiceFlags = state.ServiceFlags; // Frontier
 
             // Check if the entity has an FTLComponent which indicates it's in FTL
             if (transform.GridUid != null)

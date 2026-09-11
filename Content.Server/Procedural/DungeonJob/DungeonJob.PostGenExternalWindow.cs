@@ -29,7 +29,8 @@ public sealed partial class DungeonJob
         if (!data.Tiles.TryGetValue(DungeonDataKey.FallbackTile, out var tileProto) ||
             !data.SpawnGroups.TryGetValue(DungeonDataKey.Window, out var windowGroup))
         {
-            _sawmill.Error($"Unable to get dungeon data for {nameof(gen)}");
+            // Triad: nameof(gen) logged the literal string "gen" rather than the generator type.
+            _sawmill.Error($"Unable to get dungeon data for {gen.GetType().Name}: needs Tiles[FallbackTile] and SpawnGroups[Window]");
             return;
         }
 
@@ -56,7 +57,7 @@ public sealed partial class DungeonJob
                 break;
 
             // Room tile / already used.
-            if (!_anchorable.TileFree(_grid, tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask) ||
+            if (!_anchorable.TileFree((_gridUid, _grid), tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask) ||
                 takenTiles.Contains(tile))
             {
                 continue;
@@ -76,7 +77,7 @@ public sealed partial class DungeonJob
 
                     if (!allExterior.Contains(neighbor) ||
                         takenTiles.Contains(neighbor) ||
-                        !_anchorable.TileFree(_grid, neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+                        !_anchorable.TileFree((_gridUid, _grid), neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                     {
                         isValid = false;
                         break;
@@ -91,7 +92,7 @@ public sealed partial class DungeonJob
 
                         if (allExterior.Contains(perpTile) ||
                             takenTiles.Contains(neighbor) ||
-                            !_anchorable.TileFree(_grid, perpTile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+                            !_anchorable.TileFree((_gridUid, _grid), perpTile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                         {
                             isValid = false;
                             break;

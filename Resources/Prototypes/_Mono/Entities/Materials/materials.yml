@@ -14,7 +14,6 @@
     density: 2
     chemical: 2
     reflective: 4
-    molitz_bubbles: 1
     plasma_offgas: 4
 
 - type: entity
@@ -61,7 +60,6 @@
     density: 2
     chemical: 9
     reflective: 1
-    molitz_bubbles: 0
     plasma_offgas: 0
 
 - type: entity
@@ -138,14 +136,13 @@
     density: 9
     chemical: 6
     reflective: 3
-    molitz_bubbles: 0
     plasma_offgas: 0
 
 - type: entity
   parent: MaterialBase
   id: SheetPlastitanium
   name: plastitanium
-  description: An advanced, high-strength alloy. Even if it's extremely abundant in core sectors, it is hard to find in the Colossus region.
+  description: An advanced, high-strength alloy. Even if it's extremely abundant in core sectors, it is hard to find in the Triad region.
   suffix: 15
   components:
   - type: Sprite

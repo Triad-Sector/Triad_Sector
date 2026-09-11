@@ -158,6 +158,38 @@ public static class ServerPackaging
         var graph = new RobustServerAssetGraph();
         var passes = graph.AllPasses.ToList();
 
+        // Triad: the client asset graph concatenates Prototypes and Locale per directory, the server
+        // graph does not, so a packaged server carries ~4,800 loose prototype yml and ~1,500 ftl files.
+        // Same passes, same formatting as RobustClientAssetGraph, wired into the resource half of the
+        // server graph: they take their input from the preset passes and land before text
+        // normalization, and the prefix pass waits on them so nothing reaches Resources/ unmerged.
+        var mergePrototypes = new AssetPassMergeTextDirectories(
+            "Prototypes",
+            "yml",
+            // Separate each merged YAML file with a document to provide proper isolation.
+            formatterHead: file => $"--- # BEGIN {file}",
+            formatterTail: file => $"# END {file}")
+        {
+            Name = "TriadServerMergePrototypeDirectories"
+        };
+
+        var mergeLocale = new AssetPassMergeTextDirectories(
+            "Locale",
+            "ftl",
+            formatterHead: file => $"# BEGIN {file}",
+            formatterTail: file => $"# END {file}")
+        {
+            Name = "TriadServerMergeLocaleDirectories"
+        };
+
+        mergePrototypes.AddDependency(graph.PresetPassesResources).AddBefore(graph.NormalizeTextResources);
+        mergeLocale.AddDependency(graph.PresetPassesResources).AddBefore(graph.NormalizeTextResources);
+        graph.PrefixResources.AddDependency(mergePrototypes);
+        graph.PrefixResources.AddDependency(mergeLocale);
+
+        passes.Add(mergePrototypes);
+        passes.Add(mergeLocale);
+
         pass.Dependencies.Add(new AssetPassDependency(graph.Output.Name));
         passes.Add(pass);
 

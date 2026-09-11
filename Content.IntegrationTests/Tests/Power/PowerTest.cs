@@ -165,7 +165,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var mapSys = entityManager.System<SharedMapSystem>();
             const float loadPower = 200;
@@ -176,7 +175,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -228,7 +227,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var mapSys = entityManager.System<SharedMapSystem>();
             const float loadPower = 200;
@@ -239,7 +237,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -288,7 +286,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var mapSys = entityManager.System<SharedMapSystem>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
@@ -298,7 +295,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -375,7 +372,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
             var batterySys = entityManager.System<BatterySystem>();
@@ -389,7 +385,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -477,7 +473,6 @@ namespace Content.IntegrationTests.Tests.Power
 
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -493,7 +488,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -574,7 +569,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
@@ -585,7 +579,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -631,7 +625,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
             var batterySys = entityManager.System<BatterySystem>();
@@ -644,7 +637,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 4; i++)
@@ -654,7 +647,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -709,7 +702,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
             var batterySys = entityManager.System<BatterySystem>();
@@ -722,7 +714,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 4; i++)
@@ -732,7 +724,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -787,7 +779,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -798,7 +789,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Map layout here is
                 // C - consumer
@@ -817,7 +808,7 @@ namespace Content.IntegrationTests.Tests.Power
 
                 entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt1 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 1));
                 var batteryEnt2 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 3));
@@ -884,7 +875,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var gameTiming = server.ResolveDependency<IGameTiming>();
             var batterySys = entityManager.System<BatterySystem>();
@@ -900,7 +890,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Layout is two generators, two batteries, and one load. As to why two: because previously this test
                 // would fail ONLY if there were more than two batteries present, because each of them tries to supply
@@ -983,7 +973,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -994,7 +983,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Map layout here is
                 // C - consumer
@@ -1013,7 +1002,7 @@ namespace Content.IntegrationTests.Tests.Power
 
                 entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 2));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt1 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 1));
                 var batteryEnt2 = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 3));
@@ -1071,7 +1060,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -1082,7 +1070,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitPost(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 4; i++)
@@ -1092,7 +1080,7 @@ namespace Content.IntegrationTests.Tests.Power
                 }
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var batteryEnt = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var supplyEnt = entityManager.SpawnEntity("GeneratorDummy", grid.Owner.ToCoordinates(0, 0));
@@ -1156,7 +1144,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var nodeContainer = entityManager.System<NodeContainerSystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -1168,7 +1155,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 4; i++)
@@ -1182,7 +1169,7 @@ namespace Content.IntegrationTests.Tests.Power
                 var rightEnt = entityManager.SpawnEntity("CableHV", grid.Owner.ToCoordinates(0, 3));
 
                 var terminal = entityManager.SpawnEntity("CableTerminal", grid.Owner.ToCoordinates(0, 1));
-                entityManager.GetComponent<TransformComponent>(terminal).LocalRotation = Angle.FromDegrees(180);
+                entityManager.System<SharedTransformSystem>().SetLocalRotation(terminal, Angle.FromDegrees(180));
 
                 var battery = entityManager.SpawnEntity("FullBatteryDummy", grid.Owner.ToCoordinates(0, 2));
                 var batteryNodeContainer = entityManager.GetComponent<NodeContainerComponent>(battery);
@@ -1222,7 +1209,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var mapSys = entityManager.System<SharedMapSystem>();
@@ -1232,7 +1218,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 // Power only works when anchored
                 for (var i = 0; i < 3; i++)
@@ -1278,7 +1264,6 @@ namespace Content.IntegrationTests.Tests.Power
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
-            var mapManager = server.ResolveDependency<IMapManager>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var batterySys = entityManager.System<BatterySystem>();
             var extensionCableSystem = entityManager.System<ExtensionCableSystem>();
@@ -1290,7 +1275,7 @@ namespace Content.IntegrationTests.Tests.Power
             await server.WaitAssertion(() =>
             {
                 var map = mapSys.CreateMap(out var mapId);
-                var grid = mapManager.CreateGridEntity(mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
 
                 const int range = 5;
 
@@ -1338,5 +1323,337 @@ namespace Content.IntegrationTests.Tests.Power
             await pair.CleanReturnAsync();
         }
 
+        // Triad: the four tests below cover ExtensionCableSystem's transitions rather than the power solver's
+        // steady state. Everything above this line asserts on a resting topology; these assert on what happens
+        // when one is torn down or rebuilt. They deliberately touch only the public surface
+        // (Powered, SetProviderTransferRange, SetReceiverReceptionRange) so that they keep compiling and keep
+        // meaning the same thing across signature changes inside the system.
+
+        /// <summary>
+        ///     Removing a provider's <see cref="ExtensionCableProviderComponent"/> while receivers are still linked
+        ///     must drop those receivers and must not throw on the way out.
+        /// </summary>
+        [Test]
+        public async Task ProviderShutdownUnpowersReceivers()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var entityManager = server.ResolveDependency<IEntityManager>();
+            var batterySys = entityManager.System<BatterySystem>();
+            var extensionCableSystem = entityManager.System<ExtensionCableSystem>();
+            var mapSys = entityManager.System<SharedMapSystem>();
+            var apcExtensionEnt = EntityUid.Invalid;
+            ApcPowerReceiverComponent receiver = default!;
+
+            await server.WaitAssertion(() =>
+            {
+                const int range = 5;
+
+                mapSys.CreateMap(out var mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
+
+                // Power only works when anchored
+                for (var i = 0; i < range; i++)
+                {
+                    mapSys.SetTile(grid, new Vector2i(0, i), new Tile(1));
+                }
+
+                var apcEnt = entityManager.SpawnEntity("ApcDummy", grid.Owner.ToCoordinates(0, 0));
+                apcExtensionEnt = entityManager.SpawnEntity("CableApcExtension", grid.Owner.ToCoordinates(0, 0));
+
+                var receiverEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, range - 1));
+                receiver = entityManager.GetComponent<ApcPowerReceiverComponent>(receiverEnt);
+
+                var battery = entityManager.GetComponent<BatteryComponent>(apcEnt);
+
+                extensionCableSystem.SetProviderTransferRange(apcExtensionEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(receiverEnt, range);
+
+                batterySys.SetMaxCharge(apcEnt, 10000, battery);
+                batterySys.SetCharge(apcEnt, battery.MaxCharge, battery);
+
+                receiver.Load = 1;
+            });
+
+            server.RunTicks(15); //let run a tick for ApcNet to process power
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(receiver.Powered, "Receiver should be powered before the provider goes away");
+
+                // Component shutdown, not entity deletion - deletion is covered separately below.
+                Assert.DoesNotThrow(
+                    () => entityManager.RemoveComponent<ExtensionCableProviderComponent>(apcExtensionEnt),
+                    "Provider shutdown threw with a receiver still linked");
+            });
+
+            server.RunTicks(15);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(receiver.Powered, Is.False, "Receiver should lose power when its provider shuts down");
+            });
+
+            await pair.CleanReturnAsync();
+        }
+
+        /// <summary>
+        ///     Unanchoring a receiver severs it from its provider, and re-anchoring it in the same spot reconnects it.
+        ///     This is the <c>AnchorStateChangedEvent</c> path, which nothing else in this file exercises.
+        /// </summary>
+        [Test]
+        public async Task ReceiverUnanchorDisconnectsAndReanchorReconnects()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var entityManager = server.ResolveDependency<IEntityManager>();
+            var batterySys = entityManager.System<BatterySystem>();
+            var extensionCableSystem = entityManager.System<ExtensionCableSystem>();
+            var mapSys = entityManager.System<SharedMapSystem>();
+            var xformSys = entityManager.System<SharedTransformSystem>();
+            var receiverEnt = EntityUid.Invalid;
+            ApcPowerReceiverComponent receiver = default!;
+
+            await server.WaitAssertion(() =>
+            {
+                const int range = 5;
+
+                mapSys.CreateMap(out var mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
+
+                // Power only works when anchored
+                for (var i = 0; i < range; i++)
+                {
+                    mapSys.SetTile(grid, new Vector2i(0, i), new Tile(1));
+                }
+
+                var apcEnt = entityManager.SpawnEntity("ApcDummy", grid.Owner.ToCoordinates(0, 0));
+                var apcExtensionEnt = entityManager.SpawnEntity("CableApcExtension", grid.Owner.ToCoordinates(0, 0));
+
+                receiverEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, range - 1));
+                receiver = entityManager.GetComponent<ApcPowerReceiverComponent>(receiverEnt);
+
+                var battery = entityManager.GetComponent<BatteryComponent>(apcEnt);
+
+                extensionCableSystem.SetProviderTransferRange(apcExtensionEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(receiverEnt, range);
+
+                batterySys.SetMaxCharge(apcEnt, 10000, battery);
+                batterySys.SetCharge(apcEnt, battery.MaxCharge, battery);
+
+                receiver.Load = 1;
+            });
+
+            server.RunTicks(15); //let run a tick for ApcNet to process power
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(receiver.Powered, "Receiver should be powered while anchored");
+
+                xformSys.Unanchor(receiverEnt, entityManager.GetComponent<TransformComponent>(receiverEnt));
+            });
+
+            server.RunTicks(15);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(receiver.Powered, Is.False, "Unanchored receiver should drop its provider");
+
+                // Same tile it was spawned on, so this is purely the anchor transition and not a move.
+                var xform = entityManager.GetComponent<TransformComponent>(receiverEnt);
+                Assert.That(xformSys.AnchorEntity((receiverEnt, xform)), "Failed to re-anchor the receiver");
+            });
+
+            server.RunTicks(15);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(receiver.Powered, "Re-anchored receiver should find its provider again");
+            });
+
+            await pair.CleanReturnAsync();
+        }
+
+        /// <summary>
+        ///     Deleting a provider outright must leave its receivers holding nothing, and a replacement provider
+        ///     spawned in range must be able to adopt them. Guards against a stale provider reference surviving
+        ///     deletion and silently keeping a room "powered" by an entity that no longer exists.
+        /// </summary>
+        [Test]
+        public async Task ProviderDeletionLeavesNoDanglingReceiver()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var entityManager = server.ResolveDependency<IEntityManager>();
+            var batterySys = entityManager.System<BatterySystem>();
+            var extensionCableSystem = entityManager.System<ExtensionCableSystem>();
+            var mapSys = entityManager.System<SharedMapSystem>();
+            var apcExtensionEnt = EntityUid.Invalid;
+            var gridEnt = EntityUid.Invalid;
+            ApcPowerReceiverComponent nearReceiver = default!;
+            ApcPowerReceiverComponent farReceiver = default!;
+
+            await server.WaitAssertion(() =>
+            {
+                const int range = 5;
+
+                mapSys.CreateMap(out var mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
+                gridEnt = grid.Owner;
+
+                // Power only works when anchored
+                for (var i = 0; i < range; i++)
+                {
+                    mapSys.SetTile(grid, new Vector2i(0, i), new Tile(1));
+                }
+
+                var apcEnt = entityManager.SpawnEntity("ApcDummy", grid.Owner.ToCoordinates(0, 0));
+                apcExtensionEnt = entityManager.SpawnEntity("CableApcExtension", grid.Owner.ToCoordinates(0, 0));
+
+                // Two receivers, so the deletion path has to walk a list rather than a single link.
+                var nearEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, 1));
+                var farEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, 2));
+                nearReceiver = entityManager.GetComponent<ApcPowerReceiverComponent>(nearEnt);
+                farReceiver = entityManager.GetComponent<ApcPowerReceiverComponent>(farEnt);
+
+                var battery = entityManager.GetComponent<BatteryComponent>(apcEnt);
+
+                extensionCableSystem.SetProviderTransferRange(apcExtensionEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(nearEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(farEnt, range);
+
+                batterySys.SetMaxCharge(apcEnt, 10000, battery);
+                batterySys.SetCharge(apcEnt, battery.MaxCharge, battery);
+
+                nearReceiver.Load = 1;
+                farReceiver.Load = 1;
+            });
+
+            server.RunTicks(15); //let run a tick for ApcNet to process power
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(nearReceiver.Powered, "Near receiver should be powered before deletion");
+                    Assert.That(farReceiver.Powered, "Far receiver should be powered before deletion");
+                });
+
+                Assert.DoesNotThrow(
+                    () => entityManager.DeleteEntity(apcExtensionEnt),
+                    "Deleting a provider with live receivers threw");
+            });
+
+            server.RunTicks(15);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(nearReceiver.Powered, Is.False, "Near receiver should be unpowered after the provider is deleted");
+                    Assert.That(farReceiver.Powered, Is.False, "Far receiver should be unpowered after the provider is deleted");
+                });
+
+                // A receiver still holding the deleted provider would refuse this one, since a receiver that
+                // already has a provider is skipped by the connect scan.
+                var replacement = entityManager.SpawnEntity("CableApcExtension", gridEnt.ToCoordinates(0, 0));
+                extensionCableSystem.SetProviderTransferRange(replacement, 5);
+            });
+
+            // Longer than the other phases: the replacement cable has to rejoin the APC node group before the
+            // power solver has anything to hand the receivers.
+            server.RunTicks(30);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(nearReceiver.Powered, "Near receiver should be adopted by the replacement provider");
+                    Assert.That(farReceiver.Powered, "Far receiver should be adopted by the replacement provider");
+                });
+            });
+
+            await pair.CleanReturnAsync();
+        }
+
+        /// <summary>
+        ///     Shrinking a provider's transfer range after connections exist drops the receivers that fall outside
+        ///     the new range and keeps the ones that do not. Exercises <c>ResetReceivers</c>.
+        /// </summary>
+        [Test]
+        public async Task ShrinkingTransferRangeDropsOutOfRangeReceivers()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var entityManager = server.ResolveDependency<IEntityManager>();
+            var batterySys = entityManager.System<BatterySystem>();
+            var extensionCableSystem = entityManager.System<ExtensionCableSystem>();
+            var mapSys = entityManager.System<SharedMapSystem>();
+            var apcExtensionEnt = EntityUid.Invalid;
+            ApcPowerReceiverComponent nearReceiver = default!;
+            ApcPowerReceiverComponent farReceiver = default!;
+
+            await server.WaitAssertion(() =>
+            {
+                const int range = 5;
+
+                mapSys.CreateMap(out var mapId);
+                var grid = mapSys.CreateGridEntity(mapId);
+
+                // Power only works when anchored
+                for (var i = 0; i < range; i++)
+                {
+                    mapSys.SetTile(grid, new Vector2i(0, i), new Tile(1));
+                }
+
+                var apcEnt = entityManager.SpawnEntity("ApcDummy", grid.Owner.ToCoordinates(0, 0));
+                apcExtensionEnt = entityManager.SpawnEntity("CableApcExtension", grid.Owner.ToCoordinates(0, 0));
+
+                // Near receiver survives the shrink, far one does not.
+                var nearEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, 1));
+                var farEnt = entityManager.SpawnEntity("ApcPowerReceiverDummy", grid.Owner.ToCoordinates(0, 4));
+                nearReceiver = entityManager.GetComponent<ApcPowerReceiverComponent>(nearEnt);
+                farReceiver = entityManager.GetComponent<ApcPowerReceiverComponent>(farEnt);
+
+                var battery = entityManager.GetComponent<BatteryComponent>(apcEnt);
+
+                extensionCableSystem.SetProviderTransferRange(apcExtensionEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(nearEnt, range);
+                extensionCableSystem.SetReceiverReceptionRange(farEnt, range);
+
+                batterySys.SetMaxCharge(apcEnt, 10000, battery);
+                batterySys.SetCharge(apcEnt, battery.MaxCharge, battery);
+
+                nearReceiver.Load = 1;
+                farReceiver.Load = 1;
+            });
+
+            server.RunTicks(15); //let run a tick for ApcNet to process power
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(nearReceiver.Powered, "Near receiver should be powered at the original range");
+                    Assert.That(farReceiver.Powered, "Far receiver should be powered at the original range");
+                });
+
+                // Far receiver sits 4 tiles out, near one 1 tile out.
+                extensionCableSystem.SetProviderTransferRange(apcExtensionEnt, 2);
+            });
+
+            server.RunTicks(15);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(nearReceiver.Powered, "Near receiver should survive the range shrink");
+                    Assert.That(farReceiver.Powered, Is.False, "Far receiver should be dropped by the range shrink");
+                });
+            });
+
+            await pair.CleanReturnAsync();
+        }
     }
 }

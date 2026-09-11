@@ -39,12 +39,12 @@ namespace Content.Server.GameTicking
 {
     public sealed partial class GameTicker
     {
-        [Dependency] private readonly DiscordWebhook _discord = default!;
-        [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly ITaskManager _taskManager = default!;
-        [Dependency] private readonly CrewManifestSystem _crewManifest = default!;
-        [Dependency] private readonly StationSystem _stationSystem = default!;
-        [Dependency] private readonly BankSystem _bank = default!;
+        [Dependency] private DiscordWebhook _discord = default!;
+        [Dependency] private RoleSystem _role = default!;
+        [Dependency] private ITaskManager _taskManager = default!;
+        [Dependency] private CrewManifestSystem _crewManifest = default!;
+        [Dependency] private StationSystem _stationSystem = default!;
+        [Dependency] private BankSystem _bank = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -103,7 +103,7 @@ namespace Content.Server.GameTicking
         /// </remarks>
         private void LoadMaps()
         {
-            if (_mapManager.MapExists(DefaultMap))
+            if (_map.MapExists(DefaultMap))
                 return;
 
             AddGamePresetRules();
@@ -580,7 +580,7 @@ namespace Content.Server.GameTicking
 
                 if (TryGetEntity(mind.OriginalOwnedEntity, out var entity) && pvsOverride)
                 {
-                    _pvsOverride.AddGlobalOverride(GetNetEntity(entity.Value), recursive: true);
+                    _pvsOverride.AddGlobalOverride(entity.Value); // Triad: engine v275 removed the NetEntity overload and its recursive arg
                 }
 
                 var roles = _roles.MindGetAllRoleInfo(mindId);
@@ -872,7 +872,8 @@ namespace Content.Server.GameTicking
                         // Check if adding this line would exceed field value limit
                         if (currentProfitLength + line.Length + 1 > MaxFieldValueLength - 20 && currentProfitLines.Count > 0)
                         {
-                            var fieldName = profitFieldCount == 0 ? "TSF Central Bank" : "TSF Central Bank (continued)";
+                            var bankName = Loc.GetString("adventure-webhook-list-start"); // Triad - bankName
+                            var fieldName = profitFieldCount == 0 ? bankName : bankName + " (continued)"; // Triad - bankName
                             var fieldValue = string.Join("\n", currentProfitLines);
                             var fieldCharacterCount = fieldName.Length + fieldValue.Length;
 
@@ -1030,8 +1031,6 @@ namespace Content.Server.GameTicking
             RaiseNetworkEvent(ev);
 
             EntityManager.FlushEntities();
-
-            _mapManager.Restart();
 
             _banManager.Restart();
 

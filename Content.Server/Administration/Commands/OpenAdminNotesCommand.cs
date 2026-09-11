@@ -1,6 +1,7 @@
 ﻿using Content.Server.Administration.Notes;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
+using Robust.Shared.Network;
 
 namespace Content.Server.Administration.Commands;
 
@@ -44,6 +45,6 @@ public sealed class OpenAdminNotesCommand : IConsoleCommand
                 return;
         }
 
-        await IoCManager.Resolve<IAdminNotesManager>().OpenEui(player, notedPlayer);
+        await IoCManager.Resolve<IAdminNotesManager>().OpenEui(player, new NetUserId(notedPlayer));
     }
 }

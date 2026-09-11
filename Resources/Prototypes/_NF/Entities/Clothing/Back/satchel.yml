@@ -28,7 +28,7 @@
 - type: entity
   parent: ClothingBackpackSatchelSecurity
   id: ClothingBackpackSatchelNfsdBrown
-  name: TSFMC satchel
+  name: solarian PMC satchel
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Satchels/nfsd_brown.rsi

@@ -42,10 +42,10 @@
     price: 50
 
 - type: entity
-  name: TSFMC grenade launcher
+  name: non-lethal grenade launcher # Triad - rename
   parent: WeaponLauncherChinaLake
   id: WeaponLauncherNfsdLake
-  description: Able to lob both grenades and darts!
+  description: A military-grade grenade launcher of the China-Lake design. The feeding mechanism has been modified to only allow darts and non-lethal grenades. # Triad - desc
   components:
   - type: Sprite
     sprite: _NF/Objects/Weapons/Guns/Launchers/nfsd_lake.rsi
@@ -59,3 +59,5 @@
         - LessLethalGrenade # Mono
   - type: StaticPrice
     price: 50
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text

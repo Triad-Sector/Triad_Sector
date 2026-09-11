@@ -2,8 +2,8 @@
                 xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
                 xmlns:fancyTree="clr-namespace:Content.Client.UserInterface.Controls.FancyTree"
                 xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                SetSize="900 700"
-                MinSize="100 200"
+                SetSize="950 700"
+                MinSize="800 500"
                 Resizable="True"
                 Title="{Loc 'guidebook-window-title'}">
     <SplitContainer Orientation="Horizontal" HorizontalExpand="True" Name="Split">

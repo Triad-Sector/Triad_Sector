@@ -11,7 +11,7 @@ station-beacon-shops = Shops
 station-beacon-vending-machines = Vend
 station-beacon-transit-shuttle = Bus Stop
 station-beacon-dock = Dock
-station-beacon-nfsd = TSFMC
+station-beacon-nfsd = TDF
 station-beacon-nfsd-brig = Brig
 station-beacon-cafe = Cafe
 station-beacon-conference = Conference
@@ -36,3 +36,10 @@ station-beacon-dock-six = Dock 6
 station-beacon-dock-six-a = Dock 6a
 station-beacon-dock-six-b = Dock 6b
 station-beacon-dock-six-c = Dock 6c
+
+# Triad: Edison Power Plant POI beacons
+station-beacon-dock-seven = Dock 7
+station-beacon-managers-office = Director's Office
+station-beacon-managers-quarters = Director's Quarters
+station-beacon-break-room = Break Room
+station-beacon-aux-chamber = Aux. Chamber

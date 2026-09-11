@@ -9,7 +9,7 @@
   startingGear: CCServiceWorkerGear
   alwaysUseSpawner: true
   icon: "JobIconValet" # Frontier: JobIconServiceWorker<JobIconValet
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 60 # Frontier
   displayWeight: 10 # Frontier
   assignedCompany: Colonial
@@ -19,12 +19,15 @@
   - External # Frontier
   - Service
   - Frontier # Frontier
+  - Janitor # Triad
   special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:GiveItemOnHolidaySpecial # Frontier
-    holiday: FrontierBirthday # Frontier
-    prototype: FrontierBirthdayGift # Frontier
+  #- !type:AddImplantSpecial
+  #  implants: [ MindShieldImplant ] Triad
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 # Frontier: valet loadout
 - type: startingGear

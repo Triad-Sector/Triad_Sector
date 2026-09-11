@@ -127,7 +127,7 @@
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelCaptain
   name: captain's satchel
-  description: An exclusive satchel for TSF officers.
+  description: An exclusive satchel for Nanotrasen officers. Well, was exclusive, atleast.
   components:
   - type: Sprite
     sprite: Clothing/Back/Satchels/captain.rsi
@@ -160,7 +160,7 @@
       sprite: Clothing/Back/Satchels/salvage.rsi
 
 - type: entity
-  parent: ClothingBackpackSatchel
+  parent: [ClothingBackpackSatchel, BaseClass2AShipContrabandSilent] # Triad
   id: ClothingBackpackSatchelHolding
   name: satchel of holding
   description: A satchel that opens into a localized pocket of bluespace.

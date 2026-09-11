@@ -9,7 +9,7 @@
   description: A general-purpose expeditionary vessel with a complementary kitchen. Cheap, slow, and has the structural integrity of a crunchy autumn leaf, but by god does it have soul.
   price: 40600
   category: Medium
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/duran.yml
   guidebookPage: null
   class:

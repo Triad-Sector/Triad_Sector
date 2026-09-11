@@ -12,6 +12,7 @@ using Content.Shared.Interaction;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
 using Content.Shared.RPD;
+using Content.Shared.RPD.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Placement;
@@ -20,6 +21,7 @@ using Robust.Client.State;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Robust.Client.Placement.PlacementManager;
 
@@ -28,19 +30,19 @@ namespace Content.Client.RPD;
 /// <summary>
 /// Placement mode for the Rapid Piping Device. Cursor position inside the tile picks the
 /// <see cref="AtmosPipeLayer"/> for the placement (see <see cref="RPDLayerMath"/>); the chosen layer is applied to
-/// the placement ghost via <c>TryGetAlternativePrototype</c>, and the same math runs server-side from the
-/// streamed eye rotation when the player commits. Three guide circles render on the cursor tile so the operator
-/// can see which layer they're aiming at.
+/// the placement ghost via <c>TryGetAlternativePrototype</c> and streamed to the tool (<see cref="SendLayer"/>),
+/// where the commit click captures it. Three guide circles render on the cursor tile so the operator can see which
+/// layer they're aiming at.
 /// </summary>
-public sealed class AlignRPDAtmosPipeLayers : PlacementMode
+public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transformSystem;
@@ -50,18 +52,14 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
     private const float SearchBoxSize = 2f;
     private const float PlaceColorBaseAlpha = 0.5f;
-    private const float GuideRadius = 0.1f;
 
-    // 7 px from tile center on a 32 px tile — leaves room for three guide circles without overlapping the
-    // central one.
-    private const float GuideOffsetInTileUnits = 7f / 32f;
-
-    // Per-instance (not static) so a tool swap doesn't leave stale layer/rotation state behind. A new placement
-    // session starts at Primary with no eye rotation cached, forcing the first send.
+    // Per-instance (not static) so a tool swap doesn't leave stale layer state behind. The send reconciles against
+    // the tool's networked layer (see SendLayer), so a fresh instance sends only if the tool actually disagrees.
     private EntityCoordinates _mouseCoordsRaw = default;
     private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
-    private float? _currentEyeRotation = null;
-    private readonly Color _guideColor = new(0, 0, 0.5785f);
+    private AtmosPipeLayer? _lastSentLayer = null;
+    private TimeSpan _nextResend;
+    private static readonly TimeSpan ResendInterval = TimeSpan.FromSeconds(0.5);
 
     public AlignRPDAtmosPipeLayers(PlacementManager pMan) : base(pMan)
     {
@@ -89,18 +87,10 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
         if (pManager.PlacementType == PlacementTypes.None)
         {
-            // Draw three guide dots: center (Primary), and two flanking dots along the camera-relative cardinal
-            // axis (Secondary on the NE/E side, Tertiary on SW/W). The flip via `multi` keeps the guides on a
-            // consistent screen-relative axis as the grid rotates.
+            // Three guide dots showing the cursor-quadrant layer aim; see RPDLayerGuide.
             var gridRotation = _transformSystem.GetWorldRotation(gridUid.Value);
             var worldPosition = _mapSystem.LocalToWorld(gridUid.Value, grid, MouseCoords.Position);
-            var direction = (_eyeManager.CurrentEye.Rotation + gridRotation + Math.PI / 2).GetCardinalDir();
-            var multi = (direction == Direction.North || direction == Direction.South) ? -1f : 1f;
-            var offset = gridRotation.RotateVec(new Vector2(multi * GuideOffsetInTileUnits, GuideOffsetInTileUnits));
-
-            args.WorldHandle.DrawCircle(worldPosition, GuideRadius, _guideColor);
-            args.WorldHandle.DrawCircle(worldPosition + offset, GuideRadius, _guideColor);
-            args.WorldHandle.DrawCircle(worldPosition - offset, GuideRadius, _guideColor);
+            RPDLayerGuide.Draw(args.WorldHandle, worldPosition, gridRotation, _eyeManager.CurrentEye.Rotation);
         }
 
         base.Render(args);
@@ -109,7 +99,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
     public override void AlignPlacementMode(ScreenCoordinates mouseScreen)
     {
         _mouseCoordsRaw = ScreenToCursorGrid(mouseScreen);
-        MouseCoords = _mouseCoordsRaw.AlignWithClosestGridTile(SearchBoxSize, _entityManager, _mapManager);
+        MouseCoords = _mouseCoordsRaw.AlignWithClosestGridTile(SearchBoxSize, _entityManager);
 
         var gridId = _transformSystem.GetGrid(MouseCoords);
         if (!_entityManager.TryGetComponent<MapGridComponent>(gridId, out var mapGrid))
@@ -144,23 +134,30 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
         {
             if (newLayer != _currentLayer)
                 _currentLayer = newLayer;
-            UpdateEyeRotation(heldEntity, _eyeManager.CurrentEye.Rotation);
+            SendLayer(heldEntity);
         }
 
         UpdatePlacer(_currentLayer);
     }
 
     /// <summary>
-    /// Sends eye rotation to the server only when it changes. Because <see cref="_currentEyeRotation"/> is an
-    /// instance field initialized to <c>null</c>, the first call in a new placement session always sends — fixing
-    /// the stale-eye-rotation-after-tool-swap window the static version had.
+    /// Sends the cursor-aimed pipe layer while the tool's networked <see cref="RPDComponent.CurrentLayer"/> disagrees
+    /// with it: once on change, then again every <see cref="ResendInterval"/> until the server echoes it back. The
+    /// layer is exactly what the ghost displays, so the commit lands on the layer the operator sees, and a select the
+    /// server dropped heals instead of sticking until the cursor changes quadrant. Frame-update sends are stamped
+    /// after the frame's input commands, so this cannot race a hand swap the way a tick-raised event can.
     /// </summary>
-    private void UpdateEyeRotation(EntityUid heldEntity, Angle eyeRotation)
+    private void SendLayer(EntityUid heldEntity)
     {
-        if (_currentEyeRotation == eyeRotation.Theta)
+        if (!_entityManager.TryGetComponent<RPDComponent>(heldEntity, out var rpd) || rpd.CurrentLayer == _currentLayer)
             return;
-        _currentEyeRotation = (float) eyeRotation.Theta;
-        _entityNetwork.SendSystemNetworkMessage(new RPDEyeRotationEvent(_entityManager.GetNetEntity(heldEntity), _currentEyeRotation));
+
+        if (_lastSentLayer == _currentLayer && _timing.RealTime < _nextResend)
+            return;
+
+        _lastSentLayer = _currentLayer;
+        _nextResend = _timing.RealTime + ResendInterval;
+        _entityNetwork.SendSystemNetworkMessage(new RPDLayerSelectEvent(_entityManager.GetNetEntity(heldEntity), _currentLayer));
     }
 
     private void UpdatePlacer(AtmosPipeLayer layer)
@@ -171,7 +168,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
         if (!_protoManager.TryIndex<EntityPrototype>(pManager.CurrentPermission.EntityType, out var currentProto))
             return;
 
-        if (!currentProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
+        if (!currentProto.TryComp<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
             return;
 
         if (!_pipeLayersSystem.TryGetAlternativePrototype(atmosPipeLayers, layer, out var newProtoId))
@@ -182,7 +179,7 @@ public sealed class AlignRPDAtmosPipeLayers : PlacementMode
 
         pManager.CurrentPermission.EntityType = newProtoId;
 
-        if (!newProto.TryGetComponent<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
+        if (!newProto.TryComp<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
             return;
 
         var textures = new List<IDirectionalTextureProvider>();

@@ -39,6 +39,7 @@
   - type: Sprite
     scale: 0.8, 0.8
     layers:
+      - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
       - map: [ "enum.HumanoidVisualLayers.Chest" ]
       - map: [ "enum.HumanoidVisualLayers.Head" ]
       - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -68,6 +69,7 @@
       - map: [ "eyes" ]
       - map: [ "belt" ]
       - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
       - map: [ "neck" ]
       - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
       - map: [ "enum.HumanoidVisualLayers.Hair" ]

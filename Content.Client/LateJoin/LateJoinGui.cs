@@ -22,14 +22,16 @@ using static Robust.Client.UserInterface.Controls.BoxContainer;
 
 namespace Content.Client.LateJoin
 {
-    public sealed class LateJoinGui : DefaultWindow
+    public sealed partial class LateJoinGui : DefaultWindow
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
-        [Dependency] private readonly IConfigurationManager _configManager = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
-        [Dependency] private readonly JobRequirementsManager _jobRequirements = default!;
-        [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IClientConsoleHost _consoleHost = default!;
+        [Dependency] private IConfigurationManager _configManager = default!;
+        [Dependency] private IEntitySystemManager _entitySystem = default!;
+        [Dependency] private JobRequirementsManager _jobRequirements = default!;
+        [Dependency] private IClientPreferencesManager _preferencesManager = default!;
+
+        private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("latejoin");
 
         public event Action<(NetEntity, string)> SelectedId;
 
@@ -67,7 +69,7 @@ namespace Content.Client.LateJoin
             SelectedId += x =>
             {
                 var (station, jobId) = x;
-                Logger.InfoS("latejoin", $"Late joining as ID: {jobId}");
+                _sawmill.Info($"Late joining as ID: {jobId}");
                 _consoleHost.ExecuteCommand($"joingame {CommandParsing.Escape(jobId)} {station}");
                 Close();
             };
@@ -83,7 +85,7 @@ namespace Content.Client.LateJoin
             _jobCategories.Clear();
 
             if (!_gameTicker.DisallowedLateJoin && _gameTicker.StationNames.Count == 0)
-                Logger.Warning("No stations exist, nothing to display in late-join GUI");
+                Log.Warning("No stations exist, nothing to display in late-join GUI");
 
             foreach (var (id, name) in _gameTicker.StationNames)
             {

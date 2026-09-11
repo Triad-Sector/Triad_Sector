@@ -1,0 +1,142 @@
+# Sourced from FloofStation via HardLight (SFW subset). Original authors retain copyright
+# (see SPDX tags in the upstream files); licensed AGPL-3.0-or-later AND MIT.
+
+- type: flavor
+  id: appleberryfizz
+  flavorType: Complex
+  description: flavor-complex-appleberryfizz
+
+- type: flavor
+  id: cafedecacao
+  flavorType: Complex
+  description: flavor-complex-cafedecacao
+
+- type: flavor
+  id: calicosunrise
+  flavorType: Complex
+  description: flavor-complex-calicosunrise
+
+- type: flavor
+  id: cremedecacao
+  flavorType: Complex
+  description: flavor-complex-cremedecacao
+
+- type: flavor
+  id: darkoasis
+  flavorType: Complex
+  description: flavor-complex-darkoasis
+
+- type: flavor
+  id: deadmansdraught
+  flavorType: Complex
+  description: flavor-complex-deadmansdraught
+
+- type: flavor
+  id: dirtywastelander
+  flavorType: Complex
+  description: flavor-complex-dirtywastelander
+
+- type: flavor
+  id: dragonsblood
+  flavorType: Complex
+  description: flavor-complex-dragonsblood
+
+- type: flavor
+  id: dragonsbreath
+  flavorType: Complex
+  description: flavor-complex-dragonsbreath
+
+- type: flavor
+  id: eminence
+  flavorType: Complex
+  description: flavor-complex-eminence
+
+- type: flavor
+  id: grandnavy
+  flavorType: Complex
+  description: flavor-complex-grandnavy
+
+- type: flavor
+  id: harpysnowfall
+  flavorType: Complex
+  description: flavor-complex-harpysnowfall
+
+- type: flavor
+  id: holyvice
+  flavorType: Complex
+  description: flavor-complex-holyvice
+
+- type: flavor
+  id: jenntonic
+  flavorType: Complex
+  description: flavor-complex-jenntonic
+
+- type: flavor
+  id: koboldkooler
+  flavorType: Complex
+  description: flavor-complex-koboldkooler
+
+- type: flavor
+  id: lemonpopsicle
+  flavorType: Complex
+  description: flavor-complex-lemonpopsicle
+
+- type: flavor
+  id: millermargarita
+  flavorType: Complex
+  description: flavor-complex-millermargarita
+
+- type: flavor
+  id: numberone
+  flavorType: Complex
+  description: flavor-complex-numberone
+
+- type: flavor
+  id: prairieoyster
+  flavorType: Complex
+  description: flavor-complex-prairieoyster
+
+- type: flavor
+  id: prisonwine
+  flavorType: Complex
+  description: flavor-complex-prisonwine
+
+- type: flavor
+  id: salvagersdelight
+  flavorType: Complex
+  description: flavor-complex-salvagersdelight
+
+- type: flavor
+  id: slimesdelight
+  flavorType: Complex
+  description: flavor-complex-slimesdelight
+
+- type: flavor
+  id: slimeshine
+  flavorType: Complex
+  description: flavor-complex-slimeshine
+
+- type: flavor
+  id: syndicate-eggnog
+  flavorType: Complex
+  description: flavor-complex-syndicate-eggnog
+
+- type: flavor
+  id: syndicatesoverseer
+  flavorType: Complex
+  description: flavor-complex-syndicatesoverseer
+
+- type: flavor
+  id: triplecitrus
+  flavorType: Complex
+  description: flavor-complex-triplecitrus
+
+- type: flavor
+  id: voltage
+  flavorType: Complex
+  description: flavor-complex-voltage
+
+- type: flavor
+  id: wakeupjuice
+  flavorType: Complex
+  description: flavor-complex-wakeupjuice

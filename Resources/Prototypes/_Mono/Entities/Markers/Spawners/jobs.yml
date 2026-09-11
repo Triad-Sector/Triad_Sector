@@ -1,27 +1,3 @@
-
-#PDV
-- type: entity
-  id: SpawnPointPDVDenasvar
-  parent: SpawnPointJobBase
-  name: PDV Denasvar
-  components:
-  - type: SpawnPoint
-    job_id: PDVDenasvar
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
-- type: entity
-  id: SpawnPointPDVInfiltrator
-  parent: SpawnPointJobBase
-  name: pdv infiltrator
-  components:
-  - type: SpawnPoint
-    job_id: PDVInfiltrator
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
 - type: entity
   id: SpawnPointPDVBorg
   parent: SpawnPointJobBase
@@ -36,63 +12,6 @@
       state: robot
     - sprite: Mobs/Silicon/chassis.rsi
       state: robot_e
-
-#USSP
-
-- type: entity
-  id: SpawnPointUSSPRifleman
-  parent: SpawnPointJobBase
-  name: USSP Rifleman
-  components:
-  - type: SpawnPoint
-    job_id: USSPRifleman
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
-- type: entity
-  id: SpawnPointUSSPMedic
-  parent: SpawnPointJobBase
-  name: USSP Combat Medic
-  components:
-  - type: SpawnPoint
-    job_id: USSPMedic
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
-- type: entity
-  id: SpawnPointUSSPCorporal
-  parent: SpawnPointJobBase
-  name: USSP Efreitor
-  components:
-  - type: SpawnPoint
-    job_id: USSPCorporal
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
-- type: entity
-  id: SpawnPointUSSPSergeant
-  parent: SpawnPointJobBase
-  name: USSP Serzhant
-  components:
-  - type: SpawnPoint
-    job_id: USSPSergeant
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
-
-- type: entity
-  id: SpawnPointUSSPCommissar
-  parent: SpawnPointJobBase
-  name: USSP Commissar
-  components:
-  - type: SpawnPoint
-    job_id: USSPCommissar
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner-red
 
 #MD
 
@@ -110,18 +29,6 @@
       - state: medic
 
 #TSF
-
-- type: entity
-  id: SpawnPointTsfEngi
-  parent: SpawnPointJobBase
-  name: TSF Engineer
-  components:
-  - type: SpawnPoint
-    job_id: TsfEngineer
-  - type: Sprite
-    sprite: _NF/Markers/jobs.rsi
-    layers:
-    - state: green
 
 - type: entity
   id: SpawnPointTSFBorg

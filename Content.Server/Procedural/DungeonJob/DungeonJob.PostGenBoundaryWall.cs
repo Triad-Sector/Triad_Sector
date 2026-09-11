@@ -17,7 +17,8 @@ public sealed partial class DungeonJob
         if (!data.Tiles.TryGetValue(DungeonDataKey.FallbackTile, out var protoTileDef) ||
             !data.Entities.TryGetValue(DungeonDataKey.Walls, out var wall))
         {
-            _sawmill.Error($"Error finding dungeon data for {nameof(gen)}");
+            // Triad: nameof(gen) logged the literal string "gen" rather than the generator type.
+            _sawmill.Error($"Error finding dungeon data for {gen.GetType().Name}: needs Tiles[FallbackTile] and Entities[Walls]");
             return;
         }
 
@@ -43,7 +44,7 @@ public sealed partial class DungeonJob
             if (dungeon.Entrances.Contains(neighbor))
                 continue;
 
-            if (!_anchorable.TileFree(_grid, neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+            if (!_anchorable.TileFree((_gridUid, _grid), neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
             tiles.Add((neighbor, _tile.GetVariantTile((ContentTileDefinition) tileDef, random)));
@@ -54,20 +55,25 @@ public sealed partial class DungeonJob
             if (dungeon.RoomTiles.Contains(index))
                 continue;
 
-            if (!_anchorable.TileFree(_grid, index, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+            if (!_anchorable.TileFree((_gridUid, _grid), index, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
             tiles.Add((index, _tile.GetVariantTile((ContentTileDefinition)tileDef, random)));
         }
 
-        _maps.SetTiles(_gridUid, _grid, tiles);
+        // Triad: chunk the commit. SetTilesChunked reorders `tiles`, which is fine for the order-independent wall
+        // pass below; re-check the grid survived (the commit yields) before that pass starts touching it.
+        await SetTilesChunked(tiles);
+
+        if (!ValidateResume())
+            return;
 
         // Double iteration coz we bulk set tiles for speed.
         for (var i = 0; i < tiles.Count; i++)
         {
             var index = tiles[i];
 
-            if (!_anchorable.TileFree(_grid, index.Index, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+            if (!_anchorable.TileFree((_gridUid, _grid), index.Index, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
             // If no cardinal neighbors in dungeon then we're a corner.

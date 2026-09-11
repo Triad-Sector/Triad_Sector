@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.PDA.Ringer;
@@ -17,19 +17,22 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server.Store.Systems;
 
 public sealed partial class StoreSystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly ActionUpgradeSystem _actionUpgrade = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private ActionUpgradeSystem _actionUpgrade = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     private void InitializeUi()
     {
@@ -174,6 +177,35 @@ public sealed partial class StoreSystem
             component.BalanceSpent.TryAdd(currency, FixedPoint2.Zero);
 
             component.BalanceSpent[currency] += amount;
+        }
+
+        // Triad: market data. One record per currency, because a listing may be priced in more than
+        // one and each is a movement in its own unit.
+        if (_market.Enabled)
+        {
+            foreach (var (currency, amount) in cost)
+            {
+                var record = new MarketRecord
+                {
+                    Kind = MarketTransactionKind.StoreBuy,
+                    Currency = currency.Id,
+                    Rail = MarketRail.StoreBalance,
+                    Gross = -(long) (amount.Double() * 100),
+                    Net = -(long) (amount.Double() * 100),
+                    ConsoleProto = MetaData(uid).EntityPrototype?.ID,
+                };
+
+                if (_playerMan.TryGetSessionByEntity(buyer, out var buySession))
+                    record.ActorUserId = buySession.UserId;
+
+                if (_market.LinesEnabled && listing.ProductEntity is { } product)
+                {
+                    var unit = (long) (amount.Double() * 100);
+                    record.AddLine(product.Id, MarketDirection.Purchase, 1, unit, unit, MarketPriceSource.Static);
+                }
+
+                _market.Record(record);
+            }
         }
 
         //spawn entity
@@ -363,6 +395,21 @@ public sealed partial class StoreSystem
         foreach (var (currency, value) in component.BalanceSpent)
         {
             component.Balance[currency] += value;
+
+            // Triad: market data. Without this the corpus records the purchase and never the
+            // reversal, and every refunded item reads as demand that did not happen.
+            if (_market.Enabled && value > FixedPoint2.Zero)
+            {
+                _market.Record(new MarketRecord
+                {
+                    Kind = MarketTransactionKind.StoreRefund,
+                    Currency = currency.Id,
+                    Rail = MarketRail.StoreBalance,
+                    Gross = (long) (value.Double() * 100),
+                    Net = (long) (value.Double() * 100),
+                    ConsoleProto = MetaData(uid).EntityPrototype?.ID,
+                });
+            }
         }
 
         // Reset store back to its original state

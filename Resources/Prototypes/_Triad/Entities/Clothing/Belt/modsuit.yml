@@ -1,0 +1,68 @@
+- type: entity
+  parent: [ClothingModsuitBase, BaseClass2AShipContrabandSilent]
+  id: ClothingModsuitOverseer
+  name: TA-6 'Prosper' hardsuit control unit
+  description: The TA-6, a unique belt-fitting modsuit produced by the TFA for their station overseers. Holds things like paper and pens. It also holds sidearms, because the overseer is just *that* badass.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Belt/Modsuits/overseer.rsi
+  - type: Clothing
+    slots:
+    - belt
+    equipSound:
+      path: /Audio/Items/belt_equip.ogg
+  - type: Item
+    size: Ginormous
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/toolbelt_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/toolbelt_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/toolbelt_drop.ogg
+      params:
+        volume: -4
+  - type: SealableClothingControl
+    requiredSlot: BELT
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingModsuitHelmetOverseer
+      gloves: ClothingModsuitGauntletsOverseer
+      outerClothing: ClothingModsuitChestplateOverseer
+      shoes: ClothingModsuitBootsOverseer
+    requiredSlot: BELT
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-sealed
+        shader: unshaded
+  - type: Storage
+    grid:
+    - 0,0,6,3
+    whitelist:
+      tags:
+        - Document
+        - Pen
+        - Folder
+        - Sidearm
+
+- type: entity
+  parent: ClothingModsuitOverseer
+  id: ClothingModsuitOverseerPowerCell
+  suffix: High-Capacity Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+        whitelist:
+          components:
+            - PowerCell

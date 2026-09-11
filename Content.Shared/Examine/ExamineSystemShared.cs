@@ -18,11 +18,11 @@ namespace Content.Shared.Examine
 {
     public abstract partial class ExamineSystemShared : EntitySystem
     {
-        [Dependency] private readonly OccluderSystem _occluder = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-        [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-        [Dependency] protected readonly MobStateSystem MobStateSystem = default!;
+        [Dependency] private OccluderSystem _occluder = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedContainerSystem _containerSystem = default!;
+        [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+        [Dependency] protected MobStateSystem MobStateSystem = default!;
 
         public const float MaxRaycastRange = 100;
 
@@ -175,6 +175,13 @@ namespace Content.Shared.Examine
             return InRangeUnOccluded(origin, other, range, predicate, wrapped, ignoreInsideBlocker, entMan);
         }
 
+        // Triad: this looks like a duplicate of OccluderSystem.InRangeUnoccluded and it is not, so do
+        // not "dedup" it onto the engine one without changing behaviour. Three differences:
+        // a ray hit with no OccluderComponent counts as blocking in the engine and as not blocking
+        // here; the predicate runs inside the raycast here and after it in the engine, over a different
+        // argument type; and the engine's predicate overload has no ignoreInsideBlocker equivalent, so
+        // delegating would drop the default that lets an entity standing inside an occluder still see
+        // out of it. The engine's ignoreTouching overload covers that but takes no predicate.
         public bool InRangeUnOccluded<TState>(MapCoordinates origin, MapCoordinates other, float range,
             TState state, Func<EntityUid, TState, bool> predicate, bool ignoreInsideBlocker = true, IEntityManager? entMan = null)
         {
@@ -211,7 +218,7 @@ namespace Content.Shared.Examine
                     continue;
                 }
 
-                var bBox = o.BoundingBox;
+                var bBox = o.LocalBounds;
                 bBox = bBox.Translated(_transform.GetWorldPosition(result.HitEntity));
 
                 if (bBox.Contains(origin.Position) || bBox.Contains(other.Position))

@@ -1,0 +1,50 @@
+# Base Fills
+- type: entity
+  id: BaseSecurityBeltFill
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: BeltSecurityEntityTable
+
+- type: entity
+  id: BaseMedicalBeltFill
+  abstract: true
+  components:
+  - type: StorageFill
+    contents:
+      - id: Brutepack
+        amount: 2
+      - id: Ointment
+        amount: 1
+      - id: Bloodpack
+        amount: 1
+      - id: Gauze
+      - id: EmergencyMedipen #You never know what people are going to latejoin into
+
+# Fills
+- type: entity
+  parent: [ClothingBeltTdf, BaseSecurityBeltFill]
+  id: ClothingBeltTdfFilled
+  suffix: Filled
+
+- type: entity
+  parent: [ClothingBeltMilitaryWebbingTdf, BaseSecurityBeltFill]
+  id: ClothingBeltMilitaryWebbingTdfFilled
+  suffix: Filled
+
+- type: entity
+  parent: [ClothingBeltMilitaryWebbingMedTdf, BaseMedicalBeltFill]
+  id: ClothingBeltMilitaryWebbingMedTdfFilledMedic
+  suffix: Filled, TDF Medic
+
+- type: entity
+  parent: [ClothingBeltTdf, BaseMedicalBeltFill]
+  id: ClothingBeltTdfFilledMedic
+  suffix: Filled, TDF Medic
+
+- type: entity
+  parent: [ClothingBeltMilitaryWebbingMed, BaseMedicalBeltFill]
+  id: ClothingBeltMilitaryWebbingMedFilledMedic
+  suffix: Filled, TDF Medic

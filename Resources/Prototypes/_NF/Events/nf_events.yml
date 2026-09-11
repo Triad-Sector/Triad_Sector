@@ -66,7 +66,7 @@
     duration: 35
     earliestStart: 50
     minimumPlayers: 2
-    reoccurrenceDelay: 75 # Triad 75 < 50 
+    reoccurrenceDelay: 75 # Triad 75 < 50
   - type: RandomFaxRule
     minFaxes: 2 # Mono
     maxFaxes: 3 # Mono
@@ -79,6 +79,9 @@
     stampState: paper_stamp-syndicate
     preFaxActions:
     - !type:GetRandomDeadDropAction
+    blacklist: # Triad - blacklist
+      components:
+      - StationFaxDeadDropHintExempt
 
 - type: entity
   id: SmugglingFaxBig
@@ -101,3 +104,6 @@
     stampState: paper_stamp-syndicate
     preFaxActions:
     - !type:GetRandomDeadDropAction
+    blacklist: # Triad - blacklist
+      components:
+      - StationFaxDeadDropHintExempt

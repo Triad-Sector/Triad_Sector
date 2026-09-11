@@ -21,13 +21,13 @@ using Content.Server._Mono.Emp; // Mono: EMP Shielding
 
 namespace Content.Server.Emp;
 
-public sealed class EmpSystem : SharedEmpSystem
+public sealed partial class EmpSystem : SharedEmpSystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly PvsOverrideSystem _pvs = default!; // Frontier: EMP Blast PVS
-    [Dependency] private readonly IConfigurationManager _cfg = default!; // Frontier: EMP Blast PVS
-    [Dependency] private readonly ExamineSystem _examine = default!; // Frontier: examine verb
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private PvsOverrideSystem _pvs = default!; // Frontier: EMP Blast PVS
+    [Dependency] private IConfigurationManager _cfg = default!; // Frontier: EMP Blast PVS
+    [Dependency] private ExamineSystem _examine = default!; // Frontier: examine verb
 
     public const string EmpPulseEffectPrototype = "EffectEmpBlast"; // Frontier: EffectEmpPulse
 
@@ -53,10 +53,17 @@ public sealed class EmpSystem : SharedEmpSystem
     /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
     /// <param name="duration">The duration of the EMP effects.</param>
     /// <param name="immuneGrids">Frontier: a list of the grids that should not be affected by the pulse.</param>
-    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration, List<EntityUid>? immuneGrids = null)
+    /// <param name="onlyGrid">Triad: when set, only entities standing on this grid are affected. Lets a
+    /// grid-local source (an artifact firing on its own ship) pulse without reaching a docked neighbour.
+    /// Pass the source's own grid; null keeps the old behaviour of hitting everything in range.</param>
+    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration, List<EntityUid>? immuneGrids = null, EntityUid? onlyGrid = null)
     {
         foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
         {
+            // Triad: grid-local pulse
+            if (onlyGrid != null && Transform(uid).GridUid != onlyGrid)
+                continue;
+
             // Frontier: Block EMP on grid
             var gridUid = Transform(uid).GridUid;
             if (gridUid != null &&

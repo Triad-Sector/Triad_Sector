@@ -1,0 +1,101 @@
+- type: entity
+  parent: ClothingModsuitGauntletsBase
+  id: ClothingModsuitGauntletsOverseer
+  name: prosper modsuit gauntlets
+  description: Gauntlets for easily using a pen. They also come with shock-fists, capable of incapacitating almost any enemy. They will hurt very bad if they strike an enemy while turned off.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Hands/Modsuits/overseer.rsi
+    layers:
+    - state: gauntlets
+    - state: gauntlets-sealed
+      visible: false
+      map: [ "sealed" ]
+    - state: on
+      visible: false
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND-sealed
+  - type: ItemToggle
+    predictable: true
+    soundActivate:
+      collection: sparks
+      params:
+        variation: 0.250
+    soundDeactivate:
+      collection: sparks
+      params:
+        variation: 0.250
+    soundFailToActivate:
+      path: /Audio/Machines/button.ogg
+      params:
+        variation: 0.250
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 0
+    deactivatedSoundOnHit:
+      path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+      params:
+        variation: 0.15
+        volume: -1
+    activatedSoundOnHit:
+      path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+      params:
+        variation: 0.15
+        volume: -1
+  - type: MeleeWeapon
+    attackRate: 0.5
+    damage:
+      types:
+        Blunt: 25
+    soundHit:
+      path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+      params:
+        variation: 0.15
+        volume: -1
+  - type: ToggleClothing
+    action: ActionToggleOverseerGauntlets
+  - type: ComponentToggler
+    components:
+    - type: StaminaDamageOnHit
+      damage: 25
+      overtime: 45
+      sound: /Audio/Weapons/egloves.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {visible: true}
+          False: {visible: false}
+
+- type: entity
+  id: ActionToggleOverseerGauntlets
+  name: Toggle Gauntlets
+  description: Toggles the gauntlets into stun or harm mode.
+  components:
+  - type: InstantAction
+    itemIconStyle: BigItem
+    event: !type:ToggleActionEvent
+
+- type: entity
+  parent: ClothingModsuitGauntletsBase
+  id: ClothingModsuitGauntletsHZDBesieger
+  name: HZD Gauntlets
+  description: After extensive testing and RnD, loss of fingers in explosions have been reduced by 82%!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Hands/Modsuits/HZDBesieger.rsi
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND-sealed
+      gloves-vox:
+      - state: equipped-HAND-sealed-vox

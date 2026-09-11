@@ -100,6 +100,104 @@
     Steel: 235
     Plasteel: 240
 
+# Triad Start
+#Base intermediate ammo high capacity magazines for .45 magnum and potential others
+#Magazines: [TOTAL = 575]
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoFMJIntermediateHighCapacityMagazineRecipe
+  categories:
+  - FMJAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 575
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoPlasteelAPIntermediateHighCapacityMagazineRecipe
+  categories:
+  - PlasteelAPAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 150
+    Plasteel: 425
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoRubberIntermediateHighCapacityMagazineRecipe
+  categories:
+  - MiscAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 125
+    Plastic: 450
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoIncendiaryIntermediateHighCapacityMagazineRecipe
+  categories:
+  - IncenAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 100
+    Plastic: 175
+    Plasma: 300
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoPracticeIntermediateHighCapacityMagazineRecipe
+  categories:
+  - PracticeAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 57
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoEmptyIntermediateHighCapacityMagazineRecipe
+  abstract: true
+  materials:
+    Steel: 57
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoUraniumIntermediateHighCapacityMagazineRecipe
+  categories:
+  - UraniumAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 200
+    UraniumDepleted: 100
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoHPIntermediateHighCapacityMagazineRecipe
+  categories:
+  - HPammo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 575
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoRIPIntermediateHighCapacityMagazineRecipe
+  categories:
+  - RIPammo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 285
+    Plasteel: 290
+# Triad End
+
 #Base intermediate ammo speedloaders for .45 magnum, 5.56, 5.45, 762x39mm and potential others
 #speedloaders:     [TOTAL = 175]
 
@@ -578,6 +676,104 @@
   materials:
     Steel: 85
     Plasteel: 90
+
+# Triad Start
+#Base pistol caliber high capacity magazines ammo for .45 ACP, 9mm and potential others
+#Magazines: [TOTAL = 375]
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoFMJPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - FMJAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 375
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoPlasteelAPPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - PlasteelAPAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 50
+    Plasteel: 225
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoRubberPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - MiscAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 50
+    Plastic: 325
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoIncendiaryPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - IncenAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 75
+    Plastic: 100
+    Plasma: 200
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoPracticePistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - PracticeAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 37
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoEmptyPistolCaliberPistolHighCapacityMagazineRecipe
+  abstract: true
+  materials:
+    Steel: 37
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoUraniumPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - UraniumAmmo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 125
+    UraniumDepleted: 75
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoHPPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - HPammo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 375
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: BaseAmmoRIPPistolCaliberPistolHighCapacityMagazineRecipe
+  categories:
+  - RIPammo
+  - Ammo
+  abstract: true
+  materials:
+    Steel: 185
+    Plasteel: 190
+# Triad End
 
 #Base pistol caliber smg magazines ammo for .45 ACP, 9mm, 5.7mm, 4.6mm
 #Magazines: [TOTAL = 375]

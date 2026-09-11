@@ -15,6 +15,8 @@
 - type: speciesBaseSprites
   id: MobChitinidSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking #DEN
+    TailOversuit: MobHumanoidAnyMarking # DEN
     Head: MobChitinidHead
     Snout: MobHumanoidAnyMarking
     UndergarmentTop: MobHumanoidAnyMarking # Triad - Underwear.
@@ -68,20 +70,20 @@
       required: false
     # Triad changes - Underwear.
     UndergarmentTop:
-      points: 1
+      points: 8
       required: false
     UndergarmentBottom:
-      points: 1
+      points: 8
       required: false
     # End Triad.
     Chest:
-      points: 1
+      points: 8 # Triad - Increased to 8.
       required: false
     Legs:
-      points: 6
+      points: 8 # Triad - Increased to 8.
       required: false
     Arms:
-      points: 6
+      points: 8 # Triad - Increased to 8.
       required: false
 
 - type: humanoidBaseSprite

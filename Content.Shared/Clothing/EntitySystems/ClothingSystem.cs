@@ -12,13 +12,13 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Clothing.EntitySystems;
 
-public abstract class ClothingSystem : EntitySystem
+public abstract partial class ClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedItemSystem _itemSys = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSys = default!;
-    [Dependency] private readonly InventorySystem _invSystem = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly HideLayerClothingSystem _hideLayer = default!;
+    [Dependency] private SharedItemSystem _itemSys = default!;
+    [Dependency] private SharedContainerSystem _containerSys = default!;
+    [Dependency] private InventorySystem _invSystem = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private HideLayerClothingSystem _hideLayer = default!;
 
     public override void Initialize()
     {

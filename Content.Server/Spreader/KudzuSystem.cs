@@ -3,19 +3,19 @@ using Content.Shared.Spreader;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Spreader;
 
-public sealed class KudzuSystem : EntitySystem
+public sealed partial class KudzuSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _robustRandom = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
-    [ValidatePrototypeId<EdgeSpreaderPrototype>]
-    private const string KudzuGroup = "Kudzu";
+    private static readonly ProtoId<EdgeSpreaderPrototype> KudzuGroup = "Kudzu";
 
     /// <inheritdoc/>
     public override void Initialize()

@@ -63,6 +63,16 @@
     - type: GasMiner
       maxExternalPressure: 4500
 
+- type: entity # Triad
+  name: O2 gas miner
+  parent: GasMinerOxygen
+  id: GasMinerOxygenTriad
+  suffix: Triad, 9000kPa
+  components:
+    - type: GasMiner
+      maxExternalPressure: 9000
+      spawnAmount: 6
+
 - type: entity
   name: N2 gas miner
   parent: GasMinerBase
@@ -90,6 +100,16 @@
     - type: GasMiner
       maxExternalPressure: 4500
 
+- type: entity # Triad
+  name: N2 gas miner
+  parent: GasMinerNitrogen
+  id: GasMinerNitrogenTriad
+  suffix: Triad, 9000kPa
+  components:
+    - type: GasMiner
+      maxExternalPressure: 9000
+      spawnAmount: 24
+
 - type: entity
   name: CO2 gas miner
   parent: GasMinerBase
@@ -105,7 +125,8 @@
   components:
     - type: GasMiner
       spawnGas: Plasma
-      maxExternalPressure: 50 # Mono
+      maxExternalPressure: 9000 # Mono, Triad: 50 to 9000
+      spawnAmount: 6 # Triad
 
 - type: entity
   name: tritium gas miner

@@ -1,0 +1,9 @@
+- type: loadout
+  id: ClothingEyesHudSecurityTdf
+  equipment:
+    eyes: ClothingEyesHudSecurityTdf
+
+- type: loadout
+  id: ClothingEyesGlassesSecurityTdf
+  equipment:
+    eyes: ClothingEyesGlassesSecurityTdf

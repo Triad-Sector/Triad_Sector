@@ -10,9 +10,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.UserInterface.Systems.Alerts.Controls
 {
-    public sealed class AlertControl : BaseButton
+    public sealed partial class AlertControl : BaseButton
     {
-        [Dependency] private readonly IEntityManager _entityManager = default!;
+        [Dependency] private IEntityManager _entityManager = default!;
 
         public AlertPrototype Alert { get; }
 
@@ -94,8 +94,9 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
             if (!_entityManager.TryGetComponent<SpriteComponent>(_spriteViewEntity, out var sprite))
                 return;
             var icon = Alert.GetIcon(_severity);
-            if (sprite.LayerMapTryGet(AlertVisualLayers.Base, out var layer))
-                sprite.LayerSetSprite(layer, icon);
+            var spriteSystem = _entityManager.System<SpriteSystem>();
+            if (spriteSystem.LayerMapTryGet((_spriteViewEntity, sprite), AlertVisualLayers.Base, out var layer, false))
+                spriteSystem.LayerSetSprite((_spriteViewEntity, sprite), layer, icon);
         }
 
         protected override void FrameUpdate(FrameEventArgs args)
@@ -122,8 +123,9 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
             if (_entityManager.TryGetComponent<SpriteComponent>(_spriteViewEntity, out var sprite))
             {
                 var icon = Alert.GetIcon(_severity);
-                if (sprite.LayerMapTryGet(AlertVisualLayers.Base, out var layer))
-                    sprite.LayerSetSprite(layer, icon);
+                var spriteSystem = _entityManager.System<SpriteSystem>();
+                if (spriteSystem.LayerMapTryGet((_spriteViewEntity, sprite), AlertVisualLayers.Base, out var layer, false))
+                    spriteSystem.LayerSetSprite((_spriteViewEntity, sprite), layer, icon);
             }
 
             _icon.SetEntity(_spriteViewEntity);

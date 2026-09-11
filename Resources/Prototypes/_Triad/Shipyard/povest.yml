@@ -1,0 +1,42 @@
+# Author Info
+# Sketchii
+# Discord etch_sketch
+# GitHub https://github.com/SketchiiArtist
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Povest
+  parent: BaseVessel
+  name: PDM Povest
+  description: A medium sized library shuttle, some books included.
+  price: 49920
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Triad/Shuttles/povest.yml
+  #guidebookPage: null
+  class:
+  - Civilian
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Povest
+  mapName: 'PDM Povest'
+  mapPath: /Maps/_Triad/Shuttles/povest.yml
+  minPlayers: 0
+  stations:
+    Povest:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Povest CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

@@ -1,0 +1,15 @@
+# Hostile
+- type: entity
+  id: SpawnMobWeaponTurretLaserHostileNF
+  parent: MarkerBase
+  name: laser turret spawner
+  suffix: Hostile
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+      state: base
+  - type: ConditionalSpawner
+    prototypes:
+    - WeaponTurretLaserHostileNF

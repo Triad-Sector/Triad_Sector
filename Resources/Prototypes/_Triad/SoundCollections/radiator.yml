@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: RadiatorCreak
+  files:
+  - /Audio/_Triad/Machines/Radiator/radiator_creak1.ogg
+  - /Audio/_Triad/Machines/Radiator/radiator_creak2.ogg
+  - /Audio/_Triad/Machines/Radiator/radiator_creak3.ogg

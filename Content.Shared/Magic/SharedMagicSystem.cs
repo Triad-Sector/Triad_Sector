@@ -41,28 +41,28 @@ namespace Content.Shared.Magic;
 /// <summary>
 /// Handles learning and using spells (actions)
 /// </summary>
-public abstract class SharedMagicSystem : EntitySystem
+public abstract partial class SharedMagicSystem : EntitySystem
 {
-    [Dependency] private readonly ISerializationManager _seriMan = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedGunSystem _gunSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedDoorSystem _door = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private ISerializationManager _seriMan = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedGunSystem _gunSystem = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedBodySystem _body = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedDoorSystem _door = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private LockSystem _lock = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
 
     public override void Initialize()
     {
@@ -158,7 +158,7 @@ public abstract class SharedMagicSystem : EntitySystem
 
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!_turf.TryGetTileRef(directionPos, out var tileReference))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;
@@ -171,7 +171,7 @@ public abstract class SharedMagicSystem : EntitySystem
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
 
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!_turf.TryGetTileRef(directionPos, out var tileReference))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;
@@ -276,14 +276,14 @@ public abstract class SharedMagicSystem : EntitySystem
         var userVelocity = _physics.GetMapLinearVelocity(ev.Performer);
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
-        var fromMap = fromCoords.ToMap(EntityManager, _transform);
-        var spawnCoords = _mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var fromMap = _transform.ToMapCoordinates(fromCoords);
+        var spawnCoords = _mapSystem.TryFindGridAt(fromMap, out var gridUid, out _)
             ? fromCoords.WithEntityId(gridUid, EntityManager)
-            : new(_mapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
+            : new(_mapSystem.GetMapOrInvalid(fromMap.MapId), fromMap.Position);
 
         var ent = Spawn(ev.Prototype, spawnCoords);
-        var direction = toCoords.ToMapPos(EntityManager, _transform) -
-                        spawnCoords.ToMapPos(EntityManager, _transform);
+        var direction = _transform.ToMapCoordinates(toCoords).Position -
+                        _transform.ToMapCoordinates(spawnCoords).Position;
         _gunSystem.ShootProjectile(ent, direction, userVelocity, ev.Performer, ev.Performer);
     }
     // End Projectile Spells
@@ -343,7 +343,7 @@ public abstract class SharedMagicSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
-        var ent = Spawn(proto, position.SnapToGrid(EntityManager, _mapManager));
+        var ent = Spawn(proto, position.SnapToGrid(EntityManager));
 
         if (lifetime != null)
         {
@@ -422,6 +422,10 @@ public abstract class SharedMagicSystem : EntitySystem
         // Look for doors and lockers, and don't open/unlock them if they're already opened/unlocked.
         foreach (var target in _lookup.GetEntitiesInRange(_transform.GetMapCoordinates(args.Performer, transform), args.Range, flags: LookupFlags.Dynamic | LookupFlags.Static))
         {
+            // Triad: grid fence for grid-local casters, see KnockSpellEvent.OnlyGrid
+            if (args.OnlyGrid != null && Transform(target).GridUid != args.OnlyGrid)
+                continue;
+
             if (!_interaction.InRangeUnobstructed(args.Performer, target, range: 0, collisionMask: CollisionGroup.Opaque))
                 continue;
 

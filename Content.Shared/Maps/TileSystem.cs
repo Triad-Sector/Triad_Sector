@@ -5,6 +5,7 @@ using Content.Shared.Decals;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Utility;
 using Content.Shared.Tiles; // Frontier
 
@@ -13,14 +14,14 @@ namespace Content.Shared.Maps;
 /// <summary>
 ///     Handles server-side tile manipulation like prying/deconstructing tiles.
 /// </summary>
-public sealed class TileSystem : EntitySystem
+public sealed partial class TileSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-    [Dependency] private readonly SharedDecalSystem _decal = default!;
-    [Dependency] private readonly SharedMapSystem _maps = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private IRobustRandom _robustRandom = default!;
+    [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private SharedDecalSystem _decal = default!;
+    [Dependency] private SharedMapSystem _maps = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     /// <summary>
     ///     Returns a weighted pick of a tile variant.
@@ -48,7 +49,7 @@ public sealed class TileSystem : EntitySystem
 
         var sum = variants.Sum();
         var accumulated = 0f;
-        var rand = random.NextFloat() * sum;
+        var rand = random.NextFloatValue() * sum;
 
         for (byte i = 0; i < variants.Length; ++i)
         {
@@ -58,8 +59,18 @@ public sealed class TileSystem : EntitySystem
                 return i;
         }
 
-        // Shouldn't happen
-        throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
+        // Triad: this does happen. Same arithmetic as the weighted picks in SharedRandomExtensions,
+        // whose WeightedPickFallThrough carries the full explanation: Sum() accumulates floats in a
+        // double and casts back while `accumulated` is a running float, and `rand` is a float multiply
+        // that can round up onto the gap between them. This is the highest-volume weighted pick in the
+        // game and it runs inside BiomeSystem's chunk loader, so a throw here took biome loading down
+        // for the rest of the round until that loader was made exception safe. The variant the loop was
+        // reaching for is the last one.
+        // throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
+        if (variants.Length == 0)
+            throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}: no placement variants!");
+
+        return (byte)(variants.Length - 1);
     }
 
     /// <summary>
@@ -162,7 +173,11 @@ public sealed class TileSystem : EntitySystem
 
         // Frontier
         var ev = new FloorTileAttemptEvent();
-        RaiseLocalEvent(mapGrid);
+        // Triad: was RaiseLocalEvent(mapGrid), which broadcasts the grid COMPONENT as an event object
+        // and never raises ev, so ev.Cancelled below was dead. Nothing subscribes today, so nothing
+        // changes yet; it is the artifact tile-pry path's only cancel hook and it should work when
+        // something does. Matches the sibling raise in FloorTileSystem.CanPlaceTile.
+        RaiseLocalEvent(gridUid, ref ev);
 
         if (((TryComp<ProtectedGridComponent>(gridUid, out var prot) && prot.PreventFloorRemoval) || ev.Cancelled) && tileDef.ID == "Plating")
             return false;
@@ -178,10 +193,10 @@ public sealed class TileSystem : EntitySystem
 
         //Actually spawn the relevant tile item at the right position and give it some random offset.
         var tileItem = Spawn(tileDef.ItemDropPrototypeName, coordinates);
-        Transform(tileItem).LocalRotation = _robustRandom.NextDouble() * Math.Tau;
+        _transform.SetLocalRotation(tileItem, _robustRandom.NextDouble() * Math.Tau);
 
         // Destroy any decals on the tile
-        var decals = _decal.GetDecalsInRange(gridUid, coordinates.SnapToGrid(EntityManager, _mapManager).Position, 0.5f);
+        var decals = _decal.GetDecalsInRange(gridUid, coordinates.SnapToGrid(EntityManager).Position, 0.5f);
         foreach (var (id, _) in decals)
         {
             _decal.RemoveDecal(tileRef.GridUid, id);

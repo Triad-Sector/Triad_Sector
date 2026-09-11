@@ -126,7 +126,7 @@
     offset: 0
     prototypes:
       - PosterLegitHereForYourSafety
-      - PosterLegitNanotrasenLogo
+      # - PosterLegitNanotrasenLogo Triad
       - PosterLegitCleanliness
       - PosterLegitHelpOthers
       - PosterLegitBuild
@@ -153,7 +153,7 @@
       - PosterLegit50thAnniversaryVintageReprint
       - PosterLegitFruitBowl
       - PosterLegitPDAAd
-      - PosterLegitEnlist
+      # - PosterLegitEnlist Triad
       - PosterLegitNanomichiAd
       - PosterLegit12_gauge
       - PosterLegitHighClassMartini
@@ -167,7 +167,7 @@
       - PosterLegitVacation
       - PosterLegitPeriodicTable
       - PosterLegitRenault
-      - PosterLegitNTTGC
+      # - PosterLegitNTTGC Triad
       - PosterLegitSafetyMothDelam
       - PosterLegitSafetyMothEpi
       - PosterLegitSafetyMothPiping

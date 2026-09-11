@@ -5,10 +5,10 @@
   playTimeTracker: JobHeadOfSecurityOld # Frontier JobHeadOfSecurity<JobHeadOfSecurityOld
   requirements:
     - !type:RoleTimeRequirement
-      role: JobWarden
+      role: JobWardenOld # Triad: JobWarden<JobWardenOld, the NFSD bailiff that claimed JobWarden was deleted in #504
       time: 10800 #3 hrs
     - !type:RoleTimeRequirement
-      role: JobSecurityOfficer
+      role: JobSecurityOfficerOld # Triad: JobSecurityOfficer<JobSecurityOfficerOld, the NFSD deputy that claimed it was deleted in #504
       time: 36000 #10 hrs
     - !type:DepartmentTimeRequirement
       department: Security

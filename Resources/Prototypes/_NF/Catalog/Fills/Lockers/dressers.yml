@@ -1,7 +1,7 @@
 - type: entity
   id: DresserStationRepresentativeFilled
   parent: Dresser
-  suffix: Filled, Colonial Liaison
+  suffix: Filled, Overseer
   components:
   - type: StorageFill
     contents:
@@ -11,5 +11,5 @@
       - id: ClothingUniformJumpsuitSr
       - id: ClothingUniformJumpskirtSr
       - id: ClothingUniformJumpsuitSecGuard
-      - id: ClothingUniformJumpskirtSecGuard
+      # - id: ClothingUniformJumpskirtSecGuard Triad pending resprite
       - id: ClothingShoesLeather

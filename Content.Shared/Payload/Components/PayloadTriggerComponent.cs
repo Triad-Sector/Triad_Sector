@@ -41,6 +41,19 @@ public sealed partial class PayloadTriggerComponent : Component
     ///     when removing the component, to ensure that removal of this trigger only removes the components that it was
     ///     responsible for adding.
     /// </remarks>
+    // Triad: System.Type has no data definition and no type serializer, so once a trigger is installed
+    // in a case and this set is non-empty, persisting it throws "No data definition found for type
+    // System.RuntimeType" and kills the whole ship-grid save. Runtime-only now.
+    // This never round-tripped anyway: the write threw, and a load raises no container-insert event
+    // (SharedContainerSystem.OnStartupValidation re-flags contents without re-inserting them), so
+    // after a load PayloadSystem.OnEntityInserted has not run and both this set and Active are empty.
+    // The case keeps the components it was granted, since they serialize as its own, but uninstalling
+    // the trigger will not remove them and direct triggers no longer forward to the case. Both are
+    // pre-existing: Active was never persisted either. Not changed here.
+    /*
     [DataField("grantedComponents", serverOnly: true)]
+    */
+    [ViewVariables]
+    // End Triad
     public HashSet<Type> GrantedComponents = new();
 }

@@ -1,0 +1,7 @@
+- type: entity
+  parent: NFHolopadPoiBase
+  id: HolopadTdfCommand
+  suffix: TDF Bridge, POI
+  components:
+  - type: Label
+    currentLabel: holopad-general-tdf-command

@@ -82,19 +82,19 @@
 
 # TSF Heavy Weapons
 
-- type: latheRecipe
-  parent: BaseWeaponRecipeLong
-  id: WeaponLMGGrizzlyTSF
-  result: WeaponLMGGrizzly
-  categories:
-  - GPMGs
-  - MGs
-  - Ballistic
-  - Weapons
-  materials:
-    Steel: 3500
-    Plasteel: 2000
-    Plastic: 1200
+#- type: latheRecipe
+#  parent: BaseWeaponRecipeLong
+#  id: WeaponLMGGrizzlyTSF
+#  result: WeaponLMGGrizzly
+#  categories:
+#  - GPMGs
+#  - MGs
+#  - Ballistic
+#  - Weapons
+#  materials:
+#    Steel: 3500
+#    Plasteel: 2000
+#    Plastic: 1200
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
@@ -196,12 +196,12 @@
   - MGs
   - Energy
   - Weapons
-  materials:
-    Steel: 500
-    Plasteel: 2500
-    Silver: 500
-    Gold: 500
-    Plasma: 1000
+  materials: # Triad: scaled up from a 1,040-credit bill to match the 5,000-credit sale price
+    Steel: 2500
+    Plasteel: 12000
+    Silver: 2500
+    Gold: 2500
+    Plasma: 5000
 
 # PDV energy
 
@@ -356,7 +356,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRifleSVSUSSP
+  id: WeaponRifleSVS
   result: WeaponRifleSVS
   categories:
   - Rifles
@@ -369,7 +369,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponSniperMosinUSSP
+  id: WeaponSniperMosin
   result: WeaponSniperMosin
   categories:
   - Rifles
@@ -383,7 +383,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponSubMachineGunAK220USSP
+  id: WeaponSubMachineGunAK220
   result: WeaponSubMachineGunAK220
   categories:
   - SMGs
@@ -397,7 +397,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRifleAK502USSP
+  id: WeaponRifleAK502
   result: WeaponRifleAK502
   categories:
   - Rifles
@@ -411,7 +411,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRifleAK410USSP
+  id: WeaponRifleAK410
   result: WeaponRifleAK410
   categories:
   - Rifles
@@ -440,7 +440,7 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRevolverMatebaUSSP
+  id: WeaponRevolverMateba
   result: WeaponRevolverMateba
   categories:
   - Sidearms
@@ -454,17 +454,17 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponShotgunBigLeadyUSSP
+  id: WeaponShotgunBigLeady
   result: WeaponShotgunBigLeady
   categories:
   - Shotguns
   - Ballistic
   - Weapons
-  materials:
-    Steel: 2500
-    Plasteel: 2000
-    Plastic: 1500
-    Wood: 1000
+  materials: # Triad: scaled up from a 906-credit bill to match the 5,000-credit sale price
+    Steel: 14000
+    Plasteel: 11000
+    Plastic: 8500
+    Wood: 6000
 
 #Blueprints
 - type: latheRecipe

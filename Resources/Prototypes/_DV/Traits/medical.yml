@@ -1,0 +1,119 @@
+## If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+
+- type: trait
+  id: Narcolepsy
+  name: trait-narcolepsy-name
+  description: trait-narcolepsy-desc
+  category: Medical
+  cost: 0 # Triad: medical conditions are RP, not a point economy.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Narcolepsy
+      timeBetweenIncidents: 300, 600
+      durationOfIncident: 10, 30
+
+- type: trait
+  id: LightweightDrunk
+  name: trait-lightweight-name
+  description: trait-lightweight-desc
+  category: Medical
+  cost: 0 # Triad: medical conditions are RP, not a point economy.
+  conditions:
+  # Triad: opposite of any alcohol-tolerance trait. AlcoholTolerance already excludes Lightweight from its side;
+  # mirror it here, and add LiquorLifeline (its dwarven liver confers the same tolerance).
+  - !type:HasTraitCondition
+    trait: AlcoholTolerance
+    invert: true
+  - !type:HasTraitCondition
+    trait: LiquorLifeline
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LightweightDrunk
+      boozeStrengthMultiplier: 2
+
+- type: trait
+  id: Unrevivable
+  name: trait-unrevivable-name
+  description: trait-unrevivable-desc
+  category: Medical
+  cost: 0 # Triad: medical conditions are RP, not a point economy.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Unrevivable
+
+- type: trait
+  id: Uncloneable
+  name: trait-uncloneable-name
+  description: trait-uncloneable-desc
+  category: Medical
+  cost: 0 # Triad: medical conditions are RP, not a point economy.
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Uncloneable
+
+# Mono: Unimplemented trait
+# - type: trait
+#   id: Unborgable
+#   name: trait-unborgable-name
+#   description: trait-unborgable-desc
+#   category: Medical
+#   cost: -1
+#   effects:
+#   - !type:AddCompsEffect
+#     components:
+#     - type: Unborgable
+
+- type: trait
+  id: Redshirt
+  name: trait-redshirt-name
+  description: trait-redshirt-desc
+  category: Physical
+  cost: -8
+  conditions:
+  - !type:IsSpeciesCondition # Mono: no silicon redshirts
+    species: IPC
+    invert: true
+  - !type:HasTraitCondition
+    trait: WillToLive
+    invert: true
+  # Triad: WillToDie also adds the WillToDie component; taking both silently drops one.
+  - !type:HasTraitCondition
+    trait: WillToDie
+    invert: true
+  # Triad: Tenacity (+5 Crit) would push Crit (105) above Redshirt's lowered Dead (100), inverting the
+  # crit/dead ordering. GlassJaw/Osteogenesis only LOWER crit, so they remain compatible with Redshirt.
+  - !type:HasTraitCondition
+    trait: Tenacity
+    invert: true
+  # Triad: restore the BorgChassis exclusion the Real Traits port dropped (was a component blacklist).
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects: # Mono: Add a custom component instead of overriding MobThresholds manually
+  - !type:AddCompsEffect
+    components:
+    - type: WillToDie
+      deadDecrease: 100
+
+# Mono: Unimplemented trait
+# - type: trait
+#   id: Synthetic
+#   name: trait-synth-name
+#   description: trait-synth-desc
+#   category: Medical
+#   conditions:
+#   - !type:HasCompCondition
+#     component: Silicon
+#     invert: true
+#   - !type:IsSpeciesCondition
+#     species: IPC
+#     invert: true
+#   effects:
+#   - !type:AddCompsEffect
+#     components:
+#     - type: Synth

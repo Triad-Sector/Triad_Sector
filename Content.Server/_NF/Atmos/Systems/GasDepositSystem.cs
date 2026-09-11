@@ -24,23 +24,24 @@ using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Server.Construction;
 
 namespace Content.Server._NF.Atmos.Systems;
 
 /// <summary>
 /// System for handling gas deposits and machines for extracting from gas deposits
 /// </summary>
-public sealed class GasDepositSystem : SharedGasDepositSystem
+public sealed partial class GasDepositSystem : SharedGasDepositSystem
 {
-    [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private AmbientSoundSystem _ambientSound = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private NodeContainerSystem _nodeContainer = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     /// <summary>
     /// The fraction that a deposit's volume should be depleted to before it is considered "low volume".
@@ -52,6 +53,7 @@ public sealed class GasDepositSystem : SharedGasDepositSystem
     /// </summary>
     private const double DefaultMaxSalePointDistance = 8.0;
 
+
     /// <inheritdoc />
     public override void Initialize()
     {
@@ -62,8 +64,9 @@ public sealed class GasDepositSystem : SharedGasDepositSystem
         SubscribeLocalEvent<GasDepositExtractorComponent, MapInitEvent>(OnExtractorMapInit);
         SubscribeLocalEvent<GasDepositExtractorComponent, BoundUIOpenedEvent>(OnExtractorUiOpened);
         SubscribeLocalEvent<GasDepositExtractorComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<GasDepositExtractorComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<GasDepositExtractorComponent, AtmosDeviceUpdateEvent>(OnExtractorUpdate);
+        SubscribeLocalEvent<GasDepositExtractorComponent, RefreshPartsEvent>(OnExtractorRefreshParts);
+        SubscribeLocalEvent<GasDepositExtractorComponent, UpgradeExamineEvent>(OnExtractorUpgradeExamine);
 
         SubscribeLocalEvent<GasDepositExtractorComponent, GasPressurePumpChangeOutputPressureMessage>(
             OnOutputPressureChangeMessage);
@@ -89,12 +92,6 @@ public sealed class GasDepositSystem : SharedGasDepositSystem
     private void OnPowerChanged(Entity<GasDepositExtractorComponent> ent, ref PowerChangedEvent args)
     {
         UpdateAppearance(ent);
-    }
-
-    public void OnAnchorChanged(Entity<GasDepositExtractorComponent> ent, ref AnchorStateChangedEvent args)
-    {
-        if (!args.Anchored)
-            ent.Comp.DepositEntity = null;
     }
 
     public void OnRandomDepositMapInit(Entity<RandomGasDepositComponent> ent, ref MapInitEvent args)
@@ -191,6 +188,24 @@ public sealed class GasDepositSystem : SharedGasDepositSystem
             SetDepositState(ent, GasDepositExtractorState.Low);
         else
             SetDepositState(ent, GasDepositExtractorState.On);
+    }
+
+    private void OnExtractorRefreshParts(Entity<GasDepositExtractorComponent> ent,
+        ref RefreshPartsEvent args)
+    {
+        float componentRate;
+        if (!args.PartRatings.TryGetValue(ent.Comp.ExtractionRateMachinePart, out componentRate))
+            componentRate = 1.0f;
+        componentRate = MathF.Max(componentRate, 1.0f) - 1.0f;
+
+        ent.Comp.ExtractionRate = ent.Comp.BaseExtractionRate * MathF.Pow(ent.Comp.ExtractionRateMultiplier, componentRate);
+    }
+
+    private void OnExtractorUpgradeExamine(Entity<GasDepositExtractorComponent> ent,
+        ref UpgradeExamineEvent args)
+    {
+        if (ent.Comp.BaseExtractionRate > 0)
+            args.AddPercentageUpgrade("gas-deposit-extraction-rate", ent.Comp.ExtractionRate / ent.Comp.BaseExtractionRate);
     }
 
     private void OnToggleStatusMessage(Entity<GasDepositExtractorComponent> ent,

@@ -22,11 +22,11 @@ namespace Content.Server._NF.Contraband.Systems;
 /// </summary>
 public sealed partial class ContrabandTurnInSystem : SharedContrabandTurnInSystem
 {
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
     private EntityQuery<MobStateComponent> _mobQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -153,10 +153,10 @@ public sealed partial class ContrabandTurnInSystem : SharedContrabandTurnInSyste
 
                 if (TryComp<ContrabandComponent>(ent, out var comp))
                 {
-                    if (!comp.TurnInValues.ContainsKey(console.RewardType))
+                    if (!comp.TurnInValues.ContainsKey(console.RewardType.Id))
                         continue;
 
-                    var value = comp.TurnInValues[console.RewardType];
+                    var value = comp.TurnInValues[console.RewardType.Id];
                     // Mono Begin - Accounting for stacks of contraband
                     if (TryComp<StackComponent>(ent, out var stackcomp))
                         value *= stackcomp.Count;

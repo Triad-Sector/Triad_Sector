@@ -27,3 +27,5 @@ two-way-lever-cant = can't push the lever that way!
 recycler-count-items = Recycled {$items} objects.
 
 machine-already-in-use = {CAPITALIZE(THE($machine))} is already in use.
+
+message-crit-damage-crew-monitor = {$user} has taken serious damage. Life signs may be critical.

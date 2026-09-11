@@ -1,0 +1,72 @@
+- type: entity
+  abstract: true
+  id: BaseHolosignUntimed
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: PointLight
+    enabled: true
+    radius: 3
+    color: "#ffff00" # Yellow
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Clickable
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 30
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseHolosignUntimed
+  id: HolosignPrivacy
+  name: private area holobarrier
+  description: The area beyond has been designated as private!
+  components:
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Sprite
+    sprite: _Triad/Structure/Holo/privacy.rsi
+    drawdepth: Overdoors
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Holobarrier
+  - type: PointLight
+    enabled: true
+    radius: 3
+    color: "#af5049" # light red
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: Occluder
+  - type: IgnoreDoorCollision
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_DEN/Effects/holofan_sound_looped.ogg
+  - type: WallMount # So you can interact with it on walls and doors
+    arc: 360

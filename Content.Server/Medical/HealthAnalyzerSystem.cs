@@ -28,18 +28,18 @@ using System.Linq;
 
 namespace Content.Server.Medical;
 
-public sealed class HealthAnalyzerSystem : EntitySystem
+public sealed partial class HealthAnalyzerSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PowerCellSystem _cell = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly TransformSystem _transformSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PowerCellSystem _cell = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedBodySystem _bodySystem = default!; // Shitmed Change
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private TransformSystem _transformSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
 
     public override void Initialize()
     {
@@ -91,11 +91,12 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             var patientCoordinates = Transform(patient).Coordinates;
             if (!_transformSystem.InRange(patientCoordinates, transform.Coordinates, component.MaxScanRange))
             {
-                //Range too far, disable updates
-                StopAnalyzingEntity((uid, component), patient);
+                //Range too far, disable updates until they are back in range
+                PauseAnalyzingEntity((uid, component), patient, component.CurrentBodyPart); // Shitmed Change
                 continue;
             }
 
+            component.IsAnalyzerActive = true;
             UpdateScannedUser(uid, patient, true, component.CurrentBodyPart); // Shitmed Change
         }
     }
@@ -227,6 +228,21 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         }
     }
     // Shitmed Change End
+
+    /// <summary>
+    /// If the scanner is active, sends one last update and sets it to inactive.
+    /// </summary>
+    /// <param name="healthAnalyzer">The health analyzer that's receiving the updates</param>
+    /// <param name="target">The entity to analyze</param>
+    /// <param name="part">Shitmed - The specific body part that is being analyzed</param>
+    private void PauseAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target, EntityUid? part = null) // Shitmed Change
+    {
+        if (!healthAnalyzer.Comp.IsAnalyzerActive)
+            return;
+
+        UpdateScannedUser(healthAnalyzer, target, false, part); // Shitmed Change
+        healthAnalyzer.Comp.IsAnalyzerActive = false;
+    }
 
     /// <summary>
     /// Send an update for the target to the healthAnalyzer

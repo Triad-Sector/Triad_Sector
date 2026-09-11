@@ -2,7 +2,7 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Stacks;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._NF.Bank.Components;
 
@@ -10,8 +10,8 @@ namespace Content.Shared._NF.Bank.Components;
 
 public sealed partial class StationBankATMComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), DataField("cashType", customTypeSerializer:typeof(PrototypeIdSerializer<StackPrototype>))]
-    public string CashType = "Credit";
+    [ViewVariables(VVAccess.ReadWrite), DataField("cashType")]
+    public ProtoId<StackPrototype> CashType = "Credit";
 
     public static string CashSlotId = "station-bank-ATM-cashSlot";
 
@@ -34,7 +34,8 @@ public enum SectorBankAccount : byte
 {
     Invalid, // No assigned account.
     Frontier,
-    Nfsd,
+    TDF,
     Medical,
     BlackMarket,
+    Edison, // Triad: coyote-frontier's power plant account; funded by PowerTransmission energy sales
 }

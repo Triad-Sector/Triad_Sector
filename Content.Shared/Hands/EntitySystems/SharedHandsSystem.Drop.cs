@@ -11,7 +11,7 @@ namespace Content.Shared.Hands.EntitySystems;
 
 public abstract partial class SharedHandsSystem
 {
-    [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
     private void InitializeDrop()
     {
         SubscribeLocalEvent<HandsComponent, EntRemovedFromContainerMessage>(HandleEntityRemoved);

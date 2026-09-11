@@ -2596,8 +2596,9 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 2
-        - ReagentId: Artifexium
-          Quantity: 1
+        # Triad: artifexium removed
+        #- ReagentId: Artifexium
+        #  Quantity: 1
   - type: Tag
     tags:
     - Fruit

@@ -9,12 +9,15 @@ namespace Content.Shared.DoAfter;
 
 public abstract partial class SharedDoAfterSystem : EntitySystem
 {
-    [Dependency] private readonly IDynamicTypeFactory _factory = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private IDynamicTypeFactory _factory = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     private DoAfter[] _doAfters = Array.Empty<DoAfter>();
+
+    // Triad: snapshot buffer for the active-DoAfter query, reused across ticks to avoid per-tick allocation.
+    private readonly List<(EntityUid Uid, ActiveDoAfterComponent Active, DoAfterComponent Comp)> _active = new();
 
     public override void Update(float frameTime)
     {
@@ -24,9 +27,20 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
         var xformQuery = GetEntityQuery<TransformComponent>();
         var handsQuery = GetEntityQuery<HandsComponent>();
 
+        // Triad: snapshot the query before processing. Completing or cancelling a DoAfter raises its
+        // event, and a handler that starts a new DoAfter calls EnsureComp<ActiveDoAfterComponent>, which
+        // mutates the archetype set this query walks. Iterating the live enumerator then threw
+        // "Collection was modified" and aborted the entity-system tick. Snapshot + Deleted guard fixes it.
+        _active.Clear();
         var enumerator = EntityQueryEnumerator<ActiveDoAfterComponent, DoAfterComponent>();
         while (enumerator.MoveNext(out var uid, out var active, out var comp))
+            _active.Add((uid, active, comp));
+
+        foreach (var (uid, active, comp) in _active)
         {
+            if (Deleted(uid))
+                continue;
+
             Update(uid, active, comp, time, xformQuery, handsQuery);
         }
     }

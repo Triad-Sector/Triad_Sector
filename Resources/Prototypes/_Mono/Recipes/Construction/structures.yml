@@ -5,7 +5,7 @@
   startNode: start
   targetNode: wallSolidDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/solid_diagonal.rsi
     state: state0
@@ -23,7 +23,7 @@
   startNode: start
   targetNode: wallReinforcedDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/reinforced_diagonal.rsi
     state: state0
@@ -41,7 +41,7 @@
   startNode: start
   targetNode: wallPlastitaniumDiagonal
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
@@ -59,7 +59,7 @@
   startNode: start
   targetNode: plastitaniumWall
   category: construction-category-structures
-  description: Keeps the air in and the greytide out.
+  description: Keeps the air in and space out. # Triad
   icon:
     sprite: /Textures/Structures/Walls/plastitanium.rsi
     state: full
@@ -117,6 +117,41 @@
   icon:
     sprite: _NF/Structures/Piping/Atmospherics/gaslock.rsi
     state: closed
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+  #Airlocks
+- type: construction
+  name: heavy-duty airlock
+  id: AirlockHeavy
+  graph: HeavyAirlock
+  startNode: start
+  targetNode: airlock
+  category: construction-category-structures
+  description: It opens, it closes, and maybe crushes you.
+  icon:
+    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/standard.rsi
+    state: assembly
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: heavy-duty glass airlock
+  id: AirlockHeavyGlass
+  graph: HeavyAirlock
+  startNode: start
+  targetNode: glassAirlock
+  category: construction-category-structures
+  description: It opens, it closes, and maybe crushes you.
+  icon:
+    sprite: _Mono/Structures/Doors/HeavyAirlocks/Glass/standard.rsi
+    state: assembly
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false

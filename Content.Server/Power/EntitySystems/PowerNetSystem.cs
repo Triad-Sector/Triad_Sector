@@ -19,13 +19,13 @@ namespace Content.Server.Power.EntitySystems
     ///     Manages power networks, power state, and all power components.
     /// </summary>
     [UsedImplicitly]
-    public sealed class PowerNetSystem : SharedPowerNetSystem
+    public sealed partial class PowerNetSystem : SharedPowerNetSystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly PowerNetConnectorSystem _powerNetConnector = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IParallelManager _parMan = default!;
-        [Dependency] private readonly BatterySystem _battery = default!;
+        [Dependency] private AppearanceSystem _appearance = default!;
+        [Dependency] private PowerNetConnectorSystem _powerNetConnector = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private IParallelManager _parMan = default!;
+        [Dependency] private BatterySystem _battery = default!;
 
         private readonly PowerState _powerState = new();
         private readonly HashSet<PowerNet> _powerNetReconnectQueue = new();
@@ -334,9 +334,11 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
             while (enumerator.MoveNext(out var uid, out var apcReceiver))
             {
+                // (#43879) zero-load devices must not report as powered
                 var powered = !apcReceiver.PowerDisabled
                               && (!apcReceiver.NeedsPower
-                                  || MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
+                                  || apcReceiver.Load > 0
+                                  && MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
                                       apcReceiver.Load));
 
                 MetaDataComponent? metadata = null;

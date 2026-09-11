@@ -1,0 +1,110 @@
+  #Blast door
+- type: entity
+  id: BlastDoorIndestructibleTDF
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible, TDF, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  id: BlastDoorIndestructibleSyndicate
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible, Syndicate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]
+
+- type: entity
+  id: BlastDoorIndestructibleSD
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible, SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  id: BlastDoorIndestructibleTIC
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible, TIC, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]
+
+#Shutters
+- type: entity
+  id: ShutterIndestructibleTDF
+  parent: ShutterNormalIndestructible
+  suffix: Indestructible, TDF, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  id: ShutterIndestructibleSyndicate
+  parent: ShutterNormalIndestructible
+  suffix: Indestructible, Syndicate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]
+      
+- type: entity
+  id: ShutterIndestructibleSD
+  parent: ShutterNormalIndestructible
+  suffix: Indestructible, SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  id: ShutterIndestructibleTIC
+  parent: ShutterNormalIndestructible
+  suffix: Indestructible, TIC, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]
+
+#Window shutters
+- type: entity
+  id: ShutterWindowIndestructibleTDF
+  parent: ShutterWindowIndestructible
+  suffix: Indestructible, TDF, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  id: ShutterWindowIndestructibleSyndicate
+  parent: ShutterWindowIndestructible
+  suffix: Indestructible, Syndicate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]
+
+- type: entity
+  id: ShutterWindowIndestructibleSD
+  parent: ShutterWindowIndestructible
+  suffix: Indestructible, SD, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  id: ShutterWindowIndestructibleTIC
+  parent: ShutterWindowIndestructible
+  suffix: Indestructible, TIC, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]

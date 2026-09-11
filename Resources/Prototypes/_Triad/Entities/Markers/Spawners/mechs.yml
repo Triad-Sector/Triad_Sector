@@ -1,0 +1,13 @@
+- type: entity
+  name: Emu PLU Spawner
+  id: SpawnMechEmu
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _NF/Objects/Specific/Mech/mecha.rsi
+        state: emu
+  - type: ConditionalSpawner
+    prototypes:
+      - MechEmuCargo

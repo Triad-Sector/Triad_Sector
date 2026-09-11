@@ -115,20 +115,6 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformUSSP
-  name: USSP uniform
-  description: Standard fatigues of the USSP military.
-  components:
-  - type: Sprite
-    sprite: _Mono/Clothing/Uniforms/Jumpsuit/ussp.rsi
-  - type: Clothing
-    sprite: _Mono/Clothing/Uniforms/Jumpsuit/ussp.rsi
-  - type: SuitSensor
-    randomMode: false
-    mode: SensorVitals
-
-- type: entity
-  parent: ClothingUniformBase
   id: ClothingUniformRogue
   name: rogue field suit
   description: A matte black tactical outfit worn by independent agents working on contracts. The red armband marks affiliation—loose as it may be.
@@ -339,8 +325,9 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitViperGroupUniform
-  name: viper group uniform
-  description: A uniform bearing the colours of the vipers.
+  name: elite syndicate uniform # Triad - name
+  description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
+  categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice
     price: 700
@@ -356,8 +343,9 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitViperGroupTurtleneck
-  name: viper group turtleneck
-  description: A turtleneck bearing the colours of the vipers.
+  name: elite syndicate turtleneck # Triad - name
+  description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
+  categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
   - type: StaticPrice
     price: 700

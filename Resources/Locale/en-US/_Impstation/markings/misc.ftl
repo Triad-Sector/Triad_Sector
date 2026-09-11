@@ -130,7 +130,9 @@ marking-fishbowl = Fishbowl
 marking-fishbowl-fishbowl1 = Fish
 # Frontier: bubbles < Bubbles
 marking-fishbowl-fishbowl2 = Fish Bubbles
-marking-FadingStars = Fading Starlight
+# Triad Start - Changed name to reflect it better
+marking-FadingStars = Fading Starlight (Glowing)
+# End Triad
 marking-FadingStars-fadingstars1 = Brightest
 marking-FadingStars-fadingstars2 = Middling
 marking-FadingStars-fadingstars3 = Darkest
@@ -209,6 +211,8 @@ marking-VoxBelly = Belly
 marking-VoxBelly-voxbelly = Belly
 marking-VoxTailBalled = Thrasher
 marking-VoxTailBalled-voxtailballed = Thrasher
+# Triad: missing key referenced by misc.yml (VoxTailBalled also includes vox_parts.rsi tail state)
+marking-VoxTailBalled-tail = Base Tail
 marking-VoxTailSplit = Twinned
 marking-VoxTailSplit-voxtailsplit = Twinned
 

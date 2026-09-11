@@ -1,0 +1,80 @@
+- type: loadoutGroup
+  id: TdfChiefEnforcerJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfChiefEnforcer
+  - ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  fallbacks:
+  - ClothingUniformJumpsuitTdfChiefEnforcer
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfChiefPda
+  fallbacks:
+  - TdfChiefPda
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerFace
+  name: loadout-group-contractor-face
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - ClothingMaskGasSwatTdf
+  subgroups:
+  - TdfFace
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatBeretTdfChiefEnforcer
+  - TdfHelmet
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 1
+  loadouts:
+  - ClothingOuterCoatTdfChiefEnforcerTrench
+  - ClothingOuterWinterTdfChiefEnforcer
+  fallbacks:
+  - ClothingOuterCoatTdfChiefEnforcerTrench
+  subgroups:
+  - TdfOuterClothing
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerFirearm
+  name: loadout-group-weapon
+  minLimit: 1
+  loadouts:
+  - FactionFrostLoadout
+  - FactionBanditLoadout
+  subgroups:
+  - TdfFirearm
+  fallbacks:
+  - FactionFrostLoadout
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerMag
+  name: loadout-group-magazine
+  minLimit: 1
+  loadouts:
+  - Faction8x65mmAmmoLoadout # Bandit
+  subgroups:
+  - TdfMag
+
+- type: loadoutGroup
+  id: TdfChiefEnforcerNeck
+  name: loadout-group-contractor-neck
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingNeckIFFOrange
+  - ContractorClothingNeckIFFNeutral
+  - ClothingNeckMantleTdfChiefEnforcer
+  - ClothingNeckCloakTdfChiefEnforcer

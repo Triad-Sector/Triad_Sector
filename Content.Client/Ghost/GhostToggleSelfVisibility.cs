@@ -25,6 +25,6 @@ public sealed class GhostToggleSelfVisibility : IConsoleCommand
         if (!entityManager.TryGetComponent(attachedEntity, out SpriteComponent? spriteComponent))
             return;
 
-        spriteComponent.Visible = !spriteComponent.Visible;
+        entityManager.System<SpriteSystem>().SetVisible((attachedEntity.Value, spriteComponent), !spriteComponent.Visible);
     }
 }

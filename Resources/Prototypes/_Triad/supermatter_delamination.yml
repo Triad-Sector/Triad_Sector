@@ -1,0 +1,84 @@
+# Delamination payloads for the supermatter crystal.
+# Started/spawned from Content.Server/_EE/Systems/SupermatterSystem.Processing.cs.
+
+# Everyone on the crystal's map hears things for a while after it goes.
+- type: entity
+  id: SupermatterHallucination
+  parent: BaseGameRule
+  components:
+  - type: SupermatterHallucinationRule
+    duration: 300
+    minTimeBetweenIncidents: 0.1
+    maxTimeBetweenIncidents: 300
+    maxSoundDistance: 7
+    sounds:
+      collection: Paracusia
+
+# Resonance cascade payload. Parented off BaseKudzu rather than Kudzu so it doesn't inherit the
+# edible/flammable/weedkiller surface - prototypes can add components but never remove them.
+# Keeps the Kudzu edge-spreader group on purpose: KudzuSystem.OnKudzuSpread asserts on it in debug.
+- type: entity
+  id: SupermatterKudzu
+  parent: BaseKudzu
+  name: crystalline growth
+  description: Jagged shards of resonating crystal, still spreading. It hums against your teeth.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/kudzu.rsi
+    state: kudzu_11
+    drawdepth: Overdoors
+    color: "#ffe838"
+  - type: KudzuVisuals
+  - type: Clickable
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Weapons/slash.ogg"
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - MidImpassable
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Kudzu
+    growthTickChance: 0.4
+    spreadChance: 0.5
+  - type: DamageContacts
+    damage:
+      types:
+        Piercing: 2
+        Radiation: 1
+  - type: RadiationSource
+    intensity: 0.4
+    slope: 0.8
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.3
+    sprintSpeedModifier: 0.3
+    ignoreWhitelist:
+      components:
+      - IgnoreKudzu
+  - type: PointLight
+    enabled: true
+    radius: 2
+    energy: 1
+    color: "#ffe838"
+  - type: AtmosExposed

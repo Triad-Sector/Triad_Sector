@@ -4,7 +4,8 @@ flavor-complex-nuggie = like "chicken"
 flavor-complex-enthralling = enthralling
 flavor-complex-sublime = sublime
 flavor-complex-holy = heavenly
-flavor-base-seeds = seeds
+# Frontier: add "like"
+flavor-base-seeds = like seeds
 flavor-complex-vanilla = like vanilla
 flavor-complex-soju = like bold, alcoholic rice
 flavor-complex-orangecreamcicle = like creamy, alcoholic orange juice
@@ -25,3 +26,14 @@ flavor-complex-greengrass = like a holiday in the sun
 flavor-complex-daiquiri = fashionable
 flavor-complex-arsonistsbrew = like ash and flame
 flavor-complex-dulleavene = ominous
+
+# Delta-V cocktails ported via HardLight
+flavor-complex-old-fashioned = like bittersweet whiskey
+flavor-complex-mnatsa-collins = like sweet and sour brandy
+flavor-complex-affogato = like boozy ice cream
+flavor-complex-five-oclock = like hard tea
+flavor-complex-lemon-lime-bitters = like an Aussie dessert
+flavor-complex-healthcodeviolation = ominous
+flavor-complex-mothamphetamine-deltav = like there are buzzing wings in your mouth
+flavor-complex-double-ice-cream = like ice cream, twice
+flavor-complex-mliko = like a prank

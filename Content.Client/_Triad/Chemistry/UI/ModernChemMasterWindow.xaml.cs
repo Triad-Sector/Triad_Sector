@@ -23,8 +23,8 @@ namespace Content.Client._Triad.Chemistry.UI;
 [GenerateTypedNameReferences]
 public sealed partial class ModernChemMasterWindow : FancyWindow
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
     private readonly SpriteSystem _sprite;
     public event Action<BaseButton.ButtonEventArgs, ReagentButton>? OnReagentButtonPressed;
     public readonly Button[] PillTypeButtons;
@@ -573,7 +573,7 @@ public sealed partial class ModernChemMasterWindow : FancyWindow
             var lowerFilter = filter.Trim().ToLowerInvariant();
             reagentList = reagentList
                 .Where(r => r.name.ToLowerInvariant().Contains(lowerFilter)
-                            || r.reagentId.Prototype.ToLowerInvariant().Contains(lowerFilter))
+                            || r.reagentId.Prototype.Id.ToLowerInvariant().Contains(lowerFilter))
                 .ToList();
         }
 

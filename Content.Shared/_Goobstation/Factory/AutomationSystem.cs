@@ -6,10 +6,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Goobstation.Factory;
 
-public sealed class AutomationSystem : EntitySystem
+public sealed partial class AutomationSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
 
     private EntityQuery<AutomationSlotsComponent> _slotsQuery;
     private EntityQuery<AutomatedComponent> _automatedQuery;
@@ -91,7 +91,7 @@ public sealed class AutomationSystem : EntitySystem
         var factory = EntityManager.ComponentFactory;
         foreach (var proto in _proto.EnumeratePrototypes<EntityPrototype>())
         {
-            if (proto.HasComponent<AutomationSlotsComponent>(factory))
+            if (proto.HasComp<AutomationSlotsComponent>(factory))
                 _automatable.Add(proto.ID);
         }
 

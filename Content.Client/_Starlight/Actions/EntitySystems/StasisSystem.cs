@@ -1,4 +1,5 @@
 using Content.Shared.Popups;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
@@ -11,12 +12,13 @@ namespace Content.Client._Starlight.Actions.Stasis;
 /// <summary>
 /// Client-side system that handles visual and audio effects for stasis.
 /// </summary>
-public sealed class StasisSystem : SharedStasisSystem
+public sealed partial class StasisSystem : SharedStasisSystem
 {
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
+    [Dependency] private SharedTransformSystem _xformSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -121,14 +123,14 @@ public sealed class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Play the sound effect.
-        _audioSystem.PlayPvs(comp.StasisEnterSound, effectEnt);
+        _audioSystem.PlayPvs(new SoundPathSpecifier(comp.StasisEnterSound), effectEnt);
         comp.ClientEnterEffectEntity = effectEnt;
         Dirty(uid, comp);
     }
@@ -167,14 +169,14 @@ public sealed class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Play the sound effect.
-        _audioSystem.PlayPvs(comp.StasisExitSound, effectEnt);
+        _audioSystem.PlayPvs(new SoundPathSpecifier(comp.StasisExitSound), effectEnt);
 
         // End the continuous animation.
         EndStasisContinuousAnimation(uid, comp);
@@ -202,11 +204,11 @@ public sealed class StasisSystem : SharedStasisSystem
         if (TryComp<SpriteComponent>(effectEnt, out var sprite))
         {
             // Set it to be over the parent entity.
-            sprite.DrawDepth = (int)DrawDepth.Effects;
+            _sprite.SetDrawDepth((effectEnt, sprite), (int)DrawDepth.Effects);
             // Prevent it from rotating.
             sprite.NoRotation = true;
             // Make it visible if the parent entity is visible.
-            sprite.Visible = TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible;
+            _sprite.SetVisible((effectEnt, sprite), TryComp<SpriteComponent>(uid, out var parentSprite) && parentSprite.Visible);
         }
 
         // Store the continuous effect in the component
@@ -261,12 +263,12 @@ public sealed class StasisSystem : SharedStasisSystem
         if (comp.IsVisible)
         {
             // Entity should be visible
-            sprite.Color = sprite.Color.WithAlpha(1f);
+            _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(1f));
         }
         else
         {
             // Entity should be invisible
-            sprite.Color = sprite.Color.WithAlpha(0f);
+            _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(0f));
         }
     }
 

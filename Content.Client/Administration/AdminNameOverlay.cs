@@ -13,9 +13,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Administration;
 
-internal sealed class AdminNameOverlay : Overlay
+internal sealed partial class AdminNameOverlay : Overlay
 {
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private IConfigurationManager _config = default!;
 
     private readonly AdminSystem _system;
     private readonly IEntityManager _entityManager;

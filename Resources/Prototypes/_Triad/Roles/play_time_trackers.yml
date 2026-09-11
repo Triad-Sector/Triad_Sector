@@ -1,0 +1,29 @@
+- type: playTimeTracker
+  id: JobTdfChiefEnforcer
+
+- type: playTimeTracker
+  id: JobTdfWarden
+
+- type: playTimeTracker
+  id: JobTdfPatrolTeamLeader
+
+- type: playTimeTracker
+  id: JobTdfMedic
+
+- type: playTimeTracker
+  id: JobTdfEnforcer
+
+- type: playTimeTracker
+  id: JobTdfCadet
+
+- type: playTimeTracker
+  id: JobPlantManager
+
+- type: playTimeTracker
+  id: JobPlantTechnician
+
+- type: playTimeTracker
+  id: JobTfaHighCommandRep
+
+- type: playTimeTracker
+  id: JobTfaHighCommandIntern

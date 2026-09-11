@@ -55,6 +55,7 @@
     - type: InteractionOutline
     - type: Appearance
     - type: ApcPowerReceiver
+      needsPower: false # Triad: preserve always-powered behavior under #43879's zero-load fix (was powerLoad: 0, which read as powered pre-fix)
       powerLoad: 0
     - type: Tag
       tags:

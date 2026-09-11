@@ -12,3 +12,18 @@ delta-chat-emote-name-whine = Whimper
 delta-chat-emote-name-howl = Howl
 delta-chat-emote-name-awoo = Awoo
 delta-chat-emote-name-gnash = Gnash
+
+# Triad: chatMessage keys for the above emotes (previously literal English in YAML)
+# Messages
+delta-chat-emote-msg-ring = rings.
+delta-chat-emote-msg-pew = pews.
+delta-chat-emote-msg-bang = bangs.
+delta-chat-emote-msg-rev = revs.
+delta-chat-emote-msg-caw = caws.
+delta-chat-emote-msg-bark = barks.
+delta-chat-emote-msg-snarl = snarls.
+delta-chat-emote-msg-whimper = whimpers.
+delta-chat-emote-msg-howl = howls.
+delta-chat-emote-msg-awoo = awoos.
+delta-chat-emote-msg-gnash = gnashes {POSS-ADJ($entity)} teeth.
+# End Triad

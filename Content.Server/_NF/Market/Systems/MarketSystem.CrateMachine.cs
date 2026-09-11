@@ -9,11 +9,14 @@ using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Content.Shared._NF.CrateMachine.Components;
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server._NF.Market.Systems;
 
 public sealed partial class MarketSystem
 {
-    [Dependency] private readonly CrateMachineSystem _crateMachine = default!;
+    [Dependency] private CrateMachineSystem _crateMachine = default!;
 
     private void InitializeCrateMachine()
     {
@@ -74,7 +77,7 @@ public sealed partial class MarketSystem
 
         // Withdraw spesos from player
         var spawnCost = int.Abs(MarketDataExtensions.GetMarketValue(consoleComponent.CartDataList, marketMod));
-        if (!_bankSystem.TryBankWithdraw(player, spawnCost))
+        if (!_bankSystem.TryBankWithdraw(player, spawnCost, new MarketRecord { Kind = MarketTransactionKind.MarketCrate })) // Triad: market data
         {
             _popup.PopupEntity(Loc.GetString("market-insufficient-funds"), consoleUid, player);
             _audio.PlayPredicted(consoleComponent.ErrorSound, consoleUid, null, AudioParams.Default.WithMaxDistance(5f));

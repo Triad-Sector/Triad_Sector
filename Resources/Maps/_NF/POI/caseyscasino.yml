@@ -588,6 +588,8 @@ entities:
     - type: Transform
       pos: -0.5,-11.5
       parent: 2
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 98
     components:
     - type: Transform
@@ -609,6 +611,8 @@ entities:
     - type: Transform
       pos: 1.5,-11.5
       parent: 2
+    - type: PriorityDock
+      tag: DockTransit
   - uid: 153
     components:
     - type: Transform
@@ -5876,7 +5880,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-11.5
       parent: 2
-- proto: PoweredlightColoredBlack
+- proto: PoweredlightUltraviolet
   entities:
   - uid: 780
     components:

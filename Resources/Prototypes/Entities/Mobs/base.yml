@@ -123,6 +123,9 @@
   - type: LightningTarget
     priority: 1 # Mono
     lightningExplode: false
+    # Triad: bolts that overflow the coils and rods electrocute whoever they land on.
+    # Insulated gloves apply; lightningResistance stays 1 so the bolt can arc once more onward.
+    electrocuteOnStrike: true
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity

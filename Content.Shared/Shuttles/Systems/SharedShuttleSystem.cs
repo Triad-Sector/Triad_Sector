@@ -14,12 +14,11 @@ namespace Content.Shared.Shuttles.Systems;
 
 public abstract partial class SharedShuttleSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] protected readonly SharedMapSystem Maps = default!;
-    [Dependency] protected readonly SharedTransformSystem XformSystem = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiverSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] protected SharedMapSystem Maps = default!;
+    [Dependency] protected SharedTransformSystem XformSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private SharedPowerReceiverSystem _powerReceiverSystem = default!;
 
     public const float FTLRange = 0f;
     public const float FTLBufferRange = 20f;
@@ -43,7 +42,7 @@ public abstract partial class SharedShuttleSystem : EntitySystem
     /// </summary>
     public bool CanFTLTo(EntityUid shuttleUid, MapId targetMap, EntityUid consoleUid)
     {
-        var mapUid = _mapManager.GetMapEntityId(targetMap);
+        var mapUid = Maps.GetMapOrInvalid(targetMap);
         var shuttleMap = _xformQuery.GetComponent(shuttleUid).MapID;
 
         if (shuttleMap == targetMap)
@@ -232,7 +231,7 @@ public abstract partial class SharedShuttleSystem : EntitySystem
 
         // Just checks if any grids inside of a buffer range at the target position.
         _grids.Clear();
-        var mapCoordinates = coordinates.ToMap(EntityManager, XformSystem);
+        var mapCoordinates = XformSystem.ToMapCoordinates(coordinates);
 
         var ourPos = Maps.GetGridPosition((shuttleUid, shuttlePhysics, shuttleXform));
 
@@ -266,7 +265,7 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         var ourFTLBuffer = GetFTLBufferRange(shuttleUid);
         var circle = new PhysShapeCircle(ourFTLBuffer + FTLBufferRange, targetPosition);
 
-        _mapManager.FindGridsIntersecting(mapCoordinates.MapId, circle, Robust.Shared.Physics.Transform.Empty,
+        Maps.FindGridsIntersecting(mapCoordinates.MapId, circle, Robust.Shared.Physics.Transform.Empty,
             ref _grids, includeMap: false);
 
         // If any grids in range that aren't us then can't FTL.

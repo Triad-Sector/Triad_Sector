@@ -78,6 +78,6 @@ public sealed class MarketConsoleBoundUserInterface : BoundUserInterface
         base.Dispose(disposing);
         if (!disposing)
             return;
-        _menu?.Dispose();
+        _menu?.Close();
     }
 }

@@ -1,0 +1,377 @@
+# Sourced from FloofStation via HardLight (SFW subset). Original authors retain copyright
+# (see SPDX tags in the upstream files); licensed AGPL-3.0-or-later AND MIT.
+
+- type: reaction
+  id: AppleberryFizz
+  reactants:
+    JuiceApple:
+      amount: 1
+    JuiceBerry:
+      amount: 1
+    SodaWater:
+      amount: 1
+  products:
+    AppleberryFizz: 3
+
+- type: reaction
+  id: CafeDeCacao
+  reactants:
+    Coffee:
+      amount: 1
+    CremeDeCacao:
+      amount: 1
+    Ice:
+      amount: 1
+  products:
+    CafeDeCacao: 3
+
+- type: reaction
+  id: CalicoSunrise
+  reactants:
+    SpaceUp:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+    JuicePineapple:
+      amount: 1
+  products:
+    CalicoSunrise: 3
+
+# Hardlight: Removes cream recipe that overrides the making of CreamOfCoconut, cream can be biomassprintered or made with shaker and milk
+#- type: reaction
+#  id: Cream
+#  reactants:
+#    Sugar:
+#      amount: 5
+#    Milk:
+#      amount: 10
+#  products:
+#    Cream: 15
+
+- type: reaction
+  id: CremeDeCacao
+  reactants:
+    HotCocoa:
+      amount: 1
+    Sugar:
+      amount: 1
+    Vodka:
+      amount: 2
+  products:
+    CremeDeCacao: 4
+
+- type: reaction
+  id: DarkOasis
+  reactants:
+    CocoaPowder:
+      amount: 3
+    Sugar:
+      amount: 1
+    Tequila:
+      amount: 1
+  products:
+    DarkOasis: 5
+
+- type: reaction
+  id: DeadMansDraught
+  reactants:
+    Ale:
+      amount: 1
+    Cognac:
+      amount: 1
+    Rum:
+      amount: 1
+    Whiskey:
+      amount: 1
+  products:
+    DeadMansDraught: 4
+
+- type: reaction
+  id: DirtyWastelander
+  reactants:
+    JuiceBerry:
+      amount: 1
+    SodaWater:
+      amount: 1
+    Whiskey:
+      amount: 1
+  products:
+    DirtyWastelander: 3
+
+- type: reaction
+  id: DragonsBlood
+  reactants:
+    Ale:
+      amount: 1
+    Blood:
+      amount: 1
+    CapsaicinOil:
+      amount: 1
+  products:
+    DragonsBlood: 3
+
+- type: reaction
+  id: DragonsBreath
+  reactants:
+    CapsaicinOil:
+      amount: 1
+    JuiceTomato:
+      amount: 1
+    Tequila:
+      amount: 1
+  products:
+    DragonsBreath: 3
+
+- type: reaction
+  id: Eminence
+  reactants:
+    Absinthe:
+      amount: 1
+    CogChamp:
+      amount: 2
+    Ethanol:
+      amount: 1
+    GargleBlaster:
+      amount: 1
+  products:
+    Eminence: 5
+
+- type: reaction
+  id: GrandNavy
+  reactants:
+    Amasec:
+      amount: 1
+    BlueCuracao:
+      amount: 1
+    SodaWater:
+      amount: 1
+  products:
+    GrandNavy: 3
+
+- type: reaction
+  id: HolyVice
+  reactants:
+    Blood:
+      amount: 1
+    Gin:
+      amount: 1
+    Holywater:
+      amount: 1
+  products:
+    HolyVice: 3
+
+- type: reaction
+  id: KoboldKooler
+  reactants:
+    Egg:
+      amount: 3
+    JuiceOrange:
+      amount: 5
+    SodaWater:
+      amount: 7
+  products:
+    KoboldKooler: 15
+
+- type: reaction
+  id: LemonPopsicle
+  reactants:
+    Ice:
+      amount: 3
+    JuiceLemon:
+      amount: 2
+    JuiceOrange:
+      amount: 1
+    SodaWater:
+      amount: 4
+  products:
+    LemonPopsicle: 10
+
+- type: reaction
+  id: NumberOne
+  reactants:
+    Ephedrine:
+      amount: 1
+    PwrGame:
+      amount: 1
+    Vodka:
+      amount: 1
+  products:
+    NumberOne: 3
+
+- type: reaction
+  id: SlimeShine
+  reactants:
+    BlackRussian:
+      amount: 1
+    FourteenLoko:
+      amount: 1
+    Moonshine:
+      amount: 1
+  products:
+    SlimeShine: 3
+
+- type: reaction
+  id: PrairieOyster
+  reactants:
+    Blackpepper:
+      amount: 1
+    Egg:
+      amount: 1
+    Hotsauce:
+      amount: 1
+    TableSalt:
+      amount: 1
+    Vinegar:
+      amount: 1
+    Vodka:
+      amount: 1
+  products:
+    PrairieOyster: 6
+
+- type: reaction
+  id: PrisonWine
+  reactants:
+    JuiceGrape:
+      amount: 2
+    Water:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    PrisonWine: 4
+
+- type: reaction
+  id: SalvagersDelight
+  reactants:
+    CarpoToxin:
+      amount: 2
+    FluorosulfuricAcid:
+      amount: 2
+    InsectBlood:
+      amount: 2
+    ManlyDorf:
+      amount: 4
+  products:
+    SalvagersDelight: 10
+
+- type: reaction
+  id: SlimesDelight
+  reactants:
+    Grenadine:
+      amount: 1
+    Slime:
+      amount: 1
+    WeldingFuel:
+      amount: 1
+  products:
+    SlimesDelight: 3
+
+- type: reaction
+  id: SyndicateEggnog
+  reactants:
+    Cream:
+      amount: 1
+    Egg:
+      amount: 1
+    Milk:
+      amount: 1
+    Rum:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    SyndicateEggnog: 5
+
+- type: reaction
+  id: SyndicatesOverseer
+  reactants:
+    Blood:
+      amount: 2
+    Moonshine:
+      amount: 3
+    Ice:
+      amount: 1
+  products:
+    SyndicatesOverseer: 6
+
+- type: reaction
+  id: TripleCitrus
+  reactants:
+    JuiceLemon:
+      amount: 1
+    JuiceLime:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+  products:
+    TripleCitrus: 3
+
+- type: reaction
+  id: Voltage
+  reactants:
+    Rum:
+      amount: 2
+    Sugar:
+      amount: 1
+    VodkaRedBool:
+      amount: 3
+  products:
+    Voltage: 6
+
+- type: reaction
+  id: WakeUpJuice
+  reactants:
+    CapsaicinOil:
+      amount: 1
+    Hotsauce:
+      amount: 1
+    JuiceLime:
+      amount: 1
+    JuiceTomato:
+      amount: 1
+  products:
+    WakeUpJuice: 4
+
+- type: reaction
+  id: JennTonic
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Ice:
+      amount: 1
+    Whiskey:
+      amount: 1
+    TonicWater:
+      amount: 1
+  products:
+    JennTonic: 3
+
+- type: reaction
+  id: MillerMargarita
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Slime:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+    Margarita:
+      amount: 1
+  products:
+    MillerMargarita: 3
+
+- type: reaction
+  id: HarpySnowfall
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceWatermelon:
+      amount: 3
+    Vodka:
+      amount: 1
+    Ice:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    HarpySnowfall: 6

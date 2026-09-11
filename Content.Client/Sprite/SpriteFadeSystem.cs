@@ -7,16 +7,17 @@ using Robust.Shared.Physics;
 
 namespace Content.Client.Sprite;
 
-public sealed class SpriteFadeSystem : EntitySystem
+public sealed partial class SpriteFadeSystem : EntitySystem
 {
     /*
      * If the player entity is obstructed under the specified components then it will drop the alpha for that entity
      * so the player is still visible.
      */
 
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private readonly HashSet<FadingSpriteComponent> _comps = new();
 
@@ -43,7 +44,7 @@ public sealed class SpriteFadeSystem : EntitySystem
         if (MetaData(uid).EntityLifeStage >= EntityLifeStage.Terminating || !TryComp<SpriteComponent>(uid, out var sprite))
             return;
 
-        sprite.Color = sprite.Color.WithAlpha(component.OriginalAlpha);
+        _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(component.OriginalAlpha));
     }
 
     public override void FrameUpdate(float frameTime)
@@ -81,7 +82,7 @@ public sealed class SpriteFadeSystem : EntitySystem
 
                 if (!sprite.Color.A.Equals(newColor))
                 {
-                    sprite.Color = sprite.Color.WithAlpha(newColor);
+                    _sprite.SetColor((ent, sprite), sprite.Color.WithAlpha(newColor));
                 }
             }
         }
@@ -99,7 +100,7 @@ public sealed class SpriteFadeSystem : EntitySystem
 
             if (!newColor.Equals(sprite.Color.A))
             {
-                sprite.Color = sprite.Color.WithAlpha(newColor);
+                _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(newColor));
             }
             else
             {

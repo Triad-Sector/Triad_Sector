@@ -15,8 +15,10 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "https://cdn.triad-sector.com/"
-FORK_ID = "Triad"
+# Triad: both values below are ours, not upstream's. Keep them in step with the preflight URL
+# in .github/workflows/publish.yml, which GETs fork/<FORK_ID>/version/<sha>/manifest.
+ROBUST_CDN_URL = "https://cdn.triad-sector.com/" # Triad
+FORK_ID = "Triad" # Triad
 
 def main():
     parser = argparse.ArgumentParser()

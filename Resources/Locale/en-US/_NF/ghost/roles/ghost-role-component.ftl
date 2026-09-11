@@ -61,7 +61,7 @@ ghost-role-information-explorer-captain-dungeon-name = Explorer Captain
 ghost-role-information-explorer-captain-dungeon-description = You got to this facility first! Defend the expedition dungeon and your loot with other explorers!
 
 ghost-role-information-punk-boss-dungeon-name = Punk gang leader
-ghost-role-information-punk-boss-dungeon-description = Defend the expedition dungeon and your loot with other punks from NT squares!
+ghost-role-information-punk-boss-dungeon-description = Defend the expedition dungeon and your loot with other punks from these chooms invadin'!
 
 ghost-role-information-dungeon-boss-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with all dungeon mobs.
                                         Fight players within the dungeon, defend your dungeon.

@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2025 sleepyyapril
+#
+# SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
+
+##### TAILS #####
+
+- type: marking
+  id: TailRaccoon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  layering:
+    m_tail_raccoon_BEHIND_primary: TailBehind
+    m_tail_raccoon_BEHIND_secondary: TailBehind
+    m_tail_raccoon_FRONT_primary: TailOversuit
+    m_tail_raccoon_FRONT_secondary: TailOversuit
+  colorLinks:
+    m_tail_raccoon_BEHIND_primary: m_tail_raccoon_FRONT_primary
+    m_tail_raccoon_BEHIND_secondary: m_tail_raccoon_FRONT_secondary
+    # Begin Den additions - organized skyrattails textures
+  sprites:
+  - sprite: _Floof/Mobs/Customization/Skyrattails/raccoon.rsi
+    state: m_tail_raccoon_BEHIND_primary
+  - sprite: _Floof/Mobs/Customization/Skyrattails/raccoon.rsi
+    state: m_tail_raccoon_BEHIND_secondary
+  - sprite: _Floof/Mobs/Customization/Skyrattails/raccoon.rsi
+    state: m_tail_raccoon_FRONT_primary
+  - sprite: _Floof/Mobs/Customization/Skyrattails/raccoon.rsi
+    state: m_tail_raccoon_FRONT_secondary
+    # End Den additions
+
+- type: marking
+  id: TailSquirrel
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vulpkanin, Human, IPC, Felinid, Oni, Rodentia] # Triad - Limited species
+  layering:
+    m_tail_squirrel_BEHIND: TailBehind
+    m_tail_squirrel_FRONT: Tail
+  colorLinks:
+    m_tail_squirrel_BEHIND: m_tail_squirrel_FRONT
+    # Begin Den additions - organized skyrattails textures
+  sprites:
+  - sprite: _Floof/Mobs/Customization/Skyrattails/squirrel.rsi
+    state: m_tail_squirrel_BEHIND
+  - sprite: _Floof/Mobs/Customization/Skyrattails/squirrel.rsi
+    state: m_tail_squirrel_FRONT
+    # End Den additions

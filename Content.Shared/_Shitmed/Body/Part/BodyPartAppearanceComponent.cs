@@ -12,7 +12,15 @@ public sealed partial class BodyPartAppearanceComponent : Component
     /// <summary>
     ///     HumanoidVisualLayer type for this body part.
     /// </summary>
+    // Triad: this DataField's YAML key was "type", which collides with the component node's own
+    // "type:" discriminator when the engine writes the mapping, throwing "Already contains key type"
+    // and killing the whole ship-grid save. Renamed the key rather than dropping the field, so a
+    // severed limb keeps its layer type across a save. No prototype sets it, so no content changes.
+    /*
     [DataField, AutoNetworkedField]
+    */
+    [DataField("layerType"), AutoNetworkedField]
+    // End Triad
     public HumanoidVisualLayers Type { get; set; }
 
     /// <summary>

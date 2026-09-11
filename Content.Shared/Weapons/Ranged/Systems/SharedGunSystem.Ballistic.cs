@@ -14,8 +14,8 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
 
 
     protected virtual void InitializeBallistic()
@@ -291,6 +291,16 @@ public abstract partial class SharedGunSystem
             if (component.Entities.Count > 0)
             {
                 entity = component.Entities[^1];
+
+                // Triad: a deleted ammo entity can leave EntityUid.Invalid in the list; EnsureShootable
+                // then throws "Entity 0 is not valid" on AddComponent every auto-fire tick. Drop the dead
+                // ref and skip this shot instead of crashing.
+                if (!Exists(entity))
+                {
+                    component.Entities.RemoveAt(component.Entities.Count - 1);
+                    DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
+                    continue;
+                }
 
                 args.Ammo.Add((entity, EnsureShootable(entity)));
 

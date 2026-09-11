@@ -7,9 +7,9 @@ namespace Content.Server.Anomaly.Effects;
 /// <summary>
 /// This component reduces the value of the entity during decay
 /// </summary>
-public sealed class AnomalyCoreSystem : EntitySystem
+public sealed partial class AnomalyCoreSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {
@@ -30,6 +30,18 @@ public sealed class AnomalyCoreSystem : EntitySystem
         var lerp = timeLeft.TotalSeconds / core.Comp.TimeToDecay;
         lerp = Math.Clamp(lerp, 0, 1);
 
+        // triad under some conditions this calculation can be NaN
+        if (!double.IsFinite(lerp))
+        {
+            lerp = 0;
+        }
+
         args.Price = MathHelper.Lerp(core.Comp.EndPrice, core.Comp.StartPrice, lerp);
+
+        // triad under some conditions this calculation can be NaN
+        if (!double.IsFinite(args.Price))
+        {
+            args.Price = 0;
+        }
     }
 }

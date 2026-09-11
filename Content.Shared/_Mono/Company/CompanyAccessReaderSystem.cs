@@ -1,5 +1,7 @@
+using Content.Shared.Administration.Managers; // Triad
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
+using Content.Shared.Whitelist;
 
 namespace Content.Shared._Mono.Company;
 
@@ -7,9 +9,11 @@ namespace Content.Shared._Mono.Company;
 /// This system handles checking if a user belongs to the required company
 /// before granting access to an entity.
 /// </summary>
-public sealed class CompanyAccessReaderSystem : EntitySystem
+public sealed partial class CompanyAccessReaderSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ISharedAdminManager _admin = default!; // Triad
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -23,12 +27,22 @@ public sealed class CompanyAccessReaderSystem : EntitySystem
         if (args.Cancelled)
             return;
 
+        var user = args.User;
+
+        // Triad start
+        if (_admin.IsAdmin(user))
+            return;
+
+        if (entity.Comp.IgnoreWhitelist is { } whitelist && _whitelist.IsValid(whitelist, user))
+            return;
+        // Triad end
+
         // Get user's company
-        if (!TryComp<CompanyComponent>(args.User, out var userCompany))
+        if (!TryComp<CompanyComponent>(user, out var userCompany))
         {
             args.Cancel();
             if (entity.Comp.PopupMessage != null)
-                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, args.User);
+                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, user);
             return;
         }
 
@@ -37,7 +51,7 @@ public sealed class CompanyAccessReaderSystem : EntitySystem
         {
             args.Cancel();
             if (entity.Comp.PopupMessage != null)
-                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, args.User);
+                _popup.PopupClient(Loc.GetString(entity.Comp.PopupMessage), entity, user);
         }
     }
 }

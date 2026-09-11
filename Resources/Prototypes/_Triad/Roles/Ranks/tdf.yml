@@ -1,0 +1,49 @@
+# Triad Defense Force ranks
+- type: rank
+  id: RankJuniorEnforcer
+  name: Junior Enforcer
+  prefix: Jr. Enf.
+  paygrade: TDF-1
+
+- type: rank
+  id: RankEnforcer
+  name: Enforcer
+  prefix: Enf.
+  paygrade: TDF-2
+
+- type: rank
+  id: RankSeniorEnforcer
+  name: Senior Enforcer
+  prefix: Sr. Enf.
+  paygrade: TDF-3
+
+- type: rank
+  id: RankLieutenant
+  name: Lieutenant Enforcer
+  prefix: Lt. Enf.
+  paygrade: TDF-4
+
+- type: rank
+  id: RankChiefEnforcer
+  name: Chief Enforcer
+  prefix: Chief Enf.
+  paygrade: TDF-5
+
+# Unplayable ranks (admin TDF members)
+- type: rank
+  id: RankViceCaptain
+  name: Vice Captain
+  prefix: V. Capt.
+  paygrade: TDF-6
+
+- type: rank
+  id: RankCaptain
+  name: Captain
+  prefix: Capt.
+  paygrade: TDF-7
+
+- type: rank
+  id: RankAdmiral
+  name: Admiral
+  prefix: Admiral
+  paygrade: TDF-8

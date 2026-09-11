@@ -2,7 +2,7 @@
 - type: emote
   id: Hiss
   category: Vocal
-  name: Hiss
+  name: chat-emote-name-reptilian-hiss # Triad: was literal `Hiss`
   icon: _Impstation/Interface/Emotes/hiss.png # Triad - change icon
   available: false
   whitelist:
@@ -27,7 +27,7 @@
 - type: emote
   id: Meow
   category: Vocal
-  name: Meow
+  name: chat-emote-name-meow # Triad: was literal `Meow`
   icon: Interface/Actions/scream.png
   available: false
   whitelist:
@@ -36,7 +36,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [meows.]
+  chatMessages: ["chat-emote-msg-meow"] # Triad: was literal `meows.`
   chatTriggers:
     - meow
     - meows
@@ -69,7 +69,7 @@
 - type: emote
   id: Mew
   category: Vocal
-  name: Mew
+  name: chat-emote-name-mew # Triad: was literal `Mew`
   icon: Interface/Actions/scream.png
   available: false
   whitelist:
@@ -78,7 +78,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [mews.]
+  chatMessages: ["chat-emote-msg-mew"] # Triad: was literal `mews.`
   chatTriggers:
     - mew
     - mews
@@ -88,7 +88,7 @@
 - type: emote
   id: Growl
   category: Vocal
-  name: Growl
+  name: chat-emote-name-growl # Triad: was literal `Growl`
   icon: Interface/Actions/scream.png
   available: false
   whitelist:
@@ -97,7 +97,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [growls.]
+  chatMessages: ["chat-emote-msg-growl"] # Triad: was literal `growls.`
   chatTriggers:
     - growl
     - growls
@@ -107,7 +107,7 @@
 - type: emote
   id: Purr
   category: Vocal
-  name: Purr
+  name: chat-emote-name-purr # Triad: was literal `Purr`
   icon: Interface/Actions/scream.png
   available: false
   whitelist:
@@ -116,7 +116,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [purrs.]
+  chatMessages: ["chat-emote-msg-purr"] # Triad: was literal `purrs.`
   chatTriggers:
     - purr
     - purrs

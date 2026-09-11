@@ -86,6 +86,14 @@
   components:
   - type: Flippable
     mirrorEntity: GasFilterFlipped
+  # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml). The
+  # component itself is inherited from GasPipeBase; this only adds the per-layer prototype map.
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasFilter
+      Secondary: GasFilterAlt1
+      Tertiary: GasFilterAlt2
+  # End Triad
 
 - type: entity
   parent: GasFilter
@@ -109,6 +117,15 @@
       map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
   - type: Flippable
     mirrorEntity: GasFilter
+  # Triad: cursor-quadrant layer placement via the RPD. Declared on the flipped variant too: inheritance
+  # field-merges GasFilter's map in otherwise, and an RPD-built flipped filter aimed off-Primary would
+  # spawn an unflipped GasFilterAlt1.
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasFilterFlipped
+      Secondary: GasFilterFlippedAlt1
+      Tertiary: GasFilterFlippedAlt2
+  # End Triad
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -174,6 +191,14 @@
       inletTwo: filter
     - type: Flippable
       mirrorEntity: GasMixerFlipped
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml). The
+    # component itself is inherited from GasPipeBase; this only adds the per-layer prototype map.
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: GasMixer
+        Secondary: GasMixerAlt1
+        Tertiary: GasMixerAlt2
+    # End Triad
     - type: Construction
       graph: GasTrinary
       node: mixer
@@ -216,6 +241,15 @@
   - type: PipeColorVisuals
   - type: Flippable
     mirrorEntity: GasMixer
+  # Triad: cursor-quadrant layer placement via the RPD. Declared on the flipped variant too: inheritance
+  # field-merges GasMixer's map in otherwise, and an RPD-built flipped mixer aimed off-Primary would
+  # spawn an unflipped GasMixerAlt1.
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasMixerFlipped
+      Secondary: GasMixerFlippedAlt1
+      Tertiary: GasMixerFlippedAlt2
+  # End Triad
   - type: NodeContainer
     nodes:
       inlet:
@@ -282,6 +316,14 @@
             False: { state: off }
     - type: PipeColorVisuals
     - type: PressureControlledValve
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml). The
+    # component itself is inherited from GasPipeBase; this only adds the per-layer prototype map.
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: PressureControlledValve
+        Secondary: PressureControlledValveAlt1
+        Tertiary: PressureControlledValveAlt2
+    # End Triad
     - type: AmbientSound
       enabled: false
       volume: -9

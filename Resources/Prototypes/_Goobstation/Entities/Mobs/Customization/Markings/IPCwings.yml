@@ -3,9 +3,24 @@
   bodyPart: Wings
   markingCategory: Wings
   speciesRestriction: [IPC]
+  # Triad: dual-layer wings. Base sprites render on the low Wings layer (front + sides stay behind body);
+  # the *_over sprites (North / back-facing frame only) render on the high WingsOversuit layer so the back
+  # view draws over the body/arms. colorLinks keeps each _over sprite colored like its base.
+  layering:
+    merciful_base: Wings
+    merciful_light: Wings
+    merciful_base_over: WingsOversuit
+    merciful_light_over: WingsOversuit
+  colorLinks:
+    merciful_base_over: merciful_base
+    merciful_light_over: merciful_light
   sprites:
     - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
       state: merciful_base
     - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
       state: merciful_light
+    - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
+      state: merciful_base_over
+    - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
+      state: merciful_light_over
 

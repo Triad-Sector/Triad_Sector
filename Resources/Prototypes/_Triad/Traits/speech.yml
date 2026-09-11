@@ -1,0 +1,69 @@
+# Triad - This file is licensed under AGPLv3
+# Copyright (c) 2025 Triad Contributors
+# See AGPLv3.txt for details.
+
+# New Brooklyn: Triad-original wiseguy borough accent. Replaces the retired upstream Mobster trait as
+# the player-selectable choice (the Mobster component still backs the regal rat mob + its role/items).
+- type: trait
+  id: NewBrooklynAccent
+  name: trait-newbrooklyn-accent-name
+  description: trait-newbrooklyn-accent-desc
+  category: Accents
+  cost: 1 # dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: NewBrooklynAccent
+
+# Neanderthal: player-selectable trait for the enriched upstream CavemanAccent (previously only on a pet
+# mob + an admin smite, never pickable). Keeps the upstream CavemanAccent id/component for portability.
+- type: trait
+  id: NeanderthalAccent
+  name: trait-neanderthal-accent-name
+  description: trait-neanderthal-accent-desc
+  category: Accents
+  cost: 1 # dialect accent; 1 from the Accents point pool (one dialect max).
+  conditions:
+  - !type:HasFreeAccentSlotCondition # Dwarf/Goblin must clear their native accent (Accentless) first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: CavemanAccent
+
+# Languages
+
+# Terra Slavic, a derived version of Sol common, inspired by Slavic languages of Earth.
+- type: trait
+  id: TerraSlavic
+  name: trait-language-TerraSlavic-name
+  description: trait-language-TerraSlavic-desc
+  category: LanguageTraits
+  cost: 0 # accents/languages are cosmetic RP
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - TerraSlavic
+
+# Sol Common, the language of the Federated Solarian Republic. Spoken by SD members and residents of Sol.
+- type: trait
+  id: SolCommon
+  name: trait-language-solcommon-name
+  description: trait-language-solcommon-desc
+  category: LanguageTraits
+  cost: 0 # accents/languages are cosmetic RP
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - SolCommon

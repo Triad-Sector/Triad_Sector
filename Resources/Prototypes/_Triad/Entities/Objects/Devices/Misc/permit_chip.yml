@@ -1,0 +1,34 @@
+- type: entity
+  parent: [BaseItem, BaseClass2AShipContrabandSilent]
+  id: PermitChip
+  name: TDF permit chip
+  description: A small chip used to store the serial number of a controlled item, along with the permit carrier's DNA signature for use in a permit manager console.
+  components:
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/permit_chip.rsi
+    state: icon
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/card_pickup.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/card_drop.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/card_drop.ogg
+      params:
+        volume: -5
+  - type: ContrabandPermitChip
+    prickDamage:
+      types:
+        Piercing: 1
+    permitCarrierBlacklist:
+      components:
+      - ContrabandPermitOwnerBlacklist

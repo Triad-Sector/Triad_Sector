@@ -1,4 +1,4 @@
-﻿using Content.Server.Radiation.Components;
+using Content.Server.Radiation.Components;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Events;
 using Content.Shared.Stacks;
@@ -10,10 +10,10 @@ namespace Content.Server.Radiation.Systems;
 
 public sealed partial class RadiationSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStackSystem _stack = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedStackSystem _stack = default!;
+    [Dependency] private SharedMapSystem _maps = default!;
 
     private EntityQuery<RadiationBlockingContainerComponent> _blockerQuery;
     private EntityQuery<RadiationGridResistanceComponent> _resistanceQuery;
@@ -48,9 +48,9 @@ public sealed partial class RadiationSystem : EntitySystem
         _accumulator = 0f;
     }
 
-    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time)
+    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time, EntityUid? origin = null)
     {
-        var msg = new OnIrradiatedEvent(time, radsPerSecond);
+        var msg = new OnIrradiatedEvent(time, radsPerSecond, origin);
         RaiseLocalEvent(uid, msg);
     }
 
@@ -60,6 +60,22 @@ public sealed partial class RadiationSystem : EntitySystem
             return;
 
         entity.Comp.Enabled = val;
+    }
+
+    // Triad: cache-invalidating intensity setter. The gridcast reads only from the cached
+    // _sourceTree/_sourceDataMap, so callers must never write Intensity/Slope directly -
+    // they have to route through here (or SetSourceEnabled) so UpdateSource refreshes the cache.
+    /// <summary>
+    ///     Sets the source's radiation intensity (and optionally its falloff slope), refreshing the source cache.
+    /// </summary>
+    public void SetSourceIntensity(Entity<RadiationSourceComponent?> entity, float intensity, float? slope = null)
+    {
+        if (!Resolve(entity, ref entity.Comp, false))
+            return;
+
+        entity.Comp.Intensity = intensity;
+        if (slope is { } s)
+            entity.Comp.Slope = s;
     }
 
     /// <summary>

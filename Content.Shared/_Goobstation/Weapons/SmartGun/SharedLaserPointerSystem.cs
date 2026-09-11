@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Shared._Crescent.ShipShields; // Triad
 using Content.Shared.Damage.Components;
 using Content.Shared.Standing;
 using Content.Shared.Wieldable;
@@ -14,13 +15,14 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Goobstation.Weapons.SmartGun;
 
-public abstract class SharedLaserPointerSystem : EntitySystem
+public abstract partial class SharedLaserPointerSystem : EntitySystem
 {
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private EntityQuery<ShipShieldComponent> _shipShieldQuery = default!; // Triad - ship shields don't collide with laser pointers
 
     public override void Initialize()
     {
@@ -141,9 +143,11 @@ public abstract class SharedLaserPointerSystem : EntitySystem
         var ray = new CollisionRay(pos, normalized, comp.CollisionMask);
         var hit = _physics.IntersectRay(xform.MapID, ray, rayLength, xform.ParentUid, false)
             .OrderBy(x => x.Distance)
+            .Where(x => !_shipShieldQuery.HasComp(x.HitEntity)) // Triad - ship shields don't collide with laser pointers
             .FirstOrNull(x =>
                 x.HitEntity == targetedEntity || lying ||
                 !requiresTargetQuery.TryComp(x.HitEntity, out var requiresTarget) || !requiresTarget.Active);
+
         if (hit != null)
             rayLength = hit.Value.Distance;
 

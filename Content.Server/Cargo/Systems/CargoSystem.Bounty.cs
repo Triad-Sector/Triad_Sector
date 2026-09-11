@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Server.Cargo.Components;
 using Content.Server.Labels;
 using Content.Server.NameIdentifier;
+using Robust.Shared.Prototypes;
 using Content.Shared._NF.Bank; // Frontier
 using Content.Shared.Access.Components;
 using Content.Shared.Cargo;
@@ -25,11 +26,10 @@ namespace Content.Server.Cargo.Systems;
 
 public sealed partial class CargoSystem
 {
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly NameIdentifierSystem _nameIdentifier = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private NameIdentifierSystem _nameIdentifier = default!;
 
-    [ValidatePrototypeId<NameIdentifierGroupPrototype>]
-    private const string BountyNameIdentifierGroup = "Bounty";
+    private static readonly ProtoId<NameIdentifierGroupPrototype> BountyNameIdentifierGroup = "Bounty";
 
     private EntityQuery<StackComponent> _stackQuery;
     private EntityQuery<ContainerManagerComponent> _containerQuery;

@@ -15,7 +15,7 @@ namespace Content.Client.Guidebook.Controls;
 [UsedImplicitly]
 public sealed partial class GuideMicrowaveGroupEmbed : BoxContainer, IDocumentTag
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public GuideMicrowaveGroupEmbed()
     {
@@ -34,7 +34,7 @@ public sealed partial class GuideMicrowaveGroupEmbed : BoxContainer, IDocumentTa
         control = null;
         if (!args.TryGetValue("Group", out var group))
         {
-            Logger.Error("Microwave group embed tag is missing group argument");
+            Log.Error("Microwave group embed tag is missing group argument");
             return false;
         }
 

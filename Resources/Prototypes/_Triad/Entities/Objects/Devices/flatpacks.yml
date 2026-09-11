@@ -31,6 +31,19 @@
   - type: StaticPrice
     price: 100
 
+- type: entity
+  parent: BaseNFFlatpack
+  id: RDServerTDFFlatpack
+  name: TDF research and development server flatpack
+  description: A flatpack used for constructing a TDF research and development server.
+  components:
+  - type: Flatpack
+    entity: ResearchAndDevelopmentServerTDF
+  - type: StaticPrice
+    price: 1500
+  - type: Sprite
+    layers:
+    - state: science_server
 
 # Diagonal
 
@@ -61,3 +74,18 @@
   - type: Sprite
     layers:
     - state: command_airlock_directional
+
+# Exped console
+- type: entity
+  parent: AmmoTechFabFlatpack
+  id: ComputerSalvageExpeditionFlatpack
+  name: salvage expeditions computer flatpack
+  description: A flatpack used for constructing a salvage expeditions computer.
+  components:
+  - type: Flatpack
+    entity: ComputerSalvageExpedition
+  - type: Sprite
+    layers:
+    - state: supply_lathe
+  - type: StaticPrice
+    price: 800

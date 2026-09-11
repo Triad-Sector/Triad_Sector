@@ -51,7 +51,7 @@
   - AtmosphericUpsets
   - AtmosTools
   - Gasses
-  - GasMining # Frontier
+  - OffshoreGasMining # Frontier
 
 - type: guideEntry
   id: GasManipulation
@@ -309,7 +309,8 @@
   - PortableGenerator
   - AME
   - SingularityTeslaEngine
-  - NuclearReactor # FH edit
+  - Supermatter # Triad: slot the ported SM engine/console guide into the tree
+  - NuclearGenerator # FH edit
   - TEG
   - RTG
   - SolarPanels

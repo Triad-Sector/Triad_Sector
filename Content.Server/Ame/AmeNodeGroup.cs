@@ -17,11 +17,11 @@ namespace Content.Server.Ame;
 /// Node group class for handling the Antimatter Engine's console and parts.
 /// </summary>
 [NodeGroup(NodeGroupID.AMEngine)]
-public sealed class AmeNodeGroup : BaseNodeGroup
+public sealed partial class AmeNodeGroup : BaseNodeGroup
 {
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     /// <summary>
     /// The AME controller which is currently in control of this node group.
@@ -180,7 +180,7 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         // return MathF.Max(200000f * MathF.Log10(2 * fuel * MathF.Pow(cores, (float)-0.5)), 0); // Frontier: preferring old calculation for now
         // return 200000f * MathF.Log10(fuel * fuel) * MathF.Pow(0.75f, cores - 1); // Frontier: preferring old calculation for now
         if (cores > 0 && fuel > 0) // Mono - default zero power unless conditions are met
-            return 200000f * MathF.Log10(fuel * fuel) * MathF.Pow( 1.11111f, fuel / 2f - 1); // Mono - Exponential scaling at high injection
+            return 200000f * MathF.Log10(fuel * fuel) * MathF.Pow( 1.11111f, Math.Clamp(cores, 0, 20) - 1); // Triad - Reverted Mono nerfs to AMEs and adds a hard cap of 20 after which no additional power is yielded
         return 0;
     }
 

@@ -11,7 +11,7 @@ namespace Content.Server.Explosion.EntitySystems;
 
 public sealed partial class ExplosionSystem
 {
-    [Dependency] private readonly DestructibleSystem _destructibleSystem = default!;
+    [Dependency] private DestructibleSystem _destructibleSystem = default!;
 
     private readonly Dictionary<string, int> _explosionTypes = new();
 
@@ -69,7 +69,7 @@ public sealed partial class ExplosionSystem
         query ??= EntityManager.GetEntityQuery<AirtightComponent>();
         var damageQuery = EntityManager.GetEntityQuery<DamageableComponent>();
         var destructibleQuery = EntityManager.GetEntityQuery<DestructibleComponent>();
-        var anchoredEnumerator = grid.GetAnchoredEntitiesEnumerator(tile);
+        var anchoredEnumerator = _map.GetAnchoredEntities(gridId, grid, tile);
 
         while (anchoredEnumerator.MoveNext(out var uid))
         {
@@ -105,7 +105,7 @@ public sealed partial class ExplosionSystem
         if (!TryComp<MapGridComponent>(transform.GridUid, out var grid))
             return;
 
-        UpdateAirtightMap(transform.GridUid.Value, grid, grid.CoordinatesToTile(transform.Coordinates));
+        UpdateAirtightMap(transform.GridUid.Value, grid, _map.CoordinatesToTile(transform.GridUid.Value, grid, transform.Coordinates));
     }
 
     /// <summary>

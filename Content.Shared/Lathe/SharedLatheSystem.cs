@@ -15,11 +15,11 @@ namespace Content.Shared.Lathe;
 /// <summary>
 /// This handles...
 /// </summary>
-public abstract class SharedLatheSystem : EntitySystem
+public abstract partial class SharedLatheSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedMaterialStorageSystem _materialStorage = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedMaterialStorageSystem _materialStorage = default!;
+    [Dependency] private EmagSystem _emag = default!;
 
     public readonly Dictionary<string, List<LatheRecipePrototype>> InverseRecipes = new();
 
@@ -79,7 +79,9 @@ public abstract class SharedLatheSystem : EntitySystem
             foreach (var (material, needed) in recipe.Materials)
             {
                 var adjustedAmount = AdjustMaterial(needed, recipe.MaterialDiscountScale, ent.Comp.FinalMaterialUseMultiplier);
-                currentMaterial[material] -= adjustedAmount * (batch.ItemsRequested - batch.ItemsPrinted);
+                // Triad: the lathe may have none of this material stored yet, so the key can be absent.
+                // Indexing a missing key threw KeyNotFoundException on every recipe queue (tens of thousands/day).
+                currentMaterial[material] = currentMaterial.GetValueOrDefault(material) - adjustedAmount * (batch.ItemsRequested - batch.ItemsPrinted);
             }
         }
         return currentMaterial;

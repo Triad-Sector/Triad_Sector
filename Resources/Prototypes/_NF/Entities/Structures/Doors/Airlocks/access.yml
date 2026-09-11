@@ -51,7 +51,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: HighSecDoor
@@ -81,90 +81,80 @@
       board: [ DoorElectronicsMercenary ]
 
 - type: entity
-  parent: AirlockNfsdGlass
-  id: AirlockNfsdGlassLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockNfsd
-  id: AirlockNfsdLocked
-  suffix: TSFMC, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdBrigLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBrig ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdBrigGlassLocked
   suffix: TSFMC Brig, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBrig ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdDetectiveLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdDetectiveGlassLocked
   suffix: TSFMC Detective, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdLawyerLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurityLawyer ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdLawyerGlassLocked
   suffix: TSFMC Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurityLawyer ]
 
 - type: entity
-  parent: AirlockNfsd
+  parent: Airlock
   id: AirlockNfsdArmoryLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsArmory ]
 
 - type: entity
-  parent: AirlockNfsdGlass
+  parent: Airlock
   id: AirlockNfsdArmoryGlassLocked
   suffix: TSFMC Armory, Locked
+  categories: [ HideSpawnMenu ] # Triad
   components:
   - type: ContainerFill
     containers:
@@ -214,7 +204,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: [ AirlockAtmosphericsGlass, AirlockFrontierCommandGlassLocked]
@@ -223,7 +213,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsFrontierCommand ]
+      board: [ DoorElectronicsFrontierCommandEngineering ] # Triad: command OR engineering (was DoorElectronicsFrontierCommand)
 
 - type: entity
   parent: AirlockGlass
@@ -255,7 +245,7 @@
 - type: entity
   parent: AirlockExternalGlassNfsd
   id: AirlockExternalGlassNfsdLocked
-  suffix: TSFMC, Glass, Locked
+  suffix: TDF, Glass, Locked
   components:
   - type: ContainerFill
     containers:
@@ -264,7 +254,7 @@
 - type: entity
   parent: AirlockShuttleNfsd
   id: AirlockShuttleNfsdLocked
-  suffix: TSFMC, Docking, Locked
+  suffix: TDF, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -273,7 +263,7 @@
 - type: entity
   parent: AirlockGlassShuttleNfsd
   id: AirlockGlassShuttleNfsdLocked
-  suffix: TSFMC, Glass, Docking, Locked
+  suffix: TDF, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:
@@ -282,7 +272,7 @@
 - type: entity
   parent: AirlockGlass
   id: AirlockRogueGlassLocked
-  suffix: Rogue, Locked
+  suffix: PDV, Locked # Mono - PDV
   components:
   - type: ContainerFill
     containers:
@@ -291,7 +281,7 @@
 - type: entity
   parent: AirlockExternalGlass
   id: AirlockExternalGlassRogueLocked
-  suffix: Rogue, Glass, Locked
+  suffix: PDV, Glass, Locked # Mono - PDV
   components:
   - type: ContainerFill
     containers:
@@ -300,7 +290,7 @@
 - type: entity
   parent: AirlockMiningGlass
   id: AirlockMiningGlassRogueLocked
-  suffix: Rogue, Glass, Locked
+  suffix: PDV, Glass, Locked # Mono - PDV
   components:
   - type: ContainerFill
     containers:
@@ -309,7 +299,7 @@
 - type: entity
   parent: AirlockShuttleSyndicate
   id: AirlockShuttleSyndicateRogueLocked
-  suffix: Rogue, Locked
+  suffix: PDV, Locked # Mono - PDV
   components:
   - type: ContainerFill
     containers:
@@ -318,7 +308,7 @@
 - type: entity
   parent: AirlockGlassShuttleSyndicate
   id: AirlockGlassShuttleSyndicateRogueLocked
-  suffix: Rogue, Glass Locked
+  suffix: PDV, Glass Locked # Mono - PDV
   components:
   - type: ContainerFill
     containers:
@@ -328,7 +318,7 @@
 - type: entity
   parent: AirlockHatch
   id: AirlockHatchRogueLocked
-  suffix: Rogue, Locked
+  suffix: PDV, Locked
   components:
   - type: ContainerFill
     containers:

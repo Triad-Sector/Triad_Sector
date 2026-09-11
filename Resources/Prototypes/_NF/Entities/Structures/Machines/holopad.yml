@@ -98,7 +98,7 @@
 - type: entity
   parent: NFHolopadPoiBase
   id: NFHolopadFrontierOutpostSR
-  suffix: Colonial Outpost Station Rep, POI
+  suffix: Colonial Outpost Overseer, POI
   components:
   - type: Label
     currentLabel: nf-holopad-general-frontier-outpost-station-rep
@@ -138,7 +138,7 @@
 - type: entity
   parent: NFHolopadPoiBase
   id: NFHolopadNFSDReception
-  suffix: TSFMC Reception, POI
+  suffix: TDF Reception, POI
   components:
   - type: Label
     currentLabel: nf-holopad-general-nfsd-reception
@@ -146,7 +146,7 @@
 - type: entity
   parent: NFHolopadPoiBase
   id: NFHolopadNFSDSheriff
-  suffix: TSFMC Colonel, POI
+  suffix: TDF Chief Enforcer, POI
   components:
   - type: Label
     currentLabel: nf-holopad-general-nfsd-sheriff-office
@@ -154,7 +154,7 @@
 - type: entity
   parent: NFHolopadPoiBase
   id: NFHolopadNFSDLobby
-  suffix: TSFMC Lobby, POI
+  suffix: TDF Lobby, POI
   components:
   - type: Label
     currentLabel: nf-holopad-general-nfsd-lobby

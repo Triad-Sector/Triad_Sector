@@ -74,7 +74,7 @@ public static class BankSystemExtensions
 
     public static string ToFMCString(int amount, CultureInfo? culture = null)
     {
-        return ToCurrencyString(amount, culture, symbolOverride: "FMC", symbolLocation: CurrencySymbolLocation.Suffix);
+        return ToCurrencyString(amount, culture, symbolOverride: "TCC", symbolLocation: CurrencySymbolLocation.Suffix);
     }
 }
 

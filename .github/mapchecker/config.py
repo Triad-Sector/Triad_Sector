@@ -41,7 +41,7 @@ CONDITIONALLY_ILLEGAL_MATCHES = {
     ],
     "Medical": [
     ],
-    "Ussp": [
+    "Coalition": [
     ],
     # It is assumed that mapped instances of plastitanium, security gear, etc. are deemed acceptable
     "PointOfInterest": [

@@ -70,6 +70,16 @@
   materials:
     Cloth: 200
 
+#Hardlight start -pillows
+- type: latheRecipe
+  abstract: true
+  id: BasePillowRecipe
+  categories:
+  - Pillows
+  materials:
+    Cloth: 500
+#Hardlight end
+
 ## Recipes
 
 # Jumpsuits/skirts
@@ -931,3 +941,55 @@
   parent: BaseNeckClothingRecipe
   id: ClothingNeckScarfStripedPurple
   result: ClothingNeckScarfStripedPurple
+
+# HardLight Start - Pillows
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowLongWhite
+  result: PillowLongWhite
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowLumpBlue
+  result: PillowLumpBlue
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowLumpRed
+  result: PillowLumpRed
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowLumpWhite
+  result: PillowLumpWhite
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSmallBlue
+  result: PillowSmallBlue
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSmallRed
+  result: PillowSmallRed
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSmallWhite
+  result: PillowSmallWhite
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSquareBlue
+  result: PillowSquareBlue
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSquareRed
+  result: PillowSquareRed
+
+- type: latheRecipe
+  parent: BasePillowRecipe
+  id: PillowSquareWhite
+  result: PillowSquareWhite
+#Hardlight end

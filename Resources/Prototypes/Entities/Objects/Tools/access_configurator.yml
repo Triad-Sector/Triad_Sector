@@ -23,7 +23,8 @@
       - Atmospherics
       - Bar
       - Brig
-      - Detective
+      - TdfLieutenant # Triad
+      - TdfPatrolTeamLeader # Triad
       - Captain
       - Cargo
       - Chapel
@@ -35,7 +36,8 @@
       - External
       - Frontier # Frontier
       - HeadOfPersonnel
-      - HeadOfSecurity
+      - TdfChiefEnforcer # Triad
+      - TdfPermitControl # Triad
       - Hydroponics
       - Janitor
       - Kitchen
@@ -95,6 +97,8 @@
     - Atmospherics
     - Bar
     - Brig
+    - BasicSilicon
+    - Borg
     - Detective
     - Captain
     - Cargo
@@ -109,7 +113,9 @@
     - External
     - Frontier # Frontier
     - HeadOfPersonnel
-    - HeadOfSecurity
+    - TdfLieutenant # Triad
+    - TdfPatrolTeamLeader # Triad
+    - TdfChiefEnforcer # Triad
     - Hydroponics
     - Janitor
     - Kitchen
@@ -125,15 +131,16 @@
     - Salvage
     - Security
     - Service
+    - StationAi
     - StationTrafficController # Frontier
     - Theatre
     - CentralCommand
     - NuclearOperative
     - SyndicateAgent
     - Wizard
-    - USSPCommand # Mono
-    - USSPHigh # Mono
-    - USSP # Mono
+    - Solarian # Triad
+    - Coalition # Triad
+    - TdfPermitControl # Triad
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg

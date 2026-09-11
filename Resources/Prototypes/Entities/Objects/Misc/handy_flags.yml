@@ -9,30 +9,33 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: NTHandyFlag
   name: Nanotrasen handheld flag
-  description: "Glory to TSF-NT!"
+  description: "Glory to NT! Or whatever's left of it."
   components:
   - type: Sprite
     sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall]
   id: SyndieHandyFlag
   name: syndicate handheld flag
-  description: "For truly rebellious patriots. Death to NT!"
+  description: "For truly rebellious patriots. Death to Nan- right, they're gone.."
   components:
   - type: Sprite
     sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
@@ -45,6 +48,7 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
@@ -57,3 +61,4 @@
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/pirate_handy_flag.rsi
+  - type: HLPersistOnShipSave #Triad

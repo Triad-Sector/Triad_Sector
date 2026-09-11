@@ -33,6 +33,7 @@
       path: /Audio/Effects/curtain_openclose.ogg
     closeSound:
       path: /Audio/Effects/curtain_openclose.ogg
+  - type: IgnoreDoorCollision # Triad
   - type: Appearance
   - type: Damageable
     damageContainer: Inorganic

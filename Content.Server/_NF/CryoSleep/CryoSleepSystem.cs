@@ -39,32 +39,33 @@ using Robust.Shared.Timing;
 using Content.Server.Ghost;
 using Content.Shared.Roles;
 using Content.Server._NF.Shuttles.Components;
+using Content.Shared._Triad.CryoSleep;
 
 namespace Content.Server._NF.CryoSleep;
 
 public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 {
-    [Dependency] private readonly EntityManager _entityManager = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly ClimbSystem _climb = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly EuiManager _euiManager = null!;
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly InteractionSystem _interaction = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly MobStateSystem _mobSystem = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly ShipyardSystem _shipyard = default!; // For the FoundOrganics method
-    [Dependency] private readonly GhostSystem _ghost = default!;
-    [Dependency] private readonly RadioSystem _radioSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly JobSystem _jobs = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
-    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private EntityManager _entityManager = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private ClimbSystem _climb = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private EuiManager _euiManager = null!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private InteractionSystem _interaction = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private MobStateSystem _mobSystem = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private ShipyardSystem _shipyard = default!; // For the FoundOrganics method
+    [Dependency] private GhostSystem _ghost = default!;
+    [Dependency] private RadioSystem _radioSystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private JobSystem _jobs = default!;
+    [Dependency] private StationJobsSystem _stationJobs = default!;
+    [Dependency] private StationSystem _station = default!;
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
     private EntityUid? _storageMap;
@@ -94,9 +95,8 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     {
         if (Deleted(_storageMap))
         {
-            var map = _mapManager.CreateMap();
-            _storageMap = _mapManager.GetMapEntityId(map);
-            _mapManager.SetMapPaused(map, true);
+            _storageMap = _map.CreateMap(out var map);
+            _map.SetPaused(map, true);
         }
 
         return _storageMap.Value;
@@ -125,7 +125,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
             InteractionVerb verb = new()
             {
-                Act = () => InsertBody(@using, component, false),
+                Act = () => InsertBody(@using, (uid, component), false),
                 Category = VerbCategory.Insert,
                 Text = name
             };
@@ -156,7 +156,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         {
             AlternativeVerb verb = new()
             {
-                Act = () => InsertBody(args.User, component, false),
+                Act = () => InsertBody(args.User, (uid, component), false),
                 Category = VerbCategory.Insert,
                 Text = Loc.GetString("medical-scanner-verb-enter")
             };
@@ -202,15 +202,16 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
     private void OnEntityDragDropped(EntityUid uid, CryoSleepComponent component, DragDropTargetEvent args)
     {
-        if (InsertBody(args.Dragged, component, false))
+        if (InsertBody(args.Dragged, (uid, component), false))
         {
             args.Handled = true;
         }
     }
 
-    public bool InsertBody(EntityUid? toInsert, CryoSleepComponent component, bool force)
+    public bool InsertBody(EntityUid? toInsert, Entity<CryoSleepComponent> pod, bool force)
     {
-        var cryopod = component.Owner;
+        var cryopod = pod.Owner;
+        var component = pod.Comp;
         if (toInsert == null)
             return false;
         if (IsOccupied(component) && !force)
@@ -397,7 +398,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         string message;
         var podTransform = Transform(cryopod);
         var coordinates = _entityManager.GetComponent<TransformComponent>(cryopod).Coordinates;
-        var mapPos = coordinates.ToMap(_entityManager, EntityManager.System<SharedTransformSystem>());
+        var mapPos = EntityManager.System<SharedTransformSystem>().ToMapCoordinates(coordinates);
 
         // Check if it's at a named location (like a station or outpost)
         if (podTransform.GridUid != null && _entityManager.TryGetComponent<MetaDataComponent>(podTransform.GridUid.Value, out var gridMetadata))
@@ -415,56 +416,20 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
                 ("y", Math.Round(mapPos.Position.Y)));
         }
 
-        // Check if character is a pirate, and if so, use Freelancer radio instead of Common
-        bool isPirate = false;
-        if (jobTitle != null)
+        // Triad - check if there's an cryo radio override on the body, if not then use common channel
+        if (TryComp<CryoSleepRadioOverrideComponent>(bodyId, out var comp))
         {
-            // Check if job is one of the pirate jobs
-            isPirate = jobTitle.Equals(Loc.GetString("job-name-pirate"), StringComparison.OrdinalIgnoreCase) ||
-                       jobTitle.Equals(Loc.GetString("job-name-pirate-captain"), StringComparison.OrdinalIgnoreCase) ||
-                       jobTitle.Equals(Loc.GetString("job-name-pirate-first-mate"), StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Check if character is TSF, and if so, use TSF radio instead of Common
-        bool isTSF = false;
-        if (jobTitle != null)
-        {
-            isTSF = jobTitle.Equals(Loc.GetString("job-name-bailiff"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-brigmedic"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-cadet-nf"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-deputy"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-nf-detective"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-sheriff"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-stc"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-sr"), StringComparison.OrdinalIgnoreCase) ||
-                    jobTitle.Equals(Loc.GetString("job-name-pal"), StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Send radio message on appropriate channel
-        if (isPirate)
-        {
-            // Use Freelancer channel for pirates
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>("Freelance", out var freelanceChannel))
+            foreach (var radioId in comp.Overrides)
             {
-                _radioSystem.SendRadioMessage(cryopod, message, freelanceChannel, cryopod);
-            }
-        }
-        else if (isTSF)
-        {
-            // Use TSF channel for TSF - Mono
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>("Nfsd", out var nfsdChannel))
-            {
-                _radioSystem.SendRadioMessage(cryopod, message, nfsdChannel, cryopod);
+                _radioSystem.SendRadioMessage(cryopod, message, radioId, cryopod);
             }
         }
         else
         {
-            // Use Common channel for everyone else
-            if (_prototypeManager.TryIndex<RadioChannelPrototype>(SharedChatSystem.CommonChannel, out var commonChannel))
-            {
+            if (_prototypeManager.TryIndex(SharedChatSystem.CommonChannel, out var commonChannel))
                 _radioSystem.SendRadioMessage(cryopod, message, commonChannel, cryopod);
-            }
         }
+        // Triad end
 
         // Start a timer. When it ends, the body needs to be deleted.
         Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NFCCVars.CryoExpirationTime)), () =>

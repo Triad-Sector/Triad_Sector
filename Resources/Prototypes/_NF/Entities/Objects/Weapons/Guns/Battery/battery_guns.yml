@@ -41,6 +41,8 @@
     disableDuration: 30
   - type: PirateBountyItem # Mono
     id: StandardFactionLongarm
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-2-text
 
 - type: entity
   id: WeaponLaserTurboNF

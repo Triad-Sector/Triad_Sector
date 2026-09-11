@@ -20,6 +20,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Audio;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Input.Binding;
@@ -30,13 +31,13 @@ using Robust.Shared.Utility;
 namespace Content.Client.UserInterface.Systems.Bwoink;
 
 [UsedImplicitly]
-public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSystem>, IOnStateChanged<GameplayState>, IOnStateChanged<LobbyState>
+public sealed partial class AHelpUIController: UIController, IOnSystemChanged<BwoinkSystem>, IOnStateChanged<GameplayState>, IOnStateChanged<LobbyState>
 {
-    [Dependency] private readonly IClientAdminManager _adminManager = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private IClientAdminManager _adminManager = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IClyde _clyde = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
     [UISystemDependency] private readonly AudioSystem _audio = default!;
 
     private BwoinkSystem? _bwoinkSystem;
@@ -47,6 +48,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     private bool _hasUnreadAHelp;
     private bool _bwoinkSoundEnabled;
     private string? _aHelpSound;
+
+    protected override string SawmillName => "c.s.go.es.bwoink";
 
     public override void Initialize()
     {
@@ -129,7 +132,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     private void ReceivedBwoink(object? sender, SharedBwoinkSystem.BwoinkTextMessage message)
     {
-        Logger.InfoS("c.s.go.es.bwoink", $"@{message.UserId}: {message.Text}");
+        Log.Info($"@{message.UserId}: {message.Text}");
         var localPlayer = _playerManager.LocalSession;
         if (localPlayer == null)
         {
@@ -138,7 +141,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         if (message.PlaySound && localPlayer.UserId != message.TrueSender)
         {
             if (_aHelpSound != null && (_bwoinkSoundEnabled || !_adminManager.IsActive()))
-                _audio.PlayGlobal(_aHelpSound, Filter.Local(), false);
+                _audio.PlayGlobal(new ResolvedPathSpecifier(_aHelpSound), Filter.Local(), false);
             _clyde.RequestWindowAttention();
         }
 

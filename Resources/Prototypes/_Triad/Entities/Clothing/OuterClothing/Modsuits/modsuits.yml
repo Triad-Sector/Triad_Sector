@@ -1,0 +1,64 @@
+- type: entity
+  parent: ClothingModsuitChestplateBase
+  id: ClothingModsuitChestplateOverseer
+  name: prosper modsuit chestplate
+  description: Expensive.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Modsuits/overseer.rsi
+    layers:
+    - state: chestplate
+    - state: chestplate-sealed
+      visible: false
+      map: [ "sealed" ]
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING-sealed
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: FireProtection
+    reduction: 0.8
+  - type: Armor
+    modifiers:
+      coefficients: # Piercing and heat emphasis for personal protection, also decent protection from hazards
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.4
+        Heat: 0.35
+        Shock: 0.6
+        Poison: 0.6
+        Caustic: 0.6
+        Radiation: 0.6
+  - type: StaminaDamageResistance
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModsuitChestplateBase
+  id: ClothingModsuitChestplateHZDBesieger
+  name: HZD Cuirass
+  description: A heavy set of plastitanium alloy plates surrounding specialized padding designed to dull the force of shockwaves, one of HZD's most advanced systems.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Modsuits/HZDBesieger.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.84
+    sprintModifier: 0.84
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: StaminaDamageResistance
+    coefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.55
+        Piercing: 0.45
+        Heat: 0.35
+        Caustic: 0.6
+        Radiation: 0.35
+  - type: FireProtection
+    reduction: 0.35

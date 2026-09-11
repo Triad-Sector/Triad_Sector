@@ -21,8 +21,13 @@ public sealed partial class EnvelopeComponent : Component
     /// Stores the current sealing/tearing doafter of the envelope
     /// to prevent doafter spam/prediction issues
     /// </summary>
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField, ViewVariables]
+    */
+    [ViewVariables]
     public DoAfterId? EnvelopeDoAfter;
+    // End Triad
 
     /// <summary>
     /// How long it takes to seal the envelope closed

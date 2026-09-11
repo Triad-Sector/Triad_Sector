@@ -8,7 +8,7 @@ namespace Content.Client.Options;
 /// <summary>
 /// Implements <see cref="OptionsVisualizerComponent"/>.
 /// </summary>
-public sealed class OptionsVisualizerSystem : EntitySystem
+public sealed partial class OptionsVisualizerSystem : EntitySystem
 {
     private static readonly (OptionVisualizerOptions, CVarDef<bool>)[] OptionVars =
     {
@@ -16,8 +16,9 @@ public sealed class OptionsVisualizerSystem : EntitySystem
         (OptionVisualizerOptions.ReducedMotion, CCVars.ReducedMotion),
     };
 
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IReflectionManager _reflection = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IReflectionManager _reflection = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private OptionVisualizerOptions _currentOptions;
 
@@ -55,9 +56,9 @@ public sealed class OptionsVisualizerSystem : EntitySystem
     private void UpdateAllComponents()
     {
         var query = EntityQueryEnumerator<OptionsVisualizerComponent, SpriteComponent>();
-        while (query.MoveNext(out _, out var component, out var sprite))
+        while (query.MoveNext(out var uid, out var component, out var sprite))
         {
-            UpdateComponent(component, sprite);
+            UpdateComponent(uid, component, sprite);
         }
     }
 
@@ -66,10 +67,10 @@ public sealed class OptionsVisualizerSystem : EntitySystem
         if (!TryComp(uid, out SpriteComponent? sprite))
             return;
 
-        UpdateComponent(component, sprite);
+        UpdateComponent(uid, component, sprite);
     }
 
-    private void UpdateComponent(OptionsVisualizerComponent component, SpriteComponent sprite)
+    private void UpdateComponent(EntityUid uid, OptionsVisualizerComponent component, SpriteComponent sprite)
     {
         foreach (var (layerKeyRaw, layerData) in component.Visuals)
         {
@@ -89,8 +90,10 @@ public sealed class OptionsVisualizerSystem : EntitySystem
             if (matchedDatum == null)
                 continue;
 
-            var layerIndex = sprite.LayerMapReserveBlank(layerKey);
-            sprite.LayerSetData(layerIndex, matchedDatum.Data);
+            var layerIndex = layerKey is Enum layerEnum
+                ? _sprite.LayerMapReserve((uid, sprite), layerEnum)
+                : _sprite.LayerMapReserve((uid, sprite), (string)layerKey);
+            _sprite.LayerSetData((uid, sprite), layerIndex, matchedDatum.Data);
         }
     }
 }

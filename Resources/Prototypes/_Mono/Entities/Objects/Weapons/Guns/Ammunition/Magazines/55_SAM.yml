@@ -32,7 +32,7 @@
 
 - type: entity
   id: Magazine55_SAMPistolHighCapacity
-  name: machine pistol magazine (.55 SAM)
+  name: extended pistol magazine (.55 SAM) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   description: An extended magazine for the MK5 smart magnum, holding 18 rounds.
   components:

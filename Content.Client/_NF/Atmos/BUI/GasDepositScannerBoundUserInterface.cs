@@ -1,3 +1,4 @@
+using Robust.Client.UserInterface;
 using static Content.Shared._NF.Atmos.Components.GasDepositScannerComponent;
 
 namespace Content.Client._NF.Atmos.UI;
@@ -15,9 +16,8 @@ public sealed class GasDepositScannerBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _window = new GasDepositScannerWindow();
+        _window = this.CreateWindowCenteredLeft<GasDepositScannerWindow>();
         _window.OnClose += OnClose;
-        _window.OpenCenteredLeft();
     }
 
     protected override void ReceiveMessage(BoundUserInterfaceMessage message)
@@ -36,13 +36,5 @@ public sealed class GasDepositScannerBoundUserInterface : BoundUserInterface
     {
         SendMessage(new GasDepositScannerDisableMessage());
         Close();
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (disposing)
-            _window?.Dispose();
     }
 }

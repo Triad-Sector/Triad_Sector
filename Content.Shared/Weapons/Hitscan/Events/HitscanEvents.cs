@@ -94,3 +94,11 @@ public record struct HitscanDamageDealtEvent
     /// </summary>
     public DamageSpecifier DamageDealt;
 }
+
+/// <summary>
+/// Triad: raised on the entity a hitscan struck, after the raycast resolves and was not cancelled.
+/// Every other hitscan event is raised on the hitscan entity itself, so a target that wants to react
+/// to being shot (artifact triggers, for one) had nothing to subscribe to.
+/// </summary>
+[ByRefEvent]
+public record struct HitscanRaycastStrikeEvent(EntityUid Hitscan, EntityUid Gun, EntityUid? Shooter);

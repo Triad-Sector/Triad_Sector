@@ -8,5 +8,5 @@
     sprite: Clothing/OuterClothing/Coats/david_jacket.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/david_jacket.rsi
-  - type: AddAccentClothing
-    accent: StreetpunkAccent
+  #- type: AddAccentClothing # Triad removal - Remove forced accents
+  #  accent: StreetpunkAccent

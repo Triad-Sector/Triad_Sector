@@ -275,30 +275,40 @@ entities:
       locked: False
 - proto: AirlockExternalGlassShuttleTransit
   entities:
+  # Triad: each pair carries its side as a tag so a berth can demand the face that fits it
+  # (PriorityDock.requiredShuttleTag). Bus forward is north; west pair = port, east = starboard.
   - uid: 2
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 6.5,-3.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransitStarboard
   - uid: 3
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 0.5,-3.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransitPort
   - uid: 4
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 0.5,-2.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransitPort
   - uid: 5
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 6.5,-2.5
       parent: 1
+    - type: PriorityDock
+      tag: DockTransitStarboard
 - proto: AntiAnomalyZone
   entities:
   - uid: 157

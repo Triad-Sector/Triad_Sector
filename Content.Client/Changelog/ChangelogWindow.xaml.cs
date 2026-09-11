@@ -17,9 +17,9 @@ namespace Content.Client.Changelog
     [GenerateTypedNameReferences]
     public sealed partial class ChangelogWindow : FancyWindow
     {
-        [Dependency] private readonly ChangelogManager _changelog = default!;
-        [Dependency] private readonly IClientAdminManager _adminManager = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private ChangelogManager _changelog = default!;
+        [Dependency] private IClientAdminManager _adminManager = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
 
         public ChangelogWindow()
         {
@@ -58,7 +58,7 @@ namespace Content.Client.Changelog
             // Changelog is not kept in memory so load it again.
             var changelogs = await _changelog.LoadChangelog();
 
-            Tabs.DisposeAllChildren();
+            Tabs.RemoveAllChildren();
 
             var i = 0;
             foreach (var changelog in changelogs)

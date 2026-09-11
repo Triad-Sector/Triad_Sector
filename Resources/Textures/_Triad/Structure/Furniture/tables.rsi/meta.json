@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Ironing boards made for Triad by Kepteyn.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ironingboard",
+            "directions": 1
+        },
+        {
+            "name": "ironingboard-iron",
+            "directions": 1
+        },
+        {
+            "name": "ironingboard-folded",
+            "directions": 1
+        },
+        {
+            "name": "ironingboard-iron-folded",
+            "directions": 1
+        }
+    ]
+}

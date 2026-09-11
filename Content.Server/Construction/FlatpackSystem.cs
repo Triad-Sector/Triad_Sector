@@ -11,11 +11,11 @@ using Robust.Shared.Timing;
 namespace Content.Server.Construction;
 
 /// <inheritdoc/>
-public sealed class FlatpackSystem : SharedFlatpackSystem
+public sealed partial class FlatpackSystem : SharedFlatpackSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private AmbientSoundSystem _ambientSound = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -90,7 +90,7 @@ public sealed class FlatpackSystem : SharedFlatpackSystem
         else if (TryComp<ComputerBoardComponent>(board, out var computer) && computer.Prototype != null)
         {
             cost = GetFlatpackCreationCost(ent, null);
-            proto = computer.Prototype;
+            proto = computer.Prototype.Value;
         }
         else
         {

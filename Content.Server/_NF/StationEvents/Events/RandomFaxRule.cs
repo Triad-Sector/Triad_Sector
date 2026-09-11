@@ -5,15 +5,17 @@ using Content.Shared.Fax.Components;
 using Content.Server.Fax;
 using Content.Server.Station.Systems;
 using Robust.Shared.Random;
+using Content.Shared.Whitelist; // Triad
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
+public sealed partial class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly FaxSystem _faxSystem = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private FaxSystem _faxSystem = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad
+    [Dependency] private IRobustRandom _random = default!;
 
     private const int MaxRetries = 10;
     protected override void Added(EntityUid uid, RandomFaxRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
@@ -56,6 +58,11 @@ public sealed class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
                 retries++;
                 continue;
             }
+
+            // Triad start - whitelist and blacklist for fax station event
+            if (!_whitelist.CheckBoth(chosenStation, component.Blacklist, component.Whitelist))
+                return;
+            // Triad end
 
             if (!TryComp<StationDataComponent>(chosenStation, out var stationData))
             {

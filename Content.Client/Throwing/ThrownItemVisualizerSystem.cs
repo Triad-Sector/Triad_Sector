@@ -8,9 +8,10 @@ namespace Content.Client.Throwing;
 /// <summary>
 ///     Handles animating thrown items.
 /// </summary>
-public sealed class ThrownItemVisualizerSystem : EntitySystem
+public sealed partial class ThrownItemVisualizerSystem : EntitySystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _anim = default!;
+    [Dependency] private AnimationPlayerSystem _anim = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private const string AnimationKey = "thrown-item";
 
@@ -46,7 +47,7 @@ public sealed class ThrownItemVisualizerSystem : EntitySystem
             return;
 
         if (TryComp<SpriteComponent>(uid, out var sprite) && component.OriginalScale != null)
-            sprite.Scale = component.OriginalScale.Value;
+            _sprite.SetScale((uid, sprite), component.OriginalScale.Value);
 
         _anim.Stop(uid, AnimationKey);
     }

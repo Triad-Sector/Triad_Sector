@@ -37,11 +37,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoFMJIntermediateMagazineRecipe
-  id: MagazineDP29
-  result: MagazineDP29
-
-- type: latheRecipe
-  parent: BaseAmmoFMJIntermediateMagazineRecipe
   id: Magazine762x39mmSubsonic
   result: Magazine762x39mmSubsonic
 

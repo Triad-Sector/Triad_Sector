@@ -35,22 +35,22 @@ namespace Content.Server.Shuttles.Systems;
 
 public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 {
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ShuttleSystem _shuttle = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly TagSystem _tags = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
-    [Dependency] private readonly AccessReaderSystem _access = default!;
-    [Dependency] private readonly RadioSystem _radioSystem = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly CrewedShuttleSystem _crewedShuttle = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private AlertsSystem _alertsSystem = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ShuttleSystem _shuttle = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private TagSystem _tags = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedContentEyeSystem _eyeSystem = default!;
+    [Dependency] private AccessReaderSystem _access = default!;
+    [Dependency] private RadioSystem _radioSystem = default!;
+    [Dependency] private StationJobsSystem _stationJobs = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private CrewedShuttleSystem _crewedShuttle = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -271,12 +271,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var consoleXform = Transform(uid);
         var shuttleGrid = consoleXform.GridUid;
 
-        Logger.DebugS("shuttle", $"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
+        Log.Debug($"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
 
         // If the shuttleGrid is null, we can't do anything
         if (shuttleGrid == null)
         {
-            Logger.DebugS("shuttle", $"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
+            Log.Debug($"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
             return;
         }
 
@@ -294,14 +294,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             }
 
             SetFTLLock(dockedEntity, args.Enabled);
-            Logger.DebugS("shuttle", $"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
+            Log.Debug($"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
         }
 
         // If we didn't process the main grid yet, do it now
         if (!processedMainGrid && shuttleGrid != null)
         {
             SetFTLLock(shuttleGrid.Value, args.Enabled);
-            Logger.DebugS("shuttle", $"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
+            Log.Debug($"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
         }
     }
 
@@ -409,7 +409,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
         else
         {
-            navState = new NavInterfaceState(0f, null, null, new Dictionary<NetEntity, List<DockingPortState>>(), InertiaDampeningMode.Dampen); // Frontier: inertia dampening);
+            navState = new NavInterfaceState(0f, null, null, new Dictionary<NetEntity, List<DockingPortState>>(), InertiaDampeningMode.Dampen, ServiceFlags.None); // Frontier: inertia dampening);
             mapState = new ShuttleMapInterfaceState(
                 FTLState.Invalid,
                 default,
@@ -524,7 +524,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     public NavInterfaceState GetNavState(Entity<RadarConsoleComponent?, TransformComponent?> entity, Dictionary<NetEntity, List<DockingPortState>> docks)
     {
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2, false))
-            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, null, null, docks, Shared._NF.Shuttles.Events.InertiaDampeningMode.Dampen); // Frontier: add inertia dampening
+            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, null, null, docks, Shared._NF.Shuttles.Events.InertiaDampeningMode.Dampen, ServiceFlags.None); // Frontier: add inertia dampening
 
         // Get port names from the console component if available
         var portNames = new Dictionary<string, string>();
@@ -549,7 +549,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         Dictionary<string, string>? portNames = null)
     {
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2, false))
-            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks, InertiaDampeningMode.Dampen); // Frontier: add inertial dampening
+            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks, InertiaDampeningMode.Dampen, ServiceFlags.None); // Frontier: add inertial dampening
 
         return new NavInterfaceState(
             entity.Comp1.MaxRange,
@@ -557,6 +557,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             angle,
             docks,
             _shuttle.NfGetInertiaDampeningMode(entity), // Frontier: inertia dampening
+            _shuttle.NfGetServiceFlags(entity), // Frontier: service flags
             portNames);
     }
 

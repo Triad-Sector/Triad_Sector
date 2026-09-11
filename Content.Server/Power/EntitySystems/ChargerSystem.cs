@@ -18,14 +18,14 @@ using Content.Server._NF.Power.Components; // Frontier
 namespace Content.Server.Power.EntitySystems;
 
 [UsedImplicitly]
-internal sealed class ChargerSystem : EntitySystem
+internal sealed partial class ChargerSystem : EntitySystem
 {
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
 
     public override void Initialize()
     {
@@ -247,11 +247,11 @@ internal sealed class ChargerSystem : EntitySystem
         switch (component.Status)
         {
             case CellChargerStatus.Off:
-                receiver.Load = 0;
+                receiver.Load = 1;
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Off, appearance);
                 break;
             case CellChargerStatus.Empty:
-                receiver.Load = 0;
+                receiver.Load = 1;
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Empty, appearance);
                 break;
             case CellChargerStatus.Charging:
@@ -259,7 +259,7 @@ internal sealed class ChargerSystem : EntitySystem
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Charging, appearance);
                 break;
             case CellChargerStatus.Charged:
-                receiver.Load = 0;
+                receiver.Load = 1;
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Charged, appearance);
                 break;
             default:

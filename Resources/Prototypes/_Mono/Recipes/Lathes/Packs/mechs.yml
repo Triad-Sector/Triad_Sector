@@ -125,8 +125,6 @@
 - type: latheRecipePack
   id: SpaceMechaIFF
   recipes:
-  - MechIFFTSF
-  - MechIFFPDV
   - IFFMechaBlueSquare
   - IFFMechaBlueCircle
   - IFFMechaBlueTriangle

@@ -3,8 +3,8 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.M_Emp;
 
-public abstract class SharedM_EmpSystem : EntitySystem
+public abstract partial class SharedM_EmpSystem : EntitySystem
 {
-    [Dependency] private readonly ILocalizationManager _loc = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private ILocalizationManager _loc = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 }

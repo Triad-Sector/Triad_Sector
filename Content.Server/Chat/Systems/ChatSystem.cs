@@ -54,30 +54,30 @@ namespace Content.Server.Chat.Systems;
 /// </summary>
 public sealed partial class ChatSystem : SharedChatSystem
 {
-    [Dependency] private readonly IReplayRecordingManager _replay = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IChatSanitizationManager _sanitizer = default!;
-    [Dependency] private readonly IAdminManager _adminManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-    [Dependency] private readonly DiscordChatLink _discordLink = default!;
-    [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
-    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Goobstation - Starlight collective mind port
+    [Dependency] private IReplayRecordingManager _replay = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private IChatSanitizationManager _sanitizer = default!;
+    [Dependency] private IAdminManager _adminManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private MobStateSystem _mobStateSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ReplacementAccentSystem _wordreplacement = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private ExamineSystemShared _examineSystem = default!;
+    [Dependency] private DiscordChatLink _discordLink = default!;
+    [Dependency] private LanguageSystem _language = default!; // Einstein Engines - Language
+    [Dependency] private CollectiveMindUpdateSystem _collectiveMind = default!; // Goobstation - Starlight collective mind port
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
-    public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg";
+    public static readonly SoundSpecifier DefaultAnnouncementSound = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
     public const float DefaultObfuscationFactor = 0.2f; // Percentage of symbols in a whispered message that can be seen even by "far" listeners
     public readonly Color DefaultSpeakColor = Color.White; // Einstein Engines - Language
 
@@ -357,6 +357,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (!_critLoocEnabled && _mobStateSystem.IsCritical(source))
             return;
 
+        // Systems can differentiate Looc and DeadChat by type, and cancel the speak attempt if necessary.
+        var ev = new InGameOocMessageAttemptEvent(player, sendType);
+        RaiseLocalEvent(source, ref ev, true);
+        if (ev.Cancelled)
+            return;
+
         switch (sendType)
         {
             case InGameOOCChatType.Dead:
@@ -396,7 +402,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -426,7 +432,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source ?? default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound?.ToString() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement from {sender}: {message}");
     }
@@ -466,7 +472,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (playDefaultSound)
         {
-            _audio.PlayGlobal(announcementSound?.ToString() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
@@ -622,18 +628,18 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (originalMessage == message)
         {
             if (name != Name(source))
-                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {source} as {name}: {originalMessage}.");
             else
-                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user}: {originalMessage}.");
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {source}: {originalMessage}.");
         }
         else
         {
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Say from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}.");
+                    $"Say from {source} as {name}, original: {originalMessage}, transformed: {message}.");
             else
                 _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Say from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
+                    $"Say from {source}, original: {originalMessage}, transformed: {message}.");
         }
     }
 
@@ -648,6 +654,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool ignoreActionBlocker = false
         )
     {
+        const ChatChannel chatChannel = ChatChannel.Whisper;
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
             return;
 
@@ -675,11 +682,15 @@ public sealed partial class ChatSystem : SharedChatSystem
             (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
-
-        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        foreach (var (session, data) in GetRecipients(chatChannel, source, WhisperMuffledRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
+
+            // Triad - only admins can see whispers
+            if (data.Observer && !CanObserverSeeSubtle(session))
+               continue;
+            // Triad end
 
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
@@ -711,11 +722,11 @@ public sealed partial class ChatSystem : SharedChatSystem
                 wrappedMessage = WrapWhisperMessage(source, "chat-manager-entity-whisper-unknown-wrap-message", string.Empty, result, language);
             }
 
-            _chatManager.ChatMessageToOne(ChatChannel.Whisper, result, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(chatChannel, result, wrappedMessage, source, false, session.Channel);
         }
 
         var replayWrap = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, message, language);
-        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        _replay.RecordServerMessage(new ChatMessage(chatChannel, message, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
         // Einstein Engines - Languages end
 
         var ev = new EntitySpokeEvent(source, message, channel, true, language); // Einstein Engines - Languages
@@ -724,18 +735,18 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (originalMessage == message)
             {
                 if (name != Name(source))
-                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {source} as {name}: {originalMessage}.");
                 else
-                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user}: {originalMessage}.");
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {source}: {originalMessage}.");
             }
             else
             {
                 if (name != Name(source))
                     _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Whisper from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}.");
+                    $"Whisper from {source} as {name}, original: {originalMessage}, transformed: {message}.");
                 else
                     _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Whisper from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
+                    $"Whisper from {source}, original: {originalMessage}, transformed: {message}.");
             }
     }
 
@@ -749,6 +760,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool ignoreActionBlocker = false)
     {
+        const ChatChannel chatChannel = ChatChannel.CollectiveMind;
         var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage), language);
         if (message.Length == 0)
             return;
@@ -770,8 +782,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
-
-        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        foreach (var (session, data) in GetRecipients(chatChannel, source, WhisperMuffledRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
@@ -787,7 +798,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var wrappedMessage = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, perceivedMessage, language);
-            _chatManager.ChatMessageToOne(ChatChannel.CollectiveMind, message, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(chatChannel, message, wrappedMessage, source, false, session.Channel);
         }
 
         if (!hideLog)
@@ -887,7 +898,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 ("title", title),
                 ("userName", player.Channel.UserName),
                 ("message", FormattedMessage.EscapeText(message)));
-            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Admin dead chat from {player:Player}: {message}");
+            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Admin dead chat from {source}: {message}");
         }
         else
         {
@@ -895,7 +906,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 ("deadChannelName", Loc.GetString("chat-manager-dead-channel-name")),
                 ("playerName", (playerName)),
                 ("message", FormattedMessage.EscapeText(message)));
-            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Dead chat from {player:Player}: {message}");
+            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Dead chat from {source}: {message}");
         }
 
         _chatManager.ChatMessageToMany(ChatChannel.Dead, message, wrappedMessage, source, hideChat, true, clients.ToList(), author: player.UserId);
@@ -965,8 +976,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private void SendInVoiceRange(ChatChannel channel, string name, string message, string wrappedMessage, string obfuscated, string obfuscatedWrappedMessage, EntityUid source, ChatTransmitRange range, NetUserId? author = null, LanguagePrototype? languageOverride = null) // Einstein Engines - Language
     {
         var language = languageOverride ?? _language.GetLanguage(source); // Einstein Engines - Language
-
-        foreach (var (session, data) in GetRecipients(source, VoiceRange))
+        foreach (var (session, data) in GetRecipients(channel, source, VoiceRange))
         {
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
@@ -1085,8 +1095,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         return message;
     }
 
-    [ValidatePrototypeId<ReplacementAccentPrototype>]
-    public const string ChatSanitize_Accent = "chatsanitize";
+    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {
@@ -1151,13 +1160,16 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     /// <summary>
     ///     Returns list of players and ranges for all players withing some range. Also returns observers with a range of -1.
+    ///
+    ///     Triad: it also handles applying range limits to admins hearing subtle messages even in observer mode and preventing non-admin ghosts from hearing those messages at all
     /// </summary>
-    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange)
+    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(ChatChannel channel, EntityUid source, float voiceGetRange)
     {
         // TODO proper speech occlusion
 
         var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
         var ghostHearing = GetEntityQuery<GhostHearingComponent>();
+        var ghost = GetEntityQuery<GhostComponent>();
         var xforms = GetEntityQuery<TransformComponent>();
 
         var transformSource = xforms.GetComponent(source);
@@ -1167,14 +1179,28 @@ public sealed partial class ChatSystem : SharedChatSystem
         foreach (var player in _playerManager.Sessions)
         {
             if (player.AttachedEntity is not { Valid: true } playerEntity)
-                continue;
+                continue; // don't send messages to non-players
 
             var transformEntity = xforms.GetComponent(playerEntity);
 
-            if (transformEntity.MapID != sourceMapId)
+            // triad start
+            const ChatChannel privateMask = ChatChannel.Subtle | ChatChannel.SubtleOOC | ChatChannel.Whisper;
+            var messageIsPrivate = (channel & privateMask) != ChatChannel.None;
+            var hasGhostHearing = ghostHearing.HasComponent(playerEntity);
+            var isGhost = ghost.HasComponent(playerEntity);
+            var isAdminPiiPerm = _adminManager.HasAdminFlag(playerEntity, AdminFlags.Pii);
+
+            // ghosts that are not admins are never "in range" of subtle messages no matter where they are
+            if (messageIsPrivate && isGhost && !isAdminPiiPerm)
                 continue;
 
-            var observer = ghostHearing.HasComponent(playerEntity);
+            // ghostHearing means you can hear messages from anywhere unless they are subtle
+            var observer = hasGhostHearing && !messageIsPrivate;
+
+            // ghostHearing works across worlds for applicable messages
+            if (!observer && transformEntity.MapID != sourceMapId)
+                continue;
+            // triad end
 
             // Floofstation edit - check LOS
             sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance);

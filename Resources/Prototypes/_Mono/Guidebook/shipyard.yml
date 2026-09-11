@@ -6,17 +6,23 @@
   children:
   - ShipyardNFROperation
   - ShipyardArgent
+  - ShipyardBehir
   - ShipyardJudiciary
   - ShipyardSabine
   - ShipyardTakeaway
 #  - ShipyardRuby
-  - ShipyardMotleyAnne
+#  - ShipyardMotleyAnne
   - ShipyardFenrir
 
 - type: guideEntry
   id: ShipyardArgent
   name: guide-entry-shipyard-argent
   text: "/ServerInfo/_Mono/Guidebook/Shipyard/Argent.xml"
+
+- type: guideEntry
+  id: ShipyardBehir
+  name: guide-entry-shipyard-behir
+  text: "/ServerInfo/_Mono/Guidebook/Shipyard/Behir.xml"
 
 - type: guideEntry
   id: ShipyardJudiciary
@@ -37,11 +43,6 @@
 #  id: ShipyardRuby
 #  name: guide-entry-shipyard-ruby
 #  text: "/ServerInfo/_Mono/Guidebook/Shipyard/Ruby.xml"
-
-- type: guideEntry
-  id: ShipyardMotleyAnne
-  name: guide-entry-shipyard-motley-anne
-  text: "/ServerInfo/_Mono/Guidebook/Shipyard/MotleyAnne.xml"
 
 - type: guideEntry
   id: ShipyardFenrir

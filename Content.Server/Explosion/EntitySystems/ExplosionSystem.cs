@@ -41,28 +41,27 @@ namespace Content.Server.Explosion.EntitySystems;
 
 public sealed partial class ExplosionSystem : SharedExplosionSystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private IRobustRandom _robustRandom = default!;
+    [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
-    [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly NodeGroupSystem _nodeGroupSystem = default!;
-    [Dependency] private readonly PathfindingSystem _pathfindingSystem = default!;
-    [Dependency] private readonly SharedCameraRecoilSystem _recoilSystem = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-    [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly StackSystem _stack = default!; // Mono
-    [Dependency] private readonly IGameTiming _gameTiming = default!; // Mono
+    [Dependency] private MapSystem _mapSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private DamageableSystem _damageableSystem = default!;
+    [Dependency] private NodeGroupSystem _nodeGroupSystem = default!;
+    [Dependency] private PathfindingSystem _pathfindingSystem = default!;
+    [Dependency] private SharedCameraRecoilSystem _recoilSystem = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private ThrowingSystem _throwingSystem = default!;
+    [Dependency] private PvsOverrideSystem _pvsSys = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private StackSystem _stack = default!; // Mono
+    [Dependency] private IGameTiming _gameTiming = default!; // Mono
 
     private EntityQuery<FlammableComponent> _flammableQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -84,8 +83,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
     ///     find errors. However some components, like rogue arrows, or some commands like the admin-smite need to have
     ///     a "default" option specified outside of yaml data-fields. Hence this const string.
     /// </remarks>
-    [ValidatePrototypeId<ExplosionPrototype>]
-    public const string DefaultExplosionPrototypeId = "Default";
+    public static readonly ProtoId<ExplosionPrototype> DefaultExplosionPrototypeId = "Default";
     private static readonly TimeSpan AlertCooldown = TimeSpan.FromSeconds(60); // Mono: Explosion Admin Alert Cooldown
     public TimeSpan NextAlertTime; // Mono
 
@@ -256,7 +254,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
         EntityUid? user = null,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
         var pos = Transform(uid);
 
@@ -269,12 +268,12 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             return;
 
         // Mono - MapCoordinates -> EntityCoordinates
-        QueueExplosion(gridPos!.Value, typeId, totalIntensity, slope, maxTileIntensity, uid, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false);
+        QueueExplosion(gridPos!.Value, typeId, totalIntensity, slope, maxTileIntensity, uid, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false, gridOnly: gridOnly); // Triad: gridOnly
 
         if (!addLog)
             return;
 
-        var gridFound = _mapManager.TryFindGridAt(mapPos, out var gridUid, out _); // Mono, sanity. Grid ID included with alerts, and mapPos is always used for coords.
+        var gridFound = _map.TryFindGridAt(mapPos, out var gridUid, out _); // Mono, sanity. Grid ID included with alerts, and mapPos is always used for coords.
 
         if (user == null)
         {
@@ -306,9 +305,10 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
-        QueueExplosion(_transformSystem.ToCoordinates(epicenter), typeId, totalIntensity, slope, maxTileIntensity, cause, tileBreakScale, maxTileBreak, canCreateVacuum, addLog);
+        QueueExplosion(_transformSystem.ToCoordinates(epicenter), typeId, totalIntensity, slope, maxTileIntensity, cause, tileBreakScale, maxTileBreak, canCreateVacuum, addLog, gridOnly); // Triad: gridOnly
     }
 
     // Mono - MapCoordinates -> EntityCoordinates
@@ -324,7 +324,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
         if (totalIntensity <= 0 || slope <= 0)
             return;
@@ -364,7 +365,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             TileBreakScale = tileBreakScale,
             MaxTileBreak = maxTileBreak,
             CanCreateVacuum = canCreateVacuum,
-            Cause = cause
+            Cause = cause,
+            GridOnly = gridOnly // Triad
         };
         _explosionQueue.Enqueue(boom);
         _queuedExplosions.Add(boom);
@@ -383,10 +385,10 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             return null;
 
         var pos = _transformSystem.ToMapCoordinates(entPos);
-        if (!_mapManager.MapExists(pos.MapId))
+        if (!_map.MapExists(pos.MapId))
             return null;
 
-        var results = GetExplosionTiles(pos, queued.Proto.ID, queued.TotalIntensity, queued.Slope, queued.MaxTileIntensity);
+        var results = GetExplosionTiles(pos, queued.Proto.ID, queued.TotalIntensity, queued.Slope, queued.MaxTileIntensity, queued.GridOnly); // Triad: gridOnly
 
         if (results == null)
             return null;
@@ -444,7 +446,6 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             queued.MaxTileBreak,
             queued.CanCreateVacuum,
             EntityManager,
-            _mapManager,
             visualEnt,
             queued.Cause,
             _map);

@@ -1,0 +1,128 @@
+﻿- type: guideEntry
+  id: Security
+  name: guide-entry-security
+  text: "/ServerInfo/Guidebook/Security/Security.xml"
+  children:
+  - Forensics
+  - Defusal
+  - CriminalRecords
+  - SectorLaw
+  - TdfSop
+  - Smuggling
+
+- type: guideEntry
+  id: Forensics
+  name: guide-entry-forensics
+  text: "/ServerInfo/Guidebook/Security/Forensics.xml"
+
+- type: guideEntry
+  id: Defusal
+  name: guide-entry-defusal
+  text: "/ServerInfo/Guidebook/Security/Defusal.xml"
+
+- type: guideEntry
+  id: CriminalRecords
+  name: guide-entry-criminal-records
+  text: "/ServerInfo/Guidebook/Security/CriminalRecords.xml"
+
+- type: guideEntry
+  id: Smuggling
+  name: guide-entry-nfsd-smuggling
+  text: "/ServerInfo/_NF/Guidebook/NFSD/Smuggling.xml"
+
+- type: guideEntry
+  id: SectorLaw
+  name: guide-entry-sector-law
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SectorLaw.xml"
+  children:
+  - SLDefinitions
+  - SLCitizenRights
+  - SLContrabandList
+  - SLCrimeList
+
+- type: guideEntry
+  id: SLCrimeList
+  name: guide-entry-rules-sl-crime-list
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList.xml"
+  children:
+  - SLCrimeList100Series
+  - SLCrimeList200Series
+  - SLCrimeList300Series
+  - SLCrimeList400Series
+
+- type: guideEntry
+  id: SLCrimeList100Series
+  name: guide-entry-sl-crime-list-100-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList100Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList200Series
+  name: guide-entry-sl-crime-list-200-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList200Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList300Series
+  name: guide-entry-sl-crime-list-300-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList300Series.xml"
+
+- type: guideEntry
+  id: SLCrimeList400Series
+  name: guide-entry-sl-crime-list-400-series
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCrimeList400Series.xml"
+
+- type: guideEntry
+  id: SLCitizenRights
+  name: guide-entry-sector-law-citizen-rights
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLCitizenRights.xml"
+
+- type: guideEntry
+  id: SLDefinitions
+  name: guide-entry-sector-law-definitions
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLDefinitions.xml"
+
+- type: guideEntry
+  id: SLContrabandList
+  name: guide-entry-sector-law-contraband-list
+  text: "/ServerInfo/_Triad/Guidebook/TDF/Law/SLContrabandList.xml"
+
+- type: guideEntry
+  id: TdfSop
+  name: guide-entry-tdf-sop
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/TdfSop.xml"
+  children:
+  - SOPJurisdictionalAuthority
+  - SOPSmuggling
+  - SOPNavalEngagements
+  - SOPArrestProcedure
+  - SOPChainOfCommand
+  - SOPCommandAuthority
+
+- type: guideEntry
+  id: SOPJurisdictionalAuthority
+  name: guide-entry-tdf-sop-jurisdictional-authority
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPJurisdictionalAuthority.xml"
+
+- type: guideEntry
+  id: SOPSmuggling
+  name: guide-entry-tdf-sop-smuggling
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPSmuggling.xml"
+
+- type: guideEntry
+  id: SOPNavalEngagements
+  name: guide-entry-tdf-sop-naval-engagements
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPNavalEngagements.xml"
+
+- type: guideEntry
+  id: SOPArrestProcedure
+  name: guide-entry-tdf-sop-arrest-procedure
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPArrestProcedure.xml"
+
+- type: guideEntry
+  id: SOPChainOfCommand
+  name: guide-entry-tdf-sop-coc
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPChainOfCommand.xml"
+
+- type: guideEntry
+  id: SOPCommandAuthority
+  name: guide-entry-tdf-sop-command-authority
+  text: "/ServerInfo/_Triad/Guidebook/TDF/SOP/SOPCommandAuthority.xml"

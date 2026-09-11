@@ -19,10 +19,10 @@ namespace Content.Server.StationEvents
     ///     game presets use.
     /// </summary>
     [UsedImplicitly]
-    public sealed class BasicStationEventSchedulerSystem : GameRuleSystem<BasicStationEventSchedulerComponent>
+    public sealed partial class BasicStationEventSchedulerSystem : GameRuleSystem<BasicStationEventSchedulerComponent>
     {
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly EventManagerSystem _event = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private EventManagerSystem _event = default!;
 
         protected override void Started(EntityUid uid, BasicStationEventSchedulerComponent component, GameRuleComponent gameRule,
             GameRuleStartedEvent args)
@@ -78,6 +78,7 @@ namespace Content.Server.StationEvents
         private EntityTableSystem? _entityTable;
         private IComponentFactory? _compFac;
         private IRobustRandom? _random;
+        private IPrototypeManager? _protoMan; // Triad: engine v274 toolshed needs EntProtoId args, raw EntityPrototype has no parser
 
         /// <summary>
         ///     Estimates the expected number of times an event will run over the course of X rounds, taking into account weights and
@@ -94,12 +95,14 @@ namespace Content.Server.StationEvents
         ///     to even exist) so I think it's fine.
         /// </remarks>
         [CommandImplementation("simulate")]
-        public IEnumerable<(string, float)> Simulate(EntityPrototype eventScheduler, int rounds, int playerCount, float roundEndMean, float roundEndStdDev)
+        public IEnumerable<(string, float)> Simulate(EntProtoId eventSchedulerProto, int rounds, int playerCount, float roundEndMean, float roundEndStdDev)
         {
             _stationEvent ??= GetSys<EventManagerSystem>();
             _entityTable ??= GetSys<EntityTableSystem>();
             _compFac ??= IoCManager.Resolve<IComponentFactory>();
             _random ??= IoCManager.Resolve<IRobustRandom>();
+            _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
+            var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
             var occurrences = new Dictionary<string, int>();
 
@@ -108,7 +111,7 @@ namespace Content.Server.StationEvents
                 occurrences.Add(ev.Key.ID, 0);
             }
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
             {
                 return occurrences.Select(p => (p.Key, (float)p.Value)).OrderByDescending(p => p.Item2);
             }
@@ -146,12 +149,14 @@ namespace Content.Server.StationEvents
         }
 
         [CommandImplementation("lsprob")]
-        public IEnumerable<(string, float)> LsProb(EntityPrototype eventScheduler)
+        public IEnumerable<(string, float)> LsProb(EntProtoId eventSchedulerProto)
         {
             _compFac ??= IoCManager.Resolve<IComponentFactory>();
             _stationEvent ??= GetSys<EventManagerSystem>();
+            _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
+            var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var events))
@@ -166,12 +171,14 @@ namespace Content.Server.StationEvents
         }
 
         [CommandImplementation("lsprobtime")]
-        public IEnumerable<(string, float)> LsProbTime(EntityPrototype eventScheduler, float time)
+        public IEnumerable<(string, float)> LsProbTime(EntProtoId eventSchedulerProto, float time)
         {
             _compFac ??= IoCManager.Resolve<IComponentFactory>();
             _stationEvent ??= GetSys<EventManagerSystem>();
+            _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
+            var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var untimedEvents))
@@ -188,12 +195,14 @@ namespace Content.Server.StationEvents
         }
 
         [CommandImplementation("prob")]
-        public float Prob(EntityPrototype eventScheduler, string eventId)
+        public float Prob(EntProtoId eventSchedulerProto, string eventId)
         {
             _compFac ??= IoCManager.Resolve<IComponentFactory>();
             _stationEvent ??= GetSys<EventManagerSystem>();
+            _protoMan ??= IoCManager.Resolve<IPrototypeManager>();
+            var eventScheduler = _protoMan.Index(eventSchedulerProto);
 
-            if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
+            if (!eventScheduler.TryComp<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 return 0f;
 
             if (!_stationEvent.TryBuildLimitedEvents(basicScheduler.ScheduledGameRules, out var events))

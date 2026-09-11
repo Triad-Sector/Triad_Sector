@@ -11,6 +11,10 @@ marking-FelinidTiger-m_tail_tiger_primary = Primary
 marking-FelinidTiger-m_tail_tiger_secondary = Tip of Tail
 marking-FelinidTiger-m_tail_tiger_tertiary = Stripes
 marking-FelinidTailFoxtail = Fox Tail
+# Triad: missing sublayer keys referenced by _Goobstation/.../felinid.yml
+marking-FelinidTailFoxtail-base_fox_tail = Fox Tail
+marking-FelinidTailFoxtail-base_fox_tail_tip = Tail Tip
+# End Triad
 
 # Triad add
 

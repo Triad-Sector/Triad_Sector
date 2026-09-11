@@ -31,6 +31,9 @@
   - type: NpcFactionMember
     factions:
     - SimpleNeutral
+  - type: Access
+    tags:
+    - BasicSilicon
   - type: IntrinsicRadioReceiver
   - type: ActiveRadio
     channels:
@@ -131,7 +134,7 @@
     enabled: false
     radius: 3.5
     softness: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
 
 - type: entity
@@ -491,7 +494,7 @@
     enabled: false
     radius: 3.5
     softness: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: FootstepModifier
     footstepSoundCollection:

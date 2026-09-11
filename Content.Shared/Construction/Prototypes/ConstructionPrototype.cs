@@ -1,7 +1,7 @@
+using System.Numerics; // Triad
 using Content.Shared.Construction.Conditions;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Construction.Prototypes;
@@ -32,8 +32,8 @@ public sealed partial class ConstructionPrototype : IPrototype
     /// <summary>
     ///     The <see cref="ConstructionGraphPrototype"/> this construction will be using.
     /// </summary>
-    [DataField("graph", customTypeSerializer: typeof(PrototypeIdSerializer<ConstructionGraphPrototype>), required: true)]
-    public string Graph = string.Empty;
+    [DataField("graph", required: true)]
+    public ProtoId<ConstructionGraphPrototype> Graph = string.Empty;
 
     /// <summary>
     ///     The target <see cref="ConstructionGraphNode"/> this construction will guide the user to.
@@ -92,8 +92,8 @@ public sealed partial class ConstructionPrototype : IPrototype
     /// <summary>
     ///     Construction to replace this construction with when the current one is 'flipped'
     /// </summary>
-    [DataField("mirror", customTypeSerializer: typeof(PrototypeIdSerializer<ConstructionPrototype>))]
-    public string? Mirror;
+    [DataField("mirror")]
+    public ProtoId<ConstructionPrototype>? Mirror;
 
     /// <summary>
     ///     Possible constructions to replace this one with as determined by the placement mode
@@ -103,6 +103,11 @@ public sealed partial class ConstructionPrototype : IPrototype
 
     public IReadOnlyList<IConstructionCondition> Conditions => _conditions;
     public IReadOnlyList<SpriteSpecifier> Layers => _layers ?? new List<SpriteSpecifier> { Icon };
+
+    // Triad changes
+    [DataField]
+    public Vector2 GhostOffset = Vector2.Zero;
+    // End Triad
 }
 
 public enum ConstructionType

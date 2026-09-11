@@ -13,17 +13,17 @@ using System.Linq;
 
 namespace Content.Shared.Chemistry.Reaction
 {
-    public sealed class ChemicalReactionSystem : EntitySystem
+    public sealed partial class ChemicalReactionSystem : EntitySystem
     {
         /// <summary>
         ///     The maximum number of reactions that may occur when a solution is changed.
         /// </summary>
         private const int MaxReactionIterations = 20;
 
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
 
         /// <summary>
         /// A cache of all reactions indexed by at most ONE of their required reactants.
@@ -285,7 +285,12 @@ namespace Content.Shared.Chemistry.Reaction
                     return;
             }
 
-            Log.Error($"{nameof(Solution)} {soln.Owner} could not finish reacting in under {MaxReactionIterations} loops.");
+            // Triad: hitting the cap means the solution never settled, which is usually a cycle in
+            // the reaction set rather than a merely long chain. The entity uid alone cannot be acted
+            // on: by the time anyone reads the log the solution is gone, and nothing records what was
+            // in it. Naming the contents is what makes the next occurrence reproducible.
+            var contents = string.Join(", ", soln.Comp.Solution.Contents.Select(r => $"{r.Reagent.Prototype}={r.Quantity}"));
+            Log.Error($"{nameof(Solution)} {ToPrettyString(soln.Owner)} could not finish reacting in under {MaxReactionIterations} loops. Contents: [{contents}]");
         }
     }
 

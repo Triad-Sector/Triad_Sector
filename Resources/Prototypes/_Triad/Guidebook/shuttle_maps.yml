@@ -1,0 +1,23 @@
+﻿- type: entity
+  parent: PosterBase
+  id: ShuttleMapBehir
+  name: "DIRE Behir"
+  description: "Detailed map of a Behir shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: behir
+    scale: 1.8, 1.8
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapDIRELogo
+  name: "DIRE Logo"
+  description: "Detailed map of a Behir shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: direlogo
+    scale: 1.8, 1.8

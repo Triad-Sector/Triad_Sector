@@ -36,6 +36,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 using Robust.Shared.GameObjects;
 using Content.Shared._Crescent.SpaceBiomes;
@@ -46,7 +47,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 {
     private readonly IEntityManager _entManager;
     private readonly IGameTiming _timing;
-    private readonly IMapManager _mapManager;
     private readonly IPrototypeManager _prototypeManager;
     private readonly AnchorableSystem _anchorable;
     private readonly BiomeSystem _biome;
@@ -58,6 +58,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     private readonly SalvageSystem _salvage;
     private readonly SharedTransformSystem _xforms;
     private readonly SharedMapSystem _map;
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("salvage");
 
     public readonly EntityUid Station;
     public readonly EntityUid? CoordinatesDisk;
@@ -80,7 +81,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         double maxTime,
         IEntityManager entManager,
         IGameTiming timing,
-        IMapManager mapManager,
         IPrototypeManager protoManager,
         AnchorableSystem anchorable,
         BiomeSystem biome,
@@ -99,7 +99,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     {
         _entManager = entManager;
         _timing = timing;
-        _mapManager = mapManager;
         _prototypeManager = protoManager;
         _anchorable = anchorable;
         _biome = biome;
@@ -130,7 +129,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             ExpeditionSpawnCompleteEvent ev = new(Station, success, _missionParams.Index);
             _entManager.EventBus.RaiseLocalEvent(Station, ev);
             if (errorStackTrace != null)
-                Logger.ErrorS("salvage", $"Expedition generation failed with exception: {errorStackTrace}!");
+                _sawmill.Error($"Expedition generation failed with exception: {errorStackTrace}!");
             if (!success)
             {
                 // Invalidate station, expedition cancellation will be handled by task handler
@@ -146,7 +145,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 
     private async Task<bool> InternalProcess() // Frontier: make process an internal function (for a try block indenting an entire), add "out EntityUid mapUid" param
     {
-        Logger.DebugS("salvage", $"Spawning salvage mission with seed {_missionParams.Seed}");
+        _sawmill.Debug($"Spawning salvage mission with seed {_missionParams.Seed}");
         var config = _missionParams.MissionType;
         mapUid = _map.CreateMap(out var mapId, runMapInit: false); // Frontier: remove "var"
         MetaDataComponent? metadata = null;
@@ -216,8 +215,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             }
         }
 
-        _mapManager.DoMapInitialize(mapId);
-        _mapManager.SetMapPaused(mapId, true);
+        _map.InitializeMap(mapId, unpause: true);
+        _map.SetPaused(mapId, true);
 
         // Setup expedition
         var expedition = _entManager.AddComponent<SalvageExpeditionComponent>(mapUid);
@@ -254,7 +253,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         if (config != SalvageMissionType.Mining) // Frontier: why?
         {
             var maxDungeonOffset = minDungeonOffset + 12;
-            var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloat();
+            var dungeonOffsetDistance = minDungeonOffset + (maxDungeonOffset - minDungeonOffset) * random.NextFloatValue();
             dungeonOffset = new Vector2(0f, dungeonOffsetDistance);
             dungeonOffset = dungeonRotation.RotateVec(dungeonOffset);
             var dungeonMod = _prototypeManager.Index<SalvageDungeonModPrototype>(mission.Dungeon);
@@ -442,7 +441,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 var spawnTile = validSpawns[^1];
                 validSpawns.RemoveAt(validSpawns.Count - 1);
 
-                if (!_anchorable.TileFree(grid, spawnTile, (int) CollisionGroup.MachineLayer,
+                if (!_anchorable.TileFree((gridUid, grid), spawnTile, (int) CollisionGroup.MachineLayer,
                         (int) CollisionGroup.MachineMask)) // Frontier: MachineLayer<MachineMask
                 {
                     continue;
@@ -490,7 +489,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 
         for (var i = 0; i < groupSpawns; i++)
         {
-            var roll = random.NextFloat() * groupSum;
+            var roll = random.NextFloatValue() * groupSum;
             var value = 0f;
 
             foreach (var group in faction.MobGroups)
@@ -516,7 +515,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                         var spawnTile = validSpawns[^1];
                         validSpawns.RemoveAt(validSpawns.Count - 1);
 
-                        if (!_anchorable.TileFree(grid, spawnTile, (int)CollisionGroup.MachineLayer,
+                        if (!_anchorable.TileFree((mapUid, grid), spawnTile, (int)CollisionGroup.MachineLayer,
                                 (int)CollisionGroup.MachineLayer))
                         {
                             continue;

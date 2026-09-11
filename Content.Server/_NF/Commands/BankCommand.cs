@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Administration;
 using Content.Server.Database;
@@ -13,16 +13,19 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server._NF.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class BankCommand : IConsoleCommand
+public sealed partial class BankCommand : IConsoleCommand
 {
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _dbManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IServerPreferencesManager _prefsManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _dbManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public string Command => "bank";
 
@@ -136,7 +139,7 @@ public sealed class BankCommand : IConsoleCommand
             // Player is in-game with entity that has bank account - use entity methods which will update the profile
             if (amount > 0)
             {
-                success = bankSystem.TryBankDeposit(playerEntity.Value, amount);
+                success = bankSystem.TryBankDeposit(playerEntity.Value, amount, new MarketRecord { Kind = MarketTransactionKind.AdminAdjust });
                 if (success)
                 {
                     // Get updated balance after deposit
@@ -147,7 +150,7 @@ public sealed class BankCommand : IConsoleCommand
             }
             else if (amount < 0)
             {
-                success = bankSystem.TryBankWithdraw(playerEntity.Value, Math.Abs(amount));
+                success = bankSystem.TryBankWithdraw(playerEntity.Value, Math.Abs(amount), new MarketRecord { Kind = MarketTransactionKind.AdminAdjust });
                 if (success)
                 {
                     // Get updated balance after withdrawal
@@ -170,11 +173,11 @@ public sealed class BankCommand : IConsoleCommand
             // Player is not in-game or entity has no bank account - update profile directly
             if (amount > 0)
             {
-                success = bankSystem.TryBankDeposit(targetSession, prefs, profile, amount, out newBalance);
+                success = bankSystem.TryBankDeposit(targetSession, prefs, profile, amount, out newBalance, new MarketRecord { Kind = MarketTransactionKind.AdminAdjust });
             }
             else if (amount < 0)
             {
-                success = bankSystem.TryBankWithdraw(targetSession, prefs, profile, Math.Abs(amount), out newBalance);
+                success = bankSystem.TryBankWithdraw(targetSession, prefs, profile, Math.Abs(amount), out newBalance, new MarketRecord { Kind = MarketTransactionKind.AdminAdjust });
             }
             else
             {

@@ -6759,7 +6759,7 @@ entities:
     - type: Transform
       pos: 7.5,-1.5
       parent: 1
-- proto: RandomBook
+- proto: NFRandomBook
   entities:
   - uid: 992
     components:

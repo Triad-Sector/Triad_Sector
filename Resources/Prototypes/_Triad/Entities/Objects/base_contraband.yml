@@ -1,0 +1,174 @@
+# TDF
+- type: entity
+  parent: BaseFactionGearT0
+  id: BaseFactionGearTDFT0
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ Security ]
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT1
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear1
+    turnInValues:
+      Doubloon: 10
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT2
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear2
+    turnInValues:
+      Doubloon: 30
+
+- type: entity
+  parent: BaseFactionGearTDFT0
+  id: BaseFactionGearTDFT3
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear3
+    turnInValues:
+      Doubloon: 45
+
+# Solarian Directive | TODO: Turn in values for these
+- type: entity
+  parent: BaseFactionGearT0
+  id: BaseFactionGearSDT0
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ SolarianDirective ]
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT1
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear1
+    turnInValues:
+      TriadCommerceCredit: 10
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT2
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear2
+    turnInValues:
+      TriadCommerceCredit: 30
+
+- type: entity
+  parent: BaseFactionGearSDT0
+  id: BaseFactionGearSDT3
+  abstract: true
+  components:
+  - type: Contraband
+    severity: FactionGear3
+    turnInValues:
+      TriadCommerceCredit: 45
+
+# Class 2 Contraband
+- type: entity
+  id: BaseTriadC2ContrabandUnredeemable
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class2
+
+- type: entity
+  parent: BaseTriadC2ContrabandUnredeemable
+  id: BaseTriadC2Contraband
+  abstract: true
+  components:
+  - type: Contraband
+    turnInValues:
+      TriadCommerceCredit: 15
+
+# Class 3 Contraband
+- type: entity
+  id: BaseTriadC3ContrabandUnredeemable
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Class3General
+  - type: ItemTax
+    taxAccounts:
+      TDF: -0.05 # TDF account
+
+- type: entity
+  parent: BaseTriadC3ContrabandUnredeemable
+  id: BaseTriadC3Contraband
+  abstract: true
+  components:
+  - type: Contraband
+    turnInValues:
+      TriadCommerceCredit: 25
+
+# Ship Saving Contraband
+- type: entity
+  id: BaseClass1ShipContraband # Legal to own, but seized. Typically for things that cannot serialize.
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-1-text
+
+- type: entity
+  id: BaseClass2AShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2a-text
+
+- type: entity
+  id: BaseClass2ShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-2-text
+
+- type: entity
+  id: BaseClass2AShipContrabandSilent
+  abstract: true
+  components:
+  - type: SavingContraband
+
+- type: entity
+  id: BaseClass3ShipContraband
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: ship-saving-contraband-3-text
+
+# Contraband permit bases
+- type: entity
+  id: BaseContrabandPermittable # Use for things that are permittable, but shouldn't be seized on save. Like access breakers.
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    permittable: true # This value exists purely for parenting
+
+- type: entity
+  id: BaseShipContrabandPermittable # This one is different than BaseContrabandPermittable, since it is deleted on ship save.
+  abstract: true
+  components:
+  - type: SavingContraband
+    examineText: null # ContrabandPermittable gives the examine text
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-no-save
+
+- type: entity
+  parent: BaseShipContrabandPermittable # TDF variant
+  id: BaseShipContrabandPermittableTdf
+  abstract: true
+  components:
+  - type: ContrabandPermittable
+    examineText: contraband-permittable-examine-tdf

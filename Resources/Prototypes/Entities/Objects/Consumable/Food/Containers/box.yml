@@ -327,6 +327,8 @@
   - type: Item
     sprite: Objects/Consumable/Food/Baked/nuggets.rsi
     size: Small
+    shape:
+    - 0,0,1,1 #Triad : Changed size from 3x3 to 2x2
     heldPrefix: box
   - type: StorageFill
     contents:

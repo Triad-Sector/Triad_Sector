@@ -38,7 +38,6 @@ public sealed class MaterialArbitrageTest
         await server.WaitIdleAsync();
 
         var entManager = server.ResolveDependency<IEntityManager>();
-        var mapManager = server.ResolveDependency<IMapManager>();
         var protoManager = server.ResolveDependency<IPrototypeManager>();
 
         var pricing = entManager.System<PricingSystem>();
@@ -76,10 +75,10 @@ public sealed class MaterialArbitrageTest
         }
 
         // Get ingredients required to construct an entity
-        Dictionary<string, Dictionary<string, int>> constructionMaterials = new();
+        Dictionary<string, Dictionary<ProtoId<MaterialPrototype>, int>> constructionMaterials = new();
         foreach (var (id, comp) in constructionRecipes)
         {
-            var materials = new Dictionary<string, int>();
+            var materials = new Dictionary<ProtoId<MaterialPrototype>, int>();
             var graph = protoManager.Index<ConstructionGraphPrototype>(comp.Graph);
             if (graph.Start == null)
                 continue;
@@ -213,13 +212,13 @@ public sealed class MaterialArbitrageTest
 
         // Finally, lets also check for deconstruction arbitrage.
         // Get ingredients returned when deconstructing an entity
-        Dictionary<string, Dictionary<string, int>> deconstructionMaterials = new();
+        Dictionary<string, Dictionary<ProtoId<MaterialPrototype>, int>> deconstructionMaterials = new();
         foreach (var (id, comp) in constructionRecipes)
         {
             if (comp.DeconstructionNode == null)
                 continue;
 
-            var materials = new Dictionary<string, int>();
+            var materials = new Dictionary<ProtoId<MaterialPrototype>, int>();
             var graph = protoManager.Index<ConstructionGraphPrototype>(comp.Graph);
 
             if (!graph.TryPath(comp.Node, comp.DeconstructionNode, out var path) || path.Length == 0)
@@ -376,7 +375,7 @@ public sealed class MaterialArbitrageTest
         }
 
 #pragma warning disable CS1998
-        async Task<double> GetDeconstructedPrice(Dictionary<string, int> mats)
+        async Task<double> GetDeconstructedPrice(Dictionary<ProtoId<MaterialPrototype>, int> mats)
         {
             double price = 0;
             foreach (var (id, num) in mats)
@@ -389,7 +388,7 @@ public sealed class MaterialArbitrageTest
 #pragma warning restore CS1998
 
 #pragma warning disable CS1998
-        async Task<double> GetChemicalCompositionPrice(Dictionary<string, FixedPoint2> mats)
+        async Task<double> GetChemicalCompositionPrice(Dictionary<ProtoId<ReagentPrototype>, FixedPoint2> mats)
         {
             double price = 0;
             foreach (var (id, num) in mats)

@@ -10,12 +10,12 @@ using Robust.Shared.Player;
 
 namespace Content.Shared._NF.Atmos.Systems;
 
-public abstract class SharedGasDepositSystem : EntitySystem
+public abstract partial class SharedGasDepositSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] protected SharedUserInterfaceSystem UI = default!;
 
     // The amount reported in a given extractor is a multiple of this.
     const float DrillExamineAmountRound = 1000.0f;
@@ -24,7 +24,7 @@ public abstract class SharedGasDepositSystem : EntitySystem
     {
         base.Initialize();
 
-
+        SubscribeLocalEvent<GasDepositExtractorComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<GasDepositExtractorComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<GasDepositExtractorComponent, AnchorAttemptEvent>(OnAnchorAttempt);
         SubscribeLocalEvent<GasDepositExtractorComponent, ActivateInWorldEvent>(OnPumpActivate);
@@ -38,6 +38,7 @@ public abstract class SharedGasDepositSystem : EntitySystem
         args.PushMarkup(Loc.GetString("gas-deposit-drill-system-examined",
             ("statusColor", "lightblue"),
             ("pressure", ent.Comp.TargetPressure)));
+
         if (_net.IsServer && TryComp(ent.Comp.DepositEntity, out GasDepositComponent? deposit))
         {
             // Mono
@@ -73,24 +74,23 @@ public abstract class SharedGasDepositSystem : EntitySystem
         }
 
         var indices = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
-        var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, gridComp, indices);
+        var enumerator = _map.GetAnchoredEntities(grid, gridComp, indices);
 
         while (enumerator.MoveNext(out var otherEnt))
         {
-            // Don't match yourself.
-            if (otherEnt == ent)
-                continue;
-
-            // Is another storage entity is already anchored here?
-            if (!HasComp<GasDepositComponent>(otherEnt))
+            // Look for gas deposits, don't match yourself.
+            if (otherEnt == ent || !HasComp<GasDepositComponent>(otherEnt))
                 continue;
 
             ent.Comp.DepositEntity = otherEnt.Value;
             return;
         }
+    }
 
-        _popup.PopupPredicted(Loc.GetString("gas-deposit-drill-no-resources"), ent, args.User);
-        args.Cancel();
+    public void OnAnchorChanged(Entity<GasDepositExtractorComponent> ent, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+            ent.Comp.DepositEntity = null;
     }
 
     private void OnPumpActivate(Entity<GasDepositExtractorComponent> ent, ref ActivateInWorldEvent args)

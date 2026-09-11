@@ -27,7 +27,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
         var clickPos = args.ClickLocation;
         var clickWorld = _transform.ToWorldPosition(clickPos);
         var grids = new List<Entity<MapGridComponent>>();
-        _mapMan.FindGridsIntersecting(ourXform.MapID, Box2.CenteredAround(clickWorld, new Vector2(1f, 1f)), ref grids, false, false);
+        _map.FindGridsIntersecting(ourXform.MapID, Box2.CenteredAround(clickWorld, new Vector2(1f, 1f)), ref grids, false, false);
         if (grids.Count == 0 && ourXform.GridUid == null)
             return;
 
@@ -76,8 +76,8 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
             {
                 // just fail the repair if it doesn't have the comp
                 if (!_proto.TryIndex(repairData.EntityPalette[spec.ProtoIndex], out var entProto)
-                    || !entProto.TryGetComponent<ShipRepairableComponent>(out var repairable, Factory)
-                    || entProto.TryGetComponent<ShipRepairableRestrictComponent>(out var entRestrict, Factory)
+                    || !entProto.TryComp<ShipRepairableComponent>(out var repairable, Factory)
+                    || entProto.TryComp<ShipRepairableRestrictComponent>(out var entRestrict, Factory)
                         && _whitelist.IsWhitelistFail(entRestrict.ToolWhitelist, ent)
                 )
                     continue;

@@ -1,8 +1,8 @@
 - type: entity
   id: WeaponRifleAK410
-  name: NCI AK-410 (7.62x54mmR)
+  name: RMT AK-410 (7.62x54mmR)
   parent: BaseWeaponRifle
-  description: "Bullpup DMR feeding from 762x54mmR magazines, developed to modernize USSP long-range infantry weapons."
+  description: "Bullpup DMR feeding from 762x54mmR magazines, developed to modernize RMT long-range weapons."
   components:
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Snipers/ak410.rsi

@@ -11,7 +11,7 @@ public sealed partial class GridModEntityReplace : GridModifier
     [DataField(required: true)]
     public List<ReplaceData> Data = [];
 
-    [Dependency] private readonly IRobustRandom _random = new RobustRandom();
+    [Dependency] private IRobustRandom _random = new RobustRandom();
 
     public override void Modify(EntityUid gridUid, EntityManager system, IComponentFactory? factory = null)
     {
@@ -20,6 +20,7 @@ public sealed partial class GridModEntityReplace : GridModifier
 
         var whitelistSystem = system.System<EntityWhitelistSystem>();
         var gridModSystem = system.System<SharedGridModifierSystem>();
+        var transformSystem = system.System<SharedTransformSystem>();
 
         var comp = factory.GetComponent(Comp);
         var ents = new HashSet<Entity<IComponent>>();
@@ -43,9 +44,12 @@ public sealed partial class GridModEntityReplace : GridModifier
                     continue;
 
                 var pos = xform.Coordinates;
+                // Triad: keep the replaced entity's facing. Engine #6527 changed the no-rotation overload's
+                // fallback from world zero to the grid's rotation, and neither is the original's.
+                var rotation = transformSystem.GetWorldRotation(xform);
 
                 system.QueueDeleteEntity(ent);
-                system.SpawnAtPosition(rD.ReplaceWith, pos);
+                system.SpawnAtPosition(rD.ReplaceWith, pos, rotation);
 
                 break;
             }

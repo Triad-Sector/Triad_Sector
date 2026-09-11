@@ -1,0 +1,56 @@
+# Syndicate Turrets
+# Ballistics
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretSyndicateTriad
+  suffix: Triad, Syndicate
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
+
+- type: entity
+  parent: BallisticTurretMediumRange
+  id: WeaponTurretSyndicateMediumRange
+  suffix: Triad, Syndicate, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
+
+- type: entity
+  parent: BallisticTurretLongRange
+  id: WeaponTurretSyndicateLongRange
+  suffix: Triad, Syndicate, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
+
+#Energy
+- type: entity
+  parent: BaseWeaponTurretEnergyTriad
+  id: EnergyTurretSyndicateTriad
+  suffix: Triad, Syndicate
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
+
+- type: entity
+  parent: EnergyTurretMediumRange
+  id: EnergyTurretSyndicateMediumRange
+  suffix: Triad, Syndicate, MediumRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
+    
+- type: entity
+  parent: EnergyTurretLongRange
+  id: EnergyTurretSyndicateLongRange
+  suffix: Triad, Syndicate, LongRange
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF

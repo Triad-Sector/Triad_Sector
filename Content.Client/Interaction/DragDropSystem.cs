@@ -27,22 +27,23 @@ namespace Content.Client.Interaction;
 /// <summary>
 /// Handles clientside drag and drop logic
 /// </summary>
-public sealed class DragDropSystem : SharedDragDropSystem
+public sealed partial class DragDropSystem : SharedDragDropSystem
 {
-    [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IConfigurationManager _cfgMan = default!;
-    [Dependency] private readonly InteractionOutlineSystem _outline = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly CombatModeSystem _combatMode = default!;
-    [Dependency] private readonly InputSystem _inputSystem = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IInputManager _inputManager = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _cfgMan = default!;
+    [Dependency] private InteractionOutlineSystem _outline = default!;
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private CombatModeSystem _combatMode = default!;
+    [Dependency] private InputSystem _inputSystem = default!;
+    [Dependency] private ActionBlockerSystem _actionBlockerSystem = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     // how often to recheck possible targets (prevents calling expensive
     // check logic each update)
@@ -53,11 +54,11 @@ public sealed class DragDropSystem : SharedDragDropSystem
     // mousedown event so it can be treated like a regular click
     private const float MaxMouseDownTimeForReplayingClick = 0.85f;
 
-    [ValidatePrototypeId<ShaderPrototype>]
-    private const string ShaderDropTargetInRange = "SelectionOutlineInrange";
+    private static readonly ProtoId<ShaderPrototype> ShaderDropTargetInRange = "SelectionOutlineInrange";
 
-    [ValidatePrototypeId<ShaderPrototype>]
-    private const string ShaderDropTargetOutOfRange = "SelectionOutline";
+    private static readonly ProtoId<ShaderPrototype> ShaderDropTargetOutOfRange = "SelectionOutline";
+
+    private const string PostShaderId = "dragdrop-highlight";
 
     /// <summary>
     /// Current entity being dragged around.
@@ -249,11 +250,11 @@ public sealed class DragDropSystem : SharedDragDropSystem
             var mousePos = _eyeManager.PixelToMap(screenPos);
             _dragShadow = EntityManager.SpawnEntity("dragshadow", mousePos);
             var dragSprite = Comp<SpriteComponent>(_dragShadow.Value);
-            dragSprite.CopyFrom(draggedSprite);
+            _sprite.CopySprite((_draggedEntity.Value, draggedSprite), (_dragShadow.Value, dragSprite));
             dragSprite.RenderOrder = EntityManager.CurrentTick.Value;
-            dragSprite.Color = dragSprite.Color.WithAlpha(0.7f);
+            _sprite.SetColor((_dragShadow.Value, dragSprite), dragSprite.Color.WithAlpha(0.7f));
             // keep it on top of everything
-            dragSprite.DrawDepth = (int) DrawDepth.Overlays;
+            _sprite.SetDrawDepth((_dragShadow.Value, dragSprite), (int) DrawDepth.Overlays);
             if (!dragSprite.NoRotation)
             {
                 _transformSystem.SetWorldRotationNoLerp(_dragShadow.Value, _transformSystem.GetWorldRotation(_draggedEntity.Value));
@@ -420,6 +421,9 @@ public sealed class DragDropSystem : SharedDragDropSystem
         if (user == null)
             return;
 
+        if (_dropTargetInRangeShader == null || _dropTargetOutOfRangeShader == null)
+            return;
+
         // highlights the possible targets which are visible
         // and able to be dropped on by the current dragged entity
 
@@ -458,15 +462,8 @@ public sealed class DragDropSystem : SharedDragDropSystem
                         && _interactionSystem.InRangeUnobstructed(user.Value, entity);
             }
 
-            if (inRangeSprite.PostShader != null &&
-                inRangeSprite.PostShader != _dropTargetInRangeShader &&
-                inRangeSprite.PostShader != _dropTargetOutOfRangeShader)
-            {
-                continue;
-            }
-
             // highlight depending on whether its in or out of range
-            inRangeSprite.PostShader = valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader;
+            _sprite.SetPostShader((entity, inRangeSprite), new SpriteComponent.PostShaderArgs(PostShaderId, valid.Value ? _dropTargetInRangeShader : _dropTargetOutOfRangeShader));
             inRangeSprite.RenderOrder = EntityManager.CurrentTick.Value;
             _highlightedSprites.Add(inRangeSprite);
         }
@@ -476,10 +473,10 @@ public sealed class DragDropSystem : SharedDragDropSystem
     {
         foreach (var highlightedSprite in _highlightedSprites)
         {
-            if (highlightedSprite.PostShader != _dropTargetInRangeShader && highlightedSprite.PostShader != _dropTargetOutOfRangeShader)
+            if (!_sprite.HasPostShader(highlightedSprite, PostShaderId))
                 continue;
 
-            highlightedSprite.PostShader = null;
+            _sprite.RemovePostShader(highlightedSprite, PostShaderId);
             highlightedSprite.RenderOrder = 0;
         }
 

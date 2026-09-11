@@ -1,0 +1,101 @@
+# Triad edit.
+- type: loadoutGroup
+  id: StationRepJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - StationRepClothingUniformJumpsuitSr
+  - StationRepClothingUniformJumpskirtSr
+  fallbacks:
+  - StationRepClothingUniformJumpsuitSr
+  - StationRepClothingUniformJumpskirtSr
+
+- type: loadoutGroup
+  id: StationRepOuterClothing
+  name: loadout-group-contractor-outerclothing
+  loadouts:
+  - StationRepClothingOuterArmorSrCarapace
+  - StationRepClothingOuterJacketSr
+
+- type: loadoutGroup
+  id: StationRepBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  loadouts:
+  - CaptainBackpack
+  - CaptainSatchel
+  - CaptainDuffel
+  - ClothingBackpackSatchelLeather
+  subgroups:
+  - CommonBackpack
+  - SecurityBackpack
+  fallbacks:
+  - CaptainBackpack
+
+- type: loadoutGroup
+  id: StationRepEars
+  name: loadout-group-contractor-ears
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationRepClothingHeadsetAltCentComCommon
+  subgroups:
+  - MercenaryEars
+  - PilotEars
+  - ContractorEars
+  fallbacks:
+  - StationRepClothingHeadsetAltCentComCommon
+
+- type: loadoutGroup
+  id: StationRepGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 0
+  loadouts:
+  - StationRepClothingHandsGlovesSr # Triad
+  - StationRepClothingHandsGlovesCombat # Mono
+
+- type: loadoutGroup
+  id: StationRepHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - StationRepClothingHeadHatSrCap
+  - StationRepClothingHeadHatSrBeret
+
+- type: loadoutGroup
+  id: StationRepPDA
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - StationRepSrPDA
+  fallbacks:
+  - StationRepSrPDA
+
+- type: loadoutGroup
+  id: StationRepTrinkets
+  name: loadout-group-contractor-trinkets
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  - StationRepNFPouchSr
+  subgroups:
+  - ContractorTrinkets
+
+- type: loadoutGroup
+  id: StationRepNeck
+  name: loadout-group-contractor-neck
+  minLimit: 0
+  loadouts:
+  - StationRepClothingNeckCloakSr
+  - StationRepClothingNeckMantleSr
+
+- type: loadoutGroup
+  id: StationRepGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingEyesHudCommand
+  - ClothingEyesGlassesCommand
+  fallbacks:
+  - ClothingEyesHudCommand

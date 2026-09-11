@@ -1,0 +1,17 @@
+- type: loadout
+  id: SpotsJacketRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  price: 0
+  equipment:
+   outerClothing: ClothingOuterCoatRedSpotsJacket
+
+- type: loadout
+  id: SpotsJacketBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  price: 0
+  equipment:
+   outerClothing: ClothingOuterCoatBlueSpotsJacket

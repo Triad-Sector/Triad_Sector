@@ -6,8 +6,8 @@ namespace Content.Shared.Stunnable;
 
 public sealed partial class OvertimeStaminaDamageSystem : EntitySystem
 {
-    [Dependency] private readonly StaminaSystem _stamina = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private StaminaSystem _stamina = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -33,13 +33,14 @@ public sealed partial class OvertimeStaminaDamageSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var overtime in EntityQuery<OvertimeStaminaDamageComponent>())
+        var query = EntityQueryEnumerator<OvertimeStaminaDamageComponent>();
+        while (query.MoveNext(out var uid, out var overtime))
         {
             overtime.Timer -= frameTime;
 
             if (overtime.Timer <= 0)
             {
-                Update((overtime.Owner, overtime));
+                Update((uid, overtime));
                 overtime.Timer = overtime.Delay;
             }
         }

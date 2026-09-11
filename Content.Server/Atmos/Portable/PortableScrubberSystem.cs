@@ -20,17 +20,17 @@ using Content.Shared.Power;
 
 namespace Content.Server.Atmos.Portable
 {
-    public sealed class PortableScrubberSystem : EntitySystem
+    public sealed partial class PortableScrubberSystem : EntitySystem
     {
-        [Dependency] private readonly GasVentScrubberSystem _scrubberSystem = default!;
-        [Dependency] private readonly GasCanisterSystem _canisterSystem = default!;
-        [Dependency] private readonly GasPortableSystem _gasPortableSystem = default!;
-        [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
+        [Dependency] private GasVentScrubberSystem _scrubberSystem = default!;
+        [Dependency] private GasCanisterSystem _canisterSystem = default!;
+        [Dependency] private GasPortableSystem _gasPortableSystem = default!;
+        [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
+        [Dependency] private TransformSystem _transformSystem = default!;
+        [Dependency] private IAdminLogManager _adminLogger = default!;
+        [Dependency] private AmbientSoundSystem _ambientSound = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private NodeContainerSystem _nodeContainer = default!;
 
         public override void Initialize()
         {
@@ -74,6 +74,15 @@ namespace Content.Server.Atmos.Portable
 
             if (args.Grid is not {} grid)
                 return;
+
+            // Triad: no gas extraction off the sector map. Sits below the connector-port block on
+            // purpose, so a full scrubber can still be drained into a pipe net while planetside.
+            if (!_atmosphereSystem.AtmosInputCanRunOnMap(args.Map))
+            {
+                UpdateAppearance(uid, false, false);
+                return;
+            }
+            // End Triad
 
             var position = _transformSystem.GetGridTilePositionOrDefault(uid);
             var environment = _atmosphereSystem.GetTileMixture(grid, args.Map, position, true);
@@ -140,7 +149,7 @@ namespace Content.Server.Atmos.Portable
 
         private bool Scrub(float timeDelta, PortableScrubberComponent scrubber, GasMixture? tile)
         {
-            return _scrubberSystem.Scrub(timeDelta, scrubber.TransferRate * _atmosphereSystem.PumpSpeedup(), ScrubberPumpDirection.Scrubbing, scrubber.FilterGases, tile, scrubber.Air);
+            return _scrubberSystem.Scrub(timeDelta, scrubber.TransferRate * _atmosphereSystem.PumpSpeedup(), ScrubberPumpDirection.Scrubbing, scrubber.FilterGases, new(), tile, scrubber.Air);
         }
 
         private void UpdateAppearance(EntityUid uid, bool isFull, bool isRunning)

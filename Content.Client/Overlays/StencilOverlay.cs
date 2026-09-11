@@ -21,11 +21,10 @@ public sealed partial class StencilOverlay : Overlay
     private static readonly ProtoId<ShaderPrototype> StencilMask = "StencilMask";
     private static readonly ProtoId<ShaderPrototype> StencilDraw = "StencilDraw";
 
-    [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private IClyde _clyde = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
     private readonly ParallaxSystem _parallax;
     private readonly SharedTransformSystem _transform;
     private readonly SharedMapSystem _map;
@@ -52,7 +51,7 @@ public sealed partial class StencilOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var mapUid = _mapManager.GetMapEntityId(args.MapId);
+        var mapUid = _map.GetMapOrInvalid(args.MapId);
         var invMatrix = args.Viewport.GetWorldToLocalMatrix();
 
         var res = _resources.GetForViewport(args.Viewport, static _ => new CachedResources());

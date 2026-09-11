@@ -70,7 +70,7 @@
     price: 100 # mono
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: 0.2
+      TDF: 0.2
   - type: WieldedCrosshair
     rsi:
       sprite: _RMC14/Interface/MousePointer/pistol_mouse.rsi

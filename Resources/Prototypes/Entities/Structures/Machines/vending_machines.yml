@@ -123,7 +123,7 @@
     pack: EmptyVendingMachineInventory # Mandatory, use empty inventory
     taxAccounts:
       Frontier: 0.25
-      Nfsd: 0.15
+      TDF: 0.15
       Medical: 0.1 # Mono
     cashSlot:
       whitelist:
@@ -1356,7 +1356,7 @@
   parent: VendingMachine
   id: VendingMachineGames
   name: Good Clean Fun
-  description: Vends things that Fuscian colonial liaisons are probably not going to appreciate you fiddling with instead of your job...
+  description: Vends things that Fuscian overseers are probably not going to appreciate you fiddling with instead of your job... # zero fucking clue what this means im just replacing the word "colonial liaison here"
   components:
   - type: VendingMachine
     pack: GoodCleanFunInventory

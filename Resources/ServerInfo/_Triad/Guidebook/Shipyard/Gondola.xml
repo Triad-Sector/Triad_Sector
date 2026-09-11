@@ -6,9 +6,9 @@
   <GuideEntityEmbed Entity="FloorWaterEntity" Caption="Pool"/>
   <GuideEntityEmbed Entity="GasThermoMachineHeater" Caption="Sauna"/>
   </Box>
-  <Box>
-  <GuideEntityEmbed Entity="ShuttleMapGondola" Caption=""/>
-  </Box>
+  <!-- Triad: the ShuttleMapGondola embed was pulled because nothing declares that prototype, so it
+       rendered as a hole in a live page. 128x96.rsi has no gondola state to point one at yet; add
+       the sprite, add the prototype to _Triad/Guidebook/shuttle_maps.yml, then restore this Box. -->
     [color=#a4885c]Ship Size:[/color] Medium
 
 	[color=#a4885c]Recommended Crew:[/color] 1-4

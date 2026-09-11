@@ -26,7 +26,7 @@ uplink-security-thrusterkit-name = Thruster Upgrade Kit
 uplink-security-thrusterkit-desc = Contains 32 super capaciters. Perfect for upgrading eight thrusters.
 
 uplink-security-cyborg-module-name = Security Cyborg Module
-uplink-security-cyborg-module-desc = A machete, an energy gun, and a stun baton, made specifically for borgs. Wait, doesnt the Phaethon Dynasty have the same thing?
+uplink-security-cyborg-module-desc = A machete, an energy gun, and a stun baton, made specifically for borgs.
 
 uplink-security-eg4-name = EG-4 Energy Revolver
 uplink-security-eg4-desc = A self-recharging energy weapon, capable of shooting both disabling and lethal bolts. Like a mini-energy gun.

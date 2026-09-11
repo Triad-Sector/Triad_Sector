@@ -172,7 +172,7 @@
 #Start HighCapacity mags
 - type: entity
   id: BaseMagazine46x30mmPistolHighCapacityFMJ
-  name: machine pistol magazine (4.6x30mm FMJ)
+  name: extended pistol magazine (4.6x30mm FMJ) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   abstract: true
   components:
@@ -205,7 +205,7 @@
 
 - type: entity
   id: Magazine46x30mmPistolHighCapacityEmpty
-  name: machine pistol magazine (4.6x30mm any)
+  name: extended pistol magazine (4.6x30mm any) # Triad
   suffix: empty
   parent: BaseMagazine46x30mmPistolHighCapacityFMJ
   components:
@@ -220,7 +220,7 @@
 
 - type: entity
   id: Magazine46x30mmPistolHighCapacityFMJ
-  name: machine pistol magazine (4.6x30mm FMJ)
+  name: extended pistol magazine (4.6x30mm FMJ) # Triad
   parent: BaseMagazine46x30mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -234,7 +234,7 @@
 
 - type: entity
   id: Magazine46x30mmPistolHighCapacityPractice
-  name: machine pistol magazine (4.6x30mm practice)
+  name: extended pistol magazine (4.6x30mm practice) # Triad
   parent: BaseMagazine46x30mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -248,7 +248,7 @@
 
 - type: entity
   id: Magazine46x30mmPistolHighCapacityRubber
-  name: machine pistol magazine (4.6x30mm rubber)
+  name: extended pistol magazine (4.6x30mm rubber) # Triad
   parent: BaseMagazine46x30mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider

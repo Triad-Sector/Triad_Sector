@@ -103,7 +103,8 @@
   name: technology exchange computer
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseComputer]
   id: ComputerContrabandPalletConsole
-  description: Sends off faction gear in exchange for FMC.
+  description: Sends off faction gear in exchange for TCC.
+  suffix: TDF # Triad
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
@@ -117,6 +118,8 @@
     - map: ["computerLayerKeys"]
       state: telesci_key
   - type: ContrabandPalletConsole
+    faction: TDF
+    cashType: TriadCommerceCredit
   - type: ActivatableUI
     key: enum.ContrabandPalletConsoleUiKey.Contraband
   - type: UserInterface
@@ -276,6 +279,7 @@
   parent: ComputerContrabandPalletConsole
   id: ComputerContrabandPalletConsolePirate
   description: Takes faction tech to be sent off to research and grants DC in exchange.
+  suffix: TIC
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi

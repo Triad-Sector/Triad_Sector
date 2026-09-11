@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from baystation at commit https://github.com/Baystation12/Baystation12/commit/d24eea1648463ec36e48b9407eac05f05f11a3c8.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "equipped-HELMET",
+            "directions": 4
+        }
+    ]
+}

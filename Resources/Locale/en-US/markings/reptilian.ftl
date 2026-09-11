@@ -112,3 +112,13 @@ marking-LizardChestBackspikes = Lizard Back Spikes (Four)
 marking-LizardSnoutSplotch = Lizard Snout (Splotch)
 marking-LizardSnoutSplotch-snout_splotch_primary = Muzzle
 marking-LizardSnoutSplotch-snout_splotch_secondary = Snoot
+
+# Triad: missing primary + sublayer keys for the *Animated tail variants in reptilian.yml
+marking-LizardTailSmoothAnimated = Lizard Tail (Smooth, Wagging)
+marking-LizardTailSmoothAnimated-tail_smooth_wagging_primary = Lizard Tail
+marking-LizardTailSmoothAnimated-tail_smooth_wagging_secondary = Under Tone
+
+marking-LizardTailSpikesAnimated = Lizard Tail (Spiky, Wagging)
+marking-LizardTailLTigerAnimated = Lizard Tail (Light Tiger Stripes, Wagging)
+marking-LizardTailDTigerAnimated = Lizard Tail (Dark Tiger Stripes, Wagging)
+# End Triad

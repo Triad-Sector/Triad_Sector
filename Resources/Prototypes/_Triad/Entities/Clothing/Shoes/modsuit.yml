@@ -1,0 +1,51 @@
+- type: entity
+  parent: ClothingModsuitBootsBase
+  id: ClothingModsuitBootsOverseer
+  name: prosper modsuit boots
+  description: These things are super lightweight!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Triad/Clothing/Shoes/Modsuits/overseer.rsi
+    layers:
+    - state: boots
+    - state: boots-sealed
+      map: [ "sealed" ]
+  - type: Clothing
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+    slots: [ feet ]
+  - type: SealableClothing
+    sealUpPopup: sealable-clothing-seal-up-boots
+    sealDownPopup: sealable-clothing-seal-down-boots
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET-sealed
+
+- type: entity
+  parent: ClothingModsuitBootsBase
+  id: ClothingModsuitBootsHZDBesieger
+  name: HZD Sabatons
+  description: Advanced servos and motors whirr with each step as you stomp along, assisting with the weight of the Besieger's systems and armor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Shoes/Modsuits/HZDBesieger.rsi
+  - type: SealableClothingVisuals
+    spriteLayer: sealed
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET-sealed
+      shoes-vox:
+      - state: equipped-FEET-sealed-vox
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHeavySuit
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1

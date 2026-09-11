@@ -33,10 +33,10 @@
        thresholds:
        - trigger:
           !type:DamageTrigger
-          damage: 1250
+          damage: 200 # Triad, make this lower so it breaks faster
          behaviors:
          - !type:DoActsBehavior
            acts: ["Destruction"]
          - !type:ExplodeBehavior
      - type: Anchorable
-       delay: 180
+       delay: 200 # Triad, 200 < 180

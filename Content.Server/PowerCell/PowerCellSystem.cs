@@ -13,6 +13,7 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Mech.Components;
 using Content.Shared.Popups;
 using ActivatableUISystem = Content.Shared.UserInterface.ActivatableUISystem;
+using Content.Server._NF.Power.Components; // Frontier
 
 namespace Content.Server.PowerCell;
 
@@ -21,13 +22,14 @@ namespace Content.Server.PowerCell;
 /// </summary>
 public sealed partial class PowerCellSystem : SharedPowerCellSystem
 {
-    [Dependency] private readonly ActivatableUISystem _activatable = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _sharedAppearanceSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly RiggableSystem _riggableSystem = default!;
+    [Dependency] private ActivatableUISystem _activatable = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
+    [Dependency] private SharedAppearanceSystem _sharedAppearanceSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private RiggableSystem _riggableSystem = default!;
+    [Dependency] private PowerReceiverSystem _powerSystem = default!;
 
     public override void Initialize()
     {
@@ -147,6 +149,15 @@ public sealed partial class PowerCellSystem : SharedPowerCellSystem
     /// <param name="user">Popup to this user with the relevant detail if specified.</param>
     public bool HasCharge(EntityUid uid, float charge, PowerCellSlotComponent? component = null, EntityUid? user = null)
     {
+        // Frontier start - Mixed Power Recievers
+        if (HasComp<MixedPowerReceiverComponent>(uid) &&
+            TryComp<ApcPowerReceiverComponent>(uid, out var apcPowerComp) &&
+            _powerSystem.IsPowered(uid, apcPowerComp))
+        {
+            return true;
+        }
+        // Frontier end - Mixed Power Recievers
+
         if (!TryGetBatteryFromSlot(uid, out var battery, component))
         {
             if (user != null)
@@ -171,6 +182,17 @@ public sealed partial class PowerCellSystem : SharedPowerCellSystem
     /// </summary>
     public bool TryUseCharge(EntityUid uid, float charge, PowerCellSlotComponent? component = null, EntityUid? user = null)
     {
+
+        // Frontier start - Mixed Power Recievers
+        if (HasComp<MixedPowerReceiverComponent>(uid) &&
+            TryComp<ApcPowerReceiverComponent>(uid, out var apcPowerComp) &&
+            _powerSystem.IsPowered(uid, apcPowerComp))
+        {
+            return true;
+        }
+        // Frontier end - Mixed Power Recievers
+
+
         if (!TryGetBatteryFromSlot(uid, out var batteryEnt, out var battery, component))
         {
             if (user != null)

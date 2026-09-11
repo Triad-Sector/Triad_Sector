@@ -38,9 +38,6 @@
     spawned:
     - id: FoodMeatHuman
       amount: 5
-  - type: NightVision
-    activateSound: null
-    deactivateSound: null
   - type: MeleeWeapon
     soundHit:
       collection: Punch
@@ -120,6 +117,8 @@
       - !type:Emote
         emote: Scream
         probability: 0.2
+  - type: TemperatureSpeed # Triad
+    baseTemperature: 311.76
 
 - type: entity
   save: false

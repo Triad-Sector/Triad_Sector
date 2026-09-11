@@ -2743,7 +2743,7 @@ entities:
     - type: Transform
       pos: -1.5,5.5
       parent: 1
-- proto: SuitStorageM82c
+- proto: SuitStorageTdf
   entities:
   - uid: 366
     components:

@@ -62,3 +62,11 @@ rcd-component-plating-halftilt-lower = half-tilt hull plating (lower, axis famil
 rcd-component-plating-halftilt-lower-alt = half-tilt hull plating (lower, offset family)
 rcd-component-plating-halftilt-upper = half-tilt hull plating (upper, axis family)
 rcd-component-plating-halftilt-upper-alt = half-tilt hull plating (upper, offset family)
+
+rcd-component-lattice-diagonal = diagonal lattice
+rcd-component-lattice-half = center-strip half lattice
+rcd-component-lattice-wedge = wedge lattice
+rcd-component-lattice-halftilt-lower = half-tilt lattice (lower, axis family)
+rcd-component-lattice-halftilt-lower-alt = half-tilt lattice (lower, offset family)
+rcd-component-lattice-halftilt-upper = half-tilt lattice (upper, axis family)
+rcd-component-lattice-halftilt-upper-alt = half-tilt lattice (upper, offset family)

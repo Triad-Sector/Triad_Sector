@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Server._NF.Bank;
 using System.Numerics;
 using Content.Server.Advertise;
@@ -39,26 +39,29 @@ using Content.Server._Mono.VendingMachine;
 using Content.Shared._Mono.Traits.Physical;
 using Robust.Shared.Containers; // Frontier
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server.VendingMachines
 {
-    public sealed class VendingMachineSystem : SharedVendingMachineSystem
+    public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
     {
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-        [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
-        [Dependency] private readonly PricingSystem _pricing = default!;
-        [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly SpeakOnUIClosedSystem _speakOnUIClosed = default!;
-        [Dependency] private readonly SharedPointLightSystem _light = default!;
-        [Dependency] private readonly EmagSystem _emag = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Frontier
-        [Dependency] private readonly SharedAudioSystem _audioSystem = default!; // Frontier
-        [Dependency] private readonly BankSystem _bankSystem = default!; // Frontier
-        [Dependency] private readonly PopupSystem _popupSystem = default!; // Frontier
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!; // Frontier
-        [Dependency] private readonly StackSystem _stack = default!; // Frontier
-        [Dependency] private readonly VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private AccessReaderSystem _accessReader = default!;
+        [Dependency] private AppearanceSystem _appearanceSystem = default!;
+        [Dependency] private PricingSystem _pricing = default!;
+        [Dependency] private ThrowingSystem _throwingSystem = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private SpeakOnUIClosedSystem _speakOnUIClosed = default!;
+        [Dependency] private SharedPointLightSystem _light = default!;
+        [Dependency] private EmagSystem _emag = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!; // Frontier
+        [Dependency] private SharedAudioSystem _audioSystem = default!; // Frontier
+        [Dependency] private BankSystem _bankSystem = default!; // Frontier
+        [Dependency] private PopupSystem _popupSystem = default!; // Frontier
+        [Dependency] private IAdminLogManager _adminLogger = default!; // Frontier
+        [Dependency] private StackSystem _stack = default!; // Frontier
+        [Dependency] private VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
 
         private const float WallVendEjectDistanceFromWall = 1f;
 
@@ -355,7 +358,7 @@ namespace Content.Server.VendingMachines
             if (string.IsNullOrEmpty(entry.ID))
                 return false;
 
-            if (!TryComp<TransformComponent>(vendComponent.Owner, out var transformComp))
+            if (!TryComp<TransformComponent>(uid, out var transformComp))
                 return false;
 
             // Start Ejecting, and prevent users from ordering while anim playing
@@ -401,7 +404,7 @@ namespace Content.Server.VendingMachines
             if (price == 0)
                 price = 20;
 
-            if (TryComp<MarketModifierComponent>(component.Owner, out var modifier))
+            if (TryComp<MarketModifierComponent>(uid, out var modifier))
                 price *= modifier.Mod;
 
             var totalPrice = component.RequiresCash ? (int) price : 0;
@@ -450,7 +453,7 @@ namespace Content.Server.VendingMachines
                         paidFully = true; // Either we paid fully with cash, or we need to withdraw the remainder
                     }
                     if (totalPrice > cashSlotBalance && !HasComp<Content.Shared._Mono.Traits.Physical.IronmanComponent>(sender))
-                        paidFully = _bankSystem.TryBankWithdraw(sender, totalPrice - cashSlotBalance);
+                        paidFully = _bankSystem.TryBankWithdraw(sender, totalPrice - cashSlotBalance, new MarketRecord { Kind = MarketTransactionKind.VendorSale }); // Triad: market data
 
                     // If we paid completely, pay our station taxes
                     if (paidFully)
@@ -529,7 +532,7 @@ namespace Content.Server.VendingMachines
 
             if (vendComponent.EjectRandomCounter < 1)
             {
-                _audioSystem.PlayPvs(_audioSystem.GetSound(vendComponent.SoundDeny), uid);
+                _audioSystem.PlayPvs(vendComponent.SoundDeny, uid);
                 _popupSystem.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-abused"), uid, PopupType.MediumCaution);
                 return;
             }

@@ -48,7 +48,7 @@
 
 - type: entity
   id: Bullet45_magnumAP
-  name: bullet (.45 magnum armor-piercing)
+  name: bullet (.45 magnum extreme AP) # Triad
   parent: BaseBulletAP
   categories: [ HideSpawnMenu ]
   components:

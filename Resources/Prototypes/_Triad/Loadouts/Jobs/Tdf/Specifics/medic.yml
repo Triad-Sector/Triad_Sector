@@ -1,0 +1,42 @@
+- type: loadout
+  id: ClothingEyesHudMedSec
+  equipment:
+    eyes: ClothingEyesHudMedSec
+
+- type: loadout
+  id: TdfBeretMedic
+  equipment:
+    head: ClothingHeadHatBeretBrigmedic
+
+- type: loadout
+  id: ClothingBeltMilitaryWebbingMedTdfFilledMedic
+  name: TDF chest rig (filled, medical)
+  equipment:
+    belt: ClothingBeltMilitaryWebbingMedTdfFilledMedic
+
+- type: loadout
+  id: ClothingBeltTdfFilledMedic
+  name: TDF belt (filled, medical)
+  equipment:
+    belt: ClothingBeltTdfFilledMedic
+
+- type: loadout
+  id: ClothingBeltMilitaryWebbingMedFilledMedic
+  name: medical chest rig (filled, medical)
+  equipment:
+    belt: ClothingBeltMilitaryWebbingMedFilledMedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitTdfCombatMedic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfCombatMedic
+
+- type: loadout
+  id: TdfMedicPda
+  equipment:
+    id: TdfMedicPda
+
+- type: loadout
+  id: ClothingHeadHatBeretTdfMedic
+  equipment:
+    head: ClothingHeadHatBeretTdfMedic

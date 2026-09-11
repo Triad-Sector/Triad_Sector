@@ -1,0 +1,64 @@
+- type: job
+  id: TdfChiefEnforcer
+  name: job-name-tdf-chief-enforcer
+  description: job-description-tdf-chief-enforcer
+  playTimeTracker: JobTdfChiefEnforcer
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 126000 # 35 hours
+    - !type:RoleTimeRequirement
+      role: JobTdfWarden # Lieutenant
+      time: 18000 # 5 hours
+  whitelisted: true
+  startingGear: TdfChiefEnforcerGear
+  alwaysUseSpawner: true
+  icon: JobIconTdfChiefEnforcer
+  requireAdminNotify: true
+  supervisors: job-supervisors-high-command
+  weight: 180
+  displayWeight: 70
+  assignedCompany: TDF
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - TdfChiefEnforcer
+  - TdfLieutenant
+  - TdfPatrolTeamLeader
+  - TdfPermitControl
+  ranks:
+    RankChiefEnforcer: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      - type: ShipSavingBlacklist # TDF can't save ships
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Nfsd # TDF radio
+      - type: ContrabandPermitGranter
+      - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TdfChiefEnforcerGear
+  equipment:
+    pocket1: WeaponEnergyGunLawbringer
+    pocket2: EnergySwordNfsd
+  storage:
+    back:
+    - Multitool
+    - BaseSecurityUplinkRadioChiefEnforcer
+    - EncryptionKeyService
+    - EncryptionKeySecurity
+    - ShipVoucherRavager

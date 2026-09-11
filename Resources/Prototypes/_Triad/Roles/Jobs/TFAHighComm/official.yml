@@ -1,0 +1,45 @@
+- type: job
+  id: TfaHighCommandRep
+  name: job-name-tfa-high-command
+  description: job-description-tfa-high-command
+  playTimeTracker: JobTfaHighCommandRep
+  setPreference: false
+  startingGear: TfaHighCommandRepGear
+  icon: "JobIconNanotrasen" # Idk it looks good enough
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - TdfChiefEnforcer
+  - TdfLieutenant
+  - TdfPatrolTeamLeader
+  ranks:
+    RankHighCommandRepresentative: []
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TDF # not TDF, but friendly and works with them
+    - type: CryoSleepRadioOverride
+      overrides:
+      - CentCom # com radio
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+
+- type: startingGear
+  id: TfaHighCommandRepGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTfaHighCommand
+    shoes: ClothingShoesBootsLaceup
+    head: ClothingHeadHatTfaHighCommand
+    eyes: ClothingEyesGlassesCommand
+    gloves: ClothingHandsGlovesHeavyGoldenTrim
+    outerClothing: ClothingOuterCoatTfaHighCommand
+    id: TfaHighComPda
+    ears: ClothingHeadsetAltHighCommand
+    belt: WeaponEnergyRevolver
+    pocket1: BoxFolderBlack
+    pocket2: LuxuryPen

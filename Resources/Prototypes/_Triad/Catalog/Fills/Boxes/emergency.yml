@@ -9,7 +9,9 @@
       - id: SpaceMedipen
       - id: EmergencyMedipen
       - id: Flare
-        amount: 2
-      - id: MonoMRE # Mono - replace PSB and water bottle w/ MRE
+        amount: 1 # Triad: dropped from 2 to free a grid cell for the split MRE bar + water bottle below
+      # Triad: one MRE bar + water bottle instead of the full MonoMRE package
+      - id: FoodMREPSB
+      - id: DrinkWaterBottleFull
       - id: CrowbarPocket
       - id: HandHeldMassScanner

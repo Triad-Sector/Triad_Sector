@@ -66,7 +66,7 @@
     enabled: false
     radius: 3
     energy: 1
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     color: "#cc6600"
     netsync: false
@@ -168,8 +168,8 @@
     sprite: Clothing/Head/Misc/fancycrown.rsi
   - type: StaticPrice
     price: 3000
-  - type: AddAccentClothing
-    accent: MobsterAccent
+  #- type: AddAccentClothing # Triad removal - Remove forced accents
+  #  accent: MobsterAccent
   - type: NFTreasure # Frontier
 
 - type: entity

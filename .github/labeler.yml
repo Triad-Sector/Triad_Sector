@@ -5,8 +5,8 @@
 "Shipyard":
 - changed-files:
   - any-glob-to-any-file:
-    #- "Resources/Maps/_Triad/Shuttles/**/*.yml" # Grid Files
-    #- "Resources/Prototypes/_Triad/Shipyard/**/*.yml" # Prototypes Files
+    - "Resources/Maps/_Triad/Shuttles/**/*.yml" # Grid Files
+    - "Resources/Prototypes/_Triad/Shipyard/**/*.yml" # Prototypes Files
     - "Resources/Maps/_NF/Shuttles/**/*.yml" # Frontier Grid Files
     - "Resources/Prototypes/_NF/Shipyard/**/*.yml" # Frontier Prototypes Files
     - "Resources/Maps/_Mono/Shuttles/**/*.yml" # Monolith Grid Files

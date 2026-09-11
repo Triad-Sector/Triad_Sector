@@ -8,9 +8,9 @@ namespace Content.Client.Labels.UI
     /// <summary>
     /// Initializes a <see cref="HandLabelerWindow"/> and updates it when new server messages are received.
     /// </summary>
-    public sealed class HandLabelerBoundUserInterface : BoundUserInterface
+    public sealed partial class HandLabelerBoundUserInterface : BoundUserInterface
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
+        [Dependency] private IEntityManager _entManager = default!;
 
         [ViewVariables]
         private HandLabelerWindow? _window;
@@ -32,9 +32,9 @@ namespace Content.Client.Labels.UI
             }
 
             _window.OnLabelChanged += OnLabelChanged;
+            _window.OnLabelSelected += OnLabelSelected; // Starlight
             Reload();
         }
-
         private void OnLabelChanged(string newLabel)
         {
             // Focus moment
@@ -44,7 +44,17 @@ namespace Content.Client.Labels.UI
 
             SendPredictedMessage(new HandLabelerLabelChangedMessage(newLabel));
         }
-
+        // Starlight start
+        private void OnLabelSelected(string label)
+        {
+            // Update UI and send message to sync with server
+            if (_window != null)
+            {
+                _window.SetCurrentLabel(label);
+            }
+            SendPredictedMessage(new HandLabelerLabelChangedMessage(label));
+        }
+        // Starlight End
         public void Reload()
         {
             if (_window == null || !_entManager.TryGetComponent(Owner, out HandLabelerComponent? component))

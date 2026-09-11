@@ -1,0 +1,9 @@
+- type: loadout
+  id: ClothingUniformJumpsuitTdfPatrolTeamLeader
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTdfPatrolTeamLeader
+
+- type: loadout
+  id: TdfPatrolTeamLeaderPda
+  equipment:
+    id: TdfPatrolTeamLeaderPda

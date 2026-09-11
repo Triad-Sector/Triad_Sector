@@ -728,8 +728,8 @@
   components:
   - type: Mail
     contents:
-    - id: HyperlinkBookSpaceLaw
-    - id: HyperlinkBookNfsdSop
+    - id: BookTriadLaw
+    - id: BookTdfSop
     - id: PaperMailNFSpaceLaw
 
 # Frontier Mail (Pony Express?)
@@ -1736,7 +1736,7 @@
   - type: Mail
     isFragile: true
     contents:
-      - id: OmnizineChemistryBottle
+      - id: ChemistryBottleOmnizine
       - id: Syringe
 
 - type: entity

@@ -145,7 +145,6 @@
     factions:
       - Cat
       - NanoTrasen
-      - TSFMC
   - type: Speech
     speechSounds: NfsdCat
     speechVerb: SmallMob
@@ -160,8 +159,6 @@
   - type: PirateBountyItem
     id: Cappy
   - type: SouthernAccent
-  - type: Company
-    companyName: TSF
 
 - type: entity
   name: El Capo

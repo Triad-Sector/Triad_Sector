@@ -1,0 +1,81 @@
+# TFA
+
+- type: entity
+  parent: AirlockHeavy
+  id: AirlockHeavySecurity
+  suffix: TFA
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/security.rsi
+  # Triad changes
+  #- type: PaintableAirlock
+  #  department: Security
+
+- type: entity
+  parent: AirlockHeavySecurity
+  id: AirlockHeavySecurityFrontierLocked
+  suffix: TFA, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFrontier ]
+
+- type: entity
+  parent: AirlockHeavySecurity
+  id: AirlockHeavySecurityFrontierBridgeLocked
+  suffix: TFA Bridge, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFrontierBridge ]
+
+- type: entity
+  parent: AirlockHeavySecurity
+  id: AirlockHeavySecurityFrontierCommandLocked
+  suffix: TFA, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFrontierCommand ]
+
+# Command (TFA)
+
+- type: entity
+  parent: AirlockHeavy
+  id: AirlockHeavyCommand
+  suffix: Command
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/command.rsi
+  # Triad changes
+  #- type: PaintableAirlock
+  #   department: Command
+
+- type: entity
+  parent: AirlockHeavyCommand
+  id: AirlockHeavyCommandFrontierBridgeLocked
+  suffix: TFA Bridge, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFrontierBridge ]
+
+- type: entity
+  parent: AirlockHeavyCommand
+  id: AirlockHeavyCommandFrontierCommandLocked
+  suffix: TFA, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFrontierCommand ]
+
+# Command (Ship captain)
+
+- type: entity
+  parent: AirlockHeavyCommand
+  id: AirlockHeavyCaptainLocked
+  suffix: Captain, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCaptain ]

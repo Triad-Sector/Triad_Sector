@@ -9,10 +9,10 @@ namespace Content.Shared.Temperature.Systems;
 /// <summary>
 /// This handles predicting temperature based speedup.
 /// </summary>
-public sealed class SharedTemperatureSystem : EntitySystem
+public sealed partial class SharedTemperatureSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
 
     /// <summary>
     /// Band-aid for unpredicted atmos. Delays the application for a short period so that laggy clients can get the replicated temperature.
@@ -41,13 +41,39 @@ public sealed class SharedTemperatureSystem : EntitySystem
             }
         }
 
-        var maxThreshold = ent.Comp.Thresholds.Max(p => p.Key);
-        if (args.CurrentTemperature > maxThreshold && args.LastTemperature < maxThreshold)
+        // Triad - Adjusted to allow too hot speed modifiers.
+
+        //var maxThreshold = ent.Comp.Thresholds.Max(p => p.Key);
+        //if (args.CurrentTemperature > maxThreshold && args.LastTemperature < maxThreshold)
+
+        float maxColdThreshold = 0;
+        float minHotThreshold = 0;
+        foreach (var (threshold, modifier) in ent.Comp.Thresholds) // Find the thresholds that are closest to the normal body temperature se we can detect when to stop applying slowdowns
+        {
+            var difference = threshold - ent.Comp.BaseTemperature; // Hot thresholds are pos, cold thresholds are neg
+            if ((maxColdThreshold == 0 || threshold > maxColdThreshold) &&  difference < 0) //Set cold modifier
+            {
+                maxColdThreshold = threshold;
+            }
+            else if ((minHotThreshold == 0 || threshold < minHotThreshold) &&  difference > 0) //Set hot modifier
+            {
+                minHotThreshold = threshold;
+            }
+        }
+        if (args.CurrentTemperature > maxColdThreshold && args.LastTemperature < maxColdThreshold) // We warmed up beyond the highest cold threshold
         {
             ent.Comp.NextSlowdownUpdate = _timing.CurTime + SlowdownApplicationDelay;
             ent.Comp.CurrentSpeedModifier = null;
             Dirty(ent);
         }
+        if (args.CurrentTemperature < minHotThreshold && args.LastTemperature > minHotThreshold) // We cooled down beyond the lowest heat threshold
+        // Triad - End
+        {
+            ent.Comp.NextSlowdownUpdate = _timing.CurTime + SlowdownApplicationDelay;
+            ent.Comp.CurrentSpeedModifier = null;
+            Dirty(ent);
+        }
+
     }
 
     private void OnRefreshMovementSpeedModifiers(Entity<TemperatureSpeedComponent> ent, ref RefreshMovementSpeedModifiersEvent args)

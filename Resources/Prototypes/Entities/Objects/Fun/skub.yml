@@ -36,3 +36,4 @@
     hidden: true
   - type: UseDelay
     delay: 2.0
+  - type: HLPersistOnShipSave # Triad

@@ -20,8 +20,13 @@ public sealed partial class PlantAnalyzerComponent : Component
     [DataField, ViewVariables]
     public PlantAnalyzerSetting Settings = new();
 
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    */
+    [ViewVariables(VVAccess.ReadOnly)]
     public DoAfterId? DoAfter;
+    // End Triad
 
     [DataField]
     public SoundSpecifier? ScanningEndSound;

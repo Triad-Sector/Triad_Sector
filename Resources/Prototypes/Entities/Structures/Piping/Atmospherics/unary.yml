@@ -61,6 +61,14 @@
             Welded: { state: vent_welded }
             Lockout: { state: vent_lockout }
     - type: GasVentPump
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml). The
+    # component itself is inherited from GasPipeBase; this only adds the per-layer prototype map.
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: GasVentPump
+        Secondary: GasVentPumpAlt1
+        Tertiary: GasVentPumpAlt2
+    # End Triad
     - type: Construction
       graph: GasUnary
       node: ventpump
@@ -103,6 +111,13 @@
     - type: Appearance
     - type: PipeColorVisuals
     - type: GasPassiveVent
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml).
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: GasPassiveVent
+        Secondary: GasPassiveVentAlt1
+        Tertiary: GasPassiveVentAlt2
+    # End Triad
     - type: Construction
       graph: GasUnary
       node: passivevent
@@ -154,6 +169,13 @@
             Welded: { state: scrub_welded }
     - type: AtmosDevice
     - type: GasVentScrubber
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml).
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: GasVentScrubber
+        Secondary: GasVentScrubberAlt1
+        Tertiary: GasVentScrubberAlt2
+    # End Triad
     - type: Construction
       graph: GasUnary
       node: ventscrubber
@@ -202,6 +224,13 @@
            False: { color: "#990000" }
     - type: PipeColorVisuals
     - type: GasOutletInjector
+    # Triad: cursor-quadrant layer placement via the RPD (alt prototypes live in alt_layers.yml).
+    - type: AtmosPipeLayers
+      alternativePrototypes:
+        Primary: GasOutletInjector
+        Secondary: GasOutletInjectorAlt1
+        Tertiary: GasOutletInjectorAlt2
+    # End Triad
     - type: Construction
       graph: GasUnary
       node: outletinjector

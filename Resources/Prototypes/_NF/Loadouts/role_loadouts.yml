@@ -156,6 +156,7 @@
   - ContractorUtility # Mono
   - ContractorFun
   - ContractorTrinkets
+  - ContractorBureaucracy # Triad
   - NFSpeciesSpecific
   - ContractorFirearm # Mono
   - ContractorMag # Mono
@@ -213,69 +214,34 @@
   - ContractorMag # Mono
   - ContractorArmorPlates # Mono
 
-# Mono edit
-- type: roleLoadout
-  id: JobStationRepresentative
-  groups:
+# Triad - Moved to _Triad/Loadouts/role_loadouts.yml
+#- type: roleLoadout
+#  id: JobStationRepresentative
+#  groups:
 #  - StationRepHead
 #  - StationRepNeck
 #  - StationRepJumpsuit
-  - StationRepGloves
-  - StationRepBackpack
-  - StationRepOuterClothing
+#  - StationRepGloves
+#  - StationRepBackpack
+#  - StationRepOuterClothing
 #  - ContractorShoes
 #  - ContractorFace
-#  - ContractorGlasses
 #  - ContractorBelt
-  - MonoSecurityGuardHud
-  - StationRepEars
-  - MonoSecurityGuardShoes
-  - HeadofSecurityHead
-  - HeadofSecurityJumpsuit
-  - HeadofSecurityNeck
-  - ColonialLiaisonFirearm # Mono
-  - ContractorBoxSurvival
-  - StationRepPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorUtility # Mono
- # - ContractorFun # Mono - no fun allowed
-  - StationRepTrinkets
-  - ContractorBureaucracy
-  - NFSpeciesSpecific
-  - ContractorArmorPlates # Mono
-
-- type: roleLoadout
-  id: JobSecurityGuard
-  groups:
-  # Mono Start
-  - MonoSecurityGuardOuterClothing
-  - MonoSecurityGuardBelt
-  - MonoSecurityGuardGaiter
-  - MonoSecurityGuardHud
-  - MonoSecurityGuardShoes
-  - MonoSecurityGuardJumpsuit
-  - MonoSecurityGuardBack
-  - SecurityGuardFirearm
-  - SecurityGuardPistol
-  - SecurityGuardAmmo
-  # Mono End
-  - SecurityGuardGloves
-  - SecurityGuardHead
-  - SecurityGuardEars
-  - NfsdBoxSurvival
-  - SecurityGuardPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorUtility # Mono
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - ContractorBureaucracy
-  - NFSpeciesSpecific
-  - FactionArmorPlates # Mono
+#  - StationRepGlasses
+#  - StationRepEars
+#  - MonoSecurityGuardShoes
+#  - ColonialLiaisonFirearm # Mono
+#  - ContractorBoxSurvival
+#  - StationRepPDA
+#  - ContractorWallet
+#  - ContractorCartridge
+#  - ContractorImplanter
+#  - ContractorUtility # Mono
+# - ContractorFun # Mono - no fun allowed
+#  - StationRepTrinkets
+#  - ContractorBureaucracy
+#  - NFSpeciesSpecific
+#  - ContractorArmorPlates # Mono
 
 - type: roleLoadout
   id: JobDirectorOfCare
@@ -303,72 +269,3 @@
   - ContractorBureaucracy
   - NFSpeciesSpecific
   - ContractorArmorPlates # Mono
-
-# Nfsd
-
-# MONO DISCLAMER - REMOVED ALL OF THESE EXCEPT DETECTIVE AND PAL - FUCK COMMENTING ALL THAT OUT
-
-- type: roleLoadout
-  id: JobNFDetective
-  groups:
-  - NFDetectiveHead
-  - NFDetectiveNeck
-  - NFDetectiveJumpsuit
-  - NFDetectiveGloves
-  - NfsdBackpackBrown
-  - NFDetectiveOuterClothing
-  - NfsdShoesBrown
-  - NfsdFace
-  - NfsdGlasses
-  - NfsdBelt
-  - NfsdEarsCream
-  - NfsdBoxSurvival
-  - NFDetectivePDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - NfsdSpeciesSpecific
-
-- type: roleLoadout
-  id: JobPublicAffairsLiaison
-  groups:
-  - ContractorHead
-  - PalNeck
-  - PalJumpsuit
-  - PalGloves
-  - NfsdBackpackBrown
-  - NfsdShoesBrown
-  - ContractorFace
-  - NfsdGlasses
-  - ContractorBelt
-  - NfsdEarsBrown
-  - NfsdBoxSurvival
-  - PalPDA
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorEncryptionKey
-  - ContractorFun
-  - ContractorTrinkets
-  - NFSpeciesSpecific # Explicitly civilian variant
-
-# moved pirates to mono for rogues
-
-# Prisoner
-
-- type: roleLoadout
-  id: JobPrisoner
-  groups:
-  #  - PrisonerHead
-  #  - PrisonerNeck
-  - PrisonerJumpsuit
-  #  - PrisonerGloves
-  #  - PrisonerBackpack
-  #  - PrisonerShoes
-  - PrisonerFace
-  - PrisonerSurvival
-  - PrisonerPDA
-  - NFSpeciesSpecific

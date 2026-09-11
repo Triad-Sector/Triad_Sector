@@ -34,9 +34,11 @@
   - ReptilianCube
   - VulpkaninCube
   - SlimePersonCube
-  - YowieCube
+  #- YowieCube Triad
   - VoxCube
   - ResomiCube
   - GoblinCube
   - ChitinidCube
-#  - ProtogenCube #mono: retired
+  - AvaliCube # Triad
+  - HydrakinCube # Triad
+  - ProtogenCube #mono: retired; Triad: untired

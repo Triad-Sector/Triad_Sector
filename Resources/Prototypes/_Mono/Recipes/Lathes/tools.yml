@@ -23,27 +23,27 @@
   parent: BaseToolRecipe
   id: ShipRepairDevice
   result: ShipRepairDevice
-  materials:
-    Steel: 2400
-    Plastic: 1200
-    Glass: 1200
-    Plasteel: 1600
-    Plasma: 2000
-    Gold: 2000
+  materials: # Triad: scaled up from a 1,558-credit bill to match the 10,000-credit sale price
+    Steel: 16000
+    Plastic: 8000
+    Glass: 8000
+    Plasteel: 10000
+    Plasma: 13000
+    Gold: 13000
 
 - type: latheRecipe
   parent: BaseToolRecipe
   id: ShipRepairDeviceAmmo
   result: ShipRepairDeviceAmmo
-  materials:
-    Steel: 1600
-    Plastic: 800
-    Glass: 800
-    Plasteel: 1600
+  materials: # Triad: scaled up from a 641-credit bill to match the 2,000-credit sale price
+    Steel: 5000
+    Plastic: 2600
+    Glass: 2600
+    Plasteel: 5000
 
 - type: latheRecipe
   parent: BaseToolRecipe
   id: ScrapShipRepairDeviceAmmo
   result: ShipRepairDeviceAmmo
   materials:
-    RawScrap: 10000
+    RawScrap: 20000 # Triad: was 10000; matches the 2,000-credit sale price

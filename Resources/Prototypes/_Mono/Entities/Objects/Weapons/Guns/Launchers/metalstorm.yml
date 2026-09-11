@@ -81,7 +81,7 @@
     delay: 1
   - type: ItemTax # Mono
     taxAccounts:
-      nfsd: 0.2
+      TDF: 0.2
   - type: AmmoCounter
   - type: EmitSoundOnPickup
     sound:

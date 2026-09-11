@@ -23,6 +23,7 @@ using Content.Shared.Item;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared._Shitmed.Body.Part;
 using Content.Shared.Popups;
+using Content.Shared.Tag; // Triad
 using Robust.Shared.Prototypes;
 using Robust.Shared.Toolshed.TypeParsers;
 using System.Linq;
@@ -34,6 +35,7 @@ public abstract partial class SharedSurgerySystem
 {
     private static readonly string[] BruteDamageTypes = { "Slash", "Blunt", "Piercing" };
     private static readonly string[] BurnDamageTypes = { "Heat", "Shock", "Cold", "Caustic" };
+    private static readonly ProtoId<TagPrototype> PermissibleForSurgeryTag = "PermissibleForSurgery"; // Triad - Refactor DeltaV's PermissibleForSurgery tag.
     private void InitializeSteps()
     {
         SubscribeLocalEvent<SurgeryStepComponent, SurgeryStepEvent>(OnToolStep);
@@ -284,6 +286,10 @@ public abstract partial class SharedSurgerySystem
             while (containerSlotEnumerator.MoveNext(out var containerSlot))
             {
                 if (!containerSlot.ContainedEntity.HasValue)
+                    continue;
+
+                // Triad - PermissibleForSurgery refactored here to not be a string.
+                if (_tagSystem.HasTag(containerSlot.ContainedEntity.Value, PermissibleForSurgeryTag)) // DeltaV: allow some clothing items to be operated through
                     continue;
 
                 args.Invalid = StepInvalidReason.Armor;
@@ -543,7 +549,7 @@ public abstract partial class SharedSurgerySystem
 
         // Adding organs is generally done for a single one at a time, so we only need to check for the first.
         var firstOrgan = organComp.Organ.Values.FirstOrDefault();
-        if (firstOrgan == default)
+        if (firstOrgan.Component is null)
             return;
 
         foreach (var tool in args.Tools)
@@ -662,7 +668,7 @@ public abstract partial class SharedSurgerySystem
             return;
 
         var organType = ent.Comp.Organ.Values.FirstOrDefault();
-        if (organType == default)
+        if (organType.Component is null)
             return;
 
         var markingCategory = MarkingCategoriesConversion.FromHumanoidVisualLayers(ent.Comp.MarkingCategory);

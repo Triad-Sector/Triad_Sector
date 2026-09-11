@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 264.0.0
+  engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 11/04/2025 23:00:23
+  time: 05/31/2026 12:40:29
   entityCount: 3730
 maps: []
 grids:
@@ -1392,6 +1392,11 @@ entities:
             168: 15,5
             429: 16,-1
     - type: SpreaderGrid
+      spreadQueues:
+        Kudzu: []
+        MetalFoam: []
+        Smoke: []
+        Puddle: []
     - type: GridAtmosphere
       version: 2
       data:
@@ -1464,7 +1469,7 @@ entities:
             0: 63247
           1,-5:
             0: 57105
-            4: 4
+            1: 4
           1,0:
             0: 65287
           2,-4:
@@ -1477,7 +1482,7 @@ entities:
             0: 56543
           2,-5:
             0: 13104
-            1: 32768
+            2: 32768
             3: 128
           2,0:
             0: 65501
@@ -1490,7 +1495,7 @@ entities:
           3,-1:
             0: 50191
           3,-5:
-            1: 4096
+            2: 4096
             0: 34816
             3: 16
           3,0:
@@ -1550,7 +1555,7 @@ entities:
           -3,4:
             0: 2189
           -3,2:
-            2: 34944
+            4: 34944
           -2,1:
             0: 63628
           -2,3:
@@ -1644,28 +1649,28 @@ entities:
           -5,6:
             0: 12
           -3,5:
-            4: 34952
+            1: 34952
           -3,6:
-            4: 8
+            1: 8
           -2,5:
-            4: 4369
+            1: 4369
             0: 52428
           -2,6:
-            4: 1
+            1: 1
             0: 68
             6: 16384
           -2,7:
             6: 17476
-            4: 34952
+            1: 34952
           -2,8:
             6: 1092
-            4: 8
+            1: 8
           -1,5:
             0: 30576
           -1,6:
             0: 9010
           -1,7:
-            4: 7
+            1: 7
           -1,4:
             6: 61152
           5,-6:
@@ -1705,47 +1710,6 @@ entities:
           - 0
           - 0
           - 0
-        - volume: 2500
-          temperature: 293.15
-          moles:
-          - 0
-          - 6666.982
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        - volume: 2500
-          temperature: 293.15
-          moles:
-          - 0
-          - 0
-          - 0
-          - 6666.982
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        - volume: 2500
-          temperature: 293.15
-          moles:
-          - 6666.982
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
           - 0
           - 0
           - 0
@@ -1753,6 +1717,67 @@ entities:
         - volume: 2500
           immutable: True
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 0
+          - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 0
+          - 0
+          - 0
+          - 6666.982
           - 0
           - 0
           - 0
@@ -1780,6 +1805,10 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
@@ -1795,9 +1824,14 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: ThermalSignature
 - proto: AirAlarm
   entities:
   - uid: 2
@@ -11563,22 +11597,20 @@ entities:
       rot: 3.141592653589793 rad
       pos: -5.5,35.5
       parent: 1
-- proto: GasMinerNitrogen
+- proto: GasMinerNitrogenTriad
   entities:
   - uid: 1652
     components:
     - type: Transform
       pos: 12.5,-16.5
       parent: 1
-- proto: GasMinerOxygen
+- proto: GasMinerOxygenTriad
   entities:
   - uid: 1653
     components:
     - type: Transform
       pos: 12.5,-18.5
       parent: 1
-- proto: GasMinerOxygenStationLarge
-  entities:
   - uid: 1654
     components:
     - type: Transform
@@ -17395,8 +17427,8 @@ entities:
       parent: 1
     missingComponents:
     - Destructible
-    - Anchorable
     - Damageable
+    - Anchorable
 - proto: ShuttersNormal
   entities:
   - uid: 3218
@@ -17860,6 +17892,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: 14.5,-1.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: SMESAdvanced
   entities:
   - uid: 1414

@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetClockwork
+  name: clockwork helmet
+  description: A heavy helmet made of brass.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Helmets/clockwork.rsi
+  - type: IngestionBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.9
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
+    - HeadSide
+    - Hair

@@ -1,0 +1,12 @@
+# TDF and medic
+- type: entity
+  parent: [ SuitStorageWallmount, SuitStorageTdf ]
+  id: SuitStorageWallmountTdf
+
+- type: entity
+  parent: [ SuitStorageWallmount, SuitStorageTdfMedic ]
+  id: SuitStorageWallmountTdfMedic
+
+- type: entity
+  parent: [ SuitStorageWallmount, SuitStorageTdfTA29 ]
+  id: SuitStorageWallmountTdfTA29

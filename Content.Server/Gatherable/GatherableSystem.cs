@@ -1,5 +1,6 @@
 using Content.Server.Destructible;
 using Content.Server.Gatherable.Components;
+using Content.Shared.Damage.Components; // Triad
 using Content.Shared.Destructible;
 using Content.Shared.Interaction;
 using Content.Shared.Tag;
@@ -14,13 +15,13 @@ namespace Content.Server.Gatherable;
 
 public sealed partial class GatherableSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly DestructibleSystem _destructible = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private DestructibleSystem _destructible = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
     public override void Initialize()
     {
@@ -54,6 +55,9 @@ public sealed partial class GatherableSystem : EntitySystem
     public void Gather(EntityUid gatheredUid, EntityUid? gatherer = null, GatherableComponent? component = null)
     {
         if (!Resolve(gatheredUid, ref component))
+            return;
+
+        if (HasComp<GodmodeComponent>(gatheredUid)) // Triad, godmode asteroid fixes
             return;
 
         if (TryComp<SoundOnGatherComponent>(gatheredUid, out var soundComp))

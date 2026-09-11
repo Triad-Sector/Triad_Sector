@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
-using Content.Shared.Paper;
 using static Content.Shared.Paper.PaperComponent;
 
 namespace Content.Client.Paper.UI;
@@ -24,6 +23,7 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<PaperWindow>();
         _window.OnSaved += InputOnTextEntered;
+        _window.OnSignatureRequested += OnSignatureRequested; // RMC14
 
         if (EntMan.TryGetComponent<PaperComponent>(Owner, out var paper))
         {
@@ -51,4 +51,10 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
             _window.Input.CursorPosition = new TextEdit.CursorPos(0, TextEdit.LineBreakBias.Top);
         }
     }
+    // Begin RMC14
+    private void OnSignatureRequested(int signatureIndex)
+    {
+        SendMessage(new PaperSignatureRequestMessage(signatureIndex));
+    }
+    // End RMC14
 }

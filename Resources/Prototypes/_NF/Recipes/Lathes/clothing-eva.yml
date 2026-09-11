@@ -331,6 +331,13 @@
   parent: NFBaseHardSuitArmoredRecipe
   result: ClothingOuterHardsuitScaf
 
+# Triad : Make pdv scafsuit generic and accessible
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitPirateScaf
+  parent: NFBaseHardSuitArmoredRecipe
+  result: ClothingOuterHardsuitPirateScaf
+
 - type: latheRecipe
   id: ClothingOuterHardsuitEngineeringWhite
   parent: NFBaseHardSuitArmoredRecipe

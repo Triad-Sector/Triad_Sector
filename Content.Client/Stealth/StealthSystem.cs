@@ -8,10 +8,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Stealth;
 
-public sealed class StealthSystem : SharedStealthSystem
+public sealed partial class StealthSystem : SharedStealthSystem
 {
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+
+    private const string PostShaderId = "stealth";
 
     private ShaderInstance _shader = default!;
 
@@ -40,10 +43,20 @@ public sealed class StealthSystem : SharedStealthSystem
         if (!Resolve(uid, ref component, ref sprite, false))
             return;
 
-        sprite.Color = Color.White;
-        sprite.PostShader = enabled ? _shader : null;
-        sprite.GetScreenTexture = enabled;
-        sprite.RaiseShaderEvent = enabled;
+        _sprite.SetColor((uid, sprite), Color.White);
+
+        if (enabled)
+        {
+            _sprite.SetPostShader((uid, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, _shader)
+            {
+                GetScreenTexture = true,
+                RaiseShaderEvent = true,
+            });
+        }
+        else
+        {
+            _sprite.RemovePostShader((uid, sprite), PostShaderId);
+        }
 
         if (!enabled)
         {
@@ -94,6 +107,6 @@ public sealed class StealthSystem : SharedStealthSystem
         _shader.SetParameter("visibility", visibility);
 
         visibility = MathF.Max(0, visibility);
-        args.Sprite.Color = new Color(visibility, visibility, 1, 1);
+        _sprite.SetColor((uid, args.Sprite), new Color(visibility, visibility, 1, 1));
     }
 }

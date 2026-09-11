@@ -6,9 +6,9 @@ using Robust.Shared.Utility;
 namespace Content.Server._Mono.Emp;
 
 
-public sealed class EmpResistanceSystem : EntitySystem
+public sealed partial class EmpResistanceSystem : EntitySystem
 {
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
     public override void Initialize()
     {
         SubscribeLocalEvent<EmpResistanceComponent, GetVerbsEvent<ExamineVerb>>(OnExamine);

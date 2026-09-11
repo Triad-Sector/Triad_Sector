@@ -14,15 +14,15 @@ namespace Content.Server.Atmos.EntitySystems
 {
     public sealed partial class AtmosphereSystem
     {
-        [Dependency] private readonly DecalSystem _decalSystem = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private DecalSystem _decalSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
 
         private const int HotspotSoundCooldownCycles = 200;
 
         private int _hotspotSoundCooldown = 0;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        public string? HotspotSound { get; private set; } = "/Audio/Effects/fire.ogg";
+        public SoundSpecifier? HotspotSound { get; private set; } = new SoundPathSpecifier("/Audio/Effects/fire.ogg");
 
         /// <summary>
         /// Run every tick on every hotspot
@@ -113,7 +113,7 @@ namespace Content.Server.Atmos.EntitySystems
             if (tile.Hotspot.Temperature > tile.MaxFireTemperatureSustained)
                 tile.MaxFireTemperatureSustained = tile.Hotspot.Temperature;
 
-            if (_hotspotSoundCooldown++ == 0 && !string.IsNullOrEmpty(HotspotSound))
+            if (_hotspotSoundCooldown++ == 0 && HotspotSound != null)
             {
                 var coordinates = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
 

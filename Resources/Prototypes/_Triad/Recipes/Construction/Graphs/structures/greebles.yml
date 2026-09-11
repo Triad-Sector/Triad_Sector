@@ -1,0 +1,107 @@
+- type: constructionGraph
+  id: TriadGreebles
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: antenna1
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: MetalRod
+              amount: 10
+              doAfter: 10
+        - to: antenna2
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: MetalRod
+              amount: 10
+              doAfter: 10
+        - to: elint1
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 5
+        - to: radarpanel1
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 10
+        - to: radarpanel2
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 10
+
+    - node: antenna1
+      entity: GreebleAntenna1
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 10
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: antenna2
+      entity: GreebleAntenna2
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 10
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: elint1
+      entity: GreebleElint1
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 4
+
+    - node: radarpanel1
+      entity: GreebleRadarpanel1
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 10
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 4
+
+    - node: radarpanel2
+      entity: GreebleRadarpanel2
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 10
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 4
+

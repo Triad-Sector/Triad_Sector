@@ -12,8 +12,8 @@ namespace Content.Shared.Salvage;
 
 public abstract partial class SharedSalvageSystem : EntitySystem
 {
-    [Dependency] private readonly ILocalizationManager _loc = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private ILocalizationManager _loc = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     #region Descriptions
 
@@ -133,7 +133,7 @@ public abstract partial class SharedSalvageSystem : EntitySystem
 
         var time = GetMod<SalvageTimeMod>(rand, ref rating);
         // Round the duration to nearest 15 seconds.
-        var exactDuration = MathHelper.Lerp(time.MinDuration, time.MaxDuration, rand.NextFloat());
+        var exactDuration = MathHelper.Lerp(time.MinDuration, time.MaxDuration, rand.NextFloatValue());
         exactDuration = MathF.Round(exactDuration / 15f) * 15f;
         var duration = TimeSpan.FromSeconds(exactDuration);
 
@@ -184,16 +184,16 @@ public abstract partial class SharedSalvageSystem : EntitySystem
         throw new InvalidOperationException();
     }
 
-    private List<string> GetRewards(DifficultyRating difficulty, System.Random rand)
+    private List<EntProtoId> GetRewards(DifficultyRating difficulty, System.Random rand)
     {
-        var rewards = new List<string>(3);
+        var rewards = new List<EntProtoId>(3);
         var ids = RewardsForDifficulty(difficulty);
 
         foreach (var id in ids)
         {
             // pick a random reward to give
             var weights = _proto.Index<WeightedRandomEntityPrototype>(id);
-            rewards.Add(weights.Pick(rand));
+            rewards.Add(weights.Pick(rand).Id);
         }
 
         return rewards;

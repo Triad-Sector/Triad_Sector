@@ -8,6 +8,7 @@
   - type: HumanoidAppearance
     species: Reptilian
     hideLayersOnEquip:
+    - Hair # Triad - Reptilian hair.
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
@@ -144,7 +145,7 @@
         time: 2
         type: Add
         refresh: true
-    - minimumTemperature: 322
+    - minimumTemperature: 320.15 # Triad: match guidebook "above 47C" claim
       effects:
       - !type:MovespeedModifier
         walkSpeedModifier: 1.10
@@ -166,6 +167,7 @@
   - type: HumanoidAppearance
     species: Reptilian
     hideLayersOnEquip: # WWDP
+    - Hair # Triad - Reptilian hair.
     - Snout
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide

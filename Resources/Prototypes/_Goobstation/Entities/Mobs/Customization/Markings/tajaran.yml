@@ -6,7 +6,7 @@
   id: TajaranTailRetro
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson]
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/tails.rsi
     state: tail
@@ -15,7 +15,7 @@
   id: TajaranTailAnim
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/tails.rsi
     state: tail_anim
@@ -24,7 +24,7 @@
   id: TajaranTailRetroRings
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/tails.rsi
     state: tail
@@ -35,7 +35,7 @@
   id: TajaranTailAnimRings
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/tails.rsi
     state: tail_anim
@@ -46,7 +46,7 @@
   id: TajaranLeoTailNoAnim # Den Addition - Leopard Tail No Animation
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _EE/Mobs/Customization/Tajaran/leotail.rsi
     state: leopard_primary
@@ -57,7 +57,7 @@
   id: TajaranLeoTailAnim # Den Addition - Leopard Tail Animation
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _EE/Mobs/Customization/Tajaran/leotail.rsi
     state: leotailanim_primary
@@ -70,7 +70,7 @@
   id: TajaranEarsRetro
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/ears.rsi
     state: ears
@@ -79,7 +79,7 @@
   id: TajaranEarsSeparate
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/ears.rsi
     state: outears
@@ -90,7 +90,7 @@
   id: TajaranEarsRetroNear
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/ears.rsi
     state: ears_near
@@ -99,7 +99,7 @@
   id: TajaranEarsSeparateNear
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Tajaran]
+  speciesRestriction: [Tajaran, SlimePerson] # Triad
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Tajaran/ears.rsi
     state: outears_near

@@ -11,7 +11,7 @@
   description: A medium-to-large sized expedition ship with salvage equipment.
   price: 76000
   category: Large
-  group: Expedition
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/littora.yml
   guidebookPage: null
   class:

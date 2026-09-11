@@ -142,20 +142,21 @@
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-sealed-vox
+  # Triad change, nerfed from 0.9 to 0.85 and 0.75 for sprint
   - type: ClothingSpeedModifier
-    walkModifier: 0.90
-    sprintModifier: 0.90
+    walkModifier: 0.85
+    sprintModifier: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  - type: StaminaDamageResistance
-    coefficient: 0.7
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.30
-        Piercing: 0.4
-        Heat: 0.65
+        # Triad change start, nerf slightly
+        Blunt: 0.50 # 0.45 -> 0.5
+        Slash: 0.35 # 0.3 -> 0.35
+        Piercing: 0.45 # 0.4 -> 0.45
+        Heat: 0.7 # 0.65 -> 0.7
+        # Triad end
         Radiation: 0.6
         Caustic: 0.35
   - type: ComponentToggler
@@ -243,7 +244,7 @@
         Heat: 0.7
         Shock: 0.4 # Mono
         Caustic: 0.4 # Mono
-        Radiation: 0 # Mono
+        Radiation: 0.01 # Mono
   - type: StaminaDamageResistance
     coefficient: 0.7 # Mono
 

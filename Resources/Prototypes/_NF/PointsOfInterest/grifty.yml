@@ -20,7 +20,9 @@
   - type: SolarPoweredGrid
     trackOnInit: true
     doNotCull: true
-  - type: StationTransit # Mono
+  # Triad: removed from the bus route, grifty's map has no DockTransit berth so the bus docked at
+  # whatever airlock sorted first. Re-enable once a berth is placed.
+  #- type: StationTransit # Mono
 
 - type: gameMap
   id: Grifty

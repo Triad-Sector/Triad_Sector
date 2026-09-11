@@ -172,7 +172,7 @@
 #Start HighCapacity mags
 - type: entity
   id: BaseMagazine45_ACPPistolHighCapacityFMJ
-  name: machine pistol magazine (.45 ACP FMJ)
+  name: extended pistol magazine (.45 ACP FMJ) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   abstract: true
   components:
@@ -205,7 +205,7 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityEmpty
-  name: machine pistol magazine (.45 ACP any)
+  name: extended pistol magazine (.45 ACP any) # Triad
   suffix: empty
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
@@ -220,7 +220,7 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityFMJ
-  name: machine pistol magazine (.45 ACP FMJ)
+  name: extended pistol magazine (.45 ACP FMJ) # Triad
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -234,11 +234,11 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityPractice
-  name: machine pistol magazine (.45 ACP practice)
+  name: extended pistol magazine (.45 ACP practice) # Triad
   parent: BaseMagazine45_ACPPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge45_ACPFMJ
+    proto: Cartridge45_ACPPractice # Triad
   - type: Sprite
     layers:
     - state: practice
@@ -248,11 +248,11 @@
 
 - type: entity
   id: Magazine45_ACPPistolHighCapacityRubber
-  name: machine pistol magazine (.45 ACP rubber)
-  parent: BaseMagazine45_ACPPistolHighCapacityFMJ
+  name: extended pistol magazine (.45 ACP rubber)
+  parent: BaseMagazine45_ACPPistolHighCapacityFMJ # Triad
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge45_ACPFMJ
+    proto: Cartridge45_ACPRubber # Triad
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/45_ACP/45_ACP_pistol_high_capacity_mag.rsi
     layers:

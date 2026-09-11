@@ -52,8 +52,13 @@ public sealed partial class MechForkComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public Container ItemContainer = default!;
 
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    */
+    [ViewVariables(VVAccess.ReadOnly)]
     public DoAfterId? DoAfter;
+    // End Triad
 
     /// <summary>
     /// A whitelist of things this fork can pick up.

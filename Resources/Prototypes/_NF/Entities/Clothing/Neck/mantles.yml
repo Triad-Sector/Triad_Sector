@@ -39,8 +39,8 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckMantleSheriff
-  name: colonel's mantle
-  description: This mantle is a symbol of commitment to the TSF.
+  name: sol mantle # Triad - name
+  description: This mantle is a symbol of commitment to the Federated Solarian Republic. You wonder how it got here.. # Triad - desc
   components:
   - type: Sprite
     sprite: _NF/Clothing/Neck/Mantles/nfsdsheriff.rsi
@@ -50,8 +50,8 @@
 - type: entity
   parent: ClothingNeckMantleHOP
   id: ClothingNeckMantleSr
-  name: colonial liaison's mantle
-  description: This mantle protects the colonial liaison's neck and shoulders from vicious papercuts. This mantle is a symbol of Central Command's trust.
+  name: overseer's mantle
+  description: This mantle protects the overseer's neck and shoulders from vicious papercuts. This mantle is a symbol of the TFA's trust.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Neck/Mantles/sr.rsi

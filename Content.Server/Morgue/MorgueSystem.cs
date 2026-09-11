@@ -10,11 +10,11 @@ using Content.Shared.Storage.EntitySystems;
 
 namespace Content.Server.Morgue;
 
-public sealed class MorgueSystem : EntitySystem
+public sealed partial class MorgueSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {

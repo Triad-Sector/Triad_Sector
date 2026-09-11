@@ -3,12 +3,20 @@ materials-glass = glass
 materials-reinforced-glass = reinforced glass
 materials-plasma-glass = plasma glass
 materials-reinforced-plasma-glass = reinforced plasma glass
+# Triad: missing keys referenced by Reagents/Materials/glass.yml
+materials-clockwork-glass = clockwork glass
+materials-uranium-glass = uranium glass
+materials-reinforced-uranium-glass = reinforced uranium glass
+# End Triad
 
 # Metals
 materials-steel = steel
 materials-gold = gold
 materials-silver = silver
 materials-plasteel = plasteel
+# Triad: missing key referenced by Reagents/Materials/metals.yml
+materials-brass = brass
+# End Triad
 
 # Other
 materials-biomass = biomass
@@ -27,6 +35,10 @@ materials-bones = bone
 materials-coal = coal
 materials-diamond = diamond
 materials-gunpowder = gunpowder
+# Triad: missing keys referenced by Reagents/Materials/materials.yml and Nyanotrasen/Reagents/Materials/materials.yml
+materials-cotton = cotton
+materials-bluespace = bluespace
+# End Triad
 
 # Ores
 materials-raw-iron = raw iron

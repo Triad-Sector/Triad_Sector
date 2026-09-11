@@ -1,18 +1,20 @@
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Atmos.Components; // Triad
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
+using Content.Shared.Construction.Prototypes; // Triad
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems; // Triad
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
-using Content.Shared.RPD.Components; // Triad
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
@@ -41,24 +43,25 @@ namespace Content.Shared.RCD.Systems;
 /// space-wizards#42556 (<see cref="RCDPrototype"/> <c>AllowMultiDirection</c>). See Resources/Prototypes/_Mono/RCD/README.md.
 /// </summary>
 [Virtual]
-public class RCDSystem : EntitySystem
+public partial class RCDSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefMan = default!;
-    [Dependency] private readonly FloorTileSystem _floors = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private ITileDefinitionManager _tileDefMan = default!;
+    [Dependency] private FloorTileSystem _floors = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedChargesSystem _sharedCharges = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TagSystem _tags = default!;
+    [Dependency] private SharedHandsSystem _hands = default!; // Triad
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -84,7 +87,7 @@ public class RCDSystem : EntitySystem
     }
 
     // Triad: flip key toggles the mirrored prototype variant for the next placement. Operator must be holding the
-    // flipped tool in their active hand.
+    // flipped tool (any hand).
     private void OnRCDConstructionGhostFlipEvent(RCDConstructionGhostFlipEvent ev, EntitySessionEventArgs session)
     {
         var uid = GetEntity(ev.NetEntity);
@@ -92,7 +95,7 @@ public class RCDSystem : EntitySystem
         if (session.SenderSession.AttachedEntity is not { } player)
             return;
 
-        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+        if (!_hands.IsHolding(player, uid)) // Triad: any hand, see OnRCDconstructionGhostRotationEvent
             return;
 
         if (!TryComp<RCDComponent>(uid, out var rcd))
@@ -177,6 +180,7 @@ public class RCDSystem : EntitySystem
         var user = args.User;
         var location = args.ClickLocation;
         var prototype = _protoManager.Index(component.ProtoId);
+        var target = args.Target; // Triad: reassigned below so the RPD can reach pipes hidden under floor tiles.
 
         // Initial validity checks
         if (!location.IsValid(EntityManager))
@@ -190,8 +194,26 @@ public class RCDSystem : EntitySystem
             return;
         }
 
-        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User,
-                tilePlacementDirection: component.ConstructionDirection))
+        // Triad: in Deconstruct mode, hand off to a sibling (RPDSystem) to optionally redirect the target, e.g. to
+        // a covered pipe under a floor tile on the operator's aimed layer. Plain RCD has no handler, so its target
+        // is left untouched. RPDSystem owns the "already deconstructable, don't redirect" decision.
+        if (prototype.Mode == RcdMode.Deconstruct)
+        {
+            var resolve = new RCDDeconstructTargetResolveEvent(mapGridData.Value, target);
+            RaiseLocalEvent(uid, ref resolve);
+            target = resolve.Target;
+        }
+        // End Triad
+
+        // Triad: capture per-placement state a sibling system owns (the RPD's cursor-aimed pipe layer) once, here,
+        // and carry it through the do-after. Reading it live at completion let cursor movement after the click move
+        // the pipe onto another layer.
+        var commit = new RCDPlacementCommitEvent();
+        RaiseLocalEvent(uid, ref commit);
+        // End Triad
+
+        if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, target, args.User,
+                tilePlacementDirection: component.ConstructionDirection, layer: commit.Layer))
             return;
 
         if (!_net.IsServer)
@@ -210,9 +232,9 @@ public class RCDSystem : EntitySystem
             case RcdMode.Deconstruct:
 
                 // Deconstructing an object
-                if (args.Target != null)
+                if (target != null)
                 {
-                    if (TryComp<RCDDeconstructableComponent>(args.Target, out var destructible))
+                    if (TryComp<RCDDeconstructableComponent>(target, out var destructible))
                     {
                         cost = destructible.Cost;
                         delay = destructible.Delay;
@@ -224,7 +246,7 @@ public class RCDSystem : EntitySystem
                 else
                 {
                     var deconstructedTile = _mapSystem.GetTileRef(mapGridData.Value.GridUid, mapGridData.Value.Component, mapGridData.Value.Location);
-                    var protoName = !deconstructedTile.IsSpace() ? _deconstructTileProto : _deconstructLatticeProto;
+                    var protoName = !_turf.IsSpace(deconstructedTile) ? _deconstructTileProto : _deconstructLatticeProto;
 
                     if (_protoManager.TryIndex(protoName, out var deconProto))
                     {
@@ -265,9 +287,10 @@ public class RCDSystem : EntitySystem
             component.ConstructionDirection,
             component.ProtoId,
             cost,
-            EntityManager.GetNetEntity(effect));
+            EntityManager.GetNetEntity(effect),
+            commit.Layer); // Triad
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: args.Target, used: uid) // Mono - add delay multiplier.
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay*component.DelayMultiplier, ev, uid, target: target, used: uid) // Mono - add delay multiplier.
         {
             BreakOnDamage = true,
             BreakOnHandChange = true,
@@ -310,7 +333,7 @@ public class RCDSystem : EntitySystem
         var mapGridData = new MapGridData(gridUid, mapGrid, location, tile, position);
 
         if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Event.Target, args.Event.User,
-                tilePlacementDirection: args.Event.Direction))
+                tilePlacementDirection: args.Event.Direction, layer: args.Event.Layer)) // Triad: captured layer
             args.Cancel();
     }
 
@@ -336,11 +359,11 @@ public class RCDSystem : EntitySystem
 
         // Ensure the RCD operation is still valid
         if (!IsRCDOperationStillValid(uid, component, mapGridData, args.Target, args.User,
-                tilePlacementDirection: args.Direction))
+                tilePlacementDirection: args.Direction, layer: args.Layer)) // Triad: captured layer
             return;
 
         // Finalize the operation
-        FinalizeRCDOperation(uid, component, mapGridData, args.Direction, args.Target, args.User);
+        FinalizeRCDOperation(uid, component, mapGridData, args.Direction, args.Target, args.User, args.Layer); // Triad: captured layer
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -355,9 +378,15 @@ public class RCDSystem : EntitySystem
         if (session.SenderSession.AttachedEntity == null)
             return;
 
-        if (!TryComp<HandsComponent>(session.SenderSession.AttachedEntity, out var hands) ||
-            uid != hands.ActiveHand?.HeldEntity)
+        // Triad: any hand, not the active one. The client sends this the moment its predicted hand swap makes the
+        // tool active, which can land in the same server tick as the swap input and ahead of it; the active-hand
+        // test then dropped the rotation silently and the ghost disagreed with the tool until the next rotate.
+        // if (!TryComp<HandsComponent>(session.SenderSession.AttachedEntity, out var hands) ||
+        //     uid != hands.ActiveHand?.HeldEntity)
+        //     return;
+        if (!_hands.IsHolding(session.SenderSession.AttachedEntity.Value, uid))
             return;
+        // End Triad
 
         if (!TryComp<RCDComponent>(uid, out var rcd))
             return;
@@ -372,7 +401,7 @@ public class RCDSystem : EntitySystem
     #region Entity construction/deconstruction rule checks
 
     public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid? target, EntityUid user, bool popMsgs = true,
-        Direction? tilePlacementDirection = null)
+        Direction? tilePlacementDirection = null, AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad: layer
     {
         var prototype = _protoManager.Index(component.ProtoId);
         var tileDir = tilePlacementDirection ?? component.ConstructionDirection;
@@ -409,15 +438,15 @@ public class RCDSystem : EntitySystem
         switch (prototype.Mode)
         {
             case RcdMode.ConstructTile: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs, tileDir);
-            case RcdMode.ConstructObject: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs);
+            case RcdMode.ConstructObject: return IsConstructionLocationValid(uid, component, mapGridData, user, popMsgs, layer: layer); // Triad: layer
             case RcdMode.Deconstruct: return IsDeconstructionStillValid(uid, component, mapGridData, target, user, popMsgs);
         }
 
         return false;
     }
 
-    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
-        Direction? tilePlacementDirection = null)
+    public bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, MapGridData mapGridData, EntityUid user, bool popMsgs = true,
+        Direction? tilePlacementDirection = null, AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad: layer
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
@@ -440,7 +469,7 @@ public class RCDSystem : EntitySystem
         }
 
         // Check rule: Must place on subfloor
-        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !mapGridData.Tile.Tile.GetContentTileDefinition().IsSubFloor)
+        if (prototype.ConstructionRules.Contains(RcdConstructionRule.MustBuildOnSubfloor) && !_turf.GetContentTileDefinition(mapGridData.Tile.Tile).IsSubFloor)
         {
             if (popMsgs)
                 _popup.PopupClient(Loc.GetString("rcd-component-must-build-on-subfloor-message"), uid, user);
@@ -462,7 +491,7 @@ public class RCDSystem : EntitySystem
 
             // Check rule: Tiles can't be identical
             var placeTileId = GetConstructTileTypeId(prototype, tilePlacementDirection ?? component.ConstructionDirection);
-            if (mapGridData.Tile.Tile.GetContentTileDefinition().ID == placeTileId)
+            if (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID == placeTileId)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-tile"), uid, user);
@@ -483,11 +512,36 @@ public class RCDSystem : EntitySystem
         _intersectingEntities.Clear();
         _lookup.GetLocalEntitiesIntersecting(mapGridData.GridUid, mapGridData.Position, _intersectingEntities, -0.05f, LookupFlags.Uncontained);
 
+        // Triad: layer-capable pipe recipes coexist across layers, so the base-proto identity guard must not reject
+        // them. The layer-aware verdict comes from RCDConstructionAttemptEvent below (RPD) and the PipeRestrictOverlap
+        // backstop. Knowable from the recipe + base proto alone, with no reference to RPDComponent.
+        // NB: today only the RPD has layer-capable (pipe) recipes, so the RCDConstructionAttemptEvent veto always
+        // fires for these. If a non-RPD tool ever gets a layer-capable recipe it loses that veto and leans solely on
+        // the PipeRestrictOverlap anchor-time backstop, which only catches same-(direction, layer) overlap.
+        var layerCapable = !prototype.NoLayers
+            && prototype.Prototype != null
+            && _protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var baseProto)
+            && baseProto.TryComp<AtmosPipeLayersComponent>(out _, EntityManager.ComponentFactory);
+
+        // Triad: the construction menu is the canon for what may be placed where. A recipe that names its hand twin
+        // inherits the twin's wall rule here (canBuildInImpassable: false means the Impassable mask) and runs the
+        // twin's conditions below (NoUnstackableInTile, WallmountCondition, ...), so the RCD cannot drift from the
+        // menu. Nothing in the mask loop sees stacked atmos devices on its own: their fixtures carry no collision
+        // layer, and the identity guard is bypassed for layer-capable recipes.
+        ConstructionPrototype? twin = null;
+        if (prototype.ConstructionRecipe is { } twinId && !_protoManager.TryIndex(twinId, out twin))
+            Log.Error($"RCD recipe {prototype.ID} names construction recipe {twinId}, which does not exist.");
+
+        var collisionMask = prototype.CollisionMask;
+        if (twin is { CanBuildInImpassable: false })
+            collisionMask |= CollisionGroup.Impassable;
+        // End Triad
+
         foreach (var ent in _intersectingEntities)
         {
             // space-wizards/space-station-14#42556 — block spamming the same entity on one tile (e.g. lights);
             // AllowMultiDirection permits one per cardinal direction (directional windows, diagonals, etc.).
-            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            if (!layerCapable && prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype) // Triad: skip identity guard for layer-capable pipes
             {
                 var isIdentical = true;
                 if (prototype.AllowMultiDirection)
@@ -517,12 +571,12 @@ public class RCDSystem : EntitySystem
                 return false;
             }
 
-            if (prototype.CollisionMask != CollisionGroup.None && TryComp<FixturesComponent>(ent, out var fixtures))
+            if (collisionMask != CollisionGroup.None && TryComp<FixturesComponent>(ent, out var fixtures)) // Triad: twin-derived mask
             {
                 foreach (var fixture in fixtures.Fixtures.Values)
                 {
                     // Continue if no collision is possible
-                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int)prototype.CollisionMask) == 0)
+                    if (!fixture.Hard || fixture.CollisionLayer <= 0 || (fixture.CollisionLayer & (int)collisionMask) == 0) // Triad: twin-derived mask
                         continue;
 
                     // Continue if our custom collision bounds are not intersected
@@ -538,6 +592,30 @@ public class RCDSystem : EntitySystem
                 }
             }
         }
+
+        // Triad: the hand twin's own placement conditions, evaluated exactly as the construction menu evaluates them.
+        if (twin != null)
+        {
+            var dir = tilePlacementDirection ?? component.ConstructionDirection;
+            foreach (var condition in twin.Conditions)
+            {
+                if (condition.Condition(user, mapGridData.Location, dir))
+                    continue;
+
+                if (popMsgs && condition.GenerateGuideEntry()?.Localization is { } message)
+                    _popup.PopupClient(Loc.GetString(message), uid, user);
+
+                return false;
+            }
+        }
+
+        // Triad: let a sibling system (RPD) apply layer-aware conflict rules RCD does not own. Plain RCD has no
+        // handler, so this is a no-op for non-RPD tools.
+        var constructAttempt = new RCDConstructionAttemptEvent(mapGridData, prototype, tilePlacementDirection ?? component.ConstructionDirection, layer, user, popMsgs);
+        RaiseLocalEvent(uid, ref constructAttempt);
+        if (constructAttempt.Cancelled)
+            return false;
+        // End Triad
 
         return true;
     }
@@ -588,12 +666,10 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // Triad: RPD tools share this gate; admit a target if either the generic Deconstructable flag is on,
-            // or the tool is an RPD and the target opted into RpdDeconstructable. RPDSystem's earlier
-            // RCDDeconstructAttemptEvent handler has already enforced the RPD-only whitelist semantics.
-            var hasRpd = HasComp<RPDComponent>(uid);
+            // Triad: admit a target if the generic Deconstructable flag is on, or a sibling handler admitted it
+            // earlier via RCDDeconstructAttemptEvent (the RPD admits its own whitelist). RCD stays RPD-agnostic.
             if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible)
-                || !(deconstructible.Deconstructable || (hasRpd && deconstructible.RpdDeconstructable)))
+                || !(deconstructible.Deconstructable || attempt.Admitted))
             // End Triad
             {
                 if (popMsgs)
@@ -610,7 +686,7 @@ public class RCDSystem : EntitySystem
 
     #region Entity construction/deconstruction
 
-    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, MapGridData mapGridData, Direction direction, EntityUid? target, EntityUid user)
+    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, MapGridData mapGridData, Direction direction, EntityUid? target, EntityUid user, AtmosPipeLayer layer) // Triad: layer
     {
         if (!_net.IsServer)
             return;
@@ -641,31 +717,45 @@ public class RCDSystem : EntitySystem
                     ? mirror.Id
                     : prototype.Prototype;
 
-                var spawnAttempt = new RCDObjectSpawnAttemptEvent(prototype, spawnProto);
+                var spawnAttempt = new RCDObjectSpawnAttemptEvent(prototype, spawnProto, layer);
                 RaiseLocalEvent(uid, ref spawnAttempt);
                 spawnProto = spawnAttempt.SpawnProto;
 
                 if (string.IsNullOrEmpty(spawnProto))
                     return;
 
-                var ent = Spawn(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                // Triad: the recipe rotation must ride into the spawn call. Pipe-bearing prototypes anchor during
+                // entity startup and PipeRestrictOverlap judges their node directions right there; rotating after
+                // Spawn() meant that check always ran south-facing, falsely unanchoring legal rotated placements
+                // (e.g. crossing two same-layer straight pipes).
+                var rotation = prototype.Rotation switch
+                {
+                    RcdRotation.Fixed => Angle.Zero,
+                    RcdRotation.Camera => Transform(uid).LocalRotation,
+                    RcdRotation.User => direction.ToAngle(),
+                    _ => Angle.Zero,
+                };
+
+                var ent = SpawnAttachedTo(spawnProto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position), rotation: rotation);
 
                 var spawned = new RCDObjectSpawnedEvent(ent, prototype);
                 RaiseLocalEvent(uid, ref spawned);
-                // End Triad
 
-                switch (prototype.Rotation)
-                {
-                    case RcdRotation.Fixed:
-                        Transform(ent).LocalRotation = Angle.Zero;
-                        break;
-                    case RcdRotation.Camera:
-                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
-                        break;
-                    case RcdRotation.User:
-                        Transform(ent).LocalRotation = direction.ToAngle();
-                        break;
-                }
+                // Triad: rotation now applied at spawn (see above); this post-spawn switch ran after the
+                // anchor-time overlap check had already judged the entity facing south.
+                // switch (prototype.Rotation)
+                // {
+                //     case RcdRotation.Fixed:
+                //         Transform(ent).LocalRotation = Angle.Zero;
+                //         break;
+                //     case RcdRotation.Camera:
+                //         Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                //         break;
+                //     case RcdRotation.User:
+                //         Transform(ent).LocalRotation = direction.ToAngle();
+                //         break;
+                // }
+                // End Triad
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {mapGridData.Position} on grid {mapGridData.GridUid}");
                 break;
@@ -675,7 +765,7 @@ public class RCDSystem : EntitySystem
                 if (target == null)
                 {
                     // Deconstruct tile (either converts the tile to lattice, or removes lattice)
-                    var tile = (mapGridData.Tile.Tile.GetContentTileDefinition().ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
+                    var tile = (_turf.GetContentTileDefinition(mapGridData.Tile.Tile).ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
                     _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, tile);
                     _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} tile: {mapGridData.Position} open to space");
                 }
@@ -802,6 +892,10 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
     [DataField("fx")]
     public NetEntity? Effect { get; private set; } = null;
 
+    // Triad: the pipe layer the placement was committed on, captured at the click like Location and Direction.
+    [DataField]
+    public AtmosPipeLayer Layer { get; private set; } = AtmosPipeLayer.Primary;
+
     private RCDDoAfterEvent() { }
 
     public RCDDoAfterEvent(
@@ -810,7 +904,8 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
         Direction direction,
         ProtoId<RCDPrototype> startingProtoId,
         int cost,
-        NetEntity? effect = null)
+        NetEntity? effect = null,
+        AtmosPipeLayer layer = AtmosPipeLayer.Primary) // Triad
     {
         Location = location;
         TargetGridId = targetGridId;
@@ -818,6 +913,7 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
         StartingProtoId = startingProtoId;
         Cost = cost;
         Effect = effect;
+        Layer = layer; // Triad
     }
 
     public override DoAfterEvent Clone() => this;

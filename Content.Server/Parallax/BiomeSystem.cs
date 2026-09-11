@@ -25,20 +25,19 @@ namespace Content.Server.Parallax;
 
 public sealed partial class BiomeSystem : SharedBiomeSystem
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IParallelManager _parallel = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly DecalSystem _decals = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ShuttleSystem _shuttles = default!;
-    [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IConsoleHost _console = default!;
+    [Dependency] private IParallelManager _parallel = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
+    [Dependency] private DecalSystem _decals = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ShuttleSystem _shuttles = default!;
+    [Dependency] private TagSystem _tags = default!;
 
     private EntityQuery<BiomeComponent> _biomeQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
@@ -149,54 +148,67 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             return;
         _updateTimer = 0f;
 
-        var biomes = AllEntityQuery<BiomeComponent>();
-
-        while (biomes.MoveNext(out var biome))
+        // Triad: the rest of this method has to run under a finally. CleanupUpdateCycle is the only thing
+        // that clears _activeChunks, and the _activeChunks.Add below is a Dictionary.Add that throws on a
+        // duplicate key, so any single throw escaping the body used to latch: the dictionary kept its
+        // entries, the next tick's Add threw on the duplicate, and that throw skipped cleanup as well.
+        // Biome chunk loading then stayed dead for the rest of the round and the pooled tile lists leaked
+        // (3037 errors over one 6m45s window on prod, ended only by the biome grid being deleted). With the
+        // finally, a transient throw anywhere under LoadChunks costs one tick of chunk loading instead,
+        // which is what the no-players early return already assumes.
+        try
         {
-            if (biome.LifeStage < ComponentLifeStage.Running)
-                continue;
+            var biomes = AllEntityQuery<BiomeComponent>();
 
-            _activeChunks.Add(biome, _tilePool.Get());
-            _markerChunks.GetOrNew(biome);
-        }
+            while (biomes.MoveNext(out var biome))
+            {
+                if (biome.LifeStage < ComponentLifeStage.Running)
+                    continue;
 
-        ProcessPlayerChunkRequests();
+                _activeChunks.Add(biome, _tilePool.Get());
+                _markerChunks.GetOrNew(biome);
+            }
 
-        // Early exit if no players around chunk
-        if (_handledEntities.Count == 0)
-        {
-            CleanupUpdateCycle();
-            return;
-        }
+            ProcessPlayerChunkRequests();
 
-        var loadBiomes = AllEntityQuery<BiomeComponent, MapGridComponent>();
+            // Early exit if no players around chunk
+            if (_handledEntities.Count == 0)
+            {
+                // Triad: CleanupUpdateCycle() moved to the finally below.
+                return;
+            }
 
-        _unloadTimer += frameTime;
-        var shouldUnload = _unloadTimer > UnloadInterval;
+            var loadBiomes = AllEntityQuery<BiomeComponent, MapGridComponent>();
 
-        while (loadBiomes.MoveNext(out var gridUid, out var biome, out var grid))
-        {
-            // If not MapInit don't run it.
-            if (biome.LifeStage < ComponentLifeStage.Running)
-                continue;
+            _unloadTimer += frameTime;
+            var shouldUnload = _unloadTimer > UnloadInterval;
 
-            if (!biome.Enabled)
-                continue;
+            while (loadBiomes.MoveNext(out var gridUid, out var biome, out var grid))
+            {
+                // If not MapInit don't run it.
+                if (biome.LifeStage < ComponentLifeStage.Running)
+                    continue;
 
-            // Only process biomes with active chunks
-            if (!_activeChunks.ContainsKey(biome))
-                continue;
+                if (!biome.Enabled)
+                    continue;
 
-            LoadChunks(biome, gridUid, grid, biome.Seed);
+                // Only process biomes with active chunks
+                if (!_activeChunks.ContainsKey(biome))
+                    continue;
+
+                LoadChunks(biome, gridUid, grid, biome.Seed);
+
+                if (shouldUnload)
+                    UnloadChunks(biome, gridUid, grid, biome.Seed);
+            }
 
             if (shouldUnload)
-                UnloadChunks(biome, gridUid, grid, biome.Seed);
+                _unloadTimer = 0f;
         }
-
-        if (shouldUnload)
-            _unloadTimer = 0f;
-
-        CleanupUpdateCycle();
+        finally
+        {
+            CleanupUpdateCycle();
+        }
     }
 
     private void CleanupUpdateCycle()

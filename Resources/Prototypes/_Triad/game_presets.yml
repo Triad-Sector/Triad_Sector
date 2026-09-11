@@ -1,0 +1,14 @@
+- type: gamePreset
+  id: TriadStandard
+  name: triad-standard-title
+  description: triad-standard-description
+  showInVote: true
+  rules:
+  - NFAdventure
+  - BasicStationEventScheduler
+  - BluespaceEventScheduler
+  - BluespaceDungeonEventScheduler
+  - BluespaceSalvageEventScheduler
+  - SmugglingEventScheduler
+  - FrontierRoundstartVariation
+  - MonoMonolithicEventsScheduler

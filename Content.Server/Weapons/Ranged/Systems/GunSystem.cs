@@ -35,15 +35,17 @@ namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem : SharedGunSystem
 {
-    [Dependency] private readonly DamageExamineSystem _damageExamine = default!;
-    [Dependency] private readonly PricingSystem _pricing = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly StaminaSystem _stamina = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly RequireProjectileTargetSystem _requireProjectileTarget = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private DamageExamineSystem _damageExamine = default!;
+    [Dependency] private PricingSystem _pricing = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private StaminaSystem _stamina = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private RequireProjectileTargetSystem _requireProjectileTarget = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    private EntityQuery<AutoShootGunComponent> _autoShootGunQuery; // Mono
+    private EntityQuery<DamageableComponent> _damageableQuery; // Mono
 
     private const float DamagePitchVariation = 0.05f;
 
@@ -57,6 +59,9 @@ public sealed partial class GunSystem : SharedGunSystem
         SubscribeLocalEvent<AutoShootGunComponent, ExaminedEvent>(OnGunExamine); // Frontier
         SubscribeLocalEvent<AutoShootGunComponent, PowerChangedEvent>(OnPowerChange); // Frontier
         SubscribeLocalEvent<AutoShootGunComponent, AnchorStateChangedEvent>(OnAnchorChange); // Frontier
+
+        _autoShootGunQuery = GetEntityQuery<AutoShootGunComponent>(); // Mono
+        _damageableQuery = GetEntityQuery<DamageableComponent>(); // Mono
     }
 
     private void OnBallisticPrice(EntityUid uid, BallisticAmmoProviderComponent component, ref PriceCalculationEvent args)
@@ -97,7 +102,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var mapAngle = mapDirection.ToAngle();
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
-        var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out var grid)
+        var fromEnt = _map.TryFindGridAt(fromMap, out var gridUid, out var grid)
             ? _transform.WithEntityId(fromCoordinates, gridUid)
             : _transform.ToCoordinates(fromMap);
 

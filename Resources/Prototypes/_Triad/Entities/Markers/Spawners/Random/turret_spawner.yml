@@ -1,0 +1,161 @@
+# Ballistic Turret
+- type: entity
+  id: SpawnRandomTurretRangeTDF
+  name: random ranged ballistic turret spawn
+  suffix: Triad, TDF
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Weapons/Guns/Turrets/turrets.rsi
+          state: syndie_lethal
+    - type: RandomSpawner
+      prototypes:
+        - WeaponTurretTDF
+        - WeaponTurretTDFMediumRange
+      chance: 1
+      rarePrototypes:
+        - WeaponTurretTDFLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomTurretRangeSD
+  name: random ranged ballistic turret spawn
+  suffix: Triad, SD
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Weapons/Guns/Turrets/turrets.rsi
+          state: syndie_lethal
+    - type: RandomSpawner
+      prototypes:
+        - WeaponTurretSD
+        - WeaponTurretSDMediumRange
+      chance: 1
+      rarePrototypes:
+        - WeaponTurretSDLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomTurretRangeTIC
+  name: random ranged ballistic turret spawn
+  suffix: Triad, TIC
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Weapons/Guns/Turrets/turrets.rsi
+          state: syndie_lethal
+    - type: RandomSpawner
+      prototypes:
+        - WeaponTurretTIC
+        - WeaponTurretTICMediumRange
+      chance: 1
+      rarePrototypes:
+        - WeaponTurretTICLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomTurretRangeSyndicate
+  name: random ranged ballistic turret spawn
+  suffix: Triad, Syndicate
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Weapons/Guns/Turrets/turrets.rsi
+          state: syndie_lethal
+    - type: RandomSpawner
+      prototypes:
+        - WeaponTurretSyndicateTriad
+        - WeaponTurretSyndicateMediumRange
+      chance: 1
+      rarePrototypes:
+        - WeaponTurretSyndicateLongRange
+      rareChance: 0.3
+
+# Energy Turret
+- type: entity
+  id: SpawnRandomEnergyTurretRangeTDF
+  name: random ranged energy turret spawn
+  suffix: Triad, TDF
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretTDF
+        - EnergyTurretTDFMediumRange
+      chance: 1
+      rarePrototypes:
+        - EnergyTurretTDFLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSD
+  name: random ranged energy turret spawn
+  suffix: Triad, SD
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretSD
+        - EnergyTurretSDMediumRange
+      chance: 1
+      rarePrototypes:
+        - EnergyTurretSDLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeTIC
+  name: random ranged energy turret spawn
+  suffix: Triad, TIC
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretTIC
+        - EnergyTurretTICMediumRange
+      chance: 1
+      rarePrototypes:
+        - EnergyTurretTICLongRange
+      rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSyndicate
+  name: random ranged energy turret spawn
+  suffix: Triad, Syndicate
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretSyndicateTriad
+        - EnergyTurretSyndicateMediumRange
+      chance: 1
+      rarePrototypes:
+        - EnergyTurretSyndicateLongRange
+      rareChance: 0.3

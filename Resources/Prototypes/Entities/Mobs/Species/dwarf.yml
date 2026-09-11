@@ -48,8 +48,7 @@
       Male: UnisexDwarf
       Female: FemaleDwarf
       Unsexed: UnisexDwarf
-  - type: ReplacementAccent
-    accent: dwarf
+  - type: DwarfAccent # Triad: promoted from data-only ReplacementAccent to the Dwarven Brogue engine
   - type: Speech
     speechSounds: Bass
     allowedEmotes: ['Belch'] # Frontier

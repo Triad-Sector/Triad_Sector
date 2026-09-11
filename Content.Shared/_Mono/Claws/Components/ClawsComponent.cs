@@ -13,7 +13,7 @@ public sealed partial class ClawsComponent : Component
     public ProtoId<ClawPrototype> ClawStage;
 
     [DataField, AutoNetworkedField]
-    public Dictionary<int, ProtoId<ClawPrototype>> Claws;
+    public Dictionary<int, ProtoId<ClawPrototype>> Claws = new(); // Triad: engine v283 HandleState Clears in place; null field NREs
 
     [DataField]
     public LocId? ClawGrowthNotification;

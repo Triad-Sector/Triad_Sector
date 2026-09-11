@@ -23,7 +23,7 @@ public sealed partial class DungeonJob
 
         var replaceEntities = new Dictionary<Vector2i, EntityUid>();
         var availableTiles = new List<Vector2i>();
-        var tiles = _maps.GetAllTilesEnumerator(_gridUid, _grid);
+        var tiles = _maps.GetAllTiles(_gridUid, _grid);
 
         while (tiles.MoveNext(out var tileRef))
         {
@@ -40,7 +40,7 @@ public sealed partial class DungeonJob
             if (gen.EntityMask is not null)
             {
                 var found = false;
-                var enumerator2 = _maps.GetAnchoredEntitiesEnumerator(_gridUid, _grid, tile);
+                var enumerator2 = _maps.GetAnchoredEntities(_gridUid, _grid, tile);
                 while (enumerator2.MoveNext(out var uid))
                 {
                     var prototype = _entManager.GetComponent<MetaDataComponent>(uid.Value).EntityPrototype;
@@ -61,7 +61,7 @@ public sealed partial class DungeonJob
             else
             {
                 //If entity mask null - we ignore the tiles that have anything on them.
-                if (!_anchorable.TileFree(_grid, tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+                if (!_anchorable.TileFree((_gridUid, _grid), tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                     continue;
             }
 
@@ -143,6 +143,13 @@ public sealed partial class DungeonJob
                     _entManager.SpawnAtPosition(prototype, _maps.GridTileToLocal(_gridUid, _grid, node));
 
                     groupSize--;
+
+                    // Triad: slice the per-vein spawn burst; the outer loop only yields once per group, so a large
+                    // MaxGroupSize otherwise spawns the whole vein in one un-yielded block.
+                    await SuspendDungeon();
+
+                    if (!ValidateResume())
+                        return;
                 }
             }
 

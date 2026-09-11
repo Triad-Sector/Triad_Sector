@@ -53,8 +53,6 @@
   - type: Item
     heldPrefix: off
     size: Normal
-    shape:
-    - 0,0,1,2 # Triad
   - type: Clothing
     sprite: Objects/Weapons/Melee/stunbaton.rsi
     quickEquip: false
@@ -202,8 +200,6 @@
     bluntStaminaDamageFactor: 1.5
   - type: Item
     size: Normal
-    shape:
-    - 0,0,1,2 # Triad
   - type: Tag
     tags:
     - Truncheon

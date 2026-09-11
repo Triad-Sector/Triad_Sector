@@ -9,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Wall;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
@@ -22,13 +23,14 @@ namespace Content.Client.Construction
     /// The client-side implementation of the construction system, which is used for constructing entities in game.
     /// </summary>
     [UsedImplicitly]
-    public sealed class ConstructionSystem : SharedConstructionSystem
+    public sealed partial class ConstructionSystem : SharedConstructionSystem
     {
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private ExamineSystemShared _examineSystem = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SpriteSystem _spriteSystem = default!; // Triad
 
         private readonly Dictionary<int, EntityUid> _ghosts = new();
         private readonly Dictionary<string, ConstructionGuide> _guideCache = new();
@@ -208,21 +210,30 @@ namespace Content.Client.Construction
             if (!CheckConstructionConditions(prototype, loc, dir, user, showPopup: true))
                 return false;
 
-            ghost = EntityManager.SpawnEntity("constructionghost", loc);
+            // Triad: the rotation goes in at spawn time (wizden #44494), before the entity initialises, so it
+            // never passes through the client TransformSystem's animating setter. That setter schedules a
+            // render lerp whose samples never reach the target, and a client-only ghost is never re-stamped
+            // by a server state, which is how a 90 deg turn produced ~85 deg buildings after the 287 bump (#80,
+            // #520). Plain grid-local `dir`, deliberately: the engine's placement preview draws at
+            // gridWorldRotation + Direction, so this matches it in every camera state and the stored angle is
+            // cardinal-in-grid, which the server's placement conditions assume. Do not reintroduce an eye
+            // term here without also changing the preview's convention in the engine (#493, #516 tried).
+            ghost = SpawnAttachedTo("constructionghost", loc, rotation: dir.ToAngle());
             var comp = EntityManager.GetComponent<ConstructionGhostComponent>(ghost.Value);
             comp.Prototype = prototype;
             comp.GhostId = ghost.GetHashCode();
-            EntityManager.GetComponent<TransformComponent>(ghost.Value).LocalRotation = dir.ToAngle();
+
             _ghosts.Add(comp.GhostId, ghost.Value);
             var sprite = EntityManager.GetComponent<SpriteComponent>(ghost.Value);
-            sprite.Color = new Color(48, 255, 48, 128);
+            _spriteSystem.SetColor((ghost.Value, sprite), new Color(48, 255, 48, 128));
+            _spriteSystem.SetOffset((ghost.Value, sprite), prototype.GhostOffset); // Triad: greeble ghost offset (#323)
 
             for (int i = 0; i < prototype.Layers.Count; i++)
             {
-                sprite.AddBlankLayer(i); // There is no way to actually check if this already exists, so we blindly insert a new one
-                sprite.LayerSetSprite(i, prototype.Layers[i]);
+                _spriteSystem.AddBlankLayer((ghost.Value, sprite), i); // There is no way to actually check if this already exists, so we blindly insert a new one
+                _spriteSystem.LayerSetSprite((ghost.Value, sprite), i, prototype.Layers[i]);
                 sprite.LayerSetShader(i, "unshaded");
-                sprite.LayerSetVisible(i, true);
+                _spriteSystem.LayerSetVisible((ghost.Value, sprite), i, true);
             }
 
             if (prototype.CanBuildInImpassable)

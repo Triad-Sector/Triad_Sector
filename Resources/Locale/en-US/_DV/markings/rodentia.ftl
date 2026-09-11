@@ -13,6 +13,14 @@ marking-RodentiaHeadRound-round = Pattern
 
 ## ears
 
+# Triad: missing default ear/tail markings referenced by rodentia.yml
+marking-RodentiaHeadTopEarDefault = Ears - Default
+marking-RodentiaHeadTopEarDefault-mouse = Outer Ear
+marking-RodentiaHeadTopEarDefault-mouse_overlay = Inner Ear
+
+marking-RodentiaTailDefault = Tail - Default
+# End Triad
+
 marking-RodentiaHeadTopEarBat = Ears - Bat
 marking-RodentiaHeadTopEarBat-bat = Outer ear
 

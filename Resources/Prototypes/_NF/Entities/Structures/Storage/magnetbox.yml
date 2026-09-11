@@ -145,6 +145,10 @@
       components:
       - ConstructionMaterials
       - AtmosDevice # Frontier #4228
+      - BaseElectronics # Triad
+      - FloorTile # Triad
+      - ComputerBoard # Triad
+      - MachineBoard # Triad
     blacklist:
       tags:
       - PrizeTicket

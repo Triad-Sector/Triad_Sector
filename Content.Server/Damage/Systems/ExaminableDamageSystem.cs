@@ -10,9 +10,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Damage.Systems;
 
-public sealed class ExaminableDamageSystem : EntitySystem
+public sealed partial class ExaminableDamageSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {
@@ -31,6 +31,12 @@ public sealed class ExaminableDamageSystem : EntitySystem
     private void OnExamine(EntityUid uid, ExaminableDamageComponent component, ExaminedEvent args)
     {
         if (component.MessagesProto == null)
+            return;
+
+        // Triad: some structures (e.g. ship storage stashes) inherit ExaminableDamage from BaseStructure
+        // but have no Damageable/Destructible. Skip the damage-examine line for them instead of letting
+        // GetDamageLevel's Resolve log a spurious "can't resolve" error on every examine.
+        if (!HasComp<DamageableComponent>(uid) || !HasComp<DestructibleComponent>(uid))
             return;
 
         var messages = component.MessagesProto.Messages;

@@ -16,14 +16,14 @@ using System.Threading.Tasks;
 
 namespace Content.Server._Common.Consent;
 
-public sealed class ServerConsentManager : IServerConsentManager
+public sealed partial class ServerConsentManager : IServerConsentManager
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerNetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     public event Action<ICommonSession, PlayerConsentSettings>? OnConsentUpdated;
 

@@ -63,10 +63,10 @@ public sealed class RadiationCollectorSystem : VisualizerSystem<RadiationCollect
                 break;
 
             case RadiationCollectorVisualState.Active:
-                sprite.LayerSetState(RadiationCollectorVisualLayers.Main, comp.ActiveState);
+                SpriteSystem.LayerSetRsiState((uid, sprite), RadiationCollectorVisualLayers.Main, comp.ActiveState);
                 break;
             case RadiationCollectorVisualState.Deactive:
-                sprite.LayerSetState(RadiationCollectorVisualLayers.Main, comp.InactiveState);
+                SpriteSystem.LayerSetRsiState((uid, sprite), RadiationCollectorVisualLayers.Main, comp.InactiveState);
                 break;
         }
     }

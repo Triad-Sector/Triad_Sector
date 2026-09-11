@@ -19,7 +19,15 @@ public sealed partial class KillTrackerComponent : Component
     /// <summary>
     /// A dictionary of sources and how much damage they've done to this entity over time.
     /// </summary>
+    // Triad: KillSource is a polymorphic record, not a scalar, so it serializes to a MappingDataNode
+    // and cannot be a YAML mapping key -- persisting this throws "Yaml mapping keys must serialize to
+    // a ValueDataNode" and kills the whole ship-grid save. Per-round damage attribution is runtime
+    // state, so it is no longer persisted.
+    /*
     [DataField("lifetimeDamage")]
+    */
+    [ViewVariables]
+    // End Triad
     public Dictionary<KillSource, FixedPoint2> LifetimeDamage = new();
 }
 

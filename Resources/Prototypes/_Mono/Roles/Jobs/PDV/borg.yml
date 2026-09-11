@@ -7,7 +7,7 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 21600 # Half by Triad
-  assignedCompany: PDV
+  #assignedCompany: PDV
   canBeAntag: false
   icon: JobIconBorg
   supervisors: job-supervisors-hire

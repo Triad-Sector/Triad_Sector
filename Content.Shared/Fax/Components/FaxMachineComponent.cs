@@ -3,7 +3,6 @@ using Content.Shared.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Fax.Components;
 
@@ -103,14 +102,14 @@ public sealed partial class FaxMachineComponent : Component
     /// </summary>
     [ViewVariables]
     [DataField]
-    public float SendTimeout = 5f;
+    public float SendTimeout = 1f; // Triad - 1<5
 
     /// <summary>
     /// Message copying timeout
     /// </summary>
     [ViewVariables]
     [DataField]
-    public float CopyTimeout = 5f;
+    public float CopyTimeout = 1f; // Triad - 1<5
 
     /// <summary>
     /// Remaining time of inserting animation
@@ -184,8 +183,8 @@ public sealed partial class FaxPrintout
     [DataField(required: true)]
     public string Content { get; private set; } = default!;
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>), required: true)]
-    public string PrototypeId { get; private set; } = default!;
+    [DataField(required: true)]
+    public EntProtoId PrototypeId { get; private set; } = default!;
 
     [DataField("stampState")]
     public string? StampState { get; private set; }

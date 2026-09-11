@@ -63,7 +63,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
         // find all grids in range so it displays for nearby grids and not just our own
         var searchBox = Box2.CenteredAround(playerMapPos.Position, new Vector2(maxRange * 2, maxRange * 2));
         var grids = new List<Entity<MapGridComponent>>();
-        _mapMan.FindGridsIntersecting(playerMapPos.MapId, searchBox, ref grids, true, false);
+        _map.FindGridsIntersecting(playerMapPos.MapId, searchBox, ref grids, true, false);
 
         var shiftVec = new Vector2(maxRange, maxRange);
 
@@ -192,7 +192,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
     private void SpawnEntityGhost(GhostPosData key, ShipRepairEntitySpecifier spec, EntProtoId protoId)
     {
         if (_proto.TryIndex(protoId, out var proto)
-            && proto.TryGetComponent<SpriteComponent>(out var specSprite, Factory))
+            && proto.TryComp<SpriteComponent>(out var specSprite, Factory))
         {
             // needed so it doesn't fall off if offgrid
             var ghost = Spawn(RepairGhostId, new EntityCoordinates(key.Grid, Vector2.Zero));
@@ -203,13 +203,14 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
             AddComp(ghost, sprite);
             var ent = (ghost, sprite);
 
-            // evil hacks to not trip debug asserts
-            var old = specSprite.Owner;
-            specSprite.Owner = ghost;
-            _sprite.CopySprite((ghost, specSprite), ent);
-            specSprite.Owner = old;
+            // The source is the prototype's own component, so it is not owned by the ghost and pairing
+            // the two trips Entity<T>'s owner assert. Carry the component's real owner, exactly as the
+            // engine's own CopyFrom shim does; CopySprite never reads it once Comp is non-null.
+#pragma warning disable CS0618
+            _sprite.CopySprite((specSprite.Owner, specSprite), ent);
+#pragma warning restore CS0618
 
-            if (proto.TryGetComponent<IconSmoothComponent>(out var specSmooth, Factory))
+            if (proto.TryComp<IconSmoothComponent>(out var specSmooth, Factory))
             {
                 var smooth = _serialization.CreateCopy(specSmooth, notNullableOverride: true);
                 AddComp(ghost, smooth);

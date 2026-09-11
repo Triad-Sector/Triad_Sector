@@ -6,11 +6,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Clothing.EntitySystems;
 
-public sealed class HideLayerClothingSystem : EntitySystem
+public sealed partial class HideLayerClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!; // Triad - fix modsuit hide layers not updating
+    [Dependency] private SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private InventorySystem _inventory = default!; // Triad - fix modsuit hide layers not updating
 
     public override void Initialize()
     {
@@ -67,7 +67,9 @@ public sealed class HideLayerClothingSystem : EntitySystem
         if (!Resolve(clothing.Owner, ref clothing.Comp1, ref clothing.Comp2))
             return;
 
-        if (!Resolve(user.Owner, ref user.Comp))
+        // Triad: a non-humanoid wearer (e.g. a grid that ended up with an InventoryComponent) has no
+        // layers to hide; resolve quietly instead of logging a spurious "can't resolve" error on teardown.
+        if (!Resolve(user.Owner, ref user.Comp, logMissing: false))
             return;
 
         hideLayers &= IsEnabled(clothing!);

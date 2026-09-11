@@ -105,6 +105,8 @@ marking-VulpTailTip = Vulpkanin (tip)
 
 marking-VulpTailWag-vulp_wag = Vulpkanin tail (base)
 marking-VulpTailWag-vulp_wag-fade = Vulpkanin tail (fade)
+# Triad: missing key referenced by vulpkanin.yml
+marking-VulpTailWag-vulp_wag-tip = Vulpkanin tail (tip)
 marking-VulpTailWag = Vulpkanin (wag)
 
 marking-VulpTailWagTip-vulp_wag = Vulpkanin tail (base)

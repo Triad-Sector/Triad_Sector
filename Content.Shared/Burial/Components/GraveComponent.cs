@@ -49,6 +49,11 @@ public sealed partial class GraveComponent : Component
     /// <summary>
     /// Tracks someone digging themself out of the grave
     /// </summary>
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    */
+    [ViewVariables(VVAccess.ReadOnly)]
     public DoAfterId? HandDiggingDoAfter;
+    // End Triad
 }

@@ -15,6 +15,7 @@ namespace Content.Client.Administration.UI.Notes;
 public sealed partial class AdminNotesLine : BoxContainer
 {
     private readonly SpriteSystem _sprites;
+    private readonly ISawmill _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("admin.notes");
 
     private const string AdminNotesTextureBase = "/Textures/Interface/AdminNotes/";
     private static readonly Dictionary<NoteSeverity, string> SeverityIcons = new()
@@ -61,7 +62,7 @@ public sealed partial class AdminNotesLine : BoxContainer
         if (iconPath is null)
         {
             SeverityRect.Visible = false;
-            Logger.WarningS("admin.notes", $"Could not find an icon for note ID {Note.Id}");
+            _sawmill.Warning($"Could not find an icon for note ID {Note.Id}");
         }
         else
         {
@@ -70,7 +71,7 @@ public sealed partial class AdminNotesLine : BoxContainer
 
         TimeLabel.Text = Note.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
         ServerLabel.Text = Note.ServerName ?? "Unknown";
-        RoundLabel.Text = Note.Round == null ? "Unknown round" : "Round " + Note.Round;
+        RoundLabel.Text = Note.Rounds.Length == 0 ? "Unknown round" : "Round " + string.Join(',', Note.Rounds);
         AdminLabel.Text = Note.CreatedByName;
         PlaytimeLabel.Text = $"{Note.PlaytimeAtNote.TotalHours: 0.0}h";
 
@@ -139,7 +140,12 @@ public sealed partial class AdminNotesLine : BoxContainer
 
     private string FormatRoleBanMessage()
     {
-        var banMessage = new StringBuilder($"{Loc.GetString("admin-notes-banned-from")} {string.Join(", ", Note.BannedRoles ?? new []{"unknown"})} ");
+        var rolesText = string.Join(
+            ", ",
+            // Explicit cast here to avoid sandbox violation.
+            (IEnumerable<BanRoleDef>?)Note.BannedRoles ?? [new BanRoleDef("what", "You should not be seeing this")]);
+
+        var banMessage = new StringBuilder($"{Loc.GetString("admin-notes-banned-from")} {rolesText} ");
         return FormatBanMessageCommon(banMessage);
     }
 

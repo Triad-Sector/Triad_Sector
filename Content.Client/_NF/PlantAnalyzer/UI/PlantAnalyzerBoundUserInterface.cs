@@ -43,6 +43,6 @@ public sealed class PlantAnalyzerBoundUserInterface : BoundUserInterface
         if (_window != null)
             _window.OnClose -= Close;
 
-        _window?.Dispose();
+        _window?.Close();
     }
 }

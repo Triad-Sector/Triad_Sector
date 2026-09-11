@@ -36,38 +36,11 @@
 - type: entity
   parent: BaseWeaponBallisticTurret
   id: WeaponTurretCC
-  suffix: CC, Colossus
+  suffix: TFA, Venmar
   components:
   - type: NpcFactionMember
     factions:
     - CC
-
-- type: entity
-  parent: BaseWeaponBallisticTurret
-  id: WeaponTurretTSFMC
-  suffix: TSFMC
-  components:
-  - type: NpcFactionMember
-    factions:
-    - TSFMCTurret
-
-- type: entity
-  parent: BaseWeaponBallisticTurret
-  id: WeaponTurretUSSP
-  suffix: USSP
-  components:
-  - type: NpcFactionMember
-    factions:
-    - USSPTurret
-
-- type: entity
-  parent: BaseWeaponBallisticTurret
-  id: WeaponTurretPDV
-  suffix: PDV
-  components:
-  - type: NpcFactionMember
-    factions:
-    - PirateNF
 
 - type: entity
   parent: BaseWeaponTurretNF

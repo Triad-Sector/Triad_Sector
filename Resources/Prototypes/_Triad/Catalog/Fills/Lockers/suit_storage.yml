@@ -1,0 +1,94 @@
+- type: entity
+  id: SuitStorageTdf
+  parent: SuitStorageBase
+  suffix: TDF Hardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitTdf
+    - id: JetpackNfsdFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: SuitStorageTdfMedic
+  parent: SuitStorageBase
+  suffix: TDF Medic Hardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitTdfMedic
+    - id: JetpackNfsdFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: SuitStorageTdfTA29
+  parent: SuitStorageBase
+  suffix: TDF TA-29 Hardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitTdfTA29
+    - id: JetpackNfsdFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Security"]]
+
+# TDF CE hardsuit
+- type: entity
+  id: SuitStorageChiefEnforcer
+  parent: SuitStorageBase
+  suffix: TDF Chief Enforcer
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: NitrogenTankFilled
+        - id: ClothingOuterHardsuitTdfChiefEnforcer
+        - id: ClothingMaskGasSwatTdf
+        - id: JetpackNfsdFilled
+        - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["TdfChiefEnforcer"]]
+
+# RMT suits
+- type: entity
+  id: SuitStorageIndustrialEngi
+  parent: SuitStorageBase
+  suffix: RMT Industrial Engi
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitIndustrialEngi
+    - id: ClothingMaskGasSecurity
+    - id: JetpackVoidFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Mercenary"]]
+
+- type: entity
+  id: SuitStorageRmtL10
+  parent: SuitStorageBase
+  suffix: RMT L-10
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitRmtL10
+    - id: ClothingMaskGasSecurity
+    - id: JetpackMiniFilled
+    - id: ClothingShoesBootsMagSecurity
+  - type: AccessReader
+    access: [["Mercenary"]]

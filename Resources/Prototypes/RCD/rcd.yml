@@ -69,7 +69,7 @@
   delay: 1
   collisionMask: InteractImpassable
   rules:
-    - MustBuildOnSubfloor
+    #- MustBuildOnSubfloor # Triad removal - Allow building catwalks regardless of tile type.
     - IsCatwalk
   rotation: Fixed
   fx: EffectRCDConstruct1

@@ -20,16 +20,17 @@
   category: cargoproduct-category-name-food
   group: market
 
-- type: cargoProduct
-  id: FoodMRE
-  abstract: true # Frontier
-  icon:
-    sprite: Objects/Consumable/Food/snacks.rsi
-    state: nutribrick
-  product: CrateFoodMRE
-  cost: 1000
-  category: cargoproduct-category-name-food
-  group: market
+# Triad: removed the MRE crate from the cargo market
+#- type: cargoProduct
+#  id: FoodMRE
+#  abstract: true # Frontier
+#  icon:
+#    sprite: Objects/Consumable/Food/snacks.rsi
+#    state: nutribrick
+#  product: CrateFoodMRE
+#  cost: 1000
+#  category: cargoproduct-category-name-food
+#  group: market
 
 - type: cargoProduct
   id: FoodCook

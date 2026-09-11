@@ -12,10 +12,10 @@ namespace Content.Server._Mono.MonoCoins;
 /// Admin command for subtracting MonoCoins from a player.
 /// </summary>
 [AdminCommand(AdminFlags.Admin)]
-public sealed class CurrencySubtractCommand : LocalizedCommands
+public sealed partial class CurrencySubtractCommand : LocalizedCommands
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public override string Command => "currency:subtract";
 

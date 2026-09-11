@@ -1,0 +1,45 @@
+# These are effectively duplicated signs.
+- type: entity
+  abstract: true
+  parent: BaseSignDirectional
+  id: TriadDecorativeWallmountBase
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Decoration/wallmount.rsi
+
+- type: entity
+  parent: TriadDecorativeWallmountBase
+  id: TriHandDryer
+  name: hand dryer
+  description: A wall-mounted hand dryer. For drying your hands.
+  components:
+  - type: Sprite
+    state: handdryer
+
+- type: entity
+  parent: TriadDecorativeWallmountBase
+  id: TriToiletRoll
+  name: toilet roll
+  description: Remember to wipe.
+  components:
+  - type: Sprite
+    state: toiletroll
+
+- type: entity
+  parent: TriToiletRoll
+  id: TriToiletRollOffset
+  suffix: Offset
+  components:
+  - type: Sprite
+    state: toiletrolloffset
+
+- type: entity
+  parent: CleanerDispenser
+  id: TriHandSanitiserDispenser
+  name: hand sanitiser dispenser
+  description: A wall-mounted dispenser for hand sanitiser. Rub it into your paws.
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Decoration/wallmount.rsi
+    state: handsanitiser
+

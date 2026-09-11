@@ -24,7 +24,8 @@
         - CrateServiceJanitorialSupplies
         - CrateHydroponicsSeedsMedicinal
         - CrateEmergencyInternals
-        - CrateFoodMRE
+        # Triad: removed the MRE crate from the salvage loot pool
+        # - CrateFoodMRE
         - CrateMaterialTextiles
         - CrateMedicalSupplies
         - CrateEngineeringCableBulk

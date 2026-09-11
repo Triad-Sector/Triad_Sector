@@ -7,7 +7,7 @@ using Robust.Shared.Input;
 
 namespace Content.Client.UserInterface.Controls
 {
-    [Virtual]
+    // Triad: removed [Virtual] - engine v277 RA0053 forbids it on abstract types (wizden removed it upstream in #43347)
     public abstract class SlotControl : Control, IEntityControl
     {
         public static int DefaultButtonSize = 64;
@@ -34,7 +34,7 @@ namespace Content.Client.UserInterface.Controls
                 //this auto registers the button with it's parent container when it's set
                 if (_slotNameSet)
                 {
-                    Logger.Warning("Tried to set slotName after init for:" + Name);
+                    Log.Warning("Tried to set slotName after init for:" + Name);
                     return;
                 }
                 _slotNameSet = true;

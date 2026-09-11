@@ -15,13 +15,13 @@ namespace Content.Server.Anomaly.Effects;
 /// <summary>
 /// This handles <see cref="ProjectileAnomalyComponent"/> and the events from <seealso cref="AnomalySystem"/>
 /// </summary>
-public sealed class ProjectileAnomalySystem : EntitySystem
+public sealed partial class ProjectileAnomalySystem : EntitySystem
 {
-    [Dependency] private readonly TransformSystem _xform = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly GunSystem _gunSystem = default!;
+    [Dependency] private TransformSystem _xform = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private GunSystem _gunSystem = default!;
 
     public override void Initialize()
     {
@@ -58,6 +58,12 @@ public sealed class ProjectileAnomalySystem : EntitySystem
         Log.Debug($"shots: {projectileCount}");
         while (projectileCount > 0)
         {
+            // Triad: a supercritical projectile anomaly with nothing in range leaves both lists empty;
+            // _random.Pick(inRange) then threw ArgumentOutOfRangeException every tick (~70k/day) and the
+            // supercrit effect never resolved. Bail when there's nothing to target.
+            if (priority.Count == 0 && inRange.Count == 0)
+                break;
+
             Log.Debug($"{projectileCount}");
             var target = priority.Any()
                 ? _random.PickAndTake(priority)
@@ -81,14 +87,14 @@ public sealed class ProjectileAnomalySystem : EntitySystem
         EntityCoordinates targetCoords,
         float severity)
     {
-        var mapPos = coords.ToMap(EntityManager, _xform);
+        var mapPos = _xform.ToMapCoordinates(coords);
 
-        var spawnCoords = _mapManager.TryFindGridAt(mapPos, out var gridUid, out _)
+        var spawnCoords = _map.TryFindGridAt(mapPos, out var gridUid, out _)
                 ? coords.WithEntityId(gridUid, EntityManager)
-                : new(_mapManager.GetMapEntityId(mapPos.MapId), mapPos.Position);
+                : new(_map.GetMapOrInvalid(mapPos.MapId), mapPos.Position);
 
         var ent = Spawn(component.ProjectilePrototype, spawnCoords);
-        var direction = targetCoords.ToMapPos(EntityManager, _xform) - mapPos.Position;
+        var direction = _xform.ToMapCoordinates(targetCoords).Position - mapPos.Position;
 
         if (!TryComp<ProjectileComponent>(ent, out var comp))
             return;

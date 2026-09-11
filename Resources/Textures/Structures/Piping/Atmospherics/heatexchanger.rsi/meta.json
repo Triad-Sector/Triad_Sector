@@ -5,7 +5,7 @@
       "y":32
    },
    "license":"CC-BY-SA-3.0",
-   "copyright":"Taken from https://github.com/tgstation/tgstation at commit 57cd1d59ca019dd0e7811ac451f295f818e573da and modified by BasedUser",
+   "copyright":"Taken from https://github.com/tgstation/tgstation at commit 57cd1d59ca019dd0e7811ac451f295f818e573da and modified by BasedUser, states sliced for the array-extension by Triad contributors",
    "states":[
       {
          "name":"heStraight",
@@ -13,6 +13,34 @@
       },
       {
          "name":"heBend",
+         "directions":4
+      },
+      {
+         "name":"heStraightCapIn",
+         "directions":4
+      },
+      {
+         "name":"heStraightCapOut",
+         "directions":4
+      },
+      {
+         "name":"heStraightMid",
+         "directions":4
+      },
+      {
+         "name":"heBendCapIn",
+         "directions":4
+      },
+      {
+         "name":"heBendCapOut",
+         "directions":4
+      },
+      {
+         "name":"heBendMid",
+         "directions":4
+      },
+      {
+         "name":"blank",
          "directions":4
       }
    ]

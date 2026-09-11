@@ -1,7 +1,7 @@
 - type: construction
   id: BannerNGC
-  name: TSF banner
-  description: A banner proudly displaying the stars of the Trans-Solar Federation.
+  name: Federated Solarian Republic banner
+  description: A banner proudly displaying the stars of the Sol system and its territories.
   graph: MonoBannersGraph
   startNode: start
   targetNode: BannerTSFNode

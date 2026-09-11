@@ -7,10 +7,13 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.EUI
 {
-    public sealed class EuiManager : IPostInjectInit
+    public sealed partial class EuiManager : IPostInjectInit
     {
-        [Dependency] private readonly IPlayerManager _players = default!;
-        [Dependency] private readonly IServerNetManager _net = default!;
+        [Dependency] private IPlayerManager _players = default!;
+        [Dependency] private IServerNetManager _net = default!;
+        [Dependency] private ILogManager _log = default!;
+
+        private ISawmill _sawmill = default!;
 
         private readonly Dictionary<ICommonSession, PlayerEuiData> _playerData =
             new();
@@ -26,6 +29,7 @@ namespace Content.Server.EUI
 
         void IPostInjectInit.PostInject()
         {
+            _sawmill = _log.GetSawmill("eui");
             _players.PlayerStatusChanged += PlayerStatusChanged;
         }
 
@@ -99,7 +103,7 @@ namespace Content.Server.EUI
 
             if (!dat.OpenUIs.TryGetValue(message.Id, out var eui))
             {
-                Logger.WarningS("eui", $"Got EUI message from player {ply} for non-existing UI {message.Id}");
+                _sawmill.Warning($"Got EUI message from player {ply} for non-existing UI {message.Id}");
                 return;
             }
 

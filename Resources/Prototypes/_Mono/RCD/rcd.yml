@@ -285,3 +285,150 @@
     - CanBuildOnEmptyTile
   fx: EffectRCDConstruct1
 
+# Diagonal lattice — one mode, rotate like other RCD objects
+- type: rcd
+  id: LatticeDiagonal
+  name: rcd-component-lattice-diagonal
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/ne.png
+  mode: ConstructTile
+  prototype: LatticeCornerNE
+  rotation: User
+  constructTileByDirection:
+    North: LatticeCornerNE
+    East: LatticeCornerSE
+    South: LatticeCornerSW
+    West: LatticeCornerNW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Center-strip half lattice — N/S vertical strip, E/W horizontal (rotate like diagonal hull)
+- type: rcd
+  id: LatticeHalf
+  name: rcd-component-lattice-half
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/half_v.png
+  mode: ConstructTile
+  prototype: LatticeHalfV
+  rotation: User
+  constructTileByDirection:
+    North: LatticeHalfV
+    East: LatticeHalfH
+    South: LatticeHalfV
+    West: LatticeHalfH
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Wedge corners — rotate to pick N/E/S/W wedge tile
+- type: rcd
+  id: LatticeWedge
+  name: rcd-component-lattice-wedge
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/wedge_n.png
+  mode: ConstructTile
+  prototype: LatticeWedgeN
+  rotation: User
+  constructTileByDirection:
+    North: LatticeWedgeN
+    East: LatticeWedgeE
+    South: LatticeWedgeS
+    West: LatticeWedgeW
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt lower (axis-aligned family) — NES / SEW / SWN / NWE cycle by rotation
+- type: rcd
+  id: LatticeHalfTiltLower
+  name: rcd-component-lattice-halftilt-lower
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/halftilt_ne_s_l.png
+  mode: ConstructTile
+  prototype: LatticeHalfTiltNESLower
+  rotation: User
+  constructTileByDirection:
+    North: LatticeHalfTiltNESLower
+    East: LatticeHalfTiltSEWLower
+    South: LatticeHalfTiltSWNLower
+    West: LatticeHalfTiltNWELower
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt lower (diagonal-offset family) — NE-W / SE-N / SW-E / NW-S cycle by rotation
+- type: rcd
+  id: LatticeHalfTiltLowerAlt
+  name: rcd-component-lattice-halftilt-lower-alt
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/halftilt_ne_w_l.png
+  mode: ConstructTile
+  prototype: LatticeHalfTiltNEWLower
+  rotation: User
+  constructTileByDirection:
+    North: LatticeHalfTiltNEWLower
+    East: LatticeHalfTiltSENLower
+    South: LatticeHalfTiltSWELower
+    West: LatticeHalfTiltNWSLower
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt upper (axis-aligned family)
+- type: rcd
+  id: LatticeHalfTiltUpper
+  name: rcd-component-lattice-halftilt-upper
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/halftilt_ne_s_u.png
+  mode: ConstructTile
+  prototype: LatticeHalfTiltNESUpper
+  rotation: User
+  constructTileByDirection:
+    North: LatticeHalfTiltNESUpper
+    East: LatticeHalfTiltSEWUpper
+    South: LatticeHalfTiltSWNUpper
+    West: LatticeHalfTiltNWEUpper
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Half-tilt upper (diagonal-offset family)
+- type: rcd
+  id: LatticeHalfTiltUpperAlt
+  name: rcd-component-lattice-halftilt-upper-alt
+  category: WallsAndFlooring
+  sprite: /Textures/_Mono/Tiles/lattice/script/halftilt_ne_w_u.png
+  mode: ConstructTile
+  prototype: LatticeHalfTiltNEWUpper
+  rotation: User
+  constructTileByDirection:
+    North: LatticeHalfTiltNEWUpper
+    East: LatticeHalfTiltSENUpper
+    South: LatticeHalfTiltSWEUpper
+    West: LatticeHalfTiltNWSUpper
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+

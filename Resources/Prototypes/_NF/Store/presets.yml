@@ -36,9 +36,9 @@
     - UplinkSecurityBundles
     - UplinkSecurityVouchers # Mono
     currencyWhitelist:
-    - FederationMilitaryCredit
+    - TriadCommerceCredit # Triad
     balance:
-      FederationMilitaryCredit: 0
+      TriadCommerceCredit: 0
 
 # mono edit
 - type: entity

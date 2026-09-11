@@ -14,15 +14,15 @@ using Content.Shared._NF.StationRecords; // Frontier
 
 namespace Content.Server.StationRecords.Systems;
 
-public sealed class GeneralStationRecordConsoleSystem : EntitySystem
+public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobsSystem = default!; // Frontier
-    [Dependency] private readonly AccessReaderSystem _access = default!; // Frontier
-    [Dependency] private readonly IPrototypeManager _proto = default!; // Frontier
-    [Dependency] private readonly IAdminLogManager _adminLog = default!; // Frontier
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
+    [Dependency] private StationJobsSystem _stationJobsSystem = default!; // Frontier
+    [Dependency] private AccessReaderSystem _access = default!; // Frontier
+    [Dependency] private IPrototypeManager _proto = default!; // Frontier
+    [Dependency] private IAdminLogManager _adminLog = default!; // Frontier
 
     public override void Initialize()
     {
@@ -177,4 +177,16 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
         GeneralStationRecordConsoleState newState = new(id, record, listing, jobList, console.Filter, ent.Comp.CanDeleteEntries, advertisement);
         _ui.SetUiState(uid, GeneralStationRecordConsoleKey.Key, newState);
     }
+
+    // Triad start - accessing active keys and filters
+    public static void SetActiveKey(Entity<GeneralStationRecordConsoleComponent> ent, uint? key)
+    {
+        ent.Comp.ActiveKey = key;
+    }
+
+    public static void SetFilter(Entity<GeneralStationRecordConsoleComponent> ent, StationRecordsFilter? filter)
+    {
+        ent.Comp.Filter = filter;
+    }
+    // Triad end
 }

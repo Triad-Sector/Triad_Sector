@@ -47,9 +47,9 @@
     maxDurability: 50
     walkSpeedModifier: 0.95
     sprintSpeedModifier: 0.95
-    staminaDamageMultiplier: 1.0
+    staminaDamageMultiplier: 0.6
     absorptionRatios:
-      Piercing: 0.7
+      Piercing: 0.65
       Burn: 1.2
   - type: Damageable
     damageContainer: Inorganic

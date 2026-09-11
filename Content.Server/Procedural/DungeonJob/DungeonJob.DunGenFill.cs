@@ -20,7 +20,7 @@ public sealed partial class DungeonJob
         }
 
         var roomTiles = new HashSet<Vector2i>();
-        var tiles = _maps.GetAllTilesEnumerator(_gridUid, _grid);
+        var tiles = _maps.GetAllTiles(_gridUid, _grid);
 
         while (tiles.MoveNext(out var tileRef))
         {
@@ -32,7 +32,7 @@ public sealed partial class DungeonJob
             if (fill.AllowedTiles != null && !fill.AllowedTiles.Contains(((ContentTileDefinition) _tileDefManager[tileRef.Value.Tile.TypeId]).ID))
                 continue;
 
-            if (!_anchorable.TileFree(_grid, tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
+            if (!_anchorable.TileFree((_gridUid, _grid), tile, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
             var gridPos = _maps.GridTileToLocal(_gridUid, _grid, tile);

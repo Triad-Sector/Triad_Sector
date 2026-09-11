@@ -17,7 +17,7 @@ namespace Content.Client.Guidebook.Controls;
 [UsedImplicitly, GenerateTypedNameReferences]
 public sealed partial class GuideReagentGroupEmbed : BoxContainer, IDocumentTag
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public GuideReagentGroupEmbed()
     {
@@ -42,7 +42,7 @@ public sealed partial class GuideReagentGroupEmbed : BoxContainer, IDocumentTag
         control = null;
         if (!args.TryGetValue("Group", out var group))
         {
-            Logger.Error("Reagent group embed tag is missing group argument");
+            Log.Error("Reagent group embed tag is missing group argument");
             return false;
         }
 

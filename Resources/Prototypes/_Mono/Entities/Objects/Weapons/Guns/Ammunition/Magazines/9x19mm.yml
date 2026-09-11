@@ -172,7 +172,7 @@
 #Start HighCapacity mags
 - type: entity
   id: BaseMagazine9x19mmPistolHighCapacityFMJ
-  name: machine pistol magazine (9x19mm FMJ)
+  name: extended pistol magazine (9x19mm FMJ) # Triad
   parent: [BaseItem, RecyclableItemSteelTiny]
   abstract: true
   components:
@@ -184,7 +184,7 @@
     whitelist:
       tags:
         - Cartridge9x19mmFMJ
-    capacity: 34
+    capacity: 31 # Triad, 31 < 34
   - type: Item
     size: Small
   - type: ContainerContainer
@@ -205,7 +205,7 @@
 
 - type: entity
   id: Magazine9x19mmPistolHighCapacityEmpty
-  name: machine pistol magazine (9x19mm any)
+  name: extended pistol magazine (9x19mm any) # Triad
   suffix: empty
   parent: BaseMagazine9x19mmPistolHighCapacityFMJ
   components:
@@ -220,7 +220,7 @@
 
 - type: entity
   id: Magazine9x19mmPistolHighCapacityFMJ
-  name: machine pistol magazine (9x19mm FMJ)
+  name: extended pistol magazine (9x19mm FMJ) # Triad
   parent: BaseMagazine9x19mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
@@ -234,11 +234,11 @@
 
 - type: entity
   id: Magazine9x19mmPistolHighCapacityPractice
-  name: machine pistol magazine (9x19mm practice)
+  name: extended pistol magazine (9x19mm practice) # Triad
   parent: BaseMagazine9x19mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmFMJ
+    proto: Cartridge9x19mmPractice # Triad
   - type: Sprite
     layers:
     - state: practice
@@ -248,11 +248,11 @@
 
 - type: entity
   id: Magazine9x19mmPistolHighCapacityRubber
-  name: machine pistol magazine (9x19mm rubber)
+  name: extended pistol magazine (9x19mm rubber) # Triad
   parent: BaseMagazine9x19mmPistolHighCapacityFMJ
   components:
   - type: BallisticAmmoProvider
-    proto: Cartridge9x19mmFMJ
+    proto: Cartridge9x19mmRubber
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/9x19mm/9x19mm_pistol_high_capacity_mag.rsi
     layers:
@@ -260,7 +260,6 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-
 #End HighCapacity mags
 #Start SubMachineGun mags
 - type: entity

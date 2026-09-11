@@ -195,7 +195,7 @@
     repairCost: 6
 
 - type: entity
-  parent: [BaseStructureDynamic, BasePressurePumpGaslock]
+  parent: [ BaseStructureDynamic, BasePressurePumpGaslock, BaseMachinePowered, ConstructibleMachine ]
   id: GaslockFrame
   name: portable gaslock
   description: Pumps gas through. Accepts docking, but cannot dock. Both sides must be docked and pumping in the same direction for gas to flow.
@@ -244,6 +244,19 @@
     receiveOnly: true
   - type: DeviceNetwork
     prefix: device-address-prefix-portable-gaslock
+  # Triad - Battery-powered gas drill
+  - type: Battery
+    maxCharge: 9500
+    startingCharge: 0
+  - type: ExaminableBattery
+  - type: BatterySelfRecharger
+  - type: ApcPowerReceiverBattery
+    idleLoad: 5
+    batteryRechargeRate: 220
+    batteryRechargeEfficiency: 1.5
+  - type: CollapsibleItem
+    collapseInto: GaslockFrameFlatpack
+  # Triad End
   - type: Fixtures
     fixtures:
       fix1:
@@ -261,4 +274,6 @@
           radius: 0.2
           position: "0,-0.5"
         hard: false
+  - type: Machine
+    board: GaslockFrameMachineCircuitboard
   - type: HLPersistOnShipSave # Triad

@@ -1,10 +1,9 @@
 using System.Runtime.CompilerServices;
 using Content.Server.Atmos.Components;
-using Content.Server.Maps;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
-using Content.Shared.Maps;
-using Robust.Shared.Map;
+using Content.Shared.Atmos.Piping.Components;
+using Content.Shared.Shuttles.Components; // Triad
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -121,11 +120,44 @@ public partial class AtmosphereSystem
     /// </summary>
     /// <param name="mapGrid">The grid in question.</param>
     /// <param name="tile">The indices of the tile.</param>
-    private void PryTile(MapGridComponent mapGrid, Vector2i tile)
+    private void PryTile(Entity<MapGridComponent> mapGrid, Vector2i tile)
     {
-        if (!mapGrid.TryGetTileRef(tile, out var tileRef))
+        if (!_mapSystem.TryGetTileRef(mapGrid.Owner, mapGrid.Comp, tile, out var tileRef))
             return;
 
         _tile.PryTile(tileRef);
     }
+
+    /// <summary>
+    /// Notifies all subscribing entities on a particular tile that the tile has changed.
+    /// Atmos devices may store references to tiles, so this is used to properly resync devices
+    /// after a significant atmos change on that tile, for example a tile getting a new <see cref="GasMixture"/>.
+    /// </summary>
+    /// <param name="ent">The grid atmosphere entity.</param>
+    /// <param name="tile">The tile to check for devices on.</param>
+    private void NotifyDeviceTileChanged(Entity<GridAtmosphereComponent, MapGridComponent> ent, Vector2i tile)
+    {
+        var inTile = _mapSystem.GetAnchoredEntities(ent.Owner, ent.Comp2, tile);
+        var ev = new AtmosDeviceTileChangedEvent();
+        foreach (var uid in inTile)
+        {
+            RaiseLocalEvent(uid, ref ev);
+        }
+    }
+
+    // Triad: cherry-pick of NF PR #3061 — no atmos extraction off the sector map
+    /// <summary>
+    /// Checks whether atmos devices that pull gas out of their surroundings are allowed to run on
+    /// the given map. Expedition and other side maps are off limits, because their atmosphere is
+    /// an infinite source: a ship parked on a planet could siphon gas forever for free.
+    /// </summary>
+    /// <param name="mapUid">The map the device is on, from <see cref="AtmosDeviceUpdateEvent.Map"/>.</param>
+    public bool AtmosInputCanRunOnMap(EntityUid? mapUid)
+    {
+        if (!TryComp<MapComponent>(mapUid, out var mapComp))
+            return false;
+
+        return AllowMapGasExtraction || HasComp<FTLMapComponent>(mapUid) || mapComp.MapId == _gameTicker.DefaultMap;
+    }
+    // End Triad
 }

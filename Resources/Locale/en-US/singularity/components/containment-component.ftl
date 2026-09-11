@@ -11,3 +11,6 @@ comp-containment-anchor-warning = You cannot unanchor the containment field gene
 comp-containment-toggle-warning = You cannot turn the generator off while it's connected.
 
 comp-field-vaporized = The {$entity} hits the field and vaporizes into nothing!
+
+# Triad
+comp-containment-deconstruct-warning = You cannot deconstruct the containment field generator while it's on or connected!

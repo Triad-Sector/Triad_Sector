@@ -27,7 +27,7 @@ namespace Content.Client.RPD;
 [GenerateTypedNameReferences]
 public sealed partial class RPDMenu : RadialMenu
 {
-    [Dependency] private readonly ILocalizationManager _locManager = default!;
+    [Dependency] private ILocalizationManager _locManager = default!;
 
     private readonly RCDMenu _rcdMenu;
     private string? _selectedColor;

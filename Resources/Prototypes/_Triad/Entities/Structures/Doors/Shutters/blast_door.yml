@@ -1,0 +1,67 @@
+# This version of blast door cannot be deconstructed, Vanilla ones can still be deconstructed
+- type: entity
+  id: BaseBlastDoorIndestructible
+  parent: BaseShutterIndestructible
+  name: blast door
+  description: This particular blast door seems to be mocking you.
+  abstract: true
+  components:
+  - type: AccessReader
+    containerAccessProvider: board
+  - type: Sprite
+    sprite: Structures/Doors/Shutters/blastdoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.4
+    openTimeOne: 0.4
+    openTimeTwo: 0.4
+    openingAnimationTime: 1.0
+    closingAnimationTime: 1.0
+    canPry: false
+    crushDamage:
+      types:
+        Blunt: 25 # yowch
+    openSound:
+      path: /Audio/Machines/blastdoor.ogg
+    closeSound:
+      path: /Audio/Machines/blastdoor.ogg
+  - type: Occluder
+  - type: Appearance
+  - type: RadiationBlocker
+    resistance: 8
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronics ]
+  - type: StaticPrice
+    price: 0
+  - type: InteractionPopup
+    interactSuccessString: comp-window-knock
+    messagePerceivedByOthers: comp-window-knock
+    interactSuccessSound:
+      path: /Audio/Effects/glass_knock.ogg
+
+- type: entity
+  id: BlastDoorIndestructible
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible
+  components:
+  - type: Occluder
+
+- type: entity
+  id: BlastDoorIndestructibleOpen
+  parent: BaseBlastDoorIndestructible
+  suffix: Indestructible, Open
+  components:
+  - type: Door
+    state: Open
+  - type: Occluder
+    enabled: false
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false

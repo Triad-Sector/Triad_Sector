@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: BaseItem
   id: ContrabandAppraisalTool
-  name: contraband appraisal tool
-  description: An officer's best friend, with a quantum connection to the NT database and the ability to appraise even the toughest items.
+  name: contraband appraisal tool # Triad - Change description
+  description: An officer's best friend, with a quantum connection to the contraband database and the ability to appraise even the toughest items.
   components:
   - type: Sprite
     sprite: _NF/Objects/Tools/appraisal-tool.rsi

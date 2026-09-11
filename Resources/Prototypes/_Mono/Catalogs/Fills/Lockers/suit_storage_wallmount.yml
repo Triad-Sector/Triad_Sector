@@ -318,19 +318,3 @@
 - type: entity
   id: SuitStorageWallmountClown
   parent: [SuitStorageWallmount, SuitStorageClown]
-
-# M82c/b
-
-- type: entity
-  parent: [ SuitStorageWallmount, SuitStorageM82c ]
-  id: SuitStorageWallmountM82c
-
-- type: entity
-  parent: [ SuitStorageWallmount, SuitStorageM82b ]
-  id: SuitStorageWallmountM82b
-
-# M86
-
-- type: entity
-  parent: [ SuitStorageWallmount, SuitStorageM86 ]
-  id: SuitStorageWallmountM86

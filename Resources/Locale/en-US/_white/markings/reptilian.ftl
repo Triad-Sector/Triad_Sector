@@ -46,6 +46,15 @@ marking-LizardHornsBighorn-horns_bighorn_r = Right horn
 marking-SnakeLargeTail = Lizard, large snake tail
 marking-SnakeLargeTail-tail_snakelarge = Inner
 marking-SnakeLargeTail-tail_snakelarge_overlay = Outer
+# Triad: actual RSI states in reptilian.yml are snake_large / snake_large_overlay (not tail_snakelarge)
+marking-SnakeLargeTail-snake_large = Inner
+marking-SnakeLargeTail-snake_large_overlay = Outer
+
+# Animated variant (hidden from menu; entries kept for FTL completeness)
+marking-SnakeLargeTailAnimated = Lizard, large snake tail (Wagging)
+marking-SnakeLargeTailAnimated-snake_large_wagging = Inner
+marking-SnakeLargeTailAnimated-snake_large_wagging_overlay = Outer
+# End Triad
 
 # SPINES
 marking-LizardChestSpinesAquatic = Lizard, chest, spines (Aquatic)

@@ -45,6 +45,55 @@
   id: Magazine45_magnumPistolRIP
   result: Magazine45_magnumPistolRIP
 
+# Triad Start
+#High Capacity Pistol Magazines
+
+- type: latheRecipe
+  parent: BaseAmmoFMJIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityFMJ
+  result: Magazine45_magnumPistolHighCapacityFMJ
+
+- type: latheRecipe
+  parent: BaseAmmoPlasteelAPIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityPlasteelAP
+  result: Magazine45_magnumPistolHighCapacityPlasteelAP
+
+- type: latheRecipe
+  parent: BaseAmmoRubberIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityRubber
+  result: Magazine45_magnumPistolHighCapacityRubber
+
+- type: latheRecipe
+  parent: BaseAmmoIncendiaryIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityIncendiary
+  result: Magazine45_magnumPistolHighCapacityIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoPracticeIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityPractice
+  result: Magazine45_magnumPistolHighCapacityPractice
+
+- type: latheRecipe
+  parent: BaseAmmoEmptyIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityEmpty
+  result: Magazine45_magnumPistolHighCapacityEmpty
+
+- type: latheRecipe
+  parent: BaseAmmoUraniumIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityUranium
+  result: Magazine45_magnumPistolHighCapacityUranium
+
+- type: latheRecipe
+  parent: BaseAmmoHPIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityHP
+  result: Magazine45_magnumPistolHighCapacityHP
+
+- type: latheRecipe
+  parent: BaseAmmoRIPIntermediateHighCapacityMagazineRecipe
+  id: Magazine45_magnumPistolHighCapacityRIP
+  result: Magazine45_magnumPistolHighCapacityRIP
+# Triad End
+
 #Speedloaders
 
 - type: latheRecipe

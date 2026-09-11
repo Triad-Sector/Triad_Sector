@@ -25,3 +25,10 @@
   storage:
     back:
     - ArmorPlatePierce
+
+- type: loadout # Heat armor plate
+  id: FactionArmorPlateHeat
+  price: 0
+  storage:
+    back:
+    - ArmorPlateHeat

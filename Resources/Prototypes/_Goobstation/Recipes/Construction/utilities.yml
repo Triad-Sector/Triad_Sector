@@ -14,30 +14,34 @@
   conditions:
   - !type:NoUnstackableInTile
 
-- type: construction
-  id: HeatExchangerInline
-  name: inline radiator
-  description: Transfers heat between the pipe and its surroundings. Doesn't need gas flow.
-  graph: GasBinary
-  startNode: start
-  targetNode: inlineradiator
-  category: construction-category-utilities
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  icon:
-    sprite: _Goobstation/Structures/Piping/inlineradiator.rsi
-    state: heInlineStraight
+# Triad: deprecated inline radiator, uncraftable; existing units age out.
+# The temperature-driven radiator law gives zero-flow devices only the static
+# conductance floor, so these are strictly worse than a standard radiator now.
+# Entity prototypes and graph nodes remain so saved ships load and deconstruct.
+# - type: construction
+#   id: HeatExchangerInline
+#   name: inline radiator
+#   description: Transfers heat between the pipe and its surroundings. Doesn't need gas flow.
+#   graph: GasBinary
+#   startNode: start
+#   targetNode: inlineradiator
+#   category: construction-category-utilities
+#   placementMode: SnapgridCenter
+#   canBuildInImpassable: false
+#   icon:
+#     sprite: _Goobstation/Structures/Piping/inlineradiator.rsi
+#     state: heInlineStraight
 
-- type: construction
-  id: HeatExchangerInlineBend
-  name: inline radiator bend
-  description: Transfers heat between the pipe and its surroundings. Doesn't need gas flow.
-  graph: GasBinary
-  startNode: start
-  targetNode: bendinlineradiator
-  category: construction-category-utilities
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  icon:
-    sprite: _Goobstation/Structures/Piping/inlineradiator.rsi
-    state: heInlineBend
+# - type: construction
+#   id: HeatExchangerInlineBend
+#   name: inline radiator bend
+#   description: Transfers heat between the pipe and its surroundings. Doesn't need gas flow.
+#   graph: GasBinary
+#   startNode: start
+#   targetNode: bendinlineradiator
+#   category: construction-category-utilities
+#   placementMode: SnapgridCenter
+#   canBuildInImpassable: false
+#   icon:
+#     sprite: _Goobstation/Structures/Piping/inlineradiator.rsi
+#     state: heInlineBend

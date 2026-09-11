@@ -1,0 +1,29 @@
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdfMedic
+  parent: MonoHardsuitT1Recipe # Use MonoHardsuitT1Recipe
+  result: ClothingOuterHardsuitTdfMedic
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdf
+  parent: MonoHardsuitT1Recipe # Use MonoHardsuitT1Recipe
+  result: ClothingOuterHardsuitTdf
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitTdfTA29
+  parent: MonoHardsuitT2Recipe
+  result: ClothingOuterHardsuitTdfTA29
+
+- type: latheRecipe # TA-82 Hazmat Hardsuit
+  id: ClothingOuterHardsuitTdfHazmat
+  parent: MonoHardsuitT2Recipe # Use MonoHardsuitT2Recipe
+  result: ClothingOuterHardsuitTdfHazmat
+
+- type: latheRecipe # TA-99X experimental tacsuit
+  id: ClothingOuterHardsuitTdfExperimental
+  parent: MonoHardsuitT3TsfRecipe # Use MonoHardsuitT3Recipe
+  result: ClothingOuterHardsuitTdfExperimental
+
+- type: latheRecipe # TA-67 "The Brick" superheavy riot casket
+  id: ClothingOuterHardsuitTdfCasket
+  parent: MonoHardsuitT3TsfRecipe # Use MonoHardsuitT3Recipe
+  result: ClothingOuterHardsuitTdfCasket

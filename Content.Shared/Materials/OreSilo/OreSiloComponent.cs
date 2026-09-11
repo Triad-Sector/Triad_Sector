@@ -12,8 +12,21 @@ public sealed partial class OreSiloComponent : Component
 {
     /// <summary>
     /// The <see cref="OreSiloClientComponent"/> that are connected to this silo.
+    /// Runtime-only: rebuilt from the clients on startup. <see cref="OreSiloClientComponent.Silo"/> is
+    /// the authoritative half of the link.
     /// </summary>
+    // Triad: persisting BOTH halves of a two-way link is what produced the dangling ore-silo
+    // references in production. A ship save carries whichever half sits on the grid, so a silo saved
+    // without its clients (or a client saved without its silo) deserialized a uid that resolves to
+    // entity 0, and every downstream lookup then logged a resolve error with a full stack trace.
+    // Only the client half is persisted now and this set is rebuilt from it, which is the same shape
+    // the engine already uses for DeviceLinkSinkComponent.LinkedSources: one side saved, the other
+    // reconstructed by the source's ComponentStartup.
+    /*
     [DataField, AutoNetworkedField]
+    */
+    [AutoNetworkedField]
+    // End Triad
     public HashSet<EntityUid> Clients = new();
 
     /// <summary>

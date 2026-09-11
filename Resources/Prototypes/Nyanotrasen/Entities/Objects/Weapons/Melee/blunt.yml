@@ -8,30 +8,30 @@
     sprite: Nyanotrasen/Objects/Weapons/Melee/kanabou.rsi
     state: icon
   - type: Item
-    size: Huge
+    size: Large
     shape:
-    - 0,0,1,4 # Triad Glaive & Kanobou Shape
+    - 0,0,3,3 # Triad Glaive & Kanobou Shape
   - type: MeleeWeapon
-    heavyStaminaCost: 15 # Triad
-    attackRate: 0.6
+    heavyStaminaCost: 10 # Triad, should give you 9 swings till you stamcrit instead of 6
+    attackRate: 0.8
     wideAnimationRotation: -135 # Triad, hopefully fixes weird sprite swinging
-    range: 1.75
+    range: 2.50 # Triad, tried to give it a unique trait since Tintreach has Defib and Breaching Hammer has prying.
     damage:
       types:
-        Blunt: 20 # Triad enough to be on par with Fireaxes
-        Structural: 20 # Triad
+        Blunt: 15 # Triad changed to be like Breaching Hammer as it's just as slow, and in the same loot pool
+        Structural: 50 # Triad
     bluntStaminaDamageFactor: 1.30 # Triad, i have no idea how to count so uh 1.3
     soundHit:
       collection: MetalThud
-  - type: SpeedModifiedOnWield # Triad
-    walkModifier: 0.9
-    sprintModifier: 0.7
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 20 # Triad
-        Structural: 40 # Triad
+        Blunt: 50 # Triad
+        Structural: 250 # Triad
+  - type: MeleeThrowOnHit # Triad. Similar throw range to Tintreach, but also slower swing speed
+    speed: 6
+    distance: 3
   - type: Clothing
     sprite: Nyanotrasen/Objects/Weapons/Melee/kanabou.rsi
     quickEquip: false
@@ -54,7 +54,7 @@
       path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
       params:
         volume: -2
-      
+
 # Triad End - Audio
 
 - type: entity

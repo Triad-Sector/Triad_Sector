@@ -18,14 +18,30 @@ public sealed partial class NotekeeperUiFragment : BoxContainer
         HorizontalExpand = true;
         VerticalExpand = true;
 
-        Input.OnTextEntered += _ =>
-        {
-            AddNote(Input.Text);
-            OnNoteAdded?.Invoke(Input.Text);
-            Input.Clear();
-        };
+        // Triad: Enter and the button are the same action, and the button greys out until there is something
+        // worth submitting, matching how TriTalk's send row behaves.
+        Input.OnTextEntered += _ => SubmitNote();
+        AddNoteButton.OnPressed += _ => SubmitNote();
+        Input.OnTextChanged += args => AddNoteButton.Disabled = string.IsNullOrWhiteSpace(args.Text);
 
         UpdateState(new List<string>());
+    }
+
+    /// <summary>
+    ///     Triad: commits whatever is in the input box as a note. Was inlined in the OnTextEntered handler, which
+    ///     also meant it stored the raw text: a note of pure whitespace was accepted and became an invisible row.
+    /// </summary>
+    private void SubmitNote()
+    {
+        var note = Input.Text.Trim();
+        if (string.IsNullOrEmpty(note))
+            return;
+
+        AddNote(note);
+        OnNoteAdded?.Invoke(note);
+
+        Input.Clear();
+        AddNoteButton.Disabled = true;
     }
 
     public void UpdateState(List<string> notes)

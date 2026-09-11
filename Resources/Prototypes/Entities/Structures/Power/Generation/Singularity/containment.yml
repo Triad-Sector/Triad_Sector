@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseMachinePowered, ConstructibleMachine] # Monolith
+  parent: BaseStructure
   id: ContainmentFieldGenerator
   name: containment field generator
   description: A machine that generates a containment field when powered by an emitter. Keeps the Singularity docile.
@@ -17,6 +17,7 @@
         - FullTileMask
         layer:
         - WallLayer
+  - type: Rotatable # Triad
   # Monolith - durable
   - type: Damageable
     damageModifierSet: StructuralMetallicHeatReinforced
@@ -60,6 +61,18 @@
         shader: unshaded
   - type: Machine # Mono
     board: ContainmentFieldGeneratorCircuitboard
+    # Triad Begin
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_parts
+    - machine_board
+    # Triad End
   - type: Icon
     sprite: Structures/Power/Generation/Singularity/containment.rsi
     state: icon
@@ -116,10 +129,18 @@
         mask:
         - FullTileMask
         layer:
-        - GlassLayer
+        # Triad - no fun allowed...
+        - HighImpassable
+        - MidImpassable
+        - LowImpassable
+        # Triad End
   - type: Sprite
     sprite: Structures/Power/Generation/Singularity/containment_field.rsi
-    state: field
+    # Triad Start - unshaded containment fields
+    layers:
+    - state: field
+      shader: unshaded
+    # Triad End
   - type: Icon
     sprite: Structures/Power/Generation/Singularity/containment_field.rsi
     state: field

@@ -6,9 +6,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Movement.Systems;
 
-public sealed class FloorOcclusionSystem : SharedFloorOcclusionSystem
+public sealed partial class FloorOcclusionSystem : SharedFloorOcclusionSystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+
+    private const string PostShaderId = "floor-occlusion";
 
     private EntityQuery<SpriteComponent> _spriteQuery;
 
@@ -50,16 +53,13 @@ public sealed class FloorOcclusionSystem : SharedFloorOcclusionSystem
 
         var shader = _proto.Index<ShaderPrototype>("HorizontalCut").Instance();
 
-        if (sprite.Comp.PostShader is not null && sprite.Comp.PostShader != shader)
-            return;
-
         if (enabled)
         {
-            sprite.Comp.PostShader = shader;
+            _sprite.SetPostShader(sprite, new SpriteComponent.PostShaderArgs(PostShaderId, shader));
         }
         else
         {
-            sprite.Comp.PostShader = null;
+            _sprite.RemovePostShader(sprite, PostShaderId);
         }
     }
 }

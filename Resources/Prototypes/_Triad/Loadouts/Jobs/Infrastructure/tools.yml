@@ -1,0 +1,66 @@
+- type: loadoutEffectGroup
+  id: InfrastructureT1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Infrastructure
+      time: 43200 # 12 hrs
+
+- type: loadoutEffectGroup
+  id: InfrastructureT2
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Infrastructure
+      time: 108000 # 30 hrs
+
+- type: loadout
+  id: PlantGasAnalyzer
+  inhand:
+    - GasAnalyzer
+
+- type: loadout
+  id: PlantWelder
+  inhand:
+    - Welder
+
+- type: loadout
+  id: PlantHolofanProjector
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InfrastructureT1
+  price: 750
+  inhand:
+    - HolofanProjector
+
+# Cargo sells the RPD/RCD crates at 800; personal spawns are priced at or above that
+# so the loadout is a convenience, not an arbitrage. RCD is T2-gated: it deconstructs
+# walls and floors, so it stays behind the same 30-hour gate as the other T2 kit.
+- type: loadout
+  id: PlantRPD
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InfrastructureT1
+  price: 800
+  inhand:
+    - RPD
+
+- type: loadout
+  id: PlantRCD
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InfrastructureT2
+  price: 1200
+  inhand:
+    - RCD
+
+- type: loadout
+  id: PlantRCDAmmo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InfrastructureT2
+  price: 400
+  inhand:
+    - RCDAmmo

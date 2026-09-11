@@ -1,4 +1,4 @@
-using Content.Server.Access.Systems;
+﻿using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
 using Content.Server.Mind.Commands;
@@ -34,6 +34,9 @@ using Content.Shared.NameIdentifier; // Frontier
 using Content.Server._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Radio.Components; // Goobstation
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server.Station.Systems;
 
 /// <summary>
@@ -41,23 +44,23 @@ namespace Content.Server.Station.Systems;
 /// Also provides helpers for spawning in the player's mob.
 /// </summary>
 [PublicAPI]
-public sealed class StationSpawningSystem : SharedStationSpawningSystem
+public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
 {
-    [Dependency] private readonly SharedAccessSystem _accessSystem = default!;
-    [Dependency] private readonly ActorSystem _actors = default!;
-    [Dependency] private readonly IdCardSystem _cardSystem = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
-    [Dependency] private readonly IdentitySystem _identity = default!;
-    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
-    [Dependency] private readonly PdaSystem _pdaSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IDependencyCollection _dependencyCollection = default!; // Frontier
-    [Dependency] private readonly IServerPreferencesManager _preferences = default!; // Frontier
-    [Dependency] private readonly InternalEncryptionKeySpawner _internalEncryption = default!; // Goobstation
+    [Dependency] private SharedAccessSystem _accessSystem = default!;
+    [Dependency] private ActorSystem _actors = default!;
+    [Dependency] private IdCardSystem _cardSystem = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private HumanoidAppearanceSystem _humanoidSystem = default!;
+    [Dependency] private IdentitySystem _identity = default!;
+    [Dependency] private MetaDataSystem _metaSystem = default!;
+    [Dependency] private PdaSystem _pdaSystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IDependencyCollection _dependencyCollection = default!; // Frontier
+    [Dependency] private IServerPreferencesManager _preferences = default!; // Frontier
+    [Dependency] private InternalEncryptionKeySpawner _internalEncryption = default!; // Goobstation
 
-    [Dependency] private readonly BankSystem _bank = default!; // Frontier
+    [Dependency] private BankSystem _bank = default!; // Frontier
     private bool _randomizeCharacters;
 
     /// <inheritdoc/>
@@ -290,7 +293,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
             if (hasBalance)
             {
-                _bank.TryBankWithdraw(session!, prefs!, profile!, initialBankBalance - bankBalance, out var newBalance);
+                _bank.TryBankWithdraw(session!, prefs!, profile!, initialBankBalance - bankBalance, out var newBalance, new MarketRecord { Kind = MarketTransactionKind.LoadoutSpawn }); // Triad: market data
             }
             /// End Frontier: overwriting EquipRoleLoadout
         }

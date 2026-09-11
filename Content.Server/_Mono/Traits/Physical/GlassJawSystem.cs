@@ -9,21 +9,20 @@ namespace Content.Server._Mono.Traits.Physical;
 /// <summary>
 /// Applies the Glass Jaw trait effects by adjusting the critical health threshold.
 /// </summary>
-public sealed class GlassJawSystem : EntitySystem
+public sealed partial class GlassJawSystem : EntitySystem
 {
-    [Dependency] private readonly MobThresholdSystem _mobThresholds = default!;
+    [Dependency] private MobThresholdSystem _mobThresholds = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<GlassJawComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<GlassJawComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<MobThresholdsComponent, ComponentInit>(OnMobThresholdsInit);
     }
 
     private void OnStartup(Entity<GlassJawComponent> ent, ref ComponentStartup args)
     {
-        AdjustCritThreshold(ent.Owner, -ent.Comp.CritDecrease);
+        AdjustCritThreshold(ent.Owner, -ent.Comp.CritDecrease, ent.Comp.CritSetValueFallback);
     }
 
     private void OnShutdown(Entity<GlassJawComponent> ent, ref ComponentShutdown args)
@@ -31,21 +30,21 @@ public sealed class GlassJawSystem : EntitySystem
         AdjustCritThreshold(ent.Owner, ent.Comp.CritDecrease);
     }
 
-    private void OnMobThresholdsInit(EntityUid uid, MobThresholdsComponent comp, ComponentInit args)
+    private void AdjustCritThreshold(EntityUid uid, int deltaPoints, int? setValue = null, MobThresholdsComponent? thresholdsComp = null)
     {
-        if (HasComp<GlassJawComponent>(uid))
-        {
-            var gj = Comp<GlassJawComponent>(uid);
-            AdjustCritThreshold(uid, -gj.CritDecrease, comp);
-        }
-    }
+        var newValue = FixedPoint2.Zero;
 
-    private void AdjustCritThreshold(EntityUid uid, int deltaPoints, MobThresholdsComponent? thresholdsComp = null)
-    {
         if (!_mobThresholds.TryGetThresholdForState(uid, MobState.Critical, out var current, thresholdsComp))
-            return;
+        {
+            if (setValue == null)
+                return;
 
-        var newValue = FixedPoint2.Max(0, current.Value + (FixedPoint2)deltaPoints);
+            newValue = FixedPoint2.Max(0, (FixedPoint2)setValue);
+        }
+        else
+        {
+            newValue = FixedPoint2.Max(0, current.Value + (FixedPoint2)deltaPoints);
+        }
 
         _mobThresholds.SetMobStateThreshold(uid, newValue, MobState.Critical, thresholdsComp);
     }

@@ -1,0 +1,14 @@
+- files: ["radiator_creak1.ogg"]
+  license: "CC0-1.0"
+  copyright: '"Metal Creak 1" by ingudios on Freesound.org. Trimmed, level-matched and converted to mono Ogg Vorbis for Triad.'
+  source: "https://freesound.org/s/119465/"
+
+- files: ["radiator_creak2.ogg"]
+  license: "CC0-1.0"
+  copyright: '"Metal Creak 2" by ingudios on Freesound.org. Trimmed, level-matched and converted to mono Ogg Vorbis for Triad.'
+  source: "https://freesound.org/s/119466/"
+
+- files: ["radiator_creak3.ogg"]
+  license: "CC0-1.0"
+  copyright: '"Metal Creak 3" by ingudios on Freesound.org. Trimmed to remove a stray transient in the lead-in, level-matched and converted to mono Ogg Vorbis for Triad.'
+  source: "https://freesound.org/s/119467/"

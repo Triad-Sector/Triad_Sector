@@ -64,13 +64,4 @@ public sealed class BlockGameBoundUserInterface : BoundUserInterface
     {
         SendMessage(new BlockGameMessages.BlockGamePlayerActionMessage(action));
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
-            return;
-
-        _menu?.Dispose();
-    }
 }

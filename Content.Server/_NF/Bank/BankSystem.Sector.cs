@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Content.Server._NF.SectorServices;
 using Content.Shared._NF.Bank.BUI;
 using Content.Shared._NF.Bank;
@@ -9,7 +9,8 @@ namespace Content.Server._NF.Bank;
 
 public sealed partial class BankSystem : SharedBankSystem
 {
-    [Dependency] private readonly SectorServiceSystem _sectorService = default!;
+    [Dependency] private SectorServiceSystem _sectorService = default!;
+    [Dependency] private Content.Server._Triad.Market.IMarketDataManager _market = default!; // Triad: market data
 
     // The interval between sector account increases, in seconds.
     private const float AccountIncreaseInterval = 10.0f;
@@ -18,7 +19,10 @@ public sealed partial class BankSystem : SharedBankSystem
     private void OnSectorInit(EntityUid entity, SectorBankComponent component, ComponentInit args)
     {
         foreach (var account in component.Accounts)
-            AddLedgerEntry(account.Key, LedgerEntryType.TickingIncome, account.Value.Balance);
+            // Triad: capture: false. This is an opening balance, not money moving. Recording it as
+            // income would credit every account its whole starting float at round start and make
+            // sector income look enormous in the first minute of every round.
+            AddLedgerEntry(account.Key, LedgerEntryType.TickingIncome, account.Value.Balance, capture: false);
     }
 
     /// <summary>
@@ -28,7 +32,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="amount">The amount of spesos to remove from the account.</param>
     /// <returns>true if the transaction was successful, false if it was not.</returns>
     [PublicAPI]
-    public bool TrySectorWithdraw(SectorBankAccount account, int amount, LedgerEntryType reason, SectorBankComponent? bank = null)
+    public bool TrySectorWithdraw(SectorBankAccount account, int amount, LedgerEntryType reason, SectorBankComponent? bank = null, bool captureStandalone = true) // Triad: add captureStandalone
     {
         if (amount <= 0)
         {
@@ -57,7 +61,7 @@ public sealed partial class BankSystem : SharedBankSystem
         }
 
         bankAccount.Balance -= amount;
-        AddLedgerEntry(account, reason, amount);
+        AddLedgerEntry(account, reason, amount, captureStandalone); // Triad: add captureStandalone
         return true;
     }
 
@@ -69,7 +73,7 @@ public sealed partial class BankSystem : SharedBankSystem
     /// <param name="reason">The purpose of this withdrawal</param>
     /// <returns>true if the transaction was successful, false if it was not</returns>
     [PublicAPI]
-    public bool TrySectorDeposit(SectorBankAccount account, int amount, LedgerEntryType reason, SectorBankComponent? bank=null)
+    public bool TrySectorDeposit(SectorBankAccount account, int amount, LedgerEntryType reason, SectorBankComponent? bank=null, bool captureStandalone = true) // Triad: add captureStandalone
     {
         if (amount <= 0)
         {
@@ -92,7 +96,7 @@ public sealed partial class BankSystem : SharedBankSystem
 
         var bankAccount = CollectionsMarshal.GetValueRefOrNullRef(bank.Accounts, account);
         bankAccount.Balance += amount;
-        AddLedgerEntry(account, reason, amount);
+        AddLedgerEntry(account, reason, amount, captureStandalone); // Triad: add captureStandalone
         return true;
     }
 
@@ -144,6 +148,37 @@ public sealed partial class BankSystem : SharedBankSystem
             return;
 
         foreach (var (accountId, accountInfo) in bank.Accounts)
-            TrySectorDeposit(accountId, seconds * accountInfo.IncreasePerSecond, LedgerEntryType.TickingIncome, bank);
+            // Triad: captureStandalone: false. Ticking income is five accounts on a ten second
+            // interval, roughly 1,800 rows an hour and about forty percent of the whole corpus, and
+            // it is fully reconstructible from IncreasePerSecond. It is sampled below instead.
+            TrySectorDeposit(accountId, seconds * accountInfo.IncreasePerSecond, LedgerEntryType.TickingIncome, bank, captureStandalone: false);
+
+        // Triad: sample balances instead. Same information, a thirtieth of the rows.
+        SampleSectorBalances(bank, seconds);
     }
+
+    // Triad: begin, sector balance sampling.
+    private const float AccountSampleInterval = 60.0f;
+    private float _secondsSinceLastSample;
+
+    private readonly List<(string Account, long Balance)> _sampleBuffer = new();
+
+    private void SampleSectorBalances(SectorBankComponent bank, int elapsedSeconds)
+    {
+        if (!_market.Enabled)
+            return;
+
+        _secondsSinceLastSample += elapsedSeconds;
+        if (_secondsSinceLastSample < AccountSampleInterval)
+            return;
+
+        _secondsSinceLastSample = 0;
+
+        _sampleBuffer.Clear();
+        foreach (var (accountId, info) in bank.Accounts)
+            _sampleBuffer.Add((accountId.ToString(), info.Balance));
+
+        _market.RecordAccountSamples(_sampleBuffer);
+    }
+    // Triad: end
 }

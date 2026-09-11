@@ -27,6 +27,15 @@ public sealed partial class PdaProgramItem : ContainerButton
     {
         RobustXamlLoader.Load(this);
         Panel.PanelOverride = _styleBox;
+
+        // Triad: scale each icon into the fixed box the XAML gives it, instead of drawing it at its source RSI's
+        // native size. Without this the 48x48 program-icon sheets rendered half again as big as the 32x32 object
+        // sprites the other cartridges borrow. KeepAspectCentered so a non-square icon letterboxes rather than
+        // being squashed. Set here rather than in XAML because both live on the inner DisplayRect.
+        // CanShrink is the load-bearing half: TextureRect measures at its texture's native size unless it is set,
+        // which would floor the control at 48 and quietly defeat the SetSize in the XAML.
+        Icon.DisplayRect.CanShrink = true;
+        Icon.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
     }
 
     protected override void Draw(DrawingHandleScreen handle)

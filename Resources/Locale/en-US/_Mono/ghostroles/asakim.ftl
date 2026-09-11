@@ -5,9 +5,9 @@ ghost-role-information-asakim-rules = You are an [color=#05e6ff][bold]Asakim[/bo
 
                                              1. Follow the orders of the ADC command & control network.
                                              2. Claim Points of Interest that can benefit or help accomplish your goals. (Excluding Safezones)
-                                             3. Secure the region against hostile factions. (TSF, PDV, Chimera)
+                                             3. Secure the region against hostile factions. (TDF, Chimera)
                                              4. Confiscate pre-fracture technology. (Data Disks, Weaponry, MS-250/MS-500 shields, ect)
-                                             
+
                                              Reading the guidebook [color=red][bold]is expected for this role[/bold][/color].
                                              You don't remember any of your previous life, and you don't remember anything you learned as a ghost.
                                              You are allowed to remember knowledge about the game in general, such as how to cook, how to use objects, etc.

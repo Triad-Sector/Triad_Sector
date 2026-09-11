@@ -12,18 +12,20 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Content.Shared.Tools.Components; // Triad
+using System.Linq; // Triad
 
 namespace Content.Server.Singularity.EntitySystems;
 
-public sealed class ContainmentFieldGeneratorSystem : EntitySystem
+public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly AppearanceSystem _visualizer = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private AppearanceSystem _visualizer = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private TagSystem _tags = default!;
 
     public override void Initialize()
     {
@@ -38,6 +40,7 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, EventHorizonAttemptConsumeEntityEvent>(PreventBreach);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ToolUseAttemptEvent>(OnToolUseAttempt); // Triad
     }
 
     public override void Update(float frameTime)
@@ -130,6 +133,20 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
             args.Cancel();
         }
     }
+    // Triad Begin
+    private void OnToolUseAttempt(Entity<ContainmentFieldGeneratorComponent> generator, ref ToolUseAttemptEvent args)
+    {
+        // Prevent only if tool has prying ability (crowbars, etc), so nanites arent blocked
+        if (!args.Qualities.Contains("Prying"))
+            return;
+
+        if (generator.Comp.Enabled || generator.Comp.IsConnected)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("comp-containment-deconstruct-warning"), args.User, args.User, PopupType.LargeCaution);
+            args.Cancel();
+        }
+    }
+    // Triad End
 
     private void TurnOn(Entity<ContainmentFieldGeneratorComponent> generator)
     {
@@ -327,7 +344,7 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
                 var rotateBy90 = angle.Degrees + 90;
                 var rotatedAngle = Angle.FromDegrees(rotateBy90);
 
-                fieldXForm.LocalRotation = rotatedAngle;
+                _transformSystem.SetLocalRotation(newField, rotatedAngle, fieldXForm);
             }
 
             fieldList.Add(newField);

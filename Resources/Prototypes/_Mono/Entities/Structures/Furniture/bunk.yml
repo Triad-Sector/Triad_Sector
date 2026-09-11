@@ -3,18 +3,25 @@
   id: BunkBottom
   suffix: Bottom
   parent: Bed
+  description: This is used to lie in, sleep in or strap on. Resting here provides extremely slow healing. Use a crowbar to adjust the position. # Triad
   components:
   - type: Sprite
     sprite: _Mono/Structures/Furniture/Beds/bunk.rsi
     state: bottom_bunk
     noRot: true
+  - type: Strap
+    buckleOffset: "0,-0.2"
   - type: InteractionOutline
+  - type: Construction
+    graph: bunkbed
+    node: bunkbottom
 
 - type: entity
   name: bunk bed
   id: BunkTop
   suffix: Top
   parent: Bed
+  description: This is used to lie in, sleep in or strap on. Resting here provides extremely slow healing. Use a crowbar to adjust the position. # Triad
   components:
   - type: Sprite
     sprite: _Mono/Structures/Furniture/Beds/bunk.rsi
@@ -23,4 +30,9 @@
     - state: top_bunk_posts
     - state: top_bunk_ladder
     noRot: true
+  - type: Strap
+    buckleOffset: "0,0.3"
   - type: InteractionOutline
+  - type: Construction
+    graph: bunkbed
+    node: bunktop

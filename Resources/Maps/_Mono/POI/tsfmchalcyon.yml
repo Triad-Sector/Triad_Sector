@@ -51015,14 +51015,14 @@ entities:
     - type: Transform
       pos: -2.5,8.5
       parent: 1
-- proto: SuitStorageM82b
+- proto: SuitStorageTdfMedic
   entities:
   - uid: 7768
     components:
     - type: Transform
       pos: 24.5,-14.5
       parent: 1
-- proto: SuitStorageM82c
+- proto: SuitStorageTdf
   entities:
   - uid: 7769
     components:

@@ -130,7 +130,7 @@
     - CrateArmoryLaser
     - CrateArmoryPistols
     - CrateTrainingBombs
-    - CrateTrackingImplants
+    # - CrateTrackingImplants # Triad removed in case of using as spawners
     - CrateSecurityTrackingMindshieldImplants
     - CrateSecurityHelmet
     - CrateSecurityArmor

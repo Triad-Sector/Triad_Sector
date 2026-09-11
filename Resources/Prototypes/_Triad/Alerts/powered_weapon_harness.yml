@@ -1,0 +1,17 @@
+- type: alert
+  id: PoweredWeaponHarnessLowPower
+  category: Battery
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery5
+  name: alerts-powered-weapon-harness-low-power-name
+  description: alerts-powered-weapon-harness-low-power-desc
+
+- type: alert
+  id: PoweredWeaponHarnessDepleted
+  category: Battery
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery0
+  name: alerts-powered-weapon-harness-depleted-name
+  description: alerts-powered-weapon-harness-depleted-desc

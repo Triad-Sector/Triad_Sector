@@ -16,15 +16,16 @@ using Content.Shared.Tools.Components;
 
 namespace Content.Server.Power.EntitySystems;
 
-public sealed class ApcSystem : EntitySystem
+public sealed partial class ApcSystem : EntitySystem
 {
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    private EntityQuery<AppearanceComponent> _appearanceQuery; // Mono
 
     public override void Initialize()
     {
@@ -42,6 +43,8 @@ public sealed class ApcSystem : EntitySystem
         SubscribeLocalEvent<ApcComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<ApcComponent, EmpDisabledRemoved>(OnEmpDisabledRemoved); // Frontier: Upstream - #28984
         SubscribeLocalEvent<ApcComponent, ToolUseAttemptEvent>(OnToolUseAttempt); // Frontier
+
+        _appearanceQuery = GetEntityQuery<AppearanceComponent>();
     }
 
     public override void Update(float deltaTime)
@@ -153,7 +156,7 @@ public sealed class ApcSystem : EntitySystem
                 apc.LastChargeState = newState;
                 apc.LastChargeStateTime = _gameTiming.CurTime;
 
-                if (TryComp(uid, out AppearanceComponent? appearance))
+                if (_appearanceQuery.TryComp(uid, out var appearance)) // Mono: AppearanceQuery
                 {
                     _appearance.SetData(uid, ApcVisuals.ChargeState, newState, appearance);
                 }

@@ -39,7 +39,7 @@ public sealed class ContrabandPalletConsoleBoundUserInterface : BoundUserInterfa
         base.Dispose(disposing);
         if (disposing)
         {
-            _menu?.Dispose();
+            _menu?.Close();
         }
     }
 

@@ -7,18 +7,16 @@
   alwaysUseSpawner: true
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 27000 # triad 7.30 hours
-    - !type:RoleTimeRequirement
-      role: JobSecurityGuard
-      time: 9000 # triad 2.30 hours
+      time: 36000 # Triad - 10 hours
   canBeAntag: false
   icon: "JobIconStc"
   assignedCompany: Colonial
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 160
   displayWeight: 50 # Second from the top
   setPreference: true
   access:
+  - Command
   - Service
   - Maintenance
   - External
@@ -28,6 +26,15 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: ShipSavingBlacklist # Triad - can't save ships
+      - type: NpcFactionMember
+        factions:
+        - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 - type: startingGear
   id: StcGear
@@ -37,5 +44,5 @@
     back:
     - Flash
     - RubberStampStc
-    - EncryptionKeyStationMaster
+    - EncryptionKeyStationMasterSR # Triad
     - PhoneInstrumentHigh

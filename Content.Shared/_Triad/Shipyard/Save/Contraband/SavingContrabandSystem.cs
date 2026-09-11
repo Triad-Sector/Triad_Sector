@@ -4,9 +4,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Triad.Shipyard.Save.Contraband;
 
-public sealed class SavingContrabandSystem : EntitySystem
+public sealed partial class SavingContrabandSystem : EntitySystem
 {
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
 
     public override void Initialize()
     {
@@ -30,7 +30,7 @@ public sealed class SavingContrabandSystem : EntitySystem
             ent.Comp,
             msg,
             Loc.GetString("ship-saving-contraband-examine-verb-text"),
-            "/Textures/Interface/VerbIcons/anchor.svg.192dpi.png",
+            "/Textures/_Triad/Interface/VerbIcons/savecontraband.svg.192dpi.png",
             Loc.GetString("ship-saving-contraband-examine-verb-message"));
     }
 }

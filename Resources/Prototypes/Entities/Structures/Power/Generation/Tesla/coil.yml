@@ -5,6 +5,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: SupermatterImmune # Triad
   - type: Transform
     anchored: true
   - type: Physics
@@ -30,6 +31,9 @@
       - state: coilhit
         visible: false
         map: ["hit"]
+      - state: coilhit # Triad: persistent arc while saturated; own layer so the strike flash can't clobber it
+        visible: false
+        map: ["charged"]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -39,6 +43,10 @@
           False: { state: coil }
       enum.TeslaCoilVisuals.Lightning:
         hit:
+          True: { visible: true }
+          False: { visible: false }
+      enum.TeslaCoilVisuals.Charged: # Triad
+        charged:
           True: { visible: true }
           False: { visible: false }
   - type: LightningSparking
@@ -56,19 +64,31 @@
     sprite: Structures/Power/Generation/Tesla/coil.rsi
     state: coil
   - type: Battery
-    maxCharge: 1000000
+    # Triad: wild-tesla economy, capacitor model. One strike fills the bank; the full coil's strike
+    # bid floors (see TeslaCoilSystem) so the next bolt round-robins to a drained coil, and the bank
+    # trickles out through the throttled supply below. Tower count is therefore the throughput knob:
+    # Monte Carlo at a hacked Level-3 PA: ~5.3 MW with 12 towers, peaking at ~7 MW with 24; towers
+    # beyond 24 add no output, only spread wear (~2.6 MW at stock Level 2 with 12).
+    maxCharge: 2000000
     startingCharge: 0
   - type: BatteryDischarger
   - type: TeslaCoil
-    chargeFromLightning: 2000000
+    chargeFromLightning: 2000000 # Triad: equals maxCharge on purpose — one strike saturates, see Battery note
   - type: LightningTarget
     priority: 4
-    hitProbability: 0.5
+    hitProbability: 0.5 # Triad: fallback only; with a working battery the coil bids by charge headroom (see TeslaCoilSystem)
     lightningResistance: 10
     lightningExplode: false
+    # Triad: 1500 strikes to destruction. Simulated: first tower death ~2h on a max-output 24-tower
+    # array at a hacked Level 3, ~3.4h at stock Level 2 with 12 towers. Weld (Repairable) on a
+    # service rotation, or add towers beyond 24 to spread wear.
+    damageFromLightning: 0.15
   - type: PowerNetworkBattery
-    maxSupply: 1000000
-    supplyRampTolerance: 1000000
+    # Triad: throttled discharge is what makes tower count matter — each tower trickles its bank at
+    # 500 kW (4s recovery), sized so harvest at a hacked Level-3 PA peaks at a 24-tower array. The
+    # per-tower buffer also smooths the strike lumps into near-constant grid supply.
+    maxSupply: 500000
+    supplyRampTolerance: 500000
   - type: Anchorable
   - type: Rotatable
   - type: Pullable
@@ -113,6 +133,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: SupermatterImmune # Triad
   - type: Transform
     anchored: true
   - type: Physics

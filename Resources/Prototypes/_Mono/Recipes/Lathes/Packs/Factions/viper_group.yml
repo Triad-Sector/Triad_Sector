@@ -1,9 +1,0 @@
-- type: latheRecipePack
-  id: MonoViperGroupDynamic
-  recipes:
-  - ClothingNeckViperGroupMantle
-  - ClothingUniformJumpsuitViperGroupUniform
-  - ClothingUniformJumpsuitViperGroupTurtleneck
-  - ClothingOuterHardsuitViperGroupStandard
-  - ClothingOuterHardsuitViperGroupMedic
-  - ClothingOuterHardsuitViperGroupJuggernaut

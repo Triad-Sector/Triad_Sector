@@ -21,7 +21,8 @@
     security: AirlockSecurity
     virology: AirlockVirology
     mercenary: AirlockMercenary # Frontier
-    nfsd: AirlockNfsd # Frontier: surely nothing bad will happen
+    sd: AirlockSD # Triad
+    tdf: AirlockTdf # Triad
 
 - type: paintableGroup
   id: AirlockGlass
@@ -43,4 +44,27 @@
     security: AirlockSecurityGlass
     virology: AirlockVirologyGlass
     mercenary: AirlockMercenaryGlass # Frontier
-    nfsd: AirlockNfsdGlass # Frontier: surely nothing bad will happen
+    sd: AirlockSDGlass # Triad
+    tdf: AirlockTdfGlass # Triad
+
+# Triad Change : Heavy-Duty Airlock paintable groups
+- type: paintableGroup
+  id: HeavyDutyAirlock
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    basic: AirlockHeavy
+    command: AirlockHeavyCommand
+    security: AirlockHeavySecurity
+    engineering: AirlockHeavyEngineering
+    grey: AirlockHeavyGrey
+
+- type: paintableGroup
+  id: HeavyDutyAirlockGlass
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    basic: AirlockHeavyGlass
+# Triad End

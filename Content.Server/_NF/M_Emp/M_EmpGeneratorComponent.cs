@@ -1,8 +1,8 @@
 using Content.Shared.Radio;
 using Content.Shared._NF.M_Emp;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.DeviceLinking;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._NF.M_Emp
 {
@@ -69,8 +69,8 @@ namespace Content.Server._NF.M_Emp
         [DataField("Recharging")]
         public TimeSpan Recharging = TimeSpan.FromSeconds(60);
 
-        [DataField("M_EmpChannel", customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
-        public string M_EmpChannel = "Nfsd";
+        [DataField("M_EmpChannel")]
+        public ProtoId<RadioChannelPrototype> M_EmpChannel = "Nfsd";
 
         /// <summary>
         /// Current how much charge the generator currently has
@@ -90,8 +90,8 @@ namespace Content.Server._NF.M_Emp
         [DataField("previousCharge")]
         public int PreviousCharge = 5;
 
-        [DataField("receiverPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
-        public string ReceiverPort = "On";
+        [DataField("receiverPort")]
+        public ProtoId<SinkPortPrototype> ReceiverPort = "On";
     }
 
     [CopyByRef, DataRecord]

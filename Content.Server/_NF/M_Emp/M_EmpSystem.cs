@@ -30,20 +30,20 @@ namespace Content.Server._NF.M_Emp
 {
     public sealed partial class M_EmpSystem : EntitySystem
     {
-        [Dependency] private readonly IChatManager _chat = default!;
-        [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-        [Dependency] private readonly RadioSystem _radioSystem = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly StationSystem _station = default!;
-        [Dependency] private readonly UserInterfaceSystem _ui = default!;
-        [Dependency] private readonly EmpSystem _emp = default!;
-        [Dependency] private readonly DeviceNetworkSystem _deviceNetSystem = default!;
-        [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
+        [Dependency] private IChatManager _chat = default!;
+        [Dependency] private IConfigurationManager _configurationManager = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private SharedPopupSystem _popupSystem = default!;
+        [Dependency] private RadioSystem _radioSystem = default!;
+        [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private StationSystem _station = default!;
+        [Dependency] private UserInterfaceSystem _ui = default!;
+        [Dependency] private EmpSystem _emp = default!;
+        [Dependency] private DeviceNetworkSystem _deviceNetSystem = default!;
+        [Dependency] private DeviceLinkSystem _signalSystem = default!;
 
         // TODO: This is probably not compatible with multi-station
         private readonly Dictionary<EntityUid, M_EmpGridState> _M_EmpGridStates = new();
@@ -377,7 +377,7 @@ namespace Content.Server._NF.M_Emp
         }
         private void PlayActivatedSound(EntityUid uid, SharedM_EmpGeneratorComponent component)
         {
-            _audio.PlayPvs(_audio.GetSound(component.ActivatedSound), uid);
+            _audio.PlayPvs(component.ActivatedSound, uid);
         }
     }
 

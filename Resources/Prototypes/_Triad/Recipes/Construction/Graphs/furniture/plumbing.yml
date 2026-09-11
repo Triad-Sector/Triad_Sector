@@ -1,0 +1,118 @@
+- type: constructionGraph
+  id: floordrain
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 3
+            - material: MetalRod
+              amount: 4
+              doAfter: 3
+    - node: finish
+      entity: FloorDrain
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal
+              amount: 4
+          steps:
+            - tool: Screwing
+              doAfter: 3
+
+- type: constructionGraph
+  id: sinkstemlesswater
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 3
+            - material: Bluespace
+              amount: 1
+              doAfter: 2
+    - node: finish
+      entity: SinkStemlessWater
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+          steps:
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: sinkstemmed
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 5
+            - material: Bluespace
+              amount: 1
+              doAfter: 2
+    - node: finish
+      entity: Sink
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+          steps:
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: widesink
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: finish
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 7
+            - material: Bluespace
+              amount: 1
+              doAfter: 2
+    - node: finish
+      entity: SinkWide
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 7
+          steps:
+            - tool: Anchoring
+              doAfter: 2

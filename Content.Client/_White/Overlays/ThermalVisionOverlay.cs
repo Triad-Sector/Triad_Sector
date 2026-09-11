@@ -13,16 +13,17 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._White.Overlays;
 
-public sealed class ThermalVisionOverlay : Overlay
+public sealed partial class ThermalVisionOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly TransformSystem _transform;
     private readonly StealthSystem _stealth;
     private readonly ContainerSystem _container;
     private readonly SharedPointLightSystem _light;
+    private readonly SpriteSystem _sprite;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -43,6 +44,7 @@ public sealed class ThermalVisionOverlay : Overlay
         _transform = _entity.System<TransformSystem>();
         _stealth = _entity.System<StealthSystem>();
         _light = _entity.System<SharedPointLightSystem>();
+        _sprite = _entity.System<SpriteSystem>();
 
         ZIndex = -1;
     }
@@ -139,9 +141,9 @@ public sealed class ThermalVisionOverlay : Overlay
 
 
         var originalColor = sprite.Color;
-        sprite.Color = color.WithAlpha(alpha);
-        sprite.Render(handle, eyeRot, rotation, position: position);
-        sprite.Color = originalColor;
+        _sprite.SetColor((uid, sprite), color.WithAlpha(alpha));
+        _sprite.RenderSprite((uid, sprite), handle, eyeRot, rotation, position);
+        _sprite.SetColor((uid, sprite), originalColor);
     }
 
     private bool CanSee(EntityUid uid, SpriteComponent sprite)

@@ -222,17 +222,18 @@
     useDelay: 30
     event: !type:VendingMachineSelfDispenseEvent
 
-- type: entity
-  id: ActionArtifactActivate
-  name: Activate Artifact
-  description: Immediately activates your current artifact node.
-  components:
-  - type: InstantAction
-    icon:
-      sprite: Objects/Specific/Xenoarchaeology/xeno_artifacts.rsi
-      state: ano01
-    useDelay: 60
-    event: !type:ArtifactSelfActivateEvent
+# Triad: moved to Entities/Objects/Specific/Xenoarchaeology/xenoartifacts.yml with the xenoarch rework, as upstream did
+#- type: entity
+#  id: ActionArtifactActivate
+#  name: Activate Artifact
+#  description: Immediately activates your current artifact node.
+#  components:
+#  - type: InstantAction
+#    icon:
+#      sprite: Objects/Specific/Xenoarchaeology/xeno_artifacts.rsi
+#      state: ano01
+#    useDelay: 60
+#    event: !type:ArtifactSelfActivateEvent
 
 - type: entity
   id: ActionToggleBlock
@@ -373,3 +374,15 @@
       sprite: Interface/Actions/jump.rsi
       state: icon
     event: !type:GravityJumpEvent {}
+
+- type: entity
+  id: ActionToggleNightVision
+  name: Toggle night vision
+  description: Toggles the night vision on and off.
+  components:
+  - type: InstantAction
+    useDelay: 2
+    icon:
+      sprite: Interface/Actions/night_vision.rsi
+      state: icon
+    event: !type:ToggleNightVisionEvent {}

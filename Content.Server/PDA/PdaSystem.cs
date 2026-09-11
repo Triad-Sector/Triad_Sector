@@ -7,6 +7,7 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Server.Traitor.Uplink;
+using Content.Shared._DV.CCVars; // DeltaV - PDA date
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Chat;
@@ -15,6 +16,7 @@ using Content.Shared.Light.EntitySystems;
 using Content.Shared.PDA;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration; // DeltaV - PDA date
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
@@ -25,23 +27,28 @@ using Content.Server._NF.SectorServices; // Frontier
 using Content.Shared._Mono.Company;
 using Robust.Shared.Prototypes;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Server.RoundEnd; // Frontier
 
 namespace Content.Server.PDA
 {
-    public sealed class PdaSystem : SharedPdaSystem
+    public sealed partial class PdaSystem : SharedPdaSystem
     {
-        [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
-        [Dependency] private readonly InstrumentSystem _instrument = default!;
-        [Dependency] private readonly RingerSystem _ringer = default!;
-        [Dependency] private readonly StationSystem _station = default!;
-        [Dependency] private readonly StoreSystem _store = default!;
-        [Dependency] private readonly IChatManager _chatManager = default!;
-        [Dependency] private readonly UserInterfaceSystem _ui = default!;
-        [Dependency] private readonly UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
-        [Dependency] private readonly ContainerSystem _containerSystem = default!;
-        [Dependency] private readonly IdCardSystem _idCard = default!;
-        [Dependency] private readonly SectorServiceSystem _sectorService = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+        [Dependency] private CartridgeLoaderSystem _cartridgeLoader = default!;
+        [Dependency] private InstrumentSystem _instrument = default!;
+        [Dependency] private RingerSystem _ringer = default!;
+        [Dependency] private StationSystem _station = default!;
+        [Dependency] private StoreSystem _store = default!;
+        [Dependency] private IChatManager _chatManager = default!;
+        [Dependency] private UserInterfaceSystem _ui = default!;
+        [Dependency] private UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
+        [Dependency] private ContainerSystem _containerSystem = default!;
+        [Dependency] private IdCardSystem _idCard = default!;
+        [Dependency] private SectorServiceSystem _sectorService = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IConfigurationManager _config = default!; // DeltaV
+        [Dependency] private RoundEndSystem _roundEndSystem = default!; // Frontier
+        
+        private static DateTime ServerDate; // DeltaV - PDA
 
         public override void Initialize()
         {
@@ -63,6 +70,13 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<StationRenamedEvent>(OnStationRenamed);
             SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed, after: new[] { typeof(IdCardSystem) });
             SubscribeLocalEvent<AlertLevelChangedEvent>(OnAlertLevelChanged);
+
+            // Begin DeltaV additions
+            Subs.CVar(_config,
+                DCCVars.YearOffset,
+                value => ServerDate = DateTime.Today.AddYears(value),
+                true);
+            // End DeltaV additions
         }
 
         private void OnEntityRenamed(ref EntityRenamedEvent ev)
@@ -186,6 +200,7 @@ namespace Content.Server.PDA
             var hasInstrument = HasComp<InstrumentComponent>(uid);
             var showUplink = HasComp<UplinkComponent>(uid) && IsUnlocked(uid);
 
+            pda.CurrentDate = pda.DateOverride ?? ServerDate; // DeltaV - PDA date
             UpdateStationName(uid, pda);
             UpdateAlertLevel(uid, pda);
             // TODO: Update the level and name of the station with each call to UpdatePdaUi is only needed for latejoin players.
@@ -235,11 +250,13 @@ namespace Content.Server.PDA
                     JobTitle = id?.LocalizedJobTitle,
                     CompanyName = companyName,
                     CompanyColor = companyColor,
+                    CurrentDate = pda.CurrentDate, // DeltaV - PDA date
                     StationAlertLevel = pda.StationAlertLevel,
                     StationAlertColor = pda.StationAlertColor
                 },
                 balance, // Frontier
                 ownedShipName, // Frontier
+                _roundEndSystem.GetAutoCallTime(), // Frontier
                 pda.StationName,
                 showUplink,
                 hasInstrument,

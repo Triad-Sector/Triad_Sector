@@ -3,16 +3,16 @@
   name: mercenary
   abstract: true
   parent:
-  - BaseC3MobHuman
-  - MobNonHumanHostileBase
-  - MobHumanoidInvetorySimplified
+  - MobHumanoidHostileBase
+  - MobHumanoidInvetory
   - MobHumanoidHostileAISimpleRanged
   - NFMobRestrictions
   id: MobMercenaryBase
   description: A mercenary, merc, soldier of fortune, hired gun, dog of war.
   components:
-  - type: Damageable
-    damageModifierSet: MobMercenaryDamageModifierSet
+  - type: Body
+    prototype: HumanSyntheticOrgans # New set of synthetic organs grants faster removal of toxins from bloodstream
+    requiredLegs: 2
   - type: NpcFactionMember
     factions:
     - MercenariesExpeditionNF
@@ -21,22 +21,6 @@
       0: Alive
       100: Critical
       130: Dead
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      60: 0.7
-      80: 0.5
-  - type: Stamina
-    critThreshold: 100
-  - type: DamageStateVisuals
-    rotate: true
-  - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
-    - id: FoodMeatHuman
-      amount: 5
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 1.5
     rechargeSound:
@@ -78,26 +62,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearMeleeT1
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#d3bf86" #"#404029"
-    - sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/merc.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/merc_helmet.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: MeleeWeapon
     attackRate: 1.0
     altDisarm: false
@@ -105,11 +69,10 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Slash: 8
-        Piercing: 2
-        Structural: 20
+        Blunt: 10
+        Structural: 15
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: Punch
 
 - type: entity
   name: mercenary soldier
@@ -121,26 +84,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedT1
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#d3bf86"
-    - sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/merc.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/merc_helmet.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: BasicEntityAmmoProvider
     proto: Bullet9x19mmFMJ
     capacity: 4
@@ -163,26 +106,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedAltT1
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#d3bf86"
-    - sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/merc.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/merc_helmet.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: BasicEntityAmmoProvider
     proto: Cartridge556x45mmFMJ
     capacity: 10
@@ -210,28 +133,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearMeleeT2
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#3d5c87"
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/gas.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/security.rsi
-      state: equipped-HELMET
-    - sprite: Clothing/Belt/militarywebbing.rsi
-      state: equipped-BELT
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: MeleeWeapon
     attackRate: 1.0
     altDisarm: false
@@ -254,28 +155,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedT2
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#3d5c87"
-    - sprite: Clothing/OuterClothing/Coats/hos_trenchcoat.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/neckgaiter.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Eyes/Glasses/sunglasses.rsi
-      state: equipped-EYES
-    - sprite: Clothing/Head/Hats/hoshat.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: BasicEntityAmmoProvider
     proto: Cartridge556x45mmFMJ
     capacity: 8
@@ -300,26 +179,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedAltT2
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#3d5c87"
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/gas.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/security.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 2
     rechargeSound:
@@ -349,26 +208,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedT3
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#2e687a"
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/medicalsecurity.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/light_riot.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 100
@@ -410,29 +249,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearRangedT3Alt
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
-      state: equipped-base-top-jumpsuit
-      color: "#2e687a"
-    - sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
-      state: equipped-base-bottom
-      color: "#2e687a"
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/gassecurity.rsi
-      state: equipped-MASK
-    - sprite: _NF/Clothing/Head/Hats/nfsd_beret_green.rsi
-      state: equipped-HELMET
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: BasicEntityAmmoProvider
     proto: Cartridge556x45mmFMJ
     capacity: 2
@@ -462,30 +278,6 @@
   - type: Loadout
     prototypes:
     - MobHumanoidMercenaryGearTier4Captain
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - sprite: _NF/Mobs/Species/Templates/human.rsi
-      state: human
-    - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
-      state: equipped-INNERCLOTHING
-      color: "#d3bf86"
-    - sprite: Clothing/OuterClothing/Armor/bulletproof.rsi
-      state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/gassecurity.rsi
-      state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/security.rsi
-      state: equipped-HELMET
-    - sprite: Clothing/Belt/militarywebbing.rsi
-      state: equipped-BELT
-    - sprite: Clothing/Neck/mantles/qmmantle.rsi
-      state: equipped-NECK
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-off
-    - sprite: _NF/Clothing/Neck/Misc/mercenary_iff.rsi
-      state: equipped-NECK-on
-      color: "#a9b6bd"
-      shader: unshaded
   - type: BasicEntityAmmoProvider
     proto: Cartridge45_magnumFMJ
     capacity: 10

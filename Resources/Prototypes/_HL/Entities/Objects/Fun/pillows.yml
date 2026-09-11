@@ -1,0 +1,386 @@
+- type: entity
+  abstract: true #triad  moved abstract to the top
+  parent: BaseItem
+  id: BasePillow
+  components:
+  - type: Tag
+    tags:
+      - Payload
+      - ClothMade
+  - type: EmitSoundOnCollide
+    sound:
+      collection: ToyFall
+  - type: EmitSoundOnLand
+    sound:
+      collection: ToyFall
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: ToyFall
+  - type: UseDelay
+    delay: 1.0
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToyFall
+    damage:
+      types:
+        Blunt: 0
+    hidden: true
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 100
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      collection: ToyFall
+    delay: 2
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Speech
+    speechVerb: Default # for pais (In the secret stash)
+  - type: SecretStash
+    secretStashName: secret-stash-pillow #triad secret stash rename)
+    blacklist:
+      components:
+      - SecretStash # Prevents being able to insert plushies inside each other (infinite plush)!
+      - NukeDisk # Could confuse the nukies if they don't know that plushies have a stash.
+      tags:
+      - QuantumSpinInverter # It will cause issues with the grinder...
+      - FakeNukeDisk # So you can't tell if the nuke disk is real or fake depending on if it can be inserted or not.
+  - type: ToolOpenable
+    openToolQualityNeeded: Slicing
+    closeToolQualityNeeded: Slicing # Should probably be stitching or something if that gets added
+    name: secret-stash-pillow #Triad (secret stash rename)
+  - type: HLPersistOnShipSave # Triad (ship saving here)
+
+- type: entity
+  id: PillowLongWhite
+  parent: BasePillow
+  name: long white pillow
+  description: Used for long snoozes. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_long_white
+
+- type: entity
+  id: PillowLumpBlue
+  parent: BasePillow
+  name: lumpy blue pillow
+  description: Comfy. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: bluepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_lump_blue
+
+- type: entity
+  id: PillowLumpRed
+  parent: BasePillow
+  name: lumpy red pillow
+  description: Comfy. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: redpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_lump_red
+
+- type: entity
+  id: PillowLumpWhite
+  parent: BasePillow
+  name: lumpy white pillow
+  description: Comfy. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_lump_white
+
+- type: entity
+  id: PillowSmallBlue
+  parent: BasePillow
+  name: small blue pillow
+  description: Comfy but small. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: bluepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_small_blue
+
+- type: entity
+  id: PillowSmallRed
+  parent: BasePillow
+  name: small red pillow
+  description: Comfy but small. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: redpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_small_red
+
+- type: entity
+  id: PillowSmallWhite
+  parent: BasePillow
+  name: small white pillow
+  description: Comfy but small. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_small_white
+
+- type: entity
+  id: PillowSquareBlue
+  parent: BasePillow
+  name: square blue pillow #triad grammar
+  description: Comfy but square. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: bluepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_square_blue
+
+- type: entity
+  id: PillowSquareRed
+  parent: BasePillow
+  name: square red pillow
+  description: Comfy but square. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: redpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_square_red
+
+- type: entity
+  id: PillowSquareWhite
+  parent: BasePillow
+  name: square white pillow
+  description: Comfy but square. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows.rsi
+    state: pillow_square_white
+
+# special pillows
+
+- type: entity
+  id: PillowLove
+  parent: BasePillow
+  name: love pillow
+  description: Lovely dreams. #triad grammar
+  components:
+  - type: Item
+    heldPrefix: redpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_love
+
+- type: entity
+  id: PillowPawPrint
+  parent: BasePillow
+  name: paw print pillow
+  description: Comfy, with a paw on it. #triad changed description
+  components:
+  - type: Item
+    heldPrefix: bluepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_paw_print
+
+- type: entity
+  id: PillowRegalRed #Triad grammar reigal>regal
+  parent: BasePillow
+  name: regal red pillow
+  description: Snooze like royalty.
+  components:
+  - type: Item
+    heldPrefix: redpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_reigal_red
+
+- type: entity
+  id: PillowStarburst  #Triad Grammar starbirst>starburst
+  parent: BasePillow
+  name: starburst pillow
+  description: Smells like blue raspberry candy. #Triad grammar
+  components:
+  - type: Item
+    heldPrefix: bluepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_starbirst
+
+- type: entity
+  id: PillowStiff
+  parent: BasePillow
+  name: stiff pillow
+  description: Is this filled with rocks..? #Triad grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToyFall
+    damage:
+      types:
+        Blunt: 5
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_stiff
+
+- type: entity
+  id: PillowStiffLong
+  parent: BasePillow
+  name: stiff long pillow
+  description: Is this filled with rocks..? #Triad grammar
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToyFall
+    damage:
+      types:
+        Blunt: 7
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_stiff_long
+
+- type: entity
+  id: PillowStiffGreen
+  parent: BasePillow
+  name: stiff green pillow
+  description: Is this filled with rocks..? #Triad grammar
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToyFall
+    damage:
+      types:
+        Blunt: 5
+  - type: Item
+    heldPrefix: greenpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_stiff_green
+
+- type: entity
+  id: PillowStiffLongGreen
+  parent: BasePillow
+  name: stiff long green pillow
+  description: Is this filled with rocks..? #Triad grammar
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToyFall
+    damage:
+      types:
+        Blunt: 7
+  - type: Item
+    heldPrefix: greenpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_stiff_long_green
+
+- type: entity
+  id: PillowWeh
+  parent: BasePillow
+  name: weh pillow
+  description: Weh! #triad grammar
+  components:
+  - type: Item
+    heldPrefix: greenpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_special.rsi
+    state: pillow_weh
+
+# body pillows
+
+- type: entity
+  id: PillowBodyBase
+  parent: BasePillow
+  abstract: true
+  components:
+    - type: ItemToggle
+      predictable: false
+    - type: Appearance
+    #Triad removal
+   # - type: GenericVisualizer
+   #   visuals:  # temporarily removed, missing dependancy?
+   #     enum.ToggleVisuals.Toggled:
+   #      back:
+   #         True: { visible: true }
+   #         False: { visible: false }
+   #      base:
+   #         True: { visible: false }
+   #         False: { visible: true }
+#Triad end
+
+- type: entity
+  id: PillowBodyWeh
+  parent: PillowBodyBase
+  name: weh body pillow
+  description: Weh! #triad grammar
+  components:
+  - type: Item
+    heldPrefix: greenpillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_body.rsi
+    state: pillow_body_weh_front
+
+- type: entity
+  id: PillowBodyUrist
+  parent: PillowBodyBase
+  name: urist body pillow
+  description: Looks average in every kind of way. #Triad Grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_body.rsi
+    layers:
+    - state: pillow_body_urist_front
+      map: ["base"]
+ #  - state: pillow_body_urist_back        #triad removal (see above)
+ #    map: ["back"]
+
+- type: entity
+  id: PillowBodyMiku
+  parent: PillowBodyBase
+  name: performer body pillow
+  description: Smells like leek. #triad Grammar
+  components:
+  - type: Item
+    heldPrefix: whitepillow
+  - type: Sprite
+    sprite: _HL/Objects/Fun/pillows_body.rsi
+    layers:
+      - state: pillow_body_miku_front
+        map: ["base"]
+  #   - state: pillow_body_miku_back        #triad removal (see above)
+   #    map: ["back"]

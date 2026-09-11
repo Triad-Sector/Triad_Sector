@@ -122,6 +122,7 @@
     id: AdminPDA
   storage:
     back:
+    - AdminMaterialBox
     - GasAnalyzer
     - trayScanner
     - AccessConfiguratorUniversal

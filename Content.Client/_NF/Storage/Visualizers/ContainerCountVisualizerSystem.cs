@@ -17,6 +17,6 @@ public sealed class ContainerCountVisualizerSystem : VisualizerSystem<ContainerC
             return;
 
         var state = $"{component.FillBaseName}-{level}";
-        args.Sprite.LayerSetState(StorageFillLayers.Fill, state);
+        SpriteSystem.LayerSetRsiState((uid, args.Sprite), StorageFillLayers.Fill, state);
     }
 }

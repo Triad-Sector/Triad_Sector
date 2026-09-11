@@ -7,16 +7,19 @@ namespace Content.Client.Interactable.Components
     [RegisterComponent]
     public sealed partial class InteractionOutlineComponent : Component
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IEntityManager _entMan = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IEntityManager _entMan = default!;
+
+        // Not a [Dependency]: components inject from the IoC container, which has no entity systems.
+        // A [Dependency] SpriteSystem here generates an Inject() that throws on every entity spawn.
+        private SpriteSystem Sprite => _entMan.System<SpriteSystem>();
 
         private const float DefaultWidth = 1;
+        private const string PostShaderId = "InteractionOutline";
 
-        [ValidatePrototypeId<ShaderPrototype>]
-        private const string ShaderInRange = "SelectionOutlineInrange";
+        private static readonly ProtoId<ShaderPrototype> ShaderInRange = "SelectionOutlineInrange";
 
-        [ValidatePrototypeId<ShaderPrototype>]
-        private const string ShaderOutOfRange = "SelectionOutline";
+        private static readonly ProtoId<ShaderPrototype> ShaderOutOfRange = "SelectionOutline";
 
         private bool _inRange;
         private ShaderInstance? _shader;
@@ -26,11 +29,11 @@ namespace Content.Client.Interactable.Components
         {
             _lastRenderScale = renderScale;
             _inRange = inInteractionRange;
-            if (_entMan.TryGetComponent(uid, out SpriteComponent? sprite) && sprite.PostShader == null)
+            if (_entMan.TryGetComponent(uid, out SpriteComponent? sprite) && !Sprite.HasPostShader((uid, sprite), PostShaderId))
             {
                 // TODO why is this creating a new instance of the outline shader every time the mouse enters???
                 _shader = MakeNewShader(inInteractionRange, renderScale);
-                sprite.PostShader = _shader;
+                Sprite.SetPostShader((uid, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, _shader));
             }
         }
 
@@ -38,8 +41,8 @@ namespace Content.Client.Interactable.Components
         {
             if (_entMan.TryGetComponent(uid, out SpriteComponent? sprite))
             {
-                if (sprite.PostShader == _shader)
-                    sprite.PostShader = null;
+                if (Sprite.TryGetPostShader((uid, sprite), PostShaderId, out var entry) && entry.Shader == _shader)
+                    Sprite.RemovePostShader((uid, sprite), PostShaderId);
                 sprite.RenderOrder = 0;
             }
 
@@ -50,14 +53,15 @@ namespace Content.Client.Interactable.Components
         public void UpdateInRange(EntityUid uid, bool inInteractionRange, int renderScale)
         {
             if (_entMan.TryGetComponent(uid, out SpriteComponent? sprite)
-                && sprite.PostShader == _shader
+                && Sprite.TryGetPostShader((uid, sprite), PostShaderId, out var entry)
+                && entry.Shader == _shader
                 && (inInteractionRange != _inRange || _lastRenderScale != renderScale))
             {
                 _inRange = inInteractionRange;
                 _lastRenderScale = renderScale;
 
                 _shader = MakeNewShader(_inRange, _lastRenderScale);
-                sprite.PostShader = _shader;
+                Sprite.SetPostShader((uid, sprite), new SpriteComponent.PostShaderArgs(PostShaderId, _shader));
             }
         }
 

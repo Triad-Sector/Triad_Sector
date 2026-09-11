@@ -146,11 +146,12 @@
   parent: MonkeyCube
   id: ProtogenCube
   name: protogen cube
-  suffix: DO NOT MAP #mono: retired
+#  suffix: DO NOT MAP #mono: retired; Triad: Untired
   components:
   - type: Rehydratable
     possibleSpawns:
     - MobProtogenRandom # mono end
+
 - type: entity
   parent: MonkeyCube
   id: TajaranCube
@@ -159,3 +160,22 @@
   - type: Rehydratable
     possibleSpawns:
     - MobTajaranRandom
+# Triad changes
+- type: entity
+  parent: MonkeyCube
+  id: AvaliCube # Triad
+  name: avali cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobAvaliRandom
+
+- type: entity
+  parent: MonkeyCube
+  id: HydrakinCube
+  name: hydrakin cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobHydrakinRandom
+# End Triad

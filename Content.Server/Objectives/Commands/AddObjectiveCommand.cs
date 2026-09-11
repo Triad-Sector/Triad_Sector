@@ -11,12 +11,13 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Objectives.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class AddObjectiveCommand : LocalizedEntityCommands
+public sealed partial class AddObjectiveCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly IPrototypeManager _prototypes = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IPrototypeManager _prototypes = default!;
+    [Dependency] private IComponentFactory _factory = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private ObjectivesSystem _objectives = default!;
 
     public override string Command => "addobjective";
 
@@ -41,7 +42,7 @@ public sealed class AddObjectiveCommand : LocalizedEntityCommands
         }
 
         if (!_prototypes.TryIndex<EntityPrototype>(args[1], out var proto) ||
-            !proto.HasComponent<ObjectiveComponent>())
+            !proto.HasComp<ObjectiveComponent>(_factory))
         {
             shell.WriteError(Loc.GetString("cmd-addobjective-objective-not-found", ("obj", args[1])));
             return;

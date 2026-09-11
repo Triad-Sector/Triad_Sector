@@ -1,0 +1,8 @@
+- type: loadout
+  id: HighTops
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 0
+  equipment:
+   shoes: ClothingShoesHighTops

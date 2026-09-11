@@ -20,11 +20,11 @@ namespace Content.Shared.Atmos.EntitySystems;
 /// </summary>
 public abstract partial class SharedAtmosPipeLayersSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -119,14 +119,18 @@ public abstract partial class SharedAtmosPipeLayersSystem : EntitySystem
         if (ent.Comp.NumberOfPipeLayers <= 1 || ent.Comp.PipeLayersLocked)
             return;
 
+        // Triad: only the layer-change tool should complain or act. Other tools (e.g. an RPD deconstructing a pipe
+        // its t-ray revealed under a floor) must fall through so their own interaction can run.
+        if (!TryComp<ToolComponent>(args.Used, out var tool) || !_tool.HasQuality(args.Used, ent.Comp.Tool, tool))
+            return;
+
         if (TryComp<SubFloorHideComponent>(ent, out var subFloorHide) && subFloorHide.IsUnderCover)
         {
             _popup.PopupPredicted(Loc.GetString("atmos-pipe-layers-component-cannot-adjust-pipes"), ent, args.User);
             return;
         }
 
-        if (TryComp<ToolComponent>(args.Used, out var tool) && _tool.HasQuality(args.Used, ent.Comp.Tool, tool))
-            _tool.UseTool(args.Used, args.User, ent, ent.Comp.Delay, tool.Qualities, new TrySetNextPipeLayerCompletedEvent());
+        _tool.UseTool(args.Used, args.User, ent, ent.Comp.Delay, tool.Qualities, new TrySetNextPipeLayerCompletedEvent());
     }
 
     private void OnUseInHandEvent(Entity<AtmosPipeLayersComponent> ent, ref UseInHandEvent args)

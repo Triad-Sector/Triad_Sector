@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.IO;
+using Robust.UnitTesting.Pool;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -60,7 +62,7 @@ public class DeviceNetworkingBenchmark
     {
         ProgramShared.PathOffset = "../../../../";
         PoolManager.Startup(typeof(DeviceNetworkingBenchmark).Assembly);
-        _pair = await PoolManager.GetServerClient();
+        _pair = await PoolManager.GetServerClient(testContext: new ExternalTestContext(nameof(DeviceNetworkingBenchmark), TextWriter.Null));
         var server = _pair.Server;
 
         await server.WaitPost(() =>

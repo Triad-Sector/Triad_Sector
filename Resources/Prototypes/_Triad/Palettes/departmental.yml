@@ -1,0 +1,8 @@
+﻿- type: palette
+  id: TDF
+  name: TDF Colors
+  colors:
+    tdflight: "#FFD580"
+    tdfmedium: "#b39456"
+    tdfdark: "#695731"
+    tdfblack: "#352a17"

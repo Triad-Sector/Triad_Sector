@@ -1,3 +1,4 @@
+using Content.Shared.Construction.Prototypes; // Triad
 using Content.Shared.Physics;
 using Robust.Shared.Maths;
 using Robust.Shared.Physics.Collision.Shapes;
@@ -75,6 +76,15 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public bool NoLayers { get; private set; }
+
+    /// <summary>
+    /// The construction-menu recipe this RCD recipe is a shortcut for. When set, placement is held to that recipe's
+    /// own rules: its <c>conditions</c> run against the target tile, and <c>canBuildInImpassable: false</c> adds the
+    /// <c>Impassable</c> collision mask. The construction menu is the canon for what may be placed where; this field
+    /// keeps the RCD from drifting from it.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public ProtoId<ConstructionPrototype>? ConstructionRecipe { get; private set; }
     // End Triad
 
     /// <summary>

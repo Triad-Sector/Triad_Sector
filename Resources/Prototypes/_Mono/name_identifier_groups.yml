@@ -6,19 +6,13 @@
 
 - type: nameIdentifierGroup
   id: NuclearReactorTSF
-  prefix: TSF-NFR
+  prefix: TDF-NFR
   minValue: 10
   maxValue: 99
 
 - type: nameIdentifierGroup
   id: NuclearReactorPDV
   prefix: PDV-NFR
-  minValue: 10
-  maxValue: 99
-
-- type: nameIdentifierGroup
-  id: NuclearReactorUSSP
-  prefix: USSP-NFR
   minValue: 10
   maxValue: 99
 
@@ -38,19 +32,13 @@
 
 - type: nameIdentifierGroup
   id: NuclearReactorTSFSmall
-  prefix: TSF-NFR-S
+  prefix: TDF-NFR-S
   minValue: 10
   maxValue: 99
 
 - type: nameIdentifierGroup
   id: NuclearReactorPDVSmall
   prefix: PDV-NFR-S
-  minValue: 10
-  maxValue: 99
-
-- type: nameIdentifierGroup
-  id: NuclearReactorUSSPSmall
-  prefix: USSP-NFR-S
   minValue: 10
   maxValue: 99
 

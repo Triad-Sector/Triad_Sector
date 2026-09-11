@@ -1,0 +1,10 @@
+- type: entity
+  parent: [NpcStationAiAttackerStaticSmart, BaseFactionGearSDT2]
+  id: NpcStationAiAttackerStaticSmartSolarian
+  name: solarian directive attacker core
+  description: Only shoots at non-SD IFF. Pretty smart.
+  suffix: AI, Smart, Static, Solarian Directive
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SD

@@ -7,7 +7,7 @@ namespace Content.Server.NPC.HTN.Preconditions;
 
 public sealed partial class TargetInLOSPrecondition : HTNPrecondition
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
     private InteractionSystem _interaction = default!;
     // Mono
     private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -44,7 +44,7 @@ public sealed partial class TargetInLOSPrecondition : HTNPrecondition
             return false;
 
         var range = blackboard.GetValueOrDefault<float>(RangeKey, _entManager);
-                                                                      // Mono
+
         return _interaction.InRangeUnobstructed(owner, target, range, ObstructedMask, predicate: (EntityUid entity) =>
         {
             return _physicsQuery.TryGetComponent(entity, out var physics) && (physics.CollisionLayer & (int)BulletMask) == 0 // ignore if it can't collide with bullets

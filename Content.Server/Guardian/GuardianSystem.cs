@@ -24,17 +24,17 @@ namespace Content.Server.Guardian
     /// <summary>
     /// A guardian has a host it's attached to that it fights for. A fighting spirit.
     /// </summary>
-    public sealed class GuardianSystem : EntitySystem
+    public sealed partial class GuardianSystem : EntitySystem
     {
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly DamageableSystem _damageSystem = default!;
-        [Dependency] private readonly SharedActionsSystem _actionSystem = default!;
-        [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly BodySystem _bodySystem = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private DamageableSystem _damageSystem = default!;
+        [Dependency] private SharedActionsSystem _actionSystem = default!;
+        [Dependency] private SharedHandsSystem _handsSystem = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private BodySystem _bodySystem = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
 
         public override void Initialize()
         {
@@ -222,7 +222,7 @@ namespace Content.Server.Guardian
             if (TryComp<GuardianComponent>(guardian, out var guardianComp))
             {
                 guardianComp.Host = args.Args.Target.Value;
-                _audio.PlayPvs("/Audio/Effects/guardian_inject.ogg", args.Args.Target.Value);
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/guardian_inject.ogg"), args.Args.Target.Value);
                 _popupSystem.PopupEntity(Loc.GetString("guardian-created"), args.Args.Target.Value, args.Args.Target.Value);
                 // Exhaust the activator
                 component.Used = true;
@@ -247,12 +247,12 @@ namespace Content.Server.Guardian
             if (args.NewMobState == MobState.Critical)
             {
                 _popupSystem.PopupEntity(Loc.GetString("guardian-host-critical-warn"), component.HostedGuardian.Value, component.HostedGuardian.Value);
-                _audio.PlayPvs("/Audio/Effects/guardian_warn.ogg", component.HostedGuardian.Value);
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/guardian_warn.ogg"), component.HostedGuardian.Value);
             }
             else if (args.NewMobState == MobState.Dead)
             {
                 //TODO: Replace WithVariation with datafield
-                _audio.PlayPvs("/Audio/Voice/Human/malescream_guardian.ogg", uid, AudioParams.Default.WithVariation(0.20f));
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Voice/Human/malescream_guardian.ogg"), uid, AudioParams.Default.WithVariation(0.20f));
                 RemComp<GuardianHostComponent>(uid);
             }
         }

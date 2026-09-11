@@ -321,16 +321,16 @@
   - type: StorageFill
     contents:
       - id: DefibrillatorSyndicate
-      - id: MedkitCombatFilled
+      - id: MedkitFilled # Triad convert to regular ones
         amount: 2 # Frontier: 4<2
       - id: CombatMedipen
-        amount: 4 # Mono: 4
+        amount: 2 # Triad: 2
       - id: PunctAutoInjector
         amount: 4 # Mono: 4
       - id: PyraAutoInjector
         amount: 4 # Mono: 4
       - id: Stimpack
-        amount: 8  # Mono: 8
+        amount: 4  # Triad: 4
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -350,3 +350,19 @@
         amount: 2
       - id: SyndieTrickyBomb
         amount: 2
+
+# Triad : Domesticated PDV gear
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelClothingOuterHardsuitAshenBundle
+  name: syndicate hardsuit bundle
+  description: "Contains the Syndicate's signature blood red hardsuit. Uh... wait.. where's the red?"
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitAshen
+    - id: ClothingMaskGasSyndicate
+    - id: ClothingHandsGlovesCombat
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled

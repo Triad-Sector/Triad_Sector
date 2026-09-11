@@ -1,12 +1,13 @@
 using System.Threading;
 using Content.Server.Spawners.Components;
 using Robust.Shared.Random;
+using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Spawners.EntitySystems;
 
-public sealed class SpawnerSystem : EntitySystem
+public sealed partial class SpawnerSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -19,7 +20,8 @@ public sealed class SpawnerSystem : EntitySystem
     {
         component.TokenSource?.Cancel();
         component.TokenSource = new CancellationTokenSource();
-        uid.SpawnRepeatingTimer(TimeSpan.FromSeconds(component.IntervalSeconds), () => OnTimerFired(uid, component), component.TokenSource.Token);
+        // Triad: engine v275 removed the SpawnRepeatingTimer extension; token is cancelled on component shutdown
+        Timer.SpawnRepeating(TimeSpan.FromSeconds(component.IntervalSeconds), () => OnTimerFired(uid, component), component.TokenSource.Token);
     }
 
     private void OnTimerFired(EntityUid uid, TimedSpawnerComponent component)

@@ -207,6 +207,17 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
+  # Triad start - Ported MNK clothes.
+  - ClothingUniformMNKOfficeSkirt
+  - ClothingUniformMNKUnderGarment
+  - ClothingUniformMNKDressBlack
+  - ClothingUniformMNKGymBra
+  - ClothingUniformMNKBlackOveralls
+  - ClothingUniformMNKBlackShoulder
+  - ClothingUniformMNKTracksuitBlack
+  - ClothingUniformIndustrialWorker
+  - StrainedShorts
+  # End Triad
 
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
@@ -225,6 +236,7 @@
   - ContractorClothingBackpackDuffel
   - ContractorClothingBackpackSatchel
   - ContractorClothingBackpackMessenger
+  - ClothingBackpackSatchelLeather # Triad
   - ContractorClothingBackpackCaptain
   - ContractorClothingBackpackDuffelCaptain
   - ContractorClothingBackpackSatchelCaptain
@@ -283,6 +295,11 @@
   - ContractorClothingBackpackDrakeIndustries
   - ContractorClothingBackpackDuffelDrakeIndustries
   - ContractorClothingBackpackSatchelDrakeIndustries
+  # Triad start
+  - ClothingBackpackMilitary
+  - ClothingBackpackDuffelMilitary
+  - ClothingBackpackSatchelMilitary
+  # Triad end
   - ContractorClothingBackpackClown
   - ContractorClothingBackpackDuffelClown
   - ContractorClothingBackpackSatchelClown
@@ -370,6 +387,8 @@
   - ContractorClothingOuterWinterCoatPlaid
   - ContractorClothingOuterCoatBomber
   - ContractorClothingOuterCoatBomberPunkRed # Punkish (Static visuals)
+  - SpotsJacketBlue # Triad
+  - SpotsJacketRed # Triad
   - ContractorClothingOuterCoatJacketLeather # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketBiker # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketJamrock # Punkish (Static visuals)
@@ -392,6 +411,11 @@
   - ContractorWetFloorSign
   - ContractorClothingOuterCoatExpensive
   - ContractorClothingOuterCoatSpaceAsshole
+  # Triad start - Ported MNK clothes.
+  - ClothingOuterCoatMNKBlackJacket
+  - ClothingOuterCoatMNKWhiteHoodie
+  - ClothingOuterCoatMNKBlackTopCoat
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorBelt
@@ -477,6 +501,7 @@
   - ContractorClothingShoesBootsCowboyWhite
   - ContractorClothingShoesSnakeskinBoots
   - ContractorClothingShoesHighheelBoots
+  - HighTops # Triad
   - ContractorClothingShoesBootsCowboyFancy
   - ContractorClothingShoesBootsWinterChiefEngineer
 #  - ContractorClothingShoesBootsWinterCMO # Temp removed for MOM. Will return if replaced.
@@ -601,7 +626,6 @@
   - ContractorClothingHeadsetAltEngineeringCommon
   - ContractorClothingHeadsetAltMedicalCommon
   - ContractorClothingHeadsetAltScienceCommon
-  - USSPHeadset # Mono
   fallbacks:
   - ContractorClothingHeadsetGreyCommon
 
@@ -776,6 +800,7 @@
   - ContractorBucket
   - ContractorGeigerCounter
   - ContractorBinoculars
+  - ContractorTapeRecorder # Mono - Moved from ContractorTrinkets.
   - ContractorWeaponProtoKineticAccelerator
   - ContractorPinpointerUniversal
   - ContractorShipyardRCD
@@ -784,11 +809,17 @@
   - ContractorBible
   - ContractorMonkeyCubeWrapped
   - ContractorKoboldCubeWrapped
+  # Triad changes
+  - Whistle
+  - SecurityWhistle
+  - SyndicateWhistle
+  # End Triad
 
 - type: loadoutGroup
-  id: ContractorFun # Left Hand - 1 only
+  id: ContractorFun
   name: loadout-group-contractor-fun
   minLimit: 0
+  maxLimit: 2
   loadouts:
   - ContractorBriefcaseBrownFilled
   - ContractorToolboxEmergency
@@ -812,6 +843,9 @@
   - ContractorHoverbikeFlatpack
   - ContractorEmotionalPetCarrier
   - ContractorCrayonMagic
+  # Triad changes
+  - HoloprojectorPrivate
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorFace
@@ -857,6 +891,7 @@
   - ContractorCigPackGreen
   - ContractorCigarCase
   - ContractorNFAshtray
+  #- ContractorTapeRecorder # Mono - Moved to ContractorUtility.
   - ContractorSmokingPipeFilledTobacco
   - ContractorTobaccoPouchBrownFilled
   - ContractorTobaccoPouchBlueFilled
@@ -878,6 +913,7 @@
   - ContractorWristwatchGold
   - ContractorSilverRing
   - ContractorGoldRing
+  - ContractorAACTablet
   - ContractorBasketball
   - ContractorFootball
   - ContractorBeachBall
@@ -900,6 +936,7 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - MedalCase # Triad
 
 - type: loadoutGroup # Mono - removed standard supply boxes.
   id: ContractorBoxSurvival

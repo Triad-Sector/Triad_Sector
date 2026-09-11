@@ -232,7 +232,7 @@
     - id: Hypospray
     - id: MedicalTechFabCircuitboard
     - id: MedkitFilled
-    - id: RubberStampCMO
+    - id: RubberStampDoc
     # Goobstation Start
     - id: ClothingBeltMilitaryWebbingCMOFilled
     - id: Multitool
@@ -340,7 +340,7 @@
   table: !type:AllSelector
     children:
     #    - id: WeaponEnergyShotgun # Frontier
-    - id: HyperlinkBookSpaceLaw # Frontier: BookSpaceLaw<HyperlinkBookSpaceLaw
+    - id: BookTriadLaw # Triad: BookSpaceLaw<BookTriadLaw
     #    - id: BoxEncryptionKeySecurity # Frontier
     #    - id: CigarGoldCase # Frontier
     #      prob: 0.50 # Frontier

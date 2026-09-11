@@ -4,6 +4,7 @@
   id: WeaponSmartLmg
   description: A military prototype that saw rare use in front-lines field testing. This is a refined version for standard production.
   components:
+  # Triad: Removed GunWieldBonus and SpeedModifiedOnWield so harness support controls the MLA-79 bonuses. ReqWeapHarn below restores accuracy and movement behavior through the powered harness.
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/SmartGuns/ml79a.rsi
     layers:
@@ -11,9 +12,6 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
-  - type: GunWieldBonus
-    minAngle: -5
-    maxAngle: -37
   - type: Gun
     minAngle: 27
     maxAngle: 73
@@ -60,12 +58,14 @@
   - type: StaticPrice
     price: 50000
     vendPrice: 50000
-  - type: SpeedModifiedOnWield
-    walkModifier: 0.5
-    sprintModifier: 0.4
+  # Triad: The MLA-79 must still be wielded to fire; the harness only supplies bonuses.
   - type: GunRequiresWield
   - type: PirateBountyItem
     id: ExperimentalFactionWeapon
+  # Triad: Tag implemented for the weapon to be properly identified by powered harnesses.
+  - type: Tag
+    tags:
+    - TriadHeavyWeapon
   - type: SmartGun
     requiresWield: true
   - type: LaserPointer
@@ -73,3 +73,14 @@
     rsi:
       sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
       state: all
+  # Triad: Harness-specific support. Without a powered harness, this weapon keeps base spread and slows the wielder.
+  - type: ReqWeapHarn
+    supportKey: Mla79Smartgun
+    magnetRetrieve:
+      tags:
+      - TriadHeavyWeapon
+    minAngleBonus: -5
+    maxAngleBonus: -37
+    unsupportedWalkModifier: 0.5
+    unsupportedSprintModifier: 0.4
+  #Triad: End

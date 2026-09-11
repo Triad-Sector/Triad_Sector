@@ -9,12 +9,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Body.Systems;
 
-public sealed class ThermalRegulatorSystem : EntitySystem
+public sealed partial class ThermalRegulatorSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly TemperatureSystem _tempSys = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlockerSys = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;  // Starlight edit
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private TemperatureSystem _tempSys = default!;
+    [Dependency] private ActionBlockerSystem _actionBlockerSys = default!;
+    [Dependency] private MobStateSystem _mobState = default!;  // Starlight edit
 
     public override void Initialize()
     {
@@ -56,6 +56,10 @@ public sealed class ThermalRegulatorSystem : EntitySystem
             return;
 
         // mono begin
+        // Check to see if we're disabling thermal temporarily
+        if (ent.Comp1.DisableProcessing)
+            return;
+
         if (ent.Comp1.ProcessWhileDead == false && TryComp<MobStateComponent>(ent, out var mobComp1) && mobComp1.CurrentState == MobState.Dead)
             return;
 

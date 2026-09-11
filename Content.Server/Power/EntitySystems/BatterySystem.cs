@@ -15,11 +15,11 @@ using Content.Server._NF.Power.Components; // Frontier
 namespace Content.Server.Power.EntitySystems
 {
     [UsedImplicitly]
-    public sealed class BatterySystem : EntitySystem
+    public sealed partial class BatterySystem : EntitySystem
     {
-        [Dependency] protected readonly IGameTiming Timing = default!;
+        [Dependency] protected IGameTiming Timing = default!;
 
-        [Dependency] private readonly SharedContainerSystem _containers = default!; // WD EDIT
+        [Dependency] private SharedContainerSystem _containers = default!; // WD EDIT
 
         // Mono
         private float _updateInterval = 1f;

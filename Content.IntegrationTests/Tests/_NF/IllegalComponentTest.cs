@@ -1,6 +1,7 @@
 using Content.Server.Salvage.Magnet;
 using Content.Server.Solar.Components;
 using Content.Shared.Prototypes;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._NF;
@@ -22,6 +23,7 @@ public sealed class IllegalComponentTest
         var server = pair.Server;
 
         var protoManager = server.ResolveDependency<IPrototypeManager>();
+        var compFact = server.ResolveDependency<IComponentFactory>();
 
         await server.WaitAssertion(() =>
         {
@@ -31,7 +33,7 @@ public sealed class IllegalComponentTest
                 {
                     foreach (var component in IllegalComponents)
                     {
-                        Assert.That(entity.HasComponent(component), Is.False, $"Entity {entity} contains illegal component {component}.");
+                        Assert.That(entity.HasComp(component, compFact), Is.False, $"Entity {entity} contains illegal component {component}.");
                     }
                 }
             });

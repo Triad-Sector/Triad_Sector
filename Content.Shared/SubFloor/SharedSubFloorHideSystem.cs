@@ -2,6 +2,7 @@ using Content.Shared.Audio;
 using Content.Shared.Construction.Components;
 using Content.Shared.Explosion;
 using Content.Shared.Eye;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Maps;
 using Content.Shared.Popups;
@@ -16,22 +17,25 @@ namespace Content.Shared.SubFloor
     ///     Entity system backing <see cref="SubFloorHideComponent"/>.
     /// </summary>
     [UsedImplicitly]
-    public abstract class SharedSubFloorHideSystem : EntitySystem
+    public abstract partial class SharedSubFloorHideSystem : EntitySystem
     {
-        [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-        [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
-        [Dependency] protected readonly SharedMapSystem Map = default!;
-        [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-        [Dependency] private readonly SharedVisibilitySystem _visibility = default!;
-        [Dependency] protected readonly SharedPopupSystem _popup = default!;
+        [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambientSoundSystem = default!;
+        [Dependency] protected SharedMapSystem Map = default!;
+        [Dependency] protected SharedAppearanceSystem Appearance = default!;
+        [Dependency] private SharedVisibilitySystem _visibility = default!;
+        [Dependency] protected SharedPopupSystem _popup = default!;
+        [Dependency] private SharedHandsSystem _hands = default!; // Triad
 
         private EntityQuery<SubFloorHideComponent> _hideQuery;
+        private EntityQuery<SubfloorReachComponent> _reachQuery; // Triad
 
         public override void Initialize()
         {
             base.Initialize();
 
             _hideQuery = GetEntityQuery<SubFloorHideComponent>();
+            _reachQuery = GetEntityQuery<SubfloorReachComponent>(); // Triad
 
             SubscribeLocalEvent<TileChangedEvent>(OnTileChanged);
             SubscribeLocalEvent<SubFloorHideComponent, ComponentStartup>(OnSubFloorStarted);
@@ -83,9 +87,29 @@ namespace Content.Shared.SubFloor
 
         private void OnInteractionAttempt(EntityUid uid, SubFloorHideComponent component, ref GettingInteractedWithAttemptEvent args)
         {
-            // No interactions with entities hidden under floor tiles.
-            if (component.BlockInteractions && component.IsUnderCover)
+            // No interactions with entities hidden under floor tiles...
+            // Triad: ...unless the user holds a tool flagged SubfloorReach (the RPD). This lifts the interaction
+            // block entirely while the tool is held: the motivating case is letting the RPD deconstruct the pipes
+            // its own t-ray reveals, but it also permits any other interaction with the covered entity (e.g. opening
+            // a buried filter's UI). Acceptable, the tool is in hand. Explosion/attack protection is unaffected
+            // (those gate on BlockInteractions directly, not through this attempt event).
+            if (component.BlockInteractions && component.IsUnderCover && !HolderCanReachSubfloor(args.Uid))
                 args.Cancelled = true;
+        }
+
+        // Triad: true when the user holds an item flagged SubfloorReach (e.g. the RPD).
+        private bool HolderCanReachSubfloor(EntityUid? user)
+        {
+            if (user == null)
+                return false;
+
+            foreach (var held in _hands.EnumerateHeld(user.Value))
+            {
+                if (_reachQuery.HasComp(held))
+                    return true;
+            }
+
+            return false;
         }
 
         private void OnSubFloorStarted(EntityUid uid, SubFloorHideComponent component, ComponentStartup _)

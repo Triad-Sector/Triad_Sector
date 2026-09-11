@@ -24,10 +24,15 @@ public sealed partial class CartridgeLoaderComponent : Component
     public EntityUid? ActiveProgram = default;
 
     /// <summary>
-    /// The list of programs running in the background, listening to certain events
+    /// The set of programs running in the background, listening to certain events
     /// </summary>
+    /// <remarks>
+    /// Triad: was a List, which let a program register itself more than once (nothing ever unregisters, and
+    /// every PDA reopen re-runs registration). Duplicates delivered every relayed event once per copy, and a
+    /// single Remove only pulled one of them. Membership is the only question asked of this, so it is a set.
+    /// </remarks>
     [ViewVariables]
-    public readonly List<EntityUid> BackgroundPrograms = new();
+    public readonly HashSet<EntityUid> BackgroundPrograms = new();
 
     /// <summary>
     /// The maximum amount of programs that can be installed on the cartridge loader entity

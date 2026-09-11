@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Content.Server._NF.Bank; // Frontier
 using Content.Server.Cargo.Components;
 using Content.Server.Labels.Components;
@@ -20,12 +20,15 @@ using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared._NF.Bank.BUI; // Frontier
 
+using Content.Server._Triad.Market; // Triad: market data
+using Content.Server.Database; // Triad: market data
+
 namespace Content.Server.Cargo.Systems
 {
     public sealed partial class CargoSystem
     {
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly EmagSystem _emag = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private EmagSystem _emag = default!;
 
         /// <summary>
         /// How much time to wait (in seconds) before increasing bank accounts balance.
@@ -272,7 +275,7 @@ namespace Content.Server.Cargo.Systems
                 var tax = (int)Math.Floor(cost * taxCoeff);
                 _bank.TrySectorDeposit(account, tax, LedgerEntryType.CargoTax);
             }
-            _bank.TryBankWithdraw(player, cost);
+            _bank.TryBankWithdraw(player, cost, new MarketRecord { Kind = MarketTransactionKind.CargoOrder }); // Triad: market data
             // End Frontier
 
             UpdateOrders(station.Value);
@@ -363,7 +366,7 @@ namespace Content.Server.Cargo.Systems
 
             var data = GetOrderData(EntityManager.GetNetEntity(uid), args, product, GenerateOrderId(orderDatabase));
 
-            if (!TryAddOrder(orderDatabase.Owner, data, orderDatabase))
+            if (!TryAddOrder(dbUid.Value, data, orderDatabase))
             {
                 PlayDenySound(uid, component);
                 return;
@@ -630,7 +633,7 @@ namespace Content.Server.Cargo.Systems
             return bankComponent;
         }
 
-        private bool TryGetOrderDatabase(EntityUid uid, [MaybeNullWhen(false)] out EntityUid? dbUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp, CargoOrderConsoleComponent _)
+        private bool TryGetOrderDatabase(EntityUid uid, [NotNullWhen(true)] out EntityUid? dbUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp, CargoOrderConsoleComponent _)
         {
             dbUid = _station.GetOwningStation(uid);
             return TryComp(dbUid, out dbComp);

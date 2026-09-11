@@ -1,0 +1,11 @@
+- type: loadout
+  id: ClothingBeltTdfFilled
+  name: TDF belt (filled)
+  equipment:
+    belt: ClothingBeltTdfFilled
+
+- type: loadout
+  id: ClothingBeltMilitaryWebbingTdfFilled
+  name: TDF chest rig (filled)
+  equipment:
+    belt: ClothingBeltMilitaryWebbingTdfFilled

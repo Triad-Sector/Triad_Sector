@@ -26,8 +26,11 @@
       whitelist:
         components:
         - IdCard
-        - ShipyardVoucher
+        - NFShipyardVoucher # Triad, misprediction fix
     newAccessLevels: [Captain]
+    shipSaveBlacklist:
+      components:
+        - ShipSavingBlacklist
   - type: ActivatableUI
     singleUser: true
     key: enum.ShipyardConsoleUiKey.Shipyard
@@ -55,7 +58,7 @@
   id: ComputerShipyardSecurity
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: security shipyard console
-  description: Used to enlist into TSF Security Forces
+  description: Used to enlist into TDF Security Forces.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
@@ -81,8 +84,8 @@
 - type: entity
   id: ComputerShipyardNfsd
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
-  name: TSFMC shipyard console
-  description: Used to buy TSFMC vessels.
+  name: TDF shipyard console
+  description: Used to buy TDF vessels.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi
@@ -167,29 +170,29 @@
     ignoreBaseSaleRate: true # Fixed 70% sale rate.
     canTransferDeed: false
 
-- type: entity
-  id: ComputerShipyardExpedition
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
-  name: expedition shipyard console
-  description: Used to buy ships outfitted for planetary expeditions
-  components:
-  - type: ActivatableUI
-    key: enum.ShipyardConsoleUiKey.Expedition
-  - type: UserInterface
-    interfaces:
-      enum.ShipyardConsoleUiKey.Expedition:
-       type: ShipyardConsoleBoundUserInterface
-  - type: Sprite
-    sprite: _NF/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_blackmarket
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shipyard_blackmarket
-    - map: ["computerLayerKeys"]
-      state: blackmarket_key
+#- type: entity | Triad - comment out for military shipyard
+#  id: ComputerShipyardExpedition
+#  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
+#  name: expedition shipyard console
+#  description: Used to buy ships outfitted for planetary expeditions
+#  components:
+#  - type: ActivatableUI
+#    key: enum.ShipyardConsoleUiKey.Expedition
+#  - type: UserInterface
+#    interfaces:
+#      enum.ShipyardConsoleUiKey.Expedition:
+#       type: ShipyardConsoleBoundUserInterface
+#  - type: Sprite
+#    sprite: _NF/Structures/Machines/computers.rsi
+#    layers:
+#    - map: ["computerLayerBody"]
+#      state: computer_blackmarket
+#    - map: ["computerLayerKeyboard"]
+#      state: generic_keyboard
+#    - map: ["computerLayerScreen"]
+#      state: shipyard_blackmarket
+#    - map: ["computerLayerKeys"]
+#      state: blackmarket_key
 
 - type: entity
   id: ComputerShipyardScrap
@@ -243,7 +246,7 @@
   id: ComputerShipyardSr
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: colonial staff shipyard console
-  description: Used to buy vessels exclusive to Colonial Outpost personnel.
+  description: Used to buy vessels exclusive to TFA personnel.
   components:
   - type: ActivatableUI
     key: enum.ShipyardConsoleUiKey.Sr

@@ -5,6 +5,7 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mobs;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
@@ -18,16 +19,16 @@ namespace Content.Shared._Mono.ArmorPlate;
 /// <summary>
 /// Handles all armor plate behavior
 /// </summary>
-public sealed class SharedArmorPlateSystem : EntitySystem
+public sealed partial class SharedArmorPlateSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly StaminaSystem _stamina = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private StaminaSystem _stamina = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -56,7 +57,9 @@ public sealed class SharedArmorPlateSystem : EntitySystem
         if (!_inventory.TryGetSlots(ent, out var slots))
             return;
 
-        if (args.Origin == null && args.OriginFlag != DamageableSystem.DamageOriginFlag.Explosion)
+        // Triad - conditional for radiation damage
+        if (args.Origin == null && args.OriginFlag is not DamageableSystem.DamageOriginFlag.Explosion
+                and not DamageableSystem.DamageOriginFlag.Radiation)
             return;
 
         foreach (var slot in slots)

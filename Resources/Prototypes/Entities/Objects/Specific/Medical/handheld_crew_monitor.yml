@@ -15,10 +15,18 @@
     interfaces:
       enum.CrewMonitoringUIKey.Key:
         type: CrewMonitoringBoundUserInterface
-  - type: CrewMonitoringConsole
+  - type: CrewMonitoringConsole # Triad - added sound for high damage patients
+    warningSound: 
+      params:
+        maximumDistance: 5 # Triad - let this be small enough that you can only hear it with friends
+        volume: -15
+      path: /Audio/_Triad/Machines/medDanger.ogg
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
+  - type: Speech # Triad - added chat message for high damage patients
+    speechVerb: Robotic
+    speechSounds: Borg
 #  - type: WirelessNetworkConnection # Frontier
 #    range: 500
 #  - type: StationLimitedNetwork

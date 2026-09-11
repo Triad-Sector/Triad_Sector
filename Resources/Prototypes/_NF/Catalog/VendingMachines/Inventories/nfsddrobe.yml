@@ -4,15 +4,15 @@
     ClothingBackpackSecurity: 10
     ClothingBackpackSatchelSecurity: 10
     ClothingBackpackDuffelSecurity: 10
-    ClothingBackpackTsfmc: 10
-    ClothingBackpackSatchel: 10
-    ClothingBackpackDuffelTsfmc: 10
+    #ClothingBackpackTsfmc: 10
+    #ClothingBackpackSatchel: 10
+    #ClothingBackpackDuffelTsfmc: 10
     ClothingHandsGlovesTacticalCombatBlack: 30
-    ClothingUniformTSFMC: 30
-    ClothingUniformTSFMCDesert: 30
-    ClothingUniformTSFMCDress: 30
+    #ClothingUniformTSFMC: 30
+    #ClothingUniformTSFMCDesert: 30
+    #ClothingUniformTSFMCDress: 30
     ClothingNeckIFFCyan: 30
-    ClothingHeadsetTsfmc: 30
+    #ClothingHeadsetTsfmc: 30
     ClothingMaskGasSecurity: 30
     ClothingShoesBootsCombat: 30
     ClothingHeadHelmetMercenaryBlack: 20
@@ -22,6 +22,6 @@
     ClothingShoesBootsMagSecurity: 3
     ClothingEyesHudNfsd: 10
     ClothingEyesHudMedSec: 2
-    ClothingBeltWebbingsNormalTSFMC: 15
-    ClothingBeltWebbingsBigTSFMC: 12
-    ClothingBeltMilitaryWebbingMed: 3
+    #ClothingBeltWebbingsNormalTSFMC: 15
+    #ClothingBeltWebbingsBigTSFMC: 12
+    #ClothingBeltMilitaryWebbingMed: 3

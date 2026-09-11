@@ -5,15 +5,13 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Cloning;
 
 [RegisterComponent]
 public sealed partial class CloningPodComponent : Component
 {
-    [ValidatePrototypeId<SinkPortPrototype>]
-    public const string PodPort = "CloningPodReceiver";
+    public static readonly ProtoId<SinkPortPrototype> PodPort = "CloningPodReceiver";
 
     [ViewVariables]
     public ContainerSlot BodyContainer = default!;

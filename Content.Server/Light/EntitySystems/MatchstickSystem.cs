@@ -9,17 +9,18 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Timer = Robust.Shared.Timing.Timer; // Triad
 
 namespace Content.Server.Light.EntitySystems
 {
-    public sealed class MatchstickSystem : EntitySystem
+    public sealed partial class MatchstickSystem : EntitySystem
     {
-        [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedItemSystem _item = default!;
-        [Dependency] private readonly SharedPointLightSystem _lights = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
+        [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedItemSystem _item = default!;
+        [Dependency] private SharedPointLightSystem _lights = default!;
+        [Dependency] private TransformSystem _transformSystem = default!;
 
         private readonly HashSet<Entity<MatchstickComponent>> _litMatches = new();
 
@@ -86,8 +87,12 @@ namespace Content.Server.Light.EntitySystems
             // Change state
             SetState(matchstick, component, SmokableState.Lit);
             _litMatches.Add(matchstick);
-            matchstick.Owner.SpawnTimer(component.Duration * 1000, delegate
+            // Triad: engine v275 removed the SpawnTimer extension; static Timer + deletion guard keeps the old semantics
+            Timer.Spawn(component.Duration * 1000, delegate
             {
+                if (Deleted(matchstick))
+                    return;
+
                 SetState(matchstick, component, SmokableState.Burnt);
                 _litMatches.Remove(matchstick);
             });

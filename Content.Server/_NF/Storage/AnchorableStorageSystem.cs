@@ -15,12 +15,12 @@ namespace Content.Server._NF.Storage;
 /// This is used for restricting anchor operations on storage (one bag max per tile)
 /// and ejecting living contents on anchor.
 /// </summary>
-public sealed class AnchorableStorageSystem : EntitySystem
+public sealed partial class AnchorableStorageSystem : EntitySystem
 {
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly TransformSystem _xform = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private MapSystem _map = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private TransformSystem _xform = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -97,7 +97,7 @@ public sealed class AnchorableStorageSystem : EntitySystem
             return false;
 
         var indices = _map.TileIndicesFor(grid, gridComp, ent.Comp2.Coordinates);
-        var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, gridComp, indices);
+        var enumerator = _map.GetAnchoredEntities(grid, gridComp, indices);
 
         while (enumerator.MoveNext(out var otherEnt))
         {

@@ -9505,7 +9505,7 @@ entities:
     - type: Transform
       pos: 1.5,27.5
       parent: 1
-- proto: SuitStorageM82c
+- proto: SuitStorageTdf
   entities:
   - uid: 106
     components:

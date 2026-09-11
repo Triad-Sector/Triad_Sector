@@ -1,3 +1,5 @@
+using Content.Shared.Atmos.Components; // Triad
+using Content.Shared.RCD.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -69,6 +71,11 @@ public struct RCDDeconstructAttemptEvent
     public readonly EntityUid User;
     public readonly bool ShowPopups;
     public bool Cancelled;
+    /// <summary>
+    /// Set by a sibling handler (RPD) to admit a target RCD would otherwise reject (e.g. an <c>rpd: true</c>,
+    /// <c>deconstructable: false</c> pipe), so RCDSystem doesn't need to know what an RPD is.
+    /// </summary>
+    public bool Admitted;
 
     public RCDDeconstructAttemptEvent(EntityUid? target, EntityUid user, bool showPopups)
     {
@@ -76,6 +83,7 @@ public struct RCDDeconstructAttemptEvent
         User = user;
         ShowPopups = showPopups;
         Cancelled = false;
+        Admitted = false;
     }
 }
 
@@ -88,12 +96,36 @@ public struct RCDDeconstructAttemptEvent
 public struct RCDObjectSpawnAttemptEvent
 {
     public readonly RCDPrototype Recipe;
+    /// <summary>
+    /// The pipe layer captured when the operator committed the placement (see <see cref="RCDPlacementCommitEvent"/>),
+    /// carried through the do-after so cursor movement after the click cannot change where the pipe lands.
+    /// </summary>
+    public readonly AtmosPipeLayer Layer;
     public string? SpawnProto;
 
-    public RCDObjectSpawnAttemptEvent(RCDPrototype recipe, string? spawnProto)
+    public RCDObjectSpawnAttemptEvent(RCDPrototype recipe, string? spawnProto, AtmosPipeLayer layer)
     {
         Recipe = recipe;
         SpawnProto = spawnProto;
+        Layer = layer;
+    }
+}
+
+/// <summary>
+/// Raised on the tool at the start of a placement click, before validation, so a sibling system can stamp the
+/// per-placement state RCD does not own onto the do-after. The RPD sets <c>Layer</c> from its cursor-aimed layer;
+/// plain RCD has no handler and the default (Primary) is inert for non-layered recipes. Everything downstream
+/// (<see cref="RCDConstructionAttemptEvent"/>, <see cref="RCDObjectSpawnAttemptEvent"/>) reads this captured value,
+/// never the tool's live state.
+/// </summary>
+[ByRefEvent]
+public struct RCDPlacementCommitEvent
+{
+    public AtmosPipeLayer Layer;
+
+    public RCDPlacementCommitEvent()
+    {
+        Layer = AtmosPipeLayer.Primary;
     }
 }
 
@@ -111,6 +143,58 @@ public struct RCDObjectSpawnedEvent
     {
         Spawned = spawned;
         Recipe = recipe;
+    }
+}
+
+/// <summary>
+/// Raised in RCD Deconstruct mode when the direct click didn't land on an RPD-deconstructable target — typically
+/// the pipe is hidden under a floor tile (<c>SubFloorHideComponent</c>), so the click resolved to bare tile or a
+/// tile-sharing structure. A handler (<c>RPDSystem</c>) may set <c>Target</c> to an RPD-deconstructable entity
+/// anchored on the tile, choosing the one on the operator's aimed pipe layer. Left null = no override, the original
+/// click target stands. No handler (plain RCD) leaves <c>Target</c> untouched. <c>MapGridData</c> is the clicked
+/// tile, for searching its anchored set.
+/// </summary>
+[ByRefEvent]
+public struct RCDDeconstructTargetResolveEvent
+{
+    public readonly MapGridData MapGridData;
+    public EntityUid? Target;
+
+    public RCDDeconstructTargetResolveEvent(MapGridData mapGridData, EntityUid? target)
+    {
+        MapGridData = mapGridData;
+        Target = target;
+    }
+}
+
+/// <summary>
+/// Raised during <c>ConstructObject</c> validation so a sibling system can veto the placement with logic RCD
+/// does not own (e.g. RPD pipe-layer conflict). Setting <c>Cancelled = true</c> blocks the placement; the handler
+/// owns any user-facing popup. Plain RCD has no handler, so the placement proceeds untouched.
+/// </summary>
+[ByRefEvent]
+public struct RCDConstructionAttemptEvent
+{
+    public readonly MapGridData MapGridData;
+    public readonly RCDPrototype Recipe;
+    public readonly Direction Direction;
+    /// <summary>
+    /// The pipe layer this placement was committed on (see <see cref="RCDPlacementCommitEvent"/>).
+    /// </summary>
+    public readonly AtmosPipeLayer Layer;
+    public readonly EntityUid User;
+    public readonly bool ShowPopups;
+    public bool Cancelled;
+
+    public RCDConstructionAttemptEvent(MapGridData mapGridData, RCDPrototype recipe, Direction direction, AtmosPipeLayer layer, EntityUid user, bool showPopups)
+    {
+        MapGridData = mapGridData;
+        Recipe = recipe;
+        Direction = direction;
+        Layer = layer;
+        User = user;
+        ShowPopups = showPopups;
+        Cancelled = false;
     }
 }
 // End Triad

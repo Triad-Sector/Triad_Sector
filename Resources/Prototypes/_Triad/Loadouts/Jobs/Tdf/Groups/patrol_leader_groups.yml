@@ -1,0 +1,17 @@
+- type: loadoutGroup
+  id: TdfPatrolTeamLeaderJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitTdfPatrolTeamLeader
+  fallbacks:
+  - ClothingUniformJumpsuitTdfPatrolTeamLeader
+
+- type: loadoutGroup
+  id: TdfPatrolTeamLeaderPda
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TdfPatrolTeamLeaderPda
+  fallbacks:
+  - TdfPatrolTeamLeaderPda

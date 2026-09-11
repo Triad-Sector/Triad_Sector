@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "copyright": "Taken from tgstation, mercenary and pilot lockers are resprited armory locker by erhardsteinhauer (discord), janitor is by SungYandy, O2N2 locker by Tych0theSynth, FSB by dustylens(github)",
+  "license": "CC-BY-SA-3.0",
+  "states": [
+    {
+      "name": "tdf"
+    },
+    {
+      "name": "tdf_door"
+    },
+    {
+      "name": "tdf_open"
+    },
+    {
+      "name": "tdf_leader"
+    },
+    {
+      "name": "tdf_leader_door"
+    },
+    {
+      "name": "tdf_leader_open"
+    },
+    {
+      "name": "tdf_chief"
+    },
+    {
+      "name": "tdf_chief_door"
+    },
+    {
+      "name": "tdf_chief_open"
+    },
+    {
+      "name": "tdf_warden_door"
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "unlocked"
+    }
+  ]
+}

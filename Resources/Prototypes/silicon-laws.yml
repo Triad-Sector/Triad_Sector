@@ -518,4 +518,7 @@
     AntimovLawset: 0.25
     NutimovLawset: 0.5
     Drone: 0.5
+    SolarianDirective: 0.3 # Triad
+    TSFMCBorgLawset: 0.3 # Triad, TDF lawset
+    FreemanLawset: 0.1 # Triad
 #    Ninja: 0.25 # Frontier

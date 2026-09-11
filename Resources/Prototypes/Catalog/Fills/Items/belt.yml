@@ -128,8 +128,8 @@
     - id: HydroponicsToolMiniHoe
     - id: HydroponicsToolSpade
     - id: HydroponicsToolClippers
-    - id: RobustHarvestChemistryBottle
-    - id: EZNutrientChemistryBottle # Frontier
+    - id: ChemistryBottleRobustHarvest
+    - id: ChemistryBottleEZNutrient # Frontier
     - id: PlantAnalyzer # Mono
 
 - type: entity
@@ -170,11 +170,11 @@
   components:
   - type: StorageFill
     contents:
-      - id: EpinephrineChemistryBottle
+      - id: ChemistryBottleEpinephrine
         amount: 2
-      - id: EphedrineChemistryBottle
+      - id: ChemistryBottleEphedrine
         amount: 2
-      - id: OmnizineChemistryBottle
+      - id: ChemistryBottleOmnizine
       - id: MedkitCombatFilled
 
 - type: entity
@@ -208,3 +208,6 @@
     contents:
     - id: FoodShakerSalt
     - id: FoodShakerPepper
+    - id: RollingPin #Triad
+    - id: KitchenKnife #Triad
+    - id: ServiceSelectiveDropper #Triad

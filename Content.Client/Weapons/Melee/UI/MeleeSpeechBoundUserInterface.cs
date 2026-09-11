@@ -41,13 +41,4 @@ public sealed class MeleeSpeechBoundUserInterface : BoundUserInterface
 
         _window.SetCurrentBattlecry(cast.CurrentBattlecry);
     }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
-            return;
-
-        _window?.Dispose();
-    }
 }

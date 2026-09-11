@@ -1,0 +1,98 @@
+# TDF
+- type: entity
+  parent: BaseClass2AShipContrabandSilent
+  id: BaseTDFHeadset
+  abstract: true
+  components:
+  - type: Tag # Ignore Chameleon tags
+    tags: []
+
+- type: entity
+  parent: [ClothingHeadset, BaseTDFHeadset]
+  id: ClothingHeadsetTdf
+  name: TDF headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
+
+- type: entity
+  parent: [ClothingHeadsetAlt, BaseTDFHeadset]
+  id: ClothingHeadsetAltTdf
+  name: TDF over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/tdf.rsi
+  - type: Tag # Ignore Chameleon tags
+    tags: []
+
+- type: entity
+  parent: ClothingHeadsetTdf
+  id: ClothingHeadsetTdfCommand
+  name: TDF command headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdf
+      - EncryptionKeyCommand
+
+- type: entity
+  parent: ClothingHeadsetAltTdf
+  id: ClothingHeadsetAltTdfCommand
+  name: TDF command over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdf
+      - EncryptionKeyCommand
+
+- type: entity
+  parent: [ClothingHeadset, BaseTDFHeadset]
+  id: ClothingHeadsetHighCommand
+  name: TFA high command headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCentCom
+      - EncryptionKeyStationMaster
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+
+- type: entity
+  parent: [ClothingHeadsetAlt, BaseTDFHeadset]
+  id: ClothingHeadsetAltHighCommand
+  name: TFA high command over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCentCom
+      - EncryptionKeyStationMaster
+      - EncryptionKeyTdf
+  - type: Sprite
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi

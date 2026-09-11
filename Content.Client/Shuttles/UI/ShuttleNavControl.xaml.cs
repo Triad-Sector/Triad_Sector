@@ -30,10 +30,10 @@ namespace Content.Client.Shuttles.UI;
 [Virtual]
 public partial class ShuttleNavControl : BaseShuttleControl // Mono
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
     private readonly DetectionSystem _detection; // Mono
     private readonly StationSystem _station; // Frontier
+    private readonly SharedMapSystem _maps;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _transform;
     private readonly RadarBlipsSystem _blips;
@@ -127,6 +127,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
     {
         RobustXamlLoader.Load(this);
         _detection = EntManager.System<DetectionSystem>(); // Mono
+        _maps = EntManager.System<SharedMapSystem>();
         _shuttles = EntManager.System<SharedShuttleSystem>();
         _transform = EntManager.System<SharedTransformSystem>();
         _station = EntManager.System<StationSystem>(); // Frontier
@@ -648,7 +649,7 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         var viewAABB = viewBounds.CalcBoundingBox();
 
         _grids.Clear();
-        _mapManager.FindGridsIntersecting(xform.MapID, new Box2(mapPos.Position - MaxRadarRangeVector, mapPos.Position + MaxRadarRangeVector), ref _grids, approx: true, includeMap: false);
+        _maps.FindGridsIntersecting(xform.MapID, new Box2(mapPos.Position - MaxRadarRangeVector, mapPos.Position + MaxRadarRangeVector), ref _grids, approx: true, includeMap: false);
 
         // Mono edited: Frontier - collect blip location data outside foreach - more changes ahead
         _tempBlipDataList.Clear();
@@ -1189,17 +1190,17 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
         while (shields.MoveNext(out var uid, out var visuals, out var fixtures, out var xform))
         {
-            if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
+            if (xform.GridUid is not { } gridUid || !EntManager.TryGetComponent<TransformComponent>(gridUid, out var parentXform))
                 continue;
 
             if (xform.MapID != consoleXform.MapID)
                 continue;
 
             // Don't draw shields when in FTL
-            if (EntManager.HasComponent<FTLComponent>(parentXform.Owner))
+            if (EntManager.HasComponent<FTLComponent>(gridUid))
                 continue;
 
-            var detectionLevel = _consoleEntity == null ? DetectionLevel.Detected : GetGridDetected(parentXform.Owner);
+            var detectionLevel = _consoleEntity == null ? DetectionLevel.Detected : GetGridDetected(gridUid);
             if (detectionLevel != DetectionLevel.Detected)
                 continue;
 

@@ -6,5 +6,6 @@ namespace Content.Shared.Power;
 public enum TeslaCoilVisuals : byte
 {
     Enabled,
-    Lightning
+    Lightning,
+    Charged // Triad: coil battery too full to accept a full strike; shows the persistent arcing indicator
 }

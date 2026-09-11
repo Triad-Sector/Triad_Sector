@@ -29,6 +29,10 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.15
     sprintModifier: 1.15
+  - type: HeldSpeedModifier # Triad, fix hold speed boost
+    mirrorClothingModifier: false
+    walkModifier: 0.9
+    sprintModifier: 0.9
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
@@ -39,6 +43,8 @@
       helmetattachment: ClothingHeadHelmetAttachmentBlock
   - type: HandheldLight
     toggleOnInteract: false # Triad, fixes radar not being activatable with E
+  - type: SavingContraband # Triad, Property of CC
+    examineText: ship-saving-contraband-1-text
   - type: StaticPrice
     price: 1400
     vendPrice: 10000
@@ -74,7 +80,10 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.05
     sprintModifier: 1.05
-  - type: HeldSpeedModifier
+  - type: HeldSpeedModifier # Triad, fix held speed boost
+    mirrorClothingModifier: false
+    walkModifier: 0.9
+    sprintModifier: 0.9
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
@@ -85,6 +94,8 @@
       helmetattachment: ClothingHeadHelmetAttachmentBlock
   - type: HandheldLight
     toggleOnInteract: false # Triad, fixes radar not being activatable with E
+  - type: SavingContraband # Triad, Property of CC
+    examineText: ship-saving-contraband-1-text
   - type: StaticPrice
     price: 4200
     vendPrice: 25000

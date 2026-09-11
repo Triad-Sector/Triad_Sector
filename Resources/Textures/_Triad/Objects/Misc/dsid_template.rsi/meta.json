@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "SigmundDoppler",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "med_id_handle"
+    },
+    {
+      "name": "tfa_id_handle"
+    },
+    {
+      "name": "tdf_id_handle"
+    },
+    {
+      "name": "motherboard"
+    },
+    {
+      "name": "med_logo"
+    },
+    {
+      "name": "tfa_logo"
+    },
+    {
+      "name": "tdf_logo"
+    },
+    {
+      "name": "tier_0"
+    },
+    {
+      "name": "tier_1"
+    },
+    {
+      "name": "tier_2"
+    },
+    {
+      "name": "tier_3"
+    },
+    {
+      "name": "tier_4"
+    }
+  ]
+}

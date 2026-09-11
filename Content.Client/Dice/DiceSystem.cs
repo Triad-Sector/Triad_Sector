@@ -3,26 +3,23 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Dice;
 
-public sealed class DiceSystem : SharedDiceSystem
+public sealed partial class DiceSystem : SharedDiceSystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
+    [Dependency] private SpriteSystem _sprite = default!;
 
-        SubscribeLocalEvent<DiceComponent, AfterAutoHandleStateEvent>(OnDiceAfterHandleState);
-    }
-
+    [SubscribeLocalEvent]
     private void OnDiceAfterHandleState(Entity<DiceComponent> entity, ref AfterAutoHandleStateEvent args)
     {
         if (!TryComp<SpriteComponent>(entity, out var sprite))
             return;
 
         // TODO maybe just move each die to its own RSI?
-        var state = sprite.LayerGetState(0).Name;
+        // If this is ever done keep in mind coin flips also use this system
+        var state = _sprite.LayerGetRsiState((entity.Owner, sprite), 0).Name;
         if (state == null)
             return;
 
         var prefix = state.Substring(0, state.IndexOf('_'));
-        sprite.LayerSetState(0, $"{prefix}_{entity.Comp.CurrentValue}");
+        _sprite.LayerSetRsiState((entity.Owner, sprite), 0, $"{prefix}_{entity.Comp.CurrentValue}");
     }
 }

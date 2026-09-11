@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "The mage of Microsoft paint",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    { "name": "pillow_body_miku_front" },
+    { "name": "pillow_body_urist_front" },
+    { "name": "pillow_body_weh_front" },
+    { "name": "pillow_body_miku_back" },
+    { "name": "pillow_body_urist_back" },
+    { "name": "bluepillow-inhand-left", "directions": 4 },
+    { "name": "bluepillow-inhand-right", "directions": 4 },
+    { "name": "greenpillow-inhand-left", "directions": 4 },
+    { "name": "greenpillow-inhand-right", "directions": 4 },
+    { "name": "redpillow-inhand-left", "directions": 4 },
+    { "name": "redpillow-inhand-right", "directions": 4 },
+    { "name": "whitepillow-inhand-left", "directions": 4 },
+    { "name": "whitepillow-inhand-right", "directions": 4 }
+  ]
+}

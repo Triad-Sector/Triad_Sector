@@ -19,8 +19,8 @@ namespace Content.Client.Lathe.UI;
 [GenerateTypedNameReferences]
 public sealed partial class LatheMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private readonly SpriteSystem _spriteSystem;
     private readonly LatheSystem _lathe;
@@ -243,7 +243,7 @@ public sealed partial class LatheMenu : FancyWindow
     /// <param name="queue"></param>
     public void PopulateQueueList(List<LatheRecipeBatch> queue) // Frontier: LatheRecipePrototype<LatheRecipeBatch
     {
-        QueueList.DisposeAllChildren();
+        QueueList.RemoveAllChildren();
 
         var idx = 1;
         foreach (var batch in queue) // Frontier: recipe<batch

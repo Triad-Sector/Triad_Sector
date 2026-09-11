@@ -29,6 +29,10 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
         var version = ((ValueDataNode?) versionNode)?.AsInt() ?? 1;
         Dictionary<Vector2i, TileAtmosphere> tiles = new();
 
+        // Resolved off the passed-in collection rather than IoCManager: serializers are constructed
+        // during SerializationManager.Initialize, where IoC has no context on the worker thread.
+        var sawmill = dependencies.Resolve<ILogManager>().RootSawmill;
+
         // Backwards compatability
         if (version == 1)
         {
@@ -48,7 +52,7 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        Logger.Error(
+                        sawmill.Error(
                             $"Error during atmos serialization! Tile at {indices} points to an unique mix ({mix}) out of range!");
                     }
                 }
@@ -91,7 +95,7 @@ public sealed partial class TileAtmosCollectionSerializer : ITypeSerializer<Dict
                                 }
                                 catch (ArgumentOutOfRangeException)
                                 {
-                                    Logger.Error(
+                                    sawmill.Error(
                                         $"Error during atmos serialization! Tile at {indices} points to an unique mix ({mix}) out of range!");
                                 }
                             }

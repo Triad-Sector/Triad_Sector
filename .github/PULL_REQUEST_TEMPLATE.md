@@ -8,11 +8,11 @@
 
 ## Media
 <!-- Attach media if the PR makes ingame changes (clothing, items, features, etc). 
-Small fixes/refactors are exempt. Media may be used in SS14 progress reports with credit. -->
+Small fixes/refactors are exempt. Media may be used in progress reports with credit. -->
 
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets [X]: -->
-- [ ] I have read relevant guidelines/documentation to this PR found on [our devwiki](https://monolith-station.github.io/mono-docs/).
+- [ ] I have read [Attributing Your Changes](https://github.com/Triad-Sector/Triad_Sector/wiki/Attributing-Your-Changes) and the documentation relevant to this PR.
 - [ ] I have added media to this PR or it does not require an ingame showcase.
 - [ ] I can confirm this PR contains either no AI-generated content, or AI-generated content that meets our guidelines.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->

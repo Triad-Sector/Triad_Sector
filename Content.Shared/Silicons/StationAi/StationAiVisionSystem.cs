@@ -6,7 +6,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Silicons.StationAi;
 
-public sealed class StationAiVisionSystem : EntitySystem
+public sealed partial class StationAiVisionSystem : EntitySystem
 {
     /*
      * This class handles 2 things:
@@ -14,10 +14,10 @@ public sealed class StationAiVisionSystem : EntitySystem
      * 2. It does single-tile lookups to tell if they're visible or not with support for a faster range-only path.
      */
 
-    [Dependency] private readonly IParallelManager _parallel = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedMapSystem _maps = default!;
-    [Dependency] private readonly SharedTransformSystem _xforms = default!;
+    [Dependency] private IParallelManager _parallel = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedMapSystem _maps = default!;
+    [Dependency] private SharedTransformSystem _xforms = default!;
 
     private SeedJob _seedJob;
     private ViewJob _job;
@@ -92,7 +92,7 @@ public sealed class StationAiVisionSystem : EntitySystem
         // Skip occluders step if we're just doing range checks.
         if (!fastPath)
         {
-            var tileEnumerator = _maps.GetLocalTilesEnumerator(grid, grid, expandedBounds, ignoreEmpty: false);
+            var tileEnumerator = _maps.GetLocalTilesIntersecting(grid, grid, expandedBounds, ignoreEmpty: false);
 
             // Get all other relevant tiles.
             while (tileEnumerator.MoveNext(out var tileRef))
@@ -171,7 +171,7 @@ public sealed class StationAiVisionSystem : EntitySystem
             return;
 
         // Get viewport tiles
-        var tileEnumerator = _maps.GetLocalTilesEnumerator(grid, grid, localAabb, ignoreEmpty: false);
+        var tileEnumerator = _maps.GetLocalTilesIntersecting(grid, grid, localAabb, ignoreEmpty: false);
 
         while (tileEnumerator.MoveNext(out var tileRef))
         {
@@ -183,7 +183,7 @@ public sealed class StationAiVisionSystem : EntitySystem
             _viewportTiles.Add(tileRef.GridIndices);
         }
 
-        tileEnumerator = _maps.GetLocalTilesEnumerator(grid, grid, enlargedLocalAabb, ignoreEmpty: false);
+        tileEnumerator = _maps.GetLocalTilesIntersecting(grid, grid, enlargedLocalAabb, ignoreEmpty: false);
 
         while (tileEnumerator.MoveNext(out var tileRef))
         {

@@ -31,7 +31,7 @@
   unit: materials-unit-piece
   icon: { sprite: Objects/Materials/ore.rsi, state: diamond }
   color: "#C9D8F2"
-  price: 0.5
+  price: 13 # Triad: was 0.5; one ore piece cuts into a 2000-credit sheet, so near-zero ore made the lathe a money printer
 
 - type: material
   id: RawSilver

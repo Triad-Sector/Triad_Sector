@@ -10,12 +10,12 @@ namespace Content.Server._Mono.Cleanup;
 /// <summary>
 ///     System with helper methods for entity cleanup.
 /// </summary>
-public sealed class CleanupHelperSystem : EntitySystem
+public sealed partial class CleanupHelperSystem : EntitySystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedMapSystem _mapMan = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private List<Entity<MapGridComponent>> _gridsFound = new();
 
@@ -35,6 +35,11 @@ public sealed class CleanupHelperSystem : EntitySystem
     /// </summary>
     public bool HasNearbyPlayers(EntityCoordinates coord, float radius)
     {
+        // Triad: v277 lookup asserts on non-positive range; callers scale radius by
+        // sqrt(price/maxPrice), which is 0 for worthless debris. Nothing is within 0m.
+        if (radius <= 0f)
+            return false;
+
         var minds = _lookup.GetEntitiesInRange<MindContainerComponent>(coord, radius);
 
         foreach (var (uid, comp) in minds)

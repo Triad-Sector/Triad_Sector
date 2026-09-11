@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Triad: new icon for the TriTalk rebrand. Previously an edited nanochat icon by kushbreth (discord), taken from https://github.com/DeltaV-Station/Delta-v.",
+    "size": {
+        "x": 48,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "nanochat"
+        }
+    ]
+}

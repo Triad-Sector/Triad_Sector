@@ -3,7 +3,7 @@
   id: Protogen
   coefficients:
     Heat: 1.3
-    Cold: 1.15
+    Cold: 1.3
     Radiation: 1.55
     Shock: 1.5
     Blunt: 0.8

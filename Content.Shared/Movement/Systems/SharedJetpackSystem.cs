@@ -11,19 +11,23 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
 using Content.Shared.Clothing; // Mono
+using Content.Shared.Clothing.Components; // Triad
+using Content.Shared.Clothing.EntitySystems; // Triad
+using Content.Shared.Inventory; // Triad
 
 namespace Content.Shared.Movement.Systems;
 
-public abstract class SharedJetpackSystem : EntitySystem
+public abstract partial class SharedJetpackSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] protected readonly SharedContainerSystem Container = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!; // EE
-    [Dependency] private readonly SharedGravitySystem _gravity = default!; // Mono
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] protected SharedAppearanceSystem Appearance = default!;
+    [Dependency] protected SharedContainerSystem Container = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private IConfigurationManager _config = default!; // EE
+    [Dependency] private ClothingSystem _clothing = default!; // Triad
+    [Dependency] private SharedGravitySystem _gravity = default!; // Mono
 
     public override void Initialize()
     {
@@ -227,6 +231,10 @@ public abstract class SharedJetpackSystem : EntitySystem
             RemComp<ActiveJetpackComponent>(uid);
         }
 
+        // Triad - Clothing Prefix fix
+        if (TryComp<ClothingComponent>(uid, out var clothing))
+            _clothing.SetEquippedPrefix(uid, enabled ? component.OnClothingPrefix : null, clothing);
+        // Triad End
 
         Appearance.SetData(uid, JetpackVisuals.Enabled, enabled);
         Dirty(uid, component);

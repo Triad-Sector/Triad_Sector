@@ -1,0 +1,55 @@
+<PanelContainer xmlns="https://spacestation14.io"
+                StyleClasses="TraitsEntryPanel"
+                HorizontalExpand="True"
+                Margin="0 0 0 4">
+
+    <!-- Triad: the panel paints the state stylebox (red/green/grey); a transparent full-bleed button on top
+         catches the whole-row click. Keeping paint and hit-test on separate controls avoids the Button draw-mode
+         overriding the custom stylebox (which washed disabled entries to black). -->
+    <Button Name="ClickArea"
+            StyleClasses="TraitsEntryClickArea"
+            HorizontalExpand="True"/>
+
+    <!-- Triad: top-level layout is horizontal so the lock (left) and cost (right) center against the full card
+         height (name + description), not just the title row. The middle column holds name over description. -->
+    <BoxContainer Orientation="Horizontal"
+                  HorizontalExpand="True"
+                  Margin="10 8">
+
+        <!-- State indicator: lock icon for rule-blocked entries (species/job/mutex), vertically centered. -->
+        <BoxContainer Name="ToggleContainer"
+                      Orientation="Horizontal"
+                      VerticalAlignment="Center"
+                      Margin="0 0 10 0"
+                      SetWidth="24">
+
+            <TextureRect Name="LockIcon"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         SetSize="20 20"
+                         Stretch="KeepAspectCentered"
+                         TexturePath="/Textures/Interface/VerbIcons/lock.svg.192dpi.png"
+                         Visible="False"/>
+        </BoxContainer>
+
+        <!-- Name over description column. -->
+        <BoxContainer Orientation="Vertical"
+                      HorizontalExpand="True">
+            <Label Name="TraitNameLabel"
+                   StyleClasses="TraitsEntryNameLabel"/>
+            <!-- Description wraps to the column. Triad: was nested in a horizontally-expanding child, which Robust
+                 never measures with a finite width (see BoxContainer.MeasureItems), so the RichTextLabel clipped
+                 instead of wrapping. -->
+            <RichTextLabel Name="TraitDescriptionLabel"
+                           StyleClasses="TraitsEntryDescriptionLabel"
+                           HorizontalExpand="True"
+                           Margin="0 4 0 0"/>
+        </BoxContainer>
+
+        <!-- Point cost, vertically centered against the full card. Hidden in categories with no point budget. -->
+        <Label Name="TraitCostLabel"
+               StyleClasses="TraitsEntryCostLabel"
+               VerticalAlignment="Center"
+               Margin="10 0 0 0"/>
+    </BoxContainer>
+</PanelContainer>

@@ -221,10 +221,12 @@
         conditions:
         - !type:OrganType
           type: Plant
-      - !type:Oxygenate # Mono - Hydrakin
-        conditions:
-        - !type:OrganType
-          type: Hydrakin
+      # Triad: hydrakin do not breathe CO2 per guidebook ("all gases except CO2/water vapor")
+      # - !type:Oxygenate # Mono - Hydrakin
+      #   conditions:
+      #   - !type:OrganType
+      #     type: Hydrakin
+      # End Triad
       - !type:HealthChange
         conditions:
         - !type:OrganType

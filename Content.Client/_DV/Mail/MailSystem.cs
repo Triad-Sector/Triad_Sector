@@ -23,11 +23,11 @@ namespace Content.Client._DV.Mail;
 ///     SecurityOfficer:
 ///     state: SecurityOfficer
 /// </remarks>
-public sealed class MailJobVisualizerSystem : VisualizerSystem<MailComponent>
+public sealed partial class MailJobVisualizerSystem : VisualizerSystem<MailComponent>
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SpriteSystem _spriteSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SpriteSystem _spriteSystem = default!;
 
     protected override void OnAppearanceChange(EntityUid uid, MailComponent component, ref AppearanceChangeEvent args)
     {
@@ -41,11 +41,11 @@ public sealed class MailJobVisualizerSystem : VisualizerSystem<MailComponent>
 
         if (!_prototypeManager.TryIndex<JobIconPrototype>(job, out var icon))
         {
-            args.Sprite.LayerSetTexture(MailVisualLayers.JobStamp, _spriteSystem.Frame0(_prototypeManager.Index("JobIconUnknown")));
+            SpriteSystem.LayerSetTexture((uid, args.Sprite), MailVisualLayers.JobStamp, _spriteSystem.Frame0(_prototypeManager.Index("JobIconUnknown")));
             return;
         }
 
-        args.Sprite.LayerSetTexture(MailVisualLayers.JobStamp, _spriteSystem.Frame0(icon.Icon));
+        SpriteSystem.LayerSetTexture((uid, args.Sprite), MailVisualLayers.JobStamp, _spriteSystem.Frame0(icon.Icon));
     }
 }
 

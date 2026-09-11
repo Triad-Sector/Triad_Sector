@@ -16,11 +16,11 @@ namespace Content.Server.Database;
 /// Actual loading code is handled by separate managers such as <see cref="IServerPreferencesManager"/>.
 /// This manager is simply a centralized "is loading done" controller for other code to rely on.
 /// </remarks>
-public sealed class UserDbDataManager : IPostInjectInit
+public sealed partial class UserDbDataManager : IPostInjectInit
 {
-    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IServerConsentManager _consent = default!; // Floofstation
+    [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IServerConsentManager _consent = default!; // Floofstation
 
     private readonly Dictionary<NetUserId, UserData> _users = new();
     private readonly List<OnLoadPlayer> _onLoadPlayer = [];

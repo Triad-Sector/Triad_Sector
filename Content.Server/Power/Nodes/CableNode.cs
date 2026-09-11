@@ -18,14 +18,16 @@ namespace Content.Server.Power.Nodes
             if (!xform.Anchored || grid == null)
                 yield break;
 
-            var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+            var mapSystem = entMan.System<SharedMapSystem>();
+            var gridEnt = new Entity<MapGridComponent>(xform.GridUid!.Value, grid);
+            var gridIndex = mapSystem.TileIndicesFor(gridEnt, xform.Coordinates);
 
             // While we go over adjacent nodes, we build a list of blocked directions due to
             // incoming or outgoing wire terminals.
             var terminalDirs = 0;
             List<(Direction, Node)> nodeDirs = new();
 
-            foreach (var (dir, node) in NodeHelpers.GetCardinalNeighborNodes(nodeQuery, grid, gridIndex))
+            foreach (var (dir, node) in NodeHelpers.GetCardinalNeighborNodes(nodeQuery, gridEnt, gridIndex, mapSystem))
             {
                 if (node is CableNode && node != this)
                 {

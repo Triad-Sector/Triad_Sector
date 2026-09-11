@@ -193,7 +193,7 @@
   parent: PosterBase
   id: PosterContrabandPower
   name: "Power"
-  description: "A poster that positions the seat of power inside the Trans-Solar Federation's central government. Pfft! As if!"
+  description: "A poster that positions the seat of power inside the Federated Solarian Republic's central government. Pfft! As if!"
   components:
   - type: Sprite
     state: poster16_contraband

@@ -1,0 +1,19 @@
+- type: entity
+  id: LockerTdfChiefEnforcerFilled
+  suffix: Filled, Chief Enforcer
+  parent: LockerTdfChiefEnforcer
+  components:
+  - type: StorageFill
+    contents:
+      - id: TdfChiefIDCard
+      - id: BoxHandcuff
+      - id: CommsComputerCircuitboard
+      - id: MedalCaseNfsd
+      - id: Demag
+      - id: RubberStampChiefEnforcer
+      - id: WeaponRevolverMateba
+      - id: SpeedLoader45_magnumFMJ
+      - id: RadioHandheldNF
+      - id: NfsdTechFabFlatpack
+      - id: PhoneInstrumentHigh # Mono
+      - id: DoorRemoteTdf

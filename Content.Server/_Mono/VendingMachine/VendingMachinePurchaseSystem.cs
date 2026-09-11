@@ -11,8 +11,6 @@ namespace Content.Server._Mono.VendingMachine;
 /// </summary>
 public sealed class VendingMachinePurchaseSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -38,8 +36,7 @@ public sealed class VendingMachinePurchaseSystem : EntitySystem
         var purchaseComponent = AddComp<VendingMachinePurchaseComponent>(purchasedEntity);
         purchaseComponent.PurchaseGrid = vendingTransform.GridUid.Value;
         purchaseComponent.OriginalPurchasePrice = purchasePrice;
-
-        Dirty(purchasedEntity, purchaseComponent);
+        // Triad: component is server-only and no longer networked, so no Dirty() call.
     }
 
 

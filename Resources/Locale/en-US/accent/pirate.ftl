@@ -1,100 +1,143 @@
-accent-pirate-prefix-1 = Arrgh
-accent-pirate-prefix-2 = Garr
-accent-pirate-prefix-3 = Yarr
-accent-pirate-prefix-4 = Yarrgh
+# Triad: enriched Pirate accent vocab (display name "Freeport Corsair"). Buccaneer swaps + salty
+# interjection/affirmation tics. Upstream-named for portability.
 
-accent-pirate-replaced-1 = my
-accent-pirate-replacement-1 = me
+# Tics -- prefixes are the "Arrr" interjections (no greetings); suffixes are salty affirmation/address.
+accent-pirate-prefix-1 = Arrr,
+accent-pirate-prefix-2 = Avast,
+accent-pirate-prefix-3 = Yo ho,
+accent-pirate-prefix-4 = Shiver me timbers,
 
-accent-pirate-replaced-2 = you
-accent-pirate-replacement-2 = ya
+accent-pirate-suffix-1 = , savvy?
+accent-pirate-suffix-2 = , ye scurvy dog.
+accent-pirate-suffix-3 = , arr.
+accent-pirate-suffix-4 = , by the black flag.
+accent-pirate-suffix-5 = , aye.
 
-accent-pirate-replaced-3 = hello
-accent-pirate-replacement-3 = ahoy
+# Vocabulary
+accent-pirate-words-1 = my
+accent-pirate-words-replace-1 = me
 
-accent-pirate-replaced-4 = yes
-accent-pirate-replacement-4 = aye
+accent-pirate-words-2 = you
+accent-pirate-words-replace-2 = ye
 
-accent-pirate-replaced-5 = is
-accent-pirate-replacement-5 = be
+accent-pirate-words-3 = your
+accent-pirate-words-replace-3 = yer
 
-accent-pirate-replaced-6 = there
-accent-pirate-replacement-6 = thar
+accent-pirate-words-4 = yes
+accent-pirate-words-replace-4 = aye
 
-accent-pirate-replaced-7 = friend
-accent-pirate-replacement-7 = heartie
+accent-pirate-words-5 = no
+accent-pirate-words-replace-5 = nay
 
-accent-pirate-replaced-8 = dude
-accent-pirate-replacement-8 = matey
+accent-pirate-words-6 = is
+accent-pirate-words-replace-6 = be
 
-accent-pirate-replaced-9 = buddy
-accent-pirate-replacement-9 = heartie
+accent-pirate-words-7 = are
+accent-pirate-words-replace-7 = be
 
-accent-pirate-replaced-10 = hi
-accent-pirate-replacement-10 = ahoy
+accent-pirate-words-8 = there
+accent-pirate-words-replace-8 = thar
 
-accent-pirate-replaced-11 = hey
-accent-pirate-replacement-11 = oye
+accent-pirate-words-9 = here
+accent-pirate-words-replace-9 = 'ere
 
-accent-pirate-replaced-12 = money
-accent-pirate-replacement-12 = dubloons
+accent-pirate-words-10 = hello
+accent-pirate-words-10-2 = hi
+accent-pirate-words-replace-10 = ahoy
 
-accent-pirate-replaced-13 = cash
-accent-pirate-replacement-13 = doubloons
+accent-pirate-words-11 = hey
+accent-pirate-words-replace-11 = oi
 
-accent-pirate-replaced-14 = crate
-accent-pirate-replacement-14 = coffer
+accent-pirate-words-12 = friend
+accent-pirate-words-12-2 = buddy
+accent-pirate-words-12-3 = pal
+accent-pirate-words-replace-12 = matey
 
-accent-pirate-replaced-15 = hello
-accent-pirate-replacement-15 = ahoy
+accent-pirate-words-13 = friends
+accent-pirate-words-replace-13 = hearties
 
-accent-pirate-replaced-16 = treasure
-accent-pirate-replacement-16 = booty
+accent-pirate-words-14 = money
+accent-pirate-words-14-2 = cash
+accent-pirate-words-replace-14 = doubloons
 
-accent-pirate-replaced-17 = attention
-accent-pirate-replacement-17 = avast
+accent-pirate-words-15 = treasure
+accent-pirate-words-replace-15 = booty
 
-accent-pirate-replaced-18 = stupid
-accent-pirate-replacement-18 = parrot-brained
+accent-pirate-words-16 = captain
+accent-pirate-words-replace-16 = cap'n
 
-accent-pirate-replaced-19 = idiot
-accent-pirate-replacement-19 = seadog
+accent-pirate-words-17 = sir
+accent-pirate-words-replace-17 = cap'n
 
-accent-pirate-replaced-20 = your
-accent-pirate-replacement-20 = yere
+accent-pirate-words-18 = ship
+accent-pirate-words-replace-18 = vessel
 
-accent-pirate-replaced-21 = song
-accent-pirate-replacement-21 = shanty
+accent-pirate-words-19 = crew
+accent-pirate-words-replace-19 = crew o' scallywags
 
-accent-pirate-replaced-22 = music
-accent-pirate-replacement-22 = shanty
+accent-pirate-words-20 = gun
+accent-pirate-words-20-2 = pistol
+accent-pirate-words-replace-20 = flintlock
 
-accent-pirate-replaced-23 = no
-accent-pirate-replacement-23 = nay
+accent-pirate-words-21 = rifle
+accent-pirate-words-replace-21 = musket
 
-accent-pirate-replaced-24 = are
-accent-pirate-replacement-24 = arrr
+accent-pirate-words-22 = sword
+accent-pirate-words-replace-22 = cutlass
 
-accent-pirate-replaced-25 = ow
-accent-pirate-replacement-25 = argh
+accent-pirate-words-23 = ammo
+accent-pirate-words-replace-23 = powder
 
-accent-pirate-replaced-26 = ouch
-accent-pirate-replacement-26 = argh
+accent-pirate-words-24 = drink
+accent-pirate-words-24-2 = beer
+accent-pirate-words-replace-24 = grog
 
-accent-pirate-replaced-27 = passenger
-accent-pirate-replacement-27 = landlubber
+accent-pirate-words-25 = food
+accent-pirate-words-replace-25 = grub
 
-accent-pirate-replaced-28 = tider
-accent-pirate-replacement-28 = landlubber
+accent-pirate-words-26 = water
+accent-pirate-words-replace-26 = bilgewater
 
-accent-pirate-replaced-29 = captain
-accent-pirate-replacement-29 = cap'n
+accent-pirate-words-27 = stupid
+accent-pirate-words-replace-27 = barnacle-brained
 
-accent-pirate-replaced-30 = pistol
-accent-pirate-replacement-30 = flintlock
+accent-pirate-words-28 = idiot
+accent-pirate-words-28-2 = fool
+accent-pirate-words-replace-28 = bilge rat
 
-accent-pirate-replaced-31 = rifle
-accent-pirate-replacement-31 = musket
+accent-pirate-words-29 = coward
+accent-pirate-words-replace-29 = yellow-bellied landlubber
 
-accent-pirate-replaced-32 = ammo
-accent-pirate-replacement-32 = gunpowder
+accent-pirate-words-30 = passenger
+accent-pirate-words-30-2 = civilian
+accent-pirate-words-replace-30 = landlubber
+
+accent-pirate-words-31 = song
+accent-pirate-words-31-2 = music
+accent-pirate-words-replace-31 = shanty
+
+accent-pirate-words-32 = attention
+accent-pirate-words-replace-32 = avast
+
+accent-pirate-words-33 = stop
+accent-pirate-words-replace-33 = belay that
+
+accent-pirate-words-34 = ow
+accent-pirate-words-34-2 = ouch
+accent-pirate-words-replace-34 = arrgh
+
+accent-pirate-words-35 = dead
+accent-pirate-words-replace-35 = in Davy Jones' locker
+
+accent-pirate-words-36 = kill
+accent-pirate-words-replace-36 = send to the depths
+
+accent-pirate-words-37 = run
+accent-pirate-words-replace-37 = make sail
+
+accent-pirate-words-38 = woman
+accent-pirate-words-replace-38 = lass
+
+accent-pirate-words-39 = man
+accent-pirate-words-39-2 = guy
+accent-pirate-words-replace-39 = swab

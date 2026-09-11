@@ -26,14 +26,14 @@ namespace Content.Server.Cargo.Systems;
 /// <summary>
 /// This handles calculating the price of items, and implements two basic methods of pricing materials.
 /// </summary>
-public sealed class PricingSystem : EntitySystem
+public sealed partial class PricingSystem : EntitySystem
 {
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly BodySystem _bodySystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
+    [Dependency] private IConsoleHost _consoleHost = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private BodySystem _bodySystem = default!;
+    [Dependency] private MobStateSystem _mobStateSystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -245,6 +245,8 @@ public sealed class PricingSystem : EntitySystem
     /// <remarks>
     /// This fires off an event to calculate the price.
     /// Calculating the price of an entity that somehow contains itself will likely hang.
+    ///
+    /// Returns 0 if it would otherwise have returned NaN
     /// </remarks>
     public double GetPrice(EntityUid uid, bool includeContents = true)
     {
@@ -253,21 +255,23 @@ public sealed class PricingSystem : EntitySystem
         RaiseLocalEvent(uid, ref ev);
 
         if (ev.Handled)
-            return ev.Price;
+        {
+            return FiniteOr(ev.Price, 0);
+        }
 
-        var price = ev.Price;
+        var price = FiniteOr(ev.Price, 0);
         //TODO: Add an OpaqueToAppraisal component or similar for blocking the recursive descent into containers, or preventing material pricing.
         // DO NOT FORGET TO UPDATE ESTIMATED PRICING
-        price += GetMaterialsPrice(uid);
-        price += GetSolutionsPrice(uid);
+        price += FiniteOr(GetMaterialsPrice(uid), 0);
+        price += FiniteOr(GetSolutionsPrice(uid), 0);
 
         // Can't use static price with stackprice
         var oldPrice = price;
-        price += GetStackPrice(uid);
+        price += FiniteOr(GetStackPrice(uid), 0);
 
         if (oldPrice.Equals(price))
         {
-            price += GetStaticPrice(uid);
+            price += FiniteOr(GetStaticPrice(uid), 0);
         }
 
         if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
@@ -281,7 +285,20 @@ public sealed class PricingSystem : EntitySystem
             }
         }
 
-        return price;
+        return FiniteOr(price, 0);
+
+        double FiniteOr(double d, double fallback)
+        {
+            if (double.IsFinite(d))
+            {
+                return d;
+            }
+            else
+            {
+                Log.Error($"Appraised value of {ToPrettyString(uid)} was not finite, set fallback to zero");
+                return fallback;
+            }
+        }
     }
 
     /// <summary>
@@ -294,11 +311,43 @@ public sealed class PricingSystem : EntitySystem
     /// <returns>The price with vending machine discount applied if applicable</returns>
     public double GetPriceWithVendingDiscount(EntityUid uid, EntityUid currentGrid, bool includeContents = true)
     {
+        // Triad: body extracted to GetOwnPriceWithVendingDiscount so the collecting variant below
+        // computes identical numbers by construction rather than by two copies staying in step.
+        var price = GetOwnPriceWithVendingDiscount(uid, currentGrid, out var handled);
+
+        if (handled)
+            return price;
+
+        if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
+        {
+            foreach (var container in containers.Containers.Values)
+            {
+                foreach (var ent in container.ContainedEntities)
+                {
+                    price += GetPriceWithVendingDiscount(ent, currentGrid);
+                }
+            }
+        }
+
+        return price;
+    }
+
+    // Triad: begin, per-entity price collection for market data.
+    /// <summary>
+    /// One entity's own contribution to an appraisal, excluding anything it contains.
+    /// </summary>
+    /// <param name="handled">
+    /// Mirrors <see cref="PriceCalculationEvent.Handled"/>. When true a subscriber replaced the
+    /// price outright and the caller must not add contents on top, the same as the plain path.
+    /// </param>
+    private double GetOwnPriceWithVendingDiscount(EntityUid uid, EntityUid currentGrid, out bool handled)
+    {
         var ev = new PriceCalculationEvent();
         ev.Price = 0;
         RaiseLocalEvent(uid, ref ev);
 
-        if (ev.Handled)
+        handled = ev.Handled;
+        if (handled)
             return ev.Price;
 
         var price = ev.Price;
@@ -315,19 +364,50 @@ public sealed class PricingSystem : EntitySystem
             price += GetStaticPriceWithVendingDiscount(uid, currentGrid);
         }
 
-        if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
+        return price;
+    }
+
+    /// <summary>
+    /// Appraises an entity exactly as <see cref="GetPriceWithVendingDiscount"/> does, and records
+    /// what each entity contributed on its own as it goes.
+    ///
+    /// <para>This exists because the plain path folds a container's contents into one number, so a
+    /// crate of forty steel sheets appraises as "one crate, 1200" and a pricing model learns what a
+    /// crate is worth rather than what steel is worth. Collecting during the traversal that already
+    /// happens is free; re-walking the contents afterwards would raise
+    /// <see cref="PriceCalculationEvent"/> a second time per item.</para>
+    ///
+    /// <para>Nodes are appended in traversal order and reference their parent by index, so the list
+    /// is a tree the caller can persist without resolving any identifiers. The return value equals
+    /// what the plain method returns for the same entity.</para>
+    /// </summary>
+    public double GetPriceWithVendingDiscountCollecting(EntityUid uid, EntityUid currentGrid,
+        List<PricedNode> into, int? parentIndex = null)
+    {
+        var own = GetOwnPriceWithVendingDiscount(uid, currentGrid, out var handled);
+
+        var index = into.Count;
+        into.Add(new PricedNode(uid, own, parentIndex));
+
+        if (handled)
+            return own;
+
+        var total = own;
+
+        if (TryComp<ContainerManagerComponent>(uid, out var containers))
         {
             foreach (var container in containers.Containers.Values)
             {
                 foreach (var ent in container.ContainedEntities)
                 {
-                    price += GetPriceWithVendingDiscount(ent, currentGrid);
+                    total += GetPriceWithVendingDiscountCollecting(ent, currentGrid, into, index);
                 }
             }
         }
 
-        return price;
+        return total;
     }
+    // Triad: end
 
     // Begin Frontier - GetPrice variant that uses predicate
     /// <summary>
@@ -379,7 +459,7 @@ public sealed class PricingSystem : EntitySystem
     {
         double price = 0;
 
-        if (prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()) &&
+        if (prototype.HasComp<MaterialComponent>(Factory) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<PhysicalCompositionComponent>(), out var composition))
         {
             var compositionComp = (PhysicalCompositionComponent) composition.Component;
@@ -441,7 +521,7 @@ public sealed class PricingSystem : EntitySystem
 
         if (prototype.Components.TryGetValue(Factory.GetComponentName<StackPriceComponent>(), out var stackpriceProto) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<StackComponent>(), out var stackProto) &&
-            !prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()))
+            !prototype.HasComp<MaterialComponent>(Factory))
         {
             var stackPrice = (StackPriceComponent) stackpriceProto.Component;
             var stack = (StackComponent) stackProto.Component;
@@ -581,3 +661,16 @@ public record struct EstimatedPriceCalculationEvent()
     /// </summary>
     public bool Handled = false;
 }
+
+// Triad: begin, per-entity price collection for market data.
+/// <summary>
+/// One entity's own contribution to an appraisal, and where it sits in the container tree.
+/// </summary>
+/// <param name="Uid">The entity that was priced.</param>
+/// <param name="OwnPrice">Its price excluding anything it contains.</param>
+/// <param name="ParentIndex">
+/// Index of the containing node in the same list, or null if this sat at the top level. An index
+/// rather than a reference so the tree survives being persisted without resolving identifiers.
+/// </param>
+public readonly record struct PricedNode(EntityUid Uid, double OwnPrice, int? ParentIndex);
+// Triad: end

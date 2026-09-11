@@ -45,6 +45,12 @@
   # Damage (Self)
   - type: Bloodstream
     bloodReagent: CopperBlood
+  # Triad: match guidebook "suffocate 50% faster"
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 1.5
+  # End Triad
   # Damage (Others)
   - type: MeleeWeapon
     animation: WeaponArcBite
@@ -81,6 +87,7 @@
     - Chittin # Until they have a species-specific
   - type: Sprite # I'd prefer if these maps were better. Insert map pun here.
     layers:
+      - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
       - map: [ "enum.HumanoidVisualLayers.Chest" ]
       - map: [ "enum.HumanoidVisualLayers.Head" ]
       - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -98,16 +105,17 @@
       - map: ["enum.HumanoidVisualLayers.RHand"]
       - map: [ "gloves" ]
       - map: [ "shoes" ]
-      - map: [ "ears" ]
       - map: [ "id" ] # Mono - move from between belt and back
       - map: [ "outerClothing" ] # mono - i hate you upstream
-      - map: [ "eyes" ]
       - map: [ "belt" ]
+      - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # DEN
       - map: [ "enum.HumanoidVisualLayers.Tail" ] # Mentioned in moth code: This needs renaming lol.
       - map: [ "back" ]
       - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
       - map: [ "enum.HumanoidVisualLayers.Hair" ] # Do these need to be here? (arachnid hair arachnid hair)
       - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "ears" ]
+      - map: [ "eyes" ]
       - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
       - map: [ "balaclava" ]
       - map: [ "mask" ]
@@ -128,6 +136,7 @@
         visible: false
   - type: Inventory
     templateId: arachnid
+    speciesId: arachnid
   - type: Carriable # Frontier: Carrying system from nyanotrasen.
 
 
@@ -138,5 +147,7 @@
   components:
   - type: HumanoidAppearance
     species: Arachnid
+  - type: Inventory
+    speciesId: arachnid
 
 #>88w88<

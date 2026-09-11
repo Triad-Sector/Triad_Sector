@@ -1,0 +1,62 @@
+# These signal timers are to be used for making a timer related event on click or any when mapping
+# Example when making a station bombing sequence or a timer for puzzles/parkour timing n etc, go wild
+- type: entity
+  id: AlwaysPoweredSignalTimer
+  name: signal timer
+  suffix: Always powered
+  description: It's a timer for sending timed signals to things. though you probably shouldnt see this
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: StationAiWhitelist
+  - type: Transform
+    anchored: true
+  - type: WallMount
+    arc: 360
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: Structures/Wallmounts/switch.rsi
+    state: on
+  - type: Appearance
+  - type: Rotatable
+  - type: SignalTimer
+    canEditLabel: false
+  - type: DeviceLinkSource
+    ports:
+      - Start
+      - Timer
+  - type: DeviceLinkSink
+    ports:
+      - Trigger
+  - type: ActivatableUI
+    key: enum.SignalTimerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SignalTimerUiKey.Key:
+        type: SignalTimerBoundUserInterface
+
+# These screen timers though, are good for making countdowns on bombing timer, blow some stuff up
+- type: entity
+  id: AlwaysPoweredScreenTimer
+  parent: AlwaysPoweredSignalTimer
+  name: screen timer
+  suffix: Always powered
+  description: if you see the timer counting down, you probably should run
+  components:
+  - type: SignalTimer
+    canEditLabel: true
+  - type: TextScreenVisuals
+    color: FloralWhite
+    textOffset: 0,6
+    timerOffset: 0,6
+    textLength: 5
+    rows: 1
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Structures/Wallmounts/signalscreen.rsi
+    state: signalscreen
+    noRot: true

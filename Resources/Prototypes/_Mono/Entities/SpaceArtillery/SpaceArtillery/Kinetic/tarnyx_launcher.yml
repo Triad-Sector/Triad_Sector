@@ -3,7 +3,7 @@
 - type: entity
   id: WeaponTurretTarnyx
   name: ADBX-31 TARNYX 150mm EMP Cannon
-  parent: BallisticArtilleryUnanchorable
+  parent: [BallisticArtilleryUnanchorable, BaseShipContrabandPermittableTdf] # Triad - contra permit
   suffix: Station, Recharging Ammo, EMP
   description: A heavy EMP cannon made by Aetherion Dynamics, designed to disable large sections of enemy ships with a single, powerful shot. Effective in asymmetric combat. Can be remotely activated or linked up to a GCS.
   components:
@@ -59,7 +59,7 @@
 - type: entity
   id: WeaponTurretTarnyxReload
   name: ADBX-31 TARNYX 150mm EMP Cannon
-  parent: BallisticArtilleryUnanchorableCartridge
+  parent: [BallisticArtilleryUnanchorableCartridge, BaseShipContrabandPermittableTdf]
   suffix: Ship, Infinite Standard EMP Ammo
   description: A heavy EMP cannon made by Aetherion Dynamics, designed to disable large sections of enemy ships with a single, powerful shot. Effective in asymmetric combat. Can be remotely activated or linked up to a GCS.
   components:

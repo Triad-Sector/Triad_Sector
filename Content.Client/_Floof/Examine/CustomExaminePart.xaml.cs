@@ -16,7 +16,7 @@ namespace Content.Client._Floof.Examine;
 [GenerateTypedNameReferences]
 public sealed partial class CustomExaminePart : Control
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public string? Title { get; set; }
     public int MaxContentLength { get; set; }

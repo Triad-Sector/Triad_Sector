@@ -4,3 +4,4 @@ shipyard-grid-save-limit-MilitaryStash = military stashes
 shipyard-grid-save-limit-CivilianStash = civilian stashes
 shipyard-grid-save-limit-HydroponicsStash = botany stashes
 shipyard-grid-save-limit-MedicalStash = medical stashes
+shipyard-grid-save-limit-FuelStash = fuel stashes

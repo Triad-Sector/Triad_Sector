@@ -12,11 +12,12 @@ using Content.Shared._NF.CCVar;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class BluespaceCargoRule : StationEventSystem<BluespaceCargoRuleComponent>
+public sealed partial class BluespaceCargoRule : StationEventSystem<BluespaceCargoRuleComponent>
 {
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] protected readonly IRobustRandom _random = default!;
+    [Dependency] private IConfigurationManager _configuration = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] protected IRobustRandom _random = default!;
 
     protected override void Added(EntityUid uid, BluespaceCargoRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
@@ -72,7 +73,7 @@ public sealed class BluespaceCargoRule : StationEventSystem<BluespaceCargoRuleCo
             // don't spawn inside of solid objects
             var physQuery = GetEntityQuery<PhysicsComponent>();
             var valid = true;
-            foreach (var ent in gridComp.GetAnchoredEntities(tile))
+            foreach (var ent in _map.GetAnchoredEntities(grid, gridComp, tile))
             {
                 if (!physQuery.TryGetComponent(ent, out var body))
                     continue;
@@ -92,7 +93,7 @@ public sealed class BluespaceCargoRule : StationEventSystem<BluespaceCargoRuleCo
                 continue;
             }
 
-            targetCoords = gridComp.GridTileToLocal(tile);
+            targetCoords = _map.GridTileToLocal(grid, gridComp, tile);
             break;
         }
 

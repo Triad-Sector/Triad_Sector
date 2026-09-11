@@ -1,7 +1,7 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
-  - Frontier
+  - Venmar
 
 # Frontier: below are the upstream map pools.
   # - Amber

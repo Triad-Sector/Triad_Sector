@@ -225,6 +225,9 @@
   - type: Stack
     stackType: FuelPlasma
     count: 25 # mono
+  - type: Tag # Triad
+    tags: # Triad
+      - FitsInFuelStash # Triad
 
 - type: entity
   parent: FuelPlasma
@@ -259,6 +262,9 @@
   - type: Stack
     stackType: FuelUranium
     count: 25 # mono
+  - type: Tag # Triad
+    tags: # Triad
+      - FitsInFuelStash # Triad
 
 - type: entity
   parent: FuelUranium
@@ -293,6 +299,9 @@
   - type: Stack
     stackType: FuelBananium
     count: 25 # mono
+  - type: Tag # Triad
+    tags: # Triad
+      - FitsInFuelStash # Triad
 
 - type: entity
   parent: FuelBananium

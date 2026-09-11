@@ -1,0 +1,84 @@
+- type: marking
+  id: SlimeReptileFrillsAquatic
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: frills_aquatic
+
+- type: marking
+  id: SlimeReptileFrillsShort
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: frills_short
+
+- type: marking
+  id: SlimeReptileFrillsSimple
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: frills_simple
+
+- type: marking
+  id: SlimeReptileFrillsAxolotl
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: frills_axolotl
+
+- type: marking
+  id: SlimeReptileTailSmooth
+  bodyPart: Tail
+  markingCategory: Tail
+  forcedColoring: true
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: tail_smooth
+
+- type: marking
+  id: SlimeReptileSnoutRound
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: snout_round
+
+- type: marking
+  id: SlimeReptileSnoutSharp
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: snout_sharp
+
+- type: marking
+  id: SlimeReptileKoboldEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [SlimePerson]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+    state: horns_kobold_ears
+
+# Animated
+- type: marking
+  id: SlimeReptileTailSmoothAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Slime/reptile_parts.rsi
+      state: tail_smooth_wagging

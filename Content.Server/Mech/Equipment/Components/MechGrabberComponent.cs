@@ -50,8 +50,13 @@ public sealed partial class MechGrabberComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public Container ItemContainer = default!;
 
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField, ViewVariables(VVAccess.ReadOnly)]
+    */
+    [ViewVariables(VVAccess.ReadOnly)]
     public DoAfterId? DoAfter;
+    // End Triad
 
     /// <summary>
     ///     Frontier - If any entities on the blacklist then UnanchorOnHit won't work on anything else.

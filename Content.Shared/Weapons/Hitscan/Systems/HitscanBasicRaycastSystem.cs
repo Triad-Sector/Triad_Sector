@@ -11,12 +11,12 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Weapons.Hitscan.Systems;
 
-public sealed class HitscanBasicRaycastSystem : EntitySystem
+public sealed partial class HitscanBasicRaycastSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly ISharedAdminLogManager _log = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private ISharedAdminLogManager _log = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -56,6 +56,13 @@ public sealed class HitscanBasicRaycastSystem : EntitySystem
 
         if (result?.HitEntity == null)
             return;
+
+        // Triad: tell the struck entity. Reflection cancels the trace, so a reflected shot does not count as a hit.
+        if (!trace.Canceled)
+        {
+            var strike = new HitscanRaycastStrikeEvent(ent, args.Gun, args.Shooter);
+            RaiseLocalEvent(result.Value.HitEntity, ref strike);
+        }
 
         _log.Add(LogType.HitScanHit,
             $"{ToPrettyString(shooter):user} hit {ToPrettyString(result.Value.HitEntity):target}"

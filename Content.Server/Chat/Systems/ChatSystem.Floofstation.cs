@@ -66,13 +66,14 @@ public sealed partial class ChatSystem
     /// </summary>
     private void SendInSubtleRange(ChatChannel channel, EntityUid source, string message, string wrappedMessage, ChatTransmitRange range)
     {
-        foreach (var (session, data) in GetRecipients(source, WhisperClearRange))
+        foreach (var (session, data) in GetRecipients(channel, source, WhisperClearRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
 
             // Post-rebase, observers can't see subtle messages unless they are admins, and subtle respects LOS for non-observers
-            if (data.Observer && !CanObserverSeeSubtle(session) || data is { Observer: false, InLOS: false })
+            // Triad - removed CanObserverSeeSubtle. ALL ghosts should not be able to see subtle.
+            if (data.Observer || data is { Observer: false, InLOS: false })
                 continue;
 
             if (MessageRangeCheck(session, data, range) == MessageRangeCheckResult.Disallowed)

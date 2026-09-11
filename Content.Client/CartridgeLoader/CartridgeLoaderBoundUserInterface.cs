@@ -40,18 +40,35 @@ public abstract class CartridgeLoaderBoundUserInterface : BoundUserInterface
 
         var activeUI = _entManager.GetEntity(loaderUiState.ActiveUI);
 
+        // Triad begin: rebuild the cartridge UI only when the active program actually changes.
+        // Upstream ran RetrieveCartridgeUI (and therefore UIFragment.Setup) on every loader state, which built a
+        // fresh fragment, while the type-equality guard below then kept the OLD fragment attached. Every later
+        // cartridge state landed on the detached fragment, so the visible one froze mid-session, or came up blank
+        // on reopen. Any loader state resends this: the PDA light, inserting an ID or pen, a station rename.
+        if (_activeProgram == activeUI && _activeUiFragment is not null)
+            return;
+
         _activeProgram = activeUI;
 
         var ui = RetrieveCartridgeUI(activeUI);
         var comp = RetrieveCartridgeComponent(activeUI);
         var control = ui?.GetUIFragmentRoot();
 
-        //Prevent the same UI fragment from getting disposed and attached multiple times
-        if (_activeUiFragment?.GetType() == control?.GetType())
-            return;
+        // Triad: upstream guarded on fragment TYPE here, which is what orphaned the fragment. Program identity
+        // above is the real question, and it also lets two programs sharing a fragment type swap correctly.
+        ////Prevent the same UI fragment from getting disposed and attached multiple times
+        //if (_activeUiFragment?.GetType() == control?.GetType())
+        //    return;
+        // Triad end
 
-        if (_activeUiFragment is not null)
-            DetachCartridgeUI(_activeUiFragment);
+        var previousFragment = _activeUiFragment;
+        if (previousFragment is not null)
+            DetachCartridgeUI(previousFragment);
+
+        // Triad: publish the new fragment BEFORE announcing readiness, so the state the server sends back in
+        // answer to CartridgeUiReadyEvent has somewhere to land. Upstream assigned these afterwards.
+        _activeCartridgeUI = ui;
+        _activeUiFragment = control;
 
         if (control is not null && _activeProgram.HasValue)
         {
@@ -59,9 +76,9 @@ public abstract class CartridgeLoaderBoundUserInterface : BoundUserInterface
             SendCartridgeUiReadyEvent(_activeProgram.Value);
         }
 
-        _activeCartridgeUI = ui;
-        _activeUiFragment?.Dispose();
-        _activeUiFragment = control;
+        // Triad: disposed last, so the outgoing fragment tears down after the incoming one has claimed any
+        // registration they share.
+        previousFragment?.Dispose();
     }
 
     protected void ActivateCartridge(EntityUid cartridgeUid)

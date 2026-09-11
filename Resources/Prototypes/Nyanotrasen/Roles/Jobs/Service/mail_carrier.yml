@@ -9,7 +9,7 @@
     - !type:OverallPlaytimeRequirement
       time: 10800
   icon: "JobIconMailCarrier"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 90 # Frontier
   displayWeight: 30 # Frontier
   assignedCompany: Colonial
@@ -21,11 +21,13 @@
   - Mail # Frontier
   - Frontier # Frontier
   special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:GiveItemOnHolidaySpecial # Frontier
-    holiday: FrontierBirthday # Frontier
-    prototype: FrontierBirthdayGift # Frontier
+  #- !type:AddImplantSpecial Triad
+  #  implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial # Triad
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service # Colonial Staff radio
 
 - type: startingGear
   id: MailCarrierGear

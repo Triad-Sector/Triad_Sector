@@ -1,3 +1,4 @@
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Mono.Company;
@@ -11,12 +12,18 @@ public sealed partial class CompanyAccessReaderComponent : Component
     /// <summary>
     /// The company ID that is required to access this entity.
     /// </summary>
-    [DataField("requiredCompany")]
+    [DataField]
     public string RequiredCompany = string.Empty;
 
     /// <summary>
     /// Message to show when access is denied due to incorrect company.
     /// </summary>
-    [DataField("popupMessage")]
+    [DataField]
     public string? PopupMessage = "company-access-denied";
+
+    /// <summary>
+    /// Triad - Entities with this whitelist will ignore the access reader. Useful for things like the Overseer, who should be able to access things outside of their own 'company'.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? IgnoreWhitelist;
 }

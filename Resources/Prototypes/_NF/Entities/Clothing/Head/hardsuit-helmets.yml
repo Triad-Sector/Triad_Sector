@@ -13,9 +13,9 @@
   components:
   - type: BreathMask
   - type: Sprite
-    sprite: _NF/Clothing/Head/Hardsuits/mercenary.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/mercenary.rsi # Triad resprite
   - type: Clothing
-    sprite: _NF/Clothing/Head/Hardsuits/mercenary.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/mercenary.rsi # Triad resprite
   - type: PointLight
     color: "#ffeead"
   - type: PressureProtection

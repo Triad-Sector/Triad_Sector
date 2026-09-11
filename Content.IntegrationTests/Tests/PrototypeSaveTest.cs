@@ -73,7 +73,7 @@ public sealed class PrototypeSaveTest
             prototypes.Add(prototype);
         }
 
-        var context = new TestEntityUidContext();
+        var context = new TestEntityUidContext(seriMan);
 
         await server.WaitAssertion(() =>
         {
@@ -168,9 +168,11 @@ public sealed class PrototypeSaveTest
         public string WritingComponent = string.Empty;
         public EntityPrototype? Prototype;
 
-        public TestEntityUidContext()
+        // Engine 286 requires the owning ISerializationManager up front; it can no longer be
+        // constructed standalone, so each caller passes the one from its own integration instance.
+        public TestEntityUidContext(ISerializationManager serialization)
         {
-            SerializerProvider = new();
+            SerializerProvider = new(serialization);
             SerializerProvider.RegisterSerializer(this);
         }
 

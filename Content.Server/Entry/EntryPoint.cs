@@ -1,3 +1,4 @@
+using Content.Server._Mono.Company; // Mono
 using Content.Server._NF.Auth;
 using Content.Server.Acz;
 using Content.Server.Administration;
@@ -34,6 +35,7 @@ using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.Shuttles;
@@ -53,6 +55,22 @@ namespace Content.Server.Entry
         private IServerDbManager? _dbManager;
         private IWatchlistWebhookManager _watchlistWebhookManager = default!;
         private IConnectionManager? _connectionManager;
+
+        /// <inheritdoc />
+        // Triad: clients can put NaN in any networked float, and NaN does not compare, propagate or
+        // clamp like a number. Once one reaches coordinate or physics maths it spreads silently and
+        // surfaces far from where it entered, which is how the melee input errors were reaching
+        // transform lookups. Reading NaN as zero costs nothing and gives every float that crosses the
+        // wire one predictable failure mode. Nothing in content uses the UnsafeFloat wrappers that opt
+        // back out, so no field is relying on being able to send NaN. Has to be set here rather than in
+        // Init, because the engine broadcasts PreInit and then immediately initializes the serializer,
+        // which locks the flags.
+        public override void PreInit()
+        {
+            base.PreInit();
+
+            IoCManager.Resolve<IRobustSerializer>().FloatFlags = SerializerFloatFlags.RemoveReadNan;
+        }
 
         /// <inheritdoc />
         public override void Init()
@@ -117,6 +135,10 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ServerApi>().Initialize();
                 IoCManager.Resolve<MiniAuthManager>();
                 IoCManager.Resolve<ServerIdentityService>().Initialize();
+                // Triad: market data. After _dbManager.Init() above, because the writer resolves
+                // the database manager; before any system ticks, because capture sites call it.
+                IoCManager.Resolve<Content.Server._Triad.Market.IMarketDataManager>().Initialize();
+                // End Triad
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();
@@ -159,6 +181,7 @@ namespace Content.Server.Entry
 
                 _euiManager.Initialize();
 
+                IoCManager.Resolve<CompanyManager>().Initialize(); // Mono
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();

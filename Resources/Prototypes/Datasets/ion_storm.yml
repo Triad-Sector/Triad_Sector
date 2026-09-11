@@ -289,13 +289,13 @@
   - MY BOOTS
   # End Frontier
   # Monolith start
-  - COLOSSUS CENTRAL
+  - VENMAR STATION
   - DERELICT DRILLSITE
-  - PDV HELIOS FORTRESS
-  - PDV JUPITER CLASS CARRIER
-  - TSFMC FLAGSHIP HALCYON
-  - TSFMC SECONDARY OUTPOST
   # Monolith end
+  # Triad Start
+  - TDF OUTPOST
+  - VENMAR
+  # Triad End
 
 # Abstract concepts for the law holder to decide on it's own definition of.
 - type: dataset
@@ -440,13 +440,13 @@
   # Monolith start
   - EMERGENCY RESPONDERS
   - OVERSEERS
-  - PDV GRAND VIZIERS
-  - PDV IMPERIALISTS
-  - SECURITY GUARDS
+  - STATION GUARDS
   - SERVICE WORKERS # Genuinely surprised this isn't part of the normal pool
-  - TSF COLONELS
-  - TSF MARINES
   # Monolith end
+  # Triad Start
+  - TDF CHIEF ENFORCERS
+  - TDF ENFORCERS
+  # Triad End
 
 # only including complex dangerous or funny drinks no water allowed
 - type: dataset

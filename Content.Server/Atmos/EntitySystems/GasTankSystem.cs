@@ -1,3 +1,4 @@
+using Content.Server._Triad.Atmos.EntitySystems; // Triad
 using Content.Server.Cargo.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Atmos;
@@ -12,19 +13,21 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Content.Shared._Triad.Atmos.Components; // Triad
 
 namespace Content.Server.Atmos.EntitySystems
 {
     [UsedImplicitly]
-    public sealed class GasTankSystem : SharedGasTankSystem
+    public sealed partial class GasTankSystem : SharedGasTankSystem
     {
-        [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
-        [Dependency] private readonly ExplosionSystem _explosions = default!;
-        [Dependency] private readonly SharedAudioSystem _audioSys = default!;
-        [Dependency] private readonly UserInterfaceSystem _ui = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly ThrowingSystem _throwing = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
+        [Dependency] private ExplosionSystem _explosions = default!;
+        [Dependency] private GasVesselSuppressionSystem _suppression = default!; // Triad
+        [Dependency] private SharedAudioSystem _audioSys = default!;
+        [Dependency] private UserInterfaceSystem _ui = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private ThrowingSystem _throwing = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
 
         private const float TimerDelay = 0.5f;
         private float _timer = 0f;
@@ -88,7 +91,7 @@ namespace Content.Server.Atmos.EntitySystems
                     comp.CheckUser = false;
                     if (Transform(uid).ParentUid != comp.User)
                     {
-                        DisconnectFromInternals(gasTank);
+                        DisconnectFromInternals(gasTank, forced: true); // (#44126) bypass toggle cooldown when tank left the user
                         continue;
                     }
                 }
@@ -163,6 +166,15 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
             {
+                // Triad Start - gas can safety
+                if (TryComp<SafeGasCanComponent>(owner, out var safety) && safety.Enabled)
+                {
+                    _suppression.FoamOver(owner);
+                    QueueDel(owner);
+                    return;
+                }
+                // Triad end
+
                 // Give the gas a chance to build up more pressure.
                 for (var i = 0; i < 3; i++)
                 {

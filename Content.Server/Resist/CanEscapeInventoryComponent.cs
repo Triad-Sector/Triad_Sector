@@ -13,8 +13,13 @@ public sealed partial class CanEscapeInventoryComponent : Component
 
     public bool IsEscaping => DoAfter != null;
 
+    // Triad: DoAfterId has no type serializer; persisting it breaks ship-grid saves. Runtime-only state.
+    /*
     [DataField("doAfter")]
+    */
+    [ViewVariables]
     public DoAfterId? DoAfter;
+    // End Triad
 
     // Frontier
     [DataField]

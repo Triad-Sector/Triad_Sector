@@ -21,6 +21,7 @@
     price: 0
   - type: CargoSellBlacklist
   - type: NFShipyardVoucher # FIXME - whitelist component to prevent misprediction
+  - type: SavingContraband # Triad
 
 # NFSD vouchers
 - type: entity
@@ -37,7 +38,7 @@
     heldPrefix: nfsd
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Security
+    consoleTypes: [Security]
     companyName: TSF
     access:
     - Sergeant # Frontier
@@ -75,11 +76,11 @@
     - state: blue
     - state: voucherservice
   - type: ShipyardVoucher
-    consoleType: Shipyard
+    consoleTypes: [Shipyard]
     vessels:
-    - Jitterbug
-    - McChicken
-    - McChilly
+  #  - Jitterbug
+  #  - McChicken
+  #  - McChilly
     - Spessbite
 
 # Frontier vouchers
@@ -97,7 +98,8 @@
     heldPrefix: blue
   - type: ShipyardVoucher
     destroyOnEmpty: true
-    consoleType: Sr
+    companyName: Colonial
+    consoleTypes: [Sr]
     access:
     - Janitor
 
