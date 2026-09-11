@@ -344,8 +344,8 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
 
         var neutronCount = 1;
         var gas = reactorPart.AirContents;
-
-        if (gas.GetMoles(Gas.CarbonDioxide) > 1) //process co2 before the moderator gasses, so it can actually, y'know. Reduce the neutron levels.
+        //Triad: Reordered: process co2 before the moderator gasses, so it can actually, y'know. Reduce the neutron levels.
+        if (gas.GetMoles(Gas.CarbonDioxide) > 1)
         {
             var reactMolPerLiter = 0.4;
             var reactMol = reactMolPerLiter * gas.Volume;
@@ -357,7 +357,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             neutronCount -= Math.Min(co2ReactCount, neutronCount);
         }
 
-        if (gas.GetMoles(Gas.Tritium) > 1) //Process trit before plasma, since plasma makes it
+        if (gas.GetMoles(Gas.Tritium) > 1) //Process trit before plasma, since plasma... produces trit.
         {
             var reactMolPerLiter = 0.5;
             var reactMol = reactMolPerLiter * gas.Volume;
@@ -392,7 +392,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             }
         }
 
-        if (gas.GetMoles(Gas.Plasma) > 1) //process plasma last
+        if (gas.GetMoles(Gas.Plasma) > 1) //process plasma last, so it doesn't eat up neutrons before co2, and doesn't have its tritium get eated.
         {
             var reactMolPerLiter = 0.25;
             var reactMol = reactMolPerLiter * gas.Volume;
@@ -404,7 +404,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             gas.AdjustMoles(Gas.Tritium, plasmaReactCount * 2);
             neutronCount += plasmaReactCount;
         }
-
+        //End Triad
 
         return neutronCount;
     }
