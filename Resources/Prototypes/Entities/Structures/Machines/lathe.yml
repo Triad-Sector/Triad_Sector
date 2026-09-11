@@ -645,6 +645,7 @@
     emagStaticPacks:
     - ClothingCentComm
     - ClothingSyndie
+    - ClothingPlayerFaction # Triad
   - type: MaterialStorage
     whitelist:
       tags:

@@ -1,0 +1,6 @@
+## Player factions
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitShiBusiness
+  result: ClothingUniformJumpsuitShiBusiness

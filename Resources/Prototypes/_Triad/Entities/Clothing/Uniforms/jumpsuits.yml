@@ -119,3 +119,15 @@
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi
+
+# Player factions
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitShiBusiness
+  name: SHI business jumpsuit
+  description: A sharp olive business suit worn by the staff of Shackford Heavy Industries.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
