@@ -36,7 +36,7 @@ public abstract partial class SharedEnsnareableSystem : EntitySystem
     [Dependency] private   SharedDoAfterSystem _doAfter = default!;
     [Dependency] private   SharedHandsSystem _hands = default!;
     [Dependency] protected SharedPopupSystem Popup = default!;
-    [Dependency] private   StaminaSystem _stamina = default!;
+    [Dependency] private   SharedStaminaSystem _stamina = default!;
 
     public override void Initialize()
     {
