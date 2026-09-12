@@ -1,0 +1,23 @@
+- type: loadout
+  id: MimeBowler
+  price: 0
+  equipment:
+    head: ClothingHeadHatMimeBowler
+
+- type: loadout
+  id: MimePufferCoat
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatPufferMime
+
+- type: loadout
+  id: MimeCroppedSuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeCropped
+
+- type: loadout
+  id: MimeNouveauSuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeNouveau
