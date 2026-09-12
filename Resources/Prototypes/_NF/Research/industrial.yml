@@ -92,7 +92,6 @@
   - ClothingOuterHardsuitMaximPrototype
   - NFBlueprintClothingOuterHardsuitMaximPrototype
   - ClothingOuterHardsuitRd
-  - ClothingOuterHardsuitRmtM10 # Triad
   technologyPrerequisites:
   - HardsuitsSpecialized
   position: 1, 7
