@@ -24,7 +24,7 @@
     sprite: _Mono/Clothing/Mask/gasdi-watchdog.rsi
   - type: IdentityBlocker
     coverage: MOUTH
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: EyeProtection
     protectionTime: 5
 
