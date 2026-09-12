@@ -21,13 +21,13 @@
     openingAnimationTime: 1.0
     closingAnimationTime: 1.0
     canPry: false
-    crushDamage:
-      types:
-        Blunt: 25 # yowch
+    crushDamage: null
+    canCrush: false
     openSound:
       path: /Audio/Machines/blastdoor.ogg
     closeSound:
       path: /Audio/Machines/blastdoor.ogg
+    performCollisionCheck: false # So it can close on anything
   - type: Occluder
   - type: Appearance
   - type: RadiationBlocker
