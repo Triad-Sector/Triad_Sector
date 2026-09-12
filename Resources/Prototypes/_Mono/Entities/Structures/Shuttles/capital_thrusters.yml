@@ -38,10 +38,29 @@
   - type: Thruster
     thrust: 800
     baseThrust: 800
-    burnShape: ["-0.3,0.5","0.2,1.6","0.8,1.6","1.3,0.5"]
+    # Triad Start
+    burnShape: ["-0.3,0.5","0.2,6.0","0.8,6.0","1.3,0.5"]
     damage:
       types:
-        Heat: 120
+        Heat: 360
+    blockCheckRays: # Every angle the raycasts check to see if the thruster is blocked
+    - angle: North
+      originOffset: 0.5,-0.5
+    - angle: NorthEast
+      originOffset: 0.5,-0.5
+    - angle: NorthWest
+      originOffset: 0.5,-0.5
+    - angle: South
+      originOffset: 0.5,-0.5
+    - angle: SouthWest
+      originOffset: 0.5,-0.5
+    - angle: SouthEast
+      originOffset: 0.5,-0.5
+    - angle: West
+      originOffset: 0.5,-0.5
+    - angle: East
+      originOffset: 0.5,-0.5
+    # Triad End
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thruster_large.rsi
     offset: 0.5,-0.5

@@ -89,6 +89,12 @@
     - type: ShipRepairable
       repairTime: 2
       repairCost: 2
+    # Triad
+    - type: Tag
+      tags:
+      - Structure
+      - IgnoreThrusterDamage
+    # Triad End
 
 - type: entity
   id: ClockworkGrille
@@ -135,9 +141,12 @@
   - type: Physics
     bodyType: Static
     canCollide: false
+  # Triad
   - type: Tag
     tags:
     - ForceNoFixRotations
+    - IgnoreThrusterDamage
+  # Triad End
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic
@@ -190,6 +199,8 @@
   - type: Tag
     tags:
     - Diagonal
+    - Structure
+    - IgnoreThrusterDamage
   - type: Fixtures
     fixtures:
       fix1:
