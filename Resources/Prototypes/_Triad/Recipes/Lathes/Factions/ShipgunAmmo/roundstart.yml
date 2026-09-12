@@ -1,0 +1,4 @@
+- type: latheRecipe
+  parent: BaseShipgunAmmoRecipe
+  id: Magazine35mmAmmoRecipe
+  result: Magazine35mm
