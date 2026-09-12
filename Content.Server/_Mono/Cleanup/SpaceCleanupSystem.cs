@@ -186,6 +186,8 @@ public sealed partial class SpaceCleanupSystem : BaseCleanupSystem<PhysicsCompon
 
             var xf = _physics.GetLocalPhysicsTransform(anch, xform);
             var shape = fix.Shape;
+            //TRIAD: check if the two shapes overlap, if they do then the entity is stuck in a wall. Had to add second false flag
+            if ((bool?)_testOverlap.Invoke(_manifold, [shape, 0, shapeB, 0, xf, xfB, false]) ?? false)
 
             _overlapArgs[0] = shape;
             _overlapArgs[1] = 0;

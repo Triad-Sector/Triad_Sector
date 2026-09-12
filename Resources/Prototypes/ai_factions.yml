@@ -45,6 +45,7 @@
   neutral:
   - Dragon
   - Passive
+  - AnimalFriend # MACRO
   defaultHostile: true
 
 - type: npcFaction

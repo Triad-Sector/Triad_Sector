@@ -1,0 +1,6 @@
+﻿- type: typingIndicator
+  id: ovinia
+  spritePath: /Textures/_DV/Effects/speech.rsi
+  typingState: ovinia0
+  idleState: ovinia-idle
+  offset: 0, 0

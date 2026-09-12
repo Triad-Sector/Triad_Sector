@@ -1,0 +1,71 @@
+- type: emote
+  id: Hiss
+  category: Vocal
+  name: chat-emote-name-reptilian-hiss # Triad: was literal `Hiss`
+  icon: _Impstation/Interface/Emotes/hiss.png # Triad - change icon
+  available: false
+  whitelist:
+    components:
+    - Vocal
+    - ReptilianEmotes # Triad
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-reptilian-hiss"] # Triad - localization
+  chatTriggers:
+    - hiss
+    - hisses
+    - hiss.
+    - hisses.
+    - hisses!
+    - hissing
+    - hissed
+    - hissing.
+    - hissed.
+  
+
+# Ovinia
+- type: emote
+  id: Baa
+  name: chat-emote-name-baa
+  category: Vocal
+  available: false
+  icon: _Triad/Interface/Emotes/baa.png
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    tags:
+    - OviniaEmotes
+  chatMessages: [ chat-emote-msg-baa ]
+  chatTriggers:
+    - baas
+    - baa
+    - baahs
+    - baah
+    - baahed
+    - baah'd
+    - baahing
+    - bah
+    - bahs
+    - bahed
+    - bah'd
+
+
+- type: emote
+  id: Moo
+  name: chat-emote-name-moo
+  category: Vocal
+  icon: _Triad/Interface/Emotes/moo.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+    tags:
+    - OviniaEmotes
+  chatMessages: [ chat-emote-msg-moo ]
+  chatTriggers:
+    - moos
+    - moo
+    - mooed
+    - moo'd

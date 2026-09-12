@@ -101,6 +101,12 @@
   categories: [ HideSpawnMenu ]
 
 - type: entity
+  parent: [ MobOvinia, BaseMobDossierExemplar ]
+  id: MobOviniaDossierExemplar
+  suffix: BuPers Dossier
+  categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ MobProtogen, BaseMobDossierExemplar ]
   id: MobProtogenDossierExemplar
   suffix: BuPers Dossier
