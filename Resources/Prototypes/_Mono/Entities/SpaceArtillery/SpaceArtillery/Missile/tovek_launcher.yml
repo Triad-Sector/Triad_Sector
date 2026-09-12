@@ -2,7 +2,7 @@
   id: WeaponTurretTovek
   name: ADMX-250 TOVEK Missile Pod
   parent: BallisticArtilleryCartridge
-  description: A 250mm missile pod created by Aetherion Dynamics. Fires 250mm warheads to devastate enemy ships at long range. Can be remotely activated or linked to a GCS.
+  description: A 250mm missile pod created by Aetherion Dynamics. Fires 250mm EMP-HE warheads to damage and disable enemy ships at long range. Can be remotely activated or linked to a GCS. # Triad - Improved description.
   components:
   - type: StaticPrice
     price: 10000
@@ -43,7 +43,8 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: ShipGunType
-    shipType: Missile
+    #shipType: Missile Triad - Better Weapon Groups
+    shipType: Limited
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
