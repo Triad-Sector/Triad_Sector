@@ -1,0 +1,51 @@
+# TFA Engineering Jobs
+- type: quickPhrase
+  parent: [BaseCommandJobPhrase, BaseEngineeringJobPhrase]
+  id: PlantManagerPhrase
+  text: job-name-plant-manager
+
+- type: quickPhrase
+  parent: BaseEngineeringJobPhrase
+  id: PlantTechnicianPhrase
+  text: job-name-plant-technician
+
+# TDF Jobs
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFCadetEnfPhrase
+  text: job-name-tdf-cadet
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFEnforcerPhrase
+  text: job-name-tdf-enforcer
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFMedicPhrase
+  text: job-name-tdf-medic
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFPTLPhrase
+  text: job-name-tdf-patrol-team-leader
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFLieutenantPhrase
+  text: job-name-tdf-lieutenant
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFCEPhrase
+  text: job-name-tdf-chief-enforcer
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFHighCommInternPhrase
+  text: job-name-tfa-high-command-intern
+
+- type: quickPhrase
+  parent: BaseTDFPhrase
+  id: TDFHighCommPhrase
+  text: job-name-tfa-high-command

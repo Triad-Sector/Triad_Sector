@@ -18,10 +18,11 @@
   id: BaseScienceJobPhrase
   abstract: true
 
-- type: quickPhrase
-  parent: [ BaseJusticePhrase, BaseJobPhrase ]
-  id: BaseJusticeJobPhrase
-  abstract: true
+# Triad : Don't have Justice jobs
+# - type: quickPhrase
+#   parent: [ BaseJusticePhrase, BaseJobPhrase ]
+#   id: BaseJusticeJobPhrase
+#   abstract: true
 
 - type: quickPhrase
   parent: [ BaseLogisticsPhrase, BaseJobPhrase ]
@@ -45,10 +46,11 @@
 
 # Civilian
 
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: VisitorPhrase
-  text: job-name-visitor
+# Triad : nonexistant role
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: VisitorPhrase
+#   text: job-name-visitor
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
@@ -57,17 +59,11 @@
 
 # Command
 
-- type: quickPhrase
-  parent: BaseCommandJobPhrase
-  id: StationAIPhrase
-  text: job-name-station-ai
-
-# Engineering
-
-- type: quickPhrase
-  parent: BaseEngineeringJobPhrase
-  id: ChiefEngineerPhrase
-  text: job-name-ce
+# Triad : We don't have station AI
+# - type: quickPhrase
+#   parent: BaseCommandJobPhrase
+#   id: StationAIPhrase
+#   text: job-name-station-ai
 
 # Science
 
@@ -87,16 +83,16 @@
   text: job-name-borg
 
 # Logistics
+# Triad : Not needed
+# - type: quickPhrase
+#   parent: BaseLogisticsJobPhrase
+#   id: LogisticsOfficerPhrase
+#   text: job-name-qm
 
-- type: quickPhrase
-  parent: BaseLogisticsJobPhrase
-  id: LogisticsOfficerPhrase
-  text: job-name-qm
-
-- type: quickPhrase
-  parent: BaseLogisticsJobPhrase
-  id: CargoTechnicianPhrase
-  text: job-name-cargotech
+# - type: quickPhrase
+#   parent: BaseLogisticsJobPhrase
+#   id: CargoTechnicianPhrase
+#   text: job-name-cargotech
 
 # Medical
 

@@ -57,7 +57,7 @@
 
 - type: quickPhrase
   id: BaseJusticePhrase
-  group: Justice
+  group: TFA
   styleClass: JusticeButton
   abstract: true
 
@@ -75,7 +75,7 @@
 
 - type: quickPhrase
   id: BaseSecurityPhrase
-  group: Security
+  group: TDF
   styleClass: SecurityButton
   abstract: true
 

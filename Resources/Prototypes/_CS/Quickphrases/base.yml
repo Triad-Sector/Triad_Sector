@@ -7,9 +7,9 @@
 
 - type: quickPhrase
   parent: BaseJobPhrase
-  id: BaseNFSDPhrase
-  group: NFSD
-  styleClass: NFSDButton
+  id: BaseTDFPhrase
+  group: TDF
+  styleClass: TDFButton
   abstract: true
 
 - type: quickPhrase

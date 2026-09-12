@@ -14,8 +14,6 @@ phrase-location-nautical-cargo-bay = cargo bay
 phrase-location-nautical-docking-to = docking to
 
 # Station names
-phrase-location-venmar = Venmar Station
-phrase-location-tdf-outpost = Auric Outpost
 phrase-location-frontier-outpost = Frontier outpost
 phrase-location-power-plant = Power Plant
 phrase-location-barrier = Barrier Station
@@ -23,7 +21,6 @@ phrase-location-hospital = Medical Dispatch
 phrase-location-casino = Crazy Caseys' Casino
 phrase-location-grifty = Grifty's Gas & Grub
 phrase-location-lodge = Expeditionary Lodge
-phrase-location-cove = Derlict Digsite
 phrase-location-omnichurch = Omnichurch
 phrase-location-trademall = Trade Mall
 phrase-location-cargodepot = Cargo Depot

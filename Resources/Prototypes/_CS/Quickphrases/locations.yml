@@ -85,20 +85,22 @@
   id: LocationTDFOutpost # Triad
   text: phrase-location-tdf-outpost
 
-- type: quickPhrase
-  parent: BaseStationLocationPhrase
-  id: LocationFrontierOutpostPhrase
-  text: phrase-location-frontier-outpost
+# Triad : Nonexistent location
+# - type: quickPhrase
+#   parent: BaseStationLocationPhrase
+#   id: LocationFrontierOutpostPhrase
+#   text: phrase-location-frontier-outpost
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
   id: LocationPowerPlantPhrase
   text: phrase-location-power-plant
 
-- type: quickPhrase
-  parent: BaseStationLocationPhrase
-  id: LocationBarrierPhrase
-  text: phrase-location-barrier
+# Triad : Nonexistent location
+# - type: quickPhrase
+#   parent: BaseStationLocationPhrase
+#   id: LocationBarrierPhrase
+#   text: phrase-location-barrier
 
 - type: quickPhrase
   parent: BaseStationLocationPhrase
@@ -123,7 +125,7 @@
 - type: quickPhrase
   parent: BaseStationLocationPhrase
   id: LocationCovePhrase
-  text: phrase-location-cove
+  text: phrase-location-drillsite
 
 # Added for Triad
 - type: quickPhrase
