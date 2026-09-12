@@ -68,6 +68,12 @@
             32:
               sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
               state: back
+      skirtDisplacements: # Triad start
+        jumpsuit:
+          sizeMaps:
+            32:
+              sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
+              state: jumpskirt # end Triad
     - type: Butcherable
       butcheringType: Spike
       spawned:
@@ -212,5 +218,10 @@
             32:
               sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
               state: back
-
+      skirtDisplacements: # Triad start
+        jumpsuit:
+          sizeMaps:
+            32:
+              sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
+              state: jumpskirt # End Triad
 # Chirp!

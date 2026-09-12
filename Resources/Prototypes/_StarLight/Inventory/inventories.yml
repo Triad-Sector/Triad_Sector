@@ -44,5 +44,11 @@
           32:
             sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
             state: gloves
+    skirtDisplacements: # Triad Start
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Species/Avali/displacement.rsi
+            state: jumpskirt # End Triad
 
 

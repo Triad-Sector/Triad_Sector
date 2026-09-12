@@ -1,0 +1,2001 @@
+# == JUMPSUITS
+- type: loadout
+  id: ClothingUniformJumpsuitAtmos
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmos
+
+- type: loadout
+  id: ClothingUniformJumpskirtAtmos
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtAtmos
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartender
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+
+- type: loadout
+  id: ClothingUniformJumpskirtBartender
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBartender
+
+- type: loadout
+  id: ClothingUniformJumpsuitCargo
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargo
+
+- type: loadout
+  id: ClothingUniformJumpskirtCargo
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargo
+
+- type: loadout
+  id: ClothingUniformJumpsuitSalvageSpecialist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+
+- type: loadout
+  id: ClothingUniformJumpsuitChef
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+
+- type: loadout
+  id: ClothingUniformJumpskirtChef
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChef
+
+- type: loadout
+  id: ClothingUniformJumpsuitEngineering
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineering
+
+- type: loadout
+  id: ClothingUniformJumpskirtEngineering
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtEngineering
+
+- type: loadout
+  id: ClothingUniformJumpsuitHydroponics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponics
+
+- type: loadout
+  id: ClothingUniformJumpskirtHydroponics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHydroponics
+
+- type: loadout
+  id: ClothingUniformJumpsuitMedicalDoctor
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+
+- type: loadout
+  id: ClothingUniformJumpskirtMedicalDoctor
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMedicalDoctor
+
+- type: loadout
+  id: ClothingUniformJumpsuitScientist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientist
+
+- type: loadout
+  id: ClothingUniformJumpskirtScientist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtScientist
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorGrey
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorWhite
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorWhite
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorWhite
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorYellow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorYellow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorYellow
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorGreen
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorOrange
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorOrange
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorOrange
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorMaroon
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorMaroon
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorMaroon
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorMaroon
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorLightBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorLightBrown
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorLightBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorLightBrown
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBrown
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorPink
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPink
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorPink
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorPink
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorDarkBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorDarkBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorDarkGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkGreen
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorDarkGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkGreen
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorTeal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorTeal
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorTeal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorTeal
+
+- type: loadout
+  id: ClothingUniformColorRainbow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformColorRainbow
+
+- type: loadout
+  id: ClothingUniformJumpsuitHawaiBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHawaiBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitHawaiBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHawaiBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitHawaiRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHawaiRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitHawaiYellow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHawaiYellow
+
+- type: loadout
+  id: ClothingUniformJumpsuitFlannel
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFlannel
+
+- type: loadout
+  id: ClothingUniformJumpsuitCasualBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualBlue
+
+- type: loadout
+  id: ClothingUniformJumpskirtCasualBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitCasualPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualPurple
+
+- type: loadout
+  id: ClothingUniformJumpskirtCasualPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitCasualRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualRed
+
+- type: loadout
+  id: ClothingUniformJumpskirtCasualRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitEngineeringHazard
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+
+- type: loadout
+  id: ClothingUniformJumpsuitAtmosCasual
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmosCasual
+
+- type: loadout
+  id: ClothingUniformOveralls
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformOveralls
+
+- type: loadout
+  id: ClothingUniformJumpsuitChaplain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChaplain
+
+- type: loadout
+  id: ClothingUniformJumpskirtChaplain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChaplain
+
+- type: loadout
+  id: ClothingUniformJumpsuitCurator
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCurator
+
+- type: loadout
+  id: ClothingUniformJumpskirtCurator
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCurator
+
+- type: loadout
+  id: ClothingUniformJumpsuitLibrarian
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLibrarian
+
+- type: loadout
+  id: ClothingUniformJumpskirtLibrarian
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLibrarian
+
+- type: loadout
+  id: ClothingUniformJumpsuitReporter
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitReporter
+
+- type: loadout
+  id: ClothingUniformJumpsuitBH
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBH
+
+- type: loadout
+  id: ClothingUniformJumpskirtBH
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBH
+
+- type: loadout
+  id: ClothingUniformJumpsuitBHGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBHGrey
+
+- type: loadout
+  id: ClothingUniformJumpskirtBHGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBHGrey
+
+- type: loadout
+  id: SLUniformScrubsColorGreen
+  price: 0
+  equipment:
+    jumpsuit: UniformScrubsColorGreen
+
+- type: loadout
+  id: SLUniformScrubsColorBlue
+  price: 0
+  equipment:
+    jumpsuit: UniformScrubsColorBlue
+
+- type: loadout
+  id: SLUniformScrubsColorPurple
+  price: 0
+  equipment:
+    jumpsuit: UniformScrubsColorPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitParamedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitParamedic
+
+- type: loadout
+  id: ClothingUniformJumpskirtParamedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtParamedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitVirology
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVirology
+
+- type: loadout
+  id: ClothingUniformJumpskirtVirology
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVirology
+
+- type: loadout
+  id: ClothingUniformJumpsuitChemistry
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChemistry
+
+- type: loadout
+  id: ClothingUniformJumpskirtChemistry
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChemistry
+
+- type: loadout
+  id: ClothingUniformJumpsuitGenetics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+
+- type: loadout
+  id: ClothingUniformJumpskirtGenetics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGenetics
+
+- type: loadout
+  id: ClothingUniformJumpsuitPsychologist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPsychologist
+
+- type: loadout
+  id: ClothingUniformJumpskirtPsychologist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPsychologist
+
+- type: loadout
+  id: ClothingUniformJumpsuitScientistFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+
+- type: loadout
+  id: ClothingUniformJumpsuitRoboticist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+
+- type: loadout
+  id: ClothingUniformJumpskirtRoboticist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRoboticist
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlue
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerPurple
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerRed
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerGood
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerGood
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerGood
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerGood
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlackElegantDress
+  name: black elegant dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlackElegantDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedElegantDress
+  name: red elegant dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedElegantDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenElegantDress
+  name: green elegant dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenElegantDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueElegantDress
+  name: blue elegant dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueElegantDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleElegantDress
+  name: purple elegant dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleElegantDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtCyanStripedDress
+  name: cyan striped dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCyanStripedDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedStripedDress
+  name: red striped dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedStripedDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenStripedDress
+  name: green striped dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenStripedDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtPinkStripedDress
+  name: pink striped dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPinkStripedDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtOrangeStripedDress
+  name: orange striped dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtOrangeStripedDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleTurtleneckDress
+  name: purple turtleneck dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleTurtleneckDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedTurtleneckDress
+  name: red turtleneck dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedTurtleneckDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenTurtleneckDress
+  name: green turtleneck dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenTurtleneckDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueTurtleneckDress
+  name: blue turtleneck dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueTurtleneckDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtYellowTurtleneckDress
+  name: yellow turtleneck dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowTurtleneckDress
+
+- type: loadout
+  id: ClothingUniformJumpskirtYellowOldDress
+  name: yellow old dress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowOldDress
+
+# Punk stuff
+- type: loadout
+  id: ClothingUniformRandomPunkCroptop
+  name: punk croptop jumpsuit (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomPunkCroptop
+
+- type: loadout
+  id: ClothingUniformRandomPunkTanktop
+  name: punk tanktop jumpsuit (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomPunkTanktop
+
+- type: loadout
+  id: ClothingUniformRandomPunkCroptopShorts
+  name: punk croptop with shorts (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomPunkCroptopShorts
+
+- type: loadout
+  id: ClothingUniformRandomPunkTanktopShorts
+  name: punk tanktop with shorts (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomPunkTanktopShorts
+
+- type: loadout
+  id: ClothingUniformRandomArmlessNoSkirt
+  name: sleeveless jumpsuit (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomArmlessNoSkirt
+
+- type: loadout
+  id: ClothingUniformRandomArmless
+  name: colorful sleeveless top and pants (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomArmless
+
+- type: loadout
+  id: ClothingUniformRandomStandard
+  name: colorful top and pants (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomStandard
+
+- type: loadout
+  id: ClothingUniformRandomShorts
+  name: colorful pants (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomShorts
+
+- type: loadout
+  id: ClothingUniformRandomShirt
+  name: colorful patterned top and pants (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformRandomShirt
+
+- type: loadout
+  id: ClothingSkirtUniformRandomArmless
+  name: colorful sleeveless top and skirt (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingSkirtUniformRandomArmless
+
+- type: loadout
+  id: ClothingSkirtUniformRandomStandard
+  name: colorful top and skirt (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingSkirtUniformRandomStandard
+
+- type: loadout
+  id: ClothingSkirtUniformRandomBra
+  name: colorful bra and skirt (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingSkirtUniformRandomBra
+
+- type: loadout
+  id: ClothingSkirtUniformRandomShorts
+  name: colorful skirt (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingSkirtUniformRandomShorts
+
+- type: loadout
+  id: ClothingSkirtUniformRandomShirt
+  name: colorful patterned top and skirt (random)
+  price: 0
+  equipment:
+    jumpsuit: ClothingSkirtUniformRandomShirt
+
+#Merc
+- type: loadout
+  id: ClothingUniformJumpsuitMercenary
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+
+- type: loadout
+  id: ClothingUniformJumpskirtMercenary
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitPrivateSec
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPrivateSec
+
+- type: loadout
+  id: ClothingUniformJumpskirtPrivateSec
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPrivateSec
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryPilot
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryPilot
+
+- type: loadout
+  id: UniformMaid
+  price: 0
+  equipment:
+    jumpsuit: UniformMaid
+
+- type: loadout
+  id: ClothingUniformJumpskirtJanimaid
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaid
+
+- type: loadout
+  id: ClothingUniformJumpskirtJanimaidmini
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaidmini
+
+- type: loadout
+  id: ClothingUniformJumpskirtTacticalMaid
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTacticalMaid
+
+# Trioa
+- type: loadout
+  id: ClothingUniformJumpsuitMonasticRobeDark
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMonasticRobeDark
+
+- type: loadout
+  id: ClothingUniformJumpsuitMonasticRobeLight
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMonasticRobeLight
+
+- type: loadout
+  id: ClothingUniformJumpsuitChaplainPilgrimVest
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChaplainPilgrimVest
+
+- type: loadout
+  id: ClothingUniformJumpsuitQMTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQMTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpskirtQMTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtQMTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpsuitSeniorPhysician
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+
+- type: loadout
+  id: ClothingUniformJumpskirtSeniorPhysician
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+
+- type: loadout
+  id: ClothingUniformJumpsuitCMO
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMO
+
+- type: loadout
+  id: ClothingUniformJumpskirtCMO
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMO
+
+- type: loadout
+  id: ClothingUniformTurtleneckCMO
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOTurtle
+
+- type: loadout
+  id: ClothingUniformTurtleskirtCMO
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMOTurtle
+
+- type: loadout
+  id: ClothingUniformJumpsuitSeniorResearcher
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+
+- type: loadout
+  id: ClothingUniformJumpskirtSeniorResearcher
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorResearcher
+
+- type: loadout
+  id: ClothingUniformJumpsuitResearchDirector
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitResearchDirector
+
+- type: loadout
+  id: ClothingUniformJumpskirtResearchDirector
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtResearchDirector
+
+- type: loadout
+  id: ClothingUniformJumpsuitSeniorEngineer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorEngineer
+
+- type: loadout
+  id: ClothingUniformJumpskirtSeniorEngineer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorEngineer
+
+- type: loadout
+  id: ClothingUniformJumpsuitChiefEngineer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+
+- type: loadout
+  id: ClothingUniformJumpskirtChiefEngineer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChiefEngineer
+
+- type: loadout
+  id: ClothingUniformJumpsuitChiefEngineerTurtle
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
+
+- type: loadout
+  id: ClothingUniformJumpskirtChiefEngineerTurtle
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChiefEngineerTurtle
+
+- type: loadout
+  id: ClothingUniformJumpsuitJester
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJester
+
+- type: loadout
+  id: ClothingUniformJumpsuitJesterAlt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJesterAlt
+
+- type: loadout
+  id: ClothingUniformJumpsuitKilt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitKilt
+
+- type: loadout
+  id: ClothingUniformJumpsuitDameDane
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDameDane
+
+- type: loadout
+  id: ClothingUniformJumpsuitKimono
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitKimono
+
+- type: loadout
+  id: ClothingKimonoPink
+  price: 0
+  equipment:
+    jumpsuit: ClothingKimonoPink
+
+- type: loadout
+  id: ClothingKimonoBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingKimonoBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitGladiator
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGladiator
+
+- type: loadout
+  id: ClothingUniformJumpskirtPerformer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformer
+
+- type: loadout
+  id: ClothingUniformJumpsuitSafari
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSafari
+
+- type: loadout
+  id: SLUniformShortsRed
+  price: 0
+  equipment:
+    jumpsuit: UniformShortsRed
+
+- type: loadout
+  id: SLUniformShortsRedWithTop
+  price: 0
+  equipment:
+    jumpsuit: UniformShortsRedWithTop
+
+- type: loadout
+  id: ClothingUniformJumpsuitClown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+
+- type: loadout
+  id: ClothingUniformJumpsuitMime
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMime
+
+- type: loadout
+  id: ClothingUniformJumpskirtMime
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMime
+
+- type: loadout
+  id: ClothingUniformJumpsuitTshirtJeans
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTshirtJeans
+
+- type: loadout
+  id: ClothingUniformJumpsuitTshirtJeansGray
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTshirtJeansGray
+
+- type: loadout
+  id: ClothingUniformJumpsuitTshirtJeansPeach
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTshirtJeansPeach
+
+# T3
+- type: loadout
+  id: ClothingUniformJumpsuitCaptain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+
+- type: loadout
+  id: ClothingUniformJumpskirtCaptain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCaptain
+
+- type: loadout
+  id: ClothingUniformJumpsuitCapFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtCapFormalDress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCapFormalDress
+
+# T3 "Military"
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractor
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractor
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractorTac
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryCaptain
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryCaptain
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryAtmospherics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryAtmospherics
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryEngineering
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryEngineering
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryEngineeringChief
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryEngineeringChief
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitarySalvageSpecialist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitarySalvageSpecialist
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryCargo
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryCargo
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryQM
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryQM
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryParamedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryParamedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryMedicalDoctor
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryMedicalDoctor
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryChemistry
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryChemistry
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryVirology
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryVirology
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryGenetics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryGenetics
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryCMO
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryCMO
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryScientist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryScientist
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryResearchDirector
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryResearchDirector
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryService
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryService
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryHydroponics
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryHydroponics
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorGrey
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorDarkBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorTeal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorTeal
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorGreen
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorDarkGreen
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorOrange
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorOrange
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorPink
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorPink
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorYellow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorYellow
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorPurple
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorPurple
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorLightBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorLightBrown
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorBrown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBrown
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryColorMaroon
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorMaroon
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoS
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoS
+
+- type: loadout
+  id: ClothingUniformJumpskirtHoS
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoS
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoSAlt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSAlt
+
+- type: loadout
+  id: ClothingUniformJumpskirtHoSAlt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSAlt
+
+- type: loadout
+  id: ClothingUniformJumpskirtHosFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHosFormal
+
+- type: loadout
+  id: ClothingUniformJumpsuitHosFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosFormal
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoSParadeMale
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSParadeMale
+
+- type: loadout
+  id: ClothingUniformJumpskirtHoSParadeMale
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSParadeMale
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoSGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSGrey
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoSBlue
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitSec
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+
+- type: loadout
+  id: ClothingUniformJumpskirtSec
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSec
+
+- type: loadout
+  id: ClothingUniformJumpsuitSeniorOfficer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorOfficer
+
+- type: loadout
+  id: ClothingUniformJumpskirtSeniorOfficer
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorOfficer
+
+- type: loadout
+  id: ClothingUniformJumpsuitSecGuard
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecGuard
+
+- type: loadout
+  id: ClothingUniformJumpskirtSecGuard
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSecGuard
+
+- type: loadout
+  id: ClothingUniformJumpsuitSecGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecGrey
+
+- type: loadout
+  id: ClothingUniformJumpskirtSecGrey
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSecGrey
+
+- type: loadout
+  id: ClothingUniformSecurityTrooper
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformSecurityTrooper
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitWarden
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWarden
+
+- type: loadout
+  id: ClothingUniformJumpskirtWarden
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtWarden
+
+- type: loadout
+  id: ClothingUniformJumpsuitBrigmedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBrigmedic
+
+- type: loadout
+  id: ClothingUniformJumpskirtBrigmedic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBrigmedic
+
+# Starlight clothing
+- type: loadout
+  id: ClothingUniformJumpskirtGothic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGothic
+
+- type: loadout
+  id: ClothingUniformJumpskirtMaid
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMaid
+
+- type: loadout
+  id: ClothingUniformJumpskirtDressRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDressRed
+
+- type: loadout
+  id: ClothingUniformJumpskirtTango
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTango
+
+- type: loadout
+  id: ClothingUniformJumpskirtVictorianBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVictorianBlack
+
+- type: loadout
+  id: ClothingUniformJumpskirtReporter
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtReporter
+
+- type: loadout
+  id: ClothingUniformJumpskirtJournalist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJournalist
+
+- type: loadout
+  id: ClothingUniformJumpskirtVictorianRed
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVictorianRed
+
+- type: loadout
+  id: ClothingUniformJumpskirtSuitNurse
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSuitNurse
+
+- type: loadout
+  id: ClothingUniformJumpskirtPencilTan
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPencilTan
+
+- type: loadout
+  id: ClothingUniformJumpskirtCargoSalvage
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargoSalvage
+
+- type: loadout
+  id: ClothingUniformJumpskirtCargoSalvageFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargoSalvageFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtSalvageLead
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSalvageLead
+
+- type: loadout
+  id: ClothingUniformJumpskirtMiningSpecialist
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMiningSpecialist
+
+- type: loadout
+  id: ClothingUniformJumpskirtCargoFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargoFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtScientistFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtScientistFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtCoroner
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCoroner
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantMaid
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantMaid
+
+- type: loadout
+  id: ClothingUniformColorJumpskirtRainbow
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformColorJumpskirtRainbow
+
+- type: loadout
+  id: ClothingUniformJumpskirtSchool
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSchool
+
+- type: loadout
+  id: ClothingUniformJumpskirtCapTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCapTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpskirtHoPTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoPTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpskirtHoSBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSBlack
+
+- type: loadout
+  id: ClothingUniformJumpskirtRDClassical
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRDClassical
+
+- type: loadout
+  id: ClothingUniformJulianneVA11HALLA
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJulianneVA11HALLA
+
+- type: loadout
+  id: ClothingUniformElegantLadyDress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformElegantLadyDress
+
+- type: loadout
+  id: ClothingUniformPastryDress
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformPastryDress
+
+- type: loadout
+  id: ClothingUniformJumpsuitSuitCheckered
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSuitCheckered
+
+- type: loadout
+  id: ClothingUniformJumpsuitSuitTan
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSuitTan
+
+- type: loadout
+  id: ClothingUniformJumpsuitSuitWaiter
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSuitWaiter
+
+- type: loadout
+  id: ClothingUniformJumpsuitCargoAlt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoAlt
+
+- type: loadout
+  id: ClothingUniformJumpsuitCargoFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoFormal
+
+- type: loadout
+  id: ClothingUniformJumpsuitSalvageFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageFormal
+
+- type: loadout
+  id: ClothingUniformJumpsuitCoroner
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoroner
+
+- type: loadout
+  id: ClothingUniformJumpsuitCoronerAlt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoronerAlt
+
+- type: loadout
+  id: ClothingUniformJumpsuitSuperstarCop
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSuperstarCop
+
+- type: loadout
+  id: ClothingUniformJumpsuitAerostatic
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAerostatic
+- type: loadout
+  id: ClothingUniformJumpsuitCapTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpsuitCaptainNoble
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptainNoble
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoPTurtleneck
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoPTurtleneck
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoSBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitRDClassical
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRDClassical
+
+- type: loadout
+  id: ClothingUniformJumpsuitVampir
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVampir
+
+- type: loadout
+  id: ClothingUniformNobleSuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformNobleSuit
+
+- type: loadout
+  id: BodysuitJeansUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: BodysuitJeansUniformSuit
+
+- type: loadout
+  id: CamoUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: CamoUniformSuit
+
+- type: loadout
+  id: CandyClownUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: CandyClownUniformSuit
+
+- type: loadout
+  id: CoolTanktopUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: CoolTanktopUniformSuit
+
+- type: loadout
+  id: DruidRobesUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: DruidRobesUniformSuit
+
+- type: loadout
+  id: FlamboyantUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: FlamboyantUniformSuit
+
+- type: loadout
+  id: FlamencoUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: FlamencoUniformSuit
+
+- type: loadout
+  id: FlyCaptainUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: FlyCaptainUniformSuit
+
+- type: loadout
+  id: KiltUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: KiltUniformSuit
+
+- type: loadout
+  id: LilacDressUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: LilacDressUniformSuit
+
+- type: loadout
+  id: LittleBlackDressUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: LittleBlackDressUniformSuit
+
+- type: loadout
+  id: LumberjackOverallsUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: LumberjackOverallsUniformSuit
+
+- type: loadout
+  id: MechanicOverallsUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: MechanicOverallsUniformSuit
+
+- type: loadout
+  id: MessyDressShirtUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: MessyDressShirtUniformSuit
+
+- type: loadout
+  id: MimeFrillsUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: MimeFrillsUniformSuit
+
+- type: loadout
+  id: OldWomanUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: OldWomanUniformSuit
+
+- type: loadout
+  id: PunkJeansUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: PunkJeansUniformSuit
+
+- type: loadout
+  id: RefereeUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: RefereeUniformSuit
+
+- type: loadout
+  id: SailorUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: SailorUniformSuit
+
+- type: loadout
+  id: StripedClownUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: StripedClownUniformSuit
+
+- type: loadout
+  id: SundressUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: SundressUniformSuit
+
+- type: loadout
+  id: TatteredClothesUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: TatteredClothesUniformSuit
+
+- type: loadout
+  id: TieDyeUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: TieDyeUniformSuit
+
+- type: loadout
+  id: TogaUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: TogaUniformSuit
+
+- type: loadout
+  id: VintageUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: VintageUniformSuit
+
+- type: loadout
+  id: CargoOverallsUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: CargoOverallsUniformSuit
+
+- type: loadout
+  id: RedRegaliaSuit
+  price: 0
+  equipment:
+    jumpsuit: RedRegaliaSuit
+
+# == Starlight clown/mime additions
+
+- type: loadout
+  id: ClothingUniformJumpsuitPerformerClown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPerformerClown
+
+- type: loadout
+  id: ClothingUniformJumpsuitClownFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtPerformerClown
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformerClown
+
+- type: loadout
+  id: ClothingUniformJumpskirtClownFormal
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtClownFormal
+
+- type: loadout
+  id: SpottedClownUniformSuit
+  price: 0
+  equipment:
+    jumpsuit: SpottedClownUniformSuit
+
+- type: loadout
+  id: ClothingUniformJumpsuitPerformerMime
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPerformerMime
+
+- type: loadout
+  id: ClothingUniformJumpskirtPerformerMime
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformerMime
+
+- type: loadout
+  id: ClothingUniformJumpsuitMimeSuaveWhite
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveWhite
+
+- type: loadout
+  id: ClothingUniformJumpsuitMimeSuaveBlack
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeSuaveBlack
+

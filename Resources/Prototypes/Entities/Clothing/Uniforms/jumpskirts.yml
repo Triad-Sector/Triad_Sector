@@ -465,6 +465,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/performer.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/performer.rsi
+  - type: SkirtDisplacement # Triad
 
 - type: entity
   parent: ClothingUniformSkirtBase

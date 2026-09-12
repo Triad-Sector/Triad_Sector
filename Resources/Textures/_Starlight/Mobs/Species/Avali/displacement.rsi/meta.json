@@ -15,6 +15,10 @@
             "directions": 4
         },
         {
+           "name": "jumpskirt",
+           "directions": 4
+        },
+        {
             "name": "head",
             "directions": 4
         },
