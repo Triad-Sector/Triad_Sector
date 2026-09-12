@@ -141,7 +141,7 @@
 
 - type: entity
   abstract: true
-  # No parent since we aren't actually an item.
+  parent: BaseNightVisionClothingGenOne # Triad - Basic night vision
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
@@ -183,16 +183,6 @@
     - Snout
     - HeadTop
     - HeadSide
-  # Mono - basic NVDs for everyone!
-  - type: NightVision # Gen 2 monotube
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 300
-    viewCircleCount: 1
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
 
 - type: entity
   abstract: true

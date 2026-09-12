@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadHardsuitBase, ShowMedicalIcons]
+  parent: [BaseNightVisionClothingGenFour, ClothingHeadHardsuitBase, ShowMedicalIcons]
   id: ClothingHelmetHardsuitAsakim
   name: kasature-pattern combat harness helmet
   description: Part of an advanced pre-fracture combat harness.
@@ -26,15 +26,6 @@
     pulseTime: 1
     isEquipment: true
     toggleAction: PulseThermalVision
-  - type: NightVision # Gen 3 wide-quadtube
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: RadarConsole
     followEntity: true
     noRotate: true

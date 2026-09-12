@@ -73,7 +73,7 @@
 # NVGs and thermals
 
 - type: entity
-  parent: ClothingHelmetAttachmentBase
+  parent: [ClothingHelmetAttachmentBase, BaseNightVisionClothingGenTwo]
   id: ClothingHelmetAttachmentNVGsBasic
   name: basic night vision goggles
   description: A pair of basic optoelectronics night vision goggles with high sensibility to flashes, worn in the helmet attachment slot.
@@ -85,15 +85,6 @@
     clothingVisuals:
       helmetattachment:
       - state: equipped-HELMETATTACHMENT
-  - type: NightVision # Gen 1 monotube
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 400
-    viewCircleCount: 1
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: IdentityBlocker
     coverage: EYES
 

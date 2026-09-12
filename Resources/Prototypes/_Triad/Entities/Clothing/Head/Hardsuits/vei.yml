@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [BaseNightVisionClothingGenFour, ClothingHeadHardsuitBase]
   id: ClothingHeadHelmetHardsuitVeiExplorer
   name: VEX MK4 'Explorer' helmet
   description: Quite an expensive piece of hardware. Has an advanced night-vision optic, in purple.
@@ -15,13 +15,7 @@
   - type: TemperatureProtection
     heatingCoefficient: 0.01
     coolingCoefficient: 0.01
-  - type: NightVision # Gen 3 wide-quadtube
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
+  - type: NightVision
     phosphorColor: "#a955ca" #purpl night vision
     lightingColor: "#FFFFFF32"
   - type: FireProtection

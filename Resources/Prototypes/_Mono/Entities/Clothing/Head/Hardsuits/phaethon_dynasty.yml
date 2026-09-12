@@ -9,13 +9,5 @@
     sprite: _Mono/Clothing/Head/Hardsuits/syndicate.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Head/Hardsuits/syndicate.rsi
-  - type: NightVision # Gen 2 monotubee
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 400
-    viewCircleCount: 2
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
+
 

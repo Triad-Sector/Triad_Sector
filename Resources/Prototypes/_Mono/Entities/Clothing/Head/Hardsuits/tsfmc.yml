@@ -12,15 +12,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
-  - type: NightVision # Gen 1 monotube
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 400
-    viewCircleCount: 1
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: Armor
     modifiers:
       coefficients:
@@ -49,15 +40,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
-  - type: NightVision # Gen 3 quadtube-wide
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: Armor
     modifiers:
       coefficients:
@@ -77,16 +59,6 @@
   parent: ClothingHeadHelmetHardsuitM86
   id: ClothingHeadHelmetHardsuitM86Mk4
   categories: [ HideSpawnMenu ]
-  components:
-  - type: NightVision # Gen 4 quadtube-wide
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
-    phosphorColor: "#41D7D9"
-    lightingColor: "#FFFFFF32"
 
 - type: entity
   parent: [NFClothingHeadHardsuitWithLightBaseNfsd, ShowMedicalIcons, ShowSecurityIcons]
@@ -121,15 +93,6 @@
     lowPressureMultiplier: 1000
   - type: EyeProtection
     protectionTime: 15
-  - type: NightVision # Gen 3 dual tube - It needs to be durable, after all.
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 450
-    viewCircleCount: 2
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: Armor
     modifiers:
       coefficients:
