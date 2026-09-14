@@ -218,6 +218,23 @@
   - ClothingUniformIndustrialWorker
   - StrainedShorts
   # End Triad
+  # Triad start - Clown/mime costumes.
+  - CircusClownSuit
+  - CandyClownSuit
+  - SpottedClownSuit
+  - StripedClownSuit
+  - ClownFormalJumpsuit
+  - ClownFormalJumpskirt
+  - ClownClownJumpsuit
+  - ClownClownJumpskirt
+  - MimeCroppedSuit
+  - MimeNouveauSuit
+  - MimePerformerSuit
+  - MimePerformerSkirt
+  - MimeSuaveWhite
+  - MimeSuaveBlack
+  - MimeFrillsDress
+  # End Triad
 
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
@@ -389,6 +406,7 @@
   - ContractorClothingOuterCoatBomberPunkRed # Punkish (Static visuals)
   - SpotsJacketBlue # Triad
   - SpotsJacketRed # Triad
+  - MimePufferCoat # Triad
   - ContractorClothingOuterCoatJacketLeather # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketBiker # Punkish (Static visuals)
   - ContractorClothingOuterCoatJacketJamrock # Punkish (Static visuals)
@@ -604,6 +622,10 @@
   - ContractorClothingHeadHatTophat
   - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
+  # Triad start - Clown/mime costumes.
+  - CircusClownHat
+  - MimeBowler
+  # End Triad
 
 - type: loadoutGroup
   id: ContractorEars
