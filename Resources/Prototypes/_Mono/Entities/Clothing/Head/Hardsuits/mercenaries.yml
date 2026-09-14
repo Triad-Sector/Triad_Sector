@@ -19,7 +19,7 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
-  - type: FlashImmunity
+  #- type: FlashImmunity Triad - Removed most sources of flash immunity.
   - type: ToggleableVisuals
   - type: PointLight
     radius: 8
