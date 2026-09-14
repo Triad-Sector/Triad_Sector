@@ -196,7 +196,7 @@ namespace Content.Client.Stylesheets
         public static readonly string ServiceButtonClass = "ServiceButton";
 
         // CS - AAC button variables
-        public static readonly string NFSDButtonClass = "NFSDButton";
+        public static readonly string TDFButtonClass = "TDFButton"; // Triad change : NSFD -> TDF
         public static readonly string PirateButtonClass = "PirateButton";
 
         // DeltaV - AAC button colors
@@ -219,8 +219,9 @@ namespace Content.Client.Stylesheets
         // End DeltaV
 
         // Coyote Frontier - AAC button colors
-        public static readonly Color NFSDButttonColorDefault = Color.FromHex("#4b653e");
-        public static readonly Color NFSDButtonColorHovered = Color.FromHex("#667A76");
+        // Triad change : NSFD -> TDF
+        public static readonly Color TDFButtonColorDefault = Color.FromHex("#4b653e");
+        public static readonly Color TDFButtonColorHovered = Color.FromHex("#667A76");
         public static readonly Color PirateButtonColorDefault = Color.FromHex("#61503A");
         public static readonly Color PirateButtonColorHovered = Color.FromHex("#675C64");
         // end Coyote Frontier
@@ -1896,15 +1897,16 @@ namespace Content.Client.Stylesheets
                 // End DeltaV
 
                 // Start CS
+                // Triad change : NSFD -> TDF
                 Element<ContainerButton>()
-                    .Class(NFSDButtonClass)
+                    .Class(TDFButtonClass)
                     .Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(Control.StylePropertyModulateSelf, NFSDButttonColorDefault),
+                    .Prop(Control.StylePropertyModulateSelf, TDFButtonColorDefault),
 
                 Element<ContainerButton>()
-                    .Class(NFSDButtonClass)
+                    .Class(TDFButtonClass)
                     .Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, NFSDButtonColorHovered),
+                    .Prop(Control.StylePropertyModulateSelf, TDFButtonColorHovered),
 
                 Element<ContainerButton>()
                     .Class(PirateButtonClass)
