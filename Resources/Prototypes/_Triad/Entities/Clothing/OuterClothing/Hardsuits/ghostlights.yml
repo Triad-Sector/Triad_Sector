@@ -1,0 +1,79 @@
+#Ghostlight Wraith Softsuit
+- type: entity
+  parent: [ ClothingOuterHardsuitBase ]
+  id: ClothingOuterHardsuitGhostlightWraith
+  name: G-27 Wraith tacsuit
+  description: A Ghostlight-designed softsuit. A non-combat suit made for pilots. Its helmet is heavy and full of sensors used in mech operation, including thermals, NVGs, and a mass scanner. The orange vests mark them as non-combatants when they leave their mechs, like that stopped anyone...
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/wraith.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/wraith.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.8
+        Radiation: 0.8
+        Caustic: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 1.00
+    sprintModifier: 1.00
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitGhostlightWraith
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+
+#Ghostlight Specter hardsuit
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseJetpack ]
+  id: ClothingOuterHardsuitGhostSpecter
+  name: G-500 Specter hardsuit
+  description: A Ghostlight-designed combat hardsuit. There are conflicting stories about it; some describe the suit as a symbol of hope in times of need. Others see its blood-soaked past under its ornate silver plating. Its history matters little; now it's just another tool of conflict. It's equipped with rear-mounted atmospheric thrusters.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/specter.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/specter.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.7
+    lowPressureMultiplier: 1000
+  - type: ClothingSpeedModifier
+    walkModifier: 0.80 # Mono
+    sprintModifier: 0.80 # Mono
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.55
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: StaminaDamageResistance # Mono - Stamres
+    coefficient: 0.6
+  - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitGhostlightSpecter
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
