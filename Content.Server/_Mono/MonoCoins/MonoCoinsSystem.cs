@@ -11,6 +11,7 @@ using Content.Shared.StationRecords;
 using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Timing; // Triad
 
 namespace Content.Server._Mono.MonoCoins;
 
@@ -25,8 +26,16 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private StationSystem _stationSystem = default!;
     [Dependency] private StationRecordsSystem _stationRecords = default!;
+    [Dependency] private IGameTiming _gameTiming = default!; // Triad
 
-    private const int RoundEndReward = 10;
+    private const int HourlyReward = 1; // Triad - 1<10. Hourly instead of round-end.
+
+    // Triad - Hourly instead of round-end.
+    private static readonly TimeSpan PayoutDelay = TimeSpan.FromHours(1);
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan NextPayoutTime;
+    // End Triad
 
     public override void Initialize()
     {
@@ -40,8 +49,23 @@ public sealed partial class MonoCoinsSystem : EntitySystem
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
 
         // Subscribe to round end events
-        SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
+        //SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd); // Triad removal - Hourly instead of round-end.
     }
+
+    // Triad - Hourly instead of round-end.
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var curTime = _gameTiming.CurTime;
+
+        if (curTime < NextPayoutTime)
+            return;
+
+        HourlyPayout();
+        NextPayoutTime = curTime + PayoutDelay;
+    }
+    // End Triad
 
     /// <summary>
     /// Handles requests for MonoCoins balance from clients.
@@ -114,9 +138,9 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     }
 
     /// <summary>
-    /// Called when a round ends. Awards MonoCoins to players who appear in the station manifest.
+    /// Called hourly. Awards MonoCoins to players who appear in the station manifest.
     /// </summary>
-    private async void OnRoundEnd(RoundEndMessageEvent args)
+    private async void HourlyPayout() // Triad - Removed argument. Hourly instead of round-end.
     {
         // Award MonoCoins to players who appear in the station manifest
         var tasks = new List<Task>();
@@ -130,7 +154,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
             }
             else
             {
-                Log.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping MonoCoins reward");
+                Log.Debug($"Player {session.Name} ({session.UserId}) not found in station manifest, skipping TriToken reward"); // Triad - MonoCoin rename.
             }
         }
 
@@ -179,11 +203,11 @@ public sealed partial class MonoCoinsSystem : EntitySystem
     {
         try
         {
-            var newBalance = await _db.AddMonoCoinsAsync(session.UserId, RoundEndReward);
-            Log.Info($"Awarded {RoundEndReward} MonoCoins to player {session.Name} ({session.UserId}). New balance: {newBalance}");
+            var newBalance = await _db.AddMonoCoinsAsync(session.UserId, HourlyReward); // Triad - Hourly instead of round-end.
+            Log.Info($"Awarded {HourlyReward} TriToken to player {session.Name} ({session.UserId}). New balance: {newBalance}"); // Triad - Hourly instead of round-end. TriToken rename.
 
             // Notify the player via chat
-            var notificationMessage = $"Round ended! You earned {RoundEndReward} MonoCoins. Your new balance: {newBalance}";
+            var notificationMessage = $"You earned {HourlyReward} hourly TriToken. Your new balance: {newBalance}."; // Triad - Hourly instead of round-end. TriToken rename.
             _chatManager.ChatMessageToOne(
                 ChatChannel.Notifications,
                 notificationMessage,
@@ -194,7 +218,7 @@ public sealed partial class MonoCoinsSystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Log.Error($"Failed to award round end MonoCoins to player {session.Name} ({session.UserId}): {ex.Message}");
+            Log.Error($"Failed to award hourly TriToken to player {session.Name} ({session.UserId}): {ex.Message}"); // Triad - Hourly instead of round-end. TriToken rename.
         }
     }
 }

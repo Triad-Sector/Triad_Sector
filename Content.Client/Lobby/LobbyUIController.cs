@@ -113,7 +113,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             return;
 
         var balance = _monoCoins?.GetLastKnownBalance() ?? -1;
-        PreviewPanel.SetMonoCoinsText($"MonoCoins: {balance}");
+        PreviewPanel.SetMonoCoinsText($"TriTokens: {balance}"); // Triad - Renamed MonoCoin.
     }
 
     private LobbyCharacterPreviewPanel? GetLobbyPreview()
@@ -229,7 +229,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             PreviewPanel.SetSummaryText(string.Empty);
             PreviewPanel.SetBankBalanceText(string.Empty); // Frontier
             PreviewPanel.SetCompanyText(string.Empty); // Player Faction Display
-            PreviewPanel.SetMonoCoinsText("MonoCoins: -1"); // MonoCoins Display
+            PreviewPanel.SetMonoCoinsText("TriTokens: -1"); // MonoCoins Display // Triad - Renamed MonoCoins.
             return;
         }
 
