@@ -1,7 +1,7 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._RMC14.Storage;
+using Content.Shared._Triad.Storage;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -72,8 +72,8 @@ public abstract partial class SharedStorageSystem : EntitySystem
     [Dependency] protected SharedUserInterfaceSystem UI = default!;
     [Dependency] protected UseDelaySystem UseDelay = default!;
 
-    // RMC14
-    [Dependency] protected RMCStorageSystem RMCStorage = default!;
+    // Triad
+    [Dependency] protected TriadStorageSystem TriadStorage = default!;
 
     private EntityQuery<ItemComponent> _itemQuery;
     private EntityQuery<StackComponent> _stackQuery;
@@ -1134,7 +1134,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
             }
         }
 
-        if (!RMCStorage.CanInsert((uid, storageComp), insertEnt, out var popup))
+        if (!TriadStorage.CanInsert((uid, storageComp), insertEnt, out var popup))
         {
             reason = popup;
             return false;
