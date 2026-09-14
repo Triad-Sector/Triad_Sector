@@ -6,6 +6,12 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Triad Start - Ported Starlight Clothing
+  - ClothingUniformJumpskirtSuitNurse
+  - ClothingUniformJumpskirtCoroner
+  - ClothingUniformJumpsuitCoroner
+  - ClothingUniformJumpsuitCoronerAlt
+  # End Triad
   fallbacks:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
@@ -57,6 +63,9 @@
   loadouts:
   - DocClothingCloakCmo
   - DocClothingNeckMantleCMO
+  # Triad Start - Ported Starlight Clothing
+  - ClothingNeckStethoscope
+  # End Triad
 
 - type: loadoutGroup
   id: DocPDA
