@@ -28,13 +28,13 @@
 - type: roleLoadout
   id: JobPlantManager
   groups:
-  - ChiefEngineerHead
+  - DoIHead
   - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
   - PlantManagerBackpack
-  - ChiefEngineerOuterClothing
-  - ChiefEngineerShoes
+  - DoIOuterClothing
+  - ContractorShoes
   - PlantFace
   - PlantGlasses
   - PlantEars
@@ -42,6 +42,7 @@
   - PlantTools
   - ContractorBoxSurvival
   - ContractorWallet
+  - ContractorCartridge
   - ContractorTrinkets
   - ContractorBureaucracy
   - NFSpeciesSpecific
@@ -50,24 +51,28 @@
 - type: roleLoadout
   id: JobPlantTechnician
   groups:
-  - PlantTechnicianHead
-  - PlantTechnicianNeck
+  - PlantHead
+  - ContractorNeck
   - PlantTechnicianJumpsuit
   - PlantGloves
-  - PlantTechnicianBackpack
-  - StationEngineerOuterClothing
-  - StationEngineerShoes
-  - PlantBelt
+  - PlantBackpack
+  - ContractorOuterClothing
+  - ContractorShoes
   - PlantFace
   - PlantGlasses
+  - PlantBelt
   - PlantEars
   - ContractorEncryptionKey
   - PlantTools
   - ContractorBoxSurvival
   - ContractorWallet
+  - ContractorCartridge
   - ContractorTrinkets
   - ContractorBureaucracy
   - NFSpeciesSpecific
+  - ContractorFirearm
+  - ContractorMag
+  - ContractorArmorPlates
 
 # These are admin only roles, but they need a rudimentary loadout so that they do not spawn naked if the jobs are spawned by admins
 - type: roleLoadout

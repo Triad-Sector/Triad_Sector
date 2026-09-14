@@ -2,8 +2,21 @@
 # kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
 # from the same loadout prototypes, plus a few plant-specific additions defined below.
 - type: loadoutGroup
+  id: PlantHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - StationEngineerHardhatOrange
+  - StationEngineerHardhatRed
+  - PlantHardhatBlue
+  - PlantEngineeringBeret
+  subgroups:
+  - ContractorHead
+
+- type: loadoutGroup
   id: PlantTools
-  name: loadout-group-plant-tools
+  name: loadout-group-contractor-utility
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -19,7 +32,7 @@
 
 - type: loadoutGroup
   id: PlantFace
-  name: loadout-group-plant-face
+  name: loadout-group-contractor-face
   minLimit: 0
   loadouts:
   - ContractorClothingMaskBreath
@@ -30,7 +43,7 @@
 
 - type: loadoutGroup
   id: PlantGloves
-  name: loadout-group-plant-gloves
+  name: loadout-group-contractor-gloves
   minLimit: 0
   loadouts:
   - ContractorClothingHandsGlovesColorYellow
@@ -44,7 +57,7 @@
 
 - type: loadoutGroup
   id: PlantGlasses
-  name: loadout-group-plant-glasses
+  name: loadout-group-contractor-glasses
   minLimit: 0
   loadouts:
   - ContractorClothingEyesGlassesMeson
@@ -54,8 +67,27 @@
   - ContractorClothingEyesGlassesCheapSunglasses
 
 - type: loadoutGroup
+  id: PlantBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingModsuitAtmostechPowerCell
+  - ContractorClothingModsuitEngineerPowerCell
+  - StationEngineerBackpack
+  - StationEngineerDuffel
+  - StationEngineerSatchel
+  - ContractorClothingBackpackMessengerEngineering
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianDuffel
+  - AtmosphericTechnicianSatchel
+  - ContractorClothingBackpackMessengerAtmospherics
+  fallbacks:
+  - StationEngineerBackpack
+
+- type: loadoutGroup
   id: PlantEars
-  name: loadout-group-plant-ears
+  name: loadout-group-contractor-ears
   minLimit: 1
   maxLimit: 1
   loadouts:
