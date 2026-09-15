@@ -21,8 +21,9 @@ public sealed partial class ShipGunTypeComponent : Component
 [Serializable, NetSerializable]
 public enum ShipGunType
 {
+    // Triad - Begin (Better Weapon Groups)
     Ballistic,
-    Energy,
-    Missile,
-    Other
+    Impulse,
+    Guided
+    // Triad - End
 }
