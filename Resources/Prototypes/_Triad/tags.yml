@@ -34,6 +34,9 @@
 - type: Tag
   id: Cartridge185x76mm
 
+- type: Tag
+  id: Cartridge185x76mmEMP
+
 # Magazines
 
 - type: Tag
@@ -41,6 +44,11 @@
 
 - type: Tag
   id: ShortMagazine12_gaugeBuckshot
+
+# Ammo Boxes
+
+- type: Tag
+  id: Magazine185x76mmFMJBox
 
 # Clothing
 - type: Tag

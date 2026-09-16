@@ -1,7 +1,7 @@
 #18.5 ammo costs are high to offset some of its all-round and versatile ammo types, especially EMP rounds and Anti-Materiel
 #Magazines [5 steel, 15 misc materials]
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmFMJMagazineRecipe
   categories:
@@ -12,7 +12,7 @@
     Steel: 500
   result: Magazine185x76mm
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmEmptyMagazineRecipe
   categories:
@@ -21,7 +21,7 @@
     Steel: 500
   result: Magazine185x76mmEmpty
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmHighExMagazineRecipe
   categories:
@@ -33,7 +33,7 @@
     Steel: 500
   result: Magazine185x76mmHighEx
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmHighExIncendiaryMagazineRecipe
   categories:
@@ -46,7 +46,7 @@
     Steel: 500
   result: Magazine185x76mmHighExIncendiary
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmHighExRadMagazineRecipe
   categories:
@@ -59,7 +59,7 @@
     Steel: 500
   result: Magazine185x76mmHighExRad
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmFragmentationMagazineRecipe
   categories:
@@ -71,7 +71,7 @@
     Steel: 500
   result: Magazine185x76mmFragmentation
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmFragmentationIncendiaryMagazineRecipe
   categories:
@@ -85,7 +85,7 @@
     Steel: 500
   result: Magazine185x76mmFragmentationIncendiary
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmAnti-MaterielMagazineRecipe
   categories:
@@ -97,7 +97,7 @@
     Steel: 500
   result: Magazine185x76mmAnti-Materiel
 
-- type: latherecipe
+- type: latheRecipe
   parent: BaseAmmoRecipe
   id: 185x76mmEMPMagazineRecipe
   categories:
@@ -105,7 +105,8 @@
   - Ammo
   materials:
     Plasteel: 500
-    Iridite: 200
+    Iridite: 020
+    Lithium: 180
     Copper: 800
     Steel: 500
   result: Magazine185x76mmEMP

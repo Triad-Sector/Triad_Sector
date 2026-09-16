@@ -131,3 +131,37 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-5
       map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity #Evil and fucked up EMP mag, short and will exclusively take emp rounds
+  id: BaseMagazine185x76mmEMP
+  name: "box magazine (18.5x76 emp)"
+  parent: BaseItem
+  description: A short mag that can only be loaded with EMP rounds due to their unstable nature, zipzap.
+  components:
+  - type: Tag
+    tags:
+    - Magazine185x76mm
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - Cartridge185x76mmEMP
+    proto: Cartridge185x76mmEMP
+    capacity: 5
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Magazines/18.5x76mm/18.5x76mm_magazine.rsi
+    layers:
+    - state: emp
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: false
+  - type: Appearance

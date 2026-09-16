@@ -128,3 +128,18 @@
     intensitySlope: 0.7
     totalIntensity: 4
     maxTileBreak: 0
+
+- type: entity
+  parent: BaseBulletEmp
+  id: Bullet185x76mmEMP
+  name: bullet (18.5x76mm emp)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Shock: 7
+  - type: EmpOnTrigger
+    range: 1.2
+    energyConsumption: 2700000
+    disableDuration: 5

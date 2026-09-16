@@ -124,3 +124,28 @@
     - state: tip
       map: [ "enum.AmmoVisualLayers.Tip" ]
       color: "#04ff00"
+
+- type: entity
+  id: Cartridge185x76mmEMP
+  name: cartridge (18.5x76mm emp)
+  parent: BaseCartridge
+  description: An expensive and unstable EMP round, it hums faintly with the power contained within.
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge185x76mmEMP #fits in EMP mags exclusively
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmEMP
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/light_grenade_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip"]
+      color: "#001eff"
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: StaticPrice
+    price: 1
