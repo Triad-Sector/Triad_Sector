@@ -201,6 +201,7 @@
     tags:
     - DoorBumpOpener
     - CivilianMechBounty # Mono
+    - FootstepSound # Triad
   - type: Prying # Mono
     pryPowered: true
     speedModifier: 2
@@ -250,6 +251,7 @@
     tags:
     - DoorBumpOpener
     - CivilianMechBounty # Mono
+    - FootstepSound # Triad
   - type: Prying # Mono
     pryPowered: true
     speedModifier: 2
