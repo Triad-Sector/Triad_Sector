@@ -1,21 +1,20 @@
-# Loadout groups for the infrastructure roles. The Contractor* groups carry every department's
-# kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
-# from the same loadout prototypes, plus a few plant-specific additions defined below.
 - type: loadoutGroup
-  id: PlantHead
+  id: InfrastructureHead
   name: loadout-group-contractor-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellow
-  - StationEngineerHardhatOrange
-  - StationEngineerHardhatRed
-  - PlantHardhatBlue
-  - PlantEngineeringBeret
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  - ContractorClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark
+  - ContractorClothingHeadHatBeretEngineering
   subgroups:
   - ContractorHead
 
 - type: loadoutGroup
-  id: PlantTools
+  id: InfrastructureTools
   name: loadout-group-contractor-utility
   minLimit: 0
   maxLimit: 2
@@ -31,7 +30,7 @@
   - PlantRCDAmmo
 
 - type: loadoutGroup
-  id: PlantFace
+  id: InfrastructureFace
   name: loadout-group-contractor-face
   minLimit: 0
   loadouts:
@@ -42,7 +41,7 @@
   - ContractorClothingMaskNeckGaiterRed
 
 - type: loadoutGroup
-  id: PlantGloves
+  id: InfrastructureGloves
   name: loadout-group-contractor-gloves
   minLimit: 0
   loadouts:
@@ -56,7 +55,7 @@
   - ContractorClothingHandsGlovesColorWhite
 
 - type: loadoutGroup
-  id: PlantGlasses
+  id: InfrastructureGlasses
   name: loadout-group-contractor-glasses
   minLimit: 0
   loadouts:
@@ -67,7 +66,7 @@
   - ContractorClothingEyesGlassesCheapSunglasses
 
 - type: loadoutGroup
-  id: PlantBackpack
+  id: InfrastructureBackpack
   name: loadout-group-contractor-backpack
   minLimit: 1
   maxLimit: 1
@@ -86,7 +85,7 @@
   - StationEngineerBackpack
 
 - type: loadoutGroup
-  id: PlantEars
+  id: InfrastructureEars
   name: loadout-group-contractor-ears
   minLimit: 1
   maxLimit: 1

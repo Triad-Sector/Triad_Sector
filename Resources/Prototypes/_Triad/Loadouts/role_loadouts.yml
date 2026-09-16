@@ -30,14 +30,14 @@
   groups:
   - DoIHead
   - DoINeck
-  - PlantManagerJumpsuit
-  - PlantGloves
-  - PlantManagerBackpack
+  - DoIJumpsuit
+  - InfrastructureGloves
+  - DoIBackpack
   - DoIOuterClothing
   - ContractorShoes
-  - PlantFace
-  - PlantGlasses
-  - PlantEars
+  - InfrastructureFace
+  - InfrastructureGlasses
+  - InfrastructureEars
   - ContractorEncryptionKey
   - PlantTools
   - ContractorBoxSurvival
@@ -51,19 +51,19 @@
 - type: roleLoadout
   id: JobPlantTechnician
   groups:
-  - PlantHead
+  - InfrastructureHead
   - ContractorNeck
-  - PlantTechnicianJumpsuit
-  - PlantGloves
-  - PlantBackpack
+  - SectorTechnicianJumpsuit
+  - InfrastructureGloves
+  - InfrastructureBackpack
   - ContractorOuterClothing
   - ContractorShoes
-  - PlantFace
-  - PlantGlasses
-  - PlantBelt
-  - PlantEars
+  - InfrastructureFace
+  - InfrastructureGlasses
+  - SectorTechnicianBelt
+  - InfrastructureEars
   - ContractorEncryptionKey
-  - PlantTools
+  - InfrastructureTools
   - ContractorBoxSurvival
   - ContractorWallet
   - ContractorCartridge

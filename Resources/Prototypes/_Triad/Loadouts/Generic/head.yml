@@ -1,0 +1,30 @@
+- type: loadout
+  id: ClothingHeadHatHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+  groupBy: "hardhats"
+
+- type: loadout
+  id: ClothingHeadHatHardhatOrange
+  equipment:
+    head: ClothingHeadHatHardhatOrange
+  groupBy: "hardhats"
+
+- type: loadout
+  id: ClothingHeadHatHardhatRed
+  equipment:
+    head: ClothingHeadHatHardhatRed
+  groupBy: "hardhats"
+
+- type: loadout
+  id: ClothingHeadHatHardhatWhite
+  equipment:
+    head: ClothingHeadHatHardhatWhite
+  groupBy: "hardhats"
+
+- type: loadout
+  id: ClothingHeadHatHardhatYellowDark
+  equipment:
+    head: ClothingHeadHatHardhatYellowDark
+  groupBy: "hardhats"
+
