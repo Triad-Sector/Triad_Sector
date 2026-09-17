@@ -25,8 +25,8 @@
     viewCircleRadius: 400
     viewCircleCount: 2
     viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
+    phosphorColor: "#369EFFFF"
+    lightingColor: "#369EFFFF"
   - type: Armor
     modifiers:
       coefficients:
@@ -83,8 +83,8 @@
     viewCircleCount: 4
     viewCircleSpacing: 280
     action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
+    phosphorColor: "#369EFFFF"
+    lightingColor: "#369EFFFF"
   - type: Armor
     modifiers:
       coefficients:
