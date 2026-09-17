@@ -84,7 +84,7 @@
     - ClothMade # No chameleon
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: AlternateFoldableSleevesOnlyUniformBase
   id: ClothingUniformJumpsuitTdfFlannel
   name: TDF flannel jumpsuit
   description: It's so beautiful outside.
