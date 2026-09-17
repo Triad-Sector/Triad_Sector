@@ -148,11 +148,9 @@
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
 # Triad Start
-  - ClothingOuterHardsuitRmtL10
-  - ClothingOuterHardsuitRmtM10
-  - ClothingOuterHardsuitIndustrialEngi
-  - ClothingOuterHardsuitRmtL10A
   - ClothingModsuitHZDBesieger
+  - GhostlightHardsuitSpecter
+  - GhostlightHardsuitWraith
 # Triad End
 ## Utilities
   - ForensicPad
