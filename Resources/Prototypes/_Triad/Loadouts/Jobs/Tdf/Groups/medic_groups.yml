@@ -52,6 +52,7 @@
   minLimit: 1
   loadouts:
   - ClothingUniformJumpsuitTdfCombatMedic
+  - ClothingUniformJumpsuitTdfFlannel
   fallbacks:
   - ClothingUniformJumpsuitTdfCombatMedic
 

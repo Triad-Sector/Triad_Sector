@@ -5,6 +5,7 @@
   loadouts:
   - ClothingUniformJumpsuitTdfChiefEnforcer
   - ClothingUniformJumpsuitTdfChiefEnforcerFormal
+  - ClothingUniformJumpsuitTdfFlannel
   fallbacks:
   - ClothingUniformJumpsuitTdfChiefEnforcer
 
