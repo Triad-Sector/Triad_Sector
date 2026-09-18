@@ -1,0 +1,31 @@
+- type: pointOfInterest
+  id: TerralithStation
+  parent: BasePOI
+  name: 'Terralith Central Fabrication Station'
+  minimumDistance: 22500 # For middle of outer reaches II and before Outer Reaches IV
+  maximumDistance: 30000
+  spawnGroup: Required
+  gridPath: /Maps/_Triad/POI/terralithstation.yml
+  addComponents:
+  - type: IFF
+    color: "#10771A"
+    flags: [HideLabel]
+    readOnly: false
+
+- type: gameMap
+  id: TerralithStation
+  mapName: 'Terralith Central Fabrication Station'
+  mapPath: /Maps/_Triad/POI/terralithstation.yml
+  minPlayers: 0
+  stations:
+    TerralithStation:
+      stationProto: RecordsFrontierOutpostCargo
+      gridComponents:
+      - type: VesselInfo
+        description: "One of the leading technological giants of Sol. Specializing in autonomous technology and robotics engineering."
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Terralith Central Fabrication Station'
+        # Making it a station dead drop doesn't make any sense
+        # - type: StationDeadDrop
+        #   maxDeadDrops: 6
