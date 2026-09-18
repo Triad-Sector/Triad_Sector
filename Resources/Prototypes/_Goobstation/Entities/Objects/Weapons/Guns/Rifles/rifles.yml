@@ -190,10 +190,10 @@
     maxAngle: -8  # Triad Edit -- Bugfix
 
 - type: entity
-  name: CS Burner (12.7x99mm)
+  name: CS Burner (18.5x76mm) #Triad, swapped to 18.5x76mm from 12.7x99mm
   parent: BaseWeaponRifle # Mono - Changed to HighValue
   id: WeaponRifleBurner
-  description: A high caliber syndicate gun chambered in 12.7x99mm, capable of firing anti-material and high explosive rounds.
+  description: A high caliber syndicate gun chambered in 18.5x76mm, capable of firing anti-material and high explosive rounds.
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Rifles/burner.rsi
@@ -202,8 +202,16 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+  - type: GunWieldBonus #Triad, added recoil and accuracy n all that, upped the firerate slightly.
+    minAngle: -3
+    maxAngle: -10
   - type: Gun
-    fireRate: 1.7
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 3
+    angleDecay: 10
+    projectileSpeed: 47
+    fireRate: 2.7
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
   - type: ChamberMagazineAmmoProvider
@@ -213,21 +221,21 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine127x99mm
+        startingItem: Magazine185x76mm
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
         priority: 2
         whitelist:
           tags:
-          - Magazine127x99mm
+          - Magazine185x76mm
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge127x99mm
+        startingItem: Cartridge185x76mm
         priority: 1
         whitelist:
           tags:
-          - Cartridge127x99mm
+          - Cartridge185x76mm
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
