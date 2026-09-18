@@ -594,6 +594,8 @@
   - AmmoBox23x75mmBuckshot
   - Magazine12_gaugeBuckshot
   - AmmoBox12_gaugeBuckshot
+  - Magazine185x76mm #Triad
+  - AmmoBox185x76mmFMJ #Triad
   - Magazine762x51mmFMJ
   - AmmoBox762x51mmFMJ
   - Magazine762x54mmRFMJ
@@ -685,6 +687,7 @@
 #Empty recipes
 
   - Magazine12_gaugeEmpty
+  - Magazine185x76mmEmpty #Triad
   - Magazine762x51mmEmpty
   - Magazine762x54mmREmpty
   - Magazine8x65mmEmpty
@@ -947,6 +950,19 @@
   - MagazineSmartMagnumExt
   - AmmoBox145x114mm
   - AmmoBox145x114mmBig
+  - Magazine185x76mmHighEx #Each 185x76mm recipe is from Triad
+  - AmmoBox185x76mmHighEx
+  - Magazine185x76mmHighExIncendiary
+  - AmmoBox185x76HighExIncendiary
+  - Magazine185x76mmHighExRad
+  - AmmoBox185x76mmHighExRad
+  - Magazine185x76mmFragmentation
+  - AmmoBox185x76mmFragmentation
+  - Magazine185x76mmFragmentationIncendiary
+  - AmmoBox185x76mmFragmentationIncendiary
+  - Magazine185x76mmAnti-Materiel
+  - AmmoBox185x76mmAnti-Materiel
+  - Magazine185x76mmEMP
 
 # Energy
 #  - Magazine700Thz

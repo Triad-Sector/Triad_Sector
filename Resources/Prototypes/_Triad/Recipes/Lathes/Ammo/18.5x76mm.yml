@@ -3,7 +3,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmFMJMagazineRecipe
+  id: Magazine185x76mm
   categories:
   - FMJAmmo
   - Ammo
@@ -14,7 +14,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmEmptyMagazineRecipe
+  id: Magazine185x76mmEmpty
   categories:
   - Ammo
   materials:
@@ -23,7 +23,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmHighExMagazineRecipe
+  id: Magazine185x76mmHighEx
   categories:
   - Misc
   - Ammo
@@ -35,7 +35,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmHighExIncendiaryMagazineRecipe
+  id: Magazine185x76mmHighExIncendiary
   categories:
   - IncenAmmo
   - Ammo
@@ -48,20 +48,20 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmHighExRadMagazineRecipe
+  id: Magazine185x76mmHighExRad
   categories:
   - UraniumAmmo
   - Ammo
   materials:
     Plasteel: 500
     UraniumFissile: 010
-    Plasma: 500
+    Plasma: 1000
     Steel: 500
   result: Magazine185x76mmHighExRad
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmFragmentationMagazineRecipe
+  id: Magazine185x76mmFragmentation
   categories:
   - MiscAmmo
   - Ammo
@@ -73,7 +73,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmFragmentationIncendiaryMagazineRecipe
+  id: Magazine185x76mmFragmentationIncendiary
   categories:
   - MiscAmmo
   - IncenAmmo
@@ -87,7 +87,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmAnti-MaterielMagazineRecipe
+  id: Magazine185x76mmAnti-Materiel
   categories:
   - PlasteelApAmmo
   - Ammo
@@ -99,7 +99,7 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: 185x76mmEMPMagazineRecipe
+  id: Magazine185x76mmEMP
   categories:
   - MiscAmmo
   - Ammo
@@ -111,5 +111,91 @@
     Steel: 500
   result: Magazine185x76mmEMP
 
-#Ammo Boxes [30 misc materials]
+#Ammo Boxes [30 misc materials, 5 steel]
 
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFMJ
+  categories:
+  - FMJAmmo
+  - Ammo
+  materials:
+    Plasteel: 3000
+    Steel: 500
+  result: AmmoBox185x76mmFMJ
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighEx
+  categories:
+  - Misc
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plasma: 2000
+    Steel: 500
+  result: AmmoBox185x76mmHighEx
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighExIncendiary
+  categories:
+  - IncenAmmo
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plasma: 1000
+    Plastic: 1000
+    Steel: 500
+  result: AmmoBox185x76mmHighExIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighExRad
+  categories:
+  - UraniumAmmo
+  - Ammo
+  materials:
+    Plasteel: 1000
+    UraniumFissile: 020
+    Plasma: 2000
+    Steel: 500
+  result: AmmoBox185x76mmHighExRad
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFragmentation
+  categories:
+  - MiscAmmo
+  - Ammo
+  materials:
+    Plasteel: 2000
+    Plasma: 1000
+    Steel: 500
+  result: AmmoBox185x76mmFragmentation
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFragmentationIncendiary
+  categories:
+  - MiscAmmo
+  - IncenAmmo
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plastic: 1000
+    Plasma: 1000
+    Steel: 500
+  result: AmmoBox185x76mmFragmentationIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmAnti-Materiel
+  categories:
+  - PlasteelApAmmo
+  - Ammo
+  materials:
+    Plastitanium: 2000
+    UraniumDepleted: 1000
+    Steel: 500
+  result: AmmoBox185x76mmAnti-Materiel
