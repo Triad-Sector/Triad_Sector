@@ -35,5 +35,5 @@
   - type: TimedDespawn
     lifetime: 0.1
   - type: IgniteOnCollide
-    firestacks: 1
+    fireStacks: 1
     count: 10
