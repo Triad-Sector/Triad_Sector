@@ -65,3 +65,7 @@
 
 - type: Tag
   id: BorgModuleSolarianEngineering
+
+# Structures
+- type: Tag
+  id: IgnoreThrusterDamage
