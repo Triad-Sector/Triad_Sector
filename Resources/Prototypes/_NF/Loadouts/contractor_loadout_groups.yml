@@ -21,6 +21,14 @@
   - ContractorClothingUniformJumpskirtHydroponics
   - ContractorClothingUniformJumpsuitMedicalDoctor
   - ContractorClothingUniformJumpskirtMedicalDoctor
+  # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformMedicalApron
+  - ClothingUniformJumpskirtMedicalApron
+  - ClothingUniformMedicalOffset
+  - ClothingUniformJumpskirtMedicalOffset
+  - ClothingUniformMedicalVest
+  - ClothingUniformJumpskirtMedicalVest
+  # End Triad
   - ContractorClothingUniformJumpsuitScientist
   - ContractorClothingUniformJumpskirtScientist
   - ContractorClothingUniformJumpsuitColorWhite
@@ -78,10 +86,14 @@
   - ContractorUniformScrubsColorPurple
   - ContractorClothingUniformJumpsuitParamedic
   - ContractorClothingUniformJumpskirtParamedic
+  - ClothingUniformParamedicJumper # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformJumpskirtParamedicJumper # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingUniformJumpsuitVirology
   - ContractorClothingUniformJumpskirtVirology
   - ContractorClothingUniformJumpsuitChemistry
   - ContractorClothingUniformJumpskirtChemistry
+  - ClothingUniformChemistSenior # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformJumpskirtChemistSenior # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingUniformJumpsuitGenetics
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
@@ -342,11 +354,17 @@
   - ContractorClothingOuterHoodieChaplain
   - ContractorClothingOuterNunRobe
   - ContractorClothingOuterCoatLab
+  - ClothingOuterCoatLabLong # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingOuterCoatLabMedical # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingOuterCoatLabLongMedical # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingOuterCoatLabGene
   - ContractorClothingOuterCoatLabChem
+  - ClothingOuterCoatLabLongChemist # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingOuterCoatLabSeniorChemist # Triad - Ported "Medical Clothing Overhaul" clothes.
   # - ContractorClothingOuterCoatLabRnd
   - ContractorClothingOuterCoatRobo
   - ContractorClothingOuterCoatLabViro
+  - ClothingOuterCoatLabCybersun # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingOuterBioScientist
   - ContractorClothingOuterWinterCoat
   - ContractorClothingOuterWinterCoatLong
@@ -362,6 +380,7 @@
   - ContractorClothingOuterWinterMed
   - ContractorClothingOuterWinterChem
   - ContractorClothingOuterCoatParamedicWB
+  - ClothingOuterCoatParamedicJacket # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingOuterWinterPara
   - ContractorClothingOuterWinterGen
   - ContractorClothingOuterWinterSci
@@ -556,6 +575,11 @@
   - ContractorClothingHeadHatParamedicsoft
   - ContractorClothingHeadNurseHat
   - ContractorClothingHeadHatBeretMedic
+  # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingHeadHatBeretMedical
+  - ClothingHeadHatBeretSeniorChemistry
+  - ClothingHeadHatBeretParamedic
+  # End Triad
   - ContractorClothingHeadHatSurgcapGreen
   - ContractorClothingHeadHatSurgcapBlue
   - ContractorClothingHeadHatSurgcapPurple
