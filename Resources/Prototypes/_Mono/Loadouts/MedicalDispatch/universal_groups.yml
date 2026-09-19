@@ -20,6 +20,12 @@
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
   - ContractorClothingUniformJumpskirtPsychologist
+  # Triad Start
+  - ClothingUniformJumpskirtSuitNurse
+  - ClothingUniformJumpskirtCoroner
+  - ClothingUniformJumpsuitCoroner
+  - ClothingUniformJumpsuitCoronerAlt
+  # End Triad
   fallbacks:
   - MedicalDoctorJumpsuit
 
