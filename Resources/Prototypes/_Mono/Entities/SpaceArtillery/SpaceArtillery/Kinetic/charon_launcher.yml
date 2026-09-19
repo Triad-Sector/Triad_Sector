@@ -108,3 +108,7 @@
     proto: CharonSlugAmmo
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  # Triad - Begin (Better Weapon Groups)
+  - type: ShipGunType
+    shipType: BallisticLimited
+  # Triad - End

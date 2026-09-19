@@ -22,7 +22,10 @@ public sealed partial class ShipGunTypeComponent : Component
 public enum ShipGunType
 {
     Ballistic,
-    Energy,
-    Missile,
-    Other
+    // Triad - Begin (Better Weapon Groups)
+    BallisticLimited,
+    Impulse,
+    Guided,
+    GuidedLimited
+    // Triad - End
 }
