@@ -31,9 +31,9 @@
     Silver: 500
 
 - type: latheRecipe
-  id: WeaponShotgunHZDBombadier
+  id: WeaponShotgunBombadier
   parent: BaseWeaponRecipeLong
-  result: WeaponShotgunHZDBombadier
+  result: WeaponShotgunBombadier
   categories:
   - Ballistic
   - Weapons

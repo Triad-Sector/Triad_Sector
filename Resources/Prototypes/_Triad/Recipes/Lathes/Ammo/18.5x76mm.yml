@@ -128,7 +128,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmHighEx
   categories:
-  - Misc
   - Ammo
   materials:
     Plasteel: 1000
@@ -140,7 +139,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmHighExIncendiary
   categories:
-  - IncenAmmo
   - Ammo
   materials:
     Plasteel: 1000
@@ -153,7 +151,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmHighExRad
   categories:
-  - UraniumAmmo
   - Ammo
   materials:
     Plasteel: 1000
@@ -166,7 +163,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmFragmentation
   categories:
-  - MiscAmmo
   - Ammo
   materials:
     Plasteel: 2000
@@ -178,8 +174,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmFragmentationIncendiary
   categories:
-  - MiscAmmo
-  - IncenAmmo
   - Ammo
   materials:
     Plasteel: 1000
@@ -192,7 +186,6 @@
   parent: BaseAmmoRecipe
   id: AmmoBox185x76mmAnti-Materiel
   categories:
-  - PlasteelApAmmo
   - Ammo
   materials:
     Plastitanium: 2000

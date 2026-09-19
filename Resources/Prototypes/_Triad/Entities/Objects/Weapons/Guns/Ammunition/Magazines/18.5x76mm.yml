@@ -85,7 +85,7 @@
     proto: Cartridge185x76mmHighExRad
   - type: Sprite
     layers:
-    - state: highexplosive
+    - state: highexplosiveradiation
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-5
       map: ["enum.GunVisualLayers.Mag"]
@@ -133,7 +133,7 @@
       map: ["enum.GunVisualLayers.Mag"]
 
 - type: entity #Evil and fucked up EMP mag, short and will exclusively take emp rounds
-  id: BaseMagazine185x76mmEMP
+  id: Magazine185x76mmEMP
   name: "box magazine (18.5x76 emp)"
   parent: BaseItem
   description: A short mag that can only be loaded with EMP rounds due to their unstable nature, zipzap.

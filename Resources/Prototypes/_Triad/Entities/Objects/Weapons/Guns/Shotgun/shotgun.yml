@@ -45,7 +45,7 @@
 - type: entity
   name: HZD Bombadier (12 gauge, 18.5x76mm) #Low Caliber grenade launcher that happens to also fire shotgun shells.
   parent: [BaseGunWieldable, BaseWeaponLauncher] # Launcher parent for the crosshair
-  id: WeaponShotgunHZDBombadier
+  id: WeaponShotgunBombadier
   description: A strange, autoloading, multicaliber weapon system often found paired with the Besieger modsuit system, perfect for flushing pirates out of hard cover.  One of the more recent HZD export items, made in lower numbers due to the complexity of internal components, but its engineering and quality is top notch.
   components:
   - type: Sprite
