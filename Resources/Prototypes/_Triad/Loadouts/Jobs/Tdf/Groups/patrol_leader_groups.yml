@@ -4,6 +4,7 @@
   minLimit: 1
   loadouts:
   - ClothingUniformJumpsuitTdfPatrolTeamLeader
+  - ClothingUniformJumpsuitTdfFlannel
   fallbacks:
   - ClothingUniformJumpsuitTdfPatrolTeamLeader
 

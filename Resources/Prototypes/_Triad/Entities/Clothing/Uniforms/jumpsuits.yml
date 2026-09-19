@@ -83,6 +83,18 @@
     tags:
     - ClothMade # No chameleon
 
+- type: entity
+  parent: AlternateFoldableSleevesOnlyUniformBase
+  id: ClothingUniformJumpsuitTdfFlannel
+  name: TDF flannel jumpsuit
+  description: It's so beautiful outside.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tdf_flannel.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
+
 # Triad frontier association High-Command
 - type: entity
   parent: ClothingUniformBase

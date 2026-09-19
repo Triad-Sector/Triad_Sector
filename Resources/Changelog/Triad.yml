@@ -4845,3 +4845,39 @@ Entries:
   id: 2604
   time: '2026-09-13T02:03:20.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/636
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added TDF and TFA phrases
+    - type: Tweak
+      message: Changed some quick phrases
+    - type: Fix
+      message: Fixes lathe having their dynamic recipe back
+  id: 2605
+  time: '2026-09-17T20:28:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/634
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Arachnids have been resprited to match the art direction!
+  id: 2606
+  time: '2026-09-17T22:37:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/642
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added a new TDF uniform - TDF Flannel jumpsuit! You can roll its
+        sleeves, too.
+  id: 2607
+  time: '2026-09-17T22:56:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/643
+- author: EmoGarbage404
+  changes:
+    - type: Fix
+      message: >-
+        Fixed a bug that would stop guns and other irregularly shaped (like 1x1)
+        objects from fitting into storage, sometimes.
+  id: 2608
+  time: '2026-09-18T20:02:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/646

@@ -497,15 +497,13 @@
     - StaticAmmoRecipePack
     - SecurityWeaponsStatic
     - AACTableStatic # DeltaV - AAC Tablets
-    # dynamicPacks:
-    # - SalvageSecurityBoards # Frontier
-    # - SalvageSecurityWeapons # Frontier
-    # - SecurityEquipment # Frontier
-    # - SecurityBoards # Frontier
-    # - SecurityExplosives # Frontier
-    # - SecurityAmmo # Frontier
-    # - SecurityWeapons # Frontier
-    # - SecurityDisablers # Frontier
+    dynamicPacks:
+    - SecurityEquipment
+    - SecurityExplosives
+    - DynamicAmmoRecipePack
+    - SecurityWeapons
+    - SecurityDisablers
+    - SMCybernetics
   - type: MaterialStorage
     whitelist:
       tags:
@@ -592,8 +590,16 @@
     - SurgeryStatic
     - NFMedicalStatic # Frontier
     - AACTableStatic # DeltaV - AAC Tablets
-    # dynamicPacks: # Frontier
-    # - Chemistry # Frontier
+    dynamicPacks:
+    - Chemistry
+    - SyringeGuns # DeltaV
+    - NFMedical # Frontier
+    # Shitmed Change
+    - SMSurgery
+    - SMCybernetics
+    # Einstein Engines Packs
+    - Translators # Language
+    - TranslatorImplanters # Language
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
