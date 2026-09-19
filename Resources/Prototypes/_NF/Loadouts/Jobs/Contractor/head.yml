@@ -105,7 +105,6 @@
   price: 0 # Mono
   equipment:
     head: ClothingHeadHatHardhatYellow
-  groupBy: "hardhats" # Triad
 
 - type: loadout
   id: ContractorClothingHeadHatChef
