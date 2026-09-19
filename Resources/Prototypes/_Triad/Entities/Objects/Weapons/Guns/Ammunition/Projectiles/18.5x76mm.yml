@@ -41,7 +41,7 @@
     fillPrototype: ShrapnelCluster
     capacity: 6
   - type: TriggerOnCollide
-    fixtureId: projectile
+    fixtureID: projectile
 
 - type: entity
   parent: [Bullet185x76mmFragmentation, BaseBulletIncendiary]
