@@ -25,7 +25,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmHighEx
   categories:
-  - Misc
   - Ammo
   materials:
     Plasteel: 500
@@ -37,7 +36,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmHighExIncendiary
   categories:
-  - IncenAmmo
   - Ammo
   materials:
     Plasteel: 500
@@ -50,7 +48,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmHighExRad
   categories:
-  - UraniumAmmo
   - Ammo
   materials:
     Plasteel: 500
@@ -63,7 +60,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmFragmentation
   categories:
-  - MiscAmmo
   - Ammo
   materials:
     Plasteel: 1000
@@ -75,8 +71,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmFragmentationIncendiary
   categories:
-  - MiscAmmo
-  - IncenAmmo
   - Ammo
   materials:
     Plasteel: 500
@@ -89,7 +83,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmAnti-Materiel
   categories:
-  - PlasteelApAmmo
   - Ammo
   materials:
     Plastitanium: 1000
@@ -101,7 +94,6 @@
   parent: BaseAmmoRecipe
   id: Magazine185x76mmEMP
   categories:
-  - MiscAmmo
   - Ammo
   materials:
     Plasteel: 500

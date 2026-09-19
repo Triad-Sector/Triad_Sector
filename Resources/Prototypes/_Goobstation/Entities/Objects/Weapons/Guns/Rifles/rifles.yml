@@ -193,7 +193,7 @@
   name: CS Burner (18.5x76mm) #Triad, swapped to 18.5x76mm from 12.7x99mm
   parent: BaseWeaponRifle # Mono - Changed to HighValue
   id: WeaponRifleBurner
-  description: A high caliber syndicate gun chambered in 18.5x76mm, capable of firing anti-material and high explosive rounds.
+  description: A high caliber syndicate gun chambered in 18.5x76mm, capable of firing anti-material, fragmentation, and high explosive rounds.
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Rifles/burner.rsi

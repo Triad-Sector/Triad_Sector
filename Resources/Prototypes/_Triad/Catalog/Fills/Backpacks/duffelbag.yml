@@ -22,6 +22,27 @@
         amount: 12
 
 - type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdf185x76mmBundle
+  name: TDF 18.5x76mm Ammo bundle
+  description: A duffle crammed full of 18.5x76mm mags and ammoboxes useful to the TDF.
+  components:
+  - type: StorageFill
+    contents:
+    - id: Magazine185x76mm
+      amount: 3
+    - id: Magazine185x76mmEMP
+      amount: 2
+    - id: Magazine185x76mmHighEx
+      amount: 2
+    - id: Magazine185x76mmAnti-Materiel
+      amount: 4
+    - id: Magazine185x76mmFragmentation
+      amount: 2
+    - id: AmmoBox185x76mmFMJ
+    - id: AmmoBox185x76mmFragmentation
+
+- type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelOuterHardsuitTacticoolBundle
   name: syndicate hardsuit bundle

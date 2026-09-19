@@ -118,7 +118,7 @@
 
 - type: entity
   parent: BaseAmmoBox185x76mm
-  id: AmmoBox185x76mmHighExInc
+  id: AmmoBox185x76mmHighExIncendiary
   name: ammunition box (18.5x76mm high-explosive incendiary)
   components:
   - type: BallisticAmmoProvider
