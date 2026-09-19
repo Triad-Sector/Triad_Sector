@@ -12,6 +12,26 @@
   position: 12, 2
 
 - type: technology
+  id: TdfLightGrenade
+  name: research-technology-tdf-ammunition-light-grenade
+  entityIcon: Magazine185x76mmAnti-Materiel
+  discipline: TdfWeaponry
+  tier: 1
+  cost: 35000
+  recipeUnlocks:
+  - Magazine185x76mmAnti-Materiel
+  - AmmoBox185x76mmAnti-Materiel
+  - Magazine185x76mmHighEx
+  - AmmoBox185x76mmHighEx
+  - Magazine185x76mmFragmentation
+  - AmmoBox185x76mmFragmentation
+  - Magazine185x76mmEMP
+  technologyPrerequisites:
+  - UniversalMaterialResearchT2
+  - PrintableExplosives
+  position: 11, 2
+
+- type: technology
   id: TdfAdvanceGuns
   name: research-technology-tdf-guns-advance
   entityIcon: WeaponRifleMR8T
