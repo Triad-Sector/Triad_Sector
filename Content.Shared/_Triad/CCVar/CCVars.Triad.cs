@@ -120,4 +120,10 @@ public sealed class TriadCCVars
     /// </summary>
     public static readonly CVarDef<int> MarketDataRetentionDays =
         CVarDef.Create("triad.market.retention_days", 90, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Max limit of a person could have for safety boxes.
+    /// </summary>
+    public static readonly CVarDef<int> SafetyBoxLimit =
+        CVarDef.Create("triad.safety_box_limit", 5, CVar.REPLICATED);
 }
