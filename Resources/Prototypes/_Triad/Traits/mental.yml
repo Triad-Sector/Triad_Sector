@@ -1,0 +1,17 @@
+- type: trait
+  id: Linguist
+  name: trait-linguist-name
+  description: trait-linguist-desc
+  category: Mental
+  cost: 2
+  grantsCategorySlots:
+    LanguageTraits: 2
+
+- type: trait
+  id: Polyglot
+  name: trait-polyglot-name
+  description: trait-polyglot-desc
+  category: Mental
+  cost: 4
+  grantsCategorySlots:
+    LanguageTraits: 4
