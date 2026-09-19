@@ -1,9 +1,21 @@
-# Loadout groups for the infrastructure roles. The Contractor* groups carry every department's
-# kit (chef belts, medical HUDs, mime masks); these curate the engineering-appropriate subset
-# from the same loadout prototypes, plus a few plant-specific additions defined below.
 - type: loadoutGroup
-  id: PlantTools
-  name: loadout-group-plant-tools
+  id: InfrastructureHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  - ContractorClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark
+  - ContractorClothingHeadHatBeretEngineering
+  subgroups:
+  - ContractorHead
+
+- type: loadoutGroup
+  id: InfrastructureTools
+  name: loadout-group-contractor-utility
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -18,8 +30,8 @@
   - PlantRCDAmmo
 
 - type: loadoutGroup
-  id: PlantFace
-  name: loadout-group-plant-face
+  id: InfrastructureFace
+  name: loadout-group-contractor-face
   minLimit: 0
   loadouts:
   - ContractorClothingMaskBreath
@@ -29,8 +41,8 @@
   - ContractorClothingMaskNeckGaiterRed
 
 - type: loadoutGroup
-  id: PlantGloves
-  name: loadout-group-plant-gloves
+  id: InfrastructureGloves
+  name: loadout-group-contractor-gloves
   minLimit: 0
   loadouts:
   - ContractorClothingHandsGlovesColorYellow
@@ -43,8 +55,8 @@
   - ContractorClothingHandsGlovesColorWhite
 
 - type: loadoutGroup
-  id: PlantGlasses
-  name: loadout-group-plant-glasses
+  id: InfrastructureGlasses
+  name: loadout-group-contractor-glasses
   minLimit: 0
   loadouts:
   - ContractorClothingEyesGlassesMeson
@@ -54,8 +66,27 @@
   - ContractorClothingEyesGlassesCheapSunglasses
 
 - type: loadoutGroup
-  id: PlantEars
-  name: loadout-group-plant-ears
+  id: InfrastructureBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingModsuitAtmostechPowerCell
+  - ContractorClothingModsuitEngineerPowerCell
+  - StationEngineerBackpack
+  - StationEngineerDuffel
+  - StationEngineerSatchel
+  - ContractorClothingBackpackMessengerEngineering
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianDuffel
+  - AtmosphericTechnicianSatchel
+  - ContractorClothingBackpackMessengerAtmospherics
+  fallbacks:
+  - StationEngineerBackpack
+
+- type: loadoutGroup
+  id: InfrastructureEars
+  name: loadout-group-contractor-ears
   minLimit: 1
   maxLimit: 1
   loadouts:

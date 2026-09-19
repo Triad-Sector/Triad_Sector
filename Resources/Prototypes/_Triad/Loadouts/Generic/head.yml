@@ -1,0 +1,24 @@
+- type: loadout
+  id: ClothingHeadHatHardhatBlue
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: ClothingHeadHatHardhatOrange
+  equipment:
+    head: ClothingHeadHatHardhatOrange
+
+- type: loadout
+  id: ClothingHeadHatHardhatRed
+  equipment:
+    head: ClothingHeadHatHardhatRed
+
+- type: loadout
+  id: ClothingHeadHatHardhatWhite
+  equipment:
+    head: ClothingHeadHatHardhatWhite
+
+- type: loadout
+  id: ClothingHeadHatHardhatYellowDark
+  equipment:
+    head: ClothingHeadHatHardhatYellowDark

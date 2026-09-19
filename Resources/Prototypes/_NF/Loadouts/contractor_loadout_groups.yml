@@ -540,7 +540,14 @@
   - ContractorClothingHeadHatCorpsoft
   - ContractorClothingHeadBandGrey
   - ContractorClothingHeadHatUshanka
+  # Triad
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  # End Triad
   - ContractorClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark # Triad
   - ContractorClothingHeadHatChef
   - ContractorClothingHeadHatCargosoft
   - ContractorClothingHeadBandBotany
@@ -665,6 +672,7 @@
   - ContractorClothingNeckScarfStripedBlue
   - ContractorClothingNeckScarfStripedBrown
   - ContractorClothingNeckScarfStripedGreen
+  - ClothingNeckScarfStripedOrange # Triad
   - ContractorClothingNeckTieBH
   - ContractorClothingNeckTieRed
   - ContractorClothingNeckTieSci
