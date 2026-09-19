@@ -17,5 +17,5 @@
   components:
   - type: StorageFill
     contents:
-    - id: Magazine18.5x76EMP
+    - id: Magazine185x76mmEMP
       amount: 4

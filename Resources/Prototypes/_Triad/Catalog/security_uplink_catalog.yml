@@ -321,6 +321,39 @@
       - SecurityUplink
 
 - type: listing
+  id: UplinkSecurityMagazine185x76mmEMP
+  name:  uplink-security-185x76mm-magazine-EMP-name
+  description: uplink-security-185x76mm-magazine-EMP-desc
+  productEntity: BoxMagazine185x76mmEMP
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Ammunition/Magazines/18.5x76mm/18.5x76mm_magazine.rsi, state: emp }
+  cost:
+    TriadCommerceCredit: 25 #evil emp rounds
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityAmmoBundle185x76mm
+  name:  uplink-security-185x76mm-ammo-bundle-name
+  description: uplink-security-185x76mm-ammo-bundle-desc
+  productEntity: ClothingBackpackDuffelTdf185x76mmBundle
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Ammunition/Boxes/light_grenade_box.rsi, state: base }
+  cost:
+    TriadCommerceCredit: 35 #Many boolet for enforcer friends :D
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+
+- type: listing
   id: UplinkSecurityEmpGrenadeAmmo
   name:  uplink-security-emp-ammo-name
   description: uplink-security-emp-ammo-desc
@@ -1248,6 +1281,22 @@
   icon: { sprite: _Triad/Objects/Weapons/Guns/LMGs/tdf_riot/riot-icon.rsi, state: icon }
   cost:
     TriadCommerceCredit: 150
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBombadierBundle
+  name: uplink-security-gun-bombadier-name
+  description: uplink-security-gun-bombadier-desc
+  productEntity: WeaponCaseTDFLongBombadier
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 100 #Litol grenade launcher
   categories:
   - UplinkSecurityWeapons
   conditions:

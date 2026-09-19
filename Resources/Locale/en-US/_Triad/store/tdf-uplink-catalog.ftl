@@ -52,6 +52,9 @@ uplink-security-6-8x52mm-box-desc = A box containing 240 rounds of 6.8x52 casele
 uplink-security-8x65mm-skr-box-name = 8x65mm SKR Ammo Box
 uplink-security-8x65mm-skr-box-desc = A box containing 100 rounds of 8x65mm SKR FMJ.
 
+uplink-security-185x76mm-ammo-bundle-name = 18.5x76mm Ammo Bundle
+uplink-security-185x76mm-ammo-bundle-desc = A duffle crammed full of various 18.5x76mm magazines and ammo boxes.
+
 uplink-security-Magazine45ACPPistolFMJ-name = .45 ACP Pistol Magazines
 uplink-security-Magazine45ACPPistolFMJ-desc = A box containing 4 filled .45 ACP magazines.
 uplink-security-Magazine45ACPPistolFMJ-rubber-name = .45 ACP Pistol Rubber Magazines
@@ -68,6 +71,8 @@ uplink-security-8x65mm-skr-magazine-name = 8x65mm SKR FMJ Magazines
 uplink-security-8x65mm-skr-magazine-desc = A box containing 4 8x65mm SKR FMJ magazines.
 uplink-security-wt550-magazine-name = 4.6x30mm Top-mounted Magazines
 uplink-security-wt550-magazine-desc = A box containing 4 filled 4.6x30mm top-mounted magazines.
+uplink-security-185x76mm-magazine-EMP-name = 18.5x76mm EMP Magazines
+uplink-security-185x76mm-magazine-EMP-desc = A box containing 4 18.5x76mm EMP magazines.
 
 uplink-security-hypo-name = Hypospray
 uplink-security-hypo-desc = A sterile medical injector for instant delivery of medications.
@@ -172,3 +177,6 @@ uplink-security-gun-mr8t-desc = Case containing an accurate dedicated marskman r
 
 uplink-security-gun-riot-name = MMG-38 "Riot" Bundle
 uplink-security-gun-riot-desc = Case containing a high-capacity medium machine gun and reserve ammunition.
+
+uplink-security-gun-bombadier-name = HZD Bombadier Bundle
+uplink-security-gun-bombadier-desc = Case containing a grenade launcher/shotgun hybrid and reserve ammunition.
