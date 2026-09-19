@@ -183,11 +183,11 @@ public abstract partial class SharedAnomalySystem : EntitySystem
     /// <param name="spawnCore">Create anomaly cores based on the result of completing an anomaly?</param>
     public void EndAnomaly(EntityUid uid, AnomalyComponent? component = null, bool supercritical = false, bool spawnCore = true)
     {
-        // Logging before resolve, in case the anomaly has deleted itself.
         if (_net.IsServer)
             Log.Info($"Ending anomaly. Entity: {ToPrettyString(uid)}");
-        AdminLog.Add(LogType.Anomaly, supercritical ? LogImpact.High : LogImpact.Low,
-                     $"Anomaly {ToPrettyString(uid)} {(supercritical ? "went supercritical" : "decayed")}.");
+        AdminLog.Add(LogType.Anomaly,
+            supercritical ? LogImpact.High : LogImpact.Low,
+            $"Anomaly {ToPrettyString(uid)} {(supercritical ? "went supercritical" : "decayed")}.");
 
         if (!Resolve(uid, ref component))
             return;
@@ -488,4 +488,4 @@ public partial record struct AnomalySpawnSettings()
     public bool SpawnOnSeverityChanged { get; set; } = false;
 }
 
-public sealed partial class ActionAnomalyPulseEvent : InstantActionEvent { }
+public sealed partial class ActionAnomalyPulseEvent : InstantActionEvent;

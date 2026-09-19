@@ -1,6 +1,5 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
-using Content.Server.IgnitionSource;
 using Content.Server.Stunnable;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
@@ -11,6 +10,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.IgnitionSource;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Physics;
@@ -40,7 +40,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
         [Dependency] private StunSystem _stunSystem = default!;
         [Dependency] private TemperatureSystem _temperatureSystem = default!;
-        [Dependency] private IgnitionSourceSystem _ignitionSourceSystem = default!;
+        [Dependency] private SharedIgnitionSourceSystem _ignitionSourceSystem = default!;
         [Dependency] private DamageableSystem _damageableSystem = default!;
         [Dependency] private AlertsSystem _alertsSystem = default!;
         [Dependency] private FixtureSystem _fixture = default!;
