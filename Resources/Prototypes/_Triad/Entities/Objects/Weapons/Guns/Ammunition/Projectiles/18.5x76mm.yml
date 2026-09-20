@@ -42,6 +42,9 @@
     capacity: 6
   - type: TriggerOnCollide
     fixtureID: projectile
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
 
 - type: entity
   parent: [Bullet185x76mmFragmentation, BaseBulletIncendiary]
