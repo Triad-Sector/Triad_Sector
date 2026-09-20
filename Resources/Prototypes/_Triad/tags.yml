@@ -65,3 +65,6 @@
 
 - type: Tag
   id: BorgModuleSolarianEngineering
+
+- type: Tag
+  id: OviniaEmotes # Used for Ovinia specific emotes

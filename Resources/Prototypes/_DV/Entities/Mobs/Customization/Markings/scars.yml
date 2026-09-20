@@ -2,7 +2,7 @@
   id: ScarChestFemale
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid, Oni, Feroxi, Reptilian, Moth, Vulpkanin] # Triad, add reptilian, moth, and vulp
+  speciesRestriction: [Human, Dwarf, Felinid, Oni, Feroxi, Reptilian, Moth, Vulpkanin, Ovinia] # Triad, add reptilian, moth, and vulp
   sexRestriction: [Female]
   followSkinColor: true
   sprites:
