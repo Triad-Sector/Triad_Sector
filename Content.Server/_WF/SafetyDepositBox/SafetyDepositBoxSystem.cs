@@ -28,7 +28,6 @@ using Content.Shared._Triad.Shipyard.Save.Contraband;
 using Content.Shared._Triad.Storage;
 using Content.Shared.Item;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Mind;
 using Content.Server._Triad.ContrabandPermit;
 
 namespace Content.Server._WF.SafetyDepositBox;
@@ -49,31 +48,28 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     [Dependency] private SharedLabelSystem _label = default!; // Wicce: LabelSystem -> SharedLabelSystem
     [Dependency] private IServerPreferencesManager _prefsManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
-    [Dependency] private SharedMindSystem _mind = default!; // Triad
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private UseDelaySystem _useDelay = default!; // Triad : _useDelay system
     [Dependency] private ContrabandPermitSystem _contrabandPermit = default!; // Triad
+
+    [Dependency] private EntityQuery<StorageComponent> _storageQuery; // Triad
+    [Dependency] private EntityQuery<ContrabandPermitItemComponent> _contrabandPermitItemQuery; // Triad
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, ComponentInit>(OnConsoleInit);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, BoundUIOpenedEvent>(OnUIOpen);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, SafetyDepositPurchaseMessage>(OnPurchase);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, SafetyDepositDepositMessage>(OnDeposit);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, SafetyDepositWithdrawMessage>(OnWithdraw);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, SafetyDepositReclaimMessage>(OnReclaim);
-        SubscribeLocalEvent<SafetyDepositConsoleComponent, SafetyDepositRemoveMessage>(OnRemove);
         SubscribeLocalEvent<SafetyDepositConsoleComponent, EntInsertedIntoContainerMessage>(OnSlotChanged);
         SubscribeLocalEvent<SafetyDepositConsoleComponent, EntRemovedFromContainerMessage>(OnSlotChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnConsoleInit(EntityUid uid, SafetyDepositConsoleComponent component, ComponentInit args)
     {
         _itemSlots.AddItemSlot(uid, SafetyDepositConsoleComponent.BoxSlotId, component.BoxSlot);
     }
 
+    [SubscribeLocalEvent]
     private void OnUIOpen(EntityUid uid, SafetyDepositConsoleComponent component, BoundUIOpenedEvent args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -82,6 +78,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         UpdateUI(uid, component, player);
     }
 
+    [SubscribeLocalEvent]
     private async void UpdateUI(EntityUid consoleUid, SafetyDepositConsoleComponent component, EntityUid player)
     {
         if (!TryComp<ActorComponent>(player, out var actor))
@@ -200,6 +197,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     }
     // Triad End
 
+    [SubscribeLocalEvent]
     private void OnPurchase(EntityUid uid, SafetyDepositConsoleComponent component, SafetyDepositPurchaseMessage args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -308,6 +306,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         UpdateUI(consoleUid, component, player);
     }
 
+    [SubscribeLocalEvent]
     private void OnDeposit(EntityUid uid, SafetyDepositConsoleComponent component, SafetyDepositDepositMessage args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -350,7 +349,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         }
 
         // Serialize the contents
-        if (!TryComp<StorageComponent>(boxEntity.Value, out var storageComp))
+        if (!_storageQuery.TryComp(boxEntity.Value, out var storageComp))
         {
             ConsolePopup(player, "Error: Box has no storage.");
             PlayDenySound(uid, component);
@@ -434,7 +433,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         UpdateUI(consoleUid, component, player);
     }
 
-    // Triad : recursive check for contraband items
+    // Triad : recursive checks for storage items and contraband permits
     private List<string> CheckContrabandValidity(
         EntityUid player,
         StorageComponent storageComp
@@ -453,12 +452,12 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     {
         foreach (var (item, location) in storageItemComp.StoredItems)
         {
-            if (TryComp<StorageComponent>(item, out var nestedStorage))
+            if (_storageQuery.TryComp(item, out var nestedStorage))
                 ContrabandStorageCheck(player, nestedStorage, ref invalidItems);
 
             var itemName = Identity.Name(item, EntityManager);
 
-            TryComp<ContrabandPermitItemComponent>(item, out var permitComp);
+            _contrabandPermitItemQuery.TryComp(item, out var permitComp);
 
             // Save contraband is invalid
             // Save contraband that is permittable and has a valid active permit are valid
@@ -468,8 +467,26 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                 invalidItems.Add(itemName);
         }
     }
+
+    private void RecursiveItemInitalization(EntityUid player, EntityUid item)
+    {
+        if (TryComp<UseDelayComponent>(item, out var useDelayComp))
+            _useDelay.ResetAllDelays((item, useDelayComp));
+
+        if (_contrabandPermitItemQuery.TryComp(item, out var permitItem))
+            _contrabandPermit.InitializePermitItem((item, permitItem), player); // Set the permit item owner to the box owner's mind
+
+        if (!_storageQuery.TryComp(item, out var storageItemComp)) // Check nested storage
+            return;
+
+        foreach (var (storedItem, _) in storageItemComp.StoredItems)
+        {
+            RecursiveItemInitalization(player, storedItem);
+        }
+    }
     // Triad end
 
+    [SubscribeLocalEvent]
     private void OnWithdraw(EntityUid uid, SafetyDepositConsoleComponent component, SafetyDepositWithdrawMessage args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -487,6 +504,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         WithdrawBoxAsync(uid, component, player, userId.UserId, characterIndex, args.BoxId);
     }
 
+    [SubscribeLocalEvent]
     private void OnReclaim(EntityUid uid, SafetyDepositConsoleComponent component, SafetyDepositReclaimMessage args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -590,6 +608,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     }
 
     // Triad : add OnRemove function, to remove not needed boxes
+    [SubscribeLocalEvent]
     private void OnRemove(EntityUid uid, SafetyDepositConsoleComponent component, SafetyDepositRemoveMessage args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -725,7 +744,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         }
 
         // Deserialize and spawn items into the box
-        if (TryComp<StorageComponent>(boxEntity, out var storageComp))
+        if (_storageQuery.TryComp(boxEntity, out var storageComp))
         {
             foreach (var itemData in box.Items)
             {
@@ -742,11 +761,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                     Entity<ItemComponent?> insertEnt = (itemEntity, entityComp);
                     Entity<StorageComponent?> storage = (boxEntity, storageComp);
 
-                    if (TryComp<UseDelayComponent>(itemEntity, out var useDelayComp))
-                        _useDelay.ResetAllDelays((itemEntity, useDelayComp));
-
-                    if (TryComp<ContrabandPermitItemComponent>(itemEntity, out var permitItem))
-                        _contrabandPermit.InitializePermitItem((itemEntity, permitItem), player); // Set the permit item owner to the box owner's mind
+                    RecursiveItemInitalization(player, itemEntity); // Triad
 
                     if (TryComp<ItemStorageLocationComponent>(itemEntity, out var locationComp)
                         && _storage.InsertAt(storage, insertEnt, locationComp.ItemLocation, out _, playSound: false))
