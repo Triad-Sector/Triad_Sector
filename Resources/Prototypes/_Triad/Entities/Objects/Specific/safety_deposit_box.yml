@@ -2,9 +2,9 @@
 
 # Base parent for all safety deposit boxes
 - type: entity
+  parent: BaseStorageItem
   id: SafetyDepositBoxBase
   abstract: true
-  parent: BaseStorageItem
   components:
   - type: GenericVisualizer
     visuals:
@@ -29,10 +29,10 @@
     - SafetyDepositBox
 
 - type: entity
+  parent: SafetyDepositBoxBase
   id: SafetyDepositBox
   name: safety deposit box
   description: A deposit box for storing small valuables. Can hold 3x4 items and is capable of storing small-sized objects.
-  parent: SafetyDepositBoxBase
   components:
   - type: Sprite
     sprite: _Triad/Storage/Cases/depositbox.rsi
@@ -47,10 +47,10 @@
     - 0,0,2,3
 
 - type: entity
+  parent: SafetyDepositBoxBase
   id: SafetyDepositBoxMedium
   name: medium safety deposit box
   description: A medium deposit box for storing valuables. Can hold 4x4 items and is capable of storing normal-sized objects.
-  parent: SafetyDepositBoxBase
   components:
   - type: Sprite
     sprite: _Triad/Storage/Cases/medium_depositbox.rsi
@@ -65,10 +65,10 @@
     - 0,0,3,3
 
 - type: entity
+  parent: SafetyDepositBoxBase
   id: SafetyDepositBoxLarge
   name: large safety deposit box
   description: A large deposit box designed to accommodate oversized valuables. Can hold 4x6 items and is capable of storing large objects.
-  parent: SafetyDepositBoxBase
   components:
   - type: MultiHandedItem
   - type: Sprite
@@ -84,10 +84,10 @@
     - 0,0,3,5
 
 - type: entity
+  parent: SafetyDepositBoxBase
   id: SafetyDepositBoxHeavy
   name: heavy safety deposit box
   description: A heavy deposit box built to store exceptionally large valuables. Can hold 6x6 items and is capable of storing ginormous objects.
-  parent: SafetyDepositBoxBase
   components:
   - type: MultiHandedItem
   - type: Sprite
@@ -103,10 +103,10 @@
     - 0,0,5,5
 
 - type: entity
+  parent: [ComputerBankATMBase, BaseClass2AShipContrabandSilent, BaseStructureDisableToolUse, BaseStructureIndestructible]
   id: SafetyDepositConsole
   name: safety deposit box console
   description: "A console for purchasing and managing safety deposit boxes."
-  parent: BaseStructure
   components:
   - type: Sprite
     netsync: false
@@ -127,16 +127,13 @@
       whitelist:
         tags:
         - SafetyDepositBox
-  - type: ItemSlots
   - type: ContainerContainer
     containers:
+      board: !type:Container
       safety-deposit-console-boxSlot: !type:ContainerSlot
   - type: ActivatableUI
     key: enum.SafetyDepositConsoleUiKey.Key
-  - type: InteractionOutline
   - type: UserInterface
     interfaces:
       enum.SafetyDepositConsoleUiKey.Key:
         type: SafetyDepositConsoleBoundUserInterface
-  - type: Anchorable
-  - type: Pullable
