@@ -196,8 +196,8 @@ public abstract partial class InventorySystem
         Dirty(target, inventory);
 
         // Start Triad: Ensure modsuit guns work after being loading from stash
-        if (HasComp<GunComponent>(itemUid))
-            _gunSystem.RefreshModifiers(itemUid);
+        if (TryComp<GunComponent>(itemUid, out var gunComp))
+            _gunSystem.RefreshModifiers((itemUid, gunComp));
         // End Triad
 
         _movementSpeed.RefreshMovementSpeedModifiers(target);
