@@ -468,7 +468,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         }
     }
 
-    private void RecursiveItemInitalization(EntityUid player, EntityUid item)
+    private void RecursiveItemInitialization(EntityUid player, EntityUid item)
     {
         if (TryComp<UseDelayComponent>(item, out var useDelayComp))
             _useDelay.ResetAllDelays((item, useDelayComp));
@@ -481,7 +481,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
 
         foreach (var (storedItem, _) in storageItemComp.StoredItems)
         {
-            RecursiveItemInitalization(player, storedItem);
+            RecursiveItemInitialization(player, storedItem);
         }
     }
     // Triad end
@@ -761,7 +761,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                     Entity<ItemComponent?> insertEnt = (itemEntity, entityComp);
                     Entity<StorageComponent?> storage = (boxEntity, storageComp);
 
-                    RecursiveItemInitalization(player, itemEntity); // Triad
+                    RecursiveItemInitialization(player, itemEntity); // Triad
 
                     if (TryComp<ItemStorageLocationComponent>(itemEntity, out var locationComp)
                         && _storage.InsertAt(storage, insertEnt, locationComp.ItemLocation, out _, playSound: false))
