@@ -55,6 +55,8 @@
   - GoldGasTurbineBlade # Triad
   - DiamondGasTurbineBlade
   - GoldGasTurbineStator
+  - GeneratorRTGFlatpack # Triad
+
   technologyPrerequisites:
   - NuclearPowerGeneration
   #radioChannels:

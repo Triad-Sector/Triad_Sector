@@ -294,6 +294,7 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellCombat # Mono
+  - PowerCellAntiqueProto #Triad
   - NFBlueprintPowerCellMicroreactor # Frontier
   - PortableGeneratorDKJrMachineCircuitboard # Frontier
   - NFBlueprintPortableGeneratorDKJr # Frontier
