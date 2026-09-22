@@ -256,7 +256,7 @@
 
 - type: entity
   name: antique power cell prototype
-  description: A small cell that self recharges. Used in old laser arms research. Contains trace amounts of plutonium.
+  description: A small cell that self recharges. Used in old laser arms research. Contains trace amounts of plutonium. # triad
   id: PowerCellAntiqueProto
   parent: BasePowerCell
   components:
