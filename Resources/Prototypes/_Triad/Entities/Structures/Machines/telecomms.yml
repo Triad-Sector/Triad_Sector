@@ -1,0 +1,16 @@
+- type: entity
+  parent: [NFTelecomServerFilled, BaseStructureDisableToolUse]
+  id: TelecomServerFilledAllPOI
+  suffix: Filled All, POI # For Venmar
+
+- type: entity
+  parent: TelecomServer
+  id: TelecomServerFilledSciencePOI
+  suffix: Filled Science, Sec, Shortband
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScience
+      - EncryptionKeySecurity
+      - EncryptionKeyTraffic

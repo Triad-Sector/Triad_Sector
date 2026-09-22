@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 09/20/2026 22:35:57
-  entityCount: 14800
+  time: 09/22/2026 20:15:29
+  entityCount: 14793
 maps:
 - 1
 grids:
@@ -412,10 +412,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Puddle: []
-        MetalFoam: []
         Kudzu: []
         Smoke: []
+        MetalFoam: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -19249,6 +19249,7 @@ entities:
     - type: NavMap
     - type: ChunkContainer
       chunkEntities: []
+    - type: GridSplitNode
   - uid: 4
     mapInit: true
     paused: true
@@ -55529,7 +55530,7 @@ entities:
       - 57
     - type: Door
       state: Closing
-      secondsUntilStateChange: -84013.27
+      secondsUntilStateChange: -84119.164
     - type: Firelock
       emergencyCloseCooldown: 14804.3518643
   - uid: 6310
@@ -80860,13 +80861,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 42.5,-1.5
-- proto: NFTelecomServerFilled
-  entities:
-  - uid: 9737
-    components:
-    - type: Transform
-      parent: 2
-      pos: -7.5,11.5
 - proto: NFVendingMachineCart
   entities:
   - uid: 9738
@@ -87671,12 +87665,20 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 16.5,2.5
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 14798
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 8.5,2.5
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ScrapCamera
   entities:
   - uid: 10931
@@ -89657,36 +89659,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -13.5,3.5
-  - uid: 11236
-    components:
-    - type: Transform
-      parent: 2
-      pos: -11.5,11.5
-  - uid: 11237
-    components:
-    - type: Transform
-      parent: 2
-      pos: -13.5,11.5
-  - uid: 11238
-    components:
-    - type: Transform
-      parent: 2
-      pos: -14.5,14.5
-  - uid: 11239
-    components:
-    - type: Transform
-      parent: 2
-      pos: -8.5,14.5
-  - uid: 11240
-    components:
-    - type: Transform
-      parent: 2
-      pos: -15.5,21.5
-  - uid: 11241
-    components:
-    - type: Transform
-      parent: 2
-      pos: -12.5,24.5
 - proto: SpawnPointStationRepresentative
   entities:
   - uid: 11242
@@ -92341,6 +92313,13 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 37.5,-1.5
     - type: Conveyed
+- proto: TelecomServerFilledAllPOI
+  entities:
+  - uid: 9737
+    components:
+    - type: Transform
+      parent: 2
+      pos: -7.5,11.5
 - proto: ToiletDirtyWater
   entities:
   - uid: 11643
@@ -93597,13 +93576,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 3.5,-18.5
-- proto: VendingMachineTdfDrobe
-  entities:
-  - uid: 11840
-    components:
-    - type: Transform
-      parent: 2
-      pos: -11.5,24.5
 - proto: VendingMachineTdfTech
   entities:
   - uid: 11841
