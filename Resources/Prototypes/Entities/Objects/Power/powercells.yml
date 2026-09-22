@@ -256,7 +256,7 @@
 
 - type: entity
   name: antique power cell prototype
-  description: A small cell that self recharges. Used in old laser arms research.
+  description: A small cell that self recharges. Used in old laser arms research. Contains trace amounts of plutonium.
   id: PowerCellAntiqueProto
   parent: BasePowerCell
   components:
@@ -277,7 +277,7 @@
       materialComposition: #triad
         Plasteel: 200
         Glass: 200
-        Plutonium: 25 #plutonium is infact, hard to reclaim!
+        Plutonium: 10 #plutonium is infact, hard to reclaim!
         Gold: 50
     - type: MachinePart # Frontier
       part: PowerCell # Frontier

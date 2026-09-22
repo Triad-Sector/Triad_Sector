@@ -35,6 +35,7 @@
   - BananiumReactorFuelRod
   - PlasmaReactorFuelRod
   - UraniumGlassReactorFuelRod
+  - GeneratorRTGFlatpack # Triad
 
 - type: latheRecipePack
   id: ReactorControlRods

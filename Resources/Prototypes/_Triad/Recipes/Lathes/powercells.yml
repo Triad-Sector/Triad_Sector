@@ -5,7 +5,7 @@
   - Parts
   completetime: 20
   materials:
-    Plasteel: 500
+    Plasteel: 600
     Glass: 400
-    Plutonium: 50
-    Gold: 100
+    Plutonium: 80
+    Gold: 400

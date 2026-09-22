@@ -5,7 +5,9 @@
   - Parts
   completetime: 40
   materials:
-    Plasteel: 1000
-    Copper: 1500
-    Plutonium: 200
-    Gold: 100
+    Steel: 10000
+    Plasteel: 2000
+    UraniumDepleted: 1000
+    Copper: 5000
+    Plutonium: 300
+    Gold: 5000
