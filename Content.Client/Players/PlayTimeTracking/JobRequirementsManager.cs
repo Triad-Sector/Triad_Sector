@@ -175,7 +175,9 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         //if (_whitelisted)
         //    return true;
 
-        if (job.Whitelisted && !_jobWhitelists.Contains(job.ID))
+        // Triad: AdminWhitelist implies Whitelisted. The server only puts an admin-gated id in this
+        // payload for a session holding an admin rank, so membership is the whole check here.
+        if ((job.Whitelisted || job.AdminWhitelist) && !_jobWhitelists.Contains(job.ID))
         {
             reason = FormattedMessage.FromUnformatted(Loc.GetString("role-not-whitelisted"));
             return false;

@@ -28,7 +28,25 @@ public sealed partial class StationPickerControl : PickerControl
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _spriteSystem = _entitySystem.GetEntitySystem<SpriteSystem>();
+
+        // Triad: see CrewPickerControl. The admin rank can change while this control is on screen.
+        _jobReqs.Updated += OnRequirementsUpdated;
     }
+
+    // Triad: rebuild when the whitelist payload changes.
+    private void OnRequirementsUpdated()
+    {
+        UpdateUi(_lobbyJobs);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+            _jobReqs.Updated -= OnRequirementsUpdated;
+
+        base.Dispose(disposing);
+    }
+    // End Triad
 
     private Dictionary<NetEntity, StationJobInformation> _lobbyJobs = new();
     private StationListItem.ViewState? _lastSelectedStation;
@@ -83,6 +101,13 @@ public sealed partial class StationPickerControl : PickerControl
             }
 
             var prototype = _prototypeManager.Index(jobPrototype);
+
+            // Triad: see CrewPickerControl.BuildJobViewStateList. Whitelist-gated jobs are absent here
+            // too, otherwise the station tab leaks what the crew tab hides.
+            if (!_jobReqs.CheckWhitelist(prototype, out _))
+                continue;
+            // End Triad
+
             var jobName = prototype.LocalizedName + jobCount.WrapJobCountInParentheses();
             Texture? texture = null;
 
@@ -126,6 +151,12 @@ public sealed partial class StationPickerControl : PickerControl
 
         foreach (var (stationEntity, stationJobInformation) in stationList)
         {
+            // Triad: a station whose every job is whitelist-gated is hidden along with them. Without this
+            // the row survives with a (0) count and names the outpost to everyone in the lobby.
+            if (BuildJobViewStateList(stationJobInformation).Count == 0)
+                continue;
+            // End Triad
+
             var icon = stationJobInformation.StationDisplayInfo?.StationIcon;
             var iconTexture = icon != null ? _spriteSystem.Frame0(icon) : null;
 

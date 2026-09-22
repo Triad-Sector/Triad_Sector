@@ -1,0 +1,109 @@
+using Content.Server._NF.Station.Systems;
+using Content.Server.GameTicking.Rules;
+using Content.Server.Shuttles.Systems;
+using Content.Server.Station.Systems;
+using Content.Shared.GameTicking.Components;
+using Content.Shared.Whitelist;
+using Robust.Server.GameObjects;
+using Robust.Shared.EntitySerialization.Systems;
+using Robust.Shared.Map;
+
+namespace Content.Server._Triad.HighCommand;
+
+/// <summary>
+/// Stands the TFA High Command outpost up on its own map, reachable only by admin ghost warp or by a hull
+/// an admin has cleared.
+/// </summary>
+/// <remarks>
+/// The outpost is deliberately not a <see cref="Content.Server._NF.GameRule.PointOfInterestPrototype"/>. A POI
+/// loads onto the sector map (PointOfInterestSystem.TrySpawnPoiGrid takes the sector's MapId), which leaves the
+/// grid physically reachable by anything with a thruster and enough patience; HideWarp and IFF only unlist it.
+/// A private map has no route in at all, so every remaining way through is one this system opens on purpose.
+/// </remarks>
+public sealed class HighCommandOutpostRuleSystem : GameRuleSystem<HighCommandOutpostRuleComponent>
+{
+    [Dependency] private readonly MapLoaderSystem _loader = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly ShuttleSystem _shuttle = default!;
+    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly StationRenameWarpsSystems _renameWarps = default!;
+
+    protected override void Started(EntityUid uid,
+        HighCommandOutpostRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
+    {
+        base.Started(uid, component, gameRule, args);
+
+        if (component.MapEntity != null)
+        {
+            Log.Warning("High Command outpost rule started twice, ignoring the second.");
+            return;
+        }
+
+        var map = _map.CreateMap(out var mapId);
+
+        if (!_loader.TryLoadGrid(mapId, component.GridPath, out var grid))
+        {
+            Log.Error($"Failed to load the High Command outpost grid from {component.GridPath}.");
+            QueueDel(map);
+            return;
+        }
+
+        // Same assertion EmergencyShuttleSystem.AddCentcomm makes: a grid that ended up parented somewhere
+        // other than its own map means the load silently landed on the sector, which is the failure this
+        // whole design exists to prevent.
+        var xform = Transform(grid.Value);
+        if (xform.ParentUid != map || xform.MapUid != map)
+        {
+            Log.Error("High Command outpost grid is not parented to its own map, tearing it down.");
+            QueueDel(grid.Value);
+            QueueDel(map);
+            return;
+        }
+
+        component.MapEntity = map;
+        component.GridEntity = grid;
+        _metaData.SetEntityName(map, Loc.GetString("map-name-tfa-high-command"));
+
+        component.Station = _station.InitializeNewStation(component.StationConfig, new[] { grid.Value.Owner });
+
+        // Ghost warps to the outpost are admin-only, enforced in GhostSystem both when listing warps and
+        // when performing one.
+        _renameWarps.SyncWarpPointsToStation(component.Station.Value, forceAdminOnly: true);
+
+        if (!component.FtlDestination)
+            return;
+
+        // requireDisk false: the clearance component is the gate, and stacking a coordinate disk on top
+        // would mean an admin has to hand out two things instead of one.
+        if (!_shuttle.TryAddFTLDestination(mapId, true, false, false, out var destination))
+        {
+            Log.Error("Failed to register the High Command outpost as an FTL destination.");
+            return;
+        }
+
+        // Tested against the shuttle grid, not the pilot, so this gates hulls rather than players.
+        _shuttle.SetFTLWhitelist((map, destination),
+            new EntityWhitelist { Components = ["TfaHighCommandClearance"] });
+    }
+
+    protected override void Ended(EntityUid uid,
+        HighCommandOutpostRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleEndedEvent args)
+    {
+        base.Ended(uid, component, gameRule, args);
+
+        if (component.Station is { } station)
+            _station.DeleteStation(station);
+
+        if (component.MapEntity is { } map && !TerminatingOrDeleted(map))
+            QueueDel(map);
+
+        component.Station = null;
+        component.GridEntity = null;
+        component.MapEntity = null;
+    }
+}

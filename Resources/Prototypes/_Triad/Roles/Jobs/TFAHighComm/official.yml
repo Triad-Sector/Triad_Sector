@@ -4,6 +4,8 @@
   description: job-description-tfa-high-command
   playTimeTracker: JobTfaHighCommandRep
   setPreference: false
+  # Triad: gated on an admin rank, and hidden from the lobby for everyone else.
+  adminWhitelist: true
   startingGear: TfaHighCommandRepGear
   icon: "JobIconNanotrasen" # Idk it looks good enough
   supervisors: job-supervisors-centcom

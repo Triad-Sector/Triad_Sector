@@ -1,6 +1,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server.Administration; // Triad: admin-gated jobs
+using Content.Server.Administration.Managers; // Triad: admin-gated jobs
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost.Roles; // Frontier: Ghost Role handling
@@ -18,6 +20,7 @@ namespace Content.Server.Players.JobWhitelist;
 
 public sealed partial class JobWhitelistManager : IPostInjectInit
 {
+    [Dependency] private IAdminManager _admin = default!; // Triad: admin-gated jobs
     [Dependency] private IConfigurationManager _config = default!;
     [Dependency] private IServerDbManager _db = default!;
     [Dependency] private INetManager _net = default!;
@@ -37,7 +40,31 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
         _net.RegisterNetMessage<MsgWhitelist>();
 
         _log.GetSawmill(nameof(JobWhitelistManager));
+
+        // Triad: admin-gated jobs follow the admin rank live, so a promotion or a deadmin mid-round
+        // re-sends the payload and the lobby list changes under the player without a reconnect.
+        _admin.OnPermsChanged += OnAdminPermsChanged;
+        // End Triad
     }
+
+    // Triad: admin-gated jobs.
+    private void OnAdminPermsChanged(AdminPermsChangedEventArgs args)
+    {
+        SendJobWhitelist(args.Player);
+    }
+
+    /// <summary>
+    /// Every job gated on an admin rank rather than on a database whitelist row.
+    /// </summary>
+    private IEnumerable<string> AdminGatedJobs()
+    {
+        foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
+        {
+            if (job.AdminWhitelist)
+                yield return job.ID;
+        }
+    }
+    // End Triad
 
     private async Task LoadData(ICommonSession session, CancellationToken cancel)
     {
@@ -76,6 +103,12 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
 
     public bool IsAllowed(ICommonSession session, ProtoId<JobPrototype> job)
     {
+        // Triad: an admin-gated job answers off the admin rank and never off the database whitelist,
+        // ahead of the GameRoleWhitelist cvar so turning that cvar off cannot open the role to everyone.
+        if (_prototypes.TryIndex(job, out var adminGated) && adminGated.AdminWhitelist)
+            return _admin.IsAdmin(session);
+        // End Triad
+
         if (!_config.GetCVar(CCVars.GameRoleWhitelist))
             return true;
 
@@ -118,9 +151,17 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
 
     public void SendJobWhitelist(ICommonSession player)
     {
+        // Triad: copy rather than mutate. The set here is the live per-player cache, so folding the
+        // admin-gated ids into it would persist them past a deadmin.
+        var whitelist = new HashSet<string>(_whitelists.GetValueOrDefault(player.UserId) ?? new HashSet<string>());
+
+        if (_admin.IsAdmin(player))
+            whitelist.UnionWith(AdminGatedJobs());
+        // End Triad
+
         var msg = new MsgJobWhitelist
         {
-            Whitelist = _whitelists.GetValueOrDefault(player.UserId) ?? new HashSet<string>()
+            Whitelist = whitelist
         };
 
         _net.ServerSendMessage(msg, player.Channel);
