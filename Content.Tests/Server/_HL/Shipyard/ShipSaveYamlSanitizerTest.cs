@@ -152,6 +152,114 @@ entities:
         Assert.That(result, Does.Contain("VariedXenoArtifactItem"));
     }
 
+    // An anchored artifact as the pre-fix save purge wrote it: the nodes gone, the graph still naming
+    // them, and an unlock session in flight. Field shapes are from a real save.
+    private const string ShipWithNodelessArtifact = @"meta:
+  format: 7
+entities:
+- proto: """"
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+- proto: ComplexXenoArtifact
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,0.5
+      anchored: True
+    - type: XenoArtifact
+      nodeVertices:
+      - invalid
+      - invalid
+      nodeAdjacencyMatrix:
+      - - False
+        - True
+      - - False
+        - False
+      nextUnlockTime: -0.8333325
+      isGenerationRequired: False
+      cachedActiveNodes:
+      - invalid
+      cachedSegments:
+      - - invalid
+        - invalid
+    - type: XenoArtifactUnlocking
+      triggeredNodeIndexes:
+      - 0
+      endTime: 0
+";
+
+    // The same artifact saved whole: both nodes are in the file.
+    private const string ShipWithWholeArtifact = @"meta:
+  format: 7
+entities:
+- proto: """"
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+- proto: ComplexXenoArtifact
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,0.5
+      anchored: True
+    - type: XenoArtifact
+      nodeVertices:
+      - 3
+      - 4
+      nodeAdjacencyMatrix:
+      - - False
+        - True
+      - - False
+        - False
+      isGenerationRequired: False
+      cachedSegments:
+      - - 3
+        - 4
+    - type: XenoArtifactUnlocking
+      triggeredNodeIndexes:
+      - 0
+      endTime: 0
+- proto: XenoArtifactEmp
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      parent: 2
+  - uid: 4
+    components:
+    - type: Transform
+      parent: 2
+";
+
+    [Test]
+    public void ScrubResetsTheGraphOfAnArtifactWhoseNodesAreMissing()
+    {
+        var result = ShipSaveYamlSanitizer.ScrubShipLoadYaml(ShipWithNodelessArtifact, out var scrubbed);
+
+        // Four graph fields and the unlock session.
+        Assert.That(scrubbed, Is.EqualTo(5));
+        Assert.That(result, Does.Not.Contain("invalid"), "a graph field naming a missing node survived");
+        Assert.That(result, Does.Not.Contain("XenoArtifactUnlocking"), "the unlock session indexes the old graph");
+        Assert.That(result, Does.Contain("isGenerationRequired: True"), "the artifact must load owing a graph");
+        Assert.That(result, Does.Contain("nextUnlockTime"), "a field outside the graph was touched");
+    }
+
+    [Test]
+    public void ScrubLeavesAnArtifactWhoseNodesArePresentByteIdentical()
+    {
+        var result = ShipSaveYamlSanitizer.ScrubShipLoadYaml(ShipWithWholeArtifact, out var scrubbed);
+
+        Assert.That(scrubbed, Is.EqualTo(0));
+        Assert.That(result, Is.EqualTo(ShipWithWholeArtifact), "a whole artifact and its unlock session must load as saved");
+    }
+
     [Test]
     public void ScrubKeepsLiveComponentsWhoseNamesTheReworkReused()
     {

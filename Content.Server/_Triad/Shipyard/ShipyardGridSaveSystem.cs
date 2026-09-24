@@ -45,6 +45,7 @@ using Content.Server.GameTicking;
 using Content.Server.StationRecords.Components;
 using Content.Server.StationRecords.Systems;
 using Content.Shared._Triad.ContrabandPermit;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
 
 namespace Content.Server._Triad.Shipyard;
 
@@ -625,6 +626,9 @@ public sealed partial class ShipyardGridSaveSystem : EntitySystem
             return false; // preserve stash root outright
         if (_gridQuery.HasComp(uid))
             return false; // never delete grid root or nested grids here
+        // Preserve artifact nodes: the artifact's NodeVertices names each one
+        if (HasComp<XenoArtifactNodeComponent>(uid))
+            return false;
         // Preserve wall-mounted fixtures (buttons, posters, etc.) regardless of anchored state
         if (HasComp<WallMountComponent>(uid))
             return false;
