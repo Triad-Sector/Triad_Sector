@@ -260,6 +260,35 @@ public sealed partial class StationJobsSystem
                         }
                     } while (priorCount != stationShares[station]);
                 }
+
+                // Triad: shares follow slot counts rather than what the candidates want, and a remainder goes to one
+                // random station, so a candidate whose job only one station offers can be handed to a station without
+                // it. Put anyone still waiting into an open slot for a job they want before this priority is done.
+                foreach (var (player, wanted) in candidates)
+                {
+                    if (!profiles.ContainsKey(player))
+                        continue; // Placed above.
+
+                    var jobOrder = wanted.ToList();
+                    _random.Shuffle(jobOrder);
+                    foreach (var job in jobOrder)
+                    {
+                        var open = stations
+                            .Where(s => currentlySelectingJobs[s].TryGetValue(job, out var slot) && slot != 0)
+                            .ToList();
+                        if (open.Count == 0)
+                            continue;
+
+                        var chosen = _random.Pick(open);
+                        AssignPlayer(player, job, chosen);
+                        if (currentlySelectingJobs[chosen][job] != null)
+                            currentlySelectingJobs[chosen][job]--;
+
+                        break;
+                    }
+                }
+                // End Triad
+
                 done: ;
             }
         }
