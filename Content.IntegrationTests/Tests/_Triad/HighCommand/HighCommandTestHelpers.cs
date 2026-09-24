@@ -19,7 +19,7 @@ namespace Content.IntegrationTests.Tests._Triad.HighCommand;
 /// <summary>
 /// The pieces of a running TFA High Command outpost a test needs, copied out of the rule component.
 /// </summary>
-public readonly record struct RunningOutpost(EntityUid Rule, EntityUid Map, EntityUid Grid, EntityUid Station);
+public readonly record struct RunningOutpost(EntityUid Map, EntityUid Grid, EntityUid Station);
 
 /// <summary>
 /// A job spawn marker on the outpost grid.
@@ -47,7 +47,7 @@ public static class HighCommandTestHelpers
         Assert.That(map, Is.Not.Null, "Fixture: the outpost rule created no map.");
         Assert.That(grid, Is.Not.Null, "Fixture: the outpost rule loaded no grid.");
         Assert.That(station, Is.Not.Null, "Fixture: the outpost rule built no station.");
-        return new RunningOutpost(rule, map!.Value, grid!.Value, station!.Value);
+        return new RunningOutpost(map!.Value, grid!.Value, station!.Value);
     }
 
     /// <summary>

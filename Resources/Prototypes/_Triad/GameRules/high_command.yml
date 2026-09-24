@@ -1,6 +1,4 @@
-# Triad: the TFA High Command outpost, on a map of its own rather than as a point of interest.
-# A POI loads onto the sector map, where the grid stays physically reachable and HideWarp/IFF only unlist
-# it. A private map has no route in, so ghost warp and a cleared hull are the only ways through.
+# The TFA High Command outpost, on a map of its own. HighCommandOutpostRuleSystem says why it is not a POI.
 - type: entity
   id: HighCommandOutpost
   parent: BaseGameRule

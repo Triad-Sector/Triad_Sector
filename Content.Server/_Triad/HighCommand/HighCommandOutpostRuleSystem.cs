@@ -85,14 +85,13 @@ public sealed class HighCommandOutpostRuleSystem : GameRuleSystem<HighCommandOut
         // when performing one.
         _renameWarps.SyncWarpPointsToStation(component.Station.Value, forceAdminOnly: true);
 
-        if (!component.FtlDestination)
-            return;
-
-        // requireDisk false: the clearance component is the gate, and stacking a coordinate disk on top
-        // would mean an admin has to hand out two things instead of one.
+        // InitializeNewStation has already made this map an FTL destination anyone can use (ShuttleSystem
+        // registers every station's map on StationPostInitEvent), so it is narrowed to cleared hulls here.
+        // requireDisk false: the clearance component is the gate, and stacking a coordinate disk on top would mean
+        // an admin has to hand out two things instead of one.
         if (!_shuttle.TryAddFTLDestination(mapId, true, false, false, out var destination))
         {
-            Log.Error("Failed to register the High Command outpost as an FTL destination.");
+            Log.Error("Failed to lock down the High Command outpost's FTL destination.");
             return;
         }
 

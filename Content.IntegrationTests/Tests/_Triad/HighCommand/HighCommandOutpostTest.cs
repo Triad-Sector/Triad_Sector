@@ -5,13 +5,19 @@ using System.IO;
 using System.Linq;
 using Content.Server._Triad.HighCommand;
 using Content.Server._Triad.Shipyard;
+using Content.Server.Administration.Managers;
 using Content.Server.GameTicking;
+using Content.Server.Mind;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Triad.HighCommand;
 using Content.Shared.Shuttles.Components;
+using Robust.Server.Console;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using static Content.IntegrationTests.Tests._Triad.HighCommand.HighCommandTestHelpers;
 
 namespace Content.IntegrationTests.Tests._Triad.HighCommand;
@@ -24,6 +30,65 @@ namespace Content.IntegrationTests.Tests._Triad.HighCommand;
 public sealed class HighCommandOutpostTest
 {
     private const string StationProtoId = "TfaHighCommandOutpostStation";
+
+    /// <summary>
+    /// Only a hull an admin cleared with <c>hcclearance</c> may FTL to the outpost. The command clears the hull its
+    /// user stands on, and running it again revokes.
+    /// </summary>
+    [Test]
+    public async Task OnlyClearedHullsCanFtlToTheOutpost()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var ticker = server.System<GameTicker>();
+        var shuttles = server.System<ShuttleSystem>();
+        var minds = server.System<MindSystem>();
+        var admins = server.ResolveDependency<IAdminManager>();
+        var console = server.ResolveDependency<IServerConsoleHost>();
+
+        var map = await pair.CreateTestMap();
+        var hull = map.Grid.Owner;
+
+        // A host admin, because console.loginlocal is on in the pool.
+        var admin = await server.AddDummySession();
+        await PoolManager.WaitUntil(server, () => admins.IsAdmin(admin));
+
+        var rule = EntityUid.Invalid;
+        await server.WaitPost(() =>
+        {
+            Assert.That(ticker.StartGameRule(RuleId, out rule), "Fixture: the outpost rule did not start.");
+            minds.TransferTo(minds.CreateMind(admin.UserId), entMan.SpawnEntity("MobHuman", map.GridCoords));
+        });
+        await pair.RunTicksSync(5);
+
+        var outpostMap = MapId.Nullspace;
+        await server.WaitAssertion(() =>
+        {
+            outpostMap = entMan.GetComponent<MapComponent>(ReadOutpost(entMan, rule).Map).MapId;
+            Assert.That(shuttles.CanFTLTo(hull, outpostMap, EntityUid.Invalid), Is.False,
+                "A hull nobody cleared may FTL to the outpost.");
+        });
+
+        await server.WaitPost(() => console.ExecuteCommand(admin, "hcclearance"));
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entMan.HasComponent<TfaHighCommandClearanceComponent>(hull),
+                "hcclearance did not clear the hull its user stands on.");
+            Assert.That(shuttles.CanFTLTo(hull, outpostMap, EntityUid.Invalid), "A cleared hull cannot FTL to the outpost.");
+        });
+
+        await server.WaitPost(() => console.ExecuteCommand(admin, "hcclearance"));
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entMan.HasComponent<TfaHighCommandClearanceComponent>(hull), Is.False,
+                "Running hcclearance again did not revoke clearance.");
+            Assert.That(shuttles.CanFTLTo(hull, outpostMap, EntityUid.Invalid), Is.False,
+                "A hull whose clearance was revoked may still FTL to the outpost.");
+        });
+
+        await pair.CleanReturnAsync();
+    }
 
     /// <summary>
     /// Every <c>addgamerule</c> spawns a fresh rule entity, so a second start has to find the first outpost across
