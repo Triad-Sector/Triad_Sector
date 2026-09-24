@@ -31,7 +31,14 @@ public abstract class BaseQueryUpdateXATSystem<T> : BaseXATSystem<T> where T : C
             if (node.Attached == null)
                 continue;
 
-            var artifact = _xenoArtifactQuery.Get(GetEntity(node.Attached.Value));
+            // Triad: a node whose artifact does not resolve is skipped rather than thrown on every tick
+            // var artifact = _xenoArtifactQuery.Get(GetEntity(node.Attached.Value));
+            var artifactUid = GetEntity(node.Attached.Value);
+            if (!_xenoArtifactQuery.TryComp(artifactUid, out var artifactComp))
+                continue;
+
+            Entity<XenoArtifactComponent> artifact = (artifactUid, artifactComp);
+            // End Triad
 
             if (!CanTrigger(artifact, (uid, node)))
                 continue;

@@ -34,6 +34,12 @@ public abstract partial class SharedXenoArtifactSystem
     private void OnNodeMapInit(Entity<XenoArtifactNodeComponent> ent, ref MapInitEvent args)
     {
         XenoArtifactNodeComponent nodeComponent = ent;
+        // Triad: roll once per node; the legacy ship load raises MapInit on every entity it loads
+        if (nodeComponent.DurabilityRolled)
+            return;
+
+        nodeComponent.DurabilityRolled = true;
+        // End Triad
         // Frontier: max durability
         if (_singleUseNodes)
             nodeComponent.MaxDurability = 1;
@@ -414,7 +420,17 @@ public abstract partial class SharedXenoArtifactSystem
             return;
         }
 
-        var artifact = _xenoArtifactQuery.Get(GetEntity(nodeComponent.Attached.Value));
+        // Triad: a node whose artifact does not resolve is worth nothing, not a throw
+        // var artifact = _xenoArtifactQuery.Get(GetEntity(nodeComponent.Attached.Value));
+        var artifactUid = GetEntity(nodeComponent.Attached.Value);
+        if (!_xenoArtifactQuery.TryComp(artifactUid, out var artifactComp))
+        {
+            nodeComponent.ResearchValue = 0;
+            return;
+        }
+
+        Entity<XenoArtifactComponent> artifact = (artifactUid, artifactComp);
+        // End Triad
 
         var nonactiveNodes = GetActiveNodes(artifact);
         var durabilityEffect = MathF.Pow((float)nodeComponent.Durability / nodeComponent.MaxDurability, 2);

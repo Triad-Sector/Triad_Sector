@@ -17,8 +17,8 @@ namespace Content.IntegrationTests.Tests._Triad.Shipyard;
 
 /// <summary>
 /// An artifact's nodes are entities in its node container, and its graph names them by NetEntity. The
-/// legacy ship save has to carry both halves, and a ship file that lost the nodes has to load without
-/// leaving an unlock session that throws on every tick.
+/// legacy ship save has to carry both halves with the nodes' wear intact, and a ship file that lost the
+/// nodes has to load without leaving an unlock session that throws on every tick.
 /// </summary>
 [TestFixture]
 [TestOf(typeof(ShipyardGridSaveSystem))]
@@ -41,22 +41,33 @@ public sealed class XenoArtifactShipSaveTest
         var artifact = await SpawnAnchoredArtifact(server, map);
 
         var lockedBefore = new Dictionary<int, bool>();
+        var durabilityBefore = new Dictionary<int, (int Current, int Max)>();
         List<List<bool>> edgesBefore = new();
         await server.WaitAssertion(() =>
         {
             var comp = entMan.GetComponent<XenoArtifactComponent>(artifact);
 
-            // One unlocked node, so the round trip has progress to lose.
+            // One unlocked node, spent, so the round trip has progress and wear to lose.
             var root = artifactSystem.GetAllNodes((artifact, comp))
                 .First(n => artifactSystem.GetDirectPredecessorNodes((artifact, comp), n).Count == 0);
             artifactSystem.SetNodeUnlocked((artifact, comp), root);
+            artifactSystem.AdjustNodeDurability((root.Owner, root.Comp), -root.Comp.Durability);
 
             foreach (var index in artifactSystem.GetAllNodeIndices((artifact, comp)))
-                lockedBefore[index] = artifactSystem.GetNode((artifact, comp), index).Comp.Locked;
+            {
+                var node = artifactSystem.GetNode((artifact, comp), index);
+                lockedBefore[index] = node.Comp.Locked;
+                durabilityBefore[index] = (node.Comp.Durability, node.Comp.MaxDurability);
+            }
 
             edgesBefore = comp.NodeAdjacencyMatrix.Select(row => row.ToList()).ToList();
 
-            Assert.That(lockedBefore.Values, Has.Some.False, "Fixture: no node was unlocked before the save.");
+            Assert.Multiple(() =>
+            {
+                Assert.That(lockedBefore.Values, Has.Some.False, "Fixture: no node was unlocked before the save.");
+                Assert.That(durabilityBefore.Values.Any(d => d.Current == 0), Is.True,
+                    "Fixture: no node was spent before the save.");
+            });
         });
 
         string? yaml = null;
@@ -94,6 +105,8 @@ public sealed class XenoArtifactShipSaveTest
 
                     Assert.That(node.Value.Comp.Locked, Is.EqualTo(lockedBefore[index]),
                         $"Slot {index} came back with a different lock state.");
+                    Assert.That((node.Value.Comp.Durability, node.Value.Comp.MaxDurability), Is.EqualTo(durabilityBefore[index]),
+                        $"Slot {index} came back with different durability.");
                 }
 
                 Assert.That(comp.NodeAdjacencyMatrix, Is.EqualTo(edgesBefore), "The graph came back with different edges.");
