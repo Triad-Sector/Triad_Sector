@@ -176,7 +176,8 @@ namespace Content.Shared.Roles
         /// Gates this job on the player holding an admin rank, active or de-adminned, whatever the
         /// <c>game.role_whitelist</c> cvar says. The server puts the job in a rank holder's <c>MsgJobWhitelist</c>
         /// payload and leaves it out of everyone else's, and the lobby drops what the payload leaves out rather than
-        /// showing it disabled: see JobWhitelistManager.IsAllowed and PickerWindow.UpdateUi.
+        /// showing it disabled, from the latejoin list and the character editor alike: see
+        /// JobWhitelistManager.IsAllowed and AdminGatedJobFilter.
         /// </summary>
         [DataField]
         public bool AdminWhitelist;

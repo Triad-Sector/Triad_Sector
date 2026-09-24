@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Content.Client._NF.LateJoin.Controls;
 using Content.Client._NF.LateJoin.Interfaces;
-using Content.Client._Triad.LateJoin; // Triad: admin-gated jobs
+using Content.Client._Triad.Lobby; // Triad: admin-gated jobs
 using Content.Client.GameTicking.Managers;
 using Content.Client.Players.PlayTimeTracking; // Triad: admin-gated jobs
 using Content.Client.UserInterface.Controls;

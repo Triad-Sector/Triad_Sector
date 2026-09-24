@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using Content.Client._Triad.LateJoin;
+using Content.Client._Triad.Lobby;
 using Content.Client.Players.PlayTimeTracking;
 using Content.IntegrationTests.Pair;
 using Content.Server.Administration.Managers;
@@ -14,9 +14,11 @@ using Content.Server.Mind;
 using Content.Server.Station.Events;
 using Content.Shared._Mono.CCVar;
 using Content.Shared.CCVar;
+using Content.Shared.Follower;
 using Content.Shared.Follower.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Console;
@@ -41,6 +43,9 @@ namespace Content.IntegrationTests.Tests._Triad.HighCommand;
 public sealed class HighCommandAccessTest
 {
     private static readonly ProtoId<JobPrototype> ChiefEnforcer = "TdfChiefEnforcer";
+    private static readonly ProtoId<DepartmentPrototype> CentralCommand = "CentralCommand";
+    private static readonly ProtoId<DepartmentPrototype> Command = "Command";
+    private static readonly ProtoId<DepartmentPrototype> Cargo = "Cargo";
 
     /// <summary>
     /// Round-start assignment and the latejoin auto-pick never hand an admin-gated job to a player with no admin
@@ -147,6 +152,55 @@ public sealed class HighCommandAccessTest
                 AssertJoinedAt(pair, client, Rep, outpost);
                 AssertJoinedAt(pair, intern, Intern, outpost);
             });
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// An admin who sets a High Command job in the character editor and readies up starts the round on that job's
+    /// spawners. The rule is added in the lobby the way a preset adds it, so the outpost stands before round-start
+    /// assignment runs.
+    /// </summary>
+    [Test]
+    public async Task AdminsReadyIntoHighCommandAtRoundStart()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings
+        {
+            InLobby = true,
+            DummyTicker = false,
+            Connected = true,
+            Dirty = true,
+            Fresh = true,
+        });
+        var server = pair.Server;
+        var admins = server.ResolveDependency<IAdminManager>();
+        var ticker = server.System<GameTicker>();
+        var client = pair.Player!;
+
+        // Same walled rooms as AdminsLateJoinThroughDeadminOnJoin, same area echo assert.
+        pair.Client.CfgMan.SetCVar(MonoCVars.AreaEchoEnabled, false);
+        await CloseLobbyVotes(pair);
+        Assert.That(admins.IsAdmin(client), "Fixture: the pool client should start as a host admin.");
+
+        // Saved through IServerPreferencesManager.SetProfile, so the priority meets the same EnsureValid a save from
+        // the character editor does.
+        await pair.SetJobPriorities((Rep, JobPriority.High));
+
+        var rule = EntityUid.Invalid;
+        await server.WaitPost(() =>
+        {
+            ticker.SetGamePreset("Greenshift");
+            rule = ticker.AddGameRule(RuleId);
+            ticker.ToggleReadyAll(true);
+            ticker.StartRound();
+        });
+        await pair.RunTicksSync(10);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound), "Fixture: the round did not start.");
+            AssertJoinedAt(pair, client, Rep, ReadOutpost(server.EntMan, rule));
         });
 
         await pair.CleanReturnAsync();
@@ -260,6 +314,11 @@ public sealed class HighCommandAccessTest
             clientGhosts.GhostWarpsResponse -= OnWarps;
         }
 
+        // Dirty pairs go back to the pool, and the next borrower's recycle disconnects this client. A ghost still
+        // following someone then warns while the client tears down, and the warning fails that next test.
+        await server.WaitPost(() => server.System<FollowerSystem>().StopFollowingEntity(ghost, outsideMob));
+        await pair.RunTicksSync(5);
+
         await pair.CleanReturnAsync();
     }
 
@@ -270,9 +329,7 @@ public sealed class HighCommandAccessTest
     [Test]
     public async Task LobbyGateHoldsWithRoleWhitelistOff()
     {
-        // Fresh: recycling a pair another test left a following ghost in warns on the client, and that warning lands
-        // on whichever test borrows the pair next.
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true, Fresh = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
         var server = pair.Server;
         var admins = server.ResolveDependency<IAdminManager>();
         var requirements = pair.Client.ResolveDependency<JobRequirementsManager>();
@@ -319,13 +376,14 @@ public sealed class HighCommandAccessTest
     }
 
     /// <summary>
-    /// The latejoin list drops a station whose only jobs are admin-gated for a player with no admin rank, keeps plain
-    /// whitelisted jobs, and leaves a station that arrived with no jobs to the window's own handling.
+    /// For a player with no admin rank, the lobby's job lists drop admin-gated jobs and nothing else. The latejoin list
+    /// drops a station whose only jobs are admin-gated and the character editor drops such a department, plain
+    /// whitelisted jobs stay, and a station or department that arrived with no jobs is left to its own handling.
     /// </summary>
     [Test]
-    public async Task LateJoinListDropsOnlyAdminGatedJobs()
+    public async Task LobbyListsDropOnlyAdminGatedJobs()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true, Fresh = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
         var server = pair.Server;
         var admins = server.ResolveDependency<IAdminManager>();
         var requirements = pair.Client.ResolveDependency<JobRequirementsManager>();
@@ -342,13 +400,24 @@ public sealed class HighCommandAccessTest
             [empty] = new("Nothing Open", new(), true, null, null),
         };
 
+        bool EditorDrops(ProtoId<DepartmentPrototype> department) =>
+            AdminGatedJobFilter.EmptiesDepartment(prototypes.Index(department), prototypes, requirements);
+
         await pair.Client.WaitAssertion(() =>
         {
+            Assert.That(prototypes.Index(CentralCommand).EditorHidden, Is.False,
+                "Fixture: the character editor skips the High Command jobs' department before the filter sees it.");
+
             var filtered = AdminGatedJobFilter.Filter(stations, prototypes, requirements);
-            Assert.That(filtered.Keys, Is.EquivalentTo(new[] { outpost, tdf, empty }),
-                "The latejoin list hid a station from an admin.");
-            Assert.That(filtered[outpost].JobsAvailable.Keys, Is.EquivalentTo(new[] { Rep, Intern }),
-                "The latejoin list hid an admin-gated job from an admin.");
+            Assert.Multiple(() =>
+            {
+                Assert.That(filtered.Keys, Is.EquivalentTo(new[] { outpost, tdf, empty }),
+                    "The latejoin list hid a station from an admin.");
+                Assert.That(filtered[outpost].JobsAvailable.Keys, Is.EquivalentTo(new[] { Rep, Intern }),
+                    "The latejoin list hid an admin-gated job from an admin.");
+                Assert.That(EditorDrops(CentralCommand), Is.False,
+                    "The character editor hid the High Command jobs from an admin.");
+            });
         });
 
         server.CfgMan.SetCVar(CCVars.ConsoleLoginLocal, false);
@@ -367,6 +436,11 @@ public sealed class HighCommandAccessTest
                 Assert.That(filtered[tdf].JobsAvailable.Keys, Is.EquivalentTo(new[] { ChiefEnforcer }),
                     "A plain whitelisted job was hidden instead of shown disabled.");
                 Assert.That(filtered.Keys, Does.Contain(empty), "A station that arrived with no jobs was dropped.");
+
+                Assert.That(EditorDrops(CentralCommand),
+                    "The character editor names the High Command jobs to a player with no admin rank.");
+                Assert.That(EditorDrops(Command), Is.False, "A department with plain whitelisted jobs was hidden.");
+                Assert.That(EditorDrops(Cargo), Is.False, "A department that lists no jobs was dropped by the filter.");
             });
         });
 

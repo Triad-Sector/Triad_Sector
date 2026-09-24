@@ -3,9 +3,10 @@
   name: job-name-tfa-high-command-intern
   description: job-description-tfa-high-command-intern
   playTimeTracker: JobTfaHighCommandIntern
-  setPreference: false
+#  setPreference: false # Triad: rank holders set it in the character editor like any other job
   # Triad: gated on an admin rank, and hidden from the lobby for everyone else.
   adminWhitelist: true
+  overrideConsoleVisibility: false # Triad: keeps it off the ID console's job presets, which otherwise follow setPreference
   startingGear: TfaHighCommandInternGear
   alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
