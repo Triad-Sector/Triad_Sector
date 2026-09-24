@@ -85,8 +85,7 @@
         state: green
       - state: tdf-cadet
 
-# Triad: High Command spawners. Place these on /Maps/_Triad/Admin/highcommandoutpost.yml before the
-# outpost's job slots can actually be joined; the map currently carries no spawn points at all.
+# Triad: High Command spawners, placed on /Maps/_Triad/Admin/highcommandoutpost.yml.
 - type: entity
   id: SpawnPointTfaHighCommandRep
   parent: SpawnPointJobTriadBase

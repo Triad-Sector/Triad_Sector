@@ -38,26 +38,7 @@ public sealed partial class CrewPickerControl : PickerControl
 
         HideJoblessShipsCheckbox.OnPressed += _ => ToggleHideJoblessShips();
         HideJoblessShipsCheckbox.Pressed = _hideJoblessShips;
-
-        // Triad: an admin-gated job appears and disappears with the admin rank, which can change while
-        // this control is already on screen. Only the retired LateJoinGui listened for that.
-        _jobReqs.Updated += OnRequirementsUpdated;
     }
-
-    // Triad: rebuild when the whitelist payload changes.
-    private void OnRequirementsUpdated()
-    {
-        UpdateUi(_lobbyJobs);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-            _jobReqs.Updated -= OnRequirementsUpdated;
-
-        base.Dispose(disposing);
-    }
-    // End Triad
 
     public override void UpdateUi(IReadOnlyDictionary<NetEntity, StationJobInformation> obj)
     {
@@ -118,15 +99,6 @@ public sealed partial class CrewPickerControl : PickerControl
             }
 
             var prototype = _prototypeManager.Index(jobPrototype);
-
-            // Triad: a whitelist-gated job is absent, not disabled. A greyed row reading "you aren't
-            // whitelisted" advertises the role to the whole lobby. Deliberately CheckWhitelist and not
-            // IsAllowed: playtime, age and species denials keep their greyed row and tooltip, because
-            // that tooltip is how a player learns what to work toward.
-            if (!_jobReqs.CheckWhitelist(prototype, out _))
-                continue;
-            // End Triad
-
             var jobName = prototype.LocalizedName + jobCount.WrapJobCountInParentheses();
             Texture? texture = null;
 

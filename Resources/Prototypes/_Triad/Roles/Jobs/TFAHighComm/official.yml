@@ -7,6 +7,7 @@
   # Triad: gated on an admin rank, and hidden from the lobby for everyone else.
   adminWhitelist: true
   startingGear: TfaHighCommandRepGear
+  alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
   supervisors: job-supervisors-centcom
   canBeAntag: false

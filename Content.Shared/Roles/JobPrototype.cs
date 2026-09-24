@@ -173,10 +173,10 @@ namespace Content.Shared.Roles
 
         // Triad: admin-gated roles.
         /// <summary>
-        /// Gates this job on the player holding an admin rank, and implies <see cref="Whitelisted"/>.
-        /// The server puts the job in an admin's <c>MsgJobWhitelist</c> payload and drops it from everyone
-        /// else's, so the lobby hides the row rather than showing it disabled: see
-        /// JobWhitelistManager.IsAllowed and CrewPickerControl.BuildJobViewStateList.
+        /// Gates this job on the player holding an admin rank, active or de-adminned, whatever the
+        /// <c>game.role_whitelist</c> cvar says. The server puts the job in a rank holder's <c>MsgJobWhitelist</c>
+        /// payload and leaves it out of everyone else's, and the lobby drops what the payload leaves out rather than
+        /// showing it disabled: see JobWhitelistManager.IsAllowed and PickerWindow.UpdateUi.
         /// </summary>
         [DataField]
         public bool AdminWhitelist;

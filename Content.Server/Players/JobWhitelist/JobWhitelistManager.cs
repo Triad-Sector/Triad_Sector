@@ -41,8 +41,9 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
 
         _log.GetSawmill(nameof(JobWhitelistManager));
 
-        // Triad: admin-gated jobs follow the admin rank live, so a promotion or a deadmin mid-round
-        // re-sends the payload and the lobby list changes under the player without a reconnect.
+        // Triad: admin-gated jobs follow the admin rank live, so gaining or losing a rank mid-round re-sends the
+        // payload and the lobby list changes under the player without a reconnect. A de-admin keeps the rank, so
+        // it re-sends the same list.
         _admin.OnPermsChanged += OnAdminPermsChanged;
         // End Triad
     }
@@ -103,10 +104,12 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
 
     public bool IsAllowed(ICommonSession session, ProtoId<JobPrototype> job)
     {
-        // Triad: an admin-gated job answers off the admin rank and never off the database whitelist,
-        // ahead of the GameRoleWhitelist cvar so turning that cvar off cannot open the role to everyone.
+        // Triad: an admin-gated job answers off holding an admin rank, active or de-adminned, and never off the
+        // database whitelist. De-adminned counts because admin.deadmin_on_join de-admins the player inside
+        // JoinGameCommand before the join is checked. Ahead of the GameRoleWhitelist cvar so turning that cvar off
+        // cannot open the role to everyone.
         if (_prototypes.TryIndex(job, out var adminGated) && adminGated.AdminWhitelist)
-            return _admin.IsAdmin(session);
+            return _admin.IsAdmin(session, includeDeAdmin: true);
         // End Triad
 
         if (!_config.GetCVar(CCVars.GameRoleWhitelist))
@@ -155,7 +158,7 @@ public sealed partial class JobWhitelistManager : IPostInjectInit
         // admin-gated ids into it would persist them past a deadmin.
         var whitelist = new HashSet<string>(_whitelists.GetValueOrDefault(player.UserId) ?? new HashSet<string>());
 
-        if (_admin.IsAdmin(player))
+        if (_admin.IsAdmin(player, includeDeAdmin: true))
             whitelist.UnionWith(AdminGatedJobs());
         // End Triad
 

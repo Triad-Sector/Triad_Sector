@@ -1,4 +1,5 @@
 using Content.Server._NF.Station.Systems;
+using Content.Server._Triad.Ghost;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
@@ -18,7 +19,8 @@ namespace Content.Server._Triad.HighCommand;
 /// The outpost is deliberately not a <see cref="Content.Server._NF.GameRule.PointOfInterestPrototype"/>. A POI
 /// loads onto the sector map (PointOfInterestSystem.TrySpawnPoiGrid takes the sector's MapId), which leaves the
 /// grid physically reachable by anything with a thruster and enough patience; HideWarp and IFF only unlist it.
-/// A private map has no route in at all, so every remaining way through is one this system opens on purpose.
+/// A private map has no route in at all, so every remaining way through is one this system opens on purpose: an
+/// admin ghost (the map is an <see cref="AdminOnlyWarpMapComponent"/>), a cleared hull, or an admin-gated job slot.
 /// </remarks>
 public sealed class HighCommandOutpostRuleSystem : GameRuleSystem<HighCommandOutpostRuleComponent>
 {
@@ -36,9 +38,16 @@ public sealed class HighCommandOutpostRuleSystem : GameRuleSystem<HighCommandOut
     {
         base.Started(uid, component, gameRule, args);
 
-        if (component.MapEntity != null)
+        // Every addgamerule spawns a fresh rule entity with a fresh component, so an outpost that already stands
+        // is found by looking across rules, not at this one.
+        var rules = EntityQueryEnumerator<HighCommandOutpostRuleComponent>();
+        while (rules.MoveNext(out var otherRule, out var other))
         {
-            Log.Warning("High Command outpost rule started twice, ignoring the second.");
+            if (otherRule == uid || other.MapEntity is not { } otherMap || TerminatingOrDeleted(otherMap))
+                continue;
+
+            Log.Warning($"{ToPrettyString(uid)} built nothing: the High Command outpost already stands on " +
+                        $"{ToPrettyString(otherMap)}, built by {ToPrettyString(otherRule)}.");
             return;
         }
 
@@ -67,9 +76,12 @@ public sealed class HighCommandOutpostRuleSystem : GameRuleSystem<HighCommandOut
         component.GridEntity = grid;
         _metaData.SetEntityName(map, Loc.GetString("map-name-tfa-high-command"));
 
+        // Ghosts without an admin rank can neither list nor warp to anything here, players included.
+        EnsureComp<AdminOnlyWarpMapComponent>(map);
+
         component.Station = _station.InitializeNewStation(component.StationConfig, new[] { grid.Value.Owner });
 
-        // Ghost warps to the outpost are admin-only, enforced in GhostSystem both when listing warps and
+        // The outpost's warp points are admin-only too, enforced in GhostSystem both when listing warps and
         // when performing one.
         _renameWarps.SyncWarpPointsToStation(component.Station.Value, forceAdminOnly: true);
 
