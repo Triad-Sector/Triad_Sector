@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/47718914e47c6fbf23d6dc97f073a9daa11b23cb",
+  "copyright": "Taken from shiptest at commit https://github.com/shiptest-ss13/Shiptest/commit/52c44ca754726c8e97c215f7e864b3867b241caa, recolored by TheRealMasterChief117",
   "size": {
     "x": 32,
     "y": 32
@@ -12,10 +12,6 @@
     },
     {
       "name": "equipped-HELMET",
-      "directions": 4
-    },
-    {
-      "name": "equipped-HELMET-hamster",
       "directions": 4
     },
     {

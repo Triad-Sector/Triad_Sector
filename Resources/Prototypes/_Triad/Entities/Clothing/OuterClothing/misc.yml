@@ -1,0 +1,35 @@
+- type: entity
+  parent: ClothingOuterApronChef
+  id: ClothingOuterApronChefTfa
+  name: apron
+  suffix: Chef, TFA
+  description: An apron-jacket used by a high class chef.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#4c4753"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#4c4753"
+      right:
+      - state: inhand-right
+        color: "#4c4753"
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+        color: "#4c4753"
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterJacketChefTfa
+  name: TFA chef jacket
+  description: An apron-jacket used by a high class TFA chef.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Jackets/tfa-chef.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Jackets/tfa-chef.rsi

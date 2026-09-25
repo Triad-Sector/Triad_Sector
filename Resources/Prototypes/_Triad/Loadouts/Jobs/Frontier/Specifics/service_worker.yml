@@ -1,0 +1,146 @@
+- type: loadout
+  id: ClothingHeadHatChefTfa
+  groupBy: ChefHat
+  equipment:
+    head: ClothingHeadHatChefTfa
+
+- type: loadout
+  id: ClothingHeadHatChef
+  groupBy: ChefHat
+  equipment:
+    head: ClothingHeadHatChef
+
+- type: loadout
+  id: ClothingHeadHatTophat
+  groupBy: BarHat
+  equipment:
+    head: ClothingHeadHatTophat
+
+- type: loadout
+  id: ClothingHeadHatBowlerHat
+  groupBy: BarHat
+  equipment:
+    head: ClothingHeadHatBowlerHat
+
+- type: loadout
+  id: ClothingHeadHatTfaJanitorSoft
+  equipment:
+    head: ClothingHeadHatTfaJanitorSoft
+
+- type: loadout
+  id: ClothingOuterJacketChefTfa
+  equipment:
+    outerClothing: ClothingOuterJacketChefTfa
+
+- type: loadout
+  id: ClothingOuterApronChefTfa
+  groupBy: Apron
+  equipment:
+    outerClothing: ClothingOuterApronChefTfa
+
+- type: loadout
+  id: ClothingOuterApronChef
+  groupBy: Apron
+  equipment:
+    outerClothing: ClothingOuterApronChef
+
+- type: loadout
+  id: ClothingOuterApronBar
+  groupBy: Apron
+  equipment:
+    outerClothing: ClothingOuterApronBar
+
+- type: loadout
+  id: ClothingOuterJacketChefTfa
+  groupBy: Jacket
+  equipment:
+    outerClothing: ClothingOuterJacketChefTfa
+
+- type: loadout
+  id: ClothingOuterJacketChef
+  groupBy: Jacket
+  equipment:
+    outerClothing: ClothingOuterJacketChef
+
+- type: loadout
+  id: ClothingOuterVest
+  groupBy: Vest
+  equipment:
+    outerClothing: ClothingOuterVest
+
+- type: loadout
+  id: ClothingOuterArmorBasic
+  groupBy: Vest
+  price: 12500
+  equipment:
+    outerClothing: ClothingOuterArmorBasic
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorSlacksTfaService
+  groupBy: ServiceWorker
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorSlacksTfaService
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorSlacksTfaService
+  groupBy: ServiceWorker
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorSlacksTfaService
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorSlacksTfaServiceShorts
+  groupBy: ServiceWorker
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorSlacksTfaServiceShorts
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorSlacksTfaChef
+  groupBy: Chef
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorSlacksTfaChef
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorSlacksTfaChef
+  groupBy: Chef
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorSlacksTfaChef
+
+- type: loadout
+  id: ClothingUniformJumpsuitColorSlacksTfaBotanist
+  groupBy: Botanist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorSlacksTfaBotanist
+
+- type: loadout
+  id: ClothingUniformJumpskirtColorSlacksTfaBotanist
+  groupBy: Botanist
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorSlacksTfaBotanist
+
+- type: loadout
+  id: ClothingUniformJumpsuitTfaJanitor
+  groupBy: Janitor
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTfaJanitor
+
+- type: loadout
+  id: ClothingUniformJumpskirtTfaJanitor
+  groupBy: Janitor
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTfaJanitor
+
+- type: loadout
+  id: ClothingBeltJanitor
+  equipment:
+    belt: ClothingBeltJanitor
+
+- type: loadout
+  id: ClothingBeltJanitorFilled
+  name: janibelt (filled)
+  equipment:
+    belt: ClothingBeltJanitorFilled
+
+- type: loadout
+  id: ClothingShoesGaloshes
+  equipment:
+    shoes: ClothingShoesGaloshes

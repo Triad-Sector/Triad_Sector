@@ -1,0 +1,69 @@
+# Triad edit.
+- type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitColorSlacksTfaService
+  - ClothingUniformJumpskirtColorSlacksTfaService
+  - ClothingUniformJumpsuitColorSlacksTfaServiceShorts
+  - ClothingUniformJumpsuitColorSlacksTfaChef
+  - ClothingUniformJumpskirtColorSlacksTfaChef
+  - ClothingUniformJumpsuitColorSlacksTfaBotanist
+  - ClothingUniformJumpskirtColorSlacksTfaBotanist
+  - ClothingUniformJumpsuitTfaJanitor
+  - ClothingUniformJumpskirtTfaJanitor
+
+- type: loadoutGroup
+  id: ServiceWorkerOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 0
+  loadouts:
+  - ClothingOuterJacketChefTfa
+  - ClothingOuterJacketChef
+  - ClothingOuterApronChefTfa
+  - ClothingOuterApronChef
+  - ClothingOuterApronBar
+  - ClothingOuterVest
+  - ClothingOuterArmorBasic
+
+- type: loadoutGroup
+  id: ServiceWorkerHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatChefTfa
+  - ClothingHeadHatChef
+  - ClothingHeadHatTophat
+  - ClothingHeadHatBowlerHat
+  - ClothingHeadHatTfaJanitorSoft
+
+- type: loadoutGroup
+  id: ServiceWorkerBelt
+  name: loadout-group-contractor-belt
+  minLimit: 0
+  loadouts:
+  - ClothingBeltJanitor
+  - ClothingBeltJanitorFilled
+  subgroups:
+  - ContractorBelt
+
+- type: loadoutGroup
+  id: ServiceWorkerGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 0
+  loadouts:
+  - JanitorRubberGloves
+  subgroups:
+  - ContractorGloves
+
+- type: loadoutGroup
+  id: ServiceWorkerShoes
+  name: loadout-group-contractor-shoes
+  minLimit: 0
+  loadouts:
+  - ClothingShoesGaloshes
+  subgroups:
+  - ContractorShoes
+  fallbacks:
+  - ContractorClothingShoesColorBlack
