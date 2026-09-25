@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemDeviceSmall] # Frontier: added RecyclableItemDeviceSmall
   id: HandheldHealthAnalyzer
   name: health analyzer
   description: A hand-held body scanner capable of distinguishing vital signs of the subject.
