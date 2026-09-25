@@ -476,7 +476,7 @@
   - type: ItemBorgModule
     moduleId: Diagnosis # Frontier
     items:
-    - HandheldHealthAnalyzerUnpowered
+    - HandheldHealthAnalyzer
     - ClothingNeckStethoscope
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: diagnosis-module }
@@ -493,7 +493,7 @@
   - type: ItemBorgModule
     moduleId: Treatment # Frontier
     items:
-    - HandheldHealthAnalyzerUnpowered
+    - HandheldHealthAnalyzer
     - Brutepack10Lingering
     - Ointment10Lingering
     - Gauze10Lingering
@@ -530,7 +530,7 @@
   - type: ItemBorgModule
     moduleId: AdvancedTreatment # Frontier
     items:
-    - HandheldHealthAnalyzerUnpowered
+    - HandheldHealthAnalyzer
     # - Beaker # Frontier
     # - Beaker # Frontier
     - BorgDropper
