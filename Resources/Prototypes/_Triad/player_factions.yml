@@ -68,7 +68,7 @@
 - type: company
   id: TheWingedChoir
   name: The Winged Choir
-  description: TheWingedChoir-description
+  description: thewingedchoir-description
   image: /Textures/_Triad/PlayerFactions/TheWingedChoir.png
   color: "#FFFFE3"
   whitelisted: true
