@@ -69,15 +69,37 @@
   - ContractorBureaucracy
   - NFSpeciesSpecific
 
-# These are admin only roles, but they need a rudimentary loadout so that they do not spawn naked if the jobs are spawned by admins
-- type: roleLoadout
-  id: JobTfaHighCommandIntern
-  groups:
-  - ContractorBoxSurvival
-  - NFSpeciesSpecific
-
+# TFA High Command share one wardrobe; the Representative defaults to full dress, the Intern to the uniform alone.
 - type: roleLoadout
   id: JobTfaHighCommandRep
   groups:
+  - HighCommandRepHead
+  - HighCommandJumpsuit
+  - HighCommandRepGloves
+  - HighCommandBackpack
+  - HighCommandRepOuterClothing
+  - HighCommandRepShoes
+  - HighCommandRepGlasses
   - ContractorBoxSurvival
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorTrinkets
+  - ContractorBureaucracy
+  - NFSpeciesSpecific
+
+- type: roleLoadout
+  id: JobTfaHighCommandIntern
+  groups:
+  - HighCommandHead
+  - HighCommandJumpsuit
+  - HighCommandGloves
+  - HighCommandBackpack
+  - HighCommandOuterClothing
+  - HighCommandShoes
+  - HighCommandGlasses
+  - ContractorBoxSurvival
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorTrinkets
+  - ContractorBureaucracy
   - NFSpeciesSpecific

@@ -85,7 +85,7 @@
         state: green
       - state: tdf-cadet
 
-# Triad: High Command spawners, placed on /Maps/_Triad/Admin/highcommandoutpost.yml.
+# High Command spawners, placed on /Maps/_Triad/Admin/highcommandoutpost.yml.
 - type: entity
   id: SpawnPointTfaHighCommandRep
   parent: SpawnPointJobTriadBase

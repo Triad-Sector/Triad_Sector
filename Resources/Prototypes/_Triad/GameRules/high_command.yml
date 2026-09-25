@@ -11,10 +11,12 @@
       components:
       - type: StationNameSetup
         mapNameTemplate: 'TFA High Command'
+      - type: ExtraStationInformation
+        icon: /Textures/_Triad/Logo/tfa_icon/icon-64x64.png
       - type: StationJobs
         availableJobs:
-          TfaHighCommandRep: [ 2, 2 ]
-          TfaHighCommandIntern: [ 3, 3 ]
+          TfaHighCommandRep: [ -1, -1 ]
+          TfaHighCommandIntern: [ -1, -1 ]
 
 - type: entity
   id: TfaHighCommandOutpostStation

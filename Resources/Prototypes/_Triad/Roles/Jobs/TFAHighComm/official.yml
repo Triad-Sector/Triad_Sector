@@ -3,10 +3,8 @@
   name: job-name-tfa-high-command
   description: job-description-tfa-high-command
   playTimeTracker: JobTfaHighCommandRep
-#  setPreference: false # Triad: rank holders set it in the character editor like any other job
-  # Triad: gated on an admin rank, and hidden from the lobby for everyone else.
-  adminWhitelist: true
-  overrideConsoleVisibility: false # Triad: keeps it off the ID console's job presets, which otherwise follow setPreference
+  adminWhitelist: true # only admin-rank holders see or take it
+  overrideConsoleVisibility: false # keeps it off the ID console's job presets, which otherwise follow setPreference
   startingGear: TfaHighCommandRepGear
   alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
@@ -35,13 +33,7 @@
 
 - type: startingGear
   id: TfaHighCommandRepGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitTfaHighCommand
-    shoes: ClothingShoesBootsLaceup
-    head: ClothingHeadHatTfaHighCommand
-    eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesHeavyGoldenTrim
-    outerClothing: ClothingOuterCoatTfaHighCommand
+  equipment: # clothing comes from the JobTfaHighCommandRep loadout
     id: TfaHighComPda
     ears: ClothingHeadsetAltHighCommand
     belt: WeaponEnergyRevolver

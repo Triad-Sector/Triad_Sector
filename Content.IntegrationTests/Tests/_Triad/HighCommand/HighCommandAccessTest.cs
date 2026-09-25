@@ -18,6 +18,7 @@ using Content.Shared.Follower;
 using Content.Shared.Follower.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
+using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
@@ -159,8 +160,8 @@ public sealed class HighCommandAccessTest
 
     /// <summary>
     /// An admin who sets a High Command job in the character editor and readies up starts the round on that job's
-    /// spawners. The rule is added in the lobby the way a preset adds it, so the outpost stands before round-start
-    /// assignment runs.
+    /// spawners, dressed by the job's default loadout. The rule is added in the lobby the way a preset adds it, so the
+    /// outpost stands before round-start assignment runs.
     /// </summary>
     [Test]
     public async Task AdminsReadyIntoHighCommandAtRoundStart()
@@ -201,6 +202,23 @@ public sealed class HighCommandAccessTest
         {
             Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound), "Fixture: the round did not start.");
             AssertJoinedAt(pair, client, Rep, ReadOutpost(server.EntMan, rule));
+
+            // The profile holds no loadout for the job, so it spawns on the loadout's defaults. Starting gear keeps
+            // the slots the loadout leaves empty.
+            var mob = client.AttachedEntity!.Value;
+            var inventory = server.System<InventorySystem>();
+            string? Worn(string slot) => inventory.TryGetSlotEntity(mob, slot, out var item)
+                ? server.EntMan.GetComponent<MetaDataComponent>(item.Value).EntityPrototype?.ID
+                : null;
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(Worn("jumpsuit"), Is.EqualTo("ClothingUniformJumpsuitTfaHighCommand"), "Default jumpsuit.");
+                Assert.That(Worn("head"), Is.EqualTo("ClothingHeadHatTfaHighCommand"), "Default hat.");
+                Assert.That(Worn("outerClothing"), Is.EqualTo("ClothingOuterCoatTfaHighCommand"), "Default coat.");
+                Assert.That(Worn("back"), Is.EqualTo("ClothingBackpackSatchelLeather"), "Default bag.");
+                Assert.That(Worn("belt"), Is.EqualTo("WeaponEnergyRevolver"), "Starting gear's belt.");
+            });
         });
 
         await pair.CleanReturnAsync();
@@ -395,7 +413,7 @@ public sealed class HighCommandAccessTest
         var empty = new NetEntity(3);
         var stations = new Dictionary<NetEntity, StationJobInformation>
         {
-            [outpost] = new("TFA High Command", new() { [Rep] = 2, [Intern] = 3 }, true, null, null),
+            [outpost] = new("TFA High Command", new() { [Rep] = null, [Intern] = null }, true, null, null),
             [tdf] = new("TDF Outpost", new() { [ChiefEnforcer] = 1 }, true, null, null),
             [empty] = new("Nothing Open", new(), true, null, null),
         };
