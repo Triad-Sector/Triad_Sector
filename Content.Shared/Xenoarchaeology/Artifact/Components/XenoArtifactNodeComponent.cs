@@ -57,6 +57,14 @@ public sealed partial class XenoArtifactNodeComponent : Component
     /// </summary>
     [DataField]
     public MinMax MaxDurabilityCanDecreaseBy = new(0, 2);
+
+    // Triad: durability roll guard
+    /// <summary>
+    /// Triad: set by the map-init roll, so a load that raises MapInit again keeps the saved durability.
+    /// </summary>
+    [DataField]
+    public bool DurabilityRolled;
+    // End Triad
     #endregion
 
     #region Research

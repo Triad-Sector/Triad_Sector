@@ -41,3 +41,70 @@
     deconstructionTarget: null
   - type: StaticPrice
     price: 5000
+
+- type: entity
+  name: HZD Bombadier (12 gauge, 18.5x76mm) #Low Caliber grenade launcher that happens to also fire shotgun shells.
+  parent: [BaseGunWieldable, BaseWeaponLauncher] # Launcher parent for the crosshair
+  id: WeaponShotgunBombadier
+  description: A strange, autoloading, multicaliber weapon system often found paired with the Besieger modsuit system, perfect for flushing pirates out of hard cover.  One of the more recent HZD export items, made in lower numbers due to the complexity of internal components, but its engineering and quality is top notch.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Large
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier_inhand_32x.rsi
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier_inhand_32x.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: GunRequiresWield
+  - type: GunWieldBonus
+    minAngle: -3
+    maxAngle: -10
+  - type: Gun
+    minAngle: 6
+    maxAngle: 20
+    angleIncrease: 5
+    angleDecay: 10
+    projectileSpeed: 42
+    fireRate: 2.2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Triad/Weapons/Guns/Gunshots/gun_vulture_fire.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine185x76mm
+        priority: 2
+        whitelist:
+          tags:
+          - ShortMagazine12_gaugeBuckshot
+          - Magazine185x76mm
+        whitelistFailPopup: gun-magazine-whitelist-fail
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/chemrail_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineAmmoProvider
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 20000

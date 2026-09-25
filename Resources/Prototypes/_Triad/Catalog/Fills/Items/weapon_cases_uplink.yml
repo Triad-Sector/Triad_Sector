@@ -110,3 +110,20 @@
     - id: WeaponDisabler
     - id: Handcuffs
       amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongBombadier
+  suffix: TDF, Bombadier
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunBombadier
+    - id: AmmoBox185x76mmFMJ
+      amount: 1
+    - id: Magazine185x76mm
+      amount: 1
+    - id: Magazine185x76mmAnti-Materiel
+      amount: 2
+    - id: Magazine185x76mmEMP
+      amount: 2

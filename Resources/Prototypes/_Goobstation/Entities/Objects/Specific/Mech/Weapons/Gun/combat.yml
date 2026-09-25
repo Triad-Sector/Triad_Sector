@@ -1,7 +1,7 @@
 - type: entity
   id: WeaponMechCombatPulseRifle
   name: eZ-14 mk2 Heavy pulse rifle
-  description: Fires a heavy pulse laser.
+  description: A light mech-mounted heavy pulse laser rifle. # Triad. Tweaked desc even though this is likely never used.
   suffix: Mech Weapon, Gun, Combat, Pulse
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -24,7 +24,7 @@
 - type: entity
   id: WeaponMechCombatImmolationGun
   name: ZFI Immolation Beam Gun
-  description: A mech-mounted Xray cannon. # Mono
+  description: A light mech-mounted fast shooting Xray beamer. # Triad, tweaked to reflect its stats.
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -33,21 +33,21 @@
     state: mecha_laser
   - type: Gun
     fireRate: 2 # Mono
-    selectedMode: SemiAuto
+    selectedMode: FullAuto # Triad, was a 2RPS bottomless semi auto gun? why? full auto >> spam clicking.
     availableModes:
-      - SemiAuto
+      - FullAuto # Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: HitscanBatteryAmmoProvider
     proto: XrayLaser # Mono
-    fireCost: 30 # Mono
+    fireCost: 40 # Triad, 30->40, increased from mono's value.
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatSolarisLaser
   name: CH-LC "Solaris" laser cannon
-  description: A mech-mounted Laser Cannon. # Mono
+  description: A light mech-mounted Laser Cannon. # Triad, fixed desc to include "light" keyword.
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -63,14 +63,14 @@
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: HitscanBatteryAmmoProvider
     proto: RedHeavyLaser # Mono
-    fireCost: 25 # Mono
+    fireCost: 30 # Triad, 25->30 increased power draw from mono's numbers
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatFiredartLaser
   name: CH-PS "Firedart" Laser
-  description: A fast-firing mech-mounted laser rifle. # Mono
+  description: A light mech-mounted fast-firing laser rifle. # Triad, fixed desc to include light.
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -79,21 +79,21 @@
     state: mecha_laser
   - type: Gun
     fireRate: 2 # Mono
-    selectedMode: SemiAuto
+    selectedMode: FullAuto # Triad Was called "fast firing mech mounted laser rifle", yet semi-auto..? Death to spam clicking, changed to full auto
     availableModes:
-      - SemiAuto
+      - FullAuto #Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: HitscanBatteryAmmoProvider
     proto: RedMediumLaser # Mono
-    fireCost: 15 # Mono
+    fireCost: 18 # Triad, 15->18, increased power draw from mono, similar to AC-2 per shot.
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatTeslaCannon
   name: P-X Tesla Cannon
-  description: A weapon for combat mechs, firing energy balls, based on the principle of an experimental Tesla engine.
+  description: A light mounted weapon for combat mechs, firing energy balls, based on the principle of an experimental Tesla engine. # Triad, fixed desc to include light.
   suffix: Mech Weapon, Gun, Combat, Tesla
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -119,7 +119,7 @@
 - type: entity
   id: WeaponMechCombatDisabler
   name: CH-PD Disabler
-  description: A non-lethal mounted stun gun that allows you to immobilize intruders.
+  description: A light mech mounted non-lethal stun gun that allows you to immobilize intruders. # Triad, fixed.
   suffix: Mech Weapon, Gun, Combat, Disabler
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -127,10 +127,10 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_disabler
   - type: Gun
-    fireRate: 1
-    selectedMode: SemiAuto
+    fireRate: 1.5 #Triad. Was semi auto with an RPS of ONE, making it just slightly WORSE than a normal, handheld disabler, fixed making it an upgrade.
+    selectedMode: FullAuto # Triad.
     availableModes:
-      - SemiAuto
+      - FullAuto # Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -165,7 +165,7 @@
 - type: entity
   id: WeaponMechCombatShotgun
   name: LBX AC 10 "Scattershot"
-  description: A mech mounted shotgun for room clearing.
+  description: A light mech mounted automatic 12-gauge shotgun for room clearing. # Triad, fixed description
   suffix: Mech Weapon, Gun, Combat, Shotgun
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -175,9 +175,9 @@
   - type: Gun
     fireRate: 1.5 # 0.5->1.5 Mono
     projectileSpeed: 40 # Mono
-    selectedMode: SemiAuto
+    selectedMode: FullAuto #Triad, something with a high firerate like this shouldn't be semi. Death to spam clicking.
     availableModes:
-      - SemiAuto
+      - FullAuto # Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -188,8 +188,8 @@
 
 - type: entity
   id: WeaponMechCombatShotgunIncendiary
-  name: FNX-99 "Hades" Carbine
-  description: Mounted carbine, firing incendiary cartridges.
+  name: FNX-99 "Hades" #Triad, removed the carbine part of it, cause its a shotgun.
+  description: A light mech mounted automatic 12-gauge incendiary shotgun for room burning. # Triad, description did not make it clear that this is a shotgun.
   suffix: Mech Weapon, Gun, Combat, Shotgun, Incendiary
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -197,11 +197,11 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_carbine
   - type: Gun
-    fireRate: 1.8 # 1.2->1.8 Mono
+    fireRate: 1.2 # Triad, 1.8->1.2, changed from mono's. Less firerate than the NON-INCENDIARY version.
     projectileSpeed: 40 # Mono
-    selectedMode: SemiAuto
+    selectedMode: FullAuto #Triad. High firerate should be full auto, so you don't need to spam click.
     availableModes:
-      - SemiAuto
+      - FullAuto # Triad
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -213,7 +213,7 @@
 - type: entity
   id: WeaponMechCombatUltraRifle
   name: Ultra AC-2
-  description: Mounted carbine, firing incendiary cartridges.
+  description: A light mech mounted automatic rifle, firing 7.62x39mm FMJ at a slow but constant rate. #Triad, description was BAD!!
   suffix: Mech Weapon, Gun, Combat, Rifle
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -221,7 +221,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_uac2
   - type: Gun
-    fireRate: 4.5 # 3->4.5 Mono
+    fireRate: 4 # Triad, 4.5->4, changed from mono's value
     projectileSpeed: 55 # Mono
     selectedMode: FullAuto
     availableModes:
@@ -230,14 +230,14 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: Cartridge762x39mmFMJ
-    fireCost: 10 # 15->10 Mono
+    fireCost: 15 # Triad 10->15, increased power draw from mono.
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatMissileRack8
   name: SRM-8 Light Missile Rack
-  description: Launches low-explosive breaching missiles designed to explode only when striking a sturdy target.
+  description: A light mech mounted low-explosive missile rack, that fires in short but fast burst. # Triad. Desc was innaccurate.
   suffix: Mech Weapon, Gun, Combat, Light Missile
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -248,8 +248,8 @@
   # Mono start
     fireRate: 1
     projectileSpeed: 18 # Mono
-    burstFireRate: 3
-    shotsPerBurst: 6
+    burstFireRate: 7 #Triad. 3->7 increased its speed as moving mid burst will cause it to veer in a weird way. So its now a short, three round burst.
+    shotsPerBurst: 3 #Triad. 6->3, to compensate for the faster burst.
     burstCooldown: 5
     selectedMode: Burst
     availableModes:
@@ -293,7 +293,7 @@
 - type: entity
   id: WeaponMechCombatFlashbangLauncher
   name: SGL-6 Flashbang Launcher
-  description: Launches low-explosive breaching missiles designed to explode only when striking a sturdy target.
+  description: A light mech mounted weapon that launches 40mm flash grenades, to blind intruders at range, with volume. # Triad, redid description. This is not a missile launcher.
   suffix: Mech Weapon, Gun, Combat, Flashbang
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:

@@ -31,7 +31,18 @@ public abstract partial class SharedXenoArtifactSystem
             if (_timing.CurTime < unlock.EndTime)
                 continue;
 
-            FinishUnlockingState((uid, unlock, comp));
+            // Triad: a throw must end the session, or it finishes again every tick and starves every artifact after it
+            // FinishUnlockingState((uid, unlock, comp));
+            try
+            {
+                FinishUnlockingState((uid, unlock, comp));
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Finishing the unlock of {ToPrettyString(uid)} threw, ending the session: {e}");
+                RemComp<XenoArtifactUnlockingComponent>(uid);
+            }
+            // End Triad
         }
     }
 
@@ -134,7 +145,13 @@ public abstract partial class SharedXenoArtifactSystem
         foreach (var nodeIndex in GetAllNodeIndices((ent, ent)))
         {
             var artifactComponent = ent.Comp2;
-            var curNode = GetNode((ent, artifactComponent), nodeIndex);
+            // Triad: a slot whose node does not resolve is skipped, not thrown on
+            // var curNode = GetNode((ent, artifactComponent), nodeIndex);
+            if (!TryGetNode((ent, artifactComponent), nodeIndex, out var resolvedNode))
+                continue;
+
+            var curNode = resolvedNode.Value;
+            // End Triad
             if (!curNode.Comp.Locked || !CanUnlockNode((curNode, curNode)))
                 continue;
 

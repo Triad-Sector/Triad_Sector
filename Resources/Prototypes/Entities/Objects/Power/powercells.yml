@@ -256,7 +256,7 @@
 
 - type: entity
   name: antique power cell prototype
-  description: A small cell that self recharges. Used in old laser arms research.
+  description: A small cell that self recharges. Used in old laser arms research. Contains trace amounts of plutonium. # triad
   id: PowerCellAntiqueProto
   parent: BasePowerCell
   components:
@@ -273,6 +273,14 @@
     - type: BatterySelfRecharger
       autoRecharge: true
       autoRechargeRate: 40
+    - type: PhysicalComposition
+      materialComposition: #triad
+        Plasteel: 200
+        Glass: 200
+        Plutonium: 10 #plutonium is infact, hard to reclaim!
+        Gold: 50
+    - type: StaticPrice
+      price: 1000 #triad
     - type: MachinePart # Frontier
       part: PowerCell # Frontier
       rating: 6 # Frontier: tier of this is arguable # Mono: 4->6 - if you use this for a SMES it better work good

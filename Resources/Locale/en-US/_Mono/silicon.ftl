@@ -1,10 +1,10 @@
 # AI Core
 
 ghost-role-information-vessel-core = Vessel AI Core
-ghost-role-information-vessel-core-description = An ADS AI core that has been reprogrammed and put onto a civilian vessel.
+ghost-role-information-vessel-core-description = An AI core that has been programmed to serve a civilian vessel.
 
 ghost-role-information-tsfmc-core = TDF AI Core
-ghost-role-information-tsfmc-core-description = An ADS AI core that has been reprogrammed and put onto an TDF vessel.
+ghost-role-information-tsfmc-core-description = An AI core that has been programmed to serve the TDF.
 
 ghost-role-information-pdv-core = PDV AI Core
 ghost-role-information-pdv-core-description = An ADS AI core that has been reprogrammed and put onto an Imperial vessel.

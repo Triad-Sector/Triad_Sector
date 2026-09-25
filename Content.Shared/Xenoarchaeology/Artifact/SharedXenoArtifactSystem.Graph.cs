@@ -115,8 +115,12 @@ public abstract partial class SharedXenoArtifactSystem
     {
         foreach (var netNode in ent.Comp.NodeVertices)
         {
-            if (TryGetEntity(netNode, out var node))
-                yield return (node.Value, XenoArtifactNode(node.Value));
+            // Triad: wizden's resolve check, so a NetEntity that is not a node is skipped rather than thrown on
+            // if (TryGetEntity(netNode, out var node))
+            //     yield return (node.Value, XenoArtifactNode(node.Value));
+            if (TryGetEntity(netNode, out var node) && _nodeQuery.TryComp(node, out var nodeComp))
+                yield return (node.Value, nodeComp);
+            // End Triad
         }
     }
 
@@ -266,7 +270,10 @@ public abstract partial class SharedXenoArtifactSystem
             return false;
 
         var uid = Spawn(entProtoId);
-        node = (uid, XenoArtifactNode(uid));
+        // Triad: wizden's form, so an effect prototype without the node component gets one rather than throwing
+        // node = (uid, XenoArtifactNode(uid));
+        node = (uid, EnsureComp<XenoArtifactNodeComponent>(uid));
+        // End Triad
         return AddNode(ent, (node.Value, node.Value.Comp), dirty: dirty);
     }
 
@@ -285,7 +292,11 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return false;
 
-        node.Comp ??= XenoArtifactNode(node);
+        // Triad: wizden's form, so an entity that is not a node is refused rather than thrown on
+        // node.Comp ??= XenoArtifactNode(node);
+        if (!Resolve(node, ref node.Comp, false))
+            return false;
+        // End Triad
         node.Comp.Attached = GetNetEntity(ent);
 
         var nodeIdx = GetFreeNodeIndex((ent, ent.Comp));
@@ -316,7 +327,11 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return false;
 
-        node.Comp ??= XenoArtifactNode(node);
+        // Triad: wizden's form, so an entity that is not a node is refused rather than thrown on
+        // node.Comp ??= XenoArtifactNode(node);
+        if (!Resolve(node, ref node.Comp, false))
+            return false;
+        // End Triad
 
         if (!TryGetIndex(ent, node, out var idx))
             return false; // node isn't attached to this entity.
@@ -479,11 +494,21 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return new();
 
-        var predecessors = GetPredecessorNodes(ent, GetIndex((ent, ent.Comp), node));
+        // Triad: a node outside the graph has no predecessors, and a slot whose node does not resolve is skipped
+        // var predecessors = GetPredecessorNodes(ent, GetIndex((ent, ent.Comp), node));
+        if (!TryGetIndex(ent, node, out var index))
+            return new();
+
+        var predecessors = GetPredecessorNodes(ent, index.Value);
+        // End Triad
         var output = new HashSet<Entity<XenoArtifactNodeComponent>>();
         foreach (var p in predecessors)
         {
-            output.Add(GetNode((ent, ent.Comp), p));
+            // Triad
+            // output.Add(GetNode((ent, ent.Comp), p));
+            if (TryGetNode(ent, p, out var predecessor))
+                output.Add(predecessor.Value);
+            // End Triad
         }
 
         return output;
@@ -531,11 +556,21 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return new();
 
-        var successors = GetSuccessorNodes(ent, GetIndex((ent, ent.Comp), node));
+        // Triad: a node outside the graph has no successors, and a slot whose node does not resolve is skipped
+        // var successors = GetSuccessorNodes(ent, GetIndex((ent, ent.Comp), node));
+        if (!TryGetIndex(ent, node, out var index))
+            return new();
+
+        var successors = GetSuccessorNodes(ent, index.Value);
+        // End Triad
         var output = new HashSet<Entity<XenoArtifactNodeComponent>>();
         foreach (var s in successors)
         {
-            output.Add(GetNode((ent, ent.Comp), s));
+            // Triad
+            // output.Add(GetNode((ent, ent.Comp), s));
+            if (TryGetNode(ent, s, out var successor))
+                output.Add(successor.Value);
+            // End Triad
         }
 
         return output;
@@ -586,10 +621,16 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return new();
 
-        var fromIdx = GetIndex((ent, ent.Comp), from);
-        var toIdx = GetIndex((ent, ent.Comp), to);
+        // Triad: a node outside the graph has no edges
+        // var fromIdx = GetIndex((ent, ent.Comp), from);
+        // var toIdx = GetIndex((ent, ent.Comp), to);
+        //
+        // return ent.Comp.NodeAdjacencyMatrix[fromIdx][toIdx];
+        if (!TryGetIndex(ent, from, out var fromIdx) || !TryGetIndex(ent, to, out var toIdx))
+            return false;
 
-        return ent.Comp.NodeAdjacencyMatrix[fromIdx][toIdx];
+        return ent.Comp.NodeAdjacencyMatrix[fromIdx.Value][toIdx.Value];
+        // End Triad
     }
 
     /// <summary>

@@ -1,0 +1,167 @@
+- type: entity
+  id: BaseMagazine185x76mm
+  name: "box magazine (18.5x76)"
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Magazine185x76mm
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - Cartridge185x76mm
+    proto: Cartridge185x76mm
+    capacity: 10
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Magazines/18.5x76mm/18.5x76mm_magazine.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  id: Magazine185x76mmEmpty
+  name: "box magazine (18.5x76mm empty)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+- type: entity
+  id: Magazine185x76mm
+  name: "box magazine (18.5x76mm FMJ)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mm
+
+- type: entity
+  id: Magazine185x76mmHighEx
+  name: "box magazine (18.5x76 high-explosive)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighEx
+  - type: Sprite
+    layers:
+    - state: highexplosive
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine185x76mmHighExIncendiary
+  name: "box magazine (18.5x76 high-explosive incendiary)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighExInc
+  - type: Sprite
+    layers:
+    - state: highexplosiveincendiary
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine185x76mmHighExRad
+  name: "box magazine (18.5x76 high-explosive radiation)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighExRad
+  - type: Sprite
+    layers:
+    - state: highexplosiveradiation
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine185x76mmFragmentation
+  name: "box magazine (18.5x76 fragmentation)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmFragmentation
+  - type: Sprite
+    layers:
+    - state: fragmentation
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine185x76mmFragmentationIncendiary
+  name: "box magazine (18.5x76 fragmentation incendiary)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmFragmentationIncendiary
+  - type: Sprite
+    layers:
+    - state: fragmentationincendiary
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: Magazine185x76mmAnti-Materiel
+  name: "box magazine (18.5x76 anti-materiel)"
+  parent: BaseMagazine185x76mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmAnti-Materiel
+  - type: Sprite
+    layers:
+    - state: antimateriel
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity #Evil and fucked up EMP mag, short and will exclusively take emp rounds
+  id: Magazine185x76mmEMP
+  name: "box magazine (18.5x76 emp)"
+  parent: BaseItem
+  description: A short mag that can only be loaded with EMP rounds due to their unstable nature, zipzap.
+  components:
+  - type: Tag
+    tags:
+    - Magazine185x76mm
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - Cartridge185x76mmEMP
+    proto: Cartridge185x76mmEMP
+    capacity: 5
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Magazines/18.5x76mm/18.5x76mm_magazine.rsi
+    layers:
+    - state: emp
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: false
+  - type: Appearance

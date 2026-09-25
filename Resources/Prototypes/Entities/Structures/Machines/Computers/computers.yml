@@ -431,10 +431,10 @@
     repairCost: 8
 
 - type: entity
-  parent: [BaseStructureIndestructible, BaseComputerAiAccess] # Frontier: added BaseStructureIndestructible
+  parent: [BaseStructureIndestructible, BaseComputerAiAccess, BaseClass2ShipContraband] # Frontier: added BaseStructureIndestructible | Triad: BaseClass2ShipContraband
   id: ComputerCriminalRecords
   name: criminal records computer
-  description: This can be used to check criminal records. Only security can modify them.
+  description: This can be used to check the criminal records of Auric citizens. Only the TDF can modify them. # Triad
   components:
   - type: CriminalRecordsConsole
   - type: UserInterface
@@ -472,8 +472,12 @@
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
+  - type: CompanyAccessReader
+    requiredCompany: TDF # Triad
+    popupMessage: company-access-denied-tdf # Triad
+    ignoreWhitelist:
+      components:
+      - IgnoreCommandCompanyAccessReader
 
 - type: entity
   parent: BaseComputerAiAccess

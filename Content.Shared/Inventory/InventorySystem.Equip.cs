@@ -19,6 +19,8 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Robust.Shared.Prototypes;
+using Content.Shared.Weapons.Ranged.Systems; // Triad
+using Content.Shared.Weapons.Ranged.Components; // Triad
 
 namespace Content.Shared.Inventory;
 
@@ -36,6 +38,7 @@ public abstract partial class InventorySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private SharedStrippableSystem _strippable = default!;
+    [Dependency] private SharedGunSystem _gunSystem = default!; // Triad
 
     private static readonly ProtoId<ItemSizePrototype> PocketableItemSize = "Small";
 
@@ -191,6 +194,11 @@ public abstract partial class InventorySystem
         }
 
         Dirty(target, inventory);
+
+        // Start Triad: Ensure modsuit guns work after being loading from stash
+        if (TryComp<GunComponent>(itemUid, out var gunComp))
+            _gunSystem.RefreshModifiers((itemUid, gunComp));
+        // End Triad
 
         _movementSpeed.RefreshMovementSpeedModifiers(target);
 

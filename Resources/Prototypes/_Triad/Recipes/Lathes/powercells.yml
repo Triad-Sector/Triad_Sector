@@ -1,0 +1,11 @@
+- type: latheRecipe
+  id: PowerCellAntiqueProto
+  result: PowerCellAntiqueProto
+  categories:
+  - Parts
+  completetime: 20
+  materials:
+    Plasteel: 600
+    Glass: 400
+    Plutonium: 80
+    Gold: 400

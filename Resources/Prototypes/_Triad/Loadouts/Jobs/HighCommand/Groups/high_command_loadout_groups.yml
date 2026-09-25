@@ -1,0 +1,119 @@
+# The High Command wardrobe. The Intern picks from these directly; the HighCommandRep* groups wrap them with the
+# Representative's defaults.
+- type: loadoutGroup
+  id: HighCommandHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - HighCommandClothingHeadHatTfaHighCommand
+  - HighCommandClothingHeadHatBeretTfaHighCommand
+
+- type: loadoutGroup
+  id: HighCommandJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - HighCommandClothingUniformJumpsuitTfaHighCommand
+  - HighCommandClothingUniformJumpskirtTfaHighCommand
+  fallbacks:
+  - HighCommandClothingUniformJumpsuitTfaHighCommand
+
+- type: loadoutGroup
+  id: HighCommandGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 0
+  loadouts:
+  - HighCommandClothingHandsGlovesHeavyGoldenTrim
+  - HighCommandClothingHandsGlovesGoldenTrim
+  - MercenaryClothingHandsGlovesCombat
+
+- type: loadoutGroup
+  id: HighCommandBackpack
+  name: loadout-group-contractor-backpack
+  minLimit: 1
+  loadouts:
+  - ClothingBackpackSatchelLeather
+  subgroups:
+  - CommonBackpack
+  fallbacks:
+  - ClothingBackpackSatchelLeather
+
+- type: loadoutGroup
+  id: HighCommandOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 0
+  loadouts:
+  - HighCommandClothingOuterCoatTfaHighCommand
+  - HighCommandClothingOuterWinterTfaHighCommand
+
+- type: loadoutGroup
+  id: HighCommandShoes
+  name: loadout-group-contractor-shoes
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - MercenaryClothingShoesBootsJack
+  - StcClothingShoesBootsLaceup
+  fallbacks:
+  - MercenaryClothingShoesBootsJack
+
+- type: loadoutGroup
+  id: HighCommandGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 0
+  loadouts:
+  - ClothingEyesGlassesCommand
+  - ClothingEyesHudCommand
+
+# Representative defaults: the dress uniform it spawned in before it had a loadout.
+- type: loadoutGroup
+  id: HighCommandRepHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts: []
+  subgroups:
+  - HighCommandHead
+  fallbacks:
+  - HighCommandClothingHeadHatTfaHighCommand
+
+- type: loadoutGroup
+  id: HighCommandRepGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 0
+  loadouts: []
+  subgroups:
+  - HighCommandGloves
+  fallbacks:
+  - HighCommandClothingHandsGlovesHeavyGoldenTrim
+
+- type: loadoutGroup
+  id: HighCommandRepOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 0
+  loadouts: []
+  subgroups:
+  - HighCommandOuterClothing
+  fallbacks:
+  - HighCommandClothingOuterCoatTfaHighCommand
+
+- type: loadoutGroup
+  id: HighCommandRepShoes
+  name: loadout-group-contractor-shoes
+  minLimit: 1
+  maxLimit: 1
+  loadouts: []
+  subgroups:
+  - HighCommandShoes
+  fallbacks:
+  - StcClothingShoesBootsLaceup
+
+- type: loadoutGroup
+  id: HighCommandRepGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 0
+  loadouts: []
+  subgroups:
+  - HighCommandGlasses
+  fallbacks:
+  - ClothingEyesGlassesCommand

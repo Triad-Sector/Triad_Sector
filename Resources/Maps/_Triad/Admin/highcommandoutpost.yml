@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/19/2026 18:06:52
-  entityCount: 784
+  entityCount: 789
 maps: []
 grids:
 - 1
@@ -5169,6 +5169,35 @@ entities:
     components:
     - type: Transform
       pos: 1.5,14.5
+      parent: 1
+- proto: SpawnPointTfaHighCommandIntern
+  entities:
+  - uid: 785
+    components:
+    - type: Transform
+      pos: -3.5,5.5
+      parent: 1
+  - uid: 786
+    components:
+    - type: Transform
+      pos: -3.5,6.5
+      parent: 1
+  - uid: 787
+    components:
+    - type: Transform
+      pos: -5.5,6.5
+      parent: 1
+- proto: SpawnPointTfaHighCommandRep
+  entities:
+  - uid: 788
+    components:
+    - type: Transform
+      pos: -0.5,5.5
+      parent: 1
+  - uid: 789
+    components:
+    - type: Transform
+      pos: 1.5,5.5
       parent: 1
 - proto: StairWood
   entities:

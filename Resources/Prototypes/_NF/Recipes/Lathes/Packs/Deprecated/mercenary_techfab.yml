@@ -219,6 +219,7 @@
 #Triad Start
   - WeaponPistolStiletto
   - WeaponRiflePike
+  - WeaponShotgunBombadier
 #Triad End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag

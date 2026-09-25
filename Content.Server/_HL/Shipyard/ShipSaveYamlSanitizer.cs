@@ -257,6 +257,15 @@ public static class ShipSaveYamlSanitizer
         "TriggerArtifact",
     };
 
+    // Triad: XenoArtifact's node graph, reset as one when a node it names is missing from the file.
+    private static readonly string[] ArtifactGraphFields =
+    {
+        "nodeVertices",
+        "nodeAdjacencyMatrix",
+        "cachedActiveNodes",
+        "cachedSegments",
+    };
+
     public static void SanitizeShipSaveNode(MappingDataNode root, IPrototypeManager prototypeManager)
     {
         // Keep serialized nullspace empty so ship exports stay scoped to the grid payload.
@@ -626,8 +635,9 @@ public static class ShipSaveYamlSanitizer
 
     /// <summary>
     /// Strips stale nodes from a ship file on its way in: entities of removed legacy prototypes,
-    /// component nodes of removed legacy component types, and dangling entity references. Returns how
-    /// many nodes were removed.
+    /// component nodes of removed legacy component types, the node graph and unlock session of an
+    /// artifact whose nodes are missing, and dangling entity references. Returns how many nodes were
+    /// removed.
     /// </summary>
     // Triad: the save-side prune only protects ships saved after it shipped, and there is no backlog we
     // can migrate: ship files live on the player's machine and are handed back to us at load time, so a
@@ -651,6 +661,7 @@ public static class ShipSaveYamlSanitizer
 
         var removedEntityUids = new HashSet<string>(StringComparer.Ordinal);
         var scrubbed = StripLegacyRemovedNodes(protoSeq, removedEntityUids);
+        scrubbed += ResetArtifactGraphsNamingMissingNodes(protoSeq); // Triad
         return scrubbed + PruneContainerReferencesToRemovedEntities(protoSeq, removedEntityUids);
     }
 
@@ -721,10 +732,90 @@ public static class ShipSaveYamlSanitizer
         return scrubbed;
     }
 
+    // Triad: artifact graph reset
     /// <summary>
-    /// Parses a ship file, strips removed legacy entities and components plus dangling entity
-    /// references, and re-emits it. Returns the text unchanged when there is nothing to remove or
-    /// when it cannot be parsed.
+    /// Resets the node graph of every artifact whose <c>nodeVertices</c> names an entity missing from
+    /// the file, and drops its unlock session, so the artifact loads owing a fresh graph. A slot naming
+    /// no node makes the unlock pass throw on every tick. Returns how many nodes were removed.
+    /// </summary>
+    private static int ResetArtifactGraphsNamingMissingNodes(SequenceDataNode protoSeq)
+    {
+        var present = CollectPresentEntityUids(protoSeq);
+        var scrubbed = 0;
+
+        foreach (var protoNode in protoSeq)
+        {
+            if (protoNode is not MappingDataNode protoMap
+                || !protoMap.TryGet("entities", out SequenceDataNode? entitiesSeq)
+                || entitiesSeq == null)
+                continue;
+
+            foreach (var entityNode in entitiesSeq)
+            {
+                if (entityNode is not MappingDataNode entMap
+                    || !entMap.TryGet("components", out SequenceDataNode? comps)
+                    || comps == null)
+                    continue;
+
+                var artifactIdx = FindComponentIndex(comps, "XenoArtifact");
+                if (artifactIdx < 0
+                    || comps[artifactIdx] is not MappingDataNode artifact
+                    || !NamesMissingEntity(artifact, "nodeVertices", present))
+                    continue;
+
+                foreach (var field in ArtifactGraphFields)
+                {
+                    if (artifact.Remove(field))
+                        scrubbed++;
+                }
+
+                artifact["isGenerationRequired"] = new ValueDataNode("True");
+
+                var unlockingIdx = FindComponentIndex(comps, "XenoArtifactUnlocking");
+                if (unlockingIdx >= 0)
+                {
+                    comps.RemoveAt(unlockingIdx);
+                    scrubbed++;
+                }
+            }
+        }
+
+        return scrubbed;
+    }
+
+    private static int FindComponentIndex(SequenceDataNode components, string componentType)
+    {
+        for (var i = 0; i < components.Count; i++)
+        {
+            if (components[i] is MappingDataNode compMap
+                && compMap.TryGet("type", out ValueDataNode? typeNode)
+                && typeNode != null
+                && typeNode.Value == componentType)
+                return i;
+        }
+
+        return -1;
+    }
+
+    private static bool NamesMissingEntity(MappingDataNode compMap, string field, HashSet<string> present)
+    {
+        if (!compMap.TryGet(field, out SequenceDataNode? seq) || seq == null)
+            return false;
+
+        foreach (var entry in seq)
+        {
+            if (entry is ValueDataNode value && !value.IsNull && !present.Contains(value.Value))
+                return true;
+        }
+
+        return false;
+    }
+    // End Triad
+
+    /// <summary>
+    /// Parses a ship file, strips removed legacy entities and components, the node graph of an artifact
+    /// whose nodes are missing, and dangling entity references, and re-emits it. Returns the text
+    /// unchanged when there is nothing to remove or when it cannot be parsed.
     /// </summary>
     public static string ScrubShipLoadYaml(string yaml, out int scrubbed)
     {

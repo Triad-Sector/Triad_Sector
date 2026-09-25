@@ -20,7 +20,7 @@
   parent: MaterialBase
   id: MaterialPyrogel
   name: pyrogel
-  description: Paycheck Bratva's experimental chemical gel.
+  description: The coalition's experimental chemical gel.
   suffix: Full
   components:
   - type: Stack

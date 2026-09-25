@@ -36,8 +36,8 @@
 
 - type: marking
   id: ReptilianDrawingWarpaint
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Head
+  markingCategory: Head
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: _ADT/Mobs/Customization/Reptilian/custom.rsi

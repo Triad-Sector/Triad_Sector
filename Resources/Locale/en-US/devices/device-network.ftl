@@ -24,8 +24,8 @@ device-frequency-prototype-name-surveillance-camera-medical = Medical Cameras
 device-frequency-prototype-name-surveillance-camera-general = General Cameras
 device-frequency-prototype-name-surveillance-camera-entertainment = Entertainment Cameras
 device-frequency-prototype-name-surveillance-camera-tsf = TDF Cameras
-device-frequency-prototype-name-surveillance-camera-Rogue = PDV Cameras
-device-frequency-prototype-name-surveillance-camera-USSP = USSP Cameras
+device-frequency-prototype-name-surveillance-camera-Rogue = Maintenance Cameras
+device-frequency-prototype-name-surveillance-camera-USSP = Misc Cameras
 
 # prefixes for randomly generated device addresses
 device-address-prefix-vent = VNT-

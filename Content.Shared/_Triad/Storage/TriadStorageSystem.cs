@@ -1,9 +1,10 @@
 using Content.Shared.Storage;
 using Content.Shared.Whitelist;
+using Content.Shared._RMC14.Storage;
 
-namespace Content.Shared._RMC14.Storage;
+namespace Content.Shared._Triad.Storage;
 
-public sealed partial class RMCStorageSystem : EntitySystem
+public sealed partial class TriadStorageSystem : EntitySystem
 {
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
 
@@ -120,7 +121,7 @@ public sealed partial class RMCStorageSystem : EntitySystem
             return false;
 
         //if (!CanInsertStoreSkill((storage, storage, null), toInsert, user, out popup))
-        //return false; TODO TRIAD
+        //return false; TODO? MAYBE?
 
         return true;
     }

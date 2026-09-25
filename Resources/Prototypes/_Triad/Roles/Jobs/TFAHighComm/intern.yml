@@ -3,8 +3,10 @@
   name: job-name-tfa-high-command-intern
   description: job-description-tfa-high-command-intern
   playTimeTracker: JobTfaHighCommandIntern
-  setPreference: false
+  adminWhitelist: true # only admin-rank holders see or take it
+  overrideConsoleVisibility: false # keeps it off the ID console's job presets, which otherwise follow setPreference
   startingGear: TfaHighCommandInternGear
+  alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
   supervisors: job-supervisors-centcom
   canBeAntag: false
@@ -31,9 +33,7 @@
 
 - type: startingGear
   id: TfaHighCommandInternGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitTfaHighCommand
-    shoes: ClothingShoesBootsJack
+  equipment: # clothing comes from the JobTfaHighCommandIntern loadout
     id: TfaHighComInternPda
     ears: ClothingHeadsetHighCommand
     pocket1: BoxFolderBlack

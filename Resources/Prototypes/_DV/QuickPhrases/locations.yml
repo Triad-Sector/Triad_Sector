@@ -20,7 +20,7 @@
 
 - type: quickPhrase
   parent: [ BaseJusticePhrase, BaseLocationPhrase ]
-  id: BaseJusticeLocationPhrase
+  id: BaseTFALocationPhrase
   abstract: true
 
 - type: quickPhrase
@@ -114,12 +114,10 @@
   id: LocationCommandPhrase
   text: station-beacon-command
 
-# CS - start
-# - type: quickPhrase
-#   parent: BaseCommandLocationPhrase
-#   id: LocationBridgePhrase
-#   text: station-beacon-bridge
-# CS - end
+- type: quickPhrase
+  parent: BaseCommandLocationPhrase
+  id: LocationBridgePhrase
+  text: station-beacon-bridge
 
 - type: quickPhrase
   parent: BaseCommandLocationPhrase
@@ -129,17 +127,19 @@
 - type: quickPhrase
   parent: BaseCommandLocationPhrase
   id: LocationCaptainPhrase
-  text: station-beacon-captain
+  text: station-beacon-overseer
 
-- type: quickPhrase
-  parent: BaseCommandLocationPhrase
-  id: LocationAICorePhrase
-  text: station-beacon-ai-core
+# Triad : Nonexistent location, we don't have AI locations
+# - type: quickPhrase
+#   parent: BaseCommandLocationPhrase
+#   id: LocationAICorePhrase
+#   text: station-beacon-ai-core
 
-- type: quickPhrase
-  parent: BaseCommandLocationPhrase
-  id: LocationAISatPhrase
-  text: station-beacon-ai-sat
+# - type: quickPhrase
+#   parent: BaseCommandLocationPhrase
+#   id: LocationAISatPhrase
+#   text: station-beacon-ai-sat
+# Triad end
 
 # Engineering
 
@@ -150,8 +150,13 @@
 
 - type: quickPhrase
   parent: BaseEngineeringLocationPhrase
-  id: LocationCePhrase
-  text: station-beacon-ce
+  id: LocationDirectorOfficePhrase
+  text: station-beacon-managers-office
+
+- type: quickPhrase
+  parent: BaseEngineeringLocationPhrase
+  id: LocationDirectorQuarterPhrase
+  text: station-beacon-managers-quarters
 
 - type: quickPhrase
   parent: BaseEngineeringLocationPhrase
@@ -235,18 +240,6 @@
   id: LocationServerPhrase
   text: station-beacon-research-server
 
-# Justice
-
-- type: quickPhrase
-  parent: BaseJusticeLocationPhrase
-  id: LocationCourtroomPhrase
-  text: station-beacon-courtroom
-
-- type: quickPhrase
-  parent: BaseJusticeLocationPhrase
-  id: LocationLawOfficePhrase
-  text: station-beacon-law
-
 # Logistics
 
 # CS - start
@@ -256,15 +249,17 @@
 #   text: station-beacon-cargo-bay
 # CS - end
 
-- type: quickPhrase
-  parent: BaseLogisticsLocationPhrase
-  id: LocationSalvagePhrase
-  text: station-beacon-salvage
+# Triad : Nonexistent locations as well
+# - type: quickPhrase
+#   parent: BaseLogisticsLocationPhrase
+#   id: LocationSalvagePhrase
+#   text: station-beacon-salvage
 
-- type: quickPhrase
-  parent: BaseLogisticsLocationPhrase
-  id: LocationATSPhrase
-  text: phrase-location-ats
+# - type: quickPhrase
+#   parent: BaseLogisticsLocationPhrase
+#   id: LocationATSPhrase
+#   text: phrase-location-ats
+# Triad end
 
 - type: quickPhrase
   parent: BaseLogisticsLocationPhrase
@@ -295,8 +290,10 @@
 
 - type: quickPhrase
   parent: BaseMedicalLocationPhrase
-  id: LocationCmoPhrase
-  text: station-beacon-cmo
+  # Triad changes CMO to DOC
+  id: LocationDOCPhrase
+  text: phrase-location-doc
+  # Triad end
 
 - type: quickPhrase
   parent: BaseMedicalLocationPhrase

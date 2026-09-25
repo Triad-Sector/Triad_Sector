@@ -126,7 +126,7 @@
 - type: entity
   parent: PortableGeneratorJrPacmanFlatpack
   id: GeneratorRTGFlatpack
-  name: RTG generator flatpack
+  name: RTG flatpack #Triad, WHY WAS IT CALLED "RADIOISOTOPE THERMALELECTRIC GENERATOR GENERATOR"
   description: A flatpack used for constructing a Radioisotope Thermoelectric Generator.
   components:
   - type: Flatpack

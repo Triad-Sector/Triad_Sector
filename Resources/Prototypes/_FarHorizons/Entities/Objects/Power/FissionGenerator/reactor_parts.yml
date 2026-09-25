@@ -89,7 +89,7 @@
     iconStateCap: "gas_cap"
     thermalCrossSection: 15
     gasVolume: 100
-    thermalMass: 21000
+    thermalMass: 50000 #Triad: Increased its thermal mass(from 21000), making heat exchangers better for thermal exchange, but makes gas channels a little better for acting as heat storage, making coolant heating smoother.
   - type: PhysicalComposition
     materialComposition:
       Steel: 250
@@ -105,7 +105,8 @@
     iconStateInserted: "heat"
     iconStateCap: "heat_cap"
     neutronCrossSection: 0.1
-    thermalCrossSection: 25
+    thermalCrossSection: 35 #triad, up from 25, makes it worth using for transferring heat from reactor parts to gas channels
+    thermalMass: 15000 #Triad Much less thermal mass than base components (from base, 105000), allowing for faster heat transfer from actively heating/cooling parts
   - type: PhysicalComposition
     materialComposition:
       Steel: 250

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by ddrakov (Discord)",
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "beanbag"
+    },
+    {
+      "name": "practice"
+    },
+    {
+      "name": "uranium"
+    },
+    {
+      "name": "incendiary"
+    },
+    {
+      "name": "flechette"
+    },
+    {
+      "name": "slug"
+    },
+    {
+      "name": "mag-1"
+    },
+    {
+      "name": "mag-2"
+    },
+    {
+      "name": "mag-3"
+    },
+    {
+      "name": "mag-4"
+    },
+    {
+      "name": "mag-5"
+    }
+  ]
+}
+

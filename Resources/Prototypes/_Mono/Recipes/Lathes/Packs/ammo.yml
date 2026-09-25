@@ -593,7 +593,10 @@
 
   - AmmoBox23x75mmBuckshot
   - Magazine12_gaugeBuckshot
+  - ShortMagazine12_gaugeBuckshot # Triad
   - AmmoBox12_gaugeBuckshot
+  - Magazine185x76mm #Triad
+  - AmmoBox185x76mmFMJ #Triad
   - Magazine762x51mmFMJ
   - AmmoBox762x51mmFMJ
   - Magazine762x54mmRFMJ
@@ -635,6 +638,7 @@
   - AmmoBox12_gaugeOOBuckshot
   - AmmoBox23x75mmSlug
   - Magazine12_gaugeSlug
+  - ShortMagazine12_gaugeSlug
   - AmmoBox12_gaugeSlug
   - MagazineAsmgtUniversal9x19mm
   - MagazineAsmgtUniversal762x39mm
@@ -648,6 +652,7 @@
 
   - AmmoBox23x75mmPractice
   - Magazine12_gaugePractice
+  - ShortMagazine12_gaugePractice # Triad
   - AmmoBox12_gaugePractice
   - Magazine762x51mmPractice
   - AmmoBox762x51mmPractice
@@ -685,6 +690,8 @@
 #Empty recipes
 
   - Magazine12_gaugeEmpty
+  - ShortMagazine12_gaugeEmpty # Triad
+  - Magazine185x76mmEmpty #Triad
   - Magazine762x51mmEmpty
   - Magazine762x54mmREmpty
   - Magazine8x65mmEmpty
@@ -746,6 +753,7 @@
   - AmmoBox45_ACPRubber
   - AmmoBox23x75mmBeanbag
   - Magazine12_gaugeBeanbag
+  - ShortMagazine12_gaugeBeanbag # Triad
   - AmmoBox12_gaugeBeanbag
 
 #HP recipes
@@ -794,6 +802,7 @@
 
   - AmmoBox23x75mmUranium
   - Magazine12_gaugeUranium
+  - ShortMagazine12_gaugeUranium # Triad
   - AmmoBox12_gaugeUranium
   - Magazine762x51mmUranium
   - AmmoBox762x51mmUranium
@@ -828,6 +837,7 @@
 
   - AmmoBox23x75mmIncendiary
   - Magazine12_gaugeIncendiary
+  - ShortMagazine12_gaugeIncendiary
   - AmmoBox12_gaugeIncendiary
   - Magazine762x51mmIncendiary
   - AmmoBox762x51mmIncendiary
@@ -896,6 +906,7 @@
   - AmmoBox12_gaugeSlugAP
   - AmmoBox23x75mmFlechette
   - Magazine12_gaugeFlechette
+  - ShortMagazine12_gaugeFlechette # Triad
   - AmmoBox12_gaugeFlechette
 
 #RIP recipes
@@ -947,6 +958,19 @@
   - MagazineSmartMagnumExt
   - AmmoBox145x114mm
   - AmmoBox145x114mmBig
+  - Magazine185x76mmHighEx #Each 185x76mm recipe is from Triad
+  - AmmoBox185x76mmHighEx
+  - Magazine185x76mmHighExIncendiary
+  - AmmoBox185x76mmHighExIncendiary
+  - Magazine185x76mmHighExRad
+  - AmmoBox185x76mmHighExRad
+  - Magazine185x76mmFragmentation
+  - AmmoBox185x76mmFragmentation
+  - Magazine185x76mmFragmentationIncendiary
+  - AmmoBox185x76mmFragmentationIncendiary
+  - Magazine185x76mmAnti-Materiel
+  - AmmoBox185x76mmAnti-Materiel
+  - Magazine185x76mmEMP
 
 # Energy
 #  - Magazine700Thz

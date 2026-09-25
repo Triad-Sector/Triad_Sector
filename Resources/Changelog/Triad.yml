@@ -4836,3 +4836,225 @@ Entries:
   id: 2603
   time: '2026-09-12T20:10:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/635
+- author: Skybailey-dev
+  changes:
+    - type: Fix
+      message: >-
+        Fixed the Z-Pinch having no limit to its fuel capacity, now 100 sheets
+        like the rest of the generators.
+  id: 2604
+  time: '2026-09-13T02:03:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/636
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added TDF and TFA phrases
+    - type: Tweak
+      message: Changed some quick phrases
+    - type: Fix
+      message: Fixes lathe having their dynamic recipe back
+  id: 2605
+  time: '2026-09-17T20:28:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/634
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Arachnids have been resprited to match the art direction!
+  id: 2606
+  time: '2026-09-17T22:37:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/642
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added a new TDF uniform - TDF Flannel jumpsuit! You can roll its
+        sleeves, too.
+  id: 2607
+  time: '2026-09-17T22:56:58.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/643
+- author: EmoGarbage404
+  changes:
+    - type: Fix
+      message: >-
+        Fixed a bug that would stop guns and other irregularly shaped (like 1x1)
+        objects from fitting into storage, sometimes.
+  id: 2608
+  time: '2026-09-18T20:02:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/646
+- author: DDrakov
+  changes:
+    - type: Add
+      message: >-
+        Added the safety deposit box console for personal belongings. You can
+        use this console to purchase safety deposit boxes, which is an
+        alternative way you can use to store your items, particularly if you are
+        afraid of your items going down with your ship.
+    - type: Add
+      message: Added safety deposit box console to Auric and Venmar.
+  id: 2609
+  time: '2026-09-21T03:23:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/562
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: IPC max age has been increased to 600 years.
+  id: 2610
+  time: '2026-09-21T03:27:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/649
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed some items inside of safety deposit boxes, specifically nested
+        storage, not initializing properly to where they have infinite use delay
+        or contraband permit data is erased.
+    - type: Fix
+      message: Fixed safety deposit consoles not having powered states.
+    - type: Fix
+      message: Fixed safety deposit consoles not having keyboard sounds on UI activate.
+  id: 2611
+  time: '2026-09-21T19:57:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/652
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed ship filename not sanitized
+  id: 2612
+  time: '2026-09-21T20:05:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/640
+- author: Stedar111
+  changes:
+    - type: Add
+      message: >-
+        Added the Bombadier, a brand new hybrid grenade launcher/shotgun hybrid
+        for the mercs and TDF!  Only takes 12 gauge box mags and 18.5x76mm box
+        mags, no drums.
+    - type: Add
+      message: >-
+        Added 18.5x76mm, a brand new caliber with exotic payloads (8 different
+        round types total!), can be researched, obtained through factional
+        techdisks, or bought via a tdf uplink.
+    - type: Tweak
+      message: >-
+        Changed Burner to take 18.5x76mm, fire slightly faster and have actual
+        accuracy! (Still unobtainable)
+    - type: Tweak
+      message: >-
+        Changed 12 gauge drum magazines to hold 12 shells, bulldog users
+        rejoice!
+  id: 2613
+  time: '2026-09-21T20:16:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/648
+- author: Dizzy-Eevee
+  changes:
+    - type: Fix
+      message: Fixed modsuit guns not working after being loaded from a ship/stash.
+  id: 2614
+  time: '2026-09-22T02:20:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/653
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the thermal properties of heat exchangers and gas channels
+        within nuclear reactors- heat exchangers are far better at conducting
+        and moving heat now than they were, and now actually worth using in
+        reactor designs for their listed purpose.
+  id: 2615
+  time: '2026-09-22T10:17:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/639
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Tweaked some areas on Anomalous Lab and replaced its all-comms telecomms
+        server with a science one.
+  id: 2616
+  time: '2026-09-22T20:48:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/655
+- author: Skybailey-dev
+  changes:
+    - type: Add
+      message: >-
+        Added a recipe for using plutonium and other materials to make RTG
+        flatpacks!
+    - type: Add
+      message: >-
+        You can now scrap antique power cells for trace amounts of plutonium! 10
+        will get you one bar.
+    - type: Tweak
+      message: >-
+        Changed the antique power cell's description to hint at it containing
+        plutonium!
+  id: 2617
+  time: '2026-09-22T21:20:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/654
+- author: Skybailey-dev
+  changes:
+    - type: Fix
+      message: RTG flatpacks no longer called RTG Generator flatpacks.
+  id: 2618
+  time: '2026-09-23T04:33:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/657
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Minorly tweaked every small mech weapon, making them more inter-balanced
+        with each other.
+    - type: Fix
+      message: >-
+        Fixed every description and some of the names for mech weapons, they now
+        actually describe the weapon, and do not contain false information.
+  id: 2619
+  time: '2026-09-23T19:24:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/656
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Added safety deposit consoles to Trade Mall. One near cryosleep, and one
+        near the shipyard consoles.
+  id: 2620
+  time: '2026-09-23T23:24:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/658
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Anchored artifacts keep their nodes through a ship save, and ones that
+        already lost them come back with a fresh graph.
+    - type: Fix
+      message: Artifacts no longer get stuck mid-unlock.
+    - type: Fix
+      message: Spent artifact nodes stay spent across a ship save.
+  id: 2621
+  time: '2026-09-24T15:31:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/659
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: Slightly improve TDF CE and LT job icons.
+  id: 2622
+  time: '2026-09-24T19:55:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/661
+- author: Cabin-keeper
+  changes:
+    - type: Add
+      message: Added a recipe for tear gas.
+  id: 2623
+  time: '2026-09-24T23:43:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/660
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        TFA High Command has an outpost of its own, reachable only by admins and
+        the ships they clear.
+    - type: Fix
+      message: >-
+        Readying up for a job only one station offers, like TDF Chief Enforcer,
+        now starts you in that job instead of sometimes as a Contractor.
+  id: 2624
+  time: '2026-09-25T01:59:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/662

@@ -137,8 +137,13 @@
   - type: Inventory
     templateId: arachnid
     speciesId: arachnid
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
   - type: Carriable # Frontier: Carrying system from nyanotrasen.
-
 
 - type: entity
   parent: BaseSpeciesDummy

@@ -168,6 +168,17 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
     public bool CheckWhitelist(JobPrototype job, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = default;
+
+        // Triad: an admin-gated job answers off the server's payload whatever GameRoleWhitelist says, the same
+        // way JobWhitelistManager.IsAllowed does. The server only puts an admin-gated id in the payload for a
+        // session holding an admin rank, so membership is the whole check.
+        if (job.AdminWhitelist && !_jobWhitelists.Contains(job.ID))
+        {
+            reason = FormattedMessage.FromUnformatted(Loc.GetString("role-not-whitelisted"));
+            return false;
+        }
+        // End Triad
+
         if (!_cfg.GetCVar(CCVars.GameRoleWhitelist))
             return true;
 

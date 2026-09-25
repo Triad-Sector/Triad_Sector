@@ -1,10 +1,10 @@
 - type: technology
   id: MercArmementHighEnd
-  name: research-technology-ullmanpulse-high-end
-  entityIcon: UllmanWeaponPulseSniper
+  name: research-technology-merc-armement-high-end #Triad
+  entityIcon: WeaponShotgunBombadier #Triad
   discipline: Arsenal
   tier: 3
-  cost: 50000
+  cost: 25000 #Triad, adjustment for added prerequisites
   recipeUnlocks:
   - UllmanWeaponPulseSniper
   - UllmanWeaponPulseRifle
@@ -12,23 +12,31 @@
   - UllmanWeaponSmartMagnum
   - MagazineSmartMagnum
   - MagazineSmartMagnumExt
+  - WeaponShotgunBombadier #Triad
+  - Magazine185x76mmHighEx #Triad
+  - AmmoBox185x76mmHighEx #Triad
   technologyPrerequisites:
-  - SuperParts
-  - MercArmementAdvancedEnergy
+ # - SuperParts unneeded Triad
+  - MercArmementAdvancedEnergy #Triad
+  - UniversalMaterialResearchT3 #Triad
+  - PrintableExplosives #Triad
   position: 5, 1
 
 - type: technology
   id: MercArmementAdvancedEnergy
-  name: research-technology-ullmanpulse-adv
+  name: research-technology-merc-armement-advanced-high-tech #Triad
   entityIcon: UllmanWeaponPulsePistol
   discipline: Arsenal
   tier: 2
-  cost: 25000
+  cost: 10000 #Triad, adjustment for added prerequisites
   recipeUnlocks:
   - UllmanWeaponPulsePistol
+  - Magazine185x76mmFragmentation #Triad
+  - AmmoBox185x76mmFragmentation #Triad
   technologyPrerequisites:
-  - AdvancedParts
+ # - AdvancedParts unneeded Triad
   - MercArmementAdvanced
+  - PortableMicrofusionWeaponry #Triad
   position: 4, 1
 
 - type: technology

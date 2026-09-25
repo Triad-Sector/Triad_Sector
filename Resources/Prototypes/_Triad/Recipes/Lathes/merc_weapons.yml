@@ -21,7 +21,6 @@
   parent: BaseWeaponRecipeLong
   result: WeaponRiflePike
   categories:
-  - Sidearms
   - Ballistic
   - Weapons
   materials:
@@ -30,3 +29,17 @@
     Glass: 500
     Gold: 500
     Silver: 500
+
+- type: latheRecipe
+  id: WeaponShotgunBombadier
+  parent: BaseWeaponRecipeLong
+  result: WeaponShotgunBombadier
+  categories:
+  - Ballistic
+  - Weapons
+  materials:
+    Plastitanium: 2500
+    Iridite: 1000
+    Glass: 5000
+    Gold: 1000
+    Silver: 1000

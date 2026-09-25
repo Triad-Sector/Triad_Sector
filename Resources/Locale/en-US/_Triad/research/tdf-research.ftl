@@ -7,6 +7,7 @@ research-discipline-tdf-shipyard = TDF Heavy Industry
 research-technology-tdf-guns = Standard Ballistics Production
 research-discipline-tdf-shipyard-tier1 = Early Shipyard Production
 research-technology-tdf-basic-equipment = Standard Protective Equipment
+research-technology-tdf-ammunition-light-grenade = Exotic Ammunition
 
 # T2 TDF
 research-technology-tdf-eshield = Energy Shield Manufacturing

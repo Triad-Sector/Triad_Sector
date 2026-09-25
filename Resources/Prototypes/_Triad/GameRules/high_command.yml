@@ -1,0 +1,29 @@
+# The TFA High Command outpost, on a map of its own. HighCommandOutpostRuleSystem says why it is not a POI.
+- type: entity
+  id: HighCommandOutpost
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HighCommandOutpostRule
+    gridPath: /Maps/_Triad/Admin/highcommandoutpost.yml
+    stationConfig:
+      stationProto: TfaHighCommandOutpostStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'TFA High Command'
+      - type: ExtraStationInformation
+        icon: /Textures/_Triad/Logo/tfa_icon/icon-64x64.png
+      - type: StationJobs
+        availableJobs:
+          TfaHighCommandRep: [ -1, -1 ]
+          TfaHighCommandIntern: [ -1, -1 ]
+
+- type: entity
+  id: TfaHighCommandOutpostStation
+  parent:
+  - BaseStation
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform

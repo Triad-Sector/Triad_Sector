@@ -1,0 +1,13 @@
+- type: latheRecipe
+  id: GeneratorRTGFlatpack
+  result: GeneratorRTGFlatpack
+  categories:
+  - Parts
+  completetime: 40
+  materials:
+    Steel: 10000
+    Plasteel: 2000
+    UraniumDepleted: 1000
+    Copper: 5000
+    Plutonium: 300
+    Gold: 5000
