@@ -1,0 +1,154 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorSlacksBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/greyscale_slacks.rsi
+    layers:
+    - state: icon
+      color: "#ffa69b"
+    - state: slacks-icon
+      color: "#503400"
+    - state: belt-icon
+    - state: buckle-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ffa69b"
+      right:
+      - state: inhand-right
+        color: "#ffa69b"
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/greyscale_slacks.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffa69b"
+      - state: slacks-equipped-INNERCLOTHING
+        color: "#503400"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#272624"
+      - state: buckle-equipped-INNERCLOTHING
+        color: "#e4cc8a"
+
+- type: entity
+  parent: ClothingUniformJumpsuitColorSlacksBase
+  id: ClothingUniformJumpsuitColorSlacksTfaService
+  name: TFA service worker uniform
+  description: A uniform tailored to TFA members performing as service workers.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#8f9ab9"
+    - state: slacks-icon
+      color: "#4d4b55"
+    - state: belt-icon
+      color: "#362b19"
+    - state: buckle-icon
+      color: "#ecce8b"
+    - state: badge-icon
+      color: "#ffbc88"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#8f9ab9"
+      right:
+      - state: inhand-right
+        color: "#8f9ab9"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#8f9ab9"
+      - state: slacks-equipped-INNERCLOTHING
+        color: "#4d4b55"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#362b19"
+      - state: buckle-equipped-INNERCLOTHING
+        color: "#ecce8b"
+      - state: badge-equipped-INNERCLOTHING
+        color: "#ffbc88"
+
+- type: entity
+  parent: ClothingUniformJumpsuitColorSlacksBase
+  id: ClothingUniformJumpsuitColorSlacksTfaBotanist
+  name: TFA botanist uniform
+  description: Making grass for the TFA!
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#8fb999"
+    - state: jeans-icon
+      color: "#584533"
+    - state: belt-icon
+      color: "#252b25"
+    - state: buckle-icon
+      color: "#ecce8b"
+    - state: badge-icon
+      color: "#ffbc88"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ffa69b"
+      right:
+      - state: inhand-right
+        color: "#ffa69b"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: sleeves-equipped-INNERCLOTHING
+        color: "#8fb999"
+      - state: jeans-equipped-INNERCLOTHING
+        color: "#584533"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#252b25"
+      - state: buckle-equipped-INNERCLOTHING
+        color: "#ecce8b"
+      - state: badge-equipped-INNERCLOTHING
+        color: "#ffbc88"
+
+- type: entity
+  parent: ClothingUniformJumpsuitColorSlacksBase
+  id: ClothingUniformJumpskirtColorSlacksTfaBotanist
+  name: TFA botanist skirt
+  description: Making grass for the TFA!
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#8fb999"
+    - state: skirt-icon
+      color: "#584533"
+    - state: belt-icon
+      color: "#252b25"
+    - state: buckle-icon
+      color: "#ecce8b"
+    - state: badge-icon
+      color: "#ffbc88"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ffa69b"
+      right:
+      - state: inhand-right
+        color: "#ffa69b"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: sleeves-equipped-INNERCLOTHING
+        color: "#8fb999"
+      - state: skirt-equipped-INNERCLOTHING
+        color: "#584533"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#252b25"
+      - state: buckle-equipped-INNERCLOTHING
+        color: "#ecce8b"
+      - state: badge-equipped-INNERCLOTHING
+        color: "#ffbc88"
