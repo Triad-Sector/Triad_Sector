@@ -26,6 +26,10 @@
   - ClothingOuterApronBar
   - ClothingOuterVest
   - ClothingOuterArmorBasic
+  - ClothingOuterWinterBar
+  - ClothingOuterWinterChef
+  - ClothingOuterWinterHydro
+  - ClothingOuterWinterCoat
 
 - type: loadoutGroup
   id: ServiceWorkerHead
@@ -37,6 +41,16 @@
   - ClothingHeadHatTophat
   - ClothingHeadHatBowlerHat
   - ClothingHeadHatTfaJanitorSoft
+  - ClothingHeadHatTrucker
+  - ClothingHeadBandBrown
+  - ClothingHeadBandGrey
+  - ClothingHeadBandBotany
+  - ClothingHeadBandBlack
+  - ClothingHeadBandSkull
+  - ClothingHeadBandRed
+  - ClothingHeadBandGreen
+  - ClothingHeadBandGold
+  - ClothingHeadBandBlue
 
 - type: loadoutGroup
   id: ServiceWorkerBelt
@@ -67,3 +81,13 @@
   - ContractorShoes
   fallbacks:
   - ContractorClothingShoesColorBlack
+
+- type: loadoutGroup
+  id: ServiceWorkerGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 0
+  loadouts:
+  - ClothingEyesHudBeer
+  - ClothingEyesEyepatchHudBeer
+  subgroups:
+  - ContractorGlasses

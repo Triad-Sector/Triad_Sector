@@ -24,13 +24,69 @@
 
 - type: loadout
   id: ClothingHeadHatTfaJanitorSoft
+  groupBy: Cap
   equipment:
     head: ClothingHeadHatTfaJanitorSoft
 
 - type: loadout
-  id: ClothingOuterJacketChefTfa
+  id: ClothingHeadHatTrucker
+  groupBy: Cap
   equipment:
-    outerClothing: ClothingOuterJacketChefTfa
+    head: ClothingHeadHatTrucker
+
+- type: loadout
+  id: ClothingHeadBandBrown
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBrown
+
+- type: loadout
+  id: ClothingHeadBandGrey
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGrey
+
+- type: loadout
+  id: ClothingHeadBandBotany
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBotany
+
+- type: loadout
+  id: ClothingHeadBandBlack
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBlack
+
+- type: loadout
+  id: ClothingHeadBandSkull
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandSkull
+
+- type: loadout
+  id: ClothingHeadBandRed
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandRed
+
+- type: loadout
+  id: ClothingHeadBandGreen
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGreen
+
+- type: loadout
+  id: ClothingHeadBandGold
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGold
+
+- type: loadout
+  id: ClothingHeadBandBlue
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBlue
 
 - type: loadout
   id: ClothingOuterApronChefTfa
@@ -61,6 +117,30 @@
   groupBy: Jacket
   equipment:
     outerClothing: ClothingOuterJacketChef
+
+- type: loadout
+  id: ClothingOuterWinterChef
+  groupBy: WinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterChef
+
+- type: loadout
+  id: ClothingOuterWinterBar
+  groupBy: WinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterBar
+
+- type: loadout
+  id: ClothingOuterWinterHydro
+  groupBy: WinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterHydro
+
+- type: loadout
+  id: ClothingOuterWinterCoat
+  groupBy: WinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterCoat
 
 - type: loadout
   id: ClothingOuterVest
@@ -144,3 +224,16 @@
   id: ClothingShoesGaloshes
   equipment:
     shoes: ClothingShoesGaloshes
+
+- type: loadout
+  id: ClothingEyesHudBeer
+  groupBy: BeerHud
+  equipment:
+    eyes: ClothingEyesHudBeer
+
+- type: loadout
+  id: ClothingEyesEyepatchHudBeer
+  groupBy: BeerHud
+  equipment:
+    eyes: ClothingEyesEyepatchHudBeer
+
