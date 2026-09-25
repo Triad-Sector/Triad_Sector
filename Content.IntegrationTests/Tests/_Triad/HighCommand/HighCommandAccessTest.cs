@@ -105,7 +105,6 @@ public sealed class HighCommandAccessTest
             DummyTicker = false,
             Connected = true,
             Dirty = true,
-            Fresh = true,
         });
         var server = pair.Server;
         var admins = server.ResolveDependency<IAdminManager>();
@@ -172,7 +171,6 @@ public sealed class HighCommandAccessTest
             DummyTicker = false,
             Connected = true,
             Dirty = true,
-            Fresh = true,
         });
         var server = pair.Server;
         var admins = server.ResolveDependency<IAdminManager>();
@@ -237,7 +235,6 @@ public sealed class HighCommandAccessTest
             DummyTicker = false,
             Connected = true,
             Dirty = true,
-            Fresh = true,
         });
         var server = pair.Server;
         var entMan = server.EntMan;
@@ -247,6 +244,10 @@ public sealed class HighCommandAccessTest
         var clientGhosts = pair.Client.System<ClientGhostSystem>();
         var clientNet = pair.Client.ResolveDependency<IEntityNetworkManager>();
         var session = pair.Player!;
+
+        // The observer can land on the outpost first, among the same walled rooms and the same area echo assert as
+        // AdminsLateJoinThroughDeadminOnJoin.
+        pair.Client.CfgMan.SetCVar(MonoCVars.AreaEchoEnabled, false);
 
         // Warp targets. Whether they hold a rank does not matter.
         await CloseLobbyVotes(pair);
