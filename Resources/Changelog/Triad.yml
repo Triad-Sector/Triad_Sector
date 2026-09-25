@@ -5058,3 +5058,12 @@ Entries:
   id: 2624
   time: '2026-09-25T01:59:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/662
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Handheld health analyzers no longer need battery charge
+    - type: Add
+      message: Added inhand sprites for health analyzers!
+  id: 2625
+  time: '2026-09-25T23:23:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/665
