@@ -1,7 +1,7 @@
 - type: entity
   id: WeaponMechCombatPulseRifle
   name: eZ-14 mk2 Heavy pulse rifle
-  description: A light mech-mounted heavy pulse laser rifle. # Triad. Tweaked desc even though this is likely never used.
+  description: A combat-exo mounted heavy pulse laser rifle. # Triad. Tweaked desc even though this is likely never used.
   suffix: Mech Weapon, Gun, Combat, Pulse
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -24,7 +24,7 @@
 - type: entity
   id: WeaponMechCombatImmolationGun
   name: ZFI Immolation Beam Gun
-  description: A light mech-mounted fast shooting Xray beamer. # Triad, tweaked to reflect its stats.
+  description: A combat-exo mounted fast shooting Xray beamer. # Triad, tweaked to reflect its stats.
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -32,7 +32,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_laser
   - type: Gun
-    fireRate: 2 # Mono
+    fireRate: 3 # Triad 2-3, buffed it to make it a sidegrade to the laser rifle
     selectedMode: FullAuto # Triad, was a 2RPS bottomless semi auto gun? why? full auto >> spam clicking.
     availableModes:
       - FullAuto # Triad
@@ -47,7 +47,7 @@
 - type: entity
   id: WeaponMechCombatSolarisLaser
   name: CH-LC "Solaris" laser cannon
-  description: A light mech-mounted Laser Cannon. # Triad, fixed desc to include "light" keyword.
+  description: A combat-exo mounted Laser Cannon. # Triad, fixed desc
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -70,7 +70,7 @@
 - type: entity
   id: WeaponMechCombatFiredartLaser
   name: CH-PS "Firedart" Laser
-  description: A light mech-mounted fast-firing laser rifle. # Triad, fixed desc to include light.
+  description: A combat-exo mounted fast-firing laser rifle. # Triad, fixed desc.
   suffix: Mech Weapon, Gun, Combat, Laser
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -78,7 +78,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_laser
   - type: Gun
-    fireRate: 2 # Mono
+    fireRate: 3.5 # Triad, high enough fire-rate to sidegrade the AC-2, though deals much lower dps (tradeoff).
     selectedMode: FullAuto # Triad Was called "fast firing mech mounted laser rifle", yet semi-auto..? Death to spam clicking, changed to full auto
     availableModes:
       - FullAuto #Triad
@@ -93,7 +93,7 @@
 - type: entity
   id: WeaponMechCombatTeslaCannon
   name: P-X Tesla Cannon
-  description: A light mounted weapon for combat mechs, firing energy balls, based on the principle of an experimental Tesla engine. # Triad, fixed desc to include light.
+  description: A combat-exo mounted weapon, firing energy balls, based on the principle of an experimental Tesla engine. # Triad, fixed desc
   suffix: Mech Weapon, Gun, Combat, Tesla
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -119,7 +119,7 @@
 - type: entity
   id: WeaponMechCombatDisabler
   name: CH-PD Disabler
-  description: A light mech mounted non-lethal stun gun that allows you to immobilize intruders. # Triad, fixed.
+  description: A combat-exo mounted non-lethal stun gun that allows you to immobilize intruders. # Triad, fixed.
   suffix: Mech Weapon, Gun, Combat, Disabler
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -142,7 +142,7 @@
 - type: entity
   id: WeaponMechCombatTaser
   name: PBT "Pacifier" Mounted Taser
-  description: A mounted non-lethal taser that allows you to stun intruders.
+  description: A combat-exo mounted non-lethal taser that allows you to stun intruders. #triad
   suffix: Mech Weapon, Gun, Combat, Disabler, admeme
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -165,7 +165,7 @@
 - type: entity
   id: WeaponMechCombatShotgun
   name: LBX AC 10 "Scattershot"
-  description: A light mech mounted automatic 12-gauge shotgun for room clearing. # Triad, fixed description
+  description: A combat-exo mounted automatic 12-gauge flechette shotgun for eating through medium armor, or other mechs. # Triad
   suffix: Mech Weapon, Gun, Combat, Shotgun
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -173,7 +173,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_scatter
   - type: Gun
-    fireRate: 1.5 # 0.5->1.5 Mono
+    fireRate: 1.75 # 1.5->1.75 Triad, upped from mono to make it competetive with the Hades.
     projectileSpeed: 40 # Mono
     selectedMode: FullAuto #Triad, something with a high firerate like this shouldn't be semi. Death to spam clicking.
     availableModes:
@@ -181,15 +181,15 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: ProjectileBatteryAmmoProvider
-    proto: ShellShotgun12_gaugeBuckshot
-    fireCost: 35 # 99->35 Mono
+    proto: ShellShotgun12_gaugeFlechette
+    fireCost: 45 # 35->45 Triad, expensive energy wise!
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatShotgunIncendiary
   name: FNX-99 "Hades" #Triad, removed the carbine part of it, cause its a shotgun.
-  description: A light mech mounted automatic 12-gauge incendiary shotgun for room burning. # Triad, description did not make it clear that this is a shotgun.
+  description: A combat-exo mounted automatic 12-gauge incendiary shotgun for cooking small, burnable targets. # Triad
   suffix: Mech Weapon, Gun, Combat, Shotgun, Incendiary
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -197,7 +197,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_carbine
   - type: Gun
-    fireRate: 1.2 # Triad, 1.8->1.2, changed from mono's. Less firerate than the NON-INCENDIARY version.
+    fireRate: 1.8 # Mono
     projectileSpeed: 40 # Mono
     selectedMode: FullAuto #Triad. High firerate should be full auto, so you don't need to spam click.
     availableModes:
@@ -213,7 +213,7 @@
 - type: entity
   id: WeaponMechCombatUltraRifle
   name: Ultra AC-2
-  description: A light mech mounted automatic rifle, firing 7.62x39mm FMJ at a slow but constant rate. #Triad, description was BAD!!
+  description: A combat-exo mounted automatic rifle, firing heavy 7.62x54mmR FMJ rounds at a slow but constant rate. #Triad, description was BAD!!
   suffix: Mech Weapon, Gun, Combat, Rifle
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -221,23 +221,23 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_uac2
   - type: Gun
-    fireRate: 4 # Triad, 4.5->4, changed from mono's value
-    projectileSpeed: 55 # Mono
+    fireRate: 3 # Triad, 4.5->3, changed from mono's value to compensate for the more powerful round
+    projectileSpeed: 50 # Triad, 55->50, more powerful but slower round (standardizing slightly)
     selectedMode: FullAuto
     availableModes:
       - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: ProjectileBatteryAmmoProvider
-    proto: Cartridge762x39mmFMJ
-    fireCost: 15 # Triad 10->15, increased power draw from mono.
+    proto: Bullet762x54mmRFMJ
+    fireCost: 20 # Triad 10->20, increased power draw from mono.
   - type: Appearance
   - type: AmmoCounter
 
 - type: entity
   id: WeaponMechCombatMissileRack8
-  name: SRM-8 Light Missile Rack
-  description: A light mech mounted low-explosive missile rack, that fires in short but fast burst. # Triad. Desc was innaccurate.
+  name: SRM-8 Light Rocket Rack
+  description: A cmbat-exo mounted rocket rack, that fires 4 light rockets in a quick burst. Takes awhile to re-arm # Triad.
   suffix: Mech Weapon, Gun, Combat, Light Missile
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -248,9 +248,9 @@
   # Mono start
     fireRate: 1
     projectileSpeed: 18 # Mono
-    burstFireRate: 7 #Triad. 3->7 increased its speed as moving mid burst will cause it to veer in a weird way. So its now a short, three round burst.
-    shotsPerBurst: 3 #Triad. 6->3, to compensate for the faster burst.
-    burstCooldown: 5
+    burstFireRate: 9 #Triad. 3->9, increased its speed as moving mid burst will cause it to veer in a weird way. So its now a short, high burst but high cooldown burst.
+    shotsPerBurst: 4 #Triad. 6->4, to compensate for the much faster burst.
+    burstCooldown: 25 #Triad, 5->25. Much longer burst cooldown, intended for a "one and switch", to be used in conjunction with other hardpoints.
     selectedMode: Burst
     availableModes:
       - Burst
@@ -265,8 +265,8 @@
 
 - type: entity
   id: WeaponMechCombatMissileRack6
-  name: BRM-6 Missile Rack
-  description: Tubes must be reloaded from the outside.
+  name: BRM-6 Rocket Pod
+  description: A combat-exo mounted rocket pod that must be manually charged. Holds 6 shots, firing thermobaric rounds perfect for clearing soft targets.
   suffix: Mech Weapon, Gun, Combat, Missile
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:
@@ -274,7 +274,7 @@
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_missilerack_six
   - type: Gun
-    fireRate: 0.2 # 1->0.2 Mono
+    fireRate: 0.5 # Triad, 0.2->0.5
     projectileSpeed: 18 # Mono
     selectedMode: SemiAuto
     availableModes:
@@ -283,17 +283,17 @@
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: 40mmGrenadeThermobaric
-    fireCost: 250 # mono 100 -> 250
+    fireCost: 50 # Triad, 250->50, made it viable. 6 shots between needing to take it out and manually charge it.
   - type: Appearance
   - type: AmmoCounter
-  - type: Battery # mono
-    maxCharge: 250
-    startingCharge: 250
+  - type: Battery # Triad 250-300
+    maxCharge: 300
+    startingCharge: 300
 
 - type: entity
   id: WeaponMechCombatFlashbangLauncher
   name: SGL-6 Flashbang Launcher
-  description: A light mech mounted weapon that launches 40mm flash grenades, to blind intruders at range, with volume. # Triad, redid description. This is not a missile launcher.
+  description: A light mech mounted weapon that launches 40mm flash grenades, to blind intruders an immoral quantity. # Triad, redid description. This is not a missile launcher.
   suffix: Mech Weapon, Gun, Combat, Flashbang
   parent: [ BaseMechWeaponRange, CombatMechEquipment ]
   components:

@@ -16,5 +16,6 @@
     attackRate: 3.5
     damage:
       types:
-        Structural: 52.5 # 35->52.5 - Mono
-        Piercing: 30 # 15->30 - Mono
+        Structural: 40 # 52.5->40 - Triad, changed from mono
+        Piercing: 20 # 30->20 - Triad, changed from mono
+        Slash: 20 # 0->20 - Triad, changed from mono
