@@ -144,6 +144,39 @@
   - type: Clothing
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformGhostlightTitled
+  name: Titled Ghostlight Uniform
+  description: The uniform worn by titled ghosts. They have a long way to go. Glory!
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_titled.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_titled.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformGhostlightNamed
+  name: Named Ghostlight Uniform
+  description: The uniform worn by named ghosts. Forget your old self; it holds you back. Glory
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_named.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_named.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformGhostlightCore
+  name: Core Ghostlight Uniform
+  description: The uniform worn by the ghostlight core. Freedom or termination. Glory to the ghostlight.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_core.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/ghostlights_core.rsi
+
 # TFA uniforms
 - type: entity
   parent: ClothingUniformBase
