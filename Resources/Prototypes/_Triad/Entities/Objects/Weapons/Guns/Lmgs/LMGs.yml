@@ -19,7 +19,7 @@
     maxAngle: 18
     angleIncrease: 1
     angleDecay: 3 # More time to cooldown
-    fireRate: 6 # Low firerate, but fires HEAVY rounds. 210DPS if all shots hit.
+    fireRate: 7 # Low firerate, but fires HEAVY rounds. 245DPS if all shots hit.
     selectedMode: FullAuto
     availableModes:
     - SemiAuto
