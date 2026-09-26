@@ -61,7 +61,7 @@
   name: TDF M-7 Lecter (6.8x52mm Caseless)
   parent: WeaponRifleLecter
   id: WeaponRifleLecterTdf
-  description: Reverse-engineered variant of the solarian republic's lecter, now used by the TDF as their standard issue rifle. Comes with a vertical grip to improve handling. Accurate, easy to use, and firing the 6.8x52mm STANAG round. Also accepts 5.56x45mm magazines to assist with standardization.
+  description: Reverse-engineered variant of the Solarian Republic's Lecter, now used by the TDF as their standard issue rifle. Comes with a vertical grip to improve handling. Accurate, easy to use, and firing the 6.8x52mm STANAG round.
   components:
   - type: Item
     size: Huge
