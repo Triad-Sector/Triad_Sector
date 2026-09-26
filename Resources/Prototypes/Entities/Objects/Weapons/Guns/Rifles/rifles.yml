@@ -175,7 +175,7 @@
         whitelist:
           tags:
             - Cartridge68x52mmCaseless # Mono
-            - #Cartridge556x45mmFMJ # Mono # Triad: Removed the ability to shoot way smaller rounds- thats putting the triangle in the square hole!
+            #- Cartridge556x45mmFMJ # Mono # Triad: Removed the ability to shoot way smaller rounds- thats putting the triangle in the square hole!
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
