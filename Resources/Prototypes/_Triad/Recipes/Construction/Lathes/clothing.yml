@@ -1,9 +1,19 @@
-## Player factions
+# Base Prototype
 
 - type: latheRecipe
-  parent: BaseJumpsuitRecipe
-  id: ClothingUniformJumpsuitShiBusiness
-  result: ClothingUniformJumpsuitShiBusiness
+  abstract: true
+  id: TriadSwordSheathRecipe
+  parent: NFBaseBeltRecipe
+  completetime: 2
+  materials:
+    Cloth: 1000
+    Durathread: 500
+    Plasteel: 200
+
+- type: latheRecipe
+  id: TriadJumpsuitShiRecipe
+  parent: NFBaseJumpsuitRecipe
+  result: ClothingUniformSHIsuit
 
 - type: latheRecipe
   id: TriadJumpsuitGhostlightCoreRecipe
@@ -20,17 +30,6 @@
   parent: NFBaseJumpsuitRecipe
   result: ClothingUniformGhostlightTitled
 
-# Base Prototype
-
-- type: latheRecipe
-  abstract: true
-  id: TriadSwordSheathRecipe
-  parent: NFBaseBeltRecipe
-  completetime: 2
-  materials:
-    Cloth: 1000
-    Durathread: 500
-    Plasteel: 200
 
 #Belt Sheath
 - type: latheRecipe
