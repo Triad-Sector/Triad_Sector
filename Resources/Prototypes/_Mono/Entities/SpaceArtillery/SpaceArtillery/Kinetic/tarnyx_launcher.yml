@@ -47,7 +47,10 @@
     scale: 2.5
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Energy
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -94,7 +97,10 @@
     scale: 2.5
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Energy
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: BallisticAmmoProvider

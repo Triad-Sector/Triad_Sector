@@ -52,7 +52,10 @@
     scale: 0.7
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Missile
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Missile
+    shipType: GuidedLimited
+    # End Triad
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable

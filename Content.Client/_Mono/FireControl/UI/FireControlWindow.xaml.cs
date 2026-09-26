@@ -38,8 +38,12 @@ public sealed partial class FireControlWindow : FancyWindow
         SelectAllButton.OnPressed += SelectAllWeapons;
         UnselectAllButton.OnPressed += UnselectAllWeapons;
         SelectBallisticButton.OnPressed += SelectBallisticWeapons;
-        SelectEnergyButton.OnPressed += SelectEnergyWeapons;
-        SelectMissileButton.OnPressed += SelectMissileWeapons;
+        // Triad: Adding new, more specific weapon groups
+        SelectBallisticLimitedButton.OnPressed += SelectBallisticLimitedWeapons;
+        SelectImpulseButton.OnPressed += SelectImpulseWeapons;
+        SelectGuidedButton.OnPressed += SelectGuidedWeapons;
+        SelectGuidedLimitedButton.OnPressed += SelectGuidedLimitedWeapons;
+        // End Triad
     }
 
     private void SelectAllWeapons(BaseButton.ButtonEventArgs args)
@@ -90,7 +94,8 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectEnergyWeapons(BaseButton.ButtonEventArgs args)
+    // Triad: Adding new, more specific weapon groups
+    private void SelectBallisticLimitedWeapons(BaseButton.ButtonEventArgs args)
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -98,13 +103,13 @@ public sealed partial class FireControlWindow : FancyWindow
             button.Pressed = false;
         }
 
-        // Then select only energy weapons
+        // Then select only ballistic limited weapons
         foreach (var kvp in WeaponsList)
         {
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Energy)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.BallisticLimited)
             {
                 button.Pressed = true;
             }
@@ -114,7 +119,7 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectMissileWeapons(BaseButton.ButtonEventArgs args)
+    private void SelectImpulseWeapons(BaseButton.ButtonEventArgs args)
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -122,13 +127,13 @@ public sealed partial class FireControlWindow : FancyWindow
             button.Pressed = false;
         }
 
-        // Then select only missile weapons
+        // Then select only impulse weapons
         foreach (var kvp in WeaponsList)
         {
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Missile)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse)
             {
                 button.Pressed = true;
             }
@@ -137,6 +142,55 @@ public sealed partial class FireControlWindow : FancyWindow
         OnWeaponSelectionChanged?.Invoke();
         UpdateAllWeaponButtonTexts();
     }
+
+    private void SelectGuidedWeapons(BaseButton.ButtonEventArgs args)
+    {
+        // First unselect all weapons
+        foreach (var button in WeaponsList.Values)
+        {
+            button.Pressed = false;
+        }
+
+        // Then select only guided weapons
+        foreach (var kvp in WeaponsList)
+        {
+            var weaponEntity = kvp.Key;
+            var button = kvp.Value;
+
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Guided)
+            {
+                button.Pressed = true;
+            }
+        }
+
+        OnWeaponSelectionChanged?.Invoke();
+        UpdateAllWeaponButtonTexts();
+    }
+
+    private void SelectGuidedLimitedWeapons(BaseButton.ButtonEventArgs args)
+    {
+        // First unselect all weapons
+        foreach (var button in WeaponsList.Values)
+        {
+            button.Pressed = false;
+        }
+
+        // Then select only guided limited weapons
+        foreach (var kvp in WeaponsList)
+        {
+            var weaponEntity = kvp.Key;
+            var button = kvp.Value;
+
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.GuidedLimited)
+            {
+                button.Pressed = true;
+            }
+        }
+
+        OnWeaponSelectionChanged?.Invoke();
+        UpdateAllWeaponButtonTexts();
+    }
+    // End Triad
 
     /// <summary>
     /// Updates the text of a weapon button based on its selection state and manual reload status.
@@ -202,8 +256,12 @@ public sealed partial class FireControlWindow : FancyWindow
 
         // Update the category buttons state based on whether weapons of that type are available
         bool hasBallisticWeapons = false;
-        bool hasEnergyWeapons = false;
-        bool hasMissileWeapons = false;
+        // Triad: Adding new, more specific weapon groups
+        bool hasBallisticLimitedWeapons = false;
+        bool hasImpulseWeapons = false;
+        bool hasGuidedWeapons = false;
+        bool hasGuidedLimitedWeapons = false;
+        // End Triad
 
         foreach (var kvp in _weaponTypes)
         {
@@ -211,18 +269,28 @@ public sealed partial class FireControlWindow : FancyWindow
 
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
-            else if (type == ShipGunType.Energy)
-                hasEnergyWeapons = true;
-            else if (type == ShipGunType.Missile)
-                hasMissileWeapons = true;
+            // Triad: Adding new, more specific weapon groups
+            else if (type == ShipGunType.BallisticLimited)
+                hasBallisticLimitedWeapons = true;
+            else if (type == ShipGunType.Impulse)
+                hasImpulseWeapons = true;
+            else if (type == ShipGunType.Guided)
+                hasGuidedWeapons = true;
+            else if (type == ShipGunType.GuidedLimited)
+                hasGuidedLimitedWeapons = true;
 
-            if (hasBallisticWeapons && hasEnergyWeapons && hasMissileWeapons)
+            if (hasBallisticWeapons && hasBallisticLimitedWeapons && hasImpulseWeapons && hasGuidedWeapons && hasGuidedLimitedWeapons) // Triad (Better Weapon Groups)
                 break;
+            // End Triad
         }
 
         SelectBallisticButton.Disabled = !hasBallisticWeapons;
-        SelectEnergyButton.Disabled = !hasEnergyWeapons;
-        SelectMissileButton.Disabled = !hasMissileWeapons;
+        // Triad: Adding new, more specific weapon groups
+        SelectBallisticLimitedButton.Disabled = !hasBallisticLimitedWeapons;
+        SelectImpulseButton.Disabled = !hasImpulseWeapons;
+        SelectGuidedButton.Disabled = !hasGuidedWeapons;
+        SelectGuidedLimitedButton.Disabled = !hasGuidedLimitedWeapons;
+        // End Triad
     }
 
     private void UpdateWeaponsList(FireControlConsoleBoundInterfaceState state)
