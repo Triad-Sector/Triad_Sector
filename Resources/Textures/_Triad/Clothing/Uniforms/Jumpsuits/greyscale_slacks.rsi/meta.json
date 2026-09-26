@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites taken from tgstation at commits https://github.com/tgstation/tgstation/commit/f0601b2a34b609a1a1cae109ce6a92aad3cbf9c3 and https://github.com/tgstation/tgstation/commit/684039be368c6e518fc3ced09924632e70938b98",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "icon"
+      },
+      {
+          "name": "equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "sleeves-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "inhand-left",
+          "directions": 4
+      },
+      {
+          "name": "inhand-right",
+          "directions": 4
+      },
+      {
+          "name": "buckle-icon"
+      },
+      {
+          "name": "buckle-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "belt-icon"
+      },
+      {
+          "name": "belt-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "sleeves-belt-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "skirt-icon"
+      },
+      {
+          "name": "skirt-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "jeans-icon"
+      },
+      {
+          "name": "jeans-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "slacks-icon"
+      },
+      {
+          "name": "slacks-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "shorts-icon"
+      },
+      {
+          "name": "shorts-equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "badge-icon"
+      },
+      {
+          "name": "badge-equipped-INNERCLOTHING",
+          "directions": 4
+      }
+  ]
+}

@@ -1,0 +1,93 @@
+# Triad edit.
+- type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-contractor-jumpsuit
+  minLimit: 1
+  loadouts:
+  - ClothingUniformJumpsuitColorSlacksTfaService
+  - ClothingUniformJumpskirtColorSlacksTfaService
+  - ClothingUniformJumpsuitColorSlacksTfaServiceShorts
+  - ClothingUniformJumpsuitColorSlacksTfaChef
+  - ClothingUniformJumpskirtColorSlacksTfaChef
+  - ClothingUniformJumpsuitColorSlacksTfaBotanist
+  - ClothingUniformJumpskirtColorSlacksTfaBotanist
+  - ClothingUniformJumpsuitTfaJanitor
+  - ClothingUniformJumpskirtTfaJanitor
+
+- type: loadoutGroup
+  id: ServiceWorkerOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 0
+  loadouts:
+  - ClothingOuterJacketChefTfa
+  - ClothingOuterJacketChef
+  - ClothingOuterApronChefTfa
+  - ClothingOuterApronChef
+  - ClothingOuterApronBar
+  - ClothingOuterVest
+  - ClothingOuterArmorBasic
+  - ClothingOuterWinterBar
+  - ClothingOuterWinterChef
+  - ClothingOuterWinterHydro
+  - ClothingOuterWinterCoat
+
+- type: loadoutGroup
+  id: ServiceWorkerHead
+  name: loadout-group-contractor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatChefTfa
+  - ClothingHeadHatChef
+  - ClothingHeadHatTophat
+  - ClothingHeadHatBowlerHat
+  - ClothingHeadHatTfaJanitorSoft
+  - ClothingHeadHatTrucker
+  - ClothingHeadBandBrown
+  - ClothingHeadBandGrey
+  - ClothingHeadBandBotany
+  - ClothingHeadBandBlack
+  - ClothingHeadBandSkull
+  - ClothingHeadBandRed
+  - ClothingHeadBandGreen
+  - ClothingHeadBandGold
+  - ClothingHeadBandBlue
+
+- type: loadoutGroup
+  id: ServiceWorkerBelt
+  name: loadout-group-contractor-belt
+  minLimit: 0
+  loadouts:
+  - ClothingBeltJanitor
+  - ClothingBeltJanitorFilled
+  subgroups:
+  - ContractorBelt
+
+- type: loadoutGroup
+  id: ServiceWorkerGloves
+  name: loadout-group-contractor-gloves
+  minLimit: 0
+  loadouts:
+  - JanitorRubberGloves
+  subgroups:
+  - ContractorGloves
+
+- type: loadoutGroup
+  id: ServiceWorkerShoes
+  name: loadout-group-contractor-shoes
+  minLimit: 0
+  loadouts:
+  - ClothingShoesGaloshes
+  subgroups:
+  - ContractorShoes
+  fallbacks:
+  - ContractorClothingShoesColorBlack
+
+- type: loadoutGroup
+  id: ServiceWorkerGlasses
+  name: loadout-group-contractor-glasses
+  minLimit: 0
+  loadouts:
+  - ClothingEyesHudBeer
+  - ClothingEyesEyepatchHudBeer
+  subgroups:
+  - ContractorGlasses

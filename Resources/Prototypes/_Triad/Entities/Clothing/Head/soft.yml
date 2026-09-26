@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingHeadBaseButcherable # TODO flipping
+  id: ClothingHeadHatTfaJanitorSoft
+  name: TFA janitor cap
+  description: It's a baseball hat for TFA janitors. Has the orange TFA badge on it.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Soft/tfa_jani_cap.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Soft/tfa_jani_cap.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
