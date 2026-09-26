@@ -1,7 +1,7 @@
 #NT security lootbox
 - type: entity
   parent: RogueSiliconGiftBox
-  name: NT Security equipement crate
+  name: NT Security equipment crate
   id: ClothingBackpackRogueNanotrasenT1
   description: A Nanotrasen security forces gear crate.
   suffix: NPC Loot, T1
@@ -73,7 +73,7 @@
 #NT navy lootbox
 - type: entity
   parent: RogueSiliconGiftBox
-  name: NT Navy equipement crate
+  name: NT Navy equipment crate
   id: ClothingBackpackRogueNanotrasenT2
   description: A Nanotrasen corporate navy gear crate.
   suffix: NPC Loot, T2
