@@ -21,6 +21,8 @@
   neutral:
   - CC
   - SimpleNeutral
+  friendly:
+  - SDTurret
   defaultHostile: true
 
 - type: npcFaction
