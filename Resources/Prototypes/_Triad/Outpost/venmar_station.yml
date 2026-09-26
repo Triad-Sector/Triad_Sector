@@ -40,7 +40,7 @@
             Borg: [ -1, -1 ]
             StationRepresentative: [ 1, 1 ]
             StationTrafficController: [ 2, 2 ]
-            CCServiceWorker: [ 2, 2 ]
+            CCServiceWorker: [ 4, 4 ]
             MailCarrier: [ 2, 2 ]
             TdfPatrolTeamLeader: [ 1, 1 ]
             TdfMedic: [ 2, 2 ]
