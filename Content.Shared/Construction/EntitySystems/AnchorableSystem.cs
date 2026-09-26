@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Examine;
 using Content.Shared.Construction.Components;
@@ -9,7 +10,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Tools;
 using Content.Shared.Tools.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -27,11 +27,12 @@ public sealed partial class AnchorableSystem : EntitySystem
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private PullingSystem _pulling = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedToolSystem _tool = default!;
     [Dependency] private SharedTransformSystem _transformSystem = default!;
     [Dependency] private TagSystem _tagSystem = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private SharedMapSystem _map = default!;
+
     private EntityQuery<PhysicsComponent> _physicsQuery;
 
     public readonly ProtoId<TagPrototype> Unstackable = "Unstackable";
@@ -82,7 +83,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         // Log unanchor attempt (server only)
         _adminLogger.Add(LogType.Anchor, LogImpact.Low, $"{ToPrettyString(userUid):user} is trying to unanchor {ToPrettyString(uid):entity} from {transform.Coordinates:targetlocation}");
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryUnanchorCompletedEvent()); // Frontier: Delay<CurrentDelay
+        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryUnanchorCompletedEvent());
     }
 
     private void OnInteractUsing(EntityUid uid, AnchorableComponent anchorable, InteractUsingEvent args)
@@ -101,6 +102,13 @@ public sealed partial class AnchorableSystem : EntitySystem
     private void OnAnchoredExamine(EntityUid uid, AnchorableComponent component, ExaminedEvent args)
     {
         var isAnchored = Comp<TransformComponent>(uid).Anchored;
+
+        if (isAnchored && (component.Flags & AnchorableFlags.Unanchorable) == 0x0)
+            return;
+
+        if (!isAnchored && (component.Flags & AnchorableFlags.Anchorable) == 0x0)
+            return;
+
         var messageId = isAnchored ? "examinable-anchored" : "examinable-unanchored";
         args.PushMarkup(Loc.GetString(messageId, ("target", uid)));
     }
@@ -239,7 +247,7 @@ public sealed partial class AnchorableSystem : EntitySystem
             return;
         }
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryAnchorCompletedEvent()); // Frontier: Delay<CurrentDelay
+        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryAnchorCompletedEvent());
     }
 
     private bool Valid(
@@ -267,11 +275,11 @@ public sealed partial class AnchorableSystem : EntitySystem
 
         // Need to cast the event or it will be raised as BaseAnchoredAttemptEvent.
         if (anchoring)
-            RaiseLocalEvent(uid, (AnchorAttemptEvent) attempt);
+            RaiseLocalEvent(uid, (AnchorAttemptEvent)attempt);
         else
-            RaiseLocalEvent(uid, (UnanchorAttemptEvent) attempt);
+            RaiseLocalEvent(uid, (UnanchorAttemptEvent)attempt);
 
-        anchorable.CurrentDelay = anchorable.Delay + attempt.Delay; // Frontier: assign delay from base value
+        anchorable.Delay += attempt.Delay;
 
         return !attempt.Cancelled;
     }
@@ -279,11 +287,13 @@ public sealed partial class AnchorableSystem : EntitySystem
     private bool TileFree(EntityCoordinates coordinates, PhysicsComponent anchorBody)
     {
         // Probably ignore CanCollide on the anchoring body?
-        if (_transformSystem.GetGrid(coordinates) is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+        var gridUid = _transformSystem.GetGrid(coordinates);
+
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
             return false;
 
-        var tileIndices = _map.TileIndicesFor(gridUid, grid, coordinates);
-        return TileFree((gridUid, grid), tileIndices, anchorBody.CollisionLayer, anchorBody.CollisionMask);
+        var tileIndices = _map.TileIndicesFor((gridUid.Value, grid), coordinates);
+        return TileFree((gridUid.Value, grid), tileIndices, anchorBody.CollisionLayer, anchorBody.CollisionMask);
     }
 
     /// <summary>
@@ -292,7 +302,7 @@ public sealed partial class AnchorableSystem : EntitySystem
     /// <param name="grid"></param>
     public bool TileFree(Entity<MapGridComponent> grid, Vector2i gridIndices, int collisionLayer = 0, int collisionMask = 0)
     {
-        var enumerator = _map.GetAnchoredEntities(grid.Owner, grid.Comp, gridIndices);
+        var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, grid.Comp, gridIndices);
 
         while (enumerator.MoveNext(out var ent))
         {
@@ -315,6 +325,12 @@ public sealed partial class AnchorableSystem : EntitySystem
         }
 
         return true;
+    }
+
+    [Obsolete("Use the Entity<MapGridComponent> version")]
+    public bool TileFree(MapGridComponent grid, Vector2i gridIndices, int collisionLayer = 0, int collisionMask = 0)
+    {
+        return TileFree((grid.Owner, grid), gridIndices, collisionLayer, collisionMask);
     }
 
     /// <summary>

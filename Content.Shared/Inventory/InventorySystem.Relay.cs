@@ -11,6 +11,7 @@ using Content.Shared.Damage.Events;
 using Content.Shared.Electrocution;
 using Content.Shared.Explosion;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Flash;
 using Content.Shared.Gravity;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory.Events;
@@ -59,6 +60,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetSlowedOverSlipperyModifierEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ModifySlowOnDamageSpeedEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ExtinguishEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, FlashAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshNightVisionEvent>(RefRelayInventoryEvent);
 
         // Eye/vision events

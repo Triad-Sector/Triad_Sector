@@ -4,7 +4,7 @@ using System.Threading;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Explosion.Components;
-using Content.Server.Flash;
+using Content.Shared.Flash;
 using Content.Server.Electrocution;
 using Content.Server.Pinpointer;
 using Content.Shared.Chemistry.EntitySystems;
@@ -80,7 +80,7 @@ namespace Content.Server.Explosion.EntitySystems
     {
         [Dependency] private ExplosionSystem _explosions = default!;
         [Dependency] private FixtureSystem _fixtures = default!;
-        [Dependency] private FlashSystem _flashSystem = default!;
+        [Dependency] private SharedFlashSystem _flashSystem = default!;
         [Dependency] private SharedBroadphaseSystem _broadphase = default!;
         [Dependency] private IAdminLogManager _adminLogger = default!;
         [Dependency] private SharedContainerSystem _container = default!;
@@ -94,8 +94,6 @@ namespace Content.Server.Explosion.EntitySystems
         [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
         [Dependency] private InventorySystem _inventory = default!;
         [Dependency] private ElectrocutionSystem _electrocution = default!;
-        [Dependency] private StationSystem _station = default!; // Frontier: medical insurance
-        [Dependency] private SharedMapSystem _map = default!; // Frontier: medical insurance
 
         public override void Initialize()
         {
@@ -195,8 +193,7 @@ namespace Content.Server.Explosion.EntitySystems
 
         private void HandleFlashTrigger(EntityUid uid, FlashOnTriggerComponent component, TriggerEvent args)
         {
-            // TODO Make flash durations sane ffs.
-            _flashSystem.FlashArea(uid, args.User, component.Range, component.Duration * 1000f, probability: component.Probability);
+            _flashSystem.FlashArea(uid, args.User, component.Range, component.Duration, probability: component.Probability);
             args.Handled = true;
         }
 

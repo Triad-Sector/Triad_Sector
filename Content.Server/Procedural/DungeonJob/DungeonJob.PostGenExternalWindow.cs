@@ -29,8 +29,7 @@ public sealed partial class DungeonJob
         if (!data.Tiles.TryGetValue(DungeonDataKey.FallbackTile, out var tileProto) ||
             !data.SpawnGroups.TryGetValue(DungeonDataKey.Window, out var windowGroup))
         {
-            // Triad: nameof(gen) logged the literal string "gen" rather than the generator type.
-            _sawmill.Error($"Unable to get dungeon data for {gen.GetType().Name}: needs Tiles[FallbackTile] and SpawnGroups[Window]");
+            _sawmill.Error($"Unable to get dungeon data for {nameof(gen)}");
             return;
         }
 

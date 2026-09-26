@@ -1,4 +1,4 @@
-﻿using Content.Shared.Construction;
+using Content.Shared.Construction;
 using Content.Shared.Examine;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
@@ -39,9 +39,9 @@ namespace Content.Server.Construction.Conditions
 
             var entity = args.Examined;
 
-            var entMan = IoCManager.Resolve<IEntityManager>();
-            if (!entMan.TryGetComponent(entity, out ContainerManagerComponent? containerManager) ||
-                !entMan.System<SharedContainerSystem>().TryGetContainer(entity, Container, out var container, containerManager)) return false;
+            var entityManager = IoCManager.Resolve<IEntityManager>();
+            if (!entityManager.TryGetComponent(entity, out ContainerManagerComponent? containerManager) ||
+                !entityManager.System<SharedContainerSystem>().TryGetContainer(entity, Container, out var container, containerManager)) return false;
 
             if (container.ContainedEntities.Count == 0)
                 return false;
