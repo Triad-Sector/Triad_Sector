@@ -30,7 +30,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 3
+        Blunt: 6 # Triad: 3->6 to match 7.62x51 rubber.
 
 # Mono AP syst
 # + 0.05 base AP
