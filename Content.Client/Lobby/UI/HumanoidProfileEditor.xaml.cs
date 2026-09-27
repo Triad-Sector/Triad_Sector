@@ -38,6 +38,7 @@ using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using Content.Shared._DV.Traits; // DV - Traits
 using Content.Client._Mono.Company;
+using Content.Client._Triad.Lobby; // Triad: admin-gated jobs
 
 namespace Content.Client.Lobby.UI
 {
@@ -1024,6 +1025,11 @@ namespace Content.Client.Lobby.UI
                 if (department.EditorHidden)
                     continue;
 
+                // Triad: a department holding only admin-gated jobs this player cannot take goes too, header included.
+                if (AdminGatedJobFilter.EmptiesDepartment(department, _prototypeManager, _requirements))
+                    continue;
+                // End Triad
+
                 departments.Add(department);
             }
 
@@ -1083,6 +1089,7 @@ namespace Content.Client.Lobby.UI
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
                     .Where(job => job.SetPreference)
+                    .Where(job => !AdminGatedJobFilter.Hides(job, _requirements)) // Triad: admin-gated jobs
                     .ToArray();
 
                 Array.Sort(jobs, JobUIComparer.Instance);

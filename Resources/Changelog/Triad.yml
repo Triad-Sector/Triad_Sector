@@ -5018,3 +5018,84 @@ Entries:
   id: 2620
   time: '2026-09-23T23:24:40.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/658
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Anchored artifacts keep their nodes through a ship save, and ones that
+        already lost them come back with a fresh graph.
+    - type: Fix
+      message: Artifacts no longer get stuck mid-unlock.
+    - type: Fix
+      message: Spent artifact nodes stay spent across a ship save.
+  id: 2621
+  time: '2026-09-24T15:31:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/659
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: Slightly improve TDF CE and LT job icons.
+  id: 2622
+  time: '2026-09-24T19:55:40.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/661
+- author: Cabin-keeper
+  changes:
+    - type: Add
+      message: Added a recipe for tear gas.
+  id: 2623
+  time: '2026-09-24T23:43:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/660
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        TFA High Command has an outpost of its own, reachable only by admins and
+        the ships they clear.
+    - type: Fix
+      message: >-
+        Readying up for a job only one station offers, like TDF Chief Enforcer,
+        now starts you in that job instead of sometimes as a Contractor.
+  id: 2624
+  time: '2026-09-25T01:59:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/662
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Handheld health analyzers no longer need battery charge
+    - type: Add
+      message: Added inhand sprites for health analyzers!
+  id: 2625
+  time: '2026-09-25T23:23:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/665
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added several new TFA service worker clothing items, including but not
+        limited to: Botanist, Chef, Bartender, and Janitor uniforms and hats!
+    - type: Add
+      message: Service workers now have glove loadouts.
+    - type: Add
+      message: Added janitoral belts to the service worker loadout belt section.
+    - type: Remove
+      message: >-
+        Removed the janitor role. The role's equipment has been collapsed into
+        the service worker role.
+    - type: Tweak
+      message: >-
+        Tweaked the service worker's description to be more befitting of the
+        role.
+    - type: Tweak
+      message: Resprited the chef hat and jacket.
+  id: 2626
+  time: '2026-09-26T00:07:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/666
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: >-
+        6.8mm caseless is now a full power round, and the Lecter is now a battle
+        rifle.
+  id: 2627
+  time: '2026-09-26T23:57:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/670

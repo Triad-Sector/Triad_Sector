@@ -7,7 +7,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 24
+        Piercing: 35 # Triad: 24->35 since it's a full-power rifle round now.
     armorPenetration: 0.075
 
 - type: entity
@@ -19,7 +19,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 2
+        Blunt: 3 # Triad: 2->3 since it's a full-power rifle round now.
 
 - type: entity
   id: Bullet68x52mmCaselessRubber
@@ -30,7 +30,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 3
+        Blunt: 6 # Triad: 3->6 to match 7.62x51 rubber.
 
 # Mono AP syst
 # + 0.05 base AP
@@ -44,8 +44,10 @@
   - type: Projectile
     damage:
       types:
-        Slash: 4
-        Piercing: 29
+        # Triad: Increased damage since it's a full-power rifle round now.
+        Slash: 6 # 4->6
+        Piercing: 42 # 29->42
+        # End Triad
     armorPenetration: -0.525
 
 - type: entity
@@ -57,8 +59,10 @@
   - type: Projectile
     damage:
       types:
-        Slash: 6
-        Piercing: 35
+        # Triad: Increased damage since it's a full-power rifle round now.
+        Slash: 9 # 6->9
+        Piercing: 51 # 35->51
+        # End Triad
     armorPenetration: -0.8
 
 #armor-piercing:
@@ -72,6 +76,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 11
-        Structural: 35
+        # Triad: Increased damage since it's a full-power rifle round now.
+        Piercing: 16 # 11->16
+        Structural: 51 # 35->51
+        # End Triad
     armorPenetration: 0.65

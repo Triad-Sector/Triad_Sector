@@ -28,9 +28,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         try
         {
             // Triad: strip stale nodes before the loader sees them: dangling entity references from
-            // pre-287 saves, and legacy xenoarch entities/components from pre-rework saves. Ship files
-            // live on the player's machine, so there is no backlog we can migrate; a file written by
-            // the current build has nothing to remove and comes back byte-identical.
+            // pre-287 saves, legacy xenoarch entities/components from pre-rework saves, and artifact
+            // graphs from saves that dropped their nodes. Ship files live on the player's machine, so
+            // there is no backlog we can migrate; a file written by the current build has nothing to
+            // remove and comes back byte-identical.
             yamlData = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yamlData, out var scrubbed);
             if (scrubbed > 0)
                 _sawmill.Info($"Scrubbed {scrubbed} stale node(s) (dangling references / legacy entities) from an older ship file on load");

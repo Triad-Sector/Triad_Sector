@@ -138,8 +138,8 @@
 - type: entity
   parent: ClothingHeadBaseButcherable
   id: ClothingHeadHatNfsdBeretGreen
-  name: TSFMC beret
-  description: A green beret for use by TSFMC officers.
+  name: military beret
+  description: An unmarked green beret, for militas and mercenaries alike.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hats/nfsd_beret_green.rsi
@@ -150,8 +150,8 @@
 - type: entity
   parent: ClothingHeadBaseButcherable
   id: ClothingHeadHatNfsdBeretBrown
-  name: PDV beret
-  description: A brown beret for use by the PDV Vanguard.
+  name: coalition beret
+  description: A brown beret for use by the imperial coalition.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hats/nfsd_beret_brown.rsi

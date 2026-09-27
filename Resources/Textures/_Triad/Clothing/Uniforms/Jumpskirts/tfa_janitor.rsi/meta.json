@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites taken from shiptest at commit https://github.com/shiptest-ss13/Shiptest/commit/119b7b17c9dce14f61f0b9a10752d44a883b6a10",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "icon"
+      },
+      {
+          "name": "equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "inhand-right",
+          "directions": 4
+      },
+      {
+          "name": "inhand-left",
+          "directions": 4
+      }
+  ]
+}

@@ -795,7 +795,7 @@
   - ContractorRadioHandheld
   - ContractorNetworkConfigurator
   - ContractorSprayPainter # Triad
-  - ContractorHandheldHealthAnalyzerUnpowered
+  - ContractorHandheldHealthAnalyzer
   - ContractorAnomalyScanner
   - ContractorBucket
   - ContractorGeigerCounter
