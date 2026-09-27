@@ -1438,6 +1438,7 @@
   # Need an *additional* condition here that forces there to be a wall in the opposite direction to the one used for placement.
   # Also see below. Didn't add it b/c construction ECS work going on. Cheers, - 20kdc
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 - type: construction
   name: small wall light
@@ -1457,6 +1458,7 @@
   conditions:
   # Same here. - 20kdc
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 - type: construction
   name: emergency light
@@ -1475,6 +1477,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 - type: construction
   name: ground light post
@@ -1493,6 +1496,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 - type: construction
   name: strobe light
@@ -1511,6 +1515,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 #conveyor
 - type: construction
@@ -1529,6 +1534,7 @@
     state: conveyor_stopped_cw
   conditions:
     - !type:TileNotBlocked
+      failIfSpace: false # Triad - Allow building on lattices.
 
 - type: construction
   name: metal door
