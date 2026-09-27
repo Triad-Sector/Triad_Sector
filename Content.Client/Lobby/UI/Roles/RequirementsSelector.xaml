@@ -5,7 +5,7 @@
 
     <Control Name="TitleContent"
              Margin="5 0"
-             MaxWidth="600"
+             MaxWidth="300"
              RectClipContent="True" />
 
     <Control HorizontalExpand="True" />
