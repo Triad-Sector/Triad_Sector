@@ -94,17 +94,32 @@
       maxWritableArea: 400.0, 256.0
 
 - type: entity
-  id: BusinessCardPackWhite
-  name: business card pack (white)
+  id: BaseBusinessCardPack
   parent: BaseItem
-  description: a pack of 6 white business card
+  abstract: true
   components:
     - type: Item
       size: Tiny
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardWhite
+        amount: 6
+      sound:
+        collection: cardSlide
+        params:
+          volume: 10
+
+- type: entity
+  id: BusinessCardPackWhite
+  name: business card pack (white)
+  parent: BaseBusinessCardPack
+  description: a pack of 6 white business card
+  components:
     - type: Sprite
       sprite: _Triad/Objects/Misc/business_card.rsi
       layers:
-      - state: business_card-stack
+      - state: business_card_stack
+      - state: business_card_stack-words
     - type: SpawnItemsOnUse
       items:
       - id: BusinessCardWhite
@@ -113,16 +128,15 @@
 - type: entity
   id: BusinessCardPackBlack
   name: business card pack (black)
-  parent: BaseItem
+  parent: BaseBusinessCardPack
   description: a pack of 6 black business card
   components:
-    - type: Item
-      size: Tiny
     - type: Sprite
       sprite: _Triad/Objects/Misc/business_card.rsi
       layers:
-      - state: business_card-stack
+      - state: business_card_stack
         color: "#363636"
+      - state: business_card_stack-words
     - type: SpawnItemsOnUse
       items:
       - id: BusinessCardBlack
