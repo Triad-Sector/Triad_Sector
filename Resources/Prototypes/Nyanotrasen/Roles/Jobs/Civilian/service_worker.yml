@@ -33,8 +33,6 @@
 - type: startingGear
   id: CCServiceWorkerGear
   equipment:
-    head: ClothingHeadHatBellhop
-    gloves: ClothingHandsGlovesColorWhite
     id: CCServiceWorkerPDA
   storage:
     back:

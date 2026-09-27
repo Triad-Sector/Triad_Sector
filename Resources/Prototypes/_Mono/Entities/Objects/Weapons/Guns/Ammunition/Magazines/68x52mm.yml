@@ -13,7 +13,7 @@
       tags:
         - Cartridge68x52mmCaseless
     proto: Cartridge68x52mmCaseless
-    capacity: 30
+    capacity: 20 # Triad: 30->20, since each round now deals more damage
   - type: Item
     size: Small
   - type: ContainerContainer

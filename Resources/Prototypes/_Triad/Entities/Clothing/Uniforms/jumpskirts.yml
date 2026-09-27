@@ -11,3 +11,15 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
+
+# TFA uniforms
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtTfaJanitor
+  name: TFA janitor jumpskirt
+  description: This is the TA-4 Standard Janitoral Rig, the ultimate defense against chemical hazards seen in a janitor's line of work. The skirt itself is crafted from the best quality PVC composite, offering robust protection with anti-puncture, electrical insulation, anti-slip, waterproof, and anti-corrosion properties. No chemical is making its way through this.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpskirts/tfa_janitor.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpskirts/tfa_janitor.rsi

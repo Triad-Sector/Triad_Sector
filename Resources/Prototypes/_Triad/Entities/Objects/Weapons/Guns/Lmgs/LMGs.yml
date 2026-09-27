@@ -2,7 +2,7 @@
   name: TDF MMG-38 "Riot" (6.8x52mm caseless)
   parent: [BaseWeaponLightMachineGun, BaseGunWieldable, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
   id: WeaponLMGRiot
-  description: A reverse-engineered medium machine gun developed by the TDF from captured enemy technology. Designed to provide sustained suppressive fire, it is chambered in 6.8x52mm caseless and accepts both box and standard magazines. It is also compatible with 5.56x45mm and 7.62x39mm ammunition to simplify logistics. A label on the receiver reads "TRIAD DEFENSE FORCE."
+  description: A reverse-engineered medium machine gun developed by the TDF from captured enemy technology. Designed to provide sustained suppressive fire, it is chambered in 6.8x52mm caseless and accepts both box and standard magazines. A label on the receiver reads "TRIAD DEFENSE FORCE."
   components:
   - type: Sprite
     sprite: _Triad/Objects/Weapons/Guns/LMGs/tdf_riot/riot-icon.rsi
@@ -15,11 +15,11 @@
     minAngle: 0
     maxAngle: 0
   - type: Gun
-    minAngle: 3 # More firerate than L6 and Grizzly but having more recoil.
+    minAngle: 3
     maxAngle: 18
     angleIncrease: 1
     angleDecay: 3 # More time to cooldown
-    fireRate: 9
+    fireRate: 7 # Low firerate, but fires HEAVY rounds. 245DPS if all shots hit.
     selectedMode: FullAuto
     availableModes:
     - SemiAuto
@@ -51,11 +51,6 @@
           - Magazine68x52mmCaselessBoxSmall
           - Magazine68x52mmCaselessBoxBig
           - Magazine68x52mmCaseless
-          - Magazine556x45mmFMJ
-          - Magazine556x45mmBox
-          - Magazine762x39mmFMJ
-          - Magazine762x39mmLowCapacityFMJ
-          - Magazine762x39mmBox
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber

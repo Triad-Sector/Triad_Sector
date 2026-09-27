@@ -51,9 +51,17 @@ public abstract class BaseXATSystem<T> : EntitySystem where T : Component
         if (Timing.CurTime < artifact.Comp.NextUnlockTime)
             return false;
 
-        if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
-            unlocking.TriggeredNodeIndexes.Contains(XenoArtifact.GetIndex(artifact, node)))
+        // Triad: a node its artifact does not list cannot trigger, rather than throwing on every tick
+        // if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
+        //     unlocking.TriggeredNodeIndexes.Contains(XenoArtifact.GetIndex(artifact, node)))
+        //     return false;
+        if (!XenoArtifact.TryGetIndex((artifact, artifact), node, out var index))
             return false;
+
+        if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
+            unlocking.TriggeredNodeIndexes.Contains(index.Value))
+            return false;
+        // End Triad
 
         if (!XenoArtifact.CanUnlockNode((node, node)))
             return false;

@@ -94,6 +94,9 @@ public sealed partial class XenoArtifactGraphControl : BoxContainer
             maxDepth = Math.Max(maxDepth, node.Comp.Depth);
 
         var segments = _artifactSystem.GetSegments(artifact);
+        // Triad: a segment none of whose nodes resolve has nothing to place, and its width is a Max() over nothing
+        segments.RemoveAll(s => s.Count == 0);
+        // End Triad
         if (segments.Count == 0)
             return;
 
@@ -172,6 +175,11 @@ public sealed partial class XenoArtifactGraphControl : BoxContainer
                 var successorNodes = _artifactSystem.GetDirectSuccessorNodes((artifact, artifact), node);
                 foreach (var successorNode in successorNodes)
                 {
+                    // Triad: an edge to a node no segment holds is not drawn; GetNodePos throws on it
+                    if (!segments.Any(s => s.Contains(successorNode)))
+                        continue;
+                    // End Triad
+
                     var color = node.Comp.Locked
                         ? LockedNodeColor
                         : UnlockedNodeColor;

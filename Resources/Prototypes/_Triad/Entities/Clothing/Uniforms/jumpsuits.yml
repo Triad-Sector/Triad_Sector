@@ -143,3 +143,15 @@
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
+
+# TFA uniforms
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTfaJanitor
+  name: TFA janitor jumpsuit
+  description: Keeping the sector clean, one puddle at a time.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tfa_janitor.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tfa_janitor.rsi

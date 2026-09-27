@@ -84,3 +84,28 @@
       - sprite: _NF/Markers/jobs.rsi
         state: green
       - state: tdf-cadet
+
+# High Command spawners, placed on /Maps/_Triad/Admin/highcommandoutpost.yml.
+- type: entity
+  id: SpawnPointTfaHighCommandRep
+  parent: SpawnPointJobTriadBase
+  name: TFA high command representative
+  components:
+  - type: SpawnPoint
+    job_id: TfaHighCommandRep
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
+
+- type: entity
+  id: SpawnPointTfaHighCommandIntern
+  parent: SpawnPointJobTriadBase
+  name: TFA high command intern
+  components:
+  - type: SpawnPoint
+    job_id: TfaHighCommandIntern
+  - type: Sprite
+    layers:
+      - sprite: _NF/Markers/jobs.rsi
+        state: green
