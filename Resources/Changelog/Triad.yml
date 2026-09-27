@@ -5058,3 +5058,64 @@ Entries:
   id: 2624
   time: '2026-09-25T01:59:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/662
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Handheld health analyzers no longer need battery charge
+    - type: Add
+      message: Added inhand sprites for health analyzers!
+  id: 2625
+  time: '2026-09-25T23:23:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/665
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added several new TFA service worker clothing items, including but not
+        limited to: Botanist, Chef, Bartender, and Janitor uniforms and hats!
+    - type: Add
+      message: Service workers now have glove loadouts.
+    - type: Add
+      message: Added janitoral belts to the service worker loadout belt section.
+    - type: Remove
+      message: >-
+        Removed the janitor role. The role's equipment has been collapsed into
+        the service worker role.
+    - type: Tweak
+      message: >-
+        Tweaked the service worker's description to be more befitting of the
+        role.
+    - type: Tweak
+      message: Resprited the chef hat and jacket.
+  id: 2626
+  time: '2026-09-26T00:07:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/666
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: >-
+        6.8mm caseless is now a full power round, and the Lecter is now a battle
+        rifle.
+  id: 2627
+  time: '2026-09-26T23:57:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/670
+- author: Minerva
+  changes:
+    - type: Tweak
+      message: Conveyor belts and lights can now be built on lattices.
+  id: 2628
+  time: '2026-09-27T16:45:50.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/673
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: >-
+        Added card holders, a more sleek version of wallet, though they cannot
+        hold coins
+    - type: Add
+      message: >-
+        Added business cards & bundle (gives 6 card) - currently only available
+        in loadouts, comes in a pack
+  id: 2629
+  time: '2026-09-27T16:46:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/674

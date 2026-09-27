@@ -8,7 +8,7 @@
   startingGear: TfaHighCommandRepGear
   alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
-  supervisors: job-supervisors-centcom
+  supervisors: job-supervisors-tfa-director
   canBeAntag: false
   accessGroups:
   - AllAccess

@@ -1,0 +1,13 @@
+- type: loadout
+  id: ContractorBusinessCardPackWhite
+  price: 200
+  storage:
+    back:
+    - BusinessCardPackWhite
+
+- type: loadout
+  id: ContractorBusinessCardPackBlack
+  price: 200
+  storage:
+    back:
+    - BusinessCardPackBlack

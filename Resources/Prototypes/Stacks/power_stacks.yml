@@ -1,20 +1,20 @@
 ﻿- type: stack
   id: Cable
-  name: lv cable
+  name: LV cable # Triad - LV casing
   icon: { sprite: "/Textures/Objects/Tools/cable-coils.rsi", state: coil-30 }
   spawn: CableApcStack1
   maxCount: 100 # mono
 
 - type: stack
   id: CableMV
-  name: mv cable
+  name: MV cable # Triad - MV casing
   icon: { sprite: "/Textures/Objects/Tools/cable-coils.rsi", state: coilmv-30 }
   spawn: CableMVStack1
   maxCount: 100 # mono
 
 - type: stack
   id: CableHV
-  name: hv cable
+  name: HV cable # Triad - HV casing
   icon: { sprite: "/Textures/Objects/Tools/cable-coils.rsi", state: coilhv-30 }
   spawn: CableHVStack1
   maxCount: 100 # mono

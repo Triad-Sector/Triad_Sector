@@ -1,4 +1,6 @@
 job-supervisors-high-command = High Command
+job-supervisors-tfa-director = the TFA director
+job-supervisors-tfa-highcomm-officials = High Command officials
 job-supervisors-overseer = the Overseer
 
 job-supervisors-tdf-enforcer = the Chief Enforcer

@@ -795,7 +795,7 @@
   - ContractorRadioHandheld
   - ContractorNetworkConfigurator
   - ContractorSprayPainter # Triad
-  - ContractorHandheldHealthAnalyzerUnpowered
+  - ContractorHandheldHealthAnalyzer
   - ContractorAnomalyScanner
   - ContractorBucket
   - ContractorGeigerCounter
@@ -972,6 +972,8 @@
   loadouts:
   - ContractorClothingWalletLeatherBrown
   - ContractorClothingWalletLeatherBlack
+  - ContractorCardHolderBlack # Triad
+  - ContractorCardHolderWhite # Triad
   fallbacks:
   - ContractorClothingWalletLeatherBrown
 
@@ -1009,6 +1011,8 @@
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
   - ContractorHandLabeler
+  - ContractorBusinessCardPackWhite # Triad 
+  - ContractorBusinessCardPackBlack # Triad
   - ContractorStampsApprovedDenied
   - ContractorRubberStampCaptain
   - ContractorRubberStampChaplain

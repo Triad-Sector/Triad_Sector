@@ -33,6 +33,7 @@
       - state: buckle-equipped-INNERCLOTHING
         color: "#e4cc8a"
 
+# TFA Default Service Worker/Bartender
 - type: entity
   parent: ClothingUniformJumpsuitColorSlacksBase
   id: ClothingUniformJumpsuitColorSlacksTfaService
@@ -153,6 +154,7 @@
       - state: badge-equipped-INNERCLOTHING
         color: "#ffbc88"
 
+# TFA Chef
 - type: entity
   parent: ClothingUniformJumpsuitColorSlacksBase
   id: ClothingUniformJumpsuitColorSlacksTfaChef
@@ -224,6 +226,7 @@
       - state: buckle-equipped-INNERCLOTHING
         color: "#cfcfcf"
 
+# TFA Botanist
 - type: entity
   parent: ClothingUniformJumpsuitColorSlacksBase
   id: ClothingUniformJumpsuitColorSlacksTfaBotanist

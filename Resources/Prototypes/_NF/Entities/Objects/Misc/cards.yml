@@ -3,6 +3,7 @@
   name: business card
   parent: Paper
   description: A business card. For the consummate professional.
+  categories: [ HideSpawnMenu ] # didn't know frontier had one, but disabling to use Triad's version 
   components:
     - type: Sprite
       sprite: _NF/Objects/Misc/bureaucracy.rsi
