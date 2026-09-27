@@ -48,9 +48,9 @@
   - SpacerJournalist
   - SpacerCook
   - SpacerBusinesswoman
-  - FreelanceBusinessman
-  - FreelanceBusinessperson
-  - FreelanceEntrepreneur
+  - SpacerBusinessman
+  - SpacerBusinessperson
+  - SpacerEntrepreneur
 
 - type: jobAlternateTitle
   id: SpacerCitizen
@@ -193,13 +193,13 @@
   name: job-name-alt-spacer-35
 
 - type: jobAlternateTitle
-  id: FreelanceBusinessman
+  id: SpacerBusinessman
   name: job-name-alt-spacer-36
 
 - type: jobAlternateTitle
-  id: FreelanceBusinessperson
+  id: SpacerBusinessperson
   name: job-name-alt-spacer-37
 
 - type: jobAlternateTitle
-  id: FreelanceEntrepreneur
+  id: SpacerEntrepreneur
   name: job-name-alt-spacer-38
