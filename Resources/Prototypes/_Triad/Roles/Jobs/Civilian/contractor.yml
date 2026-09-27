@@ -1,4 +1,3 @@
-# Renamed to Freelancer. Call new IDs Freelancer, not Contractor!
 - type: job
   id: Contractor
   name: job-name-contractor
@@ -14,204 +13,193 @@
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
   alternateTitles:
-  - FreelancerCitizen
-  - FreelancerCivilian
-  - FreelancerContractor
-  - FreelancerPilot
-  - FreelancerMercenary
-  - FreelancerOffDutyEnforcer
-  - FreelancerBountyHunter
-  - FreelancerMiner
-  - FreelancerSalvager
-  - FreelancerSecurityGuard
-  - FreelancerGunneryOperator
-  - FreelancerConstructionWorker
-  - FreelancerElectrician
-  - FreelancerMechanic
-  - FreelancerArchitect
-  - FreelancerMaintenanceWorker
-  - FreelancerAtmosphericEngineer
-  - FreelancerElectricalEngineer
-  - FreelancerMechanicalEngineer
-  - FreelancerChemicalEngineer
-  - FreelancerRoboticist
-  - FreelancerFreelancer
-  - FreelancerAssistant
-  - FreelancerPsychologist
-  - FreelancerPhysician
-  - FreelancerTherapist
-  - FreelancerPsychiatrist
-  - FreelancerXenoarcheologist
-  - FreelancerResearcher
-  - FreelancerScientist
-  - FreelancerPrivateInvestigator
-  - FreelancerChaplain
-  - FreelancerPriest
-  - FreelancerJournalist
-  - FreelancerMessTechnician
-  - FreelancerCook
-  - FreelancerBusinesswoman
+  - SpacerCitizen
+  - SpacerCivilian
+  - SpacerContractor
+  - SpacerPilot
+  - SpacerMercenary
+  - SpacerOffDutyEnforcer
+  - SpacerBountyHunter
+  - SpacerMiner
+  - SpacerSalvager
+  - SpacerSecurityGuard
+  - SpacerGunneryOperator
+  - SpacerConstructionWorker
+  - SpacerElectrician
+  - SpacerMechanic
+  - SpacerArchitect
+  - SpacerAtmosphericEngineer
+  - SpacerElectricalEngineer
+  - SpacerMechanicalEngineer
+  - SpacerChemicalEngineer
+  - SpacerRoboticist
+  - SpacerFreelancer
+  - SpacerAssistant
+  - SpacerPsychologist
+  - SpacerPhysician
+  - SpacerTherapist
+  - SpacerPsychiatrist
+  - SpacerXenoarcheologist
+  - SpacerResearcher
+  - SpacerScientist
+  - SpacerPrivateInvestigator
+  - SpacerChaplain
+  - SpacerPriest
+  - SpacerJournalist
+  - SpacerCook
+  - SpacerBusinesswoman
   - FreelanceBusinessman
   - FreelanceBusinessperson
   - FreelanceEntrepreneur
 
-# Considering Freelancer gives you much freedom, the titles are a multitude of roles:
 - type: jobAlternateTitle
-  id: FreelancerCitizen
-  name: job-name-alt-freelancer-1
+  id: SpacerCitizen
+  name: job-name-alt-spacer-1
 
 - type: jobAlternateTitle
-  id: FreelancerCivilian
-  name: job-name-alt-freelancer-2
+  id: SpacerCivilian
+  name: job-name-alt-spacer-2
 
 - type: jobAlternateTitle
-  id: FreelancerContractor
-  name: job-name-alt-freelancer-3
+  id: SpacerContractor
+  name: job-name-alt-spacer-3
 
 - type: jobAlternateTitle
-  id: FreelancerPilot
-  name: job-name-alt-freelancer-4
+  id: SpacerPilot
+  name: job-name-alt-spacer-4
 
 - type: jobAlternateTitle
-  id: FreelancerMercenary
-  name: job-name-alt-freelancer-5
+  id: SpacerMercenary
+  name: job-name-alt-spacer-5
 
 - type: jobAlternateTitle
-  id: FreelancerOffDutyEnforcer
-  name: job-name-alt-freelancer-6
+  id: SpacerOffDutyEnforcer
+  name: job-name-alt-spacer-6
 
 - type: jobAlternateTitle
-  id: FreelancerBountyHunter
-  name: job-name-alt-freelancer-7
+  id: SpacerBountyHunter
+  name: job-name-alt-spacer-7
 
 - type: jobAlternateTitle
-  id: FreelancerMiner
-  name: job-name-alt-freelancer-8
+  id: SpacerMiner
+  name: job-name-alt-spacer-8
 
 - type: jobAlternateTitle
-  id: FreelancerSalvager
-  name: job-name-alt-freelancer-9
+  id: SpacerSalvager
+  name: job-name-alt-spacer-9
 
 - type: jobAlternateTitle
-  id: FreelancerSecurityGuard
-  name: job-name-alt-freelancer-10
+  id: SpacerSecurityGuard
+  name: job-name-alt-spacer-10
 
 - type: jobAlternateTitle
-  id: FreelancerGunneryOperator
-  name: job-name-alt-freelancer-11
+  id: SpacerGunneryOperator
+  name: job-name-alt-spacer-11
 
 - type: jobAlternateTitle
-  id: FreelancerConstructionWorker
-  name: job-name-alt-freelancer-12
+  id: SpacerConstructionWorker
+  name: job-name-alt-spacer-12
 
 - type: jobAlternateTitle
-  id: FreelancerElectrician
-  name: job-name-alt-freelancer-13
+  id: SpacerElectrician
+  name: job-name-alt-spacer-13
 
 - type: jobAlternateTitle
-  id: FreelancerMechanic
-  name: job-name-alt-freelancer-14
+  id: SpacerMechanic
+  name: job-name-alt-spacer-14
 
 - type: jobAlternateTitle
-  id: FreelancerArchitect
-  name: job-name-alt-freelancer-15
+  id: SpacerArchitect
+  name: job-name-alt-spacer-15
 
 - type: jobAlternateTitle
-  id: FreelancerMaintenanceWorker
-  name: job-name-alt-freelancer-16
+  id: SpacerAtmosphericEngineer
+  name: job-name-alt-spacer-16
 
 - type: jobAlternateTitle
-  id: FreelancerAtmosphericEngineer
-  name: job-name-alt-freelancer-17
+  id: SpacerElectricalEngineer
+  name: job-name-alt-spacer-17
 
 - type: jobAlternateTitle
-  id: FreelancerElectricalEngineer
-  name: job-name-alt-freelancer-18
+  id: SpacerMechanicalEngineer
+  name: job-name-alt-spacer-18
 
 - type: jobAlternateTitle
-  id: FreelancerMechanicalEngineer
-  name: job-name-alt-freelancer-19
+  id: SpacerChemicalEngineer
+  name: job-name-alt-spacer-19
 
 - type: jobAlternateTitle
-  id: FreelancerChemicalEngineer
-  name: job-name-alt-freelancer-20
+  id: SpacerRoboticist
+  name: job-name-alt-spacer-20
 
 - type: jobAlternateTitle
-  id: FreelancerRoboticist
-  name: job-name-alt-freelancer-21
+  id: SpacerFreelancer
+  name: job-name-alt-spacer-21
 
 - type: jobAlternateTitle
-  id: FreelancerFreelancer
-  name: job-name-alt-freelancer-22
+  id: SpacerAssistant
+  name: job-name-alt-spacer-22
 
 - type: jobAlternateTitle
-  id: FreelancerAssistant
-  name: job-name-alt-freelancer-23
+  id: SpacerPsychologist
+  name: job-name-alt-spacer-23
 
 - type: jobAlternateTitle
-  id: FreelancerPsychologist
-  name: job-name-alt-freelancer-24
+  id: SpacerPhysician
+  name: job-name-alt-spacer-24
 
 - type: jobAlternateTitle
-  id: FreelancerPhysician
-  name: job-name-alt-freelancer-25
+  id: SpacerTherapist
+  name: job-name-alt-spacer-25
 
 - type: jobAlternateTitle
-  id: FreelancerTherapist
-  name: job-name-alt-freelancer-26
+  id: SpacerPsychiatrist
+  name: job-name-alt-spacer-26
 
 - type: jobAlternateTitle
-  id: FreelancerPsychiatrist
-  name: job-name-alt-freelancer-27
+  id: SpacerXenoarcheologist
+  name: job-name-alt-spacer-27
 
 - type: jobAlternateTitle
-  id: FreelancerXenoarcheologist
-  name: job-name-alt-freelancer-28
+  id: SpacerResearcher
+  name: job-name-alt-spacer-28
 
 - type: jobAlternateTitle
-  id: FreelancerResearcher
-  name: job-name-alt-freelancer-29
+  id: SpacerScientist
+  name: job-name-alt-spacer-29
 
 - type: jobAlternateTitle
-  id: FreelancerScientist
-  name: job-name-alt-freelancer-30
+  id: SpacerPrivateInvestigator
+  name: job-name-alt-spacer-30
 
 - type: jobAlternateTitle
-  id: FreelancerPrivateInvestigator
-  name: job-name-alt-freelancer-31
+  id: SpacerChaplain
+  name: job-name-alt-spacer-31
 
 - type: jobAlternateTitle
-  id: FreelancerChaplain
-  name: job-name-alt-freelancer-32
+  id: SpacerPriest
+  name: job-name-alt-spacer-32
 
 - type: jobAlternateTitle
-  id: FreelancerPriest
-  name: job-name-alt-freelancer-33
+  id: SpacerJournalist
+  name: job-name-alt-spacer-33
 
 - type: jobAlternateTitle
-  id: FreelancerJournalist
-  name: job-name-alt-freelancer-34
+  id: SpacerCook
+  name: job-name-alt-spacer-34
 
 - type: jobAlternateTitle
-  id: FreelancerMessTechnician
-  name: job-name-alt-freelancer-35
-
-- type: jobAlternateTitle
-  id: FreelancerCook
-  name: job-name-alt-freelancer-36
-
-- type: jobAlternateTitle
-  id: FreelancerBusinesswoman
-  name: job-name-alt-freelancer-37
+  id: SpacerBusinesswoman
+  name: job-name-alt-spacer-35
 
 - type: jobAlternateTitle
   id: FreelanceBusinessman
-  name: job-name-alt-freelancer-38
+  name: job-name-alt-spacer-36
 
 - type: jobAlternateTitle
   id: FreelanceBusinessperson
-  name: job-name-alt-freelancer-39
+  name: job-name-alt-spacer-37
 
 - type: jobAlternateTitle
   id: FreelanceEntrepreneur
-  name: job-name-alt-freelancer-40
+  name: job-name-alt-spacer-38

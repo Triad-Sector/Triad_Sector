@@ -1,0 +1,78 @@
+- type: job
+  id: CCServiceWorker
+  name: job-name-service-worker
+  description: job-description-service-worker
+  playTimeTracker: JobCCServiceWorker
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 10800
+  startingGear: CCServiceWorkerGear
+  alwaysUseSpawner: true
+  icon: "JobIconValet"
+  supervisors: job-supervisors-overseer # Triad
+  weight: 60
+  displayWeight: 10
+  assignedCompany: Colonial
+  canBeAntag: false
+  access:
+  - Maintenance
+  - External
+  - Service
+  - Frontier
+  - Janitor
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: CryoSleepRadioOverride
+        overrides:
+        - Service
+  alternateTitles:
+  - ServiceWorkerBartender
+  - ServiceWorkerMixologist
+  - ServiceWorkerChef
+  - ServiceWorkerMessTechnician
+  - ServiceWorkerBotanist
+  - ServiceWorkerFarmer
+  - ServiceWorkerJanitor
+  - ServiceWorkerMaintenanceWorker
+
+- type: startingGear
+  id: CCServiceWorkerGear
+  equipment:
+    id: CCServiceWorkerPDA
+  storage:
+    back:
+    - EncryptionKeyService
+    - ShipVoucherFrontierService
+
+- type: jobAlternateTitle
+  id: ServiceWorkerBartender
+  name: job-name-alt-service-worker-1
+
+- type: jobAlternateTitle
+  id: ServiceWorkerMixologist
+  name: job-name-alt-service-worker-2
+
+- type: jobAlternateTitle
+  id: ServiceWorkerChef
+  name: job-name-alt-service-worker-3
+
+- type: jobAlternateTitle
+  id: ServiceWorkerMessTechnician
+  name: job-name-alt-service-worker-4
+
+- type: jobAlternateTitle
+  id: ServiceWorkerBotanist
+  name: job-name-alt-service-worker-5
+
+- type: jobAlternateTitle
+  id: ServiceWorkerFarmer
+  name: job-name-alt-service-worker-6
+
+- type: jobAlternateTitle
+  id: ServiceWorkerJanitor
+  name: job-name-alt-service-worker-7
+
+- type: jobAlternateTitle
+  id: ServiceWorkerMaintenanceWorker
+  name: job-name-alt-service-worker-8

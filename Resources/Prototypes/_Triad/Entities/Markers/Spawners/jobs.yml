@@ -75,7 +75,7 @@
 - type: entity
   id: SpawnPointTdfCadet
   parent: SpawnPointJobTriadBase
-  name: TDF junior enforcer
+  name: TDF cae
   components:
   - type: SpawnPoint
     job_id: TdfCadet

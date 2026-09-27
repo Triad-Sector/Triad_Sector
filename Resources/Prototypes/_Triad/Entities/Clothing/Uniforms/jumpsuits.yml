@@ -2,8 +2,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfJunior
-  name: TDF junior enforcer tactical jumpsuit
-  description: A tactical jumpsuit for junior enforcers in the field. A gold-colored 'C' is emblazoned on the back.
+  name: TDF cadet tactical jumpsuit
+  description: A tactical jumpsuit for TDF cadets in the field. A gold-colored 'C' is emblazoned on the back.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/junior_enforcer.rsi

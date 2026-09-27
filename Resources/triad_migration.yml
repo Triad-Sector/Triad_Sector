@@ -398,3 +398,6 @@ ClothingHeadHelmetHardsuitVizier: ClothingHeadHelmetHardsuitTdfCasket
 # 2026-09-25
 HandheldHealthAnalyzerUnpowered: HandheldHealthAnalyzer
 HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
+
+# 2026-09-27
+TdfJuniorEnforcerIdCard: TdfCadetIdCard
