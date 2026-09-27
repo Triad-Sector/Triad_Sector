@@ -2,7 +2,6 @@
 job-name-bailiff = TSFMC Captain
 job-name-brigmedic = TSFMC Corpsman
 job-name-cadet-nf = TSFMC Private
-job-name-contractor = Spacer
 job-name-deputy = TSFMC Marine
 job-name-nf-detective = Detective
 job-name-ertmailcarrier = ERT Mail Carrier

@@ -1,0 +1,36 @@
+﻿job-alt-title-reminder =  Do not use your [color=#33ccff]"{$altTitle}"[/color] title as an excuse to forego your duties as [color=#ffffff]{$jobName}[/color].
+
+job-name-alt-freelancer-1 = Citizen
+job-name-alt-freelancer-2 = Civilian
+job-name-alt-freelancer-3 = Contractor
+job-name-alt-freelancer-4 = Pilot
+job-name-alt-freelancer-5 = Mercenary
+job-name-alt-freelancer-6 = Off-duty enforcer
+job-name-alt-freelancer-7 = Bounty Hunter
+job-name-alt-freelancer-8 = Miner
+job-name-alt-freelancer-9 = Salvager
+job-name-alt-freelancer-10 = Security Guard
+job-name-alt-freelancer-11 = Gunnery Operator
+job-name-alt-freelancer-12 = Construction Worker
+job-name-alt-freelancer-13 = Electrician
+job-name-alt-freelancer-14 = Mechanic
+job-name-alt-freelancer-15 = Architect
+job-name-alt-freelancer-16 = Maintenance Worker
+job-name-alt-freelancer-17 = Atmospheric Engineer
+job-name-alt-freelancer-18 = Electrical Engineer
+job-name-alt-freelancer-19 = Mechanical Engineer
+job-name-alt-freelancer-20 = Chemical Engineer
+job-name-alt-freelancer-21 = Roboticist
+job-name-alt-freelancer-22 = Spacer
+job-name-alt-freelancer-23 = Assistant
+job-name-alt-freelancer-24 = Psychologist
+job-name-alt-freelancer-25 = Physician
+job-name-alt-freelancer-26 = Therapist
+job-name-alt-freelancer-27 = Psychiatrist
+job-name-alt-freelancer-28 = Xenoarcheologist
+job-name-alt-freelancer-29 = Researcher
+job-name-alt-freelancer-30 = Scientist
+job-name-alt-freelancer-31 = Private Investigator
+job-name-alt-freelancer-32 = Chaplain
+job-name-alt-freelancer-33 = Priest
+job-name-alt-freelancer-34 = Journalist

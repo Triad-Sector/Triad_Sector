@@ -11,3 +11,6 @@ job-name-plant-technician = Sector Technician
 # TFA High Command
 job-name-tfa-high-command = High Command Official
 job-name-tfa-high-command-intern = High Command Intern
+
+# Civilian
+job-name-contractor = Freelancer
