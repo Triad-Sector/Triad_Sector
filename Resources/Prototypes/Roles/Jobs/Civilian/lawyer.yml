@@ -9,23 +9,10 @@
       time: 21600
   startingGear: LawyerGear
   icon: "JobIconLawyer"
-<<<<<<< HEAD
   supervisors: job-supervisors-hire
   canBeAntag: false
   accessGroups: # Frontier
   - GeneralAccess # Frontier
-=======
-  supervisors: job-supervisors-hop
-  access:
-  - Service
-  - Lawyer
-  - Brig
-  - Maintenance
-  alternateTitles:
-  - LawyerAttorney
-  - LawyerLegalRepresentative
-  - LawyerCounsel
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: LawyerGear
@@ -39,15 +26,3 @@
     back:
     - RubberStampLawyer
     - BookSpaceLaw
-
-- type: jobAlternateTitle
-  id: LawyerAttorney
-  name: job-name-alt-lawyer-1
-
-- type: jobAlternateTitle
-  id: LawyerLegalRepresentative
-  name: job-name-alt-lawyer-2
-
-- type: jobAlternateTitle
-  id: LawyerCounsel
-  name: job-name-alt-lawyer-3

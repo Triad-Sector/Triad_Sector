@@ -9,7 +9,6 @@
       time: 10800
   startingGear: ChefGear
   icon: "JobIconChef"
-<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
@@ -17,20 +16,6 @@
   - !type:AddComponentSpecial
     components:
     - type: ProfessionalChef #Nyano - End Summary.
-=======
-  supervisors: job-supervisors-hop
-  access:
-  - Service
-  - Maintenance
-  - Kitchen
-  extendedAccess:
-  - Hydroponics
-  - Bar
-  alternateTitles:
-  - ChefSousChef
-  - ChefLineCook
-  - ChefNutritionist
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: ChefGear
@@ -42,15 +27,3 @@
   #storage:
     #back:
     #- Stuff
-
-- type: jobAlternateTitle
-  id: ChefSousChef
-  name: job-name-alt-chef-1
-
-- type: jobAlternateTitle
-  id: ChefLineCook
-  name: job-name-alt-chef-2
-
-- type: jobAlternateTitle
-  id: ChefNutritionist
-  name: job-name-alt-chef-3

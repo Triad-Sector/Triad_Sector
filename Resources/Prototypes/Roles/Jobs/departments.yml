@@ -52,7 +52,7 @@
   - ERTEngineer
 #  - DeathSquad # Frontier
   - ERTMailCarrier # Frontier
-#  editorHidden: true # Triad: shown for the High Command jobs; AdminGatedJobFilter drops it for players without an admin rank
+  editorHidden: true
   weight: 120
 
 - type: department

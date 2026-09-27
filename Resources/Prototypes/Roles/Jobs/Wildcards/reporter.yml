@@ -9,51 +9,16 @@
       time: 10800
   startingGear: ReporterGear
   icon: "JobIconReporter"
-<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
-=======
-  supervisors: job-supervisors-hop
-  access:
-  - Service
-  - Maintenance
-  - Reporter
-  alternateTitles:
-  - ReporterInfluencer
-  - ReporterDocumentarian
-  - ReporterMediaCoordinator
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: ReporterGear
   equipment:
     shoes: ClothingShoesColorWhite
     id: ReporterPDA
-<<<<<<< HEAD
     ears: ClothingHeadsetService
   #storage:
     #back:
     #- Stuff
-=======
-    ears: ClothingHeadsetReporter #Funky
-    shoes: ClothingShoesColorBlack
-    belt: NewsDigiBoard
-  storage: # DeltaV: Give reporters tape recording equipment
-    back:
-    - TapeRecorder
-    - CassetteTape
-    - CassetteTape
-
-- type: jobAlternateTitle
-  id: ReporterInfluencer
-  name: job-name-alt-reporter-1
-
-- type: jobAlternateTitle
-  id: ReporterDocumentarian
-  name: job-name-alt-reporter-2
-
-- type: jobAlternateTitle
-  id: ReporterMediaCoordinator
-  name: job-name-alt-reporter-3
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))

@@ -16,10 +16,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: MikuDay
     prototype: BoxPerformer
-  alternateTitles:
-  - MusicianRadioDJ
-  - MusicianVisitingCelebrity
-  - MusicianPerformer
 
 - type: startingGear
   id: MusicianGear
@@ -31,15 +27,3 @@
   #storage:
     #back:
     #- Stuff
-
-- type: jobAlternateTitle
-  id: MusicianRadioDJ
-  name: job-name-alt-musician-1
-
-- type: jobAlternateTitle
-  id: MusicianVisitingCelebrity
-  name: job-name-alt-musician-2
-
-- type: jobAlternateTitle
-  id: MusicianPerformer
-  name: job-name-alt-musician-3

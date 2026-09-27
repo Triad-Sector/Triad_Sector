@@ -9,22 +9,9 @@
       time: 10800
   icon: "JobIconShaftMiner"
   startingGear: SalvageSpecialistGear
-<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
-=======
-  supervisors: job-supervisors-qm
-  access:
-  - Cargo
-  - Salvage
-  - Maintenance
-  - External
-  extendedAccess:
-  - Logistics #Imp
-  alternateTitles:
-  - SalvageSpecialistMiner
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: SalvageSpecialistGear
@@ -35,7 +22,3 @@
   #storage:
     #back:
     #- Stuff
-
-- type: jobAlternateTitle
-  id: SalvageSpecialistMiner
-  name: job-name-alt-salvage-1

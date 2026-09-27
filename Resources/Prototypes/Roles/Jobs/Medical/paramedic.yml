@@ -9,7 +9,6 @@
     time: 10800
   startingGear: ParamedicGear
   icon: "JobIconParamedic"
-<<<<<<< HEAD
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
@@ -18,18 +17,6 @@
     components:
     - type: SurgerySpeedModifier
       SpeedModifier: 1.75
-=======
-  supervisors: job-supervisors-cmo
-  access:
-  - Medical
-  - Maintenance
-  - External # goobstation
-  extendedAccess:
-  - Chemistry
-  alternateTitles:
-  - ParamedicTraumaSpecialist
-  - ParamedicEmergencyMedicalTechnician
->>>>>>> 5149aaa14ff (Cosmetic Job Titles (#2407))
 
 - type: startingGear
   id: ParamedicGear
@@ -40,11 +27,3 @@
   storage:
     back:
     - EmergencyRollerBedSpawnFolded
-
-- type: jobAlternateTitle
-  id: ParamedicTraumaSpecialist
-  name: job-name-alt-paramedic-1
-
-- type: jobAlternateTitle
-  id: ParamedicEmergencyMedicalTechnician
-  name: job-name-alt-paramedic-2
