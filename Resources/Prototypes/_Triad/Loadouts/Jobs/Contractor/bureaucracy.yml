@@ -1,11 +1,4 @@
 - type: loadout
-  id: ContractorCardHolder
-  price: 500
-  storage:
-    back:
-    - CardHolder
-
-- type: loadout
   id: ContractorBusinessCardPackWhite
   price: 200
   storage:

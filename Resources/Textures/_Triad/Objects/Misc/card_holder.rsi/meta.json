@@ -8,16 +8,28 @@
   },
   "states": [
     {
-      "name": "closed"
+      "name": "closed-black"
     },
     {
-      "name": "open"
+      "name": "open-black"
+    },
+    {
+      "name": "closed-white"
+    },
+    {
+      "name": "open-white"
     },
     {
       "name": "closed-paper"
     },
     {
       "name": "open-paper"
+    },
+    {
+      "name": "closed-cash"
+    },
+    {
+      "name": "open-cash"
     }
   ]
 }

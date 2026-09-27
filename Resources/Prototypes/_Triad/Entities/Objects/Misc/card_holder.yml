@@ -9,18 +9,20 @@
     shape:
     - 0,0,0,1
   - type: Storage
+    maxItemSize: Small
     storageInsertSound:
         collection: cardSlide
     storageOpenSound:
         collection: cardSlide
-    maxItemSize: Tiny
     grid:
-    - 0,0,1,5
+    - 0,0,1,3
     quickInsert: true
     areaInsert: true
     whitelist:
-      tags:
+      components:
+      - Cash
       - Paper
+      - NFShipyardVoucher
       - Card
     blacklist:
       tags:
@@ -38,6 +40,10 @@
           components:
           - Paper
           - Card
+      closed-cash:
+        whitelist:
+          components:
+          - Cash
   - type: GenericVisualizer
     visuals:
       enum.SharedBagOpenVisuals.BagState:
@@ -50,44 +56,48 @@
         closed-paper:
           Open: { state: open-paper }
           Closed: { state: closed-paper }
+        closed-cash:
+          Open: { state: open-cash }
+          Closed: { state: closed-cash }
   - type: StaticPrice
-    price: 0.01
+    price: 10
 
 - type: entity
   parent: BaseBusinessCardHolder
-  id: CardHolder
+  id: CardHolderBlack
   name: card holder
   components:
   - type: Sprite
     sprite: _Triad/Objects/Misc/card_holder.rsi
     layers:
-    - state: closed
+    - state: closed-black
       map: ["closeLayer"]
-    - state: open
+    - state: open-black
       map: ["openLayer"]
       visible: false
     - state: closed-paper
       map: ["closed-paper"]
       visible: false
+    - state: closed-cash
+      map: ["closed-cash"]
+      visible: false
 
 - type: entity
-  parent: CardHolder
-  id: CardHolderFilledWhite
-  name: business card pack (white) 
-  suffix: Filled, white
+  parent: BaseBusinessCardHolder
+  id: CardHolderWhite
+  name: card holder
   components:
-  - type: OpenTriggeredStorageFill
-    contents:
-    - id: BusinessCardWhite
-      amount: 12
-
-- type: entity
-  parent: CardHolder
-  id: CardHolderFilledBlack
-  name: business card pack (black)
-  suffix: Filled, Black
-  components:
-  - type: OpenTriggeredStorageFill
-    contents:
-    - id: BusinessCardBlack
-      amount: 12
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/card_holder.rsi
+    layers:
+    - state: closed-white
+      map: ["closeLayer"]
+    - state: open-white
+      map: ["openLayer"]
+      visible: false
+    - state: closed-paper
+      map: ["closed-paper"]
+      visible: false
+    - state: closed-cash
+      map: ["closed-cash"]
+      visible: false

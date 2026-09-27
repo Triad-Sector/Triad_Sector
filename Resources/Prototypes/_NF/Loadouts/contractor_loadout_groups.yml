@@ -972,6 +972,8 @@
   loadouts:
   - ContractorClothingWalletLeatherBrown
   - ContractorClothingWalletLeatherBlack
+  - ContractorCardHolderBlack # Triad
+  - ContractorCardHolderWhite # Triad
   fallbacks:
   - ContractorClothingWalletLeatherBrown
 
@@ -1009,7 +1011,6 @@
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
   - ContractorHandLabeler
-  - ContractorCardHolder # Triad - Card Holders
   - ContractorBusinessCardPackWhite # Triad 
   - ContractorBusinessCardPackBlack # Triad
   - ContractorStampsApprovedDenied
