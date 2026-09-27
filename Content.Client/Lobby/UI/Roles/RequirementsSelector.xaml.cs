@@ -182,7 +182,8 @@ public sealed partial class RequirementsSelector : BoxContainer
                 // Ensure plain text titles (like "Mime") also occupy the same 280px
                 HorizontalExpand = true,
                 MinWidth = fixedWidth,
-                HorizontalAlignment = HAlignment.Left
+                HorizontalAlignment = HAlignment.Left,
+                MouseFilter = MouseFilterMode.Stop
             };
             TitleContent.AddChild(titleLabel);
         }
