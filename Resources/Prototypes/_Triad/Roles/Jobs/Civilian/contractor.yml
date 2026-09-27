@@ -35,7 +35,7 @@
   - FreelancerMechanicalEngineer
   - FreelancerChemicalEngineer
   - FreelancerRoboticist
-  - FreelancerSpacer
+  - FreelancerFreelancer
   - FreelancerAssistant
   - FreelancerPsychologist
   - FreelancerPhysician
@@ -48,6 +48,12 @@
   - FreelancerChaplain
   - FreelancerPriest
   - FreelancerJournalist
+  - FreelancerMessTechnician
+  - FreelancerCook
+  - FreelancerBusinesswoman
+  - FreelanceBusinessman
+  - FreelanceBusinessperson
+  - FreelanceEntrepreneur
 
 # Considering Freelancer gives you much freedom, the titles are a multitude of roles:
 - type: jobAlternateTitle
@@ -135,7 +141,7 @@
   name: job-name-alt-freelancer-21
 
 - type: jobAlternateTitle
-  id: FreelancerSpacer
+  id: FreelancerFreelancer
   name: job-name-alt-freelancer-22
 
 - type: jobAlternateTitle
@@ -185,3 +191,27 @@
 - type: jobAlternateTitle
   id: FreelancerJournalist
   name: job-name-alt-freelancer-34
+
+- type: jobAlternateTitle
+  id: FreelancerMessTechnician
+  name: job-name-alt-freelancer-35
+
+- type: jobAlternateTitle
+  id: FreelancerCook
+  name: job-name-alt-freelancer-36
+
+- type: jobAlternateTitle
+  id: FreelancerBusinesswoman
+  name: job-name-alt-freelancer-37
+
+- type: jobAlternateTitle
+  id: FreelanceBusinessman
+  name: job-name-alt-freelancer-38
+
+- type: jobAlternateTitle
+  id: FreelanceBusinessperson
+  name: job-name-alt-freelancer-39
+
+- type: jobAlternateTitle
+  id: FreelanceEntrepreneur
+  name: job-name-alt-freelancer-40

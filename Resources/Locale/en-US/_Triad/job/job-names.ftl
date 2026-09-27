@@ -13,4 +13,4 @@ job-name-tfa-high-command = High Command Official
 job-name-tfa-high-command-intern = High Command Intern
 
 # Civilian
-job-name-contractor = Freelancer
+job-name-contractor = Spacer
