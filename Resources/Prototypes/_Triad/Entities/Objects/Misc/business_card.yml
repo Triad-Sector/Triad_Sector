@@ -6,7 +6,6 @@
     - type: Tag
       tags:
       - Paper
-      - Card
     - type: Flammable
       resisting: true # Resistant but not damage proof business cards
       canResistFire: true
