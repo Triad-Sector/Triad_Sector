@@ -7,11 +7,11 @@
   components:
   - type: Sprite
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/standard.rsi
-  - type: Door
-    closeTimeOne: 0.1
-    closeTimeTwo: 0.2
-    openTimeOne: 0.1
-    openTimeTwo: 0.2
+  - type: Door # Triad Fix the timing issue, why is it faster than regular airlock?
+    closeTimeOne: 0.2
+    # closeTimeTwo: 0.2
+    openTimeOne: 0.4
+    openTimeTwo: 0.6
     crushDamage:
       types:
         Blunt: 30 # Troll
@@ -59,11 +59,11 @@
   - type: Sprite
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Glass/standard.rsi
     group: Glass # Triad Change
-  - type: Door
-    closeTimeOne: 0.1
-    closeTimeTwo: 0.2
-    openTimeOne: 0.1
-    openTimeTwo: 0.2
+  - type: Door # Triad Fix the timing issue, why is it faster than regular airlock?
+    closeTimeOne: 0.2
+    # closeTimeTwo: 0.2
+    openTimeOne: 0.4
+    openTimeTwo: 0.6
     crushDamage:
       types:
         Blunt: 30 # Troll
