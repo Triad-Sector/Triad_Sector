@@ -229,7 +229,7 @@ namespace Content.Server.GameTicking
 
             if (character.JobAlternateTitles.TryGetValue(jobId, out var altTitleId))
             {
-                if (_prototypeManager.TryIndex<JobAlternateTitlePrototype>(altTitleId, out var altTitle))
+                if (_prototypeManager.TryIndex(altTitleId, out var altTitle))
                 {
                     jobName = altTitle.LocalizedName;
                 }
