@@ -69,7 +69,7 @@
   name: card holder
   components:
   - type: Sprite
-    sprite: _Triad/Objects/Misc/card_holder.rsi
+    sprite: _Triad/Clothing/Wallet/card_holder.rsi
     layers:
     - state: closed-black
       map: ["closeLayer"]
@@ -89,7 +89,7 @@
   name: card holder
   components:
   - type: Sprite
-    sprite: _Triad/Objects/Misc/card_holder.rsi
+    sprite: _Triad/Clothing/Wallet/card_holder.rsi
     layers:
     - state: closed-white
       map: ["closeLayer"]

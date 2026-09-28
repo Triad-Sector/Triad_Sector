@@ -1,13 +1,11 @@
 - type: loadout
   id: ContractorCardHolderBlack
   price: 0
-  storage:
-    back:
-    - CardHolderBlack
+  equipment:
+    wallet: CardHolderBlack
     
 - type: loadout
   id: ContractorCardHolderWhite
   price: 0
-  storage:
-    back:
-    - CardHolderWhite
+  equipment:
+    wallet: CardHolderWhite
