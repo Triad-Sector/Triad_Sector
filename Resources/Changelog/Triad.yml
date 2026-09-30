@@ -5146,3 +5146,40 @@ Entries:
   id: 2631
   time: '2026-09-27T23:25:05.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/675
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: Card Holder should now spawn directly in your wallet instead
+  id: 2632
+  time: '2026-09-28T12:02:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/676
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed alternate titles not saving across rounds! Whoops
+  id: 2633
+  time: '2026-09-28T21:51:18.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/678
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: Reduced the price of fissile uranium from 25k per sheet to 2.5k
+    - type: Tweak
+      message: Reduced the price of depleted uranium from 2.5k per sheet to 200
+  id: 2634
+  time: '2026-09-29T13:39:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/671
+- author: Skybailey-dev
+  changes:
+    - type: Add
+      message: >-
+        Added the ability to build plasturanium windows and diagonal windows- a
+        strong, expensive, full-tile radio-insulating window that uses depleted
+        uranium.
+    - type: Tweak
+      message: >-
+        Made plasturanium windows a good bit better than reinforced uranium
+        windows for radio-insulation.
+  id: 2635
+  time: '2026-09-29T22:00:25.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/679

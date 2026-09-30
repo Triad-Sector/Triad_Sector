@@ -256,7 +256,7 @@
   parent: PosterBase
   id: PosterContrabandRebelsUnite
   name: "Rebels Unite"
-  description: "A poster urging the viewer to rebel against the TSF on the side of the Rogue Sector."
+  description: "A poster urging the viewer to rebel against the Imperial Coalition of Tau on the side of the Triad Sector."
   components:
   - type: Sprite
     state: poster23_contraband
@@ -933,7 +933,7 @@
   parent: PosterBase
   id: PosterLegitThereIsNoGasGiant
   name: "There Is No Gas Giant"
-  description: "To remind colonial civilians that rumours of gas giants existing in the rogue are false. Is this... TSF approved?"
+  description: "An old, novel poster. It's directed to Imperial Coalition of Tau citizens that rumours of gas giants existing in the Tau System is false."
   components:
   - type: Sprite
     state: poster37_legit

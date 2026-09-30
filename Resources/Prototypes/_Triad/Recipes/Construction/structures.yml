@@ -36,6 +36,44 @@
   placementMode: SnapgridCenter
 
 - type: construction
+  name: plasturanium window
+  id: plasturaniumWindowRadProof
+  graph: PlasturaniumWindowRadProof
+  startNode: start
+  targetNode: plasturaniumWindowRadProof
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Utilizes the densest available radio-insulation for the most expensive viewing ports.
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: _Mono/Structures/Windows/plasturanium_window.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: diagonal plasturanium window
+  id: plasturaniumWindowDiagonalRadProof
+  graph: PlasturaniumWindowDiagonalRadProof
+  startNode: start
+  targetNode: plasturaniumWindowDiagonalRadProof
+  category: construction-category-structures
+  description: Utilizes the densest available radio-insulation for the most expensive viewing ports.
+  canBuildInImpassable: true
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
+    state: state1
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+
+- type: construction
   id: StairSteel
   name: steel stairs
   graph: StairsGraph
