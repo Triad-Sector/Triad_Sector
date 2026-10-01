@@ -1,0 +1,80 @@
+# Sounds similar to Tau
+# The language spoken across the Triad Sector.
+
+- type: language
+  id: Triadian
+  isVisibleLanguage: true
+  speech:
+    color: "#f09c4d"
+    fontId: BoxRound
+    fontSize: 13 # Make up for the font
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 2
+    maxSyllables: 2
+    replacement:
+    - te'ma
+    - ka'e
+    - min'ae
+    - untae
+    - ee
+    - aa
+    - eth'rae
+    - kul
+    - pi'na
+    - rea
+    - re'mae
+    - re
+    - wae
+    - wa'tae
+    - binek
+    - kama
+    - chae
+    - kiae
+    - netcae
+    - ted'inik
+    - nae
+    - inw
+    - i'n
+    - isa
+    - nae
+    - nu
+    - ki
+    - awe
+    - iyare't
+    - ujneae
+    - uje
+    - uj
+    - uj'ae
+    - k'am
+    - chakae
+    - kuna
+    - taj
+    - wie
+    - aq
+    - ae't
+    - poe
+    - sh'be
+    - haet
+    - kra
+    - kre
+    - nea
+    - cerae
+    - hae
+    - yarae
+    - zaea
+    - zaeh
+    - zae'nat
+    - xae
+    - xae'aat
+    - yae'maat
+    - ye'ae
+    - ne'ae'at
+    - pelae
+    - rae
+    - po'aet
+    - ta'ae
+    - ae
+    - na
+    - za
+    - net
