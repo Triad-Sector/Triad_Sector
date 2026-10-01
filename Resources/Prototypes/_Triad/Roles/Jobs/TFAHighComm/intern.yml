@@ -28,6 +28,11 @@
     - type: CryoSleepRadioOverride
       overrides:
       - CentCom # com radio
+  - !type:AddLanguageSpecial
+    languagesSpoken:
+    - Triadian # Highcomm status, so they would 100% know this, atleast somewhat
+    languagesUnderstood:
+    - Triadian
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
 
