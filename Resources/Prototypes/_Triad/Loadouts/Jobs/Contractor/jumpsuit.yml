@@ -42,6 +42,7 @@
 
 - type: loadout
   id: ClothingUniformIndustrialWorker
+  groupBy: CargoJumpsuit
   equipment:
     jumpsuit: ClothingUniformIndustrialWorker
 
@@ -65,21 +66,15 @@
 
 - type: loadout
   id: ClothingUniformJumpsuitMilitaryContractor
-  groupBy: PilotSuit
+  groupBy: MilitaryJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryContractor
 
 - type: loadout
   id: ClothingUniformJumpsuitMilitaryContractorTac
-  groupBy: PilotSuit
+  groupBy: MilitaryJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac
-
-- type: loadout
-  id: ClothingUniformJumpsuitMilitaryPilot
-  groupBy: PilotSuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryPilot
 
 - type: loadout
   id: ClothingUniformJumpsuitPrivateSec

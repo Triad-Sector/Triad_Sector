@@ -1,5 +1,5 @@
 - type: loadout
   id: StrainedShorts
-  price: 0
+  groupBy: ShortsJumpsuit
   equipment:
     jumpsuit: ClothingUniformStrainedShorts

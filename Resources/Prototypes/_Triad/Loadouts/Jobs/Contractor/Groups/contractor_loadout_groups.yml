@@ -4,10 +4,8 @@
   loadouts:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
-  - ContractorClothingUniformJumpsuitMilitaryContractor
-  - ContractorClothingUniformJumpsuitMilitaryContractorTac
-  - ContractorClothingUniformJumpsuitAtmos
-  - ContractorClothingUniformJumpskirtAtmos
+  - ClothingUniformJumpsuitMilitaryContractor
+  - ClothingUniformJumpsuitMilitaryContractorTac
   - ContractorClothingUniformJumpsuitBartender
   - ContractorClothingUniformJumpskirtBartender
   - ClothingUniformJumpsuitPrivateSec
@@ -27,6 +25,8 @@
   - ContractorClothingUniformJumpskirtChef
   - ContractorClothingUniformJumpsuitEngineering
   - ContractorClothingUniformJumpskirtEngineering
+  - ContractorClothingUniformJumpsuitAtmos
+  - ContractorClothingUniformJumpskirtAtmos
   - ContractorClothingUniformJumpsuitHydroponics
   - ContractorClothingUniformJumpskirtHydroponics
   - ContractorClothingUniformJumpsuitMedicalDoctor
@@ -233,20 +233,18 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
+  - ClothingUniformMNKTracksuitBlack
   - ClothingUniformMNKOfficeSkirt
   - ClothingUniformMNKUnderGarment
   - ClothingUniformMNKDressBlack
   - ClothingUniformMNKGymBra
   - ClothingUniformMNKBlackOveralls
   - ClothingUniformMNKBlackShoulder
-  - ClothingUniformMNKTracksuitBlack
   - ClothingUniformIndustrialWorker
   - ClothingUniformJumpskirtCountess
   - StrainedShorts
   - ClothingUniformJumpsuitMilitaryPilot
   - ClothingUniformDrakeIndustriesTrucker
-  - ClothingUniformJumpsuitMilitaryContractor
-  - ClothingUniformJumpsuitMilitaryContractorTac
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -701,7 +699,6 @@
   - ContractorPlunger
   - ContractorClothingHeadHatCone
   - ContractorClothingHeadHatTophat
-  - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
   - ClothingHeadHatPilot
 
@@ -786,19 +783,15 @@
   - ContractorClothingNeckTieSci
   - ContractorClothingNeckLawyerbadge
   - ContractorClothingNeckDrakeIndustriesBadge
-  - ContractorClothingNeckHeadphones
-  - ContractorClothingNeckNovaSharksLeatherJacket
-  - ContractorClothingNeckCrucifix
-  - ContractorCDDogtags
-  - ContractorClothingNeckStethoscope
   - ContractorClothingOuterPoncho
   - ContractorClothingOuterPonchoClassic
+  - ContractorClothingNeckPonchoSmallBlack # Monolith
+  - ContractorClothingNeckPonchoSmallWhite # Monolith
   - ContractorClothingNeckPonchoSmallPurple # Monolith
   - ContractorClothingNeckPonchoSmallRed # Monolith
   - ContractorClothingNeckPonchoSmallPink # Monolith
   - ContractorClothingNeckPonchoSmallOrange # Monolith
   - ContractorClothingNeckPonchoSmallBlack # Monolith
-  - ContractorClothingNeckPonchoSmallWhite # Monolith
   - ContractorClothingNeckPonchoBlack # Monolith
   - ContractorClothingNeckPonchoArctic # Monolith
   - ContractorClothingNeckCloakBlack # Monolith
@@ -816,7 +809,6 @@
   - ContractorClothingNeckCloakPan
   - ContractorClothingNeckCloakGay
   - ContractorClothingNeckCloakLesbian
-  - ContractorBedsheetRainbow
   - ContractorClothingNeckIFFNeutral
   - ContractorClothingNeckIFFGreen
   - ContractorClothingNeckIFFRed
@@ -836,10 +828,15 @@
   - ContractorClothingNeckMantleCE
   - ContractorClothingNeckCloakVoid
   - ContractorClothingNeckBling
-  - ContractorClothingNeckArmbandUNSA
   - ContractorClothingNeckMantleBH # Mono
   - ContractorClothingNeckCloakSanabi # Mono
   - ContractorClothingNeckUIOvercoat # Mono
+  - ContractorBedsheetRainbow
+  - ContractorClothingNeckHeadphones
+  - ContractorClothingNeckNovaSharksLeatherJacket
+  - ContractorClothingNeckCrucifix
+  - ContractorCDDogtags
+  - ContractorClothingNeckStethoscope
 
 - type: loadoutGroup
   id: ContractorPDA
