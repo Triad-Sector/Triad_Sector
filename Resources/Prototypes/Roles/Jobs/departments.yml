@@ -31,8 +31,8 @@
   # - Zookeeper # Frontier
   # - ServiceWorker # Frontier
   - Contractor # Frontier
-  - Mercenary # Frontier
-  - Pilot # Frontier
+  #- Mercenary | Triad - collapsed into Spacer
+  #- Pilot | Triad
   - Borg # Frontier
 
 - type: department
