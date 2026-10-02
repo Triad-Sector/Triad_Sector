@@ -5285,3 +5285,10 @@ Entries:
   id: 2641
   time: '2026-10-02T03:14:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/667
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added the countess gown, a new dress available in loadouts!
+  id: 2642
+  time: '2026-10-02T19:16:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/688
