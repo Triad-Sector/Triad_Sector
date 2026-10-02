@@ -1,0 +1,41 @@
+- type: loadout
+  id: CandyClownSuit
+  price: 0
+  equipment:
+    jumpsuit: CandyClownUniformSuit
+
+- type: loadout
+  id: SpottedClownSuit
+  price: 0
+  equipment:
+    jumpsuit: SpottedClownUniformSuit
+
+- type: loadout
+  id: StripedClownSuit
+  price: 0
+  equipment:
+    jumpsuit: StripedClownUniformSuit
+
+- type: loadout
+  id: ClownFormalJumpsuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownFormal
+
+- type: loadout
+  id: ClownFormalJumpskirt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtClownFormal
+
+- type: loadout
+  id: ClownClownJumpsuit
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPerformerClown
+
+- type: loadout
+  id: ClownClownJumpskirt
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformerClown
