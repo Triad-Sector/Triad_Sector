@@ -1,0 +1,5 @@
+- type: loadout
+  id: ClothingMaskPilot
+  storage:
+    back:
+    - ClothingMaskPilot

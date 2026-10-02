@@ -1,0 +1,4 @@
+- type: loadout
+  id: ClothingEyesGlassesPilot
+  equipment:
+    eyes: ClothingEyesGlassesPilot

@@ -1,14 +1,41 @@
 - type: loadout
   id: ClothingBackpackMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackMilitary
 
 - type: loadout
   id: ClothingBackpackSatchelMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackSatchelMilitary
 
 - type: loadout
   id: ClothingBackpackDuffelMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackDuffelMilitary
+
+- type: loadout
+  id: ClothingBackpackPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackPilot
+
+- type: loadout
+  id: ClothingBackpackDuffelPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackDuffelPilot
+
+- type: loadout
+  id: ClothingBackpackSatchelPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackSatchelPilot
+
+- type: loadout
+  id: ClothingBackpackMessengerPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackMessengerPilot

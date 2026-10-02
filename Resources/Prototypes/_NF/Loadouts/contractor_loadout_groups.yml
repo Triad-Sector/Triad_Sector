@@ -218,7 +218,6 @@
   - ClothingUniformIndustrialWorker
   - StrainedShorts
   # End Triad
-
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -299,6 +298,10 @@
   - ClothingBackpackMilitary
   - ClothingBackpackDuffelMilitary
   - ClothingBackpackSatchelMilitary
+  - ClothingBackpackPilot
+  - ClothingBackpackDuffelPilot
+  - ClothingBackpackSatchelPilot
+  - ClothingBackpackMessengerPilot
   # Triad end
   - ContractorClothingBackpackClown
   - ContractorClothingBackpackDuffelClown
@@ -604,6 +607,7 @@
   - ContractorClothingHeadHatTophat
   - ContractorClothingHeadHatUNSABeer
   - ContractorClothingHeadSanabi # Mono
+  - ClothingHeadHatPilot
 
 - type: loadoutGroup
   id: ContractorEars
@@ -626,6 +630,7 @@
   - ContractorClothingHeadsetAltEngineeringCommon
   - ContractorClothingHeadsetAltMedicalCommon
   - ContractorClothingHeadsetAltScienceCommon
+  - ClothingHeadsetAltPilotCommon
   fallbacks:
   - ContractorClothingHeadsetGreyCommon
 
@@ -655,6 +660,7 @@
   - ContractorClothingHandsGlovesBoxingYellow
   - ContractorClothingHandsGlovesCaptain
   - ContractorClothingHandsGlovesColorWhite
+  - ClothingHandsGlovesPilot
 
 - type: loadoutGroup
   id: ContractorNeck
@@ -783,6 +789,7 @@
   - ContractorClothingEyesPunkInfoShades # Punkish (Randomized visuals)
   - ContractorClothingEyesEyepatchHudDiag
   - ContractorClothingEyesEyepatchHudMedical
+  - ClothingEyesGlassesPilot
 
 - type: loadoutGroup
   id: ContractorUtility # Right Hand - 1 only
@@ -876,6 +883,7 @@
   - ClothingMaskBat
   - ClothingMaskBee
   - ClothingMaskFox
+  - ClothingMaskPilot
   fallbacks:
   - ContractorClothingMaskBreath
 
@@ -1011,7 +1019,7 @@
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
   - ContractorHandLabeler
-  - ContractorBusinessCardPackWhite # Triad 
+  - ContractorBusinessCardPackWhite # Triad
   - ContractorBusinessCardPackBlack # Triad
   - ContractorStampsApprovedDenied
   - ContractorRubberStampCaptain
