@@ -1,35 +1,42 @@
 - type: loadout
   id: ClothingUniformMNKOfficeSkirt
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKOfficeSkirt
 
 - type: loadout
   id: ClothingUniformMNKUnderGarment
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKUnderGarment
 
 - type: loadout
   id: ClothingUniformMNKDressBlack
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKDressBlack
 
 - type: loadout
   id: ClothingUniformMNKGymBra
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKGymBra
 
 - type: loadout
   id: ClothingUniformMNKBlackOveralls
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKBlackOveralls
 
 - type: loadout
   id: ClothingUniformMNKBlackShoulder
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKBlackShoulder
 
 - type: loadout
   id: ClothingUniformMNKTracksuitBlack
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKTracksuitBlack
 
@@ -40,5 +47,30 @@
 
 - type: loadout
   id: ClothingUniformJumpskirtCountess
+  groupBy: Dress
   equipment:
     jumpsuit: ClothingUniformJumpskirtCountess
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryPilot
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryPilot
+
+- type: loadout
+  id: ClothingUniformDrakeIndustriesTrucker
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformDrakeIndustriesTrucker
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractor
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractor
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractorTac
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac

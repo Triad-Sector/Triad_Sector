@@ -1,0 +1,8 @@
+- type: loadout
+  id: ClothingShoesBootsPilot
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: Boots
+  equipment:
+    shoes: ClothingShoesBootsPilot

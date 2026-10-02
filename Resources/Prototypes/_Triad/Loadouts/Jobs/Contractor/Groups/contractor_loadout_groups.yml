@@ -207,7 +207,6 @@
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
   - ContractorClothingUniformJabroni
-  # Triad start
   - ClothingUniformMNKOfficeSkirt
   - ClothingUniformMNKUnderGarment
   - ClothingUniformMNKDressBlack
@@ -218,7 +217,10 @@
   - ClothingUniformIndustrialWorker
   - ClothingUniformJumpskirtCountess
   - StrainedShorts
-  # End Triad
+  - ClothingUniformJumpsuitMilitaryPilot
+  - ClothingUniformDrakeIndustriesTrucker
+  - ClothingUniformJumpsuitMilitaryContractor
+  - ClothingUniformJumpsuitMilitaryContractorTac
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -227,16 +229,14 @@
   id: ContractorBackpack
   name: loadout-group-contractor-backpack
   loadouts:
-  ## Mono start
   - ContractorClothingModsuitAtmostechPowerCell
   - ContractorClothingModsuitCaptainPowerCell
   - ContractorClothingModsuitEngineerPowerCell
-  ## Mono end
   - ContractorClothingBackpack
   - ContractorClothingBackpackDuffel
   - ContractorClothingBackpackSatchel
   - ContractorClothingBackpackMessenger
-  - ClothingBackpackSatchelLeather # Triad
+  - ClothingBackpackSatchelLeather
   - ContractorClothingBackpackCaptain
   - ContractorClothingBackpackDuffelCaptain
   - ContractorClothingBackpackSatchelCaptain
@@ -295,7 +295,10 @@
   - ContractorClothingBackpackDrakeIndustries
   - ContractorClothingBackpackDuffelDrakeIndustries
   - ContractorClothingBackpackSatchelDrakeIndustries
-  # Triad start
+  - ClothingBackpackMercenary
+  - ClothingBackpackDuffelMercenary
+  - ClothingBackpackSatchelMercenary
+  - ClothingBackpackMessengerMercenary
   - ClothingBackpackMilitary
   - ClothingBackpackDuffelMilitary
   - ClothingBackpackSatchelMilitary
@@ -303,7 +306,6 @@
   - ClothingBackpackDuffelPilot
   - ClothingBackpackSatchelPilot
   - ClothingBackpackMessengerPilot
-  # Triad end
   - ContractorClothingBackpackClown
   - ContractorClothingBackpackDuffelClown
   - ContractorClothingBackpackSatchelClown
@@ -326,13 +328,12 @@
   - ContractorClothingOuterHardsuitVoidParamed
   - ContractorClothingOuterHardsuitUIEngineer
   - ContractorClothingOuterHardsuitUIPilot
-  ## Mono start
+  - ClothingOuterHardsuitPilot
   - ContractorClothingOuterHardsuitAtmos
   - ContractorClothingOuterHardsuitCap
   - ContractorClothingOuterHardsuitEngineering
   - ContractorClothingOuterHardsuitSalvage
   - ContractorClothingOuterHardsuitSpatio
-  ## Mono end
   - ContractorClothingOuterHoodieGrey
   - ContractorClothingOuterVestHazard
   - ContractorClothingOuterApron
@@ -415,11 +416,10 @@
   - ContractorWetFloorSign
   - ContractorClothingOuterCoatExpensive
   - ContractorClothingOuterCoatSpaceAsshole
-  # Triad start
   - ClothingOuterCoatMNKBlackJacket
   - ClothingOuterCoatMNKWhiteHoodie
   - ClothingOuterCoatMNKBlackTopCoat
-  # End Triad
+  - ClothingOuterDrakeIndustriesTruckerPuffyVest
 
 - type: loadoutGroup
   id: ContractorBelt
@@ -467,6 +467,7 @@
   - ContractorClothingShoesClothwrapBlack # Mono
   - ContractorClothingShoesTourist
   - ContractorClothingShoesBootsSalvage
+  - ClothingShoesBootsPilot
   - ContractorClothingShoesChef
   - ContractorClothingShoesColorBlue
   - ContractorClothingShoesColorOrange
@@ -672,6 +673,7 @@
   - ContractorClothingNeckScarfStripedBlue
   - ContractorClothingNeckScarfStripedBrown
   - ContractorClothingNeckScarfStripedGreen
+  - ClothingNeckScarfPilot
   - ContractorClothingNeckTieBH
   - ContractorClothingNeckTieRed
   - ContractorClothingNeckTieSci
@@ -738,6 +740,7 @@
   loadouts:
   - ContractorClearNFPDA
   - ContractorSalvagePDA
+  - PilotPDA
   - ContractorResearchAssistantPDA
   - ContractorCargoPDA
   - ContractorMedicalInternPDA
@@ -817,11 +820,9 @@
   - ContractorBible
   - ContractorMonkeyCubeWrapped
   - ContractorKoboldCubeWrapped
-  # Triad changes
   - Whistle
   - SecurityWhistle
   - SyndicateWhistle
-  # End Triad
 
 - type: loadoutGroup
   id: ContractorFun
@@ -851,9 +852,7 @@
   - ContractorHoverbikeFlatpack
   - ContractorEmotionalPetCarrier
   - ContractorCrayonMagic
-  # Triad changes
   - HoloprojectorPrivate
-  # End Triad
 
 - type: loadoutGroup
   id: ContractorFace
@@ -1020,8 +1019,8 @@
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
   - ContractorHandLabeler
-  - ContractorBusinessCardPackWhite # Triad
-  - ContractorBusinessCardPackBlack # Triad
+  - ContractorBusinessCardPackWhite
+  - ContractorBusinessCardPackBlack
   - ContractorStampsApprovedDenied
   - ContractorRubberStampCaptain
   - ContractorRubberStampChaplain
