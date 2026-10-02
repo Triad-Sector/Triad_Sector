@@ -63,3 +63,39 @@
   groupBy: PilotBag
   equipment:
     back: ClothingBackpackMessengerPilot
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelTan
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelTan
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelOlive
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelOlive
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelBlack
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelBlack
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelRangerGreen
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelRangerGreen
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelCoyoteBrown
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelCoyoteBrown
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelWhite
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelWhite

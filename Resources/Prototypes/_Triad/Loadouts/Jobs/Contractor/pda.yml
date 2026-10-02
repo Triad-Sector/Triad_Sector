@@ -2,3 +2,8 @@
   id: PilotPDA
   equipment:
     id: PilotPDA
+
+- type: loadout
+  id: MercenaryPDA
+  equipment:
+    id: MercenaryPDA

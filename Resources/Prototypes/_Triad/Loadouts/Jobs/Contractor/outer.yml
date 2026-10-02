@@ -24,3 +24,119 @@
   groupBy: Vest
   equipment:
     outerClothing: ClothingOuterDrakeIndustriesTruckerPuffyVest
+
+- type: loadout
+  id: ClothingOuterCoatBHTrench
+  groupBy: Coat
+  equipment:
+    outerClothing: ClothingOuterCoatBHTrench
+
+- type: loadout
+  id: ClothingOuterVestWebMercenary
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterVestWebMercenary
+
+- type: loadout
+  id: ClothingOuterVestWebMercenaryBlack
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterVestWebMercenaryBlack
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkGreen
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorPunkGreen
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkOrange
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorPunkOrange
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkRed
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorPunkRed
+
+- type: loadout # Punkish (Randomized visuals)
+  id: ClothingOuterArmorPunkRandomized
+  name: punk webvest (random)
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorPunkRandomized
+
+- type: loadout
+  id: ClothingOuterArmorCaptainCarapace
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainCarapace
+
+- type: loadout
+  id: ClothingOuterArmorBasicSlim
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBasicSlim
+
+- type: loadout
+  id: ClothingOuterArmorBasic
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBasic
+
+- type: loadout
+  id: ClothingOuterVestDetective
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterVestDetective
+
+- type: loadout
+  id: ClothingOuterArmorBPVestLight
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestLight
+
+- type: loadout
+  id: ClothingOuterArmorBPVestMedium
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestMedium
+
+- type: loadout
+  id: ClothingOuterArmorBPVestHeavy
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestHeavy
+
+- type: loadout
+  id: ClothingOuterArmorBPVestPolyvalent
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestPolyvalent
+
+- type: loadout
+  id: ClothingOuterArmorBPVestStabproof
+  groupBy: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestStabproof
+
+- type: loadout
+  id: ClothingOuterHardsuitMercenary
+  groupBy: Hardsuit
+  equipment:
+    outerClothing: ClothingOuterHardsuitMercenary
+
+- type: loadout
+  id: ClothingOuterHardsuitPrivateSecurity
+  groupBy: Hardsuit
+  equipment:
+    outerClothing: ClothingOuterHardsuitPrivateSecurity
+
+- type: loadout
+  id: ClothingOuterHardsuitMercenaryWarlord
+  groupBy: Hardsuit
+  price: 50000
+  equipment:
+    outerClothing: ClothingOuterHardsuitMercenaryWarlord
