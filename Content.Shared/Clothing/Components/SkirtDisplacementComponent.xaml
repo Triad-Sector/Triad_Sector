@@ -1,0 +1,5 @@
+﻿<controls:SkirtDisplacementComponent
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Shared.Clothing.Components">
+    
+</controls:SkirtDisplacementComponent>

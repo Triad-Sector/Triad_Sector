@@ -289,7 +289,14 @@ public sealed partial class ClientClothingSystem : ClothingSystem
                     break;
             }
         }
-
+        // Triad - Use a skirt-specific displacement map when the equipped clothing is marked as a skirt. Intended for
+        // dresses, jumpskirts, robes and gowns for Avali
+        if (HasComp<SkirtDisplacementComponent>(equipment))
+        {
+            displacementData =
+                inventory.SkirtDisplacements.GetValueOrDefault(slot)
+                ?? displacementData;
+        }
         // add the new layers
         foreach (var (key, layerData) in ev.Layers)
         {
