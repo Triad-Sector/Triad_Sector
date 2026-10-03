@@ -822,15 +822,15 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     protected override void SendEntityEmote(
-    EntityUid source,
-    string action,
-    ChatTransmitRange range,
-    string? nameOverride,
-    bool hideLog = false,
-    bool checkEmote = true,
-    bool ignoreActionBlocker = false,
-    NetUserId? author = null
-)
+        EntityUid source,
+        string action,
+        ChatTransmitRange range,
+        string? nameOverride,
+        bool hideLog = false,
+        bool checkEmote = true,
+        bool ignoreActionBlocker = false,
+        NetUserId? author = null
+        )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
             return;
@@ -844,18 +844,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
-
-        // Frontier:
-        // checkEmote == true means this is player-entered emote text.
-        // checkEmote == false is used by TryEmoteWithChat() when it is
-        // generating the chat text for an already-resolved EmotePrototype.
-        //
-        // TryEmoteChatInput() returns true for BOTH:
-        //   - an unrecognized/custom text emote
-        //   - a successfully invoked registered emote
-        //
-        // Therefore its return value cannot be used to determine whether
-        // the text is a custom emote.
         if (checkEmote)
         {
             if (IsRegisteredEmote(action))
@@ -869,16 +857,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
         }
 
-        SendInVoiceRange(
-            ChatChannel.Emotes,
-            name,
-            action,
-            wrappedMessage,
-            obfuscated: "",
-            obfuscatedWrappedMessage: "",
-            source,
-            range,
-            author);
+        SendInVoiceRange(ChatChannel.Emotes, name, action, wrappedMessage, obfuscated: "", obfuscatedWrappedMessage: "", source, range, author);
 
         if (!hideLog)
         {
