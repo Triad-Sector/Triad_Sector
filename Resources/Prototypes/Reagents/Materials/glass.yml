@@ -85,8 +85,8 @@
     hard: 4
     density: 4.5
     chemical: 5.5
-    radioactive: 2 # Making something out of uranium is radioactive... imagine that
-    n_radioactive: 1.5
+    radioactive: 1.5 # Triad, lowered slightly
+    n_radioactive: 1 #Triad, lowered slightly
 
 - type: material
   id: ReinforcedUraniumGlass

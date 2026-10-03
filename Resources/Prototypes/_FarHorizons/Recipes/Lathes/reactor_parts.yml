@@ -26,15 +26,36 @@
   result: UraniumReactorFuelRod
   materials:
     Steel: 500
-    Uranium: 300
+    UraniumFissile: 15 #triad
+    UraniumDepleted: 285 #triad
+
+- type: latheRecipe #triad start, custom fuel rod recipes
+  parent: BaseReactorPartRecipe
+  id: HighEnrichedUraniumReactorFuelRod
+  result: HighEnrichedUraniumReactorFuelRod
+  materials:
+    Steel: 500
+    UraniumFissile: 60
+    UraniumDepleted: 240 #triad end
+
+
+- type: latheRecipe
+  parent: BaseReactorPartRecipe
+  id: CladdedPlutoniumReactorFuelRod
+  result: CladdedPlutoniumReactorFuelRod
+  materials:
+    Plasteel: 500
+    Plastitanium: 150
+    Plutonium: 150 #triad end
 
 - type: latheRecipe
   parent: BaseReactorPartRecipe
   id: PlutoniumReactorFuelRod
   result: PlutoniumReactorFuelRod
   materials:
-    Steel: 500
-    Plutonium: 300
+    Plasteel: 500 #triad
+    Plutonium: 150 #triad
+    UraniumDepleted: 150 #triad
 
 - type: latheRecipe
   parent: BaseReactorPartRecipe
@@ -69,6 +90,22 @@
   materials:
     Steel: 1000
     Plasteel: 500
+
+- type: latheRecipe #Triad Start
+  parent: BaseReactorPartRecipe
+  id: PlastitaniumReactorControlRod
+  result: PlastitaniumReactorControlRod
+  materials:
+    Steel: 1000
+    Plastitanium: 500
+
+- type: latheRecipe
+  parent: BaseReactorPartRecipe
+  id: IriditeReactorControlRod
+  result: IriditeReactorControlRod
+  materials:
+    Steel: 1000
+    Iridite: 500 #Triad End
 
 - type: latheRecipe
   parent: BaseReactorPartRecipe
@@ -143,6 +180,22 @@
   materials:
     Steel: 1000
 
+- type: latheRecipe #Triad Start
+  parent: BaseReactorPartRecipe
+  id: PlastitaniumReactorGasChannel
+  result: PlastitaniumReactorGasChannel
+  materials:
+    Steel: 500
+    Plastitanium: 500
+
+- type: latheRecipe
+  parent: BaseReactorPartRecipe
+  id: IriditeReactorGasChannel
+  result: IriditeReactorGasChannel
+  materials:
+    Plastitanium: 500
+    Iridite: 500 #Triad End
+
 - type: latheRecipe
   parent: BaseReactorPartRecipe
   id: GoldReactorGasChannel
@@ -206,14 +259,31 @@
   id: SteelReactorHeatExchanger
   result: SteelReactorHeatExchanger
   materials:
-    Steel: 1250
+    Copper: 500 # triad
+    Steel: 750 # triad
+
+- type: latheRecipe #triad start
+  parent: BaseReactorPartRecipe
+  id: PlastitaniumReactorHeatExchanger
+  result: PlastitaniumReactorHeatExchanger
+  materials:
+    Copper: 500
+    Plastitanium: 750
+
+- type: latheRecipe
+  parent: BaseReactorPartRecipe
+  id: IriditeReactorHeatExchanger
+  result: IriditeReactorHeatExchanger
+  materials:
+    Copper: 500
+    Iridite: 750 # triad end
 
 - type: latheRecipe
   parent: BaseReactorPartRecipe
   id: GoldReactorHeatExchanger
   result: GoldReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Gold: 750
 
 - type: latheRecipe
@@ -221,7 +291,7 @@
   id: SilverReactorHeatExchanger
   result: SilverReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Silver: 750
 
 - type: latheRecipe
@@ -229,7 +299,7 @@
   id: BrassReactorHeatExchanger
   result: BrassReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Brass: 750
 
 - type: latheRecipe
@@ -237,7 +307,7 @@
   id: PlasteelReactorHeatExchanger
   result: PlasteelReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Plasteel: 750
 
 - type: latheRecipe
@@ -245,7 +315,7 @@
   id: GlassReactorHeatExchanger
   result: GlassReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Glass: 750
 
 - type: latheRecipe
@@ -253,7 +323,7 @@
   id: PlasmaGlassReactorHeatExchanger
   result: PlasmaGlassReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     PlasmaGlass: 750
 
 - type: latheRecipe
@@ -261,5 +331,5 @@
   id: DiamondReactorHeatExchanger
   result: DiamondReactorHeatExchanger
   materials:
-    Steel: 500
+    Copper: 500 #triad
     Diamond: 750

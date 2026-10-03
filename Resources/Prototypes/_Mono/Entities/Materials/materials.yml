@@ -54,12 +54,11 @@
   color: "#252229"
   price: 12.5 # 1250/sheet
   properties: # FH edit
-    electrical: 12
+    electrical: 10 #Triad:  Was a bit TOO good at thermal and electrical- better than it needs to be for balance. Better than gold, by a good bit
     thermal: 8
-    hard: 8
-    density: 2
+    hard: 3 #Triad: Not very hard- low reflection chance.
+    density: 1 # Triad: Very low interaction chance
     chemical: 9
-    reflective: 1
     plasma_offgas: 0
 
 - type: entity
@@ -130,12 +129,11 @@
   color: "#5c5c5c"
   price: 6 # 600/sheet
   properties: # FH edit
-    electrical: 3
-    thermal: 5
-    hard: 12
+    electrical: 4 #Triad
+    thermal: 5 # Triad: Less reflective than diamonds, but higher thermal.
+    hard: 7 # Triad: Really reflective, sure, but not more than diamonds!
     density: 9
     chemical: 6
-    reflective: 3
     plasma_offgas: 0
 
 - type: entity
@@ -209,12 +207,12 @@
   price: 25 # Triad, now 2500/sheet
   properties: # FH edit
     electrical: 4
-    thermal: 3
+    thermal: 4 #triad, inline with DU.
     hard: 5
     density: 7
     chemical: 6
-    radioactive: 9
-    n_radioactive: 8
+    radioactive: 130 #Triad, pure fissile isn't used in rods, only mixed
+    n_radioactive: 90 #Triad, pure fissile isn't used in rods, only mixed
 
 - type: entity
   parent: MaterialBase
@@ -300,12 +298,12 @@
   price: 2 # Triad, now ACTUALLY 200/sheet
   properties: # FH edit
     electrical: 4
-    thermal: 3
-    hard: 12
+    thermal: 5 # Triad, uranium is actually a bit more thermally conductive than its made to be here
+    hard: 5 #Triad, lowered so its reflection chance would be as expected
     density: 12
     chemical: 6
-    radioactive: 1
-    n_radioactive: 1
+    radioactive: 0.3 #Triad, DU isn't very radioactive
+    n_radioactive: 0.75 #Triad, nor is it very fissile
 
 - type: entity
   parent: MaterialBase

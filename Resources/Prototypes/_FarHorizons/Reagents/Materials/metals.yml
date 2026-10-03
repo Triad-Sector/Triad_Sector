@@ -24,7 +24,7 @@
     hard: 2
     density: 4
     chemical: 6
-    radioactive: 5
+    radioactive: 4 # triad, a bit less R-fuel. Lets the basic rod not outpreform enriched rods.
 
 - type: material
   id: Plutonium
@@ -33,12 +33,12 @@
   unit: materials-unit-bar
   icon: { sprite: _Mono/Objects/Materials/fissiles.rsi, state: plutonium } # Mono
   color: "#616479" # Mono
-  price: 75 # 7500/sheet # Triad. Worth 3x fissile, since its much harder to make in bulk than fissile.
+  price: 75 # 7500/sheet # Triad. Worth 3x fissile, since its much harder to make in bulk than fissile, and its made FROM fissile
   properties:
     electrical: 7
     thermal: 6
     hard: 7
     density: 8
     chemical: 6
-    radioactive: 3
-    n_radioactive: 5
+    radioactive: 7 #Triad, more R-fuel. Used in mixes, so needs to be hightened.
+    n_radioactive: 12 #Triad, much more N-Fuel. Used in mixes, so needs to be hightened.
