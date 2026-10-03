@@ -8,35 +8,16 @@
   },
   "states": [
     {
-      "name": "closed"
+      "name": "assembly"
     },
     {
       "name": "bolted_unlit"
     },
     {
-      "name": "opening_unlit",
-      "delays": [
-        [
-          0.050,
-          0.050,
-          0.050,
-          0.050,
-          0.050,
-          0.050,
-          0.050,
-          0.050
-        ]
-      ]
+      "name": "closed"
     },
     {
-      "name": "deny_unlit",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "closed_unlit"
     },
     {
       "name": "closing",
@@ -50,91 +31,6 @@
           0.050,
           0.050,
           0.050
-        ]
-      ]
-    },
-    {
-      "name": "open"
-    },
-    {
-      "name": "sparks",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "panel_open"
-    },
-    {
-      "name": "welded"
-    },
-    {
-      "name": "sparks_damaged",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          1.7
-        ]
-      ]
-    },
-    {
-      "name": "sparks_broken",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "sparks_open",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "closed_unlit",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "assembly"
-    },
-    {
-      "name": "emergency_unlit",
-      "delays": [
-        [
-          0.3,
-          0.1,
-          0.3
         ]
       ]
     },
@@ -154,6 +50,18 @@
       ]
     },
     {
+      "name": "deny_unlit",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "open"
+    },
+    {
       "name": "opening",
       "delays": [
         [
@@ -169,7 +77,7 @@
       ]
     },
     {
-      "name": "panel_opening",
+      "name": "opening_unlit",
       "delays": [
         [
           0.050,
@@ -195,6 +103,89 @@
           0.050,
           0.050,
           0.050
+        ]
+      ]
+    },
+    {
+      "name": "panel_open"
+    },
+    {
+      "name": "panel_opening",
+      "delays": [
+        [
+          0.050,
+          0.050,
+          0.050,
+          0.050,
+          0.050,
+          0.050,
+          0.050,
+          0.050
+        ]
+      ]
+    },
+    {
+      "name": "sparks",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "sparks_broken",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "sparks_damaged",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          1.7
+        ]
+      ]
+    },
+    {
+      "name": "sparks_open",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "welded"
+    },
+    {
+      "name": "emergency_unlit",
+      "delays": [
+        [
+          0.4,
+          0.4
         ]
       ]
     }
