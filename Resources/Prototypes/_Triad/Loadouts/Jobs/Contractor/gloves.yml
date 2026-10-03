@@ -1,5 +1,6 @@
 - type: loadout
   id: ClothingHandsGlovesPilot
+  groupBy: WorkGloves
   equipment:
     gloves: ClothingHandsGlovesPilot
 

@@ -1,5 +1,6 @@
 - type: loadout
   id: ClothingHeadHatPilot
+  groupBy: UshankaHat
   equipment:
     head: ClothingHeadHatPilot
 
@@ -34,8 +35,14 @@
     head: ClothingHeadHatBeretCommander
 
 - type: loadout
+  id: ClothingHeadHatBeretSecurity
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+
+- type: loadout
   id: ClothingHeadHatBH
-  groupBy: Hat
+  groupBy: CowboyHat
   equipment:
     head: ClothingHeadHatBH
 

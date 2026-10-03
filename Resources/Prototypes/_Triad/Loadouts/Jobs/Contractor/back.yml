@@ -1,4 +1,28 @@
 - type: loadout
+  id: ClothingBackpackSatchelLeather
+  groupBy: CivBag
+  equipment:
+    back: ClothingBackpackSatchelLeather
+
+- type: loadout
+  id: ClothingBackpackTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackSecurity
+
+- type: loadout
+  id: ClothingBackpackSatchelTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackSatchelSecurity
+
+- type: loadout
+  id: ClothingBackpackDuffelTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackDuffelSecurity
+
+- type: loadout
   id: ClothingBackpackMercenary
   groupBy: MercenaryBag
   equipment:

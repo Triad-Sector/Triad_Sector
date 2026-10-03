@@ -1,18 +1,18 @@
 - type: loadout
   id: ClothingEyesGlassesPilot
-  groupBy: HudGlasses
+  groupBy: Goggles
   equipment:
     eyes: ClothingEyesGlassesPilot
 
 - type: loadout
   id: ClothingEyesGlassesMercenary
-  groupBy: SunGlasses
+  groupBy: Glasses
   equipment:
     eyes: ClothingEyesGlassesMercenary
 
 - type: loadout
   id: ClothingEyesGlassesSunglasses
-  groupBy: SunGlasses
+  groupBy: Glasses
   equipment:
     eyes: ClothingEyesGlassesSunglasses
 
