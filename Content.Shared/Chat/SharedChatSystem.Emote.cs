@@ -165,37 +165,14 @@ public abstract partial class SharedChatSystem
     /// <param name="source">The entity that is speaking</param>
     /// <param name="textInput">Formatted emote message.</param>
     /// <returns>True if the chat message should be displayed (because the emote was explicitly cancelled), false if it should not be.</returns>
-    private bool TryEmoteChatInput(EntityUid uid, string textInput, out bool eventInvoked) // Frontier: add eventInvoked
+    protected bool TryEmoteChatInput(EntityUid source, string textInput)
     {
-        eventInvoked = false; // Frontier: track whether event was invoked
         var actionTrimmedLower = TrimPunctuation(textInput.ToLower());
         if (!_wordEmoteDict.TryGetValue(actionTrimmedLower, out var emote))
             return true;
 
-        var validEmote = false; // DeltaV - Multiple emotes for the same trigger
-        foreach (var emote in emotes)
-        {
-            if (!AllowedToUseEmote(uid, emote))
-                continue;
-
-            if (TryInvokeEmoteEvent(uid, emote))
-            {
-                eventInvoked = true; // Frontier: track whether event was invoked
-                validEmote = true; // DeltaV
-                break; // Frontier: break on first emote (avoid playing multiple sounds at once)
-            }
-        }
-
-        return validEmote;
-    }
-
-    static string TrimPunctuation(string textInput)
-    {
-        var trimEnd = textInput.Length;
-        while (trimEnd > 0 && char.IsPunctuation(textInput[trimEnd - 1]))
-        {
-            trimEnd--;
-        }
+        if (!AllowedToUseEmote(source, emote))
+            return true;
 
         return TryInvokeEmoteEvent(source, emote);
 
@@ -298,19 +275,3 @@ public abstract partial class SharedChatSystem
         return textInput[trimStart..trimEnd];
     }
 }
-
-// Frontier: custom emote event
-/// <summary>
-///     Raised on an entity when it sends a custom emote (one with a message but no sound).
-///     Handled by holopads.
-/// </summary>
-public sealed class NFEntityEmotedEvent : EntityEventArgs
-{
-    public readonly string Emote;
-
-    public NFEntityEmotedEvent(string emote)
-    {
-        Emote = emote;
-    }
-}
-// End Frontier
