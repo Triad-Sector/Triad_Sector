@@ -1,0 +1,9 @@
+# Allows you to speak more than one language (besides Standard) at the cost of physical points trait
+- type: trait
+  id: Bilingual
+  name: trait-physical-bilingual-name
+  description: trait-physical-bilingual-desc
+  category: Physical
+  cost: 4
+  grantsCategorySlots:
+    LanguageTraits: 1
