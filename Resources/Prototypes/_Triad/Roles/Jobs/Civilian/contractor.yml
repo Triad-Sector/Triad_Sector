@@ -8,7 +8,7 @@
   displayWeight: 40 # Top
   accessGroups: # Frontier
   - GeneralAccess # Frontier
-  - CivilianAccess
+  - Civilian
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
