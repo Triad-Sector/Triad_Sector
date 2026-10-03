@@ -1,0 +1,39 @@
+# Author R1ckey
+# Discord: Rickey__
+
+
+- type: vessel
+  id: Martyr
+  parent: BaseVessel
+  name: AVM Martyr
+  description: A compact heavy hitting brawler, The AVM Martyr is a medium-class, FTL capable combat vessel designed for close quarter engagements. Lightly armored, and sporting heavy firepower, it's the first choice from the Argent Vessel Matrix for upstart drone hunters. Comes outfitted with 2 220mm cannons, and 2 90mm autocannons.
+  price: 110000
+  category: Medium
+  group: Military
+  shuttlePath: /Maps/_Triad/Shuttles/MIL/martyr.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Pursuit
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Martyr
+  mapName: 'AVM Martyr'
+  mapPath: /Maps/_Triad/Shuttles/MIL/martyr.yml
+  minPlayers: 0
+  stations:
+    Martyr:
+      stationProto: StandardTriadExpedVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Martyr MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
