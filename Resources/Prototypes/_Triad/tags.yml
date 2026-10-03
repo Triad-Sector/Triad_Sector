@@ -87,6 +87,10 @@
 - type: Tag
   id: BorgModuleSolarianEngineering
 
+# Emotes
+- type: Tag
+  id: OviniaEmotes # Used for Ovinia specific emotes
+  
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox
