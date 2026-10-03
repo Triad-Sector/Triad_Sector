@@ -68,7 +68,7 @@
   parent: SafetyDepositBoxBase
   id: SafetyDepositBoxLarge
   name: large safety deposit box
-  description: A large deposit box designed to accommodate oversized valuables. Can hold 4x6 items and is capable of storing large objects.
+  description: A large deposit box designed to accommodate oversized valuables. Can hold 4x6 items and is capable of storing huge objects.
   components:
   - type: MultiHandedItem
   - type: Sprite
@@ -79,7 +79,7 @@
   - type: SafetyDepositBox
     cost: 230000
   - type: Storage
-    maxItemSize: Large
+    maxItemSize: Huge
     grid:
     - 0,0,3,5
 

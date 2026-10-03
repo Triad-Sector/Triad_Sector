@@ -228,11 +228,18 @@
     - 0,0,10,3
   - type: ExplosionResistance # Goobstation
     damageCoefficient: 0.1
-  # Triad Start
+  # Triad: Make ERT backpacks balanced against other storage options. Made it a bit harder to store for balance reasons.
   - type: Tag
     tags:
     - AdvancedTacticalBackpack
-  # Triad End
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.85
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0,0,3,3
+  # End Triad
 
 - type: entity
   parent: ClothingBackpackERTLeader

@@ -10,8 +10,11 @@
     sprite: _Mono/Clothing/Back/Modsuits/mercenary.rsi
   - type: Storage # Extra space - Mono
     grid:
-    - 0,0,7,3
+    # Triad: Remove that extra storage, give it backpack stats.
+    #- 0,0,7,3
+    - 0,0,6,3
     maxItemSize: Huge
+    # End Triad
   - type: ToggleableClothing
     clothingPrototypes:
       head: ClothingModsuitHelmetMercenary
