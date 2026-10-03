@@ -1,0 +1,9 @@
+- type: loadout
+  id: ClothingNeckCMOOverShoulder
+  equipment:
+    neck: ClothingNeckCMOOverShoulder
+
+- type: loadout
+  id: ClothingNeckCMOShawl
+  equipment:
+    neck: ClothingNeckCMOShawl

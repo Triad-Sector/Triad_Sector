@@ -1,0 +1,14 @@
+- type: loadout
+  id: ClothingHeadHatBeretMedical
+  equipment:
+    head: ClothingHeadHatBeretMedical
+
+- type: loadout
+  id: ClothingHeadHatBeretSeniorChemistry
+  equipment:
+    head: ClothingHeadHatBeretSeniorChemistry
+
+- type: loadout
+  id: ClothingHeadHatBeretParamedic
+  equipment:
+    head: ClothingHeadHatBeretParamedic
