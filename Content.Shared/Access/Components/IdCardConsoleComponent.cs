@@ -68,7 +68,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "Janitor",
         //"Kitchen",
         "Mail", // Frontier
-        "Mercenary", // Frontier
+        "Civilian", // Triad
         //"Quartermaster",
         //"Research",
         "Lawyer",

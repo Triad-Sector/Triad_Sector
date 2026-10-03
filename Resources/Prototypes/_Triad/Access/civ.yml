@@ -39,7 +39,7 @@
   - Pilot
 
 - type: accessGroup
-  id: CivilianAccess
+  id: Civilian
   tags:
   - Mercenary # This is here for legacy purposes
   - Pilot # This is here for legacy purposes

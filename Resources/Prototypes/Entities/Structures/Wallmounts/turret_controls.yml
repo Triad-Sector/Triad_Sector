@@ -100,7 +100,7 @@
     accessGroups:
     - TDF
     - TFA
-    - CivilianAccess
+    - Civilian
     - Silicon
     accessLevels:
     ## TDF
