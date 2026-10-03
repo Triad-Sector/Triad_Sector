@@ -6,6 +6,9 @@
   - ClothingUniformJumpsuitColorGrey
   - ClothingUniformJumpskirtColorGrey
   - ClothingUniformJumpsuitLoungewear
+  - TriadJumpsuitGhostlightCoreRecipe # Triad
+  - TriadJumpsuitGhostlightNamedRecipe
+  - TriadJumpsuitGhostlightTitledRecipe #Triad End
 
 - type: latheRecipePack
   id: ClothingCargo
