@@ -14,6 +14,19 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
+  id: WeaponSubMachineGunDrozdRecipeTdf
+  result: WeaponSubMachineGunDrozd # Stand in gun
+  categories:
+  - SMGs
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 800
+    Plasteel: 400
+    Plastic: 600
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
   id: WeaponRifleCrosshairTDF
   result: WeaponRifleCrosshair
   categories:
@@ -47,9 +60,9 @@
   - Ballistic
   - Weapons
   materials: # scaled up from a 579-credit bill to match the 5,000-credit sale price
-    Steel: 22000
-    Plasteel: 13000
-    Plastic: 4500
+    Steel: 1800
+    Plasteel: 800
+    Plastic: 400
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
@@ -64,3 +77,15 @@
     Steel: 3500
     Plasteel: 2000
     Plastic: 1200
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponLauncherBearsLegRecipeTdf
+  result: WeaponLauncherBearsLeg
+  categories:
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 1800
+    Plasteel: 800
+    Plastic: 400

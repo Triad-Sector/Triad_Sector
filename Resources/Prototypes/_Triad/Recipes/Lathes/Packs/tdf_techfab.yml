@@ -56,12 +56,13 @@
   id: TdfDynamicGun
   recipes:
   - WeaponRifleLecterRecipeTdf
+  - WeaponSubMachineGunDrozdRecipeTdf
   - WeaponRifleBishopRecipeTdf
   - WeaponRifleCrosshairTDF
   - WeaponLMGRiotTdf
   - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponShotgunBombadier
-  - AmmoBox68x52mmCaselessBig
+  - WeaponLauncherBearsLegRecipeTdf
 
 - type: latheRecipePack
   id: TDFDynamicVoucher

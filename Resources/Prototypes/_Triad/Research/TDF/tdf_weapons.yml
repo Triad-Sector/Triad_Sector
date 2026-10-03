@@ -7,6 +7,7 @@
   cost: 25000
   recipeUnlocks:
   - WeaponRifleLecterRecipeTdf
+  - WeaponSubMachineGunDrozdRecipeTdf
   - WeaponRifleCrosshairTDF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
@@ -43,7 +44,7 @@
   - WeaponRifleBishopRecipeTdf
   - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponLMGRiotTdf
-  - AmmoBox68x52mmCaselessBig
+  - WeaponLauncherBearsLegRecipeTdf
   technologyPrerequisites:
   - TdfBasicGuns
   - UniversalMaterialResearchT2
