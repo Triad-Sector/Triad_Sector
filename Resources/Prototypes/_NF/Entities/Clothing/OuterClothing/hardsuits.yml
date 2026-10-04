@@ -47,9 +47,9 @@
   description: A special suit that protects from the danger of space, employed by private security forces.
   components:
   - type: Sprite
-    sprite: _NF/Clothing/OuterClothing/Hardsuits/private_security.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/private_security.rsi # Triad resprite
   - type: Clothing
-    sprite: _NF/Clothing/OuterClothing/Hardsuits/private_security.rsi
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/private_security.rsi # Triad resprite
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
