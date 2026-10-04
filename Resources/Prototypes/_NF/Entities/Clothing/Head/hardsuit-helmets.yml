@@ -59,7 +59,7 @@
       - state: equipped-HELMET-light-reptilian
         shader: unshaded
   - type: PointLight
-    color: "#ffff00"
+    color: "#f3f382"
 
 #Pilot Hardsuit
 - type: entity
