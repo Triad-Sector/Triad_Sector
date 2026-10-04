@@ -58,25 +58,25 @@
  #  manufacturer: weapon-details-manufacturer-SESWC-consortium
 
 - type: entity
-  name: TDF M-7 Lecter (6.8x52mm Caseless)
-  parent: WeaponRifleLecter
-  id: WeaponRifleLecterTdf
-  description: Reverse-engineered variant of the Solarian Republic's Lecter, now used by the TDF as their standard issue rifle. Comes with a vertical grip to improve handling. Accurate, easy to use, and firing the 6.8x52mm STANAG round.
+  parent: [WeaponRifleLecter, BaseFactionGearTDFT0, BaseShipContrabandPermittableTdf]
+  id: WeaponRifleVigil
+  name: TDF MT-7 Vigil (6.8x52mm Caseless)
+  description: The modern Triad Armaments battle rifle, made from modernizing older CDF schematics. Used as the standard rifle in the Triad Defense Force. Accurate, easy to use, and firing the 6.8x52mm STANAG round.
   components:
   - type: Item
     size: Huge
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil_inhands_32x.rsi
   - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil.rsi
   - type: Clothing
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil_inhands_32x.rsi
   - type: Gun
     cameraRecoilScalar: 0.5 # grip
     angleIncrease: 0.4
 
 - type: entity
-  parent: WeaponRifleLecterTdf
-  id: WeaponRifleLecterTdfRubber
+  parent: WeaponRifleVigil
+  id: WeaponRifleVigilRubber
   suffix: Non-Lethal
   components:
   - type: ItemSlots
@@ -102,26 +102,79 @@
             - Cartridge556x45mmFMJ
 
 - type: entity
-  name: TDF MR-8T DMR (8x65mm SKR)
+  parent: [WeaponRifleVulcan, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
+  name: TDF MT-5 Crosshair (7.62x51mm)
+  id: WeaponRifleCrosshair
+  description: A modern TDF enforcer rifle based on the Vulcan's blueprint. Chambered in 7.62x51mm, it is designed for close to medium-range combat, delivering substantial stopping power while retaining versatility across varying engagements.
+  components:
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair_inhands_32.rsi
+  - type: Item
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair_inhands_32.rsi
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: GunWieldBonus
+    minAngle: -5
+    maxAngle: -15
+  - type: Gun
+    minAngle: 12
+    maxAngle: 32
+    angleIncrease: 4
+    angleDecay: 4
+    fireRate: 5
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+  - type: SpeedModifiedOnWield # Mono
+    walkModifier: 1
+    sprintModifier: 0.9
+  - type: PirateBountyItem # Mono
+    id: StandardFactionLongarm
+  - type: GunRequiresWield
+
+- type: entity
   parent: [BaseFactionGearTDFT2, WeaponRifleMR8C, BaseShipContrabandPermittableTdf]
-  id: WeaponRifleMR8T
-  description: An expensive TDF-modified version of the solarian republic's MR-8 DMR. It comes with a wooden grip, stock, a sleeker scope, and an improved barrel. Chambered in 8x65mm SKR. A label on the side reads "TRIAD DEFENSE FORCE".
+  name: TDF MT-8 Bishop (8x65mm SKR)
+  id: WeaponRifleBishop
+  description: A modern TDF marksman rifle based on older CDF schematics. Chambered in 8x65mm SKR, it is designed for medium to long-range combat, featuring improved ergonomics and a refined scope for greater accuracy and handling.
   components:
   - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/bishop.rsi
   - type: Item
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/bishop_inhands_32x.rsi
   - type: Clothing
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c_inhands_32x.rsi
+    sprite: _Triad/Objects/Weapons/Guns/Rifles/bishop_inhands_32x.rsi
+  - type: GunWieldBonus
+    minAngle: -18
+    maxAngle: -39
   - type: Gun
-    projectileSpeed: 65 # Improved barrel
+    projectileSpeed: 60 # Improved barrel
+    availableModes:
+    - Burst
+    - SemiAuto
+    burstCooldown: 0.5
+    burstFireRate: 8
+    shotsPerBurst: 2
+    minAngle: 21
+    maxAngle: 48
+    angleIncrease: 3
+    angleDecay: 1
   - type: SpeedModifiedOnWield
     walkModifier: 0.65
     sprintModifier: 0.5
 
 - type: entity
-  name: HZD "Pike" (5.56x45mm)
   parent: BaseWeaponRifle
+  name: HZD "Pike" (5.56x45mm)
   id: WeaponRiflePike
   description: Holk & Zis Dynamic's notoriously heavy burst rifle, featuring a scope and laser to assist in aiming.  A massively overbuilt rifle that was one of HZD's first offerings upon arriving in the sector, commonly seen in the hands of the hands of HZD guards who vigorously complain about its weight.
   components:

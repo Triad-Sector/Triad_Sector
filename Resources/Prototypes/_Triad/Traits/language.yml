@@ -1,0 +1,178 @@
+# The tajaran language, Siik'Maas
+- type: trait
+  id: SiikMaas
+  name: trait-language-SiikMaas-name
+  description: trait-language-SiikMaas-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - SiikMaas
+
+# Andromeda Standard Sign Language (AS-SL)
+- type: trait
+  id: SignLanguage
+  name: trait-language-signlanguage-name
+  description: trait-language-signlanguage-desc
+  category: LanguageTraits
+  cost: 0
+  conditions:
+  # Signing needs hands. Block for a DOUBLE arm amputee
+  - !type:AllOfCondition
+    invert: true
+    tooltip: trait-condition-needs-an-arm
+    conditions:
+    - !type:HasTraitCondition
+      trait: ArmAmputeeLeft
+    - !type:HasTraitCondition
+      trait: ArmAmputeeRight
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Sign
+
+# The language of the traders, Tradeband
+- type: trait
+  id: Tradeband
+  name: trait-language-tradeband-name
+  description: trait-language-tradeband-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Tradeband
+
+# Elyran
+- type: trait
+  id: Elyran
+  name: trait-language-elyran-name
+  description: trait-language-elyran-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Elyran
+
+# Novu Nederic, netherlands inspired language
+- type: trait
+  id: NovuNederic
+  name: trait-language-novunederic-name
+  description: trait-language-novunederic-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - NovuNederic
+
+# Terra Slavic, a derived version of Sol common, inspired by Slavic languages of Earth.
+- type: trait
+  id: TerraSlavic
+  name: trait-language-terraslavic-name
+  description: trait-language-terraslavic-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - TerraSlavic
+
+# Sol Common, the language of the Federated Solarian Republic. Spoken by SD members and residents of Sol.
+- type: trait
+  id: SolCommon
+  name: trait-language-solcommon-name
+  description: trait-language-solcommon-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - SolCommon
+
+# Tau, the language of the Imperial Coalition. Spoken across the entire Tau System.
+- type: trait
+  id: Tau
+  name: trait-language-tau-name
+  description: trait-language-tau-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Tau
+
+# Triadian, one of the official languages of the Triad Sector!
+- type: trait
+  id: Triadian
+  name: trait-language-triadian-name
+  description: trait-language-triadian-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: true
+    languages:
+    - Triadian
+
+# Foreigner, making you lose access to Andromeda Standard, for RP value. Foreigners get extra language slots.
+- type: trait
+  id: Foreigner
+  name: trait-language-foreigner-name
+  description: trait-language-foreigner-desc
+  category: LanguageTraits
+  cost: 0
+  grantsCategorySlots:
+    LanguageTraits: 2
+  priority: -2 # Triad - Lower priority so language traits are applied first
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: ForeignerTrait
+      baseTranslator: TranslatorForeigner

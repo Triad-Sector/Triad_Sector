@@ -7,7 +7,7 @@
   parent: BaseVessel
   name: SRA Duran
   description: A general-purpose expeditionary vessel with a complementary kitchen. Cheap, slow, and has the structural integrity of a crunchy autumn leaf, but by god does it have soul.
-  price: 40600
+  price: 50000
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/duran.yml
@@ -34,5 +34,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
-            Mercenary: [ 0, 0 ]
+

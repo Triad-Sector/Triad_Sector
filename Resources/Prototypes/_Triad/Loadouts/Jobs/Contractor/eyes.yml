@@ -1,0 +1,53 @@
+- type: loadout
+  id: ClothingEyesGlassesPilot
+  groupBy: Goggles
+  equipment:
+    eyes: ClothingEyesGlassesPilot
+
+- type: loadout
+  id: ClothingEyesGlassesMercenary
+  groupBy: Glasses
+  equipment:
+    eyes: ClothingEyesGlassesMercenary
+
+- type: loadout
+  id: ClothingEyesGlassesSunglasses
+  groupBy: Glasses
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+
+- type: loadout
+  id: ClothingEyesBallisticGogglesRed
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGogglesRed
+
+- type: loadout
+  id: ClothingEyesBallisticGogglesGreen
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGogglesGreen
+
+- type: loadout
+  id: ClothingEyesBallisticGogglesOrange
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGogglesOrange
+
+- type: loadout
+  id: ClothingEyesBallisticGlassesRed
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGlassesRed
+
+- type: loadout
+  id: ClothingEyesBallisticGlassesGreen
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGlassesGreen
+
+- type: loadout
+  id: ClothingEyesBallisticGlassesOrange
+  groupBy: BallisticGlasses
+  equipment:
+    eyes: ClothingEyesBallisticGlassesOrange

@@ -7,8 +7,6 @@
   - type: VendingMachine
     pack: WeaponryWorksVendPOIMercInventory
     requiresCash: true
-  - type: AccessReader
-    access: [["Mercenary"], ["Security"]]
 
 - type: entity
   parent: [VendingMachineAstroVend, BaseStructureDisableAnchoring]
@@ -127,8 +125,6 @@
       shader: unshaded
     - state: panel
       map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-  - type: AccessReader
-    access: [["Mercenary"], ["Security"]]
 
 - type: entity
   parent: [VendingMachineAstroVend, BaseStructureDisableAnchoring]

@@ -111,7 +111,7 @@
   <Box Margin="10"/>
 
   ## Faction relations:
-  The TDF is currently weary of the return of the Solarian Directive and The Imperial Coalition due to reports of drones and scout vessels being seen in the outer ring, and thus their security and vigilance has been abnormally hightened in response.
+  The TDF is currently weary of the return of the Solarian Directive and the Imperial Coalition of Tau due to reports of drones and scout vessels being seen in the outer ring, and thus their security and vigilance has been abnormally hightened in response.
 
   <Table Columns="2" MinForcedColumnWidth="25">
     <ColorBox Color="#FF7D45">
@@ -136,7 +136,7 @@
     </ColorBox>
     <ColorBox Color="#7e3834">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        The Imperial Coalition
+        Imperial Coalition of Tau
       </Box>
     </ColorBox>
     <ColorBox Color="#e62121">

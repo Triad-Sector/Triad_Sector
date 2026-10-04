@@ -1,12 +1,13 @@
 - type: technology
   id: TdfBasicGuns
   name: research-technology-tdf-guns
-  entityIcon: WeaponRifleLecterTdf
+  entityIcon: WeaponRifleVigil
   discipline: TdfWeaponry
   tier: 1
   cost: 25000
   recipeUnlocks:
   - WeaponRifleLecterRecipeTdf
+  - WeaponRifleCrosshairTDF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
   position: 12, 2
@@ -34,12 +35,12 @@
 - type: technology
   id: TdfAdvanceGuns
   name: research-technology-tdf-guns-advance
-  entityIcon: WeaponRifleMR8T
+  entityIcon: WeaponLMGRiot
   discipline: TdfWeaponry
   tier: 2
   cost: 35000
   recipeUnlocks:
-  - WeaponRifleMR8TRecipeTdf
+  - WeaponRifleBishopRecipeTdf
   - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponLMGRiotTdf
   - AmmoBox68x52mmCaselessBig

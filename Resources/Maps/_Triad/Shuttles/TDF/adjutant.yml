@@ -5848,7 +5848,7 @@ entities:
       parent: 417
     - type: Physics
       canCollide: False
-- proto: WeaponRifleLecterTdf
+- proto: WeaponRifleVigil
   entities:
   - uid: 419
     components:

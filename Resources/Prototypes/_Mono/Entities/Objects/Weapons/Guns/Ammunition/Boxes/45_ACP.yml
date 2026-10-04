@@ -114,7 +114,7 @@
 
 # Frontier
 - type: entity
-  parent: BaseAmmoBox45_ACP
+  parent: [BaseAmmoBox45_ACP, BaseClass2AShipContrabandSilent]
   id: AmmoBox45_ACPEmp
   name: ammunition box (.45 ACP emp)
   components:

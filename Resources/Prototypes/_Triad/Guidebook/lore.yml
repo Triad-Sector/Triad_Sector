@@ -85,7 +85,7 @@
 
 - type: guideEntry
   id: ImperialCoalition
-  name: The Imperial Coalition
+  name: Imperial Coalition of Tau
   text: "/ServerInfo/Guidebook/Lore/MajorFactions/ImperialCoalition.xml"
 
 # Minor Factions

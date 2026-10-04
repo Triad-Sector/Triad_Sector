@@ -1,0 +1,54 @@
+- type: loadout
+  id: ClothingBalaclavaSkiMaskBlack
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskBlack
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskGray
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskGray
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskWhite
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskWhite
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskRed
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskRed
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskGreen
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskGreen
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskBlue
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskBlue
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskPurple
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskPurple
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskYellow
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskYellow
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskTan
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskTan
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskRangerGreen
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskRangerGreen
+
+- type: loadout
+  id: ClothingBalaclavaSkiMaskCoyoteBrown
+  equipment:
+    balaclava: ClothingBalaclavaSkiMaskCoyoteBrown

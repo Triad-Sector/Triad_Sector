@@ -3,7 +3,7 @@
   parent: BaseVessel
   name: CDF Comet # Triad, name and description change
   description: An old de-militarized, jack-of-all-trades, utility vessel that saw service when the Civilian Defense Force was still around.
-  price: 128000
+  price: 135000
   category: Large
   group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/Expedition/comet.yml
@@ -32,5 +32,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
-            Mercenary: [ 0, 0 ]
+

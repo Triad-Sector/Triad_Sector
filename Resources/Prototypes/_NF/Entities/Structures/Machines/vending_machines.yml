@@ -513,7 +513,10 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
-    ejectDelay: 2.1
+# Start of Triad change: Decreases ejectDelay for the fuel vend
+#    ejectDelay: 2.1
+    ejectDelay: 1
+# End of Triad change
     requiresCash: true
   - type: Advertise
     pack: FuelVendAds

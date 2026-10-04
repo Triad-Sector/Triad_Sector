@@ -108,3 +108,8 @@
   - type: Appearance
   - type: StaticPrice
     price: 20000
+  - type: PhysicalComposition
+    materialComposition:
+      Iridite: 100
+      Plastitanium: 100
+      Glass: 200

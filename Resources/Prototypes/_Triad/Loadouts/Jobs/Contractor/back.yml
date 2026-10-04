@@ -1,14 +1,125 @@
 - type: loadout
+  id: ClothingBackpackSatchelLeather
+  groupBy: CivBag
+  equipment:
+    back: ClothingBackpackSatchelLeather
+
+- type: loadout
+  id: ClothingBackpackTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackSecurity
+
+- type: loadout
+  id: ClothingBackpackSatchelTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackSatchelSecurity
+
+- type: loadout
+  id: ClothingBackpackDuffelTactical
+  groupBy: TacBag
+  equipment:
+    back: ClothingBackpackDuffelSecurity
+
+- type: loadout
+  id: ClothingBackpackMercenary
+  groupBy: MercenaryBag
+  equipment:
+    back: ClothingBackpackMercenary
+
+- type: loadout
+  id: ClothingBackpackDuffelMercenary
+  groupBy: MercenaryBag
+  equipment:
+    back: ClothingBackpackDuffelMercenary
+
+- type: loadout
+  id: ClothingBackpackSatchelMercenary
+  groupBy: MercenaryBag
+  equipment:
+    back: ClothingBackpackSatchelMercenary
+
+- type: loadout
+  id: ClothingBackpackMessengerMercenary
+  groupBy: MercenaryBag
+  equipment:
+    back: ClothingBackpackMessengerMercenary
+
+- type: loadout
   id: ClothingBackpackMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackMilitary
 
 - type: loadout
   id: ClothingBackpackSatchelMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackSatchelMilitary
 
 - type: loadout
   id: ClothingBackpackDuffelMilitary
+  groupBy: MilitaryBag
   equipment:
     back: ClothingBackpackDuffelMilitary
+
+- type: loadout
+  id: ClothingBackpackPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackPilot
+
+- type: loadout
+  id: ClothingBackpackDuffelPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackDuffelPilot
+
+- type: loadout
+  id: ClothingBackpackSatchelPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackSatchelPilot
+
+- type: loadout
+  id: ClothingBackpackMessengerPilot
+  groupBy: PilotBag
+  equipment:
+    back: ClothingBackpackMessengerPilot
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelTan
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelTan
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelOlive
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelOlive
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelBlack
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelBlack
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelRangerGreen
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelRangerGreen
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelCoyoteBrown
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelCoyoteBrown
+
+- type: loadout
+  id: ClothingBackpackDuffelTacticalDuffelWhite
+  groupBy: ColoredDuffel
+  equipment:
+    back: ClothingBackpackDuffelTacticalDuffelWhite

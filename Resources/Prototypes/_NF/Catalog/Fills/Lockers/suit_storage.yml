@@ -174,7 +174,6 @@
   suffix: EVA, TSFMC
   components:
   - type: AccessReader
-    access: [["Security"]]
 
 #HARDSUITS
 #Quartermaster hardsuit
@@ -223,8 +222,6 @@
         - id: ClothingMaskGasMercenary
         - id: JetpackMiniFilled
         - id: ClothingShoesBootsMagMercenaryFilled
-  - type: AccessReader
-    access: [["Captain"], ["Mercenary"]]
 
 - type: entity
   id: SuitStoragePrivateSecurity
@@ -239,8 +236,6 @@
         - id: ClothingMaskGasSecurity
         - id: JetpackMiniFilled
         - id: ClothingShoesBootsMagSecurity
-  - type: AccessReader
-    access: [["Captain"], ["Mercenary"]]
 
 #SCAF hardsuit
 - type: entity
@@ -256,8 +251,6 @@
         - id: ClothingMaskGasMercenary
         - id: JetpackMiniFilled
         - id: ClothingShoesBootsMagMercenaryFilled
-  - type: AccessReader
-    access: [["Captain"], ["Mercenary"]]
 
 #Pilot hardsuit
 - type: entity
@@ -272,7 +265,6 @@
         - id: ClothingOuterHardsuitPilot
         - id: ClothingMaskBreath
         - id: JetpackMiniFilled
-  - type: AccessReader
 
 #Clown hardsuit
 - type: entity
@@ -287,4 +279,3 @@
         - id: ClothingOuterHardsuitClown
         - id: ClothingMaskBreath
         - id: JetpackMiniFilled
-  - type: AccessReader

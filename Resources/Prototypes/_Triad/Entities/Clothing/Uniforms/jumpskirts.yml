@@ -23,3 +23,15 @@
     sprite: _Triad/Clothing/Uniforms/Jumpskirts/tfa_janitor.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Uniforms/Jumpskirts/tfa_janitor.rsi
+
+# Dresses
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtCountess
+  name: countess gown
+  description: A noble black and red gown.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpskirts/countess.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpskirts/countess.rsi

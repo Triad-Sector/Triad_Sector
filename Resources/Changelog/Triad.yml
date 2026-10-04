@@ -5183,3 +5183,164 @@ Entries:
   id: 2635
   time: '2026-09-29T22:00:25.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/679
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: Fixes plasturanium window sprite
+  id: 2636
+  time: '2026-09-30T15:18:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/682
+- author: BoskiYourk
+  changes:
+    - type: Tweak
+      message: Fuel-grade fuels now stack up to 100
+    - type: Tweak
+      message: Fuelvends now dispense 50 fuel-grade fuel at a time
+    - type: Tweak
+      message: Fuelvends now dispense faster
+    - type: Tweak
+      message: Fuelvends now have a more cohesive fuel list
+  id: 2637
+  time: '2026-09-30T17:16:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/683
+- author: DDrakov
+  changes:
+    - type: Add
+      message: >-
+        Added Vigil and the Bishop, replacement guns for the TDF Lecter and TDF
+        MR-8T! Comes with new, shiny sprites.
+    - type: Tweak
+      message: Recolor Riot LMG sprite.
+  id: 2638
+  time: '2026-09-30T17:22:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/680
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        The Imperial Coalition has been renamed to the 'Imperial Coalition of
+        Tau'.
+    - type: Add
+      message: >-
+        (Lore) Added information regarding the Auric District, the name of the
+        playable area in-game. This information is available in the primer.
+    - type: Add
+      message: >-
+        (Lore) Information regarding the Coalition's home system, the Tau
+        System, has been added to their faction lore page under 'Major
+        Factions'.
+    - type: Add
+      message: >-
+        Added Tau, the official language of the Imperial Coalition of Tau.
+        Selectable in traits!
+    - type: Add
+      message: >-
+        Added Triadian, one of the official languages of the Triad Sector.
+        Selectable in traits!
+    - type: Tweak
+      message: >-
+        TFA high command roles now have Triadian as one of their default
+        languages.
+  id: 2639
+  time: '2026-10-01T23:30:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/687
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: Rebuilt weapon groups to make more sense.
+  id: 2640
+  time: '2026-10-02T00:57:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/619
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: 'Changed the AC-2 to fire slower, but heavier rounds '
+    - type: Tweak
+      message: Tweaked mech weapon descriptions again.
+    - type: Tweak
+      message: The "Scattershot" mech auto shotgun now fires 12 gauge flechettes
+    - type: Tweak
+      message: >-
+        The mech rocket pods now are called rocket pods, and fire a quick, high
+        damage burst of rockets, with a large energy cost and cooldown, rather
+        than a slow volley with a short cooldown.
+    - type: Tweak
+      message: >-
+        The two mech auto-lasers recieved a small buff to firerate, to bring
+        them competitive with the newly (slightly) nerfed mech kinetics
+    - type: Tweak
+      message: >-
+        The mech external rocket unit you can find on brass wrecks that needs to
+        be recharged manually, now fires up to 6 shots per charge of its 40mm
+        thermobaric, instead of just one.
+    - type: Tweak
+      message: >-
+        Mech chainsaw is more serviceable, dealing some slash instead of just
+        pierce, a bit more structural, and having AP.
+    - type: Tweak
+      message: >-
+        General more minor changes to all the mech weapons- aimed to make them
+        all have a specific, niche use case, and encourage both picking load
+        outs for the task at hand, and using more than one weapon per encounter.
+  id: 2641
+  time: '2026-10-02T03:14:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/667
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added the countess gown, a new dress available in loadouts!
+  id: 2642
+  time: '2026-10-02T19:16:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/688
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Heavy-Duty Airlock sprite animation. Its timing has been
+        readjusted and no longer overlaps.
+  id: 2643
+  time: '2026-10-03T17:20:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/677
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Spacer loadouts have been massively tweaked, with their major equipment
+        going into organized categories. Hardsuit, armor, and modsuit prices
+        have also been tweaked.
+    - type: Remove
+      message: >-
+        Decommissioned Pilot and Mercenary access. The two accesses have been
+        replaced with a general 'Civilian' access.
+    - type: Remove
+      message: >-
+        Removed Mercenary and Pilot job roles, their gear has been collapsed
+        into Spacer.
+  id: 2644
+  time: '2026-10-03T17:55:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/692
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the Linguist trait. It's under the Physical category, allowing you
+        to select 1 extra language at the cost of 4 physical points.
+  id: 2645
+  time: '2026-10-03T19:03:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/694
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Flash protection is now examinable on items
+  id: 2646
+  time: '2026-10-03T20:00:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/647
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added camera maps
+    - type: Fix
+      message: Fixed the surveillance camera and other camera to function properly
+  id: 2647
+  time: '2026-10-04T00:49:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/691

@@ -1178,11 +1178,11 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityLecterBundle
-  name: uplink-security-gun-lecter-name
-  description: uplink-security-gun-lecter-desc
-  productEntity: WeaponCaseTDFLongLecter
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi, state: icon }
+  id: UplinkSecurityVigilBundle
+  name: uplink-security-gun-vigil-name
+  description: uplink-security-gun-vigil-desc
+  productEntity: WeaponCaseTDFLongVigil
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -1210,13 +1210,13 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityWt550Bundle
-  name: uplink-security-gun-wt550-name
-  description: uplink-security-gun-wt550-desc
-  productEntity: WeaponCaseTDFLongWt550
-  icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
+  id: UplinkSecuritySquireBundle
+  name: uplink-security-gun-squire-name
+  description: uplink-security-gun-squire-desc
+  productEntity: WeaponCaseTDFLongSquire
+  icon: { sprite: _Triad/Objects/Weapons/Guns/SMGs/squire.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 20
+    TriadCommerceCredit: 10
   categories:
   - UplinkSecurityWeapons
   conditions:
@@ -1258,11 +1258,11 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMR8TBundle
-  name: uplink-security-gun-mr8t-name
-  description: uplink-security-gun-mr8t-desc
-  productEntity: WeaponCaseTDFLongMR8T
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi, state: icon }
+  id: UplinkSecurityBishopBundle
+  name: uplink-security-gun-bishop-name
+  description: uplink-security-gun-bishop-desc
+  productEntity: WeaponCaseTDFLongBishop
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/bishop.rsi, state: icon }
   cost:
     TriadCommerceCredit: 125
   categories:

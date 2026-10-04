@@ -1,10 +1,10 @@
-# For TDF, SD, and TIC techdisks, plus whatever factions arrive in the future.
+# For TDF, SD, and ICT techdisks, plus whatever factions arrive in the future.
 
-# TIC
+# ICT
 - type: entity
   parent: TechDiskBase
   id: TechDiskTICLightGrenade
-  name: TIC 18.5 ammunition faction tech disk
+  name: ICT 18.5 ammunition faction tech disk
   description: A disk capable of adding a variety of 18.5 cartridges to a server's recipes, for faction techfabs.
   components:
   - type: Sprite

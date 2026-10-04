@@ -15,12 +15,12 @@
 
 - type: entity
   parent: WeaponCaseLong
-  id: WeaponCaseTDFLongLecter
-  suffix: TDF, Lecter
+  id: WeaponCaseTDFLongVigil
+  suffix: TDF, Vigil
   components:
   - type: StorageFill
     contents:
-    - id: WeaponRifleLecterTdf
+    - id: WeaponRifleVigil
     - id: Magazine68x52mmCaseless
       amount: 4
     - id: AmmoBox68x52mmCaseless
@@ -37,6 +37,19 @@
     - id: Magazine45_ACPSubMachineGunFMJ
       amount: 4
     - id: AmmoBox45_ACPFMJ
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongSquire
+  suffix: TDF, Squire
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunSquire
+    - id: Magazine9x19mmSubMachineGunFMJ
+      amount: 4
+    - id: AmmoBox9x19mmFMJ
       amount: 2
 
 - type: entity
@@ -79,14 +92,16 @@
 
 - type: entity
   parent: WeaponCaseLong
-  id: WeaponCaseTDFLongMR8T
-  suffix: TDF, MR-8T
+  id: WeaponCaseTDFLongBishop
+  suffix: TDF, Bishop
   components:
   - type: StorageFill
     contents:
-    - id: WeaponRifleMR8T
+    - id: WeaponRifleBishop
     - id: Magazine8x65mmSKR
-      amount: 6 # No ammo box exists for 8x65 that isn't 100 rounds, so just mags.
+      amount: 4
+    - id: AmmoBox8x65mmSKR
+      amount: 2
 
 - type: entity
   parent: WeaponCaseLong

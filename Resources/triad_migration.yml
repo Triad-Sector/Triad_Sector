@@ -401,3 +401,8 @@ HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 
 # 2026-09-27
 TdfJuniorEnforcerIdCard: TdfCadetIdCard
+
+# 2026-09-29
+WeaponRifleMR8T: WeaponRifleBishop
+WeaponRifleLecterTdf: WeaponRifleVigil
+WeaponRifleLecterTdfRubber: WeaponRifleVigilRubber
