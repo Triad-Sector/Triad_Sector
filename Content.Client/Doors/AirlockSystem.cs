@@ -9,7 +9,6 @@ namespace Content.Client.Doors;
 
 public sealed partial class AirlockSystem : SharedAirlockSystem
 {
-    [Dependency] private AppearanceSystem _appearanceSystem = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
@@ -83,22 +82,22 @@ public sealed partial class AirlockSystem : SharedAirlockSystem
         var emergencyLightsVisible = false;
         var unlitVisible = false;
 
-        if (!_appearanceSystem.TryGetData<DoorState>(uid, DoorVisuals.State, out var state, args.Component))
+        if (!args.TryGetData<DoorState>(DoorVisuals.State, out var state))
             state = DoorState.Closed;
 
-        if (_appearanceSystem.TryGetData<bool>(uid, PowerDeviceVisuals.Powered, out var powered, args.Component)
+        if (args.TryGetData<bool>(PowerDeviceVisuals.Powered, out var powered)
             && powered)
         {
-            boltedVisible = _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var lights, args.Component)
+            boltedVisible = args.TryGetData<bool>(DoorVisuals.BoltLights, out var lights)
                             && lights && (state == DoorState.Closed || state == DoorState.Welded);
 
-            emergencyLightsVisible = _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.EmergencyLights, out var eaLights, args.Component) && eaLights;
+            emergencyLightsVisible = args.TryGetData<bool>(DoorVisuals.EmergencyLights, out var eaLights) && eaLights;
             unlitVisible =
                     (state == DoorState.Closing
                 ||  state == DoorState.Opening
                 ||  state == DoorState.Denying
                 || (state == DoorState.Open && comp.OpenUnlitVisible)
-                || (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.ClosedLights, out var closedLights, args.Component) && closedLights))
+                || (args.TryGetData<bool>(DoorVisuals.ClosedLights, out var closedLights) && closedLights))
                     && !boltedVisible && !emergencyLightsVisible;
         }
 
