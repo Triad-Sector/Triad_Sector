@@ -1,0 +1,151 @@
+- type: entity
+  id: BaseCartridge185x76mm
+  name: cartridge (18.5x76mm)
+  parent: BaseCartridge
+  description: A strange hybrid round between a typical low-caliber grenade launcher, and an anti-materiel round. Kicks like a mule and offers some exotic round types.
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge185x76mm
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmFMJ
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/light_grenade_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: StaticPrice
+    price: 1
+
+- type: entity
+  id: Cartridge185x76mm
+  name: cartridge (18.5x76mm FMJ)
+  parent: BaseCartridge185x76mm
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmFMJ
+
+- type: entity
+  id: Cartridge185x76mmAnti-Materiel
+  name: cartridge (18.5x76mm anti-materiel)
+  parent: BaseCartridge185x76mm
+  description: With a hardened plastitanium core, not much can stand in the way of this without getting perforated.
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmAnti-Materiel
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#0a0a0a"
+
+- type: entity
+  id: Cartridge185x76mmFragmentation
+  name: cartridge (18.5x76mm fragmentation)
+  parent: BaseCartridge185x76mm
+  description: Contains fragments that shoot outward on contact.
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmFragmentation
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#63e618"
+
+- type: entity
+  id: Cartridge185x76mmFragmentationIncendiary
+  name: cartridge (18.5x76mm fragmentation incendiary)
+  parent: BaseCartridge185x76mm
+  description: Contains fragments that shoot outward on contact.
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmFragmentationIncendiary
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#e8ff16"
+
+- type: entity
+  id: Cartridge185x76mmHighEx
+  name: cartridge (18.5x76mm high-explosive)
+  parent: BaseCartridge185x76mm
+  description: Try not to drop it.
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmHighEx
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#ff0000"
+
+- type: entity
+  id: Cartridge185x76mmHighExInc
+  name: cartridge (18.5x76mm high-explosive incendiary)
+  parent: BaseCartridge185x76mm
+  description: Contains a powdered incendiary mix that melts into a sticky napalm like substance, burning and sticking to whatever poor soul you shoot this at.
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmHighExIncendiary
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#fa6b00"
+
+- type: entity
+  id: Cartridge185x76mmHighExRad
+  name: cartridge (18.5x76mm high-explosive radiation)
+  parent: BaseCartridge185x76mm
+  description: A round packed full of high-explosives and fissile uranium, the hell is wrong with you?
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmHighExRad
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.AmmoVisualLayers.Base" ]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip" ]
+      color: "#04ff00"
+
+- type: entity
+  id: Cartridge185x76mmEMP
+  name: cartridge (18.5x76mm emp)
+  parent: BaseCartridge
+  description: An expensive and unstable EMP round, it hums faintly with the power contained within.
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge185x76mmEMP #fits in EMP mags exclusively
+  - type: CartridgeAmmo
+    proto: Bullet185x76mmEMP
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Casings/light_grenade_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+    - state: tip
+      map: [ "enum.AmmoVisualLayers.Tip"]
+      color: "#001eff"
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: StaticPrice
+    price: 1

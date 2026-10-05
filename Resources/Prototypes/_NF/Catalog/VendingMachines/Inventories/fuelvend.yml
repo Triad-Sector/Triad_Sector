@@ -4,8 +4,15 @@
 - type: vendingMachineInventory
   id: VendingMachineFuelVendInventory
   startingInventory:
+# Start of Triad change: updates fuel vend entry order
+#    FuelPlasma: 4294967295 # Infinite
+#    FuelUranium: 4294967295 # Infinite
+#    AmeJar: 4294967295 # Infinite
+#    JerryCanWeldingFuel: 4294967295 # Infinite
+#    FuelBananium: 4294967295 # Infinite
+    JerryCanWeldingFuel: 4294967295 # Infinite
     FuelPlasma: 4294967295 # Infinite
     FuelUranium: 4294967295 # Infinite
-    AmeJar: 4294967295 # Infinite
-    JerryCanWeldingFuel: 4294967295 # Infinite
     FuelBananium: 4294967295 # Infinite
+    AmeJar: 4294967295 # Infinite
+# End of Triad change

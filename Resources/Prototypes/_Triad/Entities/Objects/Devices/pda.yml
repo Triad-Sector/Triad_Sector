@@ -56,7 +56,7 @@
   description: Bummer. You're just a cadet!
   components:
   - type: Pda
-    id: TdfJuniorEnforcerIdCard
+    id: TdfCadetIdCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -116,13 +116,24 @@
     state: pda-medic
 
 - type: entity
-  parent: TdfMedicPda
+  parent: BaseTdfPDA
   id: TdfLieutenantPda
   name: TDF lieutenant PDA
   description: It has a star on it! Awesome.
   components:
   - type: Pda
     id: TdfLieutenantIDCard
+  - type: CartridgeLoader # Extended with the ledger
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - BountyContractsCartridge
+    - AstroNavCartridge
+    - WantedListCartridge
+    - LedgerCartridge
+    - MedTekCartridge
+    - TriTalkCartridge # Triad
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

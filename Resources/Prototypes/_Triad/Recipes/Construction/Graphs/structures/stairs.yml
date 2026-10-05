@@ -1,0 +1,166 @@
+﻿- type: constructionGraph
+  id: StairsGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: stairSteel
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileSteel
+        amount: 2
+        doAfter: 2
+    - to: stairStageSteel
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileSteel
+        amount: 2
+        doAfter: 2
+    - to: stairWhite
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileWhite
+        amount: 2
+        doAfter: 2
+    - to: stairStageWhite
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileWhite
+        amount: 2
+        doAfter: 2
+    - to: stairDark
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileDark
+        amount: 2
+        doAfter: 2
+    - to: stairStageDark
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileDark
+        amount: 2
+        doAfter: 2
+    - to: stairWood
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileWood
+        amount: 2
+        doAfter: 2
+    - to: stairStageWood
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: FloorTileWood
+        amount: 2
+        doAfter: 2
+
+  - node: stairSteel
+    entity: Stairs
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemSteel
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairStageSteel
+    entity: StairStage
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemSteel
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairWhite
+    entity: StairWhite
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemWhite
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairStageWhite
+    entity: StairStageWhite
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemWhite
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairDark
+    entity: StairDark
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemDark
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairStageDark
+    entity: StairStageDark
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemDark
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairWood
+    entity: StairWood
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemWood
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2
+
+  - node: stairStageWood
+    entity: StairStageWood
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: FloorTileItemWood
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Prying
+        doAfter: 2

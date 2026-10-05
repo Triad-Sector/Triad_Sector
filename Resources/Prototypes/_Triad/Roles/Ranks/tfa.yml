@@ -7,12 +7,32 @@
 - type: rank
   id: RankDoC
   name: Director of Care
-  prefix: Dr.
+  prefix: DoC
 
 - type: rank
   id: RankEmergencyResponder
   name: Emergency Medical Technician
   prefix: EMT
+
+- type: rank
+  id: RankDoI
+  name: Director of Infrastructure
+  prefix: DoI
+
+- type: rank
+  id: RankSeniorTechnician
+  name: Senior Technician
+  prefix: Sr. Tech.
+
+- type: rank
+  id: RankTechnician
+  name: Technician
+  prefix: Tech.
+
+- type: rank
+  id: RankJuniorTechnician
+  name: Junior Technician
+  prefix: Jr. Tech.
 
 - type: rank
   id: RankStationGuardSenior

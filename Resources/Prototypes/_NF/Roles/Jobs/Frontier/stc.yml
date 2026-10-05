@@ -11,7 +11,7 @@
   canBeAntag: false
   icon: "JobIconStc"
   assignedCompany: Colonial
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 160
   displayWeight: 50 # Second from the top
   setPreference: true

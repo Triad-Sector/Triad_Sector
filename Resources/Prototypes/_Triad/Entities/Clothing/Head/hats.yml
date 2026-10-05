@@ -72,7 +72,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatTdfLieutenant
   name: TDF lieutenant's cap
-  description: A grey warden's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you have AUTHORITY!
+  description: A grey lieutenant's cap, fit with the TDF shield symbol on the front. This hat emphasizes that you have AUTHORITY!
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hats/tdf_warden.rsi
@@ -97,3 +97,27 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
+
+- type: entity
+  parent: ClothingHeadHatChef
+  id: ClothingHeadHatChefTfa
+  name: TFA chef's hat
+  description: It's a hat used by TFA chefs to keep hair out of your food.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#635f69"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#635f69"
+      right:
+      - state: inhand-right
+        color: "#635f69"
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: "#635f69"

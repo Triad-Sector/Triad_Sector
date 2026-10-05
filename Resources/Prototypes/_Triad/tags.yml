@@ -29,6 +29,27 @@
 - type: Tag
   id: TriadHeavyWeapon
 
+# Cartridges
+
+- type: Tag
+  id: Cartridge185x76mm
+
+- type: Tag
+  id: Cartridge185x76mmEMP
+
+# Magazines
+
+- type: Tag
+  id: Magazine185x76mm
+
+- type: Tag
+  id: ShortMagazine12_gaugeBuckshot
+
+# Ammo Boxes
+
+- type: Tag
+  id: Magazine185x76mmFMJBox
+
 # Clothing
 - type: Tag
   id: AdvancedTacticalBackpack
@@ -65,3 +86,7 @@
 
 - type: Tag
   id: BorgModuleSolarianEngineering
+
+# Safety deposit
+- type: Tag
+  id: SafetyDepositBox

@@ -13,6 +13,8 @@
     duration: 1020
     maxDuration: 1350
     reoccurrenceDelay: 360 # 6 hours
+    requiredJobs:
+      TdfLieutenant: 1
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
@@ -55,6 +57,8 @@
     duration: 590
     maxDuration: 780
     reoccurrenceDelay: 360 # 6 hours
+    requiredJobs:
+      TdfLieutenant: 1
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup

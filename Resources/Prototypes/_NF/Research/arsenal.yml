@@ -70,6 +70,7 @@
   recipeUnlocks:
   - ClothingOuterHardsuitMercenary
   - ClothingOuterHardsuitPrivateSecurity
+  - ClothingOuterHardsuitRmtM10 # Triad
   technologyPrerequisites:
   - HardsuitsSpecialized
   - HardsuitsAdvanced
@@ -122,6 +123,7 @@
   - ClothingOuterHardsuitScaf
   - ClothingOuterHardsuitPirateScaf
   - BlueprintClothingOuterHardsuitScaf
+  - ClothingOuterHardsuitIndustrialEngi # Triad
   technologyPrerequisites:
   - HardsuitsArmored
   - SuperParts

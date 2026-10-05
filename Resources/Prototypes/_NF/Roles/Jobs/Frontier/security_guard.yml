@@ -9,7 +9,7 @@
   startingGear: SecurityGuardGear
   alwaysUseSpawner: true
   icon: "JobIconSecurityGuard"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   assignedCompany: Colonial
   weight: 80
   displayWeight: 20 # Second from the bottom

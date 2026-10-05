@@ -391,7 +391,7 @@
 - type: entity
   id: Magazine45_ACPSubMachineGunEmp
   name: SMG magazine (.45 ACP emp)
-  parent: BaseMagazine45_ACPSubMachineGunFMJ
+  parent: [BaseMagazine45_ACPSubMachineGunFMJ, BaseClass2AShipContrabandSilent]
   components:
   - type: BallisticAmmoProvider
     proto: Cartridge45_ACPEmp

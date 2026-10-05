@@ -36,6 +36,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
     [Dependency] private DecalSystem _decals = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private TileSystem _tile = default!;
+    [Dependency] private TurfSystem _turf = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private SharedMapSystem _maps = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -212,6 +213,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             this,
             _lookup,
             _tile,
+            _turf,
             _transform,
             gen,
             grid,
@@ -246,6 +248,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             this,
             _lookup,
             _tile,
+            _turf,
             _transform,
             gen,
             grid,

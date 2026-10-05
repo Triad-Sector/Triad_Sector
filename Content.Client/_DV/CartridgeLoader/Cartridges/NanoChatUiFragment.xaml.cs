@@ -19,7 +19,7 @@ namespace Content.Client._DV.CartridgeLoader.Cartridges;
 [GenerateTypedNameReferences]
 public sealed partial class NanoChatUiFragment : BoxContainer
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     // Triad: upstream Delta-V reads these from CCVars.MaxNameLength/MaxIdJobLength, which we do not carry.
     // Matches the server-side limits in NanoChatCartridgeSystem.

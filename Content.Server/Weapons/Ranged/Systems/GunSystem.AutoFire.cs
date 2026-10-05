@@ -55,7 +55,7 @@ public sealed partial class GunSystem
                     autoShoot.RemainingTime -= TimeSpan.FromSeconds(frameTime);
                 }
 
-                AttemptShoot(uid, uid, gun);
+                AttemptShoot(autoShoot.User ?? uid, uid, gun); // Triad autoshoot user
             }
         }
     }

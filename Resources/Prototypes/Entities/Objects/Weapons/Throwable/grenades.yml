@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [BaseItem, RecyclableItemSteelSmall] # Frontier: added RecyclableItemSteelSmall
+  parent: [BaseItem, RecyclableItemSteelSmall, BaseSafeGrenade] # Frontier: added RecyclableItemSteelSmall, Triad: Added BaseSafeGrenade to avoid chain reaction.
   id: GrenadeBase
   components:
   - type: WeaponCaseInsertable # Frontier
@@ -363,7 +363,7 @@
 - type: entity
   name: EMP grenade
   description: A grenade designed to wreak havoc on electronic systems.
-  parent: GrenadeBase
+  parent: [BaseUnsafeGrenade, GrenadeBase] # Triad: Added BaseUnsafeGrenade to allow chain reactions.
   id: EmpGrenade
   components:
   - type: Sprite
@@ -409,7 +409,7 @@
       path: /Audio/Effects/hallelujah.ogg
 
 - type: entity
-  parent: GrenadeBase
+  parent: [BaseUnsafeGrenade, GrenadeBase] # Triad: Added BaseUnsafeGrenade to allow chain reactions.
   id: SmokeGrenade
   name: smoke grenade
   description: A tactical grenade that releases a large, long-lasting cloud of smoke when used.
@@ -479,7 +479,7 @@
         Quantity: 50
 
 - type: entity
-  parent: SmokeGrenade
+  parent: [BaseSafeGrenade, SmokeGrenade] # Triad: Added BaseSafeGrenade to avoid chain reaction, nobody likes their metal foam entombing them.
   id: MetalFoamGrenade
   name: metal foam grenade
   description: An emergency tool used for patching up holes. Almost as good as real walls.

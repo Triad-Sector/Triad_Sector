@@ -1,0 +1,149 @@
+- type: entity
+  abstract: true
+  parent: [BaseItem, RecyclableItemCardboard]
+  id: BaseAmmoBox185x76mm
+  name: ammunition box (18.5x76mm FMJ)
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - Cartridge185x76mm
+    proto: Cartridge185x76mm
+    capacity: 30 # 1.5 times mag capacity
+  - type: Item
+    shape:
+    - 0,0,1,1
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Boxes/light_grenade_box.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: false
+  - type: Tag
+    tags:
+    - Magazine185x76mmFMJBox
+  - type: Appearance
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+
+# ammoboxes, no emp box on purpose
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmFMJ
+  name: ammunition box (18.5x76mm fmj)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mm
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmAnti-Materiel
+  name: ammunition box (18.5x76mm anti-materiel)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmAnti-Materiel
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#0a0a0a"
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmFragmentation
+  name: ammunition box (18.5x76mm fragmentation)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmFragmentation
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#63e618"
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmFragmentationIncendiary
+  name: ammunition box (18.5x76mm fragmentation incendiary)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmFragmentationIncendiary
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#e8ff16"
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmHighEx
+  name: ammunition box (18.5x76mm high-explosive)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighEx
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#ff0000"
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmHighExIncendiary
+  name: ammunition box (18.5x76mm high-explosive incendiary)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighExInc
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#fa6b00"
+
+- type: entity
+  parent: BaseAmmoBox185x76mm
+  id: AmmoBox185x76mmHighExRad
+  name: ammunition box (18.5x76mm high-explosive radiation)
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge185x76mmHighExRad
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripes
+      color: "#04ff00"

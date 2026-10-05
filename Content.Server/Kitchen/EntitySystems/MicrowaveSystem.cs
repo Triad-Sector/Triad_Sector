@@ -37,6 +37,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using System.Linq;
+using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.Stacks;
@@ -221,7 +222,7 @@ namespace Content.Server.Kitchen.EntitySystems
         {
             // TODO Turn recipe.IngredientsReagents into a ReagentQuantity[]
 
-            var totalReagentsToRemove = new Dictionary<string, FixedPoint2>(recipe.IngredientsReagents);
+            var totalReagentsToRemove = new Dictionary<ProtoId<ReagentPrototype>, FixedPoint2>(recipe.IngredientsReagents);
 
             // this is spaghetti ngl
             foreach (var item in component.Storage.ContainedEntities)

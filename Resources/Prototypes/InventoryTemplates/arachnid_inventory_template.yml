@@ -60,39 +60,13 @@
       uiWindowPos: 1,4
       strippingWindowPos: 1,0
       displayName: Head
-
-    - name: pocket4
-      slotTexture: web
-      fullTextureName: template_small
-      slotFlags: POCKET
-      slotGroup: MainHotbar
-      stripTime: 3
-      uiWindowPos: 2,4
-      strippingWindowPos: 2,3
-      displayName: Pocket 4
-    - name: pocket3
-      slotTexture: web
-      fullTextureName: template_small
-      slotFlags: POCKET
-      slotGroup: MainHotbar
-      stripTime: 3
-      uiWindowPos: 0,4
-      strippingWindowPos: 0,3
-      displayName: Pocket 3
-    - name: outerClothing
-      slotTexture: suit
-      slotFlags: OUTERCLOTHING
-      stripTime: 6
-      uiWindowPos: 1,1
-      strippingWindowPos: 1,2
-      displayName: Suit
     - name: pocket1
       slotTexture: pocket
       fullTextureName: template_small
       slotFlags: POCKET
       slotGroup: MainHotbar
       stripTime: 3
-      uiWindowPos: 0,3
+      uiWindowPos: 0,4
       strippingWindowPos: 0,4
       dependsOn: jumpsuit
       displayName: Pocket 1
@@ -103,12 +77,29 @@
       slotFlags: POCKET
       slotGroup: MainHotbar
       stripTime: 3
-      uiWindowPos: 2,3
+      uiWindowPos: 2,4
       strippingWindowPos: 1,4
       dependsOn: jumpsuit
       displayName: Pocket 2
       stripHidden: true
-
+    - name: pocket3
+      slotTexture: web
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 0,4
+      strippingWindowPos: 0,3
+      displayName: Pocket 3
+    - name: pocket4
+      slotTexture: web
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 2,4
+      strippingWindowPos: 2,3
+      displayName: Pocket 4
     - name: suitstorage
       slotTexture: suit_storage
       slotFlags:   SUITSTORAGE
@@ -153,7 +144,7 @@
       slotTexture: wallet
       slotFlags: WALLET
       stripTime: 6
-      uiWindowPos: 3,1
+      uiWindowPos: 1,0
       strippingWindowPos: 3,5
       dependsOn: jumpsuit
       displayName: Wallet

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Shared._Crescent.ShipShields; // Triad
 using Content.Shared.Damage.Components;
 using Content.Shared.Standing;
 using Content.Shared.Wieldable;
@@ -21,6 +22,7 @@ public abstract partial class SharedLaserPointerSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private EntityQuery<ShipShieldComponent> _shipShieldQuery = default!; // Triad - ship shields don't collide with laser pointers
 
     public override void Initialize()
     {
@@ -141,9 +143,11 @@ public abstract partial class SharedLaserPointerSystem : EntitySystem
         var ray = new CollisionRay(pos, normalized, comp.CollisionMask);
         var hit = _physics.IntersectRay(xform.MapID, ray, rayLength, xform.ParentUid, false)
             .OrderBy(x => x.Distance)
+            .Where(x => !_shipShieldQuery.HasComp(x.HitEntity)) // Triad - ship shields don't collide with laser pointers
             .FirstOrNull(x =>
                 x.HitEntity == targetedEntity || lying ||
                 !requiresTargetQuery.TryComp(x.HitEntity, out var requiresTarget) || !requiresTarget.Active);
+
         if (hit != null)
             rayLength = hit.Value.Distance;
 

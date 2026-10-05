@@ -1,0 +1,46 @@
+- type: loadout
+  id: SpotsJacketRed
+  groupBy: BomberCoat
+  equipment:
+   outerClothing: ClothingOuterCoatRedSpotsJacket
+
+- type: loadout
+  id: SpotsJacketBlue
+  groupBy: BomberCoat
+  equipment:
+   outerClothing: ClothingOuterCoatBlueSpotsJacket
+
+- type: loadout
+  id: ClothingOuterCoatLabLong
+  equipment:
+    outerClothing: ClothingOuterCoatLabLong
+
+- type: loadout
+  id: ClothingOuterCoatLabMedical
+  equipment:
+    outerClothing: ClothingOuterCoatLabMedical
+
+- type: loadout
+  id: ClothingOuterCoatLabLongMedical
+  equipment:
+    outerClothing: ClothingOuterCoatLabLongMedical
+
+- type: loadout
+  id: ClothingOuterCoatLabLongChemist
+  equipment:
+    outerClothing: ClothingOuterCoatLabLongChemist
+
+- type: loadout
+  id: ClothingOuterCoatLabSeniorChemist
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorChemist
+
+- type: loadout
+  id: ClothingOuterCoatLabCybersun
+  equipment:
+    outerClothing: ClothingOuterCoatLabCybersun
+
+- type: loadout
+  id: ClothingOuterCoatParamedicJacket
+  equipment:
+    outerClothing: ClothingOuterCoatParamedicJacket

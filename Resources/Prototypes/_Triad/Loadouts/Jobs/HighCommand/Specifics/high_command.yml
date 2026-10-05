@@ -1,0 +1,47 @@
+- type: loadout
+  id: HighCommandClothingHeadHatTfaHighCommand
+  price: 0
+  equipment:
+    head: ClothingHeadHatTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingHeadHatBeretTfaHighCommand
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingUniformJumpsuitTfaHighCommand
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingUniformJumpskirtTfaHighCommand
+  price: 0
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingOuterCoatTfaHighCommand
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingOuterWinterTfaHighCommand
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterWinterTfaHighCommand
+
+- type: loadout
+  id: HighCommandClothingHandsGlovesHeavyGoldenTrim
+  price: 0
+  equipment:
+    gloves: ClothingHandsGlovesHeavyGoldenTrim
+
+- type: loadout
+  id: HighCommandClothingHandsGlovesGoldenTrim
+  price: 0
+  equipment:
+    gloves: ClothingHandsGlovesGoldenTrim

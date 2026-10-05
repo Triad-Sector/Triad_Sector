@@ -16,6 +16,7 @@ using Content.Shared.Nyanotrasen.Kitchen.Prototypes;
 using Content.Shared.Paper;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Nyanotrasen.Kitchen.EntitySystems;
 
@@ -142,10 +143,10 @@ public sealed partial class DeepFryerSystem
         if (TryComp(item, out FlavorProfileComponent? flavorProfileComponent))
         {
             HashSet<string> goodFlavors = new(flavorProfileComponent.Flavors);
-            goodFlavors.IntersectWith(component.GoodFlavors);
+            goodFlavors.IntersectWith(component.GoodFlavors.Select(flavor => flavor.Id));
 
             HashSet<string> badFlavors = new(flavorProfileComponent.Flavors);
-            badFlavors.IntersectWith(component.BadFlavors);
+            badFlavors.IntersectWith(component.BadFlavors.Select(flavor => flavor.Id));
 
             deepFriedComponent.PriceCoefficient = Math.Max(0.01f,
                 1.0f

@@ -10,7 +10,7 @@
     UraniumFissile: 3 # 0.03 ingots
   completetime: 20
   materials:
-    Uranium: 9000 # 90 ingots # Triad: was 1000; output sold at 13x the input's value
+    Uranium: 1000 # 10 ingots
   icon:
     sprite: _Mono/Effects/processing.rsi
     state: processing_2
@@ -47,8 +47,8 @@
     UraniumFissile: 6 # 0.06 ingots
   completetime: 20
   materials:
-    Uranium: 6000 # 60 ingots # Triad: was 1000; output sold at 8x the input's value
-    Plasma: 6000 # 60 ingots # Triad: was 1000
+    Uranium: 1000 # 10 ingots
+    Plasma: 1000 # 10 ingots
   icon:
     sprite: _Mono/Effects/processing.rsi
     state: processing_3

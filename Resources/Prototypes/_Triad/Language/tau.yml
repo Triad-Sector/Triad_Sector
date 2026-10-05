@@ -1,0 +1,74 @@
+# K'iche type syllables
+# The language spoken across the Tau System. Notably, the official language of the Imperial Coalition of Tau.
+
+- type: language
+  id: Tau
+  isVisibleLanguage: true
+  speech:
+    color: "#f03f20dd"
+    fontId: BoxRound
+    fontSize: 14 # SCARY!
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 2
+    maxSyllables: 3
+    replacement:
+    - tet
+    - te'ma
+    - ka'quet
+    - min'en
+    - min
+    - untop
+    - uu
+    - aa
+    - eth
+    - eth'ra
+    - kul
+    - pi'na
+    - ren
+    - re'mah
+    - re
+    - wae
+    - wa'te
+    - binek
+    - kama
+    - cha'ent
+    - kie'cha
+    - kie
+    - netc
+    - b'inik
+    - m'tcha
+    - inw
+    - i'ntcha
+    - ix
+    - xan
+    - isa
+    - nim
+    - nu
+    - ki
+    - ix'n
+    - awe
+    - iyare't
+    - ujne
+    - uje
+    - uj
+    - uj'en
+    - are'met
+    - k'am
+    - chak'a
+    - kuna
+    - taj
+    - x
+    - win
+    - aq
+    - ae't
+    - aj'en
+    - tu'en
+    - yu'en
+    - po
+    - ë
+    - sh'be
+    - haet
+    - kra
+    - kre
+    - na

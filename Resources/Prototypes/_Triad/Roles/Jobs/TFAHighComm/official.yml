@@ -3,10 +3,12 @@
   name: job-name-tfa-high-command
   description: job-description-tfa-high-command
   playTimeTracker: JobTfaHighCommandRep
-  setPreference: false
+  adminWhitelist: true # only admin-rank holders see or take it
+  overrideConsoleVisibility: false # keeps it off the ID console's job presets, which otherwise follow setPreference
   startingGear: TfaHighCommandRepGear
+  alwaysUseSpawner: true
   icon: "JobIconNanotrasen" # Idk it looks good enough
-  supervisors: job-supervisors-centcom
+  supervisors: job-supervisors-tfa-director
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -26,18 +28,17 @@
     - type: CryoSleepRadioOverride
       overrides:
       - CentCom # com radio
+  - !type:AddLanguageSpecial
+    languagesSpoken:
+    - Triadian # Official status, so they would 100% know this, atleast somewhat
+    languagesUnderstood:
+    - Triadian
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
 
 - type: startingGear
   id: TfaHighCommandRepGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitTfaHighCommand
-    shoes: ClothingShoesBootsLaceup
-    head: ClothingHeadHatTfaHighCommand
-    eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesHeavyGoldenTrim
-    outerClothing: ClothingOuterCoatTfaHighCommand
+  equipment: # clothing comes from the JobTfaHighCommandRep loadout
     id: TfaHighComPda
     ears: ClothingHeadsetAltHighCommand
     belt: WeaponEnergyRevolver

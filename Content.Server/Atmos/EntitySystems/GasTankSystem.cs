@@ -1,3 +1,4 @@
+using Content.Server._Triad.Atmos.EntitySystems; // Triad
 using Content.Server.Cargo.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Atmos;
@@ -12,6 +13,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Content.Shared._Triad.Atmos.Components; // Triad
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -20,6 +22,7 @@ namespace Content.Server.Atmos.EntitySystems
     {
         [Dependency] private AtmosphereSystem _atmosphereSystem = default!;
         [Dependency] private ExplosionSystem _explosions = default!;
+        [Dependency] private GasVesselSuppressionSystem _suppression = default!; // Triad
         [Dependency] private SharedAudioSystem _audioSys = default!;
         [Dependency] private UserInterfaceSystem _ui = default!;
         [Dependency] private IRobustRandom _random = default!;
@@ -163,6 +166,15 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (pressure > component.TankFragmentPressure && _maxExplosionRange > 0)
             {
+                // Triad Start - gas can safety
+                if (TryComp<SafeGasCanComponent>(owner, out var safety) && safety.Enabled)
+                {
+                    _suppression.FoamOver(owner);
+                    QueueDel(owner);
+                    return;
+                }
+                // Triad end
+
                 // Give the gas a chance to build up more pressure.
                 for (var i = 0; i < 3; i++)
                 {

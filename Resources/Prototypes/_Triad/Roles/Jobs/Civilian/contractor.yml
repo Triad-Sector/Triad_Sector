@@ -1,0 +1,206 @@
+- type: job
+  id: Contractor
+  name: job-name-contractor
+  description: job-description-contractor
+  playTimeTracker: JobPassenger
+  icon: "JobIconContractor"
+  supervisors: job-supervisors-hire
+  displayWeight: 40 # Top
+  accessGroups: # Frontier
+  - GeneralAccess # Frontier
+  - Civilian
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+  alternateTitles:
+  - SpacerCitizen
+  - SpacerCivilian
+  - SpacerContractor
+  - SpacerPilot
+  - SpacerMercenary
+  - SpacerOffDutyEnforcer
+  - SpacerBountyHunter
+  - SpacerMiner
+  - SpacerSalvager
+  - SpacerSecurityGuard
+  - SpacerGunneryOperator
+  - SpacerConstructionWorker
+  - SpacerElectrician
+  - SpacerMechanic
+  - SpacerArchitect
+  - SpacerAtmosphericEngineer
+  - SpacerElectricalEngineer
+  - SpacerMechanicalEngineer
+  - SpacerChemicalEngineer
+  - SpacerRoboticist
+  - SpacerFreelancer
+  - SpacerAssistant
+  - SpacerPsychologist
+  - SpacerPhysician
+  - SpacerTherapist
+  - SpacerPsychiatrist
+  - SpacerXenoarcheologist
+  - SpacerResearcher
+  - SpacerScientist
+  - SpacerPrivateInvestigator
+  - SpacerChaplain
+  - SpacerPriest
+  - SpacerJournalist
+  - SpacerCook
+  - SpacerBusinesswoman
+  - SpacerBusinessman
+  - SpacerBusinessperson
+  - SpacerEntrepreneur
+
+- type: jobAlternateTitle
+  id: SpacerCitizen
+  name: job-name-alt-spacer-1
+
+- type: jobAlternateTitle
+  id: SpacerCivilian
+  name: job-name-alt-spacer-2
+
+- type: jobAlternateTitle
+  id: SpacerContractor
+  name: job-name-alt-spacer-3
+
+- type: jobAlternateTitle
+  id: SpacerPilot
+  name: job-name-alt-spacer-4
+
+- type: jobAlternateTitle
+  id: SpacerMercenary
+  name: job-name-alt-spacer-5
+
+- type: jobAlternateTitle
+  id: SpacerOffDutyEnforcer
+  name: job-name-alt-spacer-6
+
+- type: jobAlternateTitle
+  id: SpacerBountyHunter
+  name: job-name-alt-spacer-7
+
+- type: jobAlternateTitle
+  id: SpacerMiner
+  name: job-name-alt-spacer-8
+
+- type: jobAlternateTitle
+  id: SpacerSalvager
+  name: job-name-alt-spacer-9
+
+- type: jobAlternateTitle
+  id: SpacerSecurityGuard
+  name: job-name-alt-spacer-10
+
+- type: jobAlternateTitle
+  id: SpacerGunneryOperator
+  name: job-name-alt-spacer-11
+
+- type: jobAlternateTitle
+  id: SpacerConstructionWorker
+  name: job-name-alt-spacer-12
+
+- type: jobAlternateTitle
+  id: SpacerElectrician
+  name: job-name-alt-spacer-13
+
+- type: jobAlternateTitle
+  id: SpacerMechanic
+  name: job-name-alt-spacer-14
+
+- type: jobAlternateTitle
+  id: SpacerArchitect
+  name: job-name-alt-spacer-15
+
+- type: jobAlternateTitle
+  id: SpacerAtmosphericEngineer
+  name: job-name-alt-spacer-16
+
+- type: jobAlternateTitle
+  id: SpacerElectricalEngineer
+  name: job-name-alt-spacer-17
+
+- type: jobAlternateTitle
+  id: SpacerMechanicalEngineer
+  name: job-name-alt-spacer-18
+
+- type: jobAlternateTitle
+  id: SpacerChemicalEngineer
+  name: job-name-alt-spacer-19
+
+- type: jobAlternateTitle
+  id: SpacerRoboticist
+  name: job-name-alt-spacer-20
+
+- type: jobAlternateTitle
+  id: SpacerFreelancer
+  name: job-name-alt-spacer-21
+
+- type: jobAlternateTitle
+  id: SpacerAssistant
+  name: job-name-alt-spacer-22
+
+- type: jobAlternateTitle
+  id: SpacerPsychologist
+  name: job-name-alt-spacer-23
+
+- type: jobAlternateTitle
+  id: SpacerPhysician
+  name: job-name-alt-spacer-24
+
+- type: jobAlternateTitle
+  id: SpacerTherapist
+  name: job-name-alt-spacer-25
+
+- type: jobAlternateTitle
+  id: SpacerPsychiatrist
+  name: job-name-alt-spacer-26
+
+- type: jobAlternateTitle
+  id: SpacerXenoarcheologist
+  name: job-name-alt-spacer-27
+
+- type: jobAlternateTitle
+  id: SpacerResearcher
+  name: job-name-alt-spacer-28
+
+- type: jobAlternateTitle
+  id: SpacerScientist
+  name: job-name-alt-spacer-29
+
+- type: jobAlternateTitle
+  id: SpacerPrivateInvestigator
+  name: job-name-alt-spacer-30
+
+- type: jobAlternateTitle
+  id: SpacerChaplain
+  name: job-name-alt-spacer-31
+
+- type: jobAlternateTitle
+  id: SpacerPriest
+  name: job-name-alt-spacer-32
+
+- type: jobAlternateTitle
+  id: SpacerJournalist
+  name: job-name-alt-spacer-33
+
+- type: jobAlternateTitle
+  id: SpacerCook
+  name: job-name-alt-spacer-34
+
+- type: jobAlternateTitle
+  id: SpacerBusinesswoman
+  name: job-name-alt-spacer-35
+
+- type: jobAlternateTitle
+  id: SpacerBusinessman
+  name: job-name-alt-spacer-36
+
+- type: jobAlternateTitle
+  id: SpacerBusinessperson
+  name: job-name-alt-spacer-37
+
+- type: jobAlternateTitle
+  id: SpacerEntrepreneur
+  name: job-name-alt-spacer-38

@@ -1,6 +1,18 @@
+# Triad: Far Horizons renamed Turbine to GasTurbine and split it into an abstract base plus
+# access mixins. Mono had commented the Engineering AccessReader off the old concrete Turbine
+# because these sit on player ships, then locked them per faction here. GasTurbineCrew carries
+# that Engineering reader, so parent the abstract base instead and keep the Lock the old base
+# used to supply.
+- type: entity
+  id: GasTurbineShipLock
+  abstract: true
+  components:
+  - type: Lock
+    unlockOnClick: false
+
 - type: entity
   id: TurbineUnaffiliated
-  parent: Turbine
+  parent: [BaseGasTurbine, GasTurbineShipLock]
   suffix: Unaffiliated, Ship Captain Locked
   description: A large turbine used for generating power using hot gas. Locked to the captain of the ship.
   components:
@@ -9,7 +21,7 @@
 
 - type: entity
   id: TurbineTSF
-  parent: Turbine
+  parent: [BaseGasTurbine, GasTurbineShipLock]
   suffix: TSF FTL Locked
   description: A large turbine used for generating power using hot gas. Locked to the TSF fireteam leaders.
   components:
@@ -18,7 +30,7 @@
 
 - type: entity
   id: TurbinePDV
-  parent: Turbine
+  parent: [BaseGasTurbine, GasTurbineShipLock]
   suffix: PDV Denasvar Locked
   description: A large turbine used for generating power using hot gas. Locked to the PDV Denasvars.
   components:
@@ -28,7 +40,7 @@
 # No use really, but just in case.
 - type: entity
   id: TurbineCC
-  parent: Turbine
+  parent: [BaseGasTurbine, GasTurbineShipLock]
   suffix: Overseer Locked
   description: A large turbine used for generating power using hot gas. Locked to the CC Overseer.
   components:
@@ -41,27 +53,27 @@
 
 - type: entity
   id: TurbineUnaffiliatedSmall
-  parent: TurbineSmall
+  parent: [BaseGasTurbineSmall, GasTurbineShipLock]
   suffix: Unaffiliated, Ship Captain Locked
-  description: A large turbine used for generating power using hot gas. Locked to the captain of the ship.
+  description: A small turbine used for generating power using hot gas. Locked to the captain of the ship. # Triad: was "large", copy-paste from the full-size variant
   components:
   - type: AccessReader
     access: [["Captain"]]
 
 - type: entity
   id: TurbineTSFSmall
-  parent: TurbineSmall
+  parent: [BaseGasTurbineSmall, GasTurbineShipLock]
   suffix: TSF FTL Locked
-  description: A large turbine used for generating power using hot gas. Locked to the TSF fireteam leaders.
+  description: A small turbine used for generating power using hot gas. Locked to the TSF fireteam leaders. # Triad: was "large"
   components:
   - type: AccessReader
     access: [["Armory"]]
 
 - type: entity
   id: TurbinePDVSmall
-  parent: TurbineSmall
+  parent: [BaseGasTurbineSmall, GasTurbineShipLock]
   suffix: PDV Denasvar Locked
-  description: A large turbine used for generating power using hot gas. Locked to the PDV Denasvars.
+  description: A small turbine used for generating power using hot gas. Locked to the PDV Denasvars. # Triad: was "large"
   components:
   - type: AccessReader
     access: [["PDVCommand"]]
@@ -69,9 +81,9 @@
 # No use really, but just in case.
 - type: entity
   id: TurbineCCSmall
-  parent: TurbineSmall
+  parent: [BaseGasTurbineSmall, GasTurbineShipLock]
   suffix: Overseer Locked
-  description: A large turbine used for generating power using hot gas. Locked to the CC Overseer.
+  description: A small turbine used for generating power using hot gas. Locked to the CC Overseer. # Triad: was "large"
   components:
   - type: AccessReader
     access: [["HeadOfPersonnel"]]

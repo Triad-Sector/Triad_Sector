@@ -65,7 +65,10 @@
     scale: 0.7
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Other
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Other
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Light
   - type: ShipRepairable

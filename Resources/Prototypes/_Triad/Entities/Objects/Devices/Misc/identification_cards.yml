@@ -1,7 +1,7 @@
 - type: entity
   parent: IDCardStandard
-  id: TdfJuniorEnforcerIdCard
-  name: TDF junior enforcer ID card
+  id: TdfCadetIdCard
+  name: TDF cadet ID card
   components:
   - type: PresetIdCard
     job: TdfCadet
@@ -16,7 +16,7 @@
     heldPrefix: tdf
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TdfEnforcerIDCard
   name: TDF enforcer ID card
   components:
@@ -28,7 +28,7 @@
     - state: idtdfenforcer
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TdfMedicIDCard
   name: TDF medic ID card
   components:
@@ -40,7 +40,7 @@
     - state: idtdfmedic
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TdfPatrolTeamLeaderIDCard
   name: TDF patrol team leader ID card
   components:
@@ -52,7 +52,7 @@
     - state: idtdfleader
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TdfLieutenantIDCard
   name: TDF lieutenant ID card
   components:
@@ -64,7 +64,7 @@
     - state: idtdfwarden
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TdfChiefIDCard
   name: TDF chief enforcer ID card
   components:
@@ -76,7 +76,7 @@
     - state: idtdfchief
 
 - type: entity
-  parent: TdfJuniorEnforcerIdCard
+  parent: TdfCadetIdCard
   id: TfaHighCommIDCard
   name: TFA high command ID card
   components:

@@ -59,3 +59,32 @@
         - id: ClothingShoesBootsMagSecurity
   - type: AccessReader
     access: [["TdfChiefEnforcer"]]
+
+# RMT suits
+- type: entity
+  id: SuitStorageIndustrialEngi
+  parent: SuitStorageBase
+  suffix: RMT Industrial Engi
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitIndustrialEngi
+    - id: ClothingMaskGasSecurity
+    - id: JetpackVoidFilled
+    - id: ClothingShoesBootsMagSecurity
+
+- type: entity
+  id: SuitStorageRmtL10
+  parent: SuitStorageBase
+  suffix: RMT L-10
+  components:
+  - type: StorageFill
+    contents:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitRmtL10
+    - id: ClothingMaskGasSecurity
+    - id: JetpackMiniFilled
+    - id: ClothingShoesBootsMagSecurity

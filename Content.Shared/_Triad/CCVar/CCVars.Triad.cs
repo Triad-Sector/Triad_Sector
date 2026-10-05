@@ -10,10 +10,11 @@ namespace Content.Shared._Triad.CCVar;
 public sealed class TriadCCVars
 {
     /// <summary>
-    ///     How much the ship cost will be. 0.3f = 30% of full appraisal
+    ///     How much loading a saved ship costs, as a fraction of its full appraisal. 0.15f = 15%.
+    ///     Was 0.3f until 2026-08-29.
     /// </summary>
     public static readonly CVarDef<float> LoadShipPrice =
-        CVarDef.Create("triad.load_ship_price", 0.3f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("triad.load_ship_price", 0.15f, CVar.SERVER | CVar.REPLICATED);
 
     // Triad: tamper protection
     /// <summary>
@@ -119,4 +120,10 @@ public sealed class TriadCCVars
     /// </summary>
     public static readonly CVarDef<int> MarketDataRetentionDays =
         CVarDef.Create("triad.market.retention_days", 90, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Max limit of a person could have for safety boxes.
+    /// </summary>
+    public static readonly CVarDef<int> SafetyBoxLimit =
+        CVarDef.Create("triad.safety_box_limit", 5, CVar.REPLICATED);
 }

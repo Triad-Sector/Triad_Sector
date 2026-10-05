@@ -1,0 +1,36 @@
+# TFA/TDF Station Beacon
+
+- type: quickPhrase
+  parent: BaseSecurityLocationPhrase
+  id: LocationTDFChiefPhrase
+  text: station-beacon-tdf-chief
+
+- type: quickPhrase
+  parent: BaseSecurityLocationPhrase
+  id: LocationTDFLieutenantPhrase
+  text: station-beacon-tdf-lieutenant
+
+- type: quickPhrase
+  parent: BaseSecurityLocationPhrase
+  id: LocationTDFPTLPhrase
+  text: station-beacon-tdf-patrol-lead
+
+- type: quickPhrase
+  parent: BaseTFALocationPhrase
+  id: LocationOverseerPhrase
+  text: station-beacon-overseer
+
+- type: quickPhrase
+  parent: BaseTFALocationPhrase
+  id: LocationBriefingPhrase
+  text: station-beacon-briefing
+
+- type: quickPhrase
+  parent: BaseTFALocationPhrase
+  id: LocationLockerRoomPhrase
+  text: station-beacon-locker-room
+
+- type: quickPhrase
+  parent: BaseTFALocationPhrase
+  id: LocationRestaurantPhrase
+  text: station-beacon-restaurant

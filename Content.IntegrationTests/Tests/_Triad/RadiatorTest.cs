@@ -202,6 +202,95 @@ public sealed class RadiatorTest
     }
 
     /// <summary>
+    /// The mass-flux law: two rigs at the same pressure ratio, one ten times
+    /// denser, must NOT hand the same joules to the body. Under the old clamp
+    /// both saturated at flowFactor 1 and transferred identically; now the
+    /// dense loop moves ten times the moles per pass and its wall conductance
+    /// follows, up to the cap. This is what makes loop pressure a decision.
+    /// </summary>
+    [Test]
+    public async Task DenserLoopTransfersMoreHeatThroughTheWall()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var atmosSystem = entMan.System<AtmosphereSystem>();
+
+        var testMapThin = await pair.CreateTestMap();
+        var testMapDense = await pair.CreateTestMap();
+        var (radiatorThin, inletThin, outletThin) = await SpawnRadiator(pair, testMapThin);
+        var (radiatorDense, inletDense, outletDense) = await SpawnRadiator(pair, testMapDense);
+
+        const float dt = 0.1f;
+        await server.WaitPost(() =>
+        {
+            var compThin = entMan.GetComponent<HeatExchangerComponent>(radiatorThin);
+            var compDense = entMan.GetComponent<HeatExchangerComponent>(radiatorDense);
+
+            foreach (var comp in new[] { compThin, compDense })
+            {
+                // Body pinned as an infinite cold sink, no environment exchange,
+                // and a deliberately small wall conductance so the exchange
+                // stays in its linear regime (dE ≈ conductance × ΔT × dt) and
+                // the joules moved read the conductance directly instead of
+                // both rigs converging to the sink.
+                comp.alpha = 0f;
+                comp.K = 0f;
+                comp.BodyHeatCapacity = 1e9f;
+                comp.BodyTemperature = Atmospherics.T20C;
+                comp.PipeConductance = 100f;
+            }
+
+            // Same 100:1 pressure ratio, 10x the absolute pressure. The thin
+            // rig's pass lands at about RatedFlow (factor ~1); the dense rig's
+            // lands well past it and hits MaxFlowFactor.
+            inletThin.Air.AdjustMoles(Gas.Nitrogen, 20f);
+            outletThin.Air.AdjustMoles(Gas.Nitrogen, 0.2f);
+            inletDense.Air.AdjustMoles(Gas.Nitrogen, 200f);
+            outletDense.Air.AdjustMoles(Gas.Nitrogen, 2f);
+            foreach (var node in new[] { inletThin, outletThin, inletDense, outletDense })
+                node.Air.Temperature = 600f;
+        });
+
+        float heatThinBefore = 0f, heatDenseBefore = 0f;
+        await server.WaitPost(() =>
+        {
+            heatThinBefore = PipeHeatContent(atmosSystem, inletThin) + PipeHeatContent(atmosSystem, outletThin);
+            heatDenseBefore = PipeHeatContent(atmosSystem, inletDense) + PipeHeatContent(atmosSystem, outletDense);
+
+            // One hand-raised update each; gas moved between nets conserves
+            // heat content, so the drop is exactly what crossed into the body.
+            var ev = new AtmosDeviceUpdateEvent(dt, null, null);
+            entMan.EventBus.RaiseLocalEvent(radiatorThin, ref ev);
+            entMan.EventBus.RaiseLocalEvent(radiatorDense, ref ev);
+        });
+
+        await server.WaitAssertion(() =>
+        {
+            var compThin = entMan.GetComponent<HeatExchangerComponent>(radiatorThin);
+            var joulesThin = heatThinBefore - PipeHeatContent(atmosSystem, inletThin) - PipeHeatContent(atmosSystem, outletThin);
+            var joulesDense = heatDenseBefore - PipeHeatContent(atmosSystem, inletDense) - PipeHeatContent(atmosSystem, outletDense);
+
+            // Expected ratio is (floor + (1-floor) × cap) / (floor + (1-floor) × ~1)
+            // ≈ 2.8 at the defaults; assert the clamp-era answer (1.0) is gone
+            // by a wide margin, and that the cap actually bounds it.
+            var capRatio = (compThin.StaticConductanceFloor + (1f - compThin.StaticConductanceFloor) * compThin.MaxFlowFactor)
+                           / compThin.StaticConductanceFloor;
+            Assert.Multiple(() =>
+            {
+                Assert.That(joulesThin, Is.GreaterThan(0f), "Thin rig transferred nothing; the wall is dead.");
+                Assert.That(joulesDense, Is.GreaterThan(joulesThin * 2f),
+                    $"Mass-flux law not biting: dense loop moved {joulesDense:F0} J vs thin {joulesThin:F0} J. " +
+                    "Loop pressure is supposed to buy wall conductance.");
+                Assert.That(joulesDense, Is.LessThan(joulesThin * capRatio),
+                    $"Dense loop moved {joulesDense:F0} J vs thin {joulesThin:F0} J, past what MaxFlowFactor allows.");
+            });
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
     /// Overheat ceiling: a white-hot radiator takes structural damage while the
     /// cvar is on and none while it is off. Also proves the radiator's damage
     /// container actually accepts the Structural type.

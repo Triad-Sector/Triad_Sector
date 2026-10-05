@@ -1,0 +1,42 @@
+#12 gauge drums use Intermediate Magazines cost
+#Magazines
+
+- type: latheRecipe
+  parent: BaseAmmoFMJIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeBuckshot
+  result: ShortMagazine12_gaugeBuckshot
+
+- type: latheRecipe
+  parent: BaseAmmoRubberIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeBeanbag
+  result: ShortMagazine12_gaugeBeanbag
+
+- type: latheRecipe
+  parent: BaseAmmoIncendiaryIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeIncendiary
+  result: ShortMagazine12_gaugeIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoPracticeIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugePractice
+  result: ShortMagazine12_gaugePractice
+
+- type: latheRecipe
+  parent: BaseAmmoEmptyIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeEmpty
+  result: ShortMagazine12_gaugeEmpty
+
+- type: latheRecipe
+  parent: BaseAmmoUraniumIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeUranium
+  result: ShortMagazine12_gaugeUranium
+
+- type: latheRecipe
+  parent: BaseAmmoFMJIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeSlug
+  result: ShortMagazine12_gaugeSlug
+
+- type: latheRecipe
+  parent: BaseAmmoPlasteelAPIntermediateMagazineRecipe
+  id: ShortMagazine12_gaugeFlechette
+  result: ShortMagazine12_gaugeFlechette

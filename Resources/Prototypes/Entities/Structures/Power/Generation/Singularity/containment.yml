@@ -129,10 +129,18 @@
         mask:
         - FullTileMask
         layer:
-        - GlassLayer
+        # Triad - no fun allowed...
+        - HighImpassable
+        - MidImpassable
+        - LowImpassable
+        # Triad End
   - type: Sprite
     sprite: Structures/Power/Generation/Singularity/containment_field.rsi
-    state: field
+    # Triad Start - unshaded containment fields
+    layers:
+    - state: field
+      shader: unshaded
+    # Triad End
   - type: Icon
     sprite: Structures/Power/Generation/Singularity/containment_field.rsi
     state: field

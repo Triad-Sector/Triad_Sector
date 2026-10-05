@@ -1,0 +1,104 @@
+- type: entity
+  parent: [BaseStorageItem, Clothing, RecyclableItemNoMats]
+  id: BaseBusinessCardHolder
+  name: card holder
+  description: Made for holding business cards, but it can hold credits and shipyard vouchers too.
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,0,1
+  - type: Storage
+    maxItemSize: Small
+    storageInsertSound:
+        collection: cardSlide
+    storageOpenSound:
+        collection: cardSlide
+    grid:
+    - 0,0,1,3
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+      - Cash
+      - Paper
+      - NFShipyardVoucher
+      - Card
+    blacklist:
+      tags:
+      - Book
+  - type: UseDelay # Mono
+    delay: 0.1
+  - type: Clothing
+    slots: [wallet]
+    quickEquip: false
+  - type: Appearance
+  - type: ItemMapper
+    mapLayers:
+      closed-paper:
+        whitelist:
+          components:
+          - Paper
+          - Card
+      closed-cash:
+        whitelist:
+          components:
+          - Cash
+  - type: GenericVisualizer
+    visuals:
+      enum.SharedBagOpenVisuals.BagState:
+        closeLayer:
+          Open: { visible: false }
+          Closed: { visible: true }
+        openLayer:
+          Open: { visible: true }
+          Closed: { visible: false }
+        closed-paper:
+          Open: { state: open-paper }
+          Closed: { state: closed-paper }
+        closed-cash:
+          Open: { state: open-cash }
+          Closed: { state: closed-cash }
+  - type: StaticPrice
+    price: 10
+
+- type: entity
+  parent: BaseBusinessCardHolder
+  id: CardHolderBlack
+  name: card holder
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Wallet/card_holder.rsi
+    layers:
+    - state: closed-black
+      map: ["closeLayer"]
+    - state: open-black
+      map: ["openLayer"]
+      visible: false
+    - state: closed-paper
+      map: ["closed-paper"]
+      visible: false
+    - state: closed-cash
+      map: ["closed-cash"]
+      visible: false
+
+- type: entity
+  parent: BaseBusinessCardHolder
+  id: CardHolderWhite
+  name: card holder
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Wallet/card_holder.rsi
+    layers:
+    - state: closed-white
+      map: ["closeLayer"]
+    - state: open-white
+      map: ["openLayer"]
+      visible: false
+    - state: closed-paper
+      map: ["closed-paper"]
+      visible: false
+    - state: closed-cash
+      map: ["closed-cash"]
+      visible: false

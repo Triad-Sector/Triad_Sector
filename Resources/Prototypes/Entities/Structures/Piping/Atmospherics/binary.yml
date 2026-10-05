@@ -607,6 +607,8 @@
   - type: Rotatable
   - type: Transform
     noRot: false
+  - type: StaticPrice # Triad: the copper core deconstructs to 2 steel + 2 copper sheets (31.8), which the inherited 12 sat under
+    price: 32
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
     layers:

@@ -1,0 +1,9 @@
+# Allows you to speak more than one language (besides Standard) at the cost of physical points trait
+- type: trait
+  id: Linguist
+  name: trait-physical-linguist-name
+  description: trait-physical-linguist-desc
+  category: Physical
+  cost: 3
+  grantsCategorySlots:
+    LanguageTraits: 1

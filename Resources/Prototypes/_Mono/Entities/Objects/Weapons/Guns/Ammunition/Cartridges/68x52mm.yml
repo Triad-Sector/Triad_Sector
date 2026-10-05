@@ -1,7 +1,7 @@
 - type: entity
   id: BaseCartridge68x52mmCaseless
   name: cartridge (6.8x52mm STANAG Caseless)
-  description: A new intermediate caseless round developed in recent TDF standardization programs, using experience from old corporate war caseless ammunition to enhance the performance of rifles across the Triad Sector.
+  description: A new full-power caseless round developed in Sol Armed Forces standardization programs, using experience from old corporate war caseless ammunition to enhance the performance of rifles across their federation. Frequently employed by the TDF with their reverse-engineered Solarian designs.
   parent: BaseCartridge
   abstract: true
   components:

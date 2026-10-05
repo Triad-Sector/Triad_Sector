@@ -93,6 +93,19 @@
     state: tanktop
 
 - type: marking
+  id: UndergarmentTopMessyTubeTop
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, Reptilian, SlimePerson, IPC, Felinid, Oni, Avali, Chitinid, Harpy, Rodentia, Vulpkanin, Feroxi, Goblin, Tajaran, Yowie, Asakim, Protogen] # Triad - Underwear.
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: Mobs/Customization/undergarments.rsi
+    state: messy_tube_top
+
+- type: marking
   id: UndergarmentBottomBoxersVox # Voxers.
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
@@ -182,6 +195,19 @@
   sprites:
   - sprite: Mobs/Customization/undergarments.rsi
     state: tanktop_vox
+
+- type: marking
+  id: UndergarmentTopMessyTubeTopVox
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Vox]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: Mobs/Customization/undergarments.rsi
+    state: messy_tube_top_vox
 
 - type: marking
   id: UndergarmentBottomBoxersReptilian

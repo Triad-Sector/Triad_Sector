@@ -6,10 +6,6 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 16200 # 4.5 hours
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 54000 # 15 hours
-      inverted: true # Leave slots open for newer, less confident players.
   startingGear: TdfCadetGear
   alwaysUseSpawner: true
   icon: JobIconTdfCadet

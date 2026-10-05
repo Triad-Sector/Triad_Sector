@@ -1,0 +1,70 @@
+# icon is the menu icon (third-scale, frame_icons.rsi); layers is the construction ghost, the
+# frame's own box_0. ghostOffset matches the 3x2's sprite offset.
+- type: construction
+  id: TriadMachineFrame5x5
+  graph: TriadMachine5x5
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (5x5)
+  description: A huge machine frame built around its center tile. Takes the nuclear reactor board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 5x5
+  layers:
+  - sprite: _Triad/Structure/Machines/frames/frame_5x5.rsi
+    state: box_0
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: TriadMachineFrame3x5
+  graph: TriadMachine3x5
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x5)
+  description: A tall machine frame built around its center tile. Takes the gas turbine board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x5
+  layers:
+  - sprite: _Triad/Structure/Machines/frames/frame_3x5.rsi
+    state: box_0
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: TriadMachineFrame3x3
+  graph: TriadMachine3x3
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x3)
+  description: A large machine frame built around its center tile. Takes the small nuclear reactor board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x3
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_3x3.rsi
+    state: box_0
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: construction
+  id: TriadMachineFrame3x2
+  graph: TriadMachine3x2
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  name: machine frame (3x2)
+  description: A machine frame built around its center tile. Takes the small gas turbine board.
+  icon:
+    sprite: _Triad/Structure/Machines/frames/frame_icons.rsi
+    state: 3x2
+  layers:
+  - sprite: _Mono/Structures/Machines/frames/frame_3x2.rsi
+    state: box_0
+  ghostOffset: 0,-0.5
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false

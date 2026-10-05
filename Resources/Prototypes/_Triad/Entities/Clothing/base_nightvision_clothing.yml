@@ -1,0 +1,53 @@
+# Basic night vision clothing for parenting
+# Generally, you can make your phosphor color whatever you want, but
+# please keep night vision generations the same.
+- type: entity
+  id: BaseNightVisionClothing
+  abstract: true
+  components:
+  - type: NightVision
+    action: ActionToggleNightVision
+    phosphorColor: "#00FF00"
+    lightingColor: "#FFFFFF32"
+    relayOverlay: true
+    goggleEffect: true
+
+- type: entity
+  parent: BaseNightVisionClothing
+  id: BaseNightVisionClothingGenOne # Monotube
+  abstract: true
+  components:
+  - type: NightVision
+    viewCircleRadius: 300
+    viewCircleCount: 1
+    viewCircleSpacing: 280
+
+- type: entity
+  parent: BaseNightVisionClothing
+  id: BaseNightVisionClothingGenTwo # Dualtube
+  abstract: true
+  components:
+  - type: NightVision
+    viewCircleRadius: 350
+    viewCircleCount: 2
+    viewCircleSpacing: 280
+
+- type: entity
+  parent: BaseNightVisionClothing
+  id: BaseNightVisionClothingGenThree # Quadtube
+  abstract: true
+  components:
+  - type: NightVision
+    viewCircleRadius: 375
+    viewCircleCount: 4
+    viewCircleSpacing: 260
+
+- type: entity
+  parent: BaseNightVisionClothingGenThree
+  id: BaseNightVisionClothingGenFour # Quadtube, best available radius and white phosphor
+  abstract: true
+  components:
+  - type: NightVision
+    viewCircleRadius: 400
+    phosphorColor: "#41D7D9"
+    lightingColor: "#FFFFFF32"

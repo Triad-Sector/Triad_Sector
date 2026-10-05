@@ -4,5 +4,6 @@
   minLimit: 1
   loadouts:
   - ClothingUniformJumpsuitTdfEnforcer
+  - ClothingUniformJumpsuitTdfFlannel
   fallbacks:
   - ClothingUniformJumpsuitTdfEnforcer

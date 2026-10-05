@@ -21,7 +21,7 @@
   - StationTrafficController
   # - SecurityGuard # Triad
   - CCServiceWorker # nyano
-  - NFJanitor
+  # - NFJanitor Triad - combined with service worker
   - MailCarrier # nyano
 
 - type: department

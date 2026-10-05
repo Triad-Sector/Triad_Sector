@@ -3,7 +3,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorBlack
 
@@ -12,7 +12,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ClothWrapShoes
   equipment:
     shoes: ClothingShoesClothwrap
 
@@ -21,7 +21,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ClothWrapShoes
   equipment:
     shoes: ClothingShoesClothwrapBlack
 
@@ -30,7 +30,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Slippers
   equipment:
     shoes: ClothingShoesTourist
 
@@ -39,7 +39,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Boots
   equipment:
     shoes: ClothingShoesBootsSalvage
 
@@ -48,7 +48,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesChef
 
@@ -57,7 +57,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorBlue
 
@@ -66,7 +66,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorOrange
 
@@ -75,7 +75,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorPurple
 
@@ -84,7 +84,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorRed
 
@@ -93,7 +93,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorBrown
 
@@ -102,7 +102,7 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorGreen
 
@@ -111,481 +111,362 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorYellow
 #T1
 - type: loadout
   id: ContractorClothingShoesColorWhite
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  - !type:GroupLoadoutEffect
-    proto: NFNotDoc
-  price: 0 # Mono
+  groupBy: ColorShoes
   equipment:
     shoes: ClothingShoesColorWhite
 
 - type: loadout
   id: ContractorClothingShoesBootsMag
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: MagBoots
   equipment:
     shoes: ClothingShoesBootsMag
 
 - type: loadout
   id: ContractorClothingShoesBootsWinter
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinter
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterAtmos
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterAtmos
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterHydro
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterHydro
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterCap
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCap
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterCargo
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCargo
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterChef
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterChef
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterChem
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterChem
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterEngi
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterEngi
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterGenetics
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterGenetics
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterMiner
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterMiner
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterParamedic
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterParamedic
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterRobo
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterRobo
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterSci
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterSci
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterViro
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterViro
 
 - type: loadout
   id: ContractorClothingShoesBootsJack
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Boots
   equipment:
     shoes: ClothingShoesBootsJack
 
 - type: loadout
   id: ContractorClothingShoesLeather
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: FancyShoes
   equipment:
     shoes: ClothingShoesLeather
 
 - type: loadout
   id: ContractorClothingShoesBootsLaceup
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: NFNotDocOrStc
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: FancyShoes
   equipment:
     shoes: ClothingShoesBootsLaceup
 
 - type: loadout
   id: ContractorClothingShoesSlippers
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Slippers
   equipment:
     shoes: ClothingShoesSlippers
 
 - type: loadout
   id: ContractorClothingShoeSlippersDuck
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Slippers
   equipment:
     shoes: ClothingShoeSlippersDuck
 
 - type: loadout
   id: ContractorClothingShoesFlippers
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Slippers
   equipment:
     shoes: ClothingShoesFlippers
 
 - type: loadout
   id: ContractorClothingShoesBootsPunkRandomized
   name: punk boots (random)
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Boots
   equipment:
     shoes: ClothingShoesBootsPunkRandomized
 
 #T2
 - type: loadout
   id: ContractorClothingShoesDameDane
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: FancyShoes
   equipment:
     shoes: ClothingShoesDameDane
 
 - type: loadout
   id: ContractorClothingShoesBootsWork
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: Boots
   equipment:
     shoes: ClothingShoesBootsWork
 
 - type: loadout
   id: ContractorClothingShoesBootsCowboyBlack
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesBootsCowboyBlack
 
 - type: loadout
   id: ContractorClothingShoesBootsCowboyBrown
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesBootsCowboyBrown
 
 - type: loadout
   id: ContractorClothingShoesBootsCowboyWhite
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesBootsCowboyWhite
 
 - type: loadout
   id: ContractorClothingShoesSnakeskinBoots
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesSnakeskinBoots
 
 - type: loadout
   id: ContractorClothingShoesHighheelBoots
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesHighheelBoots
 
 - type: loadout
   id: ContractorClothingShoesBootsCowboyFancy
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: CowboyBoots
   equipment:
     shoes: ClothingShoesBootsCowboyFancy
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterChiefEngineer
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterChiefEngineer
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterCMO
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCMO
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterQM
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterQM
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterRD
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterRD
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterClown
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterClown
 
 - type: loadout
   id: ContractorClothingShoesBootsWinterMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterMime
 
 - type: loadout
   id: ContractorClothingShoesClown
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: PerformerShoes
   equipment:
     shoes: ClothingShoesClown
 
 - type: loadout
   id: ContractorClothingShoesJester
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: PerformerShoes
   equipment:
     shoes: ClothingShoesJester
 
@@ -597,43 +478,36 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: PerformerShoes
   equipment:
     shoes: ClothingShoesBootsPerformer
 
 - type: loadout
   id: ContractorClothingShoesSkates
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0 # Mono
+  groupBy: PerformerShoes
   equipment:
     shoes: ClothingShoesSkates
 
 #T3 for lols
 - type: loadout
   id: ContractorClothingShoesClownLarge
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT3
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
+  groupBy: PerformerShoes
   price: 7500
   equipment:
     shoes: ClothingShoesClownLarge
 
 - type: loadout
   id: ContractorClothingShoesBling
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT3
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
+  groupBy: PerformerShoes
   price: 7500
   equipment:
     shoes: ClothingShoesBling

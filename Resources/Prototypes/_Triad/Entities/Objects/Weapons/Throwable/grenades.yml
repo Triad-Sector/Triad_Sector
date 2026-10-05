@@ -1,0 +1,13 @@
+# Parent this to make a grenade explosion proof, preventing accidental detonations.
+- type: entity
+  id: BaseSafeGrenade
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0
+
+# Parent this to clear the explosion resistance, making them able to chain react.
+- type: entity
+  id: BaseUnsafeGrenade
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 1

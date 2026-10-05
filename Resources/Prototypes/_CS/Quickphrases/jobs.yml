@@ -1,0 +1,68 @@
+# Frontier and Coyote Specific Phrases
+
+# Frontier Command Jobs
+- type: quickPhrase
+  parent: BaseCommandJobPhrase
+  id: StationRepresentativePhrase
+  text: job-name-sr
+
+- type: quickPhrase
+  parent: BaseCommandJobPhrase
+  id: StationTrafficControllerPhrase
+  text: job-name-stc
+
+- type: quickPhrase
+  parent: [BaseCommandJobPhrase, BaseMedicalJobPhrase]
+  id: DirectorOfCarePhrase
+  text: job-name-doc
+
+# Civilian Jobs
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: ValetPhrase
+#   text: job-name-valet
+
+- type: quickPhrase
+  parent: BaseCivilianJobPhrase
+  id: MailCarrierPhrase
+  text: job-name-mail-carrier
+
+- type: quickPhrase
+  parent: BaseCivilianJobPhrase
+  id: ContractorPhrase
+  text: job-name-contractor
+
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: ContractorInterviewPhrase
+#   text: job-name-contractor-interview
+
+- type: quickPhrase
+  parent: BaseCivilianJobPhrase
+  id: PilotPhrase
+  text: job-name-pilot
+
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: PilotInterviewPhrase
+#   text: job-name-pilot-interview
+
+- type: quickPhrase
+  parent: BaseCivilianJobPhrase
+  id: MercPhrase
+  text: job-name-mercenary
+
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: MercInterviewPhrase
+#   text: job-name-mercenary-interview
+
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: CuratorPhrase
+#   text: job-name-curator
+
+# - type: quickPhrase
+#   parent: BaseCivilianJobPhrase
+#   id: MassageTherapistPhrase
+#   text: job-name-massage-therapist

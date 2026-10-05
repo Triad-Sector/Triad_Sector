@@ -475,7 +475,7 @@ public sealed partial class ServerApi : IPostInjectInit
             if (gameRule.Abstract)
                 continue;
 
-            if (gameRule.HasComponent<GameRuleComponent>(_entityManager.ComponentFactory))
+            if (gameRule.HasComp<GameRuleComponent>(_entityManager.ComponentFactory))
                 gameRules.Add(gameRule.ID);
         }
 

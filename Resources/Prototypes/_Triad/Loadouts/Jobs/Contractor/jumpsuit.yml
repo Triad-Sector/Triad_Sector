@@ -1,47 +1,263 @@
 - type: loadout
   id: ClothingUniformMNKOfficeSkirt
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKOfficeSkirt
 
 - type: loadout
   id: ClothingUniformMNKUnderGarment
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKUnderGarment
 
 - type: loadout
   id: ClothingUniformMNKDressBlack
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKDressBlack
 
 - type: loadout
   id: ClothingUniformMNKGymBra
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKGymBra
 
 - type: loadout
   id: ClothingUniformMNKBlackOveralls
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKBlackOveralls
 
 - type: loadout
   id: ClothingUniformMNKBlackShoulder
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKBlackShoulder
 
 - type: loadout
   id: ClothingUniformMNKTracksuitBlack
-  price: 0
+  groupBy: MNKSuit
   equipment:
     jumpsuit: ClothingUniformMNKTracksuitBlack
 
 - type: loadout
   id: ClothingUniformIndustrialWorker
-  price: 0
+  groupBy: CargoJumpsuit
   equipment:
     jumpsuit: ClothingUniformIndustrialWorker
+
+- type: loadout
+  id: ClothingUniformJumpskirtCountess
+  groupBy: Dress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCountess
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryPilot
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryPilot
+
+- type: loadout
+  id: ClothingUniformDrakeIndustriesTrucker
+  groupBy: PilotSuit
+  equipment:
+    jumpsuit: ClothingUniformDrakeIndustriesTrucker
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractor
+  groupBy: MilitaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractor
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryContractorTac
+  groupBy: MilitaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac
+
+- type: loadout
+  id: ClothingUniformJumpsuitPrivateSec
+  groupBy: SecJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPrivateSec
+
+- type: loadout
+  id: ClothingUniformJumpskirtPrivateSec
+  groupBy: SecJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPrivateSec
+
+- type: loadout
+  id: ClothingUniformJumpsuitMercenary
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+
+- type: loadout
+  id: ClothingUniformJumpskirtMercenary
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryMedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenaryCaptain
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryMedic
+
+- type: loadout
+  id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+
+- type: loadout
+  id: ClothingUniformDrakeIndustriesWatchdog
+  groupBy: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformDrakeIndustriesWatchdog
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitCCEBasic
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitCCEBasic
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitCCEBleached
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitCCEBleached
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitCCEWorn
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitCCEWorn
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitCCEDesert
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitCCEDesert
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitGrassland
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitGrassland
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitMudland
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitMudland
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitMisko
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitMisko
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitLampartFlag
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitLampartFlag
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitLampart
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitLampart
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitSummerFloraFlag
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitSummerFloraFlag
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitSummerFlora
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitSummerFlora
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitUrbanWhite
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitUrbanWhite
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitDigitalBlack
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitDigitalBlack
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitDigitalBlue
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitDigitalBlue
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitDigitalRed
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitDigitalRed
+
+- type: loadout
+  id: ClothingUniformJumpsuitCombatSuitDigitalGreenTan
+  groupBy: CombatJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCombatSuitDigitalGreenTan
+
+- type: loadout
+  id: ClothingUniformJumpsuitBH
+  groupBy: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBH
+
+- type: loadout
+  id: ClothingUniformJumpskirtBH
+  groupBy: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBH
+
+- type: loadout
+  id: ClothingUniformJumpsuitBHGrey
+  groupBy: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBHGrey
+
+- type: loadout
+  id: ClothingUniformJumpskirtBHGrey
+  groupBy: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBHGrey

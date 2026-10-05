@@ -921,6 +921,36 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("consent_toggle", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("dbjob_alternate_title_id");
+
+                    b.Property<string>("AlternateTitle")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("alternate_title");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_dbjob_alternate_title");
+
+                    b.HasIndex("ProfileId", "RoleName", "AlternateTitle")
+                        .IsUnique();
+
+                    b.ToTable("dbjob_alternate_title", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
                 {
                     b.Property<int>("Id")
@@ -1922,6 +1952,91 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("uploaded_resource_log", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBox", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("wayfarer_safety_deposit_box_id");
+
+                    b.Property<Guid>("BoxId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("box_id");
+
+                    b.Property<int>("CharacterIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("character_index");
+
+                    b.Property<DateTime?>("LastWithdrawn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("last_withdrawn");
+
+                    b.Property<int?>("LastWithdrawnRoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("last_withdrawn_round_id");
+
+                    b.Property<string>("Nickname")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("nickname");
+
+                    b.Property<string>("OwnerName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("owner_name");
+
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<string>("ProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("proto_id");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("purchase_date");
+
+                    b.HasKey("Id")
+                        .HasName("PK_wayfarer_safety_deposit_box");
+
+                    b.HasIndex("BoxId")
+                        .IsUnique();
+
+                    b.HasIndex("OwnerUserId");
+
+                    b.ToTable("wayfarer_safety_deposit_box", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBoxItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("wayfarer_safety_deposit_box_item_id");
+
+                    b.Property<int>("BoxId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("box_id");
+
+                    b.Property<DateTime>("DepositDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("deposit_date");
+
+                    b.Property<string>("EntityData")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entity_data");
+
+                    b.HasKey("Id")
+                        .HasName("PK_wayfarer_safety_deposit_box_item");
+
+                    b.HasIndex("BoxId")
+                        .HasDatabaseName("IX_wayfarer_safety_deposit_box_item_box_id");
+
+                    b.ToTable("wayfarer_safety_deposit_box_item", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Whitelist", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -2377,6 +2492,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ConsentSettings");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("AltTitles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_dbjob_alternate_title_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Job", b =>
                 {
                     b.HasOne("Content.Server.Database.Profile", "Profile")
@@ -2606,6 +2733,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Ban");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBoxItem", b =>
+                {
+                    b.HasOne("Content.Server.Database.WayfarerSafetyDepositBox", "Box")
+                        .WithMany("Items")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_wayfarer_safety_deposit_box_item_wayfarer_safety_deposit_box_box_id");
+
+                    b.Navigation("Box");
+                });
+
             modelBuilder.Entity("PlayerRound", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", null)
@@ -2720,6 +2859,8 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
+                    b.Navigation("AltTitles");
+
                     b.Navigation("Antags");
 
                     b.Navigation("ConsentSettings");
@@ -2751,6 +2892,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ConnectionLogs");
 
                     b.Navigation("Rounds");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBox", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

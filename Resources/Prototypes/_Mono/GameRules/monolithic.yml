@@ -21,8 +21,8 @@
         - mono-monolithic-event-name-MonolithicFragment
         minCount: 1
         maxCount: 1
-        minimumDistance: 3000 #Triad
-        maximumDistance: 7000 #Triad
+        minimumDistance: 3500 #Triad
+        maximumDistance: 7500 #Triad
         addComponents:
         - type: Gravity
           enabled: true
@@ -40,3 +40,4 @@
         - /Maps/_Mono/Monolithic/monolithicasteroidsmallarena.yml
         - /Maps/_Mono/Monolithic/monolithicasteroidsmallspindle.yml
         - /Maps/_Mono/Monolithic/monolithicasteroidsmallship.yml
+        - /Maps/_Triad/Monolithic/monolithic_centcomm_outpost_medium.yml # Triad

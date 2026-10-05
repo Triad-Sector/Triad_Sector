@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "https://github.com/tgstation/tgstation/blob/8024397cc81c5f47f74cf4279e35728487d0a1a7/icons/mob/human_parts.dmi for acting as a base, modified by PixelTheKermit (github) for SS14",
+  "copyright": "Taken from https://github.com/Monkestation/Monkestation2.0/blob/1fb7ec58ee4501ba99b97126f7e244340b83c9bb/icons/mob/species/arachnid/bodyparts.dmi, 'full' state modified by PixelTheKermit (github) for SS14",
   "size": {
     "x": 32,
     "y": 32

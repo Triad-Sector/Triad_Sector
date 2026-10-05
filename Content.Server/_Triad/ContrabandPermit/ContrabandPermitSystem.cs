@@ -186,30 +186,36 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
                 continue;
 
-            comp.PermitOwner = user;
+            InitializePermitItem((ent, comp), user);
+        }
+    }
 
-            if (_mind.TryGetMind(user, out var mindId, out var mindComp))
+    public void InitializePermitItem(Entity<ContrabandPermitItemComponent> permitItem, EntityUid user)
+    {
+        var comp = permitItem.Comp;
+        comp.PermitOwner = user;
+
+        if (_mind.TryGetMind(user, out var mindId, out var mindComp))
+        {
+            comp.PermitOwnerMind = mindId;
+
+            // Log if the names are different
+            if (mindComp.CharacterName != comp.PermitOwnerName)
             {
-                comp.PermitOwnerMind = mindId;
+                var message = $"{ToPrettyString(user):player} owns a contraband permit with a different logged name." +
+                    $" (Permit Owner Name: {comp.PermitOwnerName}, Player Name: {mindComp.CharacterName})"
+                    + " Possible abuse of the ship saving system may be at play here.";
 
-                // Log if the names are different
-                if (mindComp.CharacterName != comp.PermitOwnerName)
-                {
-                    var message = $"{ToPrettyString(user):player} owns a contraband permit with a different logged name." +
-                        $" (Permit Owner Name: {comp.PermitOwnerName}, Player Name: {mindComp.CharacterName})"
-                        + " Possible abuse of the ship saving system may be at play here.";
-
-                    _chat.SendAdminAlert(message);
-                    _adminLog.Add(LogType.EntitySpawn, LogImpact.Medium, $"{message}");
-                }
-
-                // Re-stamp so a transferred ship only alerts once, not on every future load
-                comp.PermitOwnerName = mindComp.CharacterName ?? comp.PermitOwnerName;
+                _chat.SendAdminAlert(message);
+                _adminLog.Add(LogType.EntitySpawn, LogImpact.Medium, $"{message}");
             }
 
-            Dirty(ent, comp);
-            AddPermitRecordToSectorService(user, (ent, comp));
+            // Re-stamp so a transferred ship only alerts once, not on every future load
+            comp.PermitOwnerName = mindComp.CharacterName ?? comp.PermitOwnerName;
         }
+
+        Dirty(permitItem);
+        AddPermitRecordToSectorService(user, permitItem);
     }
 
     public void ClearPermitItemsOnGrid(EntityUid gridUid, EntityUid user)
@@ -233,32 +239,36 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
                 continue;
 
-            if (comp.PermitOwnerMind != null && _mind.TryGetMind(user, out var userMindId, out _))
-            {
-                if (userMindId != comp.PermitOwnerMind)
-                {
-                    toDelete.Add(ent);
-                    continue;
-                }
-            }
-            else if (user != comp.PermitOwner)
-            {
+            if (IsInvalidPermit((ent, comp), user))
                 toDelete.Add(ent);
-                continue;
-            }
-
-            // If the permit item somehow doesn't have permittable or it was set to false
-            if (!TryComp<ContrabandPermittableComponent>(ent, out var permittable) || !permittable.Permittable)
-            {
-                toDelete.Add(ent);
-                continue;
-            }
         }
 
         foreach (var uid in toDelete)
         {
             Del(uid);
         }
+    }
+
+    public bool IsInvalidPermit(Entity<ContrabandPermitItemComponent> permitItem, EntityUid user)
+    {
+        var comp = permitItem.Comp;
+        comp.PermitOwner = user;
+
+        if (comp.PermitOwnerMind != null && _mind.TryGetMind(user, out var userMindId, out _))
+        {
+            if (userMindId != comp.PermitOwnerMind)
+                return true;
+        }
+        else if (user != comp.PermitOwner)
+        {
+            return true;
+        }
+
+        // If the permit item somehow doesn't have permittable or it was set to false
+        if (!TryComp<ContrabandPermittableComponent>(permitItem.Owner, out var permittable) || !permittable.Permittable)
+            return true;
+
+        return false; // Valid!
     }
 
     private void SendConsoleRadioMessage(EntityUid console, string message)

@@ -254,7 +254,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
         EntityUid? user = null,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
         var pos = Transform(uid);
 
@@ -267,7 +268,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             return;
 
         // Mono - MapCoordinates -> EntityCoordinates
-        QueueExplosion(gridPos!.Value, typeId, totalIntensity, slope, maxTileIntensity, uid, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false);
+        QueueExplosion(gridPos!.Value, typeId, totalIntensity, slope, maxTileIntensity, uid, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false, gridOnly: gridOnly); // Triad: gridOnly
 
         if (!addLog)
             return;
@@ -304,9 +305,10 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
-        QueueExplosion(_transformSystem.ToCoordinates(epicenter), typeId, totalIntensity, slope, maxTileIntensity, cause, tileBreakScale, maxTileBreak, canCreateVacuum, addLog);
+        QueueExplosion(_transformSystem.ToCoordinates(epicenter), typeId, totalIntensity, slope, maxTileIntensity, cause, tileBreakScale, maxTileBreak, canCreateVacuum, addLog, gridOnly); // Triad: gridOnly
     }
 
     // Mono - MapCoordinates -> EntityCoordinates
@@ -322,7 +324,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool addLog = true)
+        bool addLog = true,
+        bool gridOnly = false) // Triad
     {
         if (totalIntensity <= 0 || slope <= 0)
             return;
@@ -362,7 +365,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             TileBreakScale = tileBreakScale,
             MaxTileBreak = maxTileBreak,
             CanCreateVacuum = canCreateVacuum,
-            Cause = cause
+            Cause = cause,
+            GridOnly = gridOnly // Triad
         };
         _explosionQueue.Enqueue(boom);
         _queuedExplosions.Add(boom);
@@ -384,7 +388,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         if (!_map.MapExists(pos.MapId))
             return null;
 
-        var results = GetExplosionTiles(pos, queued.Proto.ID, queued.TotalIntensity, queued.Slope, queued.MaxTileIntensity);
+        var results = GetExplosionTiles(pos, queued.Proto.ID, queued.TotalIntensity, queued.Slope, queued.MaxTileIntensity, queued.GridOnly); // Triad: gridOnly
 
         if (results == null)
             return null;

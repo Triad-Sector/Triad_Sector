@@ -34,10 +34,10 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsMercenary
-  suffix: Mercenary, Locked
+  suffix: Civilian, Locked
   components:
   - type: AccessReader
-    access: [["Mercenary"], ["Captain"]]
+    access: [["Civilian"], ["Captain"]]
 
 - type: entity
   parent: DoorElectronics

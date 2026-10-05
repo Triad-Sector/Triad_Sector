@@ -20,6 +20,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     private readonly LockSystem _lock;
 
     private readonly Dictionary<Vector2i, StyleBoxFlat> _reactorGrid = [];
+    private readonly Dictionary<Vector2i, StyleBoxFlat> _reactorInner = []; // Triad: selection outline
     private readonly Dictionary<Vector2i, TextureRect> _reactorRect = [];
     private readonly Dictionary<Vector2i, Button> _reactorButton = [];
 
@@ -31,29 +32,33 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     private int _gridWidth = 0;
     private int _gridHeight = 0;
 
+    private float _reactionRatio = 0.5f;
+
     private byte _displayMode = 1<<0;
+    private double _targetPulse = 0;
 
     private enum DisplayModes : byte
     {
         Temperature = 1 << 0,
         Neutron = 1 << 1,
-        Target = 1 << 2
+        Fuel = 1 << 2
     }
 
     private byte _temperatureMode = 1 << 0;
 
     private enum TemperatureModes : byte
     {
-        Celcius = 1 << 0,
-        Kelvin = 1 << 1,
+        Kelvin = 1 << 0,
+        Celcius = 1 << 1,
         // Fahrenheit = 1 << 2
     }
 
     private int _targetX = 0;
     private int _targetY = 0;
 
-    public event Action<Vector2d>? ItemActionButtonPressed;
+    public event Action<Vector2i>? ItemActionButtonPressed;
     public event Action? EjectButtonPressed;
+    public event Action? AckButtonPressed;
 
     public event Action<float>? ControlRodModify;
 
@@ -61,6 +66,9 @@ public sealed partial class NuclearReactorWindow : FancyWindow
 
     private bool _isMonitor = false;
     private EntityUid _monitor;
+
+    private readonly float _repeatDelay = 0.5f;
+    private readonly Dictionary<Button, float> _repeatQueue = [];
 
     public NuclearReactorWindow()
     {
@@ -80,11 +88,23 @@ public sealed partial class NuclearReactorWindow : FancyWindow
         YDecrement.OnPressed += _ => MoveTarget(0, -1);
         ItemAction.OnPressed += _ => ItemActionButtonPressed?.Invoke(new(_targetY, _targetX));
         EjectItem.OnPressed += _ => EjectButtonPressed?.Invoke();
+        AlarmAck.OnPressed += _ => AckButtonPressed?.Invoke();
 
         ControlRodsInsertLarge.OnPressed += _ => AdjustControlRods(0.1f);
+        ControlRodsInsertLarge.OnButtonDown += _ => _repeatQueue.Add(ControlRodsInsertLarge, _repeatDelay);
+        ControlRodsInsertLarge.OnButtonUp += _ => _repeatQueue.Remove(ControlRodsInsertLarge);
+
         ControlRodsInsert.OnPressed += _ => AdjustControlRods(0.01f);
+        ControlRodsInsert.OnButtonDown += _ => _repeatQueue.Add(ControlRodsInsert, _repeatDelay);
+        ControlRodsInsert.OnButtonUp += _ => _repeatQueue.Remove(ControlRodsInsert);
+
         ControlRodsRemove.OnPressed += _ => AdjustControlRods(-0.01f);
+        ControlRodsRemove.OnButtonDown += _ => _repeatQueue.Add(ControlRodsRemove, _repeatDelay);
+        ControlRodsRemove.OnButtonUp += _ => _repeatQueue.Remove(ControlRodsRemove);
+
         ControlRodsRemoveLarge.OnPressed += _ => AdjustControlRods(-0.1f);
+        ControlRodsRemoveLarge.OnButtonDown += _ => _repeatQueue.Add(ControlRodsRemoveLarge, _repeatDelay);
+        ControlRodsRemoveLarge.OnButtonUp += _ => _repeatQueue.Remove(ControlRodsRemoveLarge);
 
         TargetTemperature.OnPressed += _ => ChangeTemp();
     }
@@ -92,12 +112,13 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     public void Update(NuclearReactorBuiState msg)
     {
         _data = msg.SlotData;
+        _reactionRatio = msg.ReactionRatio;
 
         ReactorTempValue.Text = FormatTemperature(msg.ReactorTemp);
         ReactorTempBar.Value = msg.ReactorTemp;
         _temperatureBar.BackgroundColor = GetColor(Atmospherics.T20C, ReactorTempBar.MaxValue * 0.75, msg.ReactorTemp);
 
-        ReactorRadsValue.Text = Math.Round(msg.ReactorRads, 1).ToString();
+        ReactorRadsValue.Text = msg.ReactorRads <= msg.ReactorRadsMax ? Math.Round(msg.ReactorRads, 1).ToString() : "OVERLOAD";
         ReactorRadsBar.Value = msg.ReactorRads;
         _radiationBar.BackgroundColor = GetColor(0, ReactorRadsBar.MaxValue * 0.5, msg.ReactorRads);
 
@@ -109,13 +130,17 @@ public sealed partial class NuclearReactorWindow : FancyWindow
         ControlRodsActual.Value = msg.ControlRodActual;
         ControlRodsSet.Value = msg.ControlRodSet;
 
+        AlarmAck.Disabled = !msg.AckAvailable;
+
         var locktarget = _isMonitor ? _monitor : _reactor;
 
         ControlRodsButtons.Visible = !_lock.IsLocked(locktarget);
         ItemAction.Visible = !_lock.IsLocked(_reactor) && !_isMonitor;
+        AlarmAck.Visible = !_lock.IsLocked(locktarget);
 
         ItemActionLock.Visible = _lock.IsLocked(_reactor) && !_isMonitor;
         ControlRodsLock.Visible = _lock.IsLocked(locktarget);
+        AlarmAckLock.Visible = _lock.IsLocked(locktarget);
 
         Shelf.Visible = !_isMonitor;
 
@@ -156,21 +181,26 @@ public sealed partial class NuclearReactorWindow : FancyWindow
             for (var y = 0; y < _gridHeight; y++)
             {
                 var styleBox = new StyleBoxFlat();
+                // Triad: fixed margins so the selection outline does not resize the cell
+                styleBox.SetContentMarginOverride(StyleBox.Margin.All, 3f);
+                var inner = new StyleBoxFlat(Color.Transparent) { BorderColor = Color.Black };
+                inner.SetContentMarginOverride(StyleBox.Margin.All, 1f);
                 var icon = new TextureRect()
                 {
                     SetSize = new(32, 32),
-                    TexturePath = "/Textures/_FarHorizons/Structures/Power/Generation/FissionGenerator/reactor_part_inserted/base.png"
+                    TexturePath = "/Textures/_FarHorizons/Interface/FissionGenerator/reactor_part_inserted/base.png"
                 };
                 var button = new Button
                 {
                     Margin = new(0),
-                    StyleBoxOverride = new StyleBoxFlat(Color.Transparent),
+                    StyleBoxOverride = inner, // Triad
                     ToolTip = "",
                     TooltipDelay = 0.5f
                 };
 
                 var vect = new Vector2i(x, y);
                 _reactorGrid.Add(vect, styleBox);
+                _reactorInner.Add(vect, inner); // Triad
                 _reactorRect.Add(vect, icon);
                 _reactorButton.Add(vect, button);
 
@@ -194,6 +224,8 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     {
         base.FrameUpdate(args);
 
+        _targetPulse += args.DeltaSeconds * 2;
+
         //Update the grid
         for (var x = 0; x < _gridWidth; x++)
         {
@@ -212,23 +244,58 @@ public sealed partial class NuclearReactorWindow : FancyWindow
                         box.BackgroundColor = GetColor(0, 7, exists ? _data[vect].NeutronCount : 0);
                         ViewLabel.Text = Loc.GetString("comp-nuclear-reactor-ui-view-neutron");
                         break;
-                    case (byte)DisplayModes.Target:
-                        box.BackgroundColor = y == _targetX && x == _targetY ? Color.Yellow : Color.Gray;
-                        ViewLabel.Text = Loc.GetString("comp-nuclear-reactor-ui-view-target");
+                    case (byte)DisplayModes.Fuel:
+                        box.BackgroundColor = Color.InterpolateBetween(Color.Gray, Color.FromHex("#22bbff"), exists && _data[vect].SpentFuel > 0 ? (float)GetFuelLevel(_data[vect]) : 0);
+                        ViewLabel.Text = Loc.GetString("comp-nuclear-reactor-ui-view-fuel");
                         break;
                 }
 
                 var icon = exists ? _data[vect].IconName : "base";
-                _reactorRect[vect].TexturePath = "/Textures/_FarHorizons/Structures/Power/Generation/FissionGenerator/reactor_part_inserted/" +  icon + ".png";
+                _reactorRect[vect].TexturePath = "/Textures/_FarHorizons/Interface/FissionGenerator/reactor_part_inserted/" +  icon + ".png";
+                // Triad: selection outline; upstream pulsed the silhouette grey:
+                var selected = y == _targetX && x == _targetY;
+                box.BorderThickness = selected ? new Thickness(2) : default;
+                box.BorderColor = Color.InterpolateBetween(Color.White, Color.FromHex("#ffd23f"), ((float)Math.Sin(_targetPulse) + 1f) / 2f);
+                _reactorInner[vect].BorderThickness = selected ? new Thickness(1) : default;
+                _reactorRect[vect].Modulate = Color.Black;
+                // _reactorRect[vect].Modulate = y == _targetX && x == _targetY
+                //     ? Color.InterpolateBetween(Color.FromHex("#666"), Color.FromHex("#222"), ((float)Math.Sin(_targetPulse) / 2) + 1)
+                //     : Color.Black;
                 
-                _reactorButton[vect].ToolTip = exists && _data[vect].SpentFuel > 0
-                    ? "Fuel Level: " + (int)Math.Round((1 - (_data[vect].SpentFuel / (_data[vect].SpentFuel + (_data[vect].Radioactivity * 0.5) + (_data[vect].NeutronRadioactivity * 0.25)))) * 100) + "%"
+                _reactorButton[vect].ToolTip = exists && (_data[vect].SpentFuel > 0 || _data[vect].Radioactivity > 0 || _data[vect].NeutronRadioactivity > 0)
+                    ? "Fuel Level: " + (int)Math.Round(GetFuelLevel(_data[vect]) * 100) + "%"
                     : "";
             }
         }
 
         UpdateTargetInfo();
         UpdateItemAction();
+
+        // Handle repeat buttons
+        foreach ( var kvp in _repeatQueue)
+        {
+            if(kvp.Value > 0)
+            {
+                _repeatQueue[kvp.Key] -= args.DeltaSeconds;
+                continue;
+            }
+
+            switch (kvp.Key)
+            {
+                case var _ when kvp.Key == ControlRodsInsertLarge:
+                    AdjustControlRods(0.1f);
+                    break;
+                case var _ when kvp.Key == ControlRodsInsert:
+                    AdjustControlRods(0.01f);
+                    break;
+                case var _ when kvp.Key == ControlRodsRemove:
+                    AdjustControlRods(-0.01f);
+                    break;
+                case var _ when kvp.Key == ControlRodsRemoveLarge:
+                    AdjustControlRods(-0.1f);
+                    break;
+            }
+        }
     }
 
     private static Color GetColor(double pointA, double pointB, double value)
@@ -338,8 +405,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
         _targetX = Math.Clamp(x, 0, _gridWidth - 1);
         _targetY = Math.Clamp(y, 0, _gridHeight - 1);
 
-        XPos.Text = _targetX.ToString();
-        YPos.Text = _targetY.ToString();
+        TargetPos.Text = _targetX.ToString() +"," + _targetY.ToString();
 
         XIncrement.Disabled = _targetX >= _gridWidth - 1;
         XDecrement.Disabled = _targetX <= 0;
@@ -350,6 +416,8 @@ public sealed partial class NuclearReactorWindow : FancyWindow
     public void SetItemName(string? itemName) => ItemName.Text = itemName ?? "empty";
 
     private static string FormatPower(float power) => Loc.GetString("comp-nuclear-reactor-ui-therm-format", ("power", power));
+
+    private double GetFuelLevel(ReactorSlotBUIData data) => Math.Max(1 - (data.SpentFuel / (data.SpentFuel + (data.Radioactivity * _reactionRatio) + (data.NeutronRadioactivity * _reactionRatio * _reactionRatio))), 0);
 
     private void AdjustControlRods(float amount) => ControlRodModify?.Invoke(amount);
 }

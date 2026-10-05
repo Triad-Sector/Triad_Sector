@@ -17,7 +17,7 @@ namespace Content.Server._Triad.Market;
 /// </summary>
 public sealed class MarketDataStore
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     /// <summary>
     /// Writes a batch of captured transactions, with their splits and line trees.

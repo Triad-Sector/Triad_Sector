@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "State permits made by TheRealMasterChief117",
+  "copyright": "State shipyard_military and permits made by TheRealMasterChief117",
   "size": {
     "x": 32,
     "y": 32
@@ -54,6 +54,36 @@
                     1,
                     0.1,
                     0.1
+                ]
+            ]
+        },
+        {
+            "name": "shipyard_military",
+            "directions": 4,
+            "delays": [
+                [
+                    1.0,
+                    0.3,
+                    1.0,
+                    0.3
+                ],
+                [
+                    1.0,
+                    0.3,
+                    1.0,
+                    0.3
+                ],
+                [
+                    1.0,
+                    0.3,
+                    1.0,
+                    0.3
+                ],
+                [
+                    1.0,
+                    0.3,
+                    1.0,
+                    0.3
                 ]
             ]
         }

@@ -1,0 +1,142 @@
+- type: entity
+  id: BaseBusinessCard
+  parent: Paper
+  abstract: true
+  components:
+    - type: Tag
+      tags:
+      - Paper
+    - type: Flammable
+      resisting: true # Resistant but not damage proof business cards
+      canResistFire: true
+    - type: Paper
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+    - type: Engraveable
+    - type: EmitSoundOnPickup
+      sound:
+        collection: cardSlide
+    - type: EmitSoundOnDrop
+      sound:
+        collection: cardPlace
+    - type: EmitSoundOnUse
+      sound:
+        path: /Audio/_Goobstation/Items/handling/paper_use.ogg
+        params:
+          volume: -6
+    - type: EmitSoundOnCollide
+      sound:
+        collection: cardShove
+    - type: EmitSoundOnThrow
+      sound:
+        collection: cardSlide
+    - type: EmitSoundOnLand
+      sound:
+        collection: cardPlace
+        
+- type: entity
+  id: BusinessCardWhite
+  name: business card
+  parent: BaseBusinessCard
+  description: White business card, plain and simple
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card  
+      - state: business_card-words
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+    - type: Paper
+      content: business-card-template-white
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BusinessCardBlack
+  name: business card
+  parent: BaseBusinessCard
+  description: Black business card, for the those that prefer shades
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card
+        color: "#363636"
+      - state: business_card-words
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+    - type: Paper
+      content: business-card-template-black
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundModulate: "#121212"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BaseBusinessCardPack
+  parent: BaseItem
+  abstract: true
+  components:
+    - type: Item
+      size: Tiny
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardWhite
+        amount: 6
+      sound:
+        collection: cardSlide
+        params:
+          volume: 10
+
+- type: entity
+  id: BusinessCardPackWhite
+  name: business card pack (white)
+  parent: BaseBusinessCardPack
+  description: a pack of 6 white business card
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card_stack
+      - state: business_card_stack-words
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardWhite
+        amount: 6
+
+- type: entity
+  id: BusinessCardPackBlack
+  name: business card pack (black)
+  parent: BaseBusinessCardPack
+  description: a pack of 6 black business card
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card_stack
+        color: "#363636"
+      - state: business_card_stack-words
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardBlack
+        amount: 6

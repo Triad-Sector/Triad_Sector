@@ -34,7 +34,7 @@ public abstract partial class SharedMaterialReclaimerSystem : EntitySystem
     [Dependency] protected SharedAudioSystem _audio = default!; // Frontier: private<protected
     [Dependency] protected SharedContainerSystem Container = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
-    //[Dependency] private readonly EmagSystem _emag = default!; // Frontier: no point
+    //[Dependency] private EmagSystem _emag = default!; // Frontier: no point
     [Dependency] private OpenableSystem _openable = default!; // (#43766)
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!; // (#43766)
 

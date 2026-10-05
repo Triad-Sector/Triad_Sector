@@ -1,0 +1,26 @@
+- type: entity
+  abstract: true
+  parent: ClothingUniformBase
+  id: AlternateFoldableUniformBase
+  components:
+  - type: AlternateClothingFoldable
+    types:
+    - name: alt-foldable-jacket-verb
+      prefix: jacket
+      priority: 0
+    - name: alt-foldable-sleeves-verb
+      prefix: sleeves
+      priority: 1
+      blacklistedPrefix: jacket
+      blacklistPopup: alt-foldable-sleeves-cannot
+
+- type: entity
+  abstract: true
+  parent: ClothingUniformBase
+  id: AlternateFoldableSleevesOnlyUniformBase
+  components:
+  - type: AlternateClothingFoldable
+    types:
+    - name: alt-foldable-sleeves-verb
+      prefix: sleeves
+      priority: 0

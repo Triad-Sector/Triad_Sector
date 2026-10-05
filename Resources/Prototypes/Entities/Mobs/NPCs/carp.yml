@@ -93,15 +93,16 @@
     interfaces:
       enum.SurgeryUIKey.Key:
         type: SurgeryBui
-  - type: NightVision # Gen 3 wide-quadtube
+  - type: NightVision
     relayOverlay: false
     goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
+    viewCircleRadius: 1080
+    viewCircleCount: 1
     action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
+    phosphorColor: "#f17171" # Carp vision
+    lightingColor: "#525252"
+    activateSound: null
+    deactivateSound: null
 
 - type: entity
   parent: BaseMobCarp

@@ -5,7 +5,6 @@ using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Roles
 {
@@ -19,8 +18,8 @@ namespace Content.Shared.Roles
         [IdDataField]
         public string ID { get; private set; } = default!;
 
-        [DataField("playTimeTracker", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
-        public string PlayTimeTracker { get; private set; } = string.Empty;
+        [DataField("playTimeTracker", required: true)]
+        public ProtoId<PlayTimeTrackerPrototype> PlayTimeTracker { get; private set; } = string.Empty;
 
         /// <summary>
         ///     Who is the supervisor for this job.
@@ -36,6 +35,9 @@ namespace Content.Shared.Roles
 
         [ViewVariables(VVAccess.ReadOnly)]
         public string LocalizedName => Loc.GetString(Name);
+
+        [DataField]
+        public HashSet<ProtoId<JobAlternateTitlePrototype>> AlternateTitles { get; private set; } = new HashSet<ProtoId<JobAlternateTitlePrototype>>();
 
         /// <summary>
         ///     The name of this job as displayed to players.
@@ -141,8 +143,8 @@ namespace Content.Shared.Roles
         /// Starting gear will be ignored.
         /// If you want to just add special attributes to a humanoid, use AddComponentSpecial instead.
         /// </summary>
-        [DataField("jobEntity", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? JobEntity = null;
+        [DataField("jobEntity")]
+        public EntProtoId? JobEntity = null;
 
         /// <summary>
         /// Entity to use as a preview in the lobby/character editor.
@@ -171,6 +173,18 @@ namespace Content.Shared.Roles
 
         [DataField]
         public bool Whitelisted;
+
+        // Triad: admin-gated roles.
+        /// <summary>
+        /// Gates this job on the player holding an admin rank, active or de-adminned, whatever the
+        /// <c>game.role_whitelist</c> cvar says. The server puts the job in a rank holder's <c>MsgJobWhitelist</c>
+        /// payload and leaves it out of everyone else's, and the lobby drops what the payload leaves out rather than
+        /// showing it disabled, from the latejoin list and the character editor alike: see
+        /// JobWhitelistManager.IsAllowed and AdminGatedJobFilter.
+        /// </summary>
+        [DataField]
+        public bool AdminWhitelist;
+        // End Triad
 
         /// <summary>
         /// Optional list of guides associated with this role. If the guides are opened, the first entry in this list

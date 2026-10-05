@@ -44,7 +44,10 @@
     scale: 2.75
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Missile
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Missile
+    shipType: Guided
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -96,7 +99,10 @@
     radarColor: "#FCBA03"
     scale: 2.75
   - type: ShipGunType
-    shipType: Missile
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Missile
+    shipType: Guided
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
+  parent: [ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseClass2AShipContraband]
   id: ClothingOuterHardsuitTdf
   name: TA-21 hardsuit
   description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
@@ -149,5 +149,165 @@
     coefficient: 0.35
   - type: PirateBountyItem
     id: ClothingOuterHardsuitTacsuitHighValue
-  - type: ContrabandPermittable
-    permittable: false # Hell no
+
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseFactionGearTDFT2, BaseClass2AShipContraband]
+  id: ClothingOuterHardsuitTdfHazmat
+  name: TA-82 hazmat hardsuit
+  description: An advanced combat hardsuit designed to combat extreme NBC threats. The armor is reinforced against claws and talons, keeping your limbs attached during animal control.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta82.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta82.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.55
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.35
+        Piercing: 0.65
+        Heat: 0.35
+        Radiation: 0.1
+        Caustic: 0.1
+  - type: StaminaDamageResistance
+    coefficient: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing # Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfHazmat
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaticPrice
+    price: 1500
+    vendPrice: 4000
+
+- type: entity
+  parent: [ClothingOuterHardsuitSyndieCommander, BaseFactionGearTDFT3, BaseClass2AShipContraband]
+  id: ClothingOuterHardsuitTdfCasket
+  name: TA-67 'The Brick' superheavy riot casket
+  description: You are against the wall, and I am the wall.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta67.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta67.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.20
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.2
+        Slash: 0.2
+        Piercing: 0.2
+        Heat: 0.2
+        Radiation: 0.2
+        Caustic: 0.2
+  - type: StaminaDamageResistance
+    coefficient: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.6
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfCasket
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+      params:
+        volume: 6
+
+- type: entity
+  parent: [ClothingOuterHardsuitSyndieElite, EnergyShieldClothing, BaseFactionGearTDFT3, BaseClass2AShipContraband]
+  id: ClothingOuterHardsuitTdfExperimental
+  name: TA-99X experimental tacsuit
+  description: A specialized combat tacsuit that sacrifices ballistic protection in favor of advanced mirrored composites and a rechargable hard-shield. Incredibly laser-resistant.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta99x.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta99x.rsi
+  - type: ToggleableClothing
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head: ClothingHeadHelmetHardsuitTdfExperimental
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+  - type: FireProtection
+    reduction: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.7
+        Heat: 0.4
+        Radiation: 0.4
+        Caustic: 0.5
+  - type: Item
+    size: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  # Shielding
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1
+        Heat: 0.1
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1
+        Heat: 0.1
+      flatReductions:
+        Heat: 5
+    passiveBlockFraction: 1.0
+    activeBlockFraction: 1.0
+    isClothing: true
+  - type: Damageable
+    damageContainer: Shield
+  - type: Battery
+    maxCharge: 10
+    startingCharge: 10
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1
+  - type: RechargeableBlocking
+    chargedRechargeRate: 0
+    dischargedRechargeRate: 0.3
+  - type: UseDelay
+    delay: 10
+  - type: PointLight
+    enabled: false
+    radius: 1.4
+    energy: 2
+    color: "#5dd439"

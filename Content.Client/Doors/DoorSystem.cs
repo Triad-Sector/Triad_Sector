@@ -12,7 +12,7 @@ namespace Content.Client.Doors;
 public sealed partial class DoorSystem : SharedDoorSystem
 {
     [Dependency] private AnimationPlayerSystem _animationSystem = default!;
-    // [Dependency] private readonly IResourceCache _resourceCache = default!; // Upstream#37341
+    // [Dependency] private IResourceCache _resourceCache = default!; // Upstream#37341
     [Dependency] private IComponentFactory _componentFactory = default!; // Upstream#37341
     [Dependency] private IPrototypeManager _prototypeManager = default!; // Upstream#37341
     [Dependency] private SpriteSystem _sprite = default!; // Upstream#37341

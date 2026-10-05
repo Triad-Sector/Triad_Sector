@@ -15,7 +15,7 @@ public enum ShipyardConsoleUiKey : byte
     Security,
     Syndicate,
     BlackMarket,
-    Expedition,
+    Military,
     Scrap,
     Sr,
     Medical,

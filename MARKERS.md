@@ -1,45 +1,9 @@
-﻿# A quick summary of how to mark code files in this repository
+# How to mark changes in this repository
 
-## CSharp
+The full guide is [Attributing Your Changes](https://github.com/Triad-Sector/Triad_Sector/wiki/Attributing-Your-Changes) on the wiki. The short version:
 
-All C# code contributed after 1 July, 2024 23:00:00 UTC should contain the following header:
-
-```csharp
-/*
- * New Frontiers - This file is licensed under AGPLv3
- * Copyright (c) [Year] New Frontiers Contributors
- * See AGPLv3.txt for details.
- */
-```
-
-For any changes within MIT licensed(upstream) files, the following marker should be used at the start of the modification
-
-```csharp
-/* New Frontiers - [Title of changes] - [Description of changes]
-This code is licensed under AGPLv3. See AGPLv3.txt */
-yourCodeHere();
-// End of modified code
-```
-
-## Yaml
-
-All Yaml files contributed after 1 July, 2024 23:00:00 UTC should contain the following header:
-
-```yaml
-# New Frontiers - This file is licensed under AGPLv3
-# Copyright (c) [Year] New Frontiers Contributors
-# See AGPLv3.txt for details.
-```
-
-For any changes within MIT licensed(upstream) files, the following marker should be used at the start of the modification
-
-```yaml
-# New Frontiers - [Title of changes] - [Description of changes]
-# This code is licensed under AGPLv3. See LICENSE
-modifiedYaml: "Goes Here"
-# End of modified code
-```
-
-## Note
-
-Both Space Wizards and Nyanotrasen code is licensed under MIT, and any changes made to their code should be marked as AGPLv3 with the above markers.
+- Edits to inherited files (anything not under a `_Triad/` path) get `// Triad:` markers, `# Triad:` in YAML, closed with `// End Triad` for blocks.
+- Replaced inherited code is commented out with a `// Triad: removed` reason, never deleted, so upstream merges surface conflicts instead of silently reverting us.
+- New original work lives under `_Triad/` and needs no license header; `LEGAL.md` licenses it AGPL-3.0-or-later by default.
+- Content ported from another fork keeps its origin namespace and its `meta.json` license and authors verbatim.
+- Never remove an existing license notice, in a file header or a `meta.json`.

@@ -51,7 +51,7 @@
       whitelist:
         tags:
         - ShellShotgun23x75mmBuckshot
-      capacity: 16 # Triad 32 -> 16
+      capacity: 24 # Triad 32 -> 24
     - type: MagazineVisuals
       magState: mag
       steps: 5

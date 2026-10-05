@@ -1,0 +1,24 @@
+- type: loadout
+  id: ClothingHeadsetAltPilotCommon
+  equipment:
+    ears: ClothingHeadsetAltPilotCommon
+
+- type: loadout
+  id: ClothingHeadsetAltMercenaryCommon
+  equipment:
+    ears: ClothingHeadsetAltMercenaryCommon
+
+- type: loadout
+  id: ClothingHeadsetSecurityCommon
+  equipment:
+    ears: ClothingHeadsetSecurityCommon
+
+- type: loadout
+  id: ClothingHeadsetBrigmedicCommon
+  equipment:
+    ears: ClothingHeadsetBrigmedicCommon
+
+- type: loadout
+  id: ClothingHeadsetAltSecurityCommon
+  equipment:
+    ears: ClothingHeadsetAltSecurityCommon

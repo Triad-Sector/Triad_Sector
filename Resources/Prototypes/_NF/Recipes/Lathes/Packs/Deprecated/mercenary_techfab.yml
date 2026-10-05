@@ -148,6 +148,10 @@
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
 # Triad Start
+  - ClothingOuterHardsuitRmtL10
+  - ClothingOuterHardsuitRmtM10
+  - ClothingOuterHardsuitIndustrialEngi
+  - ClothingOuterHardsuitRmtL10A
   - ClothingModsuitHZDBesieger
 # Triad End
 ## Utilities
@@ -215,6 +219,7 @@
 #Triad Start
   - WeaponPistolStiletto
   - WeaponRiflePike
+  - WeaponShotgunBombadier
 #Triad End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag
