@@ -1,4 +1,5 @@
 using Content.Shared.Clothing;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Robust.Client.Graphics;
@@ -22,9 +23,15 @@ public sealed partial class ImageOverlaySystem : EquipmentHudSystem<ImageOverlay
     }
 
     [SubscribeLocalEvent]
-    private void OnItemToggled(Entity<ImageOverlayComponent> ent, ref ItemMaskToggledEvent args)
+    private void OnItemMaskToggled(Entity<ImageOverlayComponent> ent, ref ItemMaskToggledEvent args)
     {
         _overlay.SetActive(ent.Comp, !args.Mask.Comp.IsToggled);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnItemToggled(Entity<ImageOverlayComponent> ent, ref ItemToggledEvent args)
+    {
+        _overlay.SetActive(ent.Comp, args.Activated);
     }
 
     /// <inheritdoc />
