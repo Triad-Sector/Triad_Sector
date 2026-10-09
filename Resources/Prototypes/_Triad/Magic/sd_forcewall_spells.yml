@@ -1,0 +1,16 @@
+﻿- type: entity
+  id: ActionForceWallDyson
+  name: Barrier Swarm
+  description: Expel some of your suit's nanites to form a stationary barrier against ranged attacks.
+  components:
+  - type: InstantAction
+    useDelay: 15
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Triad/Structure/Holo/forcewall.rsi
+      state: barrier
+    event: !type:InstantSpawnSpellEvent
+      prototype: WallForceDyson
+      posData: !type:TargetInFront
+      extraPrototype: WallForceDysonSpeaker
+      extraPosData: !type:TargetInFrontSingle
