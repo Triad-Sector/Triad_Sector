@@ -142,3 +142,18 @@
       amount: 2
     - id: Magazine185x76mmEMP
       amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseTDFLongBearsLeg
+  suffix: TDF, BearsLeg
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLauncherBearsLeg
+    - id: 40mmGrenadeFragmentation
+      amount: 3
+    - id: 40mmGrenadeThermobaric
+      amount: 3
+    - id: 40mmGrenadeEMP
+      amount: 3

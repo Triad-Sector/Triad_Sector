@@ -1,0 +1,36 @@
+- type: entity
+  parent: [BaseWeaponLauncher, BaseGunWieldable]
+  id: WeaponLauncherBearsLeg
+  name: TDF MT-12 Bear's Leg
+  description: "The bastard child of a project to make a new standard battle rifle for the fledgling TDF. Surplus Solarian Lecters had their stocks cut off and reused for a new purpose.\nA noob tube in Lecter furniture, just point and shoot."
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Launchers/bears_leg.rsi
+    layers:
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: _Triad/Objects/Weapons/Guns/Launchers/bears_leg.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Large # 4x2
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+        - LessLethalGrenade
+        - NFTrackingDart
+    capacity: 1
+    proto: 40mmGrenadeFragmentation
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg

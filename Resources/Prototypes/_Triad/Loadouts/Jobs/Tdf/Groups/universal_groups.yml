@@ -145,7 +145,6 @@
   loadouts:
   - TdfLecterLoadout
   - FactionDrozdLoadout
-  - TdfCrosshairLoadout
   - FactionLaserCannonLoadout
   fallbacks:
   - TdfLecterLoadout
@@ -157,7 +156,6 @@
   loadouts:
   - TdfCaselessAmmoBoxLoadout # Lecter
   - FactionAcpSmgAmmoLoadout #Drozd
-  - Faction762x51mmAmmoLoadout #Vulcan
   - FactionRechargerLoadout #Energy
   - FactionAcpPistolAmmoLoadout #MK58
   fallbacks:

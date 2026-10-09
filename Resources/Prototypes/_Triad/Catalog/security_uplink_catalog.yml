@@ -1,21 +1,6 @@
 # FMC->TCC. TCC cost 5x - Triad
 
 - type: listing
-  id: UplinkSecurityLake
-  name: uplink-security-lake-name
-  description: uplink-security-lake-desc
-  productEntity: WeaponLauncherNfsdLake
-  cost:
-    TriadCommerceCredit: 10
-  categories:
-  - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
   id: UplinkSecurityEg4
   name:  uplink-security-eg4-name
   description: uplink-security-eg4-desc
@@ -353,11 +338,11 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityEmpGrenadeAmmo
-  name:  uplink-security-emp-ammo-name
-  description: uplink-security-emp-ammo-desc
-  productEntity: BoxEmpGrenadesAmmo
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
+  id: UplinkSecurityTrackingDartsAmmo
+  name:  uplink-security-trackingdart-ammo-name
+  description: uplink-security-trackingdart-ammo-desc
+  productEntity: NFBoxDartsTracking
+  icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/tracking_dart.rsi, state: icon }
   cost:
     TriadCommerceCredit: 5
   categories:
@@ -369,13 +354,45 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityTrackingDartsAmmo
-  name:  uplink-security-trackingdart-ammo-name
-  description: uplink-security-trackingdart-ammo-desc
-  productEntity: NFBoxDartsTracking
-  icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/tracking_dart.rsi, state: icon }
+  id: UplinkSecurityEmpGrenadeAmmo
+  name:  uplink-security-emp-ammo-name
+  description: uplink-security-emp-ammo-desc
+  productEntity: Magazine40mmEMP
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
   cost:
     TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing # Smaller radius than frag, but a more powerful explosion.
+  id: UplinkSecurityThermobaricGrenadeAmmo
+  name:  uplink-security-thermobaric-ammo-name
+  description: uplink-security-thermobaric-ammo-desc
+  productEntity: Magazine40mmBlast
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: blast }
+  cost:
+    TriadCommerceCredit: 15
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityFragGrenadeAmmo
+  name:  uplink-security-frag-ammo-name
+  description: uplink-security-frag-ammo-desc
+  productEntity: Magazine40mmFrag
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: frag }
+  cost:
+    TriadCommerceCredit: 20
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -556,22 +573,6 @@
   icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/emp.rsi, state: icon }
   cost:
     TriadCommerceCredit: 40 #Mono Emmiter price: From 1 to 3
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityEnforcer
-  name:  uplink-security-enforcer-name
-  description: uplink-security-enforcer-desc
-  productEntity: WeaponShotgunEnforcer
-  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -1225,6 +1226,22 @@
       - SecurityUplink
 
 - type: listing
+  id: UplinkSecurityEnforcerBundle
+  name: uplink-security-gun-enforcer-name
+  description: uplink-security-gun-enforcer-desc
+  productEntity: WeaponCaseTDFLongEnforcer
+  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 15
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
   id: UplinkSecuritySquireBundle
   name: uplink-security-gun-squire-name
   description: uplink-security-gun-squire-desc
@@ -1241,13 +1258,13 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityEnforcerBundle
-  name: uplink-security-gun-enforcer-name
-  description: uplink-security-gun-enforcer-desc
-  productEntity: WeaponCaseTDFLongEnforcer
-  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
+  id: UplinkSecurityBearsLegBundle
+  name: uplink-security-gun-bears-leg-name
+  description: uplink-security-gun-bears-leg-desc
+  productEntity: WeaponCaseTDFLongBearsLeg
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Launchers/bears_leg.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 15
+    TriadCommerceCredit: 60
   categories:
   - UplinkSecurityWeapons
   conditions:
