@@ -8,14 +8,26 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformMedicalApron
+  - ClothingUniformJumpskirtMedicalApron
+  - ClothingUniformMedicalOffset
+  - ClothingUniformJumpskirtMedicalOffset
+  - ClothingUniformMedicalVest
+  - ClothingUniformJumpskirtMedicalVest
+  # End Triad
   - ContractorClothingUniformJumpsuitSeniorPhysician
   - ContractorClothingUniformJumpskirtSeniorPhysician
   - ContractorClothingUniformJumpsuitParamedic
   - ContractorClothingUniformJumpskirtParamedic
+  - ClothingUniformParamedicJumper # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformJumpskirtParamedicJumper # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingUniformJumpsuitVirology
   - ContractorClothingUniformJumpskirtVirology
   - ContractorClothingUniformJumpsuitChemistry
   - ContractorClothingUniformJumpskirtChemistry
+  - ClothingUniformChemistSenior # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformJumpskirtChemistSenior # Triad - Ported "Medical Clothing Overhaul" clothes.
   - ContractorClothingUniformJumpsuitGenetics
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
