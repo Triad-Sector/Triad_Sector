@@ -40,7 +40,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTrauma
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: HandheldLight
     toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: SavingContraband # Triad, Property of CC
@@ -91,7 +91,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTraumaLeader
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: HandheldLight
     toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: SavingContraband # Triad, Property of CC

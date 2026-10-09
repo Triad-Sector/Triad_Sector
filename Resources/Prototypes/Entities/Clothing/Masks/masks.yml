@@ -50,8 +50,10 @@
     sprite: Clothing/Mask/gassyndicate.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassyndicate.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
+  # Triad: Redistributed eyewear effects. Syndicate gas mask is no longer best in slot.
+  #- type: FlashImmunity
+  #- type: EyeProtection
+  # End Triad
   - type: Armor
     modifiers:
       coefficients:
@@ -701,8 +703,8 @@
 - type: entity
   parent: ClothingMaskGas
   id: ClothingMaskWeldingGas
-  name: welding gas mask
-  description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
+  name: skull gas mask # Triad
+  description: A gas mask with a built in face shield. Looks like a skull, clearly designed by a nerd. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Mask/welding-gas.rsi
@@ -710,6 +712,10 @@
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
   - type: EyeProtection
+  # Triad: Redistributed eyewear effects. Welding gas mask is no longer best in slot
+  #- type: FlashImmunity
+  #- type: EyeProtection
+  # End Triad
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

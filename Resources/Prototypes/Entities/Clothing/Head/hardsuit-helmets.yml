@@ -25,10 +25,10 @@
 
 #Atmospherics Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitAtmos
   name: atmos hardsuit helmet
-  description: A special hardsuit helmet designed for working in low-pressure, high thermal environments.
+  description: A special hardsuit helmet designed for working in low-pressure, high thermal environments. Contains an integrated t-ray and diagnostic scanner. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/atmospherics.rsi
@@ -88,10 +88,10 @@
 
 #Engineering Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitEngineering
   name: engineering hardsuit helmet
-  description: An engineering hardsuit helmet designed for working in low-pressure, high radioactive environments.
+  description: An engineering hardsuit helmet designed for working in low-pressure, high radioactive environments. Comes with a integrated t-ray and diagnostic scanner. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/engineering.rsi
@@ -248,10 +248,10 @@
 
 #Security Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitSecurity
   name: security hardsuit helmet
-  description: Armored hardsuit helmet for security needs.
+  description: Armored hardsuit helmet for security needs. Comes with an integrated security HUD. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/security.rsi
@@ -272,10 +272,10 @@
 
 #Brigmedic Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitBrigmedic
   name: brigmedic hardsuit helmet
-  description: The lightweight helmet of the brigmedic hardsuit. Protects against viruses, and clowns.
+  description: The lightweight helmet of the brigmedic hardsuit. Protects against viruses, and clowns. Comes with a integrated medical HUD. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/brigmedic.rsi
@@ -298,10 +298,10 @@
 
 #Warden's Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitWarden
   name: warden's hardsuit helmet
-  description: A modified riot helmet. Oddly comfortable.
+  description: A modified riot helmet. Oddly comfortable. Comes with a integrated security HUD. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/security-warden.rsi
@@ -337,10 +337,10 @@
 
 #Chief Engineer's Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitEngineeringWhite
   name: chief engineer's hardsuit helmet
-  description: Special hardsuit helmet, made for the chief engineer of the station.
+  description: Special hardsuit helmet, made for the chief engineer of the station. Comes with an integrated t-ray and diagnostic scanner. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/engineering-white.rsi
@@ -356,7 +356,7 @@
 
 #Chief Medical Officer's Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitMedical
   name: chief medical officer's hardsuit helmet
   description: Lightweight medical hardsuit helmet that doesn't restrict your head movements.
@@ -391,7 +391,7 @@
 
 #Head of Security's hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitSecurityRed
   name: head of security's hardsuit helmet
   description: Security hardsuit helmet with the latest top secret NT-HUD software. Belongs to the HoS.
@@ -670,10 +670,10 @@
 
 #ERT Engineer Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ ClothingHeadHelmetHardsuitSyndie, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitERTEngineer
   name: ERT engineer hardsuit helmet
-  description: A special hardsuit helmet worn by members of an emergency response team.
+  description: A special hardsuit helmet worn by members of an emergency response team. Contains a integrated diagnostic and t-ray scanner. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertengineer.rsi
@@ -705,7 +705,7 @@
 
 #ERT Security Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ ClothingHeadHelmetHardsuitSyndie, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHeadHelmetHardsuitERTSecurity
   name: ERT security hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.

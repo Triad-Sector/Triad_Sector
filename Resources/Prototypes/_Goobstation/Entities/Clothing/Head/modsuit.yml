@@ -150,10 +150,10 @@
         isLooped: true
 
 - type: entity
-  parent: BaseClothingModsuitHelmet
+  parent: [ BaseClothingModsuitHelmet, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetSecurity
   name: soldat modsuit helmet
-  description: A robust brain bucket for holding your brain in place just enough for it to be salvageable.
+  description: A robust brain bucket for holding your brain in place just enough for it to be salvageable. Contains an integrated security HUD. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
@@ -219,10 +219,10 @@
         isLooped: true
 
 - type: entity
-  parent: BaseClothingModsuitHelmet
+  parent: [ BaseClothingModsuitHelmet, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetHeadOfSecurity
   name: bulwark modsuit helmet
-  description: Put on the HEAD of security.. How do you see out of this thing?
+  description: Put on the HEAD of security.. How do you see out of this thing? Contains an integrated security HUD. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
@@ -290,10 +290,10 @@
         isLooped: true
 
 - type: entity
-  parent: BaseClothingModsuitHelmetHideIdentity
+  parent: [ BaseClothingModsuitHelmetHideIdentity, ShowMedicalIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetParamedic
   name: sanitater modsuit helmet
-  description: A robust brain bucket for working on barely salvageable brains.
+  description: A robust brain bucket for working on barely salvageable brains. Contains an integrated medical HUD. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -340,10 +340,10 @@
         isLooped: true
 
 - type: entity
-  parent: BaseClothingModsuitHelmet
+  parent: [ BaseClothingModsuitHelmet, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetEngineer
   name: sapper modsuit helmet
-  description: A flat plate with cameras allowing your vision. turns you into an aero-cuck, but not like that matters in space.
+  description: A flat plate with cameras allowing your vision. turns you into an aero-cuck, but not like that matters in space. Contains an integrated t-ray and diagnostic HUD. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -390,12 +390,18 @@
         isLooped: true
 
 - type: entity
-  parent: BaseClothingModsuitHelmet
+  parent: [ BaseClothingModsuitHelmet, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetAtmostech
   name: aeolus modsuit helmet
-  description: A specialised gas helmet to provide oxygen more efficiently.
+  description: A specialised gas helmet to provide oxygen more efficiently. Contains an integrated t-ray and diagnostic HUD. # Triad
   categories: [ HideSpawnMenu ]
   components:
+  # Triad: For whatever reason, this will default to being a medical HUD unless we specify here!
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+  # End Triad
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Modsuits/atmostech.rsi
   - type: Clothing

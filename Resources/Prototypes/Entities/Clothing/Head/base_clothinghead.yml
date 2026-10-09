@@ -205,8 +205,8 @@
   - type: ItemTogglePointLight
   - type: PointLight
     enabled: false
-    radius: 4 # 3->4 Mono
-    energy: 3 # 2->3 Mono
+    radius: 6 # 3->4 Mono 4->6 Triad
+    energy: 6 # 2->3 Mono 3->6 Triad
     lightMask: ConeSingle
     autoRot: true
     netsync: false

@@ -65,6 +65,7 @@
   - type: EyeProtection
   - type: IdentityBlocker
     coverage: EYES
+  - type: FlashImmunity # Triad: Redistributed eyewear effects. Meson gets flash prot and welding prot since the two go together realistically, and to make it a viable pick.
   - type: StaticPrice # Frontier
     price: 135 # Frontier
 
@@ -208,10 +209,10 @@
   - type: ShowJobIcons
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ ClothingEyesBase, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingEyesGlassesMercenary
   name: mercenary glasses
-  description: Glasses made for combat, to protect the eyes from bright blinding flashes.
+  description: Glasses made for combat, to protect the eyes from bright blinding flashes. Upgraded with an integrated security HUD. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Glasses/mercglasses.rsi

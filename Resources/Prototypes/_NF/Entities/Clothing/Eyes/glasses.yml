@@ -14,10 +14,10 @@
   - type: IdentityBlocker
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ ClothingEyesBase, PilotHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingEyesGlassesPilot
   name: pilot goggles
-  description: I'm sorry, but you can't pilot a ship without cool glasses. Those are the Rules. Has a GPS built in them too.
+  description: I'm sorry, but you can't pilot a ship without cool glasses. Those are the Rules. Contains an integrated GPS and mass scanner. # Triad
   components:
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Glasses/pilot.rsi

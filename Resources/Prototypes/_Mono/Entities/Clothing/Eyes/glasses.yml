@@ -1,10 +1,10 @@
 #they are called *goggles* but count as glasses because.
 
 - type: entity
-  parent: ClothingEyesHudMedical
+  parent: ClothingEyesGlassesMeson # Triad: Redistributed eyewear effects. Ballistic goggles now function like engineering goggles.
   id: ClothingEyesBallisticGogglesRed
   name: red ballistic goggles
-  description: A pair of ballistic goggles with red lenses and integrated health scanning microchips.
+  description: A pair of ballistic goggles with red lenses made of a special polymer that protects from eye damage of all types. # Triad
   components:
   - type: StaticPrice
     price: 1500
@@ -13,24 +13,26 @@
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_red.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_red.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Heat: 0.95
-  - type: GroupExamine
+  # Triad: Same as above.
+  #- type: Armor
+    #modifiers:
+      #coefficients:
+        #Heat: 0.95
+  #- type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
-  - type: ShowHealthBars
-    damageContainers:
-    - Inorganic
-    - Silicon
-    - Biological
+  #- type: ShowHealthBars
+  #  damageContainers:
+  #  - Inorganic
+  #  - Silicon
+  #  - Biological
+  # End Triad
 
 - type: entity
   parent: ClothingEyesHudMedical
   id: ClothingEyesBallisticGlassesRed
   name: red ballistic glasses
-  description: A pair of ballistic glasses with red lenses and integrated health scanning microchips.
+  description: A pair of ballistic glasses with red lenses and integrated medical and diagnostic HUDs. # Triad
   components:
   - type: StaticPrice
     price: 1500
@@ -39,10 +41,12 @@
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_glasses_red.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_glasses_red.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Heat: 0.95
+  # Triad
+  #- type: Armor
+    #modifiers:
+      #coefficients:
+        #Heat: 0.95
+  # End Triad
   - type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
@@ -53,10 +57,10 @@
     - Biological
 
 - type: entity
-  parent: ClothingEyesHudMedical
+  parent: ClothingEyesGlassesMeson # Triad: Redistributed eyewear effects. Ballistic goggles now function like engineering goggles.
   id: ClothingEyesBallisticGogglesGreen
   name: green ballistic goggles
-  description: A pair of ballistic goggles with green lenses and integrated health scanning microchips.
+  description: A pair of ballistic goggles with green lenses made of a special polymer that protects from eye damage of all types. # Triad
   components:
   - type: StaticPrice
     price: 1500
@@ -65,24 +69,26 @@
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_green.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_green.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Heat: 0.95
-  - type: GroupExamine
+  # Triad: Same as above.
+  #- type: Armor
+    #modifiers:
+      #coefficients:
+        #Heat: 0.95
+  #- type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
-  - type: ShowHealthBars
-    damageContainers:
-    - Inorganic
-    - Silicon
-    - Biological
+  #- type: ShowHealthBars
+    #damageContainers:
+    #- Inorganic
+    #- Silicon
+    #- Biological
+  # End Triad
 
 - type: entity
   parent: ClothingEyesHudMedical
   id: ClothingEyesBallisticGlassesGreen
   name: green ballistic glasses
-  description: A pair of ballistic glasses with green lenses and integrated health scanning microchips.
+  description: A pair of ballistic glasses with green lenses and integrated medical and diagnostic HUDs. # Triad
   components:
   - type: StaticPrice
     price: 1500
@@ -105,10 +111,10 @@
     - Biological
 
 - type: entity
-  parent: ClothingEyesHudMedical
+  parent: ClothingEyesGlassesMeson # Triad: Redistributed eyewear effects. Ballistic goggles now function like engineering goggles.
   id: ClothingEyesBallisticGogglesOrange
   name: orange ballistic goggles
-  description: A pair of ballistic goggles with orange lenses and integrated health scanning microchips.
+  description: A pair of ballistic goggles with orange lenses made of a special polymer that protects from eye damage of all types. # Triad
   components:
   - type: StaticPrice
     price: 1500
@@ -117,24 +123,26 @@
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_orange.rsi
   - type: Clothing
     sprite: _Mono/Clothing/Eyes/Glasses/ballistic_goggles_orange.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Heat: 0.95
-  - type: GroupExamine
+  # Triad: Same as above.
+  #- type: Armor
+    #modifiers:
+      #coefficients:
+        #Heat: 0.95
+  #- type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
-  - type: ShowHealthBars
-    damageContainers:
-    - Inorganic
-    - Silicon
-    - Biological
+  #- type: ShowHealthBars
+    #damageContainers:
+    #- Inorganic
+    #- Silicon
+    #- Biological
+  # End Triad
 
 - type: entity
   parent: ClothingEyesHudMedical
   id: ClothingEyesBallisticGlassesOrange
   name: orange ballistic glasses
-  description: A pair of ballistic glasses with orange lenses and integrated health scanning microchips.
+  description: A pair of ballistic glasses with orange lenses and integrated medical and diagnostic HUDs. # Triad
   components:
   - type: StaticPrice
     price: 1500

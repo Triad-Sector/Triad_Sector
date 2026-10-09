@@ -406,3 +406,12 @@ TdfJuniorEnforcerIdCard: TdfCadetIdCard
 WeaponRifleMR8T: WeaponRifleBishop
 WeaponRifleLecterTdf: WeaponRifleVigil
 WeaponRifleLecterTdfRubber: WeaponRifleVigilRubber
+
+# 2026-10-09
+ClothingHelmetAttachmentGogglesCoverOlive: null
+ClothingHelmetAttachmentGogglesCoverTan: null
+ClothingHelmetAttachmentGogglesCoverBlack: null
+ClothingHelmetAttachmentGogglesCoverRedDigital: null
+ClothingHelmetAttachmentNVGsBasic: null
+ClothingHelmetAttachmentInfraredBasic: null
+

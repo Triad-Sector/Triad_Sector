@@ -95,6 +95,8 @@
   - ClothingEyesThermalVisionGoggles
 # WD EDIT END
 # Mono start
-  - ClothingHelmetAttachmentNVGsBasic
-  - ClothingHelmetAttachmentInfraredBasic
+  # Triad: Removed helmet attachment slot, since it's not used by anything.
+  #- ClothingHelmetAttachmentNVGsBasic
+  #- ClothingHelmetAttachmentInfraredBasic
+  # End Triad
 # Mono end

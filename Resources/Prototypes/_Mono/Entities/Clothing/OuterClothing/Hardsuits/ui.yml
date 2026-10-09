@@ -33,7 +33,7 @@
     clothingPrototypes:
       head: ClothingHelmetHardsuitUIEnforcer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance
     coefficient: 0.55
 
@@ -91,7 +91,7 @@
     clothingPrototypes:
       head: ClothingHelmetHardsuitUIEnforcerMKII # Ullman Enforcer MKII helmet
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance
     coefficient: 0.45
 
@@ -130,7 +130,7 @@
     clothingPrototypes:
       head: ClothingHelmetHardsuitUIEngineer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance
     coefficient: 0.8
 
@@ -170,7 +170,7 @@
     clothingPrototypes:
       head: ClothingHelmetHardsuitUIPilot
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance
     coefficient: 0.7
 
@@ -209,7 +209,7 @@
     clothingPrototypes:
       head: ClothingHelmetHardsuitUIDirector
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance
     coefficient: 0.35
 

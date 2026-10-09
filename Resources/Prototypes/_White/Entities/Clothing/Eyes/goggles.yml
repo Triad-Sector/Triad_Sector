@@ -1,7 +1,10 @@
 # Night Vision Goggles
 
 - type: entity
-  parent: [BaseNightVisionClothingGenTwo, ClothingEyesBase]
+  # Triad: Upgraded eyewear slot night vision to be more viable against other eyewear options.
+  #parent: [BaseNightVisionClothingGenTwo, ClothingEyesBase]
+  parent: [BaseNightVisionClothingGenThree, ClothingEyesBase]
+  # End Triad
   id: ClothingEyesNightVisionGoggles
   name: night vision goggles
   description: Now you can see in the dark!

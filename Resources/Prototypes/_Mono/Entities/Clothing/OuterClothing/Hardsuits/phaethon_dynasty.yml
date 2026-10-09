@@ -38,7 +38,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitPirateScaf
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 750
     vendPrice: 2500
@@ -63,7 +63,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitAshen
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Tag
     tags:
     - RogueHardsuit

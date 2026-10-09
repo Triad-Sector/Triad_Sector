@@ -38,7 +38,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitBasic
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Atmospherics Hardsuit
 - type: entity
@@ -82,7 +82,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitAtmos
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Engineering Hardsuit
 - type: entity
@@ -120,7 +120,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitEngineering
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.55 # slightly better than atmos hardsuit, cuz insulating plating or whatever
 
@@ -165,7 +165,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSpatio
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Salvage Hardsuit
 - type: entity
@@ -204,7 +204,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSalvage
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Goliath Hardsuit
 - type: entity
@@ -242,7 +242,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitGoliath
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Construction
     graph: HardsuitGoliath
     node: hardsuitGoliath
@@ -288,7 +288,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitMaxim
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Security Hardsuit
 - type: entity
@@ -327,7 +327,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSecurity
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Brigmedic Hardsuit
 - type: entity
@@ -362,7 +362,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitBrigmedic
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.4
 
@@ -403,7 +403,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitWarden
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Captain's Hardsuit
 - type: entity
@@ -443,7 +443,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitCap
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Chief Engineer's Hardsuit
 - type: entity
@@ -485,7 +485,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitEngineeringWhite
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Chief Medical Officer's Hardsuit
 - type: entity
@@ -525,7 +525,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitMedical
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Research Director's Hardsuit
 - type: entity
@@ -571,7 +571,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitRd
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 750
   - type: StealTarget
@@ -619,7 +619,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSecurityRed
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Luxury Mining Hardsuit
 - type: entity
@@ -656,7 +656,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitLuxury
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.5
 
@@ -699,7 +699,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSyndie
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Tag
     tags:
     - MonkeyWearable
@@ -738,7 +738,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSyndieMedic
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Tag
     tags:
     - Hardsuit
@@ -789,7 +789,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSyndieElite
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -827,7 +827,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSyndieCommander
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.3
 
@@ -870,7 +870,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitCybersun
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.6 # 0.4 -> 0.6
   - type: FootstepModifier # Triad - thud sound
@@ -915,7 +915,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitWizard
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.3
 
@@ -955,7 +955,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitLing
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Pirate EVA Suit (Deep Space EVA Suit)
 #Despite visually appearing like a softsuit, it functions exactly like a hardsuit would (parents off of base hardsuit, has resistances and toggleable clothing, etc.) so it goes here.
@@ -991,7 +991,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitPirateEVA
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 0
   - type: StaminaDamageResistance # Mono - Stamres
@@ -1032,7 +1032,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitPirateCap
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 0
   - type: StaminaDamageResistance # Mono - Stamres
@@ -1057,7 +1057,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTLeader
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #ERT Chaplain Hardsuit
 - type: entity
@@ -1077,7 +1077,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTChaplain
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #ERT Engineer Hardsuit
 - type: entity
@@ -1097,7 +1097,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTEngineer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 
 #ERT Medic Hardsuit
@@ -1118,7 +1118,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTMedical
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #ERT Security Hardsuit
 - type: entity
@@ -1138,7 +1138,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTSecurity
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Tag
     tags:
     - Hardsuit
@@ -1162,7 +1162,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitERTJanitor
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Deathsquad
 - type: entity
@@ -1207,7 +1207,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitDeathsquad
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   # Triad add start
   - type: SavingContraband
     examineText: ship-saving-contraband-2-text
@@ -1256,7 +1256,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetCBURN
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #MISC. HARDSUITS
 #Clown Hardsuit
@@ -1298,7 +1298,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitClown
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Mime Hardsuit
 - type: entity
@@ -1323,7 +1323,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitMime
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 #Santa's Hardsuit
 - type: entity
@@ -1361,4 +1361,4 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSanta
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.

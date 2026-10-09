@@ -115,11 +115,13 @@
     ClothingHeadBandMercenary: 4294967295 # Infinite
     ClothingHeadHatBeretMercenary: 4294967295 # Infinite
     ClothingHeadHatBeretSecurity: 4294967295 # Infinite
+    # Triad: Removed Helmet Attachment Slot
     # region Attachments
-    ClothingHelmetAttachmentGogglesCoverOlive: 4294967295 # Infinite
-    ClothingHelmetAttachmentGogglesCoverTan: 4294967295 # Infinite
-    ClothingHelmetAttachmentGogglesCoverBlack: 4294967295 # Infinite
-    ClothingHelmetAttachmentGogglesCoverRedDigital: 4294967295 # Infinite
+    #ClothingHelmetAttachmentGogglesCoverOlive: 4294967295 # Infinite
+    #ClothingHelmetAttachmentGogglesCoverTan: 4294967295 # Infinite
+    #ClothingHelmetAttachmentGogglesCoverBlack: 4294967295 # Infinite
+    #ClothingHelmetAttachmentGogglesCoverRedDigital: 4294967295 # Infinite
+    # End Triad
     # region Covers
     ClothingHelmetCoverCCEBase: 4294967295 # Infinite
     ClothingHelmetCoverCCEDesert: 4294967295 # Infinite

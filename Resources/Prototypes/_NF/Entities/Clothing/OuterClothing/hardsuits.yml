@@ -34,7 +34,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitMercenary
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: PirateBountyItem # Mono
     id: ClothingOuterHardsuitTacsuit
   - type: StaminaDamageResistance # Mono - Stamres
@@ -57,7 +57,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitPrivateSecurity
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 # Pilot Hardsuit - Spationaut stats
 - type: entity
@@ -92,7 +92,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitPilot
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.6
 
@@ -114,7 +114,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitERTMailCarrier
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 # MAXIM Nerfed: used best stats from spationaut, mining and luxury hardsuits, additionally increased caustic resistance
 - type: entity
@@ -150,7 +150,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitMaximPrototype
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.45
 
@@ -219,7 +219,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitTacticalMaid
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.4
 
@@ -240,7 +240,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitPirateElite
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: ExplosionResistance
     damageCoefficient: 0.4
   - type: Armor

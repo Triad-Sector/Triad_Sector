@@ -41,7 +41,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitChronolegioneer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 - type: entity
   parent: ClothingOuterHardsuitChronolegioneer
@@ -90,7 +90,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitCybersunStealth
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: Tag
     tags:
     - Hardsuit

@@ -33,7 +33,7 @@
   parent: [BaseNightVisionClothingGenTwo, ClothingHeadHardsuitBase, ShowMedicalIcons]
   id: ClothingHelmetHardsuitUIEnforcerMKII
   name: U.I. ENFORCER MKII Combat helmet
-  description: This top of the line helmet comes with a mass scanner and an inbuilt medical diagnostic system.
+  description: A top of the line hardsuit helmet. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -43,16 +43,18 @@
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
-  - type: RadarConsole
-    followEntity: true
-    noRotate: true
-  - type: ActivatableUI
-    key: enum.RadarConsoleUiKey.Key
-    singleUser: true
-  - type: UserInterface
-    interfaces:
-      enum.RadarConsoleUiKey.Key:
-        type: RadarConsoleBoundUserInterface
+  # Triad: Move helmet abilities to the goggles slot, unless it ties into the suit's specialization.
+  #- type: RadarConsole
+    #followEntity: true
+    #noRotate: true
+  #- type: ActivatableUI
+    #key: enum.RadarConsoleUiKey.Key
+    #singleUser: true
+  #- type: UserInterface
+    #interfaces:
+      #enum.RadarConsoleUiKey.Key:
+        #type: RadarConsoleBoundUserInterface
+  # End Triad
   - type: Armor
     modifiers:
       coefficients:
@@ -61,7 +63,6 @@
         Piercing: 0.9
         Heat: 0.9
   - type: HandheldLight
-    toggleOnInteract: false # Triad, fixes radar not being activatable with E
   - type: HideLayerClothing
     slots:
     - Hair
@@ -73,10 +74,10 @@
     - HeadSide
 
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClothingHeadHardsuitBase, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHelmetHardsuitUIEngineer
   name: U.I. engineering helmet
-  description: A cheap and effective hardsuit helmet, just with an extra black market touch.
+  description: A cheap and effective hardsuit helmet, just with an extra black market touch. Comes with an integrated t-ray and diagnostic scanner. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -104,10 +105,10 @@
     - HeadSide
 
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClothingHeadHardsuitBase, PilotHud ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingHelmetHardsuitUIPilot
   name: U.I. pilot helmet
-  description: A helmet for Ullman Industry pilots.
+  description: A helmet for Ullman Industry pilots. Comes with an integrated mass scanner. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
