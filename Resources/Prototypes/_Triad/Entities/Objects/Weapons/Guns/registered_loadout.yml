@@ -2,3 +2,8 @@
   parent: [WeaponLoadoutRegisteredBase, WeaponSubMachineGunSquire]
   id: WeaponSubMachineGunSquireRegistered
   suffix: Registered
+
+- type: entity
+  parent: [WeaponLoadoutRegisteredBase, WeaponRevolverTaxWriteOff]
+  id: WeaponRevolverTaxWriteOffRegistered
+  suffix: Registered

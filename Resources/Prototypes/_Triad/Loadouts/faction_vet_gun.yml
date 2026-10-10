@@ -7,3 +7,13 @@
   price: 35000
   inhand:
   - WeaponCaseSquireRegistered
+
+- type: loadout
+  id: ContractorSpecialGunTaxWriteOff
+  name: NSC Tax Write Off gun case
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MonoCivVet
+  price: 30000
+  inhand:
+  - WeaponCaseTaxWriteOffRegistered

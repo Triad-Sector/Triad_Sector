@@ -1,0 +1,38 @@
+﻿- type: entity
+  name: Tax Write Off (18.5x76mm)
+  parent: BaseWeaponRevolver
+  id: WeaponRevolverTaxWriteOff
+  description: A NSC Revolver made out of the finest materials, It is often used to end trade deals with a powerful statement.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Revolvers/taxwriteoff.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 2
+    maxAngle: 25
+    angleIncrease: 10
+    angleDecay: 5
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: ContainerContainer
+    containers:
+      revolver-ammo: !type:Container
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+        - Cartridge185x76mm
+    mayTransfer: true # Frontier
+    proto: Cartridge185x76mm
+    capacity: 1
+    chambers: [ True, ]
+    ammoSlots: [ null, ]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
