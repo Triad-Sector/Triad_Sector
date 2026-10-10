@@ -12,7 +12,7 @@ job-description-tfa-high-command-intern = Follow the orders of your superior Hig
 
 # Freelancers
 job-description-contractor = Fulfill your own goals out in Triad space.
-job-description-mercenary = Execute the bidding of anyone- for the right price. Enjoy being unbound from the confines of the law.
+job-description-mercenary = Execute the bidding of anyone- for the right price.
 job-description-pilot = Pilot spaceships from point A to B, outmaneuver enemies, dodge asteroids and other ships.
 
 # TFA Colonial Personnel
@@ -21,4 +21,4 @@ job-description-stc = Expertly de-conflict the space around the station and help
 job-description-security-guard = Hand over criminals to the TDF, ensure the TFA's stations are safe, and listen to the Overseer.
 job-description-doc = Provide guidance and direction for shift medics and work to safeguard the health of TFA colonial personnel and Triad residents.
 job-description-plant-manager = Answer to command, keep your technicians paid, and safeguard the health and safety of the Edison Power Plant and its crew.
-job-description-plant-technician = Be the working hands of the Edison Power Plant: tend the supermatter, run the gas and fuel lines, and keep the reactor online for the Director of Infrastructure.
+job-description-plant-technician = Be the working hands of the Auric District; managing electrical, atmospheric, and mechanical systems everywhere for the Director of Infrastructure.

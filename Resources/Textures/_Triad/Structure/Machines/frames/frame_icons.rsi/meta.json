@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "size": {
+    "x": 54,
+    "y": 54
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Construction-menu icons of Monolith's machine frames by kyres1 (disc:noodle_buster) and zeranov (disc:core_mene), and of Triad's 5x5 and 3x5 extensions of them, each scaled to a third.",
+  "states": [
+    {
+      "name": "5x5"
+    },
+    {
+      "name": "3x5"
+    },
+    {
+      "name": "3x3"
+    },
+    {
+      "name": "3x2"
+    },
+    {
+      "name": "2x2"
+    },
+    {
+      "name": "2x1"
+    }
+  ]
+}

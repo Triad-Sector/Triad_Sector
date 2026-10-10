@@ -21,9 +21,9 @@
   - type: StorageFill
     contents:
       - id: WeaponRifleBurner
-      - id: Magazine127x99mmExplosive
-      - id: Magazine127x99mm
-      - id: AmmoBox127x99mm
+      - id: Magazine185x76mmHighEx #Triad
+      - id: Magazine185x76mm #Triad
+      - id: AmmoBox185x76mmFMJ #Triad
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

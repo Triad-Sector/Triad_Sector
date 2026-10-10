@@ -36,11 +36,29 @@
   description: Lightly armored hardsuit helmet for private security needs.
   components:
   - type: Sprite
-    sprite: _NF/Clothing/Head/Hardsuits/private_security.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/private_security.rsi # Triad resprite
   - type: Clothing
-    sprite: _NF/Clothing/Head/Hardsuits/private_security.rsi
+    sprite: _Triad/Clothing/Head/Hardsuits/private_security.rsi # Triad resprite
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+      head-reptilian:
+      - state: equipped-HELMET-reptilian
+      - state: equipped-HELMET-unshaded-reptilian
+        shader: unshaded
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET-light
+        shader: unshaded
+      head-reptilian:
+      - state: equipped-HELMET-light-reptilian
+        shader: unshaded
   - type: PointLight
-    color: "#ffff00"
+    color: "#f3f382"
 
 #Pilot Hardsuit
 - type: entity

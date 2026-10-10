@@ -194,7 +194,8 @@
         Structural: 50
     soundHit:
       collection: ExplosionSmall
-    heavyStaminaCost: 0
+    heavyStaminaCost: 2
+    mustBeEquippedToUse: true
   - type: Tag
     tags:
     - Pickaxe

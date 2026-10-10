@@ -56,7 +56,7 @@
   description: Bummer. You're just a cadet!
   components:
   - type: Pda
-    id: TdfJuniorEnforcerIdCard
+    id: TdfCadetIdCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

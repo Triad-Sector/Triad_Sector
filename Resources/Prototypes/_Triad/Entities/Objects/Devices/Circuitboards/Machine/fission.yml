@@ -1,0 +1,71 @@
+# Boards for the Far Horizons reactors and turbines. They build the Salvage variants on the centered
+# Triad frames. Not flatpackable: unpacking checks one tile only.
+- type: entity
+  id: NuclearReactorSmallMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: small nuclear reactor machine board
+  description: A machine printed circuit board for a small nuclear reactor. Uses a 3x3 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: NuclearReactorSmallEmptySalvage
+    frameSize: Triad3x3
+    flatpackable: false
+    requirements:
+      Manipulator: 5
+      Capacitor: 5
+    stackRequirements:
+      Plasteel: 10
+
+- type: entity
+  id: NuclearReactorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: nuclear reactor machine board
+  description: A machine printed circuit board for a nuclear reactor. Uses a 5x5 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: NuclearReactorEmptySalvage
+    frameSize: Triad5x5
+    flatpackable: false
+    requirements:
+      Manipulator: 10
+      Capacitor: 10
+    stackRequirements:
+      Plasteel: 20
+
+- type: entity
+  id: GasTurbineSmallMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: small gas turbine machine board
+  description: A machine printed circuit board for a small gas turbine. Uses a 3x2 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: GasTurbineSmallSalvage
+    frameSize: Triad3x2
+    flatpackable: false
+    requirements:
+      Manipulator: 5
+    stackRequirements:
+      Steel: 10
+
+- type: entity
+  id: GasTurbineMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: gas turbine machine board
+  description: A machine printed circuit board for a gas turbine. Uses a 3x5 machine frame.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: GasTurbineNormalSalvage
+    frameSize: Triad3x5
+    flatpackable: false
+    requirements:
+      Manipulator: 10
+    stackRequirements:
+      Steel: 20

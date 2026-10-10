@@ -147,7 +147,7 @@
   - type: TimedDespawn
     lifetime: 1800
 
-#plastitanium but blocks rads 100%
+#plastitanium but blocks rads well
 
 - type: entity
   id: PlasturaniumWindowDiagonalRadProof
@@ -156,8 +156,10 @@
   description: Don't smudge up the rads down there.
   suffix: Rad-Proof
   components:
+  - type: StaticPrice # triad, just to make it worth more than its deconned products.
+    price: 6000
   - type: RadiationBlocker
-    resistance: 100
+    resistance: 6.5 #triad- R-Uranium windows are 5
   - type: Sprite
     drawdepth: WallTops
     sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
@@ -166,6 +168,9 @@
     state: state0
   - type: ArmorThickness
     thickness: 30
+  - type: Construction # Triad - Makeable
+    graph: PlasturaniumWindowDiagonalRadProof # Triad
+    node: plasturaniumWindowDiagonalRadProof # Triad
 
 - type: entity
   id: PlasturaniumWindowRadProof
@@ -174,8 +179,10 @@
   description: Don't smudge up the rads down there.
   suffix: Rad-Proof
   components:
+  - type: StaticPrice # triad, just to make it worth more than its deconned products.
+    price: 6000
   - type: RadiationBlocker
-    resistance: 100
+    resistance: 6.5 #triad- R-Uranium windows are 5
   - type: Sprite
     drawdepth: WallTops
     sprite: _Mono/Structures/Windows/plasturanium_window.rsi
@@ -184,6 +191,9 @@
     state: full
   - type: ArmorThickness
     thickness: 30
+  - type: Construction # Triad - Makeable
+    graph: PlasturaniumWindowRadProof # Triad
+    node: plasturaniumWindowRadProof # Triad
 
 #plastitanium but blocks rads 100% (industructible var.)
 

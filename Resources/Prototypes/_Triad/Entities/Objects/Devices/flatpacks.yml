@@ -74,3 +74,18 @@
   - type: Sprite
     layers:
     - state: command_airlock_directional
+
+# Exped console
+- type: entity
+  parent: AmmoTechFabFlatpack
+  id: ComputerSalvageExpeditionFlatpack
+  name: salvage expeditions computer flatpack
+  description: A flatpack used for constructing a salvage expeditions computer.
+  components:
+  - type: Flatpack
+    entity: ComputerSalvageExpedition
+  - type: Sprite
+    layers:
+    - state: supply_lathe
+  - type: StaticPrice
+    price: 800

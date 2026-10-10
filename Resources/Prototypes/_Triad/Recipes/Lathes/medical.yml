@@ -6,3 +6,34 @@
   completetime: 2 # Fast to encourage making them.
   materials:
     Cloth: 150
+
+# Combat medkit variants
+- type: latheRecipe
+  parent: MedkitCombat
+  id: MedkitCombatAdvanced
+  result: MedkitCombatAdvanced
+  name: lathe-recipe-MedkitCombatAdvanced-name
+
+- type: latheRecipe
+  parent: MedkitCombat
+  id: MedkitCombatBurn
+  result: MedkitCombatBurn
+  name: lathe-recipe-MedkitCombatBurn-name
+
+- type: latheRecipe
+  parent: MedkitCombat
+  id: MedkitCombatToxin
+  result: MedkitCombatToxin
+  name: lathe-recipe-MedkitCombatToxin-name
+
+- type: latheRecipe
+  parent: MedkitCombat
+  id: MedkitCombatO2
+  result: MedkitCombatO2
+  name: lathe-recipe-MedkitCombatO2-name
+
+- type: latheRecipe
+  parent: MedkitCombat
+  id: MedkitCombatRadiation
+  result: MedkitCombatRadiation
+  name: lathe-recipe-MedkitCombatRadiation-name

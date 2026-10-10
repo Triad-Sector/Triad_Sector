@@ -36,7 +36,7 @@
   - type: Item
     size: Normal # Frontier: Large<Normal
     shape: # Frontier
-    - 0,0,2,1 # Frontier
+    - 0,0,1,1 # Triad : make regular and combat medkits identical
     sprite: Objects/Specific/Medical/firstaidkits.rsi
     heldPrefix: firstaid
   - type: PhysicalComposition
@@ -137,3 +137,61 @@
   - type: Tag
     tags:
     - Medkit
+
+# Triad Start - combat medkit variants
+
+- type: entity
+  name: advanced combat medical kit
+  description: "For the advanced weapons among us"
+  parent: MedkitCombat
+  id: MedkitCombatAdvanced
+  components:
+  - type: Sprite
+    state: blackkit-advanced
+  - type: Item
+    heldPrefix: blackkit-advanced
+
+- type: entity
+  name: burn combat medical kit
+  description: "For the hot weapons among us."
+  parent: MedkitCombat
+  id: MedkitCombatBurn
+  components:
+  - type: Sprite
+    state: blackkit-burn
+  - type: Item
+    heldPrefix: blackkit-burn
+
+- type: entity
+  name: toxin combat medical kit
+  description: "For the uhhhh sickly .. among us."
+  parent: MedkitCombat
+  id: MedkitCombatToxin
+  components:
+  - type: Sprite
+    state: blackkit-toxin
+  - type: Item
+    heldPrefix: blackkit-toxin
+
+- type: entity
+  name: oxygen deprivation combat medical kit
+  description: "For the airless .. weapons among us."
+  parent: MedkitCombat
+  id: MedkitCombatO2
+  components:
+  - type: Sprite
+    state: blackkit-airloss
+  - type: Item
+    heldPrefix: blackkit-airloss
+
+- type: entity
+  name: radiation combat medical kit
+  description: "For the glowing ones among us."
+  parent: MedkitCombat
+  id: MedkitCombatRadiation
+  components:
+  - type: Sprite
+    state: blackkit-rad
+  - type: Item
+    heldPrefix: blackkit-rad
+# Triad End

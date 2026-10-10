@@ -422,4 +422,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<int> DynamicRolesPlayerThreshold =
          CVarDef.Create("game.dynamic_roles.player_threshold", 5, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Enables alternate job titles for players.
+    /// </summary>
+    public static readonly CVarDef<bool> ICAlternateJobTitlesEnable =
+        CVarDef.Create("game.alternate_job_titles_enable", true, CVar.SERVER | CVar.REPLICATED);
 }

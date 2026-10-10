@@ -42,7 +42,7 @@
 - type: entity
   id: SpawnRandomTurretRangeTIC
   name: random ranged ballistic turret spawn
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   parent: MarkerBase
   components:
     - type: Sprite
@@ -123,7 +123,7 @@
 - type: entity
   id: SpawnRandomEnergyTurretRangeTIC
   name: random ranged energy turret spawn
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   parent: MarkerBase
   components:
     - type: Sprite

@@ -114,7 +114,7 @@
 
 # Frontier
 - type: entity
-  parent: BaseAmmoBox9x19mm
+  parent: [BaseAmmoBox9x19mm, BaseClass2AShipContrabandSilent]
   id: AmmoBox9x19mmEmp
   name: ammunition box (9x19mm emp)
   components:

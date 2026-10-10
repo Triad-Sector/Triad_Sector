@@ -33,7 +33,7 @@
   unit: materials-unit-bar
   icon: { sprite: _Mono/Objects/Materials/fissiles.rsi, state: plutonium } # Mono
   color: "#616479" # Mono
-  price: 25 # 2500/sheet # Mono - Low in comparison to fissile uranium, but you get this in bulk from centrifuging spent fuel.
+  price: 75 # 7500/sheet # Triad. Worth 3x fissile, since its much harder to make in bulk than fissile.
   properties:
     electrical: 7
     thermal: 6

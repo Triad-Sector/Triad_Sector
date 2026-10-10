@@ -97,3 +97,27 @@
   - type: Tag
     tags:
     - ClothMade # No chameleon
+
+- type: entity
+  parent: ClothingHeadHatChef
+  id: ClothingHeadHatChefTfa
+  name: TFA chef's hat
+  description: It's a hat used by TFA chefs to keep hair out of your food.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      color: "#635f69"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#635f69"
+      right:
+      - state: inhand-right
+        color: "#635f69"
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: "#635f69"

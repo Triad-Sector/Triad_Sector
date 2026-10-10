@@ -19,7 +19,7 @@ public sealed partial class SelectableAmmoSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedGunSystem _gun = default!;
-    // [Dependency] private readonly ActivatableUiUserWhitelistSystem _activatableUiWhitelist = default!;  mono
+    // [Dependency] private ActivatableUiUserWhitelistSystem _activatableUiWhitelist = default!;  mono
 
     public override void Initialize()
     {
@@ -90,7 +90,7 @@ public sealed partial class SelectableAmmoSystem : EntitySystem
 
     private string? GetProviderProtoName(EntityUid uid)
     {
-        if (TryComp(uid, out BasicEntityAmmoProviderComponent? basic) && basic.Proto != null)
+        if (TryComp(uid, out BasicEntityAmmoProviderComponent? basic))
             return _protoManager.TryIndex(basic.Proto, out var index) ? index.Name : null;
 
         if (TryComp(uid, out HitscanBatteryAmmoProviderComponent? hitscanBattery))

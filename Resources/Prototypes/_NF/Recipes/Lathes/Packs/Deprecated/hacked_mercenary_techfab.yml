@@ -63,6 +63,13 @@
   - ClothingOuterCoatBomberRandomized
 ## Storage
   - MedkitCombat
+  # Triad Start
+  - MedkitCombatAdvanced
+  - MedkitCombatBurn
+  - MedkitCombatToxin
+  - MedkitCombatO2
+  - MedkitCombatRadiation
+  # Triad End
   - WeaponCaseShort
   - WeaponCaseLong
   - WeaponCaseHeavy

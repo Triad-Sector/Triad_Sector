@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Physics;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared.Spawning
@@ -30,9 +33,29 @@ namespace Content.Shared.Spawning
             SharedPhysicsSystem? collision = null)
         {
             var boxOrDefault = box.GetValueOrDefault(Box2.UnitCentered).Translated(coordinates.Position);
-            collision ??= entityManager.System<SharedPhysicsSystem>();
 
-            foreach (var body in collision.GetCollidingEntities(coordinates.MapId, in boxOrDefault))
+            // Triad: SharedPhysicsSystem.GetCollidingEntities is obsolete since engine 288. This is the
+            // same body-level query it ran on EntityLookupSystem, with the same all-layers filter and
+            // approximate AABB test, so nullspace still yields no bodies and the spawn goes ahead.
+            var bodies = new HashSet<PhysicsComponent>();
+            if (coordinates.MapId != MapId.Nullspace)
+            {
+                entityManager.System<EntityLookupSystem>().ForEachFixtureIntersecting(
+                    coordinates.MapId,
+                    boxOrDefault,
+                    ref bodies,
+                    new AddBodyCallback(),
+                    new FixtureQueryArgs(
+                        new QueryFilter
+                        {
+                            LayerBits = -1L,
+                            MaskBits = -1L,
+                            Flags = QueryFlags.Dynamic | QueryFlags.Static | QueryFlags.Sensors,
+                        },
+                        Approximate: true));
+            }
+
+            foreach (var body in bodies)
             {
                 if (!body.Hard)
                 {
@@ -77,6 +100,17 @@ namespace Content.Shared.Spawning
             entity = entityManager.SpawnIfUnobstructed(prototypeName, coordinates, collisionLayer, box, physicsManager);
 
             return entity != null;
+        }
+
+        // Triad: collects the body of every intersecting fixture, which is what the obsolete query
+        // returned; the caller then checks Hard and the collision mask at body level as before.
+        private readonly struct AddBodyCallback : IFixtureQueryCallback<HashSet<PhysicsComponent>>
+        {
+            public bool Invoke(ref HashSet<PhysicsComponent> state, in FixtureProxy fixture)
+            {
+                state.Add(fixture.Body);
+                return true;
+            }
         }
     }
 }

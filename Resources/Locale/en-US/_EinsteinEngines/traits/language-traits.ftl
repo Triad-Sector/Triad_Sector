@@ -4,13 +4,13 @@
 trait-category-languages = Languages
 
 trait-language-foreigner-light-name = Foreigner Light
-trait-language-foreigner-light-desc = You understand the common language, Andromeda Standard Basic, but you can't quite speak it yet. You have a translator to help you with your basic understanding of the language, better keep it charged.
+trait-language-foreigner-light-desc = You understand the common language, Andromeda Standard, but you can't quite speak it yet. You have a translator to help you with your basic understanding of the language, better keep it charged.
 
 trait-language-foreigner-name = Foreigner
 trait-language-foreigner-desc = You can't understand the common language, Andromeda Standard, and you require a translator at all times to talk. You have a translator to help you with your understanding and speaking, make sure to keep it charged.
 
 trait-language-signlanguage-name = Sign Language
-trait-language-signlanguage-desc = The use of body language, hand signs, and other forms of dexterous movements to get your point across. You can understand and use Andromeda Standard Basic Sign Language (TCB-SL). If you are mute for any reason, you can still communicate with sign language.
+trait-language-signlanguage-desc = The use of body language, hand signs, and other forms of dexterous movements to get your point across. You can understand and use Andromeda Standard Sign Language (AS-SL). If you are mute for any reason, you can still communicate with sign language.
 
 trait-language-solcommon-name = Sol Common
 trait-language-solcommon-desc = With its roots in Mandarin Chinese - Common evolved as the official language of the Federated Solarian Republic - with officials working to tie it together with a common tongue. It's spoken by state officials, the armed forces, by those who either feel a sense of national pride in the Republic or otherwise fell sway to the culture.

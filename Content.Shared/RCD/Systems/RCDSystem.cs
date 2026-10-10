@@ -9,6 +9,7 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems; // Triad
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
@@ -60,6 +61,7 @@ public partial class RCDSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tags = default!;
+    [Dependency] private SharedHandsSystem _hands = default!; // Triad
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -85,7 +87,7 @@ public partial class RCDSystem : EntitySystem
     }
 
     // Triad: flip key toggles the mirrored prototype variant for the next placement. Operator must be holding the
-    // flipped tool in their active hand.
+    // flipped tool (any hand).
     private void OnRCDConstructionGhostFlipEvent(RCDConstructionGhostFlipEvent ev, EntitySessionEventArgs session)
     {
         var uid = GetEntity(ev.NetEntity);
@@ -93,7 +95,7 @@ public partial class RCDSystem : EntitySystem
         if (session.SenderSession.AttachedEntity is not { } player)
             return;
 
-        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+        if (!_hands.IsHolding(player, uid)) // Triad: any hand, see OnRCDconstructionGhostRotationEvent
             return;
 
         if (!TryComp<RCDComponent>(uid, out var rcd))
@@ -376,9 +378,15 @@ public partial class RCDSystem : EntitySystem
         if (session.SenderSession.AttachedEntity == null)
             return;
 
-        if (!TryComp<HandsComponent>(session.SenderSession.AttachedEntity, out var hands) ||
-            uid != hands.ActiveHand?.HeldEntity)
+        // Triad: any hand, not the active one. The client sends this the moment its predicted hand swap makes the
+        // tool active, which can land in the same server tick as the swap input and ahead of it; the active-hand
+        // test then dropped the rotation silently and the ghost disagreed with the tool until the next rotate.
+        // if (!TryComp<HandsComponent>(session.SenderSession.AttachedEntity, out var hands) ||
+        //     uid != hands.ActiveHand?.HeldEntity)
+        //     return;
+        if (!_hands.IsHolding(session.SenderSession.AttachedEntity.Value, uid))
             return;
+        // End Triad
 
         if (!TryComp<RCDComponent>(uid, out var rcd))
             return;

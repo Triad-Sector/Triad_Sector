@@ -30,6 +30,7 @@
   - ContractorGlasses
   - ContractorBelt
   - ContractorEars
+  - ContractorBalaclava
   - ContractorEncryptionKey
   - ContractorBoxSurvival
   - ContractorPDA
@@ -41,8 +42,9 @@
   - ContractorTrinkets
   - ContractorBureaucracy
   - NFSpeciesSpecific
-  - ContractorFirearm # Mono
-  - ContractorMag # Mono
+  - MercenaryFirearm # Mono
+  - MercenaryPistol # Mono
+  - MercenaryMag
   - CivGunCaseSpecial # Mono
   - ContractorArmorPlates # Mono
 
@@ -112,32 +114,6 @@
 
 # Frontier
 - type: roleLoadout
-  id: JobCCServiceWorker # Mono
-  groups:
-  - ContractorNeck
-  - ValetJumpsuit
-  - ContractorBackpack
-  - ValetOuterClothing
-  - ContractorShoes
-  - ContractorFace
-  - ContractorGlasses
-  - ContractorBelt
-  - ContractorEars
-  - ContractorEncryptionKey
-  - ContractorBoxSurvival
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorUtility # Mono
-  - ContractorFun
-  - ContractorTrinkets
-  - ContractorBureaucracy
-  - NFSpeciesSpecific
-  - ContractorFirearm # Mono
-  - ContractorMag # Mono
-  - ContractorArmorPlates # Mono
-
-- type: roleLoadout
   id: JobNFJanitor
   groups:
   - JanitorNFHead
@@ -156,6 +132,7 @@
   - ContractorUtility # Mono
   - ContractorFun
   - ContractorTrinkets
+  - ContractorBureaucracy # Triad
   - NFSpeciesSpecific
   - ContractorFirearm # Mono
   - ContractorMag # Mono

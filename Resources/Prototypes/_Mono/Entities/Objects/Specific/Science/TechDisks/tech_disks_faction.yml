@@ -183,8 +183,8 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskRogueTools
-  name: TIC equipment faction tech disk
-  description: A disk capable of adding various tools of Rogues to a server's recipes, for faction techfabs.
+  name: ICT equipment faction tech disk
+  description: A disk capable of adding various tools of the Coalition's to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
     layers:
@@ -203,8 +203,8 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskRogueToolsAdvanced
-  name: high-tech TIC equipment faction tech disk
-  description: A disk capable of adding the hacking equipment of Rogues to a server's recipes, for faction techfabs.
+  name: high-tech ICT equipment faction tech disk
+  description: A disk capable of adding the hacking equipment the Coalition's to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
     layers:
@@ -223,7 +223,7 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskC20r
-  name: TIC C-20r faction tech disk
+  name: ICT C-20r faction tech disk
   description: A disk capable of adding the C-20r and its ammo to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
@@ -244,7 +244,7 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskM90
-  name: TIC M-90 faction tech disk
+  name: ICT M-90 faction tech disk
   description: A disk capable of adding the M-90 and its ammo to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
@@ -265,7 +265,7 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskBulldog
-  name: TIC bulldog faction tech disk
+  name: ICT bulldog faction tech disk
   description: A disk capable of adding the Bulldog and its ammo to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
@@ -288,7 +288,7 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskHristov
-  name: TIC Hristov faction tech disk
+  name: ICT Hristov faction tech disk
   description: A disk capable of adding the Hristov and its ammo to a server's recipes, for faction techfabs.
   components:
   - type: Sprite
@@ -307,7 +307,7 @@
 - type: entity
   parent: TechDiskBase
   id: TechDiskMla73
-  name: TIC MLA-73 faction tech disk
+  name: ICT MLA-73 faction tech disk
   description: A disk capable of adding the MLA-73 and its ammo to a server's recipes, for faction techfabs.
   components:
   - type: Sprite

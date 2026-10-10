@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
+  parent: [BaseNightVisionClothingGenTwo, ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
   id: ClothingHeadHelmetHardsuitTdf
   name: TA-21 helmet
   description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic, compared to NanoTrasen's original N-20 design.
@@ -14,15 +14,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
-  - type: NightVision # Gen 1 monotube
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 400
-    viewCircleCount: 1
-    viewCircleSpacing: 280
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: Armor
     modifiers:
       coefficients:
@@ -50,7 +41,7 @@
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta21m.rsi
 
 - type: entity
-  parent: ClothingHeadHelmetHardsuitTdf
+  parent: [BaseNightVisionClothingGenThree, ClothingHeadHelmetHardsuitTdf]
   id: ClothingHeadHelmetHardsuitTdfTA29
   name: TA-29 helmet
   categories: [ HideSpawnMenu ]
@@ -59,18 +50,9 @@
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta29.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta29.rsi
-  - type: NightVision # Gen 1 monotube
-    relayOverlay: true
-    goggleEffect: true
-    action: ActionToggleNightVision
-    viewCircleRadius: 500
-    viewCircleCount: 2
-    viewCircleSpacing: 200
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
 
 - type: entity
-  parent: [ClothingHeadHelmetHardsuitTdf, ShowMedicalIcons, ShowSecurityIcons]
+  parent: [BaseNightVisionClothingGenThree, ClothingHeadHelmetHardsuitTdf, ShowMedicalIcons, ShowSecurityIcons]
   id: ClothingHeadHelmetHardsuitTdfChiefEnforcer
   name: TA-35 tacsuit helmet
   description: An armored tacsuit helmet used by the TDF. Comes with an advanced heads-up display allowing you to view security and medical records.
@@ -85,15 +67,6 @@
     lowPressureMultiplier: 1000
   - type: EyeProtection
     protectionTime: 15
-  - type: NightVision # Gen 3 wide-quadtube
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
   - type: Armor
     modifiers:
       coefficients:
@@ -105,3 +78,60 @@
   - type: PointLight
     radius: 6
     color: "#FFFFB7"
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowMedicalIcons, ShowSecurityIcons]
+  id: ClothingHeadHelmetHardsuitTdfHazmat
+  name: TA-82 hazmat helmet
+  description: A hardsuit helmet designed to handle NBC threats. Features a combined medical HUD and thermal pulse system.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta82.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta82.rsi
+  - type: PointLight
+    color: "#EACB67"
+  - type: ThermalVision
+    flashDurationMultiplier: 2
+    pulseTime: 4
+    isEquipment: true
+    toggleAction: PulseThermalVision
+  - type: ShowHealthBars
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.5
+
+- type: entity
+  parent: [BaseNightVisionClothingGenFour, ClothingHeadHelmetHardsuitSyndieElite, ShowSecurityIcons]
+  id: ClothingHeadHelmetHardsuitTdfExperimental
+  name: TA-99X experimental helmet
+  description: A specialized tacsuit helmet featuring advanced mirrored composites and a top-of-the-line night vision suite.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta99x.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta99x.rsi
+  - type: PointLight
+    color: "#EACB67"
+
+- type: entity
+  parent: [BaseNightVisionClothingGenTwo, ClothingHeadHelmetHardsuitCybersun, ShowSecurityIcons]
+  id: ClothingHeadHelmetHardsuitTdfCasket
+  name: 'TA-67 "The Brick" helmet'
+  description: The forehead reads, "STRIKE FACE."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta67.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta67.rsi

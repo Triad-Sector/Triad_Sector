@@ -4,9 +4,10 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.RPD;
 
 /// <summary>
-/// Client pushes the operator's cursor-aimed pipe layer to the server (on change). Replaces streaming raw eye
-/// rotation: the client already computes this layer for its ghost/guide, so sending it directly removes the
-/// duplicate server-side <see cref="RPDLayerMath"/> computation and the click-time desync.
+/// Client pushes the operator's cursor-aimed pipe layer to the server: on change, then again while the tool's
+/// networked <c>RPDComponent.CurrentLayer</c> still disagrees. Replaces streaming raw eye rotation: the client
+/// already computes this layer for its ghost/guide, so sending it directly removes the duplicate server-side
+/// <see cref="RPDLayerMath"/> computation and the click-time desync.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class RPDLayerSelectEvent : EntityEventArgs

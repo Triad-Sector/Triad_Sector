@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by ddrakov (Discord), modified by Dart111",
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "antimateriel"
+    },
+    {
+      "name": "highexplosiveincendiary"
+    },
+    {
+      "name": "highexplosive"
+    },
+    {
+      "name": "highexplosiveradiation"
+    },
+    {
+      "name": "fragmentation"
+    },
+    {
+      "name": "fragmentationincendiary"
+    },
+    {
+      "name": "emp"
+    },
+    {
+      "name": "mag-1"
+    },
+    {
+      "name": "mag-2"
+    },
+    {
+      "name": "mag-3"
+    },
+    {
+      "name": "mag-4"
+    },
+    {
+      "name": "mag-5"
+    }
+  ]
+}
+

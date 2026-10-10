@@ -1,0 +1,101 @@
+- type: loadout
+  id: ClothingHeadHatPilot
+  groupBy: UshankaHat
+  equipment:
+    head: ClothingHeadHatPilot
+
+- type: loadout
+  id: ClothingHeadHelmetMercenary
+  groupBy: Helmet
+  equipment:
+    head: ClothingHeadHelmetMercenary
+
+- type: loadout
+  id: ClothingHeadHelmetMercenaryBlack
+  groupBy: Helmet
+  equipment:
+    head: ClothingHeadHelmetMercenaryBlack
+
+- type: loadout
+  id: ClothingHeadBandMercenary
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandMercenary
+
+- type: loadout
+  id: ClothingHeadHatBeretMercenary
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretMercenary
+
+- type: loadout
+  id: ClothingHeadHatBeretCommander
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretCommander
+
+- type: loadout
+  id: ClothingHeadHatBeretSecurity
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+
+- type: loadout
+  id: ClothingHeadHatBH
+  groupBy: CowboyHat
+  equipment:
+    head: ClothingHeadHatBH
+
+- type: loadout
+  id: ClothingHeadBandBrown
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBrown
+
+- type: loadout
+  id: ClothingHeadBandGrey
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGrey
+
+- type: loadout
+  id: ClothingHeadBandBotany
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBotany
+
+- type: loadout
+  id: ClothingHeadBandBlack
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBlack
+
+- type: loadout
+  id: ClothingHeadBandSkull
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandSkull
+
+- type: loadout
+  id: ClothingHeadBandRed
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandRed
+
+- type: loadout
+  id: ClothingHeadBandGreen
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGreen
+
+- type: loadout
+  id: ClothingHeadBandGold
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandGold
+
+- type: loadout
+  id: ClothingHeadBandBlue
+  groupBy: Bandana
+  equipment:
+    head: ClothingHeadBandBlue

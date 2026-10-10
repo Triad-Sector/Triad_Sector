@@ -12,6 +12,7 @@
     - id: PaperWrittenTdfInvestigatorReport
     - id: PaperWrittenTdfShipSearchWarrant
     - id: PaperWrittenTdfContrabandPermit
+    - id: PaperWrittenTdfSignInSheet
     - id: Paper
       prob: 0.5
     - id: Paper
@@ -196,7 +197,7 @@
 
       [italic] This warrant - legally authorized by powers at hand - grants the TDF the lawful right to exhort their authority and conduct a lawful ship search.[/italic]
 
-      [color=red][bold]This warrant must be signed and stamped by the Warden or Chief Enforcer. If requested by one, another must be the one to approve the warrant.[/bold][/color]
+      [color=red][bold]This warrant must be signed and stamped by the Lieutenant or Chief Enforcer. If requested by one, another must be the one to approve the warrant.[/bold][/color]
 
       [bold]Requesting Enforcer: [/bold][color=#AD8B37][signature][/color]
       [bold]Warrant Target: [/bold][color=#AD8B37][form][/color]
@@ -204,7 +205,83 @@
 
       [italic]If illegal items are found in the searched department, they will be confiscated, and the owner of these items may be detained at the officer's discretion. [bold]Legal items may not be taken in a search.[/bold][/italic]
 
-      [bold]Warden or Chief Enforcer Signature: [/bold][signature]
+      [bold]Lieutenant or Chief Enforcer Signature: [/bold][signature]
 
       [color=#aaaaaa]This document is not valid unless stamped by at least one of the listed required personnel. This Warrant is not required on Red Alert; however, given the scope, justifications to High Command should be reported before the search is conducted.[/color]
       [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ Stamps ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+
+- type: entity # Creator: nebulousnox (discord)
+  id: PaperWrittenTdfSignInSheet
+  name: sign-in sheet
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2
+      [color=#725B24]🛡[bold]TDF[/bold]🛡 [bold]Triad Defense Force[/bold][/color]
+      [bold]Sign In Sheet[/bold]
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      Fill in [bold]Name and Rank[/bold] and [bold]Time in[/bold] when starting your shift.
+      Fill in [bold]Time out[/bold] when ending your shift.
+      TDF-03 and above may fill [bold]Hours Compensated[/bold] after distributing pay.
+
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]
+
+      [color=#725B24]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [bold]Name and Rank: [/bold][signature]
+      [bold]Time in: [/bold][form]
+      [bold]Time out: [/bold][form]
+      [bold]Hours Compensated: [/bold][form]

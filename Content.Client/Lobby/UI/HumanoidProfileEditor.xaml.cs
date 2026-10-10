@@ -38,6 +38,7 @@ using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using Content.Shared._DV.Traits; // DV - Traits
 using Content.Client._Mono.Company;
+using Content.Client._Triad.Lobby; // Triad: admin-gated jobs
 
 namespace Content.Client.Lobby.UI
 {
@@ -796,7 +797,7 @@ namespace Content.Client.Lobby.UI
         {
             // Frontier: no antags
             /*
-            AntagList.DisposeAllChildren();
+            AntagList.RemoveAllChildren();
             var items = new[]
             {
                 ("humanoid-profile-editor-antag-preference-yes-button", 0),
@@ -1012,7 +1013,7 @@ namespace Content.Client.Lobby.UI
         /// </summary>
         public void RefreshJobs()
         {
-            JobList.DisposeAllChildren();
+            JobList.RemoveAllChildren();
             _jobCategories.Clear();
             _jobPriorities.Clear();
             var firstCategory = true;
@@ -1023,6 +1024,11 @@ namespace Content.Client.Lobby.UI
             {
                 if (department.EditorHidden)
                     continue;
+
+                // Triad: a department holding only admin-gated jobs this player cannot take goes too, header included.
+                if (AdminGatedJobFilter.EmptiesDepartment(department, _prototypeManager, _requirements))
+                    continue;
+                // End Triad
 
                 departments.Add(department);
             }
@@ -1083,9 +1089,12 @@ namespace Content.Client.Lobby.UI
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
                     .Where(job => job.SetPreference)
+                    .Where(job => !AdminGatedJobFilter.Hides(job, _requirements)) // Triad: admin-gated jobs
                     .ToArray();
 
                 Array.Sort(jobs, JobUIComparer.Instance);
+
+                var altJobTitlesEnable = _cfgManager.GetCVar(CCVars.ICAlternateJobTitlesEnable);
 
                 foreach (var job in jobs)
                 {
@@ -1097,6 +1106,7 @@ namespace Content.Client.Lobby.UI
                     var selector = new RequirementsSelector()
                     {
                         Margin = new Thickness(3f, 3f, 3f, 0f),
+                        HorizontalExpand = true,
                     };
                     selector.OnOpenGuidebook += OnOpenGuidebook;
 
@@ -1107,7 +1117,39 @@ namespace Content.Client.Lobby.UI
                     };
                     var jobIcon = _prototypeManager.Index(job.Icon);
                     icon.Texture = _entManager.System<SpriteSystem>().Frame0(jobIcon.Icon);
-                    selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+
+                    var hasDefaultAltTitle = Profile?.JobAlternateTitles.ContainsKey(job.ID);
+
+                    List<(ProtoId<JobAlternateTitlePrototype> Id, bool Locked)>? altTitleInfo = null;
+                    ProtoId<JobAlternateTitlePrototype>? currentAlt = null;
+
+                    if (altJobTitlesEnable)
+                    {
+                        if (hasDefaultAltTitle.HasValue && hasDefaultAltTitle.Value)
+                        {
+                            currentAlt = Profile?.JobAlternateTitles[job.ID];
+                        }
+
+                        if (job.AlternateTitles != null)
+                        {
+                            altTitleInfo = new List<(ProtoId<JobAlternateTitlePrototype>, bool)>();
+                            foreach (var titleId in job.AlternateTitles)
+                            {
+                                var isLocked = false;
+                                if (_prototypeManager.TryIndex(titleId, out var titleProto) &&
+                                    titleProto.Requirements != null)
+                                {
+                                    if (!_requirements.CheckRoleRequirements(titleProto.Requirements, Profile, out _))
+                                    {
+                                        isLocked = true;
+                                    }
+                                }
+                                altTitleInfo.Add((titleId, isLocked));
+                            }
+                        }
+                    }
+
+                    selector.Setup(items, job.LocalizedName, 280, job.LocalizedDescription, icon, job.Guides, altTitleInfo, currentAlt, _prototypeManager);
 
                     if (!_requirements.IsAllowed(job, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
                     {
@@ -1117,6 +1159,14 @@ namespace Content.Client.Lobby.UI
                     {
                         selector.UnlockRequirements();
                     }
+
+                    selector.OnSelectedTitle += selectedTitle =>
+                    {
+                        if (!altJobTitlesEnable)
+                            return;
+                        Profile = Profile?.WithJobAltTitle(job.ID, selectedTitle);
+                        SetDirty();
+                    };
 
                     selector.OnSelected += selectedPrio =>
                     {

@@ -12,6 +12,7 @@ using Content.Shared.Interaction;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
 using Content.Shared.RPD;
+using Content.Shared.RPD.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Placement;
@@ -20,6 +21,7 @@ using Robust.Client.State;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Robust.Client.Placement.PlacementManager;
 
@@ -28,9 +30,9 @@ namespace Content.Client.RPD;
 /// <summary>
 /// Placement mode for the Rapid Piping Device. Cursor position inside the tile picks the
 /// <see cref="AtmosPipeLayer"/> for the placement (see <see cref="RPDLayerMath"/>); the chosen layer is applied to
-/// the placement ghost via <c>TryGetAlternativePrototype</c>, and the same math runs server-side from the
-/// streamed eye rotation when the player commits. Three guide circles render on the cursor tile so the operator
-/// can see which layer they're aiming at.
+/// the placement ghost via <c>TryGetAlternativePrototype</c> and streamed to the tool (<see cref="SendLayer"/>),
+/// where the commit click captures it. Three guide circles render on the cursor tile so the operator can see which
+/// layer they're aiming at.
 /// </summary>
 public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
 {
@@ -40,6 +42,7 @@ public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
     [Dependency] private IStateManager _stateManager = default!;
     [Dependency] private IEyeManager _eyeManager = default!;
     [Dependency] private IEntityNetworkManager _entityNetwork = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transformSystem;
@@ -50,11 +53,13 @@ public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
     private const float SearchBoxSize = 2f;
     private const float PlaceColorBaseAlpha = 0.5f;
 
-    // Per-instance (not static) so a tool swap doesn't leave stale layer/rotation state behind. A new placement
-    // session starts at Primary with no eye rotation cached, forcing the first send.
+    // Per-instance (not static) so a tool swap doesn't leave stale layer state behind. The send reconciles against
+    // the tool's networked layer (see SendLayer), so a fresh instance sends only if the tool actually disagrees.
     private EntityCoordinates _mouseCoordsRaw = default;
     private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
     private AtmosPipeLayer? _lastSentLayer = null;
+    private TimeSpan _nextResend;
+    private static readonly TimeSpan ResendInterval = TimeSpan.FromSeconds(0.5);
 
     public AlignRPDAtmosPipeLayers(PlacementManager pMan) : base(pMan)
     {
@@ -136,15 +141,22 @@ public sealed partial class AlignRPDAtmosPipeLayers : PlacementMode
     }
 
     /// <summary>
-    /// Sends the cursor-aimed pipe layer to the server only when it changes. The layer is exactly what the ghost
-    /// displays, so the commit lands on the layer the operator sees. Instance field initialized to <c>null</c>
-    /// forces the first send in a new placement session, fixing the stale-after-tool-swap window the old version had.
+    /// Sends the cursor-aimed pipe layer while the tool's networked <see cref="RPDComponent.CurrentLayer"/> disagrees
+    /// with it: once on change, then again every <see cref="ResendInterval"/> until the server echoes it back. The
+    /// layer is exactly what the ghost displays, so the commit lands on the layer the operator sees, and a select the
+    /// server dropped heals instead of sticking until the cursor changes quadrant. Frame-update sends are stamped
+    /// after the frame's input commands, so this cannot race a hand swap the way a tick-raised event can.
     /// </summary>
     private void SendLayer(EntityUid heldEntity)
     {
-        if (_lastSentLayer == _currentLayer)
+        if (!_entityManager.TryGetComponent<RPDComponent>(heldEntity, out var rpd) || rpd.CurrentLayer == _currentLayer)
             return;
+
+        if (_lastSentLayer == _currentLayer && _timing.RealTime < _nextResend)
+            return;
+
         _lastSentLayer = _currentLayer;
+        _nextResend = _timing.RealTime + ResendInterval;
         _entityNetwork.SendSystemNetworkMessage(new RPDLayerSelectEvent(_entityManager.GetNetEntity(heldEntity), _currentLayer));
     }
 

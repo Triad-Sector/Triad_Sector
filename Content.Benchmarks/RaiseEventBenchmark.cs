@@ -1,6 +1,8 @@
 #nullable enable
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.IO;
+using Robust.UnitTesting.Pool;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -21,7 +23,7 @@ public class RaiseEventBenchmark
     {
         ProgramShared.PathOffset = "../../../../";
         PoolManager.Startup(typeof(BenchSystem).Assembly);
-        _pair = PoolManager.GetServerClient().GetAwaiter().GetResult();
+        _pair = PoolManager.GetServerClient(testContext: new ExternalTestContext(nameof(RaiseEventBenchmark), TextWriter.Null)).GetAwaiter().GetResult();
         var entMan = _pair.Server.EntMan;
         _sys = entMan.System<BenchSystem>();
 

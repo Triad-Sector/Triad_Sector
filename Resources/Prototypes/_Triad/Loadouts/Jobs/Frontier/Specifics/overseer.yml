@@ -1,11 +1,5 @@
 #T0
 - type: loadout
-  id: ClothingBackpackSatchelLeather
-  price: 0
-  equipment:
-    back: ClothingBackpackSatchelLeather
-
-- type: loadout
   id: StationRepClothingHeadsetAltCentComCommon
   price: 0
   equipment:

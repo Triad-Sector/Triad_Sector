@@ -410,11 +410,11 @@ public sealed partial class DockingSystem
             // If it's a map check no hard collidable anchored entities overlap
             if (isMap)
             {
-                var localTiles = _mapSystem.GetLocalTilesEnumerator(gridEntity.Owner, gridEntity.Comp, aabb);
+                var localTiles = _mapSystem.GetLocalTilesIntersecting(gridEntity.Owner, gridEntity.Comp, aabb);
 
                 while (localTiles.MoveNext(out var tile))
                 {
-                    var anchoredEnumerator = _mapSystem.GetAnchoredEntitiesEnumerator(gridEntity.Owner, gridEntity.Comp, tile.GridIndices);
+                    var anchoredEnumerator = _mapSystem.GetAnchoredEntities(gridEntity.Owner, gridEntity.Comp, tile.GridIndices);
 
                     while (anchoredEnumerator.MoveNext(out var anc))
                     {
@@ -439,10 +439,10 @@ public sealed partial class DockingSystem
                     return false;
 
                 // Additionally scan anchored entities on intersecting tiles and reject if any hard colliders are present.
-                var localTiles = _mapSystem.GetLocalTilesEnumerator(gridEntity.Owner, gridEntity.Comp, aabb);
+                var localTiles = _mapSystem.GetLocalTilesIntersecting(gridEntity.Owner, gridEntity.Comp, aabb);
                 while (localTiles.MoveNext(out var tile))
                 {
-                    var anchoredEnumerator = _mapSystem.GetAnchoredEntitiesEnumerator(gridEntity.Owner, gridEntity.Comp, tile.GridIndices);
+                    var anchoredEnumerator = _mapSystem.GetAnchoredEntities(gridEntity.Owner, gridEntity.Comp, tile.GridIndices);
                     while (anchoredEnumerator.MoveNext(out var anc))
                     {
                         if (!_physicsQuery.TryGetComponent(anc, out var physics) ||

@@ -10,7 +10,7 @@ public abstract class BaseXAESystem<T> : EntitySystem where T : Component
     /// Triad: effect systems reach for this to keep themselves grid-local. See
     /// <see cref="SharedXenoArtifactSystem.IsGridLocal(Robust.Shared.GameObjects.EntityUid,Robust.Shared.GameObjects.EntityUid)"/>.
     /// </summary>
-    [Dependency] protected readonly SharedXenoArtifactSystem XenoArtifact = default!;
+    [Dependency] protected SharedXenoArtifactSystem XenoArtifact = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

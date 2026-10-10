@@ -19,7 +19,7 @@
     maxAngle: 20
     angleIncrease: 5
     angleDecay: 25
-    fireRate: 3
+    fireRate: 4 # Triad: Increased firerate from 3 to 4 to match the semi-auto variant of the Vulcan.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto

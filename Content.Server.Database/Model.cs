@@ -52,19 +52,22 @@ namespace Content.Server.Database
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
         // Triad: tamper protection
-        public DbSet<TriadShipyardSigningKey>       TriadShipyardSigningKeys        { get; set; } = default!;
-        public DbSet<TriadShipyardAuditEvent>       TriadShipyardAuditEvents        { get; set; } = default!;
-        public DbSet<TriadShipyardMigrationPermit>  TriadShipyardMigrationPermits   { get; set; } = default!;
+        public DbSet<TriadShipyardSigningKey> TriadShipyardSigningKeys { get; set; } = default!;
+        public DbSet<TriadShipyardAuditEvent> TriadShipyardAuditEvents { get; set; } = default!;
+        public DbSet<TriadShipyardMigrationPermit> TriadShipyardMigrationPermits { get; set; } = default!;
         // End Triad
         // Triad: market data. Shapes and reasoning live in Model.Market.cs.
-        public DbSet<MarketTransaction>         MarketTransaction       { get; set; } = default!;
-        public DbSet<MarketTransactionSplit>    MarketTransactionSplit  { get; set; } = default!;
-        public DbSet<MarketTransactionLine>     MarketTransactionLine   { get; set; } = default!;
-        public DbSet<MarketPriceStat>           MarketPriceStat         { get; set; } = default!;
-        public DbSet<MarketRoundParticipant>    MarketRoundParticipant  { get; set; } = default!;
-        public DbSet<SectorAccountSample>       SectorAccountSample     { get; set; } = default!;
+        public DbSet<MarketTransaction> MarketTransaction { get; set; } = default!;
+        public DbSet<MarketTransactionSplit> MarketTransactionSplit { get; set; } = default!;
+        public DbSet<MarketTransactionLine> MarketTransactionLine { get; set; } = default!;
+        public DbSet<MarketPriceStat> MarketPriceStat { get; set; } = default!;
+        public DbSet<MarketRoundParticipant> MarketRoundParticipant { get; set; } = default!;
+        public DbSet<SectorAccountSample> SectorAccountSample { get; set; } = default!;
         // End Triad
         public DbSet<CompanyMember> CompanyMembers { get; set; } = null!;
+        public DbSet<WayfarerSafetyDepositBox> WayfarerSafetyDepositBox { get; set; } = null!;
+        public DbSet<WayfarerSafetyDepositBoxItem> WayfarerSafetyDepositBoxItem { get; set; } = null!;
+        public DbSet<DBJobAlternateTitle> DBJobAlternateTitle { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -142,6 +145,16 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<Job>()
                 .HasIndex(j => new { j.ProfileId, j.JobName })
+                .IsUnique();
+
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasOne(e => e.Profile)
+                .WithMany(e => e.AltTitles)
+                .HasForeignKey(e => e.ProfileId)
+                .IsRequired();
+
+            modelBuilder.Entity<DBJobAlternateTitle>()
+                .HasIndex(p => new { p.ProfileId, p.RoleName, p.AlternateTitle })
                 .IsUnique();
 
             modelBuilder.Entity<AssignedUserId>()
@@ -367,6 +380,23 @@ namespace Content.Server.Database
                 .HasForeignKey(w => w.PlayerUserId)
                 .HasPrincipalKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Wayfarer Safety Deposit Box configuration
+            modelBuilder.Entity<WayfarerSafetyDepositBox>()
+                .HasIndex(b => b.BoxId)
+                .IsUnique();
+
+            modelBuilder.Entity<WayfarerSafetyDepositBox>()
+                .HasIndex(b => b.OwnerUserId);
+
+            modelBuilder.Entity<WayfarerSafetyDepositBoxItem>()
+                .HasOne(i => i.Box)
+                .WithMany(b => b.Items)
+                .HasForeignKey(i => i.BoxId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<WayfarerSafetyDepositBoxItem>()
+                .HasIndex(i => i.BoxId);
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -418,6 +448,7 @@ namespace Content.Server.Database
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
 
+        public List<DBJobAlternateTitle> AltTitles { get; } = new();
         public List<ProfileRoleLoadout> Loadouts { get; } = new();
 
         [Column("pref_unavailable")] public DbPreferenceUnavailableMode PreferenceUnavailable { get; set; }
@@ -520,6 +551,17 @@ namespace Content.Server.Database
         public int ProfileId { get; set; }
 
         public string TraitName { get; set; } = null!;
+    }
+
+    public class DBJobAlternateTitle
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string RoleName { get; set; } = string.Empty;
+
+        public string AlternateTitle { get; set; } = string.Empty;
     }
 
     #region Loadouts
@@ -1301,4 +1343,89 @@ namespace Content.Server.Database
         public string CompanyId { get; set; } = default!;
     }
     // Mono-End
+
+    // Wayfarer Safety Deposit Box Tables
+    public class WayfarerSafetyDepositBox
+    {
+        [Key]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Unique identifier for this deposit box
+        /// </summary>
+        public Guid BoxId { get; set; }
+
+        /// <summary>
+        /// The user ID of the owner
+        /// </summary>
+        public Guid OwnerUserId { get; set; }
+
+        /// <summary>
+        /// The character profile index (slot number) of the owner
+        /// </summary>
+        public int CharacterIndex { get; set; }
+
+        /// <summary>
+        /// Display name of the owner when the box was created
+        /// </summary>
+        [Required]
+        public string OwnerName { get; set; } = null!;
+
+        /// <summary>
+        /// Optional nickname for the box (from label)
+        /// </summary>
+        public string? Nickname { get; set; }
+
+        /// <summary>
+        /// Entity prototype for the box.
+        /// </summary>
+        [Required]
+        public string ProtoId { get; set; } = null!;
+
+        /// <summary>
+        /// When the box was purchased
+        /// </summary>
+        public DateTime PurchaseDate { get; set; }
+
+        /// <summary>
+        /// When the box was last withdrawn from the console. Null if currently stored in database.
+        /// Used to track boxes that are "in the world" vs "safely stored".
+        /// </summary>
+        public DateTime? LastWithdrawn { get; set; }
+
+        /// <summary>
+        /// The round ID when the box was last withdrawn. Null if currently stored in database.
+        /// Used to detect if a box was lost (withdrawn in a previous round but never deposited back).
+        /// </summary>
+        public int? LastWithdrawnRoundId { get; set; }
+
+        /// <summary>
+        /// Items stored in this box
+        /// </summary>
+        public List<WayfarerSafetyDepositBoxItem> Items { get; set; } = new();
+    }
+
+    public class WayfarerSafetyDepositBoxItem
+    {
+        [Key]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Foreign key to the deposit box
+        /// </summary>
+        public int BoxId { get; set; }
+
+        public WayfarerSafetyDepositBox Box { get; set; } = null!;
+
+        /// <summary>
+        /// Serialized entity data (YAML format)
+        /// </summary>
+        [Required]
+        public string EntityData { get; set; } = null!;
+
+        /// <summary>
+        /// When this item was deposited
+        /// </summary>
+        public DateTime DepositDate { get; set; }
+    }
 }

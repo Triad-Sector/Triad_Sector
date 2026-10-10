@@ -1,3 +1,7 @@
+- type: accessLevel
+  id: Civilian
+  name: id-card-access-level-civilian
+
 - type: accessGroup
   id: TFA
   tags:
@@ -37,8 +41,9 @@
 - type: accessGroup
   id: Civilian
   tags:
-  - Mercenary
-  - Pilot
+  - Mercenary # This is here for legacy purposes
+  - Pilot # This is here for legacy purposes
+  - Civilian
   - Maintenance
 
 - type: accessGroup

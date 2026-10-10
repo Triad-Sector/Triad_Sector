@@ -80,9 +80,7 @@
   name: plastitanium window
   parent: PlastitaniumWindowSquareBase
   suffix: indestructible
-  # Frontier: colored indestructible windows
-  description: Skub knows this window is too hard to destroy.
-  # End Frontier
+  description: Far too tough to destroy. # Triad
 
 - type: entity
   id: PlastitaniumWindow
@@ -182,9 +180,7 @@
   name: plastitanium window
   parent: PlastitaniumWindowDiagonalBase
   suffix: diagonal, indestructible
-  # Frontier: colored indestructible windows
-  description: Skub knows this window is too hard to destroy.
-  # End Frontier
+  description: Far too tough to destroy. # Triad
 
 - type: entity
   id: PlastitaniumWindowDiagonal

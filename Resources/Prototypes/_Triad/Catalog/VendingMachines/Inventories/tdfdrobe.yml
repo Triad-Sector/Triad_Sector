@@ -12,7 +12,8 @@
     ClothingHandsGlovesCombat: 5
     ClothingHandsGlovesTacticalCombatBlack: 5
     ClothingUniformJumpsuitTdfEnforcer: 10
-    ClothingUniformJumpsuitTdfJunior: 10
+    ClothingUniformJumpsuitTdfJunior: 5
+    ClothingUniformJumpsuitTdfFlannel: 5
     ClothingNeckIFFOrange: 30
     ClothingHeadsetTdf: 15
     ClothingMaskGasSecurity: 15

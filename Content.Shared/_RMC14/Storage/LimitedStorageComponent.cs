@@ -1,11 +1,12 @@
 ﻿using Content.Shared.Whitelist;
+using Content.Shared._Triad.Storage;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._RMC14.Storage;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RMCStorageSystem))]
+[Access(typeof(TriadStorageSystem))]
 public sealed partial class LimitedStorageComponent : Component
 {
     [DataField, AutoNetworkedField]

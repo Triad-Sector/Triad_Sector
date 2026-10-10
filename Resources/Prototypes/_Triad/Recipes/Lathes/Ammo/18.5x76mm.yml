@@ -1,0 +1,186 @@
+#18.5 ammo costs are high to offset some of its all-round and versatile ammo types, especially EMP rounds and Anti-Materiel
+#Magazines [5 steel, 15 misc materials]
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mm
+  categories:
+  - FMJAmmo
+  - Ammo
+  materials:
+    Plasteel: 1500
+    Steel: 500
+  result: Magazine185x76mm
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmEmpty
+  categories:
+  - Ammo
+  materials:
+    Steel: 500
+  result: Magazine185x76mmEmpty
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmHighEx
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 500
+    Plasma: 1000
+    Steel: 500
+  result: Magazine185x76mmHighEx
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmHighExIncendiary
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 500
+    Plasma: 500
+    Plastic: 500
+    Steel: 500
+  result: Magazine185x76mmHighExIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmHighExRad
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 500
+    UraniumFissile: 010
+    Plasma: 1000
+    Steel: 500
+  result: Magazine185x76mmHighExRad
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmFragmentation
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plasma: 500
+    Steel: 500
+  result: Magazine185x76mmFragmentation
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmFragmentationIncendiary
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 500
+    Plastic: 500
+    Plasma: 500
+    Steel: 500
+  result: Magazine185x76mmFragmentationIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmAnti-Materiel
+  categories:
+  - Ammo
+  materials:
+    Plastitanium: 1000
+    UraniumDepleted: 500
+    Steel: 500
+  result: Magazine185x76mmAnti-Materiel
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: Magazine185x76mmEMP
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 500
+    Iridite: 020
+    Lithium: 180
+    Copper: 800
+    Steel: 500
+  result: Magazine185x76mmEMP
+
+#Ammo Boxes [30 misc materials, 5 steel]
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFMJ
+  categories:
+  - FMJAmmo
+  - Ammo
+  materials:
+    Plasteel: 3000
+    Steel: 500
+  result: AmmoBox185x76mmFMJ
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighEx
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plasma: 2000
+    Steel: 500
+  result: AmmoBox185x76mmHighEx
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighExIncendiary
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plasma: 1000
+    Plastic: 1000
+    Steel: 500
+  result: AmmoBox185x76mmHighExIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmHighExRad
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 1000
+    UraniumFissile: 020
+    Plasma: 2000
+    Steel: 500
+  result: AmmoBox185x76mmHighExRad
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFragmentation
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 2000
+    Plasma: 1000
+    Steel: 500
+  result: AmmoBox185x76mmFragmentation
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmFragmentationIncendiary
+  categories:
+  - Ammo
+  materials:
+    Plasteel: 1000
+    Plastic: 1000
+    Plasma: 1000
+    Steel: 500
+  result: AmmoBox185x76mmFragmentationIncendiary
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: AmmoBox185x76mmAnti-Materiel
+  categories:
+  - Ammo
+  materials:
+    Plastitanium: 2000
+    UraniumDepleted: 1000
+    Steel: 500
+  result: AmmoBox185x76mmAnti-Materiel

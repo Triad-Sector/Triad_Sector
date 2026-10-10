@@ -69,6 +69,13 @@
   - ClothingOuterEVASuitPrivateSec
 ## Storage
   - MedkitCombat
+  # Triad Start
+  - MedkitCombatAdvanced
+  - MedkitCombatBurn
+  - MedkitCombatToxin
+  - MedkitCombatO2
+  - MedkitCombatRadiation
+  # Triad End
   - WeaponCaseShort
   - WeaponCaseLong
   - WeaponCaseHeavy
@@ -148,6 +155,10 @@
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
 # Triad Start
+  - ClothingOuterHardsuitRmtL10
+  - ClothingOuterHardsuitRmtM10
+  - ClothingOuterHardsuitIndustrialEngi
+  - ClothingOuterHardsuitRmtL10A
   - ClothingModsuitHZDBesieger
 # Triad End
 ## Utilities
@@ -215,6 +226,7 @@
 #Triad Start
   - WeaponPistolStiletto
   - WeaponRiflePike
+  - WeaponShotgunBombadier
 #Triad End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag

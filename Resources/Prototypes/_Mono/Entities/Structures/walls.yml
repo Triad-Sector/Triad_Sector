@@ -5,7 +5,7 @@
   parent: BaseWall
   id: BaseWallTierOne
   name: default wall
-  description: Keeps the air in and the chimera out.
+  description: Keeps the air in and space out. # Triad
   placement:
     mode: SnapgridCenter
     snap:
@@ -55,7 +55,7 @@
   parent: BaseWall
   id: BaseWallTierTwo
   name: reinforced wall
-  description: Keeps the air in and the chimera out.
+  description: Keeps the air in and space out. # Triad
   placement:
     mode: SnapgridCenter
     snap:
@@ -105,7 +105,7 @@
   parent: BaseWall
   id: BaseWallTierThree
   name: super reinforced wall
-  description: Keeps the air in and the chimera out.
+  description: Keeps the air in and space out. # Triad
   placement:
     mode: SnapgridCenter
     snap:
@@ -155,7 +155,7 @@
   parent: BaseWall
   id: BaseWallTierFour
   name: super ultra giga reinforced wall
-  description: Keeps the air in and the chimera out.
+  description: Keeps the air in and space out. # Triad
   placement:
     mode: SnapgridCenter
     snap:
@@ -205,7 +205,7 @@
   parent: BaseWall
   id: BaseWallOutpost
   name: super ultra giga mega deluxe reinforced wall
-  description: Keeps the air in and the chimera out.
+  description: Keeps the air in and space out. # Triad
   suffix: OUTPOST ONLY
   placement:
     mode: SnapgridCenter

@@ -2,7 +2,7 @@
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
   id: WeaponRifleLecterRecipeTdf
-  result: WeaponRifleLecterTdf
+  result: WeaponRifleVigil
   categories:
   - Rifles
   - Ballistic
@@ -14,8 +14,21 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeLong
-  id: WeaponRifleMR8TRecipeTdf
-  result: WeaponRifleMR8T
+  id: WeaponRifleCrosshairTDF
+  result: WeaponRifleCrosshair
+  categories:
+  - Rifles
+  - Ballistic
+  - Weapons
+  materials:
+    Steel: 1800
+    Plasteel: 1000
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseWeaponRecipeLong
+  id: WeaponRifleBishopRecipeTdf
+  result: WeaponRifleBishop
   categories:
   - DMRs
   - Ballistic

@@ -1,0 +1,90 @@
+- type: loadout
+  id: ClothingBeltMercenaryWebbing
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltMercenaryWebbing
+
+- type: loadout
+  id: ClothingBeltMilitaryWebbing
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbing
+
+- type: loadout
+  id: ClothingBeltMilitaryWebbingMed
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbingMed
+
+- type: loadout
+  id: ClothingBeltWebbingsNormalBlack
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltWebbingsNormalBlack
+
+- type: loadout
+  id: ClothingBeltWebbingsNormalTan
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltWebbingsNormalTan
+
+- type: loadout
+  id: ClothingBeltWebbingsNormalRangerGreen
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltWebbingsNormalRangerGreen
+
+- type: loadout
+  id: ClothingBeltWebbingsNormalOlive
+  groupBy: Webbing
+  equipment:
+    belt: ClothingBeltWebbingsNormalOlive
+
+- type: loadout
+  id: ClothingBeltWebbingsBigBase
+  groupBy: LargeWebbing
+  equipment:
+    belt: ClothingBeltWebbingsBigBase
+
+- type: loadout
+  id: ClothingBeltWebbingsBigBlack
+  groupBy: LargeWebbing
+  equipment:
+    belt: ClothingBeltWebbingsBigBlack
+
+- type: loadout
+  id: ClothingBeltWebbingsBigTan
+  groupBy: LargeWebbing
+  equipment:
+    belt: ClothingBeltWebbingsBigTan
+
+- type: loadout
+  id: ClothingBeltWebbingsBigRangerGreen
+  groupBy: LargeWebbing
+  equipment:
+    belt: ClothingBeltWebbingsBigRangerGreen
+
+- type: loadout
+  id: ClothingBeltWebbingsBigOlive
+  groupBy: LargeWebbing
+  equipment:
+    belt: ClothingBeltWebbingsBigOlive
+
+- type: loadout
+  id: ClothingBeltBandolier
+  groupBy: Belt
+  equipment:
+    belt: ClothingBeltBandolier
+
+- type: loadout
+  id: ClothingBeltSecurity
+  groupBy: Belt
+  equipment:
+    belt: ClothingBeltSecurity
+
+- type: loadout
+  id: ClothingBeltSecurityFilled
+  name: security belt (filled)
+  groupBy: Belt
+  equipment:
+    belt: ClothingBeltSecurityFilled

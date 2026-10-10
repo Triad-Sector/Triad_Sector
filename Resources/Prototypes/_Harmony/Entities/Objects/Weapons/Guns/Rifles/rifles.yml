@@ -67,5 +67,3 @@
     walkModifier: 0.75
     sprintModifier: 0.75
     # Mono end
-  - type: SavingContraband # Triad
-    examineText: ship-saving-contraband-2-text

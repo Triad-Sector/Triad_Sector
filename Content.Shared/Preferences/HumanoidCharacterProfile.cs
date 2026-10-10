@@ -8,7 +8,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -60,6 +59,15 @@ namespace Content.Shared.Preferences
                 SharedGameTicker.FallbackOverflowJob, JobPriority.High
             }
         };
+
+        /// <summary>
+        /// Prefered job title for each job.
+        /// </summary>
+        [DataField]
+        public Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>> JobAlternateTitles = new();
+
+        [DataField("alternateJobTitle")]
+        public string? AlternateJobTitle { get; set; }
 
         /// <summary>
         /// Antags we have opted in to.
@@ -165,6 +173,7 @@ namespace Content.Shared.Preferences
             SpawnPriorityPreference spawnPriority,
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
             PreferenceUnavailableMode preferenceUnavailable,
+            Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>> jobAlternateTitles,
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts,
@@ -181,6 +190,7 @@ namespace Content.Shared.Preferences
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
             PreferenceUnavailable = preferenceUnavailable;
+            JobAlternateTitles = jobAlternateTitles;
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
@@ -193,9 +203,10 @@ namespace Content.Shared.Preferences
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
+            Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>> jobAlternateTitles,
             Dictionary<string, RoleLoadout> loadouts)
             : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
-                jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts, other.Company)
+                jobPriorities, other.PreferenceUnavailable, jobAlternateTitles, antagPreferences, traitPreferences, loadouts, other.Company)
         {
         }
 
@@ -212,6 +223,7 @@ namespace Content.Shared.Preferences
                 other.SpawnPriority,
                 new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities),
                 other.PreferenceUnavailable,
+                new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>(other.JobAlternateTitles),
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
                 new Dictionary<string, RoleLoadout>(other.Loadouts),
@@ -396,6 +408,25 @@ namespace Content.Shared.Preferences
             };
         }
 
+        public HumanoidCharacterProfile WithJobAltTitle(ProtoId<JobPrototype> jobId, ProtoId<JobAlternateTitlePrototype>? jobTitle)
+        {
+            var dictionary = new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>(JobAlternateTitles);
+
+            if (jobTitle == null || jobTitle.Value.Id == null)
+            {
+                dictionary.Remove(jobId);
+            }
+            else
+            {
+                dictionary[jobId] = jobTitle.Value;
+            }
+
+            return new(this)
+            {
+                JobAlternateTitles = dictionary
+            };
+        }
+
         public HumanoidCharacterProfile WithPreferenceUnavailable(PreferenceUnavailableMode mode)
         {
             return new(this) { PreferenceUnavailable = mode };
@@ -520,6 +551,7 @@ namespace Content.Shared.Preferences
             if (Species != other.Species) return false;
             if (Company != other.Company) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
+            if (!JobAlternateTitles.SequenceEqual(other.JobAlternateTitles)) return false;
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (FlavorText != other.FlavorText) return false;
@@ -664,6 +696,19 @@ namespace Content.Shared.Preferences
                 hasHighPrio = true;
             }
 
+            var altTitles = new Dictionary<ProtoId<JobPrototype>, ProtoId<JobAlternateTitlePrototype>>();
+            foreach (var (key, value) in JobAlternateTitles)
+            {
+                if (value.Id == null || value.Id == string.Empty)
+                    continue;
+                if (!prototypeManager.TryIndex(key, out var job))
+                    continue;
+                if (job.AlternateTitles.Contains(value))
+                {
+                    altTitles.Add(key, value);
+                }
+            }
+
             var antags = AntagPreferences
                 .Where(id => prototypeManager.TryIndex(id, out var antag) && antag.SetPreference)
                 .ToList();
@@ -697,6 +742,13 @@ namespace Content.Shared.Preferences
             }
 
             PreferenceUnavailable = prefsUnavailableMode;
+
+            JobAlternateTitles.Clear();
+
+            foreach (var (job, title) in altTitles)
+            {
+                JobAlternateTitles.Add(job, title);
+            }
 
             _antagPreferences.Clear();
             _antagPreferences.UnionWith(antags);
@@ -798,6 +850,7 @@ namespace Content.Shared.Preferences
         {
             var hashCode = new HashCode();
             hashCode.Add(_jobPriorities);
+            hashCode.Add(JobAlternateTitles);
             hashCode.Add(_antagPreferences);
             hashCode.Add(_traitPreferences);
             hashCode.Add(_loadouts);

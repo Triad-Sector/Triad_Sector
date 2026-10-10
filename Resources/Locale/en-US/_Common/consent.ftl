@@ -4,9 +4,11 @@ ui-options-function-open-consent-window = Open consent menu
 consent-window-title = OOC Consent & Preferences
 consent-window-text = This information is shown to other players to help with RP and used to opt-in or out of certain gameplay systems.
 consent-window-freetext-label = Freetext
-consent-window-freetext-placeholder = Put your ERP info here, such as:
+consent-window-freetext-placeholder = Put your consent info here, such as:
+    If you are okay with engaging in ERP
+    Whether you would like to engage in PVP
+    If you are okay with engaging with other types of extreme roleplay
     Sub/Dom/Switch
-    If you are okay with IC noncon
     Which gender(s) you want your partners to be
     Likes and dislikes
 consent-window-toggles-label = Mechanics toggles

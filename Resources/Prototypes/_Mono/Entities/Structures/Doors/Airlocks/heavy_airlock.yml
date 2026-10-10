@@ -7,10 +7,10 @@
   components:
   - type: Sprite
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Standard/standard.rsi
-  - type: Door
-    closeTimeOne: 0.1
+  - type: Door # Triad readjusts the timing slightly to accomodate sprite animation
+    closeTimeOne: 0.2
     closeTimeTwo: 0.2
-    openTimeOne: 0.1
+    openTimeOne: 0.2
     openTimeTwo: 0.2
     crushDamage:
       types:
@@ -59,10 +59,10 @@
   - type: Sprite
     sprite: _Mono/Structures/Doors/HeavyAirlocks/Glass/standard.rsi
     group: Glass # Triad Change
-  - type: Door
-    closeTimeOne: 0.1
+  - type: Door # Triad readjusts the timing to accomodate sprite animation
+    closeTimeOne: 0.2
     closeTimeTwo: 0.2
-    openTimeOne: 0.1
+    openTimeOne: 0.2
     openTimeTwo: 0.2
     crushDamage:
       types:

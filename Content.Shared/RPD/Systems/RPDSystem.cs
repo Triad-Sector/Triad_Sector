@@ -1,7 +1,7 @@
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Atmos.Piping;
-using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.RCD;
@@ -26,6 +26,7 @@ public sealed partial class RPDSystem : EntitySystem
     [Dependency] private SharedAtmosPipeLayersSystem _pipeLayers = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -114,7 +115,9 @@ public sealed partial class RPDSystem : EntitySystem
 
     /// <summary>
     /// Client streams its cursor-aimed pipe layer; stored per-RPD for spawn and deconstruct targeting. Validated
-    /// to the sender's active-hand RPD so a client can't set the layer on a tool it isn't holding.
+    /// to the sender holding the RPD in any hand so a client can't set the layer on a tool it isn't holding. Any
+    /// hand, not the active one: the select can arrive in the same server tick as the hand swap that made the tool
+    /// active, and the active-hand test then dropped it silently.
     /// </summary>
     private void OnLayerSelect(RPDLayerSelectEvent ev, EntitySessionEventArgs session)
     {
@@ -123,7 +126,7 @@ public sealed partial class RPDSystem : EntitySystem
         if (session.SenderSession.AttachedEntity is not { } player)
             return;
 
-        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+        if (!_hands.IsHolding(player, uid))
             return;
 
         if (!TryComp<RPDComponent>(uid, out var rpd))
@@ -135,14 +138,15 @@ public sealed partial class RPDSystem : EntitySystem
     /// <summary>
     /// Sets the RPD's selected pipe layer. Clamps to a defined enum value so a malicious client can't store
     /// garbage; an unsupported-but-valid layer (target has fewer layers) simply no-ops the alternative-prototype
-    /// lookup at spawn. Server-only ephemeral state, not networked.
+    /// lookup at spawn. Dirtied so the client can reconcile its stream against it.
     /// </summary>
     public void SetLayer(Entity<RPDComponent> ent, AtmosPipeLayer layer)
     {
-        if (!Enum.IsDefined(layer))
+        if (!Enum.IsDefined(layer) || ent.Comp.CurrentLayer == layer)
             return;
 
         ent.Comp.CurrentLayer = layer;
+        Dirty(ent);
     }
 
     /// <summary>

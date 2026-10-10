@@ -44,6 +44,10 @@
   - ClothingOuterHardsuitClown
   - ClothingOuterHardsuitMime
   - ClothingOuterHardsuitPilot
+  - ClothingOuterHardsuitRmtL10 # Triad
+  - ClothingOuterHardsuitRmtL10A # Triad
+  - UllmanHardsuitPilot # Triad
+  - UllmanHardsuitEngineer # Triad
   - ModsuitChestplate
   - ModsuitBoots
   - ModsuitHelmet

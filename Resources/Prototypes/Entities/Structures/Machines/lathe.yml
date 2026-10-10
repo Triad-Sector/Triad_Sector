@@ -175,6 +175,8 @@
     - NFServiceStatic # Frontier
     - MonoRestraintsStatic # Mono
     - TriadBureaucracyStatic # Triad
+    - AACTableStatic # DeltaV - AAC Tablets
+    - ReportingStatic # DeltaV
   - type: EmagLatheRecipes
     emagStaticPacks:
     - StaticAmmoRecipePack
@@ -494,6 +496,7 @@
     - SecurityPracticeStatic
     - StaticAmmoRecipePack
     - SecurityWeaponsStatic
+    - AACTableStatic # DeltaV - AAC Tablets
     dynamicPacks:
     - SecurityEquipment
     - SecurityExplosives
@@ -586,6 +589,7 @@
     - EmptyMedkitsStatic
     - SurgeryStatic
     - NFMedicalStatic # Frontier
+    - AACTableStatic # DeltaV - AAC Tablets
     dynamicPacks:
     - Chemistry
     - SyringeGuns # DeltaV
@@ -647,6 +651,7 @@
     emagStaticPacks:
     - ClothingCentComm
     - ClothingSyndie
+    - ClothingPlayerFaction # Triad
   - type: MaterialStorage
     whitelist:
       tags:

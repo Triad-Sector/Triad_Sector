@@ -390,7 +390,7 @@
 - type: entity
   id: Magazine9x19mmSubMachineGunEmp
   name: SMG magazine (9x19mm emp)
-  parent: BaseMagazine9x19mmSubMachineGunFMJ
+  parent: [BaseMagazine9x19mmSubMachineGunFMJ, BaseClass2AShipContrabandSilent]
   components:
   - type: BallisticAmmoProvider
     proto: Cartridge9x19mmEmp

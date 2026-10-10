@@ -49,6 +49,16 @@ public sealed partial class BiomeSystem
                 var markerSeed = seed + chunk.X * ChunkSize + chunk.Y + localIdx;
                 var rand = new Random(markerSeed);
                 var buffer = (int)(layerProto.Radius / 2f);
+
+                // Triad: Box2i throws on an inverted box since engine v279, and this one inverts whenever a
+                // marker layer's radius is authored at or past its size. Fail the layer loudly instead of
+                // taking the whole biome tick down with it.
+                if (layerProto.Size <= 2 * buffer)
+                {
+                    Log.Error($"Biome marker layer {layer} has radius {layerProto.Radius} too large for size {layerProto.Size}; skipping.");
+                    return;
+                }
+
                 var bounds = new Box2i(chunk + buffer, chunk + layerProto.Size - buffer);
                 var count = (int)(bounds.Area / (layerProto.Radius * layerProto.Radius));
                 count = Math.Min(count, layerProto.MaxCount);
@@ -155,7 +165,7 @@ public sealed partial class BiomeSystem
                     continue;
 
                 // Check if it's a valid spawn, if so then use it.
-                var enumerator = _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, node);
+                var enumerator = _mapSystem.GetAnchoredEntities(gridUid, grid, node);
                 enumerator.MoveNext(out var existing);
 
                 if (!forced && existing != null)

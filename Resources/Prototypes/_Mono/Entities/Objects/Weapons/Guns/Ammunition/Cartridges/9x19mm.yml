@@ -94,7 +94,7 @@
 - type: entity
   id: Cartridge9x19mmEmp
   name: cartridge (9x19mm emp)
-  parent: BaseCartridge9x19mm
+  parent: [BaseCartridge9x19mm, BaseClass2AShipContrabandSilent]
   components:
   - type: CartridgeAmmo
     proto: Bullet9x19mmEmp

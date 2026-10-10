@@ -2491,10 +2491,10 @@ entities:
       pos: -4.229002,-1.6729321
     - type: Paper
       content: >-
-        hey there!~ 
+        hey there!~
 
 
-        i'm your average shipyard worker, i left a note here since i made a slight modification on the shuttle for the TDF. 
+        i'm your average shipyard worker, i left a note here since i made a slight modification on the shuttle for the TDF.
 
 
         If you look at the shuttle number pad and press 1, you'll activate the sirine on the outer ship!, and if you feels threatened dont worry fam igotchu! just press number 2 to bolt the external airlock!~, and if you press 3 it will close the blast door, going to 4 and you'll bolt the glass airlock!
@@ -3665,10 +3665,12 @@ entities:
   - uid: 479
     components:
     - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -5.5,-0.5
-  - uid: 480
+      parent: 322
+    - type: Physics
+      canCollide: False
+- proto: WeaponRifleVigil
+  entities:
+  - uid: 327
     components:
     - type: Transform
       parent: 1

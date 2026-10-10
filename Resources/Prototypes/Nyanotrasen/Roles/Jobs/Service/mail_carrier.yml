@@ -9,7 +9,7 @@
     - !type:OverallPlaytimeRequirement
       time: 10800
   icon: "JobIconMailCarrier"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   weight: 90 # Frontier
   displayWeight: 30 # Frontier
   assignedCompany: Colonial

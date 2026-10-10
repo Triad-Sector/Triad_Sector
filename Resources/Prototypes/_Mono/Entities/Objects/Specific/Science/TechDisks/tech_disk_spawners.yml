@@ -81,6 +81,7 @@
       - id: TechDiskC20r
       - id: TechDiskM90
       - id: TechDiskMla73
+      - id: TechDiskTICLightGrenade #Triad
     - !type:NestedSelector
       weight: 3
       tableId: SpawnLootTechDisksT2RareBranch
@@ -97,6 +98,7 @@
     - id: TechDiskHristov
     - id: SpawnLootTechDisksT3Fracture
     - id: TechDiskUniversalShipAmmoAdvanced
+    - id: TechDiskSDLightGrenade #Triad
 
 #T2 TECH MECH DISKS
 - type: entity

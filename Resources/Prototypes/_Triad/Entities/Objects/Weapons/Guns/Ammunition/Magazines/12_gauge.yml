@@ -1,0 +1,142 @@
+- type: entity
+  id: BaseShortMagazine12_gauge
+  name: box magazine (12 gauge shells)
+  parent: [ BaseItem, RecyclableItemSteelTiny ]
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Magazine12_gaugeBuckshot
+    - ShortMagazine12_gaugeBuckshot
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - ShellShotgun12_gaugeBuckshot
+    capacity: 8
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/smg_cock.ogg
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Triad/Objects/Weapons/Guns/Ammunition/Magazines/12_gauge/12_gauge_boxmag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  id: ShortMagazine12_gaugeEmpty
+  name: box magazine (12 gauge shells any)
+  suffix: empty
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+- type: entity
+  id: ShortMagazine12_gaugeBuckshot
+  name: box magazine (12 gauge buckshot)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeBuckshot
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugeBeanbag
+  name: box magazine (12 gauge beanbags)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeBeanbag
+  - type: Sprite
+    layers:
+    - state: beanbag
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugeSlug
+  name: box magazine (12 gauge slug)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeSlug
+  - type: Sprite
+    layers:
+    - state: slug
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugeIncendiary
+  name: box magazine (12 gauge incendiary)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeIncendiary
+  - type: Sprite
+    layers:
+    - state: incendiary
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugeUranium
+  name: box magazine (12 gauge uranium)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeUranium
+  - type: Sprite
+    layers:
+    - state: uranium
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugePractice
+  name: box magazine (12 gauge practice)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugePractice
+  - type: Sprite
+    layers:
+    - state: practice
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ShortMagazine12_gaugeFlechette
+  name: box magazine (12 gauge flechette)
+  parent: BaseShortMagazine12_gauge
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgun12_gaugeFlechette
+  - type: Sprite
+    layers:
+    - state: flechette
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]

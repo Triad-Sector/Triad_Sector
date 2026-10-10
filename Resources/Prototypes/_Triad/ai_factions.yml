@@ -29,18 +29,18 @@
   - SD
   defaultHostile: true
 
-# TIC
+# Imperial Coalition of Tau
 - type: npcFaction
-  id: TIC
+  id: Coalition
   neutral:
   - CC
   - SimpleNeutral
   defaultHostile: true
 
 - type: npcFaction
-  id: TICTurret
+  id: CoalitionTurret
   friendly:
-  - TIC
+  - Coalition
   defaultHostile: true
 
 

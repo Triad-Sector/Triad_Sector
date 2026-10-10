@@ -1,0 +1,11 @@
+- type: loadout
+  id: ContractorCardHolderBlack
+  price: 0
+  equipment:
+    wallet: CardHolderBlack
+    
+- type: loadout
+  id: ContractorCardHolderWhite
+  price: 0
+  equipment:
+    wallet: CardHolderWhite

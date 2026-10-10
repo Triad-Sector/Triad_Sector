@@ -1,6 +1,5 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared._Mono.Radar;
 
 namespace Content.Shared.Movement.Components;
@@ -32,4 +31,10 @@ public sealed partial class JetpackComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public float DetectionRange = 256f;
+
+    /// <summary>
+    /// Triad - Clothing prefix for when the jetpack is turned on. Can be null.
+    /// </summary>
+    [DataField]
+    public string? OnClothingPrefix = "on";
 }

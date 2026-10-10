@@ -94,7 +94,7 @@
 - type: entity
   id: Cartridge45_ACPEmp
   name: cartridge (.45 ACP emp)
-  parent: BaseCartridge45_ACP
+  parent: [BaseCartridge45_ACP, BaseClass2AShipContrabandSilent]
   components:
   - type: CartridgeAmmo
     proto: Bullet45_ACPEmp

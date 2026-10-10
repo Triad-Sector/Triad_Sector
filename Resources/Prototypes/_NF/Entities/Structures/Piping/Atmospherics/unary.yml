@@ -82,11 +82,24 @@
           On: { state: drill-on-unlit, visible: true }
   - type: ApcPowerReceiver
     powerLoad: 1000
+  # Triad - Battery-powered gas drill
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 0
+  - type: ExaminableBattery
+  - type: BatterySelfRecharger
+  - type: ApcPowerReceiverBattery
+    idleLoad: 5
+    batteryRechargeRate: 175
+    batteryRechargeEfficiency: 1.2
+  - type: CollapsibleItem
+    collapseInto: GasMiningDrillFlatpack
+  # Triad End
   - type: Machine
     board: GasMiningDrillMachineCircuitboard
   - type: GasDepositExtractor
     baseExtractionRate: 50 # 50 mol/s => 20 kmol in ~6.6 min
-    extractionRate: 50 
+    extractionRate: 50
     extractionRateMultiplier: 1.2 # max rate: 86.4 mol/s => 20 kmol in ~3.9 min
     port: outlet
   - type: Fixtures

@@ -260,7 +260,7 @@
       coverage: EYES
 
 - type: entity
-  parent: [ClothingEyesBase]
+  parent: [BaseNightVisionClothingGenFour, ClothingEyesBase]
   id: ClothingEyesVisorNinja
   name: ninja visor
   description: An advanced visor protecting a ninja's eyes from flashing lights.
@@ -270,12 +270,3 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
   - type: FlashImmunity
-  - type: NightVision # Gen 4 quadtube-wide
-    relayOverlay: true
-    goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
-    action: ActionToggleNightVision
-    phosphorColor: "#41D7D9"
-    lightingColor: "#FFFFFF32"

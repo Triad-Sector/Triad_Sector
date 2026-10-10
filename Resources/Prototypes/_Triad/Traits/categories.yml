@@ -1,0 +1,5 @@
+- type: traitCategory
+  id: LanguageTraits
+  name: trait-category-languages
+  priority: 29
+  maxTraits: 1

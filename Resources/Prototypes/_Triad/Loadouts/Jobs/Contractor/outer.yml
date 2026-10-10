@@ -1,17 +1,163 @@
 - type: loadout
   id: ClothingOuterCoatMNKBlackJacket
-  price: 0
+  groupBy: Jacket
   equipment:
     outerClothing: ClothingOuterCoatMNKBlackJacket
 
 - type: loadout
   id: ClothingOuterCoatMNKWhiteHoodie
-  price: 0
+  groupBy: Hoodie
   equipment:
     outerClothing: ClothingOuterCoatMNKWhiteHoodie
 
 - type: loadout
   id: ClothingOuterCoatMNKBlackTopCoat
-  price: 0
+  groupBy: Coat
   equipment:
     outerClothing: ClothingOuterCoatMNKBlackTopCoat
+
+- type: loadout
+  id: ClothingOuterHardsuitPilot
+  groupBy: Hardsuit
+  equipment:
+    outerClothing: ClothingOuterHardsuitPilot
+
+- type: loadout
+  id: ClothingOuterDrakeIndustriesTruckerPuffyVest
+  groupBy: Vest
+  equipment:
+    outerClothing: ClothingOuterDrakeIndustriesTruckerPuffyVest
+
+- type: loadout
+  id: ClothingOuterCoatBHTrench
+  groupBy: Coat
+  price: 1000
+  equipment:
+    outerClothing: ClothingOuterCoatBHTrench
+
+- type: loadout
+  id: ClothingOuterVestWebMercenary
+  groupBy: ArmorVest
+  price: 1000
+  equipment:
+    outerClothing: ClothingOuterVestWebMercenary
+
+- type: loadout
+  id: ClothingOuterVestWebMercenaryBlack
+  groupBy: ArmorVest
+  price: 1000
+  equipment:
+    outerClothing: ClothingOuterVestWebMercenaryBlack
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkGreen
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorPunkGreen
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkOrange
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorPunkOrange
+
+- type: loadout # Punkish (Static visuals)
+  id: ClothingOuterArmorPunkRed
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorPunkRed
+
+- type: loadout # Punkish (Randomized visuals)
+  id: ClothingOuterArmorPunkRandomized
+  name: punk webvest (random)
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorPunkRandomized
+
+- type: loadout
+  id: ClothingOuterArmorCaptainCarapace
+  groupBy: ArmorVest
+  price: 5000
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainCarapace
+
+- type: loadout
+  id: ClothingOuterArmorBasicSlim
+  groupBy: ArmorVest
+  price: 1000
+  equipment:
+    outerClothing: ClothingOuterArmorBasicSlim
+
+- type: loadout
+  id: ClothingOuterArmorBasic
+  groupBy: ArmorVest
+  price: 1000
+  equipment:
+    outerClothing: ClothingOuterArmorBasic
+
+- type: loadout
+  id: ClothingOuterVestDetective
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterVestDetective
+
+- type: loadout
+  id: ClothingOuterArmorBPVestLight
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestLight
+
+- type: loadout
+  id: ClothingOuterArmorBPVestMedium
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestMedium
+
+- type: loadout
+  id: ClothingOuterArmorBPVestHeavy
+  groupBy: ArmorVest
+  price: 5000
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestHeavy
+
+- type: loadout
+  id: ClothingOuterArmorBPVestPolyvalent
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestPolyvalent
+
+- type: loadout
+  id: ClothingOuterArmorBPVestStabproof
+  groupBy: ArmorVest
+  price: 2500
+  equipment:
+    outerClothing: ClothingOuterArmorBPVestStabproof
+
+- type: loadout
+  id: ClothingOuterHardsuitMercenary
+  groupBy: Hardsuit
+  price: 7500
+  equipment:
+    outerClothing: ClothingOuterHardsuitMercenary
+
+- type: loadout
+  id: ClothingOuterHardsuitPrivateSecurity
+  groupBy: Hardsuit
+  price: 7500
+  equipment:
+    outerClothing: ClothingOuterHardsuitPrivateSecurity
+
+- type: loadout
+  id: ClothingOuterHardsuitMercenaryWarlord
+  groupBy: Hardsuit
+  price: 50000
+  equipment:
+    outerClothing: ClothingOuterHardsuitMercenaryWarlord

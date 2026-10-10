@@ -2,8 +2,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTdfJunior
-  name: TDF junior enforcer tactical jumpsuit
-  description: A tactical jumpsuit for junior enforcers in the field. A gold-colored 'C' is emblazoned on the back.
+  name: TDF cadet tactical jumpsuit
+  description: A tactical jumpsuit for TDF cadets in the field. A gold-colored 'C' is emblazoned on the back.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/junior_enforcer.rsi
@@ -83,6 +83,18 @@
     tags:
     - ClothMade # No chameleon
 
+- type: entity
+  parent: AlternateFoldableSleevesOnlyUniformBase
+  id: ClothingUniformJumpsuitTdfFlannel
+  name: TDF flannel jumpsuit
+  description: It's so beautiful outside.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tdf_flannel.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
+
 # Triad frontier association High-Command
 - type: entity
   parent: ClothingUniformBase
@@ -119,3 +131,27 @@
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Uniforms/Jumpsuits/worker_wear.rsi
+
+# Player factions
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitShiBusiness
+  name: SHI business jumpsuit
+  description: A sharp olive business suit worn by the staff of Shackford Heavy Industries.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/shi_business.rsi
+
+# TFA uniforms
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTfaJanitor
+  name: TFA janitor jumpsuit
+  description: Keeping the sector clean, one puddle at a time.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tfa_janitor.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Uniforms/Jumpsuits/tfa_janitor.rsi

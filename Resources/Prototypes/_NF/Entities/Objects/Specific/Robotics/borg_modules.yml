@@ -39,7 +39,7 @@
   - type: ItemBorgModule
     moduleId: NFAdvancedParamedic
     items:
-    - HandheldHealthAnalyzerUnpowered
+    - HandheldHealthAnalyzer
     - Suture10Lingering
     - Mesh10Lingering
     - Gauze10Lingering

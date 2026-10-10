@@ -9,8 +9,8 @@ namespace Content.Shared.Xenoarchaeology.Artifact.XAT;
 /// <typeparam name="T">Type of XAT component that system will work with.</typeparam>
 public abstract class BaseXATSystem<T> : EntitySystem where T : Component
 {
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly SharedXenoArtifactSystem XenoArtifact = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected SharedXenoArtifactSystem XenoArtifact = default!;
 
     private EntityQuery<XenoArtifactUnlockingComponent> _unlockingQuery;
 
@@ -51,9 +51,17 @@ public abstract class BaseXATSystem<T> : EntitySystem where T : Component
         if (Timing.CurTime < artifact.Comp.NextUnlockTime)
             return false;
 
-        if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
-            unlocking.TriggeredNodeIndexes.Contains(XenoArtifact.GetIndex(artifact, node)))
+        // Triad: a node its artifact does not list cannot trigger, rather than throwing on every tick
+        // if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
+        //     unlocking.TriggeredNodeIndexes.Contains(XenoArtifact.GetIndex(artifact, node)))
+        //     return false;
+        if (!XenoArtifact.TryGetIndex((artifact, artifact), node, out var index))
             return false;
+
+        if (_unlockingQuery.TryComp(artifact, out var unlocking) &&
+            unlocking.TriggeredNodeIndexes.Contains(index.Value))
+            return false;
+        // End Triad
 
         if (!XenoArtifact.CanUnlockNode((node, node)))
             return false;

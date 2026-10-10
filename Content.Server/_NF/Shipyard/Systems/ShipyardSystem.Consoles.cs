@@ -205,7 +205,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 }
                 return;
             }
-            else if (voucher!.ConsoleType != (ShipyardConsoleUiKey)args.UiKey)
+            else if (!voucher!.ConsoleTypes.Contains((ShipyardConsoleUiKey)args.UiKey)) // Triad - multiple voucher console types
             {
                 Del(shuttleUid);
                 ConsolePopup(player, Loc.GetString("shipyard-console-invalid-voucher-type"));
@@ -823,7 +823,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (TryComp<ShipyardVoucherComponent>(targetId, out var voucher))
         {
             voucherAllowed = voucher.Vessels;
-            if (voucher.ConsoleType == key)
+            if (key != null && voucher.ConsoleTypes.Contains(key.Value)) // Triad - multiple voucher console types
             {
                 accesses.Tags = voucher.Access;
                 accesses.Groups = voucher.AccessGroups;

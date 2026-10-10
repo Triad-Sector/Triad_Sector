@@ -1,0 +1,55 @@
+- type: loadout
+  id: ClothingShoesBootsPilot
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: Boots
+  equipment:
+    shoes: ClothingShoesBootsPilot
+
+- type: loadout
+  id: ClothingShoesBootsMercenary
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: Boots
+  equipment:
+    shoes: ClothingShoesBootsMercenary
+
+- type: loadout
+  id: ClothingShoesBootsCombat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: Boots
+  equipment:
+    shoes: ClothingShoesBootsCombat
+
+- type: loadout
+  id: ClothingShoesBootsJack
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: Boots
+  equipment:
+    shoes: ClothingShoesBootsJack
+
+- type: loadout
+  id: ClothingShoesBootsMagMercenary
+  name: mercenary magboots (empty)
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: MagBoots
+  equipment:
+    shoes: ClothingShoesBootsMagMercenary
+
+- type: loadout
+  id: ClothingShoesBootsMagSecurity
+  name: security magboots (empty)
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  groupBy: MagBoots
+  equipment:
+    shoes: ClothingShoesBootsMagSecurity
