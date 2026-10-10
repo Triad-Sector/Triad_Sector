@@ -26,7 +26,7 @@
   - ContractorSpecialGunMla79
   - ContractorSpecialGunMalandro
   - ContractorSpecialGunSquire # Triad
-
+  - ContractorSpecialGunTaxWriteOff # Triad
 
 - type: loadout
   id: ContractorSpecialGunEg4

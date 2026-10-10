@@ -9,3 +9,15 @@
       amount: 1
     - id: Magazine9x19mmSubMachineGunFMJ
       amount: 4
+
+- type: entity
+  parent: WeaponCaseShort
+  id: WeaponCaseTaxWriteOffRegistered
+  suffix: Loadout, TaxwriteOff
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRevolverTaxWriteOffRegistered
+      amount: 1
+    - id: AmmoBox185x76mmFMJ
+      amount: 3
