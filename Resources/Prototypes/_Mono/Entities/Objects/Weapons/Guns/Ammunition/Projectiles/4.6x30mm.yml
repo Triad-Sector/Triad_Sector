@@ -7,8 +7,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 16
-    armorPenetration: 0.075
+        Piercing: 12 #Triad 16->12
+    armorPenetration: 0.60 #Triad 0.075->0.60 giving pdw calibers a little gimmick linked to their real life design purpose
 
 - type: entity
   id: Bullet46x30mmPractice
@@ -43,9 +43,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 8
-        Heat: 5
-    armorPenetration: 0.025
+        Piercing: 6 #Triad 8->6
+        Heat: 6 #Triad 5->6
+    armorPenetration: 0.30 #Triad 0.025->0.30
 
 - type: entity
   id: Bullet46x30mmUranium
@@ -56,9 +56,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 6
-        Piercing: 10
-    armorPenetration: 0.025
+        Radiation: 5 #Triad 6->5
+        Piercing: 7 #Triad 10->7
+    armorPenetration: 0.30 #Triad 0.025-> 0.30
 
 # Upstream
 - type: entity
@@ -85,8 +85,8 @@
   - type: Projectile
     damage:
       types:
-        Slash: 3
-        Piercing: 24
+        Slash: 4 #Triad 3->4
+        Piercing: 14 #Triad 24->14
     armorPenetration: -0.55
 
 - type: entity
@@ -98,21 +98,21 @@
   - type: Projectile
     damage:
       types:
-        Slash: 5
-        Piercing: 30
+        Slash: 6 #Triad 5->6
+        Piercing: 15 #Triad 30->15
     armorPenetration: -0.9
 
 #armor-piercing:
 
-- type: entity
-  id: Bullet46x30mmPlasteelAP
-  parent: BaseBullet
-  name: bullet (4.6x30mm AP)
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 8
-        Structural: 35
-    armorPenetration: 0.6
+#- type: entity  Unneeded for now with 4.6 & 5.7 rework
+#  id: Bullet46x30mmPlasteelAP
+#  parent: BaseBullet
+#  name: bullet (4.6x30mm AP)
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: Projectile
+#    damage:
+#      types:
+#        Piercing: 9
+#        Structural: 35
+#    armorPenetration: 0.80

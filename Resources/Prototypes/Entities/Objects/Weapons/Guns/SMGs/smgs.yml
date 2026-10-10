@@ -91,7 +91,11 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Gun
-    fireRate: 8.5
+    minAngle: 5 #Triad
+    maxAngle: 23 #Triad
+    angleIncrease: 3 #Triad
+    angleDecay: 6 #Triad
+    fireRate: 9 #Triad
     soundGunshot:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
   - type: MagazineVisuals
@@ -254,9 +258,9 @@
   - type: ChamberMagazineAmmoProvider
     boltClosed: null
   - type: Gun
-    fireRate: 5.5
-    minAngle: 1
-    maxAngle: 6
+    fireRate: 6 #Triad 5.5 -> 6
+    minAngle: 3 #Triad 1 -> 3
+    maxAngle: 10 #Triad 6 -> 10
     angleIncrease: 1.5
     angleDecay: 6
     selectedMode: FullAuto

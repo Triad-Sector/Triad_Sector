@@ -121,7 +121,16 @@
       gun_chamber: !type:ContainerSlot
   - type: StaticPrice # Mono - 200 from frontier 1k
     price: 200
-  - type: Gun # Mono change - Sound for viper
+  - type: Gun # Mono change - Sound for viper. Triad, making it into a point blank monster for mag dumping people in your personal space.
+    minAngle: 6
+    maxAngle: 25
+    angleIncrease: 4
+    angleDecay: 6
+    fireRate: 9
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
     soundGunshot:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/viper_fire.ogg
 
