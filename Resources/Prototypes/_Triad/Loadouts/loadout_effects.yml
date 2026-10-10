@@ -59,16 +59,17 @@
     - Vulpkanin
     - Harpy
     - Rodentia
-    - Protogen # Mono
-    - Chitinid # DeltaV
-    - Resomi # Goob
-    - IPC # Goob
-    - Tajaran # Goob
-    - Diona # Mono
-    - Hydrakin # Mono
-    - Avali #TRIAD
-    - Feroxi #TRIAD
-    - Shadekin #TRIAD - TO ANY FUTURE CONTRIBUTORS, MAKE THIS A BLACKLIST INSTEAD OF A WHITELIST FOR SHOE CAPABLES. I HATE HOW EVERY SINGLE SPECIES NEEDS TO BE HERE PLEASE PLEASE PLAEASE
+    - Protogen
+    - Chitinid
+    - Resomi
+    - IPC
+    - Tajaran
+    - Diona
+    - Hydrakin
+    - Avali
+    - Feroxi
+    - Shadekin
+    - Ovinia #TRIAD - TO ANY FUTURE CONTRIBUTORS, MAKE THIS A BLACKLIST INSTEAD OF A WHITELIST FOR SHOE CAPABLES. I HATE HOW EVERY SINGLE SPECIES NEEDS TO BE HERE PLEASE PLEASE PLAEASE
 
 - type: loadoutEffectGroup
   id: NFNotDocOrStc

@@ -16,4 +16,9 @@ namespace Content.Shared._Triad.Dossier;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class DossierExemplarComponent : Component
 {
+    /// <summary>
+    /// After randomizing, sets the hair style to this, if possible
+    /// </summary>
+    [DataField]
+    public string? Hair = null;
 }

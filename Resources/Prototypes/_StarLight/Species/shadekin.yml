@@ -15,6 +15,7 @@
   maxAge: 300
   youngAge: 100
   oldAge: 200
+  defaultHair: HairBald # Triad
 
 - type: speciesBaseSprites
   id: MobShadekinSprites

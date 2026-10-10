@@ -42,7 +42,12 @@ public sealed partial class DossierExemplarSystem : EntitySystem
 
         var markings = new List<Marking>(profile.Appearance.Markings);
         AddRandomUndergarments(markings, profile.Species, profile.Sex);
+
         profile = profile.WithCharacterAppearance(profile.Appearance.WithMarkings(markings));
+
+        var hair = ent.Comp.Hair;
+        if (hair != null)
+            profile = profile.WithCharacterAppearance(profile.Appearance.WithHairStyleName(hair));
 
         _humanoid.LoadProfile(ent, profile, humanoid);
     }

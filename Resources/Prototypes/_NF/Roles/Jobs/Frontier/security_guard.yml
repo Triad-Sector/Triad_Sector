@@ -39,7 +39,7 @@
   - !type:AddComponentSpecial # Triad
     components:
       - type: ShipSavingBlacklist # Triad - can't save ships
-      - type: NpcFactionMember
+      - type: AddNpcFactionOnMapInit
         factions:
         - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
       - type: CryoSleepRadioOverride
