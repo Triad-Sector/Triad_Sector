@@ -1,0 +1,22 @@
+- type: technology
+  id: AdvancedNuclearPower
+  name: research-technology-advanced-nuclear-power
+  entityIcon: IriditeReactorHeatExchanger
+  discipline: Industrial
+  tier: 3
+  cost: 12500
+  recipeUnlocks:
+  - CladdedPlutoniumReactorFuelRod
+  - PlastitaniumReactorHeatExchanger
+  - IriditeReactorHeatExchanger
+  - PlastitaniumGasTurbineBlade
+  - IriditeGasTurbineStator
+  - PlastitaniumReactorControlRod
+  - IriditeReactorControlRod
+  - PlastitaniumReactorGasChannel
+  - IriditeReactorGasChannel
+  technologyPrerequisites:
+    - NuclearPowerRecycling
+    - SuperParts
+    - UniversalMaterialResearchT2
+  position: -4, 5

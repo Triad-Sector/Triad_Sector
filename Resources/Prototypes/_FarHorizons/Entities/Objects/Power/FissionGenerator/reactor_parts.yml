@@ -105,7 +105,7 @@
     iconStateInserted: "heat"
     iconStateCap: "heat_cap"
     neutronCrossSection: 0.1
-    thermalCrossSection: 35 #triad, up from 25, makes it worth using for transferring heat from reactor parts to gas channels
+    thermalCrossSection: 50 #triad, up from 25, makes it worth using for transferring heat from reactor parts to gas channels.
     thermalMass: 15000 #Triad Much less thermal mass than base components (from base, 105000), allowing for faster heat transfer from actively heating/cooling parts
   - type: PhysicalComposition
     materialComposition:
@@ -155,6 +155,20 @@
   - type: ReactorPart
     material: Plasteel
 
+- type: entity #triad start
+  id: ReactorPartMaterialIridite
+  abstract: true
+  components:
+  - type: ReactorPart
+    material: Iridite
+
+- type: entity
+  id: ReactorPartMaterialPlastitanium
+  abstract: true
+  components:
+  - type: ReactorPart
+    material: Plastitanium #traid end
+
 - type: entity
   id: ReactorPartMaterialGlass
   abstract: true
@@ -182,6 +196,7 @@
   id: CerenkiteReactorFuelRod
   parent: BaseReactorFuelRod
   name: Cerenkite Fuel Rod # These are your basic, semi-harmless fuel rods
+  description: A basic cerenkite fuel rod, safe but low output.
   components:
   - type: ReactorPart
     material: Cerenkite
@@ -189,18 +204,50 @@
 - type: entity
   id: UraniumReactorFuelRod
   parent: BaseReactorFuelRod
-  name: Uranium Fuel Rod
+  name: Low Enrichment Uranium Fuel Rod #Triad start, fuel rod changes+new ones
+  description: A standard uranium fuel rod with 5% fissile uranium concentration. #Triad
   components:
   - type: ReactorPart
-    material: Uranium
+  - type: PhysicalComposition #Triad, making use of isotropics. 5% enrichment.
+    materialComposition:
+      UraniumFissile: 50
+      UraniumDepleted: 950
+
+- type: entity
+  id: HighEnrichedUraniumReactorFuelRod
+  parent: BaseReactorFuelRod
+  name: High Enrichment Uranium Fuel Rod #Triad
+  description: A more active uranium fuel rod with 20% fissile uranium concentration. #Triad
+  components:
+  - type: ReactorPart
+  - type: PhysicalComposition #Triad, making use of isotropics. 20% enrichment.
+    materialComposition:
+      UraniumFissile: 200
+      UraniumDepleted: 800
+
+- type: entity
+  id: CladdedPlutoniumReactorFuelRod
+  parent: BaseReactorFuelRod
+  name: Cladded Plutonium Fuel Rod #Triad
+  description: A high activity plutonium fuel rod, cladded with plastitanium for safer handling and improved performance. #Triad
+  components:
+  - type: ReactorPart
+  - type: PhysicalComposition #Triad, making use of isotropics.
+    materialComposition:
+      Plutonium: 500
+      Plastitanium: 500
 
 - type: entity
   id: PlutoniumReactorFuelRod
   parent: BaseReactorFuelRod
-  name: Plutonium Fuel Rod
+  name: High Enrichment Plutonium Fuel Rod #Triad
+  description: A very active plutonium fuel rod, mixed with depleted uranium. #Triad
   components:
   - type: ReactorPart
-    material: Plutonium
+  - type: PhysicalComposition #Triad, prepping to make use of isotropics. 50% enrichment, cause the plutonium is a "mix" of isotopes rn.
+    materialComposition:
+      Plutonium: 500
+      UraniumDepleted: 500
   # Triad: no ghost role; a mind on a rod stalls the ship save.
   #- type: GhostRole
   #  makeSentient: true
@@ -228,6 +275,7 @@
   id: PlasmaReactorFuelRod
   parent: BaseReactorFuelRod
   name: Plasma Fuel Rod
+  description: A slightly active fuel rod made of Plasma. Will slowly offgass into a reactor at higher temps. # Triad
   components:
   - type: ReactorPart
     material: Plasma
@@ -235,7 +283,8 @@
 - type: entity
   id: UraniumGlassReactorFuelRod
   parent: BaseReactorFuelRod
-  name: Uranium Glass Fuel Rod
+  name: Natural Enrichment Uranium Glass Fuel Rod #Triad
+  description: A safer, natural enrichment ceramic uranium fuel rod. 0.7% enrichment. #Triad
   components:
   - type: ReactorPart
     material: UraniumGlass
@@ -268,6 +317,26 @@
       Steel: 500
       Plasteel: 250
 
+- type: entity # Triad start: custom control rods
+  id: PlastitaniumReactorControlRod
+  parent: [BaseReactorControlRod, ReactorPartMaterialPlastitanium]
+  name: Plastitanium Control Rod
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 250
+      Plastitanium: 500 #higher, since its a structural component.
+
+- type: entity
+  id: IriditeReactorControlRod
+  parent: [BaseReactorControlRod, ReactorPartMaterialIridite]
+  name: Iridite Control Rod
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 500
+      Iridite: 250 #Triad End
+
 - type: entity
   id: SteelReactorControlRod
   parent: [BaseReactorControlRod, ReactorPartMaterialSteel]
@@ -275,7 +344,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 750 # Triad: was 1500, the recipe cost; the other steel parts sit at half
+      Steel: 750 # Triad: this doesn't need to exist, but leaving it. Could use rod type material instead.
 
 - type: entity
   id: GoldReactorControlRod
@@ -358,6 +427,27 @@
     materialComposition:
       Steel: 500
 
+- type: entity # Triad start: custom gas channels
+  id: PlastitaniumReactorGasChannel
+  parent: [BaseReactorGasChannel, ReactorPartMaterialPlastitanium]
+  name: Plastitanium Gas Channel
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 250
+      Plastitanium: 250
+
+- type: entity
+  id: IriditeReactorGasChannel
+  parent: [BaseReactorGasChannel, ReactorPartMaterialIridite]
+  name: Iridite Gas Channel
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Plastitanium: 250 # needs its fancy structural metal..
+      Iridite: 250 #Triad End
+
+
 - type: entity
   id: GoldReactorGasChannel
   parent: [BaseReactorGasChannel, ReactorPartMaterialGold]
@@ -437,7 +527,8 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 625
+      Copper: 250 #Triad: base material is copper for heat exchangers
+      Steel: 275 #Triad
 
 - type: entity
   id: GoldReactorHeatExchanger
@@ -446,8 +537,30 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Gold: 275
+
+- type: entity # Triad start: custom Heat Exchangers
+  id: PlastitaniumReactorHeatExchanger
+  parent: [BaseReactorHeatExchanger, ReactorPartMaterialPlastitanium]
+  name: Plastitanium Heat Exchanger Rod
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Copper: 250
+      Plastitanium: 275
+
+- type: entity
+  id: IriditeReactorHeatExchanger
+  parent: [BaseReactorHeatExchanger, ReactorPartMaterialIridite]
+  name: Iridite Heat Exchanger Rod
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Copper: 200
+      Plastitanium: 25 # needs its fancy structural metal..
+      Iridite: 300 #Triad End
+
 
 - type: entity
   id: SilverReactorHeatExchanger
@@ -456,7 +569,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Silver: 275
 
 - type: entity
@@ -466,7 +579,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Brass: 275
 
 - type: entity
@@ -476,7 +589,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Plasteel: 275
 
 - type: entity
@@ -486,7 +599,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Glass: 275
 
 - type: entity
@@ -496,7 +609,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       PlasmaGlass: 275
 
 - type: entity
@@ -506,7 +619,7 @@
   components:
   - type: PhysicalComposition
     materialComposition:
-      Steel: 250
+      Copper: 250 #Triad: base material is copper for heat exchangers
       Diamond: 275
 #endregion
 

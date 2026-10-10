@@ -225,6 +225,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 {
                     reactorPart.Properties.NeutronRadioactivity -= ReactionReactant;
                     reactorPart.Properties.Radioactivity += ReactionProduct;
+                    reactorPart.Properties.FissileIsotopes += ReactionProduct * 1.5f; // Triad- makes neutron fission with N-fuel produce some plutonium on its own.
                     for (var i = 0; i < _random.Next(1, 5 + 1); i++)
                     {
                         result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(2, 3 + 1) });
@@ -234,7 +235,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 else if (neutron.velocity <= 5 && Prob(ReactionRate * reactorPart.Properties.Radioactivity * NeutronReactionBias)) // stimulated emission
                 {
                     reactorPart.Properties.Radioactivity -= ReactionReactant;
-                    reactorPart.Properties.FissileIsotopes += ReactionProduct;
+                    reactorPart.Properties.FissileIsotopes += ReactionProduct * 0.8f; //Triad- makes stimulated emission contribute less to fissile isotope production- but much more than decay.
                     for (var i = 0; i < _random.Next(1, 5 + 1); i++)
                     {
                         result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
@@ -262,7 +263,7 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 result.Add(neutron);
             }
         }
-        if (Prob(reactorPart.Properties.NeutronRadioactivity * ReactionRate * reactorPart.NeutronCrossSection))
+        if (Prob(reactorPart.Properties.NeutronRadioactivity * ReactionRate * reactorPart.NeutronCrossSection * 0.8f)) // Triad- made N-decay events happen less often/slower, resulting in easier to manage neutron flux.
         {
             for (var i = 0; i < _random.Next(1, 3 + 1); i++)
             {
@@ -272,14 +273,14 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
             reactorPart.Properties.Radioactivity += ReactionProduct * SpontaneousReactionConsumptionMultiplier;
             reactorPart.Temperature += 20f * SpontaneousHeatingFactor;
         }
-        if (Prob(reactorPart.Properties.Radioactivity * ReactionRate * reactorPart.NeutronCrossSection))
+        if (Prob(reactorPart.Properties.Radioactivity * ReactionRate * reactorPart.NeutronCrossSection * 0.25f)) // Triad- made R-decay events happen much slower. If you want R-fuel to go down faster, expose it to neutrons to fission it away. Makes R-Fuel last much longer on its own.
         {
             for (var i = 0; i < _random.Next(1, 3 + 1); i++)
             {
                 result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
             }
             reactorPart.Properties.Radioactivity -= ReactionReactant * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Properties.FissileIsotopes += ReactionProduct * SpontaneousReactionConsumptionMultiplier;
+            reactorPart.Properties.FissileIsotopes += ReactionProduct * SpontaneousReactionConsumptionMultiplier * 0.2f; // Triad- made radioactive decay not produce much plutonium- if you want plutonium, you need to rely on neutron fission, primarily on N-fuel.
             reactorPart.Temperature += 10f * SpontaneousHeatingFactor;
         }
 
