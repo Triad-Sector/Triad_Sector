@@ -24,6 +24,10 @@
     cost: 2
     delay: 2
     fx: EffectRCDDeconstruct2
+  - type: Tag # Triad - ignore thruster damage tag
+    tags:
+    - Structure
+    - IgnoreThrusterDamage
   # Mono
   - type: ShipRepairable
     repairTime: 1

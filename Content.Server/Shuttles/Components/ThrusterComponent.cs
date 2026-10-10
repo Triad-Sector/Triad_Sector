@@ -1,9 +1,11 @@
 using System.Numerics;
-using Content.Server._NF.M_Emp;
+using Content.Server._Triad.Shuttles.Systems;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking; // Frontier
+using Content.Shared.Whitelist; // Triad
+using Robust.Shared.Audio; // Triad
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Prototypes;
@@ -53,7 +55,31 @@ namespace Content.Server.Shuttles.Components
 
         // Used for burns
 
-        public List<EntityUid> Colliding = new();
+        // Triad start
+        [ViewVariables]
+        public HashSet<EntityUid> Colliding = new();
+
+        [DataField]
+        public LocId BurnPopupOther = "thruster-comp-burn-others";
+
+        [DataField]
+        public LocId BurnPopupSelf = "thruster-comp-burn-self";
+
+        [DataField]
+        public SoundSpecifier? BurnSound = new SoundPathSpecifier("/Audio/Effects/lightburn.ogg");
+
+        [DataField]
+        public float MaximumThrusterBurnRange = 5.5f;
+
+        [DataField]
+        public float MaximumMobThrusterBurnRange = 2.0f;
+
+        [DataField]
+        public float MobBurnDamageMultiplier = 0.3f;
+
+        [DataField]
+        public float DistanceBurnDamageMultiplier = 0.85f;
+        // Triad end
 
         public bool Firing = false;
 
@@ -93,10 +119,35 @@ namespace Content.Server.Shuttles.Components
 
         // Mono
         /// <summary>
-        ///     If we have a <see cref="ThermalSignatureComponent">, heat signature output per thrust while working.
+        ///     If we have a <see cref="ThermalSignatureComponent"/>, heat signature output per thrust while working.
         /// </summary>
         [DataField]
         public float HeatSignatureRatio = 40f;
+
+        /// <summary>
+        ///     Triad - Which type of entities block thruster paths?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BlockThrusterWhitelist;
+
+        /// <summary>
+        ///     Triad - Which type of entities can be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnWhitelist;
+
+        /// <summary>
+        ///     Triad - Which type of entities cannot be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnBlacklist;
+
+        /// <summary>
+        ///     Triad - Which type of thruster is this?
+        ///     This is used for raycast checks to determine if the thruster's path is blocked.
+        /// </summary>
+        [DataField]
+        public ThrusterBlockingProfile ThrusterProfile = ThrusterBlockingProfile.Small;
     }
 
     public enum ThrusterType

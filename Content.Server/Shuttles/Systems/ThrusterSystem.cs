@@ -10,7 +10,6 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Temperature;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
@@ -21,7 +20,15 @@ using Robust.Shared.Utility;
 using Content.Shared.Localizations;
 using Content.Shared.Power;
 using Content.Server.Construction; // Frontier
+using Content.Server._Triad.Shuttles.Systems;
 using Content.Shared.DeviceLinking.Events; // Frontier
+using Robust.Shared.Physics; // Triad
+using Content.Shared.Whitelist; // Triad
+using Content.Shared.Mobs.Components; // Triad
+using Robust.Shared.Audio.Systems; // Triad
+using Content.Shared.Popups; // Triad
+using Content.Shared.IdentityManagement; // Triad
+using Robust.Shared.Player; // Triad
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -30,20 +37,38 @@ public sealed partial class ThrusterSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!; // Triad - thruster changes
+    [Dependency] private SharedPopupSystem _popup = default!; // Triad - thruster changes
+    [Dependency] private SharedPhysicsSystem _physics = default!; // Triad - thruster changes
+    [Dependency] private SharedTransformSystem _transform = default!; // Triad - thruster changes
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad - thruster changes
+    [Dependency] private EntityLookupSystem _lookup = default!; // Triad - thruster changes
     [Dependency] private AmbientSoundSystem _ambient = default!;
     [Dependency] private FixtureSystem _fixtureSystem = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedPointLightSystem _light = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private TriadThrusterSystem _triadThruster = default!;
+
+    // Triad Start
+    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
+    [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery;
 
     // Essentially whenever thruster enables we update the shuttle's available impulses which are used for movement.
     // This is done for each direction available.
+
+    private const CollisionGroup BurnMask = CollisionGroup.FullTileMask;
+
+    private readonly HashSet<EntityUid> _toRemoveColliding = new();
+    private readonly HashSet<Entity<TransformComponent>> _fixtureLookupEnts = new();
+    // Triad End
 
     public const string BurnFixture = "thruster-burn";
 
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<ThrusterComponent, ActivateInWorldEvent>(OnActivateThruster);
         SubscribeLocalEvent<ThrusterComponent, ComponentInit>(OnThrusterInit);
         SubscribeLocalEvent<ThrusterComponent, MapInitEvent>(OnMapInit);
@@ -110,12 +135,21 @@ public sealed partial class ThrusterSystem : EntitySystem
 
                 args.PushMarkup(nozzleDir);
 
-                var exposed = NozzleExposed(xform);
+                var exposed = NozzleExposed((uid, xform, component));
 
                 var nozzleText =
                     Loc.GetString(exposed ? "thruster-comp-nozzle-exposed" : "thruster-comp-nozzle-not-exposed");
 
                 args.PushMarkup(nozzleText);
+
+                // Triad Start
+                if (!exposed)
+                {
+                    var clearSpaceText = Loc.GetString("thruster-comp-need-clear-space");
+                    args.PushMarkup(clearSpaceText);
+                    DisableThruster(uid, component);
+                }
+                // Triad End
             }
         }
     }
@@ -134,7 +168,7 @@ public sealed partial class ThrusterSystem : EntitySystem
                 continue;
 
             var tilePos = change.GridIndices;
-            var grid = Comp<MapGridComponent>(uid);
+            var grid = _mapGridQuery.Comp(uid); // Triad - change to query
             var xformQuery = GetEntityQuery<TransformComponent>();
             var thrusterQuery = GetEntityQuery<ThrusterComponent>();
 
@@ -352,7 +386,7 @@ public sealed partial class ThrusterSystem : EntitySystem
                 {
                     var shape = new PolygonShape();
                     shape.Set(component.BurnPoly);
-                    _fixtureSystem.TryCreateFixture(uid, shape, BurnFixture, hard: false, collisionLayer: (int)CollisionGroup.FullTileMask, body: physicsComponent);
+                    _fixtureSystem.TryCreateFixture(uid, shape, BurnFixture, hard: false, collisionLayer: (int)BurnMask, body: physicsComponent);
                 }
 
                 break;
@@ -493,19 +527,22 @@ public sealed partial class ThrusterSystem : EntitySystem
         if (!component.RequireSpace)
             return true;
 
-        return NozzleExposed(xform);
+        return NozzleExposed((uid, xform, component));
     }
 
-    private bool NozzleExposed(TransformComponent xform)
+    // Triad Start - thruster changes
+    private bool NozzleExposed(Entity<TransformComponent, ThrusterComponent> ent)
     {
+        var xform = ent.Comp1;
+
         if (xform.GridUid == null)
             return true;
 
         var (x, y) = xform.LocalPosition + xform.LocalRotation.Opposite().ToWorldVec();
-        var mapGrid = Comp<MapGridComponent>(xform.GridUid.Value);
+        var mapGrid = _mapGridQuery.Comp(xform.GridUid.Value); // Triad - change to query
         var tile = _mapSystem.GetTileRef(xform.GridUid.Value, mapGrid, new Vector2i((int)Math.Floor(x), (int)Math.Floor(y)));
 
-        return _turf.IsSpace(tile.Tile);
+        return _turf.IsSpace(tile.Tile) && _triadThruster.NozzleExposedRaycast(ent);
     }
 
     #region Burning
@@ -514,29 +551,126 @@ public sealed partial class ThrusterSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<ThrusterComponent>();
+        var query = EntityQueryEnumerator<ThrusterComponent, TransformComponent, FixturesComponent>();
         var curTime = _timing.CurTime;
 
-        while (query.MoveNext(out var comp))
+        while (query.MoveNext(out var thruster, out var comp, out var xform, out var fixtures))
         {
             if (comp.NextFire > curTime)
                 continue;
 
             comp.NextFire += comp.FireCooldown;
 
-            if (!comp.Firing || comp.Colliding.Count == 0 || comp.Damage == null)
+            if (!comp.Firing || comp.Damage == null || xform.GridUid is not { } gridUid)
                 continue;
 
-            foreach (var uid in comp.Colliding.ToArray())
+            _fixtureLookupEnts.Clear();
+
+            var transform = new Transform(xform.Coordinates.Position, xform.LocalRotation);
+
+            // Get anchored entities that are intersecting since they don't trigger the start collide event
+            foreach (var (fixtureId, fixture) in fixtures.Fixtures)
             {
-                _damageable.TryChangeDamage(uid, comp.Damage);
+                if (fixtureId != BurnFixture)
+                    continue;
+
+                var aabb = fixture.Shape.ComputeAABB(transform, 0);
+
+                _lookup.GetLocalEntitiesIntersecting(gridUid, aabb, _fixtureLookupEnts, LookupFlags.Static);
+                break;
+            }
+
+            foreach ((var ent, var collider) in _fixtureLookupEnts)
+            {
+                // It should not burn itself
+                if (ent == thruster)
+                    continue;
+
+                if (!_whitelist.CheckBoth(ent, comp.BurnBlacklist, comp.BurnWhitelist))
+                    continue;
+
+                // Needs to be on the same grid or in space
+                if (collider.GridUid != xform.GridUid && collider.GridUid != null)
+                    continue;
+
+                comp.Colliding.Add(ent);
+            }
+
+            if (comp.Colliding.Count == 0)
+                continue;
+
+            _toRemoveColliding.Clear();
+
+            foreach (var uid in comp.Colliding)
+            {
+                if (!Exists(uid))
+                {
+                    _toRemoveColliding.Add(uid);
+                    continue;
+                }
+
+                var collidingxForm = Transform(uid);
+                TryDamage((thruster, comp), (uid, collidingxForm));
+            }
+
+            foreach (var uid in _toRemoveColliding)
+            {
+                comp.Colliding.Remove(uid);
             }
         }
     }
 
+    private void TryDamage(Entity<ThrusterComponent> ent, Entity<TransformComponent> collider)
+    {
+        if (ent.Comp.Damage == null)
+            return;
+
+        if (!_whitelist.CheckBoth(collider, ent.Comp.BurnBlacklist, ent.Comp.BurnWhitelist))
+            return;
+
+        var thrusterXform = Transform(ent.Owner);
+
+        if (!thrusterXform.Coordinates.TryDistance(EntityManager, collider.Comp.Coordinates, out var distance))
+            return;
+
+        if (distance > ent.Comp.MaximumThrusterBurnRange)
+            return;
+
+        var damageMultiplier = 1.5 * Math.Pow(ent.Comp.DistanceBurnDamageMultiplier, distance);
+        var damage = ent.Comp.Damage * damageMultiplier;
+
+        // If the collider is on a seperate grid
+        // Space doesn't count, entities in space still take damage
+        if (collider.Comp.GridUid != thrusterXform.GridUid && collider.Comp.GridUid != null)
+            return;
+
+        // Mobs take less damage due to the hitboxes
+        if (_mobStateQuery.HasComp(collider))
+        {
+            // Mobs get can avoid being burnt closer
+            if (distance > ent.Comp.MaximumMobThrusterBurnRange)
+                return;
+
+            damage *= ent.Comp.MobBurnDamageMultiplier;
+        }
+
+        _damageable.TryChangeDamage(collider, damage, origin: ent.Owner, canSever: false);
+        _audio.PlayPvs(ent.Comp.BurnSound, ent.Owner);
+
+        var othersMsg = Loc.GetString(ent.Comp.BurnPopupOther, ("thruster", ent), ("target", Identity.Entity(collider, EntityManager)));
+        _popup.PopupEntity(othersMsg, collider, Filter.PvsExcept(collider), true, PopupType.SmallCaution);
+
+        var selfMsg = Loc.GetString(ent.Comp.BurnPopupSelf, ("thruster", ent));
+        _popup.PopupEntity(selfMsg, collider, collider, PopupType.MediumCaution);
+    }
+    // Triad End
+
     private void OnStartCollide(EntityUid uid, ThrusterComponent component, ref StartCollideEvent args)
     {
         if (args.OurFixtureId != BurnFixture)
+            return;
+
+        if (args.OtherEntity == uid)
             return;
 
         component.Colliding.Add(args.OtherEntity);
@@ -545,6 +679,9 @@ public sealed partial class ThrusterSystem : EntitySystem
     private void OnEndCollide(EntityUid uid, ThrusterComponent component, ref EndCollideEvent args)
     {
         if (args.OurFixtureId != BurnFixture)
+            return;
+
+        if (args.OtherEntity == uid)
             return;
 
         component.Colliding.Remove(args.OtherEntity);

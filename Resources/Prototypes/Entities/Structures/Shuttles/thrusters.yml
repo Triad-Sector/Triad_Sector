@@ -29,9 +29,31 @@
     - type: Rotatable
       rotateWhileAnchored: true
     - type: Thruster
+      # Triad Start - Thruster restriction changes
       damage:
         types:
-          Heat: 40
+          Heat: 200
+      burnShape: ["-0.25,0.5","-0.1,6.0","0.1,6.0","0.25,0.5","0.0,-0.2"]
+      blockThrusterWhitelist:
+        components:
+        - Door
+        tags:
+        - Window
+        - Wall
+        - Diagonal
+      burnWhitelist:
+        components:
+        - MobState
+        - Door
+        tags:
+        - Window
+        - Wall
+        - Structure
+        - Diagonal
+      burnBlacklist:
+        tags:
+        - IgnoreThrusterDamage
+    # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline
     - type: Sprite

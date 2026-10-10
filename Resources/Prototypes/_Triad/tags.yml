@@ -87,6 +87,10 @@
 - type: Tag
   id: BorgModuleSolarianEngineering
 
+# Structures
+- type: Tag
+  id: IgnoreThrusterDamage
+
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox

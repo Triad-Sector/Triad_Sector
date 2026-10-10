@@ -8,7 +8,8 @@
     thrust: 67
     damage:
       types:
-        Heat: 40
+        Heat: 60 # Triad - 40 -> 60
+    mobBurnDamageMultiplier: 0.9 # Triad - They don't deal much damage, so don't need to reduce it as much
   - type: ApcPowerReceiver
     powerLoad: 500
   - type: Sprite
