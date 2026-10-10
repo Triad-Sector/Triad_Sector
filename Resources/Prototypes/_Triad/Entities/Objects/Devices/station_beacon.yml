@@ -52,8 +52,53 @@
 - type: entity
   parent: DefaultStationBeacon
   id: DefaultStationBeaconRestaurant
-  suffix: Restautant
+  suffix: Restaurant
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-restaurant
     color: "#b8b873"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconNuclearReactor
+  suffix: Nuclear Reactor
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-nuclear-reactor
+    color: "#efb341ff"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconReceptionist
+  suffix: Receptionist
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-receptionist
+    color: "#d4d4d496"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconVaultCheckpoint
+  suffix: Vault Checkpoint
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-vault-checkpoint
+    color: "#ffff00ff"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconSalvageDronebay
+  suffix: Salvage Drone Bay
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-salvage-drone-bay
+    color: "#a46106ff"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationFreezer
+  suffix: Freezer
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-Freezer
+    color: "#9fed58ff"
