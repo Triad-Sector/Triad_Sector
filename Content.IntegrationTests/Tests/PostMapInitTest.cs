@@ -50,7 +50,7 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] Grids =
         {
-            "/Maps/Admin/highcommandoutpost.yml"
+            AdminTestArenaSystem.ArenaMapPath
         };
 
         /// <summary>
