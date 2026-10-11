@@ -9,6 +9,7 @@
     damage:
       types:
         Heat: 60 # Triad - 40 -> 60
+    originalLoad: 500
     mobBurnDamageMultiplier: 0.9 # Triad - They don't deal much damage, so don't need to reduce it as much
   - type: ApcPowerReceiver
     powerLoad: 500

@@ -34,6 +34,7 @@
         types:
           Heat: 200
       burnShape: ["-0.25,0.5","-0.02,5.6","0.02,5.6","0.25,0.5","0.0,-0.2"]
+      originalLoad: 1500
       blockThrusterWhitelist:
         components:
         - Door

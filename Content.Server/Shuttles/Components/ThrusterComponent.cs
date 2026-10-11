@@ -102,7 +102,8 @@ namespace Content.Server.Shuttles.Components
         /// <summary>
         ///     Frontier - Amount of charge this needs from an APC per second to function.
         /// </summary>
-        public float OriginalLoad { get; set; } = 0;
+        [DataField]
+        public float OriginalLoad = 0;
 
         /// <summary>
         ///     Frontier - Make linkable to buttons

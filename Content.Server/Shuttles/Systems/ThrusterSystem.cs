@@ -52,6 +52,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     // Triad Start
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
+    [Dependency] private EntityQuery<ApcPowerReceiverComponent> _apcPowerQuery;
     [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery;
 
     // Essentially whenever thruster enables we update the shuttle's available impulses which are used for movement.
@@ -102,17 +103,9 @@ public sealed partial class ThrusterSystem : EntitySystem
             return; // Invalid port, don't change the thruster.
 
         if (!component.Enabled)
-        {
-            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1)
-                apcPower.Load = 1;
             DisableThruster(uid, component);
-        }
         else if (CanEnable(uid, component))
-        {
-            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != apcPower.Load)
-                apcPower.Load = component.OriginalLoad;
             EnableThruster(uid, component);
-        }
     }
     // End Frontier: signal handler
 
@@ -215,15 +208,11 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         if (!component.Enabled)
         {
-            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1) // Frontier
-                apcPower.Load = 1;  // Frontier
             DisableThruster(uid, component);
             args.Handled = true;
         }
         else if (CanEnable(uid, component))
         {
-            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != apcPower.Load) // Frontier
-                apcPower.Load = component.OriginalLoad; // Frontier
             EnableThruster(uid, component);
             args.Handled = true;
         }
@@ -314,13 +303,6 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     private void OnThrusterInit(EntityUid uid, ThrusterComponent component, ComponentInit args)
     {
-        // Frontier: togglable thrusters
-        if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad == 0)
-        {
-            component.OriginalLoad = apcPower.Load;
-        }
-        // End Frontier: togglable thrusters
-
         _ambient.SetAmbience(uid, false);
 
         if (!component.Enabled)
@@ -371,6 +353,9 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         if (!EntityManager.TryGetComponent(xform.GridUid, out ShuttleComponent? shuttleComponent))
             return;
+
+        if (_apcPowerQuery.TryComp(uid, out var apcPower) && component.OriginalLoad != apcPower.Load)
+            apcPower.Load = component.OriginalLoad;
 
         // Logger.DebugS("thruster", $"Enabled thruster {uid}");
 
@@ -469,6 +454,12 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         if (!EntityManager.TryGetComponent(gridId, out ShuttleComponent? shuttleComponent))
             return;
+
+        if (_apcPowerQuery.TryComp(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1)
+            apcPower.Load = 1;
+
+        component.Firing = false;
+        _appearance.SetData(uid, ThrusterVisualState.Thrusting, true);
 
         // Logger.DebugS("thruster", $"Disabled thruster {uid}");
 

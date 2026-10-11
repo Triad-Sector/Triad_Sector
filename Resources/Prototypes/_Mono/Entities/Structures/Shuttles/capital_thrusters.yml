@@ -40,6 +40,7 @@
     baseThrust: 800
     # Triad Start
     burnShape: ["-0.2,0.5","0.6,5.6","0.2,5.6","1.2,0.5","0.5,-1.0"]
+    originalLoad: 10000
     damage:
       types:
         Heat: 360
