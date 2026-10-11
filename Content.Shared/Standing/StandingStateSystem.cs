@@ -4,8 +4,6 @@
 
 using System.Xml.Schema;
 using Content.Shared._White;
-using Content.Shared.Buckle;
-using Content.Shared.Buckle.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
@@ -27,7 +25,6 @@ public sealed partial class StandingStateSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private MovementSpeedModifierSystem _movement = default!; // WD EDIT
-    [Dependency] private SharedBuckleSystem _buckle = default!; // WD EDIT
     [Dependency] private SharedTransformSystem _transform = default!; // Mono
     [Dependency] private IRobustRandom _random = default!; // Mono
 
@@ -150,9 +147,6 @@ public sealed partial class StandingStateSystem : EntitySystem
 
         if (standingState.CurrentState is StandingState.Standing)
             return true;
-
-        if (TryComp(uid, out BuckleComponent? buckle) && buckle.Buckled && !_buckle.TryUnbuckle(uid, uid, buckleComp: buckle)) // WD EDIT
-            return false;
 
         if (!force)
         {

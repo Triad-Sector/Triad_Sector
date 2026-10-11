@@ -118,3 +118,17 @@
     - id: DoubleEmergencyOxygenTankFilled
     - id: DoubleEmergencyNitrogenTankFilled
     - id: DoubleEmergencyWaterVaporTankFilled
+
+- type: entity
+  parent: ClothingBackpackDuffelTdf
+  id: ClothingBackpackDuffelTdfHardsuitTA29
+  name: TDF TA-29 Hardsuit Bundle
+  description: Duffel bag containing a TA-29 hardsuit and a full-sized jetpack.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitTdfTA29
+    - id: JetpackNfsdFilled
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled
+    - id: DoubleEmergencyWaterVaporTankFilled

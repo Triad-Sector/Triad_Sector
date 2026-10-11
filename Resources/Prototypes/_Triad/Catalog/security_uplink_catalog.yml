@@ -225,22 +225,6 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityWT550Magazine
-  name:  uplink-security-wt550-magazine-name
-  description: uplink-security-wt550-magazine-desc
-  productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag_top_mounted.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-  - UplinkSecurityAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
   id: UplinkSecurity45ACPSMGMagazine
   name: uplink-security-Magazine45ACPPistolFMJ-smg-name
   description: uplink-security-Magazine45ACPPistolFMJ-smg-desc
@@ -352,6 +336,21 @@
       tags:
       - SecurityUplink
 
+- type: listing
+  id: UplinkSecurityAmmoBundle23x75mmBeanbag
+  name:  uplink-security-23x75mmbeanbag-box-name-name
+  description: uplink-security-23x75mmbeanbag-box-name-desc
+  productEntity: AmmoBox23x75mmBeanbag
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Boxes/4_gauge.rsi, state: beanbag }
+  cost:
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
 
 - type: listing
   id: UplinkSecurityEmpGrenadeAmmo
@@ -508,7 +507,7 @@
   productEntity: ClothingBackpackDuffelTdfHardsuitTdf
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -524,7 +523,23 @@
   productEntity: ClothingBackpackDuffelTdfHardsuitTdfMedic
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
+  categories:
+    - UplinkSecurityHardsuits
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
+  id: UplinkClothingOuterHardsuitTA29
+  name: uplink-security-hardsuit-ta-29-name
+  description: uplink-security-hardsuit-ta-29-desc
+  productEntity: ClothingBackpackDuffelTdfHardsuitTA29
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta29.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 80
   categories:
     - UplinkSecurityHardsuits
   conditions:

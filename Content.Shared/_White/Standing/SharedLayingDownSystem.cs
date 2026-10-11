@@ -1,6 +1,8 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Gravity;
 using Content.Shared.Input;
+using Content.Shared.Buckle;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Standing;
@@ -17,6 +19,8 @@ public abstract partial class SharedLayingDownSystem : EntitySystem
     [Dependency] private StandingStateSystem _standing = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+
     public override void Initialize()
     {
         CommandBinds.Builder
@@ -72,6 +76,9 @@ public abstract partial class SharedLayingDownSystem : EntitySystem
 
         if (HasComp<KnockedDownComponent>(uid) || !_mobState.IsAlive(uid))
             return;
+
+        if (TryComp(uid, out BuckleComponent? buckle) && buckle.Buckled)
+            return; // Don't try to stand if they're buckled
 
         if (_standing.IsDown(uid, standing))
             TryStandUp(uid, layingDown, standing);

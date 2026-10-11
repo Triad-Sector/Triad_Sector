@@ -23,11 +23,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.EntitySerialization.Systems;
 using Content.Shared.Timing;
+using Content.Shared.Item;
+using Content.Shared.IdentityManagement;
 using Content.Shared._Triad.ContrabandPermit;
 using Content.Shared._Triad.Shipyard.Save.Contraband;
 using Content.Shared._Triad.Storage;
-using Content.Shared.Item;
-using Content.Shared.IdentityManagement;
 using Content.Server._Triad.ContrabandPermit;
 
 namespace Content.Server._WF.SafetyDepositBox;
@@ -45,15 +45,16 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     [Dependency] private IServerDbManager _dbManager = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private SharedLabelSystem _label = default!; // Wicce: LabelSystem -> SharedLabelSystem
+    [Dependency] private SharedLabelSystem _label = default!;
     [Dependency] private IServerPreferencesManager _prefsManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
-    [Dependency] private UseDelaySystem _useDelay = default!; // Triad : _useDelay system
-    [Dependency] private ContrabandPermitSystem _contrabandPermit = default!; // Triad
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private ContrabandPermitSystem _contrabandPermit = default!;
 
-    [Dependency] private EntityQuery<StorageComponent> _storageQuery; // Triad
-    [Dependency] private EntityQuery<ContrabandPermitItemComponent> _contrabandPermitItemQuery; // Triad
+    [Dependency] private EntityQuery<StorageComponent> _storageQuery;
+    [Dependency] private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
+    [Dependency] private EntityQuery<ContrabandPermitItemComponent> _contrabandPermitItemQuery;
 
     public override void Initialize()
     {
@@ -357,7 +358,9 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         }
 
         // Check for contraband items that cannot be stored
-        var invalidItems = CheckContrabandValidity(player, storageComp);
+        var invalidItems = new List<string>();
+        ContrabandStorageCheck(player, storageComp, ref invalidItems);
+
         if (invalidItems.Count > 0)
         {
             var itemNames = string.Join(", ", invalidItems);
@@ -433,17 +436,6 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         UpdateUI(consoleUid, component, player);
     }
 
-    // Triad : recursive checks for storage items and contraband permits
-    private List<string> CheckContrabandValidity(
-        EntityUid player,
-        StorageComponent storageComp
-    )
-    {
-        var invalidItems = new List<string>();
-        ContrabandStorageCheck(player, storageComp, ref invalidItems);
-        return invalidItems;
-    }
-
     private void ContrabandStorageCheck(
         EntityUid player,
         StorageComponent storageItemComp,
@@ -452,19 +444,30 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     {
         foreach (var (item, location) in storageItemComp.StoredItems)
         {
-            if (_storageQuery.TryComp(item, out var nestedStorage))
-                ContrabandStorageCheck(player, nestedStorage, ref invalidItems);
+            CheckItemContrabandRecursive(player, item, ref invalidItems);
+        }
+    }
 
-            var itemName = Identity.Name(item, EntityManager);
+    private void CheckItemContrabandRecursive(EntityUid player, EntityUid item, ref List<string> invalidItems)
+    {
+        var itemName = Identity.Name(item, EntityManager);
 
-            _contrabandPermitItemQuery.TryComp(item, out var permitComp);
+        _contrabandPermitItemQuery.TryComp(item, out var permitComp);
 
-            // Save contraband is invalid
-            // Save contraband that is permittable and has a valid active permit are valid
-            if (HasComp<SavingContrabandComponent>(item) && permitComp == null)
-                invalidItems.Add(itemName);
-            else if (permitComp != null && _contrabandPermit.IsInvalidPermit((item, permitComp), player))
-                invalidItems.Add(itemName);
+        if (HasComp<SavingContrabandComponent>(item) && permitComp == null)
+            invalidItems.Add(itemName);
+        else if (permitComp != null && _contrabandPermit.IsInvalidPermit((item, permitComp), player))
+            invalidItems.Add(itemName);
+
+        if (_containerManagerQuery.TryComp(item, out var containerManager))
+        {
+            foreach (var container in containerManager.Containers.Values)
+            {
+                foreach (var containedItem in container.ContainedEntities)
+                {
+                    CheckItemContrabandRecursive(player, containedItem, ref invalidItems);
+                }
+            }
         }
     }
 
@@ -476,12 +479,15 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         if (_contrabandPermitItemQuery.TryComp(item, out var permitItem))
             _contrabandPermit.InitializePermitItem((item, permitItem), player); // Set the permit item owner to the box owner's mind
 
-        if (!_storageQuery.TryComp(item, out var storageItemComp)) // Check nested storage
+        if (!_containerManagerQuery.TryComp(item, out var containerManager)) // Check nested storage
             return;
 
-        foreach (var (storedItem, _) in storageItemComp.StoredItems)
+        foreach (var container in containerManager.Containers.Values)
         {
-            RecursiveItemInitialization(player, storedItem);
+            foreach (var storedItem in container.ContainedEntities)
+            {
+                RecursiveItemInitialization(player, storedItem);
+            }
         }
     }
     // Triad end
