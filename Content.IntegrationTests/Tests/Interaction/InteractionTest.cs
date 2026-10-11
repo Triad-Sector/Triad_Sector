@@ -173,7 +173,7 @@ public abstract partial class InteractionTest
         STestSystem = SEntMan.System<InteractionTestSystem>();
         Stack = SEntMan.System<StackSystem>();
         SLogger = Server.ResolveDependency<ILogManager>().RootSawmill;
-        SUiSys = Client.System<SharedUserInterfaceSystem>();
+        SUiSys = SEntMan.System<SharedUserInterfaceSystem>();
 
         // client dependencies
         CEntMan = Client.ResolveDependency<IEntityManager>();
