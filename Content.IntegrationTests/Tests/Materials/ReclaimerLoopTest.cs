@@ -28,7 +28,6 @@ public sealed class ReclaimerLoopTest : InteractionTest
     [TestOf(typeof(MaterialReclaimerSystem))]
     [TestOf(typeof(MaterialReclaimerComponent))]
     [Description("For every material that a reclaimer can spawn, make sure that it cannot get stuck in a loop of spawning then recycling.")]
-    [TrackingIssue("https://github.com/space-wizards/space-station-14/issues/39691")]
     public async Task MaterialSpawnLoopTest(string reclaimerId)
     {
         // Spawn the reclaimer
