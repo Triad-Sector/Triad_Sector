@@ -709,7 +709,6 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
   - type: EyeProtection
   - type: PhysicalComposition
     materialComposition:

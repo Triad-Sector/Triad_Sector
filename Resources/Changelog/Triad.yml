@@ -5373,3 +5373,71 @@ Entries:
   id: 2650
   time: '2026-10-06T00:33:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/698
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed safety box withdraw spam.
+    - type: Fix
+      message: Fixed safety deposit boxes not checking item slots.
+  id: 2651
+  time: '2026-10-06T19:36:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/700
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added a ton of new titles for spacers
+  id: 2652
+  time: '2026-10-07T10:17:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/704
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added the Tourists faction
+  id: 2653
+  time: '2026-10-07T10:19:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/703
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added TA-29 to the uplink
+    - type: Add
+      message: Added 4 gauge beanbag to the uplink
+    - type: Remove
+      message: Removed WT Magazine from uplink
+  id: 2654
+  time: '2026-10-07T14:44:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/702
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added variants of combat medkit, matching the types of regular medkit.
+  id: 2655
+  time: '2026-10-08T02:01:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/705
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Welding masks now reduce field of vision a bit. Engineering goggles
+        remain unchanged.
+    - type: Tweak
+      message: Welding masks are now toggleable!
+  id: 2656
+  time: '2026-10-08T23:58:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/707
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        CuddlyCritterVends all across the Auric district are now offering a new
+        product: The protogen plushie!
+  id: 2657
+  time: '2026-10-09T23:08:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/709
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: TDF ship, Basilisk
+  id: 2658
+  time: '2026-10-10T07:07:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/585

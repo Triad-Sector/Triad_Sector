@@ -73,3 +73,10 @@
   color: "#FFFFE3"
   whitelisted: true
 
+- type: company
+  id: Tourists
+  name: Tourists
+  description: tourists-description
+  image: /Textures/_Triad/PlayerFactions/Tourists.png
+  color: "#ff0abe"
+  whitelisted: true

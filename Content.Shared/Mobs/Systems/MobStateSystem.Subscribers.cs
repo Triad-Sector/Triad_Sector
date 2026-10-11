@@ -103,7 +103,6 @@ public partial class MobStateSystem
         switch (state)
         {
             case MobState.Alive:
-                _standing.Stand(target, force: !HasComp<LayingDownComponent>(target)); // Mono - force stand up if we can't lay down at will
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
                 break;
             case MobState.Critical:

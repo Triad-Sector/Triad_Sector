@@ -23,11 +23,49 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+    additionalColorOverlay: "#000000A0"
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: [WeldingMaskBase, BaseToggleClothing]
+  id: WeldingMaskToggleableBase
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: ItemToggle
+    activated: true
+    predictable: true
+    onActivate: false
+  - type: ToggleClothing
+    action: ActionToggleWeldingProtection
+  - type: ItemToggleVisuals
+    onPrefix: null
+    offPrefix: up
+  - type: ComponentToggler
+    components:
+    - type: IdentityBlocker
+    - type: FlashImmunity
+    - type: EyeProtection
+    - type: IngestionBlocker
+    - type: HideLayerClothing
+      slots:
+      - Snout
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {state: icon}
+          False: {state: icon-up}
+
+- type: entity
+  parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWelding
-  name: welding mask
+  name: welding helmet
   description: A head-mounted face cover designed to protect the wearer completely from space-arc eye.
   components:
   - type: Sprite
@@ -41,9 +79,9 @@
     - WeldingMask
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskFlame
-  name: flame welding mask
+  name: flame welding helmet
   description: A painted welding helmet, this one has flames on it.
   components:
   - type: Sprite
@@ -52,9 +90,9 @@
     sprite: Clothing/Head/Welding/flame_welding_mask.rsi
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskFlameBlue
-  name: blue-flame welding mask
+  name: blue-flame welding helmet
   description: A painted welding helmet, this one has blue flames on it.
   components:
   - type: Sprite
@@ -63,12 +101,23 @@
     sprite: Clothing/Head/Welding/blue_flame_welding_mask.rsi
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskPainted
-  name: painted welding mask
+  name: painted welding helmet
   description: A welding helmet, painted in crimson.
   components:
   - type: Sprite
     sprite: Clothing/Head/Welding/paintedwelding.rsi
   - type: Clothing
     sprite: Clothing/Head/Welding/paintedwelding.rsi
+
+- type: entity
+  id: ActionToggleWeldingProtection
+  name: Toggle Welding Protection
+  description: Raise the welding protection up or down.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: BigItem
+    event: !type:ToggleActionEvent
+    useDelay: 0.5

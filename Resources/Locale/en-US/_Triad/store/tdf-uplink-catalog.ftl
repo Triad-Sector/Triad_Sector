@@ -22,9 +22,6 @@ uplink-security-disablersmg-desc = Fully automatic, rapid fire disabler. Tuned t
 uplink-security-energysword-name = Energy Sword
 uplink-security-energysword-desc = Reverse-engineered, NT designed energy sword. A excellent melee weapon and breaching tool.
 
-uplink-security-wt550-name = WT550
-uplink-security-wt550-desc = A fully automatic submachine gun. This design uses special top-mounted magazines, and can be accurately fired with just one hand. Uses 4.6x30mm.
-
 uplink-security-empgrenade-name = EMP Grenade
 uplink-security-empgrenade-desc = A handheld grenade that emits a high energy pulse that disrupts electronics and power systems in a moderately large radius.
 
@@ -69,8 +66,8 @@ uplink-security-6-8x52mmMagazine-rubber-name = 6.8x52mm STANAG Rubber Magazines
 uplink-security-6-8x52mmMagazine-rubber-desc = A box containing 4 filled 6.8x52mm caseless (rubber) magazines.
 uplink-security-8x65mm-skr-magazine-name = 8x65mm SKR FMJ Magazines
 uplink-security-8x65mm-skr-magazine-desc = A box containing 4 8x65mm SKR FMJ magazines.
-uplink-security-wt550-magazine-name = 4.6x30mm Top-mounted Magazines
-uplink-security-wt550-magazine-desc = A box containing 4 filled 4.6x30mm top-mounted magazines.
+uplink-security-23x75mmbeanbag-box-name = 4 Gauge Shotgun Beanbag Shell Box
+uplink-security-23x75mmbeanbag-box-desc = A box containing 24 4 gauge beanbag shells.
 uplink-security-185x76mm-magazine-EMP-name = 18.5x76mm EMP Magazines
 uplink-security-185x76mm-magazine-EMP-desc = A box containing 4 18.5x76mm EMP magazines.
 
@@ -135,6 +132,9 @@ uplink-security-hardsuit-tdf-desc = A lightweight hardsuit, with decent protecti
 
 uplink-security-hardsuit-tdf-medic-name = TA-21 Medic Hardsuit
 uplink-security-hardsuit-tdf-medic-desc = A variant of the TA-21 for NBC protection, usually utilized by combat medics. Comes bundled with a full-sized jetpack and air tanks.
+
+uplink-security-hardsuit-ta-29-name = TA-29 Hardsuit
+uplink-security-hardsuit-ta-29-desc = An upgraded TA-21 variant. Comes with the same bundled jetpack and air tanks.
 
 uplink-security-tier-0-voucher-name = Tier 0 Dedicated Ship ID
 uplink-security-tier-0-voucher-desc = A single use TDF DSID for any tier 0 vessel.
