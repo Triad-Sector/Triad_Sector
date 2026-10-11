@@ -34,61 +34,112 @@ public sealed partial class TriadThrusterSystem : EntitySystem
         // Small slash normal thruster
         new ThrusterBlockingProfileData(
             [
-                // Thruster facing direction
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offset: Vector2.Zero,
-                    quality: 1
-                ),
-                // just far enough left or right to see past a 3 deep hole at an angle
-                new ThrusterBlockingRayData(
-                    angle: -16d,
-                    offset: new(-0.45f, 0.45f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: 16d,
-                    offset: new(0.45f, 0.45f),
-                    quality: 1
-                ),
-                // 45s left and right of center
-                new ThrusterBlockingRayData(
-                    angle: 45d,
-                    offset: new(0.0f, 0.25f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -45d,
-                    offset: new(0.0f, 0.25f),
-                    quality: 1
-                ),
-                // directly left and right
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offset: Vector2.Zero,
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -90d,
-                    offset: Vector2.Zero,
-                    quality: 1
-                ),
-                // 45 degrees left and right of reverse
-                new ThrusterBlockingRayData(
-                    angle: 135d,
-                    offset: new(0.0f, 0.25f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -135d,
-                    offset: new(0.0f, 0.25f),
-                    quality: 1
-                ),
-                // directly reverse
                 new ThrusterBlockingRayData(
                     angle: 180d,
-                    offset: Vector2.Zero,
-                    quality: 1
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 135d,
+                    offsetX: 0.0f,
+                    offsetY: 0.15f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 103d,
+                    offsetX: -0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 90d,
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 77d,
+                    offsetX: -0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 63d,
+                    offsetX: 0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 33d,
+                    offsetX: 0.0f,
+                    offsetY: 0.25f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 24.5d,
+                    offsetX: 0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 17d,
+                    offsetX: 0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 0d,
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -17d,
+                    offsetX: -0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -24.5d,
+                    offsetX: -0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -33d,
+                    offsetX: 0.0f,
+                    offsetY: 0.25f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -63d,
+                    offsetX: -0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -77d,
+                    offsetX: 0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -90d,
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -103d,
+                    offsetX: 0.45f,
+                    offsetY: 0.05f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -135d,
+                    offsetX: 0.0f,
+                    offsetY: 0.15f
                 ),
             ],
             4 // 4 min quality
@@ -97,101 +148,116 @@ public sealed partial class TriadThrusterSystem : EntitySystem
         // Large thruster
         new ThrusterBlockingProfileData(
             [
-                // Thruster facing direction
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offset: new(0.0f, -1f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offset: new(1f, -1f),
-                    quality: 1
-                ),
-                // just far enough left or right to see past a 3 deep hole at an angle
-                new ThrusterBlockingRayData(
-                    angle: 16d,
-                    offset: new(0.5f, 0.45f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -16d,
-                    offset: new(0.5f, 0.45f),
-                    quality: 1
-                ),
-                // just far enough left or right to see past a 2 deep hole at an angle
-                new ThrusterBlockingRayData(
-                    angle: 25d,
-                    offset: new(0.5f, 0.45f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -25d,
-                    offset: new(0.5f, 0.45f),
-                    quality: 1
-                ),
-                // 45s left and right of center
-                new ThrusterBlockingRayData(
-                    angle: 45d,
-                    offset: new(0.5f, 0.0f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -45d,
-                    offset: new(0.5f, 0.0f),
-                    quality: 1
-                ),
-                // directly left and right
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offset: new(1.0f, -1.0f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offset: new(1.0f, 0.0f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -90d,
-                    offset: new(0.0f, -1.0f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -90d,
-                    offset: new(1.0f, 0.0f),
-                    quality: 1
-                ),
-                // 45 degrees left and right of reverse
-                new ThrusterBlockingRayData(
-                    angle: 135d,
-                    offset: new(0.5f, 0.0f),
-                    quality: 1
-                ),
-                new ThrusterBlockingRayData(
-                    angle: -135d,
-                    offset: new(0.5f, 0.0f),
-                    quality: 1
-                ),
-                // directly reverse
                 new ThrusterBlockingRayData(
                     angle: 180d,
-                    offset: Vector2.Zero,
-                    quality: 1
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
                 ),
-                // directly reverse
+
                 new ThrusterBlockingRayData(
                     angle: 180d,
-                    offset: new(1.0f, 0.0f),
-                    quality: 1
+                    offsetX: 1.0f,
+                    offsetY: 0.0f
                 ),
+
+                new ThrusterBlockingRayData(
+                    angle: 116.6d,
+                    offsetX: 0.5f,
+                    offsetY: -0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -116.6d,
+                    offsetX: 0.5f,
+                    offsetY: -0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 90d,
+                    offsetX: 1.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 90d,
+                    offsetX: 1.0f,
+                    offsetY: -1.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -90d,
+                    offsetX: 0.0f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 62d,
+                    offsetX: 0.5f,
+                    offsetY: -0.55f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -62d,
+                    offsetX: 0.5f,
+                    offsetY: -0.55f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -53d,
+                    offsetX: 0.5f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 33.5d,
+                    offsetX: 0.5f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -33.5d,
+                    offsetX: 0.5f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 24.5d,
+                    offsetX: 0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 17d,
+                    offsetX: 0.45f,
+                    offsetY: 0.44f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -17d,
+                    offsetX: 0.55f,
+                    offsetY: 0.44f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 0d,
+                    offsetX: 0.0f,
+                    offsetY: -1.0f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: 0d,
+                    offsetX: 1.0f,
+                    offsetY: -1.0f
+                )
             ],
             5 // 5 min quality
         ),
     ];
 
-    public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent)
+    public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent, out float clearanceFraction)
     {
+        clearanceFraction = 0.0f;
+
         var xform = ent.Comp1;
 
         if (xform.GridUid == null)
@@ -264,6 +330,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 clearQuality += rayPreset.Quality;
         }
 
+        clearanceFraction = (float)clearQuality / requiredQuality;
         return clearQuality >= requiredQuality;
     }
 }

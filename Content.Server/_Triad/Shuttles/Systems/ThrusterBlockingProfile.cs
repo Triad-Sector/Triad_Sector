@@ -16,7 +16,7 @@ public sealed class ThrusterBlockingProfileData(List<ThrusterBlockingRayData> ra
     public int RequiredQuality = requiredQuality;
 }
 
-public sealed class ThrusterBlockingRayData(double angle, Vector2 offset, int quality = 1)
+public sealed class ThrusterBlockingRayData(double angle, float offsetX, float offsetY, int quality = 1)
 {
     /// <summary>
     /// The direction/angle the raycast goes, relative to the entity's rotation.
@@ -48,14 +48,14 @@ public sealed class ThrusterBlockingRayData(double angle, Vector2 offset, int qu
     /// How much is the ray offset from the 'origin' of the entity's position?
     /// Useful for large thrusters where their 'origin' is on the tile they rotate by.
     /// </summary>
-    public float OffsetX = offset.X;
+    public float OffsetX = offsetX;
 
     /// <summary>
     /// How much is the ray offset from the 'origin' of the entity's position?
     /// Useful for large thrusters where their 'origin' is on the tile they rotate by.
     /// +y is an offset in the direction of the fire
     /// </summary>
-    public float OffsetY = offset.Y;
+    public float OffsetY = offsetY;
 
     /// <summary>
     /// How much is this ray worth if it can see space

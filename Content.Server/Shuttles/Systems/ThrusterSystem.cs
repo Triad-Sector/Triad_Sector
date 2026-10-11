@@ -135,7 +135,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
                 args.PushMarkup(nozzleDir);
 
-                var exposed = NozzleExposed((uid, xform, component));
+                var exposed = NozzleExposed((uid, xform, component), out var clearanceFraction);
 
                 var nozzleText =
                     Loc.GetString(exposed ? "thruster-comp-nozzle-exposed" : "thruster-comp-nozzle-not-exposed");
@@ -147,6 +147,10 @@ public sealed partial class ThrusterSystem : EntitySystem
                 {
                     var clearSpaceText = Loc.GetString("thruster-comp-need-clear-space");
                     args.PushMarkup(clearSpaceText);
+
+                    var percentText = Loc.GetString("thruster-comp-need-clearance-percentage", ("percent", clearanceFraction));
+                    args.PushMarkup(percentText);
+
                     DisableThruster(uid, component);
                 }
                 // Triad End
@@ -527,12 +531,14 @@ public sealed partial class ThrusterSystem : EntitySystem
         if (!component.RequireSpace)
             return true;
 
-        return NozzleExposed((uid, xform, component));
+        return NozzleExposed((uid, xform, component), out _);
     }
 
     // Triad Start - thruster changes
-    private bool NozzleExposed(Entity<TransformComponent, ThrusterComponent> ent)
+    private bool NozzleExposed(Entity<TransformComponent, ThrusterComponent> ent, out float clearanceFraction)
     {
+        clearanceFraction = 0.0f;
+
         var xform = ent.Comp1;
 
         if (xform.GridUid == null)
@@ -542,7 +548,13 @@ public sealed partial class ThrusterSystem : EntitySystem
         var mapGrid = _mapGridQuery.Comp(xform.GridUid.Value); // Triad - change to query
         var tile = _mapSystem.GetTileRef(xform.GridUid.Value, mapGrid, new Vector2i((int)Math.Floor(x), (int)Math.Floor(y)));
 
-        return _turf.IsSpace(tile.Tile) && _triadThruster.NozzleExposedRaycast(ent);
+        var isSpace = _turf.IsSpace(tile.Tile);
+        var exposedRaycast = _triadThruster.NozzleExposedRaycast(ent, out var outFraction);
+
+        if (isSpace)
+            clearanceFraction = outFraction; // Only show if the tile in front is space
+
+        return isSpace && exposedRaycast;
     }
 
     #region Burning
