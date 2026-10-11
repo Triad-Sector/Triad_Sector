@@ -189,9 +189,6 @@ public sealed partial class SalvageSystem
             {
                 var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(mission.Difficulty);
                 //Check what difficulty it selected
-                Logger.Debug($"component = {component}"); //what's this
-                Logger.Debug($"mission = {mission}"); //idk if this is the right one
-                Logger.Debug($"difficultyProto = {difficultyProto.ID}");
                 GiveRewards(expeditionComp, difficultyProto);
             }
         }
@@ -293,8 +290,8 @@ public sealed partial class SalvageSystem
         var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
         var reward = difficulty.ExpeditionReward;
 
-        Logger.Debug($"difficulty in GiveRewards: {difficulty.ID}");
-        Logger.Debug($"reward: {reward}");
+        // Logger.Debug($"difficulty in GiveRewards: {difficulty.ID}");
+        // Logger.Debug($"reward: {reward}");
         while (pallets.MoveNext(out var pallet, out var palletComp))
         {
             if (_station.GetOwningStation(pallet) == comp.Station)
@@ -307,7 +304,6 @@ public sealed partial class SalvageSystem
             return;
 
         var palletListUid = palletList[_random.Next(palletList.Count)];
-        Logger.Debug($"Giving reward {reward} to pallet {palletListUid}"); // Triad, check if reward are showing up correctly in the pallet
         Spawn(reward, Transform(palletListUid).Coordinates);
     }
 
