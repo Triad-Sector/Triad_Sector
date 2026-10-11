@@ -1,21 +1,80 @@
 - type: entity
   parent: BaseItem
-  id: ExpeditionCaseRewardT1
+  id: ExpeditionCaseReward
   name: expedition reward case
-  description: A case full of bills fresh from the digital mint. Smells like success and unpaid taxes.
+  description: A case full of credits, a reward for your successful expeditions.
   abstract: true
-  categories: [ HideSpawnMenu ]
   suffix: Money
   components:
   - type: Sprite
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    sprite: _Triad/Storage/Cases/reward_case.rsi
     state: icon
   - type: Item
     size: Ginormous
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    sprite: _Triad/Storage/Cases/reward_case.rsi
   - type: IgnoreMarketModifier # Worth exactly what it says.
   - type: SpawnItemsOnUse
     items:
       - id: SpaceCash10000
+    sound:
+      path: /Audio/Machines/windoor_open.ogg
+
+- type: entity
+  parent: ExpeditionCaseReward
+  id: ExpeditionCaseRewardT1
+  name: expedition cash case
+  suffix: Money
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: tier1
+      shader: unshaded
+    - state: glow
+      shader: unshaded
+  - type: SpawnItemsOnUse
+    items:
+      - id: SpaceCash20000
+    sound:
+      path: /Audio/Machines/windoor_open.ogg
+
+- type: entity
+  parent: ExpeditionCaseReward
+  id: ExpeditionCaseRewardT2
+  name: expedition cash case
+  suffix: Money
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: tier2
+      shader: unshaded
+    - state: glow
+      shader: unshaded
+  - type: SpawnItemsOnUse
+    items:
+      - id: SpaceCash20000
+        amount: 2
+    sound:
+      path: /Audio/Machines/windoor_open.ogg
+
+- type: entity
+  parent: ExpeditionCaseReward
+  id: ExpeditionCaseRewardT3
+  name: expedition cash case
+  suffix: Money
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: tier3
+      shader: unshaded
+    - state: glow
+      shader: unshaded
+  - type: SpawnItemsOnUse
+    items:
+      - id: SpaceCash25000
+        amount: 2
+      - id: SpaceCash20000
     sound:
       path: /Audio/Machines/windoor_open.ogg
