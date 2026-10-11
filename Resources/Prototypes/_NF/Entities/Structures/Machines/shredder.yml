@@ -53,6 +53,7 @@
   - type: Machine
     board: ShredderMachineCircuitboard
   - type: MaterialReclaimer
+    reclaimMaterials: false # Triad
     whitelist:
       components:
         - Currency

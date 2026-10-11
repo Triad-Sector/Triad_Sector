@@ -21,7 +21,8 @@ public sealed class ReclaimerLoopTest : InteractionTest
 
     private static readonly string[] Reclaimers = GameDataScrounger.EntitiesWithComponent("MaterialReclaimer");
 
-    [SidedDependency(Side.Server)] private readonly SharedMaterialReclaimerSystem _materialReclaimerSystem = null!;
+    // TODO Triad: HELP ME!!!
+    //[SidedDependency(Side.Server)] private readonly SharedMaterialReclaimerSystem _materialReclaimerSystem = null!;
 
     [Test]
     [TestCaseSource(nameof(Reclaimers))]
@@ -36,13 +37,15 @@ public sealed class ReclaimerLoopTest : InteractionTest
 
         var reclaimComp = Comp<MaterialReclaimerComponent>(Target);
 
+        var materialReclaimerSystem = Server.EntMan.System<SharedMaterialReclaimerSystem>();
+
         // Power the reclaimer
         await SpawnEntity(ApcId, SEntMan.GetCoordinates(TargetCoords));
         await RunTicks(1);
         // Set reclaimer to enabled
         await Server.WaitPost(() =>
         {
-            _materialReclaimerSystem.SetReclaimerEnabled((EntityUid)STarget, true);
+            materialReclaimerSystem.SetReclaimerEnabled((EntityUid)STarget, true);
         });
 
         // Check that reclaimer enabled
