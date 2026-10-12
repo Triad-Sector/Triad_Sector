@@ -19,7 +19,7 @@
   parent: ClothingEyesBase
   id: ClothingEyesHudDiagnostic
   name: diagnostic hud
-  description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium.
+  description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium. Also contains an integrated t-ray scanner. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Hud/diag.rsi
@@ -29,6 +29,7 @@
     damageContainers:
     - Inorganic
     - Silicon
+  - type: TrayScanner # Triad: Redistributed goggle/helmet utilities.
 
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons]
@@ -201,13 +202,18 @@
   parent: [ClothingEyesBase, ShowSecurityIcons]
   id: ClothingEyesHudSyndicate
   name: syndicate visor
-  description: The syndicate's professional head-up display, designed for better detection of humanoids and their subsequent elimination.
+  description: The syndicate's professional head-up display, designed for better detection of humanoids and their subsequent elimination. Upgraded with flash protection. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Hud/synd.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/synd.rsi
   - type: ShowSyndicateIcons
+  # Triad: Redistributed goggle/helmet utilities.
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  # End Triad
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons]

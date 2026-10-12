@@ -29,6 +29,7 @@ using Content.Shared._Triad.ContrabandPermit;
 using Content.Shared._Triad.Shipyard.Save.Contraband;
 using Content.Shared._Triad.Storage;
 using Content.Server._Triad.ContrabandPermit;
+using Content.Shared.Coordinates;
 
 namespace Content.Server._WF.SafetyDepositBox;
 
@@ -776,8 +777,12 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                     }
 
                     // Insert into storage
+                    // If it can't be inserted into storage, drop it
                     if (!_storage.Insert(boxEntity, itemEntity, out _, storageComp: storageComp, playSound: false))
-                        QueueDel(itemEntity);
+                    {
+                        var targetCoords = boxEntity.ToCoordinates();
+                        _transform.SetCoordinates(itemEntity, targetCoords);
+                    }
 
                 }
                 catch (Exception ex)

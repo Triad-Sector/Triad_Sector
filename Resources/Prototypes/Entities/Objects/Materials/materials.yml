@@ -424,6 +424,7 @@
   name: cotton
   suffix: Full
   components:
+  - type: Material
   - type: Stack
     stackType: Cotton
     baseLayer: base
@@ -598,6 +599,7 @@
   suffix: Full
   components:
   - type: ConstructionMaterials # Frontier
+  - type: Material
   - type: PhysicalComposition
     materialComposition:
       WebSilk: 100
@@ -778,6 +780,7 @@
   name: gunpowder
   description: An explosive compound.
   components:
+  - type: Material
   - type: Stack
     stackType: Gunpowder
     count: 1

@@ -11,6 +11,7 @@ using Content.Shared.Storage;
 using Content.Shared.Verbs;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
+using Content.Shared._Triad.Kitchen;
 using Content.Shared.Hands.Components;
 using Content.Shared.Kitchen;
 using Content.Shared.Mobs.Components;
@@ -57,6 +58,19 @@ public sealed partial class SharpSystem : EntitySystem
     {
         if (!TryComp<ButcherableComponent>(target, out var butcher))
             return false;
+
+        // Triad Start - Butcher Attempt Event
+        var attemptEv = new ButcherAttemptEvent(user, knife, target);
+        RaiseLocalEvent(user, ref attemptEv);
+
+        if (attemptEv.Cancelled)
+        {
+            if (attemptEv.Popup != null)
+                _popupSystem.PopupEntity(attemptEv.Popup, knife, user);
+
+            return false;
+        }
+        // Triad End
 
         if (!TryComp<SharpComponent>(knife, out var sharp))
             return false;

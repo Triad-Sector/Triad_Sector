@@ -6,12 +6,6 @@
   equipment:
     suitstorage: WeaponRifleVigil
 
-- type: loadout #Lecter
-  id: TdfCrosshairLoadout
-  price: 0
-  equipment:
-    suitstorage: WeaponRifleCrosshair
-
 - type: loadout # Lecter ammo - putting it here because other factions shouldnt be using this
   id: TdfCaselessAmmoBoxLoadout
   price: 0

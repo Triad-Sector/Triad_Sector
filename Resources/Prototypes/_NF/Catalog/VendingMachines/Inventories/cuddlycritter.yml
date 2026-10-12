@@ -19,6 +19,7 @@
     PlushieRatvar: 3
     PlushieNar: 3
     PlushieSlime: 3
+    PlushieProtogen: 3 # Triad: Added protogen plushie!
     PlushieSnake: 3
     PlushieCarp: 3
     PlushieAtmosian: 3
@@ -69,5 +70,5 @@
     PlushieRGBee: 3
     BalloonCorgi: 2
     NFPlushieBotanist: 3
-    NFPlushieCmo: 3    
+    NFPlushieCmo: 3
     NFPlushieEngineer: 3

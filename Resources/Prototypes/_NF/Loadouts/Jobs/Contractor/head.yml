@@ -70,11 +70,13 @@
   equipment:
     head: ClothingHeadHatUshanka
 
-- type: loadout
-  id: ContractorClothingHeadHatHardhatYellow
-  groupBy: HardHat
-  equipment:
-    head: ClothingHeadHatHardhatYellow
+# Triad removal - Moved to ClothingHeadHatHardhatYellow.
+#- type: loadout
+#  id: ContractorClothingHeadHatHardhatYellow
+#  groupBy: HardHat
+#  equipment:
+#    head: ClothingHeadHatHardhatYellow
+# End Triad
 
 - type: loadout
   id: ContractorClothingHeadHatChef

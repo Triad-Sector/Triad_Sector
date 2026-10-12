@@ -4,31 +4,32 @@
   In the Triad Sector, there are a wide variety of sapient species, both organic and robotic.
 
   <Box>
-    <GuideEntityEmbed Entity="MobArachnid" Caption="Arachnid"/>
-    <GuideEntityEmbed Entity="MobDiona" Caption="Diona"/>
-    <GuideEntityEmbed Entity="MobHuman" Caption="Human"/>
-    <GuideEntityEmbed Entity="MobMoth" Caption="Moth Person"/>
-    <GuideEntityEmbed Entity="MobReptilian" Caption="Reptilian"/>
-    <GuideEntityEmbed Entity="MobSlimePerson" Caption="Slime Person"/>
+    <GuideEntityEmbed Entity="MobArachnidDossierExemplar" Caption="Arachnid"/>
+    <GuideEntityEmbed Entity="MobDionaDossierExemplar" Caption="Diona"/>
+    <GuideEntityEmbed Entity="MobHumanDossierExemplar" Caption="Human"/>
+    <GuideEntityEmbed Entity="MobMothDossierExemplar" Caption="Moth Person"/>
+    <GuideEntityEmbed Entity="MobReptilianDossierExemplar" Caption="Reptilian"/>
+    <GuideEntityEmbed Entity="MobSlimePersonDossierExemplar" Caption="Slime Person"/>
+    <GuideEntityEmbed Entity="MobOviniaDossierExemplar" Caption="Ovinia"/>
   </Box>
 
   <Box>
-    <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
-    <GuideEntityEmbed Entity="MobFelinid" Caption="Felinid"/>
-    <GuideEntityEmbed Entity="MobHarpy" Caption="Harpy"/>
-    <GuideEntityEmbed Entity="MobOni" Caption="Oni"/>
-    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/>
-    <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
-    <GuideEntityEmbed Entity="MobProtogen" Caption="Protogen"/>
+    <GuideEntityEmbed Entity="MobVulpkaninDossierExemplar" Caption="Vulpkanin"/>
+    <GuideEntityEmbed Entity="MobFelinidDossierExemplar" Caption="Felinid"/>
+    <GuideEntityEmbed Entity="MobHarpyDossierExemplar" Caption="Harpy"/>
+    <GuideEntityEmbed Entity="MobOniDossierExemplar" Caption="Oni"/>
+    <GuideEntityEmbed Entity="MobChitinidDossierExemplar" Caption="Chitinid"/>
+    <GuideEntityEmbed Entity="MobFeroxiDossierExemplar" Caption="Feroxi"/>
+    <GuideEntityEmbed Entity="MobProtogenDossierExemplar" Caption="Protogen"/>
   </Box>
 
   <Box>
-    <GuideEntityEmbed Entity="MobTajaran" Caption="Tajaran"/>
-    <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/>
-    <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
-    <GuideEntityEmbed Entity="MobResomi" Caption="Resomi"/>
-    <GuideEntityEmbed Entity="MobIPCDummy" Caption="I.P.C."/>
-    <GuideEntityEmbed Entity="MobGoblin" Caption="Goblin"/>
-    <GuideEntityEmbed Entity="MobShadekin" Caption="Shadekin"/>
+    <GuideEntityEmbed Entity="MobTajaranDossierExemplar" Caption="Tajaran"/>
+    <GuideEntityEmbed Entity="MobAvaliDossierExemplar" Caption="Avali"/>
+    <GuideEntityEmbed Entity="MobVoxDossierExemplar" Caption="Vox"/>
+    <GuideEntityEmbed Entity="MobResomiDossierExemplar" Caption="Resomi"/>
+    <GuideEntityEmbed Entity="MobIPCDossierExemplar" Caption="I.P.C."/>
+    <GuideEntityEmbed Entity="MobGoblinDossierExemplar" Caption="Goblin"/>
+    <GuideEntityEmbed Entity="MobShadekinDossierExemplar" Caption="Shadekin"/>
   </Box>
 </Document>

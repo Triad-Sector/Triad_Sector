@@ -50,8 +50,10 @@
     sprite: Clothing/Mask/gassyndicate.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassyndicate.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
+  # Triad: Redistributed eyewear effects. Flash&Welding protection is only afforded to masks that offer downsides, to prevent best-in-slot metas.
+  #- type: FlashImmunity
+  #- type: EyeProtection
+  # End Triad
   - type: Armor
     modifiers:
       coefficients:
@@ -424,8 +426,10 @@
     - Hair
     - Snout
     hideOnToggle: true
-  - type: FlashImmunity
-  - type: EyeProtection
+  # Triad: Redistributed eyewear effects. Flash&Welding protection is only afforded to masks that offer downsides, to prevent best-in-slot metas.
+  #- type: FlashImmunity
+  #- type: EyeProtection
+  # End Triad
   - type: Armor
     modifiers:
       coefficients:
@@ -699,7 +703,7 @@
     - IPCMaskWearable # EE - IPCs
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ ClothingMaskBase, WeldingMaskToggleableBase ] # Triad: Gave this mask the same logic as the welding helmet. Toggle visor up to see, down to weld safely, with a visibility penalty.
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
@@ -709,8 +713,20 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
+  # Triad: See comment on parent line.
+  - type: BreathMask
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTextureWorse.png" # Worse vision than the welding helmet, since it fits in your mask slot.
+    additionalColorOverlay: "#000000A0"
+  - type: IdentityBlocker
+  - type: ComponentToggler # This would all be covered by WeldingMaskToggleableBase, but that list was made for a mask that totally raises off your face, and the welding gas mask toggle is just for the visor. It should still block eating and hide your identity regardless of visor status.
+    components:
+    - type: FlashImmunity
+    - type: EyeProtection
+    - type: HideLayerClothing
+      slots:
+      - Snout
+  # End Triad
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

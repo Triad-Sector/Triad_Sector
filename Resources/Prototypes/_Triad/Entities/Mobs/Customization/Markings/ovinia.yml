@@ -1,0 +1,359 @@
+# HeadTop
+
+- type: marking
+  id: OviniaLambHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-lamb-horns
+
+- type: marking
+  id: OviniaRamHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-ram-horns
+
+- type: marking
+  id: OviniaPointyHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-pointy-horns
+
+- type: marking
+  id: OviniaCurvedHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-curved-horns
+
+- type: marking
+  id: OviniaDeerHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-deer-horns
+
+- type: marking
+  id: OviniaDevilHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-devil-horns
+
+- type: marking
+  id: OviniaBaphometHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-baphomet-horns
+
+- type: marking
+  id: OviniaIbexHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-ibex-horns
+
+- type: marking
+  id: OviniaJacobHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/horn_markings.rsi
+      state: ovinia-jacob-horns
+
+# Ears
+
+- type: marking
+  id: OviniaEars
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: ovinia-ears
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: ovinia-ears-inner
+
+- type: marking
+  id: OviniaEarsCow
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: cow-ears
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: cow-ears-inner
+
+- type: marking
+  id: OviniaEarsDeer
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: deer-ears
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: deer-ears-inner
+
+- type: marking
+  id: OviniaEarsHorse
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: horse-ears
+    - sprite: _Triad/Mobs/Customization/Ovinia/ear_markings.rsi
+      state: horse-ears-inner
+
+# Head
+
+# FacialHair
+
+- type: marking
+  id: OviniaNeckfluff
+  bodyPart: FacialHair # will fix this if we decide on introducing neck fluff layer
+  markingCategory: FacialHair
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/head_markings.rsi
+    state: ovinia-neck-fluff
+
+# Snout
+
+- type: marking
+  id: OviniaSnout
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-snout
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-nose
+
+- type: marking
+  id: OviniaFace
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-face
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-nose
+
+- type: marking
+  id: OviniaBlaze
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-blaze
+    - sprite: _Triad/Mobs/Customization/Ovinia/snout_markings.rsi
+      state: ovinia-nose
+
+# Chest
+- type: marking
+  id: OviniaTummy
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: ovinia-tummy
+
+- type: marking
+  id: OviniaChestFullMasc
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: ovinia-full-m
+
+- type: marking
+  id: OviniaChestFullFem
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: ovinia-full-f
+
+- type: marking
+  id: OviniaPatternFawn
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: torso-fawn
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+
+- type: marking
+  id: OviniaPatternCattleMasc
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: torso-cow-m
+
+- type: marking
+  id: OviniaPatternCattleFem
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: torso-cow-f
+
+# RArm
+- type: marking
+  id: OviniaRightArmValais
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: ovinia-arm-valais-right
+
+# LArm
+
+- type: marking
+  id: OviniaLeftArmValais
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: ovinia-arm-valais-left
+
+# RHand
+
+- type: marking
+  id: OviniaRightHandHoof
+  bodyPart: RHand
+  markingCategory: Arms
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: hand-hoof-right
+  coloring:
+     default:
+       type: !type:SimpleColoring
+         color: "#07090f"
+
+# LHand
+
+- type: marking
+  id: OviniaLeftHandHoof
+  bodyPart: LHand
+  markingCategory: Arms
+  speciesRestriction: [ Ovinia ]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+    state: hand-hoof-left
+  coloring:
+     default:
+       type: !type:SimpleColoring
+         color: "#07090f"
+
+# Tail
+
+- type: marking
+  id: OviniaTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/tail_markings.rsi
+      state: ovinia-tail_wag
+
+- type: marking
+  id: OviniaTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/tail_markings.rsi
+      state: ovinia-tail
+
+# RLeg
+
+- type: marking
+  id: OviniaRightLegValais
+  bodyPart: RLeg
+  markingCategory: Legs
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+      state: ovinia-leg-valais-right
+
+# LLeg
+
+- type: marking
+  id: OviniaLeftLegValais
+  bodyPart: LLeg
+  markingCategory: Legs
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+      state: ovinia-leg-valais-left
+
+# RFoot
+
+- type: marking
+  id: OviniaLeftHoof
+  bodyPart: LFoot
+  markingCategory: Legs
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+      state: ovinia-hoof-right
+  coloring:
+     default:
+       type: !type:SimpleColoring
+         color: "#07090f"
+
+# LFoot
+
+- type: marking
+  id: OviniaRightHoof
+  bodyPart: RFoot
+  markingCategory: Legs
+  speciesRestriction: [ Ovinia ]
+  sprites:
+    - sprite: _Triad/Mobs/Customization/Ovinia/body_markings.rsi
+      state: ovinia-hoof-left
+  coloring:
+     default:
+       type: !type:SimpleColoring
+         color: "#07090f"
+

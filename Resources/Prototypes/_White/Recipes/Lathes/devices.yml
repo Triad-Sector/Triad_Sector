@@ -8,15 +8,17 @@
     Silver: 100
     Gold: 100
 
-- type: latheRecipe
-  id: ClothingHelmetAttachmentNVGsBasic
-  result: ClothingHelmetAttachmentNVGsBasic
-  completetime: 2
-  materials:
-    Steel: 200
-    Glass: 100
-    Silver: 100
-    Gold: 100
+#Triad: Removed helmet attachment slot
+#- type: latheRecipe
+  #id: ClothingHelmetAttachmentNVGsBasic
+  #result: ClothingHelmetAttachmentNVGsBasic
+  #completetime: 2
+  #materials:
+    #Steel: 200
+    #Glass: 100
+    #Silver: 100
+    #Gold: 100
+# End Triad
 
 - type: latheRecipe
   id: ClothingEyesThermalVisionGoggles
@@ -28,12 +30,14 @@
     Silver: 100
     Gold: 100
 
-- type: latheRecipe
-  id: ClothingHelmetAttachmentInfraredBasic
-  result: ClothingHelmetAttachmentInfraredBasic
-  completetime: 2
-  materials:
-    Steel: 200
-    Glass: 100
-    Silver: 100
-    Gold: 100
+# Triad: Removed helmet attachment slot, since it's not used by anything.
+#- type: latheRecipe
+  #id: ClothingHelmetAttachmentInfraredBasic
+  #result: ClothingHelmetAttachmentInfraredBasic
+  #completetime: 2
+  #materials:
+    #Steel: 200
+    #Glass: 100
+    #Silver: 100
+    #Gold: 100
+# End Triad

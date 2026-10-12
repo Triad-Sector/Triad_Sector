@@ -14,19 +14,21 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
-  - type: RadarConsole
-    followEntity: true
-    noRotate: true
+  # Triad: Rebalanced what gets what HUD. Removed the radar since its non-functional and should be exclusive to pilot suits.
+  #- type: RadarConsole
+    #followEntity: true
+    #noRotate: true
   - type: DetectionRangeMultiplier
     infraredMultiplier: 0.5
     visualMultiplier: 0.75
-  - type: ActivatableUI
-    key: enum.RadarConsoleUiKey.Key
-    singleUser: true
-  - type: UserInterface
-    interfaces:
-      enum.RadarConsoleUiKey.Key:
-        type: RadarConsoleBoundUserInterface
+  #- type: ActivatableUI
+    #key: enum.RadarConsoleUiKey.Key
+    #singleUser: true
+  #- type: UserInterface
+    #interfaces:
+      #enum.RadarConsoleUiKey.Key:
+        #type: RadarConsoleBoundUserInterface
+  # End Triad
   - type: Armor
     modifiers:
       coefficients:

@@ -11,6 +11,7 @@
   maleFirstNames: names_first_male
   femaleFirstNames: names_first_female
   lastNames: names_last
+  defaultHair: HairBald # Triad
 
 - type: speciesBaseSprites
   id: MobFeroxiSprites
