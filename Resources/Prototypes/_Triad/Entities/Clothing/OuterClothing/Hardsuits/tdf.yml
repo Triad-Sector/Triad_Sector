@@ -37,7 +37,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdf
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 5000
     vendPrice: 7500
@@ -75,7 +75,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfMedic
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 - type: entity
   parent: ClothingOuterHardsuitTdf
@@ -108,7 +108,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfTA29
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 - type: entity
   parent: ClothingOuterHardsuitTdf
@@ -124,7 +124,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfChiefEnforcer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: FireProtection
     reduction: 0.5
   - type: PressureProtection
@@ -189,7 +189,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfHazmat
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 1500
     vendPrice: 4000
@@ -231,7 +231,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfCasket
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepThud
@@ -255,7 +255,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitTdfExperimental
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: ExplosionResistance
     damageCoefficient: 0.3
   - type: FireProtection

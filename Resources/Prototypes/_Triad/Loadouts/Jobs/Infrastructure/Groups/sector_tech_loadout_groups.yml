@@ -4,10 +4,13 @@
   name: loadout-group-plant-technician-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellow
-  - StationEngineerHardhatOrange
-  - StationEngineerHardhatRed
-  - PlantHardhatBlue
+  - ClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  - ClothingHeadHatHardhatArmored
   - PlantEngineeringBeret
 
 - type: loadoutGroup

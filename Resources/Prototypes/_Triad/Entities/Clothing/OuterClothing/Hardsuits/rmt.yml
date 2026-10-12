@@ -40,7 +40,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitRmtL27
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 1250
     vendPrice: 7500
@@ -82,7 +82,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitRmtL10
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 420
     vendPrice: 2500
@@ -124,7 +124,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitRmtL10A
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 500
     vendPrice: 3000
@@ -165,7 +165,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitRmtM10
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 1350
     vendPrice: 8000

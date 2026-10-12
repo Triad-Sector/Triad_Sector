@@ -72,7 +72,10 @@
 
 - type: entity
   id: Magazine40mmBlast
-  name: blast 40mm grenade cartridge
+  # Triad: Update name to match what's contained.
+  #name: blast 40mm grenade cartridge
+  name: thermobaric 40mm grenade cartridge
+  # End Triad
   parent: BaseMagazine40mm
   components:
   - type: BallisticAmmoProvider

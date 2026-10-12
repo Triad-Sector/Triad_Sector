@@ -85,16 +85,18 @@ public abstract partial class InteractionTest
     }
 
     /// <summary>
-    /// Spawn an entity entity and set it as the target.
+    /// Spawn an entity at the given coordinates and set it as the target.
+    /// If no coordinates are given it will default to <see cref="TargetCoords"/>
     /// </summary>
     [MemberNotNull(nameof(Target), nameof(STarget), nameof(CTarget))]
 #pragma warning disable CS8774 // Member must have a non-null value when exiting.
-    protected async Task<NetEntity> SpawnTarget(string prototype)
+    protected async Task<NetEntity> SpawnTarget(string prototype, NetCoordinates? coords = null)
     {
+        coords ??= TargetCoords;
         Target = NetEntity.Invalid;
         await Server.WaitPost(() =>
         {
-            Target = SEntMan.GetNetEntity(SEntMan.SpawnAtPosition(prototype, SEntMan.GetCoordinates(TargetCoords)));
+            Target = SEntMan.GetNetEntity(SEntMan.SpawnAtPosition(prototype, SEntMan.GetCoordinates(coords.Value)));
         });
 
         await RunTicks(5);
@@ -102,6 +104,24 @@ public abstract partial class InteractionTest
         return Target!.Value;
     }
 #pragma warning restore CS8774 // Member must have a non-null value when exiting.
+
+    /// <summary>
+    /// Spawn an entity entity at the given coordinates without setting it as the target.
+    /// If no coordinates are given it will default to <see cref="TargetCoords"/>
+    /// </summary>
+    protected async Task<NetEntity> Spawn(string prototype, NetCoordinates? coords = null)
+    {
+        coords ??= TargetCoords;
+        var entity = NetEntity.Invalid;
+        await Server.WaitPost(() =>
+        {
+            entity = SEntMan.GetNetEntity(SEntMan.SpawnAtPosition(prototype, SEntMan.GetCoordinates(coords.Value)));
+        });
+
+        await RunTicks(5);
+        AssertPrototype(prototype, entity);
+        return entity;
+    }
 
     /// <summary>
     /// Spawn an entity in preparation for deconstruction
@@ -371,6 +391,33 @@ public abstract partial class InteractionTest
     }
 
     /// <summary>
+    /// Simulates a drag and drop mouse interaction from one entity to another.
+    /// </summary>
+    protected async Task DragDrop(NetEntity source, NetEntity target)
+    {
+        // ScreenCoordinates diff needs to be larger than DragDropSystem.Deadzone for the drag drop to initiate
+        var screenX = CDragDropSys.Deadzone + 1f;
+
+        // Start drag
+        await SetKey(EngineKeyFunctions.Use,
+            BoundKeyState.Down,
+            NetPosition(source),
+            source,
+            screenCoordinates: new ScreenCoordinates(screenX, 0f, WindowId.Main));
+
+        await RunTicks(3);
+
+        // End drag
+        await SetKey(EngineKeyFunctions.Use,
+            BoundKeyState.Up,
+            NetPosition(target),
+            target,
+            screenCoordinates: new ScreenCoordinates(0f, 0f, WindowId.Main));
+
+        await RunTicks(3);
+    }
+
+    /// <summary>
     /// Throw the currently held entity. Defaults to targeting the current <see cref="TargetCoords"/>
     /// </summary>
     protected async Task<bool> ThrowItem(NetCoordinates? target = null, float minDistance = 4)
@@ -581,7 +628,7 @@ public abstract partial class InteractionTest
                 tile = MapSystem.GetTileRef(gridUid, grid, serverCoords).Tile;
         });
 
-        Assert.That(tile.TypeId, Is.EqualTo(targetTile.TypeId));
+        Assert.That(tile.TypeId, Is.EqualTo(targetTile.TypeId), $"Expected tile at NetCoordinates {coords}: {TileMan[targetTile.TypeId].Name}. But was: {TileMan[tile.TypeId].Name}");
     }
 
     protected void AssertGridCount(int value)
@@ -595,6 +642,20 @@ public abstract partial class InteractionTest
         }
 
         Assert.That(count, Is.EqualTo(value));
+    }
+
+    /// <summary>
+    /// Check that some entity is close to a certain coordinate location.
+    /// </summary>
+    /// <param name="target">The entity to check the location for. Defaults to <see cref="target"/></param>
+    /// <param name="coordinates">The coordinates the entity should be at.</param>
+    /// <param name="radius">The maximum allowed distance from the target coords</param>
+    protected void AssertLocation(NetEntity? target, NetCoordinates coords, float radius = 0.01f)
+    {
+        target ??= Target;
+        Assert.That(target, Is.Not.Null, "No target specified");
+        Assert.That(Position(target!.Value).TryDelta(SEntMan, Transform, ToServer(coords), out var delta), "Could not calculate distance between coordinates.");
+        Assert.That(delta.Length(), Is.LessThanOrEqualTo(radius), $"{SEntMan.ToPrettyString(SEntMan.GetEntity(target.Value))} was not at the intended location. Distance: {delta}, allowed distance: {radius}");
     }
 
     #endregion
@@ -829,9 +890,9 @@ public abstract partial class InteractionTest
     /// <summary>
     ///     Sends a bui message using the given bui key.
     /// </summary>
-    protected async Task SendBui(Enum key, BoundUserInterfaceMessage msg, EntityUid? _ = null)
+    protected async Task SendBui(Enum key, BoundUserInterfaceMessage msg, NetEntity? target = null)
     {
-        if (!TryGetBui(key, out var bui))
+        if (!TryGetBui(key, out var bui, target))
             return;
 
         await Client.WaitPost(() => bui.SendMessage(msg));
@@ -843,9 +904,9 @@ public abstract partial class InteractionTest
     /// <summary>
     ///     Sends a bui message using the given bui key.
     /// </summary>
-    protected async Task CloseBui(Enum key, EntityUid? _ = null)
+    protected async Task CloseBui(Enum key, NetEntity? target = null)
     {
-        if (!TryGetBui(key, out var bui))
+        if (!TryGetBui(key, out var bui, target))
             return;
 
         await Client.WaitPost(() => bui.Close());
@@ -1267,14 +1328,24 @@ public abstract partial class InteractionTest
     protected EntityUid? ToServer(NetEntity? nent) => SEntMan.GetEntity(nent);
     protected EntityUid? ToClient(NetEntity? nent) => CEntMan.GetEntity(nent);
     protected EntityUid ToServer(EntityUid cuid) => SEntMan.GetEntity(CEntMan.GetNetEntity(cuid));
-    protected EntityUid ToClient(EntityUid cuid) => CEntMan.GetEntity(SEntMan.GetNetEntity(cuid));
+    protected EntityUid ToClient(EntityUid suid) => CEntMan.GetEntity(SEntMan.GetNetEntity(suid));
     protected EntityUid? ToServer(EntityUid? cuid) => SEntMan.GetEntity(CEntMan.GetNetEntity(cuid));
-    protected EntityUid? ToClient(EntityUid? cuid) => CEntMan.GetEntity(SEntMan.GetNetEntity(cuid));
+    protected EntityUid? ToClient(EntityUid? suid) => CEntMan.GetEntity(SEntMan.GetNetEntity(suid));
 
     protected EntityCoordinates ToServer(NetCoordinates coords) => SEntMan.GetCoordinates(coords);
     protected EntityCoordinates ToClient(NetCoordinates coords) => CEntMan.GetCoordinates(coords);
     protected EntityCoordinates? ToServer(NetCoordinates? coords) => SEntMan.GetCoordinates(coords);
     protected EntityCoordinates? ToClient(NetCoordinates? coords) => CEntMan.GetCoordinates(coords);
+
+    protected NetEntity FromServer(EntityUid suid) => SEntMan.GetNetEntity(suid);
+    protected NetEntity FromClient(EntityUid cuid) => CEntMan.GetNetEntity(cuid);
+    protected NetEntity? FromServer(EntityUid? suid) => SEntMan.GetNetEntity(suid);
+    protected NetEntity? FromClient(EntityUid? cuid) => CEntMan.GetNetEntity(cuid);
+
+    protected NetCoordinates FromServer(EntityCoordinates scoords) => SEntMan.GetNetCoordinates(scoords);
+    protected NetCoordinates FromClient(EntityCoordinates ccoords) => CEntMan.GetNetCoordinates(ccoords);
+    protected NetCoordinates? FromServer(EntityCoordinates? scoords) => SEntMan.GetNetCoordinates(scoords);
+    protected NetCoordinates? FromClient(EntityCoordinates? ccoords) => CEntMan.GetNetCoordinates(ccoords);
 
     #endregion
 
@@ -1288,6 +1359,7 @@ public abstract partial class InteractionTest
 
     protected EntityCoordinates Position(NetEntity uid) => Position(ToServer(uid));
     protected EntityCoordinates Position(EntityUid uid) => Xform(uid).Coordinates;
+    protected NetCoordinates NetPosition(NetEntity uid) => FromServer(Position(uid));
 
     #endregion
 }

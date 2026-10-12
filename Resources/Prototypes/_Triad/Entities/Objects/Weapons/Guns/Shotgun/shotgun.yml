@@ -40,7 +40,7 @@
     node: start
     deconstructionTarget: null
   - type: StaticPrice
-    price: 5000
+    price: 3000
 
 - type: entity
   name: HZD Bombadier (12 gauge, 18.5x76mm) #Low Caliber grenade launcher that happens to also fire shotgun shells.

@@ -37,7 +37,7 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: NpcFactionMember
+    - type: AddNpcFactionOnMapInit
       factions:
       - TDF
     - type: ShipSavingBlacklist # TDF can't save ships
