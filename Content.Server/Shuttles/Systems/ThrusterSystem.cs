@@ -62,9 +62,12 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     private readonly HashSet<EntityUid> _toRemoveColliding = new();
     private readonly HashSet<Entity<TransformComponent>> _fixtureLookupEnts = new();
-    // Triad End
+
+    private const float MaximumThrusterBurnRange = 6.2f;
+    private const float MaximumMobThrusterBurnRange = 2.0f;
 
     public const string BurnFixture = "thruster-burn";
+    // Triad End
 
     public override void Initialize()
     {
@@ -636,7 +639,7 @@ public sealed partial class ThrusterSystem : EntitySystem
         if (!thrusterXform.Coordinates.TryDistance(EntityManager, collider.Comp.Coordinates, out var distance))
             return;
 
-        if (distance > ent.Comp.MaximumThrusterBurnRange)
+        if (distance > MaximumThrusterBurnRange)
             return;
 
         var damageMultiplier = 1.5 * Math.Pow(ent.Comp.DistanceBurnDamageMultiplier, distance);
@@ -651,7 +654,7 @@ public sealed partial class ThrusterSystem : EntitySystem
         if (_mobStateQuery.HasComp(collider))
         {
             // Mobs get can avoid being burnt closer
-            if (distance > ent.Comp.MaximumMobThrusterBurnRange)
+            if (distance > MaximumMobThrusterBurnRange)
                 return;
 
             damage *= ent.Comp.MobBurnDamageMultiplier;

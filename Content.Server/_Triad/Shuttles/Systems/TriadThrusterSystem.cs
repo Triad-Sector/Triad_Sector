@@ -267,11 +267,13 @@ public sealed partial class TriadThrusterSystem : EntitySystem
     {
         clearanceFraction = 0.0f;
 
-        // Prevents horrible lag from spam
-        if (ent.Comp2.NextRayCheck > _timing.CurTime)
-            return true;
+        var thruster = ent.Comp2;
 
-        ent.Comp2.NextRayCheck = _timing.CurTime + RayCheckCooldown;
+        // Prevents horrible lag from spam
+        if (thruster.NextRayCheck > _timing.CurTime)
+            return thruster.LastRayCheckClear;
+
+        thruster.NextRayCheck = _timing.CurTime + RayCheckCooldown;
 
         var xform = ent.Comp1;
 
@@ -286,7 +288,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
 
         var clearQuality = 0d;
 
-        var rayProfileTable = ThrusterBlockingProfileTable[(int)ent.Comp2.ThrusterProfile];
+        var rayProfileTable = ThrusterBlockingProfileTable[(int)thruster.ThrusterProfile];
         var requiredQuality = rayProfileTable.RequiredQuality;
 
         foreach (var rayPreset in rayProfileTable.Rays)
@@ -338,7 +340,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                     grilleCount++;
 
                 // Entities that fit the block whitelist were in the thruster's path. This path is blocked.
-                if (_whitelist.IsWhitelistPass(ent.Comp2.BlockThrusterWhitelist, hitEnt))
+                if (_whitelist.IsWhitelistPass(thruster.BlockThrusterWhitelist, hitEnt))
                 {
                     blocked = true;
                     break;
@@ -353,7 +355,10 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 clearQuality += rayPreset.Quality;
         }
 
+        var cleared = clearQuality >= requiredQuality;
+        thruster.LastRayCheckClear = cleared; // Store last value to prevent spam
         clearanceFraction = (float)clearQuality / requiredQuality;
+
         return clearQuality >= requiredQuality;
     }
 }
