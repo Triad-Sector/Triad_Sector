@@ -151,7 +151,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                     offsetY: 0.15f
                 ),
             ],
-            3 // 3 min quality
+            2 // 2 min quality
         ),
 
         // Large thruster
