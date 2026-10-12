@@ -91,6 +91,9 @@
 - type: Tag
   id: IgnoreThrusterDamage
 
+- type: Tag
+  id: Grille
+
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox

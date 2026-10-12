@@ -3,19 +3,25 @@ using Content.Server.Shuttles.Components;
 using Content.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics;
+using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using System.Linq;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Triad.Shuttles.Systems;
 
 public sealed partial class TriadThrusterSystem : EntitySystem
 {
     [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     private const CollisionGroup StructureMask = CollisionGroup.FullTileMask;
+
+    private static readonly ProtoId<TagPrototype> GrilleTag = "Grille";
+    private static readonly int MaxGrilles = 2;
 
     public static readonly List<ThrusterBlockingProfileData> ThrusterBlockingProfileTable =
     [
@@ -309,6 +315,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
             //Log.Debug($"RAY ANGLE: {rayDirection.GetCardinalDir()}");
 
             var blocked = false;
+            var grilleCount = 0;
             foreach (var hit in rayResults)
             {
                 var hitEnt = hit.HitEntity;
@@ -318,6 +325,9 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 if (hitxForm.GridUid != xform.GridUid)
                     continue;
 
+                if (_tag.HasTag(hitEnt, GrilleTag))
+                    grilleCount++;
+
                 // Entities that fit the block whitelist were in the thruster's path. This path is blocked.
                 if (_whitelist.IsWhitelistPass(ent.Comp2.BlockThrusterWhitelist, hitEnt))
                 {
@@ -326,7 +336,8 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 }
             }
 
-            if (!blocked)
+            // Check if the ray was blocked. Any path that is blocked by 3 or more grilles is considered blocked.
+            if (!blocked && grilleCount >= MaxGrilles)
                 clearQuality += rayPreset.Quality;
         }
 

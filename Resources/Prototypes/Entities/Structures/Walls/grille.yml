@@ -93,6 +93,7 @@
     - type: Tag
       tags:
       - Structure
+      - Grille
       - IgnoreThrusterDamage
     # Triad End
 
@@ -200,6 +201,7 @@
     tags:
     - Diagonal
     - Structure
+    - Grille
     - IgnoreThrusterDamage
   - type: Fixtures
     fixtures:
@@ -239,6 +241,9 @@
   - type: Tag
     tags:
     - Diagonal
+    - Structure
+    - Grille
+    - IgnoreThrusterDamage
   - type: Fixtures
     fixtures:
       fix1:
