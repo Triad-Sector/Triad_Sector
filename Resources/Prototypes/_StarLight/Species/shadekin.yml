@@ -25,6 +25,8 @@
     Chest: MobShadekinTorso
     HeadTop: MobShadekinAnyMarking
     HeadSide: MobShadekinAnyMarkingFollowSkin
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Tail: MobShadekinAnyMarking
     Eyes: MobShadekinEyes
     LArm: MobShadekinLArm
@@ -53,6 +55,12 @@
       points: 1
       required: true
       defaultMarkings: [EarsShadekin]
+    UndergarmentTop:
+      points: 8 # Triad - Increased to 8.
+      required: false
+    UndergarmentBottom:
+      points: 8 # Triad - Increased to 8.
+      required: false
     Chest:
       points: 2
       required: false
