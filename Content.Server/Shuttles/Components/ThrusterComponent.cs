@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Shuttles.Components
 {
     [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
-    [Access(typeof(ThrusterSystem))]
+    [Access(typeof(ThrusterSystem), typeof(TriadThrusterSystem))]
     public sealed partial class ThrusterComponent : Component
     {
         /// <summary>
@@ -79,6 +79,9 @@ namespace Content.Server.Shuttles.Components
 
         [DataField]
         public float DistanceBurnDamageMultiplier = 0.85f;
+
+        [ViewVariables]
+        public TimeSpan NextRayCheck;
         // Triad end
 
         public bool Firing = false;

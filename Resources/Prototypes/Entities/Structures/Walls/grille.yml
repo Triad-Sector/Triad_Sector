@@ -199,7 +199,6 @@
     state: grille_diagonal
   - type: Tag
     tags:
-    - Diagonal
     - Structure
     - Grille
     - IgnoreThrusterDamage
@@ -240,7 +239,6 @@
     state: ratvargrille_diagonal
   - type: Tag
     tags:
-    - Diagonal
     - Structure
     - Grille
     - IgnoreThrusterDamage

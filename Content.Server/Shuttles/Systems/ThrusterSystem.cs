@@ -103,7 +103,7 @@ public sealed partial class ThrusterSystem : EntitySystem
             return; // Invalid port, don't change the thruster.
 
         if (!component.Enabled)
-            DisableThruster(uid, component);
+            DisableThruster(uid, component, null, togglePower: true);
         else if (CanEnable(uid, component))
             EnableThruster(uid, component);
     }
@@ -208,7 +208,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         if (!component.Enabled)
         {
-            DisableThruster(uid, component);
+            DisableThruster(uid, component, null, togglePower: true);
             args.Handled = true;
         }
         else if (CanEnable(uid, component))
@@ -442,7 +442,7 @@ public sealed partial class ThrusterSystem : EntitySystem
     /// <summary>
     /// Tries to disable the thruster.
     /// </summary>
-    public void DisableThruster(EntityUid uid, ThrusterComponent component, EntityUid? gridId, TransformComponent? xform = null, Angle? angle = null)
+    public void DisableThruster(EntityUid uid, ThrusterComponent component, EntityUid? gridId, TransformComponent? xform = null, Angle? angle = null, bool togglePower = false)
     {
         if (!component.IsOn ||
             !Resolve(uid, ref xform))
@@ -455,11 +455,11 @@ public sealed partial class ThrusterSystem : EntitySystem
         if (!EntityManager.TryGetComponent(gridId, out ShuttleComponent? shuttleComponent))
             return;
 
-        if (_apcPowerQuery.TryComp(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1)
+        if (togglePower && _apcPowerQuery.TryComp(uid, out var apcPower) && component.OriginalLoad != 0)
             apcPower.Load = 1;
 
         component.Firing = false;
-        _appearance.SetData(uid, ThrusterVisualState.Thrusting, true);
+        _appearance.SetData(uid, ThrusterVisualState.Thrusting, false);
 
         // Logger.DebugS("thruster", $"Disabled thruster {uid}");
 

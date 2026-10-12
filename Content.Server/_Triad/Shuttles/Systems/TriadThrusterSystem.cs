@@ -8,20 +8,23 @@ using Content.Shared.Whitelist;
 using System.Linq;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Triad.Shuttles.Systems;
 
 public sealed partial class TriadThrusterSystem : EntitySystem
 {
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
-    private const CollisionGroup StructureMask = CollisionGroup.FullTileMask;
-
     private static readonly ProtoId<TagPrototype> GrilleTag = "Grille";
-    private static readonly int MaxGrilles = 2;
+    private static readonly TimeSpan RayCheckCooldown = TimeSpan.FromSeconds(3);
+    private const int MaxGrilles = 3;
+
+    private const CollisionGroup StructureMask = CollisionGroup.FullTileMask;
 
     public static readonly List<ThrusterBlockingProfileData> ThrusterBlockingProfileTable =
     [
@@ -148,7 +151,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                     offsetY: 0.15f
                 ),
             ],
-            4 // 4 min quality
+            3 // 3 min quality
         ),
 
         // Large thruster
@@ -215,13 +218,13 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 ),
 
                 new ThrusterBlockingRayData(
-                    angle: 33.5d,
+                    angle: 30.5d,
                     offsetX: 0.5f,
                     offsetY: 0.0f
                 ),
 
                 new ThrusterBlockingRayData(
-                    angle: -33.5d,
+                    angle: -30.5d,
                     offsetX: 0.5f,
                     offsetY: 0.0f
                 ),
@@ -256,13 +259,19 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                     offsetY: -1.0f
                 )
             ],
-            5 // 5 min quality
+            3 // 3 min quality
         ),
     ];
 
     public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent, out float clearanceFraction)
     {
         clearanceFraction = 0.0f;
+
+        // Prevents horrible lag from spam
+        if (ent.Comp2.NextRayCheck > _timing.CurTime)
+            return true;
+
+        ent.Comp2.NextRayCheck = _timing.CurTime + RayCheckCooldown;
 
         var xform = ent.Comp1;
 
@@ -336,8 +345,11 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 }
             }
 
+            if (grilleCount > MaxGrilles)
+                blocked = true;
+
             // Check if the ray was blocked. Any path that is blocked by 3 or more grilles is considered blocked.
-            if (!blocked && grilleCount >= MaxGrilles)
+            if (!blocked)
                 clearQuality += rayPreset.Quality;
         }
 

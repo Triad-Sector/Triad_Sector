@@ -1,5 +1,3 @@
-using System.Numerics;
-
 namespace Content.Server._Triad.Shuttles.Systems;
 
 public enum ThrusterBlockingProfile
