@@ -39,8 +39,6 @@ public sealed partial class ThrusterSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedAudioSystem _audio = default!; // Triad - thruster changes
     [Dependency] private SharedPopupSystem _popup = default!; // Triad - thruster changes
-    [Dependency] private SharedPhysicsSystem _physics = default!; // Triad - thruster changes
-    [Dependency] private SharedTransformSystem _transform = default!; // Triad - thruster changes
     [Dependency] private EntityWhitelistSystem _whitelist = default!; // Triad - thruster changes
     [Dependency] private EntityLookupSystem _lookup = default!; // Triad - thruster changes
     [Dependency] private AmbientSoundSystem _ambient = default!;

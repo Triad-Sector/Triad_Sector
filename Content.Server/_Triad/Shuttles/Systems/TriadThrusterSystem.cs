@@ -21,7 +21,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     private static readonly ProtoId<TagPrototype> GrilleTag = "Grille";
-    private static readonly TimeSpan RayCheckCooldown = TimeSpan.FromSeconds(3);
+    private static readonly TimeSpan RayCheckCooldown = TimeSpan.FromSeconds(5);
     private const int MaxGrilles = 3;
 
     private const CollisionGroup StructureMask = CollisionGroup.FullTileMask;
