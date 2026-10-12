@@ -212,6 +212,12 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 ),
 
                 new ThrusterBlockingRayData(
+                    angle: 53d,
+                    offsetX: 0.5f,
+                    offsetY: 0.0f
+                ),
+
+                new ThrusterBlockingRayData(
                     angle: -53d,
                     offsetX: 0.5f,
                     offsetY: 0.0f
@@ -232,6 +238,12 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                 new ThrusterBlockingRayData(
                     angle: 24.5d,
                     offsetX: 0.25f,
+                    offsetY: 0.45f
+                ),
+
+                new ThrusterBlockingRayData(
+                    angle: -24.5d,
+                    offsetX: 0.75f,
                     offsetY: 0.45f
                 ),
 
@@ -263,14 +275,15 @@ public sealed partial class TriadThrusterSystem : EntitySystem
         ),
     ];
 
-    public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent, out float clearanceFraction)
+    public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent, bool playerTriggered, out float clearanceFraction)
     {
         clearanceFraction = 0.0f;
 
         var thruster = ent.Comp2;
 
         // Prevents horrible lag from spam
-        if (thruster.NextRayCheck > _timing.CurTime)
+        // Manual triggers, such as examining or toggling, will ignore this cooldown.
+        if (thruster.NextRayCheck > _timing.CurTime && !playerTriggered)
             return thruster.LastRayCheckClear;
 
         thruster.NextRayCheck = _timing.CurTime + RayCheckCooldown;

@@ -74,11 +74,11 @@ namespace Content.Server.Shuttles.Components
         [DataField]
         public float DistanceBurnDamageMultiplier = 0.85f;
 
-        [ViewVariables]
-        public TimeSpan NextRayCheck;
+        [DataField]
+        public bool LastRayCheckClear = false;
 
         [ViewVariables]
-        public bool LastRayCheckClear = false;
+        public TimeSpan NextRayCheck;
         // Triad end
 
         public bool Firing = false;

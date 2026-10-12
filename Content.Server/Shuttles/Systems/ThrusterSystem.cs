@@ -104,8 +104,8 @@ public sealed partial class ThrusterSystem : EntitySystem
             return; // Invalid port, don't change the thruster.
 
         if (!component.Enabled)
-            DisableThruster(uid, component, null, togglePower: true);
-        else if (CanEnable(uid, component))
+            DisableThruster(uid, component, togglePower: true);
+        else if (CanEnable(uid, component, playerTriggered: false))
             EnableThruster(uid, component);
     }
     // End Frontier: signal handler
@@ -129,7 +129,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
                 args.PushMarkup(nozzleDir);
 
-                var exposed = NozzleExposed((uid, xform, component), out var clearanceFraction);
+                var exposed = NozzleExposed((uid, xform, component), playerTriggered: true, out var clearanceFraction);
 
                 var nozzleText =
                     Loc.GetString(exposed ? "thruster-comp-nozzle-exposed" : "thruster-comp-nozzle-not-exposed");
@@ -209,10 +209,10 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         if (!component.Enabled)
         {
-            DisableThruster(uid, component, null, togglePower: true);
+            DisableThruster(uid, component);
             args.Handled = true;
         }
-        else if (CanEnable(uid, component))
+        else if (CanEnable(uid, component, playerTriggered: true))
         {
             EnableThruster(uid, component);
             args.Handled = true;
@@ -234,7 +234,7 @@ public sealed partial class ThrusterSystem : EntitySystem
             return;
         }
 
-        var canEnable = CanEnable(uid, component);
+        var canEnable = CanEnable(uid, component, playerTriggered: true);
 
         // If it's not on then don't enable it inadvertantly (given we don't have an old rotation)
         if (!canEnable && !component.IsOn)
@@ -292,7 +292,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     private void OnAnchorChange(EntityUid uid, ThrusterComponent component, ref AnchorStateChangedEvent args)
     {
-        if (args.Anchored && CanEnable(uid, component))
+        if (args.Anchored && CanEnable(uid, component, playerTriggered: true))
         {
             EnableThruster(uid, component);
         }
@@ -311,7 +311,7 @@ public sealed partial class ThrusterSystem : EntitySystem
             return;
         }
 
-        if (CanEnable(uid, component))
+        if (CanEnable(uid, component, playerTriggered: false, init: true))
         {
             EnableThruster(uid, component);
         }
@@ -329,7 +329,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     private void OnPowerChange(EntityUid uid, ThrusterComponent component, ref PowerChangedEvent args)
     {
-        if (args.Powered && CanEnable(uid, component))
+        if (args.Powered && CanEnable(uid, component, playerTriggered: false, init: true))
         {
             EnableThruster(uid, component);
         }
@@ -434,7 +434,7 @@ public sealed partial class ThrusterSystem : EntitySystem
         }
     }
 
-    public void DisableThruster(EntityUid uid, ThrusterComponent component, TransformComponent? xform = null, Angle? angle = null)
+    public void DisableThruster(EntityUid uid, ThrusterComponent component, TransformComponent? xform = null, bool togglePower = false, Angle? angle = null)
     {
         if (!Resolve(uid, ref xform)) return;
         DisableThruster(uid, component, xform.GridUid, xform);
@@ -505,7 +505,7 @@ public sealed partial class ThrusterSystem : EntitySystem
         RefreshCenter(uid, shuttleComponent);
     }
 
-    public bool CanEnable(EntityUid uid, ThrusterComponent component)
+    public bool CanEnable(EntityUid uid, ThrusterComponent component, bool playerTriggered, bool init = false)
     {
         if (!component.Enabled)
             return false;
@@ -520,14 +520,19 @@ public sealed partial class ThrusterSystem : EntitySystem
             return false;
         }
 
+        // Ignore raycast checks on init if the last check was clear.
+        // This is to prevent lag spikes when ships are loaded.
+        if (init && component.LastRayCheckClear)
+            return true;
+
         if (!component.RequireSpace)
             return true;
 
-        return NozzleExposed((uid, xform, component), out _);
+        return NozzleExposed((uid, xform, component), playerTriggered, out _);
     }
 
     // Triad Start - thruster changes
-    private bool NozzleExposed(Entity<TransformComponent, ThrusterComponent> ent, out float clearanceFraction)
+    private bool NozzleExposed(Entity<TransformComponent, ThrusterComponent> ent, bool playerTriggered, out float clearanceFraction)
     {
         clearanceFraction = 0.0f;
 
@@ -541,7 +546,7 @@ public sealed partial class ThrusterSystem : EntitySystem
         var tile = _mapSystem.GetTileRef(xform.GridUid.Value, mapGrid, new Vector2i((int)Math.Floor(x), (int)Math.Floor(y)));
 
         var isSpace = _turf.IsSpace(tile.Tile);
-        var exposedRaycast = _triadThruster.NozzleExposedRaycast(ent, out var outFraction);
+        var exposedRaycast = _triadThruster.NozzleExposedRaycast(ent, playerTriggered, out var outFraction);
 
         if (isSpace)
             clearanceFraction = outFraction; // Only show if the tile in front is space
@@ -791,7 +796,7 @@ public sealed partial class ThrusterSystem : EntitySystem
 
         component.Thrust = component.BaseThrust * MathF.Pow(component.PartRatingThrustMultiplier, thrustRating - 1);
 
-        if (component.Enabled && CanEnable(uid, component))
+        if (component.Enabled && CanEnable(uid, component, playerTriggered: false))
             EnableThruster(uid, component);
     }
 
