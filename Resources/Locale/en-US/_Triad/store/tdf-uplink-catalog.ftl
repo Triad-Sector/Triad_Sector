@@ -69,7 +69,7 @@ uplink-security-8x65mm-skr-magazine-desc = A box containing 4 8x65mm SKR FMJ mag
 uplink-security-23x75mmbeanbag-box-name = 4 Gauge Shotgun Beanbag Shell Box
 uplink-security-23x75mmbeanbag-box-desc = A box containing 24 4 gauge beanbag shells.
 uplink-security-185x76mm-magazine-EMP-name = 18.5x76mm EMP Magazines
-uplink-security-185x76mm-magazine-EMP-desc = A box containing 4 18.5x76mm EMP magazines.
+uplink-security-185x76mm-magazine-EMP-desc = A box containing 4 18.5x76mm EMP magazines for the Bombadier.
 
 uplink-security-hypo-name = Hypospray
 uplink-security-hypo-desc = A sterile medical injector for instant delivery of medications.
@@ -92,7 +92,7 @@ uplink-security-shotbeanbag-desc = A box of non-lethal 12 gauge beanbag shotgun 
 uplink-security-shotslug-name = Lethal Shotgun Slug Shells
 uplink-security-shotslug-desc = A box of lethal 12 gauge slug shotgun shells.
 uplink-security-empgrenade-box-name = EMP Grenade Box
-uplink-security-empgrenade-box-desc = A box containing 4 EMP grenades.
+uplink-security-empgrenade-box-desc = A box containing 4 EMP hand grenades.
 uplink-security-explosivegrenade-box-name = Explosive Grenade Box
 uplink-security-explosivegrenade-box-desc = A box containing 4 explosive grenades.
 uplink-security-incendiarygrenade-box-name = Incendiary Grenade Box
@@ -113,10 +113,14 @@ uplink-security-hoverbike-name = TDF Hoverbike Flatpack
 uplink-security-hoverbike-desc = Flatpack containing TDF issued turbine with bike handles. Keys already slotted in the ignition. Very safe.
 uplink-security-trackingdart-bundle-name = Tracking Dart Bundle
 uplink-security-trackingdart-bundle-desc = A bundle containing a Lake type launcher, 3 tracking darts and 3 pinpointers.
-uplink-security-emp-ammo-name = EMP Launcher Grenades
-uplink-security-emp-ammo-desc = A box containing 4 EMP launcher grenades.
+uplink-security-emp-ammo-name = 40mm EMP Launcher Grenades
+uplink-security-emp-ammo-desc = A magazine containing 5 40mm EMP launcher grenades.
+uplink-security-thermobaric-ammo-name = 40mm Thermobaric Launcher Grenades
+uplink-security-thermobaric-ammo-desc = A magazine containing 5 40mm thermobaric launcher grenades.
+uplink-security-frag-ammo-name = 40mm Fragmentation Launcher Grenades
+uplink-security-frag-ammo-desc = A magazine containing 5 40mm fragmentation launcher grenades.
 uplink-security-trackingdart-ammo-name = Tracking Darts
-uplink-security-trackingdart-ammo-desc = A box containing 3 tracking darts and 3 pinpointers. Can be fired from the non-lethal grenade launcher.
+uplink-security-trackingdart-ammo-desc = A box containing 3 tracking darts and 3 pinpointers. Can be fired from the Bear's Leg grenade launcher.
 
 uplink-security-spaceblade-sec-name = Security SpaceBlade
 uplink-security-spaceblade-sec-desc = The latest in stun tech.
@@ -151,9 +155,6 @@ uplink-security-tools-desc = A duffel bag loaded with tools for repair and maint
 uplink-security-components-name = Super Components box
 uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
 
-uplink-security-lake-name = Non-lethal grenade launcher
-uplink-security-lake-desc = A China Lake pattern grenade launcher modified to only fire non-lethal grenades and tracking darts. Ammunition sold separately.
-
 uplink-security-gun-mk58-name = MA Mk-58 Bundle
 uplink-security-gun-mk58-desc = Case containing a standard-issue pistol and reserve ammunition.
 
@@ -162,6 +163,12 @@ uplink-security-gun-vigil-desc = Case containing a standard-issue assault rifle 
 
 uplink-security-gun-drozd-name = TCA M-5 "Drozd" Bundle
 uplink-security-gun-drozd-desc = Case containing a high-caliber submachine gun and reserve ammunition.
+
+uplink-security-gun-wt550-name = WT550 Bundle
+uplink-security-gun-wt550-desc = Case containing a one-handed submachine gun and reserve ammunition.
+
+uplink-security-gun-bears-leg-name = M-8 Bear's Leg Bundle
+uplink-security-gun-bears-leg-desc = Case containing a single shot 40mm grenade launcher and reserve ammunition.
 
 uplink-security-gun-enforcer-name = Enforcer Bundle
 uplink-security-gun-enforcer-desc = Case containing a semi-automatic shotgun and reserve ammunition.
@@ -175,9 +182,8 @@ uplink-security-gun-bishop-desc = Case containing a modern TDF marskman rifle an
 uplink-security-gun-riot-name = MMG-38 "Riot" Bundle
 uplink-security-gun-riot-desc = Case containing a high-capacity medium machine gun and reserve ammunition.
 
-
-uplink-security-gun-bombadier-name = HZD Bombadier Bundle
-uplink-security-gun-bombadier-desc = Case containing a grenade launcher/shotgun hybrid and reserve ammunition.
+uplink-security-gun-bombadier-name = HZD "Bombadier" Bundle
+uplink-security-gun-bombadier-desc = Case containing a 18.5mm grenade launcher/shotgun hybrid and reserve ammunition.
 
 uplink-security-gun-squire-name = HZD Squire Bundle
 uplink-security-gun-squire-desc = Case containing a small-caliber submachine gun and reserve ammunition. The SMG comes with a foldable stock for easier carry.

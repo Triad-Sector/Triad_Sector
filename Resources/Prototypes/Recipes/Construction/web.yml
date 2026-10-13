@@ -14,8 +14,12 @@
   canRotate: false
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   conditions:
     - !type:TileNotBlocked
 
@@ -35,8 +39,12 @@
   canRotate: false
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   conditions:
     - !type:TileNotBlocked
 
@@ -56,8 +64,12 @@
   canRotate: false
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   conditions:
     - !type:TileNotBlocked
 
@@ -76,8 +88,12 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
 
 - type: construction
   name: web crate
@@ -95,8 +111,12 @@
   canRotate: false
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
 
 - type: construction
   name: web door
@@ -113,8 +133,12 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   conditions:
     - !type:TileNotBlocked
 
@@ -134,7 +158,11 @@
   canRotate: false
   canBuildInImpassable: false
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   conditions:
     - !type:TileNotBlocked

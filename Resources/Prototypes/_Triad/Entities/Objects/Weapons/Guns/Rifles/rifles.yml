@@ -71,6 +71,7 @@
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil_inhands_32x.rsi
   - type: Gun
+    fireRate: 5
     cameraRecoilScalar: 0.5 # grip
     angleIncrease: 0.4
 
@@ -100,46 +101,6 @@
           tags:
             - Cartridge68x52mmCaseless
             - Cartridge556x45mmFMJ
-
-- type: entity
-  parent: [WeaponRifleVulcan, BaseFactionGearTDFT2, BaseShipContrabandPermittableTdf]
-  name: TDF MT-5 Crosshair (7.62x51mm)
-  id: WeaponRifleCrosshair
-  description: A modern TDF enforcer rifle based on the Vulcan's blueprint. Chambered in 7.62x51mm, it is designed for close to medium-range combat, delivering substantial stopping power while retaining versatility across varying engagements.
-  components:
-  - type: Clothing
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair_inhands_32.rsi
-  - type: Item
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair_inhands_32.rsi
-  - type: Sprite
-    sprite: _Triad/Objects/Weapons/Guns/Rifles/crosshair.rsi
-    layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
-  - type: GunWieldBonus
-    minAngle: -5
-    maxAngle: -15
-  - type: Gun
-    minAngle: 12
-    maxAngle: 32
-    angleIncrease: 4
-    angleDecay: 4
-    fireRate: 5
-    availableModes:
-    - SemiAuto
-    - FullAuto
-    soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
-    soundEmpty:
-      path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
-  - type: SpeedModifiedOnWield # Mono
-    walkModifier: 1
-    sprintModifier: 0.9
-  - type: PirateBountyItem # Mono
-    id: StandardFactionLongarm
-  - type: GunRequiresWield
 
 - type: entity
   parent: [BaseFactionGearTDFT2, WeaponRifleMR8C, BaseShipContrabandPermittableTdf]
