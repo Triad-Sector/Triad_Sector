@@ -47,15 +47,15 @@
     - proto: NFMobShark
       cost: 3
       prob: 0.2
-    - proto: NFMobRainbowWyvernIce
-      cost: 3
-      prob: 0.05
-    - proto: NFMobRainbowWyvernFire
-      cost: 3
-      prob: 0.05
-    - proto: NFMobRainbowWyvernCaustic
-      cost: 3
-      prob: 0.05
+    # - proto: NFMobRainbowWyvernIce #Triad doens't have the entity, disabling for now
+    #   cost: 3
+    #   prob: 0.05
+    # - proto: NFMobRainbowWyvernFire
+    #   cost: 3
+    #   prob: 0.05
+    # - proto: NFMobRainbowWyvernCaustic
+    #   cost: 3
+    #   prob: 0.05
     - proto: MobDragonDungeon
       cost: 4
       prob: 0.05

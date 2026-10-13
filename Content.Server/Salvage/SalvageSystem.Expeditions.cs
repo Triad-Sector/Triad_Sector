@@ -283,8 +283,8 @@ public sealed partial class SalvageSystem
 
     private void GiveRewards(SalvageExpeditionComponent comp, SalvageDifficultyPrototype difficulty)
     {
-        // if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
-        //     return;
+        if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
+            return;
 
         var palletList = new List<EntityUid>();
         var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent

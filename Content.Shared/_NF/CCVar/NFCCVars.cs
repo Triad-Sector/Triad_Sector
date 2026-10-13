@@ -145,6 +145,12 @@ public sealed class NFCCVars
         CVarDef.Create("nf14.salvage.expedition_failed_cooldown", 450f, CVar.REPLICATED); //Mono 1200->450
 
     /// <summary>
+    /// Whether salvage expedition rewards is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> SalvageExpeditionRewardsEnabled =
+        CVarDef.Create("nf14.salvage.expedition_rewards_enabled", true, CVar.REPLICATED);
+
+    /// <summary>
     /// Transit time in hyperspace in seconds.
     /// </summary>
     public static readonly CVarDef<float> SalvageExpeditionTravelTime =
