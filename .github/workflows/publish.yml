@@ -21,9 +21,10 @@ on:
   # picks up everything merged since the last tick, atomically, no race to reason about.
   # Cron is UTC-only with no DST awareness, so two entries cover 5PM Eastern year-round;
   # the "Skip if wrong DST cron entry" step below picks the correct one and no-ops the other.
-  schedule:
-    - cron: '0 21 * * *' # 5PM EDT (UTC-4), roughly second Sunday in March - first Sunday in November
-    - cron: '0 22 * * *' # 5PM EST (UTC-5), the rest of the year
+#  schedule:
+#    - cron: '0 21 * * *' # 5PM EDT (UTC-4), roughly second Sunday in March - first Sunday in November
+#    - cron: '0 22 * * *' # 5PM EST (UTC-5), the rest of the year
+# No more auto publishs
 
 # Triad: no cancel-in-progress on purpose, though upstream sets it. Cancelling between
 # publish/start and publish/finish strands a half-open version on Robust.Cdn that 409s

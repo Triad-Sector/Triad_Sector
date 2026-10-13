@@ -152,9 +152,14 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
         var hairStyles = markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.Hair, species).Keys.ToList();
         var facialHairStyles = markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.FacialHair, species).Keys.ToList();
 
+        var speciesProto = IoCManager.Resolve<IPrototypeManager>().Index<SpeciesPrototype>(species);
+
         var newHairStyle = hairStyles.Count > 0
             ? random.Pick(hairStyles)
             : HairStyles.DefaultHairStyle.Id;
+
+        if (speciesProto.DefaultHair != null)
+            newHairStyle = speciesProto.DefaultHair;
 
         var newFacialHairStyle = facialHairStyles.Count == 0 || sex == Sex.Female
             ? HairStyles.DefaultFacialHairStyle.Id
@@ -170,7 +175,7 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
 
         var newEyeColor = random.Pick(RealisticEyeColors);
 
-        var skinType = IoCManager.Resolve<IPrototypeManager>().Index<SpeciesPrototype>(species).SkinColoration;
+        var skinType = speciesProto.SkinColoration;
 
         var newSkinColor = new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1);
         switch (skinType)

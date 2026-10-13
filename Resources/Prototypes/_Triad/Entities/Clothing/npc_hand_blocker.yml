@@ -1,0 +1,13 @@
+- type: entity
+  parent: [ Clothing, RecyclableItemClothSmall ]
+  id: NPCHandBlocker
+  name: Blocked
+  description: Can't fit anything there.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    state: icon

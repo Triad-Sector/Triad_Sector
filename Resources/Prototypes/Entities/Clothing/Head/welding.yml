@@ -65,7 +65,7 @@
 - type: entity
   parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWelding
-  name: welding mask
+  name: welding helmet
   description: A head-mounted face cover designed to protect the wearer completely from space-arc eye.
   components:
   - type: Sprite
@@ -81,7 +81,7 @@
 - type: entity
   parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskFlame
-  name: flame welding mask
+  name: flame welding helmet
   description: A painted welding helmet, this one has flames on it.
   components:
   - type: Sprite
@@ -92,7 +92,7 @@
 - type: entity
   parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskFlameBlue
-  name: blue-flame welding mask
+  name: blue-flame welding helmet
   description: A painted welding helmet, this one has blue flames on it.
   components:
   - type: Sprite
@@ -103,7 +103,7 @@
 - type: entity
   parent: WeldingMaskToggleableBase
   id: ClothingHeadHatWeldingMaskPainted
-  name: painted welding mask
+  name: painted welding helmet
   description: A welding helmet, painted in crimson.
   components:
   - type: Sprite

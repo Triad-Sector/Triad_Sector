@@ -1,8 +1,8 @@
 - type: entity
-  parent: [BaseNightVisionClothingGenTwo, ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
+  parent: [BaseNightVisionClothingGenTwo, ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, ShowSecurityIcons]
   id: ClothingHeadHelmetHardsuitTdf
   name: TA-21 helmet
-  description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic, compared to NanoTrasen's original N-20 design.
+  description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic and security HUD, compared to NanoTrasen's original N-20 design.
   categories: [ HideSpawnMenu ]
   components:
   - type: Tag # Ignore Chameleon tags
@@ -30,7 +30,7 @@
     color: "#F5EDE5"
 
 - type: entity
-  parent: ClothingHeadHelmetHardsuitTdf
+  parent: [ ClothingHeadHelmetHardsuitTdf, ShowMedicalIcons, ShowSecurityIcons ]
   id: ClothingHeadHelmetHardsuitTdfMedic
   name: TA-21M medic helmet
   categories: [ HideSpawnMenu ]
@@ -52,10 +52,10 @@
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-ta29.rsi
 
 - type: entity
-  parent: [BaseNightVisionClothingGenThree, ClothingHeadHelmetHardsuitTdf, ShowMedicalIcons, ShowSecurityIcons]
+  parent: [BaseNightVisionClothingGenThree, ClothingHeadHelmetHardsuitTdf, ShowSecurityIcons]
   id: ClothingHeadHelmetHardsuitTdfChiefEnforcer
   name: TA-35 tacsuit helmet
-  description: An armored tacsuit helmet used by the TDF. Comes with an advanced heads-up display allowing you to view security and medical records.
+  description: An armored tacsuit helmet used by the TDF. Contains an integrated security HUD.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

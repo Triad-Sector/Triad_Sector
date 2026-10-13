@@ -87,6 +87,17 @@
 - type: Tag
   id: BorgModuleSolarianEngineering
 
+# Structures
+- type: Tag
+  id: IgnoreThrusterDamage
+
+- type: Tag
+  id: Grille
+
+# Emotes
+- type: Tag
+  id: OviniaEmotes # Used for Ovinia specific emotes
+  
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox

@@ -92,6 +92,11 @@
           32:
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Triad/Mobs/Species/Reptilian/displacement.rsi
+            state: outerclothing-hardsuit
     displacements:
       jumpsuit:
         sizeMaps:
@@ -103,6 +108,11 @@
           32:
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Triad/Mobs/Species/Reptilian/displacement.rsi
+            state: outerclothing-hardsuit
     # WWDP-Edit-End
   - type: Tag # Mono/Goobstation
     tags:

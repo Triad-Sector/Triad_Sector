@@ -697,7 +697,13 @@
   - ContractorClothingHeadSanabi # Mono
   - ContractorClothingHeadNurseHat
   - ContractorClothingHeadHatHoodBioScientist
-  - ContractorClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  - ClothingHeadHatHardhatArmored
   - ContractorClothingHeadHatChef
   - ContractorClothingHeadTinfoil
   - ContractorClothingHeadRastaHat
