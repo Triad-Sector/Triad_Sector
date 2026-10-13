@@ -51,17 +51,17 @@ public abstract partial class SharedClawsSystem
 
         if (TryGetStage(claws, out var stage) && !stage.CanBeCut)
         {
-            _popup.PopupClient(Loc.GetString("has-no-claws-popup"), Transform(user).Coordinates, user);
+            _popup.PopupClient(Loc.GetString("has-no-claws-popup", ("entity", target)), Transform(user).Coordinates, user); // Triad - Pronouns.
             return false;
         }
 
         if ((TryGetStageNumber(claws) <= 0) & (component.DeclawChance < 1))
         {
-            _popup.PopupClient(Loc.GetString("claws-too-short-popup"), Transform(user).Coordinates, user);
+            _popup.PopupClient(Loc.GetString("claws-too-short-popup", ("entity", target)), Transform(user).Coordinates, user); // Triad - Pronouns.
             return false;
         }
 
-        _popup.PopupClient(Loc.GetString("claws-clipping-doafter"), Transform(user).Coordinates, user);
+        _popup.PopupClient(Loc.GetString("claws-clipping-doafter", ("entity", target)), Transform(user).Coordinates, user); // Triad - Pronouns.
 
         var doAfterArgs = new DoAfterArgs(EntityManager,
             user,
