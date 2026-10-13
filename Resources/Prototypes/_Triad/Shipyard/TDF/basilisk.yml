@@ -18,12 +18,12 @@
   - AME
 
 - type: gameMap
-  id: basilisk
-  mapName: 'basilisk'
+  id: Basilisk
+  mapName: 'Basilisk'
   mapPath: /Maps/_Triad/Shuttles/TDF/basilisk.yml
   minPlayers: 0
   stations:
-    basilisk:
+    Basilisk:
       stationProto: StandardFrontierSecurityVessel
       components:
       - type: StationNameSetup
