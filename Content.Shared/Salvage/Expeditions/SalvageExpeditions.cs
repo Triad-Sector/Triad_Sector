@@ -142,6 +142,7 @@ public sealed record SalvageMission(
     string Dungeon,
     string Faction,
     string Biome,
+    string Weather,
     string Air,
     float Temperature,
     Color? Color,
@@ -169,6 +170,11 @@ public sealed record SalvageMission(
     /// Biome to be used for the mission.
     /// </summary>
     public readonly string Biome = Biome;
+
+    /// <summary>
+    /// Weather to be used for the mission's planet.
+    /// </summary>
+    public readonly string Weather = Weather;
 
     /// <summary>
     /// Air mixture to be used for the mission's planet.

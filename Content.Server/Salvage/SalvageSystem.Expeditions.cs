@@ -10,6 +10,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.GameStates;
+using Content.Server.Weather;
+using Content.Shared.Weather;
 using Robust.Shared.Map;
 using Content.Server._NF.Salvage.Expeditions; // Frontier
 using Content.Server.Station.Components; // Frontier
@@ -261,6 +263,7 @@ public sealed partial class SalvageSystem
             _prototypeManager,
             _anchorable,
             _biome,
+            _weather,
             _dungeon,
             _metaData,
             _mapSystem,

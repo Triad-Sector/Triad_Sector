@@ -17,8 +17,8 @@ namespace Content.Shared.Salvage;
 
 public abstract partial class SharedSalvageSystem : EntitySystem
 {
-    [Dependency] protected readonly IConfigurationManager CfgManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] protected IConfigurationManager CfgManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     /// <summary>
     /// Main loot table for salvage expeditions.
@@ -42,7 +42,9 @@ public abstract partial class SharedSalvageSystem : EntitySystem
         // - Lighting
         // - Atmos
         var biome = GetMod<SalvageBiomeModPrototype>(rand, ref modifierBudget);
+        // only show the description if there is an atmosphere since wont matter otherwise
         var light = GetBiomeMod<SalvageLightMod>(biome.ID, rand, ref modifierBudget);
+        var weather = GetBiomeMod<SalvageWeatherMod>(biome.ID, rand, ref modifierBudget);
         var temp = GetBiomeMod<SalvageTemperatureMod>(biome.ID, rand, ref modifierBudget);
         var air = GetBiomeMod<SalvageAirMod>(biome.ID, rand, ref modifierBudget);
         var dungeon = GetBiomeMod<SalvageDungeonModPrototype>(biome.ID, rand, ref modifierBudget);
@@ -62,6 +64,11 @@ public abstract partial class SharedSalvageSystem : EntitySystem
 
         var mods = new List<string>();
 
+        if (weather.Description != string.Empty && !air.Space)
+        {
+            mods.Add(Loc.GetString(weather.Description));
+        }
+
         if (air.Description != string.Empty)
         {
             mods.Add(Loc.GetString(air.Description));
@@ -80,7 +87,7 @@ public abstract partial class SharedSalvageSystem : EntitySystem
         var duration = TimeSpan.FromSeconds(CfgManager.GetCVar(CCVars.SalvageExpeditionDuration));
 
 
-        return new SalvageMission(seed, dungeon.ID, faction.ID, biome.ID, air.ID, temp.Temperature, light.Color, duration, mods, difficulty.ID, config); // Frontier: add difficulty.ID, config
+        return new SalvageMission(seed, dungeon.ID, faction.ID, biome.ID, weather.ID, air.ID, temp.Temperature, light.Color, duration, mods, difficulty.ID, config); // Frontier: add difficulty.ID, config
     }
 
     public T GetBiomeMod<T>(string biome, System.Random rand, ref float rating) where T : class, IPrototype, IBiomeSpecificMod
