@@ -28,7 +28,6 @@
     ClothingNeckMantleBH: 3
     ClothingShoesBootsJack: 3
     Binoculars: 4 # Mono
-    ResearchAndDevelopmentServerMerc: 1 #Mono
 
 - type: vendingMachineInventory
   id: BountyVendPOIInventory

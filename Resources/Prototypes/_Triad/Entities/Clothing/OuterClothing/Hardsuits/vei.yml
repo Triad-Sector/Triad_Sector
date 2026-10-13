@@ -44,7 +44,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitVeiExplorer
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 45000
     vendPrice: 100000

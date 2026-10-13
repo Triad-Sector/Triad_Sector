@@ -86,7 +86,7 @@
 - type: entity
   parent: ClothingModsuitGauntletsBase
   id: ClothingModsuitGauntletsHZDBesieger
-  name: HZD Gauntlets
+  name: besieger gauntlets
   description: After extensive testing and RnD, loss of fingers in explosions have been reduced by 82%!
   categories: [ HideSpawnMenu ]
   components:

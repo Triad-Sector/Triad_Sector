@@ -46,6 +46,7 @@
   - AmmoBox45_magnumBigFMJ
   - AmmoBox46x30mmBigFMJ
   - AmmoBox556x45mmBigFMJ
+  - AmmoBox68x52mmCaselessBig # Triad: Move 6.8 caseless here, since it had no reason to be teched alongside the Riot MMG instead.
 
 - type: technology
   id: UniversalMaterialResearchT3

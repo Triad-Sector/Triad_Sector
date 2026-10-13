@@ -15,3 +15,46 @@
   groupBy: Beret
   equipment:
     head: ClothingHeadHatBeretParamedic
+
+- type: loadout
+  id: ClothingHeadHatHardhatBlue
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: ClothingHeadHatHardhatOrange
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatOrange
+
+- type: loadout
+  id: ClothingHeadHatHardhatRed
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatRed
+
+- type: loadout
+  id: ClothingHeadHatHardhatWhite
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatWhite
+
+- type: loadout
+  id: ClothingHeadHatHardhatYellow
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatYellow
+
+- type: loadout
+  id: ClothingHeadHatHardhatYellowDark
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatYellowDark
+
+- type: loadout
+  id: ClothingHeadHatHardhatArmored
+  price: 1000
+  groupBy: Hardhat
+  equipment:
+    head: ClothingHeadHatHardhatArmored

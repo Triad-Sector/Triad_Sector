@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingModsuitBase
   id: ClothingModsuitHZDBesieger
-  name: HZD Besieger Modsuit Core
-  description: The backpack unit for the HZD modsuit used by their elite breaching teams. Its storage compartments are all reinforced to protect its contents.
+  name: HZD besieger modsuit control unit
+  description: The control unit for the HZD modsuit used by their elite breaching teams. Its storage compartments are all reinforced to protect its contents.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Back/Modsuits/HZDBesieger.rsi

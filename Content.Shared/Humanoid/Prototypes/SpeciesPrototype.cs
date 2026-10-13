@@ -1,3 +1,4 @@
+using Content.Shared.Humanoid.Markings; // Triad
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Humanoid.Prototypes;
@@ -119,6 +120,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    /// <summary>
+    ///     The default hair style given to this species, for random character generation.
+    ///     Null allows random hair styles.
+    //      This is a string value because HairBald does not exist as a prototype, technically.
+    /// </summary>
+    [DataField]
+    public string? DefaultHair = null;
 }
 
 public enum SpeciesNaming : byte

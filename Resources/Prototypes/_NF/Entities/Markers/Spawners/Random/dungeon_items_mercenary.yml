@@ -475,7 +475,6 @@
     - CrateAmmoBoxUranium35
     - CrateAmmoBoxUranium45
     - CrateAmmoBoxUraniumShotgun
-    - CrateAmmoBoxEmp35
     rarePrototypes:
     - CrateArmorySMGExpedition
     - CrateArmoryLaserExpedition

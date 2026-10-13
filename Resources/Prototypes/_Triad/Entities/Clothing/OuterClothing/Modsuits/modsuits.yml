@@ -38,7 +38,7 @@
 - type: entity
   parent: ClothingModsuitChestplateBase
   id: ClothingModsuitChestplateHZDBesieger
-  name: HZD Cuirass
+  name: besieger cuirass
   description: A heavy set of plastitanium alloy plates surrounding specialized padding designed to dull the force of shockwaves, one of HZD's most advanced systems.
   categories: [ HideSpawnMenu ]
   components:

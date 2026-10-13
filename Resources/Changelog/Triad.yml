@@ -5344,3 +5344,184 @@ Entries:
   id: 2647
   time: '2026-10-04T00:49:59.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/691
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Concussive Gauntlets cost 2 stamina to wide-swing, not smash
+    - type: Fix
+      message: Concussive Gauntlets now needs to be worn to swing
+  id: 2648
+  time: '2026-10-04T20:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/695
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited the private security suit entirely to better fit the art
+        style!
+  id: 2649
+  time: '2026-10-04T20:53:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/696
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added occluders for diagonal walls! This means their shadows will no
+        longer take up a full tile!
+    - type: Fix
+      message: Fixed light occlusion causing weird bugs in 1x1 tile rooms.
+  id: 2650
+  time: '2026-10-06T00:33:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/698
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed safety box withdraw spam.
+    - type: Fix
+      message: Fixed safety deposit boxes not checking item slots.
+  id: 2651
+  time: '2026-10-06T19:36:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/700
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added a ton of new titles for spacers
+  id: 2652
+  time: '2026-10-07T10:17:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/704
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added the Tourists faction
+  id: 2653
+  time: '2026-10-07T10:19:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/703
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added TA-29 to the uplink
+    - type: Add
+      message: Added 4 gauge beanbag to the uplink
+    - type: Remove
+      message: Removed WT Magazine from uplink
+  id: 2654
+  time: '2026-10-07T14:44:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/702
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added variants of combat medkit, matching the types of regular medkit.
+  id: 2655
+  time: '2026-10-08T02:01:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/705
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Welding masks now reduce field of vision a bit. Engineering goggles
+        remain unchanged.
+    - type: Tweak
+      message: Welding masks are now toggleable!
+  id: 2656
+  time: '2026-10-08T23:58:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/707
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        CuddlyCritterVends all across the Auric district are now offering a new
+        product: The protogen plushie!
+  id: 2657
+  time: '2026-10-09T23:08:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/709
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: TDF ship, Basilisk
+  id: 2658
+  time: '2026-10-10T07:07:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/585
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        Added a new lethal grenade launcher for TDF, the Bear's Leg. Its a
+        single shot 40mm. You can craft it or buy it in the uplink.
+    - type: Add
+      message: Added lethal 40mm grenade rounds to the TDF uplink.
+    - type: Fix
+      message: >-
+        Moved 6.8mm large ammo box recipe to materials research 2 to match other
+        large ammo boxes.
+    - type: Fix
+      message: The Bastion shotgun is no longer extremely overpriced materials-wise.
+    - type: Fix
+      message: The TDF sign in sheet is now formatted properly.
+    - type: Add
+      message: Added a Drozd recipe for TDF.
+    - type: Remove
+      message: Removed the redundant TDF Crosshair battle rifle.
+  id: 2659
+  time: '2026-10-11T15:25:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/681
+- author: Dizzy-Eevee
+  changes:
+    - type: Tweak
+      message: >-
+        Characters with the bionic spinarette trait are now able to use their
+        silk in crafting.
+  id: 2660
+  time: '2026-10-11T18:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/712
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        All hardhats have been added to Spacer and Sector Technician loadouts.
+        If you used the existing hardhat, you may need to reapply it in loadout.
+  id: 2661
+  time: '2026-10-11T23:05:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/714
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed safety deposit boxes deleting items that won't fit. Instead,
+        they'll be dropped to the floor.
+    - type: Fix
+      message: Fixed infinite reclaimer and industrial grinder loops.
+    - type: Fix
+      message: >-
+        Recyclers, reclaimers, and industrial grinders now properly recycles
+        item stacks
+  id: 2662
+  time: '2026-10-12T00:06:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/713
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Shadekin can now wear underwear
+    - type: Add
+      message: Reptilians now have displacement maps for outer clothing!
+  id: 2663
+  time: '2026-10-12T01:43:32.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/715
+- author: Nox38
+  changes:
+    - type: Remove
+      message: >-
+        Gas masks no longer can give welding and flash protection, besides the
+        welding gas mask which now obstructs vision.
+    - type: Tweak
+      message: >-
+        Rebalanced eyewear. Night vision goggles are more effective, diagnostic
+        HUD and tactical glasses now have a niche. Pilot goggles now have a mass
+        scanner!
+    - type: Tweak
+      message: >-
+        Rebalanced helmet effects. All security suits now have sechuds, while
+        medical suits come with built in medhuds, engineering suits have t-rays
+        and diagnostic huds, and more!
+  id: 2664
+  time: '2026-10-12T13:09:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/706
