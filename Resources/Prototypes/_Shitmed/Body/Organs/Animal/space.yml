@@ -2,19 +2,23 @@
   parent: OrganAnimalLungs
   id: OrganSpaceAnimalLungs
   name: space animal lungs
-  components:
-  - type: Organ
-    onAdd:
-    - type: BreathingImmunity
+  # Triad: Remove carp organ effects to kill powergaming
+  #components:
+  #- type: Organ
+  #  onAdd:
+  #  - type: BreathingImmunity
+  # Triad End
 
 - type: entity
   parent: OrganAnimalHeart
   id: OrganSpaceAnimalHeart
   name: space animal heart
-  components:
-  - type: Organ
-    onAdd:
-    - type: PressureImmunity
+  # Triad: Remove carp organ effects to kill powergaming
+  #components:
+  #- type: Organ
+  #  onAdd:
+  #  - type: PressureImmunity
+  # Triad End
 
 - type: entity
   parent: OrganAnimalHeart

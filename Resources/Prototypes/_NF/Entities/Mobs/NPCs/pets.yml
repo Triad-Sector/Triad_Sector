@@ -283,6 +283,10 @@
   - type: Body
     prototype: Bloodsucker
     requiredLegs: 1
+  # Triad: Move breathing and barotrauma immunity from organs to mob to kill organ powergaming
+  - type: BreathingImmunity
+  - type: PressureImmunity
+  # Triad End
   - type: MeleeWeapon
     damage:
       types:
