@@ -35,13 +35,6 @@
           Heat: 200
       burnShape: ["-0.25,0.5","-0.0,5.6","0.25,0.5","0.0,-0.2","-0.25,0.5"]
       originalLoad: 1500
-      blockThrusterWhitelist:
-        components:
-        - Door
-        tags:
-        - Window
-        - Wall
-        - Diagonal
       burnWhitelist:
         components:
         - MobState
@@ -56,6 +49,7 @@
       burnBlacklist:
         tags:
         - IgnoreThrusterDamage
+    - type: ThrusterProfile
     # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline

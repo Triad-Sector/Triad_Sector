@@ -1,4 +1,4 @@
-namespace Content.Server._Triad.Shuttles.Systems;
+namespace Content.Shared._Triad.Shuttles;
 
 public enum ThrusterBlockingProfile
 {
