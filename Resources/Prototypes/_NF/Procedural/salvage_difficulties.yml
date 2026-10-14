@@ -4,7 +4,7 @@
   id: NFModerate
   lootTable: NFSalvageLootModerate
   lootBudget: 30
-  mobBudget: 25
+  mobBudget: 30 # Triad 25 -> 30
   modifierBudget: 2
   color: "#EFB34196"
   recommendedPlayers: 2
@@ -15,7 +15,7 @@
   id: NFHazardous
   lootTable: NFSalvageLootHazardous
   lootBudget: 40
-  mobBudget: 32
+  mobBudget: 40 # Triad 32 -> 40
   modifierBudget: 3
   color: "#DE3A3A96"
   recommendedPlayers: 3
@@ -26,7 +26,7 @@
   id: NFExtreme
   lootTable: NFSalvageLootExtreme
   lootBudget: 50
-  mobBudget: 40
+  mobBudget: 50 # Triad 40 -> 50
   modifierBudget: 4
   color: "#D381C996"
   recommendedPlayers: 4
