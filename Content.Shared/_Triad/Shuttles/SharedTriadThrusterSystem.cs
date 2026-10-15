@@ -74,6 +74,7 @@ public abstract partial class SharedTriadThrusterSystem : EntitySystem
                 new ThrusterBlockingRayData(angle: 90d, offsetX: 1.0f, offsetY: 0.0f),
                 new ThrusterBlockingRayData(angle: 90d, offsetX: 1.0f, offsetY: -1.0f),
                 new ThrusterBlockingRayData(angle: -90d, offsetX: 0.0f, offsetY: 0.0f),
+                new ThrusterBlockingRayData(angle: -90d, offsetX: 0.0f, offsetY: -1.0f),
                 new ThrusterBlockingRayData(angle: 62d, offsetX: 0.5f, offsetY: -0.55f),
                 new ThrusterBlockingRayData(angle: -62d, offsetX: 0.5f, offsetY: -0.55f),
                 new ThrusterBlockingRayData(angle: 53d, offsetX: 0.5f, offsetY: 0.0f),
@@ -84,8 +85,8 @@ public abstract partial class SharedTriadThrusterSystem : EntitySystem
                 new ThrusterBlockingRayData(angle: -24.5d, offsetX: 0.75f, offsetY: 0.45f),
                 new ThrusterBlockingRayData(angle: 17d, offsetX: 0.45f, offsetY: 0.44f),
                 new ThrusterBlockingRayData(angle: -17d, offsetX: 0.55f, offsetY: 0.44f),
-                new ThrusterBlockingRayData(angle: 4d, offsetX: 0.45f, offsetY: 0.44f),
-                new ThrusterBlockingRayData(angle: -4d, offsetX: 0.55f, offsetY: 0.44f),
+                new ThrusterBlockingRayData(angle: 5d, offsetX: 0.45f, offsetY: 0.44f),
+                new ThrusterBlockingRayData(angle: -5d, offsetX: 0.55f, offsetY: 0.44f),
                 new ThrusterBlockingRayData(angle: 0d, offsetX: 0.0f, offsetY: -1.0f),
                 new ThrusterBlockingRayData(angle: 0d, offsetX: 1.0f, offsetY: -1.0f)
             },
