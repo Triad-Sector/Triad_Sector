@@ -16,7 +16,6 @@ public sealed partial class TriadThrusterSystem : SharedTriadThrusterSystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private SharedTriadThrusterSystem _sharedTriadThruster = default!;
 
     private static readonly TimeSpan RayLifeTime = TimeSpan.FromSeconds(5);
 
@@ -35,7 +34,7 @@ public sealed partial class TriadThrusterSystem : SharedTriadThrusterSystem
     {
         base.Initialize();
 
-        _overlayManager.AddOverlay(new ThrusterRayOverlay(this));
+        _overlayManager.AddOverlay(new ThrusterRayOverlay());
     }
 
     public override void Shutdown()
@@ -59,19 +58,10 @@ public sealed partial class TriadThrusterSystem : SharedTriadThrusterSystem
 
         var gridUID = xform.GridUid.Value;
 
-        var clearQuality = 0d;
-
         var rayProfileTable = ThrusterBlockingProfileTable[(int)ent.Comp.Profile];
-        var requiredQuality = rayProfileTable.RequiredQuality;
 
         foreach (var rayPreset in rayProfileTable.Rays)
         {
-            // Each ray is worth a certain amount of points, defined in the prototype.
-            // You need a certain amounts of points for this thruster to be considered 'clear to space'.
-            // Default minimum ray quality is 3.
-            if (clearQuality >= requiredQuality)
-                break;
-
             var direction = rayPreset.AngleInRadians();
 
             var offsetX = rayPreset.OffsetX;
