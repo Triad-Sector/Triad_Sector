@@ -1,6 +1,7 @@
 using Content.Server.Shuttles.Components;
 using Content.Shared._Coyote.CCVar;
 using Content.Shared.GameTicking;
+using Content.Shared.Ghost;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.Configuration;
@@ -29,6 +30,11 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
     private Color _inactiveCrewColor = Color.Gray;
     // Verbose debug logging toggle.
     private bool _debug;
+
+    // Retry when a session becomes active before AttachedEntity is restored.
+    private static readonly TimeSpan ReconnectRefreshRetryDelay = TimeSpan.FromSeconds(0.75);
+    private TimeSpan _nextTrackedShuttleRetryAt = TimeSpan.Zero;
+    private bool _trackedShuttleRetryPending;
 
     public override void Initialize()
     {
@@ -136,6 +142,9 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             removed++;
         }
 
+        _trackedShuttleRetryPending = false;
+        _nextTrackedShuttleRetryAt = TimeSpan.Zero;
+
         if (_debug)
             Log.Info($"[ShuttleCrewStatus] RoundCleanup removed={removed}");
     }
@@ -176,11 +185,33 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
-        if (e.NewStatus is not (SessionStatus.Disconnected or SessionStatus.Zombie))
+        var becameInactive = e.NewStatus is SessionStatus.Disconnected or SessionStatus.Zombie;
+        var becameActive = e.NewStatus == SessionStatus.InGame;
+
+        if (!becameInactive && !becameActive)
             return;
 
         if (e.Session.AttachedEntity is not { } ent)
+        {
+            if (_debug)
+                Log.Info($"[ShuttleCrewStatus] StatusChanged with null AttachedEntity (old={e.OldStatus}, new={e.NewStatus}) -> refreshing tracked shuttles");
+
+            // Immediate best-effort refresh.
+            RefreshTrackedPlayerShuttles();
+
+            // Reconnect edge case: InGame can fire before entity attach is complete.
+            // Queue one delayed retry so HasActivePlayersOnGrid sees the restored body.
+            if (becameActive)
+            {
+                _trackedShuttleRetryPending = true;
+                _nextTrackedShuttleRetryAt = _timing.CurTime + ReconnectRefreshRetryDelay;
+
+                if (_debug)
+                    Log.Info($"[ShuttleCrewStatus] Scheduled tracked shuttle retry at {_nextTrackedShuttleRetryAt}");
+            }
+
             return;
+        }
 
         if (!TryComp(ent, out TransformComponent? xform))
             return;
@@ -192,6 +223,18 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             Log.Info($"[ShuttleCrewStatus] PlayerStatusChanged entity={ent} old={e.OldStatus} new={e.NewStatus} grid={gridUid}");
 
         QueueStatusRefresh(gridUid);
+    }
+
+    private void RefreshTrackedPlayerShuttles()
+    {
+        var shuttleQuery = EntityQueryEnumerator<ShuttleCrewStatusComponent, IFFComponent>();
+        while (shuttleQuery.MoveNext(out var shuttleUid, out _, out var iff))
+        {
+            if ((iff.Flags & IFFFlags.IsPlayerShuttle) == 0)
+                continue;
+
+            QueueStatusRefresh(shuttleUid);
+        }
     }
 
     private void QueueStatusRefresh(EntityUid gridUid)
@@ -223,6 +266,23 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             crewStatus.OriginalColor = iff.Color;
 
         var computedActive = HasActivePlayersOnGrid(gridUid);
+
+        // If applied state is already correct but a stale pending opposite transition exists,
+        // cancel the pending transition immediately.
+        if (computedActive == crewStatus.HasActiveCrew &&
+            crewStatus.PendingVisualUpdate &&
+            crewStatus.PendingHasActiveCrew != computedActive)
+        {
+            crewStatus.PendingVisualUpdate = false;
+
+            if (_debug)
+            {
+                Log.Info($"[ShuttleCrewStatus] Refresh canceled stale pending transition grid={gridUid} " +
+                         $"applied={crewStatus.HasActiveCrew} pendingTarget={crewStatus.PendingHasActiveCrew} computed={computedActive}");
+            }
+
+            return;
+        }
 
         // Compare against the currently represented state (applied or already pending),
         // Stops repeated transitions from causing flickering visual updates or redundant scheduling of visual changes.
@@ -268,6 +328,16 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (_trackedShuttleRetryPending && _timing.CurTime >= _nextTrackedShuttleRetryAt)
+        {
+            _trackedShuttleRetryPending = false;
+
+            if (_debug)
+                Log.Info("[ShuttleCrewStatus] Running delayed tracked shuttle retry refresh");
+
+            RefreshTrackedPlayerShuttles();
+        }
 
         var now = _timing.CurTime;
         var query = EntityQueryEnumerator<ShuttleCrewStatusComponent, IFFComponent>();
@@ -317,6 +387,10 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
                 continue;
 
             if (session.AttachedEntity is not { } playerEntity)
+                continue;
+
+            // Ignore ghosted/observer players for shuttle crew activity.
+            if (HasComp<GhostComponent>(playerEntity))
                 continue;
 
             if (!TryComp(playerEntity, out TransformComponent? playerXform))
