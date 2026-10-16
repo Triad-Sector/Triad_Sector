@@ -1,143 +1,337 @@
-using Content.Server.GameTicking;
 using Content.Server.Shuttles.Components;
-using Content.Server.Shuttles.Systems;
+using Content.Shared._Coyote.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Coyote.ShuttleCrewStatus;
 
 /// <summary>
-/// System that periodically checks shuttles for active crew and updates IFF label colors accordingly.
-/// Shuttles with no crew or only disconnected crew show a gray label, while shuttles with active crew show normal white labels.
+/// Tracks whether player shuttles currently have active crew and updates IFF color with a delayed reveal.
 /// </summary>
-public sealed class ShuttleCrewStatusSystem : EntitySystem
+public sealed partial class ShuttleCrewStatusSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedShuttleSystem _shuttle = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
+    [Dependency] private SharedShuttleSystem _shuttle = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
-    /// <summary>
-    /// How often to check crew status on shuttles. Default: 3 minutes.
-    /// Easily adjustable here for different update frequencies.
-    /// </summary>
-    // private readonly TimeSpan _checkInterval = TimeSpawan.FromMinutes(3);
-    private readonly TimeSpan _checkInterval = TimeSpan.FromSeconds(10);
-
-    /// <summary>
-    /// The color to use when a shuttle has no active crew.
-    /// </summary>
-    private readonly Color _inactiveCrewColor = Color.Gray;
+    // Delay window for visual IFF changes (base + random jitter).
+    private TimeSpan _baseVisualDelay = TimeSpan.FromSeconds(20);
+    private TimeSpan _randomVisualJitter = TimeSpan.FromSeconds(25);
+    // Color used when no active crew is present.
+    private Color _inactiveCrewColor = Color.Gray;
+    // Verbose debug logging toggle.
+    private bool _debug;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        // Cvars located in CoyoteCCVars.cs
+        _cfg.OnValueChanged(
+            CoyoteCCVars.ShuttleCrewUpdateBaseDelaySeconds,
+            UpdateBaseVisualDelay,
+            invokeImmediately: true);
+
+        _cfg.OnValueChanged(
+            CoyoteCCVars.ShuttleCrewUpdateRandomJitterSeconds,
+            UpdateRandomVisualJitter,
+            invokeImmediately: true);
+
+        _cfg.OnValueChanged(
+            CoyoteCCVars.ShuttleInactiveCrewColor,
+            UpdateInactiveCrewColor,
+            invokeImmediately: true);
+
+        _cfg.OnValueChanged(
+            CoyoteCCVars.ShuttleCrewStatusDebug,
+            UpdateDebug,
+            invokeImmediately: true);
+
         SubscribeLocalEvent<IFFComponent, MapInitEvent>(OnIFFMapInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
+        SubscribeLocalEvent<EntParentChangedMessage>(OnEntParentChanged);
+        // Handles disconnect/zombie transitions even when no movement event is fired.
+        _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _cfg.UnsubValueChanged(CoyoteCCVars.ShuttleCrewUpdateBaseDelaySeconds, UpdateBaseVisualDelay);
+        _cfg.UnsubValueChanged(CoyoteCCVars.ShuttleCrewUpdateRandomJitterSeconds, UpdateRandomVisualJitter);
+        _cfg.UnsubValueChanged(CoyoteCCVars.ShuttleInactiveCrewColor, UpdateInactiveCrewColor);
+        _cfg.UnsubValueChanged(CoyoteCCVars.ShuttleCrewStatusDebug, UpdateDebug);
+        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
+    private void UpdateBaseVisualDelay(int seconds)
+    {
+        _baseVisualDelay = TimeSpan.FromSeconds(Math.Max(0, seconds));
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] baseDelay={_baseVisualDelay}");
+    }
+
+    private void UpdateRandomVisualJitter(int seconds)
+    {
+        _randomVisualJitter = TimeSpan.FromSeconds(Math.Max(0, seconds));
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] randomJitter={_randomVisualJitter}");
+    }
+
+    private void UpdateInactiveCrewColor(string colorText)
+    {
+        if (!Color.TryFromHex(colorText, out var parsed))
+        {
+            Log.Warning($"Invalid cvar value for {CoyoteCCVars.ShuttleInactiveCrewColor.Name}: '{colorText}'. Falling back to #808080.");
+            _inactiveCrewColor = Color.Gray;
+            return;
+        }
+
+        _inactiveCrewColor = parsed;
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] inactiveColor={_inactiveCrewColor}");
+    }
+
+    private void UpdateDebug(bool value)
+    {
+        _debug = value;
+        Log.Info($"[ShuttleCrewStatus] debug={_debug}");
     }
 
     private void OnIFFMapInit(EntityUid uid, IFFComponent component, MapInitEvent args)
     {
-        // Only track shuttles with IFF components
-        if (!HasComp<ShuttleComponent>(uid))
+        if (!TryComp<ShuttleComponent>(uid, out _))
             return;
 
-        // Add the crew status component to track this shuttle
+        if ((component.Flags & IFFFlags.IsPlayerShuttle) == 0)
+            return;
+
         var crewStatus = EnsureComp<ShuttleCrewStatusComponent>(uid);
-        crewStatus.NextCheck = _timing.CurTime + _checkInterval;
         crewStatus.OriginalColor = component.Color;
-        crewStatus.HasActiveCrew = true; // Start assuming crew is active
+        crewStatus.HasActiveCrew = HasActivePlayersOnGrid(uid);
+        crewStatus.PendingVisualUpdate = false;
+
+        if (_debug)
+        {
+            Log.Info($"[ShuttleCrewStatus] MapInit grid={uid} " +
+                     $"origColor={crewStatus.OriginalColor} hasActive={crewStatus.HasActiveCrew}");
+        }
     }
 
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
-        // Clean up all crew status components on round restart
         var query = EntityQueryEnumerator<ShuttleCrewStatusComponent>();
+        var removed = 0;
         while (query.MoveNext(out var uid, out _))
         {
             RemComp<ShuttleCrewStatusComponent>(uid);
+            removed++;
         }
+
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] RoundCleanup removed={removed}");
+    }
+
+    private void OnEntParentChanged(ref EntParentChangedMessage ev)
+    {
+        var uid = ev.Entity;
+
+        // Ignore non-session entities.
+        if (!_playerManager.TryGetSessionByEntity(uid, out var session))
+            return;
+
+        // Ignore already inactive sessions.
+        if (session.Status is SessionStatus.Disconnected or SessionStatus.Zombie)
+            return;
+
+        EntityUid? oldGrid = null;
+        var newGrid = ev.Transform.GridUid;
+
+        if (ev.OldParent is { } oldParent &&
+            TryComp(oldParent, out TransformComponent? oldParentXform))
+        {
+            oldGrid = oldParentXform.GridUid;
+        }
+
+        if (_debug)
+        {
+            Log.Info($"[ShuttleCrewStatus] ParentChanged entity={uid} oldParent={ev.OldParent} oldMap={ev.OldMapId} " +
+                     $"oldGrid={oldGrid} newGrid={newGrid} sessionStatus={session.Status}");
+        }
+
+        if (oldGrid is { } oldGridUid)
+            QueueStatusRefresh(oldGridUid);
+
+        if (newGrid is { } newGridUid && newGridUid != oldGrid)
+            QueueStatusRefresh(newGridUid);
+    }
+
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
+    {
+        if (e.NewStatus is not (SessionStatus.Disconnected or SessionStatus.Zombie))
+            return;
+
+        if (e.Session.AttachedEntity is not { } ent)
+            return;
+
+        if (!TryComp(ent, out TransformComponent? xform))
+            return;
+
+        if (xform.GridUid is not { } gridUid)
+            return;
+
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] PlayerStatusChanged entity={ent} old={e.OldStatus} new={e.NewStatus} grid={gridUid}");
+
+        QueueStatusRefresh(gridUid);
+    }
+
+    private void QueueStatusRefresh(EntityUid gridUid)
+    {
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] Refresh start grid={gridUid}");
+
+        if (!TryComp<ShuttleComponent>(gridUid, out _))
+        {
+            if (_debug) Log.Info($"[ShuttleCrewStatus] Refresh skip grid={gridUid}: no ShuttleComponent");
+            return;
+        }
+
+        if (!TryComp<IFFComponent>(gridUid, out var iff))
+        {
+            if (_debug) Log.Info($"[ShuttleCrewStatus] Refresh skip grid={gridUid}: no IFFComponent");
+            return;
+        }
+
+        if ((iff.Flags & IFFFlags.IsPlayerShuttle) == 0)
+        {
+            if (_debug) Log.Info($"[ShuttleCrewStatus] Refresh skip grid={gridUid}: not IsPlayerShuttle");
+            return;
+        }
+
+        var crewStatus = EnsureComp<ShuttleCrewStatusComponent>(gridUid);
+
+        if (!crewStatus.OriginalColor.HasValue)
+            crewStatus.OriginalColor = iff.Color;
+
+        var computedActive = HasActivePlayersOnGrid(gridUid);
+
+        // Compare against the currently represented state (applied or already pending),
+        // Stops repeated transitions from causing flickering visual updates or redundant scheduling of visual changes.
+        var effectiveActive = crewStatus.PendingVisualUpdate
+            ? crewStatus.PendingHasActiveCrew
+            : crewStatus.HasActiveCrew;
+
+        if (_debug)
+        {
+            Log.Info($"[ShuttleCrewStatus] Refresh grid={gridUid} computed={computedActive} " +
+                     $"applied={crewStatus.HasActiveCrew} pending={crewStatus.PendingVisualUpdate} " +
+                     $"pendingTarget={crewStatus.PendingHasActiveCrew} effective={effectiveActive}");
+        }
+
+        // If desired state already represented (or already queued), do nothing.
+        if (computedActive == effectiveActive)
+        {
+            if (_debug) Log.Info($"[ShuttleCrewStatus] Refresh no-op grid={gridUid}: computed matches effective");
+            return;
+        }
+
+        crewStatus.PendingHasActiveCrew = computedActive;
+        crewStatus.PendingVisualUpdate = true;
+        crewStatus.ApplyVisualAt = _timing.CurTime + GetVisualDelay();
+
+        if (_debug)
+        {
+            var delay = crewStatus.ApplyVisualAt - _timing.CurTime;
+            Log.Info($"[ShuttleCrewStatus] Refresh scheduled grid={gridUid} targetActive={computedActive} " +
+                     $"applyAt={crewStatus.ApplyVisualAt} delay={delay}");
+        }
+    }
+
+    private TimeSpan GetVisualDelay()
+    {
+        if (_randomVisualJitter <= TimeSpan.Zero)
+            return _baseVisualDelay;
+
+        var jitterSeconds = _random.NextFloat((float) _randomVisualJitter.TotalSeconds);
+        return _baseVisualDelay + TimeSpan.FromSeconds(jitterSeconds);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var currentTime = _timing.CurTime;
-        var query = EntityQueryEnumerator<ShuttleCrewStatusComponent, ShuttleComponent, IFFComponent, TransformComponent>();
+        var now = _timing.CurTime;
+        var query = EntityQueryEnumerator<ShuttleCrewStatusComponent, IFFComponent>();
 
-        while (query.MoveNext(out var uid, out var crewStatus, out var shuttle, out var iff, out var xform))
+        while (query.MoveNext(out var uid, out var crewStatus, out var iff))
         {
-            // Skip if it's not time to check yet
-            if (currentTime < crewStatus.NextCheck)
+            if (!crewStatus.PendingVisualUpdate)
                 continue;
 
-            // Schedule next check
-            crewStatus.NextCheck = currentTime + _checkInterval;
+            if (now < crewStatus.ApplyVisualAt)
+                continue;
 
-            // Check if there are any active players on this grid
-            var hasActiveCrew = HasActivePlayersOnGrid(uid, xform);
+            crewStatus.PendingVisualUpdate = false;
 
-            // Only update IFF if the crew status changed
-            if (hasActiveCrew != crewStatus.HasActiveCrew)
+            if (crewStatus.PendingHasActiveCrew == crewStatus.HasActiveCrew)
             {
-                crewStatus.HasActiveCrew = hasActiveCrew;
+                if (_debug)
+                    Log.Info($"[ShuttleCrewStatus] Apply no-op grid={uid}: pending matches applied");
+                continue;
+            }
 
-                if (hasActiveCrew)
-                {
-                    // Restore original color
-                    if (crewStatus.OriginalColor.HasValue)
-                    {
-                        _shuttle.SetIFFColor(uid, crewStatus.OriginalColor.Value, iff);
-                    }
-                }
-                else
-                {
-                    // Store current color if we haven't already
-                    if (!crewStatus.OriginalColor.HasValue)
-                    {
-                        crewStatus.OriginalColor = iff.Color;
-                    }
+            crewStatus.HasActiveCrew = crewStatus.PendingHasActiveCrew;
 
-                    // Set to gray to indicate no active crew
-                    _shuttle.SetIFFColor(uid, _inactiveCrewColor, iff);
-                }
+            if (crewStatus.HasActiveCrew)
+            {
+                if (crewStatus.OriginalColor.HasValue)
+                    _shuttle.SetIFFColor(uid, crewStatus.OriginalColor.Value, iff);
+
+                if (_debug)
+                    Log.Info($"[ShuttleCrewStatus] Apply grid={uid}: ACTIVE restoreColor={crewStatus.OriginalColor}");
+            }
+            else
+            {
+                _shuttle.SetIFFColor(uid, _inactiveCrewColor, iff);
+
+                if (_debug)
+                    Log.Info($"[ShuttleCrewStatus] Apply grid={uid}: INACTIVE setColor={_inactiveCrewColor}");
             }
         }
     }
 
-    /// <summary>
-    /// Checks if there are any active (connected) players on the specified grid.
-    /// </summary>
-    /// <param name="gridUid">The grid entity to check</param>
-    /// <param name="gridXform">The transform component of the grid</param>
-    /// <returns>True if there are active players on the grid, false otherwise</returns>
-    private bool HasActivePlayersOnGrid(EntityUid gridUid, TransformComponent gridXform)
+    private bool HasActivePlayersOnGrid(EntityUid gridUid)
     {
-        // Iterate through all player sessions
         foreach (var session in _playerManager.Sessions)
         {
-            // Skip disconnected or zombie sessions (SSD players)
             if (session.Status is SessionStatus.Disconnected or SessionStatus.Zombie)
                 continue;
 
-            // Check if the player has an attached entity
             if (session.AttachedEntity is not { } playerEntity)
                 continue;
 
-            // Check if the player entity still exists
-            if (!TryComp<TransformComponent>(playerEntity, out var playerXform))
+            if (!TryComp(playerEntity, out TransformComponent? playerXform))
                 continue;
 
-            // Check if the player is on this grid
             if (playerXform.GridUid == gridUid)
+            {
+                if (_debug)
+                    Log.Info($"[ShuttleCrewStatus] ActiveCheck grid={gridUid}: TRUE via playerEntity={playerEntity}");
                 return true;
+            }
         }
+
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] ActiveCheck grid={gridUid}: FALSE");
 
         return false;
     }

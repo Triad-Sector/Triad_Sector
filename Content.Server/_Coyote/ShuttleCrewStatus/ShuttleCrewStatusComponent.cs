@@ -3,27 +3,38 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server._Coyote.ShuttleCrewStatus;
 
 /// <summary>
-/// Component that tracks shuttle crew status and manages IFF color based on active players aboard.
+/// Component that tracks shuttle crew status and manages delayed IFF color updates.
 /// </summary>
 [RegisterComponent]
 public sealed partial class ShuttleCrewStatusComponent : Component
 {
     /// <summary>
-    /// The original IFF color before any crew status changes.
-    /// Used to restore the color when active players are detected.
+    /// The original IFF color before crew-status-driven overrides.
     /// </summary>
     [DataField]
     public Color? OriginalColor;
 
     /// <summary>
-    /// Whether the shuttle currently has active players aboard.
+    /// Last applied crew status represented by IFF color.
     /// </summary>
     [DataField]
-    public bool HasActiveCrew;
+    public bool HasActiveCrew = true;
 
     /// <summary>
-    /// The next time to check crew status.
+    /// Whether a visual IFF update is pending.
+    /// </summary>
+    [DataField]
+    public bool PendingVisualUpdate;
+
+    /// <summary>
+    /// Target crew status to apply when delay expires.
+    /// </summary>
+    [DataField]
+    public bool PendingHasActiveCrew;
+
+    /// <summary>
+    /// When the pending visual update should be applied.
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
-    public TimeSpan NextCheck = TimeSpan.Zero;
+    public TimeSpan ApplyVisualAt = TimeSpan.Zero;
 }
