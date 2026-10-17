@@ -7,10 +7,18 @@
   - type: Sprite
     sprite: Clothing/Back/Satchels/satchel.rsi
   - type: Storage
+    # Triad: Make satchels balanced against backpacks and duffels. Split from 2 4x2 side grids to 4 2x2 side grids, and remove huge item capability.
+    maxItemSize: Large
     grid:
-    - 0,0,1,3
+    #- 0,0,1,3
+    #- 3,0,6,3
+    #- 8,0,9,3
+    - 0,0,1,1
+    - 0,3,1,4
     - 3,0,6,3
-    - 8,0,9,3
+    - 8,0,9,1
+    - 8,3,9,4
+    # End Triad
 
 - type: entity
   parent: ClothingBackpackSatchel
