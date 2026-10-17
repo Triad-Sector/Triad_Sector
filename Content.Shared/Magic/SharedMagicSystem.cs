@@ -138,6 +138,16 @@ public abstract partial class SharedMagicSystem : EntitySystem
             SpawnSpellHelper(args.Prototype, position, args.Performer, preventCollide: args.PreventCollideWithCaster);
         }
 
+        // Triad Start - optional second spawn
+        if (args.ExtraPrototype is { } extra)
+        {
+            foreach (var position in GetInstantSpawnPositions(transform, args.ExtraPosData ?? args.PosData))
+            {
+                SpawnSpellHelper(extra, position, args.Performer, preventCollide: args.PreventCollideWithCaster);
+            }
+        }
+        // Triad End
+
         Speak(args);
         args.Handled = true;
     }

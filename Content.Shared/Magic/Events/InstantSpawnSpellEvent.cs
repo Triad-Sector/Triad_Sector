@@ -22,4 +22,13 @@ public sealed partial class InstantSpawnSpellEvent : InstantActionEvent, ISpeakS
     /// </summary>
     [DataField]
     public MagicInstantSpawnData PosData = new TargetCasterPos();
+
+    /// <summary>
+    /// Triad - optional second spawn that can have its own separate position type (e.g. a single sound emitter to go along with 3 walls)
+    /// </summary>
+    [DataField]
+    public EntProtoId? ExtraPrototype;
+
+    [DataField]
+    public MagicInstantSpawnData? ExtraPosData;
 }
