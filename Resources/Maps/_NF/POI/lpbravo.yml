@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 10/16/2026 15:18:47
-  entityCount: 6313
+  time: 10/17/2026 19:24:18
+  entityCount: 6323
 maps: []
 grids:
 - 1
@@ -203,8 +203,8 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        Kudzu: []
         Puddle: []
+        Kudzu: []
         Smoke: []
         MetalFoam: []
     - type: Shuttle
@@ -1637,7 +1637,7 @@ entities:
       pos: 2.5,-36.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -16250.545
+      secondsUntilStateChange: -16318.649
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1705,7 +1705,7 @@ entities:
       pos: 13.5,-18.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12209.898
+      secondsUntilStateChange: -12278.003
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1717,7 +1717,7 @@ entities:
       pos: 12.5,-18.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12209.698
+      secondsUntilStateChange: -12277.803
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1729,7 +1729,7 @@ entities:
       pos: 12.5,-15.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12208.665
+      secondsUntilStateChange: -12276.77
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1741,7 +1741,7 @@ entities:
       pos: 13.5,-15.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12208.999
+      secondsUntilStateChange: -12277.104
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1753,7 +1753,7 @@ entities:
       pos: 24.5,-18.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12207.632
+      secondsUntilStateChange: -12275.736
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1765,7 +1765,7 @@ entities:
       pos: 23.5,-18.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12207.432
+      secondsUntilStateChange: -12275.536
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1777,7 +1777,7 @@ entities:
       pos: 23.5,-15.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12208.099
+      secondsUntilStateChange: -12276.203
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1789,7 +1789,7 @@ entities:
       pos: 24.5,-15.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -12207.898
+      secondsUntilStateChange: -12276.003
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -20545,6 +20545,58 @@ entities:
     - type: Transform
       parent: 1
       pos: 17.5,19.5
+- proto: SpawnRandomEnergyTurretRangeSyndicateLong
+  entities:
+  - uid: 6314
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,13.5
+  - uid: 6315
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,12.5
+  - uid: 6316
+    components:
+    - type: Transform
+      parent: 1
+      pos: 13.5,13.5
+  - uid: 6317
+    components:
+    - type: Transform
+      parent: 1
+      pos: 13.5,12.5
+  - uid: 6318
+    components:
+    - type: Transform
+      parent: 1
+      pos: 18.5,-0.5
+  - uid: 6319
+    components:
+    - type: Transform
+      parent: 1
+      pos: 16.5,0.5
+  - uid: 6320
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,0.5
+  - uid: 6321
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,-18.5
+  - uid: 6322
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,-18.5
+  - uid: 6323
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-16.5
 - proto: StairStageDark
   entities:
   - uid: 3219
