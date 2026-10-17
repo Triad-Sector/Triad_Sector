@@ -31,11 +31,6 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
     // Verbose debug logging toggle.
     private bool _debug;
 
-    // Retry when a session becomes active before AttachedEntity is restored.
-    private static readonly TimeSpan ReconnectRefreshRetryDelay = TimeSpan.FromSeconds(0.75);
-    private TimeSpan _nextTrackedShuttleRetryAt = TimeSpan.Zero;
-    private bool _trackedShuttleRetryPending;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -64,6 +59,8 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
         SubscribeLocalEvent<IFFComponent, MapInitEvent>(OnIFFMapInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
         SubscribeLocalEvent<EntParentChangedMessage>(OnEntParentChanged);
+        SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
+
         // Handles disconnect/zombie transitions even when no movement event is fired.
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
     }
@@ -142,9 +139,6 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             removed++;
         }
 
-        _trackedShuttleRetryPending = false;
-        _nextTrackedShuttleRetryAt = TimeSpan.Zero;
-
         if (_debug)
             Log.Info($"[ShuttleCrewStatus] RoundCleanup removed={removed}");
     }
@@ -183,6 +177,20 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             QueueStatusRefresh(newGridUid);
     }
 
+    private void OnPlayerAttached(PlayerAttachedEvent ev)
+    {
+        if (!TryComp(ev.Entity, out TransformComponent? xform))
+            return;
+
+        if (xform.GridUid is not { } gridUid)
+            return;
+
+        if (_debug)
+            Log.Info($"[ShuttleCrewStatus] PlayerAttached entity={ev.Entity} grid={gridUid}");
+
+        QueueStatusRefresh(gridUid);
+    }
+
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
         var becameInactive = e.NewStatus is SessionStatus.Disconnected or SessionStatus.Zombie;
@@ -194,22 +202,13 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
         if (e.Session.AttachedEntity is not { } ent)
         {
             if (_debug)
-                Log.Info($"[ShuttleCrewStatus] StatusChanged with null AttachedEntity (old={e.OldStatus}, new={e.NewStatus}) -> refreshing tracked shuttles");
+                Log.Info($"[ShuttleCrewStatus] StatusChanged with null AttachedEntity (old={e.OldStatus}, new={e.NewStatus})");
 
-            // Immediate best-effort refresh.
-            RefreshTrackedPlayerShuttles();
+            // Optional safety net for disconnect/zombie transitions.
+            if (becameInactive)
+                RefreshTrackedPlayerShuttles();
 
-            // Reconnect edge case: InGame can fire before entity attach is complete.
-            // Queue one delayed retry so HasActivePlayersOnGrid sees the restored body.
-            if (becameActive)
-            {
-                _trackedShuttleRetryPending = true;
-                _nextTrackedShuttleRetryAt = _timing.CurTime + ReconnectRefreshRetryDelay;
-
-                if (_debug)
-                    Log.Info($"[ShuttleCrewStatus] Scheduled tracked shuttle retry at {_nextTrackedShuttleRetryAt}");
-            }
-
+            // Reconnect activation is handled by PlayerAttachedEvent.
             return;
         }
 
@@ -328,16 +327,6 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-
-        if (_trackedShuttleRetryPending && _timing.CurTime >= _nextTrackedShuttleRetryAt)
-        {
-            _trackedShuttleRetryPending = false;
-
-            if (_debug)
-                Log.Info("[ShuttleCrewStatus] Running delayed tracked shuttle retry refresh");
-
-            RefreshTrackedPlayerShuttles();
-        }
 
         var now = _timing.CurTime;
         var query = EntityQueryEnumerator<ShuttleCrewStatusComponent, IFFComponent>();
