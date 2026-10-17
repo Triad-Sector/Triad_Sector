@@ -162,20 +162,20 @@
 
 #armor-piercing:
 
-- type: entity
-  parent: BaseAmmoBox57x28mm
-  id: AmmoBox57x28mmPlasteelAP
-  name: ammunition box (5.7x28mm AP)
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge57x28mmPlasteelAP
-  - type: Sprite
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-    - state: plasteelAP
+#- type: entity
+#  parent: BaseAmmoBox57x28mm
+#  id: AmmoBox57x28mmPlasteelAP
+#  name: ammunition box (5.7x28mm AP)
+#  components:
+#  - type: BallisticAmmoProvider
+#    proto: Cartridge57x28mmPlasteelAP
+#  - type: Sprite
+#    layers:
+#    - state: base
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
+#    - state: plasteelAP
 
 #big ammo boxes
 - type: entity

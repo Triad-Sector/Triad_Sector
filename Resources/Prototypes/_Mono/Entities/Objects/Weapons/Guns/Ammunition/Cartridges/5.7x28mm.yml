@@ -137,17 +137,17 @@
 
 #armor-piercing:
 
-- type: entity
-  id: Cartridge57x28mmPlasteelAP
-  name: cartridge (5.7x28mm AP)
-  parent: BaseCartridge57x28mm
-  components:
-  - type: CartridgeAmmo
-    proto: Bullet57x28mmPlasteelAP
-  - type: Sprite
-    layers:
-      - state: base
-        map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#888888"
+#- type: entity #Triad, commented out until a better solution for AP rounds is found in their current state
+#  id: Cartridge57x28mmPlasteelAP
+#  name: cartridge (5.7x28mm AP)
+#  parent: BaseCartridge57x28mm
+#  components:
+#  - type: CartridgeAmmo
+#    proto: Bullet57x28mmPlasteelAP
+#  - type: Sprite
+#    layers:
+#      - state: base
+#        map: [ "enum.AmmoVisualLayers.Base" ]
+#      - state: tip
+#        map: [ "enum.AmmoVisualLayers.Tip" ]
+#        color: "#888888"

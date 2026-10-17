@@ -93,6 +93,9 @@ uplink-pistol-magazine-c20r-desc = SMG magazine with 30 catridges. Compatible wi
 uplink-pistol-magazine-caseless-name = Pistol Magazine (6.35x40mm Caseless)
 uplink-pistol-magazine-caseless-desc = Pistol magazine with 10 catridges. Compatible with the Cobra.
 
+uplink-magnum-extremeapbox-ammo-name = Ammunition box (.45 magnum Extreme AP)
+uplink-magnum-extremeapbox-ammo-desc = Expensive Bullets to handle the toughest of foes, prohibitively expensive.
+
 # Triad fix typo
 uplink-speedloader-45_magnum-name = Speedloader (.45 magnum AP)
 uplink-speedloader-magnum-desc = Revolver speedloader with 6 armor-piercing catridges, capable of ignoring armor entirely. Compatible with the Python.

@@ -420,3 +420,15 @@ ClothingHelmetAttachmentInfraredBasic: null
 
 # 2026-10-14
 ClothingHeadHelmetAttachmentBlock: null
+
+# 2026-10-15
+AmmoBox46x30mmPlasteelAP : null
+AmmoBox57x28mmPlasteelAP : null
+Cartridge46x30mmPlasteelAP : null
+Cartridge57x28mmPlasteelAP : null
+Magazine46x30mmPistolPlasteelAP : null
+Magazine57x28mmPistolPlasteelAP : null
+Magazine46x30mmSubMachineGunPlasteelAP: null
+Magazine57x28mmSubMachineGunPlasteelAP: null
+Bullet46x30mmPlasteelAP : null
+Bullet57x28mmPlasteelAP : null

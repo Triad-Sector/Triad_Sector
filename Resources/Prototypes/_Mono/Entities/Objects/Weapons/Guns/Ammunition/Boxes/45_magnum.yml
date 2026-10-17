@@ -124,6 +124,8 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: piercing
+  - type: SavingContraband # Triad
+    examineText: ship-saving-contraband-1-text
 
 # Mono AP syst
 #anti-flesh:
