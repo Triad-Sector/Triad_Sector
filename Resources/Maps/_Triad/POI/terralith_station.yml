@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 10/10/2026 03:42:19
-  entityCount: 7079
+  time: 10/17/2026 18:52:29
+  entityCount: 7094
 maps: []
 grids:
 - 1
@@ -232,10 +232,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        MetalFoam: []
-        Puddle: []
         Smoke: []
+        MetalFoam: []
         Kudzu: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -3320,6 +3320,7 @@ entities:
     - type: RadiationGridResistance
     - type: ChunkContainer
       chunkEntities: []
+    - type: GridSplitNode
 - proto: AirAlarm
   entities:
   - uid: 2
@@ -11318,6 +11319,13 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 38.5,10.5
+- proto: BannerNGC
+  entities:
+  - uid: 7090
+    components:
+    - type: Transform
+      parent: 1
+      pos: 37.5,27.5
 - proto: BarricadeBlock
   entities:
   - uid: 1461
@@ -20957,6 +20965,59 @@ entities:
     - type: Transform
       parent: 1
       pos: 8.540697,24.33045
+- proto: EmblemBrokenTerralithGrey
+  entities:
+  - uid: 7087
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,24.5
+- proto: EmblemBrokenTerralithWhite
+  entities:
+  - uid: 7048
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,7.5
+- proto: EmblemTerralithGrey
+  entities:
+  - uid: 7083
+    components:
+    - type: Transform
+      parent: 1
+      pos: -17.5,-25.5
+  - uid: 7084
+    components:
+    - type: Transform
+      parent: 1
+      pos: -20.5,3.5
+  - uid: 7085
+    components:
+    - type: Transform
+      parent: 1
+      pos: -20.5,9.5
+  - uid: 7086
+    components:
+    - type: Transform
+      parent: 1
+      pos: -17.5,-19.5
+- proto: EmblemTerralithWhite
+  entities:
+  - uid: 7047
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.5,5.5
+  - uid: 7088
+    components:
+    - type: Transform
+      parent: 1
+      pos: 42.5,32.5
+  - uid: 7089
+    components:
+    - type: Transform
+      parent: 1
+      pos: 42.5,28.5
 - proto: EmergencyLight
   entities:
   - uid: 3243
@@ -34014,6 +34075,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,-14.5
+- proto: SolCommonTranslator
+  entities:
+  - uid: 7091
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.641973,15.588739
 - proto: SpaceCash100000
   entities:
   - uid: 1538
@@ -34711,6 +34779,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 30.5,6.5
+- proto: SpawnMobSolarianSiliconBoss
+  entities:
+  - uid: 7046
+    components:
+    - type: Transform
+      parent: 1
+      pos: 42.5,6.5
 - proto: SpawnMobSolarianSiliconDrone
   entities:
   - uid: 5122
@@ -34870,6 +34945,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 42.5,-0.5
+  - uid: 7094
+    components:
+    - type: Transform
+      parent: 1
+      pos: -22.5,6.5
 - proto: SpawnMobSolarianSiliconDroneTenChance
   entities:
   - uid: 5153
@@ -34897,6 +34977,16 @@ entities:
     - type: Transform
       parent: 1
       pos: 27.5,-23.5
+  - uid: 7092
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-0.5
+  - uid: 7093
+    components:
+    - type: Transform
+      parent: 1
+      pos: -19.5,-22.5
 - proto: SpawnMobWeaponTurretLaserSilicon
   entities:
   - uid: 5158
