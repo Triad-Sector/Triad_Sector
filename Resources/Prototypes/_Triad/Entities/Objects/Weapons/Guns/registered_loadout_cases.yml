@@ -9,3 +9,15 @@
       amount: 1
     - id: Magazine9x19mmSubMachineGunFMJ
       amount: 4
+
+- type: entity
+  parent: WeaponCaseShort
+  id: WeaponCaseNSCTradersDecreeRegistered
+  suffix: Loadout, NSCTradersDecree
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRevolverNSCTradersDecreeRegistered
+      amount: 1
+    - id: AmmoBox185x76mmFMJ
+      amount: 1

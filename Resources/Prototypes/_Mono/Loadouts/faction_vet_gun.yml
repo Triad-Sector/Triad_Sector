@@ -26,7 +26,7 @@
   - ContractorSpecialGunMla79
   - ContractorSpecialGunMalandro
   - ContractorSpecialGunSquire # Triad
-
+  - ContractorSpecialGunNSCTradersDecree # Triad
 
 - type: loadout
   id: ContractorSpecialGunEg4

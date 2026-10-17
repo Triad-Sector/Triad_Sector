@@ -7,3 +7,13 @@
   price: 35000
   inhand:
   - WeaponCaseSquireRegistered
+
+- type: loadout
+  id: ContractorSpecialGunNSCTradersDecree
+  name: NSC Trader's Decree gun case
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MonoCivVet
+  price: 30000
+  inhand:
+  - WeaponCaseNSCTradersDecreeRegistered
