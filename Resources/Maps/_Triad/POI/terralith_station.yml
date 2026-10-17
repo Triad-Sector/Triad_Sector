@@ -44157,6 +44157,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 25.5,30.5
+- proto: WarpPoint
+  entities:
+  - uid: 6886
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.5,6.5
 - proto: WashingMachineBroken
   entities:
   - uid: 4490
