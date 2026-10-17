@@ -21,7 +21,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_clown
 
 - type: marking
@@ -36,7 +36,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_clown_minimal
 
 - type: marking
@@ -51,7 +51,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_clown_sad
 
 - type: marking
@@ -66,7 +66,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_clown_serious
 
 - type: marking
@@ -81,7 +81,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_clown_smug
 
 - type: marking
@@ -96,7 +96,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_mime
 
 - type: marking
@@ -111,7 +111,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_mime_blush
 
 - type: marking
@@ -126,7 +126,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_mime_odd
 
 - type: marking
@@ -141,7 +141,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_mime_sad
 
 - type: marking
@@ -156,7 +156,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_mime_serious
 
 - type: marking
@@ -171,7 +171,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/human.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/human.rsi
     state: facepaint_white
 
 ##Reptilians, use [Reptilian] for restriction
@@ -187,7 +187,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_clown
 
 - type: marking
@@ -202,7 +202,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_clown_minimal
 
 - type: marking
@@ -217,7 +217,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_clown_sad
 
 - type: marking
@@ -232,7 +232,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_clown_serious
 
 - type: marking
@@ -247,7 +247,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_clown_smug
 
 - type: marking
@@ -262,7 +262,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_mime
 
 - type: marking
@@ -277,7 +277,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_mime_blush
 
 - type: marking
@@ -292,7 +292,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_mime_odd
 
 - type: marking
@@ -307,7 +307,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_mime_sad
 
 - type: marking
@@ -322,7 +322,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_white
 
 ##vulpkanins, use [Vulpkanin] for restrict
@@ -339,7 +339,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_clown
 
 - type: marking
@@ -354,7 +354,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_clown_minimal
 
 - type: marking
@@ -369,7 +369,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_clown_sad
 
 - type: marking
@@ -384,7 +384,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_clown_serious    
 
 - type: marking
@@ -399,7 +399,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_clown_smug
 
 - type: marking
@@ -414,7 +414,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_mime
 
 - type: marking
@@ -429,7 +429,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_mime_blush
 
 - type: marking
@@ -444,7 +444,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_mime_odd
 
 - type: marking
@@ -459,7 +459,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_mime_sad
 
 - type: marking
@@ -474,7 +474,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_mime_serious
 
 - type: marking
@@ -489,7 +489,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/vulpkanin.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/vulpkanin.rsi
     state: facepaint_white
 
 ## Shared Facepaints, two variants depending on if snout or head is topmost face layer.
@@ -499,7 +499,7 @@
   markingCategory: Head
   speciesRestriction: [Arachnid, Dwarf, Felinid, Goblin, Harpy, Human, Moth, Oni, SlimePerson, Rodentia, Tajaran] # Triad
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
     state: facepaint_blush
 
 - type: marking
@@ -508,7 +508,7 @@
   markingCategory: Head
   speciesRestriction: [Arachnid, Dwarf, Felinid, Goblin, Harpy, Human, Moth, Oni, SlimePerson, Rodentia, Tajaran] # Triad
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
     state: facepaint_eyebrows
 
 # Triad
@@ -518,7 +518,7 @@
 #   markingCategory: Head
 #   speciesRestriction: [Arachnid, Dwarf, Felinid, Goblin, Harpy, Human, Moth, Oni, Sheleg, SlimePerson]
 #   sprites:
-#   - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+#   - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
 #     state: facepaint_lipstick
 # End Triad
 
@@ -528,7 +528,7 @@
   markingCategory: Head
   speciesRestriction: [Reptilian, Vulpkanin, Feroxi, Ovinia] # Triad
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
     state: facepaint_blush
 
 - type: marking
@@ -537,7 +537,7 @@
   markingCategory: Head
   speciesRestriction: [Reptilian, Vulpkanin, Feroxi, Ovinia] # Triad
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
     state: facepaint_eyebrows
 
 - type: marking
@@ -546,7 +546,7 @@
   markingCategory: Head
   speciesRestriction: [Reptilian, Vulpkanin]
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/shared.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/shared.rsi
     state: facepaint_lipstick_snout
 
 - type: marking
@@ -561,5 +561,5 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _Triad/Mobs/Customization/facepaints/reptilian.rsi
+  - sprite: _NF/Mobs/Customization/facepaints/reptilian.rsi
     state: facepaint_mime_serious
