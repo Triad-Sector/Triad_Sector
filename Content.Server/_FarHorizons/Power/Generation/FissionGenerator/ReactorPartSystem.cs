@@ -221,25 +221,43 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
         {
             if (Prob(reactorPart.Properties.Density * ReactionRate * reactorPart.NeutronCrossSection * NeutronReactionBias))
             {
-                if (neutron.velocity <= 1 && Prob(ReactionRate * reactorPart.Properties.NeutronRadioactivity * NeutronReactionBias)) // neutron stimulated emission
+                if (neutron.velocity <= 1 && Prob(ReactionRate * (reactorPart.Properties.NeutronRadioactivity + reactorPart.Properties.Fertility * 0.5f) * NeutronReactionBias)) // neutron stimulated emission
                 {
                     reactorPart.Properties.NeutronRadioactivity -= ReactionReactant;
                     reactorPart.Properties.Radioactivity += ReactionProduct;
                     for (var i = 0; i < _random.Next(1, 5 + 1); i++)
                     {
-                        result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(2, 3 + 1) });
+                        if (Prob(reactorPart.Properties.Fertility / 1.8f / reactorPart.Properties.NeutronRadioactivity)) //Triad, if fertility is much higher than N-fuel, has an moderate chance to steal a neutron.
+                        {
+                            reactorPart.Properties.Fertility -= ReactionReactant * 0.8f; //Triad- if fertility is consumed, its consumed at a moderate rate and turned into a much higher plutonium yield.
+                            reactorPart.Properties.FissileIsotopes += ReactionProduct * 0.75f; //Triad- N-capture (fast neutrons) is the better way to do this!
+                            reactorPart.Temperature += 25f * StimulatedHeatingFactor; //Triad- makes more energy if its a fast capture over a thermal capture.
+                        }
+                        else
+                        {
+                            result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(2, 3 + 1) });
+                            reactorPart.Temperature += 50f * StimulatedHeatingFactor;
+                        }
                     }
-                    reactorPart.Temperature += 50f * StimulatedHeatingFactor;
                 }
-                else if (neutron.velocity <= 5 && Prob(ReactionRate * reactorPart.Properties.Radioactivity * NeutronReactionBias)) // stimulated emission
+                else if (neutron.velocity <= 5 && Prob(ReactionRate * (reactorPart.Properties.Radioactivity + reactorPart.Properties.Fertility * 0.2f) * NeutronReactionBias)) // stimulated emission
                 {
                     reactorPart.Properties.Radioactivity -= ReactionReactant;
-                    reactorPart.Properties.FissileIsotopes += ReactionProduct;
                     for (var i = 0; i < _random.Next(1, 5 + 1); i++)
                     {
-                        result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
+                        if (Prob(reactorPart.Properties.Fertility / 1.5f / (reactorPart.Properties.Radioactivity + reactorPart.Properties.Fertility * 0.25f))) //Triad, if fertility is much higher than radioactivity, has a chance to steal a neutron.
+                        {
+                            reactorPart.Properties.Fertility -= ReactionReactant * 0.5f; //Triad- if fertility is consumed, its consumed at a small rate and turned into plutonium.
+                            reactorPart.Properties.FissileIsotopes += ReactionProduct * 0.25f; //Triad- stimulated capture is a less effective way than fast capture, but still works.. some.
+                            reactorPart.Properties.NeutronRadioactivity += ReactionProduct * 0.1f; //Triad- some of the R-fuel is made into N-fuel.
+                            reactorPart.Temperature += 10f * StimulatedHeatingFactor; //Triad- makes less energy if its a thermal capture over a fast capture.
+                        }
+                        else
+                        {
+                            result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
+                            reactorPart.Temperature += 25f * StimulatedHeatingFactor;
+                        }
                     }
-                    reactorPart.Temperature += 25f * StimulatedHeatingFactor;
                 }
                 else
                 {
@@ -262,25 +280,25 @@ public sealed partial class ReactorPartSystem : SharedReactorPartSystem
                 result.Add(neutron);
             }
         }
-        if (Prob(reactorPart.Properties.NeutronRadioactivity * ReactionRate * reactorPart.NeutronCrossSection))
+        if (Prob(reactorPart.Properties.NeutronRadioactivity * ReactionRate * (reactorPart.NeutronCrossSection + 0.2f / reactorPart.NeutronCrossSection))) // Triad- made N-decay events less affected by very low fuel, resulting in more consistentent decay rates, even at low fuel.
         {
             for (var i = 0; i < _random.Next(1, 3 + 1); i++)
             {
                 result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = 3 });
             }
             reactorPart.Properties.NeutronRadioactivity -= ReactionReactant * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Properties.Radioactivity += ReactionProduct * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Temperature += 20f * SpontaneousHeatingFactor;
+            reactorPart.Properties.Radioactivity += ReactionProduct * SpontaneousReactionConsumptionMultiplier * 1.25f; // Triad- made neutron decay produce 25% more R-fuel.
+            reactorPart.Temperature += 20f * SpontaneousHeatingFactor; //Triad- decreased heat output of N-fuel decay.
         }
-        if (Prob(reactorPart.Properties.Radioactivity * ReactionRate * reactorPart.NeutronCrossSection))
+        if (Prob(reactorPart.Properties.Radioactivity * ReactionRate * reactorPart.NeutronCrossSection * (reactorPart.NeutronCrossSection - 0.2f / reactorPart.NeutronCrossSection))) // Triad- made R-decay events happen much slower at lower levels. If you want R-fuel to go down faster, expose it to neutrons to fission it away. Makes R-Fuel last much longer on its own.
         {
             for (var i = 0; i < _random.Next(1, 3 + 1); i++)
             {
                 result.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
             }
             reactorPart.Properties.Radioactivity -= ReactionReactant * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Properties.FissileIsotopes += ReactionProduct * SpontaneousReactionConsumptionMultiplier;
-            reactorPart.Temperature += 10f * SpontaneousHeatingFactor;
+            reactorPart.Properties.FissileIsotopes += ReactionProduct * SpontaneousReactionConsumptionMultiplier * 0.1f; // Triad- made radioactive decay produce very little plutonium- but still *some*, to represent heavier isotopes like neptunium.
+            reactorPart.Temperature += 15f * SpontaneousHeatingFactor; //Made decay produce a bit more heat since it happens so much slower.
         }
 
         if (reactorPart.HasRodType(ReactorPartComponent.RodTypes.ControlRod))

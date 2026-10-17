@@ -21,6 +21,9 @@ public sealed partial class MaterialProperties()
     [DataField("reflective")]
     public float Reflectivity = 0;
 
+    [DataField("fertility")]
+    public float Fertility = 0;
+
     [DataField("flammable")]
     public float Flammability = 1;
 

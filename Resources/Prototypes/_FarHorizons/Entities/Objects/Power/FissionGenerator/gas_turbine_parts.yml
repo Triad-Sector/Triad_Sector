@@ -14,7 +14,7 @@
     guides:
     - GasTurbine
     - Power
- 
+
 # Blades
 - type: entity
   id: BaseGasTurbineBlade
@@ -83,6 +83,17 @@
     materialComposition:
       Plasteel: 1000
 
+- type: entity
+  id: PlastitaniumGasTurbineBlade
+  parent: BaseGasTurbineBlade
+  name: Plastitanium Gas Turbine Blade
+  components:
+  - type: GasTurbineBlade
+    material: Plastitanium
+  - type: PhysicalComposition
+    materialComposition:
+      Plastitanium: 1000
+
 # Stators
 - type: entity
   id: BaseGasTurbineStator
@@ -130,3 +141,14 @@
   - type: PhysicalComposition
     materialComposition:
       Gold: 1000
+
+- type: entity
+  id: IriditeGasTurbineStator
+  parent: BaseGasTurbineStator
+  name: Iridite Gas Turbine Stator
+  components:
+  - type: GasTurbineStator
+    material: Iridite
+  - type: PhysicalComposition
+    materialComposition:
+      Iridite: 1000
