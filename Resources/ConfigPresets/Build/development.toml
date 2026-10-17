@@ -1,6 +1,7 @@
 ﻿[game]
 # Straight in-game baby
 lobbyenabled = false
+# Frontier: special map
 map = "NFDev"
 role_timers = false
 current_year_offset = 802
@@ -24,7 +25,8 @@ preload = false
 
 [salvage]
 expedition_cooldown = 30.0
-expedition_failed_cooldown = 10.0
+# Frontier: shorter expeditions
+expedition_duration = 900.0
 
 [shuttle]
 grid_fill = false
@@ -36,6 +38,13 @@ shipyard = true
 
 [admin]
 see_own_notes = true
+
+# Frontier: expedition params
+[nf14.salvage]
+expedition_failed_cooldown = 120.0
+expedition_travel_time = 20.0
+expedition_proximity_check = true
+# End Frontier: expedition params
 
 [mono]
 company_whitelist = false
