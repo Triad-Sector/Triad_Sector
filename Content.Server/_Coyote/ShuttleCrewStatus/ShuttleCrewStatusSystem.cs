@@ -22,6 +22,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
     [Dependency] private SharedShuttleSystem _shuttle = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityQuery<TransformComponent> _transformQuery = default!;
 
     // Delay window for visual IFF changes (base + random jitter).
     private TimeSpan _baseVisualDelay = TimeSpan.FromSeconds(20);
@@ -55,11 +56,6 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             CoyoteCCVars.ShuttleCrewStatusDebug,
             UpdateDebug,
             invokeImmediately: true);
-
-        SubscribeLocalEvent<IFFComponent, MapInitEvent>(OnIFFMapInit);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
-        SubscribeLocalEvent<EntParentChangedMessage>(OnEntParentChanged);
-        SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
 
         // Handles disconnect/zombie transitions even when no movement event is fired.
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
@@ -109,6 +105,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
         Log.Info($"[ShuttleCrewStatus] debug={_debug}");
     }
 
+    [SubscribeLocalEvent]
     private void OnIFFMapInit(EntityUid uid, IFFComponent component, MapInitEvent args)
     {
         if (!TryComp<ShuttleComponent>(uid, out _))
@@ -129,6 +126,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
         var query = EntityQueryEnumerator<ShuttleCrewStatusComponent>();
@@ -143,6 +141,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             Log.Info($"[ShuttleCrewStatus] RoundCleanup removed={removed}");
     }
 
+    [SubscribeLocalEvent]
     private void OnEntParentChanged(ref EntParentChangedMessage ev)
     {
         var uid = ev.Entity;
@@ -159,7 +158,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
         var newGrid = ev.Transform.GridUid;
 
         if (ev.OldParent is { } oldParent &&
-            TryComp(oldParent, out TransformComponent? oldParentXform))
+            _transformQuery.TryGetComponent(oldParent, out var oldParentXform))
         {
             oldGrid = oldParentXform.GridUid;
         }
@@ -177,9 +176,10 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             QueueStatusRefresh(newGridUid);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(PlayerAttachedEvent ev)
     {
-        if (!TryComp(ev.Entity, out TransformComponent? xform))
+        if (!_transformQuery.TryGetComponent(ev.Entity, out var xform))
             return;
 
         if (xform.GridUid is not { } gridUid)
@@ -212,7 +212,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             return;
         }
 
-        if (!TryComp(ent, out TransformComponent? xform))
+        if (!_transformQuery.TryGetComponent(ent, out var xform))
             return;
 
         if (xform.GridUid is not { } gridUid)
@@ -382,7 +382,7 @@ public sealed partial class ShuttleCrewStatusSystem : EntitySystem
             if (HasComp<GhostComponent>(playerEntity))
                 continue;
 
-            if (!TryComp(playerEntity, out TransformComponent? playerXform))
+            if (!_transformQuery.TryGetComponent(playerEntity, out var playerXform))
                 continue;
 
             if (playerXform.GridUid == gridUid)
