@@ -7,7 +7,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/TDF/fling.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/TDF/fling.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -19,7 +19,7 @@
 - type: gameMap
   id: Fling
   mapName: 'Fling'
-  mapPath: /Maps/_Triad/Shuttles/TDF/fling.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/fling.yml
   minPlayers: 0
   stations:
     Fling:
@@ -33,3 +33,4 @@
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
+

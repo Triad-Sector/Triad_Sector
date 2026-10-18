@@ -10,7 +10,7 @@
   price: 78000
   category: Medium
   group: Military
-  shuttlePath: /Maps/_Triad/Shuttles/MIL/palisade.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/MIL/palisade.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Palisade
   mapName: 'NSC Palisade'
-  mapPath: /Maps/_Triad/Shuttles/MIL/palisade.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/MIL/palisade.yml
   minPlayers: 0
   stations:
     Palisade:
@@ -35,3 +35,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+

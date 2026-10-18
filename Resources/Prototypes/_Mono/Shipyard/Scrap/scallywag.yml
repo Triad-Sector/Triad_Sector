@@ -12,7 +12,7 @@
   price: 120000 # 89K base x 1.35 -> 120K (35% markup).
   category: medium
   group: Scrap
-  shuttlePath: /Maps/_Mono/Shuttles/Scrap/scallywag.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/Scrap/scallywag.yml
   guidebookPage: Null
   class:
   - pursuit
@@ -24,7 +24,7 @@
 - type: gameMap
   id: Scallywag
   mapName: 'RSC-Scallywag'
-  mapPath: /Maps/_Mono/Shuttles/Scrap/scallywag.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/Scrap/scallywag.yml
   minPlayers: 0
   stations:
     Scallywag:
@@ -38,4 +38,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 
