@@ -58,6 +58,11 @@
     repairTo: SolarPanel
     repairTime: 1
     repairCost: 2
+  # Triad
+  - type: Tag
+    tags:
+    - IgnoreThrusterDamage
+  # End Triad
 
 - type: entity
   id: SolarPanelPlasma
