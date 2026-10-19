@@ -17,6 +17,7 @@ using Robust.Shared.Prototypes;
 
 // Mono
 using Content.Shared.Destructible;
+using Content.Shared.Damage; // Triad ~ fissile glass shard super massive event preventer
 
 namespace Content.Server.Materials;
 
@@ -42,23 +43,132 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         SubscribeAllEvent<EjectMaterialMessage>(OnEjectMessage);
     }
 
-    private void OnDeconstructed(EntityUid uid, MaterialStorageComponent component, MachineDeconstructedEvent args)
+    private void OnDeconstructed(EntityUid uid,MaterialStorageComponent component,MachineDeconstructedEvent args)
     {
         if (!component.DropOnDeconstruct)
             return;
 
+        // Normal deconstruction: preserve the original drop behavior.
         DropAll((uid, component));
     }
+    // Triad changes Stops fissile glass shard super massive event~ this is unique to 1k+ events
+    private const int MaterialDropDamageThreshold = 1000;
 
-    // Mono
-    private void OnDestroyed(Entity<MaterialStorageComponent> ent, ref DestructionEventArgs args)
+    private static readonly HashSet<string> MaterialsLostOnHeavyDamage = new()
+    {
+        "Glass",
+        "PlasmaGlass",
+        "ReinforcedPlasmaGlass",
+        "UraniumGlass",
+        "ReinforcedUraniumGlass",
+        "ReinforcedGlass",
+    };
+    private void OnDestroyed(
+    Entity<MaterialStorageComponent> ent,
+    ref DestructionEventArgs args)
     {
         if (!ent.Comp.DropOnDestroy)
             return;
 
-        DropAll(ent);
+        var heavyDamage =
+            TryComp<DamageableComponent>(ent, out var damageable)
+            && damageable.TotalDamage > MaterialDropDamageThreshold;
+
+        // At 1000 damage or less, preserve the original drop behavior.
+        if (!heavyDamage)
+        {
+            DropAll(ent);
+            return;
+        }
+
+        // Above 1000 damage: suppress selected materials and limit
+        // each remaining material to at most 10 oversized stack entities.
+        var coord = Transform(ent).Coordinates;
+
+        foreach (var (material, amount) in ent.Comp.Storage)
+        {
+            if (MaterialsLostOnHeavyDamage.Contains(material))
+                continue;
+
+            if (!_prototypeManager.TryIndex<MaterialPrototype>(
+                    material,
+                    out var materialProto))
+                continue;
+
+            SpawnMaterialInLimitedStacks(
+                amount,
+                materialProto,
+                coord,
+                10);
+        }
     }
 
+    private void SpawnMaterialInLimitedStacks(
+        int amount,
+        MaterialPrototype materialProto,
+        EntityCoordinates coordinates,
+        int maxObjects)
+    {
+        if (amount <= 0 || maxObjects <= 0 || materialProto.StackEntity == null)
+            return;
+
+        var entProto = _prototypeManager.Index<EntityPrototype>(materialProto.StackEntity);
+
+        if (!entProto.TryComp<PhysicalCompositionComponent>(
+                out var composition,
+                EntityManager.ComponentFactory))
+            return;
+
+        if (!composition.MaterialComposition.TryGetValue(
+                materialProto.ID,
+                out var materialPerStack) || materialPerStack <= 0)
+            return;
+
+        // Convert material units into sheets.
+        var totalCount = amount / materialPerStack;
+        if (totalCount <= 0)
+            return;
+
+        // Read the normal maximum from the stack prototype.
+        if (!entProto.TryComp<StackComponent>(
+                out var prototypeStack,
+                EntityManager.ComponentFactory))
+            return;
+
+        var normalMaxCount = _stackSystem.GetMaxCount(prototypeStack);
+        if (normalMaxCount <= 0)
+            return;
+
+        // How many normal stacks would be needed?
+        var normalObjectCount = (totalCount + normalMaxCount - 1) / normalMaxCount;
+
+        // If normal stacks fit within the limit, use the standard spawn method.
+        if (normalObjectCount <= maxObjects)
+        {
+            _stackSystem.SpawnMultiple(
+                materialProto.StackEntity,
+                totalCount,
+                coordinates);
+            return;
+        }
+
+        // Otherwise, distribute the sheets across exactly maxObjects oversized stacks.
+        var objectCount = maxObjects;
+        var countPerObject = totalCount / objectCount;
+        var extraCount = totalCount % objectCount;
+
+        for (var i = 0; i < objectCount; i++)
+        {
+            var count = countPerObject + (i < extraCount ? 1 : 0);
+
+            var stackEntity = Spawn(materialProto.StackEntity, coordinates);
+            var stack = Comp<StackComponent>(stackEntity);
+
+            stack.MaxCountOverride = count;
+            _stackSystem.SetCount(stackEntity, count, stack);
+        }
+    }
+    // end triad
     // Mono
     public void DropAll(Entity<MaterialStorageComponent> ent)
     {
