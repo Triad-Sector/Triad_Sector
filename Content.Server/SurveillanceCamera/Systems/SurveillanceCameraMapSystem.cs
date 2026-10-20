@@ -60,7 +60,7 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
     }
 
     /// <summary>
-    /// Updates camera data in the SurveillanceCameraMapComponent for the specified camera entity.
+    /// Updates camera data in the <see cref="SurveillanceCameraMapComponent"/> for the specified camera.
     /// </summary>
     public void UpdateCameraMarker(Entity<SurveillanceCameraComponent> camera)
     {
@@ -113,7 +113,7 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
     }
 
     /// <summary>
-    /// Sets the visibility state of a camera on the camera map.
+    /// Sets the visibility state of the camera on the camera map.
     /// </summary>
     public void SetCameraVisibility(EntityUid cameraUid, bool visible)
     {
@@ -134,7 +134,7 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
     }
 
     /// <summary>
-    /// Checks if a camera is currently visible on the camera map.
+    /// Checks if the camera is currently visible on the camera map.
     /// </summary>
     public bool IsCameraVisible(EntityUid cameraUid)
     {

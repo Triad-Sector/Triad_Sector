@@ -39,7 +39,7 @@ public sealed partial class SurveillanceCameraMonitorWindow : DefaultWindow
     private string _currentAddress = string.Empty;
     private bool _isSwitching;
     private readonly FixedEye _defaultEye = new();
-    private readonly Dictionary<ProtoId<DeviceFrequencyPrototype>, int> _subnetMap = new();
+    private readonly Dictionary<ProtoId<DeviceFrequencyPrototype>, int> _subnetMap = [];
     private EntityUid? _mapUid;
 
     public SurveillanceCameraMonitorWindow()
@@ -189,12 +189,6 @@ public sealed partial class SurveillanceCameraMonitorWindow : DefaultWindow
         SubnetSelector.SetItemMetadata(SubnetSelector.ItemCount - 1, subnet);
 
         return SubnetSelector.ItemCount - 1;
-    }
-
-    private void AddCameraToList(string name, string address)
-    {
-        var item = SubnetList.AddItem($"{name}: {address}");
-        item.Metadata = address;
     }
 
     private void OnSubnetListSelect(ItemList.ItemListSelectedEventArgs args)
