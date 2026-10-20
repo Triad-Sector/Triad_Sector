@@ -1,12 +1,10 @@
-using Content.Server.Body.Components;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Body.Components;
 
-namespace Content.Server.EntityEffects.EffectConditions;
+namespace Content.Shared.EntityEffects.EffectConditions;
 
 public sealed partial class BloodReagentThreshold : EntityEffectCondition
 {

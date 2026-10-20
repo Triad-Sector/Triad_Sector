@@ -1,10 +1,9 @@
 using Content.Shared.Chemistry.Components;
-using Content.Shared.EntityEffects;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Server.EntityEffects.Effects;
+namespace Content.Shared.EntityEffects.Effects;
 
 /// <summary>
 /// Default metabolism for stimulants and tranqs. Attempts to find a MovementSpeedModifier on the target,

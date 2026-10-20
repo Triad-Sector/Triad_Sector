@@ -1,14 +1,12 @@
-using Content.Server.Body.Components;
 using Content.Shared.Chemistry.Reagent;
-using Content.Server.Body.Systems;
-using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 
-namespace Content.Server.EntityEffects.Effects;
+namespace Content.Shared.EntityEffects.Effects;
 
 public sealed partial class AddReagentToBlood : EntityEffect
 {
@@ -35,7 +33,7 @@ public sealed partial class AddReagentToBlood : EntityEffect
         var solutionToAdd = new Solution();
         solutionToAdd.AddReagent(Reagent, amountAdd);
 
-        var sys = args.EntityManager.System<BloodstreamSystem>();
+        var sys = args.EntityManager.System<SharedBloodstreamSystem>();
         sys.TryAddToChemicals((args.TargetEntity, bloodStreamTarget), solutionToAdd);
     }
 
