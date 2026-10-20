@@ -81,11 +81,11 @@ public sealed partial class RespiratorSystem : EntitySystem
                 switch (respirator.Status)
                 {
                     case RespiratorStatus.Inhaling:
-                        Inhale(uid, body);
+                        Inhale(uid);
                         respirator.Status = RespiratorStatus.Exhaling;
                         break;
                     case RespiratorStatus.Exhaling:
-                        Exhale(uid, body);
+                        Exhale(uid);
                         respirator.Status = RespiratorStatus.Inhaling;
                         break;
                 }

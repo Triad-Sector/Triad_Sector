@@ -17,7 +17,8 @@ using Robust.Shared.Timing;
 using System.Numerics;
 using System.Linq;
 using Content.Shared.Damage; // Shitmed Change
-using Content.Shared.Gibbing.Events; // Shitmed Change
+using Content.Shared.Gibbing.Events;
+using Content.Server.Body.Components; // Shitmed Change
 
 namespace Content.Server.Body.Systems;
 
