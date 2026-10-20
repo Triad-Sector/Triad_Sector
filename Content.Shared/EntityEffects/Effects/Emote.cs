@@ -38,6 +38,6 @@ public sealed partial class Emote : EventEntityEffect<Emote>
         if (!ShowInGuidebook)
             return null; // JUSTIFICATION: Emoting is mostly flavor, so same reason popup messages are not in here.
 
-        return Loc.GetString("reagent-effect-guidebook-emote", ("chance", Probability), ("emote", EmoteId));
+        return Loc.GetString("reagent-effect-guidebook-emote", ("chance", Probability), ("emote", EmoteId!.Value.Id));
     }
 }
