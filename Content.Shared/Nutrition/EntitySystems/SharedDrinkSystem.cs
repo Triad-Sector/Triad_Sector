@@ -32,7 +32,6 @@ public abstract partial class SharedDrinkSystem : EntitySystem
     [Dependency] private OpenableSystem _openable = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private OpenableSystem _openable = default!;
 
     public override void Initialize()
     {

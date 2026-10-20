@@ -21,7 +21,7 @@ public sealed partial class FoodSequenceSystem : SharedFoodSequenceSystem
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
