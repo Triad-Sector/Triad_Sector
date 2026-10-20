@@ -7,12 +7,12 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Bed;
 
-public abstract class SharedBedSystem : EntitySystem
+public abstract partial class SharedBedSystem : EntitySystem
 {
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] private readonly ActionContainerSystem _actConts = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] private ActionContainerSystem _actConts = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SleepingSystem _sleepingSystem = default!;
 
     public override void Initialize()
     {
