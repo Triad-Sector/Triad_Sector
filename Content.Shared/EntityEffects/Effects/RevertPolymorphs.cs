@@ -1,12 +1,10 @@
-using Content.Server.Polymorph.Components;
-using Content.Server.Polymorph.Systems;
 using Content.Shared.EntityEffects;
 using Content.Shared.Polymorph;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;
 
-public sealed partial class RevertPolymorph : EntityEffect
+public sealed partial class RevertPolymorph : EventEntityEffect<RevertPolymorph>
 {
     /// <summary>
     ///     What polymorph prototype is used on effect
@@ -17,16 +15,5 @@ public sealed partial class RevertPolymorph : EntityEffect
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-revert-polymorph",
             ("chance", Probability), ("entityname",
-                prototype.Index<EntityPrototype>(prototype.Index<PolymorphPrototype>(PolymorphPrototype).Configuration.Entity).Name));
-
-    public override void Effect(EntityEffectBaseArgs args)
-    {
-        var entityManager = args.EntityManager;
-        var uid = args.TargetEntity;
-        var polySystem = entityManager.System<PolymorphSystem>();
-
-        // Make it into a prototype
-        entityManager.EnsureComponent<PolymorphableComponent>(uid);
-        polySystem.Revert(uid);
-    }
+                prototype.Index<EntityPrototype>(prototype.Index(PolymorphPrototype).Configuration.Entity).Name));
 }

@@ -1,8 +1,8 @@
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
+using Content.Shared.Spreader;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.EntityEffects.Effects;
 
@@ -24,13 +24,13 @@ public sealed partial class AreaReactionEffect : EventEntityEffect<AreaReactionE
     /// <summary>
     /// The entity prototype that will be spawned as the effect.
     /// </summary>
-    [DataField("prototypeId", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string PrototypeId = default!;
+    [DataField(required: true)]
+    public EntProtoId PrototypeId = default!;
 
     /// <summary>
     /// Sound that will get played when this reaction effect occurs.
     /// </summary>
-    [DataField("sound", required: true)] public SoundSpecifier Sound = default!;
+    [DataField(required: true)] public SoundSpecifier Sound = default!;
 
     public override bool ShouldLog => true;
 

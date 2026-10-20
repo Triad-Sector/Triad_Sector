@@ -45,35 +45,38 @@ using Robust.Shared.Random;
 
 using TemperatureCondition = Content.Shared.EntityEffects.EffectConditions.Temperature; // disambiguate the namespace
 using PolymorphEffect = Content.Shared.EntityEffects.Effects.Polymorph;
+using Content.Shared.Chat;
+using Content.Server.EntityEffects.Effects;
 
 namespace Content.Server.EntityEffects;
 
 public sealed class EntityEffectSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly EmpSystem _emp = default!;
-    [Dependency] private readonly ExplosionSystem _explosion = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly FlashSystem _flash = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MutationSystem _mutation = default!;
-    [Dependency] private readonly NarcolepsySystem _narcolepsy = default!;
-    [Dependency] private readonly PlantHolderSystem _plantHolder = default!;
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly RespiratorSystem _respirator = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SmokeSystem _smoke = default!;
-    [Dependency] private readonly SpreaderSystem _spreader = default!;
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly VomitSystem _vomit = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private EmpSystem _emp = default!;
+    [Dependency] private ExplosionSystem _explosion = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private FlashSystem _flash = default!;
+    [Dependency] private MapSystem _mapManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MutationSystem _mutation = default!;
+    [Dependency] private NarcolepsySystem _narcolepsy = default!;
+    [Dependency] private PlantHolderSystem _plantHolder = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private RespiratorSystem _respirator = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPointLightSystem _pointLight = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SmokeSystem _smoke = default!;
+    [Dependency] private SpreaderSystem _spreader = default!;
+    [Dependency] private TemperatureSystem _temperature = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private VomitSystem _vomit = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     public override void Initialize()
     {
@@ -122,6 +125,7 @@ public sealed class EntityEffectSystem : EntitySystem
         SubscribeLocalEvent<ExecuteEntityEffectEvent<PlantMutateHarvest>>(OnExecutePlantMutateHarvest);
         SubscribeLocalEvent<ExecuteEntityEffectEvent<PlantSpeciesChange>>(OnExecutePlantSpeciesChange);
         SubscribeLocalEvent<ExecuteEntityEffectEvent<PolymorphEffect>>(OnExecutePolymorph);
+        SubscribeLocalEvent<ExecuteEntityEffectEvent<RevertPolymorph>>(OnExecuteRevertPolymorph);
         SubscribeLocalEvent<ExecuteEntityEffectEvent<ResetNarcolepsy>>(OnExecuteResetNarcolepsy);
     }
 
@@ -527,7 +531,7 @@ public sealed class EntityEffectSystem : EntitySystem
                 return;
             }
 
-            if (_spreader.RequiresFloorToSpread(args.Effect.PrototypeId) && tileRef.Tile.IsSpace())
+            if (_spreader.RequiresFloorToSpread(args.Effect.PrototypeId.Id) && _turf.IsSpace(tileRef))
                 return;
 
             var coords = _map.MapToGrid(gridUid, mapCoords);
@@ -704,11 +708,13 @@ public sealed class EntityEffectSystem : EntitySystem
         if (args.Args is EntityEffectReagentArgs reagentArgs)
             range = MathF.Min((float)(reagentArgs.Quantity * args.Effect.RangePerUnit), args.Effect.MaxRange);
 
+        var duration = TimeSpan.FromSeconds(args.Effect.Duration * 1000);
+
         _flash.FlashArea(
             args.Args.TargetEntity,
             null,
             range,
-            args.Effect.Duration * 1000,
+            duration,
             slowTo: args.Effect.SlowTo,
             sound: args.Effect.Sound);
 
@@ -962,6 +968,12 @@ public sealed class EntityEffectSystem : EntitySystem
         // Make it into a prototype
         EnsureComp<PolymorphableComponent>(args.Args.TargetEntity);
         _polymorph.PolymorphEntity(args.Args.TargetEntity, args.Effect.PolymorphPrototype);
+    }
+
+    private void OnExecuteRevertPolymorph(ref ExecuteEntityEffectEvent<RevertPolymorph> args)
+    {
+        EnsureComp<PolymorphableComponent>(args.Args.TargetEntity);
+        _polymorph.Revert(args.Args.TargetEntity);
     }
 
     private void OnExecuteResetNarcolepsy(ref ExecuteEntityEffectEvent<ResetNarcolepsy> args)
