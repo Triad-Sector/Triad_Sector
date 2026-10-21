@@ -53,6 +53,17 @@
   - SouthernAccent
   - SpanishAccent
   - StutteringAccent
+  # Triad Start
+  - LanguageKnowledge
+  - LanguageSpeaker
+  - BoganAccent
+  - CavemanAccent
+  - GoblinAccent
+  - CowboyAccent
+  - NewBrooklynAccent
+  - StreetpunkAccent
+  - DwarfAccent
+  # Triad end
   blacklist:
     components:
     - AttachedClothing # helmets, which are part of the suit

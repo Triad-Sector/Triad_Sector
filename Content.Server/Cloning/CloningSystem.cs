@@ -1,4 +1,5 @@
 using Content.Server.Humanoid;
+using Content.Shared._NF.Bank.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Cloning;
 using Content.Shared.Cloning.Events;
@@ -73,6 +74,10 @@ public sealed partial class CloningSystem : EntitySystem
                 CopyComp(original, clone.Value, sourceComp);
             }
         }
+
+        // Frontier: bank account transfer
+        if (HasComp<BankAccountComponent>(original))
+            EnsureComp<BankAccountComponent>(clone.Value);
 
         var cloningEv = new CloningEvent(settings, clone.Value);
         RaiseLocalEvent(original, ref cloningEv); // used for datafields that cannot be directly copied
