@@ -29,9 +29,29 @@
     - type: Rotatable
       rotateWhileAnchored: true
     - type: Thruster
+      # Triad Start - Thruster restriction changes
       damage:
         types:
-          Heat: 40
+          Heat: 200
+      burnShape: ["-0.25,0.5","-0.0,5.6","0.25,0.5","0.0,-0.2","-0.25,0.5"]
+      originalLoad: 1500
+      burnWhitelist:
+        components:
+        - MobState
+        - Door
+        - PowerSupplier
+        - SpaceArtillery
+        tags:
+        - Window
+        - Wall
+        - Structure
+        - Diagonal
+      burnBlacklist:
+        tags:
+        - IgnoreThrusterDamage
+    - type: ThrusterProfile
+      profile: Small
+    # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline
     - type: Sprite
@@ -178,6 +198,8 @@
     thrust: 2000
     machinePartThrust: Manipulator
     heatSignatureRatio: 0.5 # Mono
+  - type: ThrusterProfile
+    profile: NeverBlocked # Triad
   - type: Sprite
     # Listen I'm not the biggest fan of the sprite but it was the most appropriate thing I could find.
     sprite: Structures/Shuttles/gyroscope.rsi

@@ -99,3 +99,15 @@
   groupBy: Bandana
   equipment:
     head: ClothingHeadBandBlue
+
+- type: loadout
+  id: ClothingHeadHatCircusClown
+  groupBy: JesterHat
+  equipment:
+    head: ClothingHeadHatCircusClown
+
+- type: loadout
+  id: ClothingHeadHatMimeBowler
+  groupBy: BartenderHat
+  equipment:
+    head: ClothingHeadHatMimeBowler

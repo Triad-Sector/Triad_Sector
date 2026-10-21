@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Client.Construction;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
+using Content.Client.Interaction;
 using Content.IntegrationTests.Pair;
 using Content.Server.Body.Systems;
 using Content.Server.Hands.Systems;
@@ -121,6 +122,7 @@ public abstract partial class InteractionTest
     protected InteractionTestSystem CTestSystem = default!;
     protected ISawmill CLogger = default!;
     protected SharedUserInterfaceSystem CUiSys = default!;
+    protected DragDropSystem CDragDropSys = default!;
 
     // player components
     protected HandsComponent Hands = default!;
@@ -171,7 +173,7 @@ public abstract partial class InteractionTest
         STestSystem = SEntMan.System<InteractionTestSystem>();
         Stack = SEntMan.System<StackSystem>();
         SLogger = Server.ResolveDependency<ILogManager>().RootSawmill;
-        SUiSys = Client.System<SharedUserInterfaceSystem>();
+        SUiSys = SEntMan.System<SharedUserInterfaceSystem>();
 
         // client dependencies
         CEntMan = Client.ResolveDependency<IEntityManager>();
@@ -184,6 +186,7 @@ public abstract partial class InteractionTest
         ExamineSys = CEntMan.System<ExamineSystem>();
         CLogger = Client.ResolveDependency<ILogManager>().RootSawmill;
         CUiSys = Client.System<SharedUserInterfaceSystem>();
+        CDragDropSys = CEntMan.System<DragDropSystem>();
 
         // Setup map.
         await Pair.CreateTestMap();

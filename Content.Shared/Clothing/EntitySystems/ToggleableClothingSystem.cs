@@ -408,6 +408,9 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
 
     private void UnequipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot)
     {
+        if (clothing == EntityUid.Invalid)
+            return;
+
         var parent = Transform(toggleable.Owner).ParentUid;
 
         _inventorySystem.TryUnequip(user, parent, slot, force: true);
@@ -423,6 +426,9 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
     }
     private void EquipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot)
     {
+        if (clothing == EntityUid.Invalid)
+            return;
+
         var parent = Transform(toggleable.Owner).ParentUid;
         var comp = toggleable.Comp;
 
@@ -461,6 +467,23 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         var comp = toggleable.Comp;
 
         comp.Container = _containerSystem.EnsureContainer<Container>(toggleable, comp.ContainerId);
+
+        // Triad - check if uids exist
+        if (comp.ClothingUids.Count != 0)
+        {
+            var toRemove = new List<EntityUid>();
+            foreach (var clothing in comp.ClothingUids.Keys)
+            {
+                if (!Exists(clothing) || clothing == EntityUid.Invalid)
+                    toRemove.Add(clothing);
+            }
+
+            foreach (var clothing in toRemove)
+            {
+                comp.ClothingUids.Remove(clothing);
+            }
+        }
+        // Triad End
     }
 
     private void OnAttachedInit(Entity<AttachedClothingComponent> attached, ref ComponentInit args)

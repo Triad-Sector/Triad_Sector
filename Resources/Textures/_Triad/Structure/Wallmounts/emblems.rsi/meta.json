@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Terralith icons sprited by sigmunddoppler (Discord)",
+  "size": {
+    "x": 64,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "terralith_white"
+    },
+    {
+      "name": "terralith_white_withered"
+    },
+    {
+      "name": "terralith_black"
+    },
+    {
+      "name": "terralith_black_withered"
+    },
+    {
+      "name": "terralith_grey"
+    },
+    {
+      "name": "terralith_grey_withered"
+    }
+  ]
+}

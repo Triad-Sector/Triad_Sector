@@ -176,10 +176,10 @@
   - type: NpcFactionMember
     factions:
     - SimpleHostile
+    - AnimalFriend # MACRO
   - type: Bloodstream
     bloodMaxVolume: 0.1
   - type: ZombieImmune
-
 
 - type: entity
   name: chicken
@@ -1330,6 +1330,7 @@
   - type: NpcFactionMember
     factions:
     - SimpleHostile
+    - AnimalFriend # MACRO
 
 - type: entity
   name: genetic ancestor

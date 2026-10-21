@@ -161,3 +161,9 @@
   price: 50000
   equipment:
     outerClothing: ClothingOuterHardsuitMercenaryWarlord
+
+- type: loadout
+  id: ClothingOuterCoatPufferMime
+  groupBy: Coat
+  equipment:
+    outerClothing: ClothingOuterCoatPufferMime

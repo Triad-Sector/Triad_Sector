@@ -142,7 +142,7 @@
 
 - type: entity
   id: ThrusterNfsdMachineCircuitboard
-  parent: BaseMachineCircuitboard
+  parent: [BaseMachineCircuitboard, BaseClass2AShipContrabandSilent]
   name: TDF thruster machine board # Triad - name
   components:
   - type: MachineBoard

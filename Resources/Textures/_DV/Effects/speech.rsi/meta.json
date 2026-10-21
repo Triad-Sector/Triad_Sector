@@ -1,5 +1,7 @@
 {
     "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Ovinia sprites made by P4yn7 (Discord) for Den",
     "size": {
         "x": 32,
         "y": 32
@@ -124,6 +126,23 @@
         },
         {
             "name": "feroxi3"
+        },
+        {
+            "name": "ovinia0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "ovinia-idle"
+        },
+        {
+            "name": "ovinia2"
         }
     ]
 }

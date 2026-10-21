@@ -32,7 +32,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      - type: NpcFactionMember
+      - type: AddNpcFactionOnMapInit
         factions:
         - MD # mono faction
         - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them

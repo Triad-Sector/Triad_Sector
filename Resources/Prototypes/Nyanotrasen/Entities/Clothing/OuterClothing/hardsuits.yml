@@ -15,7 +15,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitSyndieReverseEngineered
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 
 - type: entity
   parent: ClothingOuterHardsuitJuggernaut
@@ -35,5 +35,5 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitJuggernautReverseEngineered
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
 

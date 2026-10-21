@@ -37,7 +37,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitM82
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 5000
     vendPrice: 7500
@@ -108,7 +108,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitM86
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 7500
     vendPrice: 1000
@@ -130,7 +130,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitNfsdSheriff
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: FireProtection # Mono
     reduction: 0.5
   - type: ExplosionResistance
@@ -170,7 +170,7 @@
     clothingPrototypes:
       head:  ClothingHeadHelmetHardsuitNfsdExperimental
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: PressureProtection
     highPressureMultiplier: 0.2
     lowPressureMultiplier: 1000
@@ -267,4 +267,4 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitM86Mk4
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.

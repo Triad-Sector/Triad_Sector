@@ -246,6 +246,9 @@
   - StrainedShorts
   - ClothingUniformJumpsuitMilitaryPilot
   - ClothingUniformDrakeIndustriesTrucker
+  - ClothingUniformCircusClown
+  - ClothingUniformJumpsuitMimeCropped
+  - ClothingUniformJumpsuitMimeNouveau
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -490,6 +493,7 @@
   - ClothingOuterCoatMNKWhiteHoodie
   - ClothingOuterCoatMNKBlackTopCoat
   - ClothingOuterDrakeIndustriesTruckerPuffyVest
+  - ClothingOuterCoatPufferMime
 
 - type: loadoutGroup
   id: ContractorBelt
@@ -697,12 +701,20 @@
   - ContractorClothingHeadSanabi # Mono
   - ContractorClothingHeadNurseHat
   - ContractorClothingHeadHatHoodBioScientist
-  - ContractorClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellow
+  - ClothingHeadHatHardhatYellowDark
+  - ClothingHeadHatHardhatBlue
+  - ClothingHeadHatHardhatOrange
+  - ClothingHeadHatHardhatRed
+  - ClothingHeadHatHardhatWhite
+  - ClothingHeadHatHardhatArmored
   - ContractorClothingHeadHatChef
   - ContractorClothingHeadTinfoil
   - ContractorClothingHeadRastaHat
   - ContractorClothingHeadHatSombrero
   - ContractorClothingHeadHatCasa
+  - ClothingHeadHatCircusClown
+  - ClothingHeadHatMimeBowler
 
 - type: loadoutGroup
   id: ContractorEars
@@ -793,7 +805,6 @@
   - ContractorClothingNeckPonchoSmallRed # Monolith
   - ContractorClothingNeckPonchoSmallPink # Monolith
   - ContractorClothingNeckPonchoSmallOrange # Monolith
-  - ContractorClothingNeckPonchoSmallBlack # Monolith
   - ContractorClothingNeckPonchoBlack # Monolith
   - ContractorClothingNeckPonchoArctic # Monolith
   - ContractorClothingNeckCloakBlack # Monolith

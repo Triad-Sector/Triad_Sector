@@ -1,9 +1,11 @@
 using System.Numerics;
-using Content.Server._NF.M_Emp;
+using Content.Server._Triad.Shuttles.Systems;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking; // Frontier
+using Content.Shared.Whitelist; // Triad
+using Robust.Shared.Audio; // Triad
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Prototypes;
@@ -11,7 +13,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Shuttles.Components
 {
     [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
-    [Access(typeof(ThrusterSystem))]
+    [Access(typeof(ThrusterSystem), typeof(TriadThrusterSystem))]
     public sealed partial class ThrusterComponent : Component
     {
         /// <summary>
@@ -53,7 +55,31 @@ namespace Content.Server.Shuttles.Components
 
         // Used for burns
 
-        public List<EntityUid> Colliding = new();
+        // Triad start
+        [ViewVariables]
+        public HashSet<EntityUid> Colliding = new();
+
+        [DataField]
+        public LocId BurnPopupOther = "thruster-comp-burn-others";
+
+        [DataField]
+        public LocId BurnPopupSelf = "thruster-comp-burn-self";
+
+        [DataField]
+        public SoundSpecifier? BurnSound = new SoundPathSpecifier("/Audio/Effects/lightburn.ogg");
+
+        [DataField]
+        public float MobBurnDamageMultiplier = 0.3f;
+
+        [DataField]
+        public float DistanceBurnDamageMultiplier = 0.85f;
+
+        [DataField]
+        public bool LastRayCheckClear = false;
+
+        [ViewVariables]
+        public TimeSpan NextRayCheck;
+        // Triad end
 
         public bool Firing = false;
 
@@ -76,7 +102,8 @@ namespace Content.Server.Shuttles.Components
         /// <summary>
         ///     Frontier - Amount of charge this needs from an APC per second to function.
         /// </summary>
-        public float OriginalLoad { get; set; } = 0;
+        [DataField]
+        public float OriginalLoad = 0;
 
         /// <summary>
         ///     Frontier - Make linkable to buttons
@@ -93,10 +120,22 @@ namespace Content.Server.Shuttles.Components
 
         // Mono
         /// <summary>
-        ///     If we have a <see cref="ThermalSignatureComponent">, heat signature output per thrust while working.
+        ///     If we have a <see cref="ThermalSignatureComponent"/>, heat signature output per thrust while working.
         /// </summary>
         [DataField]
         public float HeatSignatureRatio = 40f;
+
+        /// <summary>
+        ///     Triad - Which type of entities can be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnWhitelist;
+
+        /// <summary>
+        ///     Triad - Which type of entities cannot be burnt by thrusters?
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? BurnBlacklist;
     }
 
     public enum ThrusterType

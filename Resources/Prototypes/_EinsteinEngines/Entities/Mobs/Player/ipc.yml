@@ -11,6 +11,9 @@
     understands:
     - TauCetiBasic
     - RobotTalk
+  - type: HumanoidAppearance
+    undergarmentTop: null # Triad, disable IPC default underwear
+    undergarmentBottom: null # Triad, disable IPC default underwear
   - type: HarpySinger
   - type: Instrument
     allowPercussion: true

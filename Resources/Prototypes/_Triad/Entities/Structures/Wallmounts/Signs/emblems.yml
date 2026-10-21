@@ -1,0 +1,156 @@
+# Emblems, meant to be use as metal (or at least something harder to break than paper) based version of posters for faction & corporation logos & symbols alike.
+
+- type: entity
+  parent: BaseSign
+  id: TriadEmblemBase
+  abstract: true
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    sprite: _Triad/Structure/Wallmounts/emblems.rsi
+    drawdepth: WallMountedItems
+    snapCardinals: true
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: EmblemBase
+  id: TriadEmblemBroken
+  components:
+  - type: Sprite
+    sprite: _Triad/Structure/Wallmounts/emblems.rsi
+    drawdepth: WallTops
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: StaticPrice
+    price: 5
+
+- type: entity
+  id: TriadEmblemSmall
+  components:
+  - type: Sprite
+    scale: 0.4,0.4
+
+# Terralith R&M
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBase]
+  id: EmblemTerralith
+  name: Terralith R&M Emblem
+  description: The emblem of Terralith Research & Manufacturing.. This can't be good.
+  suffix: Black
+  components:
+  - type: Sprite
+    state: terralith_black
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          EmblemBrokenTerralith:
+            min: 1
+            max: 1
+        offset: 0
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBroken]
+  id: EmblemBrokenTerralith
+  name: withered Terralith R&M Emblem
+  description: A few scraps of chipped paint and shattered metal, the remnants of a plasteel symbol.
+  suffix: Black, Broken
+  components:
+  - type: Sprite
+    state: terralith_black_withered
+
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBase]
+  id: EmblemTerralithWhite
+  name: Terralith R&M Emblem
+  description: The emblem of Terralith Research & Manufacturing.. This can't be good.
+  suffix: White
+  components:
+  - type: Sprite
+    state: terralith_white
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          EmblemBrokenTerralithWhite:
+            min: 1
+            max: 1
+        offset: 0
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBroken]
+  id: EmblemBrokenTerralithWhite
+  name: withered Terralith R&M Emblem
+  description: A few scraps of chipped paint and shattered metal, the remnants of a plasteel symbol.
+  suffix: White, Broken
+  components:
+  - type: Sprite
+    state: terralith_white_withered
+
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBase]
+  id: EmblemTerralithGrey
+  name: Terralith R&M Emblem
+  description: The emblem of Terralith Research & Manufacturing.. This can't be good.
+  suffix: Grey
+  components:
+  - type: Sprite
+    state: terralith_grey
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          EmblemBrokenTerralithGrey:
+            min: 1
+            max: 1
+        offset: 0
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: [TriadEmblemSmall, TriadEmblemBroken]
+  id: EmblemBrokenTerralithGrey
+  name: withered Terralith R&M Emblem
+  description: A few scraps of chipped paint and shattered metal, the remnants of a plasteel symbol.
+  suffix: Grey, Broken
+  components:
+  - type: Sprite
+    state: terralith_grey_withered

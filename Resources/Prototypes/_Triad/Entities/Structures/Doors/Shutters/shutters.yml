@@ -104,6 +104,8 @@
   parent: BaseShutterIndestructible
   suffix: Indestructible
   components:
+  - type: AccessReader
+    containerAccessProvider: board # So that you can't link to locked shutters
   - type: Occluder
 
 - type: entity
