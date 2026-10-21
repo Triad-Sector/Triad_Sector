@@ -20,15 +20,13 @@ using Robust.Server.Player;
 
 namespace Content.Server.Cloning
 {
-    [UsedImplicitly]
     public sealed partial class CloningConsoleSystem : EntitySystem
     {
         [Dependency] private DeviceLinkSystem _signalSystem = default!;
         [Dependency] private IAdminLogManager _adminLogger = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
-        [Dependency] private CloningSystem _cloningSystem = default!;
+        [Dependency] private CloningPodSystem _cloningPodSystem = default!;
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
-        [Dependency] private MobStateSystem _mobStateSystem = default!;
         [Dependency] private PowerReceiverSystem _powerReceiverSystem = default!;
         [Dependency] private SharedMindSystem _mindSystem = default!;
 
