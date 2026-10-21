@@ -1,3 +1,4 @@
+using Content.Server._NF.Traits.Assorted;
 using Content.Shared.Cloning.Events;
 using Content.Shared.Traits.Assorted;
 
@@ -9,12 +10,11 @@ public sealed class UnrevivableSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<UnrevivableComponent, CloningAttemptEvent>(OnCloningAttempt);
+        SubscribeLocalEvent<UncloneableComponent, CloningAttemptEvent>(OnCloningAttempt);
     }
 
-    private void OnCloningAttempt(Entity<UnrevivableComponent> ent, ref CloningAttemptEvent args)
+    private void OnCloningAttempt(Entity<UncloneableComponent> ent, ref CloningAttemptEvent args)
     {
-        if (!ent.Comp.Cloneable)
-            args.Cancelled = true;
+        args.Cancelled = true;
     }
 }
