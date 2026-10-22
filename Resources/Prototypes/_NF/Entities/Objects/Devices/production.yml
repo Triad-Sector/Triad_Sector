@@ -146,7 +146,7 @@
   name: TDF thruster machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: ThrusterTdf # Triad - prototype
+    prototype: ThrusterNfsd
     requirements:
       Capacitor: 1
     stackRequirements:
@@ -228,7 +228,7 @@
   name: TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: GyroscopeTdf # Triad - prototype
+    prototype: GyroscopeNfsd
     requirements:
       Manipulator: 2
       Capacitor: 1
@@ -241,7 +241,7 @@
   name: small TDF gyroscope machine board # Triad - name
   components:
   - type: MachineBoard
-    prototype: SmallGyroscopeTdf # Triad - Prototype
+    prototype: SmallGyroscopeNfsd
     requirements:
       Manipulator: 2
       Capacitor: 1

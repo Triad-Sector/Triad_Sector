@@ -76,7 +76,7 @@
   materials:
     Steel: 800
     Glass: 900
-  
+
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
   id: PortablePumpMachineCircuitBoard
