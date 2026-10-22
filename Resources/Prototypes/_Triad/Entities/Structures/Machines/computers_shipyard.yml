@@ -2,7 +2,7 @@
   id: ComputerShipyardTIC
   parent: ComputerShipyardBase
   name: coalition shipyard console
-  description: Used to buy ships from The Imperial Coalition naval reserves.
+  description: Used to buy ships from the Imperial Coalition of Tau's naval reserves.
   components:
   - type: ActivatableUI
     key: enum.ShipyardConsoleUiKey.Coalition

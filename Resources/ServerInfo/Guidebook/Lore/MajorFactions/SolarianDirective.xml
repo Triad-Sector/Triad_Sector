@@ -30,8 +30,8 @@
   Helios Power Solutions Inc. is an energy providing and logistics company. They ensure fuel and energy is properly supplied to SD fleets and ensures cargo is properly delivered to their facilities. Helios is primarily interested in mining operations in the Triad sector, especially the large amounts of bluespace ore that they can use to continue their research on bluespace reactors. Helios also provides mining and salvage vessels for the local SD force to ensure that materials can be procured during operations.
 
   ## Faction relations:
-  They have hostile relations with the [textlink="TIC" link="ImperialCoalition"] and [textlink="TDF" link="TriadDefenseForce"] due to their past conflicts in the 50-year war and are in a cold-war relationship with the [textlink="TIC" link="ImperialCoalition"], the directive actively surveying both the Coalition's movements and the activities of the TDF.
-  Despite this, the Directive is open to diplomacy with The Imperial Coalition.
+  They have hostile relations with the [textlink="ICT" link="ImperialCoalition"] and [textlink="TDF" link="TriadDefenseForce"] due to their past conflicts in the 50-year war and are in a cold-war relationship with the [textlink="ICT" link="ImperialCoalition"], the directive actively surveying both the Coalition's movements and the activities of the TDF.
+  Despite this, the Directive is open to diplomacy with the Imperial Coalition of Tau.
 
   <Table Columns="2" MinForcedColumnWidth="25">
     <ColorBox Color="#FF7D45">
@@ -56,7 +56,7 @@
     </ColorBox>
     <ColorBox Color="#7e3834">
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        The Imperial Coalition
+        Imperial Coalition of Tau
       </Box>
     </ColorBox>
     <ColorBox Color="#eeea15">

@@ -1,5 +1,5 @@
-triad-lobby-tdf-subtext = The base of operations for the TDF.
-triad-lobby-tdf-description = The first and primary outpost of the TDF, where they linger and keep a watchful eye on the sector. Here you can:
+triad-lobby-tdf-subtext = The base of operations for the TDF in the Auric District.
+triad-lobby-tdf-description = The primary outpost of the local TDF, where they linger and keep a watchful eye on the sector. Here you can:
    - Join the TDF as an enforcer
    - Apply for a bounty hunting license
    - Report crimes

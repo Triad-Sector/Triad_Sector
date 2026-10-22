@@ -9,6 +9,10 @@
     snap:
     - Wall
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: RangedDamageSound
     soundGroups:
       Brute:
@@ -411,6 +415,11 @@
     airBlockedDirection:
     - South
     - East
+  - type: Occluder
+    polygon:
+    - "-0.5,-0.5" # Triad - polygon shape
+    - "0.5,0.5"
+    - "0.5,-0.5"
   - type: Fixtures
     fixtures:
       fix1:
@@ -655,6 +664,11 @@
     airBlockedDirection:
     - South
     - East
+  - type: Occluder
+    polygon:
+    - "-0.5,-0.5" # Triad - polygon shape
+    - "0.5,0.5"
+    - "0.5,-0.5"
   - type: Fixtures
     fixtures:
       fix1:

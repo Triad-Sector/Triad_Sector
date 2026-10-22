@@ -36,7 +36,6 @@
   - type: ActionGrant
     actions:
     - ActionJumpToCore
-    - ActionSurvCameraLights
     - ActionAIViewLaws
     - ActionOpenRemoteDevicesMenu # Corvax-Next-AiRemoteControl
   - type: UserInterface
@@ -399,7 +398,14 @@
   - AiHolder
   suffix: Empty
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   #- type: WarpPoint # Mono - comment out
+  #  blacklist:
+  #    tags:
+  #    - GhostOnlyWarp
   - type: ContainerComp
     proto: AiHeld
     container: station_ai_mind_slot
@@ -421,6 +427,7 @@
   - type: StationAiVision
   - type: InteractionOutline
   - type: Sprite
+    snapCardinals: true
     sprite: Mobs/Silicon/station_ai.rsi
     layers:
     - state: base
@@ -533,6 +540,16 @@
   description: The AI's viewer.
   categories: [ HideSpawnMenu, DoNotMap ]
   components:
+  - type: Fixtures
+    fixtures:
+      lightTrigger:
+        shape:
+          !type:PhysShapeCircle
+          radius: 8
+        density: 80
+        hard: false
+        layer:
+        - GhostImpassable
   #- type: NoFTL # Mono - comment out
   #- type: WarpPoint # Mono - comment out
   #  follow: true
@@ -546,6 +563,7 @@
     - state: ai_camera
       shader: unshaded
       map: ["base"]
+  - type: CameraActiveOnCollideCollider
 
 # The holographic representation of the AI that is projected from a holopad.
 - type: entity

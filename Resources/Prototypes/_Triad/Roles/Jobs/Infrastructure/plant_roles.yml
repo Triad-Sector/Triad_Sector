@@ -35,7 +35,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      - type: NpcFactionMember
+      - type: AddNpcFactionOnMapInit
         factions:
         - TDF # Triad - not TDF, but friendly and works with them
       - type: CryoSleepRadioOverride
@@ -91,9 +91,6 @@
     prototype: FrontierBirthdayGift
   - !type:AddComponentSpecial
     components:
-      - type: NpcFactionMember
-        factions:
-        - TDF # Triad - not TDF, but friendly and works with them
       - type: CryoSleepRadioOverride
         overrides:
         - Engineering

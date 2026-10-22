@@ -3,6 +3,6 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  price: 0
+  groupBy: PerformerShoes
   equipment:
    shoes: ClothingShoesHighTops

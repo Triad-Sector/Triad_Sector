@@ -117,8 +117,6 @@
     sprite: _NF/Structures/Storage/Crates/secure_mercenary.rsi
   - type: Sprite
     sprite: _NF/Structures/Storage/Crates/secure_mercenary.rsi
-  - type: AccessReader
-    access: [["Mercenary"]]
 
 - type: entity
   parent: CrateBaseSecure
@@ -129,8 +127,6 @@
     sprite: _NF/Structures/Storage/Crates/secure_privatesec.rsi
   - type: Sprite
     sprite: _NF/Structures/Storage/Crates/secure_privatesec.rsi
-  - type: AccessReader
-    access: [["Mercenary"]]
 
 - type: entity
   parent: CrateBaseSecure
@@ -141,8 +137,6 @@
     sprite: _NF/Structures/Storage/Crates/secure_ammo.rsi
   - type: Sprite
     sprite: _NF/Structures/Storage/Crates/secure_ammo.rsi
-  - type: AccessReader
-    access: [["Mercenary"]]
 
 - type: entity
   parent: CrateWeaponSecure

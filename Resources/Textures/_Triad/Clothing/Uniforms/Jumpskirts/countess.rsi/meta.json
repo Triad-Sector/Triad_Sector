@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from coyote at commit https://github.com/ARF-SS13/coyote-frontier/commit/840252b9468eed0bc43cd504ea3acada8f006c6f. icon and inhands made by TheRealMasterChief117",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "icon"
+      },
+      {
+          "name": "equipped-INNERCLOTHING",
+          "directions": 4
+      },
+      {
+          "name": "inhand-right",
+          "directions": 4
+      },
+      {
+          "name": "inhand-left",
+          "directions": 4
+      }
+  ]
+}

@@ -1,4 +1,41 @@
 - type: entity
+  id: EngineerHud
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+  - type: TrayScanner
+
+- type: entity
+  id: FlashProtection
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+- type: entity
+  id: PilotHud
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RadarConsole
+    followEntity: true
+    noRotate: true
+  - type: ActivatableUI
+    key: enum.RadarConsoleUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+  - type: HandheldGPS # the GPS will be useless on a hardsuit helmet, but I'm putting it here in case this is used for other items, like variant pilot goggles, for instance.
+
+- type: entity
   parent: ClothingEyesHudSecurity
   id: ClothingEyesHudSecurityTdf
   suffix: TDF

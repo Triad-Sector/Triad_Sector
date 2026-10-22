@@ -93,7 +93,6 @@
   # Turret related
   - type: TurretTargetSettings
     exemptAccessLevels:
-    - Captain
     - Security
     - Borg
     - BasicSilicon
@@ -121,8 +120,7 @@
     - Medical
     - Chemistry
     ## Civ
-    - Mercenary
-    - Pilot
+    - Civilian
 
   # Device network
   - type: DeviceList
@@ -185,7 +183,6 @@
     access: [["StationAi"], ["Captain"], ["ResearchDirector"]]
   - type: TurretTargetSettings
     exemptAccessLevels:
-    - Captain
     - ResearchDirector
     - BasicSilicon
     - Borg

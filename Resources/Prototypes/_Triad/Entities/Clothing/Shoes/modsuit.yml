@@ -28,7 +28,7 @@
 - type: entity
   parent: ClothingModsuitBootsBase
   id: ClothingModsuitBootsHZDBesieger
-  name: HZD Sabatons
+  name: besieger sabatons
   description: Advanced servos and motors whirr with each step as you stomp along, assisting with the weight of the Besieger's systems and armor.
   categories: [ HideSpawnMenu ]
   components:

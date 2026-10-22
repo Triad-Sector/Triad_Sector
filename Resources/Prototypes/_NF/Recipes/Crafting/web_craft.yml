@@ -7,8 +7,12 @@
   category: construction-category-clothing
   description: Take your glands in one hand, channel the idea of two triangles in the other.
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   icon:
     sprite: _NF/Clothing/Neck/Misc/classic_poncho_web.rsi
     state: icon
@@ -23,8 +27,12 @@
   category: construction-category-clothing
   description: Imagine wrapping your prey in a cocoon. Now, forget to add the bottom and make it decorative. A cozy treat.
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   icon:
     sprite: _NF/Clothing/Neck/Misc/poncho_web.rsi
     state: icon
@@ -39,8 +47,12 @@
   category: construction-category-clothing
   description: A decorative adornment to celebrate the cunning craftsmanship of spider kind. It is silky! Does not ward off spider attacks.
   entityWhitelist:
-    tags:
-    - SpiderCraft
+    # Triad Start: Whitelist by Sericulture component so characters with the bionic spinarette trait can craft with webs.
+    #tags:
+    #- SpiderCraft
+    components:
+    - Sericulture
+    # Triad End
   icon:
     sprite: _NF/Clothing/Neck/Cloaks/cloak_web.rsi
     state: icon

@@ -31,8 +31,8 @@
   # - Zookeeper # Frontier
   # - ServiceWorker # Frontier
   - Contractor # Frontier
-  - Mercenary # Frontier
-  - Pilot # Frontier
+  - Mercenary # Triad - removed, this stays for playtime counters
+  - Pilot # Triad - removed, this stays for playtime counters
   - Borg # Frontier
 
 - type: department

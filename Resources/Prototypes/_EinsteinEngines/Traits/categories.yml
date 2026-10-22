@@ -1,7 +1,0 @@
-- type: traitCategory
-  id: LanguageTraits
-  name: trait-category-languages
-  priority: 29
-  # Triad: languages are free (cost 0). Base of 1 extra language; Foreigner grants more via
-  # grantsCategorySlots. No maxPoints since nothing here costs points.
-  maxTraits: 1

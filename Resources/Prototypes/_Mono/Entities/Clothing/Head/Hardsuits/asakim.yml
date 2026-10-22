@@ -20,6 +20,7 @@
         Piercing: 0.85
         Heat: 0.8
   - type: FlashImmunity
+    showInExamine: false
   - type: EyeProtection
     protectionTime: 15
   - type: ThermalVision

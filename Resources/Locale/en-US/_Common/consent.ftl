@@ -20,7 +20,7 @@ reagent-effect-condition-guidebook-consent-condition = the target has consented 
 
 # Verb
 consent-examine-verb = Consent Info
-consent-examine-not-set = This player has no consent preferences set. Ask for consent first before engaging in any erotic roleplay.
+consent-examine-not-set = This player has no consent preferences set. Ask for consent first before engaging in any erotic or extreme roleplay.
 
 # To localize consent toggle names and descriptions into other languages,
 # make a new .ftl file like this:

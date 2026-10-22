@@ -1,7 +1,8 @@
 using Content.Shared.Inventory;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad
 using Robust.Shared.GameStates; // Frontier
 
-namespace Content.Shared.Storage.Components; // Frontier: Server<Shared
+namespace Content.Shared.Storage.Components;
 
 /// <summary>
 /// Applies an ongoing pickup area around the attached entity.
@@ -10,7 +11,7 @@ namespace Content.Shared.Storage.Components; // Frontier: Server<Shared
 [NetworkedComponent, AutoGenerateComponentState] // Frontier
 public sealed partial class MagnetPickupComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), DataField("nextScan")]
+    [ViewVariables(VVAccess.ReadWrite), DataField("nextScan", customTypeSerializer: typeof(TimeOffsetSerializer))] // Triad - time offset
     [AutoPausedField]
     public TimeSpan NextScan = TimeSpan.Zero;
 

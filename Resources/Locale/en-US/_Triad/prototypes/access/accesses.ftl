@@ -1,4 +1,5 @@
 id-card-access-level-frontier = TFA
+id-card-access-level-civilian = Civilian
 
 id-card-access-level-security = TDF
 id-card-access-level-tdf-lieutenant = Lieutenant

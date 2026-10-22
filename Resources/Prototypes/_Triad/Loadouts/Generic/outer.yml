@@ -1,0 +1,11 @@
+- type: loadout
+  id: SpotsJacketRed
+  groupBy: BomberCoat
+  equipment:
+   outerClothing: ClothingOuterCoatRedSpotsJacket
+
+- type: loadout
+  id: SpotsJacketBlue
+  groupBy: BomberCoat
+  equipment:
+   outerClothing: ClothingOuterCoatBlueSpotsJacket

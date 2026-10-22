@@ -49,9 +49,9 @@
 - type: entity
   parent: [EncryptionKey, BaseClass2AShipContrabandSilent] # Triad, save contraband
   id: EncryptionKeyCentCom
-  name: central command encryption key
+  name: high command encryption key
   categories: [ DoNotMap ] # Frontier
-  description: An encryption key used by captain's bosses.
+  description: An encryption key used by the district command's bosses.
   components:
   - type: EncryptionKey
     channels:
@@ -92,9 +92,9 @@
 - type: entity
   parent: [EncryptionKey, BaseClass2AShipContrabandSilent] # Triad, save contraband
   id: EncryptionKeyCommand
-  name: triad sector command encryption key # Triad
+  name: auric district command encryption key # Triad
   categories: [ DoNotMap ] # Frontier
-  description: An encryption key used by the Triad sector's main leaders. # Triad
+  description: An encryption key used by the Auric District's command members. # Triad
   components:
   - type: EncryptionKey
     channels:

@@ -30,6 +30,7 @@
   - ContractorGlasses
   - ContractorBelt
   - ContractorEars
+  - ContractorBalaclava
   - ContractorEncryptionKey
   - ContractorBoxSurvival
   - ContractorPDA
@@ -41,8 +42,9 @@
   - ContractorTrinkets
   - ContractorBureaucracy
   - NFSpeciesSpecific
-  - ContractorFirearm # Mono
-  - ContractorMag # Mono
+  - MercenaryFirearm # Mono
+  - MercenaryPistol # Mono
+  - MercenaryMag
   - CivGunCaseSpecial # Mono
   - ContractorArmorPlates # Mono
 

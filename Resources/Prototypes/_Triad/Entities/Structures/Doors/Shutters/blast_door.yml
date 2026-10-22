@@ -65,3 +65,32 @@
     airBlocked: false
   - type: RadiationBlocker
     enabled: false
+
+# Variant for indestructible for POI usage.
+- type: entity
+  parent: BaseBlastDoorIndestructible
+  id: BlastDoorMonolithicIndestructible
+  name: monolith tenebris crack
+  description: Some kind of break in the surrounding dark tenebris.
+  suffix: Indestructible
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Doors/monolith_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.7
+    openTimeOne: 0.4
+    openTimeTwo: 0.7
+    openingAnimationTime: 1.1
+    closingAnimationTime: 1.0
+    canPry: true
+    crushDamage:
+      types:
+        Blunt: 25
+        Sharp: 25
+  - type: IconSmooth
+    key: chitin
+    mode: NoSprite

@@ -1,5 +1,4 @@
 using Content.Shared.SurveillanceCamera;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 
 namespace Content.Client.SurveillanceCamera.UI;
@@ -27,9 +26,7 @@ public sealed class SurveillanceCameraSetupBoundUi : BoundUserInterface
         _window = this.CreateWindow<SurveillanceCameraSetupWindow>();
 
         if (_type == SurveillanceCameraSetupUiKey.Router)
-        {
             _window.HideNameSelector();
-        }
 
         _window.OnNameConfirm += SendDeviceName;
         _window.OnNetworkConfirm += SendSelectedNetwork;

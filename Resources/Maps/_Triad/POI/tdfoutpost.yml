@@ -111363,7 +111363,7 @@ entities:
           endTime: 106.3589167
     - type: Physics
       canCollide: False
-- proto: WeaponRifleLecterTdfRubber
+- proto: WeaponRifleVigilRubber
   entities:
   - uid: 9366
     components:
@@ -111383,7 +111383,7 @@ entities:
       parent: 7100
     - type: Physics
       canCollide: False
-- proto: WeaponRifleMR8T
+- proto: WeaponRifleBishop
   entities:
   - uid: 9368
     components:

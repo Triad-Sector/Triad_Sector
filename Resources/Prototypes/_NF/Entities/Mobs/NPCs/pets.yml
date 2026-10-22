@@ -129,6 +129,7 @@
     - TrackingImplant
     - LightImplant
   - type: FlashImmunity
+    showInExamine: false
   - type: IntrinsicRadioTransmitter
     channels:
     - Nfsd

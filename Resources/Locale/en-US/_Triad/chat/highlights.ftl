@@ -1,5 +1,5 @@
 # Examples for job highlights "-dummy" is the job key.
-# highlights-dummy  = "TIC", "Jupiter", "Solarian", "Venmar"
+# highlights-dummy  = "ICT", "Jupiter", "Solarian", "Venmar"
 
 highlights-chief-enforcer = "CE", "Chief Enforcer", TDF, "Venmar"
 highlights-warden = "Warden", "Sentence", "Brig", TDF

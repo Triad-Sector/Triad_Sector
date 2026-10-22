@@ -9535,7 +9535,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: WeaponRifleMR8T
+- proto: WeaponRifleBishop
   entities:
   - uid: 1027
     components:

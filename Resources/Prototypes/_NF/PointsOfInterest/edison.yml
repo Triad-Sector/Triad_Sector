@@ -50,6 +50,4 @@
           availableJobs:
             PlantManager: [ 1, 1 ]
             PlantTechnician: [ 3, 3 ]
-            Pilot: [ -1, -1 ]
-            Mercenary: [ -1, -1 ]
             Contractor: [ -1, -1 ]

@@ -21,7 +21,6 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
-  - type: FlashImmunity
   - type: HideLayerClothing
     slots:
     - Hair

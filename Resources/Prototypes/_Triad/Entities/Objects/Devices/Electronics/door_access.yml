@@ -32,11 +32,11 @@
   - type: AccessReader
     access: [["Solarian"]]
 
-# TIC
+# ICT
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsTIC
-  suffix: TIC, Locked
+  suffix: ICT, Locked
   components:
   - type: AccessReader
     access: [["Coalition"]]

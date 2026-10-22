@@ -19,7 +19,7 @@ public sealed partial class SelectableAmmoSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedGunSystem _gun = default!;
-    // [Dependency] private readonly ActivatableUiUserWhitelistSystem _activatableUiWhitelist = default!;  mono
+    // [Dependency] private ActivatableUiUserWhitelistSystem _activatableUiWhitelist = default!;  mono
 
     public override void Initialize()
     {

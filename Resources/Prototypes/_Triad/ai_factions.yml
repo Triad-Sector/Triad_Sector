@@ -2,47 +2,38 @@
 - type: npcFaction
   id: TDF
   neutral:
-  - CC
   - SimpleNeutral
-  defaultHostile: true
+  friendly:
+  - TDFTurret
+  defaultHostileIncluded: false
 
 - type: npcFaction
   id: TDFTurret
   friendly:
   - TDF
-  neutral:
-  - CC
-  - SimpleNeutral
   defaultHostile: true
 
 # SD
 - type: npcFaction
   id: SD
   neutral:
-  - CC
   - SimpleNeutral
+  hostile:
+  - TDF
+  - TDFTurret
+  - Coalition
   defaultHostile: true
 
+# Imperial Coalition of Tau
 - type: npcFaction
-  id: SDTurret
-  friendly:
+  id: Coalition
+  neutral:
+  - SimpleNeutral
+  hostile:
+  - TDF
+  - TDFTurret
   - SD
   defaultHostile: true
-
-# TIC
-- type: npcFaction
-  id: TIC
-  neutral:
-  - CC
-  - SimpleNeutral
-  defaultHostile: true
-
-- type: npcFaction
-  id: TICTurret
-  friendly:
-  - TIC
-  defaultHostile: true
-
 
 # Identity faction for autonomous NPC combat drones. Relations are deliberately empty:
 # the ship-targeting IFF only skips FRIENDLY targets, so an empty-relations faction changes
@@ -54,3 +45,8 @@
 - type: npcFaction
   id: ShipDrone
   defaultHostileIncluded: false
+
+- type: npcFaction # for ovinia's animal friend trait (makes bees, space kangaroos and bears, and angry slimes not including reagents be friendly towards ovinia)
+  id: AnimalFriend
+  hostile:
+  - SimpleHostile

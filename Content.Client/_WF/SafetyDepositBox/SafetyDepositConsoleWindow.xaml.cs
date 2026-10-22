@@ -32,10 +32,12 @@ public sealed partial class SafetyDepositConsoleWindow : FancyWindow
 
     private readonly ButtonGroup _boxButtonGroup = new();
     private readonly Dictionary<string, Button> _boxButtons = new();
+    private readonly Dictionary<Guid, Button> _ownedBoxActionButtons = new();
     private string? _selectedProtoId;
     private BoxTypeInfo? _selectedBox;
     private int _cachedBankBalance;
     private SafetyDepositConsoleState? _lastState;
+    private Guid? _pendingWithdrawBoxId;
 
     public SafetyDepositConsoleWindow()
     {
@@ -107,6 +109,7 @@ public sealed partial class SafetyDepositConsoleWindow : FancyWindow
 
         // Update owned boxes list (unchanged logic)
         OwnedBoxesContainer.RemoveAllChildren();
+        _ownedBoxActionButtons.Clear();
 
         if (state.OwnedBoxes.Count == 0)
         {
@@ -217,14 +220,33 @@ public sealed partial class SafetyDepositConsoleWindow : FancyWindow
                 var boxId = box.BoxId;
                 if (isLost)
                 {
-                    actionButton.OnPressed += _ => OnReclaimPressed?.Invoke(boxId);
+                    actionButton.OnPressed += _ =>
+                    {
+                        _pendingWithdrawBoxId = boxId;
+                        actionButton.Disabled = true;
+                        OnReclaimPressed?.Invoke(boxId);
+                    };
                 }
                 else
                 {
-                    actionButton.OnPressed += _ => OnWithdrawPressed?.Invoke(boxId);
+                    actionButton.OnPressed += _ =>
+                    {
+                        _pendingWithdrawBoxId = boxId;
+                        actionButton.Disabled = true;
+                        OnWithdrawPressed?.Invoke(boxId);
+                    };
                 }
 
                 removeButton.OnPressed += _ => OnRemovePressed?.Invoke(boxId);
+
+                _ownedBoxActionButtons[boxId] = actionButton;
+
+                // Re-enable if this was the pending withdraw and operation completed
+                if (_pendingWithdrawBoxId == boxId)
+                {
+                    _pendingWithdrawBoxId = null;
+                    actionButton.Disabled = !box.IsDeposited && !isLost;
+                }
 
                 rowContainer.AddChild(boxIdLabel);
                 rowContainer.AddChild(statusLabel);
@@ -236,6 +258,12 @@ public sealed partial class SafetyDepositConsoleWindow : FancyWindow
 
                 index++;
             }
+        }
+
+        // If pending withdraw box is no longer in the list, the operation completed
+        if (_pendingWithdrawBoxId.HasValue && !state.OwnedBoxes.Any(b => b.BoxId == _pendingWithdrawBoxId.Value))
+        {
+            _pendingWithdrawBoxId = null;
         }
     }
 

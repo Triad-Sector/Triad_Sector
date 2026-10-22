@@ -151,7 +151,7 @@
   parent: ClothingHeadBaseButcherable
   id: ClothingHeadHatNfsdBeretBrown
   name: coalition beret
-  description: A brown beret for use by the imperial coalition.
+  description: A brown beret used by the Imperial Coalition of Tau's military.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hats/nfsd_beret_brown.rsi

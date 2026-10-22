@@ -22,12 +22,17 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: NpcFactionMember
+    - type: AddNpcFactionOnMapInit
       factions:
       - TDF # not TDF, but friendly and works with them
     - type: CryoSleepRadioOverride
       overrides:
       - CentCom # com radio
+  - !type:AddLanguageSpecial
+    languagesSpoken:
+    - Triadian # Official status, so they would 100% know this, atleast somewhat
+    languagesUnderstood:
+    - Triadian
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
 

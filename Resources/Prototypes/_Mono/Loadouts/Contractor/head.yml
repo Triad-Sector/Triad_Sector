@@ -1,6 +1,6 @@
 
 - type: loadout
   id: ContractorClothingHeadSanabi
-  price: 0
+  groupBy: CowboyHat
   equipment:
     head: ClothingHeadSanabi

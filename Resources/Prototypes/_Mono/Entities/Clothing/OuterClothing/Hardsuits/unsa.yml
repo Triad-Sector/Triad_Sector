@@ -21,7 +21,7 @@
         Blunt: 0.9
         Slash: 0.85
         Piercing: 0.65
-        Heat: 0.9 
+        Heat: 0.9
         Caustic: 0.75
   - type: StaminaDamageResistance # Mono - Stamres
     coefficient: 0.95
@@ -36,7 +36,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitUNSAArmoredEva
       helmetcover: ClothingHeadHelmetCoverBlock
-      helmetattachment: ClothingHeadHelmetAttachmentBlock
+      #helmetattachment: ClothingHeadHelmetAttachmentBlock Triad: Removed helmet attachment slot, since it's not used by anything.
   - type: StaticPrice
     price: 500
     vendPrice: 2000

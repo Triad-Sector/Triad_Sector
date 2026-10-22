@@ -1,11 +1,11 @@
 - type: loadout
   id: ContractorClothingNeckMantleBH
-  price: 0
+  groupBy: Mantle
   equipment:
     neck: ClothingNeckMantleBH
 
 - type: loadout
   id: ContractorClothingNeckCloakSanabi
-  price: 0
+  groupBy: Cloak
   equipment:
     neck: ClothingNeckCloakSanabi

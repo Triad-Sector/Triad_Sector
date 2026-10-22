@@ -1,0 +1,23 @@
+- type: loadout
+  id: ClothingMaskPilot
+  storage:
+    back:
+    - ClothingMaskPilot
+
+- type: loadout
+  id: ClothingMaskGasMercenary
+  storage:
+    back:
+    - ClothingMaskGasMercenary
+
+- type: loadout
+  id: ClothingMaskGasSecurity
+  storage:
+    back:
+    - ClothingMaskGasSecurity
+
+- type: loadout
+  id: ClothingMaskDrakeIndustriesWatchdog
+  storage:
+    back:
+    - ClothingMaskDrakeIndustriesWatchdog

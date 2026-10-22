@@ -253,6 +253,8 @@
     sprite: Objects/Misc/ensnare.rsi
   - type: Speech
     speechSounds: Pai
+  - type: Uncloneable
+    analyzable: false # Triad - uncloneable
   - type: Vocal
     wilhelm: "/Audio/_EinsteinEngines/Voice/IPC/wilhelm.ogg"
     sounds:

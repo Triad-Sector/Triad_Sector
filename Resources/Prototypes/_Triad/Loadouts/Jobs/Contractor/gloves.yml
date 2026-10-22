@@ -1,0 +1,59 @@
+- type: loadout
+  id: ClothingHandsGlovesPilot
+  groupBy: WorkGloves
+  equipment:
+    gloves: ClothingHandsGlovesPilot
+
+- type: loadout
+  id: ClothingHandsGlovesMercFingerless
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesMercFingerless
+
+- type: loadout
+  id: ClothingHandsMercenaryGlovesCombat
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsMercenaryGlovesCombat
+
+- type: loadout
+  id: ClothingHandsGlovesCombat
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesCombat
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatTan
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatTan
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatBlack
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatBlack
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatRangerGreen
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatRangerGreen
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatOlive
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatOlive
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatCoyoteBrown
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatCoyoteBrown
+
+- type: loadout
+  id: ClothingHandsGlovesTacticalCombatWhite
+  groupBy: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesTacticalCombatWhite

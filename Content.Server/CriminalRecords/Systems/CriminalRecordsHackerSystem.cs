@@ -19,7 +19,7 @@ public sealed partial class CriminalRecordsHackerSystem : SharedCriminalRecordsH
     [Dependency] private CriminalRecordsSystem _criminalRecords = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
-    // [Dependency] private readonly StationSystem _station = default!; // Frontier
+    // [Dependency] private StationSystem _station = default!; // Frontier
     [Dependency] private StationRecordsSystem _records = default!;
     [Dependency] private SectorServiceSystem _sectorService = default!;
 

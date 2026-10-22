@@ -42,7 +42,7 @@
 - type: entity
   id: SpawnRandomTurretRangeTIC
   name: random ranged ballistic turret spawn
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   parent: MarkerBase
   components:
     - type: Sprite
@@ -121,9 +121,54 @@
       rareChance: 0.3
 
 - type: entity
+  id: SpawnRandomEnergyTurretRangeSDNormal
+  name: normal ranged energy turret spawn
+  suffix: Triad, SD, Normal Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretSD
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSDMedium
+  name: medium ranged energy turret spawn
+  suffix: Triad, SD, Medium Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretSDMediumRange
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSDLong
+  name: long ranged energy turret spawn
+  suffix: Triad, SD, Long Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretSDLongRange
+
+- type: entity
   id: SpawnRandomEnergyTurretRangeTIC
   name: random ranged energy turret spawn
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   parent: MarkerBase
   components:
     - type: Sprite
@@ -139,6 +184,51 @@
       rarePrototypes:
         - EnergyTurretTICLongRange
       rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeICTNormal
+  name: normal ranged energy turret spawn
+  suffix: Triad, ICT, Normal Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretTIC
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeICTMedium
+  name: medium ranged energy turret spawn
+  suffix: Triad, ICT, Medium Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretTICMediumRange
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeICTLong
+  name: long ranged energy turret spawn
+  suffix: Triad, ICT, Long Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+      - EnergyTurretTICLongRange
 
 - type: entity
   id: SpawnRandomEnergyTurretRangeSyndicate
@@ -159,3 +249,33 @@
       rarePrototypes:
         - EnergyTurretSyndicateLongRange
       rareChance: 0.3
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSyndicateMedium
+  name: medium ranged energy turret spawn
+  suffix: Triad, Syndicate, Medium Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretSyndicateMediumRange
+
+- type: entity
+  id: SpawnRandomEnergyTurretRangeSyndicateLong
+  name: long ranged energy turret spawn
+  suffix: Triad, Syndicate, Long Range
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _NF/Objects/Weapons/Guns/Turrets/laser.rsi
+          state: base
+    - type: RandomSpawner
+      prototypes:
+        - EnergyTurretSyndicateLongRange

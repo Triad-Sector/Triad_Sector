@@ -107,7 +107,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 - type: entity
   parent: BallisticTurretMediumRange
@@ -116,7 +116,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 - type: entity
   parent: BallisticTurretLongRange
@@ -125,7 +125,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 # Heavy Ballistic
 - type: entity
@@ -135,7 +135,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 - type: entity
   parent: BallisticTurretHeavyMediumRange
@@ -144,7 +144,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 - type: entity
   parent: BallisticTurretHeavyLongRange
@@ -153,7 +153,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
 
 # Energy
 - type: entity
@@ -163,7 +163,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
@@ -177,7 +177,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
@@ -191,79 +191,79 @@
   components:
   - type: NpcFactionMember
     factions:
-    - SDTurret
+    - SD
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 10
 
-# TIC Turrets
+# ICT Turrets
 # Ballistics
 - type: entity
   parent: BaseWeaponBallisticTurret
   id: WeaponTurretTIC
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 - type: entity
   parent: BallisticTurretMediumRange
   id: WeaponTurretTICMediumRange
-  suffix: Triad, TIC, MediumRange
+  suffix: Triad, ICT, MediumRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 - type: entity
   parent: BallisticTurretLongRange
   id: WeaponTurretTICLongRange
-  suffix: Triad, TIC, LongRange
+  suffix: Triad, ICT, LongRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 # Heavy Ballistic
 - type: entity
   parent: BallisticTurretHeavyBase
   id: WeaponTurretHeavyTIC
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 - type: entity
   parent: BallisticTurretHeavyMediumRange
   id: WeaponTurretHeavyTICMediumRange
-  suffix: Triad, TIC, MediumRange
+  suffix: Triad, ICT, MediumRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 - type: entity
   parent: BallisticTurretHeavyLongRange
   id: BallisticTurretHeavyTICLongRange
-  suffix: Triad, TIC, LongRange
+  suffix: Triad, ICT, LongRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
 
 # Energy
 - type: entity
   parent: BaseWeaponTurretEnergyTriad
   id: EnergyTurretTIC
-  suffix: Triad, TIC
+  suffix: Triad, ICT
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
@@ -273,11 +273,11 @@
 - type: entity
   parent: EnergyTurretMediumRange
   id: EnergyTurretTICMediumRange
-  suffix: Triad, TIC, MediumRange
+  suffix: Triad, ICT, MediumRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider
@@ -287,11 +287,11 @@
 - type: entity
   parent: EnergyTurretLongRange
   id: EnergyTurretTICLongRange
-  suffix: Triad, TIC, LongRange
+  suffix: Triad, ICT, LongRange
   components:
   - type: NpcFactionMember
     factions:
-    - TICTurret
+    - Coalition
   - type: Gun
     fireRate: 2
   - type: HitscanBatteryAmmoProvider

@@ -135,12 +135,4 @@
       strippingWindowPos: 3,3
       dependsOn: head
       displayName: Helmet cover
-    - name: helmetattachment
-      slotTexture: helmet_attachment
-      slotFlags: HELMETATTACHMENT
-      stripTime: 3
-      uiWindowPos: 0,5
-      strippingWindowPos: 3,4
-      dependsOn: head
-      displayName: Helmet_attachment
     #End Mono

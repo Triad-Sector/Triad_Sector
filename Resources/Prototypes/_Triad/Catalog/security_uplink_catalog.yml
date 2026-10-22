@@ -1,21 +1,6 @@
 # FMC->TCC. TCC cost 5x - Triad
 
 - type: listing
-  id: UplinkSecurityLake
-  name: uplink-security-lake-name
-  description: uplink-security-lake-desc
-  productEntity: WeaponLauncherNfsdLake
-  cost:
-    TriadCommerceCredit: 10
-  categories:
-  - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
   id: UplinkSecurityEg4
   name:  uplink-security-eg4-name
   description: uplink-security-eg4-desc
@@ -225,22 +210,6 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityWT550Magazine
-  name:  uplink-security-wt550-magazine-name
-  description: uplink-security-wt550-magazine-desc
-  productEntity: BoxMagazine46x30mmSubMachineGunTopMountedFMJ
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag_top_mounted.rsi, state: base }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-  - UplinkSecurityAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
-- type: listing
   id: UplinkSecurity45ACPSMGMagazine
   name: uplink-security-Magazine45ACPPistolFMJ-smg-name
   description: uplink-security-Magazine45ACPPistolFMJ-smg-desc
@@ -352,15 +321,14 @@
       tags:
       - SecurityUplink
 
-
 - type: listing
-  id: UplinkSecurityEmpGrenadeAmmo
-  name:  uplink-security-emp-ammo-name
-  description: uplink-security-emp-ammo-desc
-  productEntity: BoxEmpGrenadesAmmo
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
+  id: UplinkSecurityAmmoBundle23x75mmBeanbag
+  name:  uplink-security-23x75mmbeanbag-box-name-name
+  description: uplink-security-23x75mmbeanbag-box-name-desc
+  productEntity: AmmoBox23x75mmBeanbag
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Boxes/4_gauge.rsi, state: beanbag }
   cost:
-    TriadCommerceCredit: 5
+    TriadCommerceCredit: 10
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -377,6 +345,54 @@
   icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/tracking_dart.rsi, state: icon }
   cost:
     TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityEmpGrenadeAmmo
+  name:  uplink-security-emp-ammo-name
+  description: uplink-security-emp-ammo-desc
+  productEntity: Magazine40mmEMP
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing # Smaller radius than frag, but a more powerful explosion.
+  id: UplinkSecurityThermobaricGrenadeAmmo
+  name:  uplink-security-thermobaric-ammo-name
+  description: uplink-security-thermobaric-ammo-desc
+  productEntity: Magazine40mmBlast
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: blast }
+  cost:
+    TriadCommerceCredit: 15
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityFragGrenadeAmmo
+  name:  uplink-security-frag-ammo-name
+  description: uplink-security-frag-ammo-desc
+  productEntity: Magazine40mmFrag
+  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: frag }
+  cost:
+    TriadCommerceCredit: 20
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -508,7 +524,7 @@
   productEntity: ClothingBackpackDuffelTdfHardsuitTdf
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -524,7 +540,23 @@
   productEntity: ClothingBackpackDuffelTdfHardsuitTdfMedic
   icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta21m.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 10
+    TriadCommerceCredit: 15
+  categories:
+    - UplinkSecurityHardsuits
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
+  id: UplinkClothingOuterHardsuitTA29
+  name: uplink-security-hardsuit-ta-29-name
+  description: uplink-security-hardsuit-ta-29-desc
+  productEntity: ClothingBackpackDuffelTdfHardsuitTA29
+  icon: { sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-ta29.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 80
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -541,22 +573,6 @@
   icon: { sprite: _NF/Objects/Weapons/Guns/Projectiles/emp.rsi, state: icon }
   cost:
     TriadCommerceCredit: 40 #Mono Emmiter price: From 1 to 3
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing
-  id: UplinkSecurityEnforcer
-  name:  uplink-security-enforcer-name
-  description: uplink-security-enforcer-desc
-  productEntity: WeaponShotgunEnforcer
-  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
-  cost:
-    TriadCommerceCredit: 15
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -1178,11 +1194,11 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityLecterBundle
-  name: uplink-security-gun-lecter-name
-  description: uplink-security-gun-lecter-desc
-  productEntity: WeaponCaseTDFLongLecter
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_lecter.rsi, state: icon }
+  id: UplinkSecurityVigilBundle
+  name: uplink-security-gun-vigil-name
+  description: uplink-security-gun-vigil-desc
+  productEntity: WeaponCaseTDFLongVigil
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil.rsi, state: icon }
   cost:
     TriadCommerceCredit: 10
   categories:
@@ -1210,13 +1226,13 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityWt550Bundle
-  name: uplink-security-gun-wt550-name
-  description: uplink-security-gun-wt550-desc
-  productEntity: WeaponCaseTDFLongWt550
-  icon: { sprite: Objects/Weapons/Guns/SMGs/wt550.rsi, state: icon }
+  id: UplinkSecurityEnforcerBundle
+  name: uplink-security-gun-enforcer-name
+  description: uplink-security-gun-enforcer-desc
+  productEntity: WeaponCaseTDFLongEnforcer
+  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 20
+    TriadCommerceCredit: 15
   categories:
   - UplinkSecurityWeapons
   conditions:
@@ -1226,13 +1242,29 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityEnforcerBundle
-  name: uplink-security-gun-enforcer-name
-  description: uplink-security-gun-enforcer-desc
-  productEntity: WeaponCaseTDFLongEnforcer
-  icon: { sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi, state: icon }
+  id: UplinkSecuritySquireBundle
+  name: uplink-security-gun-squire-name
+  description: uplink-security-gun-squire-desc
+  productEntity: WeaponCaseTDFLongSquire
+  icon: { sprite: _Triad/Objects/Weapons/Guns/SMGs/squire.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 15
+    TriadCommerceCredit: 10
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBearsLegBundle
+  name: uplink-security-gun-bears-leg-name
+  description: uplink-security-gun-bears-leg-desc
+  productEntity: WeaponCaseTDFLongBearsLeg
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Launchers/bears_leg.rsi, state: icon }
+  cost:
+    TriadCommerceCredit: 60
   categories:
   - UplinkSecurityWeapons
   conditions:
@@ -1258,11 +1290,11 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityMR8TBundle
-  name: uplink-security-gun-mr8t-name
-  description: uplink-security-gun-mr8t-desc
-  productEntity: WeaponCaseTDFLongMR8T
-  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/tdf_mr8c.rsi, state: icon }
+  id: UplinkSecurityBishopBundle
+  name: uplink-security-gun-bishop-name
+  description: uplink-security-gun-bishop-desc
+  productEntity: WeaponCaseTDFLongBishop
+  icon: { sprite: _Triad/Objects/Weapons/Guns/Rifles/bishop.rsi, state: icon }
   cost:
     TriadCommerceCredit: 125
   categories:

@@ -7,13 +7,13 @@
     maxItemSize: Large
     blacklist:
       components:
-      - StorageFill
       - PresetIdCard
       - IdCard
       - Access
       - Store
       - Cash
       - Headset
+      - SafetyDepositBox
   - type: RadarBlip
     radarColor: "#e3ffea"
     scale: 1.5
