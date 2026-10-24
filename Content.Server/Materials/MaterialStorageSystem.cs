@@ -43,7 +43,7 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         SubscribeAllEvent<EjectMaterialMessage>(OnEjectMessage);
     }
 
-    private void OnDeconstructed(EntityUid uid,MaterialStorageComponent component,MachineDeconstructedEvent args)
+    private void OnDeconstructed(EntityUid uid, MaterialStorageComponent component, MachineDeconstructedEvent args)
     {
         if (!component.DropOnDeconstruct)
             return;
