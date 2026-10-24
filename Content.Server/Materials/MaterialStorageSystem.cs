@@ -54,7 +54,7 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
     // Triad changes Stops fissile glass shard super massive event~ this is unique to 1k+ events
     private const int MaterialDropDamageThreshold = 1000;
 
-    private static readonly HashSet<string> MaterialsLostOnHeavyDamage = new()
+    private static readonly HashSet<ProtoId<MaterialPrototype>> MaterialsLostOnHeavyDamage = new()
     {
         "Glass",
         "PlasmaGlass",
