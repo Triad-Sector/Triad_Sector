@@ -145,8 +145,16 @@ public sealed partial class ReactorPartComponent : Component
     /// <summary>
     /// The gas mixture inside the gas channel.
     /// </summary>
+    [DataField]
     public GasMixture? AirContents;
     #endregion
+
+    /// <summary>
+    /// Where this part sits in its reactor's grid, and the only record of it that survives a save.
+    /// Meaningless outside a reactor: a part in a hand carries whatever cell it last occupied.
+    /// </summary>
+    [DataField]
+    public Vector2i ReactorCell;
 
     /// <summary>
     /// Creates a new <see cref="ReactorPartComponent"> with information from an existing one.
@@ -175,6 +183,7 @@ public sealed partial class ReactorPartComponent : Component
         ConfiguredInsertionLevel = source.ConfiguredInsertionLevel;
         GasThermalCrossSection = source.GasThermalCrossSection;
         AirContents = source.AirContents;
+        ReactorCell = source.ReactorCell;
     }
 
     public bool HasRodType(RodTypes type) => (RodType & (int)type) == (int)type;

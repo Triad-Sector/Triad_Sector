@@ -1,5 +1,6 @@
 using Content.Shared.Guidebook;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Doors.Components
 {
@@ -57,8 +58,8 @@ namespace Content.Shared.Doors.Components
         /// <summary>
         /// When the firelock will be allowed to automatically close again due to a hazardous environment.
         /// </summary>
-        [DataField]
-        public TimeSpan? EmergencyCloseCooldown;
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+        public TimeSpan? EmergencyCloseCooldown; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
         /// <summary>
         /// Whether the firelock can open, or is locked due to its environment.

@@ -21,7 +21,20 @@ internal sealed partial class SmesSystem : EntitySystem
         UpdatesAfter.Add(typeof(PowerNetSystem));
 
         SubscribeLocalEvent<SmesComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<SmesComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<SmesComponent, ChargeChangedEvent>(OnBatteryChargeChanged);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). Direct, not via UpdateSmesState, whose guard is a flicker guard.
+    private void OnStartup(EntityUid uid, SmesComponent component, ComponentStartup args)
+    {
+        component.LastChargeLevel = CalcChargeLevel(uid);
+        component.LastChargeLevelTime = _gameTiming.CurTime;
+        _appearance.SetData(uid, SmesVisuals.LastChargeLevel, component.LastChargeLevel);
+
+        component.LastChargeState = CalcChargeState(uid);
+        component.LastChargeStateTime = _gameTiming.CurTime;
+        _appearance.SetData(uid, SmesVisuals.LastChargeState, component.LastChargeState);
     }
 
     private void OnMapInit(EntityUid uid, SmesComponent component, MapInitEvent args)

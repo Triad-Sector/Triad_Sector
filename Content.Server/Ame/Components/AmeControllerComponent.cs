@@ -60,14 +60,14 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// <summary>
     /// The last time this could have injected fuel into the AME.
     /// </summary>
-    [DataField("lastUpdate")]
-    public TimeSpan LastUpdate = default!;
+    [DataField("lastUpdate", customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan LastUpdate = default!; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The next time this will try to inject fuel into the AME.
     /// </summary>
-    [DataField("nextUpdate")]
-    public TimeSpan NextUpdate = default!;
+    [DataField("nextUpdate", customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextUpdate = default!; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The next time this will try to update the controller UI.

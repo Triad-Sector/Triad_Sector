@@ -1,4 +1,4 @@
-﻿using Content.Server.Administration.Logs;
+using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
@@ -21,6 +21,7 @@ public sealed partial class PowerChargeSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<PowerChargeComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<PowerChargeComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<PowerChargeComponent, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<PowerChargeComponent, ActivatableUIOpenAttemptEvent>(OnUIOpenAttempt);
         SubscribeLocalEvent<PowerChargeComponent, AfterActivatableUIOpenEvent>(OnAfterUiOpened);
@@ -30,6 +31,16 @@ public sealed partial class PowerChargeSystem : EntitySystem
         SubscribeLocalEvent<PowerChargeComponent, SwitchChargingMachineMessage>(OnSwitchGenerator);
 
         SubscribeLocalEvent<PowerChargeComponent, EmpPulseEvent>(OnEmpPulse); // Frontier: emp code
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). Update refreshes only when the charge moves, and a loaded machine sits at a steady state.
+    private void OnStartup(Entity<PowerChargeComponent> ent, ref ComponentStartup args)
+    {
+        ApcPowerReceiverComponent? powerReceiver = null;
+        if (!Resolve(ent, ref powerReceiver, false))
+            return;
+
+        UpdateState((ent, ent.Comp, powerReceiver));
     }
 
     private void OnAnchorStateChange(EntityUid uid, PowerChargeComponent component, AnchorStateChangedEvent args)

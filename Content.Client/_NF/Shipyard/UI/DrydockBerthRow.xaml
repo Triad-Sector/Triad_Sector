@@ -1,0 +1,55 @@
+<!-- Triad: drydock tab. One berth: its number and class, the ship in it or "empty", Retrieve when
+     that ship can come out, Cancel in place of the menu while it waits in escrow, and the menu
+     holding everything rarer.
+
+     Retrieve sits in a fixed-width slot that stays reserved whenever anything on the list could
+     come out, so the row menus line up in a column instead of sliding left on the empty rows. -->
+<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                xmlns:ui="clr-namespace:Content.Client._NF.Shipyard.UI"
+                HorizontalExpand="True"
+                SetHeight="40">
+    <PanelContainer.PanelOverride>
+        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#101010" BackgroundColor="#1e2428"/>
+    </PanelContainer.PanelOverride>
+    <BoxContainer Orientation="Horizontal"
+                  HorizontalExpand="True"
+                  VerticalAlignment="Center">
+        <RichTextLabel Name="BerthLabel"
+            Access="Public"
+            MinWidth="84"
+            VerticalAlignment="Center"
+            Margin="8 0 10 0" />
+        <RichTextLabel Name="OccupantLabel"
+            Access="Public"
+            HorizontalExpand="True"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0" />
+        <BoxContainer Name="RetrieveSlot"
+            Orientation="Horizontal"
+            MinWidth="90"
+            Margin="0 0 4 0"
+            Visible="False">
+            <Button Name="RetrieveButton"
+                Access="Public"
+                Text="{Loc 'shipyard-console-retrieve-button'}"
+                StyleClasses="ButtonSquare ButtonPrimary"
+                HorizontalExpand="True"
+                Visible="False" />
+        </BoxContainer>
+        <Button Name="CancelButton"
+            Access="Public"
+            Text="{Loc 'shipyard-console-transfer-cancel-button'}"
+            StyleClasses="ButtonSquare"
+            MinWidth="90"
+            Margin="0 0 8 0"
+            Visible="False" />
+        <ui:DrydockMenuButton Name="MenuButton"
+            Access="Public"
+            Text="···"
+            StyleClasses="ButtonSquare"
+            MinWidth="30"
+            AlignRight="True"
+            Margin="0 0 8 0" />
+    </BoxContainer>
+</PanelContainer>

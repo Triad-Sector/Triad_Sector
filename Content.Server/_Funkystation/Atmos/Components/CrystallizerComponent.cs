@@ -8,10 +8,15 @@ namespace Content.Server._Funkystation.Atmos.Components
     [RegisterComponent]
     public sealed partial class CrystallizerComponent : Component
     {
-        [ViewVariables(VVAccess.ReadWrite)]
+        // Triad: data fields. Neither was saved, so a stored crystallizer came back with no recipe
+        // and no gas input, and its regulator loop then ran against a machine that had been reset
+        // under it (reported: "crystallizers reset their settings").
+        // [ViewVariables(VVAccess.ReadWrite)]
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
         public string? SelectedRecipeId { get; set; }
 
-        [ViewVariables(VVAccess.ReadWrite)]
+        // [ViewVariables(VVAccess.ReadWrite)]
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
         public float GasInput { get; set; }
 
         [DataField("inlet")]

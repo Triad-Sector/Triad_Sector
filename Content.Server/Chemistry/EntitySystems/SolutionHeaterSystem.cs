@@ -25,6 +25,9 @@ public sealed partial class SolutionHeaterSystem : EntitySystem
         SubscribeLocalEvent<SolutionHeaterComponent, UpgradeExamineEvent>(OnUpgradeExamine);
         SubscribeLocalEvent<SolutionHeaterComponent, ItemPlacedEvent>(OnItemPlaced);
         SubscribeLocalEvent<SolutionHeaterComponent, ItemRemovedEvent>(OnItemRemoved);
+        // Triad: seed on load (DrydockAppearanceComponent) from the active marker, which rides the document.
+        SubscribeLocalEvent<SolutionHeaterComponent, ComponentStartup>((uid, _, _) =>
+            _appearance.SetData(uid, SolutionHeaterVisuals.IsOn, HasComp<ActiveSolutionHeaterComponent>(uid)));
     }
 
     private void TurnOn(EntityUid uid)

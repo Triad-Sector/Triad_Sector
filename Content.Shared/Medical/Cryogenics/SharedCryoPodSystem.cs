@@ -59,6 +59,7 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CryoPodComponent, CanDropTargetEvent>(OnCryoPodCanDropOn);
+        SubscribeLocalEvent<CryoPodComponent, ComponentStartup>((uid, comp, _) => UpdateAppearance(uid, comp));
         SubscribeLocalEvent<CryoPodComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<CryoPodComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<CryoPodComponent, GetVerbsEvent<AlternativeVerb>>(AddAlternativeVerbs);

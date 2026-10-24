@@ -23,7 +23,6 @@
   - type: Tag
     tags:
     - Bedsheet
-  - type: HLPersistOnShipSave # Triad, bedsheets will save
 
 - type: entity
   id: BedsheetBlack

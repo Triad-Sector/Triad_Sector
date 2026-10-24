@@ -28,7 +28,8 @@ public sealed partial class StationRenameFaxesSystem : EntitySystem
     private void SyncFaxesNames(EntityUid stationUid)
     {
         // update all faxes that belong to this station grid
-        var query = EntityQueryEnumerator<FaxMachineComponent>();
+        // var query = EntityQueryEnumerator<FaxMachineComponent>();
+        var query = AllEntityQuery<FaxMachineComponent>(); // Triad: paused faxes too, or a station initialised on a paused grid keeps stale fax names
         while (query.MoveNext(out var uid, out var fax))
         {
             if (!fax.UseStationName)

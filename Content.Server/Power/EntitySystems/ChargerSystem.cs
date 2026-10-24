@@ -44,6 +44,9 @@ internal sealed partial class ChargerSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, ChargerComponent component, ComponentStartup args)
     {
+        // Triad: seed the light first; UpdateStatus returns early when the computed status equals Status, which swallows the write on a load.
+        _appearance.SetData(uid, CellVisual.Light, GetStatus(uid, component));
+
         UpdateStatus(uid, component);
     }
 

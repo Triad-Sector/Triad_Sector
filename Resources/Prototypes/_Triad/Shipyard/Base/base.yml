@@ -33,3 +33,8 @@
   addComponents:
   - type: IFF
     flags: [IsPlayerShuttle, HideLabel]
+  # Triad: this base is a radar signature, not a save policy. It carried ShipSavingBlacklist until the
+  # black market and carrier hulls stopped being faction ships; gating them was hiding a defect in the
+  # save path rather than expressing a rule, since IsInvalidEntity short-circuits on contraband before
+  # it reaches the anchored check and strips fixtures a hull needs to fly. Anything these ships lose
+  # across a round trip is fixed where it is lost, and the roster sweep is what says what that is.

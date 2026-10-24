@@ -25,6 +25,7 @@
     - type: AddNpcFactionOnMapInit
       factions:
       - TDF # not TDF, but friendly and works with them
+    - type: ShipSavingBlacklist # TFA can't save or drydock ships, they get vouchers
     - type: CryoSleepRadioOverride
       overrides:
       - CentCom # com radio

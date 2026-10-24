@@ -14,8 +14,7 @@
       weight: 4.0
     - id: XenoArtifactSpeedUp
       weight: 4.0
-    # Triad: removed, no mind on a non-mob entity. ShipSaveYamlSanitizer strips Mind/MindContainer but not
-    # GhostRole/GhostTakeoverAvailable, so a sentient artifact disagrees with itself across a ship save.
+    # Triad - Removed, bad with ship saves
     #- id: XenoArtifactGhost
     #  weight: 2.0
     - id: XenoArtifactEffectBadFeeling
@@ -88,14 +87,12 @@
       weight: 2.0
     - id: XenoArtifactEmp
       weight: 2.0
-    # Triad: removed. Forced polymorph of every humanoid in range with no timer, only crit or death
-    # reverts it. Not a puzzle hazard, a griefing tool.
-    #- id: XenoArtifactPolyMonkey
-    #  weight: 2.0
-    #- id: XenoArtifactPolyLuminous
-    #  weight: 2.0
-    #- id: XenoArtifactPolyLizard
-    #  weight: 2.0
+    - id: XenoArtifactPolyMonkey
+      weight: 2.0
+    - id: XenoArtifactPolyLuminous
+      weight: 2.0
+    - id: XenoArtifactPolyLizard
+      weight: 2.0
     - id: XenoArtifactRadioactiveStrong
       weight: 3.0
     - id: XenoArtifactMaterialSpawnGlass

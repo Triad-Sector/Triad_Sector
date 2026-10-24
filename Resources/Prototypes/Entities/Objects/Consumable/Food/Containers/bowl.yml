@@ -65,7 +65,6 @@
     - Trash
   - type: StaticPrice # Frontier
     price: 4 # Frontier
-  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   name: broken bowl

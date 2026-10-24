@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._NF.Shipyard.Components;
 
@@ -18,8 +19,8 @@ public sealed partial class ShipOwnershipComponent : Component
     /// <summary>
     /// When the owner last connected or disconnected
     /// </summary>
-    [DataField, AutoNetworkedField]
-    public TimeSpan LastStatusChangeTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    public TimeSpan LastStatusChangeTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// Whether the owner is currently online

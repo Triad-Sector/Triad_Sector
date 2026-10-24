@@ -10,7 +10,9 @@ using Content.Shared._Triad.Humanoid;
 using System.Runtime.InteropServices;
 using Content.Server.Radio.EntitySystems;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Network;
 using Content.Server.Mind;
+using Content.Shared.Mind;
 using Robust.Server.GameStates;
 using Content.Shared.Humanoid;
 using Content.Server.Preferences.Managers;
@@ -167,20 +169,43 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         UpdatePermitConsoles();
     }
 
+    /// <summary>
+    /// Claims the permits aboard a grid for whoever has just taken it, and seizes every other one
+    /// with its item. Permits follow the person, never the ship: a permit re-stamps only when it was
+    /// issued to the character <paramref name="user"/> is playing, recognised by name and, where the
+    /// permit recorded one, by account as well. Called on every drydock retrieve and on an import,
+    /// the two places a ship arrives in someone's hands, so a transfer, a sale or a shared ship file
+    /// can never hand a permit on.
+    ///
+    /// <para>The owner uid and mind are session-local and never saved, so every permit reaching
+    /// here from a document names its holder only by <see cref="ContrabandPermitItemComponent.PermitOwnerName"/>
+    /// and, for one issued since it existed, <see cref="ContrabandPermitItemComponent.PermitOwnerAccount"/>.
+    /// A user with no mind is no character at all and claims nothing.</para>
+    ///
+    /// <para>Walked by query rather than by a lookup over the grid's bounds, so permitted items
+    /// inside containers are judged as well: one left unstamped would keep no mind and be purged
+    /// from its own holder's ship on the next store.</para>
+    /// </summary>
     public void InitializePermitItemsOnGrid(EntityUid gridUid, EntityUid user)
     {
         if (!_gridQuery.HasComp(gridUid))
             return;
 
-        _newPermitItems.Clear();
-
-        var gridTransform = _transformQuery.GetComponent(gridUid);
-        var worldAABB = _lookup.GetWorldAABB(gridUid, gridTransform);
-        _lookup.GetEntitiesIntersecting(gridTransform.MapID, worldAABB, _newPermitItems);
-
-        foreach ((var ent, var comp) in _newPermitItems)
+        EntityUid? holderMind = null;
+        NetUserId? account = null;
+        string? characterName = null;
+        if (_mind.TryGetMind(user, out var mindId, out var mindComp))
         {
-            if (ent == gridUid)
+            holderMind = mindId;
+            account = mindComp.OriginalOwnerUserId ?? mindComp.UserId;
+            characterName = mindComp.CharacterName;
+        }
+
+        var seized = new List<EntityUid>();
+        var query = AllEntityQuery<ContrabandPermitItemComponent, TransformComponent>();
+        while (query.MoveNext(out var ent, out var comp, out var xform))
+        {
+            if (ent == gridUid || xform.GridUid != gridUid)
                 continue;
 
             if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
@@ -218,6 +243,19 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         AddPermitRecordToSectorService(user, permitItem);
     }
 
+    /// <summary>
+    /// Whether a permit was issued to the character named <paramref name="characterName"/> on
+    /// <paramref name="account"/>. The name always has to match; the account has to match whenever
+    /// the permit recorded one, and a permit issued before the account was saved goes by name alone.
+    /// </summary>
+    private static bool IsIssuedTo(ContrabandPermitItemComponent permit, NetUserId? account, string? characterName)
+    {
+        if (permit.PermitOwnerAccount is { } owner && owner != account)
+            return false;
+
+        return !string.IsNullOrEmpty(characterName) && permit.PermitOwnerName == characterName;
+    }
+
     public void ClearPermitItemsOnGrid(EntityUid gridUid, EntityUid user)
     {
         if (!_gridQuery.HasComp(gridUid))
@@ -247,6 +285,33 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
         {
             Del(uid);
         }
+    }
+
+    /// <summary>
+    /// Whether a permitted item may delete with a ship. The permit must belong to whoever the ship is being saved for.
+    /// It first checks for the given holder's mind. If a mind isn't given, it'll check the owner account's Guid against the mind of the permit owner's mind.
+    ///
+    /// A permit whose owner cannot be resolved to a mind is deleted. That is every permit
+    /// on a hull loaded from a file and not yet initalized by <see cref="InitializePermitItemsOnGrid"/>,
+    /// since the owner fields are session-local and never serialized.
+    /// </summary>
+    public bool PermitTravelsWith(Entity<ContrabandPermitItemComponent> item, EntityUid? holderMind, Guid ownerAccount)
+    {
+        if (!TryComp<ContrabandPermittableComponent>(item, out var permittable) || !permittable.Permittable)
+            return false;
+
+        var permitMind = item.Comp.PermitOwnerMind;
+        if (permitMind == null && item.Comp.PermitOwner is { } owner && _mind.TryGetMind(owner, out var ownerMind, out _))
+            permitMind = ownerMind;
+
+        if (permitMind is not { } mindId)
+            return false;
+
+        if (holderMind != null)
+            return mindId == holderMind;
+
+        return TryComp<MindComponent>(mindId, out var mind)
+            && (mind.OriginalOwnerUserId ?? mind.UserId)?.UserId == ownerAccount;
     }
 
     public bool IsInvalidPermit(Entity<ContrabandPermitItemComponent> permitItem, EntityUid user)

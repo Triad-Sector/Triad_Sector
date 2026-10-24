@@ -3,6 +3,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Turrets;
 
@@ -100,8 +101,8 @@ public sealed partial class DeployableTurretComponent : Component
     /// <summary>
     /// The time that the current animation should complete (in seconds)
     /// </summary>
-    [DataField]
-    public TimeSpan AnimationCompletionTime = TimeSpan.Zero;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan AnimationCompletionTime = TimeSpan.Zero; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The animation used when turret activates
