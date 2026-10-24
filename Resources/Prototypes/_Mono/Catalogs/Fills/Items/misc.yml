@@ -7,12 +7,16 @@
     contents:
     - id: EmergencyMedipen
     - id: AirlossAutoInjector
-    - id: CombatMedipen
-      amount: 2
+    # Triad: Made omnizine rarer
+    #- id: CombatMedipen
+    #  amount: 2
     - id: BruteAutoInjector
     - id: PunctAutoInjector
+      amount: 2 # 1->2
     - id: BurnAutoInjector
     - id: PyraAutoInjector
+      amount: 2 # 1->2
+    # End Triad
 
 - type: entity
   parent: WeaponCaseHeavyAmmo

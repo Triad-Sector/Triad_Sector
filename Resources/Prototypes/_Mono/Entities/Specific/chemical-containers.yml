@@ -9,7 +9,10 @@
     solutions:
       beaker:
         reagents:
-        - ReagentId: Omnizine
+        # Triad: Replaced old Omnizine with our new version
+        #- ReagentId: Omnizine
+        - ReagentId: OmnizineTriad
+        # End Triad
           Quantity: 200
   - type: StaticPrice
     vendPrice: 90000

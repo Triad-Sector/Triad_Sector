@@ -813,7 +813,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 30
         - ReagentId: Nutriment
           Quantity: 10
@@ -824,6 +824,7 @@
   - type: Tag
     tags:
     - Meat
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: steak

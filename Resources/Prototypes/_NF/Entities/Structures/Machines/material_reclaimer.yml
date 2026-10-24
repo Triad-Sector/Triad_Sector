@@ -83,6 +83,7 @@
       - Brain
       tags:
       - HighRiskItem
+      - ContainsOmnizine
     soundCooldown: 0
     sound:
       path: /Audio/Ambience/Objects/crushing.ogg

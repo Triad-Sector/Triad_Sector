@@ -1318,10 +1318,12 @@
       Min: 1
       Max: 2
       PotencyDivisor: 10
-    Omnizine: # Don't kill me
-      Min: 1
-      Max: 3
-      PotencyDivisor: 35
+    # Triad: Removing ability to get Omnizine through botany, to encourage the use of more specialized medicines.
+    #Omnizine: # Don't kill me
+      #Min: 1
+      #Max: 3
+      #PotencyDivisor: 35
+    # End Triad
     SpaceDrugs:
       Min: 1
       Max: 5

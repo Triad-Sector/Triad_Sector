@@ -35,10 +35,10 @@
     - Biological
     damage:
       types:
-        Heat: -15
-        Cold: -15
-        Shock: -15
-        Caustic: -10 #Was 5 per type & 1.5 caustic, Buffed due to limb damage changes (Goobstation)
+        Heat: -5
+        Cold: -5
+        Shock: -5
+        Caustic: -1.5 #Was 5 per type & 1.5 caustic, Buffed due to limb damage changes (Goobstation) Triad: Reverted to Wizden values, since topicals were overpowered
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
       params:
@@ -92,10 +92,10 @@
     - Biological
     damage:
       types:
-        Heat: -20
-        Cold: -20
-        Shock: -20
-        Caustic: -20 #Was 10 per type, Buffed due to limb damage changes (Goobstation)
+        Heat: -15
+        Cold: -15
+        Shock: -15
+        Caustic: -15 # Was 10 per type, Buffed due to limb damage changes (Goobstation) Triad: Nerfed to 15 each, since topicals were overpowered
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
       params:
@@ -137,8 +137,10 @@
     damageContainers:
     - Biological
     damage:
-      groups:
-        Brute: -45 # was 5 for each, Buffed due to limb damage changes (Goobstation)
+      types:
+        Blunt: -5
+        Slash: -5
+        Pierce: -5 # was 5 for each, Buffed due to limb damage changes (Goobstation) Triad: Reverted to Wizden values, since topicals were overpowered
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
       params:
@@ -193,7 +195,7 @@
     - Biological
     damage:
       groups:
-        Brute: -60 # was 10 for each, now 20 for each type in the group, Buffed due to surgery changes (Goobstation)
+        Brute: -30 # was 10 for each, now 20 for each type in the group, Buffed due to surgery changes (Goobstation) Triad: Nerfed to 30 total, since topicals were overpowered
     bloodlossModifier: -10 # a suture should stop ongoing bleeding
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
@@ -318,8 +320,8 @@
     - Biological
     damage:
       types:
-        Slash: -15 # Was 5
-        Piercing: -20 # Was 10, Buffed due to limb damage changes (Goobstation)
+        Slash: -5 # Was 5
+        Piercing: -10 # Was 10, Buffed due to limb damage changes (Goobstation) Triad: Reverted to Wizden values, since topicals were overpowered
     bloodlossModifier: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"

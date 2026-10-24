@@ -287,8 +287,8 @@
     chance: 0.7
     offset: 0.0
     rarePrototypes:
-    - MedicatedSuture
-    - RegenerativeMesh
+    #- MedicatedSuture
+    #- RegenerativeMesh Triad: Made advanced topicals more difficult to find in loot, to encourage crafting them
     - AloeCream
     rareChance: 0.01
 

@@ -21,6 +21,7 @@
     tags:
     - DonkPocket
     - Meat
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 # Donkpocket
 
@@ -59,8 +60,13 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 8
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - ContainsOmnizine
+  # End Triad
 
 - type: entity
   name: dank-pocket
@@ -97,7 +103,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 4
 
 - type: entity
@@ -131,7 +137,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
   - type: Sprite
     state: spicy
@@ -167,7 +173,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
 
 - type: entity
@@ -209,7 +215,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
 
 - type: entity
@@ -228,7 +234,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 5
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
   - type: Sprite
     state: banana
@@ -249,7 +255,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
 
 - type: entity
@@ -287,7 +293,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
         - ReagentId: Sugar
           Quantity: 2
@@ -326,7 +332,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
 
 - type: entity
@@ -363,7 +369,7 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
 
 - type: entity

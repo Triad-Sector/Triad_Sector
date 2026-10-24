@@ -13,7 +13,7 @@
           Quantity: 3
         - ReagentId: Nutriment
           Quantity: 3
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 3
         - ReagentId: Iron
           Quantity: 3
@@ -23,6 +23,11 @@
     sprite: Objects/Consumable/Food/candy.rsi
     state: lollipop
     netsync: false
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - ContainsOmnizine
+  # End Triad
 
 - type: entity
   parent: FoodBase

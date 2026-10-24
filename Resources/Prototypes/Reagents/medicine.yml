@@ -698,14 +698,22 @@
       - !type:EvenHealthChange
         damage:
           Brute: -2 #Mono -1.75 >> -2
-          Airloss: -1
+      # Triad: Nerf Polyp to be less effective than more specialized chems. Remove its bloodloss damage healing, and lower overdose threshold.
+          #Airloss: -1
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: -1
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
           type: Yowie
           shouldHave: false
         - !type:ReagentThreshold
-          min: 30
+          # Triad: Reduce overdose in service to making other chems like Bic more useful.
+          #min: 30
+          min: 20
+          # End Triad
         damage:
           types:
             Asphyxiation: 3.5
@@ -917,14 +925,19 @@
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
+  # Triad: Replaced Omnizine with OmnizineTriad, our own version of the chemical in our own namespace, in order to remove the current stockpiles most players have. Change name and description to show this isn't useful anymore.
 - type: reagent
   id: Omnizine
-  name: reagent-name-omnizine
+  #name: reagent-name-omnizine
+  name: reagent-name-omnizine-expired
   group: Medicine
-  desc: reagent-desc-omnizine
-  physicalDesc: reagent-physical-desc-soothing
+  #desc: reagent-desc-omnizine
+  desc: reagent-desc-omnizine-expired
+  #physicalDesc: reagent-physical-desc-soothing
+  physicalDesc: reagent-physical-desc-anomalous
   flavor: medicine
-  color: "#fcf7f9"
+  #color: "#fcf7f9"
+  color: "#210a3b" # Sorta anomalous goopy purple-black
   metabolisms:
     Medicine:
       effects:
@@ -932,7 +945,8 @@
         conditions:
         - !type:ReagentThreshold
           min: 0
-          max: 100
+          #max: 100
+          max: 1 # Triad
         damage:
           Burn: -1.5
           Toxin: -1.5
@@ -941,7 +955,9 @@
       - !type:HealthChange # Mono - Added overdose
         conditions:
         - !type:ReagentThreshold
-          min: 100
+          #min: 100
+          min: 2 # Triad
+  # End Triad
         damage:
           groups:
             Burn: 1
