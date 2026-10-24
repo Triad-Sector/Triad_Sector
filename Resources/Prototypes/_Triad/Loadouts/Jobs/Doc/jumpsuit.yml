@@ -1,0 +1,24 @@
+- type: loadout
+  id: ClothingUniformCMOFormal
+  equipment:
+    jumpsuit: ClothingUniformCMOFormal
+
+- type: loadout
+  id: ClothingUniformJumpskirtCMOFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMOFormal
+
+- type: loadout
+  id: ClothingUniformCMOVest
+  equipment:
+    jumpsuit: ClothingUniformCMOVest
+
+- type: loadout
+  id: ClothingUniformJumpskirtCMOVest
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMOVest
+
+- type: loadout
+  id: ClothingUniformCMOSummer
+  equipment:
+    jumpsuit: ClothingUniformCMOSummer
