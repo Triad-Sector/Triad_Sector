@@ -270,6 +270,7 @@ public sealed partial class DockingSystem
                     // Check if there's no intersecting grids (AKA oh god it's docking at cargo).
                     grids.Clear();
                     _mapSystem.FindGridsIntersecting(targetGridXform.MapID, dockedBounds, ref grids, includeMap: false);
+
                     if (grids.Any(o => o.Owner != targetGrid && o.Owner != targetGridXform.MapUid))
                     {
                         continue;
@@ -310,17 +311,13 @@ public sealed partial class DockingSystem
                             if (!ShuttleSideAllowed(otherUid, otherGridUid))
                                 continue;
 
-                            var canDock = CanDockCached(
+                            if (!CanDockCached(
                                 otherUid, other, _xformQuery.GetComponent(otherUid),
-                                otherGridUid, otherGrid, _xformQuery.GetComponent(otherGridUid),
-                                out _,
-                                out var otherdockedAABB,
-                                out var otherTargetAngle);
-
-                            if (!canDock)
+                                 otherGridUid, otherGrid, _xformQuery.GetComponent(otherGridUid),
+                                 out _,
+                                 out var otherdockedAABB,
+                                 out var otherTargetAngle))
                                 continue;
-
-                            otherdockedAABB = otherdockedAABB.Rounded(DockRoundingDigits);
 
                             // Different setup: allow small tolerance on angle / AABB to aggregate more ports.
                             if (!targetAngle.EqualsApprox(otherTargetAngle, 0.05) ||
