@@ -12,28 +12,34 @@
 #     event: !type:OpenStorageImplantEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionToggleSneakMode
   name: Toggle sneak mode
   description: Sneak underneath tables.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: BigAction
     useDelay: 3
+    # L5 - toggle icon
     icon:
-      sprite: Structures/Furniture/Tables/generic.rsi
-      state: full
+      sprite: _L5/Actions/sneak.rsi
+      state: sneak
+    iconOn:
+      sprite: _L5/Actions/sneak.rsi
+      state: stand
+    # end L5 - toggle icon
+  - type: InstantAction
     event: !type:ToggleCrawlingStateEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionChitzite
   name: Cough Up Chitzite
   description: Purge the excess radiation build-up from your body, and gain a cool danger rock.
   components:
-  - type: LimitedCharges
-    maxCharges: 1
-    lastCharges: 0
-  - type: InstantAction
+  - type: Action
     enabled: false
     icon: { sprite: _DV/Objects/Specific/Species/chitinid.rsi, state: chitzite }
     useDelay: 300
-    event: !type:ChitziteActionEvent
+  - type: InstantAction
+    event: !type:CoughItemActionEvent

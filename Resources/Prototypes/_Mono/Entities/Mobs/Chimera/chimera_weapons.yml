@@ -67,7 +67,6 @@
     itemIconStyle: BigAction
     icon: { sprite : _NF/Mobs/Aliens/flesh.rsi, state: spike }
     priority: 2
-    checkCanAccess: false
   - type: TargetAction
     range: 0
     checkCanAccess: false
