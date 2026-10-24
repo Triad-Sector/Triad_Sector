@@ -63,6 +63,7 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         "ReinforcedUraniumGlass",
         "ReinforcedGlass",
     };
+    
     private void OnDestroyed(Entity<MaterialStorageComponent> ent, ref DestructionEventArgs args)
     {
         if (!ent.Comp.DropOnDestroy)
