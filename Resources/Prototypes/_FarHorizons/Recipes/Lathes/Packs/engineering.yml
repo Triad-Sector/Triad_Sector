@@ -36,6 +36,8 @@
   - PlasmaReactorFuelRod
   - UraniumGlassReactorFuelRod
   - GeneratorRTGFlatpack # Triad
+  - HighEnrichedUraniumReactorFuelRod # Triad
+  - CladdedPlutoniumReactorFuelRod # Triad
 
 - type: latheRecipePack
   id: ReactorControlRods
@@ -45,6 +47,8 @@
   - PlasteelReactorControlRod
   - PlasmaGlassReactorControlRod
   - DiamondReactorControlRod
+  - IriditeReactorControlRod
+  - PlastitaniumReactorControlRod
 
 - type: latheRecipePack
   id: ReactorGasChannels
@@ -54,6 +58,8 @@
   - PlasteelReactorGasChannel
   - PlasmaGlassReactorGasChannel
   - DiamondReactorGasChannel
+  - IriditeReactorGasChannel
+  - PlastitaniumReactorGasChannel
 
 - type: latheRecipePack
   id: ReactorHeatExchangers
@@ -63,6 +69,8 @@
   - PlasteelReactorHeatExchanger
   - PlasmaGlassReactorHeatExchanger
   - DiamondReactorHeatExchanger
+  - IriditeReactorHeatExchanger
+  - PlastitaniumReactorHeatExchanger
 
 - type: latheRecipePack
   id: GasTurbineBlades
@@ -71,9 +79,11 @@
   - DiamondGasTurbineBlade
   - GoldGasTurbineBlade
   - PlasteelGasTurbineBlade
+  - PlastitaniumGasTurbineBlade
 
 - type: latheRecipePack
   id: GasTurbineStators
   recipes:
   - SilverGasTurbineStator
   - GoldGasTurbineStator
+  - IriditeGasTurbineStator
