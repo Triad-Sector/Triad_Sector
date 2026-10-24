@@ -63,10 +63,13 @@
   name: "[color=yellow]Bone Spike[/color]"
   description: "Shoot a short salvo of bone spikes laced with [color=yellow]letoferol[/color]."
   components:
-  - type: WorldTargetAction
+  - type: Action
+    itemIconStyle: BigAction
     icon: { sprite : _NF/Mobs/Aliens/flesh.rsi, state: spike }
-    event: !type:ActionGunShootEvent
     priority: 2
     checkCanAccess: false
+  - type: TargetAction
     range: 0
-    itemIconStyle: BigAction
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:ActionGunShootEvent

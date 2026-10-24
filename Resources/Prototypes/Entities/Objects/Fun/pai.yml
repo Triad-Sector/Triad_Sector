@@ -184,17 +184,6 @@
 
 - type: entity
   parent: BaseMentalAction
-  id: ActionPAIOpenShop
-  name: Software Catalog
-  description: Install new software to assist your owner.
-  components:
-  - type: Action
-    icon: Interface/Actions/shop.png
-  - type: InstantAction
-    event: !type:PAIShopActionEvent
-
-- type: entity
-  parent: BaseMentalAction
   id: ActionPAIMassScanner
   name: Mass Scanner
   description: View a mass scanner interface.

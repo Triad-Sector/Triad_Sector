@@ -58,4 +58,5 @@
     icon:
       sprite: Objects/Tools/handheld_mass_scanner.rsi
       state: icon
+  - type: InstantAction
     event: !type:MechRadarUiEvent
