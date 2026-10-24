@@ -184,6 +184,45 @@ public sealed partial class DockingSystem
 
         var isMap = HasComp<MapComponent>(targetGrid);
 
+        var canDockCache = new Dictionary<(EntityUid ShuttleDockUid, EntityUid GridDockUid),
+            (bool CanDock, Matrix3x2 Matty, Box2 DockedAABB, Angle TargetAngle)>();
+
+        bool CanDockCached(
+            EntityUid shuttleDockUid,
+            DockingComponent shuttleDock,
+            TransformComponent shuttleDockXform,
+            EntityUid gridDockUid,
+            DockingComponent gridDock,
+            TransformComponent gridDockXform,
+            out Matrix3x2 matty,
+            out Box2 dockedAABB,
+            out Angle targetAngle)
+        {
+            var key = (shuttleDockUid, gridDockUid);
+            if (canDockCache.TryGetValue(key, out var cached))
+            {
+                matty = cached.Matty;
+                dockedAABB = cached.DockedAABB;
+                targetAngle = cached.TargetAngle;
+                return cached.CanDock;
+            }
+
+            var canDock = CanDock(
+                shuttleDock, shuttleDockXform,
+                gridDock, gridDockXform,
+                shuttleAABB,
+                targetGridAngle,
+                shuttleFixturesComp,
+                (targetGrid, targetGridGrid),
+                isMap,
+                out matty,
+                out dockedAABB,
+                out targetAngle);
+
+            canDockCache.Add(key, (canDock, matty, dockedAABB, targetAngle));
+            return canDock;
+        }
+
         var grids = new List<Entity<MapGridComponent>>();
         if (shuttleDocks.Count > 0)
         {
@@ -210,20 +249,15 @@ public sealed partial class DockingSystem
                     if (!ShuttleSideAllowed(dockUid, gridDockUid))
                         continue;
 
-                    if (!CanDock(
-                            shuttleDock, shuttleDockXform,
-                            gridDock, gridXform,
-                            shuttleAABB,
-                            targetGridAngle,
-                            shuttleFixturesComp,
-                            (targetGrid, targetGridGrid),
-                            isMap,
-                            out var matty,
-                            out var dockedAABB,
-                            out var targetAngle))
-                    {
+                    var canDock = CanDockCached(
+                        dockUid, shuttleDock, shuttleDockXform,
+                        gridDockUid, gridDock, gridXform,
+                        out var matty,
+                        out var dockedAABB,
+                        out var targetAngle);
+
+                    if (!canDock)
                         continue;
-                    }
 
                     // Can't just use the AABB as we want to get bounds as tight as possible.
                     var gridPosition = new EntityCoordinates(targetGrid, Vector2.Transform(Vector2.Zero, matty));
@@ -236,6 +270,7 @@ public sealed partial class DockingSystem
                     // Check if there's no intersecting grids (AKA oh god it's docking at cargo).
                     grids.Clear();
                     _mapSystem.FindGridsIntersecting(targetGridXform.MapID, dockedBounds, ref grids, includeMap: false);
+
                     if (grids.Any(o => o.Owner != targetGrid && o.Owner != targetGridXform.MapUid))
                     {
                         continue;
@@ -276,24 +311,13 @@ public sealed partial class DockingSystem
                             if (!ShuttleSideAllowed(otherUid, otherGridUid))
                                 continue;
 
-                            if (!CanDock(
-                                    other,
-                                    _xformQuery.GetComponent(otherUid),
-                                    otherGrid,
-                                    _xformQuery.GetComponent(otherGridUid),
-                                    shuttleAABB,
-                                    targetGridAngle,
-                                    shuttleFixturesComp,
-                                    (targetGrid, targetGridGrid),
-                                    isMap,
-                                    out _,
-                                    out var otherdockedAABB,
-                                    out var otherTargetAngle))
-                            {
+                            if (!CanDockCached(
+                                otherUid, other, _xformQuery.GetComponent(otherUid),
+                                 otherGridUid, otherGrid, _xformQuery.GetComponent(otherGridUid),
+                                 out _,
+                                 out var otherdockedAABB,
+                                 out var otherTargetAngle))
                                 continue;
-                            }
-
-                            otherdockedAABB = otherdockedAABB.Rounded(DockRoundingDigits);
 
                             // Different setup: allow small tolerance on angle / AABB to aggregate more ports.
                             if (!targetAngle.EqualsApprox(otherTargetAngle, 0.05) ||
