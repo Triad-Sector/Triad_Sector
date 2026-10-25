@@ -20,12 +20,12 @@
     itemIconStyle: NoItem
     icon: _Mono/Interface/Action/borer_infest.png
   - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
     whitelist:
       components:
       - Body
     canTargetSelf: false
-    interactOnMiss: false
-  - type: WorldTargetAction
     event: !type:CorticalInfestEvent
 
 - type: entity
