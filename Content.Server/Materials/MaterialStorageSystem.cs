@@ -51,12 +51,11 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         // Normal deconstruction: preserve the original drop behavior.
         DropAll((uid, component));
     }
-    // Triad: switch to limited stack spawning when destruction would
-    // normally create more than 200 stack entities.
+    // Triad: switch to limited stack spawning when mass material drops would create excessive entities.
     private const int MaterialDropStackThreshold = 100;
     private const int MaxStacksPerMaterialOnHighVolumeDrop = 10;
     private const int MaterialLossDamageThreshold = 600;
-
+    // Triad: fragile glasses are destroyed instead of dropped due to them not being handled correctly by the engine down stream during explosions making the server die
     private static readonly HashSet<ProtoId<MaterialPrototype>> MaterialsLostOnHighVolumeDrop = new()
     {
         "Glass",
@@ -71,12 +70,12 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
     {
         if (!ent.Comp.DropOnDestroy)
             return;
-
+        // Triad: determine whether destruction should use reduced-spawn recovery rules.
         var highDamage =
       TryComp<DamageableComponent>(ent, out var damageable) &&
       damageable.TotalDamage > MaterialLossDamageThreshold;
 
-        // Count the normal stack entities before spawning anything.
+        // Triad: estimate normal stack count before spawning to avoid mass entity creation.
         long totalNormalStacks = 0;
 
         foreach (var (material, amount) in ent.Comp.Storage)
@@ -85,7 +84,7 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
                 continue;
 
             totalNormalStacks += GetNormalStackCount(amount, materialProto);
-
+            // Triad: preserve vanilla destruction behavior when stack counts remain reasonable.
             if (totalNormalStacks > MaterialDropStackThreshold)
                 break;
         }
