@@ -183,10 +183,10 @@ public sealed partial class DockingSystem
         var shuttleAABB = _gridQuery.GetComponent(shuttleUid).LocalAABB;
 
         var isMap = HasComp<MapComponent>(targetGrid);
-
+        // Triad: cache CanDock results so the same dock pair is only evaluated once.
         var canDockCache = new Dictionary<(EntityUid ShuttleDockUid, EntityUid GridDockUid),
             (bool CanDock, Matrix3x2 Matty, Box2 DockedAABB, Angle TargetAngle)>();
-
+        // Triad: helper for cached CanDock lookups.
         bool CanDockCached(
             EntityUid shuttleDockUid,
             DockingComponent shuttleDock,
@@ -248,7 +248,7 @@ public sealed partial class DockingSystem
                     // Triad: a berth may demand a specific shuttle side; see RequiredShuttleTag.
                     if (!ShuttleSideAllowed(dockUid, gridDockUid))
                         continue;
-
+                    // Triad: reuse cached CanDock results.
                     var canDock = CanDockCached(
                         dockUid, shuttleDock, shuttleDockXform,
                         gridDockUid, gridDock, gridXform,
@@ -310,7 +310,7 @@ public sealed partial class DockingSystem
                             // Triad: side requirement applies to aggregated pairs too.
                             if (!ShuttleSideAllowed(otherUid, otherGridUid))
                                 continue;
-
+                            // Triad: reuse cached CanDock results.
                             if (!CanDockCached(
                                 otherUid, other, _xformQuery.GetComponent(otherUid),
                                  otherGridUid, otherGrid, _xformQuery.GetComponent(otherGridUid),
