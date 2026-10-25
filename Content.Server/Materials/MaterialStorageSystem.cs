@@ -51,10 +51,13 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         // Normal deconstruction: preserve the original drop behavior.
         DropAll((uid, component));
     }
-    // Triad changes Stops fissile glass shard super massive event~ this is unique to 1k+ events
-    private const int MaterialDropDamageThreshold = 1000;
+    // Triad: switch to limited stack spawning when destruction would
+    // normally create more than 200 stack entities.
+    private const int MaterialDropStackThreshold = 100;
+    private const int MaxStacksPerMaterialOnHighVolumeDrop = 10;
+    private const int MaterialLossDamageThreshold = 600;
 
-    private static readonly HashSet<ProtoId<MaterialPrototype>> MaterialsLostOnHeavyDamage = new()
+    private static readonly HashSet<ProtoId<MaterialPrototype>> MaterialsLostOnHighVolumeDrop = new()
     {
         "Glass",
         "PlasmaGlass",
@@ -63,43 +66,90 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         "ReinforcedUraniumGlass",
         "ReinforcedGlass",
     };
-    
+
     private void OnDestroyed(Entity<MaterialStorageComponent> ent, ref DestructionEventArgs args)
     {
         if (!ent.Comp.DropOnDestroy)
             return;
 
-        var heavyDamage =
-            TryComp<DamageableComponent>(ent, out var damageable)
-            && damageable.TotalDamage > MaterialDropDamageThreshold;
+        var highDamage =
+      TryComp<DamageableComponent>(ent, out var damageable) &&
+      damageable.TotalDamage > MaterialLossDamageThreshold;
 
-        // At 1000 damage or less, preserve the original drop behavior.
-        if (!heavyDamage)
+        // Count the normal stack entities before spawning anything.
+        long totalNormalStacks = 0;
+
+        foreach (var (material, amount) in ent.Comp.Storage)
+        {
+            if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var materialProto))
+                continue;
+
+            totalNormalStacks += GetNormalStackCount(amount, materialProto);
+
+            if (totalNormalStacks > MaterialDropStackThreshold)
+                break;
+        }
+
+        // Normal destruction = vanilla behavior.
+        if (totalNormalStacks <= MaterialDropStackThreshold)
         {
             DropAll(ent);
             return;
         }
 
-        // Above 1000 damage: suppress selected materials and limit
-        // each remaining material to at most 10 oversized stack entities.
-        var coord = Transform(ent).Coordinates;
+        var coordinates = Transform(ent).Coordinates;
 
+        // High-volume destruction path.
         foreach (var (material, amount) in ent.Comp.Storage)
         {
-            if (MaterialsLostOnHeavyDamage.Contains(material))
+            if (highDamage &&
+                MaterialsLostOnHighVolumeDrop.Contains(material))
+            {
                 continue;
+            }
 
-            if (!_prototypeManager.TryIndex<MaterialPrototype>(
-                    material,
-                    out var materialProto))
+            if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var materialProto))
                 continue;
 
             SpawnMaterialInLimitedStacks(
                 amount,
                 materialProto,
-                coord,
-                10);
+                coordinates,
+                MaxStacksPerMaterialOnHighVolumeDrop);
         }
+    }
+    private int GetNormalStackCount(int amount, MaterialPrototype materialProto)
+    {
+        if (amount <= 0 || materialProto.StackEntity == null)
+            return 0;
+
+        var entProto = _prototypeManager.Index<EntityPrototype>(materialProto.StackEntity);
+
+        if (!entProto.TryComp<PhysicalCompositionComponent>(
+                out var composition,
+                EntityManager.ComponentFactory))
+            return 0;
+
+        if (!composition.MaterialComposition.TryGetValue(
+                materialProto.ID,
+                out var materialPerStack) || materialPerStack <= 0)
+            return 0;
+
+        var totalCount = amount / materialPerStack;
+        if (totalCount <= 0)
+            return 0;
+
+        if (!entProto.TryComp<StackComponent>(
+                out var prototypeStack,
+                EntityManager.ComponentFactory))
+            return 0;
+
+        var normalMaxCount = _stackSystem.GetMaxCount(prototypeStack);
+        if (normalMaxCount <= 0)
+            return 0;
+
+        // Ceiling division without adding to totalCount, avoiding overflow.
+        return 1 + ((totalCount - 1) / normalMaxCount);
     }
 
     private void SpawnMaterialInLimitedStacks(
@@ -123,12 +173,11 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
                 out var materialPerStack) || materialPerStack <= 0)
             return;
 
-        // Convert material units into sheets.
+        // Convert stored material units into sheets.
         var totalCount = amount / materialPerStack;
         if (totalCount <= 0)
             return;
 
-        // Read the normal maximum from the stack prototype.
         if (!entProto.TryComp<StackComponent>(
                 out var prototypeStack,
                 EntityManager.ComponentFactory))
@@ -138,10 +187,10 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         if (normalMaxCount <= 0)
             return;
 
-        // How many normal stacks would be needed?
-        var normalObjectCount = (totalCount + normalMaxCount - 1) / normalMaxCount;
+        var normalObjectCount = 1 + ((totalCount - 1) / normalMaxCount);
 
-        // If normal stacks fit within the limit, use the standard spawn method.
+        // If normal-sized stacks fit within this material's limit,
+        // retain the normal stack spawning behavior.
         if (normalObjectCount <= maxObjects)
         {
             _stackSystem.SpawnMultiple(
@@ -151,12 +200,11 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
             return;
         }
 
-        // Otherwise, distribute the sheets across exactly maxObjects oversized stacks.
-        var objectCount = maxObjects;
-        var countPerObject = totalCount / objectCount;
-        var extraCount = totalCount % objectCount;
+        // Otherwise distribute all sheets across the allowed oversized stacks.
+        var countPerObject = totalCount / maxObjects;
+        var extraCount = totalCount % maxObjects;
 
-        for (var i = 0; i < objectCount; i++)
+        for (var i = 0; i < maxObjects; i++)
         {
             var count = countPerObject + (i < extraCount ? 1 : 0);
 
