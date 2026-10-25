@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 10/25/2026 13:17:45
+  time: 10/25/2026 13:44:37
   entityCount: 608
 maps: []
 grids:
@@ -4426,7 +4426,7 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 5.5,19.5
-- proto: WeaponTurretTarnyxReload
+- proto: WeaponTurretRAC30
   entities:
   - uid: 381
     components:
@@ -4461,7 +4461,7 @@ entities:
         DoorStatus: True
     - type: Door
       state: Opening
-      secondsUntilStateChange: -56256.203
+      secondsUntilStateChange: -56292.98
     - type: Airlock
       autoClose: False
 ...
