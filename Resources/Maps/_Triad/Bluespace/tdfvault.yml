@@ -1088,7 +1088,6 @@ entities:
     components:
     - type: Transform
       parent: 1305
-      container: 1305
   - uid: 1359
     mapInit: true
     paused: true
