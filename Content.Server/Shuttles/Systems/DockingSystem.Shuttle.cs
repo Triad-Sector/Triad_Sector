@@ -187,7 +187,7 @@ public sealed partial class DockingSystem
         var canDockCache = new Dictionary<(EntityUid ShuttleDockUid, EntityUid GridDockUid),
             (bool CanDock, Matrix3x2 Matty, Box2 DockedAABB, Angle TargetAngle)>();
         // Triad: helper for cached CanDock lookups.
-        bool CanDockCached(
+        bool DockCacheLookup(
             EntityUid shuttleDockUid,
             DockingComponent shuttleDock,
             TransformComponent shuttleDockXform,
@@ -249,7 +249,7 @@ public sealed partial class DockingSystem
                     if (!ShuttleSideAllowed(dockUid, gridDockUid))
                         continue;
                     // Triad: reuse cached CanDock results.
-                    var canDock = CanDockCached(
+                    var canDock = DockCacheLookup(
                         dockUid, shuttleDock, shuttleDockXform,
                         gridDockUid, gridDock, gridXform,
                         out var matty,
@@ -311,7 +311,7 @@ public sealed partial class DockingSystem
                             if (!ShuttleSideAllowed(otherUid, otherGridUid))
                                 continue;
                             // Triad: reuse cached CanDock results.
-                            if (!CanDockCached(
+                            if (!DockCacheLookup(
                                 otherUid, other, _xformQuery.GetComponent(otherUid),
                                  otherGridUid, otherGrid, _xformQuery.GetComponent(otherGridUid),
                                  out _,
