@@ -39,7 +39,7 @@ public sealed partial class SiliconDeathSystem : EntitySystem
         if (args.ChargePercent == 0 && !siliconDeadComp.Dead)
             SiliconDead(uid, siliconDeadComp, batteryComp, uid);
         else if (args.ChargePercent != 0 && siliconDeadComp.Dead)
-                SiliconUnDead(uid, siliconDeadComp, batteryComp, uid);
+            SiliconUnDead(uid, siliconDeadComp, batteryComp, uid);
     }
 
     private void SiliconDead(EntityUid uid, SiliconDownOnDeadComponent siliconDeadComp, BatteryComponent? batteryComp, EntityUid batteryUid)
@@ -54,7 +54,10 @@ public sealed partial class SiliconDeathSystem : EntitySystem
 
         /*EntityManager.EnsureComponent<SleepingComponent>(uid); Monolith IPC rework edit start
         EntityManager.EnsureComponent<ForcedSleepingComponent>(uid);*/
-        siliconDeadComp.OriginalModifier = damageComp.DamageModifierSetId;
+        // Triad fix: Sometimes it would cause IPCs to permanently gain this as their 'original modifier'
+        if (siliconDeadComp.ModifierOnDead.Value != damageComp.DamageModifierSetId)
+            siliconDeadComp.OriginalModifier = damageComp.DamageModifierSetId;
+
         _damage.SetDamageModifierSetId(uid, siliconDeadComp.ModifierOnDead.Value);
 
         if (TryComp(uid, out HumanoidAppearanceComponent? humanoidAppearanceComponent))
