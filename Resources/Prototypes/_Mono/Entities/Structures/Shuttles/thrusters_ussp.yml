@@ -25,3 +25,7 @@
   components:
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thrusterussp_large.rsi
+# Start of Triad Change: Updates large military thrusters to drop their unique circuit broad
+  - type: Machine
+    board: LargeThrusterMilitaryMachineCircuitboard
+# End of Triad Change

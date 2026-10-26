@@ -5728,3 +5728,86 @@ Entries:
   id: 2685
   time: '2026-10-21T23:34:33.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/748
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed robust harvest and EZ nutrient not working with hydroponic trays!
+  id: 2686
+  time: '2026-10-23T23:51:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/755
+- author: BoskiYourk
+  changes:
+    - type: Add
+      message: Added circuit boards for each unique large thruster!
+  id: 2687
+  time: '2026-10-24T00:00:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/750
+- author: Stedar111
+  changes:
+    - type: Add
+      message: >-
+        Added 6.35x40mm Ammo Box and Magazine to base lathe recipes.  Jackdaw
+        enjoyers, rejoice!
+    - type: Add
+      message: Added .45 Magnum Extreme AP boxes to the syndicate uplinks... expensive.
+    - type: Tweak
+      message: Changed 4.6x30mm and 5.7x28mm to be low damage, high ap rounds!
+    - type: Tweak
+      message: Changed Atredies to be a short ranged, high rate of fire pdw.
+    - type: Tweak
+      message: Tweaked WT550, upping rps by one and making it SLIGHTLY less accurate
+    - type: Tweak
+      message: Upped 4.6x30mm top mounted magazine capacity to 50
+    - type: Tweak
+      message: >-
+        Changed enforcer to be a high-risk-reward shotgun, with high rps, high
+        spread, and 6 shells to kill whatever's infront of you.
+    - type: Tweak
+      message: Changed Viper to be a close range bullet hose that's hard to control.
+    - type: Tweak
+      message: >-
+        Changed Mla-73 to be a mid-ranged carbine, removing the damage penalty,
+        lowering firerate slightly, and increasing inaccuracy
+    - type: Tweak
+      message: Changed Bombadier size to 4x3 in inventory grid.
+    - type: Tweak
+      message: >-
+        Significantly buffed the Stiletto, reducing fold time, increasing
+        unfolded rps slightly, and allowing the Stiletto to accept extended
+        pistol magazines
+    - type: Tweak
+      message: >-
+        Nerfed HCLM, making it highly inaccurate one-handed and reducing
+        accuracy wielded to reflect its high caliber.
+    - type: Tweak
+      message: >-
+        .45 Magnum Extreme AP is now Tier 1 contraband, enjoy it if you find it.
+        Temporary measure until ammo refilling on save is patched.
+    - type: Tweak
+      message: Buffed Mk32's firerate by one (1)
+    - type: Tweak
+      message: Removed damage penalty modifier from the WSPR
+    - type: Remove
+      message: >-
+        Removed 4.6x30mm and 5.7x28mm Plasteel AP options until a better
+        alternative is found.
+  id: 2688
+  time: '2026-10-24T13:35:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/701
+- author: NEWSUI
+  changes:
+    - type: Add
+      message: New cargo freighter, the NSC Commerçant
+  id: 2689
+  time: '2026-10-24T18:27:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/731
+- author: Wizden
+  changes:
+    - type: Add
+      message: >-
+        Added warning signs for radiation. Organics will get a metal taste in
+        their mouth, and vomit, when irradiated. IPCs get warnings about taking
+        radiation damage to their internals.
+  id: 2690
+  time: '2026-10-24T19:27:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/760
