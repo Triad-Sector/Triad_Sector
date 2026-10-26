@@ -117,6 +117,7 @@
   - type: Tag
     tags:
     - Sheet
+    - FitsInFuelStash #Triad
 
 - type: entity
   parent: SheetPlasma
@@ -212,6 +213,10 @@
   - type: Food
     transferAmount: 10
   - type: BadFood
+  - type: Tag
+    tags:
+    - Sheet
+    - FitsInFuelStash #Triad
   - type: PhysicalComposition
     materialComposition:
       Uranium: 100

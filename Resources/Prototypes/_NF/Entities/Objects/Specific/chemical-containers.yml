@@ -183,6 +183,9 @@
   - type: Label
   - type: TrashOnSolutionEmpty # Frontier
     solution: tank # Frontier
+  - type: Tag # Triad
+    tags: # Triad
+      - FitsInFuelStash # Triad
 
 - type: entity
   parent: JerryCan
