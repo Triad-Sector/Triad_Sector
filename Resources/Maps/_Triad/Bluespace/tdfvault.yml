@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 287.0.0
+  engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 08/28/2026 18:26:52
-  entityCount: 1580
+  time: 10/26/2026 19:31:31
+  entityCount: 1581
 maps: []
 grids:
 - 1
@@ -90,8 +90,8 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
       spreadQueues:
-        Kudzu: []
         Puddle: []
+        Kudzu: []
         MetalFoam: []
         Smoke: []
     - type: Shuttle
@@ -1058,6 +1058,8 @@ entities:
     - type: ThermalSignature
     - type: ChunkContainer
       chunkEntities: []
+    - type: GridSplitNode
+    - type: NavMap
 - proto: ActionToggleInternals
   entities:
   - uid: 1357
@@ -1066,27 +1068,18 @@ entities:
     components:
     - type: Transform
       parent: 1305
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1305
   - uid: 1360
     mapInit: true
     paused: true
     components:
     - type: Transform
       parent: 1358
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1358
   - uid: 1363
     mapInit: true
     paused: true
     components:
     - type: Transform
       parent: 1361
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1361
 - proto: ActionToggleJetpack
   entities:
   - uid: 1356
@@ -1095,8 +1088,6 @@ entities:
     components:
     - type: Transform
       parent: 1305
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
       container: 1305
   - uid: 1359
     mapInit: true
@@ -1104,18 +1095,12 @@ entities:
     components:
     - type: Transform
       parent: 1358
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1358
   - uid: 1362
     mapInit: true
     paused: true
     components:
     - type: Transform
       parent: 1361
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 1361
 - proto: AirCanister
   entities:
   - uid: 131
@@ -5608,6 +5593,15 @@ entities:
     - type: Transform
       parent: 1
       pos: 3.3209476,3.6193411
+- proto: ClothingOuterHardsuitTdfCasket
+  entities:
+  - uid: 1435
+    components:
+    - type: Transform
+      parent: 1280
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingOuterHardsuitTdfTA29
   entities:
   - uid: 119
@@ -5741,13 +5735,14 @@ entities:
       containers:
         entity_storage: !type:Container
           ents:
-          - 1284
           - 1283
-          - 1282
-          - 1281
-          - 1285
-          - 1286
           - 1287
+          - 1286
+          - 1285
+          - 1281
+          - 1282
+          - 1284
+          - 1435
           showEnts: False
           occludes: True
         paper_label: !type:ContainerSlot
