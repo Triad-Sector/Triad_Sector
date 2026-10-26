@@ -1853,44 +1853,6 @@ entities:
     - type: ShipGridLock
       locked: False
     - type: NavMap
-- proto: ActionToggleLight
-  entities:
-  - uid: 3
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 2
-  - uid: 5
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 4
-  - uid: 7
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-  - uid: 9
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 8
-  - uid: 11
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 10
-  - uid: 13
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 12
 - proto: AirAlarm
   entities:
   - uid: 14
@@ -9259,115 +9221,31 @@ entities:
     - type: Transform
       parent: 1
       pos: 16.378468,29.390778
-    - type: HandheldLight
-      toggleActionEntity: 3
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 3
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 4
     components:
     - type: Transform
       parent: 1
       pos: 16.656246,28.80704
-    - type: HandheldLight
-      toggleActionEntity: 5
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 5
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 6
     components:
     - type: Transform
       parent: 1
       pos: 16.621523,28.40398
-    - type: HandheldLight
-      toggleActionEntity: 7
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 7
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 8
     components:
     - type: Transform
       parent: 1
       pos: 16.302078,28.584661
-    - type: HandheldLight
-      toggleActionEntity: 9
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 9
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 10
     components:
     - type: Transform
       parent: 1
       pos: 16.66319,29.203148
-    - type: HandheldLight
-      toggleActionEntity: 11
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 11
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 12
     components:
     - type: Transform
       parent: 1
       pos: 16.371525,29.022467
-    - type: HandheldLight
-      toggleActionEntity: 13
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 13
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
 - proto: ClothingShoesBootsWork
   entities:
   - uid: 1356
