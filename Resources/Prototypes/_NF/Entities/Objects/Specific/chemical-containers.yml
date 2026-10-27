@@ -183,9 +183,11 @@
   - type: Label
   - type: TrashOnSolutionEmpty # Frontier
     solution: tank # Frontier
-  - type: Tag # Triad
-    tags: # Triad
-      - FitsInFuelStash # Triad
+  # Triad Start
+  - type: Tag
+    tags:
+      - FitsInFuelStash
+  # Triad End
 
 - type: entity
   parent: JerryCan
@@ -210,10 +212,7 @@
   id: FuelPlasma
   name: fuel-grade plasma
   description: A rod made of desaturated plasma, suitable for fuel.
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#  suffix: 25 # mono
-  suffix: 50
-# End of Triad change
+  suffix: 50 # Triad 50 < 25 Mono - updates base fuel-grade prototype from 25 to 50
   components:
   - type: Material
   - type: PhysicalComposition
@@ -227,19 +226,15 @@
   - type: Appearance
   - type: StaticPrice
     price: 0
-# Start of Triad change: increases fuel price in response to the increased from 25 to 50
-#    vendPrice: 1500 # mono
-    vendPrice: 3000
-# End of Triad change
+    vendPrice: 3000 # Triad 3000 < 1500 Mono - increases fuel price in response to the increased from 25 to 50
   - type: Stack
     stackType: FuelPlasma
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#    count: 25 # mono
-    count: 50
-# End of Triad change
-  - type: Tag # Triad
-    tags: # Triad
-      - FitsInFuelStash # Triad
+    count: 50 # Triad 50 > 25 Mono - updates base fuel-grade prototype from 25 to 50
+  # Triad Start
+  - type: Tag
+    tags:
+      - FitsInFuelStash
+  # Triad End
 
 - type: entity
   parent: FuelPlasma
@@ -256,10 +251,7 @@
   id: FuelUranium
   name: fuel-grade uranium
   description: A rod made of semi-processed uranium, suitable for fuel.
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#  suffix: 25 # mono
-  suffix: 50
-# End of Triad change
+  suffix: 50 # Triad 50 < 25 Mono - updates base fuel-grade prototype from 25 to 50
   components:
   - type: Material
   - type: PhysicalComposition
@@ -273,21 +265,15 @@
   - type: Appearance
   - type: StaticPrice
     price: 0
-# Start of Triad change: increases fuel price in response to the increased from 25 to 50
-#    vendPrice: 3125 # mono
-    vendPrice: 6000
-# End of Triad change
+    vendPrice: 6000 # Triad 6000 < 3125 Mono - increases fuel price in response to the increased from 25 to 50
   - type: Stack
     stackType: FuelUranium
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#    count: 25 # mono
-    count: 50
-# End of Triad change
-  #Triad Start
+    count: 50 # Triad 50 < 25 Mono - updates base fuel-grade prototype from 25 to 50
+  # Triad Start
   - type: Tag
     tags:
       - FitsInFuelStash
-  #Triad End
+  # Triad End
 
 - type: entity
   parent: FuelUranium
@@ -304,10 +290,7 @@
   id: FuelBananium
   name: fuel-grade bananium
   description: A rod made from pressed bananium peels, suitable for fuel.
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#  suffix: 25 # mono
-  suffix: 50
-# End of Triad change
+  suffix: 50  # Triad 50 < 25 Mono - updates base fuel-grade prototype from 25 to 50
   components:
   - type: Material
   - type: PhysicalComposition
@@ -321,19 +304,15 @@
   - type: Appearance
   - type: StaticPrice
     price: 0
-# Start of Triad change: increases fuel price in response to the increased from 25 to 50
-#    vendPrice: 6250 # mono
-    vendPrice: 12000
-# End of Triad change
+    vendPrice: 12000 # Triad 12000 < 6250 Mono - increases fuel price in response to the increased from 25 to 50
   - type: Stack
     stackType: FuelBananium
-# Start of Triad change: updates base fuel-grade prototype from 25 to 50
-#    count: 25 # mono
-    count: 50
-# End of Triad change
-  - type: Tag # Triad
-    tags: # Triad
-      - FitsInFuelStash # Triad
+    count: 50 # Triad 50 < 25 Mono - updates base fuel-grade prototype from 25 to 50
+  #Triad Start
+  - type: Tag
+    tags:
+      - FitsInFuelStash
+  #Triad End
 
 - type: entity
   parent: FuelBananium
