@@ -213,10 +213,12 @@
   - type: Food
     transferAmount: 10
   - type: BadFood
+  #Triad Start
   - type: Tag
     tags:
     - Sheet
-    - FitsInFuelStash #Triad
+    - FitsInFuelStash
+  #Triad End
   - type: PhysicalComposition
     materialComposition:
       Uranium: 100

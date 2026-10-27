@@ -283,9 +283,11 @@
 #    count: 25 # mono
     count: 50
 # End of Triad change
-  - type: Tag # Triad
-    tags: # Triad
-      - FitsInFuelStash # Triad
+  #Triad Start
+  - type: Tag
+    tags:
+      - FitsInFuelStash
+  #Triad End
 
 - type: entity
   parent: FuelUranium
