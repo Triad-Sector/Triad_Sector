@@ -1116,7 +1116,10 @@
   - MobRogueSiliconScrapBase
   - MobRogueSiliconAISimpleMelee
   id: MobRogueSiliconScrapAsteroid
-  name: malfunctionnig scrap unit
+  # Triad: Fixed typo:
+  # name: malfunctionnig scrap unit
+  name: malfunctioning scrap unit
+  # End Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: MovementSpeedModifier
@@ -1184,7 +1187,10 @@
   - MobRogueSiliconScrapBase
   - MobRogueSiliconAISimpleMelee
   id: MobRogueSiliconScrapThreadsAsteroid
-  name: malfunctionnig scrap unit
+  # Triad: Fixed typo:
+  # name: malfunctionnig scrap unit
+  name: malfunctioning scrap unit
+  # End Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: MovementSpeedModifier
@@ -1239,7 +1245,10 @@
   - MobRogueSiliconScrapBase
   - MobRogueSiliconAISimpleMelee
   id: MobRogueSiliconScrapThrustersAsteroid
-  name: malfunctionnig scrap unit
+  # Triad: Fixed typo:
+  # name: malfunctionnig scrap unit
+  name: malfunctioning scrap unit
+  # End Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: MovementSpeedModifier
