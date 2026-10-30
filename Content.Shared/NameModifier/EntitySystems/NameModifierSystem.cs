@@ -55,19 +55,11 @@ public sealed partial class NameModifierSystem : EntitySystem
         // Nothing added a modifier, so we can just use the base name
         if (modifierEvent.ModifierCount == 0)
         {
-            // Nothing to remove.
             if (entity.Comp == null)
-                return;
-
-            // Avoid attempting to remove a component already being removed.
-            if (entity.Comp.LifeStage >= ComponentLifeStage.Stopping)
                 return;
 
             // Restore the original name.
             _metaData.SetEntityName(entity, entity.Comp.BaseName, meta, raiseEvents: false);
-
-            RemComp<NameModifierComponent>(entity);
-
             return;
         }
         // We have at least one modifier, so we need to apply it to the entity.
