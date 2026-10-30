@@ -115,7 +115,7 @@
           bounds: "-0.4,-0.4,0.4,0.29"
         density: 400 # Very heavy
         mask:
-        - SmallMobMask
+        - CrateMask 
         layer:
         - MachineLayer
   - type: Contraband
