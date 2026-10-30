@@ -537,13 +537,6 @@
   components:
   - type: ConstructionMaterials # Frontier
   - type: Material
-   #Triad Start
-  - type: Tag
-    tags:
-      - DroneUsable
-      - RawMaterial
-      - FitsInFuelStash
-   #Triad End
   - type: PhysicalComposition
     materialComposition:
       Bananium: 150

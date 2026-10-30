@@ -171,6 +171,8 @@
     grid:
     - 0,0,7,3
     whitelist:
+      components:
+      - Material
       tags:
       - FitsInFuelStash
   - type: EntityStorageVisuals
