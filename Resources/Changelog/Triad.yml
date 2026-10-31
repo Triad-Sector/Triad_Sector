@@ -5908,3 +5908,10 @@ Entries:
   id: 2702
   time: '2026-10-31T10:55:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/782
+- author: GhostC10
+  changes:
+    - type: Add
+      message: added bandolier to tdf fab
+  id: 2703
+  time: '2026-10-31T14:54:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/784
