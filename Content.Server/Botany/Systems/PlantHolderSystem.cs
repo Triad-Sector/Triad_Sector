@@ -506,7 +506,8 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 component.UpdateSpriteAfterUpdate = true;
         }
 
-        if (component.Seed == null) // TRIAD HOT FIX CLEANUP
+        // Triad Start - remove unsupported gases
+        if (component.Seed == null)
             return;
 
         RemoveRemovedPlantGases(component.Seed); 
