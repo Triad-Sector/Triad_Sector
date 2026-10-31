@@ -506,6 +506,13 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 component.UpdateSpriteAfterUpdate = true;
         }
 
+        // Triad Start - remove unsupported gases
+        if (component.Seed == null)
+            return;
+
+        RemoveRemovedPlantGases(component.Seed); 
+        // Triad End
+
         var environment = _atmosphere.GetContainingMixture(uid, true, true) ?? GasMixture.SpaceGas;
 
         component.MissingGas = 0;
@@ -969,5 +976,25 @@ public sealed partial class PlantHolderSystem : EntitySystem
         component.SkipAging++; // We're forcing an update cycle, so one age hasn't passed.
         component.ForceUpdate = true;
         Update(uid, component);
+    }
+
+    private static readonly Gas[] RemovedPlantGases =
+{
+    Gas.Tritium,
+    Gas.Frezon,
+    Gas.BZ,
+    Gas.Healium,
+    Gas.Nitrium,
+    Gas.Pluoxium,
+};
+
+    private  static void RemoveRemovedPlantGases(SeedData seed)
+    {
+        foreach (var gas in RemovedPlantGases)
+        {
+            seed.ConsumeGasses.Remove(gas);
+            seed.ExudeGasses.Remove(gas);
+        }
+        // End Frontier, Funky: Remove unsupported gasses from existing plants
     }
 }

@@ -895,11 +895,31 @@ public sealed class EntityEffectSystem : EntitySystem
         if (plantholder.Seed == null)
             return;
 
-        var gasses = plantholder.Seed.ExudeGasses;
+        // Frontier: List of gasses
+        Gas[] gasList =
+        {
+            Gas.Oxygen,
+            Gas.Nitrogen,
+            Gas.CarbonDioxide,
+            Gas.NitrousOxide,
+            Gas.Ammonia,
+            Gas.Plasma,
+            Gas.WaterVapor,
+            // Gas.Tritium,
+            // Gas.Frezon,
+            // Gas.BZ,
+            // Gas.Healium,
+            // Gas.Nitrium,
+            // Gas.Pluoxium,
+        };
+        // End Frontier: List of gasses
+
+        var gasses = plantholder.Seed.ConsumeGasses;
 
         // Add a random amount of a random gas to this gas dictionary
         float amount = _random.NextFloat(args.Effect.MinValue, args.Effect.MaxValue);
-        Gas gas = _random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList());
+        Gas gas = _random.Pick(gasList);
+
         if (gasses.ContainsKey(gas))
         {
             gasses[gas] += amount;
@@ -917,11 +937,31 @@ public sealed class EntityEffectSystem : EntitySystem
         if (plantholder.Seed == null)
             return;
 
-        var gasses = plantholder.Seed.ConsumeGasses;
+        // Frontier, Funky: List of gasses
+        Gas[] gasList =
+        {
+            Gas.Oxygen,
+            Gas.Nitrogen,
+            Gas.CarbonDioxide,
+            Gas.NitrousOxide,
+            Gas.Ammonia,
+            Gas.Plasma,
+            Gas.WaterVapor,
+            // Gas.Tritium,
+            // Gas.Frezon,
+            // Gas.BZ,
+            // Gas.Healium,
+            // Gas.Nitrium,
+            // Gas.Pluoxium,
+        };
+        // End Frontier, Funky: List of gasses
+
+        var gasses = plantholder.Seed.ExudeGasses;
 
         // Add a random amount of a random gas to this gas dictionary
         float amount = _random.NextFloat(args.Effect.MinValue, args.Effect.MaxValue);
-        Gas gas = _random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList());
+        Gas gas = _random.Pick(gasList);
+
         if (gasses.ContainsKey(gas))
         {
             gasses[gas] += amount;
