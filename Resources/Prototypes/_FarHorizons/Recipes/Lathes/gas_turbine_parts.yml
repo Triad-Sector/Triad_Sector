@@ -31,6 +31,13 @@
   materials:
     Diamond: 2000
 
+- type: latheRecipe #triad start
+  parent: BaseGasTurbinePartRecipe
+  id: PlastitaniumGasTurbineBlade
+  result: PlastitaniumGasTurbineBlade
+  materials:
+    Plastitanium: 2000 #triad end
+
 - type: latheRecipe
   parent: BaseGasTurbinePartRecipe
   id: GoldGasTurbineBlade
@@ -52,6 +59,7 @@
   result: SteelGasTurbineStator
   materials:
     Steel: 2000
+    Copper: 3000
 
 - type: latheRecipe
   parent: BaseGasTurbinePartRecipe
@@ -59,6 +67,15 @@
   result: SilverGasTurbineStator
   materials:
     Silver: 2000
+    Copper: 3000
+
+- type: latheRecipe
+  parent: BaseGasTurbinePartRecipe
+  id: IriditeGasTurbineStator
+  result: IriditeGasTurbineStator
+  materials:
+    Iridite: 2000
+    Copper: 3000
 
 - type: latheRecipe
   parent: BaseGasTurbinePartRecipe
@@ -66,3 +83,4 @@
   result: GoldGasTurbineStator
   materials:
     Gold: 2000
+    Copper: 3000

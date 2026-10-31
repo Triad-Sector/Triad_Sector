@@ -1,0 +1,51 @@
+- type: material
+  id: FuelHEU
+  name: materials-FuelHEU
+  stackEntity: SheetUranium1
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
+  color: "#828aa4"
+  price: .8 # 80/sheet, arbitrary.
+  properties:
+    electrical: 4
+    thermal: 4
+    hard: 7
+    density: 8
+    chemical: 6
+    radioactive: 2 # Fairly radioactive
+    n_radioactive: 6 # Pretty fissile!
+    fertility: 1 # Somewhat fertile, but less than dedicated breeder fuels.
+
+- type: material
+  id: FuelLEU
+  name: materials-FuelLEU
+  stackEntity: SheetUranium1
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
+  color: "#828aa4"
+  price: .8 # 80/sheet, arbitrary.
+  properties:
+    electrical: 4
+    thermal: 4
+    hard: 7
+    density: 8
+    chemical: 6
+    radioactive: 2 # Fairly radioactive
+    n_radioactive: 6 # Fairly fissile.
+    fertility: 1.75 # Pretty fertile.
+
+
+- type: material
+  id: FuelMOX
+  stackEntity: IngotPlutonium1
+  name: materials-FuelMOX
+  icon: { sprite: _Mono/Objects/Materials/fissiles.rsi, state: plutonium }
+  color: "#616479"
+  price: 1 # 100/sheet, arbitrary.
+  properties:
+    electrical: 7 # more conductive than HEP
+    thermal: 7
+    hard: 7
+    density: 7
+    chemical: 6
+    radioactive: 4 # a good bit of R-fuel.
+    n_radioactive: 7 # a lot of N-Fuel.
+    fertility: 5 # very fertile- a dedicated breeder fuel.
