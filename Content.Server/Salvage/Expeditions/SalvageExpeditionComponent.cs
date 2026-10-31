@@ -56,20 +56,7 @@ public sealed partial class SalvageExpeditionComponent : SharedSalvageExpedition
     /// </summary>
     [DataField]
     public ResolvedSoundSpecifier SelectedSong;
-
-    // Frontier: expedition difficulty and rewards
-    /// <summary>
-    /// The difficulty this mission had or, in the future, was selected.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("difficulty")]
-    public DifficultyRating Difficulty;
-
-    /// <summary>
-    /// List of items to order on mission completion
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("rewards")]
-    public List<EntProtoId> Rewards = default!;
-    // End Frontier: expedition difficulty and rewards
+    // End Frontier: moved to Shared
 
     /// <summary>
     /// next time to check for autoabort
