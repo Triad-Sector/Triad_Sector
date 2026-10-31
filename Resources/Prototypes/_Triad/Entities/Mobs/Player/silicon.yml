@@ -22,9 +22,9 @@
       borg_brain:
         - PositronicBrain
       borg_module:
-        - BorgModuleTool
-        - BorgModuleSDStandardWeapon
-        - BorgModuleSDAdvancedAssault
+        - BorgModuleToolAlternative
+        - BorgModuleSDAssaultMelee
+        - BorgModuleSDAssaultRanged
   - type: ItemSlots
     slots:
       cell_slot:

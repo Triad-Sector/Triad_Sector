@@ -1,6 +1,13 @@
 - type: entity
+  name: integrated energy shielding
   parent: EnergyShield
-  id: EnergyShieldBorgOn
+  id: EnergyShieldBorgSol
+  description: An advanced shielding unit which partially protects the cyborg when in use. The shield bubble blocks both outgoing and incoming fire, so its not usable alongside projectile weapons and lasers.
+
+
+- type: entity
+  parent: EnergyShield
+  id: EnergyShieldBorgSolOn
   suffix: Borg, Toggled On, DO NOT MAP
   categories: [ HideSpawnMenu ]
   components:
@@ -17,7 +24,7 @@
       coefficients:
         Blunt: 1.2
         Slash: 0.85
-        Piercing: 0.7
+        Piercing: 0.5
         Heat: 0.5
       flatReductions:
         Heat: 1

@@ -202,9 +202,10 @@
     - Screwdriver
     - Wirecutter
     - Multitool
-    - WelderIndustrial # Frontier
     - MaintenanceJack # Frontier
-    - NaniteApplicator # Monolith
+    - WelderIndustrialAdvanced # Frontier
+    - NaniteApplicatorExperimental # Triad
+    - JerryCanWeldingFuel
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
 
