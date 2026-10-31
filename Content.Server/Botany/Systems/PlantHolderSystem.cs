@@ -976,20 +976,19 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Update(uid, component);
     }
 
-    private static void RemoveRemovedPlantGasses(SeedData seed)
-    {
-        // Frontier, Funky: Remove unsupported gasses from existing plants
-        Gas[] removedGasses =
-        {
-            Gas.Tritium,
-            Gas.Frezon,
-            Gas.BZ,
-            Gas.Healium,
-            Gas.Nitrium,
-            Gas.Pluoxium,
-        };
+    private static readonly Gas[] RemovedPlantGasses =
+{
+    Gas.Tritium,
+    Gas.Frezon,
+    Gas.BZ,
+    Gas.Healium,
+    Gas.Nitrium,
+    Gas.Pluoxium,
+};
 
-        foreach (var gas in removedGasses)
+    private readonly static void RemoveRemovedPlantGasses(SeedPrototype seed)
+    {
+        foreach (var gas in RemovedPlantGasses)
         {
             seed.ConsumeGasses.Remove(gas);
             seed.ExudeGasses.Remove(gas);
