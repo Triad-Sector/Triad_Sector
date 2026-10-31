@@ -5922,3 +5922,10 @@ Entries:
   id: 2704
   time: '2026-10-31T14:55:42.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/779
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed actions having 'infinite cooldowns' upon save.
+  id: 2705
+  time: '2026-10-31T15:12:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/785
