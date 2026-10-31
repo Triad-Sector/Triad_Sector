@@ -509,7 +509,8 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (component.Seed == null) // TRIAD HOT FIX CLEANUP
             return;
 
-        RemoveRemovedPlantGasses(component.Seed); // END HOTFIX
+        RemoveRemovedPlantGases(component.Seed); 
+        // Triad End
 
         var environment = _atmosphere.GetContainingMixture(uid, true, true) ?? GasMixture.SpaceGas;
 
