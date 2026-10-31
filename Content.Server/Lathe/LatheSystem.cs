@@ -77,6 +77,7 @@ namespace Content.Server.Lathe
             base.Initialize();
             SubscribeLocalEvent<LatheComponent, GetMaterialWhitelistEvent>(OnGetWhitelist);
             SubscribeLocalEvent<LatheComponent, MapInitEvent>(OnMapInit);
+            SubscribeLocalEvent<LatheComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
             SubscribeLocalEvent<LatheComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<LatheComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
             SubscribeLocalEvent<LatheComponent, ResearchRegistrationChangedEvent>(OnResearchRegistrationChanged);
@@ -441,6 +442,23 @@ namespace Content.Server.Lathe
         /// Initialize the UI and appearance.
         /// Appearance requires initialization or the layers break
         /// </summary>
+        /// <summary>
+        /// Triad: the appearance half of <see cref="OnMapInit"/>, on ANY load rather than only a map
+        /// init. Upstream's own comment above says the layers break without initialization, and map
+        /// init does not re-fire for an entity loaded from a save, so every lathe on a restored ship
+        /// had layers driven by keys nothing had ever set. The drydock papers over this in its
+        /// ScrubStaleLatheProduction revive step; the ship-save path had nothing, and this covers
+        /// both. Same fault and same fix as the material-storage insert animation.
+        ///
+        /// <para>Only the appearance is repeated here. The rest of OnMapInit is one-time setup that a
+        /// loaded lathe already carries in its data fields.</para>
+        /// </summary>
+        private void OnStartup(EntityUid uid, LatheComponent component, ComponentStartup args)
+        {
+            _appearance.SetData(uid, LatheVisuals.IsInserting, false);
+            _appearance.SetData(uid, LatheVisuals.IsRunning, false);
+        }
+
         private void OnMapInit(EntityUid uid, LatheComponent component, MapInitEvent args)
         {
             _appearance.SetData(uid, LatheVisuals.IsInserting, false);

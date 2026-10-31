@@ -1,5 +1,6 @@
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Whitelist;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Speech.Components;
 
@@ -32,8 +33,8 @@ public sealed partial class ParrotSpeechComponent : Component
     [DataField]
     public EntityWhitelist Blacklist { get; private set; } = new();
 
-    [DataField]
-    public TimeSpan? NextUtterance;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan? NextUtterance; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     [DataField(readOnly: true)]
     public List<string> LearnedPhrases = new();

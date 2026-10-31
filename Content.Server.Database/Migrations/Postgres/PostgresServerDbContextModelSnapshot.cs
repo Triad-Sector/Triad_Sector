@@ -978,6 +978,373 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("consent_toggle", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DrydockAudit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("drydock_audit_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("Action")
+                        .HasColumnType("integer")
+                        .HasColumnName("action");
+
+                    b.Property<Guid?>("ActorUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<int?>("BerthId")
+                        .HasColumnType("integer")
+                        .HasColumnName("berth_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("text")
+                        .HasColumnName("reason");
+
+                    b.Property<int?>("Revision")
+                        .HasColumnType("integer")
+                        .HasColumnName("revision");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid?>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<string>("ShipName")
+                        .HasColumnType("text")
+                        .HasColumnName("ship_name");
+
+                    b.Property<Guid?>("SubjectUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("subject_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_drydock_audit");
+
+                    b.HasIndex("ActorUserId");
+
+                    b.HasIndex("SubjectUserId");
+
+                    b.HasIndex("ShipGuid", "CreatedAt");
+
+                    b.ToTable("drydock_audit", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockBerth", b =>
+                {
+                    b.Property<int>("BerthId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("berth_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BerthId"));
+
+                    b.Property<int>("Kind")
+                        .HasColumnType("integer")
+                        .HasColumnName("kind");
+
+                    b.Property<string>("MaxSizeClass")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("max_size_class");
+
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<int>("PricePaid")
+                        .HasColumnType("integer")
+                        .HasColumnName("price_paid");
+
+                    b.Property<DateTime>("PurchasedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("purchased_at");
+
+                    b.Property<int?>("PurchasedRoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("purchased_round_id");
+
+                    b.HasKey("BerthId")
+                        .HasName("PK_drydock_berth");
+
+                    b.HasAlternateKey("BerthId", "OwnerUserId")
+                        .HasName("ak_drydock_berth_berth_id_owner_user_id");
+
+                    b.HasIndex("OwnerUserId");
+
+                    b.HasIndex("PurchasedRoundId")
+                        .HasDatabaseName("IX_drydock_berth_purchased_round_id");
+
+                    b.ToTable("drydock_berth", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockBlob", b =>
+                {
+                    b.Property<Guid>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<int>("Revision")
+                        .HasColumnType("integer")
+                        .HasColumnName("revision");
+
+                    b.Property<byte[]>("Blob")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("blob");
+
+                    b.HasKey("ShipGuid", "Revision")
+                        .HasName("PK_drydock_blob");
+
+                    b.ToTable("drydock_blob", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockRevision", b =>
+                {
+                    b.Property<Guid>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<int>("Revision")
+                        .HasColumnType("integer")
+                        .HasColumnName("revision");
+
+                    b.Property<Guid?>("ActorUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<int?>("AppraisedValue")
+                        .HasColumnType("integer")
+                        .HasColumnName("appraised_value");
+
+                    b.Property<byte[]>("CapturedKeyHash")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("captured_key_hash");
+
+                    b.Property<byte[]>("Checksum")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("checksum");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<int?>("CreatedRoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_round_id");
+
+                    b.Property<int?>("DerivedFromRevision")
+                        .HasColumnType("integer")
+                        .HasColumnName("derived_from_revision");
+
+                    b.Property<int>("DrydockFormatVer")
+                        .HasColumnType("integer")
+                        .HasColumnName("drydock_format_ver");
+
+                    b.Property<int>("EngineFormatVer")
+                        .HasColumnType("integer")
+                        .HasColumnName("engine_format_ver");
+
+                    b.Property<int>("Kind")
+                        .HasColumnType("integer")
+                        .HasColumnName("kind");
+
+                    b.Property<string>("Manifest")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("manifest");
+
+                    b.Property<bool>("Pinned")
+                        .HasColumnType("boolean")
+                        .HasColumnName("pinned");
+
+                    b.Property<byte[]>("ProtoFingerprint")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("proto_fingerprint");
+
+                    b.Property<int>("RebakeVersion")
+                        .HasColumnType("integer")
+                        .HasColumnName("rebake_version");
+
+                    b.Property<int>("SizeBytes")
+                        .HasColumnType("integer")
+                        .HasColumnName("size_bytes");
+
+                    b.HasKey("ShipGuid", "Revision")
+                        .HasName("PK_drydock_revision");
+
+                    b.HasIndex("ActorUserId");
+
+                    b.HasIndex("CreatedRoundId")
+                        .HasDatabaseName("IX_drydock_revision_created_round_id");
+
+                    b.ToTable("drydock_revision", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockShip", b =>
+                {
+                    b.Property<Guid>("ShipGuid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<string>("AdminNotes")
+                        .HasColumnType("text")
+                        .HasColumnName("admin_notes");
+
+                    b.Property<int?>("BerthId")
+                        .HasColumnType("integer")
+                        .HasColumnName("berth_id");
+
+                    b.Property<string>("CaptainName")
+                        .HasColumnType("text")
+                        .HasColumnName("captain_name");
+
+                    b.Property<int?>("CheckedOutRoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("checked_out_round_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CurrentRevision")
+                        .HasColumnType("integer")
+                        .HasColumnName("current_revision");
+
+                    b.Property<int>("ImpoundFee")
+                        .HasColumnType("integer")
+                        .HasColumnName("impound_fee");
+
+                    b.Property<string>("ImpoundReason")
+                        .HasColumnType("text")
+                        .HasColumnName("impound_reason");
+
+                    b.Property<bool>("ImpoundRedeemable")
+                        .HasColumnType("boolean")
+                        .HasColumnName("impound_redeemable");
+
+                    b.Property<int?>("LastBerthId")
+                        .HasColumnType("integer")
+                        .HasColumnName("last_berth_id");
+
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<string>("ShipName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("ship_name");
+
+                    b.Property<string>("SizeClass")
+                        .HasColumnType("text")
+                        .HasColumnName("size_class");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer")
+                        .HasColumnName("state");
+
+                    b.Property<DateTime>("StateChangedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("state_changed_at");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VesselProto")
+                        .HasColumnType("text")
+                        .HasColumnName("vessel_proto");
+
+                    b.HasKey("ShipGuid")
+                        .HasName("PK_drydock_ship");
+
+                    b.HasIndex("BerthId")
+                        .IsUnique();
+
+                    b.HasIndex("CheckedOutRoundId")
+                        .HasDatabaseName("IX_drydock_ship_checked_out_round_id");
+
+                    b.HasIndex("LastBerthId")
+                        .HasDatabaseName("IX_drydock_ship_last_berth_id");
+
+                    b.HasIndex("OwnerUserId");
+
+                    b.HasIndex("BerthId", "OwnerUserId");
+
+                    b.HasIndex("State", "StateChangedAt");
+
+                    b.ToTable("drydock_ship", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockTransfer", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("drydock_transfer_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.Property<Guid>("FromUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("from_user_id");
+
+                    b.Property<int>("Resolution")
+                        .HasColumnType("integer")
+                        .HasColumnName("resolution");
+
+                    b.Property<DateTime?>("ResolvedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("resolved_at");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<Guid>("ToUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("to_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_drydock_transfer");
+
+                    b.HasIndex("ShipGuid")
+                        .IsUnique()
+                        .HasFilter("resolution = 0");
+
+                    b.HasIndex("Resolution", "ExpiresAt");
+
+                    b.HasIndex("ToUserId", "Resolution");
+
+                    b.ToTable("drydock_transfer", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
                 {
                     b.Property<int>("Id")
@@ -1931,6 +2298,54 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("triad_shipyard_audit_events", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardConsumedShip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("triad_shipyard_consumed_ships_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ImportedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("imported_at");
+
+                    b.Property<int?>("ImportedRoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("imported_round_id");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<Guid?>("ShipGuid")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<byte[]>("ShipHash")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("ship_hash");
+
+                    b.Property<string>("ShipName")
+                        .HasColumnType("text")
+                        .HasColumnName("ship_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_triad_shipyard_consumed_ships");
+
+                    b.HasIndex("ImportedRoundId")
+                        .HasDatabaseName("IX_triad_shipyard_consumed_ships_imported_round_id");
+
+                    b.HasIndex("PlayerUserId");
+
+                    b.HasIndex("ShipHash")
+                        .IsUnique();
+
+                    b.ToTable("triad_shipyard_consumed_ships", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.TriadShipyardMigrationPermit", b =>
                 {
                     b.Property<int>("Id")
@@ -2608,6 +3023,115 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("ConsentSettings");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DrydockBerth", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_drydock_berth_player_owner_id");
+
+                    b.HasOne("Content.Server.Database.Round", "PurchasedRound")
+                        .WithMany()
+                        .HasForeignKey("PurchasedRoundId")
+                        .HasConstraintName("FK_drydock_berth_round_purchased_round_id");
+
+                    b.Navigation("Owner");
+
+                    b.Navigation("PurchasedRound");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockBlob", b =>
+                {
+                    b.HasOne("Content.Server.Database.DrydockRevision", "RevisionRow")
+                        .WithOne("Blob")
+                        .HasForeignKey("Content.Server.Database.DrydockBlob", "ShipGuid", "Revision")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_drydock_blob_drydock_revision_revision_row_temp_id");
+
+                    b.Navigation("RevisionRow");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockRevision", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Actor")
+                        .WithMany()
+                        .HasForeignKey("ActorUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_drydock_revision_player_actor_id");
+
+                    b.HasOne("Content.Server.Database.Round", "CreatedRound")
+                        .WithMany()
+                        .HasForeignKey("CreatedRoundId")
+                        .HasConstraintName("FK_drydock_revision_round_created_round_id");
+
+                    b.HasOne("Content.Server.Database.DrydockShip", "Ship")
+                        .WithMany("Revisions")
+                        .HasForeignKey("ShipGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_drydock_revision_drydock_ship_ship_temp_id");
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("CreatedRound");
+
+                    b.Navigation("Ship");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockShip", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "CheckedOutRound")
+                        .WithMany()
+                        .HasForeignKey("CheckedOutRoundId")
+                        .HasConstraintName("FK_drydock_ship_round_checked_out_round_id");
+
+                    b.HasOne("Content.Server.Database.DrydockBerth", "LastBerth")
+                        .WithMany()
+                        .HasForeignKey("LastBerthId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_drydock_ship_drydock_berth_last_berth_id");
+
+                    b.HasOne("Content.Server.Database.Player", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_drydock_ship_player_owner_id");
+
+                    b.HasOne("Content.Server.Database.DrydockBerth", "Berth")
+                        .WithMany()
+                        .HasForeignKey("BerthId", "OwnerUserId")
+                        .HasPrincipalKey("BerthId", "OwnerUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("FK_drydock_ship_drydock_berth_berth_id");
+
+                    b.Navigation("Berth");
+
+                    b.Navigation("CheckedOutRound");
+
+                    b.Navigation("LastBerth");
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockTransfer", b =>
+                {
+                    b.HasOne("Content.Server.Database.DrydockShip", "Ship")
+                        .WithMany()
+                        .HasForeignKey("ShipGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_drydock_transfer_drydock_ship_ship_temp_id1");
+
+                    b.Navigation("Ship");
+                });
+
             modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
                 {
                     b.HasOne("Content.Server.Database.Profile", "Profile")
@@ -2837,6 +3361,16 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Profile");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.TriadShipyardConsumedShip", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "ImportedRound")
+                        .WithMany()
+                        .HasForeignKey("ImportedRoundId")
+                        .HasConstraintName("FK_triad_shipyard_consumed_ships_round_imported_round_id");
+
+                    b.Navigation("ImportedRound");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Unban", b =>
                 {
                     b.HasOne("Content.Server.Database.Ban", "Ban")
@@ -2922,6 +3456,16 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("ConsentToggles");
 
                     b.Navigation("ReadReceipts");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockRevision", b =>
+                {
+                    b.Navigation("Blob");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DrydockShip", b =>
+                {
+                    b.Navigation("Revisions");
                 });
 
             modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>

@@ -45,6 +45,7 @@ namespace Content.Server.Light.EntitySystems
             SubscribeLocalEvent<HandheldLightComponent, ComponentGetState>(OnGetState);
 
             SubscribeLocalEvent<HandheldLightComponent, MapInitEvent>(OnMapInit);
+            SubscribeLocalEvent<HandheldLightComponent, ComponentStartup>(OnStartup); // Triad
             SubscribeLocalEvent<HandheldLightComponent, ComponentShutdown>(OnShutdown);
 
             SubscribeLocalEvent<HandheldLightComponent, ExaminedEvent>(OnExamine);
@@ -91,6 +92,23 @@ namespace Content.Server.Light.EntitySystems
         private void OnGetState(Entity<HandheldLightComponent> ent, ref ComponentGetState args)
         {
             args.State = new HandheldLightComponent.HandheldLightComponentState(ent.Comp.Activated, GetLevel(ent));
+        }
+
+        /// <summary>
+        /// Triad: puts a light that arrived from a save back under the system's control. Only
+        /// TurnOn added to the active list, so a torch stored lit was never ticked again and drew
+        /// no power. Activated is the source of truth, so the point light is set from it rather
+        /// than trusted, which also settles saves already carrying a lit-but-inactive torch.
+        /// </summary>
+        private void OnStartup(Entity<HandheldLightComponent> ent, ref ComponentStartup args)
+        {
+            if (_lights.TryGetLight(ent, out var light))
+                _lights.SetEnabled(ent, ent.Comp.Activated, light);
+
+            if (ent.Comp.Activated)
+                _activeLights.Add(ent);
+            else
+                _activeLights.Remove(ent);
         }
 
         private void OnMapInit(Entity<HandheldLightComponent> ent, ref MapInitEvent args)

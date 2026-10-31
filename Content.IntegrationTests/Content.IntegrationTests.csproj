@@ -16,6 +16,13 @@
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
     <ProjectReference Include="..\Content.Tests\Content.Tests.csproj" />
   </ItemGroup>
+  <!-- Triad: the drydock golden corpus, embedded so the gate reads it wherever the tests run.
+       Written only by DrydockGoldenCorpusRefreshLocalTest; see DrydockGoldenCorpusTest. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Tests\_Triad\Drydock\GoldenCorpus\*.json;Tests\_Triad\Drydock\GoldenCorpus\*.blob.zst">
+      <LogicalName>DrydockGoldenCorpus/%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 

@@ -33,6 +33,10 @@ using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
+using Robust.Shared.Map; // Triad
+using Robust.Shared.Map.Components; // Triad
+using Robust.Shared.Prototypes; // Triad
+using System.Numerics; // Triad
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
@@ -63,6 +67,7 @@ public sealed partial class GasTurbineSystem : EntitySystem
     [Dependency] private SharedContainerSystem _containerSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ToolSystem _toolSystem = default!;
+    [Dependency] private SharedMapSystem _map = default!; // Triad
     [Dependency] private TransformSystem _transformSystem = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = null!;
 
@@ -86,6 +91,7 @@ public sealed partial class GasTurbineSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<GasTurbineComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<GasTurbineComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<GasTurbineComponent, ComponentShutdown>(OnShutdown);
 
@@ -117,7 +123,12 @@ public sealed partial class GasTurbineSystem : EntitySystem
     private const string BladeContainer = "blade_slot";
     private const string StatorContainer = "stator_slot";
 
-    private void OnInit(EntityUid uid, GasTurbineComponent comp, ref MapInitEvent args)
+    /// <summary>
+    /// The parts of a turbine that do not survive a save: the ports, the references into its own
+    /// containers, and the alarm audio entities. Startup, so a turbine restored from a ship save
+    /// gets them too.
+    /// </summary>
+    private void OnStartup(EntityUid uid, GasTurbineComponent comp, ref ComponentStartup args)
     {
         _signal.EnsureSourcePorts(uid, comp.SpeedHighPort, comp.SpeedLowPort, comp.TurbineDataPort);
         _signal.EnsureSinkPorts(uid, comp.StatorLoadIncreasePort, comp.StatorLoadDecreasePort);
@@ -125,12 +136,20 @@ public sealed partial class GasTurbineSystem : EntitySystem
         TryGetPart(uid, BladeContainer, out comp.CurrentBlade);
         TryGetPart(uid, StatorContainer, out comp.CurrentStator);
 
-        UpdatePartValues(comp);
-
         comp.AlarmAudioOvertemp = SpawnAttachedTo("GasTurbineAlarmEntity", new(uid, 0, 0));
         comp.AlarmAudioUnderspeed = SpawnAttachedTo("GasTurbineAlarmEntity", new(uid, 0, 0));
         _ambientSoundSystem.SetSound(comp.AlarmAudioUnderspeed.Value, new SoundPathSpecifier("/Audio/_FarHorizons/Machines/alarm_beep.ogg"));
         _ambientSoundSystem.SetVolume(comp.AlarmAudioUnderspeed.Value, -4);
+    }
+
+    /// <summary>
+    /// Derives the turbine's ratings from its fitted parts. Map init only: it sets BladeHealth to
+    /// full, so running it on load would repair every damaged turbine that came back from storage.
+    /// The values it writes are all data fields and persist on their own.
+    /// </summary>
+    private void OnInit(EntityUid uid, GasTurbineComponent comp, ref MapInitEvent args)
+    {
+        UpdatePartValues(comp);
     }
 
     private bool TryGetPart(EntityUid uid, string slot, [NotNullWhen(true)] out EntityUid? part)
@@ -576,9 +595,15 @@ public sealed partial class GasTurbineSystem : EntitySystem
         outlet = null;
 
         if (!comp.InletEnt.HasValue || EntityManager.Deleted(comp.InletEnt.Value))
+        {
+            DeleteStalePipes(uid, comp.InletPos, comp.PipePrototype); // Triad
             comp.InletEnt = SpawnAttachedTo(comp.PipePrototype, new(uid, comp.InletPos), rotation: Angle.FromDegrees(comp.InletRot));
+        }
         if (!comp.OutletEnt.HasValue || EntityManager.Deleted(comp.OutletEnt.Value))
+        {
+            DeleteStalePipes(uid, comp.OutletPos, comp.PipePrototype); // Triad
             comp.OutletEnt = SpawnAttachedTo(comp.PipePrototype, new(uid, comp.OutletPos), rotation: Angle.FromDegrees(comp.OutletRot));
+        }
 
         if (comp.InletEnt == null || comp.OutletEnt == null)
             return false;
@@ -593,6 +618,26 @@ public sealed partial class GasTurbineSystem : EntitySystem
 
         return _nodeContainer.TryGetNode(comp.InletEnt.Value, comp.PipeName, out inlet) && _nodeContainer.TryGetNode(comp.OutletEnt.Value, comp.PipeName, out outlet);
     }
+
+    // Triad: InletEnt and OutletEnt are not persisted, so a ship or map saved with the stubs aboard
+    // loads them as orphans. The fresh stub then overlaps its orphan, PipeRestrictOverlap unanchors it,
+    // and the check above unanchors the turbine, on that spot, every time. The stubs are save: false
+    // now; this clears the ones already written. Deleted, not queued: the overlap check runs as soon
+    // as the new stub anchors.
+    private void DeleteStalePipes(EntityUid uid, Vector2 localPos, EntProtoId pipeProto)
+    {
+        if (_transform.GetGrid(uid) is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+            return;
+
+        var coords = _transform.ToMapCoordinates(new EntityCoordinates(uid, localPos));
+        var tile = _map.TileIndicesFor(gridUid, grid, coords);
+        foreach (var ent in _map.GetAnchoredEntities(gridUid, grid, tile).ToList())
+        {
+            if (MetaData(ent).EntityPrototype?.ID == pipeProto.Id)
+                Del(ent);
+        }
+    }
+    // End Triad
     #endregion
 
     private void CleanUp(GasTurbineComponent comp)

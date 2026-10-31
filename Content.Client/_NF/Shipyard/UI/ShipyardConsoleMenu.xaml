@@ -1,174 +1,299 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
-                           xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-                           xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                           SetSize="900 700"
-                           MinSize="900 450">
-    <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 8 0 2">
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:ui="clr-namespace:Content.Client._NF.Shipyard.UI"
+                      SetSize="900 540"
+                      MinSize="860 500">
+    <!-- Triad: opens at the canvas's 900x540, the size every drydock artboard is drawn at. Upstream
+    opened at 700; it went to 900 while the import rows sat above the berths, and came back down
+    once the drydock became one list (user 2026-09-12, "about half as tall by default"): an
+    impound card, a deed card and five berth rows fit without scrolling, and past that the berth
+    list scrolls. MinSize is unchanged, so it still drags down to 500 on a small screen. -->
+    <PanelContainer VerticalExpand="True"
+            HorizontalExpand="True"
+            Margin="0 8 0 2">
         <PanelContainer.PanelOverride>
-            <gfx:StyleBoxFlat BorderThickness="7" BorderColor="#252525" BackgroundColor="#3d474d"/>
+            <gfx:StyleBoxFlat BorderThickness="7"
+                    BorderColor="#252525"
+                    BackgroundColor="#3d474d"/>
         </PanelContainer.PanelOverride>
-        <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="4 4 4 4">
+        <PanelContainer VerticalExpand="True"
+                HorizontalExpand="True"
+                Margin="4 4 4 4">
             <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#181818"/>
+                <gfx:StyleBoxFlat BorderThickness="2"
+                        BorderColor="#333333"
+                        BackgroundColor="#181818"/>
             </PanelContainer.PanelOverride>
-    <BoxContainer Orientation="Vertical" Margin="5 0 5 0">
-        <PanelContainer VerticalExpand="False" HorizontalExpand="True" Margin="0 8 0 2">
-            <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#141414"/>
-            </PanelContainer.PanelOverride>
-            <BoxContainer Orientation="Vertical" Margin="5 0 5 0">
-        <BoxContainer Orientation="Vertical">
-            <BoxContainer Orientation="Horizontal">
-                <Label Text="{Loc 'bank-atm-menu-balance-label'}"
-                    StyleClasses="LabelKeyText" />
-                <Label Name="BalanceLabel"
-                    Text="{Loc 'shipyard-console-no-bank'}" />
-            </BoxContainer>
-        </BoxContainer>
-        <BoxContainer Orientation="Vertical">
-            <BoxContainer Orientation="Horizontal">
-                <Label Text="{Loc 'shipyard-console-appraisal-label'}"
-                    StyleClasses="LabelKeyText" />
-                <Label Name="ShipAppraisalLabel"
-                    Text="{Loc 'shipyard-console-no-deed'}" />
-            </BoxContainer>
-        </BoxContainer>
-            </BoxContainer>
-        </PanelContainer>
-        <BoxContainer Orientation="Horizontal">
-            <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 8 0 2">
-                <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#141414"/>
-                </PanelContainer.PanelOverride>
-            <controls:StripeBack MinSize="48 48">
-            <LineEdit Name="SearchBar"
-                      PlaceHolder="{Loc 'cargo-console-menu-search-bar-placeholder'}"
-                      Margin="2 2 2 2"
-                      HorizontalExpand="True" />
-            </controls:StripeBack>
-            </PanelContainer>
-        </BoxContainer>
-        <BoxContainer Orientation="Horizontal">
-            <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 8 0 2">
-                <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
-                </PanelContainer.PanelOverride>
-                <PanelContainer Margin="1 1 1 1">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
-                    </PanelContainer.PanelOverride>
+            <!-- Triad: the purchase UI was the whole window; it is now the first tab, with drydock second -->
+            <TabContainer Name="Tabs"
+                    VerticalExpand="True"
+                    HorizontalExpand="True">
+                <BoxContainer Orientation="Vertical"
+                        Margin="5 0 5 0">
+                    <PanelContainer VerticalExpand="False"
+                            HorizontalExpand="True"
+                            Margin="0 8 0 2">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderThickness="2"
+                                    BorderColor="#333333"
+                                    BackgroundColor="#141414"/>
+                        </PanelContainer.PanelOverride>
+                        <BoxContainer Orientation="Vertical"
+                                Margin="5 0 5 0">
+                            <BoxContainer Orientation="Vertical">
+                                <BoxContainer Orientation="Horizontal">
+                                    <Label Text="{Loc 'bank-atm-menu-balance-label'}"
+                                           StyleClasses="LabelKeyText"/>
+                                    <Label Name="BalanceLabel"
+                                           Text="{Loc 'shipyard-console-no-bank'}"/>
+                                </BoxContainer>
+                            </BoxContainer>
+                            <BoxContainer Orientation="Vertical">
+                                <BoxContainer Orientation="Horizontal">
+                                    <Label Text="{Loc 'shipyard-console-appraisal-label'}"
+                                           StyleClasses="LabelKeyText"/>
+                                    <Label Name="ShipAppraisalLabel"
+                                           Text="{Loc 'shipyard-console-no-deed'}"/>
+                                </BoxContainer>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </PanelContainer>
                     <BoxContainer Orientation="Horizontal">
-            <OptionButton Name="Categories"
-                          Prefix="{Loc 'shipyard-console-menu-size-label'}"
-                          StyleClasses="ButtonSquare"
-                          Margin="2 2 2 2"
-                          HorizontalExpand="True" />
-            <OptionButton Name="Classes"
-                          Prefix="{Loc 'shipyard-console-menu-class-label'}"
-                          StyleClasses="ButtonSquare"
-                          Margin="2 2 2 2"
-                          HorizontalExpand="True" />
-            <OptionButton Name="Engines"
-                          Prefix="{Loc 'shipyard-console-menu-engine-label'}"
-                          StyleClasses="ButtonSquare"
-                          Margin="2 2 2 2"
-                          HorizontalExpand="True" />
+                        <PanelContainer VerticalExpand="True"
+                                HorizontalExpand="True"
+                                Margin="0 8 0 2">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BorderThickness="2"
+                                        BorderColor="#333333"
+                                        BackgroundColor="#141414"/>
+                            </PanelContainer.PanelOverride>
+                            <controls:StripeBack MinSize="48 48">
+                                <LineEdit Name="SearchBar"
+                                          PlaceHolder="{Loc 'cargo-console-menu-search-bar-placeholder'}"
+                                          Margin="2 2 2 2"
+                                          HorizontalExpand="True"/>
+                            </controls:StripeBack>
+                        </PanelContainer>
+                    </BoxContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <PanelContainer VerticalExpand="True"
+                                HorizontalExpand="True"
+                                Margin="0 8 0 2">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BorderThickness="3"
+                                        BorderColor="#333333"
+                                        BackgroundColor="#333333"/>
+                            </PanelContainer.PanelOverride>
+                            <PanelContainer Margin="1 1 1 1">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BorderThickness="3"
+                                            BorderColor="#636363"
+                                            BackgroundColor="#141414"/>
+                                </PanelContainer.PanelOverride>
+                                <BoxContainer Orientation="Horizontal">
+                                    <OptionButton Name="Categories"
+                                                  Prefix="{Loc 'shipyard-console-menu-size-label'}"
+                                                  StyleClasses="ButtonSquare"
+                                                  Margin="2 2 2 2"
+                                                  HorizontalExpand="True"/>
+                                    <OptionButton Name="Classes"
+                                                  Prefix="{Loc 'shipyard-console-menu-class-label'}"
+                                                  StyleClasses="ButtonSquare"
+                                                  Margin="2 2 2 2"
+                                                  HorizontalExpand="True"/>
+                                    <OptionButton Name="Engines"
+                                                  Prefix="{Loc 'shipyard-console-menu-engine-label'}"
+                                                  StyleClasses="ButtonSquare"
+                                                  Margin="2 2 2 2"
+                                                  HorizontalExpand="True"/>
+                                </BoxContainer>
+                            </PanelContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+                    <ScrollContainer HorizontalExpand="True"
+                                     VerticalExpand="True"
+                                     SizeFlagsStretchRatio="6">
+                        <BoxContainer Name="Vessels"
+                                      Orientation="Vertical"
+                                      HorizontalExpand="True"
+                                      VerticalExpand="True">
+                            <!-- Vessels get added here by code -->
+                        </BoxContainer>
+                    </ScrollContainer>
+                    <PanelContainer VerticalExpand="True"
+                            HorizontalExpand="False"
+                            Margin="0 8 0 2">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderThickness="3"
+                                    BorderColor="#333333"
+                                    BackgroundColor="#333333"/>
+                        </PanelContainer.PanelOverride>
+                        <PanelContainer Margin="1 1 1 1">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BorderThickness="3"
+                                        BorderColor="#636363"
+                                        BackgroundColor="#141414"/>
+                            </PanelContainer.PanelOverride>
+                            <!-- Triad: Columns 5 to 4, with the Unassign button removed. -->
+                            <GridContainer Columns="4"
+                                    HorizontalExpand="True"
+                                    Margin="8 8 8 8">
+                                <Button Name="TargetIdButton"
+                                        Access="Public"
+                                        StyleClasses="ButtonSquare"/>
+                                <!-- Triad: the label comes from the state (Sell or Return Vessel); was Text="Sell" -->
+                                <controls:ConfirmButton Name="SellShipButton"
+                                                        Text="{Loc 'shipyard-console-sell-button'}"
+                                                        ConfirmationText="{Loc 'shipyard-console-confirm-unassign'}"
+                                                        StyleClasses="ButtonSquare"
+                                                        Disabled="True"/>
+                                <!-- Triad: removed. Unassign could strand a deed with no way back; the drydock tab's reissue moves deeds now.
+                                <controls:ConfirmButton Name="UnassignDeedButton"
+                                    Text="{Loc 'shipyard-console-unassign-deed'}"
+                                    ConfirmationText="{Loc 'shipyard-console-confirm-unassign'}"
+                                    StyleClasses="ButtonSquare ButtonCaution"
+                                    Disabled="True" />
+                                -->
+
+                                <BoxContainer Orientation="Vertical">
+                                    <Label Text="{Loc 'shipyard-console-deed-label'}"/>
+                                    <Label Name="DeedTitle"
+                                           Text=""/>
+                                </BoxContainer>
+                            </GridContainer>
+                        </PanelContainer>
+                    </PanelContainer>
+                    <!-- Triad: removed. A hull is renamed from the drydock tab while it is stored, where the new name reaches hull and deed on the next retrieve.
+                        <BoxContainer Orientation="Horizontal" Margin="0 2 0 2" Name="RenameContainer" Visible="False">
+                            <LineEdit Name="RenameLineEdit"
+                                    PlaceHolder="Name"
+                                    MinWidth="140"
+                                    Editable="False" />
+                            <Button Name="RenameButton"
+                                    Text="Rename"
+                                    Disabled="True" />
+                        </BoxContainer>
+                        -->
+                </BoxContainer>
+                <!-- Triad: drydock tab. One list, one row per berth. The ship on the inserted card's deed is a
+                card at the top with a single Store dropdown, or, for a blank card while the operator has a
+                ship out, that ship with Transfer deed; everything rarer sits behind a row's menu.
+                Berths and the pending transfers are the operator's own, filled by the server. -->
+                <PanelContainer Name="DrydockTabRoot"
+                        VerticalExpand="True"
+                        HorizontalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BorderThickness="2"
+                                BorderColor="#333333"
+                                BackgroundColor="#181818"/>
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Name="DrydockTab"
+                            Orientation="Vertical"
+                            Margin="5 0 5 0">
+                        <PanelContainer Name="DeedShipPanel"
+                                Visible="False"
+                                Margin="0 8 0 6">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
+                            </PanelContainer.PanelOverride>
+                            <PanelContainer Margin="1 1 1 1">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
+                                </PanelContainer.PanelOverride>
+                                <BoxContainer Orientation="Horizontal"
+                                        Margin="10 6"
+                                        VerticalAlignment="Center">
+                                    <RichTextLabel Name="DeedShipLabel"
+                                            HorizontalExpand="True"
+                                            VerticalAlignment="Center"/>
+                                    <!-- Store is the dropdown itself: it lists every free berth, the ones too small greyed. -->
+                                    <ui:DrydockMenuButton Name="StoreButton"
+                                            StyleClasses="ButtonSquare ButtonPrimary"
+                                            MinWidth="130"
+                                            AlignRight="True"/>
+                                    <!-- In Store's place when the card carries no deed and the operator has a ship out:
+                        moves that ship's deed onto the card, wherever the ship is. -->
+                                    <Button Name="ReissueButton"
+                                            Visible="False"
+                                            StyleClasses="ButtonSquare ButtonPrimary"
+                                            MinWidth="130"
+                                            Text="{Loc 'shipyard-console-reissue-button'}"
+                                            ToolTip="{Loc 'shipyard-console-reissue-tooltip'}"/>
+                                </BoxContainer>
+                            </PanelContainer>
+                        </PanelContainer>
+
+                        <!-- One card per ship of the operator's in the impound lot, built by PopulateImpounds. -->
+                        <BoxContainer Name="Impounds"
+                                Orientation="Vertical"/>
+
+                        <!-- One alert per offer addressed to the operator, built by PopulateOffers. -->
+                        <BoxContainer Name="Offers"
+                                Orientation="Vertical"/>
+
+                        <BoxContainer Orientation="Horizontal"
+                                Margin="2 4 2 4"
+                                VerticalAlignment="Center">
+                            <Label Name="BerthSummaryLabel"
+                                    HorizontalExpand="True"
+                                    Modulate="#999999"/>
+                            <ui:DrydockMenuButton Name="BuyBerthButton"
+                                    StyleClasses="ButtonSquare"
+                                    AlignRight="True"/>
+                        </BoxContainer>
+                        <ScrollContainer HorizontalExpand="True"
+                                VerticalExpand="True">
+                            <BoxContainer Name="Berths"
+                                          Orientation="Vertical"
+                                          HorizontalExpand="True"
+                                          VerticalExpand="True">
+                                <!-- Rows are added by PopulateBerths -->
+                            </BoxContainer>
+                        </ScrollContainer>
                     </BoxContainer>
                 </PanelContainer>
-            </PanelContainer>
-        </BoxContainer>
-        <ScrollContainer HorizontalExpand="True"
-                         VerticalExpand="True"
-                         SizeFlagsStretchRatio="6">
-            <BoxContainer Name="Vessels"
-                          Orientation="Vertical"
-                          HorizontalExpand="True"
-                          VerticalExpand="True">
-                <!-- Vessels get added here by code -->
-            </BoxContainer>
-        </ScrollContainer>
-        <PanelContainer VerticalExpand="True" HorizontalExpand="False" Margin="0 8 0 2">
-            <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
-            </PanelContainer.PanelOverride>
-            <PanelContainer Margin="1 1 1 1">
-                <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
-                </PanelContainer.PanelOverride>
-        <GridContainer Columns="5" HorizontalExpand="True" Margin="0 8 0 2">
-            <Button Name="TargetIdButton" Access="Public"
-                    StyleClasses="ButtonSquare"/>
-            <controls:ConfirmButton Name="SellShipButton"
-                Text="Sell"
-                ConfirmationText="{Loc 'shipyard-console-confirm-unassign'}"
-                StyleClasses="ButtonSquare"
-                Disabled="True" />
-            <controls:ConfirmButton Name="UnassignDeedButton"
-                Text="{Loc 'shipyard-console-unassign-deed'}"
-                ConfirmationText="{Loc 'shipyard-console-confirm-unassign'}"
-                StyleClasses="ButtonSquare ButtonCaution"
-                Disabled="True" />
-
-            <Button Name="SaveShipButton"
-                Text="Save Ship"
-                Disabled="True"
-                StyleClasses="ButtonCaution" />
-            <Button Name="LoadShipButton"
-                Text="Load Ship"
-                Disabled="True" />
-            <BoxContainer Orientation="Vertical">
-                <Label Text="{Loc 'shipyard-console-deed-label'}" />
-                <Label Name="DeedTitle"
-                    Text=""/>
-            </BoxContainer>
-        </GridContainer>
-            </PanelContainer>
-        </PanelContainer>
-        <BoxContainer Orientation="Horizontal" Margin="0 2 0 2" Name="RenameContainer" Visible="False">
-            <LineEdit Name="RenameLineEdit"
-                      PlaceHolder="Name"
-                      MinWidth="140"
-                      Editable="False" />
-            <Button Name="RenameButton"
-                    Text="Rename"
-                    Disabled="True" />
-        </BoxContainer>
-
-        <BoxContainer Name="SavedShipsContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 8 0 2">
-            <Label Text="Saved Ships:" />
-            <ItemList Name="SavedShipsList"
-                      MinSize="0 100"
-                      HorizontalExpand="True" />
-        <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="0 5 0 5">
-            <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#141414"/>
-            </PanelContainer.PanelOverride>
-            <BoxContainer Orientation="Vertical" Margin="5 0 0 0">
-                <BoxContainer Orientation="Horizontal">
-                    <Label Text="{Loc 'shipyard-console-tax-rate-label'}" StyleClasses="LabelKeyText" />
-                    <Label Name="TaxRateLabel" Text="???" />
-                </BoxContainer>
-                <BoxContainer Orientation="Horizontal">
-                    <Label Text="{Loc 'shipyard-console-save-appraisal-label'}"
-                        StyleClasses="LabelKeyText" />
-                    <Label Name="SelectedShipPriceLabel"
-                        Text="{Loc 'shipyard-console-save-appraisal-no-ship-selected-text'}" />
-                </BoxContainer>
-            </BoxContainer>
-        </PanelContainer>
-        </BoxContainer>
-        <!-- Footer -->
-        <BoxContainer Orientation="Vertical" Margin="0 5 0 0" >
-            <PanelContainer StyleClasses="LowDivider" Margin="0 5 0 0" />
-            <BoxContainer Orientation="Horizontal" Margin="10 5 5 0" VerticalAlignment="Bottom">
-                <Label Text="{Loc 'shipyard-menu-flavor-left'}" StyleClasses="WindowFooterText" />
-                <Label Text="{Loc 'apc-menu-flavor-right'}" StyleClasses="WindowFooterText"
-                       HorizontalAlignment="Right" HorizontalExpand="True"  Margin="0 0 5 0" />
-                <TextureRect StyleClasses="NTLogoDark" Stretch="KeepAspectCentered"
-                             VerticalAlignment="Center" HorizontalAlignment="Right" SetSize="19 19"/>
-            </BoxContainer>
-        </BoxContainer>
-    </BoxContainer>
+                <!-- Triad: the lockout. Shown when the inserted card's ship belongs to another account, and with
+                its own lines when a voucher is in the slot or the operator is barred from the drydock. It
+                swallows input, but the server refuses every message under it regardless; this is what the
+                player sees, not what stops them. -->
+                <PanelContainer Name="LockoutPanel"
+                        Visible="False"
+                        MouseFilter="Stop"
+                        VerticalExpand="True"
+                        HorizontalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <!-- Opaque on purpose. This panel is shown because the card belongs to someone else, so
+                        the fleet under it is not this operator's to read: at #90 alpha their ship names,
+                        classes and berth numbers stayed legible straight through the denial. -->
+                        <gfx:StyleBoxFlat BackgroundColor="#140000"/>
+                    </PanelContainer.PanelOverride>
+                    <!-- The stripes tile through a styled panel set in code: TextureRect's Tile mode is not
+                    implemented in the engine and draws the texture once in the corner. -->
+                    <PanelContainer Name="LockoutStripes"
+                            VerticalExpand="True"
+                            HorizontalExpand="True"/>
+                    <!-- The two big lines take their fonts in code; Nano has no 44 pt face to name here. -->
+                    <BoxContainer Orientation="Vertical"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <Label Name="LockoutTitle"
+                                Text="{Loc 'shipyard-console-lockout-title'}"
+                                Modulate="#ff4a4a"
+                                Align="Center"/>
+                        <Label Name="LockoutSubtitle"
+                                Text="{Loc 'shipyard-console-lockout-subtitle'}"
+                                Modulate="#ffb0b0"
+                                Align="Center"
+                                Margin="0 10 0 0"/>
+                        <Label Name="LockoutBody"
+                                Text="{Loc 'shipyard-console-lockout-body'}"
+                                Modulate="#d08080"
+                                Align="Center"
+                                Margin="0 6 0 0"/>
+                    </BoxContainer>
+                </PanelContainer>
+            </TabContainer>
         </PanelContainer>
     </PanelContainer>
 </controls:FancyWindow>

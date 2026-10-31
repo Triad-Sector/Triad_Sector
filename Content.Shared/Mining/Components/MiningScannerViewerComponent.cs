@@ -1,6 +1,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Mining.Components;
 
@@ -16,8 +17,8 @@ public sealed partial class MiningScannerViewerComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan PingDelay = TimeSpan.FromSeconds(5);
 
-    [DataField, AutoNetworkedField, AutoPausedField]
-    public TimeSpan NextPingTime = TimeSpan.MaxValue;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
+    public TimeSpan NextPingTime = TimeSpan.MaxValue; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     [DataField]
     public EntityCoordinates? LastPingLocation;

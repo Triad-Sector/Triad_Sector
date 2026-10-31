@@ -1,0 +1,25 @@
+# Triad: drydock berth prices, one per hull size class. The ladder doubles with the class so a
+# berth stays a fraction of a hull of that class. Ids are ShipSizeClass names.
+- type: drydockBerthClass
+  id: Cutter
+  price: 2500
+
+- type: drydockBerthClass
+  id: Corvette
+  price: 5000
+
+- type: drydockBerthClass
+  id: Frigate
+  price: 10000
+
+- type: drydockBerthClass
+  id: Cruiser
+  price: 20000
+
+- type: drydockBerthClass
+  id: Capital
+  price: 40000
+
+- type: drydockBerthClass
+  id: SuperCapital
+  price: 80000

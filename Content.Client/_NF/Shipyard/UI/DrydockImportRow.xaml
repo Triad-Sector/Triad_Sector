@@ -1,0 +1,36 @@
+<!-- Triad: legacy import. One old save the server will accept: the class of the berth the import
+     grants is not known until the hull is measured, so the chip says "new" rather than a class it
+     would have to guess at. Import sits in the same slot Retrieve uses on a berth row, so the two
+     kinds of row line up. No menu: there is nothing to do to a file but take it. -->
+<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                HorizontalExpand="True"
+                SetHeight="40">
+    <PanelContainer.PanelOverride>
+        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#101010" BackgroundColor="#26221c"/>
+    </PanelContainer.PanelOverride>
+    <BoxContainer Orientation="Horizontal"
+                  HorizontalExpand="True"
+                  VerticalAlignment="Center">
+        <RichTextLabel Name="MarkerLabel"
+            Access="Public"
+            MinWidth="84"
+            VerticalAlignment="Center"
+            Margin="8 0 10 0" />
+        <RichTextLabel Name="ShipLabel"
+            Access="Public"
+            HorizontalExpand="True"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0" />
+        <BoxContainer Orientation="Horizontal"
+            MinWidth="90"
+            Margin="0 0 4 0">
+            <Button Name="ImportButton"
+                Access="Public"
+                Text="{Loc 'shipyard-console-import-button'}"
+                StyleClasses="ButtonSquare"
+                HorizontalExpand="True" />
+        </BoxContainer>
+        <Control MinWidth="30" Margin="0 0 8 0" />
+    </BoxContainer>
+</PanelContainer>

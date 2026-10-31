@@ -34,9 +34,10 @@ public sealed partial class GasTurbineComponent : Component
     // public float StatorLoadMax = 500000; 
 
     /// <summary>
-    /// Current RPM of turbine
+    /// Current RPM of turbine. Saved: it is integrator state, not something a tick re-derives, so a
+    /// stored turbine that was spinning comes back spinning.
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float RPM = 0;
 
     /// <summary>

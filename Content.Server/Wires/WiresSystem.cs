@@ -53,7 +53,10 @@ public sealed partial class WiresSystem : SharedWiresSystem
         SubscribeLocalEvent<WiresPanelSecurityComponent, WiresPanelSecurityEvent>(SetWiresPanelSecurity);
     }
 
-    private void SetOrCreateWireLayout(EntityUid uid, WiresComponent? wires = null)
+    // Triad: made public for the drydock. WiresComponent.WiresList is NOT a [DataField], so a
+    // ship restored from the drydock comes back with every panel empty, and the only caller of
+    // this was MapInit, which a restored entity never fires again. Signature and body unchanged.
+    public void SetOrCreateWireLayout(EntityUid uid, WiresComponent? wires = null)
     {
         if (!Resolve(uid, ref wires))
             return;

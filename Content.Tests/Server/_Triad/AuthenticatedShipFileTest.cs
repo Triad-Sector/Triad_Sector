@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using Content.Server._Triad.Shipyard;
@@ -93,158 +92,188 @@ public static class RandomStringGen
     }
 }
 
+/// <summary>
+/// Writes legacy signed-save envelopes the way the removed save path did, so the read-only verifier
+/// can be tested against real envelope text. PKCS#1 v1.5 over SHA-256 of the UTF-8 ship data.
+/// </summary>
+public static class LegacyEnvelopeWriter
+{
+    public static readonly string SignatureOid = CryptoConfig.MapNameToOID("SHA256") ?? "1.2.840.113549.1.1.11";
+
+    public static byte[] Sign(RSA key, byte[] shipData)
+    {
+        return key.SignHash(SHA256.HashData(shipData), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+    }
+
+    // A correctly signed envelope for shipData under key.
+    public static string Signed(RSA key, string shipData, int? appraisal = null)
+    {
+        var data = Encoding.UTF8.GetBytes(shipData);
+        return Envelope(
+            Convert.ToBase64String(Sign(key, data)),
+            Convert.ToBase64String(key.ExportSubjectPublicKeyInfo()),
+            Convert.ToBase64String(data),
+            appraisal);
+    }
+
+    // Raw field values, so a test can garble any one of them. A null field is left out.
+    public static string Envelope(string signatureB64, string publicKeyB64, string shipDataB64, int? appraisal = null)
+    {
+        var sb = new StringBuilder();
+        sb.Append("version: \"1.0\"\n");
+        if (signatureB64 != null)
+            sb.Append($"signature: \"{signatureB64}\"\n");
+        if (publicKeyB64 != null)
+            sb.Append($"signaturePublicKey: \"{publicKeyB64}\"\n");
+        sb.Append($"signatureOid: \"{SignatureOid}\"\n");
+        sb.Append($"shipData: \"{shipDataB64}\"\n");
+        if (appraisal.HasValue)
+            sb.Append($"appraisal: \"{appraisal.Value}\"\n");
+        return sb.ToString();
+    }
+}
+
 [TestFixture]
 public sealed class AuthenticatedShipFileTest
 {
+    private static RSA _key = default!;
+
     [OneTimeSetUp]
-    public static void EnsureSigningKeyLoaded()
+    public static void CreateKey()
     {
-        // F3 fix: AuthenticatedShipFile no longer auto-generates an ephemeral RSA on class load.
-        // Tests that exercise SignShip / GetStatic*KeyInfo must install a key first. This setup
-        // runs once per fixture and is idempotent if SetStaticKeyInfo gets called again later
-        // (CanReplacePrivateKey does just that).
-        using var rsa = RSA.Create(2048);
-        AuthenticatedShipFile.SetStaticKeyInfo(rsa.ExportRSAPrivateKey());
+        // One keypair for the fixture: generation is the slow part and no test mutates it.
+        _key = RSA.Create(2048);
+    }
+
+    [OneTimeTearDown]
+    public static void DisposeKey()
+    {
+        _key.Dispose();
+    }
+
+    private static string MangleLineEndings(string text, int seed)
+    {
+        return (seed & 1) == 0 ? text.ReplaceLineEndings("\n") : text.ReplaceLineEndings("\r\n");
     }
 
     [Test]
-    public void WhenConstructedFromAsciiShipData_ShipDataUnchanged(
+    public void WhenReadFromAsciiEnvelope_ShipDataUnchanged(
         [Values(1, 10, 1000, 10000)] int testStringLength,
         [Random(int.MinValue, int.MaxValue, 10)]
         int seed
         )
     {
         var rawShipData = RandomStringGen.AsciiString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
+        var asf = AuthenticatedShipFile.FromShipFile(LegacyEnvelopeWriter.Signed(_key, rawShipData));
         var internalRawShipData = asf.ShipYamlString();
         Assert.That(internalRawShipData, Is.Not.Null);
         Assert.That(internalRawShipData, Is.EqualTo(rawShipData));
     }
 
     [Test]
-    public void WhenConstructedFromUnicodeShipData_ShipDataUnchanged(
+    public void WhenReadFromUnicodeEnvelope_ShipDataUnchanged(
         [Values(1, 10, 1000)] int testStringLength,
         [Random(int.MinValue, int.MaxValue, 10)]
         int seed
     )
     {
         var rawShipData = RandomStringGen.UnicodeString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
+        var asf = AuthenticatedShipFile.FromShipFile(LegacyEnvelopeWriter.Signed(_key, rawShipData));
         var internalRawShipData = asf.ShipYamlString();
         Assert.That(internalRawShipData, Is.Not.Null);
         Assert.That(internalRawShipData, Is.EqualTo(rawShipData));
     }
 
     [Test]
-    public void WhenConstructedFromAsciiShipData_CanSign(
+    public void WhenReadFromAsciiEnvelope_SignatureVerifies(
         [Values(1, 10, 1000, 10000)] int testStringLength,
         [Random(int.MinValue, int.MaxValue, 10)]
         int seed
     )
     {
         var rawShipData = RandomStringGen.AsciiString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        asf.SignShip();
-        Assert.That(asf.IsShipSigned());
+        var text = MangleLineEndings(LegacyEnvelopeWriter.Signed(_key, rawShipData), seed);
+
+        var loadedAsf = AuthenticatedShipFile.FromShipFile(text);
+        Assert.That(loadedAsf.IsShipSigned());
+        Assert.That(loadedAsf.GetInstancePublicKeyInfo(), Is.EqualTo(_key.ExportSubjectPublicKeyInfo()));
     }
 
     [Test]
-    public void WhenConstructedFromUnicodeShipData_CanSign(
+    public void WhenReadFromUnicodeEnvelope_SignatureVerifies(
         [Values(1, 10, 1000)] int testStringLength,
         [Random(int.MinValue, int.MaxValue, 10)]
         int seed
     )
     {
         var rawShipData = RandomStringGen.UnicodeString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        asf.SignShip();
-        Assert.That(asf.IsShipSigned());
-    }
+        var text = MangleLineEndings(LegacyEnvelopeWriter.Signed(_key, rawShipData), seed);
 
-
-    [Test]
-    public void WhenConstructedFromAsciiShipData_SignatureSurvivesYamling(
-        [Values(1, 10, 1000, 10000)] int testStringLength,
-        [Random(int.MinValue, int.MaxValue, 10)]
-        int seed
-    )
-    {
-        var rawShipData = RandomStringGen.AsciiString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        asf.SignShip();
-        var str = asf.ShipFileString();
-
-        // mangle the line endings
-        if ((seed & 1) == 0)
-        {
-            str.ReplaceLineEndings("\n");
-        }
-        else
-        {
-            str.ReplaceLineEndings("\r\n");
-        }
-
-        var loadedAsf = AuthenticatedShipFile.FromShipFile(str);
+        var loadedAsf = AuthenticatedShipFile.FromShipFile(text);
         Assert.That(loadedAsf.IsShipSigned());
     }
 
     [Test]
-    public void WhenConstructedFromUnicodeShipData_SignatureSurvivesYamling(
-        [Values(1, 10, 1000)] int testStringLength,
-        [Random(int.MinValue, int.MaxValue, 10)]
-        int seed
-    )
+    public void TamperedShipData_IsNotSigned()
     {
-        var rawShipData = RandomStringGen.UnicodeString(testStringLength, seed);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        asf.SignShip();
-        var str = asf.ShipFileString();
+        var original = Encoding.UTF8.GetBytes(RandomStringGen.AsciiString(100, seed: 7));
+        var tampered = Encoding.UTF8.GetBytes(RandomStringGen.AsciiString(100, seed: 8));
+        var text = LegacyEnvelopeWriter.Envelope(
+            Convert.ToBase64String(LegacyEnvelopeWriter.Sign(_key, original)),
+            Convert.ToBase64String(_key.ExportSubjectPublicKeyInfo()),
+            Convert.ToBase64String(tampered));
 
-        // mangle the line endings
-        if ((seed & 1) == 0)
-        {
-            str.ReplaceLineEndings("\n");
-        }
-        else
-        {
-            str.ReplaceLineEndings("\r\n");
-        }
-
-        var loadedAsf = AuthenticatedShipFile.FromShipFile(str);
-        Assert.That(loadedAsf.IsShipSigned());
-    }
-
-
-    [Test]
-    public static void CanReplacePrivateKey()
-    {
-        var pubk = AuthenticatedShipFile.GetStaticPublicKeyInfo();
-        var privk = AuthenticatedShipFile.GetStaticPrivateKeyInfo();
-
-        // we can change it
-        var rsa = RSA.Create(2048);
-        AuthenticatedShipFile.SetStaticKeyInfo(rsa.ExportRSAPrivateKey());
-        Assert.That(!pubk.SequenceEqual(AuthenticatedShipFile.GetStaticPublicKeyInfo()));
-        Assert.That(rsa.ExportRSAPrivateKey().SequenceEqual(AuthenticatedShipFile.GetStaticPrivateKeyInfo()));
-        Assert.That(rsa.ExportSubjectPublicKeyInfo().SequenceEqual(AuthenticatedShipFile.GetStaticPublicKeyInfo()));
-
-        // we can change it back
-        AuthenticatedShipFile.SetStaticKeyInfo(privk);
-        Assert.That(pubk.SequenceEqual(AuthenticatedShipFile.GetStaticPublicKeyInfo()));
-        Assert.That(privk.SequenceEqual(AuthenticatedShipFile.GetStaticPrivateKeyInfo()));
+        var loaded = AuthenticatedShipFile.FromShipFile(text);
+        Assert.That(loaded.GetInstancePublicKeyInfo(), Is.Not.Null);
+        Assert.That(loaded.IsShipSigned(), Is.False);
     }
 
     [Test]
-    public void Appraisal_RoundTripsThroughEnvelope(
+    public void GarbledPublicKey_IsNotSignedAndDoesNotThrow()
+    {
+        var data = Encoding.UTF8.GetBytes("garbled key ship");
+        var text = LegacyEnvelopeWriter.Envelope(
+            Convert.ToBase64String(LegacyEnvelopeWriter.Sign(_key, data)),
+            Convert.ToBase64String(new byte[] { 1, 2, 3, 4, 5 }),
+            Convert.ToBase64String(data));
+
+        var loaded = AuthenticatedShipFile.FromShipFile(text);
+        Assert.That(() => loaded.IsShipSigned(), Throws.Nothing);
+        Assert.That(loaded.IsShipSigned(), Is.False);
+    }
+
+    [Test]
+    public void MissingPublicKey_IsNotSigned()
+    {
+        var data = Encoding.UTF8.GetBytes("no key ship");
+        var text = LegacyEnvelopeWriter.Envelope(
+            Convert.ToBase64String(LegacyEnvelopeWriter.Sign(_key, data)),
+            null,
+            Convert.ToBase64String(data));
+
+        var loaded = AuthenticatedShipFile.FromShipFile(text);
+        Assert.That(loaded.GetInstancePublicKeyInfo(), Is.Null);
+        Assert.That(loaded.IsShipSigned(), Is.False);
+    }
+
+    [Test]
+    public void NotAnEnvelope_IsUnsignedAndPassesThrough()
+    {
+        // A bare grid document (the pre-envelope format) has no shipData key, so it is read as the
+        // ship itself, unsigned.
+        const string raw = "meta:\n  format: 7\n";
+        var loaded = AuthenticatedShipFile.FromShipFile(raw);
+        Assert.That(loaded.GetInstancePublicKeyInfo(), Is.Null);
+        Assert.That(loaded.IsShipSigned(), Is.False);
+        Assert.That(loaded.ShipYamlString(), Is.EqualTo(raw));
+    }
+
+    [Test]
+    public void Appraisal_ParsesFromEnvelope(
         [Values(0, 1, 12345, int.MaxValue)] int appraisal)
     {
         var rawShipData = RandomStringGen.AsciiString(100, seed: 42);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        asf.Appraisal = appraisal;
-        asf.SignShip();
-        var serialized = asf.ShipFileString();
-
-        var loaded = AuthenticatedShipFile.FromShipFile(serialized);
+        var loaded = AuthenticatedShipFile.FromShipFile(LegacyEnvelopeWriter.Signed(_key, rawShipData, appraisal));
         Assert.That(loaded.Appraisal, Is.EqualTo(appraisal));
         Assert.That(loaded.IsShipSigned(), Is.True);
     }
@@ -253,12 +282,7 @@ public sealed class AuthenticatedShipFileTest
     public void Appraisal_AbsentParsesAsNull()
     {
         var rawShipData = RandomStringGen.AsciiString(100, seed: 1);
-        var asf = AuthenticatedShipFile.FromShipData(rawShipData);
-        // No Appraisal set.
-        asf.SignShip();
-        var serialized = asf.ShipFileString();
-
-        var loaded = AuthenticatedShipFile.FromShipFile(serialized);
+        var loaded = AuthenticatedShipFile.FromShipFile(LegacyEnvelopeWriter.Signed(_key, rawShipData));
         Assert.That(loaded.Appraisal, Is.Null);
         Assert.That(loaded.IsShipSigned(), Is.True);
     }

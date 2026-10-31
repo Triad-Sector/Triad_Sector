@@ -67,18 +67,19 @@ public sealed partial class NuclearReactorComponent : Component
     /// <summary>
     /// Number of neutrons that hit the edge of the reactor grid last tick
     /// </summary>
-    [ViewVariables]
+    [DataField, ViewVariables]
     public float RadiationLevel = 0;
 
     /// <summary>
     /// Gas mixture currently in the reactor
     /// </summary>
+    [DataField]
     public GasMixture? AirContents;
 
     /// <summary>
     /// Reactor casing temperature
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Temperature = Atmospherics.T20C;
 
     /// <summary>
@@ -97,25 +98,25 @@ public sealed partial class NuclearReactorComponent : Component
     /// <summary>
     /// Flag indicating the reactor is overheating
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [DataField, ViewVariables, AutoNetworkedField]
     public bool IsSmoking = false;
 
     /// <summary>
     /// Flag indicating the reactor is on fire
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [DataField, ViewVariables, AutoNetworkedField]
     public bool IsBurning = false;
 
     /// <summary>
     /// Flag indicating total meltdown has happened
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public bool Melted = false;
 
     /// <summary>
     /// The set insertion level of the control rods
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float ControlRodInsertion = 2;
 
     /// <summary>
@@ -138,13 +139,13 @@ public sealed partial class NuclearReactorComponent : Component
     /// <summary>
     /// Last reported temperature during overheat events
     /// </summary>
-    [ViewVariables]
+    [DataField, ViewVariables]
     public float LastSendTemperature = Atmospherics.T20C;
 
     /// <summary>
     /// If the reactor has given the nuclear emergency warning
     /// </summary>
-    [ViewVariables]
+    [DataField, ViewVariables]
     public bool HasSentWarning = false;
 
     /// <summary>
@@ -190,9 +191,14 @@ public sealed partial class NuclearReactorComponent : Component
     public int ThermalPowerPrecision = 128;
 
 #region Alarms
-    [ViewVariables(VVAccess.ReadWrite)]
+    /// <summary>
+    /// Which alarms sound and which the crew has acknowledged. Saved, so a reactor that comes back
+    /// hot does not re-sound something already silenced.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public NuclearReactorAlarmStates AlarmState;
 
+    // Not saved: respawned on startup, so a stored uid would point at nothing and leak the new set.
     [ViewVariables]
     public EntityUid? AlarmAudioHighThermal;
     [ViewVariables]
@@ -218,23 +224,17 @@ public sealed partial class NuclearReactorComponent : Component
     public int[,] NeutronGrid;
 
     /// <summary>
-    /// The selected prefab
+    /// The starting prefab, laid out on map init only. Must not arm <see cref="ApplyPrefab"/> from
+    /// its setter: deserialization writes this field, so that armed every reactor loaded from a save.
     /// </summary>
     [DataField]
-    public string Prefab
-    {
-        get;
-        private set
-        {
-            ApplyPrefab = true; // Will apply the prefab whenever a new one is selected
-            field = value;
-        }
-    } = "ReactorPrefab7x7Normal";
+    public string Prefab = "ReactorPrefab7x7Normal";
 
     /// <summary>
-    /// Flag indicating the reactor should apply the selected prefab
+    /// Re-lay the prefab, wiping whatever is in the reactor now. Never saved: it is a request to
+    /// destroy the contents, which is not something to restore from a file.
     /// </summary>
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool ApplyPrefab = false;
 
     /// <summary>

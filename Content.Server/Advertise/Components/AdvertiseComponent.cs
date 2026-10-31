@@ -1,6 +1,7 @@
 using Content.Server.Advertise.EntitySystems;
 using Content.Shared.Dataset;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Advertise.Components;
 
@@ -41,7 +42,10 @@ public sealed partial class AdvertiseComponent : Component
     /// <summary>
     /// The next time an advertisement will be said.
     /// </summary>
-    [DataField]
+    // Triad - TimeOffsetSerializer: a game time written raw arrives in the next round as a deadline
+    // hours ahead of the new clock, so every vending machine on a ship retrieved from the drydock
+    // went silent for as long as the previous server had been up. Same fault as the magnets.
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [Access(typeof(AdvertiseSystem))] // Mono - you really don't want to change this outside of AdvertiseSystem
     public TimeSpan NextAdvertisementTime { get; set; } = TimeSpan.Zero;
 

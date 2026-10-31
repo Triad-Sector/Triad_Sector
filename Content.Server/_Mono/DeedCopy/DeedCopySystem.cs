@@ -20,7 +20,8 @@ public sealed partial class DeedCopySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<IdCardComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
+        // Triad: removed, a cloned deed is an owner-grade key nobody can revoke. Crew get guest access at the helm instead.
+        // SubscribeLocalEvent<IdCardComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
     }
 
     /// <summary>

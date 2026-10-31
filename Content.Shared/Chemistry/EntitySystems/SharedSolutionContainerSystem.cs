@@ -87,6 +87,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         {
             SubscribeLocalEvent<SolutionContainerManagerComponent, ComponentShutdown>(OnContainerManagerShutdown);
             SubscribeLocalEvent<ContainedSolutionComponent, ComponentShutdown>(OnContainedSolutionShutdown);
+            SubscribeLocalEvent<ContainedSolutionComponent, EntGotRemovedFromContainerMessage>(OnContainedSolutionRemoved); // Triad: see the handler
         }
     }
 
@@ -1016,6 +1017,28 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
         if (ContainerSystem.TryGetContainer(entity, $"solution@{entity.Comp.ContainerName}", out var solutionContainer))
             ContainerSystem.ShutdownContainer(solutionContainer);
+    }
+
+    // Triad: added. A solution entity's only place is its holder's solution slot. The generic
+    // empty-every-container paths (the EmptyAllContainers construction action, the destructible
+    // behaviour of the same name, event horizons, gibbing) do not know that and force-drop the
+    // solution entities onto the grid, where they sit invisible with a Container reference to a
+    // holder that is usually about to die. A ship saved afterwards carries them with a dead
+    // reference and logs an invalid-uid error for each on every load. Deleting on the way out
+    // closes every such path at once. The container system also fires this on the deletion
+    // path, as a forced no-reparent remove of an entity that is already terminating; that one is
+    // left to finish dying.
+    private void OnContainedSolutionRemoved(Entity<ContainedSolutionComponent> entity, ref EntGotRemovedFromContainerMessage args)
+    {
+        // Into a local first: the access analyzer reads a method call on the member as Execute.
+        var slotId = args.Container.ID;
+        if (!slotId.StartsWith("solution@", StringComparison.Ordinal))
+            return;
+
+        if (TerminatingOrDeleted(entity))
+            return;
+
+        QueueDel(entity);
     }
 
     #endregion Event Handlers

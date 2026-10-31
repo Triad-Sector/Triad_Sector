@@ -22,6 +22,14 @@ public abstract partial class SharedPowerCellSystem : EntitySystem
         SubscribeLocalEvent<PowerCellSlotComponent, EntInsertedIntoContainerMessage>(OnCellInserted);
         SubscribeLocalEvent<PowerCellSlotComponent, EntRemovedFromContainerMessage>(OnCellRemoved);
         SubscribeLocalEvent<PowerCellSlotComponent, ContainerIsInsertingAttemptEvent>(OnCellInsertAttempt);
+        SubscribeLocalEvent<PowerCellSlotComponent, ComponentStartup>(OnSlotStartup); // Triad - see OnSlotStartup
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent); container-derived.
+    private void OnSlotStartup(EntityUid uid, PowerCellSlotComponent component, ComponentStartup args)
+    {
+        var hasCell = _itemSlots.TryGetSlot(uid, component.CellSlotId, out var itemSlot) && itemSlot.Item.HasValue;
+        _appearance.SetData(uid, PowerCellSlotVisuals.Enabled, hasCell);
     }
 
     private void OnMapInit(Entity<PowerCellDrawComponent> ent, ref MapInitEvent args)

@@ -53,6 +53,10 @@
   components:
   - type: ShipyardConsole
     newJobTitle: Captain
+  # Triad: opens straight to the drydock page
+  - type: GuideHelp
+    guides:
+    - Drydock
 
 - type: entity
   id: ComputerShipyardSecurity

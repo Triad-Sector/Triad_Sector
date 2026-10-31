@@ -45,8 +45,19 @@ public sealed partial class AtmosAlarmableSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<AtmosAlarmableComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<AtmosAlarmableComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<AtmosAlarmableComponent, DeviceNetworkPacketEvent>(OnPacketRecv);
         SubscribeLocalEvent<AtmosAlarmableComponent, PowerChangedEvent>(OnPowerChange);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). LastAlarmState is not persisted, so the guard in TryUpdateAlert does not swallow this.
+    private void OnStartup(EntityUid uid, AtmosAlarmableComponent component, ComponentStartup args)
+    {
+        TryUpdateAlert(
+            uid,
+            TryGetHighestAlert(uid, out var alarm) ? alarm.Value : AtmosAlarmType.Normal,
+            component,
+            false);
     }
 
     private void OnMapInit(EntityUid uid, AtmosAlarmableComponent component, MapInitEvent args)

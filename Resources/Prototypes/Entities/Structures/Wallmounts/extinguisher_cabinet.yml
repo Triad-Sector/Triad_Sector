@@ -54,8 +54,6 @@
                 collection: MetalGlassBreak
                 params:
                   volume: -4
-    - type: HLPersistOnShipSave # Triad
-      saveContents: true
     - type: Construction # Triad
       graph: extinguishercabinet
       node: finish

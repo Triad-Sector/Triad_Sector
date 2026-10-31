@@ -12,7 +12,14 @@ public abstract partial class SharedScaleVisualsSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ScaleVisualsComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ScaleVisualsComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<ScaleVisualsComponent, ComponentShutdown>(OnComponentShutdown);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). Writes the key directly; SetSpriteScale raises ScaleEntityEvent.
+    private void OnStartup(Entity<ScaleVisualsComponent> ent, ref ComponentStartup args)
+    {
+        _appearance.SetData(ent.Owner, ScaleVisuals.Scale, ent.Comp.Scale);
     }
 
     private void OnMapInit(Entity<ScaleVisualsComponent> ent, ref MapInitEvent args)
