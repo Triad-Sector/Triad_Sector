@@ -1,4 +1,22 @@
 - type: loadout
+  id: ClothingHeadHatBeretMedical
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretMedical
+
+- type: loadout
+  id: ClothingHeadHatBeretSeniorChemistry
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretSeniorChemistry
+
+- type: loadout
+  id: ClothingHeadHatBeretParamedic
+  groupBy: Beret
+  equipment:
+    head: ClothingHeadHatBeretParamedic
+
+- type: loadout
   id: ClothingHeadHatHardhatBlue
   groupBy: Hardhat
   equipment:
