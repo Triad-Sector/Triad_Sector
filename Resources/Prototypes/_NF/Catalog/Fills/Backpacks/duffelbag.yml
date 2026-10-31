@@ -56,7 +56,7 @@
   components:
     - type: StorageFill
       contents:
-        - id: BoxSurvival
+        #- id: BoxSurvival Triad: This was causing test fails, and we dont use this item at all, so..... kill the survival box.
         - id: Cutlass
         - id: WeaponRevolverPirate
         - id: ClothingEyesEyepatch

@@ -17,14 +17,17 @@
   id: NFClothingBackpack
   components:
   - type: Storage
-    maxItemSize: Large
+    # Triad: Make backpacks a bit more versatile by allowing huge items. Should make them a bit more useful when compared to backpacks and satchels. Made all backpacks smaller but ginormous, so you can store them in a stash or deposit box better.
+    #maxItemSize: Large
+    maxItemSize: Huge
     defaultStorageOrientation: Vertical
     grid:
     - 0,0,6,3
   - type: Item
-    size: Huge
+    size: Ginormous
     shape:
-    - 0,0,6,3
+    - 0,0,3,3
+    # End Triad
 
 - type: entity
   parent: [ ClothingBackpackDuffel, NFBackpackHiddenStash ]
@@ -36,9 +39,11 @@
     grid:
     - 0,0,7,4
   - type: Item
-    size: Huge
+    # Triad: Made all backpacks smaller but ginormous so you can store them between rounds easier.
+    size: Ginormous
     shape:
-    - 0,0,7,5
+    - 0,0,3,3
+    # End Triad
 
 - type: entity
   abstract: true
@@ -47,6 +52,7 @@
   components:
   ## One 4x4 pocket, four 2x2 pockets
   - type: Storage
+    maxItemSize: Large # Triad: Fixes a potential issue where the messenger bag could steal the backpack's upsides from parenting to it
     grid:
     - 0,0,1,1
     - 0,3,1,4
