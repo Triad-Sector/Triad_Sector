@@ -117,7 +117,7 @@
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 6
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 8
         - ReagentId: Flavorol
           Quantity: 5
@@ -389,7 +389,7 @@
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 5
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 5
         - ReagentId: Flavorol
           Quantity: 5
@@ -805,7 +805,7 @@
           Quantity: 8
         - ReagentId: Water
           Quantity: 5
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 5
         - ReagentId: Histamine
           Quantity: 0.5

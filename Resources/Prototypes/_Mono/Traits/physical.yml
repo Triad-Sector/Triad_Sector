@@ -581,34 +581,36 @@
     - type: AlcoholTolerance
       visualScaleMultiplier: 0.35
 
-- type: trait
-  id: PlateletFactories
-  name: trait-platelet-factories-name
-  description: trait-platelet-factories-desc
-  category: Physical
-  cost: 6
-  conditions:
-  - !type:HasTraitCondition
-    trait: Hemophilia
-    invert: true
-  - !type:IsSpeciesCondition
-    species: IPC
-    invert: true
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-  effects:
-  - !type:AddCompsEffect
-    components:
-      - type: PlateletFactories
-        intervalSeconds: 1
-        damagePerInterval:
-          groups:
-            Brute: -1.5
-            Burn: -2
-        critMultiplier: .25
+# Triad: Remove Platelet factories to avoid circumventing the medical system.
+#- type: trait
+#  id: PlateletFactories
+#  name: trait-platelet-factories-name
+#  description: trait-platelet-factories-desc
+#  category: Physical
+#  cost: 6
+#  conditions:
+#  - !type:HasTraitCondition
+#    trait: Hemophilia
+#    invert: true
+#  - !type:IsSpeciesCondition
+#    species: IPC
+#    invert: true
+#  - !type:HasCompCondition
+#    component: BorgChassis
+#    invert: true
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#      - type: PlateletFactories
+#        intervalSeconds: 1
+#        damagePerInterval:
+#          groups:
+#            Brute: -1.5
+#            Burn: -2
+#        critMultiplier: .25
+# End Triad
 
-- type: trait
+- type: trait # Triad note. Once IPC healing is in a better space, this trait should be removed in the interest of game balance and giving medics a job to do.
   id: NaniteRepairDrones
   name: trait-nanite-repair-drones-name
   description: trait-nanite-repair-drones-desc
@@ -629,4 +631,3 @@
             groups:
               Brute: -1.5
               Burn: -2
-

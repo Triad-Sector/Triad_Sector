@@ -84,8 +84,11 @@
         reagents:
           - ReagentId: Nicotine
             Quantity: 10
-          - ReagentId: Omnizine
+          # Triad: Made Omnizine harder to come by to encourage the use of more specialized medicine
+          #- ReagentId: Omnizine
+          - ReagentId: Tricordrazine
             Quantity: 30
+          # End Triad
 
 - type: entity
   id: CigaretteOmnizine
@@ -99,8 +102,13 @@
         reagents:
           - ReagentId: Nicotine
             Quantity: 10
-          - ReagentId: Omnizine
+          - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
             Quantity: 10
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - Ungrindable
+  # End Triad
 
 - type: entity
   id: CigaretteIron

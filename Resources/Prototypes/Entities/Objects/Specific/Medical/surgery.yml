@@ -367,9 +367,9 @@
         Piercing: 10
         Heat: 1
   - type: Cautery
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Drill
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: StaticPrice # Mono
     price: 120
 
@@ -400,9 +400,9 @@
         Slash: 10
         Heat: 1
   - type: Scalpel
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: BoneSaw
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: StaticPrice # Mono
     price: 120
 
@@ -433,13 +433,13 @@
         Slash: 6.5
         Heat: 1
   - type: Hemostat
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Retractor
-    speed: 1.5
+    speed: 4 # Triad
   - type: Tweezers
-    speed: 1.5
+    speed: 4 # Triad
   - type: Tending
-    speed: 1.5
+    speed: 3 # Triad: Buffed 1.5->3 to give a reason to use it over the multitool. 4 would have been too fast.
   - type: StaticPrice # Mono
     price: 120
 
@@ -447,6 +447,7 @@
   name: medical multitool
   id: OmnimedTool
   parent: BaseToolSurgery
+  description: A highly complex tool which performs all functions necessary to complete surgical procedures. While convenient and compact, it can be difficult to operate for unskilled personnel.
   components:
   - type: Sprite
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
@@ -457,25 +458,25 @@
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
   - type: Hemostat
-    speed: 2
+    speed: 0.5 # Triad: 2->0.5 to make advanced surgery gear viable. Not having to switch tools saves you so much time...
   - type: Scalpel
-    speed: 2
+    speed: 0.5 # Triad
   - type: Drill
-    speed: 2
+    speed: 0.5 # Triad
   - type: BoneSetter
-    speed: 2
+    speed: 0.5 # Triad
   - type: Retractor
-    speed: 2
+    speed: 0.5 # Triad
   - type: Cautery
-    speed: 2
+    speed: 0.5 # Triad
   - type: BoneGel
-    speed: 2
+    speed: 0.5 # Triad
   - type: BoneSaw
-    speed: 2
+    speed: 0.5 # Triad
   - type: Tweezers
-    speed: 2
+    speed: 0.5 # Triad
   - type: Tending
-    speed: 2
+    speed: 1.5 # Triad: 2->1.5
   - type: StaticPrice # Mono
     price: 200
 

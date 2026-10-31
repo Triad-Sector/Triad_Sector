@@ -323,12 +323,14 @@
       - id: DefibrillatorSyndicate
       - id: MedkitFilled # Triad convert to regular ones
         amount: 2 # Frontier: 4<2
-      - id: CombatMedipen
-        amount: 2 # Triad: 2
+      # Triad: Made Omnizine rarer
+      #- id: CombatMedipen
+        #amount: 2
       - id: PunctAutoInjector
-        amount: 4 # Mono: 4
+        amount: 5 # Triad: 5
       - id: PyraAutoInjector
-        amount: 4 # Mono: 4
+        amount: 5 # Triad: 5
+      # End Triad
       - id: Stimpack
         amount: 4  # Triad: 4
 

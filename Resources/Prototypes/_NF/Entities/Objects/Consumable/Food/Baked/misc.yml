@@ -20,7 +20,7 @@
           Quantity: 5
         - ReagentId: Nutriment
           Quantity: 2
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 5
         - ReagentId: Flavorol
           Quantity: 3
@@ -28,6 +28,11 @@
     color: "#FFFFCC"
     radius: 1.25
     energy: 0.75
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - Ungrindable
+  # End Triad
 
 - type: entity
   name: pear muffin

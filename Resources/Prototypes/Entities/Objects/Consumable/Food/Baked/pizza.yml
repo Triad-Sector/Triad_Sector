@@ -268,7 +268,7 @@
           Quantity: 27
         - ReagentId: Vitamin
           Quantity: 6
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 9
         - ReagentId: Flavorol
           Quantity: 15
@@ -276,6 +276,7 @@
     tags:
     - Meat
     - Pizza
+    - Ungrindable # Triad: Make food with Omnizine not grindable
 
 
 - type: entity
@@ -299,7 +300,7 @@
           Quantity: 4.5
         - ReagentId: Vitamin
           Quantity: 1
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 1.5
         - ReagentId: Flavorol
           Quantity: 3
@@ -308,6 +309,7 @@
     - Meat
     - Pizza
     - Slice
+    - Ungrindable # Triad: Make food with Omnizine not grindable
 # Tastes like crust, tomato, cheese, meat, laziness.
 
 - type: entity
@@ -487,7 +489,7 @@
           Quantity: 5
         - ReagentId: Iron
           Quantity: 10
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 30
         - ReagentId: Flavorol
           Quantity: 15
@@ -495,6 +497,7 @@
     tags:
     - Meat
     - Pizza
+    - Ungrindable # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: slice of Arnold's pizza
@@ -523,7 +526,7 @@
           Quantity: 0.8
         - ReagentId: Iron
           Quantity: 1.6
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 5
         - ReagentId: Flavorol
           Quantity: 4

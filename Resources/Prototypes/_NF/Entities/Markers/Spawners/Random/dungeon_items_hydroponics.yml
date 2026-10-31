@@ -213,7 +213,7 @@
     offset: 0.0
     rarePrototypes:
     - ChemistryBottleCognizine
-    - ChemistryBottleOmnizine
+    #- ChemistryBottleOmnizine Triad: With Omnizine being removed from botany it doesn't make sense to spawn here.
     - ChemistryBottleLeft4Zed
     rareChance: 0.03
 

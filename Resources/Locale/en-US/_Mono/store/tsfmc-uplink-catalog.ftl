@@ -61,8 +61,11 @@ uplink-security-portable-recharger-desc = An experimental portable recharger equ
 uplink-security-cash75000-name = 75,000 Credits
 uplink-security-cash75000-desc = Cold, hard cash, in bulk.
 
-uplink-security-surgery-duffel-name = Advanced Surgery Kit
-uplink-security-surgery-duffel-desc = A duffel filled with advanced surgery tools, perfect for re-attaching some heads.
+uplink-security-advanced-surgery-name = Advanced Surgery Kit
+uplink-security-advanced-surgery-desc = A box filled with advanced surgery tools, perfect for re-attaching some heads.
+
+uplink-security-multitool-surgery-name = Medical Multitool
+uplink-security-multitool-surgery-desc = An all-in one surgery tool for the aspiring surgeon. Slower but more compact than an advanced surgery kit.
 
 uplink-security-omnizine-jug-name = Omnizine Jug
 uplink-security-omnizine-jug-desc = A jug of omnizine, used for making medipens and keeping your allies up. Imported from Harmony Medical Enterprises.

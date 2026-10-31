@@ -72,7 +72,7 @@
       - Document
     charredPrototype: FoodBadRecipe
     goodReagents:
-      - ReagentId: Omnizine
+      - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
         Quantity: 1
       - ReagentId: Flavorol
         Quantity: 3
