@@ -988,7 +988,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
     Gas.Pluoxium,
 };
 
-    private readonly static void RemoveRemovedPlantGases(SeedPrototype seed)
+    private  static void RemoveRemovedPlantGases(SeedPrototype seed)
     {
         foreach (var gas in RemovedPlantGases)
         {
