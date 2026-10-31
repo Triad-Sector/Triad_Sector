@@ -32,34 +32,12 @@
 
 - type: entity
   abstract: true
-  parent: BasePersistentStorage
+  parent: [BaseStorageStructureWallmount, BasePersistentStorage]
   id: BasePersistentShipStorageStashWallmount
-  placement:
-    mode: SnapgridCenter
   components:
-  - type: Transform
-    noRot: false
   - type: Sprite
     drawdepth: WallMountedItems
     noRot: false
-  - type: InteractionOutline
-  - type: Clickable
-  - type: WallMount
-    arc: 175
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
-  - type: UserInterface
-    interfaces:
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
-  - type: Storage
-    grid:
-    - 0,0,0,0
-  - type: PlaceableSurface
-    placeCentered: true
-    isPlaceable: false
 
 - type: entity
   parent: BasePersistentShipStorageStash
@@ -193,6 +171,8 @@
     grid:
     - 0,0,7,3
     whitelist:
+      components:
+      - Material
       tags:
       - FitsInFuelStash
   - type: EntityStorageVisuals
