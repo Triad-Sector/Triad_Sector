@@ -506,10 +506,12 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 component.UpdateSpriteAfterUpdate = true;
         }
 
-        if (component.Seed == null) // TRIAD HOT FIX CLEANUP
+        // Triad Start - remove unsupported gases
+        if (component.Seed == null)
             return;
 
-        RemoveRemovedPlantGasses(component.Seed); // END HOTFIX
+        RemoveRemovedPlantGases(component.Seed); 
+        // Triad End
 
         var environment = _atmosphere.GetContainingMixture(uid, true, true) ?? GasMixture.SpaceGas;
 
@@ -976,7 +978,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Update(uid, component);
     }
 
-    private static readonly Gas[] RemovedPlantGasses =
+    private static readonly Gas[] RemovedPlantGases =
 {
     Gas.Tritium,
     Gas.Frezon,
@@ -986,9 +988,9 @@ public sealed partial class PlantHolderSystem : EntitySystem
     Gas.Pluoxium,
 };
 
-    private readonly static void RemoveRemovedPlantGasses(SeedPrototype seed)
+    private readonly static void RemoveRemovedPlantGases(SeedPrototype seed)
     {
-        foreach (var gas in RemovedPlantGasses)
+        foreach (var gas in RemovedPlantGases)
         {
             seed.ConsumeGasses.Remove(gas);
             seed.ExudeGasses.Remove(gas);
