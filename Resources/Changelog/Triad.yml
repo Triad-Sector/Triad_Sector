@@ -5915,3 +5915,10 @@ Entries:
   id: 2703
   time: '2026-10-31T14:54:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/784
+- author: nathan736
+  changes:
+    - type: Fix
+      message: Salvage radars, thrusters, and AME controllers fit in doorways now.
+  id: 2704
+  time: '2026-10-31T14:55:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/779
