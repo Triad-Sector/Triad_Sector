@@ -978,7 +978,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Update(uid, component);
     }
 
-    private static void RemoveRemovedPlantGasses(SeedData seed)
+    private static void RemoveRemovedPlantGases(SeedData seed)
     {
         // Frontier, Funky: Remove unsupported gasses from existing plants
         Gas[] removedGasses =
