@@ -29,4 +29,8 @@
   - type: Damageable
     damageContainer: Silicon
     damageModifierSet: FactionBorgChassisAssault
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
 # TODO selectable faction borg types. Move all the module whitelists to the borg type rather than here.
