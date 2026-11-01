@@ -276,4 +276,3 @@
         hard: false
   - type: Machine
     board: GaslockFrameMachineCircuitboard
-  - type: HLPersistOnShipSave # Triad

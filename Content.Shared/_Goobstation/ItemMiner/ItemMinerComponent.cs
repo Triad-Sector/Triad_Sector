@@ -2,6 +2,7 @@ using Content.Shared.Random;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using System;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._Goobstation.ItemMiner;
 
@@ -14,8 +15,8 @@ public sealed partial class ItemMinerComponent : Component
     /// <summary>
     /// Time for next item to be generated at.
     /// </summary>
-    [DataField, AutoPausedField]
-    public TimeSpan NextAt;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextAt; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// Prototype to spawn.

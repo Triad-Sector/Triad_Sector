@@ -67,7 +67,7 @@ namespace Content.Client.Stylesheets
         // Goobstation - ZH text support end
     }
     // STLYE SHEETS WERE A MISTAKE. KILL ALL OF THIS WITH FIRE
-    public sealed class StyleNano : StyleBase
+    public sealed partial class StyleNano : StyleBase // Triad: partial, the Triad rules live in _Triad/Stylesheets
     {
         public const string StyleClassBorderedWindowPanel = "BorderedWindowPanel";
         public const string StyleClassInventorySlotBackground = "InventorySlotBackground";
@@ -1951,7 +1951,7 @@ namespace Content.Client.Stylesheets
                     {
                         Modulate = ButtonColorGoodDefault
                     }),
-            }).ToList());
+            }).Concat(TriadRules()).ToList()); // Triad: our own classes, appended so they can override nothing above by accident
         }
     }
 }

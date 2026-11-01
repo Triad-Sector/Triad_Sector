@@ -1,0 +1,478 @@
+# Triad: the drydock berth class of every shipyard vessel, generated from its grid file's filled
+# tile count. Kept honest by DrydockVesselClassTableTest; re-run that test after changing a hull
+# and paste the corrected rows it prints.
+- type: drydockVesselClass
+  id: Adjutant
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Akula
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Ample
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Antlion
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Arbalest
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Argent
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Arkansaw
+  class: Capital
+
+- type: drydockVesselClass
+  id: Arribane
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Artemis
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Autumn
+  class: Capital
+
+- type: drydockVesselClass
+  id: Behir
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Betelgeuse
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Borer
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Bratan
+  class: Capital
+
+- type: drydockVesselClass
+  id: Brute
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Bucket
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Buran
+  class: Capital
+
+- type: drydockVesselClass
+  id: Canister
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Comet
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Drakon
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Duran
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Erudite
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Femur
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Fling
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Framework
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Goida
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Grunder
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Gruznyk
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Hammerhead
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Hermes
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Horizon
+  class: Capital
+
+- type: drydockVesselClass
+  id: Horsefly
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Hound
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Hunter
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Iapetus
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Inertia
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Infiltrator
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Jester
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Judiciary
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Kestrel
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Knight
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Kopye
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Kuldi
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Kunai
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Kupol
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Leaf
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Ledokol
+  class: Capital
+
+- type: drydockVesselClass
+  id: Littora
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Magus
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Marshrutka
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Medicus
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Mercy
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Mite
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Mock
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Molecule
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Molotok
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Mudskipper
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Natisk
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Notch
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Odenta
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Padval
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Palisade
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Peregrine
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Phaeron
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Phalanx
+  class: Capital
+
+- type: drydockVesselClass
+  id: Picses
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Pillbox
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Piva
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Plutomkii
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Povest
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Praetorian
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Promise
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Prospector
+  class: Capital
+
+- type: drydockVesselClass
+  id: QJ270
+  class: Cutter
+
+- type: drydockVesselClass
+  id: QJ340
+  class: Cutter
+
+- type: drydockVesselClass
+  id: QJ490
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Remontnik
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Rig
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Rook
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Ruchka
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Sagittarius
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Sakuratsu
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Scallywag
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Sekunda
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Sellsword
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Siebel
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Sirius
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Sleipnir
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Snakelet
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Solarsail
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Spessbite
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Spyglass
+  class: Frigate
+
+- type: drydockVesselClass
+  id: StratoRat
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Strayk
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Stubby
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Sulak
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Svinya
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Takeaway
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Talon
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Tanuki
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Taser
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Tayfun
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Tick
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Tiger
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Tokarev
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Triage
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Twilight
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Tzipora
+  class: Cruiser
+
+- type: drydockVesselClass
+  id: Ugol
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Valkyrie
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Vaquita
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Velios
+  class: Frigate
+
+- type: drydockVesselClass
+  id: Veska
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Victoria
+  class: Corvette
+
+- type: drydockVesselClass
+  id: Windreign
+  class: Capital
+
+- type: drydockVesselClass
+  id: Zephyr
+  class: Cutter
+
+- type: drydockVesselClass
+  id: Zeros
+  class: Capital
+
+- type: drydockVesselClass
+  id: caracara
+  class: Frigate
+
+- type: drydockVesselClass
+  id: twilightmk2
+  class: Frigate

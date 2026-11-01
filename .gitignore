@@ -316,8 +316,8 @@ Resources/MapImages
 # lscache
 *.lscache
 
-# Triad: ship-save tamper-protection signing keys (private RSA PEMs), generated at runtime by
-# the server. Never commit these. Default dir is ./triad-signing-keys (cvar triad.tamper_signing_keys_dir).
+# Triad: private RSA PEMs the old ship-save signing wrote here. Nothing reads or writes them any
+# more, but a server that ran that code still has them. Never commit these.
 triad-signing-keys/
 
 # Triad: BenchmarkDotNet drops results in the repo root when Content.Benchmarks runs locally

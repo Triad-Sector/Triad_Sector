@@ -34,6 +34,7 @@ using Content.Shared.Damage;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.FixedPoint;
+using Content.Shared._Triad.CCVar; // Triad: lobby start without players
 
 namespace Content.Server.GameTicking
 {
@@ -954,6 +955,13 @@ namespace Content.Server.GameTicking
             if (DummyTicker)
                 return;
 
+            // Triad: the drydock's round-end sweep files every hull still out, and a restart that
+            // ran ahead of it would delete them. The system holds the restart until the sweep
+            // drains or its ceiling passes, then calls back in here. Ahead of the replay and the
+            // update check, so both still run exactly once, on the pass that goes through.
+            if (_drydock.HoldRestartForSweep(RestartRound))
+                return;
+
             ReplayEndRound();
 
             // Handle restart for server update
@@ -980,7 +988,9 @@ namespace Content.Server.GameTicking
             }
             else
             {
-                if (_playerManager.PlayerCount == 0)
+                // Triad: triad.lobby.start_without_players runs the countdown on an empty server too.
+                // if (_playerManager.PlayerCount == 0)
+                if (_playerManager.PlayerCount == 0 && !_cfg.GetCVar(TriadCCVars.LobbyStartWithoutPlayers))
                     _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
                 else
                     _roundStartTime = _gameTiming.CurTime + LobbyDuration;

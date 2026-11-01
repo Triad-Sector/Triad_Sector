@@ -36,6 +36,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components; // Triad
+using Content.Shared._Triad.Drydock; // Triad
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -68,6 +70,8 @@ public sealed partial class NuclearReactorSystem : EntitySystem
     [Dependency] private PopupSystem _popupSystem = default!;
     [Dependency] private RadioSystem _radioSystem = default!;
     [Dependency] private ReactorPartSystem _partSystem = default!;
+    [Dependency] private SharedMapSystem _map = default!; // Triad
+    [Dependency] private MapInitRefireSystem _mapInitRefire = default!; // Triad
     [Dependency] private ServerGlobalSoundSystem _soundSystem = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -94,7 +98,8 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         base.Initialize();
 
         // Component events
-        SubscribeLocalEvent<NuclearReactorComponent, MapInitEvent>(OnInit);
+        SubscribeLocalEvent<NuclearReactorComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<NuclearReactorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<NuclearReactorComponent, ComponentRemove>(OnCompRemove);
 
         SubscribeLocalEvent<NuclearReactorComponent, DamageChangedEvent>(OnDamaged);
@@ -124,10 +129,14 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         SubscribeLocalEvent<NuclearReactorComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
     }
 
-    private void OnInit(EntityUid uid, NuclearReactorComponent comp, ref MapInitEvent args)
+    /// <summary>
+    /// Everything the reactor needs to tick, none of which survives a save. Startup rather than map
+    /// init, because map init never fires again for a reactor restored from one.
+    /// </summary>
+    private void OnStartup(EntityUid uid, NuclearReactorComponent comp, ref ComponentStartup args)
     {
         _signal.EnsureSinkPorts(uid, comp.ControlRodInsertPort, comp.ControlRodRetractPort);
-        
+
         _slotsSystem.AddItemSlot(uid, NuclearReactorComponent.PartSlotId, comp.PartSlot);
         comp.PartStorage = _containerSystem.EnsureContainer<Container>(uid, NuclearReactorComponent.PartStorageId);
 
@@ -139,7 +148,13 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         comp.FluxGridScratch = new List<ReactorNeutron>[gridWidth, gridHeight];
         comp.NeutronGrid = new int[gridWidth, gridHeight];
 
-        ApplyPrefab(uid, comp);
+        // ApplyPrefab is the only other thing that fills these, and a restored reactor skips it.
+        for (var x = 0; x < gridWidth; x++)
+            for (var y = 0; y < gridHeight; y++)
+            {
+                comp.FluxGrid[x, y] = [];
+                comp.FluxGridScratch[x, y] = [];
+            }
 
         // I hate everything about this, but it ensures the audio doesn't just stop if you don't look at it
         comp.AlarmAudioHighThermal = SpawnAttachedTo("ReactorAlarmEntity", new(uid, 0, 0));
@@ -147,6 +162,57 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         _ambientSoundSystem.SetSound(comp.AlarmAudioHighTemp.Value, new SoundPathSpecifier("/Audio/_FarHorizons/Machines/reactor_alarm_2.ogg"));
         comp.AlarmAudioHighRads = SpawnAttachedTo("ReactorAlarmEntity", new(uid, 0, 0));
         _ambientSoundSystem.SetSound(comp.AlarmAudioHighRads.Value, new SoundPathSpecifier("/Audio/_FarHorizons/Machines/reactor_alarm_3.ogg"));
+
+        RestoreGridFromStorage(uid, comp);
+    }
+
+    /// <summary>
+    /// Lays out the starting prefab. Map init only, which is what makes wiping the part storage
+    /// here safe: a restored reactor never reaches it.
+    /// </summary>
+    private void OnMapInit(EntityUid uid, NuclearReactorComponent comp, ref MapInitEvent args)
+    {
+        // Triad: on a map-init re-raise (a drydock retrieve) a reactor that already holds parts was
+        // laid out once, and the prefab starts by emptying the part storage, which is the one effect
+        // that re-raise cannot undo. A first map init lays the prefab as before.
+        if (_mapInitRefire.Refiring && comp.PartStorage.ContainedEntities.Count > 0)
+            return;
+
+        ApplyPrefab(uid, comp);
+        comp.ApplyPrefab = false;
+    }
+
+    /// <summary>
+    /// Rebuilds the grid by asking each stored part which cell it belongs in, so the layout needs
+    /// no entity references and no uid remapping.
+    /// </summary>
+    private void RestoreGridFromStorage(EntityUid uid, NuclearReactorComponent comp)
+    {
+        foreach (var part in comp.PartStorage.ContainedEntities)
+        {
+            if (!TryComp<ReactorPartComponent>(part, out var partComp))
+                continue;
+
+            var cell = partComp.ReactorCell;
+
+            if (cell.X < 0 || cell.X >= comp.ReactorGridWidth || cell.Y < 0 || cell.Y >= comp.ReactorGridHeight)
+            {
+                Log.Warning($"{ToPrettyString(part)} in {ToPrettyString(uid)} names cell {cell}, outside a {comp.ReactorGridWidth}x{comp.ReactorGridHeight} grid. Leaving it in storage.");
+                continue;
+            }
+
+            // Keep the first claimant and leave the other in storage, where a player can retrieve it.
+            if (comp.ComponentGrid[cell.X, cell.Y] != null)
+            {
+                Log.Warning($"{ToPrettyString(part)} in {ToPrettyString(uid)} claims cell {cell}, already taken. Leaving it in storage.");
+                continue;
+            }
+
+            comp.ComponentGrid[cell.X, cell.Y] = (part, partComp);
+        }
+
+        UpdateGasVolume(comp);
+        UpdateGridVisual(uid, comp);
     }
 
     #region Prefab
@@ -158,7 +224,13 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         for (var x = 0; x < comp.ReactorGridWidth; x++)
             for (var y = 0; y < comp.ReactorGridHeight; y++)
             {
-                comp.ComponentGrid[x, y] = prefab.TryGetValue(new Vector2i(x, y), out var part) ? part : null;
+                var cell = new Vector2i(x, y);
+                var occupant = prefab.TryGetValue(cell, out var part) ? part : null;
+
+                comp.ComponentGrid[x, y] = occupant;
+                if (occupant != null)
+                    occupant.Value.Comp.ReactorCell = cell;
+
                 comp.FluxGrid[x, y] = [];
                 comp.FluxGridScratch[x, y] = [];
             }
@@ -961,6 +1033,7 @@ public sealed partial class NuclearReactorSystem : EntitySystem
             _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} added {ToPrettyString(item):item} to position {pos.Y},{pos.X} in {ToPrettyString(uid):target}");
 
             comp.ComponentGrid[pos.X, pos.Y] = (item.Value, reactorPart);
+            reactorPart.ReactorCell = pos;
         }
 
         UpdateGridVisual(uid, comp);
@@ -1113,9 +1186,15 @@ public sealed partial class NuclearReactorSystem : EntitySystem
         outlet = null;
 
         if (!comp.InletEnt.HasValue || EntityManager.Deleted(comp.InletEnt.Value))
+        {
+            DeleteStalePipes(uid, comp.InletPos, comp.PipePrototype); // Triad
             comp.InletEnt = SpawnAttachedTo(comp.PipePrototype, new(uid, comp.InletPos), rotation: Angle.FromDegrees(comp.InletRot));
+        }
         if (!comp.OutletEnt.HasValue || EntityManager.Deleted(comp.OutletEnt.Value))
+        {
+            DeleteStalePipes(uid, comp.OutletPos, comp.PipePrototype); // Triad
             comp.OutletEnt = SpawnAttachedTo(comp.PipePrototype, new(uid, comp.OutletPos), rotation: Angle.FromDegrees(comp.OutletRot));
+        }
 
         if (comp.InletEnt == null || comp.OutletEnt == null)
             return false;
@@ -1130,6 +1209,26 @@ public sealed partial class NuclearReactorSystem : EntitySystem
 
         return _nodeContainer.TryGetNode(comp.InletEnt.Value, comp.PipeName, out inlet) && _nodeContainer.TryGetNode(comp.OutletEnt.Value, comp.PipeName, out outlet);
     }
+
+    // Triad: InletEnt and OutletEnt are not persisted, so a ship or map saved with the stubs aboard
+    // loads them as orphans. The fresh stub then overlaps its orphan, PipeRestrictOverlap unanchors it,
+    // and the check above unanchors the reactor, on that spot, every time. The stubs are save: false
+    // now; this clears the ones already written. Deleted, not queued: the overlap check runs as soon
+    // as the new stub anchors.
+    private void DeleteStalePipes(EntityUid uid, Vector2 localPos, EntProtoId pipeProto)
+    {
+        if (_transform.GetGrid(uid) is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+            return;
+
+        var coords = _transform.ToMapCoordinates(new EntityCoordinates(uid, localPos));
+        var tile = _map.TileIndicesFor(gridUid, grid, coords);
+        foreach (var ent in _map.GetAnchoredEntities(gridUid, grid, tile).ToList())
+        {
+            if (MetaData(ent).EntityPrototype?.ID == pipeProto.Id)
+                Del(ent);
+        }
+    }
+    // End Triad
     #endregion
 
     private void CleanUp(NuclearReactorComponent comp)

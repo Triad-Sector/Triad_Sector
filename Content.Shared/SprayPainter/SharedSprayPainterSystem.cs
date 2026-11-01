@@ -43,6 +43,7 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem
         SubscribeLocalEvent<SprayPainterComponent, SprayPainterDoAfterEvent>(OnPainterDoAfter);
         SubscribeLocalEvent<SprayPainterComponent, GetVerbsEvent<AlternativeVerb>>(OnPainterGetAltVerbs);
         SubscribeLocalEvent<PaintableComponent, InteractUsingEvent>(OnPaintableInteract);
+        SubscribeLocalEvent<PaintableComponent, ComponentStartup>(OnPaintableStartup); // Triad
         SubscribeLocalEvent<PaintedComponent, ExaminedEvent>(OnPainedExamined);
 
         Subs.BuiEvents<SprayPainterComponent>(SprayPainterUiKey.Key,
@@ -97,10 +98,12 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem
         if (args.Args.Target is not { } target)
             return;
 
-        if (!HasComp<PaintableComponent>(target))
+        // Triad: was HasComp; the style is now also recorded so it survives a save.
+        if (!TryComp<PaintableComponent>(target, out var paintable))
             return;
 
         Appearance.SetData(target, PaintableVisuals.Prototype, args.Prototype);
+        paintable.Style = args.Prototype; // Triad
         Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
         Charges.TryUseCharges(new Entity<LimitedChargesComponent?>(ent, EnsureComp<LimitedChargesComponent>(ent)), args.Cost);
 
@@ -120,6 +123,14 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem
             $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(args.Args.Target.Value):target}");
 
         args.Handled = true;
+    }
+
+    // Triad: paint is appearance data, which no save writes. Re-apply the recorded style on
+    // startup, which runs for a loaded entity where map init does not.
+    private void OnPaintableStartup(Entity<PaintableComponent> ent, ref ComponentStartup args)
+    {
+        if (ent.Comp.Style is { } style)
+            Appearance.SetData(ent, PaintableVisuals.Prototype, style);
     }
 
     private void OnPainterGetAltVerbs(Entity<SprayPainterComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)

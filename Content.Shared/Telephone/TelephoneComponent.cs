@@ -4,6 +4,7 @@ using Content.Shared._EinsteinEngines.Language;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Telephone;
 
@@ -44,8 +45,8 @@ public sealed partial class TelephoneComponent : Component
     /// <summary>
     /// The time at which the next tone will be played
     /// </summary>
-    [DataField]
-    public TimeSpan NextRingToneTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextRingToneTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The volume at which relayed messages are played

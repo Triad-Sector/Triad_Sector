@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Sound.Components;
 
@@ -12,8 +13,8 @@ public sealed partial class SpamEmitSoundComponent : BaseEmitSoundComponent
     /// <summary>
     /// The time at which the next sound will play.
     /// </summary>
-    [DataField, AutoPausedField, AutoNetworkedField]
-    public TimeSpan NextSound;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField, AutoNetworkedField]
+    public TimeSpan NextSound; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The minimum time in seconds between playing the sound.
