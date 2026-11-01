@@ -112,7 +112,7 @@
     - WeaponBorgPulseRifleSol
 
 - type: entity
-  parent: BorgModuleSDAssaultRanged
+  parent: BorgModuleSDAssaultMelee
   id: BorgModuleSDAdvancedAssaultMeleeNpc
   suffix: NPC, Melee
   components:
