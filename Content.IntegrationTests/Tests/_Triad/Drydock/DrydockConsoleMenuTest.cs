@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Content.Client._NF.Shipyard.UI;
 using Content.Shared._NF.Shipyard.BUI;
@@ -21,7 +22,7 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
     /// admin panel's tests do. Controls are found by their XAML name so nothing is made public to
     /// be testable.
     ///
-    /// <para>Every assertion here is one the canvas fixes: which row carries Retrieve, what an
+    /// <para>Every assertion here is one the canvas fixes: which berth offers Retrieve, what an
     /// escrow row and a landing berth say, that the card is absent when nothing is out, and that
     /// no label ships as its own locale key.</para>
     /// </summary>
@@ -50,19 +51,23 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                     Assert.That(card, Does.Contain("Behir"));
                     Assert.That(card, Does.Contain("Corvette"), "The class sits behind the name.");
                     Assert.That(card, Does.Not.Contain("out "), "How long it has been out is not drawn; the server still sends it.");
-                    var store = (Button)Named(menu, "StoreButton");
-                    Assert.That(store.Text, Does.StartWith("Store in #31"), "The button names the berth the server would pick.");
-                    Assert.That(store.Disabled, Is.False);
+                    var free = Rows(menu).Single(r => r.BerthId == 31);
+                    Assert.That(free.StoreButton.Visible, Is.True, "Store sits on the free berth the ship fits.");
+                    Assert.That(free.StoreButton.Disabled, Is.False);
+                    Assert.That(Rows(menu).Where(r => r.BerthId != 31).Any(r => r.StoreButton.Visible), Is.False, "Not on a berth with a ship in it.");
+                    Assert.That(Named(menu, "StoreStatusLabel").Visible, Is.False, "Nothing to explain.");
                 });
 
-                // The same ship out in space: the card still draws it, but Store is greyed and
-                // says why, since a store is a hand-over at a berth.
+                // The same ship out in space: the card still draws it, but Store is greyed and the
+                // card says why, since a store is a hand-over at a berth.
                 menu.UpdateState(State(berths: ThreeBerths(), deedShip: Behir(minutesOut: 65, docked: false), deedTitle: "Behir"));
                 Assert.Multiple(() =>
                 {
-                    var store = (DrydockMenuButton)Named(menu, "StoreButton");
-                    Assert.That(store.Disabled, Is.True, "Not docked here, so nothing to hand over.");
-                    Assert.That(store.Note, Is.EqualTo(Loc.GetString("shipyard-console-store-not-docked-note")), "The button carries the reason.");
+                    var free = Rows(menu).Single(r => r.BerthId == 31);
+                    var status = (Label)Named(menu, "StoreStatusLabel");
+                    Assert.That(free.StoreButton.Disabled, Is.True, "Not docked here, so nothing to hand over.");
+                    Assert.That(status.Visible, Is.True);
+                    Assert.That(status.Text, Is.EqualTo(Loc.GetString("shipyard-console-store-not-docked-note")), "The card carries the reason.");
                 });
 
             });
@@ -93,7 +98,7 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                 });
 
                 menu.UpdateState(State(berths: ThreeBerths(), deedShip: Behir(minutesOut: 5), deedTitle: "Behir", deedSale: ShipyardDeedSale.StoreFirst));
-                Assert.That(button.Visible, Is.False, "A hull the drydock holds is sold from the tab, not the footer.");
+                Assert.That(button.Visible, Is.False, "A loaded hull is sold from the tab, not the footer.");
 
                 menu.UpdateState(State(berths: ThreeBerths(), deedShip: null, deedTitle: "Grunder", deedSale: ShipyardDeedSale.Return));
                 Assert.Multiple(() =>
@@ -115,7 +120,7 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
             await pair.CleanReturnAsync();
         }
 
-        /// <summary>Retrieve is the row's one button, and only on a stored ship while nothing is out.</summary>
+        /// <summary>Retrieve is in the details, and only for a stored ship while nothing is out.</summary>
         [Test]
         public async Task RetrieveSitsOnlyWhereItWouldWork()
         {
@@ -124,35 +129,99 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
             await pair.Client.WaitPost(() =>
             {
                 var menu = new ShipyardConsoleMenu { LocalUserId = Viewer };
+                var berths = ThreeBerths();
 
                 // Card in, no deed on it: the stored ships can come out.
-                menu.UpdateState(State(berths: ThreeBerths(), deedShip: null));
+                menu.UpdateState(State(berths: berths, deedShip: null));
                 var rows = Rows(menu);
                 Assert.Multiple(() =>
                 {
                     Assert.That(rows, Has.Count.EqualTo(3), "One row per berth, empty ones included.");
-                    Assert.That(rows.Select(r => r.RetrieveButton.Visible), Is.EqualTo(new[] { true, true, false }),
-                        "Retrieve on the two stored ships, not on the empty berth.");
-                    Assert.That(rows.All(r => r.MenuButton.Visible), "Every row keeps its menu.");
+                    Assert.That(rows.Any(r => r.RetrieveButton.Visible || r.MenuButton.Visible || r.CancelButton.Visible), Is.False,
+                        "A row only picks its berth; the verbs are in the details.");
+                    Assert.That(Named(menu, "BerthDetailPlaceholder").Visible, Is.True, "Nothing picked yet.");
+                    Assert.That(Named(menu, "BerthDetail").Visible, Is.False);
                 });
 
-                // A ship out on the card: nothing may come out, and the slot collapses with it.
-                menu.UpdateState(State(berths: ThreeBerths(), deedShip: Behir(minutesOut: 48), deedTitle: "Behir"));
-                rows = Rows(menu);
-                Assert.Multiple(() =>
-                {
-                    Assert.That(rows.Any(r => r.RetrieveButton.Visible), Is.False);
-                    Assert.That(rows.Any(r => Named(r, "RetrieveSlot").Visible), Is.False, "No Retrieve anywhere, no slot reserved for it.");
-                });
+                Pick(menu, berths[0]);
+                Assert.That(Detail(menu, "RetrieveButton").Visible, Is.True, "A stored ship can come out.");
+
+                Pick(menu, berths[2]);
+                Assert.That(Detail(menu, "RetrieveButton").Visible, Is.False, "An empty berth has nothing to retrieve.");
+
+                // A ship out on the card: nothing may come out.
+                menu.UpdateState(State(berths: berths, deedShip: Behir(minutesOut: 48), deedTitle: "Behir"));
+                Pick(menu, berths[0]);
+                Assert.That(Detail(menu, "RetrieveButton").Visible, Is.False);
 
             });
 
             await pair.CleanReturnAsync();
         }
 
-        /// <summary>In escrow the row is marked, says who and how long, and Cancel stands where the menu was.</summary>
+        /// <summary>
+        /// Selecting a berth loads its verbs (ship and berth verbs for a stored ship, berth verbs only
+        /// for an empty one), each priced or showing why it's greyed. The selection persists across
+        /// states until the berth is removed.
+        /// </summary>
         [Test]
-        public async Task AnEscrowRowShowsCancelInPlaceOfTheMenu()
+        public async Task TheDetailsFollowThePickedBerth()
+        {
+            await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+
+            await pair.Client.WaitPost(() =>
+            {
+                var menu = new ShipyardConsoleMenu { LocalUserId = Viewer };
+                var berths = ThreeBerths();
+                menu.UpdateState(State(berths: berths, deedShip: null));
+
+                Pick(menu, berths[0]);
+                Assert.Multiple(() =>
+                {
+                    Assert.That(Drawn(Detail(menu, "BerthTools")), Is.SupersetOf(new[]
+                    {
+                        Loc.GetString("shipyard-console-menu-rename"),
+                        Loc.GetString("shipyard-console-menu-move"),
+                        Loc.GetString("shipyard-console-menu-transfer"),
+                    }));
+                    Assert.That(Drawn(Detail(menu, "BerthActions")), Has.Some.EqualTo(Loc.GetString("shipyard-console-menu-sell")));
+                    Assert.That(Drawn(Detail(menu, "BerthActions")), Has.Some.EqualTo("$8,400"), "What the ship sells for.");
+                    Assert.That(Drawn(Detail(menu, "BerthActions")), Has.Some.EqualTo(Loc.GetString("shipyard-console-detail-upgrade-to", ("class", "Corvette"))), "The class is on the button.");
+                    Assert.That(Drawn(Detail(menu, "BerthActions")), Has.Some.EqualTo("$2,500"), "With its price.");
+                    Assert.That(Drawn(Detail(menu, "BerthActions")), Has.None.EqualTo(Loc.GetString("shipyard-console-menu-sell-berth")), "A berth that cannot be sold does not offer it.");
+                    Assert.That(((RichTextLabel)Detail(menu, "BerthDetailTitle")).GetMessage(), Does.Contain("Kestrel"));
+                    Assert.That(IsFramed(Rows(menu)[0], "#ffd688"), Is.True, "The picked row is marked in yellow.");
+                    Assert.That(IsFramed(Rows(menu)[1], "#ffd688"), Is.False, "And only that row.");
+                });
+
+                Pick(menu, berths[2]);
+                Assert.Multiple(() =>
+                {
+                    var verbs = Drawn(Detail(menu, "BerthActions")).ToList();
+                    Assert.That(verbs, Has.None.EqualTo(Loc.GetString("shipyard-console-menu-sell")), "No ship to sell.");
+                    Assert.That(verbs, Has.Some.EqualTo(Loc.GetString("shipyard-console-menu-sell-berth")));
+                    Assert.That(verbs, Has.Some.EqualTo("+$1,250"), "An empty berth says what it sells for.");
+                });
+
+                // A fresh state keeps the pick by number, on the fresh rows.
+                menu.UpdateState(State(berths: ThreeBerths(), deedShip: null));
+                Assert.That(IsFramed(Rows(menu)[2], "#ffd688"), Is.True);
+
+                // The berth sold: nothing to show.
+                menu.UpdateState(State(berths: ThreeBerths().Take(2).ToList(), deedShip: null));
+                Assert.Multiple(() =>
+                {
+                    Assert.That(Named(menu, "BerthDetail").Visible, Is.False);
+                    Assert.That(Named(menu, "BerthDetailPlaceholder").Visible, Is.True);
+                });
+            });
+
+            await pair.CleanReturnAsync();
+        }
+
+        /// <summary>In escrow the row is marked and says who and how long, and Cancel stands alone in the details.</summary>
+        [Test]
+        public async Task AnEscrowRowShowsCancelInPlaceOfTheVerbs()
         {
             await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
 
@@ -168,17 +237,28 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
 
                 Assert.Multiple(() =>
                 {
-                    Assert.That(escrow.CancelButton.Visible, Is.True);
-                    Assert.That(escrow.MenuButton.Visible, Is.False, "Cancel replaces the menu; nothing else can be done to the ship.");
-                    Assert.That(escrow.RetrieveButton.Visible, Is.False);
                     Assert.That(escrow.OccupantLabel.GetMessage(), Does.Contain("offered to Tomas Reyes"));
                     Assert.That(escrow.OccupantLabel.GetMessage(), Does.Contain("27 m left"));
                     Assert.That(IsFramed(escrow, "#8a6a3a"), Is.True, "The escrow amber, not the resting frame.");
-
-                    // The control: an ordinary stored row has none of that.
-                    Assert.That(stored.CancelButton.Visible, Is.False);
-                    Assert.That(stored.MenuButton.Visible, Is.True);
                     Assert.That(IsFramed(stored, "#8a6a3a"), Is.False);
+                });
+
+                Pick(menu, berths[0]);
+                Assert.Multiple(() =>
+                {
+                    Assert.That(Detail(menu, "CancelTransferButton").Visible, Is.True);
+                    Assert.That(Detail(menu, "RetrieveButton").Visible, Is.False);
+                    Assert.That(Detail(menu, "BerthActions").ChildCount, Is.Zero, "Nothing else can be done to the ship.");
+                    Assert.That(((RichTextLabel)Detail(menu, "BerthDetailStatus")).GetMessage(), Does.Contain("offered to Tomas Reyes"));
+                    Assert.That(((RichTextLabel)Detail(menu, "BerthDetailStatus")).GetMessage(), Does.Contain("27 m left"));
+                });
+
+                // The control: an ordinary stored ship has none of that.
+                Pick(menu, berths[1]);
+                Assert.Multiple(() =>
+                {
+                    Assert.That(Detail(menu, "CancelTransferButton").Visible, Is.False);
+                    Assert.That(Detail(menu, "BerthActions").ChildCount, Is.Positive);
                 });
 
             });
@@ -243,11 +323,10 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
 
         /// <summary>
         /// An impounded ship is a card above the berths, to the Impound artboard: name, class and
-        /// tag, the reason it was taken, the fee, a picker opening on the berth the server would
-        /// choose, Reclaim, and Abandon…; Reclaim greys on a fee the balance cannot cover and only
-        /// then does small print say why. The appraisal share and the no-deadline note are not
-        /// drawn. A locked one draws the reason, says an admin holds it, and offers neither, to the
-        /// ImpoundLocked artboard.
+        /// tag, the reason it was taken, the fee, Reclaim, and Abandon…; Reclaim greys on a fee the
+        /// balance cannot cover and only then does small print say why. The appraisal share and the
+        /// no-deadline note are not drawn. A locked one draws the reason, says an admin holds it, and
+        /// offers neither, to the ImpoundLocked artboard.
         /// </summary>
         [Test]
         public async Task AnImpoundedShipDrawsItsCardAboveTheBerths()
@@ -259,7 +338,8 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                 var menu = new ShipyardConsoleMenu { LocalUserId = Viewer };
 
                 // Affordable: the balance the state carries is 12,300.
-                menu.UpdateState(State(berths: ThreeBerths(), deedShip: null, impounded: new List<DrydockImpoundedShipInfo> { Impounded(fee: 9000, appraisal: 18000) }));
+                var sabine = Impounded(fee: 9000, appraisal: 18000);
+                menu.UpdateState(State(berths: ThreeBerths(), deedShip: null, impounded: new List<DrydockImpoundedShipInfo> { sabine }));
                 var cards = Named(menu, "Impounds").Children.ToList();
                 Assert.That(cards, Has.Count.EqualTo(1), "One card per impounded ship.");
 
@@ -273,10 +353,24 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                     Assert.That(drawn, Has.Some.Contains("$9,000"), "The fee.");
                     Assert.That(drawn, Has.None.Contains("appraisal"), "The share it was cut from is not drawn.");
                     Assert.That(drawn, Has.None.Contains("deadline"), "No standing small print on a card the owner can act on.");
-                    Assert.That(buttons.Select(b => b.Text), Is.EqualTo(new[] { "Into #31 ▾", "Reclaim", "Abandon…" }),
-                        "The picker opens on the berth the server would choose; Reclaim and Abandon beside it.");
-                    Assert.That(buttons[1].Disabled, Is.False, "Affordable, and a berth fits.");
+                    Assert.That(buttons.Select(b => b.Text), Is.EqualTo(new[] { "Reclaim", "Abandon…" }), "No berth is chosen on the card.");
+                    Assert.That(buttons[0].Disabled, Is.False, "Affordable, and a berth fits.");
+                    Assert.That(Rows(menu).Any(r => r.StoreButton.Visible), Is.False, "Nothing on the rows until Reclaim is pressed.");
                 });
+
+                // Reclaim arms the free berths and turns into Cancel.
+                SetReclaiming(menu, sabine);
+                Assert.Multiple(() =>
+                {
+                    var free = Rows(menu).Single(r => r.BerthId == 31);
+                    Assert.That(free.StoreButton.Visible, Is.True);
+                    Assert.That(free.StoreButton.Text, Is.EqualTo(Loc.GetString("shipyard-console-store-reclaim-button")));
+                    Assert.That(Descendants(Named(menu, "Impounds")).OfType<Button>().Select(b => b.Text), Is.EqualTo(new[] { "Cancel", "Abandon…" }));
+                });
+
+                // Pressing Cancel puts the rows back.
+                SetReclaiming(menu, null);
+                Assert.That(Rows(menu).Any(r => r.StoreButton.Visible), Is.False);
 
                 // Unaffordable: Reclaim greys and the small print says why.
                 menu.UpdateState(State(berths: ThreeBerths(), deedShip: null, impounded: new List<DrydockImpoundedShipInfo> { Impounded(fee: 19000, appraisal: 38000) }));
@@ -328,6 +422,10 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                 menu.UpdateState(State(berths: ThreeBerths(), deedShip: null, deedOwner: null));
                 Assert.That(Named(menu, "LockoutPanel").Visible, Is.False, "No deed at all.");
 
+                // It lies over the drydock tab; a child of Tabs would be a tab of its own.
+                Assert.That(Named(menu, "LockoutPanel").Parent, Is.SameAs(Named(menu, "DrydockTabRoot")));
+                Assert.That(Named(menu, "Tabs").ChildCount, Is.EqualTo(2), "Purchase and Drydock.");
+
             });
 
             await pair.CleanReturnAsync();
@@ -353,8 +451,9 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                 };
                 menu.UpdateState(State(berths: berths, deedShip: Behir(minutesOut: 48), deedTitle: "Behir", offers: offers,
                     impounded: new List<DrydockImpoundedShipInfo> { Impounded(fee: 9000, appraisal: 18000) }));
+                Pick(menu, berths[1]);
 
-                // The prompts are built the way the row menu builds them, from the same keys.
+                // The prompts are built the way the details build them, from the same keys.
                 var sell = new DrydockTextPrompt(
                     Loc.GetString("shipyard-console-sell-title", ("ship", "Kestrel")),
                     Loc.GetString("shipyard-console-sell-body", ("ship", "Kestrel"), ("price", "$8,400"), ("percent", 35), ("appraisal", "$24,000"), ("berth", 12)),
@@ -473,7 +572,26 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
             => Descendants(root).Single(c => c.Name == name);
 
         private static List<DrydockBerthRow> Rows(Control menu)
-            => Named(menu, "Berths").Children.OfType<DrydockBerthRow>().ToList();
+            => Named(menu, "Berths").Children.SelectMany(c => c.Children).OfType<DrydockBerthRow>().ToList();
+
+        /// <summary>
+        /// Picks a berth as pressing its row does. The row's button only takes a click on a laid-out
+        /// window and these are never opened, so the handler behind it is called directly.
+        /// </summary>
+        private static void Pick(ShipyardConsoleMenu menu, DrydockBerthInfo berth)
+            => typeof(ShipyardConsoleMenu)
+                .GetMethod("SelectBerth", BindingFlags.Instance | BindingFlags.NonPublic)!
+                .Invoke(menu, new object?[] { berth });
+
+        /// <summary>Arms the free berths as pressing Reclaim does, for the reason <see cref="Pick"/> calls straight in.</summary>
+        private static void SetReclaiming(ShipyardConsoleMenu menu, DrydockImpoundedShipInfo? ship)
+            => typeof(ShipyardConsoleMenu)
+                .GetMethod("SetReclaiming", BindingFlags.Instance | BindingFlags.NonPublic)!
+                .Invoke(menu, new object?[] { ship });
+
+        /// <summary>A control of the details by name; the rows beside them reuse some of the names.</summary>
+        private static Control Detail(Control menu, string name)
+            => Named(Named(menu, "BerthDetail"), name);
 
         private static IEnumerable<string?> Drawn(Control root)
             => Descendants(root).OfType<Label>().Select(l => l.Text)
