@@ -5,7 +5,6 @@
   description: An advanced shielding unit which partially protects the cyborg when in use. The shield bubble blocks both outgoing and incoming fire, so its not usable alongside projectile weapons and lasers.
   suffix: Borg
 
-
 - type: entity
   parent: EnergyShieldBorgSol
   id: EnergyShieldBorgSolOn
