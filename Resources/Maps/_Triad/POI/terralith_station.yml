@@ -30771,7 +30771,7 @@ entities:
 
         Step three: Add the fuel rod. Insert a Cerenkite fuel rod to the center of the reactor core, so it has a steel gas channel touching it on all sides.
 
-        Step four: Watch the turbine carefully as the reactor gets up to temperature, ensuring that the turbine doesn't overheat.
+        Step four: Watch the turbine carefully as the reactor gets up to temperature, ensuring that the turbine doesn't overspeed. If the turbine starts to overspeed, manually increase stator load to resolve the problem.
   - uid: 4592
     components:
     - type: Transform
