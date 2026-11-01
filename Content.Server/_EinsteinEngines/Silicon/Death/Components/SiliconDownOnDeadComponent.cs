@@ -18,12 +18,4 @@ public sealed partial class SiliconDownOnDeadComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public bool Dead;
-
-    /// <summary>
-    ///     Mono - applies modifier when silicon is out of charge.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadOnly)]
-    public ProtoId<DamageModifierSetPrototype>? ModifierOnDead = "IPCWeakened";
-
-    public ProtoId<DamageModifierSetPrototype>? OriginalModifier;
 }

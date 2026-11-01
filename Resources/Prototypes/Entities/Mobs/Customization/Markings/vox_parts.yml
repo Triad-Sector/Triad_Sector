@@ -2,7 +2,7 @@
   id: VoxBeak
   bodyPart: Snout
   markingCategory: Snout
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -17,7 +17,7 @@
   id: VoxLArmScales
   bodyPart: LArm
   markingCategory: Arms
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -32,7 +32,7 @@
   id: VoxLLegScales
   bodyPart: LLeg
   markingCategory: Legs
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -43,11 +43,12 @@
         !type:SimpleColoring
         color: "#937e3d"
 
+
 - type: marking
   id: VoxRArmScales
   bodyPart: RArm
   markingCategory: Arms
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -62,7 +63,7 @@
   id: VoxRLegScales
   bodyPart: RLeg
   markingCategory: Legs
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -77,7 +78,7 @@
   id: VoxRHandScales
   bodyPart: RHand
   markingCategory: Arms
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -92,7 +93,7 @@
   id: VoxLHandScales
   bodyPart: LHand
   markingCategory: Arms
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -103,11 +104,12 @@
         !type:SimpleColoring
         color: "#937e3d"
 
+
 - type: marking
   id: VoxLFootScales
   bodyPart: LFoot
   markingCategory: Legs
-  forcedColoring: true
+  forcedColoring: false # Triad: False
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -118,11 +120,12 @@
         !type:SimpleColoring
         color: "#937e3d"
 
+
 - type: marking
   id: VoxRFootScales
   bodyPart: RFoot
   markingCategory: Legs
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -133,12 +136,13 @@
         !type:SimpleColoring
         color: "#937e3d"
 
+
 - type: marking
   id: VoxTail
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     # voxslop - tail_stenciled -> tail

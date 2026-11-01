@@ -42,8 +42,10 @@
       sprite: _RMC14/Interface/MousePointer/explosive_mouse.rsi
       state: all
   - type: WieldDelay
-    baseDelay: 3
-    modifiedDelay: 3
+    # Triad Weapon not viable with old delay, changing TTF From backpack to 2 seconds instead of 6
+    baseDelay: 1 #3->1
+    modifiedDelay: 1 #3->1
+    # End triad
     preventFiring: true
   - type: StaticPrice
     price: 7500

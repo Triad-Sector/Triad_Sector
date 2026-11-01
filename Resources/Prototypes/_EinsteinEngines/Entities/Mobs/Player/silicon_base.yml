@@ -94,6 +94,15 @@
         damage: 500
       behaviors:
       - !type:GibBehavior {}
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: silicon-radiation-warning
+        popupType: LargeCaution
+        targetOnly: true
   - type: Icon
     sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
     state: full

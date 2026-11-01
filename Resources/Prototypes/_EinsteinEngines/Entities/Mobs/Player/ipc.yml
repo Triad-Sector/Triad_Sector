@@ -88,6 +88,15 @@
         damage: 400
       behaviors:
       - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: silicon-radiation-warning
+        popupType: LargeCaution
+        targetOnly: true
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7

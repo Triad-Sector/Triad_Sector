@@ -1,14 +1,17 @@
 - type: entity
+  parent: BaseAction
   id: ActionEatMouse
   name: action-name-eat-mouse
   description: action-description-eat-mouse
   categories: [ HideSpawnMenu ] # Frontier
   components:
-  - type: InstantAction
+  - type: Action
     icon: Nyanotrasen/Icons/verbiconfangs.png
+  - type: InstantAction
     event: !type:EatMouseActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionHairball
   name: action-name-hairball
   description: action-description-hairball
@@ -16,7 +19,8 @@
   components:
   - type: LimitedCharges
     maxCharges: 1
-  - type: InstantAction
+  - type: Action
     icon: { sprite: Nyanotrasen/Objects/Specific/Species/felinid.rsi, state: icon }
     useDelay: 30
+  - type: InstantAction
     event: !type:HairballActionEvent
