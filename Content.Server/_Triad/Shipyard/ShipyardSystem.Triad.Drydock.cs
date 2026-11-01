@@ -1015,17 +1015,18 @@ public sealed partial class ShipyardSystem
             DeedOwnerUserId = DeedOwnerAccount(console),
             TransferOfferMinutes = offerMinutes,
             ImportableShips = console.CachedImportables,
-            DeedSale = DeedSaleFor(console.TargetIdSlot.ContainerSlot?.ContainedEntity),
+            DeedSale = DeedSaleFor(console.TargetIdSlot.ContainerSlot?.ContainedEntity, console.CachedDrydock.DeedShip),
         };
     }
 
     /// <summary>
-    /// What the footer's sale button does with the deed on <paramref name="card"/>. A hull the
-    /// drydock can hold sells from the drydock tab once stored, so the row stays the one record of
-    /// the sale; the footer keeps Sell only for hulls the drydock refuses, and turns into Return for
-    /// a hull issued on a voucher.
+    /// What the footer's sale button does with the deed on <paramref name="card"/>. A loaded hull,
+    /// one the drydock has filed or a saved manifest brought back, sells from the drydock tab once
+    /// stored, so the row stays the one record of the sale. The footer keeps Sell for a hull that
+    /// has never been loaded and for hulls the drydock refuses, and turns into Return for a hull
+    /// issued on a voucher. <paramref name="deedShip"/> is the card as the console last drew it.
     /// </summary>
-    internal ShipyardDeedSale DeedSaleFor(EntityUid? card)
+    internal ShipyardDeedSale DeedSaleFor(EntityUid? card, DrydockDeedShipInfo? deedShip = null)
     {
         if (card is not { Valid: true } id
             || !TryComp<ShuttleDeedComponent>(id, out var deed)
@@ -1037,19 +1038,32 @@ public sealed partial class ShipyardSystem
         if (deed.PurchasedWithVoucher)
             return ShipyardDeedSale.Return;
 
-        if (_configManager.GetCVar(TriadCCVars.DrydockEnabled) && !HasComp<ShipSavingBlacklistComponent>(shuttle))
+        // MinutesOut is what the card reads "never stored" from: null unless a row has the hull
+        // checked out. The identity alone is not proof, because a store mints it before its later
+        // gates and one that fails leaves it on a hull with no row. It is only the fallback for a
+        // card the console has not drawn yet, or that has since been swapped for another.
+        // LoadedFromSave is not enough alone either, since a retrieve deliberately leaves that unset.
+        var neverStored = deedShip != null && deedShip.Name == GetFullName(deed)
+            ? deedShip.MinutesOut == null
+            : TryGetDrydockShipId(shuttle) == null;
+
+        if (_configManager.GetCVar(TriadCCVars.DrydockEnabled)
+            && !HasComp<ShipSavingBlacklistComponent>(shuttle)
+            && (deed.LoadedFromSave || !neverStored))
+        {
             return ShipyardDeedSale.StoreFirst;
+        }
 
         return ShipyardDeedSale.Sell;
     }
 
     /// <summary>
-    /// The server half of <see cref="DeedSaleFor"/>: refuses a footer sale of a hull the drydock can
-    /// hold, which the console never offers. Writes the reason to the pressing player's chat.
+    /// The server half of <see cref="DeedSaleFor"/>: refuses a footer sale of a loaded hull, which
+    /// the console never offers. Writes the reason to the pressing player's chat.
     /// </summary>
     internal bool RefuseFooterSale(EntityUid uid, ShipyardConsoleComponent component, EntityUid player, EntityUid card)
     {
-        if (DeedSaleFor(card) != ShipyardDeedSale.StoreFirst)
+        if (DeedSaleFor(card, component.CachedDrydock.DeedShip) != ShipyardDeedSale.StoreFirst)
             return false;
 
         DenyWithReason(player, uid, component, DrydockError(DrydockConsoleVerb.Sell, "drydock-error-sell-store-first"));

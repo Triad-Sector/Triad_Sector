@@ -100,9 +100,19 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     /// <summary>Triad: the ship the operator has out when the card in the slot carries no deed, drawn on the same card with Transfer deed.</summary>
     private DrydockReissueShipInfo? _lastReissueShip;
 
-    // Retrieve is the same shape on the row that was pressed, with every other Retrieve greyed.
+    // Retrieve is the same shape on the details button, drawn only while the details show the ship
+    // being retrieved, and greyed for every other berth.
     private readonly PendingOp _retrieve = new();
-    private DrydockBerthRow? _retrievingRow;
+    private Guid? _retrievingShip;
+
+    /// <summary>The state said a store or retrieve is running at this console, so Retrieve stays greyed whichever berth is picked.</summary>
+    private bool _operationRunning;
+
+    /// <summary>The berth the details show, as the last state had it, or null with none picked.</summary>
+    private DrydockBerthInfo? _selectedBerth;
+
+    /// <summary>The berth rows of the last build, for moving the selection without rebuilding them.</summary>
+    private readonly List<DrydockBerthRow> _berthRows = new();
 
     // Triad: legacy import, the same pair for the import rows. An import is not sliced and reports
     // nothing, so its timer runs uninterrupted from the moment the payload is sent, which is after
@@ -215,6 +225,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     /// <summary>The balance the last state carried, which is what greys Reclaim on a fee it cannot cover.</summary>
     private int _lastBalance;
 
+    private DrydockImpoundedShipInfo? _reclaiming;
+
     /// <summary>How long an offer stands, for the sentence in the transfer prompt.</summary>
     private int _offerMinutes;
     private readonly List<VesselSize> _categoryStrings = new();
@@ -252,6 +264,19 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             ReissueButton.Disabled = true;
             OnReissueDeed?.Invoke(outShip.Ship);
         };
+        RetrieveButton.OnPressed += _ =>
+        {
+            if (_selectedBerth?.OccupantShipId is not { } shipId)
+                return;
+
+            BeginRetrieveFeedback(shipId);
+            OnRetrieve?.Invoke(shipId);
+        };
+        CancelTransferButton.OnPressed += _ =>
+        {
+            if (_selectedBerth?.OccupantTransferId is { } transferId)
+                OnCancelTransfer?.Invoke(transferId);
+        };
         Tabs.SetTabTitle(0, Loc.GetString("shipyard-console-tab-purchase"));
         Tabs.SetTabTitle(1, Loc.GetString("shipyard-console-tab-drydock"));
         BuyBerthButton.Text = Loc.GetString("shipyard-console-berth-buy-button") + DrydockText.Caret;
@@ -267,34 +292,24 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         };
     }
 
-    /// <summary>
-    /// Triad: every frame, the pending store, retrieve and import indicators advance their timeouts
-    /// and redraw when their text would change. Once a second, the offer and escrow clocks tick
-    /// from the last state the server sent; a clock that reaches zero stays at zero until the next
-    /// state says the offer is gone.
-    /// </summary>
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
 
         _sinceState += args.DeltaSeconds;
 
-        // Every frame, not once a second: this is the only thing moving while the server is busy,
-        // so it has to look alive. The timer is seconds since the last report, and the server sends
-        // one on entering every phase as well as on every whole percent, so even the two phases it
-        // cannot report from the inside bracket themselves with a message. A store that is alive
-        // never times out; a server that has genuinely stopped answering still gives the button back.
         if (_store.Active)
         {
             if (_store.Tick(args.DeltaSeconds))
             {
-                // The server went quiet. Give the button back rather than stranding the operator at
+                // The server went quiet. Give the buttons back rather than stranding the operator at
                 // a console that looks permanently busy.
                 PopulateDeedShip(_lastDeedShip);
+                DrawStoreButtons();
             }
             else if (_store.NeedsRedraw(out var dots))
             {
-                StoreButton.Text = _store.Percent is { } percent
+                StoreStatusLabel.Text = _store.Percent is { } percent
                     ? Loc.GetString("shipyard-console-storing-percent-button", ("percent", percent))
                     : Loc.GetString("shipyard-console-storing-button") + new string('.', dots);
             }
@@ -305,13 +320,14 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             if (_retrieve.Tick(args.DeltaSeconds))
             {
                 // The server went quiet; redraw the rows as the last state had them.
-                _retrievingRow = null;
+                _retrievingShip = null;
+                _operationRunning = false;
                 _escrowRows.Clear();
                 PopulateBerths(_lastBerths, _lastCanRetrieve);
             }
-            else if (_retrievingRow != null && _retrieve.NeedsRedraw(out var dots))
+            else if (_retrievingShip != null && _retrievingShip == _selectedBerth?.OccupantShipId && _retrieve.NeedsRedraw(out var dots))
             {
-                _retrievingRow.RetrieveButton.Text = _retrieve.Percent is { } percent
+                RetrieveButton.Text = _retrieve.Percent is { } percent
                     ? Loc.GetString("shipyard-console-retrieving-percent-button", ("percent", percent))
                     : Loc.GetString("shipyard-console-retrieving-button") + new string('.', dots);
             }
@@ -325,6 +341,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             {
                 // The server never answered; redraw the rows as the last state had them.
                 _importingRow = null;
+                _operationRunning = false;
                 _escrowRows.Clear();
                 PopulateBerths(_lastBerths, _lastCanRetrieve);
             }
@@ -343,6 +360,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             label.Text = DrydockText.Left(seconds - elapsed);
         foreach (var (row, seconds) in _escrowRows)
             row.SetTimeLeft(seconds - elapsed);
+        if (_selectedBerth is { OccupantTransferId: not null } escrow)
+            DrawBerthStatus(escrow, elapsed);
     }
 
     private List<StoredShipInfo> _lastShips = new();
@@ -648,8 +667,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         // SellShipButton.Disabled = state.ShipDeedTitle == null; // Triad: the button follows the deed, below
         // UnassignDeedButton.Disabled = state.ShipDeedTitle == null; // Triad: removed with the Unassign button
 
-        // Triad: a hull the drydock holds sells from the drydock tab, so no footer button; a voucher
-        // hull is returned rather than sold. The server refuses what the button does not offer.
+        // Triad: a loaded hull sells from the drydock tab, so no footer button; a voucher hull is
+        // returned rather than sold. The server refuses what the button does not offer.
         var sale = state.Drydock.DeedSale;
         SellShipButton.Visible = sale != ShipyardDeedSale.StoreFirst;
         SellShipButton.Disabled = sale == ShipyardDeedSale.None;
@@ -718,26 +737,14 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         _lastElapsed = -1;
         _offerClocks.Clear();
         _escrowRows.Clear();
-        // Triad: drydock tab. The percentage says whether a store or a retrieve is still running at
-        // this console, which is what stops an unrelated refresh taking the indicator down and what
-        // makes a console opened halfway through draw it at all.
         _lastReissueShip = state.Drydock.CanReissueToCard ? state.Drydock.ShipsOut.FirstOrDefault() : null;
         PopulateDeedShip(state.Drydock.DeedShip, state.Drydock.StoreProgressPercent);
+        // A pending reclaim lasts only while the ship is still in the lot and can still be paid for.
+        _reclaiming = _lastImpounded.FirstOrDefault(s => s.ShipId == _reclaiming?.ShipId && s.Redeemable && s.Fee <= _lastBalance);
         PopulateImpounds();
         PopulateOffers();
-        // A voucher in the slot reads as free listings; it is not a card a stored ship can be called
-        // in on, and the server refuses the press, so the button is not drawn. Nor with a ship
-        // already out: one at a time, and the card at the top already names the one that is.
+        _operationRunning = state.Drydock.StoreProgressPercent != null;
         PopulateBerths(state.Drydock.Berths, canRetrieve: state.IsTargetIdPresent && state.ShipDeedTitle == null && !state.FreeListings && state.Drydock.ShipsOut.Count == 0);
-
-        // The retrieve half of the same rule. The rows were just rebuilt, so the greying is applied
-        // here rather than carried on any one row: one ship comes back per card, and the server
-        // refuses the second regardless.
-        if (state.Drydock.StoreProgressPercent != null)
-        {
-            foreach (var row in Berths.Children.OfType<DrydockBerthRow>())
-                row.RetrieveButton.Disabled = true;
-        }
 
         PopulateBuyMenu(state.Drydock.BerthPrices);
 
@@ -750,20 +757,12 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     }
 
     /// <summary>
-    /// Triad: the card at the top. Store is a dropdown naming the berth the server would choose,
-    /// and listing every free berth: the ones the hull fits can be picked, the ones too small stay
-    /// listed and say so. Picking is what sends the store. With no free berth at all the button is
-    /// out, and with none that fits it says so and every entry is greyed. With a blank card in the
-    /// slot and a ship out, the same card names that ship and offers Transfer deed instead.
+    /// Triad: the card at the top. It names the ship, and beside it says why Store is greyed on the
+    /// free berths below, or how far along a store is. With a blank card in the slot and a ship out,
+    /// the same card names that ship and offers Transfer deed instead.
     /// </summary>
     private void PopulateDeedShip(DrydockDeedShipInfo? ship, int? progressPercent = null)
     {
-        // A state arriving used to mean the server had answered, because a store was one blocking
-        // chunk and nothing else could publish while it ran. Sliced, it can be any unrelated
-        // refresh - an offer expiring, someone else acting on a transfer, a card going in or out -
-        // so the state has to say whether work is still in flight, and only a state that says it is
-        // not takes the indicator down. Seeding from it is also what makes a console reopened
-        // mid-store draw the indicator instead of a live Store button.
         if (progressPercent is { } running)
         {
             if (!_store.Active)
@@ -781,10 +780,10 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         _lastDeedShip = ship;
 
         // The same card serves a blank card in the slot while the operator has a ship out: the name
-        // and class of that ship, and Transfer deed in Store's place. One ship out per account, so
-        // there is only ever one to draw.
+        // and class of that ship, and Transfer deed. One ship out per account, so there is only ever
+        // one to draw.
         DeedShipPanel.Visible = ship != null || _lastReissueShip != null;
-        StoreButton.Visible = ship != null;
+        StoreStatusLabel.Visible = false;
         ReissueButton.Visible = ship == null && _lastReissueShip != null;
         if (ship == null)
         {
@@ -800,10 +799,6 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             return;
         }
 
-        // The hull's name carries the weight, a size up from everything else on the tab; its class
-        // sits behind it in the dim colour, and a hull that has never been stored says so. How long
-        // it has been out is not drawn (user 2026-09-12, "extraneous information that just visually
-        // clutters things"); the server still sends MinutesOut.
         var deed = new FormattedMessage();
         deed.AddBoldSized(ship.Name, 14);
         deed.AddColored(" " + (ship.MinutesOut != null
@@ -811,47 +806,42 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             : Loc.GetString("shipyard-console-deed-ship-new", ("class", DrydockText.Class(ship.SizeClass)))), DrydockText.Dim);
         DeedShipLabel.SetMessage(deed);
 
-        StoreButton.Text = (ship.DefaultBerthId is { } berth
-            ? Loc.GetString("shipyard-console-store-in-button", ("berth", berth))
-            : Loc.GetString("shipyard-console-store-no-fit-button")) + DrydockText.Caret;
-        // A state that lands mid-store has just overwritten the indicator, so the next frame draws it again.
-        _store.InvalidateDrawn();
-
-        var free = _freeBerths;
-        StoreButton.SetItems(BerthItems(free, ship.FittingBerthIds, id =>
-        {
-            BeginStoreFeedback();
-            OnStore?.Invoke(id);
-        }));
-
-        // Storing into the berth an offer on the tab would land in takes that berth from the offer.
-        // A ship that is not docked here cannot be stored at all, and that outranks the landing
-        // note: the button says why it is greyed.
-        StoreButton.Note = !ship.Docked
+        // A ship that is not docked here cannot be stored at all, which outranks there being no
+        // berth for it. A running store draws over either; a state that lands mid-store has just
+        // overwritten the indicator, so the next frame draws it again.
+        var note = !ship.Docked
             ? Loc.GetString("shipyard-console-store-not-docked-note")
-            : free.Any(b => _incoming.ContainsKey(b.BerthId)) ? Loc.GetString("shipyard-console-store-takes-landing") : null;
-        // The last clause is the store that is still running: the button is redrawn from scratch
-        // here, and a state that arrived mid-store must not hand it back.
-        StoreButton.Disabled = free.Count == 0 || !_validId || !ship.Docked || _store.Active;
+            : ship.FittingBerthIds.Count == 0 ? Loc.GetString("shipyard-console-store-no-fit-button") : null;
+        StoreStatusLabel.Text = note ?? string.Empty;
+        StoreStatusLabel.Visible = note != null || _store.Active;
+        _store.InvalidateDrawn();
     }
 
     /// <summary>
-    /// Triad: the free-berth entries shared by Store's dropdown and the impound "into" picker -
-    /// same entry text, same too-small note, same fits-and-has-id gate. Only what picking one does
-    /// differs between the two callers, so that stays with them.
+    /// Triad: the one button on a free berth's row: Store for the ship on the card, or Store reclaim
+    /// while Reclaim is waiting for a berth, which outranks it. Every free berth shows it, so a berth
+    /// too small says so rather than vanishing. Store is greyed while the ship is not docked here;
+    /// an impounded ship is not docked anywhere, so that does not apply to a reclaim. Taking the
+    /// berth an offer on the tab would land in takes it from the offer, and that row says so on hover.
     /// </summary>
-    private IEnumerable<DrydockMenuButton.Item> BerthItems(List<DrydockBerthInfo> free, List<int> fittingBerthIds, Action<int> onPick)
+    private void DrawStoreButtons()
     {
-        return free.Select(b =>
+        var fitting = _reclaiming?.FittingBerthIds ?? _lastDeedShip?.FittingBerthIds;
+
+        foreach (var row in _berthRows)
         {
-            var id = b.BerthId;
-            var fits = fittingBerthIds.Contains(id);
-            return new DrydockMenuButton.Item(
-                Loc.GetString("shipyard-console-store-item", ("berth", id), ("class", DrydockText.Class(b.MaxSizeClass))),
-                fits ? null : Loc.GetString("shipyard-console-store-too-small"),
-                fits && _validId,
-                () => onPick(id));
-        });
+            row.StoreButton.Visible = fitting != null && row.OccupantShipId == null;
+            if (fitting == null || row.OccupantShipId != null)
+                continue;
+
+            var fits = fitting.Contains(row.BerthId);
+            var label = !fits ? "shipyard-console-store-too-small"
+                : _reclaiming != null ? "shipyard-console-store-reclaim-button"
+                : "shipyard-console-store-button";
+            row.StoreButton.Text = Loc.GetString(label);
+            row.StoreButton.Disabled = !fits || !_validId || _store.Active || _reclaiming == null && _lastDeedShip is { Docked: false };
+            row.StoreButton.ToolTip = _incoming.ContainsKey(row.BerthId) ? Loc.GetString("shipyard-console-store-takes-landing") : null;
+        }
     }
 
     /// <summary>
@@ -877,7 +867,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     }
 
     /// <summary>
-    /// The press landed and the server has gone quiet to do the work. The button is taken away
+    /// The press landed and the server has gone quiet to do the work. The buttons are taken away
     /// while it runs so a second press cannot be mistaken for the first not having registered. A
     /// second store is refused server-side by the in-progress sentinel regardless; this is about
     /// the operator knowing what is happening.
@@ -885,20 +875,20 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     private void BeginStoreFeedback()
     {
         _store.Begin();
-        StoreButton.Disabled = true;
+        StoreStatusLabel.Visible = true;
+        DrawStoreButtons();
     }
 
     /// <summary>
-    /// The retrieve counterpart: every Retrieve on the list is taken away, since one card takes
-    /// one ship and the server would refuse a second anyway, and the pressed row says what is
-    /// happening until the next state redraws the list.
+    /// The retrieve counterpart: Retrieve is taken away for every berth, since one card takes one
+    /// ship and the server would refuse a second anyway, and the button says what is happening
+    /// while the details show that ship, until the next state redraws the list.
     /// </summary>
-    private void BeginRetrieveFeedback(DrydockBerthRow row)
+    private void BeginRetrieveFeedback(Guid shipId)
     {
         _retrieve.Begin();
-        _retrievingRow = row;
-        foreach (var other in Berths.Children.OfType<DrydockBerthRow>())
-            other.RetrieveButton.Disabled = true;
+        _retrievingShip = shipId;
+        RetrieveButton.Disabled = true;
     }
 
     /// <summary>
@@ -937,90 +927,244 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     }
 
     /// <summary>
-    /// Triad: one row per berth. Retrieve is the row's one button, shown only when it would work;
-    /// the rarer verbs sit in the row's menu, ship verbs above a rule and berth verbs below it,
-    /// with a disabled entry saying why. The berth an offer on the tab would land in says what is
-    /// coming in place of "empty".
+    /// Triad: one row per berth; selecting a row shows its details. Selection persists by berth
+    /// number until the berth is removed. A berth with an incoming offer shows what is arriving.
     /// </summary>
     private void PopulateBerths(List<DrydockBerthInfo> berths, bool canRetrieve)
     {
         Berths.RemoveAllChildren();
+        _berthRows.Clear();
         PopulateImports(_lastImportable);
 
-        // Fresh rows are the server answering, so any retrieve or import in flight is over. The
-        // rows themselves are rebuilt here, so a retrieve that is still running loses the row its
-        // percentage was drawn on. UpdateState greys every Retrieve again whenever the state carries
-        // StoreProgressPercent, and that covers a running retrieve only because the server writes
-        // that one field for a store and a retrieve alike. The greying is the part that matters: a
-        // live Retrieve over a running one is an action, a lost figure is only a lost figure.
+        // Fresh rows mean the server has completed any retrieve/import in flight. Rows are rebuilt
+        // here, so a running retrieve may lose its progress display. UpdateState keeps Retrieve
+        // disabled while StoreProgressPercent is present; the missing percentage is cosmetic.
         _retrieve.Clear();
-        _retrievingRow = null;
+        _retrievingShip = null;
         _import.Clear();
         _importingRow = null;
         _lastCanRetrieve = canRetrieve;
 
         foreach (var berth in berths)
         {
-            var row = new DrydockBerthRow(berth, canRetrieve, _incoming.GetValueOrDefault(berth.BerthId));
-            row.RetrieveButton.OnPressed += _ =>
+            var row = new DrydockBerthRow(berth, canRetrieve: false, _incoming.GetValueOrDefault(berth.BerthId), selectable: true);
+
+            if (berth.OccupantTransferId != null)
+                _escrowRows.Add((row, berth.OccupantOfferSecondsLeft ?? 0));
+
+            // Fires on the confirming click. A button waiting for its confirm ungreys itself once
+            // its cooldown passes, so another berth's store already running is checked here too.
+            var berthId = berth.BerthId;
+            row.StoreButton.OnPressed += _ =>
             {
-                if (row.OccupantShipId is not { } shipId)
+                if (_store.Active)
                     return;
 
-                BeginRetrieveFeedback(row);
-                OnRetrieve?.Invoke(shipId);
+                if (_reclaiming is { } reclaim)
+                {
+                    SetReclaiming(null);
+                    OnRedeemImpound?.Invoke(reclaim.ShipId, berthId);
+                    return;
+                }
+
+                BeginStoreFeedback();
+                OnStore?.Invoke(berthId);
             };
 
-            if (berth.OccupantTransferId is { } transferId)
-            {
-                row.CancelButton.Disabled = !_validId;
-                row.CancelButton.OnPressed += _ => OnCancelTransfer?.Invoke(transferId);
-                _escrowRows.Add((row, berth.OccupantOfferSecondsLeft ?? 0));
-            }
+            // A flat button with no style class around the row, as a dropdown entry is, so nothing
+            // draws a box; the row paints its own hover and selection.
+            var pick = new ContainerButton { HorizontalExpand = true };
+            pick.AddChild(row);
+            pick.OnMouseEntered += _ => row.SetHovered(true);
+            pick.OnMouseExited += _ => row.SetHovered(false);
+            pick.OnPressed += _ => SelectBerth(berth);
 
-            var items = new List<DrydockMenuButton.Item>();
-            var occupied = berth.OccupantShipId != null;
-
-            if (berth.OccupantShipId is { } occupant && berth.OccupantState == "Stored")
-            {
-                var shipName = berth.OccupantName ?? "?";
-                var shipClass = berth.OccupantSizeClass;
-                var fromBerth = berth.BerthId;
-                var elsewhere = berths.Where(b => b.BerthId != fromBerth && b.OccupantShipId == null && ShipSizeRules.Fits(shipClass, b.MaxSizeClass)).ToList();
-
-                items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-rename"), null, _validId,
-                    () => OpenRenamePrompt(occupant, shipName)));
-                items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-move"),
-                    elsewhere.Count == 0 ? Loc.GetString("shipyard-console-menu-nowhere") : null, _validId && elsewhere.Count > 0,
-                    () => OpenMovePicker(occupant, shipName, elsewhere)));
-                items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-transfer"), null, _validId,
-                    () => OpenTransferPicker(occupant, shipName, shipClass, fromBerth)));
-                items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-sell"),
-                    berth.OccupantSellPrice is { } sellPrice ? BankSystemExtensions.ToSpesoString(sellPrice) : Loc.GetString("shipyard-console-menu-no-appraisal"),
-                    _validId && berth.OccupantSellPrice != null,
-                    () => OpenSellPrompt(occupant, shipName, berth.OccupantSellPrice ?? 0, berth.OccupantAppraisal, fromBerth)));
-            }
-
-            // The berth verbs, under a rule when ship verbs precede them.
-            var firstBerthVerb = items.Count;
-
-            if (berth.UpgradePrice is { } price && berth.UpgradeClass != null)
-            {
-                items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-upgrade-berth"),
-                    BankSystemExtensions.ToSpesoString(price), _validId,
-                    () => OnUpgradeBerth?.Invoke(row.BerthId),
-                    DividerAbove: firstBerthVerb > 0 && items.Count == firstBerthVerb));
-            }
-
-            items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-sell-berth"),
-                occupied ? Loc.GetString("shipyard-console-menu-occupied") : $"+{BankSystemExtensions.ToSpesoString(berth.SellValue)}",
-                !occupied && _validId,
-                () => OnSellBerth?.Invoke(row.BerthId),
-                DividerAbove: firstBerthVerb > 0 && items.Count == firstBerthVerb));
-
-            row.MenuButton.SetItems(items);
-            Berths.AddChild(row);
+            _berthRows.Add(row);
+            Berths.AddChild(pick);
         }
+
+        DrawStoreButtons();
+        SelectBerth(berths.FirstOrDefault(b => b.BerthId == _selectedBerth?.BerthId));
+    }
+
+    private void SelectBerth(DrydockBerthInfo? berth)
+    {
+        _selectedBerth = berth;
+
+        foreach (var row in _berthRows)
+            row.SetSelected(row.BerthId == berth?.BerthId);
+
+        PopulateBerthDetail();
+    }
+
+    private void PopulateBerthDetail()
+    {
+        BerthDetailPlaceholder.Visible = _selectedBerth == null;
+        BerthDetail.Visible = _selectedBerth != null;
+        BerthDetailLines.RemoveAllChildren();
+        BerthTools.RemoveAllChildren();
+        BerthActions.RemoveAllChildren();
+
+        if (_selectedBerth is not { } berth)
+            return;
+
+        var title = new FormattedMessage();
+        title.AddBoldSized(berth.OccupantName ?? Loc.GetString("shipyard-console-detail-empty-title", ("berth", berth.BerthId)), 14);
+        BerthDetailTitle.SetMessage(title);
+        DrawBerthStatus(berth, (int)_sinceState);
+
+        BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-berth",
+            Loc.GetString("shipyard-console-store-item", ("berth", berth.BerthId), ("class", DrydockText.Class(berth.MaxSizeClass))), null));
+        if (berth.OccupantShipId != null)
+            BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-ship-class", DrydockText.Class(berth.OccupantSizeClass), null));
+        if (berth.OccupantAppraisal is { } appraisal)
+            BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-appraisal", BankSystemExtensions.ToSpesoString(appraisal), null));
+
+        // Shown only when it would work, so the one primary button here is always one that does.
+        // A running retrieve redraws its figure on this button the next frame, if this is its ship.
+        RetrieveButton.Visible = _lastCanRetrieve && berth.OccupantShipId != null && berth.OccupantState == "Stored";
+        RetrieveButton.Disabled = _retrieve.Active || _operationRunning;
+        RetrieveButton.Text = Loc.GetString("shipyard-console-retrieve-button");
+        _retrieve.InvalidateDrawn();
+
+        // Nothing else can be done to a ship in escrow until the offer is answered, withdrawn, or
+        // expires, so Cancel stands alone rather than over a column of greyed verbs.
+        CancelTransferButton.Visible = berth.OccupantTransferId != null;
+        CancelTransferButton.Disabled = !_validId;
+        if (berth.OccupantTransferId != null)
+            return;
+
+        foreach (var item in BerthShipTools(berth))
+            BerthTools.AddChild(BerthToolButton(item));
+
+        foreach (var item in BerthVerbs(berth))
+            BerthActions.AddChild(BerthActionButton(item));
+    }
+
+    private void DrawBerthStatus(DrydockBerthInfo berth, int elapsed)
+    {
+        var status = new FormattedMessage();
+
+        if (berth.OccupantTransferId != null)
+        {
+            var offered = Loc.GetString("shipyard-console-transfer-escrow",
+                ("name", berth.OccupantOfferedTo ?? Loc.GetString("shipyard-console-transfer-someone")));
+            status.AddColored($"{offered} · {DrydockText.Left((berth.OccupantOfferSecondsLeft ?? 0) - elapsed)}", DrydockText.Warning);
+        }
+        else if (berth.OccupantShipId != null)
+        {
+            status.AddColored(berth.OccupantState == "Stored" ? Loc.GetString("shipyard-console-detail-stored") : berth.OccupantState ?? "?", DrydockText.Dim);
+        }
+        else if (_incoming.TryGetValue(berth.BerthId, out var incoming))
+        {
+            status.AddColored(Loc.GetString("shipyard-console-berth-incoming", ("ship", incoming)), DrydockText.Incoming);
+        }
+        else
+        {
+            status.AddColored(Loc.GetString("shipyard-console-berth-empty"), DrydockText.Empty);
+        }
+
+        BerthDetailStatus.SetMessage(status);
+    }
+
+    private List<DrydockMenuButton.Item> BerthShipTools(DrydockBerthInfo berth)
+    {
+        var items = new List<DrydockMenuButton.Item>();
+
+        if (berth.OccupantShipId is not { } occupant || berth.OccupantState != "Stored")
+            return items;
+
+        var berthId = berth.BerthId;
+        var shipName = berth.OccupantName ?? "?";
+        var shipClass = berth.OccupantSizeClass;
+        var elsewhere = _lastBerths.Where(b => b.BerthId != berthId && b.OccupantShipId == null && ShipSizeRules.Fits(shipClass, b.MaxSizeClass)).ToList();
+
+        items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-rename"), null, _validId,
+            () => OpenRenamePrompt(occupant, shipName)));
+        items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-move"),
+            elsewhere.Count == 0 ? Loc.GetString("shipyard-console-menu-nowhere") : null, _validId && elsewhere.Count > 0,
+            () => OpenMovePicker(occupant, shipName, elsewhere)));
+        items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-transfer"), null, _validId,
+            () => OpenTransferPicker(occupant, shipName, shipClass, berthId)));
+
+        return items;
+    }
+
+    private List<DrydockMenuButton.Item> BerthVerbs(DrydockBerthInfo berth)
+    {
+        var items = new List<DrydockMenuButton.Item>();
+        var occupied = berth.OccupantShipId != null;
+        var berthId = berth.BerthId;
+
+        if (berth.OccupantShipId is { } occupant && berth.OccupantState == "Stored")
+        {
+            var shipName = berth.OccupantName ?? "?";
+            items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-sell"),
+                berth.OccupantSellPrice is { } sellPrice ? BankSystemExtensions.ToSpesoString(sellPrice) : Loc.GetString("shipyard-console-menu-no-appraisal"),
+                _validId && berth.OccupantSellPrice != null,
+                () => OpenSellPrompt(occupant, shipName, berth.OccupantSellPrice ?? 0, berth.OccupantAppraisal, berthId)));
+        }
+
+        if (berth.UpgradePrice is { } price && berth.UpgradeClass != null)
+        {
+            items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-detail-upgrade-to", ("class", DrydockText.Class(berth.UpgradeClass))),
+                BankSystemExtensions.ToSpesoString(price), _validId,
+                () => OnUpgradeBerth?.Invoke(berthId),
+                DividerAbove: items.Count > 0));
+        }
+
+        if (!occupied && _validId)
+        {
+            items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-sell-berth"),
+                $"+{BankSystemExtensions.ToSpesoString(berth.SellValue)}",
+                true,
+                () => OnSellBerth?.Invoke(berthId)));
+        }
+
+        return items;
+    }
+
+    private static Button BerthToolButton(DrydockMenuButton.Item item)
+    {
+        var button = new Button
+        {
+            Text = item.Label,
+            StyleClasses = { "ButtonSquare" },
+            Disabled = !item.Enabled,
+            HorizontalExpand = true,
+            Margin = new Thickness(0, 0, 0, 3),
+            ToolTip = item.Detail,
+        };
+
+        button.OnPressed += _ => item.OnPressed?.Invoke();
+        return button;
+    }
+
+    private static Button BerthActionButton(DrydockMenuButton.Item item)
+    {
+        var button = new Button
+        {
+            StyleClasses = { "ButtonSquare" },
+            Disabled = !item.Enabled,
+            HorizontalExpand = true,
+            Margin = new Thickness(0, item.DividerAbove ? 8 : 0, 0, 3),
+        };
+
+        var line = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, HorizontalExpand = true };
+        line.AddChild(new Label { Text = item.Label, HorizontalExpand = true, ClipText = true });
+        if (item.Detail != null)
+        {
+            line.AddChild(new Label
+            {
+                Text = item.Detail,
+                Modulate = DrydockText.RowColors(item.Enabled).Detail,
+                Margin = new Thickness(8, 0, 0, 0),
+            });
+        }
+        button.AddChild(line);
+
+        button.OnPressed += _ => item.OnPressed?.Invoke();
+        return button;
     }
 
     /// <summary>Triad: Buy berth drops the class ladder with its prices.</summary>
@@ -1133,10 +1277,11 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     /// <summary>
     /// Triad: one card per ship of the operator's in the impound lot, to the Impound artboard: the
     /// name, class and tag, then the reason it was taken and the fee on two labelled lines, and
-    /// beside them a picker opening on the berth the server would choose, Reclaim, and Abandon…
-    /// behind a name-typed prompt. Reclaim greys on a fee the balance cannot cover and a warning
-    /// line says why. A locked card draws the reason, says an admin holds it, and offers neither,
-    /// to the ImpoundLocked artboard.
+    /// beside them Reclaim and Abandon… behind a name-typed prompt. Reclaim only arms the free
+    /// berths below with Store reclaim, which is what spends the fee, and turns into Cancel until
+    /// one is pressed. It greys on a fee the balance cannot cover or with no berth that fits, and a
+    /// warning line says why. A locked card draws the reason, says an admin holds it, and offers
+    /// neither, to the ImpoundLocked artboard.
     /// </summary>
     private void PopulateImpounds()
     {
@@ -1184,36 +1329,29 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
                         Modulate = DrydockText.Warning,
                     });
                 }
+
+                var noBerth = ship.FittingBerthIds.Count == 0;
+                if (noBerth)
+                {
+                    text.AddChild(new Label
+                    {
+                        Text = Loc.GetString("shipyard-console-impound-no-fit-button"),
+                        Modulate = DrydockText.Warning,
+                    });
+                }
                 line.AddChild(text);
 
-                // The picker opens on the berth the server would choose and lists every free berth,
-                // the ones too small greyed with the reason; picking only changes where Reclaim lands.
-                var target = ship.DefaultBerthId;
-                // The three buttons sit centred beside the four lines of text, as the artboard draws
+                // The buttons sit centred beside the four lines of text, as the artboard draws
                 // them; a horizontal box stretches its children to the row's height unless told not to.
-                var into = new DrydockMenuButton
-                {
-                    StyleClasses = { "ButtonSquare" },
-                    MinWidth = 130,
-                    AlignRight = true,
-                    Margin = new Thickness(12, 0, 8, 0),
-                    VerticalAlignment = VAlignment.Center,
-                    Text = IntoText(target),
-                };
-                into.SetItems(BerthItems(_freeBerths, ship.FittingBerthIds, id =>
-                {
-                    target = id;
-                    into.Text = IntoText(id);
-                }));
-                line.AddChild(into);
-
+                var arming = _reclaiming?.ShipId == ship.ShipId;
                 var reclaim = new Button
                 {
-                    Text = Loc.GetString("shipyard-console-impound-reclaim-button"),
-                    StyleClasses = { "ButtonSquare", StyleNano.ButtonPrimary },
+                    Text = Loc.GetString(arming ? "shipyard-console-transfer-cancel-button" : "shipyard-console-impound-reclaim-button"),
+                    StyleClasses = { "ButtonSquare" },
                     MinWidth = 96,
+                    Margin = new Thickness(12, 0, 0, 0),
                     VerticalAlignment = VAlignment.Center,
-                    Disabled = !_validId || target == null || unaffordable,
+                    Disabled = !_validId || noBerth || unaffordable,
                 };
                 var abandon = new Button
                 {
@@ -1229,11 +1367,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
 
                 var shipId = ship.ShipId;
                 var shipName = ship.Name;
-                reclaim.OnPressed += _ =>
-                {
-                    if (target is { } berth)
-                        OnRedeemImpound?.Invoke(shipId, berth);
-                };
+                var reclaimed = ship;
+                reclaim.OnPressed += _ => SetReclaiming(arming ? null : reclaimed);
                 abandon.OnPressed += _ => OpenAbandonPrompt(shipId, shipName);
             }
             else
@@ -1286,18 +1421,14 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         return (panel, line, text);
     }
 
-    private static string IntoText(int? berth)
+    /// <summary>Triad: arms the free berths for a reclaim, or with null puts them back to Store.</summary>
+    private void SetReclaiming(DrydockImpoundedShipInfo? ship)
     {
-        return (berth is { } id
-            ? Loc.GetString("shipyard-console-impound-into-button", ("berth", id))
-            : Loc.GetString("shipyard-console-impound-no-fit-button")) + DrydockText.Caret;
+        _reclaiming = ship;
+        PopulateImpounds();
+        DrawStoreButtons();
     }
 
-    /// <summary>
-    /// Triad: Abandon…, the sale confirmation's shape with its own words: no figure is quoted,
-    /// because abandoning pays nothing, and the ship's exact name unlocks the verb. The server
-    /// compares again.
-    /// </summary>
     private void OpenAbandonPrompt(Guid shipId, string shipName)
     {
         new DrydockTextPrompt(
@@ -1357,7 +1488,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             var accept = new Button
             {
                 Text = Loc.GetString("shipyard-console-transfer-accept-button"),
-                StyleClasses = { "ButtonSquare", StyleNano.ButtonPrimary },
+                StyleClasses = { "ButtonSquare" },
                 MinWidth = 84,
                 VerticalAlignment = VAlignment.Center,
                 Disabled = !_validId || offer.LandsInBerthId == null,

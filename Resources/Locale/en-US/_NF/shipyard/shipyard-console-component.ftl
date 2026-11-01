@@ -110,9 +110,12 @@ shipyard-console-engine-NFR = NFR
 shipyard-console-tab-purchase = Purchase
 shipyard-console-tab-drydock = Drydock
 shipyard-console-retrieve-button = Retrieve
-shipyard-console-store-in-button = Store in #{$berth}
+# Store sits on each free berth's row and takes a second click to confirm.
+shipyard-console-store-button = Store
+# The same button while Reclaim on an impound card is waiting for a berth.
+shipyard-console-store-reclaim-button = Store reclaim
 shipyard-console-store-no-fit-button = No berth fits
-# The Store dropdown: one entry per free berth, the too-small ones greyed with the reason.
+# A berth by number and class, as the details name it.
 shipyard-console-store-item = #{$berth} {$class}
 shipyard-console-store-too-small = too small
 shipyard-console-store-takes-landing = Takes the berth the offer below lands in.
@@ -149,15 +152,21 @@ shipyard-console-berth-empty = empty
 # An empty berth that an offer on the tab would fill.
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth
+# The details beside the berth list.
+shipyard-console-detail-select = Select a berth
+shipyard-console-detail-empty-title = Berth #{$berth}
+shipyard-console-detail-stored = Stored
+shipyard-console-detail-berth = Berth:
+shipyard-console-detail-ship-class = Hull class:
+shipyard-console-detail-appraisal = Appraisal:
+shipyard-console-detail-upgrade-to = Upgrade to: {$class}
 shipyard-console-menu-rename = Rename…
 shipyard-console-menu-move = Move…
 shipyard-console-menu-transfer = Transfer…
 shipyard-console-menu-sell = Sell…
 shipyard-console-menu-no-appraisal = no appraisal
 shipyard-console-menu-nowhere = nowhere to go
-shipyard-console-menu-upgrade-berth = Upgrade berth
 shipyard-console-menu-sell-berth = Sell berth
-shipyard-console-menu-occupied = occupied
 shipyard-console-transfer-accept-button = Accept
 shipyard-console-transfer-decline-button = Decline
 shipyard-console-transfer-cancel-button = Cancel
@@ -207,7 +216,6 @@ shipyard-console-impound-fee-free = [bold]Reclamation fee[/bold]: none
 shipyard-console-impound-unaffordable-note = Not enough credits: reclaiming it costs {$fee}.
 shipyard-console-impound-locked-note = Neither reclaim nor abandon is available until an admin unlocks it. No deadline. Ahelp to ask about it.
 shipyard-console-impound-locked-pill = LOCKED
-shipyard-console-impound-into-button = Into #{$berth}
 shipyard-console-impound-no-fit-button = No berth fits
 shipyard-console-impound-reclaim-button = Reclaim
 shipyard-console-impound-abandon-button = Abandon…

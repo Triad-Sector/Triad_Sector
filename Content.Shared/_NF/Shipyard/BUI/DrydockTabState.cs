@@ -140,12 +140,12 @@ public enum ShipyardDeedSale : byte
     /// <summary>No deed to a live ship on the card: the button is drawn greyed.</summary>
     None = 0,
 
-    /// <summary>A hull the drydock cannot hold (a faction hull bought with cash), or the drydock is off.</summary>
+    /// <summary>A hull that has never been loaded, a hull the drydock cannot hold (a faction hull bought with cash), or the drydock is off.</summary>
     Sell = 1,
 
     /// <summary>A hull issued on a voucher: handed back for nothing, and the voucher is burned.</summary>
     Return = 2,
 
-    /// <summary>A civilian hull with the drydock on: stored, then sold from the drydock tab. No footer button.</summary>
+    /// <summary>A loaded civilian hull with the drydock on: stored, then sold from the drydock tab. No footer button.</summary>
     StoreFirst = 3,
 }

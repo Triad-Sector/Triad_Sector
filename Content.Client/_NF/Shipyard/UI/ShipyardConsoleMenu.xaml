@@ -2,13 +2,8 @@
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       xmlns:ui="clr-namespace:Content.Client._NF.Shipyard.UI"
-                      SetSize="900 540"
-                      MinSize="860 500">
-    <!-- Triad: opens at the canvas's 900x540, the size every drydock artboard is drawn at. Upstream
-    opened at 700; it went to 900 while the import rows sat above the berths, and came back down
-    once the drydock became one list (user 2026-09-12, "about half as tall by default"): an
-    impound card, a deed card and five berth rows fit without scrolling, and past that the berth
-    list scrolls. MinSize is unchanged, so it still drags down to 500 on a small screen. -->
+                      SetSize="1000 540"
+                      MinSize="920 500">
     <PanelContainer VerticalExpand="True"
             HorizontalExpand="True"
             Margin="0 8 0 2">
@@ -176,10 +171,8 @@
                         </BoxContainer>
                         -->
                 </BoxContainer>
-                <!-- Triad: drydock tab. One list, one row per berth. The ship on the inserted card's deed is a
-                card at the top with a single Store dropdown, or, for a blank card while the operator has a
-                ship out, that ship with Transfer deed; everything rarer sits behind a row's menu.
-                Berths and the pending transfers are the operator's own, filled by the server. -->
+                <!-- Triad: drydock tab. One row per berth; the inserted card shows its deed's ship
+                with Store, or a transferred ship with Transfer deed. Berth verbs are in the details. -->
                 <PanelContainer Name="DrydockTabRoot"
                         VerticalExpand="True"
                         HorizontalExpand="True">
@@ -207,16 +200,18 @@
                                     <RichTextLabel Name="DeedShipLabel"
                                             HorizontalExpand="True"
                                             VerticalAlignment="Center"/>
-                                    <!-- Store is the dropdown itself: it lists every free berth, the ones too small greyed. -->
-                                    <ui:DrydockMenuButton Name="StoreButton"
-                                            StyleClasses="ButtonSquare ButtonPrimary"
-                                            MinWidth="130"
-                                            AlignRight="True"/>
-                                    <!-- In Store's place when the card carries no deed and the operator has a ship out:
-                        moves that ship's deed onto the card, wherever the ship is. -->
+                                    <!-- Store sits on each free berth's row. This says why those buttons are greyed,
+                                    and how far along a store is. -->
+                                    <Label Name="StoreStatusLabel"
+                                            Visible="False"
+                                            Modulate="#d9a441"
+                                            VerticalAlignment="Center"
+                                            Margin="12 0 0 0"/>
+                                    <!-- For a card with no deed while the operator has a ship out: moves that ship's
+                                    deed onto the card, wherever the ship is. -->
                                     <Button Name="ReissueButton"
                                             Visible="False"
-                                            StyleClasses="ButtonSquare ButtonPrimary"
+                                            StyleClasses="ButtonSquare"
                                             MinWidth="130"
                                             Text="{Loc 'shipyard-console-reissue-button'}"
                                             ToolTip="{Loc 'shipyard-console-reissue-tooltip'}"/>
@@ -242,56 +237,125 @@
                                     StyleClasses="ButtonSquare"
                                     AlignRight="True"/>
                         </BoxContainer>
-                        <ScrollContainer HorizontalExpand="True"
+                        <!-- The list and its details, 8 to 4, laid out as SafetyDepositConsoleWindow lays out
+                        its boxes: a row is picked on the left, and what can be done to it is on the right. -->
+                        <BoxContainer Orientation="Horizontal"
+                                HorizontalExpand="True"
                                 VerticalExpand="True">
-                            <BoxContainer Name="Berths"
-                                          Orientation="Vertical"
-                                          HorizontalExpand="True"
-                                          VerticalExpand="True">
-                                <!-- Rows are added by PopulateBerths -->
-                            </BoxContainer>
-                        </ScrollContainer>
+                            <ScrollContainer HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    HScrollEnabled="False"
+                                    SizeFlagsStretchRatio="8">
+                                <BoxContainer Name="Berths"
+                                              Orientation="Vertical"
+                                              HorizontalExpand="True"
+                                              VerticalExpand="True">
+                                    <!-- Rows are added by PopulateBerths -->
+                                </BoxContainer>
+                            </ScrollContainer>
+                            <PanelContainer StyleClasses="LowDivider"
+                                    VerticalExpand="True"
+                                    SetWidth="2"
+                                    Margin="6 0 6 0"/>
+                            <PanelContainer HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    SizeFlagsStretchRatio="4"
+                                    Margin="0 0 0 6">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
+                                </PanelContainer.PanelOverride>
+                                <PanelContainer Margin="1 1 1 1">
+                                    <PanelContainer.PanelOverride>
+                                        <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
+                                    </PanelContainer.PanelOverride>
+                                    <Label Name="BerthDetailPlaceholder"
+                                            Text="{Loc 'shipyard-console-detail-select'}"
+                                            Modulate="#777777"
+                                            Align="Center"
+                                            VAlign="Center"
+                                            HorizontalExpand="True"
+                                            VerticalExpand="True"/>
+                                    <!-- Fits at the default size; scrolls only when several cards stack above it. -->
+                                    <ScrollContainer Name="BerthDetail"
+                                            Visible="False"
+                                            HScrollEnabled="False"
+                                            HorizontalExpand="True"
+                                            VerticalExpand="True">
+                                        <BoxContainer Orientation="Vertical"
+                                                HorizontalExpand="True"
+                                                Margin="8">
+                                            <RichTextLabel Name="BerthDetailTitle"
+                                                    HorizontalExpand="True"/>
+                                            <RichTextLabel Name="BerthDetailStatus"
+                                                    HorizontalExpand="True"
+                                                    Margin="0 0 0 6"/>
+                                            <PanelContainer StyleClasses="LowDivider"
+                                                    Margin="0 0 0 6"/>
+                                            <BoxContainer Name="BerthDetailLines"
+                                                    Orientation="Vertical"
+                                                    HorizontalExpand="True"
+                                                    Margin="0 0 0 8"/>
+                                            <Button Name="RetrieveButton"
+                                                    Text="{Loc 'shipyard-console-retrieve-button'}"
+                                                    StyleClasses="ButtonSquare"
+                                                    HorizontalExpand="True"
+                                                    Margin="0 0 0 3"
+                                                    Visible="False"/>
+                                            <Button Name="CancelTransferButton"
+                                                    Text="{Loc 'shipyard-console-transfer-cancel-button'}"
+                                                    StyleClasses="ButtonSquare"
+                                                    HorizontalExpand="True"
+                                                    Margin="0 0 0 3"
+                                                    Visible="False"/>
+                                            <!-- Rename, Move and Transfer share a line, and the priced verbs get one each.
+                                            Both built by PopulateBerthDetail. -->
+                                            <GridContainer Name="BerthTools"
+                                                    Columns="3"
+                                                    HSeparationOverride="3"
+                                                    HorizontalExpand="True"/>
+                                            <BoxContainer Name="BerthActions"
+                                                    Orientation="Vertical"
+                                                    HorizontalExpand="True"/>
+                                        </BoxContainer>
+                                    </ScrollContainer>
+                                </PanelContainer>
+                            </PanelContainer>
+                        </BoxContainer>
                     </BoxContainer>
-                </PanelContainer>
-                <!-- Triad: the lockout. Shown when the inserted card's ship belongs to another account, and with
-                its own lines when a voucher is in the slot or the operator is barred from the drydock. It
-                swallows input, but the server refuses every message under it regardless; this is what the
-                player sees, not what stops them. -->
-                <PanelContainer Name="LockoutPanel"
-                        Visible="False"
-                        MouseFilter="Stop"
-                        VerticalExpand="True"
-                        HorizontalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <!-- Opaque on purpose. This panel is shown because the card belongs to someone else, so
-                        the fleet under it is not this operator's to read: at #90 alpha their ship names,
-                        classes and berth numbers stayed legible straight through the denial. -->
-                        <gfx:StyleBoxFlat BackgroundColor="#140000"/>
-                    </PanelContainer.PanelOverride>
-                    <!-- The stripes tile through a styled panel set in code: TextureRect's Tile mode is not
-                    implemented in the engine and draws the texture once in the corner. -->
-                    <PanelContainer Name="LockoutStripes"
+                    <!-- Triad: this just shows whenever a criteria is met -->
+                    <PanelContainer Name="LockoutPanel"
+                            Visible="False"
+                            MouseFilter="Stop"
                             VerticalExpand="True"
-                            HorizontalExpand="True"/>
-                    <!-- The two big lines take their fonts in code; Nano has no 44 pt face to name here. -->
-                    <BoxContainer Orientation="Vertical"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
-                        <Label Name="LockoutTitle"
-                                Text="{Loc 'shipyard-console-lockout-title'}"
-                                Modulate="#ff4a4a"
-                                Align="Center"/>
-                        <Label Name="LockoutSubtitle"
-                                Text="{Loc 'shipyard-console-lockout-subtitle'}"
-                                Modulate="#ffb0b0"
-                                Align="Center"
-                                Margin="0 10 0 0"/>
-                        <Label Name="LockoutBody"
-                                Text="{Loc 'shipyard-console-lockout-body'}"
-                                Modulate="#d08080"
-                                Align="Center"
-                                Margin="0 6 0 0"/>
-                    </BoxContainer>
+                            HorizontalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#140000"/>
+                        </PanelContainer.PanelOverride>
+                        <!-- The stripes tile through a styled panel set in code: TextureRect's Tile mode is not
+                        implemented in the engine and draws the texture once in the corner. -->
+                        <PanelContainer Name="LockoutStripes"
+                                VerticalExpand="True"
+                                HorizontalExpand="True"/>
+                        <!-- The two big lines take their fonts in code; Nano has no 44 pt face to name here. -->
+                        <BoxContainer Orientation="Vertical"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Label Name="LockoutTitle"
+                                    Text="{Loc 'shipyard-console-lockout-title'}"
+                                    Modulate="#ff4a4a"
+                                    Align="Center"/>
+                            <Label Name="LockoutSubtitle"
+                                    Text="{Loc 'shipyard-console-lockout-subtitle'}"
+                                    Modulate="#ffb0b0"
+                                    Align="Center"
+                                    Margin="0 10 0 0"/>
+                            <Label Name="LockoutBody"
+                                    Text="{Loc 'shipyard-console-lockout-body'}"
+                                    Modulate="#d08080"
+                                    Align="Center"
+                                    Margin="0 6 0 0"/>
+                        </BoxContainer>
+                    </PanelContainer>
                 </PanelContainer>
             </TabContainer>
         </PanelContainer>

@@ -23,6 +23,11 @@ internal static class DrydockText
     public static readonly Color Warning = Color.FromHex("#d9a441");
     public static readonly Color Incoming = Color.FromHex("#8fb4dc");
 
+    // A berth row on the shipyard console: black at rest, and SafetyDepositConsoleWindow's yellow
+    // around the picked one.
+    public static readonly Color RowBlack = Color.FromHex("#101010");
+    public static readonly Color SelectedBorder = Color.FromHex("#ffd688");
+
     // The two marked frames: amber for anything in escrow (a row, the alert), blue for what an
     // offer would bring in.
     public static readonly Color AmberBorder = Color.FromHex("#8a6a3a");

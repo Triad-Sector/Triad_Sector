@@ -17,6 +17,13 @@ public sealed partial class DrydockBerthRow : PanelContainer
     private static readonly StyleBoxFlat EscrowFrame = new() { BorderThickness = new Thickness(3), BorderColor = DrydockText.AmberBorder, BackgroundColor = DrydockText.AmberFill };
     private static readonly StyleBoxFlat IncomingFrame = new() { BorderThickness = new Thickness(3), BorderColor = DrydockText.BlueBorder, BackgroundColor = DrydockText.BlueFill };
 
+    // A row that picks a berth, black at rest with a yellow border when picked, as
+    // SafetyDepositConsoleWindow draws its boxes. Hover and picked outrank the frames above while
+    // they apply; the row's text still says escrow or incoming.
+    private static readonly StyleBoxFlat RestFrame = new() { BorderThickness = new Thickness(3), BorderColor = Color.FromHex("#333333"), BackgroundColor = DrydockText.RowBlack };
+    private static readonly StyleBoxFlat HoverFrame = new() { BorderThickness = new Thickness(3), BorderColor = Color.FromHex("#636363"), BackgroundColor = DrydockText.RowBlack };
+    private static readonly StyleBoxFlat SelectedFrame = new() { BorderThickness = new Thickness(3), BorderColor = DrydockText.SelectedBorder, BackgroundColor = DrydockText.RowBlack };
+
     public int BerthId;
 
     public Guid? OccupantShipId;
@@ -24,18 +31,11 @@ public sealed partial class DrydockBerthRow : PanelContainer
     private readonly string? _occupantName;
     private readonly string? _occupantClass;
     private readonly string? _escrowText;
+    private readonly StyleBox? _restFrame;
+    private bool _hovered;
+    private bool _selected;
 
-    /// <param name="canRetrieve">
-    /// Whether anything may come out right now: false while the card already carries a deed, since
-    /// one card holds one ship, or while no card is in. The row hides Retrieve rather than greying
-    /// it, so the one button a row shows is always one that works. The slot it sits in stays
-    /// reserved while the flag is set, so the menus on the empty rows still line up with it.
-    /// </param>
-    /// <param name="incomingShipName">
-    /// The ship an offer on the tab would put in this berth if accepted, when the berth is empty
-    /// and is where the offer lands. The row says so in place of "empty".
-    /// </param>
-    public DrydockBerthRow(DrydockBerthInfo berth, bool canRetrieve, string? incomingShipName = null)
+    public DrydockBerthRow(DrydockBerthInfo berth, bool canRetrieve, string? incomingShipName = null, bool selectable = false)
     {
         RobustXamlLoader.Load(this);
 
@@ -79,7 +79,37 @@ public sealed partial class DrydockBerthRow : PanelContainer
         {
             DrawOccupant(null);
             RetrieveButton.Visible = canRetrieve && berth.OccupantShipId != null && berth.OccupantState == "Stored";
+
+            if (selectable)
+                PanelOverride = RestFrame;
         }
+
+        _restFrame = PanelOverride;
+
+        if (selectable)
+        {
+            CancelButton.Visible = false;
+            MenuButton.Visible = false;
+        }
+    }
+
+    /// <summary>Draws the row as the berth under the mouse, for an owner that lets rows be picked.</summary>
+    public void SetHovered(bool hovered)
+    {
+        _hovered = hovered;
+        UpdateFrame();
+    }
+
+    /// <summary>Draws the row as the picked berth, for an owner that lets rows be picked.</summary>
+    public void SetSelected(bool selected)
+    {
+        _selected = selected;
+        UpdateFrame();
+    }
+
+    private void UpdateFrame()
+    {
+        PanelOverride = _selected ? SelectedFrame : _hovered ? HoverFrame : _restFrame;
     }
 
     /// <summary>Redraws the escrow clock. The menu ticks this once a second from the last state it received.</summary>

@@ -445,7 +445,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (RefuseDeedNotOwned(uid, component, player, deed, "sell")) // Triad: a card is not proof of ownership, the account is
             return; // Triad
 
-        if (RefuseFooterSale(uid, component, player, targetId)) // Triad: a hull the drydock holds sells from the drydock tab
+        if (RefuseFooterSale(uid, component, player, targetId)) // Triad: a loaded hull sells from the drydock tab
             return; // Triad
 
         var shuttleUid = deed.ShuttleUid;

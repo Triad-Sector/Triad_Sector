@@ -8,15 +8,13 @@ using Robust.Shared.Maths;
 namespace Content.Client._NF.Shipyard.UI;
 
 /// <summary>
-/// A button that drops a short menu. On the shipyard console: a berth row's three dots, Store in
-/// #N, Buy berth, and an impound card's Into #N picker; on the drydock admin panel: Restore to…,
-/// the overflow menu, Grant berth, and the admin berth rows' three dots. The rare verbs live here
-/// so a row itself carries one button.
+/// A button that drops a short menu for rare verbs, so each row carries one button. Used for Buy
+/// berth (shipyard console), and for Restore to…, the overflow menu, Grant berth and admin berth
+/// rows' three dots (drydock admin panel).
 ///
-/// <para>The owning window replaces the items on every state, but a menu that is already open was
-/// built from the items as they stood when it opened. Its popup sits in the modal root rather than
-/// under this button, so it keeps those entries and their callbacks until it closes, even across a
-/// state that rebuilt the button or removed it. The server checks every verb again on receipt.</para>
+/// <para>The owning window replaces the items on every state, but an open menu keeps the entries
+/// and callbacks it opened with until it closes: its popup lives in the modal root, not under this
+/// button, so it outlives rebuilds or removal. The server rechecks every verb on receipt.</para>
 /// </summary>
 public sealed class DrydockMenuButton : Button
 {
@@ -39,12 +37,6 @@ public sealed class DrydockMenuButton : Button
 
     /// <summary>Open the menu flush with the button's right edge rather than its left.</summary>
     public bool AlignRight { get; set; }
-
-    /// <summary>
-    /// A line of warning drawn under the entries, or null. Store uses it when one of the berths
-    /// listed is where an offer on the tab would land.
-    /// </summary>
-    public string? Note { get; set; }
 
     public DrydockMenuButton()
     {
@@ -101,16 +93,6 @@ public sealed class DrydockMenuButton : Button
                 pressed?.Invoke();
             };
             list.AddChild(entry);
-        }
-
-        if (Note != null)
-        {
-            list.AddChild(new Label
-            {
-                Text = Note,
-                Modulate = DrydockText.Warning,
-                Margin = new Thickness(10, 6),
-            });
         }
 
         // Added by hand rather than OpenAtMouse, which is the only path the engine orphans for
