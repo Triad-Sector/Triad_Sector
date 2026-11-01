@@ -130,7 +130,7 @@
         - FullTileMask
         layer:
         # Triad - no fun allowed...
-        - Impassable # Required: ChaoticJump rays only stop on this, without it the tesla jumps out of containment
+        - Impassable
         - HighImpassable
         - MidImpassable
         - LowImpassable
