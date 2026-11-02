@@ -2,7 +2,8 @@
 
 examine-name = It's [bold]{$name}[/bold]!
 examine-can-see = Looking at {OBJECT($ent)}, you can see:
-examine-can-see-nothing = {CAPITALIZE(GENDER($ent))} is completely naked!
+# Triad - Fixes weird phrasing
+examine-can-see-nothing = {CAPITALIZE(SUBJECT($ent))} {CONJUGATE-BE($ent)} completely naked!
 
 id-examine = • {CAPITALIZE(POSS-ADJ($ent))} [bold]{$item}[/bold] on {POSS-ADJ($ent)} belt.
 head-examine = • {CAPITALIZE(POSS-ADJ($ent))} [bold]{$item}[/bold] on {POSS-ADJ($ent)} head.

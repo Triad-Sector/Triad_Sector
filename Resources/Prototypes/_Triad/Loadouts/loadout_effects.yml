@@ -24,15 +24,15 @@
     - Vulpkanin
     - Harpy
     - Rodentia
-    - Protogen # Mono
-    - Chitinid # DeltaV
-    - Resomi # Goob
-    - IPC # Goob
-    - Yowie # Goob
-    - Tajaran # Goob
-    - Hydrakin # Mono
-    - Avali # Triad
-    - Shadekin # Triad
+    - Protogen
+    - Chitinid
+    - Resomi
+    - IPC
+    - Tajaran
+    - Hydrakin
+    - Avali
+    - Shadekin
+    - Ovinia
 
 - type: loadoutEffectGroup
   id: WaterBreatherNF

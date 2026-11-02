@@ -1,13 +1,16 @@
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.StatusEffect;
@@ -23,6 +26,7 @@ namespace Content.Server.Medical
         [Dependency] private AudioSystem _audio = default!;
         [Dependency] private BodySystem _body = default!;
         [Dependency] private HungerSystem _hunger = default!;
+        [Dependency] private MobStateSystem _mobstate = default!;
         [Dependency] private PopupSystem _popup = default!;
         [Dependency] private PuddleSystem _puddle = default!;
         [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
@@ -39,11 +43,16 @@ namespace Content.Server.Medical
         /// <summary>
         /// Make an entity vomit, if they have a stomach.
         /// </summary>
-        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
+        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f, bool force = false)
         {
             // Main requirement: You have a stomach
             var stomachList = _body.GetBodyOrganEntityComps<StomachComponent>(uid);
             if (stomachList.Count == 0)
+                return;
+
+            //  Vomit only if entity is alive
+            //  Ignore condition if force was set to true
+            if (!force && _mobstate.IsDead(uid))
                 return;
 
             // Vomiting makes you hungrier and thirstier

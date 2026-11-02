@@ -349,6 +349,16 @@
           32:
             sprite: _Triad/Mobs/Species/Ovinia/displacement.rsi
             state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Triad/Mobs/Species/Ovinia/displacement.rsi
+            state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Triad/Mobs/Species/Ovinia/displacement.rsi
+            state: outerclothing-hardsuit
 
 - type: entity
   parent: BaseHumanOrgan

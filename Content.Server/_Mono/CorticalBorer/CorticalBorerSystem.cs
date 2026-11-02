@@ -31,6 +31,8 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Body.Components;
 
 namespace Content.Server._Mono.CorticalBorer;
 
@@ -188,13 +190,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         solution.AddReagent(chemicalPrototype.Reagent, chemAmount);
 
         // add the chemicals to the bloodstream of the host
-        if (!_blood.TryAddToChemicals(comp.Host.Value, solution, bloodstream))
+        if (!_blood.TryAddToChemicals((comp.Host.Value, bloodstream), solution))
             return false;
 
         UpdateChems(ent, -((int)chemAmount * chemicalPrototype.Cost));
         return true;
     }
-    
     private void OnInjectReagentMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerDispenserInjectMessage message)
     {
         CorticalBorerChemicalPrototype? chemProto = null;

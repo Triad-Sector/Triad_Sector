@@ -28,7 +28,7 @@
       stationProto: SecurityFrontierOutpost
       gridComponents:
       - type: VesselInfo
-        description: "Home of the Triad Defense Force, the last bastion of law and safety."
+        description: "The district's last bastion of law and safety."
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Auric Outpost'

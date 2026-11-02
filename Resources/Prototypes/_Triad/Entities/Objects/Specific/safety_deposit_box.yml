@@ -15,13 +15,14 @@
   - type: Storage
     blacklist:
       components:
+      - PresetIdCard
       - IdCard
-      - Currency
+      - Access
       - Store
-      - EncryptionKey
+      - Cash
+      - Headset
       - Implant
       - SafetyDepositBox
-      - MobState
   - type: SafetyDepositBox
   - type: Appearance
   - type: Tag

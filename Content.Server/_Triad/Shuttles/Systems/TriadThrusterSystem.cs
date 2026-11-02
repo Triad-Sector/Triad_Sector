@@ -1,283 +1,30 @@
 using System.Numerics;
 using Content.Server.Shuttles.Components;
-using Content.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics;
-using Content.Shared.Tag;
-using Content.Shared.Whitelist;
+using Content.Shared._Triad.Shuttles;
 using System.Linq;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Triad.Shuttles.Systems;
 
-public sealed partial class TriadThrusterSystem : EntitySystem
+public sealed partial class TriadThrusterSystem : SharedTriadThrusterSystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
-    [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
-    private static readonly ProtoId<TagPrototype> GrilleTag = "Grille";
+    [Dependency] private EntityQuery<ThrusterProfileComponent> _profileQuery = default!;
+
     private static readonly TimeSpan RayCheckCooldown = TimeSpan.FromSeconds(5);
-    private const int MaxGrilles = 3;
-
-    private const CollisionGroup StructureMask = CollisionGroup.FullTileMask;
-
-    public static readonly List<ThrusterBlockingProfileData> ThrusterBlockingProfileTable =
-    [
-        // Always blocked
-        new ThrusterBlockingProfileData(
-            [],
-            8
-        ),
-
-        // Never blocked
-        new ThrusterBlockingProfileData(
-            [],
-            0
-        ),
-
-        // Small slash normal thruster
-        new ThrusterBlockingProfileData(
-            [
-                new ThrusterBlockingRayData(
-                    angle: 180d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 135d,
-                    offsetX: 0.0f,
-                    offsetY: 0.15f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 103d,
-                    offsetX: -0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 77d,
-                    offsetX: -0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 63d,
-                    offsetX: 0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 33d,
-                    offsetX: 0.0f,
-                    offsetY: 0.25f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 24.5d,
-                    offsetX: 0.25f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 17d,
-                    offsetX: 0.25f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -17d,
-                    offsetX: -0.25f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -24.5d,
-                    offsetX: -0.25f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -33d,
-                    offsetX: 0.0f,
-                    offsetY: 0.25f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -63d,
-                    offsetX: -0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -77d,
-                    offsetX: 0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -90d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -103d,
-                    offsetX: 0.45f,
-                    offsetY: 0.05f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -135d,
-                    offsetX: 0.0f,
-                    offsetY: 0.15f
-                ),
-            ],
-            2 // 2 min quality
-        ),
-
-        // Large thruster
-        new ThrusterBlockingProfileData(
-            [
-                new ThrusterBlockingRayData(
-                    angle: 180d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 180d,
-                    offsetX: 1.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 116.6d,
-                    offsetX: 0.5f,
-                    offsetY: -0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -116.6d,
-                    offsetX: 0.5f,
-                    offsetY: -0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offsetX: 1.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 90d,
-                    offsetX: 1.0f,
-                    offsetY: -1.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -90d,
-                    offsetX: 0.0f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 62d,
-                    offsetX: 0.5f,
-                    offsetY: -0.55f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -62d,
-                    offsetX: 0.5f,
-                    offsetY: -0.55f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 53d,
-                    offsetX: 0.5f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -53d,
-                    offsetX: 0.5f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 30.5d,
-                    offsetX: 0.5f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -30.5d,
-                    offsetX: 0.5f,
-                    offsetY: 0.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 24.5d,
-                    offsetX: 0.25f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -24.5d,
-                    offsetX: 0.75f,
-                    offsetY: 0.45f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 17d,
-                    offsetX: 0.45f,
-                    offsetY: 0.44f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: -17d,
-                    offsetX: 0.55f,
-                    offsetY: 0.44f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offsetX: 0.0f,
-                    offsetY: -1.0f
-                ),
-
-                new ThrusterBlockingRayData(
-                    angle: 0d,
-                    offsetX: 1.0f,
-                    offsetY: -1.0f
-                )
-            ],
-            3 // 3 min quality
-        ),
-    ];
 
     public bool NozzleExposedRaycast(Entity<TransformComponent, ThrusterComponent> ent, bool playerTriggered, out float clearanceFraction)
     {
         clearanceFraction = 0.0f;
+
+        if (!_profileQuery.TryComp(ent.Owner, out var profileComp))
+            return true;
 
         var thruster = ent.Comp2;
 
@@ -301,7 +48,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
 
         var clearQuality = 0d;
 
-        var rayProfileTable = ThrusterBlockingProfileTable[(int)thruster.ThrusterProfile];
+        var rayProfileTable = ThrusterBlockingProfileTable[(int)profileComp.Profile];
         var requiredQuality = rayProfileTable.RequiredQuality;
 
         foreach (var rayPreset in rayProfileTable.Rays)
@@ -353,7 +100,7 @@ public sealed partial class TriadThrusterSystem : EntitySystem
                     grilleCount++;
 
                 // Entities that fit the block whitelist were in the thruster's path. This path is blocked.
-                if (_whitelist.IsWhitelistPass(thruster.BlockThrusterWhitelist, hitEnt))
+                if (_whitelist.IsWhitelistPass(BlockThrusterWhitelist, hitEnt))
                 {
                     blocked = true;
                     break;

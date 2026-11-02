@@ -5,6 +5,8 @@
   components:
   - type: Sprite
     sprite: _Triad/Structure/Shuttles/thrustertdf_large.rsi
+  - type: Machine
+    board: LargeThrusterTDFMachineCircuitboard
 
 - type: entity
   parent: [ThrusterNfsd, BaseClass2AShipContrabandSilent]

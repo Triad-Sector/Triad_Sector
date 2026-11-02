@@ -44,7 +44,8 @@
     damage:
       types:
         Heat: 360
-    thrusterProfile: Large # Gets the correct raycast profile
+  - type: ThrusterProfile
+    profile: Large
   # Triad End
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thruster_large.rsi

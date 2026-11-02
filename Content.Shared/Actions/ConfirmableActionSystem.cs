@@ -1,3 +1,4 @@
+using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Popups;
 using Robust.Shared.Timing;
@@ -72,7 +73,7 @@ public sealed partial class ConfirmableActionSystem : EntitySystem
         if (!string.IsNullOrEmpty(comp.Popup))
             _popup.PopupClient(Loc.GetString(comp.Popup), user, user, comp.PopupFontType);
 
-        _actions.SetToggled(ent, true);
+        _actions.SetToggled(uid, true);
         // Goobstation - Confirmable action with changed icon - End
     }
 
@@ -82,7 +83,7 @@ public sealed partial class ConfirmableActionSystem : EntitySystem
         comp.NextConfirm = null;
         comp.NextUnprime = null;
 
-        _actions.SetToggled(ent, false); // Goobstation - Confirmable action with changed icon
+        _actions.SetToggled(uid, false); // Goobstation - Confirmable action with changed icon
 
         Dirty(uid, comp);
     }

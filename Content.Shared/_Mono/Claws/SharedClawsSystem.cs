@@ -84,7 +84,14 @@ public abstract partial class SharedClawsSystem : EntitySystem
         if (!TryGetStage(ent, out var stage))
             return;
 
-        args.AddMarkup(Loc.GetString(stage.ClawsExaminationString));
+        // Triad - Pronouns and self-examination.
+        var examine = stage.ClawsExaminationString;
+
+        if (args.Examiner == args.Examined)
+            examine = examine + "-selfaware";
+        // End Triad
+
+        args.PushMarkup(Loc.GetString(examine, ("entity", ent)), 1); // Triad - Pronouns and positioning fixes. FTL string was moved a bit further up.
     }
 
     /// <summary>

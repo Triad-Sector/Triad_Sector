@@ -261,3 +261,21 @@
   groupBy: InvestigatorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpskirtBHGrey
+
+- type: loadout
+  id: ClothingUniformCircusClown
+  groupBy: PerformerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformCircusClown
+
+- type: loadout
+  id: ClothingUniformJumpsuitMimeCropped
+  groupBy: PerformerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeCropped
+
+- type: loadout
+  id: ClothingUniformJumpsuitMimeNouveau
+  groupBy: PerformerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMimeNouveau

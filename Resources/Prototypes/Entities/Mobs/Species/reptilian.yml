@@ -143,7 +143,7 @@
     updateInterval: 2
   - type: TemperatureStatusEffects
     temperatureEffects:
-    - maximumTemperature: 295
+    - maximumTemperature: 288 # Triad - 288<295. Reduced due to room temperature being capable of causing horrible drunkenness.
       effects:
       - !type:Drunk
         boozePower: 1

@@ -35,17 +35,12 @@
           Heat: 200
       burnShape: ["-0.25,0.5","-0.0,5.6","0.25,0.5","0.0,-0.2","-0.25,0.5"]
       originalLoad: 1500
-      blockThrusterWhitelist:
-        components:
-        - Door
-        tags:
-        - Window
-        - Wall
-        - Diagonal
       burnWhitelist:
         components:
         - MobState
         - Door
+        - PowerSupplier
+        - SpaceArtillery
         tags:
         - Window
         - Wall
@@ -54,6 +49,8 @@
       burnBlacklist:
         tags:
         - IgnoreThrusterDamage
+    - type: ThrusterProfile
+      profile: Small
     # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline
@@ -147,7 +144,7 @@
       shape: Square
       respectZoom: true
       rotate: true
-      bounds: "-0.5,-0.5,0.5,0.5"
+      bounds: "-0.45,-0.45,0.45,0.45"
   # Mono
   - type: ShipRepairable
     repairTime: 5
@@ -201,6 +198,8 @@
     thrust: 2000
     machinePartThrust: Manipulator
     heatSignatureRatio: 0.5 # Mono
+  - type: ThrusterProfile
+    profile: NeverBlocked # Triad
   - type: Sprite
     # Listen I'm not the biggest fan of the sprite but it was the most appropriate thing I could find.
     sprite: Structures/Shuttles/gyroscope.rsi

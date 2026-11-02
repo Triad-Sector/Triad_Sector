@@ -126,12 +126,6 @@ namespace Content.Server.Shuttles.Components
         public float HeatSignatureRatio = 40f;
 
         /// <summary>
-        ///     Triad - Which type of entities block thruster paths?
-        /// </summary>
-        [DataField]
-        public EntityWhitelist? BlockThrusterWhitelist;
-
-        /// <summary>
         ///     Triad - Which type of entities can be burnt by thrusters?
         /// </summary>
         [DataField]
@@ -142,13 +136,6 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         [DataField]
         public EntityWhitelist? BurnBlacklist;
-
-        /// <summary>
-        ///     Triad - Which type of thruster is this?
-        ///     This is used for raycast checks to determine if the thruster's path is blocked.
-        /// </summary>
-        [DataField]
-        public ThrusterBlockingProfile ThrusterProfile = ThrusterBlockingProfile.Small;
     }
 
     public enum ThrusterType

@@ -14,7 +14,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Pistols/mk32.rsi
   - type: Gun
-    fireRate: 4 # Frontier: 3<4
+    fireRate: 5 # Frontier: 3<4 Triad 4 -> 5
     availableModes:
     - SemiAuto
     soundGunshot:

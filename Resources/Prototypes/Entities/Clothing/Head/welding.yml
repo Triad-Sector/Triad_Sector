@@ -112,12 +112,12 @@
     sprite: Clothing/Head/Welding/paintedwelding.rsi
 
 - type: entity
+  parent: BaseToggleAction
   id: ActionToggleWeldingProtection
   name: Toggle Welding Protection
   description: Raise the welding protection up or down.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: BigItem
-    event: !type:ToggleActionEvent
     useDelay: 0.5

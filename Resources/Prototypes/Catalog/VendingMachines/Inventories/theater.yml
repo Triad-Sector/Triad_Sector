@@ -108,6 +108,14 @@
     RubberStampMime: 1 # Frontier
     ClothingHeadSanabi: 1 # Goobstation
     ClothingNeckCloakSanabi: 1 # Goobstation
+    # Triad: Clown/mime costumes.
+    ClothingHeadHatCircusClown: 2
+    ClothingUniformCircusClown: 2
+    ClothingHeadHatMimeBowler: 2
+    ClothingOuterCoatPufferMime: 2
+    ClothingUniformJumpsuitMimeCropped: 2
+    ClothingUniformJumpsuitMimeNouveau: 2
+    # End Triad
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ToyFigurineBoxer: 1
