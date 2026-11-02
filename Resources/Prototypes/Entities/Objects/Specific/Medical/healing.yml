@@ -122,7 +122,7 @@
     count: 1
 
 - type: entity
-  name: bruise pack to li
+  name: bruise pack
   description: A therapeutic gel pack and bandages designed to treat blunt-force trauma.
   parent: BaseHealingItem
   id: Brutepack
