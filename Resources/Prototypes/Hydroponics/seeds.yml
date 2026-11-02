@@ -1323,6 +1323,10 @@
       #Min: 1
       #Max: 3
       #PotencyDivisor: 35
+    Rhymatine:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 35
     # End Triad
     SpaceDrugs:
       Min: 1

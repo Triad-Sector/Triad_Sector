@@ -81,7 +81,7 @@
       - id: ClothingEyesNightVisionGogglesSyndie
     # Triad: Moved Omnizine from the common group to a new group to make it more difficult to find.
     - !type:GroupSelector
-      weight: 30
+      weight: 5
       children:
       - id: ChemistryBottleOmnizine
       - id: VestineChemistryVial
