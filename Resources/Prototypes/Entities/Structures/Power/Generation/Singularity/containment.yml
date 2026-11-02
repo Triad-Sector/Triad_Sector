@@ -130,7 +130,6 @@
         - FullTileMask
         layer:
         # Triad - no fun allowed...
-        - Impassable
         - HighImpassable
         - MidImpassable
         - LowImpassable
