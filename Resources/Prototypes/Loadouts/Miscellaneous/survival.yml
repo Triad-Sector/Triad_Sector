@@ -226,7 +226,7 @@
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesVox
   equipment:
-    mask: ClothingMaskBreath
+    mask: ClothingMaskVoxTrochar # Triad: ClothingMaskVox -> ClothingMaskVoxTrochar
 
 - type: loadout
   id: LoadoutSpeciesBreathToolMedical
@@ -234,7 +234,7 @@
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesVox
   equipment:
-    mask: ClothingMaskBreathMedical
+    mask: ClothingMaskVoxTrochar # Triad: ClothingMaskVoxMedical -> ClothingMaskVoxTrochar
 
 - type: loadout
   id: LoadoutSpeciesBreathToolSecurity

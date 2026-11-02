@@ -75,13 +75,13 @@
           False: {visible: false}
 
 - type: entity
+  parent: BaseToggleAction
   id: ActionToggleOverseerGauntlets
   name: Toggle Gauntlets
   description: Toggles the gauntlets into stun or harm mode.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: BigItem
-    event: !type:ToggleActionEvent
 
 - type: entity
   parent: ClothingModsuitGauntletsBase
