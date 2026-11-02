@@ -27,13 +27,13 @@
           False: {state: icon}
 
 - type: entity
+  parent: BaseToggleAction
   id: ActionToggleMoonBoots
   name: Toggle Moon Boots
   description: Toggles the moon boots on and off.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: BigItem
-    event: !type:ToggleActionEvent
 
 - type: entity
   parent: ClothingShoesBase

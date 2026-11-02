@@ -1,0 +1,41 @@
+﻿- type: entity
+  id: LargeThrusterRogueMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: large rogue thruster machine board
+  description: A large circuitboard for a 2x2 machine frame.
+  components:
+  - type: MachineBoard
+    prototype: ThrusterLargeRogue
+    frameSize: 2x2
+    requirements:
+      Capacitor: 4
+    stackRequirements:
+      Steel: 20
+
+- type: entity
+  id: LargeThrusterTDFMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: large TDF thruster machine board
+  description: A large circuitboard for a 2x2 machine frame.
+  components:
+  - type: MachineBoard
+    prototype: ThrusterLargeTdf
+    frameSize: 2x2
+    requirements:
+      Capacitor: 4
+    stackRequirements:
+      Steel: 20
+
+- type: entity
+  id: LargeThrusterMilitaryMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: large military thruster machine board
+  description: A large circuitboard for a 2x2 machine frame.
+  components:
+  - type: MachineBoard
+    prototype: ThrusterLargeUSSP
+    frameSize: 2x2
+    requirements:
+      Capacitor: 4
+    stackRequirements:
+      Steel: 20

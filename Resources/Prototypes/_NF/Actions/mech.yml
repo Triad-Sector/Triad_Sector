@@ -1,9 +1,10 @@
 - type: entity
+  parent: BaseAction
   id: ActionMechForkToggleInsert
   name: Toggle
   description: Toggles whether to insert a crate into or remove a crate from a rack.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: NoItem
     icon:
       sprite: _NF/Interface/Actions/actions_mecha.rsi
@@ -11,5 +12,6 @@
     iconOn:
       sprite: _NF/Interface/Actions/actions_mecha.rsi
       state: mech_fork_on
-    event: !type:MechForkToggleActionEvent
     useDelay: 0.5
+  - type: InstantAction
+    event: !type:MechForkToggleActionEvent

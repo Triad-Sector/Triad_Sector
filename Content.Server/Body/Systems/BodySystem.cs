@@ -1,10 +1,12 @@
-using Content.Server.Body.Components;
+using System.Numerics;
 using Content.Server.Ghost;
 using Content.Server.Humanoid;
 using Content.Shared._Shitmed.Body.Part;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
+using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
@@ -13,15 +15,14 @@ using Content.Shared.Movement.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Timing;
 using System.Numerics;
-
-// Shitmed Change
 using System.Linq;
-using Content.Shared.Damage;
+using Content.Shared.Damage; // Shitmed Change
 using Content.Shared.Gibbing.Events;
+using Content.Server.Body.Components; // Shitmed Change
 
 namespace Content.Server.Body.Systems;
 
-public sealed partial class BodySystem : SharedBodySystem // Shitmed change: made partial
+public sealed partial class BodySystem : SharedBodySystem
 {
     [Dependency] private GhostSystem _ghostSystem = default!;
     [Dependency] private IGameTiming _gameTiming = default!;

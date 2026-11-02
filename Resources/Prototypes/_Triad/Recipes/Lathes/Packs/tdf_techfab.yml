@@ -28,6 +28,7 @@
   - PowerCageMedium
   - PowerCageSmall
   - Signaller
+  - ClothingBeltBandolier
 
 - type: latheRecipePack
   id: TdfTechfabDynamic

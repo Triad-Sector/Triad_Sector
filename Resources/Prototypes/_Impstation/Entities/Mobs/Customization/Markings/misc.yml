@@ -588,8 +588,8 @@
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [ Moth ]
-  forcedColoring: true
-  followSkinColor: true
+  forcedColoring: false # Triad: False
+  followSkinColor: false # Triad: False
   sprites:
   - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
     state: mothbeetlehorn1
@@ -599,8 +599,8 @@
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [ Moth ]
-  forcedColoring: true
-  followSkinColor: true
+  forcedColoring: false # Triad: False
+  followSkinColor: false # Triad: False
   sprites:
   - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
     state: mothbeetlehorn2
@@ -653,8 +653,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [ Vox ]
-  forcedColoring: true
-  followSkinColor: true
+  forcedColoring: false # Triad: False
+  followSkinColor: false # Triad: False
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail
@@ -881,8 +881,8 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [ Vox ]
-  forcedColoring: true
-  followSkinColor: true
+  forcedColoring: false # Triad: False
+  followSkinColor: false # Triad: False
   sprites:
   - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
     state: voxtailcolorable

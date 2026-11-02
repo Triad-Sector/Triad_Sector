@@ -22,7 +22,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
-using Content.Shared.CombatMode.Pacification; // Frontier
+using Content.Shared.CombatMode.Pacification;
+using Content.Shared.Body.Components; // Frontier
 
 namespace Content.Server.Abilities.Felinid;
 

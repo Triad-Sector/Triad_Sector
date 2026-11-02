@@ -153,20 +153,20 @@
 
 #armor-piercing ammo
 
-- type: entity
-  id: Magazine57x28mmPistolPlasteelAP
-  name: pistol magazine (5.7x28mm AP)
-  parent: BaseMagazine57x28mm
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge57x28mmPlasteelAP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/5.7x28mm/5.7x28mm_pistol_mag.rsi
-    layers:
-    - state: plasteelAP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
+#- type: entity #Triad, commented out until a better solution for AP rounds is found in their current state
+#  id: Magazine57x28mmPistolPlasteelAP
+#  name: pistol magazine (5.7x28mm AP)
+#  parent: BaseMagazine57x28mm
+#  components:
+#  - type: BallisticAmmoProvider
+#    proto: Cartridge57x28mmPlasteelAP
+#  - type: Sprite
+#    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/5.7x28mm/5.7x28mm_pistol_mag.rsi
+#    layers:
+#    - state: plasteelAP
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
 
 #End Pistol mags
 #Start HighCapacity mags
@@ -437,20 +437,20 @@
 
 #armor-piercing ammo
 
-- type: entity
-  id: Magazine57x28mmSubMachineGunPlasteelAP
-  name: SMG magazine (5.7x28mm AP)
-  parent: BaseMagazine57x28mmSubMachineGunFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge57x28mmPlasteelAP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/5.7x28mm/5.7x28mm_smg_mag.rsi
-    layers:
-    - state: plasteelAP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
+#- type: entity #Triad, commented out until a better solution for AP rounds is found in their current state
+#  id: Magazine57x28mmSubMachineGunPlasteelAP
+#  name: SMG magazine (5.7x28mm AP)
+#  parent: BaseMagazine57x28mmSubMachineGunFMJ
+#  components:
+#  - type: BallisticAmmoProvider
+#    proto: Cartridge57x28mmPlasteelAP
+#  - type: Sprite
+#    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/5.7x28mm/5.7x28mm_smg_mag.rsi
+#    layers:
+#    - state: plasteelAP
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
 
 #End SubMachineGun mags
 #Start TopMounted mags
