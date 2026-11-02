@@ -299,7 +299,7 @@
 
 - type: entity
   name: LWC pulse pistol
-  parent: [BaseWeaponBatterySmall, BaseTriadC2Contraband] # Triad
+  parent: [BaseWeaponBatterySmall, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulsePistol
   description: A state of the art energy pistol favoured as a sidearm by the Solarian Directive. # Mono
   components:
@@ -342,7 +342,7 @@
 
 - type: entity
   name: LWC pulse carbine
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband] # Triad
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseCarbine
   description: A common sight in the hands of higher ranked Solarian Directive, the pulse carbine is a punchy laser weapon salvaged from the remnants of Nanotrasen. # Mono
   components:
@@ -391,7 +391,7 @@
 
 - type: entity
   name: NT pulse rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband] # Triad
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseRifle
   description: A weapon that used to be used by the special operations units of NT, but now commonly seen in the hands of the SD. # Mono
   components:

@@ -67,7 +67,7 @@
 
 - type: entity
   name: NT-WS LRC-21 PPL
-  parent: [ BaseWeaponPowerCell, BaseGunWieldable, BaseTriadC2Contraband ] # Triad
+  parent: [ BaseWeaponPowerCell, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable ] # Triad
   id: WeaponLRC21PPL
   description: A heavy pulsed plasma lance rifle. Eviscerates targets with ease.
   components:
