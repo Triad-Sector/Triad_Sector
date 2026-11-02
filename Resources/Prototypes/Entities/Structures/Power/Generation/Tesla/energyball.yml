@@ -95,6 +95,9 @@
   - type: ChaoticJump
     jumpMinInterval: 8
     jumpMaxInterval: 15
+    # Triad: Using this instead of impassable so it let bullet pass through but still keeping the chaotic jump inside.
+    collisionMask:
+    - FullTileMask
   - type: WarpPoint
     follow: true
     location: tesla ball
