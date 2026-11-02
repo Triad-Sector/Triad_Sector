@@ -38,6 +38,7 @@
     toggleMouseRotator: false
   - type: Damageable
     damageContainer: Inorganic
+    damageModifierSet: TurretDamageModifier
   - type: Destructible
     thresholds:
       - trigger:
