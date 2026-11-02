@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.2
   forkId: ""
   forkVersion: ""
-  time: 10/15/2026 07:48:53
+  time: 10/26/2026 19:22:54
   entityCount: 3774
 maps: []
 grids:
@@ -108,10 +108,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Smoke: []
-        MetalFoam: []
         Puddle: []
         Kudzu: []
+        MetalFoam: []
+        Smoke: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1721,9 +1721,6 @@ entities:
             0: 816
             2: 12288
             1: 34952
-          3,11:
-            0: 3680
-            2: 24576
           5,9:
             1: 65535
           5,10:
@@ -1847,68 +1844,15 @@ entities:
             1: 65535
           2,10:
             1: 65535
+          3,11:
+            0: 1632
+            2: 24576
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ShipGridLock
       locked: False
     - type: NavMap
-- proto: ActionToggleLight
-  entities:
-  - uid: 3
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 2
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 2
-  - uid: 5
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 4
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 4
-  - uid: 7
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 6
-  - uid: 9
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 8
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 8
-  - uid: 11
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 10
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 10
-  - uid: 13
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 12
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 12
 - proto: AirAlarm
   entities:
   - uid: 14
@@ -9277,115 +9221,31 @@ entities:
     - type: Transform
       parent: 1
       pos: 16.378468,29.390778
-    - type: HandheldLight
-      toggleActionEntity: 3
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 3
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 4
     components:
     - type: Transform
       parent: 1
       pos: 16.656246,28.80704
-    - type: HandheldLight
-      toggleActionEntity: 5
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 5
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 6
     components:
     - type: Transform
       parent: 1
       pos: 16.621523,28.40398
-    - type: HandheldLight
-      toggleActionEntity: 7
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 7
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 8
     components:
     - type: Transform
       parent: 1
       pos: 16.302078,28.584661
-    - type: HandheldLight
-      toggleActionEntity: 9
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 9
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 10
     components:
     - type: Transform
       parent: 1
       pos: 16.66319,29.203148
-    - type: HandheldLight
-      toggleActionEntity: 11
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 11
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 12
     components:
     - type: Transform
       parent: 1
       pos: 16.371525,29.022467
-    - type: HandheldLight
-      toggleActionEntity: 13
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 13
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
 - proto: ClothingShoesBootsWork
   entities:
   - uid: 1356
@@ -24309,6 +24169,8 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 9.5,2.5
+    - type: Thruster
+      lastRayCheckClear: True
   - uid: 3262
     components:
     - type: Transform
