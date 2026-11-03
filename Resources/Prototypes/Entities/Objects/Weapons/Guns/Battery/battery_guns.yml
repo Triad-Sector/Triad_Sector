@@ -153,10 +153,14 @@
     burstCooldown: 0.75
     burstFireRate: 3
     shotsPerBurst: 3
-    selectedMode: SemiAuto
+# Start of Triad Change: Updates the svalinn to be full-auto and burst
+    fireRate: 5
+    selectedMode: FullAuto
     availableModes:
-    - SemiAuto
+    - FullAuto
     - Burst
+#    - SemiAuto
+#End of Triad Change
   - type: MagazineVisuals
     magState: mag
     steps: 5
