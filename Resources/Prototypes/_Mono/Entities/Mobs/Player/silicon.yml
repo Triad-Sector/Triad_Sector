@@ -514,6 +514,19 @@
   - type: SiliconLawProvider
     laws: TSFMCLawset
   - type: GhostRole
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 # 15 hours
+    alternateRequirementSets:
+      longerPlaytimeLessSec:
+      - !type:OverallPlaytimeRequirement
+        time: 450000 # 125 hours
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 18000 # 5 hours
     name: ghost-role-information-tsfmc-core
     description: ghost-role-information-tsfmc-core-description
     rules: ghost-role-information-silicon-rules
