@@ -41,12 +41,14 @@
   name: TDF lieutenant's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a lieutenant from any threats in the Triad Sector.
   components:
-  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseFactionGearTDFT1]
-id: ClothingOuterCoatTdfLieutenant
-name: TDF lieutenant's armored jacket
-description: A sturdy, utilitarian jacket designed to protect a lieutenant from any threats in the Triad Sector.
-@@ -50,28 +50,28 @@
-- ClothMade # No chameleon
+  - type: Sprite
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
+  - type: Tag
+    tags:
+    - ClothMade # No chameleon
+
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseFactionGearTDFT1]
