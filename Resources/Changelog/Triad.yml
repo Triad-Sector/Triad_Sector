@@ -5938,3 +5938,21 @@ Entries:
   id: 2706
   time: '2026-11-04T02:33:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/794
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: >-
+        Monolithic creatures should no longer have pathfinding issues on
+        Terralith facility.
+    - type: Tweak
+      message: >-
+        Improved Solarian cyborg modules: they no longer reflect bullets, energy
+        shield is exclusive to melee module, and player borgs have a new smart
+        machine gun to complement their pulse rifles.
+    - type: Tweak
+      message: >-
+        Terralith reactor should now be much easier for inexperienced players to
+        set up.
+  id: 2707
+  time: '2026-11-04T02:33:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/771
