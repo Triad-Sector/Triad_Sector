@@ -49,7 +49,6 @@
     tags:
     - ClothMade # No chameleon
 
-
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseFactionGearTDFT1]
   id: ClothingOuterCoatTdfLieutenantAlt
