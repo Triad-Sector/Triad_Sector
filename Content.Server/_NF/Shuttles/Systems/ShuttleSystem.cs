@@ -90,6 +90,15 @@ public sealed partial class ShuttleSystem
             return;
         }
 
+        // Triad: Check if the ship are player owned. Then they could park.
+        if (args.Mode == InertiaDampeningMode.Anchor
+            && !HasComp<ShuttleDeedComponent>(transform.GridUid)
+            && !HasComp<ShipOwnershipComponent>(transform.GridUid))
+        {
+            _console.RefreshShuttleConsoles(transform.GridUid.Value);
+            return;
+        }
+
         if (SetInertiaDampening(uid, physicsComponent, shuttleComponent, transform, args.Mode) && args.Mode != InertiaDampeningMode.Query)
             component.DampeningMode = args.Mode;
     }
