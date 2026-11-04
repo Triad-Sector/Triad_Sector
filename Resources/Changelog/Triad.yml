@@ -5956,3 +5956,20 @@ Entries:
   id: 2707
   time: '2026-11-04T02:33:37.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/771
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: >-
+        Changed shuttle drive mode base thruster multiplier to 2.5x allowing for
+        faster acceleration in drive mode.
+    - type: Tweak
+      message: >-
+        Changed shuttle cruise mode max velocity to 4x, for increased maximum
+        top speed of a shuttle.
+    - type: Fix
+      message: >-
+        Fix shuttle unable to change mode whenever drone core is present inside
+        shuttle.
+  id: 2708
+  time: '2026-11-04T02:35:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/762
