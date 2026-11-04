@@ -5929,3 +5929,12 @@ Entries:
   id: 2705
   time: '2026-10-31T15:12:10.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/785
+- author: BoskiYourk
+  changes:
+    - type: Tweak
+      message: >-
+        Turned the svalinn a 4.5 shot-per-second full-auto and burst-fire
+        hitscan laser sidearm.
+  id: 2706
+  time: '2026-11-04T02:33:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/794
