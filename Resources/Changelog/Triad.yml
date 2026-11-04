@@ -5973,3 +5973,12 @@ Entries:
   id: 2708
   time: '2026-11-04T02:35:09.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/762
+- author: titi-du-971
+  changes:
+    - type: Tweak
+      message: >-
+        TDF E-sword and lieutenants coats are now storable in deposit boxes,
+        fixed legality issue.
+  id: 2709
+  time: '2026-11-04T02:36:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/791
