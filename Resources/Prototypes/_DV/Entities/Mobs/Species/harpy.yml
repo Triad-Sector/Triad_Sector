@@ -24,7 +24,7 @@
       "Electric": {27: 0}
       "Flute": {73: 0}
       "French Horn": {60: 0}
-      "Glockespiel": {9: 0}
+      "Glockenspiel": {9: 0}
       "Harmonica": {22: 0}
       "Harp": {46: 0}
       "Kalimba": {108: 0}
@@ -141,7 +141,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Piercing: 5
+        Piercing: 51.
   - type: Speech
     speechSounds: Harpy
     speechVerb: Harpy
