@@ -318,8 +318,9 @@ public sealed partial class DockingSystem
                                  out var otherdockedAABB,
                                  out var otherTargetAngle))
                                 continue;
+                            otherdockedAABB = otherdockedAABB.Rounded(DockRoundingDigits);
 
-                            // Different setup: allow small tolerance on angle / AABB to aggregate more ports.
+                         // Different setup: allow small tolerance on angle / AABB to aggregate more ports.
                             if (!targetAngle.EqualsApprox(otherTargetAngle, 0.05) ||
                                 !Box2ApproximatelyEquals(dockedAABB, otherdockedAABB, 0.05f))
                             {
