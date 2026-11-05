@@ -15,7 +15,7 @@ namespace Content.Shared.Administration
         {
             var count = buffer.ReadVariableInt32();
 
-            buffer.AssertAtLeastSize(count * NetMessageExt.MinSizeOfString);
+            buffer.AssertAtLeastSize(count * (NetMessageExt.MinSizeOfString * 2)); // Triad: mono use 2 string
             AvailableCommands = new string[count];
 
             for (var i = 0; i < count; i++)
