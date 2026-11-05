@@ -38,7 +38,7 @@
     toggleMouseRotator: false
   - type: Damageable
     damageContainer: Inorganic
-    damageModifierSet: TurretDamageModifier
+    damageModifierSet: TurretDamageModifier # Triad
   - type: Destructible
     thresholds:
       - trigger:
