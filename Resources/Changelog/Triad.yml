@@ -5992,3 +5992,12 @@ Entries:
   id: 2710
   time: '2026-11-05T03:38:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/798
+- author: titi2point0
+  changes:
+    - type: Tweak
+      message: >-
+        Added playtime requirement to the TDF AI core now requiring normal
+        playtime as well as TDF play time
+  id: 2711
+  time: '2026-11-05T03:39:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/795
