@@ -979,14 +979,14 @@ public sealed partial class PlantHolderSystem : EntitySystem
     }
 
     private static readonly Gas[] RemovedPlantGases =
-{
-    Gas.Tritium,
-    Gas.Frezon,
-    Gas.BZ,
-    Gas.Healium,
-    Gas.Nitrium,
-    Gas.Pluoxium,
-};
+    {
+        Gas.Tritium,
+        Gas.Frezon,
+        Gas.BZ,
+        Gas.Healium,
+        Gas.Nitrium,
+        Gas.Pluoxium,
+    };
 
     private  static void RemoveRemovedPlantGases(SeedData seed)
     {
