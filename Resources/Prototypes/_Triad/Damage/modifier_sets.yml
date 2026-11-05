@@ -5,7 +5,7 @@
     Slash: 0.7
     Piercing: 0.8
     Shock: 1.2
-    Structural: 1
+    Structural: 0.8
   flatReductions:
-    Piercing: 1.5
-    Structural: 1.5
+    Piercing: 2.5
+    Structural: 2.5
