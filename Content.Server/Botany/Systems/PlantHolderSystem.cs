@@ -977,7 +977,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         component.ForceUpdate = true;
         Update(uid, component);
     }
-
+    // Triad start hotfix for removed gases so they get removed from existing seeds
     private static readonly Gas[] RemovedPlantGases =
     {
         Gas.Tritium,
@@ -995,6 +995,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
             seed.ConsumeGasses.Remove(gas);
             seed.ExudeGasses.Remove(gas);
         }
-        // End Frontier, Funky: Remove unsupported gasses from existing plants
+      
     }
+      // End Triad
 }
