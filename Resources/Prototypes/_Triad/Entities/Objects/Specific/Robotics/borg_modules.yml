@@ -1,3 +1,27 @@
+# Variant tool module with better positioned modules and more fuel.
+- type: entity
+  id: BorgModuleToolAlternative
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: tool cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-tools
+  - type: ItemBorgModule
+    moduleId: Tools # Frontier
+    items:
+    - JawsOfLife
+    - PowerDrill
+    - Multitool
+    - MaintenanceJack
+    - JerryCanNaniteFuel
+    - JerryCanWeldingFuel
+    - NaniteApplicator
+    - WelderIndustrialAdvanced
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
+
 # SD Modules
 - type: entity
   parent: [BaseBorgModule, BaseClass2AShipContrabandSilent]
@@ -51,47 +75,48 @@
   components:
   - type: ItemBorgModule
     items:
-    - WeaponPulsePistol
-    - NavyOfficerSabre
+    - WeaponBorgSmartLmgSol # Todo: change to a self-defense pistol?
 
 - type: entity
   parent: [ BaseBorgModuleSolarianAssault, BaseProviderBorgModule, BaseFactionGearSDT2 ]
-  id: BorgModuleSDStandardAssault
-  name: solarian directive basic assault cyborg module
+  id: BorgModuleSDAssaultMelee
+  name: solarian directive CQB module
   components:
   - type: ItemBorgModule
     items:
-    - WeaponPulsePistol # todo ? Probably port borg hands from wizden
+    - EnergySwordBorgSol
+    - EnergyShieldBorgSol
+    - JawsOfLife
 
 - type: entity
   parent: [ BaseBorgModuleSolarianAssault, BaseProviderBorgModule, BaseFactionGearSDT3 ]
-  id: BorgModuleSDAdvancedAssault
-  name: solarian directive advanced assault cyborg module
+  id: BorgModuleSDAssaultRanged
+  name: solarian directive ranged combat module
   components:
   - type: ItemBorgModule
     items:
-    - WeaponBorgPulseRifle
-    - WeaponHFKatana
-    - EnergyShield
+    - WeaponBorgPulseRifleSol
+    - WeaponBorgSmartLmgSol
+    - HoloprojectorField
     - JawsOfLife
   - type: BorgModuleIcon
     icon: { sprite: _Mono/Interface/Action/actions_borg.rsi, state: tsfadvanced-weapon-module }
 
 - type: entity
-  parent: BorgModuleSDAdvancedAssault
+  parent: BorgModuleSDAssaultRanged
   id: BorgModuleSDAdvancedAssaultNpc
   suffix: NPC, Ranged
   components:
   - type: ItemBorgModule
     items:
-    - WeaponBorgPulseRifle
+    - WeaponBorgPulseRifleSol
 
 - type: entity
-  parent: BorgModuleSDAdvancedAssault
+  parent: BorgModuleSDAssaultMelee
   id: BorgModuleSDAdvancedAssaultMeleeNpc
   suffix: NPC, Melee
   components:
   - type: ItemBorgModule
     items:
-    - WeaponHFKatana
-    - EnergyShieldBorgOn
+    - EnergySwordBorgSolOn
+    - EnergyShieldBorgSolOn
