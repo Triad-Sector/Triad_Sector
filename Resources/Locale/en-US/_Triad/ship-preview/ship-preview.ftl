@@ -1,6 +1,6 @@
 triad-ship-preview-title = Ship Preview
 triad-ship-preview-no-vessel = No vessel selected
-triad-ship-preview-loading = Loading…
+triad-ship-preview-loading = Loading...
 triad-ship-preview-failed = Failed to load this vessel
 triad-ship-preview-info = {$width} x {$height} tiles, {$count} tiles filled
 triad-ship-preview-reset-view = Reset view
