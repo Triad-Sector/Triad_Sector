@@ -215,11 +215,13 @@ entities:
 - proto: """"
   entities:
   - uid: 1
+    mapInit: true
     components:
     - type: Transform
 - proto: ComplexXenoArtifact
   entities:
   - uid: 2
+    mapInit: true
     components:
     - type: Transform
       parent: 1
@@ -254,11 +256,13 @@ entities:
 - proto: """"
   entities:
   - uid: 1
+    mapInit: true
     components:
     - type: Transform
 - proto: ComplexXenoArtifact
   entities:
   - uid: 2
+    mapInit: true
     components:
     - type: Transform
       parent: 1
@@ -284,10 +288,12 @@ entities:
 - proto: XenoArtifactEmp
   entities:
   - uid: 3
+    mapInit: true
     components:
     - type: Transform
       parent: 2
   - uid: 4
+    mapInit: true
     components:
     - type: Transform
       parent: 2
