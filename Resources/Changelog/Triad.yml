@@ -5982,3 +5982,13 @@ Entries:
   id: 2709
   time: '2026-11-04T02:36:53.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/791
+- author: titi2point0
+  changes:
+    - type: Add
+      message: >-
+        Construction box, Ore box, Plant box, Dumpster and Treasure chest now
+        get saved on your ship without having to anchor them ! Inventory not
+        saved !
+  id: 2710
+  time: '2026-11-05T03:38:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/798
