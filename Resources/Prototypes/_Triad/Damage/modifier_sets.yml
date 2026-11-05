@@ -2,10 +2,10 @@
   id: TurretDamageModifier
   coefficients:
     Blunt: 0.7
-    Slash: 0.5
-    Piercing: 0.6
+    Slash: 0.7
+    Piercing: 0.8
     Shock: 1.2
-    Structural: 0.75
+    Structural: 1
   flatReductions:
-    Piercing: 2.5
-    Structural: 2.5
+    Piercing: 1.5
+    Structural: 1.5
