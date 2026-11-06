@@ -1,5 +1,6 @@
 # Mono's Machine3x3 graph scaled to a 5x5 box, centered and without a deconstruct edge.
 # See TriadMachine3x3.yml. Steel scales with tile count, 5 sheets per tile.
+# The scaling had to be cap at 1 stack (100) as it fail to build with 125 (cause unknown)
 - type: constructionGraph
   id: TriadMachine5x5
   start: start
@@ -16,12 +17,12 @@
               value: false
           steps:
             - material: Steel
-              amount: 125
+              amount: 100
               doAfter: 10
         - to: destroyedMachineFrame
           steps:
             - material: Steel
-              amount: 125
+              amount: 100
               doAfter: 10
 
     - node: missingWires
@@ -38,7 +39,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 125
+              amount: 100
             - !type:DeleteEntity
           steps:
             - tool: Screwing
