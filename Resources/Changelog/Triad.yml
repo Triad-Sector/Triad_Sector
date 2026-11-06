@@ -6049,3 +6049,12 @@ Entries:
   id: 2715
   time: '2026-11-06T22:43:44.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/797
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Pulse weapons are now ship savable, but still illegal. You can however
+        get a permit for them (like the emag)!
+  id: 2716
+  time: '2026-11-06T22:47:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/792
