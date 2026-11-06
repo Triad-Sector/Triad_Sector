@@ -1,3 +1,4 @@
+using Content.Shared.Toggleable; // Triad
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
@@ -46,12 +47,18 @@ public sealed partial class ItemToggleComponent : Component
     public int AltPriority;
     // End Frontier
 
-    // Triad: prevent wielding on toggle hardcoding
+    // Triad: prevent wielding on toggle hardcoding and add different visual enums
     /// <summary>
     /// If this is set to true, the item will toggle itself whenever wielded/unwielded.
     /// </summary>
     [DataField]
     public bool ToggleOnWielded = true;
+
+    /// <summary>
+    /// If this is set to true, the item will toggle itself whenever wielded/unwielded.
+    /// </summary>
+    [DataField]
+    public ToggleableVisuals Visuals = ToggleableVisuals.Enabled;
     // End Triad
 
     /// <summary>
