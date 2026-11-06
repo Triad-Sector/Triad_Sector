@@ -6001,3 +6001,44 @@ Entries:
   id: 2711
   time: '2026-11-05T03:39:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/795
+- author: GhostC10
+  changes:
+    - type: Add
+      message: Heat damage from environment and overheat warnings back in
+    - type: Remove
+      message: Instant, zero warning overheat death
+  id: 2712
+  time: '2026-11-06T21:49:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/805
+- author: Titi2Point0
+  changes:
+    - type: Tweak
+      message: >-
+        The 5x5 machine frame now only need 100 steel making it buildable ! Go
+        make your reactor go boom now !
+  id: 2713
+  time: '2026-11-06T21:50:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/800
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: SRD & tools are now more forgiving if you move a bit
+    - type: Fix
+      message: >-
+        SRD now works better when not standing on the grid that is being
+        repaired
+    - type: Add
+      message: Holding a nanite applicator now shows you an overlay of damaged things
+    - type: Tweak
+      message: SRD now repairs multiple entities at once.
+    - type: Tweak
+      message: Changed Advance parts from 3 to 2 rating
+    - type: Tweak
+      message: Changed Super parts from 4 to 3 rating
+    - type: Tweak
+      message: Changed Bluespace parts from 6 to 4 rating
+    - type: Tweak
+      message: Changed how thruster speed calculate, now it increase 10% per efficiency
+  id: 2714
+  time: '2026-11-06T21:51:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/756

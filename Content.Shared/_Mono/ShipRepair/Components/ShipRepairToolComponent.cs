@@ -18,6 +18,9 @@ public sealed partial class ShipRepairToolComponent : Component
     [DataField, AutoNetworkedField]
     public bool EnableEntityRepair = true;
 
+    [DataField, AutoNetworkedField]
+    public bool CheckPreExistingEntities = true;
+
     /// <summary>
     /// Multiplier of time the repair doafter should take.
     /// </summary>
@@ -29,6 +32,9 @@ public sealed partial class ShipRepairToolComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float TileRepairTime = 0.5f;
+
+    [DataField, AutoNetworkedField]
+    public float MultiRepairPower = 0.8f;
 
     /// <summary>
     /// Charges to take from <see cref="LimitedChargesComponent"> when repairing tiles.
