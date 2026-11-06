@@ -149,14 +149,26 @@
       shader: unshaded
   - type: Item
     sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+#Start of Triad Change: Heavily alters he gun component of the svalinn: Removed semi-auto, added full-auto, bumped fire-rate to 4.5, buffed burst-fire to be more inline with full-auto, updated audio to be less grating
   - type: Gun
-    burstCooldown: 0.75
-    burstFireRate: 3
-    shotsPerBurst: 3
-    selectedMode: SemiAuto
+#    burstCooldown: 0.75
+#    burstFireRate: 3
+#    shotsPerBurst: 3
+    burstCooldown: 1.75
+    burstFireRate: 9
+    shotsPerBurst: 9
+    fireRate: 4.5
+#    selectedMode: SemiAuto
+    selectedMode: FullAuto
     availableModes:
-    - SemiAuto
+#    - SemiAuto
+    - FullAuto
     - Burst
+    soundGunshot:
+      path: /Audio/_DV/Weapons/Guns/Gunshots/laser.ogg
+    soundEmpty:
+      path: /Audio/_DV/Weapons/Guns/Empty/dry_fire.ogg
+#End of Triad Change
   - type: MagazineVisuals
     magState: mag
     steps: 5

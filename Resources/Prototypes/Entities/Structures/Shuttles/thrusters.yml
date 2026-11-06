@@ -144,7 +144,7 @@
       shape: Square
       respectZoom: true
       rotate: true
-      bounds: "-0.5,-0.5,0.5,0.5"
+      bounds: "-0.45,-0.45,0.45,0.45"
   # Mono
   - type: ShipRepairable
     repairTime: 5

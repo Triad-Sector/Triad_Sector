@@ -16,7 +16,6 @@ public sealed partial class SiliconDeathSystem : EntitySystem
     [Dependency] private SleepingSystem _sleep = default!;
     [Dependency] private SiliconChargeSystem _silicon = default!;
     [Dependency] private HumanoidAppearanceSystem _humanoidAppearanceSystem = default!;
-    [Dependency] private DamageableSystem _damage = default!; // mono
 
     public override void Initialize()
     {
@@ -47,18 +46,11 @@ public sealed partial class SiliconDeathSystem : EntitySystem
         var deadEvent = new SiliconChargeDyingEvent(uid, batteryComp, batteryUid);
         RaiseLocalEvent(uid, deadEvent);
 
-        if (deadEvent.Cancelled
-            || siliconDeadComp.ModifierOnDead == null
-            || !TryComp<DamageableComponent>(uid, out var damageComp))
+        if (deadEvent.Cancelled)
             return;
 
         /*EntityManager.EnsureComponent<SleepingComponent>(uid); Monolith IPC rework edit start
         EntityManager.EnsureComponent<ForcedSleepingComponent>(uid);*/
-        // Triad fix: Sometimes it would cause IPCs to permanently gain this as their 'original modifier'
-        if (siliconDeadComp.ModifierOnDead.Value != damageComp.DamageModifierSetId)
-            siliconDeadComp.OriginalModifier = damageComp.DamageModifierSetId;
-
-        _damage.SetDamageModifierSetId(uid, siliconDeadComp.ModifierOnDead.Value);
 
         if (TryComp(uid, out HumanoidAppearanceComponent? humanoidAppearanceComponent))
         {
@@ -76,11 +68,7 @@ public sealed partial class SiliconDeathSystem : EntitySystem
         /*RemComp<ForcedSleepingComponent>(uid); Monolith IPC rework edit start
         _sleep.TryWaking(uid, true, null);*/
 
-        if (siliconDeadComp.OriginalModifier != null)
-            _damage.SetDamageModifierSetId(uid, siliconDeadComp.OriginalModifier.Value);
-
         siliconDeadComp.Dead = false;
-
         RaiseLocalEvent(uid, new SiliconChargeAliveEvent(uid, batteryComp, batteryUid));
     }
 }

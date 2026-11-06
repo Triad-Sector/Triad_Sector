@@ -22,6 +22,7 @@ public sealed class MsgUpdateConsent : NetMessage
     public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
     {
         var length = buffer.ReadVariableInt32();
+        buffer.AssertAtLeastSize(length); // Triad: fix security issue GHSA-m25p-v44q-gjqq
         using var stream = new MemoryStream(length);
         buffer.ReadAlignedMemory(stream, length);
         serializer.DeserializeDirect(stream, out Consent);
