@@ -9,7 +9,7 @@
 #   category: Small
 #   group: Security
 #   access: Security
-#   shuttlePath: /Maps/_Mono/Shuttles/Nfsd/shiv.yml
+#   shuttlePath: /SharedMaps/_Mono/Shuttles/Nfsd/shiv.yml
 #   guidebookPage: Null
 #   class:
 #   - Salvage
@@ -20,7 +20,7 @@
 # - type: gameMap
 #   id: Shiv
 #   mapName: 'Shiv'
-#   mapPath: /Maps/_Mono/Shuttles/Nfsd/shiv.yml
+#   mapPath: /SharedMaps/_Mono/Shuttles/Nfsd/shiv.yml
 #   minPlayers: 0
 #   stations:
 #     Shiv:
@@ -35,4 +35,5 @@
 #         availableJobs:
 #           Deputy: [ 0, 0 ]
 #           TsfBorg: [ 0, 0 ]
+
 

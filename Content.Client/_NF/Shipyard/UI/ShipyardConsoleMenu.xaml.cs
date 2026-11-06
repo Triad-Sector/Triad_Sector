@@ -21,6 +21,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     public event Action<ButtonEventArgs>? OnSellShip;
     public event Action<ButtonEventArgs>? OnSaveShip;
     public event Action<ButtonEventArgs>? OnOrderApproved;
+    public event Action<ButtonEventArgs>? OnPreviewShip; // Triad
     public event Action<ButtonEventArgs>? OnUnassignDeed;
     public event Action<string>? OnRenameShip;
     private readonly List<VesselSize> _categoryStrings = new();
@@ -172,6 +173,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
                 Price = { Text = priceText },
             };
             vesselEntry.Purchase.OnPressed += (args) => { OnOrderApproved?.Invoke(args); };
+            vesselEntry.Preview.OnPressed += (args) => { OnPreviewShip?.Invoke(args); }; // Triad
             Vessels.AddChild(vesselEntry);
         }
     }

@@ -13,7 +13,7 @@
   price: 193000
   category: Large
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/CIV/commercant.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/CIV/commercant.yml
   #guidebookPage: ShipyardCommerçant
   class:
   - Civilian
@@ -24,7 +24,7 @@
 - type: gameMap
   id: Commerçant
   mapName: 'Commerçant'
-  mapPath: /Maps/_Triad/Shuttles/CIV/commercant.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/CIV/commercant.yml
   minPlayers: 0
   stations:
     Commerçant:

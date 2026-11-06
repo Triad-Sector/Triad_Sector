@@ -23,7 +23,7 @@ public sealed partial class GunSystem
     {
         if (args.Sprite == null ||
             !_sprite.LayerMapTryGet((uid, args.Sprite), GunVisualLayers.Base, out var boltLayer, false) ||
-            !Appearance.TryGetData(uid, AmmoVisuals.BoltClosed, out bool boltClosed))
+            !args.TryGetData(AmmoVisuals.BoltClosed, out bool boltClosed))
         {
             return;
         }
