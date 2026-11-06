@@ -159,7 +159,8 @@
   - type: StaticPrice # triad, just to make it worth more than its deconned products.
     price: 6000
   - type: RadiationBlocker
-    resistance: 6.5 #triad- R-Uranium windows are 5
+    resistance: 6 #triad- R-Uranium windows are 4
+    linresistance: 0.3 #triad- absorbs 30% of all radiation that passes through
   - type: Sprite
     drawdepth: WallTops
     sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
@@ -182,7 +183,8 @@
   - type: StaticPrice # triad, just to make it worth more than its deconned products.
     price: 6000
   - type: RadiationBlocker
-    resistance: 6.5 #triad- R-Uranium windows are 5
+    resistance: 6 #triad- R-Uranium windows are 4
+    linresistance: 0.3 #triad- absorbs 30% of all radiation that passes through
   - type: Sprite
     drawdepth: WallTops
     sprite: _Mono/Structures/Windows/plasturanium_window.rsi

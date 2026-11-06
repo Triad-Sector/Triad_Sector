@@ -280,7 +280,8 @@ public partial class RadiationSystem
 
             if (_blockerQuery.TryComp(xform.ParentUid, out var blocker))
             {
-                rads -= blocker.RadResistance;
+                rads -= blocker.RadLinearResistance * rads; // Triad - added linear rad resistance (how radio-insulation works irl) to make larger doses have a managable solution.
+                rads -= blocker.RadResistance;  // Triad
                 if (rads < 0)
                     return 0;
             }

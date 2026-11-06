@@ -12,7 +12,8 @@
     damageContainer: StructuralInorganic
     damageModifierSet: RGlass
   - type: RadiationBlocker
-    resistance: 4
+    resistance: 3 #Triad
+    linresistance: 0.1 #Triad
   - type: Destructible
     thresholds:
     - trigger:
@@ -98,7 +99,8 @@
     damageOverlay:
       sprite: Structures/Windows/cracks_directional.rsi
   - type: RadiationBlocker
-    resistance: 2
+    resistance: 1.5 #Triad
+    linresistance: 0.05 #Triad 5% rad resistance
   - type: Destructible
     thresholds:
     - trigger:
@@ -173,6 +175,9 @@
     airBlockedDirection:
     - South
     - East
+  - type: RadiationBlocker #Triad
+    resistance: 3 #Triad
+    linresistance: 0.1 #Triad
   - type: DamageVisuals
     damageOverlay:
       sprite: Structures/Windows/cracks_diagonal.rsi
