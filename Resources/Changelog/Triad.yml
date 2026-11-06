@@ -6042,3 +6042,10 @@ Entries:
   id: 2714
   time: '2026-11-06T21:51:34.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/756
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship preview for shipyard
+  id: 2715
+  time: '2026-11-06T22:43:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/797
