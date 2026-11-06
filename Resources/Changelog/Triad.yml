@@ -6065,3 +6065,13 @@ Entries:
   id: 2717
   time: '2026-11-06T22:47:52.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/790
+- author: Upstream
+  changes:
+    - type: Fix
+      message: >-
+        Battery weapons with multiple fire-modes (Energy Shotgun, Temperature
+        Gun) will no longer change their fire-modes when wielded by activating
+        them in your hand.
+  id: 2718
+  time: '2026-11-06T22:48:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/788
