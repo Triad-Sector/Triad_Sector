@@ -16,12 +16,12 @@
               value: false
           steps:
             - material: Steel
-              amount: 125
+              amount: 100
               doAfter: 10
         - to: destroyedMachineFrame
           steps:
             - material: Steel
-              amount: 125
+              amount: 100
               doAfter: 10
 
     - node: missingWires
@@ -38,7 +38,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 125
+              amount: 100
             - !type:DeleteEntity
           steps:
             - tool: Screwing
