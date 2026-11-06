@@ -89,3 +89,11 @@
   image: /Textures/_Triad/PlayerFactions/Tourists.png
   color: "#ff0abe"
   whitelisted: true
+
+- type: company
+  id: Dawnbringers
+  name: The Dawnbringers Union
+  description: dawnbringers-description
+  image: /Textures/_Triad/PlayerFactions/Dawnbringers.png
+  color: "#FD6012"
+  whitelisted: true
