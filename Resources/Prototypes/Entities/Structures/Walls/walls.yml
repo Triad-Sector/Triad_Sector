@@ -923,7 +923,8 @@
 - type: entity
   parent: BaseWallTierOne # Mono
   id: WallUranium
-  name: uranium wall
+  name: Iridite-DU shielding # Triad, renamed this to avoid confusion around uranium wall AND depleted uranium wall both existing (and to save on sprite work, though this could use a resprite its kinda uuugggllyyy)
+  description: More radio-insulation than you could ever need... right? # Triad
   components:
   - type: Sprite
     sprite: Structures/Walls/uranium.rsi
@@ -942,16 +943,19 @@
         - FullTileMask
         layer:
         - WallLayer
-        density: 6000
+        density: 7500 # Triad- Inertia is a property of matter.
   - type: IconSmooth
     key: walls
     base: uranium
-  - type: RadiationBlocker
-    resistance: 6
-  - type: RCDDeconstructable #Frontier
-    cost: 6 #Frontier
-    delay: 8 #Frontier
-    fx: EffectRCDDeconstruct8 #Frontier
+  - type: RadiationBlocker 
+    resistance: 8 # Triad- THE insulator of rads
+    linresistance: 0.45 # Triad. Blocks a whopping 45% of all rads recieved.
+  - type: StaticPrice # Triad.
+    price: 2000 # Triad
+  - #type: RCDDeconstructable #Frontier 
+    #cost: 6 #Frontier
+    #delay: 8 #Frontier
+    #fx: EffectRCDDeconstruct8 #Frontier #Triad, lets not make this RCD deconable..
 
 - type: entity
   parent: BaseWallTierOne

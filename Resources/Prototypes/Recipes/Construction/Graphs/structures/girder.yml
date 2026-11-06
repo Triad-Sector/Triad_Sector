@@ -58,10 +58,16 @@
           conditions:
             - !type:EntityAnchored {}
           steps:
-            - material: Uranium
-              amount: 2
+            - material: Iridite
+              amount: 1
+            - tool: Screwing
+              doAfter: 5
+            - material: Plasteel
+              amount: 5
             - tool: Welding
-              doAfter: 10
+              doAfter: 20
+            - material: UraniumDepleted
+              amount: 5
 
         - to: silverWall
           completed:
