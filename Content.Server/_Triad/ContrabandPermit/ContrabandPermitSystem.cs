@@ -208,10 +208,20 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
             if (ent == gridUid || xform.GridUid != gridUid)
                 continue;
 
-            if (!_transformQuery.TryComp(ent, out var entXForm) || entXForm.GridUid != gridUid)
+            if (holderMind == null || !IsIssuedTo(comp, account, characterName))
+            {
+                seized.Add(ent);
                 continue;
+            }
 
             InitializePermitItem((ent, comp), user);
+        }
+
+        foreach (var uid in seized)
+        {
+            _adminLog.Add(LogType.EntityDelete, LogImpact.Medium,
+                $"Seized {ToPrettyString(uid)} from {ToPrettyString(gridUid)}: its contraband permit was not issued to {ToPrettyString(user):player}, who took the ship.");
+            Del(uid);
         }
     }
 
@@ -237,6 +247,8 @@ public sealed partial class ContrabandPermitSystem : SharedContrabandPermitSyste
 
             // Re-stamp so a transferred ship only alerts once, not on every future load
             comp.PermitOwnerName = mindComp.CharacterName ?? comp.PermitOwnerName;
+
+            comp.PermitOwnerAccount = mindComp.OriginalOwnerUserId ?? mindComp.UserId ?? comp.PermitOwnerAccount;
         }
 
         Dirty(permitItem);

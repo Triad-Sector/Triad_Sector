@@ -8,6 +8,8 @@ using System.Text;
 using System.Globalization;
 using System.Threading.Tasks;
 using Content.Shared._Triad.Drydock;
+using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Manager.Attributes;
@@ -72,6 +74,8 @@ public sealed partial class DrydockFidelitySystem
     /// from a first map init and skip one-shot work the ship already carries.
     /// </summary>
     [Dependency] private MapInitRefireSystem _mapInitRefire = default!;
+
+    [Dependency] private SharedActionsSystem _actions = default!;
 
     /// <summary>
     /// Components the transaction never touches: what the loader owns (parents, coordinates,
@@ -239,7 +243,12 @@ public sealed partial class DrydockFidelitySystem
                 // from, locked to everyone.
                 report.Count(report.Appeared, ProtoOf(uid));
                 if (mode == DrydockMapInitMode.Revert)
+                {
+                    if (HasComp<ActionComponent>(uid))
+                        _actions.RemoveAction(uid);
+
                     QueueDel(uid);
+                }
             }
 
             await slice.Step(i);

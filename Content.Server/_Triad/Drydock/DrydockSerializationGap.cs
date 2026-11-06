@@ -45,5 +45,6 @@ public static class DrydockSerializationGap
         // Player-modified market state.
         typeof(MarketData),
         // Production a player queued up.
-        typeof(LatheRecipeBatch));
+        typeof(LatheRecipeBatch),
+        typeof(Guid));
 }
