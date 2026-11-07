@@ -4,6 +4,7 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
+using Content.Client._Triad.ShipPreview.UI; // Triad
 using Content.Client._Triad.Shipyard.Save; // Triad
 using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
@@ -20,6 +21,7 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
+    private ShipPreviewWindow? _previewWindow; // Triad
 
     public int Balance { get; private set; }
 
@@ -48,6 +50,7 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
         // }
         _menu.OnClose += Close;
         _menu.OnOrderApproved += ApproveOrder;
+        _menu.OnPreviewShip += PreviewShip; // Triad
         _menu.OnSellShip += SellShip;
         // _menu.OnUnassignDeed += UnassignDeed; // Triad: removed with the Unassign button
         // _menu.OnRenameShip += RenameShip; // Triad: removed with the footer Rename
@@ -161,6 +164,23 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
         var vesselId = row.Vessel.ID;
         SendMessage(new ShipyardConsolePurchaseMessage(vesselId));
     }
+
+    // Triad - start
+    private void PreviewShip(ButtonEventArgs args)
+    {
+        if (args.Button.Parent?.Parent is not VesselRow { Vessel: { } vessel })
+            return;
+
+        if (_previewWindow is not { IsOpen: true })
+        {
+            _previewWindow = ShipPreviewWindow.OpenFor(vessel);
+            return;
+        }
+
+        _previewWindow.ShowVessel(vessel);
+        _previewWindow.MoveToFront();
+    }
+    // Triad - end
 
     private void SellShip(ButtonEventArgs args)
     {

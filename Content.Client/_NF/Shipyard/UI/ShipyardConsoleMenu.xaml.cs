@@ -33,6 +33,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
 
     public event Action<ButtonEventArgs>? OnSellShip;
     public event Action<ButtonEventArgs>? OnOrderApproved;
+    public event Action<ButtonEventArgs>? OnPreviewShip; // Triad
     // public event Action<ButtonEventArgs>? OnUnassignDeed; // Triad: removed with the Unassign button
     // public event Action<string>? OnRenameShip; // Triad: removed with the footer Rename
     // Triad: drydock tab. Store carries only the berth to land in, because the server resolves the
@@ -529,6 +530,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
                 vesselEntry.Purchase.ToolTip = Loc.GetString("shipyard-console-purchase-ship-out");
             }
             vesselEntry.Purchase.OnPressed += (args) => { OnOrderApproved?.Invoke(args); };
+            vesselEntry.Preview.OnPressed += (args) => { OnPreviewShip?.Invoke(args); }; // Triad
             Vessels.AddChild(vesselEntry);
         }
     }

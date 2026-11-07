@@ -12,8 +12,7 @@ namespace Content.Client.Wires.Visualizers
 
             var layer = SpriteSystem.LayerMapReserve((uid, args.Sprite), WiresVisualLayers.MaintenancePanel);
 
-            if(args.AppearanceData.TryGetValue(WiresVisuals.MaintenancePanelState, out var panelStateObject) &&
-                panelStateObject is bool panelState)
+            if (args.TryGetData<bool>(WiresVisuals.MaintenancePanelState, out var panelState))
             {
                 SpriteSystem.LayerSetVisible((uid, args.Sprite), layer, panelState);
             }

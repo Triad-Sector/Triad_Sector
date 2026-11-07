@@ -9,39 +9,31 @@ namespace Content.Client.Mech;
 /// <inheritdoc/>
 public sealed partial class MechSystem : SharedMechSystem
 {
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<MechComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-    }
-
-    private void OnAppearanceChanged(EntityUid uid, MechComponent component, ref AppearanceChangeEvent args)
+    [SubscribeLocalEvent]
+    private void OnAppearanceChanged(Entity<MechComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
             return;
 
-        if (!_sprite.TryGetLayer((uid, args.Sprite), (int) MechVisualLayers.Base, out var layer, false))
+        if (!_sprite.TryGetLayer((ent, args.Sprite), (int) MechVisualLayers.Base, out var layer, false))
             return;
 
-        var state = component.BaseState;
+        var state = ent.Comp.BaseState;
         var drawDepth = DrawDepth.Mobs;
-        if (component.BrokenState != null && _appearance.TryGetData<bool>(uid, MechVisuals.Broken, out var broken, args.Component) && broken)
+        if (ent.Comp.BrokenState != null && args.TryGetData<bool>(MechVisuals.Broken, out var broken) && broken)
         {
-            state = component.BrokenState;
+            state = ent.Comp.BrokenState;
             drawDepth = DrawDepth.SmallMobs;
         }
-        else if (component.OpenState != null && _appearance.TryGetData<bool>(uid, MechVisuals.Open, out var open, args.Component) && open)
+        else if (ent.Comp.OpenState != null && args.TryGetData<bool>(MechVisuals.Open, out var open) && open)
         {
-            state = component.OpenState;
+            state = ent.Comp.OpenState;
             drawDepth = DrawDepth.SmallMobs;
         }
 
         _sprite.LayerSetRsiState(layer, state);
-        _sprite.SetDrawDepth((uid, args.Sprite), (int) drawDepth);
+        _sprite.SetDrawDepth((ent, args.Sprite), (int) drawDepth);
     }
 }

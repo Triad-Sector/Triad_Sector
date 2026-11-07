@@ -6001,3 +6001,77 @@ Entries:
   id: 2711
   time: '2026-11-05T03:39:04.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/795
+- author: GhostC10
+  changes:
+    - type: Add
+      message: Heat damage from environment and overheat warnings back in
+    - type: Remove
+      message: Instant, zero warning overheat death
+  id: 2712
+  time: '2026-11-06T21:49:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/805
+- author: Titi2Point0
+  changes:
+    - type: Tweak
+      message: >-
+        The 5x5 machine frame now only need 100 steel making it buildable ! Go
+        make your reactor go boom now !
+  id: 2713
+  time: '2026-11-06T21:50:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/800
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: SRD & tools are now more forgiving if you move a bit
+    - type: Fix
+      message: >-
+        SRD now works better when not standing on the grid that is being
+        repaired
+    - type: Add
+      message: Holding a nanite applicator now shows you an overlay of damaged things
+    - type: Tweak
+      message: SRD now repairs multiple entities at once.
+    - type: Tweak
+      message: Changed Advance parts from 3 to 2 rating
+    - type: Tweak
+      message: Changed Super parts from 4 to 3 rating
+    - type: Tweak
+      message: Changed Bluespace parts from 6 to 4 rating
+    - type: Tweak
+      message: Changed how thruster speed calculate, now it increase 10% per efficiency
+  id: 2714
+  time: '2026-11-06T21:51:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/756
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship preview for shipyard
+  id: 2715
+  time: '2026-11-06T22:43:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/797
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Pulse weapons are now ship savable, but still illegal. You can however
+        get a permit for them (like the emag)!
+  id: 2716
+  time: '2026-11-06T22:47:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/792
+- author: oxaxe9846-arch
+  changes:
+    - type: Add
+      message: 'The Tfa has approved the local company The Dawnbringers Union. '
+  id: 2717
+  time: '2026-11-06T22:47:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/790
+- author: Upstream
+  changes:
+    - type: Fix
+      message: >-
+        Battery weapons with multiple fire-modes (Energy Shotgun, Temperature
+        Gun) will no longer change their fire-modes when wielded by activating
+        them in your hand.
+  id: 2718
+  time: '2026-11-06T22:48:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/788
