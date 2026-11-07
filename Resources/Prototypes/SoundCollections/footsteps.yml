@@ -225,3 +225,10 @@
   - /Audio/Effects/Footsteps/heelsclack3.ogg
   - /Audio/Effects/Footsteps/heelsclack4.ogg
   - /Audio/Effects/Footsteps/heelsclack5.ogg
+
+# Triad, Solarian Directive
+
+- type: soundCollection
+  id: FootstepSolarianHeavy
+  files:
+  - /Audio/_Triad/Effects/Footsteps/solarian-heavy-step.ogg
