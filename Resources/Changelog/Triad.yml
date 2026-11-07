@@ -6082,3 +6082,14 @@ Entries:
   id: 2719
   time: '2026-11-07T00:12:53.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/778
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Turrets now take structural damage, and now have similar damage
+        modifiers as most other structures. Expect non-ap rounds to preform
+        slightly worse, and anti-structural weapons/explosives to preform much
+        better against them.
+  id: 2720
+  time: '2026-11-07T01:29:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/789
