@@ -9,7 +9,7 @@
   id: Commercant
   parent: BaseVessel
   name: NSC Commercant
-  description: A moderately armored large cargo freighter equipped with a top-of-the-line FTL drive, powered by an AME and armed with multiple close-in weapon systems designed to stop any boarding party. The Commercant's cargo bay is able to store up to 328 cargo crates for both short and long range transportation.
+  description: A moderately armored large cargo freighter equipped with a top-of-the-line FTL drive, powered by an AME and armed with multiple close-in weapon systems designed to stop any boarding party. The Commerçant's cargo bay is able to store up to 328 cargo crates for both short and long range transportation.
   price: 193000
   category: Large
   group: Shipyard
