@@ -6093,3 +6093,10 @@ Entries:
   id: 2720
   time: '2026-11-07T01:29:31.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/789
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed FTL triggers any/every implanter
+  id: 2721
+  time: '2026-11-07T19:00:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/809
