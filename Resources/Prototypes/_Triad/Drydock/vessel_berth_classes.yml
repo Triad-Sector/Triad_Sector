@@ -22,10 +22,6 @@
   class: Frigate
 
 - type: drydockVesselClass
-  id: Argent
-  class: Cruiser
-
-- type: drydockVesselClass
   id: Arkansaw
   class: Capital
 
@@ -38,8 +34,8 @@
   class: Corvette
 
 - type: drydockVesselClass
-  id: Autumn
-  class: Capital
+  id: Basilisk
+  class: Cruiser
 
 - type: drydockVesselClass
   id: Behir
@@ -76,6 +72,10 @@
 - type: drydockVesselClass
   id: Comet
   class: Cruiser
+
+- type: drydockVesselClass
+  id: Commercant
+  class: SuperCapital
 
 - type: drydockVesselClass
   id: Drakon
@@ -138,10 +138,6 @@
   class: Corvette
 
 - type: drydockVesselClass
-  id: Iapetus
-  class: Frigate
-
-- type: drydockVesselClass
   id: Inertia
   class: Cutter
 
@@ -200,6 +196,10 @@
 - type: drydockVesselClass
   id: Marshrutka
   class: Cutter
+
+- type: drydockVesselClass
+  id: Martyr
+  class: Frigate
 
 - type: drydockVesselClass
   id: Medicus
@@ -282,10 +282,6 @@
   class: Frigate
 
 - type: drydockVesselClass
-  id: Praetorian
-  class: Frigate
-
-- type: drydockVesselClass
   id: Promise
   class: Cruiser
 
@@ -308,10 +304,6 @@
 - type: drydockVesselClass
   id: Remontnik
   class: Cruiser
-
-- type: drydockVesselClass
-  id: Rig
-  class: Frigate
 
 - type: drydockVesselClass
   id: Rook
@@ -364,10 +356,6 @@
 - type: drydockVesselClass
   id: Spessbite
   class: Corvette
-
-- type: drydockVesselClass
-  id: Spyglass
-  class: Frigate
 
 - type: drydockVesselClass
   id: StratoRat
@@ -436,10 +424,6 @@
 - type: drydockVesselClass
   id: Ugol
   class: Cutter
-
-- type: drydockVesselClass
-  id: Valkyrie
-  class: Frigate
 
 - type: drydockVesselClass
   id: Vaquita
