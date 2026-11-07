@@ -6,12 +6,13 @@
   components:
   - type: Sprite
     sprite: _Triad/Clothing/Back/Modsuits/HZDBesieger.rsi
-  - type: Storage
+  - type: Storage # Backpack variant
+    maxItemSize: Huge
     grid:
     - 0,0,5,4
-    - 7,0,7,1
-    - 9,0,9,1
-    - 7,3,9,4
+    #- 7,0,7,1
+    #- 9,0,9,1
+    #- 7,3,9,4
   - type: ExplosionResistance
     damageCoefficient: 0.20
   - type: ToggleableClothing
