@@ -64,7 +64,7 @@
                 Reflection Chance
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#bfc031">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Bananium
@@ -105,7 +105,7 @@
                 [protodata="BananiumReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#566558">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Bohrum
@@ -146,7 +146,7 @@
                 [protodata="BohrumReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#b18b25">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Brass
@@ -187,7 +187,7 @@
                 [protodata="BrassReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#828aa4">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Cerenkite
@@ -228,7 +228,7 @@
                 [protodata="CerenkiteReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#80ffff">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Diamond
@@ -269,7 +269,7 @@
                 [protodata="DiamondReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#a8ccd7">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Glass
@@ -310,7 +310,7 @@
                 [protodata="GlassReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#ffd700">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Gold
@@ -351,7 +351,48 @@
                 [protodata="GoldReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
+        <ColorBox Color="#990aff">
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                Iridite
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+            </Box>
+        </ColorBox>
+
         <ColorBox Color="#7e009e">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Plasma
@@ -392,7 +433,7 @@
                 [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#b35989">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Plasma Glass
@@ -433,7 +474,7 @@
                 [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#696969">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Plasteel
@@ -474,10 +515,92 @@
                 [protodata="PlasteelReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
+        <ColorBox Color="#8db0bd">
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                Plastitanium
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+            </Box>
+        </ColorBox>
+
+        <ColorBox Color="#5e6389">
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                Plutonium (C-Pu)
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="CladdedPlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+            </Box>
+        </ColorBox>
+
         <ColorBox Color="#404888">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                Plutonium
+                Plutonium (HEP)
             </Box>
         </ColorBox>
         <ColorBox>
@@ -515,7 +638,7 @@
                 [protodata="PlutoniumReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#c0c0c0">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Silver
@@ -556,7 +679,7 @@
                 [protodata="SilverReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#808080">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Steel
@@ -597,10 +720,10 @@
                 [protodata="SteelReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
+
         <ColorBox Color="#32a852">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                Uranium
+                Uranium (LEU)
             </Box>
         </ColorBox>
         <ColorBox>
@@ -638,8 +761,48 @@
                 [protodata="UraniumReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
-        
-        <ColorBox Color="#3cab38">
+
+        <ColorBox Color="#41e56d">
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                Uranium (HEU)
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox>
+            <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="HighEnrichedUraniumReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+            </Box>
+        </ColorBox>
+        <ColorBox Color="#64c561">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 Uranium Glass
             </Box>
@@ -772,6 +935,22 @@
 			</Box>
 		</ColorBox>
 
+		<ColorBox Color="#8db0bd">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+				Plastitanium
+			</Box>
+		</ColorBox>
+		<ColorBox>
+			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumGasTurbineBlade" comp="GasTurbineBlade" member="GuidebookIntegrity"/]
+			</Box>
+		</ColorBox>
+		<ColorBox>
+			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="PlastitaniumGasTurbineBlade" comp="GasTurbineBlade" member="GuidebookInertia" format="N0"/]
+			</Box>
+		</ColorBox>
+
 		<ColorBox Color="#808080">
 			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
 				Steel
@@ -801,7 +980,7 @@
 				Efficiency
 			</Box>
 		</ColorBox>
-		
+
 		<ColorBox Color="#ffd700">
 			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
 				Gold
@@ -810,6 +989,17 @@
 		<ColorBox>
 			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
                 [protodata="GoldGasTurbineStator" comp="GasTurbineStator" member="GuidebookEfficiency" format="P0"/]
+			</Box>
+		</ColorBox>
+
+		<ColorBox Color="#990aff">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+				Iridite
+			</Box>
+		</ColorBox>
+		<ColorBox>
+			<Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
+                [protodata="IriditeGasTurbineStator" comp="GasTurbineStator" member="GuidebookEfficiency" format="P0"/]
 			</Box>
 		</ColorBox>
 

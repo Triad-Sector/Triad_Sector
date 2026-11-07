@@ -21,6 +21,9 @@ public sealed partial class MaterialProperties()
     [DataField("reflective")]
     public float Reflectivity = 0;
 
+    [DataField("fertility")]
+    public float Fertility = 0;
+
     [DataField("flammable")]
     public float Flammability = 1;
 
@@ -54,6 +57,7 @@ public sealed partial class MaterialProperties()
         ChemicalResistance = source.ChemicalResistance;
         Radioactivity = source.Radioactivity;
         NeutronRadioactivity = source.NeutronRadioactivity;
+        Fertility = source.Fertility;
         FissileIsotopes = source.FissileIsotopes;
         ActivePlasma = source.ActivePlasma;
     }
