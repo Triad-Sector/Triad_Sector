@@ -6075,3 +6075,10 @@ Entries:
   id: 2718
   time: '2026-11-06T22:48:54.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/788
+- author: nathan736
+  changes:
+    - type: Fix
+      message: Turbines now save correct rejoyce
+  id: 2719
+  time: '2026-11-07T00:12:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/778
