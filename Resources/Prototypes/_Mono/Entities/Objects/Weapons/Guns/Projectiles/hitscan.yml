@@ -6,8 +6,8 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 50
-        Blunt: 5
+        Heat: 60
+        Blunt: 10
         Shock: 10
         Radiation: 50
         Structural: 700
