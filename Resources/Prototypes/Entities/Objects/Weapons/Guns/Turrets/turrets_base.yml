@@ -33,7 +33,8 @@
   - type: CombatMode
     toggleMouseRotator: false
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Triad
+    damageModifierSet: TurretDamageModifier # Triad
   - type: Repairable # Mono - Repairable turrets
     fuelCost: 20
     doAfterDelay: 15

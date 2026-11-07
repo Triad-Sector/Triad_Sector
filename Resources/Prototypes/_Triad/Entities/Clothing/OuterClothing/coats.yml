@@ -36,7 +36,7 @@
     - ClothMade # No chameleon
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseClass2AShipContrabandSilent]
+  parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseFactionGearTDFT1]
   id: ClothingOuterCoatTdfLieutenant
   name: TDF lieutenant's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a lieutenant from any threats in the Triad Sector.
@@ -50,7 +50,7 @@
     - ClothMade # No chameleon
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseClass2AShipContrabandSilent]
+  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoat, BaseFactionGearTDFT1]
   id: ClothingOuterCoatTdfLieutenantAlt
   name: TDF lieutenant's armored coat
   description: A sturdy, utilitarian coat designed to protect a lieutenant from any threats and hypothermic events.

@@ -520,6 +520,19 @@
     raffle:
       settings: default
     prototype: TSFMCAICore
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 # 15 hours
+      alternateRequirementSets:
+        longerPlaytimeLessSec:
+        - !type:OverallPlaytimeRequirement
+          time: 450000 # 125 hours
+        - !type:DepartmentTimeRequirement
+          department: Security
+          time: 18000 # 5 hours
   - type: GhostTakeoverAvailable
   - type: RandomMetadata
     nameSegments: [ TSFMCCoreNameset ]

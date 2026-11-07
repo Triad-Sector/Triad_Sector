@@ -30,8 +30,8 @@ public sealed partial class ExpendableLightSystem : VisualizerSystem<ExpendableL
         if (args.Sprite == null)
             return;
 
-        if (AppearanceSystem.TryGetData<string>(uid, ExpendableLightVisuals.Behavior, out var lightBehaviourID, args.Component)
-        &&  TryComp<LightBehaviourComponent>(uid, out var lightBehaviour))
+        if (args.TryGetData<string>(ExpendableLightVisuals.Behavior, out var lightBehaviourID)
+            && TryComp<LightBehaviourComponent>(uid, out var lightBehaviour))
         {
             _lightBehavior.StopLightBehaviour((uid, lightBehaviour));
 
@@ -45,7 +45,7 @@ public sealed partial class ExpendableLightSystem : VisualizerSystem<ExpendableL
             }
         }
 
-        if (!AppearanceSystem.TryGetData<ExpendableLightState>(uid, ExpendableLightVisuals.State, out var state, args.Component))
+        if (!args.TryGetData<ExpendableLightState>(ExpendableLightVisuals.State, out var state))
             return;
 
         switch (state)
