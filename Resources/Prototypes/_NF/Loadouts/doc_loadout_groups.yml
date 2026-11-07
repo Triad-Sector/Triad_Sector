@@ -6,6 +6,13 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingUniformCMOFormal
+  - ClothingUniformJumpskirtCMOFormal
+  - ClothingUniformCMOVest
+  - ClothingUniformJumpskirtCMOVest
+  - ClothingUniformCMOSummer
+  # End Triad
   fallbacks:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
@@ -57,6 +64,10 @@
   loadouts:
   - DocClothingCloakCmo
   - DocClothingNeckMantleCMO
+  # Triad - Ported "Medical Clothing Overhaul" clothes.
+  - ClothingNeckCMOOverShoulder
+  - ClothingNeckCMOShawl
+  # End Triad
 
 - type: loadoutGroup
   id: DocPDA

@@ -9,3 +9,45 @@
   groupBy: BomberCoat
   equipment:
    outerClothing: ClothingOuterCoatBlueSpotsJacket
+
+- type: loadout
+  id: ClothingOuterCoatLabLong
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabLong
+
+- type: loadout
+  id: ClothingOuterCoatLabMedical
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabMedical
+
+- type: loadout
+  id: ClothingOuterCoatLabLongMedical
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabLongMedical
+
+- type: loadout
+  id: ClothingOuterCoatLabLongChemist
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabLongChemist
+
+- type: loadout
+  id: ClothingOuterCoatLabSeniorChemist
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorChemist
+
+- type: loadout
+  id: ClothingOuterCoatLabCybersun
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabCybersun
+
+- type: loadout
+  id: ClothingOuterCoatParamedicJacket
+  groupBy: LabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatParamedicJacket
