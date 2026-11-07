@@ -18,6 +18,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 using Content.Server._NF.Power.Components; // Frontier
 using Content.Server.Power.Components; // Frontier
+using Content.Shared._Triad.Drydock; // Triad
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -32,6 +33,7 @@ namespace Content.Server.Light.EntitySystems
         [Dependency] private SharedAudioSystem _audio = default!;
         [Dependency] private SharedPointLightSystem _lights = default!;
         [Dependency] private PowerReceiverSystem _powerSystem = default!; // Frontier
+        [Dependency] private MapInitRefireSystem _mapInitRefire = default!; // Triad
 
         // TODO: Ideally you'd be able to subscribe to power stuff to get events at certain percentages.. or something?
         // But for now this will be better anyway.
@@ -102,6 +104,9 @@ namespace Content.Server.Light.EntitySystems
         /// </summary>
         private void OnStartup(Entity<HandheldLightComponent> ent, ref ComponentStartup args)
         {
+            if (!_mapInitRefire.StartupSeedApplies(ent))
+                return;
+
             if (_lights.TryGetLight(ent, out var light))
                 _lights.SetEnabled(ent, ent.Comp.Activated, light);
 

@@ -19,6 +19,16 @@ public sealed class MapInitRefireSystem : EntitySystem
     /// </summary>
     public bool Refiring { get; private set; }
 
+    [Dependency] private SharedMapSystem _map = default!;
+
+    public bool StartupSeedApplies(EntityUid uid)
+    {
+        if (MetaData(uid).EntityLifeStage >= EntityLifeStage.MapInitialized)
+            return true;
+
+        return Transform(uid).MapUid is not { } map || _map.IsInitialized(map);
+    }
+
     public void Raise(EntityUid uid)
     {
         Refiring = true;

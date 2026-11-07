@@ -236,7 +236,8 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
             _light.SetEnabled(uid, cryoPodEnabled && cryoPod.BodyContainer?.ContainedEntity != null, light);
         }
 
-        if (!Resolve(uid, ref appearance))
+        // Triad: not logged, since the startup seed also runs on a pod without an appearance.
+        if (!Resolve(uid, ref appearance, false))
             return;
 
         _appearance.SetData(uid, CryoPodVisuals.ContainsEntity, cryoPod.BodyContainer?.ContainedEntity == null, appearance);

@@ -993,7 +993,10 @@ namespace Content.Server.GameTicking
                 if (_playerManager.PlayerCount == 0 && !_cfg.GetCVar(TriadCCVars.LobbyStartWithoutPlayers))
                     _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
                 else
+                {
+                    _roundStartCountdownHasNotStartedYetDueToNoPlayers = false;
                     _roundStartTime = _gameTiming.CurTime + LobbyDuration;
+                }
 
                 SendStatusToAll();
                 UpdateInfoText();

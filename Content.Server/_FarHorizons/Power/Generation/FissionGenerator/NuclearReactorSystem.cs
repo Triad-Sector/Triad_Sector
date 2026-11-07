@@ -130,10 +130,22 @@ public sealed partial class NuclearReactorSystem : EntitySystem
     }
 
     /// <summary>
-    /// Everything the reactor needs to tick, none of which survives a save. Startup rather than map
-    /// init, because map init never fires again for a reactor restored from one.
+    /// Startup rather than map init, because map init never fires again for a reactor restored from
+    /// a save. A reactor spawned onto a map that is not yet initialized waits for its own map init
+    /// instead, so its prototype state saves untouched.
     /// </summary>
     private void OnStartup(EntityUid uid, NuclearReactorComponent comp, ref ComponentStartup args)
+    {
+        if (!_mapInitRefire.StartupSeedApplies(uid))
+            return;
+
+        SetUpRuntime(uid, comp);
+    }
+
+    /// <summary>
+    /// Everything the reactor needs to tick, none of which survives a save.
+    /// </summary>
+    private void SetUpRuntime(EntityUid uid, NuclearReactorComponent comp)
     {
         _signal.EnsureSinkPorts(uid, comp.ControlRodInsertPort, comp.ControlRodRetractPort);
 
@@ -172,6 +184,10 @@ public sealed partial class NuclearReactorSystem : EntitySystem
     /// </summary>
     private void OnMapInit(EntityUid uid, NuclearReactorComponent comp, ref MapInitEvent args)
     {
+        // Triad: startup skipped the setup for a reactor spawned before its map was initialized.
+        if (comp.FluxGrid == null)
+            SetUpRuntime(uid, comp);
+
         // Triad: on a map-init re-raise (a drydock retrieve) a reactor that already holds parts was
         // laid out once, and the prefab starts by emptying the part storage, which is the one effect
         // that re-raise cannot undo. A first map init lays the prefab as before.

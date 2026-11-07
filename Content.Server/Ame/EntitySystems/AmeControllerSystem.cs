@@ -313,7 +313,9 @@ public sealed partial class AmeControllerSystem : EntitySystem
     // Triad: seed on load (DrydockAppearanceComponent).
     private void OnStartup(EntityUid uid, AmeControllerComponent controller, ComponentStartup args)
     {
-        UpdateDisplay(uid, controller.Stability, controller);
+        // Nothing to seed on an entity without an appearance, and Resolve would log an error for it.
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
+            UpdateDisplay(uid, controller.Stability, controller, appearance);
     }
 
     private void UpdateDisplay(EntityUid uid, int stability, AmeControllerComponent? controller = null, AppearanceComponent? appearance = null)

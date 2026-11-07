@@ -81,6 +81,23 @@ namespace Content.Server.Light.EntitySystems
         // Triad: seed on load (DrydockAppearanceComponent). Startup, not init: the bulb is a contained entity.
         private void OnStartup(EntityUid uid, PoweredLightComponent light, ComponentStartup args)
         {
+            if (!_mapInitRefire.StartupSeedApplies(uid))
+            {
+                var state = PoweredLightState.Empty;
+                if (GetBulb(uid, light) is { } bulb && TryComp<LightBulbComponent>(bulb, out var lightBulb))
+                {
+                    state = lightBulb.State switch
+                    {
+                        LightBulbState.Broken => PoweredLightState.Broken,
+                        LightBulbState.Burned => PoweredLightState.Burned,
+                        _ => PoweredLightState.Off,
+                    };
+                }
+
+                _appearance.SetData(uid, PoweredLightVisuals.BulbState, state);
+                return;
+            }
+
             UpdateLight(uid, light);
         }
 
@@ -338,7 +355,7 @@ namespace Content.Server.Light.EntitySystems
             light.LastGhostBlink = time;
 
             ToggleBlinkingLight(uid, light, true);
-            // Triad: seed on load (DrydockAppearanceComponent). Startup, not init: the bulb is a contained entity.
+            // Triad: engine v275 removed the SpawnTimer extension; static Timer + deletion guard keeps the old semantics
             Timer.Spawn(light.GhostBlinkingTime, () =>
             {
                 if (Deleted(uid))

@@ -6,6 +6,7 @@ using Content.Shared.Anomaly.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
+using Content.Shared._Triad.Drydock; // Triad
 
 namespace Content.Server.Anomaly;
 
@@ -70,6 +71,9 @@ public sealed partial class AnomalySystem
     // Triad: seed on load (DrydockAppearanceComponent).
     private void OnVesselStartup(EntityUid uid, AnomalyVesselComponent component, ComponentStartup args)
     {
+        if (!_mapInitRefire.StartupSeedApplies(uid))
+            return;
+
         UpdateVesselAppearance(uid, component);
     }
 
