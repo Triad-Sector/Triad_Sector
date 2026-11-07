@@ -207,6 +207,8 @@ public sealed class XenoArtifactShipSaveTest
         EntityUid artifact = default;
         await server.WaitPost(() =>
         {
+            entMan.RunMapInit(map.Grid.Owner, entMan.GetComponent<MetaDataComponent>(map.Grid.Owner));
+
             artifact = entMan.SpawnEntity(ArtifactProtoId, map.GridCoords);
             transform.AnchorEntity(artifact);
         });
