@@ -17,6 +17,9 @@ public sealed class ShipyardConsoleInterfaceState : BoundUserInterfaceState
     public readonly bool FreeListings;
     public readonly float SellRate;
 
+    /// <summary>Triad: everything the drydock tab draws. See <see cref="DrydockTabState"/>.</summary>
+    public DrydockTabState Drydock = DrydockTabState.Empty; // Triad: drydock tab
+
     public ShipyardConsoleInterfaceState(
         int balance,
         bool accessGranted,

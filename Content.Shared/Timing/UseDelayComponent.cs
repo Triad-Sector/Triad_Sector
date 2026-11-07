@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared.Timing;
 
@@ -39,10 +40,10 @@ public sealed partial class UseDelayInfo
 {
     [DataField]
     public TimeSpan Length { get; set; }
-    [DataField]
-    public TimeSpan StartTime { get; set; }
-    [DataField]
-    public TimeSpan EndTime { get; set; }
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan StartTime { get; set; } // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan EndTime { get; set; } // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     public UseDelayInfo(TimeSpan length, TimeSpan startTime = default, TimeSpan endTime = default)
     {

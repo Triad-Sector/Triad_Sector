@@ -392,6 +392,17 @@ public enum MarketTransactionKind
     LoadoutSpawn,
     AdminAdjust,
 
+    /// <summary>Buying, upgrading or selling a drydock berth, at the shipyard console or bundled into a ship purchase.</summary>
+    DrydockBerth,
+
+    /// <summary>
+    /// The fee an owner pays to reclaim an impounded ship out of the drydock's lot, and its refund
+    /// when the reclaim is refused after the money moved. Withdrawn and credited nowhere: the Triad
+    /// Frontier Administration has no account to receive it until the economy update, so it is a
+    /// sink, and this kind is what finds those withdrawals when that work attaches.
+    /// </summary>
+    DrydockImpound,
+
     /// <summary>
     /// A sector account movement captured at the ledger chokepoint rather than at a site that knew
     /// what was happening. The <c>LedgerEntryType</c> carries the real taxonomy for these; this kind

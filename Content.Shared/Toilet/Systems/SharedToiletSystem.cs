@@ -24,8 +24,15 @@ namespace Content.Shared.Toilet.Systems
             base.Initialize();
 
             SubscribeLocalEvent<ToiletComponent, MapInitEvent>(OnMapInit);
+            SubscribeLocalEvent<ToiletComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
             SubscribeLocalEvent<ToiletComponent, GetVerbsEvent<AlternativeVerb>>(OnToggleSeatVerb);
             SubscribeLocalEvent<ToiletComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        }
+
+        // Triad: seed on load (DrydockAppearanceComponent). Appearance half only; the handler below rolls the seat.
+        private void OnStartup(EntityUid uid, ToiletComponent component, ComponentStartup args)
+        {
+            UpdateAppearance(uid, component);
         }
 
         private void OnMapInit(EntityUid uid, ToiletComponent component, MapInitEvent args)

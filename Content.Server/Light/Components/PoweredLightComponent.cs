@@ -12,7 +12,7 @@ namespace Content.Server.Light.Components
     /// <summary>
     ///     Component that represents a wall light. It has a light bulb that can be replaced when broken.
     /// </summary>
-    [RegisterComponent, Access(typeof(PoweredLightSystem), typeof(ShipyardGridSaveSystem))] // Triad add ShipyardGridSaveSystem
+    [RegisterComponent, Access(typeof(PoweredLightSystem))]
     public sealed partial class PoweredLightComponent : Component
     {
         [DataField("burnHandSound")]

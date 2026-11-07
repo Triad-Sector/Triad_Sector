@@ -12,7 +12,7 @@ using DrawDepthTag = Robust.Shared.GameObjects.DrawDepth;
 
 namespace Content.Shared.Doors.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause] // Triad: pause
 public sealed partial class DoorComponent : Component
 {
     /// <summary>
@@ -66,6 +66,7 @@ public sealed partial class DoorComponent : Component
     /// <summary>
     ///     When the door is active, this is the time when the state will next update.
     /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     [AutoNetworkedField, ViewVariables]
     public TimeSpan? NextStateChange;
 
@@ -234,16 +235,7 @@ public sealed partial class DoorComponent : Component
     private float? SecondsUntilStateChange
     {
         [UsedImplicitly]
-        get
-        {
-            if (NextStateChange == null)
-            {
-                return null;
-            }
-
-            var curTime = IoCManager.Resolve<IGameTiming>().CurTime;
-            return (float)(NextStateChange.Value - curTime).TotalSeconds;
-        }
+        get => null;
         set
         {
             if (value == null || value.Value > 0)

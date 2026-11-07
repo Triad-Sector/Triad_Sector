@@ -1,4 +1,4 @@
-﻿using Content.Server.Access.Systems;
+using Content.Server.Access.Systems;
 using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Server._NF.Bank;
@@ -6,6 +6,7 @@ using Content.Server._NF.Shipyard.Components;
 using Content.Server._NF.ShuttleRecords;
 using Content.Shared._NF.Bank.Components;
 using Content.Shared._NF.Shipyard;
+using Content.Shared._Triad.CCVar; // Triad: drydock tab
 using Content.Shared._NF.Shipyard.Events;
 using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Prototypes;
@@ -140,7 +141,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         if (!GetAvailableShuttles(shipyardConsoleUid, targetId: targetId).available.Contains(vessel.ID))
         {
-            PlayDenySound(player, shipyardConsoleUid, component);
+            // PlayDenySound(player, shipyardConsoleUid, component); // Triad: folded into DenyWithReason below
+            DenyWithReason(player, shipyardConsoleUid, component, Loc.GetString("shipyard-console-error-vessel-unavailable")); // Triad: chat failure feedback
             _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(player):player} tried to purchase a vessel that was never available.");
             return;
         }
@@ -164,9 +166,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
+        if (voucher is null && RefuseShipAlreadyOut(shipyardConsoleUid, component, player)) // Triad: one civilian ship out per account
+            return; // Triad
+
         if (!TryPurchaseShuttle(station, vessel.ShuttlePath, out var shuttleUidOut, vessel.PriorityDockTag))
         {
-            PlayDenySound(player, shipyardConsoleUid, component);
+            // PlayDenySound(player, shipyardConsoleUid, component); // Triad: folded into DenyWithReason below
+            DenyWithReason(player, shipyardConsoleUid, component, Loc.GetString("shipyard-console-error-vessel-load-failed")); // Triad: chat failure feedback
             return;
         }
 
@@ -217,10 +223,18 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         else
         {
-            if (bank.Balance <= vessel.Price)
+            // Triad: drydock. A berth for the hull's class is part of every purchase and is charged
+            // after the vessel by the purchase event handler, so the whole amount is required here.
+            // The class comes from the vessel's drydockVesselClass row, the same one the listing
+            // quotes, and a hull whose addComponents blacklist it from saving is quoted no berth.
+            // var berthPrice = _configManager.GetCVar(TriadCCVars.DrydockEnabled) ? DrydockBerthPriceFor(shuttleUid) : 0;
+            var berthPrice = DrydockPurchaseBerthPrice(vessel, shuttleUid); // Triad: drydock, quote == charge
+            // if (bank.Balance <= vessel.Price)
+            if (bank.Balance <= vessel.Price + berthPrice) // Triad: drydock, berth included
             {
                 Del(shuttleUid);
-                ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price)));
+                // ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price)));
+                ConsolePopup(player, Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price + berthPrice))); // Triad: drydock, berth included
                 PlayDenySound(player, shipyardConsoleUid, component);
                 return;
             }
@@ -396,6 +410,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var purchaseEv = new ShipyardShuttlePurchaseEvent(shuttleUid, player); // Mono: half of this shit could be an event.
         RaiseLocalEvent(purchaseEv);
         RefreshState(shipyardConsoleUid, bank.Balance, true, name, sellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, voucherUsed);
+        KickDrydockRefresh(shipyardConsoleUid, component, player, (ShipyardConsoleUiKey)args.UiKey); // Triad: drydock tab
     }
 
     public void OnSellMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSellMessage args)
@@ -427,16 +442,27 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
+        if (RefuseDeedNotOwned(uid, component, player, deed, "sell")) // Triad: a card is not proof of ownership, the account is
+            return; // Triad
+
+        if (RefuseFooterSale(uid, component, player, targetId)) // Triad: a loaded hull sells from the drydock tab
+            return; // Triad
+
         var shuttleUid = deed.ShuttleUid;
 
         bool voucherUsed = deed.PurchasedWithVoucher;
 
         bool loadedFromSave = deed.LoadedFromSave;
 
+        // Triad: drydock. Read before the sale deletes the grid: a hull the drydock has filed carries
+        // its id, and the row has to hear about the sale or it goes on reading as checked out.
+        Guid? drydockShipId = TryGetDrydockShipId(shuttleUid.Value);
+
         // Check if this is a loaded ship by looking at the ship's deed component
         if (loadedFromSave)
         {
-            ConsolePopup(player, "This vessel cannot be sold as it was loaded from a saved manifest.");
+            // ConsolePopup(player, "This vessel cannot be sold as it was loaded from a saved manifest."); // Triad: moved to a locale key
+            ConsolePopup(player, Loc.GetString("shipyard-console-error-sale-loaded-from-save")); // Triad
             PlayDenySound(player, uid, component);
             return;
         }
@@ -503,6 +529,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         RemComp<ShuttleDeedComponent>(targetId);
 
+        var drydockAppraisal = bill; // Triad: drydock, the appraisal the sale rate is cut from
+
         if (!voucherUsed)
         {
             if (!component.IgnoreBaseSaleRate)
@@ -521,6 +549,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayConfirmSound(player, uid, component);
         }
 
+        if (drydockShipId is { } drydockId) // Triad: drydock
+            RecordDrydockLiveSale(drydockId, player, voucherUsed ? 0 : bill, drydockAppraisal); // Triad: drydock
+
         var name = GetFullName(deed);
         SendSellMessage(uid, deed.ShuttleOwner!, name, component.ShipyardChannel, player, secret: false);
         if (component.SecretShipyardChannel is { } secretChannel)
@@ -534,15 +565,19 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to sell {shuttleName} for {bill} credits via {ToPrettyString(uid)}");
 
         // No uses on the voucher left, destroy it.
-        if (voucher != null
-            && voucher!.RedemptionsLeft <= 0
-            && voucher!.DestroyOnEmpty)
+        // if (voucher != null
+        //     && voucher!.RedemptionsLeft <= 0
+        //     && voucher!.DestroyOnEmpty)
+        // Triad: returning a voucher hull always burns the voucher, whatever uses or destroyOnEmpty it
+        // carries, so a returned hull can never be traded for another one on the same card.
+        if (voucher != null && voucherUsed)
         {
             QueueDel(targetId);
             refreshId = null;
         }
 
         RefreshState(uid, bank.Balance, true, null, 0, refreshId, (ShipyardConsoleUiKey)args.UiKey, voucherUsed);
+        KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)args.UiKey); // Triad: drydock tab
     }
 
     private void TryParseShuttleName(ShuttleDeedComponent deed, string name)
@@ -596,6 +631,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             if (deed!.ShuttleUid == null || !_entityManager.EntityExists(deed.ShuttleUid.Value) || Deleted(deed.ShuttleUid.Value))
             {
                 RemComp<ShuttleDeedComponent>(targetId!.Value);
+                // Triad: drydock tab. This return publishes no state, so the open that strips a
+                // dangling deed leaves the tab drawing whatever the client last had. An impound is
+                // exactly that case: the forced store despawns the hull and never touches the card,
+                // so the impound lot went missing for one open and appeared on the next. The refresh
+                // re-reads the deed and the voucher too, so the sell and rename labels stop lying in
+                // the same case.
+                KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)args.UiKey);
                 return;
             }
         }
@@ -620,40 +662,45 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, voucherUsed);
+        KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)args.UiKey); // Triad: drydock tab
     }
 
     private void ConsolePopup(EntityUid uid, string text)
     {
-        _popup.PopupEntity(text, uid);
+        // Triad: the console's buttons carry every state, so this no longer draws a popup; it writes
+        // the failure to the pressing player's chat instead (uid is that player at every call site).
+        // The deny and confirm sounds are played separately by each caller.
+        // _popup.PopupEntity(text, uid);
+        ReportConsoleError(uid, text);
     }
 
     private void SendPurchaseMessage(EntityUid uid, EntityUid player, string name, string shipyardChannel, bool secret)
     {
-        var channel = _prototypeManager.Index<RadioChannelPrototype>(shipyardChannel);
+        // var channel = _prototypeManager.Index<RadioChannelPrototype>(shipyardChannel); // Triad: chat carries console failures only, to the player who pressed
 
         if (secret)
         {
-            _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-docking-secret"), InGameICChatType.Speak, true);
+            // _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-docking-secret"), InGameICChatType.Speak, true); // Triad: removed, the console no longer speaks locally
         }
         else
         {
-            _radio.SendRadioMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player), ("vessel", name)), channel, uid);
-            _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player!), ("vessel", name)), InGameICChatType.Speak, true);
+            // _radio.SendRadioMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player), ("vessel", name)), channel, uid); // Triad: chat carries console failures only, to the player who pressed
+            // _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player!), ("vessel", name)), InGameICChatType.Speak, true); // Triad: removed, the console no longer speaks locally
         }
     }
 
     private void SendSellMessage(EntityUid uid, string? player, string name, string shipyardChannel, EntityUid seller, bool secret)
     {
-        var channel = _prototypeManager.Index<RadioChannelPrototype>(shipyardChannel);
+        // var channel = _prototypeManager.Index<RadioChannelPrototype>(shipyardChannel); // Triad: chat carries console failures only, to the player who pressed
 
         if (secret)
         {
-            _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-leaving-secret"), InGameICChatType.Speak, true);
+            // _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-leaving-secret"), InGameICChatType.Speak, true); // Triad: removed, the console no longer speaks locally
         }
         else
         {
-            _radio.SendRadioMessage(uid, Loc.GetString("shipyard-console-leaving", ("owner", player!), ("vessel", name!), ("player", seller)), channel, uid);
-            _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-leaving", ("owner", player!), ("vessel", name!), ("player", seller)), InGameICChatType.Speak, true);
+            // _radio.SendRadioMessage(uid, Loc.GetString("shipyard-console-leaving", ("owner", player!), ("vessel", name!), ("player", seller)), channel, uid); // Triad: chat carries console failures only, to the player who pressed
+            // _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-leaving", ("owner", player!), ("vessel", name!), ("player", seller)), InGameICChatType.Speak, true); // Triad: removed, the console no longer speaks locally
         }
     }
 
@@ -696,6 +743,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 if (deed!.ShuttleUid == null || !_entityManager.EntityExists(deed.ShuttleUid.Value) || Deleted(deed.ShuttleUid.Value))
                 {
                     RemComp<ShuttleDeedComponent>(targetId!.Value);
+                    // Triad: drydock tab. Same skipped publish as the open handler above, one card
+                    // movement instead of one open.
+                    KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)uiComp.Key);
                     continue;
                 }
             }
@@ -718,7 +768,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 targetId,
                 (ShipyardConsoleUiKey)uiComp.Key,
                 voucherUsed);
-
+            KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)uiComp.Key); // Triad: drydock tab
         }
     }
 
@@ -728,8 +778,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// <param name="uid">The entity to search (e.g. a shuttle, a station)</param>
     /// <param name="mobQuery">A query to get the MobState from an entity</param>
     /// <param name="xformQuery">A query to get the transform component of an entity</param>
+    /// <param name="into">
+    /// Triad: when given, every match is added here instead of returning at the first, and the
+    /// method returns null. The drydock impound's eviction uses it, so the gate and the eviction
+    /// share one predicate and one walk. A match is still not descended into.
+    /// </param>
     /// <returns>The name of the sapient being if one was found, null otherwise.</returns>
-    public string? FoundOrganics(EntityUid uid, EntityQuery<MobStateComponent> mobQuery, EntityQuery<TransformComponent> xformQuery)
+    public string? FoundOrganics(EntityUid uid, EntityQuery<MobStateComponent> mobQuery, EntityQuery<TransformComponent> xformQuery, List<EntityUid>? into = null) // Triad: into
     {
         var xform = xformQuery.GetComponent(uid);
         var childEnumerator = xform.ChildEnumerator;
@@ -745,11 +800,17 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 && (mindComp.Session != null
                 || !_mind.IsCharacterDeadPhysically(mindComp)))
             {
+                if (into != null) // Triad: collect every match rather than returning the first
+                {
+                    into.Add(child); // Triad
+                    continue; // Triad
+                }
+
                 return Name(child);
             }
             else
             {
-                var charName = FoundOrganics(child, mobQuery, xformQuery);
+                var charName = FoundOrganics(child, mobQuery, xformQuery, into); // Triad: into
                 if (charName != null)
                     return charName;
             }
@@ -903,7 +964,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             GetAvailableShuttles(uid, uiKey, targetId: targetId),
             uiKey.ToString(),
             freeListings,
-            CalculateSellRate(uid));
+            CalculateSellRate(uid))
+        {
+            Drydock = BuildDrydockState(uid), // Triad: drydock tab
+        };
 
         _ui.SetUiState(uid, uiKey, newState);
     }
@@ -990,149 +1054,162 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
     #endregion Ship Pricing
 
-    public void OnRenameMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleRenameMessage args)
-    {
-        if (args.Actor is not { Valid: true } player)
-            return;
+    // Triad: removed with the footer Rename. A stored hull is renamed from the drydock tab, and the name reaches hull and deed on its next retrieve.
+    // public void OnRenameMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleRenameMessage args)
+    // {
+    //     if (args.Actor is not { Valid: true } player)
+    //         return;
+    //
+    //     if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
+    //     {
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     if (!TryComp<ShuttleDeedComponent>(targetId, out var deed) || deed.ShuttleUid == null)
+    //     {
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-no-deed"));
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     if (RefuseDeedNotOwned(uid, component, player, deed, "rename")) // Triad: a card is not proof of ownership, the account is
+    //         return; // Triad
+    //
+    //     // Validate the new name
+    //     var newName = args.NewName.Trim();
+    //     if (string.IsNullOrEmpty(newName))
+    //     {
+    //         // ConsolePopup(player, "Ship name cannot be empty."); // Triad: moved to a locale key
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-error-rename-empty")); // Triad
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     if (newName.Length > ShuttleDeedComponent.MaxNameLength)
+    //     {
+    //         // ConsolePopup(player, $"Ship name cannot exceed {ShuttleDeedComponent.MaxNameLength} characters."); // Triad: moved to a locale key
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-error-rename-too-long", ("max", ShuttleDeedComponent.MaxNameLength))); // Triad
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     // Get the old name for logging
+    //     var oldName = GetFullName(deed);
+    //
+    //     // Preserve the original sell value from the current UI state
+    //     int originalSellValue = 0;
+    //     if (_ui.TryGetUiState<ShipyardConsoleInterfaceState>(uid, (ShipyardConsoleUiKey)args.UiKey, out var currentState))
+    //     {
+    //         originalSellValue = currentState.ShipSellValue;
+    //     }
+    //
+    //     // Rename the ship using the existing method
+    //     if (TryRenameShuttle(targetId, deed, newName, deed.ShuttleNameSuffix))
+    //     {
+    //         // ConsolePopup(player, $"Ship renamed to '{GetFullName(deed)}'"); // Triad: success is shown by the console, chat carries failures only
+    //         PlayConfirmSound(player, uid, component);
+    //
+    //         // Get the player's balance or use 0 if they don't have a bank account
+    //         int balance = 0;
+    //         if (TryComp<BankAccountComponent>(player, out var bank))
+    //             balance = bank.Balance;
+    //
+    //         // Update the UI with the new ship name, preserving the original sell value
+    //         var fullName = GetFullName(deed);
+    //         RefreshState(uid, balance, true, fullName, originalSellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
+    //         KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)args.UiKey); // Triad: drydock tab
+    //
+    //         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low,
+    //             $"{ToPrettyString(player):actor} renamed ship from '{oldName}' to '{GetFullName(deed)}' via {ToPrettyString(uid)}");
+    //     }
+    //     else
+    //     {
+    //         // ConsolePopup(player, "Failed to rename ship."); // Triad: moved to a locale key
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-error-rename-failed")); // Triad
+    //         PlayDenySound(player, uid, component);
+    //     }
+    // }
 
-        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        if (!TryComp<ShuttleDeedComponent>(targetId, out var deed) || deed.ShuttleUid == null)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-no-deed"));
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        // Validate the new name
-        var newName = args.NewName.Trim();
-        if (string.IsNullOrEmpty(newName))
-        {
-            ConsolePopup(player, "Ship name cannot be empty.");
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        if (newName.Length > ShuttleDeedComponent.MaxNameLength)
-        {
-            ConsolePopup(player, $"Ship name cannot exceed {ShuttleDeedComponent.MaxNameLength} characters.");
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        // Get the old name for logging
-        var oldName = GetFullName(deed);
-
-        // Preserve the original sell value from the current UI state
-        int originalSellValue = 0;
-        if (_ui.TryGetUiState<ShipyardConsoleInterfaceState>(uid, (ShipyardConsoleUiKey)args.UiKey, out var currentState))
-        {
-            originalSellValue = currentState.ShipSellValue;
-        }
-
-        // Rename the ship using the existing method
-        if (TryRenameShuttle(targetId, deed, newName, deed.ShuttleNameSuffix))
-        {
-            ConsolePopup(player, $"Ship renamed to '{GetFullName(deed)}'");
-            PlayConfirmSound(player, uid, component);
-
-            // Get the player's balance or use 0 if they don't have a bank account
-            int balance = 0;
-            if (TryComp<BankAccountComponent>(player, out var bank))
-                balance = bank.Balance;
-
-            // Update the UI with the new ship name, preserving the original sell value
-            var fullName = GetFullName(deed);
-            RefreshState(uid, balance, true, fullName, originalSellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
-
-            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low,
-                $"{ToPrettyString(player):actor} renamed ship from '{oldName}' to '{GetFullName(deed)}' via {ToPrettyString(uid)}");
-        }
-        else
-        {
-            ConsolePopup(player, "Failed to rename ship.");
-            PlayDenySound(player, uid, component);
-        }
-    }
-
-    public void OnUnassignDeedMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleUnassignDeedMessage args)
-    {
-        if (args.Actor is not { Valid: true } player)
-            return;
-
-        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        if (!TryComp<ShuttleDeedComponent>(targetId, out var deed) || deed.ShuttleUid == null)
-        {
-            ConsolePopup(player, Loc.GetString("shipyard-console-no-deed"));
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        // Check if the player is on cooldown
-        var cooldown = EnsureComp<ShipyardUnassignCooldownComponent>(player);
-        var currentTime = _timing.CurTime;
-
-        if (currentTime < cooldown.NextUnassignTime)
-        {
-            // Calculate remaining time
-            var timeRemaining = cooldown.NextUnassignTime - currentTime;
-            var hoursRemaining = (int)timeRemaining.TotalHours;
-            var minutesRemaining = (int)timeRemaining.TotalMinutes % 60;
-
-            // Display cooldown message
-            var cooldownMessage = Loc.GetString(
-                "shipyard-console-unassign-cooldown",
-                ("hours", hoursRemaining),
-                ("minutes", minutesRemaining)
-            );
-            ConsolePopup(player, cooldownMessage);
-            PlayDenySound(player, uid, component);
-            return;
-        }
-
-        // Get the name of the ship before we remove the component
-        var shipName = GetFullName(deed);
-
-        // Remove the deed component from the ID card
-        RemComp<ShuttleDeedComponent>(targetId);
-
-        // Clear the deed holder on the ship's deed and any other deeds
-        var query = EntityQueryEnumerator<ShuttleDeedComponent>();
-        while (query.MoveNext(out var deedEntity, out var otherDeed))
-        {
-            if (otherDeed.ShuttleUid == deed.ShuttleUid)
-            {
-                otherDeed.DeedHolder = null;
-                Dirty(deedEntity, otherDeed);
-            }
-        }
-
-        // Set the cooldown
-        cooldown.NextUnassignTime = currentTime + cooldown.CooldownDuration;
-
-        ConsolePopup(player, Loc.GetString("shipyard-console-deed-unassigned"));
-        PlayConfirmSound(player, uid, component);
-
-        // Get the player's balance or use 0 if they don't have a bank account
-        int balance = 0;
-        if (TryComp<BankAccountComponent>(player, out var bank))
-            balance = bank.Balance;
-
-        // Update the UI
-        RefreshState(uid, balance, true, null, 0, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
-
-        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low,
-            $"{ToPrettyString(player):actor} unassigned deed for ship '{shipName}' from {ToPrettyString(targetId)} via {ToPrettyString(uid)}");
-    }
+    // Triad: removed. Unassign stripped a deed off its card with no way back for a voucher hull or on a server with the drydock off, and it has no job left: one civilian ship out per account, a store settles deeds itself, and the drydock tab's reissue is the sanctioned way to move a deed.
+    // public void OnUnassignDeedMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleUnassignDeedMessage args)
+    // {
+    //     if (args.Actor is not { Valid: true } player)
+    //         return;
+    //
+    //     if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
+    //     {
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     if (!TryComp<ShuttleDeedComponent>(targetId, out var deed) || deed.ShuttleUid == null)
+    //     {
+    //         ConsolePopup(player, Loc.GetString("shipyard-console-no-deed"));
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     if (RefuseDeedNotOwned(uid, component, player, deed, "unassign deed")) // Triad: a card is not proof of ownership, the account is
+    //         return; // Triad
+    //
+    //     // Check if the player is on cooldown
+    //     var cooldown = EnsureComp<ShipyardUnassignCooldownComponent>(player);
+    //     var currentTime = _timing.CurTime;
+    //
+    //     if (currentTime < cooldown.NextUnassignTime)
+    //     {
+    //         // Calculate remaining time
+    //         var timeRemaining = cooldown.NextUnassignTime - currentTime;
+    //         var hoursRemaining = (int)timeRemaining.TotalHours;
+    //         var minutesRemaining = (int)timeRemaining.TotalMinutes % 60;
+    //
+    //         // Display cooldown message
+    //         var cooldownMessage = Loc.GetString(
+    //             "shipyard-console-unassign-cooldown",
+    //             ("hours", hoursRemaining),
+    //             ("minutes", minutesRemaining)
+    //         );
+    //         ConsolePopup(player, cooldownMessage);
+    //         PlayDenySound(player, uid, component);
+    //         return;
+    //     }
+    //
+    //     // Get the name of the ship before we remove the component
+    //     var shipName = GetFullName(deed);
+    //
+    //     // Remove the deed component from the ID card
+    //     RemComp<ShuttleDeedComponent>(targetId);
+    //
+    //     // Clear the deed holder on the ship's deed and any other deeds
+    //     var query = EntityQueryEnumerator<ShuttleDeedComponent>();
+    //     while (query.MoveNext(out var deedEntity, out var otherDeed))
+    //     {
+    //         if (otherDeed.ShuttleUid == deed.ShuttleUid)
+    //         {
+    //             otherDeed.DeedHolder = null;
+    //             Dirty(deedEntity, otherDeed);
+    //         }
+    //     }
+    //
+    //     // Set the cooldown
+    //     cooldown.NextUnassignTime = currentTime + cooldown.CooldownDuration;
+    //
+    //     // ConsolePopup(player, Loc.GetString("shipyard-console-deed-unassigned")); // Triad: success is shown by the console, chat carries failures only
+    //     PlayConfirmSound(player, uid, component);
+    //
+    //     // Get the player's balance or use 0 if they don't have a bank account
+    //     int balance = 0;
+    //     if (TryComp<BankAccountComponent>(player, out var bank))
+    //         balance = bank.Balance;
+    //
+    //     // Update the UI
+    //     RefreshState(uid, balance, true, null, 0, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
+    //     KickDrydockRefresh(uid, component, player, (ShipyardConsoleUiKey)args.UiKey); // Triad: drydock tab
+    //
+    //     _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low,
+    //         $"{ToPrettyString(player):actor} unassigned deed for ship '{shipName}' from {ToPrettyString(targetId)} via {ToPrettyString(uid)}");
+    // }
 }

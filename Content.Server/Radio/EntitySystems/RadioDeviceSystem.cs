@@ -74,6 +74,7 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
         // Nuclear-14-End
 
         SubscribeLocalEvent<IntercomComponent, MapInitEvent>(OnMapInit); // Frontier
+        SubscribeLocalEvent<IntercomComponent, ComponentStartup>(OnIntercomStartup); // Triad - see OnIntercomStartup
     }
 
     public override void Update(float frameTime)
@@ -377,6 +378,13 @@ public sealed partial class RadioDeviceSystem : SharedRadioDeviceSystem
 
 
     // Frontier: init intercom with map
+    // Triad: seed on load (DrydockAppearanceComponent) from the persisted flags, not the StartOnMapInit fields.
+    private void OnIntercomStartup(EntityUid uid, IntercomComponent ent, ComponentStartup args)
+    {
+        _appearance.SetData(uid, RadioDeviceVisuals.Speaker, ent.SpeakerEnabled);
+        _appearance.SetData(uid, RadioDeviceVisuals.Broadcasting, ent.MicrophoneEnabled);
+    }
+
     private void OnMapInit(EntityUid uid, IntercomComponent ent, MapInitEvent args)
     {
         // Set initial frequency (must be done regardless of power/enabled)

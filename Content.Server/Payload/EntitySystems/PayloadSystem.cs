@@ -101,7 +101,10 @@ public sealed partial class PayloadSystem : EntitySystem
             _serializationManager.CopyTo(data.Component, ref temp);
             EntityManager.AddComponent(uid, (Component) temp!);
 
-            trigger.GrantedComponents.Add(registration.Type);
+            // Triad: granted components are kept by registered name (see PayloadTriggerComponent).
+            // trigger.GrantedComponents.Add(registration.Type);
+            trigger.GrantedComponents.Add(registration.Name);
+            // End Triad
         }
     }
 
@@ -112,10 +115,17 @@ public sealed partial class PayloadSystem : EntitySystem
 
         trigger.Active = false;
 
-        foreach (var type in trigger.GrantedComponents)
+        // Triad: granted components are kept by registered name; resolve each back to its type.
+        // foreach (var type in trigger.GrantedComponents)
+        // {
+        //     EntityManager.RemoveComponent(uid, type);
+        // }
+        foreach (var name in trigger.GrantedComponents)
         {
-            EntityManager.RemoveComponent(uid, type);
+            if (Factory.TryGetRegistration(name, out var registration))
+                EntityManager.RemoveComponent(uid, registration.Type);
         }
+        // End Triad
 
         trigger.GrantedComponents.Clear();
     }

@@ -17,6 +17,8 @@
             <cc:CommandButton Command="adminlogs" Text="{Loc admin-player-actions-window-admin-logs}"/>
             <!-- Triad: tamper protection audit panel (permits are managed inline in the audit feed) -->
             <cc:CommandButton Command="tamperaudit" Text="{Loc triad-tamper-button-audit}"/>
+            <!-- Triad: the drydock admin panel (stored ships, berths, history, restore) -->
+            <cc:CommandButton Command="drydockadmin" Text="{Loc drydock-admin-button}"/>
             <!-- End Triad -->
             <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}"/>
             <cc:CommandButton Command="timetransferpanel" Text="{Loc admin-player-actions-window-time-transfer}"/>

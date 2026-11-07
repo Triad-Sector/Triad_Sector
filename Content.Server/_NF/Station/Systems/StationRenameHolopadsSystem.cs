@@ -25,7 +25,8 @@ public sealed partial class StationRenameHolopadsSystem : EntitySystem
     private void SyncHolopadsNames(EntityUid stationUid)
     {
         // update all holopads that belong to this station grid
-        var query = EntityQueryEnumerator<HolopadComponent>();
+        // var query = EntityQueryEnumerator<HolopadComponent>();
+        var query = AllEntityQuery<HolopadComponent>(); // Triad: paused holopads too, or a station initialised on a paused grid keeps stale holopad names
         while (query.MoveNext(out var uid, out var pad))
         {
             if (!pad.UseStationName)

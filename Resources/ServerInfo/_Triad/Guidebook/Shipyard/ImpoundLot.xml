@@ -1,0 +1,52 @@
+<!-- Triad: new -->
+<Document>
+	# Impound Lot
+
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="ComputerShipyard" Caption=""/>
+			</Box>
+		</ColorBox>
+
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]FEE        [/color]  set at impound, never moves after[/mono]
+
+			[mono][color=#897236]LOCKED     [/color]  no reclaim, no abandon, ahelp[/mono]
+
+			[mono][color=#897236]EXPIRES    [/color]  never[/mono]
+		</Box>
+	</Box>
+
+	A ship taken from the world sits here, outside your berths, until you reclaim it or give it up. Each impounded ship of yours shows as its own card above your berth list on the [textlink="Drydock" link="Drydock"] tab.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]HOW SHIPS GET HERE[/bold][/color] ──────────────────────────────[/mono][/color]
+
+	- A ship still out when the round ends is impounded for [color=#a4885c][bold]50%[/bold][/color] of its appraisal.
+	- An admin can impound any ship mid-round, at a fee they set at the time.
+
+	[color=#897236][mono]──── [color=#00ccff][bold]THE CARD[/bold][/color] ────────────────────────────────────────[/mono][/color]
+
+	Each card names why the ship was taken and what getting it back costs:
+
+	- [bold]Reason[/bold]: what put it here.
+	- [bold]Reclamation fee[/bold]: what reclaiming it costs, frozen the moment it was taken.
+
+	[color=#897236][mono]──── [color=lime][bold]RECLAIM[/bold][/color] ─────────────────────────────────────────[/mono][/color]
+
+	Pick a berth from the card and press [color=lime]Reclaim[/color]. The fee is paid and the ship is seated into that berth; if the reclaim cannot go through, the payment is refunded rather than kept.
+
+	[color=#897236][mono]──── [color=#cc3333][bold]ABANDON[/bold][/color] ─────────────────────────────────────────[/mono][/color]
+
+	[color=red][bold]▲ Warning:[/bold][/color] Abandon gives the ship up instead of paying the fee. You are paid nothing for it, and it does not return to a berth. Type the ship's name to confirm; this cannot be undone.
+
+	[color=#897236][mono]──── [color=#ffa500][bold]LOCKED[/bold][/color] ──────────────────────────────────────────[/mono][/color]
+
+	A card marked [color=#ffa500][bold]LOCKED[/bold][/color] offers neither button. An admin is holding that ship pending a decision, and there is no deadline on it. Ahelp to ask about it.
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- Nothing in the lot expires. An unreclaimed ship keeps its card indefinitely.
+	- An impounded ship holds no berth of its own; it does not count against your free berths while it sits here.
+
+</Document>

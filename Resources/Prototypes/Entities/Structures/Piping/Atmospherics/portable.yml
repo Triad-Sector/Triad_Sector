@@ -98,7 +98,6 @@
   - type: GuideHelp
     guides:
     - PortableScrubber
-  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   id: SpaceHeater
@@ -187,7 +186,6 @@
   - type: GuideHelp
     guides:
     - Thermomachines
-  - type: HLPersistOnShipSave # Triad
 
 - type: entity
   parent: SpaceHeater

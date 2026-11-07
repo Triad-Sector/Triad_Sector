@@ -182,6 +182,7 @@ public abstract partial class SharedContrabandPermitSystem : EntitySystem
             && _mind.TryGetMind(actor.PlayerSession, out var mindId, out _))
         {
             permit.PermitOwnerMind = mindId;
+            permit.PermitOwnerAccount = actor.PlayerSession.UserId;
         }
 
         Dirty(scannedItem.Value, permit);

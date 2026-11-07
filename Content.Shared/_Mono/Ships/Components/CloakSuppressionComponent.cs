@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._Mono.Ships.Components;
 
@@ -18,8 +19,8 @@ public sealed partial class CloakSuppressionComponent : Component
     /// <summary>
     /// Timestamp when the suppression started.
     /// </summary>
-    [DataField, AutoNetworkedField]
-    public TimeSpan SuppressionStartTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    public TimeSpan SuppressionStartTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The original ReadOnly state of the IFF component before suppression.

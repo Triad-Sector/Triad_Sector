@@ -1,4 +1,5 @@
 using Content.Shared.Damage;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server._Mono.Weapons.Melee;
 
@@ -15,8 +16,8 @@ public sealed partial class WeaponMeleeChargeComponent : Component
     [DataField]
     public float Cooldown = 1f;
 
-    [DataField]
-    public TimeSpan CooldownEndTime = TimeSpan.Zero;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan CooldownEndTime = TimeSpan.Zero; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     [DataField]
     public TimeSpan ActiveEndTime = TimeSpan.Zero;

@@ -3,6 +3,7 @@ using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Guidebook;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Atmos.Piping.Unary.Components
 {
@@ -66,9 +67,9 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         /// <summary>
         /// The time when the manual pressure lockout will be reenabled.
         /// </summary>
-        [DataField]
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
         [AutoPausedField]
-        public TimeSpan ManualLockoutReenabledAt;
+        public TimeSpan ManualLockoutReenabledAt; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
         /// <summary>
         /// How long the lockout should remain manually disabled after being interacted with.
         /// </summary>

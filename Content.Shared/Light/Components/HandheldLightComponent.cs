@@ -9,6 +9,14 @@ namespace Content.Shared.Light.Components;
 public sealed partial class HandheldLightComponent : Component
 {
     public byte? Level;
+
+    /// <summary>
+    /// Whether the light is currently switched on. Triad: persisted, because the point light's own
+    /// <c>enabled</c> is a data field and the two came apart across a save - a torch stored lit came
+    /// back glowing but inactive, drawing no power and refusing TurnOff. The server re-derives the
+    /// point light and its active list from this on startup.
+    /// </summary>
+    [DataField]
     public bool Activated;
 
     [ViewVariables(VVAccess.ReadWrite)]

@@ -19,7 +19,7 @@ public sealed class PermitStoreTests
         await server.WaitAssertion(() =>
         {
             var permits = IoCManager.Resolve<ITriadShipyardPermitStore>();
-            // Seed the cache so HasPermitFor answers from memory (in production BootstrapKeyAsync
+            // Seed the cache so HasPermitFor answers from memory (in production BootstrapCachesAsync
             // does this at startup).
             permits.PopulateAsync(default).GetAwaiter().GetResult();
             Assert.That(permits.HasPermitFor(player), Is.False);

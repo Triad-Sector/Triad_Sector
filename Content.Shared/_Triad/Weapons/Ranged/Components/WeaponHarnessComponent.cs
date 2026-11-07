@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._Triad.Weapons.Ranged.Components;
 
@@ -67,8 +68,8 @@ public sealed partial class WeapHarnComponent : Component
     [DataField]
     public SoundSpecifier? DepletedSound = new SoundPathSpecifier("/Audio/Machines/Nuke/angry_beep.ogg");
 
-    [DataField]
-    public TimeSpan NextActiveDrain;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextActiveDrain; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     public bool HalfChargeWarned;
 

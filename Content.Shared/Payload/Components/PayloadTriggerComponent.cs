@@ -24,6 +24,11 @@ public sealed partial class PayloadTriggerComponent : Component
     /// <summary>
     ///     If true, triggering this entity will also cause the parent of this entity to be triggered.
     /// </summary>
+    // Triad: persisted so a loaded case's trigger comes back active without needing to re-run
+    // container-insert logic (a load raises no EntInsertedIntoContainerMessage for existing
+    // contents: SharedContainerSystem.OnStartupValidation re-flags them without re-inserting).
+    [DataField(serverOnly: true)]
+    // End Triad
     public bool Active = false;
 
     /// <summary>
@@ -41,19 +46,14 @@ public sealed partial class PayloadTriggerComponent : Component
     ///     when removing the component, to ensure that removal of this trigger only removes the components that it was
     ///     responsible for adding.
     /// </remarks>
-    // Triad: System.Type has no data definition and no type serializer, so once a trigger is installed
-    // in a case and this set is non-empty, persisting it throws "No data definition found for type
-    // System.RuntimeType" and kills the whole ship-grid save. Runtime-only now.
-    // This never round-tripped anyway: the write threw, and a load raises no container-insert event
-    // (SharedContainerSystem.OnStartupValidation re-flags contents without re-inserting them), so
-    // after a load PayloadSystem.OnEntityInserted has not run and both this set and Active are empty.
-    // The case keeps the components it was granted, since they serialize as its own, but uninstalling
-    // the trigger will not remove them and direct triggers no longer forward to the case. Both are
-    // pre-existing: Active was never persisted either. Not changed here.
+    // Triad: registered component names rather than System.Type, which has no serializer: persisting
+    // the Type set threw "No data definition found for type System.RuntimeType" and killed the whole
+    // ship-grid save. Names round-trip, so a loaded case's trigger still removes what it granted.
     /*
     [DataField("grantedComponents", serverOnly: true)]
-    */
-    [ViewVariables]
-    // End Triad
     public HashSet<Type> GrantedComponents = new();
+    */
+    [DataField("grantedComponentNames", serverOnly: true)]
+    public HashSet<string> GrantedComponents = new();
+    // End Triad
 }
