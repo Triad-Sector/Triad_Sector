@@ -283,7 +283,15 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
             // Are we an industrial reagent grinder? Use extractable solution.
             if (_solutionContainer.TryGetExtractableSolution(item, out _, out var extractableSolution))
             {
-                totalChemicals.AddSolution(extractableSolution, _prototype);
+                // Triad: removed - we use AddReagent instead now within the foreach loop
+                // totalChemicals.AddSolution(extractableSolution, _prototype);
+                var stacks = CompOrNull<StackComponent>(item)?.Count ?? 1;
+
+                foreach (var quantity in extractableSolution.Contents)
+                {
+                    totalChemicals.AddReagent(quantity.Reagent.Prototype, quantity.Quantity * stacks, false);
+                }
+                // End Triad
             }
         }
 
