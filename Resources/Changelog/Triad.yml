@@ -5811,3 +5811,285 @@ Entries:
   id: 2690
   time: '2026-10-24T19:27:21.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/760
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed IPCs sometimes having weakened damage modifiers when they lose
+        battery permanently.
+  id: 2691
+  time: '2026-10-26T20:08:35.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/765
+- author: nathan736
+  changes:
+    - type: Tweak
+      message: You can now emote across holo pads
+  id: 2692
+  time: '2026-10-28T18:47:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/693
+- author: HydeTime
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the MPSSM ammo from 4x2 to 3x1, changed the 6 seconds time to
+        fire to 2 seconds, Changed the EMP radius on the MPSSM from 2 to 5
+        meters, and stopped them being blocked on shield
+  id: 2693
+  time: '2026-10-30T19:27:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/766
+- author: BoiWab
+  changes:
+    - type: Tweak
+      message: Reworked Vox sprites
+    - type: Add
+      message: Added many new Vox markings to pair with the resprite
+    - type: Add
+      message: A new IPC head marking
+  id: 2694
+  time: '2026-10-30T20:10:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/777
+- author: Nox38
+  changes:
+    - type: Add
+      message: Added M.A.I.D.S. player faction!
+  id: 2695
+  time: '2026-10-30T20:46:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/768
+- author: PenglePongle
+  changes:
+    - type: Fix
+      message: Ammo Loaders no longer convert nuclear charon slugs to regular slugs.
+    - type: Fix
+      message: Ammo Loaders no longer send loaded ammo to the shadow realm.
+  id: 2696
+  time: '2026-10-30T22:27:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/776
+- author: storrm777s
+  changes:
+    - type: Fix
+      message: Fixed malfunctioning scrap unit name typo
+  id: 2697
+  time: '2026-10-30T22:41:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/770
+- author: nathan736
+  changes:
+    - type: Fix
+      message: hand labelers cant remove labels again
+  id: 2698
+  time: '2026-10-30T22:55:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/781
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed saved actions breaking.
+    - type: Remove
+      message: Removed IPCs having weaker armor values when they lose battery charge
+  id: 2699
+  time: '2026-10-31T10:50:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/783
+- author: nathan736
+  changes:
+    - type: Fix
+      message: shuttle consoles longer lose their encryption keys on save load cycle
+  id: 2700
+  time: '2026-10-31T10:51:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/780
+- author: leafybonsai
+  changes:
+    - type: Tweak
+      message: Fixed the TDF Knight cooking itself
+  id: 2701
+  time: '2026-10-31T10:52:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/763
+- author: nathan736
+  changes:
+    - type: Fix
+      message: Fixes Syndicate trade crates sliding under win doors for some reason
+  id: 2702
+  time: '2026-10-31T10:55:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/782
+- author: GhostC10
+  changes:
+    - type: Add
+      message: added bandolier to tdf fab
+  id: 2703
+  time: '2026-10-31T14:54:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/784
+- author: nathan736
+  changes:
+    - type: Fix
+      message: Salvage radars, thrusters, and AME controllers fit in doorways now.
+  id: 2704
+  time: '2026-10-31T14:55:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/779
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: Fixed actions having 'infinite cooldowns' upon save.
+  id: 2705
+  time: '2026-10-31T15:12:10.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/785
+- author: BoskiYourk
+  changes:
+    - type: Tweak
+      message: >-
+        Turned the svalinn a 4.5 shot-per-second full-auto and burst-fire
+        hitscan laser sidearm.
+  id: 2706
+  time: '2026-11-04T02:33:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/794
+- author: Nox38
+  changes:
+    - type: Tweak
+      message: >-
+        Monolithic creatures should no longer have pathfinding issues on
+        Terralith facility.
+    - type: Tweak
+      message: >-
+        Improved Solarian cyborg modules: they no longer reflect bullets, energy
+        shield is exclusive to melee module, and player borgs have a new smart
+        machine gun to complement their pulse rifles.
+    - type: Tweak
+      message: >-
+        Terralith reactor should now be much easier for inexperienced players to
+        set up.
+  id: 2707
+  time: '2026-11-04T02:33:37.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/771
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: >-
+        Changed shuttle drive mode base thruster multiplier to 2.5x allowing for
+        faster acceleration in drive mode.
+    - type: Tweak
+      message: >-
+        Changed shuttle cruise mode max velocity to 4x, for increased maximum
+        top speed of a shuttle.
+    - type: Fix
+      message: >-
+        Fix shuttle unable to change mode whenever drone core is present inside
+        shuttle.
+  id: 2708
+  time: '2026-11-04T02:35:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/762
+- author: titi-du-971
+  changes:
+    - type: Tweak
+      message: >-
+        TDF E-sword and lieutenants coats are now storable in deposit boxes,
+        fixed legality issue.
+  id: 2709
+  time: '2026-11-04T02:36:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/791
+- author: titi2point0
+  changes:
+    - type: Add
+      message: >-
+        Construction box, Ore box, Plant box, Dumpster and Treasure chest now
+        get saved on your ship without having to anchor them ! Inventory not
+        saved !
+  id: 2710
+  time: '2026-11-05T03:38:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/798
+- author: titi2point0
+  changes:
+    - type: Tweak
+      message: >-
+        Added playtime requirement to the TDF AI core now requiring normal
+        playtime as well as TDF play time
+  id: 2711
+  time: '2026-11-05T03:39:04.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/795
+- author: GhostC10
+  changes:
+    - type: Add
+      message: Heat damage from environment and overheat warnings back in
+    - type: Remove
+      message: Instant, zero warning overheat death
+  id: 2712
+  time: '2026-11-06T21:49:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/805
+- author: Titi2Point0
+  changes:
+    - type: Tweak
+      message: >-
+        The 5x5 machine frame now only need 100 steel making it buildable ! Go
+        make your reactor go boom now !
+  id: 2713
+  time: '2026-11-06T21:50:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/800
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: SRD & tools are now more forgiving if you move a bit
+    - type: Fix
+      message: >-
+        SRD now works better when not standing on the grid that is being
+        repaired
+    - type: Add
+      message: Holding a nanite applicator now shows you an overlay of damaged things
+    - type: Tweak
+      message: SRD now repairs multiple entities at once.
+    - type: Tweak
+      message: Changed Advance parts from 3 to 2 rating
+    - type: Tweak
+      message: Changed Super parts from 4 to 3 rating
+    - type: Tweak
+      message: Changed Bluespace parts from 6 to 4 rating
+    - type: Tweak
+      message: Changed how thruster speed calculate, now it increase 10% per efficiency
+  id: 2714
+  time: '2026-11-06T21:51:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/756
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added ship preview for shipyard
+  id: 2715
+  time: '2026-11-06T22:43:44.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/797
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Pulse weapons are now ship savable, but still illegal. You can however
+        get a permit for them (like the emag)!
+  id: 2716
+  time: '2026-11-06T22:47:33.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/792
+- author: oxaxe9846-arch
+  changes:
+    - type: Add
+      message: 'The Tfa has approved the local company The Dawnbringers Union. '
+  id: 2717
+  time: '2026-11-06T22:47:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/790
+- author: Upstream
+  changes:
+    - type: Fix
+      message: >-
+        Battery weapons with multiple fire-modes (Energy Shotgun, Temperature
+        Gun) will no longer change their fire-modes when wielded by activating
+        them in your hand.
+  id: 2718
+  time: '2026-11-06T22:48:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/788
+- author: nathan736
+  changes:
+    - type: Fix
+      message: Turbines now save correct rejoyce
+  id: 2719
+  time: '2026-11-07T00:12:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/778
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Turrets now take structural damage, and now have similar damage
+        modifiers as most other structures. Expect non-ap rounds to preform
+        slightly worse, and anti-structural weapons/explosives to preform much
+        better against them.
+  id: 2720
+  time: '2026-11-07T01:29:31.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/789

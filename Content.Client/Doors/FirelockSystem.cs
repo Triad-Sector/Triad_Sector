@@ -6,7 +6,6 @@ namespace Content.Client.Doors;
 
 public sealed partial class FirelockSystem : SharedFirelockSystem
 {
-    [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
@@ -20,18 +19,15 @@ public sealed partial class FirelockSystem : SharedFirelockSystem
         if (args.Sprite == null)
             return;
 
-        var boltedVisible = false;
-        var unlitVisible = false;
-
-        if (!_appearanceSystem.TryGetData<DoorState>(uid, DoorVisuals.State, out var state, args.Component))
+        if (!args.TryGetData<DoorState>(DoorVisuals.State, out var state))
             state = DoorState.Closed;
 
-        boltedVisible = _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var lights, args.Component) && lights;
-        unlitVisible =
+        var boltedVisible = args.TryGetData<bool>(DoorVisuals.BoltLights, out var lights) && lights;
+        var unlitVisible =
             state == DoorState.Closing
-            ||  state == DoorState.Opening
-            ||  state == DoorState.Denying
-            || (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.ClosedLights, out var closedLights, args.Component) && closedLights);
+            || state == DoorState.Opening
+            || state == DoorState.Denying
+            || args.TryGetData<bool>(DoorVisuals.ClosedLights, out var closedLights) && closedLights;
 
         _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseUnlit, unlitVisible && !boltedVisible);
         _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseBolted, boltedVisible);

@@ -37,11 +37,11 @@ public sealed partial class EntityStorageVisualizerSystem : VisualizerSystem<Ent
         ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null
-            || !AppearanceSystem.TryGetData<bool>(uid, StorageVisuals.Open, out var open, args.Component))
+            || !args.TryGetData<bool>(StorageVisuals.Open, out var open))
             return;
 
         var forceRedrawBase = false;
-        if (AppearanceSystem.TryGetData<string>(uid, PaintableVisuals.Prototype, out var prototype, args.Component))
+        if (args.TryGetData<string>(PaintableVisuals.Prototype, out var prototype))
         {
             if (_prototypeManager.TryIndex(prototype, out var proto))
             {
