@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using Content.Server._Triad.Drydock;
 using Content.Server._Triad.Shipyard;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
@@ -67,15 +68,11 @@ public sealed class XenoArtifactShipSaveTest
             });
         });
 
-        string? yaml = null;
-        //await server.WaitAssertion(() =>
-        //{
-        //    //Assert.That(saveSystem.TryBuildShipSaveYaml(map.Grid.Owner, out yaml, out _), Is.True,
-        //        //"The ship save threw or refused.");
-        //});
+        string yaml = string.Empty;
+        await server.WaitAssertion(() => yaml = WriteShipFile(mapLoader, map.Grid.Owner));
 
-        var scrubbedYaml = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yaml!, out var scrubbed);
-        Assert.That(scrubbed, Is.EqualTo(0), "A file the current save wrote left the load scrub something to remove.");
+        var scrubbedYaml = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yaml, out var scrubbed);
+        Assert.That(scrubbed, Is.EqualTo(0), "A file written by this build left the load scrub something to remove.");
 
         var loaded = await LoadShipYaml(server, mapLoader, scrubbedYaml, map);
 
@@ -127,7 +124,7 @@ public sealed class XenoArtifactShipSaveTest
 
         // The shape a legacy ship file carries: the nodes deleted, the graph still naming them, and an
         // unlock session that is already due. One call, so no tick runs the due session in between.
-        string? yaml = null;
+        var yaml = string.Empty;
         await server.WaitAssertion(() =>
         {
             var comp = entMan.GetComponent<XenoArtifactComponent>(artifact);
@@ -146,15 +143,14 @@ public sealed class XenoArtifactShipSaveTest
                     "Fixture: a node survived the delete.");
             });
 
-            //Assert.That(saveSystem.TryBuildShipSaveYaml(map.Grid.Owner, out yaml, out _), Is.True,
-                //"The ship save threw or refused.");
+            yaml = WriteShipFile(mapLoader, map.Grid.Owner);
             Assert.That(yaml, Does.Contain("XenoArtifactUnlocking"), "Fixture: the unlock session was not saved.");
 
             // A saved ship leaves the world, and this one's session would throw on the next tick.
             entMan.DeleteEntity(artifact);
         });
 
-        var scrubbedYaml = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yaml!, out var scrubbed);
+        var scrubbedYaml = ShipSaveYamlSanitizer.ScrubShipLoadYaml(yaml, out var scrubbed);
         Assert.That(scrubbed, Is.GreaterThan(0), "The load scrub left an artifact graph naming missing nodes.");
 
         var loaded = await LoadShipYaml(server, mapLoader, scrubbedYaml, map);
@@ -185,6 +181,19 @@ public sealed class XenoArtifactShipSaveTest
         });
 
         await pair.CleanReturnAsync();
+    }
+
+    private static string WriteShipFile(MapLoaderSystem mapLoader, EntityUid grid)
+    {
+        var options = SerializationOptions.Default with
+        {
+            MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
+            ErrorOnOrphan = false,
+            LogAutoInclude = null,
+        };
+
+        var (node, _) = mapLoader.SerializeEntitiesRecursive([grid], options);
+        return DrydockSystem.EmitDocument(node);
     }
 
     private static async Task<EntityUid> SpawnAnchoredArtifact(
