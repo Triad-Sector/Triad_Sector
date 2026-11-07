@@ -509,8 +509,13 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 2
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 1
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - Ungrindable
+  # End Triad
 #Tastes like pasta, cornbread and cheese
 
 #Soups and Stews

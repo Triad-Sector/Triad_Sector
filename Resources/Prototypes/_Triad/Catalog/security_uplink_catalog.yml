@@ -31,13 +31,13 @@
       - SecurityUplink
 
 - type: listing
-  id: UplinkSecuritySurgeryDuffel
-  name:  uplink-security-surgery-duffel-name
-  description: uplink-security-surgery-duffel-desc
-  productEntity: ClothingBackpackDuffelSurgeryAdvancedFilled
-  icon: { sprite: Objects/Specific/Medical/Surgery/scalpel.rsi, state: laser }
+  id: UplinkSecuritySurgeryAdvanced
+  name:  uplink-security-advanced-surgery-name
+  description: uplink-security-advanced-surgery-desc
+  productEntity: BoxAdvancedSurgery
+  icon: { sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi, state: e-scalpel-on }
   cost:
-    TriadCommerceCredit: 20
+    TriadCommerceCredit: 30
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -50,6 +50,27 @@
        - TdfMedic
        - TdfLieutenant
        - TdfChiefEnforcer
+
+- type: listing
+  id: UplinkSecuritySurgeryMultitool
+  name:  uplink-security-multitool-surgery-name
+  description: uplink-security-multitool-surgery-desc
+  productEntity: OmnimedToolSyndie
+  icon: { sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi, state: evil }
+  cost:
+    TriadCommerceCredit: 40
+  categories:
+  - UplinkSecurityUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - TdfMedic
+    - TdfLieutenant
+    - TdfChiefEnforcer
 
 - type: listing
   id: UplinkSecurityPortableRecharger
