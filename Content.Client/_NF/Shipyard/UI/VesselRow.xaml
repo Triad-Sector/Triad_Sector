@@ -26,6 +26,11 @@
             StyleClasses="ButtonSquare"
             MinWidth="130"
             HorizontalAlignment="Right" /> <!-- 130 px: approximate width of "Purchase"-->
+        <Button Name="Preview"
+            Access="Public"
+            Text="{Loc 'shipyard-console-preview'}"
+            StyleClasses="ButtonSquare"
+            HorizontalAlignment="Right" />
         <Button Name="Guidebook"
             Access="Public"
             Text="{Loc 'shipyard-console-guidebook'}"

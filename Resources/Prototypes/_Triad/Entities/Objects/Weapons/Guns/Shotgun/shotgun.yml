@@ -57,6 +57,8 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
     size: Large
+    shape:
+    - 0,0,3,2
     sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier_inhand_32x.rsi
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/Shotgun/hzd_bombadier_inhand_32x.rsi

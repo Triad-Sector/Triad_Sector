@@ -11,10 +11,10 @@ public sealed class PaperVisualizerSystem : VisualizerSystem<PaperVisualsCompone
         if (args.Sprite == null)
             return;
 
-        if (AppearanceSystem.TryGetData<PaperStatus>(uid, PaperVisuals.Status , out var writingStatus, args.Component))
+        if (args.TryGetData<PaperStatus>(PaperVisuals.Status, out var writingStatus))
             SpriteSystem.LayerSetVisible((uid, args.Sprite), PaperVisualLayers.Writing, writingStatus == PaperStatus.Written);
 
-        if (AppearanceSystem.TryGetData<string>(uid, PaperVisuals.Stamp, out var stampState, args.Component))
+        if (args.TryGetData<string>(PaperVisuals.Stamp, out var stampState))
         {
             SpriteSystem.LayerSetRsiState((uid, args.Sprite), PaperVisualLayers.Stamp, stampState);
             SpriteSystem.LayerSetVisible((uid, args.Sprite), PaperVisualLayers.Stamp, true);

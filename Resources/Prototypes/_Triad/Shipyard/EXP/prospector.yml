@@ -1,4 +1,4 @@
-﻿# Author Info
+# Author Info
 # SUI
 # Discord SUI
 
@@ -13,7 +13,7 @@
   price: 236400
   category: Large
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/EXP/prospector.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/EXP/prospector.yml
   class:
   - Expedition
   - Salvage
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Prospector
   mapName: 'Prospector'
-  mapPath: /Maps/_Triad/Shuttles/EXP/prospector.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/EXP/prospector.yml
   minPlayers: 0
   stations:
     Prospector:
@@ -37,3 +37,4 @@
       - type: StationJobs
         availableJobs:
           Contractor: [ 0, 0 ]
+

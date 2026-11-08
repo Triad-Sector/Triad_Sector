@@ -86,11 +86,11 @@ public sealed partial class DoorSystem : SharedDoorSystem
         if (args.Sprite == null)
             return;
 
-        if (!AppearanceSystem.TryGetData<DoorState>(entity, DoorVisuals.State, out var state, args.Component))
+        if (!args.TryGetData<DoorState>(DoorVisuals.State, out var state))
             state = DoorState.Closed;
 
         // Upstream#37341
-        if (AppearanceSystem.TryGetData<string>(entity, PaintableVisuals.Prototype, out var prototype, args.Component))
+        if (args.TryGetData<string>(PaintableVisuals.Prototype, out var prototype))
             UpdateSpriteLayers((entity.Owner, args.Sprite), prototype);
         // End Upstream#37341
 

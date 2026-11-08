@@ -254,7 +254,7 @@ public sealed partial class ItemToggleSystem : EntitySystem
     {
         if (TryComp(ent, out AppearanceComponent? appearance))
         {
-            _appearance.SetData(ent, ToggleableVisuals.Enabled, ent.Comp.Activated, appearance);
+            _appearance.SetData(ent, ent.Comp.Visuals, ent.Comp.Activated, appearance); // Triad - change from hardcoded value to datafield
         }
     }
 

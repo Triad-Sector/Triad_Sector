@@ -1,5 +1,3 @@
-
-
 using Content.Client.Hands;
 using Content.Client.NetworkConfigurator.Systems;
 using Content.Shared._Mono.NaniteOverlay;
