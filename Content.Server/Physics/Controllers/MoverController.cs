@@ -534,8 +534,7 @@ public sealed partial class MoverController : SharedMoverController
             angularMul /= count;
             accelMul /= count;
 
-            angularMul *= shuttle.BaseThrusterMultiplier; // Triad
-            accelMul *= shuttle.BaseThrusterMultiplier; // Triad
+            accelMul *= shuttle.BaseThrusterMultiplier; // Triad: only linear increased from base thruster mul, angularMul increased from gyro.
 
             if (setMaxVel != null)
                 setMaxVel /= count;
