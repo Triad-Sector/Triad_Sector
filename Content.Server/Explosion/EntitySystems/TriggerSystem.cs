@@ -301,8 +301,9 @@ namespace Content.Server.Explosion.EntitySystems
                 {
                     case MobState.Critical:
                     {
-                        var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage;
-                        _radioSystem.SendRadioMessage(uid, message , radioChannel, uid, null, language);
+                        // _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
+                        var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage; // Mono -> Triad
+                        _radioSystem.SendRadioMessage(uid, message , radioChannel, uid, null, language); // Mono -> Triad
                         break;
                     }
                     case MobState.Dead:
