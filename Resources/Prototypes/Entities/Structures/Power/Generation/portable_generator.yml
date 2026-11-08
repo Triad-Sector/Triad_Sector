@@ -186,7 +186,7 @@
     - type: PortableGenerator
       startChance: 0.8
     - type: UpgradePowerSupplier
-      powerSupplyMultiplier: 0.3 # Triad: Change from 1.25 Exponential to Linear 30% per rating.
+      powerSupplyMultiplier: 0.35 # Triad: Change from 1.25 Exponential to Linear 35% per rating.
       scaling: Linear
     - type: GeneratorExhaustGas
       gasType: CarbonDioxide
@@ -258,7 +258,7 @@
       materialWhiteList: [Uranium, FuelGradeUranium] # Frontier: add FuelGradeUranium
     - type: PortableGenerator
     - type: UpgradePowerSupplier
-      powerSupplyMultiplier: 0.3 # Triad: Change from 1.25 Exponential to Linear 30% per rating.
+      powerSupplyMultiplier: 0.35 # Triad: Change from 1.25 Exponential to Linear 35% per rating.
       scaling: Linear
     - type: PowerMonitoringDevice
       group: Generator
@@ -333,7 +333,7 @@
       # Shallow curve
       fuelEfficiencyConstant: 0.5
     - type: UpgradePowerSupplier # Triad: capacitor now upgrades output
-      powerSupplyMultiplier: 0.3 # 30% per rating, Linear
+      powerSupplyMultiplier: 0.35 # 35% per rating, Linear
       scaling: Linear
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
