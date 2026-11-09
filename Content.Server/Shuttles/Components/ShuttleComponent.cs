@@ -25,12 +25,6 @@ namespace Content.Server.Shuttles.Components
         public const float MaxAngularVelocity = 4f;
 
         /// <summary>
-        /// Triad : adding max linear velocity of shuttle to 1 and their base thruster multiplier by 1.5
-        /// </summary>
-        public float MaxLinearVelocityMultiplier = 1f;
-        public float BaseThrusterMultiplier = 1.5f;
-
-        /// <summary>
         /// The cached thrust available for each cardinal direction
         /// </summary>
         [ViewVariables]

@@ -17,11 +17,6 @@ public sealed partial class ShuttleSystem
     private const float SpaceFrictionStrength = 0.15f; // Triad from 0.0075f to 0.15f, so shuttle won't drift away when unmmanned/broken
     private const float DampenDampingStrength = 0.50f; // Triad from 0.25f to 0.5
     private const float AnchorDampingStrength = 2.5f;
-
-    // Triad
-    public readonly float CruiseModeLinearAccelerationMultiplier = 4f;
-    public readonly float DriveModeThrusterMultiplier = 2.5f;
-    // Triad end
     private void NfInitialize()
     {
         SubscribeLocalEvent<ShuttleConsoleComponent, SetInertiaDampeningRequest>(OnSetInertiaDampening);
@@ -48,30 +43,13 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        switch (mode)
+        shuttleComponent.BodyModifier = mode switch
         {
-            case InertiaDampeningMode.Off:
-                {
-                    shuttleComponent.BaseThrusterMultiplier = 1f;
-                    shuttleComponent.MaxLinearVelocityMultiplier = CruiseModeLinearAccelerationMultiplier;
-                    shuttleComponent.BodyModifier = SpaceFrictionStrength;
-                    break;
-                }
-            case InertiaDampeningMode.Dampen:
-                {
-                    shuttleComponent.BaseThrusterMultiplier = DriveModeThrusterMultiplier;
-                    shuttleComponent.MaxLinearVelocityMultiplier = 1f;
-                    shuttleComponent.BodyModifier = DampenDampingStrength;
-                    break;
-                }
-            case InertiaDampeningMode.Anchor:
-                {
-                    shuttleComponent.BaseThrusterMultiplier = 1f;
-                    shuttleComponent.MaxLinearVelocityMultiplier = 1f;
-                    shuttleComponent.BodyModifier = AnchorDampingStrength;
-                    break;
-                }
-        }
+            InertiaDampeningMode.Off => SpaceFrictionStrength,
+            InertiaDampeningMode.Dampen => DampenDampingStrength,
+            InertiaDampeningMode.Anchor => AnchorDampingStrength,
+            _ => DampenDampingStrength, // other values: default to some sane behaviour (assume normal dampening)
+        };
 
         if (shuttleComponent.DampingModifier != 0)
             shuttleComponent.DampingModifier = shuttleComponent.BodyModifier;
