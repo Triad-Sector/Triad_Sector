@@ -24,6 +24,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server._NF.Traits.Assorted;
+using Content.Shared.Body.Components;
 
 namespace Content.Server._NF.Medical;
 
@@ -133,13 +134,13 @@ public sealed partial class MedicalBountySystem : EntitySystem
         {
             foreach (var (reagentType, reagentValue) in component.Bounty.Reagents)
             {
-                if (!_proto.HasIndex<ReagentPrototype>(reagentType))
+                if (!_proto.HasIndex(reagentType))
                     continue;
 
                 Solution soln = new Solution();
                 var reagentQuantity = _random.Next(reagentValue.MinQuantity, reagentValue.MaxQuantity + 1);
                 soln.AddReagent(reagentType, reagentQuantity);
-                if (_bloodstream.TryAddToChemicals(entity, soln, bloodstream))
+                if (_bloodstream.TryAddToChemicals((entity, bloodstream), soln))
                     bountyValueAccum += reagentQuantity * reagentValue.ValuePerPoint;
             }
         }

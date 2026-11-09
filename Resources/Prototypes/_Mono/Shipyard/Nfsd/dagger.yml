@@ -9,7 +9,7 @@
 #   category: Medium
 #   group: Security
 #   access: Security
-#   shuttlePath: /Maps/_Mono/Shuttles/Nfsd/dagger.yml
+#   shuttlePath: /SharedMaps/_Mono/Shuttles/Nfsd/dagger.yml
 #   guidebookPage: Null
 #   class:
 #   - Patrol
@@ -20,7 +20,7 @@
 # - type: gameMap
 #   id: Dagger
 #   mapName: 'Dagger'
-#   mapPath: /Maps/_Mono/Shuttles/Nfsd/dagger.yml
+#   mapPath: /SharedMaps/_Mono/Shuttles/Nfsd/dagger.yml
 #   minPlayers: 0
 #   stations:
 #     Dagger:
@@ -35,4 +35,5 @@
 #         availableJobs:
 #           Deputy: [ 0, 0 ]
 #           TsfBorg: [ 0, 0 ]
+
 

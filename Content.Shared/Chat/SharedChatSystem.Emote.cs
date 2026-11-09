@@ -102,7 +102,11 @@ public abstract partial class SharedChatSystem
 
         return didEmote;
     }
-
+    protected bool IsRegisteredEmote(string textInput)
+    {
+        var actionTrimmedLower = TrimPunctuation(textInput.ToLower());
+        return _wordEmoteDict.ContainsKey(actionTrimmedLower);
+    }
     /// <summary>
     /// Makes the selected entity emote using the given <see cref="EmotePrototype"/> without sending any messages to chat.
     /// </summary>

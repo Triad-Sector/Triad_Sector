@@ -10,7 +10,7 @@
   price: 110000
   category: Medium
   group: Military
-  shuttlePath: /Maps/_Triad/Shuttles/MIL/martyr.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/MIL/martyr.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Martyr
   mapName: 'AVM Martyr'
-  mapPath: /Maps/_Triad/Shuttles/MIL/martyr.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/MIL/martyr.yml
   minPlayers: 0
   stations:
     Martyr:
@@ -35,5 +35,6 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 
 

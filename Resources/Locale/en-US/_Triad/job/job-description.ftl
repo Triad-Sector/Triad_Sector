@@ -1,17 +1,17 @@
 # TDF
-job-description-tdf-lieutenant = You are the second in command of the local TDF team. Ensure order in the sector and within the TDF.
+job-description-tdf-lieutenant = You are the second in command of the local TDF team. Ensure order in the district and within the TDF.
 job-description-tdf-medic = Fight in the rear of the Chief Enforcer's service, for the lives of your comrades! You are the first and last hope of your team. Hippocrates bless you.
 job-description-tdf-cadet = Serve as the main protection force in the Triad sector. Listen to your supervisors and feel free to ask them for any help.
-job-description-tdf-enforcer = Stop smugglers and protect the residents of the Triad sector.
-job-description-tdf-patrol-team-leader = Teach new enforcers the basics of what the TDF does and deals with. Lead your assigned patrol team; show the sector the TDF has no bounds.
-job-description-tdf-chief-enforcer = Manage your TDF team and keep them efficient, quell dissent, and keep the sector safe.
+job-description-tdf-enforcer = Stop smugglers and protect the residents of the Auric District.
+job-description-tdf-patrol-team-leader = Teach new enforcers the basics of what the TDF does and deals with. Lead your assigned patrol team; show the district the TDF has no bounds.
+job-description-tdf-chief-enforcer = Manage your TDF team and keep them efficient, quell dissent, and keep the district safe.
 
 # TFA High Command
 job-description-tfa-high-command = Act as an ambassador to Venmar Station, Medical Dispatch, and the power plant from the Triad Frontier Association.
 job-description-tfa-high-command-intern = Follow the orders of your superior High Commanders and file paperwork.
 
 # Freelancers
-job-description-contractor = Fulfill your own goals out in Triad space.
+job-description-contractor = Fulfill your own goals out in the Auric District.
 job-description-mercenary = Execute the bidding of anyone- for the right price.
 job-description-pilot = Pilot spaceships from point A to B, outmaneuver enemies, dodge asteroids and other ships.
 

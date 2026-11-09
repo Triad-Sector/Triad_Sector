@@ -10,7 +10,7 @@
   price: 175000 #
   category: Medium
   group: Military
-  shuttlePath: /Maps/_Mono/Shuttles/Expedition/siebel.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/Expedition/siebel.yml
   guidebookPage: null
   class:
   - Expedition
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Siebel
   mapName: 'MI Siebel'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/siebel.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/Expedition/siebel.yml
   minPlayers: 0
   stations:
     Siebel:
@@ -35,4 +35,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 

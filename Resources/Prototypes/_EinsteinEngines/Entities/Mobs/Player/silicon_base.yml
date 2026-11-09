@@ -65,7 +65,9 @@
       0: 0.00
   - type: Temperature
     interactionExchangeCoefficient: 0.002 # Mono
-    heatDamageThreshold: 1800 # GoobStation: Roughly the melting point of mild steels
+# GhostC10 - 11/06/2026 - Changing the heat dmg threshold to something not stupid
+#    heatDamageThreshold: 1800 # GoobStation: Roughly the melting point of mild steels
+    heatDamageThreshold: 380 # Triad: The wiring is what would die, not the steel
     coldDamageThreshold: 260
     currentTemperature: 310.15
     specificHeat: 42
@@ -76,7 +78,8 @@
       types:
         Heat: 3 #per second, scales with temperature & other constants
     atmosTemperatureTransferEfficiency: 0.05
-  - type: KillOnOverheat # GoobStation
+# GhostC10 - 11/06/2026 - Remove death on overheat because *why*, they already take so much heat dmg
+#  - type: KillOnOverheat # GoobStation
   - type: Deathgasp
     prototype: SiliconDeathgasp
     needsCritical: true # Mono
@@ -94,6 +97,15 @@
         damage: 500
       behaviors:
       - !type:GibBehavior {}
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: silicon-radiation-warning
+        popupType: LargeCaution
+        targetOnly: true
   - type: Icon
     sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
     state: full
@@ -253,6 +265,8 @@
     sprite: Objects/Misc/ensnare.rsi
   - type: Speech
     speechSounds: Pai
+  - type: Uncloneable
+    analyzable: false # Triad - uncloneable
   - type: Vocal
     wilhelm: "/Audio/_EinsteinEngines/Voice/IPC/wilhelm.ogg"
     sounds:

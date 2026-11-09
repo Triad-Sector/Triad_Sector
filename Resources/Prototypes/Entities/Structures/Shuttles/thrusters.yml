@@ -50,6 +50,7 @@
         tags:
         - IgnoreThrusterDamage
     - type: ThrusterProfile
+      profile: Small
     # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline
@@ -143,7 +144,7 @@
       shape: Square
       respectZoom: true
       rotate: true
-      bounds: "-0.5,-0.5,0.5,0.5"
+      bounds: "-0.45,-0.45,0.45,0.45"
   # Mono
   - type: ShipRepairable
     repairTime: 5
@@ -197,6 +198,8 @@
     thrust: 2000
     machinePartThrust: Manipulator
     heatSignatureRatio: 0.5 # Mono
+  - type: ThrusterProfile
+    profile: NeverBlocked # Triad
   - type: Sprite
     # Listen I'm not the biggest fan of the sprite but it was the most appropriate thing I could find.
     sprite: Structures/Shuttles/gyroscope.rsi

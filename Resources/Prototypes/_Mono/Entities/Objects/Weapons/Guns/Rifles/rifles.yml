@@ -409,7 +409,7 @@
 #Corporate War Lecter
 
 - type: entity
-  name: NTSF-LTR-556 (5.56x45mm,6.8x52mm Caseless)
+  name: NTSF-LTR-556 (5.56x45mm)
   parent: [BaseWeaponRifle, BaseFactionGearOtherFactionT1]
   id: WeaponRifleNtsfLtr
   description: An old corporate war era rifle. The NanoTrasen Security Forces and Special Forces's Light Tactical Rifle chambered in 5.56x45mm. This rifle is of high-quality with plastitanium internals and plasteel furniture. # Triad: Updated the description to reflect what it now chambers and fix spelling mistakes.

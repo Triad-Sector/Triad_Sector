@@ -12,7 +12,7 @@
   price: 246000 # appraisegrid at 204788 times 1.2 rounded up by the nearest thousandth
   category: Large
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/Expedition/arkansaw.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/Expedition/arkansaw.yml
   guidebookPage: Null
   class:
   - Expedition
@@ -24,7 +24,7 @@
 - type: gameMap
   id: Arkansaw
   mapName: 'COG Arkansaw'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/arkansaw.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/Expedition/arkansaw.yml
   minPlayers: 0
   stations:
     Arkansaw:
@@ -38,4 +38,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 

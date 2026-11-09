@@ -82,16 +82,20 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
 
     private void OnUseInHandEvent(EntityUid uid, BatteryWeaponFireModesComponent component, UseInHandEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (component.FireModes.Count < 2)
             return;
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReader) && !_accessReaderSystem.IsAllowed(args.User, uid, accessReader))
             return;
 
-        CycleFireMode(uid, component, args.User);
+        args.Handled = true;
+        TryCycleFireMode(uid, component, args.User);
     }
 
-    private void CycleFireMode(EntityUid uid, BatteryWeaponFireModesComponent component, EntityUid user)
+    private void TryCycleFireMode(EntityUid uid, BatteryWeaponFireModesComponent component, EntityUid user)
     {
         if (component.FireModes.Count < 2)
             return;

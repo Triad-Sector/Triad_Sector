@@ -18,7 +18,7 @@ public sealed partial class ApcVisualizerSystem : VisualizerSystem<ApcVisualsCom
         var channelIndicatorOverlayStart = SpriteSystem.LayerMapGet((uid, args.Sprite), ApcVisualLayers.Equipment);
 
         // Handle APC screen overlay:
-        if(!AppearanceSystem.TryGetData<ApcChargeState>(uid, ApcVisuals.ChargeState, out var chargeState, args.Component))
+        if(!args.TryGetData<ApcChargeState>(ApcVisuals.ChargeState, out var chargeState))
             chargeState = ApcChargeState.Lack;
 
         if (chargeState >= 0 && chargeState < ApcChargeState.NumStates)
@@ -26,7 +26,7 @@ public sealed partial class ApcVisualizerSystem : VisualizerSystem<ApcVisualsCom
             SpriteSystem.LayerSetRsiState((uid, args.Sprite), ApcVisualLayers.ChargeState, $"{comp.ScreenPrefix}-{comp.ScreenSuffixes[(sbyte)chargeState]}");
 
             // LockState does nothing currently. The backend doesn't exist.
-            if (AppearanceSystem.TryGetData<byte>(uid, ApcVisuals.LockState, out var lockStates, args.Component))
+            if (args.TryGetData<byte>(ApcVisuals.LockState, out var lockStates))
             {
                 for(var i = 0; i < comp.LockIndicators; ++i)
                 {
@@ -38,7 +38,7 @@ public sealed partial class ApcVisualizerSystem : VisualizerSystem<ApcVisualsCom
             }
 
             // ChannelState does nothing currently. The backend doesn't exist.
-            if (AppearanceSystem.TryGetData<byte>(uid, ApcVisuals.ChannelState, out var channelStates, args.Component))
+            if (args.TryGetData<byte>(ApcVisuals.ChannelState, out var channelStates))
             {
                 for(var i = 0; i < comp.ChannelIndicators; ++i)
                 {

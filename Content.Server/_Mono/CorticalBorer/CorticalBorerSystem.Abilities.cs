@@ -2,6 +2,7 @@ using Content.Server._NF.Salvage;
 using Content.Server.Body.Components;
 using Content.Server.Medical;
 using Content.Shared._Mono.CorticalBorer;
+using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
@@ -128,7 +129,7 @@ public sealed partial class CorticalBorerSystem
 
         InfestTarget(ent, target);
 
-        // Thermal regulation is disabled because of a weird interaction with disabling heat while inside body. 
+        // Thermal regulation is disabled because of a weird interaction with disabling heat while inside body.
         if (TryComp<ThermalRegulatorComponent>(ent, out var thermComp))
             thermComp.DisableProcessing = true;
 

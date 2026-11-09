@@ -187,10 +187,12 @@
     shape: # Goobstation
     - 0,0,4,1
   - type: BallisticAmmoProvider
-    capacity: 8 # 7->8 Mono
+    capacity: 6 #Triad 8->6
+  - type: GunSpreadModifier #Triad, giving it a wider spread since its firerate is rather scary
+    spread: 1.6
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    fireRate: 2.2 # Mono
+    fireRate: 4.2 # Triad 2.2 -> 4.2
 #  - type: PirateBountyItem # Frontier - Mono
 #    id: Enforcer # Frontier - Mono
   - type: PirateBountyItem # Mono

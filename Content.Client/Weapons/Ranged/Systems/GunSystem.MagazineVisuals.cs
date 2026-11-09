@@ -40,20 +40,16 @@ public sealed partial class GunSystem
 
         if (sprite == null) return;
 
-        if (!args.AppearanceData.TryGetValue(AmmoVisuals.MagLoaded, out var magloaded) ||
+        if (!args.TryGetData<bool>(AmmoVisuals.MagLoaded, out var magloaded) ||
             magloaded is true)
         {
-            if (!args.AppearanceData.TryGetValue(AmmoVisuals.AmmoMax, out var capacity))
-            {
+            if (!args.TryGetData<int>(AmmoVisuals.AmmoMax, out var capacity))
                 capacity = component.MagSteps;
-            }
 
-            if (!args.AppearanceData.TryGetValue(AmmoVisuals.AmmoCount, out var current))
-            {
+            if (!args.TryGetData<int>(AmmoVisuals.AmmoCount, out var current))
                 current = component.MagSteps;
-            }
 
-            var step = ContentHelpers.RoundToLevels((int) current, (int) capacity, component.MagSteps);
+            var step = ContentHelpers.RoundToLevels(current, capacity, component.MagSteps);
 
             if (component.ZeroNoAmmo && step == 0 && (int) current > 0) // Goobstation
                 step = Math.Min(1, component.MagSteps - 1);
