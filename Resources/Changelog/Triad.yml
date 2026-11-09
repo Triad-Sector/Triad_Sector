@@ -6100,3 +6100,13 @@ Entries:
   id: 2721
   time: '2026-11-07T19:00:54.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/809
+- author: SarahRaven
+  changes:
+    - type: Add
+      message: >-
+        Ported death rattle revive message system. Now medical tracker will
+        alert when someone goes from dead to critical, instead of repeating the
+        "goes critical" message.
+  id: 2722
+  time: '2026-11-09T00:57:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/811
