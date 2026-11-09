@@ -114,6 +114,10 @@ public sealed partial class GasTurbineSystem : EntitySystem
         SubscribeLocalEvent<GasTurbineComponent, RepairFinishedEvent>(OnRepairTurbineFinished);
     }
 
+    private const float DefaultStatorLoad = 35000f;
+    private const float MinStatorLoad = 1000f;
+    private const float MaxStatorLoad = 1_000_000f;
+
     private const string BladeContainer = "blade_slot";
     private const string StatorContainer = "stator_slot";
 
@@ -478,13 +482,16 @@ public sealed partial class GasTurbineSystem : EntitySystem
 
         bool TrySetStatorLoad()
         {
-            var newSet = Math.Max(args.StatorLoad, 1000f);
-            if (turbine.StatorLoad != newSet)
-            {
-                turbine.StatorLoad = newSet;
-                return true;
-            }
-            return false; 
+            if (!float.IsFinite(args.StatorLoad))
+                return false;
+
+            var newSet = Math.Clamp(args.StatorLoad, MinStatorLoad, MaxStatorLoad);
+
+            if (turbine.StatorLoad == newSet)
+                return false;
+
+            turbine.StatorLoad = newSet;
+            return true;
         }
     }
 
