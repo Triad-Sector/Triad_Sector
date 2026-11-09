@@ -17,7 +17,7 @@
 - type: gameMap
   id: Shepherd
   mapName: 'Shepherd'
-  mapPath: /Maps/_Triad/Shuttles/TDF/shepherd.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/shepherd.yml
   minPlayers: 0
   stations:
     Shepherd:
