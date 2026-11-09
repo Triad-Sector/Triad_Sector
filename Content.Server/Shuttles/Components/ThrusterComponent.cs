@@ -97,7 +97,7 @@ namespace Content.Server.Shuttles.Components
         public ProtoId<MachinePartPrototype> MachinePartThrust = "Capacitor";
 
         [DataField("partRatingThrustMultiplier")]
-        public float PartRatingThrustMultiplier = 1.25f; // Mono: 1.15->1.25 (frontier: 1.5->1.15)
+        public float PartRatingThrustMultiplier = 1.25f; // Mono: 1.15->1.25 (frontier: 1.5->1.15) Triad : this is not used for now, maybe will be used in the future
 
         /// <summary>
         ///     Frontier - Amount of charge this needs from an APC per second to function.

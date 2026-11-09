@@ -1,4 +1,3 @@
-using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Robust.Client.GameObjects;
 
@@ -11,7 +10,7 @@ public sealed class StorageFillVisualizerSystem : VisualizerSystem<StorageFillVi
         if (args.Sprite == null)
             return;
 
-        if (!AppearanceSystem.TryGetData<int>(uid, StorageFillVisuals.FillLevel, out var level, args.Component))
+        if (!args.TryGetData<int>(StorageFillVisuals.FillLevel, out var level))
             return;
 
         var state = $"{component.FillBaseName}-{level}";

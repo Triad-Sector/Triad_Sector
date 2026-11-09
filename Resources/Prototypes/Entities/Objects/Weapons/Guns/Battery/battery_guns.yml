@@ -149,14 +149,26 @@
       shader: unshaded
   - type: Item
     sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+#Start of Triad Change: Heavily alters he gun component of the svalinn: Removed semi-auto, added full-auto, bumped fire-rate to 4.5, buffed burst-fire to be more inline with full-auto, updated audio to be less grating
   - type: Gun
-    burstCooldown: 0.75
-    burstFireRate: 3
-    shotsPerBurst: 3
-    selectedMode: SemiAuto
+#    burstCooldown: 0.75
+#    burstFireRate: 3
+#    shotsPerBurst: 3
+    burstCooldown: 1.75
+    burstFireRate: 9
+    shotsPerBurst: 9
+    fireRate: 4.5
+#    selectedMode: SemiAuto
+    selectedMode: FullAuto
     availableModes:
-    - SemiAuto
+#    - SemiAuto
+    - FullAuto
     - Burst
+    soundGunshot:
+      path: /Audio/_DV/Weapons/Guns/Gunshots/laser.ogg
+    soundEmpty:
+      path: /Audio/_DV/Weapons/Guns/Empty/dry_fire.ogg
+#End of Triad Change
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -299,7 +311,7 @@
 
 - type: entity
   name: LWC pulse pistol
-  parent: BaseWeaponBatterySmall
+  parent: [BaseWeaponBatterySmall, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulsePistol
   description: A state of the art energy pistol favoured as a sidearm by the Solarian Directive. # Mono
   components:
@@ -339,14 +351,10 @@
     autoRechargePause: true
     autoRechargePauseTime: 30
   # End Mono
-  # Triad Start
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
-  # Triad End
 
 - type: entity
   name: LWC pulse carbine
-  parent: [BaseWeaponBattery, BaseGunWieldable]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseCarbine
   description: A common sight in the hands of higher ranked Solarian Directive, the pulse carbine is a punchy laser weapon salvaged from the remnants of Nanotrasen. # Mono
   components:
@@ -392,14 +400,10 @@
     autoRechargePause: true
     autoRechargePauseTime: 30
   # End Mono
-  # Triad Start
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
-  # Triad End
 
 - type: entity
   name: NT pulse rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseRifle
   description: A weapon that used to be used by the special operations units of NT, but now commonly seen in the hands of the SD. # Mono
   components:
@@ -443,10 +447,6 @@
     walkModifier: 0.90
     sprintModifier: 0.85
   # End Mono
-  # Triad Start
-  - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
-  # Triad End
 
 - type: entity
   name: Cyborg pulse rifle
@@ -937,17 +937,6 @@
     fireRate: 2
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletLaserSpread
-    fireCost: 150
-  - type: BatteryWeaponFireModes
-    fireModes:
-    - proto: BulletLaserSpread
-      fireCost: 150
-    - proto: BulletLaserSpreadNarrow
-      fireCost: 200
-    - proto: BulletDisablerSmgSpread
-      fireCost: 120
   - type: Item
     size: Large
     shape:
@@ -963,6 +952,17 @@
   - type: Battery
     maxCharge: 1200
     startingCharge: 1200
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletLaserSpread
+    fireCost: 150
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletLaserSpread
+      fireCost: 150
+    - proto: BulletLaserSpreadNarrow
+      fireCost: 200
+    - proto: BulletDisablerSmgSpread
+      fireCost: 120
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 24

@@ -10,7 +10,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/TDF/knight.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Knight
   mapName: 'Knight'
-  mapPath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/knight.yml
   minPlayers: 0
   stations:
     Knight:
@@ -34,5 +34,6 @@
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
+
 
 
