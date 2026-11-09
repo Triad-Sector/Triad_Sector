@@ -439,7 +439,7 @@
   - type: Tweezers
     speed: 4 # Triad
   - type: Tending
-    speed: 3 # Triad: Buffed 1.5->3 to give a reason to use it over the multitool. 4 would have been too fast.
+    speed: 2 # Triad: Buffed 1.5->2 to give a reason to use it over the multitool. 4 would have been too fast.
   - type: StaticPrice # Mono
     price: 120
 
@@ -476,7 +476,7 @@
   - type: Tweezers
     speed: 0.5 # Triad
   - type: Tending
-    speed: 1.5 # Triad: 2->1.5
+    speed: 1 # Triad: 2->1
   - type: StaticPrice # Mono
     price: 200
 

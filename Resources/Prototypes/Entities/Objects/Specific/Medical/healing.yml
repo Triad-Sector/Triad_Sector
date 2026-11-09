@@ -35,10 +35,10 @@
     - Biological
     damage:
       types:
-        Heat: -10
-        Cold: -10
-        Shock: -10
-        Caustic: -1.5 #Was 5 per type & 1.5 caustic, Buffed due to limb damage changes (Goobstation) Triad: Nerfed 15->10 of each damage, since topicals were overpowered
+        Heat: -15
+        Cold: -15
+        Shock: -15
+        Caustic: -15
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
       params:
@@ -108,7 +108,7 @@
         variation: 0.125
   - type: Stack
     stackType: RegenerativeMesh
-    count: 10 # Triad: reverted to 10 since topicals were overpowered
+    count: 15
   - type: StackPrice
     price: 80 # Mono - 20->80
 
@@ -138,9 +138,9 @@
     - Biological
     damage:
       types:
-        Blunt: -10
-        Slash: -10
-        Pierce: -10 # was 5 for each, Buffed due to limb damage changes (Goobstation) Triad: Changed from 15->10 of each, since topicals were overpowered
+        Blunt: -15
+        Slash: -15
+        Pierce: -15
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
       params:
@@ -209,7 +209,7 @@
         variation: 0.125
   - type: Stack
     stackType: MedicatedSuture
-    count: 10 # Triad: Reverted to 10 since topicals were overpowered
+    count: 15
   - type: StackPrice
     price: 80 # Mono - 40->80
 
