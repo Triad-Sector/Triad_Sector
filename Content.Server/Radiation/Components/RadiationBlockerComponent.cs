@@ -26,7 +26,7 @@ public sealed partial class RadiationBlockerComponent : Component
     ///     What percentage of recieved dose does the blocker absorb?
     /// </summary>
     [DataField("linresistance")]
-    public float RadLinearResistance = 0.00f;
+    public float RadLinearResistance = 0f;
      //Triad end
     /// <summary>
     ///     Current position of the rad blocker in grid coordinates.

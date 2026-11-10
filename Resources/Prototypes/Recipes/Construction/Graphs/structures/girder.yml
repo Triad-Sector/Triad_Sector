@@ -58,6 +58,18 @@
           conditions:
             - !type:EntityAnchored {}
           steps:
+            - material: Uranium
+              amount: 2
+            - tool: Welding
+              doAfter: 10
+
+        - to: iriditeDUWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
             - material: Iridite
               amount: 1
             - tool: Screwing
@@ -207,6 +219,25 @@
               doAfter: 10
             - tool: Prying
               doAfter: 10
+              
+    - node: iriditeDUWall # triad start
+      entity: IriditeDUWall
+      edges:
+        - to: girder
+          completed:
+            - !type:GivePrototype
+              prototype: SheetUraniumDepleted
+              amount: 2
+            - !type:GivePrototype
+              prototype: SheetIridite
+              amount: 1
+          steps:
+            - tool: Welding
+              doAfter: 20
+            - tool: Screwing
+              doAfter: 10
+            - tool: Prying
+              doAfter: 20 # triad end
 
     - node: silverWall
       entity: WallSilver

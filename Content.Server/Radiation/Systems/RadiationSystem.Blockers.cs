@@ -2,6 +2,7 @@ using Content.Server.Radiation.Components;
 using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Robust.Shared.Map.Components;
+using System.IO;
 
 namespace Content.Server.Radiation.Systems;
 
@@ -98,7 +99,7 @@ public partial class RadiationSystem
         }
 
         // check if entity even provide some rad protection
-        if (!component.Enabled || component.RadResistance <= 0)
+        if (!component.Enabled || component.RadResistance <= 0 || component.RadLinearResistance <= 0)// Triad
             return;
 
         // check if it's on a grid
@@ -109,7 +110,7 @@ public partial class RadiationSystem
         // save resistance into rad protection grid
         var gridId = trs.GridUid.Value;
         var tilePos = _maps.TileIndicesFor(gridId, grid, trs.Coordinates);
-        AddToTile(gridId, tilePos, component.RadResistance);
+        AddToTile(gridId, tilePos, component.RadResistance, component.RadLinearResistance);
 
         // and remember it as last valid position
         component.CurrentPosition = (gridId, tilePos);
@@ -123,44 +124,58 @@ public partial class RadiationSystem
         var (gridId, tilePos) = component.CurrentPosition.Value;
 
         // try to remove
-        RemoveFromTile(gridId, tilePos, component.RadResistance);
+        RemoveFromTile(gridId, tilePos, component.RadResistance, component.RadLinearResistance); // Triad
         component.CurrentPosition = null;
     }
 
-    private void AddToTile(EntityUid gridUid, Vector2i tilePos, float radResistance)
+    private void AddToTile(EntityUid gridUid, Vector2i tilePos, float radResistance, float radLinearResistance) // Triad
     {
         // get existing rad resistance grid or create it if it doesn't exist
         var resistance = EnsureComp<RadiationGridResistanceComponent>(gridUid);
         var grid = resistance.ResistancePerTile;
+        var lingrid = resistance.LinResistancePerTile; // Triad
 
         // add to existing cell more rad resistance
         var newResistance = radResistance;
+        var newLinResistance = radLinearResistance; // Triad
         if (grid.TryGetValue(tilePos, out var existingResistance))
         {
             newResistance += existingResistance;
         }
+        if (grid.TryGetValue(tilePos, out var existingLinResistance)) // Triad start
+        {
+            newLinResistance += existingLinResistance;
+        } // Triad end
         grid[tilePos] = newResistance;
+        lingrid[tilePos] = newLinResistance; // Triad
     }
 
-    private void RemoveFromTile(EntityUid gridUid, Vector2i tilePos, float radResistance)
+    private void RemoveFromTile(EntityUid gridUid, Vector2i tilePos, float radResistance, float radLinearResistance) // Triad
     {
         // get grid
         if (!TryComp(gridUid, out RadiationGridResistanceComponent? resistance))
             return;
         var grid = resistance.ResistancePerTile;
+        var lingrid = resistance.LinResistancePerTile; // triad
 
         // subtract resistance from tile
         if (!grid.TryGetValue(tilePos, out var existingResistance))
             return;
         existingResistance -= radResistance;
-
-        // remove tile from grid if no resistance left
-        if (existingResistance > 0)
+        // Triad start
+        if (!grid.TryGetValue(tilePos, out var existingLinResistance))
+            return;
+        existingLinResistance -= radLinearResistance;
+        // remove tile from both grids if no resistance left
+        if ((existingResistance > 0) & (existingLinResistance > 0))
+        {
             grid[tilePos] = existingResistance;
+            lingrid[tilePos] = existingLinResistance;
+        } //Triad end
         else
         {
             grid.Remove(tilePos);
-            if (grid.Count == 0)
+            if (grid.Count == 0 && lingrid.Count == 0) //triad
                 RemComp(gridUid, resistance);
         }
     }
