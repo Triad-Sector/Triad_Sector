@@ -44,6 +44,23 @@ public sealed class SurveillanceCameraMonitorUiState(NetEntity? activeCamera,
     public Dictionary<string, string> Cameras { get; } = cameras;
 }
 
+/// <summary>
+/// Provides the camera map and camera markers for a grid.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class SurveillanceCameraMonitorMapUpdateMessage(NetEntity map, Dictionary<NetEntity, CameraMarker> cameraMarkers) : BoundUserInterfaceMessage
+{
+    /// <summary>
+    /// The grid entity the camera markers belong to, or invalid when the monitor is off-grid.
+    /// </summary>
+    public NetEntity Map { get; } = map;
+
+    /// <summary>
+    /// Camera markers on the grid.
+    /// </summary>
+    public Dictionary<NetEntity, CameraMarker> CameraMarkers { get; } = cameraMarkers;
+}
+
 [Serializable, NetSerializable]
 public sealed class SurveillanceCameraMonitorSwitchMessage(
     string address,
