@@ -413,9 +413,9 @@ public sealed partial class GunSystem : SharedGunSystem
         }
 
         Lights.SetEnabled(gunUid, true, light);
-        Lights.SetRadius(gunUid, 2f, light);
-        Lights.SetColor(gunUid, Color.FromHex("#cc8e2b"), light);
-        Lights.SetEnergy(gunUid, 5f, light);
+        Lights.SetRadius(gunUid, message.MuzzleLightRadius, light); // Triad - extra muzzle flash params
+        Lights.SetColor(gunUid, Color.FromHex(message.ColorHex), light); // Triad
+        Lights.SetEnergy(gunUid, message.MuzzleLightEnergy, light); // Triad
 
         var animTwo = new Animation()
         {
@@ -429,7 +429,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     InterpolationMode = AnimationInterpolationMode.Linear,
                     KeyFrames =
                     {
-                        new AnimationTrackProperty.KeyFrame(5f, 0),
+                        new AnimationTrackProperty.KeyFrame(message.MuzzleLightEnergy, 0), // Triad - extra muzzle flash params
                         new AnimationTrackProperty.KeyFrame(0f, lifetime)
                     }
                 },

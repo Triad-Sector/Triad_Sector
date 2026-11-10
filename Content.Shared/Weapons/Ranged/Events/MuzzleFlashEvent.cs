@@ -13,10 +13,19 @@ public sealed class MuzzleFlashEvent : EntityEventArgs
 
     public Angle Angle;
 
-    public MuzzleFlashEvent(NetEntity uid, string prototype, Angle angle)
+    // Triad Start - Extra muzzle flash params
+    public string ColorHex;
+    public float MuzzleLightRadius;
+    public float MuzzleLightEnergy;
+
+    public MuzzleFlashEvent(NetEntity uid, string prototype, Angle angle, string colorHex, float lightRadius, float lightEnergy)
     {
         Uid = uid;
         Prototype = prototype;
         Angle = angle;
+        ColorHex = colorHex;
+        MuzzleLightRadius = lightRadius;
+        MuzzleLightEnergy = lightEnergy;
     }
+    // Triad End
 }

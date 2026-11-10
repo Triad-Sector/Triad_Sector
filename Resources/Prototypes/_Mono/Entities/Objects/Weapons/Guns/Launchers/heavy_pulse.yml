@@ -1,6 +1,6 @@
 - type: entity
+  parent: [ BaseItem, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable ]
   id: WeaponHeavyPulseCannon
-  parent: [ BaseWeaponBattery, BaseGunWieldable ]
   name: NT-WS heavy pulse cannon
   description: A rare, corporate war era weapon of Nanotrasen origin. A massive shoulder mounted pulse cannon, packing enough power in its punches to blow holes through organics, or when tuned to high power, blow holes clean into shuttle hulls.
   components:
@@ -25,36 +25,68 @@
   - type: Gun
     fireRate: .25
     projectileSpeed: 200
+    cameraRecoilScalar: 5 # Lots of recoil
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/ship_perforator.ogg
+      path: /Audio/_Triad/Weapons/Guns/Gunshots/fusion_gun_flash.ogg
+  - type: AmmoCounter
   - type: MagazineVisuals
     magState: mag
     steps: 5
     zeroVisible: true
-  - type: Battery
-    maxCharge: 1500000
-    startingCharge: 1500000
-  - type: BatterySelfRecharger
-    autoRechargePause: true
-    autoRechargePauseTime: 60
-    autoRecharge: true
-    autoRechargeRate: 25000
+  - type: PowerCellSlot
+    cellSlotId: gun_magazine
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        whitelist:
+          tags:
+          - PulseCannonBattery
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+  - type: Cautery # Shitmed
+    speed: 0.5
   - type: ProjectileBatteryAmmoProvider
     proto: HeavyPulse
     fireCost: 187500
-  - type: BatteryWeaponFireModes
+  - type: EnergyGun
     fireModes:
     - proto: HeavyPulse
+      name: heavy pulse
       fireCost: 187500
     - proto: HeavyPulseExp
+      name: heavy explosive pulse
       fireCost: 750000
+  - type: HeldSpeedModifier
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.8
+    walkModifier: 0.8
   - type: SpeedModifiedOnWield
     walkModifier: 0.65
     sprintModifier: 0.4
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
-    maxOffset: 9
-    pvsIncrease: 1
+    maxOffset: 4
+    pvsIncrease: 0.7
   - type: GunRequiresWield
+  - type: WieldedCrosshair
+    rsi:
+      sprite: _RMC14/Interface/MousePointer/explosive_mouse.rsi
+      state: all
+  - type: StaticPrice
+    price: 50000
 
-
+- type: entity
+  parent: WeaponHeavyPulseCannon
+  id: WeaponHeavyPulseCannonFilled
+  suffix: Battery, Filled
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PowerCagePlasmaBattery
+        whitelist:
+          tags:
+          - PulseCannonBattery

@@ -10,6 +10,9 @@
   id: PowerCellAntique
 
 - type: Tag
+  id: PulseCannonBattery
+
+- type: Tag
   id: FitsInFuelStash
 
 # Melee Weapons
@@ -97,7 +100,7 @@
 # Emotes
 - type: Tag
   id: OviniaEmotes # Used for Ovinia specific emotes
-  
+
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox
