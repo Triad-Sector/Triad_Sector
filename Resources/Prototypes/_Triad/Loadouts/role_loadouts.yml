@@ -58,10 +58,6 @@
   id: JobPlantManager
   groups:
   - ChiefEngineerHead
-  - ContractorImplanter
-  - ContractorCartridge
-  - ContractorFirearm
-  - ContractorMag
   - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
@@ -86,10 +82,6 @@
   - PlantTechnicianHead
   - PlantTechnicianNeck
   - PlantTechnicianJumpsuit
-  - ContractorCartridge
-  - ContractorImplanter
-  - ContractorFirearm
-  - ContractorMag
   - PlantGloves
   - PlantTechnicianBackpack
   - StationEngineerOuterClothing
