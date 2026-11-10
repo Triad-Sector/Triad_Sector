@@ -84,12 +84,12 @@
   id: JobPlantTechnician
   groups:
   - PlantTechnicianHead
-  - PlantTechnicianNeck
-  - PlantTechnicianJumpsuit
   - ContractorCartridge
   - ContractorImplanter
   - ContractorFirearm
   - ContractorMag
+  - PlantTechnicianNeck
+  - PlantTechnicianJumpsuit
   - PlantGloves
   - PlantTechnicianBackpack
   - StationEngineerOuterClothing
