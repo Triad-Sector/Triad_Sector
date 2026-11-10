@@ -58,11 +58,11 @@
   id: JobPlantManager
   groups:
   - ChiefEngineerHead
-  - ContractorImplanter
+  - DoINeck
   - ContractorCartridge
+  - ContractorImplanter
   - ContractorFirearm
   - ContractorMag
-  - DoINeck
   - PlantManagerJumpsuit
   - PlantGloves
   - PlantManagerBackpack
