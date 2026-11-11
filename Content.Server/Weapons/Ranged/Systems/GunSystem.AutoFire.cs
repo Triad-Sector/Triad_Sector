@@ -37,6 +37,9 @@ public sealed partial class GunSystem
             _autoShootGunQuery.TryComp(uid, out var autoShoot);
             var user = autoShoot?.User ?? uid;
 
+            if (!Exists(user))
+                continue;
+
             if (gun.BurstActivated)
             {
                 var parent = _transform.GetParentUid(uid);
