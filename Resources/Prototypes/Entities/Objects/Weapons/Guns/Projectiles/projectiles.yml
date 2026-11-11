@@ -254,7 +254,7 @@
     knockdownAmount: 5
 
 - type: entity
-  name : disabler bolt
+  name: disabler bolt
   id: BulletDisabler
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -281,7 +281,8 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque # Mono
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectOmnilaser #imp
@@ -297,7 +298,7 @@
     forceSound: true
 
 - type: entity
-  name : disabler bolt practice
+  name: disabler bolt practice
   id: BulletDisablerPractice
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -321,7 +322,8 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque # Mono
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectOmnilaser #imp
@@ -997,7 +999,7 @@
       loadingDistance: 32
 
 - type: entity
-  name : disabler bolt smg
+  name: disabler bolt smg
   id: BulletDisablerSmg
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -1024,7 +1026,8 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque # Mono
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectOmnilaser #imp
@@ -1040,7 +1043,7 @@
     forceSound: true
 
 - type: entity
-  name : energy bolt
+  name: energy bolt
   id: BulletEnergyTurretBase
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
@@ -1067,7 +1070,7 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque # Mono
+        - Opaque
       fly-by: *flybyfixture
   - type: Ammo
 
@@ -1175,7 +1178,8 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque # Mono
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectHeavyLaser #imp
@@ -1376,7 +1380,8 @@
           bounds: "-0.2,-0.2,0.2,0.2"
         hard: false
         mask:
-        - Opaque
+        - Impassable # Triad - plasma bolts cannot go through windows
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Projectile
     impactEffect: BulletImpactEffectRedDisabler
