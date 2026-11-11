@@ -35,11 +35,15 @@ public sealed partial class GunSystem
         while (query.MoveNext(out var uid, out var gun))
         {
             _autoShootGunQuery.TryComp(uid, out var autoShoot);
-            var user = autoShoot?.User ?? uid;
 
             if (gun.BurstActivated)
             {
                 var parent = _transform.GetParentUid(uid);
+                var user = uid;
+
+                if (autoShoot != null && Exists(autoShoot.User))
+                    user = autoShoot.User;
+
                 if (_damageableQuery.HasComp(parent))
                     AttemptShoot(parent, user, gun, gun.ShootCoordinates ?? new EntityCoordinates(uid, gun.DefaultDirection));
                 else
