@@ -1,7 +1,7 @@
 - type: entity
   parent: [ BaseItem, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable ]
   id: WeaponHeavyPulseCannon
-  name: NT-WS heavy pulse cannon
+  name: NT-WS X-O8 heavy pulse cannon
   description: A rare, corporate war era weapon of Nanotrasen origin. A massive shoulder mounted pulse cannon, packing enough power in its punches to blow holes through organics, or when tuned to high power, blow holes clean into shuttle hulls.
   components:
   - type: Sprite

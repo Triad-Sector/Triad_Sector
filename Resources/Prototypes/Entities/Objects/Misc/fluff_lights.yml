@@ -31,6 +31,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSmall
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot
@@ -179,6 +183,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: GenericVisualizer
     visuals:
       enum.FlashVisuals.Burnt:
@@ -224,6 +232,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Anchorable
   - type: Damageable
     damageContainer: StructuralInorganic
