@@ -1,0 +1,19 @@
+﻿- type: marking
+  id: IpcWedgeHead
+  bodyPart: Head
+  markingCategory: Head
+  forcedColoring: false
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/ipc_parts.rsi
+    state: wedge_head
+
+- type: marking
+  id: IpcWedgeEyes
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  forcedColoring: false
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: _Triad/Mobs/Customization/ipc_parts.rsi
+    state: wedge_eyes

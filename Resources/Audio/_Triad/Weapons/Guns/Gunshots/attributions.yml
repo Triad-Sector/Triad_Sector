@@ -2,3 +2,8 @@
   license: "CC-BY-SA-3.0"
   copyright: "Taken from cmss13"
   source: "https://github.com/cmss13-devs/cmss13/blob/7cb618c69b75873f3ce893022fe08d1233b3152d/sound/weapons/gun_vulture_fire.ogg"
+
+- files: ["fusion_gun_flash.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "Made by OnlyTheGhosts at freesound.org, modified by TheRealMasterChief117 (github)"
+  source: "https://freesound.org/people/OnlyTheGhosts/sounds/251431/"

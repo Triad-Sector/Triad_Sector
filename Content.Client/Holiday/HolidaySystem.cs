@@ -10,7 +10,6 @@ namespace Content.Client.Holiday;
 public sealed partial class HolidaySystem : EntitySystem
 {
     [Dependency] private IResourceCache _rescache = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     /// <inheritdoc/>
@@ -21,7 +20,7 @@ public sealed partial class HolidaySystem : EntitySystem
 
     private void OnAppearanceChange(Entity<HolidayRsiSwapComponent> ent, ref AppearanceChangeEvent args)
     {
-        if (!_appearance.TryGetData<string>(ent, HolidayVisuals.Holiday, out var data, args.Component))
+        if (!args.TryGetData<string>(HolidayVisuals.Holiday, out var data))
             return;
 
         var comp = ent.Comp;

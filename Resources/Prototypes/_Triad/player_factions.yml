@@ -33,6 +33,15 @@
 
 # ====Player factions====
 # All of these should be whitelisted and controlled by a faction owner.
+
+- type: company
+  id: Bloodstone
+  name: Bloodstone Strategic Solutions
+  description: bss-description
+  image: /Textures/_Triad/PlayerFactions/Bloodstone.png
+  color: "#5d0505"
+  whitelisted: true
+
 - type: company
   id: NosskeEienResearchandDevelopment
   name: Nosske-Eien Research and Development
@@ -50,11 +59,11 @@
   whitelisted: true
 
 - type: company
-  id: Bloodstone
-  name: Bloodstone Strategic Solutions
-  description: bss-description
-  image: /Textures/_Triad/PlayerFactions/Bloodstone.png
-  color: "#5d0505"
+  id: MAIDS
+  name: M.A.I.D.S.
+  description: maids-description
+  image: /Textures/_Triad/PlayerFactions/MAIDS.png
+  color: "#b763c6"
   whitelisted: true
 
 - type: company
@@ -79,4 +88,12 @@
   description: tourists-description
   image: /Textures/_Triad/PlayerFactions/Tourists.png
   color: "#ff0abe"
+  whitelisted: true
+
+- type: company
+  id: Dawnbringers
+  name: The Dawnbringers Union
+  description: dawnbringers-description
+  image: /Textures/_Triad/PlayerFactions/Dawnbringers.png
+  color: "#FD6012"
   whitelisted: true

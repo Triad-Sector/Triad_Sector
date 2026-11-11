@@ -92,8 +92,10 @@ namespace Content.IntegrationTests.Tests
             .ToArray();
 
         private static readonly string[] GameMaps = FrontierConstants.GameMapPrototypes;
-        private static readonly ResPath[] AllMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_Triad", "*.yml");
-        private static readonly ResPath[] ShuttleMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_Triad/Shuttles", "*.yml");
+        private static readonly ResPath[] ShuttleMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/SharedMaps/_Triad/Shuttles", "*.yml");
+        private static readonly ResPath[] AllMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_Triad", "*.yml")
+            .Concat(ShuttleMapFiles)
+            .ToArray();
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 

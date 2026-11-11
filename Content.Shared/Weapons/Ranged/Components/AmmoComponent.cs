@@ -14,6 +14,17 @@ public partial class AmmoComponent : Component, IShootable
 
     [DataField]
     public EntProtoId? MuzzleFlash = "MuzzleFlashEffect";
+
+    // Triad start - extra muzzle flash light params
+    [DataField]
+    public Color MuzzleLightColor = Color.FromHex("#cc8e2b");
+
+    [DataField]
+    public float MuzzleLightRadius = 2f;
+
+    [DataField]
+    public float MuzzleLightEnergy = 5f;
+    // Triad end
 }
 
 /// <summary>

@@ -1,0 +1,92 @@
+- type: entity
+  parent: [ BaseItem, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable ]
+  id: WeaponHeavyPulseCannon
+  name: NT-WS X-O8 heavy pulse cannon
+  description: A rare, corporate war era weapon of Nanotrasen origin. A massive shoulder mounted pulse cannon, packing enough power in its punches to blow holes through organics, or when tuned to high power, blow holes clean into shuttle hulls. Uses X2 plasma cages to power and fuel the cannon.
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Weapons/Guns/Launchers/hpc-icon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Appearance
+  - type: Item
+    sprite: _Mono/Objects/Weapons/Guns/Launchers/hpc-inhand-32x.rsi
+    size: Ginormous
+  - type: Clothing
+    sprite: _Mono/Objects/Weapons/Guns/Launchers/hpc-inhand-32x.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Gun
+    fireRate: .25
+    projectileSpeed: 200
+    cameraRecoilScalar: 5 # Lots of recoil
+    soundGunshot:
+      path: /Audio/_Triad/Weapons/Guns/Gunshots/fusion_gun_flash.ogg
+  - type: AmmoCounter
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: PowerCellSlot
+    cellSlotId: gun_magazine
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        whitelist:
+          tags:
+          - PulseCannonBattery
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+  - type: Cautery # Shitmed
+    speed: 0.5
+  - type: ProjectileBatteryAmmoProvider
+    proto: HeavyPulse
+    fireCost: 187500
+  - type: EnergyGun
+    fireModes:
+    - proto: HeavyPulse
+      name: heavy pulse
+      fireCost: 187500
+    - proto: HeavyPulseExp
+      name: heavy explosive pulse
+      fireCost: 750000
+  - type: HeldSpeedModifier
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.8
+    walkModifier: 0.8
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.65
+    sprintModifier: 0.4
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 4
+    pvsIncrease: 0.7
+  - type: GunRequiresWield
+  - type: WieldedCrosshair
+    rsi:
+      sprite: _RMC14/Interface/MousePointer/explosive_mouse.rsi
+      state: all
+  - type: StaticPrice
+    price: 50000
+
+- type: entity
+  parent: WeaponHeavyPulseCannon
+  id: WeaponHeavyPulseCannonFilled
+  suffix: Battery, Filled
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PowerCagePlasmaBattery
+        whitelist:
+          tags:
+          - PulseCannonBattery

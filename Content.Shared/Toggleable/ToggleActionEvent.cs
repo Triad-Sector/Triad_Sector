@@ -18,6 +18,7 @@ public sealed partial class ToggleActionEvent : InstantActionEvent;
 public enum ToggleableVisuals : byte
 {
     Enabled,
+    EnabledAlternate, // Triad - extra enabled visualizer to prevent clashing with other systems
     Layer,
     Color,
 }

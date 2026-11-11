@@ -276,6 +276,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellAntiqueProto
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments:
     - MonoRemnantBorgTitle
@@ -520,6 +524,19 @@
     raffle:
       settings: default
     prototype: TSFMCAICore
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 # 15 hours
+      alternateRequirementSets:
+        longerPlaytimeLessSec:
+        - !type:OverallPlaytimeRequirement
+          time: 450000 # 125 hours
+        - !type:DepartmentTimeRequirement
+          department: Security
+          time: 18000 # 5 hours
   - type: GhostTakeoverAvailable
   - type: RandomMetadata
     nameSegments: [ TSFMCCoreNameset ]
@@ -662,6 +679,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellCombat
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments: [MonoPDVBorgNameset]
 
@@ -681,6 +702,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellCombat
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments: [MonoTSFBorgNameset]
 

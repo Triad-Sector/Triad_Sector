@@ -27,12 +27,14 @@
           bounds: "-0.2,-0.2,0.2,0.2"
         hard: false
         mask:
-        - Opaque
+        - Impassable
+        - BulletImpassable
   - type: Projectile
     impactEffect: BulletImpactEffectRedDisabler
     damage:
       types:
-        Heat: 35
+        Heat: 30
+        Shock: 5
     soundHit:
       collection: MeatLaserImpact
 
@@ -53,6 +55,11 @@
       types:
         Heat: 80
         Structural: 1000 # So it can break cover
+  - type: Ammo
+    muzzleFlash: MuzzleFlashEffectOmnilaser # Triad
+    muzzleLightColor: "#32c4fd" # Triad
+    muzzleLightRadius: 7 # Triad
+    muzzleLightEnergy: 15 # Triad
 
 - type: entity
   id: HeavyPulseExp
@@ -77,6 +84,11 @@
     totalIntensity: 50
     intensitySlope: 2
     maxIntensity: 5
+  - type: Ammo
+    muzzleFlash: MuzzleFlashEffectGoldLaser # Triad
+    muzzleLightColor: "#ebcb40" # Triad
+    muzzleLightRadius: 10 # Triad
+    muzzleLightEnergy: 15 # Triad
 
 - type: entity
   id: BulletLaserSlug

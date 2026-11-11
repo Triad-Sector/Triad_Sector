@@ -195,6 +195,10 @@ public sealed partial class ShipMoveToOperator : HTNOperator, IHtnConditionalShu
 
         var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
 
+        // Triad: if can't steer then pass everything
+        if (!CanSteer(uid))
+            return;
+
         var comp = _steering.Steer(uid, targetCoordinates);
 
         if (comp == null)
@@ -226,11 +230,7 @@ public sealed partial class ShipMoveToOperator : HTNOperator, IHtnConditionalShu
         if (!_entManager.TryGetComponent<ShipSteererComponent>(owner, out var steerer)
             || !blackboard.TryGetValue<EntityCoordinates>(TargetKey, out var target, _entManager)
             || !_entManager.TryGetComponent<TransformComponent>(owner, out var xform)
-            // also fail if we're anchorable but are unanchored and require to be anchored
-            || RequireAnchored
-                && _entManager.TryGetComponent<AnchorableComponent>(owner, out var anchorable) && !xform.Anchored
-            || RequirePowered
-                && _entManager.TryGetComponent<ApcPowerReceiverComponent>(owner, out var receiver) && !_power.IsPowered(owner, receiver)
+            || !CanSteer(owner) // Triad
         )
             return HTNOperatorStatus.Failed;
 
@@ -257,6 +257,22 @@ public sealed partial class ShipMoveToOperator : HTNOperator, IHtnConditionalShu
             ShipSteeringStatus.Moving => HTNOperatorStatus.Continuing,
             _ => throw new ArgumentOutOfRangeException()
         };
+    }
+
+    // Triad: check if AI can steer or not
+    private bool CanSteer(EntityUid owner)
+    {
+        if (RequireAnchored
+            && _entManager.TryGetComponent<AnchorableComponent>(owner, out _)
+            && !_entManager.GetComponent<TransformComponent>(owner).Anchored)
+            return false;
+
+        if (RequirePowered
+            && _entManager.TryGetComponent<ApcPowerReceiverComponent>(owner, out var receiver)
+            && !_power.IsPowered(owner, receiver))
+            return false;
+
+        return true;
     }
 
     public void ConditionalShutdown(NPCBlackboard blackboard)
