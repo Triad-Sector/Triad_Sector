@@ -6110,3 +6110,10 @@ Entries:
   id: 2722
   time: '2026-11-09T00:57:15.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/811
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed Maprenderer command for mapper to print their map.
+  id: 2723
+  time: '2026-11-11T22:46:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/815
