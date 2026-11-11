@@ -36,10 +36,10 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  parent: [BasePlasmaCage, BaseFactionGearOtherFactionT3]
+  parent: [BasePlasmaCage, BaseFactionGearOtherFactionT2Medium]
   id: PowerCagePlasmaBattery
   name: NT-WS X2 plasma cage
-  description: A power cage for colossal plasma weapons. It is clearly very old.. look at that rust. Very rare and sought after.
+  description: A power cage for colossal plasma weapons. It is clearly very old.. look at that rust. Very rare and sought after. It can be salvaged into iridite, plastitanium, and plutonium.
   components:
   - type: Sprite
     sprite: _Triad/Objects/Power/heavy_plasma_charge.rsi
@@ -58,7 +58,7 @@
     tags:
     - PulseCannonBattery
   - type: StaticPrice
-    price: 25000
+    price: 20000
   - type: PhysicalComposition
     materialComposition:
       Plasteel: 100
