@@ -6135,3 +6135,38 @@ Entries:
   id: 2725
   time: '2026-11-11T22:47:27.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/802
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the NT-WS heavy pulse cannon. It no longer self recharges and
+        instead uses X2 plasma cages, which can be found in NT crates. The
+        charge will allow you to fire 2 explosive shots or 8 direct shots total.
+    - type: Tweak
+      message: Increased the odds of getting a NT-WS heavy pulse cannon as loot.
+    - type: Add
+      message: >-
+        Added the X2 plasma cages to the NanoTrasen crate loot. They are heavy,
+        rare, and used to store a colossal amount of power. Used in fueling and
+        powering heavy weapons such as the NT-WS heavy pulse cannon. It can be
+        sold, appraised as TCC, or salvaged into its raw components of iridite,
+        plastitanium, and plutonium. Cannot be recharged.
+    - type: Tweak
+      message: >-
+        Added an extra muzzle flash effect to the heavy pulse cannon. It now
+        emits a bright blue light on fire.
+    - type: Tweak
+      message: Changed the sound of the heavy pulse cannon to be much beefier
+    - type: Tweak
+      message: Plasma & disabler energy bolts can no longer shoot through windows
+    - type: Fix
+      message: Fixed powercages fitting into small devices.
+    - type: Fix
+      message: >-
+        Fixed powercages fitting in small rechargers instead of the cage
+        recharger.
+    - type: Fix
+      message: Fixed ANY battery fitting into a mech, even laser rifles.
+  id: 2726
+  time: '2026-11-11T22:51:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/818
