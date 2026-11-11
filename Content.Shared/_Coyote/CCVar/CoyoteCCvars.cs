@@ -13,7 +13,7 @@ public sealed class CoyoteCCVars
     /// Example: if set to 20, color changes wait at least 20 seconds.
     /// </summary>
     public static readonly CVarDef<int> ShuttleCrewUpdateBaseDelaySeconds =
-        CVarDef.Create("coyote.shuttle.crew_update_base_delay", 20, CVar.SERVER);
+        CVarDef.Create("coyote.shuttle.crew_update_base_delay", 300, CVar.SERVER);
 
     /// <summary>
     /// Extra randomized delay range (in seconds) added on top of base delay.
