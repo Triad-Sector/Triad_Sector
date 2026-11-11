@@ -42,7 +42,7 @@ public sealed partial class GunSystem
                 var user = uid;
 
                 if (autoShoot != null && Exists(autoShoot.User))
-                    user = autoShoot.User;
+                    user = autoShoot.User.Value;
 
                 if (_damageableQuery.HasComp(parent))
                     AttemptShoot(parent, user, gun, gun.ShootCoordinates ?? new EntityCoordinates(uid, gun.DefaultDirection));
