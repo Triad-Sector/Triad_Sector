@@ -6117,3 +6117,12 @@ Entries:
   id: 2723
   time: '2026-11-11T22:46:15.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/815
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        All Edison workers can now take a basic sidearm, ammo, med implanters,
+        and PDA cartridges in their loadout, just like a contractor.
+  id: 2724
+  time: '2026-11-11T22:46:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/814
