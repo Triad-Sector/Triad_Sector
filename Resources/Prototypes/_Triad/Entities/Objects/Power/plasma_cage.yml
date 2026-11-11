@@ -5,7 +5,7 @@
   components:
   - type: Item
     storedRotation: -90
-    size: Ginormous
+    size: Large
   - type: MultiHandedItem
   - type: Battery
     pricePerJoule: 0.15
