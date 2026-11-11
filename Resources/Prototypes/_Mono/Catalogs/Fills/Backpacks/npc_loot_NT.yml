@@ -177,7 +177,7 @@
     - id: WeaponHeavyPulseCannon
       prob: 0.01
     - id: PowerCagePlasmaBattery
-      prob: 0.1
+      prob: 0.09
     - id: MedkitCombatFilled
       prob: 0.5
     #Clothings
