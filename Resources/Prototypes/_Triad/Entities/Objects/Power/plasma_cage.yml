@@ -50,8 +50,8 @@
       state: o2
       shader: unshaded
   - type: Battery
-    maxCharge: 750000
-    startingCharge: 750000
+    maxCharge: 1500000
+    startingCharge: 1500000
   - type: EmpResistance # Mono also
     coefficient: 0.000112
   - type: Tag
