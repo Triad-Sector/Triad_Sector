@@ -50,13 +50,11 @@
   - type: ProjectileBatteryAmmoProvider
     proto: HeavyPulse
     fireCost: 187500
-  - type: EnergyGun
+  - type: BatteryWeaponFireModes
     fireModes:
     - proto: HeavyPulse
-      name: heavy pulse
       fireCost: 187500
     - proto: HeavyPulseExp
-      name: heavy explosive pulse
       fireCost: 750000
   - type: HeldSpeedModifier
   - type: ClothingSpeedModifier
