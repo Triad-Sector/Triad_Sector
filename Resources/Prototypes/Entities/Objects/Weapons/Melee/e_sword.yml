@@ -356,7 +356,7 @@
   - type: Wieldable
     wieldSound: null # esword light sound instead
   - type: MeleeWeapon
-    heavyStaminaCost: 5 # Triad Lowered to make its "faster swings, lower damage" identity easier to use
+    heavyStaminaCost: 10
     wideAnimationRotation: -135
     attackRate: 2 # Triad, 2 < 1 Raised to lean into "fast but lower damage" identity
     angle: 100
