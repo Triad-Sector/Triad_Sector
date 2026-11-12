@@ -166,7 +166,6 @@
           enum.GeneratorVisualLayers.Unlit:
             True: { visible: true }
             False: { visible: false }
-
     - type: Machine
       board: PortableGeneratorPacmanMachineCircuitboard
     - type: FuelGenerator
@@ -187,8 +186,8 @@
     - type: PortableGenerator
       startChance: 0.8
     - type: UpgradePowerSupplier
-      powerSupplyMultiplier: 1.25
-      scaling: Exponential
+      powerSupplyMultiplier: 0.35 # Triad: Change from 1.25 Exponential to Linear 35% per rating.
+      scaling: Linear
     - type: GeneratorExhaustGas
       gasType: CarbonDioxide
       # 0.5 moles of gas for every sheet of plasma.
@@ -240,7 +239,6 @@
           enum.GeneratorVisualLayers.Unlit:
             True: { visible: true }
             False: { visible: false }
-
     - type: Machine
       board: PortableGeneratorSuperPacmanMachineCircuitboard
     - type: FuelGenerator
@@ -260,8 +258,8 @@
       materialWhiteList: [Uranium, FuelGradeUranium] # Frontier: add FuelGradeUranium
     - type: PortableGenerator
     - type: UpgradePowerSupplier
-      powerSupplyMultiplier: 1.25
-      scaling: Exponential
+      powerSupplyMultiplier: 0.35 # Triad: Change from 1.25 Exponential to Linear 35% per rating.
+      scaling: Linear
     - type: PowerMonitoringDevice
       group: Generator
       loadNodes:
@@ -295,7 +293,6 @@
     - type: AmbientSound
       range: 4
       volume: -8
-
     - type: Fixtures
       fixtures:
         fix1:
@@ -307,7 +304,6 @@
             - MachineMask
           layer:
             - MachineLayer
-
     - type: Sprite
       layers:
         - state: portgen3
@@ -325,7 +321,6 @@
           enum.GeneratorVisualLayers.Unlit:
             True: { visible: true }
             False: { visible: false }
-
     - type: Machine
       board: PortableGeneratorJrPacmanMachineCircuitboard
     - type: FuelGenerator
@@ -337,6 +332,9 @@
       optimalBurnRate: 0.11111111
       # Shallow curve
       fuelEfficiencyConstant: 0.5
+    - type: UpgradePowerSupplier # Triad: capacitor now upgrades output
+      powerSupplyMultiplier: 0.35 # 35% per rating, Linear
+      scaling: Linear
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
       reagents:
