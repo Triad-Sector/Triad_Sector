@@ -17,6 +17,9 @@ public sealed partial class PointDiskConsoleMenu : FancyWindow
 
     public event Action? OnPrint10KButtonPressed;
 
+    public event Action? OnPrint140KButtonPressed;
+
+
     public PointDiskConsoleMenu()
     {
         RobustXamlLoader.Load(this);
@@ -25,6 +28,8 @@ public sealed partial class PointDiskConsoleMenu : FancyWindow
         Print1KButton.OnPressed += _ => OnPrint1KButtonPressed?.Invoke();
         Print5KButton.OnPressed += _ => OnPrint5KButtonPressed?.Invoke();
         Print10KButton.OnPressed += _ => OnPrint10KButtonPressed?.Invoke();
+        Print140KButton.OnPressed += _ => OnPrint140KButtonPressed?.Invoke();
+
     }
 
     public void Update(PointDiskConsoleBoundUserInterfaceState state)
@@ -32,10 +37,12 @@ public sealed partial class PointDiskConsoleMenu : FancyWindow
         Print1KButton.Disabled = !state.CanPrint1K;
         Print5KButton.Disabled = !state.CanPrint5K;
         Print10KButton.Disabled = !state.CanPrint10K;
+        Print140KButton.Disabled = !state.CanPrint140K;
         TotalLabel.Text = Loc.GetString("point-disk-ui-total-label", ("amount", state.ServerPoints));
         Print1KButton.Text = Loc.GetString("point-disk-ui-print-1k-button", ("amount", state.PointCost1K));
         Print5KButton.Text = Loc.GetString("point-disk-ui-print-5k-button", ("amount", state.PointCost5K));
         Print10KButton.Text = Loc.GetString("point-disk-ui-print-10k-button", ("amount", state.PointCost10K));
+        Print140KButton.Text = Loc.GetString("point-disk-ui-print-140k-button", ("amount", state.PointCost140K));
     }
 }
 

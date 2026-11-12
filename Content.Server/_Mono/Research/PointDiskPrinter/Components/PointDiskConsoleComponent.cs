@@ -25,6 +25,12 @@ public sealed partial class PointDiskConsoleComponent : Component
     public int PricePer10KDisk = 35000;
 
     /// <summary>
+    /// How much it costs to print a 140k point disk
+    /// </summary>
+    [DataField("pricePer140KDisk"), ViewVariables(VVAccess.ReadWrite)]
+    public int PricePer140KDisk = 140000;
+
+    /// <summary>
     /// The prototype of what's being printed
     /// </summary>
     [DataField("diskPrototype1K"), ViewVariables(VVAccess.ReadWrite)]
@@ -35,6 +41,9 @@ public sealed partial class PointDiskConsoleComponent : Component
 
     [DataField("diskPrototype10K"), ViewVariables(VVAccess.ReadWrite)]
     public EntProtoId Disk10KPrototype = "ResearchDisk35000";
+
+    [DataField("diskPrototype140K"), ViewVariables(VVAccess.ReadWrite)]
+    public EntProtoId Disk140KPrototype = "ResearchDisk140000";
 
     /// <summary>
     /// How long it takes to print <see cref="PointDiskPrototype"/>
