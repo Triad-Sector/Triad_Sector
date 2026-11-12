@@ -6170,3 +6170,24 @@ Entries:
   id: 2726
   time: '2026-11-11T22:51:47.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/818
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Removed the angular multiplier so shuttle won't spin out of control.
+    - type: Fix
+      message: >-
+        Fixed the Z-Pinch reactor's description now lists the correct minimum
+        power output.
+    - type: Tweak
+      message: >-
+        Tweaked generator capacitor now 35% linear upgrade instead of scaling
+        exponentially.
+    - type: Tweak
+      message: Tweaked J.R.P.A.C.M.A.N; it now accepts capacitor upgrade.
+    - type: Tweak
+      message: Antique power cells is now rating 5 instead of 4 for machine upgrades.
+    - type: Remove
+      message: 'Revert PR #762 shuttle mode changes. '
+  id: 2727
+  time: '2026-11-12T00:09:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/810
