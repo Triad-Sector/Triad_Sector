@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/11/2026 20:51:51
+  time: 11/12/2026 13:22:47
   entityCount: 1350
 maps: []
 grids:
@@ -111,10 +111,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
+        Kudzu: []
+        Smoke: []
         MetalFoam: []
         Puddle: []
-        Smoke: []
-        Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1205,7 +1205,7 @@ entities:
       pos: -9.5,-0.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -9763.663
+      secondsUntilStateChange: -9808.927
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -3832,13 +3832,19 @@ entities:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 6.5,-8.5
+      pos: 6.5,-9.5
   - uid: 1321
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: 0.5,-10.5
+  - uid: 1323
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 6.5,-12.5
   - uid: 1324
     components:
     - type: Transform
@@ -3872,11 +3878,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 1.5,-12.5
-  - uid: 1334
-    components:
-    - type: Transform
-      parent: 1
-      pos: 6.5,-11.5
   - uid: 1335
     components:
     - type: Transform
@@ -6452,23 +6453,23 @@ entities:
     - type: Transform
       parent: 1
       pos: -0.5,-12.5
-  - uid: 1323
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 6.5,-8.5
   - uid: 1325
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: 6.5,-11.5
+      pos: 6.5,-9.5
   - uid: 1327
     components:
     - type: Transform
       parent: 1
       pos: -5.5,-9.5
+  - uid: 1334
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 6.5,-12.5
 - proto: Grille
   entities:
   - uid: 841
