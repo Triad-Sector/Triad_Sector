@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/12/2026 11:40:04
-  entityCount: 6977
+  time: 11/12/2026 13:14:22
+  entityCount: 6976
 maps: []
 grids:
 - 1
@@ -203,10 +203,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Smoke: []
         Kudzu: []
-        Puddle: []
         MetalFoam: []
+        Smoke: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -21454,14 +21454,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -1.2384739,16.827166
-- proto: EncryptionKeyCargo
-  entities:
-  - uid: 2543
-    components:
-    - type: Transform
-      parent: 2542
-    - type: Physics
-      canCollide: False
 - proto: FaxMachineNFTradeMallSTC
   entities:
   - uid: 2544
@@ -38236,28 +38228,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -20.5,-3.5
-- proto: TelecomServer
+- proto: TelecomServerFilledAllPOI
   entities:
   - uid: 2542
     components:
     - type: Transform
       parent: 1
       pos: -22.5,-2.5
-    - type: ContainerContainer
-      containers:
-        key_slots: !type:Container
-          ents:
-          - 2543
-          showEnts: False
-          occludes: True
-        machine_board: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        machine_parts: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
 - proto: ToiletDirtyWater
   entities:
   - uid: 3580
