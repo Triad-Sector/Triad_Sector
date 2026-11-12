@@ -1,0 +1,68 @@
+- type: entity
+  parent: [BaseItem, RecyclableItemDeviceSmall] # Frontier: added RecyclableItemDeviceSmall
+  id: BasePlasmaCage
+  abstract: true
+  components:
+  - type: Item
+    storedRotation: -90
+    size: Large
+  - type: MultiHandedItem
+  - type: Battery
+    pricePerJoule: 0.15
+  - type: PowerCell
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 250
+    intensitySlope: 1.5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 15
+  - type: Extractable
+    juiceSolution:
+      reagents:
+        - ReagentId: Zinc
+          Quantity: 15
+  - type: Appearance
+  - type: Riggable
+  - type: PowerCellVisuals
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+
+- type: entity
+  parent: [BasePlasmaCage, BaseFactionGearOtherFactionT2Medium]
+  id: PowerCagePlasmaBattery
+  name: NT-WS X2 plasma cage
+  description: A power cage for colossal plasma weapons. It is clearly very old.. look at that rust. Very rare and sought after. It can be salvaged into iridite, plastitanium, and plutonium.
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Power/heavy_plasma_charge.rsi
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: battery
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Battery
+    maxCharge: 1500000
+    startingCharge: 1500000
+  - type: EmpResistance # Mono also
+    coefficient: 0.000112
+  - type: Tag
+    tags:
+    - PulseCannonBattery
+  - type: StaticPrice
+    price: 25000
+  - type: PhysicalComposition
+    materialComposition:
+      Plasteel: 100
+      Plastitanium: 400
+      Iridite: 200
+      Plutonium: 100
+      Gold: 50

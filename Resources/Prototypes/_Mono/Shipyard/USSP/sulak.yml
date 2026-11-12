@@ -9,7 +9,7 @@
   category: Medium
   group: BlackMarket
   access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/USSP/sulak.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/USSP/sulak.yml
   guidebookPage: Null
   class:
   - Pursuit
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Sulak
   mapName: 'Sulak'
-  mapPath: /Maps/_Mono/Shuttles/USSP/sulak.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/USSP/sulak.yml
   minPlayers: 0
   stations:
     Sulak:
@@ -34,3 +34,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+

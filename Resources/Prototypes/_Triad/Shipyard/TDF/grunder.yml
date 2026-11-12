@@ -10,7 +10,7 @@
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/TDF/grunder.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/TDF/grunder.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Grunder
   mapName: 'Grunder'
-  mapPath: /Maps/_Triad/Shuttles/TDF/grunder.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/grunder.yml
   minPlayers: 0
   stations:
     Grunder:
@@ -36,4 +36,5 @@
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
+
 

@@ -9,7 +9,7 @@
   category: Large
   group: BlackMarket
   access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/USSP/buran.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/USSP/buran.yml
   guidebookPage: Null
   class:
   - Frigate
@@ -19,7 +19,7 @@
 - type: gameMap
   id: Buran
   mapName: 'Buran'
-  mapPath: /Maps/_Mono/Shuttles/USSP/buran.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/USSP/buran.yml
   minPlayers: 0
   stations:
     Buran:
@@ -36,4 +36,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 
