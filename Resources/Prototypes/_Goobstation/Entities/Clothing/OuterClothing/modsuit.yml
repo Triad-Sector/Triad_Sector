@@ -146,7 +146,7 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.85
     sprintModifier: 0.75
-  # Triad change start, Major armour buff + Stamina damage resistance
+  # Triad change start, Major armour buff and Stamina damage resistance
   - type: ExplosionResistance
     damageCoefficient: 0.25 # 0.4 -> 0.25
   - type: StaminaDamageResistance
