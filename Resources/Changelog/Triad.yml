@@ -6110,3 +6110,84 @@ Entries:
   id: 2722
   time: '2026-11-09T00:57:15.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/811
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed Maprenderer command for mapper to print their map.
+  id: 2723
+  time: '2026-11-11T22:46:15.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/815
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        All Edison workers can now take a basic sidearm, ammo, med implanters,
+        and PDA cartridges in their loadout, just like a contractor.
+  id: 2724
+  time: '2026-11-11T22:46:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/814
+- author: Titi2Point0
+  changes:
+    - type: Tweak
+      message: >-
+        The artifact box now save just like the other type of box (ore,
+        construction etc) ! artifact not included ! 
+  id: 2725
+  time: '2026-11-11T22:47:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/802
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the NT-WS heavy pulse cannon. It no longer self recharges and
+        instead uses X2 plasma cages, which can be found in NT crates. The
+        charge will allow you to fire 2 explosive shots or 8 direct shots total.
+    - type: Tweak
+      message: Increased the odds of getting a NT-WS heavy pulse cannon as loot.
+    - type: Add
+      message: >-
+        Added the X2 plasma cages to the NanoTrasen crate loot. They are heavy,
+        rare, and used to store a colossal amount of power. Used in fueling and
+        powering heavy weapons such as the NT-WS heavy pulse cannon. It can be
+        sold, appraised as TCC, or salvaged into its raw components of iridite,
+        plastitanium, and plutonium. Cannot be recharged.
+    - type: Tweak
+      message: >-
+        Added an extra muzzle flash effect to the heavy pulse cannon. It now
+        emits a bright blue light on fire.
+    - type: Tweak
+      message: Changed the sound of the heavy pulse cannon to be much beefier
+    - type: Tweak
+      message: Plasma & disabler energy bolts can no longer shoot through windows
+    - type: Fix
+      message: Fixed powercages fitting into small devices.
+    - type: Fix
+      message: >-
+        Fixed powercages fitting in small rechargers instead of the cage
+        recharger.
+    - type: Fix
+      message: Fixed ANY battery fitting into a mech, even laser rifles.
+  id: 2726
+  time: '2026-11-11T22:51:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/818
+- author: DDrakov
+  changes:
+    - type: Remove
+      message: Removed the angular multiplier so shuttle won't spin out of control.
+    - type: Fix
+      message: >-
+        Fixed the Z-Pinch reactor's description now lists the correct minimum
+        power output.
+    - type: Tweak
+      message: >-
+        Tweaked generator capacitor now 35% linear upgrade instead of scaling
+        exponentially.
+    - type: Tweak
+      message: Tweaked J.R.P.A.C.M.A.N; it now accepts capacitor upgrade.
+    - type: Tweak
+      message: Antique power cells is now rating 5 instead of 4 for machine upgrades.
+    - type: Remove
+      message: 'Revert PR #762 shuttle mode changes. '
+  id: 2727
+  time: '2026-11-12T00:09:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/810

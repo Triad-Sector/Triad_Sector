@@ -100,6 +100,8 @@
       prob: 0.2
     - id: WeaponEnergyShotgun
       prob: 0.1
+    - id: PowerCagePlasmaBattery
+      prob: 0.01
     #Clothings
     - id: NTLootT2Clothing
       amount: 1
@@ -173,7 +175,9 @@
       amount: 3
       prob: 0.09
     - id: WeaponHeavyPulseCannon
-      prob: 0.005
+      prob: 0.01
+    - id: PowerCagePlasmaBattery
+      prob: 0.09
     - id: MedkitCombatFilled
       prob: 0.5
     #Clothings

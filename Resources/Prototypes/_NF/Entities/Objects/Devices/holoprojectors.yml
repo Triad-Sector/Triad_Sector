@@ -36,6 +36,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Tag
     tags:
     - HolofanProjector
@@ -51,3 +55,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
