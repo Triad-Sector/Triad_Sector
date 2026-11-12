@@ -58,11 +58,11 @@
     tags:
     - PulseCannonBattery
   - type: StaticPrice
-    price: 20000
+    price: 25000
   - type: PhysicalComposition
     materialComposition:
       Plasteel: 100
-      Plastitanium: 200
-      Iridite: 100
-      Plutonium: 20
+      Plastitanium: 400
+      Iridite: 200
+      Plutonium: 100
       Gold: 50
