@@ -5,7 +5,7 @@
   id: Knight
   parent: BaseVesselTdf
   name: TDF Knight
-  description: "The modern 'squad car' of the TDF, the Knight class is a retrofitted frigate intended as a jack of all trades, designed to punch up against more heavily armored vessels and provide support in larger fleet actions."
+  description: "The modern 'squad car' of the TDF, the Knight class is a retrofitted frigate intended as a jack of all trades. In combat, it plugs the gaps in large formations and supports larger vessels with its lasers, TOVEK missiles, and flare countermeasures."
   price: 165000
   category: Medium
   group: Security
