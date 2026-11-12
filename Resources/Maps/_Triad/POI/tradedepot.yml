@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/12/2026 13:22:47
+  time: 11/12/2026 13:49:46
   entityCount: 1350
 maps: []
 grids:
@@ -111,10 +111,10 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Kudzu: []
-        Smoke: []
         MetalFoam: []
+        Kudzu: []
         Puddle: []
+        Smoke: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1205,7 +1205,7 @@ entities:
       pos: -9.5,-0.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -9808.927
+      secondsUntilStateChange: -9869.321
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -6343,6 +6343,15 @@ entities:
       - 3
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
+- proto: GeneratorBasic15kW
+  entities:
+  - uid: 895
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,-6.5
+    missingComponents:
+    - Anchorable
 - proto: GravityGeneratorMini
   entities:
   - uid: 840
@@ -6749,15 +6758,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 6.5,8.5
-- proto: MachineOutpostCore
-  entities:
-  - uid: 895
-    components:
-    - type: Transform
-      parent: 1
-      pos: -4.5,-6.5
-    missingComponents:
-    - Anchorable
 - proto: MiniStationAnchor
   entities:
   - uid: 896

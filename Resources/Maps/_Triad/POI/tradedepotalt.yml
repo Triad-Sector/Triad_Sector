@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/11/2026 20:52:07
+  time: 11/12/2026 13:50:10
   entityCount: 1352
 maps: []
 grids:
@@ -113,9 +113,9 @@ entities:
     - type: SpreaderGrid
       spreadQueues:
         MetalFoam: []
+        Kudzu: []
         Puddle: []
         Smoke: []
-        Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1181,7 +1181,7 @@ entities:
       pos: -9.5,-0.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -8459.995
+      secondsUntilStateChange: -8525.515
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -6302,6 +6302,15 @@ entities:
       - 3
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
+- proto: GeneratorBasic15kW
+  entities:
+  - uid: 872
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,-6.5
+    missingComponents:
+    - Anchorable
 - proto: GravityGeneratorMini
   entities:
   - uid: 842
@@ -6581,15 +6590,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 4.5,-7.5
-- proto: MachineOutpostCore
-  entities:
-  - uid: 872
-    components:
-    - type: Transform
-      parent: 1
-      pos: -4.5,-6.5
-    missingComponents:
-    - Anchorable
 - proto: MiniStationAnchor
   entities:
   - uid: 873
