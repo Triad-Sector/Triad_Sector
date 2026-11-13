@@ -1,6 +1,8 @@
 using System.Numerics;
-using Content.Server.Power.Components;
 using Content.Server.DeviceNetwork.Systems;
+using Content.Server.Power.Components;
+using Content.Server.SurveillanceCamera.Components;
+using Content.Shared.SurveillanceCamera;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.SurveillanceCamera.Components;
 
@@ -10,13 +12,14 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
 {
     [Dependency] private SharedTransformSystem _transform = default!;
 
+    private readonly HashSet<EntityUid> _dirtyGrids = [];
+
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<SurveillanceCameraComponent, MapInitEvent>(OnCameraInit, after: [typeof(DeviceNetworkSystem)]);
         SubscribeLocalEvent<SurveillanceCameraComponent, MoveEvent>(OnCameraMoved);
-
-        SubscribeNetworkEvent<RequestCameraMarkerUpdateMessage>(OnRequestCameraMarkerUpdate);
     }
 
     private void OnCameraInit(Entity<SurveillanceCameraComponent> ent, ref MapInitEvent args)
@@ -36,30 +39,30 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
         var newGridUid = args.Component.GridUid;
 
         if (oldGridUid != newGridUid && oldGridUid is not null && !TerminatingOrDeleted(oldGridUid.Value))
-        {
-            if (TryComp<SurveillanceCameraMapComponent>(oldGridUid, out var oldMapComp))
-            {
-                var netEntity = GetNetEntity(ent.Owner);
-                if (oldMapComp.Cameras.Remove(netEntity))
-                    Dirty(oldGridUid.Value, oldMapComp);
-            }
-        }
+            RemoveCameraMarker(ent.Owner, oldGridUid.Value);
 
         if (newGridUid is not null && !TerminatingOrDeleted(newGridUid.Value))
             UpdateCameraMarker(ent);
     }
 
-    private void OnRequestCameraMarkerUpdate(RequestCameraMarkerUpdateMessage args)
+    public override void Update(float frameTime)
     {
-        var cameraEntity = GetEntity(args.CameraEntity);
+        base.Update(frameTime);
 
-        if (TryComp<SurveillanceCameraComponent>(cameraEntity, out var comp)
-            && HasComp<DeviceNetworkComponent>(cameraEntity))
-            UpdateCameraMarker((cameraEntity, comp));
+        if (_dirtyGrids.Count == 0)
+            return;
+
+        var ev = new SurveillanceCameraMapMarkersChangedEvent();
+        foreach (var grid in _dirtyGrids)
+        {
+            if (!TerminatingOrDeleted(grid))
+                RaiseLocalEvent(grid, ref ev);
+        }
+        _dirtyGrids.Clear();
     }
 
     /// <summary>
-    /// Updates camera data in the SurveillanceCameraMapComponent for the specified camera entity.
+    /// Updates camera data in the <see cref="SurveillanceCameraMapComponent"/> for the specified camera.
     /// </summary>
     public void UpdateCameraMarker(Entity<SurveillanceCameraComponent> camera)
     {
@@ -68,12 +71,18 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
         if (TerminatingOrDeleted(uid))
             return;
 
-        if (!TryComp(uid, out TransformComponent? xform) || !TryComp(uid, out DeviceNetworkComponent? deviceNet))
+        if (!TryComp(uid, out TransformComponent? xform))
             return;
 
         var gridUid = xform.GridUid;
         if (gridUid is null)
             return;
+
+        if (!TryComp(uid, out DeviceNetworkComponent? deviceNet) || deviceNet.ReceiveFrequencyId is null)
+        {
+            RemoveCameraMarker(uid, gridUid.Value);
+            return;
+        }
 
         var netEntity = GetNetEntity(uid);
 
@@ -108,11 +117,22 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
             Subnet = subnet,
             Visible = visible
         };
-        Dirty(gridUid.Value, mapComp);
+
+        _dirtyGrids.Add(gridUid.Value);
+    }
+
+    private void RemoveCameraMarker(EntityUid cameraUid, EntityUid gridUid)
+    {
+        if (!TryComp<SurveillanceCameraMapComponent>(gridUid, out var mapComp))
+            return;
+
+        var netEntity = GetNetEntity(cameraUid);
+        if (mapComp.Cameras.Remove(netEntity))
+            _dirtyGrids.Add(gridUid);
     }
 
     /// <summary>
-    /// Sets the visibility state of a camera on the camera map.
+    /// Sets the visibility state of the camera on the camera map.
     /// </summary>
     public void SetCameraVisibility(EntityUid cameraUid, bool visible)
     {
@@ -124,16 +144,17 @@ public sealed class SurveillanceCameraMapSystem : EntitySystem
             return;
 
         var netEntity = GetNetEntity(cameraUid);
-        if (mapComp.Cameras.TryGetValue(netEntity, out var marker) && marker.Visible != visible)
-        {
-            marker.Visible = visible;
-            mapComp.Cameras[netEntity] = marker;
-            Dirty(gridUid.Value, mapComp);
-        }
+        if (!mapComp.Cameras.TryGetValue(netEntity, out var marker)
+            || marker.Visible == visible)
+            return;
+
+        marker.Visible = visible;
+        mapComp.Cameras[netEntity] = marker;
+        _dirtyGrids.Add(gridUid.Value);
     }
 
     /// <summary>
-    /// Checks if a camera is currently visible on the camera map.
+    /// Checks if the camera is currently visible on the camera map.
     /// </summary>
     public bool IsCameraVisible(EntityUid cameraUid)
     {
