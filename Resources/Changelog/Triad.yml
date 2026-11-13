@@ -6191,3 +6191,12 @@ Entries:
   id: 2727
   time: '2026-11-12T00:09:47.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/810
+- author: Skybailey-dev
+  changes:
+    - type: Fix
+      message: >-
+        Feroxi can now breathe pluoxium- with it acting as a 8x density o2
+        replacement (like for all other species).
+  id: 2728
+  time: '2026-11-13T03:28:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/821
