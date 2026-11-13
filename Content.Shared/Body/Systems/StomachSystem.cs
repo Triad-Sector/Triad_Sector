@@ -55,7 +55,13 @@ namespace Content.Shared.Body.Systems
                     continue;
 
                 stomach.NextUpdate += stomach.AdjustedUpdateInterval;
-
+                if (stomach.Solution is { } cached &&
+                    (TerminatingOrDeleted(cached.Owner) ||
+                     !_solutionContainerSystem.TryGetSolution((uid, sol), DefaultSolutionName, out var fresh) ||
+                     fresh.Value.Owner != cached.Owner))
+                {
+                    stomach.Solution = null;
+                }
                 // Get our solutions
                 if (!_solutionContainerSystem.ResolveSolution((uid, sol), DefaultSolutionName, ref stomach.Solution, out var stomachSolution))
                     continue;
