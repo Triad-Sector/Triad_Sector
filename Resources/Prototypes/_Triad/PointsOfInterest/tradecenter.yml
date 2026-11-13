@@ -1,11 +1,11 @@
 - type: pointOfInterest
-  id: TradeOutpost
+  id: TradeCenter
   parent: [BasePOI, BaseRepairablePOI]
-  name: TFA Trade Outpost
+  name: TFA Trade Center
   minimumDistance: 3500
   maximumDistance: 6500
   spawnGroup: MarketStation
-  gridPath: /Maps/_Triad/POI/tradeoutpost.yml
+  gridPath: /Maps/_Triad/POI/tradecenter.yml
   addComponents:
   - type: IFF
     color: "#37C837"
@@ -24,21 +24,21 @@
       prob: 0.3
 
 - type: gameMap
-  id: TradeOutpost
-  mapName: 'TFA Trade Outpost'
-  mapPath: /Maps/_Triad/POI/tradeoutpost.yml
+  id: TradeCenter
+  mapName: 'TFA Trade Center'
+  mapPath: /Maps/_Triad/POI/tradecenter.yml
   minPlayers: 0
   stations:
-    TradeOutpost:
+    TradeCenter:
       stationProto: MarketFrontierOutpost
       gridComponents:
       - type: VesselInfo
-        description: "The heart of Auric's intra-district trade."
+        description: "The heart, and center, of all trade happenings in the Auric District."
       components:
       - type: StationCargoOrderDatabase
         capacity: 60
       - type: StationNameSetup
-        mapNameTemplate: 'TFA Trade Outpost'
+        mapNameTemplate: 'TFA Trade Center'
       - type: StationDeadDrop
         maxDeadDrops: 3
       - type: TradeCrateDestination

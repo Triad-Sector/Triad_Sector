@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/12/2026 13:14:22
-  entityCount: 6976
+  time: 11/13/2026 05:11:22
+  entityCount: 6983
 maps: []
 grids:
 - 1
@@ -76,12 +76,12 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Trade Outpost
+      name: Trade Center
     - type: Transform
       parent: invalid
       pos: -0.5104173,-0.47394052
     - type: BecomesStation
-      id: TradeOutpost
+      id: TradeCenter
     - type: StationTransit
     - type: MapGrid
       chunks:
@@ -203,8 +203,8 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Kudzu: []
         MetalFoam: []
+        Kudzu: []
         Smoke: []
         Puddle: []
     - type: Shuttle
@@ -7669,6 +7669,18 @@ entities:
     - type: Transform
       parent: 1
       pos: -11.5,-5.5
+  - uid: 2543
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 29.5,-3.5
+  - uid: 6978
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 35.5,-3.5
 - proto: CableApcExtension
   entities:
   - uid: 266
@@ -21190,6 +21202,11 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -9.5,-4.5
+  - uid: 6983
+    components:
+    - type: Transform
+      parent: 1
+      pos: -7.5,-3.5
 - proto: DisposalTrunk
   entities:
   - uid: 2496
@@ -32534,6 +32551,20 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -22.5,-5.5
+- proto: NFSignBus
+  entities:
+  - uid: 6981
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 20.5,-2.5
+  - uid: 6982
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 23.5,-2.5
 - proto: NFVendingMachineCart
   entities:
   - uid: 2822
@@ -37080,6 +37111,28 @@ entities:
         233:
         - - Pressed
           - Toggle
+  - uid: 6979
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 29.5,-3.5
+    - type: DeviceLinkSource
+      linkedPorts:
+        35:
+        - - Pressed
+          - DoorBolt
+  - uid: 6980
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 35.5,-3.5
+    - type: DeviceLinkSource
+      linkedPorts:
+        36:
+        - - Pressed
+          - DoorBolt
 - proto: SignBridge
   entities:
   - uid: 3444
