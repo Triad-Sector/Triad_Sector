@@ -55,13 +55,13 @@ namespace Content.Shared.Body.Systems
                     continue;
 
                 stomach.NextUpdate += stomach.AdjustedUpdateInterval;
-                if (stomach.Solution is { } cached &&
+                if (stomach.Solution is { } cached && // fix dev env crashing when the solution entity is deleted, this checks if the cached solution is still valid start triad
                     (TerminatingOrDeleted(cached.Owner) ||
                      !_solutionContainerSystem.TryGetSolution((uid, sol), DefaultSolutionName, out var fresh) ||
                      fresh.Value.Owner != cached.Owner))
                 {
                     stomach.Solution = null;
-                }
+                } // end dev testing fix end triad
                 // Get our solutions
                 if (!_solutionContainerSystem.ResolveSolution((uid, sol), DefaultSolutionName, ref stomach.Solution, out var stomachSolution))
                     continue;
