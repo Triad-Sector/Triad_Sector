@@ -310,6 +310,11 @@
         conditions:
         - !type:OrganType
           type: Rat
+      - !type:Oxygenate # Triad - Feroxi can breath pluox, but it doesn't hydrate them (like o2)
+        factor: 8
+        conditions:
+        - !type:OrganType
+          type: Feroxi
       - !type:Oxygenate
         factor: 8
         conditions:
@@ -320,4 +325,3 @@
         ratios:
           CarbonDioxide: 1.0
           Pluoxium: -1.0 
- 
