@@ -362,7 +362,7 @@ public sealed partial class NuclearReactorWindow : FancyWindow
         if(!_data.TryGetValue(vect, out var value))
         {
             TargetName.Text = "empty";
-            TargetTemperatureGrid.Visible = TargetNRadiationGrid.Visible = TargetRadiationGrid.Visible = TargetSpentGrid.Visible = false;
+            TargetTemperatureGrid.Visible = TargetNRadiationGrid.Visible = TargetRadiationGrid.Visible = TargetSpentGrid.Visible = TargetFertilityGrid.Visible = false;
             return;
         }
 
@@ -376,6 +376,9 @@ public sealed partial class NuclearReactorWindow : FancyWindow
 
         TargetRadiationGrid.Visible = value.Radioactivity > 0;
         TargetRadiation.Text = Math.Round(value.Radioactivity, 2).ToString();
+
+        TargetFertilityGrid.Visible = value.Fertility > 0;
+        TargetFertility.Text = Math.Round(value.Fertility, 2).ToString();
 
         TargetSpentGrid.Visible = value.SpentFuel > 0;
         TargetSpent.Text = Math.Round(value.SpentFuel, 2).ToString();
