@@ -1191,6 +1191,18 @@
         Heat: 16 # Mono
     soundHit:
       collection: MeatLaserImpact
+  - type: AddPlasmaBurningOnHit
+    damage:
+      types:
+        Heat: 5
+        Caustic: 5
+    color: "#83322f"
+    duration: 12
+    armorPenetration: 0.5
+    whitelist:
+      components:
+      - HumanoidAppearance
+      - PlasmaBurnEligible
 
 - type: entity
   name: wide plasma bolt barrage
