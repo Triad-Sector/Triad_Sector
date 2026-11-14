@@ -1,0 +1,13 @@
+﻿- type: entity
+  parent: [BaseNightVisionClothingGenFour, ClothingHeadHelmetHardsuitSyndieElite, ShowSecurityIcons]
+  id: ClothingHeadHelmetHardsuitSdHeavy
+  name: K-3000 "Dyson" Heavy Nanomesh Visor
+  description: A specialized tacsuit helmet featuring advanced mirrored composites and a top-of-the-line night vision suite.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Hardsuits/sd-heavy.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Hardsuits/sd-heavy.rsi
+  - type: PointLight
+    color: "#79e0f2"
