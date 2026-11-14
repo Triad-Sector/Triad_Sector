@@ -6212,3 +6212,12 @@ Entries:
   id: 2730
   time: '2026-11-14T02:43:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/597
+- author: nathan736
+  changes:
+    - type: Fix
+      message: >-
+        Botany plants can once again not emit Trit, Frezon, BZ, Healium,
+        Pluxoium , Nitrium
+  id: 2731
+  time: '2026-11-14T20:46:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/786
