@@ -953,6 +953,36 @@
     delay: 8 #Frontier
     fx: EffectRCDDeconstruct8 #Frontier
 
+- type: entity # Triad start
+  parent: BaseWallTierOne
+  id: IriditeDUWall
+  name: Iridite-DU shielding
+  description: More radio-insulation than you could ever need... right?
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/uranium.rsi
+  - type: Icon
+    sprite: Structures/Walls/uranium.rsi
+  - type: Construction
+    graph: Girder
+    node: iriditeDUWall
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 7500 
+  - type: RadiationBlocker 
+    resistance: 8 
+    linresistance: 0.45 
+  - type: StaticPrice 
+    price: 2000 # Triad end
+
 - type: entity
   parent: BaseWallTierOne
   id: WallWood

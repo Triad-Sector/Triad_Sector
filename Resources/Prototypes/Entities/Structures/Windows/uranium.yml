@@ -49,7 +49,8 @@
   - type: StaticPrice
     price: 80 # Frontier: 200<80 - TODO: material value rework
   - type: RadiationBlocker
-    resistance: 3
+    resistance: 2 # Triad
+    linresistance: 0.2 # Triad: 20% rad absorption
   - type: ShipRepairable
     repairTime: 3
     repairCost: 3
@@ -105,7 +106,8 @@
   - type: StaticPrice
     price: 40 # Frontier: 100<40 - TODO: material value rework
   - type: RadiationBlocker
-    resistance: 1.5
+    resistance: 1 # Triad
+    linresistance: 0.1 # Triad: 10% rad absorption
 
 - type: entity
   parent: UraniumWindow
@@ -148,6 +150,9 @@
     airBlockedDirection:
     - South
     - East
+  - type: RadiationBlocker # Triad
+    resistance: 2 # Triad
+    linresistance: 0.2 # Triad: 20% rad absorption
   - type: DamageVisuals
     damageOverlay:
       sprite: Structures/Windows/cracks_diagonal.rsi

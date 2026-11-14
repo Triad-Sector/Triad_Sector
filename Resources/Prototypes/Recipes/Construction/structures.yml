@@ -142,6 +142,24 @@
   conditions:
     - !type:TileNotBlocked
 
+- type: construction # triad start
+  name: Iridite-DU shielding
+  id: IriditeDUWall
+  graph: Girder
+  startNode: start
+  targetNode: iriditeDUWall
+  category: construction-category-structures
+  description: More radio-insulation than you could ever need... right?
+  icon:
+    sprite: Structures/Walls/uranium.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked # triad end
+
 - type: construction
   name: silver wall
   id: SilverWall
