@@ -1,0 +1,20 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadG15Helmet
+  name: G15 Civil
+  description: A Ghostlight manufactured helmet used for private security. Comes with a voice modulator to assist in hiding one's identity. 
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Helmets/g15.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Helmets/g15.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
+        Radiation: 0.80
+        Caustic: 0.95
