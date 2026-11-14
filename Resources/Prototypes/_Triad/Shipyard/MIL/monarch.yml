@@ -1,0 +1,39 @@
+# Author SUI
+# Discord: SUI
+
+
+- type: vessel
+  id: Monarch
+  parent: BaseVessel
+  name: AVM Monarch
+  description: A relatively cheap, entry-level mercenary patrol vessel that mimics the design of proper military ships, the Argent Vessel Matrix's affordable option. For a ship of its price and size, it has a generous amount of crew amendities. Outfitted with 4 90mm autocannons and 2 VESPERA missile racks. Accompanied with the iconic marketing slogan of 'Every Spacer, a King!'
+  price: 70000
+  category: Medium
+  group: Military
+  shuttlePath: /Maps/_Triad/Shuttles/MIL/monarch.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Pursuit
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Monarch
+  mapName: 'AVM Monarch'
+  mapPath: /Maps/_Triad/Shuttles/MIL/monarch.yml
+  minPlayers: 0
+  stations:
+    Monarch:
+      stationProto: StandardTriadExpedVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Monarch MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
