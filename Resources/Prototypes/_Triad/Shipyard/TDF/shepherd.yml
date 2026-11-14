@@ -2,7 +2,7 @@
   id: Shepherd
   parent: BaseVessel
   name: TDF Shepherd
-  description: a small modified mining vessel retrofitted to be interceptor to fill the needs of TDF, equipped with 2 RAC-30,2 AK-570, and 2 Rubicon for a quick disabling its target in the moment of capturing.
+  description: A modified mining vessel retrofitted to fill the need for a TDF interceptor. Equipped with 2 Draupnirs, 2 AK-570s, and 2 RUBICONs to quickly disable small targets or chip away at larger ones. Highly maneuverable and affordable.
   price: 120000
   category: Small
   group: Security
