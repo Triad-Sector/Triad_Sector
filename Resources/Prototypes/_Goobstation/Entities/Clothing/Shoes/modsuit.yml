@@ -113,7 +113,7 @@
     jumpSound: /Audio/Effects/Footsteps/suitstep2.ogg
   - type: ActionGrant
     actions:
-    - ActionGravityJump 
+    - ActionGravityJump
   - type: ItemActionGrant
     actions:
     - ActionGravityJump
@@ -124,8 +124,8 @@
       - state: equipped-FEET-sealed
       shoes-vox:
       - state: equipped-FEET-sealed-vox
-  - type: ClothingSlowOnDamageModifier # Mono
-    modifier: 0.75
+  - type: ClothingSlowOnDamageModifier # mono
+    modifier: 0.50 #Triad 0.75 --> 0.50
 
 - type: entity
   parent: ClothingModsuitBootsBase
