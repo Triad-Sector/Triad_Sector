@@ -337,7 +337,14 @@ namespace Content.Server.Power.EntitySystems
 
         private void UpdateApcPowerReceiver(float frameTime)
         {
-            var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
+            // Triad: was AllEntityQuery, which includes paused entities. The battery branch below
+            // calls SetCharge, so a paused ship kept draining its internal APC batteries, and
+            // BatterySystem's PostSync then copied the result back. That contradicts the contract
+            // PreSync and PostSync state outright ("If the entity was paused, neither component's
+            // data should have been changed"), and every sibling here honours pausing through
+            // EntityPausedEvent. EntityQueryEnumerator is the paused-skipping variant.
+            // var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
+            var enumerator = EntityQueryEnumerator<ApcPowerReceiverComponent>();
             while (enumerator.MoveNext(out var uid, out var apcReceiver))
             {
                 // (#43879) zero-load devices must not report as powered

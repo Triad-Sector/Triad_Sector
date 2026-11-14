@@ -10,7 +10,9 @@
         <Label Name="ShuttlePrice" Margin="4 0 0 0" />
         <RichTextLabel Name="TimeOfPurchase" Margin="4 0 0 0" Access="Public" />
         <Label Name="VoucherStatus" Margin="4 0 0 0" FontColorOverride="Yellow" />
+        <!-- Triad: hidden, the console no longer mints deeds -->
         <Button Name="CopyDeedButton"
+                Visible="False"
                 Access="Public"
                 Text=""
                 TextAlign="Center"

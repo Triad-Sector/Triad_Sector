@@ -15,6 +15,13 @@ public sealed partial class AtmosPlaqueSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<AtmosPlaqueComponent, MapInitEvent>(OnPlaqueMapInit);
+        SubscribeLocalEvent<AtmosPlaqueComponent, ComponentStartup>(OnPlaqueStartup); // Triad - see OnPlaqueStartup
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). Rendering half only; the handler below rolls the type.
+    private void OnPlaqueStartup(EntityUid uid, AtmosPlaqueComponent component, ComponentStartup args)
+    {
+        UpdateSign(uid, component);
     }
 
     private void OnPlaqueMapInit(EntityUid uid, AtmosPlaqueComponent component, MapInitEvent args)

@@ -17,10 +17,20 @@ public sealed class LaundrySystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SharedWashingMachineComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<SharedWashingMachineComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<SharedWashingMachineComponent, BreakageEventArgs>(OnBreak);
         SubscribeLocalEvent<SharedWashingMachineComponent, EntInsertedIntoContainerMessage>(OnContainerModified);
         SubscribeLocalEvent<SharedWashingMachineComponent, EntRemovedFromContainerMessage>(OnContainerModified);
 
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent); container-derived.
+    private void OnStartup(EntityUid uid, SharedWashingMachineComponent component, ComponentStartup args)
+    {
+        if (!_containerSystem.TryGetContainer(uid, "storagebase", out var container))
+            return;
+
+        _appearanceSystem.SetData(uid, StorageVisuals.HasContents, container.ContainedEntities.Count > 0);
     }
 
     private void OnMapInit(EntityUid uid, SharedWashingMachineComponent component, MapInitEvent args)

@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._Mono;
 
@@ -18,14 +19,14 @@ public sealed partial class GridPacifiedComponent : Component
     /// <summary>
     /// Until what time an entity will be pacified for. The component is removed when this is exceeded.
     /// </summary>
-    [DataField, AutoPausedField]
-    public TimeSpan PacifiedTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan PacifiedTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// The time when the next periodic update should occur
     /// </summary>
-    [DataField, AutoPausedField]
-    public TimeSpan NextUpdate;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextUpdate; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// How frequently to check the entity for changes

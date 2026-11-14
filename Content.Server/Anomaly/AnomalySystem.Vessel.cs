@@ -1,4 +1,4 @@
-﻿using Content.Server.Anomaly.Components;
+using Content.Server.Anomaly.Components;
 using Content.Server.Construction;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Anomaly;
@@ -6,6 +6,7 @@ using Content.Shared.Anomaly.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
+using Content.Shared._Triad.Drydock; // Triad
 
 namespace Content.Server.Anomaly;
 
@@ -20,6 +21,7 @@ public sealed partial class AnomalySystem
     {
         SubscribeLocalEvent<AnomalyVesselComponent, ComponentShutdown>(OnVesselShutdown);
         SubscribeLocalEvent<AnomalyVesselComponent, MapInitEvent>(OnVesselMapInit);
+        SubscribeLocalEvent<AnomalyVesselComponent, ComponentStartup>(OnVesselStartup); // Triad - see OnVesselStartup
         SubscribeLocalEvent<AnomalyVesselComponent, UpgradeExamineEvent>(OnUpgradeExamine);
         SubscribeLocalEvent<AnomalyVesselComponent, InteractUsingEvent>(OnVesselInteractUsing);
         SubscribeLocalEvent<AnomalyVesselComponent, ExaminedEvent>(OnExamined);
@@ -64,6 +66,15 @@ public sealed partial class AnomalySystem
     private void OnVesselMapInit(EntityUid uid, AnomalyVesselComponent component, MapInitEvent args)
     {
         UpdateVesselAppearance(uid,  component);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent).
+    private void OnVesselStartup(EntityUid uid, AnomalyVesselComponent component, ComponentStartup args)
+    {
+        if (!_mapInitRefire.StartupSeedApplies(uid))
+            return;
+
+        UpdateVesselAppearance(uid, component);
     }
 
     private void OnUpgradeExamine(EntityUid uid, AnomalyVesselComponent component, UpgradeExamineEvent args)

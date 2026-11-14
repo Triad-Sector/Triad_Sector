@@ -52,6 +52,6 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// <summary>
     ///     Triad - Used as a saved version of the last time a sound was sent for multiple deaths.
     /// </summary>
-    [DataField]
-    public TimeSpan? MultipleDeathsTime = null;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan? MultipleDeathsTime = null; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 }

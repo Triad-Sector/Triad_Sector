@@ -61,6 +61,15 @@ public sealed partial class GeneratorSystem : SharedGeneratorSystem
         if (!component.On)
             return;
 
+        // Triad: only when it actually came unanchored, which is what the comment above always meant
+        // and what ActiveGeneratorRevvingSystem's handler already checks. The transform system raises
+        // this event on every entity that STARTS UP anchored (SharedTransformSystem.OnCompStartup), so
+        // a generator loaded from a save with its on flag persisted was switched off by its own
+        // anchoring, on the ship-save path and the drydock alike, before any revive step could see it
+        // running. 73 generators across the roster came back dark that way.
+        if (args.Anchored)
+            return;
+
         SetFuelGeneratorOn(uid, false, component);
     }
 

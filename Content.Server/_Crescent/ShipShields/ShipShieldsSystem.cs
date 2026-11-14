@@ -87,8 +87,10 @@ public sealed partial class ShipShieldsSystem : EntitySystem
                 {
                     emitter.Shield = shield;
                     emitter.Shielded = parent.Value;
+                    // Triad: announce only a shield that was actually raised; an attempt that
+                    // failed used to play this every update.
+                    _audio.PlayGlobal(emitter.PowerUpSound, filter, true, emitter.PowerUpSound.Params);
                 }
-                _audio.PlayGlobal(emitter.PowerUpSound, filter, true, emitter.PowerUpSound.Params);
             }
             else if ((emitter.Recharging || emitter.OverloadAccumulator > 0) && emitter.Shield is not null)
             {
@@ -168,8 +170,15 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     /// <returns>The shield entity.</returns>
     private EntityUid ShieldEntity(EntityUid entity, EntityUid? source = null, MapGridComponent? mapGrid = null)
     {
+        // Triad: a marker whose shield no longer exists is stale, not a shield. Returning it
+        // here meant a grid with a dead marker could never be shielded again; drop it and build.
         if (TryComp<ShipShieldedComponent>(entity, out var existingShielded))
-            return existingShielded.Shield;
+        {
+            if (Exists(existingShielded.Shield) && !TerminatingOrDeleted(existingShielded.Shield))
+                return existingShielded.Shield;
+
+            RemComp<ShipShieldedComponent>(entity);
+        }
 
         if (!Resolve(entity, ref mapGrid, false))
             return EntityUid.Invalid;

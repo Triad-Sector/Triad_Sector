@@ -5,7 +5,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Content.Server._HL.Shipyard;
+using Content.Server._Triad.Shipyard;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.ContentPack;
 using Robust.Shared.EntitySerialization.Systems;
@@ -108,10 +108,11 @@ public sealed class LegacyXenoarchShipLoadTest
         var injected = savedYaml.Replace("\nentities:\n",
             "\nentities:\n" + LegacyInjection.Replace("{0}", gridYamlUid));
 
-        // The production entry point the console load path runs. Four nodes: the action entity, two
-        // legacy component nodes, and the container slot that held the action.
+        // The production entry point the console load path runs. Five nodes: the action entity, two
+        // legacy component nodes, the container slot that held the action, and the map-init flag the
+        // injected body lacks (the saved grid already carries its own).
         var scrubbedYaml = ShipSaveYamlSanitizer.ScrubShipLoadYaml(injected, out var scrubbed);
-        Assert.That(scrubbed, Is.EqualTo(4), "the scrub missed a legacy node the injection planted");
+        Assert.That(scrubbed, Is.EqualTo(5), "the scrub missed a legacy node the injection planted");
 
         await server.WaitPost(() =>
         {

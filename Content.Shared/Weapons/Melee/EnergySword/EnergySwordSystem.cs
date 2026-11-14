@@ -19,7 +19,17 @@ public sealed partial class EnergySwordSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<EnergySwordComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<EnergySwordComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<EnergySwordComponent, InteractUsingEvent>(OnInteractUsing);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent). Reads ActivatedColor, never re-picks it.
+    private void OnStartup(Entity<EnergySwordComponent> entity, ref ComponentStartup args)
+    {
+        if (!TryComp(entity, out AppearanceComponent? appearanceComponent))
+            return;
+
+        _appearance.SetData(entity, ToggleableVisuals.Color, entity.Comp.ActivatedColor, appearanceComponent);
     }
     // Used to pick a random color for the blade on map init.
     private void OnMapInit(Entity<EnergySwordComponent> entity, ref MapInitEvent args)

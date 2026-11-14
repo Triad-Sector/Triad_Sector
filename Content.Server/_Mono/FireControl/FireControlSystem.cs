@@ -228,6 +228,19 @@ public sealed partial class FireControlSystem : EntitySystem
                 TryRegister(controllable, controlComp);
         }
 
+        // Triad: consoles register only on their own power edge, so one whose edge fired before
+        // this server connected registered against nothing and never retried. On a ship whose net
+        // comes up in a single tick (a purchase, a retrieve from the drydock) the order between the
+        // console and the server is arbitrary, and the loser is a console that says it has no
+        // server until someone cuts and restores its power. Pick up every powered console on the
+        // grid here, the way the controllables are.
+        var consoles = EntityQueryEnumerator<FireControlConsoleComponent>();
+        while (consoles.MoveNext(out var consoleUid, out var consoleComp))
+        {
+            if (consoleComp.ConnectedServer == null && _xform.GetGrid(consoleUid) == grid && _power.IsPowered(consoleUid))
+                TryRegisterConsole(consoleUid, consoleComp);
+        }
+
         foreach (var console in server.Consoles)
             UpdateUi(console);
     }

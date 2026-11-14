@@ -69,8 +69,8 @@ public sealed partial class ReproductiveComponent : Component
     /// When gestation will end.
     /// Null if <see cref="Gestating"/> is false
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan? GestationEndTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan? GestationEndTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// How long it takes the entity after breeding

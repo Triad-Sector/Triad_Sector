@@ -105,6 +105,9 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         SubscribeLocalEvent<StationAiHolderComponent, ComponentRemove>(OnHolderRemove);
         SubscribeLocalEvent<StationAiHolderComponent, AfterInteractEvent>(OnHolderInteract);
         SubscribeLocalEvent<StationAiHolderComponent, MapInitEvent>(OnHolderMapInit);
+        // Triad: seed on load (DrydockAppearanceComponent); container-derived.
+        SubscribeLocalEvent<StationAiHolderComponent, ComponentStartup>((uid, comp, _) =>
+            UpdateAppearance((uid, comp)));
         SubscribeLocalEvent<StationAiHolderComponent, EntInsertedIntoContainerMessage>(OnHolderConInsert);
         SubscribeLocalEvent<StationAiHolderComponent, EntRemovedFromContainerMessage>(OnHolderConRemove);
         SubscribeLocalEvent<StationAiHolderComponent, IntellicardDoAfterEvent>(OnIntellicardDoAfter);

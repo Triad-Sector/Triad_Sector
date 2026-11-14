@@ -123,11 +123,15 @@ public sealed class NFCCVars
     public static readonly CVarDef<float> ShipyardSellRate =
         CVarDef.Create("shuttle.shipyard_base_sell_rate", 0.85f, CVar.SERVERONLY);
 
-    /// <summary>
-    /// Whether to validate ship checksums when loading. Can be disabled for compatibility with old saves.
-    /// </summary>
-    public static readonly CVarDef<bool> ShipyardChecksumValidation =
-        CVarDef.Create("shuttle.shipyard_checksum_validation", true, CVar.SERVERONLY);
+    // Triad: removed - never wired downstream. No C# read site and no config preset sets it, so
+    // ship checksums are not validated on load whatever this says; Triad's own tamper-protection
+    // path (triad.tamper_mode) is what actually gates loads today, and the ship-storage
+    // replacement supersedes both. Kept commented so an upstream merge surfaces a conflict.
+    // /// <summary>
+    // /// Whether to validate ship checksums when loading. Can be disabled for compatibility with old saves.
+    // /// </summary>
+    // public static readonly CVarDef<bool> ShipyardChecksumValidation =
+    //     CVarDef.Create("shuttle.shipyard_checksum_validation", true, CVar.SERVERONLY);
 
     /*
      * Salvage

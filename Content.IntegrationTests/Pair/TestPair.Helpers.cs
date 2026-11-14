@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections.Generic;
 using System.Linq;
+using Content.Server._Mono.Cleanup;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -19,6 +20,23 @@ public sealed partial class TestPair
 {
     public Task<TestMapData> CreateTestMap(bool initialized = true)
         => CreateTestMap(initialized, "Plating");
+
+    /// <summary>
+    /// Triad: exempts an entity from the fork's cleanup janitors, for a fixture that treats a grid
+    /// as durable world state.
+    ///
+    /// <para>A <see cref="CreateTestMap"/> grid is a bare Plating tile with no power, no IFF, no
+    /// appraised value and no players near it, which is exactly what
+    /// <c>Content.Server/_Mono/Cleanup/GridCleanupSystem.cs</c> exists to delete, and the pooled
+    /// pair runs those janitors on shipping cvars with no master switch. Whether a given fixture
+    /// outlives its own scenery therefore depends on how much simulated time it racks up, so this
+    /// is a flake that gets worse as a test grows rather than an error that shows up when it is
+    /// written. Any fixture standing a station on a test grid wants this.</para>
+    /// </summary>
+    public async Task MakeCleanupImmune(EntityUid uid)
+    {
+        await Server.WaitPost(() => Server.EntMan.EnsureComponent<CleanupImmuneComponent>(uid));
+    }
 
     /// <summary>
     /// Loads a test map and returns a <see cref="TestMapData"/> representing it.

@@ -1,10 +1,10 @@
 - type: entity
   abstract: true
-  id: BasePersistentStorage
+  id: BaseShipStorage
   components:
   - type: Appearance
   - type: Storage
-    maxItemSize: Large
+    maxItemSize: Ginormous
     blacklist:
       components:
       - PresetIdCard
@@ -19,21 +19,30 @@
     scale: 1.5
     requireNoGrid: true
     shape: square
-  - type: HLPersistOnShipSave
-    saveContents: true
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong # Strong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 450
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   abstract: true
-  parent: [ BaseStorageStructure, BasePersistentStorage ]
-  id: BasePersistentShipStorageStash
+  parent: [ BaseStorageStructure, BaseShipStorage ]
+  id: BaseShipStorageStash
   components:
   - type: Sprite
     noRot: true
 
 - type: entity
   abstract: true
-  parent: BasePersistentStorage
-  id: BasePersistentShipStorageStashWallmount
+  parent: BaseShipStorage
+  id: BaseShipStorageStashWallmount
   placement:
     mode: SnapgridCenter
   components:
@@ -62,7 +71,7 @@
     isPlaceable: false
 
 - type: entity
-  parent: BasePersistentShipStorageStash
+  parent: BaseShipStorageStash
   id: CivilianStorageStash
   name: civilian storage stash
   description: Miscellaneous everyday supplies and personal items. Preserves stored items across ship deployments.
@@ -77,31 +86,33 @@
   - type: Construction
     graph: CivilianStorageStashGraph
     node: CivilianStorageStashNode
-  - type: ShipSaveLimit
-    limitId: CivilianStash
 
 - type: entity
   parent: CivilianStorageStash
   id: MilitaryStorageStash
-  name: military storage stash
-  description: A reinforced flatpack storage unit for secure operations. Preserves stored items across ship deployments.
+  name: military storage unit
+  description: A reinforced flatpack storage unit for secure operations.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Storage/ShipStashes/military_storage_stash.rsi
     state: military_storage_rsi
-  - type: Storage
-    maxItemSize: Ginormous
   - type: Construction
     graph: MilitaryStorageStashGraph
     node: MilitaryStorageStashNode
-  - type: ShipSaveLimit
-    limitId: MilitaryStash
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 750 # Much stronger
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
-  parent: BasePersistentShipStorageStash
+  parent: BaseShipStorageStash
   id: MedicalSecureStorage
-  name: medical sanitized stash
-  description: Sterile stash of clean medical supplies. Preserves stored items across ship deployments.
+  name: medical sanitized storage unit
+  description: Sterile stash that contains clean medical supplies.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Storage/ShipStashes/medical_secure_storage.rsi
@@ -134,14 +145,12 @@
   - type: Construction
     graph: MedicalSecureStorageGraph
     node: MedicalSecureStorageNode
-  - type: ShipSaveLimit
-    limitId: MedicalStash
 
 - type: entity
-  parent: BasePersistentShipStorageStash
+  parent: BaseShipStorageStash
   id: BotanicalStorageUnit
   name: botanical greenhouse stash
-  description: Assorted seeds, plants, and gardening gear stash. Contents are securely preserved across ship operations.
+  description: Assorted seeds, plants, and gardening gear stash.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Storage/ShipStashes/botany_storage_unit.rsi
@@ -173,14 +182,12 @@
   - type: Construction
     graph: BotanicalStorageUnitGraph
     node: BotanicalStorageUnitNode
-  - type: ShipSaveLimit
-    limitId: HydroponicsStash
 
 - type: entity
-  parent: BasePersistentShipStorageStashWallmount
+  parent: BaseShipStorageStash
   id: FuelStorageStash
   name: fuel stash
-  description: Wall locker to hold all of your fuel needs. Preserves stored items across ship deployments.
+  description: Wall locker to hold all of your fuel needs.
   components:
   - type: Sprite
     sprite: _Triad/Structure/Storage/ShipStashes/fuel_storage_stash.rsi
@@ -202,5 +209,3 @@
   - type: Construction
     graph: FuelStorageStashGraph
     node: FuelStorageStashNode
-  - type: ShipSaveLimit
-    limitId: FuelStash

@@ -1,4 +1,5 @@
 using Robust.Shared.Audio;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad
 
 namespace Content.Shared._DEN.TimedDespawn;
 
@@ -8,7 +9,12 @@ namespace Content.Shared._DEN.TimedDespawn;
 [RegisterComponent]
 public sealed partial class TimedDespawnDetailedComponent : Component
 {
-    [DataField]
+    /// <summary>
+    /// When the timer started, as an absolute game time. Triad: written through
+    /// <see cref="TimeOffsetSerializer"/>, since a raw CurTime stamp reloads against a clock that
+    /// no longer exists and puts the deadline out of reach.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan StartTime { get; set; } = TimeSpan.Zero;
 
     /// <summary>

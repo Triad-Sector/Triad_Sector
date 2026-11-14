@@ -71,7 +71,6 @@
             False: {visible: true}
     - type: StaticPrice
       price: 120
-    - type: HLPersistOnShipSave # Triad
 
 - type: entity
   parent: [RollerBed, RecyclableItemSteelMedium] # Frontier: added RecyclableItemSteelMedium

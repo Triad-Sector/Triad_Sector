@@ -36,8 +36,6 @@
         whitelist:
           tags:
           - FireAxe
-  - type: HLPersistOnShipSave # Triad
-    saveContents: true
 
 - type: entity
   id: FireAxeCabinetOpenCommand

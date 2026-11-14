@@ -8,9 +8,9 @@ namespace Content.Server._Triad.Shipyard.Persistence;
 
 /// <summary>
 /// Per-player legacy-onboarding permits. While the server is in enforce mode, a player with an
-/// active permit may load non-our-key (unsigned or foreign-signed) ships, which the load path
-/// re-signs with the server key. The permit is the rollout exception for stragglers who did not get
-/// a ship signed during the notify window; it clears on admin revoke or session end.
+/// active permit may import non-our-key (unsigned or foreign-signed) legacy saves into the drydock;
+/// they are never re-signed. The permit is the rollout exception for stragglers who did not get a
+/// ship signed during the notify window; it clears on admin revoke or session end.
 /// </summary>
 public interface ITriadShipyardPermitStore
 {

@@ -36,7 +36,6 @@
   - type: DnaSubstanceTrace
   - type: Item
     size: Small
-  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   id: TowelColorWhite

@@ -58,8 +58,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalGlassBreak
-  - type: HLPersistOnShipSave # Triad
-    saveContents: true
   - type: Construction # Triad
     graph: defibrillatorcabinet
     node: finish

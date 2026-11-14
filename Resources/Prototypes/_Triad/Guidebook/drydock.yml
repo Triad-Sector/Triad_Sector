@@ -1,0 +1,12 @@
+# Triad: new
+- type: guideEntry
+  id: Drydock
+  name: guide-entry-drydock
+  text: "/ServerInfo/_Triad/Guidebook/Shipyard/Drydock.xml"
+  children:
+  - ImpoundLot
+
+- type: guideEntry
+  id: ImpoundLot
+  name: guide-entry-impound-lot
+  text: "/ServerInfo/_Triad/Guidebook/Shipyard/ImpoundLot.xml"

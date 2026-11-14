@@ -3,7 +3,12 @@
 
 - type: vessel
   id: Arbalest
-  parent: BaseVessel
+  # Triad: was BaseVessel, which made this the only TDF hull in the fleet without
+  # ShipSavingBlacklist. A TDF ship is issued full of contraband loadout and is not meant to be
+  # saved or drydocked; without the blacklist this one could be, and the save path answered by
+  # deleting the equipment instead of refusing the ship, taking all thirteen thrusters and three
+  # gyroscopes with it. Its six siblings all parent here, which also picks up priorityDockTag.
+  parent: BaseVesselTdf
   name: TDF Arbalest
   description: To answer the need of firepower, the Arbalest brings heavy fire support into TDF combat operations. Equipped with Charon and Dravon, it houses an ample amount of empty space due to the hull being refit from a civilian vessel.
   price: 118000

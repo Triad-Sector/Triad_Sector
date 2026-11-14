@@ -243,14 +243,25 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         component.Beacons.Clear();
 
         // Refresh beacons
-        var query = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>();
-        while (query.MoveNext(out var qUid, out var qNavComp, out var qTransComp))
+        // Triad: walk the grid's own children rather than query the world. The query skipped paused
+        // beacons, so a grid refreshed while paused (a drydock retrieve's staging map, any paused
+        // map) lost every beacon from its nav map until one was re-anchored. Same set: the query
+        // already kept only direct children of the grid.
+        // var query = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>();
+        // while (query.MoveNext(out var qUid, out var qNavComp, out var qTransComp))
+        // {
+        //     if (qTransComp.ParentUid != uid)
+        //         continue;
+        //
+        //     UpdateNavMapBeaconData(qUid, qNavComp);
+        // }
+        var children = Transform(uid).ChildEnumerator;
+        while (children.MoveNext(out var child))
         {
-            if (qTransComp.ParentUid != uid)
-                continue;
-
-            UpdateNavMapBeaconData(qUid, qNavComp);
+            if (TryComp<NavMapBeaconComponent>(child, out var beacon))
+                UpdateNavMapBeaconData(child, beacon);
         }
+        // End Triad
 
         // Loop over all tiles
         var tileRefs = _mapSystem.GetAllTiles(uid, mapGrid);
