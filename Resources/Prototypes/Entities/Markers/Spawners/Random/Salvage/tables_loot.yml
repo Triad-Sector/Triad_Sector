@@ -279,7 +279,7 @@
 #    - id: BlueprintSeismicCharge # Frontier
     - id: WeaponCrusherGlaive
     - id: ClothingOuterHardsuitSalvage
-    - id: ChemistryBottleOmnizine
+    #- id: ChemistryBottleOmnizine Triad: Made Omnizine more difficult to find to encourage using more specialized chems
     - !type:GroupSelector
       children:
       - id: JetpackBlueFilled

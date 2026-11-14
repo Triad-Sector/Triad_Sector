@@ -290,7 +290,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - AloeCream
-    rareChance: 0.01
+    rareChance: 0.005 # Triad: Made advanced topicals more difficult to find in loot, to encourage crafting them
 
 - type: entity
   name: random meds

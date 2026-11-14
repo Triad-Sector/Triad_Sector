@@ -12,3 +12,16 @@
       amount: 5
     - id: SuperCapacitorStockPart
       amount: 20
+
+- type: entity
+  parent: BoxBundleNfsd
+  id: BoxAdvancedSurgery
+  name: Advanced Surgery Tools box
+  description: A box full of upgraded surgery tools for the medic on the go.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyScalpel
+    - id: EnergyCautery
+    - id: AdvancedRetractor
+    - id: BoneGel

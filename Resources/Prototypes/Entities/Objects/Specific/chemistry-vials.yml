@@ -69,36 +69,38 @@
     solution: beaker
   - type: StaticPrice
     price: 5 # Mono - thing fucks economy
-  - type: DamageOnLand
-    damage:
-      types:
-        Blunt: 5
-  - type: DamageOtherOnHit
-    damage:
-      types:
-        Blunt: 2
-  - type: Damageable
-    damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 15
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
-          params:
-            volume: -4
-      - !type:SpillBehavior { }
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlass:
-            min: 0
-            max: 1
-        transferForensics: true
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+  # Triad: Make bottles and vials non-destructible to encourage using anything except bluespace containers
+  #- type: DamageOnLand
+  #  damage:
+  #    types:
+  #      Blunt: 5
+  #- type: DamageOtherOnHit
+  #  damage:
+  #    types:
+  #      Blunt: 2
+  #- type: Damageable
+  #  damageContainer: Inorganic
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 15
+  #    behaviors:
+  #    - !type:PlaySoundBehavior
+  #      sound:
+  #        collection: GlassBreak
+  #        params:
+  #          volume: -4
+  #    - !type:SpillBehavior { }
+  #    - !type:SpawnEntitiesBehavior
+  #      spawn:
+  #        ShardGlass:
+  #          min: 0
+  #          max: 1
+  #      transferForensics: true
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
+  # End Triad
   - type: Spillable
     solution: beaker
   - type: DnaSubstanceTrace
@@ -149,7 +151,7 @@
         reagents:
           - ReagentId: Chlorine
             Quantity: 5
-            
+
 - type: entity
   id: PlasmaChemistryVial
   parent: BaseChemistryEmptyVial

@@ -104,3 +104,7 @@
 # Safety deposit
 - type: Tag
   id: SafetyDepositBox
+
+# Things we don't want you to recycle, for example food with Omnizine in it
+- type: Tag
+  id: Ungrindable
