@@ -6200,3 +6200,10 @@ Entries:
   id: 2728
   time: '2026-11-13T03:28:43.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/821
+- author: Nox38
+  changes:
+    - type: Add
+      message: Updated the TDF Knight to meet new design requirements.
+  id: 2729
+  time: '2026-11-14T01:28:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/813
