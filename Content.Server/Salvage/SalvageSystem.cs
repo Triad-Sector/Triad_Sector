@@ -26,6 +26,8 @@ namespace Content.Server.Salvage
     {
         [Dependency] private IChatManager _chat = default!;
         [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private ILogManager _logManager = default!;
+        // [Dependency] private SharedMapSystem _mapManager = default!;
         [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private AnchorableSystem _anchorable = default!;
@@ -58,14 +60,6 @@ namespace Content.Server.Salvage
             InitializeMagnet();
             InitializeRunner();
         }
-
-        // Frontier
-        public override void Shutdown()
-        {
-            ShutdownExpeditions();
-            base.Shutdown();
-        }
-        // End Frontier
 
         private void Report(EntityUid source, string channelName, string messageKey, params (string, object)[] args)
         {

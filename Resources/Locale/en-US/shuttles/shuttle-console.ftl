@@ -27,5 +27,5 @@ shuttle-console-verb-guest-access = Guest Access
 shuttle-console-verb-lock-ship = Lock Ship
 shuttle-console-verb-unlock-ship = Unlock Ship
 
-## Shuttle Console FTL
-shuttle-ftl-proximity = Unable to FTL while around other ships.
+## Shuttle Console FTL - Triad disable this version to use Frontier's new one
+# shuttle-ftl-proximity = Unable to FTL while around other ships.
