@@ -1,7 +1,7 @@
 - type: pointOfInterest
   id: TradeCenter
   parent: [BasePOI, BaseRepairablePOI]
-  name: TFA Trade Center
+  name: Auric Trade Center
   minimumDistance: 3500
   maximumDistance: 6500
   spawnGroup: MarketStation
@@ -25,7 +25,7 @@
 
 - type: gameMap
   id: TradeCenter
-  mapName: 'TFA Trade Center'
+  mapName: 'Auric Trade Center'
   mapPath: /Maps/_Triad/POI/tradecenter.yml
   minPlayers: 0
   stations:
@@ -38,7 +38,7 @@
       - type: StationCargoOrderDatabase
         capacity: 60
       - type: StationNameSetup
-        mapNameTemplate: 'TFA Trade Center'
+        mapNameTemplate: 'Auric Trade Center'
       - type: StationDeadDrop
         maxDeadDrops: 3
       - type: TradeCrateDestination
