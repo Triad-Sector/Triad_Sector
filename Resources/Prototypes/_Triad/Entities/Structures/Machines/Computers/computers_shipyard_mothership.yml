@@ -1,0 +1,10 @@
+- type: entity
+  id: CorvusIndustriesCarrierComputer
+  parent: BaseCarrierComputer
+  name: Corvus Industries Carrier Console
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Crow
+    - Magpie
+    - Raven
