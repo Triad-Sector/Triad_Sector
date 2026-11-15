@@ -6228,3 +6228,23 @@ Entries:
   id: 2732
   time: '2026-11-15T01:37:55.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/827
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the plasma burning mechanic. Plasma energy weapons will deal
+        damage overtime that stacks every hit. Targets will need to stop, drop,
+        and roll in order to get the plasma off, similar to being on fire.
+        Humanoid mobs, xenos, turrets, rogue silicons, and more are affected by
+        these plasma burns.
+    - type: Tweak
+      message: Plasma energy bolts are no longer reflected by laser shields.
+    - type: Add
+      message: Added a stop, drop, and roll animation for being on fire.
+    - type: Fix
+      message: >-
+        Fixed energy turrets having the incorrect armor values. They now have
+        the same values as ballistic turrets.
+  id: 2733
+  time: '2026-11-15T03:54:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/829
