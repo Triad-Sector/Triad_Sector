@@ -1240,6 +1240,22 @@
             visible: true
 
 - type: entity
+  parent: BasePlasmaBurnEligible
+  id: BasePlasmaBurnEligibleHumanoid
+  abstract: true
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true
+
+- type: entity
   name: wide plasma bolt barrage
   id: BulletPlasmaSpread
   categories: [ HideSpawnMenu ]
