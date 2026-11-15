@@ -1,8 +1,11 @@
 using Content.Server.Administration;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Weapons.Melee.EnergySword;
 using Robust.Shared.Player;
+using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace Content.Server._Triad.Weapons.Melee.EnergySword;
 
@@ -48,9 +51,10 @@ public sealed partial class EnergySwordInteractionSystem : EntitySystem
             Loc.GetString("energy-sword-color-dialog-prompt"),
             (string colorInput) =>
             {
+               colorInput = Regex.Replace(colorInput, "[^a-zA-Z0-9#]", String.Empty);
                 if (!Color.TryParse(colorInput.Trim(), out var color))
                     return;
-
+                color.A = 1;
                 _energySwordSystem.SetActivatedColor(entity.Owner, color);
             });
     }
