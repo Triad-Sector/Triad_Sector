@@ -34,7 +34,7 @@
 
 - type: entity
   id: MobGoliath
-  parent: BaseMobAsteroid
+  parent: [BaseMobAsteroid, BasePlasmaBurnEligible] # Triad - plasma burn
   name: goliath
   description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
   components:
@@ -45,6 +45,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: goliath
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -191,7 +193,7 @@
 
 - type: entity
   id: MobHivelord
-  parent: [ BaseMobAsteroid, FlyingMobBase ]
+  parent: [ BaseMobAsteroid, FlyingMobBase, BasePlasmaBurnEligible ] # Triad - plasma burn
   name: hivelord
   description: A truly alien creature, it is a mass of unknown organic material, constantly fluctuating. When attacking, pieces of it split off and attack in tandem with the original.
   components:
@@ -200,6 +202,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: hivelord
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:

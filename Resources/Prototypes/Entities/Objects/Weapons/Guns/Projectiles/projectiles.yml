@@ -1196,13 +1196,48 @@
       types:
         Heat: 5
         Caustic: 5
+        Structural: 35
     color: "#83322f"
-    duration: 12
-    armorPenetration: 0.5
+    duration: 17
+    armorPenetration: 0.65
+    addStacks: 2
     whitelist:
       components:
       - HumanoidAppearance
       - PlasmaBurnEligible
+
+- type: entity
+  id: BasePlasmaBurnEligible
+  abstract: true
+  components:
+  - type: Appearance
+  - type: PlasmaBurnEligible
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-non-humanoid
+            visible: true
+
+- type: entity
+  parent: BasePlasmaBurnEligible
+  id: BasePlasmaBurnEligibleTurret
+  abstract: true
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-turret
+            visible: true
 
 - type: entity
   name: wide plasma bolt barrage
