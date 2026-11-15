@@ -82,6 +82,8 @@
         sprite: "_DV/Effects/creampie.rsi"
         state: "creampie_feroxi"
         visible: false
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: MeleeWeapon
     hidden: true
     soundHit:

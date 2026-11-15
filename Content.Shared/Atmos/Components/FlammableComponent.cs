@@ -1,22 +1,23 @@
 using Content.Shared.Alert;
 using Content.Shared.Damage;
+using Robust.Shared.GameStates;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Atmos.Components
+namespace Content.Shared.Atmos.Components
 {
-    [RegisterComponent]
+    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
     public sealed partial class FlammableComponent : Component
     {
         [DataField]
         public bool Resisting;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField]
+        [DataField, AutoNetworkedField]
         public bool OnFire;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField]
+        [DataField, AutoNetworkedField]
         public float FireStacks;
 
         [ViewVariables(VVAccess.ReadWrite)]
@@ -80,7 +81,7 @@ namespace Content.Server.Atmos.Components
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public float FirestackFade = -0.1f;
 
-        [DataField]
-        public ProtoId<AlertPrototype> FireAlert = "Fire";
+        [DataField, AutoNetworkedField]
+        public bool LastOnFire;
     }
 }

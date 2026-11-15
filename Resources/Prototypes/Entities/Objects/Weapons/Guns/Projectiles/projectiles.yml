@@ -1150,15 +1150,16 @@
     tags:
       - HideContextMenu
 
+# Triad start - plasma bullets
 - type: entity
-  name: laser bolt
-  id: BulletLaser
+  name: plasma bolt
+  id: BulletPlasma
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Reflective
     reflective:
-    - Energy
+    - Plasma
   - type: FlyBySound
     sound:
       collection: EnergyMiss
@@ -1188,31 +1189,127 @@
     damage:
       types:
         Heat: 16 # Mono
+    soundHit:
+      collection: MeatLaserImpact
+  - type: AddPlasmaBurningOnHit
+    damage:
+      types:
+        Heat: 5
+        Caustic: 5
+        Structural: 35
+    color: "#83322f"
+    duration: 17
+    armorPenetration: 0.65
+    addStacks: 2
+    whitelist:
+      components:
+      - HumanoidAppearance
+      - PlasmaBurnEligible
 
 - type: entity
-  name: wide laser barrage
-  id: BulletLaserSpread
+  id: BasePlasmaBurnEligible
+  abstract: true
+  components:
+  - type: Appearance
+  - type: PlasmaBurnEligible
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-non-humanoid
+            visible: true
+
+- type: entity
+  parent: BasePlasmaBurnEligible
+  id: BasePlasmaBurnEligibleTurret
+  abstract: true
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-turret
+            visible: true
+
+- type: entity
+  parent: BasePlasmaBurnEligible
+  id: BasePlasmaBurnEligibleHumanoid
+  abstract: true
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true
+
+- type: entity
+  name: wide plasma bolt barrage
+  id: BulletPlasmaSpread
   categories: [ HideSpawnMenu ]
-  parent: BulletLaser
+  parent: BulletPlasma
   components:
   - type: ProjectileSpread
-    proto: BulletLaser
-    count: 5 #65 heat damage if you hit all your shots, but wide spread
+    proto: BulletPlasma
+    count: 5 #Triad : 80 heat damage if you hit all your shots, but wide spread
     spread: 30
 
 - type: entity
-  name: narrow laser barrage
-  id: BulletLaserSpreadNarrow
+  name: narrow plasma bolt barrage
+  id: BulletPlasmaSpreadNarrow
   categories: [ HideSpawnMenu ]
-  parent: BulletLaser
+  parent: BulletPlasma
   components:
   - type: ProjectileSpread
-    proto: BulletLaser
-    count: 4 #52 heat damage if you hit all your shots, but narrower spread
+    proto: BulletPlasma
+    count: 4 #Triad : 64 heat damage if you hit all your shots, but narrower spread
     spread: 10
 
 - type: entity
-  name: disabling laser barrage
+  name: heavy plasma bolt
+  id: BulletPlasmaHeavy
+  parent: BulletPlasma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: red
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+      fly-by: *flybyfixture
+  - type: Projectile
+    impactEffect: BulletImpactEffectRedDisabler
+    damage:
+      types:
+        Heat: 25 # Mono - 20->25
+        Shock: 5 # Triad - shock damage
+# Triad end - plasma bullets
+
+- type: entity
+  name: disabling energy barrage
   id: BulletDisablerSmgSpread
   categories: [ HideSpawnMenu ]
   parent: BulletDisablerSmg
@@ -1345,48 +1442,3 @@
     range: 4
     energyConsumption: 50000
     disableDuration: 60
-
-# DeltaV projectiles
-# For whatever magical reasons, I cannot put those in the DeltaV folders without having errors.
-
-# Because Hitscan lasers aren't fun to shoot in my opinion, we give the HoS pistol a special lethal laser that moves
-- type: entity
-  name: energy bolt
-  id: BulletEnergyGunLaser
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Reflective
-    reflective:
-    - Energy
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
-    layers:
-    - state: omnilaser_greyscale
-      shader: unshaded
-      color: red
-  - type: Ammo
-  - type: Physics
-  - type: Fixtures
-    fixtures:
-      projectile:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,0.2"
-        hard: false
-        mask:
-        - Impassable # Triad - plasma bolts cannot go through windows
-        - BulletImpassable
-      fly-by: *flybyfixture
-  - type: Projectile
-    impactEffect: BulletImpactEffectRedDisabler
-    damage:
-      types:
-        Heat: 25 # Mono - 20->25
-    soundHit:
-      collection: MeatLaserImpact

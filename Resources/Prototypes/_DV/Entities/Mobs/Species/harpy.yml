@@ -90,6 +90,8 @@
       sprite: _DV/Effects/harpysinger.rsi
       state: singing_music_notes
       visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: HumanoidAppearance
     species: Harpy
   - type: Fixtures
@@ -134,6 +136,18 @@
   - type: InstrumentVisuals
   - type: GenericVisualizer
     visuals:
+      enum.CreamPiedVisuals.Creamed:
+        clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
+          True: {visible: true}
+          False: {visible: false}
+      enum.PlasmaBurnVisuals.Burning: # Triad start - plasma burn
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true # Triad end - plasma burn
       enum.InstrumentVisuals.Playing:
         enum.InstrumentVisuals.Layer:
           False: {visible: false}
@@ -227,6 +241,8 @@
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "mask" ]
     - map: [ "head" ]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
 
 - type: entity
   parent: BaseAction
