@@ -1263,7 +1263,7 @@
   components:
   - type: ProjectileSpread
     proto: BulletPlasma
-    count: 5 #65 heat damage if you hit all your shots, but wide spread
+    count: 5 #Triad : 80 heat damage if you hit all your shots, but wide spread
     spread: 30
 
 - type: entity
