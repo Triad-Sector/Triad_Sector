@@ -6221,3 +6221,10 @@ Entries:
   id: 2731
   time: '2026-11-14T20:46:16.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/786
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed the camera setup and map view buttons.
+  id: 2732
+  time: '2026-11-15T01:37:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/827
