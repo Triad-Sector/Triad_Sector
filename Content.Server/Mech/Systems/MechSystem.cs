@@ -96,7 +96,8 @@ public sealed partial class MechSystem : SharedMechSystem
         if (TryComp<WiresPanelComponent>(uid, out var panel) && !panel.Open)
             return;
 
-        if (component.BatterySlot.ContainedEntity == null && TryComp<BatteryComponent>(args.Used, out var battery))
+        // Triad - add battery whitelist
+        if (component.BatterySlot.ContainedEntity == null && TryComp<BatteryComponent>(args.Used, out var battery) && _whitelistSystem.IsWhitelistPass(component.BatterySlotWhitelist, args.Used))
         {
             InsertBattery(uid, args.Used, component, battery);
             return;

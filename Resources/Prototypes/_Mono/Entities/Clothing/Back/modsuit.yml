@@ -40,5 +40,6 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall

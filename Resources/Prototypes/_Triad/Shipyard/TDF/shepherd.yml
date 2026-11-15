@@ -1,0 +1,33 @@
+- type: vessel
+  id: Shepherd
+  parent: BaseVessel
+  name: TDF Shepherd
+  description: A modified mining vessel retrofitted to fill the need for a TDF interceptor. Equipped with 2 Draupnirs, 2 AK-570s, and 2 RUBICONs to quickly disable small targets or chip away at larger ones. Highly maneuverable and affordable.
+  price: 120000
+  category: Small
+  group: Security
+  access: Security
+  shuttlePath: /SharedMaps/_Triad/Shuttles/TDF/shepherd.yml
+  guidebookPage: Null
+  class:
+  - Frigate
+  engine:
+  - Bananium
+
+- type: gameMap
+  id: Shepherd
+  mapName: 'Shepherd'
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/shepherd.yml
+  minPlayers: 0
+  stations:
+    Shepherd:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Shepherd TDF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          TdfEnforcer: [ 0, 0 ]

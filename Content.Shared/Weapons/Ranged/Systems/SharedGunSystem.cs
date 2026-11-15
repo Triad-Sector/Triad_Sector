@@ -730,7 +730,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (sprite == null)
             return;
 
-        var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle);
+        var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle, component.MuzzleLightColor.ToHex(), component.MuzzleLightRadius, component.MuzzleLightEnergy); // Triad
         CreateEffect(gun, ev, user);
     }
 

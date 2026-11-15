@@ -67,6 +67,12 @@ public sealed partial class MechComponent : Component
     [ViewVariables]
     public ContainerSlot BatterySlot = default!;
 
+    /// <summary>
+    /// Triad - The entity whitelist of the battery slot.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist BatterySlotWhitelist;
+
     [ViewVariables]
     public readonly string BatterySlotId = "mech-battery-slot";
 

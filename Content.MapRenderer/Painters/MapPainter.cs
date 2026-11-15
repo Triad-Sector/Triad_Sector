@@ -31,7 +31,7 @@ namespace Content.MapRenderer.Painters
         // Triad: v277's PoolManager defaults a null test context to an NUnit wrapper, which dereferences
         // TestContext.CurrentContext.WorkDirectory and throws outside a real NUnit run. Standalone tools
         // must pass an ExternalTestContext instead.
-        private static readonly ExternalTestContext TestContext = new("Map Renderer", StreamWriter.Null);
+        internal static readonly ExternalTestContext TestContext = new("Map Renderer", StreamWriter.Null);
 
         public static async IAsyncEnumerable<RenderedGridImage<Rgba32>> Paint(string map)
         {

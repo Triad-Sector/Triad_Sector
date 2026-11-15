@@ -116,6 +116,8 @@
       sprite: "Effects/creampie.rsi"
       state: "creampie_vox" # Not default
       visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
       - TauCetiBasic

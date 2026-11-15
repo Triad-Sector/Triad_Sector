@@ -194,7 +194,7 @@ public abstract partial class SharedStunSystem : EntitySystem
     ///     Stuns the entity, disallowing it from doing many interactions temporarily.
     /// </summary>
     public bool TryStun(EntityUid uid, TimeSpan time, bool refresh,
-        StatusEffectsComponent? status = null)
+        StatusEffectsComponent? status = null, bool doJitter = true) // Triad - doJitter
     {
         if (time <= TimeSpan.Zero)
             return false;
@@ -206,8 +206,11 @@ public abstract partial class SharedStunSystem : EntitySystem
             return false;
 
         // goob edit
-        _jitter.DoJitter(uid, time, refresh);
-        _stutter.DoStutter(uid, time, refresh);
+        if (doJitter)
+        {
+            _jitter.DoJitter(uid, time, refresh);
+            _stutter.DoStutter(uid, time, refresh);
+        }
         // goob edit end
 
         var ev = new StunnedEvent();
@@ -242,12 +245,12 @@ public abstract partial class SharedStunSystem : EntitySystem
     ///     Applies knockdown and stun to the entity temporarily.
     /// </summary>
     public bool TryParalyze(EntityUid uid, TimeSpan time, bool refresh,
-        StatusEffectsComponent? status = null)
+        StatusEffectsComponent? status = null, bool doJitter = true) // Triad - doJitter
     {
         if (!Resolve(uid, ref status, false))
             return false;
 
-        return TryKnockdown(uid, time, refresh, status) && TryStun(uid, time, refresh, status);
+        return TryKnockdown(uid, time, refresh, status) && TryStun(uid, time, refresh, status, doJitter);
     }
 
     /// <summary>
