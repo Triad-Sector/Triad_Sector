@@ -1274,7 +1274,7 @@
   components:
   - type: ProjectileSpread
     proto: BulletPlasma
-    count: 4 #52 heat damage if you hit all your shots, but narrower spread
+    count: 4 #Triad : 64 heat damage if you hit all your shots, but narrower spread
     spread: 10
 
 - type: entity
