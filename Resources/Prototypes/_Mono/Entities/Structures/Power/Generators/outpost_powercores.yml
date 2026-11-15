@@ -9,6 +9,8 @@
   components:
     - type: Transform
       anchored: true
+    - type: Anchorable # Triad - not anchorable or unanchorable
+      flags: None
     - type: Physics
       bodyType: Static
     - type: Sprite
