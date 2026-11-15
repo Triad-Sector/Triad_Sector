@@ -1,8 +1,5 @@
-using Content.Shared._Mono.Company; // Mono
 using Content.Shared.Contraband;
-using Content.Shared.Store; // Mono
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes; // Mono
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Contraband;
@@ -15,8 +12,6 @@ public enum ContrabandPalletConsoleUiKey : byte
 
 public abstract partial class SharedContrabandTurnInSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prot = default!;
-
     public void ClearContrabandValue(EntityUid item)
     {
         // Clear contraband value for printed items
