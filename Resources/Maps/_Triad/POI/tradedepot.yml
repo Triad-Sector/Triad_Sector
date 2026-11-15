@@ -4665,8 +4665,6 @@ entities:
       deviceLists:
       - 6
       - 1356
-      configurators:
-      - invalid
   - uid: 634
     components:
     - type: Transform
@@ -4676,8 +4674,6 @@ entities:
       deviceLists:
       - 6
       - 1356
-      configurators:
-      - invalid
   - uid: 635
     components:
     - type: Transform
@@ -4687,8 +4683,6 @@ entities:
       deviceLists:
       - 6
       - 1356
-      configurators:
-      - invalid
   - uid: 636
     components:
     - type: Transform
