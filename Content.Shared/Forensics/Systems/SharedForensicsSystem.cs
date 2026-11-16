@@ -2,7 +2,7 @@ using Content.Shared.Forensics.Components;
 
 namespace Content.Shared.Forensics.Systems;
 
-public abstract class SharedForensicsSystem : EntitySystem
+public abstract partial class SharedForensicsSystem : EntitySystem
 {
     /// <summary>
     /// Give the entity a new, random DNA string and call an event to notify other systems like the bloodstream that it has been changed.
