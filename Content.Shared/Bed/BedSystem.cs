@@ -14,7 +14,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Bed;
 
-public abstract partial class BedSystem : EntitySystem
+public sealed partial class BedSystem : EntitySystem
 {
     [Dependency] private ActionContainerSystem _actConts = default!;
     [Dependency] private DamageableSystem _damageableSystem = default!;
