@@ -583,7 +583,7 @@ namespace Content.Shared.Chemistry.Components
         /// <summary>
         /// Splits a solution without the specified reagent prototypes.
         /// </summary>
-        public Solution SplitSolutionWithout(FixedPoint2 toTake, params string[] excludedPrototypes)
+        public Solution SplitSolutionWithout(FixedPoint2 toTake, params ProtoId<ReagentPrototype>[] excludedPrototypes)
         {
             // First remove the blacklisted prototypes
             List<ReagentQuantity> excluded = new();
