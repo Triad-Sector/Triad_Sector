@@ -33,7 +33,10 @@
 #      - EncryptionKeySecurity
 #      - EncryptionKeyService #Mono end
       - EncryptionKeyCommand #Mono
-      - EncryptionKeyNfsd
+      # Triad: Renamed TDF key and added fireteam channels
+      #- EncryptionKeyNfsd
+      - EncryptionKeyTdfAll
+      # End Triad
 #      - EncryptionKeyTraffic #Mono
 
 - type: entity

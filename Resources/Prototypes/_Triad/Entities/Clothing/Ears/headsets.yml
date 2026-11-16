@@ -7,6 +7,7 @@
   - type: Tag # Ignore Chameleon tags
     tags: []
 
+# Used by Cadets and Enforcers - starts with no fireteam channels
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
   id: ClothingHeadsetTdf
@@ -41,6 +42,7 @@
   - type: Tag # Ignore Chameleon tags
     tags: []
 
+# Used by PTL - starts with no fireteam channels
 - type: entity
   parent: ClothingHeadsetTdf
   id: ClothingHeadsetTdfCommand
@@ -65,6 +67,33 @@
       - EncryptionKeyTdf
       - EncryptionKeyCommand
 
+# Used by LT and CE - starts with all fireteam channels and high command commms
+- type: entity
+  parent: ClothingHeadsetTdf
+  id: ClothingHeadsetTdfOfficer
+  name: TDF command headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdfAll
+      - EncryptionKeyCommand
+      - EncryptionKeyCentCom
+
+- type: entity
+  parent: ClothingHeadsetAltTdf
+  id: ClothingHeadsetAltTdfOfficer
+  name: TDF command over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyTdfAll
+      - EncryptionKeyCommand
+      - EncryptionKeyCentCom
+
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
   id: ClothingHeadsetHighCommand
@@ -75,7 +104,7 @@
       key_slots:
       - EncryptionKeyCentCom
       - EncryptionKeyStationMaster
-      - EncryptionKeyTdf
+      - EncryptionKeyTdfAll
   - type: Sprite
     sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
   - type: Clothing
@@ -91,7 +120,7 @@
       key_slots:
       - EncryptionKeyCentCom
       - EncryptionKeyStationMaster
-      - EncryptionKeyTdf
+      - EncryptionKeyTdfAll
   - type: Sprite
     sprite: _Triad/Clothing/Ears/Headsets/highcom.rsi
   - type: Clothing

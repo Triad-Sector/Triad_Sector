@@ -5,12 +5,14 @@
   color: "#fcba03"
   longRange: true
 
-- type: radioChannel
-  id: CorticalBorer
-  name: chat-radio-cortical-borer
-  keycode: 'z'
-  color: "#d842fc"
-  longRange: true
+# Triad: Remove this to free up the keycode for other purposes.
+#- type: radioChannel
+  #id: CorticalBorer
+  #name: chat-radio-cortical-borer
+  #keycode: 'z'
+  #color: "#d842fc"
+  #longRange: true
+# End Triad
 
 - type: radioChannel
   id: Remnants
