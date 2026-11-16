@@ -67,7 +67,7 @@
       - EncryptionKeyTdf
       - EncryptionKeyCommand
 
-# Used by LT and CE - starts with all fireteam channels and high command commms
+# Used by LT and CE - starts with all fireteam channels and TFA comms
 - type: entity
   parent: ClothingHeadsetTdf
   id: ClothingHeadsetTdfOfficer
@@ -79,7 +79,7 @@
       - EncryptionKeyCommon
       - EncryptionKeyTdfAll
       - EncryptionKeyCommand
-      - EncryptionKeyCentCom
+      - EncryptionKeyService
 
 - type: entity
   parent: ClothingHeadsetAltTdf
@@ -92,7 +92,7 @@
       - EncryptionKeyCommon
       - EncryptionKeyTdfAll
       - EncryptionKeyCommand
-      - EncryptionKeyCentCom
+      - EncryptionKeyService
 
 - type: entity
   parent: [ClothingHeadset, BaseTDFHeadset]
