@@ -6248,3 +6248,16 @@ Entries:
   id: 2733
   time: '2026-11-15T03:54:02.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/829
+- author: Wizden
+  changes:
+    - type: Fix
+      message: >-
+        fix: Fixed backpack water tanks (spray nozzle) projectiles not properly
+        cleaning up puddles.
+    - type: Add
+      message: >-
+        Spray nozzle now can consume liquids from puddles and put it right into
+        backpacked tank.
+  id: 2734
+  time: '2026-11-16T21:05:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/831
