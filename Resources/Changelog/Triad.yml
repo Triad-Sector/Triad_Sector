@@ -6261,3 +6261,12 @@ Entries:
   id: 2734
   time: '2026-11-16T21:05:36.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/831
+- author: aada
+  changes:
+    - type: Add
+      message: You can examine fuel tanks to see how much they're filled.
+    - type: Fix
+      message: You can now see exact values on filled beakers on examine.
+  id: 2735
+  time: '2026-11-16T21:45:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/832
