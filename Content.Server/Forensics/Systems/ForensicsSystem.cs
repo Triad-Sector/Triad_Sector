@@ -20,10 +20,11 @@ using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
+using Content.Shared.Forensics.Systems;
 
 namespace Content.Server.Forensics
 {
-    public sealed partial class ForensicsSystem : EntitySystem
+    public sealed partial class ForensicsSystem : SharedForensicsSystem
     {
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private InventorySystem _inventory = default!;
