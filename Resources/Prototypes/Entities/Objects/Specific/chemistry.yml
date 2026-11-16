@@ -391,7 +391,6 @@
   id: Syringe
   components:
   - type: Injector
-    currentTransferAmount:
     transferAmounts:
     - 5
     - 10
@@ -472,9 +471,6 @@
     - Syringe
     - Trash
     - SyringeGunAmmo
-  - type: Injector # Frontier
-    maxTransferAmount: 5 # Frontier
-    transferAmount: 5 # Frontier
 
 - type: entity
   abstract: true
