@@ -60,6 +60,8 @@
       sprite: "Effects/creampie.rsi"
       state: "creampie_human"
       visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -81,6 +83,14 @@
         clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
           True: {visible: true}
           False: {visible: false}
+      enum.PlasmaBurnVisuals.Burning: # Triad start - plasma burn
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true # Triad end - plasma burn
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: RotationVisuals
@@ -375,6 +385,8 @@
     - map: [ "head" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
+    - map: [ "plasmaburn" ] # Triad
+      shader: unshaded
   - type: Appearance
   - type: HumanoidAppearance
     species: Human

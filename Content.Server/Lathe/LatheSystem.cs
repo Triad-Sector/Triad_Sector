@@ -331,11 +331,10 @@ namespace Content.Server.Lathe
                     if (result.Valid)
                     {
                         ModifyPrintedEntityPrice(uid, comp, result);
-                        // End Frontier
 
-                        // Mono: Handle printable contraband
-                        _contraband.HandleContrabandValueByCompany(result, prodComp.Actor);
+                        _contraband.ClearContrabandValue(result);
                     }
+                    // End Frontier
 
                     _stack.TryMergeToContacts(result);
                 }

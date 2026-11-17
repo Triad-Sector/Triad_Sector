@@ -152,7 +152,7 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: ProjectileBatteryAmmoProvider
     fireCost: 150
-    proto: BulletLaserSpread
+    proto: BulletPlasmaSpread
   - type: Battery
     maxCharge: 600
     startingCharge: 600

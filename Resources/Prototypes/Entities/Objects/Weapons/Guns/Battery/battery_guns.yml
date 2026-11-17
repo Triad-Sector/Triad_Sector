@@ -353,10 +353,10 @@
   # End Mono
 
 - type: entity
-  name: LWC pulse carbine
+  name: QBJ-74B pulse carbine
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseCarbine
-  description: A common sight in the hands of higher ranked Solarian Directive, the pulse carbine is a punchy laser weapon salvaged from the remnants of Nanotrasen. # Mono
+  description: A common sight in the hands of higher ranked Solarian Directive members, the QBJ-74B carbine is a punchy laser weapon salvaged from the remnants of NanoTrasen pulse rifles. The original design dates to year 2774. # Triad
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
@@ -405,7 +405,7 @@
   name: NT pulse rifle
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseTriadC2Contraband, BaseContrabandPermittable] # Triad
   id: WeaponPulseRifle
-  description: A weapon that used to be used by the special operations units of NT, but now commonly seen in the hands of the SD. # Mono
+  description: A weapon that used to be used by the special operations units of NanoTrasen. # Triad
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
@@ -953,13 +953,13 @@
     maxCharge: 1200
     startingCharge: 1200
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletLaserSpread
+    proto: BulletPlasmaSpread
     fireCost: 150
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: BulletLaserSpread
+    - proto: BulletPlasmaSpread
       fireCost: 150
-    - proto: BulletLaserSpreadNarrow
+    - proto: BulletPlasmaSpreadNarrow
       fireCost: 200
     - proto: BulletDisablerSmgSpread
       fireCost: 120

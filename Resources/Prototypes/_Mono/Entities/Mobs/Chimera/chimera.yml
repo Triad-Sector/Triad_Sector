@@ -28,6 +28,18 @@
     - map: [ "head" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
+  - type: GenericVisualizer
+    visuals:
+      enum.PlasmaBurnVisuals.Burning: # Triad start - plasma burn
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true # Triad end - plasma burn
   - type: DamageStateVisuals
     states:
       Alive:

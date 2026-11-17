@@ -101,6 +101,8 @@
     noRot: true
     layers:
     - state: acid_turret
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: BallisticAmmoProvider
     proto: BulletAcid
     capacity: 500
