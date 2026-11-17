@@ -584,4 +584,7 @@ MuteToxinChemistryBottle: ChemistryBottleMuteToxin
 LeadChemistryBottle: ChemistryBottleLead
 ToxinChemistryBottle: ChemistryBottleToxin
 
+# 2025-08-29
+PrefilledSyringe: Syringe
+
 # Frontier: put Frontier-related migrations in nf_migration.yml. Thank you.

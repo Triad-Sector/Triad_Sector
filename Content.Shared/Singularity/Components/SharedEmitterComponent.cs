@@ -29,7 +29,7 @@ public sealed partial class EmitterComponent : Component
     [DataField("boltType")]
     public EntProtoId BoltType = "EmitterBolt";
 
-    [DataField("selectableTypes")]
+    [DataField]
     public List<EntProtoId> SelectableTypes = new();
 
     /// <summary>

@@ -19,9 +19,9 @@
   - type: Injector
     injectOnly: false
     ignoreMobs: true
-    minTransferAmount: 2
-    maxTransferAmount: 2
-    transferAmount: 2
+    transferAmounts:
+    - 2
+    currentTransferAmount: 2
     toggleState: Draw
   - type: ExaminableSolution
     solution: injector
@@ -207,9 +207,10 @@
   - type: Injector
     injectOnly: false
     ignoreMobs: true
-    minTransferAmount: 5
-    maxTransferAmount: 10
-    transferAmount: 10
+    transferAmounts:
+    - 5
+    - 10
+    currentTransferAmount: 10
     toggleState: Draw
 
 # Craftable variations

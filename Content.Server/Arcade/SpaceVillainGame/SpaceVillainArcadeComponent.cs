@@ -89,7 +89,7 @@ public sealed partial class SpaceVillainArcadeComponent : SharedSpaceVillainArca
     /// The prototypes that can be dispensed as a reward for winning the game.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("possibleRewards")]
+    [DataField]
     public List<EntProtoId> PossibleRewards = new();
 
     /// <summary>
