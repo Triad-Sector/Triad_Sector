@@ -24,13 +24,10 @@
         - ReagentId: Beer
           Quantity: 100
   - type: SolutionTransfer
-    currentTransferAmount: 50
-    transferAmounts:
-    - 10
-    - 25
-    - 50
-    - 75
-    - 100
+    transferAmount: 50
+    maxTransferAmount: 100
+    minTransferAmount: 10
+    canChangeTransferAmount: true
   - type: UserInterface
     interfaces:
       enum.TransferAmountUiKey.Key:
