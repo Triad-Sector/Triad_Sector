@@ -3,7 +3,7 @@
   id: EncryptionKeyTdf
   name: TDF encryption key
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF, configured to receive their main channel.
+  description: "An encryption key for the TDF, configured to receive their main channel.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:
@@ -29,7 +29,7 @@
   id: EncryptionKeyTdf1
   name: TDF encryption key (Alpha)
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF, configured to receive their main and fireteam alpha channels.
+  description: "An encryption key for the TDF, configured to receive their main and alpha fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:
@@ -50,7 +50,7 @@
   id: EncryptionKeyTdf2
   name: TDF encryption key (Bravo)
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF, configured to receive their main and fireteam bravo channels.
+  description: "An encryption key for the TDF, configured to receive their main and bravo fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:
@@ -71,7 +71,7 @@
   id: EncryptionKeyTdf3
   name: TDF encryption key (Charlie)
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF, configured to receive their main and fireteam charlie channels.
+  description: "An encryption key for the TDF, configured to receive their main and charlie fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:
@@ -92,7 +92,7 @@
   id: EncryptionKeyTdfAll
   name: TDF encryption key (All)
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF, configured to receive all four of their channels.
+  description: "An encryption key for the TDF, configured to receive their main and all fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:

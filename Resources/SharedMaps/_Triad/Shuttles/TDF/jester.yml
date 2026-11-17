@@ -2183,13 +2183,6 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
-- proto: TelecomServerFilledNfsd
-  entities:
-  - uid: 263
-    components:
-    - type: Transform
-      pos: 3.5,-1.5
-      parent: 1
 - proto: ThrusterTdf
   entities:
   - uid: 264
