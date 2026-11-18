@@ -45,7 +45,7 @@
       fireCost: 45 # Mono 100->45
       name: disable
       state: disabler
-    - proto: BulletEnergyGunLaser
+    - proto: BulletPlasmaHeavy
       fireCost: 75 # Mono 200->75
       name: kill
       state: lethal
@@ -115,7 +115,7 @@
       fireCost: 45 # Mono 100->45
       name: disable
       state: disabler
-    - proto: BulletEnergyGunLaser
+    - proto: BulletPlasmaHeavy
       fireCost: 75 # Mono 200->75
       name: kill
       state: lethal
@@ -181,7 +181,7 @@
       fireCost: 60 # Mono 100 -> 60
       name: disable
       state: disabler
-    - proto: BulletEnergyGunLaser
+    - proto: BulletPlasmaHeavy
       fireCost: 90 # Mono 200 -> 90
       name: lethal
       state: lethal

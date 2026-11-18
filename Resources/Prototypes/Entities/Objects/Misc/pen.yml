@@ -119,7 +119,7 @@
 
 - type: entity
   name: CentComm pen
-  parent: BaseAdvancedPen
+  parent: NFBaseUnprotectedAdvancedPen # Triad
   id: PenCentcom
   description: In an attempt to keep up with the "power" of the cybersun bureaucracy, NT made a replica of cyber pen, in their corporate style.
   components:

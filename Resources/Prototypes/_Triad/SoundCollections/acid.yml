@@ -1,0 +1,7 @@
+- type: soundCollection
+  id: AcidSizzle
+  files:
+  - /Audio/_Triad/Effects/acid_sizzle1.ogg
+  - /Audio/_Triad/Effects/acid_sizzle2.ogg
+  - /Audio/_Triad/Effects/acid_sizzle3.ogg
+  - /Audio/_Triad/Effects/acid_sizzle4.ogg

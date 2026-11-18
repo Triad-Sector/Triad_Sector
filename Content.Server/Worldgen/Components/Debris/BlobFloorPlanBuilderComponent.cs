@@ -24,7 +24,7 @@ public sealed partial class BlobFloorPlanBuilderComponent : Component
     /// <summary>
     ///     The tiles to be used for the floor plan.
     /// </summary>
-    [DataField("floorTileset", required: true)]
+    [DataField(required: true)]
     public List<ProtoId<ContentTileDefinition>> FloorTileset { get; private set;  } = default!;
 
     /// <summary>

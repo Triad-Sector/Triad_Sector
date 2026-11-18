@@ -11,6 +11,6 @@ public sealed partial class AutoImplantComponent : Component
     /// <summary>
     /// List of implants to inject.
     /// </summary>
-    [DataField("implants", required: true)]
+    [DataField(required: true)]
     public List<EntProtoId> Implants = new();
 }

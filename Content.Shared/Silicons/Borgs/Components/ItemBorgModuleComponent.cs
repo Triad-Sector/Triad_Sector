@@ -13,7 +13,7 @@ public sealed partial class ItemBorgModuleComponent : Component
     /// <summary>
     /// The items that are provided.
     /// </summary>
-    [DataField("items", required: true)]
+    [DataField(required: true)]
     public List<EntProtoId> Items = new();
 
     /// <summary>

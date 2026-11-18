@@ -137,6 +137,7 @@
 - type: entity
   parent:
   - MobRogueSiliconBase
+  - BasePlasmaBurnEligibleHumanoid # Triad
   id: MobRogueSiliconScrapBase
   name: scrap unit
   description: These bots come in various shapes and forms, reflecting a wide range of designs and purposes. Many seem to be put together using locally available materials, leading to their disparate appearances. Notably, some units are equipped with thrusters and embedded laser weapons.
@@ -172,6 +173,8 @@
     - state: mask_null
       map: [ "overlayUnshaded" ]
       shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     rotate: true
   - type: RotationVisuals
@@ -193,7 +196,7 @@
   abstract: true
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletEnergyGunLaser
+    proto: BulletPlasmaHeavy
     fireCost: 100
 
 - type: entity
@@ -674,6 +677,7 @@
   - MobRogueSiliconBase
   - MobPassiveRegen
   - MobRogueSiliconAISimpleMelee
+  - BasePlasmaBurnEligibleHumanoid # Triad
   id: MobRogueSiliconServo
   name: servo unit
   description: With its programming rewritten, this crash test dummy will stop at nothing in exacting its revenge.
@@ -701,6 +705,8 @@
       state: l_leg_servo
     - sprite: _NF/Mobs/RogueSilicons/robots.rsi
       state: r_leg_servo
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     rotate: true
   - type: RotationVisuals
@@ -712,6 +718,7 @@
   - MobRogueSiliconBase
   - MobPassiveRegen
   - MobRogueSiliconAISimpleMelee
+  - BasePlasmaBurnEligibleHumanoid # Triad
   id: MobRogueSiliconHerder
   name: herder unit
   description: This rogue silicon unit's primary directive is to corral and herd captives. Its stun prod can be used to good effect, take caution.
@@ -745,6 +752,8 @@
       state: r_leg_generic
     - sprite: Objects/Weapons/Melee/stunprod.rsi
       state: on-inhand-right
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     rotate: true
   - type: RotationVisuals
@@ -825,6 +834,7 @@
   parent:
   - MobRogueSiliconBase
   - MobPassiveRegen
+  - BasePlasmaBurnEligibleHumanoid # Triad
   id: MobRogueSiliconCatcher
   name: catcher unit
   description: Equipped with bolas, this unit is designed to slow, capture, and detain targets.
@@ -857,6 +867,8 @@
       state: equipped-NECK
     - sprite: _NF/Mobs/RogueSilicons/robots.rsi
       state: overlay_r_arm_claws
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     rotate: true
   - type: RotationVisuals
@@ -889,6 +901,7 @@
   - MobRogueSiliconBase
   - MobPassiveRegen
   - MobRogueSiliconAISimpleMelee
+  - BasePlasmaBurnEligibleHumanoid # Triad
   id: MobRogueSiliconTesla
   name: tesla unit
   description: Originally designed to service tesla power generators, this silicon's equipment has been repurposed as a makeshift stun gun.
@@ -912,6 +925,8 @@
       shader: unshaded
     - sprite: Objects/Weapons/Guns/Battery/tesla_gun.rsi
       state: inhand-right
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     rotate: true
   - type: RotationVisuals

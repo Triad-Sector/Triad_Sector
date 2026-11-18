@@ -2,7 +2,7 @@
 - type: entity
   name: burrower
   id: MobXeno
-  parent: SimpleSpaceMobBase
+  parent: [SimpleSpaceMobBase, BasePlasmaBurnEligible] # Triad - plasma burn
   description: They mostly come at night. Mostly.
   categories: [ HideSpawnMenu ] # Frontier
   components:
@@ -45,6 +45,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: Fixtures
     fixtures:
       fix1:
@@ -149,6 +151,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -183,6 +187,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -221,6 +227,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -268,6 +276,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -306,6 +316,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MovementSpeedModifier
     baseSprintSpeed: 6.0
   - type: MeleeWeapon
@@ -354,6 +366,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -402,6 +416,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: purple_snake
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -473,6 +489,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: small_purple_snake
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:

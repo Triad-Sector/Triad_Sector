@@ -24,6 +24,10 @@ public sealed partial class RattleComponent : Component
     // The message that the implant will send when dead
     [DataField("deathMessage")]
     public LocId DeathMessage = "deathrattle-implant-dead-message";
+    
+    // The message that the implant will send when revived from death // Mono
+    [DataField("reviveMessage")]
+    public LocId ReviveMessage = "deathrattle-implant-revive-message";
 
     // Triad: Add recurring rattle
     // The message that the implant will send IF they are still dead

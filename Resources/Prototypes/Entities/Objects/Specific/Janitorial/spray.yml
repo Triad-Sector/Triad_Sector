@@ -42,6 +42,7 @@
     solution: spray
   - type: ExaminableSolution
     solution: spray
+    exactVolume: true
 
 - type: entity
   name: mega spray bottle
@@ -99,8 +100,8 @@
   - type: Tag
     tags:
       - Spray
-# Vapor
 
+# Vapor
 - type: entity
   id: Vapor
   name: "vapor"
@@ -111,6 +112,8 @@
       vapor:
         maxVol: 50
   - type: Vapor
+    active: true
+    transferAmountPercentage: 0.5
   - type: AnimationPlayer
   - type: Sprite
     sprite: Effects/chempuff.rsi

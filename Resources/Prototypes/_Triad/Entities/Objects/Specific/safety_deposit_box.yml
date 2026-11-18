@@ -23,6 +23,7 @@
       - Headset
       - Implant
       - SafetyDepositBox
+      - MobState
   - type: SafetyDepositBox
   - type: Appearance
   - type: Tag

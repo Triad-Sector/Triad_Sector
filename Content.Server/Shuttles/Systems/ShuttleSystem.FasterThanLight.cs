@@ -984,6 +984,9 @@ public sealed partial class ShuttleSystem
             if (mobXform.GridUid != shuttleGridId)
                 continue;
 
+            if (mobState.CurrentState == Content.Shared.Mobs.MobState.Alive)
+                continue;
+
             var deathrattleEvent = new ReTriggerRattleImplantEvent(mobUid, mobState.CurrentState);
             RaiseLocalEvent(mobUid, deathrattleEvent);
         }

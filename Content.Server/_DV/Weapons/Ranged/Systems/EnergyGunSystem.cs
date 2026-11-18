@@ -124,6 +124,7 @@ public sealed partial class EnergyGunSystem : EntitySystem
 
             projectileBatteryAmmoProvider.Prototype = fireMode.Prototype;
             projectileBatteryAmmoProvider.FireCost = fireMode.FireCost;
+            Dirty(uid, projectileBatteryAmmoProvider); // Triad - dirty this for networking
 
             if (user != null)
             {

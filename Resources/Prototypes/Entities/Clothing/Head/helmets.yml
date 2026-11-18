@@ -487,6 +487,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSmall
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: PowerCellDraw
     drawRate: 2
   - type: ToggleCellDraw
@@ -503,6 +507,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: BaseAction
