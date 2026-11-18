@@ -10,7 +10,6 @@
       access: [ ] # Frontier: Removed ["Research"], ["Cargo"]
     - type: Lock
     - type: ResistLocker
-    - type: HLPersistOnShipSave # Triad
     - type: Sprite
       drawdepth: Objects
       sprite: Structures/Storage/Crates/artifact.rsi
