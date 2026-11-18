@@ -1,6 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Xenoarchaeology.Artifact.XAE.Components;
-using Content.Server.Atmos.Components; // Triad: FlammableComponent is still server-side here
+using Content.Shared.Atmos.Components;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Shared.Random;

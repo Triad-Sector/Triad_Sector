@@ -35,7 +35,7 @@ namespace Content.MapRenderer
             {
                 Console.WriteLine("Didn't specify any maps to paint! Loading the map list...");
 
-                await using var pair = await PoolManager.GetServerClient();
+                await using var pair = await PoolManager.GetServerClient(testContext: MapPainter.TestContext);
                 var mapIds = pair.Server
                     .ResolveDependency<IPrototypeManager>()
                     .EnumeratePrototypes<GameMapPrototype>()
@@ -115,7 +115,7 @@ namespace Content.MapRenderer
                     Console.WriteLine("Retrieving map ids by map file names...");
 
                     Console.Write("Fetching map prototypes... ");
-                    await using var pair = await PoolManager.GetServerClient();
+                    await using var pair = await PoolManager.GetServerClient(testContext: MapPainter.TestContext);
                     var mapPrototypes = pair.Server
                         .ResolveDependency<IPrototypeManager>()
                         .EnumeratePrototypes<GameMapPrototype>()

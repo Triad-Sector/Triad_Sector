@@ -1,6 +1,6 @@
-
 using Content.Server.Maps;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.GameTicking.Presets
 {
@@ -31,7 +31,7 @@ namespace Content.Server.GameTicking.Presets
         [DataField("maxPlayers")]
         public int? MaxPlayers;
 
-        [DataField("rules")]
+        [DataField]
         public IReadOnlyList<EntProtoId> Rules { get; private set; } = Array.Empty<EntProtoId>();
 
         /// <summary>

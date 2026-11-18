@@ -276,6 +276,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellAntiqueProto
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments:
     - MonoRemnantBorgTitle
@@ -675,6 +679,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellCombat
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments: [MonoPDVBorgNameset]
 
@@ -694,6 +702,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellCombat
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: RandomMetadata
     nameSegments: [MonoTSFBorgNameset]
 

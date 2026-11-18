@@ -6,6 +6,7 @@
   - MobNonHumanHostileBase
   - MobHumanoidInvetory
   - NFMobRestrictions
+  - BasePlasmaBurnEligible
   id: MobExplorerBase
   components:
   - type: NpcFactionMember
@@ -62,6 +63,16 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 4.5
     baseSprintSpeed : 4.5
+  - type: GenericVisualizer # Triad - plasma burn
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true
 
 # Variations
 ## Tier 1
@@ -191,6 +202,8 @@
     - sprite: Objects/Tools/flashlight.rsi
       state: inhand-left-light
       shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 1
     rechargeSound:
@@ -244,6 +257,8 @@
     - sprite: Objects/Weapons/Melee/crusher_glaive-inhands.rsi
       state: wielded-inhand-right
     # Fluff
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MeleeWeapon
     attackRate: 1.5
     altDisarm: false
@@ -296,6 +311,8 @@
     - sprite: Objects/Weapons/Melee/crusher_dagger.rsi
       state: inhand-left
     # Fluff
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 1
     rechargeSound:
@@ -351,6 +368,8 @@
     - sprite: Objects/Tools/lantern.rsi
       state: on-equipped-BELT
       shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: MeleeWeapon
     autoAttack: true
     angle: 0
@@ -405,6 +424,8 @@
     - sprite: Objects/Tools/lantern.rsi
       state: on-equipped-BELT
       shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 1
     rechargeSound:
@@ -448,6 +469,8 @@
     layers:
     - map: [ "enum.MechVisualLayers.Base" ]
       state: hauler
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -552,6 +575,8 @@
     # Fluff
     - sprite: Objects/Tools/lantern.rsi
       state: on-equipped-BELT
+      shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
       shader: unshaded
   - type: PointLight
     radius: 7

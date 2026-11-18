@@ -152,6 +152,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Tag
     tags: []
 
@@ -202,7 +206,7 @@
     jumpSound: /Audio/Effects/Footsteps/suitstep2.ogg
   - type: ActionGrant
     actions:
-    - ActionGravityJump 
+    - ActionGravityJump
   - type: ItemActionGrant
     actions:
     - ActionGravityJump

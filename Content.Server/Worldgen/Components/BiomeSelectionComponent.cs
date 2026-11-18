@@ -1,5 +1,5 @@
-﻿using Content.Server.Worldgen.Systems.Biomes;
 using Content.Server.Worldgen.Prototypes;
+using Content.Server.Worldgen.Systems.Biomes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Worldgen.Components;
@@ -15,6 +15,7 @@ public sealed partial class BiomeSelectionComponent : Component
     ///     The list of biomes available to this selector.
     /// </summary>
     /// <remarks>This is always sorted by priority after ComponentStartup.</remarks>
-    [DataField("biomes", required: true)] public List<ProtoId<BiomePrototype>> Biomes = new();
+    [DataField(required: true)]
+    public List<ProtoId<BiomePrototype>> Biomes = new();
 }
 

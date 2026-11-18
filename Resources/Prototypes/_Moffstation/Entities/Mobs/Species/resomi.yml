@@ -292,6 +292,8 @@
       sprite: "_Moffstation/Effects/creampie.rsi"
       state: "creampie_resomi"
       visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: Tag
     tags:
     - CanPilot

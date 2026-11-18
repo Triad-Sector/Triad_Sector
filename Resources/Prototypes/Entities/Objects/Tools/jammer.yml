@@ -36,6 +36,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Appearance
   - type: GenericVisualizer
     visuals:

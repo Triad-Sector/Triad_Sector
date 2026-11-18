@@ -6,6 +6,11 @@
   - type: MobMover
   - type: Mech
     maxEquipmentAmount: 2
+    batterySlotWhitelist:
+      tags:
+      - PowerCell
+      - PowerCellSmall
+      - PowerCage # Triad - whitelist for valid items to go in battery slot
   - type: MechAir
   - type: AirFilter
     # everything except oxygen and nitrogen

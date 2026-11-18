@@ -283,10 +283,11 @@
       price: 1000 #triad
     - type: MachinePart # Frontier
       part: PowerCell # Frontier
-      rating: 4 # Frontier: tier of this is arguable # Triad: 6 -> 4
+      rating: 5 # Frontier: tier of this is arguable # Triad: 6 -> 5
     - type: Tag #Triad
       tags:
-        - PowerCellAntique #Triad End
+        - PowerCellAntique
+        - PowerCell # Triad End
 
 # Power cage (big heavy power cell for big devices)
 

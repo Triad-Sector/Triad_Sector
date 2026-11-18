@@ -173,6 +173,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   id: MakeshiftDefibUnfinished
@@ -291,7 +295,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-#        startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Appearance
   - type: Sprite
     sprite: _Goobstation/Objects/Devices/makeshift_jammer.rsi

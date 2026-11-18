@@ -197,7 +197,8 @@
         disableEject: true
         whitelist:
           tags:
-            - PowerCell
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingOuterBase
