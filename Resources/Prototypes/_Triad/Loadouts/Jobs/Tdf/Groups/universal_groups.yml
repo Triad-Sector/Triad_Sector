@@ -115,7 +115,7 @@
   fallbacks:
   - ClothingHeadsetTdf
 
-# Senior headsets
+# Senior headsets - default to no fireteam channels
 - type: loadoutGroup
   id: TdfEarsSenior
   name: loadout-group-contractor-ears
@@ -125,6 +125,17 @@
   - ClothingHeadsetTdfCommand
   fallbacks:
   - ClothingHeadsetAltTdfCommand
+
+# Officer headsets - default to all fireteam channels
+- type: loadoutGroup
+  id: TdfEarsOfficer
+  name: loadout-group-contractor-ears
+  minLimit: 1
+  loadouts:
+  - ClothingHeadsetAltTdfOfficer
+  - ClothingHeadsetTdfOfficer
+  fallbacks:
+  - ClothingHeadsetAltTdfOfficer
 
 # vests
 - type: loadoutGroup

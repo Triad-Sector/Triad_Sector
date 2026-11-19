@@ -17,3 +17,13 @@
   id: ClothingHeadsetAltTdfCommand
   equipment:
     ears: ClothingHeadsetAltTdfCommand
+
+- type: loadout
+  id: ClothingHeadsetTdfOfficer
+  equipment:
+    ears: ClothingHeadsetTdfOfficer
+
+- type: loadout
+  id: ClothingHeadsetAltTdfOfficer
+  equipment:
+    ears: ClothingHeadsetAltTdfOfficer

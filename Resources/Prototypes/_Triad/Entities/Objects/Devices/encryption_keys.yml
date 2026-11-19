@@ -3,11 +3,11 @@
   id: EncryptionKeyTdf
   name: TDF encryption key
   categories: [ DoNotMap ]
-  description: An encryption key for the TDF channel.
+  description: "An encryption key for the TDF, configured to receive their main channel.\nUse a screwdriver to configure which fireteam channels it receives."
   components:
   - type: EncryptionKey
     channels:
-    - Nfsd
+    - Nfsd # TDF main channel
     defaultChannel: Nfsd
   - type: Item
     sprite: _NF/Objects/Devices/encryption_keys.rsi
@@ -15,17 +15,107 @@
     sprite: _NF/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_gray
-    - sprite: Objects/Devices/encryption_keys.rsi
-      state: hos_label
+    - sprite: _Triad/Objects/Devices/encryption_keys.rsi
+      state: tdf_none_label
   - type: PirateBountyItem
     id: EncryptionKeyFaction
+  - type: Construction
+    deconstructionTarget: null
+    graph: TdfEncryptionKeySwapGraph
+    node: swap_none
+
+- type: entity
+  parent: EncryptionKeyTdf
+  id: EncryptionKeyTdf1
+  name: TDF encryption key (Alpha)
+  categories: [ DoNotMap ]
+  description: "An encryption key for the TDF, configured to receive their main and alpha fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  components:
+  - type: EncryptionKey
+    channels:
+    - Nfsd # TDF main channel
+    - TDF1
+    defaultChannel: Nfsd
+  - type: Sprite
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gray
+    - sprite: _Triad/Objects/Devices/encryption_keys.rsi
+      state: tdf_alpha_label
+  - type: Construction
+    node: swap_alpha
+
+- type: entity
+  parent: EncryptionKeyTdf
+  id: EncryptionKeyTdf2
+  name: TDF encryption key (Bravo)
+  categories: [ DoNotMap ]
+  description: "An encryption key for the TDF, configured to receive their main and bravo fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  components:
+  - type: EncryptionKey
+    channels:
+    - Nfsd # TDF main channel
+    - TDF2
+    defaultChannel: Nfsd
+  - type: Sprite
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gray
+    - sprite: _Triad/Objects/Devices/encryption_keys.rsi
+      state: tdf_bravo_label
+  - type: Construction
+    node: swap_bravo
+
+- type: entity
+  parent: EncryptionKeyTdf
+  id: EncryptionKeyTdf3
+  name: TDF encryption key (Charlie)
+  categories: [ DoNotMap ]
+  description: "An encryption key for the TDF, configured to receive their main and charlie fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  components:
+  - type: EncryptionKey
+    channels:
+    - Nfsd # TDF main channel
+    - TDF3
+    defaultChannel: Nfsd
+  - type: Sprite
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gray
+    - sprite: _Triad/Objects/Devices/encryption_keys.rsi
+      state: tdf_charlie_label
+  - type: Construction
+    node: swap_charlie
+
+- type: entity
+  parent: EncryptionKeyTdf
+  id: EncryptionKeyTdfAll
+  name: TDF encryption key (All)
+  categories: [ DoNotMap ]
+  description: "An encryption key for the TDF, configured to receive their main and all fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  components:
+  - type: EncryptionKey
+    channels:
+    - Nfsd # TDF main channel
+    - TDF1
+    - TDF2
+    - TDF3
+    defaultChannel: Nfsd
+  - type: Sprite
+    sprite: _NF/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gray
+    - sprite: _Triad/Objects/Devices/encryption_keys.rsi
+      state: tdf_all_label
+  - type: Construction
+    node: swap_all
 
 - type: entity
   parent: [ BaseFactionGearSDT1, EncryptionKey, BaseClass2AShipContrabandSilent ]
   id: EncryptionKeySolarianDirective
   name: SD encryption key
   categories: [ DoNotMap ]
-  description: An encryption key for the Solarian Directive channel. Terralith corpos, Blue Diamond, Helios corpos, etc..
+  description: An encryption key for the Solarian Directive's secure channel. Used by Terralith, Blue Diamond, Helios and other, smaller companies.
   components:
   - type: EncryptionKey
     channels:
