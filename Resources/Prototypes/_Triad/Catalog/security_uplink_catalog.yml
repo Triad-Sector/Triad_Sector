@@ -1149,10 +1149,10 @@
   id: UplinkSecurityPartBox
   name: uplink-security-components-name
   description: uplink-security-components-desc
-  productEntity: BoxSuperComponents
-  icon: { sprite: Objects/Misc/stock_parts.rsi, state: super_capacitor }
+  productEntity: RPEDFilledSuperParts
+  icon: { sprite: _NF/Objects/Specific/Research/rped.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 60
+    TriadCommerceCredit: 30
   categories:
   - UplinkSecurityBundles
   conditions:

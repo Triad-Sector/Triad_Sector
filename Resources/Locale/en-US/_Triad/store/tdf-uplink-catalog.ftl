@@ -152,8 +152,8 @@ uplink-security-tier-2-voucher-desc = A single use TDF DSID for any tier 2 vesse
 uplink-security-tools-name = Emergency Repair Bundle
 uplink-security-tools-desc = A duffel bag loaded with tools for repair and maintenance.
 
-uplink-security-components-name = Super Components box
-uplink-security-components-desc = 5 manipulators, 5 matter bins, and 20 capacitors for upgrading machines.
+uplink-security-components-name = Part Upgrade Kit
+uplink-security-components-desc = 10 super capacitors, super manipulators, and super matter bins for upgrading your machines. Bundled with an RPED.
 
 uplink-security-gun-mk58-name = MA Mk-58 Bundle
 uplink-security-gun-mk58-desc = Case containing a standard-issue pistol and reserve ammunition.
