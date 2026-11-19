@@ -7,8 +7,8 @@
   components:
   - type: EncryptionKey
     channels:
-    - TDF
-    defaultChannel: TDF
+    - Nfsd # TDF main channel
+    defaultChannel: Nfsd
   - type: Item
     sprite: _NF/Objects/Devices/encryption_keys.rsi
   - type: Sprite
@@ -33,9 +33,9 @@
   components:
   - type: EncryptionKey
     channels:
-    - TDF
+    - Nfsd # TDF main channel
     - TDF1
-    defaultChannel: TDF
+    defaultChannel: Nfsd
   - type: Sprite
     sprite: _NF/Objects/Devices/encryption_keys.rsi
     layers:
@@ -54,9 +54,9 @@
   components:
   - type: EncryptionKey
     channels:
-    - TDF
+    - Nfsd # TDF main channel
     - TDF2
-    defaultChannel: TDF
+    defaultChannel: Nfsd
   - type: Sprite
     sprite: _NF/Objects/Devices/encryption_keys.rsi
     layers:
@@ -75,9 +75,9 @@
   components:
   - type: EncryptionKey
     channels:
-    - TDF
+    - Nfsd # TDF main channel
     - TDF3
-    defaultChannel: TDF
+    defaultChannel: Nfsd
   - type: Sprite
     sprite: _NF/Objects/Devices/encryption_keys.rsi
     layers:
@@ -96,11 +96,11 @@
   components:
   - type: EncryptionKey
     channels:
-    - TDF
+    - Nfsd # TDF main channel
     - TDF1
     - TDF2
     - TDF3
-    defaultChannel: TDF
+    defaultChannel: Nfsd
   - type: Sprite
     sprite: _NF/Objects/Devices/encryption_keys.rsi
     layers:

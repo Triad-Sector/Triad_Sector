@@ -1,5 +1,5 @@
 - type: radioChannel
-  id: TDF # TDF channel
+  id: Nfsd # Main TDF channel. Renaming it would change a billion files, so this is easier.
   name: chat-radio-tdf
   keycode: 's'
   frequency: 1879
