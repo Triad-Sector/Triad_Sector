@@ -49,12 +49,10 @@ public sealed class TriadCCVars
 
     // Triad: drydock
     /// <summary>
-    /// Master switch for the drydock. Off means the console offers neither store nor retrieve, and
-    /// the round-end warning, the round-end impound sweep, transfer-offer expiry and the re-bake sweep
-    /// do not run. Stored ships are untouched either way.
+    /// Whether or not the drydock (ship save) system is enabled
     /// </summary>
     public static readonly CVarDef<bool> DrydockEnabled =
-        CVarDef.Create("triad.drydock.enabled", false, CVar.SERVERONLY);
+        CVarDef.Create("triad.drydock.enabled", true, CVar.SERVERONLY);
 
     /// <summary>
     /// Retrieve is allowed and store is refused, impounds included. The round-end warning and
@@ -92,9 +90,8 @@ public sealed class TriadCCVars
         CVarDef.Create("triad.drydock.transfer_offer_seconds", 1800, CVar.SERVERONLY);
 
     /// <summary>
-    /// Whether the drydock offers to import ships saved under the old shipyard save system. This is
-    /// onboarding, not a feature: it exists to drain the legacy pool and is meant to be switched off
-    /// once it has.
+    /// Whether the drydock offers to import ships saved under the old shipyard save system. Switch this off
+    /// once the legacy pool has shrunk.
     /// </summary>
     public static readonly CVarDef<bool> DrydockImportEnabled =
         CVarDef.Create("triad.drydock.import_enabled", false, CVar.SERVERONLY);
