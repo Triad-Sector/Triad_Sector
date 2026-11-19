@@ -11,7 +11,7 @@ namespace Content.Server.Jobs;
 [UsedImplicitly]
 public sealed partial class AddImplantSpecial : JobSpecial
 {
-    [DataField("implants")]
+    [DataField]
     public HashSet<EntProtoId> Implants { get; private set; } = new();
 
     public override void AfterEquip(EntityUid mob)

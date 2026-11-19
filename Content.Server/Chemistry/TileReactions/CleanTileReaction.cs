@@ -51,7 +51,7 @@ public sealed partial class CleanTileReaction : ITileReaction
                 continue;
             }
 
-            var purgeable = solutionContainerSystem.SplitSolutionWithout(puddleSolution.Value, purgeAmount, ReplacementReagent, reagent.ID);
+            var purgeable = solutionContainerSystem.SplitSolutionWithout(puddleSolution.Value, purgeAmount, ReplacementReagent, reagent);
 
             purgeAmount -= purgeable.Volume;
 

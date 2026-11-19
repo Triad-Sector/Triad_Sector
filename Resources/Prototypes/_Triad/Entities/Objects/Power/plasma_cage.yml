@@ -38,7 +38,7 @@
 - type: entity
   parent: [BasePlasmaCage, BaseFactionGearOtherFactionT2Medium]
   id: PowerCagePlasmaBattery
-  name: NT-WS X2 plasma cage
+  name: NT X2 plasma cage
   description: A power cage for colossal plasma weapons. It is clearly very old.. look at that rust. Very rare and sought after. It can be salvaged into iridite, plastitanium, and plutonium.
   components:
   - type: Sprite
@@ -52,7 +52,7 @@
   - type: Battery
     maxCharge: 1500000
     startingCharge: 1500000
-  - type: EmpResistance # Mono also
+  - type: EmpResistance
     coefficient: 0.000112
   - type: Tag
     tags:

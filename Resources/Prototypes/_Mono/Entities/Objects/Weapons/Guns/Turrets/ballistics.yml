@@ -10,6 +10,8 @@
     drawdepth: Mobs
     layers:
     - state: syndie_lethal
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: Destructible
     thresholds:
     - trigger:

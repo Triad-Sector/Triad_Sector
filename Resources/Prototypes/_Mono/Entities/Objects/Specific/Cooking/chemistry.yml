@@ -24,9 +24,9 @@
     injectOnly: false
     ignoreMobs: true
     ignoreClosed: false
-    minTransferAmount: 1
-    maxTransferAmount: 1
-    transferAmount: 1
+    transferAmounts:
+    - 1
+    currentTransferAmount: 1
     toggleState: 1 # draw
   - type: StaticPrice
     price: 40

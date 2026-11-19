@@ -1,6 +1,6 @@
 ﻿- type: entity
   save: false
-  parent: [ BaseSimpleMob, MobCombat ]
+  parent: [ BaseSimpleMob, MobCombat, BasePlasmaBurnEligible ]
   id: BaseMobArgocyte
   suffix: AI
   description: A dangerous alien found on the wrong side of planets, known for their propensity for munching on ruins.
@@ -181,6 +181,8 @@
     layers:
     - state: swiper
       map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -207,6 +209,8 @@
     layers:
     - state: molder
       map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -234,6 +238,8 @@
     layers:
     - state: pouncer
       map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -263,6 +269,8 @@
     layers:
     - state: glider
       map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -295,6 +303,8 @@
     layers:
     - state: harvester
       map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -326,6 +336,8 @@
     layers:
       - state: crawler
         map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -359,6 +371,8 @@
     layers:
       - state: enforcer
         map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -393,6 +407,8 @@
     layers:
       - state: founder
         map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:
@@ -439,6 +455,8 @@
     layers:
       - state: leviathing
         map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: DamageStateVisuals
     states:
       Alive:

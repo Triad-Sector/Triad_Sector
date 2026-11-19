@@ -22,7 +22,7 @@ namespace Content.Shared.Damage.Prototypes
         [ViewVariables(VVAccess.ReadOnly)]
         public string LocalizedName => Loc.GetString(Name);
 
-        [DataField("damageTypes", required: true)]
+        [DataField(required: true)]
         public List<ProtoId<DamageTypePrototype>> DamageTypes { get; private set; } = default!;
     }
 }

@@ -386,7 +386,7 @@
 - type: entity
   categories: [ HideSpawnMenu ]
   id: MobMonolithicGolom
-  parent: MobMonolithicBase
+  parent: [MobMonolithicBase, BasePlasmaBurnEligible] # Triad - plasma burn
   name: monolithic golom
   description: An anomalous entity. Seems to be composed entirely of some kind of durable, crystal-like energy. It also seems to be heading right towards you.
   components:
@@ -398,6 +398,18 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       state: golom_crystals
       shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
+  - type: GenericVisualizer # Triad - plasma burn
+    visuals:
+      enum.PlasmaBurnVisuals.Burning:
+        plasmaburn:
+          None:
+            visible: false
+          Burning:
+            sprite: _Triad/Effects/greyscale_plasma_burns.rsi
+            state: plasma-humanoid
+            visible: true
   - type: DamageStateVisuals
     states:
       Alive:
@@ -587,7 +599,7 @@
 - type: entity
   categories: [ HideSpawnMenu ]
   id: MobMonolithicGolomRanged
-  parent: MobMonolithicBase
+  parent: MobMonolithicGolom # Triad
   name: monolithic golum
   description: An anomalous entity. Seems to be composed entirely of some kind of durable, crystal-like energy, which it is shooting at you. Watch out!
   components:

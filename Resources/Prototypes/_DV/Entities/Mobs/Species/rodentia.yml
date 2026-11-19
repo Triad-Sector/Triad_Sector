@@ -86,6 +86,8 @@
         sprite: "_DV/Effects/creampie.rsi"
         state: "creampie_rodentia"
         visible: false
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg
