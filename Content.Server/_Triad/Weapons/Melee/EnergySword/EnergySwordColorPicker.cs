@@ -1,6 +1,14 @@
-    namespace Content.Shared._Triad.Weapons.Melee.EnergySword.EnergySwordColorPicker;
-    public sealed partial class ShowEnergySwordColorPickerPopup
-    {
+    using Content.Shared.Weapons.Melee.EnergySword;
+    using Content.Shared.Interaction;
+    using Robust.Shared.Player;
+    using Content.Server.Administration;
+    using System.Text.RegularExpressions;
+
+    namespace Content.Server._Triad.Weapons.Melee.EnergySword;
+    public sealed partial class EnergySwordColorPicker: EntitySystem
+    {  
+        [Dependency] private QuickDialogSystem _quickDialog = default!;
+        [Dependency] private EnergySwordSystem _energySwordSystem = default!;
         public void ChangeEswordColor(Entity<EnergySwordComponent> entity, ref InteractUsingEvent args)
             {
             if (!TryComp<ActorComponent>(args.User, out var actor))

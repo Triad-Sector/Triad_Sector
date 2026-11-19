@@ -6,14 +6,15 @@ using Content.Shared.Weapons.Melee.EnergySword;
 using Robust.Shared.Player;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
+using Content.Server._Triad.Weapons.Melee.EnergySword;
 
 namespace Content.Server._Triad.Weapons.Melee.EnergySword;
 
 public sealed partial class EnergySwordInteractionSystem : EntitySystem
 {
-    [Dependency] private QuickDialogSystem _quickDialog = default!;
     [Dependency] private EnergySwordSystem _energySwordSystem = default!;
     [Dependency] private SharedToolSystem _toolSystem = default!;
+    [Dependency] private EnergySwordColorPicker _colorPicker = default!;
 
     public override void Initialize()
     {
@@ -29,7 +30,7 @@ public sealed partial class EnergySwordInteractionSystem : EntitySystem
 
         if (!entity.Comp.BlockHacking && _toolSystem.HasQuality(args.Used, "Screwing"))
         {
-            ShowEnergySwordColorPickerPopup(entity, ref args);
+            _colorPicker.ChangeEswordColor(entity, ref args);
             return;
         }
 

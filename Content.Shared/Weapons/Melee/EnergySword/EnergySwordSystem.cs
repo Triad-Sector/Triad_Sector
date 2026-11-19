@@ -1,15 +1,17 @@
-using System.Runtime.CompilerServices;
+using Content.Shared.Interaction;
 using Content.Shared.Light;
 using Content.Shared.Light.Components;
 using Content.Shared.Toggleable;
+using Content.Shared.Tools.Systems;
 using Robust.Shared.Random;
+
 namespace Content.Shared.Weapons.Melee.EnergySword;
 
 public sealed partial class EnergySwordSystem : EntitySystem
 {
-    [Dependency] private SharedRgbLightControllerSystem _rgbSystem = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    [Robust.Shared.IoC.Dependency] private SharedRgbLightControllerSystem _rgbSystem = default!;
+    [Robust.Shared.IoC.Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Robust.Shared.IoC.Dependency] private IRobustRandom _random = default!;
 
 
     // Triad - Tool interaction handling moved to the server system to support QuickDialog.
@@ -32,6 +34,24 @@ public sealed partial class EnergySwordSystem : EntitySystem
             return;
 
         _appearance.SetData(entity, ToggleableVisuals.Color, entity.Comp.ActivatedColor, appearanceComponent);
+    }
+
+    // Triad - Apply custom blade colors through the shared appearance system.
+    /// <summary>
+    /// Updates the blade color and its appearance data.
+    /// </summary>
+    public void SetActivatedColor(EntityUid uid, Color color)
+    {
+        if (!TryComp(uid, out EnergySwordComponent? component))
+            return;
+
+        component.ActivatedColor = color;
+        Dirty(uid, component);
+
+        if (!TryComp(uid, out AppearanceComponent? appearanceComponent))
+            return;
+
+        _appearance.SetData(uid, ToggleableVisuals.Color, color, appearanceComponent);
     }
 
     // Triad - Keep RGB-cycle state changes in the component's owning system.
