@@ -110,36 +110,33 @@ shipyard-console-engine-NFR = NFR
 shipyard-console-tab-purchase = Purchase
 shipyard-console-tab-drydock = Drydock
 shipyard-console-retrieve-button = Retrieve
-# Store sits on each free berth's row and takes a second click to confirm.
+
 shipyard-console-store-button = Store
-# The same button while Reclaim on an impound card is waiting for a berth.
+
 shipyard-console-store-reclaim-button = Store reclaim
 shipyard-console-store-no-fit-button = No berth fits
-# A berth by number and class, as the details name it.
+
 shipyard-console-store-item = #{$berth} {$class}
-shipyard-console-store-too-small = too small
+shipyard-console-store-too-small = Too small
 shipyard-console-store-takes-landing = Takes the berth the offer below lands in.
 shipyard-console-lockout-title = ACCESS DENIED
 shipyard-console-lockout-subtitle = BIOMETRIC MISMATCH
 shipyard-console-lockout-body = This card is registered to another operator.
-# The same screen for a voucher in the slot or an operator the drydock bars (TDF, TFA and the other voucher-issued roles).
+
 shipyard-console-denied-subtitle = Enlisted personnel may not store provisioned equipment.
-# One civilian ship out per account.
 shipyard-console-purchase-ship-out = You already have a ship underway.
-# The card for a ship the operator has out while the inserted card carries no deed.
+
 shipyard-console-reissue-ship = · {$class} · underway
 shipyard-console-reissue-button = Transfer deed
 shipyard-console-reissue-tooltip = Moves this ship's deed to the inserted card and removes it from every other card.
-# A store is a hand-over at a berth: the ship has to be docked to the station this console is on.
-shipyard-console-store-not-docked = Dock the ship at this station first. A ship is stored from its berth, not from open space.
+
+shipyard-console-store-not-docked = Ship must be docked to this station first before storing.
 shipyard-console-store-not-docked-note = Not docked at this station.
-# The name is drawn on its own so it can carry the weight the class does not. How long the ship
-# has been out is not drawn (2026-09-12).
+
 shipyard-console-deed-ship = · {$class}
 shipyard-console-deed-ship-new = · {$class} · never stored
 shipyard-console-berths-free = {$free} of {$total} berths free
-# Shown while the server works. It reports its own progress by message, so the button carries a
-# real percentage; the plain strings cover the gap before the first report arrives.
+
 shipyard-console-storing-button = Storing
 shipyard-console-retrieving-button = Retrieving
 shipyard-console-storing-percent-button = Storing {$percent}%
@@ -149,10 +146,10 @@ shipyard-console-berth-row-class = {$class}
 shipyard-console-berth-occupant = {$ship}
 shipyard-console-berth-occupant-class = · {$class}
 shipyard-console-berth-empty = empty
-# An empty berth that an offer on the tab would fill.
+
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth
-# The details beside the berth list.
+
 shipyard-console-detail-select = Select a berth
 shipyard-console-detail-empty-title = Berth #{$berth}
 shipyard-console-detail-stored = Stored
@@ -164,13 +161,13 @@ shipyard-console-menu-rename = Rename…
 shipyard-console-menu-move = Move…
 shipyard-console-menu-transfer = Transfer…
 shipyard-console-menu-sell = Sell…
-shipyard-console-menu-no-appraisal = no appraisal
-shipyard-console-menu-nowhere = nowhere to go
+shipyard-console-menu-no-appraisal = No appraisal
+shipyard-console-menu-nowhere = Nowhere to go
 shipyard-console-menu-sell-berth = Sell berth
 shipyard-console-transfer-accept-button = Accept
 shipyard-console-transfer-decline-button = Decline
 shipyard-console-transfer-cancel-button = Cancel
-# The alert line: "<owner> offers <ship> · <class> · into #N", the names drawn bold around these.
+
 shipyard-console-transfer-offers = offers
 shipyard-console-transfer-into = · {$class} · into #{$berth}
 shipyard-console-transfer-no-room = · {$class} · no free berth fits
@@ -180,14 +177,14 @@ shipyard-console-transfer-escrow = offered to {$name}
 shipyard-console-transfer-someone = another captain
 shipyard-console-transfer-picker-title = Transfer {$ship}
 shipyard-console-transfer-picker-placeholder = Captain's name
-shipyard-console-transfer-picker-body = {$ship} stays in berth #{$berth} and cannot be retrieved while the offer stands. The offer expires in {$minutes} minutes.
+shipyard-console-transfer-picker-body = {$ship} cannot be retrieved from berth #{$berth} while the offer stands. The offer will expire {$minutes} minutes.
 shipyard-console-transfer-picker-button = Offer
 shipyard-console-transfer-picker-empty = No other captains online.
 shipyard-console-transfer-picker-berths = {$count ->
     [one] 1 berth free
    *[other] {$count} berths free
 }
-shipyard-console-transfer-picker-no-berth = no berth fits
+shipyard-console-transfer-picker-no-berth = No berth fits
 shipyard-console-transfer-warning = Last free berth. {$ship} would have nowhere to dock.
 shipyard-console-transfer-your-ship = Your ship
 shipyard-console-sell-title = Sell {$ship}
@@ -196,7 +193,7 @@ shipyard-console-sell-warning = Cannot be undone.
 shipyard-console-sell-placeholder = Type {$ship} to confirm
 shipyard-console-sell-button = Sell
 shipyard-console-rename-title = Rename {$ship}
-shipyard-console-rename-body = Applied to hull and deed on the next retrieve.
+shipyard-console-rename-body = Applied to ship on the next retrieve.
 shipyard-console-rename-placeholder = Letters, digits, spaces, dashes
 shipyard-console-rename-counter = {$count} / {$max}
 shipyard-console-rename-button = Rename
@@ -205,16 +202,12 @@ shipyard-console-move-button = Move
 shipyard-console-move-item = Berth {$berth}
 shipyard-console-prompt-cancel = Cancel
 
-# Triad: the impound lot. A ship taken from the world at round end, or by an admin, sits on a card
-# above the berth list until its owner reclaims it for the fee or gives it up. A locked one offers
-# neither; the reason line is what the admin or the sweep wrote. Two labelled lines, reason then fee
-# (2026-09-12); the appraisal share and the no-deadline note are not drawn.
 shipyard-console-impound-tag = impounded
 shipyard-console-impound-reason = [bold]Reason[/bold]: {$reason}
 shipyard-console-impound-fee = [bold]Reclamation fee[/bold]: [bold]{$fee}[/bold]
 shipyard-console-impound-fee-free = [bold]Reclamation fee[/bold]: none
 shipyard-console-impound-unaffordable-note = Not enough credits: reclaiming it costs {$fee}.
-shipyard-console-impound-locked-note = Neither reclaim nor abandon is available until an admin unlocks it. No deadline. Ahelp to ask about it.
+shipyard-console-impound-locked-note = Neither reclaim nor abandon is available until an admin unlocks it. Ahelp to ask about it.
 shipyard-console-impound-locked-pill = LOCKED
 shipyard-console-impound-no-fit-button = No berth fits
 shipyard-console-impound-reclaim-button = Reclaim
@@ -222,32 +215,23 @@ shipyard-console-impound-abandon-button = Abandon…
 shipyard-console-impound-locked = An admin is holding that ship. Ahelp to ask about it.
 shipyard-console-impound-unaffordable = Not enough funds: reclaiming it costs {$fee}.
 shipyard-console-abandon-title = Abandon {$ship}
-shipyard-console-abandon-body = You give up {$ship} instead of paying the release fee. You are paid nothing for it, and it does not return to a berth.
+shipyard-console-abandon-body = The ship {$ship} will relinquished to the authorities instead of paying the release fee. You are not compensated for this action.
 shipyard-console-abandon-warning = Cannot be undone.
 shipyard-console-abandon-placeholder = Type {$ship} to confirm
 shipyard-console-abandon-button = Abandon
 
-# Triad: legacy import. Draining the old ship-save system into the drydock.
 shipyard-console-import-button = Import
 shipyard-console-importing-button = Importing
 shipyard-console-import-row-marker = new
 shipyard-console-import-row-note = · old save
 shipyard-console-import-summary = { " " }· { $count } to import
 shipyard-console-import-prompt-title = Import { $ship }
-shipyard-console-import-prompt-body = [color=#e0e0e0]{ $ship }[/color] files into a [bold]new berth[/bold], sized to its hull and granted with the import.
+shipyard-console-import-prompt-body = [color=#e0e0e0]{ $ship }[/color] slots into a [bold]new berth[/bold], sized to its hull and granted with the import.
 
-# Triad: console failure reasons. A refusal at a shipyard or drydock console reaches only the
-# player who pressed, via ReportConsoleError/DenyWithReason (ShipyardSystem.Triad.Feedback.cs).
-# Successes are never chat lines here; the console's own state already shows them.
 shipyard-console-error-vessel-unavailable = Purchase failed: that vessel is not available to you.
 shipyard-console-error-vessel-load-failed = Purchase failed: the vessel's ship file could not be loaded.
 shipyard-console-error-sale-loaded-from-save = Sale failed: this vessel was loaded from a saved manifest and cannot be sold.
-# Triad: removed with the footer Rename. The drydock tab's rename reads drydock-error-* keys.
-# shipyard-console-error-rename-empty = Rename failed: ship name cannot be empty.
-# shipyard-console-error-rename-too-long = Rename failed: ship name cannot exceed {$max} characters.
-# shipyard-console-error-rename-failed = Rename failed: the ship could not be renamed.
 
-# Triad: legacy import failure reasons.
 shipyard-console-import-error-in-progress = Import failed: another import is already running.
 shipyard-console-import-error-disabled = Import failed: legacy ship import is disabled on this server.
 shipyard-console-import-error-no-account = Import failed: no player account found for this character.
