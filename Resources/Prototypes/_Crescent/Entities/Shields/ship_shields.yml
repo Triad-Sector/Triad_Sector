@@ -2,6 +2,9 @@
   id: ShipShield
   name: ship shield
   categories: [ HideSpawnMenu ]
+  # Triad: the emitter rebuilds this entity every time it powers up, so no save path writes it.
+  # A saved shield came back as a ghost with a hard bullet fixture and no emitter behind it.
+  save: false
   components:
   - type: ShipShield
   - type: ShipShieldVisuals

@@ -4,6 +4,7 @@
   text: "/ServerInfo/_NF/Guidebook/Shipyard.xml"
   priority: 6
   children:
+  - Drydock # Triad: drydock
   - ShipyardNFROperation
   - ShipyardArgent
   - ShipyardBehir

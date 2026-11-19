@@ -18,7 +18,6 @@ namespace Content.Server._Triad.Shipyard.Admin;
 
 public sealed partial class TriadTamperAdminEui : BaseEui, ITriadTamperAuditObserver
 {
-    [Dependency] private ITriadShipyardKeyStore _keyStore = default!;
     [Dependency] private ITriadShipyardAuditLog _auditLog = default!;
     [Dependency] private ITriadShipyardPermitStore _permitStore = default!;
     [Dependency] private IPlayerManager _players = default!;

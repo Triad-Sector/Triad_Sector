@@ -1,47 +1,53 @@
+<!-- Triad: rewritten -->
 <Document>
-  # Triad Frontier Association Shipyards
+	# Shipyard
 
-To assist in developing the Triad Sector, shuttles from the TFA or various corporations can be rented for use.
-All rentals last for one shift. Rented shuttles return to the corporate parent company at the end of shift.
-The value of shuttles is returned to the purchaser when ended through a ship console.
-To avoid losses, [bold]make sure you end your rental before ending your shift[/bold].
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="ComputerShipyard" Caption=""/>
+			</Box>
+		</ColorBox>
 
-## Shipyard Console
-  <Box>
-    <GuideEntityEmbed Entity="PassengerIDCard"/>
-    <GuideEntityEmbed Entity="SpaceCash1000"/>
-    <GuideEntityEmbed Entity="ComputerShipyard"/>
-  </Box>
-  To rent a ship:
-- Eject the ID card from your PDA.
-- Insert the ID card into an unused [color=#cccc00]shipyard console[/color].
-- Use the shipyard console to bring up its interface.
-- Select the ship you would like to rent.
-- Press the Purchase button on the console.
-- Press the Eject button to remove your ID from the console.
-- Reinsert your ID card into your PDA.
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]PURCHASE   [/color]  any shipyard console, ID card in hand[/mono]
 
-Congratulations, you're now the Captain of your own ship!
+			[mono][color=#897236]BERTH      [/color]  included with every hull[/mono]
 
-To end your rental:
-- Make sure your rented ship is docked with Colonial Outpost.
-- Make sure nobody is aboard the ship.
-- Eject the ID card [bold]used to purchase the ship[/bold] from your PDA.
-- Insert the ID card into an unused [color=#cccc00]shipyard console[/color].
-- Use the shipyard console to bring up its interface.
-- Press the Sell button on the console. The value will be deposited into your bank account.
-- Press the Eject button to remove your ID from the console.
-- Reinsert your ID card into your PDA.
+			[mono][color=#897236]DEED       [/color]  on your ID card, reissued if lost[/mono]
 
-## Provisions
-  <Box>
-    <GuideEntityEmbed Entity="LockerCaptain"/>
-    <GuideEntityEmbed Entity="SuitStorageBase"/>
-    <GuideEntityEmbed Entity="LockerParamedic"/>
-  </Box>
-  Ships come equipped with the tools and supplies needed to perform one or more tasks in the Triad Sector (e.g. mining, research, medical, food services).
+			[mono][color=#897236]UNDERWAY   [/color]  one civilian ship at a time[/mono]
+		</Box>
+	</Box>
 
-Ships, especially larger ones, work best with a crew. Refer to the [bold]Hiring[/bold] section for more info.
-Space is a lonely, dangerous place, and you'll have a much better time when you work with a crew.
+	The shipyard console is where you buy a ship and move its deed onto a new card if you lose the old one. Storing a ship you already own, and getting it back, live on the [textlink="Drydock" link="Drydock"] page.
+
+	[color=#897236][mono]──── [color=cyan][bold]BUYING[/bold][/color] ──────────────────────────────────────────[/mono][/color]
+
+	<Box>
+		<GuideEntityEmbed Entity="PassengerIDCard"/>
+		<GuideEntityEmbed Entity="SpaceCash1000"/>
+		<GuideEntityEmbed Entity="ComputerShipyard"/>
+	</Box>
+
+	- Insert an ID card into a shipyard console and pick a hull from the list.
+	- The listed price includes a [color=#a4885c][bold]berth[/bold][/color] of that hull's class, and the berth is created with the purchase.
+	- A voucher ship is different: it carries no berth and cannot be stored.
+
+	[color=#897236][mono]──── [color=lime][bold]YOUR SHIP[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- Your deed lives on the ID card, not on the ship. Lose the card, insert a new one, and press [color=lime]Transfer deed[/color] on the Drydock tab to move the deed across. It comes off every other card the moment it lands on the new one.
+	- Crew board through helm guest access rather than a copied deed.
+	- You may have one civilian ship underway at a time. Buying another, or retrieving one, refuses while it is out.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]PROVISIONS[/bold][/color] ──────────────────────────────────────[/mono][/color]
+
+	<Box>
+		<GuideEntityEmbed Entity="LockerCaptain"/>
+		<GuideEntityEmbed Entity="SuitStorageBase"/>
+		<GuideEntityEmbed Entity="LockerParamedic"/>
+	</Box>
+
+	Ships come equipped with the tools and supplies for one or more tasks in the Triad Sector: mining, research, medical, food service. Larger ones work best with a crew, so bring one aboard rather than flying alone.
 
 </Document>

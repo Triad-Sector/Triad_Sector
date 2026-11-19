@@ -1,5 +1,12 @@
+# Triad: propulsion is not contraband. These four carried BaseClass2AShipContrabandSilent, which made
+# a store strip the hull rather than refuse it: the drydock purge deletes marked entities wherever
+# they sit, so QJ270, QJ340, QJ490 and Zephyr came back without their thrusters and gyroscopes, and
+# with the boards and capacitors inside them gone too. The purge stays absolute on purpose - anchoring
+# is something a player can do to anything - so the fix belongs here, on the thing wrongly marked.
+# TDF hulls are kept out of the drydock by ShipSavingBlacklist on BaseVesselTdf, which is the gate
+# that was actually meant to express "a TDF ship is issued, not owned".
 - type: entity
-  parent: [ThrusterLargeNfsd, BaseClass2AShipContrabandSilent]
+  parent: ThrusterLargeNfsd
   id: ThrusterLargeTdf
   suffix: TDF
   components:
@@ -9,7 +16,7 @@
     board: LargeThrusterTDFMachineCircuitboard
 
 - type: entity
-  parent: [ThrusterNfsd, BaseClass2AShipContrabandSilent]
+  parent: ThrusterNfsd
   id: ThrusterTdf
   suffix: TDF
   components:
@@ -27,7 +34,7 @@
     board: ThrusterNfsdMachineCircuitboard
 
 - type: entity
-  parent: [GyroscopeNfsd, BaseClass2AShipContrabandSilent]
+  parent: GyroscopeNfsd
   id: GyroscopeTdf
   suffix: TDF
   components:
@@ -43,7 +50,7 @@
     sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
 
 - type: entity
-  parent: [SmallGyroscopeNfsd, BaseClass2AShipContrabandSilent]
+  parent: SmallGyroscopeNfsd
   id: SmallGyroscopeTdf
   name: small gyroscope
   suffix: TDF

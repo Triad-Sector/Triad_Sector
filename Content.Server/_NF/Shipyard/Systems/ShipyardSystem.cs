@@ -25,6 +25,7 @@ using Robust.Shared.Utility;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Physics;
 using Robust.Shared.Map.Components;
+using Content.Shared.UserInterface; // Triad: ghosts don't use the console
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -87,13 +88,31 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         SubscribeLocalEvent<ShipyardConsoleComponent, ComponentStartup>(OnShipyardStartup);
         SubscribeLocalEvent<ShipyardConsoleComponent, BoundUIOpenedEvent>(OnConsoleUIOpened);
+        SubscribeLocalEvent<ShipyardConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleOpenAttempt); // Triad: ghosts don't use the console
+        SubscribeLocalEvent<BoundUserInterfaceMessageAttempt>(OnConsoleMessageAttempt); // Triad: ghosts don't use the console
         SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleSellMessage>(OnSellMessage);
         SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsolePurchaseMessage>(OnPurchaseMessage);
-        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleUnassignDeedMessage>(OnUnassignDeedMessage);
-        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRenameMessage>(OnRenameMessage);
+        // SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleUnassignDeedMessage>(OnUnassignDeedMessage); // Triad: removed with the Unassign button
+        // SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRenameMessage>(OnRenameMessage); // Triad: removed with the footer Rename
         // Ship saving/loading functionality
-        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleSaveMessage>(OnSaveMessage); // Triad
-        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleLoadMessage>(OnLoadMessage);
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleStoreMessage>(OnStoreMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRetrieveMessage>(OnRetrieveMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleBuyBerthMessage>(OnBuyBerthMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleSellBerthMessage>(OnSellBerthMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleUpgradeBerthMessage>(OnUpgradeBerthMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleOfferTransferMessage>(OnOfferTransferMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleCancelTransferMessage>(OnCancelTransferMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleAcceptTransferMessage>(OnAcceptTransferMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleDeclineTransferMessage>(OnDeclineTransferMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleSellStoredShipMessage>(OnSellStoredShipMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRenameStoredShipMessage>(OnRenameStoredShipMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleMoveStoredShipMessage>(OnMoveStoredShipMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleRedeemImpoundMessage>(OnRedeemImpoundMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleAbandonShipMessage>(OnAbandonShipMessage); // Triad: drydock tab
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleReissueDeedMessage>(OnReissueDeedMessage); // Triad: drydock tab, deed reissue
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleImportManifestMessage>(OnImportManifestMessage); // Triad: legacy import
+        SubscribeLocalEvent<ShipyardConsoleComponent, ShipyardConsoleImportMessage>(OnImportMessage); // Triad: legacy import
+        SubscribeLocalEvent<ShipyardShuttlePurchaseEvent>(OnShuttlePurchased); // Triad: drydock, bundled berth
         SubscribeLocalEvent<ShipyardConsoleComponent, EntInsertedIntoContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<ShipyardConsoleComponent, EntRemovedFromContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);

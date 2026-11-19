@@ -67,8 +67,8 @@ namespace Content.Server.Kitchen.Components
         /// <summary>
         /// Tracks the elapsed time of the current cook timer.
         /// </summary>
-        [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public TimeSpan CurrentCookTimeEnd = TimeSpan.Zero;
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), ViewVariables(VVAccess.ReadWrite)]
+        public TimeSpan CurrentCookTimeEnd = TimeSpan.Zero; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
         /// <summary>
         /// The maximum number of seconds a microwave can be set to.

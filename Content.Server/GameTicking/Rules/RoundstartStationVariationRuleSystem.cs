@@ -41,6 +41,15 @@ public sealed partial class RoundstartStationVariationRuleSystem : GameRuleSyste
         if (HasComp<StationVariationHasRunComponent>(ev.Station))
             return;
 
+        // Triad: a station is round-scoped, a ship is not. A stored ship's station is recreated on
+        // every retrieve, so the marker above never survived and the passes re-varied the hull each
+        // time. The drydock stamps the marker on the grid instead, where it rides the ship's document.
+        foreach (var grid in ev.Station.Comp.Grids)
+        {
+            if (HasComp<StationVariationHasRunComponent>(grid))
+                return;
+        }
+
         Log.Info($"Running variation rules for station {ToPrettyString(ev.Station)}");
 
         // raise the event on any passes that have been added

@@ -36,6 +36,7 @@ public abstract partial class SharedMaterialStorageSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MaterialStorageComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<MaterialStorageComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<MaterialStorageComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<MaterialStorageComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
     }
@@ -55,6 +56,30 @@ public abstract partial class SharedMaterialStorageSystem : EntitySystem
     }
 
     private void OnMapInit(EntityUid uid, MaterialStorageComponent component, MapInitEvent args)
+    {
+        _appearance.SetData(uid, MaterialStorageVisuals.Inserting, false);
+    }
+
+    /// <summary>
+    /// Triad: the same initialisation on ANY load, not only on a map init.
+    ///
+    /// <para>The insert layer is declared in the sprite with no <c>visible: false</c>, so it starts
+    /// visible and its RSI state animates. The client only ever hides it from
+    /// <c>OnAppearanceChange</c>, and that handler returns early when the Inserting key is absent
+    /// rather than treating absent as false. Appearance data is not serialized, so a machine on a
+    /// ship loaded from a save has no such key; <see cref="MapInitEvent"/> does not re-fire for an
+    /// entity that is already map-initialized, so nothing ever supplied one. The layer stayed
+    /// visible and the insert animation looped forever, on every restored ship, on the ship-save
+    /// path as well as the drydock. Inserting material by hand was the only cure, because a real
+    /// insert ends by setting the key to false and that finally delivered the change the client
+    /// needed. Reported from a play test.</para>
+    ///
+    /// <para>Deliberately unconditional. An insert genuinely in flight across a store still carries
+    /// <see cref="InsertingMaterialStorageComponent"/> with a re-based EndTime, and
+    /// <see cref="Update"/> settles it on the next tick; the cost is at most a few frames of a
+    /// missing animation, against an animation that never stops.</para>
+    /// </summary>
+    private void OnStartup(EntityUid uid, MaterialStorageComponent component, ComponentStartup args)
     {
         _appearance.SetData(uid, MaterialStorageVisuals.Inserting, false);
     }

@@ -1,7 +1,7 @@
 [game]
 hostname = "[EN][MRP][18+]Triad Sector"
 desc = "Triad Sector is a unique twist on the traditional Space Station gameplay. In the Triad Sector, everyone can be the captain of their own ship to venture forth and explore space beyond the station! Salvage, mine, research, trade, or explore your way to riches aboard your own vessel! Includes ships saving!"
-lobbyenabled = true
+lobbyenabled = false
 lobbyduration = 180
 current_year_offset = 802
 
@@ -91,6 +91,12 @@ emergency_dock_time = 1800 # an extra 28 minutes over the default
 emergency_transit_time_min = 300
 auto_call_extension_time = 45
 emergency_early_launch_allowed = false
+# Triad: auto call at 5 h 40 min so the 30 minute countdown below still ends the round at 6 h 10 min.
+auto_call_time = 340
+
+# Triad: the auto call's countdown, long enough for the 15 and 5 minute round-end warnings to matter.
+[triad.round_end]
+countdown_minutes = 30
 
 [biomass]
 easy_mode = false # reclaimer can work on soul-ful bodies, mrp server

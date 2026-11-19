@@ -133,9 +133,9 @@ public sealed partial class ParticleAcceleratorControlBoxComponent : Component
     /// <summary>
     /// The time at which the PA will next fire a wave of particles.
     /// </summary>
-    [DataField("nextFire")]
+    [DataField("nextFire", customTypeSerializer: typeof(TimeOffsetSerializer))]
     [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan NextFire;
+    public TimeSpan NextFire; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// Delay between consecutive PA shots.

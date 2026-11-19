@@ -1,19 +1,20 @@
+using Content.Shared._NF.Shipyard.Events;
 using Content.Shared._Triad.Shipyard.Save;
-using System.Threading.Tasks;
-using System.Linq;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Utility;
-using System.Text;
+using YamlDotNet.RepresentationModel;
 
 namespace Content.Client._Triad.Shipyard.Save;
 
+/// <summary>
+/// The client's side of legacy import: finds the old ship saves in the user data Exports folder,
+/// describes them to the server, reads the one being imported, and retires it to backup when the
+/// server says it has been spent.
+/// </summary>
 public sealed partial class ShipFileManagementSystem : EntitySystem
 {
     [Dependency] private IResourceManager _resourceManager = default!;
     [Dependency] private ILogManager _log = default!;
-
-    // Static data shared across all instances to handle multiple system instances
-    private static readonly Dictionary<string, string> CachedShipData = new();
 
     /// <summary>
     ///     Holds all file paths whitelisted for <see cref="DeleteLocalShipFileMessage"/>
@@ -24,35 +25,16 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
     /// </remarks>
     private static readonly List<string> DeletableShipPaths = new();
 
+    /// <summary>
+    ///     Static so a second instance of the system (integration tests run several clients in one
+    ///     process) does not enumerate the folder again.
+    /// </summary>
     private static readonly List<string> AvailableShips = new();
-    private static event Action? ShipsUpdated;
-    private static event Action<string>? ShipLoaded;
-    private static bool _indexUpdateNeeded = false;
-    private static DateTime _lastIndexUpdate = DateTime.MinValue;
-    private static readonly TimeSpan IndexUpdateCooldown = TimeSpan.FromSeconds(1);
+
+    /// <summary>The import manifest's parsed header per path, with the text it was parsed from.</summary>
+    private static readonly Dictionary<string, (string Text, DrydockImportCandidate Candidate)> ImportHeaderCache = new();
 
     private ISawmill _sawmill = default!;
-
-    public event Action? OnShipsUpdated
-    {
-        add => ShipsUpdated += value;
-        remove => ShipsUpdated -= value;
-    }
-
-    public event Action<string>? OnShipLoaded
-    {
-        add => ShipLoaded += value;
-        remove => ShipLoaded -= value;
-    }
-
-    private static int _instanceCounter = 0;
-    private readonly int _instanceId;
-
-    public ShipFileManagementSystem()
-    {
-        _instanceId = ++_instanceCounter;
-        // Reduced logging for performance
-    }
 
     public override void Initialize()
     {
@@ -60,108 +42,114 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
 
         _sawmill = _log.GetSawmill("shipsave_file_management");
 
-        SubscribeNetworkEvent<SendShipSaveDataClientMessage>(HandleSaveShipDataClient);
         SubscribeNetworkEvent<DeleteLocalShipFileMessage>(HandleDeleteLocalShipFile);
-        // Triad: tamper protection
-        SubscribeNetworkEvent<MigrateShipFileMessage>(OnMigrateShipFile);
-        // End Triad
 
-        // Ensure saved_ships directory exists on startup
-        EnsureSavedShipsDirectoryExists();
-
-        // Only load existing ships if we haven't already loaded them
         if (AvailableShips.Count == 0)
-        {
-            // Load existing saved ships from user data
             LoadExistingShips();
-        }
-        // Skip reload if ships already loaded by previous instance
     }
 
-    private void EnsureSavedShipsDirectoryExists()
+    /// <summary>Reads one save's full text for import, or null if it cannot be read.</summary>
+    public string? ReadShipFile(string filePath)
     {
-        // Exports folder already exists, no need to create directories
-    }
-
-    private void HandleSaveShipDataClient(SendShipSaveDataClientMessage message)
-    {
-        // Save ship data to user data directory using sandbox-safe resource manager
-        _sawmill.Info($"Client received ship save data for: {message.ShipName}");
-
-        // Ensure directory exists before saving
-        EnsureSavedShipsDirectoryExists();
-
-        var safeFilename = new StringBuilder();
-
-        foreach (var c in message.ShipName)
-        {
-            if (c == '-' || char.IsAsciiLetterOrDigit(c))
-            {
-                safeFilename.Append(c);
-            }
-            else
-            {
-                safeFilename.Append('-');
-            }
-        }
-
-        var fileName = $"/Exports/{safeFilename}_{DateTime.Now:yyyyMMdd_HHmmss}.yml";
-
         try
         {
-            using var writer = _resourceManager.UserData.OpenWriteText(new(fileName));
-            writer.Write(message.ShipData);
-            _sawmill.Info($"Saved ship {message.ShipName} to user data: {fileName}");
+            using var reader = _resourceManager.UserData.OpenText(new ResPath(filePath));
+            return reader.ReadToEnd();
         }
         catch (Exception ex)
         {
-            _sawmill.Error($"Failed to save ship {message.ShipName}: {ex.Message}");
+            _sawmill.Error($"Failed to load ship data from {filePath}: {ex.Message}");
+            return null;
         }
-
-        // Cache the data and update available ships list
-        CachedShipData[fileName] = message.ShipData;
-        if (!AvailableShips.Contains(fileName))
-        {
-            AvailableShips.Add(fileName);
-        }
-
-        // Mark index update as needed but don't update immediately
-        _indexUpdateNeeded = true;
-
-        // Trigger UI update
-        ShipsUpdated?.Invoke();
     }
 
-    public async Task<string?> GetShipYamlData(string filePath)
+    /// <summary>
+    /// Describes every local save to the server so it can say which it will take: the envelope's
+    /// name, its unsigned appraisal, and the signature and public key it claims.
+    ///
+    /// <para>No hashing here, deliberately. A signature covers a SHA-256 of the ship data and
+    /// <c>System.Security.Cryptography</c> is not on the engine's sandbox whitelist, so the client
+    /// cannot compute one in a packaged build. It sends the key instead and the server hashes that
+    /// itself; the payload, and the real verification, follow only for the ship actually imported.</para>
+    /// </summary>
+    public List<DrydockImportCandidate> BuildImportManifest()
     {
-        string? yamlData;
+        var manifest = new List<DrydockImportCandidate>();
 
-        // Check cache first, load from disk if needed (lazy loading)
-        if (CachedShipData.TryGetValue(filePath, out yamlData))
+        foreach (var path in AvailableShips)
         {
-            // Data already cached
-        }
-        else
-        {
-            // Load from disk
             try
             {
-                using var reader = _resourceManager.UserData.OpenText(new(filePath));
-                yamlData = reader.ReadToEnd();
-                CachedShipData[filePath] = yamlData;
+                // The file is read every time but parsed only when its text changed: the Exports
+                // folder is shared with other clients, which can re-save a ship over the same path.
+                string text;
+                using (var reader = _resourceManager.UserData.OpenText(new ResPath(path)))
+                    text = reader.ReadToEnd();
+
+                if (ImportHeaderCache.TryGetValue(path, out var cached) && cached.Text == text)
+                {
+                    manifest.Add(cached.Candidate);
+                    continue;
+                }
+
+                var node = new YamlStream();
+                node.Load(new System.IO.StringReader(text));
+
+                if (node.Documents.Count == 0 || node.Documents[0].RootNode is not YamlMappingNode root)
+                    continue;
+
+                var candidate = new DrydockImportCandidate(
+                    path,
+                    ExtractFileNameWithoutExtension(path),
+                    int.TryParse(Scalar(root, "appraisal"), out var appraisal) ? appraisal : null,
+                    B64(root, "signature"),
+                    B64(root, "signaturePublicKey"));
+
+                ImportHeaderCache[path] = (text, candidate);
+                manifest.Add(candidate);
             }
             catch (Exception ex)
             {
-                _sawmill.Error($"Failed to load ship data from {filePath}: {ex.Message}");
-                return null;
+                // A file that will not parse is one the server could not load either. Skipping it
+                // keeps a corrupt save out of the list instead of out of the whole manifest.
+                _sawmill.Warning($"Skipping '{path}' while building the import manifest: {ex.Message}");
             }
         }
 
-        await Task.CompletedTask;
-        return yamlData;
+        return manifest;
     }
 
-    // Triad start
+    /// <summary>
+    ///     Reads one scalar through the engine's helper rather than <c>YamlMappingNode.Children</c>.
+    ///     A packaged client runs sandboxed, and that sandbox whitelists the engine wholesale and
+    ///     YamlDotNet's dictionary surface not at all, so reaching for Children here fails the
+    ///     assembly type check and the client aborts before it loads any content at all.
+    /// </summary>
+    private static string? Scalar(YamlMappingNode root, string key)
+    {
+        return root.TryGetNode<YamlScalarNode>(key, out var scalar) ? scalar.Value : null;
+    }
+
+    /// <summary>
+    ///     Decodes without letting a malformed string throw, because <c>FormatException</c> is not a
+    ///     type the sandbox lets content name: the catch that would be the obvious way to write this
+    ///     is the same startup-killing violation as the one above.
+    /// </summary>
+    private static byte[] B64(YamlMappingNode root, string key)
+    {
+        var raw = Scalar(root, key);
+        if (string.IsNullOrWhiteSpace(raw))
+            return Array.Empty<byte>();
+
+        // Base64 carries three bytes in every four characters and never decodes to more than that.
+        var decoded = new byte[raw.Length / 4 * 3 + 3];
+        if (!Convert.TryFromBase64String(raw, decoded, out var written))
+            return Array.Empty<byte>();
+
+        Array.Resize(ref decoded, written);
+        return decoded;
+    }
+
     /// <summary>
     ///     This method whitelists a path to be acted on by <see cref="DeleteLocalShipFileMessage"/>
     /// </summary>
@@ -177,42 +165,14 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
     /// <param name="filePath">The file path to check.</param>
     public static bool WasShipMarkedAsDeletable(string filePath)
     {
-        var index = DeletableShipPaths.IndexOf(filePath);
-        if (index == -1)
-        {
-            return false;
-        }
-        else
-        {
-            DeletableShipPaths.RemoveAt(index);
-            return true;
-        }
+        return DeletableShipPaths.Remove(filePath);
     }
-
-    /// <summary>
-    ///     F5 fix: non-consuming variant of <see cref="WasShipMarkedAsDeletable"/> for the
-    ///     <c>MigrateShipFileMessage</c> handler. The Migrate-then-Delete success sequence
-    ///     needs to consult the allow-list twice: once for Migrate (non-consuming), then
-    ///     once for Delete (consuming, via WasShipMarkedAsDeletable). Single allow-list,
-    ///     two consumers with different consumption semantics.
-    /// </summary>
-    public static bool IsShipPathMarkedAsDeletable(string filePath)
-    {
-        return DeletableShipPaths.Contains(filePath);
-    }
-    // Triad end
 
     private void LoadExistingShips()
     {
         try
         {
-            _sawmill.Info($"Instance #{_instanceId}: Attempting to find saved ship files...");
-
-            // Try UserData.Find to enumerate all .yml files
-            var (ymlFiles, directories) = _resourceManager.UserData.Find("*.yml", recursive: true);
-
-            var ymlFilesList = ymlFiles.ToList();
-            _sawmill.Info($"Instance #{_instanceId}: Found {ymlFilesList.Count.ToString()} .yml files total");
+            var (ymlFiles, _) = _resourceManager.UserData.Find("*.yml", recursive: true);
 
             foreach (var file in ymlFiles)
             {
@@ -229,80 +189,18 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
                 }
             }
 
-            _sawmill.Debug($"Instance #{_instanceId}: Final result: Loaded {AvailableShips.Count} saved ships from Exports directory");
-
-            // Trigger UI update
-            ShipsUpdated?.Invoke();
+            _sawmill.Debug($"Found {AvailableShips.Count} saved ships in the Exports directory");
         }
         catch (NotImplementedException)
         {
             // In test environments, the Find method may not be implemented
             // This is expected and should not cause test failures
-            _sawmill.Debug($"Instance #{_instanceId}: Ship file enumeration not available in test environment");
+            _sawmill.Debug("Ship file enumeration not available in test environment");
         }
         catch (Exception ex)
         {
-            _sawmill.Error($"Instance #{_instanceId}: Failed to load existing ships: {ex.Message}");
+            _sawmill.Error($"Failed to load existing ships: {ex.Message}");
         }
-    }
-
-    private void UpdateShipIndex()
-    {
-        try
-        {
-            // Rate limit index updates
-            var now = DateTime.Now;
-            if (!_indexUpdateNeeded || (now - _lastIndexUpdate) < IndexUpdateCooldown)
-                return;
-
-            var indexContent = string.Join('\n', AvailableShips);
-            using var writer = _resourceManager.UserData.OpenWriteText(new("/Exports/ship_index.txt"));
-            writer.Write(indexContent);
-
-            _indexUpdateNeeded = false;
-            _lastIndexUpdate = now;
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to update ship index: {ex.Message}");
-        }
-    }
-
-    // Useful for gathering fields inside of a ship YML file, like the stored appraisal value
-    public string GetKeyValueFromPath(string filePath, string key)
-    {
-        using var reader = _resourceManager.UserData.OpenText(new(filePath));
-        var content = reader.ReadToEnd();
-
-        // lazy loading
-        var lines = content.Split('\n');
-        var val = lines.FirstOrDefault(l => l.Trim().StartsWith($"{key}:"))?.Split(':')[1].Trim() ?? "Unknown";
-
-        return val;
-    }
-
-    // Update ship index periodically instead of on every change
-    public void FlushPendingIndexUpdates()
-    {
-        if (_indexUpdateNeeded)
-        {
-            UpdateShipIndex();
-        }
-    }
-
-    public List<string> GetSavedShipFiles()
-    {
-        return new List<string>(AvailableShips);
-    }
-
-    public static bool HasShipData(string shipName)
-    {
-        return CachedShipData.ContainsKey(shipName);
-    }
-
-    public static string? GetShipData(string shipName)
-    {
-        return CachedShipData.TryGetValue(shipName, out var data) ? data : null;
     }
 
     /// <summary>
@@ -313,14 +211,12 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
     {
         try
         {
-            // Triad start
             // We only allow the server to delete files that we have previously sent to the server
             if (!WasShipMarkedAsDeletable(message.FilePath))
             {
                 _sawmill.Warning($"Server asked to move local file '{message.FilePath}' that was not previously loaded");
                 return;
             }
-            // Triad end
 
             // Move the loaded ship file into /Exports/backup instead of deleting.
             var originalPath = new ResPath(message.FilePath);
@@ -332,18 +228,12 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
 
                 // Compute destination file path under backup directory
                 var fileName = ExtractFileNameWithoutExtension(message.FilePath);
-                // Reconstruct original extension (assumed .yml)
-                var destBase = new ResPath($"/Exports/backup/{fileName}");
-                var destinationPath = new ResPath(destBase.ToString() + ".yml");
+                var destinationPath = new ResPath($"/Exports/backup/{fileName}.yml");
 
                 // If a file with the same name already exists in backup, append a timestamp
                 if (_resourceManager.UserData.Exists(destinationPath))
-                {
-                    var timestamped = new ResPath($"/Exports/backup/{fileName}_loaded_{DateTime.Now:yyyyMMdd_HHmmss}.yml");
-                    destinationPath = timestamped;
-                }
+                    destinationPath = new ResPath($"/Exports/backup/{fileName}_loaded_{DateTime.Now:yyyyMMdd_HHmmss}.yml");
 
-                // Triad start
                 // Timestamp uniqueness is not something programmers can trust.
                 // If we still don't have an unused path, we give up
                 if (_resourceManager.UserData.Exists(destinationPath))
@@ -352,11 +242,10 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
                 }
                 else
                 {
-                    // Originally opened the files as text
-                    // Now we open them as bytes
+                    // Both disposed before the delete, so the copy is flushed before the original goes.
                     using (var reader = _resourceManager.UserData.OpenRead(originalPath))
+                    using (var writer = _resourceManager.UserData.OpenWrite(destinationPath))
                     {
-                        var writer = _resourceManager.UserData.OpenWrite(destinationPath);
                         reader.CopyTo(writer);
                     }
 
@@ -364,83 +253,17 @@ public sealed partial class ShipFileManagementSystem : EntitySystem
                     _resourceManager.UserData.Delete(originalPath);
                     _sawmill.Info($"Moved local ship file to backup: {message.FilePath} -> {destinationPath}");
                 }
-                // Triad end
             }
 
             // Remove original entry from caches and list (do not add backup to menu)
-            CachedShipData.Remove(message.FilePath);
+            ImportHeaderCache.Remove(message.FilePath);
             AvailableShips.Remove(message.FilePath);
-
-            // Mark index update and notify UI
-            _indexUpdateNeeded = true;
-            ShipsUpdated?.Invoke();
         }
         catch (Exception ex)
         {
             _sawmill.Warning($"Failed to move local ship file '{message.FilePath}' to backup: {ex.Message}");
         }
     }
-
-    // Triad: tamper protection
-    private void OnMigrateShipFile(MigrateShipFileMessage ev)
-    {
-        try
-        {
-            // F5 fix (a): only accept Migrate for paths the client originally vouched for
-            // via MarkShipPathAsDeletable. Without this gate, a hostile or compromised server
-            // could send MigrateShipFileMessage("/config.toml", evilContents) and the client
-            // would silently overwrite any UserData file. Uses the non-consuming variant so
-            // the subsequent Delete (which fires alongside Migrate on success in the new S1
-            // ordering) still finds the allow-list entry.
-            if (!IsShipPathMarkedAsDeletable(ev.TargetPath))
-            {
-                _sawmill.Warning(
-                    $"Refused server-sent MigrateShipFileMessage for path '{ev.TargetPath}' "
-                    + "(not previously vouched for via MarkShipPathAsDeletable).");
-                return;
-            }
-
-            var path = ev.TargetPath.Replace('\\', '/');
-            if (!path.StartsWith("/"))
-                path = "/" + path;
-
-            // F5 fix (b): explicitly reject path-traversal segments. Don't trust ResPath's
-            // sanitization (the review noted it 'may or may not sanitize'); do our own.
-            foreach (var segment in path.Split('/'))
-            {
-                if (segment == "..")
-                {
-                    _sawmill.Warning(
-                        $"Refused server-sent MigrateShipFileMessage with '..' segment: '{ev.TargetPath}'.");
-                    return;
-                }
-            }
-
-            var resPath = new ResPath(path);
-            using (var writer = _resourceManager.UserData.OpenWriteText(resPath))
-            {
-                writer.Write(ev.Contents);
-            }
-
-            // F5 fix (c): invalidate cache entries so the next load reads the new envelope
-            // from disk rather than serving pre-migration bytes from CachedShipData. Remove
-            // rather than overwrite to keep this loop simple - the next legitimate access
-            // re-populates from disk.
-            // The caches are keyed inconsistently across entry points (save by file name, load by
-            // the rooted path), and we just wrote under the normalized `path` while the server sent
-            // `ev.TargetPath`. Clear both forms so a leading-slash/separator difference can't leave
-            // the stale pre-migration bytes behind (a miss is a harmless no-op).
-            CachedShipData.Remove(ev.TargetPath);
-            CachedShipData.Remove(path);
-
-            _sawmill.Info($"Migrated local ship file to new envelope format: {path}");
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to migrate local ship file '{ev.TargetPath}': {ex.Message}");
-        }
-    }
-    // End Triad
 
     private static string ExtractFileNameWithoutExtension(string filePath)
     {

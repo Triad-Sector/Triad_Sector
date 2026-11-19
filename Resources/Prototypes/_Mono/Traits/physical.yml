@@ -533,6 +533,12 @@
   description: trait-ironman-desc
   category: Physical
   cost: -5 # This shit was FREE for factions practically
+  # Triad: disabled for now. An empty AllOf fails on the lobby preview and at spawn alike, and profile
+  # save never prunes on conditions, so saved selections survive; delete this block to re-enable.
+  conditions:
+  - !type:AllOfCondition
+    conditions: []
+    tooltip: trait-condition-disabled
   effects:
   - !type:AddCompsEffect
     components:

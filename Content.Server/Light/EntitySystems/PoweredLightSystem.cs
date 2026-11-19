@@ -24,6 +24,7 @@ using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
 using Robust.Shared.Random; // Frontier
 using Timer = Robust.Shared.Timing.Timer; // Triad
+using Content.Shared._Triad.Drydock; // Triad
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -43,6 +44,7 @@ namespace Content.Server.Light.EntitySystems
         [Dependency] private PointLightSystem _pointLight = default!;
         [Dependency] private SharedAppearanceSystem _appearance = default!;
         [Dependency] private DamageOnInteractSystem _damageOnInteractSystem = default!;
+        [Dependency] private MapInitRefireSystem _mapInitRefire = default!; // Triad
 
         [Dependency] protected IRobustRandom RobustRandom = default!; // Frontier
 
@@ -54,6 +56,7 @@ namespace Content.Server.Light.EntitySystems
             base.Initialize();
             SubscribeLocalEvent<PoweredLightComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<PoweredLightComponent, MapInitEvent>(OnMapInit);
+            SubscribeLocalEvent<PoweredLightComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
             SubscribeLocalEvent<PoweredLightComponent, InteractUsingEvent>(OnInteractUsing);
             SubscribeLocalEvent<PoweredLightComponent, InteractHandEvent>(OnInteractHand);
 
@@ -75,10 +78,36 @@ namespace Content.Server.Light.EntitySystems
             _signalSystem.EnsureSinkPorts(uid, light.OnPort, light.OffPort, light.TogglePort);
         }
 
+        // Triad: seed on load (DrydockAppearanceComponent). Startup, not init: the bulb is a contained entity.
+        private void OnStartup(EntityUid uid, PoweredLightComponent light, ComponentStartup args)
+        {
+            if (!_mapInitRefire.StartupSeedApplies(uid))
+            {
+                var state = PoweredLightState.Empty;
+                if (GetBulb(uid, light) is { } bulb && TryComp<LightBulbComponent>(bulb, out var lightBulb))
+                {
+                    state = lightBulb.State switch
+                    {
+                        LightBulbState.Broken => PoweredLightState.Broken,
+                        LightBulbState.Burned => PoweredLightState.Burned,
+                        _ => PoweredLightState.Off,
+                    };
+                }
+
+                _appearance.SetData(uid, PoweredLightVisuals.BulbState, state);
+                return;
+            }
+
+            UpdateLight(uid, light);
+        }
+
         private void OnMapInit(EntityUid uid, PoweredLightComponent light, MapInitEvent args)
         {
             // TODO: Use ContainerFill dog
-            if (light.HasLampOnSpawn != null)
+            // Triad: on a map-init re-raise (a drydock retrieve) a fixture that already holds a bulb
+            // was filled once, and a second bulb has nowhere to go. A first map init spawns as
+            // upstream does.
+            if (light.HasLampOnSpawn != null && !(_mapInitRefire.Refiring && light.LightBulbContainer.ContainedEntity != null))
             {
                 var entity = EntityManager.SpawnEntity(light.HasLampOnSpawn, EntityManager.GetComponent<TransformComponent>(uid).Coordinates);
                 _containerSystem.Insert(entity, light.LightBulbContainer);

@@ -59,7 +59,6 @@
     openToolQualityNeeded: Slicing
     closeToolQualityNeeded: Slicing # Should probably be stitching or something if that gets added
     name: secret-stash-pillow #Triad (secret stash rename)
-  - type: HLPersistOnShipSave # Triad (ship saving here)
 
 - type: entity
   id: PillowLongWhite

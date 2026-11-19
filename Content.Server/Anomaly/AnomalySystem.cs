@@ -40,6 +40,7 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
     [Dependency] private RadiationSystem _radiation = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private Content.Shared._Triad.Drydock.MapInitRefireSystem _mapInitRefire = default!; // Triad
 
     public const float MinParticleVariation = 0.8f;
     public const float MaxParticleVariation = 1.2f;

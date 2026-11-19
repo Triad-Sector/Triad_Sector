@@ -46,6 +46,14 @@ public abstract class SharedArtifactAnalyzerSystem : EntitySystem
 
     private void OnMapInit(Entity<ArtifactAnalyzerComponent> ent, ref MapInitEvent args)
     {
+        RelinkConsole(ent); // Triad: body moved to RelinkConsole so a drydock retrieve can run it.
+    }
+
+    // Triad: public so a drydock retrieve, which never re-fires map init, can re-resolve the link.
+    // The console's analyzer reference is a NetEntity that no loader remaps, so a stored ship came
+    // back with its analyzer linked on the wire and dead on the console. Body unchanged.
+    public void RelinkConsole(Entity<ArtifactAnalyzerComponent> ent)
+    {
         if (!TryComp<DeviceLinkSinkComponent>(ent, out var sink))
             return;
 

@@ -1,0 +1,36 @@
+name: Prototype Migrations
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, ready_for_review ]
+    # A path filter leaves the check pending on PRs it skips, so never mark this one required.
+    paths:
+      - "Resources/Prototypes/**"
+      - "Resources/*migration.yml"
+      - "Tools/check_prototype_migrations.py"
+      - ".github/workflows/prototype-migrations.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Prototype Migrations
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+    # The PR merge commit and its first parent, the base branch it merges into.
+    - uses: actions/checkout@v7
+      with:
+        fetch-depth: 2
+    - uses: actions/setup-python@v6
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: python -m pip install pyyaml
+    - name: Check removed prototypes have migrations
+      run: python Tools/check_prototype_migrations.py HEAD^1 HEAD

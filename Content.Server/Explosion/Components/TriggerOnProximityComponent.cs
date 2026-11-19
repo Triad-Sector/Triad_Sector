@@ -63,12 +63,19 @@ namespace Content.Server.Explosion.Components
         public TimeSpan NextTrigger = TimeSpan.Zero;
 
         /// <summary>
-        /// When will the visual state be updated again after activation?
+        /// When will the visual state be updated again after activation? Null when none is pending.
         /// </summary>
+        // Triad: was a non-nullable TimeSpan parked at TimeSpan.MaxValue to mean "nothing scheduled"
+        // (TriggerSystem.Proximity.cs). The generated pause handler adds PausedTime to every
+        // [AutoPausedField] unguarded, so MaxValue threw OverflowException the first time a proximity
+        // trigger that had finished its animation rode a map through pause and unpause. Nullable is
+        // the shape the generator already handles: it skips a null rather than rebasing it, which is
+        // correct, because a sentinel is not a time. Matches ConfirmableActionComponent.NextConfirm.
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("nextVisualUpdate", customTypeSerializer: typeof(TimeOffsetSerializer))]
         [AutoPausedField]
-        public TimeSpan NextVisualUpdate = TimeSpan.Zero;
+        // public TimeSpan NextVisualUpdate = TimeSpan.Zero;
+        public TimeSpan? NextVisualUpdate;
 
         /// <summary>
         /// What speed should the other object be moving at to trigger the proximity fixture?

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Triad.Drydock; // Triad
 using Content.Server.Humanoid.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Storage.Components;
@@ -13,17 +14,28 @@ namespace Content.Server.Storage.EntitySystems;
 
 public sealed partial class StorageSystem
 {
+    [Dependency] private MapInitRefireSystem _mapInitRefire = default!; // Triad
+
     private void OnStorageFillMapInit(EntityUid uid, StorageFillComponent component, MapInitEvent args)
     {
         if (component.Contents.Count == 0)
             return;
 
+        // Triad: on a map-init re-raise (a drydock retrieve) a storage that already holds something
+        // was filled once, and refilling on top of it fails every insert with an error per item. A
+        // first map init fills as upstream does, whatever a mapper put inside.
         if (TryComp<StorageComponent>(uid, out var storageComp))
         {
+            if (_mapInitRefire.Refiring && storageComp.Container.ContainedEntities.Count > 0) // Triad
+                return;
+
             FillStorage((uid, component, storageComp));
         }
         else if (TryComp<EntityStorageComponent>(uid, out var entityStorageComp))
         {
+            if (_mapInitRefire.Refiring && entityStorageComp.Contents.ContainedEntities.Count > 0) // Triad
+                return;
+
             FillEntityStorage((uid, component, entityStorageComp));
         }
         else

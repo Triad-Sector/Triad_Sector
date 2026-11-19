@@ -13,7 +13,7 @@ public sealed partial class MagnetPickupComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite), DataField("nextScan", customTypeSerializer: typeof(TimeOffsetSerializer))] // Triad - time offset
     [AutoPausedField]
-    public TimeSpan NextScan = TimeSpan.Zero;
+    public TimeSpan NextScan = TimeSpan.Zero; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// What container slot the magnet needs to be in to work.

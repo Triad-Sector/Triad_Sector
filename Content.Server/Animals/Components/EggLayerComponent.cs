@@ -2,6 +2,7 @@ using Content.Server.Animals.Systems;
 using Content.Shared.Storage;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Animals.Components;
 
@@ -51,6 +52,6 @@ public sealed partial class EggLayerComponent : Component
     /// <summary>
     ///     When to next try to produce.
     /// </summary>
-    [DataField, AutoPausedField]
-    public TimeSpan NextGrowth = TimeSpan.Zero;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextGrowth = TimeSpan.Zero; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 }
