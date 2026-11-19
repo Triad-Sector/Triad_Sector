@@ -136,7 +136,7 @@
   #categories: [ HideSpawnMenu ] # Mono - comment out
   components:
   - type: FaxMachine
-    name: "Trade Mall STC"
+    name: "Auric Trade Center - STC" #Triad Change: Updates the name of the fax machine to reflect the Triad replacement. Trade Mall STC -> Auric Trade Center
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
