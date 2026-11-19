@@ -44,7 +44,6 @@
       - !type:AllSelector
         children:
         - id: CigPackSyndicate
-        - id: ChemistryBottleOmnizine
       # Tools
       - !type:GroupSelector
         children:
@@ -79,6 +78,11 @@
           weight: 0.35
       - id: ClothingEyesThermalVisionGogglesSyndie
       - id: ClothingEyesNightVisionGogglesSyndie
+    - !type:GroupSelector
+      weight: 5
+      children:
+      - id: ChemistryBottleOmnizine
+      - id: VestineChemistryVial
 
 - type: entityTable
   id: SyndicateBundleLowTierTable
@@ -254,9 +258,6 @@
       - !type:AllSelector
         children:
         - id: CigPackSyndicate
-        - id: ChemistryBottleOmnizine
-          rolls: !type:RangeNumberSelector
-            range: 1, 3
       # Tools
       - !type:GroupSelector
         children:

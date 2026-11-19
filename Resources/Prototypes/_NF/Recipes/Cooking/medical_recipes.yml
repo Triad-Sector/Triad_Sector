@@ -182,6 +182,7 @@
     BlankMediPen: 1
   reagents:
     PolypyryliumOligomers: 15
+    DexalinPlus: 5 # Triad: Added Dexalin+ to account for the Polyp nerf, so the pens still heal bloodloss damage.
   recipeType: MedicalAssembler
 
 - type: microwaveMealRecipe

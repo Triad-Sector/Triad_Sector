@@ -1595,8 +1595,10 @@
       food:
         maxVol: 20
         reagents:
-        - ReagentId: Omnizine
-          Quantity: 3
+        # Triad: Made Omnizine not obtainable through botany to encourage the use of more specialized chems.
+        #- ReagentId: Omnizine
+          #Quantity: 3
+        # End Triad
         - ReagentId: SpaceDrugs
           Quantity: 5
         - ReagentId: Nutriment

@@ -19,11 +19,17 @@
     interfaces:
       enum.HealthAnalyzerUiKey.Key:
         type: HealthAnalyzerBoundUserInterface
-  - type: ItemToggle
-    onUse: false
+  # Triad: make health analyzer a useful tool. PDA with medtek lacks this component and therefore can keep the health UI open.
+  #- type: ItemToggle
+  #  onUse: false
+  # End Triad
   - type: HealthAnalyzer
     scanningEndSound:
       path: "/Audio/Items/Medical/healthscanner.ogg"
+    # Triad: Make health analyzer instant to give it a reason to use over the medtek app.
+    scanDelay: 0
+    maxScanRange: 3
+    # End Triad
   - type: Tag
     tags:
     - DiscreteHealthAnalyzer

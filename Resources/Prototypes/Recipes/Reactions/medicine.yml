@@ -223,7 +223,10 @@
   reactants:
     Ambuzol:
       amount: 5
-    Omnizine:
+    # Triad: Change this to use our new Omnizine prototype.
+    #Omnizine:
+    OmnizineTriad:
+    # End Triad
       amount: 5
   products:
     AmbuzolPlus: 10
@@ -528,7 +531,7 @@
   id: Opporozidone
   minTemp: 400 #Maybe if a method of reducing reagent temp exists one day, this could be -50
   reactants:
-    Cognizine: 
+    Cognizine:
       amount: 1
     Plasma:
       amount: 2
@@ -544,7 +547,10 @@
   reactants:
     Blood:
       amount: 3
-    Omnizine:
+    # Triad: Change this to our new omnizine prototype.
+    OmnizineTriad:
+    #Omnizine:
+    # End Triad
       amount: 1
     Cryoxadone:
       amount: 2

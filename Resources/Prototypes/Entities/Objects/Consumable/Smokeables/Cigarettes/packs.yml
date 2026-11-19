@@ -217,8 +217,10 @@
     - id: CigaretteArithrazine
     - id: CigaretteBicaridine
     - id: CigaretteIpecac
-    - id: CigaretteOmnizine
-      prob: 0.25
+    # Triad: Made Omnizine harder to get, to encourage the use of more specialized chemicals
+    #- id: CigaretteOmnizine
+      #prob: 0.25
+    # End Triad
     - id: CigaretteDexalin
       prob: 0.25
     - id: CigarettePax

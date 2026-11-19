@@ -73,10 +73,15 @@ uplink-security-185x76mm-magazine-EMP-desc = A box containing 4 18.5x76mm EMP ma
 
 uplink-security-hypo-name = Hypospray
 uplink-security-hypo-desc = A sterile medical injector for instant delivery of medications.
+uplink-security-advanced-surgery-name = Advanced Surgery Kit
+uplink-security-advanced-surgery-desc = A box filled with advanced surgery tools, perfect for re-attaching some heads.
+uplink-security-multitool-surgery-name = Medical Multitool
+uplink-security-multitool-surgery-desc = An all-in one surgery tool for the aspiring surgeon. Slower but more compact than an advanced surgery kit.
 uplink-security-ambuzol-name = Ambuzol Syringe
 uplink-security-ambuzol-desc = 15u of anti-viral medication to halt the progress of the highly contagious zombie virus.
 uplink-security-medkit-name = Combat Medkit
 uplink-security-medkit-desc = A kit containing advanced medical supplies suitable for use in the field.
+
 uplink-security-truncheon-name = Truncheon
 uplink-security-truncheon-desc = Standard issue blunt object. Excellent for cracking windows and skulls alike.
 uplink-security-hammer-name = Breaching Hammer
