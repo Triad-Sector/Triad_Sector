@@ -1,0 +1,22 @@
+    namespace Content.Shared._Triad.Weapons.Melee.EnergySword.EnergySwordColorPicker;
+    public sealed partial class ShowEnergySwordColorPickerPopup
+    {
+        public void ChangeEswordColor(Entity<EnergySwordComponent> entity, ref InteractUsingEvent args)
+            {
+            if (!TryComp<ActorComponent>(args.User, out var actor))
+                return;
+
+            args.Handled = true;
+            _quickDialog.OpenDialog(actor.PlayerSession,
+                Loc.GetString("energy-sword-color-dialog-title"),
+                Loc.GetString("energy-sword-color-dialog-prompt"),
+                (string colorInput) =>
+                {
+                colorInput = Regex.Replace(colorInput, "[^a-zA-Z0-9#]", String.Empty);
+                    if (!Color.TryParse(colorInput.Trim(), out var color))
+                        return;
+                    color.A = 1;
+                    _energySwordSystem.SetActivatedColor(entity.Owner, color);
+                });
+            }
+        }

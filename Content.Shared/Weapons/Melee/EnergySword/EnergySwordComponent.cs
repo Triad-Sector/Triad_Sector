@@ -45,4 +45,20 @@ public sealed partial class EnergySwordComponent : Component
     [DataField]
     public bool BlockHacking = false;
     // End Frontier
+
+    // Triad - Apply custom blade colors through the shared appearance system.
+    /// <summary>
+    /// Updates the blade color and its appearance data.
+    /// </summary>
+    private void SetActivatedColor(EntityUid uid, Color color)
+    {
+        if (!TryComp(uid, out EnergySwordComponent? component))
+            return;
+
+        component.ActivatedColor = color;
+        Dirty(uid, component);
+
+        if (TryComp(uid, out AppearanceComponent? appearance))
+            appearance.SetData(uid, ToggleableVisuals.Color, color, appearance);
+    }
 }
