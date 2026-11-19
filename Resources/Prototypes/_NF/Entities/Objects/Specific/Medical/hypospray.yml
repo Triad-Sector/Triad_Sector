@@ -69,7 +69,7 @@
     vendPrice: 10000
   - type: UseDelay
     delay: 0.65
-    
+
 - type: entity
   name: empty medipen
   parent: BaseItem
@@ -223,7 +223,7 @@
   name: polypyrylium oligomers auto-injector
   parent: NFChemicalMedipen
   id: PolyAutoInjector
-  description: A rapid dose of polyp... polypyryl... polypyryliu.... It contains extract of spaceman's trumpet. Intended to address brute damage and asphyxiation.
+  description: A rapid dose of polyp... polypyryl... polypyryliu.... It contains extract of spaceman's trumpet, along with some Dexalin+. Intended to address brute damage and asphyxiation. # Triad: Changed description to reflect contents.
   components:
   - type: Sprite
     sprite: _NF/Objects/Specific/Medical/medipen.rsi
@@ -235,10 +235,14 @@
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 15
+        maxVol: 20
         reagents:
         - ReagentId: PolypyryliumOligomers
           Quantity: 15
+        # Triad: Added Dexalin+ to account for the Polyp nerf making it not heal bloodloss damage.
+        - ReagentId: DexalinPlus
+          Quantity: 5
+        # End Triad
 
 - type: entity
   name: barkeeper's friend auto-injector
