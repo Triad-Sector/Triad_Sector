@@ -6270,3 +6270,12 @@ Entries:
   id: 2735
   time: '2026-11-16T21:45:45.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/832
+- author: Malfaltto
+  changes:
+    - type: Tweak
+      message: >-
+        Energy melee weapons have been adjusted to bring out unique traits, and
+        make them more relevant to use.
+  id: 2736
+  time: '2026-11-19T23:41:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/822
