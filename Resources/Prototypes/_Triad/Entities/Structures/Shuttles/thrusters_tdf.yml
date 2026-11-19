@@ -7,6 +7,8 @@
     sprite: _Triad/Structure/Shuttles/thrustertdf_large.rsi
   - type: Machine
     board: LargeThrusterTDFMachineCircuitboard
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
 
 - type: entity
   parent: [ThrusterNfsd, BaseClass2AShipContrabandSilent]
@@ -15,6 +17,9 @@
   components:
   - type: Sprite
     sprite: _Triad/Structure/Shuttles/thrustertdf.rsi
+  - type: Machine
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
 
 - type: entity
   parent: DebugThrusterNfsd
@@ -25,6 +30,8 @@
     sprite: _Triad/Structure/Shuttles/thrustertdf.rsi
   - type: Machine
     board: ThrusterNfsdMachineCircuitboard
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
 
 - type: entity
   parent: [GyroscopeNfsd, BaseClass2AShipContrabandSilent]
@@ -33,6 +40,10 @@
   components:
   - type: Sprite
     sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
+  - type: Machine
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
+      Manipulator: PicoManipulatorStockPart
 
 - type: entity
   parent: DebugGyroscopeNfsd
@@ -41,6 +52,10 @@
   components:
   - type: Sprite
     sprite: _Triad/Structure/Shuttles/tdfgyroscope.rsi
+  - type: Machine
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
+      Manipulator: PicoManipulatorStockPart
 
 - type: entity
   parent: [SmallGyroscopeNfsd, BaseClass2AShipContrabandSilent]
@@ -50,3 +65,7 @@
   components:
   - type: Sprite
     sprite: _NF/Structures/Shuttles/nfsdgyroscope.rsi # TODO - Sprite
+  - type: Machine
+    partOverrides:
+      Capacitor: SuperCapacitorStockPart
+      Manipulator: PicoManipulatorStockPart
