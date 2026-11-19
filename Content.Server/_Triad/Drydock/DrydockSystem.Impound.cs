@@ -17,6 +17,7 @@ using Content.Shared.Nuke;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Singularity.Components;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -42,7 +43,7 @@ public sealed partial class DrydockSystem
 {
     [Dependency] private SharedBuckleSystem _buckle = default!;
     [Dependency] private PublicTransitSystem _transit = default!;
-    [Dependency] private SharedMindSystem _minds = default!;
+    [Dependency] private SharedContainerSystem _containers = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private StationJobsSystem _stationJobs = default!;
 
@@ -71,9 +72,10 @@ public sealed partial class DrydockSystem
         DrydockImpound terms,
         EntityUid? stationUid = null,
         DrydockProgressCallback? onProgress = null,
-        bool inline = false)
+        bool inline = false,
+        EntityUid? ownerUid = null)
     {
-        return TryStoreShip(gridUid, ownerUserId, roundId, berthId: null, stationUid, onProgress, terms, inline);
+        return TryStoreShip(gridUid, ownerUserId, roundId, berthId: null, stationUid, onProgress, terms, inline, ownerUid: ownerUid);
     }
 
     /// <summary>
@@ -163,7 +165,7 @@ public sealed partial class DrydockSystem
     /// </summary>
     private ProtoId<JobPrototype>? JobOfOccupant(EntityUid uid)
     {
-        return _minds.TryGetMind(uid, out var mindId, out _) && _jobs.MindTryGetJobId(mindId, out var job)
+        return _mind.TryGetMind(uid, out var mindId, out _) && _jobs.MindTryGetJobId(mindId, out var job)
             ? job
             : null;
     }
@@ -207,28 +209,10 @@ public sealed partial class DrydockSystem
     }
 
     /// <summary>
-    /// Where an evicted occupant lands: a spawn point on the map the hull came from, and on that
-    /// map only, chosen for the occupant's role. A spawn point for their own job comes first, then any
-    /// spawn point on a station that offers their job, so a faction crew lands at their own base and
-    /// a contractor at the civilian outpost, and only then anywhere at all. Within a tier bus service
-    /// outranks distance, because somewhere close with no way to leave is worse than somewhere
-    /// further along a route: the whole point of putting a player down rather than deleting them is
-    /// that they can carry on playing. Player ships are never a drop-off, whatever jobs they list.
-    ///
-    /// <para>The home map is read off the context, never the grid, because after the freeze the grid
-    /// is on a private staging map and a query keyed on its transform would either find nothing or,
-    /// unfiltered, find spawn points on every map at once: another sector, or a hull mid-store on a
-    /// paused map of its own, where a body put down past that store's last organics gate is written
-    /// into its document. A grid that is itself one tick from its own freeze is skipped for the same
-    /// reason.</para>
+    /// Finds the best possible drop off for players that were on an impounded ship.
     ///
     /// <para>Observer spawns are skipped because they are ghost markers, and a body put on one is
     /// standing in whatever the mapper thought a ghost could occupy.</para>
-    ///
-    /// <para>The last rung is not a refusal. An impound never refuses, so a sector that offers no
-    /// spawn point at all still takes the hull, and the occupants are left on the home map at the
-    /// hull's own position: whatever they are wearing, wherever they were, which is survivable and
-    /// reversible. Being written into the document is neither.</para>
     /// </summary>
     private EntityCoordinates FindImpoundDropOff(DrydockStoreContext ctx, ProtoId<JobPrototype>? job)
     {

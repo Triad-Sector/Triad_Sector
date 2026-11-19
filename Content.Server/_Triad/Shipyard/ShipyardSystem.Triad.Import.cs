@@ -300,9 +300,8 @@ public sealed partial class ShipyardSystem
         // issued to the importer's character and seizes the rest, since a permit follows its person
         // and never a ship file somebody else saved; the store then keeps exactly those.
         _contrabandPermit.InitializePermitItemsOnGrid(grid, player);
-        EntityUid? permitHolderMind = _mind.TryGetMind(player, out var importerMind, out _) ? importerMind : null;
 
-        var result = await _drydock.TryStoreShip(grid, operatorAccount, DrydockRoundId, berthId, permitHolderMind: permitHolderMind);
+        var result = await _drydock.TryStoreShip(grid, operatorAccount, DrydockRoundId, berthId, ownerUid: player);
 
         if (result.Result != DrydockStoreResult.Success)
         {

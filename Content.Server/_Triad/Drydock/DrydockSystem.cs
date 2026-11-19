@@ -1,15 +1,12 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Content.Server._Mono.Shuttles.Components;
 using Content.Server._NF.Shipyard.Systems;
 using Content.Server._Triad.ContrabandPermit;
 using Content.Server._NF.Station.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Nuke;
 using Content.Server.Database;
@@ -17,9 +14,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Mono.ShipRepair.Components;
-using Content.Shared._Mono.Ships.Components;
-using Content.Shared._Mono.Shipyard; // Triad
-using Content.Shared._NF.Shipyard.Prototypes;
+using Content.Shared._Mono.Shipyard;
 using Content.Shared._Triad.CCVar;
 using Content.Shared._Triad.ContrabandPermit;
 using Content.Shared._Triad.Shipyard.Save.Contraband;
@@ -56,6 +51,9 @@ using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Stacks;
 using Content.Shared.Coordinates;
+using Content.Server.Preferences.Managers;
+using Robust.Shared.Player;
+using Content.Shared.Mind;
 
 namespace Content.Server._Triad.Drydock;
 
@@ -74,6 +72,7 @@ namespace Content.Server._Triad.Drydock;
 public sealed partial class DrydockSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IServerPreferencesManager _prefs = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IDependencyCollection _dependency = default!;
     [Dependency] private ISerializationManager _serialization = default!;
@@ -83,6 +82,7 @@ public sealed partial class DrydockSystem : EntitySystem
     [Dependency] private ShipSizeSystem _shipSize = default!;
     [Dependency] private ShipyardSystem _shipyard = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private DockingSystem _docking = default!;
     [Dependency] private StationSystem _station = default!;
@@ -154,11 +154,8 @@ public sealed partial class DrydockSystem : EntitySystem
     /// serializer, whatever the slicing cvars say. The round-end sweep sets it: nobody is left to
     /// protect from a hitch and the restart is waiting. See <see cref="DrydockStoreContext.Inline"/>.
     /// </param>
-    /// <param name="permitHolderMind">
-    /// The mind of whoever is putting the ship away, when somebody is: a console store and an import
-    /// pass it, and then only permits issued to that mind travel. Null judges permits by the owning
-    /// account instead, which is all an impound or the round-end sweep can vouch for. See
-    /// <see cref="DrydockStoreContext.PermitHolderMind"/>.
+    /// <param name="ownerUid">
+    /// The uid of the owner of the ship.
     /// </param>
     public async Task<(DrydockStoreResult Result, Guid? ShipId)> TryStoreShip(
         EntityUid gridUid,
@@ -169,7 +166,7 @@ public sealed partial class DrydockSystem : EntitySystem
         DrydockProgressCallback? onProgress = null,
         DrydockImpound? impound = null,
         bool inline = false,
-        EntityUid? permitHolderMind = null)
+        EntityUid? ownerUid = null)
     {
         if (!DrydockWritable)
             return (DrydockStoreResult.Disabled, null);
@@ -209,7 +206,7 @@ public sealed partial class DrydockSystem : EntitySystem
             StationUid = stationUid ?? _station.GetOwningStation(gridUid) ?? EntityUid.Invalid,
             Impound = impound,
             Inline = inline,
-            PermitHolderMind = permitHolderMind,
+            OwnerUid = ownerUid,
             HomeMap = homeXform.MapUid,
             HomePosition = _xform.GetWorldPosition(gridUid),
         };
@@ -284,6 +281,7 @@ public sealed partial class DrydockSystem : EntitySystem
     internal async Task<DrydockStoreOutcome> RunStorePipeline(DrydockStoreContext ctx, IDrydockSlice slice)
     {
         var gridUid = ctx.GridUid;
+        var ownerUid = ctx.OwnerUid;
         var timer = ctx.Timer;
         var jobId = JobIdOf(slice);
 
@@ -395,8 +393,6 @@ public sealed partial class DrydockSystem : EntitySystem
             await slice.Begin(DrydockPhase.Prepare, 0);
             GuardStoreResume(ctx);
 
-            SanitizeStationAiCores(gridUid);
-
             RemComp<FTLComponent>(gridUid);
 
             var saveOptions = new SerializationOptions { MissingEntityBehaviour = MissingEntityBehaviour.Ignore };
@@ -468,10 +464,17 @@ public sealed partial class DrydockSystem : EntitySystem
             await BuildManifestSliced(ctx, slice, manifest);
             GuardStoreResume(ctx);
 
+            // Store the character index of the currently selected character
+            // We hide ships that are owned by other characters
+            int? characterIndex = null;
+            if (TryComp<ActorComponent>(ownerUid, out var actor) && _prefs.TryGetCachedPreferences(actor.PlayerSession.UserId, out var prefs))
+                characterIndex = prefs.SelectedCharacterIndex;
+
             var request = new DrydockRevisionRequest
             {
                 ShipGuid = shipId,
                 OwnerUserId = ctx.OwnerUserId,
+                CharacterIndex = characterIndex,
                 ShipName = shipName,
                 VesselProto = vesselProto,
                 SizeClass = sizeClass,
@@ -1180,13 +1183,18 @@ public sealed partial class DrydockSystem : EntitySystem
     {
         var doomed = new List<EntityUid>();
 
+        EntityUid? permitHolderMind = null;
+
+        if (ctx.OwnerUid != null && _mind.TryGetMind(ctx.OwnerUid.Value, out var operatorMind, out _))
+            permitHolderMind = operatorMind;
+
         // One walk for both rules. A permitted item is judged by its permit alone, whichever way
         // that goes; anything else that is marked goes.
         foreach (var uid in _fidelity.GridTreeList(ctx.GridUid))
         {
             if (TryComp<ContrabandPermitItemComponent>(uid, out var permit))
             {
-                if (!_contrabandPermit.PermitTravelsWith((uid, permit), ctx.PermitHolderMind, ctx.OwnerUserId))
+                if (!_contrabandPermit.PermitTravelsWith((uid, permit), permitHolderMind, ctx.OwnerUserId))
                     doomed.Add(uid);
             }
             else if (HasComp<SavingContrabandComponent>(uid))

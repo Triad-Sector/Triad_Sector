@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 // ReSharper disable EntityFramework.ModelValidation.UnlimitedStringLength
@@ -206,6 +207,11 @@ public sealed class DrydockShip
     public Guid OwnerUserId { get; set; }
 
     public Player Owner { get; set; } = default!;
+
+    /// <summary>
+    /// The character profile index (slot number) of the owner. This isn't a requirement, so that ships aren't deleted when a character does.
+    /// </summary>
+    public int? CharacterIndex { get; set; }
 
     /// <summary>
     /// Display cache for the stored-ship list, refreshed on every store so the list can be drawn

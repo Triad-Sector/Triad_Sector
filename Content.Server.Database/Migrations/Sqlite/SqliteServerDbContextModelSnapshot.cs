@@ -921,6 +921,36 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("consent_toggle", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("dbjob_alternate_title_id");
+
+                    b.Property<string>("AlternateTitle")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("alternate_title");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_dbjob_alternate_title");
+
+                    b.HasIndex("ProfileId", "RoleName", "AlternateTitle")
+                        .IsUnique();
+
+                    b.ToTable("dbjob_alternate_title", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.DrydockAudit", b =>
                 {
                     b.Property<long>("Id")
@@ -1151,6 +1181,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("captain_name");
 
+                    b.Property<int?>("CharacterIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("character_index");
+
                     b.Property<int?>("CheckedOutRoundId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("checked_out_round_id");
@@ -1280,36 +1314,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.HasIndex("ToUserId", "Resolution");
 
                     b.ToTable("drydock_transfer", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("dbjob_alternate_title_id");
-
-                    b.Property<string>("AlternateTitle")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("alternate_title");
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("profile_id");
-
-                    b.Property<string>("RoleName")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("role_name");
-
-                    b.HasKey("Id")
-                        .HasName("PK_dbjob_alternate_title");
-
-                    b.HasIndex("ProfileId", "RoleName", "AlternateTitle")
-                        .IsUnique();
-
-                    b.ToTable("dbjob_alternate_title", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -2899,6 +2903,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ConsentSettings");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("AltTitles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_dbjob_alternate_title_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.DrydockBerth", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Owner")
@@ -3006,18 +3022,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_drydock_transfer_drydock_ship_ship_temp_id1");
 
                     b.Navigation("Ship");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
-                {
-                    b.HasOne("Content.Server.Database.Profile", "Profile")
-                        .WithMany("AltTitles")
-                        .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_dbjob_alternate_title_profile_profile_id");
-
-                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>

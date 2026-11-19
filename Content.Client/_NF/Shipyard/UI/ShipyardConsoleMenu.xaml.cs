@@ -1015,8 +1015,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         BerthDetailTitle.SetMessage(title);
         DrawBerthStatus(berth, (int)_sinceState);
 
-        BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-berth",
-            Loc.GetString("shipyard-console-store-item", ("berth", berth.BerthId), ("class", DrydockText.Class(berth.MaxSizeClass))), null));
+        BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-berth-class", DrydockText.Class(berth.MaxSizeClass), null));
         if (berth.OccupantShipId != null)
             BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-ship-class", DrydockText.Class(berth.OccupantSizeClass), null));
         if (berth.OccupantAppraisal is { } appraisal)

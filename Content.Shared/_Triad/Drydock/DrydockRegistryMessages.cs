@@ -35,10 +35,6 @@ public sealed record DrydockRegistryShipInfo(
     int ImpoundFee,
     string? ImpoundReason);
 
-/// <summary>
-/// Asks for a page of the registry. Search matches the captain's name and the ship's name, callsign
-/// included; never an account. A null status is every hull.
-/// </summary>
 [Serializable, NetSerializable]
 public sealed class DrydockRegistryRequestPageMessage : BoundUserInterfaceMessage
 {

@@ -704,6 +704,7 @@ public sealed partial class DrydockStore
             {
                 ShipGuid = request.ShipGuid,
                 OwnerUserId = request.OwnerUserId,
+                CharacterIndex = request.CharacterIndex,
                 State = DrydockShipState.CheckedOut,
                 StateChangedAt = now,
                 CheckedOutRoundId = request.CreatedRoundId,
@@ -2682,6 +2683,8 @@ public sealed class DrydockRevisionRequest
 
     /// <summary>Only used when creating the hull row. An existing ship keeps its owner.</summary>
     public required Guid OwnerUserId { get; init; }
+
+    public int? CharacterIndex { get; init; }
 
     public required string ShipName { get; init; }
 

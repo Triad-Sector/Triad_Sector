@@ -30,6 +30,13 @@ namespace Content.Shared.Preferences
             return _characters[index];
         }
 
+        // Triad Start
+        public bool HasProfileIndex(int index)
+        {
+            return _characters.TryGetValue(index, out _);
+        }
+        // Triad End
+
         /// <summary>
         ///     Index of the currently selected character.
         /// </summary>

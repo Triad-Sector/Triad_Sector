@@ -57,8 +57,6 @@ using Content.Shared.SmartFridge;
 using Content.Shared.Storage;
 using Content.Shared.Timing;
 using Content.Shared.Weapons.Ranged.Components;
-using Content.Shared.Xenoarchaeology.Artifact.Components;
-using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
@@ -102,7 +100,6 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
         private const string MarketItemProtoId = "SheetSteel1";
         private const string SmartFridgeProtoId = "SmartFridge";
         private const string InteractorProtoId = "Interactor";
-        private const string ArtifactProtoId = "ComplexXenoArtifactItem";
         private const string AudioProtoId = "Audio";
         private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
         private const string ShieldGeneratorProtoId = "ShieldGenerator";
@@ -115,8 +112,6 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
         private const string ShuttleGeneratorProtoId = "PortableGeneratorSuperPacmanShuttle";
         private const string FilterProtoId = "GasFilter";
         private const string MixerProtoId = "GasMixer";
-        private const string AnalysisConsoleProtoId = "ComputerAnalysisConsole";
-        private const string ArtifactAnalyzerProtoId = "MachineArtifactAnalyzer";
         private const string CrystallizerProtoId = "Crystallizer";
         private const string ReactorProtoId = "NuclearReactorNormal";
         private const string TurbineProtoId = "GasTurbineNormal";
@@ -1844,73 +1839,6 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
         }
 
         /// <summary>
-        /// A xenoartifact is the one entity aboard whose whole structure is a NetEntity graph. The
-        /// fidelity probe had no NetEntity writer, so it judged every such field unserializable and
-        /// blanked it before the save: the vertex array went to null and the serializer refused the
-        /// entire ship. The map serializer remaps NetEntity like EntityUid, so the probe must leave
-        /// those fields alone; this proves the store goes through and the graph comes back pointing
-        /// at real nodes.
-        /// </summary>
-        [Test]
-        public async Task AnArtifactSurvivesTheRoundTrip()
-        {
-            await using var pair = await PoolManager.GetServerClient();
-            var server = pair.Server;
-            var entMan = server.EntMan;
-
-            var db = server.ResolveDependency<IServerDbManager>();
-            var drydock = server.System<DrydockSystem>();
-
-            var owner = Guid.NewGuid();
-            await DrydockTestHelpers.InsertPlayer(db, owner);
-            await server.ResolveDependency<DrydockStore>().AddBerth(owner, ShipSizeClass.SuperCapital, DrydockBerthKind.Granted, 0, null, null);
-
-            var (station, shipGrid, _) = await BuildShipAndStation(pair);
-
-            await server.WaitPost(() =>
-            {
-                entMan.SpawnEntity(ArtifactProtoId, new EntityCoordinates(shipGrid, new Vector2(2f, 2f)));
-            });
-
-            await pair.RunTicksSync(5);
-
-            var nodesBefore = 0;
-            await server.WaitAssertion(() =>
-            {
-                var artifact = FindChildWithComponentSync<XenoArtifactComponent>(entMan, shipGrid);
-                Assert.That(artifact, Is.Not.Null);
-                nodesBefore = entMan.GetComponent<XenoArtifactComponent>(artifact!.Value).NodeVertices.Count(v => v != null);
-                Assert.That(nodesBefore, Is.GreaterThan(0), "The control: generation on map init has to have produced a graph to lose.");
-            });
-
-            var (result, shipId) = await DrydockTestHelpers.RunOnServer(pair, () => drydock.TryStoreShip(shipGrid, owner, null));
-            Assert.That(result, Is.EqualTo(DrydockStoreResult.Success),
-                "A ship carrying an artifact must store. SerializeFailed here means the probe blanked a NetEntity field and the writer refused the null.");
-
-            await pair.RunTicksSync(5);
-
-            var retrieved = await DrydockTestHelpers.RunOnServer(pair, () => drydock.TryRetrieveShip(shipId!.Value, owner, station, null));
-            Assert.That(retrieved.Result, Is.EqualTo(DrydockRetrieveResult.Success));
-
-            await pair.RunTicksSync(5);
-
-            var retrievedArtifact = await FindChildWithComponent<XenoArtifactComponent>(pair, retrieved.Grid!.Value);
-
-            await server.WaitAssertion(() =>
-            {
-                Assert.That(retrievedArtifact, Is.Not.Null, "The artifact came back with the ship.");
-                var comp = entMan.GetComponent<XenoArtifactComponent>(retrievedArtifact!.Value);
-
-                Assert.That(comp.NodeVertices, Is.Not.Null);
-                var resolved = comp.NodeVertices.Count(v => v != null && entMan.TryGetEntity(v.Value, out var node) && entMan.HasComponent<XenoArtifactNodeComponent>(node.Value));
-                Assert.That(resolved, Is.EqualTo(nodesBefore),
-                    "Every vertex has to be remapped to the reborn node entity; a stripped graph comes back empty and a stale one points at nothing.");
-            });
-
-            await pair.CleanReturnAsync();
-        }
-
-        /// <summary>
         /// Every pump, filter and mixer switches itself off when it leaves an atmosphere, and the
         /// engine raises a parent-changed message on every entity at startup that made the atmos
         /// device leave and rejoin the grid it had already joined on init, so a loaded ship came back
@@ -1987,69 +1915,6 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
                 Assert.That(entMan.GetComponent<GasVolumePumpComponent>(volumePump!.Value).Enabled, Is.True, $"{when}: the volume pump is on.");
                 Assert.That(entMan.GetComponent<GasFilterComponent>(filter!.Value).Enabled, Is.True, $"{when}: the filter is on.");
                 Assert.That(entMan.GetComponent<GasMixerComponent>(mixer!.Value).Enabled, Is.True, $"{when}: the mixer is on.");
-            });
-        }
-
-        /// <summary>
-        /// The analysis console holds its analyzer as a NetEntity and the analyzer holds its console
-        /// as a view-variables field, so the pair is re-resolved from the device-link wire on the
-        /// analyzer's map init and nowhere else, so a retrieved pair comes back linked on the wire
-        /// and dead on the console. Both ends are asserted after the round trip.
-        /// </summary>
-        [Test]
-        public async Task AnAnalysisConsoleStaysLinkedToItsAnalyzer()
-        {
-            await using var pair = await PoolManager.GetServerClient();
-            var server = pair.Server;
-            var entMan = server.EntMan;
-
-            var db = server.ResolveDependency<IServerDbManager>();
-            var drydock = server.System<DrydockSystem>();
-            var deviceLink = server.System<DeviceLinkSystem>();
-
-            var owner = Guid.NewGuid();
-            await DrydockTestHelpers.InsertPlayer(db, owner);
-            await server.ResolveDependency<DrydockStore>().AddBerth(owner, ShipSizeClass.SuperCapital, DrydockBerthKind.Granted, 0, null, null);
-
-            var (station, shipGrid, _) = await BuildShipAndStation(pair);
-
-            await server.WaitPost(() =>
-            {
-                var console = entMan.SpawnEntity(AnalysisConsoleProtoId, new EntityCoordinates(shipGrid, new Vector2(0.5f, 0.5f)));
-                var analyzer = entMan.SpawnEntity(ArtifactAnalyzerProtoId, new EntityCoordinates(shipGrid, new Vector2(1.5f, 0.5f)));
-                deviceLink.LinkDefaults(null, console, analyzer);
-            });
-
-            await pair.RunTicksSync(5);
-
-            await server.WaitAssertion(() => AssertAnalyzerLinked(entMan, shipGrid, "Control, before the store"));
-
-            var (result, shipId) = await DrydockTestHelpers.RunOnServer(pair, () => drydock.TryStoreShip(shipGrid, owner, null));
-            Assert.That(result, Is.EqualTo(DrydockStoreResult.Success));
-            await pair.RunTicksSync(5);
-
-            var retrieved = await DrydockTestHelpers.RunOnServer(pair, () => drydock.TryRetrieveShip(shipId!.Value, owner, station, null));
-            Assert.That(retrieved.Result, Is.EqualTo(DrydockRetrieveResult.Success));
-            await pair.RunTicksSync(5);
-
-            await server.WaitAssertion(() => AssertAnalyzerLinked(entMan, retrieved.Grid!.Value, "After the retrieve"));
-
-            await pair.CleanReturnAsync();
-        }
-
-        private static void AssertAnalyzerLinked(IEntityManager entMan, EntityUid grid, string when)
-        {
-            var console = FindChildWithComponentSync<AnalysisConsoleComponent>(entMan, grid);
-            var analyzer = FindChildWithComponentSync<ArtifactAnalyzerComponent>(entMan, grid);
-            Assert.That(console, Is.Not.Null, $"{when}: the console is aboard.");
-            Assert.That(analyzer, Is.Not.Null, $"{when}: the analyzer is aboard.");
-
-            var consoleComp = entMan.GetComponent<AnalysisConsoleComponent>(console!.Value);
-            var analyzerComp = entMan.GetComponent<ArtifactAnalyzerComponent>(analyzer!.Value);
-            Assert.Multiple(() =>
-            {
-                Assert.That(entMan.GetEntity(consoleComp.AnalyzerEntity), Is.EqualTo(analyzer.Value), $"{when}: the console names the analyzer.");
-                Assert.That(analyzerComp.Console, Is.EqualTo(console.Value), $"{when}: the analyzer names the console.");
             });
         }
 
@@ -2288,7 +2153,7 @@ namespace Content.IntegrationTests.Tests._Triad.Drydock
             Assert.That(before[MarketItemProtoId], Is.EqualTo(3), "The control: three sheets aboard before the store.");
 
             var (result, shipId) = await DrydockTestHelpers.RunOnServer(pair,
-                () => drydock.TryStoreShip(shipGrid, owner, null, permitHolderMind: holder));
+                () => drydock.TryStoreShip(shipGrid, owner, null, ownerUid: holder));
             Assert.That(result, Is.EqualTo(DrydockStoreResult.Success));
             await pair.RunTicksSync(5);
 

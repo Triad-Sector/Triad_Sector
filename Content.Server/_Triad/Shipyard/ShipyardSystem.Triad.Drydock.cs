@@ -429,7 +429,13 @@ public sealed partial class ShipyardSystem
 
         // Every hull the account has, including the ones that are out: the tab warns when an
         // action would leave a ship with nowhere to dock.
+
+        if (!_prefManager.TryGetCachedPreferences(actor.PlayerSession.UserId, out var preferences))
+            return;
+
+        // Only show ships that belong to the character
         var storedShips = rows
+            .Where(r => r.CharacterIndex == preferences.SelectedCharacterIndex || r.CharacterIndex == null)
             .Select(r => new StoredShipInfo(r.ShipGuid, r.ShipName, r.SizeClass, r.State.ToString(), r.BerthId))
             .ToList();
 
@@ -460,6 +466,10 @@ public sealed partial class ShipyardSystem
                     sellPrice = DrydockSalePrice((uid, component), value).Net;
                     sellBasis = value;
                 }
+
+                // Hide vessels that do not belong to that character
+                if (slot.Occupant.CharacterIndex != null && slot.Occupant.CharacterIndex != preferences.SelectedCharacterIndex)
+                    continue;
             }
 
             berthInfos.Add(new DrydockBerthInfo(
@@ -542,7 +552,10 @@ public sealed partial class ShipyardSystem
         RefreshDrydockUi(uid, component, player, uiKey);
     }
 
-    // ---------------------------------------------------------------- Access, ships out, deed reissue
+    public void RefreshSavedShipsLobbyInterface()
+    {
+
+    }
 
     /// <summary>
     /// Reads who the operator is into the console's caches: barred or not, the civilian ships their
@@ -1287,15 +1300,10 @@ public sealed partial class ShipyardSystem
         DrydockProgressCallback onProgress = (percent, _) =>
             PushDrydockProgress(uid, component, player, uiKey, DrydockProgressKind.Store, percent);
 
-        // The operator's own permits are the only ones that go with the ship, the ship-save path's
-        // ClearPermitItemsOnGrid rule: anyone else's permitted kit left aboard is purged at store
-        // rather than filed into the document with the hull.
-        EntityUid? permitHolderMind = _mind.TryGetMind(player, out var operatorMind, out _) ? operatorMind : null;
-
         (DrydockStoreResult Result, Guid? ShipId) result;
         try
         {
-            result = await _drydock.TryStoreShip(shuttleUid, ownership.OwnerUserId.UserId, DrydockRoundId, berthId, station, onProgress, permitHolderMind: permitHolderMind);
+            result = await _drydock.TryStoreShip(shuttleUid, ownership.OwnerUserId.UserId, DrydockRoundId, berthId, station, onProgress, ownerUid: player);
         }
         finally
         {
