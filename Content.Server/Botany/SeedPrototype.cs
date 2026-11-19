@@ -1,13 +1,13 @@
 using Content.Server.Botany.Components;
 using Content.Server.Botany.Systems;
+using Content.Server.EntityEffects;
 using Content.Shared.Atmos;
-using Content.Shared.EntityEffects;
+using Content.Shared.Database;
 using Content.Shared.Random;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
-
-using Content.Server.EntityEffects;
 
 namespace Content.Server.Botany;
 
@@ -136,7 +136,7 @@ public partial class SeedData
     /// <summary>
     ///     The entity prototype this seed spawns when it gets harvested.
     /// </summary>
-    [DataField("productPrototypes")]
+    [DataField]
     public List<EntProtoId> ProductPrototypes = new();
 
     [DataField] public Dictionary<string, SeedChemQuantity> Chemicals = new();

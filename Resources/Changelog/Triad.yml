@@ -6212,3 +6212,61 @@ Entries:
   id: 2730
   time: '2026-11-14T02:43:07.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/597
+- author: nathan736
+  changes:
+    - type: Fix
+      message: >-
+        Botany plants can once again not emit Trit, Frezon, BZ, Healium,
+        Pluxoium , Nitrium
+  id: 2731
+  time: '2026-11-14T20:46:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/786
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed the camera setup and map view buttons.
+  id: 2732
+  time: '2026-11-15T01:37:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/827
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the plasma burning mechanic. Plasma energy weapons will deal
+        damage overtime that stacks every hit. Targets will need to stop, drop,
+        and roll in order to get the plasma off, similar to being on fire.
+        Humanoid mobs, xenos, turrets, rogue silicons, and more are affected by
+        these plasma burns.
+    - type: Tweak
+      message: Plasma energy bolts are no longer reflected by laser shields.
+    - type: Add
+      message: Added a stop, drop, and roll animation for being on fire.
+    - type: Fix
+      message: >-
+        Fixed energy turrets having the incorrect armor values. They now have
+        the same values as ballistic turrets.
+  id: 2733
+  time: '2026-11-15T03:54:02.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/829
+- author: Wizden
+  changes:
+    - type: Fix
+      message: >-
+        fix: Fixed backpack water tanks (spray nozzle) projectiles not properly
+        cleaning up puddles.
+    - type: Add
+      message: >-
+        Spray nozzle now can consume liquids from puddles and put it right into
+        backpacked tank.
+  id: 2734
+  time: '2026-11-16T21:05:36.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/831
+- author: aada
+  changes:
+    - type: Add
+      message: You can examine fuel tanks to see how much they're filled.
+    - type: Fix
+      message: You can now see exact values on filled beakers on examine.
+  id: 2735
+  time: '2026-11-16T21:45:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/832

@@ -131,6 +131,8 @@
         sprite: "Effects/creampie.rsi"
         state: "creampie_moth"
         visible: false
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: Inventory
     femaleDisplacements:
       jumpsuit:
