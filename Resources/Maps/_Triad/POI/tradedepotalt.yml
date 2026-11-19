@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 11/18/2026 16:01:54
-  entityCount: 1342
+  time: 11/19/2026 23:23:01
+  entityCount: 1354
 maps: []
 grids:
 - 1
@@ -114,9 +114,9 @@ entities:
     - type: SpreaderGrid
       spreadQueues:
         Smoke: []
-        Puddle: []
         Kudzu: []
         MetalFoam: []
+        Puddle: []
     - type: Shuttle
       dampingModifier: 0.25
     - type: GridPathfinding
@@ -1373,6 +1373,8 @@ entities:
   entities:
   - uid: 2
     components:
+    - type: MetaData
+      name: air alarm (Atmospherics/Power)
     - type: Transform
       parent: 1
       pos: -2.5,-4.5
@@ -1383,6 +1385,8 @@ entities:
       - 644
   - uid: 3
     components:
+    - type: MetaData
+      name: air alarm (Cargo Bay Port)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
@@ -1401,6 +1405,8 @@ entities:
       - 648
   - uid: 7
     components:
+    - type: MetaData
+      name: air alarm (Main Hall)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
@@ -1432,6 +1438,8 @@ entities:
       - 830
   - uid: 100
     components:
+    - type: MetaData
+      name: air alarm (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
@@ -1450,6 +1458,8 @@ entities:
       - 647
   - uid: 1357
     components:
+    - type: MetaData
+      name: air alarm (Cargo Bay Buffer)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
@@ -1464,84 +1474,93 @@ entities:
       - 641
       - 837
       - 827
+      - 644
 - proto: AirlockEngineering
   entities:
   - uid: 9
     components:
+    - type: MetaData
+      name: airlock (Atmospherics/Power)
     - type: Transform
       parent: 1
       pos: 0.5,-2.5
 - proto: AirlockExternalGlass
   entities:
-  - uid: 10
-    components:
-    - type: Transform
-      parent: 1
-      pos: -9.5,-0.5
-    - type: Door
-      state: Opening
-      secondsUntilStateChange: -38876.535
-    - type: DeviceLinkSource
-      lastSignals:
-        DoorStatus: True
   - uid: 11
     components:
+    - type: MetaData
+      name: airlock (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       pos: 10.5,-0.5
   - uid: 12
     components:
+    - type: MetaData
+      name: airlock (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       pos: 10.5,1.5
   - uid: 13
     components:
+    - type: MetaData
+      name: airlock (Cargo Bay Port)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -9.5,0.5
   - uid: 14
     components:
+    - type: MetaData
+      name: airlock (Cargo Bay Port)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -9.5,1.5
   - uid: 15
     components:
+    - type: MetaData
+      name: airlock (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       pos: 10.5,0.5
+  - uid: 31
+    components:
+    - type: MetaData
+      name: airlock (Cargo Bay Port)
+    - type: Transform
+      parent: 1
+      pos: -9.5,-0.5
 - proto: AirlockGlass
   entities:
   - uid: 28
     components:
+    - type: MetaData
+      name: glass airlock (Cargo Bays)
     - type: Transform
       parent: 1
       pos: 0.5,3.5
   - uid: 29
     components:
+    - type: MetaData
+      name: glass airlock (Cargo Bays)
     - type: Transform
       parent: 1
       pos: 1.5,3.5
   - uid: 30
     components:
+    - type: MetaData
+      name: glass airlock (Cargo Bays)
     - type: Transform
       parent: 1
       pos: -0.5,3.5
 - proto: AirlockGlassShuttleOutpost
   entities:
-  - uid: 31
+  - uid: 10
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -14.5,-0.5
-    - type: Door
-      state: Opening
-      secondsUntilStateChange: -29414.043
-    - type: DeviceLinkSource
-      lastSignals:
-        DoorStatus: True
   - uid: 32
     components:
     - type: Transform
@@ -1667,40 +1686,54 @@ entities:
   entities:
   - uid: 50
     components:
+    - type: MetaData
+      name: APC (Atmospherics/Power)
     - type: Transform
       parent: 1
       pos: 3.5,-4.5
   - uid: 51
     components:
+    - type: MetaData
+      name: APC (Cargo Bay Port)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -1.5,-1.5
   - uid: 52
     components:
+    - type: MetaData
+      name: APC (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 2.5,-1.5
   - uid: 53
     components:
+    - type: MetaData
+      name: APC (Main Hall)
     - type: Transform
       parent: 1
       pos: 2.5,15.5
   - uid: 54
     components:
+    - type: MetaData
+      name: APC (Main Hall Aft)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -1.5,7.5
   - uid: 55
     components:
+    - type: MetaData
+      name: APC (Main Hall Starboard-Fore)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 3.5,19.5
   - uid: 56
     components:
+    - type: MetaData
+      name: APC (Main Hall Port-Fore)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
@@ -1743,6 +1776,78 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -14.5,1.5
+  - uid: 971
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -8.5,20.5
+  - uid: 972
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -8.5,21.5
+  - uid: 973
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -8.5,22.5
+  - uid: 974
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -5.5,25.5
+  - uid: 977
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -4.5,25.5
+  - uid: 978
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -3.5,25.5
+  - uid: 979
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 4.5,25.5
+  - uid: 980
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 5.5,25.5
+  - uid: 981
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 6.5,25.5
+  - uid: 982
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 9.5,22.5
+  - uid: 983
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 9.5,21.5
+  - uid: 984
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 9.5,20.5
 - proto: AtmosFixBlockerMarker
   entities:
   - uid: 63
@@ -4904,6 +5009,8 @@ entities:
   entities:
   - uid: 8
     components:
+    - type: MetaData
+      name: fire alarm (Cargo Bay Buffer)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
@@ -4916,8 +5023,11 @@ entities:
       - 643
       - 642
       - 641
+      - 644
   - uid: 1354
     components:
+    - type: MetaData
+      name: fire alarm (Cargo Bay Port)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
@@ -4932,6 +5042,8 @@ entities:
       - 640
   - uid: 1355
     components:
+    - type: MetaData
+      name: fire alarm (Cargo Bay Starboard)
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
@@ -4946,6 +5058,8 @@ entities:
       - 647
   - uid: 1359
     components:
+    - type: MetaData
+      name: fire alarm (Main Hall)
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
@@ -5079,6 +5193,8 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2
+      - 8
+      - 1357
   - uid: 645
     components:
     - type: Transform
@@ -8472,6 +8588,8 @@ entities:
   entities:
   - uid: 1065
     components:
+    - type: MetaData
+      name: advanced SMES (Atmospherics/Power)
     - type: Transform
       parent: 1
       pos: -0.5,-8.5
@@ -8551,6 +8669,8 @@ entities:
   entities:
   - uid: 1078
     components:
+    - type: MetaData
+      name: wallmount substation (Main Hall)
     - type: Transform
       parent: 1
       pos: -1.5,15.5
