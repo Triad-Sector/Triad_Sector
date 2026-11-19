@@ -12,7 +12,7 @@ namespace Content.Server._Triad.Shipyard.Load;
 /// still wanted, and leaving it there would have tied AI-core respawn to the import path, which is
 /// meant to be switched off once the legacy pool drains.
 /// </remarks>
-public sealed class ShipLoadRespawnSystem : EntitySystem
+public sealed partial class ShipLoadRespawnSystem : EntitySystem
 {
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -31,10 +31,9 @@ public sealed class ShipLoadRespawnSystem : EntitySystem
     }
 
     /// <summary>
-    /// Spawns the replacement for every marked entity on the grid, and deletes the original where
-    /// the component asks for it.
+    /// Spawns the replacement for every marked entity on the grid
     /// </summary>
-    public void RespawnMarkedEntities(EntityUid gridUid)
+    public async void RespawnMarkedEntities(EntityUid gridUid)
     {
         if (!_gridQuery.HasComp(gridUid))
             return;

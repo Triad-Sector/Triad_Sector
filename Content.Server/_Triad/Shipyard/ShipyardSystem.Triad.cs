@@ -4,17 +4,17 @@ using Content.Server._Triad.Shipyard.Load;
 using Content.Server._Triad.Shipyard.Persistence;
 using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent.ShipShields;
-using Content.Shared._NF.Shipyard;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.Timing;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Utility;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
-public sealed partial class ShipyardSystem : SharedShipyardSystem
+public sealed partial class ShipyardSystem
 {
     [Dependency] private ShipLoadRespawnSystem _shipLoadRespawn = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
@@ -152,7 +152,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// Tries to reset the delays on any entities with the UseDelayComponent.
     /// Needed to ensure items don't have prolonged delays after saving.
     /// </summary>
-    private void TryResetUseDelays(EntityUid shuttleGrid)
+    private async void TryResetUseDelays(EntityUid shuttleGrid)
     {
         var useDelayQuery = EntityQueryEnumerator<UseDelayComponent, TransformComponent>();
 

@@ -1,5 +1,3 @@
-# The drydock registry on the shuttle records console. Card labels, the match count and the page
-# reuse the admin panel's keys, so the two surfaces say the same words.
 drydock-registry-title = Drydock Registry
 drydock-registry-search-placeholder = Character or ship name, or callsign
 drydock-registry-chip-All = All

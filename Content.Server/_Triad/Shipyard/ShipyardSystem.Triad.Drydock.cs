@@ -35,7 +35,6 @@ using Content.Server.StationRecords;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -2557,10 +2556,7 @@ public sealed partial class ShipyardSystem
     }
 
     /// <summary>
-    /// Files the sector shuttle record the purchase and ship-load paths file, so a retrieved ship
-    /// shows on the shuttle records console. Records are round-scoped and keyed by the live grid, so
-    /// every retrieve files a fresh one. Same gate as those paths: a console that cannot transfer
-    /// deeds keeps no records.
+    /// Adds a shuttle record to a retrieved ship
     /// </summary>
     private void AddRetrievedShuttleRecord(ShipyardConsoleComponent component, EntityUid grid, EntityUid player)
     {
@@ -2569,7 +2565,7 @@ public sealed partial class ShipyardSystem
 
         uint price = 0;
         if (TryComp<VesselComponent>(grid, out var vesselComp)
-            && _prototypeManager.TryIndex<VesselPrototype>(vesselComp.VesselId, out var vessel))
+            && _prototypeManager.TryIndex(vesselComp.VesselId, out var vessel))
         {
             price = (uint)vessel.Price;
         }
@@ -2586,9 +2582,7 @@ public sealed partial class ShipyardSystem
     }
 
     /// <summary>
-    /// Puts the captain on the ship's own station records: their existing record copied over from
-    /// any station that has one, else a fresh general record from their profile. Lifted verbatim
-    /// from the ship-load path, which purchase mirrors, so that retrieve does what both do.
+    /// Adds the captain to the station records
     /// </summary>
     internal void EnsureCaptainStationRecord(EntityUid shuttleStation, EntityUid targetId, EntityUid player)
     {
@@ -2630,19 +2624,10 @@ public sealed partial class ShipyardSystem
                 stationRec);
         }
 
-        // Not every station keeps records: the POI outposts a shipyard console can sit on have
-        // none, and Synchronize logs an error when the component is missing.
         if (HasComp<StationRecordsComponent>(shuttleStation))
             _records.Synchronize(shuttleStation);
     }
 
-    /// <summary>
-    /// Blanks the grid-side deed's holder for the length of a store and hands back what it was.
-    /// The holder is the card in the console, which is not in the ship's document, so serialized
-    /// it is an invalid reference that the deserializer logs as an error on every scratch load and
-    /// every retrieve. Retrieve mints a card deed and sets the holder afresh, so nothing is lost by
-    /// writing it blank; the abort path puts the live value back.
-    /// </summary>
     internal EntityUid? DetachGridDeedHolder(EntityUid grid)
     {
         if (!TryComp<ShuttleDeedComponent>(grid, out var deed))

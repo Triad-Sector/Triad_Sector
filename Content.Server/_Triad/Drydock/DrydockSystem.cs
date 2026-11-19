@@ -47,6 +47,15 @@ using Robust.Shared.Utility;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.RepresentationModel;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
+using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Storage;
+using Robust.Shared.Random;
+using Content.Server.Stack;
+using Content.Shared.Xenoarchaeology.Equipment.Components;
+using Robust.Shared.Prototypes;
+using Content.Shared.Stacks;
+using Content.Shared.Coordinates;
 
 namespace Content.Server._Triad.Drydock;
 
@@ -65,6 +74,7 @@ namespace Content.Server._Triad.Drydock;
 public sealed partial class DrydockSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IDependencyCollection _dependency = default!;
     [Dependency] private ISerializationManager _serialization = default!;
     [Dependency] private DrydockStore _store = default!;
@@ -72,6 +82,8 @@ public sealed partial class DrydockSystem : EntitySystem
     [Dependency] private MapLoaderSystem _mapLoader = default!;
     [Dependency] private ShipSizeSystem _shipSize = default!;
     [Dependency] private ShipyardSystem _shipyard = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private StackSystem _stack = default!;
     [Dependency] private DockingSystem _docking = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private ContrabandPermitSystem _contrabandPermit = default!;
@@ -79,26 +91,20 @@ public sealed partial class DrydockSystem : EntitySystem
     /// <summary>
     /// Components cut from the live grid before it is written, because they are derived state or
     /// hold references that rot across a reload.
-    ///
-    /// <para>The repair data is session-scoped: entity references and raw tile ids, regenerated
-    /// against the loaded grid. Station membership must not ride the document at all, because the
-    /// station is round-scoped and rebuilt on retrieve, so a serialized reference reloads as invalid
-    /// and the deserializer logs an error on every single load, the validation scratch load
-    /// included.</para>
     /// </summary>
     private static readonly Type[] StoreStripList =
     {
         typeof(ShipRepairDataComponent),
         typeof(StationMemberComponent),
-        // A powered-down helm parks its job slots here with the station they belonged to, and the
-        // station is round-scoped like the membership above: serialized, it reloads as an invalid
-        // reference and logs on every load. The recreated station gets its vessel's slots anyway.
         typeof(ShuttleConsoleJobSlotsComponent),
-        // Guest access granted at the helm, as raw uids of cards the guests carry away with them:
-        // off-grid references that reload invalid, and a permission that should not outlast the
-        // voyage. Retrieve starts with none.
         typeof(ShipGuestAccessComponent),
     };
+
+    // These are worse than an artifact crusher on average to not obsolete the machine.
+    private const int MinPurgedArtifactFragments = 1;
+    private const int MaxPurgedArtifactFragments = 3;
+
+    public static readonly ProtoId<StackPrototype> PurgedArtifactStackProtoId = "ArtifactFragment";
 
     /// <summary>
     /// Whether the drydock is on and not read-only, the gate every write path checks before it
@@ -288,17 +294,9 @@ public sealed partial class DrydockSystem : EntitySystem
 
         try
         {
-            // Opening a phase suspends, so even the very first line of the store is already a tick
-            // away from the caller that asked for it.
             await slice.Begin(DrydockPhase.Gate, 0);
             GuardStoreResume(ctx);
 
-            // Capacity first, because it is the one gate that needs the database. The await sits
-            // before any other gate has been passed and before any mutation, so nothing has to be
-            // re-checked after it. A full garage refuses cheaply here; the filing transaction
-            // checks again, and the unique index on the berth column makes that answer the final
-            // one. Both reads are of the live grid: the cached class text on the row is never
-            // load-bearing.
             var shipId = ResolveOrMintShipId(gridUid);
             ctx.ShipId = shipId;
             var sizeClass = _shipSize.GetSizeClass((gridUid, Comp<MapGridComponent>(gridUid))).ToString();
@@ -317,20 +315,13 @@ public sealed partial class DrydockSystem : EntitySystem
             if (TerminatingOrDeleted(gridUid))
                 return new DrydockStoreOutcome(DrydockStoreResult.SerializeFailed, null);
 
-            // Hazards next, because the check mutates nothing and refusing here means nobody has
-            // been moved for a store that was never going to happen. Runtime countdowns are
-            // ordinary data fields that would resume on thaw, so an armed ship must be refused
-            // rather than frozen. An impound has nowhere to refuse to, so it clears them first and
-            // then passes this same gate, which stays put as the backstop.
+            // Delete any hazards aboard
             if (ctx.Impound != null)
                 PurgeHazardsAboard(gridUid);
 
             if (HasHazardAboard(gridUid))
                 return new DrydockStoreOutcome(DrydockStoreResult.HazardAboard, null);
 
-            // A mind must never be serialized, and a living mob does not round-trip cleanly. A
-            // store refuses, which is the safe direction to be stricter in; an impound moves them
-            // off and passes the same gate, for the same reason it purges rather than refuses.
             if (GateOrganics(ctx, gridUid, mobQuery, xformQuery))
                 return new DrydockStoreOutcome(DrydockStoreResult.OrganicsAboard, null);
 
@@ -339,16 +330,6 @@ public sealed partial class DrydockSystem : EntitySystem
 
             var shipName = Comp<MetaDataComponent>(gridUid).EntityName;
 
-            // Two sources, both written by a purchase, and the station is asked first because a
-            // vessel's own station config is what fills it in. The grid's VesselComponent is the
-            // fallback, and it is the only one a legacy import has: that path stages the hull into
-            // the CONSOLE's station, which carries no vessel information at all, so a station-only
-            // read filed every imported hull with no vessel and retrieve handed it a plain station
-            // forever after. Read at the top of the freeze block for two reasons: the strip further
-            // down cuts station membership off the grid, and the unwind needs the vessel's priority
-            // dock tag to hand a refused ship back at the same kind of berth a purchase of it would
-            // have picked. Reparenting does not touch station membership - the station system
-            // subscribes to no parent change - so this reads the same either side of the freeze.
             var vesselProto = TryComp<StationMemberComponent>(gridUid, out var stationMember)
                               && TryComp<ExtraShuttleInformationComponent>(stationMember.Station, out var vesselInfo)
                               && vesselInfo.Vessel is { } vessel
@@ -357,115 +338,55 @@ public sealed partial class DrydockSystem : EntitySystem
 
             ctx.ReturnDockTag = PriorityDockTagFor(vesselProto);
 
-            // The departure. An observer sees what a real jump shows them, because a real jump's
-            // vanish is itself a map reparent: the startup sound, then gone. Deliberately not the
-            // thruster half of a real jump setup, which latches the thrusters north and would be
-            // serialized that way, and deliberately not real FTL at all - that is a multi-tick state
-            // machine whose updates run on the paused-skipping enumerator, so freezing mid-jump
-            // stalls it forever and leaves behind exactly the component the strip below removes.
             PlayDepartureEffect(gridUid);
 
-            // Read while the docks still exist, which is only true for one more statement. The
-            // unwind's first choice of where to put the ship back is whatever it was docked to.
             ctx.ReturnTarget = FindDockedPartnerGrid(gridUid);
 
-            // The last free refusal. Everything past this point either moves the ship or takes
-            // something off it, and right here the ship is still whole and still docked, so a
-            // straggler who walked aboard while the capacity check was in the database costs nothing
-            // to refuse for. The old post-database counterpart of this check is gone with it: nobody
-            // can walk aboard a ship on a private map, and the reparent that puts it there stays on
-            // this side of the next suspension (see FreezeOntoStagingMap).
             if (GateOrganics(ctx, gridUid, mobQuery, xformQuery))
                 return new DrydockStoreOutcome(DrydockStoreResult.OrganicsAboard, null);
 
-            // Hoisted above the reparent, which is where upstream's own jump setup puts it. A stored
-            // ship has to be fully detached regardless - its docking partner is not in the document,
-            // so a serialized dock reloads as an invalid reference and crashes the docking system's
-            // startup on every load, the validation scratch load included - but the reason it has to
-            // happen HERE is that a grid still weld-jointed to a station cannot be reparented
-            // cleanly.
             ctx.Undocked = true;
             _docking.UndockDocks(gridUid);
 
-            // From here the ship is private, frozen and invisible, and every phase below runs on the
-            // tick budget. The map is paused while it is still empty, so the engine's own recursive
-            // pause walks one entity instead of nine hundred; the reparent onto it is then what
-            // actually freezes the tree, and the walk inside the freeze drives the bar and back-stops.
             ctx.StagingMap = CreateStagingMap(jobId, DrydockStagingKind.Store, shipId, mapInit: true);
             await FreezeOntoStagingMap(gridUid, ctx.StagingMap.Value, slice);
             ctx.Frozen = true;
             GuardStoreResume(ctx);
 
-            // Backstop to the gate above, so a future reorder cannot reopen the window silently.
-            // Anyone found here boarded before the reparent. Refusing is still free for a store: the
-            // purge and every strip are below, and the unwind thaws the hull and docks it back with
-            // them on it, which is the answer the gate would have given. An impound has already
-            // deleted hazards and moved occupants by here and puts neither back on any later
-            // refusal; that trade is stated on DrydockSystem.Impound.cs.
             if (GateOrganics(ctx, gridUid, mobQuery, xformQuery))
                 return new DrydockStoreOutcome(DrydockStoreResult.OrganicsAboard, null);
 
             MarkPhase(DrydockPhase.Freeze);
 
-            // The saving-contraband purge, by the ship-save path's two rules: marked entities go
-            // unless they carry a permit, and a permit that does not belong to whoever the ship is
-            // going away for takes its item with it. After every refusal above, so a refused store
-            // deletes nothing, and before the appraisal, so the quote is for what is filed.
-            // Not undoable.
             await PurgeSavingContrabandSliced(ctx, slice);
+            await PurgeArtifactsSliced(ctx, slice);
             MarkPhase(DrydockPhase.Purge);
 
-            // The sale quote, taken while the hull is whole and before any sidecar or strip
-            // touches it, so what a scrap pays is what the shipyard would have paid at this moment.
             await slice.Begin(DrydockPhase.Appraise, 0);
             GuardStoreResume(ctx);
             var appraisal = _shipyard.AppraiseHull(gridUid);
             MarkPhase(DrydockPhase.Appraise);
 
-            // Three walks under one phase name, each opening it with its own item count. The
-            // percentage is clamped monotonic, so re-opening a phase reads as a stall inside its band
-            // rather than as a bar running backwards.
-            //
-            // A pipe net's air lives on the node-group graph, which the serializer cannot reach.
-            // Distribute each net's gas across its members by volume. The live net is left alone -
-            // pointlessly now, since the ship is frozen on a private map and nothing will ever read
-            // it again, but writing to it would be a mutation with no undo entry for no gain.
+            // Distribute each net's gas across its members by volume.
             await InjectPipeGasSidecarsSliced(ctx, slice);
 
             // Damage is read-only to the serializer, so a damaged ship would come back pristine.
             await InjectDamageSidecarsSliced(ctx, slice);
 
-            // Appearance data is not a data field at all, so no save has ever carried it and the
-            // probe below cannot see it either. Without this a retrieved ship's visuals come back
-            // at prototype defaults wherever the owning system does not re-derive them on startup.
+            // Capture appearance data.
             await _fidelity.CaptureAppearanceSliced(gridUid, ctx.InjectedAppearance, slice);
             GuardStoreResume(ctx);
             MarkPhase(DrydockPhase.Sidecars);
 
             await StripListedComponentsSliced(ctx, slice);
 
-            // The grid's own deed names the card holding it, which is outside the document. Written
-            // as-is it reloads as an invalid reference and the deserializer logs an error on every
-            // scratch load and every retrieve; retrieve sets the holder afresh anyway. The flag goes
-            // up before the call, not after: an abort between the two restores a null holder, which
-            // is what the reattach would have been handed anyway.
             ctx.DeedDetached = true;
             ctx.DeedHolder = _shipyard.DetachGridDeedHolder(gridUid);
 
-            // A PDA's store remembers the map it was set up on, which is likewise outside the
-            // document and reloads as an invalid reference that logs on every load. Purchased
-            // ships already leave that map behind when they dock, so a retrieved store is no
-            // worse off for coming back with the field blank.
             await DetachStoreMapsSliced(ctx, slice);
             GuardStoreResume(ctx);
             MarkPhase(DrydockPhase.Strip);
 
-            // The general net, after the two specific sidecars and the strip list so it sees the
-            // final live component set. For every unserializable populated field it either captures
-            // the value or strips it, and clears the live field either way. The ledger is created and
-            // handed to the context BEFORE the walk starts: it is the only record of what was blanked
-            // and on which entity, and a walk that can now be abandoned half-way through must not be
-            // the thing that owns it.
             ctx.Fidelity = new DrydockFidelityCapture();
             await _fidelity.CaptureAndStripSliced(gridUid, ctx.Fidelity, slice);
             GuardStoreResume(ctx);
@@ -474,31 +395,13 @@ public sealed partial class DrydockSystem : EntitySystem
             await slice.Begin(DrydockPhase.Prepare, 0);
             GuardStoreResume(ctx);
 
-            // The rest of preparation is deliberately not undoable, and runs last for that reason.
-            // An empty AI core is the intended end state, and a ship at rest has no business carrying
-            // FTL state.
             SanitizeStationAiCores(gridUid);
 
-            // A ship stored during its FTL cooldown still carries the component the jump added. A
-            // reborn ship carrying it comes back mid-jump and the shuttle system errors on it every
-            // tick, which leaves it stuck.
             RemComp<FTLComponent>(gridUid);
 
-            // A ship document is self-contained. The engine default drags any referenced null-space
-            // entity into the save, and a ship that is its own station references that station,
-            // which pulls the whole station in along with state the serializer cannot write. Ignore
-            // turns those references into invalid ones, which retrieve rebinds. Transform parenting
-            // is exempt, so grid children are unaffected.
             var saveOptions = new SerializationOptions { MissingEntityBehaviour = MissingEntityBehaviour.Ignore };
             MarkPhase(DrydockPhase.Prepare);
 
-            // Two ways to write the document. With DrydockSlicedSerialize on, SerializeGridSliced
-            // drives the engine's public per-entity serializer one entity at a time against the
-            // budget, working around the two private members of the engine's own wrapper (see
-            // DrydockSystem.Serialize.cs). Off, or on an inline store, it is TrySaveGrid: one atomic
-            // call that is then one of the calls setting the real per-tick ceiling - the honest
-            // claim there is "the budget plus the longest bulk call", not "the budget" - with the
-            // whole phase landing inside one tick.
             string yaml;
 
             if (_cfg.GetCVar(TriadCCVars.DrydockSlicedSerialize) && !ctx.Inline)
@@ -540,12 +443,6 @@ public sealed partial class DrydockSystem : EntitySystem
 
             MarkPhase(DrydockPhase.Validate);
 
-            // Everything from here to the commit is pure byte work: no entity, no component, no map,
-            // so it is the one part of a store that can leave the main thread at all. Encoding and
-            // checksumming a multi-megabyte document, and compressing it, are real milliseconds that
-            // the server no longer has to spend. Each hop back costs a tick of latency, which an
-            // elastic store does not care about.
-            //
             // Checksum the uncompressed document, so stored hashes survive a future change of
             // compression.
             await slice.Begin(DrydockPhase.Hash, 0);
@@ -580,9 +477,6 @@ public sealed partial class DrydockSystem : EntitySystem
                 SizeClass = sizeClass,
                 BerthId = ctx.BerthId,
                 Kind = DrydockRevisionKind.PlayerStore,
-                // An impound is filed by whoever took the hull, an admin or the sweep, never by the
-                // owner: the revision and its audit row both name this, and a timeline that says the
-                // owner impounded their own ship is the wrong record of an adjudication.
                 ActorUserId = ctx.Impound != null ? ctx.Impound.ActorUserId : ctx.OwnerUserId,
                 CreatedRoundId = ctx.RoundId,
                 EngineFormatVer = engineFormat,
@@ -604,7 +498,6 @@ public sealed partial class DrydockSystem : EntitySystem
             GuardStoreResume(ctx);
             MarkPhase(DrydockPhase.Compress);
 
-            // Likewise: checksum and size are already on the request.
             hashed = default;
 
             await slice.Begin(DrydockPhase.Commit, 0);
@@ -624,9 +517,6 @@ public sealed partial class DrydockSystem : EntitySystem
             }
             catch (OperationCanceledException) when (fileTask.IsCompletedSuccessfully)
             {
-                // Not through the slice, and it does not need to be: the filter above has already
-                // established the task is complete, so this await returns synchronously and cannot
-                // strand the job the way an unwrapped suspending await would.
                 filed = await fileTask;
             }
 
@@ -642,33 +532,16 @@ public sealed partial class DrydockSystem : EntitySystem
                 return new DrydockStoreOutcome(BerthRefusal(filed.Outcome), null);
             }
 
-            // Past a successful filing the store is durable and stops being abortable. No suspension
-            // and no resume guard between here and ctx.Committed, deliberately: an abort in this
-            // window unwinds a ship whose revision is already filed and whose berth is already
-            // seated, and if the grid died while the write was in the database it leaves the row
-            // checked out with no hull behind it, which is the state MarkStored exists to prevent.
-            // A grid that died in that window is the end state the despawn was about to produce.
-            //
-            // No organics re-check here: the write above yields, but there is no boarding a ship that
-            // has been on a paused map of its own since long before the write started. The re-check in
-            // the freeze block is what covers the one window that is still real.
             slice.Progress.BeginPhase(DrydockPhase.Despawn, 0);
 
             // A no-op when the grid died while the write was in flight, which is the point.
             QueueDel(gridUid);
             ctx.Committed = true;
 
-            // The staging map goes with the ship. Not through ScrapStagingMap, which refuses a map
-            // that still carries a grid: that refusal is right everywhere except here, where the grid
-            // on it is the ship we just filed and are deliberately despawning. Both are queued in the
-            // same tick, so the order they run in does not matter.
             if (ctx.StagingMap is { } stagingMap && Exists(stagingMap))
                 QueueDel(stagingMap);
 
-            // The grid is queued for deletion and nothing below can bring it back, so the row may
-            // now say stored. If this write fails the revision is filed and the ship is gone from
-            // the world with its row still checked out, which is exactly the "wait for a human"
-            // state an admin restore exists for, and not a duplicate.
+            // Queue deletion.
             try
             {
                 var marked = ctx.Impound != null
@@ -680,11 +553,6 @@ public sealed partial class DrydockSystem : EntitySystem
             }
             catch (OperationCanceledException)
             {
-                // Caught apart from the general failure below, and deliberately not rethrown. This is
-                // the one await that happens after the commit, so a cancellation landing on it is not
-                // a cancelled store: the revision is filed and the ship is already gone. Letting it
-                // travel would report a store that really happened as cancelled, and logging it at
-                // Error would fail every pooled integration pair that cancels a pipeline.
                 Log.Warning($"Drydock: {shipId} filed revision {filed.Revision} and despawned, but the pipeline "
                             + "was cancelled before its row moved to stored. An admin restore recovers it.");
             }
@@ -695,9 +563,6 @@ public sealed partial class DrydockSystem : EntitySystem
 
             MarkPhase(DrydockPhase.Despawn);
 
-            // The per-phase figures are wall clock and always were, but under slicing that stops
-            // being a footnote: a phase spanning fifty ticks reads as fifty ticks. The worst slice
-            // beside them is the number that says whether anyone else felt it.
             var (worstSliceMs, slices) = slice is IDrydockPipelineJob job
                 ? (job.WorstSliceMs, job.Slices)
                 : (0d, 0);
@@ -708,9 +573,6 @@ public sealed partial class DrydockSystem : EntitySystem
         }
         catch (DrydockAbortedException e)
         {
-            // The world moved under a parked pipeline. Turned into an ordinary outcome here and
-            // never allowed to escape: the job's process wrapper logs any exception that reaches it
-            // at Error, and a pooled integration pair fails its return on an unexpected error log.
             Log.Warning($"Drydock: store of {ctx.ShipId} aborted: {e.Reason}.");
 
             return new DrydockStoreOutcome(
@@ -722,9 +584,6 @@ public sealed partial class DrydockSystem : EntitySystem
             if (!ctx.Committed)
                 UnwindStore(ctx);
 
-            // Last, so the bar only reads finished once the ship is really back. Fired on every exit,
-            // refusals included, because a client indicator that is never told the story ended sits
-            // at whatever percent the refusal happened at.
             slice.Progress.Finish();
         }
     }
@@ -1315,23 +1174,8 @@ public sealed partial class DrydockSystem : EntitySystem
     }
 
     /// <summary>
-    /// Deletes every entity aboard that may not go away with the ship, containers and contents
-    /// included. Two rules, both the ship-save path's. Anything marked as saving contraband goes
-    /// unless it carries a permit (<c>IsInvalidEntity</c>), applied by component rather than by a
-    /// list: the component is what the content marks. And any permitted item goes whose permit does
-    /// not travel with whoever the ship is being put away for (<c>ClearPermitItemsOnGrid</c>, judged
-    /// by <see cref="ContrabandPermitSystem.PermitTravelsWith"/>), whether or not it is marked, since
-    /// a permit follows its person and is not the ship's to carry. Immediate deletes, not queued: the
-    /// serializer walks the tree many ticks later now, and a queued deletion would be honoured well
-    /// before then, but a merely queued entity is still a real grid child in the meantime and every
-    /// walk between here and the save - the sidecars, the capture, the manifest - would count and
-    /// touch it.
-    ///
-    /// <para>Deliberately absolute, with no exemption for anchored entities. Anchoring is a state a
-    /// player can create with a wrench, so exempting it would let anyone bolt restricted kit to a
-    /// deck and carry it between rounds. A hull fixture that must survive a store is one that should
-    /// not have carried the contraband marker in the first place, which is where that gets fixed.</para>
-    /// </summary>
+    /// Deletes every entity aboard that may not go away with the ship, containers and contents, unless that entity has a valid contraband permit.
+    /// <summary>
     private async Task PurgeSavingContrabandSliced(DrydockStoreContext ctx, IDrydockSlice slice)
     {
         var doomed = new List<EntityUid>();
@@ -1364,6 +1208,58 @@ public sealed partial class DrydockSystem : EntitySystem
 
         if (count > 0)
             Log.Info($"Drydock: {ctx.ShipId} store purged {count} entities: saving contraband without a permit, or a permit that is not the holder's.");
+    }
+
+    /// <summary>
+    /// Delete xeno artifacts. This ejects any contents the artifact may have and turns it into fragments.
+    /// <summary>
+    private async Task PurgeArtifactsSliced(DrydockStoreContext ctx, IDrydockSlice slice)
+    {
+        var artifacts = new List<EntityUid>();
+
+        // One walk for both rules. A permitted item is judged by its permit alone, whichever way
+        // that goes; anything else that is marked goes.
+        foreach (var uid in _fidelity.GridTreeList(ctx.GridUid))
+        {
+            var targetPos = _xform.GetWorldPosition(uid);
+
+            if (HasComp<XenoArtifactComponent>(uid))
+            {
+                artifacts.Add(uid);
+
+                // Empty storage
+                if (TryComp<StorageComponent>(uid, out var storage))
+                {
+                    foreach (var entity in storage.Container.ContainedEntities)
+                    {
+                        if (TerminatingOrDeleted(entity))
+                            continue;
+
+                        _xform.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, _random.NextAngle());
+                    }
+                }
+
+                // Spawn artifact fragments in return for deletion
+                var amount = _random.Next(MinPurgedArtifactFragments, MaxPurgedArtifactFragments);
+                var stacks = _stack.SpawnMultiple(PurgedArtifactStackProtoId, amount, uid.ToCoordinates());
+                foreach (var stackEnt in stacks)
+                {
+                    _xform.SetWorldPositionRotation(stackEnt, targetPos + _random.NextVector2Box() / 4, _random.NextAngle());
+                    _xform.AttachToGridOrMap(stackEnt);
+                }
+            }
+        }
+
+        var count = 0;
+        await StoreSweep(ctx, slice, DrydockPhase.Purge, artifacts, uid =>
+        {
+            // A container purged earlier in the list takes its contents with it.
+            if (TerminatingOrDeleted(uid))
+                return;
+
+            Del(uid);
+            count++;
+        });
     }
 
     /// <summary>
