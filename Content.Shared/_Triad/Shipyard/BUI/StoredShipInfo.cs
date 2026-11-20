@@ -1,5 +1,3 @@
-// Triad: drydock tab. New file in the NF namespace because it is part of the shipyard console's
-// existing interface state rather than a surface of its own.
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Shipyard.BUI;
