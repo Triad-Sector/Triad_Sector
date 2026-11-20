@@ -1,0 +1,45 @@
+- type: pointOfInterest
+  id: TradeCenter
+  parent: [BasePOI, BaseRepairablePOI]
+  name: Auric Trade Center
+  minimumDistance: 3500
+  maximumDistance: 6500
+  spawnGroup: MarketStation
+  gridPath: /Maps/_Triad/POI/tradecenter.yml
+  addComponents:
+  - type: IFF
+    color: "#37C837"
+  - type: StationTransit
+  - type: ProtectedGrid
+    preventArtifactTriggers: true
+  - type: SolarPoweredGrid
+    trackOnInit: true
+    doNotCull: true
+  - type: WorldGenDistanceCarver
+    distanceThresholds:
+    # Dead zone
+    - maxDistance: 500
+      prob: 0.0
+    - maxDistance: 1000
+      prob: 0.3
+
+- type: gameMap
+  id: TradeCenter
+  mapName: 'Auric Trade Center'
+  mapPath: /Maps/_Triad/POI/tradecenter.yml
+  minPlayers: 0
+  stations:
+    TradeCenter:
+      stationProto: MarketFrontierOutpost
+      gridComponents:
+      - type: VesselInfo
+        description: "The heart, and center, of all trade happenings in the Auric District."
+      components:
+      - type: StationCargoOrderDatabase
+        capacity: 60
+      - type: StationNameSetup
+        mapNameTemplate: 'Auric Trade Center'
+      - type: StationDeadDrop
+        maxDeadDrops: 3
+      - type: TradeCrateDestination
+        destinationProto: Trade
