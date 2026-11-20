@@ -14,4 +14,11 @@ public sealed partial class RadiationBlockingContainerComponent : Component
     /// </summary>
     [DataField("resistance")]
     public float RadResistance = 1f;
+    //Triad start
+    /// <summary>
+    ///     What percentage of recieved dose does the blocker absorb?
+    /// </summary>
+    [DataField("linresistance")]
+    public float RadLinearResistance = 0f;
+    //Triad end
 }

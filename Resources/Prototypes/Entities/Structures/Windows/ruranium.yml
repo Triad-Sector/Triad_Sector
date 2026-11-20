@@ -51,7 +51,8 @@
   - type: StaticPrice
     price: 140 # Frontier: 215<140 - TODO: material value rework
   - type: RadiationBlocker
-    resistance: 5
+    resistance: 4 #Triad
+    linresistance: 0.25 #Triad
   - type: ShipRepairable
     repairTime: 6
     repairCost: 6
@@ -110,7 +111,8 @@
   - type: StaticPrice
     price: 70 # Frontier: 110<70 - TODO: material value rework
   - type: RadiationBlocker
-    resistance: 2.5
+    resistance: 2 #Triad
+    linresistance: 0.15 #Triad
   - type: ShipRepairable
     repairTime: 4
     repairCost: 4
@@ -156,6 +158,9 @@
     airBlockedDirection:
     - South
     - East
+  - type: RadiationBlocker
+    resistance: 4 #Triad
+    linresistance: 0.25 #Triad
   - type: DamageVisuals
     damageOverlay:
       sprite: Structures/Windows/cracks_diagonal.rsi

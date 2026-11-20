@@ -13,4 +13,10 @@ public sealed partial class RadiationGridResistanceComponent : Component
     ///     Radiation resistance per tile.
     /// </summary>
     public readonly Dictionary<Vector2i, float> ResistancePerTile = new();
+    //Triad start
+    /// <summary>
+    ///      Linear (percentage) Radiation resistance per tile.
+    /// </summary>
+    public readonly Dictionary<Vector2i, float> LinResistancePerTile = new();
+    //Triad end
 }
