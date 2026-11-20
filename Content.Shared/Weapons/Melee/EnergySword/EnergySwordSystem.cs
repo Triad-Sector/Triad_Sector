@@ -9,17 +9,17 @@ namespace Content.Shared.Weapons.Melee.EnergySword;
 
 public sealed partial class EnergySwordSystem : EntitySystem
 {
-    [Dependency] private SharedRgbLightControllerSystem _rgbSystem = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private SharedToolSystem _toolSystem = default!;
+    [Robust.Shared.IoC.Dependency] private SharedRgbLightControllerSystem _rgbSystem = default!;
+    [Robust.Shared.IoC.Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Robust.Shared.IoC.Dependency] private IRobustRandom _random = default!;
 
+
+    // Triad - Tool interaction handling moved to the server system to support QuickDialog.
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<EnergySwordComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<EnergySwordComponent, InteractUsingEvent>(OnInteractUsing);
     }
     // Used to pick a random color for the blade on map init.
     private void OnMapInit(Entity<EnergySwordComponent> entity, ref MapInitEvent args)
@@ -36,16 +36,30 @@ public sealed partial class EnergySwordSystem : EntitySystem
         _appearance.SetData(entity, ToggleableVisuals.Color, entity.Comp.ActivatedColor, appearanceComponent);
     }
 
-    // Used to make the blade multicolored when using a multitool on it.
-    private void OnInteractUsing(Entity<EnergySwordComponent> entity, ref InteractUsingEvent args)
+    // Triad - Apply custom blade colors through the shared appearance system.
+    /// <summary>
+    /// Updates the blade color and its appearance data.
+    /// </summary>
+    public void SetActivatedColor(EntityUid uid, Color color)
     {
-        if (args.Handled)
+        if (!TryComp(uid, out EnergySwordComponent? component))
             return;
 
-        if (entity.Comp.BlockHacking || !_toolSystem.HasQuality(args.Used, SharedToolSystem.PulseQuality)) // Frontier: add entity.Comp.BlocksHacking
+        component.ActivatedColor = color;
+        Dirty(uid, component);
+
+        if (!TryComp(uid, out AppearanceComponent? appearanceComponent))
             return;
 
-        args.Handled = true;
+        _appearance.SetData(uid, ToggleableVisuals.Color, color, appearanceComponent);
+    }
+
+    // Triad - Keep RGB-cycle state changes in the component's owning system.
+    /// <summary>
+    /// Toggles RGB cycling on an energy sword.
+    /// </summary>
+    public void ToggleHacked(Entity<EnergySwordComponent> entity)
+    {
         entity.Comp.Hacked = !entity.Comp.Hacked;
 
         if (entity.Comp.Hacked)
