@@ -13,4 +13,7 @@ public sealed partial class PointDiskConsolePrintingComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Disk10K = false;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Disk140K = false;
 }

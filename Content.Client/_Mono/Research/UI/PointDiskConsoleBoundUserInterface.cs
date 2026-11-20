@@ -36,6 +36,10 @@ namespace Content.Client._Mono.Research.UI
             {
                 SendMessage(new PointDiskConsolePrint10KDiskMessage());
             };
+            _menu.OnPrint140KButtonPressed += () =>
+            {
+                SendMessage(new PointDiskConsolePrint140KDiskMessage());
+            };
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)

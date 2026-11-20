@@ -59,6 +59,22 @@
   - type: StaticPrice
     price: 13000
 
+# Triad Start
+- type: entity
+  parent: ResearchDisk
+  id: ResearchDisk140000
+  name: research point disk (140000)
+  description: A disk for the R&D server containing 140000 points.
+  components:
+  - type: ResearchDisk
+    points: 140000
+  - type: StaticPrice
+    price: 28000
+  - type: Item
+    size: Normal
+
+
+# Triad end
 #Rogue silicon disks
 - type: entity
   parent: ResearchDisk
