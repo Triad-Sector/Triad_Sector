@@ -1,0 +1,38 @@
+#Author: RemervKeberb on Github, Kebirb on Discord
+
+- type: vessel
+  id: Crow
+  parent: BaseVessel
+  name: CI-Crow Fighter Bomber
+  description: The workhorse of the Corvus Industries fleet. Armed with two AC-35s and a GPOB-L, it excels at daring hit and runs straight through enemy formations.
+  price: 37200 #Rounded up to 31K, with a 20% tax
+  category: Small
+  group: Shipyard
+  access: Mercenary
+  shuttlePath: /Maps/_Triad/Shuttles/Carrier/crow.yml
+  guidebookPage: Null
+  class:
+  - Pursuit
+  - Fighter
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Crow
+  mapName: 'CI Crow'
+  mapPath: /Maps/_Triad/Shuttles/Carrier/crow.yml
+  minPlayers: 0
+  stations:
+    Crow:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Crow MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

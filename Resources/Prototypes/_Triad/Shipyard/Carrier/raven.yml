@@ -1,0 +1,39 @@
+#Author: RemervKeberb on Github, Kebirb on Discord
+
+- type: vessel
+  id: Raven
+  parent: BaseVessel
+  name: CI-Raven Support Bomber
+  description: The Corvus Industries Raven, an all around support vessel intended to be flown alongside a pair of Crow's, slow and hefty it relies on openings created by others to deliver its payload of bombs and torpedoes. It contains all the basic equipment one needs to get a shuttle up and running again, the supplies for search and rescue operations of downed pilots but not enough to be comfortable for long without an RTB to restock.
+  price: 90000 #Rounded up to 75K, with a 20% tax
+  category: Small
+  group: Custom
+  mapchecker_group_override: Shipyard
+  access: Mercenary
+  shuttlePath: /Maps/_Triad/Shuttles/Carrier/raven.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Fighter
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Raven
+  mapName: 'CI Raven'
+  mapPath: /Maps/_Triad/Shuttles/Carrier/raven.yml
+  minPlayers: 0
+  stations:
+    Raven:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Raven MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
