@@ -293,7 +293,7 @@
   parent: [ BaseClothingModsuitHelmetHideIdentity, ShowMedicalIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingModsuitHelmetParamedic
   name: sanitater modsuit helmet
-  description: A robust brain bucket for working on barely salvageable brains. Contains an integrated medical HUD. # Triad
+  description: A robust brain bucket for working on barely salvageable brains. Contains an integrated medical HUD, crew monitor, and thermals to satisfy EMT enrichment thresholds. # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -306,38 +306,32 @@
         Piercing: 0.90
         Heat: 0.90
         Radiation: 0.75
-  #THIS WILL BE REPLACED WITH MODULE ↓↓
-  - type: ToggleableVisuals
-    spriteLayer: light
-  - type: PointLight
-    enabled: false
-    radius: 5
-    energy: 3
-    lightMask: ConeSingle
-    autoRot: true
-    netsync: false
-  - type: HandheldLight
-    addPrefix: true
-    blinkingBehaviourId: blinking
-    radiatingBehaviourId: radiating
-  - type: ItemTogglePointLight
-  - type: LightBehaviour
-    behaviours:
-      - !type:FadeBehaviour
-        id: radiating
-        interpolate: Linear
-        maxDuration: 2.0
-        startValue: 3.0
-        endValue: 2.0
-        isLooped: true
-        reverseWhenFinished: true
-      - !type:PulseBehaviour
-        id: blinking
-        interpolate: Nearest
-        maxDuration: 1.0
-        minValue: 0.1
-        maxValue: 2.0
-        isLooped: true
+# Triad: Adds crew monitor to helmet.
+  - type: ActivatableUI
+    key: enum.CrewMonitoringUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+  - type: CrewMonitoringConsole # Triad - added sound for high damage patients
+    warningSound:
+      params:
+        maximumDistance: 5 # Triad - let this be small enough that you can only hear it with friends
+        volume: -15
+      path: /Audio/_Triad/Machines/medDanger.ogg
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+  - type: Speech # Triad - added chat message for high damage patients
+    speechVerb: Robotic
+    speechSounds: Borg
+  #Adds thermal vision, slightly weaker than besieger
+  - type: ThermalVision
+    flashDurationMultiplier: 2
+    pulseTime: 1.5
+    isEquipment: true
+    toggleAction: PulseThermalVision
+# End Triad
 
 - type: entity
   parent: [ BaseClothingModsuitHelmet, EngineerHud ] # Triad: Redistributed goggle/helmet utilities.
