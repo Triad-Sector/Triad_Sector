@@ -153,10 +153,9 @@
   - type: ProjectileBatteryAmmoProvider
     fireCost: 150
     proto: BulletPlasmaSpread
-  # Triad change, buffed charge by 50%, 25% less Max/StartingCharge than WeaponEnergyShotgun. 600 -> 900
   - type: Battery
-    maxCharge: 900
-    startingCharge: 900
+    maxCharge: 600
+    startingCharge: 600
   - type: BatterySelfRecharger # Recharge rate the same as NT Shotgun
     autoRecharge: true
     autoRechargeRate: 120
