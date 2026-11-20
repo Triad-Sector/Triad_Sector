@@ -1,5 +1,6 @@
 using Content.Server.Physics.Controllers;
 using Content.Shared.Physics;
+using Robust.Shared.Physics.Dynamics; // Triad
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -31,7 +32,8 @@ public sealed partial class ChaoticJumpComponent : Component
     /// <summary>
     /// collision limits for which it is impossible to make a jump
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    /// Triad: named flags in YAML
+    [DataField(customTypeSerializer: typeof(FlagSerializer<CollisionMask>)), ViewVariables(VVAccess.ReadWrite)]
     public int CollisionMask = (int) CollisionGroup.Impassable;
 
     /// <summary>
