@@ -108,12 +108,12 @@
     components:
     - type: NoSlip
   - type: Magboots
-  - type: JumpAbility 
+  - type: JumpAbility
     jumpDistance: 4
     jumpSound: /Audio/Effects/Footsteps/suitstep2.ogg
   - type: ActionGrant
     actions:
-    - ActionGravityJump
+    - ActionGravityJump 
   - type: ItemActionGrant
     actions:
     - ActionGravityJump
