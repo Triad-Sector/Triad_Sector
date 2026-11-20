@@ -85,8 +85,9 @@
     hard: 4
     density: 4.5
     chemical: 5.5
-    radioactive: 2 # Making something out of uranium is radioactive... imagine that
-    n_radioactive: 1.5
+    radioactive: 1 # Triad, barely radioactive.
+    n_radioactive: 2 #Triad, much less fissile.
+    fertility: 1.5 # Triad, pretty fertile, just not very fissile.
 
 - type: material
   id: ReinforcedUraniumGlass
