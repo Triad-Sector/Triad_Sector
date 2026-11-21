@@ -81,7 +81,7 @@ public sealed partial class ActionComponent : Component
     /// <summary>
     ///     The current cooldown on the action.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField] // Triad - made this no longer serialize. We do not need to save cooldowns
     public ActionCooldown? Cooldown;
 
     /// <summary>

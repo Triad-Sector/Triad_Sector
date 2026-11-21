@@ -5,22 +5,23 @@
   id: Knight
   parent: BaseVesselTdf
   name: TDF Knight
-  description: Workhorse of the TDF, the knight is a medium class vessel designed to fill mutilple roles, designed to punch up against more heavily armored vessels and provide support in larger fleet action with it laser and EMP
+  description: "The modern 'squad car' of the TDF, the Knight class is a retrofitted frigate intended as a jack of all trades. In combat, it plugs the gaps in large formations and supports larger vessels with its lasers, TOVEK missiles, and flare countermeasures."
   price: 165000
   category: Medium
   group: Security
   access: Security
-  shuttlePath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/TDF/knight.yml
   guidebookPage: Null
   class:
   - Patrol
+  - Frigate
   engine:
   - Plasma
 
 - type: gameMap
   id: Knight
   mapName: 'Knight'
-  mapPath: /Maps/_Triad/Shuttles/TDF/knight.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/TDF/knight.yml
   minPlayers: 0
   stations:
     Knight:
@@ -34,5 +35,6 @@
       - type: StationJobs
         availableJobs:
           TdfEnforcer: [ 0, 0 ]
+
 
 

@@ -17,6 +17,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
 using Content.Shared.CCVar;
+using Content.Shared.Atmos.Components;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Mind;
 using Content.Shared.Alert;

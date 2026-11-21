@@ -11,6 +11,7 @@ using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Power.EntitySystems; // Mono
 using Content.Server.Shuttles.Components; // Mono
 using Content.Server.Storage.Components;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;

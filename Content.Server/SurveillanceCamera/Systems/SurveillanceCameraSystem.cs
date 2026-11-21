@@ -176,10 +176,11 @@ public sealed partial class SurveillanceCameraSystem : SharedSurveillanceCameraS
 
         _deviceNetworkSystem.SetReceiveFrequency(uid, frequency.Frequency);
         component.NetworkSet = true;
+        _cameraMapSystem.UpdateCameraMarker((uid, component)); // Triad: no DeviceReceiveFrequencyChangedEvent here, refresh the map marker directly
         UpdateSetupInterface(uid, component);
     }
 
-    private void OpenSetupInterface(EntityUid uid, EntityUid player, SurveillanceCameraComponent? camera = null)
+    protected override void OpenSetupInterface(EntityUid uid, EntityUid player, SurveillanceCameraComponent? camera = null)
     {
         if (!Resolve(uid, ref camera))
             return;

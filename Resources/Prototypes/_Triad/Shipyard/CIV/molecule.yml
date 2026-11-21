@@ -1,4 +1,4 @@
-﻿# Author Info
+# Author Info
 # Mage Arcana
 # Discord sirarcana
 
@@ -13,7 +13,7 @@
   price: 42000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/CIV/molecule.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/CIV/molecule.yml
   #guidebookPage: ShipyardMolecule
   class:
   - Science
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Molecule
   mapName: 'Molecule'
-  mapPath: /Maps/_Triad/Shuttles/CIV/molecule.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/CIV/molecule.yml
   minPlayers: 0
   stations:
     Molecule:
@@ -37,3 +37,4 @@
       - type: StationJobs
         availableJobs:
           Contractor: [ 0, 0 ]
+

@@ -8,7 +8,6 @@ namespace Content.Client.Construction;
 /// <inheritdoc/>
 public sealed partial class FlatpackSystem : SharedFlatpackSystem
 {
-    [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     /// <inheritdoc/>
@@ -22,7 +21,7 @@ public sealed partial class FlatpackSystem : SharedFlatpackSystem
     private void OnAppearanceChange(Entity<FlatpackComponent> ent, ref AppearanceChangeEvent args)
     {
         var (_, comp) = ent;
-        if (!_appearance.TryGetData<string>(ent, FlatpackVisuals.Machine, out var machineBoardId) || args.Sprite == null)
+        if (args.Sprite == null || !args.TryGetData<string>(FlatpackVisuals.Machine, out var machineBoardId))
             return;
 
         if (!PrototypeManager.TryIndex<EntityPrototype>(machineBoardId, out var machineBoardPrototype))

@@ -1,7 +1,7 @@
 - type: entity
   id: HandheldAutopulserProjectile
   name: plasma projectile
-  parent: BaseBullet
+  parent: BulletPlasmaHeavy # Triad
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -18,3 +18,10 @@
     muzzleFlash: MuzzleFlashEffectPlasmaPulser
   - type: PointLight
     color: "#FF00AA"
+  - type: AddPlasmaBurningOnHit
+    damage:
+      types:
+        Caustic: 5
+        Radiation: 5
+    color: "#811d60"
+    duration: 6

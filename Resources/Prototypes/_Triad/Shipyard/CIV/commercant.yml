@@ -6,14 +6,14 @@
 #
 
 - type: vessel
-  id: Commerçant
+  id: Commercant
   parent: BaseVessel
   name: NSC Commerçant
   description: A moderately armored large cargo freighter equipped with a top-of-the-line FTL drive, powered by an AME and armed with multiple close-in weapon systems designed to stop any boarding party. The Commerçant's cargo bay is able to store up to 328 cargo crates for both short and long range transportation.
   price: 193000
   category: Large
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/CIV/commercant.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/CIV/commercant.yml
   #guidebookPage: ShipyardCommerçant
   class:
   - Civilian
@@ -22,12 +22,12 @@
   - AME
 
 - type: gameMap
-  id: Commerçant
-  mapName: 'Commerçant'
-  mapPath: /Maps/_Triad/Shuttles/CIV/commercant.yml
+  id: Commercant
+  mapName: 'Commercant'
+  mapPath: /SharedMaps/_Triad/Shuttles/CIV/commercant.yml
   minPlayers: 0
   stations:
-    Commerçant:
+    Commercant:
       stationProto: StandardFrontierVessel
       components:
       - type: StationNameSetup

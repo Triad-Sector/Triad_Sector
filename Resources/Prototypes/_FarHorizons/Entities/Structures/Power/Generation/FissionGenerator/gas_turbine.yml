@@ -249,6 +249,7 @@
 # Pipes the turbine uses to connect to the pipe network
 - type: entity
   id: GasTurbineGasPipe
+  parent: BaseClass2AShipContrabandSilent
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform

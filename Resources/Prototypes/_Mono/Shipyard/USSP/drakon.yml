@@ -9,7 +9,7 @@
   category: Medium
   group: BlackMarket
   access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/USSP/drakon.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/USSP/drakon.yml
   guidebookPage: Null
   class:
   - Pursuit
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Drakon
   mapName: 'Drakon'
-  mapPath: /Maps/_Mono/Shuttles/USSP/drakon.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/USSP/drakon.yml
   minPlayers: 0
   stations:
     Drakon:
@@ -34,3 +34,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+

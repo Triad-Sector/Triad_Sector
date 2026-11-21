@@ -9,7 +9,7 @@
   category: Medium
   group: BlackMarket
   access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/USSP/sekunda.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/USSP/sekunda.yml
   guidebookPage: Null
   class:
   - Patrol
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Sekunda
   mapName: 'Sekunda'
-  mapPath: /Maps/_Mono/Shuttles/USSP/sekunda.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/USSP/sekunda.yml
   minPlayers: 0
   stations:
     Sekunda:
@@ -36,3 +36,4 @@
           availableJobs:
             Contractor: [ 0, 0 ]
 #Idfk what im doing I will not lie at all. What am I doing? Hello? Mooooooooooooom? AAAAAAAAAAAAAAAAA! *crashes your entire game and dies*
+

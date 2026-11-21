@@ -13,7 +13,7 @@
 #   category: Large
 #   group: Expedition
 #   access: Mercenary
-#   shuttlePath: /Maps/_Mono/Shuttles/Expedition/flashpoint.yml
+#   shuttlePath: /SharedMaps/_Mono/Shuttles/Expedition/flashpoint.yml
 #   guidebookPage: Null
 #   class:
 #   - Expedition
@@ -23,7 +23,7 @@
 - type: gameMap
   id: flashpoint
   mapName: 'PBB Flashpoint'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/flashpoint.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/Expedition/flashpoint.yml
   minPlayers: 0
   stations:
     flashpoint:
@@ -37,4 +37,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 

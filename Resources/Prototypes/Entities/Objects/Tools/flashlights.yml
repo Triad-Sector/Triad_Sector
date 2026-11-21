@@ -47,6 +47,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: Sprite
     sprite: Objects/Tools/flashlight.rsi
     layers:
@@ -89,6 +93,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: HandheldLight
     addPrefix: false
     wattage: 0.5
@@ -135,3 +143,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall

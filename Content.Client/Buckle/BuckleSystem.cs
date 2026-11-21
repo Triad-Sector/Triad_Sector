@@ -125,7 +125,7 @@ internal sealed partial class BuckleSystem : SharedBuckleSystem
         if (!TryComp<RotationVisualsComponent>(uid, out var rotVisuals))
             return;
 
-        if (!Appearance.TryGetData<bool>(uid, BuckleVisuals.Buckled, out var buckled, args.Component) ||
+        if (!args.TryGetData<bool>(BuckleVisuals.Buckled, out var buckled) ||
             !buckled ||
             args.Sprite == null)
         {

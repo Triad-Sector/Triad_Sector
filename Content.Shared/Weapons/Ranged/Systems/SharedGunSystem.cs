@@ -40,7 +40,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Robust.Shared.Spawners; // Mono
+using Robust.Shared.Spawners;
+using Content.Shared.Inventory; // Mono
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 
@@ -62,6 +63,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] private   SharedCombatModeSystem _combatMode = default!;
     [Dependency] protected SharedContainerSystem Containers = default!;
     [Dependency] private   SharedGravitySystem _gravity = default!;
+    [Dependency] private InventorySystem _inventory = default!;
     [Dependency] protected SharedPointLightSystem Lights = default!;
     [Dependency] protected SharedPopupSystem PopupSystem = default!;
     [Dependency] protected SharedPhysicsSystem Physics = default!;
@@ -730,7 +732,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (sprite == null)
             return;
 
-        var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle);
+        var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle, component.MuzzleLightColor.ToHex(), component.MuzzleLightRadius, component.MuzzleLightEnergy); // Triad
         CreateEffect(gun, ev, user);
     }
 

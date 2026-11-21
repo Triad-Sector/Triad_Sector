@@ -11,7 +11,7 @@ public sealed class LightBulbSystem : VisualizerSystem<LightBulbComponent>
             return;
 
         // update sprite state
-        if (AppearanceSystem.TryGetData<LightBulbState>(uid, LightBulbVisuals.State, out var state, args.Component))
+        if (args.TryGetData<LightBulbState>(LightBulbVisuals.State, out var state))
         {
             switch (state)
             {
@@ -28,7 +28,7 @@ public sealed class LightBulbSystem : VisualizerSystem<LightBulbComponent>
         }
 
         // also update sprites color
-        if (AppearanceSystem.TryGetData<Color>(uid, LightBulbVisuals.Color, out var color, args.Component))
+        if (args.TryGetData<Color>(LightBulbVisuals.Color, out var color))
         {
             SpriteSystem.SetColor((uid, args.Sprite), color);
         }

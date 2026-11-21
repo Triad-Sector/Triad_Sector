@@ -16,7 +16,7 @@
       enum.CrewMonitoringUIKey.Key:
         type: CrewMonitoringBoundUserInterface
   - type: CrewMonitoringConsole # Triad - added sound for high damage patients
-    warningSound: 
+    warningSound:
       params:
         maximumDistance: 5 # Triad - let this be small enough that you can only hear it with friends
         volume: -15
@@ -47,3 +47,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall

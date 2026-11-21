@@ -10,7 +10,6 @@ namespace Content.Client.Stack
     [UsedImplicitly]
     public sealed partial class StackSystem : SharedStackSystem // Frontier: add partial to class definition
     {
-        [Dependency] private AppearanceSystem _appearanceSystem = default!;
         [Dependency] private ItemCounterSystem _counterSystem = default!;
         [Dependency] private SpriteSystem _sprite = default!;
 
@@ -60,13 +59,13 @@ namespace Content.Client.Stack
             StackLayerData data = new StackLayerData(); // Frontier: use structure to store StackLayerData
 
             // Skip processing if no actual
-            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.Actual, out data.Actual, args.Component))
+            if (!args.TryGetData<int>(StackVisuals.Actual, out data.Actual))
                 return;
 
-            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.MaxCount, out data.MaxCount, args.Component))
+            if (!args.TryGetData<int>(StackVisuals.MaxCount, out data.MaxCount))
                 data.MaxCount = comp.LayerStates.Count;
 
-            if (!_appearanceSystem.TryGetData<bool>(uid, StackVisuals.Hide, out data.Hidden, args.Component))
+            if (!args.TryGetData<bool>(StackVisuals.Hide, out data.Hidden))
                 data.Hidden = false;
 
             if (comp.LayerFunction != StackLayerFunction.None) // Frontier: use stack layer function to modify appearance if provided.

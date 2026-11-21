@@ -37,14 +37,13 @@ public sealed partial class SolutionContainerVisualsSystem : VisualizerSystem<So
         // Check if the solution that was updated is the one set as represented
         if (!string.IsNullOrEmpty(component.SolutionName))
         {
-            if (AppearanceSystem.TryGetData<string>(uid, SolutionContainerVisuals.SolutionName, out var name,
-                args.Component) && name != component.SolutionName)
+            if (args.TryGetData<string>(SolutionContainerVisuals.SolutionName, out var name) && name != component.SolutionName)
             {
                 return;
             }
         }
 
-        if (!AppearanceSystem.TryGetData<float>(uid, SolutionContainerVisuals.FillFraction, out var fraction, args.Component))
+        if (!args.TryGetData<float>(SolutionContainerVisuals.FillFraction, out var fraction))
             return;
 
         if (args.Sprite == null)
@@ -72,9 +71,7 @@ public sealed partial class SolutionContainerVisualsSystem : VisualizerSystem<So
             {
                 var hasOverlay = SpriteSystem.LayerMapTryGet((uid, args.Sprite), component.OverlayLayer, out var overlayLayer, false);
 
-                if (AppearanceSystem.TryGetData<string>(uid, SolutionContainerVisuals.BaseOverride,
-                        out var baseOverride,
-                        args.Component))
+                if (args.TryGetData<string>(SolutionContainerVisuals.BaseOverride, out var baseOverride))
                 {
                     _prototype.TryIndex<ReagentPrototype>(baseOverride, out var reagentProto);
 
@@ -123,7 +120,7 @@ public sealed partial class SolutionContainerVisualsSystem : VisualizerSystem<So
                 SpriteSystem.LayerSetSprite((uid, args.Sprite), fillLayer, fillSprite);
             SpriteSystem.LayerSetRsiState((uid, args.Sprite), fillLayer, stateName);
 
-            if (changeColor && AppearanceSystem.TryGetData<Color>(uid, SolutionContainerVisuals.Color, out var color, args.Component))
+            if (changeColor && args.TryGetData<Color>(SolutionContainerVisuals.Color, out var color))
                 SpriteSystem.LayerSetColor((uid, args.Sprite), fillLayer, color);
             else
                 SpriteSystem.LayerSetColor((uid, args.Sprite), fillLayer, Color.White);

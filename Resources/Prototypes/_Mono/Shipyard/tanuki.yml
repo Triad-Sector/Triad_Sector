@@ -12,7 +12,7 @@
   price: 115000 # 95K base + 20K for medical/galley.
   category: medium
   group: Military
-  shuttlePath: /Maps/_Mono/Shuttles/tanuki.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/tanuki.yml
   guidebookPage: Null
   class:
   - Pursuit
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Tanuki
   mapName: 'MI-COR Tanuki'
-  mapPath: /Maps/_Mono/Shuttles/tanuki.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/tanuki.yml
   minPlayers: 0
   stations:
     Tanuki:
@@ -36,4 +36,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 

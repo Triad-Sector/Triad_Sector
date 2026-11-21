@@ -55,8 +55,9 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: ItemSlotsRequirePanel
     slots:
       cell_slot: true
@@ -104,8 +105,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -170,8 +172,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -218,8 +221,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -254,8 +258,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -293,8 +298,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -332,8 +338,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -366,8 +373,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall
 
 - type: entity
   parent: ClothingModsuitBase
@@ -405,5 +413,6 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
         whitelist:
-          components:
-            - PowerCell
+          tags:
+          - PowerCell
+          - PowerCellSmall

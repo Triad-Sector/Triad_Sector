@@ -236,6 +236,8 @@
     containers:
       key_slots:
       - EncryptionKeyTraffic
+  - type: HLPersistOnShipSave
+    saveContents: true #triad saves encryption keys magic
   # End Frontier
 
 - type: entity

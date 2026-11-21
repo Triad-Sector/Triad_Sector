@@ -77,6 +77,7 @@ public partial class NavMapControl : MapGridControl
     private Dictionary<Vector2i, Vector2i> _horizLinesReversed = new();
     private Dictionary<Vector2i, Vector2i> _vertLines = new();
     private Dictionary<Vector2i, Vector2i> _vertLinesReversed = new();
+    private Vector2 _clickStartPosition;
 
     // Components
     private NavMapComponent? _navMap;
@@ -197,6 +198,14 @@ public partial class NavMapControl : MapGridControl
         _recenter.Disabled = false;
     }
 
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (args.Function == EngineKeyFunctions.UIClick)
+            _clickStartPosition = args.PointerLocation.Position;
+    }
+
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
         base.KeyBindUp(args);
@@ -210,7 +219,7 @@ public partial class NavMapControl : MapGridControl
                 return;
 
             // If the cursor has moved a significant distance, exit
-            if ((StartDragPosition - args.PointerLocation.Position).Length() > MinDragDistance)
+            if ((_clickStartPosition - args.PointerLocation.Position).Length() > MinDragDistance) // Triad: StartDragPosition -> _clickStartPosition
                 return;
 
             // Get the clicked position

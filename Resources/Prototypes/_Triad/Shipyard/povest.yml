@@ -14,7 +14,7 @@
   price: 49920
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/povest.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/povest.yml
   #guidebookPage: null
   class:
   - Civilian
@@ -24,7 +24,7 @@
 - type: gameMap
   id: Povest
   mapName: 'PDM Povest'
-  mapPath: /Maps/_Triad/Shuttles/povest.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/povest.yml
   minPlayers: 0
   stations:
     Povest:
@@ -38,3 +38,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+

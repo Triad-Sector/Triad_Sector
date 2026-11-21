@@ -1,4 +1,4 @@
-﻿# Author Info
+# Author Info
 # by mauve <3 (@mauvelikeroses on discord)
 
 - type: vessel
@@ -9,7 +9,7 @@
   price: 112000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Triad/Shuttles/EXP/behir.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/EXP/behir.yml
   guidebookPage: ShipyardBehir
   class:
   - Expedition
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Behir
   mapName: 'Behir'
-  mapPath: /Maps/_Triad/Shuttles/EXP/behir.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/EXP/behir.yml
   minPlayers: 0
   stations:
     Behir:
@@ -34,3 +34,4 @@
       - type: StationJobs
         availableJobs:
           Contractor: [ 0, 0 ]
+

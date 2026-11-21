@@ -1,0 +1,129 @@
+# Used by Solarian assault cyborgs
+- type: entity
+  parent: BaseItem
+  id: WeaponBorgSmartLmgSol
+  name: smart gun pods
+  description: A pair of gun pods mounted on your chassis' shoulders, firing laser-guided smart ammunition. The pods reload automatically from an internal supply when not in use.
+  suffix: Borg
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi # Placeholder sprite, until we can get dedicated cyborg weapon icons
+    layers:
+    - state: icon
+  - type: Gun # 152 DPS
+    minAngle: 27
+    maxAngle: 45
+    angleIncrease: 2
+    angleDecay: 22
+    fireRate: 9.5
+    burstFireRate: 40
+    burstCooldown: 0.4 # To ensure burst has the same DPS as full auto.
+    shotsPerBurst: 5
+    cameraRecoilScalar: 0
+    selectedMode: Burst
+    lockOnTargetBurst: true
+    availableModes:
+    - FullAuto
+    - Burst
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/m41.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: ProjectileBatteryAmmoProvider
+    proto: CartridgeSmart
+    fireCost: 1
+  - type: Battery
+    maxCharge: 150 # 150 round capacity
+    startingCharge: 150
+  - type: BatterySelfRecharger # Reloads 10 rounds per second, but only if you haven't fired it in 20 seconds.
+    autoRecharge: true
+    autoRechargeRate: 10
+    autoRechargePause: true
+    autoRechargePauseTime: 20
+  - type: AmmoCounter
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: SmartGun
+  - type: LaserPointer # Todo: Make laser pointer work while not wielding
+
+- type: entity
+  name: dual pulse rifles
+  parent: [BaseWeaponBattery, BaseFactionGearPDVT3]
+  id: WeaponBorgPulseRifleSol
+  description: A pair of pulse rifles mounted on your chassis's arms.
+  suffix: Borg
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi # Placeholder sprite, until we can get dedicated cyborg weapon icons
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
+  - type: Gun # 70 DPS
+    fireRate: 2
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
+  - type: HitscanBatteryAmmoProvider
+    proto: Pulse
+    fireCost: 1
+  - type: Battery # 60 shot capacity
+    maxCharge: 60
+    startingCharge: 60
+  - type: BatterySelfRecharger # Recharges 2 shots per second when it hasn't been fired in 20 seconds
+    autoRecharge: true
+    autoRechargeRate: 2
+    autoRechargePause: true
+    autoRechargePauseTime: 20
+
+- type: entity
+  name: integrated energy blade
+  parent: BaseMeleeWeaponEnergy
+  id: EnergySwordBorgSol
+  description: Mounted on your chassis' right arm, this energy sword is more powerful (and more bulky) than handheld variants.
+  suffix: Borg
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/e_sword.rsi
+    layers:
+    - state: e_sword
+    - state: e_sword_blade
+      color: "#FFFFFF"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    damage:
+      types:
+        Blunt: 4.5
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Slash: 40
+        Structural: 100 # 50 more structural than normal energy sword.
+
+- type: entity # Default-on version for NPC borg
+  parent: EnergySwordBorgSol
+  id: EnergySwordBorgSolOn
+  suffix: Borg, On
+  components:
+  - type: ItemToggle
+    activated: true

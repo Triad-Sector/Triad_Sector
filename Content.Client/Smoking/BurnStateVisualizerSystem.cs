@@ -9,7 +9,7 @@ public sealed class BurnStateVisualizerSystem : VisualizerSystem<BurnStateVisual
     {
         if (args.Sprite == null)
             return;
-        if (!args.AppearanceData.TryGetValue(SmokingVisuals.Smoking, out var burnState))
+        if (!args.TryGetData<SmokableState>(SmokingVisuals.Smoking, out var burnState))
             return;
 
         var state = burnState switch

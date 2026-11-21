@@ -13,7 +13,7 @@
   price: 31000 # appraised at ~25000
   category: Small
   group: Medical
-  shuttlePath: /Maps/_Mono/Shuttles/stubby.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/stubby.yml
   guidebookPage: null
   class:
   - Medical
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Stubby
   mapName: 'UW Stubby'
-  mapPath: /Maps/_Mono/Shuttles/stubby.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/stubby.yml
   minPlayers: 0
   stations:
     Stubby:
@@ -38,4 +38,5 @@
           availableJobs:
             Contractor: [ 0, 0 ]
             MdMedic: [ 0, 0 ]
+
 

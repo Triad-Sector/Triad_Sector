@@ -1,4 +1,4 @@
-﻿# Author Info
+# Author Info
 # mauve
 # Discord mauvelikeroses
 # Shuttle Notes: designed with the guidance of @demontopphat (discord)
@@ -10,7 +10,7 @@
   price: 20000
   category: Small
   group: Scrap
-  shuttlePath: /Maps/_Triad/Shuttles/SCRAP/sleipnir.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/SCRAP/sleipnir.yml
 # guidebookPage: Null
   class:
   - Scrapyard
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Sleipnir
   mapName: 'JH-DIRE Sleipnir'
-  mapPath: /Maps/_Triad/Shuttles/SCRAP/sleipnir.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/SCRAP/sleipnir.yml
   minPlayers: 0
   stations:
     Sleipnir:
@@ -34,3 +34,4 @@
       - type: StationJobs
         availableJobs:
           Contractor: [ 0, 0 ]
+
