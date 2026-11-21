@@ -58,6 +58,7 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
+  - type: Ammo
   - type: Projectile
     damage:
       types:

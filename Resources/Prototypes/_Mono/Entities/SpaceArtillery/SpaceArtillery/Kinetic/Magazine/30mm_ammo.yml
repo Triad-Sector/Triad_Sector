@@ -11,7 +11,7 @@
     size: Small
   - type: BallisticAmmoProvider
     infiniteUnspawned: true
-    proto: 30mmCartridge
+    proto: 30mmBullet
     capacity: 1 # normally should hold 2000
     mayTransfer: true
     whitelist:
