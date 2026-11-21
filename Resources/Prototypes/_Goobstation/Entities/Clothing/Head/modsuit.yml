@@ -331,6 +331,38 @@
     pulseTime: 1.5
     isEquipment: true
     toggleAction: PulseThermalVision
+  #Triad: Removes light, in line with besieger and also because it does not function with crew monitor
+  #- type: ToggleableVisuals
+  #  spriteLayer: light
+  #- type: PointLight
+  #  enabled: false
+  #  radius: 5
+  #  energy: 3
+  #  lightMask: ConeSingle
+  #  autoRot: true
+  #  netsync: false
+  #- type: HandheldLight
+  #  addPrefix: true
+  #  blinkingBehaviourId: blinking
+  #  radiatingBehaviourId: radiating
+  #- type: ItemTogglePointLight
+  #- type: LightBehaviour
+  #  behaviours:
+  #  - !type:FadeBehaviour
+  #    id: radiating
+  #    interpolate: Linear
+  #    maxDuration: 2.0
+  #    startValue: 3.0
+  #    endValue: 2.0
+  #    isLooped: true
+  #    reverseWhenFinished: true
+  #  - !type:PulseBehaviour
+  #    id: blinking
+  #    interpolate: Nearest
+  #    maxDuration: 1.0
+  #    minValue: 0.1
+  #    maxValue: 2.0
+  #    isLooped: true
 # End Triad
 
 - type: entity
