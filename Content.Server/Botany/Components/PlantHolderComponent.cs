@@ -115,12 +115,14 @@ public sealed partial class PlantHolderComponent : Component
     public string SeedLabel = string.Empty;
     
     /// <summary>
-    /// triad: store if a plant's seed has changed since being planted
+    /// Triad: store if a plant's seed has changed since being planted
     /// </summary>
-    [DataField] private bool _seedUnchangedSincePlanting = true;
-    public void SetSeedChangedFlag() { _seedUnchangedSincePlanting = false; }
-    public void ResetSeedChangedFlag() { _seedUnchangedSincePlanting = true; }
-    public string? GetUnchangedSeedLabel() { return _seedUnchangedSincePlanting ? SeedLabel : null; }
+    [DataField] 
+    public bool SeedUnchangedSincePlanting = true;
+    
+    public void SetSeedChangedFlag() { SeedUnchangedSincePlanting = false; }
+    public void ResetSeedChangedFlag() { SeedUnchangedSincePlanting = true; }
+    public string? GetUnchangedSeedLabel() { return SeedUnchangedSincePlanting ? SeedLabel : null; }
 
     /// <summary>
     /// True if the plant is losing health due to too high/low temperature.
