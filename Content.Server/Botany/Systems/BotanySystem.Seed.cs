@@ -15,6 +15,7 @@ using Robust.Shared.Random;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server._NF.Contraband.Systems; // Frontier
+using Content.Server.Labels;
 
 namespace Content.Server.Botany.Systems;
 
@@ -28,6 +29,8 @@ public sealed partial class BotanySystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private RandomHelperSystem _randomHelper = default!;
+    [Dependency] private LabelSystem _labelSystem = default!; // triad: for copying labels from produce to seeds
+
     public override void Initialize()
     {
         base.Initialize();
@@ -95,7 +98,9 @@ public sealed partial class BotanySystem : EntitySystem
     /// <summary>
     /// Spawns a new seed packet on the floor at a position, then tries to put it in the user's hands if possible.
     /// </summary>
-    public EntityUid SpawnSeedPacket(SeedData proto, EntityCoordinates coords, EntityUid user, float? healthOverride = null)
+    ///
+    ///  triad: added label as a non-optional field for applying the new label to the seed packet
+    public EntityUid SpawnSeedPacket(SeedData proto, EntityCoordinates coords, EntityUid user, string? label, float? healthOverride = null)
     {
         var seed = SpawnAtPosition(proto.PacketPrototype, coords); // Frontier: Spawn<SpawnAtPosition
         var seedComp = EnsureComp<SeedComponent>(seed);
@@ -109,19 +114,31 @@ public sealed partial class BotanySystem : EntitySystem
 
         // try to automatically place in user's other hand
         _hands.TryPickupAnyHand(user, seed);
+
+        _labelSystem.Label(seed, label); // triad: apply the label
         return seed;
     }
 
-    public IEnumerable<EntityUid> AutoHarvest(SeedData proto, EntityCoordinates position, int yieldMod = 1)
+    // triad: saves callers from needing to depend directly on the label system
+    public EntityUid SpawnSeedPacket(SeedData proto,
+        EntityCoordinates coords,
+        EntityUid user,
+        EntityUid? toCopyLabelFrom,
+        float? healthOverride = null)
+    {
+        return SpawnSeedPacket(proto, coords, user, _labelSystem.TryGetLabelString(toCopyLabelFrom), healthOverride);
+    }
+
+    public IEnumerable<EntityUid> AutoHarvest(SeedData proto, EntityCoordinates position, string? label, int yieldMod = 1)
     {
         if (position.IsValid(EntityManager) &&
             proto.ProductPrototypes.Count > 0)
-            return GenerateProduct(proto, position, yieldMod);
+            return GenerateProduct(proto, position, label, yieldMod);
 
         return Enumerable.Empty<EntityUid>();
     }
 
-    public IEnumerable<EntityUid> Harvest(SeedData proto, EntityUid user, int yieldMod = 1)
+    public IEnumerable<EntityUid> Harvest(SeedData proto, EntityUid user, string? label, int yieldMod = 1)
     {
         if (proto.ProductPrototypes.Count == 0 || proto.Yield <= 0)
         {
@@ -131,10 +148,10 @@ public sealed partial class BotanySystem : EntitySystem
 
         var name = Loc.GetString(proto.DisplayName);
         _popupSystem.PopupCursor(Loc.GetString("botany-harvest-success-message", ("name", name)), user, PopupType.Medium);
-        return GenerateProduct(proto, Transform(user).Coordinates, yieldMod);
+        return GenerateProduct(proto, Transform(user).Coordinates, label, yieldMod);
     }
 
-    public IEnumerable<EntityUid> GenerateProduct(SeedData proto, EntityCoordinates position, int yieldMod = 1)
+    public IEnumerable<EntityUid> GenerateProduct(SeedData proto, EntityCoordinates position, string? label, int yieldMod = 1)
     {
         var totalYield = 0;
         if (proto.Yield > -1)
@@ -157,6 +174,7 @@ public sealed partial class BotanySystem : EntitySystem
             var product = _robustRandom.Pick(proto.ProductPrototypes);
 
             var entity = SpawnAtPosition(product, position); // Frontier: Spawn<SpawnAtPosition
+            _labelSystem.Label(entity, label);
             _randomHelper.RandomOffset(entity, 0.25f);
             products.Add(entity);
 

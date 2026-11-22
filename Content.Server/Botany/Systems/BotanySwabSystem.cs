@@ -84,6 +84,7 @@ public sealed partial class BotanySwabSystem : EntitySystem
         }
         else
         {
+            plant.SetSeedChangedFlag(); // triad : flag the plant as having been modified
             var old = plant.Seed;
             if (old == null)
                 return;

@@ -64,6 +64,33 @@ namespace Content.Server.Labels
             Dirty(uid, label);
         }
 
+        /// <summary>
+        /// Copy the label from one entity to another
+        /// </summary>
+        public void CopyLabel(EntityUid sourceUid, EntityUid destinationUid, MetaDataComponent? metadata = null, LabelComponent? label = null)
+        {
+            if (TryComp<LabelComponent>(sourceUid, out var sourceLabel))
+            {
+                Label(destinationUid, sourceLabel.CurrentLabel, metadata, label);
+            }
+            else
+            {
+                Label(destinationUid, "", metadata, label);
+            }
+        }
+
+        public string? TryGetLabelString(EntityUid? sourceUid)
+        {
+            if (TryComp<LabelComponent>(sourceUid, out var sourceLabel))
+            {
+                return sourceLabel.CurrentLabel;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private void OnComponentInit(EntityUid uid, PaperLabelComponent component, ComponentInit args)
         {
             _itemSlotsSystem.AddItemSlot(uid, ContainerName, component.LabelSlot);

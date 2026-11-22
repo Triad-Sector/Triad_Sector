@@ -258,6 +258,7 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
 
         _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+        plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
         plantHolderComp.Seed.Potency = Math.Max(plantHolderComp.Seed.Potency + args.Effect.Amount, 1);
     }
 
@@ -381,6 +382,7 @@ public sealed class EntityEffectSystem : EntitySystem
         if (currentValObj == null)
             return;
 
+        plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
         if (member.FieldType == typeof(float))
         {
             var floatVal = (float)currentValObj;
@@ -433,6 +435,7 @@ public sealed class EntityEffectSystem : EntitySystem
                 args.Args.TargetEntity,
                 PopupType.SmallCaution
             );
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed.Seedless = true;
         }
     }
@@ -445,12 +448,14 @@ public sealed class EntityEffectSystem : EntitySystem
         if (_random.Prob(0.1f))
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed!.Lifespan++;
         }
 
         if (_random.Prob(0.1f))
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed!.Endurance++;
         }
     }
@@ -460,6 +465,7 @@ public sealed class EntityEffectSystem : EntitySystem
         if (!CanMetabolizePlant(args.Args.TargetEntity, out var plantHolderComp, mustHaveMutableSeed: true))
             return;
 
+        plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
         plantHolderComp.Seed!.Viable = true;
     }
 
@@ -472,6 +478,7 @@ public sealed class EntityEffectSystem : EntitySystem
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
             _popup.PopupEntity(Loc.GetString("botany-plant-seedsrestored"), args.Args.TargetEntity);
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed.Seedless = false;
         }
     }
@@ -487,6 +494,7 @@ public sealed class EntityEffectSystem : EntitySystem
         if (plantHolderComp.Seed.Potency < args.Effect.PotencyLimit)
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed.Potency = Math.Min(plantHolderComp.Seed.Potency + args.Effect.PotencyIncrease, args.Effect.PotencyLimit);
 
             if (plantHolderComp.Seed.Potency > args.Effect.PotencySeedlessThreshold)
@@ -498,6 +506,7 @@ public sealed class EntityEffectSystem : EntitySystem
         {
             // Too much of a good thing reduces yield
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            plantHolderComp.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantHolderComp.Seed.Yield--;
         }
     }
@@ -868,6 +877,7 @@ public sealed class EntityEffectSystem : EntitySystem
         // Add a random amount of a random chemical to this set of chemicals
         if (randomChems != null)
         {
+            plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
             var pick = _random.Pick<RandomFillSolution>(randomChems);
             var chemicalId = _random.Pick(pick.Reagents);
             var amount = _random.Next(1, (int)pick.Quantity);
@@ -895,6 +905,8 @@ public sealed class EntityEffectSystem : EntitySystem
 
         if (plantholder.Seed == null)
             return;
+
+        plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
 
         // Frontier: List of gasses
         Gas[] gasList =
@@ -937,6 +949,8 @@ public sealed class EntityEffectSystem : EntitySystem
 
         if (plantholder.Seed == null)
             return;
+
+        plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
 
         // Frontier, Funky: List of gasses
         Gas[] gasList =
@@ -981,9 +995,15 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
 
         if (plantholder.Seed.HarvestRepeat == HarvestType.NoRepeat)
+        {
+            plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantholder.Seed.HarvestRepeat = HarvestType.Repeat;
+        }
         else if (plantholder.Seed.HarvestRepeat == HarvestType.Repeat)
+        {
+            plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
             plantholder.Seed.HarvestRepeat = HarvestType.SelfHarvest;
+        }
     }
 
     private void OnExecutePlantSpeciesChange(ref ExecuteEntityEffectEvent<PlantSpeciesChange> args)
@@ -1004,6 +1024,7 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
         }
 
+        plantholder.SetSeedChangedFlag(); // triad: record that the seed has changed
         plantholder.Seed = plantholder.Seed.SpeciesChange(protoSeed);
     }
 

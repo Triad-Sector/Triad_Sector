@@ -109,6 +109,19 @@ public sealed partial class PlantHolderComponent : Component
     public SeedData? Seed;
 
     /// <summary>
+    /// triad: hold the seed's label here. If it didn't have one, hold an empty string.
+    /// </summary>
+    [DataField]
+    public string SeedLabel = "";
+    /// <summary>
+    /// triad: store if a plant's seed has changed since being planted
+    /// </summary>
+    [DataField] private bool _seedUnchangedSincePlanting = true;
+    public void SetSeedChangedFlag() { _seedUnchangedSincePlanting = false; }
+    public void ResetSeedChangedFlag() { _seedUnchangedSincePlanting = true; }
+    public string? GetUnchangedSeedLabel() { return _seedUnchangedSincePlanting ? SeedLabel : null; }
+
+    /// <summary>
     /// True if the plant is losing health due to too high/low temperature.
     /// </summary>
     [DataField]
