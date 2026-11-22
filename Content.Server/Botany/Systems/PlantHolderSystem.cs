@@ -821,7 +821,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        component.SeedLabel = ""; // triad : reset the label
+        component.SeedLabel = string.Empty; // triad : reset the label
         component.ResetSeedChangedFlag();
         component.YieldMod = 1;
         component.MutationMod = 1;
