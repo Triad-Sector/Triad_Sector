@@ -6288,3 +6288,10 @@ Entries:
   id: 2737
   time: '2026-11-19T23:46:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/819
+- author: Earthspiritio
+  changes:
+    - type: Tweak
+      message: Buffed the Bulwark modsuit to have Stamina resistance.
+  id: 2738
+  time: '2026-11-22T23:33:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/824
