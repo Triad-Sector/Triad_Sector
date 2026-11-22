@@ -65,20 +65,8 @@ namespace Content.Server.Labels
         }
 
         /// <summary>
-        /// Copy the label from one entity to another
+        /// triad: returns the entity's current label text, or null if it has no label.
         /// </summary>
-        public void CopyLabel(EntityUid sourceUid, EntityUid destinationUid, MetaDataComponent? metadata = null, LabelComponent? label = null)
-        {
-            if (TryComp<LabelComponent>(sourceUid, out var sourceLabel))
-            {
-                Label(destinationUid, sourceLabel.CurrentLabel, metadata, label);
-            }
-            else
-            {
-                Label(destinationUid, "", metadata, label);
-            }
-        }
-
         public string? TryGetLabelString(EntityUid? sourceUid)
         {
             if (TryComp<LabelComponent>(sourceUid, out var sourceLabel))

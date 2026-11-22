@@ -123,7 +123,7 @@ public sealed partial class BotanySystem : EntitySystem
     public EntityUid SpawnSeedPacket(SeedData proto,
         EntityCoordinates coords,
         EntityUid user,
-        EntityUid? toCopyLabelFrom,
+        EntityUid toCopyLabelFrom,
         float? healthOverride = null)
     {
         return SpawnSeedPacket(proto, coords, user, _labelSystem.TryGetLabelString(toCopyLabelFrom), healthOverride);
@@ -174,7 +174,7 @@ public sealed partial class BotanySystem : EntitySystem
             var product = _robustRandom.Pick(proto.ProductPrototypes);
 
             var entity = SpawnAtPosition(product, position); // Frontier: Spawn<SpawnAtPosition
-            _labelSystem.Label(entity, label);
+            _labelSystem.Label(entity, label); // triad: carry the plant's label onto its produce
             _randomHelper.RandomOffset(entity, 0.25f);
             products.Add(entity);
 

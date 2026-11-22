@@ -102,10 +102,10 @@ public sealed partial class PlantHolderSystem : EntitySystem
             {
                 // triad: Show the plant's label
                 string? label = component.GetUnchangedSeedLabel();
-                if (label is not null && label != "")
+                if (!string.IsNullOrEmpty(label))
                 {
                     args.PushMarkup(Loc.GetString("plant-holder-component-something-has-label-message",
-                        ("label", component.SeedLabel)));
+                        ("label", label)));
                 }
 
                 if(!component.Dead)
@@ -130,7 +130,6 @@ public sealed partial class PlantHolderSystem : EntitySystem
                     args.PushMarkup(Loc.GetString("plant-holder-component-dead-plant-matter-message"));
                 }
             }
-
 
             if (component.WeedLevel >= 5)
                 args.PushMarkup(Loc.GetString("plant-holder-component-weed-high-level-message"));
