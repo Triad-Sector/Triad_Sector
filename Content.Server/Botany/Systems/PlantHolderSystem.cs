@@ -100,14 +100,6 @@ public sealed partial class PlantHolderSystem : EntitySystem
             }
             else
             {
-                // triad: Show the plant's label
-                var label = component.SeedLabel;
-                if (!string.IsNullOrEmpty(label))
-                {
-                    args.PushMarkup(Loc.GetString("plant-holder-component-something-has-label-message",
-                        ("label", label)));
-                }
-
                 if(!component.Dead)
                 {
                     var displayName = Loc.GetString(component.Seed.DisplayName);
@@ -129,6 +121,14 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 {
                     args.PushMarkup(Loc.GetString("plant-holder-component-dead-plant-matter-message"));
                 }
+
+                // triad: Show the plant's label
+                var label = component.SeedLabel;
+                var labelText = label == null
+                    ? Loc.GetString("plant-holder-component-something-no-label-message")
+                    : Loc.GetString("plant-holder-component-something-has-label-message", ("label", label));
+
+                args.PushMarkup(labelText);
             }
 
             if (component.WeedLevel >= 5)
@@ -1021,7 +1021,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
     {
         // Marks a seed as 'changed', to reset certain data.
         var comp = holder.Comp;
-        if (comp.Seed != null)
+        if (comp.Seed == null)
             return;
 
         comp.SeedLabel = null;
