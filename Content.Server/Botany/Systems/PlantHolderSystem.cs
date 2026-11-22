@@ -101,7 +101,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
             else
             {
                 // triad: Show the plant's label
-                string? label = component.GetUnchangedSeedLabel();
+                var label = component.SeedLabel;
                 if (!string.IsNullOrEmpty(label))
                 {
                     args.PushMarkup(Loc.GetString("plant-holder-component-something-has-label-message",
@@ -175,9 +175,8 @@ public sealed partial class PlantHolderSystem : EntitySystem
 
                 args.Handled = true;
 
-                // triad: record the label of the seed
-                component.SeedLabel = _label.TryGetLabelString(args.Used) ?? "";
-                component.ResetSeedChangedFlag();
+                // Triad: record the label of the seed
+                component.SeedLabel = _label.TryGetLabelString(args.Used) ?? null;
 
                 var name = Loc.GetString(seed.Name);
                 var noun = Loc.GetString(seed.Noun);
@@ -304,7 +303,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
             }
             component.Seed.Unique = false;
             var packetSeed = component.Seed;
-            var seed = _botany.SpawnSeedPacket(packetSeed, Transform(args.User).Coordinates, args.User, component.GetUnchangedSeedLabel(), healthOverride);
+            var seed = _botany.SpawnSeedPacket(packetSeed, Transform(args.User).Coordinates, args.User, component.SeedLabel, healthOverride);
             _randomHelper.RandomOffset(seed, 0.25f);
             var displayName = Loc.GetString(component.Seed.DisplayName);
             _popup.PopupCursor(Loc.GetString("plant-holder-component-take-sample-message",
@@ -645,7 +644,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         {
             var packetSeed = component.Seed;
             // will put it in the trays hands if it has any, please do not try doing this
-            _botany.SpawnSeedPacket(packetSeed, Transform(uid).Coordinates, uid, component.GetUnchangedSeedLabel());
+            _botany.SpawnSeedPacket(packetSeed, Transform(uid).Coordinates, uid, component.SeedLabel);
             RemovePlant(uid, component);
             component.ForceUpdate = true;
             Update(uid, component);
@@ -732,7 +731,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 return false;
             }
 
-            _botany.Harvest(component.Seed, user, component.GetUnchangedSeedLabel(), component.YieldMod);
+            _botany.Harvest(component.Seed, user, component.SeedLabel, component.YieldMod);
             AfterHarvest(plantholder, component);
             return true;
         }
@@ -766,7 +765,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (component.Seed == null || !component.Harvest)
             return;
 
-        _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates, component.GetUnchangedSeedLabel());
+        _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates, component.SeedLabel);
         AfterHarvest(uid, component);
     }
 
@@ -821,8 +820,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        component.SeedLabel = string.Empty; // triad : reset the label
-        component.ResetSeedChangedFlag();
+        component.SeedLabel = null; // triad : reset the label
         component.YieldMod = 1;
         component.MutationMod = 1;
         component.PestLevel = 0;
@@ -998,7 +996,8 @@ public sealed partial class PlantHolderSystem : EntitySystem
         component.ForceUpdate = true;
         Update(uid, component);
     }
-    // Triad start hotfix for removed gases so they get removed from existing seeds
+
+    // Triad start
     private static readonly Gas[] RemovedPlantGases =
     {
         Gas.Tritium,
@@ -1009,7 +1008,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Gas.Pluoxium,
     };
 
-    private  static void RemoveRemovedPlantGases(SeedData seed)
+    private static void RemoveRemovedPlantGases(SeedData seed)
     {
         foreach (var gas in RemovedPlantGases)
         {
@@ -1017,5 +1016,15 @@ public sealed partial class PlantHolderSystem : EntitySystem
             seed.ExudeGasses.Remove(gas);
         }
     }
-      // End Triad
+
+    public void MarkHolderSeedAsChanged(Entity<PlantHolderComponent> holder)
+    {
+        // Marks a seed as 'changed', to reset certain data.
+        var comp = holder.Comp;
+        if (comp.Seed != null)
+            return;
+
+        comp.SeedLabel = null;
+    }
+    // End Triad
 }

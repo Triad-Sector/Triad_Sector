@@ -10,6 +10,7 @@ namespace Content.Server.Botany.Systems;
 public sealed partial class BotanySwabSystem : EntitySystem
 {
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private PlantHolderSystem _plantHolder = default!; // Triad
     [Dependency] private PopupSystem _popupSystem = default!;
     [Dependency] private MutationSystem _mutationSystem = default!;
 
@@ -84,13 +85,13 @@ public sealed partial class BotanySwabSystem : EntitySystem
         }
         else
         {
-            plant.SetSeedChangedFlag(); // triad : flag the plant as having been modified
             var old = plant.Seed;
             if (old == null)
                 return;
             plant.Seed = _mutationSystem.Cross(swab.SeedData, old); // Cross-pollenate
             swab.SeedData = old; // Transfer old plant pollen to swab
             _popupSystem.PopupEntity(Loc.GetString("botany-swab-to"), args.Args.Target.Value, args.Args.User);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.Target.Value, plant)); // Triad - mark it as changed to reset the label
         }
 
         args.Handled = true;

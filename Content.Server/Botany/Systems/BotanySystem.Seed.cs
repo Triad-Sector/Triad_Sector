@@ -99,7 +99,7 @@ public sealed partial class BotanySystem : EntitySystem
     /// Spawns a new seed packet on the floor at a position, then tries to put it in the user's hands if possible.
     /// </summary>
     ///
-    ///  triad: added label as a non-optional field for applying the new label to the seed packet
+    ///  Triad: added label as a non-optional field for applying the new label to the seed packet
     public EntityUid SpawnSeedPacket(SeedData proto, EntityCoordinates coords, EntityUid user, string? label, float? healthOverride = null)
     {
         var seed = SpawnAtPosition(proto.PacketPrototype, coords); // Frontier: Spawn<SpawnAtPosition
@@ -119,7 +119,7 @@ public sealed partial class BotanySystem : EntitySystem
         return seed;
     }
 
-    // triad: saves callers from needing to depend directly on the label system
+    // Triad: Saves callers from needing to depend directly on the label system
     public EntityUid SpawnSeedPacket(SeedData proto,
         EntityCoordinates coords,
         EntityUid user,
