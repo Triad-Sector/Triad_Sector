@@ -133,7 +133,7 @@ public sealed partial class BotanySystem : EntitySystem
     {
         if (position.IsValid(EntityManager) &&
             proto.ProductPrototypes.Count > 0)
-            return GenerateProduct(proto, position, label, yieldMod);
+            return GenerateProduct(proto, position, label, yieldMod); // Triad - label 
 
         return Enumerable.Empty<EntityUid>();
     }
