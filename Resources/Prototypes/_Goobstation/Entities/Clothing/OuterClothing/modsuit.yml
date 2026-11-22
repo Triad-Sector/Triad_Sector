@@ -125,7 +125,7 @@
   parent: ClothingModsuitChestplateBase
   id: ClothingModsuitChestplateHeadOfSecurity
   name: bulwark modsuit chestplate
-  description: A robust modular suit cover with EXTRA ceramic inserts for even MORE protection. # Triad
+  description: A robust modular suit cover with EXTRA ceramic inserts for slightly more protection.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -151,6 +151,7 @@
   # Triad change, added stamina resistance to Bulwark suit
   - type: StaminaDamageResistance
     coefficient: 0.5
+  # Triad end
   - type: Armor
     modifiers:
       coefficients:
