@@ -112,7 +112,8 @@ public sealed partial class PlantHolderComponent : Component
     /// triad: hold the seed's label here. If it didn't have one, hold an empty string.
     /// </summary>
     [DataField]
-    public string SeedLabel = "";
+    public string SeedLabel = string.Empty;
+    
     /// <summary>
     /// triad: store if a plant's seed has changed since being planted
     /// </summary>
