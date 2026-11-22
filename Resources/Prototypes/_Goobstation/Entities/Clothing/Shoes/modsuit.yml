@@ -125,7 +125,7 @@
       shoes-vox:
       - state: equipped-FEET-sealed-vox
   - type: ClothingSlowOnDamageModifier # Mono
-    modifier: 0.75
+    modifier: 0.50 # Triad 0.75 --> 0.50
 
 - type: entity
   parent: ClothingModsuitBootsBase
