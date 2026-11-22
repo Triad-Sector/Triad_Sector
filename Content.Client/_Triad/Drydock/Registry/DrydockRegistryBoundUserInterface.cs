@@ -1,4 +1,3 @@
-// Triad: the drydock registry.
 using Content.Shared._Triad.Drydock;
 using Robust.Client.UserInterface;
 

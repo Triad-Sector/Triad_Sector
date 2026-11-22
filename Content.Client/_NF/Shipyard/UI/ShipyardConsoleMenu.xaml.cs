@@ -21,6 +21,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BaseButton;
+using Content.Client._Triad.Shipyard.UI;
 
 namespace Content.Client._NF.Shipyard.UI;
 

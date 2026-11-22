@@ -4,12 +4,10 @@ using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Robust.Client.Graphics;
-using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
-namespace Content.Client._NF.Shipyard.UI;
+namespace Content.Client._Triad.Shipyard.UI;
 
 /// <summary>
 /// A window that lists choices and takes one: a filter box when the list can be long, the rows,

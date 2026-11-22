@@ -1,5 +1,6 @@
 ## UI
 shipyard-console-preview = Preview
+shipyard-console-header-saved-ships = Transfer ownership of saved ships to other characters or delete them here
 shipyard-console-saved = {$owner} shuttle {$vessel} stored to shipyard by {$player}.
 shipyard-console-save-appraisal-label = Estimated deployment fee after tax:{" "}
 shipyard-console-save-appraisal-no-ship-selected-text = Select ship
@@ -50,7 +51,8 @@ shipyard-console-berth-empty = empty
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth
 
-shipyard-console-detail-select = Select a berth
+shipyard-console-detail-select =
+shipyard-console-detail-select-ship = Select a ship
 shipyard-console-detail-empty-title = Berth #{$berth}
 shipyard-console-detail-stored = Stored
 shipyard-console-detail-berth-class = Berth class:
@@ -131,6 +133,8 @@ shipyard-console-import-prompt-body = [color=#e0e0e0]{ $ship }[/color] slots int
 shipyard-console-error-vessel-unavailable = Purchase failed: that vessel is not available to you.
 shipyard-console-error-vessel-load-failed = Purchase failed: the vessel's ship file could not be loaded.
 shipyard-console-error-sale-loaded-from-save = Sale failed: this vessel was loaded from a saved manifest and cannot be sold.
+shipyard-console-error-no-berths = You do not own any berths!
+shipyard-console-error-no-ships = You do not have any saved ships!
 
 shipyard-console-import-error-in-progress = Import failed: another import is already running.
 shipyard-console-import-error-disabled = Import failed: legacy ship import is disabled on this server.

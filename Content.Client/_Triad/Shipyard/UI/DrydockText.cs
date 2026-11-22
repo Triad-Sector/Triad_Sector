@@ -8,7 +8,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
-namespace Content.Client._NF.Shipyard.UI;
+namespace Content.Client._Triad.Shipyard.UI;
 
 /// <summary>
 /// The one place the drydock tab writes a clock, a class name or a weighted name, so the card, the

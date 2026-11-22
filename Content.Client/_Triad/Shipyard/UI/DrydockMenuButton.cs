@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Maths;
 
-namespace Content.Client._NF.Shipyard.UI;
+namespace Content.Client._Triad.Shipyard.UI;
 
 /// <summary>
 /// A button that drops a short menu for rare verbs, so each row carries one button. Used for Buy

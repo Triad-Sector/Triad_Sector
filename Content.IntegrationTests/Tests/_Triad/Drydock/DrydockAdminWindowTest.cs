@@ -7,6 +7,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using Content.Client._NF.Shipyard.UI;
 using Content.Client._Triad.Drydock.Admin;
+using Content.Client._Triad.Shipyard.UI;
 using Content.Shared._Triad.Drydock.Admin;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;

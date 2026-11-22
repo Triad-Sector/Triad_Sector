@@ -1,7 +1,7 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                      xmlns:ui="clr-namespace:Content.Client._NF.Shipyard.UI"
+                      xmlns:ui="clr-namespace:Content.Client._Triad.Shipyard.UI"
                       SetSize="1000 540"
                       MinSize="920 500">
     <PanelContainer VerticalExpand="True"

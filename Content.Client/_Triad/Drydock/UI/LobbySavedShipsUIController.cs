@@ -1,10 +1,9 @@
-﻿using Content.Client._Triad.Drydock.Windows;
-using Content.Client.Lobby.UI;
+﻿using Content.Client.Lobby.UI;
 using Content.Shared._Triad.Drydock;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 
-namespace Content.Client._Triad.Drydock.Controllers;
+namespace Content.Client._Triad.Drydock.UI;
 
 public sealed partial class LobbySavedShipsUIController : UIController, IOnSystemChanged<LobbyDrydockSystem>
 {
@@ -20,9 +19,6 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
 
     private void OnBerthInfoResponse(LobbyDrydockBerthInfoResponse msg)
     {
-        if (UIManager.ActiveScreen is not LobbyGui)
-            return;
-
         _window?.UpdateUi(msg.Berths);
     }
 
@@ -37,7 +33,7 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
         {
             _window = new LobbySavedShipsWindow();
             _window.OnClose += () => _window = null;
-            _window.RequestBerthInfo += RequestBerthInfo;
+            RequestBerthInfo();
 
             //.CopyButton.OnPressed += _ =>
             //{

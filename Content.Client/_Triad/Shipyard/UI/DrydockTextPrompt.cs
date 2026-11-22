@@ -7,7 +7,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
-namespace Content.Client._NF.Shipyard.UI;
+namespace Content.Client._Triad.Shipyard.UI;
 
 /// <summary>
 /// A sentence, a field, and a button that stays locked until the field passes. The sale

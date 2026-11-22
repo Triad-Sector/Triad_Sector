@@ -1,5 +1,5 @@
 using Content.Client._NF.LateJoin;
-using Content.Client._Triad.Drydock.Controllers;
+using Content.Client._Triad.Drydock.UI;
 using Content.Client.Audio;
 using Content.Client.Eui;
 using Content.Client.GameTicking.Managers;

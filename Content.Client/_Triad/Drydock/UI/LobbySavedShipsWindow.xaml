@@ -1,0 +1,114 @@
+﻿<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="Saved Ships"
+                      SetSize="900 400"
+                      MinSize="600 200">
+    <BoxContainer Orientation="Vertical">
+        <Label FontColorOverride="#b1b1b2"
+               StyleClasses="LabelSmall"
+               Name="PublishTimeLabel"
+               Margin="6 6 6 6"
+               Text="{Loc 'shipyard-console-header-saved-ships'}"/>
+        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+            <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#000000FF" BorderColor="#5a5a5a" BorderThickness="1 1 1 1"/>
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" Name="InfoContentContainer" Visible="False">
+                    <ScrollContainer
+                        VScrollEnabled="True"
+                        HorizontalExpand="True"
+                        SizeFlagsStretchRatio="4"
+                        VerticalExpand="True">
+                        <BoxContainer
+                            Name="ShipInfoContainer"
+                            Orientation="Vertical"
+                            SizeFlagsStretchRatio="2"
+                            HorizontalExpand="False"
+                            VerticalExpand="True">
+                        </BoxContainer>
+                    </ScrollContainer>
+                    <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" Margin="6 0 6 0"/>
+                    <PanelContainer HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    SizeFlagsStretchRatio="2"
+                                    Margin="0 0 0 6">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderThickness="3"
+                                    BorderColor="#333333"
+                                    BackgroundColor="#333333"/>
+                        </PanelContainer.PanelOverride>
+                        <PanelContainer Margin="1 1 1 1">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BorderThickness="3"
+                                        BorderColor="#636363"
+                                        BackgroundColor="#141414"/>
+                            </PanelContainer.PanelOverride>
+                            <Label Name="BerthDetailPlaceholder"
+                                   Text="{Loc 'shipyard-console-detail-select-ship'}"
+                                   Modulate="#777777"
+                                   Align="Center"
+                                   VAlign="Center"
+                                   HorizontalExpand="True"
+                                   VerticalExpand="True"/>
+                            <!-- Fits at the default size; scrolls only when several cards stack above it. -->
+                            <ScrollContainer Name="BerthDetail"
+                                             Visible="False"
+                                             HScrollEnabled="False"
+                                             HorizontalExpand="True"
+                                             VerticalExpand="True">
+                                <BoxContainer Orientation="Vertical"
+                                              HorizontalExpand="True"
+                                              Margin="8">
+                                    <RichTextLabel Name="BerthDetailTitle"
+                                                   HorizontalExpand="True"/>
+                                    <RichTextLabel Name="BerthDetailStatus"
+                                                   HorizontalExpand="True"
+                                                   Margin="0 0 0 6"/>
+                                    <PanelContainer StyleClasses="LowDivider"
+                                                    Margin="0 0 0 6"/>
+                                    <BoxContainer Name="BerthDetailLines"
+                                                  Orientation="Vertical"
+                                                  HorizontalExpand="True"
+                                                  Margin="0 0 0 8"/>
+                                    <Button Name="RetrieveButton"
+                                            Text="{Loc 'shipyard-console-retrieve-button'}"
+                                            StyleClasses="ButtonSquare"
+                                            HorizontalExpand="True"
+                                            Margin="0 0 0 3"
+                                            Visible="False"/>
+                                    <Button Name="CancelTransferButton"
+                                            Text="{Loc 'shipyard-console-transfer-cancel-button'}"
+                                            StyleClasses="ButtonSquare"
+                                            HorizontalExpand="True"
+                                            Margin="0 0 0 3"
+                                            Visible="False"/>
+                                    <!-- Rename, Move and Transfer share a line, and the priced verbs get one each.
+                                            Both built by PopulateBerthDetail. -->
+                                    <GridContainer Name="BerthTools"
+                                                   Columns="3"
+                                                   HSeparationOverride="3"
+                                                   HorizontalExpand="True"/>
+                                    <BoxContainer Name="BerthActions"
+                                                  Orientation="Vertical"
+                                                  HorizontalExpand="True"/>
+                                </BoxContainer>
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </PanelContainer>
+                    <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" Margin="6 0 6 0"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal"
+                        Visible="False"
+                        Name="NoShipsContainer"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <Label Text="{Loc 'shipyard-console-error-no-ships'}" StyleClasses="LabelBig"/>
+                </BoxContainer>
+            </PanelContainer>
+        </PanelContainer>
+    </BoxContainer>
+
+</controls:FancyWindow>

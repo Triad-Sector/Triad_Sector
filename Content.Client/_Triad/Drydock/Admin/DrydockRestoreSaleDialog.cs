@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Content.Client._NF.Shipyard.UI;
+using Content.Client._Triad.Shipyard.UI;
 using Content.Shared._NF.Bank;
 using Content.Shared._Triad.Drydock.Admin;
 using Robust.Client.UserInterface;

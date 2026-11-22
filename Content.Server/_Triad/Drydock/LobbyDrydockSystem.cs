@@ -14,11 +14,8 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     [Dependency] private DrydockStore _drydockStore = default!;
 
     [SubscribeNetworkEvent]
-    private async void OnGhostWarpsRequest(LobbyDrydockBerthInfoRequest _, EntitySessionEventArgs args)
+    private async void OnLobbyDrydockBerthInfoRequest(LobbyDrydockBerthInfoRequest ev, EntitySessionEventArgs args)
     {
-        if (args.SenderSession.AttachedEntity is not { Valid: true })
-            return;
-
         var session = args.SenderSession;
 
         var owner = session.UserId.UserId;

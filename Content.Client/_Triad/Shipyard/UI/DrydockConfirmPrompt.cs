@@ -1,12 +1,9 @@
-// Triad: legacy import.
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
-using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
-namespace Content.Client._NF.Shipyard.UI;
+namespace Content.Client._Triad.Shipyard.UI;
 
 /// <summary>
 /// A sentence and two buttons. <see cref="DrydockTextPrompt"/> is the same shape with a field in it,

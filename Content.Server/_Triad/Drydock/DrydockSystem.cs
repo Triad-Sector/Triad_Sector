@@ -47,7 +47,6 @@ using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage;
 using Robust.Shared.Random;
 using Content.Server.Stack;
-using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Stacks;
 using Content.Shared.Coordinates;
@@ -104,7 +103,7 @@ public sealed partial class DrydockSystem : EntitySystem
     private const int MinPurgedArtifactFragments = 1;
     private const int MaxPurgedArtifactFragments = 3;
 
-    public static readonly ProtoId<StackPrototype> PurgedArtifactStackProtoId = "ArtifactFragment";
+    private static readonly ProtoId<StackPrototype> PurgedArtifactStackProtoId = "ArtifactFragment";
 
     /// <summary>
     /// Whether the drydock is on and not read-only, the gate every write path checks before it

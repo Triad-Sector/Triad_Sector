@@ -1,7 +1,4 @@
-// Triad: the drydock registry.
-using System;
-using System.Collections.Generic;
-using Content.Client._NF.Shipyard.UI;
+using Content.Client._Triad.Shipyard.UI;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;

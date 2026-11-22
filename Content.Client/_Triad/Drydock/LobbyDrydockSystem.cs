@@ -15,6 +15,7 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     {
         if (_state.CurrentState is not LobbyState)
             return;
+        Logger.Info("HI");
 
         BerthInfoResponse?.Invoke(msg);
     }

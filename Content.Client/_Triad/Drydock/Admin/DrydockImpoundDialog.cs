@@ -2,6 +2,7 @@
 using System;
 using System.Numerics;
 using Content.Client._NF.Shipyard.UI;
+using Content.Client._Triad.Shipyard.UI;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Content.Shared._NF.Bank;

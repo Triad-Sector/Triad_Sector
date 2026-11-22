@@ -8,7 +8,8 @@ using Content.Client._Triad.ShipPreview.UI; // Triad
 using Content.Client._Triad.Shipyard.Save; // Triad
 using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.Player; // Triad
+using Robust.Client.Player;
+using Content.Client._Triad.Shipyard.UI; // Triad
 
 namespace Content.Client._NF.Shipyard.BUI;
 
