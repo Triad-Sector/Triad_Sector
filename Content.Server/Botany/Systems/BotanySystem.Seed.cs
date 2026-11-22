@@ -123,7 +123,7 @@ public sealed partial class BotanySystem : EntitySystem
     public EntityUid SpawnSeedPacket(SeedData proto,
         EntityCoordinates coords,
         EntityUid user,
-        EntityUid toCopyLabelFrom,
+        EntityUid? toCopyLabelFrom,
         float? healthOverride = null)
     {
         return SpawnSeedPacket(proto, coords, user, _labelSystem.TryGetLabelString(toCopyLabelFrom), healthOverride);
