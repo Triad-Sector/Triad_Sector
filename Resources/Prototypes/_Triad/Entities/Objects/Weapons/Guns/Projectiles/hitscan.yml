@@ -37,4 +37,23 @@
       state: beam_omni
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+- type: entity
+  parent: BasicHitscan
+  id: LessLethalLightTurretLaser
+  name: less-lethal light turret laser
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 2
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_omni
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_omni
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_omni
