@@ -220,11 +220,11 @@
     - map: [ "plasmaburn" ] # Triad - plasma burn
       shader: unshaded
   - type: HitscanBatteryAmmoProvider
-    proto: DisablingLightTurretLaser
+    proto: LessLethalLightTurretLaser
     fireCost: 1
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: DisablingLightTurretLaser
+    - proto: LessLethalLightTurretLaser
       fireCost: 1
     - proto: LightTurretLaser
       fireCost: 2
