@@ -998,11 +998,7 @@ public sealed class EntityEffectSystem : EntitySystem
             _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
             plantholder.Seed.HarvestRepeat = HarvestType.Repeat;
         }
-        else if (plantholder.Seed.HarvestRepeat == HarvestType.Repeat)
-        {
-            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
-            plantholder.Seed.HarvestRepeat = HarvestType.SelfHarvest;
-        }
+        // Triad - removed self harvest
     }
 
     private void OnExecutePlantSpeciesChange(ref ExecuteEntityEffectEvent<PlantSpeciesChange> args)
