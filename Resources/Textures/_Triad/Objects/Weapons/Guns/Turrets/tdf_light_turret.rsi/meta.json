@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-4.0",
+  "copyright": "Sprites made by Stagnation (discord) for SS14 New Frontier, modified by TheRealMasterChief117",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "base_shadow"
+    },
+    {
+      "name": "mag-0",
+	  "delays":
+	  [
+	   [ 0.15, 0.15 ]
+	  ]
+    },
+    {
+      "name": "mag-1",
+	  "delays":
+	  [
+	   [ 0.4, 0.4 ]
+	  ]
+    },
+    {
+      "name": "mag-2"
+    },
+    {
+      "name": "mag-3"
+    },
+    {
+      "name": "mag-4"
+    },
+    {
+      "name": "mag-5"
+    },
+    {
+      "name": "unshaded"
+    },
+    {
+      "name": "lethal"
+    },
+    {
+      "name": "stun"
+    }
+  ]
+}

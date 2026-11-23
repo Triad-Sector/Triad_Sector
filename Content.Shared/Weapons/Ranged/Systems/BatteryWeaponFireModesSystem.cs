@@ -129,6 +129,7 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
         if (user != null)
             _popupSystem.PopupClient(Loc.GetString("gun-set-fire-mode", ("mode", prototype.Name)), uid, user.Value);
 
+        // Triad: add hitscan support
         if (TryComp(uid, out ProjectileBatteryAmmoProviderComponent? projectileBatteryAmmoProviderComponent))
         {
             // TODO: Have this get the info directly from the batteryComponent when power is moved to shared.
@@ -141,8 +142,21 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
             projectileBatteryAmmoProviderComponent.Capacity = (int)Math.Round(projectileBatteryAmmoProviderComponent.Capacity / FireCostDiff);
 
             Dirty(uid, projectileBatteryAmmoProviderComponent);
-            var updateClientAmmoEvent = new UpdateClientAmmoEvent();
-            RaiseLocalEvent(uid, ref updateClientAmmoEvent);
         }
+        else if (TryComp(uid, out HitscanBatteryAmmoProviderComponent? hitscanBatteryAmmoProviderComponent))
+        {
+            var OldFireCost = hitscanBatteryAmmoProviderComponent.FireCost;
+            hitscanBatteryAmmoProviderComponent.HitscanEntityProto = fireMode.Prototype;
+            hitscanBatteryAmmoProviderComponent.FireCost = fireMode.FireCost;
+
+            float FireCostDiff = (float)fireMode.FireCost / (float)OldFireCost;
+            hitscanBatteryAmmoProviderComponent.Shots = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Shots / FireCostDiff);
+            hitscanBatteryAmmoProviderComponent.Capacity = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Capacity / FireCostDiff);
+
+            Dirty(uid, hitscanBatteryAmmoProviderComponent);
+        }
+
+        var updateClientAmmoEvent = new UpdateClientAmmoEvent();
+        RaiseLocalEvent(uid, ref updateClientAmmoEvent);
     }
 }
