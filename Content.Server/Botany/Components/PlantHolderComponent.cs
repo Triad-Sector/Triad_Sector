@@ -109,6 +109,13 @@ public sealed partial class PlantHolderComponent : Component
     public SeedData? Seed;
 
     /// <summary>
+    /// Triad: hold the seed's label here. If it didn't have one, hold an empty string.
+    /// If null, the seed never had a label.
+    /// </summary>
+    [DataField]
+    public string? SeedLabel = null;
+
+    /// <summary>
     /// True if the plant is losing health due to too high/low temperature.
     /// </summary>
     [DataField]
