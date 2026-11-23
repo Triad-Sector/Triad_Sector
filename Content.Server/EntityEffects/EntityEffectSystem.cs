@@ -465,7 +465,6 @@ public sealed class EntityEffectSystem : EntitySystem
         if (!CanMetabolizePlant(args.Args.TargetEntity, out var plantHolderComp, mustHaveMutableSeed: true))
             return;
 
-        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
         plantHolderComp.Seed!.Viable = true;
     }
 
