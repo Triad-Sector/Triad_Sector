@@ -6295,3 +6295,12 @@ Entries:
   id: 2738
   time: '2026-11-22T23:33:13.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/824
+- author: DDrakov
+  changes:
+    - type: Add
+      message: >-
+        Seed labels now carry through planting, harvesting and seed extraction.
+        Plants lose their label once they mutate or are modified.
+  id: 2739
+  time: '2026-11-23T00:21:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/839
