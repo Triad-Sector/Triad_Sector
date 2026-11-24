@@ -51,11 +51,13 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         // Normal deconstruction: preserve the original drop behavior.
         DropAll((uid, component));
     }
-    // Triad: switch to limited stack spawning when mass material drops would create excessive entities.
+
+    // Triad Start - switch to limited stack spawning when mass material drops would create excessive entities.
     private const int MaterialDropStackThreshold = 100;
     private const int MaxStacksPerMaterialOnHighVolumeDrop = 10;
     private const int MaterialLossDamageThreshold = 600;
-    // Triad: fragile glasses are destroyed instead of dropped due to them not being handled correctly by the engine down stream during explosions making the server die
+
+    // Fragile glasses are destroyed instead of dropped due to them not being handled correctly by the engine down stream during explosions making the server die
     private static readonly HashSet<ProtoId<MaterialPrototype>> MaterialsLostOnHighVolumeDrop = new()
     {
         "Glass",
@@ -70,26 +72,25 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
     {
         if (!ent.Comp.DropOnDestroy)
             return;
-        // Triad: determine whether destruction should use reduced-spawn recovery rules.
-        var highDamage =
-      TryComp<DamageableComponent>(ent, out var damageable) &&
-      damageable.TotalDamage > MaterialLossDamageThreshold;
 
-        // Triad: estimate normal stack count before spawning to avoid mass entity creation.
+        var highDamage = TryComp<DamageableComponent>(ent, out var damageable)
+            && damageable.TotalDamage > MaterialLossDamageThreshold;
+
+        // Estimate normal stack count before spawning to avoid mass entity creation
         long totalNormalStacks = 0;
 
         foreach (var (material, amount) in ent.Comp.Storage)
         {
-            if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var materialProto))
+            if (!_prototypeManager.TryIndex(material, out var materialProto))
                 continue;
 
             totalNormalStacks += GetNormalStackCount(amount, materialProto);
-            // Triad: preserve vanilla destruction behavior when stack counts remain reasonable.
+            // Preserve vanilla destruction behavior when stack counts remain reasonable
             if (totalNormalStacks > MaterialDropStackThreshold)
                 break;
         }
 
-        // Normal destruction = vanilla behavior.
+        // Normal destruction = vanilla behavior
         if (totalNormalStacks <= MaterialDropStackThreshold)
         {
             DropAll(ent);
@@ -101,20 +102,13 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         // High-volume destruction path.
         foreach (var (material, amount) in ent.Comp.Storage)
         {
-            if (highDamage &&
-                MaterialsLostOnHighVolumeDrop.Contains(material))
-            {
-                continue;
-            }
-
-            if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var materialProto))
+            if (highDamage && MaterialsLostOnHighVolumeDrop.Contains(material))
                 continue;
 
-            SpawnMaterialInLimitedStacks(
-                amount,
-                materialProto,
-                coordinates,
-                MaxStacksPerMaterialOnHighVolumeDrop);
+            if (!_prototypeManager.TryIndex(material, out var materialProto))
+                continue;
+
+            SpawnMaterialInLimitedStacks(amount, materialProto, coordinates, MaxStacksPerMaterialOnHighVolumeDrop);
         }
     }
     private int GetNormalStackCount(int amount, MaterialPrototype materialProto)
@@ -122,33 +116,27 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
         if (amount <= 0 || materialProto.StackEntity == null)
             return 0;
 
-        var entProto = _prototypeManager.Index<EntityPrototype>(materialProto.StackEntity);
+        var entProto = _prototypeManager.Index(materialProto.StackEntity.Value);
 
-        if (!entProto.TryComp<PhysicalCompositionComponent>(
-                out var composition,
-                EntityManager.ComponentFactory))
+        if (!entProto.TryComp<PhysicalCompositionComponent>(out var composition, EntityManager.ComponentFactory))
             return 0;
 
-        if (!composition.MaterialComposition.TryGetValue(
-                materialProto.ID,
-                out var materialPerStack) || materialPerStack <= 0)
+        if (!composition.MaterialComposition.TryGetValue(materialProto.ID, out var materialPerStack) || materialPerStack <= 0)
             return 0;
 
         var totalCount = amount / materialPerStack;
         if (totalCount <= 0)
             return 0;
 
-        if (!entProto.TryComp<StackComponent>(
-                out var prototypeStack,
-                EntityManager.ComponentFactory))
+        if (!entProto.TryComp<StackComponent>(out var prototypeStack, EntityManager.ComponentFactory))
             return 0;
 
         var normalMaxCount = _stackSystem.GetMaxCount(prototypeStack);
         if (normalMaxCount <= 0)
             return 0;
 
-        // Ceiling division without adding to totalCount, avoiding overflow.
-        return 1 + ((totalCount - 1) / normalMaxCount);
+        // Ceiling division without adding to totalCount, avoiding overflow
+        return 1 + (totalCount - 1) / normalMaxCount;
     }
 
     private void SpawnMaterialInLimitedStacks(
@@ -214,7 +202,7 @@ public sealed partial class MaterialStorageSystem : SharedMaterialStorageSystem
             _stackSystem.SetCount(stackEntity, count, stack);
         }
     }
-    // end triad
+    // Triad End
     // Mono
     public void DropAll(Entity<MaterialStorageComponent> ent)
     {
