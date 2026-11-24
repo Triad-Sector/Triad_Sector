@@ -187,9 +187,7 @@
       min: 30
       max: 50
       value: 20
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 3500 # 6600-10500
-  baseReward: 17500 # 33000-52500
+  baseReward: 17500 # 33000-52500 Triad- was baseReward: 3500 # 6600-10500
 
 - type: medicalBounty
   id: SpiderAttack
