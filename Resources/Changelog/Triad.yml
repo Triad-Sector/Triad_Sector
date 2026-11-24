@@ -6373,3 +6373,14 @@ Entries:
   id: 2746
   time: '2026-11-24T05:56:48.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/845
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: >-
+        Most materials can now fit into fuel stash (ex: Uranium, Plasma,
+        Bananium, Jerrycans)
+    - type: Fix
+      message: Fixes Fuel Stash unable to be clicked to insert
+  id: 2747
+  time: '2026-11-24T06:01:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/764
