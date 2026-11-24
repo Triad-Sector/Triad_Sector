@@ -318,7 +318,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
             {
                 if (ShouldItemWarnOnCryo(slotItem.Value))
                     warningItemsList.Add(new WarningItem(slotDefinition.Name, null, null, slotItem.Value));
-                else if (_entityManager.HasComponent<StorageComponent>(slotItem.Value))
+                else if (HasComp<StorageComponent>(slotItem.Value))
                     StorageHelper.ScanStorageForCondition(slotItem.Value, ShouldItemWarnOnCryo, ref unconvertedFoundItems);
             }
         }
@@ -332,7 +332,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
                 if (ShouldItemWarnOnCryo(heldEntity))
                     warningItemsList.Add(new WarningItem(null, null, handId, heldEntity));
-                else if (_entityManager.HasComponent<StorageComponent>(heldEntity))
+                else if (HasComp<StorageComponent>(heldEntity))
                     StorageHelper.ScanStorageForCondition(heldEntity, ShouldItemWarnOnCryo, ref unconvertedFoundItems);
             }
         }
@@ -355,7 +355,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         for (var i = warningItemsList.Count - 1; i >= 0 ; i--)
         {
             var itemStruct = warningItemsList[i];
-            if (_entityManager.HasComponent<ShuttleDeedComponent>(itemStruct.Item))
+            if (HasComp<ShuttleDeedComponent>(itemStruct.Item))
             {
                 if (backpackShuttleDeed.HasValue)
                     foundMoreShuttles = true;
