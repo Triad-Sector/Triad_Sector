@@ -133,6 +133,7 @@
     understands:
     - TauCetiBasic
     - ValyrianStandard
+    naturalLanguage: ValyrianStandard
   - type: InstrumentVisuals
   - type: GenericVisualizer
     visuals:

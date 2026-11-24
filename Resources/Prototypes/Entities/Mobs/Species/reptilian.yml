@@ -47,6 +47,7 @@
     understands:
     - TauCetiBasic
     - Draconic
+    naturalLanguage: Draconic
   - type: BodyEmotes
     soundsId: ReptilianBodyEmotes
   - type: Damageable
