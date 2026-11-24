@@ -258,7 +258,11 @@
     tags:
     - MPSSMMissile
   - type: Item
-    size: Large
+    # Triad Making rockets Medium and 3X1 to make storage actually feasible and the weapon more useful as a dedicated AT role
+    size: Normal
+    shape:
+    - 0,0,2,0
+    # End Triad
   - type: CartridgeAmmo
     proto: ShipMissileASM19
     deleteOnSpawn: true
@@ -268,7 +272,7 @@
   - type: StaticPrice
     price: 1500
   - type: EmpDescription
-    range: 2
+    range: 5 # Triad: 2->5. Range shouldn't be smaller than a hand grenade, due to it being an anti ship missile
     energyConsumption: 2700000
     disableDuration: 20
 
@@ -282,7 +286,11 @@
     tags:
     - MPSSMMissile
   - type: Item
-    size: Large
+    # Triad Making rockets Medium and 3X1 to make storage actually feasible and the weapon more useful as a dedicated AT role
+    size: Normal
+    shape:
+    - 0,0,2,0
+   #End triad
   - type: CartridgeAmmo
     proto: RocketMk248
     deleteOnSpawn: true

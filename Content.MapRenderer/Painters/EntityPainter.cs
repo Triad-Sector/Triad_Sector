@@ -20,12 +20,14 @@ public sealed class EntityPainter
     private readonly Dictionary<(string path, string state), Image> _images;
     private readonly Image _errorImage;
 
+    private readonly IEntityManager _cEntityManager;
     private readonly IEntityManager _sEntityManager;
 
     public EntityPainter(ClientIntegrationInstance client, ServerIntegrationInstance server)
     {
         _resManager = client.ResolveDependency<IResourceManager>();
 
+        _cEntityManager = client.ResolveDependency<IEntityManager>();
         _sEntityManager = server.ResolveDependency<IEntityManager>();
 
         _images = new Dictionary<(string path, string state), Image>();
@@ -56,7 +58,8 @@ public sealed class EntityPainter
             return;
         }
 
-        var spriteSystem = _sEntityManager.System<SpriteSystem>();
+        // SpriteSystem is client-only; the server's entity manager has no such system registered.
+        var spriteSystem = _cEntityManager.System<SpriteSystem>();
 
         var worldRotation = xformSystem.GetWorldRotation(entity.Owner);
         foreach (var layer in entity.Sprite.AllLayers)

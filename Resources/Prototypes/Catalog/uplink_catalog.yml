@@ -550,6 +550,16 @@
         components:
           - SurplusBundle
 
+- type: listing #Triad
+  id: UplinkMagnumExtremeAPBox
+  name: uplink-magnum-extremeapbox-ammo-name
+  description: uplink-magnum-extremeapbox-ammo-desc
+  productEntity: AmmoBox45_magnumAP
+  cost:
+    Telecrystal: 25
+  categories:
+  - UplinkAmmo
+
 #Chemicals
 
 - type: listing

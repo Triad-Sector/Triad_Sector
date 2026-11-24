@@ -47,5 +47,6 @@ public enum ReflectType : byte
 {
     None = 0,
     NonEnergy = 1 << 0,
-    Energy = 1 << 1,
+    Energy = 1 << 1, // Triad - laser weapons
+    Plasma = 1 << 2, // Triad - plasma weapons
 }

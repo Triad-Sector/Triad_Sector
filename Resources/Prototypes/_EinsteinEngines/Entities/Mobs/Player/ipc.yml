@@ -43,6 +43,10 @@
         locked: true
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
   - type: BatterySlotRequiresLock
     itemSlot: cell_slot
   - type: EncryptionHolderRequiresLock
@@ -88,6 +92,15 @@
         damage: 400
       behaviors:
       - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: silicon-radiation-warning
+        popupType: LargeCaution
+        targetOnly: true
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7

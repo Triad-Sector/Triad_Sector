@@ -7,8 +7,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 20
-    armorPenetration: 0.075
+        Piercing: 15 #Triad 20->15
+    armorPenetration: 0.40 #Triad 0.075->0.40
 
 - type: entity
   id: Bullet57x28mmPractice
@@ -41,8 +41,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 10
+        Piercing: 9 #Triad 10->9
         Heat: 6
+    armorPenetration: 0.20 #Triad
 
 - type: entity
   id: Bullet57x28mmUranium
@@ -53,8 +54,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 8
-        Piercing: 12
+        Radiation: 6 #Triad 8->6
+        Piercing: 9 #Triad 12->9
+    armorPenetration: 0.20 #Triad
 
 # Upstream
 - type: entity
@@ -80,8 +82,8 @@
   - type: Projectile
     damage:
       types:
-        Slash: 3
-        Piercing: 26
+        Slash: 2 #Triad 3->2
+        Piercing: 20 #Triad 26->20
     armorPenetration: -0.55
 
 - type: entity
@@ -93,21 +95,21 @@
   - type: Projectile
     damage:
       types:
-        Slash: 5
-        Piercing: 32
+        Slash: 7 #Triad 5->7
+        Piercing: 20 #Triad 32->20
     armorPenetration: -0.9
 
 #armor-piercing:
 
-- type: entity
-  id: Bullet57x28mmPlasteelAP
-  parent: BaseBullet
-  name: bullet (5.7x28mm AP)
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 7
-        Structural: 40
-    armorPenetration: 0.7
+#- type: entity  Unneeded for now with 4.6 & 5.7 rework
+#  id: Bullet57x28mmPlasteelAP
+#  parent: BaseBullet
+#  name: bullet (5.7x28mm AP)
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: Projectile
+#    damage:
+#      types:
+#        Piercing: 10
+#        Structural: 40
+#    armorPenetration: 0.75

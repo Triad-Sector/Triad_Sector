@@ -7,9 +7,9 @@
   - type: GunToggleableBonus
     minAngle: -3
     maxAngle: -6
-    bonusFireRate: -1
+    bonusFireRate: -0.5 #Triad -1 -> -0.5
     requiresToggle: false
-    doAfterTime: 1
+    doAfterTime: 0.4 #Triad 1 -> 0.4
   - type: GunChangeShotSoundOnToggled
     sound:
       path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/hawk_fire.ogg
@@ -20,13 +20,14 @@
   - type: Gun
     minAngle: 5
     maxAngle: 15
-    fireRate: 3
+    fireRate: 3.5 #Triad 3 -> 3.5
     angleIncrease: 9
     angleDecay: 6
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
     availableModes:
     - SemiAuto
+    projectileSpeed: 35
   - type: Sprite
     sprite: _Triad/Objects/Weapons/Guns/Pistol/stilleto.rsi
     layers:
@@ -69,6 +70,7 @@
         whitelist:
           tags:
           - Magazine45_magnumPistolFMJ
+          - Magazine45_magnumPistolHighCapacityFMJ #Triad, felt awkward to use with a seven round capacity
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber

@@ -161,8 +161,8 @@
 - type: entity
   name: SKR CR-class Z-pinch nuclear fusion reactor
   description: |-
-    Industrial fuel-grade plasma burning miniature fusion reactor. Highly efficient
-    Ideal power production is 105 kW. Minimum and maximum power production is 60 and 160 kW.
+    Industrial fuel-grade plasma burning miniature fusion reactor. Highly efficient.
+    Ideal power production is 105 kW. Minimum and maximum power production is 50 and 160 kW.
     Highly radioactive without protection due to the light Iridite frame of the reactor.
   parent:
   - StaticGeneratorBase

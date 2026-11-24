@@ -1,5 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Shared._Mono.Traits.Physical;
+using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Prototypes;
@@ -52,7 +53,7 @@ public sealed partial class HemophiliaSystem : EntitySystem
         if (extra <= 0f)
             return;
 
-        _bloodstream.TryModifyBleedAmount(ent, extra, blood);
+        _bloodstream.TryModifyBleedAmount((ent, blood), extra);
     }
 }
 

@@ -55,7 +55,7 @@ public abstract partial class SharedLabelSystem : EntitySystem
 
     private void OnRefreshNameModifiers(Entity<LabelComponent> entity, ref RefreshNameModifiersEvent args)
     {
-        if (!string.IsNullOrEmpty(entity.Comp.CurrentLabel))
+        if (!string.IsNullOrEmpty(entity.Comp.CurrentLabel) && entity.Comp.LifeStage < ComponentLifeStage.Stopping)
             args.AddModifier("comp-label-format", extraArgs: ("label", entity.Comp.CurrentLabel));
     }
 }

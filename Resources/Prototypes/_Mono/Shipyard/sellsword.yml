@@ -13,7 +13,7 @@
   price: 56000 # markup 15% from 48600.
   category: Small
   group: Military
-  shuttlePath: /Maps/_Mono/Shuttles/sellsword.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/sellsword.yml
   guidebookPage: Null
   class:
   - Pursuit
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Sellsword
   mapName: 'UW Sellsword'
-  mapPath: /Maps/_Mono/Shuttles/sellsword.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/sellsword.yml
   minPlayers: 0
   stations:
     Sellsword:
@@ -37,4 +37,5 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+
 

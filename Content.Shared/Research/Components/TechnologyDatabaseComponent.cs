@@ -24,14 +24,14 @@ public sealed partial class TechnologyDatabaseComponent : Component
     /// Which research disciplines are able to be unlocked
     /// </summary>
     [AutoNetworkedField]
-    [DataField("supportedDisciplines")]
+    [DataField]
     public List<ProtoId<TechDisciplinePrototype>> SupportedDisciplines = new();
 
     /// <summary>
     /// The ids of all the technologies which have been unlocked.
     /// </summary>
     [AutoNetworkedField]
-    [DataField("unlockedTechnologies")]
+    [DataField]
     public List<ProtoId<TechnologyPrototype>> UnlockedTechnologies = new();
 
     /// <summary>
@@ -40,7 +40,7 @@ public sealed partial class TechnologyDatabaseComponent : Component
     /// </summary>
     /// todo: if you unlock all the recipes in a tech, it doesn't count as unlocking the tech. sadge
     [AutoNetworkedField]
-    [DataField("unlockedRecipes")]
+    [DataField]
     public List<ProtoId<LatheRecipePrototype>> UnlockedRecipes = new();
 }
 

@@ -1,4 +1,5 @@
 - type: entity
+  parent: BaseAction
   id: ActionClothingSeal
   name: Seal clothing
   description: Seals your current clothing.
@@ -7,7 +8,7 @@
   - type: ConfirmableAction
     confirmDelay: 0
     primeTime: 2
-  - type: InstantAction
+  - type: Action
     checkCanInteract: true
     checkConsciousness: true
     itemIconStyle: NoItem
@@ -17,4 +18,5 @@
     iconOn:
       sprite: _Goobstation/Actions/modsuit.rsi
       state: activate-ready
+  - type: InstantAction
     event: !type:SealClothingEvent {}

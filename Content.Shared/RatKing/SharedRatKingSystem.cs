@@ -1,10 +1,10 @@
 using Content.Shared.Abilities;
 using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -66,12 +66,13 @@ public abstract partial class SharedRatKingSystem : EntitySystem
         if (!TryComp(uid, out ActionsComponent? comp))
             return;
 
-        _action.RemoveAction(uid, component.ActionRaiseArmyEntity, comp);
-        _action.RemoveAction(uid, component.ActionDomainEntity, comp);
-        _action.RemoveAction(uid, component.ActionOrderStayEntity, comp);
-        _action.RemoveAction(uid, component.ActionOrderFollowEntity, comp);
-        _action.RemoveAction(uid, component.ActionOrderCheeseEmEntity, comp);
-        _action.RemoveAction(uid, component.ActionOrderLooseEntity, comp);
+        var actions = new Entity<ActionsComponent?>(uid, comp);
+        _action.RemoveAction(actions, component.ActionRaiseArmyEntity);
+        _action.RemoveAction(actions, component.ActionDomainEntity);
+        _action.RemoveAction(actions, component.ActionOrderStayEntity);
+        _action.RemoveAction(actions, component.ActionOrderFollowEntity);
+        _action.RemoveAction(actions, component.ActionOrderCheeseEmEntity);
+        _action.RemoveAction(actions, component.ActionOrderLooseEntity);
     }
 
     private void OnOrderAction(EntityUid uid, RatKingComponent component, RatKingOrderActionEvent args)
@@ -153,7 +154,7 @@ public abstract partial class SharedRatKingSystem : EntitySystem
     private void OnDoAfterComplete(EntityUid uid, RatKingRummageableComponent component, RatKingRummageDoAfterEvent args)
     {
         // DeltaV - Rummaging an object updates the looting cooldown rather than a "previously looted" check.
-        // Note that the "Looted" boolean can still be checked (by mappers/admins) 
+        // Note that the "Looted" boolean can still be checked (by mappers/admins)
         // to disable rummaging on the object indefinitely, but rummaging will no
         // longer permanently prevent future rummaging.
         var time = _gameTiming.CurTime;

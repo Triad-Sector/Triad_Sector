@@ -46,6 +46,7 @@ namespace Content.Server.Chat.Systems;
 // Dear contributor. When I was introducing changes to this system only god and I knew what I was doing.
 // Now only god knows. Please don't touch this code ever again. If you do have to, increment this counter as a warning for others:
 // TOTAL_HOURS_WASTED_HERE_EE = 23
+// TOTAL_HOURS_WASTED_HERE_NC/BWBER = 20
 
 // TODO refactor whatever active warzone this class and chatmanager have become
 /// <summary>
@@ -834,7 +835,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
             return;
 
-        // get the entity's apparent name (if no override provided).
+        // Get the entity's apparent name (if no override provided).
         var ent = Identity.Entity(source, EntityManager);
         string name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
 
@@ -843,17 +844,28 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
-
-        if (checkEmote &&
-            !TryEmoteChatInput(source, action))
-            return;
+        if (checkEmote)
+        {
+            if (IsRegisteredEmote(action))
+            {
+                TryEmoteChatInput(source, action);
+            }
+            else
+            {
+                var ev = new NFEntityEmotedEvent(source, action);
+                RaiseLocalEvent(source, ev, true);
+            }
+        }
 
         SendInVoiceRange(ChatChannel.Emotes, name, action, wrappedMessage, obfuscated: "", obfuscatedWrappedMessage: "", source, range, author);
+
         if (!hideLog)
+        {
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {source} as {name}: {action}");
             else
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {source}: {action}");
+        }
     }
 
     // ReSharper disable once InconsistentNaming
@@ -1327,3 +1339,22 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         Language = language;
     }
 }
+
+// Frontier: emote event
+/// <summary>
+///     Raised on an entity when it sends a custom emote (one with a message but no sound).
+/// </summary>
+public sealed class NFEntityEmotedEvent : EntityEventArgs
+{
+    public readonly EntityUid Source;
+    public readonly string Emote;
+
+    public NFEntityEmotedEvent(EntityUid source, string emote)
+    {
+        Source = source;
+        Emote = emote;
+    }
+}
+// End Frontier
+
+

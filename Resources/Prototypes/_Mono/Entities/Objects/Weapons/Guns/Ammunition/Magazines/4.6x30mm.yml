@@ -153,20 +153,20 @@
 
 #armor-piercing ammo
 
-- type: entity
-  id: Magazine46x30mmPistolPlasteelAP
-  name: pistol magazine (4.6x30mm AP)
-  parent: BaseMagazine46x30mm
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge46x30mmPlasteelAP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_pistol_mag.rsi
-    layers:
-    - state: plasteelAP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
+#- type: entity
+#  id: Magazine46x30mmPistolPlasteelAP
+#  name: pistol magazine (4.6x30mm AP)
+#  parent: BaseMagazine46x30mm
+#  components:
+#  - type: BallisticAmmoProvider
+#    proto: Cartridge46x30mmPlasteelAP
+#  - type: Sprite
+#    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_pistol_mag.rsi
+#    layers:
+#    - state: plasteelAP
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
 
 #End Pistol mags
 #Start HighCapacity mags
@@ -437,20 +437,20 @@
 
 #armor-piercing ammo
 
-- type: entity
-  id: Magazine46x30mmSubMachineGunPlasteelAP
-  name: SMG magazine (4.6x30mm AP)
-  parent: BaseMagazine46x30mmSubMachineGunFMJ
-  components:
-  - type: BallisticAmmoProvider
-    proto: Cartridge46x30mmPlasteelAP
-  - type: Sprite
-    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag.rsi
-    layers:
-    - state: plasteelAP
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
+#- type: entity  #Triad, commented out until a better solution for AP rounds is found in their current state
+#  id: Magazine46x30mmSubMachineGunPlasteelAP
+#  name: SMG magazine (4.6x30mm AP)
+#  parent: BaseMagazine46x30mmSubMachineGunFMJ
+#  components:
+#  - type: BallisticAmmoProvider
+#    proto: Cartridge46x30mmPlasteelAP
+#  - type: Sprite
+#    sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag.rsi
+#    layers:
+#    - state: plasteelAP
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
 
 #End SubMachineGun mags
 #Start TopMounted mags
@@ -468,7 +468,7 @@
     whitelist:
       tags:
       - Cartridge46x30mmFMJ
-    capacity: 42
+    capacity: 50 #Triad 42-> 50
   - type: Sprite
     sprite: _Mono/Objects/Weapons/Guns/Ammunition/Magazine/4.6x30mm/4.6x30mm_smg_mag_top_mounted.rsi
     layers:

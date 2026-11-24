@@ -72,6 +72,43 @@
     containers:
       board: [ DoorElectronicsTIC ]
 
+#Shutter but open
+- type: entity
+  id: ShutterIndestructibleTDFOpen
+  parent: BlastDoorIndestructibleOpen
+  suffix: Indestructible, TDF, Locked, Open
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  id: ShutterIndestructibleSyndicateOpen
+  parent: BlastDoorIndestructibleOpen
+  suffix: Indestructible, Syndicate, Locked, Open
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]
+
+- type: entity
+  id: ShutterIndestructibleSDOpen
+  parent: BlastDoorIndestructibleOpen
+  suffix: Indestructible, SD, Locked, Open
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSD ]
+
+- type: entity
+  id: ShutterIndestructibleTICOpen
+  parent: BlastDoorIndestructibleOpen
+  suffix: Indestructible, ICT, Locked, Open
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsTIC ]
+
 #Window shutters
 - type: entity
   id: ShutterWindowIndestructibleTDF

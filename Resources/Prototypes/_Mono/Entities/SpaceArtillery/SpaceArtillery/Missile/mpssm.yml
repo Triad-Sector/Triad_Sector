@@ -18,7 +18,7 @@
     - state: mini-rocket
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectSmall
-  - type: ShipWeaponProjectile
+  #- type: ShipWeaponProjectile Triad Made it not blocked by shields
   - type: RadarBlip
     radarColor: "#FCBA03"
     scale: 1
@@ -43,7 +43,7 @@
     maxSpeed: 180
     trackDelay: 0.1
   - type: EmpOnTrigger
-    range: 2
+    range: 5 #Triad 2->5. Increase emp range to EMP grenade size
     energyConsumption: 2700000
     disableDuration: 20
 
@@ -67,7 +67,7 @@
     - state: mini-rocket
   - type: Ammo
     muzzleFlash: MuzzleFlashEffectSmall
-  - type: ShipWeaponProjectile
+  #- type: ShipWeaponProjectile Triad Made it not blocked by shields
   - type: RadarBlip
     radarColor: "#FCBA03"
     scale: 1

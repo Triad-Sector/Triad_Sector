@@ -181,6 +181,7 @@ public abstract partial class SharedToolSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnMove = true,
             BreakOnWeightlessMove = false,
+            MovementThreshold = 0.5f, // # Mono - make tools more lenient in movement
             NeedHand = tool != user,
             AttemptFrequency = fuel > 0 ? AttemptFrequency.EveryTick : AttemptFrequency.Never
         };

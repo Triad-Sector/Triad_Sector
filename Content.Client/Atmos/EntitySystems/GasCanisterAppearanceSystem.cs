@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Client.Atmos.EntitySystems;
 
 /// <summary>
-/// Used to change the appearance of gas canisters.
+/// Used to change the appearance of gas canisters when painted.
 /// </summary>
 public sealed partial class GasCanisterAppearanceSystem : VisualizerSystem<GasCanisterComponent>
 {
@@ -14,7 +14,7 @@ public sealed partial class GasCanisterAppearanceSystem : VisualizerSystem<GasCa
 
     protected override void OnAppearanceChange(EntityUid uid, GasCanisterComponent component, ref AppearanceChangeEvent args)
     {
-        if (!AppearanceSystem.TryGetData<string>(uid, PaintableVisuals.Prototype, out var protoName, args.Component) || args.Sprite is not { } old)
+        if (!args.TryGetData<string>(PaintableVisuals.Prototype, out var protoName) || args.Sprite is null)
             return;
 
         if (!_prototypeManager.HasIndex(protoName))

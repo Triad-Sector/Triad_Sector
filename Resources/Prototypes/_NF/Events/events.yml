@@ -593,9 +593,9 @@
   id: NFIonStorm
   components:
   - type: StationEvent
-    earliestStart: 15 # Frontier
+    earliestStart: 30 # Triad 15 -> 30
     weight: 8
-    reoccurrenceDelay: 120 # Frontier: 20<120
+    reoccurrenceDelay: 180 # Triad: 120 -> 180
     duration: 1
   - type: IonStormRule
 

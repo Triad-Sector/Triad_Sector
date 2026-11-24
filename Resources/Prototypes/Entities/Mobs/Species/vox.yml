@@ -13,6 +13,8 @@
     requiredLegs: 2
   - type: HumanoidAppearance
     species: Vox
+    hideLayersOnEquip: # Triad: More beak shapes
+    - Snout
     undergarmentTop: UndergarmentTopTanktopVox
     undergarmentBottom: UndergarmentBottomBoxersVox
     #- type: VoxAccent # Not yet coded
@@ -114,6 +116,8 @@
       sprite: "Effects/creampie.rsi"
       state: "creampie_vox" # Not default
       visible: false
+    - map: [ "plasmaburn" ] # Triad - plasma burn
+      shader: unshaded
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
       - TauCetiBasic
@@ -165,7 +169,7 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: shoes
-      outerClothing: # Goob 
+      outerClothing: # Goob
         sizeMaps:
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
@@ -224,7 +228,7 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: shoes
-      outerClothing: # Goob 
+      outerClothing: # Goob
         sizeMaps:
           32:
             sprite: Mobs/Species/Vox/displacement.rsi

@@ -2,6 +2,7 @@ using System.Threading;
 using Content.Server.Explosion.Components;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Implants;
+using Content.Shared.Implants.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -143,6 +144,12 @@ public sealed partial class TriggerSystem
         TriggerOnMobstateChangeComponent component,
         ImplantRelayEvent<ReTriggerRattleImplantEvent> args)
     {
+        if (!HasComp<RattleComponent>(uid))
+            return;
+
+        if (!component.MobState.Contains(args.Event.CurrentState))
+            return;
+
         TryRunTrigger(
             uid,
             component,

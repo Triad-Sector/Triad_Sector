@@ -9,7 +9,7 @@
   category: Medium
   group: BlackMarket
   access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/USSP/gruznyk.yml
+  shuttlePath: /SharedMaps/_Mono/Shuttles/USSP/gruznyk.yml
   guidebookPage: Null
   class:
   - Cargo
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Gruznyk
   mapName: 'Gruznyk'
-  mapPath: /Maps/_Mono/Shuttles/USSP/gruznyk.yml
+  mapPath: /SharedMaps/_Mono/Shuttles/USSP/gruznyk.yml
   minPlayers: 0
   stations:
     Gruznyk:
@@ -34,3 +34,4 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ 0, 0 ]
+

@@ -3,6 +3,8 @@
   parent:
   - BaseStructure
   - MobLaserReflect # Preventing laser abuse from players, prototype is in \Resources\Prototypes\_NF\Entities\Mobs\NPCs\mob_hostile_base.yml
+  - BasePlasmaBurnEligibleTurret # Triad
+  - BaseClass2AShipContrabandSilent # Triad
   id: BaseWeaponTurretNF
   name: turret
   suffix: Frontier
@@ -27,6 +29,8 @@
     drawdepth: Mobs
     layers:
       - state: syndie_lethal
+      - map: [ "plasmaburn" ] # Triad - plasma burn
+        shader: unshaded
   - type: InteractionPopup
     interactDelay: 0.2
     successChance: 0.8
@@ -37,7 +41,8 @@
   - type: CombatMode
     toggleMouseRotator: false
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Triad
+    damageModifierSet: TurretDamageModifier # Triad
   - type: Destructible
     thresholds:
       - trigger:
@@ -171,6 +176,8 @@
       shader: unshaded
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+      shader: unshaded
+    - map: [ "plasmaburn" ] # Triad - plasma burn
       shader: unshaded
   - type: Appearance
   - type: MagazineVisuals

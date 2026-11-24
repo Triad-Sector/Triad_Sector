@@ -82,16 +82,20 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
 
     private void OnUseInHandEvent(EntityUid uid, BatteryWeaponFireModesComponent component, UseInHandEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (component.FireModes.Count < 2)
             return;
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReader) && !_accessReaderSystem.IsAllowed(args.User, uid, accessReader))
             return;
 
-        CycleFireMode(uid, component, args.User);
+        args.Handled = true;
+        TryCycleFireMode(uid, component, args.User);
     }
 
-    private void CycleFireMode(EntityUid uid, BatteryWeaponFireModesComponent component, EntityUid user)
+    private void TryCycleFireMode(EntityUid uid, BatteryWeaponFireModesComponent component, EntityUid user)
     {
         if (component.FireModes.Count < 2)
             return;
@@ -125,6 +129,7 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
         if (user != null)
             _popupSystem.PopupClient(Loc.GetString("gun-set-fire-mode", ("mode", prototype.Name)), uid, user.Value);
 
+        // Triad: add hitscan support
         if (TryComp(uid, out ProjectileBatteryAmmoProviderComponent? projectileBatteryAmmoProviderComponent))
         {
             // TODO: Have this get the info directly from the batteryComponent when power is moved to shared.
@@ -137,8 +142,21 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
             projectileBatteryAmmoProviderComponent.Capacity = (int)Math.Round(projectileBatteryAmmoProviderComponent.Capacity / FireCostDiff);
 
             Dirty(uid, projectileBatteryAmmoProviderComponent);
-            var updateClientAmmoEvent = new UpdateClientAmmoEvent();
-            RaiseLocalEvent(uid, ref updateClientAmmoEvent);
         }
+        else if (TryComp(uid, out HitscanBatteryAmmoProviderComponent? hitscanBatteryAmmoProviderComponent))
+        {
+            var OldFireCost = hitscanBatteryAmmoProviderComponent.FireCost;
+            hitscanBatteryAmmoProviderComponent.HitscanEntityProto = fireMode.Prototype;
+            hitscanBatteryAmmoProviderComponent.FireCost = fireMode.FireCost;
+
+            float FireCostDiff = (float)fireMode.FireCost / (float)OldFireCost;
+            hitscanBatteryAmmoProviderComponent.Shots = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Shots / FireCostDiff);
+            hitscanBatteryAmmoProviderComponent.Capacity = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Capacity / FireCostDiff);
+
+            Dirty(uid, hitscanBatteryAmmoProviderComponent);
+        }
+
+        var updateClientAmmoEvent = new UpdateClientAmmoEvent();
+        RaiseLocalEvent(uid, ref updateClientAmmoEvent);
     }
 }

@@ -4,6 +4,7 @@ using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using Robust.Client.UserInterface;
+using Content.Client._Triad.ShipPreview.UI; // Triad
 using Content.Client._Triad.Shipyard.Save; // Triad
 using Content.Shared._NF.Shipyard.Components; // Triad
 using Robust.Client.UserInterface.Controls;
@@ -24,6 +25,7 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
 
     private ShipyardConsoleMenu? _menu;
     private ShipyardRulesPopup? _rulesWindow;
+    private ShipPreviewWindow? _previewWindow; // Triad
 
     public int Balance { get; private set; }
 
@@ -67,6 +69,7 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
         // }
         _menu.OnClose += Close;
         _menu.OnOrderApproved += ApproveOrder;
+        _menu.OnPreviewShip += PreviewShip; // Triad
         _menu.OnSellShip += SellShip;
         _menu.OnUnassignDeed += UnassignDeed;
         _menu.OnRenameShip += RenameShip;
@@ -284,6 +287,23 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
         SendMessage(new ShipyardConsolePurchaseMessage(vesselId));
     }
 
+    // Triad - start
+    private void PreviewShip(ButtonEventArgs args)
+    {
+        if (args.Button.Parent?.Parent is not VesselRow { Vessel: { } vessel })
+            return;
+
+        if (_previewWindow is not { IsOpen: true })
+        {
+            _previewWindow = ShipPreviewWindow.OpenFor(vessel);
+            return;
+        }
+
+        _previewWindow.ShowVessel(vessel);
+        _previewWindow.MoveToFront();
+    }
+    // Triad - end
+
     private void SellShip(ButtonEventArgs args)
     {
         //reserved for a sanity check, but im not sure what since we check all the important stuffs on server already
@@ -315,6 +335,7 @@ public sealed partial class ShipyardConsoleBoundUserInterface : BoundUserInterfa
             // Unsubscribe from events to prevent memory leaks
             _shipFileManagementSystem.OnShipsUpdated -= RefreshSavedShipList;
             _shipFileManagementSystem.OnShipLoaded -= OnShipLoaded;
+            _previewWindow?.Close(); // Triad
         }
     }
 }

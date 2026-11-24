@@ -25,3 +25,7 @@
   components:
   - type: Sprite
     sprite: _Mono/Structures/Shuttles/thrusterrogue_large.rsi
+# Start of Triad Change: Updates large rogue thrusters to drop their unique circuit broad
+  - type: Machine
+    board: LargeThrusterRogueMachineCircuitboard
+# End of Triad Change

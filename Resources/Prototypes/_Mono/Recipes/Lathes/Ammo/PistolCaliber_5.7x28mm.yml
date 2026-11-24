@@ -5,10 +5,10 @@
   id: Magazine57x28mmPistolFMJ
   result: Magazine57x28mmPistolFMJ
 
-- type: latheRecipe
-  parent: BaseAmmoPlasteelAPPistolCaliberPistolMagazineRecipe
-  id: Magazine57x28mmPistolPlasteelAP
-  result: Magazine57x28mmPistolPlasteelAP
+#- type: latheRecipe #Triad, Commented out until a better solution is found
+#  parent: BaseAmmoPlasteelAPPistolCaliberPistolMagazineRecipe
+#  id: Magazine57x28mmPistolPlasteelAP
+#  result: Magazine57x28mmPistolPlasteelAP
 
 - type: latheRecipe
   parent: BaseAmmoRubberPistolCaliberPistolMagazineRecipe
@@ -52,10 +52,10 @@
   id: Magazine57x28mmSubMachineGunFMJ
   result: Magazine57x28mmSubMachineGunFMJ
 
-- type: latheRecipe
-  parent: BaseAmmoPlasteelAPPistolCaliberSubMachineGunMagazineRecipe
-  id: Magazine57x28mmSubMachineGunPlasteelAP
-  result: Magazine57x28mmSubMachineGunPlasteelAP
+#- type: latheRecipe #Triad, Commented out until a better solution is found
+#  parent: BaseAmmoPlasteelAPPistolCaliberSubMachineGunMagazineRecipe
+#  id: Magazine57x28mmSubMachineGunPlasteelAP
+#  result: Magazine57x28mmSubMachineGunPlasteelAP
 
 - type: latheRecipe
   parent: BaseAmmoRubberPistolCaliberSubMachineGunMagazineRecipe
@@ -109,10 +109,10 @@
   id: AmmoBox57x28mmFMJ
   result: AmmoBox57x28mmFMJ
 
-- type: latheRecipe
-  parent: BaseAmmoPlasteelAPPistolCaliberAmmoBoxRecipe
-  id: AmmoBox57x28mmPlasteelAP
-  result: AmmoBox57x28mmPlasteelAP
+#- type: latheRecipe #Triad, Commented out until a better solution is found
+#  parent: BaseAmmoPlasteelAPPistolCaliberAmmoBoxRecipe
+#  id: AmmoBox57x28mmPlasteelAP
+#  result: AmmoBox57x28mmPlasteelAP
 
 - type: latheRecipe
   parent: BaseAmmoRubberPistolCaliberAmmoBoxRecipe

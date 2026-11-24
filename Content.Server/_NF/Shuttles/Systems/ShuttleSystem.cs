@@ -14,8 +14,8 @@ namespace Content.Server.Shuttles.Systems;
 
 public sealed partial class ShuttleSystem
 {
-    private const float SpaceFrictionStrength = 0.0075f;
-    private const float DampenDampingStrength = 0.25f;
+    private const float SpaceFrictionStrength = 0.15f; // Triad from 0.0075f to 0.15f, so shuttle won't drift away when unmmanned/broken
+    private const float DampenDampingStrength = 0.50f; // Triad from 0.25f to 0.5
     private const float AnchorDampingStrength = 2.5f;
     private void NfInitialize()
     {
@@ -65,6 +65,15 @@ public sealed partial class ShuttleSystem
             !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent) ||
             !EntityManager.TryGetComponent(transform.GridUid, out ShuttleComponent? shuttleComponent))
         {
+            return;
+        }
+
+        // Triad: Check if the ship are player owned. Then they could park.
+        if (args.Mode == InertiaDampeningMode.Anchor
+            && !HasComp<ShuttleDeedComponent>(transform.GridUid)
+            && !HasComp<ShipOwnershipComponent>(transform.GridUid))
+        {
+            _console.RefreshShuttleConsoles(transform.GridUid.Value);
             return;
         }
 

@@ -170,6 +170,9 @@
   - type: Transform
     anchored: true
   - type: Airtight
+  - type: Tag
+    tags:
+    - Wall # Triad - wall tag
   - type: ReplaceFloorOnSpawn
     replaceableTiles:
     - Plating

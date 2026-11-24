@@ -1,4 +1,5 @@
 ## UI
+shipyard-console-preview = Preview
 shipyard-console-saved = {$owner} shuttle {$vessel} stored to shipyard by {$player}.
 shipyard-console-save-appraisal-label = Estimated deployment fee after tax:{" "}
 shipyard-console-save-appraisal-no-ship-selected-text = Select ship

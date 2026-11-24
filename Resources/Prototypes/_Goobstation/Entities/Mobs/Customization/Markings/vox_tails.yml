@@ -3,7 +3,7 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [] # Intentional to keep it from showing in the customization menu
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_animated
@@ -13,7 +13,7 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_short
@@ -23,7 +23,7 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_short_animated
@@ -33,7 +33,7 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_big
@@ -44,18 +44,18 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_big_animated
-    
+
 
 - type: marking
   id: VoxTailSpikes
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_spikes
@@ -65,47 +65,47 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
-    state: tail_spikes_animated 
-    
+    state: tail_spikes_animated
+
 - type: marking
   id: VoxTailDocked
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_docked
-    
+
 - type: marking
   id: VoxTailDockedAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
-    state: tail_docked_animated 
-    
+    state: tail_docked_animated
+
 - type: marking
   id: VoxTailSplit
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vox]
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_split
-    
+
 - type: marking
   id: VoxTailSplitAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
-  forcedColoring: true
+  forcedColoring: false # Triad: false
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
-    state: tail_split_animated 
+    state: tail_split_animated

@@ -7,17 +7,7 @@
   - type: Physics
     bodyType: Static
   - type: DisableToolUse
-    anchoring: true
-    prying: true
-    screwing: true
-    cutting: true
-    welding: true
-    pulsing: true
-    slicing: true
-    sawing: true
-    honking: true
-    rolling: true
-    digging: true
+    disableAll: true
 
 - type: entity
   id: BaseStructureDisableAnchoring
@@ -28,21 +18,21 @@
   - type: Physics
     bodyType: Static
   - type: DisableToolUse
-    anchoring: true
+    disabled: [Anchoring]
 
 - type: entity
   id: BaseStructureDisablePrying
   abstract: true
   components:
   - type: DisableToolUse
-    prying: true
+    disabled: [Prying]
 
 - type: entity
   id: BaseStructureDisableScrewing
   abstract: true
   components:
   - type: DisableToolUse
-    screwing: true
+    disabled: [Screwing]
 
 - type: entity
   id: BaseStructureDestructible
