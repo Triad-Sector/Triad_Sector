@@ -59,5 +59,6 @@
     back:
     - Multitool
     - BaseSecurityUplinkRadioChiefEnforcer
+    - EncryptionKeyStationMasterSR
     - EncryptionKeyCentCom
     - ShipVoucherRavager

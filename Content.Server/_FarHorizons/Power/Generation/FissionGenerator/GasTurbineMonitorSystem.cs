@@ -21,6 +21,9 @@ public sealed partial class GasTurbineMonitorSystem : EntitySystem
     [Dependency] private UserInterfaceSystem _uiSystem = null!;
     [Dependency] private IGameTiming _gameTiming = default!;
 
+    private const float MinStatorLoad = 1000f;
+    private const float MaxStatorLoad = 1_000_000f;
+
     private readonly float _threshold = 0.5f;
     private float _accumulator = 0f;
 
@@ -206,7 +209,7 @@ public sealed partial class GasTurbineMonitorSystem : EntitySystem
 
         bool TrySetStatorLoad()
         {
-            var newSet = Math.Max(args.StatorLoad, 1000f);
+            var newSet = Math.Clamp(args.StatorLoad, MinStatorLoad, MaxStatorLoad);
             if (turbine.StatorLoad != newSet)
             {
                 turbine.StatorLoad = newSet;

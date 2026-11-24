@@ -26,6 +26,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Shared.Stacks;
 
 namespace Content.Server.Materials;
 
@@ -260,13 +261,14 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
         if (reclaimerComponent.UseOldSolutionLogic &&
             TryComp<SolutionContainerManagerComponent>(item, out var solutionContainer))
         {
+            var solutionScale = efficiency;
+            if (TryComp<StackComponent>(item, out var stack))
+                solutionScale *= stack.Count;
             foreach (var (_, soln) in _solutionContainer.EnumerateSolutions((item, solutionContainer)))
             {
                 var solution = soln.Comp.Solution;
-                foreach (var quantity in solution.Contents)
-                {
-                    totalChemicals.AddReagent(quantity.Reagent.Prototype, quantity.Quantity * efficiency, false);
-                }
+                solution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
+                totalChemicals.AddSolution(solution, _prototype);
             }
         }
         // End Frontier: use old material reclaimer code
@@ -275,6 +277,12 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
             // Are we a recycler? Only use drainable solution.
             if (_solutionContainer.TryGetDrainableSolution(item, out _, out var drainableSolution))
             {
+                // Frontier: respect stacks and efficiency
+                var solutionScale = efficiency;
+                if (TryComp<StackComponent>(item, out var stack))
+                    solutionScale *= stack.Count;
+                drainableSolution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
+                // End Frontier
                 totalChemicals.AddSolution(drainableSolution, _prototype);
             }
         }
@@ -283,6 +291,12 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
             // Are we an industrial reagent grinder? Use extractable solution.
             if (_solutionContainer.TryGetExtractableSolution(item, out _, out var extractableSolution))
             {
+                // Frontier: respect stacks and efficiency
+                var solutionScale = efficiency;
+                if (TryComp<StackComponent>(item, out var stack))
+                    solutionScale *= stack.Count;
+                extractableSolution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
+                // End Frontier
                 totalChemicals.AddSolution(extractableSolution, _prototype);
             }
         }

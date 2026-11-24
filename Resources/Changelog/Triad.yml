@@ -6270,3 +6270,131 @@ Entries:
   id: 2735
   time: '2026-11-16T21:45:45.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/832
+- author: Malfaltto
+  changes:
+    - type: Tweak
+      message: >-
+        Energy melee weapons have been adjusted to bring out unique traits, and
+        make them more relevant to use.
+  id: 2736
+  time: '2026-11-19T23:41:52.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/822
+- author: BoskiYourk
+  changes:
+    - type: Add
+      message: Added the Auric Trade Center and Auric Trade Depots
+    - type: Remove
+      message: Removed the old NF Trade Mall and Cargo Depots
+  id: 2737
+  time: '2026-11-19T23:46:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/819
+- author: Earthspiritio
+  changes:
+    - type: Tweak
+      message: Buffed the Bulwark modsuit to have Stamina resistance.
+  id: 2738
+  time: '2026-11-22T23:33:13.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/824
+- author: DDrakov
+  changes:
+    - type: Add
+      message: >-
+        Seed labels now carry through planting, harvesting and seed extraction.
+        Plants lose their label once they mutate or are modified.
+  id: 2739
+  time: '2026-11-23T00:21:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/839
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        TDF Auric Outpost remote turrets are now invulnerable when there are no
+        TDF enforcers online.
+    - type: Tweak
+      message: Auric Outpost ship guns are no longer unanchorable
+    - type: Fix
+      message: >-
+        Fixed prediction issues with tool-disabling structures like shipyard
+        consoles
+  id: 2740
+  time: '2026-11-24T02:00:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/842
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed tesla chaotic jump, hopefully, maybe.
+  id: 2741
+  time: '2026-11-24T04:58:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/787
+- author: Frontier
+  changes:
+    - type: Fix
+      message: >-
+        The industrial reagent grinder and material reclaimer now respect stack
+        size and efficiency.
+  id: 2742
+  time: '2026-11-24T05:02:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/844
+- author: nathan736
+  changes:
+    - type: Fix
+      message: >-
+        Material silo cascade events no longer cripple the server from glass
+        shards.
+  id: 2743
+  time: '2026-11-24T05:18:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/744
+- author: AryaRaiin
+  changes:
+    - type: Add
+      message: >-
+        SSD detection on shuttles, which colors shuttles a cvar-determined color
+        on IFF when all player-controlled mobs inside are SSD for a
+        cvar-determined number of varying seconds.
+  id: 2744
+  time: '2026-11-24T05:25:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/747
+- author: BoiWab
+  changes:
+    - type: Add
+      message: >-
+        Added the Solarian Directive K-3000 "Dyson" Heavy Nanomesh Exoskeleton,
+        able to project particle barriers. Admi-only ATM.
+  id: 2745
+  time: '2026-11-24T05:49:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/708
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added warnings for cryosleep. Attempting to cryosleep with an active
+        ship deed, safety deposit box, credits, TDF uplink, TCC will warn you
+        before you can accept.
+  id: 2746
+  time: '2026-11-24T05:56:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/845
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: >-
+        Most materials can now fit into fuel stash (ex: Uranium, Plasma,
+        Bananium, Jerrycans)
+    - type: Fix
+      message: Fixes Fuel Stash unable to be clicked to insert
+  id: 2747
+  time: '2026-11-24T06:01:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/764
+- author: nathan736
+  changes:
+    - type: Fix
+      message: 'Turbines No longer break grid power networks '
+  id: 2748
+  time: '2026-11-24T06:06:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/812
+- author: GhostC10
+  changes:
+    - type: Tweak
+      message: Pod bodies get paid more
+  id: 2749
+  time: '2026-11-24T18:36:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/837

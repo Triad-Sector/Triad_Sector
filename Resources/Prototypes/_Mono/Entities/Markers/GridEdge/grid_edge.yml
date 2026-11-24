@@ -13,6 +13,11 @@
     begin: 0.5, 0.5
     end: 0.5, -0.5
   - type: GlobalPvs
+# Start of Triad Change: Makes grid edge markers not be touched when fixrotations is run
+  - type: Tag
+    tags:
+      - ForceNoFixRotations
+# End of Triad Change
 
 - type: entity
   parent: RadarEdgeMarkerBase
