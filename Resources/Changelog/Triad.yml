@@ -6304,3 +6304,18 @@ Entries:
   id: 2739
   time: '2026-11-23T00:21:38.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/839
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        TDF Auric Outpost remote turrets are now invulnerable when there are no
+        TDF enforcers online.
+    - type: Tweak
+      message: Auric Outpost ship guns are no longer unanchorable
+    - type: Fix
+      message: >-
+        Fixed prediction issues with tool-disabling structures like shipyard
+        consoles
+  id: 2740
+  time: '2026-11-24T02:00:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/842
