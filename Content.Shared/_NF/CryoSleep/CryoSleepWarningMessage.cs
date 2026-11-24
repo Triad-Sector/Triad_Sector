@@ -14,7 +14,8 @@ public sealed class CryoSleepWarningMessage(
     bool foundMoreShuttles,
     CryoSleepWarningMessage.NetworkedWarningItem? foundUplink,
     FixedPoint2 uplinkBalance,
-    List<CryoSleepWarningMessage.NetworkedWarningItem> importantItems)
+    List<CryoSleepWarningMessage.NetworkedWarningItem> importantItems,
+    List<CryoSleepWarningMessage.NetworkedWarningItem> depositBoxes)
     : EuiMessageBase
 {
     public readonly bool ShuttleOnPDA = shuttleOnPda;
@@ -23,24 +24,24 @@ public sealed class CryoSleepWarningMessage(
     public readonly NetworkedWarningItem? FoundUplink = foundUplink;
     public readonly FixedPoint2 UplinkBalance = uplinkBalance;
     public readonly List<NetworkedWarningItem> ImportantItems = importantItems;
-
+    public readonly List<NetworkedWarningItem> DepositBoxes = depositBoxes;
 
     [Serializable, NetSerializable]
     public struct NetworkedWarningItem
     {
-    public NetworkedWarningItem(string? slotId, NetEntity? container, string? handId, NetEntity item)
-    {
-        if (slotId is null && !container.HasValue && handId is null)
+        public NetworkedWarningItem(string? slotId, NetEntity? container, string? handId, NetEntity item)
         {
-            throw new ArgumentException(
-                "CryoSleepWarningMessage.NetworkedWarningItem was attempted to be created with all values as null values");
-        }
+            if (slotId is null && !container.HasValue && handId is null)
+            {
+                throw new ArgumentException(
+                    "CryoSleepWarningMessage.NetworkedWarningItem was attempted to be created with all values as null values");
+            }
 
-        SlotId = slotId;
-        HandId = handId;
-        Container = container;
-        Item = item;
-    }
+            SlotId = slotId;
+            HandId = handId;
+            Container = container;
+            Item = item;
+        }
         //Exactly one of these values should not be null
         public readonly string? SlotId;
         public readonly NetEntity? Container;

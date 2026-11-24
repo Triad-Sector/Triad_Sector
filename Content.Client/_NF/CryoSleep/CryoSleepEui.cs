@@ -29,15 +29,15 @@ public sealed partial class CryoSleepEui : BaseEui
     {
         _window = new AcceptCryoWindow();
 
-        _window.DenyButton.OnPressed += _ =>
+        _window.OnAccept += () =>
         {
-            SendMessage(new AcceptCryoChoiceMessage(AcceptCryoUiButton.Deny));
+            SendMessage(new AcceptCryoChoiceMessage(AcceptCryoUiButton.Accept));
             _window.Close();
         };
 
-        _window.AcceptButton.OnPressed += _ =>
+        _window.OnDeny += () =>
         {
-            SendMessage(new AcceptCryoChoiceMessage(AcceptCryoUiButton.Accept));
+            SendMessage(new AcceptCryoChoiceMessage(AcceptCryoUiButton.Deny));
             _window.Close();
         };
     }
@@ -56,16 +56,18 @@ public sealed partial class CryoSleepEui : BaseEui
                 return;
             }
             //Shuttle
-            string? shuttleWarningLoc = GetShuttleWarningLocMessage(warningMsg.ShuttleOnPDA,
+            var shuttleWarningLoc = GetShuttleWarningLocMessage(warningMsg.ShuttleOnPDA,
                 warningMsg.FoundMoreShuttles,
                 warningMsg.InventoryShuttleDeed,
                 slotsComp);
             //Uplink
-            string? uplinkWarningLoc = warningMsg.FoundUplink.HasValue
+            var uplinkWarningLoc = warningMsg.FoundUplink.HasValue
                 ? GetUplinkWarningLocMessage(warningMsg.FoundUplink.Value, slotsComp, warningMsg.UplinkBalance)
                 : null;
             //Items
-            string? itemWarningLoc = GetImportantItemWarningLocMessage(warningMsg.ImportantItems, slotsComp);
+            var itemWarningLoc = GetImportantItemWarningLocMessage(warningMsg.ImportantItems, slotsComp);
+
+            var depositBoxLoc = GetDepositBoxWarningLocMessage(warningMsg.DepositBoxes);
 
             if (shuttleWarningLoc != null)
             {
@@ -80,6 +82,11 @@ public sealed partial class CryoSleepEui : BaseEui
             if (itemWarningLoc != null)
             {
                 _window.ItemWarningText.SetMessage(itemWarningLoc, null, WarningColor);
+            }
+
+            if (depositBoxLoc != null)
+            {
+                _window.DepositBoxWarningText.SetMessage(depositBoxLoc, null, WarningColor);
             }
         }
     }
@@ -157,40 +164,52 @@ public sealed partial class CryoSleepEui : BaseEui
             case 0:
                 return null;
             case 1:
-            {
-                var item = warningItemsList[0];
-                var storageName = GetStorageName(item, slotsComp);
-                return Loc.GetString("accept-cryo-window-prompt-one-item-warning",
-                    ("item", Identity.Name(_entityManager.GetEntity(item.Item), _entityManager)),
-                    ("storage", storageName));
-            }
+                {
+                    var item = warningItemsList[0];
+                    var storageName = GetStorageName(item, slotsComp);
+                    return Loc.GetString("accept-cryo-window-prompt-one-item-warning",
+                        ("item", Identity.Name(_entityManager.GetEntity(item.Item), _entityManager)),
+                        ("storage", storageName));
+                }
             case >= 2:
-            {
-                var item1 = warningItemsList[0];
-                var storageName1 = GetStorageName(item1, slotsComp);
-                var item2 = warningItemsList[1];
-                var storageName2 = GetStorageName(item2, slotsComp);
-                //This branch both functions for 2 and more than two items, the only difference is which localization key to use.
-                //To save copy and pasting, I just pick the key here.
-                var key = warningItemsList.Count > 2
-                    ? "accept-cryo-window-prompt-many-items-warning"
-                    : "accept-cryo-window-prompt-two-items-warning";
+                {
+                    var item1 = warningItemsList[0];
+                    var storageName1 = GetStorageName(item1, slotsComp);
+                    var item2 = warningItemsList[1];
+                    var storageName2 = GetStorageName(item2, slotsComp);
+                    //This branch both functions for 2 and more than two items, the only difference is which localization key to use.
+                    //To save copy and pasting, I just pick the key here.
+                    var key = warningItemsList.Count > 2
+                        ? "accept-cryo-window-prompt-many-items-warning"
+                        : "accept-cryo-window-prompt-two-items-warning";
 
-                return Loc.GetString(key,
-                    ("item1", Identity.Name(_entityManager.GetEntity(item1.Item), _entityManager)),
-                    ("storage1", storageName1),
-                    ("item2", Identity.Name(_entityManager.GetEntity(item2.Item), _entityManager)),
-                    ("storage2", storageName2),
-                    //This key is only needed if there are 3+ items(since the two-items key doesn't have this blank),
-                    //but putting it in doesn't break anything if the key doesn't have this blank in it.
-                    ("num-extra-items", warningItemsList.Count - 2));
-            }
+                    return Loc.GetString(key,
+                        ("item1", Identity.Name(_entityManager.GetEntity(item1.Item), _entityManager)),
+                        ("storage1", storageName1),
+                        ("item2", Identity.Name(_entityManager.GetEntity(item2.Item), _entityManager)),
+                        ("storage2", storageName2),
+                        //This key is only needed if there are 3+ items(since the two-items key doesn't have this blank),
+                        //but putting it in doesn't break anything if the key doesn't have this blank in it.
+                        ("num-extra-items", warningItemsList.Count - 2));
+                }
             default:
                 //Unreachable statement, but gotta make the complier happy /shrug
                 throw new Exception("warningItemsList.Count was somehow less than 0 in CryoSleepEui.cs.");
         }
 
     }
+
+    private string? GetDepositBoxWarningLocMessage(List<CryoSleepWarningMessage.NetworkedWarningItem> boxList)
+    {
+        return boxList.Count switch
+        {
+            0 => null,
+            1 => Loc.GetString("accept-cryo-window-prompt-one-deposit-box-warning"),
+            >= 2 => Loc.GetString("accept-cryo-window-prompt-many-deposit-boxes-warning", ("count", boxList.Count)),
+            _ => throw new Exception("warningItemsList.Count was somehow less than 0 in CryoSleepEui.cs."),
+        };
+    }
+
 
     //Grab any needed uplink warnings.
     //Returns null if no warning is needed

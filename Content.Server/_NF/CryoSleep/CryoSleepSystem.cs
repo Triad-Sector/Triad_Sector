@@ -51,6 +51,7 @@ using Content.Shared.Store.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.PDA;
 using Content.Shared.Hands.Components;
+using Content.Server._WF.SafetyDepositBox;
 
 namespace Content.Server._NF.CryoSleep;
 
@@ -78,6 +79,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     [Dependency] private StationJobsSystem _stationJobs = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private InventorySystem _inventory = default!; //For cryosleep warnings
+    [Dependency] private SafetyDepositBoxSystem _depositBoxSystem = default!;
     [Dependency] private HandsSystem _hands = default!;
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
@@ -374,6 +376,19 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         var networkedWarningItems = new List<CryoSleepWarningMessage.NetworkedWarningItem>();
         warningItemsList.ForEach(item => networkedWarningItems.Add(item.ToNetworked(_entityManager)));
 
+        List<WarningItem> depositBoxesList = [];
+
+        if (_depositBoxSystem.HasActiveDepositBoxInWorld(entity, out var boxes))
+        {
+            foreach (var box in boxes)
+            {
+                depositBoxesList.Add(new WarningItem(null, null, null, box));
+            }
+        }
+
+        var networkedDepositBoxes = new List<CryoSleepWarningMessage.NetworkedWarningItem>();
+        warningItemsList.ForEach(item => networkedWarningItems.Add(item.ToNetworked(_entityManager)));
+
         var nwBackpackShuttleDeed =
             backpackShuttleDeed?.ToNetworked(_entityManager);
         var nwUplink = uplink?.ToNetworked(_entityManager);
@@ -382,7 +397,8 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
             foundMoreShuttles,
             nwUplink,
             currencyAmount,
-            networkedWarningItems);
+            networkedWarningItems,
+            networkedDepositBoxes);
     }
 
     //Get an entity's ID card from their ID slot, even if it is in a PDA
