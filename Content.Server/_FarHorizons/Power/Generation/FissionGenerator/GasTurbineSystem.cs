@@ -114,6 +114,10 @@ public sealed partial class GasTurbineSystem : EntitySystem
         SubscribeLocalEvent<GasTurbineComponent, RepairFinishedEvent>(OnRepairTurbineFinished);
     }
 
+    private const float DefaultStatorLoad = 35_000f;
+    private const float MinStatorLoad = 1_000f;
+    private const float MaxStatorLoad = 1_000_000_000f;
+
     private const string BladeContainer = "blade_slot";
     private const string StatorContainer = "stator_slot";
 
@@ -350,13 +354,17 @@ public sealed partial class GasTurbineSystem : EntitySystem
 
     private static bool AdjustStatorLoad(GasTurbineComponent turbine, float change)
     { 
-        var newSet = Math.Max(turbine.StatorLoad + change, 1000f);
-        if (turbine.StatorLoad != newSet)
-        {
-            turbine.StatorLoad = newSet;
-            return true;
-        }
-        return false; 
+        var current = float.IsFinite(turbine.StatorLoad)
+            ? turbine.StatorLoad
+            : DefaultStatorLoad;
+
+        var newSet = Math.Clamp(current + change, MinStatorLoad, MaxStatorLoad);
+
+        if (turbine.StatorLoad == newSet)
+            return false;
+
+        turbine.StatorLoad = newSet;
+        return true;
     }
 
     private void TearApart(EntityUid uid, GasTurbineComponent comp)
@@ -478,13 +486,16 @@ public sealed partial class GasTurbineSystem : EntitySystem
 
         bool TrySetStatorLoad()
         {
-            var newSet = Math.Max(args.StatorLoad, 1000f);
-            if (turbine.StatorLoad != newSet)
-            {
-                turbine.StatorLoad = newSet;
-                return true;
-            }
-            return false; 
+            if (!float.IsFinite(args.StatorLoad))
+                return false;
+
+            var newSet = Math.Clamp(args.StatorLoad, MinStatorLoad, MaxStatorLoad);
+
+            if (turbine.StatorLoad == newSet)
+                return false;
+
+            turbine.StatorLoad = newSet;
+            return true;
         }
     }
 
