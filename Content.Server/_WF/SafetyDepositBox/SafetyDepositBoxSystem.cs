@@ -837,4 +837,23 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     {
         _popup.PopupEntity(text, actor, actor);
     }
+
+    public bool HasActiveDepositBoxInWorld(EntityUid actor, out List<EntityUid> box)
+    {
+        box = new List<EntityUid>();
+
+        if (!TryComp<ActorComponent>(actor, out var actorComp))
+            return false;
+
+        var plrGuid = actorComp.PlayerSession.UserId.UserId;
+
+        var query = EntityQueryEnumerator<SafetyDepositBoxComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.OwnerId == plrGuid)
+                box.Add(uid);
+        }
+
+        return box.Count > 0;
+    }
 }
