@@ -6,6 +6,7 @@
         <RichTextLabel Name="ShuttleWarningText" Access="Public" MaxWidth="300"/>
         <RichTextLabel Name="ItemWarningText" Access="Public" MaxWidth="300"/>
         <RichTextLabel Name="UplinkWarningText" Access="Public" MaxWidth="300"/>
+        <RichTextLabel Name="DepositBoxWarningText" Access="Public" MaxWidth="300"/>
         <BoxContainer Orientation="Horizontal" Align="Center">
             <Button Name="AcceptButton" Text="{Loc 'accept-cryo-window-accept-button'}"/>
             <Control MinSize="20 0"/>

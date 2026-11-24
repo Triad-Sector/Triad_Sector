@@ -51,7 +51,7 @@ public sealed partial class CryoSleepEui : BaseEui
             //I don't anticipate this check ever failing, but it's better to visually fail than silently fail or throw
             if (!_entityManager.TryGetComponent<InventorySlotsComponent>(_playerEntity, out var slotsComp))
             {
-                _window.Uplink.Text = Loc.GetString("accept-cryo-window-prompt-unable-to-scan");
+                _window.UplinkWarningText.Text = Loc.GetString("accept-cryo-window-prompt-unable-to-scan");
                 return;
             }
             //Shuttle
