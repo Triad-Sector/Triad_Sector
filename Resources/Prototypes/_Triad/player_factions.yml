@@ -97,3 +97,11 @@
   image: /Textures/_Triad/PlayerFactions/Dawnbringers.png
   color: "#FD6012"
   whitelisted: true
+
+- type: company
+  id: TUEnterprises
+  name: T.U Enterprises
+  description: TUEnterprises-description
+  image: /Textures/_Triad/PlayerFactions/TU_logo_V2.png
+  color: "#4EFF00"
+  whitelisted: true
