@@ -165,12 +165,6 @@ public sealed partial class MaterialReclaimerComponent : Component
     /// </summary>
     [DataField]
     public bool UseOldSolutionLogic = false;
-
-    /// <summary>
-    /// If false, machine will only process reagents (as in the industrial reagent grinder)
-    /// </summary>
-    [DataField]
-    public bool ProcessMaterials = true;
     // End Frontier
 }
 
