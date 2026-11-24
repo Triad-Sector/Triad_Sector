@@ -52,6 +52,7 @@ using Content.Shared.Access.Components;
 using Content.Shared.PDA;
 using Content.Shared.Hands.Components;
 using Content.Server._WF.SafetyDepositBox;
+using Content.Shared._WF.SafetyDepositBox.Components;
 
 namespace Content.Server._NF.CryoSleep;
 
@@ -444,11 +445,11 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     //Predicate method for GetWarningMessages
     private bool ShouldItemWarnOnCryo(EntityUid ent)
     {
-        return _entityManager.HasComponent<ShuttleDeedComponent>(ent)
-               || _entityManager.HasComponent<WarnOnCryoSleepComponent>(ent)
-               || _entityManager.HasComponent<StoreComponent>(ent);
+        return HasComp<ShuttleDeedComponent>(ent)
+               || HasComp<WarnOnCryoSleepComponent>(ent)
+               || HasComp<StoreComponent>(ent)
+               || HasComp<SafetyDepositStoredComponent>(ent);
     }
-
 
     public void CryoStoreBody(EntityUid bodyId, EntityUid cryopod)
     {
