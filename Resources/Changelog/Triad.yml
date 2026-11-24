@@ -6326,3 +6326,12 @@ Entries:
   id: 2741
   time: '2026-11-24T04:58:56.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/787
+- author: Frontier
+  changes:
+    - type: Fix
+      message: >-
+        The industrial reagent grinder and material reclaimer now respect stack
+        size and efficiency.
+  id: 2742
+  time: '2026-11-24T05:02:20.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/844
