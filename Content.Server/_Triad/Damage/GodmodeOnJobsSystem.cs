@@ -54,7 +54,7 @@ public sealed partial class GodmodeOnJobsSystem : EntitySystem
         foreach (var proto in _prototypes.EnumeratePrototypes<GodmodeOnJobsListPrototype>())
         {
             if (!CachedPrototypes.ContainsKey(proto.ID))
-                CachedPrototypes.Add(proto.ID, false);
+                CachedPrototypes[proto.ID] = false;
         }
     }
 
