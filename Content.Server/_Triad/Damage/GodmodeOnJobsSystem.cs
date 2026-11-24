@@ -3,23 +3,23 @@ using Content.Shared.Damage;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
-using Robust.Shared.Network;
+using Content.Shared._Triad.Damage;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared.Ghost;
 
-namespace Content.Shared._Triad.Damage;
+namespace Content.Server._Triad.Damage;
 
-public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
+public sealed partial class GodmodeOnJobsSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _prototypes = default!;
-    [Dependency] private INetManager _net = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
 
-    private static readonly Dictionary<ProtoId<GodmodeOnNoJobsListPrototype>, bool> CachedPrototypes = new();
+    private static readonly Dictionary<ProtoId<GodmodeOnJobsListPrototype>, bool> CachedPrototypes = new();
     private static readonly Dictionary<ProtoId<JobPrototype>, int> ActiveJobPlayers = new();
 
-    private static readonly TimeSpan JobCheckEvery = TimeSpan.FromMinutes(3);
+    private static readonly TimeSpan JobCheckEvery = TimeSpan.FromMinutes(4);
     private TimeSpan? _nextJobsCheck = TimeSpan.Zero;
 
     public override void Initialize()
@@ -30,18 +30,15 @@ public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
-        if (!args.WasModified<GodmodeOnNoJobsListPrototype>())
+        if (!args.WasModified<GodmodeOnJobsListPrototype>())
             return;
 
         CachePrototypes();
     }
 
     [SubscribeLocalEvent]
-    private void OnBeforeDamageChanged(Entity<GodmodeOnNoJobsComponent> ent, ref BeforeDamageChangedEvent args)
+    private void OnBeforeDamageChanged(Entity<GodmodeOnJobsComponent> ent, ref BeforeDamageChangedEvent args)
     {
-        if (_net.IsClient)
-            return;
-
         var enabled = CachedPrototypes[ent.Comp.JobListProto];
 
         if (!enabled)
@@ -54,7 +51,7 @@ public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
     {
         CachedPrototypes.Clear();
 
-        foreach (var proto in _prototypes.EnumeratePrototypes<GodmodeOnNoJobsListPrototype>())
+        foreach (var proto in _prototypes.EnumeratePrototypes<GodmodeOnJobsListPrototype>())
         {
             CachedPrototypes.Add(proto.ID, false);
         }
@@ -66,8 +63,11 @@ public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
 
         // Cache all the jobs of everyone
         var query = AllEntityQuery<MindComponent>();
-        while (query.MoveNext(out var uid, out _))
+        while (query.MoveNext(out var uid, out var comp))
         {
+            if (comp.CurrentEntity is null)
+                continue;
+
             if (!_jobs.MindTryGetJobId(uid, out var jobId) || jobId == null)
                 continue;
 
@@ -76,23 +76,40 @@ public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
         }
 
         // Check each prototype to see if they pass
-        var passedPrototypes = new List<ProtoId<GodmodeOnNoJobsListPrototype>>();
         foreach (var (protoId, _) in CachedPrototypes)
         {
             var prototype = _prototypes.Index(protoId);
+            var failed = false; // Used for the All and None modes
+            var any = false;
             foreach (var (jobId, minAmount) in prototype.JobList)
             {
                 if (ActiveJobPlayers.TryGetValue(jobId, out var plrAmount))
                 {
-                    if (minAmount <= plrAmount)
-                        passedPrototypes.Add(protoId);
+                    switch (prototype.Mode)
+                    {
+                        case GodmodeOnJobsMode.All:
+                            if (minAmount > plrAmount)
+                                failed = true;
+                            break;
+                        case GodmodeOnJobsMode.Any:
+                            if (minAmount <= plrAmount)
+                            {
+                                any = true;
+                                failed = false;
+                            }
+                            break;
+                        case GodmodeOnJobsMode.None:
+                            if (minAmount <= plrAmount)
+                                failed = true;
+                            break;
+                    }
                 }
-            }
-        }
 
-        foreach (var proto in passedPrototypes)
-        {
-            CachedPrototypes[proto] = true;
+                if (failed || any)
+                    break;
+            }
+
+            CachedPrototypes[protoId] = !failed;
         }
     }
 
@@ -101,9 +118,6 @@ public sealed partial class GodmodeOnNoJobsSystem : EntitySystem
         base.Update(frameTime);
 
         if (_timing.CurTime < _nextJobsCheck)
-            return;
-
-        if (_net.IsClient)
             return;
 
         _nextJobsCheck = _timing.CurTime + JobCheckEvery;
