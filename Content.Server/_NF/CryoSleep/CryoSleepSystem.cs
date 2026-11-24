@@ -387,7 +387,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         }
 
         var networkedDepositBoxes = new List<CryoSleepWarningMessage.NetworkedWarningItem>();
-        warningItemsList.ForEach(item => networkedWarningItems.Add(item.ToNetworked(_entityManager)));
+        depositBoxesList.ForEach(item => networkedDepositBoxes.Add(item.ToNetworked(_entityManager)));
 
         var nwBackpackShuttleDeed =
             backpackShuttleDeed?.ToNetworked(_entityManager);
@@ -426,7 +426,6 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
     private readonly struct WarningItem(string? slotId, EntityUid? container, string? handId, EntityUid item)
     {
-        //Exactly one of these three values should not be null
         public readonly string? SlotId = slotId;
         public readonly EntityUid? Container = container;
         public readonly string? HandId = handId;

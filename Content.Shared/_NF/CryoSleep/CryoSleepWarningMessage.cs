@@ -31,18 +31,12 @@ public sealed class CryoSleepWarningMessage(
     {
         public NetworkedWarningItem(string? slotId, NetEntity? container, string? handId, NetEntity item)
         {
-            if (slotId is null && !container.HasValue && handId is null)
-            {
-                throw new ArgumentException(
-                    "CryoSleepWarningMessage.NetworkedWarningItem was attempted to be created with all values as null values");
-            }
-
             SlotId = slotId;
             HandId = handId;
             Container = container;
             Item = item;
         }
-        //Exactly one of these values should not be null
+
         public readonly string? SlotId;
         public readonly NetEntity? Container;
         public readonly string? HandId;
