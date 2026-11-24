@@ -16,10 +16,11 @@ public sealed partial class GodmodeOnJobsSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
 
-    private static readonly Dictionary<ProtoId<GodmodeOnJobsListPrototype>, bool> CachedPrototypes = new();
+    private readonly Dictionary<ProtoId<GodmodeOnJobsListPrototype>, bool> CachedPrototypes = new();
+    
     private static readonly Dictionary<ProtoId<JobPrototype>, int> ActiveJobPlayers = new();
-
     private static readonly TimeSpan JobCheckEvery = TimeSpan.FromMinutes(4);
+    
     private TimeSpan? _nextJobsCheck = TimeSpan.Zero;
 
     public override void Initialize()
