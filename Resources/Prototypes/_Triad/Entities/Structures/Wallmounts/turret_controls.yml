@@ -135,6 +135,24 @@
       fireCost: 40
 
 # TDF panels
+- type: godmodeOnJobsList
+  id: GodmodeWhenNoTDFList
+  jobList:
+    TdfChiefEnforcer: 1
+    TdfLieutenant: 1
+    TdfPatrolTeamLeader: 1
+    TdfMedic: 1
+    TdfEnforcer: 1
+    TdfCadet: 1
+  mode: None # None mode, as long as one slot is filled, it cannot be godmoded.
+
+- type: entity
+  id: BaseGodmodeWhenNoTDF
+  abstract: true
+  components:
+  - type: GodmodeOnJobs
+    jobListProto: GodmodeWhenNoTDFList
+
 - type: entity
   parent:
   - BaseTDFTurretSettings
@@ -168,6 +186,7 @@
 - type: entity
   parent:
   - BaseTDFTurretSettings
+  - BaseGodmodeWhenNoTDF
   - BallisticTurretHeavyAIBase
   id: BallisticTurretHeavyAITDF
   name: TDF heavy remote sentry turret
@@ -175,6 +194,7 @@
 - type: entity
   parent:
   - BaseTDFTurretSettings
+  - BaseGodmodeWhenNoTDF
   - LaserTurretAIBase
   id: LaserTurretLightAITDF
   name: TDF light remote laser turret
