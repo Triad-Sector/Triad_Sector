@@ -1,4 +1,4 @@
-﻿# Author Info
+# Author Info
 # Earthspiritio
 # Discord earthspiritio
 # Shuttle Notes: Mainly a ship to allow Vanyks to be accessable to players again
@@ -6,11 +6,11 @@
   id: SolarFlare
   parent: BaseVessel
   name: LGO-SASM Solarflare
-  description: Old station solar arrays laid useless in junkyards across multiple sectors, this ship being the result of one of those solar arrays being turned into a mobile defense array given thrusters.
-  price: 85000
+  description: Old station solar arrays laid useless in junkyards across multiple sectors, this "vessel" being the result of one of those solar arrays being turned into a mobile defense array given thrusters.
+  price: 65000
   category: Medium
   group: Scrap
-  shuttlePath: \SharedMaps\_Triad\Shuttles\SCRAP\Solarflare.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/SCRAP/solarflare.yml
 # guidebookPage: Null
   class:
   - Scrapyard
@@ -20,10 +20,10 @@
 - type: gameMap
   id: SolarFlare
   mapName: 'LGO-SASM SolarFlare'
-  mapPath: \SharedMaps\_Triad\Shuttles\SCRAP\Solarflare.yml
+  mapPath: /SharedMaps/_Triad/Shuttles/SCRAP/solarflare.yml
   minPlayers: 0
   stations:
-    Sleipnir:
+    SolarFlare:
       stationProto: StandardTriadVessel
       components:
       - type: StationNameSetup
