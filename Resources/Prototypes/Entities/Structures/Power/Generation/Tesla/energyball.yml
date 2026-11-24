@@ -95,6 +95,7 @@
   - type: ChaoticJump
     jumpMinInterval: 8
     jumpMaxInterval: 15
+    collisionMask: 10
   - type: WarpPoint
     follow: true
     location: tesla ball
