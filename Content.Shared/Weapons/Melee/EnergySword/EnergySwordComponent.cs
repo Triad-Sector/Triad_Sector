@@ -1,8 +1,9 @@
+using Content.Shared._Triad.Weapons.Melee.EnergySword;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Weapons.Melee.EnergySword;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(EnergySwordSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(EnergySwordSystem), typeof(SharedTriadEnergySwordSystem))] // Triad - Triad system access
 [AutoGenerateComponentState]
 public sealed partial class EnergySwordComponent : Component
 {
@@ -31,6 +32,18 @@ public sealed partial class EnergySwordComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Hacked;
+
+    /// <summary>
+    /// Triad - For saves. This lets the system know that a color was already set, and it shouldn't be set again on map init.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool PickedColor = false;
+
+    /// <summary>
+    /// Triad - Emagged examine text
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public LocId? EmaggedExamineText = "energy-sword-color-hacked-tool-tip";
 
     /// <summary>
     ///     RGB cycle rate for hacked e-swords.
