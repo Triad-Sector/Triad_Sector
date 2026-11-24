@@ -6335,3 +6335,12 @@ Entries:
   id: 2742
   time: '2026-11-24T05:02:20.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/844
+- author: nathan736
+  changes:
+    - type: Fix
+      message: >-
+        Material silo cascade events no longer cripple the server from glass
+        shards.
+  id: 2743
+  time: '2026-11-24T05:18:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/744
