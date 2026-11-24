@@ -6411,3 +6411,12 @@ Entries:
   id: 2750
   time: '2026-11-24T21:03:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/823
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the 'No Natural Language' trait, which is a language that remove
+        your species' default language!
+  id: 2751
+  time: '2026-11-24T22:48:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/850
