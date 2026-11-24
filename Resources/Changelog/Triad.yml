@@ -6354,3 +6354,12 @@ Entries:
   id: 2744
   time: '2026-11-24T05:25:53.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/747
+- author: BoiWab
+  changes:
+    - type: Add
+      message: >-
+        Added the Solarian Directive K-3000 "Dyson" Heavy Nanomesh Exoskeleton,
+        able to project particle barriers. Admi-only ATM.
+  id: 2745
+  time: '2026-11-24T05:49:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/708
