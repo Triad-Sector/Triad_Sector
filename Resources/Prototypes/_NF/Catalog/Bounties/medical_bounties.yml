@@ -12,9 +12,7 @@
       max: 200
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 20K-60K
+  baseReward: 10000 # 20K-60K Triad- was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: MurderedPierce
@@ -29,9 +27,7 @@
       max: 200
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 20K-60K
+  baseReward: 10000 # 20K-60K Triad- was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: MurderedSlash
@@ -46,9 +42,7 @@
       max: 200
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 20K-60K
+  baseReward: 10000 # 20K-60K Triad- was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: MildBruteMix
@@ -73,9 +67,7 @@
       max: 150
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 30K-60K
+  baseReward: 10000 # 30K-60K Triad- was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: Suffocated
@@ -90,9 +82,7 @@
       max: 200
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 20K-60k
+  baseReward: 10000 # 20K-60k Triad - was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: PlasmaFire
@@ -102,9 +92,7 @@
       max: 3000
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 10K-32K
-  baseReward: 10000 # 50K-160K
+  baseReward: 10000 # 50K-160K Triad- was baseReward: 2000 # 10K-32K
 
 - type: medicalBounty
   id: Spaced
@@ -129,9 +117,7 @@
       max: 2000
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 1000 # 8500-24K
-  baseReward: 5000 # 42500-120K
+  baseReward: 5000 # 42500-120K Triad- was baseReward: 1000 # 8500-24K
 
 - type: medicalBounty
   id: MildBurnMix
@@ -156,9 +142,7 @@
       max: 150
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2000 # 4K-8K
-  baseReward: 10000 # 20K-40K
+  baseReward: 10000 # 20K-40K Triad- was baseReward: 2000 # 4K-8K
 
 - type: medicalBounty
   id: Insuls
@@ -173,9 +157,7 @@
       max: 600
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 1500 # 7500-11500
-  baseReward: 7500 # 37500-57500
+  baseReward: 7500 # 37500-57500 Triad- was baseReward: 1500 # 7500-11500
 
 - type: medicalBounty
   id: AcidSlimes
@@ -185,9 +167,7 @@
       max: 500
       value: 20
       penalty: 20
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 2500 # 8K-12K
-  baseReward: 12500 # 40K-60K
+  baseReward: 12500 # 40K-60K Triad- was baseReward: 2500 # 8K-12K
 
 - type: medicalBounty
   id: SpiderAttackMild
@@ -224,9 +204,7 @@
       min: 30
       max: 50
       value: 20
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 5000 # 7100-10500 # Mono increase
-  baseReward: 25000 # 35500-52500
+  baseReward: 25000 # 35500-52500 Triad- was baseReward: 5000 # 7100-10500 # Mono increase
 
 - type: medicalBounty
   id: DeliciousMushroom
@@ -246,9 +224,7 @@
       min: 30
       max: 50
       value: 30
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 4000 # 6400-10500 # Mono Increase
-  baseReward: 20000 # 32000-52500 
+  baseReward: 20000 # 32000-52500 # Triad- was baseReward: 4000 # 6400-10500 # Mono Increase
 
 - type: medicalBounty
   id: HyperpacmanGoneWrong
@@ -268,9 +244,7 @@
       max: 200
       value: 10
       penalty: 10
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 6000 # ~6250-19K # Mono Buff
-  baseReward: 30000 # ~31250-95K 
+  baseReward: 30000 # ~31250-95K # Triad: was baseReward: 6000 # ~6250-19K # Mono Buff
 
 - type: medicalBounty
   id: AsphyxAndCellular
@@ -285,9 +259,7 @@
       max: 140
       value: 25
       penalty: 25
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 5000 # 5500-9500 # Mono Buff
-  baseReward: 25000 # 27500-32500 
+  baseReward: 25000 # 27500-32500 Triad- was baseReward: 5000 # 5500-9500 # Mono Buff
 
 - type: medicalBounty
   id: DeliciousUranium
@@ -316,6 +288,4 @@
       min: 30
       max: 50
       value: 25
-# Triad - Bumping med bounty rewards by 5x
-#  baseReward: 6000 # 5300-13500 # Mono Buff
-  baseReward: 30000 # 26000-67500
+  baseReward: 30000 # 26000-67500 Triad- was baseReward: 6000 # 5300-13500 # Mono Buff
