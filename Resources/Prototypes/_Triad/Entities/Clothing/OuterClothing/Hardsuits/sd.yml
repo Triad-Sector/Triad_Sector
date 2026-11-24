@@ -2,7 +2,7 @@
   parent: [ClothingOuterHardsuitSyndieElite, EnergyShieldClothing, BaseFactionGearSDT3, BaseClass2ShipContraband]
   id: ClothingOuterHardsuitSdHeavy
   name: K-3000 "Dyson" heavy nanomesh exoskeleton
-  description: A bleeding-edge Exoskeleton featuring an overclocked shield projection matrix and a symbiotic nanite swarm. The nanites can be projected into a static barrier. Should anything pierce the shield, the suit is layered with heat-shielding tiles sourced from solar diving platforms.
+  description: A bleeding-edge Exoskeleton designed by Terralith R&M featuring an overclocked shield projection matrix and a symbiotic nanite swarm. The nanites can be projected into a static barrier. Should anything pierce the shield, the suit is layered with heat-shielding tiles sourced from solar diving platforms. Repainted from Terralith corporate white to the BDMC color scheme.
   components:
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Hardsuits/sd-heavy.rsi
