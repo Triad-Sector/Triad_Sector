@@ -6398,3 +6398,16 @@ Entries:
   id: 2749
   time: '2026-11-24T18:36:43.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/837
+- author: Malfaltto
+  changes:
+    - type: Add
+      message: >-
+        Emagged energy sword and similar weapons can now have their blades
+        customized using a multiool!
+    - type: Fix
+      message: >-
+        Fixed energy swords losing their color when being saved in a deposit
+        box.
+  id: 2750
+  time: '2026-11-24T21:03:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/823
