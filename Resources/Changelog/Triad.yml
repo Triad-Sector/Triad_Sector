@@ -6391,3 +6391,10 @@ Entries:
   id: 2748
   time: '2026-11-24T06:06:03.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/812
+- author: GhostC10
+  changes:
+    - type: Tweak
+      message: Pod bodies get paid more
+  id: 2749
+  time: '2026-11-24T18:36:43.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/837
