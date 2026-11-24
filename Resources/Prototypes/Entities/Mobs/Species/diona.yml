@@ -114,6 +114,7 @@
     understands:
     - TauCetiBasic
     - RootSpeak
+    naturalLanguage: RootSpeak
   - type: BodyEmotes
     soundsId: DionaBodyEmotes
   - type: IgnoreKudzu

@@ -33,6 +33,7 @@
     understands:
     - TauCetiBasic
     - Canilunzt
+    naturalLanguage: Canilunzt
   - type: Sprite
     netsync: false
     noRot: true

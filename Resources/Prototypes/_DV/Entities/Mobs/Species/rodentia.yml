@@ -117,6 +117,7 @@
     understands:
     - TauCetiBasic
     - Mouse # There was no other language for them. This is how it used to be before EE removed them.
+    naturalLanguage: Mouse
   - type: Rummager
   - type: AlwaysTriggerMousetrap
   - type: PseudoItem

@@ -85,6 +85,7 @@
     understands:
     - TauCetiBasic
     - SiikMaas #Mono - Changed default, SiikTajr disabled
+    naturalLanguage: SiikMaas
   - type: Tag
     tags:
     - CanPilot
