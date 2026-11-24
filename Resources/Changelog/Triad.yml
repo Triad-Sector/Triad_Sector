@@ -6363,3 +6363,13 @@ Entries:
   id: 2745
   time: '2026-11-24T05:49:41.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/708
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added warnings for cryosleep. Attempting to cryosleep with an active
+        ship deed, safety deposit box, credits, TDF uplink, TCC will warn you
+        before you can accept.
+  id: 2746
+  time: '2026-11-24T05:56:48.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/845
