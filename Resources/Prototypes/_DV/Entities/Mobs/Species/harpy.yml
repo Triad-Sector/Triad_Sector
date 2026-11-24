@@ -11,17 +11,43 @@
     program: 52
   - type: SwappableInstrument
     instrumentList:
-      "Voice": {52: 0}
-      "Trumpet": {56: 0}
-      "Electric": {27: 0}
-      "Bass": {33: 0}
-      "Rock": {29: 0}
-      "Acoustic": {24: 0}
-      "Flute": {73: 0}
-      "Sax": {66: 0}
-      "Piano": {1: 0}
+      "Accordian": {21: 0}
+      "Acoustic Guitar": {24: 0}
+      "Bagpipe": {109: 0}
+      "Banjo": {105: 0}
+      "Bass Guitar": {33: 0}
+      "Cello": {42: 0}
       "Church Organ": {19: 0}
+      "Clarinet": {71: 0}
+      "Contrabass": {43: 0}
+      "Electric Guitar": {27: 0}
+      "Euphonium": {43: 1}
+      "Flute": {73: 0}
+      "French Horn": {60: 0}
+      "Glockenspiel": {9: 0}
+      "Harmonica": {22: 0}
       "Harp": {46: 0}
+      "Kalimba": {108: 0}
+      "Marima": {12: 0}
+      "Music Box": {10: 0}
+      "Ocarina": {79: 0}
+      "Pan Flute": {75: 0}
+      "Piano": {1: 0}
+      "Recorder": {74: 0}
+      "Rock Guitar": {29: 0}
+      "Saxophone": {66: 0}
+      "Taiko": {116: 0}
+      "Timpani": {47: 0}
+      "Tom Drums": {117: 0}
+      "Trombone": {57: 0}
+      "Trumpet": {56: 0}
+      "Tuba": {58: 0}
+      "Upright Piano": {3: 0}
+      "Vibraphone": {11: 0}
+      "Viola": {41: 0}
+      "Violin": {40: 0}
+      "Voice": {52: 0}
+      "Xylophone": {13: 0}
   - type: UserInterface
     interfaces:
       enum.InstrumentUiKey.Key:
@@ -33,7 +59,7 @@
       enum.SurgeryUIKey.Key: # Shitmed
         type: SurgeryBui
   - type: Sprite
-    scale: 0.9, 0.9
+    scale: 1.0, 1.0
     layers:
     - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # DEN
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
@@ -112,9 +138,13 @@
     soundHit:
       collection: AlienClaw
     animation: WeaponArcClaw
+    attackRate: 3
+    autoAttack: true
     damage:
       types:
-        Piercing: 5
+        Slash: 1.5
+        Piercing: 1.5
+    altDisarm: false
   - type: Speech
     speechSounds: Harpy
     speechVerb: Harpy
@@ -141,7 +171,7 @@
   - type: MovementSpeedModifier
     #    baseWalkSpeed: 2.5 # Frontier
     #    baseSprintSpeed: 5.0 # Frontier
-    weightlessAcceleration: 2.5
+    baseWeightlessAcceleration: 2.5
   - type: Inventory
     speciesId: harpy
     displacements:

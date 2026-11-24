@@ -108,7 +108,7 @@
       303: 0.8   # Triad - ~30C, heat-side slowdown
       310: 0.6   # Triad - ~37C, deeper heat slowdown before damage threshold at 320.15
   - type: MovementSpeedModifier
-    weightlessAcceleration: 2.5 # Birb move fast in zero-g
+    baseWeightlessAcceleration: 2.5 # Birb move fast in zero-g
   - type: PseudoItem # Baggable; certified smol ops
     storedOffset: -10,0
     shape:
