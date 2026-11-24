@@ -6344,3 +6344,13 @@ Entries:
   id: 2743
   time: '2026-11-24T05:18:48.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/744
+- author: AryaRaiin
+  changes:
+    - type: Add
+      message: >-
+        SSD detection on shuttles, which colors shuttles a cvar-determined color
+        on IFF when all player-controlled mobs inside are SSD for a
+        cvar-determined number of varying seconds.
+  id: 2744
+  time: '2026-11-24T05:25:53.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/747
