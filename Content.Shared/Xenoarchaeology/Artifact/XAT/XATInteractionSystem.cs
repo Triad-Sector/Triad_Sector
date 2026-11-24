@@ -1,5 +1,6 @@
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Storage; // Triad
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.XAT.Components;
@@ -36,7 +37,12 @@ public sealed class XATInteractionSystem : BaseXATSystem<XATInteractionComponent
         if (args.Handled)
             return;
 
-        args.Handled = true;
+        // Triad: artifacts with openable storage still trigger the node, but leave the event unhandled
+        // so the click falls through to ActivateInWorld and the storage UI opens as well.
+        if (!(TryComp<StorageComponent>(artifact, out var storage) && storage.OpenOnActivate))
+            args.Handled = true;
+        // End Triad
+
         Trigger(artifact, node);
     }
 }
