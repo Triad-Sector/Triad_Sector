@@ -139,11 +139,11 @@ public sealed class PrototypeSaveTest
                         }
 
                         // Triad - ignored modified fields list
-                        if (protoData.TryGetValue(compName, out var protoMapping) && !IgnoreModifiedFieldsComponents.Contains(compName))
+                        if (protoData.TryGetValue(compName, out var protoMapping))
                         {
                             var diff = compMapping.Except(protoMapping);
 
-                            if (diff != null && diff.Children.Count != 0)
+                            if (diff != null && diff.Children.Count != 0 && !IgnoreModifiedFieldsComponents.Contains(compName))
                                 Assert.Fail($"Prototype {prototype.ID} modifies component on spawn: {compName}. Modified yaml:\n{diff}");
                         }
                         else
