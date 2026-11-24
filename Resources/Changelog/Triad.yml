@@ -6384,3 +6384,10 @@ Entries:
   id: 2747
   time: '2026-11-24T06:01:56.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/764
+- author: nathan736
+  changes:
+    - type: Fix
+      message: 'Turbines No longer break grid power networks '
+  id: 2748
+  time: '2026-11-24T06:06:03.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/812
