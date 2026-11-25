@@ -33,7 +33,7 @@
 
 - type: entity
   abstract: true
-  parent: [ BaseStorageStructure, BaseShipStorage ]
+  parent: [BaseStorageStructure, BaseShipStorage]
   id: BaseShipStorageStash
   components:
   - type: Sprite
@@ -41,8 +41,8 @@
 
 - type: entity
   abstract: true
-  parent: [BaseStorageStructureWallmount, BasePersistentStorage]
-  id: BasePersistentShipStorageStashWallmount
+  parent: [BaseStorageStructureWallmount, BaseShipStorage]
+  id: BaseShipStorageStashWallmount
   components:
   - type: Sprite
     drawdepth: WallMountedItems
@@ -162,7 +162,7 @@
     node: BotanicalStorageUnitNode
 
 - type: entity
-  parent: BaseShipStorageStash
+  parent: BaseShipStorageStashWallmount
   id: FuelStorageStash
   name: fuel stash
   description: Wall locker to hold all of your fuel needs.
