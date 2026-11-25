@@ -117,4 +117,4 @@
   suffix: Director of Care
   components:
   - type: AccessReader
-    access: [[ "DirectorOfCare" ]]
+    access: [[ "ChiefMedicalOfficer" ]]
