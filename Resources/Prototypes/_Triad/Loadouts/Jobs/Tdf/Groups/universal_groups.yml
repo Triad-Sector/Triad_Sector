@@ -162,7 +162,7 @@
   - TdfCaselessAmmoBoxLoadout #Lecter
 
 # Encryption Keys
-  - type: loadoutGroup
+- type: loadoutGroup
   id: TDFEncryptionKey
   name: loadout-group-contractor-encryption-key
   minLimit: 0
