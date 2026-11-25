@@ -17,3 +17,31 @@
       - id: NfsdTechFabFlatpack
       - id: PhoneInstrumentHigh # Mono
       - id: DoorRemoteTdf
+
+- type: entity
+  id: LockerDirectorOfCareFilled
+  suffix: Filled, Director of Care
+  parent: LockerDirectorOfCare
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxEncryptionKeyMedical
+    - id: ClothingBackpackDuffelSurgeryFilled # Frontier Revert - Mono
+    - id: ClothingCloakCmo
+    - id: ClothingEyesHudMedical
+    - id: ClothingHandsGlovesNitrile
+    - id: ClothingHeadsetAltMedical
+    - id: ClothingMaskSterile
+    - id: HandheldCrewMonitor
+    - id: Hypospray
+    - id: MedicalTechFabCircuitboard
+    - id: MedkitFilled
+    - id: RubberStampDoc
+    # Goobstation Start
+    - id: ClothingBeltMilitaryWebbingCMOFilled
+    - id: Multitool
+    - id: MedTekCartridge
+    - id: RubberStampDoctor # Frontier
+    # Shitmed
+    - id: MedicalBiofabMachineBoard
+    - id: MMI # Shitmed

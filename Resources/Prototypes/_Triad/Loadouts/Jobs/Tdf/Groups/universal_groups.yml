@@ -160,3 +160,18 @@
   - FactionAcpPistolAmmoLoadout #MK58
   fallbacks:
   - TdfCaselessAmmoBoxLoadout #Lecter
+
+# Encryption Keys
+  - type: loadoutGroup
+  id: TDFEncryptionKey
+  name: loadout-group-contractor-encryption-key
+  minLimit: 0
+  maxLimit: 5
+  loadouts:
+  - ContractorEncryptionKeyTraffic
+  - ContractorEncryptionKeyMedical
+  - ContractorEncryptionKeyCargo
+  - ContractorEncryptionKeyEngineering
+  - ContractorEncryptionKeyScience
+  fallbacks:
+  - ContractorEncryptionKeyTraffic

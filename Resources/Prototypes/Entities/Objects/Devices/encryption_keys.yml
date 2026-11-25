@@ -124,7 +124,7 @@
     - state: eng_label
 
 - type: entity
-  parent: [EncryptionKey, RecyclableItemDeviceTiny, BaseClass2ShipContraband]
+  parent: [EncryptionKey, RecyclableItemDeviceTiny, BaseClass2ShipContraband] # Triad, save contraband
   id: EncryptionKeyMedical
   name: medical encryption key
   description: An encryption key used by those who save lives.
