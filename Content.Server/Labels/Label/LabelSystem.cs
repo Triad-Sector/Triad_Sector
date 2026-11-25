@@ -64,6 +64,21 @@ namespace Content.Server.Labels
             Dirty(uid, label);
         }
 
+        /// <summary>
+        /// triad: returns the entity's current label text, or null if it has no label.
+        /// </summary>
+        public string? TryGetLabelString(EntityUid? sourceUid)
+        {
+            if (TryComp<LabelComponent>(sourceUid, out var sourceLabel))
+            {
+                return sourceLabel.CurrentLabel;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private void OnComponentInit(EntityUid uid, PaperLabelComponent component, ComponentInit args)
         {
             _itemSlotsSystem.AddItemSlot(uid, ContainerName, component.LabelSlot);

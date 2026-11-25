@@ -7,9 +7,9 @@
   components:
     - type: LanguageKnowledge
       speaks:
-        - TauCetiBasic
+      - TauCetiBasic
       understands:
-        - TauCetiBasic
+      - TauCetiBasic
     - type: Inventory
       speciesId: shadekin
     - type: Hunger

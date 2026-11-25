@@ -159,8 +159,9 @@ public sealed partial class MaterialReclaimerComponent : Component
     [DataField, AutoNetworkedField]
     public int ItemsProcessed;
 
+    // Frontier: old material reclaimer logic
     /// <summary>
-    /// Frontier: set to true for old material reclaimer solution drain logic, overrides OnlyReclaimDrainable
+    /// Set to true for old material reclaimer solution drain logic, overrides OnlyReclaimDrainable
     /// </summary>
     [DataField]
     public bool UseOldSolutionLogic = false;

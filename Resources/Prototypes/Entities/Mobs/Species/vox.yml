@@ -125,6 +125,7 @@
     understands:
       - TauCetiBasic
       - NewKinPidgin        # Vox language from Floofstation
+    naturalLanguage: NewKinPidgin
   - type: Wagging # goob
   - type: Inventory
     speciesId: vox
