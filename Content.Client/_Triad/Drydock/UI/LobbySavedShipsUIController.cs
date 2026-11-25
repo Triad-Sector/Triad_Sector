@@ -27,12 +27,18 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
         _system?.RequestBerthInfo();
     }
 
+    private void SendDeleteShipMessage(Guid shipId, string typed)
+    {
+        _system?.SendDeleteShipMessage(shipId, typed);
+    }
+
     public void ToggleWindow()
     {
         if (_window == null)
         {
             _window = new LobbySavedShipsWindow();
             _window.OnClose += () => _window = null;
+            _window.OnDeleteShip += SendDeleteShipMessage;
             RequestBerthInfo();
 
             //.CopyButton.OnPressed += _ =>

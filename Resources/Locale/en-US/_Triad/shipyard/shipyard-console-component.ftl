@@ -1,6 +1,6 @@
 ## UI
 shipyard-console-preview = Preview
-shipyard-console-header-saved-ships = Transfer ownership of saved ships to other characters or delete them here
+shipyard-console-header-saved-ships = Transfer ownership of saved ships to your other characters or delete them here
 shipyard-console-saved = {$owner} shuttle {$vessel} stored to shipyard by {$player}.
 shipyard-console-save-appraisal-label = Estimated deployment fee after tax:{" "}
 shipyard-console-save-appraisal-no-ship-selected-text = Select ship
@@ -44,28 +44,33 @@ shipyard-console-storing-percent-button = Storing {$percent}%
 shipyard-console-retrieving-percent-button = Retrieving {$percent}%
 shipyard-console-berth-row = #{$berth}
 shipyard-console-berth-row-class = {$class}
-shipyard-console-berth-occupant = {$ship}
+shipyard-console-berth-occupant = | {$ship}
 shipyard-console-berth-occupant-class = · {$class}
 shipyard-console-berth-empty = empty
 
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth
 
-shipyard-console-detail-select =
+shipyard-console-detail-select = Select a berth
 shipyard-console-detail-select-ship = Select a ship
 shipyard-console-detail-empty-title = Berth #{$berth}
 shipyard-console-detail-stored = Stored
+shipyard-console-detail-owned-character = [color=#999999]Owned character:[/color] [color=yellow]{$character}[/color]
 shipyard-console-detail-berth-class = Berth class:
 shipyard-console-detail-ship-class = Hull class:
 shipyard-console-detail-appraisal = Appraisal:
 shipyard-console-detail-upgrade-to = Upgrade to: {$class}
+shipyard-console-detail-transfer-owner = Transfer this ship to one of your own characters.
+shipyard-console-detail-delete-ship = Delete this ship without selling it. The berth itself is not sold, however.
 shipyard-console-menu-rename = Rename…
 shipyard-console-menu-move = Move…
 shipyard-console-menu-transfer = Transfer…
 shipyard-console-menu-sell = Sell…
 shipyard-console-menu-no-appraisal = No appraisal
 shipyard-console-menu-nowhere = Nowhere to go
-shipyard-console-menu-sell-berth = Sell berth
+shipyard-console-menu-sell-berth = Sell
+shipyard-console-menu-delete-ship = Delete ship
+shipyard-console-menu-transfer-owner = Transfer owner
 shipyard-console-transfer-accept-button = Accept
 shipyard-console-transfer-decline-button = Decline
 shipyard-console-transfer-cancel-button = Cancel
@@ -94,6 +99,9 @@ shipyard-console-sell-body = {$ship} scraps for [bold]{$price}[/bold], {$percent
 shipyard-console-sell-warning = Cannot be undone.
 shipyard-console-sell-placeholder = Type {$ship} to confirm
 shipyard-console-sell-button = Sell
+shipyard-console-delete-title = Delete {$ship}
+shipyard-console-delete-body = Are you sure? This [color=red]PERMANENTLY[/color] deletes your ship {$ship}. Berth #{$berth} is [color=yellow]NOT[/color] deleted.
+shipyard-console-delete-button = Delete
 shipyard-console-rename-title = Rename {$ship}
 shipyard-console-rename-body = Applied to ship on the next retrieve.
 shipyard-console-rename-placeholder = Letters, digits, spaces, dashes

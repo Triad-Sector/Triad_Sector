@@ -15,7 +15,6 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     {
         if (_state.CurrentState is not LobbyState)
             return;
-        Logger.Info("HI");
 
         BerthInfoResponse?.Invoke(msg);
     }
@@ -26,6 +25,15 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
             return;
 
         var ev = new LobbyDrydockBerthInfoRequest();
+        RaiseNetworkEvent(ev);
+    }
+
+    public void SendDeleteShipMessage(Guid shipId, string typed)
+    {
+        if (_state.CurrentState is not LobbyState)
+            return;
+
+        var ev = new LobbyDrydockDeleteShipMessage(shipId, typed);
         RaiseNetworkEvent(ev);
     }
 }

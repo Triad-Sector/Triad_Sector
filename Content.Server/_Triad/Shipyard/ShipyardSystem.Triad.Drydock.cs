@@ -2416,7 +2416,7 @@ public sealed partial class ShipyardSystem
     }
 
     /// <summary>Whether a typed confirmation matches the row's name exactly, the safety a sell or abandon modal enforces server-side.</summary>
-    private static bool TypedNameMatches(string typedName, string shipName)
+    public static bool TypedNameMatches(string typedName, string shipName)
     {
         return string.Equals(typedName.Trim(), shipName.Trim(), StringComparison.Ordinal);
     }

@@ -26,7 +26,7 @@ public sealed class DrydockMenuButton : Button
     /// <paramref name="DividerAbove"/> draws the heavier rule that separates the ship verbs from the
     /// berth verbs in a dropdown; a picker ignores it.
     /// </summary>
-    public sealed record Item(string Label, string? Detail, bool Enabled, Action? OnPressed, bool DividerAbove = false);
+    public sealed record Item(string Label, string? Detail, bool Enabled, Action? OnPressed, bool DividerAbove = false, string? Tooltip = null);
 
     private const float MenuWidth = 200f;
 

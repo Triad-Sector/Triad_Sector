@@ -1142,7 +1142,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         return button;
     }
 
-    private static Button BerthActionButton(DrydockMenuButton.Item item)
+    public static Button BerthActionButton(DrydockMenuButton.Item item)
     {
         var button = new Button
         {
@@ -1163,6 +1163,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
                 Margin = new Thickness(8, 0, 0, 0),
             });
         }
+
+        button.ToolTip = item.Tooltip;
         button.AddChild(line);
 
         button.OnPressed += _ => item.OnPressed?.Invoke();
@@ -1251,8 +1253,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     }
 
     /// <summary>
-    /// Triad: Sell…, saying what the scrap pays against the hull's appraisal and which berth it
-    /// frees, locked until the ship's exact name is typed. The server compares again.
+    /// Opens the sell prompt
     /// </summary>
     private void OpenSellPrompt(Guid shipId, string shipName, int price, int? appraisal, int berthId)
     {

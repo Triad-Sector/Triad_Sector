@@ -12,3 +12,13 @@ public sealed class LobbyDrydockBerthInfoResponse(List<DrydockBerthInfo> berths)
 {
     public List<DrydockBerthInfo> Berths = berths;
 }
+
+[Serializable, NetSerializable]
+public sealed class LobbyDrydockDeleteShipMessage(Guid shipId, string confirmText) : EntityEventArgs
+{
+    public Guid ShipId = shipId;
+    public string ConfirmText = confirmText;
+}
+
+[Serializable, NetSerializable]
+public sealed class LobbyDrydockUiRefreshRequest : EntityEventArgs;

@@ -47,9 +47,12 @@ public sealed class DrydockBerthInfo
 
     public int? OccupantOfferSecondsLeft;
 
+    public int? OccupantCharacterIndex;
+
     public DrydockBerthInfo(int berthId, string maxSizeClass, int sellValue, int? upgradePrice, string? upgradeClass,
         Guid? occupantShipId, string? occupantName, string? occupantSizeClass, string? occupantState, int? occupantSellPrice,
-        long? occupantTransferId, string? occupantOfferedTo, int? occupantOfferSecondsLeft, int? occupantAppraisal = null)
+        long? occupantTransferId, string? occupantOfferedTo, int? occupantOfferSecondsLeft, int? occupantAppraisal = null,
+        int? occupantCharacterIndex = null)
     {
         OccupantAppraisal = occupantAppraisal;
         BerthId = berthId;
@@ -65,6 +68,7 @@ public sealed class DrydockBerthInfo
         OccupantTransferId = occupantTransferId;
         OccupantOfferedTo = occupantOfferedTo;
         OccupantOfferSecondsLeft = occupantOfferSecondsLeft;
+        OccupantCharacterIndex = occupantCharacterIndex;
     }
 }
 
