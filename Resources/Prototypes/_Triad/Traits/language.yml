@@ -191,6 +191,9 @@
     species: Human
     invert: true
   - !type:IsSpeciesCondition
+    species: Avali
+    invert: true
+  - !type:IsSpeciesCondition
     species: Shadekin
     invert: true
   - !type:IsSpeciesCondition
