@@ -102,6 +102,8 @@ shipyard-console-sell-button = Sell
 shipyard-console-delete-title = Delete {$ship}
 shipyard-console-delete-body = Are you sure? This [color=red]PERMANENTLY[/color] deletes your ship {$ship}. Berth #{$berth} is [color=yellow]NOT[/color] deleted.
 shipyard-console-delete-button = Delete
+shipyard-console-export-button = Export ship
+shipyard-console-export-detail = Export this ship as a YML file
 shipyard-console-rename-title = Rename {$ship}
 shipyard-console-rename-body = Applied to ship on the next retrieve.
 shipyard-console-rename-placeholder = Letters, digits, spaces, dashes

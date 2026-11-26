@@ -291,6 +291,112 @@ public sealed partial class DrydockSystem
     }
 
     /// <summary>
+    /// Gets a ship's first revision's raw YML data.
+    /// </summary>
+    public async Task<string?> GetShipYamlData(Guid shipId, Guid owner)
+    {
+        var header = await _store.GetShipHeader(shipId);
+
+        string? yamlData = null;
+
+        if (header != null && header.OwnerUserId != owner)
+            return yamlData;
+
+        if (header == null)
+            return yamlData;
+
+        var ctx = new DrydockRetrieveContext
+        {
+            ShipId = shipId,
+            OwnerUserId = owner
+        };
+
+        try
+        {
+            var sync = new DrydockSyncSlice(DrydockPhases.Retrieve);
+            yamlData = await RunShipYamlPipeline(ctx, sync);
+        }
+        catch (OperationCanceledException)
+        {
+            Log.Warning($"Export of {shipId} was cancelled midway");
+        }
+
+        return yamlData;
+    }
+
+    /// <summary>
+    /// Gets a ship's first revision's raw YML data.
+    /// </summary>
+    internal async Task<string?> RunShipYamlPipeline(DrydockRetrieveContext ctx, IDrydockSlice slice)
+    {
+        string? yamlData = null;
+
+        try
+        {
+            await slice.Begin(DrydockPhase.Fetch, 0);
+
+            var current = await slice.Await(_store.LoadCurrent(ctx.ShipId));
+            if (current == null)
+                return yamlData;
+
+            var revisions = await slice.Await(_store.ListRetrievableRevisions(ctx.ShipId));
+            GuardRetrieveResume(ctx);
+
+            foreach (var revision in revisions)
+            {
+                var isCurrent = revision == current.Ship.CurrentRevision;
+
+                await slice.Begin(DrydockPhase.Fetch, 0);
+                GuardRetrieveResume(ctx);
+
+                var stored = isCurrent
+                    ? current
+                    : await slice.Await(_store.LoadRevision(ctx.ShipId, revision));
+
+                if (stored == null)
+                    continue;
+
+                byte[] yamlBytes;
+                try
+                {
+                    yamlBytes = DecompressZstd(stored.Blob);
+                }
+                catch (Exception e)
+                {
+                    Log.Error($"Drydock: {ctx.ShipId} revision {revision} would not decompress during export, falling back: {e.Message}");
+                    continue;
+                }
+
+                if (!SHA256.HashData(yamlBytes).AsSpan().SequenceEqual(stored.Revision.Checksum))
+                {
+                    Log.Error($"Drydock: {ctx.ShipId} revision {revision} failed its checksum during export, falling back.");
+                    continue;
+                }
+
+                await slice.Begin(DrydockPhase.Serialize, 0);
+
+                try
+                {
+                    var formatVer = stored.Revision.DrydockFormatVer;
+                    await slice.Await(Task.Run(() => DetectDrift(yamlData = Encoding.UTF8.GetString(yamlBytes), formatVer)));
+                }
+                catch (Exception e) when (e is not OperationCanceledException)
+                {
+                    Log.Error($"Drydock: {ctx.ShipId} revision {revision} could not be read for drift: {e.Message}");
+                }
+
+                await slice.Begin(DrydockPhase.Commit, 0);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Log.Warning($"Export of {ctx.ShipId} was cancelled midway");
+        }
+
+        return yamlData;
+    }
+
+    /// <summary>
     /// The retrieve itself, from the first blob read to the dock. Driven either by a job, a few
     /// milliseconds of main-thread time per tick, or by <see cref="DrydockSyncSlice"/> straight
     /// through.

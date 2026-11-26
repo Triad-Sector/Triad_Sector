@@ -21,6 +21,18 @@ public sealed class LobbyDrydockDeleteShipMessage(Guid shipId, string confirmTex
 }
 
 [Serializable, NetSerializable]
+public sealed class LobbyDrydockExportShipMessage(Guid shipId) : EntityEventArgs
+{
+    public Guid ShipId = shipId;
+}
+
+[Serializable, NetSerializable]
+public sealed class LobbyDrydockExportShipResponse(string yaml) : EntityEventArgs
+{
+    public string Yaml = yaml;
+}
+
+[Serializable, NetSerializable]
 public sealed class LobbyDrydockTransferShipOwnerMessage(Guid shipId, int character) : EntityEventArgs
 {
     public Guid ShipId = shipId;

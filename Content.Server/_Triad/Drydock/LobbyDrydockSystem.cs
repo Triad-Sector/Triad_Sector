@@ -20,8 +20,18 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     [Dependency] private IConfigurationManager _configManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private DrydockStore _drydockStore = default!;
+    [Dependency] private DrydockSystem _drydock = default!;
 
     private const string DeleteReason = "Deleted by player";
+
+    private ISawmill _sawmill = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _sawmill = LogManager.GetSawmill("lobby.drydock");
+    }
 
     [SubscribeNetworkEvent]
     private async void OnLobbyDrydockBerthInfoRequest(LobbyDrydockBerthInfoRequest ev, EntitySessionEventArgs args)
@@ -39,6 +49,28 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Medium, $"{args.SenderSession} could not delete their ship {shipName} (ID: {ev.ShipId}) from the lobby interface");
         else
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.High, $"{args.SenderSession} deleted their ship {shipName} (ID: {ev.ShipId}) permanently by using the lobby interface");
+    }
+
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockExportShipMessage(LobbyDrydockExportShipMessage ev, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        var shipId = ev.ShipId;
+
+        var owner = player.UserId.UserId;
+
+        var yamlData = await _drydock.GetShipYamlData(shipId, owner);
+
+        if (yamlData == null)
+        {
+            _sawmill.Warning($"{player} attempted to export their ship {shipId} to file. Operation failed.");
+            return;
+        }
+
+        var response = new LobbyDrydockExportShipResponse(yamlData);
+        RaiseNetworkEvent(response, player.Channel);
+
+        _sawmill.Info($"{player} exported their ship {shipId} to file.");
     }
 
     [SubscribeNetworkEvent]

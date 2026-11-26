@@ -28,7 +28,10 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
 
     public event Action? RequestBerthInfo;
     public event Action<Guid, string>? OnDeleteShip;
+    public event Action<Guid>? OnExportShip;
     public event Action<Guid, int>? OnTransferShip;
+
+    public bool Exporting = false;
 
     public LobbySavedShipsWindow()
     {
@@ -127,6 +130,13 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
             false,
             Loc.GetString("shipyard-console-detail-transfer-owner")));
 
+        items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-export-button"),
+            null,
+            true,
+            () => TryExport(occupant),
+            false,
+            Loc.GetString("shipyard-console-export-detail")));
+
         items.Add(new DrydockMenuButton.Item(Loc.GetString("shipyard-console-menu-delete-ship"),
             null,
             true,
@@ -135,6 +145,15 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
             Loc.GetString("shipyard-console-detail-delete-ship")));
 
         return items;
+    }
+
+    private void TryExport(Guid shipId)
+    {
+        if (Exporting)
+            return;
+
+        Exporting = true;
+        OnExportShip?.Invoke(shipId);
     }
 
     private void OpenTransferPrompt(Guid shipId, string shipName, int? previousOwner)
