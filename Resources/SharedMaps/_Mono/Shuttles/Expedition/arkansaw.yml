@@ -16003,7 +16003,6 @@ entities:
     - type: Intercom
       supportedChannels:
       - Common
-      - Medical
       - Traffic
       currentChannel: Common
     - type: ContainerContainer
@@ -16017,7 +16016,6 @@ entities:
           occludes: True
           ents:
           - 1771
-          - 1772
           - 1773
 - proto: KitchenElectricRange
   entities:

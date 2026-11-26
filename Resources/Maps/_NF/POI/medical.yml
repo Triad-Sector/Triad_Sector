@@ -23629,7 +23629,7 @@ entities:
           ent: null
           showEnts: False
           occludes: True
-- proto: LockerDirectorOfCareFilled # Triad
+- proto: LockerDirectorOfCareFilled
   entities:
   - uid: 1461
     components:
