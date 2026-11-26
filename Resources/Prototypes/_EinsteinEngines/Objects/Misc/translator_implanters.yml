@@ -55,6 +55,22 @@
     implant: CanilunztTranslatorImplant
 
 - type: entity
+  id: TriadianTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  name: triadian translator implant
+  components:
+  - type: Implanter
+    implant: TriadianTranslatorImplant
+
+- type: entity
+  id: TauTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  name: tau translator implant
+  components:
+  - type: Implanter
+    implant: TauTranslatorImplant
+
+- type: entity
   id: SolCommonTranslatorImplanter
   parent: [ BaseTranslatorImplanter ]
   name: sol-common translator implant

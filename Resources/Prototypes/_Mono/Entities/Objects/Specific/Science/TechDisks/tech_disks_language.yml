@@ -55,12 +55,14 @@
     - BubblishTranslator
     - NekomimeticTranslator
     - DraconicTranslator
-    #- SolCommonTranslator # Rogues dont have craftable freespeak translators, why should TSF?
+    - SolCommonTranslator
     - RootSpeakTranslator
     - MofficTranslator
     - BirdsongTranslator
     - ScratchTranslator
     - ChittinTranslator
+    - TauTranslator
+    - TriadianTranslator
     - GaryTranslator # Trait language
     - TerraSlavicTranslator # Trait language
     #- SiikMaasTranslator # No tajara here
@@ -70,12 +72,14 @@
     - BubblishTranslatorImplanter
     - NekomimeticTranslatorImplanter
     - DraconicTranslatorImplanter
-    #- SolCommonTranslatorImplanter # Rogues dont have craftable freespeak translators, why should TSF?
+    - SolCommonTranslatorImplanter
     - RootSpeakTranslatorImplanter
     - MofficTranslatorImplanter
     - BirdsongTranslatorImplanter
     - ScratchTranslatorImplanter
     - ChittinTranslatorImplanter
+    - TauTranslatorImplanter
+    - TriadianTranslatorImplanter
     - GaryTranslatorImplanter # Trait language
     - TerraSlavicTranslatorImplanter # Trait language
     #- SiikMaasTranslatorImplanter # No tajara here

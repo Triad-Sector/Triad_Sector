@@ -17,8 +17,7 @@ trait-language-triadian-desc =
     Nowadays, it is one of the official languages of the Triad Sector, spoken by the Triad Sector Government, TFA officials, and the TDF.
 
 trait-language-no-natural-language-name = No Natural Language
-trait-language-no-natural-language-desc = 
-    You cannot speak the language of your species' culture. You either grew up outside its culture, or never learned it due to some circumstances.
+trait-language-no-natural-language-desc = You cannot speak the language of your species' culture. You either grew up outside its culture, or never learned it due to some circumstances.
 
 trait-language-Hydraspeak-name = Understand Hy'drav'tha
 trait-language-Hydraspeak-desc =

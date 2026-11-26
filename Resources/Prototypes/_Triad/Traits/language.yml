@@ -208,7 +208,7 @@
   - !type:IsSpeciesCondition
     species: Feroxi
     invert: true
-    effects:
+  effects:
   - !type:AddCompsEffect
     components:
     - type: LanguageSpeaker
