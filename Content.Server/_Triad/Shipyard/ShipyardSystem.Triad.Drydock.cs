@@ -522,6 +522,10 @@ public sealed partial class ShipyardSystem
             if (row.State != DrydockShipState.Impounded)
                 continue;
 
+            // Hide impounded vessels that do not belong to that character
+            if (row.CharacterIndex != null && row.CharacterIndex != preferences.SelectedCharacterIndex)
+                continue;
+
             var fitting = FittingFreeBerths(slots, row.SizeClass);
             appraisals.TryGetValue(row.ShipGuid, out var basis);
 

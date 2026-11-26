@@ -1,5 +1,4 @@
-﻿using Content.Client.Lobby.UI;
-using Content.Shared._Triad.Drydock;
+﻿using Content.Shared._Triad.Drydock;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 
@@ -7,7 +6,6 @@ namespace Content.Client._Triad.Drydock.UI;
 
 public sealed partial class LobbySavedShipsUIController : UIController, IOnSystemChanged<LobbyDrydockSystem>
 {
-    [Dependency] private IClipboardManager _clipboard = default!;
 
     [UISystemDependency] private LobbyDrydockSystem? _system = default;
 

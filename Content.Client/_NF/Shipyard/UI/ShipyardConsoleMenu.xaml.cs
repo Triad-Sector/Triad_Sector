@@ -335,8 +335,6 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             }
         }
 
-        // Triad: legacy import. An import stages the hull, measures it, grants a berth and files it,
-        // so it is the longest of the three waits and the one that most needs to look alive.
         if (_import.Active)
         {
             if (_import.Tick(args.DeltaSeconds))
@@ -1236,7 +1234,6 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             items).OpenCentered();
     }
 
-    /// <summary>Triad: Rename…, one sentence, the allowed shape as the placeholder, a counter beside the field.</summary>
     private void OpenRenamePrompt(Guid shipId, string shipName)
     {
         new DrydockTextPrompt(
@@ -1252,9 +1249,6 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             name => OnRenameStoredShip?.Invoke(shipId, name.Trim())).OpenCentered();
     }
 
-    /// <summary>
-    /// Opens the sell prompt
-    /// </summary>
     private void OpenSellPrompt(Guid shipId, string shipName, int price, int? appraisal, int berthId)
     {
         var basis = appraisal is > 0 ? appraisal.Value : price;

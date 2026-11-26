@@ -24,6 +24,7 @@
       - Implant
       - SafetyDepositBox
       - MobState
+      - XenoArtifact
   - type: SafetyDepositBox
   - type: Appearance
   - type: Tag

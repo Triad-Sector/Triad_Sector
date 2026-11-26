@@ -2,7 +2,6 @@
 using Content.Server._NF.Shipyard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
-using Content.Server.Chat.Systems;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Shared._NF.Shipyard.BUI;
@@ -20,7 +19,6 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IConfigurationManager _configManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
-    [Dependency] private ShipyardSystem _shipyard = default!;
     [Dependency] private DrydockStore _drydockStore = default!;
 
     private const string DeleteReason = "Deleted by player";
@@ -94,7 +92,11 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
         var refund = _configManager.GetCVar(TriadCCVars.DrydockBerthRefund);
         foreach (var slot in slots)
         {
-            if (slot.Occupant is not { } occupant || occupant.State != DrydockShipState.Stored)
+            if (slot.Occupant is not { } occupant)
+                continue;
+
+            // Only impounded and stored ships are shown
+            if (occupant.State != DrydockShipState.Stored && occupant.State != DrydockShipState.Impounded)
                 continue;
 
             appraisals.TryGetValue(occupant.ShipGuid, out var appraisal);

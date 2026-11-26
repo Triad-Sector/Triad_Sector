@@ -158,3 +158,8 @@ shipyard-console-import-error-load-failed = Import failed: the ship file could n
 shipyard-console-import-error-invalid-grid = Import failed: the loaded file did not produce a valid ship.
 shipyard-console-import-error-already-filed = Import failed: this ship is already filed with the drydock.
 shipyard-console-import-error-store-failed = Import failed: could not file the ship ({$reason}).
+
+shipyard-console-saved-ships-title = Saved Ships
+
+shipyard-console-transfer-owner-prompt-title = Transferring ship owner
+shipyard-console-transfer-owner-prompt-header = Select a character to transfer ownership of {$ship}.

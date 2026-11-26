@@ -1,10 +1,7 @@
-// Triad: drydock tab.
 using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
-using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
 namespace Content.Client._Triad.Shipyard.UI;
