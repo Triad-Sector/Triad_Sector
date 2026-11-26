@@ -97,3 +97,11 @@
   image: /Textures/_Triad/PlayerFactions/Dawnbringers.png
   color: "#FD6012"
   whitelisted: true
+
+- type: company
+  id: VBES
+  name: The Valyrian Bureau of Emergency Services
+  description: vbes-description
+  image: /Textures/_Triad/PlayerFactions/VBES.png
+  color: "#7a1f24"
+  whitelisted: true
