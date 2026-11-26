@@ -3,7 +3,7 @@
   id: EncryptionKeyTdf
   name: TDF encryption key
   categories: [ DoNotMap ]
-  description: "An encryption key for the TDF, configured to receive their main channel.\nUse a screwdriver to configure which fireteam channels it receives."
+  description: "An encryption key for the TDF, configured to receive their main channel."
   components:
   - type: EncryptionKey
     channels:
@@ -19,17 +19,13 @@
       state: tdf_none_label
   - type: PirateBountyItem
     id: EncryptionKeyFaction
-  - type: Construction
-    deconstructionTarget: null
-    graph: TdfEncryptionKeySwapGraph
-    node: swap_none
 
 - type: entity
   parent: EncryptionKeyTdf
   id: EncryptionKeyTdf1
   name: TDF encryption key (Alpha)
   categories: [ DoNotMap ]
-  description: "An encryption key for the TDF, configured to receive their main and alpha fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  description: "An encryption key for the TDF, configured to receive their main and alpha fireteam channels."
   components:
   - type: EncryptionKey
     channels:
@@ -42,15 +38,13 @@
     - state: crypt_gray
     - sprite: _Triad/Objects/Devices/encryption_keys.rsi
       state: tdf_alpha_label
-  - type: Construction
-    node: swap_alpha
 
 - type: entity
   parent: EncryptionKeyTdf
   id: EncryptionKeyTdf2
   name: TDF encryption key (Bravo)
   categories: [ DoNotMap ]
-  description: "An encryption key for the TDF, configured to receive their main and bravo fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  description: "An encryption key for the TDF, configured to receive their main and bravo fireteam channels."
   components:
   - type: EncryptionKey
     channels:
@@ -63,15 +57,13 @@
     - state: crypt_gray
     - sprite: _Triad/Objects/Devices/encryption_keys.rsi
       state: tdf_bravo_label
-  - type: Construction
-    node: swap_bravo
 
 - type: entity
   parent: EncryptionKeyTdf
   id: EncryptionKeyTdf3
   name: TDF encryption key (Charlie)
   categories: [ DoNotMap ]
-  description: "An encryption key for the TDF, configured to receive their main and charlie fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  description: "An encryption key for the TDF, configured to receive their main and charlie fireteam channels."
   components:
   - type: EncryptionKey
     channels:
@@ -84,15 +76,13 @@
     - state: crypt_gray
     - sprite: _Triad/Objects/Devices/encryption_keys.rsi
       state: tdf_charlie_label
-  - type: Construction
-    node: swap_charlie
 
 - type: entity
   parent: EncryptionKeyTdf
   id: EncryptionKeyTdfAll
   name: TDF encryption key (All)
   categories: [ DoNotMap ]
-  description: "An encryption key for the TDF, configured to receive their main and all fireteam channels.\nUse a screwdriver to configure which fireteam channels it receives."
+  description: "An encryption key for the TDF, configured to receive their main and all fireteam channels."
   components:
   - type: EncryptionKey
     channels:
@@ -107,8 +97,6 @@
     - state: crypt_gray
     - sprite: _Triad/Objects/Devices/encryption_keys.rsi
       state: tdf_all_label
-  - type: Construction
-    node: swap_all
 
 - type: entity
   parent: [ BaseFactionGearSDT1, EncryptionKey, BaseClass2AShipContrabandSilent ]
