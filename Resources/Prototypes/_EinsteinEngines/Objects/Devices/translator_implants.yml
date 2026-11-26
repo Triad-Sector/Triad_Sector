@@ -144,16 +144,31 @@
 
 - type: entity
   parent: BaseSubdermalImplant
-  id: ValyrianStandardTranslatorImplant
-  name: valyrian standard translator implant
-  description: An implant giving the ability to understand and speak Valyrian Standard. Chirp!
+  id: BirdsongTranslatorImplant
+  name: birdsong standard translator implant
+  description: An implant giving the ability to understand and speak Birdsong. Chirp!
   categories: [ HideSpawnMenu ]
   components:
   - type: TranslatorImplant
     understood:
-    - ValyrianStandard
+    - Birdsong
     spoken:
-    - ValyrianStandard
+    - Birdsong
+    requires:
+    - TauCetiBasic
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: ScratchTranslatorImplant
+  name: scratch standard translator implant
+  description: An implant giving the ability to understand and speak Scratch. Trill!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    understood:
+    - Scratch
+    spoken:
+    - Scratch
     requires:
     - TauCetiBasic
 

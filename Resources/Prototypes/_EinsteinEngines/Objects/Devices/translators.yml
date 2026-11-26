@@ -244,21 +244,38 @@
     setLanguageOnInteract: false
 
 - type: entity
-  id: ValyrianStandardTranslator
+  id: BirdsongTranslator
   parent: [ TranslatorPoweredBase ]
-  name: Valyrian Standard translator
-  description: Translates speech between Valyrian Standard and Tau-Ceti Basic. For talking to Harpies!
+  name: Birdsong Standard translator
+  description: Translates speech between Birdsong and Tau-Ceti Basic. For talking to Harpies!
   components:
   - type: HandheldTranslator
     spoken:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     understood:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     requires:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
+
+- type: entity
+  id: ScratchTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Scratch Standard translator
+  description: Translates speech between Scratch and Tau-Ceti Basic. For talking to Avalis!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Scratch
+    understood:
+    - TauCetiBasic
+    - Scratch
+    requires:
+    - TauCetiBasic
+    - Scratch
 
 - type: entity
   id: AzazibaTranslator

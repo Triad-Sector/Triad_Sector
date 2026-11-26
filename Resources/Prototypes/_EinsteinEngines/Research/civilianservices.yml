@@ -19,11 +19,12 @@
 #  - SolCommonTranslator
 #  - RootSpeakTranslator
 #  - MofficTranslator
-#  - ValyrianStandardTranslator
+#  - BirdsongTranslator
 #  - ChittinTranslator
 #  - NewKinPidginTranslator
 #  - SiikMaasTranslator
 #  - MarishTranslator
+   - ScratchTranslator
 #  technologyPrerequisites:
 #  - AdvancedEntertainment
 
@@ -46,7 +47,8 @@
 #  - SolCommonTranslatorImplanter
 #  - RootSpeakTranslatorImplanter
 #  - MofficTranslatorImplanter
-#  - ValyrianStandardTranslatorImplanter
+#  - BirdsongTranslatorImplanter
+   - ScratchTranslatorImplanter
 #  - ChittinTranslatorImplanter
 #  - SiikMaasTranslatorImplanter
 #  - MarishTranslatorImplanter

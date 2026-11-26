@@ -107,6 +107,13 @@
         Male: MaleAvali
         Female: FemaleAvali
         Unsexed: MaleAvali
+    - type: LanguageKnowledge # Einstein Engines - Language
+      speaks:
+      - TauCetiBasic
+      - Scratch
+      understands:
+      - TauCetiBasic
+      - Scratch
     - type: MovementSpeedModifier
       baseWeightlessAcceleration: 1.6 # Avalis are specifically built to fly in low-g environments
       baseWeightlessFriction: 1

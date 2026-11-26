@@ -127,10 +127,10 @@
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     understands:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
   - type: InstrumentVisuals
   - type: GenericVisualizer
     visuals:

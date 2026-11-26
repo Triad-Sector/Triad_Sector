@@ -10,7 +10,8 @@
   - MofficTranslator
   - XenoTranslator
   - AnimalTranslator
-  - ValyrianStandardTranslator
+  - BirdsongTranslator
+  - ScratchTranslator
   - ChittinTranslator
   - GaryTranslator # Mono
   - TerraSlavicTranslator # Mono
@@ -30,7 +31,8 @@
 #  - SolCommonTranslatorImplanter
   - RootSpeakTranslatorImplanter
   - MofficTranslatorImplanter
-  - ValyrianStandardTranslatorImplanter
+  - BirdsongTranslatorImplanter
+  - ScratchTranslatorImplanter
   - ChittinTranslatorImplanter
   - GaryTranslatorImplanter # Mono
   - TerraSlavicTranslatorImplanter # Triad

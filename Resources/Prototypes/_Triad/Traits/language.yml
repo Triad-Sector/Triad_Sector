@@ -176,3 +176,54 @@
     components:
     - type: ForeignerTrait
       baseTranslator: TranslatorForeigner
+
+# Hy'drav'tha, the Hydrakin language, able to be understood but impossible to be spoken by non-Hydrakin.
+- type: trait
+  id: UnderstandHydraspeak
+  name: trait-language-Hydraspeak-name
+  description: trait-language-Hydraspeak-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: false
+    languages:
+    - Hydraspeak
+
+# RootSpeak, the Diona language, comprised of creaks and rustles, able to be understood but unable to be spoken without... well being a tree.
+- type: trait
+  id: UnderstandRootSpeak
+  name: trait-language-RootSpeak-name
+  description: trait-language-RootSpeak-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: false
+    languages:
+    - RootSpeak
+
+# Birdsong, the Harpy language, comprised of music and song, able to be understood but unable to be spoken without possessing Harpies unique vocal cords.
+- type: trait
+  id: UnderstandBirdsong
+  name: trait-language-Birdsong-name
+  description: trait-language-Birdsong-desc
+  category: LanguageTraits
+  cost: 0
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:AddLanguagesEffect
+    understood: true
+    spoken: false
+    languages:
+    - Birdsong

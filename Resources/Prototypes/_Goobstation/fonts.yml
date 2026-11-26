@@ -18,7 +18,7 @@
 #  id: SourGummy
 #  path: /Fonts/_Goobstation/Sour_Gummy/SourGummy-Regular.ttf
 #
-#- type: font # Valyrian Standard (Harpies/Squackroaches)
-#  id: Delius
-#  path: /Fonts/_Goobstation/Delius/Delius-Regular.ttf
+#- type: font # Birdsong (Harpies/Squackroaches)
+#  id: Default
+#  path: /Fonts/NotoSans/NotoSans-Regular.ttf
 #
