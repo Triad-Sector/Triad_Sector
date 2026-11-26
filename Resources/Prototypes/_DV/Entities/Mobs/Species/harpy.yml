@@ -129,11 +129,11 @@
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     understands:
     - TauCetiBasic
-    - ValyrianStandard
-    naturalLanguage: ValyrianStandard
+    - Birdsong
+    naturalLanguage: Birdsong
   - type: InstrumentVisuals
   - type: GenericVisualizer
     visuals:

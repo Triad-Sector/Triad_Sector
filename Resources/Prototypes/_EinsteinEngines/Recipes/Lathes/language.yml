@@ -92,8 +92,18 @@
     Silver: 5
 
 - type: latheRecipe
-  id: ValyrianStandardTranslator
-  result: ValyrianStandardTranslator
+  id: BirdsongTranslator
+  result: BirdsongTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
+
+- type: latheRecipe
+  id: ScratchTranslator
+  result: ScratchTranslator
   completetime: 2
   materials:
     Steel: 500
@@ -242,8 +252,19 @@
     Silver: 50
 
 - type: latheRecipe
-  id: ValyrianStandardTranslatorImplanter
-  result: ValyrianStandardTranslatorImplanter
+  id: BirdsongTranslatorImplanter
+  result: BirdsongTranslatorImplanter
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 500
+    Plastic: 100
+    Gold: 50
+    Silver: 50
+
+- type: latheRecipe
+  id: ScratchTranslatorImplanter
+  result: ScratchTranslatorImplanter
   completetime: 2
   materials:
     Steel: 500
