@@ -73,20 +73,6 @@
                                                   Orientation="Vertical"
                                                   HorizontalExpand="True"
                                                   Margin="0 0 0 8"/>
-                                    <Button Name="RetrieveButton"
-                                            Text="{Loc 'shipyard-console-retrieve-button'}"
-                                            StyleClasses="ButtonSquare"
-                                            HorizontalExpand="True"
-                                            Margin="0 0 0 3"
-                                            Visible="False"/>
-                                    <Button Name="CancelTransferButton"
-                                            Text="{Loc 'shipyard-console-transfer-cancel-button'}"
-                                            StyleClasses="ButtonSquare"
-                                            HorizontalExpand="True"
-                                            Margin="0 0 0 3"
-                                            Visible="False"/>
-                                    <!-- Rename, Move and Transfer share a line, and the priced verbs get one each.
-                                            Both built by PopulateBerthDetail. -->
                                     <GridContainer Name="BerthTools"
                                                    Columns="3"
                                                    HSeparationOverride="3"

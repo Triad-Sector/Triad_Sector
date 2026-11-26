@@ -63,6 +63,9 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
         var hasAvailableShip = berths.Count > 0;
         NoShipsContainer.Visible = !hasAvailableShip;
         InfoContentContainer.Visible = hasAvailableShip;
+
+        BerthDetailPlaceholder.Visible = true;
+        BerthDetail.Visible = false;
     }
 
     private void SelectBerth(DrydockBerthInfo? berth)
@@ -102,11 +105,6 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
             BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-ship-class", DrydockText.Class(berth.OccupantSizeClass), null));
         if (berth.OccupantAppraisal is { } appraisal)
             BerthDetailLines.AddChild(DrydockText.CardLine("shipyard-console-detail-appraisal", BankSystemExtensions.ToSpesoString(appraisal), null));
-
-        RetrieveButton.Visible = false;
-
-        //foreach (var item in BerthShipTools(berth))
-        //    BerthTools.AddChild(BerthToolButton(item));
 
         foreach (var item in ShipVerbs(berth))
             BerthActions.AddChild(ShipyardConsoleMenu.BerthActionButton(item));
@@ -183,12 +181,6 @@ public sealed partial class LobbySavedShipsWindow : FancyWindow
         }
 
         return false;
-    }
-
-    public new void OpenCentered()
-    {
-        base.OpenCentered();
-        RequestBerthInfo?.Invoke();
     }
 
     protected override void ExitedTree()

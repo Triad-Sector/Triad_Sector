@@ -41,6 +41,30 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.High, $"{args.SenderSession} deleted their ship {shipName} (ID: {ev.ShipId}) permanently by using the lobby interface");
     }
 
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockTransferShipOwnerMessage(LobbyDrydockTransferShipOwnerMessage ev, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        var shipId = ev.ShipId;
+
+        var header = await _drydockStore.GetShipHeader(shipId);
+        var owner = player.UserId.UserId;
+
+        if (header != null && header.OwnerUserId != owner)
+            return;
+
+        if (header == null)
+            return;
+
+        if (header.State != DrydockShipState.Stored && header.State != DrydockShipState.Impounded)
+            return;
+
+        var result = await _drydockStore.TryChangeLocalShipOwner(shipId, owner, ev.Character, _gameTicker.RoundIdOrNull);
+
+        if (result == DrydockBerthResult.Success)
+            await ProcessBerthInfoRequest(player); // Re-send berth info data to the player
+    }
+
     internal async Task<(bool success, string shipName)> TryDeleteStoredShip(ICommonSession player, Guid shipId, string typedName)
     {
         var header = await _drydockStore.GetShipHeader(shipId);

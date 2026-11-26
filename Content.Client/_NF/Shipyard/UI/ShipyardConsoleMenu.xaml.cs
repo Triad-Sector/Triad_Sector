@@ -59,38 +59,19 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     // A reissue names the live hull; the server checks the account owns it and re-keys it to the card.
     public event Action<NetEntity>? OnReissueDeed;
 
-    /// <summary>
-    /// Triad: the viewer's account has a civilian ship out, so a paid purchase greys. Set from the
-    /// state before the listing is rebuilt; a voucher listing is never held back by it.
-    /// </summary>
     private bool _shipOutBlocksPurchase;
 
-    /// <summary>
-    /// Triad: the drydock is on, so a paid listing shows the vessel price plus the berth the
-    /// purchase charges with it. Set from the state before the listing is rebuilt.
-    /// </summary>
     private bool _drydockEnabled;
 
     /// <summary>
-    /// Triad: the viewing account, so the tab can tell the operator from everyone else looking.
-    /// One console state is shared by every viewer, so this is decided here.
+    /// The viewing account
     /// </summary>
     public Guid? LocalUserId;
 
-    // The offer clocks. The state carries seconds left as of when the server built it; the tab
-    // counts down from there between states rather than asking the server every second.
     private float _sinceState;
     private int _lastElapsed = -1;
 
-    // Storing a hull runs across many server ticks on a budget, and the server reports how far
-    // along it is to whoever pressed the button, by message rather than by republishing the whole
-    // console state. So the indicator draws a real percentage as soon as the first report lands;
-    // the dots are the fallback for the gap before it, and for a build where nothing reports.
-    //
-    // This counts seconds since the last sign of life, NOT seconds since the press: a sliced store
-    // is deliberately unbounded in wall clock, so a timeout measured from the press would hand the
-    // button back on a big hull while the store was still running. Cleared by the next state that
-    // says nothing is running.
+    // Progress bar indicator
     private readonly PendingOp _store = new();
 
     /// <summary>How long the indicator runs without a word from the server before giving the button back.</summary>
@@ -115,6 +96,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
 
     /// <summary>The berth rows of the last build, for moving the selection without rebuilding them.</summary>
     private readonly List<DrydockBerthRow> _berthRows = new();
+
+    private int? _lastBerthRowCount = null;
 
     // Triad: legacy import, the same pair for the import rows. An import is not sliced and reports
     // nothing, so its timer runs uninterrupted from the moment the payload is sent, which is after
@@ -946,6 +929,10 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         _importingRow = null;
         _lastCanRetrieve = canRetrieve;
 
+        // Reset the placeholder back to default
+        BerthDetailPlaceholder.Visible = true;
+        BerthDetail.Visible = false;
+
         foreach (var berth in berths)
         {
             var row = new DrydockBerthRow(berth, canRetrieve: false, _incoming.GetValueOrDefault(berth.BerthId), selectable: true);
@@ -985,7 +972,16 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         }
 
         DrawStoreButtons();
-        SelectBerth(berths.FirstOrDefault(b => b.BerthId == _selectedBerth?.BerthId));
+
+        var curCount = _berthRows.Count;
+
+        // Only select a berth if a berth wasn't deleted
+        if (_lastBerthRowCount <= curCount)
+            SelectBerth(berths.FirstOrDefault(b => b.BerthId == _selectedBerth?.BerthId));
+        else
+            _selectedBerth = null;
+
+        _lastBerthRowCount = curCount;
     }
 
     private void SelectBerth(DrydockBerthInfo? berth)

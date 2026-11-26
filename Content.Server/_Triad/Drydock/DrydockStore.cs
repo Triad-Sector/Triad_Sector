@@ -1922,10 +1922,8 @@ public sealed partial class DrydockStore
     }
 
     /// <summary>
-    /// The owner renames a stored ship. A row update only: the hull and its deed take the name
-    /// the next time the ship is retrieved. The old and new names go on the timeline, and the
-    /// old one stays searchable there. Conditional on the row still being stored, so a rename
-    /// cannot land on a hull a retrieve is stamping with the name it read a moment earlier.
+    /// The owner renames a stored ship. Only updates the row, as the name updates
+    /// the next time the ship is retrieved. Old names are stored on the history timeline.
     /// </summary>
     public Task<DrydockBerthResult> TryRenameShip(
         Guid shipGuid,
@@ -1969,6 +1967,58 @@ public sealed partial class DrydockStore
                 revision: ship.CurrentRevision,
                 roundId: roundId,
                 reason: $"{oldName} -> {newName}");
+
+            await db.SaveChangesAsync(token);
+            await tx.CommitAsync(token);
+            return DrydockBerthResult.Success;
+        }, ct);
+    }
+
+    /// <summary>
+    /// Attempts to transfer a ship to another character, that the player also owns.
+    /// </summary>
+    public Task<DrydockBerthResult> TryChangeLocalShipOwner(
+        Guid shipGuid,
+        Guid ownerUserId,
+        int newCharacter,
+        int? roundId,
+        CancellationToken ct = default)
+    {
+        return _db.RunTriadDbCommand(async (db, token) =>
+        {
+            await using var tx = await db.Database.BeginTransactionAsync(token);
+
+            var ship = await db.DrydockShip.AsNoTracking()
+                .Where(s => s.ShipGuid == shipGuid)
+                .Select(s => new { s.OwnerUserId, s.State, s.CharacterIndex, s.BerthId, s.CurrentRevision, s.ShipName })
+                .SingleOrDefaultAsync(token);
+
+            if (ship == null || ship.OwnerUserId != ownerUserId)
+                return DrydockBerthResult.NotFound;
+
+            if (ship.State != DrydockShipState.Stored)
+                return DrydockBerthResult.WrongState;
+
+            var now = DateTime.UtcNow;
+            var moved = await db.DrydockShip
+                .Where(s => s.ShipGuid == shipGuid && s.OwnerUserId == ownerUserId && (s.State == DrydockShipState.Stored || s.State == DrydockShipState.Impounded))
+                .ExecuteUpdateAsync(set => set
+                    .SetProperty(s => s.CharacterIndex, newCharacter)
+                    .SetProperty(s => s.UpdatedAt, now), token);
+
+            if (moved == 0)
+                return DrydockBerthResult.WrongState;
+
+            var oldCharacter = ship.CharacterIndex;
+            AddAudit(db, DrydockAuditAction.Transfer, now,
+                shipGuid: shipGuid,
+                berthId: ship.BerthId,
+                shipName: ship.ShipName,
+                actorUserId: ownerUserId,
+                subjectUserId: ownerUserId,
+                revision: ship.CurrentRevision,
+                roundId: roundId,
+                reason: $"Moved local character own from index {oldCharacter} to index {newCharacter}");
 
             await db.SaveChangesAsync(token);
             await tx.CommitAsync(token);

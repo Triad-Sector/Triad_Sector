@@ -36,4 +36,13 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
         var ev = new LobbyDrydockDeleteShipMessage(shipId, typed);
         RaiseNetworkEvent(ev);
     }
+
+    public void SendTransferShipOwnerMessage(Guid shipId, int character)
+    {
+        if (_state.CurrentState is not LobbyState)
+            return;
+
+        var ev = new LobbyDrydockTransferShipOwnerMessage(shipId, character);
+        RaiseNetworkEvent(ev);
+    }
 }

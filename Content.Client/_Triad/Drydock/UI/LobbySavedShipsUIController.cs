@@ -30,29 +30,23 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
         _system?.SendDeleteShipMessage(shipId, typed);
     }
 
+    private void SendTransferShipOwnerMessage(Guid shipId, int character)
+    {
+        _system?.SendTransferShipOwnerMessage(shipId, character);
+    }
+
     public void ToggleWindow()
     {
         if (_window == null)
         {
             _window = new LobbySavedShipsWindow();
             _window.OnClose += () => _window = null;
+            _window.OnTransferShip += SendTransferShipOwnerMessage;
             _window.OnDeleteShip += SendDeleteShipMessage;
             RequestBerthInfo();
 
-            //.CopyButton.OnPressed += _ =>
-            //{
-            //    _clipboard.SetText(_code.ToString());
-            //    _window.CopyButton.Text = Loc.GetString("rmc-ui-link-discord-account-copied");
-            //    _window.CopyButton.Disabled = true;
-            //    _disableUntil = _timing.RealTime.Add(TimeSpan.FromSeconds(3));
-            //};
-
             _window.OpenCentered();
 
-            //if (_code == default)
-            //    _window.CopyButton.Disabled = true;
-
-            //_net.ClientSendMessage(new LinkAccountRequestMsg());
             return;
         }
 

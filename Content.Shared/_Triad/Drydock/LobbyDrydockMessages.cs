@@ -21,4 +21,8 @@ public sealed class LobbyDrydockDeleteShipMessage(Guid shipId, string confirmTex
 }
 
 [Serializable, NetSerializable]
-public sealed class LobbyDrydockUiRefreshRequest : EntityEventArgs;
+public sealed class LobbyDrydockTransferShipOwnerMessage(Guid shipId, int character) : EntityEventArgs
+{
+    public Guid ShipId = shipId;
+    public int Character = character;
+}

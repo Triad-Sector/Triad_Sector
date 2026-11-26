@@ -1,21 +1,9 @@
-// Triad: drydock tab.
 using System.Numerics;
 using Robust.Client.Graphics;
-using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Maths;
 
 namespace Content.Client._Triad.Shipyard.UI;
 
-/// <summary>
-/// A button that drops a short menu for rare verbs, so each row carries one button. Used for Buy
-/// berth (shipyard console), and for Restore to…, the overflow menu, Grant berth and admin berth
-/// rows' three dots (drydock admin panel).
-///
-/// <para>The owning window replaces the items on every state, but an open menu keeps the entries
-/// and callbacks it opened with until it closes: its popup lives in the modal root, not under this
-/// button, so it outlives rebuilds or removal. The server rechecks every verb on receipt.</para>
-/// </summary>
 public sealed class DrydockMenuButton : Button
 {
     /// <summary>
@@ -77,7 +65,6 @@ public sealed class DrydockMenuButton : Button
             if (i > 0)
                 list.AddChild(DrydockText.RulePanel(item.DividerAbove ? SectionRule : DrydockText.RowRule));
 
-            // A flat row, not a button; the hover fill is painted by hand on the box inside.
             var entry = DrydockText.ItemRow(item, out var box);
 
             if (item.Enabled)
