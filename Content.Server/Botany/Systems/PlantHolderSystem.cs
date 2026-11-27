@@ -528,7 +528,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (component.Seed == null)
             return;
 
-        RemoveRemovedPlantGases(component.Seed);
+        MigrateSeed(component.Seed);
         // Triad End
 
         var environment = _atmosphere.GetContainingMixture(uid, true, true) ?? GasMixture.SpaceGas;
@@ -653,8 +653,9 @@ public sealed partial class PlantHolderSystem : EntitySystem
 
         CheckHealth(uid, component);
 
-        if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
-            AutoHarvest(uid, component);
+        // Triad - remove autoharvest
+        //if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
+        //    AutoHarvest(uid, component);
 
         // If enough time has passed since the plant was harvested, we're ready to harvest again!
         if (!component.Dead && component.Seed.ProductPrototypes.Count > 0)
@@ -1008,13 +1009,19 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Gas.Pluoxium,
     };
 
-    private static void RemoveRemovedPlantGases(SeedData seed)
+    // Plants aren't coded very well! This is a method that migrates big changes to seeds, especially with mutations.
+    private static void MigrateSeed(SeedData seed)
     {
+        // Remove the changed gases that emit from the plants
         foreach (var gas in RemovedPlantGases)
         {
             seed.ConsumeGasses.Remove(gas);
             seed.ExudeGasses.Remove(gas);
         }
+
+        // Give multi-harvest to old seeds with auto-harvest, and give it Repeat instead
+        if (seed.HarvestRepeat == HarvestType.SelfHarvest)
+            seed.HarvestRepeat = HarvestType.Repeat;
     }
 
     public void MarkHolderSeedAsChanged(Entity<PlantHolderComponent> holder)
