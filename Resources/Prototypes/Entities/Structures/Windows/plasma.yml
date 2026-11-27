@@ -51,7 +51,8 @@
   - type: StaticPrice
     price: 50 # Frontier: 100<50
   - type: RadiationBlocker
-    resistance: 2
+    resistance: 2 # Triad
+    linresistance: 0.1 # Triad: 10% Rad absorption
   - type: HitscanDiffractTarget # Mono - Causes diffraction
   - type: ShipRepairable
     repairTime: 4
@@ -111,7 +112,8 @@
   - type: StaticPrice
     price: 25 # Frontier:50<25
   - type: RadiationBlocker
-    resistance: 1
+    resistance: 1 # Triad 
+    linresistance: 0.05 # Triad- 5% radiation absorption.
   - type: HitscanDiffractTarget # Mono - Causes diffraction
   - type: ShipRepairable
     repairTime: 2
@@ -165,3 +167,6 @@
     graph: WindowDiagonal
     node: plasmaWindowDiagonal
   - type: HitscanDiffractTarget # Mono - Causes diffraction
+  - type: RadiationBlocker #Triad
+    resistance: 1 # Triad 
+    linresistance: 0.05 # Triad- 5% radiation absorption.

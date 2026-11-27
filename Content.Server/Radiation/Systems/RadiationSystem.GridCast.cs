@@ -206,6 +206,7 @@ public partial class RadiationSystem
         if (!_resistanceQuery.TryGetComponent(gridUid, out var resistance))
             return ray;
         var resistanceMap = resistance.ResistancePerTile;
+        var linresistanceMap = resistance.LinResistancePerTile; //triad
 
         // get coordinate of source and destination in grid coordinates
 
@@ -234,8 +235,9 @@ public partial class RadiationSystem
         while (line.MoveNext())
         {
             var point = line.Current;
-            if (!resistanceMap.TryGetValue(point, out var resData))
+            if (!resistanceMap.TryGetValue(point, out var resData) & !linresistanceMap.TryGetValue(point, out var linresData)) //triad
                 continue;
+            ray.Rads -= ray.Rads * linresData; //triad
             ray.Rads -= resData;
 
             // save data for debug
@@ -280,7 +282,8 @@ public partial class RadiationSystem
 
             if (_blockerQuery.TryComp(xform.ParentUid, out var blocker))
             {
-                rads -= blocker.RadResistance;
+                rads -= (blocker.RadLinearResistance * rads); // Triad - added linear rad resistance (how radio-insulation works irl) to make larger doses have a managable solution.
+                rads -= blocker.RadResistance;  // Triad
                 if (rads < 0)
                     return 0;
             }
