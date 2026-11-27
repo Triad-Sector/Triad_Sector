@@ -108,3 +108,13 @@
     stateDoorClosed: tdf_chief_door
   - type: AccessReader
     access: [["TdfChiefEnforcer"]]
+
+# Director of Care
+- type: entity
+  parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, NFLockerBaseSecure, LockerChiefMedicalOfficer]
+  id: LockerDirectorOfCare
+  name: director of care's locker
+  suffix: Director of Care
+  components:
+  - type: AccessReader
+    access: [[ "ChiefMedicalOfficer" ]]

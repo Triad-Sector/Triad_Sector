@@ -16,7 +16,7 @@
   - TdfCadetPda
   - ContractorWallet
   - ContractorCartridge
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - ContractorFun
   - ContractorTrinkets
   - ContractorBureaucracy
@@ -45,7 +45,7 @@
   - TdfPda
   - ContractorWallet
   - ContractorCartridge
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - ContractorFun
   - ContractorTrinkets
   - ContractorBureaucracy
@@ -74,7 +74,7 @@
   - TdfMedicPDA
   - ContractorWallet
   - ContractorCartridge
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - ContractorFun
   - ContractorTrinkets
   - ContractorBureaucracy
@@ -103,7 +103,7 @@
   - TdfPatrolTeamLeaderPda
   - ContractorWallet
   - ContractorCartridge
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - ContractorFun
   - SeniorOfficerTrinkets
   - ContractorBureaucracy
@@ -132,7 +132,7 @@
   - TdfLieutenantPda
   - ContractorWallet
   - ContractorCartridge
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - ContractorFun
   - SeniorOfficerTrinkets
   - ContractorBureaucracy
@@ -162,7 +162,7 @@
   - ContractorWallet
   - ContractorCartridge
   - ContractorFun
-  - ContractorEncryptionKey
+  - TDFEncryptionKey
   - SeniorOfficerTrinkets
   - ContractorBureaucracy
   - NfsdSpeciesSpecific

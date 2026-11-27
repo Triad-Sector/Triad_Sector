@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 287.0.0
+  engineVersion: 289.0.7
   forkId: ""
   forkVersion: ""
-  time: 08/19/2026 01:05:35
-  entityCount: 1452
+  time: 11/27/2026 15:47:27
+  entityCount: 1451
 maps: []
 grids:
 - 1
@@ -52,6 +52,8 @@ entities:
     components:
     - type: MetaData
       name: Behir
+    - type: Transform
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -89,9 +91,9 @@ entities:
     - type: ThermalSignature
     - type: SpreaderGrid
       spreadQueues:
-        Smoke: []
-        Puddle: []
         MetalFoam: []
+        Puddle: []
+        Smoke: []
         Kudzu: []
     - type: Shuttle
       dampingModifier: 0.25
@@ -1612,8 +1614,7 @@ entities:
     components:
     - type: Transform
       parent: 4
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
+    - type: Action
       container: 4
   - uid: 12
     mapInit: true
@@ -1621,8 +1622,7 @@ entities:
     components:
     - type: Transform
       parent: 11
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
+    - type: Action
       container: 11
 - proto: AirAlarm
   entities:
@@ -5864,14 +5864,6 @@ entities:
 - proto: EncryptionKeyCommon
   entities:
   - uid: 733
-    components:
-    - type: Transform
-      parent: 732
-    - type: Physics
-      canCollide: False
-- proto: EncryptionKeyMedical
-  entities:
-  - uid: 734
     components:
     - type: Transform
       parent: 732
@@ -10578,7 +10570,6 @@ entities:
           ents:
           - 733
           - 735
-          - 734
           showEnts: False
           occludes: True
         machine_board: !type:Container
