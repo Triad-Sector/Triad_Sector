@@ -192,6 +192,14 @@
   name: TDF heavy remote sentry turret
 
 - type: entity
+  parent: BallisticTurretHeavyAITDF
+  id: BallisticTurretHeavyAITDFEnabled
+  suffix: Remote, Enabled
+  components:
+  - type: DeployableTurret
+    startEnabled: true
+
+- type: entity
   parent:
   - BaseTDFTurretSettings
   - BaseGodmodeWhenNoTDF
@@ -273,6 +281,22 @@
   - type: Repairable
     doAfterDelay: 10
     allowSelfRepair: false
+
+- type: entity
+  parent: LaserTurretLightAITDF
+  id: LaserTurretLightAITDFEnabledLessLethal
+  suffix: Remote, Enabled, Less Lethal
+  components:
+  - type: DeployableTurret
+    startEnabled: true
+
+- type: entity
+  parent: LaserTurretLightAITDFEnabledLessLethal
+  id: LaserTurretLightAITDFEnabledLethal
+  suffix: Remote, Enabled, Lethal
+  components:
+  - type: BatteryWeaponFireModes
+    currentFireMode: 1
 
 - type: deviceFrequency
   id: TurretControlAITDF
