@@ -24,6 +24,7 @@ public sealed partial class PointDiskConsoleSystem : EntitySystem
         SubscribeLocalEvent<PointDiskConsoleComponent, PointDiskConsolePrint1KDiskMessage>(OnPrint1KDisk);
         SubscribeLocalEvent<PointDiskConsoleComponent, PointDiskConsolePrint5KDiskMessage>(OnPrint5KDisk);
         SubscribeLocalEvent<PointDiskConsoleComponent, PointDiskConsolePrint10KDiskMessage>(OnPrint10KDisk);
+        SubscribeLocalEvent<PointDiskConsoleComponent, PointDiskConsolePrint140KDiskMessage>(OnPrint140KDisk);
         SubscribeLocalEvent<PointDiskConsoleComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<PointDiskConsoleComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
         SubscribeLocalEvent<PointDiskConsoleComponent, BeforeActivatableUIOpenEvent>(OnBeforeUiOpen);
@@ -50,6 +51,9 @@ public sealed partial class PointDiskConsoleSystem : EntitySystem
 
             if (printing.Disk10K)
                 Spawn(console.Disk10KPrototype, xform.Coordinates);
+
+            if (printing.Disk140K)
+                Spawn(console.Disk140KPrototype, xform.Coordinates);
         }
     }
 
@@ -114,6 +118,27 @@ public sealed partial class PointDiskConsoleSystem : EntitySystem
         UpdateUserInterface(uid, component);
     }
 
+    private void OnPrint140KDisk(EntityUid uid, PointDiskConsoleComponent component, PointDiskConsolePrint140KDiskMessage args)
+    {
+        if (HasComp<PointDiskConsolePrintingComponent>(uid))
+            return;
+
+        if (!_research.TryGetClientServer(uid, out var server, out var serverComp))
+            return;
+
+        if (serverComp.Points < component.PricePer140KDisk)
+            return;
+
+        _research.ModifyServerPoints(server.Value, -component.PricePer140KDisk, serverComp);
+        _audio.PlayPvs(component.PrintSound, uid);
+
+        var printing = EnsureComp<PointDiskConsolePrintingComponent>(uid);
+        printing.Disk140K = true;
+        printing.FinishTime = _timing.CurTime + component.PrintDuration;
+        UpdateUserInterface(uid, component);
+    }
+
+
     private void OnPointsChanged(EntityUid uid, PointDiskConsoleComponent component, ref ResearchServerPointsChangedEvent args)
     {
         UpdateUserInterface(uid, component);
@@ -149,7 +174,10 @@ public sealed partial class PointDiskConsoleSystem : EntitySystem
         var canPrint10K = !(TryComp<PointDiskConsolePrintingComponent>(uid, out var printing10K) && printing10K.FinishTime >= _timing.CurTime) &&
                        totalPoints >= component.PricePer10KDisk;
 
-        var state = new PointDiskConsoleBoundUserInterfaceState(totalPoints, component.PricePer1KDisk, component.PricePer5KDisk, component.PricePer10KDisk, canPrint1K, canPrint5K, canPrint10K);
+        var canPrint140K = !(TryComp<PointDiskConsolePrintingComponent>(uid, out var printing140K) && printing140K.FinishTime >= _timing.CurTime) &&
+                          totalPoints >= component.PricePer140KDisk;
+
+        var state = new PointDiskConsoleBoundUserInterfaceState(totalPoints, component.PricePer1KDisk, component.PricePer5KDisk, component.PricePer10KDisk, component.PricePer140KDisk, canPrint1K, canPrint5K, canPrint10K, canPrint140K);
         _ui.SetUiState(uid, PointDiskConsoleUiKey.Key, state);
     }
 

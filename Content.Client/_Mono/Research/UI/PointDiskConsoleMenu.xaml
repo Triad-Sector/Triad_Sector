@@ -3,7 +3,7 @@
                      xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                      Title="{Loc 'point-disk-ui-name'}"
                      MinSize="400 260"
-                     SetSize="400 260">
+                     SetSize="400 300">
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   VerticalExpand="True"
@@ -37,6 +37,13 @@
                 <Button
                     Name="Print10KButton"
                     Text="{Loc 'point-disk-ui-print-10k-button'}"
+                    MaxWidth="240"
+                    HorizontalAlignment="Center"
+                    VerticalExpand="False">
+                </Button>
+                <Button
+                    Name="Print140KButton"
+                    Text="{Loc 'point-disk-ui-print-140k-button'}"
                     MaxWidth="240"
                     HorizontalAlignment="Center"
                     VerticalExpand="False">
