@@ -24,12 +24,12 @@ public sealed partial class RattleComponent : Component
     // The message that the implant will send when dead
     [DataField("deathMessage")]
     public LocId DeathMessage = "deathrattle-implant-dead-message";
-    
+
     // The message that the implant will send when revived from death // Mono
     [DataField("reviveMessage")]
     public LocId ReviveMessage = "deathrattle-implant-revive-message";
 
-    // Triad: Add recurring rattle
+    // Triad: Add recurring rattle and backup rattle
     // The message that the implant will send IF they are still dead
     [DataField]
     public LocId StillDeadMessage = "deathrattle-implant-still-dead-message";
@@ -44,6 +44,23 @@ public sealed partial class RattleComponent : Component
 
     // The duration of the trigger's delay.
     [DataField]
-    public TimeSpan RetriggerDelay = TimeSpan.FromMinutes(5);
+    public TimeSpan RetriggerDelay = TimeSpan.FromMinutes(1); // Set to 1 for testing, change to 5 before merge
+
+    // Whether the backup trigger mechanic is enabled
+    [DataField]
+    public bool BackupTrigger = false;
+
+    // The channel the backup trigger will be broadcast on
+    [DataField]
+    public ProtoId<RadioChannelPrototype> BackupRadioChannel = "Common";
+
+    // The time to start backup triggers.
+    [DataField]
+    public TimeSpan StartBackupTrigger = TimeSpan.Zero;
+
+    // The delay from death upon which the backup trigger activates
+    [DataField]
+    public TimeSpan BackupTriggerDelay = TimeSpan.FromMinutes(1); // Set to 1 for testing, change to 10 before merge
+
     // End Triad
 }

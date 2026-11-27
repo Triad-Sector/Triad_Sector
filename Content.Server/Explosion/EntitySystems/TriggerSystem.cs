@@ -296,6 +296,7 @@ namespace Content.Server.Explosion.EntitySystems
             if (mobstate.CurrentState != MobState.Alive)
             {
                 var radioChannel = _prototypeManager.Index(component.RadioChannel);
+                var backupRadioChannel = _prototypeManager.Index(component.BackupRadioChannel); // Triad, used for backup channel
                 var language = _prototypeManager.Index(component.Language);
                 switch (mobstate.CurrentState)
                 {
@@ -309,10 +310,13 @@ namespace Content.Server.Explosion.EntitySystems
                     case MobState.Dead:
                     {
                         _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, radioChannel, uid, null, language); // Triad
-                        // Triad: Set information on initial rattle
+                        // Triad: Set information on initial rattle and handles backup rattle
                         component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+                        component.StartBackupTrigger = _timing.CurTime + component.BackupTriggerDelay; // Sets time for backup to start
                         if (component.DeathTime == TimeSpan.Zero)
                             component.DeathTime = _timing.CurTime;
+                        if (_timing.CurTime >= component.StartBackupTrigger && component.BackupTrigger == true) // Pings backup rattle if the time has been long enough and the implant has it
+                            _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, backupRadioChannel, uid, null, language);
                         // End Triad
                         break;
                     }
