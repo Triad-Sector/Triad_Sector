@@ -6420,3 +6420,12 @@ Entries:
   id: 2751
   time: '2026-11-24T22:48:54.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/850
+- author: creaturecomforts-now
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the Sanitater modsuit to be a more interesting tool for
+        paramedics.
+  id: 2752
+  time: '2026-11-27T01:09:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/838

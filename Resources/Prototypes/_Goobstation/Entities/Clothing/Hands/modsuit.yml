@@ -107,7 +107,7 @@
   parent: ClothingModsuitGauntletsBase
   id: ClothingModsuitGauntletsParamedic
   name: sanitater modsuit gauntlets
-  description: Black and white modular suit gloves for gripping percs and patients tight. Insulated.
+  description: Black and white modular suit gloves for gripping percs and patients tight. Integrated cautery pads for less welding accidents. #Triad: Edited description to explain mechanics.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -115,11 +115,10 @@
   - type: MeleeWeapon # Mono edit
     canWideSwing: false
     autoAttack: true
-    attackRate: 3
+    attackRate: 2.2 #Triad: Slightly faster than brass knuckles, 3 is really high.
     damage:
-      groups:
-        Burn: -4
-        Brute: -3
+      types:
+        Heat: 5 #Triad: Now cauterize with heat damage instead of healing.
   - type: SealableClothingVisuals
     spriteLayer: sealed
     clothingVisuals:

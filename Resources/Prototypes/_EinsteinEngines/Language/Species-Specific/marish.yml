@@ -10,8 +10,8 @@
     - chat-speech-verb-marish
   obfuscation:
     !type:SyllableObfuscation
-    minSyllables: 2
-    maxSyllables: 5
+    minSyllables: 1
+    maxSyllables: 4
     replacement:
     - mar
     - mwrrr
