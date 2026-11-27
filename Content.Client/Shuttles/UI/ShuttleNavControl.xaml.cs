@@ -890,12 +890,12 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
 
         #region Mono
         // Draw radar line
-        // First, figure out which angle to draw.
-        var updateRatio = _updateAccumulator / RadarUpdateInterval;
+        //// First, figure out which angle to draw.
+        //var updateRatio = _updateAccumulator / RadarUpdateInterval;
 
-        Angle angle = updateRatio * Math.Tau;
-        var origin = ScalePosition(-new Vector2(Offset.X, -Offset.Y));
-        handle.DrawLine(origin, origin + angle.ToVec() * ScaledMinimapRadius * 1.42f, Color.Red.WithAlpha(0.1f));
+        //Angle angle = updateRatio * Math.Tau;
+        //var origin = ScalePosition(-new Vector2(Offset.X, -Offset.Y));
+        //handle.DrawLine(origin, origin + angle.ToVec() * ScaledMinimapRadius * 1.42f, Color.Red.WithAlpha(0.1f));
 
         // Get blips
         var rawBlips = _blips.GetCurrentBlips();

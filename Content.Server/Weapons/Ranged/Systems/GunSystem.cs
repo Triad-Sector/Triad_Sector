@@ -184,7 +184,8 @@ public sealed partial class GunSystem : SharedGunSystem
                     };
                     RaiseLocalEvent(ent.Value, ref hitscanEv);
 
-                    Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
+                    if (!HasComp<RAC30LoopingSoundComponent>(gunUid))
+                        Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
                     // Mono start
                     Spawn(hitscanammo.CasingPrototype, fromEnt);
                     Del(ent);
@@ -228,7 +229,8 @@ public sealed partial class GunSystem : SharedGunSystem
             }
 
             MuzzleFlash(gunUid, ammoComp, mapDirection.ToAngle(), user);
-            Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
+            if (!HasComp<RAC30LoopingSoundComponent>(gunUid))
+                Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
         }
     }
 
