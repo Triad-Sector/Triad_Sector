@@ -74,7 +74,6 @@
         Airloss: -1
 
 - type: entity
-  save: false
   id: MobLaserReflect
   abstract: true
   components:
@@ -477,7 +476,7 @@
     - DoorBumpOpener
     - CannotSuicide
   - type: FTLKnockdownImmune
-  
+
 # Mono edit - Faction overwriting fix
 # A simpler base for extending existing mobs (e.g. carp, kangaroos, snakes, xenos)
 - type: entity

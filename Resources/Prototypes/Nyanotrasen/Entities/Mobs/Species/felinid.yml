@@ -54,6 +54,7 @@
     understands:
     - TauCetiBasic
     - Nekomimetic
+    naturalLanguage: Nekomimetic
   - type: DamageOnHighSpeedImpact # Landing on all fours!
     damage:
       types:

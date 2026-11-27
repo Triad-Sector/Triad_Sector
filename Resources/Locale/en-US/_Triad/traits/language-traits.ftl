@@ -15,3 +15,6 @@ trait-language-triadian-desc =
     Due to the overwhelming amount of Tau speakers in the Triad Sector, the language was proposed in 2814 by CDF higher-ups to make information breaches by the Coalition less effective.
     Phonetically, it sounds similar to Tau; but is almost incomprehensible to Tau speakers because of its extremely different structure. Very few words between Triadian and Tau are mutually shared.
     Nowadays, it is one of the official languages of the Triad Sector, spoken by the Triad Sector Government, TFA officials, and the TDF.
+
+trait-language-no-natural-language-name = No Natural Language
+trait-language-no-natural-language-desc = You cannot speak the language of your species' culture. You either grew up outside its culture, or never learned it due to some circumstances.

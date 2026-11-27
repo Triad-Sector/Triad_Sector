@@ -21,4 +21,10 @@ public sealed partial class LanguageKnowledgeComponent : Component, ITransferred
     /// </summary>
     [DataField("understands", required: true)]
     public List<ProtoId<LanguagePrototype>> UnderstoodLanguages = new();
+
+    /// <summary>
+    ///     Triad - The natural (species) language of the entity.
+    /// </summary>
+    [DataField]
+    public ProtoId<LanguagePrototype>? NaturalLanguage = null;
 }
