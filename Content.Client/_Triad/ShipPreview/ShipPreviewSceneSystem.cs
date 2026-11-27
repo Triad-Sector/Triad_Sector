@@ -34,6 +34,7 @@ public sealed partial class ShipPreviewSceneSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MetaDataComponent, ComponentInit>(OnEntityInit);
+        InitializeMigrations();
     }
 
     public override void Shutdown()
