@@ -6,11 +6,10 @@
 - type: entity
   parent: TelecomServer
   id: TelecomServerFilledSciencePOI
-  suffix: Filled Science, Sec, Shortband
+  suffix: Filled Science, Shortband
   components:
   - type: ContainerFill
     containers:
       key_slots:
       - EncryptionKeyScience
-      - EncryptionKeySecurity
       - EncryptionKeyTraffic

@@ -40,6 +40,9 @@ uplink-security-techfab-desc = A circuit board for a TDF Techfab. Allows the pro
 uplink-security-key-name = TDF Encryption Keys
 uplink-security-key-desc = A box of 4 encryption keys that give access to the TDF radio channel.
 
+uplink-security-key-fireteam-name = TDF Master Fireteam Encryption Key
+uplink-security-key-fireteam-desc = An encryption key allowing access to all three TDF fireteam channels. Do not let this fall into enemy hands, or you could find yourself without any channels to safely speak on!
+
 uplink-security-4-6x30mm-box-name = 4.6x30mm FMJ Ammo Box
 uplink-security-4-6x30mm-box-desc = A box containing 240 rounds of 4.6x30mm FMJ.
 uplink-security-45ACP-box-name = 45 ACP FMJ Ammo Box

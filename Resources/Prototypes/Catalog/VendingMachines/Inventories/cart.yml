@@ -14,7 +14,7 @@
     EncryptionKeyEngineering: 2
     EncryptionKeyMedical: 2
     EncryptionKeyScience: 2
-    EncryptionKeySecurity: 1
+    #EncryptionKeySecurity: 1 Triad: Removed Colonial security and their key.
     EncryptionKeyService: 3
   contrabandInventory:
     BalloonNT: 2

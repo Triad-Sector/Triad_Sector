@@ -678,27 +678,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityKey
-  name:  uplink-security-key-name
-  description: uplink-security-key-desc
-  productEntity: BoxEncryptionKeyTdf
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-    - !type:BuyerJobCondition
-      whitelist:
-       - TdfChiefEnforcer
-       - TdfLieutenant
-       - TdfPatrolTeamLeader
-
-- type: listing
   id: UplinkSecurityMedicalAssembler
   name:  uplink-security-medical-assembler-name
   description: uplink-security-medical-assembler-desc
@@ -1368,3 +1347,46 @@
       whitelist:
         tags:
           - SecurityUplink
+
+# PTL, LT, CE exclusive
+- type: listing
+  id: UplinkSecurityKey
+  name:  uplink-security-key-name
+  description: uplink-security-key-desc
+  productEntity: BoxEncryptionKeyTdf
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - TdfChiefEnforcer
+    - TdfLieutenant
+    - TdfPatrolTeamLeader
+
+- type: listing
+  id: UplinkSecurityAllFireteamKey
+  name:  uplink-security-key-fireteam-name
+  description: uplink-security-key-fireteam-desc
+  productEntity: EncryptionKeyTdfAll
+  icon: { sprite: _Triad/Objects/Devices/encryption_keys.rsi, state: tdf_all_label }
+  cost:
+    TriadCommerceCredit: 5
+  categories:
+  - UplinkSecurityUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - TdfChiefEnforcer
+    - TdfLieutenant
+    - TdfPatrolTeamLeader

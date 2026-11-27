@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Nox38 for space station 14",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {"name": "tdf_none_label"},
+    {"name": "tdf_alpha_label"},
+    {"name": "tdf_bravo_label"},
+    {"name": "tdf_charlie_label"},
+    {"name": "tdf_all_label"}
+  ]
+}

@@ -1,9 +1,30 @@
 - type: radioChannel
-  id: Nfsd # TDF channel
+  id: Nfsd # Main TDF channel. Renaming it would change a billion files, so this is easier.
   name: chat-radio-tdf
   keycode: 's'
-  frequency: 1459
+  frequency: 1879
   color: "#FFD580"
+
+- type: radioChannel
+  id: TDF1 # TDF exclusive channel for fireteam 1.
+  name: chat-radio-tdf-1
+  keycode: 'a'
+  frequency: 1880
+  color: "#d42f1e"
+
+- type: radioChannel
+  id: TDF2 # TDF exclusive channel for fireteam 2.
+  name: chat-radio-tdf-2
+  keycode: 'z'
+  frequency: 1881
+  color: "#0f7ddb"
+
+- type: radioChannel
+  id: TDF3 # TDF exclusive channel for fireteam 3.
+  name: chat-radio-tdf-3
+  keycode: 'x'
+  frequency: 1882
+  color: "#117811"
 
 - type: radioChannel
   id: SolarianDirective

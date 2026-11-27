@@ -28,6 +28,10 @@
     LogProbeCartridge: 5
     TrackingImplanter: 5
     Binoculars: 5
+    EncryptionKeyTdf: 20
+    EncryptionKeyTdf1: 10
+    EncryptionKeyTdf2: 10
+    EncryptionKeyTdf3: 10
   contrabandInventory:
     FoodDonutHomer: 3
     FoodBoxDonut: 3
