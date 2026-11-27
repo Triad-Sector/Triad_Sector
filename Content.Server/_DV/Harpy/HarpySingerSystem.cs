@@ -38,11 +38,8 @@ namespace Content.Server._DV.Harpy
             SubscribeLocalEvent<InstrumentComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
             SubscribeLocalEvent<GotEquippedEvent>(OnEquip);
             SubscribeLocalEvent<EntityZombifiedEvent>(OnZombified);
-            SubscribeLocalEvent<InstrumentComponent, KnockedDownEvent>(OnKnockedDown);
-            SubscribeLocalEvent<InstrumentComponent, StunnedEvent>(OnStunned);
             SubscribeLocalEvent<InstrumentComponent, SleepStateChangedEvent>(OnSleep);
             SubscribeLocalEvent<InstrumentComponent, StatusEffectAddedEvent>(OnStatusEffect);
-            SubscribeLocalEvent<InstrumentComponent, DamageChangedEvent>(OnDamageChanged);
 
             // This is intended to intercept the UI event and stop the MIDI UI from opening if the
             // singer is unable to sing. Thus it needs to run before the ActivatableUISystem.
@@ -71,17 +68,6 @@ namespace Content.Server._DV.Harpy
         {
             CloseMidiUi(args.Target);
         }
-
-        private void OnKnockedDown(EntityUid uid, InstrumentComponent component, ref KnockedDownEvent args)
-        {
-            CloseMidiUi(uid);
-        }
-
-        private void OnStunned(EntityUid uid, InstrumentComponent component, ref StunnedEvent args)
-        {
-            CloseMidiUi(uid);
-        }
-
         private void OnSleep(EntityUid uid, InstrumentComponent component, ref SleepStateChangedEvent args)
         {
             if (args.FellAsleep)
@@ -91,35 +77,6 @@ namespace Content.Server._DV.Harpy
         private void OnStatusEffect(EntityUid uid, InstrumentComponent component, StatusEffectAddedEvent args)
         {
             if (args.Key == "Muted")
-                CloseMidiUi(uid);
-        }
-
-        /// <summary>
-        /// Almost a copy of Content.Server.Damage.ForceSay.DamageForceSaySystem.OnDamageChanged.
-        /// Done so because DamageForceSaySystem doesn't output an event, and my understanding is
-        /// that we don't want to change upstream code more than necessary to avoid merge conflicts
-        /// and maintenance overhead. It still reuses the values from DamageForceSayComponent, so
-        /// any tweaks to that will keep ForceSay consistent with singing interruptions.
-        /// </summary>
-        private void OnDamageChanged(EntityUid uid, InstrumentComponent instrumentComponent, DamageChangedEvent args)
-        {
-            if (!TryComp<DamageForceSayComponent>(uid, out var component) ||
-                args.DamageDelta == null ||
-                !args.DamageIncreased ||
-                args.DamageDelta.GetTotal() < component.DamageThreshold ||
-                component.ValidDamageGroups == null)
-                return;
-
-            var totalApplicableDamage = FixedPoint2.Zero;
-            foreach (var (group, value) in args.DamageDelta.GetDamagePerGroup(_prototype))
-            {
-                if (!component.ValidDamageGroups.Contains(group))
-                    continue;
-
-                totalApplicableDamage += value;
-            }
-
-            if (totalApplicableDamage >= component.DamageThreshold)
                 CloseMidiUi(uid);
         }
 
