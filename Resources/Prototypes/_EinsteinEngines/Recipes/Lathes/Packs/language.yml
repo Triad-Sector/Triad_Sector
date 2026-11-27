@@ -32,7 +32,6 @@
   - RootSpeakTranslatorImplanter
   - MofficTranslatorImplanter
   - BirdsongTranslatorImplanter
-  - ScratchTranslatorImplanter
   - ChittinTranslatorImplanter
   - GaryTranslatorImplanter # Mono
   - TerraSlavicTranslatorImplanter # Triad
