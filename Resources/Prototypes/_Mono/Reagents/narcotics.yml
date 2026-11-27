@@ -9,18 +9,17 @@
   metabolisms:
     Medicine:
       metabolismRate: 1
-      effects:
-      - !type:HealthChange
+      effects:                # Triad start
+      - !type:EvenHealthChange
         conditions:
         - !type:TotalDamage
           min: 5
         - !type:ReagentThreshold
           max: 5
         damage:
-          groups:
-            Burn: -3
-            Brute: -6 # its a painkiller
-            Toxin: -1
+          Burn: -3
+          Brute: -6 # its a painkiller
+          Toxin: -1            # Triad end
     Narcotic:
       metabolismRate: 1
       effects:
@@ -56,12 +55,12 @@
         probability: 0.05
         conditions:
         - !type:ReagentThreshold
-          min: 5
+          min: 6.5 # Triad
       - !type:Drunk
         boozePower: 15
         conditions:
         - !type:ReagentThreshold
-          min: 5
+          min: 6.5 # Triad
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -78,7 +77,7 @@
           types:
             Poison: 4
             Asphyxiation: 4.25 # from wikipedia - "The most dangerous adverse effect of fentanyl is respiratory depression"
-            Cellular: 1.5 # for fun
+            # Triad removal: Cellular: 1.5 # for fun (was not fun)
       - !type:PopupMessage
         conditions:
         - !type:ReagentThreshold
