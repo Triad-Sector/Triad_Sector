@@ -24,9 +24,9 @@ trait-language-Hydraspeak-desc =
     The spoken tongue of the Hydrakin, while impossible to speak without their unique vocal structure, is understandable to those that practice learning its odd nature of multiple meanings.
     The attentive ear can pick up on these differences, letting those that spend the time to learn it understand Hydrakin without need of a translator.
 
-trait-language-RootSpeak-name = Understand RootSpeak
+trait-language-RootSpeak-name = Understand Rootspeak
 trait-language-RootSpeak-desc =
-    "Spoken" by Diona, made up of creaks and rustling noises, RootSpeak is learnable with practice and persistence, if a bit harsh on the ear.
+    "Spoken" by Diona, made up of creaks and rustling noises, Rootspeak is learnable with practice and persistence, if a bit harsh on the ear.
     While unable to be properly spoken without being a Diona, it is possible to understand them, albeit at the cost of playfully being called a small orange creature from a story book.
 
 trait-language-Birdsong-name = Understand Birdsong

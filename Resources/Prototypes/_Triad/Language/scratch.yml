@@ -4,15 +4,12 @@
   id: Scratch
   isVisibleLanguage: true
   speech:
-    fontId: Default # Triad Edit - Can be changed in future.
-    fontSize: 13 # Triad Edit - Default I believe?
     color: "#ff850d"
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 5
     replacement:
-    
     - ra
     - ya
     - ma

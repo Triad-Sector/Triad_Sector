@@ -19,9 +19,8 @@ language-Triadian-description =
     Phonetically, it sounds similar to Tau; but is almost incomprehensible to Tau speakers because of its extremely different structure. Very few words between Triadian and Tau are mutually shared.
     Nowadays, it is one of the official languages of the Triad Sector, spoken by the Triad Sector Government, TFA officials, and the TDF.
 
-language-RootSpeak-name = RootSpeak
+language-RootSpeak-name = Rootspeak
 language-RootSpeak-description = The strange whistling-style language spoken by the Diona.
-
 
 language-Scratch-name = Scratch
 language-Scratch-description = 

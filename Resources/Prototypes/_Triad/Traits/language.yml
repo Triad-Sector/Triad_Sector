@@ -231,7 +231,7 @@
     languages:
     - Hydraspeak
 
-# RootSpeak, the Diona language, comprised of creaks and rustles, able to be understood but unable to be spoken without... well being a tree.
+# Rootspeak, the Diona language, comprised of creaks and rustles, able to be understood but unable to be spoken without... well being a tree.
 - type: trait
   id: UnderstandRootSpeak
   name: trait-language-RootSpeak-name

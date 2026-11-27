@@ -4,15 +4,14 @@
   id: Birdsong
   isVisibleLanguage: true
   speech:
-   # fontId: Default # Triad Edit - Changed to allow musical notes to appear without rendering error.
-   # fontSize: 14 # Triad Edit - Due to nature of the symbols, the size was increased slightly from 13 to 14.
-    color: "#46ce83" # Goob Edit - Original "#008ecc"
+    fontId: Default
+    fontSize: 14
+    color: "#46ce83"
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
     maxSyllables: 5
     replacement:
-    
     - ♪
     - ♫
     - ♪♫

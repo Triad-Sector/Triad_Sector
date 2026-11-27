@@ -99,36 +99,6 @@
 
 - type: entity
   parent: BaseSubdermalImplant
-  id: TauTranslatorImplant
-  name: tau translator implant
-  description: An implant giving the ability to understand and speak Tau. Kulmanra!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TranslatorImplant
-    understood:
-    - Tau
-    spoken:
-    - Tau
-    requires:
-    - TauCetiBasic
-
-- type: entity
-  parent: BaseSubdermalImplant
-  id: TriadianTranslatorImplant
-  name: triadian translator implant
-  description: An implant giving the ability to understand and speak Triadian. Binukuntae!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TranslatorImplant
-    understood:
-    - Triadian
-    spoken:
-    - Triadian
-    requires:
-    - TauCetiBasic
-
-- type: entity
-  parent: BaseSubdermalImplant
   id: NovuNedericTranslatorImplant
   name: novu-nederic translator implant
   description: An implant giving the ability to understand and speak Novu-Nederic. Hoezee!

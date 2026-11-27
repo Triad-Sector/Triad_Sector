@@ -78,8 +78,6 @@
     - BirdsongTranslatorImplanter
     - ScratchTranslatorImplanter
     - ChittinTranslatorImplanter
-    - TauTranslatorImplanter
-    - TriadianTranslatorImplanter
     - GaryTranslatorImplanter # Trait language
     - TerraSlavicTranslatorImplanter # Trait language
     #- SiikMaasTranslatorImplanter # No tajara here
