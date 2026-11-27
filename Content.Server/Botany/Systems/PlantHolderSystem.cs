@@ -1,6 +1,8 @@
+using System.Linq;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Botany.Components;
 using Content.Server.Kitchen.Components;
+using Content.Server.Labels;
 using Content.Server.Popups;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Atmos;
@@ -31,6 +33,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
 {
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private BotanySystem _botany = default!;
+    [Dependency] private LabelSystem _label = default!; // triad
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private MutationSystem _mutation = default!;
     [Dependency] private AppearanceSystem _appearance = default!;
@@ -95,26 +98,37 @@ public sealed partial class PlantHolderSystem : EntitySystem
             {
                 args.PushMarkup(Loc.GetString("plant-holder-component-nothing-planted-message"));
             }
-            else if (!component.Dead)
-            {
-                var displayName = Loc.GetString(component.Seed.DisplayName);
-                args.PushMarkup(Loc.GetString("plant-holder-component-something-already-growing-message",
-                    ("seedName", displayName),
-                    ("toBeForm", displayName.EndsWith('s') ? "are" : "is")));
-
-                if (component.Health <= component.Seed.Endurance / 2)
-                {
-                    args.PushMarkup(Loc.GetString(
-                        "plant-holder-component-something-already-growing-low-health-message",
-                        ("healthState",
-                            Loc.GetString(component.Age > component.Seed.Lifespan
-                                ? "plant-holder-component-plant-old-adjective"
-                                : "plant-holder-component-plant-unhealthy-adjective"))));
-                }
-            }
             else
             {
-                args.PushMarkup(Loc.GetString("plant-holder-component-dead-plant-matter-message"));
+                if(!component.Dead)
+                {
+                    var displayName = Loc.GetString(component.Seed.DisplayName);
+                    args.PushMarkup(Loc.GetString("plant-holder-component-something-already-growing-message",
+                        ("seedName", displayName),
+                        ("toBeForm", displayName.EndsWith('s') ? "are" : "is")));
+
+                    if (component.Health <= component.Seed.Endurance / 2)
+                    {
+                        args.PushMarkup(Loc.GetString(
+                            "plant-holder-component-something-already-growing-low-health-message",
+                            ("healthState",
+                                Loc.GetString(component.Age > component.Seed.Lifespan
+                                    ? "plant-holder-component-plant-old-adjective"
+                                    : "plant-holder-component-plant-unhealthy-adjective"))));
+                    }
+                }
+                else
+                {
+                    args.PushMarkup(Loc.GetString("plant-holder-component-dead-plant-matter-message"));
+                }
+
+                // triad: Show the plant's label
+                var label = component.SeedLabel;
+                var labelText = label == null
+                    ? Loc.GetString("plant-holder-component-something-no-label-message")
+                    : Loc.GetString("plant-holder-component-something-has-label-message", ("label", label));
+
+                args.PushMarkup(labelText);
             }
 
             if (component.WeedLevel >= 5)
@@ -160,6 +174,10 @@ public sealed partial class PlantHolderSystem : EntitySystem
                     return;
 
                 args.Handled = true;
+
+                // Triad: record the label of the seed
+                component.SeedLabel = _label.TryGetLabelString(args.Used) ?? null;
+
                 var name = Loc.GetString(seed.Name);
                 var noun = Loc.GetString(seed.Noun);
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-plant-success-message",
@@ -285,7 +303,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
             }
             component.Seed.Unique = false;
             var packetSeed = component.Seed;
-            var seed = _botany.SpawnSeedPacket(packetSeed, Transform(args.User).Coordinates, args.User, healthOverride);
+            var seed = _botany.SpawnSeedPacket(packetSeed, Transform(args.User).Coordinates, args.User, component.SeedLabel, healthOverride);
             _randomHelper.RandomOffset(seed, 0.25f);
             var displayName = Loc.GetString(component.Seed.DisplayName);
             _popup.PopupCursor(Loc.GetString("plant-holder-component-take-sample-message",
@@ -510,7 +528,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (component.Seed == null)
             return;
 
-        RemoveRemovedPlantGases(component.Seed); 
+        RemoveRemovedPlantGases(component.Seed);
         // Triad End
 
         var environment = _atmosphere.GetContainingMixture(uid, true, true) ?? GasMixture.SpaceGas;
@@ -626,7 +644,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         {
             var packetSeed = component.Seed;
             // will put it in the trays hands if it has any, please do not try doing this
-            _botany.SpawnSeedPacket(packetSeed, Transform(uid).Coordinates, uid);
+            _botany.SpawnSeedPacket(packetSeed, Transform(uid).Coordinates, uid, component.SeedLabel);
             RemovePlant(uid, component);
             component.ForceUpdate = true;
             Update(uid, component);
@@ -713,7 +731,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
                 return false;
             }
 
-            _botany.Harvest(component.Seed, user, component.YieldMod);
+            _botany.Harvest(component.Seed, user, component.SeedLabel, component.YieldMod);
             AfterHarvest(plantholder, component);
             return true;
         }
@@ -747,7 +765,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (component.Seed == null || !component.Harvest)
             return;
 
-        _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates);
+        _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates, component.SeedLabel);
         AfterHarvest(uid, component);
     }
 
@@ -802,6 +820,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
+        component.SeedLabel = null; // triad : reset the label
         component.YieldMod = 1;
         component.MutationMod = 1;
         component.PestLevel = 0;
@@ -977,7 +996,8 @@ public sealed partial class PlantHolderSystem : EntitySystem
         component.ForceUpdate = true;
         Update(uid, component);
     }
-    // Triad start hotfix for removed gases so they get removed from existing seeds
+
+    // Triad start
     private static readonly Gas[] RemovedPlantGases =
     {
         Gas.Tritium,
@@ -988,7 +1008,7 @@ public sealed partial class PlantHolderSystem : EntitySystem
         Gas.Pluoxium,
     };
 
-    private  static void RemoveRemovedPlantGases(SeedData seed)
+    private static void RemoveRemovedPlantGases(SeedData seed)
     {
         foreach (var gas in RemovedPlantGases)
         {
@@ -996,5 +1016,15 @@ public sealed partial class PlantHolderSystem : EntitySystem
             seed.ExudeGasses.Remove(gas);
         }
     }
-      // End Triad
+
+    public void MarkHolderSeedAsChanged(Entity<PlantHolderComponent> holder)
+    {
+        // Marks a seed as 'changed', to reset certain data.
+        var comp = holder.Comp;
+        if (comp.Seed == null)
+            return;
+
+        comp.SeedLabel = null;
+    }
+    // End Triad
 }

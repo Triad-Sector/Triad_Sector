@@ -6,6 +6,21 @@ accept-cryo-window-deny-button = Cancel
 accept-cryo-window-prompt-text-part = Enter cryo sleep and finish your shift?
 accept-cryo-window-title = Cryo Sleep Chamber
 
+# Warnings
+accept-cryo-window-prompt-shuttle-bag-warning = You have an active ship deed on your {$deed} in your {$storage}!
+accept-cryo-window-prompt-shuttle-many-bag-warning = You have an active ship deed on your {$deed} in your {$storage}, and more deeds elsewhere!
+accept-cryo-window-prompt-shuttle-pda-warning = Your ship is not stored! Unattended ships will be impounded.
+accept-cryo-window-prompt-shuttle-pda-and-bag-warning = Your ship is not stored or sold, and an active ship deed on your {$deed} in your {$storage}!
+accept-cryo-window-prompt-shuttle-pda-and-many-bag-warning = Your ship is not stored or sold, an active ship deed on your {$deed} in your {$storage}, and more deeds elsewhere!
+accept-cryo-window-prompt-one-item-warning = You have {$item} in your {$storage}!
+accept-cryo-window-prompt-two-items-warning = You have {$item1} in your {$storage1}, and {$item2} in your {$storage2}!
+accept-cryo-window-prompt-many-items-warning = You have {$item1} in your {$storage1}, {$item2} in your {$storage2}, and {$num-extra-items} important items elsewhere!
+accept-cryo-window-prompt-one-deposit-box-warning = You have an unstored safety deposit box!
+accept-cryo-window-prompt-many-deposit-boxes-warning = You have {$count} safety deposit boxes unstored!
+accept-cryo-window-prompt-uplink-warning = You have a {$uplink} in your {$storage} with {$amount} {$currency}!
+accept-cryo-window-prompt-unable-to-scan = Your inventory couldn't be scanned for important items due to an error.
+accept-cryo-window-prompt-hand-slot-name = hand
+
 cryo-wakeup-window-title = Waking up
 cryo-wakeup-window-accept-button = Accept
 cryo-wakeup-window-deny-button = Cancel

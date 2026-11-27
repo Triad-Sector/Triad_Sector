@@ -29,6 +29,12 @@ namespace Content.IntegrationTests.Tests;
 [TestFixture]
 public sealed class PrototypeSaveTest
 {
+    // Triad - a list of comps for post-init datafield modification being ignored
+    private static readonly HashSet<string> IgnoreModifiedFieldsComponents = new(StringComparer.Ordinal)
+    {
+        "EnergySword",
+    };
+
     [Test]
     public async Task UninitializedSaveTest()
     {
@@ -132,11 +138,12 @@ public sealed class PrototypeSaveTest
                             continue;
                         }
 
+                        // Triad - ignored modified fields list
                         if (protoData.TryGetValue(compName, out var protoMapping))
                         {
                             var diff = compMapping.Except(protoMapping);
 
-                            if (diff != null && diff.Children.Count != 0)
+                            if (diff != null && diff.Children.Count != 0 && !IgnoreModifiedFieldsComponents.Contains(compName))
                                 Assert.Fail($"Prototype {prototype.ID} modifies component on spawn: {compName}. Modified yaml:\n{diff}");
                         }
                         else

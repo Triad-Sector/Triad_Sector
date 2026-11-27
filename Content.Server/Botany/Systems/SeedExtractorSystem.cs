@@ -40,8 +40,6 @@ public sealed partial class SeedExtractorSystem : EntitySystem
         _popupSystem.PopupCursor(Loc.GetString("seed-extractor-component-interact-message", ("name", args.Used)),
             args.User, PopupType.Medium);
 
-        QueueDel(args.Used);
-        args.Handled = true;
 
         var amount = (int) _random.NextFloat(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1) * seedExtractor.SeedAmountMultiplier;
         var coords = Transform(uid).Coordinates;
@@ -52,8 +50,12 @@ public sealed partial class SeedExtractorSystem : EntitySystem
 
         for (var i = 0; i < amount; i++)
         {
-            _botanySystem.SpawnSeedPacket(packetSeed, coords, args.User);
+            _botanySystem.SpawnSeedPacket(packetSeed, coords, args.User, args.Used);
         }
+
+        // triad: moved after spawning new packets so that args.Used is still safe to read from to copy the label
+        QueueDel(args.Used);
+        args.Handled = true;
     }
 
     private void OnRefreshParts(EntityUid uid, SeedExtractorComponent seedExtractor, RefreshPartsEvent args)

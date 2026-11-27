@@ -60,6 +60,7 @@
     understands:
     - TauCetiBasic
     - Bubblish
+    naturalLanguage: Bubblish
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Slime

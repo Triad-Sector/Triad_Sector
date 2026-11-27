@@ -22,6 +22,7 @@
     price:
       TriadCommerceCredit: 1
   - type: SavingContraband
+  - type: WarnOnCryoSleep
 
 - type: entity
   parent: TriadCommerceCredit
@@ -87,6 +88,7 @@
   - type: CompanyAccessReader
     requiredCompany: TDF
     popupMessage: company-access-denied-tdf
+  - type: WarnOnCryoSleep
 
 - type: entity
   parent: BaseSecurityUplinkRadio

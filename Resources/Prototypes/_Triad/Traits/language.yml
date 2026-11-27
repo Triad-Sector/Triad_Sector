@@ -176,3 +176,43 @@
     components:
     - type: ForeignerTrait
       baseTranslator: TranslatorForeigner
+
+# No natural language. This removes your natural (species) language
+- type: trait
+  id: NoNaturalLanguage
+  name: trait-language-no-natural-language-name
+  description: trait-language-no-natural-language-desc
+  category: LanguageTraits
+  cost: 0
+  grantsCategorySlots:
+    LanguageTraits: 1
+  conditions:
+  - !type:IsSpeciesCondition
+    species: Human
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Avali
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Shadekin
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Ovinia
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Oni
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Chitinid
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Goblin
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Feroxi
+    invert: true
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+  - !type:RemoveNaturalLanguageTraitEffect

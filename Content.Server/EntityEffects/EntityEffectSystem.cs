@@ -258,6 +258,7 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
 
         _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
         plantHolderComp.Seed.Potency = Math.Max(plantHolderComp.Seed.Potency + args.Effect.Amount, 1);
     }
 
@@ -381,6 +382,7 @@ public sealed class EntityEffectSystem : EntitySystem
         if (currentValObj == null)
             return;
 
+        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
         if (member.FieldType == typeof(float))
         {
             var floatVal = (float)currentValObj;
@@ -433,6 +435,7 @@ public sealed class EntityEffectSystem : EntitySystem
                 args.Args.TargetEntity,
                 PopupType.SmallCaution
             );
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed.Seedless = true;
         }
     }
@@ -445,12 +448,14 @@ public sealed class EntityEffectSystem : EntitySystem
         if (_random.Prob(0.1f))
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed!.Lifespan++;
         }
 
         if (_random.Prob(0.1f))
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed!.Endurance++;
         }
     }
@@ -472,6 +477,7 @@ public sealed class EntityEffectSystem : EntitySystem
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
             _popup.PopupEntity(Loc.GetString("botany-plant-seedsrestored"), args.Args.TargetEntity);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed.Seedless = false;
         }
     }
@@ -487,6 +493,7 @@ public sealed class EntityEffectSystem : EntitySystem
         if (plantHolderComp.Seed.Potency < args.Effect.PotencyLimit)
         {
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed.Potency = Math.Min(plantHolderComp.Seed.Potency + args.Effect.PotencyIncrease, args.Effect.PotencyLimit);
 
             if (plantHolderComp.Seed.Potency > args.Effect.PotencySeedlessThreshold)
@@ -498,6 +505,7 @@ public sealed class EntityEffectSystem : EntitySystem
         {
             // Too much of a good thing reduces yield
             _plantHolder.EnsureUniqueSeed(args.Args.TargetEntity, plantHolderComp);
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantHolderComp)); // Triad - mark it as changed to reset the label
             plantHolderComp.Seed.Yield--;
         }
     }
@@ -868,6 +876,7 @@ public sealed class EntityEffectSystem : EntitySystem
         // Add a random amount of a random chemical to this set of chemicals
         if (randomChems != null)
         {
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
             var pick = _random.Pick<RandomFillSolution>(randomChems);
             var chemicalId = _random.Pick(pick.Reagents);
             var amount = _random.Next(1, (int)pick.Quantity);
@@ -895,6 +904,8 @@ public sealed class EntityEffectSystem : EntitySystem
 
         if (plantholder.Seed == null)
             return;
+
+        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
 
         // Frontier: List of gasses
         Gas[] gasList =
@@ -937,6 +948,8 @@ public sealed class EntityEffectSystem : EntitySystem
 
         if (plantholder.Seed == null)
             return;
+
+        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
 
         // Frontier, Funky: List of gasses
         Gas[] gasList =
@@ -981,9 +994,15 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
 
         if (plantholder.Seed.HarvestRepeat == HarvestType.NoRepeat)
+        {
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
             plantholder.Seed.HarvestRepeat = HarvestType.Repeat;
+        }
         else if (plantholder.Seed.HarvestRepeat == HarvestType.Repeat)
+        {
+            _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
             plantholder.Seed.HarvestRepeat = HarvestType.SelfHarvest;
+        }
     }
 
     private void OnExecutePlantSpeciesChange(ref ExecuteEntityEffectEvent<PlantSpeciesChange> args)
@@ -1004,6 +1023,7 @@ public sealed class EntityEffectSystem : EntitySystem
             return;
         }
 
+        _plantHolder.MarkHolderSeedAsChanged((args.Args.TargetEntity, plantholder)); // Triad - mark it as changed to reset the label
         plantholder.Seed = plantholder.Seed.SpeciesChange(protoSeed);
     }
 
