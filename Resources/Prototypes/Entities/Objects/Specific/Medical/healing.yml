@@ -316,10 +316,13 @@
   - type: Healing
     damageContainers:
     - Biological
+    # Triad: Changed bandages to a non-healing, quick to use bleeding stopper.
+    delay: 0.5
     damage:
       types:
-        Slash: -15 # Was 5
-        Piercing: -20 # Was 10, Buffed due to limb damage changes (Goobstation)
+        Slash: -1 # Triad: 5->1
+        Piercing: -2 # Triad: 10->2
+    # End Triad
     bloodlossModifier: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"

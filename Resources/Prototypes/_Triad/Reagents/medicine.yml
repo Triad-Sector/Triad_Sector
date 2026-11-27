@@ -1,0 +1,31 @@
+- type: reagent # Our own version of omnizine, to avoid players inheriting stockpiles of the stuff from the old, easy to obtain version
+  id: OmnizineTriad
+  name: reagent-name-omnizine
+  group: Medicine
+  desc: reagent-desc-omnizine
+  physicalDesc: reagent-physical-desc-soothing
+  flavor: medicine
+  color: "#fcf7f9"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 0
+          max: 20
+        damage:
+          Burn: -1.5
+          Toxin: -1.5
+          Airloss: -1.5
+          Brute: -1.5
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
+        damage:
+          groups:
+            Burn: 1
+            Toxin: 1
+            Airloss: 1
+            Brute: 1

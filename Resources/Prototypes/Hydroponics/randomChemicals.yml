@@ -4,7 +4,7 @@
   - quantity: 5
     weight: 0.5
     reagents:
-    - Omnizine
+    #- Omnizine Triad: Removed ability to get Omnizine through botany, to encourage the use of more specialized chems
     - Nocturine
     - Lexorin
     - Honk

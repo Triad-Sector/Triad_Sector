@@ -494,7 +494,7 @@
       pen:
         maxVol: 30
         reagents:
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 25
         - ReagentId: TranexamicAcid
           Quantity: 5
@@ -506,7 +506,8 @@
   - type: StaticPrice
     price: 500
   - type: Tag
-    tags: []
+    tags:
+      - Ungrindable # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: pen

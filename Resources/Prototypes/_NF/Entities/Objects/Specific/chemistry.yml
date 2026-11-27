@@ -55,9 +55,9 @@
   - type: SolutionContainerManager
     solutions:
       beaker:
-        maxVol: 300
+        maxVol: 150 # Triad: Nerfed from 300 -> 150
   - type: SolutionTransfer
-    maxTransferAmount: 300
+    maxTransferAmount: 150 # Triad: Nerfed from 300 -> 150
   - type: Item
     size: Tiny
     sprite: _NF/Objects/Specific/Chemistry/vial_bluespace.rsi
