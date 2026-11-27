@@ -2,7 +2,10 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Storage; // Triad
+using Content.Shared.Storage.EntitySystems; // Triad
 using Content.Shared.Timing;
+using Content.Shared.UserInterface;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Tiles; // Frontier
 using Robust.Shared.Map;
@@ -13,12 +16,15 @@ public abstract partial class SharedXenoArtifactSystem
 {
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     private void InitializeXAE()
     {
         SubscribeLocalEvent<XenoArtifactComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<XenoArtifactComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<XenoArtifactComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        // Triad: handle storage here to avoid its activation handler toggling the UI a second time
+        SubscribeLocalEvent<XenoArtifactComponent, ActivateInWorldEvent>(OnActivateInWorld, before: new[] { typeof(SharedStorageSystem) });
     }
 
     private void OnUseInHand(Entity<XenoArtifactComponent> ent, ref UseInHandEvent args)
@@ -41,6 +47,18 @@ public abstract partial class SharedXenoArtifactSystem
     {
         if (args.Handled || !args.Complex)
             return;
+
+        if (TryComp<StorageComponent>(ent, out var storage) && storage.OpenOnActivate)
+        {
+            if (_ui.IsUiOpen(ent.Owner, StorageComponent.StorageUiKey.Key, args.User))
+                _ui.CloseUi(ent.Owner, StorageComponent.StorageUiKey.Key, args.User);
+            else
+                _storage.OpenStorageUI(ent.Owner, args.User, storage, silent: false);
+
+            args.Handled = true;
+            TryActivateXenoArtifact(ent, args.User, args.Target, Transform(args.Target).Coordinates);
+            return;
+        }
 
         args.Handled = TryActivateXenoArtifact(ent, args.User, args.Target, Transform(args.Target).Coordinates);
     }
