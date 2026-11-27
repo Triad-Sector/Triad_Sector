@@ -138,12 +138,12 @@
     soundHit:
       collection: AlienClaw
     animation: WeaponArcClaw
-    attackRate: 3
+    attackRate: 2
     autoAttack: true
     damage:
       types:
-        Slash: 1.5
-        Piercing: 1.5
+        Slash: 5
+        Piercing: 5
     altDisarm: false
   - type: Speech
     speechSounds: Harpy
