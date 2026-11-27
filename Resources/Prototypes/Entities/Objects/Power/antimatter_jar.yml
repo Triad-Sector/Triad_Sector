@@ -13,6 +13,8 @@
     sprite: Objects/Power/AME/ame_jar.rsi
     state: jar
   - type: AmeFuelContainer
+    fuelAmount: 4800 # Triad
+    fuelCapacity: 4800 # Triad
   - type: StaticPrice
     price: 400
     vendPrice: 4000 # Frontier: FuelVend price
