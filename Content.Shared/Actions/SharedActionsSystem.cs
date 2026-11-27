@@ -767,8 +767,8 @@ public abstract partial class SharedActionsSystem : EntitySystem
 
         foreach (var actionId in comp.Actions.ToArray())
         {
-            if (GetAction(actionId) is not {} ent)
-                return;
+            if (GetAction(actionId) is not {} ent) 
+                continue; //triad: Experimental: this is a bandaid for a bug where actions are being removed from the container but not from the entity. This should be fixed properly in the future.
 
             if (ent.Comp.Container == container)
                 RemoveAction((performer, comp), (ent, ent));
