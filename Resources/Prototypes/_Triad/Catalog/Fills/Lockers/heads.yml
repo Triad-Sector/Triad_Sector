@@ -26,7 +26,7 @@
   - type: StorageFill
     contents:
     - id: BoxEncryptionKeyMedical
-    - id: ClothingBackpackDuffelSurgeryFilled # Frontier Revert - Mono
+    - id: ClothingBackpackDuffelSurgeryFilled
     - id: ClothingCloakCmo
     - id: ClothingEyesHudMedical
     - id: ClothingHandsGlovesNitrile
@@ -37,11 +37,9 @@
     - id: MedicalTechFabCircuitboard
     - id: MedkitFilled
     - id: RubberStampDoc
-    # Goobstation Start
     - id: ClothingBeltMilitaryWebbingCMOFilled
     - id: Multitool
     - id: MedTekCartridge
-    - id: RubberStampDoctor # Frontier
-    # Shitmed
+    - id: RubberStampDoctor
     - id: MedicalBiofabMachineBoard
-    - id: MMI # Shitmed
+    - id: MMI 
