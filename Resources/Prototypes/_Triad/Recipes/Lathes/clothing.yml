@@ -5,6 +5,21 @@
   id: ClothingUniformJumpsuitShiBusiness
   result: ClothingUniformJumpsuitShiBusiness
 
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitGhostlightCore
+  result: ClothingUniformGhostlightCore
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitGhostlightNamed
+  result: ClothingUniformGhostlightNamed
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitGhostlightTitled
+  result: ClothingUniformGhostlightTitled
+
 # Base Prototype
 
 - type: latheRecipe

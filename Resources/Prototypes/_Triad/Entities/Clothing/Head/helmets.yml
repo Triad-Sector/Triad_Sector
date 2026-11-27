@@ -19,3 +19,18 @@
     - HeadTop
     - HeadSide
     - Hair
+
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetG15
+  name: G-15 'civil' helmet
+  description: A Ghostlight manufactured helmet. The precursor to the G-27, the G-15 was used in ground operations for lightly armed assets.
+  components:
+  - type: Sprite
+    sprite: _Triad/Clothing/Head/Helmets/g15.rsi
+  - type: Clothing
+    sprite: _Triad/Clothing/Head/Helmets/g15.rsi
+  - type: SpeechSoundsReplacer
+    speechSounds: g15
+
+

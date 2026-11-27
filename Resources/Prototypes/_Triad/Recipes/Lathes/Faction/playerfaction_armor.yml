@@ -1,0 +1,4 @@
+- type: latheRecipe
+  id: ClothingHeadHelmetG15Recipe
+  parent: ClothingHeadHelmetBasic
+  result: ClothingHeadHelmetG15

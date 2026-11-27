@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: g15
+  saySound:
+    path: /Audio/_Triad/Voice/G15/g15_say.ogg
+  askSound:
+    path: /Audio/_Triad/Voice/G15/g15_say.ogg
+  exclaimSound:
+    path: /Audio/_Triad/Voice/G15/g15_say.ogg

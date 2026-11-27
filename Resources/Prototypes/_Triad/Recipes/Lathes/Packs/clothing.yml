@@ -2,3 +2,6 @@
   id: ClothingPlayerFaction
   recipes:
   - ClothingUniformJumpsuitShiBusiness
+  - ClothingUniformJumpsuitGhostlightCore
+  - ClothingUniformJumpsuitGhostlightNamed
+  - ClothingUniformJumpsuitGhostlightTitled
