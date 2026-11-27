@@ -76,7 +76,6 @@
     - RootSpeakTranslatorImplanter
     - MofficTranslatorImplanter
     - BirdsongTranslatorImplanter
-    - ScratchTranslatorImplanter
     - ChittinTranslatorImplanter
     - GaryTranslatorImplanter # Trait language
     - TerraSlavicTranslatorImplanter # Trait language

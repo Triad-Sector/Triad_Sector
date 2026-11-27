@@ -159,21 +159,6 @@
 
 - type: entity
   parent: BaseSubdermalImplant
-  id: ScratchTranslatorImplant
-  name: scratch translator implant
-  description: An implant giving the ability to understand and speak Scratch. Trill!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TranslatorImplant
-    understood:
-    - Scratch
-    spoken:
-    - Scratch
-    requires:
-    - TauCetiBasic
-
-- type: entity
-  parent: BaseSubdermalImplant
   id: AzazibaTranslatorImplant
   name: azaziba translator implant
   description: An implant giving the ability to understand and speak Azaziba. # Intended for Admins Only, this item is for lore reasons not obtainable.
