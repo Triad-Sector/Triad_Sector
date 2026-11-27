@@ -164,7 +164,6 @@
   - type: Gun
     soundGunshot: /Audio/Weapons/plasma_cutter.ogg
     fireRate: 1
-    useKey: false
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 0.5
     rechargeSound:
@@ -173,6 +172,8 @@
     proto: BulletCharge
     capacity: 1
     count: 1
+  - type: AltFireMelee
+    attackType: Heavy
   - type: MeleeWeapon
     heavyStaminaCost: 10 # Triad
     autoAttack: true #Mono
