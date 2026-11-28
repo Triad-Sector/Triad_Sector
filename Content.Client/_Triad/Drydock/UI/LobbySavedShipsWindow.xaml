@@ -1,50 +1,52 @@
 ﻿<controls:FancyWindow xmlns="https://spacestation14.io"
-                      xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       Title="{Loc 'shipyard-console-saved-ships-title'}"
-                      SetSize="1000 400"
-                      MinSize="650 200">
-    <BoxContainer Orientation="Vertical">
-        <Label FontColorOverride="#b1b1b2"
-               StyleClasses="LabelSmall"
-               Name="HeaderLabel"
-               Margin="6 6 6 6"
-               Text="{Loc 'shipyard-console-header-saved-ships'}"/>
-        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
-            <PanelContainer VerticalExpand="True" HorizontalExpand="True">
-                <PanelContainer.PanelOverride>
-                    <graphics:StyleBoxFlat BackgroundColor="#000000FF" BorderColor="#5a5a5a" BorderThickness="1 1 1 1"/>
-                </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Horizontal" Name="InfoContentContainer" Visible="False">
-                    <ScrollContainer
-                        VScrollEnabled="True"
-                        HorizontalExpand="True"
-                        SizeFlagsStretchRatio="4"
-                        VerticalExpand="True">
-                        <BoxContainer
-                            Name="ShipInfoContainer"
-                            Orientation="Vertical"
-                            SizeFlagsStretchRatio="2"
-                            HorizontalExpand="False"
+                      SetSize="1200 420"
+                      MinSize="1000 300">
+    <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderThickness="2" BorderColor="#333333" BackgroundColor="#181818"/>
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Vertical" Margin="5 0 5 5">
+            <Label Name="HeaderLabel"
+                   Margin="2 4 2 4"
+                   Modulate="#999999"
+                   Text="{Loc 'shipyard-console-header-saved-ships'}"/>
+
+            <BoxContainer Name="NoShipsContainer"
+                          Orientation="Horizontal"
+                          Visible="False"
+                          VerticalExpand="True"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center">
+                <Label Text="{Loc 'shipyard-console-error-no-ships'}" Modulate="#777777"/>
+            </BoxContainer>
+
+            <SplitContainer Name="OuterSplit"
+                            Orientation="Horizontal"
+                            HorizontalExpand="True"
                             VerticalExpand="True">
-                        </BoxContainer>
-                    </ScrollContainer>
-                    <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" Margin="6 0 6 0"/>
-                    <PanelContainer HorizontalExpand="True"
-                                    VerticalExpand="True"
-                                    SizeFlagsStretchRatio="2"
-                                    Margin="0 0 0 6">
+                <ScrollContainer HScrollEnabled="False"
+                                 HorizontalExpand="True"
+                                 VerticalExpand="True"
+                                 MinWidth="200">
+                    <BoxContainer Name="ShipInfoContainer"
+                                  Orientation="Vertical"
+                                  HorizontalExpand="True"/>
+                </ScrollContainer>
+
+                <SplitContainer Name="InnerSplit"
+                                Orientation="Horizontal"
+                                HorizontalExpand="True"
+                                VerticalExpand="True">
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True" MinWidth="200">
                         <PanelContainer.PanelOverride>
-                            <gfx:StyleBoxFlat BorderThickness="3"
-                                    BorderColor="#333333"
-                                    BackgroundColor="#333333"/>
+                            <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#333333" BackgroundColor="#333333"/>
                         </PanelContainer.PanelOverride>
                         <PanelContainer Margin="1 1 1 1">
                             <PanelContainer.PanelOverride>
-                                <gfx:StyleBoxFlat BorderThickness="3"
-                                        BorderColor="#636363"
-                                        BackgroundColor="#141414"/>
+                                <gfx:StyleBoxFlat BorderThickness="3" BorderColor="#636363" BackgroundColor="#141414"/>
                             </PanelContainer.PanelOverride>
                             <Label Name="BerthDetailPlaceholder"
                                    Text="{Loc 'shipyard-console-detail-select-ship'}"
@@ -53,48 +55,47 @@
                                    VAlign="Center"
                                    HorizontalExpand="True"
                                    VerticalExpand="True"/>
-                            <!-- Fits at the default size; scrolls only when several cards stack above it. -->
                             <ScrollContainer Name="BerthDetail"
                                              Visible="False"
                                              HScrollEnabled="False"
                                              HorizontalExpand="True"
                                              VerticalExpand="True">
-                                <BoxContainer Orientation="Vertical"
-                                              HorizontalExpand="True"
-                                              Margin="8">
-                                    <RichTextLabel Name="BerthDetailTitle"
-                                                   HorizontalExpand="True"/>
-                                    <RichTextLabel Name="BerthDetailStatus"
-                                                   HorizontalExpand="True"
-                                                   Margin="0 0 0 10"/>
-                                    <PanelContainer StyleClasses="LowDivider"
-                                                    Margin="0 0 0 6"/>
+                                <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="8">
+                                    <RichTextLabel Name="BerthDetailTitle" HorizontalExpand="True"/>
+                                    <RichTextLabel Name="BerthDetailStatus" HorizontalExpand="True" Margin="0 0 0 6"/>
+                                    <PanelContainer StyleClasses="LowDivider" Margin="0 0 0 6"/>
                                     <BoxContainer Name="BerthDetailLines"
                                                   Orientation="Vertical"
                                                   HorizontalExpand="True"
                                                   Margin="0 0 0 8"/>
-                                    <GridContainer Name="BerthTools"
-                                                   Columns="3"
-                                                   HSeparationOverride="3"
-                                                   HorizontalExpand="True"/>
                                     <BoxContainer Name="BerthActions"
                                                   Orientation="Vertical"
                                                   HorizontalExpand="True"/>
+                                    <Label Name="ExportStatusLabel"
+                                           Visible="False"
+                                           Margin="0 4 0 0"/>
                                 </BoxContainer>
                             </ScrollContainer>
                         </PanelContainer>
                     </PanelContainer>
-                    <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" Margin="6 0 6 0"/>
-                </BoxContainer>
-                <BoxContainer Orientation="Horizontal"
-                        Visible="False"
-                        Name="NoShipsContainer"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                    <Label Text="{Loc 'shipyard-console-error-no-ships'}" StyleClasses="LabelBig"/>
-                </BoxContainer>
-            </PanelContainer>
-        </PanelContainer>
-    </BoxContainer>
 
+                    <PanelContainer Name="CharacterPanel" HorizontalExpand="True" VerticalExpand="True" MinWidth="200">
+                        <BoxContainer Orientation="Vertical" Margin="6">
+                            <Label Name="CharacterHeader"
+                                   Text="{Loc 'shipyard-console-saved-ships-characters-header'}"
+                                   Modulate="#999999"/>
+                            <Label Name="CharacterHint"
+                                   Modulate="#777777"
+                                   Margin="0 2 0 6"/>
+                            <ScrollContainer HScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
+                                <BoxContainer Name="Characters"
+                                              Orientation="Vertical"
+                                              HorizontalExpand="True"/>
+                            </ScrollContainer>
+                        </BoxContainer>
+                    </PanelContainer>
+                </SplitContainer>
+            </SplitContainer>
+        </BoxContainer>
+    </PanelContainer>
 </controls:FancyWindow>

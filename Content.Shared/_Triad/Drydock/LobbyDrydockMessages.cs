@@ -27,9 +27,9 @@ public sealed class LobbyDrydockExportShipMessage(Guid shipId) : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class LobbyDrydockExportShipResponse(string yaml) : EntityEventArgs
+public sealed class LobbyDrydockExportShipResponse(string? yaml) : EntityEventArgs
 {
-    public string Yaml = yaml;
+    public string? Yaml = yaml;
 }
 
 [Serializable, NetSerializable]

@@ -59,11 +59,20 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
 
         var owner = player.UserId.UserId;
 
+        var header = await _drydockStore.GetShipHeader(shipId);
+        if (header == null || header.OwnerUserId != owner || (header.State != DrydockShipState.Stored && header.State != DrydockShipState.Impounded))
+        {
+            _sawmill.Warning($"{player} attempted to export ship {shipId}, which is not a stored or impounded ship of theirs.");
+            RaiseNetworkEvent(new LobbyDrydockExportShipResponse(null), player.Channel);
+            return;
+        }
+
         var yamlData = await _drydock.GetShipYamlData(shipId, owner);
 
         if (yamlData == null)
         {
             _sawmill.Warning($"{player} attempted to export their ship {shipId} to file. Operation failed.");
+            RaiseNetworkEvent(new LobbyDrydockExportShipResponse(null), player.Channel);
             return;
         }
 

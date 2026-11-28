@@ -73,7 +73,7 @@ public sealed partial class LobbySavedShipsBerthRow : PanelContainer
         {
             PanelOverride = IncomingFrame;
             var msg = new FormattedMessage();
-            msg.AddColored(Loc.GetString("shipyard-console-berth-incoming", ("ship", incomingShipName)), DrydockText.Incoming);
+            msg.AddColored(Loc.GetString("shipyard-console-berth-row-incoming", ("ship", incomingShipName)), DrydockText.Incoming);
             OccupantLabel.SetMessage(msg);
         }
         else
@@ -132,7 +132,7 @@ public sealed partial class LobbySavedShipsBerthRow : PanelContainer
 
         if (_occupantName == null)
         {
-            msg.AddColored(Loc.GetString("shipyard-console-berth-empty"), DrydockText.Empty);
+            msg.AddColored(Loc.GetString("shipyard-console-berth-row-empty"), DrydockText.Empty);
             OccupantLabel.SetMessage(msg);
             return;
         }

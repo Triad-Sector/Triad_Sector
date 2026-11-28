@@ -11,6 +11,13 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
 
     public bool ActiveWindow = false;
 
+    public bool Exporting => _window?.Exporting ?? false;
+
+    public void ExportReplyArrived()
+    {
+        _window?.ExportReplyArrived();
+    }
+
     private LobbySavedShipsWindow? _window;
 
     public override void Initialize()
@@ -22,9 +29,9 @@ public sealed partial class LobbySavedShipsUIController : UIController, IOnSyste
         _window?.UpdateUi(msg.Berths);
     }
 
-    private void OnExportFinish()
+    private void OnExportFinish(bool? success)
     {
-        _window?.Exporting = false;
+        _window?.EndExport(success);
     }
 
     private void RequestBerthInfo()

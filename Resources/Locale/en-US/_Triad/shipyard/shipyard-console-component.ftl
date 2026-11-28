@@ -45,8 +45,9 @@ shipyard-console-retrieving-percent-button = Retrieving {$percent}%
 shipyard-console-berth-row = #{$berth}
 shipyard-console-berth-row-class = {$class}
 shipyard-console-berth-occupant = | {$ship}
-shipyard-console-berth-occupant-class = · {$class}
+shipyard-console-berth-occupant-class = | {$class}
 shipyard-console-berth-empty = empty
+
 
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth
@@ -136,7 +137,9 @@ shipyard-console-import-button = Import
 shipyard-console-importing-button = Importing
 shipyard-console-import-row-marker = new
 shipyard-console-import-row-note = · old save
-shipyard-console-import-summary = { " " }· { $count } to import
+shipyard-console-view-berth = Berth
+shipyard-console-view-import = Import ({ $count })
+shipyard-console-import-none = Nothing to import
 shipyard-console-import-prompt-title = Import { $ship }
 shipyard-console-import-prompt-body = [color=#e0e0e0]{ $ship }[/color] slots into a [bold]new berth[/bold], sized to its hull and granted with the import.
 
@@ -163,5 +166,16 @@ shipyard-console-import-error-store-failed = Import failed: could not file the s
 
 shipyard-console-saved-ships-title = Saved Ships
 
-shipyard-console-transfer-owner-prompt-title = Transferring ship owner
-shipyard-console-transfer-owner-prompt-header = Select a character to transfer ownership of {$ship}.
+shipyard-console-saved-ships-characters-header = Available characters for transfer
+shipyard-console-saved-ships-transfer-select-ship = Select a ship first.
+shipyard-console-saved-ships-transfer-hint = Press Transfer owner to pick a character.
+shipyard-console-saved-ships-transfer-pick = Pick the character to receive { $ship }.
+shipyard-console-saved-ships-transfer-only-one = You need another character to transfer this ship.
+shipyard-console-saved-ships-transfer-cancel = Cancel transfer
+shipyard-console-saved-ships-transfer-confirm-title = Transfer { $ship }
+shipyard-console-saved-ships-transfer-confirm-body = Give { $ship } to [bold]{ $character }[/bold]?
+shipyard-console-saved-ships-transfer-confirm-button = Transfer
+shipyard-console-saved-ships-unknown-character = Unknown character
+shipyard-console-exporting = Exporting...
+shipyard-console-export-done = Ship exported.
+shipyard-console-export-failed = Export failed.

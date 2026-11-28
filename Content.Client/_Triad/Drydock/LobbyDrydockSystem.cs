@@ -23,7 +23,7 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
     }
 
     public event Action<LobbyDrydockBerthInfoResponse>? BerthInfoResponse;
-    public event Action? ExportResponseFinal;
+    public event Action<bool?>? ExportResponseFinal;
 
     [SubscribeNetworkEvent]
     private void OnLobbyBerthInfoResponse(LobbyDrydockBerthInfoResponse msg)
@@ -40,30 +40,40 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
         if (_state.CurrentState is not LobbyState)
             return;
 
-        // Responses only work if they have a window open
-        if (!_ui.GetUIController<LobbySavedShipsUIController>().ActiveWindow)
+        var controller = _ui.GetUIController<LobbySavedShipsUIController>();
+        if (!controller.Exporting)
             return;
+
+        controller.ExportReplyArrived();
+
+        if (msg.Yaml == null)
+        {
+            EndExport(false);
+            return;
+        }
 
         var file = await _dialogManager.SaveFile(new FileDialogFilters(new FileDialogFilters.Group("yml")));
 
         if (file == null)
         {
-            EndExport();
+            EndExport(null);
             return;
         }
 
+        var success = false;
         try
         {
             await using var writer = new StreamWriter(file.Value.fileStream);
-            writer.Write(msg.Yaml);
+            await writer.WriteAsync(msg.Yaml);
+            success = true;
         }
         catch (Exception exc)
         {
-            _sawmill.Error($"Error when exporting profile\n{exc.StackTrace}");
+            _sawmill.Error($"Error when exporting ship\n{exc.StackTrace}");
         }
         finally
         {
-            EndExport();
+            EndExport(success);
             await file.Value.fileStream.DisposeAsync();
         }
     }
@@ -104,8 +114,8 @@ public sealed partial class LobbyDrydockSystem : EntitySystem
         RaiseNetworkEvent(ev);
     }
 
-    private void EndExport()
+    private void EndExport(bool? success)
     {
-        ExportResponseFinal?.Invoke();
+        ExportResponseFinal?.Invoke(success);
     }
 }
