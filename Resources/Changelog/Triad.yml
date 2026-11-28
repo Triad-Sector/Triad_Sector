@@ -6445,3 +6445,34 @@ Entries:
   id: 2754
   time: '2026-11-28T01:36:46.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/857
+- author: Malfaltto
+  changes:
+    - type: Add
+      message: >-
+        Scratch, the native tongue of the Avali, is now available to all members
+        of the species! Translators have been added in the appropriate places to
+        create.
+    - type: Add
+      message: >-
+        Three new traits are available in the Language tab, allowing those who
+        wish it to be able to understand Hy'drav'tha, Rootspeak, and the new
+        Harpy language, Birdsong!
+    - type: Add
+      message: Protogens can now speak RobotTalk!
+    - type: Add
+      message: >-
+        Tau and Triadian now have Translators, available from research Tech
+        Disks!
+    - type: Remove
+      message: >-
+        Valyrian has been removed as a language, and replaced with Birdsong, a
+        music based language for Harpies. Defined by melody and tune, it is hard
+        to replicate organically, but learnable with time.
+    - type: Tweak
+      message: >-
+        In light of Valyrian being removed as the language of Harpies, and thus
+        Valyria-B as the homeworld, the Harpy Snowfall has had its description
+        slightly tweaked.
+  id: 2755
+  time: '2026-11-28T01:41:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/856
