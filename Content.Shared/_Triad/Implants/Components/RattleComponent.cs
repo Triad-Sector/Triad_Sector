@@ -55,5 +55,5 @@ public sealed partial class RattleComponent : Component
     public TimeSpan? BackupTriggerThreshold = null;
 
     [DataField]
-    public TimeSpan BackupTriggerDelay = TimeSpan.FromMinutes(12);
+    public TimeSpan BackupTriggerDelay = TimeSpan.FromMinutes(10);
 }
