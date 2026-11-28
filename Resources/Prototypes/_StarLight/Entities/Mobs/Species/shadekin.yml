@@ -8,8 +8,11 @@
     - type: LanguageKnowledge
       speaks:
       - TauCetiBasic
+      - Marish
       understands:
       - TauCetiBasic
+      - Marish
+      naturalLanguage: Marish
     - type: Inventory
       speciesId: shadekin
     - type: Hunger

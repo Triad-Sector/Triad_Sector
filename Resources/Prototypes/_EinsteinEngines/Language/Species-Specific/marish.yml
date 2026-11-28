@@ -11,9 +11,11 @@
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
-    maxSyllables: 4
+    maxSyllables: 1
     replacement:
     - mar
+    - maaar
+    - traarR
     - mwrrr
     - maaAr
     - aarrr
